@@ -1,4 +1,4 @@
 import "./style.css";
 
-// components exported here as they ship (see DESIGN.md roadmap)
-export {};
+export { default as BlessSkew } from "./components/BlessSkew.vue";
+export { default as BlessButton } from "./components/BlessButton.vue";
