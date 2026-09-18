@@ -60,3 +60,8 @@ export type { Placement, FloatingOptions } from "./composables/useFloating";
 export { default as BlessPopover } from "./components/BlessPopover.vue";
 export { default as BlessTooltip } from "./components/BlessTooltip.vue";
 export { default as BlessHoverCard } from "./components/BlessHoverCard.vue";
+export { default as BlessDropdownMenu } from "./components/BlessDropdownMenu.vue";
+export { default as BlessContextMenu } from "./components/BlessContextMenu.vue";
+export { default as BlessMenubar } from "./components/BlessMenubar.vue";
+export { default as BlessMenuList } from "./components/BlessMenuList.vue";
+export type { BlessMenuItem } from "./components/menu";

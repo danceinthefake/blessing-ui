@@ -105,9 +105,9 @@ Decision: use the native **Popover API** (`popover` attr, top layer, light-dismi
 - [x] `BlessPopover` — trigger + content, `v-model:open`, placement
 - [x] `BlessTooltip` — hover/focus, delay, `role=tooltip`, `aria-describedby`
 - [x] `BlessHoverCard` — `BlessPopover` with hover intent
-- [ ] `BlessDropdownMenu` — `role=menu`, items/checkbox/radio/separator/sub, roving focus, typeahead
-- [ ] `BlessContextMenu` — `BlessDropdownMenu` on `contextmenu`
-- [ ] `BlessMenubar` — horizontal bar of `BlessDropdownMenu`s, ←→ across menus
+- [x] `BlessDropdownMenu` — `role=menu`, items/checkbox/radio/separator/sub, roving focus, typeahead
+- [x] `BlessContextMenu` — `BlessDropdownMenu` on `contextmenu`
+- [x] `BlessMenubar` — horizontal bar of `BlessDropdownMenu`s, ←→ across menus
 - [ ] `BlessSheet` — side panel on `<dialog>` (extract from `BlessStage` drawer), `side` left/right/top/bottom
 - [ ] `BlessDrawer` — bottom sheet with drag handle (mobile); alias of `BlessSheet side=bottom` + touch drag
 - [ ] `BlessAlertDialog` — `BlessModal` preset: `role=alertdialog`, no backdrop dismiss, focus on cancel
