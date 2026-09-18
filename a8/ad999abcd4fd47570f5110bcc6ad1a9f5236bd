@@ -1,0 +1,40 @@
+src/components/BlessSkeleton.vue
+  s_71efa235425cb6::t_14efc6d9a1b324 1-69
+src/components/BlessAspectRatio.vue
+  s_71efa235425cb6::t_14efc6d9a1b324 1-26
+src/components/BlessKbd.vue
+  s_71efa235425cb6::t_14efc6d9a1b324 1-50
+src/components/BlessProgress.vue
+  s_71efa235425cb6::t_14efc6d9a1b324 1-131
+src/components/BlessDisplay.test.ts
+  s_71efa235425cb6::t_14efc6d9a1b324 1-63
+src/index.ts
+  s_71efa235425cb6::t_14efc6d9a1b324 41-46
+DESIGN.md
+  s_71efa235425cb6::t_14efc6d9a1b324 86-90,97
+src/components/BlessAlert.vue
+  s_71efa235425cb6::t_14efc6d9a1b324 1-133
+src/components/BlessAvatar.vue
+  s_71efa235425cb6::t_14efc6d9a1b324 1-113
+playground/App.vue
+  s_71efa235425cb6::t_14efc6d9a1b324 6-7,72-73,75,83,87,89,357-360,362-435
+  s_71efa235425cb6::t_381b7f2738a290 361
+playground/main.ts
+  s_71efa235425cb6::t_5544f4a45c00e9 4
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "a8ad999abcd4fd47570f5110bcc6ad1a9f5236bd",
+  "prompts": {},
+  "sessions": {
+    "s_71efa235425cb6": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e2efbbcd-f490-4508-bdc9-ca03144faebe",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Hafidz Bahtiar <hafidz.bahtiar@hypefast.id>"
+    }
+  }
+}
