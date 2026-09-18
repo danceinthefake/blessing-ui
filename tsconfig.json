@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "strict": true,
+    "jsx": "preserve",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "skipLibCheck": true,
+    "noEmit": true,
+    "isolatedModules": true,
+    "verbatimModuleSyntax": true,
+    "types": ["node", "vite/client", "vitest/globals"],
+    "paths": {
+      "blessing-ui": ["./src/index.ts"],
+      "blessing-ui/style.css": ["./src/style.css"]
+    }
+  },
+  "include": ["src", "playground", "vite.config.ts"]
+}

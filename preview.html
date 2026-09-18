@@ -1,31 +1,140 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Blessing UI tokens</title>
-<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700|Noto+Sans+JP:400,700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="tokens.css">
-<style>
-body{margin:0;padding:var(--bless-space-8);font:var(--bless-font-weight-normal) var(--bless-text-md)/var(--bless-leading-normal) var(--bless-font-sans);color:var(--bless-color-text);background:var(--bless-color-bg);letter-spacing:var(--bless-tracking-normal)}
-h2{font-size:var(--bless-text-sm);letter-spacing:var(--bless-tracking-wider);text-transform:uppercase;color:var(--bless-color-text-muted);border-bottom:var(--bless-border-width) solid var(--bless-color-border);margin:var(--bless-space-12) 0 var(--bless-space-4)}
-.sw{display:inline-block;width:110px;font-size:var(--bless-text-xs);margin:0 var(--bless-space-2) var(--bless-space-4) 0}.sw i{display:block;height:56px;margin-bottom:var(--bless-space-1)}
-.skew{display:inline-block;background:var(--bless-color-text);color:var(--bless-color-on-accent);padding:var(--bless-space-2) var(--bless-space-4);font-size:var(--bless-text-sm);letter-spacing:var(--bless-tracking-wide);transform:skewX(var(--bless-skew));transition:opacity var(--bless-duration-slow) var(--bless-ease-in-out);margin-right:var(--bless-space-2)}
-.skew>span{display:inline-block;transform:skewX(var(--bless-skew-counter))}.skew:hover{opacity:var(--bless-hover-opacity)}
-.accent{background:var(--bless-color-accent)}.danger{background:var(--bless-color-danger)}
-.demo{position:relative;overflow:hidden;border:var(--bless-border-width) solid var(--bless-color-border);padding:var(--bless-space-16) var(--bless-space-6) var(--bless-space-6)}
-.wm{position:absolute;top:-.2em;right:-.05em;font-size:var(--bless-text-display);font-weight:var(--bless-font-weight-thin);color:var(--bless-color-watermark);letter-spacing:var(--bless-tracking-tight);transform:skewX(var(--bless-skew));line-height:var(--bless-leading-none);pointer-events:none}
-.badge{display:inline-block;background:var(--bless-color-badge);color:#fff;font-size:var(--bless-text-xs);line-height:1;padding:2px 4px;border-radius:var(--bless-radius-sm);transform:scale(var(--bless-press-scale))}
-</style></head><body>
-<h1 style="font-weight:var(--bless-font-weight-thin);font-size:var(--bless-text-xl)">Blessing UI tokens</h1>
-<h2>Colour</h2>
-<script>
-for (const k of ['text','text-muted','bg','surface','surface-2','watermark','accent','accent-soft','accent-2','danger','badge','warning','success','info'])
-  document.write(`<div class="sw"><i style="background:var(--bless-color-${k});border:1px solid #ededed"></i>--bless-color-${k}</div>`);
-</script>
-<h2>Type (resize window — fluid)</h2>
-<p style="font-size:var(--bless-text-xl);font-weight:100">xl thin — 冴えない彼女の育てかた</p>
-<p style="font-size:var(--bless-text-lg)">lg — TVアニメ公式サイト</p>
-<p style="font-size:var(--bless-text-md)">md — body 本文テキスト</p>
-<p style="font-size:var(--bless-text-sm);color:var(--bless-color-text-muted)">sm muted — 2019.09.25</p>
-<p style="font-size:var(--bless-text-2xs);color:var(--bless-color-text-muted)">2xs caption</p>
-<h2>Shape + motion</h2>
-<div class="demo"><span class="wm">News</span>
-<span class="skew"><span>Label</span></span><span class="skew accent"><span>Primary</span></span><span class="skew danger"><span>Play</span></span>
-&nbsp; News <span class="badge">NEW!</span></div>
-</body></html>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Blessing UI tokens</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700|Noto+Sans+JP:400,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="tokens.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: var(--bless-space-8);
+        font: var(--bless-font-weight-normal) var(--bless-text-md)/var(--bless-leading-normal)
+          var(--bless-font-sans);
+        color: var(--bless-color-text);
+        background: var(--bless-color-bg);
+        letter-spacing: var(--bless-tracking-normal);
+      }
+      h2 {
+        font-size: var(--bless-text-sm);
+        letter-spacing: var(--bless-tracking-wider);
+        text-transform: uppercase;
+        color: var(--bless-color-text-muted);
+        border-bottom: var(--bless-border-width) solid var(--bless-color-border);
+        margin: var(--bless-space-12) 0 var(--bless-space-4);
+      }
+      .sw {
+        display: inline-block;
+        width: 110px;
+        font-size: var(--bless-text-xs);
+        margin: 0 var(--bless-space-2) var(--bless-space-4) 0;
+      }
+      .sw i {
+        display: block;
+        height: 56px;
+        margin-bottom: var(--bless-space-1);
+      }
+      .skew {
+        display: inline-block;
+        background: var(--bless-color-text);
+        color: var(--bless-color-on-accent);
+        padding: var(--bless-space-2) var(--bless-space-4);
+        font-size: var(--bless-text-sm);
+        letter-spacing: var(--bless-tracking-wide);
+        transform: skewX(var(--bless-skew));
+        transition: opacity var(--bless-duration-slow) var(--bless-ease-in-out);
+        margin-right: var(--bless-space-2);
+      }
+      .skew > span {
+        display: inline-block;
+        transform: skewX(var(--bless-skew-counter));
+      }
+      .skew:hover {
+        opacity: var(--bless-hover-opacity);
+      }
+      .accent {
+        background: var(--bless-color-accent);
+      }
+      .danger {
+        background: var(--bless-color-danger);
+      }
+      .demo {
+        position: relative;
+        overflow: hidden;
+        border: var(--bless-border-width) solid var(--bless-color-border);
+        padding: var(--bless-space-16) var(--bless-space-6) var(--bless-space-6);
+      }
+      .wm {
+        position: absolute;
+        top: -0.2em;
+        right: -0.05em;
+        font-size: var(--bless-text-display);
+        font-weight: var(--bless-font-weight-thin);
+        color: var(--bless-color-watermark);
+        letter-spacing: var(--bless-tracking-tight);
+        transform: skewX(var(--bless-skew));
+        line-height: var(--bless-leading-none);
+        pointer-events: none;
+      }
+      .badge {
+        display: inline-block;
+        background: var(--bless-color-badge);
+        color: #fff;
+        font-size: var(--bless-text-xs);
+        line-height: 1;
+        padding: 2px 4px;
+        border-radius: var(--bless-radius-sm);
+        transform: scale(var(--bless-press-scale));
+      }
+    </style>
+  </head>
+  <body>
+    <h1 style="font-weight: var(--bless-font-weight-thin); font-size: var(--bless-text-xl)">
+      Blessing UI tokens
+    </h1>
+    <h2>Colour</h2>
+    <script>
+      for (const k of [
+        "text",
+        "text-muted",
+        "bg",
+        "surface",
+        "surface-2",
+        "watermark",
+        "accent",
+        "accent-soft",
+        "accent-2",
+        "danger",
+        "badge",
+        "warning",
+        "success",
+        "info",
+      ])
+        document.write(
+          `<div class="sw"><i style="background:var(--bless-color-${k});border:1px solid #ededed"></i>--bless-color-${k}</div>`,
+        );
+    </script>
+    <h2>Type (resize window — fluid)</h2>
+    <p style="font-size: var(--bless-text-xl); font-weight: 100">
+      xl thin — 冴えない彼女の育てかた
+    </p>
+    <p style="font-size: var(--bless-text-lg)">lg — TVアニメ公式サイト</p>
+    <p style="font-size: var(--bless-text-md)">md — body 本文テキスト</p>
+    <p style="font-size: var(--bless-text-sm); color: var(--bless-color-text-muted)">
+      sm muted — 2019.09.25
+    </p>
+    <p style="font-size: var(--bless-text-2xs); color: var(--bless-color-text-muted)">
+      2xs caption
+    </p>
+    <h2>Shape + motion</h2>
+    <div class="demo">
+      <span class="wm">News</span> <span class="skew"><span>Label</span></span
+      ><span class="skew accent"><span>Primary</span></span
+      ><span class="skew danger"><span>Play</span></span> &nbsp; News
+      <span class="badge">NEW!</span>
+    </div>
+  </body>
+</html>

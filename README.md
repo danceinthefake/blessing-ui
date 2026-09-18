@@ -4,8 +4,13 @@ Design tokens as CSS custom properties. Vue components come later.
 
 ```css
 @import "blessing-ui/tokens.css";
-.btn { background: var(--bless-color-accent); transition: opacity var(--bless-duration-slow) var(--bless-ease-in-out); }
-.btn:hover { opacity: var(--bless-hover-opacity); }
+.btn {
+  background: var(--bless-color-accent);
+  transition: opacity var(--bless-duration-slow) var(--bless-ease-in-out);
+}
+.btn:hover {
+  opacity: var(--bless-hover-opacity);
+}
 ```
 
 Prefix: `--bless-`. Groups: `color`, `font`, `text` (fluid clamp), `leading`, `tracking`, `space`, `radius`/`skew`, `shadow`, `duration`/`ease`, `z`.

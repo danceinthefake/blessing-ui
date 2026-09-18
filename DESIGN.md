@@ -14,17 +14,17 @@ Generic Vue 3 UI library. Visual language borrowed from saenai.tv (see `../saena
 
 ## 2. Tokens (done — `tokens.css`)
 
-| Group | Props | Notes |
-|---|---|---|
-| Colour | `--bless-color-{text,text-muted,bg,surface,surface-2,watermark,accent,accent-soft,accent-2,danger,badge,warning,success,info,on-accent,border,rule}` | semantic names |
-| Font | `--bless-font-sans`, `--bless-font-weight-{thin,light,normal,bold}` | Roboto + Noto Sans JP |
-| Type scale | `--bless-text-{2xs,xs,sm,md,lg,xl,display}` | `clamp()` 8→151px |
-| Leading / tracking | `--bless-leading-{none,tight,normal}`, `--bless-tracking-{tight,normal,wide,wider}` | |
-| Space | `--bless-space-{1,2,3,4,6,8,12,16}` | 4px base |
-| Shape | `--bless-radius-{none,sm}`, `--bless-skew`, `--bless-skew-counter`, `--bless-border-width`, `--bless-dash-width` | |
-| Elevation | `--bless-shadow-{none,md}` | modal only |
-| Motion | `--bless-duration-{fast,base,slow,slower}`, `--bless-ease-{in-out,out,linear}`, `--bless-hover-opacity`, `--bless-press-scale` | |
-| Layout | `--bless-sidebar-width`, `--bless-sidebar-inner`, `--bless-content-max`, `--bless-z-{bg,nav,modal}` | |
+| Group              | Props                                                                                                                                                | Notes                 |
+| ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- |
+| Colour             | `--bless-color-{text,text-muted,bg,surface,surface-2,watermark,accent,accent-soft,accent-2,danger,badge,warning,success,info,on-accent,border,rule}` | semantic names        |
+| Font               | `--bless-font-sans`, `--bless-font-weight-{thin,light,normal,bold}`                                                                                  | Roboto + Noto Sans JP |
+| Type scale         | `--bless-text-{2xs,xs,sm,md,lg,xl,display}`                                                                                                          | `clamp()` 8→151px     |
+| Leading / tracking | `--bless-leading-{none,tight,normal}`, `--bless-tracking-{tight,normal,wide,wider}`                                                                  |                       |
+| Space              | `--bless-space-{1,2,3,4,6,8,12,16}`                                                                                                                  | 4px base              |
+| Shape              | `--bless-radius-{none,sm}`, `--bless-skew`, `--bless-skew-counter`, `--bless-border-width`, `--bless-dash-width`                                     |                       |
+| Elevation          | `--bless-shadow-{none,md}`                                                                                                                           | modal only            |
+| Motion             | `--bless-duration-{fast,base,slow,slower}`, `--bless-ease-{in-out,out,linear}`, `--bless-hover-opacity`, `--bless-press-scale`                       |                       |
+| Layout             | `--bless-sidebar-width`, `--bless-sidebar-inner`, `--bless-content-max`, `--bless-z-{bg,nav,modal}`                                                  |                       |
 
 Dark theme: not planned. Add by redefining colour props under `[data-theme="dark"]` when needed.
 
@@ -33,6 +33,7 @@ Dark theme: not planned. Add by redefining colour props under `[data-theme="dark
 Order = build order. Each row: saenai.tv origin → generic component.
 
 ### Phase 1 — primitives
+
 - [ ] `BlessSkew` — skewed container (`skewX`), counter-skews slot text. Base for label/button/tab. Props: `as`, `color` (`text|accent|danger|surface`).
 - [ ] `BlessButton` — `BlessSkew` + `<button>`/`<a>`. Props: `variant` (`solid|outline|ghost`), `color`, `size` (`sm|md|lg`), `href`, `disabled`, `loading`. Hover opacity, focus ring.
 - [ ] `BlessBadge` — `NEW!` pill. Props: `color`, `text`. `scale(.8)`, radius-sm.
@@ -41,6 +42,7 @@ Order = build order. Each row: saenai.tv origin → generic component.
 - [ ] `BlessText` — typographic helper. Props: `size` (token key), `weight`, `muted`, `tracking`.
 
 ### Phase 2 — layout
+
 - [ ] `BlessWatermark` — oversized thin skewed background word (`"News"`). Props: `text`, `position` (`top-right` default). `aria-hidden`.
 - [ ] `BlessSection` — heading + optional `BlessWatermark` + slot.
 - [ ] `BlessStage` — page shell: fixed sidebar (22% / 200px inner) + content (`max 1300px`); collapses to drawer ≤800px. Slots: `sidebar`, `default`, `footer`.
@@ -49,6 +51,7 @@ Order = build order. Each row: saenai.tv origin → generic component.
 - [ ] `BlessBackground` — tiled texture layer, `z:-1`, `offset` variants.
 
 ### Phase 3 — content
+
 - [ ] `BlessCard` — flat surface, no radius, optional skew header.
 - [ ] `BlessList` / `BlessListItem` — date + dash + badge + title row (news pattern).
 - [ ] `BlessTabs` — skewed tab labels; `v-model`, roving tabindex, `role=tablist`.
@@ -57,6 +60,7 @@ Order = build order. Each row: saenai.tv origin → generic component.
 - [ ] `BlessTable` — station/credits table (onair, staff-cast). Responsive: stacked rows ≤800px.
 
 ### Phase 4 — media (optional, defer)
+
 - [ ] `BlessAudioPlayer` — sample player (Aniplex sound player analogue). Native `<audio>` + skewed controls.
 - [ ] `BlessSplash` — first-visit intro overlay, `localStorage` flag, reduced-motion skips.
 

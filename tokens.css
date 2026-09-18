@@ -12,11 +12,11 @@
   --bless-color-surface-2: #ebebeb;
   --bless-color-watermark: #dde0e4;
 
-  --bless-color-accent: #ff0054;        /* primary CTA */
-  --bless-color-accent-soft: #fd709f;   /* highlights, hover fills */
+  --bless-color-accent: #ff0054; /* primary CTA */
+  --bless-color-accent-soft: #fd709f; /* highlights, hover fills */
   --bless-color-accent-2: #ff5676;
-  --bless-color-danger: #ff3434;        /* active/alert, play icons */
-  --bless-color-badge: #ff2121;         /* NEW! pill */
+  --bless-color-danger: #ff3434; /* active/alert, play icons */
+  --bless-color-badge: #ff2121; /* NEW! pill */
   --bless-color-warning: #ffa800;
   --bless-color-success: #c0e722;
   --bless-color-info: #a759ff;
@@ -26,24 +26,26 @@
   --bless-color-rule: var(--bless-color-text);
 
   /* ---- typography ---- */
-  --bless-font-sans: "Roboto", "Noto Sans JP", "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "Meiryo", sans-serif;
+  --bless-font-sans:
+    "Roboto", "Noto Sans JP", "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "Meiryo",
+    sans-serif;
   --bless-font-weight-thin: 100;
   --bless-font-weight-light: 300;
   --bless-font-weight-normal: 400;
   --bless-font-weight-bold: 700;
 
   /* fluid: min @320px → max @1300px */
-  --bless-text-2xs: clamp(0.5rem, 0.45rem + 0.25vw, 0.5625rem);   /* 8–9px   */
-  --bless-text-xs:  clamp(0.5625rem, 0.5rem + 0.3vw, 0.625rem);   /* 9–10px  */
-  --bless-text-sm:  clamp(0.625rem, 0.55rem + 0.4vw, 0.75rem);    /* 10–12px */
-  --bless-text-md:  clamp(0.75rem, 0.65rem + 0.5vw, 0.875rem);    /* 12–14px */
-  --bless-text-lg:  clamp(0.875rem, 0.7rem + 0.9vw, 1.25rem);     /* 14–20px */
-  --bless-text-xl:  clamp(1.25rem, 0.9rem + 1.8vw, 1.75rem);      /* 20–28px */
-  --bless-text-display: clamp(3rem, 1rem + 10vw, 9.4375rem);      /* 48–151px watermark */
+  --bless-text-2xs: clamp(0.5rem, 0.45rem + 0.25vw, 0.5625rem); /* 8–9px   */
+  --bless-text-xs: clamp(0.5625rem, 0.5rem + 0.3vw, 0.625rem); /* 9–10px  */
+  --bless-text-sm: clamp(0.625rem, 0.55rem + 0.4vw, 0.75rem); /* 10–12px */
+  --bless-text-md: clamp(0.75rem, 0.65rem + 0.5vw, 0.875rem); /* 12–14px */
+  --bless-text-lg: clamp(0.875rem, 0.7rem + 0.9vw, 1.25rem); /* 14–20px */
+  --bless-text-xl: clamp(1.25rem, 0.9rem + 1.8vw, 1.75rem); /* 20–28px */
+  --bless-text-display: clamp(3rem, 1rem + 10vw, 9.4375rem); /* 48–151px watermark */
 
   --bless-leading-none: 1;
   --bless-leading-tight: 1.25;
-  --bless-leading-normal: 1.6;   /* JP body needs room; site's 1 was too tight */
+  --bless-leading-normal: 1.6; /* JP body needs room; site's 1 was too tight */
   --bless-tracking-tight: -0.5px;
   --bless-tracking-normal: 0.5px;
   --bless-tracking-wide: 1px;
@@ -61,23 +63,23 @@
 
   /* ---- shape ---- */
   --bless-radius-none: 0;
-  --bless-radius-sm: 3px;            /* badges only; skew is the shape language */
+  --bless-radius-sm: 3px; /* badges only; skew is the shape language */
   --bless-skew: -10deg;
-  --bless-skew-counter: 10deg;       /* apply to inner text */
+  --bless-skew-counter: 10deg; /* apply to inner text */
   --bless-border-width: 1px;
-  --bless-dash-width: 10px;          /* separator dash */
+  --bless-dash-width: 10px; /* separator dash */
 
   /* ---- elevation ---- */
   --bless-shadow-none: none;
-  --bless-shadow-md: 0 10px 25px rgba(0, 0, 0, 0.5);   /* modals only */
+  --bless-shadow-md: 0 10px 25px rgba(0, 0, 0, 0.5); /* modals only */
 
   /* ---- motion ---- */
   --bless-duration-fast: 0.1s;
   --bless-duration-base: 0.2s;
-  --bless-duration-slow: 0.3s;       /* default hover */
-  --bless-duration-slower: 1s;       /* bg / splash fades */
-  --bless-ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);  /* ≈ Power3.easeInOut */
-  --bless-ease-out: cubic-bezier(0.215, 0.61, 0.355, 1);      /* ≈ Power3.easeOut */
+  --bless-duration-slow: 0.3s; /* default hover */
+  --bless-duration-slower: 1s; /* bg / splash fades */
+  --bless-ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1); /* ≈ Power3.easeInOut */
+  --bless-ease-out: cubic-bezier(0.215, 0.61, 0.355, 1); /* ≈ Power3.easeOut */
   --bless-ease-linear: linear;
   --bless-hover-opacity: 0.6;
   --bless-press-scale: 0.8;
