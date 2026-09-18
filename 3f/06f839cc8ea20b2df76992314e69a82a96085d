@@ -1,0 +1,21 @@
+DESIGN.md
+  s_71efa235425cb6::t_f04082f8302d8d 50
+README.md
+  s_71efa235425cb6::t_b46eb103e38617 3-30,37-109,113-143,145,147,149
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "3f06f839cc8ea20b2df76992314e69a82a96085d",
+  "prompts": {},
+  "sessions": {
+    "s_71efa235425cb6": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e2efbbcd-f490-4508-bdc9-ca03144faebe",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Hafidz Bahtiar <hafidz.bahtiar@hypefast.id>"
+    }
+  }
+}
