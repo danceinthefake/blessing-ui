@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { BlessButton, BlessSkew } from "blessing-ui";
+import { BlessBadge, BlessButton, BlessDash, BlessSkew } from "blessing-ui";
 </script>
 
 <template>
@@ -37,6 +37,28 @@ import { BlessButton, BlessSkew } from "blessing-ui";
         <BlessButton disabled>disabled</BlessButton>
         <BlessButton loading>loading</BlessButton>
         <BlessButton color="accent"><template #prefix>▶</template>play</BlessButton>
+      </div>
+    </section>
+
+    <section>
+      <h2>BlessBadge + BlessDash</h2>
+      <div class="row">
+        <span>News <b>04.04</b><BlessDash /><BlessBadge /></span>
+        <span>Story<BlessDash color="muted" /><BlessBadge color="accent">EP.12</BlessBadge></span>
+        <span
+          >Shop<BlessDash color="accent" /><BlessBadge color="warning" :scaled="false"
+            >SALE</BlessBadge
+          ></span
+        >
+      </div>
+      <div class="row">
+        <BlessBadge
+          v-for="c in ['badge', 'accent', 'danger', 'warning', 'success', 'info', 'text'] as const"
+          :key="c"
+          :color="c"
+          :scaled="false"
+          >{{ c }}</BlessBadge
+        >
       </div>
     </section>
   </main>

@@ -36,8 +36,8 @@ Order = build order. Each row: saenai.tv origin → generic component.
 
 - [x] `BlessSkew` — skewed container (`skewX`), counter-skews slot text. Base for label/button/tab. Props: `as`, `color` (`text|accent|danger|surface`).
 - [x] `BlessButton` — `BlessSkew` + `<button>`/`<a>`. Props: `variant` (`solid|outline|ghost`), `color`, `size` (`sm|md|lg`), `href`, `disabled`, `loading`. Hover opacity, focus ring.
-- [ ] `BlessBadge` — `NEW!` pill. Props: `color`, `text`. `scale(.8)`, radius-sm.
-- [ ] `BlessDash` — 10×1px separator pseudo (date ― badge). Inline.
+- [x] `BlessBadge` — `NEW!` pill. Props: `color`, `text`. `scale(.8)`, radius-sm.
+- [x] `BlessDash` — 10×1px separator pseudo (date ― badge). Inline.
 - [ ] `BlessIcon` — slot-based SVG wrapper, `size`, `currentColor`.
 - [ ] `BlessText` — typographic helper. Props: `size` (token key), `weight`, `muted`, `tracking`.
 
