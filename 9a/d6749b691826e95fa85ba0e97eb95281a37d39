@@ -1,0 +1,45 @@
+DESIGN.md
+  s_9ec1000e308ddb::t_3cda342e25efa2 134-152
+src/components/BlessEmpty.vue
+  s_9ec1000e308ddb::t_a1a6cd1e396dad 1-16,20-78
+  s_9ec1000e308ddb::t_3cda342e25efa2 17-19
+src/components/BlessSpinner.vue
+  s_9ec1000e308ddb::t_a1a6cd1e396dad 1-61
+src/index.ts
+  s_9ec1000e308ddb::t_6640b0ab15bbe6 47-51
+src/components/BlessButtonGroup.vue
+  s_9ec1000e308ddb::t_a1a6cd1e396dad 1-50
+src/components/BlessButton.vue
+  s_9ec1000e308ddb::t_6640b0ab15bbe6 4,45-46
+src/components/BlessItem.vue
+  s_9ec1000e308ddb::t_a1a6cd1e396dad 1-21,23-25,29-103
+  s_9ec1000e308ddb::t_3cda342e25efa2 22,26-28
+playground/App.vue
+  s_9ec1000e308ddb::t_65261fe6adcb6e 84-87,449-505
+src/components/BlessGroups.test.ts
+  s_9ec1000e308ddb::t_6640b0ab15bbe6 1-62
+src/components/BlessInputGroup.vue
+  s_9ec1000e308ddb::t_a1a6cd1e396dad 1-79
+README.md
+  s_9ec1000e308ddb::t_65261fe6adcb6e 5,8,76,91-94
+  s_9ec1000e308ddb::t_3cda342e25efa2 107
+playground/Forms.vue
+  s_9ec1000e308ddb::t_65261fe6adcb6e 13,103-118
+  s_9ec1000e308ddb::t_806a9b264f371f 119-121
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "9ad6749b691826e95fa85ba0e97eb95281a37d39",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "claude-opus-5"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
