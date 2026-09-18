@@ -1,0 +1,35 @@
+src/index.ts
+  s_71efa235425cb6::t_da9467dfb3d178 74-76
+playground/App.vue
+  s_71efa235425cb6::t_da9467dfb3d178 96,111
+DESIGN.md
+  s_71efa235425cb6::t_da9467dfb3d178 118-119
+playground/composite.ts
+  s_71efa235425cb6::t_da9467dfb3d178 1-6
+src/components/BlessCommand.test.ts
+  s_71efa235425cb6::t_da9467dfb3d178 1-88
+playground/composite.html
+  s_71efa235425cb6::t_da9467dfb3d178 1-16
+src/components/BlessCombobox.vue
+  s_71efa235425cb6::t_da9467dfb3d178 1-393
+playground/Composite.vue
+  s_71efa235425cb6::t_da9467dfb3d178 1-122
+src/components/BlessCommand.vue
+  s_71efa235425cb6::t_da9467dfb3d178 1-273
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "490afea408ef4f0ecc38fbc1abffdc6699462e15",
+  "prompts": {},
+  "sessions": {
+    "s_71efa235425cb6": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e2efbbcd-f490-4508-bdc9-ca03144faebe",
+        "model": "unknown"
+      },
+      "human_author": "Hafidz Bahtiar <hafidz.bahtiar@hypefast.id>"
+    }
+  }
+}
