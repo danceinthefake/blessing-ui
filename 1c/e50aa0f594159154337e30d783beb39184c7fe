@@ -1,0 +1,34 @@
+DESIGN.md
+  s_71efa235425cb6::t_8b113d46175727 64-65
+src/components/BlessAudioPlayer.test.ts
+  s_71efa235425cb6::t_8b113d46175727 1-39
+src/index.ts
+  s_71efa235425cb6::t_8b113d46175727 27-29
+src/components/BlessAudioPlayer.vue
+  s_71efa235425cb6::t_8b113d46175727 1-299
+src/components/BlessSplash.vue
+  s_71efa235425cb6::t_8b113d46175727 1-107
+playground/App.vue
+  s_71efa235425cb6::t_fde5e162fe4706 346
+  s_71efa235425cb6::t_8b113d46175727 10-38,70,83,92-101,336-345,347-348
+  s_71efa235425cb6::t_ebc75bcff4ec4d 6-9
+src/components/BlessSplash.test.ts
+  s_71efa235425cb6::t_ebc75bcff4ec4d 2,17,24,31,44
+  s_71efa235425cb6::t_8b113d46175727 1,3-16,18-23,25-30,32-43,45-47
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "1ce50aa0f594159154337e30d783beb39184c7fe",
+  "prompts": {},
+  "sessions": {
+    "s_71efa235425cb6": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e2efbbcd-f490-4508-bdc9-ca03144faebe",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Hafidz Bahtiar <hafidz.bahtiar@hypefast.id>"
+    }
+  }
+}
