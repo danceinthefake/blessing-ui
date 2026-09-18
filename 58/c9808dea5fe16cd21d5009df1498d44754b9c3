@@ -1,0 +1,53 @@
+playground/Chat.vue
+  s_9ec1000e308ddb::t_47d0ea6bb0259b 1-82,91-124,129-137,141-154,163-165,169-176,180,184-191,204-217
+  s_9ec1000e308ddb::t_1dd2965b67ec7e 83-90,125-128,138-140,155-162,166-168,177-179,181-183,192-203
+src/index.ts
+  s_9ec1000e308ddb::t_04b60430fc3260 97-104
+src/components/BlessQuestionnaire.vue
+  s_9ec1000e308ddb::t_1dd2965b67ec7e 107-108,122-123
+  s_9ec1000e308ddb::t_04b60430fc3260 1-106,109-121,124-217
+src/components/BlessConversation.test.ts
+  s_9ec1000e308ddb::t_3e3b7d6576a8c6 1-49,54-65,67-88,98-116
+  s_9ec1000e308ddb::t_1dd2965b67ec7e 50-53,89-97
+  s_9ec1000e308ddb::t_0a10b59aebef39 66
+src/components/BlessMessage.vue
+  s_9ec1000e308ddb::t_2d43313ed95cbf 1-109
+src/components/BlessAttachment.vue
+  s_9ec1000e308ddb::t_2d43313ed95cbf 1-185
+playground/chat.html
+  s_9ec1000e308ddb::t_47d0ea6bb0259b 1-16
+README.md
+  s_9ec1000e308ddb::t_1dd2965b67ec7e 5,8,76,160-170,184,226
+playground/App.vue
+  s_9ec1000e308ddb::t_1dd2965b67ec7e 122-123
+src/components/questionnaire.ts
+  s_9ec1000e308ddb::t_04b60430fc3260 1-18
+DESIGN.md
+  s_9ec1000e308ddb::t_1dd2965b67ec7e 142-149
+src/components/BlessMessageScroller.vue
+  s_9ec1000e308ddb::t_1dd2965b67ec7e 47-49
+  s_9ec1000e308ddb::t_04b60430fc3260 1-46,50-130
+src/components/BlessMarker.vue
+  s_9ec1000e308ddb::t_2d43313ed95cbf 1-26,30-92,99-115
+  s_9ec1000e308ddb::t_1dd2965b67ec7e 27-29,93-98
+src/components/BlessBubble.vue
+  s_9ec1000e308ddb::t_2d43313ed95cbf 1-163
+playground/chat.ts
+  s_9ec1000e308ddb::t_47d0ea6bb0259b 1-6
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "58c9808dea5fe16cd21d5009df1498d44754b9c3",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "claude-opus-5"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
