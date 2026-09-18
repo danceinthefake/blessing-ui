@@ -1,0 +1,41 @@
+src/components/BlessSheet.vue
+  s_71efa235425cb6::t_2a0e7a8aa54c73 1-254
+src/components/BlessAlertDialog.vue
+  s_71efa235425cb6::t_2a0e7a8aa54c73 1-31,36,41-50,52-55,60-77
+  s_71efa235425cb6::t_044c31c1790747 32-35,37-40,51,56-59
+DESIGN.md
+  s_71efa235425cb6::t_2a0e7a8aa54c73 111-114
+src/components/BlessToaster.vue
+  s_71efa235425cb6::t_2a0e7a8aa54c73 1-228
+src/composables/useToast.ts
+  s_71efa235425cb6::t_2a0e7a8aa54c73 1-44
+src/components/BlessDrawer.vue
+  s_71efa235425cb6::t_2a0e7a8aa54c73 1-26
+src/components/BlessOverlay.test.ts
+  s_71efa235425cb6::t_044c31c1790747 36-41,57,59
+  s_71efa235425cb6::t_2a0e7a8aa54c73 1-35,42-56,58,60-85
+playground/Floating.vue
+  s_71efa235425cb6::t_044c31c1790747 39-41,283
+  s_71efa235425cb6::t_2a0e7a8aa54c73 4,8,13,15,17,33-38,42-56,227-282,284-288
+  s_71efa235425cb6::t_df24345f5031ab 289
+src/index.ts
+  s_71efa235425cb6::t_2a0e7a8aa54c73 68-73
+playground/pg.css
+  s_71efa235425cb6::t_a60be8ea4a0efb 9,13
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "5cda162459afa8f2a3f75c48fc6478339ccfe745",
+  "prompts": {},
+  "sessions": {
+    "s_71efa235425cb6": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e2efbbcd-f490-4508-bdc9-ca03144faebe",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Hafidz Bahtiar <hafidz.bahtiar@hypefast.id>"
+    }
+  }
+}
