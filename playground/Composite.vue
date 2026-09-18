@@ -2,8 +2,11 @@
 import { ref } from "vue";
 import {
   BlessButton,
+  BlessCalendar,
   BlessCombobox,
   BlessCommand,
+  BlessDatePicker,
+  BlessInputOTP,
   BlessKbd,
   BlessLabel,
   BlessText,
@@ -46,6 +49,19 @@ const heroines = ref<BlessOption<string>[]>([
   { value: "tomoya", label: "安芸倫也", disabled: true },
 ]);
 const one = ref<string>();
+const day = ref<string | undefined>("2019-09-25");
+const stay = ref<[string, string] | undefined>();
+const picked = ref<string>();
+const otp = ref("");
+const otpState = ref<"idle" | "ok" | "bad">("idle");
+function checkOtp(code: string) {
+  otpState.value = code === "123456" ? "ok" : "bad";
+  toast(
+    otpState.value === "ok"
+      ? { title: "Verified", color: "success" }
+      : { title: "Wrong code", color: "danger" },
+  );
+}
 const many = ref<string[]>(["megumi", "eriri"]);
 function create(label: string) {
   const value = label.toLowerCase().replace(/\s+/g, "-");
@@ -116,6 +132,79 @@ function create(label: string) {
           <BlessCombobox :options="heroines" model-value="megumi" disabled />
           <BlessCombobox :options="heroines" invalid placeholder="invalid" size="sm" />
         </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>BlessCalendar</h2>
+      <div class="row">
+        <div class="col" style="max-width: none; width: auto">
+          <BlessText as="p" size="xs" muted>single · min 2019-09-10 · ja-JP</BlessText
+          ><BlessCalendar v-model="day" min="2019-09-10" /><small>{{ day }}</small>
+        </div>
+        <div class="col" style="max-width: none; width: auto">
+          <BlessText as="p" size="xs" muted>range · en-US · Sunday start</BlessText
+          ><BlessCalendar
+            v-model="stay"
+            range
+            locale="en-US"
+            :week-start="0"
+            month="2019-09"
+          /><small>{{ stay }}</small>
+        </div>
+        <div class="col" style="max-width: none; width: auto">
+          <BlessText as="p" size="xs" muted>weekends disabled</BlessText
+          ><BlessCalendar
+            :disabled-dates="(iso) => [0, 6].includes(new Date(iso).getDay())"
+            locale="en-US"
+            month="2019-09"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>BlessDatePicker</h2>
+      <div class="row">
+        <div class="col">
+          <BlessLabel for="dp">Release date</BlessLabel
+          ><BlessDatePicker id="dp" v-model="picked" locale="en-US" /><small>{{ picked }}</small>
+        </div>
+        <div class="col">
+          <BlessLabel for="dr">Stay</BlessLabel
+          ><BlessDatePicker
+            id="dr"
+            v-model="stay"
+            range
+            placeholder="Check-in – check-out"
+            locale="en-US"
+          />
+        </div>
+        <div class="col">
+          <BlessLabel>States</BlessLabel
+          ><BlessDatePicker model-value="2019-09-25" invalid size="sm" /><BlessDatePicker
+            disabled
+          />
+        </div>
+      </div>
+      <BlessText as="p" size="xs" muted
+        >on touch devices (pointer: coarse) single mode renders native &lt;input
+        type=date&gt;</BlessText
+      >
+    </section>
+
+    <section>
+      <h2>BlessInputOTP</h2>
+      <div class="col" style="max-width: none">
+        <BlessInputOTP
+          v-model="otp"
+          :separators="[3]"
+          :invalid="otpState === 'bad'"
+          @complete="checkOtp"
+        />
+        <small>code: {{ otp || "—" }} · try 123456 · paste works</small>
+        <BlessInputOTP :length="4" :numeric="false" masked label="PIN" />
+        <BlessInputOTP :length="4" model-value="42" disabled />
       </div>
     </section>
   </main>

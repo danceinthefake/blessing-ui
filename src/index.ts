@@ -74,3 +74,7 @@ export type { BlessToastOptions, BlessToastItem } from "./composables/useToast";
 export { default as BlessCommand } from "./components/BlessCommand.vue";
 export type { BlessCommandItem } from "./components/BlessCommand.vue";
 export { default as BlessCombobox } from "./components/BlessCombobox.vue";
+export { default as BlessCalendar } from "./components/BlessCalendar.vue";
+export { default as BlessDatePicker } from "./components/BlessDatePicker.vue";
+export { default as BlessInputOTP } from "./components/BlessInputOTP.vue";
+export { toISO, fromISO, addDays, addMonths, isoToday } from "./composables/date";
