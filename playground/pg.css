@@ -11,9 +11,10 @@ body {
   font-size: var(--bless-text-xl);
 }
 .pg > section > h2 {
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
   font-size: var(--bless-text-sm);
-  letter-spacing: var(--bless-tracking-wider);
-  text-transform: uppercase;
+  font-weight: var(--bless-font-weight-bold);
+  letter-spacing: 0;
   color: var(--bless-color-text-muted);
   border-bottom: var(--bless-border-width) solid var(--bless-color-border);
   margin: var(--bless-space-12) 0 var(--bless-space-4);
