@@ -117,7 +117,7 @@ import {
     </p>
 
     <section>
-      <h2>BlessSkew</h2>
+      <h2>Skew</h2>
       <BlessSkew color="text" class="pad">Label</BlessSkew>
       <BlessSkew color="accent" class="pad">Accent</BlessSkew>
       <BlessSkew color="danger" class="pad">Danger</BlessSkew>
@@ -126,7 +126,7 @@ import {
     </section>
 
     <section>
-      <h2>BlessButton</h2>
+      <h2>Button</h2>
       <div class="row" v-for="variant in ['solid', 'outline', 'ghost'] as const" :key="variant">
         <BlessButton
           v-for="color in ['text', 'accent', 'danger'] as const"
@@ -151,7 +151,7 @@ import {
     </section>
 
     <section>
-      <h2>BlessBadge + BlessDash</h2>
+      <h2>Badge + Dash</h2>
       <div class="row">
         <span>News <b>04.04</b><BlessDash /><BlessBadge /></span>
         <span>Story<BlessDash color="muted" /><BlessBadge color="accent">EP.12</BlessBadge></span>
@@ -173,7 +173,7 @@ import {
     </section>
 
     <section>
-      <h2>BlessIcon</h2>
+      <h2>Icon</h2>
       <div class="row">
         <BlessIcon v-for="s in ['xs', 'sm', 'md', 'lg', 'xl'] as const" :key="s" :size="s"
           ><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg
@@ -192,7 +192,7 @@ import {
     </section>
 
     <section>
-      <h2>BlessText</h2>
+      <h2>Text</h2>
       <BlessText as="p" size="xl" weight="thin">xl thin — 冴えない彼女の育てかた</BlessText>
       <BlessText as="p" size="lg">lg — TVアニメ公式サイト</BlessText>
       <BlessText as="p">md — body 本文テキスト</BlessText>
@@ -204,7 +204,7 @@ import {
     </section>
 
     <section>
-      <h2>BlessWatermark + BlessSection</h2>
+      <h2>Watermark + Section</h2>
       <BlessSection title="News" class="boxed">
         <BlessText as="p"
           >2019.04.04<BlessDash /><BlessBadge /> Blu-ray Disc BOX 発売決定</BlessText
@@ -229,7 +229,7 @@ import {
     </section>
 
     <section>
-      <h2>BlessBackground</h2>
+      <h2>Background</h2>
       <div class="row">
         <div class="boxed" style="position: relative; width: 260px; height: 120px">
           <BlessBackground /><BlessText as="p" style="position: relative"
@@ -247,7 +247,7 @@ import {
     </section>
 
     <section>
-      <h2>BlessCard</h2>
+      <h2>Card</h2>
       <div class="row" style="align-items: flex-start; padding-top: var(--bless-space-3)">
         <BlessCard label="Blu-ray" style="width: 260px">
           <template #media
@@ -267,7 +267,7 @@ import {
     </section>
 
     <section>
-      <h2>BlessList</h2>
+      <h2>List</h2>
       <BlessList style="max-width: 640px">
         <BlessListItem meta="2019.04.04" badge href="#"
           >Blu-ray Disc BOX 発売決定！TVシリーズ第一期・第二期全25話収録</BlessListItem
@@ -285,7 +285,7 @@ import {
     </section>
 
     <section>
-      <h2>BlessTabs</h2>
+      <h2>Tabs</h2>
       <BlessTabs v-model="tab" :tabs="heroines" label="Heroines" style="max-width: 640px">
         <template #default="{ tab: t }">
           <BlessText as="p" weight="bold">{{ t.label }}</BlessText>
@@ -305,7 +305,7 @@ import {
     </section>
 
     <section>
-      <h2>BlessModal</h2>
+      <h2>Modal</h2>
       <div class="row">
         <BlessButton color="accent" @click="modal = true">open modal</BlessButton>
         <BlessButton href="#chara-megumi">hash-routed (#chara-megumi)</BlessButton>
@@ -328,12 +328,12 @@ import {
     </section>
 
     <section>
-      <h2>BlessGallery</h2>
+      <h2>Gallery</h2>
       <BlessGallery :items="shots" columns="120px" style="max-width: 640px" />
     </section>
 
     <section>
-      <h2>BlessTable</h2>
+      <h2>Table</h2>
       <BlessTable
         v-bind="onair"
         row-key="station"
@@ -348,12 +348,12 @@ import {
     </section>
 
     <section>
-      <h2>BlessAudioPlayer</h2>
+      <h2>AudioPlayer</h2>
       <BlessAudioPlayer :tracks style="max-width: 480px" />
     </section>
 
     <section>
-      <h2>BlessSplash</h2>
+      <h2>Splash</h2>
       <BlessText as="p" size="sm" muted
         >shown once on first load (key <code>bless-pg-splash</code>).
         <a href="#" @click.prevent="resetSplash">reset &amp; reload</a></BlessText
@@ -361,7 +361,7 @@ import {
     </section>
 
     <section>
-      <h2>BlessProgress</h2>
+      <h2>Progress</h2>
       <div class="col" style="max-width: 480px">
         <BlessProgress :value="prog" label="Upload" show-value />
         <BlessProgress :value="80" color="success" size="sm" />
@@ -375,7 +375,7 @@ import {
     </section>
 
     <section>
-      <h2>BlessSkeleton</h2>
+      <h2>Skeleton</h2>
       <div class="row" style="align-items: center">
         <BlessSkeleton circle width="56px" height="56px" />
         <div style="flex: 1; max-width: 320px"><BlessSkeleton :lines="3" height="12px" /></div>
@@ -384,7 +384,7 @@ import {
     </section>
 
     <section>
-      <h2>BlessAvatar</h2>
+      <h2>Avatar</h2>
       <div class="row" style="align-items: center">
         <BlessAvatar
           v-for="s in ['xs', 'sm', 'md', 'lg', 'xl'] as const"
@@ -400,7 +400,7 @@ import {
     </section>
 
     <section>
-      <h2>BlessAspectRatio</h2>
+      <h2>AspectRatio</h2>
       <div class="row">
         <BlessAspectRatio :ratio="16 / 9" style="width: 240px"
           ><img :src="shots[1].src" alt=""
@@ -415,7 +415,7 @@ import {
     </section>
 
     <section>
-      <h2>BlessAlert</h2>
+      <h2>Alert</h2>
       <div class="col" style="max-width: 560px">
         <BlessAlert v-model="alertOpen" title="Blu-ray BOX" color="accent" dismissible
           >2019.09.25 発売。<template #icon>★</template></BlessAlert
@@ -431,7 +431,7 @@ import {
     </section>
 
     <section>
-      <h2>BlessKbd</h2>
+      <h2>Kbd</h2>
       <div class="row" style="align-items: center">
         <BlessKbd :keys="['⌘', 'K']" /> <BlessKbd :keys="['Ctrl', 'Shift', 'P']" />
         <BlessKbd>Esc</BlessKbd>

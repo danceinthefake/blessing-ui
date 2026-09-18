@@ -125,7 +125,7 @@ function create(label: string) {
     </p>
 
     <section>
-      <h2>BlessCommand</h2>
+      <h2>Command</h2>
       <div class="row" style="align-items: center">
         <BlessButton color="accent" @click="cmdOpen = true">Command palette</BlessButton>
         <span>or press <BlessKbd :keys="['⌘', 'K']" /></span>
@@ -152,7 +152,7 @@ function create(label: string) {
     </section>
 
     <section>
-      <h2>BlessCombobox</h2>
+      <h2>Combobox</h2>
       <div class="row">
         <div class="col">
           <BlessLabel for="one">Single</BlessLabel>
@@ -181,7 +181,7 @@ function create(label: string) {
     </section>
 
     <section>
-      <h2>BlessCalendar</h2>
+      <h2>Calendar</h2>
       <div class="row">
         <div class="col" style="max-width: none; width: auto">
           <BlessText as="p" size="xs" muted>single · min 2019-09-10 · ja-JP</BlessText
@@ -209,7 +209,7 @@ function create(label: string) {
     </section>
 
     <section>
-      <h2>BlessDatePicker</h2>
+      <h2>DatePicker</h2>
       <div class="row">
         <div class="col">
           <BlessLabel for="dp">Release date</BlessLabel
@@ -239,7 +239,7 @@ function create(label: string) {
     </section>
 
     <section>
-      <h2>BlessInputOTP</h2>
+      <h2>InputOTP</h2>
       <div class="col" style="max-width: none">
         <BlessInputOTP
           v-model="otp"
@@ -254,7 +254,7 @@ function create(label: string) {
     </section>
 
     <section>
-      <h2>BlessNavigationMenu</h2>
+      <h2>NavigationMenu</h2>
       <BlessNavigationMenu
         :items="navItems"
         @select="
@@ -267,7 +267,7 @@ function create(label: string) {
     </section>
 
     <section>
-      <h2>BlessDataTable</h2>
+      <h2>DataTable</h2>
       <BlessDataTable
         :rows="eps"
         :columns="epCols"
@@ -299,7 +299,7 @@ function create(label: string) {
     </section>
 
     <section>
-      <h2>BlessCarousel</h2>
+      <h2>Carousel</h2>
       <div class="row">
         <div style="width: 480px">
           <BlessCarousel v-model="slide" :autoplay="3000" loop label="Key visuals"
@@ -340,7 +340,7 @@ function create(label: string) {
     </section>
 
     <section>
-      <h2>BlessResizable</h2>
+      <h2>Resizable</h2>
       <div style="height: 200px; max-width: 720px; border: 1px solid var(--bless-color-border)">
         <BlessResizable v-model="split" :min="20" :max="80">
           <template #a

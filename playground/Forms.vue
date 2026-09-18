@@ -49,7 +49,7 @@ function onSubmit(d: FormData) {
     <p><a href="/">← components</a> · <a href="/stage.html">stage</a></p>
 
     <section>
-      <h2>BlessSeparator</h2>
+      <h2>Separator</h2>
       <BlessSeparator />
       <div class="row" style="height: 40px; align-items: stretch; margin-top: var(--bless-space-4)">
         <span>left</span><BlessSeparator orientation="vertical" color="rule" /><span>right</span>
@@ -58,7 +58,7 @@ function onSubmit(d: FormData) {
     </section>
 
     <section>
-      <h2>BlessLabel + BlessInput</h2>
+      <h2>Label + Input</h2>
       <div class="row">
         <div class="col">
           <BlessLabel for="name" required>Name</BlessLabel>
@@ -96,7 +96,7 @@ function onSubmit(d: FormData) {
     </section>
 
     <section>
-      <h2>BlessTextarea</h2>
+      <h2>Textarea</h2>
       <div class="row">
         <div class="col">
           <BlessLabel for="bio">Bio</BlessLabel>
@@ -116,7 +116,7 @@ function onSubmit(d: FormData) {
     </section>
 
     <section>
-      <h2>BlessCheckbox</h2>
+      <h2>Checkbox</h2>
       <div class="col">
         <BlessCheckbox v-model="agree" description="required to continue"
           >I agree to the terms</BlessCheckbox
@@ -138,7 +138,7 @@ function onSubmit(d: FormData) {
     </section>
 
     <section>
-      <h2>BlessRadioGroup</h2>
+      <h2>RadioGroup</h2>
       <div class="row">
         <BlessRadioGroup v-model="heroine" label="Main heroine">
           <BlessRadio value="megumi" description="the flat one">加藤恵</BlessRadio>
@@ -156,7 +156,7 @@ function onSubmit(d: FormData) {
     </section>
 
     <section>
-      <h2>BlessSwitch</h2>
+      <h2>Switch</h2>
       <div class="row">
         <BlessSwitch v-model="dark">Dark mode</BlessSwitch>
         <BlessSwitch size="sm" :model-value="false">Small</BlessSwitch>
@@ -166,7 +166,7 @@ function onSubmit(d: FormData) {
     </section>
 
     <section>
-      <h2>BlessSelect (native)</h2>
+      <h2>Select (native)</h2>
       <div class="row">
         <div class="col">
           <BlessLabel for="season">Season</BlessLabel>
@@ -198,7 +198,7 @@ function onSubmit(d: FormData) {
     </section>
 
     <section>
-      <h2>BlessSlider</h2>
+      <h2>Slider</h2>
       <div class="row">
         <div class="col">
           <BlessSlider v-model="vol" label="Volume" show-value :format="(v) => `${v}%`" />
@@ -211,7 +211,7 @@ function onSubmit(d: FormData) {
     </section>
 
     <section>
-      <h2>BlessCollapsible + BlessAccordion</h2>
+      <h2>Collapsible + Accordion</h2>
       <div class="row">
         <div class="col">
           <BlessCollapsible v-model:open="faq" title="Standalone collapsible"
@@ -238,7 +238,7 @@ function onSubmit(d: FormData) {
     </section>
 
     <section>
-      <h2>BlessToggle + BlessToggleGroup</h2>
+      <h2>Toggle + ToggleGroup</h2>
       <div class="row" style="align-items: center">
         <BlessToggle>Bold</BlessToggle>
         <BlessToggle color="accent" :pressed="true">Pinned</BlessToggle>
@@ -257,7 +257,7 @@ function onSubmit(d: FormData) {
     </section>
 
     <section>
-      <h2>BlessBreadcrumb</h2>
+      <h2>Breadcrumb</h2>
       <BlessBreadcrumb
         :items="[
           { label: 'Home', href: '#' },
@@ -273,7 +273,7 @@ function onSubmit(d: FormData) {
     </section>
 
     <section>
-      <h2>BlessPagination</h2>
+      <h2>Pagination</h2>
       <div class="col" style="max-width: none">
         <BlessPagination v-model="page" :total="20" />
         <BlessPagination :model-value="1" :total="5" />
@@ -288,7 +288,7 @@ function onSubmit(d: FormData) {
     </section>
 
     <section>
-      <h2>BlessScrollArea</h2>
+      <h2>ScrollArea</h2>
       <div class="row">
         <BlessScrollArea
           height="140px"
@@ -314,7 +314,7 @@ function onSubmit(d: FormData) {
     </section>
 
     <section>
-      <h2>BlessForm + BlessField (Constraint API)</h2>
+      <h2>Form + Field (Constraint API)</h2>
       <BlessForm style="max-width: 420px" @submit="onSubmit">
         <BlessField
           label="Handle"

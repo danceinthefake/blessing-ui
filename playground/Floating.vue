@@ -105,7 +105,7 @@ const viewMenu: BlessMenuItem[] = [
     </p>
 
     <section>
-      <h2>BlessPopover</h2>
+      <h2>Popover</h2>
       <div class="row">
         <BlessPopover v-for="p in placements" :key="p" :placement="p" title="Popover">
           <template #trigger
@@ -130,7 +130,7 @@ const viewMenu: BlessMenuItem[] = [
     </section>
 
     <section>
-      <h2>BlessTooltip</h2>
+      <h2>Tooltip</h2>
       <div class="row" style="align-items: center">
         <BlessTooltip text="Save (⌘S)"><BlessButton>hover me</BlessButton></BlessTooltip>
         <BlessTooltip text="Below" placement="bottom"
@@ -145,7 +145,7 @@ const viewMenu: BlessMenuItem[] = [
     </section>
 
     <section>
-      <h2>BlessHoverCard</h2>
+      <h2>HoverCard</h2>
       <p>
         Follow
         <BlessHoverCard>
@@ -167,7 +167,7 @@ const viewMenu: BlessMenuItem[] = [
     </section>
 
     <section>
-      <h2>BlessDropdownMenu</h2>
+      <h2>DropdownMenu</h2>
       <div class="row" style="align-items: center">
         <BlessDropdownMenu
           :items="menu"
@@ -185,7 +185,7 @@ const viewMenu: BlessMenuItem[] = [
     </section>
 
     <section>
-      <h2>BlessContextMenu</h2>
+      <h2>ContextMenu</h2>
       <BlessContextMenu
         :items="menu"
         :checked
@@ -207,7 +207,7 @@ const viewMenu: BlessMenuItem[] = [
     </section>
 
     <section>
-      <h2>BlessMenubar</h2>
+      <h2>Menubar</h2>
       <BlessMenubar label="App">
         <BlessDropdownMenu :items="fileMenu"
           ><template #trigger><button>File</button></template></BlessDropdownMenu
@@ -225,7 +225,7 @@ const viewMenu: BlessMenuItem[] = [
     </section>
 
     <section>
-      <h2>BlessSheet + BlessDrawer</h2>
+      <h2>Sheet + Drawer</h2>
       <div class="row">
         <BlessButton
           v-for="s in ['right', 'left', 'top', 'bottom'] as const"
@@ -253,7 +253,7 @@ const viewMenu: BlessMenuItem[] = [
     </section>
 
     <section>
-      <h2>BlessAlertDialog</h2>
+      <h2>AlertDialog</h2>
       <BlessButton color="danger" @click="confirm = true">Delete project</BlessButton>
       <BlessAlertDialog
         v-model="confirm"
@@ -266,7 +266,7 @@ const viewMenu: BlessMenuItem[] = [
     </section>
 
     <section>
-      <h2>BlessToaster + useToast</h2>
+      <h2>Toaster + useToast</h2>
       <div class="row">
         <BlessButton size="sm" @click="toast('Plain toast')">toast</BlessButton>
         <BlessButton size="sm" @click="success({ title: 'Saved', description: '2 fields updated' })"
