@@ -61,8 +61,8 @@ Order = build order. Each row: saenai.tv origin → generic component.
 
 ### Phase 4 — media (optional, defer)
 
-- [ ] `BlessAudioPlayer` — sample player (Aniplex sound player analogue). Native `<audio>` + skewed controls.
-- [ ] `BlessSplash` — first-visit intro overlay, `localStorage` flag, reduced-motion skips.
+- [x] `BlessAudioPlayer` — sample player (Aniplex sound player analogue). Native `<audio>` + skewed controls.
+- [x] `BlessSplash` — first-visit intro overlay, `localStorage` flag, reduced-motion skips.
 
 ## 4. API conventions
 

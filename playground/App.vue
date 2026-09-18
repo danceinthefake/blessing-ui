@@ -3,6 +3,39 @@ import { ref } from "vue";
 import type { BlessColumn } from "blessing-ui";
 const tab = ref("megumi");
 const modal = ref(false);
+function resetSplash() {
+  localStorage.removeItem("bless-pg-splash");
+  location.reload();
+}
+const beep = (hz: number) => {
+  // tiny generated WAV so the demo has no external audio
+  const rate = 8000,
+    len = rate * 2,
+    buf = new ArrayBuffer(44 + len),
+    v = new DataView(buf);
+  const str = (o: number, s: string) =>
+    [...s].forEach((c, i) => v.setUint8(o + i, c.charCodeAt(0)));
+  str(0, "RIFF");
+  v.setUint32(4, 36 + len, true);
+  str(8, "WAVEfmt ");
+  v.setUint32(16, 16, true);
+  v.setUint16(20, 1, true);
+  v.setUint16(22, 1, true);
+  v.setUint32(24, rate, true);
+  v.setUint32(28, rate, true);
+  v.setUint16(32, 1, true);
+  v.setUint16(34, 8, true);
+  str(36, "data");
+  v.setUint32(40, len, true);
+  for (let i = 0; i < len; i++)
+    v.setUint8(44 + i, 128 + Math.round(60 * Math.sin((2 * Math.PI * hz * i) / rate)));
+  return URL.createObjectURL(new Blob([buf], { type: "audio/wav" }));
+};
+const tracks = [
+  { src: beep(440), title: "Sample 01 (440Hz)", artist: "Blessing" },
+  { src: beep(660), title: "Sample 02 (660Hz)", artist: "Blessing" },
+  { src: beep(880), title: "Sample 03 (880Hz)" },
+];
 type Onair = { station: string; day: string; time: string; note: string };
 const onair = {
   columns: [
@@ -34,6 +67,7 @@ const heroines = [
   { value: "izumi", label: "出海" },
 ];
 import {
+  BlessAudioPlayer,
   BlessBackground,
   BlessBadge,
   BlessButton,
@@ -46,6 +80,7 @@ import {
   BlessModal,
   BlessSection,
   BlessSkew,
+  BlessSplash,
   BlessTable,
   BlessTabs,
   BlessText,
@@ -54,6 +89,16 @@ import {
 </script>
 
 <template>
+  <BlessSplash once="bless-pg-splash" :duration="1500">
+    <BlessText
+      as="p"
+      size="display"
+      weight="thin"
+      leading="none"
+      style="transform: skewX(var(--bless-skew))"
+      >Blessing</BlessText
+    >
+  </BlessSplash>
   <main class="pg">
     <h1>Blessing UI</h1>
     <p><a href="/stage.html">BlessStage + BlessSidebarNav demo →</a></p>
@@ -287,6 +332,19 @@ import {
           ><BlessBadge v-if="value" color="text" :scaled="false">{{ value }}</BlessBadge></template
         >
       </BlessTable>
+    </section>
+
+    <section>
+      <h2>BlessAudioPlayer</h2>
+      <BlessAudioPlayer :tracks style="max-width: 480px" />
+    </section>
+
+    <section>
+      <h2>BlessSplash</h2>
+      <BlessText as="p" size="sm" muted
+        >shown once on first load (key <code>bless-pg-splash</code>).
+        <a href="#" @click.prevent="resetSplash">reset &amp; reload</a></BlessText
+      >
     </section>
   </main>
 </template>

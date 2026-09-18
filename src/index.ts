@@ -24,3 +24,6 @@ export { default as BlessGallery } from "./components/BlessGallery.vue";
 export type { BlessGalleryItem } from "./components/BlessGallery.vue";
 export { default as BlessTable } from "./components/BlessTable.vue";
 export type { BlessColumn } from "./components/table";
+export { default as BlessAudioPlayer } from "./components/BlessAudioPlayer.vue";
+export type { BlessTrack } from "./components/BlessAudioPlayer.vue";
+export { default as BlessSplash } from "./components/BlessSplash.vue";
