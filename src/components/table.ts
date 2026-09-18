@@ -6,3 +6,8 @@ export interface BlessColumn<T = Record<string, unknown>> {
   /** marks the row header cell (th scope=row) */
   header?: boolean;
 }
+
+export interface BlessDataColumn<T = Record<string, unknown>> extends BlessColumn<T> {
+  sortable?: boolean;
+  hideable?: boolean;
+}

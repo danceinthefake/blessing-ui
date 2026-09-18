@@ -120,10 +120,10 @@ Decision: use the native **Popover API** (`popover` attr, top layer, light-dismi
 - [x] `BlessCalendar` — month grid, `role=grid`, keyboard nav, `min`/`max`, range; `Intl.DateTimeFormat`, no date lib
 - [x] `BlessDatePicker` — `BlessInput` + `BlessPopover` + `BlessCalendar`; native `<input type=date>` fallback on touch
 - [x] `BlessInputOTP` — n single-char inputs, paste, `autocomplete=one-time-code`
-- [ ] `BlessDataTable` — `BlessTable` + sorting, selection, pagination, column visibility; headless `useDataTable()`, no TanStack
-- [ ] `BlessCarousel` — inline scroll-snap slider, prev/next, dots, autoplay; `BlessGallery` reuses it
-- [ ] `BlessResizable` — split panes, `role=separator` `aria-valuenow`, keyboard resize
-- [ ] `BlessNavigationMenu` — horizontal top nav with mega-panels (`BlessPopover`), for non-sidebar layouts
+- [x] `BlessDataTable` — `BlessTable` + sorting, selection, pagination, column visibility; headless `useDataTable()`, no TanStack
+- [x] `BlessCarousel` — inline scroll-snap slider, prev/next, dots, autoplay; `BlessGallery` reuses it
+- [x] `BlessResizable` — split panes, `role=separator` `aria-valuenow`, keyboard resize
+- [x] `BlessNavigationMenu` — horizontal top nav with mega-panels (`BlessPopover`), for non-sidebar layouts
 
 ### Deliberately skipped
 

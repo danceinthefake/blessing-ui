@@ -1,18 +1,24 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import {
+  BlessBadge,
   BlessButton,
   BlessCalendar,
+  BlessCarousel,
   BlessCombobox,
   BlessCommand,
+  BlessDataTable,
   BlessDatePicker,
   BlessInputOTP,
   BlessKbd,
   BlessLabel,
+  BlessNavigationMenu,
+  BlessResizable,
   BlessText,
   BlessToaster,
   useToast,
   type BlessCommandItem,
+  type BlessDataColumn,
   type BlessOption,
 } from "blessing-ui";
 
@@ -49,6 +55,45 @@ const heroines = ref<BlessOption<string>[]>([
   { value: "tomoya", label: "安芸倫也", disabled: true },
 ]);
 const one = ref<string>();
+type Ep = { id: number; title: string; air: string; views: number; status: "aired" | "upcoming" };
+const eps: Ep[] = Array.from({ length: 23 }, (_, i) => ({
+  id: i + 1,
+  title: `第${i + 1}話 ${["プロローグ", "運命の出会い", "フラグの立たない", "冴えない彼女", "同人誌", "夏合宿", "文化祭", "クリスマス"][i % 8]}`,
+  air: `2017-04-${String((i % 28) + 1).padStart(2, "0")}`,
+  views: Math.round(1200 + Math.sin(i) * 500 + i * 37),
+  status: i < 20 ? "aired" : "upcoming",
+}));
+const epCols: BlessDataColumn<Ep>[] = [
+  { key: "id", label: "#", sortable: true, width: "56px", hideable: false },
+  { key: "title", label: "Title", sortable: true, header: true },
+  { key: "air", label: "Aired", sortable: true },
+  { key: "views", label: "Views", sortable: true, align: "right" },
+  { key: "status", label: "Status" },
+];
+const selectedEps = ref<Ep[]>([]);
+const split = ref(40);
+const slide = ref(0);
+const navItems = [
+  { label: "Home", href: "#", active: true },
+  {
+    label: "Heroines",
+    items: [
+      { label: "加藤恵", href: "#megumi", description: "メインヒロイン" },
+      { label: "英梨々", href: "#eriri", description: "幼馴染・イラスト担当" },
+      { label: "詩羽", href: "#utaha", description: "先輩・シナリオ担当" },
+      { label: "美智留", href: "#michiru", description: "従姉・音楽担当" },
+    ],
+  },
+  {
+    label: "Media",
+    items: [
+      { label: "Blu-ray & DVD", href: "#bd" },
+      { label: "Music", href: "#music" },
+      { label: "Books", href: "#books" },
+    ],
+  },
+  { label: "News", href: "#news" },
+];
 const day = ref<string | undefined>("2019-09-25");
 const stay = ref<[string, string] | undefined>();
 const picked = ref<string>();
@@ -205,6 +250,111 @@ function create(label: string) {
         <small>code: {{ otp || "—" }} · try 123456 · paste works</small>
         <BlessInputOTP :length="4" :numeric="false" masked label="PIN" />
         <BlessInputOTP :length="4" model-value="42" disabled />
+      </div>
+    </section>
+
+    <section>
+      <h2>BlessNavigationMenu</h2>
+      <BlessNavigationMenu
+        :items="navItems"
+        @select="
+          (i, e) => {
+            e.preventDefault();
+            toast(i.label);
+          }
+        "
+      />
+    </section>
+
+    <section>
+      <h2>BlessDataTable</h2>
+      <BlessDataTable
+        :rows="eps"
+        :columns="epCols"
+        row-key="id"
+        selectable
+        searchable
+        :search-keys="['title', 'air']"
+        :page-size="5"
+        caption="Episodes"
+        @update:selected="selectedEps = $event"
+      >
+        <template #toolbar="{ selected }"
+          ><BlessButton
+            v-if="selected.length"
+            size="sm"
+            color="danger"
+            variant="outline"
+            @click="toast(`${selected.length} removed`)"
+            >Delete {{ selected.length }}</BlessButton
+          ></template
+        >
+        <template #cell-status="{ value }"
+          ><BlessBadge :color="value === 'aired' ? 'success' : 'warning'" :scaled="false">{{
+            value
+          }}</BlessBadge></template
+        >
+        <template #cell-views="{ value }">{{ Number(value).toLocaleString() }}</template>
+      </BlessDataTable>
+    </section>
+
+    <section>
+      <h2>BlessCarousel</h2>
+      <div class="row">
+        <div style="width: 480px">
+          <BlessCarousel v-model="slide" :autoplay="3000" loop label="Key visuals"
+            ><div
+              v-for="n in 5"
+              :key="n"
+              style="
+                height: 200px;
+                display: grid;
+                place-items: center;
+                font-size: 48px;
+                color: #fff;
+                background: var(--bless-color-accent);
+              "
+            >
+              {{ n }}
+            </div></BlessCarousel
+          ><small>slide {{ slide + 1 }} · autoplay 3s, loops, pauses on hover</small>
+        </div>
+        <div style="width: 480px">
+          <BlessCarousel :per-view="2.5" gap="8px" :dots="false"
+            ><div
+              v-for="n in 7"
+              :key="n"
+              style="
+                height: 200px;
+                display: grid;
+                place-items: center;
+                font-size: 32px;
+                background: var(--bless-color-surface);
+              "
+            >
+              {{ n }}
+            </div></BlessCarousel
+          ><small>perView 2.5 (peek), swipe / scroll-snap, ← →</small>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>BlessResizable</h2>
+      <div style="height: 200px; max-width: 720px; border: 1px solid var(--bless-color-border)">
+        <BlessResizable v-model="split" :min="20" :max="80">
+          <template #a
+            ><div style="padding: 16px">
+              Pane A — {{ split }}%<br /><small>drag, ← →, Home/End, dbl-click resets</small>
+            </div></template
+          >
+          <template #b>
+            <BlessResizable direction="vertical">
+              <template #a><div style="padding: 16px">Pane B1</div></template>
+              <template #b><div style="padding: 16px">Pane B2 (nested vertical)</div></template>
+            </BlessResizable>
+          </template>
+        </BlessResizable>
       </div>
     </section>
   </main>
