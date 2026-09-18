@@ -78,11 +78,11 @@ Target: cover [shadcn/ui's component list](https://ui.shadcn.com/docs/components
 - [x] `BlessLabel` — `<label>`, required mark, muted hint
 - [x] `BlessInput` — `<input>` text/email/number/…; skewed focus underline, `invalid` state, `#prefix` `#suffix`
 - [x] `BlessTextarea` — auto-grow via `field-sizing: content` + rows fallback
-- [ ] `BlessCheckbox` — native `<input type=checkbox>` + skewed box; `indeterminate`
-- [ ] `BlessRadioGroup` / `BlessRadio` — `role=radiogroup`, arrow keys are native
-- [ ] `BlessSwitch` — `<input type=checkbox role=switch>`
-- [ ] `BlessSelect` — styled native `<select>` (no custom listbox; see Phase 7 for Combobox)
-- [ ] `BlessSlider` — `<input type=range>`, accent fill via gradient
+- [x] `BlessCheckbox` — native `<input type=checkbox>` + skewed box; `indeterminate`
+- [x] `BlessRadioGroup` / `BlessRadio` — `role=radiogroup`, arrow keys are native
+- [x] `BlessSwitch` — `<input type=checkbox role=switch>`
+- [x] `BlessSelect` — styled native `<select>` (no custom listbox; see Phase 7 for Combobox)
+- [x] `BlessSlider` — `<input type=range>`, accent fill via gradient
 - [ ] `BlessProgress` — `<progress>` styled, skewed track; indeterminate
 - [ ] `BlessSkeleton` — shimmer block, `width`/`height`/`lines`
 - [ ] `BlessAvatar` — img + fallback initials, `size`, `square` (skewed frame)
