@@ -2,10 +2,10 @@
 
 Vue 3 component library and design tokens. Grey-scale UI, one pink-red accent, skewed labels instead of rounded corners, thin oversized watermark type, opacity-fade hovers. Visual language derived from [saenai.tv](https://www.saenai.tv/) (ideas only; no assets or CSS copied).
 
-- 68 components (shadcn/ui parity), tokens-only styling (`--bless-*` custom properties), no Tailwind dependency
+- 74 components (shadcn/ui parity), tokens-only styling (`--bless-*` custom properties), no Tailwind dependency
 - Native platform first: `<dialog>`, Popover API, `<details>`, native form controls, `Intl` dates, scroll-snap — no positioning, date or table library
 - Accessible defaults: focus rings, ARIA tablist/dialog/tables, `prefers-reduced-motion`
-- ESM, tree-shakable, `vue` as the only peer dependency. ~129 KB JS / 87 KB CSS raw, ~31 KB / 12 KB gzip for everything (tree-shakes per component)
+- ESM, tree-shakable, `vue` as the only peer dependency. ~142 KB JS / 96 KB CSS raw, ~34 KB / 14 KB gzip for everything (tree-shakes per component)
 
 ## Install
 
@@ -73,7 +73,7 @@ import {
 
 ## Components
 
-68 components across seven groups. Every one styles itself from `--bless-*` tokens and ships with a test and a playground section.
+74 components across eight groups. Every one styles itself from `--bless-*` tokens and ships with a test and a playground section.
 
 ### Primitives
 
@@ -157,6 +157,17 @@ import {
 | `BlessToaster` + `useToast()` | Notifications                    | `position`; `toast()`, `success()`, `error()`, `warning()`, `info()`, `dismiss()`                                               |
 | `BlessSplash`                 | First-visit overlay              | `once`, `duration`, `skipLabel`; emits `done`                                                                                   |
 
+### Conversation
+
+| Component              | Purpose                                | Key props / slots                                                                                                            |
+| ---------------------- | -------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| `BlessMessage`         | Avatar + header + content + footer row | `name`, `time`, `avatar`, `align` start/end, `compact`; `#avatar` `#header` `#footer` `#actions`                             |
+| `BlessBubble`          | Message bubble                         | `variant` surface/accent/outline/plain, `align`, `collapsible`, `lines`, `reactions[]`; emits `react`                        |
+| `BlessMarker`          | Inline status / note / separator / row | `variant` status/note/separator/border, `color`, `shimmer`; `#icon`                                                          |
+| `BlessAttachment`      | File / image chip                      | `name`, `description`, `src`, `href`, `state` idle/uploading/error, `progress`, `size`, `removable`; emits `remove`          |
+| `BlessMessageScroller` | Chat viewport                          | `height`, `initial`, `threshold`; emits `reach-top` `at-bottom`; exposes `scrollToBottom()` `scrollTo(id)` `loadHistory(fn)` |
+| `BlessQuestionnaire`   | Multi-step single/multiple/freeform    | `questions[]`, `v-model` answers, `v-model:step`, `shortcuts`, `labels`; emits `submit` `skip`                               |
+
 ### Media
 
 | Component          | Purpose            | Key props / slots                                                 |
@@ -170,7 +181,7 @@ import {
 
 ### Types
 
-`BlessNavItem`, `BlessNavMenuItem`, `BlessTab`, `BlessGalleryItem`, `BlessColumn<T>`, `BlessDataColumn<T>`, `BlessOption<T>`, `BlessTrack`, `BlessMenuItem`, `BlessCommandItem`, `BlessCrumb`, `BlessToastOptions`, `BlessTheme`, `Placement`, `DataTableState`.
+`BlessNavItem`, `BlessNavMenuItem`, `BlessTab`, `BlessGalleryItem`, `BlessColumn<T>`, `BlessDataColumn<T>`, `BlessOption<T>`, `BlessTrack`, `BlessMenuItem`, `BlessCommandItem`, `BlessCrumb`, `BlessToastOptions`, `BlessTheme`, `BlessReaction`, `BlessQuestion`, `BlessQuestionChoice`, `BlessAnswers`, `Placement`, `DataTableState`.
 
 ## Tokens
 
@@ -212,7 +223,7 @@ Durations collapse to `0s` under `prefers-reduced-motion`. Tailwind v4 users can
 ```sh
 mise install        # node 24, pnpm 12
 pnpm install
-pnpm dev            # playground: http://localhost:5173 (+ /forms.html, /floating.html, /composite.html, /stage.html)
+pnpm dev            # playground: http://localhost:5173 (+ /forms.html, /floating.html, /composite.html, /chat.html, /stage.html)
 pnpm test           # vitest + jsdom
 pnpm typecheck      # vue-tsc
 pnpm build          # dist/blessing-ui.{js,css} + index.d.ts

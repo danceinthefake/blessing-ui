@@ -139,14 +139,14 @@ Decision: use the native **Popover API** (`popover` attr, top layer, light-dismi
 - [x] `BlessInputGroup` — shared surface + underline around any control, `#prefix` `#suffix` addons (text or button)
 - [x] `BlessItem` — media + title + description + actions row, `href` → `<a>`, plain / outline / surface
 
-### Phase 10 — conversation (not started)
+### Phase 10 — conversation
 
-- [ ] `BlessMessage` — avatar + header + body + footer, `align`
-- [ ] `BlessBubble` — variants, grouping, reactions, collapsible
-- [ ] `BlessMarker` — inline status / system note / labelled separator
-- [ ] `BlessAttachment` — file/image with metadata, upload state, actions
-- [ ] `BlessMessageScroller` — anchored chat scroll, follows stream, history load without jump
-- [ ] `BlessQuestionnaire` — multi-step: single / multiple / freeform / skippable
+- [x] `BlessMessage` — avatar + header + body + footer, `align`, `compact` for grouped runs
+- [x] `BlessBubble` — surface/accent/outline/plain, skew-cut tail corner, line-clamp collapsible, reactions
+- [x] `BlessMarker` — status / note / separator / border, shimmer
+- [x] `BlessAttachment` — ext or image media, uploading (spinner / `BlessProgress`), error, remove
+- [x] `BlessMessageScroller` — ResizeObserver follow-at-bottom, `reach-top` + `loadHistory()` offset restore, jump-to-latest
+- [x] `BlessQuestionnaire` — steps on `BlessRadioGroup` / `BlessCheckbox` / `BlessTextarea`, required + skip, 1–9 shortcuts, `BlessProgress`
 
 Skipped from shadcn: Chart (out of scope), Direction (RTL non-goal), Native Select / Sidebar / Toast (covered by `BlessSelect` / `BlessStage` / `BlessToaster`).
 

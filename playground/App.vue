@@ -119,7 +119,8 @@ import {
     <div class="row" style="align-items: center">
       <p>
         <a href="/stage.html">stage →</a> · <a href="/forms.html">forms →</a> ·
-        <a href="/floating.html">floating →</a>
+        <a href="/floating.html">floating →</a> · <a href="/composite.html">composite →</a> ·
+        <a href="/chat.html">chat →</a>
       </p>
       <BlessThemeToggle />
     </div>
