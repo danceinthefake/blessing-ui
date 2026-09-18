@@ -1,0 +1,43 @@
+playground/Forms.vue
+  s_71efa235425cb6::t_4cc8841de76ef5 1-82
+playground/App.vue
+  s_71efa235425cb6::t_4cc8841de76ef5 104
+src/components/BlessLabel.vue
+  s_71efa235425cb6::t_4cc8841de76ef5 1-52
+src/components/BlessSeparator.vue
+  s_71efa235425cb6::t_4cc8841de76ef5 1-82
+src/components/BlessTextarea.vue
+  s_71efa235425cb6::t_fd83fd20d18c34 51
+  s_71efa235425cb6::t_4cc8841de76ef5 1-50,52-148
+src/index.ts
+  s_71efa235425cb6::t_4cc8841de76ef5 30-33
+playground/forms.ts
+  s_71efa235425cb6::t_4cc8841de76ef5 1-6
+src/components/BlessInput.vue
+  s_71efa235425cb6::t_4cc8841de76ef5 1-51,53-162
+  s_71efa235425cb6::t_fd83fd20d18c34 52
+DESIGN.md
+  s_71efa235425cb6::t_4cc8841de76ef5 77-80
+playground/forms.html
+  s_71efa235425cb6::t_4cc8841de76ef5 1-16
+playground/pg.css
+  s_71efa235425cb6::t_4cc8841de76ef5 1-33
+src/components/BlessInput.test.ts
+  s_71efa235425cb6::t_4cc8841de76ef5 1-48
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "4d1ddc90df0c666dc95b107f25d90e3a8d7f8576",
+  "prompts": {},
+  "sessions": {
+    "s_71efa235425cb6": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e2efbbcd-f490-4508-bdc9-ca03144faebe",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Hafidz Bahtiar <hafidz.bahtiar@hypefast.id>"
+    }
+  }
+}
