@@ -1,16 +1,27 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import {
+  BlessAccordion,
+  BlessAccordionItem,
+  BlessBreadcrumb,
+  BlessButton,
   BlessCheckbox,
+  BlessCollapsible,
+  BlessField,
+  BlessForm,
   BlessInput,
   BlessLabel,
+  BlessPagination,
   BlessRadio,
   BlessRadioGroup,
+  BlessScrollArea,
   BlessSelect,
   BlessSeparator,
   BlessSlider,
   BlessSwitch,
   BlessTextarea,
+  BlessToggle,
+  BlessToggleGroup,
 } from "blessing-ui";
 
 const name = ref("");
@@ -22,6 +33,14 @@ const heroine = ref("megumi");
 const dark = ref(true);
 const season = ref<string | undefined>();
 const vol = ref(35);
+const faq = ref(false);
+const align = ref<string | undefined>("left");
+const fmt = ref<string[]>(["b"]);
+const page = ref(7);
+const result = ref("");
+function onSubmit(d: FormData) {
+  result.value = JSON.stringify(Object.fromEntries(d));
+}
 </script>
 
 <template>
@@ -189,6 +208,162 @@ const vol = ref(35);
         </div>
         <div class="col"><BlessSlider :model-value="60" disabled /></div>
       </div>
+    </section>
+
+    <section>
+      <h2>BlessCollapsible + BlessAccordion</h2>
+      <div class="row">
+        <div class="col">
+          <BlessCollapsible v-model:open="faq" title="Standalone collapsible"
+            >Native &lt;details&gt;; open = {{ faq }}</BlessCollapsible
+          >
+          <BlessCollapsible title="Disabled" disabled>hidden</BlessCollapsible>
+        </div>
+        <div class="col">
+          <BlessAccordion>
+            <BlessAccordionItem title="Single — 放送情報" :open="true"
+              >TOKYO MX 木曜 24:00〜</BlessAccordionItem
+            >
+            <BlessAccordionItem title="Single — 配信">AbemaTV ほか</BlessAccordionItem>
+            <BlessAccordionItem title="Single — Blu-ray">2019.09.25 発売</BlessAccordionItem>
+          </BlessAccordion>
+        </div>
+        <div class="col">
+          <BlessAccordion type="multiple">
+            <BlessAccordionItem title="Multiple 1">any number open</BlessAccordionItem>
+            <BlessAccordionItem title="Multiple 2">at once</BlessAccordionItem>
+          </BlessAccordion>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>BlessToggle + BlessToggleGroup</h2>
+      <div class="row" style="align-items: center">
+        <BlessToggle>Bold</BlessToggle>
+        <BlessToggle color="accent" :pressed="true">Pinned</BlessToggle>
+        <BlessToggle size="sm" disabled>Off</BlessToggle>
+        <BlessToggleGroup v-model="align" label="Align">
+          <BlessToggle value="left">L</BlessToggle><BlessToggle value="center">C</BlessToggle
+          ><BlessToggle value="right">R</BlessToggle>
+        </BlessToggleGroup>
+        <BlessToggleGroup v-model="fmt" type="multiple" label="Format">
+          <BlessToggle value="b" color="accent">B</BlessToggle
+          ><BlessToggle value="i" color="accent">I</BlessToggle
+          ><BlessToggle value="u" color="accent">U</BlessToggle>
+        </BlessToggleGroup>
+        <small>align: {{ align }} · fmt: {{ fmt }}</small>
+      </div>
+    </section>
+
+    <section>
+      <h2>BlessBreadcrumb</h2>
+      <BlessBreadcrumb
+        :items="[
+          { label: 'Home', href: '#' },
+          { label: 'News', href: '#' },
+          { label: 'Blu-ray BOX 発売決定' },
+        ]"
+      />
+      <BlessBreadcrumb
+        separator="›"
+        style="margin-top: var(--bless-space-2)"
+        :items="[{ label: 'Character', href: '#' }, { label: '加藤恵' }]"
+      />
+    </section>
+
+    <section>
+      <h2>BlessPagination</h2>
+      <div class="col" style="max-width: none">
+        <BlessPagination v-model="page" :total="20" />
+        <BlessPagination :model-value="1" :total="5" />
+        <BlessPagination
+          :model-value="3"
+          :total="12"
+          :siblings="2"
+          :href="(p: number) => `#page-${p}`"
+        />
+        <small>page: {{ page }}</small>
+      </div>
+    </section>
+
+    <section>
+      <h2>BlessScrollArea</h2>
+      <div class="row">
+        <BlessScrollArea
+          height="140px"
+          width="320px"
+          style="background: var(--bless-color-surface); padding: var(--bless-space-3)"
+        >
+          <p v-for="n in 12" :key="n" style="margin: 0 0 8px">
+            第{{ n }}話 — vertical, thin scrollbar, faded edges
+          </p>
+        </BlessScrollArea>
+        <BlessScrollArea
+          axis="x"
+          width="320px"
+          style="background: var(--bless-color-surface); padding: var(--bless-space-3)"
+        >
+          <div style="display: flex; gap: 8px; width: max-content">
+            <span v-for="n in 12" :key="n" style="padding: 8px 16px; background: #fff"
+              >chip {{ n }}</span
+            >
+          </div>
+        </BlessScrollArea>
+      </div>
+    </section>
+
+    <section>
+      <h2>BlessForm + BlessField (Constraint API)</h2>
+      <BlessForm style="max-width: 420px" @submit="onSubmit">
+        <BlessField
+          label="Handle"
+          required
+          description="3–12 chars"
+          v-slot="{ id, error, describedby }"
+        >
+          <BlessInput
+            :id
+            name="handle"
+            required
+            minlength="3"
+            maxlength="12"
+            :invalid="!!error"
+            :aria-describedby="describedby"
+            placeholder="megumi"
+          />
+        </BlessField>
+        <BlessField label="Email" required v-slot="{ id, error, describedby }">
+          <BlessInput
+            :id
+            name="email"
+            type="email"
+            required
+            :invalid="!!error"
+            :aria-describedby="describedby"
+            placeholder="you@example.com"
+          />
+        </BlessField>
+        <BlessField label="Age" hint="optional" v-slot="{ id, error, describedby }">
+          <BlessInput
+            :id
+            name="age"
+            type="number"
+            min="13"
+            max="120"
+            :invalid="!!error"
+            :aria-describedby="describedby"
+          />
+        </BlessField>
+        <BlessField label="Server says" error="Handle already taken" v-slot="{ id }">
+          <BlessInput :id name="x" model-value="megumi" invalid />
+        </BlessField>
+        <div class="row">
+          <BlessButton type="submit" color="accent">Submit</BlessButton
+          ><BlessButton type="reset" variant="outline">Reset</BlessButton>
+        </div>
+        <small v-if="result">submitted: {{ result }}</small>
+      </BlessForm>
     </section>
   </main>
 </template>

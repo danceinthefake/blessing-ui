@@ -88,14 +88,14 @@ Target: cover [shadcn/ui's component list](https://ui.shadcn.com/docs/components
 - [x] `BlessAvatar` — img + fallback initials, `size`, `square` (skewed frame)
 - [x] `BlessAspectRatio` — `aspect-ratio` wrapper
 - [x] `BlessAlert` — inline notice, `color`, `#icon` `#title`, dismissible
-- [ ] `BlessCollapsible` — `<details>`/`<summary>`, `v-model:open`
-- [ ] `BlessAccordion` — group of `BlessCollapsible`, `type` single/multiple (`name` attr gives native exclusivity)
-- [ ] `BlessToggle` / `BlessToggleGroup` — pressed button(s), `aria-pressed`, single/multiple
-- [ ] `BlessBreadcrumb` — `<nav aria-label>` + `<ol>`, skewed separators
-- [ ] `BlessPagination` — page list + prev/next, `v-model`, `siblings`, ellipsis
-- [ ] `BlessScrollArea` — thin custom scrollbar via `scrollbar-color`/`::-webkit-scrollbar`, fade edges
+- [x] `BlessCollapsible` — `<details>`/`<summary>`, `v-model:open`
+- [x] `BlessAccordion` — group of `BlessCollapsible`, `type` single/multiple (`name` attr gives native exclusivity)
+- [x] `BlessToggle` / `BlessToggleGroup` — pressed button(s), `aria-pressed`, single/multiple
+- [x] `BlessBreadcrumb` — `<nav aria-label>` + `<ol>`, skewed separators
+- [x] `BlessPagination` — page list + prev/next, `v-model`, `siblings`, ellipsis
+- [x] `BlessScrollArea` — thin custom scrollbar via `scrollbar-color`/`::-webkit-scrollbar`, fade edges
 - [x] `BlessKbd` — keycap
-- [ ] `BlessForm` / `BlessField` — `<form novalidate>` wrapper, field wiring label→control→error, `aria-describedby`; validation via native Constraint API (`setCustomValidity`), no schema lib
+- [x] `BlessForm` / `BlessField` — `<form novalidate>` wrapper, field wiring label→control→error, `aria-describedby`; validation via native Constraint API (`setCustomValidity`), no schema lib
 
 ### Phase 6 — floating (Popover API + one positioning composable)
 
