@@ -1,0 +1,25 @@
+DESIGN.md
+  s_71efa235425cb6::t_bcbba3865650ce 7,11,19-27,36-41,44-49,52-57,60-61,65,97
+README.md
+  s_71efa235425cb6::t_bcbba3865650ce 7-8,11,15,17
+preview.html
+  s_71efa235425cb6::t_bcbba3865650ce 5-13,15,19,22-26
+tokens.css
+  s_71efa235425cb6::t_bcbba3865650ce 3-4,8-13,15-22,24-26,29-33,36-42,44-50,53-60,63-68,71-72,75-83,86-91,95,99-102
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "73986062d79eb8a080c8ee26d7f61f6230a2add1",
+  "prompts": {},
+  "sessions": {
+    "s_71efa235425cb6": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e2efbbcd-f490-4508-bdc9-ca03144faebe",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Hafidz Bahtiar <hafidz.bahtiar@hypefast.id>"
+    }
+  }
+}
