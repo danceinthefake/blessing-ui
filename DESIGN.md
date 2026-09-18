@@ -64,6 +64,76 @@ Order = build order. Each row: saenai.tv origin → generic component.
 - [x] `BlessAudioPlayer` — sample player (Aniplex sound player analogue). Native `<audio>` + skewed controls.
 - [x] `BlessSplash` — first-visit intro overlay, `localStorage` flag, reduced-motion skips.
 
+## 3b. Roadmap v2 — shadcn parity
+
+Target: cover [shadcn/ui's component list](https://ui.shadcn.com/docs/components) with the Blessing look. Same rules: native platform first, tokens only, no runtime dependency beyond Vue. Forms leave the non-goals list.
+
+### Already covered (v1 name → shadcn)
+
+`BlessButton`→Button · `BlessBadge`→Badge · `BlessCard`→Card · `BlessTabs`→Tabs · `BlessModal`→Dialog · `BlessTable`→Table · `BlessDash`→Separator (inline) · `BlessStage`→Sidebar + Sheet (mobile) · `BlessSidebarNav`→Navigation Menu (vertical) · `BlessText`→Typography · `BlessGallery`→Carousel (modal form).
+
+### Phase 5 — native-backed primitives (no JS positioning)
+
+- [ ] `BlessSeparator` — block `<hr>` / vertical; `BlessDash` stays inline
+- [ ] `BlessLabel` — `<label>`, required mark, muted hint
+- [ ] `BlessInput` — `<input>` text/email/number/…; skewed focus underline, `invalid` state, `#prefix` `#suffix`
+- [ ] `BlessTextarea` — auto-grow via `field-sizing: content` + rows fallback
+- [ ] `BlessCheckbox` — native `<input type=checkbox>` + skewed box; `indeterminate`
+- [ ] `BlessRadioGroup` / `BlessRadio` — `role=radiogroup`, arrow keys are native
+- [ ] `BlessSwitch` — `<input type=checkbox role=switch>`
+- [ ] `BlessSelect` — styled native `<select>` (no custom listbox; see Phase 7 for Combobox)
+- [ ] `BlessSlider` — `<input type=range>`, accent fill via gradient
+- [ ] `BlessProgress` — `<progress>` styled, skewed track; indeterminate
+- [ ] `BlessSkeleton` — shimmer block, `width`/`height`/`lines`
+- [ ] `BlessAvatar` — img + fallback initials, `size`, `square` (skewed frame)
+- [ ] `BlessAspectRatio` — `aspect-ratio` wrapper
+- [ ] `BlessAlert` — inline notice, `color`, `#icon` `#title`, dismissible
+- [ ] `BlessCollapsible` — `<details>`/`<summary>`, `v-model:open`
+- [ ] `BlessAccordion` — group of `BlessCollapsible`, `type` single/multiple (`name` attr gives native exclusivity)
+- [ ] `BlessToggle` / `BlessToggleGroup` — pressed button(s), `aria-pressed`, single/multiple
+- [ ] `BlessBreadcrumb` — `<nav aria-label>` + `<ol>`, skewed separators
+- [ ] `BlessPagination` — page list + prev/next, `v-model`, `siblings`, ellipsis
+- [ ] `BlessScrollArea` — thin custom scrollbar via `scrollbar-color`/`::-webkit-scrollbar`, fade edges
+- [ ] `BlessKbd` — keycap
+- [ ] `BlessForm` / `BlessField` — `<form novalidate>` wrapper, field wiring label→control→error, `aria-describedby`; validation via native Constraint API (`setCustomValidity`), no schema lib
+
+### Phase 6 — floating (Popover API + one positioning composable)
+
+Decision: use the native **Popover API** (`popover` attr, top layer, light-dismiss) + `useFloating()` (~60 lines: anchor rect, flip, shift). Revisit `@floating-ui/dom` only if edge cases pile up. `anchor-name` CSS anchor positioning as progressive enhancement later.
+
+- [ ] `useFloating(anchor, floating, { placement, offset })`
+- [ ] `BlessPopover` — trigger + content, `v-model:open`, placement
+- [ ] `BlessTooltip` — hover/focus, delay, `role=tooltip`, `aria-describedby`
+- [ ] `BlessHoverCard` — `BlessPopover` with hover intent
+- [ ] `BlessDropdownMenu` — `role=menu`, items/checkbox/radio/separator/sub, roving focus, typeahead
+- [ ] `BlessContextMenu` — `BlessDropdownMenu` on `contextmenu`
+- [ ] `BlessMenubar` — horizontal bar of `BlessDropdownMenu`s, ←→ across menus
+- [ ] `BlessSheet` — side panel on `<dialog>` (extract from `BlessStage` drawer), `side` left/right/top/bottom
+- [ ] `BlessDrawer` — bottom sheet with drag handle (mobile); alias of `BlessSheet side=bottom` + touch drag
+- [ ] `BlessAlertDialog` — `BlessModal` preset: `role=alertdialog`, no backdrop dismiss, focus on cancel
+- [ ] `BlessToast` / `useToast()` — `role=status` region, stack, auto-dismiss, `action`; skewed cards (Sonner equivalent)
+
+### Phase 7 — composite
+
+- [ ] `BlessCommand` — command palette: input + filtered list, `⌘K`, groups, `role=listbox`, in `BlessModal`
+- [ ] `BlessCombobox` — `BlessInput` + `BlessPopover` listbox, `aria-activedescendant`, `multiple`, `creatable`
+- [ ] `BlessCalendar` — month grid, `role=grid`, keyboard nav, `min`/`max`, range; `Intl.DateTimeFormat`, no date lib
+- [ ] `BlessDatePicker` — `BlessInput` + `BlessPopover` + `BlessCalendar`; native `<input type=date>` fallback on touch
+- [ ] `BlessInputOTP` — n single-char inputs, paste, `autocomplete=one-time-code`
+- [ ] `BlessDataTable` — `BlessTable` + sorting, selection, pagination, column visibility; headless `useDataTable()`, no TanStack
+- [ ] `BlessCarousel` — inline scroll-snap slider, prev/next, dots, autoplay; `BlessGallery` reuses it
+- [ ] `BlessResizable` — split panes, `role=separator` `aria-valuenow`, keyboard resize
+- [ ] `BlessNavigationMenu` — horizontal top nav with mega-panels (`BlessPopover`), for non-sidebar layouts
+
+### Deliberately skipped
+
+- **Chart** — out of scope; pair with any chart lib, expose tokens only.
+- **Sonner / Radix / cmdk ports** — behaviours re-implemented minimally, not wrapped.
+
+### Order
+
+5 → 6 → 7. Inside each phase, build order = list order. Every component: one test file, playground section, README row, checkbox flipped.
+
 ## 4. API conventions
 
 - Component prefix `Bless`, file `src/components/BlessButton.vue`, class prefix `bless-`.
@@ -92,7 +162,7 @@ Tooling: Vite + `vite-plugin-dts`, Vitest + `@vue/test-utils` (one smoke test pe
 
 ## 6. Non-goals
 
-- Tailwind preset, dark mode, RTL, SSR-specific code, icon set, form controls (input/select) — not in saenai.tv, not needed for v0.x.
+- Tailwind preset, dark mode, RTL, SSR-specific code, icon set — not needed for v0.x. (Form controls were a v0 non-goal; now Phase 5.)
 - Copying saenai.tv assets (logo, art, `main_bg.png`) or CSS/JS.
 
 ## 7. Open questions
