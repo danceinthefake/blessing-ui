@@ -47,7 +47,7 @@ Order = build order. Each row: saenai.tv origin → generic component.
 - [x] `BlessSection` — heading + optional `BlessWatermark` + slot.
 - [x] `BlessStage` — page shell: fixed sidebar (22% / 200px inner) + content (`max 1300px`); collapses to drawer ≤800px. Slots: `sidebar`, `default`, `footer`.
 - [x] `BlessSidebarNav` — vertical nav list. Props: `items[{label,to,badge}]`, `active`. Emits `select`.
-- [ ] `BlessDrawer` — mobile off-canvas; `v-model`, focus trap, `Esc` closes, `aria-modal`.
+- [x] `BlessDrawer` — folded into `BlessStage` (no standalone need yet). mobile off-canvas; `v-model`, focus trap, `Esc` closes, `aria-modal`.
 - [x] `BlessBackground` — tiled texture layer, `z:-1`, `offset` variants.
 
 ### Phase 3 — content
