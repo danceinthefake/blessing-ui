@@ -52,8 +52,8 @@ Order = build order. Each row: saenai.tv origin → generic component.
 
 ### Phase 3 — content
 
-- [ ] `BlessCard` — flat surface, no radius, optional skew header.
-- [ ] `BlessList` / `BlessListItem` — date + dash + badge + title row (news pattern).
+- [x] `BlessCard` — flat surface, no radius, optional skew header.
+- [x] `BlessList` / `BlessListItem` — date + dash + badge + title row (news pattern).
 - [ ] `BlessTabs` — skewed tab labels; `v-model`, roving tabindex, `role=tablist`.
 - [ ] `BlessModal` — hash-routable (`?modal=id` or `#id`), shadow-md, `Esc`, focus return. Replaces saenai character modal.
 - [ ] `BlessGallery` — lightbox with prev/next (fancyBox replacement). `BlessModal` + keyboard nav.

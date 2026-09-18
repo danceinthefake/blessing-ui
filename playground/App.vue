@@ -1,9 +1,13 @@
 <script setup lang="ts">
 import {
+  BlessBackground,
   BlessBadge,
   BlessButton,
+  BlessCard,
   BlessDash,
   BlessIcon,
+  BlessList,
+  BlessListItem,
   BlessSection,
   BlessSkew,
   BlessText,
@@ -144,6 +148,44 @@ import {
           >
         </div>
       </div>
+    </section>
+
+    <section>
+      <h2>BlessCard</h2>
+      <div class="row" style="align-items: flex-start; padding-top: var(--bless-space-3)">
+        <BlessCard label="Blu-ray" style="width: 260px">
+          <template #media
+            ><div style="height: 120px; background: var(--bless-color-surface-2)"
+          /></template>
+          <BlessText as="p" weight="bold">Blu-ray Disc BOX</BlessText>
+          <BlessText as="p" size="sm" muted>2019.09.25 発売</BlessText>
+          <template #footer><BlessButton size="sm" color="accent">詳細</BlessButton></template>
+        </BlessCard>
+        <BlessCard label="Link" label-color="accent" href="#" style="width: 260px">
+          <BlessText as="p">whole card is an anchor</BlessText>
+        </BlessCard>
+        <BlessCard surface="surface" :bordered="false" style="width: 260px">
+          <BlessText as="p">surface, no border, no label</BlessText>
+        </BlessCard>
+      </div>
+    </section>
+
+    <section>
+      <h2>BlessList</h2>
+      <BlessList style="max-width: 640px">
+        <BlessListItem meta="2019.04.04" badge href="#"
+          >Blu-ray Disc BOX 発売決定！TVシリーズ第一期・第二期全25話収録</BlessListItem
+        >
+        <BlessListItem meta="2019.03.20" href="#"
+          >「冴えない彼女の育てかた Fine」公開日決定</BlessListItem
+        >
+        <BlessListItem meta="2019.02.01" badge="EVENT"
+          >スペシャルイベント開催<template #suffix
+            ><BlessButton size="sm" variant="outline">詳細</BlessButton></template
+          ></BlessListItem
+        >
+        <BlessListItem>no meta, plain row</BlessListItem>
+      </BlessList>
     </section>
   </main>
 </template>

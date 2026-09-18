@@ -10,7 +10,7 @@ export interface BlessNavItem {
   /** small text after a dash, e.g. a date */
   meta?: string;
   /** badge text; true = NEW! */
-  badge?: string | boolean;
+  badge?: boolean | string;
   external?: boolean;
 }
 
