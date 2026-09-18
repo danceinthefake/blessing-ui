@@ -1,5 +1,5 @@
 import { mount } from "@vue/test-utils";
-import { BlessBackground } from "../index";
+import BlessBackground from "./BlessBackground.vue";
 
 test("BlessBackground pattern fallback and image with offset", () => {
   const p = mount(BlessBackground);

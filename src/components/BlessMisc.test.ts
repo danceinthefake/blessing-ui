@@ -1,16 +1,14 @@
 import { mount } from "@vue/test-utils";
 import { h } from "vue";
-import {
-  BlessAccordion,
-  BlessAccordionItem,
-  BlessBreadcrumb,
-  BlessCollapsible,
-  BlessField,
-  BlessForm,
-  BlessPagination,
-  BlessToggle,
-  BlessToggleGroup,
-} from "../index";
+import BlessAccordion from "./BlessAccordion.vue";
+import BlessAccordionItem from "./BlessAccordionItem.vue";
+import BlessBreadcrumb from "./BlessBreadcrumb.vue";
+import BlessCollapsible from "./BlessCollapsible.vue";
+import BlessField from "./BlessField.vue";
+import BlessForm from "./BlessForm.vue";
+import BlessPagination from "./BlessPagination.vue";
+import BlessToggle from "./BlessToggle.vue";
+import BlessToggleGroup from "./BlessToggleGroup.vue";
 
 test("BlessCollapsible toggles via details", async () => {
   const w = mount(BlessCollapsible, {

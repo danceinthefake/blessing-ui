@@ -1,6 +1,10 @@
 import { mount } from "@vue/test-utils";
 import { nextTick } from "vue";
-import { BlessAlertDialog, BlessDrawer, BlessSheet, BlessToaster, useToast } from "../index";
+import BlessAlertDialog from "./BlessAlertDialog.vue";
+import BlessDrawer from "./BlessDrawer.vue";
+import BlessSheet from "./BlessSheet.vue";
+import BlessToaster from "./BlessToaster.vue";
+import { useToast } from "../composables/useToast";
 
 beforeAll(() => {
   HTMLDialogElement.prototype.showModal = function () {

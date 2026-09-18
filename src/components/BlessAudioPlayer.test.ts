@@ -1,6 +1,6 @@
 import { mount } from "@vue/test-utils";
 import { nextTick } from "vue";
-import { BlessAudioPlayer } from "../index";
+import BlessAudioPlayer from "./BlessAudioPlayer.vue";
 
 beforeAll(() => {
   HTMLMediaElement.prototype.play = function () {

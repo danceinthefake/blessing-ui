@@ -1,6 +1,6 @@
 import { mount } from "@vue/test-utils";
 import { nextTick } from "vue";
-import { BlessModal } from "../index";
+import BlessModal from "./BlessModal.vue";
 
 // jsdom lacks showModal/close
 beforeAll(() => {

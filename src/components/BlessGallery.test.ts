@@ -1,6 +1,6 @@
 import { mount } from "@vue/test-utils";
 import { nextTick } from "vue";
-import { BlessGallery } from "../index";
+import BlessGallery from "./BlessGallery.vue";
 
 beforeAll(() => {
   HTMLDialogElement.prototype.showModal = function () {

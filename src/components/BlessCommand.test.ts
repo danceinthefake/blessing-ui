@@ -1,6 +1,7 @@
 import { mount } from "@vue/test-utils";
 import { nextTick } from "vue";
-import { BlessCombobox, BlessCommand } from "../index";
+import BlessCombobox from "./BlessCombobox.vue";
+import BlessCommand from "./BlessCommand.vue";
 import { stubPopover } from "../test/popover";
 
 beforeAll(() => {

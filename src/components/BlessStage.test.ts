@@ -1,6 +1,7 @@
 import { mount } from "@vue/test-utils";
 import { nextTick } from "vue";
-import { BlessSidebarNav, BlessStage } from "../index";
+import BlessSidebarNav from "./BlessSidebarNav.vue";
+import BlessStage from "./BlessStage.vue";
 
 function mockMedia(matches: boolean) {
   const listeners: Array<() => void> = [];

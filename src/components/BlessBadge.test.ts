@@ -1,5 +1,6 @@
 import { mount } from "@vue/test-utils";
-import { BlessBadge, BlessDash } from "../index";
+import BlessBadge from "./BlessBadge.vue";
+import BlessDash from "./BlessDash.vue";
 
 test("BlessBadge defaults to NEW! and scaled", () => {
   const w = mount(BlessBadge);

@@ -1,5 +1,6 @@
 import { mount } from "@vue/test-utils";
-import { BlessSection, BlessWatermark } from "../index";
+import BlessSection from "./BlessSection.vue";
+import BlessWatermark from "./BlessWatermark.vue";
 
 test("BlessWatermark is decorative and positioned", () => {
   const w = mount(BlessWatermark, { props: { text: "News", position: "bottom-left" } });

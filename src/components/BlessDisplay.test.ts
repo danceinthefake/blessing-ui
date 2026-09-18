@@ -1,12 +1,10 @@
 import { mount } from "@vue/test-utils";
-import {
-  BlessAlert,
-  BlessAspectRatio,
-  BlessAvatar,
-  BlessKbd,
-  BlessProgress,
-  BlessSkeleton,
-} from "../index";
+import BlessAlert from "./BlessAlert.vue";
+import BlessAspectRatio from "./BlessAspectRatio.vue";
+import BlessAvatar from "./BlessAvatar.vue";
+import BlessKbd from "./BlessKbd.vue";
+import BlessProgress from "./BlessProgress.vue";
+import BlessSkeleton from "./BlessSkeleton.vue";
 
 test("BlessProgress determinate / indeterminate", () => {
   const d = mount(BlessProgress, { props: { value: 25, max: 50, label: "Up", showValue: true } });

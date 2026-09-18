@@ -1,6 +1,9 @@
 import { mount } from "@vue/test-utils";
 import { h, nextTick } from "vue";
-import { BlessContextMenu, BlessDropdownMenu, BlessMenubar, type BlessMenuItem } from "../index";
+import BlessContextMenu from "./BlessContextMenu.vue";
+import BlessDropdownMenu from "./BlessDropdownMenu.vue";
+import BlessMenubar from "./BlessMenubar.vue";
+import type { BlessMenuItem } from "./menu";
 import { stubPopover } from "../test/popover";
 
 beforeAll(stubPopover);

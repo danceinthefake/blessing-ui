@@ -1,6 +1,6 @@
 import { mount } from "@vue/test-utils";
 import { nextTick } from "vue";
-import { BlessSplash } from "../index";
+import BlessSplash from "./BlessSplash.vue";
 
 beforeEach(() => {
   localStorage.clear();

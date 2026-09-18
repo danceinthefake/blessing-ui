@@ -1,5 +1,5 @@
 import { mount } from "@vue/test-utils";
-import { BlessTable } from "../index";
+import BlessTable from "./BlessTable.vue";
 
 const columns = [
   { key: "station", label: "放送局", header: true },

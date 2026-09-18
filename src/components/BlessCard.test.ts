@@ -1,6 +1,8 @@
 import { mount } from "@vue/test-utils";
 import { h } from "vue";
-import { BlessCard, BlessList, BlessListItem } from "../index";
+import BlessCard from "./BlessCard.vue";
+import BlessList from "./BlessList.vue";
+import BlessListItem from "./BlessListItem.vue";
 
 test("BlessCard label, link mode, slots", () => {
   const c = mount(BlessCard, {

@@ -1,5 +1,6 @@
 import { mount } from "@vue/test-utils";
-import { BlessButton, BlessSkew } from "../index";
+import BlessButton from "./BlessButton.vue";
+import BlessSkew from "./BlessSkew.vue";
 
 test("BlessSkew counter-skews slot", () => {
   const w = mount(BlessSkew, { props: { as: "div", color: "accent" }, slots: { default: "hi" } });

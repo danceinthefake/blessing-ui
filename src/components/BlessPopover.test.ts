@@ -1,6 +1,8 @@
 import { mount } from "@vue/test-utils";
 import { nextTick } from "vue";
-import { BlessHoverCard, BlessPopover, BlessTooltip } from "../index";
+import BlessHoverCard from "./BlessHoverCard.vue";
+import BlessPopover from "./BlessPopover.vue";
+import BlessTooltip from "./BlessTooltip.vue";
 import { stubPopover } from "../test/popover";
 
 beforeAll(stubPopover);

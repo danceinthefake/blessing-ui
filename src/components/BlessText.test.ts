@@ -1,5 +1,6 @@
 import { mount } from "@vue/test-utils";
-import { BlessIcon, BlessText } from "../index";
+import BlessIcon from "./BlessIcon.vue";
+import BlessText from "./BlessText.vue";
 
 const svg = "<svg viewBox='0 0 10 10'><path d='M0 0h10v10z'/></svg>";
 

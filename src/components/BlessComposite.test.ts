@@ -1,12 +1,10 @@
 import { mount } from "@vue/test-utils";
 import { h, nextTick, ref } from "vue";
-import {
-  BlessCarousel,
-  BlessDataTable,
-  BlessNavigationMenu,
-  BlessResizable,
-  useDataTable,
-} from "../index";
+import BlessCarousel from "./BlessCarousel.vue";
+import BlessDataTable from "./BlessDataTable.vue";
+import BlessNavigationMenu from "./BlessNavigationMenu.vue";
+import BlessResizable from "./BlessResizable.vue";
+import { useDataTable } from "../composables/useDataTable";
 import { stubPopover } from "../test/popover";
 
 beforeAll(() => {

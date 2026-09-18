@@ -1,13 +1,11 @@
 import { mount } from "@vue/test-utils";
 import { h, nextTick } from "vue";
-import {
-  BlessCheckbox,
-  BlessRadio,
-  BlessRadioGroup,
-  BlessSelect,
-  BlessSlider,
-  BlessSwitch,
-} from "../index";
+import BlessCheckbox from "./BlessCheckbox.vue";
+import BlessRadio from "./BlessRadio.vue";
+import BlessRadioGroup from "./BlessRadioGroup.vue";
+import BlessSelect from "./BlessSelect.vue";
+import BlessSlider from "./BlessSlider.vue";
+import BlessSwitch from "./BlessSwitch.vue";
 
 test("BlessCheckbox boolean, array, indeterminate", async () => {
   const b = mount(BlessCheckbox, { props: { modelValue: false }, slots: { default: "x" } });

@@ -1,5 +1,5 @@
 import { mount } from "@vue/test-utils";
-import { BlessTabs } from "../index";
+import BlessTabs from "./BlessTabs.vue";
 
 const tabs = [
   { value: "a", label: "A" },

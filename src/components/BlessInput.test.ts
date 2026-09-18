@@ -1,5 +1,8 @@
 import { mount } from "@vue/test-utils";
-import { BlessInput, BlessLabel, BlessSeparator, BlessTextarea } from "../index";
+import BlessInput from "./BlessInput.vue";
+import BlessLabel from "./BlessLabel.vue";
+import BlessSeparator from "./BlessSeparator.vue";
+import BlessTextarea from "./BlessTextarea.vue";
 
 test("BlessSeparator semantics", () => {
   expect(mount(BlessSeparator).element.tagName).toBe("HR");

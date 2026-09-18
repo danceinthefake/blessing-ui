@@ -1,6 +1,8 @@
 import { mount } from "@vue/test-utils";
 import { nextTick } from "vue";
-import { BlessCalendar, BlessDatePicker, BlessInputOTP } from "../index";
+import BlessCalendar from "./BlessCalendar.vue";
+import BlessDatePicker from "./BlessDatePicker.vue";
+import BlessInputOTP from "./BlessInputOTP.vue";
 import { stubPopover } from "../test/popover";
 
 beforeAll(() => {
