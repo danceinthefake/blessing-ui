@@ -1,0 +1,37 @@
+src/components/BlessCard.test.ts
+  s_71efa235425cb6::t_53758162b33c29 2,25-28,31-35,41
+  s_71efa235425cb6::t_3c5bc276750aec 1,3-24,29-30,36-40,42-43,48
+  s_71efa235425cb6::t_70e31f7b4785ce 44-47
+playground/App.vue
+  s_71efa235425cb6::t_3c5bc276750aec 152-189
+  s_71efa235425cb6::t_c96ffc0b387ece 3,6,9-10
+src/components/BlessSidebarNav.vue
+  s_71efa235425cb6::t_70e31f7b4785ce 13
+src/components/BlessListItem.vue
+  s_71efa235425cb6::t_70e31f7b4785ce 11
+  s_71efa235425cb6::t_3c5bc276750aec 1-10,12-70
+src/components/BlessCard.vue
+  s_71efa235425cb6::t_3c5bc276750aec 1-97
+DESIGN.md
+  s_71efa235425cb6::t_3c5bc276750aec 55-56
+src/components/BlessList.vue
+  s_71efa235425cb6::t_3c5bc276750aec 1-23
+src/index.ts
+  s_71efa235425cb6::t_3c5bc276750aec 16-18
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "797b7303f1aa5e35eb58d74e731921c7356ed85c",
+  "prompts": {},
+  "sessions": {
+    "s_71efa235425cb6": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e2efbbcd-f490-4508-bdc9-ca03144faebe",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Hafidz Bahtiar <hafidz.bahtiar@hypefast.id>"
+    }
+  }
+}
