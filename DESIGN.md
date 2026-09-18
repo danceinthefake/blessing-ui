@@ -56,7 +56,7 @@ Order = build order. Each row: saenai.tv origin → generic component.
 - [x] `BlessList` / `BlessListItem` — date + dash + badge + title row (news pattern).
 - [x] `BlessTabs` — skewed tab labels; `v-model`, roving tabindex, `role=tablist`.
 - [x] `BlessModal` — hash-routable (`?modal=id` or `#id`), shadow-md, `Esc`, focus return. Replaces saenai character modal.
-- [ ] `BlessGallery` — lightbox with prev/next (fancyBox replacement). `BlessModal` + keyboard nav.
+- [x] `BlessGallery` — lightbox with prev/next (fancyBox replacement). `BlessModal` + keyboard nav.
 - [ ] `BlessTable` — station/credits table (onair, staff-cast). Responsive: stacked rows ≤800px.
 
 ### Phase 4 — media (optional, defer)

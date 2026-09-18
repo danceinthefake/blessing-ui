@@ -25,8 +25,12 @@ const hash = useHash();
 function sync(isOpen: boolean) {
   const el = dialog.value;
   if (!el) return;
-  if (isOpen && !el.open) el.showModal();
-  else if (!isOpen && el.open) el.close();
+  if (isOpen && !el.open) {
+    el.showModal();
+    // browsers may leave focus on body; keep keyboard inside the dialog
+    if (!el.contains(document.activeElement))
+      el.querySelector<HTMLElement>(".bless-modal__panel")?.focus();
+  } else if (!isOpen && el.open) el.close();
 }
 
 watch(open, (v) => {
@@ -72,7 +76,7 @@ onMounted(() => {
     @cancel.prevent="open = false"
     @click="onBackdrop"
   >
-    <div class="bless-modal__panel">
+    <div class="bless-modal__panel" tabindex="-1">
       <button
         type="button"
         class="bless-modal__close"
@@ -115,6 +119,7 @@ onMounted(() => {
 }
 .bless-modal__panel {
   position: relative;
+  outline: 0;
   box-sizing: border-box;
   width: min(100% - 2 * var(--bless-space-4), var(--_w, 640px));
   max-height: calc(100dvh - 2 * var(--bless-space-4));

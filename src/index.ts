@@ -20,3 +20,5 @@ export { default as BlessTabs } from "./components/BlessTabs.vue";
 export type { BlessTab } from "./components/BlessTabs.vue";
 export { default as BlessModal } from "./components/BlessModal.vue";
 export { useHash } from "./composables/useHash";
+export { default as BlessGallery } from "./components/BlessGallery.vue";
+export type { BlessGalleryItem } from "./components/BlessGallery.vue";

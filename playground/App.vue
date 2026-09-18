@@ -2,6 +2,13 @@
 import { ref } from "vue";
 const tab = ref("megumi");
 const modal = ref(false);
+const shots = ["ff0054", "fd709f", "ff3434", "ffa800", "c0e722", "a759ff", "82909a", "3d3e3f"].map(
+  (c, i) => ({
+    src: `data:image/svg+xml;utf8,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800"><rect width="100%" height="100%" fill="#${c}"/><text x="50%" y="50%" font-size="160" fill="#fff" text-anchor="middle" dominant-baseline="middle" font-family="sans-serif">${i + 1}</text></svg>`)}`,
+    alt: `shot ${i + 1}`,
+    caption: `第${i + 1}話 場面写真`,
+  }),
+);
 const chara = ref(false);
 const heroines = [
   { value: "megumi", label: "加藤恵" },
@@ -16,6 +23,7 @@ import {
   BlessButton,
   BlessCard,
   BlessDash,
+  BlessGallery,
   BlessIcon,
   BlessList,
   BlessListItem,
@@ -242,6 +250,11 @@ import {
           {{ chara }}</BlessText
         >
       </BlessModal>
+    </section>
+
+    <section>
+      <h2>BlessGallery</h2>
+      <BlessGallery :items="shots" columns="120px" style="max-width: 640px" />
     </section>
   </main>
 </template>
