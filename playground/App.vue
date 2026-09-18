@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { BlessBadge, BlessButton, BlessDash, BlessSkew } from "blessing-ui";
+import { BlessBadge, BlessButton, BlessDash, BlessIcon, BlessSkew, BlessText } from "blessing-ui";
 </script>
 
 <template>
@@ -60,6 +60,37 @@ import { BlessBadge, BlessButton, BlessDash, BlessSkew } from "blessing-ui";
           >{{ c }}</BlessBadge
         >
       </div>
+    </section>
+
+    <section>
+      <h2>BlessIcon</h2>
+      <div class="row">
+        <BlessIcon v-for="s in ['xs', 'sm', 'md', 'lg', 'xl'] as const" :key="s" :size="s"
+          ><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg
+        ></BlessIcon>
+        <BlessIcon size="40px" label="external"
+          ><svg viewBox="0 0 24 24">
+            <path d="M14 3h7v7h-2V6.4l-9.3 9.3-1.4-1.4L17.6 5H14zM5 5h6v2H7v10h10v-4h2v6H5z" /></svg
+        ></BlessIcon>
+        <BlessButton color="accent"
+          ><template #prefix
+            ><BlessIcon size="sm"
+              ><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg></BlessIcon></template
+          >play</BlessButton
+        >
+      </div>
+    </section>
+
+    <section>
+      <h2>BlessText</h2>
+      <BlessText as="p" size="xl" weight="thin">xl thin — 冴えない彼女の育てかた</BlessText>
+      <BlessText as="p" size="lg">lg — TVアニメ公式サイト</BlessText>
+      <BlessText as="p">md — body 本文テキスト</BlessText>
+      <BlessText as="p" size="sm" muted>sm muted — 2019.09.25</BlessText>
+      <BlessText as="p" size="xs" weight="bold" tracking="wider" uppercase
+        >xs bold wider upper — label</BlessText
+      >
+      <BlessText as="p" size="2xs" muted>2xs caption — ©丸戸史明・深崎暮人</BlessText>
     </section>
   </main>
 </template>

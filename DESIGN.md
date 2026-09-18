@@ -38,8 +38,8 @@ Order = build order. Each row: saenai.tv origin → generic component.
 - [x] `BlessButton` — `BlessSkew` + `<button>`/`<a>`. Props: `variant` (`solid|outline|ghost`), `color`, `size` (`sm|md|lg`), `href`, `disabled`, `loading`. Hover opacity, focus ring.
 - [x] `BlessBadge` — `NEW!` pill. Props: `color`, `text`. `scale(.8)`, radius-sm.
 - [x] `BlessDash` — 10×1px separator pseudo (date ― badge). Inline.
-- [ ] `BlessIcon` — slot-based SVG wrapper, `size`, `currentColor`.
-- [ ] `BlessText` — typographic helper. Props: `size` (token key), `weight`, `muted`, `tracking`.
+- [x] `BlessIcon` — slot-based SVG wrapper, `size`, `currentColor`.
+- [x] `BlessText` — typographic helper. Props: `size` (token key), `weight`, `muted`, `tracking`.
 
 ### Phase 2 — layout
 
