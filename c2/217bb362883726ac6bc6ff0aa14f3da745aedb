@@ -1,0 +1,29 @@
+src/index.ts
+  s_71efa235425cb6::t_8b5fce16908267 7-8
+src/components/BlessIcon.vue
+  s_71efa235425cb6::t_8b5fce16908267 1-43
+playground/App.vue
+  s_71efa235425cb6::t_8b5fce16908267 2,64-94
+src/components/BlessText.test.ts
+  s_71efa235425cb6::t_8b5fce16908267 1-32
+DESIGN.md
+  s_71efa235425cb6::t_8b5fce16908267 41-42
+src/components/BlessText.vue
+  s_71efa235425cb6::t_8b5fce16908267 1-100
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "c2217bb362883726ac6bc6ff0aa14f3da745aedb",
+  "prompts": {},
+  "sessions": {
+    "s_71efa235425cb6": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e2efbbcd-f490-4508-bdc9-ca03144faebe",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Hafidz Bahtiar <hafidz.bahtiar@hypefast.id>"
+    }
+  }
+}
