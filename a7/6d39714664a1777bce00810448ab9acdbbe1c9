@@ -1,0 +1,63 @@
+src/components/BlessGallery.vue
+  s_71efa235425cb6::t_f4b972f7549034 135-136
+src/components/BlessThemeToggle.vue
+  s_9ec1000e308ddb::t_d634d63e94a02c 1-67
+src/index.ts
+  s_71efa235425cb6::t_ba386628cd208c 89-91
+playground/Floating.vue
+  s_9ec1000e308ddb::t_88fe08ea46b4aa 105-106
+  s_9ec1000e308ddb::t_360cdbe72016d9 20,103-104,107-109
+playground/Forms.vue
+  s_9ec1000e308ddb::t_7cd349be7ff518 25,50-53
+src/components/BlessThemeToggle.test.ts
+  s_9ec1000e308ddb::t_01dee16f7fb55f 1-41
+src/components/BlessSheet.vue
+  s_71efa235425cb6::t_f57718aefb4c23 123
+src/components/BlessStage.vue
+  s_71efa235425cb6::t_724093cc540602 187
+README.md
+  s_9ec1000e308ddb::t_88fe08ea46b4aa 181-182,184-191
+  s_9ec1000e308ddb::t_c114f7c0b2c0f9 5,76,90,164,168,183,192-195
+playground/Composite.vue
+  s_9ec1000e308ddb::t_360cdbe72016d9 23,123-124,127-129
+  s_9ec1000e308ddb::t_88fe08ea46b4aa 125-126
+playground/App.vue
+  s_9ec1000e308ddb::t_360cdbe72016d9 97,115-116,119-121
+  s_9ec1000e308ddb::t_88fe08ea46b4aa 117-118
+tokens.css
+  s_71efa235425cb6::t_17b9d08490ce02 27-30,100-133
+src/components/BlessModal.vue
+  s_71efa235425cb6::t_2c58d4fecb8054 118
+src/composables/useTheme.ts
+  s_71efa235425cb6::t_7c137a0e3fbca6 1-39
+DESIGN.md
+  s_9ec1000e308ddb::t_c114f7c0b2c0f9 19,29,128-133,171
+  s_9ec1000e308ddb::t_88fe08ea46b4aa 17-18,20-27
+  s_9ec1000e308ddb::t_0ca8bc89787f43 28
+.gitignore
+  s_9ec1000e308ddb::t_334fa639f2909f 3
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "a76d39714664a1777bce00810448ab9acdbbe1c9",
+  "prompts": {},
+  "sessions": {
+    "s_71efa235425cb6": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e2efbbcd-f490-4508-bdc9-ca03144faebe",
+        "model": "claude-opus-5"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    },
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "claude-opus-5"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
