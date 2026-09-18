@@ -1,5 +1,14 @@
 <script setup lang="ts">
-import { BlessBadge, BlessButton, BlessDash, BlessIcon, BlessSkew, BlessText } from "blessing-ui";
+import {
+  BlessBadge,
+  BlessButton,
+  BlessDash,
+  BlessIcon,
+  BlessSection,
+  BlessSkew,
+  BlessText,
+  BlessWatermark,
+} from "blessing-ui";
 </script>
 
 <template>
@@ -92,6 +101,31 @@ import { BlessBadge, BlessButton, BlessDash, BlessIcon, BlessSkew, BlessText } f
       >
       <BlessText as="p" size="2xs" muted>2xs caption — ©丸戸史明・深崎暮人</BlessText>
     </section>
+
+    <section>
+      <h2>BlessWatermark + BlessSection</h2>
+      <BlessSection title="News" class="boxed">
+        <BlessText as="p"
+          >2019.04.04<BlessDash /><BlessBadge /> Blu-ray Disc BOX 発売決定</BlessText
+        >
+        <BlessText as="p" muted size="sm">watermark defaults to title, top-right</BlessText>
+      </BlessSection>
+      <BlessSection
+        title="スタッフ・キャスト"
+        watermark="Staff & Cast"
+        watermark-position="bottom-left"
+        :heading-level="3"
+        class="boxed"
+      >
+        <BlessText as="p"><BlessSkew color="text" class="pad">原作</BlessSkew> 丸戸史明</BlessText>
+      </BlessSection>
+      <div class="boxed" style="position: relative; height: 120px; overflow: hidden">
+        <BlessWatermark text="Music" position="top-left" />
+        <BlessText as="p" style="position: relative"
+          >standalone BlessWatermark in any positioned parent</BlessText
+        >
+      </div>
+    </section>
   </main>
 </template>
 
@@ -121,6 +155,11 @@ h2 {
   gap: var(--bless-space-2);
   margin-bottom: var(--bless-space-3);
   flex-wrap: wrap;
+}
+.boxed {
+  border: var(--bless-border-width) solid var(--bless-color-border);
+  padding-inline: var(--bless-space-6);
+  margin-bottom: var(--bless-space-4);
 }
 .pad {
   padding: var(--bless-space-2) var(--bless-space-4);

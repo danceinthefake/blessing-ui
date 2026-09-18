@@ -43,8 +43,8 @@ Order = build order. Each row: saenai.tv origin → generic component.
 
 ### Phase 2 — layout
 
-- [ ] `BlessWatermark` — oversized thin skewed background word (`"News"`). Props: `text`, `position` (`top-right` default). `aria-hidden`.
-- [ ] `BlessSection` — heading + optional `BlessWatermark` + slot.
+- [x] `BlessWatermark` — oversized thin skewed background word (`"News"`). Props: `text`, `position` (`top-right` default). `aria-hidden`.
+- [x] `BlessSection` — heading + optional `BlessWatermark` + slot.
 - [ ] `BlessStage` — page shell: fixed sidebar (22% / 200px inner) + content (`max 1300px`); collapses to drawer ≤800px. Slots: `sidebar`, `default`, `footer`.
 - [ ] `BlessSidebarNav` — vertical nav list. Props: `items[{label,to,badge}]`, `active`. Emits `select`.
 - [ ] `BlessDrawer` — mobile off-canvas; `v-model`, focus trap, `Esc` closes, `aria-modal`.

@@ -6,3 +6,5 @@ export { default as BlessBadge } from "./components/BlessBadge.vue";
 export { default as BlessDash } from "./components/BlessDash.vue";
 export { default as BlessIcon } from "./components/BlessIcon.vue";
 export { default as BlessText } from "./components/BlessText.vue";
+export { default as BlessWatermark } from "./components/BlessWatermark.vue";
+export { default as BlessSection } from "./components/BlessSection.vue";
