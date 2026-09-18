@@ -29,6 +29,13 @@
   --bless-color-backdrop: rgb(0 0 0 / 0.6); /* dialog / sheet scrim */
   --bless-color-media-bg: #1a1b1d; /* lightbox panel, always dark */
 
+  /* categorical chart series, all ≥3:1 on bg and surface */
+  --bless-color-chart-1: var(--bless-color-accent);
+  --bless-color-chart-2: #a759ff;
+  --bless-color-chart-3: #b86e00;
+  --bless-color-chart-4: #689000;
+  --bless-color-chart-5: #5f6c76;
+
   color-scheme: light;
 
   /* ---- typography ---- */
@@ -116,6 +123,10 @@
     --bless-color-rule: #e8e9ea;
     --bless-color-backdrop: rgb(0 0 0 / 0.75);
     --bless-shadow-md: 0 10px 25px rgb(0 0 0 / 0.7);
+    --bless-color-chart-2: #b57bff;
+    --bless-color-chart-3: #ffa800;
+    --bless-color-chart-4: #c0e722;
+    --bless-color-chart-5: #9aa4ad;
     color-scheme: dark;
   }
 }
@@ -130,6 +141,10 @@
   --bless-color-rule: #e8e9ea;
   --bless-color-backdrop: rgb(0 0 0 / 0.75);
   --bless-shadow-md: 0 10px 25px rgb(0 0 0 / 0.7);
+  --bless-color-chart-2: #b57bff;
+  --bless-color-chart-3: #ffa800;
+  --bless-color-chart-4: #c0e722;
+  --bless-color-chart-5: #9aa4ad;
   color-scheme: dark;
 }
 

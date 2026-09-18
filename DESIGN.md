@@ -14,17 +14,17 @@ Generic Vue 3 UI library. Visual language borrowed from saenai.tv (see `../saena
 
 ## 2. Tokens (done — `tokens.css`)
 
-| Group              | Props                                                                                                                                                                                   | Notes                 |
-| ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- |
-| Colour             | `--bless-color-{text,text-muted,bg,surface,surface-2,watermark,accent,accent-soft,accent-2,danger,badge,warning,success,info,on-accent,on-text,on-light,border,rule,backdrop,media-bg}` | semantic names        |
-| Font               | `--bless-font-sans`, `--bless-font-weight-{thin,light,normal,bold}`                                                                                                                     | Roboto + Noto Sans JP |
-| Type scale         | `--bless-text-{2xs,xs,sm,md,lg,xl,display}`                                                                                                                                             | `clamp()` 8→151px     |
-| Leading / tracking | `--bless-leading-{none,tight,normal}`, `--bless-tracking-{tight,normal,wide,wider}`                                                                                                     |                       |
-| Space              | `--bless-space-{1,2,3,4,6,8,12,16}`                                                                                                                                                     | 4px base              |
-| Shape              | `--bless-radius-{none,sm}`, `--bless-skew`, `--bless-skew-counter`, `--bless-border-width`, `--bless-dash-width`                                                                        |                       |
-| Elevation          | `--bless-shadow-{none,md}`                                                                                                                                                              | modal only            |
-| Motion             | `--bless-duration-{fast,base,slow,slower}`, `--bless-ease-{in-out,out,linear}`, `--bless-hover-opacity`, `--bless-press-scale`                                                          |                       |
-| Layout             | `--bless-sidebar-width`, `--bless-sidebar-inner`, `--bless-content-max`, `--bless-z-{bg,nav,modal}`                                                                                     |                       |
+| Group              | Props                                                                                                                                                                                              | Notes                 |
+| ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- |
+| Colour             | `--bless-color-{text,text-muted,bg,surface,surface-2,watermark,accent,accent-soft,accent-2,danger,badge,warning,success,info,on-accent,on-text,on-light,border,rule,backdrop,media-bg,chart-1..5}` | semantic names        |
+| Font               | `--bless-font-sans`, `--bless-font-weight-{thin,light,normal,bold}`                                                                                                                                | Roboto + Noto Sans JP |
+| Type scale         | `--bless-text-{2xs,xs,sm,md,lg,xl,display}`                                                                                                                                                        | `clamp()` 8→151px     |
+| Leading / tracking | `--bless-leading-{none,tight,normal}`, `--bless-tracking-{tight,normal,wide,wider}`                                                                                                                |                       |
+| Space              | `--bless-space-{1,2,3,4,6,8,12,16}`                                                                                                                                                                | 4px base              |
+| Shape              | `--bless-radius-{none,sm}`, `--bless-skew`, `--bless-skew-counter`, `--bless-border-width`, `--bless-dash-width`                                                                                   |                       |
+| Elevation          | `--bless-shadow-{none,md}`                                                                                                                                                                         | modal only            |
+| Motion             | `--bless-duration-{fast,base,slow,slower}`, `--bless-ease-{in-out,out,linear}`, `--bless-hover-opacity`, `--bless-press-scale`                                                                     |                       |
+| Layout             | `--bless-sidebar-width`, `--bless-sidebar-inner`, `--bless-content-max`, `--bless-z-{bg,nav,modal}`                                                                                                |                       |
 
 Dark theme ✅: greys/border/rule/backdrop/shadow redefined under `prefers-color-scheme: dark` (unless `data-theme="light"`) and `:root[data-theme="dark"]`; accent unchanged; `color-scheme` set so native controls follow. `useTheme()` + `BlessThemeToggle` manage the attribute + `localStorage`.
 
@@ -148,11 +148,18 @@ Decision: use the native **Popover API** (`popover` attr, top layer, light-dismi
 - [x] `BlessMessageScroller` — ResizeObserver follow-at-bottom, `reach-top` + `loadHistory()` offset restore, jump-to-latest
 - [x] `BlessQuestionnaire` — steps on `BlessRadioGroup` / `BlessCheckbox` / `BlessTextarea`, required + skip, 1–9 shortcuts, `BlessProgress`
 
-Skipped from shadcn: Chart (out of scope), Direction (RTL non-goal), Native Select / Sidebar / Toast (covered by `BlessSelect` / `BlessStage` / `BlessToaster`).
+Skipped from shadcn: Direction (RTL non-goal), Native Select / Sidebar / Toast (covered by `BlessSelect` / `BlessStage` / `BlessToaster`).
+
+### Phase 11 — chart
+
+Decision: **Unovis** (`@unovis/vue`) as the documented, consumer-installed pairing — SVG, CSS-var themed, same wrapper shape shadcn uses. Nothing from it is imported by the library.
+
+- [x] `--bless-color-chart-{1..5}` — categorical palette, light and dark variants, all ≥3:1 on bg and surface
+- [x] `BlessChart` — `<figure>` frame: title / description / height / legend, maps bless tokens → `--vis-*` (+ `--vis-dark-*`) for palette, axis, tooltip, crosshair
 
 ### Deliberately skipped
 
-- **Chart** — out of scope; pair with any chart lib, expose tokens only.
+- **Chart** — no bundled lib. Phase 11 ✅: `--bless-color-chart-{1..5}` (≥3:1 both themes) + `BlessChart` frame that maps them onto Unovis `--vis-*` vars; Unovis is the documented pairing, installed by the consumer.
 - **Sonner / Radix / cmdk ports** — behaviours re-implemented minimally, not wrapped.
 
 ### Order

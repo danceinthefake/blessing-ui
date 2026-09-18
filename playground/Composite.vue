@@ -5,6 +5,7 @@ import {
   BlessButton,
   BlessCalendar,
   BlessCarousel,
+  BlessChart,
   BlessCombobox,
   BlessCommand,
   BlessDataTable,
@@ -22,8 +23,26 @@ import {
   type BlessOption,
   BlessThemeToggle,
 } from "blessing-ui";
+import {
+  VisAxis,
+  VisCrosshair,
+  VisGroupedBar,
+  VisLine,
+  VisTooltip,
+  VisXYContainer,
+} from "@unovis/vue";
 
 const { toast } = useToast();
+
+type Pt = { x: number; a: number; b: number };
+const series: Pt[] = Array.from({ length: 12 }, (_, i) => ({
+  x: i + 1,
+  a: Math.round(40 + 30 * Math.sin(i / 2) + i * 2),
+  b: Math.round(30 + 20 * Math.cos(i / 3) + i),
+}));
+const ax = (d: Pt) => d.x;
+const ay = [(d: Pt) => d.a, (d: Pt) => d.b];
+const ep = `第${"n"}話`;
 const cmdOpen = ref(false);
 const commands: BlessCommandItem[] = [
   {
@@ -127,6 +146,37 @@ function create(label: string) {
       </p>
       <BlessThemeToggle />
     </div>
+
+    <section>
+      <h2>Chart (Unovis in BlessChart)</h2>
+      <div class="row">
+        <BlessChart
+          title="Views"
+          description="per episode, two seasons"
+          :legend="['Season 1', 'Season 2']"
+          style="flex: 1; min-width: 320px"
+        >
+          <VisXYContainer :data="series" :margin="{ top: 8, right: 8 }">
+            <VisLine :x="ax" :y="ay" :lineWidth="1.5" />
+            <VisAxis
+              type="x"
+              :tickFormat="(v: number) => ep.replace('n', String(v))"
+              :gridLine="false"
+            />
+            <VisAxis type="y" :numTicks="4" />
+            <VisCrosshair :template="(d: Pt) => `#${d.x}: ${d.a} / ${d.b}`" />
+            <VisTooltip />
+          </VisXYContainer>
+        </BlessChart>
+        <BlessChart title="Sales" :legend="['BD', 'DVD']" style="flex: 1; min-width: 320px">
+          <VisXYContainer :data="series.slice(0, 6)">
+            <VisGroupedBar :x="ax" :y="ay" :barPadding="0.3" />
+            <VisAxis type="x" :gridLine="false" />
+            <VisAxis type="y" :numTicks="3" />
+          </VisXYContainer>
+        </BlessChart>
+      </div>
+    </section>
 
     <section>
       <h2>Command</h2>

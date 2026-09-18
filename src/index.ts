@@ -102,3 +102,4 @@ export { default as BlessAttachment } from "./components/BlessAttachment.vue";
 export { default as BlessMessageScroller } from "./components/BlessMessageScroller.vue";
 export { default as BlessQuestionnaire } from "./components/BlessQuestionnaire.vue";
 export type { BlessQuestion, BlessQuestionChoice, BlessAnswers } from "./components/questionnaire";
+export { default as BlessChart } from "./components/BlessChart.vue";

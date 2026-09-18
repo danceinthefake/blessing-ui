@@ -85,7 +85,6 @@ function onKey(e: KeyboardEvent) {
       :label="`${step + 1} / ${questions.length}`"
       class="bless-questionnaire__progress"
     />
-    <p class="bless-questionnaire__count">{{ step + 1 }} / {{ questions.length }}</p>
 
     <fieldset :key="q.name" class="bless-questionnaire__item">
       <legend class="bless-questionnaire__title">{{ q.title }}</legend>
@@ -157,12 +156,6 @@ function onKey(e: KeyboardEvent) {
   gap: var(--bless-space-4);
   font-family: var(--bless-font-sans);
   color: var(--bless-color-text);
-}
-.bless-questionnaire__count {
-  margin: calc(-1 * var(--bless-space-3)) 0 0;
-  font-size: var(--bless-text-2xs);
-  letter-spacing: var(--bless-tracking-wider);
-  color: var(--bless-color-text-muted);
 }
 .bless-questionnaire__item {
   display: flex;

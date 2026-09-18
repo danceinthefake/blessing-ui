@@ -2,10 +2,10 @@
 
 Vue 3 component library and design tokens. Grey-scale UI, one pink-red accent, skewed labels instead of rounded corners, thin oversized watermark type, opacity-fade hovers. Visual language derived from [saenai.tv](https://www.saenai.tv/) (ideas only; no assets or CSS copied).
 
-- 74 components (shadcn/ui parity), tokens-only styling (`--bless-*` custom properties), no Tailwind dependency
+- 75 components (shadcn/ui parity), tokens-only styling (`--bless-*` custom properties), no Tailwind dependency
 - Native platform first: `<dialog>`, Popover API, `<details>`, native form controls, `Intl` dates, scroll-snap — no positioning, date or table library
 - Accessible defaults: focus rings, ARIA tablist/dialog/tables, `prefers-reduced-motion`
-- ESM, tree-shakable, `vue` as the only peer dependency. ~142 KB JS / 96 KB CSS raw, ~34 KB / 14 KB gzip for everything (tree-shakes per component)
+- ESM, tree-shakable, `vue` as the only peer dependency. ~143 KB JS / 100 KB CSS raw, ~35 KB / 14 KB gzip for everything (tree-shakes per component)
 
 ## Install
 
@@ -73,7 +73,7 @@ import {
 
 ## Components
 
-74 components across eight groups. Every one styles itself from `--bless-*` tokens and ships with a test and a playground section.
+75 components across eight groups. Every one styles itself from `--bless-*` tokens and ships with a test and a playground section.
 
 ### Primitives
 
@@ -168,6 +168,30 @@ import {
 | `BlessMessageScroller` | Chat viewport                          | `height`, `initial`, `threshold`; emits `reach-top` `at-bottom`; exposes `scrollToBottom()` `scrollTo(id)` `loadHistory(fn)` |
 | `BlessQuestionnaire`   | Multi-step single/multiple/freeform    | `questions[]`, `v-model` answers, `v-model:step`, `shortcuts`, `labels`; emits `submit` `skip`                               |
 
+### Chart
+
+| Component    | Purpose                                                 | Key props / slots                                                                            |
+| ------------ | ------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `BlessChart` | Themed frame for any [Unovis](https://unovis.dev) chart | `title`, `description`, `height`, `legend[]`; `#header` `#legend` `#footer`, default = chart |
+
+Blessing does not bundle a chart library. `BlessChart` maps `--bless-color-chart-{1..5}`, type and dark mode onto Unovis' `--vis-*` variables, and adds a skewed legend. Install Unovis yourself:
+
+```sh
+pnpm add @unovis/vue @unovis/ts
+```
+
+```vue
+<BlessChart title="Views" :legend="['S1', 'S2']">
+  <VisXYContainer :data>
+    <VisLine :x="(d) => d.x" :y="[(d) => d.a, (d) => d.b]" />
+    <VisAxis type="x" /><VisAxis type="y" />
+    <VisTooltip /><VisCrosshair />
+  </VisXYContainer>
+</BlessChart>
+```
+
+Any other SVG chart lib works too — read `var(--bless-color-chart-N)` for series colours.
+
 ### Media
 
 | Component          | Purpose            | Key props / slots                                                 |
@@ -194,17 +218,17 @@ All styling reads `--bless-*` custom properties defined in `tokens.css`. Overrid
 }
 ```
 
-| Group              | Props                                                                                                                                                                                   |
-| ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Colour             | `--bless-color-{text,text-muted,bg,surface,surface-2,watermark,accent,accent-soft,accent-2,danger,badge,warning,success,info,on-accent,on-text,on-light,border,rule,backdrop,media-bg}` |
-| Font               | `--bless-font-sans`, `--bless-font-weight-{thin,light,normal,bold}`                                                                                                                     |
-| Type scale         | `--bless-text-{2xs,xs,sm,md,lg,xl,display}` (fluid `clamp()`, 8→151px)                                                                                                                  |
-| Leading / tracking | `--bless-leading-{none,tight,normal}`, `--bless-tracking-{tight,normal,wide,wider}`                                                                                                     |
-| Space              | `--bless-space-{1,2,3,4,6,8,12,16}` (4px base)                                                                                                                                          |
-| Shape              | `--bless-radius-{none,sm}`, `--bless-skew`, `--bless-skew-counter`, `--bless-border-width`, `--bless-dash-width`                                                                        |
-| Elevation          | `--bless-shadow-{none,md}`                                                                                                                                                              |
-| Motion             | `--bless-duration-{fast,base,slow,slower}`, `--bless-ease-{in-out,out,linear}`, `--bless-hover-opacity`, `--bless-press-scale`                                                          |
-| Layout             | `--bless-sidebar-width`, `--bless-sidebar-inner`, `--bless-content-max`, `--bless-z-{bg,nav,modal}`                                                                                     |
+| Group              | Props                                                                                                                                                                                              |
+| ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Colour             | `--bless-color-{text,text-muted,bg,surface,surface-2,watermark,accent,accent-soft,accent-2,danger,badge,warning,success,info,on-accent,on-text,on-light,border,rule,backdrop,media-bg,chart-1..5}` |
+| Font               | `--bless-font-sans`, `--bless-font-weight-{thin,light,normal,bold}`                                                                                                                                |
+| Type scale         | `--bless-text-{2xs,xs,sm,md,lg,xl,display}` (fluid `clamp()`, 8→151px)                                                                                                                             |
+| Leading / tracking | `--bless-leading-{none,tight,normal}`, `--bless-tracking-{tight,normal,wide,wider}`                                                                                                                |
+| Space              | `--bless-space-{1,2,3,4,6,8,12,16}` (4px base)                                                                                                                                                     |
+| Shape              | `--bless-radius-{none,sm}`, `--bless-skew`, `--bless-skew-counter`, `--bless-border-width`, `--bless-dash-width`                                                                                   |
+| Elevation          | `--bless-shadow-{none,md}`                                                                                                                                                                         |
+| Motion             | `--bless-duration-{fast,base,slow,slower}`, `--bless-ease-{in-out,out,linear}`, `--bless-hover-opacity`, `--bless-press-scale`                                                                     |
+| Layout             | `--bless-sidebar-width`, `--bless-sidebar-inner`, `--bless-content-max`, `--bless-z-{bg,nav,modal}`                                                                                                |
 
 ### Dark mode
 

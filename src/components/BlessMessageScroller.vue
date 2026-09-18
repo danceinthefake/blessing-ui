@@ -29,7 +29,9 @@ function measure() {
   const was = atBottom.value;
   atBottom.value = el.scrollHeight - el.scrollTop - el.clientHeight <= props.threshold;
   if (was !== atBottom.value) emit("at-bottom", atBottom.value);
-  if (el.scrollTop <= props.topThreshold) {
+  // only a real scroll-up near the top asks for history; a short transcript never does
+  const scrollable = el.scrollHeight > el.clientHeight;
+  if (scrollable && el.scrollTop <= props.topThreshold) {
     if (topArmed) {
       topArmed = false;
       emit("reach-top");
@@ -63,7 +65,7 @@ async function loadHistory(insert: () => void | Promise<void>) {
 let ro: ResizeObserver | undefined;
 onMounted(() => {
   if (props.initial === "bottom") scrollToBottom();
-  measure();
+  atBottom.value = props.initial === "bottom";
   // follow streamed / appended content while the user is at the bottom
   ro = new ResizeObserver(() => {
     if (atBottom.value) scrollToBottom();
