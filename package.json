@@ -5,5 +5,7 @@
   "license": "MIT",
   "files": ["tokens.css"],
   "exports": { "./tokens.css": "./tokens.css" },
+  "packageManager": "pnpm@12.4.2",
+  "engines": { "node": ">=24" },
   "sideEffects": ["*.css"]
 }
