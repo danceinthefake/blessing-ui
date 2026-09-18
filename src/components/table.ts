@@ -1,0 +1,8 @@
+export interface BlessColumn<T = Record<string, unknown>> {
+  key: keyof T & string;
+  label: string;
+  align?: "left" | "center" | "right";
+  width?: string;
+  /** marks the row header cell (th scope=row) */
+  header?: boolean;
+}

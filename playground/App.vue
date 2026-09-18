@@ -1,7 +1,23 @@
 <script setup lang="ts">
 import { ref } from "vue";
+import type { BlessColumn } from "blessing-ui";
 const tab = ref("megumi");
 const modal = ref(false);
+type Onair = { station: string; day: string; time: string; note: string };
+const onair = {
+  columns: [
+    { key: "station", label: "放送局", header: true },
+    { key: "day", label: "曜日" },
+    { key: "time", label: "時間", align: "right" as const },
+    { key: "note", label: "備考" },
+  ] as BlessColumn<Onair>[],
+  rows: [
+    { station: "TOKYO MX", day: "木", time: "24:00", note: "先行" },
+    { station: "とちぎテレビ", day: "木", time: "24:00", note: "" },
+    { station: "BS11", day: "金", time: "23:30", note: "全国" },
+    { station: "AbemaTV", day: "木", time: "24:00", note: "配信" },
+  ] satisfies Onair[],
+};
 const shots = ["ff0054", "fd709f", "ff3434", "ffa800", "c0e722", "a759ff", "82909a", "3d3e3f"].map(
   (c, i) => ({
     src: `data:image/svg+xml;utf8,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800"><rect width="100%" height="100%" fill="#${c}"/><text x="50%" y="50%" font-size="160" fill="#fff" text-anchor="middle" dominant-baseline="middle" font-family="sans-serif">${i + 1}</text></svg>`)}`,
@@ -30,6 +46,7 @@ import {
   BlessModal,
   BlessSection,
   BlessSkew,
+  BlessTable,
   BlessTabs,
   BlessText,
   BlessWatermark,
@@ -255,6 +272,21 @@ import {
     <section>
       <h2>BlessGallery</h2>
       <BlessGallery :items="shots" columns="120px" style="max-width: 640px" />
+    </section>
+
+    <section>
+      <h2>BlessTable</h2>
+      <BlessTable
+        v-bind="onair"
+        row-key="station"
+        caption="On Air"
+        striped
+        style="max-width: 640px"
+      >
+        <template #cell-note="{ value }"
+          ><BlessBadge v-if="value" color="text" :scaled="false">{{ value }}</BlessBadge></template
+        >
+      </BlessTable>
     </section>
   </main>
 </template>
