@@ -1,4 +1,13 @@
 <script setup lang="ts">
+import { ref } from "vue";
+const tab = ref("megumi");
+const heroines = [
+  { value: "megumi", label: "加藤恵" },
+  { value: "eriri", label: "英梨々" },
+  { value: "utaha", label: "詩羽" },
+  { value: "michiru", label: "美智留", disabled: true },
+  { value: "izumi", label: "出海" },
+];
 import {
   BlessBackground,
   BlessBadge,
@@ -10,6 +19,7 @@ import {
   BlessListItem,
   BlessSection,
   BlessSkew,
+  BlessTabs,
   BlessText,
   BlessWatermark,
 } from "blessing-ui";
@@ -186,6 +196,26 @@ import {
         >
         <BlessListItem>no meta, plain row</BlessListItem>
       </BlessList>
+    </section>
+
+    <section>
+      <h2>BlessTabs</h2>
+      <BlessTabs v-model="tab" :tabs="heroines" label="Heroines" style="max-width: 640px">
+        <template #default="{ tab: t }">
+          <BlessText as="p" weight="bold">{{ t.label }}</BlessText>
+          <BlessText as="p" size="sm" muted>arrow keys / Home / End · current: {{ tab }}</BlessText>
+        </template>
+      </BlessTabs>
+      <BlessTabs
+        :tabs="heroines.slice(0, 3)"
+        color="text"
+        activation="manual"
+        style="max-width: 640px; margin-top: var(--bless-space-6)"
+      >
+        <template #default="{ tab: t }"
+          ><BlessText as="p">manual activation, text color — {{ t.label }}</BlessText></template
+        >
+      </BlessTabs>
     </section>
   </main>
 </template>

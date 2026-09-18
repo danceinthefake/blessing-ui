@@ -16,3 +16,5 @@ export { default as BlessBackground } from "./components/BlessBackground.vue";
 export { default as BlessCard } from "./components/BlessCard.vue";
 export { default as BlessList } from "./components/BlessList.vue";
 export { default as BlessListItem } from "./components/BlessListItem.vue";
+export { default as BlessTabs } from "./components/BlessTabs.vue";
+export type { BlessTab } from "./components/BlessTabs.vue";
