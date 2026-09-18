@@ -315,7 +315,7 @@ function create(label: string) {
                 display: grid;
                 place-items: center;
                 font-size: 48px;
-                color: #fff;
+                color: var(--bless-color-on-accent);
                 background: var(--bless-color-accent);
               "
             >

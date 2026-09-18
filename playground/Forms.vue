@@ -309,7 +309,10 @@ function onSubmit(d: FormData) {
           style="background: var(--bless-color-surface); padding: var(--bless-space-3)"
         >
           <div style="display: flex; gap: 8px; width: max-content">
-            <span v-for="n in 12" :key="n" style="padding: 8px 16px; background: #fff"
+            <span
+              v-for="n in 12"
+              :key="n"
+              style="padding: 8px 16px; background: var(--bless-color-bg)"
               >chip {{ n }}</span
             >
           </div>

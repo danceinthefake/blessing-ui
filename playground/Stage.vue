@@ -31,7 +31,11 @@ const open = ref(false);
       <div
         style="
           height: 100%;
-          background: repeating-linear-gradient(45deg, #fafafa 0 12px, #fff 12px 24px);
+          background: repeating-linear-gradient(
+            45deg,
+            var(--bless-color-surface) 0 12px,
+            var(--bless-color-bg) 12px 24px
+          );
         "
       />
     </template>
