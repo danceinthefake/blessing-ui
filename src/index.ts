@@ -27,3 +27,7 @@ export type { BlessColumn } from "./components/table";
 export { default as BlessAudioPlayer } from "./components/BlessAudioPlayer.vue";
 export type { BlessTrack } from "./components/BlessAudioPlayer.vue";
 export { default as BlessSplash } from "./components/BlessSplash.vue";
+export { default as BlessSeparator } from "./components/BlessSeparator.vue";
+export { default as BlessLabel } from "./components/BlessLabel.vue";
+export { default as BlessInput } from "./components/BlessInput.vue";
+export { default as BlessTextarea } from "./components/BlessTextarea.vue";

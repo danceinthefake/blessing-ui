@@ -1,0 +1,148 @@
+<script setup lang="ts">
+import { useId } from "vue";
+
+defineOptions({ name: "BlessTextarea", inheritAttrs: false });
+
+const props = withDefaults(
+  defineProps<{
+    id?: string;
+    rows?: number;
+    /** grow with content (field-sizing: content) */
+    autogrow?: boolean;
+    invalid?: boolean;
+    disabled?: boolean;
+    readonly?: boolean;
+    description?: string;
+    error?: string;
+    maxlength?: number;
+    /** show n / maxlength */
+    counter?: boolean;
+  }>(),
+  { rows: 3, autogrow: true },
+);
+
+const model = defineModel<string>({ default: "" });
+const uid = useId();
+const id = () => props.id ?? uid;
+const descId = () => `${id()}-desc`;
+const errId = () => `${id()}-err`;
+</script>
+
+<template>
+  <div
+    class="bless-textarea"
+    :class="{
+      'bless-textarea--invalid': invalid || error,
+      'bless-textarea--disabled': disabled,
+      'bless-textarea--autogrow': autogrow,
+    }"
+  >
+    <div class="bless-textarea__field">
+      <textarea
+        v-bind="$attrs"
+        :id="id()"
+        v-model="model"
+        :rows
+        :disabled
+        :readonly
+        :maxlength
+        class="bless-textarea__control"
+        :aria-invalid="invalid || error ? 'true' : undefined"
+        :aria-describedby="error ? errId() : description ? descId() : undefined"
+      />
+    </div>
+    <div class="bless-textarea__foot">
+      <p v-if="error" :id="errId()" class="bless-textarea__error" role="alert">{{ error }}</p>
+      <p v-else-if="description" :id="descId()" class="bless-textarea__description">
+        {{ description }}
+      </p>
+      <span v-if="counter && maxlength" class="bless-textarea__counter" aria-live="polite"
+        >{{ String(model).length }} / {{ maxlength }}</span
+      >
+    </div>
+  </div>
+</template>
+
+<style>
+.bless-textarea {
+  display: block;
+  font-family: var(--bless-font-sans);
+  color: var(--bless-color-text);
+}
+.bless-textarea__field {
+  position: relative;
+  background: var(--bless-color-surface);
+  border-bottom: calc(2 * var(--bless-border-width)) solid var(--bless-color-text-muted);
+}
+.bless-textarea__field::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: calc(-2 * var(--bless-border-width));
+  width: 100%;
+  height: calc(2 * var(--bless-border-width));
+  background: var(--bless-color-accent);
+  transform: scaleX(0) skewX(var(--bless-skew));
+  transform-origin: left;
+  transition: transform var(--bless-duration-slow) var(--bless-ease-out);
+}
+.bless-textarea__field:focus-within::after {
+  transform: scaleX(1) skewX(var(--bless-skew));
+}
+.bless-textarea__control {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: var(--bless-space-3);
+  border: 0;
+  background: transparent;
+  font: inherit;
+  font-size: var(--bless-text-md);
+  line-height: var(--bless-leading-normal);
+  color: inherit;
+  resize: vertical;
+  outline: 0;
+}
+.bless-textarea--autogrow .bless-textarea__control {
+  field-sizing: content;
+  resize: none;
+}
+.bless-textarea__control::placeholder {
+  color: var(--bless-color-text-muted);
+}
+.bless-textarea--invalid .bless-textarea__field {
+  border-bottom-color: var(--bless-color-danger);
+}
+.bless-textarea--invalid .bless-textarea__field::after {
+  background: var(--bless-color-danger);
+}
+.bless-textarea--disabled {
+  opacity: 0.4;
+}
+.bless-textarea--disabled .bless-textarea__control {
+  cursor: not-allowed;
+}
+.bless-textarea__foot {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--bless-space-3);
+}
+.bless-textarea__description,
+.bless-textarea__error {
+  margin: var(--bless-space-1) 0 0;
+  font-size: var(--bless-text-xs);
+  line-height: var(--bless-leading-tight);
+  color: var(--bless-color-text-muted);
+}
+.bless-textarea__error {
+  color: var(--bless-color-danger);
+  font-weight: var(--bless-font-weight-bold);
+}
+.bless-textarea__counter {
+  margin-left: auto;
+  margin-top: var(--bless-space-1);
+  font-size: var(--bless-text-xs);
+  color: var(--bless-color-text-muted);
+  font-variant-numeric: tabular-nums;
+}
+</style>

@@ -74,10 +74,10 @@ Target: cover [shadcn/ui's component list](https://ui.shadcn.com/docs/components
 
 ### Phase 5 — native-backed primitives (no JS positioning)
 
-- [ ] `BlessSeparator` — block `<hr>` / vertical; `BlessDash` stays inline
-- [ ] `BlessLabel` — `<label>`, required mark, muted hint
-- [ ] `BlessInput` — `<input>` text/email/number/…; skewed focus underline, `invalid` state, `#prefix` `#suffix`
-- [ ] `BlessTextarea` — auto-grow via `field-sizing: content` + rows fallback
+- [x] `BlessSeparator` — block `<hr>` / vertical; `BlessDash` stays inline
+- [x] `BlessLabel` — `<label>`, required mark, muted hint
+- [x] `BlessInput` — `<input>` text/email/number/…; skewed focus underline, `invalid` state, `#prefix` `#suffix`
+- [x] `BlessTextarea` — auto-grow via `field-sizing: content` + rows fallback
 - [ ] `BlessCheckbox` — native `<input type=checkbox>` + skewed box; `indeterminate`
 - [ ] `BlessRadioGroup` / `BlessRadio` — `role=radiogroup`, arrow keys are native
 - [ ] `BlessSwitch` — `<input type=checkbox role=switch>`
