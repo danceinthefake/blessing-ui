@@ -1,15 +1,20 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import {
+  BlessAlertDialog,
   BlessAvatar,
   BlessButton,
   BlessContextMenu,
+  BlessDrawer,
   BlessDropdownMenu,
   BlessHoverCard,
   BlessMenubar,
   BlessPopover,
+  BlessSheet,
   BlessText,
+  BlessToaster,
   BlessTooltip,
+  useToast,
   type BlessMenuItem,
   type Placement,
 } from "blessing-ui";
@@ -25,6 +30,30 @@ const placements: Placement[] = [
   "right",
 ];
 const manual = ref(false);
+const sheet = ref(false);
+const sheetSide = ref<"left" | "right" | "top" | "bottom">("right");
+const drawer = ref(false);
+const confirm = ref(false);
+const busy = ref(false);
+const { toast, success, error, warning, info } = useToast();
+function reload() {
+  location.reload();
+}
+function openSheet(side: typeof sheetSide.value) {
+  sheetSide.value = side;
+  sheet.value = true;
+}
+async function doDelete() {
+  busy.value = true;
+  await new Promise((r) => setTimeout(r, 800));
+  busy.value = false;
+  confirm.value = false;
+  success({
+    title: "Deleted",
+    description: "Project removed",
+    action: { label: "Undo", onClick: () => info("Restored") },
+  });
+}
 const checked = ref<Record<string, boolean>>({ grid: true });
 const radios = ref<Record<string, string>>({ size: "s" });
 const last = ref("");
@@ -193,6 +222,69 @@ const viewMenu: BlessMenuItem[] = [
       <BlessText as="p" size="xs" muted
         >← → moves between menus; open one then hover others</BlessText
       >
+    </section>
+
+    <section>
+      <h2>BlessSheet + BlessDrawer</h2>
+      <div class="row">
+        <BlessButton
+          v-for="s in ['right', 'left', 'top', 'bottom'] as const"
+          :key="s"
+          variant="outline"
+          @click="openSheet(s)"
+          >{{ s }}</BlessButton
+        >
+        <BlessButton color="accent" @click="drawer = true">drawer (bottom, draggable)</BlessButton>
+      </div>
+      <BlessSheet v-model="sheet" :side="sheetSide" title="Filters">
+        <BlessText as="p">Native &lt;dialog&gt; side panel. Esc / backdrop / × close it.</BlessText>
+        <template #footer
+          ><BlessButton variant="outline" @click="sheet = false">Cancel</BlessButton
+          ><BlessButton color="accent" @click="sheet = false">Apply</BlessButton></template
+        >
+      </BlessSheet>
+      <BlessDrawer v-model="drawer" title="Share">
+        <BlessText as="p">Drag the handle down 80px to close.</BlessText>
+        <div class="row" style="margin-top: 12px">
+          <BlessButton size="sm">Twitter</BlessButton
+          ><BlessButton size="sm" variant="outline">Copy link</BlessButton>
+        </div>
+      </BlessDrawer>
+    </section>
+
+    <section>
+      <h2>BlessAlertDialog</h2>
+      <BlessButton color="danger" @click="confirm = true">Delete project</BlessButton>
+      <BlessAlertDialog
+        v-model="confirm"
+        title="Delete project?"
+        description="This permanently removes the project and its 12 files."
+        confirm-label="Delete"
+        :loading="busy"
+        @confirm="doDelete"
+      />
+    </section>
+
+    <section>
+      <h2>BlessToaster + useToast</h2>
+      <div class="row">
+        <BlessButton size="sm" @click="toast('Plain toast')">toast</BlessButton>
+        <BlessButton size="sm" @click="success({ title: 'Saved', description: '2 fields updated' })"
+          >success</BlessButton
+        >
+        <BlessButton
+          size="sm"
+          @click="error({ title: 'Failed', description: 'Network error', duration: 0 })"
+          >error (sticky)</BlessButton
+        >
+        <BlessButton size="sm" @click="warning('Low disk space')">warning</BlessButton>
+        <BlessButton
+          size="sm"
+          @click="info({ title: 'Update', action: { label: 'Reload', onClick: reload } })"
+          >info + action</BlessButton
+        >
+      </div>
+      <BlessToaster />
     </section>
 
     <div style="height: 60vh"></div>

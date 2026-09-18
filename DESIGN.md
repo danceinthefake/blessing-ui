@@ -108,10 +108,10 @@ Decision: use the native **Popover API** (`popover` attr, top layer, light-dismi
 - [x] `BlessDropdownMenu` — `role=menu`, items/checkbox/radio/separator/sub, roving focus, typeahead
 - [x] `BlessContextMenu` — `BlessDropdownMenu` on `contextmenu`
 - [x] `BlessMenubar` — horizontal bar of `BlessDropdownMenu`s, ←→ across menus
-- [ ] `BlessSheet` — side panel on `<dialog>` (extract from `BlessStage` drawer), `side` left/right/top/bottom
-- [ ] `BlessDrawer` — bottom sheet with drag handle (mobile); alias of `BlessSheet side=bottom` + touch drag
-- [ ] `BlessAlertDialog` — `BlessModal` preset: `role=alertdialog`, no backdrop dismiss, focus on cancel
-- [ ] `BlessToast` / `useToast()` — `role=status` region, stack, auto-dismiss, `action`; skewed cards (Sonner equivalent)
+- [x] `BlessSheet` — side panel on `<dialog>` (extract from `BlessStage` drawer), `side` left/right/top/bottom
+- [x] `BlessDrawer` — bottom sheet with drag handle (mobile); alias of `BlessSheet side=bottom` + touch drag
+- [x] `BlessAlertDialog` — `BlessModal` preset: `role=alertdialog`, no backdrop dismiss, focus on cancel
+- [x] `BlessToaster` / `useToast()` — `role=status` region, stack, auto-dismiss, `action`; skewed cards (Sonner equivalent)
 
 ### Phase 7 — composite
 

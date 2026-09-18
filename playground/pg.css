@@ -6,11 +6,11 @@ body {
   color: var(--bless-color-text);
   background: var(--bless-color-bg);
 }
-.pg h1 {
+.pg > h1 {
   font-weight: var(--bless-font-weight-thin);
   font-size: var(--bless-text-xl);
 }
-.pg h2 {
+.pg > section > h2 {
   font-size: var(--bless-text-sm);
   letter-spacing: var(--bless-tracking-wider);
   text-transform: uppercase;
