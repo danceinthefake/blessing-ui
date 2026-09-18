@@ -1,0 +1,60 @@
+preview.html
+  s_71efa235425cb6::t_10d4a6fa328d36 1-140
+playground/App.vue
+  s_71efa235425cb6::t_10d4a6fa328d36 16-17,21-24
+  s_71efa235425cb6::t_35f78be0651ed5 1-15,18-20,25
+tsconfig.json
+  s_71efa235425cb6::t_35f78be0651ed5 1-12,18,20
+  s_71efa235425cb6::t_c4641260e5b381 13-17,19
+DESIGN.md
+  s_71efa235425cb6::t_10d4a6fa328d36 17-27,36,45,54,63
+tokens.css
+  s_71efa235425cb6::t_10d4a6fa328d36 15-16,18-19,29-31,38-44,48,66,68,70,74,79-82
+playground/vite.config.ts
+  s_71efa235425cb6::t_35f78be0651ed5 4,7,9
+  s_71efa235425cb6::t_c4641260e5b381 1-3,5,8,12-13,16
+  s_71efa235425cb6::t_e39a2630bba83d 6,10-11,14-15
+.gitignore
+  s_71efa235425cb6::t_35f78be0651ed5 1-2
+.oxfmtrc.json
+  s_71efa235425cb6::t_35f78be0651ed5 1
+playground/index.html
+  s_71efa235425cb6::t_35f78be0651ed5 2,16
+  s_71efa235425cb6::t_10d4a6fa328d36 1,3-15
+README.md
+  s_71efa235425cb6::t_10d4a6fa328d36 7-13
+src/style.css
+  s_71efa235425cb6::t_10d4a6fa328d36 1
+vite.config.ts
+  s_71efa235425cb6::t_35f78be0651ed5 5-6,8-9,15,17-18,22
+  s_71efa235425cb6::t_6889b6ee576829 7
+  s_71efa235425cb6::t_10d4a6fa328d36 1-4,10-14,16,19-21,23
+src/index.ts
+  s_71efa235425cb6::t_35f78be0651ed5 3
+  s_71efa235425cb6::t_c4641260e5b381 1-2,4
+package.json
+  s_71efa235425cb6::t_273d6f5c4c0d75 38
+  s_71efa235425cb6::t_35f78be0651ed5 4,6-8,13-37,39-43
+  s_71efa235425cb6::t_10d4a6fa328d36 9-12,44-51
+playground/main.ts
+  s_71efa235425cb6::t_c4641260e5b381 1-3,5
+  s_71efa235425cb6::t_35f78be0651ed5 4
+pnpm-lock.yaml
+  s_71efa235425cb6::t_78bf00f8321419 1-2014
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "7c5136da7d5c738f50205acfa0c8af064c481c78",
+  "prompts": {},
+  "sessions": {
+    "s_71efa235425cb6": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e2efbbcd-f490-4508-bdc9-ca03144faebe",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Hafidz Bahtiar <hafidz.bahtiar@hypefast.id>"
+    }
+  }
+}
