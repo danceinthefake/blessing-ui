@@ -83,18 +83,18 @@ Target: cover [shadcn/ui's component list](https://ui.shadcn.com/docs/components
 - [x] `BlessSwitch` — `<input type=checkbox role=switch>`
 - [x] `BlessSelect` — styled native `<select>` (no custom listbox; see Phase 7 for Combobox)
 - [x] `BlessSlider` — `<input type=range>`, accent fill via gradient
-- [ ] `BlessProgress` — `<progress>` styled, skewed track; indeterminate
-- [ ] `BlessSkeleton` — shimmer block, `width`/`height`/`lines`
-- [ ] `BlessAvatar` — img + fallback initials, `size`, `square` (skewed frame)
-- [ ] `BlessAspectRatio` — `aspect-ratio` wrapper
-- [ ] `BlessAlert` — inline notice, `color`, `#icon` `#title`, dismissible
+- [x] `BlessProgress` — `<progress>` styled, skewed track; indeterminate
+- [x] `BlessSkeleton` — shimmer block, `width`/`height`/`lines`
+- [x] `BlessAvatar` — img + fallback initials, `size`, `square` (skewed frame)
+- [x] `BlessAspectRatio` — `aspect-ratio` wrapper
+- [x] `BlessAlert` — inline notice, `color`, `#icon` `#title`, dismissible
 - [ ] `BlessCollapsible` — `<details>`/`<summary>`, `v-model:open`
 - [ ] `BlessAccordion` — group of `BlessCollapsible`, `type` single/multiple (`name` attr gives native exclusivity)
 - [ ] `BlessToggle` / `BlessToggleGroup` — pressed button(s), `aria-pressed`, single/multiple
 - [ ] `BlessBreadcrumb` — `<nav aria-label>` + `<ol>`, skewed separators
 - [ ] `BlessPagination` — page list + prev/next, `v-model`, `siblings`, ellipsis
 - [ ] `BlessScrollArea` — thin custom scrollbar via `scrollbar-color`/`::-webkit-scrollbar`, fade edges
-- [ ] `BlessKbd` — keycap
+- [x] `BlessKbd` — keycap
 - [ ] `BlessForm` / `BlessField` — `<form novalidate>` wrapper, field wiring label→control→error, `aria-describedby`; validation via native Constraint API (`setCustomValidity`), no schema lib
 
 ### Phase 6 — floating (Popover API + one positioning composable)

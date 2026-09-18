@@ -3,6 +3,8 @@ import { ref } from "vue";
 import type { BlessColumn } from "blessing-ui";
 const tab = ref("megumi");
 const modal = ref(false);
+const alertOpen = ref(true);
+const prog = ref(35);
 function resetSplash() {
   localStorage.removeItem("bless-pg-splash");
   location.reload();
@@ -67,7 +69,10 @@ const heroines = [
   { value: "izumi", label: "出海" },
 ];
 import {
+  BlessAlert,
+  BlessAspectRatio,
   BlessAudioPlayer,
+  BlessAvatar,
   BlessBackground,
   BlessBadge,
   BlessButton,
@@ -75,10 +80,13 @@ import {
   BlessDash,
   BlessGallery,
   BlessIcon,
+  BlessKbd,
   BlessList,
   BlessListItem,
   BlessModal,
+  BlessProgress,
   BlessSection,
+  BlessSkeleton,
   BlessSkew,
   BlessSplash,
   BlessTable,
@@ -346,36 +354,89 @@ import {
         <a href="#" @click.prevent="resetSplash">reset &amp; reload</a></BlessText
       >
     </section>
+
+    <section>
+      <h2>BlessProgress</h2>
+      <div class="col" style="max-width: 480px">
+        <BlessProgress :value="prog" label="Upload" show-value />
+        <BlessProgress :value="80" color="success" size="sm" />
+        <BlessProgress :value="20" color="danger" size="lg" />
+        <BlessProgress label="Indeterminate" />
+        <div class="row">
+          <BlessButton size="sm" @click="prog = Math.min(100, prog + 15)">+15</BlessButton
+          ><BlessButton size="sm" variant="outline" @click="prog = 0">reset</BlessButton>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>BlessSkeleton</h2>
+      <div class="row" style="align-items: center">
+        <BlessSkeleton circle width="56px" height="56px" />
+        <div style="flex: 1; max-width: 320px"><BlessSkeleton :lines="3" height="12px" /></div>
+        <BlessSkeleton width="120px" height="40px" />
+      </div>
+    </section>
+
+    <section>
+      <h2>BlessAvatar</h2>
+      <div class="row" style="align-items: center">
+        <BlessAvatar
+          v-for="s in ['xs', 'sm', 'md', 'lg', 'xl'] as const"
+          :key="s"
+          :size="s"
+          name="Megumi Kato"
+        />
+        <BlessAvatar name="Eriri Spencer" color="accent" />
+        <BlessAvatar name="Utaha" color="text" square size="lg" />
+        <BlessAvatar :src="shots[0].src" name="shot" square size="lg" />
+        <BlessAvatar src="/nope.png" name="Fallback Test" />
+      </div>
+    </section>
+
+    <section>
+      <h2>BlessAspectRatio</h2>
+      <div class="row">
+        <BlessAspectRatio :ratio="16 / 9" style="width: 240px"
+          ><img :src="shots[1].src" alt=""
+        /></BlessAspectRatio>
+        <BlessAspectRatio :ratio="1" style="width: 135px"
+          ><img :src="shots[2].src" alt=""
+        /></BlessAspectRatio>
+        <BlessAspectRatio ratio="4 / 5" style="width: 108px"
+          ><img :src="shots[3].src" alt=""
+        /></BlessAspectRatio>
+      </div>
+    </section>
+
+    <section>
+      <h2>BlessAlert</h2>
+      <div class="col" style="max-width: 560px">
+        <BlessAlert v-model="alertOpen" title="Blu-ray BOX" color="accent" dismissible
+          >2019.09.25 発売。<template #icon>★</template></BlessAlert
+        >
+        <BlessAlert title="Heads up" color="warning">Tickets sell out fast.</BlessAlert>
+        <BlessAlert color="danger" live="alert">Payment failed. Try again.</BlessAlert>
+        <BlessAlert color="success">Saved.</BlessAlert>
+        <BlessAlert color="info" title="Info" dismissible
+          >Info with dismiss, no v-model.</BlessAlert
+        >
+        <BlessButton v-if="!alertOpen" size="sm" @click="alertOpen = true">show again</BlessButton>
+      </div>
+    </section>
+
+    <section>
+      <h2>BlessKbd</h2>
+      <div class="row" style="align-items: center">
+        <BlessKbd :keys="['⌘', 'K']" /> <BlessKbd :keys="['Ctrl', 'Shift', 'P']" />
+        <BlessKbd>Esc</BlessKbd>
+        <span>press <BlessKbd :keys="['←']" /> / <BlessKbd :keys="['→']" /> in the gallery</span>
+      </div>
+    </section>
   </main>
 </template>
 
 <style>
-body {
-  margin: 0;
-  padding: var(--bless-space-8);
-  font: var(--bless-font-weight-normal) var(--bless-text-md) / var(--bless-leading-normal)
-    var(--bless-font-sans);
-  color: var(--bless-color-text);
-  background: var(--bless-color-bg);
-}
-h1 {
-  font-weight: var(--bless-font-weight-thin);
-  font-size: var(--bless-text-xl);
-}
-h2 {
-  font-size: var(--bless-text-sm);
-  letter-spacing: var(--bless-tracking-wider);
-  text-transform: uppercase;
-  color: var(--bless-color-text-muted);
-  border-bottom: var(--bless-border-width) solid var(--bless-color-border);
-  margin: var(--bless-space-12) 0 var(--bless-space-4);
-}
-.row {
-  display: flex;
-  gap: var(--bless-space-2);
-  margin-bottom: var(--bless-space-3);
-  flex-wrap: wrap;
-}
 .boxed {
   border: var(--bless-border-width) solid var(--bless-color-border);
   padding-inline: var(--bless-space-6);
