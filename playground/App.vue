@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { ref } from "vue";
 const tab = ref("megumi");
+const modal = ref(false);
+const chara = ref(false);
 const heroines = [
   { value: "megumi", label: "加藤恵" },
   { value: "eriri", label: "英梨々" },
@@ -17,6 +19,7 @@ import {
   BlessIcon,
   BlessList,
   BlessListItem,
+  BlessModal,
   BlessSection,
   BlessSkew,
   BlessTabs,
@@ -216,6 +219,29 @@ import {
           ><BlessText as="p">manual activation, text color — {{ t.label }}</BlessText></template
         >
       </BlessTabs>
+    </section>
+
+    <section>
+      <h2>BlessModal</h2>
+      <div class="row">
+        <BlessButton color="accent" @click="modal = true">open modal</BlessButton>
+        <BlessButton href="#chara-megumi">hash-routed (#chara-megumi)</BlessButton>
+      </div>
+      <BlessModal v-model="modal" title="Blu-ray Disc BOX">
+        <BlessText as="p"
+          >native &lt;dialog&gt;: focus trap, Esc, backdrop click, top layer.</BlessText
+        >
+        <template #footer>
+          <BlessButton variant="outline" @click="modal = false">閉じる</BlessButton>
+          <BlessButton color="accent" @click="modal = false">購入</BlessButton>
+        </template>
+      </BlessModal>
+      <BlessModal v-model="chara" hash="chara-megumi" size="lg" title="加藤恵">
+        <BlessText as="p"
+          >opened via URL hash — reload keeps it open, close clears hash. current:
+          {{ chara }}</BlessText
+        >
+      </BlessModal>
     </section>
   </main>
 </template>
