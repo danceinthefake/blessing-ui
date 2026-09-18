@@ -1,0 +1,44 @@
+src/components/BlessSwitch.vue
+  s_71efa235425cb6::t_0fef22528a5737 1-103
+src/index.ts
+  s_71efa235425cb6::t_f3dbd1c90250f0 39
+  s_71efa235425cb6::t_0fef22528a5737 34-38,40
+src/components/BlessSelect.vue
+  s_71efa235425cb6::t_f3dbd1c90250f0 3
+  s_71efa235425cb6::t_0fef22528a5737 1-2,4-152
+src/components/select.ts
+  s_71efa235425cb6::t_f3dbd1c90250f0 1-5
+playground/Forms.vue
+  s_71efa235425cb6::t_0fef22528a5737 3-14,19-24,98-192
+src/components/radio.ts
+  s_71efa235425cb6::t_0fef22528a5737 1-8
+src/components/BlessCheckbox.vue
+  s_71efa235425cb6::t_0fef22528a5737 1,3-32,34-140
+  s_71efa235425cb6::t_f3dbd1c90250f0 2,33
+DESIGN.md
+  s_71efa235425cb6::t_0fef22528a5737 81-85
+src/components/BlessRadioGroup.vue
+  s_71efa235425cb6::t_0fef22528a5737 1-71
+src/components/BlessRadio.vue
+  s_71efa235425cb6::t_0fef22528a5737 1-115
+src/components/BlessSlider.vue
+  s_71efa235425cb6::t_0fef22528a5737 1-141
+src/components/BlessChoice.test.ts
+  s_71efa235425cb6::t_0fef22528a5737 1-80
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "61c7e872ab6b96a87006da0e60c940dec5469614",
+  "prompts": {},
+  "sessions": {
+    "s_71efa235425cb6": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e2efbbcd-f490-4508-bdc9-ca03144faebe",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Hafidz Bahtiar <hafidz.bahtiar@hypefast.id>"
+    }
+  }
+}
