@@ -1,0 +1,9 @@
+{
+  "name": "blessing-ui",
+  "version": "0.0.1",
+  "description": "Blessing UI design tokens (CSS custom properties)",
+  "license": "MIT",
+  "files": ["tokens.css"],
+  "exports": { "./tokens.css": "./tokens.css" },
+  "sideEffects": ["*.css"]
+}

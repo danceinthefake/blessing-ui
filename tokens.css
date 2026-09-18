@@ -1,0 +1,104 @@
+/* Blessing UI — design tokens
+ * Derived from saenai.tv visual language (grey UI + pink-red accent, skew, thin watermark type).
+ * Consume: `@import "blessing-ui/tokens.css"` then use var(--bu-*).
+ * Tailwind v4: `@theme { --color-text: var(--bu-color-text); ... }` maps these in.
+ */
+:root {
+  /* ---- colour ---- */
+  --bu-color-text: #3d3e3f;
+  --bu-color-text-muted: #82909a;
+  --bu-color-bg: #fff;
+  --bu-color-surface: #ededed;
+  --bu-color-surface-2: #ebebeb;
+  --bu-color-watermark: #dde0e4;
+
+  --bu-color-accent: #ff0054;        /* primary CTA */
+  --bu-color-accent-soft: #fd709f;   /* highlights, hover fills */
+  --bu-color-accent-2: #ff5676;
+  --bu-color-danger: #ff3434;        /* active/alert, play icons */
+  --bu-color-badge: #ff2121;         /* NEW! pill */
+  --bu-color-warning: #ffa800;
+  --bu-color-success: #c0e722;
+  --bu-color-info: #a759ff;
+
+  --bu-color-on-accent: #fff;
+  --bu-color-border: var(--bu-color-surface);
+  --bu-color-rule: var(--bu-color-text);
+
+  /* ---- typography ---- */
+  --bu-font-sans: "Roboto", "Noto Sans JP", "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "Meiryo", sans-serif;
+  --bu-font-weight-thin: 100;
+  --bu-font-weight-light: 300;
+  --bu-font-weight-normal: 400;
+  --bu-font-weight-bold: 700;
+
+  /* fluid: min @320px → max @1300px */
+  --bu-text-2xs: clamp(0.5rem, 0.45rem + 0.25vw, 0.5625rem);   /* 8–9px   */
+  --bu-text-xs:  clamp(0.5625rem, 0.5rem + 0.3vw, 0.625rem);   /* 9–10px  */
+  --bu-text-sm:  clamp(0.625rem, 0.55rem + 0.4vw, 0.75rem);    /* 10–12px */
+  --bu-text-md:  clamp(0.75rem, 0.65rem + 0.5vw, 0.875rem);    /* 12–14px */
+  --bu-text-lg:  clamp(0.875rem, 0.7rem + 0.9vw, 1.25rem);     /* 14–20px */
+  --bu-text-xl:  clamp(1.25rem, 0.9rem + 1.8vw, 1.75rem);      /* 20–28px */
+  --bu-text-display: clamp(3rem, 1rem + 10vw, 9.4375rem);      /* 48–151px watermark */
+
+  --bu-leading-none: 1;
+  --bu-leading-tight: 1.25;
+  --bu-leading-normal: 1.6;   /* JP body needs room; site's 1 was too tight */
+  --bu-tracking-tight: -0.5px;
+  --bu-tracking-normal: 0.5px;
+  --bu-tracking-wide: 1px;
+  --bu-tracking-wider: 2px;
+
+  /* ---- spacing (4px base) ---- */
+  --bu-space-1: 0.25rem;
+  --bu-space-2: 0.5rem;
+  --bu-space-3: 0.75rem;
+  --bu-space-4: 1rem;
+  --bu-space-6: 1.5rem;
+  --bu-space-8: 2rem;
+  --bu-space-12: 3rem;
+  --bu-space-16: 4rem;
+
+  /* ---- shape ---- */
+  --bu-radius-none: 0;
+  --bu-radius-sm: 3px;            /* badges only; skew is the shape language */
+  --bu-skew: -10deg;
+  --bu-skew-counter: 10deg;       /* apply to inner text */
+  --bu-border-width: 1px;
+  --bu-dash-width: 10px;          /* separator dash */
+
+  /* ---- elevation ---- */
+  --bu-shadow-none: none;
+  --bu-shadow-md: 0 10px 25px rgba(0, 0, 0, 0.5);   /* modals only */
+
+  /* ---- motion ---- */
+  --bu-duration-fast: 0.1s;
+  --bu-duration-base: 0.2s;
+  --bu-duration-slow: 0.3s;       /* default hover */
+  --bu-duration-slower: 1s;       /* bg / splash fades */
+  --bu-ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);  /* ≈ Power3.easeInOut */
+  --bu-ease-out: cubic-bezier(0.215, 0.61, 0.355, 1);      /* ≈ Power3.easeOut */
+  --bu-ease-linear: linear;
+  --bu-hover-opacity: 0.6;
+  --bu-press-scale: 0.8;
+
+  /* ---- layout ---- */
+  --bu-sidebar-width: 22%;
+  --bu-sidebar-inner: 200px;
+  --bu-content-max: 1300px;
+  --bu-z-bg: -1;
+  --bu-z-nav: 100;
+  --bu-z-modal: 1000;
+}
+
+/* single breakpoint, matches source site: `@media (max-width: 800px)` */
+@custom-media --bu-sp (max-width: 800px);
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --bu-duration-fast: 0s;
+    --bu-duration-base: 0s;
+    --bu-duration-slow: 0s;
+    --bu-duration-slower: 0s;
+  }
+}
