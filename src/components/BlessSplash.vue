@@ -76,7 +76,7 @@ defineExpose({ dismiss });
   padding: var(--bless-space-2) var(--bless-space-4);
   border: 0;
   background: var(--bless-color-text);
-  color: var(--bless-color-on-accent);
+  color: var(--bless-color-on-text);
   font-size: var(--bless-text-xs);
   font-weight: var(--bless-font-weight-bold);
   letter-spacing: var(--bless-tracking-wider);

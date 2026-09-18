@@ -122,6 +122,7 @@ const { dismiss } = useToast();
 }
 .bless-toast {
   --_c: var(--bless-color-text);
+  --_on: var(--bless-color-on-text);
   position: relative;
   display: flex;
   align-items: center;
@@ -148,18 +149,23 @@ const { dismiss } = useToast();
 }
 .bless-toast--accent {
   --_c: var(--bless-color-accent);
+  --_on: var(--bless-color-on-accent);
 }
 .bless-toast--danger {
   --_c: var(--bless-color-danger);
+  --_on: var(--bless-color-on-accent);
 }
 .bless-toast--warning {
   --_c: var(--bless-color-warning);
+  --_on: var(--bless-color-on-light);
 }
 .bless-toast--success {
   --_c: var(--bless-color-success);
+  --_on: var(--bless-color-on-light);
 }
 .bless-toast--info {
   --_c: var(--bless-color-info);
+  --_on: var(--bless-color-on-accent);
 }
 .bless-toast__body {
   flex: 1;
@@ -179,7 +185,7 @@ const { dismiss } = useToast();
   padding: var(--bless-space-1) var(--bless-space-3);
   border: 0;
   background: var(--_c);
-  color: var(--bless-color-on-accent);
+  color: var(--_on);
   font: inherit;
   font-size: var(--bless-text-xs);
   font-weight: var(--bless-font-weight-bold);

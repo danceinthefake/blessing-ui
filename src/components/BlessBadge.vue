@@ -43,16 +43,17 @@ withDefaults(
 }
 .bless-badge--warning {
   background: var(--bless-color-warning);
-  color: var(--bless-color-text);
+  color: var(--bless-color-on-light);
 }
 .bless-badge--success {
   background: var(--bless-color-success);
-  color: var(--bless-color-text);
+  color: var(--bless-color-on-light);
 }
 .bless-badge--info {
   background: var(--bless-color-info);
 }
 .bless-badge--text {
   background: var(--bless-color-text);
+  color: var(--bless-color-on-text);
 }
 </style>

@@ -89,7 +89,7 @@ const showImg = computed(() => !!props.src && !failed.value);
 }
 .bless-avatar--text {
   background: var(--bless-color-text);
-  color: var(--bless-color-on-accent);
+  color: var(--bless-color-on-text);
 }
 .bless-avatar--square {
   border-radius: 0;

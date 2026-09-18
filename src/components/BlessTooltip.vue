@@ -71,7 +71,7 @@ watch(open, (o) =>
   padding: var(--bless-space-1) var(--bless-space-3);
   border: 0;
   background: var(--bless-color-text);
-  color: var(--bless-color-on-accent);
+  color: var(--bless-color-on-text);
   font-family: var(--bless-font-sans);
   font-size: var(--bless-text-xs);
   font-weight: var(--bless-font-weight-bold);

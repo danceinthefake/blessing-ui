@@ -189,7 +189,7 @@ defineExpose({ go, next: () => go(index.value + 1), prev: () => go(index.value -
   padding: 0;
   border: 0;
   background: var(--bless-color-text);
-  color: var(--bless-color-on-accent);
+  color: var(--bless-color-on-text);
   font-size: var(--bless-text-xl);
   line-height: 1;
   cursor: pointer;

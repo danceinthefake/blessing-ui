@@ -135,7 +135,7 @@ function onKey(e: KeyboardEvent) {
     padding: 0;
     border: 0;
     background: var(--bless-color-text);
-    color: var(--bless-color-on-accent);
+    color: var(--bless-color-on-text);
     cursor: pointer;
     transform: skewX(var(--bless-skew));
   }

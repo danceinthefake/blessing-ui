@@ -29,7 +29,7 @@ withDefaults(
 }
 .bless-skew--text {
   background: var(--bless-color-text);
-  color: var(--bless-color-on-accent);
+  color: var(--bless-color-on-text);
 }
 .bless-skew--accent {
   background: var(--bless-color-accent);

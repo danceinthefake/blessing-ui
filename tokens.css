@@ -22,6 +22,8 @@
   --bless-color-info: #a759ff;
 
   --bless-color-on-accent: #fff;
+  --bless-color-on-text: var(--bless-color-bg); /* text on a --bless-color-text fill */
+  --bless-color-on-light: #1a1b1d; /* text on warning / success fills (too pale for white) */
   --bless-color-border: var(--bless-color-surface);
   --bless-color-rule: var(--bless-color-text);
   --bless-color-backdrop: rgb(0 0 0 / 0.6); /* dialog / sheet scrim */

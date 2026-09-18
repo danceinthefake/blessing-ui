@@ -149,7 +149,7 @@ onMounted(() => {
   border: 0;
   padding: 0;
   background: var(--bless-color-text);
-  color: var(--bless-color-on-accent);
+  color: var(--bless-color-on-text);
   font-size: var(--bless-text-lg);
   line-height: 1;
   cursor: pointer;
