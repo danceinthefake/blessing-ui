@@ -14,6 +14,7 @@ import {
 <template>
   <main class="pg">
     <h1>Blessing UI</h1>
+    <p><a href="/stage.html">BlessStage + BlessSidebarNav demo →</a></p>
 
     <section>
       <h2>BlessSkew</h2>
