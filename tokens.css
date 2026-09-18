@@ -6,7 +6,7 @@
 :root {
   /* ---- colour ---- */
   --bless-color-text: #3d3e3f;
-  --bless-color-text-muted: #82909a;
+  --bless-color-text-muted: #5f6c76; /* 5.4:1 on bg, 4.6:1 on surface */
   --bless-color-bg: #fff;
   --bless-color-surface: #ededed;
   --bless-color-surface-2: #ebebeb;
