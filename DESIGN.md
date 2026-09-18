@@ -115,8 +115,8 @@ Decision: use the native **Popover API** (`popover` attr, top layer, light-dismi
 
 ### Phase 7 — composite
 
-- [ ] `BlessCommand` — command palette: input + filtered list, `⌘K`, groups, `role=listbox`, in `BlessModal`
-- [ ] `BlessCombobox` — `BlessInput` + `BlessPopover` listbox, `aria-activedescendant`, `multiple`, `creatable`
+- [x] `BlessCommand` — command palette: input + filtered list, `⌘K`, groups, `role=listbox`, in `BlessModal`
+- [x] `BlessCombobox` — `BlessInput` + `BlessPopover` listbox, `aria-activedescendant`, `multiple`, `creatable`
 - [ ] `BlessCalendar` — month grid, `role=grid`, keyboard nav, `min`/`max`, range; `Intl.DateTimeFormat`, no date lib
 - [ ] `BlessDatePicker` — `BlessInput` + `BlessPopover` + `BlessCalendar`; native `<input type=date>` fallback on touch
 - [ ] `BlessInputOTP` — n single-char inputs, paste, `autocomplete=one-time-code`

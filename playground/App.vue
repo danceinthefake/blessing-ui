@@ -93,6 +93,7 @@ import {
   BlessTabs,
   BlessText,
   BlessWatermark,
+  BlessToaster,
 } from "blessing-ui";
 </script>
 
@@ -107,6 +108,7 @@ import {
       >Blessing</BlessText
     >
   </BlessSplash>
+  <BlessToaster />
   <main class="pg">
     <h1>Blessing UI</h1>
     <p>

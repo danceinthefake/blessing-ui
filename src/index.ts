@@ -71,3 +71,6 @@ export { default as BlessAlertDialog } from "./components/BlessAlertDialog.vue";
 export { default as BlessToaster } from "./components/BlessToaster.vue";
 export { useToast } from "./composables/useToast";
 export type { BlessToastOptions, BlessToastItem } from "./composables/useToast";
+export { default as BlessCommand } from "./components/BlessCommand.vue";
+export type { BlessCommandItem } from "./components/BlessCommand.vue";
+export { default as BlessCombobox } from "./components/BlessCombobox.vue";
