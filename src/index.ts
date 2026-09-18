@@ -55,3 +55,8 @@ export { default as BlessPagination } from "./components/BlessPagination.vue";
 export { default as BlessScrollArea } from "./components/BlessScrollArea.vue";
 export { default as BlessForm } from "./components/BlessForm.vue";
 export { default as BlessField } from "./components/BlessField.vue";
+export { useFloating } from "./composables/useFloating";
+export type { Placement, FloatingOptions } from "./composables/useFloating";
+export { default as BlessPopover } from "./components/BlessPopover.vue";
+export { default as BlessTooltip } from "./components/BlessTooltip.vue";
+export { default as BlessHoverCard } from "./components/BlessHoverCard.vue";

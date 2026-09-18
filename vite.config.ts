@@ -4,7 +4,15 @@ import dts from "vite-plugin-dts";
 import { fileURLToPath } from "node:url";
 
 export default defineConfig({
-  plugins: [vue(), dts({ tsconfigPath: "./tsconfig.json", include: ["src"], entryRoot: "src" })],
+  plugins: [
+    vue(),
+    dts({
+      tsconfigPath: "./tsconfig.json",
+      include: ["src"],
+      exclude: ["src/test", "src/**/*.test.ts"],
+      entryRoot: "src",
+    }),
+  ],
   build: {
     lib: {
       entry: fileURLToPath(new URL("./src/index.ts", import.meta.url)),

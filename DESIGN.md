@@ -101,10 +101,10 @@ Target: cover [shadcn/ui's component list](https://ui.shadcn.com/docs/components
 
 Decision: use the native **Popover API** (`popover` attr, top layer, light-dismiss) + `useFloating()` (~60 lines: anchor rect, flip, shift). Revisit `@floating-ui/dom` only if edge cases pile up. `anchor-name` CSS anchor positioning as progressive enhancement later.
 
-- [ ] `useFloating(anchor, floating, { placement, offset })`
-- [ ] `BlessPopover` — trigger + content, `v-model:open`, placement
-- [ ] `BlessTooltip` — hover/focus, delay, `role=tooltip`, `aria-describedby`
-- [ ] `BlessHoverCard` — `BlessPopover` with hover intent
+- [x] `useFloating(anchor, floating, { placement, offset })`
+- [x] `BlessPopover` — trigger + content, `v-model:open`, placement
+- [x] `BlessTooltip` — hover/focus, delay, `role=tooltip`, `aria-describedby`
+- [x] `BlessHoverCard` — `BlessPopover` with hover intent
 - [ ] `BlessDropdownMenu` — `role=menu`, items/checkbox/radio/separator/sub, roving focus, typeahead
 - [ ] `BlessContextMenu` — `BlessDropdownMenu` on `contextmenu`
 - [ ] `BlessMenubar` — horizontal bar of `BlessDropdownMenu`s, ←→ across menus

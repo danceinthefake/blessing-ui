@@ -109,7 +109,10 @@ import {
   </BlessSplash>
   <main class="pg">
     <h1>Blessing UI</h1>
-    <p><a href="/stage.html">stage →</a> · <a href="/forms.html">forms →</a></p>
+    <p>
+      <a href="/stage.html">stage →</a> · <a href="/forms.html">forms →</a> ·
+      <a href="/floating.html">floating →</a>
+    </p>
 
     <section>
       <h2>BlessSkew</h2>
