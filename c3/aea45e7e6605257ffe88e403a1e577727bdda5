@@ -1,0 +1,33 @@
+src/components/BlessDatePicker.vue
+  s_71efa235425cb6::t_d98714b59b0ae9 1-202
+src/components/BlessDate.test.ts
+  s_71efa235425cb6::t_d98714b59b0ae9 1-87
+src/components/BlessCalendar.vue
+  s_71efa235425cb6::t_d98714b59b0ae9 1-288
+src/components/BlessInputOTP.vue
+  s_71efa235425cb6::t_d98714b59b0ae9 1-157
+src/composables/date.ts
+  s_71efa235425cb6::t_d98714b59b0ae9 1-15
+DESIGN.md
+  s_71efa235425cb6::t_d98714b59b0ae9 120-122
+src/index.ts
+  s_71efa235425cb6::t_d98714b59b0ae9 77-80
+playground/Composite.vue
+  s_71efa235425cb6::t_d98714b59b0ae9 5,8-9,52-64,137-209
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "c3aea45e7e6605257ffe88e403a1e577727bdda5",
+  "prompts": {},
+  "sessions": {
+    "s_71efa235425cb6": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e2efbbcd-f490-4508-bdc9-ca03144faebe",
+        "model": "unknown"
+      },
+      "human_author": "Hafidz Bahtiar <hafidz.bahtiar@hypefast.id>"
+    }
+  }
+}
