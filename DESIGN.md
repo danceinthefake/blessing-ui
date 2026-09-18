@@ -131,6 +131,25 @@ Decision: use the native **Popover API** (`popover` attr, top layer, light-dismi
 - [x] `useTheme()` — `light|dark|system`, persisted, `isDark`
 - [x] `BlessThemeToggle` — `mode` switch (☀/☾ button) or group (`BlessToggleGroup`)
 
+### Phase 9 — shadcn additions (2026-09 list)
+
+- [x] `BlessSpinner` — skewed outline square, accent edge, `role=status`; `BlessButton loading` renders it
+- [x] `BlessEmpty` — icon / title / description / actions, dashed frame or plain
+- [x] `BlessButtonGroup` — joined `BlessButton`s, horizontal / vertical, `role=group`
+- [x] `BlessInputGroup` — shared surface + underline around any control, `#prefix` `#suffix` addons (text or button)
+- [x] `BlessItem` — media + title + description + actions row, `href` → `<a>`, plain / outline / surface
+
+### Phase 10 — conversation (not started)
+
+- [ ] `BlessMessage` — avatar + header + body + footer, `align`
+- [ ] `BlessBubble` — variants, grouping, reactions, collapsible
+- [ ] `BlessMarker` — inline status / system note / labelled separator
+- [ ] `BlessAttachment` — file/image with metadata, upload state, actions
+- [ ] `BlessMessageScroller` — anchored chat scroll, follows stream, history load without jump
+- [ ] `BlessQuestionnaire` — multi-step: single / multiple / freeform / skippable
+
+Skipped from shadcn: Chart (out of scope), Direction (RTL non-goal), Native Select / Sidebar / Toast (covered by `BlessSelect` / `BlessStage` / `BlessToaster`).
+
 ### Deliberately skipped
 
 - **Chart** — out of scope; pair with any chart lib, expose tokens only.

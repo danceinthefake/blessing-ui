@@ -81,6 +81,10 @@ import {
   BlessGallery,
   BlessIcon,
   BlessKbd,
+  BlessSpinner,
+  BlessEmpty,
+  BlessButtonGroup,
+  BlessItem,
   BlessList,
   BlessListItem,
   BlessModal,
@@ -440,6 +444,63 @@ import {
         <BlessKbd :keys="['⌘', 'K']" /> <BlessKbd :keys="['Ctrl', 'Shift', 'P']" />
         <BlessKbd>Esc</BlessKbd>
         <span>press <BlessKbd :keys="['←']" /> / <BlessKbd :keys="['→']" /> in the gallery</span>
+      </div>
+    </section>
+
+    <section>
+      <h2>Spinner</h2>
+      <div class="row" style="align-items: center">
+        <BlessSpinner size="sm" /> <BlessSpinner /> <BlessSpinner size="lg" />
+        <BlessSpinner color="accent" />
+        <BlessButton loading color="accent">saving</BlessButton>
+      </div>
+    </section>
+
+    <section>
+      <h2>ButtonGroup</h2>
+      <div class="row">
+        <BlessButtonGroup label="Pager">
+          <BlessButton variant="outline">←</BlessButton>
+          <BlessButton variant="outline">1</BlessButton>
+          <BlessButton variant="outline">2</BlessButton>
+          <BlessButton variant="outline">→</BlessButton>
+        </BlessButtonGroup>
+        <BlessButtonGroup label="Actions">
+          <BlessButton color="accent">Save</BlessButton>
+          <BlessButton color="accent">▾</BlessButton>
+        </BlessButtonGroup>
+        <BlessButtonGroup orientation="vertical" label="Stack">
+          <BlessButton size="sm">Top</BlessButton>
+          <BlessButton size="sm">Mid</BlessButton>
+          <BlessButton size="sm">End</BlessButton>
+        </BlessButtonGroup>
+      </div>
+    </section>
+
+    <section>
+      <h2>Item</h2>
+      <div class="col" style="max-width: 480px">
+        <BlessItem title="第1話 — 冴えないヒロインの育てかた" description="24:00 · 2019.04.04">
+          <template #media>▶</template>
+          <template #actions><BlessButton size="sm" variant="outline">Play</BlessButton></template>
+        </BlessItem>
+        <BlessItem variant="outline" title="Blu-ray BOX" description="Pre-order open" href="#">
+          <template #media>📀</template>
+          <template #actions>→</template>
+        </BlessItem>
+        <BlessItem variant="surface" size="sm" title="Staff" description="Original: 丸戸史明" />
+      </div>
+    </section>
+
+    <section>
+      <h2>Empty</h2>
+      <div class="col" style="max-width: 480px">
+        <BlessEmpty title="No episodes yet" description="New episodes appear here after broadcast.">
+          <template #icon>∅</template>
+          <BlessButton color="accent" size="sm">Browse</BlessButton>
+          <BlessButton variant="ghost" size="sm">Refresh</BlessButton>
+        </BlessEmpty>
+        <BlessEmpty variant="plain" title="Nothing found" />
       </div>
     </section>
   </main>

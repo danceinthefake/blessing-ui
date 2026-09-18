@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import BlessSkew from "./BlessSkew.vue";
+import BlessSpinner from "./BlessSpinner.vue";
 
 defineOptions({ name: "BlessButton" });
 
@@ -41,7 +42,8 @@ const skewColor = computed(() => (props.variant === "solid" ? props.color : "non
     :aria-busy="loading || undefined"
     :tabindex="href && inactive ? -1 : undefined"
   >
-    <slot name="prefix" />
+    <BlessSpinner v-if="loading" size="sm" />
+    <slot v-else name="prefix" />
     <slot />
     <slot name="suffix" />
   </BlessSkew>

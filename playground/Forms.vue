@@ -10,6 +10,7 @@ import {
   BlessField,
   BlessForm,
   BlessInput,
+  BlessInputGroup,
   BlessLabel,
   BlessPagination,
   BlessRadio,
@@ -96,6 +97,25 @@ function onSubmit(d: FormData) {
         <div class="col"><BlessInput model-value="disabled" disabled /></div>
         <div class="col"><BlessInput model-value="readonly" readonly /></div>
         <div class="col"><BlessInput type="number" model-value="25" /></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>InputGroup</h2>
+      <div class="col">
+        <BlessInputGroup>
+          <template #prefix>https://</template>
+          <BlessInput placeholder="saenai.tv" />
+          <template #suffix>.com</template>
+        </BlessInputGroup>
+        <BlessInputGroup>
+          <BlessInput placeholder="search episodes" />
+          <template #suffix><BlessButton size="sm" color="accent">Go</BlessButton></template>
+        </BlessInputGroup>
+        <BlessInputGroup size="sm" disabled>
+          <template #prefix>¥</template>
+          <BlessInput size="sm" model-value="1980" />
+        </BlessInputGroup>
       </div>
     </section>
 
