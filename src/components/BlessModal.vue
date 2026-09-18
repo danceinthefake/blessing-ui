@@ -115,7 +115,7 @@ onMounted(() => {
   place-items: center;
 }
 .bless-modal::backdrop {
-  background: rgb(0 0 0 / 0.6);
+  background: var(--bless-color-backdrop);
 }
 .bless-modal__panel {
   position: relative;

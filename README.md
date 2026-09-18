@@ -2,7 +2,7 @@
 
 Vue 3 component library and design tokens. Grey-scale UI, one pink-red accent, skewed labels instead of rounded corners, thin oversized watermark type, opacity-fade hovers. Visual language derived from [saenai.tv](https://www.saenai.tv/) (ideas only; no assets or CSS copied).
 
-- 62 components (shadcn/ui parity), tokens-only styling (`--bless-*` custom properties), no Tailwind dependency
+- 63 components (shadcn/ui parity), tokens-only styling (`--bless-*` custom properties), no Tailwind dependency
 - Native platform first: `<dialog>`, Popover API, `<details>`, native form controls, `Intl` dates, scroll-snap — no positioning, date or table library
 - Accessible defaults: focus rings, ARIA tablist/dialog/tables, `prefers-reduced-motion`
 - ESM, tree-shakable, `vue` as the only peer dependency. ~123 KB JS / 80 KB CSS raw, ~30 KB / 11 KB gzip for everything (tree-shakes per component)
@@ -73,7 +73,7 @@ import {
 
 ## Components
 
-62 components across seven groups. Every one styles itself from `--bless-*` tokens and ships with a test and a playground section.
+63 components across seven groups. Every one styles itself from `--bless-*` tokens and ships with a test and a playground section.
 
 ### Primitives
 
@@ -87,6 +87,7 @@ import {
 | `BlessIcon`        | SVG slot wrapper                         | `size`, `label`                                                                                    |
 | `BlessText`        | Typography helper                        | `as`, `size`, `weight`, `tracking`, `leading`, `muted`, `uppercase`                                |
 | `BlessKbd`         | Key combo                                | `keys[]` or slot                                                                                   |
+| `BlessThemeToggle` | Light/dark switch or 3-way group         | `mode` switch/group, `label`                                                                       |
 | `BlessAvatar`      | Image with initials fallback             | `src`, `name`, `size`, `square`, `color`                                                           |
 | `BlessSkeleton`    | Shimmer placeholder                      | `width`, `height`, `lines`, `circle`                                                               |
 | `BlessAspectRatio` | Ratio box                                | `ratio`                                                                                            |
@@ -160,11 +161,11 @@ import {
 
 ### Composables
 
-`useMedia(query?)` · `useHash()` · `useFloating(anchor, floating, active, { placement, offset })` · `useToast()` · `useDataTable(rows, { rowKey, pageSize, searchKeys })` · date helpers `toISO` `fromISO` `addDays` `addMonths` `isoToday`.
+`useMedia(query?)` · `useHash()` · `useTheme()` → `{ theme, isDark, set, toggle }` · `useFloating(anchor, floating, active, { placement, offset })` · `useToast()` · `useDataTable(rows, { rowKey, pageSize, searchKeys })` · date helpers `toISO` `fromISO` `addDays` `addMonths` `isoToday`.
 
 ### Types
 
-`BlessNavItem`, `BlessNavMenuItem`, `BlessTab`, `BlessGalleryItem`, `BlessColumn<T>`, `BlessDataColumn<T>`, `BlessOption<T>`, `BlessTrack`, `BlessMenuItem`, `BlessCommandItem`, `BlessCrumb`, `BlessToastOptions`, `Placement`, `DataTableState`.
+`BlessNavItem`, `BlessNavMenuItem`, `BlessTab`, `BlessGalleryItem`, `BlessColumn<T>`, `BlessDataColumn<T>`, `BlessOption<T>`, `BlessTrack`, `BlessMenuItem`, `BlessCommandItem`, `BlessCrumb`, `BlessToastOptions`, `BlessTheme`, `Placement`, `DataTableState`.
 
 ## Tokens
 
@@ -177,17 +178,21 @@ All styling reads `--bless-*` custom properties defined in `tokens.css`. Overrid
 }
 ```
 
-| Group              | Props                                                                                                                                                |
-| ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Colour             | `--bless-color-{text,text-muted,bg,surface,surface-2,watermark,accent,accent-soft,accent-2,danger,badge,warning,success,info,on-accent,border,rule}` |
-| Font               | `--bless-font-sans`, `--bless-font-weight-{thin,light,normal,bold}`                                                                                  |
-| Type scale         | `--bless-text-{2xs,xs,sm,md,lg,xl,display}` (fluid `clamp()`, 8→151px)                                                                               |
-| Leading / tracking | `--bless-leading-{none,tight,normal}`, `--bless-tracking-{tight,normal,wide,wider}`                                                                  |
-| Space              | `--bless-space-{1,2,3,4,6,8,12,16}` (4px base)                                                                                                       |
-| Shape              | `--bless-radius-{none,sm}`, `--bless-skew`, `--bless-skew-counter`, `--bless-border-width`, `--bless-dash-width`                                     |
-| Elevation          | `--bless-shadow-{none,md}`                                                                                                                           |
-| Motion             | `--bless-duration-{fast,base,slow,slower}`, `--bless-ease-{in-out,out,linear}`, `--bless-hover-opacity`, `--bless-press-scale`                       |
-| Layout             | `--bless-sidebar-width`, `--bless-sidebar-inner`, `--bless-content-max`, `--bless-z-{bg,nav,modal}`                                                  |
+| Group              | Props                                                                                                                                                                  |
+| ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Colour             | `--bless-color-{text,text-muted,bg,surface,surface-2,watermark,accent,accent-soft,accent-2,danger,badge,warning,success,info,on-accent,border,rule,backdrop,media-bg}` |
+| Font               | `--bless-font-sans`, `--bless-font-weight-{thin,light,normal,bold}`                                                                                                    |
+| Type scale         | `--bless-text-{2xs,xs,sm,md,lg,xl,display}` (fluid `clamp()`, 8→151px)                                                                                                 |
+| Leading / tracking | `--bless-leading-{none,tight,normal}`, `--bless-tracking-{tight,normal,wide,wider}`                                                                                    |
+| Space              | `--bless-space-{1,2,3,4,6,8,12,16}` (4px base)                                                                                                                         |
+| Shape              | `--bless-radius-{none,sm}`, `--bless-skew`, `--bless-skew-counter`, `--bless-border-width`, `--bless-dash-width`                                                       |
+| Elevation          | `--bless-shadow-{none,md}`                                                                                                                                             |
+| Motion             | `--bless-duration-{fast,base,slow,slower}`, `--bless-ease-{in-out,out,linear}`, `--bless-hover-opacity`, `--bless-press-scale`                                         |
+| Layout             | `--bless-sidebar-width`, `--bless-sidebar-inner`, `--bless-content-max`, `--bless-z-{bg,nav,modal}`                                                                    |
+
+### Dark mode
+
+Greys invert, the accent family stays. Follows `prefers-color-scheme` by default; set `data-theme="dark"` / `"light"` on `<html>` to force one. `useTheme()` persists the choice in `localStorage` (`bless-theme`) and applies the attribute; `BlessThemeToggle` is the ready-made control. Override the dark palette under `:root[data-theme="dark"]` and inside the `prefers-color-scheme: dark` block in `tokens.css`.
 
 Durations collapse to `0s` under `prefers-reduced-motion`. Tailwind v4 users can map tokens in `@theme { --color-accent: var(--bless-color-accent); }`.
 

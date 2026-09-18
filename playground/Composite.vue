@@ -20,6 +20,7 @@ import {
   type BlessCommandItem,
   type BlessDataColumn,
   type BlessOption,
+  BlessThemeToggle,
 } from "blessing-ui";
 
 const { toast } = useToast();
@@ -119,10 +120,13 @@ function create(label: string) {
   <BlessToaster />
   <main class="pg">
     <h1>Blessing UI — composite</h1>
-    <p>
-      <a href="/">← components</a> · <a href="/forms.html">forms</a> ·
-      <a href="/floating.html">floating</a> · <a href="/stage.html">stage</a>
-    </p>
+    <div class="row" style="align-items: center">
+      <p>
+        <a href="/">← components</a> · <a href="/forms.html">forms</a> ·
+        <a href="/floating.html">floating</a> · <a href="/stage.html">stage</a>
+      </p>
+      <BlessThemeToggle />
+    </div>
 
     <section>
       <h2>Command</h2>

@@ -22,6 +22,7 @@ import {
   BlessTextarea,
   BlessToggle,
   BlessToggleGroup,
+  BlessThemeToggle,
 } from "blessing-ui";
 
 const name = ref("");
@@ -46,7 +47,10 @@ function onSubmit(d: FormData) {
 <template>
   <main class="pg">
     <h1>Blessing UI — forms</h1>
-    <p><a href="/">← components</a> · <a href="/stage.html">stage</a></p>
+    <div class="row" style="align-items: center">
+      <p><a href="/">← components</a> · <a href="/stage.html">stage</a></p>
+      <BlessThemeToggle mode="group" />
+    </div>
 
     <section>
       <h2>Separator</h2>

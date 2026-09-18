@@ -14,19 +14,19 @@ Generic Vue 3 UI library. Visual language borrowed from saenai.tv (see `../saena
 
 ## 2. Tokens (done — `tokens.css`)
 
-| Group              | Props                                                                                                                                                | Notes                 |
-| ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- |
-| Colour             | `--bless-color-{text,text-muted,bg,surface,surface-2,watermark,accent,accent-soft,accent-2,danger,badge,warning,success,info,on-accent,border,rule}` | semantic names        |
-| Font               | `--bless-font-sans`, `--bless-font-weight-{thin,light,normal,bold}`                                                                                  | Roboto + Noto Sans JP |
-| Type scale         | `--bless-text-{2xs,xs,sm,md,lg,xl,display}`                                                                                                          | `clamp()` 8→151px     |
-| Leading / tracking | `--bless-leading-{none,tight,normal}`, `--bless-tracking-{tight,normal,wide,wider}`                                                                  |                       |
-| Space              | `--bless-space-{1,2,3,4,6,8,12,16}`                                                                                                                  | 4px base              |
-| Shape              | `--bless-radius-{none,sm}`, `--bless-skew`, `--bless-skew-counter`, `--bless-border-width`, `--bless-dash-width`                                     |                       |
-| Elevation          | `--bless-shadow-{none,md}`                                                                                                                           | modal only            |
-| Motion             | `--bless-duration-{fast,base,slow,slower}`, `--bless-ease-{in-out,out,linear}`, `--bless-hover-opacity`, `--bless-press-scale`                       |                       |
-| Layout             | `--bless-sidebar-width`, `--bless-sidebar-inner`, `--bless-content-max`, `--bless-z-{bg,nav,modal}`                                                  |                       |
+| Group              | Props                                                                                                                                                                  | Notes                 |
+| ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- |
+| Colour             | `--bless-color-{text,text-muted,bg,surface,surface-2,watermark,accent,accent-soft,accent-2,danger,badge,warning,success,info,on-accent,border,rule,backdrop,media-bg}` | semantic names        |
+| Font               | `--bless-font-sans`, `--bless-font-weight-{thin,light,normal,bold}`                                                                                                    | Roboto + Noto Sans JP |
+| Type scale         | `--bless-text-{2xs,xs,sm,md,lg,xl,display}`                                                                                                                            | `clamp()` 8→151px     |
+| Leading / tracking | `--bless-leading-{none,tight,normal}`, `--bless-tracking-{tight,normal,wide,wider}`                                                                                    |                       |
+| Space              | `--bless-space-{1,2,3,4,6,8,12,16}`                                                                                                                                    | 4px base              |
+| Shape              | `--bless-radius-{none,sm}`, `--bless-skew`, `--bless-skew-counter`, `--bless-border-width`, `--bless-dash-width`                                                       |                       |
+| Elevation          | `--bless-shadow-{none,md}`                                                                                                                                             | modal only            |
+| Motion             | `--bless-duration-{fast,base,slow,slower}`, `--bless-ease-{in-out,out,linear}`, `--bless-hover-opacity`, `--bless-press-scale`                                         |                       |
+| Layout             | `--bless-sidebar-width`, `--bless-sidebar-inner`, `--bless-content-max`, `--bless-z-{bg,nav,modal}`                                                                    |                       |
 
-Dark theme: not planned. Add by redefining colour props under `[data-theme="dark"]` when needed.
+Dark theme ✅: greys/border/rule/backdrop/shadow redefined under `prefers-color-scheme: dark` (unless `data-theme="light"`) and `:root[data-theme="dark"]`; accent unchanged; `color-scheme` set so native controls follow. `useTheme()` + `BlessThemeToggle` manage the attribute + `localStorage`.
 
 ## 3. Component roadmap
 
@@ -125,6 +125,12 @@ Decision: use the native **Popover API** (`popover` attr, top layer, light-dismi
 - [x] `BlessResizable` — split panes, `role=separator` `aria-valuenow`, keyboard resize
 - [x] `BlessNavigationMenu` — horizontal top nav with mega-panels (`BlessPopover`), for non-sidebar layouts
 
+### Phase 8 — theming
+
+- [x] Dark tokens — OS-following + `data-theme` override, `--bless-color-backdrop` / `--bless-color-media-bg` extracted from hard-coded scrims
+- [x] `useTheme()` — `light|dark|system`, persisted, `isDark`
+- [x] `BlessThemeToggle` — `mode` switch (☀/☾ button) or group (`BlessToggleGroup`)
+
 ### Deliberately skipped
 
 - **Chart** — out of scope; pair with any chart lib, expose tokens only.
@@ -162,7 +168,7 @@ Tooling: Vite + `vite-plugin-dts`, Vitest + `@vue/test-utils` (one smoke test pe
 
 ## 6. Non-goals
 
-- Tailwind preset, dark mode, RTL, SSR-specific code, icon set — not needed for v0.x. (Form controls were a v0 non-goal; now Phase 5.)
+- Tailwind preset, RTL, SSR-specific code, icon set — not needed for v0.x. (Dark mode: done, Phase 8.) (Form controls were a v0 non-goal; now Phase 5.)
 - Copying saenai.tv assets (logo, art, `main_bg.png`) or CSS/JS.
 
 ## 7. Open questions

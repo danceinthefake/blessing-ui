@@ -94,6 +94,7 @@ import {
   BlessText,
   BlessWatermark,
   BlessToaster,
+  BlessThemeToggle,
 } from "blessing-ui";
 </script>
 
@@ -111,10 +112,13 @@ import {
   <BlessToaster />
   <main class="pg">
     <h1>Blessing UI</h1>
-    <p>
-      <a href="/stage.html">stage →</a> · <a href="/forms.html">forms →</a> ·
-      <a href="/floating.html">floating →</a>
-    </p>
+    <div class="row" style="align-items: center">
+      <p>
+        <a href="/stage.html">stage →</a> · <a href="/forms.html">forms →</a> ·
+        <a href="/floating.html">floating →</a>
+      </p>
+      <BlessThemeToggle />
+    </div>
 
     <section>
       <h2>Skew</h2>

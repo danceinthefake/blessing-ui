@@ -120,7 +120,7 @@ function onUp() {
   display: flex;
 }
 .bless-sheet::backdrop {
-  background: rgb(0 0 0 / 0.5);
+  background: var(--bless-color-backdrop);
 }
 .bless-sheet__panel {
   position: relative;

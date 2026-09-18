@@ -24,6 +24,10 @@
   --bless-color-on-accent: #fff;
   --bless-color-border: var(--bless-color-surface);
   --bless-color-rule: var(--bless-color-text);
+  --bless-color-backdrop: rgb(0 0 0 / 0.6); /* dialog / sheet scrim */
+  --bless-color-media-bg: #1a1b1d; /* lightbox panel, always dark */
+
+  color-scheme: light;
 
   /* ---- typography ---- */
   --bless-font-sans:
@@ -91,6 +95,40 @@
   --bless-z-bg: -1;
   --bless-z-nav: 100;
   --bless-z-modal: 1000;
+}
+
+/* ---- dark theme ----
+ * Follows the OS unless data-theme is set on <html>:
+ *   <html data-theme="dark"> forces dark, data-theme="light" forces light.
+ * Accent family is unchanged; greys invert; shadows deepen.
+ */
+:root:not([data-theme="light"]) {
+  @media (prefers-color-scheme: dark) {
+    --bless-color-text: #e8e9ea;
+    --bless-color-text-muted: #9aa4ad;
+    --bless-color-bg: #17181a;
+    --bless-color-surface: #232529;
+    --bless-color-surface-2: #2a2d32;
+    --bless-color-watermark: #24262a;
+    --bless-color-border: #2f3237;
+    --bless-color-rule: #e8e9ea;
+    --bless-color-backdrop: rgb(0 0 0 / 0.75);
+    --bless-shadow-md: 0 10px 25px rgb(0 0 0 / 0.7);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bless-color-text: #e8e9ea;
+  --bless-color-text-muted: #9aa4ad;
+  --bless-color-bg: #17181a;
+  --bless-color-surface: #232529;
+  --bless-color-surface-2: #2a2d32;
+  --bless-color-watermark: #24262a;
+  --bless-color-border: #2f3237;
+  --bless-color-rule: #e8e9ea;
+  --bless-color-backdrop: rgb(0 0 0 / 0.75);
+  --bless-shadow-md: 0 10px 25px rgb(0 0 0 / 0.7);
+  color-scheme: dark;
 }
 
 /* single breakpoint, matches source site: `@media (max-width: 800px)` */

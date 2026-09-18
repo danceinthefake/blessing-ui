@@ -86,3 +86,6 @@ export { default as BlessCarousel } from "./components/BlessCarousel.vue";
 export { default as BlessResizable } from "./components/BlessResizable.vue";
 export { default as BlessNavigationMenu } from "./components/BlessNavigationMenu.vue";
 export type { BlessNavMenuItem } from "./components/BlessNavigationMenu.vue";
+export { default as BlessThemeToggle } from "./components/BlessThemeToggle.vue";
+export { useTheme } from "./composables/useTheme";
+export type { BlessTheme } from "./composables/useTheme";

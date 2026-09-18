@@ -184,7 +184,7 @@ function onKey(e: KeyboardEvent) {
     position: fixed;
     inset: 0;
     z-index: calc(var(--bless-z-nav) - 1);
-    background: rgb(0 0 0 / 0.4);
+    background: var(--bless-color-backdrop);
   }
 }
 </style>

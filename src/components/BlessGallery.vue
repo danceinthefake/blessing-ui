@@ -132,8 +132,8 @@ function onKey(e: KeyboardEvent) {
 }
 
 .bless-gallery__modal .bless-modal__panel {
-  background: var(--bless-color-text);
-  color: var(--bless-color-on-accent);
+  background: var(--bless-color-media-bg);
+  color: #fff;
 }
 .bless-gallery__modal .bless-modal__body {
   padding: 0;

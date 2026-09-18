@@ -17,6 +17,7 @@ import {
   useToast,
   type BlessMenuItem,
   type Placement,
+  BlessThemeToggle,
 } from "blessing-ui";
 
 const placements: Placement[] = [
@@ -99,10 +100,13 @@ const viewMenu: BlessMenuItem[] = [
 <template>
   <main class="pg">
     <h1>Blessing UI — floating</h1>
-    <p>
-      <a href="/">← components</a> · <a href="/forms.html">forms</a> ·
-      <a href="/stage.html">stage</a>
-    </p>
+    <div class="row" style="align-items: center">
+      <p>
+        <a href="/">← components</a> · <a href="/forms.html">forms</a> ·
+        <a href="/stage.html">stage</a>
+      </p>
+      <BlessThemeToggle />
+    </div>
 
     <section>
       <h2>Popover</h2>
