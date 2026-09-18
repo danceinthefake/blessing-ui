@@ -12,3 +12,4 @@ export { default as BlessStage } from "./components/BlessStage.vue";
 export { default as BlessSidebarNav } from "./components/BlessSidebarNav.vue";
 export type { BlessNavItem } from "./components/BlessSidebarNav.vue";
 export { useMedia } from "./composables/useMedia";
+export { default as BlessBackground } from "./components/BlessBackground.vue";
