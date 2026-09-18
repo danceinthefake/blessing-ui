@@ -1,0 +1,27 @@
+playground/App.vue
+  s_71efa235425cb6::t_e0e1dbde9288a0 120,129,154,176,195,207,232,250,270,288,308,331,336,351,356,364,378,387,403,418,434
+playground/Composite.vue
+  s_71efa235425cb6::t_ca05dcd3990139 128,155,184,212,242,257,270,302,343
+playground/Floating.vue
+  s_71efa235425cb6::t_43c12811022658 108,133,148,170,188,210,228,256,269
+playground/Forms.vue
+  s_71efa235425cb6::t_ddcf27c14a9031 52,61,99,119,141,159,169,201,214,241,260,276,291,317
+playground/pg.css
+  s_71efa235425cb6::t_663ea15d05d230 16-17
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "ea90acffc9710a7bba0b29df711340705ebd527c",
+  "prompts": {},
+  "sessions": {
+    "s_71efa235425cb6": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e2efbbcd-f490-4508-bdc9-ca03144faebe",
+        "model": "unknown"
+      },
+      "human_author": "Hafidz Bahtiar <hafidz.bahtiar@hypefast.id>"
+    }
+  }
+}
