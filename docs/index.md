@@ -7,7 +7,7 @@ hero:
   image:
     src: /logo-thin.svg
     alt: Blessing UI
-  tagline: 105 Vue 3 components on native platform features. Tokens only, no Tailwind, vue is the only dependency.
+  tagline: A Vue 3 component library with a face. Thin type, skewed labels, and the browser's own parts underneath.
   actions:
     - theme: brand
       text: Get started
@@ -19,12 +19,12 @@ hero:
       text: GitHub
       link: https://github.com/danceinthefake/blessing-ui
 features:
-  - title: Native first
-    details: "&lt;dialog&gt;, Popover API, &lt;details&gt;, native form controls, Intl dates, scroll-snap. No positioning, date or table library."
-  - title: Tokens only
-    details: Every component reads --bless-* custom properties. Theme by overriding them; dark mode is a token swap.
-  - title: shadcn parity
-    details: Every component on the shadcn/ui list, re-implemented minimally — not wrapped. Plus the conversation set and a chart frame.
-  - title: Accessible defaults
-    details: Focus rings, ARIA roles on menus / dialogs / grids / tablists, AA contrast, prefers-reduced-motion.
+  - title: One angle
+    details: Every label, tab, button and badge leans at the same ten degrees. No rounded corners, no drop shadows — a hard plate offset behind. You recognise it across the room.
+  - title: One accent
+    details: Grey does the work; pink-red says what matters. Hover is a fade, not a bounce. Dark mode is the same greys turned over — one token swap, nothing re-drawn.
+  - title: Built on the platform
+    details: "&lt;dialog&gt;, the Popover API, &lt;details&gt;, native form controls, Intl dates, scroll-snap. When the browser already has it, Blessing styles it instead of rebuilding it."
+  - title: Nothing to configure
+    details: 123 components, one peer dependency, one stylesheet. Theme by overriding custom properties. Import what you use; the rest never ships.
 ---
