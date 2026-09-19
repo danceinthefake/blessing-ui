@@ -56,6 +56,7 @@ export default defineConfig({
             { text: "useAnimateOnScroll", link: "/guide/animate-on-scroll" },
             { text: "useAnimateOnScroll", link: "/guide/animate-on-scroll" },
             { text: "Brand", link: "/guide/brand" },
+            { text: "Story", link: "/guide/story" },
           ],
         },
       ],
