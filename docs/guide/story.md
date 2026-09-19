@@ -30,7 +30,7 @@ The source is a marketing site; a library has to do more. Everything below is ou
 - **Dark mode.** The same greys turned over, one token swap. Thin type steps up a weight because hairlines read thinner light-on-dark.
 - **Tokens.** Every value the site hard-coded became a `--bless-*` custom property, so the look can be retuned without touching a component.
 - **The platform.** `<dialog>`, the Popover API, `<details>`, native form controls, `Intl` dates, scroll-snap — the browser's own parts, styled rather than rebuilt.
-- **Breadth.** The site needed a nav, a list and a modal. The library has 129 components, from a button to a data table to a chat thread.
+- **Breadth.** The site needed a nav, a list and a modal. The library has 129 components, from a button to a data table to a chat thread. Coverage was checked against the component lists of [shadcn/ui](https://ui.shadcn.com/) and [PrimeVue](https://primevue.org/) so nothing obvious was missing; every component here is its own implementation, and nothing from either project is used.
 
 ## What was not taken
 

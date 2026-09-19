@@ -319,3 +319,5 @@ Design principles and roadmap: [DESIGN.md](./DESIGN.md).
 Code and design are [MIT](LICENSE).
 
 The name of the anime this project takes its look from, its characters and its artwork belong to their respective owners and are not covered by this licence. Blessing UI is an independent fan project — see the [story](docs/guide/story.md).
+
+Component coverage was checked against the lists of [shadcn/ui](https://ui.shadcn.com/) and [PrimeVue](https://primevue.org/); every component is an independent implementation and nothing from either project is used. Both names belong to their owners.
