@@ -109,7 +109,7 @@ import {
 | `BlessCheckbox`                    | Native checkbox                       | `v-model` (bool or array), `value`, `indeterminate`, `description`                                                                    |
 | `BlessRadioGroup` / `BlessRadio`   | Native radios                         | group `v-model`, `label`, `orientation`; radio `value`, `description`                                                                 |
 | `BlessSwitch`                      | `role=switch` toggle                  | `v-model`, `size`, `labelPosition`                                                                                                    |
-| `BlessSelect`                      | Styled native `<select>`              | `v-model`, `options` (groups ok), `placeholder`, `size`, `error`                                                                      |
+| `BlessSelect`                      | Styled native `<select>` (picker styled too on Chrome 135+)              | `v-model`, `options` (groups ok), `placeholder`, `size`, `error`                                                                      |
 | `BlessSlider`                      | Native range                          | `v-model`, `min`, `max`, `step`, `showValue`, `format`                                                                                |
 | `BlessToggle` / `BlessToggleGroup` | Pressed buttons                       | toggle `v-model:pressed`, `value`; group `v-model`, `type` single/multiple                                                            |
 | `BlessCombobox`                    | Searchable select                     | `v-model`, `options`, `multiple`, `creatable` (emits `create`), `size`                                                                |
