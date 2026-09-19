@@ -73,7 +73,7 @@ import {
 
 ## Components
 
-75 components across eight groups. Every one styles itself from `--bless-*` tokens and ships with a test and a playground section.
+79 components across eight groups. Every one styles itself from `--bless-*` tokens and ships with a test and a docs page.
 
 ### Primitives
 
@@ -247,8 +247,7 @@ Durations collapse to `0s` under `prefers-reduced-motion`. Tailwind v4 users can
 ```sh
 mise install        # node 24, pnpm 12
 pnpm install
-pnpm dev            # playground: http://localhost:5173 (+ /forms.html, /floating.html, /composite.html, /chat.html, /stage.html)
-pnpm docs:dev       # docs site (VitePress): demos + generated props tables
+pnpm dev            # docs site (VitePress) with live demos against src/ — http://localhost:5173
 pnpm docs:meta      # regenerate docs/.vitepress/meta.json from the components (vue-component-meta)
 pnpm docs:pages     # scaffold a docs page for any component that lacks one
 pnpm test           # vitest + jsdom

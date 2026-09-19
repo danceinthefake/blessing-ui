@@ -23,7 +23,7 @@
     "./tokens.css": "./tokens.css"
   },
   "scripts": {
-    "dev": "vite --config playground/vite.config.ts",
+    "dev": "vitepress dev docs",
     "build": "vue-tsc --noEmit && vite build",
     "test": "vitest run",
     "typecheck": "vue-tsc --noEmit",

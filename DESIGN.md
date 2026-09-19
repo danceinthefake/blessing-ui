@@ -164,7 +164,7 @@ Decision: **Unovis** (`@unovis/vue`) as the documented, consumer-installed pairi
 
 ### Order
 
-5 → 6 → 7. Inside each phase, build order = list order. Every component: one test file, playground section, README row, checkbox flipped.
+5 → 6 → 7. Inside each phase, build order = list order. Every component: one test file, docs page with demo, README row, checkbox flipped.
 
 ## 4. API conventions
 
@@ -186,11 +186,10 @@ blessing-ui/
     components/*.vue
     composables/        useFocusTrap, useHashModal, useMedia(800px)
   docs/                 VitePress site ✅ — components/*.md (demo + generated API), demos/*.vue, guide/
-  playground/           Vite app, one page per component
   package.json          exports: ./tokens.css, . (ESM), ./style.css
 ```
 
-Tooling: Vite + `vite-plugin-dts`, Vitest + `@vue/test-utils` (one smoke test per component), no Storybook — playground pages for dev, VitePress docs site for the showcase (`docs/`, GitHub Pages via `.github/workflows/docs.yml`).
+Tooling: Vite + `vite-plugin-dts`, Vitest + `@vue/test-utils` (one smoke test per component), no Storybook — the VitePress docs site is both dev playground and showcase (`docs/`, GitHub Pages via `.github/workflows/docs.yml`).
 
 ## 6. Non-goals
 

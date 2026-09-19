@@ -16,5 +16,5 @@
       "blessing-ui/style.css": ["./src/style.css"]
     }
   },
-  "include": ["src", "playground", "vite.config.ts"]
+  "include": ["src", "src/**/*.vue", "docs/demos", "docs/.vitepress/theme", "vite.config.ts"]
 }

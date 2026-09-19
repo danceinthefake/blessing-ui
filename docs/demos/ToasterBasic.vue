@@ -2,6 +2,7 @@
 import { BlessButton, useToast } from "blessing-ui";
 // <BlessToaster /> is mounted once at the app root (this site does it in the theme layout)
 const { toast, success, error, warning, info } = useToast();
+const reload = () => location.reload();
 </script>
 
 <template>
@@ -18,9 +19,7 @@ const { toast, success, error, warning, info } = useToast();
     <BlessButton size="sm" @click="warning('Low disk space')">warning</BlessButton>
     <BlessButton
       size="sm"
-      @click="
-        info({ title: 'Update', action: { label: 'Reload', onClick: () => location.reload() } })
-      "
+      @click="info({ title: 'Update', action: { label: 'Reload', onClick: reload } })"
       >info + action</BlessButton
     >
   </div>
