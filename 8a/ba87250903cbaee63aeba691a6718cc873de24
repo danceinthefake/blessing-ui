@@ -1,0 +1,81 @@
+src/components/BlessExtras4.test.ts
+  s_9ec1000e308ddb::t_990db210567333 1-10,21-22,31-42,46-58,68-77,81-86,89-96,105-109,116-121,136-158
+  s_9ec1000e308ddb::t_4573493c015291 11-20,23-30,59-67,78-80,87-88,97-104,110-115,122-135
+  s_9ec1000e308ddb::t_c431b7f3348c70 43-45
+src/components/BlessTreeTable.vue
+  s_9ec1000e308ddb::t_273a5f84bcf71b 1-23,31-118
+  s_9ec1000e308ddb::t_cdaa0eabce62f3 24-30
+README.md
+  s_9ec1000e308ddb::t_c4979d18f78d06 9,12,80,139-140,155-188,192-209,256,260
+src/components/BlessOrgChart.vue
+  s_9ec1000e308ddb::t_273a5f84bcf71b 1-141
+  s_9ec1000e308ddb::t_6d3c37d43c6fa6 142
+docs/demos/CascadeSelectBasic.vue
+  s_9ec1000e308ddb::t_c4979d18f78d06 1-47
+docs/demos/OrgChartBasic.vue
+  s_9ec1000e308ddb::t_c4979d18f78d06 1-30
+docs/demos/TreeSelectBasic.vue
+  s_9ec1000e308ddb::t_c4979d18f78d06 1-41
+docs/.vitepress/theme/index.ts
+  s_9ec1000e308ddb::t_c4979d18f78d06 5,21
+docs/components/tree-select.md
+  s_9ec1000e308ddb::t_c4979d18f78d06 1-30
+docs/components/dialog-host.md
+  s_9ec1000e308ddb::t_c4979d18f78d06 1-40
+src/index.ts
+  s_9ec1000e308ddb::t_273a5f84bcf71b 164-171
+src/components/BlessDialogHost.vue
+  s_9ec1000e308ddb::t_273a5f84bcf71b 1-35
+src/composables/useDialog.ts
+  s_9ec1000e308ddb::t_4573493c015291 1,32
+  s_9ec1000e308ddb::t_273a5f84bcf71b 2-31,33-49
+docs/.vitepress/components.ts
+  s_9ec1000e308ddb::t_c4979d18f78d06 51-60,120-126,184
+src/components/BlessCascadeSelect.vue
+  s_9ec1000e308ddb::t_273a5f84bcf71b 1-135,137-293
+  s_9ec1000e308ddb::t_9dc8351284f252 136
+docs/components/tree-table.md
+  s_9ec1000e308ddb::t_c4979d18f78d06 1-30
+src/components/cascade.ts
+  s_9ec1000e308ddb::t_273a5f84bcf71b 1-6
+src/components/BlessOrgChartNode.vue
+  s_9ec1000e308ddb::t_273a5f84bcf71b 1-6,8-38,40-43
+  s_9ec1000e308ddb::t_0d1c3be476d590 7,39
+docs/demos/TreeTableBasic.vue
+  s_9ec1000e308ddb::t_c4979d18f78d06 1-58
+DESIGN.md
+  s_9ec1000e308ddb::t_c4979d18f78d06 204,206-210
+src/components/BlessTreeSelect.vue
+  s_9ec1000e308ddb::t_ab4715a4513674 58
+  s_9ec1000e308ddb::t_273a5f84bcf71b 1-57,59-170
+docs/guide/story.md
+  s_9ec1000e308ddb::t_c4979d18f78d06 33
+docs/components/cascade-select.md
+  s_9ec1000e308ddb::t_c4979d18f78d06 1-30
+docs/components/org-chart.md
+  s_9ec1000e308ddb::t_c4979d18f78d06 1-36
+docs/index.md
+  s_9ec1000e308ddb::t_c4979d18f78d06 29
+docs/demos/DialogHostBasic.vue
+  s_9ec1000e308ddb::t_c4979d18f78d06 1-54
+docs/.vitepress/meta.json
+  s_9ec1000e308ddb::t_96564b2a742fcb 1017-1093,2033-2038,3990-4069,6573-6717
+docs/.vitepress/theme/Demo.vue
+  s_9ec1000e308ddb::t_ad255ca6111105 51
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "8aba87250903cbaee63aeba691a6718cc873de24",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "claude-opus-5"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
