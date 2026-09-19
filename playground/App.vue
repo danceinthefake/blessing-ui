@@ -449,6 +449,17 @@ import {
     </section>
 
     <section>
+      <h2>ThemeToggle</h2>
+      <div class="row" style="align-items: center">
+        <BlessThemeToggle />
+        <BlessThemeToggle mode="group" />
+        <span style="font-size: var(--bless-text-xs); color: var(--bless-color-text-muted)"
+          >switch (default) · group: light / system / dark</span
+        >
+      </div>
+    </section>
+
+    <section>
       <h2>Spinner</h2>
       <div class="row" style="align-items: center">
         <BlessSpinner size="sm" /> <BlessSpinner /> <BlessSpinner size="lg" />

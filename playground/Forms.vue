@@ -50,7 +50,7 @@ function onSubmit(d: FormData) {
     <h1>Blessing UI — forms</h1>
     <div class="row" style="align-items: center">
       <p><a href="/">← components</a> · <a href="/stage.html">stage</a></p>
-      <BlessThemeToggle mode="group" />
+      <BlessThemeToggle />
     </div>
 
     <section>
