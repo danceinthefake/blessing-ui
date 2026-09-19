@@ -165,3 +165,7 @@
 .VPHero .name {
   font-family: var(--bless-font-sans);
 }
+.dark .light-only,
+html:not(.dark) .dark-only {
+  display: none;
+}
