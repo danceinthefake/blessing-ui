@@ -1,0 +1,95 @@
+src/components/BlessOrderList.vue
+  s_9ec1000e308ddb::t_806102b2cde81f 1-153
+docs/components/bottom-tabs.md
+  s_9ec1000e308ddb::t_4d8059f798ca48 1-30
+docs/demos/SpeedDialBasic.vue
+  s_9ec1000e308ddb::t_4d8059f798ca48 1-16
+src/composables/useScrollSpy.ts
+  s_9ec1000e308ddb::t_806102b2cde81f 1-35
+src/components/BlessVirtualScroller.vue
+  s_9ec1000e308ddb::t_806102b2cde81f 1-102
+src/components/BlessExtras2.test.ts
+  s_9ec1000e308ddb::t_521b5633a52d23 4-5
+  s_9ec1000e308ddb::t_4d8059f798ca48 29-32,44-46,96-102,114-118,141-143
+  s_9ec1000e308ddb::t_f0537af9546631 64
+  s_9ec1000e308ddb::t_2245f9b2bcd125 1-3,6-28,33-43,47-63,65-95,103-113,119-140,144-148
+docs/guide/scroll-spy.md
+  s_9ec1000e308ddb::t_4d8059f798ca48 1-26
+docs/demos/VirtualScrollerBasic.vue
+  s_9ec1000e308ddb::t_4d8059f798ca48 1-8,10-36
+  s_9ec1000e308ddb::t_1d522f7d41e86e 9
+docs/demos/TourBasic.vue
+  s_9ec1000e308ddb::t_4d8059f798ca48 1-29
+docs/components/mockup.md
+  s_9ec1000e308ddb::t_4d8059f798ca48 1-30
+docs/components/order-list.md
+  s_9ec1000e308ddb::t_4d8059f798ca48 1-30
+docs/demos/InputMaskBasic.vue
+  s_9ec1000e308ddb::t_4d8059f798ca48 1-31
+src/components/BlessSpeedDial.vue
+  s_9ec1000e308ddb::t_806102b2cde81f 1-212
+DESIGN.md
+  s_9ec1000e308ddb::t_4d8059f798ca48 175-185
+docs/demos/PickListBasic.vue
+  s_9ec1000e308ddb::t_4d8059f798ca48 1-24
+src/components/BlessBottomTabs.vue
+  s_9ec1000e308ddb::t_806102b2cde81f 1-176
+README.md
+  s_9ec1000e308ddb::t_4d8059f798ca48 5,8,76,97,121-123,146-148,177,225,229
+docs/components/virtual-scroller.md
+  s_9ec1000e308ddb::t_4d8059f798ca48 1-30
+docs/demos/MockupBasic.vue
+  s_9ec1000e308ddb::t_4d8059f798ca48 1-20
+docs/demos/BottomTabsBasic.vue
+  s_9ec1000e308ddb::t_4d8059f798ca48 1-30
+docs/demos/ScrollSpyBasic.vue
+  s_9ec1000e308ddb::t_4d8059f798ca48 1-33
+src/components/BlessPickList.vue
+  s_9ec1000e308ddb::t_806102b2cde81f 1,3-15,18-125
+  s_9ec1000e308ddb::t_8105f8ece2eede 2,16-17
+src/index.ts
+  s_9ec1000e308ddb::t_521b5633a52d23 124
+  s_9ec1000e308ddb::t_806102b2cde81f 123,125-135
+docs/.vitepress/components.ts
+  s_9ec1000e308ddb::t_4d8059f798ca48 12,43-45,80-90,127
+docs/.vitepress/config.ts
+  s_9ec1000e308ddb::t_4d8059f798ca48 39
+docs/components/input-mask.md
+  s_9ec1000e308ddb::t_4d8059f798ca48 1-30
+docs/demos/OrderListBasic.vue
+  s_9ec1000e308ddb::t_4d8059f798ca48 1-17
+src/components/mask.ts
+  s_9ec1000e308ddb::t_521b5633a52d23 1-25
+docs/components/speed-dial.md
+  s_9ec1000e308ddb::t_4d8059f798ca48 1-30
+src/components/BlessTour.vue
+  s_9ec1000e308ddb::t_806102b2cde81f 1-59,62-172
+  s_9ec1000e308ddb::t_8105f8ece2eede 60-61
+docs/components/tour.md
+  s_9ec1000e308ddb::t_4d8059f798ca48 1-30
+src/components/BlessInputMask.vue
+  s_9ec1000e308ddb::t_521b5633a52d23 4,23
+  s_9ec1000e308ddb::t_806102b2cde81f 1-3,5-22,24-35
+src/components/BlessMockup.vue
+  s_9ec1000e308ddb::t_806102b2cde81f 1-121
+docs/components/pick-list.md
+  s_9ec1000e308ddb::t_4d8059f798ca48 1-30
+docs/.vitepress/meta.json
+  s_9ec1000e308ddb::t_6b20823dd11924 494-549,2276-2312,2874-2906,3013-3063,3157-3209,4097-4165,4982-5042,5117-5167
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "6e545c36acd89714123f51416f7fec5706116326",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "claude-opus-5"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
