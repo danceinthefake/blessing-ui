@@ -63,7 +63,11 @@ const showCode = ref(false);
 .demo__preview .col {
   display: grid;
   gap: 8px;
+  width: 100%;
   max-width: 400px;
+}
+.demo__preview .row > .col {
+  flex: 1 1 200px;
 }
 .demo__bar {
   display: flex;

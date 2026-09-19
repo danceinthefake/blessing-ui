@@ -23,10 +23,13 @@ const options = [
       />
     </div>
     <div class="col">
-      <BlessSelect size="sm" :options="[{ value: 1, label: 'sm' }]" :model-value="1" />
+      <BlessLabel for="d-sm">Small</BlessLabel>
+      <BlessSelect id="d-sm" size="sm" :options="[{ value: 1, label: 'sm' }]" :model-value="1" />
     </div>
     <div class="col">
+      <BlessLabel for="d-lg">Large</BlessLabel>
       <BlessSelect
+        id="d-lg"
         size="lg"
         :options="[{ value: 1, label: 'lg' }]"
         :model-value="1"

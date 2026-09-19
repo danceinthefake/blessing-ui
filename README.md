@@ -100,23 +100,23 @@ import {
 
 ### Forms
 
-| Component                          | Purpose                               | Key props / slots                                                                                                                     |
-| ---------------------------------- | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
-| `BlessLabel`                       | `<label>` with required mark and hint | `for`, `required`, `hint`                                                                                                             |
-| `BlessInput`                       | Text-like input                       | `v-model`, `type`, `size`, `invalid`, `description`, `error`; `#prefix` `#suffix`                                                     |
-| `BlessInputGroup`                  | Shared surface: addons + any control  | `size`, `disabled`; `#prefix` `#suffix` (text or `BlessButton`), default = `BlessInput`/`BlessSelect`                                 |
-| `BlessTextarea`                    | Auto-growing textarea                 | `v-model`, `rows`, `autogrow`, `maxlength`, `counter`, `error`                                                                        |
-| `BlessCheckbox`                    | Native checkbox                       | `v-model` (bool or array), `value`, `indeterminate`, `description`                                                                    |
-| `BlessRadioGroup` / `BlessRadio`   | Native radios                         | group `v-model`, `label`, `orientation`; radio `value`, `description`                                                                 |
-| `BlessSwitch`                      | `role=switch` toggle                  | `v-model`, `size`, `labelPosition`                                                                                                    |
-| `BlessSelect`                      | Styled native `<select>` (picker styled too on Chrome 135+)              | `v-model`, `options` (groups ok), `placeholder`, `size`, `error`                                                                      |
-| `BlessSlider`                      | Native range                          | `v-model`, `min`, `max`, `step`, `showValue`, `format`                                                                                |
-| `BlessToggle` / `BlessToggleGroup` | Pressed buttons                       | toggle `v-model:pressed`, `value`; group `v-model`, `type` single/multiple                                                            |
-| `BlessCombobox`                    | Searchable select                     | `v-model`, `options`, `multiple`, `creatable` (emits `create`), `size`                                                                |
-| `BlessDatePicker`                  | Calendar in a popover                 | `v-model` ISO string or `[start,end]`, `range`, `min`, `max`, `locale`, `nativeOnTouch`                                               |
-| `BlessCalendar`                    | Month grid                            | same as DatePicker plus `weekStart`, `disabledDates`, `month`                                                                         |
-| `BlessInputOTP`                    | One-time code cells                   | `v-model`, `length`, `numeric`, `separators`, `masked`; emits `complete`                                                              |
-| `BlessForm` / `BlessField`         | Constraint-API form + field wiring    | form emits `submit(FormData)` / `invalid`; field `label`, `required`, `description`, `error`; `#default="{ id, error, describedby }"` |
+| Component                          | Purpose                                                     | Key props / slots                                                                                                                     |
+| ---------------------------------- | ----------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| `BlessLabel`                       | `<label>` with required mark and hint                       | `for`, `required`, `hint`                                                                                                             |
+| `BlessInput`                       | Text-like input                                             | `v-model`, `type`, `size`, `invalid`, `description`, `error`; `#prefix` `#suffix`                                                     |
+| `BlessInputGroup`                  | Shared surface: addons + any control                        | `size`, `disabled`; `#prefix` `#suffix` (text or `BlessButton`), default = `BlessInput`/`BlessSelect`                                 |
+| `BlessTextarea`                    | Auto-growing textarea                                       | `v-model`, `rows`, `autogrow`, `maxlength`, `counter`, `error`                                                                        |
+| `BlessCheckbox`                    | Native checkbox                                             | `v-model` (bool or array), `value`, `indeterminate`, `description`                                                                    |
+| `BlessRadioGroup` / `BlessRadio`   | Native radios                                               | group `v-model`, `label`, `orientation`; radio `value`, `description`                                                                 |
+| `BlessSwitch`                      | `role=switch` toggle                                        | `v-model`, `size`, `labelPosition`                                                                                                    |
+| `BlessSelect`                      | Styled native `<select>` (picker styled too on Chrome 135+) | `v-model`, `options` (groups ok), `placeholder`, `size`, `error`                                                                      |
+| `BlessSlider`                      | Native range                                                | `v-model`, `min`, `max`, `step`, `showValue`, `format`                                                                                |
+| `BlessToggle` / `BlessToggleGroup` | Pressed buttons                                             | toggle `v-model:pressed`, `value`; group `v-model`, `type` single/multiple                                                            |
+| `BlessCombobox`                    | Searchable select                                           | `v-model`, `options`, `multiple`, `creatable` (emits `create`), `size`                                                                |
+| `BlessDatePicker`                  | Calendar in a popover                                       | `v-model` ISO string or `[start,end]`, `range`, `min`, `max`, `locale`, `nativeOnTouch`                                               |
+| `BlessCalendar`                    | Month grid                                                  | same as DatePicker plus `weekStart`, `disabledDates`, `month`                                                                         |
+| `BlessInputOTP`                    | One-time code cells                                         | `v-model`, `length`, `numeric`, `separators`, `masked`; emits `complete`                                                              |
+| `BlessForm` / `BlessField`         | Constraint-API form + field wiring                          | form emits `submit(FormData)` / `invalid`; field `label`, `required`, `description`, `error`; `#default="{ id, error, describedby }"` |
 
 ### Layout & navigation
 

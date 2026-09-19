@@ -146,10 +146,15 @@ const isGroup = (o: unknown): o is { label: string; options: BlessOption<T>[] } 
   .bless-select__control::picker(select) {
     appearance: base-select;
   }
+  .bless-select__control {
+    display: flex;
+    align-items: center;
+  }
   .bless-select__control::picker-icon {
     display: none;
   }
   .bless-select__control::picker(select) {
+    min-width: anchor-size(self-inline);
     margin-top: var(--bless-space-1);
     padding: var(--bless-space-1) 0;
     border: var(--bless-border-width) solid var(--bless-color-border);
@@ -160,7 +165,8 @@ const isGroup = (o: unknown): o is { label: string; options: BlessOption<T>[] } 
     box-shadow: var(--bless-shadow-md);
   }
   .bless-select__control option {
-    padding: var(--bless-space-2) var(--bless-space-3);
+    padding: var(--bless-space-1) var(--bless-space-3);
+    line-height: var(--bless-leading-normal);
     font: inherit;
     font-size: var(--_fs);
     font-weight: var(--bless-font-weight-normal);
