@@ -1,8 +1,5 @@
 <p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="docs/public/logo-dark.svg">
-    <img src="docs/public/logo.svg" width="96" height="96" alt="">
-  </picture>
+  <img src="docs/public/logo.svg" width="96" height="96" alt="">
 </p>
 
 # Blessing UI

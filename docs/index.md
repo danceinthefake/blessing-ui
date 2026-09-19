@@ -5,7 +5,7 @@ hero:
   name: Blessing UI
   text: Skewed, grey, one pink-red accent.
   image:
-    src: /logo-thin.svg
+    src: /logo.svg
     alt: Blessing UI
   tagline: A Vue 3 component library with a face. Thin type, skewed labels, and the browser's own parts underneath.
   actions:

@@ -35,7 +35,7 @@ export default defineConfig({
     ],
   ],
   themeConfig: {
-    logo: { light: "/logo.svg", dark: "/logo-dark.svg" },
+    logo: "/logo.svg",
     siteTitle: "Blessing",
     nav: [
       { text: "Guide", link: "/guide/install" },
@@ -53,7 +53,6 @@ export default defineConfig({
             { text: "Fonts", link: "/guide/fonts" },
             { text: "Conventions", link: "/guide/conventions" },
             { text: "useScrollSpy", link: "/guide/scroll-spy" },
-            { text: "useAnimateOnScroll", link: "/guide/animate-on-scroll" },
             { text: "useAnimateOnScroll", link: "/guide/animate-on-scroll" },
             { text: "Brand", link: "/guide/brand" },
             { text: "Story", link: "/guide/story" },

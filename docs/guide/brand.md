@@ -2,11 +2,11 @@
 
 Blessing UI's identity is the design system itself — nothing is added for the logo that a component doesn't already use. Where the system came from is the [story](./story).
 
-<div class="row" style="align-items:center;gap:24px;margin:16px 0 8px">
-  <img src="/logo-mono.svg" width="96" height="96" alt="" style="color:var(--bless-color-text)">
-  <img src="/logo-mono.svg" width="48" height="48" alt="" style="color:var(--bless-color-text)">
-  <img src="/logo-mono.svg" width="24" height="24" alt="" style="color:var(--bless-color-text)">
-  <img src="/logo-thin.svg" width="96" height="96" alt="">
+<div style="display:flex;align-items:center;gap:24px;margin:16px 0 8px">
+  <img src="/logo.svg" width="96" height="96" alt="">
+  <img src="/logo.svg" width="48" height="48" alt="">
+  <img src="/logo.svg" width="24" height="24" alt="">
+  <img src="/logo.svg" width="16" height="16" alt="">
 </div>
 
 ## Five elements
@@ -21,15 +21,13 @@ Blessing UI's identity is the design system itself — nothing is added for the 
 
 ## Mark
 
-Two skewed plates, the back one in the text colour, the front in the accent, with a bold counter-skewed **B**. Legible at 16px (favicon). The hero variant knocks a Roboto Thin B out of a single plate and is for large sizes only (≥ 96px).
+Five skewed plates in a ring. Each petal is the same parallelogram every label in the system uses, rotated 72° apart, in the one accent. It answers the name: the fictional circle Blessing is named after has a five-petal flower for a logo — see the [story](./story). Ours is re-drawn from the system's own geometry, one colour, no centre; nothing of theirs is in it.
 
-| File                              | Use                                                |
-| --------------------------------- | -------------------------------------------------- |
-| [`logo.svg`](/logo.svg)           | light backgrounds                                  |
-| [`logo-dark.svg`](/logo-dark.svg) | dark backgrounds (muted back plate)                |
-| [`logo-mono.svg`](/logo-mono.svg) | inline `<svg>`/`<img>` where `currentColor` is set |
-| [`logo-thin.svg`](/logo-thin.svg) | hero / OG only                                     |
-| [`favicon.svg`](/favicon.svg)     | tab icon                                           |
+| File                              | Use                                                                  |
+| --------------------------------- | -------------------------------------------------------------------- |
+| [`logo.svg`](/logo.svg)           | any background — the accent works on light and dark                  |
+| [`logo-mono.svg`](/logo-mono.svg) | inline `<svg>` where `currentColor` should drive it (footers, print) |
+| [`favicon.svg`](/favicon.svg)     | tab icon                                                             |
 
 ## Wordmark
 
@@ -39,8 +37,8 @@ Two skewed plates, the back one in the text colour, the front in the accent, wit
 
 ## Rules
 
-- Keep the skew. Don't unskew, rotate, round, or outline the plates.
-- One accent. No gradients, no second colour; the back plate is always a grey from the text scale.
-- Clear space = the height of the front plate's offset (8px at 64px) on all sides.
-- Minimum size 16px for the mark, 96px for the thin variant.
+- Keep the skew and the five. Don't unskew, round, outline, or re-space the petals; don't add a centre.
+- One accent. No gradients, no second colour, no per-petal colours.
+- Clear space = one petal width on all sides.
+- Minimum size 16px.
 - Don't set the wordmark in any weight other than 100/300, and don't letterspace it.
