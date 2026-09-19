@@ -15,7 +15,7 @@ const props = withDefaults(
     /** module colour — dark on light scans best, so this ignores the theme by default */
     color?: string;
     background?: string;
-    /** skewed accent frame */
+    /** skewed accent plate behind the tile */
     frame?: boolean;
     label?: string;
   }>(),
@@ -58,17 +58,20 @@ const view = computed(() => n.value + props.border * 2);
 .bless-qr__svg {
   display: block;
 }
-/* modules stay square (scanners), only the frame skews */
+/* modules stay square (scanners); the frame is a skewed accent plate behind the tile */
 .bless-qr--frame {
   position: relative;
-  padding: var(--bless-space-2);
+  isolation: isolate;
 }
 .bless-qr--frame::before {
   content: "";
   position: absolute;
   inset: 0;
-  border: var(--bless-border-width) solid var(--bless-color-accent);
-  transform: skewX(var(--bless-skew));
-  pointer-events: none;
+  background: var(--bless-color-accent);
+  transform: translate(8px, 8px) skewX(var(--bless-skew));
+  z-index: -1;
+}
+.bless-qr--frame .bless-qr__svg {
+  position: relative;
 }
 </style>

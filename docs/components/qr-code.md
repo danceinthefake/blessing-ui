@@ -32,7 +32,7 @@ import { encode } from "uqr";
 const matrix = encode("https://…", { ecc: "M" }).data; // boolean[][]
 ```
 
-Modules stay square and default to dark-on-white regardless of theme (inverted codes scan poorly); only the optional `frame` skews.
+Modules stay square and default to dark-on-white regardless of theme (inverted codes scan poorly); only the optional `frame` adds a skewed accent plate behind the tile.
 
 ## Usage
 

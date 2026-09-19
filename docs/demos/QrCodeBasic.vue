@@ -13,6 +13,6 @@ const matrix = computed(() => encode(text.value, { ecc: "M" }).data);
       <small>{{ matrix.length }}×{{ matrix.length }} modules, ECC M</small>
     </div>
     <BlessQrCode :matrix :value="text" />
-    <BlessQrCode :matrix :value="text" :size="120" frame color="#ff0054" />
+    <BlessQrCode :matrix :value="text" :size="120" frame />
   </div>
 </template>
