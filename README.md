@@ -6,10 +6,10 @@
 
 Vue 3 component library and design tokens. Grey-scale UI, one pink-red accent, skewed labels instead of rounded corners, thin oversized watermark type, opacity-fade hovers. The look was re-derived from one anime's official site, ideas only — the [story](docs/guide/story.md) says which, what was kept, and what was not taken.
 
-- 123 components — from button to data table to chat — styled only through `--bless-*` custom properties, no Tailwind dependency
+- 129 components — from button to data table to chat — styled only through `--bless-*` custom properties, no Tailwind dependency
 - Native platform first: `<dialog>`, Popover API, `<details>`, native form controls, `Intl` dates, scroll-snap — no positioning, date or table library
 - Accessible defaults: focus rings, ARIA tablist/dialog/tables, `prefers-reduced-motion`
-- ESM, tree-shakable, `vue` as the only required peer (`@tiptap/vue-3` optional, for `BlessEditor`). ~220 KB JS / 150 KB CSS raw, ~53 KB / 20 KB gzip for everything (tree-shakes per component)
+- ESM, tree-shakable, `vue` as the only required peer (`@tiptap/vue-3` optional, for `BlessEditor`). ~235 KB JS / 160 KB CSS raw, ~56 KB / 21 KB gzip for everything (tree-shakes per component)
 
 ## Install
 
@@ -77,7 +77,7 @@ import {
 
 ## Components
 
-123 components across eight groups. Every one styles itself from `--bless-*` tokens and ships with a test and a docs page.
+129 components across eight groups. Every one styles itself from `--bless-*` tokens and ships with a test and a docs page.
 
 ### Primitives
 
@@ -136,6 +136,8 @@ import {
 | `BlessFieldset`                    | `<fieldset>` + legend                                       | `legend`, `toggleable`, `v-model:collapsed`, `disabled`                                                                                    |
 | `BlessInplace`                     | Click to edit                                               | `v-model:active`, `closable`; `#display` `#content="{close}"`                                                                              |
 | `BlessCompare`                     | Before / after slider                                       | `v-model` 0–100, `orientation`; `#before` `#after`                                                                                         |
+| `BlessCascadeSelect`               | Nested options, one column per level                        | `v-model`, `options[{value,label,children}]`, `showPath`, `separator`, `size`; emits `select(option, path)`                                |
+| `BlessTreeSelect`                  | Tree in a popover                                           | `v-model` id or id[], `nodes`, `multiple`, `leafOnly`, `size`; emits `select`                                                              |
 | `BlessInputMask`                   | Pattern-masked `BlessInput`                                 | `v-model` masked, `mask` (`#` digit `A` letter `*` either), `placeholder`; emits `update:raw`                                              |
 | `BlessOrderList`                   | Reorderable list                                            | `v-model` items, `rowKey`, `buttons`; drag, ↑↓, Alt+arrows; emits `move`; `#default="{item,index}"`                                        |
 | `BlessPickList`                    | Transfer between two listboxes                              | `v-model:source`, `v-model:target`, `sourceLabel`, `targetLabel`, `rows`                                                                   |
@@ -150,58 +152,61 @@ import {
 
 ### Layout & navigation
 
-| Component                                   | Purpose                                  | Key props / slots                                                                                                       |
-| ------------------------------------------- | ---------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| `BlessStage`                                | Page shell, sidebar → drawer under 800px | `v-model:open`; `#sidebar` default `#footer` `#background`                                                              |
-| `BlessSidebarNav`                           | Vertical nav list                        | `items`, `active`; emits `select`; `#item`                                                                              |
-| `BlessNavigationMenu`                       | Horizontal nav with panels               | `items[{label,href,items[]}]`; emits `select`; `#panel`                                                                 |
-| `BlessMenubar`                              | Bar of `BlessDropdownMenu`s              | `label`                                                                                                                 |
-| `BlessSteps`                                | Stepper                                  | `steps[{label,description}]`, `v-model` index, `orientation`, `clickable`; emits `select`                               |
-| `BlessTree` / `BlessTreeItem`               | Nested `<details>` tree                  | `nodes[{label,id,href,icon,children,open,disabled}]`, `v-model:selected`; emits `select`                                |
-| `BlessContainer`                            | Centred max-width box                    | `size` sm/md/lg/full, `padded`, `as`                                                                                    |
-| `BlessStack`                                | Flex row / column                        | `direction`, `gap` token, `align`, `justify`, `wrap`, `as`                                                              |
-| `BlessScrollTop`                            | Back-to-top button                       | `threshold`, `target`, `position`, `label`                                                                              |
-| `BlessToolbar`                              | Start / center / end bar                 | `label`, `surface`; `#start` `#center` `#end`                                                                           |
-| `BlessPanel`                                | Titled box                               | `title`, `toggleable`, `v-model:collapsed`, `surface`; `#actions` `#footer`                                             |
-| `BlessStepper`                              | Steps + panels                           | `steps`, `v-model`, `orientation`, `labels`; `#default="{step,index,next,prev,last}"` `#actions`; emits `finish`        |
-| `BlessSplitButton`                          | Button + menu                            | `label`, `items`, `color`, `variant`, `size`; emits `click` `select`                                                    |
-| `BlessDataView`                             | List / grid + pagination                 | `items`, `pageSize`, `columns`, `v-model:layout`, `rowKey`; `#default="{item,index,layout}"` `#header` `#empty`         |
-| `BlessDeferredContent`                      | Mount on scroll into view                | `rootMargin`, `minHeight`; `#placeholder`; emits `load`                                                                 |
-| `BlessBottomTabs`                           | Mobile bottom nav / dock                 | `items[{label,value,icon,href,badge}]`, `v-model`, `variant` bar/dock, `inline`; emits `select`                         |
-| `BlessSpeedDial`                            | FAB with fan-out actions                 | `actions[{label,value,icon,color}]`, `direction`, `color`, `v-model:open`, `inline`; emits `select`                     |
-| `BlessVirtualScroller`                      | Windowed list (fixed row height)         | `items`, `itemHeight`, `height`, `overscan`, `rowKey`; exposes `scrollTo(i)`; `#default="{item,index}"`                 |
-| `BlessBreadcrumb`                           | Trail                                    | `items[{label,href}]`, `separator`; `#item`                                                                             |
-| `BlessPagination`                           | Page list                                | `v-model`, `total`, `siblings`, `href(page)`                                                                            |
-| `BlessTabs`                                 | ARIA tablist                             | `tabs`, `v-model`, `activation`, `color`; `#default="{tab}"` `#tab`                                                     |
-| `BlessSection` / `BlessWatermark`           | Titled block with giant skewed word      | `title`, `watermark`, `watermarkPosition`, `headingLevel`                                                               |
-| `BlessBackground`                           | Tiled texture layer                      | `src`, `offset`, `mode`, `opacity`                                                                                      |
-| `BlessCard`                                 | Flat surface                             | `label`, `labelColor`, `surface`, `bordered`, `href`; `#media` `#footer`                                                |
-| `BlessList` / `BlessListItem`               | Divided rows                             | item `meta`, `badge`, `href`; `#suffix`                                                                                 |
-| `BlessCollapsible` / `BlessAccordion(Item)` | `<details>` based                        | `v-model:open`, `title`, `disabled`; accordion `type` single/multiple                                                   |
-| `BlessScrollArea`                           | Thin scrollbar + fade                    | `axis`, `fade`, `height`, `width`                                                                                       |
-| `BlessResizable`                            | Two-pane split                           | `v-model` (% of first pane), `direction`, `min`, `max`, `step`; `#a` `#b`                                               |
-| `BlessTable`                                | Typed table, stacks on mobile            | `columns`, `rows`, `rowKey`, `caption`, `striped`, `stack`; `#cell-<key>`                                               |
-| `BlessDataTable`                            | Table + sort/search/select/paginate      | `columns` (+`sortable`, `hideable`), `rows`, `rowKey`, `selectable`, `searchable`, `pageSize`; `#toolbar` `#cell-<key>` |
+| Component                                   | Purpose                                  | Key props / slots                                                                                                          |
+| ------------------------------------------- | ---------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| `BlessStage`                                | Page shell, sidebar → drawer under 800px | `v-model:open`; `#sidebar` default `#footer` `#background`                                                                 |
+| `BlessSidebarNav`                           | Vertical nav list                        | `items`, `active`; emits `select`; `#item`                                                                                 |
+| `BlessNavigationMenu`                       | Horizontal nav with panels               | `items[{label,href,items[]}]`; emits `select`; `#panel`                                                                    |
+| `BlessMenubar`                              | Bar of `BlessDropdownMenu`s              | `label`                                                                                                                    |
+| `BlessSteps`                                | Stepper                                  | `steps[{label,description}]`, `v-model` index, `orientation`, `clickable`; emits `select`                                  |
+| `BlessTree` / `BlessTreeItem`               | Nested `<details>` tree                  | `nodes[{label,id,href,icon,children,open,disabled}]`, `v-model:selected`; emits `select`                                   |
+| `BlessContainer`                            | Centred max-width box                    | `size` sm/md/lg/full, `padded`, `as`                                                                                       |
+| `BlessStack`                                | Flex row / column                        | `direction`, `gap` token, `align`, `justify`, `wrap`, `as`                                                                 |
+| `BlessScrollTop`                            | Back-to-top button                       | `threshold`, `target`, `position`, `label`                                                                                 |
+| `BlessToolbar`                              | Start / center / end bar                 | `label`, `surface`; `#start` `#center` `#end`                                                                              |
+| `BlessPanel`                                | Titled box                               | `title`, `toggleable`, `v-model:collapsed`, `surface`; `#actions` `#footer`                                                |
+| `BlessStepper`                              | Steps + panels                           | `steps`, `v-model`, `orientation`, `labels`; `#default="{step,index,next,prev,last}"` `#actions`; emits `finish`           |
+| `BlessSplitButton`                          | Button + menu                            | `label`, `items`, `color`, `variant`, `size`; emits `click` `select`                                                       |
+| `BlessDataView`                             | List / grid + pagination                 | `items`, `pageSize`, `columns`, `v-model:layout`, `rowKey`; `#default="{item,index,layout}"` `#header` `#empty`            |
+| `BlessDeferredContent`                      | Mount on scroll into view                | `rootMargin`, `minHeight`; `#placeholder`; emits `load`                                                                    |
+| `BlessTreeTable`                            | Expandable rows                          | `rows` (with `children`), `columns`, `rowKey`, `treeColumn`, `v-model:expanded`, `defaultExpanded`; `#cell-*` pass through |
+| `BlessOrgChart` / `BlessOrgChartNode`       | Node tree with connectors                | `nodes`, `v-model:selected`; `#node="{node, selected}"`; emits `select`                                                    |
+| `BlessBottomTabs`                           | Mobile bottom nav / dock                 | `items[{label,value,icon,href,badge}]`, `v-model`, `variant` bar/dock, `inline`; emits `select`                            |
+| `BlessSpeedDial`                            | FAB with fan-out actions                 | `actions[{label,value,icon,color}]`, `direction`, `color`, `v-model:open`, `inline`; emits `select`                        |
+| `BlessVirtualScroller`                      | Windowed list (fixed row height)         | `items`, `itemHeight`, `height`, `overscan`, `rowKey`; exposes `scrollTo(i)`; `#default="{item,index}"`                    |
+| `BlessBreadcrumb`                           | Trail                                    | `items[{label,href}]`, `separator`; `#item`                                                                                |
+| `BlessPagination`                           | Page list                                | `v-model`, `total`, `siblings`, `href(page)`                                                                               |
+| `BlessTabs`                                 | ARIA tablist                             | `tabs`, `v-model`, `activation`, `color`; `#default="{tab}"` `#tab`                                                        |
+| `BlessSection` / `BlessWatermark`           | Titled block with giant skewed word      | `title`, `watermark`, `watermarkPosition`, `headingLevel`                                                                  |
+| `BlessBackground`                           | Tiled texture layer                      | `src`, `offset`, `mode`, `opacity`                                                                                         |
+| `BlessCard`                                 | Flat surface                             | `label`, `labelColor`, `surface`, `bordered`, `href`; `#media` `#footer`                                                   |
+| `BlessList` / `BlessListItem`               | Divided rows                             | item `meta`, `badge`, `href`; `#suffix`                                                                                    |
+| `BlessCollapsible` / `BlessAccordion(Item)` | `<details>` based                        | `v-model:open`, `title`, `disabled`; accordion `type` single/multiple                                                      |
+| `BlessScrollArea`                           | Thin scrollbar + fade                    | `axis`, `fade`, `height`, `width`                                                                                          |
+| `BlessResizable`                            | Two-pane split                           | `v-model` (% of first pane), `direction`, `min`, `max`, `step`; `#a` `#b`                                                  |
+| `BlessTable`                                | Typed table, stacks on mobile            | `columns`, `rows`, `rowKey`, `caption`, `striped`, `stack`; `#cell-<key>`                                                  |
+| `BlessDataTable`                            | Table + sort/search/select/paginate      | `columns` (+`sortable`, `hideable`), `rows`, `rowKey`, `selectable`, `searchable`, `pageSize`; `#toolbar` `#cell-<key>`    |
 
 ### Overlays
 
-| Component                     | Purpose                          | Key props / slots                                                                                                               |
-| ----------------------------- | -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| `BlessModal`                  | Native `<dialog>`                | `v-model`, `title`, `hash` (deep link), `size`, `dismissible`; `#footer`                                                        |
-| `BlessAlertDialog`            | Confirm dialog                   | `v-model`, `title`, `description`, `confirmLabel`, `cancelLabel`, `color`, `loading`; emits `confirm` `cancel`                  |
-| `BlessSheet`                  | Side panel                       | `v-model`, `side`, `title`, `size`, `handle`; `#footer`                                                                         |
-| `BlessDrawer`                 | Bottom sheet with swipe-to-close | `v-model`, `title`                                                                                                              |
-| `BlessPopover`                | Popover API panel                | `v-model:open`, `placement`, `trigger` click/hover/manual, `modal`; `#trigger` `#default="{close}"`                             |
-| `BlessTooltip`                | Hover/focus tip                  | `text`, `placement`, `delay`; `#content`                                                                                        |
-| `BlessHoverCard`              | Rich hover popover               | `placement`, `openDelay`, `closeDelay`; `#trigger`                                                                              |
-| `BlessDropdownMenu`           | ARIA menu                        | `items` (item/checkbox/radio/separator/label/sub), `placement`, `v-model:checked`, `v-model:radios`; emits `select`; `#trigger` |
-| `BlessContextMenu`            | Menu on right click              | `items`; wraps its slot                                                                                                         |
-| `BlessCommand`                | ⌘K palette                       | `v-model:open`, `items` (groups, keywords, shortcuts), `inline`, `hotkey`; emits `select`; `#footer`                            |
-| `BlessGallery`                | Thumb grid + lightbox            | `items`, `v-model` index, `columns`, `loop`                                                                                     |
-| `BlessConfirmPopup`           | Confirm in a popover             | `message`, `title`, `confirmLabel`, `cancelLabel`, `color`, `placement`, `v-model:open`; emits `confirm` `cancel`               |
-| `BlessTour`                   | Spotlight walkthrough            | `steps[{target,title,text,placement}]`, `v-model:open`, `v-model:step`, `spotlight`, `labels`; emits `finish` `skip`            |
-| `BlessToaster` + `useToast()` | Notifications                    | `position`; `toast()`, `success()`, `error()`, `warning()`, `info()`, `dismiss()`                                               |
-| `BlessSplash`                 | First-visit overlay              | `once`, `duration`, `skipLabel`; emits `done`                                                                                   |
+| Component                         | Purpose                          | Key props / slots                                                                                                               |
+| --------------------------------- | -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| `BlessModal`                      | Native `<dialog>`                | `v-model`, `title`, `hash` (deep link), `size`, `dismissible`; `#footer`                                                        |
+| `BlessAlertDialog`                | Confirm dialog                   | `v-model`, `title`, `description`, `confirmLabel`, `cancelLabel`, `color`, `loading`; emits `confirm` `cancel`                  |
+| `BlessSheet`                      | Side panel                       | `v-model`, `side`, `title`, `size`, `handle`; `#footer`                                                                         |
+| `BlessDrawer`                     | Bottom sheet with swipe-to-close | `v-model`, `title`                                                                                                              |
+| `BlessPopover`                    | Popover API panel                | `v-model:open`, `placement`, `trigger` click/hover/manual, `modal`; `#trigger` `#default="{close}"`                             |
+| `BlessTooltip`                    | Hover/focus tip                  | `text`, `placement`, `delay`; `#content`                                                                                        |
+| `BlessHoverCard`                  | Rich hover popover               | `placement`, `openDelay`, `closeDelay`; `#trigger`                                                                              |
+| `BlessDropdownMenu`               | ARIA menu                        | `items` (item/checkbox/radio/separator/label/sub), `placement`, `v-model:checked`, `v-model:radios`; emits `select`; `#trigger` |
+| `BlessContextMenu`                | Menu on right click              | `items`; wraps its slot                                                                                                         |
+| `BlessCommand`                    | ⌘K palette                       | `v-model:open`, `items` (groups, keywords, shortcuts), `inline`, `hotkey`; emits `select`; `#footer`                            |
+| `BlessGallery`                    | Thumb grid + lightbox            | `items`, `v-model` index, `columns`, `loop`                                                                                     |
+| `BlessConfirmPopup`               | Confirm in a popover             | `message`, `title`, `confirmLabel`, `cancelLabel`, `color`, `placement`, `v-model:open`; emits `confirm` `cancel`               |
+| `BlessDialogHost` + `useDialog()` | Programmatic modals              | `open({ title, component, props, text, size, dismissible })` → Promise, `close(id, result)`                                     |
+| `BlessTour`                       | Spotlight walkthrough            | `steps[{target,title,text,placement}]`, `v-model:open`, `v-model:step`, `spotlight`, `labels`; emits `finish` `skip`            |
+| `BlessToaster` + `useToast()`     | Notifications                    | `position`; `toast()`, `success()`, `error()`, `warning()`, `info()`, `dismiss()`                                               |
+| `BlessSplash`                     | First-visit overlay              | `once`, `duration`, `skipLabel`; emits `done`                                                                                   |
 
 ### Conversation
 
@@ -248,11 +253,11 @@ Any other SVG chart lib works too — read `var(--bless-color-chart-N)` for seri
 
 ### Composables
 
-`useMedia(query?)` · `useHash()` · `useScrollSpy(ids | selector, { rootMargin, root })` → `{ active }` · `useAnimateOnScroll(el, { threshold, rootMargin, once })` → `{ visible }` · `applyMask(mask, input)` / `unmask(mask, masked)` · `useTheme()` → `{ theme, isDark, set, toggle, palette, setPalette }` · `useFloating(anchor, floating, active, opts | () => opts)` · `useToast()` · `useDataTable(rows, { rowKey, pageSize, searchKeys })` · date helpers `toISO` `fromISO` `addDays` `addMonths` `isoToday`.
+`useMedia(query?)` · `useHash()` · `useScrollSpy(ids | selector, { rootMargin, root })` → `{ active }` · `useAnimateOnScroll(el, { threshold, rootMargin, once })` → `{ visible }` · `useDialog()` → `{ open, close }` · `applyMask(mask, input)` / `unmask(mask, masked)` · `useTheme()` → `{ theme, isDark, set, toggle, palette, setPalette }` · `useFloating(anchor, floating, active, opts | () => opts)` · `useToast()` · `useDataTable(rows, { rowKey, pageSize, searchKeys })` · date helpers `toISO` `fromISO` `addDays` `addMonths` `isoToday`.
 
 ### Types
 
-`BlessNavItem`, `BlessNavMenuItem`, `BlessTab`, `BlessGalleryItem`, `BlessColumn<T>`, `BlessDataColumn<T>`, `BlessOption<T>`, `BlessTrack`, `BlessMenuItem`, `BlessCommandItem`, `BlessCrumb`, `BlessToastOptions`, `BlessTheme`, `BlessStep`, `BlessTimelineItem`, `BlessTreeNode`, `BlessPasswordRule`, `BlessBottomTab`, `BlessSpeedDialAction`, `BlessTourStep`, `BlessEditorTool`, `BlessMeterSegment`, `BlessReaction`, `BlessQuestion`, `BlessQuestionChoice`, `BlessAnswers`, `Placement`, `DataTableState`.
+`BlessNavItem`, `BlessNavMenuItem`, `BlessTab`, `BlessGalleryItem`, `BlessColumn<T>`, `BlessDataColumn<T>`, `BlessOption<T>`, `BlessTrack`, `BlessMenuItem`, `BlessCommandItem`, `BlessCrumb`, `BlessToastOptions`, `BlessTheme`, `BlessStep`, `BlessTimelineItem`, `BlessTreeNode`, `BlessPasswordRule`, `BlessBottomTab`, `BlessSpeedDialAction`, `BlessTourStep`, `BlessEditorTool`, `BlessMeterSegment`, `BlessCascadeOption`, `BlessDialogOptions`, `BlessReaction`, `BlessQuestion`, `BlessQuestionChoice`, `BlessAnswers`, `Placement`, `DataTableState`.
 
 ## Tokens
 

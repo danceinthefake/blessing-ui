@@ -201,13 +201,13 @@ Decision: **Unovis** (`@unovis/vue`) as the documented, consumer-installed pairi
 - [x] `BlessToolbar`, `BlessFloatLabel` (CSS-only via `:has` + `:placeholder-shown`), `BlessFieldset`, `BlessPanel`, `BlessMeterGroup`, `BlessSplitButton`, `BlessBlockUI` (`inert`), `BlessInplace`, `BlessDeferredContent`, `BlessConfirmPopup`, `BlessCompare` (`<input type=range>` + `clip-path`), `BlessDataView`
 - [x] `useAnimateOnScroll()`
 
-### Phase 17 — PrimeVue gap fill, medium (not started)
+### Phase 17 — PrimeVue gap fill, medium
 
-- [ ] `BlessCascadeSelect` — nested option groups in a popover
-- [ ] `BlessTreeSelect` — `BlessTree` inside a `BlessPopover`, single / multiple
-- [ ] `BlessTreeTable` — expandable rows on `BlessTable`
-- [ ] `BlessOrgChart` — node tree with connectors
-- [ ] `useDialog()` — programmatic `BlessModal`
+- [x] `BlessCascadeSelect` — columns per level in a `BlessPopover`, arrows drill / back, opens on the selected path
+- [x] `BlessTreeSelect` — `BlessTree` in a `BlessPopover`, single closes, multiple shows chips, `leafOnly`
+- [x] `BlessTreeTable` — flattens by expansion and renders through `BlessTable`; cell slots pass through
+- [x] `BlessOrgChart` — recursive `ul/li` with CSS connectors, skewed nodes, `v-model:selected`
+- [x] `useDialog()` + `BlessDialogHost` — promise-based, component or text body, `close(result)` prop
 
 Skipped from PrimeVue: Terminal, Ripple / StyleClass / Fluid / KeyFilter (directive utilities), FocusTrap (native `<dialog>` covers it).
 

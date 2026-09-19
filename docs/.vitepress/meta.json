@@ -1014,6 +1014,83 @@
       }
     ]
   },
+  "BlessCascadeSelect": {
+    "props": [
+      {
+        "name": "options",
+        "type": "BlessCascadeOption<T>[]",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "placeholder",
+        "type": "string | undefined",
+        "required": false,
+        "default": "\"Select…\"",
+        "description": ""
+      },
+      {
+        "name": "showPath",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "true",
+        "description": "show the full path in the trigger (A › B › C) or only the leaf"
+      },
+      {
+        "name": "separator",
+        "type": "string | undefined",
+        "required": false,
+        "default": "\" › \"",
+        "description": ""
+      },
+      {
+        "name": "disabled",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "invalid",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "label",
+        "type": "string | undefined",
+        "required": false,
+        "default": "\"Cascade select\"",
+        "description": ""
+      },
+      {
+        "name": "size",
+        "type": "\"md\" | \"sm\" | \"lg\" | undefined",
+        "required": false,
+        "default": "\"md\"",
+        "description": ""
+      },
+      {
+        "name": "modelValue",
+        "type": "T | undefined",
+        "required": false,
+        "description": ""
+      }
+    ],
+    "events": [
+      {
+        "name": "select",
+        "type": "[option: BlessCascadeOption<T>, path: BlessCascadeOption<T>[]]",
+        "description": ""
+      },
+      {
+        "name": "update:modelValue",
+        "type": "[value: T | undefined]",
+        "description": ""
+      }
+    ],
+    "slots": [],
+    "exposed": []
+  },
   "BlessChart": {
     "props": [
       {
@@ -1951,6 +2028,12 @@
         "description": ""
       }
     ],
+    "exposed": []
+  },
+  "BlessDialogHost": {
+    "props": [],
+    "events": [],
+    "slots": [],
     "exposed": []
   },
   "BlessDrawer": {
@@ -3899,6 +3982,86 @@
       {
         "name": "default",
         "type": "{ item: T; index: number; }",
+        "description": ""
+      }
+    ],
+    "exposed": []
+  },
+  "BlessOrgChart": {
+    "props": [
+      {
+        "name": "nodes",
+        "type": "BlessTreeNode[]",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "label",
+        "type": "string | undefined",
+        "required": false,
+        "default": "\"Organisation\"",
+        "description": ""
+      },
+      {
+        "name": "selected",
+        "type": "string | undefined",
+        "required": false,
+        "description": ""
+      }
+    ],
+    "events": [
+      {
+        "name": "select",
+        "type": "[node: BlessTreeNode, id: string]",
+        "description": ""
+      },
+      {
+        "name": "update:selected",
+        "type": "[value: string | undefined]",
+        "description": ""
+      }
+    ],
+    "slots": [
+      {
+        "name": "node",
+        "type": "{ node: BlessTreeNode; selected: boolean; }",
+        "description": ""
+      }
+    ],
+    "exposed": []
+  },
+  "BlessOrgChartNode": {
+    "props": [
+      {
+        "name": "node",
+        "type": "BlessTreeNode",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "path",
+        "type": "string",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "selected",
+        "type": "string | undefined",
+        "required": false,
+        "description": ""
+      }
+    ],
+    "events": [
+      {
+        "name": "select",
+        "type": "[node: BlessTreeNode, id: string]",
+        "description": ""
+      }
+    ],
+    "slots": [
+      {
+        "name": "node",
+        "type": "{ node: BlessTreeNode; selected: boolean; }",
         "description": ""
       }
     ],
@@ -6401,6 +6564,151 @@
       {
         "name": "select",
         "type": "[node: BlessTreeNode, path: string]",
+        "description": ""
+      }
+    ],
+    "slots": [],
+    "exposed": []
+  },
+  "BlessTreeSelect": {
+    "props": [
+      {
+        "name": "nodes",
+        "type": "BlessTreeNode[]",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "multiple",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "placeholder",
+        "type": "string | undefined",
+        "required": false,
+        "default": "\"Select…\"",
+        "description": ""
+      },
+      {
+        "name": "leafOnly",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "false",
+        "description": "only leaves (no children) can be picked"
+      },
+      {
+        "name": "disabled",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "invalid",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "label",
+        "type": "string | undefined",
+        "required": false,
+        "default": "\"Tree select\"",
+        "description": ""
+      },
+      {
+        "name": "size",
+        "type": "\"md\" | \"sm\" | \"lg\" | undefined",
+        "required": false,
+        "default": "\"md\"",
+        "description": ""
+      },
+      {
+        "name": "modelValue",
+        "type": "string | string[] | undefined",
+        "required": false,
+        "description": "node id (or path) — string[] when multiple"
+      }
+    ],
+    "events": [
+      {
+        "name": "update:modelValue",
+        "type": "[value: string | string[] | undefined]",
+        "description": ""
+      },
+      {
+        "name": "select",
+        "type": "[node: BlessTreeNode, id: string]",
+        "description": ""
+      }
+    ],
+    "slots": [],
+    "exposed": []
+  },
+  "BlessTreeTable": {
+    "props": [
+      {
+        "name": "columns",
+        "type": "BlessColumn<T>[]",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "rows",
+        "type": "T[]",
+        "required": true,
+        "description": "rows with an optional `children` array of the same shape"
+      },
+      {
+        "name": "rowKey",
+        "type": "keyof T & string",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "childrenKey",
+        "type": "string | undefined",
+        "required": false,
+        "default": "\"children\"",
+        "description": ""
+      },
+      {
+        "name": "treeColumn",
+        "type": "(keyof T & string) | undefined",
+        "required": false,
+        "description": "column that carries the indent + toggle; default: first"
+      },
+      {
+        "name": "caption",
+        "type": "string | undefined",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "striped",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "defaultExpanded",
+        "type": "(string | number)[] | undefined",
+        "required": false,
+        "default": "[]",
+        "description": "ids expanded initially"
+      },
+      {
+        "name": "expanded",
+        "type": "Id[] | undefined",
+        "required": false,
+        "description": ""
+      }
+    ],
+    "events": [
+      {
+        "name": "update:expanded",
+        "type": "[value: Id[] | undefined]",
         "description": ""
       }
     ],

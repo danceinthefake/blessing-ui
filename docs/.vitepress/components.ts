@@ -49,6 +49,16 @@ export const groups: { title: string; items: Entry[] }[] = [
     title: "Forms",
     items: [
       {
+        name: "BlessCascadeSelect",
+        slug: "cascade-select",
+        text: "Nested options, one column per level",
+      },
+      {
+        name: "BlessTreeSelect",
+        slug: "tree-select",
+        text: "Tree in a popover, single or multiple",
+      },
+      {
         name: "BlessInputNumber",
         slug: "input-number",
         text: "Number with ± steppers and Intl format",
@@ -107,6 +117,13 @@ export const groups: { title: string; items: Entry[] }[] = [
   {
     title: "Layout & navigation",
     items: [
+      { name: "BlessTreeTable", slug: "tree-table", text: "Expandable rows on BlessTable" },
+      {
+        name: "BlessOrgChart",
+        slug: "org-chart",
+        text: "Node tree with connectors",
+        also: ["BlessOrgChartNode"],
+      },
       { name: "BlessToolbar", slug: "toolbar", text: "Start / center / end bar" },
       { name: "BlessPanel", slug: "panel", text: "Titled box with actions, toggleable" },
       { name: "BlessStepper", slug: "stepper", text: "Steps header + panels + next / back" },
@@ -164,6 +181,7 @@ export const groups: { title: string; items: Entry[] }[] = [
   {
     title: "Overlays",
     items: [
+      { name: "BlessDialogHost", slug: "dialog-host", text: "Programmatic modals via useDialog()" },
       { name: "BlessConfirmPopup", slug: "confirm-popup", text: "Confirm inside a popover" },
       { name: "BlessTour", slug: "tour", text: "Step-by-step spotlight walkthrough" },
       { name: "BlessModal", slug: "modal", text: "Native `<dialog>`" },
