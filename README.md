@@ -5,7 +5,7 @@ Vue 3 component library and design tokens. Grey-scale UI, one pink-red accent, s
 - 92 components (shadcn/ui parity), tokens-only styling (`--bless-*` custom properties), no Tailwind dependency
 - Native platform first: `<dialog>`, Popover API, `<details>`, native form controls, `Intl` dates, scroll-snap — no positioning, date or table library
 - Accessible defaults: focus rings, ARIA tablist/dialog/tables, `prefers-reduced-motion`
-- ESM, tree-shakable, `vue` as the only peer dependency. ~143 KB JS / 100 KB CSS raw, ~35 KB / 14 KB gzip for everything (tree-shakes per component)
+- ESM, tree-shakable, `vue` as the only peer dependency. ~165 KB JS / 116 KB CSS raw, ~40 KB / 16 KB gzip for everything (tree-shakes per component)
 
 ## Install
 
