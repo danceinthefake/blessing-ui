@@ -4,7 +4,10 @@ title: Blessing UI
 hero:
   name: Blessing UI
   text: Skewed, grey, one pink-red accent.
-  tagline: 79 Vue 3 components on native platform features. Tokens only, no Tailwind, vue is the only dependency.
+  image:
+    src: /logo-thin.svg
+    alt: Blessing UI
+  tagline: 105 Vue 3 components on native platform features. Tokens only, no Tailwind, vue is the only dependency.
   actions:
     - theme: brand
       text: Get started

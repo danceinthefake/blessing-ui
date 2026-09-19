@@ -104,3 +104,64 @@
   padding: 0;
   background: none;
 }
+
+/* ---- brand ---- */
+/* nav: thin "Blessing" + skewed accent "UI" tag, built from the system, not an image */
+.VPNavBarTitle .title {
+  gap: 10px;
+  font-weight: var(--bless-font-weight-light);
+  font-size: 20px;
+  letter-spacing: var(--bless-tracking-tight);
+}
+.VPNavBarTitle .title::after {
+  content: "UI";
+  display: inline-block;
+  padding: 2px 7px;
+  background: var(--bless-color-accent);
+  color: var(--bless-color-on-accent);
+  font-size: 10px;
+  font-weight: var(--bless-font-weight-bold);
+  letter-spacing: var(--bless-tracking-wider);
+  transform: skewX(var(--bless-skew));
+}
+.VPNavBarTitle .logo {
+  height: 26px;
+  margin-right: 0;
+}
+/* hero: oversized thin watermark behind, the thin mark as image */
+.VPHero {
+  position: relative;
+  overflow: hidden;
+}
+.VPHero::before {
+  content: "Blessing";
+  position: absolute;
+  right: -2vw;
+  top: 0.05em;
+  z-index: 0;
+  font-size: clamp(100px, 18vw, 260px);
+  font-weight: var(--bless-font-weight-thin);
+  line-height: 1;
+  letter-spacing: var(--bless-tracking-tight);
+  color: var(--bless-color-watermark);
+  transform: skewX(var(--bless-skew));
+  white-space: nowrap;
+  pointer-events: none;
+}
+.VPHero .container {
+  position: relative;
+  z-index: 1;
+}
+.VPHero .image-bg {
+  display: none;
+}
+.VPHero .image-src {
+  width: 220px;
+  height: 220px;
+  max-width: none;
+  max-height: none;
+}
+.VPNavBarTitle .title::after,
+.VPHero .name {
+  font-family: var(--bless-font-sans);
+}

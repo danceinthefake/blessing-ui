@@ -12,6 +12,20 @@ export default defineConfig({
   cleanUrls: true,
   lastUpdated: true,
   head: [
+    ["link", { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" }],
+    ["meta", { property: "og:title", content: "Blessing UI" }],
+    [
+      "meta",
+      {
+        property: "og:description",
+        content: "Vue 3 components. Skewed, grey, one pink-red accent.",
+      },
+    ],
+    [
+      "meta",
+      { property: "og:image", content: "https://danceinthefake.github.io/blessing-ui/og.png" },
+    ],
+    ["meta", { name: "twitter:card", content: "summary_large_image" }],
     [
       "link",
       {
@@ -21,6 +35,8 @@ export default defineConfig({
     ],
   ],
   themeConfig: {
+    logo: { light: "/logo.svg", dark: "/logo-dark.svg" },
+    siteTitle: "Blessing",
     nav: [
       { text: "Guide", link: "/guide/install" },
       { text: "Components", link: "/components/button" },
@@ -37,6 +53,7 @@ export default defineConfig({
             { text: "Fonts", link: "/guide/fonts" },
             { text: "Conventions", link: "/guide/conventions" },
             { text: "useScrollSpy", link: "/guide/scroll-spy" },
+            { text: "Brand", link: "/guide/brand" },
           ],
         },
       ],
