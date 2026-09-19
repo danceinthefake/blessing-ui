@@ -9,6 +9,7 @@ export const groups: { title: string; items: Entry[] }[] = [
   {
     title: "Primitives",
     items: [
+      { name: "BlessMockup", slug: "mockup", text: "Browser / window / phone frame" },
       {
         name: "BlessIndicator",
         slug: "indicator",
@@ -39,6 +40,9 @@ export const groups: { title: string; items: Entry[] }[] = [
   {
     title: "Forms",
     items: [
+      { name: "BlessInputMask", slug: "input-mask", text: "Pattern-masked input (# A *)" },
+      { name: "BlessOrderList", slug: "order-list", text: "Drag / button / Alt+arrow reorder" },
+      { name: "BlessPickList", slug: "pick-list", text: "Two listboxes with transfer buttons" },
       { name: "BlessRating", slug: "rating", text: "Star rating on native radios" },
       { name: "BlessFileInput", slug: "file-input", text: "Native file input with drop zone" },
       { name: "BlessColorPicker", slug: "color-picker", text: "Native colour input + swatches" },
@@ -73,6 +77,17 @@ export const groups: { title: string; items: Entry[] }[] = [
   {
     title: "Layout & navigation",
     items: [
+      {
+        name: "BlessBottomTabs",
+        slug: "bottom-tabs",
+        text: "Mobile bottom nav bar or floating dock",
+      },
+      { name: "BlessSpeedDial", slug: "speed-dial", text: "FAB with fan-out actions" },
+      {
+        name: "BlessVirtualScroller",
+        slug: "virtual-scroller",
+        text: "Windowed list for long data",
+      },
       { name: "BlessSteps", slug: "steps", text: "Stepper with done / current / upcoming" },
       { name: "BlessContainer", slug: "container", text: "Centred max-width box" },
       { name: "BlessStack", slug: "stack", text: "Flex row / column with token gap" },
@@ -109,6 +124,7 @@ export const groups: { title: string; items: Entry[] }[] = [
   {
     title: "Overlays",
     items: [
+      { name: "BlessTour", slug: "tour", text: "Step-by-step spotlight walkthrough" },
       { name: "BlessModal", slug: "modal", text: "Native `<dialog>`" },
       { name: "BlessAlertDialog", slug: "alert-dialog", text: "Confirm dialog" },
       { name: "BlessSheet", slug: "sheet", text: "Side panel" },

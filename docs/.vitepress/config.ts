@@ -36,6 +36,7 @@ export default defineConfig({
             { text: "Dark mode", link: "/guide/dark-mode" },
             { text: "Fonts", link: "/guide/fonts" },
             { text: "Conventions", link: "/guide/conventions" },
+            { text: "useScrollSpy", link: "/guide/scroll-spy" },
           ],
         },
       ],

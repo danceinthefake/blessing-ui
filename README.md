@@ -2,10 +2,10 @@
 
 Vue 3 component library and design tokens. Grey-scale UI, one pink-red accent, skewed labels instead of rounded corners, thin oversized watermark type, opacity-fade hovers. Visual language derived from [saenai.tv](https://www.saenai.tv/) (ideas only; no assets or CSS copied).
 
-- 92 components (shadcn/ui parity), tokens-only styling (`--bless-*` custom properties), no Tailwind dependency
+- 100 components (shadcn/ui parity), tokens-only styling (`--bless-*` custom properties), no Tailwind dependency
 - Native platform first: `<dialog>`, Popover API, `<details>`, native form controls, `Intl` dates, scroll-snap — no positioning, date or table library
 - Accessible defaults: focus rings, ARIA tablist/dialog/tables, `prefers-reduced-motion`
-- ESM, tree-shakable, `vue` as the only peer dependency. ~165 KB JS / 116 KB CSS raw, ~40 KB / 16 KB gzip for everything (tree-shakes per component)
+- ESM, tree-shakable, `vue` as the only peer dependency. ~182 KB JS / 127 KB CSS raw, ~44 KB / 17 KB gzip for everything (tree-shakes per component)
 
 ## Install
 
@@ -73,7 +73,7 @@ import {
 
 ## Components
 
-92 components across eight groups. Every one styles itself from `--bless-*` tokens and ships with a test and a docs page.
+100 components across eight groups. Every one styles itself from `--bless-*` tokens and ships with a test and a docs page.
 
 ### Primitives
 
@@ -94,6 +94,7 @@ import {
 | `BlessIndicator`   | Count / dot badge on any element         | `value` number or true, `max`, `color`, `position`                                                 |
 | `BlessTimeline`    | Vertical rail of events                  | `items[{title,time,description,color}]`; `#default="{item}"` `#dot`                                |
 | `BlessSwap`        | Two-face toggle                          | `v-model`, `label`, `effect` fade/rotate/flip; `#on` `#off`                                        |
+| `BlessMockup`      | Browser / window / phone frame           | `type`, `title`, `dark`                                                                            |
 | `BlessItem`        | Media + title + description + actions    | `title`, `description`, `href`, `variant` plain/outline/surface, `size`; `#media` `#actions`       |
 | `BlessAvatar`      | Image with initials fallback             | `src`, `name`, `size`, `square`, `color`                                                           |
 | `BlessSkeleton`    | Shimmer placeholder                      | `width`, `height`, `lines`, `circle`                                                               |
@@ -117,6 +118,9 @@ import {
 | `BlessColorPicker`                 | `<input type=color>` + swatches                             | `v-model` hex, `swatches[]`, `showValue`                                                                                              |
 | `BlessPasswordMeter`               | Strength `<meter>` from rules                               | `value`, `rules[{label,test}]`, `labels`, `showRules`                                                                                 |
 | `BlessListbox`                     | `role=listbox`, keyboard + typeahead                        | `v-model` (array when `multiple`), `options`, `rows`, `label`; `#default="{option, selected}"`                                        |
+| `BlessInputMask`                   | Pattern-masked `BlessInput`                                 | `v-model` masked, `mask` (`#` digit `A` letter `*` either), `placeholder`; emits `update:raw`                                         |
+| `BlessOrderList`                   | Reorderable list                                            | `v-model` items, `rowKey`, `buttons`; drag, ↑↓, Alt+arrows; emits `move`; `#default="{item,index}"`                                   |
+| `BlessPickList`                    | Transfer between two listboxes                              | `v-model:source`, `v-model:target`, `sourceLabel`, `targetLabel`, `rows`                                                              |
 | `BlessSelect`                      | Styled native `<select>` (picker styled too on Chrome 135+) | `v-model`, `options` (groups ok), `placeholder`, `size`, `error`                                                                      |
 | `BlessSlider`                      | Native range                                                | `v-model`, `min`, `max`, `step`, `showValue`, `format`                                                                                |
 | `BlessToggle` / `BlessToggleGroup` | Pressed buttons                                             | toggle `v-model:pressed`, `value`; group `v-model`, `type` single/multiple                                                            |
@@ -139,6 +143,9 @@ import {
 | `BlessContainer`                            | Centred max-width box                    | `size` sm/md/lg/full, `padded`, `as`                                                                                    |
 | `BlessStack`                                | Flex row / column                        | `direction`, `gap` token, `align`, `justify`, `wrap`, `as`                                                              |
 | `BlessScrollTop`                            | Back-to-top button                       | `threshold`, `target`, `position`, `label`                                                                              |
+| `BlessBottomTabs`                           | Mobile bottom nav / dock                 | `items[{label,value,icon,href,badge}]`, `v-model`, `variant` bar/dock, `inline`; emits `select`                         |
+| `BlessSpeedDial`                            | FAB with fan-out actions                 | `actions[{label,value,icon,color}]`, `direction`, `color`, `v-model:open`, `inline`; emits `select`                     |
+| `BlessVirtualScroller`                      | Windowed list (fixed row height)         | `items`, `itemHeight`, `height`, `overscan`, `rowKey`; exposes `scrollTo(i)`; `#default="{item,index}"`                 |
 | `BlessBreadcrumb`                           | Trail                                    | `items[{label,href}]`, `separator`; `#item`                                                                             |
 | `BlessPagination`                           | Page list                                | `v-model`, `total`, `siblings`, `href(page)`                                                                            |
 | `BlessTabs`                                 | ARIA tablist                             | `tabs`, `v-model`, `activation`, `color`; `#default="{tab}"` `#tab`                                                     |
@@ -167,6 +174,7 @@ import {
 | `BlessContextMenu`            | Menu on right click              | `items`; wraps its slot                                                                                                         |
 | `BlessCommand`                | ⌘K palette                       | `v-model:open`, `items` (groups, keywords, shortcuts), `inline`, `hotkey`; emits `select`; `#footer`                            |
 | `BlessGallery`                | Thumb grid + lightbox            | `items`, `v-model` index, `columns`, `loop`                                                                                     |
+| `BlessTour`                   | Spotlight walkthrough            | `steps[{target,title,text,placement}]`, `v-model:open`, `v-model:step`, `spotlight`, `labels`; emits `finish` `skip`            |
 | `BlessToaster` + `useToast()` | Notifications                    | `position`; `toast()`, `success()`, `error()`, `warning()`, `info()`, `dismiss()`                                               |
 | `BlessSplash`                 | First-visit overlay              | `once`, `duration`, `skipLabel`; emits `done`                                                                                   |
 
@@ -214,11 +222,11 @@ Any other SVG chart lib works too — read `var(--bless-color-chart-N)` for seri
 
 ### Composables
 
-`useMedia(query?)` · `useHash()` · `useTheme()` → `{ theme, isDark, set, toggle }` · `useFloating(anchor, floating, active, opts | () => opts)` · `useToast()` · `useDataTable(rows, { rowKey, pageSize, searchKeys })` · date helpers `toISO` `fromISO` `addDays` `addMonths` `isoToday`.
+`useMedia(query?)` · `useHash()` · `useScrollSpy(ids | selector, { rootMargin, root })` → `{ active }` · `applyMask(mask, input)` / `unmask(mask, masked)` · `useTheme()` → `{ theme, isDark, set, toggle }` · `useFloating(anchor, floating, active, opts | () => opts)` · `useToast()` · `useDataTable(rows, { rowKey, pageSize, searchKeys })` · date helpers `toISO` `fromISO` `addDays` `addMonths` `isoToday`.
 
 ### Types
 
-`BlessNavItem`, `BlessNavMenuItem`, `BlessTab`, `BlessGalleryItem`, `BlessColumn<T>`, `BlessDataColumn<T>`, `BlessOption<T>`, `BlessTrack`, `BlessMenuItem`, `BlessCommandItem`, `BlessCrumb`, `BlessToastOptions`, `BlessTheme`, `BlessStep`, `BlessTimelineItem`, `BlessTreeNode`, `BlessPasswordRule`, `BlessReaction`, `BlessQuestion`, `BlessQuestionChoice`, `BlessAnswers`, `Placement`, `DataTableState`.
+`BlessNavItem`, `BlessNavMenuItem`, `BlessTab`, `BlessGalleryItem`, `BlessColumn<T>`, `BlessDataColumn<T>`, `BlessOption<T>`, `BlessTrack`, `BlessMenuItem`, `BlessCommandItem`, `BlessCrumb`, `BlessToastOptions`, `BlessTheme`, `BlessStep`, `BlessTimelineItem`, `BlessTreeNode`, `BlessPasswordRule`, `BlessBottomTab`, `BlessSpeedDialAction`, `BlessTourStep`, `BlessReaction`, `BlessQuestion`, `BlessQuestionChoice`, `BlessAnswers`, `Placement`, `DataTableState`.
 
 ## Tokens
 

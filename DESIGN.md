@@ -172,17 +172,17 @@ Decision: **Unovis** (`@unovis/vue`) as the documented, consumer-installed pairi
 - [x] `BlessTree` — nested `<details>`, `role=tree`, `v-model:selected`
 - [x] `BlessSwap` — checkbox with two faces, fade / rotate / flip
 
-### Phase 13 — gap fill, medium (not started)
+### Phase 13 — gap fill, medium
 
-- [ ] `BlessInputMask` — pattern formatter on `BlessInput`
-- [ ] `useScrollSpy()` — IntersectionObserver over headings
-- [ ] `BlessBottomTabs` / `BlessDock` — mobile tab bar
-- [ ] `BlessSpeedDial` — FAB with fan-out actions
-- [ ] `BlessVirtualScroller` — windowed list
-- [ ] `BlessOrderList` — pointer drag-reorder
-- [ ] `BlessPickList` — two `BlessListbox`es + move buttons
-- [ ] `BlessMockup` — browser / phone frame
-- [ ] `BlessTour` — step popovers over anchors on `BlessPopover`
+- [x] `BlessInputMask` — `applyMask` / `unmask` over `BlessInput`, `update:raw`
+- [x] `useScrollSpy()` — IntersectionObserver, topmost intersecting id
+- [x] `BlessBottomTabs` — `variant` bar (fixed, labels) or dock (floating, icons); `inline` for previews
+- [x] `BlessSpeedDial` — FAB, staggered fan-out, four directions, Esc / blur close
+- [x] `BlessVirtualScroller` — fixed row height window + overscan, `scrollTo(i)`
+- [x] `BlessOrderList` — native HTML drag-and-drop + ↑↓ buttons + Alt+arrows, live region
+- [x] `BlessPickList` — two `BlessListbox`es, › » ‹ «
+- [x] `BlessMockup` — browser / window / phone (the one rounded frame — it's a device)
+- [x] `BlessTour` — `useFloating` to a selector target, spotlight cut-out via box-shadow, centred steps
 
 Skipped: Rich Text Editor (needs an editor engine), Signature Pad / Knob (canvas, niche), QR Code (needs an encoder — pair with a lib like Chart), overlay Watermark (ours is typographic).
 

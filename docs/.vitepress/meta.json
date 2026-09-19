@@ -491,6 +491,62 @@
     ],
     "exposed": []
   },
+  "BlessBottomTabs": {
+    "props": [
+      {
+        "name": "items",
+        "type": "BlessBottomTab[]",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "variant",
+        "type": "\"bar\" | \"dock\" | undefined",
+        "required": false,
+        "default": "\"bar\"",
+        "description": "bar = full-width fixed bottom nav; dock = floating icon strip"
+      },
+      {
+        "name": "inline",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": "render in place instead of fixed to the viewport (docs / previews)"
+      },
+      {
+        "name": "label",
+        "type": "string | undefined",
+        "required": false,
+        "default": "\"Primary\"",
+        "description": ""
+      },
+      {
+        "name": "modelValue",
+        "type": "string | undefined",
+        "required": false,
+        "description": ""
+      }
+    ],
+    "events": [
+      {
+        "name": "update:modelValue",
+        "type": "[value: string | undefined]",
+        "description": ""
+      },
+      {
+        "name": "select",
+        "type": "[item: BlessBottomTab, e: Event]",
+        "description": ""
+      }
+    ],
+    "slots": [
+      {
+        "name": "icon",
+        "type": "{ item: BlessBottomTab; }",
+        "description": ""
+      }
+    ],
+    "exposed": []
+  },
   "BlessBreadcrumb": {
     "props": [
       {
@@ -2217,6 +2273,43 @@
     ],
     "exposed": []
   },
+  "BlessInputMask": {
+    "props": [
+      {
+        "name": "mask",
+        "type": "string",
+        "required": true,
+        "description": "# digit · A letter · * letter or digit · anything else is a literal"
+      },
+      {
+        "name": "placeholder",
+        "type": "string | undefined",
+        "required": false,
+        "description": "placeholder shown when empty; defaults to the mask with tokens as _"
+      },
+      {
+        "name": "modelValue",
+        "type": "string | undefined",
+        "required": false,
+        "default": "\"\"",
+        "description": "the formatted value, e.g. \"090-1234-5678\""
+      }
+    ],
+    "events": [
+      {
+        "name": "update:modelValue",
+        "type": "[value: string]",
+        "description": ""
+      },
+      {
+        "name": "update:raw",
+        "type": "[raw: string]",
+        "description": ""
+      }
+    ],
+    "slots": [],
+    "exposed": []
+  },
   "BlessInputOTP": {
     "props": [
       {
@@ -2778,6 +2871,39 @@
       }
     ]
   },
+  "BlessMockup": {
+    "props": [
+      {
+        "name": "type",
+        "type": "\"browser\" | \"phone\" | \"window\" | undefined",
+        "required": false,
+        "default": "\"browser\"",
+        "description": ""
+      },
+      {
+        "name": "title",
+        "type": "string | undefined",
+        "required": false,
+        "default": "\"\"",
+        "description": "address bar text (browser) or title (window)"
+      },
+      {
+        "name": "dark",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": "frame colour"
+      }
+    ],
+    "events": [],
+    "slots": [
+      {
+        "name": "default",
+        "type": "{}",
+        "description": ""
+      }
+    ],
+    "exposed": []
+  },
   "BlessModal": {
     "props": [
       {
@@ -2884,6 +3010,57 @@
     ],
     "exposed": []
   },
+  "BlessOrderList": {
+    "props": [
+      {
+        "name": "rowKey",
+        "type": "((item: T, index: number) => string | number) | undefined",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "label",
+        "type": "string | undefined",
+        "required": false,
+        "default": "\"Reorder\"",
+        "description": ""
+      },
+      {
+        "name": "buttons",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "true",
+        "description": "hide the ↑ ↓ buttons (drag only)"
+      },
+      {
+        "name": "modelValue",
+        "type": "T[] | undefined",
+        "required": false,
+        "default": "[]",
+        "description": ""
+      }
+    ],
+    "events": [
+      {
+        "name": "move",
+        "type": "[from: number, to: number]",
+        "description": ""
+      },
+      {
+        "name": "update:modelValue",
+        "type": "[value: T[]]",
+        "description": ""
+      }
+    ],
+    "slots": [
+      {
+        "name": "default",
+        "type": "{ item: T; index: number; }",
+        "description": ""
+      }
+    ],
+    "exposed": []
+  },
   "BlessPagination": {
     "props": [
       {
@@ -2974,6 +3151,59 @@
       }
     ],
     "events": [],
+    "slots": [],
+    "exposed": []
+  },
+  "BlessPickList": {
+    "props": [
+      {
+        "name": "sourceLabel",
+        "type": "string | undefined",
+        "required": false,
+        "default": "\"Available\"",
+        "description": ""
+      },
+      {
+        "name": "targetLabel",
+        "type": "string | undefined",
+        "required": false,
+        "default": "\"Selected\"",
+        "description": ""
+      },
+      {
+        "name": "rows",
+        "type": "number | undefined",
+        "required": false,
+        "default": "6",
+        "description": ""
+      },
+      {
+        "name": "source",
+        "type": "BlessOption<T>[] | undefined",
+        "required": false,
+        "default": "[]",
+        "description": ""
+      },
+      {
+        "name": "target",
+        "type": "BlessOption<T>[] | undefined",
+        "required": false,
+        "default": "[]",
+        "description": ""
+      }
+    ],
+    "events": [
+      {
+        "name": "update:source",
+        "type": "[value: BlessOption<T>[]]",
+        "description": ""
+      },
+      {
+        "name": "update:target",
+        "type": "[value: BlessOption<T>[]]",
+        "description": ""
+      }
+    ],
     "slots": [],
     "exposed": []
   },
@@ -3864,6 +4094,75 @@
     "slots": [],
     "exposed": []
   },
+  "BlessSpeedDial": {
+    "props": [
+      {
+        "name": "actions",
+        "type": "BlessSpeedDialAction[]",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "direction",
+        "type": "\"left\" | \"right\" | \"up\" | \"down\" | undefined",
+        "required": false,
+        "default": "\"up\"",
+        "description": ""
+      },
+      {
+        "name": "label",
+        "type": "string | undefined",
+        "required": false,
+        "default": "\"Actions\"",
+        "description": ""
+      },
+      {
+        "name": "color",
+        "type": "\"text\" | \"accent\" | undefined",
+        "required": false,
+        "default": "\"accent\"",
+        "description": ""
+      },
+      {
+        "name": "inline",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": "render in place instead of fixed bottom-right"
+      },
+      {
+        "name": "open",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "false",
+        "description": ""
+      }
+    ],
+    "events": [
+      {
+        "name": "update:open",
+        "type": "[value: boolean]",
+        "description": ""
+      },
+      {
+        "name": "select",
+        "type": "[action: BlessSpeedDialAction]",
+        "description": ""
+      }
+    ],
+    "slots": [
+      {
+        "name": "icon",
+        "type": "{}",
+        "description": ""
+      },
+      {
+        "name": "action",
+        "type": "{ action: BlessSpeedDialAction; }",
+        "description": ""
+      }
+    ],
+    "exposed": []
+  },
   "BlessSpinner": {
     "props": [
       {
@@ -4680,6 +4979,67 @@
     ],
     "exposed": []
   },
+  "BlessTour": {
+    "props": [
+      {
+        "name": "steps",
+        "type": "BlessTourStep[]",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "labels",
+        "type": "Partial<{ next: string; prev: string; done: string; skip: string; }> | undefined",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "spotlight",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "true",
+        "description": "dim the page and cut a hole around the target"
+      },
+      {
+        "name": "open",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "false",
+        "description": ""
+      },
+      {
+        "name": "step",
+        "type": "number | undefined",
+        "required": false,
+        "default": "0",
+        "description": ""
+      }
+    ],
+    "events": [
+      {
+        "name": "update:open",
+        "type": "[value: boolean]",
+        "description": ""
+      },
+      {
+        "name": "skip",
+        "type": "[]",
+        "description": ""
+      },
+      {
+        "name": "update:step",
+        "type": "[value: number]",
+        "description": ""
+      },
+      {
+        "name": "finish",
+        "type": "[]",
+        "description": ""
+      }
+    ],
+    "slots": [],
+    "exposed": []
+  },
   "BlessTree": {
     "props": [
       {
@@ -4752,6 +5112,57 @@
       }
     ],
     "slots": [],
+    "exposed": []
+  },
+  "BlessVirtualScroller": {
+    "props": [
+      {
+        "name": "items",
+        "type": "T[]",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "itemHeight",
+        "type": "number",
+        "required": true,
+        "description": "fixed row height in px"
+      },
+      {
+        "name": "height",
+        "type": "string | undefined",
+        "required": false,
+        "default": "\"320px\"",
+        "description": ""
+      },
+      {
+        "name": "overscan",
+        "type": "number | undefined",
+        "required": false,
+        "default": "4",
+        "description": "rows rendered beyond the viewport on each side"
+      },
+      {
+        "name": "rowKey",
+        "type": "((item: T, index: number) => string | number) | undefined",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "label",
+        "type": "string | undefined",
+        "required": false,
+        "description": ""
+      }
+    ],
+    "events": [],
+    "slots": [
+      {
+        "name": "default",
+        "type": "{ item: T; index: number; }",
+        "description": ""
+      }
+    ],
     "exposed": []
   },
   "BlessWatermark": {
