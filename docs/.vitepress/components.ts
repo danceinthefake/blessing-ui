@@ -1,0 +1,137 @@
+// Sidebar groups + one-liners. Extra names = components documented on the same page.
+export interface Entry {
+  name: string;
+  slug: string;
+  text: string;
+  also?: string[];
+}
+export const groups: { title: string; items: Entry[] }[] = [
+  {
+    title: "Primitives",
+    items: [
+      { name: "BlessSkew", slug: "skew", text: "Skewed container, counter-skews its slot" },
+      { name: "BlessButton", slug: "button", text: "Button or anchor" },
+      { name: "BlessBadge", slug: "badge", text: "Small pill" },
+      { name: "BlessDash", slug: "dash", text: "Inline 10\u00d71px separator" },
+      { name: "BlessSeparator", slug: "separator", text: "`<hr>` / vertical rule, optional label" },
+      { name: "BlessIcon", slug: "icon", text: "SVG slot wrapper" },
+      { name: "BlessText", slug: "text", text: "Typography helper" },
+      { name: "BlessKbd", slug: "kbd", text: "Key combo" },
+      { name: "BlessThemeToggle", slug: "theme-toggle", text: "Light/dark switch or 3-way group" },
+      { name: "BlessSpinner", slug: "spinner", text: "Loading indicator (`role=status`)" },
+      { name: "BlessEmpty", slug: "empty", text: "Empty state" },
+      { name: "BlessButtonGroup", slug: "button-group", text: "Joined buttons" },
+      { name: "BlessItem", slug: "item", text: "Media + title + description + actions" },
+      { name: "BlessAvatar", slug: "avatar", text: "Image with initials fallback" },
+      { name: "BlessSkeleton", slug: "skeleton", text: "Shimmer placeholder" },
+      { name: "BlessAspectRatio", slug: "aspect-ratio", text: "Ratio box" },
+      { name: "BlessProgress", slug: "progress", text: "Bar, determinate or not" },
+      { name: "BlessAlert", slug: "alert", text: "Inline notice" },
+    ],
+  },
+  {
+    title: "Forms",
+    items: [
+      { name: "BlessLabel", slug: "label", text: "`<label>` with required mark and hint" },
+      { name: "BlessInput", slug: "input", text: "Text-like input" },
+      {
+        name: "BlessInputGroup",
+        slug: "input-group",
+        text: "Shared surface: addons + any control",
+      },
+      { name: "BlessTextarea", slug: "textarea", text: "Auto-growing textarea" },
+      { name: "BlessCheckbox", slug: "checkbox", text: "Native checkbox" },
+      { name: "BlessRadioGroup", slug: "radio-group", text: "Native radios", also: ["BlessRadio"] },
+      { name: "BlessSwitch", slug: "switch", text: "`role=switch` toggle" },
+      { name: "BlessSelect", slug: "select", text: "Styled native `<select>`" },
+      { name: "BlessSlider", slug: "slider", text: "Native range" },
+      { name: "BlessToggle", slug: "toggle", text: "Pressed buttons", also: ["BlessToggleGroup"] },
+      { name: "BlessCombobox", slug: "combobox", text: "Searchable select" },
+      { name: "BlessDatePicker", slug: "date-picker", text: "Calendar in a popover" },
+      { name: "BlessCalendar", slug: "calendar", text: "Month grid" },
+      { name: "BlessInputOTP", slug: "input-otp", text: "One-time code cells" },
+      {
+        name: "BlessForm",
+        slug: "form",
+        text: "Constraint-API form + field wiring",
+        also: ["BlessField"],
+      },
+    ],
+  },
+  {
+    title: "Layout & navigation",
+    items: [
+      { name: "BlessStage", slug: "stage", text: "Page shell, sidebar \u2192 drawer under 800px" },
+      { name: "BlessSidebarNav", slug: "sidebar-nav", text: "Vertical nav list" },
+      { name: "BlessNavigationMenu", slug: "navigation-menu", text: "Horizontal nav with panels" },
+      { name: "BlessMenubar", slug: "menubar", text: "Bar of `BlessDropdownMenu`s" },
+      { name: "BlessBreadcrumb", slug: "breadcrumb", text: "Trail" },
+      { name: "BlessPagination", slug: "pagination", text: "Page list" },
+      { name: "BlessTabs", slug: "tabs", text: "ARIA tablist" },
+      {
+        name: "BlessSection",
+        slug: "section",
+        text: "Titled block with giant skewed word",
+        also: ["BlessWatermark"],
+      },
+      { name: "BlessBackground", slug: "background", text: "Tiled texture layer" },
+      { name: "BlessCard", slug: "card", text: "Flat surface" },
+      { name: "BlessList", slug: "list", text: "Divided rows", also: ["BlessListItem"] },
+      { name: "BlessCollapsible", slug: "collapsible", text: "`<details>` based" },
+      { name: "BlessScrollArea", slug: "scroll-area", text: "Thin scrollbar + fade" },
+      { name: "BlessResizable", slug: "resizable", text: "Two-pane split" },
+      { name: "BlessTable", slug: "table", text: "Typed table, stacks on mobile" },
+      { name: "BlessDataTable", slug: "data-table", text: "Table + sort/search/select/paginate" },
+    ],
+  },
+  {
+    title: "Overlays",
+    items: [
+      { name: "BlessModal", slug: "modal", text: "Native `<dialog>`" },
+      { name: "BlessAlertDialog", slug: "alert-dialog", text: "Confirm dialog" },
+      { name: "BlessSheet", slug: "sheet", text: "Side panel" },
+      { name: "BlessDrawer", slug: "drawer", text: "Bottom sheet with swipe-to-close" },
+      { name: "BlessPopover", slug: "popover", text: "Popover API panel" },
+      { name: "BlessTooltip", slug: "tooltip", text: "Hover/focus tip" },
+      { name: "BlessHoverCard", slug: "hover-card", text: "Rich hover popover" },
+      { name: "BlessDropdownMenu", slug: "dropdown-menu", text: "ARIA menu" },
+      { name: "BlessContextMenu", slug: "context-menu", text: "Menu on right click" },
+      { name: "BlessCommand", slug: "command", text: "\u2318K palette" },
+      { name: "BlessGallery", slug: "gallery", text: "Thumb grid + lightbox" },
+      { name: "BlessToaster", slug: "toaster", text: "Notifications" },
+      { name: "BlessSplash", slug: "splash", text: "First-visit overlay" },
+    ],
+  },
+  {
+    title: "Conversation",
+    items: [
+      { name: "BlessMessage", slug: "message", text: "Avatar + header + content + footer row" },
+      { name: "BlessBubble", slug: "bubble", text: "Message bubble" },
+      { name: "BlessMarker", slug: "marker", text: "Inline status / note / separator / row" },
+      { name: "BlessAttachment", slug: "attachment", text: "File / image chip" },
+      { name: "BlessMessageScroller", slug: "message-scroller", text: "Chat viewport" },
+      {
+        name: "BlessQuestionnaire",
+        slug: "questionnaire",
+        text: "Multi-step single/multiple/freeform",
+      },
+    ],
+  },
+  {
+    title: "Chart",
+    items: [
+      {
+        name: "BlessChart",
+        slug: "chart",
+        text: "Themed frame for any [Unovis](https://unovis.dev) chart",
+      },
+    ],
+  },
+  {
+    title: "Media",
+    items: [
+      { name: "BlessCarousel", slug: "carousel", text: "Scroll-snap slider" },
+      { name: "BlessAudioPlayer", slug: "audio-player", text: "Track list player" },
+    ],
+  },
+];

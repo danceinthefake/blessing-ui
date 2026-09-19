@@ -77,6 +77,7 @@ export function useFloating(
   }
 
   const listen = (on: boolean) => {
+    if (typeof window === "undefined") return; // SSR: nothing to position
     const m = on ? addEventListener : removeEventListener;
     m("scroll", compute, true);
     m("resize", compute);

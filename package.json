@@ -27,7 +27,12 @@
     "build": "vue-tsc --noEmit && vite build",
     "test": "vitest run",
     "typecheck": "vue-tsc --noEmit",
-    "format": "oxfmt ."
+    "format": "oxfmt .",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "pnpm docs:meta && vitepress build docs",
+    "docs:preview": "vitepress preview docs",
+    "docs:meta": "node docs/scripts/meta.ts",
+    "docs:pages": "node docs/scripts/pages.ts"
   },
   "devDependencies": {
     "@types/node": "^26.6.1",
@@ -40,8 +45,10 @@
     "typescript": "^6.0.3",
     "vite": "^8.3.0",
     "vite-plugin-dts": "^5.1.0",
+    "vitepress": "^1.6.4",
     "vitest": "^5.0.1",
     "vue": "^3.5.0",
+    "vue-component-meta": "^3.3.11",
     "vue-tsc": "^3.3.11"
   },
   "peerDependencies": {

@@ -1,0 +1,106 @@
+/* VitePress default theme, recoloured from Blessing tokens. */
+:root,
+.dark {
+  --vp-font-family-base: var(--bless-font-sans);
+  --vp-c-brand-1: var(--bless-color-accent);
+  --vp-c-brand-2: var(--bless-color-accent-2);
+  --vp-c-brand-3: var(--bless-color-accent);
+  --vp-c-brand-soft: color-mix(in srgb, var(--bless-color-accent) 14%, transparent);
+  --vp-c-bg: var(--bless-color-bg);
+  --vp-c-bg-alt: var(--bless-color-surface);
+  --vp-c-bg-soft: var(--bless-color-surface);
+  --vp-c-bg-elv: var(--bless-color-bg);
+  --vp-c-text-1: var(--bless-color-text);
+  --vp-c-text-2: var(--bless-color-text-muted);
+  --vp-c-text-3: var(--bless-color-text-muted);
+  --vp-c-divider: var(--bless-color-border);
+  --vp-c-border: var(--bless-color-border);
+  --vp-c-gutter: var(--bless-color-border);
+  --vp-c-danger-1: var(--bless-color-danger);
+  --vp-c-warning-1: var(--bless-color-warning);
+  --vp-c-tip-1: var(--bless-color-info);
+  --vp-button-brand-bg: var(--bless-color-accent);
+  --vp-button-brand-hover-bg: var(--bless-color-accent);
+  --vp-button-brand-active-bg: var(--bless-color-accent);
+  --vp-button-brand-text: var(--bless-color-on-accent);
+  --vp-button-brand-border: transparent;
+  --vp-home-hero-name-color: var(--bless-color-accent);
+  --vp-home-hero-name-background: none;
+  --vp-code-tab-bg: var(--bless-color-surface);
+  --vp-code-block-bg: var(--bless-color-surface);
+  --vp-custom-block-tip-bg: var(--bless-color-surface);
+}
+/* skewed brand buttons on the home hero */
+.VPButton.brand,
+.VPButton.alt {
+  border-radius: 0;
+  transform: skewX(var(--bless-skew));
+  font-weight: var(--bless-font-weight-bold);
+  letter-spacing: var(--bless-tracking-wide);
+  text-transform: uppercase;
+  transition: opacity var(--bless-duration-slow);
+}
+.VPButton.brand:hover,
+.VPButton.alt:hover {
+  opacity: var(--bless-hover-opacity);
+}
+.VPFeature,
+.vp-doc div[class*="language-"],
+.VPLocalSearchBox .shell,
+.VPNavBarMenuGroup .menu,
+.custom-block {
+  border-radius: 0;
+}
+.VPHero .name {
+  font-weight: var(--bless-font-weight-thin);
+  letter-spacing: var(--bless-tracking-tight);
+}
+.VPHero .text {
+  font-weight: var(--bless-font-weight-light);
+}
+.vp-doc h1,
+.vp-doc h2 {
+  font-weight: var(--bless-font-weight-light);
+  letter-spacing: var(--bless-tracking-tight);
+}
+.vp-doc h2 {
+  border-top: var(--bless-border-width) solid var(--bless-color-border);
+}
+/* component pages: one-liner under h1 */
+.bless-lead {
+  margin-top: -8px;
+  color: var(--bless-color-text-muted);
+}
+.VPButton.VPButton.medium,
+.VPButton.VPButton.small,
+.VPButton.VPButton.big {
+  border-radius: 0;
+}
+:root,
+.dark {
+  --vp-code-color: var(--bless-color-text);
+}
+/* demo content is the library's, not prose */
+.vp-doc .demo__preview a {
+  color: inherit;
+  font-weight: inherit;
+  text-decoration: none;
+}
+.vp-doc .demo__preview :is(h1, h2, h3, h4, h5, h6) {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  line-height: inherit;
+}
+.vp-doc .demo__preview table {
+  display: table;
+  margin: 0;
+}
+.vp-doc .demo__preview :is(th, td) {
+  border: 0;
+  padding: 0;
+  background: none;
+}

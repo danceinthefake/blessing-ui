@@ -248,6 +248,9 @@ Durations collapse to `0s` under `prefers-reduced-motion`. Tailwind v4 users can
 mise install        # node 24, pnpm 12
 pnpm install
 pnpm dev            # playground: http://localhost:5173 (+ /forms.html, /floating.html, /composite.html, /chat.html, /stage.html)
+pnpm docs:dev       # docs site (VitePress): demos + generated props tables
+pnpm docs:meta      # regenerate docs/.vitepress/meta.json from the components (vue-component-meta)
+pnpm docs:pages     # scaffold a docs page for any component that lacks one
 pnpm test           # vitest + jsdom
 pnpm typecheck      # vue-tsc
 pnpm build          # dist/blessing-ui.{js,css} + index.d.ts

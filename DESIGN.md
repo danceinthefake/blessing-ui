@@ -185,12 +185,12 @@ blessing-ui/
     index.ts            named exports
     components/*.vue
     composables/        useFocusTrap, useHashModal, useMedia(800px)
-  docs/                 per-component .md (props, slots, events, example)
+  docs/                 VitePress site ✅ — components/*.md (demo + generated API), demos/*.vue, guide/
   playground/           Vite app, one page per component
   package.json          exports: ./tokens.css, . (ESM), ./style.css
 ```
 
-Tooling: Vite + `vite-plugin-dts`, Vitest + `@vue/test-utils` (one smoke test per component), no Storybook (playground page is enough). Add only when Phase 1 starts.
+Tooling: Vite + `vite-plugin-dts`, Vitest + `@vue/test-utils` (one smoke test per component), no Storybook — playground pages for dev, VitePress docs site for the showcase (`docs/`, GitHub Pages via `.github/workflows/docs.yml`).
 
 ## 6. Non-goals
 
