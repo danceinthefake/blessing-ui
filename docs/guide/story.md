@@ -10,7 +10,7 @@ It read as a design system that nobody had written down. So we wrote it down.
 
 ## The name
 
-In the story, the protagonist founds a doujin game circle and calls it **Blessing Software**. A component library is the kind of thing that circle would have shipped. The circle's logo in the series is a five-petal flower; our mark is five of our own skewed plates in a ring, one colour, drawn from the system rather than from the show. The name and the shape are nods in that direction and nothing more — see the note at the bottom.
+In the story, the protagonist founds a doujin game circle and calls it **Blessing Software**. A component library is the kind of thing that circle would have shipped. The circle's logo in the series is a five-petal flower, one petal per member. Our mark is five of our own skewed plates in a ring in those five colours, drawn from the system rather than from the show — and each colour is a [palette](./palettes) you can switch the whole library to. The name and the shape are nods in that direction and nothing more — see the note at the bottom.
 
 ## What was kept
 

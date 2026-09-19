@@ -50,6 +50,7 @@ export default defineConfig({
             { text: "Install", link: "/guide/install" },
             { text: "Tokens", link: "/guide/tokens" },
             { text: "Dark mode", link: "/guide/dark-mode" },
+            { text: "Palettes", link: "/guide/palettes" },
             { text: "Fonts", link: "/guide/fonts" },
             { text: "Conventions", link: "/guide/conventions" },
             { text: "useScrollSpy", link: "/guide/scroll-spy" },

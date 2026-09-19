@@ -158,3 +158,6 @@ export { default as BlessConfirmPopup } from "./components/BlessConfirmPopup.vue
 export { default as BlessCompare } from "./components/BlessCompare.vue";
 export { default as BlessDataView } from "./components/BlessDataView.vue";
 export { useAnimateOnScroll } from "./composables/useAnimateOnScroll";
+export { default as BlessPaletteToggle } from "./components/BlessPaletteToggle.vue";
+export { blessPalettes } from "./composables/useTheme";
+export type { BlessPalette } from "./composables/useTheme";

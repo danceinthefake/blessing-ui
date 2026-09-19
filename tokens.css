@@ -162,3 +162,46 @@
     --bless-duration-slower: 0s;
   }
 }
+
+/* ---- palettes ----
+ * Five accent families named after the members of the circle the library is named for
+ * (see docs/guide/story). <html data-palette="megumi"> swaps only the accent family; greys,
+ * skew and type are untouched, and data-theme (dark) composes on top.
+ * No attribute = the default "Blessing" pink-red above.
+ */
+:root[data-palette="megumi"] {
+  --bless-color-accent: #e85078;
+  --bless-color-accent-soft: #f5a0b8;
+  --bless-color-accent-2: #ee6f92;
+  --bless-color-badge: #e03060;
+  --bless-color-chart-1: #e85078;
+}
+:root[data-palette="utaha"] {
+  --bless-color-accent: #e03028;
+  --bless-color-accent-soft: #f28a84;
+  --bless-color-accent-2: #ea5a52;
+  --bless-color-badge: #d02020;
+  --bless-color-chart-1: #e03028;
+}
+:root[data-palette="izumi"] {
+  --bless-color-accent: #4090d0;
+  --bless-color-accent-soft: #8fbfe6;
+  --bless-color-accent-2: #63a6db;
+  --bless-color-badge: #2f7ec0;
+  --bless-color-chart-1: #4090d0;
+}
+:root[data-palette="michiru"] {
+  --bless-color-accent: #b878b0;
+  --bless-color-accent-soft: #d6aed1;
+  --bless-color-accent-2: #c793c0;
+  --bless-color-badge: #a565a0;
+  --bless-color-chart-1: #b878b0;
+}
+/* Eriri's petal (#c8e018) is too light for white text; it becomes accent-soft and the ink darkens */
+:root[data-palette="eriri"] {
+  --bless-color-accent: #7f9600;
+  --bless-color-accent-soft: #c8e018;
+  --bless-color-accent-2: #a3bf0a;
+  --bless-color-badge: #6f8400;
+  --bless-color-chart-1: #7f9600;
+}

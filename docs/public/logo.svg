@@ -1,10 +1,8 @@
+<!-- Blessing UI mark: five skewed plates (the system geometry) in a ring, one per member of the circle — Megumi, Utaha, Izumi, Michiru, Eriri -->
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
-  <!-- Blessing UI mark: five skewed plates (skewX(-10deg), the system geometry) in a ring — a nod to a five-petal flower, one accent -->
-  <g fill="#ff0054">
-  <rect x="0" y="-6.5" width="20" height="13" transform="rotate(0 32 32) translate(42 32) skewX(-10)"/>
-  <rect x="0" y="-6.5" width="20" height="13" transform="rotate(72 32 32) translate(42 32) skewX(-10)"/>
-  <rect x="0" y="-6.5" width="20" height="13" transform="rotate(144 32 32) translate(42 32) skewX(-10)"/>
-  <rect x="0" y="-6.5" width="20" height="13" transform="rotate(216 32 32) translate(42 32) skewX(-10)"/>
-  <rect x="0" y="-6.5" width="20" height="13" transform="rotate(288 32 32) translate(42 32) skewX(-10)"/>
-  </g>
+  <rect x="0" y="-6.5" width="20" height="13" fill="#e85078" transform="rotate(-90 32 32) translate(42 32) skewX(-10)"/>
+  <rect x="0" y="-6.5" width="20" height="13" fill="#e03028" transform="rotate(-18 32 32) translate(42 32) skewX(-10)"/>
+  <rect x="0" y="-6.5" width="20" height="13" fill="#4090d0" transform="rotate(54 32 32) translate(42 32) skewX(-10)"/>
+  <rect x="0" y="-6.5" width="20" height="13" fill="#b878b0" transform="rotate(126 32 32) translate(42 32) skewX(-10)"/>
+  <rect x="0" y="-6.5" width="20" height="13" fill="#c8e018" transform="rotate(198 32 32) translate(42 32) skewX(-10)"/>
 </svg>

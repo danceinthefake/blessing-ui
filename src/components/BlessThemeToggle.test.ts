@@ -39,3 +39,23 @@ test("BlessThemeToggle switch and group", async () => {
   await nextTick();
   expect(document.documentElement.dataset.theme).toBe("light");
 });
+
+test("useTheme palette applies data-palette and persists; BlessPaletteToggle switches", async () => {
+  const { default: BlessPaletteToggle } = await import("./BlessPaletteToggle.vue");
+  const { setPalette, palette } = useTheme();
+  setPalette("eriri");
+  await nextTick();
+  expect(document.documentElement.dataset.palette).toBe("eriri");
+  expect(localStorage.getItem("bless-palette")).toBe("eriri");
+  const w = mount(BlessPaletteToggle);
+  expect(w.findAll("button")).toHaveLength(6);
+  expect(w.find('[aria-label="Eriri"]').attributes("aria-pressed")).toBe("true");
+  await w.find('[aria-label="Megumi"]').trigger("click");
+  await nextTick();
+  expect(palette.value).toBe("megumi");
+  expect(document.documentElement.dataset.palette).toBe("megumi");
+  await w.find("button").trigger("click");
+  await nextTick();
+  expect(document.documentElement.dataset.palette).toBeUndefined();
+  expect(localStorage.getItem("bless-palette")).toBeNull();
+});

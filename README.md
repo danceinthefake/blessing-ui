@@ -248,7 +248,7 @@ Any other SVG chart lib works too — read `var(--bless-color-chart-N)` for seri
 
 ### Composables
 
-`useMedia(query?)` · `useHash()` · `useScrollSpy(ids | selector, { rootMargin, root })` → `{ active }` · `useAnimateOnScroll(el, { threshold, rootMargin, once })` → `{ visible }` · `applyMask(mask, input)` / `unmask(mask, masked)` · `useTheme()` → `{ theme, isDark, set, toggle }` · `useFloating(anchor, floating, active, opts | () => opts)` · `useToast()` · `useDataTable(rows, { rowKey, pageSize, searchKeys })` · date helpers `toISO` `fromISO` `addDays` `addMonths` `isoToday`.
+`useMedia(query?)` · `useHash()` · `useScrollSpy(ids | selector, { rootMargin, root })` → `{ active }` · `useAnimateOnScroll(el, { threshold, rootMargin, once })` → `{ visible }` · `applyMask(mask, input)` / `unmask(mask, masked)` · `useTheme()` → `{ theme, isDark, set, toggle, palette, setPalette }` · `useFloating(anchor, floating, active, opts | () => opts)` · `useToast()` · `useDataTable(rows, { rowKey, pageSize, searchKeys })` · date helpers `toISO` `fromISO` `addDays` `addMonths` `isoToday`.
 
 ### Types
 
@@ -276,6 +276,10 @@ All styling reads `--bless-*` custom properties defined in `tokens.css`. Overrid
 | Elevation          | `--bless-shadow-{none,md}`                                                                                                                                                                         |
 | Motion             | `--bless-duration-{fast,base,slow,slower}`, `--bless-ease-{in-out,out,linear}`, `--bless-hover-opacity`, `--bless-press-scale`                                                                     |
 | Layout             | `--bless-sidebar-width`, `--bless-sidebar-inner`, `--bless-content-max`, `--bless-z-{bg,nav,modal}`                                                                                                |
+
+### Palettes
+
+Five alternative accent families — `data-palette="megumi" | "utaha" | "izumi" | "michiru" | "eriri"` on `<html>` — swap only the accent tokens; greys and dark mode are untouched. `BlessPaletteToggle` switches them; `useTheme().setPalette()` persists.
 
 ### Dark mode
 

@@ -169,3 +169,12 @@
 html:not(.dark) .dark-only {
   display: none;
 }
+
+.nav-palette {
+  margin-left: 12px;
+}
+@media (max-width: 767px) {
+  .nav-palette {
+    display: none;
+  }
+}

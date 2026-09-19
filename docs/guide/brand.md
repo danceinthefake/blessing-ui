@@ -21,7 +21,7 @@ Blessing UI's identity is the design system itself — nothing is added for the 
 
 ## Mark
 
-Five skewed plates in a ring. Each petal is the same parallelogram every label in the system uses, rotated 72° apart, in the one accent. It answers the name: the fictional circle Blessing is named after has a five-petal flower for a logo — see the [story](./story). Ours is re-drawn from the system's own geometry, one colour, no centre; nothing of theirs is in it.
+Five skewed plates in a ring, one colour each. Each petal is the same parallelogram every label in the system uses, rotated 72° apart. It answers the name: the fictional circle Blessing is named after has a five-petal flower for a logo, one petal per member — see the [story](./story). Ours is re-drawn from the system's own geometry, no centre; the five colours are the five [palettes](./palettes), so the mark is literally the theme picker.
 
 | File                              | Use                                                                  |
 | --------------------------------- | -------------------------------------------------------------------- |
@@ -38,7 +38,7 @@ Five skewed plates in a ring. Each petal is the same parallelogram every label i
 ## Rules
 
 - Keep the skew and the five. Don't unskew, round, outline, or re-space the petals; don't add a centre.
-- One accent. No gradients, no second colour, no per-petal colours.
+- One accent in the UI. The mark is the only place the five palette colours sit together; never recolour a petal.
 - Clear space = one petal width on all sides.
 - Minimum size 16px.
 - Don't set the wordmark in any weight other than 100/300, and don't letterspace it.
