@@ -1,4 +1,4 @@
-import { markRaw, reactive, type Component } from "vue";
+import { markRaw, reactive, shallowReactive, type Component } from "vue";
 
 export interface BlessDialogOptions<P = Record<string, unknown>> {
   title?: string;
@@ -18,11 +18,19 @@ export interface BlessDialogEntry extends BlessDialogOptions {
   resolve: (result: unknown) => void;
 }
 
-const state = reactive({ items: [] as BlessDialogEntry[] });
+const state: { items: BlessDialogEntry[] } = reactive({
+  items: shallowReactive([]) as BlessDialogEntry[],
+});
 let seq = 0;
 
 /** Programmatic modals; mount <BlessDialogHost /> once. `open()` resolves with whatever `close(result)` gets. */
-export function useDialog() {
+export function useDialog(): {
+  open: <R = unknown, P = Record<string, unknown>>(
+    opts: BlessDialogOptions<P>,
+  ) => Promise<R | undefined>;
+  close: (id: number, result?: unknown) => void;
+  items: BlessDialogEntry[];
+} {
   function open<R = unknown, P = Record<string, unknown>>(
     opts: BlessDialogOptions<P>,
   ): Promise<R | undefined> {
@@ -46,4 +54,4 @@ export function useDialog() {
   return { open, close, items: state.items };
 }
 
-export const dialogState = state;
+export const dialogState: { items: BlessDialogEntry[] } = state;
