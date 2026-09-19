@@ -1,0 +1,25 @@
+README.md
+  s_9ec1000e308ddb::t_23554919b166c4 103-119
+docs/.vitepress/theme/Demo.vue
+  s_9ec1000e308ddb::t_aff7b26d6bad2e 66,69-71
+docs/demos/SelectBasic.vue
+  s_9ec1000e308ddb::t_a635cd0dfe1cdd 26-27,30,32
+src/components/BlessSelect.vue
+  s_9ec1000e308ddb::t_95064c52a5778b 149-152,157,168-169
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "279d22f7402c8babe6cb20840aeab684d62df80f",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "unknown"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
