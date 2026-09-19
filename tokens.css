@@ -205,3 +205,11 @@
   --bless-color-badge: #6f8400;
   --bless-color-chart-1: #7f9600;
 }
+/* Tomoya — the centre of the circle, not a petal; the mark stays five */
+:root[data-palette="tomoya"] {
+  --bless-color-accent: #5870f8;
+  --bless-color-accent-soft: #9aa8fb;
+  --bless-color-accent-2: #7688f9;
+  --bless-color-badge: #4a5fe0;
+  --bless-color-chart-1: #5870f8;
+}

@@ -2,13 +2,14 @@ import { computed, ref, watchEffect } from "vue";
 
 export type BlessTheme = "light" | "dark" | "system";
 /** accent family; undefined = the default Blessing pink-red */
-export type BlessPalette = "megumi" | "utaha" | "izumi" | "michiru" | "eriri";
+export type BlessPalette = "megumi" | "utaha" | "izumi" | "michiru" | "eriri" | "tomoya";
 export const blessPalettes: { name: BlessPalette; color: string }[] = [
   { name: "megumi", color: "#e85078" },
   { name: "utaha", color: "#e03028" },
   { name: "izumi", color: "#4090d0" },
   { name: "michiru", color: "#b878b0" },
   { name: "eriri", color: "#c8e018" },
+  { name: "tomoya", color: "#5870f8" },
 ];
 
 const KEY = "bless-theme";

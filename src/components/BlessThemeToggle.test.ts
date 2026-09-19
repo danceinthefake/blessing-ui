@@ -48,7 +48,7 @@ test("useTheme palette applies data-palette and persists; BlessPaletteToggle swi
   expect(document.documentElement.dataset.palette).toBe("eriri");
   expect(localStorage.getItem("bless-palette")).toBe("eriri");
   const w = mount(BlessPaletteToggle);
-  expect(w.findAll("button")).toHaveLength(6);
+  expect(w.findAll("button")).toHaveLength(7);
   expect(w.find('[aria-label="Eriri"]').attributes("aria-pressed")).toBe("true");
   await w.find('[aria-label="Megumi"]').trigger("click");
   await nextTick();
