@@ -62,7 +62,7 @@ function onUp() {
       open = false;
       emit('close');
     "
-    @cancel.prevent="open = false"
+    @cancel.prevent="dismissible && (open = false)"
     @click="onBackdrop"
   >
     <div

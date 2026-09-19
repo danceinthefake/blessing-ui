@@ -44,7 +44,7 @@ function onKey(e: KeyboardEvent) {
   else if (e.key === inc) size.value = clamp(size.value + props.step);
   else if (e.key === "Home") size.value = props.min;
   else if (e.key === "End") size.value = props.max;
-  else if (e.key === "Enter") size.value = 50;
+  else if (e.key === "Enter") size.value = clamp(50);
   else return;
   e.preventDefault();
 }
@@ -72,7 +72,7 @@ function onKey(e: KeyboardEvent) {
       @pointerup="onUp"
       @pointercancel="onUp"
       @keydown="onKey"
-      @dblclick="size = 50"
+      @dblclick="size = clamp(50)"
     >
       <span class="bless-resizable__grip" aria-hidden="true" />
     </div>

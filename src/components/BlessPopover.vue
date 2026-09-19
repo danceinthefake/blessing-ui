@@ -23,10 +23,10 @@ const open = defineModel<boolean>("open", { default: false });
 const id = useId();
 const anchor = ref<HTMLElement>();
 const panel = ref<HTMLElement>();
-const { x, y, side } = useFloating(anchor, panel, open, {
+const { x, y, side } = useFloating(anchor, panel, open, () => ({
   placement: props.placement,
   offset: props.offset,
-});
+}));
 
 function sync(o: boolean) {
   const el = panel.value;
@@ -34,7 +34,7 @@ function sync(o: boolean) {
   if (o && !el.matches(":popover-open")) el.showPopover();
   else if (!o && el.matches(":popover-open")) el.hidePopover();
 }
-watch(open, (o) => nextTick(() => sync(o)));
+watch(open, (o) => nextTick(() => sync(o)), { immediate: true });
 
 let timer: ReturnType<typeof setTimeout> | undefined;
 const later = (v: boolean, ms: number) => {

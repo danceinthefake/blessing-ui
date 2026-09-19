@@ -51,8 +51,8 @@ function scrollTo(id: string, behavior: ScrollBehavior = "smooth") {
     ?.scrollIntoView({ behavior, block: "start" });
 }
 
-// ponytail: prepend anchoring relies on CSS overflow-anchor (Chrome/Firefox);
-// Safari gets a manual restore in loadHistory().
+// browser scroll anchoring is disabled on the content (see CSS) so this manual
+// restore is the only one that runs — otherwise Chrome/Firefox would double it
 async function loadHistory(insert: () => void | Promise<void>) {
   const el = viewport.value!;
   const before = el.scrollHeight;
@@ -112,7 +112,7 @@ defineExpose({ scrollToBottom, scrollTo, loadHistory, atBottom });
   flex-direction: column;
   gap: var(--bless-space-3);
   padding: var(--bless-space-3);
-  overflow-anchor: auto;
+  overflow-anchor: none;
 }
 .bless-message-scroller__jump {
   position: absolute;

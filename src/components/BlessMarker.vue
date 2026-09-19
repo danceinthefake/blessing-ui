@@ -93,7 +93,7 @@ withDefaults(
   background-image: linear-gradient(
     90deg,
     transparent 30%,
-    rgb(255 255 255 / 0.35) 50%,
+    color-mix(in srgb, var(--bless-color-text) 18%, transparent) 50%,
     transparent 70%
   );
   background-size: 200% 100%;

@@ -121,3 +121,33 @@ test("Menubar registers menus and has role", () => {
   expect(w.attributes("role")).toBe("menubar");
   expect(w.findAll(".bless-dropdown__anchor")).toHaveLength(2);
 });
+
+test("BlessMenuList: submenu keys do not double-step or close the whole tree", async () => {
+  const { default: BlessMenuList } = await import("./BlessMenuList.vue");
+  const w = mount(BlessMenuList, {
+    props: {
+      items: [
+        {
+          type: "sub",
+          label: "More",
+          items: [
+            { label: "S1", value: "s1" },
+            { label: "S2", value: "s2" },
+            { label: "S3", value: "s3" },
+          ],
+        },
+      ],
+    },
+    attachTo: document.body,
+  });
+  await w.find(".bless-menu__item--sub").trigger("click");
+  await nextTick();
+  const sub = w.findAll(".bless-menu")[1];
+  const subItems = sub.findAll('[role="menuitem"]');
+  (subItems[0].element as HTMLElement).focus();
+  await subItems[0].trigger("keydown", { key: "ArrowDown" });
+  expect(document.activeElement?.textContent?.trim()).toBe("S2");
+  await subItems[1].trigger("keydown", { key: "Escape" });
+  expect(w.emitted("close")).toBeUndefined();
+  w.unmount();
+});

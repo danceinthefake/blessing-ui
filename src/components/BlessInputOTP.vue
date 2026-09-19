@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref } from "vue";
+import { computed, ref, watch } from "vue";
 
 defineOptions({ name: "BlessInputOTP" });
 
@@ -21,14 +21,24 @@ const props = withDefaults(
 const model = defineModel<string>({ default: "" });
 const emit = defineEmits<{ complete: [code: string] }>();
 const inputs = ref<HTMLInputElement[]>([]);
-const chars = computed(() => Array.from({ length: props.length }, (_, i) => model.value[i] ?? ""));
+// cells keep gaps ("12_456"); the model is their concatenation, so an empty middle cell
+// never shifts later digits left
+const fromModel = (v: string) => Array.from({ length: props.length }, (_, i) => v[i] ?? "");
+const chars = ref<string[]>(fromModel(model.value));
+watch(model, (v) => {
+  if (v !== chars.value.join("")) chars.value = fromModel(v);
+});
 const pattern = computed(() => (props.numeric ? /\d/ : /./));
 
+function commit(arr: string[]) {
+  chars.value = arr;
+  model.value = arr.join("");
+  if (arr.every(Boolean)) emit("complete", model.value);
+}
 function set(i: number, ch: string) {
   const arr = chars.value.slice();
   arr[i] = ch;
-  model.value = arr.join("").slice(0, props.length);
-  if (model.value.length === props.length && !arr.includes("")) emit("complete", model.value);
+  commit(arr);
 }
 function focus(i: number) {
   inputs.value[Math.max(0, Math.min(props.length - 1, i))]?.focus();
@@ -36,15 +46,17 @@ function focus(i: number) {
 function onInput(i: number, e: Event) {
   const el = e.target as HTMLInputElement;
   const v = el.value.replace(props.numeric ? /\D/g : /\s/g, "");
-  if (!v) return void set(i, "");
+  if (!v) {
+    el.value = ""; // rejected char (letter in numeric mode) must not linger
+    return void set(i, "");
+  }
   // typed or pasted several chars: spread forward
   const cs = v.split("").filter((c) => pattern.value.test(c));
   const arr = chars.value.slice();
   cs.forEach((c, k) => i + k < props.length && (arr[i + k] = c));
-  model.value = arr.join("").slice(0, props.length);
+  commit(arr);
   el.value = arr[i] ?? "";
   focus(i + cs.length);
-  if (arr.every(Boolean) && arr.length === props.length) emit("complete", model.value);
 }
 function onKey(i: number, e: KeyboardEvent) {
   if (e.key === "Backspace") {
@@ -71,9 +83,8 @@ function onPaste(i: number, e: ClipboardEvent) {
   if (!text) return;
   const arr = chars.value.slice();
   text.split("").forEach((c, k) => i + k < props.length && (arr[i + k] = c));
-  model.value = arr.join("").slice(0, props.length);
+  commit(arr);
   focus(i + text.length);
-  if (arr.every(Boolean)) emit("complete", model.value);
 }
 </script>
 

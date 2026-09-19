@@ -13,7 +13,10 @@ const open = ref(false);
 const id = useId();
 const anchor = ref<HTMLElement>();
 const tip = ref<HTMLElement>();
-const { x, y, side } = useFloating(anchor, tip, open, { placement: props.placement, offset: 6 });
+const { x, y, side } = useFloating(anchor, tip, open, () => ({
+  placement: props.placement,
+  offset: 6,
+}));
 
 let timer: ReturnType<typeof setTimeout> | undefined;
 const show = (ms = props.delay) => {
@@ -24,13 +27,16 @@ const hide = () => {
   clearTimeout(timer);
   open.value = false;
 };
-watch(open, (o) =>
-  nextTick(() => {
-    const el = tip.value;
-    if (!el || typeof el.showPopover !== "function") return;
-    if (o && !el.matches(":popover-open")) el.showPopover();
-    else if (!o && el.matches(":popover-open")) el.hidePopover();
-  }),
+watch(
+  open,
+  (o) =>
+    nextTick(() => {
+      const el = tip.value;
+      if (!el || typeof el.showPopover !== "function") return;
+      if (o && !el.matches(":popover-open")) el.showPopover();
+      else if (!o && el.matches(":popover-open")) el.hidePopover();
+    }),
+  { immediate: true },
 );
 </script>
 

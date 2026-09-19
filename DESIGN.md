@@ -93,7 +93,7 @@ Target: cover [shadcn/ui's component list](https://ui.shadcn.com/docs/components
 - [x] `BlessToggle` / `BlessToggleGroup` — pressed button(s), `aria-pressed`, single/multiple
 - [x] `BlessBreadcrumb` — `<nav aria-label>` + `<ol>`, skewed separators
 - [x] `BlessPagination` — page list + prev/next, `v-model`, `siblings`, ellipsis
-- [x] `BlessScrollArea` — thin custom scrollbar via `scrollbar-color`/`::-webkit-scrollbar`, fade edges
+- [x] `BlessScrollArea` — thin custom scrollbar via `scrollbar-width` + `scrollbar-color`, fade edges
 - [x] `BlessKbd` — keycap
 - [x] `BlessForm` / `BlessField` — `<form novalidate>` wrapper, field wiring label→control→error, `aria-describedby`; validation via native Constraint API (`setCustomValidity`), no schema lib
 

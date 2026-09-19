@@ -40,16 +40,6 @@ withDefaults(
 .bless-scroll--both {
   overflow: auto;
 }
-.bless-scroll::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-.bless-scroll::-webkit-scrollbar-thumb {
-  background: var(--bless-color-text-muted);
-}
-.bless-scroll::-webkit-scrollbar-thumb:hover {
-  background: var(--bless-color-text);
-}
 .bless-scroll:focus-visible {
   outline: 2px solid var(--bless-color-accent);
   outline-offset: 2px;

@@ -87,3 +87,17 @@ test("BlessInputOTP typing advances, backspace retreats, paste fills, complete e
   expect(w.emitted("complete")![0]).toEqual(["9876"]);
   w.unmount();
 });
+
+test("BlessInputOTP: clearing a middle cell keeps later digits in place", async () => {
+  const w = mount(BlessInputOTP, {
+    props: { length: 4, modelValue: "1234" },
+    attachTo: document.body,
+  });
+  const cells = w.findAll("input");
+  await cells[1].trigger("keydown", { key: "Delete" });
+  expect(cells[3].element.value).toBe("4");
+  expect(cells[1].element.value).toBe("");
+  expect(w.emitted("update:modelValue")!.at(-1)![0]).toBe("134");
+  expect(w.emitted("complete")).toBeUndefined();
+  w.unmount();
+});

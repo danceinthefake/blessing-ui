@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { nextTick, ref, useId, watch } from "vue";
+import { nextTick, ref, useId } from "vue";
 import { useFloating } from "../composables/useFloating";
 
 defineOptions({ name: "BlessNavigationMenu" });
@@ -55,13 +55,6 @@ function onKey(e: KeyboardEvent, i: number, item: BlessNavMenuItem) {
   else if (e.key === "ArrowLeft")
     anchors.value[(i - 1 + anchors.value.length) % anchors.value.length]?.focus();
 }
-watch(
-  openIdx,
-  (v) =>
-    v !== null &&
-    nextTick(() => panel.value?.querySelector<HTMLElement>("a")?.focus({ preventScroll: true })),
-  { flush: "post" },
-);
 </script>
 
 <template>

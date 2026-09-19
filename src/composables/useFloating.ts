@@ -24,8 +24,9 @@ export function useFloating(
   anchor: Ref<HTMLElement | null | undefined>,
   floating: Ref<HTMLElement | null | undefined>,
   active: Ref<boolean>,
-  opts: FloatingOptions = {},
+  options: FloatingOptions | (() => FloatingOptions) = {},
 ) {
+  const opts = () => (typeof options === "function" ? options() : options);
   const x = ref(0);
   const y = ref(0);
   const side = ref<"top" | "bottom" | "left" | "right">("bottom");
@@ -34,12 +35,12 @@ export function useFloating(
     const a = anchor.value;
     const f = floating.value;
     if (!a || !f) return;
-    const [want, align = "center"] = (opts.placement ?? "bottom").split("-") as [
+    const [want, align = "center"] = (opts().placement ?? "bottom").split("-") as [
       typeof side.value,
       "start" | "end" | "center",
     ];
-    const off = opts.offset ?? 8;
-    const pad = opts.padding ?? 8;
+    const off = opts().offset ?? 8;
+    const pad = opts().padding ?? 8;
     const r = a.getBoundingClientRect();
     const fw = f.offsetWidth;
     const fh = f.offsetHeight;
@@ -86,7 +87,7 @@ export function useFloating(
       listen(on);
       if (on) requestAnimationFrame(compute);
     },
-    { flush: "post" },
+    { flush: "post", immediate: true },
   );
   onBeforeUnmount(() => listen(false));
 

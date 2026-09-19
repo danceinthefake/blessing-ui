@@ -32,7 +32,10 @@ const panel = ref<HTMLElement>();
 const list = ref<InstanceType<typeof BlessMenuList>>();
 const virtual = ref<{ x: number; y: number } | null>(null);
 const anchorEl = ref<HTMLElement>();
-const { x, y } = useFloating(anchorEl, panel, open, { placement: props.placement, offset: 4 });
+const { x, y } = useFloating(anchorEl, panel, open, () => ({
+  placement: props.placement,
+  offset: 4,
+}));
 const bar = inject(menubarKey, null);
 
 function sync(o: boolean) {
@@ -41,23 +44,27 @@ function sync(o: boolean) {
   if (o && !el.matches(":popover-open")) el.showPopover();
   else if (!o && el.matches(":popover-open")) el.hidePopover();
 }
-watch(open, (o) => {
-  anchorEl.value = virtual.value
-    ? ({
-        getBoundingClientRect: () => new DOMRect(virtual.value!.x, virtual.value!.y, 0, 0),
-      } as HTMLElement)
-    : anchor.value;
-  nextTick(() => {
-    sync(o);
-    if (o) {
-      list.value?.focusFirst();
-      if (bar) bar.active.value = id;
-    } else {
-      virtual.value = null;
-      if (bar && bar.active.value === id) bar.active.value = null;
-    }
-  });
-});
+watch(
+  open,
+  (o) => {
+    anchorEl.value = virtual.value
+      ? ({
+          getBoundingClientRect: () => new DOMRect(virtual.value!.x, virtual.value!.y, 0, 0),
+        } as HTMLElement)
+      : anchor.value;
+    nextTick(() => {
+      sync(o);
+      if (o) {
+        list.value?.focusFirst();
+        if (bar) bar.active.value = id;
+      } else {
+        virtual.value = null;
+        if (bar && bar.active.value === id) bar.active.value = null;
+      }
+    });
+  },
+  { immediate: true },
+);
 
 function onTrigger(e: MouseEvent) {
   if (props.context) return;

@@ -201,7 +201,7 @@ Any other SVG chart lib works too — read `var(--bless-color-chart-N)` for seri
 
 ### Composables
 
-`useMedia(query?)` · `useHash()` · `useTheme()` → `{ theme, isDark, set, toggle }` · `useFloating(anchor, floating, active, { placement, offset })` · `useToast()` · `useDataTable(rows, { rowKey, pageSize, searchKeys })` · date helpers `toISO` `fromISO` `addDays` `addMonths` `isoToday`.
+`useMedia(query?)` · `useHash()` · `useTheme()` → `{ theme, isDark, set, toggle }` · `useFloating(anchor, floating, active, opts | () => opts)` · `useToast()` · `useDataTable(rows, { rowKey, pageSize, searchKeys })` · date helpers `toISO` `fromISO` `addDays` `addMonths` `isoToday`.
 
 ### Types
 

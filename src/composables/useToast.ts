@@ -1,4 +1,4 @@
-import { reactive } from "vue";
+import { reactive, toRef } from "vue";
 
 export interface BlessToastOptions {
   title?: string;
@@ -32,7 +32,7 @@ export function useToast() {
   return {
     toast,
     dismiss,
-    items: state.items,
+    items: toRef(state, "items"),
     success: helper("success"),
     error: helper("danger"),
     warning: helper("warning"),

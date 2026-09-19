@@ -106,14 +106,20 @@ function onKey(e: KeyboardEvent) {
 }
 function shiftMonth(n: number, keepFocus = false) {
   view.value = addMonths(view.value, n);
-  if (keepFocus) {
-    const d = fromISO(focused.value);
-    const t = new Date(view.value.getFullYear(), view.value.getMonth(), Math.min(d.getDate(), 28));
-    focused.value = toISO(t);
+  if (keepFocus)
     requestAnimationFrame(() => document.getElementById(`${id}-${focused.value}`)?.focus());
-  }
 }
 watch(first, (v) => v && (view.value = addMonths(fromISO(v), 0)));
+// the roving-tabindex cell must be in the visible month, or the grid leaves the Tab order
+watch(
+  view,
+  (v) => {
+    const d = fromISO(focused.value);
+    if (d.getFullYear() !== v.getFullYear() || d.getMonth() !== v.getMonth())
+      focused.value = toISO(new Date(v.getFullYear(), v.getMonth(), Math.min(d.getDate(), 28)));
+  },
+  { immediate: true },
+);
 </script>
 
 <template>

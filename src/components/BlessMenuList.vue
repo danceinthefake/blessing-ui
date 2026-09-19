@@ -31,6 +31,8 @@ function focusLast() {
 }
 
 function onKey(e: KeyboardEvent) {
+  // a nested BlessMenuList handles its own keys; don't double-step / close the whole tree
+  if ((e.target as HTMLElement).closest('[role="menu"]') !== root.value) return;
   const list = focusables();
   const i = list.indexOf(document.activeElement as HTMLElement);
   const go = (n: number) => {

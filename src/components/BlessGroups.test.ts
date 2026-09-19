@@ -60,3 +60,15 @@ test("BlessItem renders media/title/description/actions and links", () => {
   expect(w.find(".bless-item__actions button").exists()).toBe(true);
   expect(mount(BlessItem, { props: { title: "x" } }).element.tagName).toBe("DIV");
 });
+
+test("BlessScrollArea: axis class, focusable, sizes", async () => {
+  const { default: BlessScrollArea } = await import("./BlessScrollArea.vue");
+  const w = mount(BlessScrollArea, {
+    props: { axis: "x", height: "100px", width: "200px", fade: false },
+    slots: { default: "<p>x</p>" },
+  });
+  expect(w.classes()).toContain("bless-scroll--x");
+  expect(w.classes()).not.toContain("bless-scroll--fade");
+  expect(w.attributes("tabindex")).toBe("0");
+  expect(w.attributes("style")).toContain("200px");
+});
