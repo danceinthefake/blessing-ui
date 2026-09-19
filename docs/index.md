@@ -19,12 +19,12 @@ hero:
       text: GitHub
       link: https://github.com/danceinthefake/blessing-ui
 features:
-  - title: One angle
-    details: Every label, tab, button and badge leans at the same ten degrees. No rounded corners, no drop shadows — a hard plate offset behind. You recognise it across the room.
-  - title: One accent
-    details: Grey does the work; one pink says what matters — the heroine's, unless you pick another member's. Hover is a fade, not a bounce. Dark mode is the same greys turned over — one token swap, nothing re-drawn.
+  - title: Flat by design
+    details: No shadows, no gradients, no rebuilt widgets. Grey does the work; the accent shows what matters. Dark mode is the same greys turned over.
+  - title: Themed by tokens
+    details: Every value is a --bless-* custom property. Six palettes ship in the box — switch with one attribute, or write your own.
   - title: Built on the platform
     details: "&lt;dialog&gt;, the Popover API, &lt;details&gt;, native form controls, Intl dates, scroll-snap. When the browser already has it, Blessing styles it instead of rebuilding it."
-  - title: Nothing to configure
-    details: 123 components, one peer dependency, one stylesheet. Theme by overriding custom properties. Import what you use; the rest never ships.
+  - title: For everyone
+    details: Keyboard first, ARIA on every menu, dialog, grid and tablist, prefers-reduced-motion, contrast that passes. 123 components, one peer dependency, MIT.
 ---
