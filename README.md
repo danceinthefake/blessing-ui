@@ -311,4 +311,6 @@ Design principles and roadmap: [DESIGN.md](./DESIGN.md).
 
 ## License
 
-MIT
+Code and design are [MIT](LICENSE).
+
+The name of the anime this project takes its look from, its characters and its artwork belong to their respective owners and are not covered by this licence. Blessing UI is an independent fan project — see the [story](docs/guide/story.md).
