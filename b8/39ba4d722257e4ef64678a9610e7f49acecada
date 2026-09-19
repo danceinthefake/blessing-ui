@@ -1,0 +1,21 @@
+pnpm-lock.yaml
+  s_9ec1000e308ddb::t_f48c3ff8d36858 9-11,95-99,149-165
+pnpm-workspace.yaml
+  s_9ec1000e308ddb::t_2d0e59d38c7a19 2
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "b839ba4d722257e4ef64678a9610e7f49acecada",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "claude-opus-5"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
