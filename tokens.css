@@ -164,7 +164,7 @@
 }
 
 /* ---- palettes ----
- * Five accent families named after the members of the circle the library is named for
+ * Six accent families named after the members of the circle the library is named for
  * (see docs/guide/story). <html data-palette="megumi"> swaps only the accent family; greys,
  * skew and type are untouched, and data-theme (dark) composes on top.
  * No attribute = the default "Blessing" pink-red above.

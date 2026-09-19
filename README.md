@@ -279,7 +279,7 @@ All styling reads `--bless-*` custom properties defined in `tokens.css`. Overrid
 
 ### Palettes
 
-Five alternative accent families — `data-palette="megumi" | "utaha" | "izumi" | "michiru" | "eriri"` on `<html>` — swap only the accent tokens; greys and dark mode are untouched. `BlessPaletteToggle` switches them; `useTheme().setPalette()` persists.
+Six alternative accent families — `data-palette="megumi" | "utaha" | "izumi" | "michiru" | "eriri" | "tomoya"` on `<html>` — swap only the accent tokens; greys and dark mode are untouched. `BlessPaletteToggle` switches them; `useTheme().setPalette()` persists.
 
 ### Dark mode
 

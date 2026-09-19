@@ -4,7 +4,7 @@
 import { BlessPaletteToggle, BlessButton, BlessBadge, BlessTabs, BlessSwitch, BlessProgress } from "blessing-ui";
 </script>
 
-The library ships one accent — the Blessing pink-red — and five alternative accent families, one per petal of the mark. Each is named after a member of the circle the library is named for (the [story](./story)). A palette swaps only the accent family; greys, type and geometry stay, and dark mode composes on top.
+The library ships one accent — the Blessing pink-red — and six alternative accent families: one per petal of the mark, plus the one at its centre. Each is named after a member of the circle the library is named for (the [story](./story)). A palette swaps only the accent family; greys, type and geometry stay, and dark mode composes on top.
 
 <div style="margin:16px 0"><BlessPaletteToggle /></div>
 
@@ -26,6 +26,7 @@ The library ships one accent — the Blessing pink-red — and five alternative 
 | `izumi`     | <span style="display:inline-block;width:14px;height:14px;background:#4090d0;transform:skewX(-10deg)"></span> `#4090d0` | `#4090d0` |                                                                                          |
 | `michiru`   | <span style="display:inline-block;width:14px;height:14px;background:#b878b0;transform:skewX(-10deg)"></span> `#b878b0` | `#b878b0` |                                                                                          |
 | `eriri`     | <span style="display:inline-block;width:14px;height:14px;background:#c8e018;transform:skewX(-10deg)"></span> `#c8e018` | `#7f9600` | petal is too light for white text, so it becomes `accent-soft`; the ink darkens to 3.4:1 |
+| `tomoya`    | <span style="display:inline-block;width:14px;height:14px;background:#5870f8;transform:skewX(-10deg)"></span> `#5870f8` | `#5870f8` | the centre of the circle — not on the mark                                               |
 
 ## Use
 
