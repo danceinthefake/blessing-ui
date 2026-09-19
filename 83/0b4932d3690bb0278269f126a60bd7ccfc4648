@@ -1,0 +1,59 @@
+src/components/BlessDropdownMenu.vue
+  s_9ec1000e308ddb::t_294baf2ab67c67 35-38
+  s_9ec1000e308ddb::t_93b7339a95c26f 47-67
+src/composables/useFloating.ts
+  s_9ec1000e308ddb::t_93b7339a95c26f 90
+  s_9ec1000e308ddb::t_62ca1f6d1fde48 27,29,38,42-43
+src/components/BlessMarker.vue
+  s_9ec1000e308ddb::t_60740642e74cbe 96
+src/components/BlessNavigationMenu.vue
+  s_9ec1000e308ddb::t_c45c243665f3d4 2
+src/components/BlessInputOTP.vue
+  s_9ec1000e308ddb::t_6ebb3339b609ce 2,24-30,33-37,41,49-52,57,86
+src/components/BlessTooltip.vue
+  s_9ec1000e308ddb::t_294baf2ab67c67 16-19
+  s_9ec1000e308ddb::t_c45c243665f3d4 30-39
+src/components/BlessDate.test.ts
+  s_9ec1000e308ddb::t_f2d5b66f0ba139 90-91,96-103
+  s_9ec1000e308ddb::t_294baf2ab67c67 92-95
+src/components/BlessResizable.vue
+  s_9ec1000e308ddb::t_62ca1f6d1fde48 47,75
+src/components/BlessMenuList.vue
+  s_9ec1000e308ddb::t_6ebb3339b609ce 34-35
+DESIGN.md
+  s_9ec1000e308ddb::t_2caeba9ab490c6 96
+src/components/BlessPopover.vue
+  s_9ec1000e308ddb::t_294baf2ab67c67 29
+  s_9ec1000e308ddb::t_62ca1f6d1fde48 26
+  s_9ec1000e308ddb::t_93b7339a95c26f 37
+src/components/BlessGroups.test.ts
+  s_9ec1000e308ddb::t_fddc3c8b9f9586 63-74
+src/components/BlessMessageScroller.vue
+  s_9ec1000e308ddb::t_6ebb3339b609ce 54-55,115
+src/components/BlessCalendar.vue
+  s_9ec1000e308ddb::t_93b7339a95c26f 109,113-122
+src/components/BlessMenu.test.ts
+  s_9ec1000e308ddb::t_f2d5b66f0ba139 124-153
+src/components/BlessSheet.vue
+  s_9ec1000e308ddb::t_62ca1f6d1fde48 65
+src/composables/useToast.ts
+  s_9ec1000e308ddb::t_93b7339a95c26f 1,35
+README.md
+  s_9ec1000e308ddb::t_e8af3bd37d5241 204
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "830b4932d3690bb0278269f126a60bd7ccfc4648",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "claude-opus-5"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
