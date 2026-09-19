@@ -232,7 +232,7 @@ All styling reads `--bless-*` custom properties defined in `tokens.css`. Overrid
 
 ### Dark mode
 
-Greys invert, the accent family stays. Follows `prefers-color-scheme` by default; set `data-theme="dark"` / `"light"` on `<html>` to force one. `useTheme()` persists the choice in `localStorage` (`bless-theme`) and applies the attribute; `BlessThemeToggle` is the ready-made control. Override the dark palette under `:root[data-theme="dark"]` and inside the `prefers-color-scheme: dark` block in `tokens.css`.
+Greys invert, the accent family stays, and `--bless-font-weight-thin` steps 100→300 (hairlines read thinner light-on-dark). Follows `prefers-color-scheme` by default; set `data-theme="dark"` / `"light"` on `<html>` to force one. `useTheme()` persists the choice in `localStorage` (`bless-theme`) and applies the attribute; `BlessThemeToggle` is the ready-made control. Override the dark palette under `:root[data-theme="dark"]` and inside the `prefers-color-scheme: dark` block in `tokens.css`.
 
 Durations collapse to `0s` under `prefers-reduced-motion`. Tailwind v4 users can map tokens in `@theme { --color-accent: var(--bless-color-accent); }`.
 

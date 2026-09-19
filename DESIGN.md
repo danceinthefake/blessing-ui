@@ -26,7 +26,7 @@ Generic Vue 3 UI library. Visual language borrowed from saenai.tv (see `../saena
 | Motion             | `--bless-duration-{fast,base,slow,slower}`, `--bless-ease-{in-out,out,linear}`, `--bless-hover-opacity`, `--bless-press-scale`                                                                     |                       |
 | Layout             | `--bless-sidebar-width`, `--bless-sidebar-inner`, `--bless-content-max`, `--bless-z-{bg,nav,modal}`                                                                                                |                       |
 
-Dark theme ✅: greys/border/rule/backdrop/shadow redefined under `prefers-color-scheme: dark` (unless `data-theme="light"`) and `:root[data-theme="dark"]`; accent unchanged; `color-scheme` set so native controls follow. `useTheme()` + `BlessThemeToggle` manage the attribute + `localStorage`.
+Dark theme ✅: greys/border/rule/backdrop/shadow redefined (and `--bless-font-weight-thin` 100→300, since light-on-dark reads thinner) under `prefers-color-scheme: dark` (unless `data-theme="light"`) and `:root[data-theme="dark"]`; accent unchanged; `color-scheme` set so native controls follow. `useTheme()` + `BlessThemeToggle` manage the attribute + `localStorage`.
 
 ## 3. Component roadmap
 

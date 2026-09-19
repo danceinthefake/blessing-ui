@@ -127,6 +127,8 @@
     --bless-color-chart-3: #ffa800;
     --bless-color-chart-4: #c0e722;
     --bless-color-chart-5: #9aa4ad;
+    /* light-on-dark reads thinner (irradiation); one step up keeps hairlines legible */
+    --bless-font-weight-thin: 300;
     color-scheme: dark;
   }
 }
@@ -145,6 +147,7 @@
   --bless-color-chart-3: #ffa800;
   --bless-color-chart-4: #c0e722;
   --bless-color-chart-5: #9aa4ad;
+  --bless-font-weight-thin: 300;
   color-scheme: dark;
 }
 

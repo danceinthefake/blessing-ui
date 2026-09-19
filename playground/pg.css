@@ -7,7 +7,7 @@ body {
   background: var(--bless-color-bg);
 }
 .pg > h1 {
-  font-weight: var(--bless-font-weight-thin);
+  font-weight: var(--bless-font-weight-light);
   font-size: var(--bless-text-xl);
 }
 .pg > section > h2 {
