@@ -1,0 +1,49 @@
+src/components/BlessExtras2.test.ts
+  s_9ec1000e308ddb::t_5337492122f846 169-181,186-187
+  s_9ec1000e308ddb::t_e87f1c1e460be0 185,188-191
+  s_9ec1000e308ddb::t_8ce442737b0bac 149-168,182-184,192-197
+src/components/BlessWatermarkOverlay.vue
+  s_9ec1000e308ddb::t_2f7bfdc5b76578 1-51
+src/index.ts
+  s_9ec1000e308ddb::t_2f7bfdc5b76578 136-138
+src/components/BlessSignaturePad.vue
+  s_9ec1000e308ddb::t_2f7bfdc5b76578 1-136
+src/components/BlessKnob.vue
+  s_9ec1000e308ddb::t_2f7bfdc5b76578 1-170
+DESIGN.md
+  s_9ec1000e308ddb::t_dfc0b7d784914a 187-193
+docs/components/knob.md
+  s_9ec1000e308ddb::t_3686c5a7922962 1-30
+docs/components/signature-pad.md
+  s_9ec1000e308ddb::t_f44dbecb470727 1-30
+docs/components/watermark-overlay.md
+  s_9ec1000e308ddb::t_3d9bb742ccb258 1-30
+docs/demos/WatermarkOverlayBasic.vue
+  s_9ec1000e308ddb::t_3009045f66c2d1 1-27
+README.md
+  s_9ec1000e308ddb::t_e8575ec84e6e0b 5,8,76,80-104,122-123
+docs/.vitepress/components.ts
+  s_9ec1000e308ddb::t_c5218d110e5697 12-16,48-49
+docs/.vitepress/meta.json
+  s_9ec1000e308ddb::t_ab57906607ef02 2467-2553,4053-4141,4283,5363-5416
+docs/demos/KnobBasic.vue
+  s_9ec1000e308ddb::t_3ded34b2125733 1-24
+docs/demos/SignaturePadBasic.vue
+  s_9ec1000e308ddb::t_10a743842c1d77 1-19
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "5622cfc9a840c02476601ca8f866d50359cd25ad",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "claude-opus-5"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
