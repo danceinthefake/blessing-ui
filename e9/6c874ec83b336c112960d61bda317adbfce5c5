@@ -1,0 +1,23 @@
+docs/demos/QrCodeBasic.vue
+  s_9ec1000e308ddb::t_bc64b03d8f1c80 16
+src/components/BlessQrCode.vue
+  s_9ec1000e308ddb::t_5cf272580f89f0 18,61,64,70-75
+docs/components/qr-code.md
+  s_9ec1000e308ddb::t_ff5c3bf4dc10f8 35
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "e96c874ec83b336c112960d61bda317adbfce5c5",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "claude-opus-5"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
