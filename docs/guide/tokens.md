@@ -25,6 +25,8 @@ Durations collapse to `0s` under `prefers-reduced-motion`.
 
 ## Semantic pairs
 
+- `accent`, `accent-soft`, `accent-2`, `badge`, `chart-1` — the accent family; this is what a [palette](./palettes) swaps
+
 - `on-accent` — text on any accent / danger / info fill (white)
 - `on-text` — text on a `--bless-color-text` fill; equals `bg`, so it inverts with the theme
 - `on-light` — text on warning / success fills, which are too pale for white

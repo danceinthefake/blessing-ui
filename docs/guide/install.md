@@ -39,3 +39,8 @@ If you only want the design tokens (no components):
 - Vue ^3.5
 - Evergreen browsers: the library leans on the Popover API, `<dialog>`, `field-sizing`, `color-mix()`, CSS nesting. No polyfills are shipped.
 - Fonts are not bundled — see [Fonts](./fonts).
+- `BlessSelect` styles the dropdown itself only where `appearance: base-select` exists (Chrome 135+); elsewhere the native picker shows, unstyled.
+
+## Next
+
+[Dark mode](./dark-mode) follows the OS out of the box; [Palettes](./palettes) picks which accent the whole library wears.

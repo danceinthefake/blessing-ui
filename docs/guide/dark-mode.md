@@ -22,12 +22,14 @@ const { theme, isDark, set, toggle } = useTheme();
 
 ## Overriding the dark palette
 
-Redefine under both selectors that `tokens.css` uses:
+Redefine under both selectors that `tokens.css` uses — the forced one and the OS-following one:
 
 ```css
-:root[data-theme="dark"],
-:root:not([data-theme="light"]) {
-  @media (prefers-color-scheme: dark) {
+:root[data-theme="dark"] {
+  --bless-color-surface: #1c1e22;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
     --bless-color-surface: #1c1e22;
   }
 }
