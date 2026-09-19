@@ -9,6 +9,13 @@ export const groups: { title: string; items: Entry[] }[] = [
   {
     title: "Primitives",
     items: [
+      {
+        name: "BlessIndicator",
+        slug: "indicator",
+        text: "Count or dot badge anchored on any element",
+      },
+      { name: "BlessTimeline", slug: "timeline", text: "Vertical rail of dated events" },
+      { name: "BlessSwap", slug: "swap", text: "Two-face toggle (icon swap)" },
       { name: "BlessSkew", slug: "skew", text: "Skewed container, counter-skews its slot" },
       { name: "BlessButton", slug: "button", text: "Button or anchor" },
       { name: "BlessBadge", slug: "badge", text: "Small pill" },
@@ -32,6 +39,11 @@ export const groups: { title: string; items: Entry[] }[] = [
   {
     title: "Forms",
     items: [
+      { name: "BlessRating", slug: "rating", text: "Star rating on native radios" },
+      { name: "BlessFileInput", slug: "file-input", text: "Native file input with drop zone" },
+      { name: "BlessColorPicker", slug: "color-picker", text: "Native colour input + swatches" },
+      { name: "BlessPasswordMeter", slug: "password-meter", text: "Strength meter from rules" },
+      { name: "BlessListbox", slug: "listbox", text: "Single / multi select list, role=listbox" },
       { name: "BlessLabel", slug: "label", text: "`<label>` with required mark and hint" },
       { name: "BlessInput", slug: "input", text: "Text-like input" },
       {
@@ -61,6 +73,16 @@ export const groups: { title: string; items: Entry[] }[] = [
   {
     title: "Layout & navigation",
     items: [
+      { name: "BlessSteps", slug: "steps", text: "Stepper with done / current / upcoming" },
+      { name: "BlessContainer", slug: "container", text: "Centred max-width box" },
+      { name: "BlessStack", slug: "stack", text: "Flex row / column with token gap" },
+      { name: "BlessScrollTop", slug: "scroll-top", text: "Back-to-top button past a threshold" },
+      {
+        name: "BlessTree",
+        slug: "tree",
+        text: "Nested details tree, role=tree",
+        also: ["BlessTreeItem"],
+      },
       { name: "BlessStage", slug: "stage", text: "Page shell, sidebar \u2192 drawer under 800px" },
       { name: "BlessSidebarNav", slug: "sidebar-nav", text: "Vertical nav list" },
       { name: "BlessNavigationMenu", slug: "navigation-menu", text: "Horizontal nav with panels" },

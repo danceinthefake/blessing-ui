@@ -2,7 +2,7 @@
 
 Vue 3 component library and design tokens. Grey-scale UI, one pink-red accent, skewed labels instead of rounded corners, thin oversized watermark type, opacity-fade hovers. Visual language derived from [saenai.tv](https://www.saenai.tv/) (ideas only; no assets or CSS copied).
 
-- 75 components (shadcn/ui parity), tokens-only styling (`--bless-*` custom properties), no Tailwind dependency
+- 92 components (shadcn/ui parity), tokens-only styling (`--bless-*` custom properties), no Tailwind dependency
 - Native platform first: `<dialog>`, Popover API, `<details>`, native form controls, `Intl` dates, scroll-snap — no positioning, date or table library
 - Accessible defaults: focus rings, ARIA tablist/dialog/tables, `prefers-reduced-motion`
 - ESM, tree-shakable, `vue` as the only peer dependency. ~143 KB JS / 100 KB CSS raw, ~35 KB / 14 KB gzip for everything (tree-shakes per component)
@@ -73,7 +73,7 @@ import {
 
 ## Components
 
-79 components across eight groups. Every one styles itself from `--bless-*` tokens and ships with a test and a docs page.
+92 components across eight groups. Every one styles itself from `--bless-*` tokens and ships with a test and a docs page.
 
 ### Primitives
 
@@ -91,6 +91,9 @@ import {
 | `BlessSpinner`     | Loading indicator (`role=status`)        | `size`, `color`, `label`; `BlessButton loading` uses it                                            |
 | `BlessEmpty`       | Empty state                              | `title`, `description`, `variant` outline/plain; `#icon` `#title` `#description` default=actions   |
 | `BlessButtonGroup` | Joined buttons                           | `orientation`, `label`                                                                             |
+| `BlessIndicator`   | Count / dot badge on any element         | `value` number or true, `max`, `color`, `position`                                                 |
+| `BlessTimeline`    | Vertical rail of events                  | `items[{title,time,description,color}]`; `#default="{item}"` `#dot`                                |
+| `BlessSwap`        | Two-face toggle                          | `v-model`, `label`, `effect` fade/rotate/flip; `#on` `#off`                                        |
 | `BlessItem`        | Media + title + description + actions    | `title`, `description`, `href`, `variant` plain/outline/surface, `size`; `#media` `#actions`       |
 | `BlessAvatar`      | Image with initials fallback             | `src`, `name`, `size`, `square`, `color`                                                           |
 | `BlessSkeleton`    | Shimmer placeholder                      | `width`, `height`, `lines`, `circle`                                                               |
@@ -109,6 +112,11 @@ import {
 | `BlessCheckbox`                    | Native checkbox                                             | `v-model` (bool or array), `value`, `indeterminate`, `description`                                                                    |
 | `BlessRadioGroup` / `BlessRadio`   | Native radios                                               | group `v-model`, `label`, `orientation`; radio `value`, `description`                                                                 |
 | `BlessSwitch`                      | `role=switch` toggle                                        | `v-model`, `size`, `labelPosition`                                                                                                    |
+| `BlessRating`                      | Star rating on native radios                                | `v-model`, `max`, `icon`, `size`, `readonly`                                                                                          |
+| `BlessFileInput`                   | File input + drop zone                                      | `v-model` File[], `accept`, `multiple`, `hint`, `list`, `invalid`                                                                     |
+| `BlessColorPicker`                 | `<input type=color>` + swatches                             | `v-model` hex, `swatches[]`, `showValue`                                                                                              |
+| `BlessPasswordMeter`               | Strength `<meter>` from rules                               | `value`, `rules[{label,test}]`, `labels`, `showRules`                                                                                 |
+| `BlessListbox`                     | `role=listbox`, keyboard + typeahead                        | `v-model` (array when `multiple`), `options`, `rows`, `label`; `#default="{option, selected}"`                                        |
 | `BlessSelect`                      | Styled native `<select>` (picker styled too on Chrome 135+) | `v-model`, `options` (groups ok), `placeholder`, `size`, `error`                                                                      |
 | `BlessSlider`                      | Native range                                                | `v-model`, `min`, `max`, `step`, `showValue`, `format`                                                                                |
 | `BlessToggle` / `BlessToggleGroup` | Pressed buttons                                             | toggle `v-model:pressed`, `value`; group `v-model`, `type` single/multiple                                                            |
@@ -126,6 +134,11 @@ import {
 | `BlessSidebarNav`                           | Vertical nav list                        | `items`, `active`; emits `select`; `#item`                                                                              |
 | `BlessNavigationMenu`                       | Horizontal nav with panels               | `items[{label,href,items[]}]`; emits `select`; `#panel`                                                                 |
 | `BlessMenubar`                              | Bar of `BlessDropdownMenu`s              | `label`                                                                                                                 |
+| `BlessSteps`                                | Stepper                                  | `steps[{label,description}]`, `v-model` index, `orientation`, `clickable`; emits `select`                               |
+| `BlessTree` / `BlessTreeItem`               | Nested `<details>` tree                  | `nodes[{label,id,href,icon,children,open,disabled}]`, `v-model:selected`; emits `select`                                |
+| `BlessContainer`                            | Centred max-width box                    | `size` sm/md/lg/full, `padded`, `as`                                                                                    |
+| `BlessStack`                                | Flex row / column                        | `direction`, `gap` token, `align`, `justify`, `wrap`, `as`                                                              |
+| `BlessScrollTop`                            | Back-to-top button                       | `threshold`, `target`, `position`, `label`                                                                              |
 | `BlessBreadcrumb`                           | Trail                                    | `items[{label,href}]`, `separator`; `#item`                                                                             |
 | `BlessPagination`                           | Page list                                | `v-model`, `total`, `siblings`, `href(page)`                                                                            |
 | `BlessTabs`                                 | ARIA tablist                             | `tabs`, `v-model`, `activation`, `color`; `#default="{tab}"` `#tab`                                                     |
@@ -205,7 +218,7 @@ Any other SVG chart lib works too — read `var(--bless-color-chart-N)` for seri
 
 ### Types
 
-`BlessNavItem`, `BlessNavMenuItem`, `BlessTab`, `BlessGalleryItem`, `BlessColumn<T>`, `BlessDataColumn<T>`, `BlessOption<T>`, `BlessTrack`, `BlessMenuItem`, `BlessCommandItem`, `BlessCrumb`, `BlessToastOptions`, `BlessTheme`, `BlessReaction`, `BlessQuestion`, `BlessQuestionChoice`, `BlessAnswers`, `Placement`, `DataTableState`.
+`BlessNavItem`, `BlessNavMenuItem`, `BlessTab`, `BlessGalleryItem`, `BlessColumn<T>`, `BlessDataColumn<T>`, `BlessOption<T>`, `BlessTrack`, `BlessMenuItem`, `BlessCommandItem`, `BlessCrumb`, `BlessToastOptions`, `BlessTheme`, `BlessStep`, `BlessTimelineItem`, `BlessTreeNode`, `BlessPasswordRule`, `BlessReaction`, `BlessQuestion`, `BlessQuestionChoice`, `BlessAnswers`, `Placement`, `DataTableState`.
 
 ## Tokens
 

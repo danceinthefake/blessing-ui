@@ -48,11 +48,15 @@ const showCode = ref(false);
   padding: 24px;
 }
 /* demo content shouldn't inherit vp-doc paragraph/list styling */
-.demo__preview :is(p, ul, ol, li) {
+.vp-doc .demo__preview :is(p, ul, ol, li, details, summary) {
   margin: 0;
   padding: 0;
   list-style: none;
-  line-height: inherit;
+  line-height: var(--bless-leading-normal);
+}
+.vp-doc .demo__preview details {
+  border: 0;
+  background: none;
 }
 .demo__preview .row {
   display: flex;

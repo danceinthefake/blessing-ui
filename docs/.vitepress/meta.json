@@ -1085,6 +1085,59 @@
     ],
     "exposed": []
   },
+  "BlessColorPicker": {
+    "props": [
+      {
+        "name": "id",
+        "type": "string | undefined",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "swatches",
+        "type": "string[] | undefined",
+        "required": false,
+        "default": "[]",
+        "description": "preset swatches, hex"
+      },
+      {
+        "name": "disabled",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "label",
+        "type": "string | undefined",
+        "required": false,
+        "default": "\"Colour\"",
+        "description": ""
+      },
+      {
+        "name": "showValue",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "true",
+        "description": "show the hex next to the well"
+      },
+      {
+        "name": "modelValue",
+        "type": "string | undefined",
+        "required": false,
+        "default": "\"#ff0054\"",
+        "description": ""
+      }
+    ],
+    "events": [
+      {
+        "name": "update:modelValue",
+        "type": "[value: string]",
+        "description": ""
+      }
+    ],
+    "slots": [],
+    "exposed": []
+  },
   "BlessCombobox": {
     "props": [
       {
@@ -1240,6 +1293,40 @@
       },
       {
         "name": "footer",
+        "type": "{}",
+        "description": ""
+      }
+    ],
+    "exposed": []
+  },
+  "BlessContainer": {
+    "props": [
+      {
+        "name": "as",
+        "type": "string | undefined",
+        "required": false,
+        "default": "\"div\"",
+        "description": ""
+      },
+      {
+        "name": "size",
+        "type": "\"md\" | \"sm\" | \"lg\" | \"full\" | undefined",
+        "required": false,
+        "default": "\"lg\"",
+        "description": ""
+      },
+      {
+        "name": "padded",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "true",
+        "description": ""
+      }
+    ],
+    "events": [],
+    "slots": [
+      {
+        "name": "default",
         "type": "{}",
         "description": ""
       }
@@ -1707,6 +1794,87 @@
     ],
     "exposed": []
   },
+  "BlessFileInput": {
+    "props": [
+      {
+        "name": "id",
+        "type": "string | undefined",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "accept",
+        "type": "string | undefined",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "multiple",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "disabled",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "invalid",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "label",
+        "type": "string | undefined",
+        "required": false,
+        "default": "\"Drop files here or click to browse\"",
+        "description": "drop zone copy"
+      },
+      {
+        "name": "hint",
+        "type": "string | undefined",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "list",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "true",
+        "description": "show the chosen files under the zone"
+      },
+      {
+        "name": "modelValue",
+        "type": "File[] | undefined",
+        "required": false,
+        "default": "[]",
+        "description": ""
+      }
+    ],
+    "events": [
+      {
+        "name": "update:modelValue",
+        "type": "[value: File[]]",
+        "description": ""
+      }
+    ],
+    "slots": [
+      {
+        "name": "icon",
+        "type": "{}",
+        "description": ""
+      },
+      {
+        "name": "default",
+        "type": "{}",
+        "description": ""
+      }
+    ],
+    "exposed": []
+  },
   "BlessForm": {
     "props": [],
     "events": [
@@ -1867,6 +2035,59 @@
         "type": "string | undefined",
         "required": false,
         "description": "accessible name; omit for decorative"
+      }
+    ],
+    "events": [],
+    "slots": [
+      {
+        "name": "default",
+        "type": "{}",
+        "description": ""
+      }
+    ],
+    "exposed": []
+  },
+  "BlessIndicator": {
+    "props": [
+      {
+        "name": "value",
+        "type": "number | boolean | undefined",
+        "required": false,
+        "description": "number → count badge, true → dot, falsy → hidden"
+      },
+      {
+        "name": "max",
+        "type": "number | undefined",
+        "required": false,
+        "default": "99",
+        "description": ""
+      },
+      {
+        "name": "color",
+        "type": "\"text\" | \"accent\" | \"danger\" | \"warning\" | \"success\" | \"info\" | undefined",
+        "required": false,
+        "default": "\"accent\"",
+        "description": ""
+      },
+      {
+        "name": "position",
+        "type": "\"top-right\" | \"top-left\" | \"bottom-right\" | \"bottom-left\" | undefined",
+        "required": false,
+        "default": "\"top-right\"",
+        "description": ""
+      },
+      {
+        "name": "inline",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "true",
+        "description": "wrapped element is inline (icon) vs block"
+      },
+      {
+        "name": "label",
+        "type": "string | undefined",
+        "required": false,
+        "description": ""
       }
     ],
     "events": [],
@@ -2243,6 +2464,62 @@
       {
         "name": "suffix",
         "type": "{}",
+        "description": ""
+      }
+    ],
+    "exposed": []
+  },
+  "BlessListbox": {
+    "props": [
+      {
+        "name": "options",
+        "type": "BlessOption<T>[]",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "multiple",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "disabled",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "label",
+        "type": "string | undefined",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "rows",
+        "type": "number | undefined",
+        "required": false,
+        "default": "0",
+        "description": "visible rows before scrolling; 0 = no limit"
+      },
+      {
+        "name": "modelValue",
+        "type": "T | T[] | undefined",
+        "required": false,
+        "description": ""
+      }
+    ],
+    "events": [
+      {
+        "name": "update:modelValue",
+        "type": "[value: T | T[] | undefined]",
+        "description": ""
+      }
+    ],
+    "slots": [
+      {
+        "name": "default",
+        "type": "{ option: BlessOption<T>; selected: boolean; }",
         "description": ""
       }
     ],
@@ -2667,6 +2944,39 @@
     "slots": [],
     "exposed": []
   },
+  "BlessPasswordMeter": {
+    "props": [
+      {
+        "name": "value",
+        "type": "string",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "rules",
+        "type": "BlessPasswordRule[] | undefined",
+        "required": false,
+        "default": "[\n    { label: \"8+ characters\", test: (v) => v.length >= 8 },\n    { label: \"Upper and lower case\", test: (v) => /[a-z]/.test(v) && /[A-Z]/.test(v) },\n    { label: \"A number\", test: (v) => /\\d/.test(v) },\n    { label: \"A symbol\", test: (v) => /[^\\w\\s]/.test(v) },\n]",
+        "description": "each passing rule adds one step; default: 8+ chars, lower+upper, digit, symbol"
+      },
+      {
+        "name": "labels",
+        "type": "string[] | undefined",
+        "required": false,
+        "default": "[\"Weak\", \"Fair\", \"Good\", \"Strong\"]",
+        "description": ""
+      },
+      {
+        "name": "showRules",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": "list the rules with pass / fail marks"
+      }
+    ],
+    "events": [],
+    "slots": [],
+    "exposed": []
+  },
   "BlessPopover": {
     "props": [
       {
@@ -2949,6 +3259,72 @@
     ],
     "exposed": []
   },
+  "BlessRating": {
+    "props": [
+      {
+        "name": "max",
+        "type": "number | undefined",
+        "required": false,
+        "default": "5",
+        "description": ""
+      },
+      {
+        "name": "name",
+        "type": "string | undefined",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "label",
+        "type": "string | undefined",
+        "required": false,
+        "default": "\"Rating\"",
+        "description": ""
+      },
+      {
+        "name": "readonly",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "disabled",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "size",
+        "type": "\"md\" | \"sm\" | \"lg\" | undefined",
+        "required": false,
+        "default": "\"md\"",
+        "description": ""
+      },
+      {
+        "name": "icon",
+        "type": "string | undefined",
+        "required": false,
+        "default": "\"★\"",
+        "description": "glyph for each step"
+      },
+      {
+        "name": "modelValue",
+        "type": "number | undefined",
+        "required": false,
+        "default": "0",
+        "description": ""
+      }
+    ],
+    "events": [
+      {
+        "name": "update:modelValue",
+        "type": "[value: number]",
+        "description": ""
+      }
+    ],
+    "slots": [],
+    "exposed": []
+  },
   "BlessResizable": {
     "props": [
       {
@@ -3041,6 +3417,46 @@
         "name": "width",
         "type": "string | undefined",
         "required": false,
+        "description": ""
+      }
+    ],
+    "events": [],
+    "slots": [
+      {
+        "name": "default",
+        "type": "{}",
+        "description": ""
+      }
+    ],
+    "exposed": []
+  },
+  "BlessScrollTop": {
+    "props": [
+      {
+        "name": "threshold",
+        "type": "number | undefined",
+        "required": false,
+        "default": "300",
+        "description": "px scrolled before the button shows"
+      },
+      {
+        "name": "target",
+        "type": "HTMLElement | null | undefined",
+        "required": false,
+        "description": "scroll container; default window"
+      },
+      {
+        "name": "label",
+        "type": "string | undefined",
+        "required": false,
+        "default": "\"Back to top\"",
+        "description": ""
+      },
+      {
+        "name": "position",
+        "type": "\"bottom-right\" | \"bottom-left\" | undefined",
+        "required": false,
+        "default": "\"bottom-right\"",
         "description": ""
       }
     ],
@@ -3521,6 +3937,60 @@
       }
     ]
   },
+  "BlessStack": {
+    "props": [
+      {
+        "name": "as",
+        "type": "string | undefined",
+        "required": false,
+        "default": "\"div\"",
+        "description": ""
+      },
+      {
+        "name": "direction",
+        "type": "\"column\" | \"row\" | undefined",
+        "required": false,
+        "default": "\"column\"",
+        "description": ""
+      },
+      {
+        "name": "gap",
+        "type": "1 | 2 | 3 | 4 | 6 | 8 | 12 | 16 | undefined",
+        "required": false,
+        "default": "3",
+        "description": "space token key"
+      },
+      {
+        "name": "align",
+        "type": "\"start\" | \"end\" | \"center\" | \"stretch\" | \"baseline\" | undefined",
+        "required": false,
+        "default": "\"stretch\"",
+        "description": ""
+      },
+      {
+        "name": "justify",
+        "type": "\"start\" | \"end\" | \"center\" | \"between\" | \"around\" | undefined",
+        "required": false,
+        "default": "\"start\"",
+        "description": ""
+      },
+      {
+        "name": "wrap",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": ""
+      }
+    ],
+    "events": [],
+    "slots": [
+      {
+        "name": "default",
+        "type": "{}",
+        "description": ""
+      }
+    ],
+    "exposed": []
+  },
   "BlessStage": {
     "props": [
       {
@@ -3570,6 +4040,112 @@
       },
       {
         "name": "footer",
+        "type": "{}",
+        "description": ""
+      }
+    ],
+    "exposed": []
+  },
+  "BlessSteps": {
+    "props": [
+      {
+        "name": "steps",
+        "type": "BlessStep[]",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "orientation",
+        "type": "\"horizontal\" | \"vertical\" | undefined",
+        "required": false,
+        "default": "\"horizontal\"",
+        "description": ""
+      },
+      {
+        "name": "clickable",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": "completed steps are buttons that emit select"
+      },
+      {
+        "name": "label",
+        "type": "string | undefined",
+        "required": false,
+        "default": "\"Progress\"",
+        "description": ""
+      },
+      {
+        "name": "modelValue",
+        "type": "number | undefined",
+        "required": false,
+        "default": "0",
+        "description": ""
+      }
+    ],
+    "events": [
+      {
+        "name": "update:modelValue",
+        "type": "[value: number]",
+        "description": ""
+      },
+      {
+        "name": "select",
+        "type": "[index: number]",
+        "description": ""
+      }
+    ],
+    "slots": [],
+    "exposed": []
+  },
+  "BlessSwap": {
+    "props": [
+      {
+        "name": "id",
+        "type": "string | undefined",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "disabled",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "effect",
+        "type": "\"fade\" | \"rotate\" | \"flip\" | undefined",
+        "required": false,
+        "description": "how the two faces exchange"
+      },
+      {
+        "name": "modelValue",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "false",
+        "description": ""
+      }
+    ],
+    "events": [
+      {
+        "name": "update:modelValue",
+        "type": "[value: boolean]",
+        "description": ""
+      }
+    ],
+    "slots": [
+      {
+        "name": "on",
+        "type": "{}",
+        "description": ""
+      },
+      {
+        "name": "off",
         "type": "{}",
         "description": ""
       }
@@ -3912,6 +4488,37 @@
     "slots": [],
     "exposed": []
   },
+  "BlessTimeline": {
+    "props": [
+      {
+        "name": "items",
+        "type": "BlessTimelineItem[]",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "label",
+        "type": "string | undefined",
+        "required": false,
+        "default": "\"Timeline\"",
+        "description": ""
+      }
+    ],
+    "events": [],
+    "slots": [
+      {
+        "name": "dot",
+        "type": "{ item: BlessTimelineItem; index: number; }",
+        "description": ""
+      },
+      {
+        "name": "default",
+        "type": "{ item: BlessTimelineItem; index: number; }",
+        "description": ""
+      }
+    ],
+    "exposed": []
+  },
   "BlessToaster": {
     "props": [
       {
@@ -4071,6 +4678,80 @@
         "description": ""
       }
     ],
+    "exposed": []
+  },
+  "BlessTree": {
+    "props": [
+      {
+        "name": "nodes",
+        "type": "BlessTreeNode[]",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "label",
+        "type": "string | undefined",
+        "required": false,
+        "default": "\"Tree\"",
+        "description": ""
+      },
+      {
+        "name": "selected",
+        "type": "string | undefined",
+        "required": false,
+        "description": ""
+      }
+    ],
+    "events": [
+      {
+        "name": "select",
+        "type": "[node: BlessTreeNode, path: string]",
+        "description": ""
+      },
+      {
+        "name": "update:selected",
+        "type": "[value: string | undefined]",
+        "description": ""
+      }
+    ],
+    "slots": [],
+    "exposed": []
+  },
+  "BlessTreeItem": {
+    "props": [
+      {
+        "name": "node",
+        "type": "BlessTreeNode",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "path",
+        "type": "string",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "selected",
+        "type": "string | undefined",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "level",
+        "type": "number",
+        "required": true,
+        "description": ""
+      }
+    ],
+    "events": [
+      {
+        "name": "select",
+        "type": "[node: BlessTreeNode, path: string]",
+        "description": ""
+      }
+    ],
+    "slots": [],
     "exposed": []
   },
   "BlessWatermark": {

@@ -157,6 +157,35 @@ Decision: **Unovis** (`@unovis/vue`) as the documented, consumer-installed pairi
 - [x] `--bless-color-chart-{1..5}` — categorical palette, light and dark variants, all ≥3:1 on bg and surface
 - [x] `BlessChart` — `<figure>` frame: title / description / height / legend, maps bless tokens → `--vis-*` (+ `--vis-dark-*`) for palette, axis, tooltip, crosshair
 
+### Phase 12 — gap fill, native-first (from a broader component list)
+
+- [x] `BlessRating` — radios in a fieldset, skewed glyph, click current to clear
+- [x] `BlessFileInput` — `<input type=file>` + drop zone, file list with remove
+- [x] `BlessColorPicker` — `<input type=color>` well + preset swatches
+- [x] `BlessPasswordMeter` — `<meter>` scored by pluggable rules, rule list
+- [x] `BlessSteps` — `<ol>` stepper, `aria-current=step`, done steps clickable
+- [x] `BlessTimeline` — `<ol>` with rail, coloured dots, item slot
+- [x] `BlessIndicator` — count / dot badge on a wrapped element
+- [x] `BlessContainer` / `BlessStack` — layout utilities
+- [x] `BlessScrollTop` — fixed button after a scroll threshold
+- [x] `BlessListbox` — `role=listbox`, single / multiple, arrows / Home / End / typeahead
+- [x] `BlessTree` — nested `<details>`, `role=tree`, `v-model:selected`
+- [x] `BlessSwap` — checkbox with two faces, fade / rotate / flip
+
+### Phase 13 — gap fill, medium (not started)
+
+- [ ] `BlessInputMask` — pattern formatter on `BlessInput`
+- [ ] `useScrollSpy()` — IntersectionObserver over headings
+- [ ] `BlessBottomTabs` / `BlessDock` — mobile tab bar
+- [ ] `BlessSpeedDial` — FAB with fan-out actions
+- [ ] `BlessVirtualScroller` — windowed list
+- [ ] `BlessOrderList` — pointer drag-reorder
+- [ ] `BlessPickList` — two `BlessListbox`es + move buttons
+- [ ] `BlessMockup` — browser / phone frame
+- [ ] `BlessTour` — step popovers over anchors on `BlessPopover`
+
+Skipped: Rich Text Editor (needs an editor engine), Signature Pad / Knob (canvas, niche), QR Code (needs an encoder — pair with a lib like Chart), overlay Watermark (ours is typographic).
+
 ### Deliberately skipped
 
 - **Chart** — no bundled lib. Phase 11 ✅: `--bless-color-chart-{1..5}` (≥3:1 both themes) + `BlessChart` frame that maps them onto Unovis `--vis-*` vars; Unovis is the documented pairing, installed by the consumer.
