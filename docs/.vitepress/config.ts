@@ -6,7 +6,7 @@ const src = (p: string) => fileURLToPath(new URL(`../../src/${p}`, import.meta.u
 
 export default defineConfig({
   title: "Blessing UI",
-  description: "Vue 3 components and design tokens. Grey UI, one pink-red accent, skewed labels.",
+  description: "Themed Flat Interface. Flat by design, raised with Vue, blessed for everyone.",
   lang: "en",
   base: process.env.DOCS_BASE ?? "/",
   cleanUrls: true,
@@ -18,7 +18,7 @@ export default defineConfig({
       "meta",
       {
         property: "og:description",
-        content: "Vue 3 components. Skewed, grey, one pink-red accent.",
+        content: "Themed Flat Interface. Flat by design, raised with Vue, blessed for everyone.",
       },
     ],
     [

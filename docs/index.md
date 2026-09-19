@@ -3,11 +3,11 @@ layout: home
 title: Blessing UI
 hero:
   name: Blessing UI
-  text: Skewed, grey, one pink-red accent.
+  text: Themed Flat Interface
   image:
     src: /logo.svg
     alt: Blessing UI
-  tagline: A Vue 3 component library with a face. Thin type, skewed labels, and the browser's own parts underneath.
+  tagline: Flat by design, raised with Vue, blessed for everyone.
   actions:
     - theme: brand
       text: Get started
