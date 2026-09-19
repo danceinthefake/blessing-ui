@@ -1,8 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
-  <!-- Blessing UI mark: two skewed plates (system geometry: skewX(-10deg)), bold B counter-skewed -->
+  <!-- Blessing UI mark: two skewed plates (skewX(-10deg), the system geometry); bold B upright, centred on the front plate -->
   <g transform="skewX(-10) translate(6 0)">
     <rect x="12" y="14" width="40" height="40" fill="#3d3e3f"/>
     <rect x="6" y="8" width="40" height="40" fill="#ff0054"/>
   </g>
-  <text x="29.5" y="43" font-family="Roboto, 'Noto Sans JP', sans-serif" font-size="30" font-weight="700" fill="#fff" text-anchor="middle">B</text>
+  <!-- front plate centre after skew: (32, 28) → x = 32 - 28·tan10° ≈ 27.1 -->
+  <text x="27.1" y="38.8" font-family="Roboto, 'Noto Sans JP', sans-serif" font-size="30" font-weight="700" fill="#fff" text-anchor="middle">B</text>
 </svg>

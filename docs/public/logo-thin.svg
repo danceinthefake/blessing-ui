@@ -1,12 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
-  <!-- hero variant: single accent plate, Roboto Thin B knocked out -->
+  <!-- hero variant: one accent plate, Roboto Thin B knocked out — upright, centred on the plate -->
   <defs>
-    <mask id="cut">
+    <mask id="cut" maskUnits="userSpaceOnUse" x="0" y="0" width="64" height="64">
       <rect width="64" height="64" fill="#fff"/>
-      <text x="32" y="47" font-family="Roboto, sans-serif" font-size="44" font-weight="100" fill="#000" text-anchor="middle">B</text>
+      <!-- plate centre after skew: (38, 32) → x = 38 - 32·tan10° ≈ 32.4 -->
+      <text x="32.4" y="46.5" font-family="Roboto, sans-serif" font-size="44" font-weight="100" fill="#000" text-anchor="middle">B</text>
     </mask>
   </defs>
-  <g transform="skewX(-10) translate(6 0)">
-    <rect x="6" y="6" width="52" height="52" fill="#ff0054" mask="url(#cut)"/>
+  <g mask="url(#cut)">
+    <rect x="6" y="6" width="52" height="52" fill="#ff0054" transform="skewX(-10) translate(6 0)"/>
   </g>
 </svg>
