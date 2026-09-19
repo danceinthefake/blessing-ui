@@ -9,6 +9,11 @@ export const groups: { title: string; items: Entry[] }[] = [
   {
     title: "Primitives",
     items: [
+      {
+        name: "BlessWatermarkOverlay",
+        slug: "watermark-overlay",
+        text: "Tiled text watermark over content",
+      },
       { name: "BlessMockup", slug: "mockup", text: "Browser / window / phone frame" },
       {
         name: "BlessIndicator",
@@ -40,6 +45,8 @@ export const groups: { title: string; items: Entry[] }[] = [
   {
     title: "Forms",
     items: [
+      { name: "BlessKnob", slug: "knob", text: "Rotary dial on a native range input" },
+      { name: "BlessSignaturePad", slug: "signature-pad", text: "Draw a signature on canvas" },
       { name: "BlessInputMask", slug: "input-mask", text: "Pattern-masked input (# A *)" },
       { name: "BlessOrderList", slug: "order-list", text: "Drag / button / Alt+arrow reorder" },
       { name: "BlessPickList", slug: "pick-list", text: "Two listboxes with transfer buttons" },

@@ -2464,6 +2464,93 @@
     ],
     "exposed": []
   },
+  "BlessKnob": {
+    "props": [
+      {
+        "name": "id",
+        "type": "string | undefined",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "min",
+        "type": "number | undefined",
+        "required": false,
+        "default": "0",
+        "description": ""
+      },
+      {
+        "name": "max",
+        "type": "number | undefined",
+        "required": false,
+        "default": "100",
+        "description": ""
+      },
+      {
+        "name": "step",
+        "type": "number | undefined",
+        "required": false,
+        "default": "1",
+        "description": ""
+      },
+      {
+        "name": "size",
+        "type": "\"md\" | \"sm\" | \"lg\" | undefined",
+        "required": false,
+        "default": "\"md\"",
+        "description": ""
+      },
+      {
+        "name": "label",
+        "type": "string | undefined",
+        "required": false,
+        "default": "\"Value\"",
+        "description": ""
+      },
+      {
+        "name": "showValue",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "true",
+        "description": ""
+      },
+      {
+        "name": "format",
+        "type": "((v: number) => string) | undefined",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "disabled",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "sweep",
+        "type": "number | undefined",
+        "required": false,
+        "default": "270",
+        "description": "degrees of arc, centred at the bottom gap"
+      },
+      {
+        "name": "modelValue",
+        "type": "number | undefined",
+        "required": false,
+        "default": "0",
+        "description": ""
+      }
+    ],
+    "events": [
+      {
+        "name": "update:modelValue",
+        "type": "[value: number]",
+        "description": ""
+      }
+    ],
+    "slots": [],
+    "exposed": []
+  },
   "BlessLabel": {
     "props": [
       {
@@ -3963,6 +4050,95 @@
     ],
     "exposed": []
   },
+  "BlessSignaturePad": {
+    "props": [
+      {
+        "name": "height",
+        "type": "number | undefined",
+        "required": false,
+        "default": "160",
+        "description": ""
+      },
+      {
+        "name": "lineWidth",
+        "type": "number | undefined",
+        "required": false,
+        "default": "2",
+        "description": ""
+      },
+      {
+        "name": "color",
+        "type": "string | undefined",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "label",
+        "type": "string | undefined",
+        "required": false,
+        "default": "\"Signature\"",
+        "description": ""
+      },
+      {
+        "name": "clearLabel",
+        "type": "string | undefined",
+        "required": false,
+        "default": "\"Clear\"",
+        "description": ""
+      },
+      {
+        "name": "disabled",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "type",
+        "type": "\"image/png\" | \"image/jpeg\" | \"image/webp\" | undefined",
+        "required": false,
+        "default": "\"image/png\"",
+        "description": "export format"
+      },
+      {
+        "name": "modelValue",
+        "type": "string | undefined",
+        "required": false,
+        "default": "\"\"",
+        "description": "data URL of the drawing; empty when blank"
+      }
+    ],
+    "events": [
+      {
+        "name": "update:modelValue",
+        "type": "[value: string]",
+        "description": ""
+      },
+      {
+        "name": "end",
+        "type": "[dataUrl: string]",
+        "description": ""
+      }
+    ],
+    "slots": [
+      {
+        "name": "actions",
+        "type": "{ clear: () => void; empty: boolean; }",
+        "description": ""
+      }
+    ],
+    "exposed": [
+      {
+        "name": "clear",
+        "type": "() => void",
+        "description": ""
+      },
+      {
+        "name": "isEmpty",
+        "type": "() => boolean",
+        "description": ""
+      }
+    ]
+  },
   "BlessSkeleton": {
     "props": [
       {
@@ -4104,7 +4280,7 @@
       },
       {
         "name": "direction",
-        "type": "\"left\" | \"right\" | \"up\" | \"down\" | undefined",
+        "type": "\"left\" | \"right\" | \"down\" | \"up\" | undefined",
         "required": false,
         "default": "\"up\"",
         "description": ""
@@ -5183,6 +5359,60 @@
     ],
     "events": [],
     "slots": [],
+    "exposed": []
+  },
+  "BlessWatermarkOverlay": {
+    "props": [
+      {
+        "name": "text",
+        "type": "string",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "gap",
+        "type": "number | undefined",
+        "required": false,
+        "default": "180",
+        "description": "tile size in px"
+      },
+      {
+        "name": "angle",
+        "type": "number | undefined",
+        "required": false,
+        "default": "-22",
+        "description": ""
+      },
+      {
+        "name": "fontSize",
+        "type": "number | undefined",
+        "required": false,
+        "default": "16",
+        "description": ""
+      },
+      {
+        "name": "opacity",
+        "type": "number | undefined",
+        "required": false,
+        "default": "0.12",
+        "description": ""
+      },
+      {
+        "name": "color",
+        "type": "string | undefined",
+        "required": false,
+        "default": "\"currentColor\"",
+        "description": ""
+      }
+    ],
+    "events": [],
+    "slots": [
+      {
+        "name": "default",
+        "type": "{}",
+        "description": ""
+      }
+    ],
     "exposed": []
   }
 }

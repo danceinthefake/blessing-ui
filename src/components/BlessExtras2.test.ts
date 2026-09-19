@@ -146,3 +146,52 @@ test("BlessTour: steps, anchor lookup, finish / skip", async () => {
   expect(w.emitted("update:open")!.at(-1)![0]).toBe(false);
   w.unmount();
 });
+
+test("BlessKnob: native range drives the model, dial angle follows", async () => {
+  const { default: BlessKnob } = await import("./BlessKnob.vue");
+  const w = mount(BlessKnob, { props: { modelValue: 50, min: 0, max: 100 } });
+  expect(w.find("input[type=range]").attributes("aria-valuetext")).toBe("50");
+  expect(w.find(".bless-knob__dial").attributes("style")).toContain("--_fill: 135deg");
+  await w.find("input").setValue("75");
+  expect(w.emitted("update:modelValue")![0]).toEqual([75]);
+});
+
+test("BlessWatermarkOverlay tiles an SVG with the text", async () => {
+  const C = (await import("./BlessWatermarkOverlay.vue")).default;
+  const w = mount(C, { props: { text: "DRAFT <1>" }, slots: { default: "<p>body</p>" } });
+  const layer = w.find(".bless-wm-overlay__layer");
+  expect(layer.attributes("aria-hidden")).toBe("true");
+  expect(decodeURIComponent(layer.attributes("style")!)).toContain("DRAFT &lt;1&gt;");
+});
+
+test("BlessSignaturePad: strokes set the model, clear resets", async () => {
+  const { default: C } = await import("./BlessSignaturePad.vue");
+  globalThis.ResizeObserver = class {
+    observe() {}
+    disconnect() {}
+    unobserve() {}
+  } as unknown as typeof ResizeObserver;
+  HTMLCanvasElement.prototype.getContext = (() => ({
+    scale() {},
+    beginPath() {},
+    moveTo() {},
+    lineTo() {},
+    stroke() {},
+    clearRect() {},
+  })) as unknown as typeof HTMLCanvasElement.prototype.getContext;
+  HTMLCanvasElement.prototype.toDataURL = () => "data:image/png;base64,xyz";
+  HTMLCanvasElement.prototype.setPointerCapture = () => {};
+  const w = mount(C, { attachTo: document.body });
+  const c = w.find("canvas").element;
+  const ev = (type: string) =>
+    c.dispatchEvent(new MouseEvent(type, { clientX: 5, clientY: 5, bubbles: true }));
+  ev("pointerdown");
+  ev("pointermove");
+  ev("pointerup");
+  await nextTick();
+  expect(w.emitted("update:modelValue")![0]).toEqual(["data:image/png;base64,xyz"]);
+  expect(w.emitted("end")).toHaveLength(1);
+  await w.find("button").trigger("click");
+  expect(w.emitted("update:modelValue")!.at(-1)![0]).toBe("");
+  w.unmount();
+});

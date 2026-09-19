@@ -184,7 +184,13 @@ Decision: **Unovis** (`@unovis/vue`) as the documented, consumer-installed pairi
 - [x] `BlessMockup` — browser / window / phone (the one rounded frame — it's a device)
 - [x] `BlessTour` — `useFloating` to a selector target, spotlight cut-out via box-shadow, centred steps
 
-Skipped: Rich Text Editor (needs an editor engine), Signature Pad / Knob (canvas, niche), QR Code (needs an encoder — pair with a lib like Chart), overlay Watermark (ours is typographic).
+### Phase 14 — last cheap ones
+
+- [x] `BlessKnob` — conic-gradient dial over a hidden native `<input type=range>` (keyboard + a11y stay native), pointer drag → angle → value
+- [x] `BlessWatermarkOverlay` — tiled rotated-text SVG `background-image` layer, `aria-hidden`, no pointer events
+- [x] `BlessSignaturePad` — canvas + pointer events, DPR-aware, `v-model` data URL, `clear()` / `isEmpty()`
+
+Skipped: Rich Text Editor (needs an editor engine), QR Code (needs an encoder — pair with a lib like Chart).
 
 ### Deliberately skipped
 

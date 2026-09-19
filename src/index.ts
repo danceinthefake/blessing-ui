@@ -133,3 +133,6 @@ export { default as BlessPickList } from "./components/BlessPickList.vue";
 export { default as BlessMockup } from "./components/BlessMockup.vue";
 export { default as BlessTour } from "./components/BlessTour.vue";
 export type { BlessTourStep } from "./components/BlessTour.vue";
+export { default as BlessKnob } from "./components/BlessKnob.vue";
+export { default as BlessWatermarkOverlay } from "./components/BlessWatermarkOverlay.vue";
+export { default as BlessSignaturePad } from "./components/BlessSignaturePad.vue";

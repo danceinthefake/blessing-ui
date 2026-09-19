@@ -2,10 +2,10 @@
 
 Vue 3 component library and design tokens. Grey-scale UI, one pink-red accent, skewed labels instead of rounded corners, thin oversized watermark type, opacity-fade hovers. Visual language derived from [saenai.tv](https://www.saenai.tv/) (ideas only; no assets or CSS copied).
 
-- 100 components (shadcn/ui parity), tokens-only styling (`--bless-*` custom properties), no Tailwind dependency
+- 103 components (shadcn/ui parity), tokens-only styling (`--bless-*` custom properties), no Tailwind dependency
 - Native platform first: `<dialog>`, Popover API, `<details>`, native form controls, `Intl` dates, scroll-snap — no positioning, date or table library
 - Accessible defaults: focus rings, ARIA tablist/dialog/tables, `prefers-reduced-motion`
-- ESM, tree-shakable, `vue` as the only peer dependency. ~182 KB JS / 127 KB CSS raw, ~44 KB / 17 KB gzip for everything (tree-shakes per component)
+- ESM, tree-shakable, `vue` as the only peer dependency. ~188 KB JS / 131 KB CSS raw, ~45 KB / 18 KB gzip for everything (tree-shakes per component)
 
 ## Install
 
@@ -73,34 +73,35 @@ import {
 
 ## Components
 
-100 components across eight groups. Every one styles itself from `--bless-*` tokens and ships with a test and a docs page.
+103 components across eight groups. Every one styles itself from `--bless-*` tokens and ships with a test and a docs page.
 
 ### Primitives
 
-| Component          | Purpose                                  | Key props / slots                                                                                  |
-| ------------------ | ---------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `BlessSkew`        | Skewed container, counter-skews its slot | `as`, `color`                                                                                      |
-| `BlessButton`      | Button or anchor                         | `variant` solid/outline/ghost, `color`, `size`, `href`, `disabled`, `loading`; `#prefix` `#suffix` |
-| `BlessBadge`       | Small pill                               | `color`, `scaled`                                                                                  |
-| `BlessDash`        | Inline 10×1px separator                  | `color`                                                                                            |
-| `BlessSeparator`   | `<hr>` / vertical rule, optional label   | `orientation`, `decorative`, `color`, `label`                                                      |
-| `BlessIcon`        | SVG slot wrapper                         | `size`, `label`                                                                                    |
-| `BlessText`        | Typography helper                        | `as`, `size`, `weight`, `tracking`, `leading`, `muted`, `uppercase`                                |
-| `BlessKbd`         | Key combo                                | `keys[]` or slot                                                                                   |
-| `BlessThemeToggle` | Light/dark switch or 3-way group         | `mode` switch/group, `label`                                                                       |
-| `BlessSpinner`     | Loading indicator (`role=status`)        | `size`, `color`, `label`; `BlessButton loading` uses it                                            |
-| `BlessEmpty`       | Empty state                              | `title`, `description`, `variant` outline/plain; `#icon` `#title` `#description` default=actions   |
-| `BlessButtonGroup` | Joined buttons                           | `orientation`, `label`                                                                             |
-| `BlessIndicator`   | Count / dot badge on any element         | `value` number or true, `max`, `color`, `position`                                                 |
-| `BlessTimeline`    | Vertical rail of events                  | `items[{title,time,description,color}]`; `#default="{item}"` `#dot`                                |
-| `BlessSwap`        | Two-face toggle                          | `v-model`, `label`, `effect` fade/rotate/flip; `#on` `#off`                                        |
-| `BlessMockup`      | Browser / window / phone frame           | `type`, `title`, `dark`                                                                            |
-| `BlessItem`        | Media + title + description + actions    | `title`, `description`, `href`, `variant` plain/outline/surface, `size`; `#media` `#actions`       |
-| `BlessAvatar`      | Image with initials fallback             | `src`, `name`, `size`, `square`, `color`                                                           |
-| `BlessSkeleton`    | Shimmer placeholder                      | `width`, `height`, `lines`, `circle`                                                               |
-| `BlessAspectRatio` | Ratio box                                | `ratio`                                                                                            |
-| `BlessProgress`    | Bar, determinate or not                  | `value`, `max`, `label`, `showValue`, `color`, `size`                                              |
-| `BlessAlert`       | Inline notice                            | `title`, `color`, `live`, `dismissible`, `v-model`; `#icon` `#title`                               |
+| Component               | Purpose                                  | Key props / slots                                                                                  |
+| ----------------------- | ---------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `BlessSkew`             | Skewed container, counter-skews its slot | `as`, `color`                                                                                      |
+| `BlessButton`           | Button or anchor                         | `variant` solid/outline/ghost, `color`, `size`, `href`, `disabled`, `loading`; `#prefix` `#suffix` |
+| `BlessBadge`            | Small pill                               | `color`, `scaled`                                                                                  |
+| `BlessDash`             | Inline 10×1px separator                  | `color`                                                                                            |
+| `BlessSeparator`        | `<hr>` / vertical rule, optional label   | `orientation`, `decorative`, `color`, `label`                                                      |
+| `BlessIcon`             | SVG slot wrapper                         | `size`, `label`                                                                                    |
+| `BlessText`             | Typography helper                        | `as`, `size`, `weight`, `tracking`, `leading`, `muted`, `uppercase`                                |
+| `BlessKbd`              | Key combo                                | `keys[]` or slot                                                                                   |
+| `BlessThemeToggle`      | Light/dark switch or 3-way group         | `mode` switch/group, `label`                                                                       |
+| `BlessSpinner`          | Loading indicator (`role=status`)        | `size`, `color`, `label`; `BlessButton loading` uses it                                            |
+| `BlessEmpty`            | Empty state                              | `title`, `description`, `variant` outline/plain; `#icon` `#title` `#description` default=actions   |
+| `BlessButtonGroup`      | Joined buttons                           | `orientation`, `label`                                                                             |
+| `BlessIndicator`        | Count / dot badge on any element         | `value` number or true, `max`, `color`, `position`                                                 |
+| `BlessTimeline`         | Vertical rail of events                  | `items[{title,time,description,color}]`; `#default="{item}"` `#dot`                                |
+| `BlessSwap`             | Two-face toggle                          | `v-model`, `label`, `effect` fade/rotate/flip; `#on` `#off`                                        |
+| `BlessWatermarkOverlay` | Tiled text watermark over content        | `text`, `gap`, `angle`, `fontSize`, `opacity`, `color`                                             |
+| `BlessMockup`           | Browser / window / phone frame           | `type`, `title`, `dark`                                                                            |
+| `BlessItem`             | Media + title + description + actions    | `title`, `description`, `href`, `variant` plain/outline/surface, `size`; `#media` `#actions`       |
+| `BlessAvatar`           | Image with initials fallback             | `src`, `name`, `size`, `square`, `color`                                                           |
+| `BlessSkeleton`         | Shimmer placeholder                      | `width`, `height`, `lines`, `circle`                                                               |
+| `BlessAspectRatio`      | Ratio box                                | `ratio`                                                                                            |
+| `BlessProgress`         | Bar, determinate or not                  | `value`, `max`, `label`, `showValue`, `color`, `size`                                              |
+| `BlessAlert`            | Inline notice                            | `title`, `color`, `live`, `dismissible`, `v-model`; `#icon` `#title`                               |
 
 ### Forms
 
@@ -118,6 +119,8 @@ import {
 | `BlessColorPicker`                 | `<input type=color>` + swatches                             | `v-model` hex, `swatches[]`, `showValue`                                                                                              |
 | `BlessPasswordMeter`               | Strength `<meter>` from rules                               | `value`, `rules[{label,test}]`, `labels`, `showRules`                                                                                 |
 | `BlessListbox`                     | `role=listbox`, keyboard + typeahead                        | `v-model` (array when `multiple`), `options`, `rows`, `label`; `#default="{option, selected}"`                                        |
+| `BlessKnob`                        | Rotary dial on `<input type=range>`                         | `v-model`, `min`, `max`, `step`, `size`, `sweep`, `format`, `label`                                                                   |
+| `BlessSignaturePad`                | Canvas signature                                            | `v-model` data URL, `height`, `lineWidth`, `color`, `type`; emits `end`; exposes `clear()` `isEmpty()`                                |
 | `BlessInputMask`                   | Pattern-masked `BlessInput`                                 | `v-model` masked, `mask` (`#` digit `A` letter `*` either), `placeholder`; emits `update:raw`                                         |
 | `BlessOrderList`                   | Reorderable list                                            | `v-model` items, `rowKey`, `buttons`; drag, ↑↓, Alt+arrows; emits `move`; `#default="{item,index}"`                                   |
 | `BlessPickList`                    | Transfer between two listboxes                              | `v-model:source`, `v-model:target`, `sourceLabel`, `targetLabel`, `rows`                                                              |
