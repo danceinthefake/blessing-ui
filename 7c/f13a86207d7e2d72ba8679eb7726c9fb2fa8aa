@@ -1,0 +1,124 @@
+src/components/BlessContainer.vue
+  s_9ec1000e308ddb::t_abbace24a18616 1-11,17-39
+  s_9ec1000e308ddb::t_f8ed4e7ac90311 12-16
+src/components/BlessTreeItem.vue
+  s_9ec1000e308ddb::t_f8ed4e7ac90311 1-60
+src/components/BlessTree.vue
+  s_9ec1000e308ddb::t_f8ed4e7ac90311 1-98
+src/components/BlessColorPicker.vue
+  s_9ec1000e308ddb::t_f8ed4e7ac90311 37-42
+  s_9ec1000e308ddb::t_abbace24a18616 1-36,43-117
+docs/.vitepress/components.ts
+  s_9ec1000e308ddb::t_097c094aeb3505 12-18,42-46,76-85
+docs/components/indicator.md
+  s_9ec1000e308ddb::t_097c094aeb3505 1-30
+src/components/BlessExtras.test.ts
+  s_9ec1000e308ddb::t_1664b4fc2abdae 1-41,45-61,67-75,79-93,97-115,121-128,130,132-135,142-155
+  s_9ec1000e308ddb::t_6f8bd6329c15b6 129,131
+  s_9ec1000e308ddb::t_097c094aeb3505 42-44,62-66,76-78,94-96,116-120,136-141
+docs/components/scroll-top.md
+  s_9ec1000e308ddb::t_097c094aeb3505 1-30
+src/components/BlessSteps.vue
+  s_9ec1000e308ddb::t_f8ed4e7ac90311 29-32
+  s_9ec1000e308ddb::t_abbace24a18616 1-28,33-146
+docs/demos/StackBasic.vue
+  s_9ec1000e308ddb::t_097c094aeb3505 1-19
+docs/demos/TreeBasic.vue
+  s_9ec1000e308ddb::t_097c094aeb3505 1-31
+docs/demos/PasswordMeterBasic.vue
+  s_9ec1000e308ddb::t_097c094aeb3505 1-12
+src/components/BlessTimeline.vue
+  s_9ec1000e308ddb::t_f8ed4e7ac90311 22-24
+  s_9ec1000e308ddb::t_abbace24a18616 1-21,25-106
+docs/components/rating.md
+  s_9ec1000e308ddb::t_097c094aeb3505 1-30
+src/components/BlessListbox.vue
+  s_9ec1000e308ddb::t_f8ed4e7ac90311 1-177
+docs/components/container.md
+  s_9ec1000e308ddb::t_097c094aeb3505 1-30
+DESIGN.md
+  s_9ec1000e308ddb::t_097c094aeb3505 160-188
+docs/components/tree.md
+  s_9ec1000e308ddb::t_097c094aeb3505 1-36
+docs/components/timeline.md
+  s_9ec1000e308ddb::t_097c094aeb3505 1-30
+README.md
+  s_9ec1000e308ddb::t_097c094aeb3505 5,76,94-96,115-119,137-141,221
+src/components/BlessRating.vue
+  s_9ec1000e308ddb::t_f8ed4e7ac90311 28-31
+  s_9ec1000e308ddb::t_abbace24a18616 1-27,32-120
+src/components/BlessStack.vue
+  s_9ec1000e308ddb::t_abbace24a18616 1-15,25-47
+  s_9ec1000e308ddb::t_f8ed4e7ac90311 16-24
+docs/components/swap.md
+  s_9ec1000e308ddb::t_097c094aeb3505 1-30
+docs/demos/ColorPickerBasic.vue
+  s_9ec1000e308ddb::t_097c094aeb3505 1-15
+docs/components/listbox.md
+  s_9ec1000e308ddb::t_097c094aeb3505 1-30
+docs/demos/IndicatorBasic.vue
+  s_9ec1000e308ddb::t_097c094aeb3505 1-19
+docs/demos/RatingBasic.vue
+  s_9ec1000e308ddb::t_097c094aeb3505 1-15
+docs/demos/SwapBasic.vue
+  s_9ec1000e308ddb::t_097c094aeb3505 1-23
+src/components/BlessFileInput.vue
+  s_9ec1000e308ddb::t_abbace24a18616 1-38,45-47,52-72,76-81,90-187
+  s_9ec1000e308ddb::t_f8ed4e7ac90311 39-44,48-51,73-75,82-89
+docs/demos/TimelineBasic.vue
+  s_9ec1000e308ddb::t_097c094aeb3505 1-18
+src/components/BlessScrollTop.vue
+  s_9ec1000e308ddb::t_abbace24a18616 1-90
+src/components/BlessSwap.vue
+  s_9ec1000e308ddb::t_f8ed4e7ac90311 19-40
+  s_9ec1000e308ddb::t_abbace24a18616 1-18,41-103
+src/components/BlessIndicator.vue
+  s_9ec1000e308ddb::t_abbace24a18616 1-19,25,29-36,42-117
+  s_9ec1000e308ddb::t_f8ed4e7ac90311 20-24,26-28,37-41
+docs/components/file-input.md
+  s_9ec1000e308ddb::t_097c094aeb3505 1-30
+docs/components/stack.md
+  s_9ec1000e308ddb::t_097c094aeb3505 1-30
+docs/components/color-picker.md
+  s_9ec1000e308ddb::t_097c094aeb3505 1-30
+docs/components/password-meter.md
+  s_9ec1000e308ddb::t_097c094aeb3505 1-30
+docs/demos/StepsBasic.vue
+  s_9ec1000e308ddb::t_097c094aeb3505 1-26
+docs/demos/ScrollTopBasic.vue
+  s_9ec1000e308ddb::t_097c094aeb3505 1-11
+src/components/BlessPasswordMeter.vue
+  s_9ec1000e308ddb::t_abbace24a18616 1-119
+docs/demos/ContainerBasic.vue
+  s_9ec1000e308ddb::t_097c094aeb3505 1-16
+src/index.ts
+  s_9ec1000e308ddb::t_f8ed4e7ac90311 106-122
+docs/components/steps.md
+  s_9ec1000e308ddb::t_097c094aeb3505 1-30
+docs/demos/ListboxBasic.vue
+  s_9ec1000e308ddb::t_097c094aeb3505 1-26
+docs/demos/FileInputBasic.vue
+  s_9ec1000e308ddb::t_097c094aeb3505 1-18
+src/components/tree.ts
+  s_9ec1000e308ddb::t_f8ed4e7ac90311 1-10
+docs/.vitepress/meta.json
+  s_9ec1000e308ddb::t_5f6237ff9fd0d1 1088-1140,1302-1335,1797-1877,2050-2102,2472-2527,2947,2950-2985,3262-3327,3433-3472,3940-3993,4049-4154,4491-4521,4683-4756
+docs/.vitepress/theme/Demo.vue
+  s_9ec1000e308ddb::t_a9919f4bb89f14 51,55-59
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "7cf13a86207d7e2d72ba8679eb7726c9fb2fa8aa",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "claude-opus-5"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
