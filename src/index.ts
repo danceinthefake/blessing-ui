@@ -136,3 +136,6 @@ export type { BlessTourStep } from "./components/BlessTour.vue";
 export { default as BlessKnob } from "./components/BlessKnob.vue";
 export { default as BlessWatermarkOverlay } from "./components/BlessWatermarkOverlay.vue";
 export { default as BlessSignaturePad } from "./components/BlessSignaturePad.vue";
+export { default as BlessQrCode } from "./components/BlessQrCode.vue";
+export { default as BlessEditor } from "./components/BlessEditor.vue";
+export type { BlessEditorTool } from "./components/BlessEditor.vue";

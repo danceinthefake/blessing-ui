@@ -1754,6 +1754,62 @@
     ],
     "exposed": []
   },
+  "BlessEditor": {
+    "props": [
+      {
+        "name": "editor",
+        "type": "Editor | null | undefined",
+        "required": true,
+        "description": "the Tiptap editor from useEditor(); the content goes in the default slot as <EditorContent :editor />"
+      },
+      {
+        "name": "tools",
+        "type": "BlessEditorTool[] | undefined",
+        "required": false,
+        "default": "[\n    \"bold\",\n    \"italic\",\n    \"strike\",\n    \"code\",\n    \"|\",\n    \"h1\",\n    \"h2\",\n    \"|\",\n    \"bulletList\",\n    \"orderedList\",\n    \"blockquote\",\n    \"codeBlock\",\n    \"hr\",\n    \"|\",\n    \"undo\",\n    \"redo\",\n]",
+        "description": ""
+      },
+      {
+        "name": "label",
+        "type": "string | undefined",
+        "required": false,
+        "default": "\"Formatting\"",
+        "description": ""
+      },
+      {
+        "name": "disabled",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "minHeight",
+        "type": "string | undefined",
+        "required": false,
+        "default": "\"160px\"",
+        "description": "min height of the writing area"
+      }
+    ],
+    "events": [],
+    "slots": [
+      {
+        "name": "toolbar",
+        "type": "{ editor: Editor | null | undefined; }",
+        "description": ""
+      },
+      {
+        "name": "default",
+        "type": "{}",
+        "description": ""
+      },
+      {
+        "name": "footer",
+        "type": "{ editor: Editor | null | undefined; }",
+        "description": ""
+      }
+    ],
+    "exposed": []
+  },
   "BlessEmpty": {
     "props": [
       {
@@ -3410,6 +3466,66 @@
         "type": "\"md\" | \"sm\" | \"lg\" | undefined",
         "required": false,
         "default": "\"md\"",
+        "description": ""
+      }
+    ],
+    "events": [],
+    "slots": [],
+    "exposed": []
+  },
+  "BlessQrCode": {
+    "props": [
+      {
+        "name": "matrix",
+        "type": "boolean[][]",
+        "required": true,
+        "description": "boolean module grid, e.g. `encode(text).data` from uqr"
+      },
+      {
+        "name": "value",
+        "type": "string | undefined",
+        "required": false,
+        "description": "what the code encodes — used for the accessible label"
+      },
+      {
+        "name": "size",
+        "type": "number | undefined",
+        "required": false,
+        "default": "160",
+        "description": ""
+      },
+      {
+        "name": "border",
+        "type": "number | undefined",
+        "required": false,
+        "default": "2",
+        "description": "quiet zone in modules"
+      },
+      {
+        "name": "color",
+        "type": "string | undefined",
+        "required": false,
+        "default": "\"#1a1b1d\"",
+        "description": "module colour — dark on light scans best, so this ignores the theme by default"
+      },
+      {
+        "name": "background",
+        "type": "string | undefined",
+        "required": false,
+        "default": "\"#fff\"",
+        "description": ""
+      },
+      {
+        "name": "frame",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "false",
+        "description": "skewed accent frame"
+      },
+      {
+        "name": "label",
+        "type": "string | undefined",
+        "required": false,
         "description": ""
       }
     ],
@@ -5394,7 +5510,7 @@
         "name": "opacity",
         "type": "number | undefined",
         "required": false,
-        "default": "0.12",
+        "default": "0.15",
         "description": ""
       },
       {

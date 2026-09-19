@@ -48,7 +48,7 @@ const showCode = ref(false);
   padding: 24px;
 }
 /* demo content shouldn't inherit vp-doc paragraph/list styling */
-.vp-doc .demo__preview :is(p, ul, ol, li, details, summary) {
+.vp-doc .demo__preview :is(p, ul, ol, li, details, summary):not(.tiptap *) {
   margin: 0;
   padding: 0;
   list-style: none;

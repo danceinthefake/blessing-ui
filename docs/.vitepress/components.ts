@@ -45,6 +45,11 @@ export const groups: { title: string; items: Entry[] }[] = [
   {
     title: "Forms",
     items: [
+      {
+        name: "BlessEditor",
+        slug: "editor",
+        text: "Rich text: skewed toolbar around a Tiptap editor",
+      },
       { name: "BlessKnob", slug: "knob", text: "Rotary dial on a native range input" },
       { name: "BlessSignaturePad", slug: "signature-pad", text: "Draw a signature on canvas" },
       { name: "BlessInputMask", slug: "input-mask", text: "Pattern-masked input (# A *)" },
@@ -165,6 +170,7 @@ export const groups: { title: string; items: Entry[] }[] = [
   {
     title: "Chart",
     items: [
+      { name: "BlessQrCode", slug: "qr-code", text: "QR code SVG from a module matrix (uqr)" },
       {
         name: "BlessChart",
         slug: "chart",

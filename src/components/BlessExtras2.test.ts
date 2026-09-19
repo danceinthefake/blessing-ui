@@ -195,3 +195,29 @@ test("BlessSignaturePad: strokes set the model, clear resets", async () => {
   expect(w.emitted("update:modelValue")!.at(-1)![0]).toBe("");
   w.unmount();
 });
+
+test("BlessQrCode renders one path square per dark module", async () => {
+  const { default: C } = await import("./BlessQrCode.vue");
+  const { encode } = await import("uqr");
+  const m = encode("blessing").data;
+  const w = mount(C, { props: { matrix: m, value: "blessing", border: 1 } });
+  const dark = m.flat().filter(Boolean).length;
+  expect((w.find("path").attributes("d")!.match(/M/g) ?? []).length).toBe(dark);
+  expect(w.find("svg").attributes("viewBox")).toBe(`0 0 ${m.length + 2} ${m.length + 2}`);
+  expect(w.find("svg").attributes("aria-label")).toBe("QR code: blessing");
+});
+
+test("BlessEditor toolbar drives the Tiptap editor", async () => {
+  const { default: C } = await import("./BlessEditor.vue");
+  const { Editor } = await import("@tiptap/vue-3");
+  const { default: StarterKit } = await import("@tiptap/starter-kit");
+  const editor = new Editor({ extensions: [StarterKit], content: "<p>hi</p>" });
+  const w = mount(C, { props: { editor, tools: ["bold", "|", "undo"] } });
+  expect(w.findAll(".bless-editor__tool")).toHaveLength(2);
+  expect(w.find('[aria-label="Undo"]').attributes("disabled")).toBeDefined();
+  editor.commands.selectAll();
+  await w.find('[aria-label="Bold"]').trigger("click");
+  expect(editor.getHTML()).toContain("<strong>hi</strong>");
+  expect(editor.isActive("bold")).toBe(true);
+  editor.destroy();
+});

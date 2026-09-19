@@ -86,7 +86,7 @@
   font-weight: inherit;
   text-decoration: none;
 }
-.vp-doc .demo__preview :is(h1, h2, h3, h4, h5, h6) {
+.vp-doc .demo__preview :is(h1, h2, h3, h4, h5, h6):not(.tiptap *) {
   margin: 0;
   padding: 0;
   border: 0;

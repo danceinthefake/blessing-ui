@@ -190,7 +190,12 @@ Decision: **Unovis** (`@unovis/vue`) as the documented, consumer-installed pairi
 - [x] `BlessWatermarkOverlay` — tiled rotated-text SVG `background-image` layer, `aria-hidden`, no pointer events
 - [x] `BlessSignaturePad` — canvas + pointer events, DPR-aware, `v-model` data URL, `clear()` / `isEmpty()`
 
-Skipped: Rich Text Editor (needs an editor engine), QR Code (needs an encoder — pair with a lib like Chart).
+### Phase 15 — engine-backed frames (same pattern as Chart)
+
+- [x] `BlessEditor` — toolbar + content frame around a **Tiptap** editor; `@tiptap/vue-3` optional peer, type-only in the lib
+- [x] `BlessQrCode` — SVG from a boolean matrix; **uqr** documented as the encoder, consumer-installed
+
+Deferred: RTL / `Direction` — audience is JP/EN; ~1 day of logical-property CSS if ever needed.
 
 ### Deliberately skipped
 
@@ -228,7 +233,7 @@ Tooling: Vite + `vite-plugin-dts`, Vitest + `@vue/test-utils` (one smoke test pe
 
 ## 6. Non-goals
 
-- Tailwind preset, RTL, SSR-specific code, icon set — not needed for v0.x. (Dark mode: done, Phase 8.) (Form controls were a v0 non-goal; now Phase 5.)
+- Tailwind preset, RTL (deferred, see Phase 15), SSR-specific code, icon set — not needed for v0.x. (Dark mode: done, Phase 8.) (Form controls were a v0 non-goal; now Phase 5.)
 - Copying saenai.tv assets (logo, art, `main_bg.png`) or CSS/JS.
 
 ## 7. Open questions

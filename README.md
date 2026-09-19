@@ -2,10 +2,10 @@
 
 Vue 3 component library and design tokens. Grey-scale UI, one pink-red accent, skewed labels instead of rounded corners, thin oversized watermark type, opacity-fade hovers. Visual language derived from [saenai.tv](https://www.saenai.tv/) (ideas only; no assets or CSS copied).
 
-- 103 components (shadcn/ui parity), tokens-only styling (`--bless-*` custom properties), no Tailwind dependency
+- 105 components (shadcn/ui parity), tokens-only styling (`--bless-*` custom properties), no Tailwind dependency
 - Native platform first: `<dialog>`, Popover API, `<details>`, native form controls, `Intl` dates, scroll-snap — no positioning, date or table library
 - Accessible defaults: focus rings, ARIA tablist/dialog/tables, `prefers-reduced-motion`
-- ESM, tree-shakable, `vue` as the only peer dependency. ~188 KB JS / 131 KB CSS raw, ~45 KB / 18 KB gzip for everything (tree-shakes per component)
+- ESM, tree-shakable, `vue` as the only required peer (`@tiptap/vue-3` optional, for `BlessEditor`). ~193 KB JS / 133 KB CSS raw, ~47 KB / 18 KB gzip for everything (tree-shakes per component)
 
 ## Install
 
@@ -73,7 +73,7 @@ import {
 
 ## Components
 
-103 components across eight groups. Every one styles itself from `--bless-*` tokens and ships with a test and a docs page.
+105 components across eight groups. Every one styles itself from `--bless-*` tokens and ships with a test and a docs page.
 
 ### Primitives
 
@@ -105,33 +105,34 @@ import {
 
 ### Forms
 
-| Component                          | Purpose                                                     | Key props / slots                                                                                                                     |
-| ---------------------------------- | ----------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
-| `BlessLabel`                       | `<label>` with required mark and hint                       | `for`, `required`, `hint`                                                                                                             |
-| `BlessInput`                       | Text-like input                                             | `v-model`, `type`, `size`, `invalid`, `description`, `error`; `#prefix` `#suffix`                                                     |
-| `BlessInputGroup`                  | Shared surface: addons + any control                        | `size`, `disabled`; `#prefix` `#suffix` (text or `BlessButton`), default = `BlessInput`/`BlessSelect`                                 |
-| `BlessTextarea`                    | Auto-growing textarea                                       | `v-model`, `rows`, `autogrow`, `maxlength`, `counter`, `error`                                                                        |
-| `BlessCheckbox`                    | Native checkbox                                             | `v-model` (bool or array), `value`, `indeterminate`, `description`                                                                    |
-| `BlessRadioGroup` / `BlessRadio`   | Native radios                                               | group `v-model`, `label`, `orientation`; radio `value`, `description`                                                                 |
-| `BlessSwitch`                      | `role=switch` toggle                                        | `v-model`, `size`, `labelPosition`                                                                                                    |
-| `BlessRating`                      | Star rating on native radios                                | `v-model`, `max`, `icon`, `size`, `readonly`                                                                                          |
-| `BlessFileInput`                   | File input + drop zone                                      | `v-model` File[], `accept`, `multiple`, `hint`, `list`, `invalid`                                                                     |
-| `BlessColorPicker`                 | `<input type=color>` + swatches                             | `v-model` hex, `swatches[]`, `showValue`                                                                                              |
-| `BlessPasswordMeter`               | Strength `<meter>` from rules                               | `value`, `rules[{label,test}]`, `labels`, `showRules`                                                                                 |
-| `BlessListbox`                     | `role=listbox`, keyboard + typeahead                        | `v-model` (array when `multiple`), `options`, `rows`, `label`; `#default="{option, selected}"`                                        |
-| `BlessKnob`                        | Rotary dial on `<input type=range>`                         | `v-model`, `min`, `max`, `step`, `size`, `sweep`, `format`, `label`                                                                   |
-| `BlessSignaturePad`                | Canvas signature                                            | `v-model` data URL, `height`, `lineWidth`, `color`, `type`; emits `end`; exposes `clear()` `isEmpty()`                                |
-| `BlessInputMask`                   | Pattern-masked `BlessInput`                                 | `v-model` masked, `mask` (`#` digit `A` letter `*` either), `placeholder`; emits `update:raw`                                         |
-| `BlessOrderList`                   | Reorderable list                                            | `v-model` items, `rowKey`, `buttons`; drag, ↑↓, Alt+arrows; emits `move`; `#default="{item,index}"`                                   |
-| `BlessPickList`                    | Transfer between two listboxes                              | `v-model:source`, `v-model:target`, `sourceLabel`, `targetLabel`, `rows`                                                              |
-| `BlessSelect`                      | Styled native `<select>` (picker styled too on Chrome 135+) | `v-model`, `options` (groups ok), `placeholder`, `size`, `error`                                                                      |
-| `BlessSlider`                      | Native range                                                | `v-model`, `min`, `max`, `step`, `showValue`, `format`                                                                                |
-| `BlessToggle` / `BlessToggleGroup` | Pressed buttons                                             | toggle `v-model:pressed`, `value`; group `v-model`, `type` single/multiple                                                            |
-| `BlessCombobox`                    | Searchable select                                           | `v-model`, `options`, `multiple`, `creatable` (emits `create`), `size`                                                                |
-| `BlessDatePicker`                  | Calendar in a popover                                       | `v-model` ISO string or `[start,end]`, `range`, `min`, `max`, `locale`, `nativeOnTouch`                                               |
-| `BlessCalendar`                    | Month grid                                                  | same as DatePicker plus `weekStart`, `disabledDates`, `month`                                                                         |
-| `BlessInputOTP`                    | One-time code cells                                         | `v-model`, `length`, `numeric`, `separators`, `masked`; emits `complete`                                                              |
-| `BlessForm` / `BlessField`         | Constraint-API form + field wiring                          | form emits `submit(FormData)` / `invalid`; field `label`, `required`, `description`, `error`; `#default="{ id, error, describedby }"` |
+| Component                          | Purpose                                                     | Key props / slots                                                                                                                          |
+| ---------------------------------- | ----------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| `BlessLabel`                       | `<label>` with required mark and hint                       | `for`, `required`, `hint`                                                                                                                  |
+| `BlessInput`                       | Text-like input                                             | `v-model`, `type`, `size`, `invalid`, `description`, `error`; `#prefix` `#suffix`                                                          |
+| `BlessInputGroup`                  | Shared surface: addons + any control                        | `size`, `disabled`; `#prefix` `#suffix` (text or `BlessButton`), default = `BlessInput`/`BlessSelect`                                      |
+| `BlessTextarea`                    | Auto-growing textarea                                       | `v-model`, `rows`, `autogrow`, `maxlength`, `counter`, `error`                                                                             |
+| `BlessCheckbox`                    | Native checkbox                                             | `v-model` (bool or array), `value`, `indeterminate`, `description`                                                                         |
+| `BlessRadioGroup` / `BlessRadio`   | Native radios                                               | group `v-model`, `label`, `orientation`; radio `value`, `description`                                                                      |
+| `BlessSwitch`                      | `role=switch` toggle                                        | `v-model`, `size`, `labelPosition`                                                                                                         |
+| `BlessRating`                      | Star rating on native radios                                | `v-model`, `max`, `icon`, `size`, `readonly`                                                                                               |
+| `BlessFileInput`                   | File input + drop zone                                      | `v-model` File[], `accept`, `multiple`, `hint`, `list`, `invalid`                                                                          |
+| `BlessColorPicker`                 | `<input type=color>` + swatches                             | `v-model` hex, `swatches[]`, `showValue`                                                                                                   |
+| `BlessPasswordMeter`               | Strength `<meter>` from rules                               | `value`, `rules[{label,test}]`, `labels`, `showRules`                                                                                      |
+| `BlessListbox`                     | `role=listbox`, keyboard + typeahead                        | `v-model` (array when `multiple`), `options`, `rows`, `label`; `#default="{option, selected}"`                                             |
+| `BlessKnob`                        | Rotary dial on `<input type=range>`                         | `v-model`, `min`, `max`, `step`, `size`, `sweep`, `format`, `label`                                                                        |
+| `BlessSignaturePad`                | Canvas signature                                            | `v-model` data URL, `height`, `lineWidth`, `color`, `type`; emits `end`; exposes `clear()` `isEmpty()`                                     |
+| `BlessEditor`                      | Rich text toolbar for Tiptap                                | `editor` (from `useEditor`), `tools[]`, `minHeight`; default slot = `<EditorContent>`; `#toolbar` `#footer`. Optional peer `@tiptap/vue-3` |
+| `BlessInputMask`                   | Pattern-masked `BlessInput`                                 | `v-model` masked, `mask` (`#` digit `A` letter `*` either), `placeholder`; emits `update:raw`                                              |
+| `BlessOrderList`                   | Reorderable list                                            | `v-model` items, `rowKey`, `buttons`; drag, ↑↓, Alt+arrows; emits `move`; `#default="{item,index}"`                                        |
+| `BlessPickList`                    | Transfer between two listboxes                              | `v-model:source`, `v-model:target`, `sourceLabel`, `targetLabel`, `rows`                                                                   |
+| `BlessSelect`                      | Styled native `<select>` (picker styled too on Chrome 135+) | `v-model`, `options` (groups ok), `placeholder`, `size`, `error`                                                                           |
+| `BlessSlider`                      | Native range                                                | `v-model`, `min`, `max`, `step`, `showValue`, `format`                                                                                     |
+| `BlessToggle` / `BlessToggleGroup` | Pressed buttons                                             | toggle `v-model:pressed`, `value`; group `v-model`, `type` single/multiple                                                                 |
+| `BlessCombobox`                    | Searchable select                                           | `v-model`, `options`, `multiple`, `creatable` (emits `create`), `size`                                                                     |
+| `BlessDatePicker`                  | Calendar in a popover                                       | `v-model` ISO string or `[start,end]`, `range`, `min`, `max`, `locale`, `nativeOnTouch`                                                    |
+| `BlessCalendar`                    | Month grid                                                  | same as DatePicker plus `weekStart`, `disabledDates`, `month`                                                                              |
+| `BlessInputOTP`                    | One-time code cells                                         | `v-model`, `length`, `numeric`, `separators`, `masked`; emits `complete`                                                                   |
+| `BlessForm` / `BlessField`         | Constraint-API form + field wiring                          | form emits `submit(FormData)` / `invalid`; field `label`, `required`, `description`, `error`; `#default="{ id, error, describedby }"`      |
 
 ### Layout & navigation
 
@@ -194,9 +195,10 @@ import {
 
 ### Chart
 
-| Component    | Purpose                                                 | Key props / slots                                                                            |
-| ------------ | ------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
-| `BlessChart` | Themed frame for any [Unovis](https://unovis.dev) chart | `title`, `description`, `height`, `legend[]`; `#header` `#legend` `#footer`, default = chart |
+| Component     | Purpose                                                          | Key props / slots                                                                            |
+| ------------- | ---------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `BlessChart`  | Themed frame for any [Unovis](https://unovis.dev) chart          | `title`, `description`, `height`, `legend[]`; `#header` `#legend` `#footer`, default = chart |
+| `BlessQrCode` | QR SVG from a module matrix ([uqr](https://github.com/unjs/uqr)) | `matrix` boolean[][], `value`, `size`, `border`, `color`, `background`, `frame`              |
 
 Blessing does not bundle a chart library. `BlessChart` maps `--bless-color-chart-{1..5}`, type and dark mode onto Unovis' `--vis-*` variables, and adds a skewed legend. Install Unovis yourself:
 
@@ -229,7 +231,7 @@ Any other SVG chart lib works too — read `var(--bless-color-chart-N)` for seri
 
 ### Types
 
-`BlessNavItem`, `BlessNavMenuItem`, `BlessTab`, `BlessGalleryItem`, `BlessColumn<T>`, `BlessDataColumn<T>`, `BlessOption<T>`, `BlessTrack`, `BlessMenuItem`, `BlessCommandItem`, `BlessCrumb`, `BlessToastOptions`, `BlessTheme`, `BlessStep`, `BlessTimelineItem`, `BlessTreeNode`, `BlessPasswordRule`, `BlessBottomTab`, `BlessSpeedDialAction`, `BlessTourStep`, `BlessReaction`, `BlessQuestion`, `BlessQuestionChoice`, `BlessAnswers`, `Placement`, `DataTableState`.
+`BlessNavItem`, `BlessNavMenuItem`, `BlessTab`, `BlessGalleryItem`, `BlessColumn<T>`, `BlessDataColumn<T>`, `BlessOption<T>`, `BlessTrack`, `BlessMenuItem`, `BlessCommandItem`, `BlessCrumb`, `BlessToastOptions`, `BlessTheme`, `BlessStep`, `BlessTimelineItem`, `BlessTreeNode`, `BlessPasswordRule`, `BlessBottomTab`, `BlessSpeedDialAction`, `BlessTourStep`, `BlessEditorTool`, `BlessReaction`, `BlessQuestion`, `BlessQuestionChoice`, `BlessAnswers`, `Placement`, `DataTableState`.
 
 ## Tokens
 
