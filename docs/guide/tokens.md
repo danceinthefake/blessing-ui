@@ -4,7 +4,7 @@ All styling reads `--bless-*` custom properties from `tokens.css`. Override on `
 
 ```css
 :root {
-  --bless-color-accent: #0aa;
+  --bless-color-accent: #4090d0;
   --bless-skew: -6deg;
 }
 ```

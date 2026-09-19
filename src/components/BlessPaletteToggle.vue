@@ -20,15 +20,6 @@ const cap = (s: string) => s[0].toUpperCase() + s.slice(1);
 <template>
   <div class="bless-palette" role="group" :aria-label="label">
     <button
-      v-if="showDefault"
-      type="button"
-      class="bless-palette__swatch"
-      style="--_c: #ff0054"
-      aria-label="Blessing (default)"
-      :aria-pressed="!palette"
-      @click="setPalette(undefined)"
-    />
-    <button
       v-for="p in blessPalettes"
       :key="p.name"
       type="button"

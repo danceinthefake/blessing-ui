@@ -40,7 +40,7 @@ test("BlessFileInput: change and drop add files, remove works", async () => {
 
 test("BlessColorPicker: swatch click sets model and aria-pressed", async () => {
   const w = mount(BlessColorPicker, {
-    props: { modelValue: "#ff0054", swatches: ["#ff0054", "#a759ff"] },
+    props: { modelValue: "#e85078", swatches: ["#e85078", "#a759ff"] },
   });
   const sw = w.findAll(".bless-color__swatch");
   expect(sw[0].attributes("aria-pressed")).toBe("true");

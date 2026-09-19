@@ -17,7 +17,7 @@ In the story, the protagonist founds a doujin game circle and calls it **Blessin
 Five things, and they became the [brand](./brand):
 
 - one angle — `skewX(-10deg)`, on everything
-- one accent — `#ff0054` on a scale of greys
+- one accent on a scale of greys — the heroine's pink by default
 - thin oversized type for the voice, bold tracked uppercase for the UI
 - the fade on hover, never a bounce
 - the hard-shadow plate: a second parallelogram offset behind

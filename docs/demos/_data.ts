@@ -1,6 +1,6 @@
 // Shared fixtures for demos — SVG placeholders so nothing external is loaded.
 export const shots = [
-  "ff0054",
+  "e85078",
   "fd709f",
   "ff3434",
   "ffa800",

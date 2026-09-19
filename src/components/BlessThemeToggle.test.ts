@@ -48,14 +48,11 @@ test("useTheme palette applies data-palette and persists; BlessPaletteToggle swi
   expect(document.documentElement.dataset.palette).toBe("eriri");
   expect(localStorage.getItem("bless-palette")).toBe("eriri");
   const w = mount(BlessPaletteToggle);
-  expect(w.findAll("button")).toHaveLength(7);
+  expect(w.findAll("button")).toHaveLength(6);
   expect(w.find('[aria-label="Eriri"]').attributes("aria-pressed")).toBe("true");
   await w.find('[aria-label="Megumi"]').trigger("click");
   await nextTick();
   expect(palette.value).toBe("megumi");
-  expect(document.documentElement.dataset.palette).toBe("megumi");
-  await w.find("button").trigger("click");
-  await nextTick();
-  expect(document.documentElement.dataset.palette).toBeUndefined();
+  expect(document.documentElement.dataset.palette).toBeUndefined(); // megumi = root, no attribute
   expect(localStorage.getItem("bless-palette")).toBeNull();
 });

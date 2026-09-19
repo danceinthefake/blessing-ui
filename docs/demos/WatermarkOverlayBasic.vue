@@ -20,7 +20,7 @@ import { BlessText, BlessWatermarkOverlay } from "blessing-ui";
       :angle="-45"
       :font-size="12"
       :opacity="0.4"
-      color="#ff0054"
+      color="#e85078"
       style="width: 240px; height: 160px; background: var(--bless-color-surface)"
     />
   </div>

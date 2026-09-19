@@ -1,10 +1,10 @@
 import { computed, ref, watchEffect } from "vue";
 
 export type BlessTheme = "light" | "dark" | "system";
-/** accent family; undefined = the default Blessing pink-red */
+/** accent family; undefined = Megumi, the default */
 export type BlessPalette = "megumi" | "utaha" | "izumi" | "michiru" | "eriri" | "tomoya";
 export const blessPalettes: { name: BlessPalette; color: string }[] = [
-  { name: "megumi", color: "#e85078" },
+  { name: "megumi", color: "#e85078" }, // default: no data-palette attribute
   { name: "utaha", color: "#e03028" },
   { name: "izumi", color: "#4090d0" },
   { name: "michiru", color: "#b878b0" },
@@ -15,7 +15,7 @@ export const blessPalettes: { name: BlessPalette; color: string }[] = [
 const KEY = "bless-theme";
 const PKEY = "bless-palette";
 const theme = ref<BlessTheme>("system");
-const palette = ref<BlessPalette | undefined>();
+const palette = ref<BlessPalette>("megumi");
 const systemDark = ref(false);
 let booted = false;
 
@@ -41,10 +41,11 @@ function boot() {
   });
   watchEffect(() => {
     const root = document.documentElement;
-    if (palette.value) root.setAttribute("data-palette", palette.value);
+    const p = palette.value === "megumi" ? undefined : palette.value;
+    if (p) root.setAttribute("data-palette", p);
     else root.removeAttribute("data-palette");
     try {
-      if (palette.value) localStorage.setItem(PKEY, palette.value);
+      if (p) localStorage.setItem(PKEY, p);
       else localStorage.removeItem(PKEY);
     } catch {}
   });
@@ -58,6 +59,6 @@ export function useTheme() {
   );
   const set = (t: BlessTheme) => (theme.value = t);
   const toggle = () => set(isDark.value ? "light" : "dark");
-  const setPalette = (p: BlessPalette | undefined) => (palette.value = p);
+  const setPalette = (p: BlessPalette | undefined) => (palette.value = p ?? "megumi");
   return { theme, isDark, set, toggle, palette, setPalette };
 }

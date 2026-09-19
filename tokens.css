@@ -12,11 +12,11 @@
   --bless-color-surface-2: #ebebeb;
   --bless-color-watermark: #dde0e4;
 
-  --bless-color-accent: #ff0054; /* primary CTA */
-  --bless-color-accent-soft: #fd709f; /* highlights, hover fills */
-  --bless-color-accent-2: #ff5676;
+  --bless-color-accent: #e85078; /* primary CTA — Megumi's petal; the default palette */
+  --bless-color-accent-soft: #f5a0b8; /* highlights, hover fills */
+  --bless-color-accent-2: #ee6f92;
   --bless-color-danger: #ff3434; /* active/alert, play icons */
-  --bless-color-badge: #ff2121; /* NEW! pill */
+  --bless-color-badge: #e03060; /* NEW! pill */
   --bless-color-warning: #ffa800;
   --bless-color-success: #c0e722;
   --bless-color-info: #a759ff;
@@ -164,18 +164,10 @@
 }
 
 /* ---- palettes ----
- * Six accent families named after the members of the circle the library is named for
- * (see docs/guide/story). <html data-palette="megumi"> swaps only the accent family; greys,
- * skew and type are untouched, and data-theme (dark) composes on top.
- * No attribute = the default "Blessing" pink-red above.
+ * Accent families named after the members of the circle the library is named for
+ * (see docs/guide/story). The root accent above is Megumi's — the default; <html data-palette="utaha">
+ * etc. swap only the accent family. Greys, skew and type are untouched; data-theme (dark) composes on top.
  */
-:root[data-palette="megumi"] {
-  --bless-color-accent: #e85078;
-  --bless-color-accent-soft: #f5a0b8;
-  --bless-color-accent-2: #ee6f92;
-  --bless-color-badge: #e03060;
-  --bless-color-chart-1: #e85078;
-}
 :root[data-palette="utaha"] {
   --bless-color-accent: #e03028;
   --bless-color-accent-soft: #f28a84;

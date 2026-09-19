@@ -260,7 +260,7 @@ All styling reads `--bless-*` custom properties defined in `tokens.css`. Overrid
 
 ```css
 :root {
-  --bless-color-accent: #0aa;
+  --bless-color-accent: #4090d0;
   --bless-skew: -6deg;
 }
 ```
@@ -279,7 +279,7 @@ All styling reads `--bless-*` custom properties defined in `tokens.css`. Overrid
 
 ### Palettes
 
-Six alternative accent families — `data-palette="megumi" | "utaha" | "izumi" | "michiru" | "eriri" | "tomoya"` on `<html>` — swap only the accent tokens; greys and dark mode are untouched. `BlessPaletteToggle` switches them; `useTheme().setPalette()` persists.
+Megumi's pink is the default accent. Five more — `data-palette="utaha" | "izumi" | "michiru" | "eriri" | "tomoya"` on `<html>` — swap only the accent tokens; greys and dark mode are untouched. `BlessPaletteToggle` switches them; `useTheme().setPalette()` persists.
 
 ### Dark mode
 

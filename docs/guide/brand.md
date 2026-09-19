@@ -14,7 +14,7 @@ Blessing UI's identity is the design system itself — nothing is added for the 
 | Element  | Value                                                                         | Where you see it                                   |
 | -------- | ----------------------------------------------------------------------------- | -------------------------------------------------- |
 | Name     | **Blessing** — a nod to a fictional software circle; see the [story](./story) | wordmark, package name                             |
-| Colour   | one accent, `#ff0054`, on greys                                               | buttons, badges, the mark's front plate            |
+| Colour   | one accent, `#e85078`, on greys                                               | buttons, badges, the mark's front plate            |
 | Geometry | `skewX(-10deg)` — never rounded, never rotated                                | every label, both plates of the mark, the `UI` tag |
 | Type     | Roboto 100 oversized for the voice, 700 uppercase tracked for the UI          | watermark, wordmark, labels                        |
 | Motif    | the hard-shadow plate: a second parallelogram offset behind                   | mark, `BlessQrCode frame`, `BlessScrollTop`        |

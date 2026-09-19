@@ -15,7 +15,7 @@ const props = withDefaults(
   }>(),
   { swatches: () => [], label: "Colour", showValue: true },
 );
-const model = defineModel<string>({ default: "#ff0054" });
+const model = defineModel<string>({ default: "#e85078" });
 const uid = useId();
 const id = () => props.id ?? uid;
 </script>
