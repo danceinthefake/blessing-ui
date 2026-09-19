@@ -9,6 +9,9 @@ export const groups: { title: string; items: Entry[] }[] = [
   {
     title: "Primitives",
     items: [
+      { name: "BlessChip", slug: "chip", text: "Removable pill" },
+      { name: "BlessMeterGroup", slug: "meter-group", text: "Multi-segment meter with legend" },
+      { name: "BlessBlockUI", slug: "block-ui", text: "Overlay that blocks its content" },
       {
         name: "BlessWatermarkOverlay",
         slug: "watermark-overlay",
@@ -45,6 +48,21 @@ export const groups: { title: string; items: Entry[] }[] = [
   {
     title: "Forms",
     items: [
+      {
+        name: "BlessInputNumber",
+        slug: "input-number",
+        text: "Number with ± steppers and Intl format",
+      },
+      {
+        name: "BlessPasswordInput",
+        slug: "password-input",
+        text: "Password with reveal toggle and meter",
+      },
+      { name: "BlessInputTags", slug: "input-tags", text: "Free-text tags" },
+      { name: "BlessFloatLabel", slug: "float-label", text: "Floating / in-field label wrapper" },
+      { name: "BlessFieldset", slug: "fieldset", text: "Legend group, toggleable" },
+      { name: "BlessInplace", slug: "inplace", text: "Click-to-edit" },
+      { name: "BlessCompare", slug: "compare", text: "Before / after slider" },
       {
         name: "BlessEditor",
         slug: "editor",
@@ -89,6 +107,16 @@ export const groups: { title: string; items: Entry[] }[] = [
   {
     title: "Layout & navigation",
     items: [
+      { name: "BlessToolbar", slug: "toolbar", text: "Start / center / end bar" },
+      { name: "BlessPanel", slug: "panel", text: "Titled box with actions, toggleable" },
+      { name: "BlessStepper", slug: "stepper", text: "Steps header + panels + next / back" },
+      { name: "BlessSplitButton", slug: "split-button", text: "Button with a menu half" },
+      { name: "BlessDataView", slug: "data-view", text: "List / grid with pagination" },
+      {
+        name: "BlessDeferredContent",
+        slug: "deferred-content",
+        text: "Render when scrolled into view",
+      },
       {
         name: "BlessBottomTabs",
         slug: "bottom-tabs",
@@ -136,6 +164,7 @@ export const groups: { title: string; items: Entry[] }[] = [
   {
     title: "Overlays",
     items: [
+      { name: "BlessConfirmPopup", slug: "confirm-popup", text: "Confirm inside a popover" },
       { name: "BlessTour", slug: "tour", text: "Step-by-step spotlight walkthrough" },
       { name: "BlessModal", slug: "modal", text: "Native `<dialog>`" },
       { name: "BlessAlertDialog", slug: "alert-dialog", text: "Confirm dialog" },

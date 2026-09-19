@@ -53,6 +53,8 @@ export default defineConfig({
             { text: "Fonts", link: "/guide/fonts" },
             { text: "Conventions", link: "/guide/conventions" },
             { text: "useScrollSpy", link: "/guide/scroll-spy" },
+            { text: "useAnimateOnScroll", link: "/guide/animate-on-scroll" },
+            { text: "useAnimateOnScroll", link: "/guide/animate-on-scroll" },
             { text: "Brand", link: "/guide/brand" },
           ],
         },

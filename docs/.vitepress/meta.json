@@ -491,6 +491,43 @@
   ],
   "exposed": []
  },
+ "BlessBlockUI": {
+  "props": [
+   {
+    "name": "blocked",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "fullscreen",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "label",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Busy\"",
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [
+   {
+    "name": "default",
+    "type": "{}",
+    "description": ""
+   },
+   {
+    "name": "indicator",
+    "type": "{}",
+    "description": ""
+   }
+  ],
+  "exposed": []
+ },
  "BlessBottomTabs": {
   "props": [
    {
@@ -1092,6 +1129,70 @@
   ],
   "exposed": []
  },
+ "BlessChip": {
+  "props": [
+   {
+    "name": "label",
+    "type": "string | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "icon",
+    "type": "string | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "image",
+    "type": "string | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "removable",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "removeLabel",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Remove\"",
+    "description": ""
+   },
+   {
+    "name": "color",
+    "type": "\"text\" | \"accent\" | \"surface\" | undefined",
+    "required": false,
+    "default": "\"surface\"",
+    "description": ""
+   },
+   {
+    "name": "size",
+    "type": "\"md\" | \"sm\" | undefined",
+    "required": false,
+    "default": "\"md\"",
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "remove",
+    "type": "[]",
+    "description": ""
+   }
+  ],
+  "slots": [
+   {
+    "name": "default",
+    "type": "{}",
+    "description": ""
+   }
+  ],
+  "exposed": []
+ },
  "BlessCollapsible": {
   "props": [
    {
@@ -1355,6 +1456,127 @@
   ],
   "exposed": []
  },
+ "BlessCompare": {
+  "props": [
+   {
+    "name": "label",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Compare\"",
+    "description": ""
+   },
+   {
+    "name": "orientation",
+    "type": "\"horizontal\" | \"vertical\" | undefined",
+    "required": false,
+    "default": "\"horizontal\"",
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "number | undefined",
+    "required": false,
+    "default": "50",
+    "description": "0–100, how much of the \"after\" side is revealed"
+   }
+  ],
+  "events": [
+   {
+    "name": "update:modelValue",
+    "type": "[value: number]",
+    "description": ""
+   }
+  ],
+  "slots": [
+   {
+    "name": "before",
+    "type": "{}",
+    "description": ""
+   },
+   {
+    "name": "after",
+    "type": "{}",
+    "description": ""
+   }
+  ],
+  "exposed": []
+ },
+ "BlessConfirmPopup": {
+  "props": [
+   {
+    "name": "message",
+    "type": "string",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "title",
+    "type": "string | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "confirmLabel",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Confirm\"",
+    "description": ""
+   },
+   {
+    "name": "cancelLabel",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Cancel\"",
+    "description": ""
+   },
+   {
+    "name": "color",
+    "type": "\"text\" | \"accent\" | \"danger\" | undefined",
+    "required": false,
+    "default": "\"accent\"",
+    "description": ""
+   },
+   {
+    "name": "placement",
+    "type": "Placement | undefined",
+    "required": false,
+    "default": "\"bottom\"",
+    "description": ""
+   },
+   {
+    "name": "open",
+    "type": "boolean | undefined",
+    "required": false,
+    "default": "false",
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "update:open",
+    "type": "[value: boolean]",
+    "description": ""
+   },
+   {
+    "name": "confirm",
+    "type": "[]",
+    "description": ""
+   },
+   {
+    "name": "cancel",
+    "type": "[]",
+    "description": ""
+   }
+  ],
+  "slots": [
+   {
+    "name": "trigger",
+    "type": "{ open: boolean; }",
+    "description": ""
+   }
+  ],
+  "exposed": []
+ },
  "BlessContainer": {
   "props": [
    {
@@ -1534,6 +1756,82 @@
   ],
   "exposed": []
  },
+ "BlessDataView": {
+  "props": [
+   {
+    "name": "items",
+    "type": "T[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "rowKey",
+    "type": "((item: T, index: number) => string | number) | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "pageSize",
+    "type": "number | undefined",
+    "required": false,
+    "default": "0",
+    "description": ""
+   },
+   {
+    "name": "columns",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"220px\"",
+    "description": "min card width in grid layout"
+   },
+   {
+    "name": "label",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Items\"",
+    "description": ""
+   },
+   {
+    "name": "switchable",
+    "type": "boolean | undefined",
+    "required": false,
+    "default": "true",
+    "description": "hide the list/grid switch"
+   },
+   {
+    "name": "layout",
+    "type": "\"list\" | \"grid\" | undefined",
+    "required": false,
+    "default": "\"list\"",
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "update:layout",
+    "type": "[value: \"list\" | \"grid\"]",
+    "description": ""
+   }
+  ],
+  "slots": [
+   {
+    "name": "header",
+    "type": "{ layout: \"list\" | \"grid\"; }",
+    "description": ""
+   },
+   {
+    "name": "default",
+    "type": "{ item: T; index: number; layout: \"list\" | \"grid\"; }",
+    "description": ""
+   },
+   {
+    "name": "empty",
+    "type": "{}",
+    "description": ""
+   }
+  ],
+  "exposed": []
+ },
  "BlessDatePicker": {
   "props": [
    {
@@ -1615,6 +1913,44 @@
    }
   ],
   "slots": [],
+  "exposed": []
+ },
+ "BlessDeferredContent": {
+  "props": [
+   {
+    "name": "rootMargin",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"200px\"",
+    "description": ""
+   },
+   {
+    "name": "minHeight",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"1px\"",
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "load",
+    "type": "[]",
+    "description": ""
+   }
+  ],
+  "slots": [
+   {
+    "name": "default",
+    "type": "{}",
+    "description": ""
+   },
+   {
+    "name": "placeholder",
+    "type": "{}",
+    "description": ""
+   }
+  ],
   "exposed": []
  },
  "BlessDrawer": {
@@ -1906,6 +2242,55 @@
   ],
   "exposed": []
  },
+ "BlessFieldset": {
+  "props": [
+   {
+    "name": "legend",
+    "type": "string | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "toggleable",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "disabled",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "collapsed",
+    "type": "boolean | undefined",
+    "required": false,
+    "default": "false",
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "update:collapsed",
+    "type": "[value: boolean]",
+    "description": ""
+   }
+  ],
+  "slots": [
+   {
+    "name": "legend",
+    "type": "{}",
+    "description": ""
+   },
+   {
+    "name": "default",
+    "type": "{}",
+    "description": ""
+   }
+  ],
+  "exposed": []
+ },
  "BlessFileInput": {
   "props": [
    {
@@ -1979,6 +2364,38 @@
     "type": "{}",
     "description": ""
    },
+   {
+    "name": "default",
+    "type": "{}",
+    "description": ""
+   }
+  ],
+  "exposed": []
+ },
+ "BlessFloatLabel": {
+  "props": [
+   {
+    "name": "label",
+    "type": "string",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "for",
+    "type": "string | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "variant",
+    "type": "\"over\" | \"in\" | undefined",
+    "required": false,
+    "default": "\"over\"",
+    "description": "over = floats up on focus/value; in = always inside, top-aligned (IFTA)"
+   }
+  ],
+  "events": [],
+  "slots": [
    {
     "name": "default",
     "type": "{}",
@@ -2212,6 +2629,66 @@
   ],
   "exposed": []
  },
+ "BlessInplace": {
+  "props": [
+   {
+    "name": "closable",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "disabled",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "closeLabel",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Close\"",
+    "description": ""
+   },
+   {
+    "name": "active",
+    "type": "boolean | undefined",
+    "required": false,
+    "default": "false",
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "open",
+    "type": "[]",
+    "description": ""
+   },
+   {
+    "name": "close",
+    "type": "[]",
+    "description": ""
+   },
+   {
+    "name": "update:active",
+    "type": "[value: boolean]",
+    "description": ""
+   }
+  ],
+  "slots": [
+   {
+    "name": "display",
+    "type": "{}",
+    "description": ""
+   },
+   {
+    "name": "content",
+    "type": "{ close: () => void; }",
+    "description": ""
+   }
+  ],
+  "exposed": []
+ },
  "BlessInput": {
   "props": [
    {
@@ -2366,6 +2843,107 @@
   "slots": [],
   "exposed": []
  },
+ "BlessInputNumber": {
+  "props": [
+   {
+    "name": "id",
+    "type": "string | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "min",
+    "type": "number | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "max",
+    "type": "number | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "step",
+    "type": "number | undefined",
+    "required": false,
+    "default": "1",
+    "description": ""
+   },
+   {
+    "name": "buttons",
+    "type": "boolean | undefined",
+    "required": false,
+    "default": "true",
+    "description": "± buttons"
+   },
+   {
+    "name": "prefix",
+    "type": "string | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "suffix",
+    "type": "string | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "format",
+    "type": "Intl.NumberFormatOptions | undefined",
+    "required": false,
+    "description": "Intl.NumberFormat options used while not focused"
+   },
+   {
+    "name": "locale",
+    "type": "string | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "size",
+    "type": "\"md\" | \"sm\" | \"lg\" | undefined",
+    "required": false,
+    "default": "\"md\"",
+    "description": ""
+   },
+   {
+    "name": "disabled",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "invalid",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "label",
+    "type": "string | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "number | null | undefined",
+    "required": false,
+    "default": "null",
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "update:modelValue",
+    "type": "[value: number | null]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessInputOTP": {
   "props": [
    {
@@ -2430,6 +3008,76 @@
    {
     "name": "complete",
     "type": "[code: string]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
+ "BlessInputTags": {
+  "props": [
+   {
+    "name": "id",
+    "type": "string | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "placeholder",
+    "type": "string | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "separators",
+    "type": "string[] | undefined",
+    "required": false,
+    "default": "[\"Enter\", \",\"]",
+    "description": "keys that commit the draft"
+   },
+   {
+    "name": "max",
+    "type": "number | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "disabled",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "invalid",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "label",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Tags\"",
+    "description": ""
+   },
+   {
+    "name": "duplicates",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": "allow the same tag twice"
+   },
+   {
+    "name": "modelValue",
+    "type": "string[] | undefined",
+    "required": false,
+    "default": "[]",
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "update:modelValue",
+    "type": "[value: string[]]",
     "description": ""
    }
   ],
@@ -3014,6 +3662,58 @@
    }
   ]
  },
+ "BlessMeterGroup": {
+  "props": [
+   {
+    "name": "segments",
+    "type": "BlessMeterSegment[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "max",
+    "type": "number | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "label",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Usage\"",
+    "description": ""
+   },
+   {
+    "name": "legend",
+    "type": "boolean | undefined",
+    "required": false,
+    "default": "true",
+    "description": "show the legend"
+   },
+   {
+    "name": "format",
+    "type": "((v: number) => string) | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "orientation",
+    "type": "\"horizontal\" | \"vertical\" | undefined",
+    "required": false,
+    "default": "\"horizontal\"",
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [
+   {
+    "name": "legend",
+    "type": "{ segment: BlessMeterSegment; percent: number; }",
+    "description": ""
+   }
+  ],
+  "exposed": []
+ },
  "BlessMockup": {
   "props": [
    {
@@ -3258,6 +3958,106 @@
    {
     "name": "update:modelValue",
     "type": "[value: number]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
+ "BlessPanel": {
+  "props": [
+   {
+    "name": "title",
+    "type": "string | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "toggleable",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "surface",
+    "type": "\"surface\" | \"bg\" | undefined",
+    "required": false,
+    "default": "\"bg\"",
+    "description": ""
+   },
+   {
+    "name": "collapsed",
+    "type": "boolean | undefined",
+    "required": false,
+    "default": "false",
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "update:collapsed",
+    "type": "[value: boolean]",
+    "description": ""
+   }
+  ],
+  "slots": [
+   {
+    "name": "title",
+    "type": "{}",
+    "description": ""
+   },
+   {
+    "name": "actions",
+    "type": "{}",
+    "description": ""
+   },
+   {
+    "name": "default",
+    "type": "{}",
+    "description": ""
+   },
+   {
+    "name": "footer",
+    "type": "{}",
+    "description": ""
+   }
+  ],
+  "exposed": []
+ },
+ "BlessPasswordInput": {
+  "props": [
+   {
+    "name": "meter",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": "show the strength meter under the field"
+   },
+   {
+    "name": "showLabel",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Show password\"",
+    "description": ""
+   },
+   {
+    "name": "hideLabel",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Hide password\"",
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"\"",
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "update:modelValue",
+    "type": "[value: string]",
     "description": ""
    }
   ],
@@ -4528,6 +5328,82 @@
    }
   ]
  },
+ "BlessSplitButton": {
+  "props": [
+   {
+    "name": "label",
+    "type": "string",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "items",
+    "type": "BlessMenuItem[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "color",
+    "type": "\"text\" | \"accent\" | \"danger\" | undefined",
+    "required": false,
+    "default": "\"text\"",
+    "description": ""
+   },
+   {
+    "name": "variant",
+    "type": "\"outline\" | \"solid\" | undefined",
+    "required": false,
+    "default": "\"solid\"",
+    "description": ""
+   },
+   {
+    "name": "size",
+    "type": "\"md\" | \"sm\" | \"lg\" | undefined",
+    "required": false,
+    "default": "\"md\"",
+    "description": ""
+   },
+   {
+    "name": "disabled",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "loading",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "menuLabel",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"More actions\"",
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "select",
+    "type": "[item: BlessMenuItem]",
+    "description": ""
+   },
+   {
+    "name": "click",
+    "type": "[e: MouseEvent]",
+    "description": ""
+   }
+  ],
+  "slots": [
+   {
+    "name": "default",
+    "type": "{}",
+    "description": ""
+   }
+  ],
+  "exposed": []
+ },
  "BlessStack": {
   "props": [
    {
@@ -4632,6 +5508,68 @@
    {
     "name": "footer",
     "type": "{}",
+    "description": ""
+   }
+  ],
+  "exposed": []
+ },
+ "BlessStepper": {
+  "props": [
+   {
+    "name": "steps",
+    "type": "BlessStep[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "orientation",
+    "type": "\"horizontal\" | \"vertical\" | undefined",
+    "required": false,
+    "default": "\"horizontal\"",
+    "description": ""
+   },
+   {
+    "name": "linear",
+    "type": "boolean | undefined",
+    "required": false,
+    "default": "true",
+    "description": "completed steps in the header are clickable"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ next: string; prev: string; finish: string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "number | undefined",
+    "required": false,
+    "default": "0",
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "update:modelValue",
+    "type": "[value: number]",
+    "description": ""
+   },
+   {
+    "name": "finish",
+    "type": "[]",
+    "description": ""
+   }
+  ],
+  "slots": [
+   {
+    "name": "default",
+    "type": "{ step: BlessStep; index: number; next: () => number | void; prev: () => number | false; last: boolean; }",
+    "description": ""
+   },
+   {
+    "name": "actions",
+    "type": "{ next: () => number | void; prev: () => number | false; index: number; last: boolean; }",
     "description": ""
    }
   ],
@@ -5227,6 +6165,48 @@
   "slots": [
    {
     "name": "default",
+    "type": "{}",
+    "description": ""
+   }
+  ],
+  "exposed": []
+ },
+ "BlessToolbar": {
+  "props": [
+   {
+    "name": "label",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Toolbar\"",
+    "description": ""
+   },
+   {
+    "name": "surface",
+    "type": "\"none\" | \"surface\" | \"bg\" | undefined",
+    "required": false,
+    "default": "\"surface\"",
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [
+   {
+    "name": "start",
+    "type": "{}",
+    "description": ""
+   },
+   {
+    "name": "center",
+    "type": "{}",
+    "description": ""
+   },
+   {
+    "name": "default",
+    "type": "{}",
+    "description": ""
+   },
+   {
+    "name": "end",
     "type": "{}",
     "description": ""
    }

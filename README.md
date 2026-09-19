@@ -9,10 +9,10 @@
 
 Vue 3 component library and design tokens. Grey-scale UI, one pink-red accent, skewed labels instead of rounded corners, thin oversized watermark type, opacity-fade hovers. Visual language derived from [saenai.tv](https://www.saenai.tv/) (ideas only; no assets or CSS copied).
 
-- 105 components (shadcn/ui parity), tokens-only styling (`--bless-*` custom properties), no Tailwind dependency
+- 123 components (shadcn/ui parity), tokens-only styling (`--bless-*` custom properties), no Tailwind dependency
 - Native platform first: `<dialog>`, Popover API, `<details>`, native form controls, `Intl` dates, scroll-snap — no positioning, date or table library
 - Accessible defaults: focus rings, ARIA tablist/dialog/tables, `prefers-reduced-motion`
-- ESM, tree-shakable, `vue` as the only required peer (`@tiptap/vue-3` optional, for `BlessEditor`). ~193 KB JS / 133 KB CSS raw, ~47 KB / 18 KB gzip for everything (tree-shakes per component)
+- ESM, tree-shakable, `vue` as the only required peer (`@tiptap/vue-3` optional, for `BlessEditor`). ~220 KB JS / 150 KB CSS raw, ~53 KB / 20 KB gzip for everything (tree-shakes per component)
 
 ## Install
 
@@ -80,7 +80,7 @@ import {
 
 ## Components
 
-105 components across eight groups. Every one styles itself from `--bless-*` tokens and ships with a test and a docs page.
+123 components across eight groups. Every one styles itself from `--bless-*` tokens and ships with a test and a docs page.
 
 ### Primitives
 
@@ -102,6 +102,9 @@ import {
 | `BlessTimeline`         | Vertical rail of events                  | `items[{title,time,description,color}]`; `#default="{item}"` `#dot`                                |
 | `BlessSwap`             | Two-face toggle                          | `v-model`, `label`, `effect` fade/rotate/flip; `#on` `#off`                                        |
 | `BlessWatermarkOverlay` | Tiled text watermark over content        | `text`, `gap`, `angle`, `fontSize`, `opacity`, `color`                                             |
+| `BlessChip`             | Removable pill                           | `label`, `icon`, `image`, `removable`, `color`, `size`; emits `remove`                             |
+| `BlessMeterGroup`       | Multi-segment meter                      | `segments[{label,value,color}]`, `max`, `legend`, `format`, `orientation`                          |
+| `BlessBlockUI`          | Blocking overlay                         | `blocked`, `fullscreen`; `#indicator`                                                              |
 | `BlessMockup`           | Browser / window / phone frame           | `type`, `title`, `dark`                                                                            |
 | `BlessItem`             | Media + title + description + actions    | `title`, `description`, `href`, `variant` plain/outline/surface, `size`; `#media` `#actions`       |
 | `BlessAvatar`           | Image with initials fallback             | `src`, `name`, `size`, `square`, `color`                                                           |
@@ -129,6 +132,13 @@ import {
 | `BlessKnob`                        | Rotary dial on `<input type=range>`                         | `v-model`, `min`, `max`, `step`, `size`, `sweep`, `format`, `label`                                                                        |
 | `BlessSignaturePad`                | Canvas signature                                            | `v-model` data URL, `height`, `lineWidth`, `color`, `type`; emits `end`; exposes `clear()` `isEmpty()`                                     |
 | `BlessEditor`                      | Rich text toolbar for Tiptap                                | `editor` (from `useEditor`), `tools[]`, `minHeight`; default slot = `<EditorContent>`; `#toolbar` `#footer`. Optional peer `@tiptap/vue-3` |
+| `BlessInputNumber`                 | Number with ± and Intl format                               | `v-model` number, `min`, `max`, `step`, `buttons`, `prefix`, `suffix`, `format`, `locale`                                                  |
+| `BlessPasswordInput`               | Password + reveal + meter                                   | `v-model`, `meter`; wraps `BlessInput`                                                                                                     |
+| `BlessInputTags`                   | Free-text tags                                              | `v-model` string[], `separators`, `max`, `duplicates`                                                                                      |
+| `BlessFloatLabel`                  | Floating / in-field label                                   | `label`, `for`, `variant` over/in; wrap a control with `placeholder=" "`                                                                   |
+| `BlessFieldset`                    | `<fieldset>` + legend                                       | `legend`, `toggleable`, `v-model:collapsed`, `disabled`                                                                                    |
+| `BlessInplace`                     | Click to edit                                               | `v-model:active`, `closable`; `#display` `#content="{close}"`                                                                              |
+| `BlessCompare`                     | Before / after slider                                       | `v-model` 0–100, `orientation`; `#before` `#after`                                                                                         |
 | `BlessInputMask`                   | Pattern-masked `BlessInput`                                 | `v-model` masked, `mask` (`#` digit `A` letter `*` either), `placeholder`; emits `update:raw`                                              |
 | `BlessOrderList`                   | Reorderable list                                            | `v-model` items, `rowKey`, `buttons`; drag, ↑↓, Alt+arrows; emits `move`; `#default="{item,index}"`                                        |
 | `BlessPickList`                    | Transfer between two listboxes                              | `v-model:source`, `v-model:target`, `sourceLabel`, `targetLabel`, `rows`                                                                   |
@@ -154,6 +164,12 @@ import {
 | `BlessContainer`                            | Centred max-width box                    | `size` sm/md/lg/full, `padded`, `as`                                                                                    |
 | `BlessStack`                                | Flex row / column                        | `direction`, `gap` token, `align`, `justify`, `wrap`, `as`                                                              |
 | `BlessScrollTop`                            | Back-to-top button                       | `threshold`, `target`, `position`, `label`                                                                              |
+| `BlessToolbar`                              | Start / center / end bar                 | `label`, `surface`; `#start` `#center` `#end`                                                                           |
+| `BlessPanel`                                | Titled box                               | `title`, `toggleable`, `v-model:collapsed`, `surface`; `#actions` `#footer`                                             |
+| `BlessStepper`                              | Steps + panels                           | `steps`, `v-model`, `orientation`, `labels`; `#default="{step,index,next,prev,last}"` `#actions`; emits `finish`        |
+| `BlessSplitButton`                          | Button + menu                            | `label`, `items`, `color`, `variant`, `size`; emits `click` `select`                                                    |
+| `BlessDataView`                             | List / grid + pagination                 | `items`, `pageSize`, `columns`, `v-model:layout`, `rowKey`; `#default="{item,index,layout}"` `#header` `#empty`         |
+| `BlessDeferredContent`                      | Mount on scroll into view                | `rootMargin`, `minHeight`; `#placeholder`; emits `load`                                                                 |
 | `BlessBottomTabs`                           | Mobile bottom nav / dock                 | `items[{label,value,icon,href,badge}]`, `v-model`, `variant` bar/dock, `inline`; emits `select`                         |
 | `BlessSpeedDial`                            | FAB with fan-out actions                 | `actions[{label,value,icon,color}]`, `direction`, `color`, `v-model:open`, `inline`; emits `select`                     |
 | `BlessVirtualScroller`                      | Windowed list (fixed row height)         | `items`, `itemHeight`, `height`, `overscan`, `rowKey`; exposes `scrollTo(i)`; `#default="{item,index}"`                 |
@@ -185,6 +201,7 @@ import {
 | `BlessContextMenu`            | Menu on right click              | `items`; wraps its slot                                                                                                         |
 | `BlessCommand`                | ⌘K palette                       | `v-model:open`, `items` (groups, keywords, shortcuts), `inline`, `hotkey`; emits `select`; `#footer`                            |
 | `BlessGallery`                | Thumb grid + lightbox            | `items`, `v-model` index, `columns`, `loop`                                                                                     |
+| `BlessConfirmPopup`           | Confirm in a popover             | `message`, `title`, `confirmLabel`, `cancelLabel`, `color`, `placement`, `v-model:open`; emits `confirm` `cancel`               |
 | `BlessTour`                   | Spotlight walkthrough            | `steps[{target,title,text,placement}]`, `v-model:open`, `v-model:step`, `spotlight`, `labels`; emits `finish` `skip`            |
 | `BlessToaster` + `useToast()` | Notifications                    | `position`; `toast()`, `success()`, `error()`, `warning()`, `info()`, `dismiss()`                                               |
 | `BlessSplash`                 | First-visit overlay              | `once`, `duration`, `skipLabel`; emits `done`                                                                                   |
@@ -234,11 +251,11 @@ Any other SVG chart lib works too — read `var(--bless-color-chart-N)` for seri
 
 ### Composables
 
-`useMedia(query?)` · `useHash()` · `useScrollSpy(ids | selector, { rootMargin, root })` → `{ active }` · `applyMask(mask, input)` / `unmask(mask, masked)` · `useTheme()` → `{ theme, isDark, set, toggle }` · `useFloating(anchor, floating, active, opts | () => opts)` · `useToast()` · `useDataTable(rows, { rowKey, pageSize, searchKeys })` · date helpers `toISO` `fromISO` `addDays` `addMonths` `isoToday`.
+`useMedia(query?)` · `useHash()` · `useScrollSpy(ids | selector, { rootMargin, root })` → `{ active }` · `useAnimateOnScroll(el, { threshold, rootMargin, once })` → `{ visible }` · `applyMask(mask, input)` / `unmask(mask, masked)` · `useTheme()` → `{ theme, isDark, set, toggle }` · `useFloating(anchor, floating, active, opts | () => opts)` · `useToast()` · `useDataTable(rows, { rowKey, pageSize, searchKeys })` · date helpers `toISO` `fromISO` `addDays` `addMonths` `isoToday`.
 
 ### Types
 
-`BlessNavItem`, `BlessNavMenuItem`, `BlessTab`, `BlessGalleryItem`, `BlessColumn<T>`, `BlessDataColumn<T>`, `BlessOption<T>`, `BlessTrack`, `BlessMenuItem`, `BlessCommandItem`, `BlessCrumb`, `BlessToastOptions`, `BlessTheme`, `BlessStep`, `BlessTimelineItem`, `BlessTreeNode`, `BlessPasswordRule`, `BlessBottomTab`, `BlessSpeedDialAction`, `BlessTourStep`, `BlessEditorTool`, `BlessReaction`, `BlessQuestion`, `BlessQuestionChoice`, `BlessAnswers`, `Placement`, `DataTableState`.
+`BlessNavItem`, `BlessNavMenuItem`, `BlessTab`, `BlessGalleryItem`, `BlessColumn<T>`, `BlessDataColumn<T>`, `BlessOption<T>`, `BlessTrack`, `BlessMenuItem`, `BlessCommandItem`, `BlessCrumb`, `BlessToastOptions`, `BlessTheme`, `BlessStep`, `BlessTimelineItem`, `BlessTreeNode`, `BlessPasswordRule`, `BlessBottomTab`, `BlessSpeedDialAction`, `BlessTourStep`, `BlessEditorTool`, `BlessMeterSegment`, `BlessReaction`, `BlessQuestion`, `BlessQuestionChoice`, `BlessAnswers`, `Placement`, `DataTableState`.
 
 ## Tokens
 

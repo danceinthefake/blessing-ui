@@ -195,6 +195,22 @@ Decision: **Unovis** (`@unovis/vue`) as the documented, consumer-installed pairi
 - [x] `BlessEditor` — toolbar + content frame around a **Tiptap** editor; `@tiptap/vue-3` optional peer, type-only in the lib
 - [x] `BlessQrCode` — SVG from a boolean matrix; **uqr** documented as the encoder, consumer-installed
 
+### Phase 16 — PrimeVue gap fill, cheap
+
+- [x] finish the partials: `BlessChip` (removable), `BlessInputNumber` (± / Intl), `BlessPasswordInput` (reveal + meter), `BlessStepper` (panels over `BlessSteps`), `BlessInputTags`
+- [x] `BlessToolbar`, `BlessFloatLabel` (CSS-only via `:has` + `:placeholder-shown`), `BlessFieldset`, `BlessPanel`, `BlessMeterGroup`, `BlessSplitButton`, `BlessBlockUI` (`inert`), `BlessInplace`, `BlessDeferredContent`, `BlessConfirmPopup`, `BlessCompare` (`<input type=range>` + `clip-path`), `BlessDataView`
+- [x] `useAnimateOnScroll()`
+
+### Phase 17 — PrimeVue gap fill, medium (not started)
+
+- [ ] `BlessCascadeSelect` — nested option groups in a popover
+- [ ] `BlessTreeSelect` — `BlessTree` inside a `BlessPopover`, single / multiple
+- [ ] `BlessTreeTable` — expandable rows on `BlessTable`
+- [ ] `BlessOrgChart` — node tree with connectors
+- [ ] `useDialog()` — programmatic `BlessModal`
+
+Skipped from PrimeVue: Terminal, Ripple / StyleClass / Fluid / KeyFilter (directive utilities), FocusTrap (native `<dialog>` covers it).
+
 Deferred: RTL / `Direction` — audience is JP/EN; ~1 day of logical-property CSS if ever needed.
 
 ### Deliberately skipped

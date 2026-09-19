@@ -1,0 +1,84 @@
+<script setup lang="ts">
+import { useId } from "vue";
+
+defineOptions({ name: "BlessFieldset" });
+defineProps<{ legend?: string; toggleable?: boolean; disabled?: boolean }>();
+const collapsed = defineModel<boolean>("collapsed", { default: false });
+const id = useId();
+</script>
+
+<template>
+  <fieldset class="bless-fieldset" :class="{ 'bless-fieldset--collapsed': collapsed }" :disabled>
+    <legend class="bless-fieldset__legend">
+      <button
+        v-if="toggleable"
+        type="button"
+        class="bless-fieldset__toggle"
+        :aria-expanded="!collapsed"
+        :aria-controls="id"
+        @click="collapsed = !collapsed"
+      >
+        <span class="bless-fieldset__chevron" aria-hidden="true">›</span>
+        <slot name="legend">{{ legend }}</slot>
+      </button>
+      <span v-else
+        ><slot name="legend">{{ legend }}</slot></span
+      >
+    </legend>
+    <div v-show="!collapsed" :id class="bless-fieldset__content"><slot /></div>
+  </fieldset>
+</template>
+
+<style>
+.bless-fieldset {
+  margin: 0;
+  padding: var(--bless-space-3) var(--bless-space-4) var(--bless-space-4);
+  border: var(--bless-border-width) solid var(--bless-color-border);
+  font-family: var(--bless-font-sans);
+  color: var(--bless-color-text);
+}
+.bless-fieldset--collapsed {
+  padding-bottom: var(--bless-space-2);
+}
+.bless-fieldset__legend {
+  padding: 0 var(--bless-space-2);
+  font-size: var(--bless-text-xs);
+  font-weight: var(--bless-font-weight-bold);
+  letter-spacing: var(--bless-tracking-wider);
+  text-transform: uppercase;
+}
+.bless-fieldset__toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--bless-space-1);
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  cursor: pointer;
+}
+.bless-fieldset__toggle:hover {
+  color: var(--bless-color-accent);
+}
+.bless-fieldset__toggle:focus-visible {
+  outline: 2px solid var(--bless-color-accent);
+  outline-offset: 2px;
+}
+.bless-fieldset__chevron {
+  display: inline-block;
+  transform: rotate(90deg);
+  transition: transform var(--bless-duration-base);
+}
+.bless-fieldset--collapsed .bless-fieldset__chevron {
+  transform: rotate(0);
+}
+.bless-fieldset__content {
+  font-size: var(--bless-text-sm);
+}
+.bless-fieldset:disabled {
+  opacity: 0.4;
+}
+</style>
