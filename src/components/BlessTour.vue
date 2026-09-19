@@ -47,7 +47,7 @@ function locate() {
   const el = cur.value?.target ? document.querySelector<HTMLElement>(cur.value.target) : null;
   anchor.value = el;
   rect.value = el?.getBoundingClientRect() ?? null;
-  el?.scrollIntoView({ block: "center", behavior: "smooth" });
+  el?.scrollIntoView?.({ block: "center", behavior: "smooth" });
   nextTick(() => {
     update();
     rect.value = el?.getBoundingClientRect() ?? null;

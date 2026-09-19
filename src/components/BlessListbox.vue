@@ -41,7 +41,7 @@ function move(d: number) {
   if (next != null) active.value = next;
   root.value
     ?.querySelector<HTMLElement>(`[data-i="${active.value}"]`)
-    ?.scrollIntoView({ block: "nearest" });
+    ?.scrollIntoView?.({ block: "nearest" });
 }
 let typed = "";
 let timer: ReturnType<typeof setTimeout> | undefined;

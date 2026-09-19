@@ -74,7 +74,7 @@ function move(d: number) {
   }
   active.value = i;
   nextTick(() =>
-    document.getElementById(activeId.value ?? "")?.scrollIntoView({ block: "nearest" }),
+    document.getElementById(activeId.value ?? "")?.scrollIntoView?.({ block: "nearest" }),
   );
 }
 function choose(it = flat.value[active.value]) {

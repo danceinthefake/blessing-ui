@@ -48,7 +48,7 @@ function scrollToBottom(behavior: ScrollBehavior = "auto") {
 function scrollTo(id: string, behavior: ScrollBehavior = "smooth") {
   viewport.value
     ?.querySelector<HTMLElement>(`#${CSS.escape(id)}`)
-    ?.scrollIntoView({ behavior, block: "start" });
+    ?.scrollIntoView?.({ behavior, block: "start" });
 }
 
 // browser scroll anchoring is disabled on the content (see CSS) so this manual
