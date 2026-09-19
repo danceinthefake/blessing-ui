@@ -1,6 +1,6 @@
 # Brand
 
-Blessing UI's identity is the design system itself — nothing is added for the logo that a component doesn't already use.
+Blessing UI's identity is the design system itself — nothing is added for the logo that a component doesn't already use. Where the system came from is the [story](./story).
 
 <div class="row" style="align-items:center;gap:24px;margin:16px 0 8px">
   <img src="/logo-mono.svg" width="96" height="96" alt="" style="color:var(--bless-color-text)">
@@ -11,13 +11,13 @@ Blessing UI's identity is the design system itself — nothing is added for the 
 
 ## Five elements
 
-| Element  | Value                                                                    | Where you see it                                   |
-| -------- | ------------------------------------------------------------------------ | -------------------------------------------------- |
-| Name     | **Blessing** — a homage; no assets, art or copy from the source are used | wordmark, package name                             |
-| Colour   | one accent, `#ff0054`, on greys                                          | buttons, badges, the mark's front plate            |
-| Geometry | `skewX(-10deg)` — never rounded, never rotated                           | every label, both plates of the mark, the `UI` tag |
-| Type     | Roboto 100 oversized for the voice, 700 uppercase tracked for the UI     | watermark, wordmark, labels                        |
-| Motif    | the hard-shadow plate: a second parallelogram offset behind              | mark, `BlessQrCode frame`, `BlessScrollTop`        |
+| Element  | Value                                                                         | Where you see it                                   |
+| -------- | ----------------------------------------------------------------------------- | -------------------------------------------------- |
+| Name     | **Blessing** — a nod to a fictional software circle; see the [story](./story) | wordmark, package name                             |
+| Colour   | one accent, `#ff0054`, on greys                                               | buttons, badges, the mark's front plate            |
+| Geometry | `skewX(-10deg)` — never rounded, never rotated                                | every label, both plates of the mark, the `UI` tag |
+| Type     | Roboto 100 oversized for the voice, 700 uppercase tracked for the UI          | watermark, wordmark, labels                        |
+| Motif    | the hard-shadow plate: a second parallelogram offset behind                   | mark, `BlessQrCode frame`, `BlessScrollTop`        |
 
 ## Mark
 
