@@ -1,0 +1,37 @@
+docs/components/cascade-select.md
+  s_9ec1000e308ddb::t_12c45318056cce 13-18
+docs/components/combobox.md
+  s_9ec1000e308ddb::t_7f4a4116d21df9 13-18
+docs/components/command.md
+  s_9ec1000e308ddb::t_2ca7cebb1d51b3 14-17
+docs/components/data-table.md
+  s_9ec1000e308ddb::t_24f93f699e8317 14-19
+docs/components/editor.md
+  s_9ec1000e308ddb::t_dbcd3a81cb0768 13-18
+docs/components/layout.md
+  s_9ec1000e308ddb::t_f4fc1433755443 13-16
+docs/components/message-scroller.md
+  s_9ec1000e308ddb::t_5589e4e313b052 13-16
+docs/components/questionnaire.md
+  s_9ec1000e308ddb::t_5bdb652ae7e703 13-18
+docs/components/tour.md
+  s_9ec1000e308ddb::t_ebe08cbc8d0ed6 13-18
+docs/components/tree-table.md
+  s_9ec1000e308ddb::t_b3c7536a6aa853 13-18
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "002ff16d8621c6901e5df30d157318a7b8ca399a",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "claude-opus-5"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
