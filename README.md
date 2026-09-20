@@ -18,8 +18,13 @@ pnpm add blessing-ui vue
 ```
 
 ```ts
-// main.ts
-import "blessing-ui/style.css"; // tokens + component styles
+import { BlessButton } from "blessing-ui";
+```
+
+That's it — each component brings its own stylesheet, and the tokens come with the first import. To load all styles up front instead (no bundler, or a CDN):
+
+```ts
+import "blessing-ui/style.css"; // tokens + every component's styles
 ```
 
 Fonts are not bundled. Load Roboto (100/300/400/700) and Noto Sans JP yourself, e.g.
