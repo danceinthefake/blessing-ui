@@ -272,6 +272,7 @@ Tooling: Vite + `vite-plugin-dts`, Vitest + `@vue/test-utils` (one smoke test pe
 
 ## 7. Open questions
 
+- ~~`ponytail:` ceilings~~ all lifted ✅: Tree arrow-key navigation, VirtualScroller `dynamic` (measured heights), DataTable / useDataTable `server` mode (`state` event, `total`), useFloating `boundary` + `arrow` (Tooltip always, Popover opt-in).
 - Straight / rounded variant: `--bless-skew: 0deg` already removes the lean, but `--bless-radius-*` is consumed almost nowhere, so a round look is not one token today. Do it by having every skewed box also read `--bless-radius-sm` (badge, chip, button, plate) — then `skew: 0` + a radius value is the whole variant. Not started.
 
 - ~~Package as single `style.css` bundle or per-component CSS?~~ Both ✅: `preserveModules` + `cssCodeSplit`, `scripts/postbuild.mjs` links each `BlessX.js` to `BlessX.css` and assembles `blessing-ui.css`; `sideEffects` lists `**/*.css` and `dist/index.js` (so the tokens import survives tree-shaking). One component ≈ 2 KB gzip CSS, measured by `e2e/consumer`.

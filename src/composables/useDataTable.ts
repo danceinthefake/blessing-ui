@@ -10,11 +10,22 @@ export interface DataTableState {
   hidden: Set<string>;
 }
 
-/** headless sort / filter / paginate / select over an in-memory row array */
-// ponytail: client-side only; for server data feed `rows` from a fetch keyed by `state`
+/**
+ * Headless sort / filter / paginate / select.
+ * Client mode (default): works over the in-memory row array.
+ * Server mode (`server: true`): the rows you pass are *already* the current page; sort, query and
+ * page live in `state` for you to send to the API, and `total` (a ref / number) drives the page count.
+ */
 export function useDataTable<T extends Record<string, unknown>>(
   rows: Ref<T[]> | T[],
-  opts: { rowKey: keyof T & string; pageSize?: number; searchKeys?: (keyof T & string)[] },
+  opts: {
+    rowKey: keyof T & string;
+    pageSize?: number;
+    searchKeys?: (keyof T & string)[];
+    server?: boolean;
+    /** server mode: total row count across all pages */
+    total?: Ref<number> | number;
+  },
 ) {
   const state = reactive<DataTableState>({
     sortKey: null,
@@ -28,6 +39,7 @@ export function useDataTable<T extends Record<string, unknown>>(
 
   const filtered = computed(() => {
     const all = unref(rows);
+    if (opts.server) return all;
     const q = state.query.trim().toLowerCase();
     if (!q) return all;
     const keys = opts.searchKeys ?? (Object.keys(all[0] ?? {}) as (keyof T & string)[]);
@@ -40,7 +52,7 @@ export function useDataTable<T extends Record<string, unknown>>(
     );
   });
   const sorted = computed(() => {
-    if (!state.sortKey) return filtered.value;
+    if (opts.server || !state.sortKey) return filtered.value;
     const k = state.sortKey as keyof T;
     const dir = state.sortDir === "asc" ? 1 : -1;
     return [...filtered.value].sort((a, b) => {
@@ -55,8 +67,17 @@ export function useDataTable<T extends Record<string, unknown>>(
       );
     });
   });
-  const pageCount = computed(() => Math.max(1, Math.ceil(sorted.value.length / state.pageSize)));
+  const pageCount = computed(() =>
+    Math.max(
+      1,
+      Math.ceil(
+        (opts.server ? (unref(opts.total) ?? sorted.value.length) : sorted.value.length) /
+          state.pageSize,
+      ),
+    ),
+  );
   const pageRows = computed(() => {
+    if (opts.server) return sorted.value;
     const p = Math.min(state.page, pageCount.value);
     return sorted.value.slice((p - 1) * state.pageSize, p * state.pageSize);
   });

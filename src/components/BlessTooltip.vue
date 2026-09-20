@@ -13,9 +13,10 @@ const open = ref(false);
 const id = useId();
 const anchor = ref<HTMLElement>();
 const tip = ref<HTMLElement>();
-const { x, y, side } = useFloating(anchor, tip, open, () => ({
+const { x, y, side, arrowX, arrowY } = useFloating(anchor, tip, open, () => ({
   placement: props.placement,
-  offset: 6,
+  offset: 8,
+  arrow: 5,
 }));
 
 let timer: ReturnType<typeof setTimeout> | undefined;
@@ -60,9 +61,10 @@ watch(
     role="tooltip"
     class="bless-tooltip"
     :class="`bless-tooltip--${side}`"
-    :style="{ left: `${x}px`, top: `${y}px` }"
+    :style="{ left: `${x}px`, top: `${y}px`, '--_ax': `${arrowX}px`, '--_ay': `${arrowY}px` }"
   >
     <slot name="content">{{ text }}</slot>
+    <span class="bless-tooltip__arrow" aria-hidden="true" />
   </div>
 </template>
 
@@ -74,6 +76,7 @@ watch(
   position: fixed;
   inset: unset;
   margin: 0;
+  overflow: visible; /* UA [popover] sets overflow:auto, which would clip the arrow */
   padding: var(--bless-space-1) var(--bless-space-3);
   border: 0;
   background: var(--bless-color-text);
@@ -87,11 +90,35 @@ watch(
   pointer-events: none;
   transform: skewX(var(--bless-skew));
 }
-.bless-tooltip > * {
+.bless-tooltip > :not(.bless-tooltip__arrow) {
   display: inline-block;
   transform: skewX(var(--bless-skew-counter));
 }
 .bless-tooltip:popover-open {
   animation: bless-pop-in var(--bless-duration-fast) var(--bless-ease-out);
+}
+/* arrow: a small square rotated 45°, sitting on the edge that faces the anchor */
+.bless-tooltip__arrow {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: inherit;
+  transform: rotate(45deg);
+}
+.bless-tooltip--top .bless-tooltip__arrow {
+  left: calc(var(--_ax) - 4px);
+  bottom: -6px;
+}
+.bless-tooltip--bottom .bless-tooltip__arrow {
+  left: calc(var(--_ax) - 4px);
+  top: -6px;
+}
+.bless-tooltip--left .bless-tooltip__arrow {
+  top: calc(var(--_ay) - 4px);
+  right: -6px;
+}
+.bless-tooltip--right .bless-tooltip__arrow {
+  top: calc(var(--_ay) - 4px);
+  left: -6px;
 }
 </style>

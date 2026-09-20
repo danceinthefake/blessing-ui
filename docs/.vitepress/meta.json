@@ -1961,9 +1961,32 @@
     "type": "string | undefined",
     "required": false,
     "description": ""
+   },
+   {
+    "name": "server",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": "rows are one server page; sort / query / page are yours to fetch with (see `state` event)"
+   },
+   {
+    "name": "total",
+    "type": "number | undefined",
+    "required": false,
+    "description": "server mode: total row count"
+   },
+   {
+    "name": "loading",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": ""
    }
   ],
   "events": [
+   {
+    "name": "state",
+    "type": "[s: { sortKey: string | null; sortDir: \"asc\" | \"desc\"; query: string; page: number; pageSize: number; }]",
+    "description": ""
+   },
    {
     "name": "update:selected",
     "type": "[rows: T[]]",
@@ -4835,6 +4858,12 @@
     "description": ""
    },
    {
+    "name": "arrow",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": "the accent edge slides along to point at the trigger"
+   },
+   {
     "name": "open",
     "type": "boolean | undefined",
     "required": false,
@@ -7675,7 +7704,14 @@
     "name": "itemHeight",
     "type": "number",
     "required": true,
-    "description": "fixed row height in px"
+    "description": "row height in px — exact when `dynamic` is off, an estimate for unmeasured rows when it's on"
+   },
+   {
+    "name": "dynamic",
+    "type": "boolean | undefined",
+    "required": false,
+    "default": "false",
+    "description": "measure each rendered row (ResizeObserver) and lay out by real heights"
    },
    {
     "name": "height",

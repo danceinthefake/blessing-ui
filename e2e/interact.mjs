@@ -28,19 +28,17 @@ const go = (p) => page.goto(base + p, { waitUntil: "networkidle" });
 console.log("DataTable");
 await go("/components/data-table");
 await step("sort by header, search filters, page changes", async () => {
-  const first = () => page.locator(".bless-datatable tbody tr").first().innerText();
+  const table = page.locator(".bless-datatable").first(); // the client-mode demo
+  const first = () => table.locator("tbody tr").first().innerText();
   const before = await first();
-  await page.locator(".bless-datatable th button, .bless-datatable th[aria-sort]").first().click();
+  await table.locator("th button, th[aria-sort]").first().click();
   expect((await first()) !== before || true, "sort click ran");
-  await page
-    .locator(".bless-datatable input[type=search], .bless-datatable input")
-    .first()
-    .fill("第2");
+  await table.locator("input[type=search], input").first().fill("第2");
   await page.waitForTimeout(150);
-  const rows = await page.locator(".bless-datatable tbody tr").count();
+  const rows = await table.locator("tbody tr").count();
   expect(rows >= 1 && rows <= 5, `filtered rows: ${rows}`);
-  await page.locator(".bless-datatable input").first().fill("");
-  await page
+  await table.locator("input").first().fill("");
+  await table
     .locator(".bless-pagination button")
     .nth(2)
     .click()
