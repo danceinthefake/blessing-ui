@@ -181,11 +181,31 @@
 .VPHero .image-bg {
   display: none;
 }
+/* product shot: a browser-framed screenshot of the full-site block, wider than the default 320px */
+.VPHero .image-container {
+  width: 100%;
+  max-width: 560px;
+  height: auto;
+  transform: none;
+}
+.VPHero .image {
+  margin: 0 0 24px;
+}
 .VPHero .image-src {
-  width: 220px;
-  height: 220px;
-  max-width: none;
+  position: static;
+  width: 100%;
+  max-width: 560px;
   max-height: none;
+  margin: 0 auto;
+  border: var(--bless-border-width) solid var(--bless-color-border);
+  box-shadow: var(--bless-shadow-md);
+  transform: none;
+}
+@media (min-width: 960px) {
+  .VPHero .image {
+    flex-grow: 1;
+    max-width: 640px;
+  }
 }
 .VPNavBarTitle .title::after,
 .VPHero .name {

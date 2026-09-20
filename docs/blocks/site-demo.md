@@ -14,7 +14,7 @@ import Site from "./site/index.vue";
 
 <Site>
   <template #sidebar-after>
-    <p style="margin-top: var(--bless-space-8); font-size: var(--bless-text-xs)">
+    <p class="site-docs-link" style="margin-top: var(--bless-space-8); font-size: var(--bless-text-xs)">
       <a :href="withBase('/blocks/')">← back to blocks</a>
     </p>
   </template>
