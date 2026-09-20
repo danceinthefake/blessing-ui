@@ -245,7 +245,7 @@ Not components: finished sections shipped as source you copy, `docs/blocks/<slug
 ### Contrast policy (axe, 2026-09-20 triage)
 
 - Text tokens meet 4.5:1 on `bg` and `surface` in both themes: `text`, `text-muted`, `accent-text` (per palette), `danger`.
-- Elevation is one hard 3px accent plate (`--bless-shadow-plate`); no blurred shadows anywhere (2026-09-20, replaced `--bless-shadow-md`).
+- Elevation is one hard 1px accent plate (`--bless-shadow-plate`); no blurred shadows anywhere (2026-09-20, replaced `--bless-shadow-md`).
 - Fills (`accent`, `badge`, `danger`, `info`) carry white at 3.6–4.4:1 — the 3:1 UI-component bar, not the text bar. Components never set small copy in a fill colour; `warning`/`success` are fills only (their text is `on-light`/`text`).
 - Decorative type (`BlessWatermark`) is excluded from the audit; disabled controls are exempt by spec.
 - Remaining reported nodes are all white-on-accent by design; `e2e/axe.mjs` fails on serious/critical only.
