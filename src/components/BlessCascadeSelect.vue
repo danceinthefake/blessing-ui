@@ -218,7 +218,7 @@ watch(open, (o) => {
 }
 .bless-cascade__trigger:focus-visible {
   outline: 0;
-  border-bottom-color: var(--bless-color-accent);
+  border-bottom-color: var(--bless-color-accent-text);
 }
 .bless-cascade__trigger--empty .bless-cascade__text {
   color: var(--bless-color-text-muted);
@@ -277,7 +277,7 @@ watch(open, (o) => {
   background: var(--bless-color-surface);
 }
 .bless-cascade__option--selected {
-  color: var(--bless-color-accent);
+  color: var(--bless-color-accent-text);
   font-weight: var(--bless-font-weight-bold);
 }
 .bless-cascade__option--disabled {

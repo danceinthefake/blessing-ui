@@ -104,7 +104,7 @@ const emit = defineEmits<{ dismiss: [] }>();
   font-weight: var(--bless-font-weight-bold);
   letter-spacing: var(--bless-tracking-wide);
   text-transform: uppercase;
-  color: var(--_c);
+  /* text colour, not --_c: warning/success/info are fills, never legible as small text */
 }
 .bless-alert__text {
   font-size: var(--bless-text-sm);

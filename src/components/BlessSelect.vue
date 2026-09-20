@@ -1,5 +1,6 @@
 <script setup lang="ts" generic="T extends string | number">
-import { useId } from "vue";
+import {} from "vue";
+import { useFieldId } from "../composables/useFieldId";
 import type { BlessOption } from "./select";
 
 defineOptions({ name: "BlessSelect", inheritAttrs: false });
@@ -19,8 +20,7 @@ const props = withDefaults(
 );
 
 const model = defineModel<T | undefined>();
-const uid = useId();
-const id = () => props.id ?? uid;
+const id = useFieldId(props);
 const isGroup = (o: unknown): o is { label: string; options: BlessOption<T>[] } =>
   !!o && typeof o === "object" && "options" in o;
 </script>
@@ -184,7 +184,7 @@ const isGroup = (o: unknown): o is { label: string; options: BlessOption<T>[] } 
     outline: 0;
   }
   .bless-select__control option:checked {
-    color: var(--bless-color-accent);
+    color: var(--bless-color-accent-text);
     font-weight: var(--bless-font-weight-bold);
   }
   .bless-select__control option:disabled {

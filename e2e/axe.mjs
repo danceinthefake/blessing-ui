@@ -10,8 +10,9 @@ const pages = [
   ...readdirSync("docs/components")
     .filter((f) => f.endsWith(".md"))
     .map((f) => `/components/${f.replace(".md", "")}`),
+  // block previews render inside iframes; audit the frame pages themselves
   ...readdirSync("docs/blocks")
-    .filter((f) => f.endsWith(".md") && f !== "README.md")
+    .filter((f) => f.endsWith("-frame.md"))
     .map((f) => `/blocks/${f.replace(".md", "")}`),
 ];
 const browser = await chromium.launch();
@@ -21,13 +22,14 @@ let contrastTotal = 0;
 const seen = new Map();
 for (const path of pages) {
   await page.goto(base + path, { waitUntil: "networkidle" });
-  if (!(await page.locator(".demo__preview").count())) continue; // full-page demos live elsewhere
+  if (!(await page.locator(".demo__preview, .block-frame").count())) continue; // full-page demos live elsewhere
   await page.addScriptTag({ content: axeSrc });
   const r = await page.evaluate(() =>
     // eslint-disable-next-line no-undef
-    axe.run(document.querySelectorAll(".demo__preview"), {
-      runOnly: ["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "best-practice"],
-    }),
+    axe.run(
+      { include: [[".demo__preview"], [".block-frame"]], exclude: [[".bless-watermark"]] },
+      { runOnly: ["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "best-practice"] },
+    ),
   );
   // white-on-accent is 3.6:1 by palette design (AA for UI / large text, not small text) — report, don't fail
   const contrast = r.violations

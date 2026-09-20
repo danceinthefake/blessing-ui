@@ -63,7 +63,9 @@ const skewColor = computed(() => (props.variant === "solid" ? props.color : "non
   transition: opacity var(--bless-duration-slow) var(--bless-ease-in-out);
 }
 .bless-button--accent {
-  --_c: var(--bless-color-accent);
+  --_c: var(
+    --bless-color-accent-text
+  ); /* outline/ghost text + border; solid fills come from BlessSkew */
 }
 .bless-button--danger {
   --_c: var(--bless-color-danger);

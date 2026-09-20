@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { useId } from "vue";
+import {} from "vue";
+import { useFieldId } from "../composables/useFieldId";
 
 defineOptions({ name: "BlessCheckbox", inheritAttrs: false });
 
@@ -13,8 +14,7 @@ const props = defineProps<{
 }>();
 
 const model = defineModel<boolean | Array<string | number>>({ default: false });
-const uid = useId();
-const id = () => props.id ?? uid;
+const id = useFieldId(props);
 </script>
 
 <template>
@@ -103,7 +103,7 @@ const id = () => props.id ?? uid;
 .bless-checkbox__input:checked + .bless-checkbox__box,
 .bless-checkbox__input:indeterminate + .bless-checkbox__box {
   background: var(--bless-color-accent);
-  border-color: var(--bless-color-accent);
+  border-color: var(--bless-color-accent-text);
 }
 .bless-checkbox__input:checked + .bless-checkbox__box .bless-checkbox__check {
   transform: skewX(var(--bless-skew-counter)) scale(1);

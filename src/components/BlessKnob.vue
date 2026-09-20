@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { computed, ref, useId } from "vue";
+import { computed, ref } from "vue";
+import { useFieldId } from "../composables/useFieldId";
 
 defineOptions({ name: "BlessKnob", inheritAttrs: false });
 
@@ -20,8 +21,7 @@ const props = withDefaults(
   { min: 0, max: 100, step: 1, size: "md", label: "Value", showValue: true, sweep: 270 },
 );
 const model = defineModel<number>({ default: 0 });
-const uid = useId();
-const id = () => props.id ?? uid;
+const id = useFieldId(props);
 const dial = ref<HTMLElement>();
 
 const ratio = computed(() => (model.value - props.min) / (props.max - props.min || 1));

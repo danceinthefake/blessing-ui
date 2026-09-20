@@ -1,9 +1,10 @@
 ---
 title: Staff & Cast
+aside: false
 ---
 
 <script setup>
-import Block from "./staff/index.vue";
+import { withBase } from "vitepress";
 import meta from "./staff/meta";
 const files = Object.fromEntries(
   Object.entries(import.meta.glob("./staff/**/*.{vue,ts}", { query: "?raw", import: "default", eager: true }))
@@ -16,9 +17,7 @@ const files = Object.fromEntries(
 
 <p class="bless-lead">Credits as two definition tables side by side — roles in skewed labels, names beside them.</p>
 
-<BlockDemo :files :components="meta.components" :height="meta.height">
-  <Block />
-</BlockDemo>
+<BlockDemo :files :components="meta.components" :height="meta.height" :frame="withBase('/blocks/staff-frame')" />
 
 ## Into your app
 

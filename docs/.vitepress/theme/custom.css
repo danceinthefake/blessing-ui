@@ -2,7 +2,7 @@
 :root,
 .dark {
   --vp-font-family-base: var(--bless-font-sans);
-  --vp-c-brand-1: var(--bless-color-accent);
+  --vp-c-brand-1: var(--bless-color-accent-text);
   --vp-c-brand-2: var(--bless-color-accent-2);
   --vp-c-brand-3: var(--bless-color-accent);
   --vp-c-brand-soft: color-mix(in srgb, var(--bless-color-accent) 14%, transparent);
@@ -85,6 +85,32 @@
   color: inherit;
   font-weight: inherit;
   text-decoration: none;
+}
+/* VitePress's `.vp-doc a` (0,1,1) outranks the library's own anchor colours (0,1,0); re-assert the
+ * ones that are not "inherit": skewed fills and active/hover accents. Blocks avoid this via iframes. */
+.vp-doc .demo__preview :is(a.bless-skew--accent, a.bless-skew--danger) {
+  color: var(--bless-color-on-accent);
+}
+.vp-doc .demo__preview a.bless-skew--text {
+  color: var(--bless-color-on-text);
+}
+.vp-doc .demo__preview a.bless-skew--surface {
+  color: var(--bless-color-text);
+}
+.vp-doc
+  .demo__preview
+  :is(
+    a.bless-sidebar-nav__link--active,
+    a.bless-bottom-tabs__item--active,
+    a.bless-breadcrumb__link:hover,
+    a.bless-navmenu__trigger:hover,
+    a.bless-navmenu__trigger--open,
+    a.bless-menu__item:focus
+  ) {
+  color: var(--bless-color-accent-text);
+}
+.vp-doc .demo__preview a.bless-menu__item--danger {
+  color: var(--bless-color-danger);
 }
 .vp-doc .demo__preview :is(h1, h2, h3, h4, h5, h6):not(.tiptap *) {
   margin: 0;

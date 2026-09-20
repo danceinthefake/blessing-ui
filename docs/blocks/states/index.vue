@@ -27,7 +27,7 @@ const state = ref<State>("loading");
       >
     </BlessToggleGroup>
 
-    <div v-if="state === 'loading'" aria-busy="true" aria-label="Loading projects">
+    <div v-if="state === 'loading'" role="status" aria-busy="true" aria-label="Loading projects">
       <BlessSkeleton width="40%" height="20px" />
       <BlessSkeleton :lines="4" height="14px" style="margin-top: 16px" />
     </div>

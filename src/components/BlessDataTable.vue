@@ -308,7 +308,7 @@ defineExpose({ state, selectedRows: dt.selectedRows });
   cursor: pointer;
 }
 .bless-datatable__sort:hover {
-  color: var(--bless-color-accent);
+  color: var(--bless-color-accent-text);
 }
 .bless-datatable__sort:focus-visible {
   outline: 2px solid var(--bless-color-accent);
@@ -321,7 +321,7 @@ defineExpose({ state, selectedRows: dt.selectedRows });
 [aria-sort="ascending"] .bless-datatable__sort-icon,
 [aria-sort="descending"] .bless-datatable__sort-icon {
   opacity: 1;
-  color: var(--bless-color-accent);
+  color: var(--bless-color-accent-text);
 }
 .bless-datatable__row {
   transition: background var(--bless-duration-fast);

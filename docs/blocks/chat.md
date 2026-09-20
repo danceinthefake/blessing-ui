@@ -1,9 +1,10 @@
 ---
 title: Chat
+aside: false
 ---
 
 <script setup>
-import Block from "./chat/index.vue";
+import { withBase } from "vitepress";
 import meta from "./chat/meta";
 const files = Object.fromEntries(
   Object.entries(import.meta.glob("./chat/**/*.{vue,ts}", { query: "?raw", import: "default", eager: true }))
@@ -16,9 +17,7 @@ const files = Object.fromEntries(
 
 <p class="bless-lead">A conversation thread that sticks to the bottom, with a composer that sends on Enter and a typing indicator — the LINE-style screen.</p>
 
-<BlockDemo :files :components="meta.components" :height="meta.height">
-  <Block />
-</BlockDemo>
+<BlockDemo :files :components="meta.components" :height="meta.height" :frame="withBase('/blocks/chat-frame')" />
 
 ## Into your app
 

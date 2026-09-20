@@ -80,7 +80,9 @@ const { email, password, remember, busy, error, done, submit } = useSignIn();
 }
 .signin__link,
 .signin__foot a {
-  color: var(--bless-color-accent);
+  color: var(--bless-color-accent-text);
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 .signin__submit {
   width: 100%;

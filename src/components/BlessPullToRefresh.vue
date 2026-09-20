@@ -92,7 +92,7 @@ const ready = computed(() => pull.value >= props.threshold);
   transition: transform var(--bless-duration-base) var(--bless-ease-out);
 }
 .bless-ptr__indicator--ready {
-  color: var(--bless-color-accent);
+  color: var(--bless-color-accent-text);
 }
 .bless-ptr__indicator--ready .bless-ptr__arrow {
   transform: rotate(180deg);

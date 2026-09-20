@@ -54,7 +54,7 @@ provide(menubarKey, {
 .bless-menubar .bless-dropdown__anchor[aria-expanded="true"] > *,
 .bless-menubar .bless-dropdown__anchor > *:hover {
   background: var(--bless-color-surface);
-  color: var(--bless-color-accent);
+  color: var(--bless-color-accent-text);
 }
 .bless-menubar .bless-dropdown__anchor > *:focus-visible {
   outline: 2px solid var(--bless-color-accent);

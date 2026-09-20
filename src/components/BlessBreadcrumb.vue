@@ -62,7 +62,7 @@ withDefaults(defineProps<{ items: BlessCrumb[]; label?: string; separator?: stri
   transition: color var(--bless-duration-slow) var(--bless-ease-in-out);
 }
 .bless-breadcrumb__link:hover {
-  color: var(--bless-color-accent);
+  color: var(--bless-color-accent-text);
 }
 .bless-breadcrumb__link:focus-visible {
   outline: 2px solid var(--bless-color-accent);

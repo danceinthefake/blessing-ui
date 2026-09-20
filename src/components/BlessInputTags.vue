@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { ref, useId } from "vue";
+import { ref } from "vue";
+import { useFieldId } from "../composables/useFieldId";
 import BlessChip from "./BlessChip.vue";
 
 defineOptions({ name: "BlessInputTags", inheritAttrs: false });
@@ -20,8 +21,7 @@ const props = withDefaults(
   { separators: () => ["Enter", ","], label: "Tags" },
 );
 const model = defineModel<string[]>({ default: () => [] });
-const uid = useId();
-const id = () => props.id ?? uid;
+const id = useFieldId(props);
 const draft = ref("");
 
 function add() {
@@ -87,7 +87,7 @@ function onKey(e: KeyboardEvent) {
   cursor: text;
 }
 .bless-tags:focus-within {
-  border-bottom-color: var(--bless-color-accent);
+  border-bottom-color: var(--bless-color-accent-text);
 }
 .bless-tags--invalid {
   border-bottom-color: var(--bless-color-danger);

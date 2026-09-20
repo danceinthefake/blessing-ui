@@ -95,7 +95,7 @@ const hover = ref(0);
   transform: skewX(var(--bless-skew-counter));
 }
 .bless-rating__star--on {
-  color: var(--bless-color-accent);
+  color: var(--bless-color-accent-text);
 }
 .bless-rating__input {
   position: absolute;

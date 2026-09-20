@@ -211,7 +211,7 @@ watch(
   transition: color var(--bless-duration-slow);
 }
 .bless-calendar__nav:hover {
-  color: var(--bless-color-accent);
+  color: var(--bless-color-accent-text);
 }
 .bless-calendar__nav:focus-visible {
   outline: 2px solid var(--bless-color-accent);
@@ -254,11 +254,11 @@ watch(
 }
 .bless-calendar__day--outside {
   color: var(--bless-color-text-muted);
-  opacity: 0.5;
+  font-weight: var(--bless-font-weight-light);
 }
 .bless-calendar__day--today {
   font-weight: var(--bless-font-weight-bold);
-  color: var(--bless-color-accent);
+  color: var(--bless-color-accent-text);
 }
 .bless-calendar__day--today::after {
   content: "";

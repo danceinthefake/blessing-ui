@@ -116,7 +116,7 @@ button.bless-steps__marker:focus-visible {
   outline-offset: 2px;
 }
 .bless-steps__item--done .bless-steps__marker {
-  border-color: var(--bless-color-accent);
+  border-color: var(--bless-color-accent-text);
   background: var(--bless-color-accent);
   color: var(--bless-color-on-accent);
 }
@@ -124,8 +124,8 @@ button.bless-steps__marker:focus-visible {
   color: var(--bless-color-text);
 }
 .bless-steps__item--current .bless-steps__marker {
-  border-color: var(--bless-color-accent);
-  color: var(--bless-color-accent);
+  border-color: var(--bless-color-accent-text);
+  color: var(--bless-color-accent-text);
 }
 .bless-steps__text {
   display: flex;

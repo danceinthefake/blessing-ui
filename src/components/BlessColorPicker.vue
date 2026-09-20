@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { useId } from "vue";
+import {} from "vue";
+import { useFieldId } from "../composables/useFieldId";
 
 defineOptions({ name: "BlessColorPicker", inheritAttrs: false });
 
@@ -16,8 +17,7 @@ const props = withDefaults(
   { swatches: () => [], label: "Colour", showValue: true },
 );
 const model = defineModel<string>({ default: "#e85078" });
-const uid = useId();
-const id = () => props.id ?? uid;
+const id = useFieldId(props);
 </script>
 
 <template>

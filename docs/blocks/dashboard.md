@@ -1,9 +1,10 @@
 ---
 title: Dashboard
+aside: false
 ---
 
 <script setup>
-import Block from "./dashboard/index.vue";
+import { withBase } from "vitepress";
 import meta from "./dashboard/meta";
 const files = Object.fromEntries(
   Object.entries(import.meta.glob("./dashboard/**/*.{vue,ts}", { query: "?raw", import: "default", eager: true }))
@@ -16,9 +17,7 @@ const files = Object.fromEntries(
 
 <p class="bless-lead">Sidebar + toolbar shell with a stats row, a trend chart and a recent-activity table. Wrap in BlessLayout for drawers on phones.</p>
 
-<BlockDemo :files :components="meta.components" :height="meta.height">
-  <Block />
-</BlockDemo>
+<BlockDemo :files :components="meta.components" :height="meta.height" :frame="withBase('/blocks/dashboard-frame')" />
 
 ## Into your app
 

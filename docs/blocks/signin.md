@@ -1,9 +1,10 @@
 ---
 title: Sign in
+aside: false
 ---
 
 <script setup>
-import Block from "./signin/index.vue";
+import { withBase } from "vitepress";
 import meta from "./signin/meta";
 const files = Object.fromEntries(
   Object.entries(import.meta.glob("./signin/**/*.{vue,ts}", { query: "?raw", import: "default", eager: true }))
@@ -16,9 +17,7 @@ const files = Object.fromEntries(
 
 <p class="bless-lead">Email + password with native validation, remember-me, a forgot link and a divider to OAuth — the form every app starts with.</p>
 
-<BlockDemo :files :components="meta.components" :height="meta.height">
-  <Block />
-</BlockDemo>
+<BlockDemo :files :components="meta.components" :height="meta.height" :frame="withBase('/blocks/signin-frame')" />
 
 ## Into your app
 

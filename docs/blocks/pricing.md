@@ -1,9 +1,10 @@
 ---
 title: Pricing
+aside: false
 ---
 
 <script setup>
-import Block from "./pricing/index.vue";
+import { withBase } from "vitepress";
 import meta from "./pricing/meta";
 const files = Object.fromEntries(
   Object.entries(import.meta.glob("./pricing/**/*.{vue,ts}", { query: "?raw", import: "default", eager: true }))
@@ -16,9 +17,7 @@ const files = Object.fromEntries(
 
 <p class="bless-lead">Three tiers with a monthly/yearly switch, a highlighted recommended plan and a feature checklist.</p>
 
-<BlockDemo :files :components="meta.components" :height="meta.height">
-  <Block />
-</BlockDemo>
+<BlockDemo :files :components="meta.components" :height="meta.height" :frame="withBase('/blocks/pricing-frame')" />
 
 ## Into your app
 

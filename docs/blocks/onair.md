@@ -1,9 +1,10 @@
 ---
 title: On Air
+aside: false
 ---
 
 <script setup>
-import Block from "./onair/index.vue";
+import { withBase } from "vitepress";
 import meta from "./onair/meta";
 const files = Object.fromEntries(
   Object.entries(import.meta.glob("./onair/**/*.{vue,ts}", { query: "?raw", import: "default", eager: true }))
@@ -16,9 +17,7 @@ const files = Object.fromEntries(
 
 <p class="bless-lead">Broadcast schedule as a station table, with streaming services below — stacks into label/value rows on a phone.</p>
 
-<BlockDemo :files :components="meta.components" :height="meta.height">
-  <Block />
-</BlockDemo>
+<BlockDemo :files :components="meta.components" :height="meta.height" :frame="withBase('/blocks/onair-frame')" />
 
 ## Into your app
 

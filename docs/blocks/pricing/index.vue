@@ -110,6 +110,6 @@ const price = (m: number) =>
   padding: var(--bless-space-1) 0;
 }
 .pricing__features span {
-  color: var(--bless-color-accent);
+  color: var(--bless-color-accent-text);
 }
 </style>

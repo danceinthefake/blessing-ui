@@ -50,7 +50,7 @@ withDefaults(
   text-transform: uppercase;
 }
 .bless-float--over:has(:focus) .bless-float__label {
-  color: var(--bless-color-accent);
+  color: var(--bless-color-accent-text);
 }
 .bless-float--in .bless-float__label {
   top: 6px;

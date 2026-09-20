@@ -44,4 +44,4 @@ setPalette("megumi"); // back to the default
 
 ## Tokens each palette sets
 
-`--bless-color-accent`, `-accent-soft`, `-accent-2`, `-badge`, `-chart-1`. Override any of them after `tokens.css` to tune a palette; add your own with a new `[data-palette="…"]` block.
+`--bless-color-accent`, `-accent-soft`, `-accent-2`, `-accent-text`, `-badge`, `-chart-1`. Override any of them after `tokens.css` to tune a palette; add your own with a new `[data-palette="…"]` block.
