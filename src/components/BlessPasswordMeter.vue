@@ -90,7 +90,7 @@ const label = computed(() =>
 .bless-pwmeter__meter::-webkit-meter-bar {
   background: var(--bless-color-surface);
   border: 0;
-  border-radius: 0;
+  border-radius: var(--bless-radius-pill);
 }
 .bless-pwmeter__meter::-webkit-meter-optimum-value,
 .bless-pwmeter__meter::-webkit-meter-suboptimum-value,
