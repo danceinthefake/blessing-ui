@@ -1,0 +1,105 @@
+DESIGN.md
+  s_9ec1000e308ddb::t_7b68c5ae3d3cf1 223,225-226
+docs/demos/LoadingBarBasic.vue
+  s_9ec1000e308ddb::t_56902be9fadaaa 12
+  s_9ec1000e308ddb::t_7b68c5ae3d3cf1 1-11,13-15
+src/components/BlessWeb.test.ts
+  s_9ec1000e308ddb::t_f35b8fadd6fbd4 1-14,18,23-35,37,39-41,45-61,72-104,110-121,125-134,143-154
+  s_9ec1000e308ddb::t_5455e47ce31595 15-17,19-22,36,38,42-44,62-71,105-109,122-124,135-142
+src/components/BlessSlideTransition.vue
+  s_9ec1000e308ddb::t_a10b9a01693319 1-37
+docs/demos/ImgBasic.vue
+  s_9ec1000e308ddb::t_7b68c5ae3d3cf1 1-20
+docs/demos/SlideTransitionBasic.vue
+  s_9ec1000e308ddb::t_7b68c5ae3d3cf1 1-30
+docs/components/time-picker.md
+  s_9ec1000e308ddb::t_7b68c5ae3d3cf1 1-30
+src/components/BlessLoadingBar.vue
+  s_9ec1000e308ddb::t_a10b9a01693319 1-67
+docs/demos/ClientOnlyBasic.vue
+  s_9ec1000e308ddb::t_7b68c5ae3d3cf1 1-7,9-11
+  s_9ec1000e308ddb::t_d130e0c622963a 8
+docs/components/client-only.md
+  s_9ec1000e308ddb::t_7b68c5ae3d3cf1 1-30
+src/composables/useBrowser.ts
+  s_9ec1000e308ddb::t_a10b9a01693319 1-59
+docs/components/video.md
+  s_9ec1000e308ddb::t_7b68c5ae3d3cf1 1-30
+docs/demos/VideoBasic.vue
+  s_9ec1000e308ddb::t_7b68c5ae3d3cf1 1-20
+docs/.vitepress/theme/index.ts
+  s_9ec1000e308ddb::t_7b68c5ae3d3cf1 5,21
+src/index.ts
+  s_9ec1000e308ddb::t_a10b9a01693319 181-198
+src/components/BlessTimePicker.vue
+  s_9ec1000e308ddb::t_a10b9a01693319 1-117
+docs/components/range.md
+  s_9ec1000e308ddb::t_7b68c5ae3d3cf1 1-30
+docs/components/uploader.md
+  s_9ec1000e308ddb::t_7b68c5ae3d3cf1 1-30
+docs/index.md
+  s_9ec1000e308ddb::t_7b68c5ae3d3cf1 29
+docs/components/circular-progress.md
+  s_9ec1000e308ddb::t_7b68c5ae3d3cf1 1-30
+src/composables/useLoadingBar.ts
+  s_9ec1000e308ddb::t_a10b9a01693319 1-45
+src/components/BlessRange.vue
+  s_9ec1000e308ddb::t_a10b9a01693319 1-166
+src/components/BlessCircularProgress.vue
+  s_9ec1000e308ddb::t_a10b9a01693319 1-124
+docs/demos/CircularProgressBasic.vue
+  s_9ec1000e308ddb::t_7b68c5ae3d3cf1 1-15
+docs/components/loading-bar.md
+  s_9ec1000e308ddb::t_7b68c5ae3d3cf1 1-30
+src/components/BlessVideo.vue
+  s_9ec1000e308ddb::t_a10b9a01693319 1-65
+src/components/BlessParallax.vue
+  s_9ec1000e308ddb::t_a10b9a01693319 1-85
+docs/demos/UploaderBasic.vue
+  s_9ec1000e308ddb::t_7b68c5ae3d3cf1 1-31
+README.md
+  s_9ec1000e308ddb::t_7b68c5ae3d3cf1 9,12,80,84-115,119-158,269-275,279,283
+src/components/BlessUploader.vue
+  s_9ec1000e308ddb::t_a10b9a01693319 1-224
+src/components/BlessClientOnly.vue
+  s_9ec1000e308ddb::t_a10b9a01693319 1-11
+docs/components/parallax.md
+  s_9ec1000e308ddb::t_7b68c5ae3d3cf1 1-30
+docs/.vitepress/components.ts
+  s_9ec1000e308ddb::t_7b68c5ae3d3cf1 12-27,67-73,269-271
+docs/demos/RangeBasic.vue
+  s_9ec1000e308ddb::t_7b68c5ae3d3cf1 1-30
+docs/guide/gestures.md
+  s_9ec1000e308ddb::t_7b68c5ae3d3cf1 7-8
+docs/guide/story.md
+  s_9ec1000e308ddb::t_7b68c5ae3d3cf1 33
+docs/demos/ParallaxBasic.vue
+  s_9ec1000e308ddb::t_7b68c5ae3d3cf1 1-12
+docs/demos/TimePickerBasic.vue
+  s_9ec1000e308ddb::t_7b68c5ae3d3cf1 1-24
+docs/components/img.md
+  s_9ec1000e308ddb::t_7b68c5ae3d3cf1 1-30
+docs/components/slide-transition.md
+  s_9ec1000e308ddb::t_7b68c5ae3d3cf1 1-30
+src/components/BlessImg.vue
+  s_9ec1000e308ddb::t_a10b9a01693319 1-4,6-113
+  s_9ec1000e308ddb::t_2f8ef5763f7dbd 5
+docs/.vitepress/meta.json
+  s_9ec1000e308ddb::t_0ddac9fce38769 2-7785
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "65ef7a16772b20b9327380d056063042bfef0184",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "claude-opus-5"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
