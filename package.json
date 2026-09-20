@@ -10,22 +10,27 @@
   ],
   "type": "module",
   "sideEffects": [
-    "*.css"
+    "**/*.css",
+    "./dist/index.js"
   ],
-  "main": "./dist/blessing-ui.js",
-  "module": "./dist/blessing-ui.js",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/blessing-ui.js"
+      "import": "./dist/index.js"
     },
     "./style.css": "./dist/blessing-ui.css",
-    "./tokens.css": "./tokens.css"
+    "./tokens.css": "./tokens.css",
+    "./components/*": {
+      "types": "./dist/components/*.vue.d.ts",
+      "import": "./dist/components/*.js"
+    }
   },
   "scripts": {
     "dev": "vitepress dev docs",
-    "build": "vue-tsc --noEmit && vite build",
+    "build": "vue-tsc --noEmit && vite build && node scripts/postbuild.mjs",
     "test": "vitest run",
     "typecheck": "vue-tsc --noEmit",
     "format": "oxfmt .",

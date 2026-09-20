@@ -156,9 +156,6 @@
   color-scheme: dark;
 }
 
-/* single breakpoint, matches source site: `@media (max-width: 800px)` */
-@custom-media --bless-sp (max-width: 800px);
-
 @media (prefers-reduced-motion: reduce) {
   :root {
     --bless-duration-fast: 0s;

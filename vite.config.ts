@@ -16,12 +16,20 @@ export default defineConfig({
   build: {
     lib: {
       entry: fileURLToPath(new URL("./src/index.ts", import.meta.url)),
-      name: "BlessingUI",
-      fileName: "blessing-ui",
       formats: ["es"],
-      cssFileName: "blessing-ui",
     },
-    rollupOptions: { external: ["vue"] },
+    // one JS module per source file, one CSS file per SFC; scripts/postbuild.mjs
+    // links each module to its CSS and assembles the all-in-one stylesheet
+    cssCodeSplit: true,
+    rollupOptions: {
+      external: ["vue"],
+      output: {
+        preserveModules: true,
+        preserveModulesRoot: "src",
+        entryFileNames: "[name].js",
+        assetFileNames: "[name][extname]",
+      },
+    },
   },
   test: {
     environment: "jsdom",
