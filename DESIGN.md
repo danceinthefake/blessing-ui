@@ -306,13 +306,14 @@ Tooling: Vite + `vite-plugin-dts`, Vitest + `@vue/test-utils` (one smoke test pe
 
 ## 6. Non-goals
 
-- Tailwind preset, RTL (deferred, see Phase 15), SSR-specific code, icon set — not needed for v0.x. (Dark mode: done, Phase 8.) (Form controls were a v0 non-goal; now Phase 5.)
+- Tailwind preset, SSR-specific code, icon set — not needed for v0.x. (RTL: done.) (Dark mode: done, Phase 8.) (Form controls were a v0 non-goal; now Phase 5.)
 - Copying saenai.tv assets (logo, art, `main_bg.png`) or CSS/JS.
 
 ## 7. Open questions
 
 - ~~`ponytail:` ceilings~~ all lifted ✅: Tree arrow-key navigation, VirtualScroller `dynamic` (measured heights), DataTable / useDataTable `server` mode (`state` event, `total`), useFloating `boundary` + `arrow` (Tooltip always, Popover opt-in).
-- Straight / rounded variant: `--bless-skew: 0deg` already removes the lean, but `--bless-radius-*` is consumed almost nowhere, so a round look is not one token today. Do it by having every skewed box also read `--bless-radius-sm` (badge, chip, button, plate) — then `skew: 0` + a radius value is the whole variant. Not started.
+- ~~Straight / rounded variant~~ → rounded done as `data-shape="rounded"` (petal plates, pills, 8px boxes); the upright variant was previewed and rejected. Whether cut and petal **merge** into one default is the open decision above (Phase 20 section).
+- Hanging headline (`BlessSection` variant or block) and outline pill badge — from the film site; not started, low priority.
 
 - ~~Package as single `style.css` bundle or per-component CSS?~~ Both ✅: `preserveModules` + `cssCodeSplit`, `scripts/postbuild.mjs` links each `BlessX.js` to `BlessX.css` and assembles `blessing-ui.css`; `sideEffects` lists `**/*.css` and `dist/index.js` (so the tokens import survives tree-shaking). One component ≈ 2 KB gzip CSS, measured by `e2e/consumer`.
 - Router coupling for `BlessSidebarNav` `to` — plain `href` + `@select`, let consumer wire router. Decide at Phase 2.
