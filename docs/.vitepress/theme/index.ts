@@ -8,6 +8,7 @@ import {
   BlessPaletteToggle,
   BlessShapeToggle,
   BlessToaster,
+  useTheme,
 } from "blessing-ui";
 import "blessing-ui/style.css";
 import "./custom.css";
@@ -21,6 +22,7 @@ export default {
   Layout() {
     // VitePress toggles html.dark; the library keys on data-theme. Keep them in step.
     const { isDark } = useData();
+    useTheme(); // boots persisted palette/shape on every page, including the full-page demos with no nav
     watchEffect(() => {
       if (typeof document === "undefined") return;
       document.documentElement.dataset.theme = isDark.value ? "dark" : "light";
