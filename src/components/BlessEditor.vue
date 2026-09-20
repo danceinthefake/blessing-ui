@@ -164,6 +164,7 @@ const defs: Record<Exclude<BlessEditorTool, "|">, Def> = {
             :aria-label="defs[t].title"
             :aria-pressed="defs[t].active ? !!(editor && defs[t].active(editor)) : undefined"
             :disabled="disabled || !editor || (defs[t].can ? !defs[t].can(editor) : false)"
+            @mousedown.prevent
             @click="editor && defs[t].run(editor)"
           >
             <span aria-hidden="true">{{ defs[t].icon }}</span>
