@@ -147,11 +147,16 @@ async function copy(what: "file" | "all") {
   padding: 0;
   border: 0;
   list-style: none;
+  background: none;
+}
+/* vp-doc sizes headings and paragraphs; BlessText sizes itself, so only reset the bare ones */
+.vp-doc .block__frame :is(p, li, h1, h2, h3, h4):not(.bless-text, .tiptap *) {
+  line-height: var(--bless-leading-normal);
+}
+.vp-doc .block__frame :is(h1, h2, h3, h4):not(.bless-text) {
   font-size: inherit;
   font-weight: inherit;
   letter-spacing: inherit;
-  line-height: inherit;
-  background: none;
 }
 .vp-doc .block__frame table {
   display: table;
