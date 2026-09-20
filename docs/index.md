@@ -26,5 +26,5 @@ features:
   - title: Built on the platform
     details: "&lt;dialog&gt;, the Popover API, &lt;details&gt;, native form controls, Intl dates, scroll-snap. When the browser already has it, Blessing styles it instead of rebuilding it."
   - title: For everyone
-    details: Keyboard first, ARIA on every menu, dialog, grid and tablist, prefers-reduced-motion, contrast that passes. 129 components, one peer dependency, MIT.
+    details: Keyboard first, ARIA on every menu, dialog, grid and tablist, prefers-reduced-motion, contrast that passes. 135 components, one peer dependency, MIT.
 ---

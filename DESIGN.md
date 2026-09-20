@@ -209,6 +209,24 @@ Decision: **Unovis** (`@unovis/vue`) as the documented, consumer-installed pairi
 - [x] `BlessOrgChart` — recursive `ul/li` with CSS connectors, skewed nodes, `v-model:selected`
 - [x] `useDialog()` + `BlessDialogHost` — promise-based, component or text body, `close(result)` prop
 
+### Phase 18 — mobile (Quasar's touch set)
+
+- [x] `usePan` / `useSwipe` / `useLongPress` / `useTouchRepeat` — pointer-event composables with capture
+- [x] `BlessPullToRefresh` — dampened pull at scrollTop 0, `refresh(done)`
+- [x] `BlessSlideItem` — pan reveals `#left` / `#right` actions, fire or `sticky`
+- [x] `BlessActionSheet` — action list / grid on `BlessDrawer`
+- [x] `BlessTabPanels` — swipeable pager with slide transition, `loop`
+- [x] `BlessInfiniteScroll` — sentinel + `load(done)`, re-checks short pages
+- [x] `BlessLayout` — header reveal, footer, left / right drawers (beside above `breakpoint`, over below, edge-swipe on touch), safe-area tokens
+- [x] `--bless-safe-*` tokens
+
+### Phase 19 — Quasar web gaps (not started)
+
+- [ ] `BlessCircularProgress`, `BlessRange` (two thumbs), `BlessTimePicker`, `BlessImg` (lazy + ratio + placeholder), `BlessVideo`, `BlessLoadingBar`, `BlessUploader` (queue / progress / abort), `BlessParallax`, `BlessSlideTransition`, `BlessClientOnly`
+- [ ] `useResizeObserver`, `useFullscreen`, `useVisibility`, `useScroll`
+
+Skipped from Quasar: Ripple / Morph / Mutation (directive utilities, no bounces), Meta (use `@unhead`), Cookies / WebStorage / AddressbarColor (VueUse territory), spinner variants (one spinner is the brand).
+
 Skipped from PrimeVue: Terminal, Ripple / StyleClass / Fluid / KeyFilter (directive utilities), FocusTrap (native `<dialog>` covers it).
 
 Deferred: RTL / `Direction` — audience is JP/EN; ~1 day of logical-property CSS if ever needed.

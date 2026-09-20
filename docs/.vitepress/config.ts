@@ -55,6 +55,7 @@ export default defineConfig({
             { text: "Conventions", link: "/guide/conventions" },
             { text: "useScrollSpy", link: "/guide/scroll-spy" },
             { text: "useAnimateOnScroll", link: "/guide/animate-on-scroll" },
+            { text: "Gestures", link: "/guide/gestures" },
             { text: "Brand", link: "/guide/brand" },
             { text: "Story", link: "/guide/story" },
           ],

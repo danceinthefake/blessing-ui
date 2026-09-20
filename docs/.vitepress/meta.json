@@ -62,6 +62,68 @@
     ],
     "exposed": []
   },
+  "BlessActionSheet": {
+    "props": [
+      {
+        "name": "actions",
+        "type": "BlessAction[]",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "title",
+        "type": "string | undefined",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "grid",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": "icon grid instead of a list"
+      },
+      {
+        "name": "cancelLabel",
+        "type": "string | undefined",
+        "required": false,
+        "default": "\"Cancel\"",
+        "description": ""
+      },
+      {
+        "name": "cancel",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "true",
+        "description": "show a cancel row at the bottom"
+      },
+      {
+        "name": "open",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "false",
+        "description": ""
+      }
+    ],
+    "events": [
+      {
+        "name": "update:open",
+        "type": "[value: boolean]",
+        "description": ""
+      },
+      {
+        "name": "cancel",
+        "type": "[]",
+        "description": ""
+      },
+      {
+        "name": "select",
+        "type": "[action: BlessAction]",
+        "description": ""
+      }
+    ],
+    "slots": [],
+    "exposed": []
+  },
   "BlessAlert": {
     "props": [
       {
@@ -187,17 +249,17 @@
     ],
     "events": [
       {
+        "name": "cancel",
+        "type": "[]",
+        "description": ""
+      },
+      {
         "name": "update:modelValue",
         "type": "[value: boolean]",
         "description": ""
       },
       {
         "name": "confirm",
-        "type": "[]",
-        "description": ""
-      },
-      {
-        "name": "cancel",
         "type": "[]",
         "description": ""
       }
@@ -565,13 +627,13 @@
     ],
     "events": [
       {
-        "name": "update:modelValue",
-        "type": "[value: string | undefined]",
+        "name": "select",
+        "type": "[item: BlessBottomTab, e: Event]",
         "description": ""
       },
       {
-        "name": "select",
-        "type": "[item: BlessBottomTab, e: Event]",
+        "name": "update:modelValue",
+        "type": "[value: string | undefined]",
         "description": ""
       }
     ],
@@ -1635,12 +1697,12 @@
         "description": ""
       },
       {
-        "name": "confirm",
+        "name": "cancel",
         "type": "[]",
         "description": ""
       },
       {
-        "name": "cancel",
+        "name": "confirm",
         "type": "[]",
         "description": ""
       }
@@ -1877,7 +1939,7 @@
       },
       {
         "name": "layout",
-        "type": "\"list\" | \"grid\" | undefined",
+        "type": "\"grid\" | \"list\" | undefined",
         "required": false,
         "default": "\"list\"",
         "description": ""
@@ -1886,19 +1948,19 @@
     "events": [
       {
         "name": "update:layout",
-        "type": "[value: \"list\" | \"grid\"]",
+        "type": "[value: \"grid\" | \"list\"]",
         "description": ""
       }
     ],
     "slots": [
       {
         "name": "header",
-        "type": "{ layout: \"list\" | \"grid\"; }",
+        "type": "{ layout: \"grid\" | \"list\"; }",
         "description": ""
       },
       {
         "name": "default",
-        "type": "{ item: T; index: number; layout: \"list\" | \"grid\"; }",
+        "type": "{ item: T; index: number; layout: \"grid\" | \"list\"; }",
         "description": ""
       },
       {
@@ -2712,6 +2774,66 @@
     ],
     "exposed": []
   },
+  "BlessInfiniteScroll": {
+    "props": [
+      {
+        "name": "disabled",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": "stop observing (no more pages)"
+      },
+      {
+        "name": "offset",
+        "type": "number | undefined",
+        "required": false,
+        "default": "200",
+        "description": "px before the end to fire"
+      },
+      {
+        "name": "root",
+        "type": "HTMLElement | null | undefined",
+        "required": false,
+        "description": "scroll container ref; default = nearest scrollable ancestor / viewport"
+      },
+      {
+        "name": "doneText",
+        "type": "string | undefined",
+        "required": false,
+        "description": ""
+      }
+    ],
+    "events": [
+      {
+        "name": "load",
+        "type": "[done: (finished?: boolean | undefined) => void]",
+        "description": ""
+      }
+    ],
+    "slots": [
+      {
+        "name": "default",
+        "type": "{}",
+        "description": ""
+      },
+      {
+        "name": "loading",
+        "type": "{}",
+        "description": ""
+      },
+      {
+        "name": "done",
+        "type": "{}",
+        "description": ""
+      }
+    ],
+    "exposed": [
+      {
+        "name": "reset",
+        "type": "() => boolean",
+        "description": ""
+      }
+    ]
+  },
   "BlessInplace": {
     "props": [
       {
@@ -3370,6 +3492,106 @@
       {
         "name": "default",
         "type": "{}",
+        "description": ""
+      }
+    ],
+    "exposed": []
+  },
+  "BlessLayout": {
+    "props": [
+      {
+        "name": "breakpoint",
+        "type": "number | undefined",
+        "required": false,
+        "default": "1024",
+        "description": "viewport width at and above which drawers sit beside the page instead of over it"
+      },
+      {
+        "name": "reveal",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "true",
+        "description": "header hides on scroll down, shows on scroll up"
+      },
+      {
+        "name": "leftWidth",
+        "type": "string | undefined",
+        "required": false,
+        "default": "\"280px\"",
+        "description": "drawer widths"
+      },
+      {
+        "name": "rightWidth",
+        "type": "string | undefined",
+        "required": false,
+        "default": "\"280px\"",
+        "description": ""
+      },
+      {
+        "name": "swipe",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "true",
+        "description": "swipe from the screen edge opens a drawer on touch"
+      },
+      {
+        "name": "edge",
+        "type": "number | undefined",
+        "required": false,
+        "default": "24",
+        "description": "the drawer that swiping opens when both exist"
+      },
+      {
+        "name": "left",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "false",
+        "description": ""
+      },
+      {
+        "name": "right",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "false",
+        "description": ""
+      }
+    ],
+    "events": [
+      {
+        "name": "update:left",
+        "type": "[value: boolean]",
+        "description": ""
+      },
+      {
+        "name": "update:right",
+        "type": "[value: boolean]",
+        "description": ""
+      }
+    ],
+    "slots": [
+      {
+        "name": "header",
+        "type": "any",
+        "description": ""
+      },
+      {
+        "name": "footer",
+        "type": "any",
+        "description": ""
+      },
+      {
+        "name": "left",
+        "type": "any",
+        "description": ""
+      },
+      {
+        "name": "right",
+        "type": "any",
+        "description": ""
+      },
+      {
+        "name": "default",
+        "type": "any",
         "description": ""
       }
     ],
@@ -4457,6 +4679,63 @@
     "slots": [],
     "exposed": []
   },
+  "BlessPullToRefresh": {
+    "props": [
+      {
+        "name": "threshold",
+        "type": "number | undefined",
+        "required": false,
+        "default": "64",
+        "description": "px of pull that triggers a refresh"
+      },
+      {
+        "name": "max",
+        "type": "number | undefined",
+        "required": false,
+        "default": "96",
+        "description": "max visual travel"
+      },
+      {
+        "name": "disabled",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "scrollTarget",
+        "type": "HTMLElement | null | undefined",
+        "required": false,
+        "description": "scroll container to check; default = the wrapper itself, falling back to window"
+      },
+      {
+        "name": "label",
+        "type": "string | undefined",
+        "required": false,
+        "default": "\"Pull to refresh\"",
+        "description": ""
+      }
+    ],
+    "events": [
+      {
+        "name": "refresh",
+        "type": "[done: () => void]",
+        "description": ""
+      }
+    ],
+    "slots": [
+      {
+        "name": "indicator",
+        "type": "{ ready: boolean; busy: boolean; pull: number; }",
+        "description": ""
+      },
+      {
+        "name": "default",
+        "type": "{}",
+        "description": ""
+      }
+    ],
+    "exposed": []
+  },
   "BlessQrCode": {
     "props": [
       {
@@ -5299,6 +5578,70 @@
     ],
     "exposed": []
   },
+  "BlessSlideItem": {
+    "props": [
+      {
+        "name": "threshold",
+        "type": "number | undefined",
+        "required": false,
+        "default": "80",
+        "description": "px of travel to trigger"
+      },
+      {
+        "name": "sticky",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": "keep the actions revealed after release instead of firing"
+      },
+      {
+        "name": "disabled",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": ""
+      }
+    ],
+    "events": [
+      {
+        "name": "left",
+        "type": "[reset: () => void]",
+        "description": ""
+      },
+      {
+        "name": "right",
+        "type": "[reset: () => void]",
+        "description": ""
+      },
+      {
+        "name": "slide",
+        "type": "[side: \"left\" | \"right\" | null]",
+        "description": ""
+      }
+    ],
+    "slots": [
+      {
+        "name": "default",
+        "type": "any",
+        "description": ""
+      },
+      {
+        "name": "left",
+        "type": "{ reset: () => void; }",
+        "description": ""
+      },
+      {
+        "name": "right",
+        "type": "{ reset: () => void; }",
+        "description": ""
+      }
+    ],
+    "exposed": [
+      {
+        "name": "reset",
+        "type": "() => void",
+        "description": ""
+      }
+    ]
+  },
   "BlessSlider": {
     "props": [
       {
@@ -5797,13 +6140,13 @@
     ],
     "events": [
       {
-        "name": "update:modelValue",
-        "type": "[value: number]",
+        "name": "select",
+        "type": "[index: number]",
         "description": ""
       },
       {
-        "name": "select",
-        "type": "[index: number]",
+        "name": "update:modelValue",
+        "type": "[value: number]",
         "description": ""
       }
     ],
@@ -5910,6 +6253,57 @@
       {
         "name": "default",
         "type": "{}",
+        "description": ""
+      }
+    ],
+    "exposed": []
+  },
+  "BlessTabPanels": {
+    "props": [
+      {
+        "name": "panels",
+        "type": "T[]",
+        "required": true,
+        "description": "panel keys, in order; pair with BlessTabs values"
+      },
+      {
+        "name": "swipeable",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "true",
+        "description": ""
+      },
+      {
+        "name": "loop",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": "wrap from last to first"
+      },
+      {
+        "name": "threshold",
+        "type": "number | undefined",
+        "required": false,
+        "default": "60",
+        "description": "px to change panel"
+      },
+      {
+        "name": "modelValue",
+        "type": "T",
+        "required": true,
+        "description": ""
+      }
+    ],
+    "events": [
+      {
+        "name": "update:modelValue",
+        "type": "[value: T]",
+        "description": ""
+      }
+    ],
+    "slots": [
+      {
+        "name": "default",
+        "type": "{ panel: T; index: number; }",
         "description": ""
       }
     ],
@@ -6633,13 +7027,13 @@
     ],
     "events": [
       {
-        "name": "update:modelValue",
-        "type": "[value: string | string[] | undefined]",
+        "name": "select",
+        "type": "[node: BlessTreeNode, id: string]",
         "description": ""
       },
       {
-        "name": "select",
-        "type": "[node: BlessTreeNode, id: string]",
+        "name": "update:modelValue",
+        "type": "[value: string | string[] | undefined]",
         "description": ""
       }
     ],

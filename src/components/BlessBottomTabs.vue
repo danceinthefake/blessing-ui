@@ -71,7 +71,7 @@ const emit = defineEmits<{ select: [item: BlessBottomTab, e: Event] }>();
   right: 0;
   bottom: 0;
   border-top: var(--bless-border-width) solid var(--bless-color-border);
-  padding-bottom: env(safe-area-inset-bottom);
+  padding-bottom: var(--bless-safe-bottom);
 }
 .bless-bottom-tabs--dock {
   position: fixed;

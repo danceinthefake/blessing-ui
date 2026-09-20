@@ -226,6 +226,21 @@ export const groups: { title: string; items: Entry[] }[] = [
     ],
   },
   {
+    title: "Mobile",
+    items: [
+      {
+        name: "BlessLayout",
+        slug: "layout",
+        text: "App shell: header, footer, drawers, safe areas",
+      },
+      { name: "BlessPullToRefresh", slug: "pull-to-refresh", text: "Drag down to reload" },
+      { name: "BlessSlideItem", slug: "slide-item", text: "Swipe a row to reveal actions" },
+      { name: "BlessActionSheet", slug: "action-sheet", text: "Action list in a bottom drawer" },
+      { name: "BlessTabPanels", slug: "tab-panels", text: "Swipeable panel pager" },
+      { name: "BlessInfiniteScroll", slug: "infinite-scroll", text: "Load more at the end" },
+    ],
+  },
+  {
     title: "Media",
     items: [
       { name: "BlessCarousel", slug: "carousel", text: "Scroll-snap slider" },

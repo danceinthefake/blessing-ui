@@ -6,10 +6,10 @@
 
 Vue 3 component library and design tokens. Grey-scale UI, one pink-red accent, skewed labels instead of rounded corners, thin oversized watermark type, opacity-fade hovers. The look was re-derived from one anime's official site, ideas only — the [story](docs/guide/story.md) says which, what was kept, and what was not taken.
 
-- 129 components — from button to data table to chat — styled only through `--bless-*` custom properties, no Tailwind dependency
+- 135 components — from button to data table to chat — styled only through `--bless-*` custom properties, no Tailwind dependency
 - Native platform first: `<dialog>`, Popover API, `<details>`, native form controls, `Intl` dates, scroll-snap — no positioning, date or table library
 - Accessible defaults: focus rings, ARIA tablist/dialog/tables, `prefers-reduced-motion`
-- ESM, tree-shakable, `vue` as the only required peer (`@tiptap/vue-3` optional, for `BlessEditor`). ~235 KB JS / 160 KB CSS raw, ~56 KB / 21 KB gzip for everything (tree-shakes per component)
+- ESM, tree-shakable, `vue` as the only required peer (`@tiptap/vue-3` optional, for `BlessEditor`). ~245 KB JS / 165 KB CSS raw, ~59 KB / 22 KB gzip for everything (tree-shakes per component)
 
 ## Install
 
@@ -77,7 +77,7 @@ import {
 
 ## Components
 
-129 components across eight groups. Every one styles itself from `--bless-*` tokens and ships with a test and a docs page.
+135 components across nine groups. Every one styles itself from `--bless-*` tokens and ships with a test and a docs page.
 
 ### Primitives
 
@@ -244,6 +244,19 @@ pnpm add @unovis/vue @unovis/ts
 
 Any other SVG chart lib works too — read `var(--bless-color-chart-N)` for series colours.
 
+### Mobile
+
+| Component             | Purpose                    | Key props / slots                                                                                                                          |
+| --------------------- | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| `BlessLayout`         | App shell                  | `v-model:left` / `v-model:right`, `breakpoint`, `reveal`, `leftWidth`, `rightWidth`, `swipe`; `#header` `#footer` `#left` `#right` default |
+| `BlessPullToRefresh`  | Drag down to reload        | `threshold`, `max`, `scrollTarget`; emits `refresh(done)`; `#indicator="{ready,busy,pull}"`                                                |
+| `BlessSlideItem`      | Swipe a row for actions    | `threshold`, `sticky`; `#left` `#right="{reset}"`; emits `left(reset)` `right(reset)` `slide`                                              |
+| `BlessActionSheet`    | Actions in a bottom drawer | `v-model:open`, `actions[{label,value,icon,description,danger}]`, `title`, `grid`, `cancel`; emits `select` `cancel`                       |
+| `BlessTabPanels`      | Swipeable panels           | `v-model`, `panels[]`, `swipeable`, `loop`, `threshold`; `#default="{panel,index}"`; exposes `next()` `prev()`                             |
+| `BlessInfiniteScroll` | Load more at the end       | `disabled`, `offset`, `root`, `doneText`; emits `load(done)`; `#loading` `#done`; exposes `reset()`                                        |
+
+Gestures: `usePan(el, cb)` · `useSwipe(el, cb, { threshold, axis })` · `useLongPress(el, cb, { ms })` · `useTouchRepeat(el, cb, { delay, interval })`. Safe-area tokens `--bless-safe-{top,bottom,left,right}`.
+
 ### Media
 
 | Component          | Purpose            | Key props / slots                                                 |
@@ -253,11 +266,11 @@ Any other SVG chart lib works too — read `var(--bless-color-chart-N)` for seri
 
 ### Composables
 
-`useMedia(query?)` · `useHash()` · `useScrollSpy(ids | selector, { rootMargin, root })` → `{ active }` · `useAnimateOnScroll(el, { threshold, rootMargin, once })` → `{ visible }` · `useDialog()` → `{ open, close }` · `applyMask(mask, input)` / `unmask(mask, masked)` · `useTheme()` → `{ theme, isDark, set, toggle, palette, setPalette }` · `useFloating(anchor, floating, active, opts | () => opts)` · `useToast()` · `useDataTable(rows, { rowKey, pageSize, searchKeys })` · date helpers `toISO` `fromISO` `addDays` `addMonths` `isoToday`.
+`useMedia(query?)` · `useHash()` · `useScrollSpy(ids | selector, { rootMargin, root })` → `{ active }` · `useAnimateOnScroll(el, { threshold, rootMargin, once })` → `{ visible }` · `useDialog()` → `{ open, close }` · gestures (see Mobile) · `applyMask(mask, input)` / `unmask(mask, masked)` · `useTheme()` → `{ theme, isDark, set, toggle, palette, setPalette }` · `useFloating(anchor, floating, active, opts | () => opts)` · `useToast()` · `useDataTable(rows, { rowKey, pageSize, searchKeys })` · date helpers `toISO` `fromISO` `addDays` `addMonths` `isoToday`.
 
 ### Types
 
-`BlessNavItem`, `BlessNavMenuItem`, `BlessTab`, `BlessGalleryItem`, `BlessColumn<T>`, `BlessDataColumn<T>`, `BlessOption<T>`, `BlessTrack`, `BlessMenuItem`, `BlessCommandItem`, `BlessCrumb`, `BlessToastOptions`, `BlessTheme`, `BlessStep`, `BlessTimelineItem`, `BlessTreeNode`, `BlessPasswordRule`, `BlessBottomTab`, `BlessSpeedDialAction`, `BlessTourStep`, `BlessEditorTool`, `BlessMeterSegment`, `BlessCascadeOption`, `BlessDialogOptions`, `BlessReaction`, `BlessQuestion`, `BlessQuestionChoice`, `BlessAnswers`, `Placement`, `DataTableState`.
+`BlessNavItem`, `BlessNavMenuItem`, `BlessTab`, `BlessGalleryItem`, `BlessColumn<T>`, `BlessDataColumn<T>`, `BlessOption<T>`, `BlessTrack`, `BlessMenuItem`, `BlessCommandItem`, `BlessCrumb`, `BlessToastOptions`, `BlessTheme`, `BlessStep`, `BlessTimelineItem`, `BlessTreeNode`, `BlessPasswordRule`, `BlessBottomTab`, `BlessSpeedDialAction`, `BlessTourStep`, `BlessEditorTool`, `BlessMeterSegment`, `BlessCascadeOption`, `BlessDialogOptions`, `BlessAction`, `PanEvent`, `SwipeDirection`, `BlessReaction`, `BlessQuestion`, `BlessQuestionChoice`, `BlessAnswers`, `Placement`, `DataTableState`.
 
 ## Tokens
 

@@ -103,6 +103,11 @@
   --bless-content-max: 1300px;
   --bless-z-bg: -1;
   --bless-z-nav: 100;
+  /* device safe areas (notches, home bar); 0 on desktop */
+  --bless-safe-top: env(safe-area-inset-top, 0px);
+  --bless-safe-bottom: env(safe-area-inset-bottom, 0px);
+  --bless-safe-left: env(safe-area-inset-left, 0px);
+  --bless-safe-right: env(safe-area-inset-right, 0px);
   --bless-z-modal: 1000;
 }
 
