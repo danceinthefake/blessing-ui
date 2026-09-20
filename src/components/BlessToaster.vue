@@ -132,7 +132,7 @@ const { dismiss } = useToast();
   border-left: 4px solid var(--_c);
   background: var(--bless-color-bg);
   color: var(--bless-color-text);
-  box-shadow: var(--bless-shadow-md);
+  box-shadow: var(--bless-shadow-plate);
   font-family: var(--bless-font-sans);
   font-size: var(--bless-text-sm);
   line-height: var(--bless-leading-tight);

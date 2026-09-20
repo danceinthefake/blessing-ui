@@ -20,7 +20,7 @@ Five things, and they became the [brand](./brand):
 - one accent on a scale of greys — the heroine's pink by default
 - thin oversized type for the voice, bold tracked uppercase for the UI
 - the fade on hover, never a bounce
-- the hard-shadow plate: a second parallelogram offset behind
+- the plate: a hard slab offset behind whatever floats — the site never blurred a shadow, it offset things
 
 ## What was added
 

@@ -59,7 +59,7 @@ onBeforeUnmount(() => (el() ?? window).removeEventListener("scroll", check));
   font: inherit;
   font-size: var(--bless-text-md);
   cursor: pointer;
-  box-shadow: var(--bless-shadow-md);
+  box-shadow: var(--bless-shadow-plate);
   transform: skewX(var(--bless-skew));
   transition: opacity var(--bless-duration-slow) var(--bless-ease-in-out);
 }

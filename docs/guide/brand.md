@@ -11,13 +11,13 @@ Blessing UI's identity is the design system itself — nothing is added for the 
 
 ## Five elements
 
-| Element  | Value                                                                              | Where you see it                                    |
-| -------- | ---------------------------------------------------------------------------------- | --------------------------------------------------- |
-| Name     | **Blessing** — a nod to a fictional software circle; see the [story](./story)      | wordmark, package name                              |
-| Colour   | one accent at a time — Megumi's `#e85078` by default, six by [palette](./palettes) | buttons, badges, the mark's top petal               |
-| Geometry | `--bless-skew`, the same lean on everything                                        | every label, every petal of the mark, the `UI` tag  |
-| Type     | Roboto 100 oversized for the voice, 700 uppercase tracked for the UI               | watermark, wordmark, labels                         |
-| Motif    | the hard-shadow plate: a second parallelogram offset behind                        | `BlessQrCode frame`, `BlessScrollTop`, the `UI` tag |
+| Element  | Value                                                                              | Where you see it                                         |
+| -------- | ---------------------------------------------------------------------------------- | -------------------------------------------------------- |
+| Name     | **Blessing** — a nod to a fictional software circle; see the [story](./story)      | wordmark, package name                                   |
+| Colour   | one accent at a time — Megumi's `#e85078` by default, six by [palette](./palettes) | buttons, badges, the mark's top petal                    |
+| Geometry | `--bless-skew`, the same lean on everything                                        | every label, every petal of the mark, the `UI` tag       |
+| Type     | Roboto 100 oversized for the voice, 700 uppercase tracked for the UI               | watermark, wordmark, labels                              |
+| Motif    | the plate: a hard 3px accent slab offset behind anything that floats — no blur     | every popover, menu, tooltip, toast, modal; the QR frame |
 
 ## Mark
 

@@ -95,7 +95,7 @@ import { BlessMockup, BlessSkew } from "blessing-ui";
   z-index: 1;
   flex: none;
   width: 760px;
-  box-shadow: var(--bless-shadow-md);
+  box-shadow: var(--bless-shadow-plate);
 }
 .og__shot img {
   display: block;

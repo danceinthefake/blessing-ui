@@ -86,9 +86,15 @@
   --bless-border-width: 1px;
   --bless-dash-width: 10px; /* separator dash */
 
-  /* ---- elevation ---- */
+  /* ---- elevation ----
+   * Nothing blurs. A floating thing sits on a plate: a hard offset slab in the accent, the same
+   * motif as the QR frame and the mark's plates. Modal and sheet rely on the scrim instead.
+   */
+  --bless-plate-offset: 3px;
   --bless-shadow-none: none;
-  --bless-shadow-md: 0 10px 25px rgba(0, 0, 0, 0.5); /* modals only */
+  --bless-shadow-plate: var(--bless-plate-offset) var(--bless-plate-offset) 0
+    var(--bless-color-accent);
+  --bless-shadow-md: var(--bless-shadow-plate); /* alias kept for consumers; same plate */
 
   /* ---- motion ---- */
   --bless-duration-fast: 0.1s;
@@ -131,7 +137,6 @@
     --bless-color-border: #2f3237;
     --bless-color-rule: #e8e9ea;
     --bless-color-backdrop: rgb(0 0 0 / 0.75);
-    --bless-shadow-md: 0 10px 25px rgb(0 0 0 / 0.7);
     --bless-color-chart-2: #b57bff;
     --bless-color-chart-3: #ffa800;
     --bless-color-chart-4: #c0e722;
@@ -152,7 +157,6 @@
   --bless-color-border: #2f3237;
   --bless-color-rule: #e8e9ea;
   --bless-color-backdrop: rgb(0 0 0 / 0.75);
-  --bless-shadow-md: 0 10px 25px rgb(0 0 0 / 0.7);
   --bless-color-chart-2: #b57bff;
   --bless-color-chart-3: #ffa800;
   --bless-color-chart-4: #c0e722;

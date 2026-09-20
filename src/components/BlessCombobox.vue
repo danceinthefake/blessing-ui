@@ -343,7 +343,7 @@ function onBlur(e: FocusEvent) {
   padding: 0;
   border: var(--bless-border-width) solid var(--bless-color-border);
   background: var(--bless-color-bg);
-  box-shadow: var(--bless-shadow-md);
+  box-shadow: var(--bless-shadow-plate);
 }
 .bless-combobox__list {
   max-height: 240px;

@@ -179,7 +179,6 @@ watch(narrow, (n) => !n && ((left.value = false), (right.value = false)));
   z-index: var(--bless-z-modal);
   padding-top: var(--bless-safe-top);
   padding-bottom: var(--bless-safe-bottom);
-  box-shadow: var(--bless-shadow-md);
   transition: transform var(--bless-duration-slow) var(--bless-ease-out);
 }
 .bless-layout--narrow .bless-layout__drawer--left {

@@ -120,7 +120,7 @@ function onBlur(e: FocusEvent) {
   font: inherit;
   font-size: var(--bless-text-lg);
   cursor: pointer;
-  box-shadow: var(--bless-shadow-md);
+  box-shadow: var(--bless-shadow-plate);
   transform: skewX(var(--bless-skew));
   transition: opacity var(--bless-duration-slow);
 }

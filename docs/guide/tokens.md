@@ -16,7 +16,7 @@ All styling reads `--bless-*` custom properties from `tokens.css`. Override on `
 | Type scale         | `--bless-text-{2xs,xs,sm,md,lg,xl,display}` — fluid `clamp()`, 8→151px                                                                                                                                         |
 | Leading / tracking | `--bless-leading-{none,tight,normal}`, `--bless-tracking-{tight,normal,wide,wider}`                                                                                                                            |
 | Space              | `--bless-space-{1,2,3,4,6,8,12,16}` — 4px base                                                                                                                                                                 |
-| Shape              | `--bless-radius`, `--bless-radius-pill`, `--bless-skew`, `--bless-skew-counter`, `--bless-border-width`, `--bless-dash-width`                                                                                               |
+| Shape              | `--bless-radius`, `--bless-radius-pill`, `--bless-skew`, `--bless-skew-counter`, `--bless-border-width`, `--bless-dash-width`                                                                                  |
 | Elevation          | `--bless-shadow-{none,md}`                                                                                                                                                                                     |
 | Motion             | `--bless-duration-{fast,base,slow,slower}`, `--bless-ease-{in-out,out,linear}`, `--bless-hover-opacity`, `--bless-press-scale`                                                                                 |
 | Layout             | `--bless-sidebar-width`, `--bless-sidebar-inner`, `--bless-content-max`, `--bless-z-{bg,nav,modal}`                                                                                                            |
@@ -33,6 +33,7 @@ Durations collapse to `0s` under `prefers-reduced-motion`.
 - `on-text` — text on a `--bless-color-text` fill; equals `bg`, so it inverts with the theme
 - `on-light` — text on warning / success fills, which are too pale for white
 - `chart-1..5` — categorical series, all ≥3:1 on `bg` and `surface` in both themes
+- `--bless-shadow-plate` — the only elevation: `3px 3px 0` in the accent (`--bless-plate-offset`). Nothing blurs; a floating thing sits on a plate. `--bless-shadow-md` is an alias
 
 ## Tailwind v4
 

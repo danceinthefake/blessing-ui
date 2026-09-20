@@ -205,7 +205,7 @@ function clear() {
   padding: var(--bless-space-3);
   border: var(--bless-border-width) solid var(--bless-color-border);
   background: var(--bless-color-bg);
-  box-shadow: var(--bless-shadow-md);
+  box-shadow: var(--bless-shadow-plate);
 }
 .bless-datepicker--invalid .bless-datepicker__trigger,
 .bless-datepicker--invalid .bless-datepicker__native {

@@ -204,7 +204,7 @@ iframe.block__frame {
 .block__preview--phone .block__frame {
   width: 390px;
   min-height: 720px;
-  box-shadow: var(--bless-shadow-md);
+  box-shadow: var(--bless-shadow-plate);
 }
 /* block content is app UI, not prose */
 .vp-doc .block__frame :is(p, ul, ol, li, h1, h2, h3, h4, table, th, td):not(.tiptap *) {

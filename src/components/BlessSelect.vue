@@ -163,7 +163,7 @@ const isGroup = (o: unknown): o is { label: string; options: BlessOption<T>[] } 
     color: var(--bless-color-text);
     font-family: var(--bless-font-sans);
     font-size: var(--_fs);
-    box-shadow: var(--bless-shadow-md);
+    box-shadow: var(--bless-shadow-plate);
   }
   .bless-select__control option {
     padding: var(--bless-space-1) var(--bless-space-3);

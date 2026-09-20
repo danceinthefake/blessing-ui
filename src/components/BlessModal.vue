@@ -126,7 +126,7 @@ onMounted(() => {
   max-height: calc(100dvh - 2 * var(--bless-space-4));
   overflow: auto;
   background: var(--bless-color-bg);
-  box-shadow: var(--bless-shadow-md);
+  box-shadow: var(--bless-shadow-plate);
   animation: bless-modal-in var(--bless-duration-slow) var(--bless-ease-out);
 }
 .bless-modal--sm {
