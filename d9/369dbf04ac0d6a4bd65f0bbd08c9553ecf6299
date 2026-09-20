@@ -1,0 +1,55 @@
+src/components/BlessBottomTabs.vue
+  s_9ec1000e308ddb::t_53a20505c8bce4 2,4,37-38
+src/components/BlessTreeItem.vue
+  s_9ec1000e308ddb::t_53a20505c8bce4 2,6,49-50
+src/components/BlessItem.vue
+  s_9ec1000e308ddb::t_53a20505c8bce4 2,4,21-22
+src/composables/useLink.ts
+  s_9ec1000e308ddb::t_4f46b94d9a61d7 24-28
+  s_9ec1000e308ddb::t_54342a26208fcb 1-23,29-31
+src/components/BlessMenuList.vue
+  s_9ec1000e308ddb::t_2f733c60009720 2,9,127-128
+src/components/BlessPagination.vue
+  s_9ec1000e308ddb::t_2f733c60009720 2,7,50-51,64-65
+  s_9ec1000e308ddb::t_4f46b94d9a61d7 78-81
+src/components/BlessButton.vue
+  s_9ec1000e308ddb::t_53a20505c8bce4 2,23-24,31-32
+src/composables/useLink.test.ts
+  s_9ec1000e308ddb::t_b07b14fe1fbe66 1-53
+src/components/BlessSidebarNav.vue
+  s_9ec1000e308ddb::t_53a20505c8bce4 2,21,29-31,47
+src/components/BlessListItem.vue
+  s_9ec1000e308ddb::t_53a20505c8bce4 2,7,21-22
+src/index.ts
+  s_9ec1000e308ddb::t_4f46b94d9a61d7 126-127
+src/components/BlessBreadcrumb.vue
+  s_9ec1000e308ddb::t_2f733c60009720 2,4,22-23,25,27
+src/components/BlessCard.vue
+  s_9ec1000e308ddb::t_53a20505c8bce4 2,6,25-26
+src/components/BlessNavigationMenu.vue
+  s_9ec1000e308ddb::t_2f733c60009720 2,8,74-75,108-110,121
+src/components/BlessSkew.vue
+  s_9ec1000e308ddb::t_54342a26208fcb 2,8
+DESIGN.md
+  s_9ec1000e308ddb::t_d857be07164932 319
+README.md
+  s_9ec1000e308ddb::t_98bb28980f1141 312,331
+docs/guide/install.md
+  s_9ec1000e308ddb::t_638410648000b4 29-49
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "d9369dbf04ac0d6a4bd65f0bbd08c9553ecf6299",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "claude-opus-5"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
