@@ -21,7 +21,7 @@ Generic Vue 3 UI library. Visual language borrowed from saenai.tv (see `../saena
 | Type scale         | `--bless-text-{2xs,xs,sm,md,lg,xl,display}`                                                                                                                                                        | `clamp()` 8→151px     |
 | Leading / tracking | `--bless-leading-{none,tight,normal}`, `--bless-tracking-{tight,normal,wide,wider}`                                                                                                                |                       |
 | Space              | `--bless-space-{1,2,3,4,6,8,12,16}`                                                                                                                                                                | 4px base              |
-| Shape              | `--bless-radius`, `--bless-radius-pill`, `--bless-skew`, `--bless-skew-counter`, `--bless-border-width`, `--bless-dash-width`                                                                                   |                       |
+| Shape              | `--bless-radius`, `--bless-radius-pill`, `--bless-skew`, `--bless-skew-counter`, `--bless-border-width`, `--bless-dash-width`                                                                      |                       |
 | Elevation          | `--bless-shadow-{none,md}`                                                                                                                                                                         | modal only            |
 | Motion             | `--bless-duration-{fast,base,slow,slower}`, `--bless-ease-{in-out,out,linear}`, `--bless-hover-opacity`, `--bless-press-scale`                                                                     |                       |
 | Layout             | `--bless-sidebar-width`, `--bless-sidebar-inner`, `--bless-content-max`, `--bless-z-{bg,nav,modal}`                                                                                                |                       |
@@ -241,6 +241,22 @@ Not components: finished sections shipped as source you copy, `docs/blocks/<slug
 ### Shape ✅ (2026-09-20)
 
 `data-shape="rounded"` keeps the skew: boxes read `--bless-radius` (8px), skewed plates read `--bless-radius-plate` (acute corners only — a cut plate, never a lozenge), pills read `--bless-radius-pill`; `useTheme().setShape`, `BlessShapeToggle`. The upright (un-skewed) variant was previewed and rejected — without the lean it is any other library.
+
+### Open decision — merge the shapes? (2026-09-20)
+
+Two shapes exist: **cut** (the sharp plate, the site's) and **petal** (the plate with only its two acute corners rounded — rhymes with the circle's flower: soft body, sharp point). Today they are a toggle: default is all-cut; `data-shape="rounded"` turns pills into pills, plates into petals, boxes 8px.
+
+The alternative on the table is to **merge**: no toggle, one default where the shape follows a rule —
+
+> If saenai.tv had it, it's cut (buttons, tabs, tags, badges, fields, nav, tables, cards, rows, watermark).
+> If it's ours and round by nature, it's petal (avatars, switches, chips, chat bubbles, fabs, slider thumbs).
+> Everything else is cut.
+
+Previews rendered both (`tmp/blocks/m-all.png`, `mb-all.png`): merge changes only that round-by-nature set; blocks barely move. Petal avatars are the bet — either the most recognisable thing in the system or "why are the faces slanted".
+
+For merge: a vocabulary, not a preference; strongest identity; nothing to choose or maintain. Against: the out-of-the-box look gains a permanent departure from the site; no "off"; untested in daily use.
+
+**Decision deferred.** Plan: run the 1-by-1 review with `data-shape="rounded"` on, then decide. Merge is ~15 min (fold petal/pill into base tokens for that set, drop `data-shape`/`setShape`/`BlessShapeToggle`/guide page, keep the tokens so consumers can opt out, add the cut/petal rule to Conventions). Naming candidates if we keep a toggle: `cut` / `petal`.
 
 ### Contrast policy (axe, 2026-09-20 triage)
 
