@@ -1,0 +1,44 @@
+[
+  {
+    "slug": "news",
+    "title": "News",
+    "group": "Showcase",
+    "summary": "Dated news rows with NEW! badges under an oversized watermark — the front page of an official site.",
+    "order": 1
+  },
+  {
+    "slug": "onair",
+    "title": "On Air",
+    "group": "Showcase",
+    "summary": "Broadcast schedule as a station table, with streaming services below — stacks into label/value rows on a phone.",
+    "order": 2
+  },
+  {
+    "slug": "character",
+    "title": "Character",
+    "group": "Showcase",
+    "summary": "A grid of character cards; each opens a hash-routed modal with the profile and cast. Deep links survive reload.",
+    "order": 3
+  },
+  {
+    "slug": "staff",
+    "title": "Staff & Cast",
+    "group": "Showcase",
+    "summary": "Credits as two definition tables side by side — roles in skewed labels, names beside them.",
+    "order": 4
+  },
+  {
+    "slug": "release",
+    "title": "Release",
+    "group": "Showcase",
+    "summary": "Blu-ray / CD release cards with cover, price, date and a purchase button; the grid collapses to one column on phones.",
+    "order": 5
+  },
+  {
+    "slug": "story",
+    "title": "Story",
+    "group": "Showcase",
+    "summary": "Episode list: number, title, air date and a synopsis that expands — with a synopsis-free intro above.",
+    "order": 6
+  }
+]

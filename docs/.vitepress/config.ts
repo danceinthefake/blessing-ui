@@ -1,6 +1,7 @@
 import { defineConfig } from "vitepress";
 import { fileURLToPath } from "node:url";
 import { groups } from "./components";
+import blocks from "./blocks.json" with { type: "json" };
 
 const src = (p: string) => fileURLToPath(new URL(`../../src/${p}`, import.meta.url));
 
@@ -9,6 +10,7 @@ export default defineConfig({
   description: "Themed Flat Interface. Flat by design, raised with Vue, blessed for everyone.",
   lang: "en",
   base: process.env.DOCS_BASE ?? "/",
+  srcExclude: ["blocks/README.md"],
   cleanUrls: true,
   lastUpdated: true,
   head: [
@@ -40,9 +42,19 @@ export default defineConfig({
     nav: [
       { text: "Guide", link: "/guide/install" },
       { text: "Components", link: "/components/button" },
+      { text: "Blocks", link: "/blocks/" },
       { text: "Tokens", link: "/guide/tokens" },
     ],
     sidebar: {
+      "/blocks/": [
+        { text: "Blocks", items: [{ text: "Overview", link: "/blocks/" }] },
+        ...[...new Set(blocks.map((b) => b.group))].map((g) => ({
+          text: g,
+          items: blocks
+            .filter((b) => b.group === g)
+            .map((b) => ({ text: b.title, link: `/blocks/${b.slug}` })),
+        })),
+      ],
       "/guide/": [
         {
           text: "Guide",

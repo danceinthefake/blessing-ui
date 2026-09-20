@@ -12,7 +12,7 @@ import { withBase } from "vitepress";
 
 ## When to use
 
-The shell for an *application* — dashboards, admin tools, mobile apps — where the same header, footer and side drawers frame every screen. It handles the part that's always fiddly: drawers that are permanent columns on a desktop and off-canvas panels on a phone, with edge-swipe, a backdrop, Escape and `inert` on the hidden one. For a content site with a fixed sidebar in the saenai style, use `BlessStage`.
+The shell for an _application_ — dashboards, admin tools, mobile apps — where the same header, footer and side drawers frame every screen. It handles the part that's always fiddly: drawers that are permanent columns on a desktop and off-canvas panels on a phone, with edge-swipe, a backdrop, Escape and `inert` on the hidden one. For a content site with a fixed sidebar in the saenai style, use `BlessStage`.
 
 `BlessLayout` owns the viewport, so it can't sit inside a doc page. Open it full-page and resize the window:
 
