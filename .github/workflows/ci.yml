@@ -1,0 +1,60 @@
+name: ci
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: unit · lib · consumer · docs
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm test
+      - run: pnpm build
+      - run: node e2e/consumer/check.mjs
+      - run: pnpm docs:build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: docs-dist
+          path: docs/.vitepress/dist
+          retention-days: 1
+
+  e2e:
+    name: e2e · ${{ matrix.browser }}
+    needs: build
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        browser: [chromium, firefox, webkit]
+    steps:
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - uses: actions/download-artifact@v4
+        with:
+          name: docs-dist
+          path: docs/.vitepress/dist
+      - run: pnpm exec playwright install --with-deps ${{ matrix.browser }}
+      - name: sweep + interact (+ axe on chromium)
+        run: |
+          pnpm exec vitepress preview docs --port 4173 &
+          sleep 3
+          node e2e/sweep.mjs ${{ matrix.browser }}
+          node e2e/interact.mjs ${{ matrix.browser }}
+          if [ "${{ matrix.browser }}" = "chromium" ]; then node e2e/axe.mjs; fi
+      # Pages deploy disabled for now — add an upload-pages-artifact + deploy-pages job needing `build` when ready
