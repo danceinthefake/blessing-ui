@@ -125,7 +125,7 @@ defineExpose({ scrollToBottom, scrollTo, loadHistory, atBottom });
   bottom: var(--bless-space-3);
   inset-inline-start: 50%;
   translate: -50% 0;
-  box-shadow: var(--bless-shadow-md);
+  box-shadow: var(--bless-shadow-plate);
 }
 .bless-message-scroller__fade-enter-active,
 .bless-message-scroller__fade-leave-active {

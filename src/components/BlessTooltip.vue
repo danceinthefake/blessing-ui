@@ -77,6 +77,7 @@ watch(
   position: fixed;
   inset: unset;
   margin: 0;
+  box-shadow: var(--bless-shadow-plate);
   overflow: visible; /* UA [popover] sets overflow:auto, which would clip the arrow */
   padding: var(--bless-space-1) var(--bless-space-3);
   border: 0;

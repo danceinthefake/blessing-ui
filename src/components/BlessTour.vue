@@ -144,7 +144,7 @@ const hole = computed(() => {
   background: var(--bless-color-bg);
   color: var(--bless-color-text);
   font-family: var(--bless-font-sans);
-  box-shadow: var(--bless-shadow-md);
+  box-shadow: var(--bless-shadow-plate);
   outline: 0;
 }
 .bless-tour--centred {

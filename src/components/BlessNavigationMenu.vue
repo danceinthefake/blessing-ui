@@ -182,7 +182,7 @@ function onKey(e: KeyboardEvent, i: number, item: BlessNavMenuItem) {
   padding: var(--bless-space-3);
   border: var(--bless-border-width) solid var(--bless-color-border);
   background: var(--bless-color-bg);
-  box-shadow: var(--bless-shadow-md);
+  box-shadow: var(--bless-shadow-plate);
   min-width: 280px;
 }
 .bless-navmenu__panel:popover-open {

@@ -129,7 +129,6 @@ function onUp() {
   flex-direction: column;
   box-sizing: border-box;
   background: var(--bless-color-bg);
-  box-shadow: var(--bless-shadow-md);
   outline: 0;
   animation: var(--_anim) var(--bless-duration-slow) var(--bless-ease-out);
 }

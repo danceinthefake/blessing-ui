@@ -82,7 +82,6 @@ const emit = defineEmits<{ select: [item: BlessBottomTab, e: Event] }>();
   gap: var(--bless-space-1);
   padding: var(--bless-space-1);
   border: var(--bless-border-width) solid var(--bless-color-border);
-  box-shadow: var(--bless-shadow-md);
   transform: skewX(var(--bless-skew));
 }
 .bless-bottom-tabs--dock .bless-bottom-tabs__item {

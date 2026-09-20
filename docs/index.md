@@ -21,7 +21,7 @@ hero:
       link: https://github.com/danceinthefake/blessing-ui
 features:
   - title: Flat by design
-    details: No bevels, no gloss, no rebuilt widgets. Grey does the work; the accent shows what matters. A shadow means something floats — nothing else gets one. Dark mode is the same greys turned over.
+    details: No bevels, no gloss, no rebuilt widgets. Grey does the work; the accent shows what matters. Nothing blurs — a floating thing sits on a thin accent plate. Dark mode is the same greys turned over.
   - title: Themed by tokens
     details: Every value is a --bless-* custom property. Six palettes ship in the box — switch with one attribute, or write your own.
   - title: Built on the platform
