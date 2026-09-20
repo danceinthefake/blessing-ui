@@ -146,10 +146,10 @@ function onToggle(e: Event) {
   height: 32px;
   transform: none;
 }
+/* fade only — the site's rule: appearances and hovers fade, nothing drifts */
 @keyframes bless-pop-in {
   from {
     opacity: 0;
-    transform: translateY(4px);
   }
 }
 @media (prefers-reduced-motion: reduce) {
