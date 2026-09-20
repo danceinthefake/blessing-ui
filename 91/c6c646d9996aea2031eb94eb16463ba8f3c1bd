@@ -1,0 +1,43 @@
+docs/.vitepress/theme/custom.css
+  s_9ec1000e308ddb::t_ed9a242a71106f 115-119
+  s_9ec1000e308ddb::t_0cdc44006a33a9 120
+src/components/BlessBadge.vue
+  s_9ec1000e308ddb::t_1c5ebe2ac7392b 19,21,74
+  s_9ec1000e308ddb::t_0cbc3b86a7ef2f 9-10,12,17-18,20,64-73,75-97
+tokens.css
+  s_9ec1000e308ddb::t_0cbc3b86a7ef2f 59
+src/components/BlessSection.vue
+  s_9ec1000e308ddb::t_1c5ebe2ac7392b 13-20,22,27-28,30-32,38-43,70-108
+DESIGN.md
+  s_9ec1000e308ddb::t_90bd7c9e6bd949 261,316
+README.md
+  s_9ec1000e308ddb::t_df6af87ba3272c 309
+docs/components/badge.md
+  s_9ec1000e308ddb::t_6baf1077c61bac 8,33-41
+docs/components/section.md
+  s_9ec1000e308ddb::t_eb3aff4e2f96b3 7,23-33
+docs/demos/BadgeOutline.vue
+  s_9ec1000e308ddb::t_1272e7f18ef902 1-22
+docs/demos/SectionHanging.vue
+  s_9ec1000e308ddb::t_28d8ebb04d794c 1-46
+docs/guide/tokens.md
+  s_9ec1000e308ddb::t_4095f445be05f5 16
+docs/.vitepress/meta.json
+  s_9ec1000e308ddb::t_a8b94721ee7665 544-550,759,5534-5546,5551-5555,5929,6278
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "91c6c646d9996aea2031eb94eb16463ba8f3c1bd",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "unknown"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
