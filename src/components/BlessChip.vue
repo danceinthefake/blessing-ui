@@ -70,7 +70,7 @@ const emit = defineEmits<{ remove: [] }>();
   border-radius: 50%;
 }
 .bless-chip__remove {
-  margin-right: calc(-1 * var(--bless-space-1));
+  margin-inline-end: calc(-1 * var(--bless-space-1));
   padding: 0 2px;
   border: 0;
   background: none;

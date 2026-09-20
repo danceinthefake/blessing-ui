@@ -243,7 +243,7 @@ onBeforeUnmount(() => audio.value?.pause());
   color: inherit;
   font: inherit;
   font-size: var(--bless-text-sm);
-  text-align: left;
+  text-align: start;
   cursor: pointer;
   transition: opacity var(--bless-duration-slow) var(--bless-ease-in-out);
 }

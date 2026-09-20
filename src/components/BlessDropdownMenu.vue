@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { inject, nextTick, onBeforeUnmount, ref, useId, watch } from "vue";
+import { logicalKey } from "../composables/rtl";
 import { useFloating, type Placement } from "../composables/useFloating";
 import BlessMenuList from "./BlessMenuList.vue";
 import { menubarKey, type BlessMenuItem } from "./menu";
@@ -90,18 +91,18 @@ function onTriggerKey(e: KeyboardEvent) {
     open.value = true;
     nextTick(() => (e.key === "ArrowUp" ? list.value?.focusLast() : list.value?.focusFirst()));
   }
-  if (bar && (e.key === "ArrowLeft" || e.key === "ArrowRight"))
-    bar.focusNext(id, e.key === "ArrowRight" ? 1 : -1);
+  if (bar && (logicalKey(e) === "ArrowLeft" || logicalKey(e) === "ArrowRight"))
+    bar.focusNext(id, logicalKey(e) === "ArrowRight" ? 1 : -1);
 }
 function onListKey(e: KeyboardEvent) {
   if (
     bar &&
-    (e.key === "ArrowLeft" || e.key === "ArrowRight") &&
+    (logicalKey(e) === "ArrowLeft" || logicalKey(e) === "ArrowRight") &&
     !(e.target as HTMLElement).closest(".bless-menu--sub") &&
     !(e.target as HTMLElement).dataset.sub
   ) {
     e.preventDefault();
-    bar.focusNext(id, e.key === "ArrowRight" ? 1 : -1);
+    bar.focusNext(id, logicalKey(e) === "ArrowRight" ? 1 : -1);
   }
 }
 

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { nextTick, ref, useId } from "vue";
+import { logicalKey } from "../composables/rtl";
 import { useFloating } from "../composables/useFloating";
 
 defineOptions({ name: "BlessNavigationMenu" });
@@ -51,8 +52,8 @@ function onKey(e: KeyboardEvent, i: number, item: BlessNavMenuItem) {
     open(i);
     nextTick(() => panel.value?.querySelector<HTMLElement>("a")?.focus());
   } else if (e.key === "Escape") close(0);
-  else if (e.key === "ArrowRight") anchors.value[(i + 1) % anchors.value.length]?.focus();
-  else if (e.key === "ArrowLeft")
+  else if (logicalKey(e) === "ArrowRight") anchors.value[(i + 1) % anchors.value.length]?.focus();
+  else if (logicalKey(e) === "ArrowLeft")
     anchors.value[(i - 1 + anchors.value.length) % anchors.value.length]?.focus();
 }
 </script>
@@ -165,7 +166,7 @@ function onKey(e: KeyboardEvent, i: number, item: BlessNavMenuItem) {
 .bless-navmenu__chevron {
   width: 6px;
   height: 6px;
-  border-right: 2px solid currentColor;
+  border-inline-end: 2px solid currentColor;
   border-bottom: 2px solid currentColor;
   transform: translateY(-2px) rotate(45deg);
   transition: transform var(--bless-duration-base);

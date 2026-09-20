@@ -53,7 +53,7 @@ const emit = defineEmits<{ dismiss: [] }>();
   display: flex;
   gap: var(--bless-space-3);
   padding: var(--bless-space-3) var(--bless-space-4);
-  border-left: 4px solid var(--_c);
+  border-inline-start: 4px solid var(--_c);
   background: var(--bless-color-surface);
   font-family: var(--bless-font-sans);
   font-size: var(--bless-text-md);
@@ -79,7 +79,7 @@ const emit = defineEmits<{ dismiss: [] }>();
 .bless-alert::before {
   content: "";
   position: absolute;
-  left: -4px;
+  inset-inline-start: -4px;
   top: 0;
   width: 4px;
   height: 100%;

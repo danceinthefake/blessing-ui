@@ -122,7 +122,7 @@ defineExpose({ scrollToBottom, scrollTo, loadHistory, atBottom });
 .bless-message-scroller__jump {
   position: absolute;
   bottom: var(--bless-space-3);
-  left: 50%;
+  inset-inline-start: 50%;
   translate: -50% 0;
   box-shadow: var(--bless-shadow-md);
 }

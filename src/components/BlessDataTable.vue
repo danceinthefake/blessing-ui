@@ -266,7 +266,7 @@ defineExpose({ state, selectedRows: dt.selectedRows });
   width: 240px;
 }
 .bless-datatable__cols {
-  margin-left: auto;
+  margin-inline-start: auto;
 }
 .bless-datatable__cols-btn {
   padding: var(--bless-space-2) var(--bless-space-3);

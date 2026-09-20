@@ -185,7 +185,7 @@ function onKey(e: KeyboardEvent) {
 .bless-questionnaire__key {
   display: inline-block;
   min-width: 1.4em;
-  margin-right: var(--bless-space-2);
+  margin-inline-end: var(--bless-space-2);
   font-family: inherit;
   font-size: var(--bless-text-2xs);
   text-align: center;

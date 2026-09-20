@@ -125,7 +125,7 @@ function onMove(e: PointerEvent) {
 }
 .bless-knob__hand {
   position: absolute;
-  left: 50%;
+  inset-inline-start: 50%;
   top: 50%;
   width: 2px;
   height: 38%;

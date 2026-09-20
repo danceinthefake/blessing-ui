@@ -67,7 +67,7 @@ withDefaults(defineProps<{ items: BlessTimelineItem[]; label?: string }>(), { la
 .bless-timeline__item:not(:last-child)::before {
   content: "";
   position: absolute;
-  left: 5px;
+  inset-inline-start: 5px;
   top: 14px;
   bottom: 0;
   width: var(--bless-border-width);

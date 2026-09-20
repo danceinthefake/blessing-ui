@@ -66,7 +66,7 @@ function onClose() {
   display: none;
 }
 .bless-alert-dialog .bless-modal__header {
-  padding-right: var(--bless-space-6);
+  padding-inline-end: var(--bless-space-6);
 }
 .bless-alert-dialog__desc {
   margin: 0;

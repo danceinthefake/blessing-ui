@@ -137,7 +137,7 @@ const nudge = (d: number) => (model.value = clamp((model.value ?? 0) + d * props
   background: transparent;
   font: inherit;
   font-variant-numeric: tabular-nums;
-  text-align: right;
+  text-align: end;
   color: inherit;
   outline: 0;
 }

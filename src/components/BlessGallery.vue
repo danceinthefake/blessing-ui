@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, ref, watch } from "vue";
+import { logicalKey } from "../composables/rtl";
 import BlessModal from "./BlessModal.vue";
 
 defineOptions({ name: "BlessGallery" });
@@ -44,8 +45,8 @@ function step(d: 1 | -1) {
 
 function onKey(e: KeyboardEvent) {
   if (!open.value) return;
-  if (e.key === "ArrowRight") step(1);
-  else if (e.key === "ArrowLeft") step(-1);
+  if (logicalKey(e) === "ArrowRight") step(1);
+  else if (logicalKey(e) === "ArrowLeft") step(-1);
   else return;
   e.preventDefault();
 }
@@ -177,10 +178,10 @@ function onKey(e: KeyboardEvent) {
   transform: skewX(var(--bless-skew-counter));
 }
 .bless-gallery__nav--prev {
-  left: var(--bless-space-2);
+  inset-inline-start: var(--bless-space-2);
 }
 .bless-gallery__nav--next {
-  right: var(--bless-space-2);
+  inset-inline-end: var(--bless-space-2);
 }
 .bless-gallery__nav:hover:not(:disabled) {
   opacity: var(--bless-hover-opacity);
@@ -195,7 +196,7 @@ function onKey(e: KeyboardEvent) {
 }
 .bless-gallery__count {
   position: absolute;
-  right: var(--bless-space-4);
+  inset-inline-end: var(--bless-space-4);
   bottom: var(--bless-space-3);
   font-family: var(--bless-font-sans);
   font-size: var(--bless-text-xs);

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
+import { logicalKey } from "../composables/rtl";
 import BlessTreeItem from "./BlessTreeItem.vue";
 import type { BlessTreeNode } from "./tree";
 
@@ -18,7 +19,7 @@ function onKey(e: KeyboardEvent) {
   const details = cur!.parentElement as HTMLDetailsElement | null;
   const isBranch = details?.tagName === "DETAILS";
   const focus = (el?: HTMLElement) => el && (e.preventDefault(), el.focus());
-  switch (e.key) {
+  switch (logicalKey(e)) {
     case "ArrowDown":
       return focus(list[i + 1]);
     case "ArrowUp":
@@ -77,9 +78,9 @@ function onSelect(n: BlessTreeNode, p: string) {
   color: var(--bless-color-text);
 }
 .bless-tree__group {
-  padding-left: var(--bless-space-4);
-  border-left: var(--bless-border-width) solid var(--bless-color-border);
-  margin-left: 9px;
+  padding-inline-start: var(--bless-space-4);
+  border-inline-start: var(--bless-border-width) solid var(--bless-color-border);
+  margin-inline-start: 9px;
 }
 .bless-tree__row {
   display: flex;
@@ -92,7 +93,7 @@ function onSelect(n: BlessTreeNode, p: string) {
   color: inherit;
   font: inherit;
   line-height: var(--bless-leading-normal);
-  text-align: left;
+  text-align: start;
   text-decoration: none;
   cursor: pointer;
   list-style: none;
@@ -112,7 +113,7 @@ function onSelect(n: BlessTreeNode, p: string) {
   font-weight: var(--bless-font-weight-bold);
 }
 .bless-tree__row--leaf {
-  padding-left: calc(var(--bless-space-2) + 14px);
+  padding-inline-start: calc(var(--bless-space-2) + 14px);
 }
 .bless-tree__chevron {
   display: inline-block;

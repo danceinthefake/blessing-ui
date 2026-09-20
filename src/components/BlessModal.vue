@@ -142,7 +142,7 @@ onMounted(() => {
 .bless-modal__close {
   position: absolute;
   top: var(--bless-space-2);
-  right: var(--bless-space-2);
+  inset-inline-end: var(--bless-space-2);
   z-index: 1;
   width: 40px;
   height: 40px;

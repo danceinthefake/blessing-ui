@@ -89,13 +89,13 @@ defineExpose({ id });
 .bless-input__field::after {
   content: "";
   position: absolute;
-  left: 0;
+  inset-inline-start: 0;
   bottom: calc(-2 * var(--bless-border-width));
   width: 100%;
   height: calc(2 * var(--bless-border-width));
   background: var(--bless-color-accent);
   transform: scaleX(0) skewX(var(--bless-skew));
-  transform-origin: left;
+  transform-origin: 0 50%;
   transition: transform var(--bless-duration-slow) var(--bless-ease-out);
 }
 .bless-input__field:focus-within::after {
@@ -131,10 +131,10 @@ defineExpose({ id });
   color: var(--bless-color-text-muted);
 }
 .bless-input__affix--prefix + .bless-input__control {
-  padding-left: 0;
+  padding-inline-start: 0;
 }
 .bless-input__affix--suffix {
-  padding-left: 0;
+  padding-inline-start: 0;
 }
 .bless-input--invalid .bless-input__field {
   border-bottom-color: var(--bless-color-danger);

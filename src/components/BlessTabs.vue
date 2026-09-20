@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, ref, useId } from "vue";
+import { logicalKey } from "../composables/rtl";
 import BlessSkew from "./BlessSkew.vue";
 
 defineOptions({ name: "BlessTabs" });
@@ -40,7 +41,7 @@ function focusTab(value: string) {
 function onKey(e: KeyboardEvent) {
   const list = enabled.value;
   const i = list.findIndex((t) => t.value === (focused.value ?? current.value));
-  const step = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 }[e.key];
+  const step = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 }[logicalKey(e)];
   let next: BlessTab | undefined;
   if (step) next = list[(i + step + list.length) % list.length];
   else if (e.key === "Home") next = list[0];
@@ -106,7 +107,7 @@ function onKey(e: KeyboardEvent) {
   display: flex;
   flex-wrap: wrap;
   gap: var(--bless-space-2);
-  padding-left: var(--bless-space-1);
+  padding-inline-start: var(--bless-space-1);
   border-bottom: var(--bless-border-width) solid var(--bless-color-border);
 }
 .bless-tabs__tab {

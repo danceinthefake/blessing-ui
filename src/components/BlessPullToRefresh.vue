@@ -79,8 +79,8 @@ const ready = computed(() => pull.value >= props.threshold);
 .bless-ptr__indicator {
   position: absolute;
   top: 0;
-  left: 0;
-  right: 0;
+  inset-inline-start: 0;
+  inset-inline-end: 0;
   display: grid;
   place-items: center;
   height: var(--_p);

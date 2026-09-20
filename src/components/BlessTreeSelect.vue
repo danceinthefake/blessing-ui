@@ -119,7 +119,7 @@ const remove = (id: string) => (model.value = chosen.value.filter((x) => x !== i
   color: var(--bless-color-text);
   font: inherit;
   font-family: var(--bless-font-sans);
-  text-align: left;
+  text-align: start;
   cursor: pointer;
 }
 .bless-treeselect__trigger--sm {
@@ -159,7 +159,7 @@ const remove = (id: string) => (model.value = chosen.value.filter((x) => x !== i
 .bless-treeselect__chevron {
   width: 8px;
   height: 8px;
-  border-right: 2px solid currentColor;
+  border-inline-end: 2px solid currentColor;
   border-bottom: 2px solid currentColor;
   transform: translateY(-2px) rotate(45deg);
 }

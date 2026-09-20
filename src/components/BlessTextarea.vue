@@ -77,13 +77,13 @@ const errId = () => `${id()}-err`;
 .bless-textarea__field::after {
   content: "";
   position: absolute;
-  left: 0;
+  inset-inline-start: 0;
   bottom: calc(-2 * var(--bless-border-width));
   width: 100%;
   height: calc(2 * var(--bless-border-width));
   background: var(--bless-color-accent);
   transform: scaleX(0) skewX(var(--bless-skew));
-  transform-origin: left;
+  transform-origin: 0 50%;
   transition: transform var(--bless-duration-slow) var(--bless-ease-out);
 }
 .bless-textarea__field:focus-within::after {
@@ -139,7 +139,7 @@ const errId = () => `${id()}-err`;
   font-weight: var(--bless-font-weight-bold);
 }
 .bless-textarea__counter {
-  margin-left: auto;
+  margin-inline-start: auto;
   margin-top: var(--bless-space-1);
   font-size: var(--bless-text-xs);
   color: var(--bless-color-text-muted);

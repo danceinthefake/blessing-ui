@@ -104,8 +104,8 @@ function setHi(v: number) {
   content: "";
   position: absolute;
   top: 10px;
-  left: 0;
-  right: 0;
+  inset-inline-start: 0;
+  inset-inline-end: 0;
   height: 4px;
   background: var(--bless-color-surface);
   transform: skewX(var(--bless-skew));
@@ -113,8 +113,8 @@ function setHi(v: number) {
 .bless-range__fill {
   position: absolute;
   top: 10px;
-  left: var(--_lo);
-  right: calc(100% - var(--_hi));
+  inset-inline-start: var(--_lo);
+  inset-inline-end: calc(100% - var(--_hi));
   height: 4px;
   background: var(--bless-color-accent);
   transform: skewX(var(--bless-skew));

@@ -78,7 +78,7 @@ defineExpose({ dismiss });
 }
 .bless-splash__skip {
   position: absolute;
-  right: var(--bless-space-4);
+  inset-inline-end: var(--bless-space-4);
   bottom: var(--bless-space-4);
   padding: var(--bless-space-2) var(--bless-space-4);
   border: 0;

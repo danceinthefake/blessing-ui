@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { nextTick, ref } from "vue";
+import { logicalKey } from "../composables/rtl";
 import BlessKbd from "./BlessKbd.vue";
 import type { BlessMenuItem } from "./menu";
 
@@ -39,7 +40,7 @@ function onKey(e: KeyboardEvent) {
     e.preventDefault();
     list[(n + list.length) % list.length]?.focus();
   };
-  switch (e.key) {
+  switch (logicalKey(e)) {
     case "ArrowDown":
       return go(i + 1);
     case "ArrowUp":
@@ -180,7 +181,7 @@ defineExpose({ focusFirst, focusLast });
 }
 .bless-menu--sub {
   position: absolute;
-  left: 100%;
+  inset-inline-start: 100%;
   top: calc(-1 * var(--bless-space-1) - 1px);
 }
 .bless-menu__item {
@@ -220,7 +221,7 @@ defineExpose({ focusFirst, focusLast });
   flex: 1;
 }
 .bless-menu__shortcut {
-  margin-left: var(--bless-space-4);
+  margin-inline-start: var(--bless-space-4);
   opacity: 0.7;
 }
 .bless-menu__chevron {

@@ -89,7 +89,7 @@ function pick(a: BlessAction) {
   color: var(--bless-color-text);
   font: inherit;
   font-family: var(--bless-font-sans);
-  text-align: left;
+  text-align: start;
   cursor: pointer;
 }
 .bless-actionsheet__list--grid .bless-actionsheet__item {

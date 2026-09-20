@@ -87,13 +87,13 @@ const isGroup = (o: unknown): o is { label: string; options: BlessOption<T>[] } 
 .bless-select__field::after {
   content: "";
   position: absolute;
-  left: 0;
+  inset-inline-start: 0;
   bottom: calc(-2 * var(--bless-border-width));
   width: 100%;
   height: calc(2 * var(--bless-border-width));
   background: var(--bless-color-accent);
   transform: scaleX(0) skewX(var(--bless-skew));
-  transform-origin: left;
+  transform-origin: 0 50%;
   transition: transform var(--bless-duration-slow) var(--bless-ease-out);
 }
 .bless-select__field:focus-within::after {
@@ -117,11 +117,11 @@ const isGroup = (o: unknown): o is { label: string; options: BlessOption<T>[] } 
 }
 .bless-select__chevron {
   position: absolute;
-  right: var(--bless-space-3);
+  inset-inline-end: var(--bless-space-3);
   top: 50%;
   width: 8px;
   height: 8px;
-  border-right: 2px solid currentColor;
+  border-inline-end: 2px solid currentColor;
   border-bottom: 2px solid currentColor;
   transform: translateY(-70%) rotate(45deg);
   pointer-events: none;

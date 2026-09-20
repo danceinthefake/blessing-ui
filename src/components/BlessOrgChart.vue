@@ -53,7 +53,7 @@ const emit = defineEmits<{ select: [node: BlessTreeNode, id: string] }>();
   content: "";
   position: absolute;
   top: 0;
-  left: 50%;
+  inset-inline-start: 50%;
   width: var(--bless-border-width);
   height: var(--bless-space-4);
   background: var(--bless-color-border);
@@ -63,16 +63,16 @@ const emit = defineEmits<{ select: [node: BlessTreeNode, id: string] }>();
   content: "";
   position: absolute;
   top: 0;
-  left: 0;
-  right: 0;
+  inset-inline-start: 0;
+  inset-inline-end: 0;
   height: var(--bless-border-width);
   background: var(--bless-color-border);
 }
 .bless-org li.bless-org__item:first-child::after {
-  left: 50%;
+  inset-inline-start: 50%;
 }
 .bless-org li.bless-org__item:last-child::after {
-  right: 50%;
+  inset-inline-end: 50%;
 }
 .bless-org li.bless-org__item:only-child::after {
   display: none;
@@ -97,7 +97,7 @@ const emit = defineEmits<{ select: [node: BlessTreeNode, id: string] }>();
   content: "";
   position: absolute;
   top: 0;
-  left: 50%;
+  inset-inline-start: 50%;
   width: var(--bless-border-width);
   height: var(--bless-space-4);
   background: var(--bless-color-border);

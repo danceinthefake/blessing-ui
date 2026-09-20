@@ -26,7 +26,7 @@ withDefaults(
 }
 .bless-float__label {
   position: absolute;
-  left: var(--bless-space-3);
+  inset-inline-start: var(--bless-space-3);
   top: 50%;
   translate: 0 -50%;
   font-size: var(--bless-text-md);

@@ -70,7 +70,7 @@ const open = defineModel<boolean>("open", { default: false });
 .bless-collapsible__chevron {
   width: 8px;
   height: 8px;
-  border-right: 2px solid currentColor;
+  border-inline-end: 2px solid currentColor;
   border-bottom: 2px solid currentColor;
   transform: rotate(45deg) translateY(-2px);
   transition: transform var(--bless-duration-base) var(--bless-ease-in-out);

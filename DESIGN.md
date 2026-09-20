@@ -229,7 +229,7 @@ Skipped from Quasar: Ripple / Morph / Mutation (directive utilities, no bounces)
 
 Skipped from PrimeVue: Terminal, Ripple / StyleClass / Fluid / KeyFilter (directive utilities), FocusTrap (native `<dialog>` covers it).
 
-Deferred: RTL / `Direction` — audience is JP/EN; ~1 day of logical-property CSS if ever needed.
+RTL ✅ (2026-09-20): logical properties throughout, skew mirrored under `[dir=rtl]`, `logicalKey()` swaps ←/→ in keyboard handlers; named-physical props stay physical. Guide: docs/guide/rtl.
 
 ### Phase 20 — Blocks (copy-in sections) ✅
 

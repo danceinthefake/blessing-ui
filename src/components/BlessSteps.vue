@@ -82,7 +82,7 @@ const emit = defineEmits<{ select: [index: number] }>();
 .bless-steps--vertical .bless-steps__item:not(:last-child)::after {
   content: "";
   position: absolute;
-  left: 14px;
+  inset-inline-start: 14px;
   top: 32px;
   bottom: calc(-1 * var(--bless-space-4));
   width: var(--bless-border-width);

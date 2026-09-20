@@ -271,7 +271,7 @@ const defs: Record<Exclude<BlessEditorTool, "|">, Def> = {
 }
 .bless-editor__content .tiptap :is(ul, ol) {
   margin: 0;
-  padding-left: var(--bless-space-6);
+  padding-inline-start: var(--bless-space-6);
 }
 .bless-editor__content .tiptap li {
   margin: 0;
@@ -286,8 +286,8 @@ const defs: Record<Exclude<BlessEditorTool, "|">, Def> = {
 }
 .bless-editor__content .tiptap blockquote {
   margin: 0;
-  padding-left: var(--bless-space-3);
-  border-left: 3px solid var(--bless-color-accent);
+  padding-inline-start: var(--bless-space-3);
+  border-inline-start: 3px solid var(--bless-color-accent);
   color: var(--bless-color-text-muted);
 }
 .bless-editor__content .tiptap code {

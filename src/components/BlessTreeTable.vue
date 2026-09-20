@@ -87,7 +87,7 @@ const flat = computed(() => {
   display: inline-flex;
   align-items: center;
   gap: var(--bless-space-1);
-  padding-left: calc(var(--_d, 0) * var(--bless-space-6));
+  padding-inline-start: calc(var(--_d, 0) * var(--bless-space-6));
 }
 .bless-treetable__toggle,
 .bless-treetable__spacer {

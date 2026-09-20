@@ -157,7 +157,7 @@ function clear() {
   color: inherit;
   font: inherit;
   font-size: var(--_fs);
-  text-align: left;
+  text-align: start;
   cursor: pointer;
 }
 .bless-datepicker__trigger:focus-visible,
