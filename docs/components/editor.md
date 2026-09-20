@@ -10,6 +10,12 @@ import EditorBasic from "../demos/EditorBasic.vue";
 
 <p class="bless-lead">Rich text: skewed toolbar around a Tiptap editor</p>
 
+## When to use
+
+A rich-text surface for the cases a `BlessTextarea` can't cover — headings, lists, code, quotes. The library ships the frame: a toolbar in the system's style and content typography from tokens. The engine is [Tiptap](https://tiptap.dev), which you install and configure yourself; the component only needs the `editor` from `useEditor()` and renders your `<EditorContent>` in its default slot.
+
+Reach for it only when users must produce formatted text. For comments, notes and messages a textarea is lighter and easier to store.
+
 <Demo title="Basic">
   <EditorBasic />
   <template #code>

@@ -10,6 +10,12 @@ import QuestionnaireBasic from "../demos/QuestionnaireBasic.vue";
 
 <p class="bless-lead">Multi-step single/multiple/freeform</p>
 
+## When to use
+
+A one-question-at-a-time form: onboarding, surveys, quizzes. Give it a list of questions and it handles the step header, the input for each type (single choice, multiple choice, free text), required-answer validation, skipping, keyboard shortcuts `1`–`9` for choices, and the progress bar. Answers collect into one object bound with `v-model`.
+
+For a form where the user should see all fields at once, use `BlessForm` + `BlessField`. For a wizard with arbitrary panels, use `BlessStepper`.
+
 <Demo title="Basic">
   <QuestionnaireBasic />
   <template #code>
