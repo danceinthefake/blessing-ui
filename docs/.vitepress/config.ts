@@ -77,10 +77,14 @@ export default defineConfig({
       "/components/": groups.map((g) => ({
         text: g.title,
         collapsed: false,
-        items: g.items.map((i) => ({
-          text: i.name.replace(/^Bless/, ""),
-          link: `/components/${i.slug}`,
-        })),
+        // groups are hand-ordered (coarse → fine); inside a group, alphabetical — the one order a
+        // stranger can predict
+        items: [...g.items]
+          .sort((a, b) => a.name.localeCompare(b.name))
+          .map((i) => ({
+            text: i.name.replace(/^Bless/, ""),
+            link: `/components/${i.slug}`,
+          })),
       })),
     },
     search: { provider: "local" },
