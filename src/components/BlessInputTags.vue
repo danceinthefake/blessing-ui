@@ -110,4 +110,14 @@ function onKey(e: KeyboardEvent) {
   opacity: 0.4;
   pointer-events: none;
 }
+/* parallelogram field; content counter-skews so text stays upright */
+.bless-tags {
+  transform: skewX(var(--bless-skew));
+}
+.bless-tags > :not(.bless-skew, .bless-chip, .bless-badge) {
+  transform: skewX(var(--bless-skew-counter));
+}
+.bless-tags {
+  padding-inline: calc(var(--bless-space-3) + 4px);
+}
 </style>

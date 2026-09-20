@@ -203,7 +203,7 @@ onBeforeUnmount(() => removeEventListener("keydown", onHotkey));
 .bless-command__icon {
   font-size: var(--bless-text-lg);
   color: var(--bless-color-text-muted);
-  transform: rotate(-45deg);
+  transform: skewX(var(--bless-skew-counter)) rotate(-45deg);
 }
 .bless-command__input {
   flex: 1;
@@ -270,5 +270,12 @@ onBeforeUnmount(() => removeEventListener("keydown", onHotkey));
   border-top: var(--bless-border-width) solid var(--bless-color-border);
   font-size: var(--bless-text-xs);
   color: var(--bless-color-text-muted);
+}
+/* parallelogram field; content counter-skews so text stays upright */
+.bless-command__search {
+  transform: skewX(var(--bless-skew));
+}
+.bless-command__search > :not(.bless-skew, .bless-chip, .bless-badge) {
+  transform: skewX(var(--bless-skew-counter));
 }
 </style>

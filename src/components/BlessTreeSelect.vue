@@ -174,4 +174,15 @@ const remove = (id: string) => (model.value = chosen.value.filter((x) => x !== i
 .bless-treeselect .bless-tree__row[aria-pressed="true"] {
   color: var(--bless-color-accent-text);
 }
+/* parallelogram trigger; content counter-skews so text stays upright */
+.bless-treeselect__trigger {
+  transform: skewX(var(--bless-skew));
+  padding-inline: calc(var(--bless-space-3) + 4px);
+}
+.bless-treeselect__trigger > * {
+  transform: skewX(var(--bless-skew-counter));
+}
+.bless-treeselect__trigger > .bless-treeselect__chevron {
+  transform: skewX(var(--bless-skew-counter)) translateY(-2px) rotate(45deg);
+}
 </style>

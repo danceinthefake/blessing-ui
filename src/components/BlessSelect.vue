@@ -92,12 +92,12 @@ const isGroup = (o: unknown): o is { label: string; options: BlessOption<T>[] } 
   width: 100%;
   height: calc(2 * var(--bless-border-width));
   background: var(--bless-color-accent);
-  transform: scaleX(0) skewX(var(--bless-skew));
+  transform: scaleX(0);
   transform-origin: 0 50%;
   transition: transform var(--bless-duration-slow) var(--bless-ease-out);
 }
 .bless-select__field:focus-within::after {
-  transform: scaleX(1) skewX(var(--bless-skew));
+  transform: scaleX(1);
 }
 .bless-select__control {
   border-radius: var(--bless-radius);
@@ -215,5 +215,28 @@ const isGroup = (o: unknown): o is { label: string; options: BlessOption<T>[] } 
 .bless-select__error {
   color: var(--bless-color-danger);
   font-weight: var(--bless-font-weight-bold);
+}
+/* fields are parallelograms like everything else; content counter-skews so text stays upright */
+.bless-select__field {
+  transform: skewX(var(--bless-skew));
+}
+.bless-select__field > :not(.bless-skew, .bless-chip, .bless-badge) {
+  transform: skewX(var(--bless-skew-counter));
+}
+.bless-select__field > :first-child {
+  padding-inline-start: calc(var(--bless-space-3) + 4px);
+}
+.bless-select__field > :last-child {
+  padding-inline-end: calc(var(--bless-space-3) + 4px);
+}
+/* a clipped V, not a rotated square: rotations don't survive the field's skew */
+.bless-select__field > .bless-select__chevron {
+  width: 11px;
+  height: 7px;
+  border: 0;
+  background: currentColor;
+  clip-path: polygon(0 0, 18% 0, 50% 55%, 82% 0, 100% 0, 50% 100%);
+  transform: skewX(var(--bless-skew-counter)) translateY(-50%);
+  inset-inline-end: calc(var(--bless-space-3) + 4px);
 }
 </style>

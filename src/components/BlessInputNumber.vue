@@ -169,4 +169,11 @@ const nudge = (d: number) => (model.value = clamp((model.value ?? 0) + d * props
   opacity: 0.4;
   pointer-events: none;
 }
+/* parallelogram field; content counter-skews so text stays upright */
+.bless-number {
+  transform: skewX(var(--bless-skew));
+}
+.bless-number > :not(.bless-skew, .bless-chip, .bless-badge) {
+  transform: skewX(var(--bless-skew-counter));
+}
 </style>

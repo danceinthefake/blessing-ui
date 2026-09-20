@@ -71,17 +71,18 @@ function clear() {
       { 'bless-datepicker--invalid': invalid, 'bless-datepicker--disabled': disabled },
     ]"
   >
-    <input
-      v-if="useNative"
-      :id
-      v-model="model"
-      type="date"
-      :min
-      :max
-      :disabled
-      class="bless-datepicker__native"
-      :aria-invalid="invalid || undefined"
-    />
+    <span v-if="useNative" class="bless-datepicker__field">
+      <input
+        :id
+        v-model="model"
+        type="date"
+        :min
+        :max
+        :disabled
+        class="bless-datepicker__native"
+        :aria-invalid="invalid || undefined"
+      />
+    </span>
     <template v-else>
       <button
         ref="anchor"
@@ -212,5 +213,28 @@ function clear() {
 }
 .bless-datepicker--disabled {
   opacity: 0.4;
+}
+/* parallelogram field: the trigger, or a wrapper round the native date input; content stays upright */
+.bless-datepicker__field {
+  display: inline-flex;
+  transform: skewX(var(--bless-skew));
+  background: var(--bless-color-surface);
+  border-bottom: calc(2 * var(--bless-border-width)) solid var(--bless-color-text-muted);
+}
+.bless-datepicker__field:focus-within {
+  border-bottom-color: var(--bless-color-accent-text);
+}
+.bless-datepicker__field > .bless-datepicker__native {
+  transform: skewX(var(--bless-skew-counter));
+  padding-inline: calc(var(--bless-space-3) + 4px);
+  background: transparent;
+  border-bottom: 0;
+}
+.bless-datepicker__trigger {
+  transform: skewX(var(--bless-skew));
+  padding-inline: calc(var(--bless-space-3) + 4px);
+}
+.bless-datepicker__trigger > * {
+  transform: skewX(var(--bless-skew-counter));
 }
 </style>

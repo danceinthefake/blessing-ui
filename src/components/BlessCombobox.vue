@@ -283,13 +283,13 @@ function onBlur(e: FocusEvent) {
   width: 100%;
   height: calc(2 * var(--bless-border-width));
   background: var(--bless-color-accent);
-  transform: scaleX(0) skewX(var(--bless-skew));
+  transform: scaleX(0);
   transform-origin: 0 50%;
   transition: transform var(--bless-duration-slow) var(--bless-ease-out);
 }
 .bless-combobox--open .bless-combobox__field::after,
 .bless-combobox__field:focus-within::after {
-  transform: scaleX(1) skewX(var(--bless-skew));
+  transform: scaleX(1);
 }
 .bless-combobox__input {
   flex: 1;
@@ -316,9 +316,6 @@ function onBlur(e: FocusEvent) {
   transform: translateY(-70%) rotate(45deg);
   pointer-events: none;
   transition: transform var(--bless-duration-base);
-}
-.bless-combobox--open .bless-combobox__chevron {
-  transform: translateY(-30%) rotate(-135deg);
 }
 .bless-combobox__chip {
   display: inline-flex;
@@ -393,5 +390,31 @@ function onBlur(e: FocusEvent) {
 .bless-combobox--disabled {
   opacity: 0.4;
   pointer-events: none;
+}
+/* fields are parallelograms like everything else; content counter-skews so text stays upright */
+.bless-combobox__field {
+  transform: skewX(var(--bless-skew));
+}
+.bless-combobox__field > :not(.bless-skew, .bless-chip, .bless-badge) {
+  transform: skewX(var(--bless-skew-counter));
+}
+.bless-combobox__field > :first-child {
+  padding-inline-start: calc(var(--bless-space-3) + 4px);
+}
+.bless-combobox__field > :last-child {
+  padding-inline-end: calc(var(--bless-space-3) + 4px);
+}
+/* a clipped V, not a rotated square: rotations don't survive the field's skew */
+.bless-combobox__field > .bless-combobox__chevron {
+  width: 11px;
+  height: 7px;
+  border: 0;
+  background: currentColor;
+  clip-path: polygon(0 0, 18% 0, 50% 55%, 82% 0, 100% 0, 50% 100%);
+  transform: skewX(var(--bless-skew-counter)) translateY(-50%);
+  inset-inline-end: calc(var(--bless-space-3) + 4px);
+}
+.bless-combobox--open .bless-combobox__field > .bless-combobox__chevron {
+  transform: skewX(var(--bless-skew-counter)) translateY(-50%) scaleY(-1);
 }
 </style>

@@ -5,7 +5,7 @@ Generic Vue 3 UI library. Visual language borrowed from saenai.tv (see `../saena
 ## 1. Principles
 
 1. **Tokens first.** Every component reads `--bless-*` only. No hard-coded colours, sizes, or durations in components. Theming = override custom props.
-2. **Skew, not radius.** Shape language is `skewX(-10deg)`; radius only on tiny badges.
+2. **Skew, not radius.** Shape language is `skewX(-10deg)` — buttons, tags, fields, pickers alike; content counter-skews so text stays upright. Radius only under `data-shape="rounded"`.
 3. **Fluid, one breakpoint.** `clamp()` for type; single `800px` breakpoint for layout changes.
 4. **Quiet motion.** Hover = opacity `.6` over `.3s`. No bounces. Respect `prefers-reduced-motion`.
 5. **Light DOM, scoped CSS.** Vue SFC with `<style scoped>` + BEM-ish class `bless-<component>__<part>`. No shadow DOM, no CSS-in-JS.
