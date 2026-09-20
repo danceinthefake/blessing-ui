@@ -112,7 +112,12 @@
 .vp-doc .demo__preview a.bless-menu__item--danger {
   color: var(--bless-color-danger);
 }
-.vp-doc .demo__preview :is(h1, h2, h3, h4, h5, h6):not(.tiptap *) {
+/* vp-doc gives h2 a top rule and padding; the section's own headline styles itself */
+.vp-doc .demo__preview .bless-section__title {
+  border: 0;
+  padding: 0;
+}
+.vp-doc .demo__preview :is(h1, h2, h3, h4, h5, h6):not(.tiptap *, .bless-section__title) {
   margin: 0;
   padding: 0;
   border: 0;

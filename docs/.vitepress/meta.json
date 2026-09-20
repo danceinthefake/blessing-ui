@@ -541,6 +541,13 @@
     "required": false,
     "default": "true",
     "description": "shrink to 0.8 like the source NEW! pill"
+   },
+   {
+    "name": "variant",
+    "type": "\"solid\" | \"outline\" | undefined",
+    "required": false,
+    "default": "\"solid\"",
+    "description": "outline: 1px border and text in the colour, no fill — quiet category/role tags"
    }
   ],
   "events": [],
@@ -749,7 +756,7 @@
   "props": [
    {
     "name": "variant",
-    "type": "\"outline\" | \"solid\" | \"ghost\" | undefined",
+    "type": "\"solid\" | \"outline\" | \"ghost\" | undefined",
     "required": false,
     "default": "\"solid\"",
     "description": ""
@@ -5524,10 +5531,28 @@
     "required": false,
     "default": "2",
     "description": ""
+   },
+   {
+    "name": "headline",
+    "type": "\"label\" | \"hanging\" | undefined",
+    "required": false,
+    "default": "\"label\"",
+    "description": "`label` (default): small bold uppercase title + pale skewed watermark — the TV site.\n`hanging`: one big tracked title hung off the bottom edge of the `#band` slot, with\n`subtitle` under it — the film site. No watermark."
+   },
+   {
+    "name": "subtitle",
+    "type": "string | undefined",
+    "required": false,
+    "description": "small tracked line under a hanging headline (e.g. the Japanese reading)"
    }
   ],
   "events": [],
   "slots": [
+   {
+    "name": "band",
+    "type": "{}",
+    "description": ""
+   },
    {
     "name": "title",
     "type": "{}",
@@ -5901,7 +5926,7 @@
   "props": [
    {
     "name": "as",
-    "type": "string | undefined",
+    "type": "string | Component | undefined",
     "required": false,
     "default": "\"span\"",
     "description": "element to render"
@@ -6250,7 +6275,7 @@
    },
    {
     "name": "variant",
-    "type": "\"outline\" | \"solid\" | undefined",
+    "type": "\"solid\" | \"outline\" | undefined",
     "required": false,
     "default": "\"solid\"",
     "description": ""

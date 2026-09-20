@@ -5,6 +5,7 @@ title: Badge
 <script setup>
 import BadgeBasic from "../demos/BadgeBasic.vue";
 import BadgeColors from "../demos/BadgeColors.vue";
+import BadgeOutline from "../demos/BadgeOutline.vue";
 </script>
 
 # Badge
@@ -25,6 +26,15 @@ import BadgeColors from "../demos/BadgeColors.vue";
   <template #code>
 
 <<< ../demos/BadgeColors.vue
+
+  </template>
+</Demo>
+
+<Demo title="Outline">
+  <BadgeOutline />
+  <template #code>
+
+<<< ../demos/BadgeOutline.vue
 
   </template>
 </Demo>
