@@ -131,7 +131,7 @@ function setHi(v: number) {
 }
 .bless-range__input::-webkit-slider-thumb {
   appearance: none;
-  border-radius: var(--bless-radius);
+  border-radius: var(--bless-radius-plate);
   width: 16px;
   height: 16px;
   background: var(--bless-color-accent);
@@ -143,7 +143,7 @@ function setHi(v: number) {
 .bless-range__input::-moz-range-thumb {
   width: 16px;
   height: 16px;
-  border-radius: var(--bless-radius);
+  border-radius: var(--bless-radius-plate);
   background: var(--bless-color-accent);
   border: 2px solid var(--bless-color-bg);
   transform: skewX(var(--bless-skew));

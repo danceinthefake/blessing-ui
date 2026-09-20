@@ -92,7 +92,7 @@ const showImg = computed(() => !!props.src && !failed.value);
   color: var(--bless-color-on-text);
 }
 .bless-avatar--square {
-  border-radius: var(--bless-radius);
+  border-radius: var(--bless-radius-plate);
   transform: skewX(var(--bless-skew));
 }
 .bless-avatar--square > * {

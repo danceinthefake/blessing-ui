@@ -76,11 +76,12 @@
   --bless-space-16: 4rem;
 
   /* ---- shape ----
-   * Sharp skew is the default. <html data-shape="rounded"> keeps the lean and rounds the corners —
-   * every box reads --bless-radius, pills (badges, chips, switches, avatars) read --bless-radius-pill.
+   * Sharp skew is the default. <html data-shape="rounded"> keeps the lean and rounds: boxes by
+   * --bless-radius, skewed plates by --bless-radius-plate (acute corners only), pills by --bless-radius-pill.
    */
-  --bless-radius: 0px;
-  --bless-radius-pill: 0px;
+  --bless-radius: 0px; /* unskewed boxes: cards, panels, menus, popovers, tables */
+  --bless-radius-plate: 0; /* skewed plates: only their two acute corners round (see rounded below) */
+  --bless-radius-pill: 0px; /* badges, chips, switches, avatars, progress */
   --bless-skew: -10deg;
   --bless-skew-counter: 10deg; /* apply to inner text */
   --bless-border-width: 1px;
@@ -258,8 +259,15 @@
   --bless-skew-counter: -10deg;
 }
 
-/* ---- shape: rounded skew ---- */
+/* ---- shape: rounded ----
+ * Boxes round all four corners; pills become pills; a skewed plate rounds only its two acute
+ * corners (top-end / bottom-start for the -10° lean) so it stays a cut plate, not a lozenge.
+ */
 :root[data-shape="rounded"] {
   --bless-radius: 8px;
+  --bless-radius-plate: 0 var(--bless-radius) 0 var(--bless-radius);
   --bless-radius-pill: 999px;
+}
+:root[dir="rtl"][data-shape="rounded"] {
+  --bless-radius-plate: var(--bless-radius) 0 var(--bless-radius) 0; /* the lean flips, so do the acute corners */
 }

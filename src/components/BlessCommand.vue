@@ -194,6 +194,7 @@ onBeforeUnmount(() => removeEventListener("keydown", onHotkey));
   color: var(--bless-color-text);
 }
 .bless-command__search {
+  border-radius: var(--bless-radius-plate);
   display: flex;
   align-items: center;
   gap: var(--bless-space-3);

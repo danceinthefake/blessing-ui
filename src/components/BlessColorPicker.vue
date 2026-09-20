@@ -65,7 +65,7 @@ const id = useFieldId(props);
   color: var(--bless-color-text);
 }
 .bless-color__well {
-  border-radius: var(--bless-radius);
+  border-radius: var(--bless-radius-plate);
   position: relative;
   display: inline-block;
   width: 36px;

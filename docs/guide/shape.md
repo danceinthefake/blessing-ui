@@ -8,7 +8,13 @@ import ShapeToggleBasic from "../demos/ShapeToggleBasic.vue";
 
 # Shape
 
-The default is the sharp parallelogram — the plates of the mark. `<html data-shape="rounded">` keeps the lean and rounds every corner: boxes take `--bless-radius` (8px), pills — badges, chips, switches, avatars, progress — take `--bless-radius-pill`. Nothing else changes; palettes and dark mode compose with it.
+The default is the sharp parallelogram — the plates of the mark. `<html data-shape="rounded">` keeps the lean and rounds three kinds of thing three ways:
+
+- **Pills** — badges, chips, switches, avatars, progress — become pills (`--bless-radius-pill`). Round by convention everywhere; the sharp default's one real weakness.
+- **Skewed plates** — buttons, tabs, tags, fields, pickers, steps, pagination — round **only their two acute corners** (`--bless-radius-plate`). The plate stays a cut plate, not a lozenge; the tips soften. Nobody else has this shape, and it rhymes with the circle's flower: soft body, sharp point.
+- **Boxes** — cards, panels, menus, popovers, tables — take a plain `--bless-radius` (8px).
+
+Palettes, dark mode and RTL compose with it (the acute corners flip with the lean).
 
 <Demo title="Flip it">
   <ShapeToggleBasic />
@@ -37,9 +43,9 @@ setShape("rounded");
 
 ```css
 :root[data-shape="rounded"] {
-  --bless-radius: 6px;
+  --bless-radius: 6px; /* boxes; plates derive their acute corners from it */
   --bless-radius-pill: 999px;
 }
 ```
 
-There is no upright (un-skewed) variant. Rounded corners without the lean is every other library; the lean is the point.
+There is no upright (un-skewed) variant, and no fully-rounded plate: rounded corners without the lean is every other library; the lean is the point. The source site never rounded anything — this mode is our departure, off by default.

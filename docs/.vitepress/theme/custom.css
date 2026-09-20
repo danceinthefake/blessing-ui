@@ -33,7 +33,7 @@
 /* skewed brand buttons on the home hero */
 .VPButton.brand,
 .VPButton.alt {
-  border-radius: var(--bless-radius);
+  border-radius: var(--bless-radius-plate);
   transform: skewX(var(--bless-skew));
   font-weight: var(--bless-font-weight-bold);
   letter-spacing: var(--bless-tracking-wide);
@@ -74,7 +74,7 @@
 .VPButton.VPButton.medium,
 .VPButton.VPButton.small,
 .VPButton.VPButton.big {
-  border-radius: var(--bless-radius);
+  border-radius: var(--bless-radius-plate);
 }
 :root,
 .dark {

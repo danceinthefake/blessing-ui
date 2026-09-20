@@ -40,7 +40,7 @@ const cap = (s: string) => s[0].toUpperCase() + s.slice(1);
   gap: var(--bless-space-1);
 }
 .bless-palette__swatch {
-  border-radius: var(--bless-radius);
+  border-radius: var(--bless-radius-plate);
   width: 20px;
   height: 20px;
   padding: 0;
