@@ -1,1 +1,3 @@
-{}
+{
+  "ignorePatterns": ["docs/.vitepress/meta.json", "docs/.vitepress/blocks.json"]
+}
