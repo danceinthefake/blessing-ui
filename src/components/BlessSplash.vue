@@ -77,6 +77,7 @@ defineExpose({ dismiss });
   animation: bless-splash-in var(--bless-duration-slower) var(--bless-ease-out);
 }
 .bless-splash__skip {
+  border-radius: var(--bless-radius);
   position: absolute;
   inset-inline-end: var(--bless-space-4);
   bottom: var(--bless-space-4);

@@ -89,6 +89,7 @@ defineExpose({ reset });
 
 <style>
 .bless-slide {
+  border-radius: var(--bless-radius);
   position: relative;
   overflow: hidden;
   touch-action: pan-y;

@@ -32,6 +32,7 @@ provide(menubarKey, {
 
 <style>
 .bless-menubar {
+  border-radius: var(--bless-radius);
   display: inline-flex;
   gap: var(--bless-space-1);
   padding: var(--bless-space-1);
