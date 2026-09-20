@@ -123,6 +123,7 @@ function onUp() {
   background: var(--bless-color-backdrop);
 }
 .bless-sheet__panel {
+  border-radius: var(--bless-radius);
   position: relative;
   display: flex;
   flex-direction: column;

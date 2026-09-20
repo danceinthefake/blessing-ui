@@ -102,6 +102,7 @@ defineExpose({ id });
   transform: scaleX(1) skewX(var(--bless-skew));
 }
 .bless-input__control {
+  border-radius: var(--bless-radius);
   flex: 1;
   min-width: 0;
   height: 100%;

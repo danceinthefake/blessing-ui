@@ -92,6 +92,7 @@ const refocus = (i: number) =>
   color: var(--bless-color-text);
 }
 .bless-order__item {
+  border-radius: var(--bless-radius);
   display: flex;
   align-items: center;
   gap: var(--bless-space-2);

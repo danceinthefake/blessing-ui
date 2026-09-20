@@ -98,6 +98,7 @@ const pct = computed(() =>
   color: var(--_c);
 }
 .bless-progress__track {
+  border-radius: var(--bless-radius-pill);
   position: relative;
   height: var(--_h);
   overflow: hidden;

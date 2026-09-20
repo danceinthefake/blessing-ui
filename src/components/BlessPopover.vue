@@ -87,6 +87,7 @@ function onToggle(e: Event) {
   display: inline-flex;
 }
 .bless-popover {
+  border-radius: var(--bless-radius);
   position: fixed;
   inset: unset;
   margin: 0;

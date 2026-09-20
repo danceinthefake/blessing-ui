@@ -5643,6 +5643,20 @@
   "slots": [],
   "exposed": []
  },
+ "BlessShapeToggle": {
+  "props": [
+   {
+    "name": "label",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Corners\"",
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessSheet": {
   "props": [
    {

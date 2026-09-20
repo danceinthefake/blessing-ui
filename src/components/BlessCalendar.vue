@@ -232,6 +232,7 @@ watch(
   color: var(--bless-color-text-muted);
 }
 .bless-calendar__day {
+  border-radius: var(--bless-radius);
   position: relative;
   height: 36px;
   border: 0;

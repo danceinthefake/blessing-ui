@@ -79,6 +79,7 @@ const label = computed(() =>
   gap: var(--bless-space-2);
 }
 .bless-pwmeter__meter {
+  border-radius: var(--bless-radius-pill);
   flex: 1;
   height: 6px;
   appearance: none;

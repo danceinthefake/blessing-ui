@@ -45,7 +45,7 @@ withDefaults(
   font-family: var(--bless-font-sans);
   color: var(--bless-color-text);
   text-decoration: none;
-  border-radius: var(--bless-radius-none);
+  border-radius: var(--bless-radius);
 }
 .bless-card--bg {
   background: var(--bless-color-bg);

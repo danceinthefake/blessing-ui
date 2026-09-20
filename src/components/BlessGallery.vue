@@ -110,6 +110,7 @@ function onKey(e: KeyboardEvent) {
   list-style: none;
 }
 .bless-gallery__thumb {
+  border-radius: var(--bless-radius);
   display: block;
   width: 100%;
   padding: 0;

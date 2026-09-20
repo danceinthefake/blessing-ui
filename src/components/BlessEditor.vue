@@ -179,6 +179,7 @@ const defs: Record<Exclude<BlessEditorTool, "|">, Def> = {
 
 <style>
 .bless-editor {
+  border-radius: var(--bless-radius);
   display: flex;
   flex-direction: column;
   border: var(--bless-border-width) solid var(--bless-color-border);

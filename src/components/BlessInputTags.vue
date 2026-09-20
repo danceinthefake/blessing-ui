@@ -74,6 +74,7 @@ function onKey(e: KeyboardEvent) {
 
 <style>
 .bless-tags {
+  border-radius: var(--bless-radius);
   display: flex;
   flex-wrap: wrap;
   align-items: center;

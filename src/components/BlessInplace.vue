@@ -39,6 +39,7 @@ const close = () => ((active.value = false), emit("close"));
   color: var(--bless-color-text);
 }
 .bless-inplace__display {
+  border-radius: var(--bless-radius);
   padding: var(--bless-space-1) var(--bless-space-2);
   border: var(--bless-border-width) dashed transparent;
   background: none;

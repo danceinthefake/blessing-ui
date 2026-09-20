@@ -51,9 +51,11 @@ withDefaults(
   padding: var(--bless-space-2);
 }
 .bless-item--outline {
+  border-radius: var(--bless-radius);
   border: var(--bless-border-width) solid var(--bless-color-border);
 }
 .bless-item--surface {
+  border-radius: var(--bless-radius);
   background: var(--bless-color-surface);
 }
 .bless-item--link:hover {

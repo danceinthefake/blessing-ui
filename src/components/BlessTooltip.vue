@@ -73,6 +73,7 @@ watch(
   display: inline-flex;
 }
 .bless-tooltip {
+  border-radius: var(--bless-radius);
   position: fixed;
   inset: unset;
   margin: 0;

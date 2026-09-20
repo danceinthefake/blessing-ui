@@ -38,6 +38,7 @@ const open = defineModel<boolean>("open", { default: false });
 
 <style>
 .bless-collapsible {
+  border-radius: var(--bless-radius);
   font-family: var(--bless-font-sans);
   color: var(--bless-color-text);
   border-bottom: var(--bless-border-width) solid var(--bless-color-border);

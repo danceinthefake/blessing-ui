@@ -31,6 +31,7 @@ const id = useId();
 
 <style>
 .bless-fieldset {
+  border-radius: var(--bless-radius);
   margin: 0;
   padding: var(--bless-space-3) var(--bless-space-4) var(--bless-space-4);
   border: var(--bless-border-width) solid var(--bless-color-border);

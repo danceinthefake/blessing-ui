@@ -42,6 +42,7 @@ withDefaults(
  * default slot picks up the palette, type and dark mode. Both --vis-* and
  * --vis-dark-* point at the same bless tokens because those already invert. */
 .bless-chart {
+  border-radius: var(--bless-radius);
   --vis-font-family: var(--bless-font-sans);
   --vis-color-main: var(--bless-color-chart-1);
   --vis-color0: var(--bless-color-chart-1);

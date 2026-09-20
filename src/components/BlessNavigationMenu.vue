@@ -175,6 +175,7 @@ function onKey(e: KeyboardEvent, i: number, item: BlessNavMenuItem) {
   transform: translateY(1px) rotate(-135deg);
 }
 .bless-navmenu__panel {
+  border-radius: var(--bless-radius);
   position: fixed;
   inset: unset;
   margin: 0;

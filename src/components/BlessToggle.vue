@@ -46,6 +46,7 @@ function toggle() {
 
 <style>
 .bless-toggle {
+  border-radius: var(--bless-radius);
   --_c: var(--bless-color-text);
   display: inline-flex;
   align-items: center;

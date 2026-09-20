@@ -49,6 +49,7 @@ withDefaults(
 
 <style>
 .bless-video {
+  border-radius: var(--bless-radius);
   position: relative;
   width: 100%;
   overflow: hidden;

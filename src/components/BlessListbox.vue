@@ -122,6 +122,7 @@ function onKey(e: KeyboardEvent) {
 
 <style>
 .bless-listbox {
+  border-radius: var(--bless-radius);
   --_row: 36px;
   display: block;
   max-height: calc(var(--_rows, 1000) * var(--_row));

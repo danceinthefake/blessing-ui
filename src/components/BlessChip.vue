@@ -37,6 +37,7 @@ const emit = defineEmits<{ remove: [] }>();
 
 <style>
 .bless-chip {
+  border-radius: var(--bless-radius-pill);
   display: inline-flex;
   align-items: center;
   gap: var(--bless-space-1);

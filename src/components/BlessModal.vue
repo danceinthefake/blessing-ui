@@ -98,6 +98,7 @@ onMounted(() => {
 
 <style>
 .bless-modal {
+  border-radius: var(--bless-radius);
   padding: 0;
   border: 0;
   background: transparent;

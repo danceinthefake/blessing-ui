@@ -127,6 +127,7 @@ function clear() {
 
 <style>
 .bless-datepicker {
+  border-radius: var(--bless-radius);
   --_h: 40px;
   --_fs: var(--bless-text-md);
   display: inline-flex;

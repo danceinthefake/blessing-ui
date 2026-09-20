@@ -39,6 +39,7 @@ const id = useId();
 
 <style>
 .bless-panel {
+  border-radius: var(--bless-radius);
   border: var(--bless-border-width) solid var(--bless-color-border);
   font-family: var(--bless-font-sans);
   color: var(--bless-color-text);

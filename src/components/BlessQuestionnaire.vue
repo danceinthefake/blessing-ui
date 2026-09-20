@@ -158,6 +158,7 @@ function onKey(e: KeyboardEvent) {
   color: var(--bless-color-text);
 }
 .bless-questionnaire__item {
+  border-radius: var(--bless-radius);
   display: flex;
   flex-direction: column;
   gap: var(--bless-space-3);

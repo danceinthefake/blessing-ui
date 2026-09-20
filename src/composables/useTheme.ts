@@ -1,5 +1,7 @@
 import { computed, ref, watchEffect } from "vue";
 
+/** sharp (default) or rounded — both keep the skew */
+export type BlessShape = "sharp" | "rounded";
 export type BlessTheme = "light" | "dark" | "system";
 /** accent family; undefined = Megumi, the default */
 export type BlessPalette = "megumi" | "utaha" | "izumi" | "michiru" | "eriri" | "tomoya";
@@ -14,20 +16,29 @@ export const blessPalettes: { name: BlessPalette; color: string }[] = [
 
 const KEY = "bless-theme";
 const PKEY = "bless-palette";
+const SKEY = "bless-shape";
 const theme = ref<BlessTheme>("system");
 const palette = ref<BlessPalette>("megumi");
+const shape = ref<BlessShape>("sharp");
 const systemDark = ref(false);
 let booted = false;
+let loaded = false; // persisted values read; until then the effects below must not write defaults over them
 
 function boot() {
   if (booted || typeof window === "undefined") return;
   booted = true;
-  try {
-    const saved = localStorage.getItem(KEY) as BlessTheme | null;
-    if (saved === "light" || saved === "dark" || saved === "system") theme.value = saved;
-    const p = localStorage.getItem(PKEY);
-    if (p && blessPalettes.some((x) => x.name === p)) palette.value = p as BlessPalette;
-  } catch {}
+  // Persisted choices land in a microtask: after a server-rendered page has hydrated (so the
+  // toggles' aria-pressed/title match the HTML), still before first paint on a client-only app.
+  queueMicrotask(() => {
+    try {
+      const saved = localStorage.getItem(KEY) as BlessTheme | null;
+      if (saved === "light" || saved === "dark" || saved === "system") theme.value = saved;
+      const p = localStorage.getItem(PKEY);
+      if (p && blessPalettes.some((x) => x.name === p)) palette.value = p as BlessPalette;
+      if (localStorage.getItem(SKEY) === "rounded") shape.value = "rounded";
+    } catch {}
+    loaded = true;
+  });
   const mql = matchMedia("(prefers-color-scheme: dark)");
   systemDark.value = mql.matches;
   mql.addEventListener("change", (e) => (systemDark.value = e.matches));
@@ -35,8 +46,19 @@ function boot() {
     const root = document.documentElement;
     if (theme.value === "system") root.removeAttribute("data-theme");
     else root.setAttribute("data-theme", theme.value);
+    if (!loaded) return;
     try {
       localStorage.setItem(KEY, theme.value);
+    } catch {}
+  });
+  watchEffect(() => {
+    const root = document.documentElement;
+    if (shape.value === "rounded") root.setAttribute("data-shape", "rounded");
+    else root.removeAttribute("data-shape");
+    if (!loaded) return;
+    try {
+      if (shape.value === "rounded") localStorage.setItem(SKEY, "rounded");
+      else localStorage.removeItem(SKEY);
     } catch {}
   });
   watchEffect(() => {
@@ -44,6 +66,7 @@ function boot() {
     const p = palette.value === "megumi" ? undefined : palette.value;
     if (p) root.setAttribute("data-palette", p);
     else root.removeAttribute("data-palette");
+    if (!loaded) return;
     try {
       if (p) localStorage.setItem(PKEY, p);
       else localStorage.removeItem(PKEY);
@@ -60,5 +83,6 @@ export function useTheme() {
   const set = (t: BlessTheme) => (theme.value = t);
   const toggle = () => set(isDark.value ? "light" : "dark");
   const setPalette = (p: BlessPalette | undefined) => (palette.value = p ?? "megumi");
-  return { theme, isDark, set, toggle, palette, setPalette };
+  const setShape = (s: BlessShape) => (shape.value = s);
+  return { theme, isDark, set, toggle, palette, setPalette, shape, setShape };
 }

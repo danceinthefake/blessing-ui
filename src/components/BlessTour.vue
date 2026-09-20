@@ -114,6 +114,7 @@ const hole = computed(() => {
 
 <style>
 .bless-tour__spot {
+  border-radius: var(--bless-radius);
   position: fixed;
   z-index: var(--bless-z-modal);
   box-shadow: 0 0 0 100vmax var(--bless-color-backdrop);
@@ -132,6 +133,7 @@ const hole = computed(() => {
   background: var(--bless-color-backdrop);
 }
 .bless-tour {
+  border-radius: var(--bless-radius);
   position: fixed;
   z-index: calc(var(--bless-z-modal) + 1);
   display: flex;

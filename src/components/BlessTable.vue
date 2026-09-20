@@ -66,6 +66,7 @@ withDefaults(
 
 <style>
 .bless-table {
+  border-radius: var(--bless-radius);
   width: 100%;
   border-collapse: collapse;
   font-family: var(--bless-font-sans);

@@ -28,6 +28,7 @@ const open = defineModel<boolean>("open", { default: false });
 
 <style>
 .bless-hover-card {
+  border-radius: var(--bless-radius);
   padding: var(--bless-space-4);
   min-width: 200px;
 }

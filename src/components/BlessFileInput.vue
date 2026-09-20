@@ -98,6 +98,7 @@ const kb = (n: number) =>
   color: var(--bless-color-text);
 }
 .bless-file__zone {
+  border-radius: var(--bless-radius);
   display: flex;
   flex-direction: column;
   align-items: center;

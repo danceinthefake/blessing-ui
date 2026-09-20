@@ -131,6 +131,7 @@ function onPaste(i: number, e: ClipboardEvent) {
   font-family: var(--bless-font-sans);
 }
 .bless-otp__cell {
+  border-radius: var(--bless-radius);
   width: 40px;
   height: 48px;
   box-sizing: border-box;

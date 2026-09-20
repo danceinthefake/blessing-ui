@@ -31,6 +31,7 @@ const pos = defineModel<number>({ default: 50 });
 
 <style>
 .bless-compare {
+  border-radius: var(--bless-radius);
   position: relative;
   display: grid;
   overflow: hidden;

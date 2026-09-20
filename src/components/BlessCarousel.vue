@@ -184,6 +184,7 @@ defineExpose({ go, next: () => go(index.value + 1), prev: () => go(index.value -
   min-width: 0;
 }
 .bless-carousel__arrow {
+  border-radius: var(--bless-radius-pill);
   position: absolute;
   top: 50%;
   width: 40px;

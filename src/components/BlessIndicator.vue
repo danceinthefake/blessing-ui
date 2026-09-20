@@ -55,6 +55,7 @@ const show = computed(
   display: block;
 }
 .bless-indicator__badge {
+  border-radius: var(--bless-radius-pill);
   position: absolute;
   display: inline-grid;
   place-items: center;

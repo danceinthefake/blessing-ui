@@ -33,6 +33,7 @@ withDefaults(
 
 <style>
 .bless-skeleton {
+  border-radius: var(--bless-radius);
   display: block;
   background: var(--bless-color-surface);
   background-image: linear-gradient(

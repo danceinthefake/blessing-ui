@@ -121,6 +121,7 @@ const { dismiss } = useToast();
   flex-direction: column-reverse;
 }
 .bless-toast {
+  border-radius: var(--bless-radius);
   --_c: var(--bless-color-text);
   --_on: var(--bless-color-on-text);
   position: relative;

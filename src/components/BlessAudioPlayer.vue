@@ -152,6 +152,7 @@ onBeforeUnmount(() => audio.value?.pause());
 
 <style>
 .bless-audio {
+  border-radius: var(--bless-radius);
   --_c: var(--bless-color-accent);
   font-family: var(--bless-font-sans);
   color: var(--bless-color-text);

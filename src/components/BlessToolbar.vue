@@ -29,6 +29,7 @@ withDefaults(defineProps<{ label?: string; surface?: "surface" | "bg" | "none" }
   color: var(--bless-color-text);
 }
 .bless-toolbar--surface {
+  border-radius: var(--bless-radius);
   background: var(--bless-color-surface);
 }
 .bless-toolbar--bg {

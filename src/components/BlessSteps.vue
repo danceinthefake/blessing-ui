@@ -92,6 +92,7 @@ const emit = defineEmits<{ select: [index: number] }>();
   background: var(--bless-color-accent);
 }
 .bless-steps__marker {
+  border-radius: var(--bless-radius);
   display: inline-grid;
   place-items: center;
   flex: none;

@@ -22,6 +22,7 @@ defineProps<{
 
 <style>
 .bless-kbd {
+  border-radius: var(--bless-radius);
   display: inline-flex;
   align-items: center;
   gap: 2px;
