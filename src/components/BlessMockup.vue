@@ -41,6 +41,7 @@ withDefaults(
 .bless-mockup--dark {
   --_frame: var(--bless-color-media-bg);
   --_fg: #9aa4ad;
+  --_title: #e8e9ea;
   border-color: transparent;
 }
 .bless-mockup__chrome {
@@ -65,6 +66,7 @@ withDefaults(
   flex: 1;
   padding: 2px var(--bless-space-3);
   background: color-mix(in srgb, var(--_fg) 12%, transparent);
+  color: var(--_title, var(--bless-color-text));
   font-size: var(--bless-text-xs);
   text-align: center;
   overflow: hidden;

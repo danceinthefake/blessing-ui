@@ -1,9 +1,10 @@
 ---
 title: Inbox
+aside: false
 ---
 
 <script setup>
-import Block from "./inbox/index.vue";
+import { withBase } from "vitepress";
 import meta from "./inbox/meta";
 const files = Object.fromEntries(
   Object.entries(import.meta.glob("./inbox/**/*.{vue,ts}", { query: "?raw", import: "default", eager: true }))
@@ -16,9 +17,7 @@ const files = Object.fromEntries(
 
 <p class="bless-lead">Two-pane mail: a list with unread indicators and a reading pane with actions. Collapses to one pane on a phone with a back button.</p>
 
-<BlockDemo :files :components="meta.components" :height="meta.height">
-  <Block />
-</BlockDemo>
+<BlockDemo :files :components="meta.components" :height="meta.height" :frame="withBase('/blocks/inbox-frame')" />
 
 ## Into your app
 

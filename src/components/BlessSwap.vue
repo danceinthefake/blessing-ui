@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { useId } from "vue";
+import {} from "vue";
+import { useFieldId } from "../composables/useFieldId";
 
 defineOptions({ name: "BlessSwap" });
 
@@ -11,8 +12,7 @@ const props = defineProps<{
   effect?: "fade" | "rotate" | "flip";
 }>();
 const model = defineModel<boolean>({ default: false });
-const uid = useId();
-const id = () => props.id ?? uid;
+const id = useFieldId(props);
 </script>
 
 <template>

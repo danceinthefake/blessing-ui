@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { useId } from "vue";
+import {} from "vue";
+import { useFieldId } from "../composables/useFieldId";
 
 defineOptions({ name: "BlessSwitch", inheritAttrs: false });
 
@@ -10,8 +11,7 @@ const props = defineProps<{
   labelPosition?: "end" | "start";
 }>();
 const model = defineModel<boolean>({ default: false });
-const uid = useId();
-const id = () => props.id ?? uid;
+const id = useFieldId(props);
 </script>
 
 <template>

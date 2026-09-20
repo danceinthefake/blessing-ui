@@ -255,7 +255,7 @@ onBeforeUnmount(() => audio.value?.pause());
   outline-offset: -2px;
 }
 .bless-audio__track--current {
-  color: var(--_c);
+  color: var(--bless-color-accent-text);
   font-weight: var(--bless-font-weight-bold);
 }
 .bless-audio__num {

@@ -8,6 +8,7 @@ import "./custom.css";
 import Demo from "./Demo.vue";
 import PropsTable from "./PropsTable.vue";
 import BlockDemo from "./BlockDemo.vue";
+import BlockFrame from "./BlockFrame.vue";
 
 export default {
   extends: DefaultTheme,
@@ -28,5 +29,6 @@ export default {
     app.component("Demo", Demo);
     app.component("PropsTable", PropsTable);
     app.component("BlockDemo", BlockDemo);
+    app.component("BlockFrame", BlockFrame);
   },
 } satisfies Theme;

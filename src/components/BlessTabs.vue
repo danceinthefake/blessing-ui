@@ -151,6 +151,9 @@ function onKey(e: KeyboardEvent) {
 .bless-tabs__tab--active {
   color: var(--bless-color-on-accent);
 }
+.bless-tabs__tab--text.bless-tabs__tab--active {
+  color: var(--bless-color-on-text);
+}
 .bless-tabs__panel {
   padding: var(--bless-space-4) 0;
 }

@@ -198,7 +198,7 @@ defineExpose({ focusFirst, focusLast });
 .bless-menu__item:focus,
 .bless-menu__item[aria-expanded="true"] {
   background: var(--bless-color-surface);
-  color: var(--bless-color-accent);
+  color: var(--bless-color-accent-text);
 }
 .bless-menu__item--danger {
   color: var(--bless-color-danger);

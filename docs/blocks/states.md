@@ -1,9 +1,10 @@
 ---
 title: Page states
+aside: false
 ---
 
 <script setup>
-import Block from "./states/index.vue";
+import { withBase } from "vitepress";
 import meta from "./states/meta";
 const files = Object.fromEntries(
   Object.entries(import.meta.glob("./states/**/*.{vue,ts}", { query: "?raw", import: "default", eager: true }))
@@ -16,9 +17,7 @@ const files = Object.fromEntries(
 
 <p class="bless-lead">The three non-happy paths every list needs — loading skeleton, empty with a call to action, and error with retry — behind one `state` switch.</p>
 
-<BlockDemo :files :components="meta.components" :height="meta.height">
-  <Block />
-</BlockDemo>
+<BlockDemo :files :components="meta.components" :height="meta.height" :frame="withBase('/blocks/states-frame')" />
 
 ## Into your app
 

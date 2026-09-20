@@ -170,6 +170,53 @@ await step("start, Next twice, Done emits finish", async () => {
   expect((await page.locator(".bless-tour").count()) === 0, "tour closed");
 });
 
+console.log("Blocks");
+await go("/blocks/signin-frame");
+await step("sign-in: wrong password shows the error, right one succeeds", async () => {
+  await page.locator("input[type=email]").fill("megumi@example.com");
+  await page.locator("input[type=password]").fill("wrong");
+  await page.locator("button[type=submit]").click();
+  await page.waitForTimeout(900);
+  expect((await page.locator(".bless-alert--danger").count()) === 1, "error alert shown");
+  await page.locator("input[type=password]").fill("blessing");
+  await page.locator("button[type=submit]").click();
+  await page.waitForTimeout(900);
+  expect((await page.locator(".bless-alert--success").count()) === 1, "success alert shown");
+});
+await go("/blocks/inbox-frame");
+await step("inbox: opening a mail clears its unread dot and fills the pane", async () => {
+  const items = page.locator(".inbox__list .bless-item");
+  const dots = () => page.locator(".bless-indicator__badge").count();
+  const before = await dots();
+  await items.nth(0).click();
+  await page.waitForTimeout(150);
+  expect((await dots()) === before - 1, `unread dots ${before} → ${await dots()}`);
+  expect((await page.locator(".inbox__subject").count()) === 1, "reading pane filled");
+});
+await page.setViewportSize({ width: 390, height: 800 });
+await step("inbox on a phone: one pane at a time, Back returns to the list", async () => {
+  await page.reload({ waitUntil: "networkidle" });
+  expect(await page.locator(".inbox__pane").isHidden(), "pane hidden until a mail is opened");
+  await page.locator(".inbox__list .bless-item").nth(1).click();
+  await page.waitForTimeout(150);
+  expect(await page.locator(".inbox__list").isHidden(), "list hidden while reading");
+  await page.getByRole("button", { name: /Back/ }).click();
+  expect(await page.locator(".inbox__list").isVisible(), "list back");
+});
+await page.setViewportSize({ width: 1200, height: 900 });
+await go("/blocks/chat-frame");
+await step("chat: Enter sends, thread grows, reply arrives", async () => {
+  const bubbles = () => page.locator(".bless-bubble").count();
+  const n = await bubbles();
+  await page.locator("textarea").fill("部室行く");
+  await page.keyboard.press("Enter");
+  await page.waitForTimeout(100);
+  expect((await bubbles()) >= n + 1, "own message appended"); // + typing indicator
+  await page.waitForTimeout(1400);
+  expect((await bubbles()) >= n + 2, "reply appended");
+  expect((await page.locator("textarea").inputValue()) === "", "composer cleared");
+});
+
 await browser.close();
 console.log(failed ? `\n${failed} step(s) failed` : "\nall interaction flows passed");
 process.exit(failed ? 1 : 0);

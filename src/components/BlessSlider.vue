@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { computed, useId } from "vue";
+import { computed } from "vue";
+import { useFieldId } from "../composables/useFieldId";
 
 defineOptions({ name: "BlessSlider", inheritAttrs: false });
 
@@ -19,8 +20,7 @@ const props = withDefaults(
 );
 
 const model = defineModel<number>({ default: 0 });
-const uid = useId();
-const id = () => props.id ?? uid;
+const id = useFieldId(props);
 const pct = computed(() => ((model.value - props.min) / (props.max - props.min)) * 100);
 const text = computed(() => (props.format ?? String)(model.value));
 </script>
@@ -72,7 +72,7 @@ const text = computed(() => (props.format ?? String)(model.value));
   font-size: var(--bless-text-sm);
   font-weight: var(--bless-font-weight-bold);
   font-variant-numeric: tabular-nums;
-  color: var(--bless-color-accent);
+  color: var(--bless-color-accent-text);
 }
 .bless-slider__input {
   display: block;

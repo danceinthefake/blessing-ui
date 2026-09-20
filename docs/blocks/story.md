@@ -1,9 +1,10 @@
 ---
 title: Story
+aside: false
 ---
 
 <script setup>
-import Block from "./story/index.vue";
+import { withBase } from "vitepress";
 import meta from "./story/meta";
 const files = Object.fromEntries(
   Object.entries(import.meta.glob("./story/**/*.{vue,ts}", { query: "?raw", import: "default", eager: true }))
@@ -16,9 +17,7 @@ const files = Object.fromEntries(
 
 <p class="bless-lead">Episode list: number, title, air date and a synopsis that expands — with a synopsis-free intro above.</p>
 
-<BlockDemo :files :components="meta.components" :height="meta.height">
-  <Block />
-</BlockDemo>
+<BlockDemo :files :components="meta.components" :height="meta.height" :frame="withBase('/blocks/story-frame')" />
 
 ## Into your app
 

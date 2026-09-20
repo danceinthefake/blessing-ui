@@ -79,7 +79,7 @@ const emit = defineEmits<{ select: [item: BlessNavItem, event: MouseEvent] }>();
   outline-offset: 2px;
 }
 .bless-sidebar-nav__link--active {
-  color: var(--bless-color-accent);
+  color: var(--bless-color-accent-text);
 }
 .bless-sidebar-nav__meta {
   font-size: var(--bless-text-sm);

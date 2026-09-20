@@ -133,7 +133,7 @@ a.bless-attachment:focus-visible {
 }
 .bless-attachment--uploading .bless-attachment__img,
 .bless-attachment--uploading .bless-attachment__ext {
-  opacity: 0.3;
+  visibility: hidden; /* the spinner sits on top; faded text would just be illegible text */
 }
 .bless-attachment__body {
   display: flex;

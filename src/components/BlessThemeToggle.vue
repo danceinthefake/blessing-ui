@@ -57,8 +57,8 @@ const { theme, isDark, set, toggle } = useTheme();
   transform: skewX(var(--bless-skew-counter));
 }
 .bless-theme-toggle:hover {
-  border-color: var(--bless-color-accent);
-  color: var(--bless-color-accent);
+  border-color: var(--bless-color-accent-text);
+  color: var(--bless-color-accent-text);
 }
 .bless-theme-toggle:focus-visible {
   outline: 2px solid var(--bless-color-accent);

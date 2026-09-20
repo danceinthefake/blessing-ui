@@ -58,7 +58,7 @@ const shown = ref(false);
   cursor: pointer;
 }
 .bless-password__toggle:hover {
-  color: var(--bless-color-accent);
+  color: var(--bless-color-accent-text);
 }
 .bless-password__toggle:focus-visible {
   outline: 2px solid var(--bless-color-accent);

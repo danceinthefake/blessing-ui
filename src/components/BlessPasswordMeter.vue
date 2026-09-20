@@ -104,7 +104,6 @@ const label = computed(() =>
   font-weight: var(--bless-font-weight-bold);
   letter-spacing: var(--bless-tracking-wide);
   text-transform: uppercase;
-  color: var(--_c);
 }
 .bless-pwmeter__rules {
   margin: var(--bless-space-2) 0 0;
@@ -113,7 +112,8 @@ const label = computed(() =>
   display: grid;
   gap: 2px;
 }
-.bless-pwmeter__rule--ok {
-  color: var(--bless-color-success);
+.bless-pwmeter__rule--ok > span {
+  color: var(--bless-color-success); /* the tick only; the label stays legible */
+  font-weight: var(--bless-font-weight-bold);
 }
 </style>

@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { computed, ref, useId } from "vue";
+import { computed, ref } from "vue";
+import { useFieldId } from "../composables/useFieldId";
 
 defineOptions({ name: "BlessInputNumber", inheritAttrs: false });
 
@@ -24,8 +25,7 @@ const props = withDefaults(
   { step: 1, buttons: true, size: "md" },
 );
 const model = defineModel<number | null>({ default: null });
-const uid = useId();
-const id = () => props.id ?? uid;
+const id = useFieldId(props);
 const focused = ref(false);
 const fmt = computed(() => new Intl.NumberFormat(props.locale, props.format));
 const shown = computed(() =>
@@ -124,7 +124,7 @@ const nudge = (d: number) => (model.value = clamp((model.value ?? 0) + d * props
   --_h: 48px;
 }
 .bless-number:focus-within {
-  border-bottom-color: var(--bless-color-accent);
+  border-bottom-color: var(--bless-color-accent-text);
 }
 .bless-number--invalid {
   border-bottom-color: var(--bless-color-danger);
@@ -158,7 +158,7 @@ const nudge = (d: number) => (model.value = clamp((model.value ?? 0) + d * props
   cursor: pointer;
 }
 .bless-number__btn:hover:not(:disabled) {
-  color: var(--bless-color-accent);
+  color: var(--bless-color-accent-text);
 }
 .bless-number__btn:disabled {
   opacity: 0.3;

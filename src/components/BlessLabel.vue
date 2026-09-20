@@ -40,7 +40,7 @@ defineProps<{
   cursor: not-allowed;
 }
 .bless-label__required {
-  color: var(--bless-color-accent);
+  color: var(--bless-color-accent-text);
 }
 .bless-label__hint {
   margin-left: var(--bless-space-1);

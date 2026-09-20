@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { computed, useId } from "vue";
+import { computed } from "vue";
+import { useFieldId } from "../composables/useFieldId";
 
 defineOptions({ name: "BlessTimePicker", inheritAttrs: false });
 
@@ -22,8 +23,7 @@ const props = withDefaults(
 );
 /** "HH:MM" or "HH:MM:SS" */
 const model = defineModel<string>({ default: "" });
-const uid = useId();
-const id = () => props.id ?? uid;
+const id = useFieldId(props);
 const fmt = (h: number, m: number) =>
   props.hour12
     ? `${((h + 11) % 12) + 1}:${String(m).padStart(2, "0")} ${h < 12 ? "AM" : "PM"}`
@@ -93,7 +93,7 @@ const options = computed(() => {
   --_fs: var(--bless-text-lg);
 }
 .bless-time:focus-within {
-  border-bottom-color: var(--bless-color-accent);
+  border-bottom-color: var(--bless-color-accent-text);
 }
 .bless-time--invalid {
   border-bottom-color: var(--bless-color-danger);

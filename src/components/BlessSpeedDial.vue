@@ -178,7 +178,7 @@ function onBlur(e: FocusEvent) {
   transform: skewX(var(--bless-skew)) scale(1);
 }
 .bless-speed-dial__action--accent {
-  color: var(--bless-color-accent);
+  color: var(--bless-color-accent-text);
 }
 .bless-speed-dial__action--danger {
   color: var(--bless-color-danger);

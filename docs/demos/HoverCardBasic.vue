@@ -7,7 +7,7 @@ import { BlessAvatar, BlessHoverCard, BlessText } from "blessing-ui";
     Follow
     <BlessHoverCard>
       <template #trigger
-        ><a href="#" style="color: var(--bless-color-accent); font-weight: 700"
+        ><a href="#" style="color: var(--bless-color-accent-text); font-weight: 700"
           >@saenai_heroine</a
         ></template
       >

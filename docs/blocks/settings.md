@@ -1,9 +1,10 @@
 ---
 title: Settings
+aside: false
 ---
 
 <script setup>
-import Block from "./settings/index.vue";
+import { withBase } from "vitepress";
 import meta from "./settings/meta";
 const files = Object.fromEntries(
   Object.entries(import.meta.glob("./settings/**/*.{vue,ts}", { query: "?raw", import: "default", eager: true }))
@@ -16,9 +17,7 @@ const files = Object.fromEntries(
 
 <p class="bless-lead">Profile, notifications and a danger zone as stacked panels with a sticky save bar — the standard account page.</p>
 
-<BlockDemo :files :components="meta.components" :height="meta.height">
-  <Block />
-</BlockDemo>
+<BlockDemo :files :components="meta.components" :height="meta.height" :frame="withBase('/blocks/settings-frame')" />
 
 ## Into your app
 

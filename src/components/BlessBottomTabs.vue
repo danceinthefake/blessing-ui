@@ -122,7 +122,7 @@ const emit = defineEmits<{ select: [item: BlessBottomTab, e: Event] }>();
   color: var(--bless-color-text);
 }
 .bless-bottom-tabs__item--active {
-  color: var(--bless-color-accent);
+  color: var(--bless-color-accent-text);
 }
 .bless-bottom-tabs--bar .bless-bottom-tabs__item--active::before {
   content: "";

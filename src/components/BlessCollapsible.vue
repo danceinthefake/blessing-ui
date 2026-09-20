@@ -58,7 +58,7 @@ const open = defineModel<boolean>("open", { default: false });
   display: none;
 }
 .bless-collapsible__summary:hover {
-  color: var(--bless-color-accent);
+  color: var(--bless-color-accent-text);
 }
 .bless-collapsible__summary:focus-visible {
   outline: 2px solid var(--bless-color-accent);

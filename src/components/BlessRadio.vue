@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { inject, useId } from "vue";
+import { inject } from "vue";
+import { useFieldId } from "../composables/useFieldId";
 import { radioKey } from "./radio";
 
 defineOptions({ name: "BlessRadio", inheritAttrs: false });
@@ -11,8 +12,7 @@ const props = defineProps<{
   description?: string;
 }>();
 const group = inject(radioKey, null);
-const uid = useId();
-const id = () => props.id ?? uid;
+const id = useFieldId(props);
 </script>
 
 <template>
@@ -84,7 +84,7 @@ const id = () => props.id ?? uid;
   transition: transform var(--bless-duration-base) var(--bless-ease-out);
 }
 .bless-radio__input:checked + .bless-radio__dot {
-  border-color: var(--bless-color-accent);
+  border-color: var(--bless-color-accent-text);
 }
 .bless-radio__input:checked + .bless-radio__dot::after {
   transform: scale(1);

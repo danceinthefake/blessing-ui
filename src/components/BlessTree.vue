@@ -108,7 +108,7 @@ function onSelect(n: BlessTreeNode, p: string) {
   outline-offset: -2px;
 }
 .bless-tree__row--selected {
-  color: var(--bless-color-accent);
+  color: var(--bless-color-accent-text);
   font-weight: var(--bless-font-weight-bold);
 }
 .bless-tree__row--leaf {

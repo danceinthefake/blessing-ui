@@ -1,9 +1,10 @@
 ---
 title: Data page
+aside: false
 ---
 
 <script setup>
-import Block from "./data-page/index.vue";
+import { withBase } from "vitepress";
 import meta from "./data-page/meta";
 const files = Object.fromEntries(
   Object.entries(import.meta.glob("./data-page/**/*.{vue,ts}", { query: "?raw", import: "default", eager: true }))
@@ -16,9 +17,7 @@ const files = Object.fromEntries(
 
 <p class="bless-lead">Breadcrumb, title row with primary action, filter chips and a sortable, searchable, selectable data table with bulk actions.</p>
 
-<BlockDemo :files :components="meta.components" :height="meta.height">
-  <Block />
-</BlockDemo>
+<BlockDemo :files :components="meta.components" :height="meta.height" :frame="withBase('/blocks/data-page-frame')" />
 
 ## Into your app
 

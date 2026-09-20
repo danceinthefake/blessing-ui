@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, useId } from "vue";
+import { provideFieldId } from "../composables/useFieldId";
 import BlessLabel from "./BlessLabel.vue";
 
 defineOptions({ name: "BlessField" });
@@ -16,6 +17,7 @@ const props = defineProps<{
 
 const uid = useId();
 const id = props.id ?? uid;
+provideFieldId(id); // the first control inside picks this up as its id — no v-slot wiring needed
 const nativeError = ref("");
 
 /** call on the control's blur/invalid to surface Constraint API messages */

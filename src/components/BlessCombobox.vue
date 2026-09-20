@@ -1,5 +1,6 @@
 <script setup lang="ts" generic="T extends string | number">
-import { computed, nextTick, ref, useId, watch } from "vue";
+import { computed, nextTick, ref, watch } from "vue";
+import { useFieldId } from "../composables/useFieldId";
 import { useFloating } from "../composables/useFloating";
 import BlessBadge from "./BlessBadge.vue";
 import type { BlessOption } from "./select";
@@ -27,8 +28,7 @@ const props = withDefaults(
 const model = defineModel<T | T[] | undefined>();
 const emit = defineEmits<{ create: [label: string] }>();
 
-const uid = useId();
-const id = props.id ?? uid;
+const id = useFieldId(props)();
 const query = ref("");
 const open = ref(false);
 const active = ref(0);
@@ -363,7 +363,7 @@ function onBlur(e: FocusEvent) {
 }
 .bless-combobox__option--active {
   background: var(--bless-color-surface);
-  color: var(--bless-color-accent);
+  color: var(--bless-color-accent-text);
 }
 .bless-combobox__option--selected {
   font-weight: var(--bless-font-weight-bold);
@@ -373,7 +373,7 @@ function onBlur(e: FocusEvent) {
   cursor: not-allowed;
 }
 .bless-combobox__option--create {
-  color: var(--bless-color-accent);
+  color: var(--bless-color-accent-text);
 }
 .bless-combobox__check {
   width: 1em;

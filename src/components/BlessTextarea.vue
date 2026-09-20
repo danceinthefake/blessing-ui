@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { useId } from "vue";
+import {} from "vue";
+import { useFieldId } from "../composables/useFieldId";
 
 defineOptions({ name: "BlessTextarea", inheritAttrs: false });
 
@@ -22,8 +23,7 @@ const props = withDefaults(
 );
 
 const model = defineModel<string>({ default: "" });
-const uid = useId();
-const id = () => props.id ?? uid;
+const id = useFieldId(props);
 const descId = () => `${id()}-desc`;
 const errId = () => `${id()}-err`;
 </script>

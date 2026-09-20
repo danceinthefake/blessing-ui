@@ -153,7 +153,7 @@ function onKey(e: KeyboardEvent, i: number, item: BlessNavMenuItem) {
 }
 .bless-navmenu__trigger:hover,
 .bless-navmenu__trigger--open {
-  color: var(--bless-color-accent);
+  color: var(--bless-color-accent-text);
 }
 .bless-navmenu__trigger--active {
   box-shadow: inset 0 -2px 0 var(--bless-color-accent);
@@ -210,7 +210,7 @@ function onKey(e: KeyboardEvent, i: number, item: BlessNavMenuItem) {
 }
 .bless-navmenu__link:hover .bless-navmenu__link-label,
 .bless-navmenu__link:focus-visible .bless-navmenu__link-label {
-  color: var(--bless-color-accent);
+  color: var(--bless-color-accent-text);
 }
 .bless-navmenu__link-label {
   font-size: var(--bless-text-sm);

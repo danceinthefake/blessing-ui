@@ -38,7 +38,7 @@ withDefaults(defineProps<{ size?: "sm" | "md" | "lg"; disabled?: boolean }>(), {
   --_h: 48px;
 }
 .bless-input-group:focus-within {
-  border-bottom-color: var(--bless-color-accent);
+  border-bottom-color: var(--bless-color-accent-text);
 }
 .bless-input-group__control {
   flex: 1;

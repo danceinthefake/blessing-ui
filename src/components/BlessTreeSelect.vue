@@ -135,7 +135,7 @@ const remove = (id: string) => (model.value = chosen.value.filter((x) => x !== i
 }
 .bless-treeselect__trigger:focus-visible {
   outline: 0;
-  border-bottom-color: var(--bless-color-accent);
+  border-bottom-color: var(--bless-color-accent-text);
 }
 .bless-treeselect__trigger--invalid {
   border-bottom-color: var(--bless-color-danger);
@@ -171,6 +171,6 @@ const remove = (id: string) => (model.value = chosen.value.filter((x) => x !== i
 }
 /* multiple: mark chosen rows */
 .bless-treeselect .bless-tree__row[aria-pressed="true"] {
-  color: var(--bless-color-accent);
+  color: var(--bless-color-accent-text);
 }
 </style>

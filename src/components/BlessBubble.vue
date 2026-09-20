@@ -153,8 +153,8 @@ const expanded = ref(false);
   transform: skewX(var(--bless-skew-counter));
 }
 .bless-bubble__reaction[aria-pressed="true"] {
-  border-color: var(--bless-color-accent);
-  color: var(--bless-color-accent);
+  border-color: var(--bless-color-accent-text);
+  color: var(--bless-color-accent-text);
 }
 .bless-bubble__reaction:focus-visible {
   outline: 2px solid var(--bless-color-accent);

@@ -149,7 +149,7 @@ function onKey(e: KeyboardEvent) {
   background: var(--bless-color-surface);
 }
 .bless-listbox__option--selected {
-  color: var(--bless-color-accent);
+  color: var(--bless-color-accent-text);
   font-weight: var(--bless-font-weight-bold);
 }
 .bless-listbox__option--disabled {
@@ -166,7 +166,7 @@ function onKey(e: KeyboardEvent) {
   transform: skewX(var(--bless-skew));
 }
 .bless-listbox__option--selected .bless-listbox__check {
-  border-color: var(--bless-color-accent);
+  border-color: var(--bless-color-accent-text);
   background: var(--bless-color-accent);
   color: var(--bless-color-on-accent);
 }

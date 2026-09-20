@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { computed, nextTick, ref, useId, watch } from "vue";
+import { computed, nextTick, ref, watch } from "vue";
+import { useFieldId } from "../composables/useFieldId";
 import { useFloating } from "../composables/useFloating";
 import { fromISO } from "../composables/date";
 import BlessCalendar from "./BlessCalendar.vue";
@@ -24,8 +25,7 @@ const props = withDefaults(
 );
 
 const model = defineModel<string | [string, string] | undefined>();
-const uid = useId();
-const id = props.id ?? uid;
+const id = useFieldId(props)();
 const open = ref(false);
 const anchor = ref<HTMLElement>();
 const panel = ref<HTMLElement>();
@@ -163,10 +163,10 @@ function clear() {
 .bless-datepicker__trigger:focus-visible,
 .bless-datepicker__native:focus-visible {
   outline: 0;
-  border-bottom-color: var(--bless-color-accent);
+  border-bottom-color: var(--bless-color-accent-text);
 }
 .bless-datepicker__trigger[aria-expanded="true"] {
-  border-bottom-color: var(--bless-color-accent);
+  border-bottom-color: var(--bless-color-accent-text);
 }
 .bless-datepicker__icon {
   color: var(--bless-color-text-muted);

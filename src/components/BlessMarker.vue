@@ -42,7 +42,7 @@ withDefaults(
   font-family: var(--bless-font-sans);
   font-size: var(--bless-text-xs);
   letter-spacing: var(--bless-tracking-wide);
-  color: var(--_c);
+  color: var(--bless-color-text); /* the line carries the colour; success/warning can't be text */
 }
 .bless-marker--accent {
   --_c: var(--bless-color-accent);

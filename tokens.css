@@ -15,7 +15,8 @@
   --bless-color-accent: #e85078; /* primary CTA — Megumi's petal; the default palette */
   --bless-color-accent-soft: #f5a0b8; /* highlights, hover fills */
   --bless-color-accent-2: #ee6f92;
-  --bless-color-danger: #ff3434; /* active/alert, play icons */
+  --bless-color-accent-text: #b63c5c; /* accent as *text* on bg/surface — darkened to ≥4.5:1; fills keep --accent */
+  --bless-color-danger: #cc2020; /* active/alert, error text — 4.9:1 on white and under white */
   --bless-color-badge: #e03060; /* NEW! pill */
   --bless-color-warning: #ffa800;
   --bless-color-success: #c0e722;
@@ -131,6 +132,7 @@
     --bless-color-chart-2: #b57bff;
     --bless-color-chart-3: #ffa800;
     --bless-color-chart-4: #c0e722;
+    --bless-color-danger: #f04848;
     --bless-color-chart-5: #9aa4ad;
     /* light-on-dark reads thinner (irradiation); one step up keeps hairlines legible */
     --bless-font-weight-thin: 300;
@@ -151,6 +153,7 @@
   --bless-color-chart-2: #b57bff;
   --bless-color-chart-3: #ffa800;
   --bless-color-chart-4: #c0e722;
+  --bless-color-danger: #f04848;
   --bless-color-chart-5: #9aa4ad;
   --bless-font-weight-thin: 300;
   color-scheme: dark;
@@ -176,6 +179,7 @@
   --bless-color-accent-2: #ea5a52;
   --bless-color-badge: #d02020;
   --bless-color-chart-1: #e03028;
+  --bless-color-accent-text: #cc2c24;
 }
 :root[data-palette="izumi"] {
   --bless-color-accent: #4090d0;
@@ -183,6 +187,7 @@
   --bless-color-accent-2: #63a6db;
   --bless-color-badge: #2f7ec0;
   --bless-color-chart-1: #4090d0;
+  --bless-color-accent-text: #3270a2;
 }
 :root[data-palette="michiru"] {
   --bless-color-accent: #b878b0;
@@ -190,6 +195,7 @@
   --bless-color-accent-2: #c793c0;
   --bless-color-badge: #a565a0;
   --bless-color-chart-1: #b878b0;
+  --bless-color-accent-text: #8c5b86;
 }
 /* Eriri's petal (#c8e018) is too light for white text; it becomes accent-soft and the ink darkens */
 :root[data-palette="eriri"] {
@@ -198,6 +204,7 @@
   --bless-color-accent-2: #a3bf0a;
   --bless-color-badge: #6f8400;
   --bless-color-chart-1: #7f9600;
+  --bless-color-accent-text: #627300;
 }
 /* Tomoya — the centre of the circle, not a petal; the mark stays five */
 :root[data-palette="tomoya"] {
@@ -206,4 +213,30 @@
   --bless-color-accent-2: #7688f9;
   --bless-color-badge: #4a5fe0;
   --bless-color-chart-1: #5870f8;
+  --bless-color-accent-text: #4c60d5;
+}
+
+/* ---- accent as text, dark ----
+ * After the palettes so it wins: on dark greys the accents already read ≥4.3:1, so text uses the
+ * accent itself; Utaha and Tomoya are the two that need a lift.
+ */
+:root:not([data-theme="light"]) {
+  @media (prefers-color-scheme: dark) {
+    --bless-color-accent-text: #e95b80; /* Megumi, lifted a step for 4.5:1 on surface */
+    &[data-palette="utaha"] {
+      --bless-color-accent-text: #e7625c;
+    }
+    &[data-palette="tomoya"] {
+      --bless-color-accent-text: #6f84f9;
+    }
+  }
+}
+:root[data-theme="dark"] {
+  --bless-color-accent-text: #e95b80;
+  &[data-palette="utaha"] {
+    --bless-color-accent-text: #e7625c;
+  }
+  &[data-palette="tomoya"] {
+    --bless-color-accent-text: #6f84f9;
+  }
 }

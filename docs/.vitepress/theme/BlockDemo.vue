@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import { computed, ref } from "vue";
+import { computed, onBeforeUnmount, onMounted, ref, watch } from "vue";
+import { useData } from "vitepress";
+import { useTheme } from "blessing-ui";
 
 const props = defineProps<{
   /** { "index.vue": "<source>", ... } — from import.meta.glob(..., { as: "raw" }) */
@@ -7,9 +9,30 @@ const props = defineProps<{
   components?: string[];
   /** min preview height */
   height?: string;
+  /** URL of the <slug>-frame page rendered in the preview iframe */
+  frame?: string;
   /** block owns the viewport (BlessStage/BlessLayout): no inline preview, link out instead */
   fullPage?: string;
 }>();
+// preview runs in an iframe so lib styles and the block's media queries are free of docs CSS
+const iframe = ref<HTMLIFrameElement>();
+const frameH = ref(0);
+const { isDark } = useData();
+const { palette } = useTheme();
+function sync() {
+  iframe.value?.contentWindow?.postMessage(
+    { type: "bless-theme", dark: isDark.value, palette: palette.value },
+    "*",
+  );
+}
+function onMsg(e: MessageEvent) {
+  if (e.source !== iframe.value?.contentWindow || !e.data) return;
+  if (e.data.type === "bless-ready") sync();
+  if (e.data.type === "bless-height") frameH.value = e.data.h;
+}
+watch([isDark, palette], sync);
+onMounted(() => addEventListener("message", onMsg));
+onBeforeUnmount(() => removeEventListener("message", onMsg));
 const names = computed(() =>
   Object.keys(props.files).sort((a, b) =>
     a === "index.vue" ? -1 : b === "index.vue" ? 1 : a.localeCompare(b),
@@ -63,7 +86,15 @@ async function copy(what: "file" | "all") {
       :class="`block__preview--${view}`"
       :style="{ minHeight: height }"
     >
-      <div class="block__frame"><slot /></div>
+      <iframe
+        v-if="frame"
+        ref="iframe"
+        :src="frame"
+        class="block__frame"
+        :style="{ height: `${Math.max(frameH, parseInt(height ?? '0') || 0)}px` }"
+        :title="`${components?.[0] ?? 'Block'} preview`"
+      />
+      <div v-else class="block__frame"><slot /></div>
     </div>
     <div v-show="showCode" class="block__code">
       <div class="block__tabs" role="tablist">
@@ -158,6 +189,11 @@ async function copy(what: "file" | "all") {
   text-decoration: none;
   transform: skewX(var(--bless-skew));
 }
+iframe.block__frame {
+  display: block;
+  border: 0;
+  min-height: 160px;
+}
 .block__frame {
   width: 100%;
   background: var(--bless-color-bg);
@@ -188,7 +224,7 @@ async function copy(what: "file" | "all") {
 .vp-doc .block__frame table {
   display: table;
 }
-.vp-doc .block__frame a {
+.vp-doc .block__frame a:not([class]) {
   color: inherit;
   font-weight: inherit;
   text-decoration: none;

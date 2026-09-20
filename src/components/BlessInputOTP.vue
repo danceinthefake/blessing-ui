@@ -141,13 +141,13 @@ function onPaste(i: number, e: ClipboardEvent) {
   font-size: var(--bless-text-lg);
   font-weight: var(--bless-font-weight-bold);
   text-align: center;
-  caret-color: var(--bless-color-accent);
+  caret-color: var(--bless-color-accent-text);
   transform: skewX(var(--bless-skew));
   transition: border-color var(--bless-duration-base);
 }
 .bless-otp__cell:focus {
   outline: 0;
-  border-bottom-color: var(--bless-color-accent);
+  border-bottom-color: var(--bless-color-accent-text);
   background: var(--bless-color-bg);
 }
 .bless-otp__cell:focus-visible {

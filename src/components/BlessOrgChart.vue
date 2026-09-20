@@ -128,8 +128,8 @@ const emit = defineEmits<{ select: [node: BlessTreeNode, id: string] }>();
   outline-offset: 2px;
 }
 .bless-org__node--selected {
-  border-color: var(--bless-color-accent);
-  color: var(--bless-color-accent);
+  border-color: var(--bless-color-accent-text);
+  color: var(--bless-color-accent-text);
 }
 .bless-org__label {
   font-size: var(--bless-text-sm);

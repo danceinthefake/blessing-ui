@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { ref, useId } from "vue";
+import { ref } from "vue";
+import { useFieldId } from "../composables/useFieldId";
 
 defineOptions({ name: "BlessFileInput", inheritAttrs: false });
 
@@ -19,8 +20,7 @@ const props = withDefaults(
   { label: "Drop files here or click to browse", list: true },
 );
 const model = defineModel<File[]>({ default: () => [] });
-const uid = useId();
-const id = () => props.id ?? uid;
+const id = useFieldId(props);
 const input = ref<HTMLInputElement>();
 const over = ref(false);
 
@@ -113,7 +113,7 @@ const kb = (n: number) =>
 }
 .bless-file__zone:hover,
 .bless-file__zone--over {
-  border-color: var(--bless-color-accent);
+  border-color: var(--bless-color-accent-text);
   border-style: solid;
 }
 .bless-file__zone:focus-within {

@@ -28,16 +28,38 @@ for (const slug of readdirSync(dir).sort()) {
     summary: meta.summary,
     order: meta.order ?? 99,
   });
+  // the preview iframe page: no docs chrome, so lib styles and the block's media queries run clean
+  const frame = resolve(dir, `${slug}-frame.md`);
+  if (!existsSync(frame))
+    writeFileSync(
+      frame,
+      `---
+layout: page
+navbar: false
+sidebar: false
+aside: false
+footer: false
+title: ${meta.title} (preview)
+---
+
+<script setup>
+import Block from "./${slug}/index.vue";
+</script>
+
+<BlockFrame><Block /></BlockFrame>
+`,
+    );
   const page = resolve(dir, `${slug}.md`);
   if (existsSync(page)) continue;
   writeFileSync(
     page,
     `---
 title: ${meta.title}
+aside: false
 ---
 
 <script setup>
-import Block from "./${slug}/index.vue";
+import { withBase } from "vitepress";
 import meta from "./${slug}/meta";
 const files = Object.fromEntries(
   Object.entries(import.meta.glob("./${slug}/**/*.{vue,ts}", { query: "?raw", import: "default", eager: true }))
@@ -50,9 +72,7 @@ const files = Object.fromEntries(
 
 <p class="bless-lead">${meta.summary.replace(/</g, "&lt;")}</p>
 
-<BlockDemo :files :components="meta.components" :height="meta.height">
-  <Block />
-</BlockDemo>
+<BlockDemo :files :components="meta.components" :height="meta.height" :frame="withBase('/blocks/${slug}-frame')" />
 
 ## Into your app
 
