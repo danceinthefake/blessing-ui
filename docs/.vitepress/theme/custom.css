@@ -33,7 +33,7 @@
 /* skewed brand buttons on the home hero */
 .VPButton.brand,
 .VPButton.alt {
-  border-radius: 0;
+  border-radius: var(--bless-radius);
   transform: skewX(var(--bless-skew));
   font-weight: var(--bless-font-weight-bold);
   letter-spacing: var(--bless-tracking-wide);
@@ -49,7 +49,7 @@
 .VPLocalSearchBox .shell,
 .VPNavBarMenuGroup .menu,
 .custom-block {
-  border-radius: 0;
+  border-radius: var(--bless-radius);
 }
 .VPHero .name {
   font-weight: var(--bless-font-weight-thin);
@@ -74,7 +74,7 @@
 .VPButton.VPButton.medium,
 .VPButton.VPButton.small,
 .VPButton.VPButton.big {
-  border-radius: 0;
+  border-radius: var(--bless-radius);
 }
 :root,
 .dark {
@@ -192,6 +192,7 @@
   margin: 0 0 24px;
 }
 .VPHero .image-src {
+  border-radius: var(--bless-radius);
   position: static;
   width: 100%;
   max-width: 560px;

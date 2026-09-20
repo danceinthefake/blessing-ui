@@ -103,6 +103,7 @@ const text = computed(() => (props.format ?? String)(model.value));
 }
 .bless-slider__input::-webkit-slider-thumb {
   appearance: none;
+  border-radius: var(--bless-radius);
   width: 14px;
   height: 20px;
   margin-top: -7px;
@@ -115,7 +116,7 @@ const text = computed(() => (props.format ?? String)(model.value));
   height: 20px;
   background: var(--bless-color-text);
   border: 0;
-  border-radius: 0;
+  border-radius: var(--bless-radius);
   transform: skewX(var(--bless-skew));
 }
 .bless-slider__input:hover::-webkit-slider-thumb {

@@ -121,6 +121,8 @@ async function copy(what: "file" | "all") {
 <style>
 .block {
   margin: 16px 0 32px;
+  border-radius: var(--bless-radius);
+  overflow: hidden;
   border: var(--bless-border-width) solid var(--bless-color-border);
 }
 .block__bar,

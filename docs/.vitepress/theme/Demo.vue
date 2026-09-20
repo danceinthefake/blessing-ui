@@ -28,6 +28,8 @@ const showCode = ref(false);
 <style>
 .demo {
   margin: 16px 0 28px;
+  border-radius: var(--bless-radius);
+  overflow: hidden;
   border: var(--bless-border-width) solid var(--bless-color-border);
 }
 .demo__title {
