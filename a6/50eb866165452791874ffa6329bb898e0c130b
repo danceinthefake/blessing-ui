@@ -1,0 +1,113 @@
+docs/blocks/release/meta.ts
+  s_9ec1000e308ddb::t_8dc2b5fd9c818e 1-3,16
+  s_9ec1000e308ddb::t_ff25debd53df13 5,7-15
+  s_9ec1000e308ddb::t_22cc85e1b1030e 4
+  s_9ec1000e308ddb::t_d4d4a0a646557c 6
+docs/blocks/story/meta.ts
+  s_9ec1000e308ddb::t_22cc85e1b1030e 4
+  s_9ec1000e308ddb::t_8dc2b5fd9c818e 1-3,15
+  s_9ec1000e308ddb::t_ff25debd53df13 5-14
+docs/blocks/staff.md
+  s_9ec1000e308ddb::t_8dc2b5fd9c818e 1-25
+docs/blocks/index.md
+  s_9ec1000e308ddb::t_12be28f8223ac9 1-35
+docs/scripts/blocks.ts
+  s_9ec1000e308ddb::t_ca5baa3c0f79e0 1-8,11-16,23,31-32,36-59,62-63,72
+  s_9ec1000e308ddb::t_eb35697184e258 9-10,17-22,24-30,33-35,60-61,64-71
+docs/blocks/news/index.vue
+  s_9ec1000e308ddb::t_8dc2b5fd9c818e 1,10-27,35-55
+  s_9ec1000e308ddb::t_ff25debd53df13 2-9,28-34
+docs/.vitepress/config.ts
+  s_9ec1000e308ddb::t_eb35697184e258 53-55
+  s_9ec1000e308ddb::t_6485ca2404ea92 4,45,49-52,56-57
+  s_9ec1000e308ddb::t_12be28f8223ac9 13
+docs/blocks/character/index.vue
+  s_9ec1000e308ddb::t_ff25debd53df13 3,16-23,25-27,33-40,42-44,47-49,51-53,79-82,94-97
+  s_9ec1000e308ddb::t_8dc2b5fd9c818e 1-2,4-15,24,28-32,41,45-46,50,54-65,67-78,83-93,98-102
+  s_9ec1000e308ddb::t_bfbcb6a7de898e 66
+docs/blocks/news/domain.ts
+  s_9ec1000e308ddb::t_8dc2b5fd9c818e 1-16
+docs/.vitepress/blocks.json
+  s_9ec1000e308ddb::t_d4d4a0a646557c 34
+  s_9ec1000e308ddb::t_eb35697184e258 2-33,35-44
+  s_9ec1000e308ddb::t_8dc2b5fd9c818e 1
+docs/blocks/story/index.vue
+  s_9ec1000e308ddb::t_8dc2b5fd9c818e 1,10,13,42-52,56-91
+  s_9ec1000e308ddb::t_ff25debd53df13 2-9,11-12,14-41,53-55
+docs/blocks/character.md
+  s_9ec1000e308ddb::t_8dc2b5fd9c818e 1-25
+docs/blocks/character/domain.ts
+  s_9ec1000e308ddb::t_8dc2b5fd9c818e 1-9
+docs/blocks/onair/index.vue
+  s_9ec1000e308ddb::t_7825177ff0f65e 16
+  s_9ec1000e308ddb::t_8dc2b5fd9c818e 1,10-15,17-37,41-64
+  s_9ec1000e308ddb::t_ff25debd53df13 2-9,38-40
+docs/.vitepress/theme/index.ts
+  s_9ec1000e308ddb::t_ca5baa3c0f79e0 10,30
+docs/blocks/news/api.ts
+  s_9ec1000e308ddb::t_8dc2b5fd9c818e 1-11,26-31
+  s_9ec1000e308ddb::t_ff25debd53df13 12-25
+docs/blocks/story.md
+  s_9ec1000e308ddb::t_8dc2b5fd9c818e 1-25
+docs/blocks/news/meta.ts
+  s_9ec1000e308ddb::t_22cc85e1b1030e 4
+  s_9ec1000e308ddb::t_ff25debd53df13 5-6
+  s_9ec1000e308ddb::t_8dc2b5fd9c818e 1-3,7-8
+docs/blocks/news/useNews.ts
+  s_9ec1000e308ddb::t_8dc2b5fd9c818e 1-17
+docs/blocks/character/meta.ts
+  s_9ec1000e308ddb::t_ff25debd53df13 5-7
+  s_9ec1000e308ddb::t_8dc2b5fd9c818e 1-3,8-9
+  s_9ec1000e308ddb::t_22cc85e1b1030e 4
+package.json
+  s_9ec1000e308ddb::t_ca5baa3c0f79e0 4,38,43-44
+docs/blocks/release.md
+  s_9ec1000e308ddb::t_8dc2b5fd9c818e 1-25
+docs/blocks/news.md
+  s_9ec1000e308ddb::t_8dc2b5fd9c818e 1-25
+docs/components/layout.md
+  s_9ec1000e308ddb::t_eb35697184e258 15
+docs/blocks/staff/meta.ts
+  s_9ec1000e308ddb::t_ff25debd53df13 5-6
+  s_9ec1000e308ddb::t_22cc85e1b1030e 4
+  s_9ec1000e308ddb::t_8dc2b5fd9c818e 1-3,7-8
+docs/.vitepress/theme/BlockDemo.vue
+  s_9ec1000e308ddb::t_eb35697184e258 11-15,21-24,35-40,43-53,60-69,71-73
+  s_9ec1000e308ddb::t_ca5baa3c0f79e0 1-10,16-20,25-34,41-42,54-59,70,74-179
+docs/blocks/onair.md
+  s_9ec1000e308ddb::t_8dc2b5fd9c818e 1-25
+docs/blocks/onair/meta.ts
+  s_9ec1000e308ddb::t_22cc85e1b1030e 4
+  s_9ec1000e308ddb::t_8dc2b5fd9c818e 1-3,7-8
+  s_9ec1000e308ddb::t_ff25debd53df13 5-6
+docs/blocks/staff/index.vue
+  s_9ec1000e308ddb::t_ff25debd53df13 27-29,32-34,44-46
+  s_9ec1000e308ddb::t_8dc2b5fd9c818e 1-26,30-31,35-43,47-94
+docs/blocks/release/index.vue
+  s_9ec1000e308ddb::t_bfbcb6a7de898e 103,105-106
+  s_9ec1000e308ddb::t_8dc2b5fd9c818e 1,11,21,56-60,69-72,76-83,93-102,107-124
+  s_9ec1000e308ddb::t_ff25debd53df13 2-10,12-20,22-55,61-68,73-75,84-92
+  s_9ec1000e308ddb::t_22cc85e1b1030e 104
+docs/blocks/character/api.ts
+  s_9ec1000e308ddb::t_ff25debd53df13 11-64
+  s_9ec1000e308ddb::t_8dc2b5fd9c818e 1-10,65-67
+docs/blocks/README.md
+  s_9ec1000e308ddb::t_ca5baa3c0f79e0 1-11,13-25
+  s_9ec1000e308ddb::t_36cf0c93212442 12
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "a650eb866165452791874ffa6329bb898e0c130b",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "claude-opus-5"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
