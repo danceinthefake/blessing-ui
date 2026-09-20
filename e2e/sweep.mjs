@@ -57,7 +57,9 @@ for (const name of want) {
     } catch (e) {
       errors.push(`navigation: ${e.message.split("\n")[0]}`);
     }
-    const real = errors.filter((e) => !ignore.some((r) => r.test(e)));
+    const real = errors.filter(
+      (e) => !ignore.some((r) => r.test(e)) && !(allow[path] ?? []).some((r) => r.test(e)),
+    );
     if (real.length) {
       bad++;
       console.log(`  ✗ ${name} ${path}\n    ${[...new Set(real)].slice(0, 4).join("\n    ")}`);

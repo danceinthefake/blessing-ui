@@ -5,11 +5,14 @@ pnpm add blessing-ui vue
 ```
 
 ```ts
-// main.ts
-import "blessing-ui/style.css"; // tokens + every component's styles
+import { BlessButton } from "blessing-ui";
 ```
 
-Then import components where you use them. Everything is a named ESM export and tree-shakes per component.
+That's it — each component brings its own stylesheet, and the tokens come with the first import. Everything is a named ESM export and tree-shakes per component. If you'd rather load all styles up front (no bundler, or a CDN), import the full sheet once:
+
+```ts
+import "blessing-ui/style.css"; // tokens + every component's styles
+```
 
 ```vue
 <script setup lang="ts">

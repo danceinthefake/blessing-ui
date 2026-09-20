@@ -24,9 +24,40 @@ sh("ENTRY=one pnpm exec vite build");
 sh("ENTRY=all pnpm exec vite build");
 
 const gz = (f) => gzipSync(readFileSync(resolve(here, "dist", f))).length;
+const cssOf = (dir) => {
+  const a = resolve(here, "dist", dir, "assets");
+  return readdirSync(a)
+    .filter((f) => f.endsWith(".css"))
+    .reduce((n, f) => n + gz(`${dir}/assets/${f}`), 0);
+};
 const one = gz("one/one.js"),
-  all = gz("all/all.js");
-console.log(`\nBlessButton only: ${one} B gz · everything: ${all} B gz`);
+  all = gz("all/all.js"),
+  oneCss = cssOf("one"),
+  allCss = cssOf("all");
+console.log(
+  `\nBlessButton only: ${one} B gz JS + ${oneCss} B gz CSS · everything: ${all} B gz JS + ${allCss} B gz CSS`,
+);
+const oneCssText = readdirSync(resolve(here, "dist/one/assets"))
+  .filter((f) => f.endsWith(".css"))
+  .map((f) => readFileSync(resolve(here, "dist/one/assets", f), "utf8"))
+  .join("");
+if (!oneCssText.includes("--bless-color-accent:")) {
+  console.error(
+    "✗ single-component build lost the tokens (index.js side-effect import was tree-shaken)",
+  );
+  process.exit(1);
+}
+if (oneCssText.includes(".bless-datatable")) {
+  console.error("✗ single-component build pulled unrelated component CSS");
+  process.exit(1);
+}
+const LIMIT_CSS_ONE = 4000;
+if (oneCss > LIMIT_CSS_ONE) {
+  console.error(
+    `✗ single-component CSS is ${oneCss} B gz (> ${LIMIT_CSS_ONE}) — per-component CSS regressed`,
+  );
+  process.exit(1);
+}
 const LIMIT_ONE = 3000;
 if (one > LIMIT_ONE) {
   console.error(
