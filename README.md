@@ -6,10 +6,10 @@
 
 Vue 3 component library and design tokens. Grey-scale UI, one pink-red accent, skewed labels instead of rounded corners, thin oversized watermark type, opacity-fade hovers. The look was re-derived from one anime's official site, ideas only — the [story](docs/guide/story.md) says which, what was kept, and what was not taken.
 
-- 135 components — from button to data table to chat — styled only through `--bless-*` custom properties, no Tailwind dependency
+- 145 components — from button to data table to chat — styled only through `--bless-*` custom properties, no Tailwind dependency
 - Native platform first: `<dialog>`, Popover API, `<details>`, native form controls, `Intl` dates, scroll-snap — no positioning, date or table library
 - Accessible defaults: focus rings, ARIA tablist/dialog/tables, `prefers-reduced-motion`
-- ESM, tree-shakable, `vue` as the only required peer (`@tiptap/vue-3` optional, for `BlessEditor`). ~245 KB JS / 165 KB CSS raw, ~59 KB / 22 KB gzip for everything (tree-shakes per component)
+- ESM, tree-shakable, `vue` as the only required peer (`@tiptap/vue-3` optional, for `BlessEditor`). ~262 KB JS / 175 KB CSS raw, ~63 KB / 23 KB gzip for everything (tree-shakes per component)
 
 ## Install
 
@@ -77,78 +77,85 @@ import {
 
 ## Components
 
-135 components across nine groups. Every one styles itself from `--bless-*` tokens and ships with a test and a docs page.
+145 components across nine groups. Every one styles itself from `--bless-*` tokens and ships with a test and a docs page.
 
 ### Primitives
 
-| Component               | Purpose                                  | Key props / slots                                                                                  |
-| ----------------------- | ---------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `BlessSkew`             | Skewed container, counter-skews its slot | `as`, `color`                                                                                      |
-| `BlessButton`           | Button or anchor                         | `variant` solid/outline/ghost, `color`, `size`, `href`, `disabled`, `loading`; `#prefix` `#suffix` |
-| `BlessBadge`            | Small pill                               | `color`, `scaled`                                                                                  |
-| `BlessDash`             | Inline 10×1px separator                  | `color`                                                                                            |
-| `BlessSeparator`        | `<hr>` / vertical rule, optional label   | `orientation`, `decorative`, `color`, `label`                                                      |
-| `BlessIcon`             | SVG slot wrapper                         | `size`, `label`                                                                                    |
-| `BlessText`             | Typography helper                        | `as`, `size`, `weight`, `tracking`, `leading`, `muted`, `uppercase`                                |
-| `BlessKbd`              | Key combo                                | `keys[]` or slot                                                                                   |
-| `BlessThemeToggle`      | Light/dark switch or 3-way group         | `mode` switch/group, `label`                                                                       |
-| `BlessSpinner`          | Loading indicator (`role=status`)        | `size`, `color`, `label`; `BlessButton loading` uses it                                            |
-| `BlessEmpty`            | Empty state                              | `title`, `description`, `variant` outline/plain; `#icon` `#title` `#description` default=actions   |
-| `BlessButtonGroup`      | Joined buttons                           | `orientation`, `label`                                                                             |
-| `BlessIndicator`        | Count / dot badge on any element         | `value` number or true, `max`, `color`, `position`                                                 |
-| `BlessTimeline`         | Vertical rail of events                  | `items[{title,time,description,color}]`; `#default="{item}"` `#dot`                                |
-| `BlessSwap`             | Two-face toggle                          | `v-model`, `label`, `effect` fade/rotate/flip; `#on` `#off`                                        |
-| `BlessWatermarkOverlay` | Tiled text watermark over content        | `text`, `gap`, `angle`, `fontSize`, `opacity`, `color`                                             |
-| `BlessChip`             | Removable pill                           | `label`, `icon`, `image`, `removable`, `color`, `size`; emits `remove`                             |
-| `BlessMeterGroup`       | Multi-segment meter                      | `segments[{label,value,color}]`, `max`, `legend`, `format`, `orientation`                          |
-| `BlessBlockUI`          | Blocking overlay                         | `blocked`, `fullscreen`; `#indicator`                                                              |
-| `BlessMockup`           | Browser / window / phone frame           | `type`, `title`, `dark`                                                                            |
-| `BlessItem`             | Media + title + description + actions    | `title`, `description`, `href`, `variant` plain/outline/surface, `size`; `#media` `#actions`       |
-| `BlessAvatar`           | Image with initials fallback             | `src`, `name`, `size`, `square`, `color`                                                           |
-| `BlessSkeleton`         | Shimmer placeholder                      | `width`, `height`, `lines`, `circle`                                                               |
-| `BlessAspectRatio`      | Ratio box                                | `ratio`                                                                                            |
-| `BlessProgress`         | Bar, determinate or not                  | `value`, `max`, `label`, `showValue`, `color`, `size`                                              |
-| `BlessAlert`            | Inline notice                            | `title`, `color`, `live`, `dismissible`, `v-model`; `#icon` `#title`                               |
+| Component                             | Purpose                                  | Key props / slots                                                                                  |
+| ------------------------------------- | ---------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `BlessSkew`                           | Skewed container, counter-skews its slot | `as`, `color`                                                                                      |
+| `BlessButton`                         | Button or anchor                         | `variant` solid/outline/ghost, `color`, `size`, `href`, `disabled`, `loading`; `#prefix` `#suffix` |
+| `BlessBadge`                          | Small pill                               | `color`, `scaled`                                                                                  |
+| `BlessDash`                           | Inline 10×1px separator                  | `color`                                                                                            |
+| `BlessSeparator`                      | `<hr>` / vertical rule, optional label   | `orientation`, `decorative`, `color`, `label`                                                      |
+| `BlessIcon`                           | SVG slot wrapper                         | `size`, `label`                                                                                    |
+| `BlessText`                           | Typography helper                        | `as`, `size`, `weight`, `tracking`, `leading`, `muted`, `uppercase`                                |
+| `BlessKbd`                            | Key combo                                | `keys[]` or slot                                                                                   |
+| `BlessThemeToggle`                    | Light/dark switch or 3-way group         | `mode` switch/group, `label`                                                                       |
+| `BlessSpinner`                        | Loading indicator (`role=status`)        | `size`, `color`, `label`; `BlessButton loading` uses it                                            |
+| `BlessEmpty`                          | Empty state                              | `title`, `description`, `variant` outline/plain; `#icon` `#title` `#description` default=actions   |
+| `BlessButtonGroup`                    | Joined buttons                           | `orientation`, `label`                                                                             |
+| `BlessIndicator`                      | Count / dot badge on any element         | `value` number or true, `max`, `color`, `position`                                                 |
+| `BlessTimeline`                       | Vertical rail of events                  | `items[{title,time,description,color}]`; `#default="{item}"` `#dot`                                |
+| `BlessSwap`                           | Two-face toggle                          | `v-model`, `label`, `effect` fade/rotate/flip; `#on` `#off`                                        |
+| `BlessWatermarkOverlay`               | Tiled text watermark over content        | `text`, `gap`, `angle`, `fontSize`, `opacity`, `color`                                             |
+| `BlessCircularProgress`               | Ring progress                            | `value` (omit = spinning), `max`, `size`, `thickness`, `color`, `showValue`, `format`              |
+| `BlessLoadingBar` + `useLoadingBar()` | Top-of-page progress                     | `height`, `position`, `color`; `start()` `stop()` `set(p)` `track(promise)`                        |
+| `BlessSlideTransition`                | Height 0 ↔ auto                          | `appear`; wrap one `v-if` element with `transition: height`                                        |
+| `BlessClientOnly`                     | Browser-only render                      | `#fallback`                                                                                        |
+| `BlessChip`                           | Removable pill                           | `label`, `icon`, `image`, `removable`, `color`, `size`; emits `remove`                             |
+| `BlessMeterGroup`                     | Multi-segment meter                      | `segments[{label,value,color}]`, `max`, `legend`, `format`, `orientation`                          |
+| `BlessBlockUI`                        | Blocking overlay                         | `blocked`, `fullscreen`; `#indicator`                                                              |
+| `BlessMockup`                         | Browser / window / phone frame           | `type`, `title`, `dark`                                                                            |
+| `BlessItem`                           | Media + title + description + actions    | `title`, `description`, `href`, `variant` plain/outline/surface, `size`; `#media` `#actions`       |
+| `BlessAvatar`                         | Image with initials fallback             | `src`, `name`, `size`, `square`, `color`                                                           |
+| `BlessSkeleton`                       | Shimmer placeholder                      | `width`, `height`, `lines`, `circle`                                                               |
+| `BlessAspectRatio`                    | Ratio box                                | `ratio`                                                                                            |
+| `BlessProgress`                       | Bar, determinate or not                  | `value`, `max`, `label`, `showValue`, `color`, `size`                                              |
+| `BlessAlert`                          | Inline notice                            | `title`, `color`, `live`, `dismissible`, `v-model`; `#icon` `#title`                               |
 
 ### Forms
 
-| Component                          | Purpose                                                     | Key props / slots                                                                                                                          |
-| ---------------------------------- | ----------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| `BlessLabel`                       | `<label>` with required mark and hint                       | `for`, `required`, `hint`                                                                                                                  |
-| `BlessInput`                       | Text-like input                                             | `v-model`, `type`, `size`, `invalid`, `description`, `error`; `#prefix` `#suffix`                                                          |
-| `BlessInputGroup`                  | Shared surface: addons + any control                        | `size`, `disabled`; `#prefix` `#suffix` (text or `BlessButton`), default = `BlessInput`/`BlessSelect`                                      |
-| `BlessTextarea`                    | Auto-growing textarea                                       | `v-model`, `rows`, `autogrow`, `maxlength`, `counter`, `error`                                                                             |
-| `BlessCheckbox`                    | Native checkbox                                             | `v-model` (bool or array), `value`, `indeterminate`, `description`                                                                         |
-| `BlessRadioGroup` / `BlessRadio`   | Native radios                                               | group `v-model`, `label`, `orientation`; radio `value`, `description`                                                                      |
-| `BlessSwitch`                      | `role=switch` toggle                                        | `v-model`, `size`, `labelPosition`                                                                                                         |
-| `BlessRating`                      | Star rating on native radios                                | `v-model`, `max`, `icon`, `size`, `readonly`                                                                                               |
-| `BlessFileInput`                   | File input + drop zone                                      | `v-model` File[], `accept`, `multiple`, `hint`, `list`, `invalid`                                                                          |
-| `BlessColorPicker`                 | `<input type=color>` + swatches                             | `v-model` hex, `swatches[]`, `showValue`                                                                                                   |
-| `BlessPasswordMeter`               | Strength `<meter>` from rules                               | `value`, `rules[{label,test}]`, `labels`, `showRules`                                                                                      |
-| `BlessListbox`                     | `role=listbox`, keyboard + typeahead                        | `v-model` (array when `multiple`), `options`, `rows`, `label`; `#default="{option, selected}"`                                             |
-| `BlessKnob`                        | Rotary dial on `<input type=range>`                         | `v-model`, `min`, `max`, `step`, `size`, `sweep`, `format`, `label`                                                                        |
-| `BlessSignaturePad`                | Canvas signature                                            | `v-model` data URL, `height`, `lineWidth`, `color`, `type`; emits `end`; exposes `clear()` `isEmpty()`                                     |
-| `BlessEditor`                      | Rich text toolbar for Tiptap                                | `editor` (from `useEditor`), `tools[]`, `minHeight`; default slot = `<EditorContent>`; `#toolbar` `#footer`. Optional peer `@tiptap/vue-3` |
-| `BlessInputNumber`                 | Number with ± and Intl format                               | `v-model` number, `min`, `max`, `step`, `buttons`, `prefix`, `suffix`, `format`, `locale`                                                  |
-| `BlessPasswordInput`               | Password + reveal + meter                                   | `v-model`, `meter`; wraps `BlessInput`                                                                                                     |
-| `BlessInputTags`                   | Free-text tags                                              | `v-model` string[], `separators`, `max`, `duplicates`                                                                                      |
-| `BlessFloatLabel`                  | Floating / in-field label                                   | `label`, `for`, `variant` over/in; wrap a control with `placeholder=" "`                                                                   |
-| `BlessFieldset`                    | `<fieldset>` + legend                                       | `legend`, `toggleable`, `v-model:collapsed`, `disabled`                                                                                    |
-| `BlessInplace`                     | Click to edit                                               | `v-model:active`, `closable`; `#display` `#content="{close}"`                                                                              |
-| `BlessCompare`                     | Before / after slider                                       | `v-model` 0–100, `orientation`; `#before` `#after`                                                                                         |
-| `BlessCascadeSelect`               | Nested options, one column per level                        | `v-model`, `options[{value,label,children}]`, `showPath`, `separator`, `size`; emits `select(option, path)`                                |
-| `BlessTreeSelect`                  | Tree in a popover                                           | `v-model` id or id[], `nodes`, `multiple`, `leafOnly`, `size`; emits `select`                                                              |
-| `BlessInputMask`                   | Pattern-masked `BlessInput`                                 | `v-model` masked, `mask` (`#` digit `A` letter `*` either), `placeholder`; emits `update:raw`                                              |
-| `BlessOrderList`                   | Reorderable list                                            | `v-model` items, `rowKey`, `buttons`; drag, ↑↓, Alt+arrows; emits `move`; `#default="{item,index}"`                                        |
-| `BlessPickList`                    | Transfer between two listboxes                              | `v-model:source`, `v-model:target`, `sourceLabel`, `targetLabel`, `rows`                                                                   |
-| `BlessSelect`                      | Styled native `<select>` (picker styled too on Chrome 135+) | `v-model`, `options` (groups ok), `placeholder`, `size`, `error`                                                                           |
-| `BlessSlider`                      | Native range                                                | `v-model`, `min`, `max`, `step`, `showValue`, `format`                                                                                     |
-| `BlessToggle` / `BlessToggleGroup` | Pressed buttons                                             | toggle `v-model:pressed`, `value`; group `v-model`, `type` single/multiple                                                                 |
-| `BlessCombobox`                    | Searchable select                                           | `v-model`, `options`, `multiple`, `creatable` (emits `create`), `size`                                                                     |
-| `BlessDatePicker`                  | Calendar in a popover                                       | `v-model` ISO string or `[start,end]`, `range`, `min`, `max`, `locale`, `nativeOnTouch`                                                    |
-| `BlessCalendar`                    | Month grid                                                  | same as DatePicker plus `weekStart`, `disabledDates`, `month`                                                                              |
-| `BlessInputOTP`                    | One-time code cells                                         | `v-model`, `length`, `numeric`, `separators`, `masked`; emits `complete`                                                                   |
-| `BlessForm` / `BlessField`         | Constraint-API form + field wiring                          | form emits `submit(FormData)` / `invalid`; field `label`, `required`, `description`, `error`; `#default="{ id, error, describedby }"`      |
+| Component                          | Purpose                                                     | Key props / slots                                                                                                                                          |
+| ---------------------------------- | ----------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `BlessLabel`                       | `<label>` with required mark and hint                       | `for`, `required`, `hint`                                                                                                                                  |
+| `BlessInput`                       | Text-like input                                             | `v-model`, `type`, `size`, `invalid`, `description`, `error`; `#prefix` `#suffix`                                                                          |
+| `BlessInputGroup`                  | Shared surface: addons + any control                        | `size`, `disabled`; `#prefix` `#suffix` (text or `BlessButton`), default = `BlessInput`/`BlessSelect`                                                      |
+| `BlessTextarea`                    | Auto-growing textarea                                       | `v-model`, `rows`, `autogrow`, `maxlength`, `counter`, `error`                                                                                             |
+| `BlessCheckbox`                    | Native checkbox                                             | `v-model` (bool or array), `value`, `indeterminate`, `description`                                                                                         |
+| `BlessRadioGroup` / `BlessRadio`   | Native radios                                               | group `v-model`, `label`, `orientation`; radio `value`, `description`                                                                                      |
+| `BlessSwitch`                      | `role=switch` toggle                                        | `v-model`, `size`, `labelPosition`                                                                                                                         |
+| `BlessRating`                      | Star rating on native radios                                | `v-model`, `max`, `icon`, `size`, `readonly`                                                                                                               |
+| `BlessFileInput`                   | File input + drop zone                                      | `v-model` File[], `accept`, `multiple`, `hint`, `list`, `invalid`                                                                                          |
+| `BlessColorPicker`                 | `<input type=color>` + swatches                             | `v-model` hex, `swatches[]`, `showValue`                                                                                                                   |
+| `BlessPasswordMeter`               | Strength `<meter>` from rules                               | `value`, `rules[{label,test}]`, `labels`, `showRules`                                                                                                      |
+| `BlessListbox`                     | `role=listbox`, keyboard + typeahead                        | `v-model` (array when `multiple`), `options`, `rows`, `label`; `#default="{option, selected}"`                                                             |
+| `BlessKnob`                        | Rotary dial on `<input type=range>`                         | `v-model`, `min`, `max`, `step`, `size`, `sweep`, `format`, `label`                                                                                        |
+| `BlessSignaturePad`                | Canvas signature                                            | `v-model` data URL, `height`, `lineWidth`, `color`, `type`; emits `end`; exposes `clear()` `isEmpty()`                                                     |
+| `BlessEditor`                      | Rich text toolbar for Tiptap                                | `editor` (from `useEditor`), `tools[]`, `minHeight`; default slot = `<EditorContent>`; `#toolbar` `#footer`. Optional peer `@tiptap/vue-3`                 |
+| `BlessRange`                       | Two-thumb range                                             | `v-model` [lo, hi], `min`, `max`, `step`, `gap`, `label`, `showValue`, `format`                                                                            |
+| `BlessTimePicker`                  | `<input type=time>` + datalist                              | `v-model` "HH:MM", `step` (minutes), `min`, `max`, `hour12`, `seconds`, `size`                                                                             |
+| `BlessUploader`                    | Upload queue                                                | `url`, `field`, `headers`, `accept`, `multiple`, `auto`, `maxSize`; emits `upload(item, progress, done, fail)` `done` `error`; exposes `start()` `clear()` |
+| `BlessInputNumber`                 | Number with ± and Intl format                               | `v-model` number, `min`, `max`, `step`, `buttons`, `prefix`, `suffix`, `format`, `locale`                                                                  |
+| `BlessPasswordInput`               | Password + reveal + meter                                   | `v-model`, `meter`; wraps `BlessInput`                                                                                                                     |
+| `BlessInputTags`                   | Free-text tags                                              | `v-model` string[], `separators`, `max`, `duplicates`                                                                                                      |
+| `BlessFloatLabel`                  | Floating / in-field label                                   | `label`, `for`, `variant` over/in; wrap a control with `placeholder=" "`                                                                                   |
+| `BlessFieldset`                    | `<fieldset>` + legend                                       | `legend`, `toggleable`, `v-model:collapsed`, `disabled`                                                                                                    |
+| `BlessInplace`                     | Click to edit                                               | `v-model:active`, `closable`; `#display` `#content="{close}"`                                                                                              |
+| `BlessCompare`                     | Before / after slider                                       | `v-model` 0–100, `orientation`; `#before` `#after`                                                                                                         |
+| `BlessCascadeSelect`               | Nested options, one column per level                        | `v-model`, `options[{value,label,children}]`, `showPath`, `separator`, `size`; emits `select(option, path)`                                                |
+| `BlessTreeSelect`                  | Tree in a popover                                           | `v-model` id or id[], `nodes`, `multiple`, `leafOnly`, `size`; emits `select`                                                                              |
+| `BlessInputMask`                   | Pattern-masked `BlessInput`                                 | `v-model` masked, `mask` (`#` digit `A` letter `*` either), `placeholder`; emits `update:raw`                                                              |
+| `BlessOrderList`                   | Reorderable list                                            | `v-model` items, `rowKey`, `buttons`; drag, ↑↓, Alt+arrows; emits `move`; `#default="{item,index}"`                                                        |
+| `BlessPickList`                    | Transfer between two listboxes                              | `v-model:source`, `v-model:target`, `sourceLabel`, `targetLabel`, `rows`                                                                                   |
+| `BlessSelect`                      | Styled native `<select>` (picker styled too on Chrome 135+) | `v-model`, `options` (groups ok), `placeholder`, `size`, `error`                                                                                           |
+| `BlessSlider`                      | Native range                                                | `v-model`, `min`, `max`, `step`, `showValue`, `format`                                                                                                     |
+| `BlessToggle` / `BlessToggleGroup` | Pressed buttons                                             | toggle `v-model:pressed`, `value`; group `v-model`, `type` single/multiple                                                                                 |
+| `BlessCombobox`                    | Searchable select                                           | `v-model`, `options`, `multiple`, `creatable` (emits `create`), `size`                                                                                     |
+| `BlessDatePicker`                  | Calendar in a popover                                       | `v-model` ISO string or `[start,end]`, `range`, `min`, `max`, `locale`, `nativeOnTouch`                                                                    |
+| `BlessCalendar`                    | Month grid                                                  | same as DatePicker plus `weekStart`, `disabledDates`, `month`                                                                                              |
+| `BlessInputOTP`                    | One-time code cells                                         | `v-model`, `length`, `numeric`, `separators`, `masked`; emits `complete`                                                                                   |
+| `BlessForm` / `BlessField`         | Constraint-API form + field wiring                          | form emits `submit(FormData)` / `invalid`; field `label`, `required`, `description`, `error`; `#default="{ id, error, describedby }"`                      |
 
 ### Layout & navigation
 
@@ -259,18 +266,21 @@ Gestures: `usePan(el, cb)` · `useSwipe(el, cb, { threshold, axis })` · `useLon
 
 ### Media
 
-| Component          | Purpose            | Key props / slots                                                 |
-| ------------------ | ------------------ | ----------------------------------------------------------------- |
-| `BlessCarousel`    | Scroll-snap slider | `v-model`, `perView`, `gap`, `loop`, `autoplay`, `dots`, `arrows` |
-| `BlessAudioPlayer` | Track list player  | `tracks`, `v-model` index, `color`; emits `play` `pause` `ended`  |
+| Component          | Purpose                   | Key props / slots                                                                                                   |
+| ------------------ | ------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| `BlessImg`         | Lazy image                | `src`, `alt`, `ratio`, `fit`, `loading`, `placeholder`, `srcset`, `sizes`; default slot = caption overlay; `#error` |
+| `BlessVideo`       | Responsive embed / video  | `src`, `title`, `ratio`, `native`, `poster`                                                                         |
+| `BlessParallax`    | Slow-scrolling background | `src`, `height`, `speed`; `#media` default                                                                          |
+| `BlessCarousel`    | Scroll-snap slider        | `v-model`, `perView`, `gap`, `loop`, `autoplay`, `dots`, `arrows`                                                   |
+| `BlessAudioPlayer` | Track list player         | `tracks`, `v-model` index, `color`; emits `play` `pause` `ended`                                                    |
 
 ### Composables
 
-`useMedia(query?)` · `useHash()` · `useScrollSpy(ids | selector, { rootMargin, root })` → `{ active }` · `useAnimateOnScroll(el, { threshold, rootMargin, once })` → `{ visible }` · `useDialog()` → `{ open, close }` · gestures (see Mobile) · `applyMask(mask, input)` / `unmask(mask, masked)` · `useTheme()` → `{ theme, isDark, set, toggle, palette, setPalette }` · `useFloating(anchor, floating, active, opts | () => opts)` · `useToast()` · `useDataTable(rows, { rowKey, pageSize, searchKeys })` · date helpers `toISO` `fromISO` `addDays` `addMonths` `isoToday`.
+`useMedia(query?)` · `useHash()` · `useScrollSpy(ids | selector, { rootMargin, root })` → `{ active }` · `useAnimateOnScroll(el, { threshold, rootMargin, once })` → `{ visible }` · `useDialog()` → `{ open, close }` · gestures (see Mobile) · `useResizeObserver(el)` · `useFullscreen(el?)` · `useVisibility()` · `useScroll(el?)` · `useLoadingBar()` · `applyMask(mask, input)` / `unmask(mask, masked)` · `useTheme()` → `{ theme, isDark, set, toggle, palette, setPalette }` · `useFloating(anchor, floating, active, opts | () => opts)` · `useToast()` · `useDataTable(rows, { rowKey, pageSize, searchKeys })` · date helpers `toISO` `fromISO` `addDays` `addMonths` `isoToday`.
 
 ### Types
 
-`BlessNavItem`, `BlessNavMenuItem`, `BlessTab`, `BlessGalleryItem`, `BlessColumn<T>`, `BlessDataColumn<T>`, `BlessOption<T>`, `BlessTrack`, `BlessMenuItem`, `BlessCommandItem`, `BlessCrumb`, `BlessToastOptions`, `BlessTheme`, `BlessStep`, `BlessTimelineItem`, `BlessTreeNode`, `BlessPasswordRule`, `BlessBottomTab`, `BlessSpeedDialAction`, `BlessTourStep`, `BlessEditorTool`, `BlessMeterSegment`, `BlessCascadeOption`, `BlessDialogOptions`, `BlessAction`, `PanEvent`, `SwipeDirection`, `BlessReaction`, `BlessQuestion`, `BlessQuestionChoice`, `BlessAnswers`, `Placement`, `DataTableState`.
+`BlessNavItem`, `BlessNavMenuItem`, `BlessTab`, `BlessGalleryItem`, `BlessColumn<T>`, `BlessDataColumn<T>`, `BlessOption<T>`, `BlessTrack`, `BlessMenuItem`, `BlessCommandItem`, `BlessCrumb`, `BlessToastOptions`, `BlessTheme`, `BlessStep`, `BlessTimelineItem`, `BlessTreeNode`, `BlessPasswordRule`, `BlessBottomTab`, `BlessSpeedDialAction`, `BlessTourStep`, `BlessEditorTool`, `BlessMeterSegment`, `BlessCascadeOption`, `BlessDialogOptions`, `BlessAction`, `PanEvent`, `SwipeDirection`, `BlessUpload`, `BlessReaction`, `BlessQuestion`, `BlessQuestionChoice`, `BlessAnswers`, `Placement`, `DataTableState`.
 
 ## Tokens
 

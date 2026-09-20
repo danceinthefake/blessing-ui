@@ -178,3 +178,21 @@ export type { BlessAction } from "./components/BlessActionSheet.vue";
 export { default as BlessTabPanels } from "./components/BlessTabPanels.vue";
 export { default as BlessInfiniteScroll } from "./components/BlessInfiniteScroll.vue";
 export { default as BlessLayout } from "./components/BlessLayout.vue";
+export { default as BlessCircularProgress } from "./components/BlessCircularProgress.vue";
+export { default as BlessRange } from "./components/BlessRange.vue";
+export { default as BlessTimePicker } from "./components/BlessTimePicker.vue";
+export { default as BlessImg } from "./components/BlessImg.vue";
+export { default as BlessVideo } from "./components/BlessVideo.vue";
+export { default as BlessLoadingBar } from "./components/BlessLoadingBar.vue";
+export { useLoadingBar } from "./composables/useLoadingBar";
+export { default as BlessUploader } from "./components/BlessUploader.vue";
+export type { BlessUpload } from "./components/BlessUploader.vue";
+export { default as BlessParallax } from "./components/BlessParallax.vue";
+export { default as BlessSlideTransition } from "./components/BlessSlideTransition.vue";
+export { default as BlessClientOnly } from "./components/BlessClientOnly.vue";
+export {
+  useResizeObserver,
+  useFullscreen,
+  useVisibility,
+  useScroll,
+} from "./composables/useBrowser";
