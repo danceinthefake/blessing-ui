@@ -274,5 +274,5 @@ Tooling: Vite + `vite-plugin-dts`, Vitest + `@vue/test-utils` (one smoke test pe
 
 - Straight / rounded variant: `--bless-skew: 0deg` already removes the lean, but `--bless-radius-*` is consumed almost nowhere, so a round look is not one token today. Do it by having every skewed box also read `--bless-radius-sm` (badge, chip, button, plate) — then `skew: 0` + a radius value is the whole variant. Not started.
 
-- Package as single `style.css` bundle or per-component CSS? (lean: single, Vite lib mode emits it)
+- Package as single `style.css` bundle or per-component CSS? Single today (~23 KB gzip fixed cost, measured by `e2e/consumer`). Per-component CSS would need `sideEffects` per file and a CSS-in-component build; revisit if a consumer complains.
 - Router coupling for `BlessSidebarNav` `to` — plain `href` + `@select`, let consumer wire router. Decide at Phase 2.

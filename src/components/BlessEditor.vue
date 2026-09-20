@@ -1,7 +1,15 @@
 <script setup lang="ts">
-import type { Editor } from "@tiptap/vue-3";
-// type-only: brings StarterKit's command augmentations (toggleBold, …); erased at build
-import type {} from "@tiptap/starter-kit";
+// Structural stand-in for a Tiptap Editor so the shipped d.ts does not depend on @tiptap/*.
+// Any object with chain().focus().<command>().run(), isActive() and can() fits — i.e. useEditor()'s value.
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type Chain = { run: () => boolean; [command: string]: (...args: any[]) => any };
+export interface BlessEditorLike {
+  chain: () => { focus: () => Chain };
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  isActive: (name: string, attrs?: any) => boolean;
+  can: () => { undo: () => boolean; redo: () => boolean };
+}
+type Editor = BlessEditorLike;
 
 defineOptions({ name: "BlessEditor" });
 

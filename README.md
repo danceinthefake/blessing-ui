@@ -9,7 +9,7 @@ Vue 3 component library and design tokens. Grey-scale UI, one pink-red accent, s
 - 145 components — from button to data table to chat — styled only through `--bless-*` custom properties, no Tailwind dependency
 - Native platform first: `<dialog>`, Popover API, `<details>`, native form controls, `Intl` dates, scroll-snap — no positioning, date or table library
 - Accessible defaults: focus rings, ARIA tablist/dialog/tables, `prefers-reduced-motion`
-- ESM, tree-shakable, `vue` as the only required peer (`@tiptap/vue-3` optional, for `BlessEditor`). ~262 KB JS / 175 KB CSS raw, ~63 KB / 23 KB gzip for everything (tree-shakes per component)
+- ESM, tree-shakable, `vue` as the only required peer (`@tiptap/vue-3` optional, for `BlessEditor`). One component (`BlessButton`) is ~0.8 KB gzip of JS; everything is ~57 KB. The stylesheet is a single file, ~23 KB gzip — that is the fixed cost today
 
 ## Install
 
@@ -330,6 +330,7 @@ pnpm dev            # docs site (VitePress) with live demos against src/ — htt
 pnpm docs:meta      # regenerate docs/.vitepress/meta.json from the components (vue-component-meta)
 pnpm docs:pages     # scaffold a docs page for any component that lacks one
 pnpm e2e            # cross-browser page-error sweep + axe (needs a running docs preview on :4173)
+pnpm e2e:consumer   # pack, install into e2e/consumer, strict type-check (no skipLibCheck), tree-shake size gate
 pnpm test           # vitest + jsdom
 pnpm typecheck      # vue-tsc
 pnpm build          # dist/blessing-ui.{js,css} + index.d.ts

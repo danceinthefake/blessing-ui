@@ -34,7 +34,8 @@
     "docs:preview": "vitepress preview docs",
     "docs:meta": "node docs/scripts/meta.ts",
     "docs:pages": "node docs/scripts/pages.ts",
-    "e2e": "node e2e/sweep.mjs chromium,firefox && node e2e/axe.mjs"
+    "e2e": "node e2e/sweep.mjs chromium,firefox && node e2e/axe.mjs",
+    "e2e:consumer": "pnpm build && node e2e/consumer/check.mjs"
   },
   "devDependencies": {
     "@tiptap/pm": "^3.31.3",
