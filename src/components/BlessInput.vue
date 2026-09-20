@@ -94,12 +94,12 @@ defineExpose({ id });
   width: 100%;
   height: calc(2 * var(--bless-border-width));
   background: var(--bless-color-accent);
-  transform: scaleX(0) skewX(var(--bless-skew));
+  transform: scaleX(0);
   transform-origin: 0 50%;
   transition: transform var(--bless-duration-slow) var(--bless-ease-out);
 }
 .bless-input__field:focus-within::after {
-  transform: scaleX(1) skewX(var(--bless-skew));
+  transform: scaleX(1);
 }
 .bless-input__control {
   border-radius: var(--bless-radius);
@@ -159,5 +159,18 @@ defineExpose({ id });
 .bless-input__error {
   color: var(--bless-color-danger);
   font-weight: var(--bless-font-weight-bold);
+}
+/* fields are parallelograms like everything else; content counter-skews so text stays upright */
+.bless-input__field {
+  transform: skewX(var(--bless-skew));
+}
+.bless-input__field > :not(.bless-skew, .bless-chip, .bless-badge) {
+  transform: skewX(var(--bless-skew-counter));
+}
+.bless-input__field > :first-child {
+  padding-inline-start: calc(var(--bless-space-3) + 4px);
+}
+.bless-input__field > :last-child {
+  padding-inline-end: calc(var(--bless-space-3) + 4px);
 }
 </style>

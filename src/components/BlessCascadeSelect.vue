@@ -292,4 +292,15 @@ watch(open, (o) => {
 .bless-cascade__more {
   color: var(--bless-color-text-muted);
 }
+/* parallelogram trigger; content counter-skews so text stays upright */
+.bless-cascade__trigger {
+  transform: skewX(var(--bless-skew));
+  padding-inline: calc(var(--bless-space-3) + 4px);
+}
+.bless-cascade__trigger > * {
+  transform: skewX(var(--bless-skew-counter));
+}
+.bless-cascade__trigger > .bless-cascade__chevron {
+  transform: skewX(var(--bless-skew-counter)) translateY(-2px) rotate(45deg);
+}
 </style>

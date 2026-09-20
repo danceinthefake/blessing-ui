@@ -82,12 +82,12 @@ const errId = () => `${id()}-err`;
   width: 100%;
   height: calc(2 * var(--bless-border-width));
   background: var(--bless-color-accent);
-  transform: scaleX(0) skewX(var(--bless-skew));
+  transform: scaleX(0);
   transform-origin: 0 50%;
   transition: transform var(--bless-duration-slow) var(--bless-ease-out);
 }
 .bless-textarea__field:focus-within::after {
-  transform: scaleX(1) skewX(var(--bless-skew));
+  transform: scaleX(1);
 }
 .bless-textarea__control {
   border-radius: var(--bless-radius);
@@ -145,5 +145,18 @@ const errId = () => `${id()}-err`;
   font-size: var(--bless-text-xs);
   color: var(--bless-color-text-muted);
   font-variant-numeric: tabular-nums;
+}
+/* fields are parallelograms like everything else; content counter-skews so text stays upright */
+.bless-textarea__field {
+  transform: skewX(var(--bless-skew));
+}
+.bless-textarea__field > :not(.bless-skew, .bless-chip, .bless-badge) {
+  transform: skewX(var(--bless-skew-counter));
+}
+.bless-textarea__field > :first-child {
+  padding-inline-start: calc(var(--bless-space-3) + 4px);
+}
+.bless-textarea__field > :last-child {
+  padding-inline-end: calc(var(--bless-space-3) + 4px);
 }
 </style>

@@ -77,4 +77,21 @@ withDefaults(defineProps<{ size?: "sm" | "md" | "lg"; disabled?: boolean }>(), {
   opacity: 0.4;
   pointer-events: none;
 }
+/* parallelogram field; content counter-skews so text stays upright */
+.bless-input-group {
+  transform: skewX(var(--bless-skew));
+}
+.bless-input-group > :not(.bless-skew, .bless-chip, .bless-badge) {
+  transform: skewX(var(--bless-skew-counter));
+}
+/* the group is the parallelogram; the inputs inside it stay straight */
+.bless-input-group .bless-input__field,
+.bless-input-group .bless-select__field,
+.bless-input-group .bless-combobox__field {
+  transform: none;
+}
+.bless-input-group .bless-input__field > *,
+.bless-input-group .bless-select__field > * {
+  transform: none;
+}
 </style>
