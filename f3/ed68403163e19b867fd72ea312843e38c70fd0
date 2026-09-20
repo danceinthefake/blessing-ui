@@ -1,0 +1,33 @@
+src/components/BlessButtonGroup.vue
+  s_9ec1000e308ddb::t_ca9e1b50041e0d 32-48
+src/components/BlessMenubar.vue
+  s_9ec1000e308ddb::t_55d949a9a85c4d 35
+src/components/BlessMessageScroller.vue
+  s_9ec1000e308ddb::t_c7f989e48ebab5 123
+src/components/BlessOrgChart.vue
+  s_9ec1000e308ddb::t_974429629148cd 106
+src/components/BlessPullToRefresh.vue
+  s_9ec1000e308ddb::t_66312e9b70f6b5 80
+src/components/BlessSlideItem.vue
+  s_9ec1000e308ddb::t_730bccc99df608 92
+src/components/BlessSplash.vue
+  s_9ec1000e308ddb::t_fa0a60845ad31a 80
+src/components/BlessThemeToggle.vue
+  s_9ec1000e308ddb::t_a66bf6a355ac81 43
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "f3ed68403163e19b867fd72ea312843e38c70fd0",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "claude-opus-5"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
