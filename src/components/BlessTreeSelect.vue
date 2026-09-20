@@ -106,6 +106,7 @@ const remove = (id: string) => (model.value = chosen.value.filter((x) => x !== i
 
 <style>
 .bless-treeselect__trigger {
+  border-radius: var(--bless-radius);
   --_h: 40px;
   display: inline-flex;
   align-items: center;

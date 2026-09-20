@@ -262,6 +262,7 @@ function onBlur(e: FocusEvent) {
   --_fs: var(--bless-text-lg);
 }
 .bless-combobox__field {
+  border-radius: var(--bless-radius);
   position: relative;
   display: flex;
   flex-wrap: wrap;

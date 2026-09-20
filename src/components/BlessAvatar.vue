@@ -62,7 +62,7 @@ const showImg = computed(() => !!props.src && !failed.value);
   width: var(--_s);
   height: var(--_s);
   overflow: hidden;
-  border-radius: 50%;
+  border-radius: var(--bless-radius-pill);
   background: var(--bless-color-surface);
   color: var(--bless-color-text);
   font-family: var(--bless-font-sans);

@@ -43,6 +43,7 @@ const id = useFieldId(props);
 
 <style>
 .bless-swap {
+  border-radius: var(--bless-radius);
   position: relative;
   display: inline-grid;
   place-items: center;

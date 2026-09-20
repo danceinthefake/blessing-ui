@@ -78,6 +78,7 @@ function pick(a: BlessAction) {
   gap: var(--bless-space-2);
 }
 .bless-actionsheet__item {
+  border-radius: var(--bless-radius);
   display: flex;
   align-items: center;
   gap: var(--bless-space-3);

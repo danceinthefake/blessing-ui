@@ -251,6 +251,7 @@ defineExpose({ state, selectedRows: dt.selectedRows });
 
 <style>
 .bless-datatable {
+  border-radius: var(--bless-radius);
   display: grid;
   gap: var(--bless-space-3);
   font-family: var(--bless-font-sans);

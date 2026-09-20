@@ -11,6 +11,8 @@ function onMsg(e: MessageEvent) {
   root.dataset.theme = e.data.dark ? "dark" : "light";
   if (e.data.palette && e.data.palette !== "megumi") root.dataset.palette = e.data.palette;
   else root.removeAttribute("data-palette");
+  if (e.data.shape === "rounded") root.dataset.shape = "rounded";
+  else root.removeAttribute("data-shape");
 }
 onMounted(() => {
   addEventListener("message", onMsg);

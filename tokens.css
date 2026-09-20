@@ -75,9 +75,12 @@
   --bless-space-12: 3rem;
   --bless-space-16: 4rem;
 
-  /* ---- shape ---- */
-  --bless-radius-none: 0;
-  --bless-radius-sm: 3px; /* badges only; skew is the shape language */
+  /* ---- shape ----
+   * Sharp skew is the default. <html data-shape="rounded"> keeps the lean and rounds the corners —
+   * every box reads --bless-radius, pills (badges, chips, switches, avatars) read --bless-radius-pill.
+   */
+  --bless-radius: 0px;
+  --bless-radius-pill: 0px;
   --bless-skew: -10deg;
   --bless-skew-counter: 10deg; /* apply to inner text */
   --bless-border-width: 1px;
@@ -249,4 +252,10 @@
 [dir="rtl"] {
   --bless-skew: 10deg;
   --bless-skew-counter: -10deg;
+}
+
+/* ---- shape: rounded skew ---- */
+:root[data-shape="rounded"] {
+  --bless-radius: 8px;
+  --bless-radius-pill: 999px;
 }

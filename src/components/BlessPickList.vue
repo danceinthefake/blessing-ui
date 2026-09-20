@@ -91,6 +91,7 @@ function transfer(from: "source" | "target", values: T[]) {
   font-family: var(--bless-font-sans);
 }
 .bless-picklist__col {
+  border-radius: var(--bless-radius);
   display: flex;
   flex-direction: column;
   gap: var(--bless-space-1);

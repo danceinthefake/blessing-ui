@@ -21,7 +21,7 @@ Generic Vue 3 UI library. Visual language borrowed from saenai.tv (see `../saena
 | Type scale         | `--bless-text-{2xs,xs,sm,md,lg,xl,display}`                                                                                                                                                        | `clamp()` 8→151px     |
 | Leading / tracking | `--bless-leading-{none,tight,normal}`, `--bless-tracking-{tight,normal,wide,wider}`                                                                                                                |                       |
 | Space              | `--bless-space-{1,2,3,4,6,8,12,16}`                                                                                                                                                                | 4px base              |
-| Shape              | `--bless-radius-{none,sm}`, `--bless-skew`, `--bless-skew-counter`, `--bless-border-width`, `--bless-dash-width`                                                                                   |                       |
+| Shape              | `--bless-radius`, `--bless-radius-pill`, `--bless-skew`, `--bless-skew-counter`, `--bless-border-width`, `--bless-dash-width`                                                                                   |                       |
 | Elevation          | `--bless-shadow-{none,md}`                                                                                                                                                                         | modal only            |
 | Motion             | `--bless-duration-{fast,base,slow,slower}`, `--bless-ease-{in-out,out,linear}`, `--bless-hover-opacity`, `--bless-press-scale`                                                                     |                       |
 | Layout             | `--bless-sidebar-width`, `--bless-sidebar-inner`, `--bless-content-max`, `--bless-z-{bg,nav,modal}`                                                                                                |                       |
@@ -237,6 +237,10 @@ Not components: finished sections shipped as source you copy, `docs/blocks/<slug
 
 - [x] Showcase set (official-site front page): News, On Air, Character (hash-routed modals), Staff & Cast, Release, Story, Full site (composition in `BlessStage`, opens full-page)
 - [x] App set: Sign in, Dashboard, Settings, Data page, Page states, Pricing, Inbox, Chat, Onboarding
+
+### Shape ✅ (2026-09-20)
+
+`data-shape="rounded"` keeps the skew and rounds corners: every box reads `--bless-radius` (8px), pills read `--bless-radius-pill`; `useTheme().setShape`, `BlessShapeToggle`. The upright (un-skewed) variant was previewed and rejected — without the lean it is any other library.
 
 ### Contrast policy (axe, 2026-09-20 triage)
 

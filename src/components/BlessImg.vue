@@ -63,6 +63,7 @@ const failed = ref(false);
 
 <style>
 .bless-img {
+  border-radius: var(--bless-radius);
   position: relative;
   display: block;
   overflow: hidden;

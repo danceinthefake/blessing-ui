@@ -42,6 +42,7 @@ withDefaults(defineProps<{ items: BlessTimelineItem[]; label?: string }>(), { la
   color: var(--bless-color-text);
 }
 .bless-timeline__item {
+  border-radius: var(--bless-radius);
   --_c: var(--bless-color-text-muted);
   position: relative;
   display: flex;

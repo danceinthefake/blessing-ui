@@ -108,6 +108,7 @@ defineExpose({ clear, isEmpty: () => empty.value });
   color: var(--bless-color-text);
 }
 .bless-signature__canvas {
+  border-radius: var(--bless-radius);
   display: block;
   width: 100%;
   background: var(--bless-color-surface);

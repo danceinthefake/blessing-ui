@@ -100,6 +100,7 @@ const isGroup = (o: unknown): o is { label: string; options: BlessOption<T>[] } 
   transform: scaleX(1) skewX(var(--bless-skew));
 }
 .bless-select__control {
+  border-radius: var(--bless-radius);
   width: 100%;
   height: 100%;
   padding: 0 var(--bless-space-8) 0 var(--bless-space-3);

@@ -65,6 +65,7 @@ const expanded = ref(false);
 <style>
 /* flat block, one skewed corner cut (the "tail") on the sender side */
 .bless-bubble {
+  border-radius: var(--bless-radius);
   --_bg: var(--bless-color-surface);
   --_fg: var(--bless-color-text);
   position: relative;

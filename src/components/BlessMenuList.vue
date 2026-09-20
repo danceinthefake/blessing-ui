@@ -169,6 +169,7 @@ defineExpose({ focusFirst, focusLast });
 
 <style>
 .bless-menu {
+  border-radius: var(--bless-radius);
   min-width: 180px;
   padding: var(--bless-space-1) 0;
   border: var(--bless-border-width) solid var(--bless-color-border);

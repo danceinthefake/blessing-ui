@@ -97,6 +97,7 @@ function setHi(v: number) {
   font-variant-numeric: tabular-nums;
 }
 .bless-range__track {
+  border-radius: var(--bless-radius-pill);
   position: relative;
   height: 24px;
 }

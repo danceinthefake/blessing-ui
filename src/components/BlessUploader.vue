@@ -175,6 +175,7 @@ defineExpose({ start, clear, queue });
   list-style: none;
 }
 .bless-uploader__item {
+  border-radius: var(--bless-radius);
   display: grid;
   grid-template-columns: 1fr auto 24px;
   align-items: center;

@@ -21,7 +21,7 @@ withDefaults(
 .bless-badge {
   display: inline-block;
   padding: 2px 4px;
-  border-radius: var(--bless-radius-sm);
+  border-radius: var(--bless-radius-pill);
   font-family: var(--bless-font-sans);
   font-size: var(--bless-text-xs);
   font-weight: var(--bless-font-weight-bold);

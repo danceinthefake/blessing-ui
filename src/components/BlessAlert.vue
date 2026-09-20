@@ -48,6 +48,7 @@ const emit = defineEmits<{ dismiss: [] }>();
 
 <style>
 .bless-alert {
+  border-radius: var(--bless-radius);
   --_c: var(--bless-color-text);
   position: relative;
   display: flex;

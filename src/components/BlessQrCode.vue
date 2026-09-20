@@ -60,6 +60,7 @@ const view = computed(() => n.value + props.border * 2);
 }
 /* modules stay square (scanners); the frame is a skewed accent plate behind the tile */
 .bless-qr--frame {
+  border-radius: var(--bless-radius);
   position: relative;
   isolation: isolate;
 }

@@ -40,6 +40,7 @@ withDefaults(
   color: var(--bless-color-text);
 }
 .bless-empty--outline {
+  border-radius: var(--bless-radius);
   border: var(--bless-border-width) dashed var(--bless-color-text-muted);
 }
 .bless-empty__icon {

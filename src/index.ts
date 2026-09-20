@@ -93,7 +93,7 @@ export { default as BlessNavigationMenu } from "./components/BlessNavigationMenu
 export type { BlessNavMenuItem } from "./components/BlessNavigationMenu.vue";
 export { default as BlessThemeToggle } from "./components/BlessThemeToggle.vue";
 export { useTheme } from "./composables/useTheme";
-export type { BlessTheme } from "./composables/useTheme";
+export type { BlessTheme, BlessShape } from "./composables/useTheme";
 export { default as BlessMessage } from "./components/BlessMessage.vue";
 export { default as BlessBubble } from "./components/BlessBubble.vue";
 export type { BlessReaction } from "./components/BlessBubble.vue";
@@ -159,6 +159,7 @@ export { default as BlessCompare } from "./components/BlessCompare.vue";
 export { default as BlessDataView } from "./components/BlessDataView.vue";
 export { useAnimateOnScroll } from "./composables/useAnimateOnScroll";
 export { default as BlessPaletteToggle } from "./components/BlessPaletteToggle.vue";
+export { default as BlessShapeToggle } from "./components/BlessShapeToggle.vue";
 export { blessPalettes } from "./composables/useTheme";
 export type { BlessPalette } from "./composables/useTheme";
 export { default as BlessCascadeSelect } from "./components/BlessCascadeSelect.vue";

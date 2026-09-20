@@ -187,6 +187,7 @@ onBeforeUnmount(() => removeEventListener("keydown", onHotkey));
   background: var(--bless-color-bg);
 }
 .bless-command__box {
+  border-radius: var(--bless-radius);
   display: flex;
   flex-direction: column;
   font-family: var(--bless-font-sans);

@@ -75,6 +75,7 @@ const ext = computed(() => props.name.split(".").pop()?.slice(0, 4).toUpperCase(
 
 <style>
 .bless-attachment {
+  border-radius: var(--bless-radius);
   --_m: 48px;
   display: inline-flex;
   align-items: center;
@@ -102,6 +103,7 @@ a.bless-attachment:focus-visible {
   box-shadow: inset 0 0 0 var(--bless-border-width) var(--bless-color-danger);
 }
 .bless-attachment__media {
+  border-radius: var(--bless-radius);
   position: relative;
   display: inline-grid;
   place-items: center;

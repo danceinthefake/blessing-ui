@@ -83,6 +83,7 @@ function onSelect(n: BlessTreeNode, p: string) {
   margin-inline-start: 9px;
 }
 .bless-tree__row {
+  border-radius: var(--bless-radius);
   display: flex;
   align-items: center;
   gap: var(--bless-space-1);

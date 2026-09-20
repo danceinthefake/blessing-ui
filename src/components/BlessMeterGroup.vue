@@ -74,6 +74,7 @@ const fmt = (v: number) => (props.format ?? String)(v);
   align-items: stretch;
 }
 .bless-metergroup__bar {
+  border-radius: var(--bless-radius-pill);
   display: flex;
   height: 10px;
   overflow: hidden;

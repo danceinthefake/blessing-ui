@@ -90,6 +90,7 @@ const errId = () => `${id()}-err`;
   transform: scaleX(1) skewX(var(--bless-skew));
 }
 .bless-textarea__control {
+  border-radius: var(--bless-radius);
   display: block;
   width: 100%;
   box-sizing: border-box;

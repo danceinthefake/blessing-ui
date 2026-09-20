@@ -99,6 +99,7 @@ const options = computed(() => {
   border-bottom-color: var(--bless-color-danger);
 }
 .bless-time__control {
+  border-radius: var(--bless-radius);
   min-width: 8em;
   padding: 0 var(--bless-space-3);
   border: 0;

@@ -216,11 +216,15 @@ html:not(.dark) .dark-only {
   display: none;
 }
 
-.nav-palette {
+.nav-shape {
   margin-left: 12px;
 }
+.nav-palette {
+  margin-left: 8px;
+}
 @media (max-width: 767px) {
-  .nav-palette {
+  .nav-palette,
+  .nav-shape {
     display: none;
   }
 }
