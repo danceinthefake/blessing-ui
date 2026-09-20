@@ -75,6 +75,7 @@ export default defineConfig({
     outline: [2, 3],
   },
   vite: {
+    define: { __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: "true" },
     resolve: {
       alias: {
         "blessing-ui/style.css": src("style.css"),

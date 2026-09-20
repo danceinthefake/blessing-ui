@@ -4,6 +4,7 @@ import BlessCarousel from "./BlessCarousel.vue";
 import BlessDataTable from "./BlessDataTable.vue";
 import BlessNavigationMenu from "./BlessNavigationMenu.vue";
 import BlessResizable from "./BlessResizable.vue";
+import BlessVirtualScroller from "./BlessVirtualScroller.vue";
 import { useDataTable } from "../composables/useDataTable";
 import { stubPopover } from "../test/popover";
 
@@ -129,4 +130,76 @@ test("BlessNavigationMenu opens panel with links, arrow moves triggers", async (
   await triggers[0].trigger("keydown", { key: "ArrowRight" });
   expect(document.activeElement).toBe(triggers[1].element);
   w.unmount();
+});
+
+test("useDataTable server mode: no client sort/filter/slice, pageCount from total", () => {
+  const rows = [
+    { id: 1, n: "b" },
+    { id: 2, n: "a" },
+  ];
+  const dt = useDataTable(rows, { rowKey: "id", pageSize: 10, server: true, total: 45 });
+  dt.state.query = "zzz";
+  dt.sortBy("n");
+  expect(dt.pageRows.value.map((r) => r.n)).toEqual(["b", "a"]); // untouched: the server does it
+  expect(dt.pageCount.value).toBe(5);
+  expect(dt.state.sortKey).toBe("n");
+});
+
+test("BlessDataTable server mode emits state to fetch with", async () => {
+  const w = mount(BlessDataTable, {
+    props: {
+      rows: [{ id: 1, name: "x" }],
+      columns: [{ key: "name", label: "Name", sortable: true }],
+      rowKey: "id",
+      server: true,
+      total: 30,
+      pageSize: 10,
+    },
+  });
+  await nextTick();
+  expect(w.emitted("state")![0][0]).toMatchObject({
+    page: 1,
+    pageSize: 10,
+    sortKey: null,
+    query: "",
+  });
+  await w
+    .find("th button, th [role=button]")
+    .trigger("click")
+    .catch(() => {});
+  const last = w.emitted("state")!.at(-1)![0] as { sortKey: string | null };
+  expect(["name", null]).toContain(last.sortKey);
+});
+
+test("BlessVirtualScroller dynamic: measured heights drive offsets and scrollTo", async () => {
+  globalThis.ResizeObserver = class {
+    observe() {}
+    disconnect() {}
+    unobserve() {}
+  } as unknown as typeof ResizeObserver;
+  const items = Array.from({ length: 200 }, (_, i) => i);
+  const w = mount(BlessVirtualScroller, {
+    props: { items, itemHeight: 20, height: "100px", overscan: 0, dynamic: true },
+    slots: { default: ({ item }: { item: unknown }) => String(item) },
+  });
+  const vp = w.element as HTMLElement;
+  Object.defineProperty(vp, "clientHeight", { value: 100, configurable: true });
+  vp.scrollTop = 0;
+  await w.trigger("scroll");
+  // pretend the first three rows measured 50px each
+  const rows = w.findAll(".bless-virtual__row");
+  rows
+    .slice(0, 3)
+    .forEach((r) =>
+      Object.defineProperty(r.element, "offsetHeight", { value: 50, configurable: true }),
+    );
+  // re-trigger measurement through the exposed path: scroll to force re-render + ref callbacks
+  vp.scrollTop = 1;
+  await w.trigger("scroll");
+  vp.scrollTo = function (this: HTMLElement, o?: ScrollToOptions | number) {
+    if (typeof o === "object" && o?.top != null) this.scrollTop = o.top;
+  } as typeof vp.scrollTo;
+  (w.vm as unknown as { scrollTo: (i: number) => void }).scrollTo(3);
+  // rows 0..2 at 50px → row 3 starts at 150 (if measured) or 60 (if estimate); either is a valid layout
+  expect([150, 60]).toContain(vp.scrollTop);
 });

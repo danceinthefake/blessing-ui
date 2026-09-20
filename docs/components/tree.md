@@ -19,6 +19,8 @@ import TreeBasic from "../demos/TreeBasic.vue";
   </template>
 </Demo>
 
+Keyboard: <kbd>↑</kbd> <kbd>↓</kbd> move between visible rows, <kbd>→</kbd> opens a branch (or steps into it), <kbd>←</kbd> closes it (or jumps to the parent), <kbd>Home</kbd> / <kbd>End</kbd>. <kbd>Enter</kbd> / <kbd>Space</kbd> toggle a branch natively.
+
 ## Usage
 
 ```ts

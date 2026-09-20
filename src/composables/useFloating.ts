@@ -12,6 +12,10 @@ export interface FloatingOptions {
   offset?: number;
   /** keep inside viewport by this padding */
   padding?: number;
+  /** clamp inside this element's box instead of the viewport */
+  boundary?: HTMLElement | null;
+  /** size of the arrow element (px); enables arrowX / arrowY */
+  arrow?: number;
 }
 
 /**
@@ -19,7 +23,6 @@ export interface FloatingOptions {
  * flips to the opposite side when it would overflow, shifts along the
  * cross axis to stay in the viewport. Recomputes on scroll/resize while `active`.
  */
-// ponytail: no collision detection beyond viewport, no arrow; swap for @floating-ui/dom if needed
 export function useFloating(
   anchor: Ref<HTMLElement | null | undefined>,
   floating: Ref<HTMLElement | null | undefined>,
@@ -30,6 +33,9 @@ export function useFloating(
   const x = ref(0);
   const y = ref(0);
   const side = ref<"top" | "bottom" | "left" | "right">("bottom");
+  /** arrow offset along the floating element's edge (px from its left/top), when `arrow` is set */
+  const arrowX = ref(0);
+  const arrowY = ref(0);
 
   function compute() {
     const a = anchor.value;
@@ -44,17 +50,22 @@ export function useFloating(
     const r = a.getBoundingClientRect();
     const fw = f.offsetWidth;
     const fh = f.offsetHeight;
+    const b = opts().boundary?.getBoundingClientRect();
+    const minX = (b?.left ?? 0) + pad,
+      maxX = (b?.right ?? window.innerWidth) - pad;
+    const minY = (b?.top ?? 0) + pad,
+      maxY = (b?.bottom ?? window.innerHeight) - pad;
     const vw = window.innerWidth;
     const vh = window.innerHeight;
 
     const fits = (s: typeof side.value) =>
       s === "top"
-        ? r.top - off - fh >= pad
+        ? r.top - off - fh >= minY
         : s === "bottom"
-          ? r.bottom + off + fh <= vh - pad
+          ? r.bottom + off + fh <= maxY
           : s === "left"
-            ? r.left - off - fw >= pad
-            : r.right + off + fw <= vw - pad;
+            ? r.left - off - fw >= minX
+            : r.right + off + fw <= maxX;
     const opposite = { top: "bottom", bottom: "top", left: "right", right: "left" } as const;
     const s = fits(want) || !fits(opposite[want]) ? want : opposite[want];
     side.value = s;
@@ -65,22 +76,39 @@ export function useFloating(
       top = s === "top" ? r.top - off - fh : r.bottom + off;
       left =
         align === "start" ? r.left : align === "end" ? r.right - fw : r.left + r.width / 2 - fw / 2;
-      left = Math.min(Math.max(pad, left), vw - fw - pad);
+      left = Math.min(Math.max(minX, left), maxX - fw);
     } else {
       left = s === "left" ? r.left - off - fw : r.right + off;
       top =
         align === "start" ? r.top : align === "end" ? r.bottom - fh : r.top + r.height / 2 - fh / 2;
-      top = Math.min(Math.max(pad, top), vh - fh - pad);
+      top = Math.min(Math.max(minY, top), maxY - fh);
     }
     x.value = Math.round(left);
     y.value = Math.round(top);
+    // arrow points at the anchor's centre, clamped inside the floating box
+    const aw = opts().arrow ?? 0;
+    if (aw) {
+      arrowX.value = Math.round(Math.min(Math.max(aw, r.left + r.width / 2 - left), fw - aw));
+      arrowY.value = Math.round(Math.min(Math.max(aw, r.top + r.height / 2 - top), fh - aw));
+    }
+    void vw;
+    void vh;
   }
 
+  // the floating element is display:none until the popover opens, so the first compute may see a
+  // 0×0 box; a ResizeObserver re-runs it once the real size is known (and on content changes)
+  let ro: ResizeObserver | undefined;
   const listen = (on: boolean) => {
     if (typeof window === "undefined") return; // SSR: nothing to position
     const m = on ? addEventListener : removeEventListener;
     m("scroll", compute, true);
     m("resize", compute);
+    ro?.disconnect();
+    ro = undefined;
+    if (on && floating.value && typeof ResizeObserver !== "undefined") {
+      ro = new ResizeObserver(() => compute());
+      ro.observe(floating.value);
+    }
   };
   watch(
     active,
@@ -90,7 +118,7 @@ export function useFloating(
     },
     { flush: "post", immediate: true },
   );
-  onBeforeUnmount(() => listen(false));
+  onBeforeUnmount(() => (listen(false), ro?.disconnect()));
 
-  return { x, y, side, update: compute };
+  return { x, y, side, arrowX, arrowY, update: compute };
 }

@@ -5,6 +5,7 @@ import BlessDialogHost from "./BlessDialogHost.vue";
 import BlessOrgChart from "./BlessOrgChart.vue";
 import BlessTreeSelect from "./BlessTreeSelect.vue";
 import BlessTreeTable from "./BlessTreeTable.vue";
+import BlessTree from "./BlessTree.vue";
 import { useDialog } from "../composables/useDialog";
 import { stubPopover } from "../test/popover";
 
@@ -155,4 +156,42 @@ test("useDialog: open resolves with close(result); host renders", async () => {
   await nextTick();
   expect(document.querySelector(".bless-modal")).toBeNull();
   host.unmount();
+});
+
+test("BlessTree: arrow keys walk visible rows, → opens, ← closes / goes to parent", async () => {
+  const w = mount(BlessTree, {
+    props: {
+      nodes: [
+        {
+          label: "src",
+          id: "src",
+          open: true,
+          children: [
+            { label: "a.ts", id: "a" },
+            { label: "b.ts", id: "b" },
+          ],
+        },
+        { label: "README", id: "r" },
+      ],
+    },
+    attachTo: document.body,
+  });
+  const rows = () => w.findAll(".bless-tree__row");
+  // jsdom: offsetParent is null everywhere; stub it so rows count as visible
+  Object.defineProperty(HTMLElement.prototype, "offsetParent", {
+    get: () => document.body,
+    configurable: true,
+  });
+  (rows()[0].element as HTMLElement).focus();
+  await rows()[0].trigger("keydown", { key: "ArrowDown" });
+  expect(document.activeElement?.textContent?.trim()).toBe("a.ts");
+  await rows()[1].trigger("keydown", { key: "ArrowLeft" }); // leaf ← → parent row
+  expect(document.activeElement?.textContent?.trim()).toContain("src");
+  await rows()[0].trigger("keydown", { key: "ArrowLeft" }); // branch ← closes
+  expect((w.element.querySelector("details") as HTMLDetailsElement).open).toBe(false);
+  await rows()[0].trigger("keydown", { key: "ArrowRight" }); // branch → opens
+  expect((w.element.querySelector("details") as HTMLDetailsElement).open).toBe(true);
+  await rows()[0].trigger("keydown", { key: "End" });
+  expect(document.activeElement?.textContent?.trim()).toBe("README");
+  w.unmount();
 });

@@ -27,6 +27,13 @@ const ignore = [
   /Failed to load resource/,
   /youtube|mozilla\.net|picsum/,
 ];
+// known third-party noise, scoped to a page: ProseMirror throws this in headless WebKit only
+// (tiptap issues #4498 / #5118); Chromium and Firefox are clean, real WebKit users are not affected.
+const allow = {
+  "/components/editor": [/Applying a mismatched transaction/],
+  // VitePress sets --vp-offset on its navbar client-side (style="" on the server); not ours
+  "/": [/Hydration completed but contains mismatches/],
+};
 const engines = { chromium, firefox, webkit };
 let failed = 0;
 

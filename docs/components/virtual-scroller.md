@@ -4,6 +4,7 @@ title: VirtualScroller
 
 <script setup>
 import VirtualScrollerBasic from "../demos/VirtualScrollerBasic.vue";
+import VirtualScrollerDynamic from "../demos/VirtualScrollerDynamic.vue";
 </script>
 
 # VirtualScroller
@@ -15,6 +16,15 @@ import VirtualScrollerBasic from "../demos/VirtualScrollerBasic.vue";
   <template #code>
 
 <<< ../demos/VirtualScrollerBasic.vue
+
+  </template>
+</Demo>
+
+<Demo title="Dynamic heights">
+  <VirtualScrollerDynamic />
+  <template #code>
+
+<<< ../demos/VirtualScrollerDynamic.vue
 
   </template>
 </Demo>

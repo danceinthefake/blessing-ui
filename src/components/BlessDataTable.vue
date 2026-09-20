@@ -1,5 +1,5 @@
 <script setup lang="ts" generic="T extends Record<string, unknown>">
-import { computed, ref } from "vue";
+import { computed, onMounted, ref, toRef, watch } from "vue";
 import { useDataTable } from "../composables/useDataTable";
 import BlessCheckbox from "./BlessCheckbox.vue";
 import BlessDropdownMenu from "./BlessDropdownMenu.vue";
@@ -25,6 +25,11 @@ const props = withDefaults(
     searchPlaceholder?: string;
     emptyText?: string;
     caption?: string;
+    /** rows are one server page; sort / query / page are yours to fetch with (see `state` event) */
+    server?: boolean;
+    /** server mode: total row count */
+    total?: number;
+    loading?: boolean;
   }>(),
   {
     pageSize: 10,
@@ -33,7 +38,19 @@ const props = withDefaults(
     emptyText: "No rows.",
   },
 );
-const emit = defineEmits<{ "update:selected": [rows: T[]]; rowClick: [row: T] }>();
+const emit = defineEmits<{
+  "update:selected": [rows: T[]];
+  rowClick: [row: T];
+  state: [
+    s: {
+      sortKey: string | null;
+      sortDir: "asc" | "desc";
+      query: string;
+      page: number;
+      pageSize: number;
+    },
+  ];
+}>();
 
 const rowsRef = computed(() => props.rows);
 const sizeOptions = computed(() =>
@@ -45,8 +62,24 @@ const dt = useDataTable(rowsRef, {
   rowKey: props.rowKey,
   pageSize: props.pageSize,
   searchKeys: props.searchKeys,
+  server: props.server,
+  total: toRef(() => props.total ?? 0),
 });
 const { state } = dt;
+// server mode: tell the consumer what to fetch whenever sort / query / page / size change.
+// The first emit waits for mount so SSR output and hydration match (no fetching on the server).
+const snapshot = () => ({
+  sortKey: state.sortKey,
+  sortDir: state.sortDir,
+  query: state.query,
+  page: state.page,
+  pageSize: state.pageSize,
+});
+watch(
+  () => [state.sortKey, state.sortDir, state.query, state.page, state.pageSize],
+  () => props.server && emit("state", snapshot()),
+);
+onMounted(() => props.server && emit("state", snapshot()));
 const visible = computed(() => props.columns.filter((c) => !state.hidden.has(c.key)));
 const colMenu = computed<BlessMenuItem[]>(() => [
   { type: "label", label: "Columns" },

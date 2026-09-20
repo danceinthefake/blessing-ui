@@ -281,7 +281,7 @@ Gestures: `usePan(el, cb)` · `useSwipe(el, cb, { threshold, axis })` · `useLon
 
 ### Composables
 
-`useMedia(query?)` · `useHash()` · `useScrollSpy(ids | selector, { rootMargin, root })` → `{ active }` · `useAnimateOnScroll(el, { threshold, rootMargin, once })` → `{ visible }` · `useDialog()` → `{ open, close }` · gestures (see Mobile) · `useResizeObserver(el)` · `useFullscreen(el?)` · `useVisibility()` · `useScroll(el?)` · `useLoadingBar()` · `applyMask(mask, input)` / `unmask(mask, masked)` · `useTheme()` → `{ theme, isDark, set, toggle, palette, setPalette }` · `useFloating(anchor, floating, active, opts | () => opts)` · `useToast()` · `useDataTable(rows, { rowKey, pageSize, searchKeys })` · date helpers `toISO` `fromISO` `addDays` `addMonths` `isoToday`.
+`useMedia(query?)` · `useHash()` · `useScrollSpy(ids | selector, { rootMargin, root })` → `{ active }` · `useAnimateOnScroll(el, { threshold, rootMargin, once })` → `{ visible }` · `useDialog()` → `{ open, close }` · gestures (see Mobile) · `useResizeObserver(el)` · `useFullscreen(el?)` · `useVisibility()` · `useScroll(el?)` · `useLoadingBar()` · `applyMask(mask, input)` / `unmask(mask, masked)` · `useTheme()` → `{ theme, isDark, set, toggle, palette, setPalette }` · `useFloating(anchor, floating, active, { placement, offset, padding, boundary, arrow })` → `{ x, y, side, arrowX, arrowY, update }` · `useToast()` · `useDataTable(rows, { rowKey, pageSize, searchKeys, server, total })` · date helpers `toISO` `fromISO` `addDays` `addMonths` `isoToday`.
 
 ### Types
 
