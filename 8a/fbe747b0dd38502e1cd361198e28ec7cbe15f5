@@ -1,0 +1,45 @@
+package.json
+  s_9ec1000e308ddb::t_a835f33247cea3 16-17,22,25-28
+  s_9ec1000e308ddb::t_b157fb06089ca0 13
+  s_9ec1000e308ddb::t_57388b9e2a63c8 14,29,33
+e2e/sweep.mjs
+  s_9ec1000e308ddb::t_a3d82a65bfb202 60
+  s_9ec1000e308ddb::t_86684952f7e5b4 61-62
+e2e/consumer/check.mjs
+  s_9ec1000e308ddb::t_666fc09490903f 27-32,34-37,43-44
+  s_9ec1000e308ddb::t_27e0d39ebe1f45 38-42
+  s_9ec1000e308ddb::t_7613aa1fc0d979 45-47
+  s_9ec1000e308ddb::t_3e4b19722a25bd 48-60
+scripts/postbuild.mjs
+  s_9ec1000e308ddb::t_a835f33247cea3 1-39
+  s_9ec1000e308ddb::t_90cf85835f2faf 40-42
+  s_9ec1000e308ddb::t_3dc9b808a728ef 43-44
+vite.config.ts
+  s_9ec1000e308ddb::t_45b29d136d2dbf 21-32
+e2e/consumer/src/all.ts
+  s_9ec1000e308ddb::t_8858cbec953509 2
+DESIGN.md
+  s_9ec1000e308ddb::t_34e90c386aa778 277
+README.md
+  s_9ec1000e308ddb::t_ebcd5992015909 12
+docs/guide/install.md
+  s_9ec1000e308ddb::t_217784a5f1d8cc 8,11-15
+docs/.vitepress/meta.json
+  s_9ec1000e308ddb::t_9fec3d2e08ac2e 2-7791
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "8afbe747b0dd38502e1cd361198e28ec7cbe15f5",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "claude-opus-5"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
