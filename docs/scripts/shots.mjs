@@ -29,6 +29,14 @@ try {
     copyFileSync(`docs/public/${name}`, `docs/.vitepress/dist/${name}`); // the OG page reads it from the preview
     await p.close();
   }
+  // block teasers for the homepage
+  for (const slug of ["signin", "dashboard", "news"]) {
+    const bp = await b.newPage({ viewport: { width: 800, height: 500 }, deviceScaleFactor: 2 });
+    await bp.goto(`http://localhost:${port}/blocks/${slug}-frame`, { waitUntil: "networkidle" });
+    await bp.waitForTimeout(600);
+    await bp.screenshot({ path: `docs/public/preview-${slug}.png` });
+    await bp.close();
+  }
   // the preview server caches misses; restart it so the fresh hero files are served to the OG page
   srv.kill();
   srv = await serve();
@@ -36,7 +44,7 @@ try {
   await p.goto(`http://localhost:${port}/og`, { waitUntil: "networkidle" });
   await p.waitForTimeout(600);
   await p.locator(".og").screenshot({ path: "docs/public/og.png" });
-  console.log("hero-light.png, hero-dark.png, og.png written to docs/public/");
+  console.log("hero-light.png, hero-dark.png, preview-{signin,dashboard,news}.png, og.png written to docs/public/");
 } finally {
   await b.close();
   srv.kill();
