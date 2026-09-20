@@ -5,8 +5,9 @@ hero:
   name: Blessing UI
   text: Themed Flat Interface
   image:
-    src: /logo.svg
-    alt: Blessing UI
+    light: /hero-light.png
+    dark: /hero-dark.png
+    alt: An official-site front page built with Blessing UI
   tagline: Flat by design, raised with Vue, blessed for everyone.
   actions:
     - theme: brand

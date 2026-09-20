@@ -41,7 +41,8 @@
     "docs:pages": "node docs/scripts/pages.ts",
     "e2e": "node e2e/sweep.mjs chromium,firefox && node e2e/axe.mjs && node e2e/interact.mjs chromium && node e2e/interact.mjs firefox",
     "e2e:consumer": "pnpm build && node e2e/consumer/check.mjs",
-    "docs:blocks": "node docs/scripts/blocks.ts"
+    "docs:blocks": "node docs/scripts/blocks.ts",
+    "docs:shots": "node docs/scripts/shots.mjs"
   },
   "devDependencies": {
     "@tiptap/pm": "^3.31.3",
