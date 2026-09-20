@@ -10,7 +10,7 @@ export function useScrollSpy(
 ) {
   const active = ref<string | undefined>();
   let io: IntersectionObserver | undefined;
-  const visible = new Map<string, number>();
+  const visible = new Set<HTMLElement>();
 
   onMounted(() => {
     const els = Array.isArray(targets)
@@ -19,11 +19,16 @@ export function useScrollSpy(
     io = new IntersectionObserver(
       (entries) => {
         for (const e of entries) {
-          if (e.isIntersecting) visible.set(e.target.id, e.boundingClientRect.top);
-          else visible.delete(e.target.id);
+          if (e.isIntersecting) visible.add(e.target as HTMLElement);
+          else visible.delete(e.target as HTMLElement);
         }
-        const top = [...visible.entries()].sort((a, b) => a[1] - b[1])[0];
-        if (top) active.value = top[0];
+        // entries only carry the elements that changed; measure the rest now, not from a stale rect.
+        // Nearest top edge wins, so a section that just scrolled past doesn't beat the one at the top.
+        const top = [...visible].sort(
+          (a, b) =>
+            Math.abs(a.getBoundingClientRect().top) - Math.abs(b.getBoundingClientRect().top),
+        )[0];
+        if (top) active.value = top.id;
       },
       { root: opts.root?.value, rootMargin: opts.rootMargin ?? "0px 0px -60% 0px" },
     );

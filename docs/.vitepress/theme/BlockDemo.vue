@@ -7,6 +7,8 @@ const props = defineProps<{
   components?: string[];
   /** min preview height */
   height?: string;
+  /** block owns the viewport (BlessStage/BlessLayout): no inline preview, link out instead */
+  fullPage?: string;
 }>();
 const names = computed(() =>
   Object.keys(props.files).sort((a, b) =>
@@ -15,7 +17,7 @@ const names = computed(() =>
 );
 const active = ref("index.vue");
 const view = ref<"desktop" | "phone">("desktop");
-const showCode = ref(false);
+const showCode = ref(!!props.fullPage);
 const copied = ref("");
 async function copy(what: "file" | "all") {
   const text =
@@ -31,7 +33,7 @@ async function copy(what: "file" | "all") {
 <template>
   <div class="block">
     <div class="block__bar">
-      <div class="block__seg" role="group" aria-label="Preview width">
+      <div v-if="!fullPage" class="block__seg" role="group" aria-label="Preview width">
         <button type="button" :aria-pressed="view === 'desktop'" @click="view = 'desktop'">
           Desktop
         </button>
@@ -52,7 +54,15 @@ async function copy(what: "file" | "all") {
         {{ copied === "all" ? "Copied" : "Copy all" }}
       </button>
     </div>
-    <div class="block__preview" :class="`block__preview--${view}`" :style="{ minHeight: height }">
+    <div v-if="fullPage" class="block__full">
+      <a :href="fullPage" class="block__open">Open full page ↗</a>
+    </div>
+    <div
+      v-else
+      class="block__preview"
+      :class="`block__preview--${view}`"
+      :style="{ minHeight: height }"
+    >
       <div class="block__frame"><slot /></div>
     </div>
     <div v-show="showCode" class="block__code">
@@ -130,6 +140,23 @@ async function copy(what: "file" | "all") {
   background: var(--bless-color-surface);
   padding: 24px;
   overflow: auto;
+}
+.block__full {
+  display: grid;
+  place-items: center;
+  padding: 40px 24px;
+  background: var(--bless-color-surface);
+}
+.vp-doc .block__open {
+  padding: 8px 20px;
+  border: var(--bless-border-width) solid var(--bless-color-text);
+  color: var(--bless-color-text);
+  font-size: var(--bless-text-xs);
+  font-weight: var(--bless-font-weight-bold);
+  letter-spacing: var(--bless-tracking-wider);
+  text-transform: uppercase;
+  text-decoration: none;
+  transform: skewX(var(--bless-skew));
 }
 .block__frame {
   width: 100%;

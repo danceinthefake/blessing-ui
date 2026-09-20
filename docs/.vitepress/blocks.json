@@ -1,107 +1,114 @@
 [
-  {
-    "slug": "news",
-    "title": "News",
-    "group": "Showcase",
-    "summary": "Dated news rows with NEW! badges under an oversized watermark — the front page of an official site.",
-    "order": 1
-  },
-  {
-    "slug": "signin",
-    "title": "Sign in",
-    "group": "App",
-    "summary": "Email + password with native validation, remember-me, a forgot link and a divider to OAuth — the form every app starts with.",
-    "order": 1
-  },
-  {
-    "slug": "dashboard",
-    "title": "Dashboard",
-    "group": "App",
-    "summary": "Sidebar + toolbar shell with a stats row, a trend chart and a recent-activity table. Wrap in BlessLayout for drawers on phones.",
-    "order": 2
-  },
-  {
-    "slug": "onair",
-    "title": "On Air",
-    "group": "Showcase",
-    "summary": "Broadcast schedule as a station table, with streaming services below — stacks into label/value rows on a phone.",
-    "order": 2
-  },
-  {
-    "slug": "character",
-    "title": "Character",
-    "group": "Showcase",
-    "summary": "A grid of character cards; each opens a hash-routed modal with the profile and cast. Deep links survive reload.",
-    "order": 3
-  },
-  {
-    "slug": "settings",
-    "title": "Settings",
-    "group": "App",
-    "summary": "Profile, notifications and a danger zone as stacked panels with a sticky save bar — the standard account page.",
-    "order": 3
-  },
-  {
-    "slug": "data-page",
-    "title": "Data page",
-    "group": "App",
-    "summary": "Breadcrumb, title row with primary action, filter chips and a sortable, searchable, selectable data table with bulk actions.",
-    "order": 4
-  },
-  {
-    "slug": "staff",
-    "title": "Staff & Cast",
-    "group": "Showcase",
-    "summary": "Credits as two definition tables side by side — roles in skewed labels, names beside them.",
-    "order": 4
-  },
-  {
-    "slug": "release",
-    "title": "Release",
-    "group": "Showcase",
-    "summary": "Blu-ray / CD release cards with cover, price, date and a purchase button; the grid collapses to one column on phones.",
-    "order": 5
-  },
-  {
-    "slug": "states",
-    "title": "Page states",
-    "group": "App",
-    "summary": "The three non-happy paths every list needs — loading skeleton, empty with a call to action, and error with retry — behind one `state` switch.",
-    "order": 5
-  },
-  {
-    "slug": "pricing",
-    "title": "Pricing",
-    "group": "App",
-    "summary": "Three tiers with a monthly/yearly switch, a highlighted recommended plan and a feature checklist.",
-    "order": 6
-  },
-  {
-    "slug": "story",
-    "title": "Story",
-    "group": "Showcase",
-    "summary": "Episode list: number, title, air date and a synopsis that expands — with a synopsis-free intro above.",
-    "order": 6
-  },
-  {
-    "slug": "inbox",
-    "title": "Inbox",
-    "group": "App",
-    "summary": "Two-pane mail: a list with unread indicators and a reading pane with actions. Collapses to one pane on a phone with a back button.",
-    "order": 7
-  },
-  {
-    "slug": "chat",
-    "title": "Chat",
-    "group": "App",
-    "summary": "A conversation thread that sticks to the bottom, with a composer that sends on Enter and a typing indicator — the LINE-style screen.",
-    "order": 8
-  },
-  {
-    "slug": "onboarding",
-    "title": "Onboarding",
-    "group": "App",
-    "summary": "Three-step first-run wizard — workspace name, invite teammates, pick a palette — with a progress header and a finish screen.",
-    "order": 9
-  }
+ {
+  "slug": "news",
+  "title": "News",
+  "group": "Showcase",
+  "summary": "Dated news rows with NEW! badges under an oversized watermark — the front page of an official site.",
+  "order": 1
+ },
+ {
+  "slug": "signin",
+  "title": "Sign in",
+  "group": "App",
+  "summary": "Email + password with native validation, remember-me, a forgot link and a divider to OAuth — the form every app starts with.",
+  "order": 1
+ },
+ {
+  "slug": "dashboard",
+  "title": "Dashboard",
+  "group": "App",
+  "summary": "Sidebar + toolbar shell with a stats row, a trend chart and a recent-activity table. Wrap in BlessLayout for drawers on phones.",
+  "order": 2
+ },
+ {
+  "slug": "onair",
+  "title": "On Air",
+  "group": "Showcase",
+  "summary": "Broadcast schedule as a station table, with streaming services below — stacks into label/value rows on a phone.",
+  "order": 2
+ },
+ {
+  "slug": "character",
+  "title": "Character",
+  "group": "Showcase",
+  "summary": "A grid of character cards; each opens a hash-routed modal with the profile and cast. Deep links survive reload.",
+  "order": 3
+ },
+ {
+  "slug": "settings",
+  "title": "Settings",
+  "group": "App",
+  "summary": "Profile, notifications and a danger zone as stacked panels with a sticky save bar — the standard account page.",
+  "order": 3
+ },
+ {
+  "slug": "data-page",
+  "title": "Data page",
+  "group": "App",
+  "summary": "Breadcrumb, title row with primary action, filter chips and a sortable, searchable, selectable data table with bulk actions.",
+  "order": 4
+ },
+ {
+  "slug": "staff",
+  "title": "Staff & Cast",
+  "group": "Showcase",
+  "summary": "Credits as two definition tables side by side — roles in skewed labels, names beside them.",
+  "order": 4
+ },
+ {
+  "slug": "release",
+  "title": "Release",
+  "group": "Showcase",
+  "summary": "Blu-ray / CD release cards with cover, price, date and a purchase button; the grid collapses to one column on phones.",
+  "order": 5
+ },
+ {
+  "slug": "states",
+  "title": "Page states",
+  "group": "App",
+  "summary": "The three non-happy paths every list needs — loading skeleton, empty with a call to action, and error with retry — behind one `state` switch.",
+  "order": 5
+ },
+ {
+  "slug": "pricing",
+  "title": "Pricing",
+  "group": "App",
+  "summary": "Three tiers with a monthly/yearly switch, a highlighted recommended plan and a feature checklist.",
+  "order": 6
+ },
+ {
+  "slug": "story",
+  "title": "Story",
+  "group": "Showcase",
+  "summary": "Episode list: number, title, air date and a synopsis that expands — with a synopsis-free intro above.",
+  "order": 6
+ },
+ {
+  "slug": "inbox",
+  "title": "Inbox",
+  "group": "App",
+  "summary": "Two-pane mail: a list with unread indicators and a reading pane with actions. Collapses to one pane on a phone with a back button.",
+  "order": 7
+ },
+ {
+  "slug": "site",
+  "title": "Full site",
+  "group": "Showcase",
+  "summary": "All six showcase sections inside BlessStage — sidebar nav with scroll-spy, key-visual background, drawer on phones. Opens full-page.",
+  "order": 7
+ },
+ {
+  "slug": "chat",
+  "title": "Chat",
+  "group": "App",
+  "summary": "A conversation thread that sticks to the bottom, with a composer that sends on Enter and a typing indicator — the LINE-style screen.",
+  "order": 8
+ },
+ {
+  "slug": "onboarding",
+  "title": "Onboarding",
+  "group": "App",
+  "summary": "Three-step first-run wizard — workspace name, invite teammates, pick a palette — with a progress header and a finish screen.",
+  "order": 9
+ }
 ]

@@ -19,6 +19,7 @@ Rules:
 - Public components and `--bless-*` tokens only. A block may add layout CSS, never re-style a component.
 - Must render in every palette and in dark mode — a block is also a test of the system.
 - Ships with a mock adapter so it works the moment it's copied; going live means replacing `api.ts`.
+- A _composition_ block (`site/`) is the one exception to the no-cross-import rule: it assembles sibling blocks, so its page says to copy those folders too.
 - Small blocks are just `index.vue` + `meta.ts`. Empty layers are never created "for later".
 - Into Nuxt: drop the folder into `app/features/<slug>/`, add a three-line page that renders `index.vue`.
 
