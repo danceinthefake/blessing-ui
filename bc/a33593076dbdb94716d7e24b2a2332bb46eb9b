@@ -1,0 +1,21 @@
+docs/guide/story.md
+  s_9ec1000e308ddb::t_3c042903fdb095 7,11-16,19,25,28-29,35,39-44,48
+docs/guide/shape.md
+  s_9ec1000e308ddb::t_19317b58d19d7e 52-55
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "bca33593076dbdb94716d7e24b2a2332bb46eb9b",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "claude-opus-5"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
