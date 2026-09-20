@@ -79,7 +79,7 @@ const label = computed(() =>
   gap: var(--bless-space-2);
 }
 .bless-pwmeter__meter {
-  border-radius: var(--bless-radius-pill);
+  border-radius: var(--bless-radius);
   flex: 1;
   height: 6px;
   appearance: none;
@@ -90,7 +90,7 @@ const label = computed(() =>
 .bless-pwmeter__meter::-webkit-meter-bar {
   background: var(--bless-color-surface);
   border: 0;
-  border-radius: var(--bless-radius-pill);
+  border-radius: var(--bless-radius);
 }
 .bless-pwmeter__meter::-webkit-meter-optimum-value,
 .bless-pwmeter__meter::-webkit-meter-suboptimum-value,

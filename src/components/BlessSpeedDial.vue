@@ -110,7 +110,7 @@ function onBlur(e: FocusEvent) {
   flex-direction: row;
 }
 .bless-speed-dial__fab {
-  border-radius: var(--bless-radius-pill);
+  border-radius: var(--bless-radius-petal);
   display: inline-grid;
   place-items: center;
   width: 48px;

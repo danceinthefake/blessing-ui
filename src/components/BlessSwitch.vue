@@ -66,7 +66,7 @@ const id = useFieldId(props);
   pointer-events: none;
 }
 .bless-switch__track {
-  border-radius: var(--bless-radius-pill);
+  border-radius: var(--bless-radius-petal);
   position: relative;
   flex: none;
   width: var(--_w);
@@ -76,7 +76,7 @@ const id = useFieldId(props);
   transition: background var(--bless-duration-base);
 }
 .bless-switch__thumb {
-  border-radius: var(--bless-radius-pill);
+  border-radius: var(--bless-radius-petal);
   position: absolute;
   top: 3px;
   inset-inline-start: 3px;

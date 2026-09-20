@@ -77,12 +77,17 @@
   --bless-space-16: 4rem;
 
   /* ---- shape ----
-   * Sharp skew is the default. <html data-shape="rounded"> keeps the lean and rounds: boxes by
-   * --bless-radius, skewed plates by --bless-radius-plate (acute corners only), pills by --bless-radius-pill.
+   * Two shapes, one rule (docs/guide/conventions). CUT is the sharp skewed plate: everything the
+   * source site had — buttons, tabs, tags, badges, fields, cards, menus, tables. PETAL is the same
+   * plate with only its two acute corners rounded — soft body, sharp point, like the circle's flower —
+   * for what is round by nature: avatars, switches, chips, chat bubbles, fabs, slider thumbs, count dots.
+   * --bless-radius / --bless-radius-plate are 0 and unused by default; set them to round the rest.
    */
-  --bless-radius: 0px; /* unskewed boxes: cards, panels, menus, popovers, tables */
-  --bless-radius-plate: 0; /* skewed plates: only their two acute corners round (see rounded below) */
-  --bless-radius-pill: 0px; /* badges, chips, switches, avatars, progress */
+  --bless-radius: 0px; /* unskewed boxes — override point, 0 by design */
+  --bless-radius-plate: 0; /* skewed plates — override point, 0 by design */
+  --bless-petal: 8px;
+  --bless-radius-petal: 0 var(--bless-petal) 0 var(--bless-petal); /* the acute corners of the -10° lean */
+  --bless-radius-petal-lg: 0 calc(var(--bless-petal) * 1.5) 0 calc(var(--bless-petal) * 1.5); /* bubbles */
   --bless-skew: -10deg;
   --bless-skew-counter: 10deg; /* apply to inner text */
   --bless-border-width: 1px;
@@ -258,17 +263,6 @@
 [dir="rtl"] {
   --bless-skew: 10deg;
   --bless-skew-counter: -10deg;
-}
-
-/* ---- shape: rounded ----
- * Boxes round all four corners; pills become pills; a skewed plate rounds only its two acute
- * corners (top-end / bottom-start for the -10° lean) so it stays a cut plate, not a lozenge.
- */
-:root[data-shape="rounded"] {
-  --bless-radius: 8px;
-  --bless-radius-plate: 0 var(--bless-radius) 0 var(--bless-radius);
-  --bless-radius-pill: 999px;
-}
-:root[dir="rtl"][data-shape="rounded"] {
-  --bless-radius-plate: var(--bless-radius) 0 var(--bless-radius) 0; /* the lean flips, so do the acute corners */
+  --bless-radius-petal: var(--bless-petal) 0 var(--bless-petal) 0; /* the lean flips, so do the petal's corners */
+  --bless-radius-petal-lg: calc(var(--bless-petal) * 1.5) 0 calc(var(--bless-petal) * 1.5) 0;
 }
