@@ -68,9 +68,9 @@ const id = useFieldId(props);
   pointer-events: none;
 }
 .bless-checkbox__box {
-  border-radius: calc(
-    var(--bless-radius) / 2
-  ); /* an 18px box at the full radius reads as a radio */
+  /* acute corners only, half radius: an 18px box at the full radius reads as a radio */
+  border-start-end-radius: calc(var(--bless-radius) / 2);
+  border-end-start-radius: calc(var(--bless-radius) / 2);
   position: relative;
   flex: none;
   display: inline-grid;

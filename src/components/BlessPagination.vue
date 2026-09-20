@@ -98,7 +98,7 @@ function go(p: number) {
   font-family: var(--bless-font-sans);
 }
 .bless-pagination__btn {
-  border-radius: var(--bless-radius);
+  border-radius: var(--bless-radius-plate);
   min-width: 36px;
   height: 36px;
   padding: 0 var(--bless-space-2);

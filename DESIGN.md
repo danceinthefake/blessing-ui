@@ -240,7 +240,7 @@ Not components: finished sections shipped as source you copy, `docs/blocks/<slug
 
 ### Shape ✅ (2026-09-20)
 
-`data-shape="rounded"` keeps the skew and rounds corners: every box reads `--bless-radius` (8px), pills read `--bless-radius-pill`; `useTheme().setShape`, `BlessShapeToggle`. The upright (un-skewed) variant was previewed and rejected — without the lean it is any other library.
+`data-shape="rounded"` keeps the skew: boxes read `--bless-radius` (8px), skewed plates read `--bless-radius-plate` (acute corners only — a cut plate, never a lozenge), pills read `--bless-radius-pill`; `useTheme().setShape`, `BlessShapeToggle`. The upright (un-skewed) variant was previewed and rejected — without the lean it is any other library.
 
 ### Contrast policy (axe, 2026-09-20 triage)
 

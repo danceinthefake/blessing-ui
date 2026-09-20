@@ -38,7 +38,7 @@ const { shape, setShape } = useTheme();
   width: 22px;
   height: 14px;
   border: 2px solid var(--bless-color-text);
-  border-radius: var(--bless-radius);
+  border-radius: var(--bless-radius-plate);
   transform: skewX(var(--bless-skew));
   transition: border-radius var(--bless-duration-base) var(--bless-ease-out);
 }

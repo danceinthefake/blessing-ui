@@ -128,7 +128,6 @@ function clear() {
 
 <style>
 .bless-datepicker {
-  border-radius: var(--bless-radius);
   --_h: 40px;
   --_fs: var(--bless-text-md);
   display: inline-flex;
@@ -216,6 +215,7 @@ function clear() {
 }
 /* parallelogram field: the trigger, or a wrapper round the native date input; content stays upright */
 .bless-datepicker__field {
+  border-radius: var(--bless-radius-plate);
   display: inline-flex;
   transform: skewX(var(--bless-skew));
   background: var(--bless-color-surface);
@@ -231,6 +231,7 @@ function clear() {
   border-bottom: 0;
 }
 .bless-datepicker__trigger {
+  border-radius: var(--bless-radius-plate);
   transform: skewX(var(--bless-skew));
   padding-inline: calc(var(--bless-space-3) + 4px);
 }

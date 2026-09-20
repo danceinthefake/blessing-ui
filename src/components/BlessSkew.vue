@@ -20,7 +20,7 @@ withDefaults(
 
 <style>
 .bless-skew {
-  border-radius: var(--bless-radius);
+  border-radius: var(--bless-radius-plate);
   display: inline-block;
   transform: skewX(var(--bless-skew));
 }

@@ -79,6 +79,7 @@ const isGroup = (o: unknown): o is { label: string; options: BlessOption<T>[] } 
   --_fs: var(--bless-text-lg);
 }
 .bless-select__field {
+  border-radius: var(--bless-radius-plate);
   position: relative;
   height: var(--_h);
   background: var(--bless-color-surface);
@@ -100,7 +101,6 @@ const isGroup = (o: unknown): o is { label: string; options: BlessOption<T>[] } 
   transform: scaleX(1);
 }
 .bless-select__control {
-  border-radius: var(--bless-radius);
   width: 100%;
   height: 100%;
   padding: 0 var(--bless-space-8) 0 var(--bless-space-3);

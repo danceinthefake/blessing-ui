@@ -193,7 +193,7 @@ watch(open, (o) => {
 
 <style>
 .bless-cascade__trigger {
-  border-radius: var(--bless-radius);
+  border-radius: var(--bless-radius-plate);
   --_h: 40px;
   display: inline-flex;
   align-items: center;

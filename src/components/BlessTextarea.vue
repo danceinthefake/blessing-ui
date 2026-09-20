@@ -70,6 +70,7 @@ const errId = () => `${id()}-err`;
   color: var(--bless-color-text);
 }
 .bless-textarea__field {
+  border-radius: var(--bless-radius-plate);
   position: relative;
   background: var(--bless-color-surface);
   border-bottom: calc(2 * var(--bless-border-width)) solid var(--bless-color-text-muted);
@@ -90,7 +91,6 @@ const errId = () => `${id()}-err`;
   transform: scaleX(1);
 }
 .bless-textarea__control {
-  border-radius: var(--bless-radius);
   display: block;
   width: 100%;
   box-sizing: border-box;

@@ -77,6 +77,7 @@ defineExpose({ id });
   --_fs: var(--bless-text-lg);
 }
 .bless-input__field {
+  border-radius: var(--bless-radius-plate);
   position: relative;
   display: flex;
   align-items: center;
@@ -102,7 +103,6 @@ defineExpose({ id });
   transform: scaleX(1);
 }
 .bless-input__control {
-  border-radius: var(--bless-radius);
   flex: 1;
   min-width: 0;
   height: 100%;

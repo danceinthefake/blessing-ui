@@ -103,7 +103,7 @@ a.bless-attachment:focus-visible {
   box-shadow: inset 0 0 0 var(--bless-border-width) var(--bless-color-danger);
 }
 .bless-attachment__media {
-  border-radius: var(--bless-radius);
+  border-radius: var(--bless-radius-plate);
   position: relative;
   display: inline-grid;
   place-items: center;

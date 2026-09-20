@@ -108,6 +108,7 @@ const nudge = (d: number) => (model.value = clamp((model.value ?? 0) + d * props
 
 <style>
 .bless-number {
+  border-radius: var(--bless-radius-plate);
   --_h: 40px;
   display: inline-flex;
   align-items: stretch;
@@ -130,7 +131,6 @@ const nudge = (d: number) => (model.value = clamp((model.value ?? 0) + d * props
   border-bottom-color: var(--bless-color-danger);
 }
 .bless-number__control {
-  border-radius: var(--bless-radius);
   width: 6em;
   min-width: 0;
   padding: 0 var(--bless-space-2);

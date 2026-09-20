@@ -75,6 +75,7 @@ const options = computed(() => {
 
 <style>
 .bless-time {
+  border-radius: var(--bless-radius-plate);
   --_h: 40px;
   --_fs: var(--bless-text-md);
   display: inline-flex;
@@ -99,7 +100,6 @@ const options = computed(() => {
   border-bottom-color: var(--bless-color-danger);
 }
 .bless-time__control {
-  border-radius: var(--bless-radius);
   min-width: 8em;
   padding: 0 var(--bless-space-3);
   border: 0;

@@ -23,7 +23,7 @@ withDefaults(defineProps<{ size?: "sm" | "md" | "lg"; disabled?: boolean }>(), {
 <style>
 /* one shared surface + underline; the inner BlessInput / BlessSelect goes transparent */
 .bless-input-group {
-  border-radius: var(--bless-radius);
+  border-radius: var(--bless-radius-plate);
   --_h: 40px;
   display: flex;
   align-items: stretch;
