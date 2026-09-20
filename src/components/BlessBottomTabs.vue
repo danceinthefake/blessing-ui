@@ -1,5 +1,7 @@
 <script setup lang="ts">
+import { useLink } from "../composables/useLink";
 defineOptions({ name: "BlessBottomTabs" });
+const link = useLink();
 
 export interface BlessBottomTab {
   label: string;
@@ -32,11 +34,11 @@ const emit = defineEmits<{ select: [item: BlessBottomTab, e: Event] }>();
     :aria-label="label"
   >
     <component
-      :is="it.href ? 'a' : 'button'"
+      :is="link(it.href, undefined, 'button').is"
+      v-bind="link(it.href, undefined, 'button').attrs"
       v-for="it in items"
       :key="it.value"
       :type="it.href ? undefined : 'button'"
-      :href="it.href"
       class="bless-bottom-tabs__item"
       :class="{ 'bless-bottom-tabs__item--active': active === it.value }"
       :aria-current="active === it.value ? 'page' : undefined"

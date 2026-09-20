@@ -1,5 +1,7 @@
 <script setup lang="ts">
+import { useLink } from "../composables/useLink";
 defineOptions({ name: "BlessBreadcrumb" });
+const link = useLink();
 
 export interface BlessCrumb {
   label: string;
@@ -17,11 +19,12 @@ withDefaults(defineProps<{ items: BlessCrumb[]; label?: string; separator?: stri
     <ol class="bless-breadcrumb__list">
       <li v-for="(item, i) in items" :key="i" class="bless-breadcrumb__item">
         <slot name="item" :item :last="i === items.length - 1">
-          <a
+          <component
+            :is="link(item.href).is"
             v-if="item.href && i < items.length - 1"
-            :href="item.href"
+            v-bind="link(item.href).attrs"
             class="bless-breadcrumb__link"
-            >{{ item.label }}</a
+            >{{ item.label }}</component
           >
           <span
             v-else

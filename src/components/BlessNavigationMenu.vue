@@ -1,9 +1,11 @@
 <script setup lang="ts">
+import { useLink } from "../composables/useLink";
 import { nextTick, ref, useId } from "vue";
 import { logicalKey } from "../composables/rtl";
 import { useFloating } from "../composables/useFloating";
 
 defineOptions({ name: "BlessNavigationMenu" });
+const link = useLink();
 
 export interface BlessNavMenuItem {
   label: string;
@@ -69,9 +71,9 @@ function onKey(e: KeyboardEvent, i: number, item: BlessNavMenuItem) {
         @mouseleave="close()"
       >
         <component
-          :is="item.href && !item.items ? 'a' : 'button'"
+          :is="link(item.items ? undefined : item.href, undefined, 'button').is"
+          v-bind="link(item.items ? undefined : item.href, undefined, 'button').attrs"
           :ref="(el: unknown) => setAnchor(i, el)"
-          :href="item.href"
           :type="item.items ? 'button' : undefined"
           class="bless-navmenu__trigger"
           :class="{
@@ -103,8 +105,9 @@ function onKey(e: KeyboardEvent, i: number, item: BlessNavMenuItem) {
         <slot name="panel" :item="items[openIdx]">
           <ul class="bless-navmenu__grid">
             <li v-for="sub in items[openIdx].items" :key="sub.href">
-              <a
-                :href="sub.href"
+              <component
+                :is="link(sub.href).is"
+                v-bind="link(sub.href).attrs"
                 class="bless-navmenu__link"
                 @click="
                   emit('select', sub, $event);
@@ -115,7 +118,7 @@ function onKey(e: KeyboardEvent, i: number, item: BlessNavMenuItem) {
                 <span v-if="sub.description" class="bless-navmenu__link-desc">{{
                   sub.description
                 }}</span>
-              </a>
+              </component>
             </li>
           </ul>
         </slot>

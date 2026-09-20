@@ -1,10 +1,11 @@
 <script setup lang="ts">
+import type { Component } from "vue";
 defineOptions({ name: "BlessSkew" });
 
 withDefaults(
   defineProps<{
     /** element to render */
-    as?: string;
+    as?: string | Component;
     /** background token: text | accent | danger | surface */
     color?: "text" | "accent" | "danger" | "surface" | "none";
   }>(),

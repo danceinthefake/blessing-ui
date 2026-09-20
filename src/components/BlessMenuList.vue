@@ -1,10 +1,12 @@
 <script setup lang="ts">
+import { useLink } from "../composables/useLink";
 import { nextTick, ref } from "vue";
 import { logicalKey } from "../composables/rtl";
 import BlessKbd from "./BlessKbd.vue";
 import type { BlessMenuItem } from "./menu";
 
 defineOptions({ name: "BlessMenuList" });
+const link = useLink();
 
 const props = defineProps<{
   items: BlessMenuItem[];
@@ -122,8 +124,8 @@ defineExpose({ focusFirst, focusLast });
       </div>
       <component
         v-else
-        :is="'href' in item && item.href ? 'a' : 'div'"
-        :href="'href' in item ? item.href : undefined"
+        :is="link('href' in item ? item.href : undefined, undefined, 'div').is"
+        v-bind="link('href' in item ? item.href : undefined, undefined, 'div').attrs"
         class="bless-menu__item"
         :class="{ 'bless-menu__item--danger': 'danger' in item && item.danger }"
         :role="

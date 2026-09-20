@@ -1,7 +1,9 @@
 <script setup lang="ts">
+import { useLink } from "../composables/useLink";
 import BlessSkew from "./BlessSkew.vue";
 
 defineOptions({ name: "BlessCard" });
+const link = useLink();
 
 withDefaults(
   defineProps<{
@@ -20,8 +22,8 @@ withDefaults(
 
 <template>
   <component
-    :is="href ? 'a' : as"
-    :href
+    :is="link(href, undefined, as).is"
+    v-bind="link(href, undefined, as).attrs"
     class="bless-card"
     :class="[
       `bless-card--${surface}`,

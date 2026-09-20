@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useLink } from "../composables/useLink";
 import BlessBadge from "./BlessBadge.vue";
 import BlessDash from "./BlessDash.vue";
 
@@ -17,6 +18,7 @@ export interface BlessNavItem {
 withDefaults(defineProps<{ items: BlessNavItem[]; active?: string; label?: string }>(), {
   label: "Main",
 });
+const link = useLink();
 const emit = defineEmits<{ select: [item: BlessNavItem, event: MouseEvent] }>();
 </script>
 
@@ -24,13 +26,12 @@ const emit = defineEmits<{ select: [item: BlessNavItem, event: MouseEvent] }>();
   <nav class="bless-sidebar-nav" :aria-label="label">
     <ul class="bless-sidebar-nav__list">
       <li v-for="item in items" :key="item.href" class="bless-sidebar-nav__item">
-        <a
-          :href="item.href"
+        <component
+          :is="link(item.href, item.external).is"
+          v-bind="link(item.href, item.external).attrs"
           class="bless-sidebar-nav__link"
           :class="{ 'bless-sidebar-nav__link--active': item.href === active }"
           :aria-current="item.href === active ? 'page' : undefined"
-          :target="item.external ? '_blank' : undefined"
-          :rel="item.external ? 'noopener' : undefined"
           @click="emit('select', item, $event)"
         >
           <slot name="item" :item>
@@ -43,7 +44,7 @@ const emit = defineEmits<{ select: [item: BlessNavItem, event: MouseEvent] }>();
               }}</BlessBadge>
             </template>
           </slot>
-        </a>
+        </component>
       </li>
     </ul>
   </nav>

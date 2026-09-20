@@ -26,6 +26,27 @@ import { BlessButton, BlessSection } from "blessing-ui";
 </template>
 ```
 
+## With a router
+
+Every component that renders a link — `BlessSidebarNav`, `BlessButton href`, cards, list items, breadcrumbs, pagination, menus, tabs, the tree — renders a plain `<a>` by default. Provide your router's link component once and they use it for in-app paths, so you get client-side navigation, active state and (Nuxt) prefetching without wiring `@select` everywhere:
+
+```ts
+// Vue Router
+import { RouterLink } from "vue-router";
+import { blessLinkKey } from "blessing-ui";
+app.provide(blessLinkKey, RouterLink);
+```
+
+```ts
+// Nuxt — plugins/blessing.ts
+import { blessLinkKey } from "blessing-ui";
+export default defineNuxtPlugin((nuxtApp) => {
+  nuxtApp.vueApp.provide(blessLinkKey, resolveComponent("NuxtLink"));
+});
+```
+
+Rule: an `href` that starts with `/` or is a bare relative path goes to the router as `to`; anything with a scheme (`https:`, `mailto:`), protocol-relative `//`, a `#hash`, or `external: true` stays a native `<a>`. Nothing from any router is imported by the library.
+
 ## Tokens only
 
 If you only want the design tokens (no components):
