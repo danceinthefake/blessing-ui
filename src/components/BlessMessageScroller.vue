@@ -79,7 +79,12 @@ defineExpose({ scrollToBottom, scrollTo, loadHistory, atBottom });
 
 <template>
   <div class="bless-message-scroller" :style="{ '--_h': height }">
-    <div ref="viewport" class="bless-message-scroller__viewport" @scroll.passive="measure">
+    <div
+      ref="viewport"
+      class="bless-message-scroller__viewport"
+      tabindex="0"
+      @scroll.passive="measure"
+    >
       <div ref="content" class="bless-message-scroller__content"><slot /></div>
     </div>
     <Transition name="bless-message-scroller__fade">

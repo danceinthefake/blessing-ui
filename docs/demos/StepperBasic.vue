@@ -11,9 +11,15 @@ const steps = [{ label: "Account" }, { label: "Profile" }, { label: "Review" }];
     <BlessStepper v-model="step" :steps @finish="success('Done')">
       <template #default="{ index }">
         <div v-if="index === 0" class="col">
-          <BlessInput placeholder="email" /><BlessInput placeholder="password" type="password" />
+          <BlessInput placeholder="email" aria-label="Email" /><BlessInput
+            placeholder="password"
+            type="password"
+            aria-label="Password"
+          />
         </div>
-        <div v-else-if="index === 1" class="col"><BlessInput placeholder="display name" /></div>
+        <div v-else-if="index === 1" class="col">
+          <BlessInput placeholder="display name" aria-label="Display name" />
+        </div>
         <p v-else>Everything looks good.</p>
       </template>
     </BlessStepper>

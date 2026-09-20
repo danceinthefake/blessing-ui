@@ -118,7 +118,7 @@ test("Menubar registers menus and has role", () => {
       ],
     },
   });
-  expect(w.attributes("role")).toBe("menubar");
+  expect(w.element.tagName).toBe("NAV");
   expect(w.findAll(".bless-dropdown__anchor")).toHaveLength(2);
 });
 

@@ -6,7 +6,13 @@ const pw = ref("Megumi1");
 
 <template>
   <div class="col">
-    <BlessInput v-model="pw" type="password" placeholder="password" autocomplete="new-password" />
+    <BlessInput
+      v-model="pw"
+      type="password"
+      placeholder="password"
+      aria-label="Password"
+      autocomplete="new-password"
+    />
     <BlessPasswordMeter :value="pw" show-rules />
   </div>
 </template>

@@ -3,7 +3,7 @@ import { BlessAvatar, BlessHoverCard, BlessText } from "blessing-ui";
 </script>
 
 <template>
-  <p>
+  <div>
     Follow
     <BlessHoverCard>
       <template #trigger
@@ -20,5 +20,5 @@ import { BlessAvatar, BlessHoverCard, BlessText } from "blessing-ui";
       </div>
     </BlessHoverCard>
     for updates.
-  </p>
+  </div>
 </template>

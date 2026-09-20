@@ -18,6 +18,8 @@ const props = withDefaults(
     invalid?: boolean;
     emptyText?: string;
     size?: "sm" | "md" | "lg";
+    /** accessible name when there is no <label for> */
+    label?: string;
   }>(),
   { emptyText: "No results.", size: "md" },
 );
@@ -169,6 +171,7 @@ function onBlur(e: FocusEvent) {
         type="text"
         class="bless-combobox__input"
         role="combobox"
+        :aria-label="label"
         :placeholder="multiple && selected.length ? '' : placeholder"
         :disabled
         aria-autocomplete="list"

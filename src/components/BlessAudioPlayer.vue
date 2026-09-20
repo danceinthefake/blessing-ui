@@ -120,6 +120,7 @@ onBeforeUnmount(() => audio.value?.pause());
       <div
         class="bless-audio__bar"
         role="progressbar"
+        aria-label="Playback position"
         :aria-valuenow="Math.round(progress)"
         aria-valuemin="0"
         aria-valuemax="100"

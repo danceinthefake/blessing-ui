@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { BlessAudioPlayer } from "blessing-ui";
+import { BlessAudioPlayer, BlessClientOnly } from "blessing-ui";
 
 // tiny generated WAV so the demo has no external audio
 const beep = (hz: number) => {
@@ -34,5 +34,6 @@ const tracks = [
 </script>
 
 <template>
-  <BlessAudioPlayer :tracks style="max-width: 480px" />
+  <!-- blob: URLs only exist in the browser, so this demo is client-only -->
+  <BlessClientOnly><BlessAudioPlayer :tracks style="max-width: 480px" /></BlessClientOnly>
 </template>

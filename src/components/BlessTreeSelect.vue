@@ -57,18 +57,21 @@ const remove = (id: string) => (model.value = chosen.value.filter((x) => x !== i
 <template>
   <BlessPopover v-model:open="open" placement="bottom-start" class="bless-treeselect">
     <template #trigger>
-      <button
-        type="button"
+      <div
+        role="combobox"
+        tabindex="0"
         class="bless-treeselect__trigger"
         :class="[
           `bless-treeselect__trigger--${size}`,
           { 'bless-treeselect__trigger--invalid': invalid },
         ]"
-        :disabled
+        :aria-disabled="disabled || undefined"
         :aria-label="label"
         :aria-invalid="invalid || undefined"
         aria-haspopup="tree"
         :aria-expanded="open"
+        @keydown.enter.prevent="!disabled && (open = !open)"
+        @keydown.space.prevent="!disabled && (open = !open)"
       >
         <span v-if="multiple && chosen.length" class="bless-treeselect__chips">
           <BlessChip
@@ -87,7 +90,7 @@ const remove = (id: string) => (model.value = chosen.value.filter((x) => x !== i
           >{{ single || placeholder }}</span
         >
         <span class="bless-treeselect__chevron" aria-hidden="true" />
-      </button>
+      </div>
     </template>
     <div class="bless-treeselect__panel">
       <BlessTree
@@ -127,6 +130,9 @@ const remove = (id: string) => (model.value = chosen.value.filter((x) => x !== i
   --_h: 48px;
   font-size: var(--bless-text-lg);
 }
+.bless-treeselect__trigger {
+  cursor: pointer;
+}
 .bless-treeselect__trigger:focus-visible {
   outline: 0;
   border-bottom-color: var(--bless-color-accent);
@@ -134,7 +140,7 @@ const remove = (id: string) => (model.value = chosen.value.filter((x) => x !== i
 .bless-treeselect__trigger--invalid {
   border-bottom-color: var(--bless-color-danger);
 }
-.bless-treeselect__trigger:disabled {
+.bless-treeselect__trigger[aria-disabled="true"] {
   opacity: 0.4;
   cursor: not-allowed;
 }

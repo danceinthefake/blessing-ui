@@ -329,6 +329,7 @@ pnpm install
 pnpm dev            # docs site (VitePress) with live demos against src/ — http://localhost:5173
 pnpm docs:meta      # regenerate docs/.vitepress/meta.json from the components (vue-component-meta)
 pnpm docs:pages     # scaffold a docs page for any component that lacks one
+pnpm e2e            # cross-browser page-error sweep + axe (needs a running docs preview on :4173)
 pnpm test           # vitest + jsdom
 pnpm typecheck      # vue-tsc
 pnpm build          # dist/blessing-ui.{js,css} + index.d.ts

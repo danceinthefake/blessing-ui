@@ -8,12 +8,18 @@ const mail = ref("bad@");
 <template>
   <div class="row" style="align-items: flex-start">
     <div class="col">
-      <BlessInput v-model="name" placeholder="加藤恵" description="as shown on the credits" />
+      <BlessInput
+        v-model="name"
+        placeholder="加藤恵"
+        aria-label="Name"
+        description="as shown on the credits"
+      />
     </div>
     <div class="col">
       <BlessInput
         v-model="mail"
         type="email"
+        aria-label="Email"
         :error="mail.includes('@') && mail.split('@')[1] ? '' : 'Enter a valid address'"
       />
     </div>

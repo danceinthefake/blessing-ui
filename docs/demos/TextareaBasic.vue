@@ -18,7 +18,7 @@ const bio = ref("");
     </div>
     <div class="col">
       <BlessLabel>Fixed rows</BlessLabel>
-      <BlessTextarea :rows="4" :autogrow="false" error="Required" />
+      <BlessTextarea :rows="4" :autogrow="false" error="Required" aria-label="Fixed rows" />
     </div>
   </div>
 </template>

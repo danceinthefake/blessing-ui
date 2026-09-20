@@ -6,16 +6,16 @@ import { BlessButton, BlessInput, BlessInputGroup } from "blessing-ui";
   <div class="col">
     <BlessInputGroup>
       <template #prefix>https://</template>
-      <BlessInput placeholder="saenai.tv" />
+      <BlessInput placeholder="saenai.tv" aria-label="Domain" />
       <template #suffix>.com</template>
     </BlessInputGroup>
     <BlessInputGroup>
-      <BlessInput placeholder="search episodes" />
+      <BlessInput placeholder="search episodes" aria-label="Search episodes" />
       <template #suffix><BlessButton size="sm" color="accent">Go</BlessButton></template>
     </BlessInputGroup>
     <BlessInputGroup size="sm" disabled>
       <template #prefix>¥</template>
-      <BlessInput size="sm" model-value="1980" />
+      <BlessInput size="sm" model-value="1980" aria-label="Price" />
     </BlessInputGroup>
   </div>
 </template>

@@ -27,7 +27,7 @@ provide(menubarKey, {
 </script>
 
 <template>
-  <div class="bless-menubar" role="menubar" :aria-label="label"><slot /></div>
+  <nav class="bless-menubar" :aria-label="label"><slot /></nav>
 </template>
 
 <style>
