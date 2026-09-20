@@ -2328,7 +2328,7 @@
     "props": [
       {
         "name": "editor",
-        "type": "Editor | null | undefined",
+        "type": "BlessEditorLike | null | undefined",
         "required": true,
         "description": "the Tiptap editor from useEditor(); the content goes in the default slot as <EditorContent :editor />"
       },
@@ -2364,7 +2364,7 @@
     "slots": [
       {
         "name": "toolbar",
-        "type": "{ editor: Editor | null | undefined; }",
+        "type": "{ editor: BlessEditorLike | null | undefined; }",
         "description": ""
       },
       {
@@ -2374,7 +2374,7 @@
       },
       {
         "name": "footer",
-        "type": "{ editor: Editor | null | undefined; }",
+        "type": "{ editor: BlessEditorLike | null | undefined; }",
         "description": ""
       }
     ],

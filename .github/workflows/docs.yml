@@ -28,4 +28,7 @@ jobs:
           sleep 3
           node e2e/sweep.mjs chromium,firefox,webkit
           node e2e/axe.mjs
+          node e2e/interact.mjs chromium
+          node e2e/interact.mjs firefox
+          node e2e/interact.mjs webkit
       # Pages deploy disabled for now — re-add upload-pages-artifact + deploy-pages when ready

@@ -52,7 +52,7 @@ const tab = ref("home");
         >Resize below 900px: drawers go off-canvas, swipe in from the edges on touch, header hides
         on scroll down. Above: drawers sit beside the page.</BlessText
       >
-      <BlessText v-for="n in 30" :key="n" as="p"
+      <BlessText v-for="n in 80" :key="n" as="p"
         >第{{ n }}話 — scroll to see the header reveal</BlessText
       >
     </div>
