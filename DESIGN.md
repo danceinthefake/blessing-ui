@@ -256,6 +256,10 @@ Previews rendered both (`tmp/blocks/m-all.png`, `mb-all.png`): merge changes onl
 
 For merge: a vocabulary, not a preference; strongest identity; nothing to choose or maintain. Against: the out-of-the-box look gains a permanent departure from the site; no "off"; untested in daily use.
 
+New evidence (2026-09-21): the franchise's own later site — the 2019 film — dropped the skew, used 20px pill tags and underline buttons, and set headlines in Roboto 500. Its pink is `#e5477e`, next to our `#e85078`. So "the source never rounded" holds for the TV site only; the lineage itself went soft two years on. Doesn't settle the merge — the TV site is still the one the library is built on — but petal is not foreign to the family.
+
+Two smaller open questions from the same source: a **hanging headline** (500-weight page title overlapping the bottom of a band, tiny tracked JP subtitle) as a `BlessSection` variant or block; an **outline pill badge** (muted 1px border) to match the film's role tags. Neither started.
+
 **Decision deferred.** Plan: run the 1-by-1 review with `data-shape="rounded"` on, then decide. Merge is ~15 min (fold petal/pill into base tokens for that set, drop `data-shape`/`setShape`/`BlessShapeToggle`/guide page, keep the tokens so consumers can opt out, add the cut/petal rule to Conventions). Naming candidates if we keep a toggle: `cut` / `petal`.
 
 ### Contrast policy (axe, 2026-09-20 triage)
