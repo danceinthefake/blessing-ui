@@ -40,6 +40,7 @@ const { theme, isDark, set, toggle } = useTheme();
 
 <style>
 .bless-theme-toggle {
+  border-radius: var(--bless-radius);
   width: 36px;
   height: 36px;
   border: var(--bless-border-width) solid var(--bless-color-border);

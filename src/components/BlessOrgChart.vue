@@ -103,6 +103,7 @@ const emit = defineEmits<{ select: [node: BlessTreeNode, id: string] }>();
   background: var(--bless-color-border);
 }
 .bless-org__node {
+  border-radius: var(--bless-radius);
   display: inline-flex;
   flex-direction: column;
   align-items: center;

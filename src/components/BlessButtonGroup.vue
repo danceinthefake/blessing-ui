@@ -29,6 +29,23 @@ withDefaults(defineProps<{ orientation?: "horizontal" | "vertical"; label?: stri
 }
 .bless-button-group > .bless-button {
   margin: 0;
+  border-radius: 0; /* joined: only the group's outer corners round */
+}
+.bless-button-group--horizontal > .bless-button:first-child {
+  border-start-start-radius: var(--bless-radius);
+  border-end-start-radius: var(--bless-radius);
+}
+.bless-button-group--horizontal > .bless-button:last-child {
+  border-start-end-radius: var(--bless-radius);
+  border-end-end-radius: var(--bless-radius);
+}
+.bless-button-group--vertical > .bless-button:first-child {
+  border-start-start-radius: var(--bless-radius);
+  border-start-end-radius: var(--bless-radius);
+}
+.bless-button-group--vertical > .bless-button:last-child {
+  border-end-start-radius: var(--bless-radius);
+  border-end-end-radius: var(--bless-radius);
 }
 .bless-button-group--horizontal > .bless-button + .bless-button {
   margin-inline-start: calc(-1 * var(--bless-border-width));

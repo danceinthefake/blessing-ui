@@ -120,6 +120,7 @@ defineExpose({ scrollToBottom, scrollTo, loadHistory, atBottom });
   overflow-anchor: none;
 }
 .bless-message-scroller__jump {
+  border-radius: var(--bless-radius-pill);
   position: absolute;
   bottom: var(--bless-space-3);
   inset-inline-start: 50%;
