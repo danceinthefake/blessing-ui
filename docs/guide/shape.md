@@ -49,3 +49,7 @@ setShape("rounded");
 ```
 
 There is no upright (un-skewed) variant, and no fully-rounded plate: rounded corners without the lean is every other library; the lean is the point. The source site never rounded anything — this mode is our departure, off by default.
+
+## Open question
+
+Should the two shapes merge into one default — cut for everything the source had, petal only for the things that are round by nature (avatars, switches, chips, chat bubbles)? Undecided; the toggle stays until it is. The reasoning either way is in `DESIGN.md`.
