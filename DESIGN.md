@@ -1,6 +1,6 @@
 # Blessing UI — design document
 
-Generic Vue 3 UI library. Visual language borrowed from saenai.tv (see `../saenai/DESIGN.md`): grey-scale UI, one accent family (Megumi's pink by default, five more by `data-palette`), skewed labels instead of rounded corners, thin oversized watermark type, opacity-fade hovers.
+Generic Vue 3 UI library. Visual language re-derived from saenai.tv (the reverse-engineered notes are kept outside this repo; the story is in docs/guide/story): grey-scale UI, one accent family (Megumi's pink by default, five more by `data-palette`), skewed labels instead of rounded corners, thin oversized watermark type, opacity-fade hovers.
 
 ## 1. Principles
 
