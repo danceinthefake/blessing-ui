@@ -75,7 +75,7 @@ withDefaults(
 }
 .bless-mockup--window .bless-mockup__title {
   background: none;
-  text-align: left;
+  text-align: start;
   font-weight: var(--bless-font-weight-bold);
   letter-spacing: var(--bless-tracking-wide);
 }

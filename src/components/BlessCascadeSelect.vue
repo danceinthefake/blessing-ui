@@ -1,5 +1,6 @@
 <script setup lang="ts" generic="T extends string | number">
 import { computed, ref, useId, watch } from "vue";
+import { logicalKey } from "../composables/rtl";
 import BlessPopover from "./BlessPopover.vue";
 import type { BlessCascadeOption } from "./cascade";
 
@@ -86,7 +87,7 @@ function onKey(e: KeyboardEvent) {
   const cur = active.value[col] ?? 0;
   const setActive = (i: number) =>
     (active.value = [...active.value.slice(0, col), Math.max(0, Math.min(list.length - 1, i))]);
-  switch (e.key) {
+  switch (logicalKey(e)) {
     case "ArrowDown":
       e.preventDefault();
       setActive(cur + 1);
@@ -205,7 +206,7 @@ watch(open, (o) => {
   color: var(--bless-color-text);
   font: inherit;
   font-family: var(--bless-font-sans);
-  text-align: left;
+  text-align: start;
   cursor: pointer;
 }
 .bless-cascade__trigger--sm {
@@ -240,7 +241,7 @@ watch(open, (o) => {
 .bless-cascade__chevron {
   width: 8px;
   height: 8px;
-  border-right: 2px solid currentColor;
+  border-inline-end: 2px solid currentColor;
   border-bottom: 2px solid currentColor;
   transform: translateY(-2px) rotate(45deg);
 }
@@ -262,7 +263,7 @@ watch(open, (o) => {
   scrollbar-width: thin;
 }
 .bless-cascade__col + .bless-cascade__col {
-  border-left: var(--bless-border-width) solid var(--bless-color-border);
+  border-inline-start: var(--bless-border-width) solid var(--bless-color-border);
 }
 .bless-cascade__option {
   display: flex;

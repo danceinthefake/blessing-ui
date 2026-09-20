@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, ref, watch } from "vue";
+import { logicalKey } from "../composables/rtl";
 
 defineOptions({ name: "BlessInputOTP" });
 
@@ -66,10 +67,10 @@ function onKey(i: number, e: KeyboardEvent) {
       set(i - 1, "");
       focus(i - 1);
     }
-  } else if (e.key === "ArrowLeft") {
+  } else if (logicalKey(e) === "ArrowLeft") {
     e.preventDefault();
     focus(i - 1);
-  } else if (e.key === "ArrowRight") {
+  } else if (logicalKey(e) === "ArrowRight") {
     e.preventDefault();
     focus(i + 1);
   } else if (e.key === "Delete") {

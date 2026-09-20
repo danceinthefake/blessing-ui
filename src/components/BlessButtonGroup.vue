@@ -31,7 +31,7 @@ withDefaults(defineProps<{ orientation?: "horizontal" | "vertical"; label?: stri
   margin: 0;
 }
 .bless-button-group--horizontal > .bless-button + .bless-button {
-  margin-left: calc(-1 * var(--bless-border-width));
+  margin-inline-start: calc(-1 * var(--bless-border-width));
 }
 .bless-button-group--vertical > .bless-button + .bless-button {
   margin-top: calc(-1 * var(--bless-border-width));
@@ -42,7 +42,7 @@ withDefaults(defineProps<{ orientation?: "horizontal" | "vertical"; label?: stri
 }
 /* solid neighbours get a hairline so they don't fuse */
 .bless-button-group--horizontal > .bless-button--solid + .bless-button--solid {
-  border-left-color: var(--bless-color-bg);
+  border-inline-start-color: var(--bless-color-bg);
 }
 .bless-button-group--vertical > .bless-button--solid + .bless-button--solid {
   border-top-color: var(--bless-color-bg);

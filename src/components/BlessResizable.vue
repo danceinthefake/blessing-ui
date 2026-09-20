@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
+import { logicalKey } from "../composables/rtl";
 
 defineOptions({ name: "BlessResizable" });
 
@@ -40,8 +41,8 @@ function onUp() {
 function onKey(e: KeyboardEvent) {
   const dec = horizontal.value ? "ArrowLeft" : "ArrowUp";
   const inc = horizontal.value ? "ArrowRight" : "ArrowDown";
-  if (e.key === dec) size.value = clamp(size.value - props.step);
-  else if (e.key === inc) size.value = clamp(size.value + props.step);
+  if (logicalKey(e) === dec) size.value = clamp(size.value - props.step);
+  else if (logicalKey(e) === inc) size.value = clamp(size.value + props.step);
   else if (e.key === "Home") size.value = props.min;
   else if (e.key === "End") size.value = props.max;
   else if (e.key === "Enter") size.value = clamp(50);

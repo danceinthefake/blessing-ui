@@ -87,7 +87,7 @@ withDefaults(
   justify-content: flex-start;
   padding: var(--bless-space-2) var(--bless-space-3);
   border: var(--bless-border-width) solid var(--bless-color-border);
-  border-left: 3px solid var(--_c);
+  border-inline-start: 3px solid var(--_c);
 }
 .bless-marker--shimmer .bless-marker__content {
   background-image: linear-gradient(

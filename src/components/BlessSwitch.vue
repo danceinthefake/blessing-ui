@@ -77,7 +77,7 @@ const id = useFieldId(props);
 .bless-switch__thumb {
   position: absolute;
   top: 3px;
-  left: 3px;
+  inset-inline-start: 3px;
   width: calc(var(--_h) - 6px);
   height: calc(var(--_h) - 6px);
   background: var(--bless-color-bg);

@@ -62,12 +62,12 @@ const pos = defineModel<number>({ default: 50 });
 .bless-compare--horizontal .bless-compare__handle {
   top: 0;
   bottom: 0;
-  left: var(--_p);
+  inset-inline-start: var(--_p);
   width: 2px;
 }
 .bless-compare--vertical .bless-compare__handle {
-  left: 0;
-  right: 0;
+  inset-inline-start: 0;
+  inset-inline-end: 0;
   top: var(--_p);
   height: 2px;
 }

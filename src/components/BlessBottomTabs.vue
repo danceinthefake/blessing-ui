@@ -67,15 +67,15 @@ const emit = defineEmits<{ select: [item: BlessBottomTab, e: Event] }>();
 }
 .bless-bottom-tabs--bar {
   position: fixed;
-  left: 0;
-  right: 0;
+  inset-inline-start: 0;
+  inset-inline-end: 0;
   bottom: 0;
   border-top: var(--bless-border-width) solid var(--bless-color-border);
   padding-bottom: var(--bless-safe-bottom);
 }
 .bless-bottom-tabs--dock {
   position: fixed;
-  left: 50%;
+  inset-inline-start: 50%;
   bottom: var(--bless-space-4);
   translate: -50% 0;
   gap: var(--bless-space-1);
@@ -128,8 +128,8 @@ const emit = defineEmits<{ select: [item: BlessBottomTab, e: Event] }>();
   content: "";
   position: absolute;
   top: -1px;
-  left: 25%;
-  right: 25%;
+  inset-inline-start: 25%;
+  inset-inline-end: 25%;
   height: 2px;
   background: var(--bless-color-accent);
   transform: skewX(var(--bless-skew));
@@ -158,7 +158,7 @@ const emit = defineEmits<{ select: [item: BlessBottomTab, e: Event] }>();
 .bless-bottom-tabs__badge {
   position: absolute;
   top: 4px;
-  left: calc(50% + 6px);
+  inset-inline-start: calc(50% + 6px);
   min-width: 8px;
   height: 8px;
   padding: 0 3px;

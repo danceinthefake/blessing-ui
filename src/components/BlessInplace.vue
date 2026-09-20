@@ -44,7 +44,7 @@ const close = () => ((active.value = false), emit("close"));
   background: none;
   color: inherit;
   font: inherit;
-  text-align: left;
+  text-align: start;
   cursor: text;
 }
 .bless-inplace__display:hover {

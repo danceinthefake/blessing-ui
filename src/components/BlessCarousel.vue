@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, ref, watch } from "vue";
+import { logicalKey } from "../composables/rtl";
 
 defineOptions({ name: "BlessCarousel" });
 
@@ -66,11 +67,11 @@ function count_() {
   count.value = track.value?.children.length ?? 0;
 }
 function onKey(e: KeyboardEvent) {
-  if (e.key === "ArrowLeft") {
+  if (logicalKey(e) === "ArrowLeft") {
     e.preventDefault();
     go(index.value - 1);
   }
-  if (e.key === "ArrowRight") {
+  if (logicalKey(e) === "ArrowRight") {
     e.preventDefault();
     go(index.value + 1);
   }
@@ -202,10 +203,10 @@ defineExpose({ go, next: () => go(index.value + 1), prev: () => go(index.value -
   transform: skewX(var(--bless-skew-counter));
 }
 .bless-carousel__arrow--prev {
-  left: var(--bless-space-2);
+  inset-inline-start: var(--bless-space-2);
 }
 .bless-carousel__arrow--next {
-  right: var(--bless-space-2);
+  inset-inline-end: var(--bless-space-2);
 }
 .bless-carousel__arrow:hover:not(:disabled) {
   opacity: var(--bless-hover-opacity);

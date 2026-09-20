@@ -69,7 +69,7 @@ withDefaults(
 .bless-card__label {
   position: absolute;
   top: calc(-1 * var(--bless-space-3));
-  left: var(--bless-space-4);
+  inset-inline-start: var(--bless-space-4);
   z-index: 1;
   padding: var(--bless-space-1) var(--bless-space-3);
   font-size: var(--bless-text-xs);

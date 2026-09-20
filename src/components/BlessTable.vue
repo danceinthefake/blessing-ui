@@ -75,7 +75,7 @@ withDefaults(
 }
 .bless-table__caption {
   padding: 0 0 var(--bless-space-3);
-  text-align: left;
+  text-align: start;
   font-size: var(--bless-text-sm);
   font-weight: var(--bless-font-weight-bold);
   letter-spacing: var(--bless-tracking-wider);
@@ -85,7 +85,7 @@ withDefaults(
 .bless-table__th {
   padding: var(--bless-space-2) var(--bless-space-3);
   border-bottom: calc(2 * var(--bless-border-width)) solid var(--bless-color-rule);
-  text-align: left;
+  text-align: start;
   font-size: var(--bless-text-xs);
   font-weight: var(--bless-font-weight-bold);
   letter-spacing: var(--bless-tracking-wider);
@@ -95,7 +95,7 @@ withDefaults(
 .bless-table__cell {
   padding: var(--bless-space-3);
   border-bottom: var(--bless-border-width) solid var(--bless-color-border);
-  text-align: left;
+  text-align: start;
   font-weight: var(--bless-font-weight-normal);
   vertical-align: top;
 }
@@ -106,7 +106,7 @@ th.bless-table__cell {
   text-align: center;
 }
 .bless-table__cell--right {
-  text-align: right;
+  text-align: end;
 }
 .bless-table--striped .bless-table__row:nth-child(even) {
   background: var(--bless-color-surface);
@@ -130,7 +130,7 @@ th.bless-table__cell {
     gap: var(--bless-space-3);
     padding: var(--bless-space-1) 0;
     border: 0;
-    text-align: left;
+    text-align: start;
   }
   .bless-table--stack .bless-table__cell::before {
     content: attr(data-label);

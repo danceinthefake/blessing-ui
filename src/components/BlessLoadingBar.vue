@@ -36,8 +36,8 @@ useLoadingBar(); // ensures the state exists
 .bless-loadingbar {
   --_c: var(--bless-color-accent);
   position: fixed;
-  left: 0;
-  right: 0;
+  inset-inline-start: 0;
+  inset-inline-end: 0;
   z-index: calc(var(--bless-z-modal) + 10);
   height: var(--_h);
   pointer-events: none;

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, ref, useId, watch } from "vue";
+import { logicalKey } from "../composables/rtl";
 import { addDays, addMonths, fromISO, isoToday, sameDay, toISO } from "../composables/date";
 
 defineOptions({ name: "BlessCalendar" });
@@ -86,7 +87,7 @@ function onKey(e: KeyboardEvent) {
   const map: Record<string, number> = { ArrowLeft: -1, ArrowRight: 1, ArrowUp: -7, ArrowDown: 7 };
   if (e.key in map) {
     e.preventDefault();
-    moveFocus(map[e.key]!);
+    moveFocus(map[logicalKey(e)]!);
   } else if (e.key === "PageUp") {
     e.preventDefault();
     shiftMonth(e.shiftKey ? -12 : -1, true);
@@ -263,11 +264,11 @@ watch(
 .bless-calendar__day--today::after {
   content: "";
   position: absolute;
-  left: 50%;
+  inset-inline-start: 50%;
   bottom: 4px;
   width: 4px;
   height: 4px;
-  margin-left: -2px;
+  margin-inline-start: -2px;
   background: currentColor;
 }
 .bless-calendar__day--in-range {

@@ -64,10 +64,10 @@ withDefaults(defineProps<{ size?: "sm" | "md" | "lg"; disabled?: boolean }>(), {
   white-space: nowrap;
 }
 .bless-input-group__addon--prefix {
-  border-right: var(--bless-border-width) solid var(--bless-color-bg);
+  border-inline-end: var(--bless-border-width) solid var(--bless-color-bg);
 }
 .bless-input-group__addon--suffix {
-  border-left: var(--bless-border-width) solid var(--bless-color-bg);
+  border-inline-start: var(--bless-border-width) solid var(--bless-color-bg);
 }
 .bless-input-group__addon > .bless-button {
   margin: 0 calc(-1 * var(--bless-space-2));

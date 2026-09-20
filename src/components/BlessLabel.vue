@@ -43,7 +43,7 @@ defineProps<{
   color: var(--bless-color-accent-text);
 }
 .bless-label__hint {
-  margin-left: var(--bless-space-1);
+  margin-inline-start: var(--bless-space-1);
   font-weight: var(--bless-font-weight-normal);
   text-transform: none;
   letter-spacing: var(--bless-tracking-normal);
