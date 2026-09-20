@@ -40,8 +40,8 @@ function create(label: string) {
     </div>
     <div class="col">
       <BlessLabel>Disabled / invalid</BlessLabel>
-      <BlessCombobox :options model-value="megumi" disabled />
-      <BlessCombobox :options invalid placeholder="invalid" size="sm" />
+      <BlessCombobox :options model-value="megumi" disabled label="Disabled example" />
+      <BlessCombobox :options invalid placeholder="invalid" size="sm" label="Invalid example" />
     </div>
   </div>
 </template>

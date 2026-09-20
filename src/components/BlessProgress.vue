@@ -41,7 +41,7 @@ const pct = computed(() =>
     <div
       class="bless-progress__track"
       role="progressbar"
-      :aria-label="label"
+      :aria-label="label ?? 'Progress'"
       :aria-valuemin="0"
       :aria-valuemax="max"
       :aria-valuenow="value"

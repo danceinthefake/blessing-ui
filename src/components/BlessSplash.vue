@@ -48,7 +48,14 @@ defineExpose({ dismiss });
 
 <template>
   <Transition name="bless-splash">
-    <div v-if="show" class="bless-splash" role="dialog" aria-modal="true" @keydown.esc="dismiss">
+    <div
+      v-if="show"
+      class="bless-splash"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Welcome"
+      @keydown.esc="dismiss"
+    >
       <div class="bless-splash__content"><slot :dismiss /></div>
       <button type="button" class="bless-splash__skip" @click="dismiss">{{ skipLabel }}</button>
     </div>

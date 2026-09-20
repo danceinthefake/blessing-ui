@@ -4,8 +4,8 @@ import { BlessInput } from "blessing-ui";
 
 <template>
   <div class="row" style="align-items: flex-start">
-    <div class="col"><BlessInput model-value="disabled" disabled /></div>
-    <div class="col"><BlessInput model-value="readonly" readonly /></div>
-    <div class="col"><BlessInput type="number" model-value="25" /></div>
+    <div class="col"><BlessInput model-value="disabled" disabled aria-label="Disabled" /></div>
+    <div class="col"><BlessInput model-value="readonly" readonly aria-label="Read only" /></div>
+    <div class="col"><BlessInput type="number" model-value="25" aria-label="Number" /></div>
   </div>
 </template>

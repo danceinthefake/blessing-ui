@@ -12,6 +12,6 @@ const vol = ref(35);
     <div class="col">
       <BlessSlider :model-value="3" :min="1" :max="5" label="Rating" show-value />
     </div>
-    <div class="col"><BlessSlider :model-value="60" disabled /></div>
+    <div class="col"><BlessSlider :model-value="60" disabled label="Disabled" /></div>
   </div>
 </template>

@@ -9,7 +9,7 @@ const matrix = computed(() => encode(text.value, { ecc: "M" }).data);
 <template>
   <div class="row" style="align-items: flex-start">
     <div class="col">
-      <BlessInput v-model="text" placeholder="text or URL" />
+      <BlessInput v-model="text" placeholder="text or URL" aria-label="Text to encode" />
       <small>{{ matrix.length }}×{{ matrix.length }} modules, ECC M</small>
     </div>
     <BlessQrCode :matrix :value="text" />

@@ -114,6 +114,7 @@ defineExpose({ go, next: () => go(index.value + 1), prev: () => go(index.value -
     <div
       ref="track"
       class="bless-carousel__track"
+      tabindex="0"
       :style="{ '--_pv': perView, '--_gap': gap }"
       @scroll.passive="onScroll"
     >

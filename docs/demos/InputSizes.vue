@@ -5,11 +5,15 @@ import { BlessInput } from "blessing-ui";
 <template>
   <div class="row" style="align-items: flex-start">
     <div class="col">
-      <BlessInput size="sm" placeholder="sm"><template #prefix>¥</template></BlessInput>
+      <BlessInput size="sm" placeholder="sm" aria-label="Small"
+        ><template #prefix>¥</template></BlessInput
+      >
     </div>
     <div class="col">
-      <BlessInput placeholder="md" type="search"><template #suffix>⌘K</template></BlessInput>
+      <BlessInput placeholder="md" type="search" aria-label="Medium"
+        ><template #suffix>⌘K</template></BlessInput
+      >
     </div>
-    <div class="col"><BlessInput size="lg" placeholder="lg" /></div>
+    <div class="col"><BlessInput size="lg" placeholder="lg" aria-label="Large" /></div>
   </div>
 </template>

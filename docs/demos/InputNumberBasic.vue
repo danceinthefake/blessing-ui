@@ -25,7 +25,7 @@ const price = ref(1980);
     </div>
     <div class="col" style="max-width: 200px">
       <BlessLabel>Disabled</BlessLabel>
-      <BlessInputNumber :model-value="5" disabled size="sm" />
+      <BlessInputNumber :model-value="5" disabled size="sm" label="Disabled quantity" />
     </div>
   </div>
 </template>

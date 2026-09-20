@@ -202,6 +202,7 @@ defineExpose({ state, selectedRows: dt.selectedRows });
         <BlessSelect
           :model-value="state.pageSize"
           size="sm"
+          aria-label="Rows per page"
           :options="sizeOptions"
           class="bless-datatable__size"
           @update:model-value="

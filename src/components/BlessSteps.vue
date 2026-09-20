@@ -36,6 +36,7 @@ const emit = defineEmits<{ select: [index: number] }>();
         :is="clickable && i < current ? 'button' : 'div'"
         :type="clickable && i < current ? 'button' : undefined"
         class="bless-steps__marker"
+        :aria-label="clickable && i < current ? `Go to step ${i + 1}: ${s.label}` : undefined"
         @click="clickable && i < current && (emit('select', i), (current = i))"
       >
         <span aria-hidden="true">{{ i < current ? "✓" : i + 1 }}</span>

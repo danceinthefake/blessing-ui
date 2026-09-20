@@ -33,7 +33,7 @@ const text = computed(() =>
     :class="[`bless-circular--${color}`, { 'bless-circular--indeterminate': value == null }]"
     :style="{ '--_s': `${size}px` }"
     role="progressbar"
-    :aria-label="label"
+    :aria-label="label ?? 'Progress'"
     :aria-valuenow="value"
     aria-valuemin="0"
     :aria-valuemax="max"

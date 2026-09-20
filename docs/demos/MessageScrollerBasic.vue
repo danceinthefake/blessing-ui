@@ -73,7 +73,7 @@ function loadHistory() {
     </BlessMessageScroller>
     <form @submit.prevent="send">
       <BlessInputGroup>
-        <BlessInput v-model="draft" placeholder="message" />
+        <BlessInput v-model="draft" placeholder="message" aria-label="Message" />
         <template #suffix
           ><BlessButton size="sm" color="accent" type="submit">Send</BlessButton></template
         >

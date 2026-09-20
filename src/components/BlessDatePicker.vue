@@ -101,15 +101,15 @@ function clear() {
           :class="{ 'bless-datepicker__text--placeholder': !text }"
           >{{ text || placeholder }}</span
         >
-        <span
-          v-if="text"
-          class="bless-datepicker__clear"
-          role="button"
-          aria-label="Clear"
-          tabindex="-1"
-          @click.stop="clear"
-          >×</span
-        >
+      </button>
+      <button
+        v-if="text && !disabled"
+        type="button"
+        class="bless-datepicker__clear"
+        aria-label="Clear"
+        @click="clear"
+      >
+        ×
       </button>
       <div
         ref="panel"
@@ -129,7 +129,8 @@ function clear() {
 .bless-datepicker {
   --_h: 40px;
   --_fs: var(--bless-text-md);
-  display: inline-block;
+  display: inline-flex;
+  align-items: stretch;
   font-family: var(--bless-font-sans);
   color: var(--bless-color-text);
 }
@@ -177,8 +178,20 @@ function clear() {
   color: var(--bless-color-text-muted);
 }
 .bless-datepicker__clear {
-  padding: 0 4px;
-  opacity: 0.6;
+  border: 0;
+  border-bottom: calc(2 * var(--bless-border-width)) solid var(--bless-color-text-muted);
+  background: var(--bless-color-surface);
+  font: inherit;
+  color: var(--bless-color-text-muted);
+  cursor: pointer;
+  padding: 0 var(--bless-space-2);
+}
+.bless-datepicker--invalid .bless-datepicker__clear {
+  border-bottom-color: var(--bless-color-danger);
+}
+.bless-datepicker__clear:focus-visible {
+  outline: 2px solid var(--bless-color-accent);
+  outline-offset: -2px;
 }
 .bless-datepicker__clear:hover {
   opacity: 1;
