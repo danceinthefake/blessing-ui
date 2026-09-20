@@ -33,7 +33,7 @@ Durations collapse to `0s` under `prefers-reduced-motion`.
 - `on-text` — text on a `--bless-color-text` fill; equals `bg`, so it inverts with the theme
 - `on-light` — text on warning / success fills, which are too pale for white
 - `chart-1..5` — categorical series, all ≥3:1 on `bg` and `surface` in both themes
-- `--bless-shadow-plate` — the only elevation: `3px 3px 0` in the accent (`--bless-plate-offset`). Nothing blurs; a floating thing sits on a plate. `--bless-shadow-md` is an alias
+- `--bless-shadow-plate` — the only elevation: `1px 1px 0` in the accent (`--bless-plate-offset`). Nothing blurs; a floating thing sits on a plate. `--bless-shadow-md` is an alias
 
 ## Tailwind v4
 

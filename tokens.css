@@ -90,7 +90,7 @@
    * Nothing blurs. A floating thing sits on a plate: a hard offset slab in the accent, the same
    * motif as the QR frame and the mark's plates. Modal and sheet rely on the scrim instead.
    */
-  --bless-plate-offset: 3px;
+  --bless-plate-offset: 1px;
   --bless-shadow-none: none;
   --bless-shadow-plate: var(--bless-plate-offset) var(--bless-plate-offset) 0
     var(--bless-color-accent);
