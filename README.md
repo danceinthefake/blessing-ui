@@ -309,7 +309,7 @@ All styling reads `--bless-*` custom properties defined in `tokens.css`. Overrid
 | Type scale         | `--bless-text-{2xs,xs,sm,md,lg,xl,display}` (fluid `clamp()`, 8→151px)                                                                                                                                         |
 | Leading / tracking | `--bless-leading-{none,tight,normal}`, `--bless-tracking-{tight,normal,wide,wider}`                                                                                                                            |
 | Space              | `--bless-space-{1,2,3,4,6,8,12,16}` (4px base)                                                                                                                                                                 |
-| Shape              | `--bless-radius`, `--bless-radius-plate`, `--bless-radius-pill`, `--bless-skew`, `--bless-skew-counter`, `--bless-border-width`, `--bless-dash-width`                                                                                               |
+| Shape              | `--bless-radius`, `--bless-radius-plate`, `--bless-radius-pill`, `--bless-skew`, `--bless-skew-counter`, `--bless-border-width`, `--bless-dash-width`                                                          |
 | Elevation          | `--bless-shadow-{none,md}`                                                                                                                                                                                     |
 | Motion             | `--bless-duration-{fast,base,slow,slower}`, `--bless-ease-{in-out,out,linear}`, `--bless-hover-opacity`, `--bless-press-scale`                                                                                 |
 | Layout             | `--bless-sidebar-width`, `--bless-sidebar-inner`, `--bless-content-max`, `--bless-z-{bg,nav,modal}`                                                                                                            |
@@ -328,7 +328,7 @@ Durations collapse to `0s` under `prefers-reduced-motion`. Tailwind v4 users can
 
 - Components `Bless*`, CSS classes `bless-<component>__<part>` / `--<modifier>`, no scoped styles or shadow DOM so overrides are plain CSS.
 - Colour/size props take token keys, never raw values.
-- `v-model` for open/selected state; no router coupling (`BlessSidebarNav` emits `select`, call `preventDefault` and route yourself).
+- `v-model` for open/selected state. No router dependency: `app.provide(blessLinkKey, RouterLink)` once and every link-rendering component uses it for in-app paths; otherwise plain `<a>`.
 
 ## Development
 

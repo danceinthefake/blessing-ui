@@ -1,5 +1,7 @@
 <script setup lang="ts">
+import { useLink } from "../composables/useLink";
 defineOptions({ name: "BlessItem" });
+const link = useLink();
 
 withDefaults(
   defineProps<{
@@ -16,8 +18,8 @@ withDefaults(
 
 <template>
   <component
-    :is="href ? 'a' : 'div'"
-    :href
+    :is="link(href, undefined, 'div').is"
+    v-bind="link(href, undefined, 'div').attrs"
     class="bless-item"
     :class="[`bless-item--${variant}`, `bless-item--${size}`, { 'bless-item--link': href }]"
   >

@@ -1,8 +1,10 @@
 <script setup lang="ts">
+import { useLink } from "../composables/useLink";
 import { computed } from "vue";
 import BlessSkew from "./BlessSkew.vue";
 
 defineOptions({ name: "BlessPagination" });
+const link = useLink();
 
 const props = withDefaults(
   defineProps<{
@@ -45,8 +47,8 @@ function go(p: number) {
     <ul class="bless-pagination__list">
       <li>
         <BlessSkew
-          :as="href ? 'a' : 'button'"
-          :href="href && page > 1 ? href(page - 1) : undefined"
+          :as="link(href && page > 1 ? href(page - 1) : undefined, undefined, 'button').is"
+          v-bind="link(href && page > 1 ? href(page - 1) : undefined, undefined, 'button').attrs"
           :type="href ? undefined : 'button'"
           class="bless-pagination__btn bless-pagination__btn--nav"
           :aria-label="prevLabel"
@@ -59,8 +61,8 @@ function go(p: number) {
         <span v-if="it === '…'" class="bless-pagination__ellipsis" aria-hidden="true">…</span>
         <BlessSkew
           v-else
-          :as="href ? 'a' : 'button'"
-          :href="href ? href(it) : undefined"
+          :as="link(href ? href(it) : undefined, undefined, 'button').is"
+          v-bind="link(href ? href(it) : undefined, undefined, 'button').attrs"
           :type="href ? undefined : 'button'"
           class="bless-pagination__btn"
           :class="{ 'bless-pagination__btn--current': it === page }"
@@ -73,8 +75,10 @@ function go(p: number) {
       </li>
       <li>
         <BlessSkew
-          :as="href ? 'a' : 'button'"
-          :href="href && page < total ? href(page + 1) : undefined"
+          :as="link(href && page < total ? href(page + 1) : undefined, undefined, 'button').is"
+          v-bind="
+            link(href && page < total ? href(page + 1) : undefined, undefined, 'button').attrs
+          "
           :type="href ? undefined : 'button'"
           class="bless-pagination__btn bless-pagination__btn--nav"
           :aria-label="nextLabel"

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useLink } from "../composables/useLink";
 import { computed } from "vue";
 import BlessSkew from "./BlessSkew.vue";
 import BlessSpinner from "./BlessSpinner.vue";
@@ -19,14 +20,16 @@ const props = withDefaults(
   { variant: "solid", color: "text", size: "md", type: "button" },
 );
 
-const tag = computed(() => (props.href ? "a" : "button"));
+const link = useLink();
+const tag = computed(() => link(props.href, undefined, "button"));
 const inactive = computed(() => props.disabled || props.loading);
 const skewColor = computed(() => (props.variant === "solid" ? props.color : "none"));
 </script>
 
 <template>
   <BlessSkew
-    :as="tag"
+    :as="tag.is"
+    v-bind="tag.attrs"
     :color="skewColor"
     class="bless-button"
     :class="[
@@ -35,7 +38,6 @@ const skewColor = computed(() => (props.variant === "solid" ? props.color : "non
       `bless-button--${size}`,
       { 'bless-button--loading': loading },
     ]"
-    :href="href"
     :type="href ? undefined : type"
     :disabled="href ? undefined : inactive"
     :aria-disabled="inactive || undefined"

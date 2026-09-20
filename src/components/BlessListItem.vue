@@ -1,8 +1,10 @@
 <script setup lang="ts">
+import { useLink } from "../composables/useLink";
 import BlessBadge from "./BlessBadge.vue";
 import BlessDash from "./BlessDash.vue";
 
 defineOptions({ name: "BlessListItem" });
+const link = useLink();
 
 defineProps<{
   /** leading meta, e.g. date */
@@ -16,8 +18,8 @@ defineProps<{
 <template>
   <li class="bless-list-item">
     <component
-      :is="href ? 'a' : 'div'"
-      :href
+      :is="link(href, undefined, 'div').is"
+      v-bind="link(href, undefined, 'div').attrs"
       class="bless-list-item__row"
       :class="{ 'bless-list-item__row--link': href }"
     >

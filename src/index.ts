@@ -123,6 +123,8 @@ export { default as BlessSwap } from "./components/BlessSwap.vue";
 export { default as BlessInputMask } from "./components/BlessInputMask.vue";
 export { applyMask, unmask } from "./components/mask";
 export { useScrollSpy } from "./composables/useScrollSpy";
+export { useLink, blessLinkKey, isRouterHref } from "./composables/useLink";
+export type { BlessLinkTag } from "./composables/useLink";
 export { default as BlessBottomTabs } from "./components/BlessBottomTabs.vue";
 export type { BlessBottomTab } from "./components/BlessBottomTabs.vue";
 export { default as BlessSpeedDial } from "./components/BlessSpeedDial.vue";

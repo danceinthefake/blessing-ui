@@ -316,4 +316,4 @@ Tooling: Vite + `vite-plugin-dts`, Vitest + `@vue/test-utils` (one smoke test pe
 - Hanging headline (`BlessSection` variant or block) and outline pill badge — from the film site; not started, low priority.
 
 - ~~Package as single `style.css` bundle or per-component CSS?~~ Both ✅: `preserveModules` + `cssCodeSplit`, `scripts/postbuild.mjs` links each `BlessX.js` to `BlessX.css` and assembles `blessing-ui.css`; `sideEffects` lists `**/*.css` and `dist/index.js` (so the tokens import survives tree-shaking). One component ≈ 2 KB gzip CSS, measured by `e2e/consumer`.
-- Router coupling for `BlessSidebarNav` `to` — plain `href` + `@select`, let consumer wire router. Decide at Phase 2.
+- ~~Router coupling~~ ✅ `blessLinkKey` provide + `useLink()`: ten link-rendering components render the provided RouterLink/NuxtLink for in-app hrefs, `<a>` otherwise. Zero router imports.

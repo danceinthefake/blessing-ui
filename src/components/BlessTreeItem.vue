@@ -1,7 +1,9 @@
 <script setup lang="ts">
+import { useLink } from "../composables/useLink";
 import type { BlessTreeNode } from "./tree";
 
 defineOptions({ name: "BlessTreeItem" });
+const link = useLink();
 
 const props = defineProps<{
   node: BlessTreeNode;
@@ -44,10 +46,10 @@ const id = () => props.node.id ?? props.path;
       </ul>
     </details>
     <component
-      :is="node.href ? 'a' : 'button'"
+      :is="link(node.href, undefined, 'button').is"
+      v-bind="link(node.href, undefined, 'button').attrs"
       v-else
       :type="node.href ? undefined : 'button'"
-      :href="node.href"
       class="bless-tree__row bless-tree__row--leaf"
       :class="{ 'bless-tree__row--selected': selected === id() }"
       :disabled="node.href ? undefined : node.disabled"
