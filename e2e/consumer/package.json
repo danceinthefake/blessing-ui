@@ -1,0 +1,16 @@
+{
+  "name": "blessing-ui-consumer-check",
+  "private": true,
+  "description": "Installs the packed tarball like a real app: strict type-check without skipLibCheck, and a tree-shaking size check.",
+  "type": "module",
+  "dependencies": {
+    "blessing-ui": "file:blessing-ui-0.0.1.tgz"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^6.0.9",
+    "typescript": "^6.0.3",
+    "vite": "^8.3.0",
+    "vue": "^3.5.0",
+    "vue-tsc": "^3.3.11"
+  }
+}

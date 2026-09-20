@@ -15,9 +15,7 @@ const editor = useEditor({
   <div style="max-width: 640px">
     <BlessEditor :editor>
       <EditorContent :editor />
-      <template #footer="{ editor: e }"
-        >{{ e?.storage.characterCount?.characters?.() ?? e?.getText().length }} chars</template
-      >
+      <template #footer>{{ editor?.getText().length ?? 0 }} chars</template>
     </BlessEditor>
   </div>
 </template>

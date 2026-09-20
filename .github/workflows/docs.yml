@@ -19,6 +19,7 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm test
       - run: pnpm build
+      - run: node e2e/consumer/check.mjs
       - run: pnpm docs:build # served at / for the sweep; DOCS_BASE only matters for Pages
       - run: pnpm exec playwright install --with-deps chromium firefox webkit
       - name: cross-browser sweep (page errors) + axe

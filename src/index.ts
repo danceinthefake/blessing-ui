@@ -138,7 +138,7 @@ export { default as BlessWatermarkOverlay } from "./components/BlessWatermarkOve
 export { default as BlessSignaturePad } from "./components/BlessSignaturePad.vue";
 export { default as BlessQrCode } from "./components/BlessQrCode.vue";
 export { default as BlessEditor } from "./components/BlessEditor.vue";
-export type { BlessEditorTool } from "./components/BlessEditor.vue";
+export type { BlessEditorTool, BlessEditorLike } from "./components/BlessEditor.vue";
 export { default as BlessChip } from "./components/BlessChip.vue";
 export { default as BlessInputNumber } from "./components/BlessInputNumber.vue";
 export { default as BlessPasswordInput } from "./components/BlessPasswordInput.vue";
