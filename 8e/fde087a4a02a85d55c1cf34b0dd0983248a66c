@@ -1,0 +1,119 @@
+docs/components/combobox.md
+  s_9ec1000e308ddb::t_f510defed27044 22-25
+docs/demos/QrCodeBasic.vue
+  s_9ec1000e308ddb::t_5621baa19c47e2 12
+docs/components/confirm-popup.md
+  s_9ec1000e308ddb::t_f510defed27044 22-25
+docs/demos/InputStates.vue
+  s_9ec1000e308ddb::t_cd51242159ace5 7-9
+docs/demos/PasswordMeterBasic.vue
+  s_9ec1000e308ddb::t_5621baa19c47e2 9-15
+src/components/BlessSplash.vue
+  s_9ec1000e308ddb::t_cd51242159ace5 51-58
+src/components/BlessOrgChart.vue
+  s_9ec1000e308ddb::t_ea3fdfca054ec0 13
+docs/components/date-picker.md
+  s_9ec1000e308ddb::t_f510defed27044 22-25
+e2e/sweep.mjs
+  s_9ec1000e308ddb::t_f510defed27044 1-70
+src/components/BlessMenubar.vue
+  s_9ec1000e308ddb::t_ea3fdfca054ec0 30
+src/components/BlessSteps.vue
+  s_9ec1000e308ddb::t_ea3fdfca054ec0 39
+docs/components/dropdown-menu.md
+  s_9ec1000e308ddb::t_f510defed27044 22-25
+src/components/BlessDataTable.vue
+  s_9ec1000e308ddb::t_ea3fdfca054ec0 205
+src/components/BlessProgress.vue
+  s_9ec1000e308ddb::t_ea3fdfca054ec0 44
+src/components/BlessAudioPlayer.vue
+  s_9ec1000e308ddb::t_ea3fdfca054ec0 123
+src/components/BlessMessageScroller.vue
+  s_9ec1000e308ddb::t_cd51242159ace5 82-87
+docs/components/cascade-select.md
+  s_9ec1000e308ddb::t_f510defed27044 22-25
+docs/components/tooltip.md
+  s_9ec1000e308ddb::t_f510defed27044 22-25
+src/components/BlessCombobox.vue
+  s_9ec1000e308ddb::t_441ed6da9a5796 21-22,174
+docs/demos/HoverCardBasic.vue
+  s_9ec1000e308ddb::t_f510defed27044 6,23
+src/components/BlessCarousel.vue
+  s_9ec1000e308ddb::t_ea3fdfca054ec0 117
+src/components/BlessTreeSelect.vue
+  s_9ec1000e308ddb::t_f510defed27044 60-62,68,73-74,93,133-135,143
+docs/demos/InputSizes.vue
+  s_9ec1000e308ddb::t_cd51242159ace5 8-10,13-15,17
+docs/demos/InputBasic.vue
+  s_9ec1000e308ddb::t_5621baa19c47e2 11-16
+  s_9ec1000e308ddb::t_441ed6da9a5796 22
+src/components/BlessMenu.test.ts
+  s_9ec1000e308ddb::t_5621baa19c47e2 121
+package.json
+  s_9ec1000e308ddb::t_f510defed27044 51
+  s_9ec1000e308ddb::t_e049c6e2ffae23 36-37,48
+src/components/BlessCircularProgress.vue
+  s_9ec1000e308ddb::t_ea3fdfca054ec0 36
+docs/components/popover.md
+  s_9ec1000e308ddb::t_f510defed27044 32-35
+docs/demos/SliderBasic.vue
+  s_9ec1000e308ddb::t_ea3fdfca054ec0 15
+e2e/axe.mjs
+  s_9ec1000e308ddb::t_cd51242159ace5 9-51
+  s_9ec1000e308ddb::t_f9b9e7a3ed420f 1-8,52-54
+src/components/BlessDatePicker.vue
+  s_9ec1000e308ddb::t_441ed6da9a5796 105-112,132-133,181,184,186
+  s_9ec1000e308ddb::t_d6c0d5a5a38bbe 104
+  s_9ec1000e308ddb::t_e972259f4290b4 182-183
+  s_9ec1000e308ddb::t_62c14f5ad814d2 185
+  s_9ec1000e308ddb::t_aa4543aae25320 187-189
+  s_9ec1000e308ddb::t_33326a2e63565c 190-194
+docs/components/hover-card.md
+  s_9ec1000e308ddb::t_f510defed27044 22-25
+docs/demos/EditorBasic.vue
+  s_9ec1000e308ddb::t_ea3fdfca054ec0 8
+docs/demos/StepperBasic.vue
+  s_9ec1000e308ddb::t_5621baa19c47e2 14-21
+docs/demos/InputGroupBasic.vue
+  s_9ec1000e308ddb::t_ea3fdfca054ec0 9,13,18
+docs/components/tree-select.md
+  s_9ec1000e308ddb::t_f510defed27044 22-25
+docs/demos/TextareaBasic.vue
+  s_9ec1000e308ddb::t_cd51242159ace5 21
+docs/demos/ToolbarBasic.vue
+  s_9ec1000e308ddb::t_5621baa19c47e2 13-15
+docs/demos/ComboboxBasic.vue
+  s_9ec1000e308ddb::t_441ed6da9a5796 43-44
+docs/demos/MessageScrollerBasic.vue
+  s_9ec1000e308ddb::t_5621baa19c47e2 76
+docs/demos/InputNumberBasic.vue
+  s_9ec1000e308ddb::t_ea3fdfca054ec0 28
+docs/demos/AudioPlayerBasic.vue
+  s_9ec1000e308ddb::t_a46e98b7c44b4d 2,37-38
+.github/workflows/docs.yml
+  s_9ec1000e308ddb::t_50c6e719886421 22-29
+README.md
+  s_9ec1000e308ddb::t_e42241382c387e 332
+docs/.vitepress/meta.json
+  s_9ec1000e308ddb::t_3f9245f4312152 2-7791
+e2e/README.md
+  s_9ec1000e308ddb::t_bed0931e474b73 1-8
+pnpm-lock.yaml
+  s_9ec1000e308ddb::t_241e3392f4d01e 193-195,202-204,1573-1576,2253-2262,4101-4102,4806-4811
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "8efde087a4a02a85d55c1cf34b0dd0983248a66c",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "claude-opus-5"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
