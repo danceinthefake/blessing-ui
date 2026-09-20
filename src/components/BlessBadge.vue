@@ -6,14 +6,19 @@ withDefaults(
     color?: "badge" | "accent" | "danger" | "warning" | "success" | "info" | "text";
     /** shrink to 0.8 like the source NEW! pill */
     scaled?: boolean;
+    /** outline: 1px border and text in the colour, no fill — quiet category/role tags */
+    variant?: "solid" | "outline";
   }>(),
-  { color: "badge", scaled: true },
+  { color: "badge", scaled: true, variant: "solid" },
 );
 </script>
 
 <template>
-  <span class="bless-badge" :class="[`bless-badge--${color}`, { 'bless-badge--scaled': scaled }]">
-    <slot>NEW!</slot>
+  <span
+    class="bless-badge"
+    :class="[`bless-badge--${color}`, `bless-badge--${variant}`, { 'bless-badge--scaled': scaled }]"
+  >
+    <span class="bless-badge__inner"><slot>NEW!</slot></span>
   </span>
 </template>
 
@@ -55,5 +60,39 @@ withDefaults(
 .bless-badge--text {
   background: var(--bless-color-text);
   color: var(--bless-color-on-text);
+}
+/* outline: the film site's role tags — border + text in the colour, no fill */
+.bless-badge--outline {
+  --_c: var(--bless-color-text-muted);
+  padding: 3px 8px;
+  border: var(--bless-border-width) solid var(--_c);
+  background: transparent;
+  color: var(--_c);
+  letter-spacing: var(--bless-tracking-wide);
+  transform: skewX(var(--bless-skew));
+}
+.bless-badge--outline > .bless-badge__inner {
+  display: inline-block;
+  transform: skewX(var(--bless-skew-counter));
+}
+.bless-badge--outline.bless-badge--scaled {
+  transform: skewX(var(--bless-skew)) scale(var(--bless-press-scale));
+}
+.bless-badge--outline.bless-badge--accent,
+.bless-badge--outline.bless-badge--badge {
+  --_c: var(--bless-color-accent-text);
+}
+.bless-badge--outline.bless-badge--danger {
+  --_c: var(--bless-color-danger);
+}
+.bless-badge--outline.bless-badge--text {
+  --_c: var(--bless-color-text);
+}
+.bless-badge--outline.bless-badge--info {
+  --_c: var(--bless-color-info);
+}
+.bless-badge--outline.bless-badge--warning,
+.bless-badge--outline.bless-badge--success {
+  --_c: var(--bless-color-text-muted); /* the fills are too pale to be a border */
 }
 </style>

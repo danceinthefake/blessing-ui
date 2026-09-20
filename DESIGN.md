@@ -258,7 +258,7 @@ For merge: a vocabulary, not a preference; strongest identity; nothing to choose
 
 New evidence (2026-09-21): the franchise's own later site — the 2019 film — dropped the skew, used 20px pill tags and underline buttons, and set headlines in Roboto 500. Its pink is `#e5477e`, next to our `#e85078`. So "the source never rounded" holds for the TV site only; the lineage itself went soft two years on. Doesn't settle the merge — the TV site is still the one the library is built on — but petal is not foreign to the family.
 
-Two smaller open questions from the same source: a **hanging headline** (500-weight page title overlapping the bottom of a band, tiny tracked JP subtitle) as a `BlessSection` variant or block; an **outline pill badge** (muted 1px border) to match the film's role tags. Neither started.
+~~Two smaller items from the same source~~ done: `BlessSection headline="hanging"` + `#band` slot + `subtitle` (the film's page title hung off a key-visual strip), and `BlessBadge variant="outline"` (quiet role tags — cut by default, pill under rounded).
 
 **Decision deferred.** Plan: run the 1-by-1 review with `data-shape="rounded"` on, then decide. Merge is ~15 min (fold petal/pill into base tokens for that set, drop `data-shape`/`setShape`/`BlessShapeToggle`/guide page, keep the tokens so consumers can opt out, add the cut/petal rule to Conventions). Naming candidates if we keep a toggle: `cut` / `petal`.
 
@@ -313,7 +313,7 @@ Tooling: Vite + `vite-plugin-dts`, Vitest + `@vue/test-utils` (one smoke test pe
 
 - ~~`ponytail:` ceilings~~ all lifted ✅: Tree arrow-key navigation, VirtualScroller `dynamic` (measured heights), DataTable / useDataTable `server` mode (`state` event, `total`), useFloating `boundary` + `arrow` (Tooltip always, Popover opt-in).
 - ~~Straight / rounded variant~~ → rounded done as `data-shape="rounded"` (petal plates, pills, 8px boxes); the upright variant was previewed and rejected. Whether cut and petal **merge** into one default is the open decision above (Phase 20 section).
-- Hanging headline (`BlessSection` variant or block) and outline pill badge — from the film site; not started, low priority.
+- ~~Hanging headline, outline badge~~ ✅ `BlessSection headline="hanging"` / `#band`, `BlessBadge variant="outline"`.
 
 - ~~Package as single `style.css` bundle or per-component CSS?~~ Both ✅: `preserveModules` + `cssCodeSplit`, `scripts/postbuild.mjs` links each `BlessX.js` to `BlessX.css` and assembles `blessing-ui.css`; `sideEffects` lists `**/*.css` and `dist/index.js` (so the tokens import survives tree-shaking). One component ≈ 2 KB gzip CSS, measured by `e2e/consumer`.
 - ~~Router coupling~~ ✅ `blessLinkKey` provide + `useLink()`: ten link-rendering components render the provided RouterLink/NuxtLink for in-app hrefs, `<a>` otherwise. Zero router imports.

@@ -56,6 +56,7 @@
   --bless-text-lg: clamp(0.875rem, 0.7rem + 0.9vw, 1.25rem); /* 14–20px */
   --bless-text-xl: clamp(1.25rem, 0.9rem + 1.8vw, 1.75rem); /* 20–28px */
   --bless-text-display: clamp(3rem, 1rem + 10vw, 9.4375rem); /* 48–151px watermark */
+  --bless-text-headline: clamp(2.25rem, 1.2rem + 4vw, 4.5625rem); /* 36–73px hanging headline */
 
   --bless-leading-none: 1;
   --bless-leading-tight: 1.25;
