@@ -7,6 +7,7 @@ import "blessing-ui/style.css";
 import "./custom.css";
 import Demo from "./Demo.vue";
 import PropsTable from "./PropsTable.vue";
+import BlockDemo from "./BlockDemo.vue";
 
 export default {
   extends: DefaultTheme,
@@ -26,5 +27,6 @@ export default {
   enhanceApp({ app }) {
     app.component("Demo", Demo);
     app.component("PropsTable", PropsTable);
+    app.component("BlockDemo", BlockDemo);
   },
 } satisfies Theme;
