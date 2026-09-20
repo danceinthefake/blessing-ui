@@ -9,6 +9,22 @@ export const groups: { title: string; items: Entry[] }[] = [
   {
     title: "Primitives",
     items: [
+      {
+        name: "BlessCircularProgress",
+        slug: "circular-progress",
+        text: "Ring progress, determinate or spinning",
+      },
+      {
+        name: "BlessLoadingBar",
+        slug: "loading-bar",
+        text: "Top-of-page progress via useLoadingBar()",
+      },
+      {
+        name: "BlessSlideTransition",
+        slug: "slide-transition",
+        text: "Height transition for v-if / v-show",
+      },
+      { name: "BlessClientOnly", slug: "client-only", text: "Render only in the browser" },
       { name: "BlessChip", slug: "chip", text: "Removable pill" },
       { name: "BlessMeterGroup", slug: "meter-group", text: "Multi-segment meter with legend" },
       { name: "BlessBlockUI", slug: "block-ui", text: "Overlay that blocks its content" },
@@ -48,6 +64,13 @@ export const groups: { title: string; items: Entry[] }[] = [
   {
     title: "Forms",
     items: [
+      { name: "BlessRange", slug: "range", text: "Two-thumb range on native inputs" },
+      { name: "BlessTimePicker", slug: "time-picker", text: "Native time input with quick picks" },
+      {
+        name: "BlessUploader",
+        slug: "uploader",
+        text: "Queue, progress, cancel — XHR or your own",
+      },
       {
         name: "BlessCascadeSelect",
         slug: "cascade-select",
@@ -243,6 +266,9 @@ export const groups: { title: string; items: Entry[] }[] = [
   {
     title: "Media",
     items: [
+      { name: "BlessImg", slug: "img", text: "Lazy image with ratio, placeholder, error" },
+      { name: "BlessVideo", slug: "video", text: "Responsive embed or native video" },
+      { name: "BlessParallax", slug: "parallax", text: "Background that scrolls slower" },
       { name: "BlessCarousel", slug: "carousel", text: "Scroll-snap slider" },
       { name: "BlessAudioPlayer", slug: "audio-player", text: "Track list player" },
     ],

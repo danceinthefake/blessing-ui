@@ -220,10 +220,10 @@ Decision: **Unovis** (`@unovis/vue`) as the documented, consumer-installed pairi
 - [x] `BlessLayout` — header reveal, footer, left / right drawers (beside above `breakpoint`, over below, edge-swipe on touch), safe-area tokens
 - [x] `--bless-safe-*` tokens
 
-### Phase 19 — Quasar web gaps (not started)
+### Phase 19 — Quasar web gaps
 
-- [ ] `BlessCircularProgress`, `BlessRange` (two thumbs), `BlessTimePicker`, `BlessImg` (lazy + ratio + placeholder), `BlessVideo`, `BlessLoadingBar`, `BlessUploader` (queue / progress / abort), `BlessParallax`, `BlessSlideTransition`, `BlessClientOnly`
-- [ ] `useResizeObserver`, `useFullscreen`, `useVisibility`, `useScroll`
+- [x] `BlessCircularProgress` (SVG ring), `BlessRange` (two native range inputs), `BlessTimePicker` (`<input type=time>` + datalist), `BlessImg` (lazy, ratio, LQIP placeholder, error), `BlessVideo`, `BlessLoadingBar` + `useLoadingBar` (trickle, nested start/stop, `track()`), `BlessUploader` (XHR with progress + abort, or `upload` event), `BlessParallax`, `BlessSlideTransition` (JS height hooks), `BlessClientOnly`
+- [x] `useResizeObserver`, `useFullscreen`, `useVisibility`, `useScroll`
 
 Skipped from Quasar: Ripple / Morph / Mutation (directive utilities, no bounces), Meta (use `@unhead`), Cookies / WebStorage / AddressbarColor (VueUse territory), spinner variants (one spinner is the brand).
 

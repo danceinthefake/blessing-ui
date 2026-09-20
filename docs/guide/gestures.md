@@ -4,6 +4,8 @@ title: Gestures
 
 # Gestures
 
+See also the browser composables: `useResizeObserver(el)` → `{ width, height }`, `useFullscreen(el?)` → `{ active, enter, exit, toggle }`, `useVisibility()` → `{ visible }`, `useScroll(el?)` → `{ x, y, direction }`, `useLoadingBar()` → `{ start, stop, set, track }`.
+
 Pointer-event composables — mouse, touch and pen alike. They attach to an element ref and do nothing on the server.
 
 ```ts

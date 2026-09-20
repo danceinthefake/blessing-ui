@@ -2,7 +2,7 @@ import DefaultTheme from "vitepress/theme";
 import { useData } from "vitepress";
 import { watchEffect, h } from "vue";
 import type { Theme } from "vitepress";
-import { BlessDialogHost, BlessPaletteToggle, BlessToaster } from "blessing-ui";
+import { BlessDialogHost, BlessLoadingBar, BlessPaletteToggle, BlessToaster } from "blessing-ui";
 import "blessing-ui/style.css";
 import "./custom.css";
 import Demo from "./Demo.vue";
@@ -18,7 +18,7 @@ export default {
       document.documentElement.dataset.theme = isDark.value ? "dark" : "light";
     });
     return h(DefaultTheme.Layout, null, {
-      "layout-bottom": () => [h(BlessToaster), h(BlessDialogHost)],
+      "layout-bottom": () => [h(BlessToaster), h(BlessDialogHost), h(BlessLoadingBar)],
       "nav-bar-content-after": () =>
         h(BlessPaletteToggle, { class: "nav-palette", showDefault: true }),
     });
