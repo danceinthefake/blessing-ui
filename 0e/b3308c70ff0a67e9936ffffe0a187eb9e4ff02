@@ -1,0 +1,19 @@
+.github/workflows/ci.yml
+  s_9ec1000e308ddb::t_d5a68a484c487a 1,9,12,25-53,57-60
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "0eb3308c70ff0a67e9936ffffe0a187eb9e4ff02",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "unknown"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
