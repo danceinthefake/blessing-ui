@@ -1,0 +1,21 @@
+.oxfmtrc.json
+  s_9ec1000e308ddb::t_a105e34f384607 1-3
+docs/.vitepress/meta.json
+  s_9ec1000e308ddb::t_a105e34f384607 2-7827
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "720705e8a43a8847ee972a61b902b94d2ab5c43b",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "claude-opus-5"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
