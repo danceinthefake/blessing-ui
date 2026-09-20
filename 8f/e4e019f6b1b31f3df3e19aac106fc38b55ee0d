@@ -1,0 +1,23 @@
+docs/.vitepress/theme/HomeSections.vue
+  s_9ec1000e308ddb::t_7cf4b3f937d276 1-204
+docs/.vitepress/theme/index.ts
+  s_9ec1000e308ddb::t_a868f72815ce8f 18,32
+docs/scripts/shots.mjs
+  s_9ec1000e308ddb::t_da11a6b3ce44d2 32-39,47
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "8fe4e019f6b1b31f3df3e19aac106fc38b55ee0d",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "unknown"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
