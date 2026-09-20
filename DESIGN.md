@@ -231,6 +231,13 @@ Skipped from PrimeVue: Terminal, Ripple / StyleClass / Fluid / KeyFilter (direct
 
 Deferred: RTL / `Direction` — audience is JP/EN; ~1 day of logical-property CSS if ever needed.
 
+### Phase 20 — Blocks (copy-in sections) ✅
+
+Not components: finished sections shipped as source you copy, `docs/blocks/<slug>/` as a vertical slice (`index.vue`, optional `parts/`, `use<Name>.ts`, `domain.ts`, `api.ts` port + offline mock, docs-only `meta.ts`). `pnpm docs:blocks` scaffolds pages and the sidebar registry; `BlockDemo` previews at desktop/phone width with per-file code tabs. Contract in `docs/blocks/README.md`.
+
+- [x] Showcase set (official-site front page): News, On Air, Character (hash-routed modals), Staff & Cast, Release, Story
+- [x] App set: Sign in, Dashboard, Settings, Data page, Page states, Pricing, Inbox, Chat, Onboarding
+
 ### Deliberately skipped
 
 - **Chart** — no bundled lib. Phase 11 ✅: `--bless-color-chart-{1..5}` (≥3:1 both themes) + `BlessChart` frame that maps them onto Unovis `--vis-*` vars; Unovis is the documented pairing, installed by the consumer.

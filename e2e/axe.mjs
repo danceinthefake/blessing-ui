@@ -6,9 +6,14 @@ import { createRequire } from "node:module";
 
 const axeSrc = readFileSync(createRequire(import.meta.url).resolve("axe-core/axe.min.js"), "utf8");
 const base = process.argv[2] ?? "http://localhost:4173";
-const pages = readdirSync("docs/components")
-  .filter((f) => f.endsWith(".md"))
-  .map((f) => `/components/${f.replace(".md", "")}`);
+const pages = [
+  ...readdirSync("docs/components")
+    .filter((f) => f.endsWith(".md"))
+    .map((f) => `/components/${f.replace(".md", "")}`),
+  ...readdirSync("docs/blocks")
+    .filter((f) => f.endsWith(".md") && f !== "README.md")
+    .map((f) => `/blocks/${f.replace(".md", "")}`),
+];
 const browser = await chromium.launch();
 const page = await browser.newPage({ viewport: { width: 1200, height: 900 } });
 let total = 0;

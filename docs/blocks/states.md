@@ -1,0 +1,25 @@
+---
+title: Page states
+---
+
+<script setup>
+import Block from "./states/index.vue";
+import meta from "./states/meta";
+const files = Object.fromEntries(
+  Object.entries(import.meta.glob("./states/**/*.{vue,ts}", { query: "?raw", import: "default", eager: true }))
+    .filter(([p]) => !p.endsWith("meta.ts"))
+    .map(([p, src]) => [p.replace("./states/", ""), src]),
+);
+</script>
+
+# Page states
+
+<p class="bless-lead">The three non-happy paths every list needs — loading skeleton, empty with a call to action, and error with retry — behind one `state` switch.</p>
+
+<BlockDemo :files :components="meta.components" :height="meta.height">
+  <Block />
+</BlockDemo>
+
+## Into your app
+
+Copy the folder to `src/features/states/` (Nuxt: `app/features/states/`) and render `index.vue` from a page. Replace `api.ts` — if the block has one — with your real adapter; the view and the use-case don't change.

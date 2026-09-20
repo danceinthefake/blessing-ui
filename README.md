@@ -287,6 +287,10 @@ Gestures: `usePan(el, cb)` · `useSwipe(el, cb, { threshold, axis })` · `useLon
 
 `BlessNavItem`, `BlessNavMenuItem`, `BlessTab`, `BlessGalleryItem`, `BlessColumn<T>`, `BlessDataColumn<T>`, `BlessOption<T>`, `BlessTrack`, `BlessMenuItem`, `BlessCommandItem`, `BlessCrumb`, `BlessToastOptions`, `BlessTheme`, `BlessStep`, `BlessTimelineItem`, `BlessTreeNode`, `BlessPasswordRule`, `BlessBottomTab`, `BlessSpeedDialAction`, `BlessTourStep`, `BlessEditorTool`, `BlessMeterSegment`, `BlessCascadeOption`, `BlessDialogOptions`, `BlessAction`, `PanEvent`, `SwipeDirection`, `BlessUpload`, `BlessReaction`, `BlessQuestion`, `BlessQuestionChoice`, `BlessAnswers`, `Placement`, `DataTableState`.
 
+## Blocks
+
+Finished sections — a news list, a sign-in form, a dashboard shell — shipped as source you copy into your project, not a package you import. Each is a folder (`index.vue`, optional `parts/`, `use<Name>.ts`, `domain.ts`, `api.ts` with an offline mock) that imports only from `blessing-ui` and itself. Browse them under **Blocks** in the docs; the contract is in `docs/blocks/README.md`.
+
 ## Tokens
 
 All styling reads `--bless-*` custom properties defined in `tokens.css`. Override on `:root` (or any subtree) to theme:
