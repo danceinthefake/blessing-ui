@@ -1,0 +1,75 @@
+src/components/BlessExtras4.test.ts
+  s_9ec1000e308ddb::t_8cf68e3223a517 179,185-186
+  s_9ec1000e308ddb::t_42d8bb52f62201 8,160-178,180-184,187-196
+  s_9ec1000e308ddb::t_fbfdb85a213b9a 197
+docs/demos/PopoverArrow.vue
+  s_9ec1000e308ddb::t_6825b2c5661472 1-20
+DESIGN.md
+  s_9ec1000e308ddb::t_25d4190eb9248c 275
+docs/components/data-table.md
+  s_9ec1000e308ddb::t_25d4190eb9248c 7,23-32
+  s_9ec1000e308ddb::t_69bf28932b4e8d 33
+docs/components/virtual-scroller.md
+  s_9ec1000e308ddb::t_25d4190eb9248c 7,23-27
+  s_9ec1000e308ddb::t_8174fa1cd16789 28-31
+src/composables/useDataTable.ts
+  s_9ec1000e308ddb::t_ba3c25883dcf48 71-77
+  s_9ec1000e308ddb::t_a9546d3f98591d 13-18,21-28,42,55,70,78,80
+src/components/BlessComposite.test.ts
+  s_9ec1000e308ddb::t_42d8bb52f62201 7,134-198,200-205
+  s_9ec1000e308ddb::t_a3b79962fb5bd4 199
+src/components/BlessTree.vue
+  s_9ec1000e308ddb::t_ba3c25883dcf48 9-12,22-29,36-41
+  s_9ec1000e308ddb::t_a9546d3f98591d 2,7-8,13-21,30-35,42-44,56
+docs/demos/DataTableServer.vue
+  s_9ec1000e308ddb::t_6825b2c5661472 1-58
+src/components/BlessVirtualScroller.vue
+  s_9ec1000e308ddb::t_ba3c25883dcf48 2,9,11-12,19,24-39,41-53,55,58-61,67-69,71-95,110-111,115-116,118
+docs/demos/VirtualScrollerDynamic.vue
+  s_9ec1000e308ddb::t_6825b2c5661472 1-31
+src/components/BlessPopover.vue
+  s_9ec1000e308ddb::t_62fb4f0c80583f 19,28,30-31,73-74
+  s_9ec1000e308ddb::t_aef055dbb1b49a 18,93,115,159-166
+src/composables/useFloating.ts
+  s_9ec1000e308ddb::t_ba3c25883dcf48 54-57,94-95
+  s_9ec1000e308ddb::t_a9546d3f98591d 15-18,36-38,53,63,65,67-68,79,84,88-93,111,123
+  s_9ec1000e308ddb::t_7e03852b091312 98-100,106-110,121
+src/components/BlessDataTable.vue
+  s_9ec1000e308ddb::t_a9546d3f98591d 28-32,65-66,78,81
+  s_9ec1000e308ddb::t_059a2821edb916 2,69-77,79-80,82
+  s_9ec1000e308ddb::t_ba3c25883dcf48 41-53
+docs/components/tree.md
+  s_9ec1000e308ddb::t_25d4190eb9248c 22-23
+src/components/BlessTooltip.vue
+  s_9ec1000e308ddb::t_62fb4f0c80583f 16,18-19,64,67,79,93,100-109,111-113,115-117,119-121,123
+  s_9ec1000e308ddb::t_637b768694ff68 110,114,118,122
+README.md
+  s_9ec1000e308ddb::t_25d4190eb9248c 284
+docs/components/popover.md
+  s_9ec1000e308ddb::t_25d4190eb9248c 8,37-44
+  s_9ec1000e308ddb::t_fa6f8309e80b16 45
+docs/.vitepress/config.ts
+  s_9ec1000e308ddb::t_458cafee60e3e1 78
+e2e/interact.mjs
+  s_9ec1000e308ddb::t_302cbb6324b45f 31-32,34,36,38,40-41
+e2e/sweep.mjs
+  s_9ec1000e308ddb::t_a054d9589b2da2 30-36
+docs/.vitepress/meta.json
+  s_9ec1000e308ddb::t_7e86855e9012ab 1964-1981,1985-1989,4860-4865,7707-7714
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "1db9a7fb8611590974e1974046e7358983203031",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "claude-opus-5"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
