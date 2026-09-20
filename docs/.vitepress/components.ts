@@ -50,7 +50,6 @@ export const groups: { title: string; items: Entry[] }[] = [
       { name: "BlessText", slug: "text", text: "Typography helper" },
       { name: "BlessKbd", slug: "kbd", text: "Key combo" },
       { name: "BlessThemeToggle", slug: "theme-toggle", text: "Light/dark switch or 3-way group" },
-      { name: "BlessShapeToggle", slug: "shape-toggle", text: "Sharp / rounded corners switch" },
       { name: "BlessSpinner", slug: "spinner", text: "Loading indicator (`role=status`)" },
       { name: "BlessEmpty", slug: "empty", text: "Empty state" },
       { name: "BlessButtonGroup", slug: "button-group", text: "Joined buttons" },

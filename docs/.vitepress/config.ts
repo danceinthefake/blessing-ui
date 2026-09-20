@@ -63,7 +63,6 @@ export default defineConfig({
             { text: "Tokens", link: "/guide/tokens" },
             { text: "Dark mode", link: "/guide/dark-mode" },
             { text: "Palettes", link: "/guide/palettes" },
-            { text: "Shape", link: "/guide/shape" },
             { text: "Fonts", link: "/guide/fonts" },
             { text: "Conventions", link: "/guide/conventions" },
             { text: "useScrollSpy", link: "/guide/scroll-spy" },

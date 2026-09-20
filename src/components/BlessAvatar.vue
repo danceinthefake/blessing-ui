@@ -62,7 +62,7 @@ const showImg = computed(() => !!props.src && !failed.value);
   width: var(--_s);
   height: var(--_s);
   overflow: hidden;
-  border-radius: var(--bless-radius-pill);
+  border-radius: var(--bless-radius-petal);
   background: var(--bless-color-surface);
   color: var(--bless-color-text);
   font-family: var(--bless-font-sans);
@@ -92,7 +92,7 @@ const showImg = computed(() => !!props.src && !failed.value);
   color: var(--bless-color-on-text);
 }
 .bless-avatar--square {
-  border-radius: var(--bless-radius-plate);
+  border-radius: var(--bless-radius-petal);
   transform: skewX(var(--bless-skew));
 }
 .bless-avatar--square > * {

@@ -18,10 +18,10 @@ const props = defineProps<{
 const iframe = ref<HTMLIFrameElement>();
 const frameH = ref(0);
 const { isDark } = useData();
-const { palette, shape } = useTheme();
+const { palette } = useTheme();
 function sync() {
   iframe.value?.contentWindow?.postMessage(
-    { type: "bless-theme", dark: isDark.value, palette: palette.value, shape: shape.value },
+    { type: "bless-theme", dark: isDark.value, palette: palette.value },
     "*",
   );
 }
@@ -30,7 +30,7 @@ function onMsg(e: MessageEvent) {
   if (e.data.type === "bless-ready") sync();
   if (e.data.type === "bless-height") frameH.value = e.data.h;
 }
-watch([isDark, palette, shape], sync);
+watch([isDark, palette], sync);
 onMounted(() => addEventListener("message", onMsg));
 onBeforeUnmount(() => removeEventListener("message", onMsg));
 const names = computed(() =>

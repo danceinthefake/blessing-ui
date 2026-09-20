@@ -1,7 +1,5 @@
 import { computed, ref, watchEffect } from "vue";
 
-/** sharp (default) or rounded — both keep the skew */
-export type BlessShape = "sharp" | "rounded";
 export type BlessTheme = "light" | "dark" | "system";
 /** accent family; undefined = Megumi, the default */
 export type BlessPalette = "megumi" | "utaha" | "izumi" | "michiru" | "eriri" | "tomoya";
@@ -16,10 +14,8 @@ export const blessPalettes: { name: BlessPalette; color: string }[] = [
 
 const KEY = "bless-theme";
 const PKEY = "bless-palette";
-const SKEY = "bless-shape";
 const theme = ref<BlessTheme>("system");
 const palette = ref<BlessPalette>("megumi");
-const shape = ref<BlessShape>("sharp");
 const systemDark = ref(false);
 let booted = false;
 let loaded = false; // persisted values read; until then the effects below must not write defaults over them
@@ -35,7 +31,6 @@ function boot() {
       if (saved === "light" || saved === "dark" || saved === "system") theme.value = saved;
       const p = localStorage.getItem(PKEY);
       if (p && blessPalettes.some((x) => x.name === p)) palette.value = p as BlessPalette;
-      if (localStorage.getItem(SKEY) === "rounded") shape.value = "rounded";
     } catch {}
     loaded = true;
   });
@@ -49,16 +44,6 @@ function boot() {
     if (!loaded) return;
     try {
       localStorage.setItem(KEY, theme.value);
-    } catch {}
-  });
-  watchEffect(() => {
-    const root = document.documentElement;
-    if (shape.value === "rounded") root.setAttribute("data-shape", "rounded");
-    else root.removeAttribute("data-shape");
-    if (!loaded) return;
-    try {
-      if (shape.value === "rounded") localStorage.setItem(SKEY, "rounded");
-      else localStorage.removeItem(SKEY);
     } catch {}
   });
   watchEffect(() => {
@@ -83,6 +68,5 @@ export function useTheme() {
   const set = (t: BlessTheme) => (theme.value = t);
   const toggle = () => set(isDark.value ? "light" : "dark");
   const setPalette = (p: BlessPalette | undefined) => (palette.value = p ?? "megumi");
-  const setShape = (s: BlessShape) => (shape.value = s);
-  return { theme, isDark, set, toggle, palette, setPalette, shape, setShape };
+  return { theme, isDark, set, toggle, palette, setPalette };
 }

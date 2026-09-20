@@ -41,7 +41,7 @@ The source is a marketing site; a library has to do more. Everything below is ou
 
 ## What was bent
 
-One thing, on purpose, and off by default. The site never rounded a corner. `data-shape="rounded"` does — but not the way other libraries do: pills become pills, boxes take a small radius, and a skewed plate rounds only its two sharp tips, so it stays a cut plate and starts to look like one of the circle's petals. Whether that becomes the default one day is an [open question](./shape); the mark, either way, stays cut.
+One thing, on purpose. The site never rounded a corner, and neither does anything the site had: buttons, tags, fields, cards, menus stay cut. But a library has things the site didn't — avatars, switches, chips, chat bubbles, thumbs — and those are round everywhere else for a reason. They are **petal** here: the same leaning plate with only its two sharp tips rounded, soft body and one point, the shape of the circle's flower. Two corners, one [rule](./conventions#shape-cut-or-petal). The franchise's own film site went soft two years after the TV site; we went halfway, and kept the lean. The mark stays cut.
 
 ## What was not taken
 

@@ -97,7 +97,7 @@ function setHi(v: number) {
   font-variant-numeric: tabular-nums;
 }
 .bless-range__track {
-  border-radius: var(--bless-radius-pill);
+  border-radius: var(--bless-radius);
   position: relative;
   height: 24px;
 }
@@ -143,7 +143,7 @@ function setHi(v: number) {
 .bless-range__input::-moz-range-thumb {
   width: 16px;
   height: 16px;
-  border-radius: var(--bless-radius-plate);
+  border-radius: var(--bless-radius-petal);
   background: var(--bless-color-accent);
   border: 2px solid var(--bless-color-bg);
   transform: skewX(var(--bless-skew));

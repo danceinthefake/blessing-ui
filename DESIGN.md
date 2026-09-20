@@ -5,7 +5,7 @@ Generic Vue 3 UI library. Visual language borrowed from saenai.tv (see `../saena
 ## 1. Principles
 
 1. **Tokens first.** Every component reads `--bless-*` only. No hard-coded colours, sizes, or durations in components. Theming = override custom props.
-2. **Skew, not radius.** Shape language is `skewX(-10deg)` — buttons, tags, fields, pickers alike; content counter-skews so text stays upright. Radius only under `data-shape="rounded"`.
+2. **Skew, not radius.** Shape language is `skewX(-10deg)` — buttons, tags, fields, pickers alike; content counter-skews so text stays upright. Two corners: **cut** (site things, boxes, labels) and **petal** (acute corners only — avatars, switches, chips, bubbles, fabs, thumbs). Rule in docs/guide/conventions.
 3. **Fluid, one breakpoint.** `clamp()` for type; single `800px` breakpoint for layout changes.
 4. **Quiet motion.** Hover = opacity `.6` over `.3s`. No bounces. Respect `prefers-reduced-motion`.
 5. **Light DOM, scoped CSS.** Vue SFC with `<style scoped>` + BEM-ish class `bless-<component>__<part>`. No shadow DOM, no CSS-in-JS.
@@ -238,29 +238,9 @@ Not components: finished sections shipped as source you copy, `docs/blocks/<slug
 - [x] Showcase set (official-site front page): News, On Air, Character (hash-routed modals), Staff & Cast, Release, Story, Full site (composition in `BlessStage`, opens full-page)
 - [x] App set: Sign in, Dashboard, Settings, Data page, Page states, Pricing, Inbox, Chat, Onboarding
 
-### Shape ✅ (2026-09-20)
+### Shape ✅ merged (2026-09-21)
 
-`data-shape="rounded"` keeps the skew: boxes read `--bless-radius` (8px), skewed plates read `--bless-radius-plate` (acute corners only — a cut plate, never a lozenge), pills read `--bless-radius-pill`; `useTheme().setShape`, `BlessShapeToggle`. The upright (un-skewed) variant was previewed and rejected — without the lean it is any other library.
-
-### Open decision — merge the shapes? (2026-09-20)
-
-Two shapes exist: **cut** (the sharp plate, the site's) and **petal** (the plate with only its two acute corners rounded — rhymes with the circle's flower: soft body, sharp point). Today they are a toggle: default is all-cut; `data-shape="rounded"` turns pills into pills, plates into petals, boxes 8px.
-
-The alternative on the table is to **merge**: no toggle, one default where the shape follows a rule —
-
-> If saenai.tv had it, it's cut (buttons, tabs, tags, badges, fields, nav, tables, cards, rows, watermark).
-> If it's ours and round by nature, it's petal (avatars, switches, chips, chat bubbles, fabs, slider thumbs).
-> Everything else is cut.
-
-Previews rendered both (`tmp/blocks/m-all.png`, `mb-all.png`): merge changes only that round-by-nature set; blocks barely move. Petal avatars are the bet — either the most recognisable thing in the system or "why are the faces slanted".
-
-For merge: a vocabulary, not a preference; strongest identity; nothing to choose or maintain. Against: the out-of-the-box look gains a permanent departure from the site; no "off"; untested in daily use.
-
-New evidence (2026-09-21): the franchise's own later site — the 2019 film — dropped the skew, used 20px pill tags and underline buttons, and set headlines in Roboto 500. Its pink is `#e5477e`, next to our `#e85078`. So "the source never rounded" holds for the TV site only; the lineage itself went soft two years on. Doesn't settle the merge — the TV site is still the one the library is built on — but petal is not foreign to the family.
-
-~~Two smaller items from the same source~~ done: `BlessSection headline="hanging"` + `#band` slot + `subtitle` (the film's page title hung off a key-visual strip), and `BlessBadge variant="outline"` (quiet role tags — cut by default, pill under rounded).
-
-**Decision deferred.** Plan: run the 1-by-1 review with `data-shape="rounded"` on, then decide. Merge is ~15 min (fold petal/pill into base tokens for that set, drop `data-shape`/`setShape`/`BlessShapeToggle`/guide page, keep the tokens so consumers can opt out, add the cut/petal rule to Conventions). Naming candidates if we keep a toggle: `cut` / `petal`.
+Cut and petal are one default, no toggle. Rule (docs/guide/conventions): if the source site had it, or it's a box or a label, it's cut; if it's ours and round by nature — avatars, switches, chips, chat bubbles, fabs, slider thumbs, count dots — it's petal (`--bless-radius-petal`, acute corners only, flips under RTL). `data-shape`, `setShape`, `BlessShapeToggle` and the guide page removed. `--bless-radius` / `--bless-radius-plate` remain at 0 as consumer override points. Evidence that led here: the film site's own move to pills; the circle's flower being soft-with-a-point; petal avatars reading as ours where circles read as anyone's.
 
 ### Contrast policy (axe, 2026-09-20 triage)
 
@@ -312,7 +292,7 @@ Tooling: Vite + `vite-plugin-dts`, Vitest + `@vue/test-utils` (one smoke test pe
 ## 7. Open questions
 
 - ~~`ponytail:` ceilings~~ all lifted ✅: Tree arrow-key navigation, VirtualScroller `dynamic` (measured heights), DataTable / useDataTable `server` mode (`state` event, `total`), useFloating `boundary` + `arrow` (Tooltip always, Popover opt-in).
-- ~~Straight / rounded variant~~ → rounded done as `data-shape="rounded"` (petal plates, pills, 8px boxes); the upright variant was previewed and rejected. Whether cut and petal **merge** into one default is the open decision above (Phase 20 section).
+- ~~Straight / rounded variant~~ → cut + petal merged into one default (2026-09-21); upright variant rejected.
 - ~~Hanging headline, outline badge~~ ✅ `BlessSection headline="hanging"` / `#band`, `BlessBadge variant="outline"`.
 
 - ~~Package as single `style.css` bundle or per-component CSS?~~ Both ✅: `preserveModules` + `cssCodeSplit`, `scripts/postbuild.mjs` links each `BlessX.js` to `BlessX.css` and assembles `blessing-ui.css`; `sideEffects` lists `**/*.css` and `dist/index.js` (so the tokens import survives tree-shaking). One component ≈ 2 KB gzip CSS, measured by `e2e/consumer`.

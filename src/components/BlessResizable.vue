@@ -103,7 +103,7 @@ function onKey(e: KeyboardEvent) {
   flex: 1 1 0;
 }
 .bless-resizable__handle {
-  border-radius: var(--bless-radius-pill);
+  border-radius: var(--bless-radius);
   position: relative;
   flex: none;
   display: grid;

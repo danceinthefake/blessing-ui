@@ -77,7 +77,7 @@ const ready = computed(() => pull.value >= props.threshold);
   touch-action: pan-x pan-down; /* let vertical pull through when at top; browser handles the rest */
 }
 .bless-ptr__indicator {
-  border-radius: var(--bless-radius-pill);
+  border-radius: var(--bless-radius-petal);
   position: absolute;
   top: 0;
   inset-inline-start: 0;

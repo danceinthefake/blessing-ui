@@ -1,10 +1,9 @@
 import { vi } from "vitest";
 import { nextTick } from "vue";
 
-test("useTheme: persisted palette/shape survive boot and land after hydration (microtask)", async () => {
+test("useTheme: persisted palette survives boot and lands after hydration (microtask)", async () => {
   vi.resetModules();
   localStorage.setItem("bless-palette", "utaha");
-  localStorage.setItem("bless-shape", "rounded");
   window.matchMedia = () =>
     ({
       matches: false,
@@ -15,15 +14,13 @@ test("useTheme: persisted palette/shape survive boot and land after hydration (m
   const t = useTheme();
   // synchronous: still the SSR-safe defaults, and the stored values were not clobbered
   expect(t.palette.value).toBe("megumi");
-  expect(t.shape.value).toBe("sharp");
   expect(localStorage.getItem("bless-palette")).toBe("utaha");
   await Promise.resolve();
   await nextTick();
   expect(t.palette.value).toBe("utaha");
-  expect(t.shape.value).toBe("rounded");
-  expect(document.documentElement.dataset.shape).toBe("rounded");
-  t.setShape("sharp");
+  expect(document.documentElement.dataset.palette).toBe("utaha");
+  t.setPalette("megumi");
   await nextTick();
-  expect(localStorage.getItem("bless-shape")).toBeNull();
+  expect(localStorage.getItem("bless-palette")).toBeNull();
   localStorage.clear();
 });

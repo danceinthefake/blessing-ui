@@ -47,7 +47,7 @@ onBeforeUnmount(() => (el() ?? window).removeEventListener("scroll", check));
 
 <style>
 .bless-scroll-top {
-  border-radius: var(--bless-radius-pill);
+  border-radius: var(--bless-radius-petal);
   position: fixed;
   bottom: var(--bless-space-6);
   z-index: var(--bless-z-nav);
