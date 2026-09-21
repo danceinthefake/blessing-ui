@@ -7,8 +7,10 @@ withDefaults(
   defineProps<{
     title?: string;
     description?: string;
-    /** renders <a> when set */
+    /** renders <a> when set — then keep #actions non-interactive */
     href?: string;
+    /** the whole row is a <button>: a selectable row (an inbox, a picker) */
+    button?: boolean;
     variant?: "plain" | "outline" | "surface";
     size?: "sm" | "md";
   }>(),
@@ -18,10 +20,15 @@ withDefaults(
 
 <template>
   <component
-    :is="link(href, undefined, 'div').is"
-    v-bind="link(href, undefined, 'div').attrs"
+    :is="link(href, undefined, button ? 'button' : 'div').is"
+    v-bind="link(href, undefined, button ? 'button' : 'div').attrs"
+    :type="button && !href ? 'button' : undefined"
     class="bless-item"
-    :class="[`bless-item--${variant}`, `bless-item--${size}`, { 'bless-item--link': href }]"
+    :class="[
+      `bless-item--${variant}`,
+      `bless-item--${size}`,
+      { 'bless-item--link': href || button },
+    ]"
   >
     <span v-if="$slots.media" class="bless-item__media"><slot name="media" /></span>
     <span class="bless-item__body">
@@ -47,6 +54,15 @@ withDefaults(
   color: var(--bless-color-text);
   text-decoration: none;
   transition: opacity var(--bless-duration-slow) var(--bless-ease-in-out);
+}
+button.bless-item {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: start;
+  cursor: pointer;
 }
 .bless-item--sm {
   gap: var(--bless-space-2);

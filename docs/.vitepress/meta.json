@@ -3513,7 +3513,13 @@
     "name": "href",
     "type": "string | undefined",
     "required": false,
-    "description": "renders <a> when set"
+    "description": "renders <a> when set — then keep #actions non-interactive"
+   },
+   {
+    "name": "button",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": "the whole row is a <button>: a selectable row (an inbox, a picker)"
    },
    {
     "name": "variant",
