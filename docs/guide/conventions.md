@@ -1,12 +1,48 @@
 # Conventions
 
-- Prefix `Bless`, file `src/components/BlessButton.vue`, class prefix `bless-` with BEM-ish parts: `bless-button__inner`, `bless-button--accent`.
-- Colour and size props take **token keys** (`color="accent"`, `size="sm"`), never raw values.
-- `v-model` for open / selected state; named models for secondary state (`v-model:open`, `v-model:step`).
-- Slots over render props. `#prefix` / `#suffix` for icons.
-- No global plugin. Named exports only; tree-shakes per component.
-- Light DOM, plain scoped-by-class CSS. No shadow DOM, no CSS-in-JS, no Tailwind dependency.
-- Hover is `opacity .6` over `.3s`; appearances fade; no bounces. Nothing blurs — a floating thing sits on a 1px accent plate.
+What holds across all 145 components. If a component breaks one of these, it's a bug.
+
+## API
+
+- **Names.** `Bless` prefix, one component per file: `BlessButton` in `src/components/BlessButton.vue`. Exports are named; there is no plugin to install and nothing global.
+- **Props take token keys, never raw values.** `color="accent"`, `size="sm"`, `weight="thin"`. If you want a colour that isn't a token, add the token.
+- **`v-model` for the primary state**; named models for the rest: `v-model:open` (dialogs, popovers, drawers), `v-model:step`, `v-model:selected`, `v-model:collapsed`, `v-model:left` / `:right` on the layout.
+- **Events.** `update:*` for every model. `select(item, event)` on anything that lists navigable things (nav, menus, trees, lists) — call `preventDefault()` on the event if you route yourself, or [provide a router link](./install#with-a-router) and don't. Lifecycle-ish: `close`, `cancel`, `confirm`, `finish`, `submit`.
+- **Slots over render props.** Recurring names: `#prefix` / `#suffix` (icons beside text), `#title`, `#media`, `#actions`, `#footer`, `#icon`, `#trigger` (the thing a popover anchors to). A slot with the same name means the same place in every component.
+
+## CSS
+
+- **Global CSS, namespaced by class.** No `<style scoped>`, no shadow DOM, no CSS-in-JS, no Tailwind dependency. Classes are `bless-<component>`, parts `bless-<component>__<part>`, modifiers `bless-<component>--<modifier>`.
+- **Override with a plain selector** — no `:deep`, no `!important`:
+
+  ```css
+  .bless-button--accent {
+    letter-spacing: 0.2em;
+  }
+  ```
+
+- **Or override tokens on a subtree** when it's about values, not rules:
+
+  ```css
+  .sidebar {
+    --bless-color-accent: var(--bless-color-text);
+  }
+  ```
+
+- Every component's stylesheet is attached to its module; importing the component imports its CSS. `blessing-ui/style.css` is the whole set if you'd rather load once.
+
+## Accessibility
+
+- **Native element first.** `<button>`, `<dialog>`, `<details>`, `<select>`, `<input type=range|date|time|color|file>`, the Popover API. A wrapper only when the platform has no part for it.
+- **Role and name on everything composite**: menus, listboxes, tablists, grids, trees, dialogs, switches, sliders. Every icon-only control has an `aria-label`; every field is associated with its label (`BlessField` does it for you).
+- **Keyboard**: arrow keys move inside a composite (tabs, menus, trees, grids, carousels, steps — ← / → follow reading direction in RTL); `Home` / `End` jump; `Esc` closes anything that floats; `Enter` / `Space` activate. Focus ring is `2px` accent, `outline-offset: 2px`, on `:focus-visible` only.
+- **Contrast**: text tokens ≥ 4.5:1 on `bg` and `surface` in both themes; fills carry white at ≥ 3:1. `prefers-reduced-motion` zeroes every duration.
+
+## Look
+
+- **Hover fades, never moves**: `opacity: var(--bless-hover-opacity)` over `var(--bless-duration-slow)`. Appearances fade in place; only state changes move (a sheet slides from its edge, a switch thumb travels).
+- **Nothing blurs.** A floating surface sits on `--bless-shadow-plate`, a 1px accent offset. Modals and sheets rely on the scrim.
+- **Type**: thin for the voice, bold tracked uppercase for the UI. Body is `--bless-text-md`; nothing smaller than `2xs` (8px) and that only on badges.
 
 ## Shape: cut or petal
 
