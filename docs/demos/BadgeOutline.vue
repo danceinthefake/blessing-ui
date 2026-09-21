@@ -5,14 +5,14 @@ import { BlessBadge, BlessText } from "blessing-ui";
 <template>
   <div class="col">
     <div class="row">
-      <BlessBadge variant="outline" :scaled="false">企画</BlessBadge>
-      <BlessBadge variant="outline" :scaled="false">サブディレクター</BlessBadge>
-      <BlessBadge variant="outline" color="accent" :scaled="false">メインヒロイン</BlessBadge>
+      <BlessBadge variant="outline">企画</BlessBadge>
+      <BlessBadge variant="outline">サブディレクター</BlessBadge>
+      <BlessBadge variant="outline" color="accent">メインヒロイン</BlessBadge>
     </div>
     <div class="row">
-      <BlessBadge variant="outline" color="text" :scaled="false">text</BlessBadge>
-      <BlessBadge variant="outline" color="danger" :scaled="false">danger</BlessBadge>
-      <BlessBadge variant="outline" color="info" :scaled="false">info</BlessBadge>
+      <BlessBadge variant="outline" color="text">text</BlessBadge>
+      <BlessBadge variant="outline" color="danger">danger</BlessBadge>
+      <BlessBadge variant="outline" color="info">info</BlessBadge>
       <BlessBadge variant="outline">NEW!</BlessBadge>
     </div>
     <BlessText size="xs" muted

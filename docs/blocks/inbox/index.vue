@@ -49,7 +49,7 @@ function read(m: Mail) {
           <span class="inbox__time">{{ m.time }}</span>
         </template>
         <template #actions
-          ><BlessBadge v-if="m.tag" color="text" :scaled="false">{{ m.tag }}</BlessBadge></template
+          ><BlessBadge v-if="m.tag" color="text">{{ m.tag }}</BlessBadge></template
         >
       </BlessItem>
     </div>

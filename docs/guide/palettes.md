@@ -12,7 +12,7 @@ The accent is Megumi's pink by default. Five more accent families are one switch
   <div class="row">
     <BlessButton color="accent">Accent</BlessButton>
     <BlessButton variant="outline" color="accent">Outline</BlessButton>
-    <BlessBadge color="accent" :scaled="false">EP.12</BlessBadge>
+    <BlessBadge color="accent">EP.12</BlessBadge>
     <BlessSwitch :model-value="true">On</BlessSwitch>
   </div>
   <div class="col" style="margin-top:12px"><BlessProgress :value="64" show-value label="Progress" /></div>

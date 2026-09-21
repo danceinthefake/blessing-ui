@@ -75,7 +75,7 @@ const filters: { value: Status | "all"; label: string }[] = [
         </div>
       </template>
       <template #cell-status="{ value }">
-        <BlessBadge :color="statusColor[value as Status]" :scaled="false">{{ value }}</BlessBadge>
+        <BlessBadge :color="statusColor[value as Status]">{{ value }}</BlessBadge>
       </template>
     </BlessDataTable>
   </div>

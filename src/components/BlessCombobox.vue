@@ -149,7 +149,6 @@ function onBlur(e: FocusEvent) {
           v-for="v in selected"
           :key="String(v)"
           color="text"
-          :scaled="false"
           class="bless-combobox__chip"
         >
           {{ labelOf(v) }}

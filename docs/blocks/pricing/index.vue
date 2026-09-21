@@ -40,8 +40,7 @@ const price = (m: number) =>
     <BlessText as="h1" size="lg" weight="light" class="pricing__title">Plans</BlessText>
     <div class="pricing__switch">
       <BlessSwitch v-model="yearly"
-        >Bill yearly
-        <BlessBadge color="accent" :scaled="false">2 months free</BlessBadge></BlessSwitch
+        >Bill yearly <BlessBadge color="accent">2 months free</BlessBadge></BlessSwitch
       >
     </div>
     <div class="pricing__grid">

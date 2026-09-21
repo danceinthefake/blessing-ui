@@ -56,7 +56,7 @@ const episodes = [
             <BlessDash />
             <span class="story__title">{{ e.title }}</span>
             <BlessText size="xs" muted>{{ e.air }}</BlessText>
-            <BlessBadge v-if="!e.aired" color="text" :scaled="false">COMING</BlessBadge>
+            <BlessBadge v-if="!e.aired" color="text">COMING</BlessBadge>
           </span>
         </template>
         {{ e.text }}

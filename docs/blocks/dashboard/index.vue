@@ -81,9 +81,7 @@ const statusColor = { paid: "success", pending: "warning", refunded: "text" } as
       </BlessChart>
       <BlessTable :columns :rows="orders" row-key="id" caption="Recent orders" class="dash__table">
         <template #cell-status="{ value }">
-          <BlessBadge :color="statusColor[value as Order['status']]" :scaled="false">{{
-            value
-          }}</BlessBadge>
+          <BlessBadge :color="statusColor[value as Order['status']]">{{ value }}</BlessBadge>
         </template>
       </BlessTable>
     </div>

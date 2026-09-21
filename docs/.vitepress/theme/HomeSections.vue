@@ -42,7 +42,7 @@ const blocks = [
     <div class="hs__strip">
       <BlessButton color="accent">Sign in</BlessButton>
       <BlessButton variant="outline">Cancel</BlessButton>
-      <BlessBadge :scaled="false">NEW!</BlessBadge>
+      <BlessBadge>NEW!</BlessBadge>
       <BlessChip label="megumi" removable />
       <BlessSwitch v-model="on">Notify</BlessSwitch>
       <BlessAvatar name="Megumi Kato" />

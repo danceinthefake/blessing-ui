@@ -79,7 +79,7 @@ const releases: Release[] = [
           <BlessText as="p" size="xs" muted>{{ r.date }} 発売</BlessText>
           <div class="release__row">
             <BlessText weight="bold">{{ r.price }}</BlessText>
-            <BlessBadge v-if="r.soon" color="warning" :scaled="false">予約受付中</BlessBadge>
+            <BlessBadge v-if="r.soon" color="warning">予約受付中</BlessBadge>
           </div>
           <template #footer
             ><BlessButton
