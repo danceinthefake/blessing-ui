@@ -1,0 +1,21 @@
+docs/components/calendar.md
+  s_9ec1000e308ddb::t_f4b67bf8e99f44 13-18
+src/components/BlessCalendar.vue
+  s_9ec1000e308ddb::t_241a593fac7288 127,292,294-295,298-301
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "ff4fd008853bca0288ad1bd125e80c5df7373888",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "unknown"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
