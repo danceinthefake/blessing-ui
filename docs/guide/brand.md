@@ -11,34 +11,121 @@ Blessing UI's identity is the design system itself — nothing is added for the 
 
 ## Five elements
 
-| Element  | Value                                                                              | Where you see it                                         |
-| -------- | ---------------------------------------------------------------------------------- | -------------------------------------------------------- |
-| Name     | **Blessing** — a nod to a fictional software circle; see the [story](./story)      | wordmark, package name                                   |
-| Colour   | one accent at a time — Megumi's `#e85078` by default, six by [palette](./palettes) | buttons, badges, the mark's top petal                    |
-| Geometry | `--bless-skew`, the same lean on everything                                        | every label, every petal of the mark, the `UI` tag       |
-| Type     | Roboto 100 oversized for the voice, 700 uppercase tracked for the UI               | watermark, wordmark, labels                              |
-| Motif    | the plate: a hard 1px accent hairline offset behind anything that floats — no blur | every popover, menu, tooltip, toast, modal; the QR frame |
+| Element  | Value                                                                                                                                                                           | Where you see it                                                                           |
+| -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| Name     | **Blessing** — a nod to a fictional software circle; see the [story](./story)                                                                                                   | wordmark, package name                                                                     |
+| Colour   | one accent at a time — Megumi's `#e85078` by default, six by [palette](./palettes). The mark carries the petal colours; a palette darkens where white text needs it             | buttons, badges, the mark's top petal                                                      |
+| Geometry | `--bless-skew`, the same lean on everything. Two corners, one [rule](./conventions#shape-cut-or-petal): **cut** on what you read or press, **petal** on what is round by nature | every label and field; avatars, switches, chips; every petal of the mark                   |
+| Type     | Roboto 100 oversized for the voice, 700 uppercase tracked for the UI                                                                                                            | watermark, wordmark, labels                                                                |
+| Motif    | the plate: a hard 1px accent hairline offset behind anything that floats — no blur                                                                                              | every popover, menu, tooltip, toast, modal; the QR frame; the site's hero shot and OG card |
 
 ## Mark
 
 Five skewed plates in a ring, one colour each. Each petal is the same parallelogram every label in the system uses, rotated 72° apart. It answers the name: the fictional circle Blessing is named after has a five-petal flower for a logo, one petal per member — see the [story](./story). Ours is re-drawn from the system's own geometry, no centre; the five colours are the five [palettes](./palettes), so the mark is literally the theme picker.
 
-| File                              | Use                                                                  |
-| --------------------------------- | -------------------------------------------------------------------- |
-| [`logo.svg`](/logo.svg)           | any background — the five colours read on light and dark             |
-| [`logo-mono.svg`](/logo-mono.svg) | inline `<svg>` where `currentColor` should drive it (footers, print) |
-| [`favicon.svg`](/favicon.svg)     | tab icon                                                             |
+| File                              | Use                                                                                       |
+| --------------------------------- | ----------------------------------------------------------------------------------------- |
+| [`logo.svg`](/logo.svg)           | any background — the five colours read on light and dark                                  |
+| [`logo-mono.svg`](/logo-mono.svg) | inline `<svg>` where `currentColor` should drive it (footers, print)                      |
+| [`favicon.svg`](/favicon.svg)     | tab icon                                                                                  |
+| [`og.png`](/og.png)               | 1200×630 social card, composed from the system (below); regenerate with `pnpm docs:shots` |
+
+<img src="/og.png" alt="The OG card: mark, wordmark, tagline, a browser-framed screenshot on a plate, the watermark behind" style="border: var(--bless-border-width) solid var(--bless-color-border); margin: 8px 0 24px">
+
+### Don't
+
+<div class="brand-dont">
+  <figure><img src="/logo.svg" alt="" style="transform: skewX(10deg)"><figcaption>change the lean</figcaption></figure>
+  <figure><img src="/logo.svg" alt="" style="filter: grayscale(1) contrast(4)"><figcaption>recolour</figcaption></figure>
+  <figure><img src="/logo.svg" alt="" style="transform: rotate(36deg)"><figcaption>rotate</figcaption></figure>
+  <figure><span class="brand-dont__centre"><img src="/logo.svg" alt=""><i></i></span><figcaption>add a centre</figcaption></figure>
+</div>
 
 ## Wordmark
 
-`Blessing` in Roboto 100 (300 in dark mode, like every thin text in the system) followed by `UI` set in a skewed label in the current palette's accent — it re-tints with the palette. It is built from tokens, not shipped as an image — the site nav is `siteTitle` + CSS.
+`Blessing` in Roboto 100 (300 in dark mode, like every thin text in the system) followed by `UI` set in a skewed label in the current palette's accent — it re-tints with the palette. It is built from tokens, not shipped as an image — the site nav is `siteTitle` + CSS, the same class as below.
 
-<p style="font-size:56px;font-weight:var(--bless-font-weight-thin);letter-spacing:-1px;line-height:1;margin:16px 0">Blessing <span style="display:inline-block;background:var(--bless-color-accent);color:var(--bless-color-on-accent);font-size:18px;font-weight:700;letter-spacing:2px;padding:6px 12px;transform:skewX(-10deg);vertical-align:middle;position:relative;top:-8px"><span style="display:inline-block;transform:skewX(10deg)">UI</span></span></p>
+<p class="brand-wordmark">Blessing <span class="brand-wordmark__ui"><span>UI</span></span></p>
 
 ## Rules
 
-- Keep the skew and the five. Don't unskew, round, outline, or re-space the petals; don't add a centre. The UI may one day get a straight variant; the mark doesn't.
+- Keep the skew and the five. Don't unskew, round, outline, or re-space the petals; don't add a centre. The UI has two corners, cut and petal; the mark has one — cut.
 - One accent in the UI. The mark is the only place the five palette colours sit together; never recolour a petal.
 - Clear space = one petal width on all sides.
 - Minimum size 16px.
 - Don't set the wordmark in any weight other than 100/300, and don't letterspace it.
+
+<style>
+.brand-wordmark {
+  margin: 16px 0;
+  font-family: var(--bless-font-sans);
+  font-size: 56px;
+  font-weight: var(--bless-font-weight-thin);
+  letter-spacing: var(--bless-tracking-tight);
+  line-height: var(--bless-leading-none);
+}
+.brand-wordmark__ui {
+  display: inline-block;
+  position: relative;
+  top: -0.15em;
+  padding: var(--bless-space-2) var(--bless-space-3);
+  background: var(--bless-color-accent);
+  color: var(--bless-color-on-accent);
+  font-size: 18px;
+  font-weight: var(--bless-font-weight-bold);
+  letter-spacing: var(--bless-tracking-wider);
+  vertical-align: middle;
+  transform: skewX(var(--bless-skew));
+}
+.brand-wordmark__ui > span {
+  display: inline-block;
+  transform: skewX(var(--bless-skew-counter));
+}
+.brand-dont {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin: 8px 0 24px;
+}
+.brand-dont figure {
+  margin: 0;
+  text-align: center;
+  position: relative;
+}
+.brand-dont img {
+  width: 64px;
+  height: 64px;
+  display: block;
+  margin: 0 auto 6px;
+}
+.brand-dont figure::before {
+  content: "";
+  position: absolute;
+  left: 4px;
+  right: 4px;
+  top: 32px;
+  height: 2px;
+  background: var(--bless-color-danger);
+  transform: rotate(-30deg);
+}
+.brand-dont figcaption {
+  font-size: var(--bless-text-xs);
+  color: var(--bless-color-text-muted);
+  letter-spacing: var(--bless-tracking-wide);
+  text-transform: uppercase;
+}
+.brand-dont__centre {
+  position: relative;
+  display: block;
+}
+.brand-dont__centre i {
+  position: absolute;
+  left: 50%;
+  top: 32px;
+  width: 10px;
+  height: 7px;
+  margin: -3px 0 0 -5px;
+  background: #5870f8;
+  transform: skewX(var(--bless-skew));
+}
+</style>
