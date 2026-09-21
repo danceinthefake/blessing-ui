@@ -1,0 +1,31 @@
+docs/.vitepress/meta.json
+  s_9ec1000e308ddb::t_024d6c6af17b57 5956-5962
+docs/blocks/character/index.vue
+  s_9ec1000e308ddb::t_8a3d9c26030546 48
+docs/blocks/staff/index.vue
+  s_9ec1000e308ddb::t_9ac3b1b09d54a8 33,45
+docs/components/skew.md
+  s_9ec1000e308ddb::t_fdc515178ad338 11-17
+docs/demos/SectionBasic.vue
+  s_9ec1000e308ddb::t_ede90ed2b9b8b5 18
+docs/demos/SkewBasic.vue
+  s_9ec1000e308ddb::t_e30ab280f62f77 7-13
+src/components/BlessSkew.vue
+  s_9ec1000e308ddb::t_b92be4b52accbf 9,11-12,19-23,38-46
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "afe69362bacee7853cd65eb2ef01a1913fb819e7",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "unknown"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
