@@ -1,0 +1,23 @@
+docs/components/cascade-select.md
+  s_9ec1000e308ddb::t_ac71945e08638c 19-20
+src/components/BlessCascadeSelect.vue
+  s_9ec1000e308ddb::t_58776bbc26fa46 4,19,21,24,32,48-52,155,157,166-172
+docs/.vitepress/meta.json
+  s_9ec1000e308ddb::t_ad6ab162f667dd 1150-1155
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "506226492e24fede61b815e9a9aecd914e995032",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "claude-opus-5"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
