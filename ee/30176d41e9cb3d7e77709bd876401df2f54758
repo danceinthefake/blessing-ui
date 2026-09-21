@@ -1,0 +1,23 @@
+docs/components/loading-bar.md
+  s_9ec1000e308ddb::t_cbca3273708447 13-24
+src/components/BlessLoadingBar.vue
+  s_9ec1000e308ddb::t_7ad44c0a923e99 30
+src/composables/useLoadingBar.ts
+  s_9ec1000e308ddb::t_b74be26798e68c 5,12-17,30,32-34
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "ee30176d41e9cb3d7e77709bd876401df2f54758",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "unknown"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
