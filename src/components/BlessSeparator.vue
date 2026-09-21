@@ -19,9 +19,9 @@ withDefaults(
     v-if="label"
     class="bless-separator bless-separator--labelled"
     :class="`bless-separator--${color}`"
-    :role="decorative ? undefined : 'separator'"
     :aria-hidden="decorative || undefined"
   >
+    <!-- no separator role here: its children would be presentational and the label would be lost -->
     <span class="bless-separator__label">{{ label }}</span>
   </div>
   <component
@@ -51,13 +51,18 @@ withDefaults(
 .bless-separator--horizontal {
   width: 100%;
   height: var(--bless-border-width);
+  margin-block: var(--bless-space-4);
   background: var(--_c);
 }
 .bless-separator--vertical {
   align-self: stretch;
   width: var(--bless-border-width);
   min-height: 1em;
+  margin-inline: var(--bless-space-3);
   background: var(--_c);
+}
+.bless-separator--labelled {
+  margin-block: var(--bless-space-4);
 }
 .bless-separator--labelled {
   display: flex;
