@@ -1147,7 +1147,12 @@
     "name": "label",
     "type": "string | undefined",
     "required": false,
-    "default": "\"Cascade select\"",
+    "description": "accessible name when there is no visible label; the shown value is announced either way"
+   },
+   {
+    "name": "id",
+    "type": "string | undefined",
+    "required": false,
     "description": ""
    },
    {
