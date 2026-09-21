@@ -25,34 +25,38 @@ function read(m: Mail) {
 
 <template>
   <div class="inbox" :class="{ 'inbox--open': open }">
-    <div class="inbox__list" role="list" aria-label="Inbox">
-      <BlessItem
-        v-for="m in mails"
-        :key="m.id"
-        :title="m.subject"
-        :description="m.preview"
-        size="sm"
-        :variant="m.id === openId ? 'surface' : 'plain'"
-        role="listitem"
-        tabindex="0"
-        :aria-current="m.id === openId ? 'true' : undefined"
-        @click="read(m)"
-        @keydown.enter.space.prevent="read(m)"
-      >
-        <template #media>
-          <BlessIndicator :value="m.unread" color="accent" :label="m.unread ? 'Unread' : undefined">
-            <BlessAvatar :name="m.from" size="sm" />
-          </BlessIndicator>
-        </template>
-        <template #title>
-          <span class="inbox__from" :class="{ 'inbox__from--unread': m.unread }">{{ m.from }}</span>
-          <span class="inbox__time">{{ m.time }}</span>
-        </template>
-        <template #actions
-          ><BlessBadge v-if="m.tag" color="text">{{ m.tag }}</BlessBadge></template
+    <ul class="inbox__list" aria-label="Inbox">
+      <li v-for="m in mails" :key="m.id">
+        <BlessItem
+          :title="m.subject"
+          :description="m.preview"
+          size="sm"
+          :variant="m.id === openId ? 'surface' : 'plain'"
+          button
+          :aria-current="m.id === openId ? 'true' : undefined"
+          @click="read(m)"
         >
-      </BlessItem>
-    </div>
+          <template #media>
+            <BlessIndicator
+              :value="m.unread"
+              color="accent"
+              :label="m.unread ? 'Unread' : undefined"
+            >
+              <BlessAvatar :name="m.from" size="sm" />
+            </BlessIndicator>
+          </template>
+          <template #title>
+            <span class="inbox__from" :class="{ 'inbox__from--unread': m.unread }">{{
+              m.from
+            }}</span>
+            <span class="inbox__time">{{ m.time }}</span>
+          </template>
+          <template #actions
+            ><BlessBadge v-if="m.tag" color="text">{{ m.tag }}</BlessBadge></template
+          >
+        </BlessItem>
+      </li>
+    </ul>
     <div class="inbox__pane">
       <template v-if="open">
         <BlessToolbar>
@@ -96,11 +100,11 @@ function read(m: Mail) {
   min-height: 100%;
 }
 .inbox__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
   overflow: auto;
   border-right: var(--bless-border-width) solid var(--bless-color-border);
-}
-.inbox__list :deep(.bless-item) {
-  cursor: pointer;
 }
 .inbox__from {
   font-weight: var(--bless-font-weight-normal);
