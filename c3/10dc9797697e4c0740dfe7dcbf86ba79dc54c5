@@ -1,0 +1,25 @@
+docs/components/text.md
+  s_9ec1000e308ddb::t_3050330859aa13 13-16
+docs/demos/TextBasic.vue
+  s_9ec1000e308ddb::t_bdb49b620d1d44 15-17
+docs/.vitepress/meta.json
+  s_9ec1000e308ddb::t_3be77f557607b2 6866,6896-6902
+src/components/BlessText.vue
+  s_9ec1000e308ddb::t_50e25379d60830 7,11,13-14,30-31,62-64,104-109
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "c310dc9797697e4c0740dfe7dcbf86ba79dc54c5",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "claude-opus-5"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
