@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { onMounted, ref } from "vue";
 import { useTheme, type BlessTheme } from "../composables/useTheme";
 import BlessToggle from "./BlessToggle.vue";
 import BlessToggleGroup from "./BlessToggleGroup.vue";
@@ -13,6 +14,10 @@ withDefaults(
   { mode: "switch", label: "Theme" },
 );
 const { theme, isDark, set, toggle } = useTheme();
+// isDark depends on matchMedia, which the server can't know: render state only after mount so
+// server HTML and the first client render agree
+const mounted = ref(false);
+onMounted(() => (mounted.value = true));
 </script>
 
 <template>
@@ -30,11 +35,11 @@ const { theme, isDark, set, toggle } = useTheme();
     v-else
     type="button"
     class="bless-theme-toggle"
-    :aria-label="isDark ? 'Switch to light theme' : 'Switch to dark theme'"
-    :aria-pressed="isDark"
+    aria-label="Dark theme"
+    :aria-pressed="mounted ? isDark : false"
     @click="toggle"
   >
-    <span aria-hidden="true">{{ isDark ? "☾" : "☀" }}</span>
+    <span aria-hidden="true">{{ mounted && isDark ? "☾" : "☀" }}</span>
   </button>
 </template>
 
