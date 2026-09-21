@@ -124,7 +124,7 @@ watch(
 </script>
 
 <template>
-  <div class="bless-calendar" role="application" :aria-label="fmtMonth">
+  <div class="bless-calendar" role="group" :aria-label="fmtMonth">
     <div class="bless-calendar__head">
       <button
         type="button"
@@ -289,8 +289,14 @@ watch(
 .bless-calendar__day--end {
   clip-path: polygon(0 0, 100% 0, calc(100% - 6px) 100%, 0 100%);
 }
+/* can't pick: struck, at reading weight — distinct from the light "outside this month" days */
 .bless-calendar__day:disabled {
-  opacity: 0.25;
+  color: var(--bless-color-text-muted);
+  text-decoration: line-through;
   cursor: not-allowed;
+}
+.bless-calendar__day--outside:disabled {
+  text-decoration: none;
+  opacity: 0.5;
 }
 </style>
