@@ -4964,6 +4964,12 @@
     "required": false,
     "default": "\"md\"",
     "description": ""
+   },
+   {
+    "name": "format",
+    "type": "((value: number, max: number) => string) | undefined",
+    "required": false,
+    "description": "text for showValue; default is the percentage"
    }
   ],
   "events": [],

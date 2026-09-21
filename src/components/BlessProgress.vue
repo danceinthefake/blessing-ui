@@ -12,6 +12,8 @@ const props = withDefaults(
     showValue?: boolean;
     color?: "accent" | "text" | "danger" | "success" | "warning";
     size?: "sm" | "md" | "lg";
+    /** text for showValue; default is the percentage */
+    format?: (value: number, max: number) => string;
   }>(),
   { max: 100, color: "accent", size: "md" },
 );
@@ -34,9 +36,9 @@ const pct = computed(() =>
   >
     <div v-if="label || showValue" class="bless-progress__head">
       <span v-if="label" class="bless-progress__label">{{ label }}</span>
-      <span v-if="showValue && pct !== undefined" class="bless-progress__value"
-        >{{ Math.round(pct) }}%</span
-      >
+      <span v-if="showValue && pct !== undefined" class="bless-progress__value">{{
+        format ? format(value!, max) : `${Math.round(pct)}%`
+      }}</span>
     </div>
     <div
       class="bless-progress__track"
@@ -92,10 +94,13 @@ const pct = computed(() =>
   text-transform: uppercase;
 }
 .bless-progress__value {
+  margin-inline-start: auto; /* stays at the end when there is no label */
   font-size: var(--bless-text-sm);
   font-weight: var(--bless-font-weight-bold);
   font-variant-numeric: tabular-nums;
-  color: var(--_c);
+  color: var(
+    --bless-color-text
+  ); /* not --_c: warning/success are fills, and accent is 3.6:1 as text */
 }
 .bless-progress__track {
   border-radius: var(--bless-radius);
