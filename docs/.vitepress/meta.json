@@ -6223,7 +6223,7 @@
     "type": "string | undefined",
     "required": false,
     "default": "\"Loading\"",
-    "description": "screen-reader text; role=status"
+    "description": "screen-reader text (role=status); \"\" when a parent already announces — then it's decorative"
    }
   ],
   "events": [],

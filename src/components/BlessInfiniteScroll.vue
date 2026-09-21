@@ -58,7 +58,7 @@ defineExpose({ reset: () => ((finished.value = false), (loading.value = false)) 
     <slot />
     <div ref="sentinel" class="bless-infinite__sentinel" aria-hidden="true" />
     <div class="bless-infinite__status" role="status" aria-live="polite">
-      <slot v-if="loading" name="loading"><BlessSpinner size="sm" /></slot>
+      <slot v-if="loading" name="loading"><BlessSpinner size="sm" label="" /></slot>
       <slot v-else-if="finished" name="done"
         ><span class="bless-infinite__done">{{ doneText ?? "" }}</span></slot
       >

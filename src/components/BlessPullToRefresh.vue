@@ -62,7 +62,7 @@ const ready = computed(() => pull.value >= props.threshold);
       aria-live="polite"
     >
       <slot name="indicator" :ready :busy :pull>
-        <BlessSpinner v-if="busy" size="sm" />
+        <BlessSpinner v-if="busy" size="sm" label="" />
         <span v-else class="bless-ptr__arrow" aria-hidden="true">↓</span>
       </slot>
     </div>
