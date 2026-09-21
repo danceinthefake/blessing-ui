@@ -1,0 +1,21 @@
+docs/components/mockup.md
+  s_9ec1000e308ddb::t_74a9f66fb9c434 13-16
+src/components/BlessMockup.vue
+  s_9ec1000e308ddb::t_a041851f95613b 89-94
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "ee1d1c191905d4b55d9f89074b4d269cb26e9e1c",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "claude-opus-5"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
