@@ -38,6 +38,9 @@ const tokens = ["2xs", "xs", "sm", "md", "lg", "xl"];
 .bless-icon > svg {
   width: 100%;
   height: 100%;
+}
+/* a bare path SVG fills with the text colour; stroke icons (fill="none") keep their own */
+.bless-icon > svg:not([fill]) {
   fill: currentColor;
 }
 </style>
