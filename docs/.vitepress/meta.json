@@ -280,7 +280,14 @@
     "type": "string | number | undefined",
     "required": false,
     "default": "16 / 9",
-    "description": ""
+    "description": "`16 / 9` or `\"16 / 9\"` — anything `aspect-ratio` accepts"
+   },
+   {
+    "name": "fit",
+    "type": "\"cover\" | \"contain\" | undefined",
+    "required": false,
+    "default": "\"cover\"",
+    "description": "how a bare img / video / iframe child fills the box"
    }
   ],
   "events": [],
