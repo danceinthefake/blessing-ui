@@ -13,7 +13,7 @@ withDefaults(defineProps<{ color?: "text" | "muted" | "accent" }>(), { color: "t
   display: inline-block;
   width: var(--bless-dash-width);
   height: var(--bless-border-width);
-  margin: 0 var(--bless-space-1) 0 var(--bless-space-2);
+  margin-inline: var(--bless-space-2);
   vertical-align: middle;
   background: var(--bless-color-text);
 }
