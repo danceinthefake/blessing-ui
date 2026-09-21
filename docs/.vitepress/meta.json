@@ -476,10 +476,10 @@
     "description": ""
    },
    {
-    "name": "square",
+    "name": "lean",
     "type": "boolean | undefined",
     "required": false,
-    "description": "skewed square frame instead of circle"
+    "description": "lean the frame like a plate (still a petal: soft body, sharp point)"
    },
    {
     "name": "color",
