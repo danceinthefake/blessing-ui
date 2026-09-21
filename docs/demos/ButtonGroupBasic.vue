@@ -5,14 +5,15 @@ import { BlessButton, BlessButtonGroup } from "blessing-ui";
 <template>
   <div class="row">
     <BlessButtonGroup label="Pager">
-      <BlessButton variant="outline">←</BlessButton>
+      <BlessButton variant="outline" aria-label="Previous">←</BlessButton>
       <BlessButton variant="outline">1</BlessButton>
       <BlessButton variant="outline">2</BlessButton>
-      <BlessButton variant="outline">→</BlessButton>
+      <BlessButton variant="outline" aria-label="Next">→</BlessButton>
     </BlessButtonGroup>
-    <BlessButtonGroup label="Actions">
-      <BlessButton color="accent">Save</BlessButton>
-      <BlessButton color="accent">▾</BlessButton>
+    <BlessButtonGroup label="Range">
+      <BlessButton color="accent">Day</BlessButton>
+      <BlessButton>Week</BlessButton>
+      <BlessButton>Month</BlessButton>
     </BlessButtonGroup>
     <BlessButtonGroup orientation="vertical" label="Stack">
       <BlessButton size="sm">Top</BlessButton>

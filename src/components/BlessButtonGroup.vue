@@ -23,9 +23,19 @@ withDefaults(defineProps<{ orientation?: "horizontal" | "vertical"; label?: stri
   display: inline-flex;
   align-items: stretch;
 }
+/* vertical: the group is the plate; the buttons inside are upright so the stack isn't a staircase */
 .bless-button-group--vertical {
+  --_gskew: var(--bless-skew); /* captured before the children zero theirs */
   flex-direction: column;
   align-items: stretch;
+  transform: skewX(var(--_gskew));
+}
+.bless-button-group--vertical > .bless-button {
+  --bless-skew: 0deg;
+  --bless-skew-counter: 0deg;
+}
+.bless-button-group--vertical > .bless-button .bless-skew__inner {
+  transform: skewX(calc(-1 * var(--_gskew)));
 }
 .bless-button-group > .bless-button {
   margin: 0;
