@@ -4,7 +4,7 @@ import { BlessSkeleton } from "blessing-ui";
 
 <template>
   <div class="row">
-    <BlessSkeleton circle width="56px" height="56px" />
+    <BlessSkeleton avatar width="56px" height="56px" />
     <div style="flex: 1; max-width: 320px"><BlessSkeleton :lines="3" height="12px" /></div>
     <BlessSkeleton width="120px" height="40px" />
   </div>

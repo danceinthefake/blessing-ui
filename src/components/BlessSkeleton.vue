@@ -7,7 +7,8 @@ withDefaults(
     height?: string;
     /** render n text lines instead of one block */
     lines?: number;
-    circle?: boolean;
+    /** an avatar placeholder: a petal, like BlessAvatar */
+    avatar?: boolean;
   }>(),
   { width: "100%", height: "1em" },
 );
@@ -25,7 +26,7 @@ withDefaults(
   <span
     v-else
     class="bless-skeleton"
-    :class="{ 'bless-skeleton--circle': circle }"
+    :class="{ 'bless-skeleton--avatar': avatar }"
     :style="{ width, height }"
     aria-hidden="true"
   />
@@ -46,8 +47,8 @@ withDefaults(
   animation: bless-shimmer 1.4s var(--bless-ease-linear) infinite;
   transform: skewX(var(--bless-skew));
 }
-.bless-skeleton--circle {
-  border-radius: 50%;
+.bless-skeleton--avatar {
+  border-radius: var(--bless-radius-petal);
   transform: none;
 }
 .bless-skeleton-lines {

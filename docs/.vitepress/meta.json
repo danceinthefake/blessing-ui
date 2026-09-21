@@ -5917,10 +5917,10 @@
     "description": "render n text lines instead of one block"
    },
    {
-    "name": "circle",
+    "name": "avatar",
     "type": "boolean | undefined",
     "required": false,
-    "description": ""
+    "description": "an avatar placeholder: a petal, like BlessAvatar"
    }
   ],
   "events": [],
