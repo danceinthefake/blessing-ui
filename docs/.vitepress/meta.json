@@ -2448,7 +2448,7 @@
     "type": "\"outline\" | \"plain\" | undefined",
     "required": false,
     "default": "\"outline\"",
-    "description": "dashed frame (default) or plain"
+    "description": "framed (default) or plain, for inside a table or list"
    }
   ],
   "events": [],
