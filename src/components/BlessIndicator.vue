@@ -41,7 +41,8 @@ const show = computed(
       ]"
       :aria-label="label"
       :role="label ? 'status' : undefined"
-      >{{ text }}</span
+      :aria-hidden="label ? undefined : 'true'"
+      ><span class="bless-indicator__text">{{ text }}</span></span
     >
   </span>
 </template>
@@ -70,6 +71,10 @@ const show = computed(
   line-height: 1;
   transform: skewX(var(--bless-skew));
   pointer-events: none;
+}
+.bless-indicator__text {
+  display: inline-block;
+  transform: skewX(var(--bless-skew-counter));
 }
 .bless-indicator__badge--dot {
   min-width: 10px;
