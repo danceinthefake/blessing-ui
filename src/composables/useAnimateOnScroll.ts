@@ -3,6 +3,7 @@ import { onBeforeUnmount, onMounted, ref, type Ref } from "vue";
 /**
  * `visible` flips when `el` enters the viewport; pair with a CSS transition on
  * `[data-visible]` or bind the ref to a class. `once` keeps it true after the first entry.
+ * Under `prefers-reduced-motion: reduce` it is true from mount — content appears, nothing moves.
  */
 export function useAnimateOnScroll(
   el: Ref<HTMLElement | undefined | null>,
@@ -11,7 +12,9 @@ export function useAnimateOnScroll(
   const visible = ref(false);
   let io: IntersectionObserver | undefined;
   onMounted(() => {
-    if (!el.value || typeof IntersectionObserver === "undefined")
+    const reduce =
+      typeof matchMedia === "function" && matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce || !el.value || typeof IntersectionObserver === "undefined")
       return void (visible.value = true);
     io = new IntersectionObserver(
       ([e]) => {

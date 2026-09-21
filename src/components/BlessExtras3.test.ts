@@ -228,4 +228,16 @@ test("useAnimateOnScroll flips visible", async () => {
   cb([{ isIntersecting: true }]);
   await nextTick();
   expect(w.attributes("data-visible")).toBe("true");
+  // reduced motion: visible from mount, no observer
+  const mm = window.matchMedia;
+  window.matchMedia = (q: string) =>
+    ({
+      matches: q.includes("reduced-motion"),
+      addEventListener() {},
+      removeEventListener() {},
+    }) as unknown as MediaQueryList;
+  const r = mount(C);
+  await nextTick();
+  expect(r.attributes("data-visible")).toBe("true");
+  window.matchMedia = mm;
 });

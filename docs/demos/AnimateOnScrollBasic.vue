@@ -8,18 +8,19 @@ const { visible } = useAnimateOnScroll(el, { threshold: 0.4 });
 <template>
   <div ref="el" class="aos" :data-visible="visible">
     <BlessCard label="Reveal"
-      ><BlessText as="p">Slides up once when 40% of it is in view.</BlessText></BlessCard
+      ><BlessText as="p">Fades in once when 40% of it is in view.</BlessText></BlessCard
     >
   </div>
 </template>
 
 <style scoped>
+/* an appearance fades; a 4px rise only says which way it came from */
 .aos {
   opacity: 0;
-  translate: 0 24px;
+  translate: 0 4px;
   transition:
-    opacity 0.6s var(--bless-ease-out),
-    translate 0.6s var(--bless-ease-out);
+    opacity var(--bless-duration-slower) var(--bless-ease-out),
+    translate var(--bless-duration-slower) var(--bless-ease-out);
 }
 .aos[data-visible="true"] {
   opacity: 1;
