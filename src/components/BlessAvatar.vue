@@ -10,8 +10,8 @@ const props = withDefaults(
     /** used for initials fallback */
     name?: string;
     size?: "xs" | "sm" | "md" | "lg" | "xl";
-    /** skewed square frame instead of circle */
-    square?: boolean;
+    /** lean the frame like a plate (still a petal: soft body, sharp point) */
+    lean?: boolean;
     color?: "surface" | "accent" | "text";
   }>(),
   { size: "md", color: "surface" },
@@ -36,8 +36,8 @@ const showImg = computed(() => !!props.src && !failed.value);
 <template>
   <span
     class="bless-avatar"
-    :class="[`bless-avatar--${size}`, `bless-avatar--${color}`, { 'bless-avatar--square': square }]"
-    :role="showImg ? undefined : 'img'"
+    :class="[`bless-avatar--${size}`, `bless-avatar--${color}`, { 'bless-avatar--lean': lean }]"
+    :role="showImg || !(alt ?? name) ? undefined : 'img'"
     :aria-label="showImg ? undefined : (alt ?? name)"
   >
     <img
@@ -91,11 +91,11 @@ const showImg = computed(() => !!props.src && !failed.value);
   background: var(--bless-color-text);
   color: var(--bless-color-on-text);
 }
-.bless-avatar--square {
+.bless-avatar--lean {
   border-radius: var(--bless-radius-petal);
   transform: skewX(var(--bless-skew));
 }
-.bless-avatar--square > * {
+.bless-avatar--lean > * {
   transform: skewX(var(--bless-skew-counter));
 }
 .bless-avatar__img {
@@ -103,7 +103,7 @@ const showImg = computed(() => !!props.src && !failed.value);
   height: 100%;
   object-fit: cover;
 }
-.bless-avatar--square .bless-avatar__img {
+.bless-avatar--lean .bless-avatar__img {
   width: 120%;
   height: 100%;
 }

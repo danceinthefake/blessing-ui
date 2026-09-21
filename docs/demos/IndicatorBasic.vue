@@ -12,7 +12,7 @@ import { BlessAvatar, BlessButton, BlessIndicator } from "blessing-ui";
       ><BlessAvatar name="Megumi Kato"
     /></BlessIndicator>
     <BlessIndicator :value="7" color="text" position="top-left"
-      ><BlessAvatar name="Eriri" square
+      ><BlessAvatar name="Eriri" lean
     /></BlessIndicator>
     <BlessIndicator :value="0"><BlessButton variant="ghost">none</BlessButton></BlessIndicator>
   </div>
