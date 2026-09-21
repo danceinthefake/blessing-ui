@@ -33,18 +33,12 @@ withDefaults(
 </template>
 
 <style>
+/* a flat plate that breathes — no shimmer sweep, nothing glossy */
 .bless-skeleton {
   border-radius: var(--bless-radius-plate);
   display: block;
   background: var(--bless-color-surface);
-  background-image: linear-gradient(
-    100deg,
-    transparent 30%,
-    var(--bless-color-bg) 50%,
-    transparent 70%
-  );
-  background-size: 200% 100%;
-  animation: bless-shimmer 1.4s var(--bless-ease-linear) infinite;
+  animation: bless-skeleton-pulse 1.6s var(--bless-ease-in-out) infinite;
   transform: skewX(var(--bless-skew));
 }
 .bless-skeleton--avatar {
@@ -55,12 +49,9 @@ withDefaults(
   display: grid;
   gap: var(--bless-space-2);
 }
-@keyframes bless-shimmer {
-  from {
-    background-position: 200% 0;
-  }
-  to {
-    background-position: -200% 0;
+@keyframes bless-skeleton-pulse {
+  50% {
+    opacity: 0.55;
   }
 }
 @media (prefers-reduced-motion: reduce) {
