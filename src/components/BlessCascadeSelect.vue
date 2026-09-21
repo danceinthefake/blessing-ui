@@ -1,6 +1,7 @@
 <script setup lang="ts" generic="T extends string | number">
 import { computed, ref, useId, watch } from "vue";
 import { logicalKey } from "../composables/rtl";
+import { useFieldId } from "../composables/useFieldId";
 import BlessPopover from "./BlessPopover.vue";
 import type { BlessCascadeOption } from "./cascade";
 
@@ -15,10 +16,12 @@ const props = withDefaults(
     separator?: string;
     disabled?: boolean;
     invalid?: boolean;
+    /** accessible name when there is no visible label; the shown value is announced either way */
     label?: string;
+    id?: string;
     size?: "sm" | "md" | "lg";
   }>(),
-  { placeholder: "Select…", showPath: true, separator: " › ", size: "md", label: "Cascade select" },
+  { placeholder: "Select…", showPath: true, separator: " › ", size: "md" },
 );
 const model = defineModel<T | undefined>();
 const emit = defineEmits<{
@@ -26,6 +29,7 @@ const emit = defineEmits<{
 }>();
 const open = ref(false);
 const uid = useId();
+const id = useFieldId(props);
 
 /** path of indexes currently drilled into (one per rendered column beyond the first) */
 const trail = ref<number[]>([]);
@@ -41,6 +45,11 @@ const columns = computed(() => {
   return cols;
 });
 const active = ref<number[]>([0]); // active row per column, for keyboard
+// the panel's active option, for aria-activedescendant
+const activeId = computed(() => {
+  const col = active.value.length - 1;
+  return col >= 0 ? `${uid}-${col}-${active.value[col]}` : undefined;
+});
 
 function findPath(
   list: BlessCascadeOption<T>[],
@@ -143,8 +152,9 @@ watch(open, (o) => {
           `bless-cascade__trigger--${size}`,
           { 'bless-cascade__trigger--invalid': invalid, 'bless-cascade__trigger--empty': !text },
         ]"
+        :id="id()"
         :disabled
-        :aria-label="label"
+        :aria-label="label ? `${label}: ${text || placeholder}` : undefined"
         :aria-invalid="invalid || undefined"
         aria-haspopup="listbox"
         :aria-expanded="open"
@@ -153,7 +163,13 @@ watch(open, (o) => {
         <span class="bless-cascade__chevron" aria-hidden="true" />
       </button>
     </template>
-    <div class="bless-cascade__panel" tabindex="0" @keydown="onKey">
+    <div
+      class="bless-cascade__panel"
+      tabindex="0"
+      role="group"
+      :aria-activedescendant="activeId"
+      @keydown="onKey"
+    >
       <div
         v-for="(list, col) in columns"
         :key="col"

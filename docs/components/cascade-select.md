@@ -16,6 +16,8 @@ For values that live in a hierarchy — country → city → area, category → 
 
 If the hierarchy is deep or ragged, `BlessTreeSelect` (a tree in a popover) is usually the better fit. If the options are flat but many, `BlessCombobox`.
 
+The model is the leaf's value; `select` emits `(option, path)` with the whole trail when you need the parents too. Keyboard: ↑ / ↓ move in a column, → drills into children, ← backs out (both follow reading direction in RTL), Enter picks, Esc closes. Inside a `BlessField` the trigger takes the field's label; `label` is only for a select with no visible label.
+
 <Demo title="Basic">
   <CascadeSelectBasic />
   <template #code>
