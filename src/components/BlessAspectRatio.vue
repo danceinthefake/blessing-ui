@@ -1,11 +1,21 @@
 <script setup lang="ts">
 defineOptions({ name: "BlessAspectRatio" });
 
-withDefaults(defineProps<{ ratio?: number | string }>(), { ratio: 16 / 9 });
+withDefaults(
+  defineProps<{
+    /** `16 / 9` or `"16 / 9"` — anything `aspect-ratio` accepts */
+    ratio?: number | string;
+    /** how a bare img / video / iframe child fills the box */
+    fit?: "cover" | "contain";
+  }>(),
+  { ratio: 16 / 9, fit: "cover" },
+);
 </script>
 
 <template>
-  <div class="bless-aspect" :style="{ aspectRatio: String(ratio) }"><slot /></div>
+  <div class="bless-aspect" :class="`bless-aspect--${fit}`" :style="{ aspectRatio: String(ratio) }">
+    <slot />
+  </div>
 </template>
 
 <style>
@@ -22,5 +32,10 @@ withDefaults(defineProps<{ ratio?: number | string }>(), { ratio: 16 / 9 });
   height: 100%;
   object-fit: cover;
   border: 0;
+}
+.bless-aspect--contain > img,
+.bless-aspect--contain > video,
+.bless-aspect--contain > iframe {
+  object-fit: contain;
 }
 </style>
