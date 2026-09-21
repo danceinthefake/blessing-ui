@@ -806,6 +806,18 @@
     "required": false,
     "default": "\"button\"",
     "description": ""
+   },
+   {
+    "name": "block",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": "full width of its container"
+   },
+   {
+    "name": "icon",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": "icon-only: equal padding all round — pass an aria-label"
    }
   ],
   "events": [],
