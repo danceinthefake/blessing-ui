@@ -86,6 +86,12 @@ withDefaults(
   color: var(--bless-color-text);
   overflow: auto;
 }
+/* a screenshot fills the screen edge to edge */
+.bless-mockup__screen > img,
+.bless-mockup__screen > video {
+  display: block;
+  width: 100%;
+}
 .bless-mockup--browser .bless-mockup__screen,
 .bless-mockup--window .bless-mockup__screen {
   border-top: var(--bless-border-width) solid var(--bless-color-border);
