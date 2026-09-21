@@ -27,6 +27,7 @@ useLoadingBar(); // ensures the state exists
     aria-valuemin="0"
     aria-valuemax="100"
     aria-label="Loading"
+    :aria-hidden="loadingBarState.active ? undefined : 'true'"
   >
     <span class="bless-loadingbar__bar" />
   </div>
