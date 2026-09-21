@@ -28,11 +28,13 @@ export default defineConfig({
       { property: "og:image", content: "https://danceinthefake.github.io/blessing-ui/og.png" },
     ],
     ["meta", { name: "twitter:card", content: "summary_large_image" }],
+    ["link", { rel: "preconnect", href: "https://fonts.googleapis.com" }],
+    ["link", { rel: "preconnect", href: "https://fonts.gstatic.com", crossorigin: "" }],
     [
       "link",
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css?family=Roboto:100,300,400,700|Noto+Sans+JP:400,700&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&family=Noto+Sans+JP:wght@400;700&display=swap",
       },
     ],
   ],

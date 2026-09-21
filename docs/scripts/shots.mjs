@@ -44,7 +44,9 @@ try {
   await p.goto(`http://localhost:${port}/og`, { waitUntil: "networkidle" });
   await p.waitForTimeout(600);
   await p.locator(".og").screenshot({ path: "docs/public/og.png" });
-  console.log("hero-light.png, hero-dark.png, preview-{signin,dashboard,news}.png, og.png written to docs/public/");
+  console.log(
+    "hero-light.png, hero-dark.png, preview-{signin,dashboard,news}.png, og.png written to docs/public/",
+  );
 } finally {
   await b.close();
   srv.kill();
