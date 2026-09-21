@@ -32,3 +32,14 @@ test("outline variant has no skew background", () => {
   expect(b.classes()).toContain("bless-skew--none");
   expect(b.classes()).toContain("bless-button--accent");
 });
+
+test("BlessButton: disabled link does not navigate; block and icon classes", async () => {
+  const w = mount(BlessButton, { props: { href: "#go", disabled: true } });
+  const e = new MouseEvent("click", { cancelable: true, bubbles: true });
+  w.element.dispatchEvent(e);
+  expect(e.defaultPrevented).toBe(true);
+  expect(w.attributes("tabindex")).toBe("-1");
+  const b = mount(BlessButton, { props: { block: true, icon: true } });
+  expect(b.classes()).toContain("bless-button--block");
+  expect(b.classes()).toContain("bless-button--icon");
+});

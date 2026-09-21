@@ -16,6 +16,10 @@ const props = withDefaults(
     disabled?: boolean;
     loading?: boolean;
     type?: "button" | "submit" | "reset";
+    /** full width of its container */
+    block?: boolean;
+    /** icon-only: equal padding all round — pass an aria-label */
+    icon?: boolean;
   }>(),
   { variant: "solid", color: "text", size: "md", type: "button" },
 );
@@ -24,6 +28,8 @@ const link = useLink();
 const tag = computed(() => link(props.href, undefined, "button"));
 const inactive = computed(() => props.disabled || props.loading);
 const skewColor = computed(() => (props.variant === "solid" ? props.color : "none"));
+// an <a> has no disabled: swallow the click so a disabled/loading link doesn't navigate
+const onClick = (e: MouseEvent) => inactive.value && e.preventDefault();
 </script>
 
 <template>
@@ -36,13 +42,18 @@ const skewColor = computed(() => (props.variant === "solid" ? props.color : "non
       `bless-button--${variant}`,
       `bless-button--${color}`,
       `bless-button--${size}`,
-      { 'bless-button--loading': loading },
+      {
+        'bless-button--loading': loading,
+        'bless-button--block': block,
+        'bless-button--icon': icon,
+      },
     ]"
     :type="href ? undefined : type"
     :disabled="href ? undefined : inactive"
     :aria-disabled="inactive || undefined"
     :aria-busy="loading || undefined"
     :tabindex="href && inactive ? -1 : undefined"
+    @click="onClick"
   >
     <BlessSpinner v-if="loading" size="sm" />
     <slot v-else name="prefix" />
@@ -109,6 +120,22 @@ const skewColor = computed(() => (props.variant === "solid" ? props.color : "non
 }
 .bless-button--loading {
   cursor: progress;
+}
+.bless-button--block {
+  display: flex;
+  width: 100%;
+}
+.bless-button--block .bless-skew__inner {
+  justify-content: center;
+}
+.bless-button--icon.bless-button--sm {
+  padding: var(--bless-space-1);
+}
+.bless-button--icon.bless-button--md {
+  padding: var(--bless-space-2);
+}
+.bless-button--icon.bless-button--lg {
+  padding: var(--bless-space-3);
 }
 
 .bless-button .bless-skew__inner {
