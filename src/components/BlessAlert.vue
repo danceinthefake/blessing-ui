@@ -53,8 +53,8 @@ const emit = defineEmits<{ dismiss: [] }>();
   position: relative;
   display: flex;
   gap: var(--bless-space-3);
+  margin-inline-start: 4px; /* room for the skewed edge */
   padding: var(--bless-space-3) var(--bless-space-4);
-  border-inline-start: 4px solid var(--_c);
   background: var(--bless-color-surface);
   font-family: var(--bless-font-sans);
   font-size: var(--bless-text-md);
