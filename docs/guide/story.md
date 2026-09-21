@@ -12,15 +12,15 @@ It read as a design system that nobody had written down. So we wrote it down.
 
 Look past the site to the title it belongs to and the language goes deeper than one web page.
 
-The series logo is set in strokes that are all parallelograms — the same lean, cut sharp at the ends. The skew isn't a web designer's flourish; it is the franchise's handwriting. Its second season is titled **♭**, _flat_. Its logo carries three colours: the pink, a yellow-orange and a green — which are, one step darker for contrast, this library's accent, `warning` and `success`. None of that was planned as homage. It was found afterwards, checking the system against its source, and it explains why the pieces fit: they were always one family.
+The series logo is set in strokes that are all parallelograms — the same lean, cut sharp at the ends. The skew isn't a web designer's flourish; it is the franchise's handwriting. Its second season is titled **♭**, _flat_ — that is where _Flat by design_ comes from. Its logo carries three colours: the pink, a yellow-orange and a green — which are, one step darker for contrast, this library's accent, `warning` and `success`. None of that was planned as homage. It was found afterwards, checking the system against its source, and it explains why the pieces fit: they were always one family.
 
 ## The name
 
-In the story, the protagonist founds a doujin game circle and calls it **Blessing Software**. A component library is the kind of thing that circle would have shipped. The circle's logo is a five-petal flower, one petal per member — soft bodies, one sharp point each. Our mark is five of our own skewed plates in a ring in those five colours, drawn from the system rather than from the show — and each colour is a [palette](./palettes) you can switch the whole library to. The circle's founder sits at the centre of that ring; his colour is a palette too, though the mark keeps its empty middle. The name and the shape are nods in that direction and nothing more — see the note at the bottom.
+In the story, the protagonist founds a doujin game circle and calls it **Blessing Software**. The name is, most likely, the heroine's: 恵 reads _Megumi_ and means blessing — the series never says so outright, but it is why her pink is the default here. A component library is the kind of thing that circle would have shipped. The circle's logo is a five-petal flower, one petal per member — soft bodies, one sharp point each. Our mark is five of our own skewed plates in a ring in those five colours, drawn from the system rather than from the show — and each colour is a [palette](./palettes) you can switch the whole library to. The circle's founder sits at the centre of that ring; his colour is a palette too, though the mark keeps its empty middle. The name and the shape are nods in that direction and nothing more — see the note at the bottom.
 
 ## What was kept
 
-Five things, and they became the [brand](./brand):
+These became the [brand](./brand):
 
 - one angle — `skewX(-10deg)`, on everything: buttons, tags, tabs, and the fields you type into
 - one accent on a scale of greys — the heroine's pink by default
@@ -37,11 +37,11 @@ The source is a marketing site; a library has to do more. Everything below is ou
 - **Tokens.** Every value the site hard-coded became a `--bless-*` custom property, so the look can be retuned without touching a component.
 - **The platform.** `<dialog>`, the Popover API, `<details>`, native form controls, `Intl` dates, scroll-snap — the browser's own parts, styled rather than rebuilt.
 - **Right-to-left.** Logical properties throughout; the lean flips with the reading direction.
-- **Breadth.** The site needed a nav, a list and a modal. The library has 145 components, from a button to a data table to a chat thread, and a set of copy-in [blocks](../blocks/). Coverage was checked against the component lists of [shadcn/ui](https://ui.shadcn.com/) and [PrimeVue](https://primevue.org/) so nothing obvious was missing; every component here is its own implementation, and nothing from either project is used.
+- **Breadth.** The site needed a nav, a list and a modal. The library has 144 components, from a button to a data table to a chat thread, and a set of copy-in [blocks](../blocks/). Coverage was checked against the component lists of [shadcn/ui](https://ui.shadcn.com/) and [PrimeVue](https://primevue.org/) so nothing obvious was missing; every component here is its own implementation, and nothing from either project is used.
 
 ## What was bent
 
-One thing, on purpose. The site never rounded a corner, and neither does anything the site had: buttons, tags, fields, cards, menus stay cut. But a library has things the site didn't — avatars, switches, chips, chat bubbles, thumbs — and those are round everywhere else for a reason. They are **petal** here: the same leaning plate with only its two sharp tips rounded, soft body and one point, the shape of the circle's flower. Two corners, one [rule](./conventions#shape-cut-or-petal). The franchise's own film site went soft two years after the TV site; we went halfway, and kept the lean. The mark stays cut.
+One thing, on purpose. The site never rounded a corner, and neither does anything the site had: buttons, tags, fields, cards, menus stay cut. But a library has things the site didn't — avatars, switches, chips, chat bubbles, thumbs — and those are round everywhere else for a reason. They are **petal** here: the same leaning plate with only its two sharp tips rounded, soft body and one point, the shape of the circle's flower. Two corners, one [rule](./conventions#shape-cut-or-petal). The franchise's own film site (saenai-movie.com, 2019) went soft two years after the TV site — pill tags, underlined buttons, no skew; we went halfway, and kept the lean. The mark stays cut.
 
 ## What was not taken
 

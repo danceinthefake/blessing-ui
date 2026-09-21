@@ -242,6 +242,10 @@ Not components: finished sections shipped as source you copy, `docs/blocks/<slug
 
 Cut and petal are one default, no toggle. Rule (docs/guide/conventions): if the source site had it, or it's a box or a label, it's cut; if it's ours and round by nature — avatars, switches, chips, chat bubbles, fabs, slider thumbs, count dots — it's petal (`--bless-radius-petal`, acute corners only, flips under RTL). `data-shape`, `setShape`, `BlessShapeToggle` and the guide page removed. `--bless-radius` / `--bless-radius-plate` remain at 0 as consumer override points. Evidence that led here: the film site's own move to pills; the circle's flower being soft-with-a-point; petal avatars reading as ours where circles read as anyone's.
 
+### Numbers that go stale
+
+"144 components" appears on the homepage, README, story and package description. Update all four when the count changes (`ls src/components/Bless*.vue | grep -v test | wc -l`).
+
 ### Contrast policy (axe, 2026-09-20 triage)
 
 - Text tokens meet 4.5:1 on `bg` and `surface` in both themes: `text`, `text-muted`, `accent-text` (per palette), `danger`.

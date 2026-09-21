@@ -6,7 +6,7 @@
 
 Vue 3 component library and design tokens. Grey-scale UI, one pink-red accent, skewed labels instead of rounded corners, thin oversized watermark type, opacity-fade hovers. The look was re-derived from one anime's official site, ideas only — the [story](docs/guide/story.md) says which, what was kept, and what was not taken.
 
-- 145 components — from button to data table to chat — styled only through `--bless-*` custom properties, no Tailwind dependency
+- 144 components — from button to data table to chat — styled only through `--bless-*` custom properties, no Tailwind dependency
 - Native platform first: `<dialog>`, Popover API, `<details>`, native form controls, `Intl` dates, scroll-snap — no positioning, date or table library
 - Accessible defaults: focus rings, ARIA tablist/dialog/tables, `prefers-reduced-motion`
 - ESM, tree-shakable, `vue` as the only required peer (`@tiptap/vue-3` optional, for `BlessEditor`). One component (`BlessButton`) costs ~0.8 KB gzip of JS and ~2 KB of CSS (tokens + its own styles); everything is ~57 KB + 24 KB. CSS is split per component and pulled in by the import, so you never pay for styles you don't use
@@ -82,7 +82,7 @@ import {
 
 ## Components
 
-145 components across nine groups. Every one styles itself from `--bless-*` tokens and ships with a test and a docs page.
+144 components across nine groups. Every one styles itself from `--bless-*` tokens and ships with a test and a docs page.
 
 ### Primitives
 
