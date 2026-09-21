@@ -1,0 +1,21 @@
+docs/components/chip.md
+  s_9ec1000e308ddb::t_426e205e4c26e5 11-15
+src/components/BlessChip.vue
+  s_9ec1000e308ddb::t_0b2f880c545999 71
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "c9d38c92561d5fcfeb0015bc8c24cbd453d6fa78",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "unknown"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
