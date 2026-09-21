@@ -13,9 +13,9 @@ import { BlessBadge, BlessSection, BlessText } from "blessing-ui";
         >サークルってさ、辛いことも、<br />悲しいこともあるけど……<br />それでも、これからも続けるよ</BlessText
       >
       <p class="tags">
-        <BlessBadge variant="outline" :scaled="false">企画</BlessBadge>
-        <BlessBadge variant="outline" :scaled="false">サブディレクター</BlessBadge>
-        <BlessBadge variant="outline" color="accent" :scaled="false">メインヒロイン</BlessBadge>
+        <BlessBadge variant="outline">企画</BlessBadge>
+        <BlessBadge variant="outline">サブディレクター</BlessBadge>
+        <BlessBadge variant="outline" color="accent">メインヒロイン</BlessBadge>
       </p>
       <BlessText as="p" size="lg" weight="bold">加藤 恵</BlessText>
       <BlessText as="p" size="xs" muted tracking="wider">Megumi Kato</BlessText>

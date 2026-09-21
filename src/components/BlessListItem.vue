@@ -26,7 +26,7 @@ defineProps<{
       <span v-if="meta || badge" class="bless-list-item__meta">
         <slot name="meta">{{ meta }}</slot>
         <BlessDash />
-        <BlessBadge v-if="badge">{{ badge === true ? "NEW!" : badge }}</BlessBadge>
+        <BlessBadge v-if="badge" scaled>{{ badge === true ? "NEW!" : badge }}</BlessBadge>
       </span>
       <span class="bless-list-item__title"><slot /></span>
       <span v-if="$slots.suffix" class="bless-list-item__suffix"><slot name="suffix" /></span>

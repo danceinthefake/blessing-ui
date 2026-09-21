@@ -10,7 +10,7 @@ defineProps<{ stat: Stat }>();
     <BlessText as="p" size="xs" muted tracking="wider" uppercase>{{ stat.label }}</BlessText>
     <div class="stat__row">
       <BlessText size="lg" weight="light">{{ fmt(stat) }}</BlessText>
-      <BlessBadge :color="stat.delta >= 0 ? 'success' : 'danger'" :scaled="false">{{
+      <BlessBadge :color="stat.delta >= 0 ? 'success' : 'danger'">{{
         fmtDelta(stat.delta)
       }}</BlessBadge>
     </div>

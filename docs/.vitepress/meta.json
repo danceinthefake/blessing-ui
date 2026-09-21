@@ -546,8 +546,8 @@
     "name": "scaled",
     "type": "boolean | undefined",
     "required": false,
-    "default": "true",
-    "description": "shrink to 0.8 like the source NEW! pill"
+    "default": "false",
+    "description": "shrink to 0.8 — the source's NEW! next to a nav item; off by default"
    },
    {
     "name": "variant",

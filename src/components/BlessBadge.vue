@@ -4,12 +4,12 @@ defineOptions({ name: "BlessBadge" });
 withDefaults(
   defineProps<{
     color?: "badge" | "accent" | "danger" | "warning" | "success" | "info" | "text";
-    /** shrink to 0.8 like the source NEW! pill */
+    /** shrink to 0.8 — the source's NEW! next to a nav item; off by default */
     scaled?: boolean;
     /** outline: 1px border and text in the colour, no fill — quiet category/role tags */
     variant?: "solid" | "outline";
   }>(),
-  { color: "badge", scaled: true, variant: "solid" },
+  { color: "badge", scaled: false, variant: "solid" },
 );
 </script>
 
@@ -23,10 +23,12 @@ withDefaults(
 </template>
 
 <style>
+/* a cut plate like every other label — the site's NEW! was upright, ours leans with the rest */
 .bless-badge {
   display: inline-block;
-  padding: 2px 4px;
+  padding: 2px 5px;
   border-radius: var(--bless-radius);
+  transform: skewX(var(--bless-skew));
   font-family: var(--bless-font-sans);
   font-size: var(--bless-text-xs);
   font-weight: var(--bless-font-weight-bold);
@@ -37,8 +39,12 @@ withDefaults(
   vertical-align: middle;
   white-space: nowrap;
 }
+.bless-badge__inner {
+  display: inline-block;
+  transform: skewX(var(--bless-skew-counter));
+}
 .bless-badge--scaled {
-  transform: scale(var(--bless-press-scale));
+  transform: skewX(var(--bless-skew)) scale(var(--bless-press-scale));
 }
 .bless-badge--accent {
   background: var(--bless-color-accent);
@@ -69,14 +75,6 @@ withDefaults(
   background: transparent;
   color: var(--_c);
   letter-spacing: var(--bless-tracking-wide);
-  transform: skewX(var(--bless-skew));
-}
-.bless-badge--outline > .bless-badge__inner {
-  display: inline-block;
-  transform: skewX(var(--bless-skew-counter));
-}
-.bless-badge--outline.bless-badge--scaled {
-  transform: skewX(var(--bless-skew)) scale(var(--bless-press-scale));
 }
 .bless-badge--outline.bless-badge--accent,
 .bless-badge--outline.bless-badge--badge {

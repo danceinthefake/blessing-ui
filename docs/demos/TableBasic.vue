@@ -18,7 +18,7 @@ const rows: Row[] = [
 <template>
   <BlessTable :columns :rows row-key="station" caption="On Air" striped style="max-width: 640px">
     <template #cell-note="{ value }">
-      <BlessBadge v-if="value" color="text" :scaled="false">{{ value }}</BlessBadge>
+      <BlessBadge v-if="value" color="text">{{ value }}</BlessBadge>
     </template>
   </BlessTable>
 </template>

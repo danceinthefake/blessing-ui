@@ -30,13 +30,13 @@ const streaming = ["ABEMA", "dアニメストア", "Netflix", "Amazon Prime Vide
     <BlessText as="p" size="sm" muted class="onair__lead">2026年10月より順次放送開始</BlessText>
     <BlessTable :columns :rows="stations" row-key="station" caption="放送情報" striped>
       <template #cell-note="{ value }">
-        <BlessBadge v-if="value" color="text" :scaled="false">{{ value }}</BlessBadge>
+        <BlessBadge v-if="value" color="text">{{ value }}</BlessBadge>
       </template>
     </BlessTable>
     <BlessSeparator label="配信" color="accent" class="onair__sep" />
     <ul class="onair__stream">
       <li v-for="s in streaming" :key="s">
-        <BlessBadge color="accent" :scaled="false">{{ s }}</BlessBadge>
+        <BlessBadge color="accent">{{ s }}</BlessBadge>
       </li>
     </ul>
     <BlessText as="p" size="xs" muted>※放送日時は変更になる場合があります。</BlessText>

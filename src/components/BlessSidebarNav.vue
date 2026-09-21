@@ -39,7 +39,7 @@ const emit = defineEmits<{ select: [item: BlessNavItem, event: MouseEvent] }>();
             <template v-if="item.meta || item.badge">
               <BlessDash />
               <span v-if="item.meta" class="bless-sidebar-nav__meta">{{ item.meta }}</span>
-              <BlessBadge v-if="item.badge">{{
+              <BlessBadge v-if="item.badge" scaled>{{
                 item.badge === true ? "NEW!" : item.badge
               }}</BlessBadge>
             </template>

@@ -48,9 +48,7 @@ const expanded = ref<string[]>(["src"]);
       striped
     >
       <template #cell-kind="{ value }"
-        ><BlessBadge :color="value === 'dir' ? 'text' : 'info'" :scaled="false">{{
-          value
-        }}</BlessBadge></template
+        ><BlessBadge :color="value === 'dir' ? 'text' : 'info'">{{ value }}</BlessBadge></template
       >
     </BlessTreeTable>
     <small>expanded: {{ expanded }}</small>
