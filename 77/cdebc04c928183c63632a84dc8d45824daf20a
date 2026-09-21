@@ -1,0 +1,29 @@
+docs/guide/story.md
+  s_9ec1000e308ddb::t_6f0a03c5297281 15,19,23,40,44
+DESIGN.md
+  s_9ec1000e308ddb::t_6f0a03c5297281 245-248
+README.md
+  s_9ec1000e308ddb::t_14de6d63b4e8ab 9,85
+docs/.vitepress/theme/HomeSections.vue
+  s_9ec1000e308ddb::t_82828cd1c0a84e 39
+docs/guide/conventions.md
+  s_9ec1000e308ddb::t_5c4744d0378d55 3
+docs/og.md
+  s_9ec1000e308ddb::t_cccad8d744a518 22
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "77cdebc04c928183c63632a84dc8d45824daf20a",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "claude-opus-5"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
