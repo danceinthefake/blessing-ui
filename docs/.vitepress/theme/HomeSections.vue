@@ -36,7 +36,7 @@ const blocks = [
         <span class="hs__cmd-inner"><span class="hs__prompt">$</span> pnpm add blessing-ui</span>
       </button>
       <BlessText size="xs" muted tracking="wide">
-        Vue 3 · 145 components · one peer dependency · MIT
+        Vue 3 · 144 components · one peer dependency · MIT
       </BlessText>
     </div>
     <div class="hs__strip">

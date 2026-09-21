@@ -19,7 +19,7 @@ import { BlessMockup, BlessSkew } from "blessing-ui";
     <p class="og__name">Blessing <BlessSkew color="accent" class="og__ui">UI</BlessSkew></p>
     <p class="og__title">Themed Flat Interface</p>
     <p class="og__tag">Flat by design, raised with Vue,<br />blessed for everyone.</p>
-    <p class="og__meta">Vue 3 · 145 components · MIT</p>
+    <p class="og__meta">Vue 3 · 144 components · MIT</p>
   </div>
   <BlessMockup type="browser" title="blessing.software" class="og__shot">
     <img :src="withBase('/hero-light.png')" alt="" />
