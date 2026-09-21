@@ -50,17 +50,22 @@ function slideWidth() {
     ? first.offsetWidth + parseFloat(getComputedStyle(el).columnGap || "0")
     : el.clientWidth;
 }
+// in RTL the scroll origin is the inline start (right edge) and scrollLeft runs negative
+const dir = () => (track.value && getComputedStyle(track.value).direction === "rtl" ? -1 : 1);
 function go(i: number, smooth = true) {
   const n = pages.value;
   const next = props.loop ? ((i % n) + n) % n : Math.max(0, Math.min(n - 1, i));
   index.value = next;
   syncing = true;
-  track.value?.scrollTo({ left: next * slideWidth(), behavior: smooth ? "smooth" : "auto" });
+  track.value?.scrollTo({
+    left: dir() * next * slideWidth(),
+    behavior: smooth ? "smooth" : "auto",
+  });
   setTimeout(() => (syncing = false), 400);
 }
 function onScroll() {
   if (syncing || !track.value) return;
-  const i = Math.round(track.value.scrollLeft / (slideWidth() || 1));
+  const i = Math.round(Math.abs(track.value.scrollLeft) / (slideWidth() || 1));
   if (i !== index.value) index.value = i;
 }
 function count_() {
