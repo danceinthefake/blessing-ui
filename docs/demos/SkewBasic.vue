@@ -4,10 +4,12 @@ import { BlessSkew } from "blessing-ui";
 
 <template>
   <div class="row">
-    <BlessSkew color="text" class="pad">Label</BlessSkew>
-    <BlessSkew color="accent" class="pad">Accent</BlessSkew>
-    <BlessSkew color="danger" class="pad">Danger</BlessSkew>
-    <BlessSkew color="surface" class="pad">Surface</BlessSkew>
-    <BlessSkew as="h3" class="pad">as h3</BlessSkew>
+    <BlessSkew color="text" label>Label</BlessSkew>
+    <BlessSkew color="accent" label>Accent</BlessSkew>
+    <BlessSkew color="danger" label>Danger</BlessSkew>
+    <BlessSkew color="surface" label>Surface</BlessSkew>
+    <BlessSkew as="h3" class="pad" style="margin: 0; border: 1px solid var(--bless-color-border)"
+      >bare skew, as h3</BlessSkew
+    >
   </div>
 </template>

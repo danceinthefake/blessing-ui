@@ -30,7 +30,7 @@ const cast = [
         <dl class="credits__list">
           <template v-for="[role, name] in staff" :key="role">
             <dt>
-              <BlessSkew color="text" class="credits__role">{{ role }}</BlessSkew>
+              <BlessSkew color="text" label class="credits__role">{{ role }}</BlessSkew>
             </dt>
             <dd>{{ name }}</dd>
           </template>
@@ -42,7 +42,7 @@ const cast = [
         <dl class="credits__list">
           <template v-for="[chara, actor] in cast" :key="chara">
             <dt>
-              <BlessSkew color="accent" class="credits__role">{{ chara }}</BlessSkew>
+              <BlessSkew color="accent" label class="credits__role">{{ chara }}</BlessSkew>
             </dt>
             <dd>{{ actor }}</dd>
           </template>
@@ -76,8 +76,6 @@ const cast = [
   font-size: var(--bless-text-sm);
 }
 .credits__role {
-  padding: 2px var(--bless-space-3);
-  font-size: var(--bless-text-xs);
   white-space: nowrap;
 }
 .credits__sep {

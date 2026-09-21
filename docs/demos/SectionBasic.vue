@@ -15,7 +15,7 @@ import { BlessBadge, BlessDash, BlessSection, BlessSkew, BlessText } from "bless
       :heading-level="3"
       class="boxed"
     >
-      <BlessText as="p"><BlessSkew color="text" class="pad">原作</BlessSkew> 丸戸史明</BlessText>
+      <BlessText as="p"><BlessSkew color="text" label>原作</BlessSkew> 丸戸史明</BlessText>
     </BlessSection>
   </div>
 </template>
