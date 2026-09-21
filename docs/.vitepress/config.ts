@@ -70,6 +70,7 @@ export default defineConfig({
             { text: "useScrollSpy", link: "/guide/scroll-spy" },
             { text: "useAnimateOnScroll", link: "/guide/animate-on-scroll" },
             { text: "Gestures", link: "/guide/gestures" },
+            { text: "Browser composables", link: "/guide/browser" },
             { text: "Right-to-left", link: "/guide/rtl" },
             { text: "Brand", link: "/guide/brand" },
             { text: "Story", link: "/guide/story" },
