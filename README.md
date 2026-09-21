@@ -114,7 +114,7 @@ import {
 | `BlessMockup`                         | Browser / window / phone frame           | `type`, `title`, `dark`                                                                            |
 | `BlessItem`                           | Media + title + description + actions    | `title`, `description`, `href`, `variant` plain/outline/surface, `size`; `#media` `#actions`       |
 | `BlessAvatar`                         | Image with initials fallback             | `src`, `name`, `size`, `lean`, `color`                                                           |
-| `BlessSkeleton`                       | Shimmer placeholder                      | `width`, `height`, `lines`, `circle`                                                               |
+| `BlessSkeleton`                       | Shimmer placeholder                      | `width`, `height`, `lines`, `avatar`                                                               |
 | `BlessAspectRatio`                    | Ratio box                                | `ratio`                                                                                            |
 | `BlessProgress`                       | Bar, determinate or not                  | `value`, `max`, `label`, `showValue`, `color`, `size`                                              |
 | `BlessAlert`                          | Inline notice                            | `title`, `color`, `live`, `dismissible`, `v-model`; `#icon` `#title`                               |

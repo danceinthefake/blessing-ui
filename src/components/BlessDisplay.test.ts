@@ -16,11 +16,11 @@ test("BlessProgress determinate / indeterminate", () => {
   expect(i.find('[role="progressbar"]').attributes("aria-valuenow")).toBeUndefined();
 });
 
-test("BlessSkeleton lines / circle", () => {
+test("BlessSkeleton lines / avatar", () => {
   expect(mount(BlessSkeleton, { props: { lines: 3 } }).findAll(".bless-skeleton")).toHaveLength(3);
   expect(
-    mount(BlessSkeleton, { props: { circle: true, width: "40px", height: "40px" } }).classes(),
-  ).toContain("bless-skeleton--circle");
+    mount(BlessSkeleton, { props: { avatar: true, width: "40px", height: "40px" } }).classes(),
+  ).toContain("bless-skeleton--avatar");
 });
 
 test("BlessAvatar initials fallback and image error", async () => {
