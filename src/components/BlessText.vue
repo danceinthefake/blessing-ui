@@ -4,11 +4,14 @@ defineOptions({ name: "BlessText" });
 withDefaults(
   defineProps<{
     as?: string;
-    size?: "2xs" | "xs" | "sm" | "md" | "lg" | "xl" | "display";
+    size?: "2xs" | "xs" | "sm" | "md" | "lg" | "xl" | "headline" | "display";
     weight?: "thin" | "light" | "normal" | "bold";
     tracking?: "tight" | "normal" | "wide" | "wider";
     leading?: "none" | "tight" | "normal";
+    /** shortcut for color="muted" */
     muted?: boolean;
+    /** accent renders --bless-color-accent-text: the accent darkened for 4.5:1 as text */
+    color?: "text" | "muted" | "accent" | "danger";
     uppercase?: boolean;
   }>(),
   { as: "span", size: "md", weight: "normal", tracking: "normal", leading: "normal" },
@@ -24,7 +27,8 @@ withDefaults(
       `bless-text--w-${weight}`,
       `bless-text--t-${tracking}`,
       `bless-text--l-${leading}`,
-      { 'bless-text--muted': muted, 'bless-text--upper': uppercase },
+      { 'bless-text--muted': muted || color === 'muted', 'bless-text--upper': uppercase },
+      color && color !== 'muted' ? `bless-text--c-${color}` : '',
     ]"
   >
     <slot />
@@ -54,6 +58,9 @@ withDefaults(
 }
 .bless-text--xl {
   font-size: var(--bless-text-xl);
+}
+.bless-text--headline {
+  font-size: var(--bless-text-headline);
 }
 .bless-text--display {
   font-size: var(--bless-text-display);
@@ -93,6 +100,12 @@ withDefaults(
 }
 .bless-text--muted {
   color: var(--bless-color-text-muted);
+}
+.bless-text--c-accent {
+  color: var(--bless-color-accent-text);
+}
+.bless-text--c-danger {
+  color: var(--bless-color-danger);
 }
 .bless-text--upper {
   text-transform: uppercase;

@@ -6863,7 +6863,7 @@
    },
    {
     "name": "size",
-    "type": "\"md\" | \"sm\" | \"xs\" | \"lg\" | \"xl\" | \"2xs\" | \"display\" | undefined",
+    "type": "\"md\" | \"sm\" | \"xs\" | \"lg\" | \"xl\" | \"2xs\" | \"headline\" | \"display\" | undefined",
     "required": false,
     "default": "\"md\"",
     "description": ""
@@ -6893,7 +6893,13 @@
     "name": "muted",
     "type": "boolean | undefined",
     "required": false,
-    "description": ""
+    "description": "shortcut for color=\"muted\""
+   },
+   {
+    "name": "color",
+    "type": "\"text\" | \"accent\" | \"danger\" | \"muted\" | undefined",
+    "required": false,
+    "description": "accent renders --bless-color-accent-text: the accent darkened for 4.5:1 as text"
    },
    {
     "name": "uppercase",
