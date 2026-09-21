@@ -48,6 +48,7 @@ const fmt = (v: number) => (props.format ?? String)(v);
         class="bless-metergroup__seg"
         :style="{ '--_p': `${pct(s)}%`, background: col(s, i) }"
         :title="`${s.label}: ${fmt(s.value)}`"
+        aria-hidden="true"
       />
     </div>
     <ul v-if="legend" class="bless-metergroup__legend">
