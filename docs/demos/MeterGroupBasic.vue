@@ -11,5 +11,11 @@ const segs = [
 <template>
   <div class="col" style="max-width: 480px">
     <BlessMeterGroup :segments="segs" :max="100" label="Storage" :format="(v) => `${v} GB`" />
+    <BlessMeterGroup
+      :segments="segs.slice(0, 3)"
+      label="Votes"
+      orientation="vertical"
+      style="margin-top: 16px"
+    />
   </div>
 </template>
