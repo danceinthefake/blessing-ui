@@ -68,7 +68,7 @@ const emit = defineEmits<{ remove: [] }>();
   width: 18px;
   height: 18px;
   object-fit: cover;
-  border-radius: 50%;
+  border-radius: var(--bless-radius-petal); /* a petal, like the chip — never a circle */
 }
 .bless-chip__remove {
   margin-inline-end: calc(-1 * var(--bless-space-1));
