@@ -44,6 +44,8 @@ const { theme, isDark, set, toggle } = useTheme();
   try {
     const t = localStorage.getItem("bless-theme");
     if (t === "dark" || t === "light") document.documentElement.dataset.theme = t;
+    const p = localStorage.getItem("bless-palette");
+    if (p) document.documentElement.dataset.palette = p;
   } catch {}
 </script>
 ```
