@@ -45,7 +45,7 @@ const open = ref<Record<string, boolean>>({});
         <div>
           <BlessText as="p" size="xs" muted>{{ c.reading }}</BlessText>
           <BlessText as="p"
-            ><BlessSkew color="text" class="chara__tag">{{ c.role }}</BlessSkew></BlessText
+            ><BlessSkew color="text" label>{{ c.role }}</BlessSkew></BlessText
           >
           <BlessText as="p" size="sm" style="margin-top: 8px">{{ c.bio }}</BlessText>
           <BlessText as="p" size="sm" muted style="margin-top: 12px"
@@ -85,10 +85,6 @@ const open = ref<Record<string, boolean>>({});
   display: flex;
   gap: var(--bless-space-6);
   align-items: flex-start;
-}
-.chara__tag {
-  padding: 2px var(--bless-space-3);
-  font-size: var(--bless-text-xs);
 }
 @media (max-width: 800px) {
   .chara__art--lg {

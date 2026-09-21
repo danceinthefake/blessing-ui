@@ -5953,7 +5953,13 @@
     "type": "\"text\" | \"accent\" | \"danger\" | \"none\" | \"surface\" | undefined",
     "required": false,
     "default": "\"none\"",
-    "description": "background token: text | accent | danger | surface"
+    "description": "fill: text | accent | danger | surface; `none` just leans"
+   },
+   {
+    "name": "label",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": "a standalone label: label padding and type"
    }
   ],
   "events": [],
