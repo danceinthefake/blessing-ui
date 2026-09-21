@@ -1,0 +1,27 @@
+docs/demos/AvatarBasic.vue
+  s_9ec1000e308ddb::t_b56059eb98c252 11-12
+docs/demos/IndicatorBasic.vue
+  s_9ec1000e308ddb::t_b56059eb98c252 15
+src/components/BlessAvatar.vue
+  s_9ec1000e308ddb::t_b56059eb98c252 13-14,39-40,94,98,106
+docs/components/avatar.md
+  s_9ec1000e308ddb::t_b56059eb98c252 13-16
+docs/.vitepress/meta.json
+  s_9ec1000e308ddb::t_b56059eb98c252 479,482
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "221fdb4fc81358a7a06ffac30ddff154586d79af",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "claude-opus-5"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
