@@ -55,7 +55,7 @@ const onClick = (e: MouseEvent) => inactive.value && e.preventDefault();
     :tabindex="href && inactive ? -1 : undefined"
     @click="onClick"
   >
-    <BlessSpinner v-if="loading" size="sm" />
+    <BlessSpinner v-if="loading" size="sm" label="" />
     <slot v-else name="prefix" />
     <slot />
     <slot name="suffix" />

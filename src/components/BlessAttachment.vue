@@ -44,6 +44,7 @@ const ext = computed(() => props.name.split(".").pop()?.slice(0, 4).toUpperCase(
         v-if="state === 'uploading' && progress == null"
         size="sm"
         class="bless-attachment__spinner"
+        label=""
       />
     </span>
     <span class="bless-attachment__body">

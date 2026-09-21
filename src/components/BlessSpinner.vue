@@ -5,7 +5,7 @@ withDefaults(
   defineProps<{
     size?: "sm" | "md" | "lg";
     color?: "text" | "accent" | "current";
-    /** screen-reader text; role=status */
+    /** screen-reader text (role=status); "" when a parent already announces — then it's decorative */
     label?: string;
   }>(),
   { size: "md", color: "current", label: "Loading" },
@@ -16,8 +16,9 @@ withDefaults(
   <span
     class="bless-spinner"
     :class="[`bless-spinner--${size}`, `bless-spinner--${color}`]"
-    role="status"
-    :aria-label="label"
+    :role="label ? 'status' : undefined"
+    :aria-label="label || undefined"
+    :aria-hidden="label ? undefined : 'true'"
   />
 </template>
 

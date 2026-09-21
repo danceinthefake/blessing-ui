@@ -39,7 +39,7 @@ watch(
       :aria-label="label"
       tabindex="-1"
     >
-      <slot name="indicator"><BlessSpinner size="lg" /></slot>
+      <slot name="indicator"><BlessSpinner size="lg" label="" /></slot>
     </div>
   </div>
 </template>
