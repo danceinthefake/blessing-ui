@@ -5,7 +5,7 @@ withDefaults(
   defineProps<{
     title?: string;
     description?: string;
-    /** dashed frame (default) or plain */
+    /** framed (default) or plain, for inside a table or list */
     variant?: "outline" | "plain";
   }>(),
   { variant: "outline" },
@@ -34,14 +34,15 @@ withDefaults(
   align-items: center;
   justify-content: center;
   gap: var(--bless-space-2);
-  padding: var(--bless-space-12) var(--bless-space-6);
+  padding: var(--bless-space-6);
   text-align: center;
   font-family: var(--bless-font-sans);
   color: var(--bless-color-text);
 }
 .bless-empty--outline {
   border-radius: var(--bless-radius);
-  border: var(--bless-border-width) dashed var(--bless-color-text-muted);
+  padding-block: var(--bless-space-12);
+  border: var(--bless-border-width) solid var(--bless-color-border);
 }
 .bless-empty__icon {
   display: inline-grid;
