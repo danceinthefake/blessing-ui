@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, nextTick, ref, watch } from "vue";
+import { computed, nextTick, onMounted, ref, watch } from "vue";
 import { useFieldId } from "../composables/useFieldId";
 import { useFloating } from "../composables/useFloating";
 import { fromISO } from "../composables/date";
@@ -31,20 +31,22 @@ const anchor = ref<HTMLElement>();
 const panel = ref<HTMLElement>();
 const { x, y } = useFloating(anchor, panel, open, { placement: "bottom-start", offset: 4 });
 
-const useNative = computed(
-  () =>
-    props.nativeOnTouch &&
-    !props.range &&
-    typeof matchMedia === "function" &&
-    matchMedia("(pointer: coarse)").matches,
-);
-const fmt = new Intl.DateTimeFormat(props.locale, { dateStyle: "medium" });
+// pointer type is a client fact: decide after mount so server and client render the same button
+const coarse = ref(false);
+onMounted(() => (coarse.value = matchMedia("(pointer: coarse)").matches));
+const useNative = computed(() => props.nativeOnTouch && !props.range && coarse.value);
+const fmt = computed(() => new Intl.DateTimeFormat(props.locale, { dateStyle: "medium" }));
 const text = computed(() => {
   if (!model.value) return "";
+  const f = fmt.value;
   if (Array.isArray(model.value))
-    return `${fmt.format(fromISO(model.value[0]))} – ${fmt.format(fromISO(model.value[1]))}`;
-  return fmt.format(fromISO(model.value));
+    return `${f.format(fromISO(model.value[0]))} – ${f.format(fromISO(model.value[1]))}`;
+  return f.format(fromISO(model.value));
 });
+function close() {
+  open.value = false;
+  anchor.value?.focus();
+}
 
 watch(open, (o) =>
   nextTick(() => {
@@ -56,7 +58,7 @@ watch(open, (o) =>
   }),
 );
 watch(model, (v) => {
-  if (!props.range || Array.isArray(v)) open.value = false;
+  if (open.value && (!props.range || Array.isArray(v))) close();
 });
 function clear() {
   model.value = undefined;
@@ -118,7 +120,9 @@ function clear() {
         class="bless-datepicker__panel"
         :style="{ left: `${x}px`, top: `${y}px` }"
         role="dialog"
+        :aria-label="placeholder"
         @toggle="open = ($event as ToggleEvent).newState === 'open'"
+        @keydown.esc.stop="close"
       >
         <BlessCalendar v-model="model" :range :min :max :locale />
       </div>
