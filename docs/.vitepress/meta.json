@@ -2676,7 +2676,7 @@
     "name": "for",
     "type": "string | undefined",
     "required": false,
-    "description": ""
+    "description": "id of the control; by default the control inside takes the wrapper's id"
    },
    {
     "name": "variant",

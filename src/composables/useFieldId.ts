@@ -38,3 +38,16 @@ export function useFieldState() {
     describedby: field?.describedby ?? ref<string | undefined>(undefined),
   };
 }
+
+/**
+ * Label wrappers (FloatLabel): the id their `for` points at. Inside a BlessField it is the
+ * field's id, so both labels name the same control; otherwise a fresh one is provided for it.
+ */
+export function useLabelFor(explicit?: string) {
+  const outer = inject(key, undefined);
+  const uid = useId();
+  const id = explicit ?? outer?.id ?? uid;
+  if (!outer)
+    provide(key, { id, claimed: false, invalid: ref(false), describedby: ref(undefined) });
+  return id;
+}
