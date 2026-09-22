@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import {} from "vue";
 import { useFieldId } from "../composables/useFieldId";
 
 defineOptions({ name: "BlessColorPicker", inheritAttrs: false });
@@ -7,17 +6,20 @@ defineOptions({ name: "BlessColorPicker", inheritAttrs: false });
 const props = withDefaults(
   defineProps<{
     id?: string;
-    /** preset swatches, hex */
-    swatches?: string[];
+    /** preset swatches: hex, or { value, label } so a screen reader hears a name, not a hex */
+    swatches?: (string | { value: string; label: string })[];
     disabled?: boolean;
+    /** accessible name when there is no visible label (a BlessField's label is used otherwise) */
     label?: string;
     /** show the hex next to the well */
     showValue?: boolean;
   }>(),
-  { swatches: () => [], label: "Colour", showValue: true },
+  { swatches: () => [], showValue: true },
 );
 const model = defineModel<string>({ default: "#e85078" });
 const id = useFieldId(props);
+const norm = (s: string | { value: string; label: string }) =>
+  typeof s === "string" ? { value: s, label: s } : s;
 </script>
 
 <template>
@@ -33,24 +35,24 @@ const id = useFieldId(props);
         :aria-label="label"
       />
     </label>
-    <code v-if="showValue" class="bless-color__value">{{ model }}</code>
+    <output v-if="showValue" :for="id()" class="bless-color__value">{{ model }}</output>
     <div
       v-if="swatches.length"
       class="bless-color__swatches"
       role="group"
-      :aria-label="`${label} presets`"
+      :aria-label="`${label ?? 'Colour'} presets`"
     >
       <button
-        v-for="s in swatches"
-        :key="s"
+        v-for="s in swatches.map(norm)"
+        :key="s.value"
         type="button"
         class="bless-color__swatch"
-        :class="{ 'bless-color__swatch--on': s.toLowerCase() === model.toLowerCase() }"
-        :style="{ '--_c': s }"
-        :aria-label="s"
-        :aria-pressed="s.toLowerCase() === model.toLowerCase()"
+        :class="{ 'bless-color__swatch--on': s.value.toLowerCase() === model.toLowerCase() }"
+        :style="{ '--_c': s.value }"
+        :aria-label="s.label"
+        :aria-pressed="s.value.toLowerCase() === model.toLowerCase()"
         :disabled
-        @click="model = s"
+        @click="model = s.value"
       />
     </div>
   </div>

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import {} from "vue";
 import { useFieldId } from "../composables/useFieldId";
 
 defineOptions({ name: "BlessInput", inheritAttrs: false });

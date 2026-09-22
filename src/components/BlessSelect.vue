@@ -1,5 +1,4 @@
 <script setup lang="ts" generic="T extends string | number">
-import {} from "vue";
 import { useFieldId } from "../composables/useFieldId";
 import type { BlessOption } from "./select";
 
