@@ -11,7 +11,12 @@ export interface BlessEditorLike {
 }
 type Editor = BlessEditorLike;
 
+import { ref } from "vue";
+import { useRovingFocus } from "../composables/useRovingFocus";
+
 defineOptions({ name: "BlessEditor" });
+const toolbar = ref<HTMLElement>();
+useRovingFocus(toolbar); // toolbar pattern: one tab stop, arrows between tools
 
 export type BlessEditorTool =
   | "bold"
@@ -151,7 +156,7 @@ const defs: Record<Exclude<BlessEditorTool, "|">, Def> = {
     :class="{ 'bless-editor--disabled': disabled }"
     :style="{ '--_min': minHeight }"
   >
-    <div class="bless-editor__toolbar" role="toolbar" :aria-label="label">
+    <div ref="toolbar" class="bless-editor__toolbar" role="toolbar" :aria-label="label">
       <slot name="toolbar" :editor>
         <template v-for="(t, i) in tools" :key="i">
           <span v-if="t === '|'" class="bless-editor__sep" aria-hidden="true" />

@@ -16,6 +16,12 @@ A rich-text surface for the cases a `BlessTextarea` can't cover — headings, li
 
 Reach for it only when users must produce formatted text. For comments, notes and messages a textarea is lighter and easier to store.
 
+```sh
+pnpm add @tiptap/vue-3 @tiptap/starter-kit
+```
+
+`@tiptap/vue-3` is an optional peer of the library. `tools` is the toolbar, in order, with `"|"` as a separator; the `#toolbar` slot (`{ editor }`) replaces it entirely for custom buttons. The toolbar is a single tab stop — ← / → move between tools, Home / End jump — and each tool reports `aria-pressed`. Inside the writing area, Tiptap's own shortcuts apply (⌘B, ⌘I, …). `minHeight` sets the writing area; its typography reads the `--bless-*` tokens.
+
 <Demo title="Basic">
   <EditorBasic />
   <template #code>
