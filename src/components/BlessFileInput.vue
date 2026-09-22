@@ -25,8 +25,20 @@ const fs = useFieldState();
 const input = ref<HTMLInputElement>();
 const over = ref(false);
 
+/** does the file match the accept list: mime, `image/*`, or `.ext` */
+function accepts(f: File) {
+  if (!props.accept) return true;
+  const ext = "." + f.name.split(".").pop()!.toLowerCase();
+  return props.accept.split(",").some((a) => {
+    a = a.trim().toLowerCase();
+    if (!a) return false;
+    if (a.startsWith(".")) return a === ext;
+    if (a.endsWith("/*")) return f.type.startsWith(a.slice(0, -1));
+    return f.type === a;
+  });
+}
 function take(list: FileList | null) {
-  const files = Array.from(list ?? []);
+  const files = Array.from(list ?? []).filter(accepts);
   model.value = props.multiple ? [...model.value, ...files] : files.slice(0, 1);
 }
 function onDrop(e: DragEvent) {
@@ -68,6 +80,7 @@ const kb = (n: number) =>
         :multiple
         :disabled
         :aria-invalid="invalid || fs.invalid.value || undefined"
+        :aria-describedby="($attrs['aria-describedby'] as string) ?? fs.describedby.value"
         @change="take(($event.target as HTMLInputElement).files)"
       />
       <span class="bless-file__icon" aria-hidden="true"><slot name="icon">⇪</slot></span>
@@ -112,6 +125,10 @@ const kb = (n: number) =>
   transition:
     border-color var(--bless-duration-base),
     background var(--bless-duration-base);
+}
+/* children don't fire dragleave as the cursor crosses them */
+.bless-file__zone > * {
+  pointer-events: none;
 }
 .bless-file__zone:hover,
 .bless-file__zone--over {
@@ -175,6 +192,8 @@ const kb = (n: number) =>
   color: var(--bless-color-text-muted);
 }
 .bless-file__remove {
+  min-inline-size: 24px;
+  min-block-size: 24px;
   border: 0;
   background: none;
   color: var(--bless-color-text-muted);

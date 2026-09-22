@@ -38,6 +38,22 @@ test("BlessFileInput: change and drop add files, remove works", async () => {
   expect(w.emitted("update:modelValue")!.at(-1)![0]).toEqual([]);
 });
 
+test("BlessFileInput: accept filters dropped files by mime, wildcard and extension", async () => {
+  const w = mount(BlessFileInput, { props: { multiple: true, accept: "image/*,.pdf,text/csv" } });
+  const files = [
+    new File([""], "a.png", { type: "image/png" }),
+    new File([""], "b.pdf", { type: "application/pdf" }),
+    new File([""], "c.csv", { type: "text/csv" }),
+    new File([""], "d.exe", { type: "application/octet-stream" }),
+  ];
+  await w.find(".bless-file__zone").trigger("drop", { dataTransfer: { files } });
+  expect((w.emitted("update:modelValue")![0][0] as File[]).map((f) => f.name)).toEqual([
+    "a.png",
+    "b.pdf",
+    "c.csv",
+  ]);
+});
+
 test("BlessColorPicker: swatch click sets model and aria-pressed", async () => {
   const w = mount(BlessColorPicker, {
     props: { modelValue: "#e85078", swatches: ["#e85078", "#a759ff"] },
