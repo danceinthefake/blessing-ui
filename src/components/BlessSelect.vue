@@ -99,6 +99,9 @@ const isGroup = (o: unknown): o is { label: string; options: BlessOption<T>[] } 
   transform-origin: 0 50%;
   transition: transform var(--bless-duration-slow) var(--bless-ease-out);
 }
+[dir="rtl"] .bless-select__field::after {
+  transform-origin: 100% 50%;
+}
 .bless-select__field:focus-within::after {
   transform: scaleX(1);
 }
