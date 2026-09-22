@@ -21,7 +21,10 @@ let total = 0;
 let contrastTotal = 0;
 const seen = new Map();
 for (const path of pages) {
-  await page.goto(base + path, { waitUntil: "networkidle" });
+  // external media (video page) may never go network-idle; the DOM is what axe needs
+  await page
+    .goto(base + path, { waitUntil: "networkidle", timeout: 20000 })
+    .catch(() => page.waitForLoadState("domcontentloaded"));
   if (!(await page.locator(".demo__preview, .block-frame").count())) continue; // full-page demos live elsewhere
   await page.addScriptTag({ content: axeSrc });
   const r = await page.evaluate(() =>

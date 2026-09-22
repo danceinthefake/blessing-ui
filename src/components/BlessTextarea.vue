@@ -87,6 +87,9 @@ const errId = () => `${id()}-err`;
   transform-origin: 0 50%;
   transition: transform var(--bless-duration-slow) var(--bless-ease-out);
 }
+[dir="rtl"] .bless-textarea__field::after {
+  transform-origin: 100% 50%;
+}
 .bless-textarea__field:focus-within::after {
   transform: scaleX(1);
 }

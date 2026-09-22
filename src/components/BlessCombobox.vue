@@ -294,6 +294,9 @@ function onBlur(e: FocusEvent) {
   transform-origin: 0 50%;
   transition: transform var(--bless-duration-slow) var(--bless-ease-out);
 }
+[dir="rtl"] .bless-combobox__field::after {
+  transform-origin: 100% 50%;
+}
 .bless-combobox--open .bless-combobox__field::after,
 .bless-combobox__field:focus-within::after {
   transform: scaleX(1);

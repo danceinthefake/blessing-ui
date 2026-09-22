@@ -3,14 +3,21 @@ title: InputOTP
 ---
 
 <script setup>
-
+import InputOTPBasic from "../demos/InputOTPBasic.vue";
 </script>
 
 # InputOTP
 
 <p class="bless-lead">One-time code cells</p>
 
-<!-- add docs/demos/InputOTPBasic.vue then re-run pnpm docs:pages, or write a <Demo> here -->
+<Demo title="Basic">
+  <InputOTPBasic />
+  <template #code>
+
+<<< ../demos/InputOTPBasic.vue
+
+  </template>
+</Demo>
 
 ## Usage
 
