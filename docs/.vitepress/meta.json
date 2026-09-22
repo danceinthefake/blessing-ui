@@ -1620,6 +1620,11 @@
   ],
   "events": [
    {
+    "name": "search",
+    "type": "[query: string]",
+    "description": ""
+   },
+   {
     "name": "create",
     "type": "[label: string]",
     "description": ""
