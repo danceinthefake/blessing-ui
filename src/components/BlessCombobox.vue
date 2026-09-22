@@ -26,7 +26,11 @@ const props = withDefaults(
 );
 
 const model = defineModel<T | T[] | undefined>();
-const emit = defineEmits<{ create: [label: string] }>();
+const emit = defineEmits<{
+  create: [label: string];
+  /** the query as the user types — bind `options` to a fetched list for server-side search */
+  search: [query: string];
+}>();
 
 const id = useFieldId(props)();
 const query = ref("");
@@ -53,7 +57,7 @@ const canCreate = computed(
 );
 const activeId = computed(() =>
   filtered.value[active.value]
-    ? `${id}-opt-${filtered.value[active.value].value}`
+    ? `${id}-opt-${active.value}`
     : canCreate.value
       ? `${id}-create`
       : undefined,
@@ -180,7 +184,10 @@ function onBlur(e: FocusEvent) {
         :aria-invalid="invalid || undefined"
         autocomplete="off"
         @focus="open = true"
-        @input="open = true"
+        @input="
+          open = true;
+          emit('search', query);
+        "
         @keydown="onKey"
         @blur="onBlur"
       />
@@ -205,7 +212,7 @@ function onBlur(e: FocusEvent) {
         <div
           v-for="(o, i) in filtered"
           :key="String(o.value)"
-          :id="`${id}-opt-${o.value}`"
+          :id="`${id}-opt-${i}`"
           role="option"
           class="bless-combobox__option"
           :class="{
