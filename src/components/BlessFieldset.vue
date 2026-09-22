@@ -43,9 +43,10 @@ const id = useId();
 }
 .bless-fieldset__legend {
   padding: 0 var(--bless-space-2);
-  font-size: var(--bless-text-xs);
+  font-size: var(--bless-text-sm);
   font-weight: var(--bless-font-weight-bold);
-  letter-spacing: var(--bless-tracking-wider);
+  letter-spacing: var(--bless-tracking-wide);
+  line-height: var(--bless-leading-tight);
   text-transform: uppercase;
 }
 .bless-fieldset__toggle {
