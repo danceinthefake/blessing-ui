@@ -1,5 +1,9 @@
 <script setup lang="ts">
+import { ref } from "vue";
+import { useRovingFocus } from "../composables/useRovingFocus";
 defineOptions({ name: "BlessToolbar" });
+const root = ref<HTMLElement>();
+useRovingFocus(root); // one tab stop; ← / → between the controls
 withDefaults(defineProps<{ label?: string; surface?: "surface" | "bg" | "none" }>(), {
   label: "Toolbar",
   surface: "surface",
@@ -8,6 +12,7 @@ withDefaults(defineProps<{ label?: string; surface?: "surface" | "bg" | "none" }
 
 <template>
   <div
+    ref="root"
     class="bless-toolbar"
     :class="`bless-toolbar--${surface}`"
     role="toolbar"
