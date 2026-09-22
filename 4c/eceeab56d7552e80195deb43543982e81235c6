@@ -1,0 +1,30 @@
+src/components/BlessEditor.vue
+  s_9ec1000e308ddb::t_9948cf0c9645bf 14-16,18-19,159
+src/components/BlessToolbar.vue
+  s_9ec1000e308ddb::t_9948cf0c9645bf 2-3,5-6,15
+src/composables/useRovingFocus.ts
+  s_9ec1000e308ddb::t_9948cf0c9645bf 1-40,45-62
+  s_9ec1000e308ddb::t_41a9fd60b678cc 41-44
+docs/components/button-group.md
+  s_9ec1000e308ddb::t_9948cf0c9645bf 15
+src/index.ts
+  s_9ec1000e308ddb::t_9948cf0c9645bf 127
+docs/components/editor.md
+  s_9ec1000e308ddb::t_9948cf0c9645bf 19-24
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "4ceceeab56d7552e80195deb43543982e81235c6",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "claude-opus-5"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
