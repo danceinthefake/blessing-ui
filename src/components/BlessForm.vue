@@ -1,5 +1,12 @@
+<script lang="ts">
+import type { InjectionKey, Ref } from "vue";
+/** BlessField reads these: whether the form has been submitted, and a counter bumped on reset */
+export const blessFormKey: InjectionKey<{ submitted: Ref<boolean>; resets: Ref<number> }> =
+  Symbol("bless-form");
+</script>
+
 <script setup lang="ts">
-import { ref } from "vue";
+import { provide, ref } from "vue";
 
 defineOptions({ name: "BlessForm" });
 
@@ -9,6 +16,8 @@ const emit = defineEmits<{
 }>();
 const form = ref<HTMLFormElement>();
 const submitted = ref(false);
+const resets = ref(0);
+provide(blessFormKey, { submitted, resets });
 
 function onSubmit(e: SubmitEvent) {
   submitted.value = true;
@@ -27,6 +36,7 @@ defineExpose({
   reset: () => {
     form.value?.reset();
     submitted.value = false;
+    resets.value++;
   },
   el: form,
 });
@@ -39,6 +49,10 @@ defineExpose({
     :class="{ 'bless-form--submitted': submitted }"
     novalidate
     @submit="onSubmit"
+    @reset="
+      submitted = false;
+      resets++;
+    "
   >
     <slot :submitted />
   </form>

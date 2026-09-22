@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useFieldId } from "../composables/useFieldId";
+import { useFieldId, useFieldState } from "../composables/useFieldId";
 
 defineOptions({ name: "BlessInput", inheritAttrs: false });
 
@@ -21,6 +21,7 @@ const props = withDefaults(
 
 const model = defineModel<string | number>({ default: "" });
 const id = useFieldId(props);
+const fs = useFieldState();
 const descId = () => `${id()}-desc`;
 const errId = () => `${id()}-err`;
 
@@ -47,8 +48,8 @@ defineExpose({ id });
         :disabled
         :readonly
         class="bless-input__control"
-        :aria-invalid="invalid || error ? 'true' : undefined"
-        :aria-describedby="error ? errId() : description ? descId() : undefined"
+        :aria-invalid="invalid || error || fs.invalid.value ? 'true' : undefined"
+        :aria-describedby="error ? errId() : description ? descId() : fs.describedby.value"
       />
       <span v-if="$slots.suffix" class="bless-input__affix bless-input__affix--suffix"
         ><slot name="suffix"

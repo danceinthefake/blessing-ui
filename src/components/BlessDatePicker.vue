@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, nextTick, onMounted, ref, watch } from "vue";
-import { useFieldId } from "../composables/useFieldId";
+import { useFieldId, useFieldState } from "../composables/useFieldId";
 import { useFloating } from "../composables/useFloating";
 import { fromISO } from "../composables/date";
 import BlessCalendar from "./BlessCalendar.vue";
@@ -26,6 +26,7 @@ const props = withDefaults(
 
 const model = defineModel<string | [string, string] | undefined>();
 const id = useFieldId(props)();
+const fs = useFieldState();
 const open = ref(false);
 const anchor = ref<HTMLElement>();
 const panel = ref<HTMLElement>();
@@ -82,7 +83,7 @@ function clear() {
         :max
         :disabled
         class="bless-datepicker__native"
-        :aria-invalid="invalid || undefined"
+        :aria-invalid="invalid || fs.invalid.value || undefined"
       />
     </span>
     <template v-else>
@@ -94,7 +95,7 @@ function clear() {
         :disabled
         :aria-haspopup="'dialog'"
         :aria-expanded="open"
-        :aria-invalid="invalid || undefined"
+        :aria-invalid="invalid || fs.invalid.value || undefined"
         @click="open = !open"
         @keydown.esc="open = false"
       >

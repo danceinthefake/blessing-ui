@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useFieldId } from "../composables/useFieldId";
+import { useFieldId, useFieldState } from "../composables/useFieldId";
 
 defineOptions({ name: "BlessTextarea", inheritAttrs: false });
 
@@ -23,6 +23,7 @@ const props = withDefaults(
 
 const model = defineModel<string>({ default: "" });
 const id = useFieldId(props);
+const fs = useFieldState();
 const descId = () => `${id()}-desc`;
 const errId = () => `${id()}-err`;
 </script>
@@ -46,8 +47,8 @@ const errId = () => `${id()}-err`;
         :readonly
         :maxlength
         class="bless-textarea__control"
-        :aria-invalid="invalid || error ? 'true' : undefined"
-        :aria-describedby="error ? errId() : description ? descId() : undefined"
+        :aria-invalid="invalid || error || fs.invalid.value ? 'true' : undefined"
+        :aria-describedby="error ? errId() : description ? descId() : fs.describedby.value"
       />
     </div>
     <div class="bless-textarea__foot">

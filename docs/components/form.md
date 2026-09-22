@@ -10,7 +10,7 @@ import FormBasic from "../demos/FormBasic.vue";
 
 <p class="bless-lead">Constraint-API form + field wiring</p>
 
-`BlessField` hands its label's `for` id to the first control inside it, so `<BlessField label="Name"><BlessInput /></BlessField>` is already associated. The slot props (`id`, `error`, `describedby`) are for when you need more than one control in a field or the error wiring, as below.
+Use the browser's own validation — `required`, `type="email"`, `minlength`, `pattern` — and let `BlessField` show the message. There is no schema, no rules object, nothing to import for the common case.
 
 <Demo title="Basic">
   <FormBasic />
@@ -21,7 +21,13 @@ import FormBasic from "../demos/FormBasic.vue";
   </template>
 </Demo>
 
-`BlessField` hands its label's `for` id to the first control inside it, so `<BlessField label="Name"><BlessInput /></BlessField>` is already associated; the slot props (`id`, `error`, `describedby`) are there for when you need more than one control or the error wiring.
+## How the wiring works
+
+- `BlessField` gives the first control inside it the label's `for` id, `aria-invalid` while it shows an error, and `aria-describedby` pointing at the description or the error — whichever is showing. Every Bless control takes them; nothing to pass. The slot props (`id`, `error`, `describedby`) remain for a plain `<input>` or a field with two controls.
+- A native validation message appears on the browser's `invalid` event (a submit) or on blur — but blur only once the field has a value or the form has been submitted, so tabbing through an empty form stays quiet.
+- `error` is for what the browser can't know: the server said no. It wins over the native message while set; clear it when the user edits.
+- `BlessForm` sets `novalidate` so the browser's own bubble never shows; the field speaks instead. `@submit` fires with `(FormData, event)` only when everything is valid; `@invalid` fires with the form element on a failed submit, after focus has moved to the first invalid control. Reset clears every field's message.
+- `#default="{ submitted }"` tells you whether a submit has been tried — for a summary line or a disabled button.
 
 ## Usage
 

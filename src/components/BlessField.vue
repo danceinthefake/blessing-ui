@@ -1,6 +1,8 @@
 <script setup lang="ts">
-import { ref, useId } from "vue";
-import { provideFieldId } from "../composables/useFieldId";
+import { ref, useId, watch } from "vue";
+import { computed, inject } from "vue";
+import { provideField } from "../composables/useFieldId";
+import { blessFormKey } from "./BlessForm.vue";
 import BlessLabel from "./BlessLabel.vue";
 
 defineOptions({ name: "BlessField" });
@@ -17,14 +19,30 @@ const props = defineProps<{
 
 const uid = useId();
 const id = props.id ?? uid;
-provideFieldId(id); // the first control inside picks this up as its id — no v-slot wiring needed
 const nativeError = ref("");
+const form = inject(blessFormKey, undefined);
+const shownError = computed(() => props.error || nativeError.value);
+const describedby = computed(() =>
+  shownError.value ? `${id}-err` : props.description ? `${id}-desc` : undefined,
+);
+// the first control inside takes this id, the invalid flag and the describedby — no v-slot wiring
+provideField(
+  id,
+  computed(() => !!shownError.value),
+  describedby,
+);
 
-/** call on the control's blur/invalid to surface Constraint API messages */
+/** surface Constraint API messages — on blur only once the field has been typed in or the form submitted */
 function validate(e: Event) {
   const el = e.target as HTMLInputElement | null;
-  nativeError.value = el?.validationMessage ?? "";
+  if (!el) return;
+  if (e.type === "blur" && !el.value && !form?.submitted.value) return;
+  nativeError.value = el.validationMessage ?? "";
 }
+watch(
+  () => form?.resets.value,
+  () => (nativeError.value = ""),
+);
 </script>
 
 <template>

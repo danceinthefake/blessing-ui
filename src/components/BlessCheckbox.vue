@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useFieldId } from "../composables/useFieldId";
+import { useFieldId, useFieldState } from "../composables/useFieldId";
 
 defineOptions({ name: "BlessCheckbox", inheritAttrs: false });
 
@@ -14,6 +14,7 @@ const props = defineProps<{
 
 const model = defineModel<boolean | Array<string | number>>({ default: false });
 const id = useFieldId(props);
+const fs = useFieldState();
 </script>
 
 <template>
@@ -31,8 +32,8 @@ const id = useFieldId(props);
       :disabled
       :indeterminate
       class="bless-checkbox__input"
-      :aria-invalid="invalid || undefined"
-      :aria-describedby="description ? `${id()}-desc` : undefined"
+      :aria-invalid="invalid || fs.invalid.value || undefined"
+      :aria-describedby="description ? `${id()}-desc` : fs.describedby.value"
     />
     <span class="bless-checkbox__box" aria-hidden="true">
       <svg viewBox="0 0 16 16" class="bless-checkbox__check"><path d="M3 8.5l3 3 7-7" /></svg>
