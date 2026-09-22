@@ -1505,10 +1505,10 @@
    },
    {
     "name": "swatches",
-    "type": "string[] | undefined",
+    "type": "(string | { value: string; label: string; })[] | undefined",
     "required": false,
     "default": "[]",
-    "description": "preset swatches, hex"
+    "description": "preset swatches: hex, or { value, label } so a screen reader hears a name, not a hex"
    },
    {
     "name": "disabled",
@@ -1520,8 +1520,7 @@
     "name": "label",
     "type": "string | undefined",
     "required": false,
-    "default": "\"Colour\"",
-    "description": ""
+    "description": "accessible name when there is no visible label (a BlessField's label is used otherwise)"
    },
    {
     "name": "showValue",
