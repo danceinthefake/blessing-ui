@@ -99,6 +99,11 @@ test("BlessToolbar / BlessFloatLabel / BlessFieldset / BlessPanel render + toggl
     slots: { default: () => h(BlessInput, { id: "x", placeholder: " " }) },
   });
   expect(f.find("label").attributes("for")).toBe("x");
+  const auto = mount(BlessFloatLabel, {
+    props: { label: "Name" },
+    slots: { default: () => h(BlessInput, { placeholder: " " }) },
+  });
+  expect(auto.find("label").attributes("for")).toBe(auto.find("input").attributes("id"));
   const fs = mount(BlessFieldset, {
     props: { legend: "L", toggleable: true },
     slots: { default: "body" },
