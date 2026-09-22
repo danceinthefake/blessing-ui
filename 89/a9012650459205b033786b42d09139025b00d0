@@ -1,0 +1,58 @@
+src/components/BlessTimePicker.vue
+  s_9ec1000e308ddb::t_aa9d2e45cfe8ba 3,27,69
+src/components/BlessInput.vue
+  s_9ec1000e308ddb::t_aa9d2e45cfe8ba 2,24,51-52
+src/components/BlessCombobox.vue
+  s_9ec1000e308ddb::t_aa9d2e45cfe8ba 3,36,185
+src/components/BlessForm.vue
+  s_9ec1000e308ddb::t_aa9d2e45cfe8ba 1-7,9,19-20,39,52-55
+docs/components/form.md
+  s_9ec1000e308ddb::t_183a42cd3c8e55 13,24-30
+src/components/BlessCascadeSelect.vue
+  s_9ec1000e308ddb::t_aa9d2e45cfe8ba 4,33,159
+src/components/BlessMisc.test.ts
+  s_9ec1000e308ddb::t_8d481a17b5cb01 129,131-132,135-136
+src/components/BlessDatePicker.vue
+  s_9ec1000e308ddb::t_aa9d2e45cfe8ba 3,29,86,98
+docs/demos/FormBasic.vue
+  s_9ec1000e308ddb::t_183a42cd3c8e55 12-13,15-16,18-19,21-22
+docs/.vitepress/blocks.json
+  s_9ec1000e308ddb::t_1f92bc3de8d42e 2-114
+src/composables/useFieldId.test.ts
+  s_9ec1000e308ddb::t_8d481a17b5cb01 17-31
+docs/blocks/site-frame.md
+  s_9ec1000e308ddb::t_68e015f02a8870 1-14
+src/components/BlessTextarea.vue
+  s_9ec1000e308ddb::t_aa9d2e45cfe8ba 2,26,50-51
+src/components/BlessCheckbox.vue
+  s_9ec1000e308ddb::t_aa9d2e45cfe8ba 2,17,35-36
+src/components/BlessField.vue
+  s_9ec1000e308ddb::t_aa9d2e45cfe8ba 2-5,23-33,35,38-40,42-45
+src/components/BlessSelect.vue
+  s_9ec1000e308ddb::t_aa9d2e45cfe8ba 2,23,43-46
+src/components/BlessInputTags.vue
+  s_9ec1000e308ddb::t_aa9d2e45cfe8ba 3,25,69
+src/components/BlessInputNumber.vue
+  s_9ec1000e308ddb::t_aa9d2e45cfe8ba 3,29,84
+src/composables/useFieldId.ts
+  s_9ec1000e308ddb::t_aa9d2e45cfe8ba 1,3-10,13-19,32-39
+  s_9ec1000e308ddb::t_de93070e54436d 40
+src/components/BlessFileInput.vue
+  s_9ec1000e308ddb::t_aa9d2e45cfe8ba 3,24,70
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "89a9012650459205b033786b42d09139025b00d0",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "claude-opus-5"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
