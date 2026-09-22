@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { useFieldId } from "../composables/useFieldId";
+import { useFieldId, useFieldState } from "../composables/useFieldId";
 import BlessChip from "./BlessChip.vue";
 
 defineOptions({ name: "BlessInputTags", inheritAttrs: false });
@@ -22,6 +22,7 @@ const props = withDefaults(
 );
 const model = defineModel<string[]>({ default: () => [] });
 const id = useFieldId(props);
+const fs = useFieldState();
 const draft = ref("");
 
 function add() {
@@ -65,7 +66,7 @@ function onKey(e: KeyboardEvent) {
       :placeholder="model.length ? '' : placeholder"
       :disabled
       :aria-label="label"
-      :aria-invalid="invalid || undefined"
+      :aria-invalid="invalid || fs.invalid.value || undefined"
       @keydown="onKey"
       @blur="add"
     />

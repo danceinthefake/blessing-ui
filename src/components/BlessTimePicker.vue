@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from "vue";
-import { useFieldId } from "../composables/useFieldId";
+import { useFieldId, useFieldState } from "../composables/useFieldId";
 
 defineOptions({ name: "BlessTimePicker", inheritAttrs: false });
 
@@ -24,6 +24,7 @@ const props = withDefaults(
 /** "HH:MM" or "HH:MM:SS" */
 const model = defineModel<string>({ default: "" });
 const id = useFieldId(props);
+const fs = useFieldState();
 const fmt = (h: number, m: number) =>
   props.hour12
     ? `${((h + 11) % 12) + 1}:${String(m).padStart(2, "0")} ${h < 12 ? "AM" : "PM"}`
@@ -65,7 +66,7 @@ const options = computed(() => {
       :step="seconds ? 1 : step * 60"
       :disabled
       :aria-label="label"
-      :aria-invalid="invalid || undefined"
+      :aria-invalid="invalid || fs.invalid.value || undefined"
     />
     <datalist :id="`${id()}-list`">
       <option v-for="o in options" :key="o.value" :value="o.value">{{ o.label }}</option>

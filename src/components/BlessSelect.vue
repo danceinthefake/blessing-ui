@@ -1,5 +1,5 @@
 <script setup lang="ts" generic="T extends string | number">
-import { useFieldId } from "../composables/useFieldId";
+import { useFieldId, useFieldState } from "../composables/useFieldId";
 import type { BlessOption } from "./select";
 
 defineOptions({ name: "BlessSelect", inheritAttrs: false });
@@ -20,6 +20,7 @@ const props = withDefaults(
 
 const model = defineModel<T | undefined>();
 const id = useFieldId(props);
+const fs = useFieldState();
 const isGroup = (o: unknown): o is { label: string; options: BlessOption<T>[] } =>
   !!o && typeof o === "object" && "options" in o;
 </script>
@@ -39,8 +40,10 @@ const isGroup = (o: unknown): o is { label: string; options: BlessOption<T>[] } 
         v-model="model"
         :disabled
         class="bless-select__control"
-        :aria-invalid="invalid || error ? 'true' : undefined"
-        :aria-describedby="error ? `${id()}-err` : description ? `${id()}-desc` : undefined"
+        :aria-invalid="invalid || error || fs.invalid.value ? 'true' : undefined"
+        :aria-describedby="
+          error ? `${id()}-err` : description ? `${id()}-desc` : fs.describedby.value
+        "
       >
         <option v-if="placeholder" :value="undefined" disabled hidden>{{ placeholder }}</option>
         <template v-for="o in options" :key="isGroup(o) ? o.label : o.value">

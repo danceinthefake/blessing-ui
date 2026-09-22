@@ -1,7 +1,7 @@
 <script setup lang="ts" generic="T extends string | number">
 import { computed, ref, useId, watch } from "vue";
 import { logicalKey } from "../composables/rtl";
-import { useFieldId } from "../composables/useFieldId";
+import { useFieldId, useFieldState } from "../composables/useFieldId";
 import BlessPopover from "./BlessPopover.vue";
 import type { BlessCascadeOption } from "./cascade";
 
@@ -30,6 +30,7 @@ const emit = defineEmits<{
 const open = ref(false);
 const uid = useId();
 const id = useFieldId(props);
+const fs = useFieldState();
 
 /** path of indexes currently drilled into (one per rendered column beyond the first) */
 const trail = ref<number[]>([]);
@@ -155,7 +156,7 @@ watch(open, (o) => {
         :id="id()"
         :disabled
         :aria-label="label ? `${label}: ${text || placeholder}` : undefined"
-        :aria-invalid="invalid || undefined"
+        :aria-invalid="invalid || fs.invalid.value || undefined"
         aria-haspopup="listbox"
         :aria-expanded="open"
       >

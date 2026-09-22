@@ -9,47 +9,17 @@ function onSubmit(d: FormData) {
 
 <template>
   <BlessForm style="max-width: 420px" @submit="onSubmit">
-    <BlessField
-      label="Handle"
-      required
-      description="3–12 chars"
-      v-slot="{ id, error, describedby }"
-    >
-      <BlessInput
-        :id
-        name="handle"
-        required
-        minlength="3"
-        maxlength="12"
-        :invalid="!!error"
-        :aria-describedby="describedby"
-        placeholder="megumi"
-      />
+    <BlessField label="Handle" required description="3–12 chars">
+      <BlessInput name="handle" required minlength="3" maxlength="12" placeholder="megumi" />
     </BlessField>
-    <BlessField label="Email" required v-slot="{ id, error, describedby }">
-      <BlessInput
-        :id
-        name="email"
-        type="email"
-        required
-        :invalid="!!error"
-        :aria-describedby="describedby"
-        placeholder="you@example.com"
-      />
+    <BlessField label="Email" required>
+      <BlessInput name="email" type="email" required placeholder="you@example.com" />
     </BlessField>
-    <BlessField label="Age" hint="optional" v-slot="{ id, error, describedby }">
-      <BlessInput
-        :id
-        name="age"
-        type="number"
-        min="13"
-        max="120"
-        :invalid="!!error"
-        :aria-describedby="describedby"
-      />
+    <BlessField label="Age" hint="optional">
+      <BlessInput name="age" type="number" min="13" max="120" />
     </BlessField>
-    <BlessField label="Server says" error="Handle already taken" v-slot="{ id }">
-      <BlessInput :id name="x" model-value="megumi" invalid />
+    <BlessField label="Server says" error="Handle already taken">
+      <BlessInput name="x" model-value="megumi" />
     </BlessField>
     <div class="row">
       <BlessButton type="submit" color="accent">Submit</BlessButton>

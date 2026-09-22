@@ -1,6 +1,6 @@
 <script setup lang="ts" generic="T extends string | number">
 import { computed, nextTick, ref, watch } from "vue";
-import { useFieldId } from "../composables/useFieldId";
+import { useFieldId, useFieldState } from "../composables/useFieldId";
 import { useFloating } from "../composables/useFloating";
 import BlessBadge from "./BlessBadge.vue";
 import type { BlessOption } from "./select";
@@ -33,6 +33,7 @@ const emit = defineEmits<{
 }>();
 
 const id = useFieldId(props)();
+const fs = useFieldState();
 const query = ref("");
 const open = ref(false);
 const active = ref(0);
@@ -181,7 +182,7 @@ function onBlur(e: FocusEvent) {
         :aria-expanded="open"
         :aria-controls="`${id}-list`"
         :aria-activedescendant="open ? activeId : undefined"
-        :aria-invalid="invalid || undefined"
+        :aria-invalid="invalid || fs.invalid.value || undefined"
         autocomplete="off"
         @focus="open = true"
         @input="

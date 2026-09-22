@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
-import { useFieldId } from "../composables/useFieldId";
+import { useFieldId, useFieldState } from "../composables/useFieldId";
 
 defineOptions({ name: "BlessInputNumber", inheritAttrs: false });
 
@@ -26,6 +26,7 @@ const props = withDefaults(
 );
 const model = defineModel<number | null>({ default: null });
 const id = useFieldId(props);
+const fs = useFieldState();
 const focused = ref(false);
 const fmt = computed(() => new Intl.NumberFormat(props.locale, props.format));
 const shown = computed(() =>
@@ -80,7 +81,7 @@ const nudge = (d: number) => (model.value = clamp((model.value ?? 0) + d * props
       :value="shown"
       :disabled
       :aria-label="label"
-      :aria-invalid="invalid || undefined"
+      :aria-invalid="invalid || fs.invalid.value || undefined"
       role="spinbutton"
       :aria-valuenow="model ?? undefined"
       :aria-valuemin="min"

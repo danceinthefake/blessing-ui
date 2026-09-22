@@ -126,9 +126,14 @@ test("BlessField wires label/id and surfaces native validation message", async (
   const input = w.find("input");
   expect(w.find("label").attributes("for")).toBe(input.attributes("id"));
   expect(w.find(".bless-field__description").text()).toBe("hint");
+  // blur of an untouched empty field stays quiet; the browser's invalid event (a submit) speaks
   await input.trigger("blur");
+  expect(w.find('[role="alert"]').exists()).toBe(false);
+  await input.trigger("invalid");
   expect(w.find('[role="alert"]').exists()).toBe(true);
   expect(w.find(".bless-field__description").exists()).toBe(false);
+  // the control got the field's wiring without v-slot
+  expect(w.find("input").attributes("aria-describedby")).toBeUndefined(); // plain <input>: not a Bless control
   await w.setProps({ error: "custom" });
   expect(w.find('[role="alert"]').text()).toBe("custom");
   w.unmount();

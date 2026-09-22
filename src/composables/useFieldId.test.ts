@@ -14,3 +14,18 @@ test("BlessField hands its id to the first control; later controls and explicit 
   expect(ids[1]).not.toBe(labelFor);
   expect(ids[2]).toBe("custom");
 });
+
+test("BlessField hands invalid + describedby to the control inside, no v-slot", async () => {
+  const w = mount(BlessField, {
+    props: { label: "Email", description: "we won't share it" },
+    slots: { default: () => h(BlessInput) },
+    attachTo: document.body,
+  });
+  const input = w.find("input");
+  expect(input.attributes("aria-describedby")).toMatch(/-desc$/);
+  expect(input.attributes("aria-invalid")).toBeUndefined();
+  await w.setProps({ error: "Taken" });
+  expect(input.attributes("aria-invalid")).toBe("true");
+  expect(input.attributes("aria-describedby")).toMatch(/-err$/);
+  w.unmount();
+});

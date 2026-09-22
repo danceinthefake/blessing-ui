@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { useFieldId } from "../composables/useFieldId";
+import { useFieldId, useFieldState } from "../composables/useFieldId";
 
 defineOptions({ name: "BlessFileInput", inheritAttrs: false });
 
@@ -21,6 +21,7 @@ const props = withDefaults(
 );
 const model = defineModel<File[]>({ default: () => [] });
 const id = useFieldId(props);
+const fs = useFieldState();
 const input = ref<HTMLInputElement>();
 const over = ref(false);
 
@@ -66,7 +67,7 @@ const kb = (n: number) =>
         :accept
         :multiple
         :disabled
-        :aria-invalid="invalid || undefined"
+        :aria-invalid="invalid || fs.invalid.value || undefined"
         @change="take(($event.target as HTMLInputElement).files)"
       />
       <span class="bless-file__icon" aria-hidden="true"><slot name="icon">⇪</slot></span>
