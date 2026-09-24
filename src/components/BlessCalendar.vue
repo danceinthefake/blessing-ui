@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref, useId, watch } from "vue";
+import { computed, onMounted, ref, useId, watch } from "vue";
 import { logicalKey } from "../composables/rtl";
 import { addDays, addMonths, fromISO, isoToday, sameDay, toISO } from "../composables/date";
 
@@ -25,8 +25,21 @@ const model = defineModel<string | [string, string] | undefined>();
 const id = useId();
 
 const first = computed(() => (Array.isArray(model.value) ? model.value[0] : model.value));
-const view = ref(fromISO(props.month ? `${props.month}-01` : (first.value ?? isoToday())));
-const focused = ref(first.value ?? isoToday());
+// Anything read from the clock waits for mount: a static page built on one day and served on
+// another would otherwise hydrate with a different today, tab stop or month.
+const anchor = props.month ? `${props.month}-01` : first.value;
+const today = ref("");
+const ready = ref(!!anchor);
+const view = ref(fromISO(anchor ?? isoToday()));
+const focused = ref(first.value ?? anchor ?? isoToday());
+onMounted(() => {
+  today.value = isoToday();
+  if (!anchor) {
+    view.value = fromISO(today.value);
+    focused.value = today.value;
+    ready.value = true;
+  }
+});
 const hover = ref<string>();
 const pending = ref<string>(); // range start awaiting end
 
@@ -124,7 +137,7 @@ watch(
 </script>
 
 <template>
-  <div class="bless-calendar" role="group" :aria-label="fmtMonth">
+  <div class="bless-calendar" role="group" :aria-label="ready ? fmtMonth : undefined">
     <div class="bless-calendar__head">
       <button
         type="button"
@@ -134,7 +147,7 @@ watch(
       >
         <span aria-hidden="true">‹</span>
       </button>
-      <span class="bless-calendar__month" aria-live="polite">{{ fmtMonth }}</span>
+      <span class="bless-calendar__month" aria-live="polite">{{ ready ? fmtMonth : "" }}</span>
       <button
         type="button"
         class="bless-calendar__nav"
@@ -144,7 +157,8 @@ watch(
         <span aria-hidden="true">›</span>
       </button>
     </div>
-    <div class="bless-calendar__grid" role="grid" @keydown="onKey">
+    <div v-if="!ready" class="bless-calendar__grid bless-calendar__grid--pending" />
+    <div v-else class="bless-calendar__grid" role="grid" @keydown="onKey">
       <div role="row" class="bless-calendar__row bless-calendar__row--head">
         <span v-for="d in dayNames" :key="d" role="columnheader" class="bless-calendar__dow">{{
           d
@@ -160,7 +174,7 @@ watch(
           class="bless-calendar__day"
           :class="{
             'bless-calendar__day--outside': c.outside,
-            'bless-calendar__day--today': c.iso === isoToday(),
+            'bless-calendar__day--today': c.iso === today,
             'bless-calendar__day--selected': isSelected(c.iso),
             'bless-calendar__day--in-range': inRange(c.iso),
             'bless-calendar__day--start': rangeSel?.[0] === c.iso,
@@ -189,6 +203,11 @@ watch(
   font-family: var(--bless-font-sans);
   color: var(--bless-color-text);
   user-select: none;
+}
+/* holds the grid's size until the month is known on the client: day-name row + six weeks */
+.bless-calendar__grid--pending {
+  min-block-size: calc(6 * 36px + 32px);
+  min-inline-size: calc(7 * 36px);
 }
 .bless-calendar__head {
   display: flex;
