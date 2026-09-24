@@ -48,6 +48,17 @@ test("BlessInputGroup wraps a control with addons", () => {
   expect(w.find(".bless-input-group__control input").exists()).toBe(true);
 });
 
+test("BlessInputGroup disabled really disables the control inside", () => {
+  const w = mount(BlessInputGroup, {
+    props: { disabled: true },
+    slots: { default: () => h(BlessInput) },
+    attachTo: document.body,
+  });
+  const input = w.find("input").element as HTMLInputElement;
+  expect(input.matches(":disabled")).toBe(true); // via the <fieldset>, not just opacity
+  w.unmount();
+});
+
 test("BlessItem renders media/title/description/actions and links", () => {
   const w = mount(BlessItem, {
     props: { title: "Track", description: "3:21", href: "/t" },

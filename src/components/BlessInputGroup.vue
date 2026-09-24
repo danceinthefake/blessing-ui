@@ -5,10 +5,10 @@ withDefaults(defineProps<{ size?: "sm" | "md" | "lg"; disabled?: boolean }>(), {
 </script>
 
 <template>
-  <div
+  <fieldset
     class="bless-input-group"
     :class="[`bless-input-group--${size}`, { 'bless-input-group--disabled': disabled }]"
-    role="group"
+    :disabled
   >
     <span v-if="$slots.prefix" class="bless-input-group__addon bless-input-group__addon--prefix"
       ><slot name="prefix"
@@ -17,7 +17,7 @@ withDefaults(defineProps<{ size?: "sm" | "md" | "lg"; disabled?: boolean }>(), {
     <span v-if="$slots.suffix" class="bless-input-group__addon bless-input-group__addon--suffix"
       ><slot name="suffix"
     /></span>
-  </div>
+  </fieldset>
 </template>
 
 <style>
@@ -25,7 +25,12 @@ withDefaults(defineProps<{ size?: "sm" | "md" | "lg"; disabled?: boolean }>(), {
 .bless-input-group {
   border-radius: var(--bless-radius-plate);
   --_h: 40px;
+  position: relative;
   display: flex;
+  min-inline-size: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
   align-items: stretch;
   font-family: var(--bless-font-sans);
   color: var(--bless-color-text);
@@ -38,8 +43,24 @@ withDefaults(defineProps<{ size?: "sm" | "md" | "lg"; disabled?: boolean }>(), {
 .bless-input-group--lg {
   --_h: 48px;
 }
-.bless-input-group:focus-within {
-  border-bottom-color: var(--bless-color-accent-text);
+/* same growing accent underline a bare field has */
+.bless-input-group::after {
+  content: "";
+  position: absolute;
+  inset-inline-start: 0;
+  bottom: calc(-2 * var(--bless-border-width));
+  width: 100%;
+  height: calc(2 * var(--bless-border-width));
+  background: var(--bless-color-accent);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  transition: transform var(--bless-duration-slow) var(--bless-ease-out);
+}
+[dir="rtl"] .bless-input-group::after {
+  transform-origin: 100% 50%;
+}
+.bless-input-group:focus-within::after {
+  transform: scaleX(1);
 }
 .bless-input-group__control {
   flex: 1;
@@ -75,13 +96,12 @@ withDefaults(defineProps<{ size?: "sm" | "md" | "lg"; disabled?: boolean }>(), {
 }
 .bless-input-group--disabled {
   opacity: 0.4;
-  pointer-events: none;
 }
 /* parallelogram field; content counter-skews so text stays upright */
 .bless-input-group {
   transform: skewX(var(--bless-skew));
 }
-.bless-input-group > :not(.bless-skew, .bless-chip, .bless-badge) {
+.bless-input-group > :not(.bless-skew, .bless-chip, .bless-badge, .bless-input-group__after) {
   transform: skewX(var(--bless-skew-counter));
 }
 /* the group is the parallelogram; the inputs inside it stay straight */
