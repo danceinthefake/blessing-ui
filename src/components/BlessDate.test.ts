@@ -1,5 +1,5 @@
 import { mount } from "@vue/test-utils";
-import { nextTick } from "vue";
+import { h, nextTick } from "vue";
 import BlessCalendar from "./BlessCalendar.vue";
 import BlessDatePicker from "./BlessDatePicker.vue";
 import BlessInputOTP from "./BlessInputOTP.vue";
@@ -100,4 +100,26 @@ test("BlessInputOTP: clearing a middle cell keeps later digits in place", async 
   expect(w.emitted("update:modelValue")!.at(-1)![0]).toBe("134");
   expect(w.emitted("complete")).toBeUndefined();
   w.unmount();
+});
+
+test("BlessCalendar server HTML doesn't depend on the day it was rendered", async () => {
+  const { renderToString } = await import("vue/server-renderer");
+  const { createSSRApp } = await import("vue");
+  vi.useFakeTimers({ toFake: ["Date"] });
+  const html = async (props: Record<string, unknown>, day: string) => {
+    vi.setSystemTime(new Date(`${day}T12:00:00`));
+    return renderToString(createSSRApp(() => h(BlessCalendar, props)));
+  };
+  try {
+    for (const props of [{ range: true, month: "2019-09" }, { modelValue: "2019-09-25" }, {}])
+      expect(await html(props, "2026-09-22")).toBe(await html(props, "2026-09-25"));
+    // a calendar with nothing to anchor it still shows the right month once mounted
+    vi.setSystemTime(new Date("2026-09-25T12:00:00"));
+    const w = mount(BlessCalendar, { props: { locale: "en-US" } });
+    await nextTick();
+    expect(w.find(".bless-calendar__month").text()).toBe("September 2026");
+    expect(w.find(".bless-calendar__day--today").text()).toBe("25");
+  } finally {
+    vi.useRealTimers();
+  }
 });
