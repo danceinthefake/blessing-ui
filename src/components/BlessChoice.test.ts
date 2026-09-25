@@ -43,7 +43,9 @@ test("BlessSwitch role and toggle", async () => {
   const w = mount(BlessSwitch, { props: { modelValue: false }, slots: { default: "Dark" } });
   const i = w.find("input");
   expect(i.attributes("role")).toBe("switch");
-  expect(i.attributes("aria-checked")).toBe("false");
+  // the native checked state is what a role=switch checkbox reports; no aria-checked to drift
+  expect((i.element as HTMLInputElement).checked).toBe(false);
+  expect(i.attributes("aria-checked")).toBeUndefined();
   await i.setValue(true);
   expect(w.emitted("update:modelValue")![0]).toEqual([true]);
 });
@@ -111,4 +113,12 @@ test("BlessSelect: a required select on its placeholder is invalid and reads as 
   await w.find("select").setValue("a");
   expect(w.emitted("update:modelValue")!.at(-1)).toEqual(["a"]);
   expect(el.checkValidity()).toBe(true);
+});
+
+test("BlessTextarea counter speaks only near the limit", async () => {
+  const { default: BlessTextarea } = await import("./BlessTextarea.vue");
+  const w = mount(BlessTextarea, { props: { maxlength: 200, counter: true, modelValue: "hi" } });
+  expect(w.find(".bless-textarea__counter").attributes("aria-live")).toBe("off");
+  await w.setProps({ modelValue: "x".repeat(185) });
+  expect(w.find(".bless-textarea__counter").attributes("aria-live")).toBe("polite");
 });
