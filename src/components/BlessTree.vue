@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { onMounted, onUpdated, ref } from "vue";
 import { logicalKey } from "../composables/rtl";
 import BlessTreeItem from "./BlessTreeItem.vue";
 import type { BlessTreeNode } from "./tree";
@@ -45,6 +45,21 @@ function onKey(e: KeyboardEvent) {
 }
 
 withDefaults(defineProps<{ nodes: BlessTreeNode[]; label?: string }>(), { label: "Tree" });
+
+// One Tab stop for the whole tree (arrows move inside): the focused row, else the selected one,
+// else the first, keeps tabindex 0.
+function rove(current?: HTMLElement) {
+  const all = Array.from(root.value?.querySelectorAll<HTMLElement>(".bless-tree__row") ?? []);
+  const keep =
+    (current && all.includes(current) && current) ||
+    all.find((r) => r.classList.contains("bless-tree__row--selected")) ||
+    all[0];
+  for (const r of all) r.tabIndex = r === keep ? 0 : -1;
+}
+onMounted(() => rove());
+onUpdated(() =>
+  rove(root.value?.querySelector<HTMLElement>(".bless-tree__row[tabindex='0']") ?? undefined),
+);
 const selected = defineModel<string | undefined>("selected");
 const emit = defineEmits<{ select: [node: BlessTreeNode, path: string] }>();
 function onSelect(n: BlessTreeNode, p: string) {
@@ -54,7 +69,16 @@ function onSelect(n: BlessTreeNode, p: string) {
 </script>
 
 <template>
-  <ul ref="root" class="bless-tree" role="tree" :aria-label="label" @keydown="onKey">
+  <ul
+    ref="root"
+    class="bless-tree"
+    role="tree"
+    :aria-label="label"
+    @keydown="onKey"
+    @focusin="
+      rove(($event.target as HTMLElement).closest<HTMLElement>('.bless-tree__row') ?? undefined)
+    "
+  >
     <BlessTreeItem
       v-for="(n, i) in nodes"
       :key="n.id ?? i"
