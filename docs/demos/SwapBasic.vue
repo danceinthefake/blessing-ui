@@ -6,11 +6,11 @@ const on = ref(false);
 
 <template>
   <div class="row" style="gap: 24px; font-size: 28px">
-    <BlessSwap v-model="on" label="Play / pause">
+    <BlessSwap v-model="on" label="Playing">
       <template #on>❚❚</template>
       <template #off>▶</template>
     </BlessSwap>
-    <BlessSwap label="Theme" effect="rotate">
+    <BlessSwap label="Dark theme" effect="rotate">
       <template #on>☾</template>
       <template #off>☀</template>
     </BlessSwap>

@@ -6074,7 +6074,7 @@
     "type": "number | undefined",
     "required": false,
     "default": "300",
-    "description": ""
+    "description": "ms; 0 or reduced motion shows and hides at once"
    },
    {
     "name": "appear",
