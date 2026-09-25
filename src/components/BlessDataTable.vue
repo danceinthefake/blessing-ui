@@ -23,6 +23,8 @@ const props = withDefaults(
     searchable?: boolean;
     searchKeys?: (keyof T & string)[];
     searchPlaceholder?: string;
+    /** accessible name of the search box */
+    searchLabel?: string;
     emptyText?: string;
     caption?: string;
     /** rows are one server page; sort / query / page are yours to fetch with (see `state` event) */
@@ -35,6 +37,7 @@ const props = withDefaults(
     pageSize: 10,
     pageSizes: () => [10, 25, 50],
     searchPlaceholder: "Search…",
+    searchLabel: "Search rows",
     emptyText: "No rows.",
   },
 );
@@ -91,6 +94,12 @@ const colChecked = computed(() =>
   Object.fromEntries(props.columns.map((c) => [c.key, !state.hidden.has(c.key)])),
 );
 const selectAllRef = ref<InstanceType<typeof BlessCheckbox>>();
+// a row checkbox is named after the row's header cell ("Select Megumi"), else its position
+const headerKey = computed(() => props.columns.find((c) => c.header)?.key);
+const rowName = (row: T, i: number) =>
+  headerKey.value
+    ? String(row[headerKey.value])
+    : `row ${(state.page - 1) * state.pageSize + i + 1}`;
 
 function onToggle(r: T) {
   dt.toggle(r);
@@ -104,7 +113,7 @@ defineExpose({ state, selectedRows: dt.selectedRows });
 </script>
 
 <template>
-  <div class="bless-datatable">
+  <div class="bless-datatable" :class="{ 'bless-datatable--loading': loading }">
     <div class="bless-datatable__toolbar">
       <BlessInput
         v-if="searchable"
@@ -112,6 +121,7 @@ defineExpose({ state, selectedRows: dt.selectedRows });
         type="search"
         size="sm"
         :placeholder="searchPlaceholder"
+        :aria-label="searchLabel"
         class="bless-datatable__search"
         @update:model-value="state.page = 1"
       />
@@ -130,7 +140,7 @@ defineExpose({ state, selectedRows: dt.selectedRows });
     </div>
 
     <div class="bless-datatable__scroll">
-      <table class="bless-table bless-datatable__table">
+      <table class="bless-table bless-datatable__table" :aria-busy="loading || undefined">
         <caption v-if="caption" class="bless-table__caption">
           {{
             caption
@@ -202,7 +212,7 @@ defineExpose({ state, selectedRows: dt.selectedRows });
             <td v-if="selectable" class="bless-table__cell bless-datatable__check" @click.stop>
               <BlessCheckbox
                 :model-value="state.selected.has(dt.keyOf(row))"
-                :aria-label="`Select row ${dt.keyOf(row)}`"
+                :aria-label="`Select ${rowName(row, i)}`"
                 @update:model-value="onToggle(row)"
               />
             </td>
@@ -225,7 +235,7 @@ defineExpose({ state, selectedRows: dt.selectedRows });
     </div>
 
     <div class="bless-datatable__foot">
-      <BlessText size="xs" muted>
+      <BlessText size="xs" muted role="status">
         <template v-if="selectable && state.selected.size"
           >{{ state.selected.size }} selected ·
         </template>
@@ -256,6 +266,10 @@ defineExpose({ state, selectedRows: dt.selectedRows });
   gap: var(--bless-space-3);
   font-family: var(--bless-font-sans);
   color: var(--bless-color-text);
+}
+.bless-datatable--loading tbody {
+  opacity: 0.5;
+  transition: opacity var(--bless-duration-base);
 }
 .bless-datatable__toolbar {
   display: flex;

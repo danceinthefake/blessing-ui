@@ -203,3 +203,24 @@ test("BlessVirtualScroller dynamic: measured heights drive offsets and scrollTo"
   // rows 0..2 at 50px → row 3 starts at 150 (if measured) or 60 (if estimate); either is a valid layout
   expect([150, 60]).toContain(vp.scrollTop);
 });
+
+test("BlessDataTable: loading is busy, search and row checkboxes are named, count is a status", () => {
+  const w = mount(BlessDataTable, {
+    props: {
+      rows,
+      rowKey: "id",
+      columns: [
+        { key: "name", label: "Name", header: true },
+        { key: "ep", label: "Episodes" },
+      ],
+      selectable: true,
+      searchable: true,
+      loading: true,
+    },
+  });
+  expect(w.find("table").attributes("aria-busy")).toBe("true");
+  expect(w.find("input[type=search]").attributes("aria-label")).toBe("Search rows");
+  const first = w.findAll("tbody tr")[0];
+  expect(first.find("input").attributes("aria-label")).toBe(`Select ${rows[0].name}`);
+  expect(w.find("[role=status]").text()).toMatch(/rows/);
+});
