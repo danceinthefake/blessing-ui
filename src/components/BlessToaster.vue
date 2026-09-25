@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { toastState, useToast } from "../composables/useToast";
+import { pauseToasts, resumeToasts, toastState, useToast } from "../composables/useToast";
 
 defineOptions({ name: "BlessToaster" });
 
@@ -13,10 +13,13 @@ withDefaults(
       | "top-center"
       | "bottom-center";
     closeLabel?: string;
+    /** the region's name */
+    label?: string;
   }>(),
   {
     position: "bottom-right",
     closeLabel: "Dismiss",
+    label: "Notifications",
   },
 );
 const { dismiss } = useToast();
@@ -27,7 +30,11 @@ const { dismiss } = useToast();
     class="bless-toaster"
     :class="`bless-toaster--${position}`"
     role="region"
-    aria-label="Notifications"
+    :aria-label="label"
+    @pointerenter="pauseToasts"
+    @pointerleave="resumeToasts"
+    @focusin="pauseToasts"
+    @focusout="resumeToasts"
   >
     <TransitionGroup
       name="bless-toast"
@@ -42,7 +49,7 @@ const { dismiss } = useToast();
         :key="t.id"
         class="bless-toast"
         :class="`bless-toast--${t.color}`"
-        role="status"
+        :role="t.color === 'danger' ? 'alert' : undefined"
       >
         <div class="bless-toast__body">
           <strong v-if="t.title" class="bless-toast__title">{{ t.title }}</strong>
