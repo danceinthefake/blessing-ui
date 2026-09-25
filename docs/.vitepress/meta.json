@@ -2742,7 +2742,7 @@
   "exposed": [
    {
     "name": "reset",
-    "type": "() => void",
+    "type": "() => void | undefined",
     "description": ""
    },
    {

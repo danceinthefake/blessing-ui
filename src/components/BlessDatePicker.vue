@@ -97,7 +97,7 @@ function clear() {
         :aria-expanded="open"
         :aria-invalid="invalid || fs.invalid.value || undefined"
         @click="open = !open"
-        @keydown.esc="open = false"
+        @keydown.esc="open && ($event.preventDefault(), (open = false))"
       >
         <span class="bless-datepicker__icon" aria-hidden="true">▦</span>
         <span
@@ -123,7 +123,7 @@ function clear() {
         role="dialog"
         :aria-label="placeholder"
         @toggle="open = ($event as ToggleEvent).newState === 'open'"
-        @keydown.esc.stop="close"
+        @keydown.esc.stop.prevent="close"
       >
         <BlessCalendar v-model="model" :range :min :max :locale />
       </div>

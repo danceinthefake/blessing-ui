@@ -49,8 +49,9 @@ function close(delay = 150) {
   }, delay);
 }
 // Esc from inside the panel: close and give focus back to the trigger that opened it
-function escape() {
+function escape(e?: KeyboardEvent) {
   const i = openIdx.value;
+  if (i !== null) e?.preventDefault();
   close(0);
   if (i !== null) anchors.value[i]?.focus();
 }
@@ -65,7 +66,7 @@ function onKey(e: KeyboardEvent, i: number, item: BlessNavMenuItem) {
     e.preventDefault();
     open(i);
     nextTick(() => panel.value?.querySelector<HTMLElement>("a")?.focus());
-  } else if (e.key === "Escape") close(0);
+  } else if (e.key === "Escape" && openIdx.value !== null) (e.preventDefault(), close(0));
   else if (logicalKey(e) === "ArrowRight") anchors.value[(i + 1) % anchors.value.length]?.focus();
   else if (logicalKey(e) === "ArrowLeft")
     anchors.value[(i - 1 + anchors.value.length) % anchors.value.length]?.focus();

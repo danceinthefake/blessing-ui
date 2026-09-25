@@ -120,6 +120,8 @@ function onKey(e: KeyboardEvent) {
     if (o && !o.disabled) pick(o.value);
     else if (canCreate.value) create();
   } else if (e.key === "Escape") {
+    // claim the key while the list is open, so an enclosing dialog doesn't close with it
+    if (open.value) e.preventDefault();
     open.value = false;
   } else if (e.key === "Backspace" && props.multiple && !query.value && selected.value.length)
     remove(selected.value.at(-1)!);

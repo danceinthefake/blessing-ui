@@ -161,3 +161,20 @@ test("BlessForm reset brings v-model along with the fields", async () => {
   expect([vm.v, vm.c]).toEqual(["", false]);
   w.unmount();
 });
+
+test("Esc that closes a popup is claimed, so an enclosing dialog stays open", async () => {
+  const { default: BlessCombobox } = await import("./BlessCombobox.vue");
+  const w = mount(BlessCombobox, {
+    props: { options: [{ label: "Megumi", value: "m" }] },
+    attachTo: document.body,
+  });
+  const input = w.find("input");
+  await input.trigger("keydown", { key: "ArrowDown" }); // opens the list
+  const esc = new KeyboardEvent("keydown", { key: "Escape", cancelable: true, bubbles: true });
+  input.element.dispatchEvent(esc);
+  expect(esc.defaultPrevented).toBe(true);
+  const again = new KeyboardEvent("keydown", { key: "Escape", cancelable: true, bubbles: true });
+  input.element.dispatchEvent(again); // nothing open now: the dialog may have this one
+  expect(again.defaultPrevented).toBe(false);
+  w.unmount();
+});
