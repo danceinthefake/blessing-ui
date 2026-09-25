@@ -232,3 +232,9 @@ test("BlessPasswordInput: new-password with a meter, override wins, constant tog
     "true",
   ]);
 });
+
+test("BlessPaletteToggle: showDefault includes or leaves out the default swatch", async () => {
+  const { default: P } = await import("./BlessPaletteToggle.vue");
+  const all = mount(P).findAll("button").length;
+  expect(mount(P, { props: { showDefault: false } }).findAll("button")).toHaveLength(all - 1);
+});
