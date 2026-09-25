@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
-import { useFieldId } from "../composables/useFieldId";
+import { useFieldId, useFieldState } from "../composables/useFieldId";
 
 defineOptions({ name: "BlessKnob", inheritAttrs: false });
 
@@ -11,6 +11,7 @@ const props = withDefaults(
     max?: number;
     step?: number;
     size?: "sm" | "md" | "lg";
+    /** visible label under the dial; inside a BlessField the field's label is used instead */
     label?: string;
     showValue?: boolean;
     format?: (v: number) => string;
@@ -18,10 +19,11 @@ const props = withDefaults(
     /** degrees of arc, centred at the bottom gap */
     sweep?: number;
   }>(),
-  { min: 0, max: 100, step: 1, size: "md", label: "Value", showValue: true, sweep: 270 },
+  { min: 0, max: 100, step: 1, size: "md", showValue: true, sweep: 270 },
 );
 const model = defineModel<number>({ default: 0 });
 const id = useFieldId(props);
+const fs = useFieldState();
 const dial = ref<HTMLElement>();
 
 const ratio = computed(() => (model.value - props.min) / (props.max - props.min || 1));
@@ -30,7 +32,19 @@ const deg = computed(() => startDeg.value + ratio.value * props.sweep);
 const text = computed(() => (props.format ?? String)(model.value));
 
 // pointer → angle → value; the hidden <input type=range> keeps keyboard + a11y native
-function fromPointer(e: PointerEvent) {
+const decimals = computed(() => (String(props.step).split(".")[1] ?? "").length);
+// steps count from min and round to the step's decimals, so 0.1 steps don't show float noise
+const snap = (v: number) =>
+  Math.min(
+    props.max,
+    Math.max(
+      props.min,
+      Number(
+        (props.min + Math.round((v - props.min) / props.step) * props.step).toFixed(decimals.value),
+      ),
+    ),
+  );
+function fromPointer(e: PointerEvent, dragging = false) {
   const r = dial.value!.getBoundingClientRect();
   const a =
     (Math.atan2(e.clientY - (r.top + r.height / 2), e.clientX - (r.left + r.width / 2)) * 180) /
@@ -38,8 +52,11 @@ function fromPointer(e: PointerEvent) {
   let d = (a - 90 + 360) % 360; // 0 = bottom, clockwise
   const gap = (360 - props.sweep) / 2;
   d = Math.min(props.sweep, Math.max(0, d - gap));
-  const raw = props.min + (d / props.sweep) * (props.max - props.min);
-  model.value = Math.min(props.max, Math.max(props.min, Math.round(raw / props.step) * props.step));
+  const next = snap(props.min + (d / props.sweep) * (props.max - props.min));
+  // turning past an end crosses the gap and would land on the other end: hold at the nearer one
+  if (dragging && Math.abs(next - model.value) > (props.max - props.min) / 2)
+    return void (model.value = model.value > (props.min + props.max) / 2 ? props.max : props.min);
+  model.value = next;
 }
 function onDown(e: PointerEvent) {
   if (props.disabled) return;
@@ -47,7 +64,7 @@ function onDown(e: PointerEvent) {
   fromPointer(e);
 }
 function onMove(e: PointerEvent) {
-  if ((e.currentTarget as HTMLElement).hasPointerCapture(e.pointerId)) fromPointer(e);
+  if ((e.currentTarget as HTMLElement).hasPointerCapture(e.pointerId)) fromPointer(e, true);
 }
 </script>
 
@@ -76,8 +93,9 @@ function onMove(e: PointerEvent) {
         :max
         :step
         :disabled
-        :aria-label="label"
+        :aria-label="label || fs.inField ? undefined : 'Value'"
         :aria-valuetext="text"
+        :aria-describedby="($attrs['aria-describedby'] as string) ?? fs.describedby.value"
       />
       <span v-if="showValue" class="bless-knob__value" aria-hidden="true">{{ text }}</span>
     </div>
