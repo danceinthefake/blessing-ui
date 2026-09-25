@@ -1,0 +1,24 @@
+src/components/BlessExtras4.test.ts
+  s_9ec1000e308ddb::t_50498d8ded1390 88-110
+src/components/BlessTreeSelect.vue
+  s_9ec1000e308ddb::t_50498d8ded1390 108
+  s_9ec1000e308ddb::t_00a999573068fb 2-3,13,21,25,31-51,82-87,90,92,99-102,105,119,123
+docs/components/tree-select.md
+  s_9ec1000e308ddb::t_cf2e1d53cf8af1 13,15-16,27-30
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "6b63a2c9cfc7f4b52798b834b833d1d9aac2861d",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
