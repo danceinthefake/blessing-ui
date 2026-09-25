@@ -99,3 +99,16 @@ test("BlessRadioGroup in a Field: the field names the group, radios keep their o
   const radios = w.findAll("input[type=radio]");
   expect(radios.map((r) => r.attributes("id"))).not.toContain(group.attributes("id"));
 });
+
+test("BlessSelect: a required select on its placeholder is invalid and reads as undefined", async () => {
+  const w = mount(BlessSelect, {
+    props: { placeholder: "Choose", options: [{ label: "A", value: "a" }] },
+    attrs: { required: true },
+  });
+  const el = w.find("select").element as HTMLSelectElement;
+  expect(el.value).toBe("");
+  expect(el.checkValidity()).toBe(false);
+  await w.find("select").setValue("a");
+  expect(w.emitted("update:modelValue")!.at(-1)).toEqual(["a"]);
+  expect(el.checkValidity()).toBe(true);
+});
