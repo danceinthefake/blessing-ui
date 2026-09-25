@@ -30,8 +30,10 @@ function onDown(e: PointerEvent) {
 function onMove(e: PointerEvent) {
   if (!dragging.value || !root.value) return;
   const r = root.value.getBoundingClientRect();
+  // the first pane sits at the inline start: the right edge in right-to-left pages
+  const rtl = getComputedStyle(root.value).direction === "rtl";
   const pct = horizontal.value
-    ? ((e.clientX - r.left) / r.width) * 100
+    ? ((rtl ? r.right - e.clientX : e.clientX - r.left) / r.width) * 100
     : ((e.clientY - r.top) / r.height) * 100;
   size.value = clamp(Math.round(pct * 10) / 10);
 }
