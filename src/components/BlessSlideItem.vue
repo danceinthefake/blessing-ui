@@ -59,6 +59,14 @@ usePan(root, (e) => {
     } else reset();
   }
 });
+// The actions stay reachable by Tab; when focus enters one side, slide it into view instead of
+// focusing buttons hidden under the row. Leaving the item puts it back.
+function onFocusIn(side: "left" | "right") {
+  x.value = side === "left" ? props.threshold : -props.threshold;
+}
+function onFocusOut(e: FocusEvent) {
+  if (!root.value?.contains(e.relatedTarget as Node) && !settled.value) x.value = 0;
+}
 defineExpose({ reset });
 </script>
 
@@ -68,11 +76,13 @@ defineExpose({ reset });
     class="bless-slide"
     :class="{ 'bless-slide--disabled': disabled }"
     :style="{ '--_x': `${x}px` }"
+    @focusout="onFocusOut"
   >
     <div
       v-if="$slots.left"
       class="bless-slide__side bless-slide__side--left"
       :class="{ 'bless-slide__side--on': x > 0 }"
+      @focusin="onFocusIn('left')"
     >
       <slot name="left" :reset />
     </div>
@@ -80,6 +90,7 @@ defineExpose({ reset });
       v-if="$slots.right"
       class="bless-slide__side bless-slide__side--right"
       :class="{ 'bless-slide__side--on': x < 0 }"
+      @focusin="onFocusIn('right')"
     >
       <slot name="right" :reset />
     </div>
