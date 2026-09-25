@@ -297,6 +297,7 @@ Tooling: Vite + `vite-plugin-dts`, Vitest + `@vue/test-utils` (one smoke test pe
 
 - ~~`ponytail:` ceilings~~ all lifted ✅: Tree arrow-key navigation, VirtualScroller `dynamic` (measured heights), DataTable / useDataTable `server` mode (`state` event, `total`), useFloating `boundary` + `arrow` (Tooltip always, Popover opt-in).
 - ~~Straight / rounded variant~~ → cut + petal merged into one default (2026-09-21); upright variant rejected.
+- ~~Pre-publish component review, one by one~~ ✅ (2026-09-25): every component page opens with when to use it (and when not); behaviour and accessibility fixes landed per component with tests. Library-wide outcomes: Field hands id / invalid / describedby / labelledby to any control; menu, popover and dialog triggers carry aria-haspopup / aria-controls / aria-expanded; unstyled lists keep `role="list"`; clock reads wait for mount (SSR day mismatch); overlays return focus when they close. Blocks are next.
 - ~~Hanging headline, outline badge~~ ✅ `BlessSection headline="hanging"` / `#band`, `BlessBadge variant="outline"`.
 
 - ~~Package as single `style.css` bundle or per-component CSS?~~ Both ✅: `preserveModules` + `cssCodeSplit`, `scripts/postbuild.mjs` links each `BlessX.js` to `BlessX.css` and assembles `blessing-ui.css`; `sideEffects` lists `**/*.css` and `dist/index.js` (so the tokens import survives tree-shaking). One component ≈ 2 KB gzip CSS, measured by `e2e/consumer`.
