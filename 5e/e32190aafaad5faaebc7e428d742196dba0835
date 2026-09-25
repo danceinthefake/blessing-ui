@@ -1,0 +1,38 @@
+docs/.vitepress/meta.json
+  s_9ec1000e308ddb::t_83821570f95ce5 4698
+docs/components/watermark.md
+  s_9ec1000e308ddb::t_7fe1391559f6f3 1-12,15-22,25-34
+  s_9ec1000e308ddb::t_2b3a5581c6e69e 13-14,23-24
+docs/.vitepress/components.ts
+  s_9ec1000e308ddb::t_7fe1391559f6f3 53-54,200-205
+docs/demos/WatermarkBasic.vue
+  s_9ec1000e308ddb::t_7fe1391559f6f3 6-9
+docs/components/palette-toggle.md
+  s_9ec1000e308ddb::t_2b3a5581c6e69e 13-14,23-25
+  s_9ec1000e308ddb::t_7fe1391559f6f3 1-12,15-22,26-35
+docs/demos/PaletteToggleBasic.vue
+  s_9ec1000e308ddb::t_7fe1391559f6f3 1-7
+docs/components/list.md
+  s_9ec1000e308ddb::t_2b3a5581c6e69e 27-28
+docs/demos/AccordionBasic.vue
+  s_9ec1000e308ddb::t_7fe1391559f6f3 6-16
+docs/components/accordion.md
+  s_9ec1000e308ddb::t_2b3a5581c6e69e 13-14,23-25
+  s_9ec1000e308ddb::t_7fe1391559f6f3 1-12,15-22,26-41
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "5ee32190aafaad5faaebc7e428d742196dba0835",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
