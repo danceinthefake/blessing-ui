@@ -47,13 +47,21 @@ function locate() {
   const el = cur.value?.target ? document.querySelector<HTMLElement>(cur.value.target) : null;
   anchor.value = el;
   rect.value = el?.getBoundingClientRect() ?? null;
-  el?.scrollIntoView?.({ block: "center", behavior: "smooth" });
+  const reduced =
+    typeof matchMedia === "function" && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  el?.scrollIntoView?.({ block: "center", behavior: reduced ? "auto" : "smooth" });
   nextTick(() => {
     update();
     rect.value = el?.getBoundingClientRect() ?? null;
     panel.value?.focus();
   });
 }
+// remember where focus was when the tour started, and give it back when it ends
+let opener: HTMLElement | null = null;
+watch(open, (o) => {
+  if (o) opener = document.activeElement as HTMLElement | null;
+  else nextTick(() => opener?.focus?.());
+});
 watch([open, step], ([o]) => o && locate(), { immediate: true });
 function close(finished: boolean) {
   open.value = false;
