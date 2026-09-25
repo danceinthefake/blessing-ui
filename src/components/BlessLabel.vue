@@ -3,8 +3,9 @@ defineOptions({ name: "BlessLabel" });
 
 defineProps<{
   for?: string;
+  /** draws the * only; put `required` on the control too */
   required?: boolean;
-  /** muted text after the label */
+  /** a word or two after the label ("optional"); it is part of the label's accessible name */
   hint?: string;
   disabled?: boolean;
 }>();

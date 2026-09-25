@@ -6,10 +6,10 @@ import { BlessInput, BlessLabel } from "blessing-ui";
   <div class="row" style="align-items: flex-start">
     <div class="col">
       <BlessLabel for="d-name" required>Name</BlessLabel>
-      <BlessInput id="d-name" placeholder="加藤恵" />
+      <BlessInput id="d-name" placeholder="加藤恵" required />
     </div>
     <div class="col">
-      <BlessLabel for="d-mail" hint="we never spam">Email</BlessLabel>
+      <BlessLabel for="d-mail" hint="optional">Email</BlessLabel>
       <BlessInput id="d-mail" type="email" />
     </div>
   </div>

@@ -3715,13 +3715,13 @@
     "name": "required",
     "type": "boolean | undefined",
     "required": false,
-    "description": ""
+    "description": "draws the * only; put `required` on the control too"
    },
    {
     "name": "hint",
     "type": "string | undefined",
     "required": false,
-    "description": "muted text after the label"
+    "description": "a word or two after the label (\"optional\"); it is part of the label's accessible name"
    },
    {
     "name": "disabled",
