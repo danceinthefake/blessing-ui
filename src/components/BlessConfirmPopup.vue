@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { nextTick, ref, watch } from "vue";
 import BlessButton from "./BlessButton.vue";
 import BlessPopover from "./BlessPopover.vue";
 import type { Placement } from "../composables/useFloating";
@@ -18,6 +19,15 @@ withDefaults(
 );
 const open = defineModel<boolean>("open", { default: false });
 const emit = defineEmits<{ confirm: []; cancel: [] }>();
+// focus goes to Cancel, the safe choice, on open; back to the trigger when it closes
+const cancelBtn = ref<InstanceType<typeof BlessButton>>();
+let trigger: HTMLElement | null = null;
+watch(open, (o) => {
+  if (o) {
+    trigger = document.activeElement as HTMLElement | null;
+    nextTick(() => (cancelBtn.value?.$el as HTMLElement | undefined)?.focus());
+  } else nextTick(() => trigger?.focus?.());
+});
 function done(ok: boolean) {
   open.value = false;
   if (ok) emit("confirm");
@@ -30,7 +40,9 @@ function done(ok: boolean) {
     <template #trigger><slot name="trigger" :open /></template>
     <p class="bless-confirm__msg">{{ message }}</p>
     <div class="bless-confirm__actions">
-      <BlessButton size="sm" variant="outline" @click="done(false)">{{ cancelLabel }}</BlessButton>
+      <BlessButton ref="cancelBtn" size="sm" variant="outline" @click="done(false)">{{
+        cancelLabel
+      }}</BlessButton>
       <BlessButton size="sm" :color @click="done(true)">{{ confirmLabel }}</BlessButton>
     </div>
   </BlessPopover>
