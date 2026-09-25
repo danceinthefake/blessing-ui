@@ -188,6 +188,45 @@ test("BlessKnob: native range drives the model, dial angle follows", async () =>
   expect(w.emitted("update:modelValue")![0]).toEqual([75]);
 });
 
+test("BlessKnob: a drag past max holds at max, 0.1 steps have no float noise, labels", async () => {
+  const { default: BlessKnob } = await import("./BlessKnob.vue");
+  const w = mount(BlessKnob, { props: { modelValue: 100 } });
+  const dial = w.find(".bless-knob__dial");
+  const el = dial.element as HTMLElement;
+  el.getBoundingClientRect = () => ({ left: 0, top: 0, width: 100, height: 100 }) as DOMRect;
+  el.hasPointerCapture = () => true;
+  // just left of the bottom gap: the min end of the arc
+  // jsdom has no PointerEvent: a MouseEvent with a pointerId stands in
+  const move = async (target: Element, deg: number) => {
+    const e = new MouseEvent("pointermove", {
+      clientX: 50 + 40 * Math.cos((deg * Math.PI) / 180),
+      clientY: 50 + 40 * Math.sin((deg * Math.PI) / 180),
+    });
+    Object.defineProperty(e, "pointerId", { value: 1 });
+    target.dispatchEvent(e);
+    await nextTick();
+  };
+  await move(el, 100);
+  expect(w.emitted("update:modelValue") ?? []).not.toContainEqual([0]); // held at max
+  await move(el, 0); // back on the arc, three-quarters round: moves normally
+  expect(w.emitted("update:modelValue")!.at(-1)![0]).toBeGreaterThan(60);
+  const f = mount(BlessKnob, { props: { modelValue: 0, max: 1, step: 0.1 } });
+  const fd = f.find(".bless-knob__dial").element as HTMLElement;
+  fd.getBoundingClientRect = () => ({ left: 0, top: 0, width: 100, height: 100 }) as DOMRect;
+  fd.hasPointerCapture = () => true;
+  for (let d = 100; d <= 440; d += 7) {
+    await move(fd, d);
+    const v = f.emitted("update:modelValue")?.at(-1)?.[0] as number | undefined;
+    if (v != null) expect(String(v).length).toBeLessThanOrEqual(3);
+    if (v != null) await f.setProps({ modelValue: v });
+  }
+  expect(w.find("input").attributes("aria-label")).toBe("Value");
+  expect(w.find("label").exists()).toBe(false);
+  const l = mount(BlessKnob, { props: { label: "Gain" } });
+  expect(l.find("input").attributes("aria-label")).toBeUndefined();
+  expect(l.find("label").text()).toBe("Gain");
+});
+
 test("BlessWatermarkOverlay tiles an SVG with the text", async () => {
   const C = (await import("./BlessWatermarkOverlay.vue")).default;
   const w = mount(C, { props: { text: "DRAFT <1>" }, slots: { default: "<p>body</p>" } });

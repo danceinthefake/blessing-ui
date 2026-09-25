@@ -3657,8 +3657,7 @@
     "name": "label",
     "type": "string | undefined",
     "required": false,
-    "default": "\"Value\"",
-    "description": ""
+    "description": "visible label under the dial; inside a BlessField the field's label is used instead"
    },
    {
     "name": "showValue",
