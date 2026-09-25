@@ -28,11 +28,13 @@ const ext = computed(() => props.name.split(".").pop()?.slice(0, 4).toUpperCase(
 </script>
 
 <template>
-  <component
-    :is="href ? 'a' : 'div'"
-    :href
+  <div
     class="bless-attachment"
-    :class="[`bless-attachment--${size}`, `bless-attachment--${state}`]"
+    :class="[
+      `bless-attachment--${size}`,
+      `bless-attachment--${state}`,
+      { 'bless-attachment--link': href },
+    ]"
     :aria-busy="state === 'uploading' || undefined"
   >
     <span class="bless-attachment__media">
@@ -48,7 +50,9 @@ const ext = computed(() => props.name.split(".").pop()?.slice(0, 4).toUpperCase(
       />
     </span>
     <span class="bless-attachment__body">
-      <span class="bless-attachment__name">{{ name }}</span>
+      <!-- the name is the link, stretched over the card; the actions sit above it, not inside -->
+      <a v-if="href" :href class="bless-attachment__name bless-attachment__link">{{ name }}</a>
+      <span v-else class="bless-attachment__name">{{ name }}</span>
       <span v-if="description || state === 'error'" class="bless-attachment__desc">
         <slot name="description">{{ state === "error" ? "Upload failed" : description }}</slot>
       </span>
@@ -65,13 +69,13 @@ const ext = computed(() => props.name.split(".").pop()?.slice(0, 4).toUpperCase(
         v-if="removable"
         type="button"
         class="bless-attachment__remove"
-        :aria-label="removeLabel"
-        @click.prevent="emit('remove')"
+        :aria-label="`${removeLabel} ${name}`"
+        @click="emit('remove')"
       >
         <span aria-hidden="true">×</span>
       </button>
     </span>
-  </component>
+  </div>
 </template>
 
 <style>
@@ -93,12 +97,31 @@ const ext = computed(() => props.name.split(".").pop()?.slice(0, 4).toUpperCase(
   --_m: 32px;
   padding: var(--bless-space-1);
 }
-a.bless-attachment:hover {
+.bless-attachment--link {
+  position: relative;
+}
+.bless-attachment__link {
+  color: inherit;
+  text-decoration: none;
+}
+.bless-attachment__link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+.bless-attachment--link:hover {
   opacity: var(--bless-hover-opacity);
 }
-a.bless-attachment:focus-visible {
+.bless-attachment--link:has(.bless-attachment__link:focus-visible) {
   outline: 2px solid var(--bless-color-accent);
   outline-offset: 2px;
+}
+.bless-attachment__link:focus-visible {
+  outline: 0;
+}
+.bless-attachment__actions {
+  position: relative;
+  z-index: 1;
 }
 .bless-attachment--error {
   box-shadow: inset 0 0 0 var(--bless-border-width) var(--bless-color-danger);
