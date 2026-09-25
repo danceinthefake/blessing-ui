@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { watch } from "vue";
 import BlessDrawer from "./BlessDrawer.vue";
 
 defineOptions({ name: "BlessActionSheet" });
@@ -26,15 +27,27 @@ withDefaults(
 );
 const open = defineModel<boolean>("open", { default: false });
 const emit = defineEmits<{ select: [action: BlessAction]; cancel: [] }>();
+// closing after a pick fires the drawer's close too; that close is not a cancel
+let picked = false;
 function pick(a: BlessAction) {
   if (a.disabled) return;
+  picked = true;
   emit("select", a);
   open.value = false;
+}
+watch(open, (o) => o && (picked = false));
+function dismiss() {
+  picked = false;
+  open.value = false;
+}
+function onClose() {
+  if (!picked) emit("cancel");
+  picked = false;
 }
 </script>
 
 <template>
-  <BlessDrawer v-model="open" :title class="bless-actionsheet" @close="emit('cancel')">
+  <BlessDrawer v-model="open" :title class="bless-actionsheet" @close="onClose">
     <div
       class="bless-actionsheet__list"
       :class="{ 'bless-actionsheet__list--grid': grid }"
@@ -60,7 +73,7 @@ function pick(a: BlessAction) {
       </button>
     </div>
     <template v-if="cancel" #footer>
-      <button type="button" class="bless-actionsheet__cancel" @click="open = false">
+      <button type="button" class="bless-actionsheet__cancel" @click="dismiss">
         {{ cancelLabel }}
       </button>
     </template>
