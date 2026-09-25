@@ -1,0 +1,25 @@
+src/components/BlessMenu.test.ts
+  s_9ec1000e308ddb::t_3f06bf33115b12 180-196
+docs/components/dropdown-menu.md
+  s_9ec1000e308ddb::t_23f15df60e0008 13,15-16,27-29
+  s_9ec1000e308ddb::t_9dfdfc670cb21f 30
+src/components/BlessDropdownMenu.vue
+  s_9ec1000e308ddb::t_049dfc27971710 119-124,171
+  s_9ec1000e308ddb::t_d86b3c00a99474 77-80
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "ff2bb035a5e7fbdf9cdb9a58eef315caa8aad7c3",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
