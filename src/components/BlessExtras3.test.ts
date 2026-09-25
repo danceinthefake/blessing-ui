@@ -52,6 +52,38 @@ test("BlessInputNumber: buttons, clamp, arrows, format on blur", async () => {
   expect((w.find("input").element as HTMLInputElement).value).toBe("5");
 });
 
+test("BlessInputNumber: step from min, no float noise, locale decimal, keys, form value", async () => {
+  const last = (w: ReturnType<typeof mount>) => w.emitted("update:modelValue")!.at(-1)![0];
+  const f = mount(BlessInputNumber, { props: { modelValue: 0.2, step: 0.1 } });
+  await f.find("input").trigger("keydown", { key: "ArrowUp" });
+  expect(last(f)).toBe(0.3);
+  const m = mount(BlessInputNumber, { props: { modelValue: 5, min: 5, step: 10, max: 100 } });
+  await m.find("input").trigger("keydown", { key: "ArrowUp" });
+  expect(last(m)).toBe(15);
+  await m.find("input").trigger("keydown", { key: "End" });
+  expect(last(m)).toBe(100);
+  await m.setProps({ modelValue: 15 });
+  await m.find("input").trigger("keydown", { key: "PageUp" });
+  expect(last(m)).toBe(100); // 115 clamps to max
+  const d = mount(BlessInputNumber, { props: { locale: "de-DE" } });
+  const el = d.find("input");
+  (el.element as HTMLInputElement).value = "1,5";
+  await el.trigger("input");
+  expect(last(d)).toBe(1.5);
+  const n = mount(BlessInputNumber, {
+    props: {
+      name: "price",
+      modelValue: 1980,
+      format: { style: "currency", currency: "JPY" },
+      locale: "ja-JP",
+      suffix: "税込",
+    },
+  });
+  expect(n.find("input[type=hidden]").attributes()).toMatchObject({ name: "price", value: "1980" });
+  expect(n.find("input[role=spinbutton]").attributes("name")).toBeUndefined();
+  expect(n.find("input[role=spinbutton]").attributes("aria-valuetext")).toBe("￥1,980 税込");
+});
+
 test("BlessPasswordInput toggles type", async () => {
   const w = mount(BlessPasswordInput, { props: { modelValue: "abc", meter: true } });
   expect(w.find("input").attributes("type")).toBe("password");
