@@ -205,10 +205,10 @@ defineExpose({ focusFirst, focusLast });
   color: var(--bless-color-accent-text);
 }
 .bless-menu__item--danger {
-  color: var(--bless-color-danger);
+  color: var(--bless-color-danger-text);
 }
 .bless-menu__item--danger:focus {
-  color: var(--bless-color-danger);
+  color: var(--bless-color-danger-text);
 }
 .bless-menu__item[aria-disabled="true"] {
   opacity: 0.4;

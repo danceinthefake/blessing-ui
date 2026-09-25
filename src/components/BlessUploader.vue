@@ -215,7 +215,7 @@ defineExpose({ start, clear, queue });
   color: var(--bless-color-success);
 }
 .bless-uploader__item--error .bless-uploader__meta {
-  color: var(--bless-color-danger);
+  color: var(--bless-color-danger-text);
 }
 .bless-uploader__item--cancelled {
   opacity: 0.5;
@@ -232,7 +232,7 @@ defineExpose({ start, clear, queue });
   cursor: pointer;
 }
 .bless-uploader__x:hover {
-  color: var(--bless-color-danger);
+  color: var(--bless-color-danger-text);
 }
 .bless-uploader__actions {
   display: flex;

@@ -81,7 +81,7 @@ const onClick = (e: MouseEvent) => inactive.value && e.preventDefault();
   ); /* outline/ghost text + border; solid fills come from BlessSkew */
 }
 .bless-button--danger {
-  --_c: var(--bless-color-danger);
+  --_c: var(--bless-color-danger-text); /* outline / ghost text; the solid fill is Skew's danger */
 }
 
 .bless-button--sm {

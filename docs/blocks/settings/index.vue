@@ -106,7 +106,7 @@ const { success } = useToast();
   gap: var(--bless-space-3);
 }
 .settings__danger :deep(.bless-panel__title) {
-  color: var(--bless-color-danger);
+  color: var(--bless-color-danger-text);
 }
 .settings__danger p {
   margin-bottom: var(--bless-space-3);

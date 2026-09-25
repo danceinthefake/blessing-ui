@@ -149,7 +149,7 @@ const errId = () => `${id()}-err`;
   color: var(--bless-color-text-muted);
 }
 .bless-textarea__error {
-  color: var(--bless-color-danger);
+  color: var(--bless-color-danger-text);
   font-weight: var(--bless-font-weight-bold);
 }
 .bless-textarea__counter {

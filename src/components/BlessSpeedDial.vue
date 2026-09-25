@@ -188,7 +188,7 @@ function onBlur(e: FocusEvent) {
   color: var(--bless-color-accent-text);
 }
 .bless-speed-dial__action--danger {
-  color: var(--bless-color-danger);
+  color: var(--bless-color-danger-text);
 }
 .bless-speed-dial__tip {
   position: absolute;

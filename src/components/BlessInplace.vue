@@ -89,7 +89,7 @@ function close() {
   cursor: pointer;
 }
 .bless-inplace__close:hover {
-  color: var(--bless-color-danger);
+  color: var(--bless-color-danger-text);
 }
 .bless-inplace--disabled {
   opacity: 0.4;

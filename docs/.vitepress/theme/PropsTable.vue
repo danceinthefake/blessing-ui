@@ -146,6 +146,6 @@ const tidy = (t: string) => t.replace(/ \| undefined$/, "").replace(/\bundefined
   white-space: pre-wrap;
 }
 .props-table__req {
-  color: var(--bless-color-danger);
+  color: var(--bless-color-danger-text);
 }
 </style>

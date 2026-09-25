@@ -225,7 +225,7 @@ const isGroup = (o: unknown): o is { label: string; options: BlessOption<T>[] } 
   color: var(--bless-color-text-muted);
 }
 .bless-select__error {
-  color: var(--bless-color-danger);
+  color: var(--bless-color-danger-text);
   font-weight: var(--bless-font-weight-bold);
 }
 /* fields are parallelograms like everything else; content counter-skews so text stays upright */

@@ -179,7 +179,7 @@ const ext = computed(() => props.name.split(".").pop()?.slice(0, 4).toUpperCase(
   color: var(--bless-color-text-muted);
 }
 .bless-attachment--error .bless-attachment__desc {
-  color: var(--bless-color-danger);
+  color: var(--bless-color-danger-text);
 }
 .bless-attachment__progress {
   margin-top: 2px;
@@ -202,7 +202,7 @@ const ext = computed(() => props.name.split(".").pop()?.slice(0, 4).toUpperCase(
   cursor: pointer;
 }
 .bless-attachment__remove:hover {
-  color: var(--bless-color-danger);
+  color: var(--bless-color-danger-text);
 }
 .bless-attachment__remove:focus-visible {
   outline: 2px solid var(--bless-color-accent);
