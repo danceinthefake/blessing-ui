@@ -61,7 +61,7 @@ const releases: Release[] = [
     <BlessDataView
       :items="releases"
       layout="grid"
-      columns="200px"
+      columns="150px"
       :switchable="false"
       :row-key="(r) => r.id"
       label="Releases"
@@ -70,7 +70,7 @@ const releases: Release[] = [
         <BlessCard :label="r.kind" :label-color="r.kind === 'Blu-ray' ? 'accent' : 'text'">
           <template #media>
             <BlessAspectRatio :ratio="r.kind === 'CD' ? 1 : 3 / 4">
-              <div class="release__cover" :style="{ '--_c': r.color }">
+              <div class="release__cover" :style="{ '--_c': r.color }" aria-hidden="true">
                 {{ r.kind === "CD" ? "♪" : "BD" }}
               </div>
             </BlessAspectRatio>
@@ -86,6 +86,7 @@ const releases: Release[] = [
               size="sm"
               :color="r.soon ? 'accent' : 'text'"
               :variant="r.soon ? 'solid' : 'outline'"
+              :aria-label="`${r.title} を${r.soon ? '予約' : '購入'}`"
               href="#"
               >{{ r.soon ? "予約" : "購入" }}</BlessButton
             ></template
