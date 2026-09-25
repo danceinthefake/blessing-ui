@@ -1,0 +1,20 @@
+docs/blocks/onboarding/index.vue
+  s_9ec1000e308ddb::t_70aff1782745f8 40-44,50,60-64,93-100
+  s_9ec1000e308ddb::t_6d6f28889ac0db 2,26-28,70,90-92
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "6850bc6143a1b2da25e1b5fcccbe84843e98654b",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
