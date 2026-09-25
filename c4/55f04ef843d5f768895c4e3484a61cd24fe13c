@@ -1,0 +1,27 @@
+docs/components/message-scroller.md
+  s_9ec1000e308ddb::t_2651ad5bfd76c2 13-14,28-29
+  s_9ec1000e308ddb::t_ed05fb80aba1bc 30
+src/components/BlessMessage.vue
+  s_9ec1000e308ddb::t_8f7aa9e6dce4d0 12-13,36
+docs/components/message.md
+  s_9ec1000e308ddb::t_2651ad5bfd76c2 13,15-16,23-24
+  s_9ec1000e308ddb::t_3e03691e594ad0 25
+src/components/BlessMessageScroller.vue
+  s_9ec1000e308ddb::t_8f7aa9e6dce4d0 17-18,20-27,53-55,97-98,110
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "c455f04ef843d5f768895c4e3484a61cd24fe13c",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
