@@ -8,6 +8,8 @@ withDefaults(
     fade?: boolean;
     height?: string;
     width?: string;
+    /** names the area; it is focusable so the keyboard can scroll it, and a stop needs a name */
+    label?: string;
   }>(),
   { axis: "y", fade: true },
 );
@@ -19,6 +21,8 @@ withDefaults(
     :class="[`bless-scroll--${axis}`, { 'bless-scroll--fade': fade }]"
     :style="{ height, width }"
     tabindex="0"
+    :role="label ? 'region' : undefined"
+    :aria-label="label"
   >
     <slot />
   </div>
