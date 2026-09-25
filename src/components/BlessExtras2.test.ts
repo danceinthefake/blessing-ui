@@ -25,6 +25,38 @@ test("applyMask formats and BlessInputMask emits masked + raw", async () => {
   expect(w.emitted("update:raw")!.at(-1)![0]).toBe("1234");
 });
 
+test("applyMask keeps a literal only when typed or followed by a token", () => {
+  expect(applyMask("###-####", "123x")).toBe("123");
+  expect(applyMask("###-####", "123-")).toBe("123-");
+  expect(applyMask("(##) AA", "1")).toBe("(1");
+  expect(applyMask("###-####-####", "+81 90-1234-5678")).toBe("819-0123-4567");
+});
+
+test("BlessInputMask rewrites the box, keeps the caret, no maxlength, numeric keypad", async () => {
+  const w = mount(BlessInputMask, {
+    props: { mask: "###-####", modelValue: "123" },
+    attachTo: document.body,
+  });
+  const input = w.find("input");
+  const el = input.element as HTMLInputElement;
+  expect(input.attributes("maxlength")).toBeUndefined();
+  expect(input.attributes("inputmode")).toBe("numeric");
+  el.value = "123x";
+  await input.trigger("input");
+  expect(el.value).toBe("123"); // model unchanged, box still corrected
+  el.value = "1239456"; // a digit inserted after "123", caret right after it
+  el.setSelectionRange(4, 4);
+  await input.trigger("input");
+  expect(el.value).toBe("123-9456");
+  expect(el.selectionStart).toBe(5);
+  expect(
+    mount(BlessInputMask, { props: { mask: "AA-##" } })
+      .find("input")
+      .attributes("inputmode"),
+  ).toBeUndefined();
+  w.unmount();
+});
+
 test("BlessBottomTabs: active, aria-current, dock hides labels", async () => {
   const items = [
     { label: "Home", value: "h", icon: "⌂" },
