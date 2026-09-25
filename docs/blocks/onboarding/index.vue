@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { reactive, ref } from "vue";
+import { nextTick, reactive, ref, watch } from "vue";
 import {
   BlessButton,
   BlessField,
@@ -23,6 +23,9 @@ const step = ref(0);
 const form = reactive({ name: "", invites: [] as string[], palette: "megumi" as BlessPalette });
 const done = ref(false);
 const { setPalette } = useTheme();
+// the finished screen replaces the stepper (and the button that had focus): move focus to it
+const doneHead = ref<{ $el: HTMLElement }>();
+watch(done, (d) => d && nextTick(() => doneHead.value?.$el.focus()));
 </script>
 
 <template>
@@ -34,13 +37,17 @@ const { setPalette } = useTheme();
       >
       <BlessStepper v-model="step" :steps @finish="done = true">
         <template #default="{ index }">
-          <BlessField v-if="index === 0" label="Workspace name" hint="You can change this later.">
+          <BlessField
+            v-if="index === 0"
+            label="Workspace name"
+            description="You can change this later."
+          >
             <BlessInput v-model="form.name" placeholder="Blessing Software" />
           </BlessField>
           <BlessField
             v-else-if="index === 1"
             label="Invite by email"
-            hint="Press Enter after each address."
+            description="Press Enter or type a comma after each address."
           >
             <BlessInputTags v-model="form.invites" placeholder="eriri@example.com" />
           </BlessField>
@@ -50,13 +57,17 @@ const { setPalette } = useTheme();
             label="Palette"
             @update:model-value="(p) => setPalette(p as BlessPalette)"
           >
-            <BlessRadio v-for="p in blessPalettes" :key="p" :value="p">{{ p }}</BlessRadio>
+            <BlessRadio v-for="p in blessPalettes" :key="p.name" :value="p.name"
+              ><span class="onboard__chip" :style="{ background: p.color }" aria-hidden="true" />{{
+                p.name[0].toUpperCase() + p.name.slice(1)
+              }}</BlessRadio
+            >
           </BlessRadioGroup>
         </template>
       </BlessStepper>
     </template>
     <div v-else class="onboard__done">
-      <BlessText as="h1" size="lg" weight="light"
+      <BlessText ref="doneHead" as="h1" size="lg" weight="light" tabindex="-1" class="onboard__head"
         >You're set, {{ form.name || "friend" }}.</BlessText
       >
       <BlessText as="p" size="sm" muted
@@ -76,6 +87,17 @@ const { setPalette } = useTheme();
 </template>
 
 <style scoped>
+.onboard__head:focus {
+  outline: none;
+}
+.onboard__chip {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-inline-end: var(--bless-space-2);
+  vertical-align: -1px;
+  transform: skewX(var(--bless-skew));
+}
 .onboard {
   max-width: 520px;
   margin: 0 auto;
