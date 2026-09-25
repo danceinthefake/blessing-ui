@@ -1,0 +1,29 @@
+docs/components/stepper.md
+  s_9ec1000e308ddb::t_b54c9e685dd580 13-14,24-25
+  s_9ec1000e308ddb::t_cb3f40ac2dda65 26
+docs/components/steps.md
+  s_9ec1000e308ddb::t_b54c9e685dd580 13-14,24-25
+  s_9ec1000e308ddb::t_45ab8f33b7b3cf 26
+src/components/BlessSteps.vue
+  s_9ec1000e308ddb::t_21c5508dba6964 13-14,21-22,38-39,41-42
+src/components/BlessStepper.vue
+  s_9ec1000e308ddb::t_21c5508dba6964 2,13,25-27,36,39-45
+src/components/BlessExtras3.test.ts
+  s_9ec1000e308ddb::t_a33e5fefb71054 111-136
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "225a564303e04ce24e61ad97b332e0fda8218104",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
