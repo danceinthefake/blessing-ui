@@ -61,11 +61,13 @@ const price = (m: number) =>
         <BlessButton
           :color="p.hot ? 'accent' : 'text'"
           :variant="p.hot ? 'solid' : 'outline'"
+          block
+          :aria-label="`${p.monthly ? 'Start trial' : 'Get started'}: ${p.name}`"
           class="pricing__cta"
           >{{ p.monthly ? "Start trial" : "Get started" }}</BlessButton
         >
         <BlessSeparator />
-        <ul class="pricing__features">
+        <ul role="list" class="pricing__features">
           <li v-for="f in p.features" :key="f"><span aria-hidden="true">✓</span> {{ f }}</li>
         </ul>
       </BlessCard>
@@ -96,7 +98,6 @@ const price = (m: number) =>
   margin: var(--bless-space-4) 0;
 }
 .pricing__cta {
-  width: 100%;
   margin-bottom: var(--bless-space-4);
 }
 .pricing__features {
