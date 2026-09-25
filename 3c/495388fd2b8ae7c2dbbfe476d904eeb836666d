@@ -1,0 +1,29 @@
+docs/components/qr-code.md
+  s_9ec1000e308ddb::t_5f2e36d46e2017 13,15-16,38-39
+  s_9ec1000e308ddb::t_3ee1547a658107 40
+docs/components/marker.md
+  s_9ec1000e308ddb::t_a3c3ef74e2640c 13,15-16,23
+  s_9ec1000e308ddb::t_05041edb576bd8 24
+docs/components/bubble.md
+  s_9ec1000e308ddb::t_a3c3ef74e2640c 13,15-16,23-24
+  s_9ec1000e308ddb::t_7b56e23a668df9 25
+docs/components/chart.md
+  s_9ec1000e308ddb::t_5f2e36d46e2017 14,16-17,33-34
+  s_9ec1000e308ddb::t_cb9e2a074bd248 35
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "3c495388fd2b8ae7c2dbbfe476d904eeb836666d",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
