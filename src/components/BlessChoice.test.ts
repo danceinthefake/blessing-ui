@@ -122,3 +122,31 @@ test("BlessTextarea counter speaks only near the limit", async () => {
   await w.setProps({ modelValue: "x".repeat(185) });
   expect(w.find(".bless-textarea__counter").attributes("aria-live")).toBe("polite");
 });
+
+test("BlessTable stacked keeps table roles; BlessTabs ids survive values with spaces", async () => {
+  const { default: BlessTable } = await import("./BlessTable.vue");
+  const { default: BlessTabs } = await import("./BlessTabs.vue");
+  const t = mount(BlessTable, {
+    props: {
+      columns: [
+        { key: "n", label: "Name", header: true },
+        { key: "e", label: "Ep" },
+      ],
+      rows: [{ n: "A", e: 1 }],
+    },
+  });
+  expect(t.attributes("role")).toBe("table");
+  expect(t.find("tbody tr").attributes("role")).toBe("row");
+  expect(t.findAll("tbody tr > *").map((c) => c.attributes("role"))).toEqual(["rowheader", "cell"]);
+  expect(
+    mount(BlessTable, { props: { columns: [], rows: [], stack: false } }).attributes("role"),
+  ).toBeUndefined();
+  const tabs = mount(BlessTabs, {
+    props: { tabs: [{ value: "first tab", label: "One" }], modelValue: "first tab" },
+  });
+  const tab = tabs.find("[role=tab]");
+  expect(tab.attributes("aria-controls")).not.toContain(" ");
+  expect(
+    tabs.find(`#${CSS.escape(tab.attributes("aria-controls")!)}`).attributes("aria-labelledby"),
+  ).toBe(tab.attributes("id"));
+});

@@ -3,7 +3,7 @@ import type { BlessColumn } from "./table";
 
 defineOptions({ name: "BlessTable" });
 
-withDefaults(
+const props = withDefaults(
   defineProps<{
     columns: BlessColumn<T>[];
     rows: T[];
@@ -15,22 +15,27 @@ withDefaults(
   }>(),
   { stack: true, striped: false },
 );
+// Stacked, the cells are restyled as blocks under 800px, and Safari then drops table semantics;
+// explicit roles keep it read as a table. `r(x)` gives the role only when stacking.
+const r = (role: string) => (props.stack ? role : undefined);
 </script>
 
 <template>
   <table
+    :role="r('table')"
     class="bless-table"
     :class="{ 'bless-table--stack': stack, 'bless-table--striped': striped }"
   >
     <caption v-if="caption || $slots.caption" class="bless-table__caption">
       <slot name="caption">{{ caption }}</slot>
     </caption>
-    <thead class="bless-table__head">
-      <tr>
+    <thead class="bless-table__head" :role="r('rowgroup')">
+      <tr :role="r('row')">
         <th
           v-for="c in columns"
           :key="c.key"
           scope="col"
+          :role="r('columnheader')"
           class="bless-table__th"
           :class="c.align && `bless-table__cell--${c.align}`"
           :style="c.width ? { width: c.width } : undefined"
@@ -39,13 +44,19 @@ withDefaults(
         </th>
       </tr>
     </thead>
-    <tbody>
-      <tr v-for="(row, i) in rows" :key="rowKey ? String(row[rowKey]) : i" class="bless-table__row">
+    <tbody :role="r('rowgroup')">
+      <tr
+        v-for="(row, i) in rows"
+        :key="rowKey ? String(row[rowKey]) : i"
+        class="bless-table__row"
+        :role="r('row')"
+      >
         <component
           :is="c.header ? 'th' : 'td'"
           v-for="c in columns"
           :key="c.key"
           :scope="c.header ? 'row' : undefined"
+          :role="r(c.header ? 'rowheader' : 'cell')"
           class="bless-table__cell"
           :class="c.align && `bless-table__cell--${c.align}`"
           :data-label="c.label"

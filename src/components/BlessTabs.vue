@@ -30,6 +30,8 @@ const current = computed(() =>
 );
 const focused = ref<string | undefined>();
 const btns = ref<HTMLButtonElement[]>([]);
+// ids come from the position, not the value: a value with a space would break the id reference
+const ix = (t: BlessTab) => props.tabs.indexOf(t);
 
 function focusTab(value: string) {
   focused.value = value;
@@ -72,9 +74,9 @@ function onKey(e: KeyboardEvent) {
           [`bless-tabs__tab--${color}`]: true,
         }"
         :color="t.value === current ? color : 'none'"
-        :id="`${id}-tab-${t.value}`"
+        :id="`${id}-tab-${ix(t)}`"
         :aria-selected="t.value === current"
-        :aria-controls="`${id}-panel-${t.value}`"
+        :aria-controls="`${id}-panel-${ix(t)}`"
         :tabindex="t.value === (focused ?? current) ? 0 : -1"
         :disabled="t.disabled"
         @click="
@@ -93,8 +95,8 @@ function onKey(e: KeyboardEvent) {
       v-show="t.value === current"
       role="tabpanel"
       class="bless-tabs__panel"
-      :id="`${id}-panel-${t.value}`"
-      :aria-labelledby="`${id}-tab-${t.value}`"
+      :id="`${id}-panel-${ix(t)}`"
+      :aria-labelledby="`${id}-tab-${ix(t)}`"
       tabindex="0"
     >
       <slot :tab="t" :active="t.value === current" />
