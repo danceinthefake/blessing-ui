@@ -25,7 +25,9 @@ test("BlessSheet side class, open/close, backdrop", async () => {
   await nextTick();
   expect(w.classes()).toContain("bless-sheet--left");
   expect(w.attributes("open")).toBeDefined();
-  expect(w.attributes("aria-label")).toBe("Nav");
+  expect(document.getElementById(w.attributes("aria-labelledby")!)?.textContent?.trim()).toBe(
+    "Nav",
+  );
   await w.trigger("click");
   expect(w.emitted("update:modelValue")!.at(-1)).toEqual([false]);
   w.unmount();
@@ -86,4 +88,50 @@ test("useToast + BlessToaster render, auto-dismiss, action", async () => {
   expect(w.findAll(".bless-toast")).toHaveLength(0);
   vi.useRealTimers();
   w.unmount();
+});
+
+test("BlessSheet: a swipe on the handle doesn't close a non-dismissible sheet; slot title names it", async () => {
+  const w = mount(BlessSheet, {
+    props: { modelValue: true, handle: true, dismissible: false },
+    slots: { title: "<em>Filters</em>" },
+    attachTo: document.body,
+  });
+  await nextTick();
+  expect(document.getElementById(w.attributes("aria-labelledby")!)?.textContent?.trim()).toBe(
+    "Filters",
+  );
+  const h = w.find(".bless-sheet__handle").element as HTMLElement;
+  h.setPointerCapture = () => {};
+  const ev = (type: string, y: number) => {
+    const e = new MouseEvent(type, { clientY: y, bubbles: true });
+    Object.defineProperty(e, "pointerId", { value: 1 });
+    h.dispatchEvent(e);
+  };
+  ev("pointerdown", 10);
+  ev("pointermove", 200);
+  ev("pointerup", 200);
+  await nextTick();
+  expect(w.emitted("update:modelValue")).toBeUndefined();
+  w.unmount();
+});
+
+test("toasts pause while the pointer or focus is in the toaster, then finish their time", async () => {
+  const { useToast, pauseToasts, resumeToasts } = await import("../composables/useToast");
+  vi.useFakeTimers();
+  try {
+    const { toast, items, clear } = useToast();
+    clear();
+    toast({ title: "Saved", duration: 100 });
+    vi.advanceTimersByTime(50);
+    pauseToasts();
+    vi.advanceTimersByTime(500);
+    expect(items.value).toHaveLength(1); // held while paused
+    resumeToasts();
+    vi.advanceTimersByTime(40);
+    expect(items.value).toHaveLength(1); // 10ms of its 100 still left
+    vi.advanceTimersByTime(20);
+    expect(items.value).toHaveLength(0);
+  } finally {
+    vi.useRealTimers();
+  }
 });
