@@ -85,8 +85,29 @@ test("BlessTreeSelect: single closes, multiple toggles chips, leafOnly", async (
   expect(m.emitted("update:modelValue")).toBeUndefined();
   await m.findAll(".bless-tree__row--leaf").at(-1)!.trigger("click"); // README
   expect(m.emitted("update:modelValue")![0][0]).toEqual(["idx", "readme"]);
-  await m.find(".bless-chip__remove").trigger("click"); // removes "idx"
-  expect(m.emitted("update:modelValue")!.at(-1)![0]).toEqual(["readme"]);
+  // chips are plain labels inside the combobox; Backspace removes the last pick
+  expect(m.find(".bless-chip__remove").exists()).toBe(false);
+  await m.setProps({ modelValue: ["idx", "readme"] });
+  await m.find(".bless-treeselect__trigger").trigger("keydown", { key: "Backspace" });
+  expect(m.emitted("update:modelValue")!.at(-1)![0]).toEqual(["idx"]);
+});
+
+test("BlessTreeSelect: disabled doesn't open on click; ArrowDown opens; a Field names it", async () => {
+  const { default: BlessField } = await import("./BlessField.vue");
+  const d = mount(BlessTreeSelect, { props: { nodes, disabled: true } });
+  await d.find(".bless-treeselect__trigger").trigger("click");
+  expect(d.find(".bless-treeselect__trigger").attributes("aria-expanded")).toBe("false");
+  expect(d.find(".bless-treeselect__trigger").attributes("tabindex")).toBe("-1");
+  const w = mount(BlessTreeSelect, { props: { nodes } });
+  await w.find(".bless-treeselect__trigger").trigger("keydown", { key: "ArrowDown" });
+  expect(w.find(".bless-treeselect__trigger").attributes("aria-expanded")).toBe("true");
+  const f = mount(BlessField, {
+    props: { label: "File" },
+    slots: { default: () => h(BlessTreeSelect, { nodes }) },
+  });
+  const t = f.find("[role=combobox]");
+  expect(t.attributes("aria-label")).toBeUndefined();
+  expect(t.attributes("aria-labelledby")).toBe(f.find("label").attributes("id"));
 });
 
 test("BlessTreeTable: flattens by expansion, toggle expands", async () => {
