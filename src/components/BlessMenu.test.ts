@@ -120,6 +120,32 @@ test("Menubar registers menus and has role", () => {
   });
   expect(w.element.tagName).toBe("NAV");
   expect(w.findAll(".bless-dropdown__anchor")).toHaveLength(2);
+  // one tab stop: the first trigger, then whichever last had focus
+  const [file, edit] = w.findAll("button").filter((b) => /File|Edit/.test(b.text()));
+  expect([file.attributes("tabindex"), edit.attributes("tabindex")]).toEqual(["0", "-1"]);
+  edit.element.dispatchEvent(new FocusEvent("focusin", { bubbles: true }));
+  expect([file.element.tabIndex, edit.element.tabIndex]).toEqual([-1, 0]);
+  // triggers carry menu-button wiring, which is also how ←/→ find the next menu
+  expect(file.attributes("aria-haspopup")).toBe("menu");
+  expect(file.attributes("aria-expanded")).toBe("false");
+  expect(document.getElementById(file.attributes("aria-controls")!)).toBeNull(); // not attached
+});
+
+test("Menubar: → moves focus to the next menu's trigger", async () => {
+  const w = mount(BlessMenubar, {
+    attachTo: document.body,
+    slots: {
+      default: () => [
+        h(BlessDropdownMenu, { items }, { trigger: () => h("button", "File") }),
+        h(BlessDropdownMenu, { items }, { trigger: () => h("button", "Edit") }),
+      ],
+    },
+  });
+  const [file, edit] = w.findAll("button").filter((b) => /File|Edit/.test(b.text()));
+  (file.element as HTMLElement).focus();
+  await file.trigger("keydown", { key: "ArrowRight" });
+  expect(document.activeElement).toBe(edit.element);
+  w.unmount();
 });
 
 test("BlessMenuList: submenu keys do not double-step or close the whole tree", async () => {

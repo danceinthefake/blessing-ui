@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { provide, ref } from "vue";
+import { onMounted, provide, ref } from "vue";
 import { menubarKey } from "./menu";
 
 defineOptions({ name: "BlessMenubar" });
@@ -8,6 +8,19 @@ defineProps<{ label?: string }>();
 
 const menus = ref<Array<{ id: string; open: () => void; close: () => void }>>([]);
 const active = ref<string | null>(null);
+const root = ref<HTMLElement>();
+// One tab stop for the whole bar (arrows move between menus): the last-focused trigger keeps
+// tabindex 0, the others -1.
+const triggers = () =>
+  Array.from(
+    root.value?.querySelectorAll<HTMLElement>('[aria-haspopup="menu"][aria-controls]') ?? [],
+  );
+function rove(current?: HTMLElement) {
+  const all = triggers();
+  const keep = current && all.includes(current) ? current : all[0];
+  for (const t of all) t.tabIndex = t === keep ? 0 : -1;
+}
+onMounted(() => rove());
 
 provide(menubarKey, {
   register: (id, open, close) => menus.value.push({ id, open, close }),
@@ -19,7 +32,7 @@ provide(menubarKey, {
     if (!next) return;
     const wasOpen = active.value === id;
     menus.value[i]?.close();
-    const trigger = document.querySelector<HTMLElement>(`[aria-controls="${next.id}"] > *`);
+    const trigger = root.value?.querySelector<HTMLElement>(`[aria-controls="${next.id}"]`);
     trigger?.focus();
     if (wasOpen) next.open();
   },
@@ -27,7 +40,14 @@ provide(menubarKey, {
 </script>
 
 <template>
-  <nav class="bless-menubar" :aria-label="label"><slot /></nav>
+  <nav
+    ref="root"
+    class="bless-menubar"
+    :aria-label="label"
+    @focusin="rove($event.target as HTMLElement)"
+  >
+    <slot />
+  </nav>
 </template>
 
 <style>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { inject, nextTick, onBeforeUnmount, ref, useId, watch } from "vue";
+import { inject, nextTick, onBeforeUnmount, onMounted, ref, useId, watch } from "vue";
 import { logicalKey } from "../composables/rtl";
 import { useFloating, type Placement } from "../composables/useFloating";
 import BlessMenuList from "./BlessMenuList.vue";
@@ -117,6 +117,19 @@ function close() {
   open.value = false;
   (anchor.value?.firstElementChild as HTMLElement | null)?.focus?.();
 }
+
+// The trigger is the consumer's own element (slot), so its menu-button wiring is set on it here:
+// what it opens, that it opens a menu, and whether it is open.
+function wireTrigger() {
+  const t = anchor.value?.firstElementChild as HTMLElement | null | undefined;
+  // only a button-like trigger; a context-menu area (a plain div) can't carry these
+  if (!t?.matches("button, a[href], [role=button], input[type=button]")) return;
+  t.setAttribute("aria-haspopup", "menu");
+  t.setAttribute("aria-controls", id);
+  t.setAttribute("aria-expanded", String(open.value));
+}
+onMounted(wireTrigger);
+watch(open, () => nextTick(wireTrigger));
 
 bar?.register(
   id,
