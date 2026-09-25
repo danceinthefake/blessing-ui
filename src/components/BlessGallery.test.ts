@@ -55,3 +55,20 @@ test("loop=false disables ends", async () => {
   expect(w.find(".bless-gallery__nav--next").attributes("disabled")).toBeUndefined();
   w.unmount();
 });
+
+test("BlessGallery names thumbs and the viewer even without alt text", async () => {
+  const w = mount(BlessGallery, {
+    props: {
+      items: [{ src: "a.jpg" }, { src: "b.jpg", caption: "Blessing Software" }],
+      modelValue: 1,
+    },
+    attachTo: document.body,
+  });
+  const thumbs = w.findAll(".bless-gallery__thumb");
+  expect(thumbs.map((t) => t.attributes("aria-label"))).toEqual([
+    "Image 1 of 2",
+    "Blessing Software",
+  ]);
+  expect(w.find("dialog").attributes("aria-label")).toBe("Blessing Software");
+  w.unmount();
+});

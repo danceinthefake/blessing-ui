@@ -43,6 +43,9 @@ function step(d: 1 | -1) {
   index.value = props.loop ? (next + n) % n : Math.min(n - 1, Math.max(0, next));
 }
 
+// thumbs and the viewer need names even when an image has no alt text
+const nameOf = (item: BlessGalleryItem, i: number) =>
+  item.alt || item.caption || `Image ${i + 1} of ${props.items.length}`;
 function onKey(e: KeyboardEvent) {
   if (!open.value) return;
   if (logicalKey(e) === "ArrowRight") step(1);
@@ -56,7 +59,12 @@ function onKey(e: KeyboardEvent) {
   <div class="bless-gallery" @keydown="onKey">
     <ul role="list" class="bless-gallery__grid" :style="{ '--_col': columns }">
       <li v-for="(item, i) in items" :key="item.src" class="bless-gallery__cell">
-        <button type="button" class="bless-gallery__thumb" @click="index = i">
+        <button
+          type="button"
+          class="bless-gallery__thumb"
+          :aria-label="nameOf(item, i)"
+          @click="index = i"
+        >
           <slot name="thumb" :item :index="i">
             <img :src="item.thumb ?? item.src" :alt="item.alt ?? ''" loading="lazy" />
           </slot>
@@ -64,7 +72,12 @@ function onKey(e: KeyboardEvent) {
       </li>
     </ul>
 
-    <BlessModal v-model="open" size="lg" class="bless-gallery__modal">
+    <BlessModal
+      v-model="open"
+      size="lg"
+      class="bless-gallery__modal"
+      :aria-label="current ? nameOf(current, index) : undefined"
+    >
       <div v-if="current" class="bless-gallery__viewer">
         <figure class="bless-gallery__figure">
           <img :src="current.src" :alt="current.alt ?? ''" class="bless-gallery__image" />
