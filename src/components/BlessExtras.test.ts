@@ -169,3 +169,24 @@ test("BlessSwap toggles via checkbox", async () => {
   await w.find("input").setValue(true);
   expect(w.emitted("update:modelValue")![0]).toEqual([true]);
 });
+
+test("BlessListbox: starts on the selected option, named by a Field, submits values", async () => {
+  const { default: BlessField } = await import("./BlessField.vue");
+  const { h } = await import("vue");
+  const options = [
+    { label: "A", value: "a", disabled: true },
+    { label: "B", value: "b" },
+    { label: "C", value: "c" },
+  ];
+  const w = mount(BlessListbox, { props: { options, modelValue: "c", name: "pick" } });
+  expect(w.attributes("aria-activedescendant")).toMatch(/-2$/);
+  expect(w.find("input[type=hidden]").attributes()).toMatchObject({ name: "pick", value: "c" });
+  const none = mount(BlessListbox, { props: { options } });
+  expect(none.attributes("aria-activedescendant")).toMatch(/-1$/); // skips the disabled first row
+  const f = mount(BlessField, {
+    props: { label: "Letter" },
+    slots: { default: () => h(BlessListbox, { options }) },
+  });
+  const lb = f.find("[role=listbox]");
+  expect(lb.attributes("aria-labelledby")).toBe(f.find("label").attributes("id"));
+});

@@ -1,11 +1,15 @@
 <script setup lang="ts" generic="T extends string | number">
 import { computed, ref, useId } from "vue";
+import { useFieldId, useFieldState } from "../composables/useFieldId";
 import type { BlessOption } from "./select";
 
 defineOptions({ name: "BlessListbox" });
 
 const props = withDefaults(
   defineProps<{
+    id?: string;
+    /** submitted with the form, one value per selected option */
+    name?: string;
     options: BlessOption<T>[];
     multiple?: boolean;
     disabled?: boolean;
@@ -17,7 +21,8 @@ const props = withDefaults(
 );
 const model = defineModel<T | T[] | undefined>();
 const uid = useId();
-const active = ref(0);
+const id = useFieldId(props);
+const fs = useFieldState();
 const root = ref<HTMLElement>();
 
 const enabled = computed(() =>
@@ -25,6 +30,14 @@ const enabled = computed(() =>
 );
 const isSelected = (v: T) =>
   Array.isArray(model.value) ? model.value.includes(v) : model.value === v;
+const selected = computed(() => props.options.filter((o) => isSelected(o.value)));
+// start on the (first) selected option, else the first enabled one — never a disabled row
+const active = ref(
+  Math.max(
+    props.options.findIndex((o) => !o.disabled && isSelected(o.value)),
+    enabled.value[0] ?? 0,
+  ),
+);
 function pick(i: number) {
   const o = props.options[i];
   if (!o || o.disabled || props.disabled) return;
@@ -34,14 +47,17 @@ function pick(i: number) {
     model.value = cur.includes(o.value) ? cur.filter((v) => v !== o.value) : [...cur, o.value];
   } else model.value = o.value;
 }
+function reveal() {
+  root.value
+    ?.querySelector<HTMLElement>(`[data-i="${active.value}"]`)
+    ?.scrollIntoView?.({ block: "nearest" });
+}
 function move(d: number) {
   const list = enabled.value;
   const at = list.indexOf(active.value);
   const next = list[Math.max(0, Math.min(list.length - 1, (at < 0 ? 0 : at) + d))];
   if (next != null) active.value = next;
-  root.value
-    ?.querySelector<HTMLElement>(`[data-i="${active.value}"]`)
-    ?.scrollIntoView?.({ block: "nearest" });
+  reveal();
 }
 let typed = "";
 let timer: ReturnType<typeof setTimeout> | undefined;
@@ -59,10 +75,12 @@ function onKey(e: KeyboardEvent) {
     case "Home":
       e.preventDefault();
       active.value = list[0] ?? 0;
+      reveal();
       break;
     case "End":
       e.preventDefault();
       active.value = list.at(-1) ?? 0;
+      reveal();
       break;
     case " ":
     case "Enter":
@@ -75,7 +93,7 @@ function onKey(e: KeyboardEvent) {
         clearTimeout(timer);
         timer = setTimeout(() => (typed = ""), 500);
         const hit = list.find((i) => props.options[i].label.toLowerCase().startsWith(typed));
-        if (hit != null) active.value = hit;
+        if (hit != null) ((active.value = hit), reveal());
       }
   }
 }
@@ -83,12 +101,16 @@ function onKey(e: KeyboardEvent) {
 
 <template>
   <div
+    :id="id()"
     ref="root"
     class="bless-listbox"
     :class="{ 'bless-listbox--disabled': disabled }"
     role="listbox"
     :tabindex="disabled ? -1 : 0"
     :aria-label="label"
+    :aria-labelledby="label ? undefined : fs.labelledby"
+    :aria-describedby="fs.describedby.value"
+    :aria-invalid="fs.invalid.value || undefined"
     :aria-multiselectable="multiple || undefined"
     :aria-activedescendant="`${uid}-${active}`"
     :aria-disabled="disabled || undefined"
@@ -117,6 +139,9 @@ function onKey(e: KeyboardEvent) {
       }}</span>
       <slot :option="o" :selected="isSelected(o.value)">{{ o.label }}</slot>
     </div>
+    <template v-if="name">
+      <input v-for="o in selected" :key="o.value" type="hidden" :name :value="o.value" />
+    </template>
   </div>
 </template>
 
