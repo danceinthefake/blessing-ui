@@ -1,13 +1,16 @@
 <script setup lang="ts">
-import { watch } from "vue";
+import { nextTick, ref, useId, watch } from "vue";
 import { useMedia } from "../composables/useMedia";
 
 defineOptions({ name: "BlessStage" });
 
-withDefaults(defineProps<{ menuLabel?: string; closeLabel?: string }>(), {
-  menuLabel: "Menu",
-  closeLabel: "Close",
-});
+withDefaults(
+  defineProps<{
+    /** the phone menu button's name; aria-expanded says whether it's open */
+    menuLabel?: string;
+  }>(),
+  { menuLabel: "Menu" },
+);
 
 /** mobile drawer state; v-model:open optional */
 const open = defineModel<boolean>("open", { default: false });
@@ -17,8 +20,19 @@ watch(sp, (isSp) => {
   if (!isSp) open.value = false;
 });
 
+const sideId = useId();
+const toggle = ref<HTMLElement>();
+const side = ref<HTMLElement>();
+// the drawer turns inert when it closes: take focus into it on open, back to the button on Esc
+watch(open, (o) =>
+  nextTick(() => {
+    if (o && sp.value) side.value?.querySelector<HTMLElement>("a, button, [tabindex]")?.focus();
+  }),
+);
 function onKey(e: KeyboardEvent) {
-  if (e.key === "Escape") open.value = false;
+  if (e.key !== "Escape" || !open.value) return;
+  open.value = false;
+  toggle.value?.focus();
 }
 </script>
 
@@ -30,19 +44,21 @@ function onKey(e: KeyboardEvent) {
 
     <button
       v-if="sp"
+      ref="toggle"
       type="button"
       class="bless-stage__toggle"
       :aria-expanded="open"
-      aria-controls="bless-stage-sidebar"
+      :aria-controls="sideId"
       @click="open = !open"
     >
       <span class="bless-stage__toggle-bar" aria-hidden="true" />
-      <span class="bless-stage__sr">{{ open ? closeLabel : menuLabel }}</span>
+      <span class="bless-stage__sr">{{ menuLabel }}</span>
     </button>
     <div v-if="sp && open" class="bless-stage__scrim" @click="open = false" />
 
     <aside
-      id="bless-stage-sidebar"
+      :id="sideId"
+      ref="side"
       class="bless-stage__side"
       :aria-hidden="sp && !open ? 'true' : undefined"
       :inert="sp && !open"
