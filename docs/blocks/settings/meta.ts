@@ -10,7 +10,7 @@ export default {
     "BlessInput",
     "BlessTextarea",
     "BlessSelect",
-    "BlessSwitch",
+    "BlessCheckbox",
     "BlessAvatar",
     "BlessButton",
     "BlessAlertDialog",
