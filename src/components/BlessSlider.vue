@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from "vue";
-import { useFieldId } from "../composables/useFieldId";
+import { useFieldId, useFieldState } from "../composables/useFieldId";
 
 defineOptions({ name: "BlessSlider", inheritAttrs: false });
 
@@ -21,7 +21,8 @@ const props = withDefaults(
 
 const model = defineModel<number>({ default: 0 });
 const id = useFieldId(props);
-const pct = computed(() => ((model.value - props.min) / (props.max - props.min)) * 100);
+const fs = useFieldState();
+const pct = computed(() => ((model.value - props.min) / (props.max - props.min || 1)) * 100);
 const text = computed(() => (props.format ?? String)(model.value));
 </script>
 
@@ -46,6 +47,8 @@ const text = computed(() => (props.format ?? String)(model.value));
       :disabled
       class="bless-slider__input"
       :aria-valuetext="format ? text : undefined"
+      :aria-invalid="fs.invalid.value || undefined"
+      :aria-describedby="($attrs['aria-describedby'] as string) ?? fs.describedby.value"
     />
   </div>
 </template>
