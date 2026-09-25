@@ -1,0 +1,27 @@
+docs/components/popover.md
+  s_9ec1000e308ddb::t_62a1f734c63e2e 15,17-18,47-49
+  s_9ec1000e308ddb::t_be34c40e4beb55 50
+src/components/BlessPopover.vue
+  s_9ec1000e308ddb::t_d1fabe9caa0387 2,15,54-64,66-70,94
+src/components/BlessPopover.test.ts
+  s_9ec1000e308ddb::t_78e59906e86a87 30,78
+  s_9ec1000e308ddb::t_0e60436acfe9fe 67-77
+  s_9ec1000e308ddb::t_3c998752cc79e9 41-42,79-96,98
+  s_9ec1000e308ddb::t_3c9c13eb229165 97
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "2fdfd3351ea654805b551e0ab3e536cb5d45952e",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
