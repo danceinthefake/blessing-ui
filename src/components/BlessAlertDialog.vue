@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { nextTick, ref, watch } from "vue";
+import { nextTick, ref, useId, watch } from "vue";
 import BlessButton from "./BlessButton.vue";
 import BlessModal from "./BlessModal.vue";
 
@@ -21,6 +21,8 @@ withDefaults(
 const open = defineModel<boolean>({ default: false });
 const emit = defineEmits<{ confirm: []; cancel: [] }>();
 const cancelBtn = ref<InstanceType<typeof BlessButton>>();
+// the question itself describes the dialog, so it is read with the title
+const descId = `${useId()}-desc`;
 
 // focus lands on the safe action
 watch(
@@ -48,9 +50,10 @@ function onClose() {
     size="sm"
     class="bless-alert-dialog"
     role="alertdialog"
+    :aria-describedby="description ? descId : undefined"
     @close="onClose"
   >
-    <p v-if="description" class="bless-alert-dialog__desc">{{ description }}</p>
+    <p v-if="description" :id="descId" class="bless-alert-dialog__desc">{{ description }}</p>
     <slot />
     <template #footer>
       <BlessButton ref="cancelBtn" variant="outline" @click="open = false">{{
