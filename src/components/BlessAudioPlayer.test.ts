@@ -37,3 +37,16 @@ test("toggle play/pause, track list select, ended advances", async () => {
   expect(w.emitted("ended")![0][0]).toEqual(tracks[1]);
   expect(w.find(".bless-audio__toggle").attributes("aria-pressed")).toBe("false");
 });
+
+test("BlessAudioPlayer seeks from the keyboard through a native range; the button keeps its name", async () => {
+  const w = mount(BlessAudioPlayer, { props: { tracks: [{ src: "a.mp3", title: "A" }] } });
+  const audio = w.find("audio").element as HTMLAudioElement;
+  Object.defineProperty(audio, "duration", { value: 200, configurable: true });
+  await w.find("audio").trigger("durationchange");
+  const seek = w.find("input[type=range]");
+  expect(seek.attributes("max")).toBe("200");
+  expect(seek.attributes("aria-valuetext")).toBe("0:00 of 3:20");
+  await seek.setValue("83");
+  expect(audio.currentTime).toBe(83);
+  expect(w.find(".bless-audio__toggle").attributes("aria-label")).toBe("Play");
+});
