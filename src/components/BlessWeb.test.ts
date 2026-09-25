@@ -125,6 +125,9 @@ test("BlessUploader: queues, manual upload via event, done/fail", async () => {
   done();
   expect(item.status).toBe("done");
   expect(w.emitted("done")).toHaveLength(1);
+  await nextTick();
+  expect(w.find(".bless-uploader__live").text()).toBe("a.txt uploaded");
+  expect(w.find(".bless-uploader__x").attributes("aria-label")).toBe("Remove a.txt");
 });
 
 test("BlessClientOnly renders after mount; browser composables read state", async () => {

@@ -7144,8 +7144,7 @@
     "name": "label",
     "type": "string | undefined",
     "required": false,
-    "default": "\"Time\"",
-    "description": ""
+    "description": "accessible name when there's no Field or <label>; defaults to \"Time\" outside a Field"
    },
    {
     "name": "size",
@@ -7544,6 +7543,12 @@
  "BlessTreeSelect": {
   "props": [
    {
+    "name": "id",
+    "type": "string | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
     "name": "nodes",
     "type": "BlessTreeNode[]",
     "required": true,
@@ -7585,8 +7590,7 @@
     "name": "label",
     "type": "string | undefined",
     "required": false,
-    "default": "\"Tree select\"",
-    "description": ""
+    "description": "accessible name when there's no Field; also names the tree"
    },
    {
     "name": "size",
