@@ -87,3 +87,20 @@ test("BlessCombobox multiple: chips, backspace removes, creatable", async () => 
   expect(w.emitted("create")![0]).toEqual(["出海"]);
   w.unmount();
 });
+
+test("BlessCommand: named input, groups are labelled, ⌘K is left to editors", async () => {
+  const w = mount(BlessCommand, {
+    props: { inline: true, items: [{ label: "Open", value: "o", group: "File" }] },
+  });
+  expect(w.find("input").attributes("aria-label")).toBe("Search commands");
+  const g = w.find("[role=listbox] > [role=group]");
+  expect(w.find(`#${g.attributes("aria-labelledby")}`).text()).toBe("File");
+  const m = mount(BlessCommand, { props: { items: [] }, attachTo: document.body });
+  const ed = document.createElement("div");
+  ed.setAttribute("contenteditable", "true");
+  document.body.append(ed);
+  ed.dispatchEvent(new KeyboardEvent("keydown", { key: "k", ctrlKey: true, bubbles: true }));
+  expect(m.emitted("update:open")).toBeUndefined();
+  ed.remove();
+  m.unmount();
+});

@@ -19,6 +19,8 @@ const props = withDefaults(
   defineProps<{
     items: BlessCommandItem[];
     placeholder?: string;
+    /** accessible name of the search input */
+    label?: string;
     emptyText?: string;
     /** bind ⌘K / Ctrl+K to open */
     hotkey?: boolean;
@@ -26,7 +28,12 @@ const props = withDefaults(
     inline?: boolean;
     filter?: (item: BlessCommandItem, query: string) => boolean;
   }>(),
-  { placeholder: "Type a command…", emptyText: "No results.", hotkey: true },
+  {
+    placeholder: "Type a command…",
+    label: "Search commands",
+    emptyText: "No results.",
+    hotkey: true,
+  },
 );
 
 const open = defineModel<boolean>("open", { default: false });
@@ -56,7 +63,15 @@ const activeId = computed(() =>
   flat.value[active.value] ? `${id}-${flat.value[active.value].value}` : undefined,
 );
 
-watch(results, () => (active.value = 0));
+// a new result list starts on its first item that can be chosen
+watch(
+  results,
+  () =>
+    (active.value = Math.max(
+      0,
+      flat.value.findIndex((it) => !it.disabled),
+    )),
+);
 watch(open, (o) => {
   if (o) {
     query.value = "";
@@ -101,6 +116,9 @@ function onKey(e: KeyboardEvent) {
   }
 }
 function onHotkey(e: KeyboardEvent) {
+  // leave ⌘K alone where it already means something: rich-text editors use it for links
+  const t = e.target as HTMLElement | null;
+  if (t?.closest?.('[contenteditable]:not([contenteditable="false"])')) return;
   if (props.hotkey && !props.inline && (e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
     e.preventDefault();
     open.value = !open.value;
@@ -131,6 +149,7 @@ onBeforeUnmount(() => removeEventListener("keydown", onHotkey));
           class="bless-command__input"
           :placeholder
           role="combobox"
+          :aria-label="label"
           aria-autocomplete="list"
           :aria-expanded="true"
           :aria-controls="`${id}-list`"
@@ -141,10 +160,22 @@ onBeforeUnmount(() => removeEventListener("keydown", onHotkey));
         />
         <BlessKbd v-if="!inline">Esc</BlessKbd>
       </div>
-      <div :id="`${id}-list`" class="bless-command__list" role="listbox">
-        <p v-if="!flat.length" class="bless-command__empty">{{ emptyText }}</p>
-        <template v-for="[group, its] in groups" :key="group">
-          <div v-if="group" class="bless-command__group" role="presentation">{{ group }}</div>
+      <div :id="`${id}-list`" class="bless-command__list" role="listbox" :aria-label="label">
+        <div
+          v-for="[group, its] in groups"
+          :key="group"
+          role="group"
+          :aria-labelledby="group ? `${id}-g-${groups.findIndex(([g]) => g === group)}` : undefined"
+          class="bless-command__section"
+        >
+          <div
+            v-if="group"
+            :id="`${id}-g-${groups.findIndex(([g]) => g === group)}`"
+            class="bless-command__group"
+            aria-hidden="true"
+          >
+            {{ group }}
+          </div>
           <div
             v-for="it in its"
             :key="it.value"
@@ -165,8 +196,9 @@ onBeforeUnmount(() => removeEventListener("keydown", onHotkey));
               it.shortcut
             }}</BlessKbd>
           </div>
-        </template>
+        </div>
       </div>
+      <p class="bless-command__empty" role="status">{{ flat.length ? "" : emptyText }}</p>
       <div v-if="$slots.footer" class="bless-command__footer"><slot name="footer" /></div>
     </div>
   </component>
@@ -224,6 +256,9 @@ onBeforeUnmount(() => removeEventListener("keydown", onHotkey));
   overflow-y: auto;
   padding: var(--bless-space-2) 0;
   scrollbar-width: thin;
+}
+.bless-command__empty:empty {
+  display: none;
 }
 .bless-command__empty {
   margin: 0;

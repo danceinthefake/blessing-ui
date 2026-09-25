@@ -1667,6 +1667,13 @@
     "description": ""
    },
    {
+    "name": "label",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Search commands\"",
+    "description": "accessible name of the search input"
+   },
+   {
     "name": "emptyText",
     "type": "string | undefined",
     "required": false,
