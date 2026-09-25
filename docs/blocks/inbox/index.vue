@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onMounted, ref } from "vue";
+import { computed, nextTick, onMounted, ref } from "vue";
 import {
   BlessAvatar,
   BlessBadge,
@@ -17,15 +17,24 @@ const mails = ref<Mail[]>([]);
 const openId = ref<number | null>(null);
 const open = computed(() => mails.value.find((m) => m.id === openId.value) ?? null);
 onMounted(async () => (mails.value = await mockMailApi.list()));
+// On a phone the pane replaces the list: send focus to the message, and back to its row after.
+const subject = ref<{ $el: HTMLElement }>();
+const list = ref<HTMLElement>();
 function read(m: Mail) {
   m.unread = false;
   openId.value = m.id;
+  nextTick(() => subject.value?.$el.focus());
+}
+function back() {
+  const i = mails.value.findIndex((m) => m.id === openId.value);
+  openId.value = null;
+  nextTick(() => list.value?.querySelectorAll<HTMLElement>("li > *")[i]?.focus());
 }
 </script>
 
 <template>
   <div class="inbox" :class="{ 'inbox--open': open }">
-    <ul class="inbox__list" aria-label="Inbox">
+    <ul ref="list" role="list" class="inbox__list" aria-label="Inbox">
       <li v-for="m in mails" :key="m.id">
         <BlessItem
           :title="m.subject"
@@ -61,8 +70,8 @@ function read(m: Mail) {
       <template v-if="open">
         <BlessToolbar>
           <template #start>
-            <BlessButton size="sm" variant="ghost" class="inbox__back" @click="openId = null"
-              >← Back</BlessButton
+            <BlessButton size="sm" variant="ghost" class="inbox__back" @click="back"
+              ><span aria-hidden="true">← </span>Back</BlessButton
             >
           </template>
           <template #end>
@@ -71,9 +80,15 @@ function read(m: Mail) {
             <BlessButton size="sm" color="accent">Reply</BlessButton>
           </template>
         </BlessToolbar>
-        <BlessText as="h2" size="md" weight="bold" class="inbox__subject">{{
-          open.subject
-        }}</BlessText>
+        <BlessText
+          ref="subject"
+          as="h2"
+          size="md"
+          weight="bold"
+          tabindex="-1"
+          class="inbox__subject"
+          >{{ open.subject }}</BlessText
+        >
         <div class="inbox__meta">
           <BlessAvatar :name="open.from" size="sm" />
           <div>
@@ -94,6 +109,10 @@ function read(m: Mail) {
 </template>
 
 <style scoped>
+/* focus lands on the subject so the message is read; it isn't a control */
+.inbox__subject:focus {
+  outline: none;
+}
 .inbox {
   display: grid;
   grid-template-columns: minmax(240px, 1fr) 2fr;
