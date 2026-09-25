@@ -3,8 +3,9 @@ import { BlessText, BlessWatermark } from "blessing-ui";
 </script>
 
 <template>
-  <div class="boxed" style="position: relative; height: 140px; overflow: hidden">
-    <BlessWatermark text="Music" position="top-left" />
-    <BlessText as="p" style="position: relative">any positioned parent; aria-hidden</BlessText>
+  <div style="position: relative; overflow: hidden; padding: 48px 24px; max-width: 560px">
+    <BlessWatermark text="NEWS" />
+    <BlessText as="p" weight="bold">Episode 3 airs this week</BlessText>
+    <BlessText as="p" size="sm" muted>The word behind is decoration only.</BlessText>
   </div>
 </template>
