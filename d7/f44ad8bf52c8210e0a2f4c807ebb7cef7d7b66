@@ -1,0 +1,22 @@
+docs/blocks/settings/index.vue
+  s_9ec1000e308ddb::t_75fb2393bef7ac 52,104
+  s_9ec1000e308ddb::t_dbdab9cd52b45d 7,37,46,51,53-56,59
+docs/blocks/settings/meta.ts
+  s_9ec1000e308ddb::t_75fb2393bef7ac 13
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "d7f44ad8bf52c8210e0a2f4c807ebb7cef7d7b66",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
