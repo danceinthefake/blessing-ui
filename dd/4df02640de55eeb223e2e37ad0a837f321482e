@@ -1,0 +1,81 @@
+docs/components/drawer.md
+  s_9ec1000e308ddb::t_a38b960b97e265 14,16-17
+docs/components/confirm-popup.md
+  s_9ec1000e308ddb::t_a38b960b97e265 14,16-17
+docs/components/section.md
+  s_9ec1000e308ddb::t_99b156f7fed998 14-15
+docs/components/qr-code.md
+  s_9ec1000e308ddb::t_a38b960b97e265 14,16-17
+docs/components/chart.md
+  s_9ec1000e308ddb::t_a38b960b97e265 15,17-18
+docs/components/toaster.md
+  s_9ec1000e308ddb::t_a38b960b97e265 14,16-17
+docs/components/bubble.md
+  s_9ec1000e308ddb::t_a38b960b97e265 14,16-17
+docs/components/action-sheet.md
+  s_9ec1000e308ddb::t_a38b960b97e265 14,16-17
+docs/components/parallax.md
+  s_9ec1000e308ddb::t_a38b960b97e265 14
+  s_9ec1000e308ddb::t_f9a572d9fa8ce3 13,24
+  s_9ec1000e308ddb::t_bcbe0580f28edb 25
+docs/components/pull-to-refresh.md
+  s_9ec1000e308ddb::t_a38b960b97e265 14,16-17
+docs/components/context-menu.md
+  s_9ec1000e308ddb::t_a38b960b97e265 14,16-17
+docs/components/hover-card.md
+  s_9ec1000e308ddb::t_a38b960b97e265 14,16-17
+docs/components/splash.md
+  s_9ec1000e308ddb::t_a38b960b97e265 14,16-17
+docs/components/toolbar.md
+  s_9ec1000e308ddb::t_99b156f7fed998 13-14,25
+  s_9ec1000e308ddb::t_6e0933148a3143 24
+  s_9ec1000e308ddb::t_f347b5fd222e47 26
+docs/components/modal.md
+  s_9ec1000e308ddb::t_a38b960b97e265 15,17-18
+docs/components/popover.md
+  s_9ec1000e308ddb::t_a38b960b97e265 16,18-19
+docs/components/alert-dialog.md
+  s_9ec1000e308ddb::t_a38b960b97e265 14,16-17
+docs/components/gallery.md
+  s_9ec1000e308ddb::t_a38b960b97e265 14,16-17
+docs/components/sheet.md
+  s_9ec1000e308ddb::t_a38b960b97e265 14,16-17
+docs/components/dropdown-menu.md
+  s_9ec1000e308ddb::t_a38b960b97e265 14,16-17
+docs/components/message.md
+  s_9ec1000e308ddb::t_a38b960b97e265 14,16-17
+docs/components/infinite-scroll.md
+  s_9ec1000e308ddb::t_a38b960b97e265 14,16-17
+docs/components/attachment.md
+  s_9ec1000e308ddb::t_a38b960b97e265 14,16-17
+docs/components/carousel.md
+  s_9ec1000e308ddb::t_a38b960b97e265 15
+  s_9ec1000e308ddb::t_f9a572d9fa8ce3 14,34
+  s_9ec1000e308ddb::t_aef75c27574e06 35
+docs/components/tooltip.md
+  s_9ec1000e308ddb::t_a38b960b97e265 14,16-17
+docs/components/marker.md
+  s_9ec1000e308ddb::t_a38b960b97e265 14,16-17
+docs/components/dialog-host.md
+  s_9ec1000e308ddb::t_a38b960b97e265 14,16-17
+docs/components/slide-item.md
+  s_9ec1000e308ddb::t_a38b960b97e265 14,16-17
+docs/components/tab-panels.md
+  s_9ec1000e308ddb::t_a38b960b97e265 14,16-17
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "dd4df02640de55eeb223e2e37ad0a837f321482e",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
