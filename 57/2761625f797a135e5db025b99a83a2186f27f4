@@ -1,0 +1,21 @@
+docs/.vitepress/meta.json
+  s_9ec1000e308ddb::t_4e947e9490f717 2281,4154,4156-4157,4159,4246-4250,4983,5107,5110-5111,6384-6390,7282-7288,7902
+  s_9ec1000e308ddb::t_821c2ef25f81da 3040-3053
+  s_9ec1000e308ddb::t_7d4fc13112f627 409,412,415-416,4155,4158,4237,4251-4252,7901,7903-7907
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "572761625f797a135e5db025b99a83a2186f27f4",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
