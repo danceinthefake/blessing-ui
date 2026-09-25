@@ -11,9 +11,10 @@ import TreeBasic from "../demos/TreeBasic.vue";
 <p class="bless-lead">Nested details tree, role=tree</p>
 
 A hierarchy people expand and browse — files, a category tree, a table of contents. For a small chart of who reports to whom, [OrgChart](./org-chart); to pick one value from a hierarchy, [TreeSelect](./tree-select).
+
 <Demo title="Basic">
-<TreeBasic />
-<template #code>
+  <TreeBasic />
+  <template #code>
 
 <<< ../demos/TreeBasic.vue
 

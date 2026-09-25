@@ -11,9 +11,10 @@ import PickListBasic from "../demos/PickListBasic.vue";
 <p class="bless-lead">Two listboxes with transfer buttons</p>
 
 Choosing a subset from a long list where both sides matter — the columns to show, the members of a group. For picking several from a short list, a multiple [Listbox](./listbox) or checkboxes are simpler; to reorder a single list, [OrderList](./order-list).
+
 <Demo title="Basic">
-<PickListBasic />
-<template #code>
+  <PickListBasic />
+  <template #code>
 
 <<< ../demos/PickListBasic.vue
 

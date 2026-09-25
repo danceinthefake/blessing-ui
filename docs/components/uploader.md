@@ -11,9 +11,10 @@ import UploaderBasic from "../demos/UploaderBasic.vue";
 <p class="bless-lead">Queue, progress, cancel — XHR or your own</p>
 
 Files that upload on their own, with progress, before the form is sent — attachments, a photo set, a batch import. When the files should simply go with the form on submit, use [FileInput](./file-input).
+
 <Demo title="Basic">
-<UploaderBasic />
-<template #code>
+  <UploaderBasic />
+  <template #code>
 
 <<< ../demos/UploaderBasic.vue
 

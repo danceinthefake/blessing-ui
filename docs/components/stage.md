@@ -6,8 +6,8 @@ title: Stage
 
 <p class="bless-lead">Page shell: fixed sidebar (22% / 200px inner) + content column (max 1300px) + footer. Collapses to an off-canvas drawer under 800px with focus trap and Esc.</p>
 
-
 The page frame of an official site: a fixed sidebar beside the content on wide screens, a drawer behind a menu button on phones, and an optional background and footer. Use it once, at the root of a page.
+
 `BlessStage` owns the viewport, so it can't sit inside a doc page. Open the full-page demo:
 
 <script setup>

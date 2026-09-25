@@ -11,9 +11,10 @@ import SpeedDialBasic from "../demos/SpeedDialBasic.vue";
 <p class="bless-lead">FAB with fan-out actions</p>
 
 A floating button that fans out a few (two to five) creation actions on a phone screen — new message, new photo. On wide screens, put the actions in the page instead.
+
 <Demo title="Basic">
-<SpeedDialBasic />
-<template #code>
+  <SpeedDialBasic />
+  <template #code>
 
 <<< ../demos/SpeedDialBasic.vue
 

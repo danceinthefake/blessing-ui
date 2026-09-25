@@ -11,9 +11,10 @@ import CollapsibleBasic from "../demos/CollapsibleBasic.vue";
 <p class="bless-lead">&lt;details&gt; based</p>
 
 Content most readers can skip — an FAQ answer, advanced options, a long spec — behind a title that opens it. Several with the same `name` make an accordion where one is open at a time. Don't hide anything most people need.
+
 <Demo title="Basic">
-<CollapsibleBasic />
-<template #code>
+  <CollapsibleBasic />
+  <template #code>
 
 <<< ../demos/CollapsibleBasic.vue
 

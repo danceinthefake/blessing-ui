@@ -11,9 +11,10 @@ import PaginationBasic from "../demos/PaginationBasic.vue";
 <p class="bless-lead">Page list</p>
 
 Moving between pages of results. For a feed people read to the end, [InfiniteScroll](./infinite-scroll) or a Load more button fits better; pages suit results people come back to or share.
+
 <Demo title="Basic">
-<PaginationBasic />
-<template #code>
+  <PaginationBasic />
+  <template #code>
 
 <<< ../demos/PaginationBasic.vue
 

@@ -11,9 +11,10 @@ import NavigationMenuBasic from "../demos/NavigationMenuBasic.vue";
 <p class="bless-lead">Horizontal nav with panels</p>
 
 A site's top navigation, where some entries open a panel of links. It's navigation, not commands: for an app's File / Edit menus use [Menubar](./menubar); on phones, [BottomTabs](./bottom-tabs) or a [Drawer](./drawer).
+
 <Demo title="Basic">
-<NavigationMenuBasic />
-<template #code>
+  <NavigationMenuBasic />
+  <template #code>
 
 <<< ../demos/NavigationMenuBasic.vue
 

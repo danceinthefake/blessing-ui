@@ -11,9 +11,10 @@ import DataViewBasic from "../demos/DataViewBasic.vue";
 <p class="bless-lead">List / grid with pagination</p>
 
 A collection shown as cards or rows you design yourself — a catalogue, a gallery of episodes — with a list/grid switch and paging. For tabular data people sort and select, use [DataTable](./data-table).
+
 <Demo title="Basic">
-<DataViewBasic />
-<template #code>
+  <DataViewBasic />
+  <template #code>
 
 <<< ../demos/DataViewBasic.vue
 

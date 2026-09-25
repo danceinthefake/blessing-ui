@@ -11,9 +11,10 @@ import OrgChartBasic from "../demos/OrgChartBasic.vue";
 <p class="bless-lead">Node tree with connectors</p>
 
 Who reports to whom, drawn top-down — a team, a cast and crew, a small hierarchy that fits on screen. For a deep or wide hierarchy people browse and expand, use [Tree](./tree).
+
 <Demo title="Basic">
-<OrgChartBasic />
-<template #code>
+  <OrgChartBasic />
+  <template #code>
 
 <<< ../demos/OrgChartBasic.vue
 

@@ -11,9 +11,10 @@ import ScrollAreaBasic from "../demos/ScrollAreaBasic.vue";
 <p class="bless-lead">Thin scrollbar + fade</p>
 
 A box that scrolls on its own inside a page — a long list in a sidebar, a code block, a wide table. Prefer letting the page scroll; nested scrolling is easy to get stuck in on phones.
+
 <Demo title="Basic">
-<ScrollAreaBasic />
-<template #code>
+  <ScrollAreaBasic />
+  <template #code>
 
 <<< ../demos/ScrollAreaBasic.vue
 

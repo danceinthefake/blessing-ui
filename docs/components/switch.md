@@ -11,9 +11,10 @@ import SwitchBasic from "../demos/SwitchBasic.vue";
 <p class="bless-lead">role=switch toggle</p>
 
 A setting that takes effect the moment it's flipped — notifications on, dark mode. When the choice only applies after a Save button, use a [Checkbox](./checkbox): a switch promises it's already done.
+
 <Demo title="Basic">
-<SwitchBasic />
-<template #code>
+  <SwitchBasic />
+  <template #code>
 
 <<< ../demos/SwitchBasic.vue
 

@@ -11,9 +11,10 @@ import BottomTabsBasic from "../demos/BottomTabsBasic.vue";
 <p class="bless-lead">Mobile bottom nav bar or floating dock</p>
 
 The main sections of a phone-sized app, three to five of them, in reach of the thumb. On wide screens use a [SidebarNav](./sidebar-nav) or a top bar instead; for switching views inside one page, [Tabs](./tabs).
+
 <Demo title="Basic">
-<BottomTabsBasic />
-<template #code>
+  <BottomTabsBasic />
+  <template #code>
 
 <<< ../demos/BottomTabsBasic.vue
 

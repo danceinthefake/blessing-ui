@@ -11,9 +11,10 @@ import ResizableBasic from "../demos/ResizableBasic.vue";
 <p class="bless-lead">Two-pane split</p>
 
 Two panes with a divider people drag — an editor and its preview, a list and its detail. Keep a sensible default size; many people never move it.
+
 <Demo title="Basic">
-<ResizableBasic />
-<template #code>
+  <ResizableBasic />
+  <template #code>
 
 <<< ../demos/ResizableBasic.vue
 

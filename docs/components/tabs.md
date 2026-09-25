@@ -12,9 +12,10 @@ import TabsManual from "../demos/TabsManual.vue";
 <p class="bless-lead">ARIA tablist</p>
 
 Switching between views of the same thing that don't need to be seen together — details / reviews / specs. Not for navigation between pages (that's links), and not for steps (that's [Stepper](./stepper)).
+
 <Demo title="Basic">
-<TabsBasic />
-<template #code>
+  <TabsBasic />
+  <template #code>
 
 <<< ../demos/TabsBasic.vue
 

@@ -12,9 +12,10 @@ import VirtualScrollerDynamic from "../demos/VirtualScrollerDynamic.vue";
 <p class="bless-lead">Windowed list for long data</p>
 
 A list too long to render at once — thousands of log lines, a big contact list. It renders only what's in view. Under a few hundred rows, a plain list is simpler and works with find-in-page.
+
 <Demo title="Basic">
-<VirtualScrollerBasic />
-<template #code>
+  <VirtualScrollerBasic />
+  <template #code>
 
 <<< ../demos/VirtualScrollerBasic.vue
 
