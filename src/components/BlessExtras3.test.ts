@@ -319,3 +319,17 @@ test("BlessInplace moves focus into the content, and back on Esc", async () => {
   expect(document.activeElement?.className).toBe("bless-inplace__display");
   w.unmount();
 });
+
+test("BlessDataView: a shrinking list moves back to its last page; empty isn't a list child", async () => {
+  const items = Array.from({ length: 10 }, (_, i) => i);
+  const w = mount(BlessDataView, { props: { items, pageSize: 3, switchable: false } });
+  await w.findComponent({ name: "BlessPagination" }).vm.$emit("update:modelValue", 4);
+  await nextTick();
+  expect(w.findAll("[role=listitem]")).toHaveLength(1); // item 9
+  await w.setProps({ items: items.slice(0, 4) }); // two pages now
+  expect(w.findAll("[role=listitem]")).toHaveLength(1); // page 2: item 3
+  await w.setProps({ items: [] });
+  await nextTick();
+  expect(w.find("[role=list]").exists()).toBe(false);
+  expect(w.find(".bless-dataview__empty").exists()).toBe(true);
+});
