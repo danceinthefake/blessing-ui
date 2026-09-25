@@ -2,9 +2,16 @@
 import { useId } from "vue";
 
 defineOptions({ name: "BlessPanel" });
-withDefaults(defineProps<{ title?: string; toggleable?: boolean; surface?: "bg" | "surface" }>(), {
-  surface: "bg",
-});
+withDefaults(
+  defineProps<{
+    title?: string;
+    toggleable?: boolean;
+    surface?: "bg" | "surface";
+    /** heading level of the title, to fit the page's outline */
+    level?: 2 | 3 | 4 | 5 | 6;
+  }>(),
+  { surface: "bg", level: 3 },
+);
 const collapsed = defineModel<boolean>("collapsed", { default: false });
 const id = useId();
 </script>
@@ -12,9 +19,9 @@ const id = useId();
 <template>
   <section class="bless-panel" :class="`bless-panel--${surface}`" :aria-labelledby="`${id}-t`">
     <header class="bless-panel__header">
-      <h3 :id="`${id}-t`" class="bless-panel__title">
+      <component :is="`h${level}`" :id="`${id}-t`" class="bless-panel__title">
         <slot name="title">{{ title }}</slot>
-      </h3>
+      </component>
       <div class="bless-panel__actions">
         <slot name="actions" />
         <button
@@ -23,7 +30,7 @@ const id = useId();
           class="bless-panel__toggle"
           :aria-expanded="!collapsed"
           :aria-controls="id"
-          :aria-label="collapsed ? 'Expand' : 'Collapse'"
+          :aria-labelledby="`${id}-t`"
           @click="collapsed = !collapsed"
         >
           <span aria-hidden="true">{{ collapsed ? "+" : "−" }}</span>
