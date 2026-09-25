@@ -233,6 +233,9 @@ test("BlessWatermarkOverlay tiles an SVG with the text", async () => {
   const layer = w.find(".bless-wm-overlay__layer");
   expect(layer.attributes("aria-hidden")).toBe("true");
   expect(decodeURIComponent(layer.attributes("style")!)).toContain("DRAFT &lt;1&gt;");
+  // the tile is a mask; the colour is the layer's own, so currentColor follows the theme
+  expect(decodeURIComponent(layer.attributes("style")!)).toContain('fill="#000"');
+  expect((layer.element as HTMLElement).style.backgroundColor).toBe("currentcolor");
 });
 
 test("BlessSignaturePad: strokes set the model, clear resets", async () => {

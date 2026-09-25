@@ -7910,7 +7910,7 @@
     "type": "string | undefined",
     "required": false,
     "default": "\"currentColor\"",
-    "description": ""
+    "description": "any CSS colour; the default follows the text colour, so it flips with the theme"
    }
   ],
   "events": [],
