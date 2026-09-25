@@ -224,3 +224,33 @@ test("BlessTree: arrow keys walk visible rows, → opens, ← closes / goes to p
   expect(document.activeElement?.textContent?.trim()).toBe("README");
   w.unmount();
 });
+
+test("BlessTree is one Tab stop and branches report aria-expanded", async () => {
+  const w = mount(BlessTree, {
+    attachTo: document.body,
+    props: { nodes: [{ label: "src", children: [{ label: "a.ts" }] }, { label: "README" }] },
+  });
+  const rows = () => w.findAll(".bless-tree__row").map((r) => r.element as HTMLElement);
+  expect(rows().map((r) => r.tabIndex)).toEqual([0, -1, -1]);
+  rows()[2].dispatchEvent(new FocusEvent("focusin", { bubbles: true }));
+  expect(rows().map((r) => r.tabIndex)).toEqual([-1, -1, 0]);
+  const branch = w.find("[role=treeitem]");
+  expect(branch.attributes("aria-expanded")).toBe("false");
+  const d = w.find("details").element as HTMLDetailsElement;
+  d.open = true;
+  d.dispatchEvent(new Event("toggle"));
+  await nextTick();
+  expect(branch.attributes("aria-expanded")).toBe("true");
+  w.unmount();
+});
+
+test("BlessVirtualScroller rows carry the real size and position", async () => {
+  const { default: V } = await import("./BlessVirtualScroller.vue");
+  const items = Array.from({ length: 10000 }, (_, i) => i);
+  const w = mount(V, { props: { items, itemHeight: 20 } });
+  const first = w.find("[role=listitem]");
+  expect([first.attributes("aria-setsize"), first.attributes("aria-posinset")]).toEqual([
+    "10000",
+    "1",
+  ]);
+});
