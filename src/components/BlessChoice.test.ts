@@ -76,3 +76,26 @@ test("BlessSlider percent var, value output, format", async () => {
   expect(w.emitted("update:modelValue")![0]).toEqual([40]);
   await nextTick();
 });
+
+test("BlessRadioGroup in a Field: the field names the group, radios keep their own labels", async () => {
+  const { default: BlessField } = await import("./BlessField.vue");
+  const { h } = await import("vue");
+  const w = mount(BlessField, {
+    props: { label: "Plan", error: "Pick one" },
+    slots: {
+      default: () =>
+        h(BlessRadioGroup, null, () => [
+          h(BlessRadio, { value: "free" }, () => "Free"),
+          h(BlessRadio, { value: "pro" }, () => "Pro"),
+        ]),
+    },
+  });
+  const group = w.find("[role=radiogroup]");
+  const label = w.find(".bless-field__label");
+  expect(group.attributes("aria-labelledby")).toBe(label.attributes("id"));
+  expect(label.attributes("for")).toBe(group.attributes("id")); // not the first radio
+  expect(group.attributes("aria-invalid")).toBe("true");
+  expect(group.attributes("aria-describedby")).toMatch(/-err$/);
+  const radios = w.findAll("input[type=radio]");
+  expect(radios.map((r) => r.attributes("id"))).not.toContain(group.attributes("id"));
+});

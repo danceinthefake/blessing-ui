@@ -1,11 +1,13 @@
 <script setup lang="ts" generic="T extends string | number">
 import { provide, toRef, useId } from "vue";
+import { useFieldId, useFieldState } from "../composables/useFieldId";
 import { radioKey } from "./radio";
 
 defineOptions({ name: "BlessRadioGroup" });
 
 const props = withDefaults(
   defineProps<{
+    id?: string;
     name?: string;
     label?: string;
     orientation?: "vertical" | "horizontal";
@@ -17,20 +19,28 @@ const props = withDefaults(
 
 const model = defineModel<T>();
 const uid = useId();
+// The group, not its first radio, takes an enclosing Field: the field's label names the group
+// and each radio keeps its own label.
+const id = useFieldId(props);
+const fs = useFieldState();
 provide(radioKey, {
   name: toRef(() => props.name ?? uid),
   disabled: toRef(() => props.disabled),
-  invalid: toRef(() => props.invalid),
+  invalid: toRef(() => props.invalid || fs.invalid.value),
   model: model as ReturnType<typeof defineModel<string | number>>,
 });
 </script>
 
 <template>
   <fieldset
+    :id="id()"
     class="bless-radio-group"
     :class="`bless-radio-group--${orientation}`"
+    role="radiogroup"
     :disabled
-    :aria-invalid="invalid || undefined"
+    :aria-labelledby="label || $slots.label ? undefined : fs.labelledby"
+    :aria-invalid="invalid || fs.invalid.value || undefined"
+    :aria-describedby="fs.describedby.value"
   >
     <legend v-if="label || $slots.label" class="bless-radio-group__label">
       <slot name="label">{{ label }}</slot>
