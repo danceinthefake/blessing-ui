@@ -3,7 +3,10 @@ defineOptions({ name: "BlessTimeline" });
 
 export interface BlessTimelineItem {
   title: string;
+  /** shown as written ("2015.01") */
   time?: string;
+  /** machine-readable form of `time` ("2015-01"), for the <time> element */
+  datetime?: string;
   description?: string;
   color?: "text" | "accent" | "danger" | "success" | "warning" | "info";
 }
@@ -24,7 +27,9 @@ withDefaults(defineProps<{ items: BlessTimelineItem[]; label?: string }>(), { la
       /></span>
       <div class="bless-timeline__body">
         <slot :item="it" :index="i">
-          <time v-if="it.time" class="bless-timeline__time">{{ it.time }}</time>
+          <time v-if="it.time" class="bless-timeline__time" :datetime="it.datetime">{{
+            it.time
+          }}</time>
           <span class="bless-timeline__title">{{ it.title }}</span>
           <p v-if="it.description" class="bless-timeline__desc">{{ it.description }}</p>
         </slot>
