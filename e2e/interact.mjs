@@ -234,8 +234,19 @@ await step("inbox on a phone: one pane at a time, Back returns to the list", asy
   await page.locator(".inbox__list .bless-item").nth(1).click();
   await page.waitForTimeout(150);
   expect(await page.locator(".inbox__list").isHidden(), "list hidden while reading");
+  expect(
+    await page.evaluate(() => document.activeElement?.classList.contains("inbox__subject")),
+    "focus moved to the message",
+  );
   await page.getByRole("button", { name: /Back/ }).click();
+  await page.waitForTimeout(150);
   expect(await page.locator(".inbox__list").isVisible(), "list back");
+  expect(
+    await page.evaluate(
+      () => document.activeElement === document.querySelectorAll(".inbox__list .bless-item")[1],
+    ),
+    "focus back on the message's row",
+  );
 });
 await page.setViewportSize({ width: 1200, height: 900 });
 await go("/blocks/chat-frame");
@@ -249,6 +260,25 @@ await step("chat: Enter sends, thread grows, reply arrives", async () => {
   await page.waitForTimeout(1400);
   expect((await bubbles()) >= n + 2, "reply appended");
   expect((await page.locator("textarea").inputValue()) === "", "composer cleared");
+});
+await step("chat: Enter that confirms an IME conversion doesn't send", async () => {
+  const n = await page.locator(".bless-bubble").count();
+  const ta = page.locator("textarea");
+  await ta.fill("かとう");
+  await ta.evaluate((el) =>
+    el.dispatchEvent(
+      new KeyboardEvent("keydown", {
+        key: "Enter",
+        isComposing: true,
+        bubbles: true,
+        cancelable: true,
+      }),
+    ),
+  );
+  await page.waitForTimeout(150);
+  expect((await page.locator(".bless-bubble").count()) === n, "nothing sent mid-conversion");
+  expect((await ta.inputValue()) === "かとう", "draft kept");
+  await ta.fill("");
 });
 
 await browser.close();
