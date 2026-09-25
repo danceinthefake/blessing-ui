@@ -91,7 +91,7 @@ function onToggle(e: Event) {
     :aria-label="title"
     v-bind="hover"
     @toggle="onToggle"
-    @keydown.esc="modal && (open = false)"
+    @keydown.esc="modal && ($event.preventDefault(), (open = false))"
   >
     <strong v-if="title" class="bless-popover__title">{{ title }}</strong>
     <slot :close="() => (open = false)" />

@@ -36,7 +36,7 @@ function close() {
     <button v-if="!active" type="button" class="bless-inplace__display" :disabled @click="open">
       <slot name="display" />
     </button>
-    <div v-else class="bless-inplace__content" @keydown.esc.stop="close">
+    <div v-else class="bless-inplace__content" @keydown.esc.stop.prevent="close">
       <slot name="content" :close />
       <button
         v-if="closable"

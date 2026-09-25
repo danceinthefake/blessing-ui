@@ -123,6 +123,7 @@ function onKey(e: KeyboardEvent) {
       pick(col, cur);
       break;
     case "Escape":
+      if (open.value) e.preventDefault(); // an enclosing dialog stays open
       open.value = false;
       break;
   }

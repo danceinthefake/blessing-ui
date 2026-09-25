@@ -60,7 +60,7 @@ defineExpose({ dismiss });
       role="dialog"
       aria-modal="true"
       :aria-label="label"
-      @keydown.esc="dismiss"
+      @keydown.esc.prevent="dismiss"
     >
       <div class="bless-splash__content"><slot :dismiss /></div>
       <button ref="skip" type="button" class="bless-splash__skip" @click="dismiss">

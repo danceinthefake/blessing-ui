@@ -30,8 +30,9 @@ function pick(a: BlessSpeedDialAction) {
   open.value = false;
 }
 // Esc from an action: the list turns inert while focus is in it, so hand focus back to the button
-function escape() {
+function escape(e?: KeyboardEvent) {
   if (!open.value) return;
+  e?.preventDefault(); // an enclosing dialog stays open
   open.value = false;
   root.value?.querySelector<HTMLElement>(".bless-speed-dial__fab")?.focus();
 }

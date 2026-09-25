@@ -60,7 +60,7 @@ watch(
     @mouseleave="hideSoon"
     @focusin="show(0)"
     @focusout="hide"
-    @keydown.esc="hide"
+    @keydown.esc="open && ($event.preventDefault(), hide())"
   >
     <slot />
   </span>

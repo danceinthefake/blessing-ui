@@ -100,7 +100,7 @@ const hole = computed(() => {
         :aria-label="cur.title ?? `Step ${step + 1}`"
         tabindex="-1"
         :style="anchor ? { left: `${x}px`, top: `${y}px` } : undefined"
-        @keydown.esc="close(false)"
+        @keydown.esc.prevent="close(false)"
       >
         <span class="bless-tour__count">{{ step + 1 }} / {{ steps.length }}</span>
         <strong v-if="cur.title" class="bless-tour__title">{{ cur.title }}</strong>
