@@ -155,10 +155,18 @@ test("BlessOrgChart: nested lists, select", async () => {
       ],
     },
   });
-  expect(w.findAll('[role="treeitem"]')).toHaveLength(3);
+  // lists of buttons, not a tree it can't navigate like one
+  expect(w.find('[role="tree"]').exists()).toBe(false);
+  expect(w.findAll(".bless-org__item")).toHaveLength(3);
   expect(w.findAll(".bless-org__children")).toHaveLength(1);
   await w.findAll(".bless-org__node")[1].trigger("click");
   expect(w.emitted("update:selected")![0]).toEqual(["m"]);
+  await w.setProps({ selected: "m" });
+  expect(w.findAll(".bless-org__node").map((b) => b.attributes("aria-pressed"))).toEqual([
+    "false",
+    "true",
+    "false",
+  ]);
   expect(w.emitted("select")![0][0]).toMatchObject({ label: "Megumi" });
 });
 
