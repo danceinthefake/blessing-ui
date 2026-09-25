@@ -33,7 +33,9 @@ withDefaults(defineProps<{ as?: string; size?: "sm" | "md" | "lg" | "full"; padd
 .bless-container--lg {
   max-width: var(--bless-content-max);
 }
+/* the gutter grows to clear a notch on a phone held sideways (insets are physical sides) */
 .bless-container--padded {
-  padding-inline: var(--bless-space-4);
+  padding-left: max(var(--bless-space-4), var(--bless-safe-left));
+  padding-right: max(var(--bless-space-4), var(--bless-safe-right));
 }
 </style>
