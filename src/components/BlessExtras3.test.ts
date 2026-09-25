@@ -333,3 +333,11 @@ test("BlessDataView: a shrinking list moves back to its last page; empty isn't a
   expect(w.find("[role=list]").exists()).toBe(false);
   expect(w.find(".bless-dataview__empty").exists()).toBe(true);
 });
+
+test("BlessPanel: heading level fits the outline; toggle is named by the title", async () => {
+  const p = mount(BlessPanel, { props: { title: "Staff", level: 2, toggleable: true } });
+  const h2 = p.find("h2");
+  expect(h2.text()).toBe("Staff");
+  expect(p.find(".bless-panel__toggle").attributes("aria-labelledby")).toBe(h2.attributes("id"));
+  expect(p.find(".bless-panel__toggle").attributes("aria-label")).toBeUndefined();
+});
