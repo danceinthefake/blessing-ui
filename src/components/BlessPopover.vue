@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { nextTick, ref, useId, watch } from "vue";
+import { nextTick, onMounted, ref, useId, watch } from "vue";
 import { useFloating, type Placement } from "../composables/useFloating";
 
 defineOptions({ name: "BlessPopover" });
@@ -12,7 +12,7 @@ const props = withDefaults(
     trigger?: "click" | "hover" | "manual";
     openDelay?: number;
     closeDelay?: number;
-    /** popover=auto gives light dismiss + Esc */
+    /** no light dismiss: only Esc or your own control closes it */
     modal?: boolean;
     title?: string;
     /** the accent edge slides along to point at the trigger */
@@ -51,8 +51,23 @@ const hover = {
   onFocusout: () => props.trigger === "hover" && later(false, props.closeDelay),
 };
 
+// A click-trigger is the consumer's element (slot): tell it what it opens and whether it's open.
+function wireTrigger() {
+  const t = anchor.value?.firstElementChild as HTMLElement | null | undefined;
+  if (props.trigger !== "click" || !t?.matches("button, a[href], [role=button]")) return;
+  t.setAttribute("aria-haspopup", "dialog");
+  t.setAttribute("aria-controls", id);
+  t.setAttribute("aria-expanded", String(open.value));
+}
+onMounted(wireTrigger);
+watch(open, () => nextTick(wireTrigger));
+
 function onToggle(e: Event) {
-  open.value = (e as ToggleEvent).newState === "open";
+  const opening = (e as ToggleEvent).newState === "open";
+  // closing with focus inside would drop it to <body>: hand it back to the trigger
+  if (!opening && panel.value?.contains(document.activeElement))
+    (anchor.value?.firstElementChild as HTMLElement | null)?.focus?.();
+  open.value = opening;
 }
 </script>
 
@@ -76,6 +91,7 @@ function onToggle(e: Event) {
     :aria-label="title"
     v-bind="hover"
     @toggle="onToggle"
+    @keydown.esc="modal && (open = false)"
   >
     <strong v-if="title" class="bless-popover__title">{{ title }}</strong>
     <slot :close="() => (open = false)" />
