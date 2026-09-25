@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { computed } from "vue";
 import { useFieldId, useFieldState } from "../composables/useFieldId";
 
 defineOptions({ name: "BlessTextarea", inheritAttrs: false });
@@ -25,6 +26,12 @@ const model = defineModel<string>({ default: "" });
 const id = useFieldId(props);
 const fs = useFieldState();
 const descId = () => `${id()}-desc`;
+// the count is announced only near the limit; a live count on every keystroke is noise
+const near = computed(
+  () =>
+    !!props.maxlength &&
+    props.maxlength - String(model.value).length <= Math.max(10, props.maxlength * 0.1),
+);
 const errId = () => `${id()}-err`;
 </script>
 
@@ -56,7 +63,10 @@ const errId = () => `${id()}-err`;
       <p v-else-if="description" :id="descId()" class="bless-textarea__description">
         {{ description }}
       </p>
-      <span v-if="counter && maxlength" class="bless-textarea__counter" aria-live="polite"
+      <span
+        v-if="counter && maxlength"
+        class="bless-textarea__counter"
+        :aria-live="near ? 'polite' : 'off'"
         >{{ String(model).length }} / {{ maxlength }}</span
       >
     </div>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useFieldId } from "../composables/useFieldId";
+import { useFieldId, useFieldState } from "../composables/useFieldId";
 
 defineOptions({ name: "BlessSwitch", inheritAttrs: false });
 
@@ -11,6 +11,7 @@ const props = defineProps<{
 }>();
 const model = defineModel<boolean>({ default: false });
 const id = useFieldId(props);
+const fs = useFieldState();
 </script>
 
 <template>
@@ -30,7 +31,8 @@ const id = useFieldId(props);
       role="switch"
       :disabled
       class="bless-switch__input"
-      :aria-checked="model"
+      :aria-invalid="fs.invalid.value || undefined"
+      :aria-describedby="($attrs['aria-describedby'] as string) ?? fs.describedby.value"
     />
     <span class="bless-switch__track" aria-hidden="true"><span class="bless-switch__thumb" /></span>
     <span v-if="$slots.default" class="bless-switch__label"><slot /></span>
@@ -89,6 +91,10 @@ const id = useFieldId(props);
 }
 .bless-switch__input:checked + .bless-switch__track .bless-switch__thumb {
   transform: translateX(calc(var(--_w) - var(--_h)));
+}
+/* the thumb starts at the inline start, so in right-to-left it travels left */
+[dir="rtl"] .bless-switch__input:checked + .bless-switch__track .bless-switch__thumb {
+  transform: translateX(calc(var(--_h) - var(--_w)));
 }
 .bless-switch__input:focus-visible + .bless-switch__track {
   outline: 2px solid var(--bless-color-accent);
