@@ -54,6 +54,11 @@ test("BlessTimePicker: native time input with a datalist of steps", () => {
   const opts = w.findAll("option");
   expect(opts.map((o) => o.attributes("value"))).toEqual(["09:00", "09:30", "10:00"]);
   expect(opts[0].text()).toBe("9:00 AM");
+  // step spaces the suggestions only: any minute can still be typed
+  expect(w.find("input").attributes("step")).toBe("60");
+  (w.find("input").element as HTMLInputElement).value = "09:07";
+  expect((w.find("input").element as HTMLInputElement).checkValidity()).toBe(true);
+  expect(w.find("input").attributes("aria-label")).toBe("Time");
 });
 
 test("BlessImg: skeleton until load, error state", async () => {

@@ -16,10 +16,11 @@ const props = withDefaults(
     seconds?: boolean;
     disabled?: boolean;
     invalid?: boolean;
+    /** accessible name when there's no Field or <label>; defaults to "Time" outside a Field */
     label?: string;
     size?: "sm" | "md" | "lg";
   }>(),
-  { step: 15, size: "md", label: "Time" },
+  { step: 15, size: "md" },
 );
 /** "HH:MM" or "HH:MM:SS" */
 const model = defineModel<string>({ default: "" });
@@ -29,7 +30,8 @@ const fmt = (h: number, m: number) =>
   props.hour12
     ? `${((h + 11) % 12) + 1}:${String(m).padStart(2, "0")} ${h < 12 ? "AM" : "PM"}`
     : `${String(h).padStart(2, "0")}:${String(m).padStart(2, "0")}`;
-// options feed a <datalist>: native picker + quick picks, no custom dropdown
+// options feed a <datalist>: native picker + quick picks, no custom dropdown. `step` only spaces
+// the suggestions — on the input itself it would make any other typed minute invalid.
 const options = computed(() => {
   const out: { value: string; label: string }[] = [];
   const [minH, minM] = (props.min ?? "00:00").split(":").map(Number);
@@ -63,10 +65,11 @@ const options = computed(() => {
       :list="`${id()}-list`"
       :min
       :max
-      :step="seconds ? 1 : step * 60"
+      :step="seconds ? 1 : 60"
       :disabled
-      :aria-label="label"
+      :aria-label="label ?? (fs.inField ? undefined : 'Time')"
       :aria-invalid="invalid || fs.invalid.value || undefined"
+      :aria-describedby="($attrs['aria-describedby'] as string) ?? fs.describedby.value"
     />
     <datalist :id="`${id()}-list`">
       <option v-for="o in options" :key="o.value" :value="o.value">{{ o.label }}</option>
