@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { computed, ref } from "vue";
+import { computed, nextTick, ref, watch } from "vue";
+import { useFieldId, useFieldState } from "../composables/useFieldId";
 import BlessChip from "./BlessChip.vue";
 import BlessPopover from "./BlessPopover.vue";
 import BlessTree from "./BlessTree.vue";
@@ -9,6 +10,7 @@ defineOptions({ name: "BlessTreeSelect" });
 
 const props = withDefaults(
   defineProps<{
+    id?: string;
     nodes: BlessTreeNode[];
     multiple?: boolean;
     placeholder?: string;
@@ -16,15 +18,37 @@ const props = withDefaults(
     leafOnly?: boolean;
     disabled?: boolean;
     invalid?: boolean;
+    /** accessible name when there's no Field; also names the tree */
     label?: string;
     size?: "sm" | "md" | "lg";
   }>(),
-  { placeholder: "Select…", leafOnly: false, size: "md", label: "Tree select" },
+  { placeholder: "Select…", leafOnly: false, size: "md" },
 );
 /** node id (or path) — string[] when multiple */
 const model = defineModel<string | string[] | undefined>();
 const emit = defineEmits<{ select: [node: BlessTreeNode, id: string] }>();
 const open = ref(false);
+const id = useFieldId(props);
+const fs = useFieldState();
+const panel = ref<HTMLElement>();
+// opening moves focus into the tree (the picked row, else the first)
+watch(open, (o) =>
+  nextTick(() => {
+    if (!o) return;
+    const rows = panel.value?.querySelectorAll<HTMLElement>(".bless-tree__row");
+    (panel.value?.querySelector<HTMLElement>(".bless-tree__row--selected") ?? rows?.[0])?.focus();
+  }),
+);
+function onKey(e: KeyboardEvent) {
+  if (props.disabled) return;
+  if (e.key === "Enter" || e.key === " " || e.key === "ArrowDown") {
+    e.preventDefault();
+    open.value = e.key === "ArrowDown" ? true : !open.value;
+  } else if (e.key === "Backspace" && props.multiple && chosen.value.length) {
+    // chips inside the combobox can't hold their own buttons: Backspace removes the last pick
+    remove(chosen.value[chosen.value.length - 1]);
+  }
+}
 
 function labelOf(id: string, list = props.nodes, path = ""): string | undefined {
   for (const [i, n] of list.entries()) {
@@ -55,33 +79,33 @@ const remove = (id: string) => (model.value = chosen.value.filter((x) => x !== i
 </script>
 
 <template>
-  <BlessPopover v-model:open="open" placement="bottom-start" class="bless-treeselect">
+  <BlessPopover
+    v-model:open="open"
+    placement="bottom-start"
+    class="bless-treeselect"
+    :trigger="disabled ? 'manual' : 'click'"
+  >
     <template #trigger>
       <div
+        :id="id()"
         role="combobox"
-        tabindex="0"
+        :tabindex="disabled ? -1 : 0"
         class="bless-treeselect__trigger"
         :class="[
           `bless-treeselect__trigger--${size}`,
           { 'bless-treeselect__trigger--invalid': invalid },
         ]"
         :aria-disabled="disabled || undefined"
-        :aria-label="label"
-        :aria-invalid="invalid || undefined"
+        :aria-label="label ?? (fs.inField ? undefined : 'Tree select')"
+        :aria-labelledby="label ? undefined : fs.labelledby"
+        :aria-invalid="invalid || fs.invalid.value || undefined"
+        :aria-describedby="fs.describedby.value"
         aria-haspopup="tree"
         :aria-expanded="open"
-        @keydown.enter.prevent="!disabled && (open = !open)"
-        @keydown.space.prevent="!disabled && (open = !open)"
+        @keydown="onKey"
       >
         <span v-if="multiple && chosen.length" class="bless-treeselect__chips">
-          <BlessChip
-            v-for="id in chosen"
-            :key="id"
-            :label="labelOf(id) ?? id"
-            size="sm"
-            removable
-            @remove="remove(id)"
-          />
+          <BlessChip v-for="c in chosen" :key="c" :label="labelOf(c) ?? c" size="sm" />
         </span>
         <span
           v-else
@@ -92,11 +116,11 @@ const remove = (id: string) => (model.value = chosen.value.filter((x) => x !== i
         <span class="bless-treeselect__chevron" aria-hidden="true" />
       </div>
     </template>
-    <div class="bless-treeselect__panel">
+    <div ref="panel" class="bless-treeselect__panel">
       <BlessTree
         :nodes
         :selected="multiple ? undefined : (model as string | undefined)"
-        :label
+        :label="label ?? 'Tree select'"
         @select="onSelect"
       >
       </BlessTree>
