@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onBeforeUnmount, onMounted, ref, watch } from "vue";
+import { nextTick, onBeforeUnmount, onMounted, ref, watch } from "vue";
 import { useMedia } from "../composables/useMedia";
 import { usePan } from "../composables/useGesture";
 
@@ -80,6 +80,23 @@ function onKey(e: KeyboardEvent) {
   if (e.key === "Escape" && narrow.value) ((left.value = false), (right.value = false));
 }
 watch(narrow, (n) => !n && ((left.value = false), (right.value = false)));
+// An overlay drawer takes focus when it opens and gives it back when it closes; closed, it is
+// inert, so focus left inside would be lost.
+let opener: HTMLElement | null = null;
+watch([left, right], ([l, r], [pl, pr]) => {
+  if (!narrow.value) return;
+  const side = l && !pl ? "left" : r && !pr ? "right" : null;
+  if (side) {
+    opener = document.activeElement as HTMLElement | null;
+    nextTick(() =>
+      root.value
+        ?.querySelector<HTMLElement>(
+          `.bless-layout__drawer--${side} :is(a[href], button, input, select, textarea, [tabindex]:not([tabindex="-1"]))`,
+        )
+        ?.focus(),
+    );
+  } else if (!l && !r) nextTick(() => opener?.focus?.());
+});
 </script>
 
 <template>
