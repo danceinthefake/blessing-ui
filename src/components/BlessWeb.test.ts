@@ -168,3 +168,16 @@ test("BlessClientOnly renders after mount; browser composables read state", asyn
   expect(w.attributes("data-y")).toBe("120");
   expect(w.attributes("data-d")).toBe("down");
 });
+
+test("BlessVideo takes caption tracks; BlessImg's broken image isn't read twice", async () => {
+  const { default: BlessVideo } = await import("./BlessVideo.vue");
+  const v = mount(BlessVideo, {
+    props: { src: "a.mp4", title: "Trailer", native: true },
+    slots: { default: '<track kind="captions" src="a.vtt" srclang="ja" />' },
+  });
+  expect(v.find("video track").attributes("kind")).toBe("captions");
+  const i = mount(BlessImg, { props: { src: "missing.jpg", alt: "Megumi" } });
+  await i.find("img.bless-img__img").trigger("error");
+  expect(i.find("img.bless-img__img").attributes("aria-hidden")).toBe("true");
+  expect(i.find(".bless-img__error").attributes("aria-label")).toBe("Megumi");
+});

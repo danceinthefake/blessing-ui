@@ -25,7 +25,10 @@ withDefaults(
       class="bless-video__media"
       controls
       playsinline
-    />
+    >
+      <!-- <track kind="captions" …> and <source> elements go here -->
+      <slot />
+    </video>
     <iframe
       v-else
       v-bind="$attrs"
