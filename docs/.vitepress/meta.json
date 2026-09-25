@@ -3467,11 +3467,17 @@
     "description": ""
    },
    {
+    "name": "name",
+    "type": "string | undefined",
+    "required": false,
+    "description": "submitted with the form, one value per tag"
+   },
+   {
     "name": "separators",
     "type": "string[] | undefined",
     "required": false,
     "default": "[\"Enter\", \",\"]",
-    "description": "keys that commit the draft"
+    "description": "keys (Enter) or characters (,) that commit the draft; characters also split a paste"
    },
    {
     "name": "max",
@@ -3495,7 +3501,6 @@
     "name": "label",
     "type": "string | undefined",
     "required": false,
-    "default": "\"Tags\"",
     "description": ""
    },
    {

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { computed, ref, watch } from "vue";
 import { useFieldId, useFieldState } from "../composables/useFieldId";
 import BlessChip from "./BlessChip.vue";
 
@@ -9,7 +9,9 @@ const props = withDefaults(
   defineProps<{
     id?: string;
     placeholder?: string;
-    /** keys that commit the draft */
+    /** submitted with the form, one value per tag */
+    name?: string;
+    /** keys (Enter) or characters (,) that commit the draft; characters also split a paste */
     separators?: string[];
     max?: number;
     disabled?: boolean;
@@ -18,21 +20,47 @@ const props = withDefaults(
     /** allow the same tag twice */
     duplicates?: boolean;
   }>(),
-  { separators: () => ["Enter", ","], label: "Tags" },
+  { separators: () => ["Enter", ","] },
 );
 const model = defineModel<string[]>({ default: () => [] });
 const id = useFieldId(props);
 const fs = useFieldState();
 const draft = ref("");
+const input = ref<HTMLInputElement>();
+const said = ref(""); // live region: adds and removes are otherwise silent
+const chars = computed(() => props.separators.filter((x) => x.length === 1));
+const split = (v: string) =>
+  chars.value.length
+    ? v.split(new RegExp(`[${chars.value.join("").replace(/[\]\\^-]/g, "\\$&")}]`))
+    : [v];
 
-function add() {
-  const v = draft.value.trim();
-  if (!v || (props.max != null && model.value.length >= props.max)) return;
-  if (!props.duplicates && model.value.includes(v)) return void (draft.value = "");
-  model.value = [...model.value, v];
+function add(text = draft.value) {
+  const next = [...model.value];
+  for (const raw of split(text)) {
+    const v = raw.trim();
+    if (!v || (props.max != null && next.length >= props.max)) continue;
+    if (!props.duplicates && next.includes(v)) continue;
+    next.push(v);
+  }
   draft.value = "";
+  if (next.length === model.value.length) return;
+  said.value = `Added ${next.slice(model.value.length).join(", ")}`;
+  model.value = next;
 }
-const remove = (i: number) => (model.value = model.value.filter((_, k) => k !== i));
+// phone keyboards send key "Unidentified", and a paste arrives whole: split on the characters
+// as the text changes; the last piece stays as the draft
+watch(draft, (v) => {
+  const parts = split(v);
+  if (parts.length < 2) return;
+  const rest = parts.pop()!;
+  add(parts.join(chars.value[0]));
+  draft.value = rest.trimStart();
+});
+function remove(i: number, refocus = false) {
+  said.value = `Removed ${model.value[i]}`;
+  model.value = model.value.filter((_, k) => k !== i);
+  if (refocus) input.value?.focus();
+}
 function onKey(e: KeyboardEvent) {
   if (props.separators.includes(e.key)) {
     e.preventDefault();
@@ -45,17 +73,17 @@ function onKey(e: KeyboardEvent) {
 <template>
   <div
     class="bless-tags"
-    :class="{ 'bless-tags--disabled': disabled, 'bless-tags--invalid': invalid }"
-    @click="($refs.input as HTMLInputElement)?.focus()"
+    :class="{
+      'bless-tags--disabled': disabled,
+      'bless-tags--invalid': invalid || fs.invalid.value,
+    }"
+    @click="input?.focus()"
   >
-    <BlessChip
-      v-for="(t, i) in model"
-      :key="t + i"
-      :label="t"
-      size="sm"
-      removable
-      @remove="remove(i)"
-    />
+    <ul v-if="model.length" class="bless-tags__list" role="list">
+      <li v-for="(t, i) in model" :key="t + i" class="bless-tags__item" role="listitem">
+        <BlessChip :label="t" size="sm" :removable="!disabled" @remove="remove(i, true)" />
+      </li>
+    </ul>
     <input
       v-bind="$attrs"
       :id="id()"
@@ -65,11 +93,16 @@ function onKey(e: KeyboardEvent) {
       class="bless-tags__input"
       :placeholder="model.length ? '' : placeholder"
       :disabled
-      :aria-label="label"
+      :aria-label="label ?? (fs.inField ? undefined : 'Tags')"
       :aria-invalid="invalid || fs.invalid.value || undefined"
+      :aria-describedby="($attrs['aria-describedby'] as string) ?? fs.describedby.value"
       @keydown="onKey"
-      @blur="add"
+      @blur="add()"
     />
+    <template v-if="name">
+      <input v-for="(t, i) in model" :key="i" type="hidden" :name :value="t" />
+    </template>
+    <span class="bless-tags__live" aria-live="polite">{{ said }}</span>
   </div>
 </template>
 
@@ -94,6 +127,24 @@ function onKey(e: KeyboardEvent) {
 .bless-tags--invalid {
   border-bottom-color: var(--bless-color-danger);
 }
+/* the list and its items don't box: chips wrap in the field's own flex row */
+.bless-tags__list,
+.bless-tags__item {
+  display: contents;
+}
+/* the field already leans: a chip inside adds no lean of its own (its content still
+   counter-skews, so the text stands upright), and takes the page colour to stand off the field fill */
+.bless-tags .bless-chip {
+  transform: none;
+  background: var(--bless-color-bg);
+}
+.bless-tags__live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
 .bless-tags__input {
   flex: 1;
   min-width: 80px;
@@ -115,7 +166,7 @@ function onKey(e: KeyboardEvent) {
 .bless-tags {
   transform: skewX(var(--bless-skew));
 }
-.bless-tags > :not(.bless-skew, .bless-chip, .bless-badge) {
+.bless-tags > :not(.bless-skew, .bless-chip, .bless-badge, .bless-tags__list) {
   transform: skewX(var(--bless-skew-counter));
 }
 .bless-tags {
