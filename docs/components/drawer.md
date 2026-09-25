@@ -11,9 +11,10 @@ import DrawerBasic from "../demos/DrawerBasic.vue";
 <p class="bless-lead">Bottom sheet with swipe-to-close</p>
 
 A panel that slides up from the bottom on phones — filters, a share sheet, details for a map pin. On wide screens a [Sheet](./sheet) from the side or a [Modal](./modal) usually fits better.
+
 <Demo title="Basic">
-<DrawerBasic />
-<template #code>
+  <DrawerBasic />
+  <template #code>
 
 <<< ../demos/DrawerBasic.vue
 

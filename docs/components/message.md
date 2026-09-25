@@ -11,9 +11,10 @@ import MessageBasic from "../demos/MessageBasic.vue";
 <p class="bless-lead">Avatar + header + content + footer row</p>
 
 A message with its sender around it — avatar, name, time — holding one or more [Bubble](./bubble)s. Each is an `article`, so screen-reader users can jump between messages.
+
 <Demo title="Basic">
-<MessageBasic />
-<template #code>
+  <MessageBasic />
+  <template #code>
 
 <<< ../demos/MessageBasic.vue
 

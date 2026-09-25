@@ -11,9 +11,10 @@ import InfiniteScrollBasic from "../demos/InfiniteScrollBasic.vue";
 <p class="bless-lead">Load more at the end</p>
 
 Loads the next page as the reader nears the end of a feed. It suits browsing (a timeline, search results you skim); for results people come back to, share or need the footer of, [Pagination](./pagination) is kinder.
+
 <Demo title="Basic">
-<InfiniteScrollBasic />
-<template #code>
+  <InfiniteScrollBasic />
+  <template #code>
 
 <<< ../demos/InfiniteScrollBasic.vue
 

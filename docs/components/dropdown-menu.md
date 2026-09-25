@@ -11,9 +11,10 @@ import DropdownMenuBasic from "../demos/DropdownMenuBasic.vue";
 <p class="bless-lead">ARIA menu</p>
 
 Commands behind a button — row actions, a ⋯ menu, a user menu. For choosing a value use [Select](./select); for navigation, links.
+
 <Demo title="Basic">
-<DropdownMenuBasic />
-<template #code>
+  <DropdownMenuBasic />
+  <template #code>
 
 <<< ../demos/DropdownMenuBasic.vue
 

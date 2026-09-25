@@ -11,9 +11,10 @@ import QrCodeBasic from "../demos/QrCodeBasic.vue";
 <p class="bless-lead">QR code SVG from a module matrix (uqr)</p>
 
 A scannable code for moving something from a screen or print to a phone — a ticket, a link, Wi-Fi details. Always show what it encodes as text or a link too: it can't be scanned by the phone it's on, or by a screen reader.
+
 <Demo title="Basic">
-<QrCodeBasic />
-<template #code>
+  <QrCodeBasic />
+  <template #code>
 
 <<< ../demos/QrCodeBasic.vue
 

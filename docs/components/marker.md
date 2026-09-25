@@ -11,9 +11,10 @@ import MarkerBasic from "../demos/MarkerBasic.vue";
 <p class="bless-lead">Inline status / note / separator / row</p>
 
 A line between messages that isn't a message — a date, "New", "Megumi joined", a system note. It is a note, not a heading.
+
 <Demo title="Basic">
-<MarkerBasic />
-<template #code>
+  <MarkerBasic />
+  <template #code>
 
 <<< ../demos/MarkerBasic.vue
 
