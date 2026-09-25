@@ -12,7 +12,7 @@ export interface BlessBottomTab {
   disabled?: boolean;
 }
 
-withDefaults(
+const props = withDefaults(
   defineProps<{
     items: BlessBottomTab[];
     /** bar = full-width fixed bottom nav; dock = floating icon strip */
@@ -20,10 +20,14 @@ withDefaults(
     /** render in place instead of fixed to the viewport (docs / previews) */
     inline?: boolean;
     label?: string;
+    /** read after a tab with a badge: a count becomes "3 new", `true` becomes "new" */
+    badgeLabel?: string;
   }>(),
-  { variant: "bar", label: "Primary" },
+  { variant: "bar", label: "Primary", badgeLabel: "new" },
 );
 const active = defineModel<string>();
+const badgeText = (it: BlessBottomTab) =>
+  !it.badge ? "" : it.badge === true ? props.badgeLabel : `${it.badge} ${props.badgeLabel}`;
 const emit = defineEmits<{ select: [item: BlessBottomTab, e: Event] }>();
 </script>
 
@@ -42,11 +46,15 @@ const emit = defineEmits<{ select: [item: BlessBottomTab, e: Event] }>();
       class="bless-bottom-tabs__item"
       :class="{ 'bless-bottom-tabs__item--active': active === it.value }"
       :aria-current="active === it.value ? 'page' : undefined"
-      :aria-label="variant === 'dock' ? it.label : undefined"
+      :aria-label="
+        variant === 'dock' ? [it.label, badgeText(it)].filter(Boolean).join(', ') : undefined
+      "
       :title="variant === 'dock' ? it.label : undefined"
       :disabled="it.href ? undefined : it.disabled"
       :aria-disabled="it.disabled || undefined"
-      @click="!it.disabled && ((active = it.value), emit('select', it, $event))"
+      @click="
+        it.disabled ? $event.preventDefault() : ((active = it.value), emit('select', it, $event))
+      "
     >
       <span class="bless-bottom-tabs__icon" aria-hidden="true"
         ><slot name="icon" :item="it">{{ it.icon }}</slot></span
@@ -55,11 +63,21 @@ const emit = defineEmits<{ select: [item: BlessBottomTab, e: Event] }>();
       <span v-if="it.badge" class="bless-bottom-tabs__badge" aria-hidden="true">{{
         it.badge === true ? "" : it.badge
       }}</span>
+      <span v-if="it.badge && variant === 'bar'" class="bless-bottom-tabs__sr">{{
+        badgeText(it)
+      }}</span>
     </component>
   </nav>
 </template>
 
 <style>
+.bless-bottom-tabs__sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
 .bless-bottom-tabs {
   display: flex;
   font-family: var(--bless-font-sans);

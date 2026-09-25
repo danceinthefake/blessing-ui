@@ -70,6 +70,14 @@ test("BlessBottomTabs: active, aria-current, dock hides labels", async () => {
   const d = mount(BlessBottomTabs, { props: { items, variant: "dock", inline: true } });
   expect(d.find(".bless-bottom-tabs__label").exists()).toBe(false);
   expect(d.find("button").attributes("aria-label")).toBe("Home");
+  expect(w.findAll("button")[1].find(".bless-bottom-tabs__sr").text()).toBe("2 new");
+  expect(d.findAll("button")[1].attributes("aria-label")).toBe("Search, 2 new");
+  const off = mount(BlessBottomTabs, {
+    props: { items: [{ label: "Old", value: "o", href: "/old", disabled: true }], inline: true },
+  });
+  const ev = new MouseEvent("click", { cancelable: true });
+  off.find("a").element.dispatchEvent(ev);
+  expect(ev.defaultPrevented).toBe(true);
 });
 
 test("BlessSpeedDial: toggles, select closes, Esc closes", async () => {
