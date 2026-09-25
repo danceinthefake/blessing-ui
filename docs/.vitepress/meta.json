@@ -5915,6 +5915,13 @@
     "description": ""
    },
    {
+    "name": "hint",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Sign above\"",
+    "description": "shown under an empty pad"
+   },
+   {
     "name": "disabled",
     "type": "boolean | undefined",
     "required": false,
