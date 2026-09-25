@@ -21,7 +21,9 @@ function check() {
   visible.value = top() > props.threshold;
 }
 function go() {
-  (el() ?? window).scrollTo({ top: 0, behavior: "smooth" });
+  const reduced =
+    typeof matchMedia === "function" && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  (el() ?? window).scrollTo({ top: 0, behavior: reduced ? "auto" : "smooth" });
 }
 onMounted(() => {
   (el() ?? window).addEventListener("scroll", check, { passive: true });
