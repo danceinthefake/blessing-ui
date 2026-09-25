@@ -34,6 +34,8 @@ export function useFieldId(props: { id?: string }) {
 export function useFieldState() {
   const field = inject(key, undefined);
   return {
+    /** inside a BlessField: its label names the control, so skip a default aria-label */
+    inField: !!field,
     invalid: field?.invalid ?? ref(false),
     describedby: field?.describedby ?? ref<string | undefined>(undefined),
   };

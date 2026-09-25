@@ -6,6 +6,7 @@ import BlessCompare from "./BlessCompare.vue";
 import BlessConfirmPopup from "./BlessConfirmPopup.vue";
 import BlessDataView from "./BlessDataView.vue";
 import BlessDeferredContent from "./BlessDeferredContent.vue";
+import BlessField from "./BlessField.vue";
 import BlessFieldset from "./BlessFieldset.vue";
 import BlessFloatLabel from "./BlessFloatLabel.vue";
 import BlessInplace from "./BlessInplace.vue";
@@ -120,6 +121,29 @@ test("BlessInputTags: Enter adds, Backspace removes, no duplicates", async () =>
   await i.setValue("");
   await i.trigger("keydown", { key: "Backspace" });
   expect(w.emitted("update:modelValue")!.at(-1)![0]).toEqual(["a"]);
+});
+
+test("BlessInputTags: typed/pasted commas split, field label wins, live region, form values", async () => {
+  const w = mount(BlessInputTags, { props: { name: "tag", modelValue: [] as string[] } });
+  const i = w.find("input");
+  await i.setValue("rock, jazz, po"); // a paste, or a phone keyboard's comma
+  expect(w.emitted("update:modelValue")!.at(-1)![0]).toEqual(["rock", "jazz"]);
+  expect((i.element as HTMLInputElement).value).toBe("po");
+  expect(w.find(".bless-tags__live").text()).toBe("Added rock, jazz");
+  expect(i.attributes("aria-label")).toBe("Tags");
+  await w.setProps({ modelValue: ["rock", "jazz"] });
+  expect(w.findAll("input[type=hidden]").map((h) => h.attributes("value"))).toEqual([
+    "rock",
+    "jazz",
+  ]);
+  expect(w.findAll("[role=listitem]")).toHaveLength(2);
+  await w.setProps({ disabled: true });
+  expect(w.find(".bless-chip button").exists()).toBe(false);
+  const f = mount(BlessField, {
+    props: { label: "Genres" },
+    slots: { default: () => h(BlessInputTags) },
+  });
+  expect(f.find("input").attributes("aria-label")).toBeUndefined();
 });
 
 test("BlessToolbar / BlessFloatLabel / BlessFieldset / BlessPanel render + toggle", async () => {
