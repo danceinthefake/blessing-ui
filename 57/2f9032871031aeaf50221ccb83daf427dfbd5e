@@ -1,0 +1,20 @@
+src/components/BlessConversation.test.ts
+  s_9ec1000e308ddb::t_1c6691e609beb8 125-137
+  s_9ec1000e308ddb::t_a3c3ef74e2640c 71-78,138
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "572f9032871031aeaf50221ccb83daf427dfbd5e",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
