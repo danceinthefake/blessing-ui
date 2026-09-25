@@ -312,6 +312,46 @@ test("BlessSignaturePad: strokes set the model, clear resets", async () => {
   w.unmount();
 });
 
+test("BlessSignaturePad: a resize draws the signature back; unmount stops observing", async () => {
+  const { default: C } = await import("./BlessSignaturePad.vue");
+  let resized = () => {};
+  let disconnected = false;
+  globalThis.ResizeObserver = class {
+    constructor(cb: () => void) {
+      resized = cb;
+    }
+    observe() {}
+    disconnect() {
+      disconnected = true;
+    }
+    unobserve() {}
+  } as unknown as typeof ResizeObserver;
+  const drawn: unknown[] = [];
+  HTMLCanvasElement.prototype.getContext = (() => ({
+    scale() {},
+    drawImage: (img: unknown) => drawn.push(img),
+  })) as unknown as typeof HTMLCanvasElement.prototype.getContext;
+  const RealImage = globalThis.Image;
+  globalThis.Image = class {
+    onload = () => {};
+    set src(_: string) {
+      queueMicrotask(() => this.onload());
+    }
+  } as unknown as typeof Image;
+  try {
+    const w = mount(C, { props: { modelValue: "data:image/png;base64,xyz" } });
+    await Promise.resolve(); // the first fit draws it once
+    drawn.length = 0;
+    resized(); // a phone rotates: the canvas is resized, which wipes it
+    await Promise.resolve();
+    expect(drawn).toHaveLength(1);
+    w.unmount();
+    expect(disconnected).toBe(true);
+  } finally {
+    globalThis.Image = RealImage;
+  }
+});
+
 test("BlessQrCode renders one path square per dark module", async () => {
   const { default: C } = await import("./BlessQrCode.vue");
   const { encode } = await import("uqr");

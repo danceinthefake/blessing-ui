@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, ref, watch } from "vue";
+import { onBeforeUnmount, onMounted, ref, watch } from "vue";
 import BlessButton from "./BlessButton.vue";
 
 defineOptions({ name: "BlessSignaturePad" });
@@ -11,11 +11,20 @@ const props = withDefaults(
     color?: string;
     label?: string;
     clearLabel?: string;
+    /** shown under an empty pad */
+    hint?: string;
     disabled?: boolean;
     /** export format */
     type?: "image/png" | "image/jpeg" | "image/webp";
   }>(),
-  { height: 160, lineWidth: 2, label: "Signature", clearLabel: "Clear", type: "image/png" },
+  {
+    height: 160,
+    lineWidth: 2,
+    label: "Signature",
+    clearLabel: "Clear",
+    hint: "Sign above",
+    type: "image/png",
+  },
 );
 /** data URL of the drawing; empty when blank */
 const model = defineModel<string>({ default: "" });
@@ -34,6 +43,12 @@ function fit() {
   ctx = c.getContext("2d");
   ctx!.scale(dpr, dpr);
   ctx!.lineCap = ctx!.lineJoin = "round";
+  // resizing a canvas wipes it; draw the signature back from the model
+  if (model.value) {
+    const img = new Image();
+    img.onload = () => ctx?.drawImage(img, 0, 0, w, props.height);
+    img.src = model.value;
+  }
 }
 const pos = (e: PointerEvent) => {
   const r = canvas.value!.getBoundingClientRect();
@@ -65,10 +80,13 @@ function clear() {
   empty.value = true;
   model.value = "";
 }
+let ro: ResizeObserver | undefined;
 onMounted(() => {
   fit();
-  new ResizeObserver(fit).observe(canvas.value!);
+  ro = new ResizeObserver(fit);
+  ro.observe(canvas.value!);
 });
+onBeforeUnmount(() => ro?.disconnect());
 watch(model, (v) => v === "" && !empty.value && clear());
 defineExpose({ clear, isEmpty: () => empty.value });
 </script>
@@ -89,7 +107,7 @@ defineExpose({ clear, isEmpty: () => empty.value });
       @keydown.delete="clear"
     />
     <div class="bless-signature__bar">
-      <span class="bless-signature__hint">{{ empty ? "Sign above" : "" }}</span>
+      <span class="bless-signature__hint">{{ empty ? hint : "" }}</span>
       <slot name="actions" :clear :empty>
         <BlessButton size="sm" variant="outline" :disabled="empty || disabled" @click="clear">{{
           clearLabel
