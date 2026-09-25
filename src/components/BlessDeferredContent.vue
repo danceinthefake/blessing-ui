@@ -11,7 +11,10 @@ const el = ref<HTMLElement>();
 const loaded = ref(false);
 let io: IntersectionObserver | undefined;
 onMounted(() => {
-  if (typeof IntersectionObserver === "undefined") return void (loaded.value = true);
+  if (typeof IntersectionObserver === "undefined") {
+    loaded.value = true;
+    return void emit("load");
+  }
   io = new IntersectionObserver(
     ([e]) => {
       if (e?.isIntersecting) {
