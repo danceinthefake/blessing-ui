@@ -9,8 +9,8 @@ const emit = defineEmits<{ select: [node: BlessTreeNode, id: string] }>();
 </script>
 
 <template>
-  <div class="bless-org" role="tree" :aria-label="label">
-    <ul class="bless-org__level" role="group">
+  <div class="bless-org" role="group" :aria-label="label">
+    <ul class="bless-org__level" role="list">
       <BlessOrgChartNode
         v-for="(n, i) in nodes"
         :key="n.id ?? i"
