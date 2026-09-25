@@ -48,6 +48,18 @@ function close(delay = 150) {
     panel.value?.matches(":popover-open") && panel.value?.hidePopover?.();
   }, delay);
 }
+// Esc from inside the panel: close and give focus back to the trigger that opened it
+function escape() {
+  const i = openIdx.value;
+  close(0);
+  if (i !== null) anchors.value[i]?.focus();
+}
+// the panel is a manual popover: close it when focus leaves both it and the triggers
+function onFocusOut(e: FocusEvent) {
+  const to = e.relatedTarget as Node | null;
+  if (to && (panel.value?.contains(to) || anchors.value.some((a) => a?.contains(to)))) return;
+  close(0);
+}
 function onKey(e: KeyboardEvent, i: number, item: BlessNavMenuItem) {
   if ((e.key === "ArrowDown" || e.key === "Enter" || e.key === " ") && item.items) {
     e.preventDefault();
@@ -67,8 +79,8 @@ function onKey(e: KeyboardEvent, i: number, item: BlessNavMenuItem) {
         v-for="(item, i) in items"
         :key="item.label"
         class="bless-navmenu__item"
-        @mouseenter="item.items ? open(i) : close(0)"
-        @mouseleave="close()"
+        @pointerenter="$event.pointerType === 'mouse' && (item.items ? open(i) : close(0))"
+        @pointerleave="$event.pointerType === 'mouse' && close()"
       >
         <component
           :is="link(item.items ? undefined : item.href, undefined, 'button').is"
@@ -85,6 +97,7 @@ function onKey(e: KeyboardEvent, i: number, item: BlessNavMenuItem) {
           :aria-current="item.active ? 'page' : undefined"
           @click="item.items ? (openIdx === i ? close(0) : open(i)) : undefined"
           @keydown="onKey($event, i, item)"
+          @focusout="isOpen && onFocusOut($event)"
         >
           {{ item.label }}
           <span v-if="item.items" class="bless-navmenu__chevron" aria-hidden="true" />
@@ -97,9 +110,10 @@ function onKey(e: KeyboardEvent, i: number, item: BlessNavMenuItem) {
       popover="manual"
       class="bless-navmenu__panel"
       :style="{ left: `${x}px`, top: `${y}px` }"
-      @mouseenter="hold"
-      @mouseleave="close()"
-      @keydown.esc="close(0)"
+      @pointerenter="hold"
+      @pointerleave="$event.pointerType === 'mouse' && close()"
+      @keydown.esc="escape"
+      @focusout="onFocusOut"
     >
       <template v-if="openIdx !== null && items[openIdx]?.items">
         <slot name="panel" :item="items[openIdx]">

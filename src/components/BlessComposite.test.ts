@@ -132,6 +132,27 @@ test("BlessNavigationMenu opens panel with links, arrow moves triggers", async (
   w.unmount();
 });
 
+test("BlessNavigationMenu: a touch tap opens it (no hover), Esc returns focus to the trigger", async () => {
+  const items = [{ label: "Heroines", items: [{ label: "Megumi", href: "/megumi" }] }];
+  const w = mount(BlessNavigationMenu, { props: { items }, attachTo: document.body });
+  const li = w.find(".bless-navmenu__item").element;
+  const t = w.find(".bless-navmenu__trigger");
+  // a tap: pointerenter (touch) then click — hover must not open it first and click close it
+  const pe = new Event("pointerenter");
+  Object.defineProperty(pe, "pointerType", { value: "touch" });
+  li.dispatchEvent(pe);
+  await t.trigger("click");
+  await nextTick();
+  expect(t.attributes("aria-expanded")).toBe("true");
+  const link = w.find(".bless-navmenu__link");
+  (link.element as HTMLElement).focus();
+  await link.trigger("keydown", { key: "Escape" });
+  await new Promise((r) => setTimeout(r, 10));
+  expect(t.attributes("aria-expanded")).toBe("false");
+  expect(document.activeElement).toBe(t.element);
+  w.unmount();
+});
+
 test("useDataTable server mode: no client sort/filter/slice, pageCount from total", () => {
   const rows = [
     { id: 1, n: "b" },
