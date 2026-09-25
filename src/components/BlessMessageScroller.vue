@@ -14,8 +14,17 @@ const props = withDefaults(
     initial?: "bottom" | "top";
     jumpLabel?: string;
     height?: string;
+    /** names the transcript */
+    label?: string;
   }>(),
-  { threshold: 48, topThreshold: 80, initial: "bottom", jumpLabel: "↓ Latest", height: "400px" },
+  {
+    threshold: 48,
+    topThreshold: 80,
+    initial: "bottom",
+    jumpLabel: "Latest",
+    height: "400px",
+    label: "Messages",
+  },
 );
 const emit = defineEmits<{ "reach-top": []; "at-bottom": [value: boolean] }>();
 
@@ -41,7 +50,9 @@ function measure() {
 
 function scrollToBottom(behavior: ScrollBehavior = "auto") {
   const el = viewport.value;
-  if (el) el.scrollTo({ top: el.scrollHeight, behavior });
+  const reduced =
+    typeof matchMedia === "function" && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (el) el.scrollTo({ top: el.scrollHeight, behavior: reduced ? "auto" : behavior });
 }
 
 /** scroll a message into view by its element id */
@@ -83,6 +94,8 @@ defineExpose({ scrollToBottom, scrollTo, loadHistory, atBottom });
       ref="viewport"
       class="bless-message-scroller__viewport"
       tabindex="0"
+      role="log"
+      :aria-label="label"
       @scroll.passive="measure"
     >
       <div ref="content" class="bless-message-scroller__content"><slot /></div>
@@ -94,7 +107,7 @@ defineExpose({ scrollToBottom, scrollTo, loadHistory, atBottom });
         class="bless-message-scroller__jump"
         @click="scrollToBottom('smooth')"
       >
-        <slot name="jump">{{ jumpLabel }}</slot>
+        <slot name="jump"><span aria-hidden="true">↓ </span>{{ jumpLabel }}</slot>
       </BlessButton>
     </Transition>
   </div>

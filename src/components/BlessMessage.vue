@@ -9,6 +9,8 @@ withDefaults(
     name?: string;
     /** timestamp / meta text in header */
     time?: string;
+    /** machine-readable form of `time` for the <time> element */
+    datetime?: string;
     avatar?: string;
     /** start = other party, end = self */
     align?: "start" | "end";
@@ -31,7 +33,7 @@ withDefaults(
       <header v-if="!compact && (name || time || $slots.header)" class="bless-message__header">
         <slot name="header">
           <strong v-if="name">{{ name }}</strong>
-          <time v-if="time">{{ time }}</time>
+          <time v-if="time" :datetime>{{ time }}</time>
         </slot>
       </header>
       <div class="bless-message__content"><slot /></div>
