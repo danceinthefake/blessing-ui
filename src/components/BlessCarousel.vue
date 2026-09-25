@@ -81,9 +81,12 @@ function onKey(e: KeyboardEvent) {
     go(index.value + 1);
   }
 }
+let mo: MutationObserver | undefined;
 function play() {
   stop();
-  if (props.autoplay > 0 && !matchMedia("(prefers-reduced-motion: reduce)").matches)
+  const reduced =
+    typeof matchMedia === "function" && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (props.autoplay > 0 && !reduced)
     timer = setInterval(() => go(index.value + 1), props.autoplay);
 }
 function stop() {
@@ -93,12 +96,14 @@ onMounted(() => {
   count_();
   ro = new ResizeObserver(() => go(index.value, false));
   if (track.value) ro.observe(track.value);
-  new MutationObserver(count_).observe(track.value!, { childList: true });
+  mo = new MutationObserver(count_);
+  mo.observe(track.value!, { childList: true });
   play();
 });
 onBeforeUnmount(() => {
   stop();
   ro?.disconnect();
+  mo?.disconnect();
 });
 watch(() => props.autoplay, play);
 defineExpose({ go, next: () => go(index.value + 1), prev: () => go(index.value - 1) });
