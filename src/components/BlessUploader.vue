@@ -112,7 +112,7 @@ defineExpose({ start, clear, queue });
       :list="false"
       @update:model-value="onPick"
     />
-    <ul v-if="queue.length" class="bless-uploader__list">
+    <ul role="list" v-if="queue.length" class="bless-uploader__list">
       <li
         v-for="it in queue"
         :key="it.id"

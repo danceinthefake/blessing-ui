@@ -53,7 +53,7 @@ const label = computed(() =>
       />
       <span class="bless-pwmeter__label" aria-live="polite">{{ label }}</span>
     </div>
-    <ul v-if="showRules" class="bless-pwmeter__rules">
+    <ul role="list" v-if="showRules" class="bless-pwmeter__rules">
       <li v-for="(r, i) in rules" :key="r.label" :class="{ 'bless-pwmeter__rule--ok': passed[i] }">
         <span aria-hidden="true">{{ passed[i] ? "✓" : "·" }}</span> {{ r.label }}
         <span class="bless-pwmeter__state">{{ ruleState[passed[i] ? 0 : 1] }}</span>

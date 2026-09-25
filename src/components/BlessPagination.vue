@@ -44,7 +44,7 @@ function go(p: number) {
 
 <template>
   <nav class="bless-pagination" :aria-label="label">
-    <ul class="bless-pagination__list">
+    <ul role="list" class="bless-pagination__list">
       <li>
         <BlessSkew
           :as="link(href && page > 1 ? href(page - 1) : undefined, undefined, 'button').is"

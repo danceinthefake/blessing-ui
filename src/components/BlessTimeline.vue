@@ -15,7 +15,7 @@ withDefaults(defineProps<{ items: BlessTimelineItem[]; label?: string }>(), { la
 </script>
 
 <template>
-  <ol class="bless-timeline" :aria-label="label">
+  <ol role="list" class="bless-timeline" :aria-label="label">
     <li
       v-for="(it, i) in items"
       :key="i"

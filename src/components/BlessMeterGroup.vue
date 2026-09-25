@@ -51,7 +51,7 @@ const fmt = (v: number) => (props.format ?? String)(v);
         aria-hidden="true"
       />
     </div>
-    <ul v-if="legend" class="bless-metergroup__legend">
+    <ul role="list" v-if="legend" class="bless-metergroup__legend">
       <li v-for="(s, i) in segments" :key="s.label" :style="{ '--_c': col(s, i) }">
         <slot name="legend" :segment="s" :percent="pct(s)">
           <span class="bless-metergroup__name">{{ s.label }}</span>

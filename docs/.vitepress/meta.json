@@ -633,6 +633,13 @@
     "description": ""
    },
    {
+    "name": "badgeLabel",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"new\"",
+    "description": "read after a tab with a badge: a count becomes \"3 new\", `true` becomes \"new\""
+   },
+   {
     "name": "modelValue",
     "type": "string | undefined",
     "required": false,
@@ -1983,6 +1990,13 @@
     "required": false,
     "default": "\"Search…\"",
     "description": ""
+   },
+   {
+    "name": "searchLabel",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Search rows\"",
+    "description": "accessible name of the search box"
    },
    {
     "name": "emptyText",

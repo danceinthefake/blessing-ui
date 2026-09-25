@@ -62,7 +62,7 @@ function onKey(e: KeyboardEvent, i: number, item: BlessNavMenuItem) {
 
 <template>
   <nav class="bless-navmenu" :aria-label="label">
-    <ul class="bless-navmenu__list">
+    <ul role="list" class="bless-navmenu__list">
       <li
         v-for="(item, i) in items"
         :key="item.label"
@@ -103,7 +103,7 @@ function onKey(e: KeyboardEvent, i: number, item: BlessNavMenuItem) {
     >
       <template v-if="openIdx !== null && items[openIdx]?.items">
         <slot name="panel" :item="items[openIdx]">
-          <ul class="bless-navmenu__grid">
+          <ul role="list" class="bless-navmenu__grid">
             <li v-for="sub in items[openIdx].items" :key="sub.href">
               <component
                 :is="link(sub.href).is"

@@ -33,6 +33,7 @@ const { dismiss } = useToast();
       name="bless-toast"
       tag="ol"
       class="bless-toaster__list"
+      role="list"
       aria-live="polite"
       aria-relevant="additions"
     >
