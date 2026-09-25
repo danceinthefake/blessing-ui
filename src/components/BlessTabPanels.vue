@@ -23,6 +23,7 @@ const drag = ref(0);
 const dir = ref<"next" | "prev">("next");
 watch(index, (n, o) => (dir.value = n > o ? "next" : "prev"));
 
+// role=group, not tabpanel: a tabpanel needs a tab that controls it, and these panels may have none
 function go(d: 1 | -1) {
   let i = index.value + d;
   if (props.loop) i = (i + props.panels.length) % props.panels.length;
@@ -55,7 +56,7 @@ defineExpose({ next: () => go(1), prev: () => go(-1) });
       <div
         :key="String(model)"
         class="bless-tabpanels__panel"
-        role="tabpanel"
+        role="group"
         :aria-label="String(model)"
       >
         <slot :panel="model" :index />
