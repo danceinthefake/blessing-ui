@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, ref } from "vue";
+import { nextTick, onMounted, ref } from "vue";
 
 defineOptions({ name: "BlessSplash" });
 
@@ -10,13 +10,16 @@ const props = withDefaults(
     /** auto-dismiss after ms; 0 = manual only */
     duration?: number;
     skipLabel?: string;
+    /** the dialog's accessible name */
+    label?: string;
   }>(),
-  { duration: 2500, skipLabel: "Skip" },
+  { duration: 2500, skipLabel: "Skip", label: "Welcome" },
 );
 
 const emit = defineEmits<{ done: [] }>();
 const show = ref(false);
 let timer: ReturnType<typeof setTimeout> | undefined;
+const skip = ref<HTMLButtonElement>();
 
 function dismiss() {
   if (!show.value) return;
@@ -38,8 +41,11 @@ onMounted(() => {
     } catch {}
   }
   if (seen) return;
-  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return emit("done");
+  if (typeof matchMedia === "function" && matchMedia("(prefers-reduced-motion: reduce)").matches)
+    return emit("done");
   show.value = true;
+  // a modal dialog takes focus: onto Skip, so Enter or Esc leaves at once
+  nextTick(() => skip.value?.focus());
   if (props.duration > 0) timer = setTimeout(dismiss, props.duration);
 });
 
@@ -53,11 +59,13 @@ defineExpose({ dismiss });
       class="bless-splash"
       role="dialog"
       aria-modal="true"
-      aria-label="Welcome"
+      :aria-label="label"
       @keydown.esc="dismiss"
     >
       <div class="bless-splash__content"><slot :dismiss /></div>
-      <button type="button" class="bless-splash__skip" @click="dismiss">{{ skipLabel }}</button>
+      <button ref="skip" type="button" class="bless-splash__skip" @click="dismiss">
+        {{ skipLabel }}
+      </button>
     </div>
   </Transition>
 </template>
