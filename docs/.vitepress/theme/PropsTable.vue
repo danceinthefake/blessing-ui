@@ -133,6 +133,10 @@ const tidy = (t: string) => t.replace(/ \| undefined$/, "").replace(/\bundefined
   text-transform: uppercase;
   color: var(--bless-color-text-muted);
 }
+/* a wide props table scrolls in its own box instead of widening the page on a phone */
+.props-table {
+  overflow-x: auto;
+}
 .props-table table {
   display: table;
   width: 100%;
