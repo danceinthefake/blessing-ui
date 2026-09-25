@@ -1,0 +1,23 @@
+docs/components/tooltip.md
+  s_9ec1000e308ddb::t_276888d3a7128a 13,15-16,27-28
+  s_9ec1000e308ddb::t_cc59f6ca58c7eb 29
+src/components/BlessTooltip.vue
+  s_9ec1000e308ddb::t_049d1ede2aa66a 32,73
+  s_9ec1000e308ddb::t_12987f92947aaa 2,31,33-41,60,74
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "f8d714573c758f4b8ff72a4804be7419209b2baf",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
