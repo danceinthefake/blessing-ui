@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { nextTick, onMounted, ref, watch } from "vue";
+import { nextTick, onMounted, ref, useId, watch } from "vue";
 
 defineOptions({ name: "BlessSheet" });
 
@@ -20,6 +20,7 @@ const open = defineModel<boolean>({ default: false });
 const emit = defineEmits<{ close: [] }>();
 const dialog = ref<HTMLDialogElement>();
 const dragY = ref(0);
+const titleId = `${useId()}-title`; // names the dialog whether the title is a prop or the slot
 let startY = 0;
 
 function sync(o: boolean) {
@@ -45,7 +46,8 @@ function onMove(e: PointerEvent) {
   if (startY) dragY.value = Math.max(0, e.clientY - startY);
 }
 function onUp() {
-  if (dragY.value > 80) open.value = false;
+  // a swipe down is a dismissal, so it follows `dismissible` like Esc and the backdrop
+  if (dragY.value > 80 && props.dismissible) open.value = false;
   dragY.value = 0;
   startY = 0;
 }
@@ -57,7 +59,7 @@ function onUp() {
     class="bless-sheet"
     :class="`bless-sheet--${side}`"
     :style="size ? { '--_size': size } : undefined"
-    :aria-label="title"
+    :aria-labelledby="title || $slots.title ? titleId : undefined"
     @close="
       open = false;
       emit('close');
@@ -89,7 +91,7 @@ function onUp() {
         <span aria-hidden="true">×</span>
       </button>
       <header v-if="title || $slots.title" class="bless-sheet__header">
-        <h2 class="bless-sheet__title">
+        <h2 :id="titleId" class="bless-sheet__title">
           <slot name="title">{{ title }}</slot>
         </h2>
       </header>
