@@ -1,4 +1,5 @@
 import { mount } from "@vue/test-utils";
+import { nextTick } from "vue";
 import { h } from "vue";
 import BlessAccordion from "./BlessAccordion.vue";
 import BlessAccordionItem from "./BlessAccordionItem.vue";
@@ -136,5 +137,27 @@ test("BlessField wires label/id and surfaces native validation message", async (
   expect(w.find("input").attributes("aria-describedby")).toBeUndefined(); // plain <input>: not a Bless control
   await w.setProps({ error: "custom" });
   expect(w.find('[role="alert"]').text()).toBe("custom");
+  w.unmount();
+});
+
+test("BlessForm reset brings v-model along with the fields", async () => {
+  const { default: BlessForm } = await import("./BlessForm.vue");
+  const { default: BlessInput } = await import("./BlessInput.vue");
+  const { default: BlessCheckbox } = await import("./BlessCheckbox.vue");
+  const w = mount(
+    {
+      components: { BlessForm, BlessInput, BlessCheckbox },
+      data: () => ({ v: "", c: false }),
+      template: `<BlessForm><BlessInput v-model="v" name="a" /><BlessCheckbox v-model="c">c</BlessCheckbox></BlessForm>`,
+    },
+    { attachTo: document.body },
+  );
+  await w.find("input[name=a]").setValue("megumi");
+  await w.find("input[type=checkbox]").setValue(true);
+  (w.find("form").element as HTMLFormElement).reset();
+  await new Promise((r) => setTimeout(r, 0));
+  await nextTick();
+  const vm = w.vm as unknown as { v: string; c: boolean };
+  expect([vm.v, vm.c]).toEqual(["", false]);
   w.unmount();
 });
