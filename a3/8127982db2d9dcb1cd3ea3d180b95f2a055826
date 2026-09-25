@@ -1,0 +1,25 @@
+docs/components/label.md
+  s_9ec1000e308ddb::t_8535c1f3418dc8 13-14,24-26
+docs/demos/LabelBasic.vue
+  s_9ec1000e308ddb::t_856bc550044358 9,12
+src/components/BlessLabel.vue
+  s_9ec1000e308ddb::t_debee09fc987e5 6,8
+docs/.vitepress/meta.json
+  s_9ec1000e308ddb::t_b72726cecbf6c6 3718,3724
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "a38127982db2d9dcb1cd3ea3d180b95f2a055826",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
