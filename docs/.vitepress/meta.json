@@ -5566,6 +5566,12 @@
     "type": "string | undefined",
     "required": false,
     "description": ""
+   },
+   {
+    "name": "label",
+    "type": "string | undefined",
+    "required": false,
+    "description": "names the area; it is focusable so the keyboard can scroll it, and a stop needs a name"
    }
   ],
   "events": [],
@@ -6501,14 +6507,7 @@
     "type": "string | undefined",
     "required": false,
     "default": "\"Menu\"",
-    "description": ""
-   },
-   {
-    "name": "closeLabel",
-    "type": "string | undefined",
-    "required": false,
-    "default": "\"Close\"",
-    "description": ""
+    "description": "the phone menu button's name; aria-expanded says whether it's open"
    },
    {
     "name": "open",
@@ -6569,7 +6568,7 @@
     "type": "boolean | undefined",
     "required": false,
     "default": "true",
-    "description": "completed steps in the header are clickable"
+    "description": "linear: the header only goes back to completed steps; off: any step can be jumped to"
    },
    {
     "name": "labels",
@@ -6628,9 +6627,9 @@
    },
    {
     "name": "clickable",
-    "type": "boolean | undefined",
+    "type": "boolean | \"all\" | undefined",
     "required": false,
-    "description": "completed steps are buttons that emit select"
+    "description": "completed steps are buttons that emit select; \"all\" makes every step one"
    },
    {
     "name": "label",
