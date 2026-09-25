@@ -59,6 +59,10 @@ watch(current, () => nextTick(() => panel.value?.focus()));
 </template>
 
 <style>
+/* focus lands here on a step change so it is read; it isn't a control, so no ring */
+.bless-stepper__panel:focus {
+  outline: none;
+}
 .bless-stepper {
   display: flex;
   flex-direction: column;

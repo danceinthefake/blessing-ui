@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref, watch } from "vue";
+import { computed, nextTick, ref, useId, watch } from "vue";
 import BlessButton from "./BlessButton.vue";
 import BlessCheckbox from "./BlessCheckbox.vue";
 import BlessProgress from "./BlessProgress.vue";
@@ -40,7 +40,14 @@ const L = computed(() => ({
 const q = computed(() => props.questions[step.value]);
 const last = computed(() => step.value === props.questions.length - 1);
 const error = ref("");
-watch(step, () => (error.value = ""));
+const uid = useId();
+const legendId = computed(() => `${uid}-q${step.value}`);
+const item = ref<HTMLElement>();
+// a new question replaces the old one: move focus to it so it is read
+watch(step, () => {
+  error.value = "";
+  nextTick(() => item.value?.focus());
+});
 
 const isAnswered = (x: BlessQuestion) => {
   const v = answers.value[x.name];
@@ -64,7 +71,8 @@ function skip() {
   else step.value++;
 }
 function onKey(e: KeyboardEvent) {
-  if (!props.shortcuts || q.value.type === "freeform") return;
+  // Ctrl/⌘/Alt + digit belongs to the browser (switching tabs), not to the answer
+  if (!props.shortcuts || q.value.type === "freeform" || e.ctrlKey || e.metaKey || e.altKey) return;
   const n = Number(e.key);
   const c = q.value.choices?.[n - 1];
   if (!c) return;
@@ -86,8 +94,8 @@ function onKey(e: KeyboardEvent) {
       class="bless-questionnaire__progress"
     />
 
-    <fieldset :key="q.name" class="bless-questionnaire__item">
-      <legend class="bless-questionnaire__title">{{ q.title }}</legend>
+    <fieldset :key="q.name" ref="item" class="bless-questionnaire__item" tabindex="-1">
+      <legend :id="legendId" class="bless-questionnaire__title">{{ q.title }}</legend>
       <p v-if="q.description" class="bless-questionnaire__desc">{{ q.description }}</p>
 
       <BlessRadioGroup
@@ -95,6 +103,7 @@ function onKey(e: KeyboardEvent) {
         :model-value="answers[q.name] as string | undefined"
         :name="q.name"
         :invalid="!!error"
+        :aria-labelledby="legendId"
         @update:model-value="set($event)"
       >
         <BlessRadio
@@ -128,6 +137,7 @@ function onKey(e: KeyboardEvent) {
         :model-value="(answers[q.name] as string | undefined) ?? ''"
         :placeholder="q.placeholder"
         :invalid="!!error"
+        :aria-labelledby="legendId"
         @update:model-value="set($event)"
       />
 
@@ -150,6 +160,10 @@ function onKey(e: KeyboardEvent) {
 </template>
 
 <style>
+/* focus lands here on a step change so it is read; it isn't a control, so no ring */
+.bless-questionnaire__item:focus {
+  outline: none;
+}
 .bless-questionnaire {
   display: flex;
   flex-direction: column;
