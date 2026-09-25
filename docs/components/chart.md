@@ -12,9 +12,10 @@ import ChartBasic from "../demos/ChartBasic.vue";
 <p class="bless-lead">Themed frame for any [Unovis](https://unovis.dev) chart</p>
 
 The frame around a chart from your charting library — title, description, legend, footer — in the system's type and series colours. The plot itself is yours.
+
 <Demo title="Bars">
-<ChartBars />
-<template #code>
+  <ChartBars />
+  <template #code>
 
 <<< ../demos/ChartBars.vue
 

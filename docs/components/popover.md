@@ -13,9 +13,10 @@ import PopoverArrow from "../demos/PopoverArrow.vue";
 <p class="bless-lead">Popover API panel</p>
 
 Extra content next to the thing that opens it — a small form, details, a colour picker. For a one-line hint use a [Tooltip](./tooltip); for commands, a [DropdownMenu](./dropdown-menu).
+
 <Demo title="Basic">
-<PopoverBasic />
-<template #code>
+  <PopoverBasic />
+  <template #code>
 
 <<< ../demos/PopoverBasic.vue
 

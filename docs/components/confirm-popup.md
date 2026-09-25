@@ -11,9 +11,10 @@ import ConfirmPopupBasic from "../demos/ConfirmPopupBasic.vue";
 <p class="bless-lead">Confirm inside a popover</p>
 
 A quick "are you sure?" next to the button that asked — remove a row, archive. For something serious or irreversible, where the whole page should stop, use an [AlertDialog](./alert-dialog).
+
 <Demo title="Basic">
-<ConfirmPopupBasic />
-<template #code>
+  <ConfirmPopupBasic />
+  <template #code>
 
 <<< ../demos/ConfirmPopupBasic.vue
 

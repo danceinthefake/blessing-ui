@@ -11,9 +11,10 @@ import AttachmentBasic from "../demos/AttachmentBasic.vue";
 <p class="bless-lead">File / image chip</p>
 
 A file in a conversation or a form — its name, type, size, a preview, upload progress. For picking files, [FileInput](./file-input) or [Uploader](./uploader).
+
 <Demo title="Basic">
-<AttachmentBasic />
-<template #code>
+  <AttachmentBasic />
+  <template #code>
 
 <<< ../demos/AttachmentBasic.vue
 

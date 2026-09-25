@@ -11,9 +11,10 @@ import BubbleBasic from "../demos/BubbleBasic.vue";
 <p class="bless-lead">Message bubble</p>
 
 One message in a conversation — chat, comments, an assistant's reply. Put bubbles in a [Message](./message) for the avatar, name and time around them.
+
 <Demo title="Basic">
-<BubbleBasic />
-<template #code>
+  <BubbleBasic />
+  <template #code>
 
 <<< ../demos/BubbleBasic.vue
 

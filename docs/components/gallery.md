@@ -11,9 +11,10 @@ import GalleryBasic from "../demos/GalleryBasic.vue";
 <p class="bless-lead">Thumb grid + lightbox</p>
 
 A grid of thumbnails that open one large image at a time — stills, key visuals, a photo set. For a single strip people swipe through in place, use a [Carousel](./carousel).
+
 <Demo title="Basic">
-<GalleryBasic />
-<template #code>
+  <GalleryBasic />
+  <template #code>
 
 <<< ../demos/GalleryBasic.vue
 

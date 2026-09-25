@@ -11,9 +11,10 @@ import ToasterBasic from "../demos/ToasterBasic.vue";
 <p class="bless-lead">Notifications</p>
 
 Short confirmations that come and go — saved, copied, sent. Nothing only in a toast should be needed later; errors people must act on belong in the page or an [Alert](./alert).
+
 <Demo title="Basic">
-<ToasterBasic />
-<template #code>
+  <ToasterBasic />
+  <template #code>
 
 <<< ../demos/ToasterBasic.vue
 

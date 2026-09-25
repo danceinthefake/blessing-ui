@@ -11,9 +11,10 @@ import DialogHostBasic from "../demos/DialogHostBasic.vue";
 <p class="bless-lead">Programmatic modals via useDialog()</p>
 
 Renders dialogs opened from code with `useDialog()` — a confirm from a store action, a form in a modal without a component in the template. Mount one per app, near the root.
+
 <Demo title="Basic">
-<DialogHostBasic />
-<template #code>
+  <DialogHostBasic />
+  <template #code>
 
 <<< ../demos/DialogHostBasic.vue
 

@@ -11,9 +11,10 @@ import TabPanelsBasic from "../demos/TabPanelsBasic.vue";
 <p class="bless-lead">Swipeable panel pager</p>
 
 Swipeable panels that go with a set of tabs on phones — the content under [Tabs](./tabs), [BottomTabs](./bottom-tabs) or a segmented control, changed by the tabs or by a sideways swipe.
+
 <Demo title="Basic">
-<TabPanelsBasic />
-<template #code>
+  <TabPanelsBasic />
+  <template #code>
 
 <<< ../demos/TabPanelsBasic.vue
 
