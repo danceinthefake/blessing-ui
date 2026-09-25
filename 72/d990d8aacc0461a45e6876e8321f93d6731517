@@ -1,0 +1,27 @@
+src/components/BlessSpeedDial.vue
+  s_9ec1000e308ddb::t_2ce8c090cc83b7 32-37,51
+src/components/BlessExtras2.test.ts
+  s_9ec1000e308ddb::t_8e7ef5907e1015 100-115
+docs/components/speed-dial.md
+  s_9ec1000e308ddb::t_8e7ef5907e1015 13,15-16,23-24
+  s_9ec1000e308ddb::t_857d79c16827e3 25
+docs/.vitepress/meta.json
+  s_9ec1000e308ddb::t_074a1790a1d11e 4692-4697
+  s_9ec1000e308ddb::t_fb48e97374822c 4691
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "72d990d8aacc0461a45e6876e8321f93d6731517",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
