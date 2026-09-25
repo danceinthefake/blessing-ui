@@ -1,0 +1,21 @@
+docs/.vitepress/config.ts
+  s_9ec1000e308ddb::t_ca8ef2e6a0f0b2 18-25
+docs/.vitepress/theme/index.ts
+  s_9ec1000e308ddb::t_4d1228c19cf876 3,23-27,29-36
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "131097ac8496bc2130acd718a42f1d8bc4fb6b6d",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
