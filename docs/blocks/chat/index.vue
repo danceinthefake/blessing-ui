@@ -11,6 +11,12 @@ import {
 import { useChat } from "./useChat";
 
 const { messages, draft, typing, send } = useChat();
+// Enter sends — but not the Enter that confirms an IME conversion (Japanese, Chinese, Korean input)
+function onEnter(e: KeyboardEvent) {
+  if (e.isComposing || e.keyCode === 229) return;
+  e.preventDefault();
+  send();
+}
 </script>
 
 <template>
@@ -26,7 +32,7 @@ const { messages, draft, typing, send } = useChat();
       <BlessMessage
         v-for="m in messages"
         :key="m.id"
-        :name="m.from === 'them' ? '加藤 恵' : undefined"
+        :name="m.from === 'them' ? '加藤 恵' : 'You'"
         :time="m.time"
         :align="m.from === 'me' ? 'end' : 'start'"
         compact
@@ -43,7 +49,8 @@ const { messages, draft, typing, send } = useChat();
       <BlessMessage v-if="typing" name="加藤 恵" compact>
         <template #avatar><BlessAvatar name="加藤 恵" size="xs" /></template>
         <BlessBubble variant="surface"
-          ><span class="chat__dots" aria-label="typing">···</span></BlessBubble
+          ><span class="chat__dots" aria-hidden="true">···</span
+          ><span class="chat__sr">typing</span></BlessBubble
         >
       </BlessMessage>
     </BlessMessageScroller>
@@ -54,7 +61,7 @@ const { messages, draft, typing, send } = useChat();
         autogrow
         placeholder="Message"
         aria-label="Message"
-        @keydown.enter.exact.prevent="send"
+        @keydown.enter.exact="onEnter"
       />
       <BlessButton type="submit" color="accent" :disabled="!draft.trim()">Send</BlessButton>
     </form>
@@ -62,6 +69,13 @@ const { messages, draft, typing, send } = useChat();
 </template>
 
 <style scoped>
+.chat__sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
 .chat {
   display: grid;
   grid-template-rows: auto 1fr auto;

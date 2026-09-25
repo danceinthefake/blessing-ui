@@ -136,3 +136,13 @@ test("BlessQuestionnaire: Ctrl+digit is left to the browser; controls are named 
   const legend = w.find("legend");
   expect(w.find("[role=radiogroup]").attributes("aria-labelledby")).toBe(legend.attributes("id"));
 });
+
+test("BlessMessage compact still names the speaker for screen readers", async () => {
+  const { default: BlessMessage } = await import("./BlessMessage.vue");
+  const w = mount(BlessMessage, {
+    props: { name: "Megumi", compact: true },
+    slots: { default: "hi" },
+  });
+  expect(w.find(".bless-message__header").exists()).toBe(false);
+  expect(w.find(".bless-message__sr").text()).toBe("Megumi");
+});

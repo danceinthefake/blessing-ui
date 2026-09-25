@@ -36,6 +36,8 @@ withDefaults(
           <time v-if="time" :datetime>{{ time }}</time>
         </slot>
       </header>
+      <!-- compact drops the header, but screen readers still need to know who is speaking -->
+      <span v-if="compact && name" class="bless-message__sr">{{ name }}</span>
       <div class="bless-message__content"><slot /></div>
       <footer v-if="$slots.footer" class="bless-message__footer"><slot name="footer" /></footer>
     </div>
@@ -44,6 +46,13 @@ withDefaults(
 </template>
 
 <style>
+.bless-message__sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
 .bless-message {
   display: flex;
   align-items: flex-start;
