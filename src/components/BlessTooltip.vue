@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { nextTick, ref, useId, watch } from "vue";
+import { nextTick, onMounted, ref, useId, watch } from "vue";
 import { useFloating, type Placement } from "../composables/useFloating";
 
 defineOptions({ name: "BlessTooltip" });
@@ -28,6 +28,17 @@ const hide = () => {
   clearTimeout(timer);
   open.value = false;
 };
+// leaving the trigger waits a moment, so the pointer can move onto the tip and read it (WCAG 1.4.13)
+const keep = () => clearTimeout(timer);
+const hideSoon = () => {
+  clearTimeout(timer);
+  timer = setTimeout(() => (open.value = false), 150);
+};
+// the description belongs on the element that gets focus, not on the wrapper around it
+onMounted(() => {
+  const t = anchor.value?.firstElementChild;
+  if (t && !t.hasAttribute("aria-describedby")) t.setAttribute("aria-describedby", id);
+});
 watch(
   open,
   (o) =>
@@ -45,9 +56,8 @@ watch(
   <span
     ref="anchor"
     class="bless-tooltip__anchor"
-    :aria-describedby="id"
     @mouseenter="show()"
-    @mouseleave="hide"
+    @mouseleave="hideSoon"
     @focusin="show(0)"
     @focusout="hide"
     @keydown.esc="hide"
@@ -60,6 +70,8 @@ watch(
     popover="manual"
     role="tooltip"
     class="bless-tooltip"
+    @mouseenter="keep"
+    @mouseleave="hideSoon"
     :class="`bless-tooltip--${side}`"
     :style="{ left: `${x}px`, top: `${y}px`, '--_ax': `${arrowX}px`, '--_ay': `${arrowY}px` }"
   >
