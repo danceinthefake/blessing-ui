@@ -74,7 +74,10 @@ function onTrigger(e: MouseEvent) {
 function onContext(e: MouseEvent) {
   if (!props.context) return;
   e.preventDefault();
-  virtual.value = { x: e.clientX, y: e.clientY };
+  // from the keyboard (Menu key, Shift+F10) there may be no pointer position: open at the element
+  const r = (e.target as HTMLElement).getBoundingClientRect?.();
+  virtual.value =
+    e.clientX || e.clientY || !r ? { x: e.clientX, y: e.clientY } : { x: r.left, y: r.bottom };
   open.value = false;
   // popover=auto light-dismisses on the same gesture's pointerup; open after it
   const show = () => {
@@ -112,6 +115,12 @@ function onSelect(item: BlessMenuItem) {
   else if (item.type === "radio")
     emit("update:radios", { ...props.radios, [item.group]: item.value });
   emit("select", item);
+}
+// Tab out of an open menu closes it (popover=auto only closes on outside clicks)
+function onFocusOut(e: FocusEvent) {
+  const to = e.relatedTarget as Node | null;
+  if (!to || panel.value?.contains(to) || anchor.value?.contains(to)) return;
+  open.value = false;
 }
 function close() {
   open.value = false;
@@ -159,6 +168,7 @@ onBeforeUnmount(() => bar?.unregister(id));
     :style="{ left: `${x}px`, top: `${y}px` }"
     @toggle="open = ($event as ToggleEvent).newState === 'open'"
     @keydown="onListKey"
+    @focusout="onFocusOut"
   >
     <BlessMenuList ref="list" :items :checked :radios @select="onSelect" @close="close" />
   </div>
