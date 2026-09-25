@@ -4695,7 +4695,7 @@
     "type": "boolean | undefined",
     "required": false,
     "default": "true",
-    "description": "include a \"default\" swatch to clear the palette"
+    "description": "include the default palette's swatch (Megumi), which clears any other"
    }
   ],
   "events": [],

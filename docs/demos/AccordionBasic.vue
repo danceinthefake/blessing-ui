@@ -3,19 +3,15 @@ import { BlessAccordion, BlessAccordionItem } from "blessing-ui";
 </script>
 
 <template>
-  <div class="row" style="align-items: flex-start">
-    <div class="col">
-      <BlessAccordion>
-        <BlessAccordionItem title="放送情報" :open="true">TOKYO MX 木曜 24:00〜</BlessAccordionItem>
-        <BlessAccordionItem title="配信">AbemaTV ほか</BlessAccordionItem>
-        <BlessAccordionItem title="Blu-ray">2019.09.25 発売</BlessAccordionItem>
-      </BlessAccordion>
-    </div>
-    <div class="col">
-      <BlessAccordion type="multiple">
-        <BlessAccordionItem title="Multiple 1">any number open</BlessAccordionItem>
-        <BlessAccordionItem title="Multiple 2">at once</BlessAccordionItem>
-      </BlessAccordion>
-    </div>
-  </div>
+  <BlessAccordion style="max-width: 480px">
+    <BlessAccordionItem title="When does it air?">
+      Thursdays at 24:00, then streaming the next morning.
+    </BlessAccordionItem>
+    <BlessAccordionItem title="Where is the soundtrack?">
+      On the official store and every major service from the release date.
+    </BlessAccordionItem>
+    <BlessAccordionItem title="Is there a second season?">
+      Yes — announced at the end of the first.
+    </BlessAccordionItem>
+  </BlessAccordion>
 </template>
