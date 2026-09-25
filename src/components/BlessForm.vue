@@ -19,6 +19,30 @@ const submitted = ref(false);
 const resets = ref(0);
 provide(blessFormKey, { submitted, resets });
 
+// A native reset rewrites the fields in the page, but v-model never hears about it: the app kept the
+// old values while the boxes looked empty. The reset event fires before the fields change, so on the
+// next task replay input/change on each control and every v-model reads what the reset left.
+function onReset() {
+  submitted.value = false;
+  resets.value++;
+  setTimeout(() => {
+    for (const el of Array.from(form.value?.elements ?? []) as HTMLInputElement[]) {
+      if (
+        el.type === "hidden" ||
+        el.type === "submit" ||
+        el.type === "reset" ||
+        el.type === "button"
+      )
+        continue;
+      el.dispatchEvent(
+        new Event(el.type === "checkbox" || el.type === "radio" ? "change" : "input", {
+          bubbles: true,
+        }),
+      );
+      if (el.tagName === "SELECT") el.dispatchEvent(new Event("change", { bubbles: true }));
+    }
+  });
+}
 function onSubmit(e: SubmitEvent) {
   submitted.value = true;
   const f = e.target as HTMLFormElement;
@@ -33,11 +57,7 @@ function onSubmit(e: SubmitEvent) {
 }
 
 defineExpose({
-  reset: () => {
-    form.value?.reset();
-    submitted.value = false;
-    resets.value++;
-  },
+  reset: () => form.value?.reset(), // fires the reset event, which does the rest
   el: form,
 });
 </script>
@@ -49,10 +69,7 @@ defineExpose({
     :class="{ 'bless-form--submitted': submitted }"
     novalidate
     @submit="onSubmit"
-    @reset="
-      submitted = false;
-      resets++;
-    "
+    @reset="onReset"
   >
     <slot :submitted />
   </form>
