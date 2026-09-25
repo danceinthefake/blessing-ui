@@ -1,0 +1,20 @@
+docs/components/stack.md
+  s_9ec1000e308ddb::t_8e7ef5907e1015 13,15-16,23-24
+  s_9ec1000e308ddb::t_ab0e21ecc42f21 25
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "6ce278ea4730db81799aa597f63319f737928d9a",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
