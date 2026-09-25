@@ -1,0 +1,25 @@
+src/components/BlessComposite.test.ts
+  s_9ec1000e308ddb::t_2d65d8f3cf091b 206-226
+src/components/BlessDataTable.vue
+  s_9ec1000e308ddb::t_fe4b3d801d2ac9 26-27,40,97-99,116,124,143,215,238,270-272
+  s_9ec1000e308ddb::t_2d65d8f3cf091b 100-102
+  s_9ec1000e308ddb::t_41173fed8b7d27 273
+docs/components/data-table.md
+  s_9ec1000e308ddb::t_2c5374181cbf23 14-15,42-46
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "7a8f2cf244ce9d7b8b361ed61fb4326051c36d7f",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
