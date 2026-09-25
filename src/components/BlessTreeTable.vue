@@ -70,7 +70,7 @@ const flat = computed(() => {
           type="button"
           class="bless-treetable__toggle"
           :aria-expanded="(row as Flat).__open"
-          :aria-label="(row as Flat).__open ? 'Collapse' : 'Expand'"
+          :aria-label="String(value)"
           @click="toggle(row[rowKey] as string | number)"
         >
           <span aria-hidden="true">›</span>
