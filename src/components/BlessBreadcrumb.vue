@@ -16,7 +16,7 @@ withDefaults(defineProps<{ items: BlessCrumb[]; label?: string; separator?: stri
 
 <template>
   <nav class="bless-breadcrumb" :aria-label="label">
-    <ol class="bless-breadcrumb__list">
+    <ol role="list" class="bless-breadcrumb__list">
       <li v-for="(item, i) in items" :key="i" class="bless-breadcrumb__item">
         <slot name="item" :item :last="i === items.length - 1">
           <component

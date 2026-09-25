@@ -2,10 +2,11 @@
 defineOptions({ name: "BlessList" });
 
 withDefaults(defineProps<{ divided?: boolean }>(), { divided: true });
+// role="list" on the <ul>: Safari drops list semantics from a list styled with list-style: none
 </script>
 
 <template>
-  <ul class="bless-list" :class="{ 'bless-list--divided': divided }">
+  <ul class="bless-list" :class="{ 'bless-list--divided': divided }" role="list">
     <slot />
   </ul>
 </template>

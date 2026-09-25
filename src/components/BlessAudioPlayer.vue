@@ -130,7 +130,7 @@ onBeforeUnmount(() => audio.value?.pause());
       </div>
     </div>
 
-    <ol v-if="tracks.length > 1" class="bless-audio__list">
+    <ol role="list" v-if="tracks.length > 1" class="bless-audio__list">
       <li v-for="(t, i) in tracks" :key="t.src">
         <button
           type="button"

@@ -89,7 +89,7 @@ const kb = (n: number) =>
       >
       <span v-if="hint" class="bless-file__hint">{{ hint }}</span>
     </label>
-    <ul v-if="list && model.length" class="bless-file__list">
+    <ul role="list" v-if="list && model.length" class="bless-file__list">
       <li v-for="(f, i) in model" :key="f.name + i" class="bless-file__item">
         <span class="bless-file__name">{{ f.name }}</span>
         <span class="bless-file__size">{{ kb(f.size) }}</span>

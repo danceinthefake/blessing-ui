@@ -22,7 +22,7 @@ withDefaults(
       </slot>
     </figcaption>
     <div class="bless-chart__plot"><slot /></div>
-    <ul v-if="legend?.length || $slots.legend" class="bless-chart__legend">
+    <ul role="list" v-if="legend?.length || $slots.legend" class="bless-chart__legend">
       <slot name="legend">
         <li
           v-for="(l, i) in legend"

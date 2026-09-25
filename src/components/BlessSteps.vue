@@ -21,7 +21,7 @@ const emit = defineEmits<{ select: [index: number] }>();
 </script>
 
 <template>
-  <ol class="bless-steps" :class="`bless-steps--${orientation}`" :aria-label="label">
+  <ol role="list" class="bless-steps" :class="`bless-steps--${orientation}`" :aria-label="label">
     <li
       v-for="(s, i) in steps"
       :key="s.label"

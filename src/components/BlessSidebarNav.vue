@@ -24,7 +24,7 @@ const emit = defineEmits<{ select: [item: BlessNavItem, event: MouseEvent] }>();
 
 <template>
   <nav class="bless-sidebar-nav" :aria-label="label">
-    <ul class="bless-sidebar-nav__list">
+    <ul role="list" class="bless-sidebar-nav__list">
       <li v-for="item in items" :key="item.href" class="bless-sidebar-nav__item">
         <component
           :is="link(item.href, item.external).is"

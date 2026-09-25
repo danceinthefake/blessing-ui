@@ -54,7 +54,7 @@ function onKey(e: KeyboardEvent) {
 
 <template>
   <div class="bless-gallery" @keydown="onKey">
-    <ul class="bless-gallery__grid" :style="{ '--_col': columns }">
+    <ul role="list" class="bless-gallery__grid" :style="{ '--_col': columns }">
       <li v-for="(item, i) in items" :key="item.src" class="bless-gallery__cell">
         <button type="button" class="bless-gallery__thumb" @click="index = i">
           <slot name="thumb" :item :index="i">
