@@ -3,7 +3,11 @@ import BlessSheet from "./BlessSheet.vue";
 
 defineOptions({ name: "BlessDrawer" });
 
-defineProps<{ title?: string; dismissible?: boolean; closeLabel?: string }>();
+// dismissible defaults to true like Sheet's: an absent boolean prop is cast to false, which would
+// otherwise be passed down and turn off Esc and the backdrop click
+withDefaults(defineProps<{ title?: string; dismissible?: boolean; closeLabel?: string }>(), {
+  dismissible: true,
+});
 const open = defineModel<boolean>({ default: false });
 const emit = defineEmits<{ close: [] }>();
 </script>
