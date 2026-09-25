@@ -25,6 +25,22 @@ const expect = (cond, msg) => {
 };
 const go = (p) => page.goto(base + p, { waitUntil: "networkidle" });
 
+console.log("InputMask");
+await go("/components/input-mask");
+await step("rejects junk, keeps the caret on a mid-value insert, reformats a paste", async () => {
+  const i = page.locator("#d-phone");
+  await i.pressSequentially("090x1234");
+  expect((await i.inputValue()) === "090-1234", `typed: ${await i.inputValue()}`);
+  await i.press("Home");
+  await i.press("ArrowRight");
+  await i.press("ArrowRight");
+  await i.press("9");
+  const [v, at] = await i.evaluate((e) => [e.value, e.selectionStart]);
+  expect(v === "099-0123-4" && at === 3, `insert: ${v} caret ${at}`);
+  await i.fill("090 1234 5678");
+  expect((await i.inputValue()) === "090-1234-5678", `paste: ${await i.inputValue()}`);
+});
+
 console.log("DataTable");
 await go("/components/data-table");
 await step("sort by header, search filters, page changes", async () => {

@@ -14,14 +14,13 @@ const card = ref("");
         id="d-phone"
         v-model="phone"
         mask="###-####-####"
-        inputmode="numeric"
         @update:raw="raw = $event"
       />
       <small>masked: {{ phone || "—" }} · raw: {{ raw || "—" }}</small>
     </div>
     <div class="col">
       <BlessLabel for="d-card">Card</BlessLabel>
-      <BlessInputMask id="d-card" v-model="card" mask="#### #### #### ####" inputmode="numeric" />
+      <BlessInputMask id="d-card" v-model="card" mask="#### #### #### ####" />
     </div>
     <div class="col">
       <BlessLabel for="d-plate">Plate</BlessLabel>
