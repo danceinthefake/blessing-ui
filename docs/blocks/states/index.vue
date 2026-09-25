@@ -17,7 +17,12 @@ const state = ref<State>("loading");
 
 <template>
   <div class="states">
-    <BlessToggleGroup v-model="state" label="Preview state" class="states__pick">
+    <BlessToggleGroup
+      :model-value="state"
+      label="Preview state"
+      class="states__pick"
+      @update:model-value="state = ($event as State | undefined) ?? state"
+    >
       <BlessToggle
         v-for="s in ['loading', 'empty', 'error', 'ready']"
         :key="s"
@@ -27,7 +32,9 @@ const state = ref<State>("loading");
       >
     </BlessToggleGroup>
 
-    <div v-if="state === 'loading'" role="status" aria-busy="true" aria-label="Loading projects">
+    <!-- a status is read from its text, not its aria-label -->
+    <div v-if="state === 'loading'" role="status" aria-busy="true">
+      <span class="states__sr">Loading projects</span>
       <BlessSkeleton width="40%" height="20px" />
       <BlessSkeleton :lines="4" height="14px" style="margin-top: 16px" />
     </div>
@@ -68,6 +75,13 @@ const state = ref<State>("loading");
 </template>
 
 <style scoped>
+.states__sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
 .states {
   max-width: 560px;
   margin: 0 auto;

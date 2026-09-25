@@ -63,7 +63,12 @@ const filters: { value: Status | "all"; label: string }[] = [
       caption="Members"
     >
       <template #toolbar>
-        <BlessToggleGroup v-model="status" label="Filter by status">
+        <!-- pressing the active filter again clears a single group; cleared means All -->
+        <BlessToggleGroup
+          :model-value="status"
+          label="Filter by status"
+          @update:model-value="status = $event ?? 'all'"
+        >
           <BlessToggle v-for="f in filters" :key="f.value" :value="f.value" size="sm">{{
             f.label
           }}</BlessToggle>
