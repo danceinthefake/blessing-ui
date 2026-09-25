@@ -17,7 +17,7 @@ const props = withDefaults(
 );
 
 const style = computed(() => ({
-  backgroundImage: props.src ? `url("${props.src}")` : undefined,
+  backgroundImage: props.src ? `url(${JSON.stringify(props.src)})` : undefined, // quotes escaped
   backgroundPosition: `center ${typeof props.offset === "number" ? `${props.offset}px` : props.offset}`,
   opacity: props.opacity,
 }));
