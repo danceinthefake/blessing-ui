@@ -2,6 +2,7 @@ import { mount } from "@vue/test-utils";
 import { h, nextTick } from "vue";
 import BlessCalendar from "./BlessCalendar.vue";
 import BlessDatePicker from "./BlessDatePicker.vue";
+import BlessField from "./BlessField.vue";
 import BlessInputOTP from "./BlessInputOTP.vue";
 import { stubPopover } from "../test/popover";
 
@@ -122,4 +123,30 @@ test("BlessCalendar server HTML doesn't depend on the day it was rendered", asyn
   } finally {
     vi.useRealTimers();
   }
+});
+
+test("BlessInputOTP: autofill into the first cell fills all; field wiring; form value", async () => {
+  const w = mount(BlessField, {
+    props: { label: "Code", error: "Expired" },
+    slots: { default: () => h(BlessInputOTP, { name: "code", length: 6 }) },
+    attachTo: document.body,
+  });
+  const cells = w.findAll(".bless-otp__cell");
+  expect(w.find("label").attributes("for")).toBe(cells[0].attributes("id"));
+  expect(cells[0].attributes("maxlength")).toBeUndefined();
+  expect(cells[3].attributes("aria-invalid")).toBe("true");
+  expect(cells[3].attributes("aria-describedby")).toMatch(/-err$/);
+  (cells[0].element as HTMLInputElement).value = "123456"; // what SMS autofill does
+  await cells[0].trigger("input");
+  expect(cells.map((c) => (c.element as HTMLInputElement).value).join("")).toBe("123456");
+  expect(w.find("input[type=hidden]").attributes()).toMatchObject({
+    name: "code",
+    value: "123456",
+  });
+  expect(
+    mount(BlessInputOTP, { props: { numeric: false } })
+      .find("input")
+      .attributes("aria-label"),
+  ).toBe("Character 1 of 6");
+  w.unmount();
 });

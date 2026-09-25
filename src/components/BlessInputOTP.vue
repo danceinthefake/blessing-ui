@@ -1,11 +1,16 @@
 <script setup lang="ts">
 import { computed, ref, watch } from "vue";
 import { logicalKey } from "../composables/rtl";
+import { useFieldId, useFieldState } from "../composables/useFieldId";
 
 defineOptions({ name: "BlessInputOTP" });
 
 const props = withDefaults(
   defineProps<{
+    /** id of the first cell; inside a BlessField it takes the field's */
+    id?: string;
+    /** submitted with the form as the joined code */
+    name?: string;
     length?: number;
     /** digits only (inputmode numeric) or any char */
     numeric?: boolean;
@@ -22,6 +27,9 @@ const props = withDefaults(
 const model = defineModel<string>({ default: "" });
 const emit = defineEmits<{ complete: [code: string] }>();
 const inputs = ref<HTMLInputElement[]>([]);
+const id = useFieldId(props);
+const fs = useFieldState();
+const unit = computed(() => props.label ?? (props.numeric ? "Digit" : "Character"));
 // cells keep gaps ("12_456"); the model is their concatenation, so an empty middle cell
 // never shifts later digits left
 const fromModel = (v: string) => Array.from({ length: props.length }, (_, i) => v[i] ?? "");
@@ -92,12 +100,13 @@ function onPaste(i: number, e: ClipboardEvent) {
 <template>
   <div
     class="bless-otp"
-    :class="{ 'bless-otp--invalid': invalid, 'bless-otp--disabled': disabled }"
+    :class="{ 'bless-otp--invalid': invalid || fs.invalid.value, 'bless-otp--disabled': disabled }"
     role="group"
     :aria-label="label ?? 'One-time code'"
   >
     <template v-for="i in length" :key="i">
       <input
+        :id="i === 1 ? id() : undefined"
         :ref="
           (el) => {
             if (el) inputs[i - 1] = el as HTMLInputElement;
@@ -109,10 +118,11 @@ function onPaste(i: number, e: ClipboardEvent) {
         :inputmode="numeric ? 'numeric' : 'text'"
         :pattern="numeric ? '[0-9]*' : undefined"
         :autocomplete="i === 1 ? 'one-time-code' : 'off'"
-        maxlength="1"
+        :maxlength="i === 1 ? undefined : 1"
         :disabled
-        :aria-label="`${label ?? 'Digit'} ${i} of ${length}`"
-        :aria-invalid="invalid || undefined"
+        :aria-label="`${unit} ${i} of ${length}`"
+        :aria-invalid="invalid || fs.invalid.value || undefined"
+        :aria-describedby="fs.describedby.value"
         @input="onInput(i - 1, $event)"
         @keydown="onKey(i - 1, $event)"
         @paste="onPaste(i - 1, $event)"
@@ -120,6 +130,7 @@ function onPaste(i: number, e: ClipboardEvent) {
       />
       <span v-if="separators.includes(i)" class="bless-otp__sep" aria-hidden="true" />
     </template>
+    <input v-if="name" type="hidden" :name :value="model" />
   </div>
 </template>
 
