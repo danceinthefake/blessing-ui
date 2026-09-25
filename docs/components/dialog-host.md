@@ -10,9 +10,10 @@ import DialogHostBasic from "../demos/DialogHostBasic.vue";
 
 <p class="bless-lead">Programmatic modals via useDialog()</p>
 
+Renders dialogs opened from code with `useDialog()` — a confirm from a store action, a form in a modal without a component in the template. Mount one per app, near the root.
 <Demo title="Basic">
-  <DialogHostBasic />
-  <template #code>
+<DialogHostBasic />
+<template #code>
 
 <<< ../demos/DialogHostBasic.vue
 
@@ -28,6 +29,9 @@ const ok = await open({ title, text: "plain body" });
 ```
 
 The component gets your `props` plus a `close(result)` prop; `open()` resolves with that result, or `undefined` when dismissed. Mount `<BlessDialogHost />` once, at the app root.
+
+- `useDialog().open({ title, text | component, props })` returns a promise that resolves with what `close(result)` passes; a component gets `close` as a prop.
+- Each dialog is a [Modal](./modal), with its focus handling and Esc.
 
 ## Usage
 
