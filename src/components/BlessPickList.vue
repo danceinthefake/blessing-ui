@@ -1,20 +1,25 @@
 <script setup lang="ts" generic="T extends string | number">
-import { ref, type Ref } from "vue";
+import { nextTick, ref, type Ref } from "vue";
 import BlessButton from "./BlessButton.vue";
 import BlessListbox from "./BlessListbox.vue";
 import type { BlessOption } from "./select";
 
 defineOptions({ name: "BlessPickList" });
 
-withDefaults(defineProps<{ sourceLabel?: string; targetLabel?: string; rows?: number }>(), {
-  sourceLabel: "Available",
-  targetLabel: "Selected",
-  rows: 6,
-});
+const props = withDefaults(
+  defineProps<{ sourceLabel?: string; targetLabel?: string; rows?: number }>(),
+  {
+    sourceLabel: "Available",
+    targetLabel: "Selected",
+    rows: 6,
+  },
+);
 const source = defineModel<BlessOption<T>[]>("source", { default: () => [] });
 const target = defineModel<BlessOption<T>[]>("target", { default: () => [] });
 const pickS = ref([]) as Ref<T[]>;
 const pickT = ref([]) as Ref<T[]>;
+const root = ref<HTMLElement>();
+const live = ref("");
 
 function transfer(from: "source" | "target", values: T[]) {
   const [a, b] = from === "source" ? [source, target] : [target, source];
@@ -23,11 +28,17 @@ function transfer(from: "source" | "target", values: T[]) {
   b.value = [...b.value, ...moving];
   pickS.value = [];
   pickT.value = [];
+  // the clicked button is now disabled and would drop focus: follow the items to their list
+  const to = from === "source" ? props.targetLabel : props.sourceLabel;
+  live.value = `Moved ${moving.length} to ${to}`;
+  nextTick(() =>
+    root.value?.querySelectorAll<HTMLElement>("[role=listbox]")[from === "source" ? 1 : 0]?.focus(),
+  );
 }
 </script>
 
 <template>
-  <div class="bless-picklist">
+  <div ref="root" class="bless-picklist">
     <div class="bless-picklist__col">
       <span class="bless-picklist__title">{{ sourceLabel }} · {{ source.length }}</span>
       <BlessListbox v-model="pickS" :options="source" multiple :rows :label="sourceLabel" />
@@ -37,7 +48,7 @@ function transfer(from: "source" | "target", values: T[]) {
         size="sm"
         variant="outline"
         :disabled="!pickS.length"
-        aria-label="Move selected right"
+        :aria-label="`Move selected to ${targetLabel}`"
         @click="transfer('source', pickS)"
         >›</BlessButton
       >
@@ -45,7 +56,7 @@ function transfer(from: "source" | "target", values: T[]) {
         size="sm"
         variant="outline"
         :disabled="!source.length"
-        aria-label="Move all right"
+        :aria-label="`Move all to ${targetLabel}`"
         @click="
           transfer(
             'source',
@@ -58,7 +69,7 @@ function transfer(from: "source" | "target", values: T[]) {
         size="sm"
         variant="outline"
         :disabled="!pickT.length"
-        aria-label="Move selected left"
+        :aria-label="`Move selected to ${sourceLabel}`"
         @click="transfer('target', pickT)"
         >‹</BlessButton
       >
@@ -66,7 +77,7 @@ function transfer(from: "source" | "target", values: T[]) {
         size="sm"
         variant="outline"
         :disabled="!target.length"
-        aria-label="Move all left"
+        :aria-label="`Move all to ${sourceLabel}`"
         @click="
           transfer(
             'target',
@@ -80,10 +91,18 @@ function transfer(from: "source" | "target", values: T[]) {
       <span class="bless-picklist__title">{{ targetLabel }} · {{ target.length }}</span>
       <BlessListbox v-model="pickT" :options="target" multiple :rows :label="targetLabel" />
     </div>
+    <span class="bless-picklist__live" aria-live="polite">{{ live }}</span>
   </div>
 </template>
 
 <style>
+.bless-picklist__live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
 .bless-picklist {
   display: flex;
   gap: var(--bless-space-3);

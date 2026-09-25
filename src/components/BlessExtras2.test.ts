@@ -163,6 +163,25 @@ test("BlessPickList moves selected and all", async () => {
   expect(w.emitted("update:target")![0][0]).toHaveLength(2);
 });
 
+test("BlessPickList: buttons name the list, focus and an announcement follow the move", async () => {
+  const w = mount(
+    {
+      components: { BlessPickList },
+      data: () => ({ s: [{ value: 1, label: "One" }], t: [] }),
+      template: `<BlessPickList v-model:source="s" v-model:target="t" />`,
+    },
+    { attachTo: document.body },
+  );
+  const btns = w.findAll(".bless-picklist__btns button");
+  expect(btns[1].attributes("aria-label")).toBe("Move all to Selected");
+  await btns[1].trigger("click");
+  await nextTick();
+  expect(w.find(".bless-picklist__live").text()).toBe("Moved 1 to Selected");
+  expect(document.activeElement).toBe(w.findAll("[role=listbox]")[1].element);
+  expect(w.findAll("[role=listbox]")[1].attributes("aria-activedescendant")).toMatch(/-0$/);
+  w.unmount();
+});
+
 test("BlessMockup variants", () => {
   const b = mount(BlessMockup, { props: { title: "saenai.tv" }, slots: { default: "x" } });
   expect(b.find(".bless-mockup__title").text()).toBe("saenai.tv");

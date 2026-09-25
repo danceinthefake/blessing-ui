@@ -4771,14 +4771,7 @@
     "type": "string | undefined",
     "required": false,
     "default": "\"Show password\"",
-    "description": ""
-   },
-   {
-    "name": "hideLabel",
-    "type": "string | undefined",
-    "required": false,
-    "default": "\"Hide password\"",
-    "description": ""
+    "description": "the reveal button's name; its pressed state says whether it's showing"
    },
    {
     "name": "modelValue",
@@ -4810,7 +4803,7 @@
     "name": "rules",
     "type": "BlessPasswordRule[] | undefined",
     "required": false,
-    "default": "[\n    { label: \"8+ characters\", test: (v) => v.length >= 8 },\n    { label: \"Upper and lower case\", test: (v) => /[a-z]/.test(v) && /[A-Z]/.test(v) },\n    { label: \"A number\", test: (v) => /\\d/.test(v) },\n    { label: \"A symbol\", test: (v) => /[^\\w\\s]/.test(v) },\n]",
+    "default": "[\n    { label: \"8+ characters\", test: (v) => v.length >= 8 },\n    { label: \"Upper and lower case\", test: (v) => /[a-z]/.test(v) && /[A-Z]/.test(v) },\n    { label: \"A number\", test: (v) => /\\d/.test(v) },\n    // any letter or digit in any script is not a symbol; `_` is\n    { label: \"A symbol\", test: (v) => /[^\\p{L}\\p{N}\\s]/u.test(v) },\n]",
     "description": "each passing rule adds one step; default: 8+ chars, lower+upper, digit, symbol"
    },
    {
@@ -4825,6 +4818,13 @@
     "type": "boolean | undefined",
     "required": false,
     "description": "list the rules with pass / fail marks"
+   },
+   {
+    "name": "ruleState",
+    "type": "[string, string] | undefined",
+    "required": false,
+    "default": "[\"met\", \"not met\"]",
+    "description": "read after each rule for screen readers: [met, not met]"
    }
   ],
   "events": [],
