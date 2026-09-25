@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 import BlessSkeleton from "./BlessSkeleton.vue";
 
 defineOptions({ name: "BlessImg" });
@@ -22,6 +22,13 @@ withDefaults(
 );
 const loaded = ref(false);
 const failed = ref(false);
+const img = ref<HTMLImageElement>();
+// server-rendered: a cached image can finish before the load listener exists, and the skeleton
+// would then sit over it forever. Read its state once mounted.
+onMounted(() => {
+  const el = img.value;
+  if (el?.complete) el.naturalWidth ? (loaded.value = true) : el.src && (failed.value = true);
+});
 </script>
 
 <template>
@@ -44,6 +51,7 @@ const failed = ref(false);
       height="100%"
     />
     <img
+      ref="img"
       :src
       :srcset
       :sizes
@@ -51,6 +59,7 @@ const failed = ref(false);
       :loading
       decoding="async"
       class="bless-img__img"
+      :aria-hidden="failed || undefined"
       @load="loaded = true"
       @error="failed = true"
     />
