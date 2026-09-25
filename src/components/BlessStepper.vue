@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { nextTick, ref, watch } from "vue";
 import BlessButton from "./BlessButton.vue";
 import BlessSteps from "./BlessSteps.vue";
 import type { BlessStep } from "./BlessSteps.vue";
@@ -9,7 +10,7 @@ const props = withDefaults(
   defineProps<{
     steps: BlessStep[];
     orientation?: "horizontal" | "vertical";
-    /** completed steps in the header are clickable */
+    /** linear: the header only goes back to completed steps; off: any step can be jumped to */
     linear?: boolean;
     labels?: Partial<{ next: string; prev: string; finish: string }>;
   }>(),
@@ -21,6 +22,9 @@ const L = () => ({ next: "Next", prev: "Back", finish: "Finish", ...props.labels
 const last = () => current.value >= props.steps.length - 1;
 const next = () => (last() ? emit("finish") : current.value++);
 const prev = () => current.value > 0 && current.value--;
+// a new step swaps the panel's content: move focus there so it is read, not silently replaced
+const panel = ref<HTMLElement>();
+watch(current, () => nextTick(() => panel.value?.focus()));
 </script>
 
 <template>
@@ -29,10 +33,16 @@ const prev = () => current.value > 0 && current.value--;
       v-model="current"
       :steps
       :orientation
-      :clickable="!linear || true"
+      :clickable="linear ? true : 'all'"
       class="bless-stepper__head"
     />
-    <div class="bless-stepper__panel" role="tabpanel" :aria-label="steps[current]?.label">
+    <div
+      ref="panel"
+      class="bless-stepper__panel"
+      role="group"
+      tabindex="-1"
+      :aria-label="steps[current]?.label"
+    >
       <slot :step="steps[current]" :index="current" :next :prev :last="last()" />
     </div>
     <div class="bless-stepper__actions">

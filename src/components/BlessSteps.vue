@@ -10,14 +10,16 @@ withDefaults(
   defineProps<{
     steps: BlessStep[];
     orientation?: "horizontal" | "vertical";
-    /** completed steps are buttons that emit select */
-    clickable?: boolean;
+    /** completed steps are buttons that emit select; "all" makes every step one */
+    clickable?: boolean | "all";
     label?: string;
   }>(),
   { orientation: "horizontal", label: "Progress" },
 );
 const current = defineModel<number>({ default: 0 });
 const emit = defineEmits<{ select: [index: number] }>();
+const canGo = (i: number, clickable: boolean | "all" | undefined, cur: number) =>
+  clickable === "all" ? i !== cur : !!clickable && i < cur;
 </script>
 
 <template>
@@ -33,11 +35,11 @@ const emit = defineEmits<{ select: [index: number] }>();
       :aria-current="i === current ? 'step' : undefined"
     >
       <component
-        :is="clickable && i < current ? 'button' : 'div'"
-        :type="clickable && i < current ? 'button' : undefined"
+        :is="canGo(i, clickable, current) ? 'button' : 'div'"
+        :type="canGo(i, clickable, current) ? 'button' : undefined"
         class="bless-steps__marker"
-        :aria-label="clickable && i < current ? `Go to step ${i + 1}: ${s.label}` : undefined"
-        @click="clickable && i < current && (emit('select', i), (current = i))"
+        :aria-label="canGo(i, clickable, current) ? `Go to step ${i + 1}: ${s.label}` : undefined"
+        @click="canGo(i, clickable, current) && (emit('select', i), (current = i))"
       >
         <span aria-hidden="true">{{ i < current ? "✓" : i + 1 }}</span>
       </component>

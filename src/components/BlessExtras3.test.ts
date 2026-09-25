@@ -108,6 +108,32 @@ test("BlessStepper: panel slot follows step, next/finish", async () => {
   expect(w.emitted("finish")).toHaveLength(1);
 });
 
+test("BlessStepper: linear goes back only, non-linear jumps anywhere; the panel takes focus", async () => {
+  const steps = [{ label: "A" }, { label: "B" }, { label: "C" }];
+  const lin = mount(BlessStepper, { props: { steps, modelValue: 1 } });
+  expect(lin.findAll(".bless-steps__marker").map((m) => m.element.tagName)).toEqual([
+    "BUTTON",
+    "DIV",
+    "DIV",
+  ]);
+  expect(lin.find(".bless-stepper__panel").attributes("role")).toBe("group");
+  const free = mount(
+    {
+      components: { BlessStepper },
+      data: () => ({ c: 1, steps }),
+      template: `<BlessStepper v-model="c" :steps="steps" :linear="false" />`,
+    },
+    { attachTo: document.body },
+  );
+  const markers = free.findAll(".bless-steps__marker");
+  expect(markers.map((m) => m.element.tagName)).toEqual(["BUTTON", "DIV", "BUTTON"]);
+  await markers[2].trigger("click");
+  await nextTick();
+  await nextTick();
+  expect(document.activeElement).toBe(free.find(".bless-stepper__panel").element);
+  free.unmount();
+});
+
 test("BlessInputTags: Enter adds, Backspace removes, no duplicates", async () => {
   const w = mount(BlessInputTags, { props: { modelValue: ["a"] } });
   const i = w.find("input");
