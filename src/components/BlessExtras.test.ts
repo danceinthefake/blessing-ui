@@ -190,3 +190,37 @@ test("BlessListbox: starts on the selected option, named by a Field, submits val
   const lb = f.find("[role=listbox]");
   expect(lb.attributes("aria-labelledby")).toBe(f.find("label").attributes("id"));
 });
+
+test("BlessPasswordMeter: symbols are not letters of any script; rules speak their state", () => {
+  const score = (value: string) =>
+    Number(mount(BlessPasswordMeter, { props: { value } }).attributes("data-score"));
+  expect(score("パスワード")).toBe(0);
+  expect(score("pass_word")).toBe(2); // 8+ characters, and _ is a symbol
+  const w = mount(BlessPasswordMeter, { props: { value: "abc", showRules: true } });
+  expect(w.findAll(".bless-pwmeter__state").map((s) => s.text())).toEqual([
+    "not met",
+    "not met",
+    "not met",
+    "not met",
+  ]);
+});
+
+test("BlessPasswordInput: new-password with a meter, override wins, constant toggle name", async () => {
+  const { default: BlessPasswordInput } = await import("./BlessPasswordInput.vue");
+  expect(mount(BlessPasswordInput).find("input").attributes("autocomplete")).toBe(
+    "current-password",
+  );
+  expect(
+    mount(BlessPasswordInput, { props: { meter: true } })
+      .find("input")
+      .attributes("autocomplete"),
+  ).toBe("new-password");
+  const o = mount(BlessPasswordInput, { attrs: { autocomplete: "off" } });
+  expect(o.find("input").attributes("autocomplete")).toBe("off");
+  const t = o.find(".bless-password__toggle");
+  await t.trigger("click");
+  expect([t.attributes("aria-label"), t.attributes("aria-pressed")]).toEqual([
+    "Show password",
+    "true",
+  ]);
+});

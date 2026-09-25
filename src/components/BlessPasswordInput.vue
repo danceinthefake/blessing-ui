@@ -9,10 +9,10 @@ withDefaults(
   defineProps<{
     /** show the strength meter under the field */
     meter?: boolean;
+    /** the reveal button's name; its pressed state says whether it's showing */
     showLabel?: string;
-    hideLabel?: string;
   }>(),
-  { showLabel: "Show password", hideLabel: "Hide password" },
+  { showLabel: "Show password" },
 );
 const model = defineModel<string>({ default: "" });
 const shown = ref(false);
@@ -20,17 +20,19 @@ const shown = ref(false);
 
 <template>
   <div class="bless-password">
+    <!-- a meter means a password being made: new-password lets managers offer one. `autocomplete`
+         passed in still wins, since $attrs binds after -->
     <BlessInput
+      :autocomplete="meter ? 'new-password' : 'current-password'"
       v-bind="$attrs"
       v-model="model"
       :type="shown ? 'text' : 'password'"
-      autocomplete="current-password"
     >
       <template #suffix>
         <button
           type="button"
           class="bless-password__toggle"
-          :aria-label="shown ? hideLabel : showLabel"
+          :aria-label="showLabel"
           :aria-pressed="shown"
           @click="shown = !shown"
         >
