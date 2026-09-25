@@ -5237,6 +5237,12 @@
  "BlessRadioGroup": {
   "props": [
    {
+    "name": "id",
+    "type": "string | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
     "name": "name",
     "type": "string | undefined",
     "required": false,
@@ -5297,6 +5303,18 @@
  },
  "BlessRange": {
   "props": [
+   {
+    "name": "id",
+    "type": "string | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "name",
+    "type": "string | undefined",
+    "required": false,
+    "description": "both thumbs submit under this name, low then high"
+   },
    {
     "name": "min",
     "type": "number | undefined",

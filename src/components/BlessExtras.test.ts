@@ -13,6 +13,14 @@ import BlessSwap from "./BlessSwap.vue";
 import BlessTimeline from "./BlessTimeline.vue";
 import BlessTree from "./BlessTree.vue";
 
+test("BlessRating readonly is one named image, not disabled radios", () => {
+  const w = mount(BlessRating, { props: { modelValue: 4, readonly: true, label: "Score" } });
+  expect(w.attributes("role")).toBe("img");
+  expect(w.attributes("aria-label")).toBe("Score: 4 of 5");
+  expect(w.find("input").exists()).toBe(false);
+  expect(w.findAll(".bless-rating__star--on")).toHaveLength(4);
+});
+
 test("BlessRating: radios, click sets, click again clears", async () => {
   const w = mount(BlessRating, { props: { modelValue: 2 } });
   const inputs = w.findAll("input");

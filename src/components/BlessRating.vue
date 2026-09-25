@@ -20,16 +20,33 @@ const model = defineModel<number>({ default: 0 });
 const uid = useId();
 const name = () => props.name ?? uid;
 const hover = ref(0);
+// read-only renders one image with a name ("Score: 4 of 5"), not a disabled set of radios that
+// screen readers call "dimmed" and can't reach
+
 </script>
 
 <template>
+  <span
+    v-if="readonly"
+    class="bless-rating bless-rating--readonly"
+    :class="`bless-rating--${size}`"
+    role="img"
+    :aria-label="`${label}: ${model} of ${max}`"
+  >
+    <span
+      v-for="n in max"
+      :key="n"
+      class="bless-rating__star"
+      :class="{ 'bless-rating__star--on': n <= model }"
+      aria-hidden="true"
+      >{{ icon }}</span
+    >
+  </span>
   <fieldset
+    v-else
     class="bless-rating"
-    :class="[
-      `bless-rating--${size}`,
-      { 'bless-rating--readonly': readonly, 'bless-rating--disabled': disabled },
-    ]"
-    :disabled="disabled || readonly"
+    :class="[`bless-rating--${size}`, { 'bless-rating--disabled': disabled }]"
+    :disabled
     @mouseleave="hover = 0"
   >
     <legend class="bless-rating__legend">{{ label }}</legend>
@@ -48,7 +65,7 @@ const hover = ref(0);
         :checked="model === n"
         :aria-label="`${n} of ${max}`"
         @change="model = n"
-        @click="model === n && !readonly && (model = 0)"
+        @click="model === n && (model = 0)"
       />
       <span aria-hidden="true">{{ icon }}</span>
     </label>
