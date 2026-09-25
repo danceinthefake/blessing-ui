@@ -1,0 +1,26 @@
+docs/components/watermark-overlay.md
+  s_9ec1000e308ddb::t_4e45f1dd882023 13-14,24-25
+  s_9ec1000e308ddb::t_150e3f0eb2738a 26
+src/components/BlessExtras2.test.ts
+  s_9ec1000e308ddb::t_f669714f5db369 236-238
+docs/.vitepress/meta.json
+  s_9ec1000e308ddb::t_65f7fdda164aac 7913
+src/components/BlessWatermarkOverlay.vue
+  s_9ec1000e308ddb::t_4e45f1dd882023 14,21-22,26,36,50-51
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "c24760942f0608f58538a5669107ac6f4f6787b5",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
