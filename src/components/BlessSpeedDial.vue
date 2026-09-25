@@ -29,6 +29,12 @@ function pick(a: BlessSpeedDialAction) {
   emit("select", a);
   open.value = false;
 }
+// Esc from an action: the list turns inert while focus is in it, so hand focus back to the button
+function escape() {
+  if (!open.value) return;
+  open.value = false;
+  root.value?.querySelector<HTMLElement>(".bless-speed-dial__fab")?.focus();
+}
 function onBlur(e: FocusEvent) {
   if (!root.value?.contains(e.relatedTarget as Node)) open.value = false;
 }
@@ -42,7 +48,7 @@ function onBlur(e: FocusEvent) {
       `bless-speed-dial--${direction}`,
       { 'bless-speed-dial--open': open, 'bless-speed-dial--inline': inline },
     ]"
-    @keydown.esc="open = false"
+    @keydown.esc="escape"
     @focusout="onBlur"
   >
     <button

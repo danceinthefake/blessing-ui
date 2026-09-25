@@ -97,6 +97,22 @@ test("BlessSpeedDial: toggles, select closes, Esc closes", async () => {
   expect(w.emitted("update:open")!.at(-1)![0]).toBe(false);
 });
 
+test("BlessSpeedDial: Esc from an action puts focus back on the button", async () => {
+  const w = mount(
+    {
+      components: { BlessSpeedDial },
+      data: () => ({ o: true }),
+      template: `<BlessSpeedDial v-model:open="o" inline :actions="[{ label: 'New', value: 'n' }]" />`,
+    },
+    { attachTo: document.body },
+  );
+  const action = w.find(".bless-speed-dial__action");
+  (action.element as HTMLElement).focus();
+  await action.trigger("keydown", { key: "Escape" });
+  expect(document.activeElement).toBe(w.find(".bless-speed-dial__fab").element);
+  w.unmount();
+});
+
 test("BlessVirtualScroller renders only a window of rows", async () => {
   const items = Array.from({ length: 1000 }, (_, i) => `row ${i}`);
   const w = mount(BlessVirtualScroller, {
