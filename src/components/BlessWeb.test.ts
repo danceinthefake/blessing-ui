@@ -38,6 +38,14 @@ test("BlessRange: two thumbs, gap enforced, fill percentages", async () => {
   expect(w.emitted("update:modelValue")!.at(-1)![0]).toEqual([20, 30]);
 });
 
+test("BlessRange: a thumb pushed past the other snaps back even when the model doesn't change", async () => {
+  const w = mount(BlessRange, { props: { modelValue: [50, 60], gap: 10, name: "price" } });
+  const [lo, hi] = w.findAll("input");
+  await lo.setValue("58"); // clamps to 50: the same as now, so nothing re-renders
+  expect((lo.element as HTMLInputElement).value).toBe("50");
+  expect([lo.attributes("name"), hi.attributes("name")]).toEqual(["price", "price"]);
+});
+
 test("BlessTimePicker: native time input with a datalist of steps", () => {
   const w = mount(BlessTimePicker, {
     props: { step: 30, min: "09:00", max: "10:00", hour12: true },

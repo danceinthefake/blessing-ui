@@ -1,10 +1,14 @@
 <script setup lang="ts">
-import { computed, useId } from "vue";
+import { computed } from "vue";
+import { useFieldId, useFieldState } from "../composables/useFieldId";
 
 defineOptions({ name: "BlessRange" });
 
 const props = withDefaults(
   defineProps<{
+    id?: string;
+    /** both thumbs submit under this name, low then high */
+    name?: string;
     min?: number;
     max?: number;
     step?: number;
@@ -19,16 +23,25 @@ const props = withDefaults(
 );
 /** [low, high] */
 const model = defineModel<[number, number]>({ default: () => [25, 75] });
-const uid = useId();
+const lowId = useFieldId(props);
+const fs = useFieldState();
 const fmt = (v: number) => (props.format ?? String)(v);
 const pct = (v: number) => ((v - props.min) / (props.max - props.min || 1)) * 100;
 const lo = computed(() => model.value[0]);
 const hi = computed(() => model.value[1]);
-function setLo(v: number) {
-  model.value = [Math.min(v, hi.value - props.gap), hi.value];
+// A thumb dragged past the other is clamped. When the clamped value equals the current one Vue has
+// nothing to re-render, so the thumb would stay where it was dragged: put it back by hand.
+function setLo(e: Event) {
+  const el = e.target as HTMLInputElement;
+  const v = Math.min(Number(el.value), hi.value - props.gap);
+  model.value = [v, hi.value];
+  el.value = String(v);
 }
-function setHi(v: number) {
-  model.value = [lo.value, Math.max(v, lo.value + props.gap)];
+function setHi(e: Event) {
+  const el = e.target as HTMLInputElement;
+  const v = Math.max(Number(el.value), lo.value + props.gap);
+  model.value = [lo.value, v];
+  el.value = String(v);
 }
 </script>
 
@@ -39,13 +52,14 @@ function setHi(v: number) {
     :style="{ '--_lo': `${pct(lo)}%`, '--_hi': `${pct(hi)}%` }"
   >
     <div v-if="label || showValue" class="bless-range__head">
-      <label v-if="label" :for="`${uid}-lo`" class="bless-range__label">{{ label }}</label>
+      <label v-if="label" :for="lowId()" class="bless-range__label">{{ label }}</label>
       <span v-if="showValue" class="bless-range__value">{{ fmt(lo) }} – {{ fmt(hi) }}</span>
     </div>
     <div class="bless-range__track">
       <span class="bless-range__fill" aria-hidden="true" />
       <input
-        :id="`${uid}-lo`"
+        :id="lowId()"
+        :name
         type="range"
         class="bless-range__input"
         :min
@@ -55,10 +69,11 @@ function setHi(v: number) {
         :disabled
         :aria-label="`${label ?? 'Range'} minimum`"
         :aria-valuetext="fmt(lo)"
-        @input="setLo(Number(($event.target as HTMLInputElement).value))"
+        :aria-describedby="fs.describedby.value"
+        @input="setLo"
       />
       <input
-        :id="`${uid}-hi`"
+        :name
         type="range"
         class="bless-range__input"
         :min
@@ -68,7 +83,8 @@ function setHi(v: number) {
         :disabled
         :aria-label="`${label ?? 'Range'} maximum`"
         :aria-valuetext="fmt(hi)"
-        @input="setHi(Number(($event.target as HTMLInputElement).value))"
+        :aria-describedby="fs.describedby.value"
+        @input="setHi"
       />
     </div>
   </div>
