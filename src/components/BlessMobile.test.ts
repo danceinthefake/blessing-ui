@@ -113,9 +113,16 @@ test("BlessActionSheet lists actions, select closes, cancel emits", async () => 
   await items[0].trigger("click");
   expect(w.emitted("select")![0][0]).toMatchObject({ value: "s" });
   expect(w.emitted("update:open")!.at(-1)![0]).toBe(false);
-  await w.find(".bless-actionsheet__cancel").trigger("click");
-  expect(w.emitted("cancel")).toHaveLength(1);
+  expect(w.emitted("cancel")).toBeUndefined(); // a pick is not a cancel
   w.unmount();
+  const c = mount(BlessActionSheet, {
+    props: { open: true, actions: [{ label: "Share", value: "s" }] },
+    attachTo: document.body,
+  });
+  await c.find(".bless-actionsheet__cancel").trigger("click");
+  await nextTick();
+  expect(c.emitted("cancel")).toHaveLength(1);
+  c.unmount();
 });
 
 test("BlessTabPanels: swipe changes panel, loop", async () => {
@@ -181,5 +188,82 @@ test("BlessLayout: drawers inert when narrow and closed, backdrop closes, Esc cl
   await w.setProps({ left: true });
   await w.trigger("keydown", { key: "Escape" });
   expect(w.emitted("update:left")!.at(-1)![0]).toBe(false);
+  w.unmount();
+});
+
+test("BlessLayout: an overlay drawer takes focus on open and gives it back on close", async () => {
+  window.matchMedia = ((q: string) => ({
+    matches: q.includes("max-width"),
+    addEventListener() {},
+    removeEventListener() {},
+  })) as unknown as typeof window.matchMedia;
+  const w = mount(
+    {
+      components: { BlessLayout },
+      data: () => ({ l: false }),
+      template: `<BlessLayout v-model:left="l"><template #left><a href="#a" class="in">A</a></template><button class="menu" @click="l = true">menu</button></BlessLayout>`,
+    },
+    { attachTo: document.body },
+  );
+  const menu = w.find(".menu");
+  (menu.element as HTMLElement).focus();
+  await menu.trigger("click");
+  await nextTick();
+  await nextTick();
+  expect(document.activeElement?.className).toBe("in");
+  await w.find(".bless-layout").trigger("keydown", { key: "Escape" });
+  await nextTick();
+  await nextTick();
+  expect(document.activeElement).toBe(menu.element);
+  w.unmount();
+});
+
+test("BlessActionSheet: picking an action is not also a cancel", async () => {
+  const w = mount(
+    {
+      components: { BlessActionSheet },
+      data: () => ({ o: true }),
+      template: `<BlessActionSheet v-model:open="o" :actions="[{ label: 'Share', value: 's' }]" @select="s = 1" @cancel="c = (c ?? 0) + 1" />`,
+    },
+    { attachTo: document.body },
+  );
+  await w.find(".bless-actionsheet__item").trigger("click");
+  await nextTick();
+  await nextTick(); // the drawer closes and fires its close event
+  expect(w.findComponent({ name: "BlessActionSheet" }).emitted("cancel")).toBeUndefined();
+  w.unmount();
+});
+
+test("BlessInfiniteScroll: says it's loading; re-enabling resumes; a button where scrolling can't load", async () => {
+  const IO = globalThis.IntersectionObserver;
+  // @ts-expect-error: simulate a browser without IntersectionObserver
+  delete globalThis.IntersectionObserver;
+  try {
+    const w = mount(BlessInfiniteScroll, { props: { disabled: false } });
+    await nextTick();
+    const more = w.find(".bless-infinite__more");
+    expect(more.text()).toBe("Load more");
+    await more.trigger("click");
+    expect(w.emitted("load")).toHaveLength(1);
+    expect(w.find("[role=status]").text()).toContain("Loading more");
+    await w.setProps({ disabled: true });
+    await w.setProps({ disabled: false });
+    (w.emitted("load")![0][0] as (end?: boolean) => void)();
+    await nextTick();
+    expect(w.find(".bless-infinite__more").exists()).toBe(true);
+  } finally {
+    globalThis.IntersectionObserver = IO;
+  }
+});
+
+test("BlessSlideItem: tabbing into the actions slides them into view; leaving puts them back", async () => {
+  const w = mount(BlessSlideItem, {
+    slots: { default: "<p>row</p>", right: "<button class='del'>Delete</button>" },
+    attachTo: document.body,
+  });
+  await w.find(".bless-slide__side--right").trigger("focusin");
+  expect(w.attributes("style")).toContain("--_x: -80px");
+  await w.trigger("focusout", { relatedTarget: document.body });
+  expect(w.attributes("style")).toContain("--_x: 0px");
   w.unmount();
 });
