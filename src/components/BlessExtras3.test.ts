@@ -302,3 +302,20 @@ test("useAnimateOnScroll flips visible", async () => {
   expect(r.attributes("data-visible")).toBe("true");
   window.matchMedia = mm;
 });
+
+test("BlessInplace moves focus into the content, and back on Esc", async () => {
+  const w = mount(BlessInplace, {
+    slots: { display: "view", content: "<input class='edit'>" },
+    attachTo: document.body,
+  });
+  (w.find(".bless-inplace__display").element as HTMLElement).focus();
+  await w.find(".bless-inplace__display").trigger("click");
+  await nextTick();
+  await nextTick();
+  expect(document.activeElement?.className).toBe("edit");
+  await w.find(".edit").trigger("keydown", { key: "Escape" });
+  await nextTick();
+  await nextTick();
+  expect(document.activeElement?.className).toBe("bless-inplace__display");
+  w.unmount();
+});
