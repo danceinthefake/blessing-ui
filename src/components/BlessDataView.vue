@@ -1,5 +1,5 @@
 <script setup lang="ts" generic="T">
-import { computed, ref } from "vue";
+import { computed, ref, watch } from "vue";
 import BlessPagination from "./BlessPagination.vue";
 import BlessToggle from "./BlessToggle.vue";
 import BlessToggleGroup from "./BlessToggleGroup.vue";
@@ -24,6 +24,8 @@ const page = ref(1);
 const pages = computed(() =>
   props.pageSize ? Math.max(1, Math.ceil(props.items.length / props.pageSize)) : 1,
 );
+// a filter can shrink the items under the current page: stay on the last one that exists
+watch(pages, (n) => page.value > n && (page.value = n));
 const slice = computed(() =>
   props.pageSize
     ? props.items.slice((page.value - 1) * props.pageSize, page.value * props.pageSize)
@@ -45,7 +47,7 @@ const slice = computed(() =>
         <BlessToggle value="grid" size="sm" label="Grid">▦</BlessToggle>
       </BlessToggleGroup>
     </div>
-    <div class="bless-dataview__items" role="list" :aria-label="label">
+    <div v-if="slice.length" class="bless-dataview__items" role="list" :aria-label="label">
       <div
         v-for="(item, i) in slice"
         :key="rowKey ? rowKey(item, i) : i"
@@ -54,9 +56,9 @@ const slice = computed(() =>
       >
         <slot :item :index="(page - 1) * pageSize + i" :layout />
       </div>
-      <div v-if="!slice.length" class="bless-dataview__empty">
-        <slot name="empty">No items</slot>
-      </div>
+    </div>
+    <div v-else class="bless-dataview__empty">
+      <slot name="empty">No items</slot>
     </div>
     <BlessPagination v-if="pages > 1" v-model="page" :total="pages" class="bless-dataview__pager" />
   </div>
