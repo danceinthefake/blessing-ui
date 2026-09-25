@@ -1,0 +1,24 @@
+src/components/BlessSignaturePad.vue
+  s_9ec1000e308ddb::t_81f368dd7a3fb8 2,14-15,20-27,46-51,83,86-87,89,110
+src/components/BlessExtras2.test.ts
+  s_9ec1000e308ddb::t_eb76a46958d74b 343
+  s_9ec1000e308ddb::t_226d88a781eea0 315-342,344-354
+docs/components/signature-pad.md
+  s_9ec1000e308ddb::t_c1728600f8a6cb 13,15-16,23-26
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "6f482a0d6e7a2022660210b24bbb29c85d4aa69a",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
