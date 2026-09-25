@@ -1,0 +1,24 @@
+docs/components/toaster.md
+  s_9ec1000e308ddb::t_276888d3a7128a 13,15-16,23-25
+  s_9ec1000e308ddb::t_dfdc3d40184ca2 26
+src/components/BlessToaster.vue
+  s_9ec1000e308ddb::t_4de7e6fc78d5ee 2,16-17,22,33-37,52
+src/composables/useToast.ts
+  s_9ec1000e308ddb::t_4de7e6fc78d5ee 17-43,48-49,56-59,72-76
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "9200345a5181597458f4d52a5cb56625bdcc8e94",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
