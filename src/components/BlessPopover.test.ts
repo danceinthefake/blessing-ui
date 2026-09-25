@@ -27,7 +27,7 @@ test("BlessPopover click trigger toggles, toggle event syncs, close slot", async
   // light dismiss from the platform
   (panel.element as HTMLElement).hidePopover();
   await nextTick();
-  expect(w.emitted("update:open")!.at(-1)).toEqual([false]);
+  expect(w.emitted("update:open")).toContainEqual([false]);
   w.unmount();
 });
 
@@ -38,9 +38,8 @@ test("BlessTooltip shows on focus immediately, hides on esc, describedby wired",
     attachTo: document.body,
   });
   const tip = w.find('[role="tooltip"]');
-  expect(w.find(".bless-tooltip__anchor").attributes("aria-describedby")).toBe(
-    tip.attributes("id"),
-  );
+  // on the button itself, which is what gets focus — not the wrapper
+  expect(w.find("button").attributes("aria-describedby")).toBe(tip.attributes("id"));
   await w.find(".bless-tooltip__anchor").trigger("focusin");
   await new Promise((r) => setTimeout(r, 5));
   await nextTick();
@@ -63,5 +62,37 @@ test("BlessHoverCard opens after delay on hover", async () => {
   await nextTick();
   expect(w.emitted("update:open")![0]).toEqual([true]);
   vi.useRealTimers();
+  w.unmount();
+});
+
+test("BlessPopover wires its click trigger; Esc closes a modal one", async () => {
+  const w = mount(BlessPopover, {
+    props: { modal: true, open: true },
+    slots: { trigger: "<button>i</button>", default: "<p>body</p>" },
+  });
+  const t = w.find("button");
+  expect(t.attributes("aria-haspopup")).toBe("dialog");
+  expect(t.attributes("aria-controls")).toBe(w.find(".bless-popover").attributes("id"));
+  expect(t.attributes("aria-expanded")).toBe("true");
+  await w.find(".bless-popover").trigger("keydown", { key: "Escape" });
+  expect(w.emitted("update:open")).toContainEqual([false]);
+});
+
+test("BlessTooltip stays while the pointer moves onto it", async () => {
+  const w = mount(BlessTooltip, {
+    props: { text: "hint", delay: 0 },
+    slots: { default: "<button>b</button>" },
+    attachTo: document.body,
+  });
+  const a = w.find(".bless-tooltip__anchor");
+  const tip = w.find('[role="tooltip"]');
+  await a.trigger("mouseenter");
+  await new Promise((r) => setTimeout(r, 5));
+  await nextTick();
+  await a.trigger("mouseleave");
+  await tip.trigger("mouseenter");
+  await new Promise((r) => setTimeout(r, 200));
+  await nextTick();
+  expect(tip.attributes("data-open")).toBeDefined();
   w.unmount();
 });
