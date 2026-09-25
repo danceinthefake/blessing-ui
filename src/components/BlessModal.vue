@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { nextTick, onMounted, ref, watch } from "vue";
+import { nextTick, onMounted, ref, useId, watch } from "vue";
 import { useHash } from "../composables/useHash";
 
 defineOptions({ name: "BlessModal" });
@@ -64,6 +64,8 @@ onMounted(() => {
   if (props.hash && hash.value === props.hash) open.value = true;
   sync(open.value);
 });
+// per-instance: closed dialogs stay in the DOM, so a shared id would name one dialog by another's title
+const titleId = `${useId()}-title`;
 </script>
 
 <template>
@@ -71,7 +73,7 @@ onMounted(() => {
     ref="dialog"
     class="bless-modal"
     :class="`bless-modal--${size}`"
-    :aria-labelledby="title || $slots.title ? 'bless-modal-title' : undefined"
+    :aria-labelledby="title || $slots.title ? titleId : undefined"
     @close="onClose"
     @cancel.prevent="open = false"
     @click="onBackdrop"
@@ -86,7 +88,7 @@ onMounted(() => {
         <span aria-hidden="true">×</span>
       </button>
       <header v-if="title || $slots.title" class="bless-modal__header">
-        <h2 id="bless-modal-title" class="bless-modal__title">
+        <h2 :id="titleId" class="bless-modal__title">
           <slot name="title">{{ title }}</slot>
         </h2>
       </header>

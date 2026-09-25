@@ -1,5 +1,5 @@
 import { mount } from "@vue/test-utils";
-import { nextTick } from "vue";
+import { h, nextTick } from "vue";
 import BlessModal from "./BlessModal.vue";
 
 // jsdom lacks showModal/close
@@ -22,7 +22,11 @@ test("v-model opens/closes dialog, close button emits", async () => {
   });
   const d = w.find("dialog");
   expect(d.attributes("open")).toBeUndefined();
-  expect(d.attributes("aria-labelledby")).toBe("bless-modal-title");
+  // named by its own heading; a second modal gets a different id
+  expect(document.getElementById(d.attributes("aria-labelledby")!)?.textContent).toBe("T");
+  const two = mount(() => [h(BlessModal, { title: "A" }), h(BlessModal, { title: "B" })]);
+  const [a, b] = two.findAll("dialog").map((x) => x.attributes("aria-labelledby"));
+  expect(a).not.toBe(b);
 
   await w.setProps({ modelValue: true });
   await nextTick();
