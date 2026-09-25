@@ -30,12 +30,16 @@ export function useFieldId(props: { id?: string }) {
   return () => props.id ?? mine ?? uid;
 }
 
-/** Controls: the enclosing BlessField's validity and description ids (inert outside a field) */
+/**
+ * Controls: the enclosing BlessField's validity and description ids (inert outside a field).
+ * `labelledby` is the field label's id, for controls a `<label for>` can't name (role=listbox…).
+ */
 export function useFieldState() {
   const field = inject(key, undefined);
   return {
     /** inside a BlessField: its label names the control, so skip a default aria-label */
     inField: !!field,
+    labelledby: field ? `${field.id}-label` : undefined,
     invalid: field?.invalid ?? ref(false),
     describedby: field?.describedby ?? ref<string | undefined>(undefined),
   };

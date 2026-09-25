@@ -53,9 +53,15 @@ watch(
     @invalid.capture="validate"
     @input="nativeError && validate($event)"
   >
-    <BlessLabel v-if="label" :for="id" :required :hint class="bless-field__label">{{
-      label
-    }}</BlessLabel>
+    <BlessLabel
+      v-if="label"
+      :id="`${id}-label`"
+      :for="id"
+      :required
+      :hint
+      class="bless-field__label"
+      >{{ label }}</BlessLabel
+    >
     <slot
       :id
       :error="error || nativeError"
