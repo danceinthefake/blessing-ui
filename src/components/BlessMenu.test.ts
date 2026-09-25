@@ -177,3 +177,20 @@ test("BlessMenuList: submenu keys do not double-step or close the whole tree", a
   expect(w.emitted("close")).toBeUndefined();
   w.unmount();
 });
+
+test("DropdownMenu closes when focus tabs out of it", async () => {
+  const outside = document.createElement("button");
+  document.body.append(outside);
+  const w = mount(BlessDropdownMenu, {
+    props: { items },
+    slots: { trigger: "<button>menu</button>" },
+    attachTo: document.body,
+  });
+  await openMenu(w);
+  const item = w.find('[role^="menuitem"]').element as HTMLElement;
+  item.dispatchEvent(new FocusEvent("focusout", { bubbles: true, relatedTarget: outside }));
+  await nextTick();
+  expect(w.emitted("update:open")!.at(-1)).toEqual([false]);
+  w.unmount();
+  outside.remove();
+});
