@@ -3272,6 +3272,12 @@
     "description": ""
    },
    {
+    "name": "name",
+    "type": "string | undefined",
+    "required": false,
+    "description": "submitted with the form as the plain number, not the formatted text"
+   },
+   {
     "name": "min",
     "type": "number | undefined",
     "required": false,
