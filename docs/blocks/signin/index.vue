@@ -25,9 +25,14 @@ const { email, password, remember, busy, error, done, submit } = useSignIn();
       >Redirecting…</BlessAlert
     >
     <BlessForm v-else @submit="submit">
-      <BlessAlert v-if="error" color="danger" :dismissible="false" class="signin__error">{{
-        error
-      }}</BlessAlert>
+      <BlessAlert
+        v-if="error"
+        color="danger"
+        live="alert"
+        :dismissible="false"
+        class="signin__error"
+        >{{ error }}</BlessAlert
+      >
       <BlessField label="Email" required>
         <BlessInput
           v-model="email"
@@ -44,11 +49,9 @@ const { email, password, remember, busy, error, done, submit } = useSignIn();
         <BlessCheckbox v-model="remember">Remember me</BlessCheckbox>
         <a href="#" class="signin__link">Forgot password?</a>
       </div>
-      <BlessButton type="submit" color="accent" :loading="busy" class="signin__submit"
-        >Sign in</BlessButton
-      >
+      <BlessButton type="submit" color="accent" :loading="busy" block>Sign in</BlessButton>
       <BlessSeparator label="or" class="signin__sep" />
-      <BlessButton variant="outline" class="signin__submit">Continue with GitHub</BlessButton>
+      <BlessButton variant="outline" block>Continue with GitHub</BlessButton>
       <BlessText as="p" size="xs" muted class="signin__foot"
         >No account? <a href="#">Create one</a></BlessText
       >
@@ -83,9 +86,6 @@ const { email, password, remember, busy, error, done, submit } = useSignIn();
   color: var(--bless-color-accent-text);
   text-decoration: underline;
   text-underline-offset: 2px;
-}
-.signin__submit {
-  width: 100%;
 }
 .signin__sep {
   margin: var(--bless-space-6) 0;
