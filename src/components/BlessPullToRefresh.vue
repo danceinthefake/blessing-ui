@@ -14,9 +14,10 @@ const props = withDefaults(
     disabled?: boolean;
     /** scroll container to check; default = the wrapper itself, falling back to window */
     scrollTarget?: HTMLElement | null;
-    label?: string;
+    /** announced while refreshing */
+    refreshingLabel?: string;
   }>(),
-  { threshold: 64, max: 96, label: "Pull to refresh" },
+  { threshold: 64, max: 96, refreshingLabel: "Refreshing" },
 );
 const emit = defineEmits<{ refresh: [done: () => void] }>();
 const root = ref<HTMLElement>();
@@ -58,9 +59,9 @@ const ready = computed(() => pull.value >= props.threshold);
       class="bless-ptr__indicator"
       :class="{ 'bless-ptr__indicator--ready': ready }"
       role="status"
-      :aria-label="busy ? 'Refreshing' : label"
-      aria-live="polite"
     >
+      <!-- live regions read their text, not aria-label: say it as content -->
+      <span class="bless-ptr__sr">{{ busy ? refreshingLabel : "" }}</span>
       <slot name="indicator" :ready :busy :pull>
         <BlessSpinner v-if="busy" size="sm" label="" />
         <span v-else class="bless-ptr__arrow" aria-hidden="true">↓</span>
@@ -71,6 +72,13 @@ const ready = computed(() => pull.value >= props.threshold);
 </template>
 
 <style>
+.bless-ptr__sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
 .bless-ptr {
   position: relative;
   overflow: hidden;
