@@ -1,6 +1,6 @@
 import DefaultTheme from "vitepress/theme";
 import { useData } from "vitepress";
-import { watchEffect, h } from "vue";
+import { h, watch } from "vue";
 import type { Theme } from "vitepress";
 import {
   BlessDialogHost,
@@ -20,13 +20,20 @@ import HomeSections from "./HomeSections.vue";
 export default {
   extends: DefaultTheme,
   Layout() {
-    // VitePress toggles html.dark; the library keys on data-theme. Keep them in step.
+    // One theme, two switches: VitePress's nav switch (html.dark, "vitepress-theme-appearance")
+    // and the library's (data-theme, "bless-theme"). VitePress's choice wins at load — useTheme()
+    // applies its saved value in a microtask, so ours is queued after it — and from then on
+    // flipping either one flips the other. Without this, a saved bless-theme overrode the nav on
+    // every refresh.
     const { isDark } = useData();
-    useTheme(); // boots the persisted palette on every page, including the full-page demos with no nav
-    watchEffect(() => {
-      if (typeof document === "undefined") return;
-      document.documentElement.dataset.theme = isDark.value ? "dark" : "light";
-    });
+    const bless = useTheme(); // also boots the persisted palette, including full-page demos
+    if (typeof window !== "undefined") {
+      queueMicrotask(() => {
+        bless.set(isDark.value ? "dark" : "light");
+        watch(isDark, (d) => bless.set(d ? "dark" : "light"));
+        watch(bless.isDark, (d) => d !== isDark.value && (isDark.value = d));
+      });
+    }
     return h(DefaultTheme.Layout, null, {
       "layout-bottom": () => [h(BlessToaster), h(BlessDialogHost), h(BlessLoadingBar)],
       "home-features-after": () => h(HomeSections),
