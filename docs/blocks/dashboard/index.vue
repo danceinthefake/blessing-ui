@@ -71,7 +71,11 @@ const statusColor = { paid: "success", pending: "warning", refunded: "text" } as
       <div class="dash__stats">
         <StatCard v-for="s in stats" :key="s.label" :stat="s" />
       </div>
-      <BlessChart title="Daily revenue" description="last 30 days" height="200px">
+      <BlessChart
+        title="Daily revenue"
+        description="Last 30 days: up from about 60 to 125, with a dip mid-month"
+        height="200px"
+      >
         <VisXYContainer :data="trend" :margin="{ top: 8, right: 8 }">
           <VisArea :x="(d: Pt) => d.d" :y="(d: Pt) => d.v" :opacity="0.15" />
           <VisLine :x="(d: Pt) => d.d" :y="(d: Pt) => d.v" :lineWidth="1.5" />
@@ -122,8 +126,22 @@ const statusColor = { paid: "success", pending: "warning", refunded: "text" } as
   .dash {
     grid-template-columns: 1fr;
   }
+  /* on a phone the sidebar becomes a strip above the page, its nav scrolling sideways */
   .dash__side {
-    display: none; /* on a phone, BlessLayout's left drawer takes over */
+    display: flex;
+    align-items: center;
+    gap: var(--bless-space-4);
+    padding: var(--bless-space-2) var(--bless-space-4);
+    border-right: 0;
+    border-bottom: var(--bless-border-width) solid var(--bless-color-border);
+    overflow-x: auto;
+  }
+  .dash__brand {
+    margin: 0;
+  }
+  .dash__side :deep(.bless-sidebar-nav__list) {
+    display: flex;
+    gap: var(--bless-space-2);
   }
 }
 </style>
