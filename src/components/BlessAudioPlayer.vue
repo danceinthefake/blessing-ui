@@ -14,10 +14,12 @@ const props = withDefaults(
   defineProps<{
     tracks: BlessTrack[];
     color?: "text" | "accent" | "danger";
+    /** the play button's name; its pressed state says whether it's playing */
     playLabel?: string;
-    pauseLabel?: string;
+    /** name of the seek slider */
+    seekLabel?: string;
   }>(),
-  { color: "accent", playLabel: "Play", pauseLabel: "Pause" },
+  { color: "accent", playLabel: "Play", seekLabel: "Seek" },
 );
 
 /** index of the current track */
@@ -43,7 +45,7 @@ function fmt(s: number) {
 function toggle() {
   const a = audio.value;
   if (!a) return;
-  if (a.paused) a.play();
+  if (a.paused) a.play().catch(() => (playing.value = false)); // blocked autoplay, bad source
   else a.pause();
 }
 
@@ -53,11 +55,10 @@ function select(i: number) {
   playing.value = true;
 }
 
-function seek(e: MouseEvent) {
+// seeking is a native range over the bar, so the keyboard can seek too (arrows, Home / End)
+function seek(e: Event) {
   const a = audio.value;
-  if (!a || !duration.value) return;
-  const r = (e.currentTarget as HTMLElement).getBoundingClientRect();
-  a.currentTime = ((e.clientX - r.left) / r.width) * duration.value;
+  if (a && duration.value) a.currentTime = Number((e.target as HTMLInputElement).value);
 }
 
 function onEnded() {
@@ -106,7 +107,7 @@ onBeforeUnmount(() => audio.value?.pause());
         :color="playing ? color : 'text'"
         type="button"
         class="bless-audio__toggle"
-        :aria-label="playing ? pauseLabel : playLabel"
+        :aria-label="playLabel"
         :aria-pressed="playing"
         @click="toggle"
       >
@@ -117,16 +118,20 @@ onBeforeUnmount(() => audio.value?.pause());
         <span v-if="current.artist" class="bless-audio__artist">{{ current.artist }}</span>
       </div>
       <span class="bless-audio__time">{{ fmt(time) }} / {{ fmt(duration) }}</span>
-      <div
-        class="bless-audio__bar"
-        role="progressbar"
-        aria-label="Playback position"
-        :aria-valuenow="Math.round(progress)"
-        aria-valuemin="0"
-        aria-valuemax="100"
-        @click="seek"
-      >
+      <div class="bless-audio__bar">
         <div class="bless-audio__fill" :style="{ width: `${progress}%` }" />
+        <input
+          type="range"
+          class="bless-audio__seek"
+          min="0"
+          :max="duration || 0"
+          step="1"
+          :value="time"
+          :disabled="!duration"
+          :aria-label="seekLabel"
+          :aria-valuetext="`${fmt(time)} of ${fmt(duration)}`"
+          @input="seek"
+        />
       </div>
     </div>
 
@@ -217,10 +222,24 @@ onBeforeUnmount(() => audio.value?.pause());
 }
 .bless-audio__bar {
   grid-area: bar;
+  position: relative;
   height: 6px;
   background: var(--bless-color-bg);
   cursor: pointer;
   transform: skewX(var(--bless-skew));
+}
+/* the native range does the work; the skewed bar is what you see */
+.bless-audio__seek {
+  position: absolute;
+  inset: -6px 0;
+  width: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+.bless-audio__bar:has(.bless-audio__seek:focus-visible) {
+  outline: 2px solid var(--bless-color-accent);
+  outline-offset: 3px;
 }
 .bless-audio__fill {
   height: 100%;
