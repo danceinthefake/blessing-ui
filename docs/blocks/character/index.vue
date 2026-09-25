@@ -22,7 +22,7 @@ const open = ref<Record<string, boolean>>({});
         class="chara__card"
       >
         <template #media>
-          <div class="chara__art" :style="{ '--_c': c.color }">
+          <div class="chara__art" :style="{ '--_c': c.color }" aria-hidden="true">
             <span>{{ c.name.at(-1) }}</span>
           </div>
         </template>
@@ -39,7 +39,7 @@ const open = ref<Record<string, boolean>>({});
       :title="c.name"
     >
       <div class="chara__profile">
-        <div class="chara__art chara__art--lg" :style="{ '--_c': c.color }">
+        <div class="chara__art chara__art--lg" :style="{ '--_c': c.color }" aria-hidden="true">
           <span>{{ c.name.at(-1) }}</span>
         </div>
         <div>

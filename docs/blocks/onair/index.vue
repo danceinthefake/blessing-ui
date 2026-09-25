@@ -34,7 +34,7 @@ const streaming = ["ABEMA", "dアニメストア", "Netflix", "Amazon Prime Vide
       </template>
     </BlessTable>
     <BlessSeparator label="配信" color="accent" class="onair__sep" />
-    <ul class="onair__stream">
+    <ul role="list" class="onair__stream">
       <li v-for="s in streaming" :key="s">
         <BlessBadge color="accent">{{ s }}</BlessBadge>
       </li>
