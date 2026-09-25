@@ -15,6 +15,14 @@ export default defineConfig({
   lastUpdated: true,
   head: [
     ["link", { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" }],
+    // Before first paint, mirror VitePress's saved appearance onto data-theme (what the library's
+    // tokens read) and restore the palette, so Bless components don't flash the OS theme or the
+    // default accent. "auto" leaves data-theme off: the tokens then follow the OS, as VitePress does.
+    [
+      "script",
+      {},
+      `try{var a=localStorage.getItem("vitepress-theme-appearance");if(a==="dark"||a==="light")document.documentElement.dataset.theme=a;var p=localStorage.getItem("bless-palette");if(p)document.documentElement.dataset.palette=p}catch(e){}`,
+    ],
     ["meta", { property: "og:title", content: "Blessing UI" }],
     [
       "meta",
