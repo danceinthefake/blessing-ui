@@ -1,0 +1,31 @@
+docs/components/switch.md
+  s_9ec1000e308ddb::t_2837ea68979a93 13,15-16,23-25
+  s_9ec1000e308ddb::t_5e896a4f5de935 26
+docs/components/textarea.md
+  s_9ec1000e308ddb::t_4c1076ead4ceb8 26
+  s_9ec1000e308ddb::t_2837ea68979a93 13,15-16,23-25
+src/components/BlessTextarea.vue
+  s_9ec1000e308ddb::t_b0817fa49741eb 2,29-34,66-69
+src/components/BlessSwitch.vue
+  s_9ec1000e308ddb::t_d5069067f2a113 98
+  s_9ec1000e308ddb::t_b0817fa49741eb 2,14,34-35,95-97
+src/components/BlessChoice.test.ts
+  s_9ec1000e308ddb::t_60470f10aad765 117-124
+  s_9ec1000e308ddb::t_2837ea68979a93 46-48
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "466b6b045421b0098607878173834cab375f3498",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
