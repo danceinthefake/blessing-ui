@@ -69,6 +69,9 @@ function scrollTo(index: number) {
   });
 }
 
+// Only a window of rows exists in the DOM; aria-setsize / aria-posinset on each row tell screen
+// readers the real length and position ("12 of 10,000"), not the 20 rendered.
+
 // measure rendered rows in dynamic mode
 let ro: ResizeObserver | undefined;
 function measure(el: Element) {
@@ -117,6 +120,8 @@ defineExpose({ scrollTo });
           class="bless-virtual__row"
           :style="dynamic ? undefined : { height: `${itemHeight}px` }"
           role="listitem"
+          :aria-setsize="items.length"
+          :aria-posinset="start + k + 1"
         >
           <slot :item :index="start + k" />
         </div>
