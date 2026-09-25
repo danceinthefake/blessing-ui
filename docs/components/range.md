@@ -11,9 +11,10 @@ import RangeBasic from "../demos/RangeBasic.vue";
 <p class="bless-lead">Two-thumb range on native inputs</p>
 
 A span between two values — a price band, a date window, an age range. For one value use [Slider](./slider); when people know the exact numbers, two [InputNumber](./input-number)s are quicker.
+
 <Demo title="Basic">
-<RangeBasic />
-<template #code>
+  <RangeBasic />
+  <template #code>
 
 <<< ../demos/RangeBasic.vue
 

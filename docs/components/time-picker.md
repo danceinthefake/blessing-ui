@@ -11,9 +11,10 @@ import TimePickerBasic from "../demos/TimePickerBasic.vue";
 <p class="bless-lead">Native time input with quick picks</p>
 
 A time of day. It is the native time input, so phones show their own wheel and the value is always `HH:MM`, whatever the display.
+
 <Demo title="Basic">
-<TimePickerBasic />
-<template #code>
+  <TimePickerBasic />
+  <template #code>
 
 <<< ../demos/TimePickerBasic.vue
 

@@ -11,9 +11,10 @@ import TableBasic from "../demos/TableBasic.vue";
 <p class="bless-lead">Typed table, stacks on mobile</p>
 
 Data to read and compare in rows and columns. When people need to sort, search, page or select, use [DataTable](./data-table).
+
 <Demo title="Basic">
-<TableBasic />
-<template #code>
+  <TableBasic />
+  <template #code>
 
 <<< ../demos/TableBasic.vue
 

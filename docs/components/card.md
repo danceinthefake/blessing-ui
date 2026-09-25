@@ -11,9 +11,10 @@ import CardBasic from "../demos/CardBasic.vue";
 <p class="bless-lead">Flat surface</p>
 
 One item in a set of similar items — an episode, a product, a person — laid out as a box with an optional label, media and footer. For a single block of content use a [Panel](./panel) or a [Section](./section).
+
 <Demo title="Basic">
-<CardBasic />
-<template #code>
+  <CardBasic />
+  <template #code>
 
 <<< ../demos/CardBasic.vue
 

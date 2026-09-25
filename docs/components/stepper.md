@@ -10,8 +10,8 @@ import StepperBasic from "../demos/StepperBasic.vue";
 
 <p class="bless-lead">Steps header + panels + next / back</p>
 
-
 A task split into ordered steps with one panel at a time — checkout, onboarding, a setup wizard. Use it when each step depends on the one before; a single long form is often simpler.
+
 <Demo title="Basic">
   <StepperBasic />
   <template #code>

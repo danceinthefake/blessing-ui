@@ -11,9 +11,10 @@ import BackgroundBasic from "../demos/BackgroundBasic.vue";
 <p class="bless-lead">Tiled texture layer</p>
 
 A decorative layer behind a page or a section: a tiled image, or the built-in hairline pattern. It is hidden from screen readers and never takes clicks.
+
 <Demo title="Basic">
-<BackgroundBasic />
-<template #code>
+  <BackgroundBasic />
+  <template #code>
 
 <<< ../demos/BackgroundBasic.vue
 

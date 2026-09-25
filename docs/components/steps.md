@@ -10,8 +10,8 @@ import StepsBasic from "../demos/StepsBasic.vue";
 
 <p class="bless-lead">Stepper with done / current / upcoming</p>
 
-
 Where someone is in a sequence — the header of a [Stepper](./stepper), or an order's status. The current step has `aria-current="step"`.
+
 <Demo title="Basic">
   <StepsBasic />
   <template #code>

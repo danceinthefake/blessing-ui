@@ -11,9 +11,10 @@ import ListBasic from "../demos/ListBasic.vue";
 <p class="bless-lead">Divided rows</p>
 
 A plain vertical list of [Item](./item)s, divided by hairlines — settings rows, a contact list. For collections with paging or a layout switch, use [DataView](./data-view).
+
 <Demo title="Basic">
-<ListBasic />
-<template #code>
+  <ListBasic />
+  <template #code>
 
 <<< ../demos/ListBasic.vue
 

@@ -11,9 +11,10 @@ import TreeSelectBasic from "../demos/TreeSelectBasic.vue";
 <p class="bless-lead">Tree in a popover, single or multiple</p>
 
 A choice from a hierarchy — a folder, a category under a category, a team inside a department. For a flat list use [Select](./select); for a few levels of dependent choice where each level is its own list, [CascadeSelect](./cascade-select).
+
 <Demo title="Basic">
-<TreeSelectBasic />
-<template #code>
+  <TreeSelectBasic />
+  <template #code>
 
 <<< ../demos/TreeSelectBasic.vue
 

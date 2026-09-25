@@ -12,9 +12,10 @@ import ToggleGroupBasic from "../demos/ToggleGroupBasic.vue";
 <p class="bless-lead">Pressed buttons</p>
 
 A button that stays pressed — bold in a toolbar, a filter that's on. For a setting that applies at once, a [Switch](./switch) reads clearer; for a set of them, wrap toggles in a [ToggleGroup](#blesstogglegroup).
+
 <Demo title="Basic">
-<ToggleBasic />
-<template #code>
+  <ToggleBasic />
+  <template #code>
 
 <<< ../demos/ToggleBasic.vue
 

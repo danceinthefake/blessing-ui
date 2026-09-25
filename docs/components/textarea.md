@@ -11,9 +11,10 @@ import TextareaBasic from "../demos/TextareaBasic.vue";
 <p class="bless-lead">Auto-growing textarea</p>
 
 Text longer than a line: a message, a note, a description. For one line use [Input](./input); for formatted text, [Editor](./editor).
+
 <Demo title="Basic">
-<TextareaBasic />
-<template #code>
+  <TextareaBasic />
+  <template #code>
 
 <<< ../demos/TextareaBasic.vue
 

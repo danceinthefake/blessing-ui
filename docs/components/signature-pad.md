@@ -11,9 +11,10 @@ import SignaturePadBasic from "../demos/SignaturePadBasic.vue";
 <p class="bless-lead">Draw a signature on canvas</p>
 
 A drawn signature, for a delivery receipt, a consent form, a sign-off. It can only be drawn with a pointer, so always offer another way: a typed full name, or a checkbox that says the same thing.
+
 <Demo title="Basic">
-<SignaturePadBasic />
-<template #code>
+  <SignaturePadBasic />
+  <template #code>
 
 <<< ../demos/SignaturePadBasic.vue
 

@@ -11,9 +11,10 @@ import PasswordMeterBasic from "../demos/PasswordMeterBasic.vue";
 <p class="bless-lead">Strength meter from rules</p>
 
 Strength feedback for a password being made. [PasswordInput](./password-input) with `meter` already includes it; use it on its own under a field of your own.
+
 <Demo title="Basic">
-<PasswordMeterBasic />
-<template #code>
+  <PasswordMeterBasic />
+  <template #code>
 
 <<< ../demos/PasswordMeterBasic.vue
 

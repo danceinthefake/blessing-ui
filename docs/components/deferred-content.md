@@ -11,9 +11,10 @@ import DeferredContentBasic from "../demos/DeferredContentBasic.vue";
 <p class="bless-lead">Render when scrolled into view</p>
 
 Content rendered only when it scrolls near the viewport — a heavy chart, an embed, comments at the end of a long page. Don't defer what people search the page for: until it renders, find-in-page and screen readers can't see it.
+
 <Demo title="Basic">
-<DeferredContentBasic />
-<template #code>
+  <DeferredContentBasic />
+  <template #code>
 
 <<< ../demos/DeferredContentBasic.vue
 

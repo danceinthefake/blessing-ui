@@ -11,9 +11,10 @@ import PanelBasic from "../demos/PanelBasic.vue";
 <p class="bless-lead">Titled box with actions, toggleable</p>
 
 A titled box of related content inside a page — a settings group, a side summary. It is a `section` named by its title. For the page's own sections, use [Section](./section); for items in a set, [Card](./card).
+
 <Demo title="Basic">
-<PanelBasic />
-<template #code>
+  <PanelBasic />
+  <template #code>
 
 <<< ../demos/PanelBasic.vue
 

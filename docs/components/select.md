@@ -11,9 +11,10 @@ import SelectBasic from "../demos/SelectBasic.vue";
 <p class="bless-lead">Styled native &lt;select&gt;</p>
 
 One choice from a list too long for radios. It is the native `<select>`, so phones show their own picker and every keyboard and screen reader already knows it. To type and filter a long list, use [Combobox](./combobox); to keep the options visible, [Listbox](./listbox).
+
 <Demo title="Basic">
-<SelectBasic />
-<template #code>
+  <SelectBasic />
+  <template #code>
 
 <<< ../demos/SelectBasic.vue
 
