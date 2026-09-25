@@ -22,19 +22,25 @@ const tabs = [
 
 <template>
   <BlessSection title="News" class="news">
-    <BlessTabs v-model="filter" :tabs label="News category" color="text" class="news__tabs" />
-    <BlessSkeleton v-if="loading" :lines="4" height="14px" />
-    <BlessList v-else>
-      <BlessListItem
-        v-for="n in visible"
-        :key="n.id"
-        :meta="fmtDate(n.date)"
-        :badge="isNew(n.date)"
-        :href="n.href"
-      >
-        {{ n.title }}
-      </BlessListItem>
-    </BlessList>
+    <!-- the list lives in the active tab's panel, so the tabs control what they filter -->
+    <BlessTabs v-model="filter" :tabs label="News category" color="text" class="news__tabs">
+      <template #default="{ active }">
+        <template v-if="active">
+          <BlessSkeleton v-if="loading" :lines="4" height="14px" />
+          <BlessList v-else>
+            <BlessListItem
+              v-for="n in visible"
+              :key="n.id"
+              :meta="fmtDate(n.date)"
+              :badge="isNew(n.date)"
+              :href="n.href"
+            >
+              {{ n.title }}
+            </BlessListItem>
+          </BlessList>
+        </template>
+      </template>
+    </BlessTabs>
     <div class="news__more">
       <BlessButton color="accent" href="#">More</BlessButton>
     </div>
