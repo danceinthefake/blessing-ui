@@ -22,7 +22,6 @@ const name = () => props.name ?? uid;
 const hover = ref(0);
 // read-only renders one image with a name ("Score: 4 of 5"), not a disabled set of radios that
 // screen readers call "dimmed" and can't reach
-
 </script>
 
 <template>

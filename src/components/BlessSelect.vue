@@ -1,4 +1,5 @@
 <script setup lang="ts" generic="T extends string | number">
+import { computed } from "vue";
 import { useFieldId, useFieldState } from "../composables/useFieldId";
 import type { BlessOption } from "./select";
 
@@ -21,6 +22,12 @@ const props = withDefaults(
 const model = defineModel<T | undefined>();
 const id = useFieldId(props);
 const fs = useFieldState();
+// The placeholder option needs a real empty value: without one its value is its text, so a
+// `required` select counts as filled and submits "Choose…". It maps to `undefined` in the model.
+const picked = computed({
+  get: () => model.value ?? "",
+  set: (v) => (model.value = v === "" ? undefined : (v as T)),
+});
 const isGroup = (o: unknown): o is { label: string; options: BlessOption<T>[] } =>
   !!o && typeof o === "object" && "options" in o;
 </script>
@@ -37,7 +44,7 @@ const isGroup = (o: unknown): o is { label: string; options: BlessOption<T>[] } 
       <select
         v-bind="$attrs"
         :id="id()"
-        v-model="model"
+        v-model="picked"
         :disabled
         class="bless-select__control"
         :aria-invalid="invalid || error || fs.invalid.value ? 'true' : undefined"
@@ -45,7 +52,7 @@ const isGroup = (o: unknown): o is { label: string; options: BlessOption<T>[] } 
           error ? `${id()}-err` : description ? `${id()}-desc` : fs.describedby.value
         "
       >
-        <option v-if="placeholder" :value="undefined" disabled hidden>{{ placeholder }}</option>
+        <option v-if="placeholder" value="" disabled hidden>{{ placeholder }}</option>
         <template v-for="o in options" :key="isGroup(o) ? o.label : o.value">
           <optgroup v-if="isGroup(o)" :label="o.label">
             <option v-for="g in o.options" :key="g.value" :value="g.value" :disabled="g.disabled">
