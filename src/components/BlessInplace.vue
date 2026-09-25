@@ -1,23 +1,42 @@
 <script setup lang="ts">
+import { nextTick, ref } from "vue";
+
 defineOptions({ name: "BlessInplace" });
 withDefaults(defineProps<{ closable?: boolean; disabled?: boolean; closeLabel?: string }>(), {
   closeLabel: "Close",
 });
 const active = defineModel<boolean>("active", { default: false });
 const emit = defineEmits<{ open: []; close: [] }>();
-const open = () => ((active.value = true), emit("open"));
-const close = () => ((active.value = false), emit("close"));
+const root = ref<HTMLElement>();
+// The button that had focus is replaced by the content (and back), so focus has to be moved by
+// hand or it falls to <body>: into the first control on open, back to the display on close.
+const focusIn = (sel: string) =>
+  nextTick(() => root.value?.querySelector<HTMLElement>(sel)?.focus());
+function open() {
+  active.value = true;
+  emit("open");
+  focusIn(
+    "input, textarea, select, [contenteditable], button, [href], [tabindex]:not([tabindex='-1'])",
+  );
+}
+function close() {
+  if (!active.value) return;
+  active.value = false;
+  emit("close");
+  focusIn(".bless-inplace__display");
+}
 </script>
 
 <template>
   <div
+    ref="root"
     class="bless-inplace"
     :class="{ 'bless-inplace--active': active, 'bless-inplace--disabled': disabled }"
   >
     <button v-if="!active" type="button" class="bless-inplace__display" :disabled @click="open">
       <slot name="display" />
     </button>
-    <div v-else class="bless-inplace__content">
+    <div v-else class="bless-inplace__content" @keydown.esc.stop="close">
       <slot name="content" :close />
       <button
         v-if="closable"
