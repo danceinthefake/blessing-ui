@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ref } from "vue";
 import { useLink } from "../composables/useLink";
 import type { BlessTreeNode } from "./tree";
 
@@ -13,6 +14,8 @@ const props = defineProps<{
 }>();
 const emit = defineEmits<{ select: [node: BlessTreeNode, path: string] }>();
 const id = () => props.node.id ?? props.path;
+// a branch reports whether it's open; native <details> toggles it, so follow its toggle event
+const expanded = ref(!!props.node.open);
 </script>
 
 <template>
@@ -22,8 +25,14 @@ const id = () => props.node.id ?? props.path;
     :aria-selected="selected === id()"
     :aria-level="level"
     :aria-disabled="node.disabled || undefined"
+    :aria-expanded="node.children?.length ? expanded : undefined"
   >
-    <details v-if="node.children?.length" class="bless-tree__branch" :open="node.open">
+    <details
+      v-if="node.children?.length"
+      class="bless-tree__branch"
+      :open="node.open"
+      @toggle="expanded = ($event.target as HTMLDetailsElement).open"
+    >
       <summary class="bless-tree__row" :class="{ 'bless-tree__row--selected': selected === id() }">
         <span class="bless-tree__chevron" aria-hidden="true">›</span>
         <span v-if="node.icon" class="bless-tree__icon" aria-hidden="true">{{ node.icon }}</span>
