@@ -10,19 +10,9 @@ const open = ref(true);
       open ? "Collapse" : "Expand"
     }}</BlessButton>
     <BlessSlideTransition>
-      <div
-        v-if="open"
-        style="
-          transition: height 0.3s var(--bless-ease-out);
-          background: var(--bless-color-surface);
-          padding: 12px;
-        "
-      >
+      <div v-if="open" style="background: var(--bless-color-surface); padding: 12px">
         <BlessText as="p"
           >Height animates from 0 to auto and back — no fixed max-height hack.</BlessText
-        >
-        <BlessText as="p" size="sm" muted
-          >Put <code>transition: height</code> on the slot root.</BlessText
         >
       </div>
     </BlessSlideTransition>

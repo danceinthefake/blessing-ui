@@ -25,6 +25,24 @@ const expect = (cond, msg) => {
 };
 const go = (p) => page.goto(base + p, { waitUntil: "networkidle" });
 
+console.log("SlideTransition");
+await step("closes and opens, and still finishes under reduced motion", async () => {
+  for (const reducedMotion of ["no-preference", "reduce"]) {
+    await page.emulateMedia({ reducedMotion });
+    await go("/components/slide-transition");
+    const demo = page.locator(".demo__preview").first();
+    const body = demo.locator("div[style*='padding']");
+    await demo.getByRole("button").click();
+    await page.waitForTimeout(500);
+    expect((await body.count()) === 0, `${reducedMotion}: still there after close`);
+    await demo.getByRole("button").click();
+    await page.waitForTimeout(500);
+    const h = await body.evaluate((e) => [e.style.height, e.offsetHeight]);
+    expect(h[0] === "" && h[1] > 20, `${reducedMotion}: reopened as ${h}`);
+  }
+  await page.emulateMedia({ reducedMotion: "no-preference" });
+});
+
 console.log("InputMask");
 await go("/components/input-mask");
 await step("rejects junk, keeps the caret on a mid-value insert, reformats a paste", async () => {

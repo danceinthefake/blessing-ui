@@ -1,28 +1,46 @@
 <script setup lang="ts">
 defineOptions({ name: "BlessSlideTransition" });
-withDefaults(defineProps<{ duration?: number; appear?: boolean }>(), { duration: 300 });
-const px = (el: Element) => `${(el as HTMLElement).scrollHeight}px`;
+const props = withDefaults(
+  defineProps<{
+    /** ms; 0 or reduced motion shows and hides at once */
+    duration?: number;
+    appear?: boolean;
+  }>(),
+  { duration: 300 },
+);
+const px = (el: HTMLElement) => `${el.scrollHeight}px`;
+const reduced = () =>
+  typeof matchMedia === "function" && matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+// Animate height between two values. A timeout backs up transitionend, which never fires when
+// nothing actually changed — without it a v-if leave would never finish and the element would stay.
+function run(el: HTMLElement, from: string, to: string, finish: () => void) {
+  if (!props.duration || reduced()) return finish();
+  el.style.overflow = "hidden";
+  el.style.height = from;
+  el.style.transition = `height ${props.duration}ms var(--bless-ease-out)`;
+  let timer = 0;
+  const end = () => {
+    clearTimeout(timer);
+    el.removeEventListener("transitionend", onEnd);
+    finish();
+  };
+  // a child's transition bubbles here too; only our own height counts
+  const onEnd = (e: TransitionEvent) => e.target === el && e.propertyName === "height" && end();
+  el.addEventListener("transitionend", onEnd);
+  timer = window.setTimeout(end, props.duration + 50);
+  requestAnimationFrame(() => (el.style.height = to));
+}
+const reset = (el: HTMLElement) => {
+  el.style.height = el.style.overflow = el.style.transition = "";
+};
 function enter(el: Element, done: () => void) {
   const h = el as HTMLElement;
-  h.style.height = "0";
-  h.style.overflow = "hidden";
-  requestAnimationFrame(() => {
-    h.style.height = px(h);
-    h.addEventListener(
-      "transitionend",
-      () => ((h.style.height = ""), (h.style.overflow = ""), done()),
-      { once: true },
-    );
-  });
+  run(h, "0", px(h), () => (reset(h), done()));
 }
 function leave(el: Element, done: () => void) {
   const h = el as HTMLElement;
-  h.style.height = px(h);
-  h.style.overflow = "hidden";
-  requestAnimationFrame(() => {
-    h.style.height = "0";
-    h.addEventListener("transitionend", () => done(), { once: true });
-  });
+  run(h, px(h), "0", done);
 }
 </script>
 
