@@ -4,11 +4,11 @@ import {
   BlessAlertDialog,
   BlessAvatar,
   BlessButton,
+  BlessCheckbox,
   BlessField,
   BlessInput,
   BlessPanel,
   BlessSelect,
-  BlessSwitch,
   BlessText,
   BlessTextarea,
   useToast,
@@ -34,7 +34,7 @@ const { success } = useToast();
 <template>
   <div class="settings">
     <BlessText as="h1" size="lg" weight="light">Settings</BlessText>
-    <BlessPanel title="Profile">
+    <BlessPanel title="Profile" :level="2">
       <div class="settings__avatar">
         <BlessAvatar :name="form.name" size="lg" />
         <BlessButton size="sm" variant="outline">Change photo</BlessButton>
@@ -43,19 +43,20 @@ const { success } = useToast();
         <BlessField label="Name"><BlessInput v-model="form.name" /></BlessField>
         <BlessField label="Email"><BlessInput v-model="form.email" type="email" /></BlessField>
       </div>
-      <BlessField label="Bio" hint="Shown on your public profile."
+      <BlessField label="Bio" description="Shown on your public profile."
         ><BlessTextarea v-model="form.bio" :rows="2" autogrow
       /></BlessField>
       <BlessField label="Language"><BlessSelect v-model="form.lang" :options="langs" /></BlessField>
     </BlessPanel>
-    <BlessPanel title="Notifications">
-      <div class="settings__switches">
-        <BlessSwitch v-model="form.emails">Email me about account activity</BlessSwitch>
-        <BlessSwitch v-model="form.push">Push notifications</BlessSwitch>
-        <BlessSwitch v-model="form.digest">Weekly digest</BlessSwitch>
+    <BlessPanel title="Notifications" :level="2">
+      <div class="settings__checks">
+        <!-- checkboxes, not switches: these apply on Save, and a switch promises it's done now -->
+        <BlessCheckbox v-model="form.emails">Email me about account activity</BlessCheckbox>
+        <BlessCheckbox v-model="form.push">Push notifications</BlessCheckbox>
+        <BlessCheckbox v-model="form.digest">Weekly digest</BlessCheckbox>
       </div>
     </BlessPanel>
-    <BlessPanel title="Danger zone" class="settings__danger">
+    <BlessPanel title="Danger zone" :level="2" class="settings__danger">
       <BlessText as="p" size="sm" muted
         >Deleting your account removes all your data. This cannot be undone.</BlessText
       >
@@ -100,7 +101,7 @@ const { success } = useToast();
 .settings :deep(.bless-field) {
   margin-bottom: var(--bless-space-4);
 }
-.settings__switches {
+.settings__checks {
   display: grid;
   gap: var(--bless-space-3);
 }
