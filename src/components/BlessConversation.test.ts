@@ -68,6 +68,14 @@ test("BlessAttachment: ext fallback, uploading, error, remove", async () => {
   expect(e.find(".bless-attachment__desc").text()).toBe("Upload failed");
 });
 
+test("BlessAttachment with href: the name is the link, the remove button is outside it", () => {
+  const w = mount(BlessAttachment, { props: { name: "a.pdf", href: "/a.pdf", removable: true } });
+  expect(w.element.tagName).toBe("DIV");
+  expect(w.find("a").text()).toBe("a.pdf");
+  expect(w.find("a button").exists()).toBe(false);
+  expect(w.find(".bless-attachment__remove").attributes("aria-label")).toBe("Remove a.pdf");
+});
+
 test("BlessMessageScroller: jump button appears when scrolled up, reach-top emits once", async () => {
   const w = mount(BlessMessageScroller, { slots: { default: "<p>m</p>" } });
   const vp = w.find(".bless-message-scroller__viewport").element as HTMLElement;
@@ -113,4 +121,18 @@ test("BlessQuestionnaire: required blocks, shortcut picks, skip, submit", async 
   await skipBtn.trigger("click");
   expect(w.emitted("skip")).toHaveLength(1);
   expect(w.emitted("submit")).toHaveLength(1);
+});
+
+test("BlessQuestionnaire: Ctrl+digit is left to the browser; controls are named by the question", async () => {
+  const w = mount(BlessQuestionnaire, {
+    props: {
+      questions: [
+        { name: "a", title: "Pick one", type: "single", choices: [{ label: "Yes", value: "y" }] },
+      ],
+    },
+  });
+  await w.find("form").trigger("keydown", { key: "1", ctrlKey: true });
+  expect(w.emitted("update:modelValue")).toBeUndefined();
+  const legend = w.find("legend");
+  expect(w.find("[role=radiogroup]").attributes("aria-labelledby")).toBe(legend.attributes("id"));
 });
