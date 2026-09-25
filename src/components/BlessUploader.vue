@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { onBeforeUnmount, ref } from "vue";
 import BlessButton from "./BlessButton.vue";
 import BlessFileInput from "./BlessFileInput.vue";
 import BlessProgress from "./BlessProgress.vue";
@@ -46,6 +46,7 @@ const emit = defineEmits<{
 const queue = ref<BlessUpload[]>([]);
 const picked = ref<File[]>([]);
 let seq = 0;
+const live = ref(""); // finished and failed uploads are announced; progress ticks are not
 
 function onPick(files: File[]) {
   for (const f of files) {
@@ -61,12 +62,18 @@ function onPick(files: File[]) {
 function send(item: BlessUpload) {
   item.status = "uploading";
   const progress = (n: number) => (item.progress = Math.max(0, Math.min(100, n)));
-  const done = () => ((item.status = "done"), (item.progress = 100), emit("done", item));
-  const fail = (msg?: string) => (
-    (item.status = "error"),
-    (item.error = msg ?? "Upload failed"),
-    emit("error", item)
-  );
+  const done = () => {
+    item.status = "done";
+    item.progress = 100;
+    live.value = `${item.file.name} uploaded`;
+    emit("done", item);
+  };
+  const fail = (msg?: string) => {
+    item.status = "error";
+    item.error = msg ?? "Upload failed";
+    live.value = `${item.file.name}: ${item.error}`;
+    emit("error", item);
+  };
   if (!props.url) return void emit("upload", item, progress, done, fail);
   const xhr = new XMLHttpRequest();
   item.xhr = xhr;
@@ -89,6 +96,8 @@ const remove = (item: BlessUpload) => (
 const clear = () => (queue.value = queue.value.filter((i) => i.status === "uploading"));
 const kb = (n: number) =>
   n < 1048576 ? `${(n / 1024).toFixed(0)} KB` : `${(n / 1048576).toFixed(1)} MB`;
+// a request outlives the component unless it is stopped
+onBeforeUnmount(() => queue.value.forEach((i) => i.status === "uploading" && i.xhr?.abort()));
 defineExpose({ start, clear, queue });
 </script>
 
@@ -129,7 +138,7 @@ defineExpose({ start, clear, queue });
           v-if="it.status === 'uploading'"
           type="button"
           class="bless-uploader__x"
-          aria-label="Cancel"
+          :aria-label="`Cancel ${it.file.name}`"
           @click="cancel(it)"
         >
           ×
@@ -138,13 +147,14 @@ defineExpose({ start, clear, queue });
           v-else
           type="button"
           class="bless-uploader__x"
-          aria-label="Remove"
+          :aria-label="`Remove ${it.file.name}`"
           @click="remove(it)"
         >
           ×
         </button>
       </li>
     </ul>
+    <span class="bless-uploader__live" aria-live="polite">{{ live }}</span>
     <div v-if="queue.length" class="bless-uploader__actions">
       <slot name="actions" :start :clear :queue>
         <BlessButton size="sm" variant="outline" @click="clear">Clear</BlessButton>
@@ -162,6 +172,13 @@ defineExpose({ start, clear, queue });
 </template>
 
 <style>
+.bless-uploader__live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
 .bless-uploader {
   display: flex;
   flex-direction: column;
