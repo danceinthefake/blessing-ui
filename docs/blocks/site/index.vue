@@ -38,7 +38,8 @@ const { active } = useScrollSpy(sections.map((s) => s.id));
       <div class="site__kv" />
     </template>
     <template #sidebar>
-      <BlessText as="p" size="xl" weight="thin" leading="none" class="site__brand"
+      <!-- the site's name is the page's one h1; each section below carries its own h2 -->
+      <BlessText as="h1" size="xl" weight="thin" leading="none" class="site__brand"
         >Blessing</BlessText
       >
       <BlessText as="p" size="2xs" muted tracking="wider" uppercase class="site__sub"
