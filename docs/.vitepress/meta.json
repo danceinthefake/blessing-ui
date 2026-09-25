@@ -406,14 +406,14 @@
     "type": "string | undefined",
     "required": false,
     "default": "\"Play\"",
-    "description": ""
+    "description": "the play button's name; its pressed state says whether it's playing"
    },
    {
-    "name": "pauseLabel",
+    "name": "seekLabel",
     "type": "string | undefined",
     "required": false,
-    "default": "\"Pause\"",
-    "description": ""
+    "default": "\"Seek\"",
+    "description": "name of the seek slider"
    },
    {
     "name": "modelValue",
@@ -2278,6 +2278,7 @@
     "name": "dismissible",
     "type": "boolean | undefined",
     "required": false,
+    "default": "true",
     "description": ""
    },
    {
@@ -3036,6 +3037,20 @@
     "type": "string | undefined",
     "required": false,
     "description": ""
+   },
+   {
+    "name": "loadingText",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Loading more\"",
+    "description": "read while a page loads (the spinner is decorative)"
+   },
+   {
+    "name": "moreLabel",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Load more\"",
+    "description": "label of the button shown where scrolling can't trigger loading"
    }
   ],
   "events": [
@@ -4137,6 +4152,12 @@
     "description": "timestamp / meta text in header"
    },
    {
+    "name": "datetime",
+    "type": "string | undefined",
+    "required": false,
+    "description": "machine-readable form of `time` for the <time> element"
+   },
+   {
     "name": "avatar",
     "type": "string | undefined",
     "required": false,
@@ -4213,7 +4234,7 @@
     "name": "jumpLabel",
     "type": "string | undefined",
     "required": false,
-    "default": "\"↓ Latest\"",
+    "default": "\"Latest\"",
     "description": ""
    },
    {
@@ -4222,6 +4243,13 @@
     "required": false,
     "default": "\"400px\"",
     "description": ""
+   },
+   {
+    "name": "label",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Messages\"",
+    "description": "names the transcript"
    }
   ],
   "events": [
@@ -4952,7 +4980,7 @@
     "name": "modal",
     "type": "boolean | undefined",
     "required": false,
-    "description": "popover=auto gives light dismiss + Esc"
+    "description": "no light dismiss: only Esc or your own control closes it"
    },
    {
     "name": "title",
@@ -5076,11 +5104,11 @@
     "description": "scroll container to check; default = the wrapper itself, falling back to window"
    },
    {
-    "name": "label",
+    "name": "refreshingLabel",
     "type": "string | undefined",
     "required": false,
-    "default": "\"Pull to refresh\"",
-    "description": ""
+    "default": "\"Refreshing\"",
+    "description": "announced while refreshing"
    }
   ],
   "events": [
@@ -6353,6 +6381,13 @@
     "required": false,
     "default": "\"Skip\"",
     "description": ""
+   },
+   {
+    "name": "label",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Welcome\"",
+    "description": "the dialog's accessible name"
    }
   ],
   "events": [
@@ -7244,6 +7279,13 @@
     "required": false,
     "default": "\"Dismiss\"",
     "description": ""
+   },
+   {
+    "name": "label",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Notifications\"",
+    "description": "the region's name"
    }
   ],
   "events": [],
@@ -7856,7 +7898,13 @@
    }
   ],
   "events": [],
-  "slots": [],
+  "slots": [
+   {
+    "name": "default",
+    "type": "{}",
+    "description": ""
+   }
+  ],
   "exposed": []
  },
  "BlessVirtualScroller": {
