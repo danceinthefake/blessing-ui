@@ -123,6 +123,29 @@ test("BlessOrderList: buttons, Alt+arrows and drop reorder", async () => {
   expect(w.emitted("update:modelValue")!.at(-1)![0]).toEqual(["a", "b", "c"]);
 });
 
+test("BlessOrderList: rows keep their own text as name, focus follows a button move", async () => {
+  const w = mount(
+    {
+      components: { BlessOrderList },
+      data: () => ({ v: ["a", "b", "c"] }),
+      template: `<BlessOrderList v-model="v" />`,
+    },
+    { attachTo: document.body },
+  );
+  const row = w.find(".bless-order__item");
+  expect(row.attributes("aria-label")).toBeUndefined();
+  expect(document.getElementById(row.attributes("aria-describedby")!)?.textContent).toMatch(/Alt/);
+  expect(w.findAll("[role=list] > *")).toHaveLength(3); // the live region isn't a list item
+  expect(w.find(".bless-order__down").attributes("aria-label")).toBe("Move item 1 down");
+  await w.find(".bless-order__down").trigger("click"); // a → position 2
+  await new Promise((r) => requestAnimationFrame(r));
+  expect(document.activeElement).toBe(w.findAll(".bless-order__down")[1].element);
+  await w.findAll(".bless-order__down")[1].trigger("click"); // a → last: its down is disabled
+  await new Promise((r) => requestAnimationFrame(r));
+  expect(document.activeElement).toBe(w.findAll(".bless-order__item")[2].element);
+  w.unmount();
+});
+
 test("BlessPickList moves selected and all", async () => {
   const w = mount(BlessPickList, {
     props: {

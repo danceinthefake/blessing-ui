@@ -1,5 +1,5 @@
 <script setup lang="ts" generic="T">
-import { ref } from "vue";
+import { ref, useId } from "vue";
 
 defineOptions({ name: "BlessOrderList" });
 
@@ -37,59 +37,86 @@ function onKey(i: number, e: KeyboardEvent) {
   if (e.key === "ArrowDown") (e.preventDefault(), move(i, i + 1), refocus(i + 1));
 }
 const root = ref<HTMLElement>();
+const hint = `${useId()}-hint`;
 const refocus = (i: number) =>
   requestAnimationFrame(() =>
     root.value?.querySelectorAll<HTMLElement>(".bless-order__item")[i]?.focus(),
   );
+// After a button move, follow the item: its same button in the new row, or the row itself when
+// that button is now disabled (moved to the top or bottom). Otherwise focus stays at the old
+// index, on a different item.
+function step(i: number, d: -1 | 1) {
+  move(i, i + d);
+  requestAnimationFrame(() => {
+    const row = root.value?.querySelectorAll<HTMLElement>(".bless-order__item")[i + d];
+    const btn = row?.querySelector<HTMLButtonElement>(
+      d < 0 ? ".bless-order__up" : ".bless-order__down",
+    );
+    (btn && !btn.disabled ? btn : row)?.focus();
+  });
+}
 </script>
 
 <template>
-  <ul ref="root" class="bless-order" role="list" :aria-label="label">
-    <li
-      v-for="(item, i) in model"
-      :key="rowKey ? rowKey(item, i) : i"
-      class="bless-order__item"
-      :class="{ 'bless-order__item--drag': drag === i, 'bless-order__item--over': over === i }"
-      draggable="true"
-      tabindex="0"
-      :aria-label="`Item ${i + 1} of ${model.length}. Alt+arrows to move.`"
-      @dragstart="drag = i"
-      @dragover.prevent="over = i"
-      @dragleave="over === i && (over = null)"
-      @drop.prevent="onDrop(i)"
-      @dragend="drag = over = null"
-      @keydown="onKey(i, $event)"
-    >
-      <span class="bless-order__grip" aria-hidden="true">⋮⋮</span>
-      <span class="bless-order__body"
-        ><slot :item :index="i">{{ item }}</slot></span
+  <div ref="root" class="bless-order">
+    <ul class="bless-order__list" role="list" :aria-label="label">
+      <li
+        v-for="(item, i) in model"
+        :key="rowKey ? rowKey(item, i) : i"
+        class="bless-order__item"
+        :class="{ 'bless-order__item--drag': drag === i, 'bless-order__item--over': over === i }"
+        draggable="true"
+        tabindex="0"
+        :aria-describedby="hint"
+        @dragstart="drag = i"
+        @dragover.prevent="over = i"
+        @dragleave="over === i && (over = null)"
+        @drop.prevent="onDrop(i)"
+        @dragend="drag = over = null"
+        @keydown="onKey(i, $event)"
       >
-      <span v-if="props.buttons" class="bless-order__btns">
-        <button type="button" :aria-label="`Move up`" :disabled="i === 0" @click="move(i, i - 1)">
-          ↑
-        </button>
-        <button
-          type="button"
-          :aria-label="`Move down`"
-          :disabled="i === model.length - 1"
-          @click="move(i, i + 1)"
+        <span class="bless-order__grip" aria-hidden="true">⋮⋮</span>
+        <span class="bless-order__body"
+          ><slot :item :index="i">{{ item }}</slot></span
         >
-          ↓
-        </button>
-      </span>
-    </li>
-    <li class="bless-order__live" aria-live="polite">{{ live }}</li>
-  </ul>
+        <span v-if="props.buttons" class="bless-order__btns">
+          <button
+            type="button"
+            class="bless-order__up"
+            :aria-label="`Move item ${i + 1} up`"
+            :disabled="i === 0"
+            @click="step(i, -1)"
+          >
+            ↑
+          </button>
+          <button
+            type="button"
+            class="bless-order__down"
+            :aria-label="`Move item ${i + 1} down`"
+            :disabled="i === model.length - 1"
+            @click="step(i, 1)"
+          >
+            ↓
+          </button>
+        </span>
+      </li>
+    </ul>
+    <span :id="hint" hidden>Alt plus arrow keys move it.</span>
+    <span class="bless-order__live" aria-live="polite">{{ live }}</span>
+  </div>
 </template>
 
 <style>
 .bless-order {
-  margin: 0;
-  padding: 0;
-  list-style: none;
+  position: relative;
   font-family: var(--bless-font-sans);
   font-size: var(--bless-text-sm);
   color: var(--bless-color-text);
+}
+.bless-order__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 .bless-order__item {
   border-radius: var(--bless-radius);
