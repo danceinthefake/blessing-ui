@@ -1,12 +1,14 @@
 <script setup lang="ts">
+import { computed } from "vue";
 import { blessPalettes, useTheme, type BlessPalette } from "../composables/useTheme";
 
 defineOptions({ name: "BlessPaletteToggle" });
 
-withDefaults(
+const props = withDefaults(
   defineProps<{
     label?: string;
-    /** include a "default" swatch to clear the palette */ showDefault?: boolean;
+    /** include the default palette's swatch (Megumi), which clears any other */
+    showDefault?: boolean;
   }>(),
   {
     label: "Palette",
@@ -15,12 +17,13 @@ withDefaults(
 );
 const { palette, setPalette } = useTheme();
 const cap = (s: string) => s[0].toUpperCase() + s.slice(1);
+const shown = computed(() => (props.showDefault ? blessPalettes : blessPalettes.slice(1)));
 </script>
 
 <template>
   <div class="bless-palette" role="group" :aria-label="label">
     <button
-      v-for="p in blessPalettes"
+      v-for="p in shown"
       :key="p.name"
       type="button"
       class="bless-palette__swatch"

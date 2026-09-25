@@ -34,9 +34,10 @@ function boot() {
     } catch {}
     loaded = true;
   });
-  const mql = matchMedia("(prefers-color-scheme: dark)");
-  systemDark.value = mql.matches;
-  mql.addEventListener("change", (e) => (systemDark.value = e.matches));
+  // some environments (tests, embedded webviews) have no matchMedia: follow light
+  const mql = typeof matchMedia === "function" ? matchMedia("(prefers-color-scheme: dark)") : null;
+  systemDark.value = !!mql?.matches;
+  mql?.addEventListener("change", (e) => (systemDark.value = e.matches));
   watchEffect(() => {
     const root = document.documentElement;
     if (theme.value === "system") root.removeAttribute("data-theme");
