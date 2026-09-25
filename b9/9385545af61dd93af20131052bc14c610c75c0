@@ -1,0 +1,22 @@
+docs/components/container.md
+  s_9ec1000e308ddb::t_b9e9e43816e6a5 13,15-16,23-24
+  s_9ec1000e308ddb::t_759134150e88f3 25
+src/components/BlessContainer.vue
+  s_9ec1000e308ddb::t_bb4ac99d088767 36,38-39
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "b99385545af61dd93af20131052bc14c610c75c0",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
