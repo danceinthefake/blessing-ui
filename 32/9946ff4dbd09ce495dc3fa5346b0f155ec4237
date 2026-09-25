@@ -1,0 +1,27 @@
+docs/components/input-otp.md
+  s_9ec1000e308ddb::t_121f101f273364 13-14,24-27
+  s_9ec1000e308ddb::t_dbf9660789b491 28
+src/components/BlessDate.test.ts
+  s_9ec1000e308ddb::t_d1a50b09db9ef8 5,127-151
+  s_9ec1000e308ddb::t_6c08f2644a2b66 152
+src/components/BlessInputOTP.vue
+  s_9ec1000e308ddb::t_a95165f668e281 4,10-13,30-32,103,109,121,123-125,133
+docs/.vitepress/meta.json
+  s_9ec1000e308ddb::t_9746af9024dabd 3375-3386
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "329946ff4dbd09ce495dc3fa5346b0f155ec4237",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
