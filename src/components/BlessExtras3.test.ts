@@ -271,6 +271,28 @@ test("BlessConfirmPopup emits confirm / cancel and closes", async () => {
   expect(w.emitted("update:open")!.at(-1)![0]).toBe(false);
 });
 
+test("BlessConfirmPopup focuses Cancel on open and the trigger again on close", async () => {
+  const w = mount(
+    {
+      components: { BlessConfirmPopup },
+      data: () => ({ o: false }),
+      template: `<BlessConfirmPopup v-model:open="o" message="Sure?"><template #trigger><button class="go" @click="o = true">go</button></template></BlessConfirmPopup>`,
+    },
+    { attachTo: document.body },
+  );
+  const go = w.find(".go");
+  (go.element as HTMLElement).focus();
+  await go.trigger("click");
+  await nextTick();
+  await nextTick();
+  expect(document.activeElement?.textContent?.trim()).toBe("Cancel");
+  await w.findAll(".bless-confirm__actions button")[0].trigger("click");
+  await nextTick();
+  await nextTick();
+  expect(document.activeElement).toBe(go.element);
+  w.unmount();
+});
+
 test("BlessCompare: range drives clip position", async () => {
   const w = mount(BlessCompare, {
     props: { modelValue: 30 },
@@ -366,4 +388,12 @@ test("BlessPanel: heading level fits the outline; toggle is named by the title",
   expect(h2.text()).toBe("Staff");
   expect(p.find(".bless-panel__toggle").attributes("aria-labelledby")).toBe(h2.attributes("id"));
   expect(p.find(".bless-panel__toggle").attributes("aria-label")).toBeUndefined();
+});
+
+test("BlessDrawer is dismissible by default (Esc, backdrop), like Sheet", async () => {
+  const { default: BlessDrawer } = await import("./BlessDrawer.vue");
+  const w = mount(BlessDrawer, { props: { modelValue: false } });
+  expect(w.findComponent({ name: "BlessSheet" }).props("dismissible")).toBe(true);
+  const off = mount(BlessDrawer, { props: { modelValue: false, dismissible: false } });
+  expect(off.findComponent({ name: "BlessSheet" }).props("dismissible")).toBe(false);
 });
