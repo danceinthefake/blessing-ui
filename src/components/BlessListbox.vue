@@ -1,5 +1,5 @@
 <script setup lang="ts" generic="T extends string | number">
-import { computed, ref, useId } from "vue";
+import { computed, ref, useId, watch } from "vue";
 import { useFieldId, useFieldState } from "../composables/useFieldId";
 import type { BlessOption } from "./select";
 
@@ -47,6 +47,11 @@ function pick(i: number) {
     model.value = cur.includes(o.value) ? cur.filter((v) => v !== o.value) : [...cur, o.value];
   } else model.value = o.value;
 }
+// options can change under it (a PickList move): keep the active row on an enabled option
+watch(enabled, (list) => {
+  if (!list.includes(active.value))
+    active.value = list.find((i) => i > active.value) ?? list.at(-1) ?? 0;
+});
 function reveal() {
   root.value
     ?.querySelector<HTMLElement>(`[data-i="${active.value}"]`)
