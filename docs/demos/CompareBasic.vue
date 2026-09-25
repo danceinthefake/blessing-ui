@@ -12,5 +12,9 @@ const pos = ref(50);
       <template #after><img :src="shots[0].src" alt="after" /></template>
     </BlessCompare>
     <small>{{ pos }}% · drag or use ← →</small>
+    <BlessCompare orientation="vertical" label="Compare top and bottom" style="aspect-ratio: 3 / 2">
+      <template #before><img :src="shots[2].src" alt="before" /></template>
+      <template #after><img :src="shots[3].src" alt="after" /></template>
+    </BlessCompare>
   </div>
 </template>

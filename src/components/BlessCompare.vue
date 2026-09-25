@@ -24,6 +24,7 @@ const pos = defineModel<number>({ default: 50 });
       max="100"
       class="bless-compare__range"
       :aria-label="label"
+      :aria-valuetext="`${pos}% after`"
       :aria-orientation="orientation"
     />
   </div>
@@ -51,6 +52,10 @@ const pos = defineModel<number>({ default: 50 });
 }
 .bless-compare--horizontal .bless-compare__after {
   clip-path: inset(0 calc(100% - var(--_p)) 0 0);
+}
+/* the range and the handle count from the inline start; so must the reveal */
+[dir="rtl"] .bless-compare--horizontal .bless-compare__after {
+  clip-path: inset(0 0 0 calc(100% - var(--_p)));
 }
 .bless-compare--vertical .bless-compare__after {
   clip-path: inset(0 0 calc(100% - var(--_p)) 0);
@@ -83,8 +88,7 @@ const pos = defineModel<number>({ default: 50 });
 }
 .bless-compare--vertical .bless-compare__range {
   cursor: ns-resize;
-  writing-mode: vertical-lr;
-  direction: rtl;
+  writing-mode: vertical-lr; /* min at the top, like the handle and the reveal */
 }
 .bless-compare:has(.bless-compare__range:focus-visible) {
   outline: 2px solid var(--bless-color-accent);
