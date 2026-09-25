@@ -1,0 +1,26 @@
+docs/components/sheet.md
+  s_9ec1000e308ddb::t_62a1f734c63e2e 13,15-16,23-25
+  s_9ec1000e308ddb::t_80e9975e0c8703 26
+src/components/BlessOverlay.test.ts
+  s_9ec1000e308ddb::t_fdf48b064bc8db 28-30,92-114
+  s_9ec1000e308ddb::t_354732d4b54ef1 117-136
+  s_9ec1000e308ddb::t_d142aafb01105e 115-116,137
+src/components/BlessSheet.vue
+  s_9ec1000e308ddb::t_6f0e7c2b767af6 2,23,49-50,62,94
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "6e30f45cb02ccb6bb22c4489b80399cf2bf416bc",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
