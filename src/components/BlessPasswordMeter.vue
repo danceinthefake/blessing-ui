@@ -16,15 +16,19 @@ const props = withDefaults(
     labels?: string[];
     /** list the rules with pass / fail marks */
     showRules?: boolean;
+    /** read after each rule for screen readers: [met, not met] */
+    ruleState?: [string, string];
   }>(),
   {
     rules: () => [
       { label: "8+ characters", test: (v) => v.length >= 8 },
       { label: "Upper and lower case", test: (v) => /[a-z]/.test(v) && /[A-Z]/.test(v) },
       { label: "A number", test: (v) => /\d/.test(v) },
-      { label: "A symbol", test: (v) => /[^\w\s]/.test(v) },
+      // any letter or digit in any script is not a symbol; `_` is
+      { label: "A symbol", test: (v) => /[^\p{L}\p{N}\s]/u.test(v) },
     ],
     labels: () => ["Weak", "Fair", "Good", "Strong"],
+    ruleState: () => ["met", "not met"],
   },
 );
 const passed = computed(() => props.rules.map((r) => r.test(props.value)));
@@ -52,6 +56,7 @@ const label = computed(() =>
     <ul v-if="showRules" class="bless-pwmeter__rules">
       <li v-for="(r, i) in rules" :key="r.label" :class="{ 'bless-pwmeter__rule--ok': passed[i] }">
         <span aria-hidden="true">{{ passed[i] ? "✓" : "·" }}</span> {{ r.label }}
+        <span class="bless-pwmeter__state">{{ ruleState[passed[i] ? 0 : 1] }}</span>
       </li>
     </ul>
   </div>
@@ -105,6 +110,13 @@ const label = computed(() =>
   font-weight: var(--bless-font-weight-bold);
   letter-spacing: var(--bless-tracking-wide);
   text-transform: uppercase;
+}
+.bless-pwmeter__state {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
 }
 .bless-pwmeter__rules {
   margin: var(--bless-space-2) 0 0;
