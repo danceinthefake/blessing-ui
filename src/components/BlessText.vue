@@ -105,7 +105,7 @@ withDefaults(
   color: var(--bless-color-accent-text);
 }
 .bless-text--c-danger {
-  color: var(--bless-color-danger);
+  color: var(--bless-color-danger-text);
 }
 .bless-text--upper {
   text-transform: uppercase;

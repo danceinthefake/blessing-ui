@@ -160,7 +160,7 @@ defineExpose({ id });
   color: var(--bless-color-text-muted);
 }
 .bless-input__error {
-  color: var(--bless-color-danger);
+  color: var(--bless-color-danger-text);
   font-weight: var(--bless-font-weight-bold);
 }
 /* fields are parallelograms like everything else; content counter-skews so text stays upright */

@@ -131,7 +131,7 @@ function onClose() {
   cursor: not-allowed;
 }
 .bless-actionsheet__item--danger {
-  color: var(--bless-color-danger);
+  color: var(--bless-color-danger-text);
 }
 .bless-actionsheet__icon {
   width: 1.5em;

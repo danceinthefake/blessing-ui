@@ -203,6 +203,6 @@ const kb = (n: number) =>
   cursor: pointer;
 }
 .bless-file__remove:hover {
-  color: var(--bless-color-danger);
+  color: var(--bless-color-danger-text);
 }
 </style>

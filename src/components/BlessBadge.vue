@@ -81,13 +81,13 @@ withDefaults(
   --_c: var(--bless-color-accent-text);
 }
 .bless-badge--outline.bless-badge--danger {
-  --_c: var(--bless-color-danger);
+  --_c: var(--bless-color-danger-text);
 }
 .bless-badge--outline.bless-badge--text {
   --_c: var(--bless-color-text);
 }
 .bless-badge--outline.bless-badge--info {
-  --_c: var(--bless-color-info);
+  --_c: var(--bless-color-info-text);
 }
 .bless-badge--outline.bless-badge--warning,
 .bless-badge--outline.bless-badge--success {

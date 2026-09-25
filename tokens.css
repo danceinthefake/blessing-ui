@@ -16,11 +16,13 @@
   --bless-color-accent-soft: #f5a0b8; /* highlights, hover fills */
   --bless-color-accent-2: #ee6f92;
   --bless-color-accent-text: #b63c5c; /* accent as *text* on bg/surface — darkened to ≥4.5:1; fills keep --accent */
-  --bless-color-danger: #cc2020; /* active/alert, error text — 4.9:1 on white and under white */
+  --bless-color-danger: #cc2020; /* destructive fills, invalid borders */
+  --bless-color-danger-text: #cc2020; /* error text on bg/surface — 5.5:1 on white; lifted in dark */
   --bless-color-badge: #e03060; /* NEW! pill */
   --bless-color-warning: #ffa800;
   --bless-color-success: #c0e722;
   --bless-color-info: #a759ff;
+  --bless-color-info-text: #9a41ff; /* info as text — 4.6:1 on white; lifted in dark */
 
   --bless-color-on-accent: #fff;
   --bless-color-on-text: var(--bless-color-bg); /* text on a --bless-color-text fill */
@@ -148,6 +150,8 @@
     --bless-color-chart-3: #ffa800;
     --bless-color-chart-4: #c0e722;
     --bless-color-danger: #f04848;
+    --bless-color-danger-text: #f15757; /* 4.5:1 on dark surface */
+    --bless-color-info-text: #b57bff;
     --bless-color-chart-5: #9aa4ad;
     /* light-on-dark reads thinner (irradiation); one step up keeps hairlines legible */
     --bless-font-weight-thin: 300;
@@ -168,6 +172,8 @@
   --bless-color-chart-3: #ffa800;
   --bless-color-chart-4: #c0e722;
   --bless-color-danger: #f04848;
+  --bless-color-danger-text: #f15757;
+  --bless-color-info-text: #b57bff;
   --bless-color-chart-5: #9aa4ad;
   --bless-font-weight-thin: 300;
   color-scheme: dark;

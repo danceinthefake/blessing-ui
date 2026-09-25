@@ -90,7 +90,7 @@ watch(
   color: var(--bless-color-text-muted);
 }
 .bless-field__error {
-  color: var(--bless-color-danger);
+  color: var(--bless-color-danger-text);
   font-weight: var(--bless-font-weight-bold);
 }
 </style>

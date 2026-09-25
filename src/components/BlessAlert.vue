@@ -65,7 +65,7 @@ const emit = defineEmits<{ dismiss: [] }>();
   --_c: var(--bless-color-accent);
 }
 .bless-alert--danger {
-  --_c: var(--bless-color-danger);
+  --_c: var(--bless-color-danger-text);
 }
 .bless-alert--warning {
   --_c: var(--bless-color-warning);
@@ -74,7 +74,7 @@ const emit = defineEmits<{ dismiss: [] }>();
   --_c: var(--bless-color-success);
 }
 .bless-alert--info {
-  --_c: var(--bless-color-info);
+  --_c: var(--bless-color-info-text);
 }
 /* skewed edge cut, like a label */
 .bless-alert::before {

@@ -110,7 +110,7 @@
   color: var(--bless-color-accent-text);
 }
 .vp-doc .demo__preview a.bless-menu__item--danger {
-  color: var(--bless-color-danger);
+  color: var(--bless-color-danger-text);
 }
 /* vp-doc gives h2 a top rule and padding; the section's own headline styles itself */
 .vp-doc .demo__preview .bless-section__title {

@@ -212,7 +212,7 @@ function onKey(e: KeyboardEvent) {
   margin: 0;
   font-size: var(--bless-text-xs);
   font-weight: var(--bless-font-weight-bold);
-  color: var(--bless-color-danger);
+  color: var(--bless-color-danger-text);
 }
 .bless-questionnaire__actions {
   display: flex;
