@@ -4,12 +4,10 @@ import { BlessSkew } from "blessing-ui";
 
 <template>
   <div class="row">
-    <BlessSkew color="text" label>Label</BlessSkew>
-    <BlessSkew color="accent" label>Accent</BlessSkew>
-    <BlessSkew color="danger" label>Danger</BlessSkew>
-    <BlessSkew color="surface" label>Surface</BlessSkew>
-    <BlessSkew as="h3" class="pad" style="margin: 0; border: 1px solid var(--bless-color-border)"
-      >bare skew, as h3</BlessSkew
-    >
+    <BlessSkew color="text" label>企画</BlessSkew>
+    <BlessSkew color="danger" label>締切</BlessSkew>
+    <BlessSkew color="surface" label>第1話</BlessSkew>
+    <!-- a link leans on hover and focus; the static labels beside it stay upright -->
+    <BlessSkew as="a" href="#skew" color="surface" label>Hover me</BlessSkew>
   </div>
 </template>
