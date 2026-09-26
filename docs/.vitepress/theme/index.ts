@@ -29,7 +29,12 @@ export default {
     const bless = useTheme(); // also boots the persisted palette, including full-page demos
     if (typeof window !== "undefined") {
       queueMicrotask(() => {
-        bless.set(isDark.value ? "dark" : "light");
+        // VitePress saves "auto" when the choice matches the OS: that is the library's "system"
+        let saved: string | null = null;
+        try {
+          saved = localStorage.getItem("vitepress-theme-appearance");
+        } catch {}
+        bless.set(saved === "dark" || saved === "light" ? saved : "system");
         watch(isDark, (d) => bless.set(d ? "dark" : "light"));
         watch(bless.isDark, (d) => d !== isDark.value && (isDark.value = d));
       });
