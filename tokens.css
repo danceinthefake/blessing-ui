@@ -6,28 +6,28 @@
 :root {
   /* ---- colour ---- */
   --bless-color-text: #3d3e3f;
-  --bless-color-text-muted: #5f6c76; /* 5.4:1 on bg, 4.6:1 on surface */
-  --bless-color-bg: #fff;
-  --bless-color-surface: #ededed;
-  --bless-color-surface-2: #ebebeb;
-  --bless-color-watermark: #dde0e4;
+  --bless-color-text-muted: #5d6a74; /* 5.0:1 on bg, 4.5:1 on surface */
+  --bless-color-bg: #f5f5f6; /* soft white: the glare off pure white */
+  --bless-color-surface: #e7e8ea;
+  --bless-color-surface-2: #e4e5e7;
+  --bless-color-watermark: #dcdfe3;
 
   --bless-color-accent: #cc466a; /* fills — Megumi's petal (#e85078) deepened to carry white at 4.5:1; the default palette */
   --bless-color-accent-soft: #f5a0b8; /* highlights, hover fills */
   --bless-color-accent-2: #ee6f92;
   --bless-color-accent-text: #b63c5c; /* accent as *text* on bg/surface — ≥4.5:1 */
   --bless-color-danger: #cc2020; /* destructive fills, invalid borders */
-  --bless-color-danger-text: #cc2020; /* error text on bg/surface — 5.5:1 on white; lifted in dark */
+  --bless-color-danger-text: #cc2020; /* error text on bg/surface — ≥4.5:1; lifted in dark */
   --bless-color-badge: #dc2f5e; /* NEW! pill */
   --bless-color-warning: #ffa800;
   --bless-color-success: #c0e722;
   --bless-color-info: #9650e6;
-  --bless-color-info-text: #9a41ff; /* info as text — 4.6:1 on white; lifted in dark */
+  --bless-color-info-text: #893ae3; /* info as text — ≥4.5:1 on bg and surface; lifted in dark */
 
   --bless-color-on-accent: #fff;
   --bless-color-on-text: var(--bless-color-bg); /* text on a --bless-color-text fill */
   --bless-color-on-light: #1a1b1d; /* text on warning / success fills (too pale for white) */
-  --bless-color-border: #d9dcdf; /* 1.4:1 on bg — the same step as dark mode's border, so edges read in both */
+  --bless-color-border: #d2d5d9; /* 1.4:1 on bg — the same step as dark mode's border, so edges read in both */
   --bless-color-rule: var(--bless-color-text);
   --bless-color-backdrop: rgb(0 0 0 / 0.6); /* dialog / sheet scrim */
   --bless-color-media-bg: #1a1b1d; /* lightbox panel, always dark */
@@ -204,7 +204,7 @@
   --bless-color-accent-2: #ea5a52;
   --bless-color-badge: #d02020;
   --bless-color-chart-1: #e03028;
-  --bless-color-accent-text: #cc2c24;
+  --bless-color-accent-text: #c62b23;
 }
 :root[data-palette="izumi"] {
   --bless-color-accent: #367ab1;
@@ -212,7 +212,7 @@
   --bless-color-accent-2: #63a6db;
   --bless-color-badge: #2e7aba;
   --bless-color-chart-1: #4090d0;
-  --bless-color-accent-text: #3270a2;
+  --bless-color-accent-text: #306d9d;
 }
 :root[data-palette="michiru"] {
   --bless-color-accent: #996492;
@@ -220,7 +220,7 @@
   --bless-color-accent-2: #c793c0;
   --bless-color-badge: #9e619a;
   --bless-color-chart-1: #b878b0;
-  --bless-color-accent-text: #8c5b86;
+  --bless-color-accent-text: #885882;
 }
 /* Eriri's petal (#c8e018) is too light for white text; it becomes accent-soft and the ink darkens */
 :root[data-palette="eriri"] {
@@ -229,7 +229,7 @@
   --bless-color-accent-2: #a3bf0a;
   --bless-color-badge: #6b7f00;
   --bless-color-chart-1: #7f9600;
-  --bless-color-accent-text: #627300;
+  --bless-color-accent-text: #5f7000;
 }
 /* Tomoya — the centre of the circle, not a petal; the mark stays five */
 :root[data-palette="tomoya"] {
@@ -238,7 +238,7 @@
   --bless-color-accent-2: #7688f9;
   --bless-color-badge: #4a5fe0;
   --bless-color-chart-1: #5870f8;
-  --bless-color-accent-text: #4c60d5;
+  --bless-color-accent-text: #4a5dcf;
 }
 
 /* ---- accent as text, dark ----

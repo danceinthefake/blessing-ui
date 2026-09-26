@@ -24,11 +24,11 @@ The petal is the character's colour, used on the mark and the swatches. Fills us
 | Palette   | Petal                                                                                                                  | Accent    | As text   | Note                                                                           |
 | --------- | ---------------------------------------------------------------------------------------------------------------------- | --------- | --------- | ------------------------------------------------------------------------------ |
 | `megumi`  | <span style="display:inline-block;width:14px;height:14px;background:#e85078;transform:skewX(-10deg)"></span> `#e85078` | `#cc466a` | `#b63c5c` | top petal — the default, no attribute needed                                   |
-| `utaha`   | <span style="display:inline-block;width:14px;height:14px;background:#e03028;transform:skewX(-10deg)"></span> `#e03028` | `#e03028` | `#cc2c24` | right petal — red                                                              |
-| `izumi`   | <span style="display:inline-block;width:14px;height:14px;background:#4090d0;transform:skewX(-10deg)"></span> `#4090d0` | `#367ab1` | `#3270a2` | lower-right petal — sky blue                                                   |
-| `michiru` | <span style="display:inline-block;width:14px;height:14px;background:#b878b0;transform:skewX(-10deg)"></span> `#b878b0` | `#996492` | `#8c5b86` | lower-left petal — mauve                                                       |
-| `eriri`   | <span style="display:inline-block;width:14px;height:14px;background:#c8e018;transform:skewX(-10deg)"></span> `#c8e018` | `#6b7e00` | `#627300` | left petal — `#c8e018` is too pale to carry white, so it becomes `accent-soft` |
-| `tomoya`  | <span style="display:inline-block;width:14px;height:14px;background:#5870f8;transform:skewX(-10deg)"></span> `#5870f8` | `#546aec` | `#4c60d5` | the founder's — indigo, not on the mark                                        |
+| `utaha`   | <span style="display:inline-block;width:14px;height:14px;background:#e03028;transform:skewX(-10deg)"></span> `#e03028` | `#e03028` | `#c62b23` | right petal — red                                                              |
+| `izumi`   | <span style="display:inline-block;width:14px;height:14px;background:#4090d0;transform:skewX(-10deg)"></span> `#4090d0` | `#367ab1` | `#306d9d` | lower-right petal — sky blue                                                   |
+| `michiru` | <span style="display:inline-block;width:14px;height:14px;background:#b878b0;transform:skewX(-10deg)"></span> `#b878b0` | `#996492` | `#885882` | lower-left petal — mauve                                                       |
+| `eriri`   | <span style="display:inline-block;width:14px;height:14px;background:#c8e018;transform:skewX(-10deg)"></span> `#c8e018` | `#6b7e00` | `#5f7000` | left petal — `#c8e018` is too pale to carry white, so it becomes `accent-soft` |
+| `tomoya`  | <span style="display:inline-block;width:14px;height:14px;background:#5870f8;transform:skewX(-10deg)"></span> `#5870f8` | `#546aec` | `#4a5dcf` | the founder's — indigo, not on the mark                                        |
 
 ## Use
 
