@@ -90,8 +90,8 @@ function onKey(e: KeyboardEvent) {
           type="button"
           class="bless-gallery__nav bless-gallery__nav--prev"
           :aria-label="prevLabel"
-          :disabled="!hasPrev"
-          @click="step(-1)"
+          :aria-disabled="!hasPrev || undefined"
+          @click="hasPrev && step(-1)"
         >
           <span aria-hidden="true">‹</span>
         </button>
@@ -100,8 +100,8 @@ function onKey(e: KeyboardEvent) {
           type="button"
           class="bless-gallery__nav bless-gallery__nav--next"
           :aria-label="nextLabel"
-          :disabled="!hasNext"
-          @click="step(1)"
+          :aria-disabled="!hasNext || undefined"
+          @click="hasNext && step(1)"
         >
           <span aria-hidden="true">›</span>
         </button>
@@ -205,10 +205,11 @@ function onKey(e: KeyboardEvent) {
 .bless-gallery__nav--next {
   inset-inline-end: var(--bless-space-2);
 }
-.bless-gallery__nav:hover:not(:disabled) {
+.bless-gallery__nav:hover:not([aria-disabled]) {
   opacity: var(--bless-hover-opacity);
 }
-.bless-gallery__nav:disabled {
+/* aria-disabled, not disabled: the focused arrow keeps focus at the last image */
+.bless-gallery__nav[aria-disabled] {
   opacity: 0.2;
   cursor: not-allowed;
 }
