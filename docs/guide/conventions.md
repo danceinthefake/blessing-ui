@@ -59,7 +59,7 @@ The six rules of the [design language](../design/), as they show in the library,
 - **Write on the page.** A field is a line you write on, not a box to fill in: transparent, an underline, the accent line growing under it while you write. Reading turns into writing in place — for values people mostly read, use [Inplace](/components/inplace) rather than a separate edit form.
 - **Hover fades and leans, never slides**: `opacity: var(--bless-hover-opacity)` over `var(--bless-duration-slow)`, and the plate leans to `--bless-lean` in place. Appearances fade in place; only state changes travel (a sheet slides from its edge, a switch thumb moves).
 - **Nothing blurs.** A floating surface sits on `--bless-shadow-plate`, a 1px accent offset. Modals and sheets rely on the scrim.
-- **Type**: thin for the voice at headline size and up, bold tracked uppercase for the UI. Body is `--bless-text-md`; nothing smaller than `2xs` (8px) and that only on badges.
+- **Type**: thin for the voice at headline size and up, bold tracked uppercase for the UI. Body is `--bless-text-md`; nothing smaller than `2xs` (8–9px), and that only for small meta beside larger text: badges, counts, dates, captions.
 
 ## Shape
 

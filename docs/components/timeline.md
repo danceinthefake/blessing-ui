@@ -22,7 +22,7 @@ A history read top to bottom — release notes, an order's progress, a productio
 </Demo>
 
 - `time` is shown as written; add `datetime` (`2015-01`) so the `<time>` element carries a machine-readable date.
-- A dot's `color` is decoration only. If it means something (failed, shipped), say so in the title too.
+- A dot's `color` is decoration only, and ink by default; keep `accent` for the entry that is chosen or current. If it means something (failed, shipped), say so in the title too.
 - The default slot replaces the body of every item and gets `{ item, index }`; `#dot` draws inside the dot.
 
 ## Usage
