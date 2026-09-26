@@ -16,6 +16,16 @@ test("BlessProgress determinate / indeterminate", () => {
   expect(i.find('[role="progressbar"]').attributes("aria-valuenow")).toBeUndefined();
 });
 
+test("BlessProgress is done (and overflows) only at max", () => {
+  expect(mount(BlessProgress, { props: { value: 99 } }).classes()).not.toContain(
+    "bless-progress--done",
+  );
+  expect(mount(BlessProgress, { props: { value: 100 } }).classes()).toContain(
+    "bless-progress--done",
+  );
+  expect(mount(BlessProgress).classes()).not.toContain("bless-progress--done");
+});
+
 test("BlessSkeleton lines / avatar", () => {
   expect(mount(BlessSkeleton, { props: { lines: 3 } }).findAll(".bless-skeleton")).toHaveLength(3);
   expect(

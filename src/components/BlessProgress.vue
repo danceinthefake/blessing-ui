@@ -31,7 +31,10 @@ const pct = computed(() =>
     :class="[
       `bless-progress--${color}`,
       `bless-progress--${size}`,
-      { 'bless-progress--indeterminate': pct === undefined },
+      {
+        'bless-progress--indeterminate': pct === undefined,
+        'bless-progress--done': pct !== undefined && pct >= 100,
+      },
     ]"
   >
     <div v-if="label || showValue" class="bless-progress__head">
@@ -111,6 +114,7 @@ const pct = computed(() =>
   transform: skewX(var(--bless-skew));
 }
 .bless-progress__fill {
+  min-width: 0; /* a length, so the done state's overflow animates */
   height: 100%;
   background: var(--_c);
   transition: width var(--bless-duration-slow) var(--bless-ease-out);
@@ -118,6 +122,19 @@ const pct = computed(() =>
 .bless-progress--indeterminate .bless-progress__fill {
   width: 40%;
   animation: bless-progress-slide 1.2s var(--bless-ease-in-out) infinite;
+}
+/* overflow: a finished bar outgrows its track and leans past the end */
+.bless-progress--done .bless-progress__track {
+  overflow: visible;
+}
+.bless-progress--done .bless-progress__fill {
+  min-width: calc(100% + var(--bless-space-6));
+  transform: skewX(var(--bless-lean));
+  transform-origin: 0 100%;
+  transition:
+    width var(--bless-duration-slow) var(--bless-ease-out),
+    min-width var(--bless-duration-slow) var(--bless-ease-out),
+    transform var(--bless-duration-slow) var(--bless-ease-out);
 }
 @keyframes bless-progress-slide {
   from {
