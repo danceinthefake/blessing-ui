@@ -50,15 +50,47 @@ The mark comes from blessing software's own logo in the series: a colourful, cir
 
 The earlier mark, five skewed plates in a ring, is built from the system but no longer reads as a flower. Abstract marks (an open plate, woven threads, an overflowing B) were tried and set aside: the mark should come from blessing software's flower.
 
+## Weighting
+
+The threads are not equal. The series' title — raising a heroine who fits no type — puts authenticity and creation at its centre, and commitment drives its ending.
+
+| Level                       | Thread → rule                                                                                    | Role                                                                                                                                    |
+| --------------------------- | ------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------- |
+| Overrides all               | Art and love → care over spectacle                                                               | When rules conflict, care wins: the lean turns off under reduced motion, contrast beats looks, undo is preferred over a confirm dialog. |
+| Signature (every component) | Archetype and authenticity → lean on attention; Possibility and commitment → colour means chosen | The two rules that make the library recognisable.                                                                                       |
+| Core surface                | Consumer becoming creator → write on the page                                                    | Every input: underline fields and edit in place. The people using a UI library are themselves making something.                         |
+| Used sparingly              | Pride and belonging → fuse when grouped; Talent → overflow                                       | Only where the structure calls for it. Overflow at most once per screen, or it turns into spectacle and breaks the top level.           |
+
+## Buttons
+
+"Colour means chosen" applies to main buttons too. A main button at rest is an option the page offers, not a choice the person has made; colouring it chooses for them, and the colourful call-to-action is the kind of stock costume the authenticity thread refuses.
+
+| Button    | At rest              | Hover / focus | Pressed / confirmed |
+| --------- | -------------------- | ------------- | ------------------- |
+| Main      | solid ink fill, bold | leans −10°    | fills with accent   |
+| Secondary | ink outline          | leans −10°    | fills with accent   |
+
+The main button stands out by weight (solid against outline), not by colour. On any screen, the only colour is what the user has chosen.
+
+## Build order
+
+1. [ ] Care rules: interruptible motion, reduced motion, contrast — every later rule has to respect them.
+2. [ ] Colour means chosen: tokens, and ink at rest across all components.
+3. [ ] Lean on hover and focus.
+4. [ ] Write on the page: fields and inplace editing.
+5. [ ] Fuse when grouped: button groups, input add-ons, date ranges.
+6. [ ] Overflow: headlines, watermarks, finished progress.
+7. [ ] The mark: the leaning flower in the docs and README.
+
 ## Trade-offs
 
 - **Tried and dropped: the open corner.** A gap left in each outline (closing when chosen) read as a broken border, and the cover square it needed showed as a notch inside solid buttons. Outlines stay whole.
 - **Lean on attention can't be the only focus signal.** The focus ring stays for keyboard users; under reduced motion the lean switches without animating.
-- **Colour means chosen is the biggest behaviour change.** Primary buttons would be ink until pressed, so a call to action needs another way to stand out (weight, size, overflow).
+- **Colour means chosen is the biggest behaviour change.** Main buttons are ink until pressed, so a call to action stands out by weight rather than colour; people used to coloured call-to-action buttons may find it quiet at first.
 - **Scope:** a larger rework than a shape swap — tokens, at-rest and active styles across many components, and the logo.
 
 ## Open decisions
 
-- [ ] Does "colour means chosen" apply to primary buttons, or do they keep the accent at rest?
+- [x] Does "colour means chosen" apply to main buttons? **Yes** — solid ink at rest, accent when pressed (see Buttons).
 - [x] Which flower to develop: **the leaning flower** is the primary mark; the ink version stays for small and one-colour use.
-- [ ] Which threads, if any, to weight differently before implementation?
+- [x] Which threads to weight differently? **Yes** — see Weighting.
