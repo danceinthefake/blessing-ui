@@ -53,7 +53,10 @@ const hover = ref(0);
       v-for="n in max"
       :key="n"
       class="bless-rating__star"
-      :class="{ 'bless-rating__star--on': n <= (hover || model) }"
+      :class="{
+        'bless-rating__star--on': !hover && n <= model,
+        'bless-rating__star--preview': hover && n <= hover,
+      }"
       @mouseenter="hover = n"
     >
       <input
@@ -114,6 +117,10 @@ const hover = ref(0);
 }
 .bless-rating__star--on {
   color: var(--bless-color-accent-text);
+}
+/* the pointer's preview is attention, not the choice: ink until clicked */
+.bless-rating__star--preview {
+  color: var(--bless-color-text);
 }
 .bless-rating__input {
   position: absolute;
