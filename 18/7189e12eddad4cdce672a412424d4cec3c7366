@@ -1,0 +1,61 @@
+e2e/sweep.mjs
+  s_9ec1000e308ddb::t_2360bb96220507 10-15
+docs/blocks/staff/meta.ts
+  s_9ec1000e308ddb::t_cb6d54d4e17192 3
+docs/blocks/onair/meta.ts
+  s_9ec1000e308ddb::t_cb6d54d4e17192 3
+docs/blocks/story/meta.ts
+  s_9ec1000e308ddb::t_cb6d54d4e17192 3
+docs/.vitepress/theme/HomeSections.vue
+  s_9ec1000e308ddb::t_875ab15c58d0d5 70-71
+docs/scripts/shots.mjs
+  s_9ec1000e308ddb::t_704d7d99175726 20
+DESIGN.md
+  s_9ec1000e308ddb::t_21a0ee511966e5 238,289
+docs/blocks/onair/index.vue
+  s_9ec1000e308ddb::t_704d7d99175726 36,39
+docs/blocks/character/meta.ts
+  s_9ec1000e308ddb::t_cb6d54d4e17192 3
+docs/blocks/index.md
+  s_9ec1000e308ddb::t_cb6d54d4e17192 25
+docs/blocks/pricing/index.vue
+  s_9ec1000e308ddb::t_704d7d99175726 42
+  s_9ec1000e308ddb::t_1d7332d7a37381 109
+docs/blocks/inbox/index.vue
+  s_9ec1000e308ddb::t_704d7d99175726 49
+docs/blocks/site.md
+  s_9ec1000e308ddb::t_cb6d54d4e17192 18
+  s_9ec1000e308ddb::t_704d7d99175726 22
+docs/blocks/site/index.vue
+  s_9ec1000e308ddb::t_cb6d54d4e17192 10
+docs/blocks/chat/index.vue
+  s_9ec1000e308ddb::t_704d7d99175726 44
+docs/blocks/staff/index.vue
+  s_9ec1000e308ddb::t_704d7d99175726 45
+docs/blocks/site/meta.ts
+  s_9ec1000e308ddb::t_cb6d54d4e17192 3,6
+docs/blocks/release/index.vue
+  s_9ec1000e308ddb::t_704d7d99175726 70
+docs/.vitepress/blocks.json
+  s_9ec1000e308ddb::t_cb6d54d4e17192 5,26,33,54,61,82,96-97
+docs/blocks/news/meta.ts
+  s_9ec1000e308ddb::t_cb6d54d4e17192 3
+docs/blocks/release/meta.ts
+  s_9ec1000e308ddb::t_cb6d54d4e17192 3
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "187189e12eddad4cdce672a412424d4cec3c7366",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
