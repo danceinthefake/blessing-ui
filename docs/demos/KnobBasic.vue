@@ -2,14 +2,16 @@
 import { ref } from "vue";
 import { BlessKnob } from "blessing-ui";
 const vol = ref(35);
+const rating = ref(3);
+const gain = ref(-20);
 </script>
 
 <template>
   <div class="row" style="gap: 32px; align-items: flex-end">
     <BlessKnob v-model="vol" label="Volume" :format="(v) => `${v}%`" />
-    <BlessKnob :model-value="3" :min="1" :max="5" size="sm" label="Rating" />
+    <BlessKnob v-model="rating" :min="1" :max="5" size="sm" label="Rating" />
     <BlessKnob
-      :model-value="-20"
+      v-model="gain"
       :min="-60"
       :max="12"
       :step="0.5"
