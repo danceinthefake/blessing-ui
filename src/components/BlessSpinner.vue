@@ -23,7 +23,7 @@ withDefaults(
 </template>
 
 <style>
-/* skewed outline square, one accent edge, spins */
+/* an outline square with one open edge, spinning — ink, not accent: busy isn't chosen */
 .bless-spinner {
   --_s: 20px;
   --_c: currentColor;
@@ -32,7 +32,7 @@ withDefaults(
   height: var(--_s);
   flex: none;
   border: calc(2 * var(--bless-border-width)) solid var(--_c);
-  border-top-color: var(--bless-color-accent);
+  border-top-color: transparent;
   opacity: 0.8;
   transform: skewX(var(--bless-skew));
   animation: bless-spin 0.9s var(--bless-ease-linear) infinite;
@@ -48,6 +48,7 @@ withDefaults(
 }
 .bless-spinner--accent {
   --_c: var(--bless-color-accent-soft);
+  border-top-color: var(--bless-color-accent);
 }
 @keyframes bless-spin {
   to {

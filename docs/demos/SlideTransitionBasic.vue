@@ -7,13 +7,11 @@ const open = ref(true);
 <template>
   <div class="col" style="max-width: 420px">
     <BlessButton size="sm" variant="outline" @click="open = !open">{{
-      open ? "Collapse" : "Expand"
+      open ? "Hide details" : "Show details"
     }}</BlessButton>
     <BlessSlideTransition>
       <div v-if="open" style="background: var(--bless-color-surface); padding: 12px">
-        <BlessText as="p"
-          >Height animates from 0 to auto and back — no fixed max-height hack.</BlessText
-        >
+        <BlessText as="p">第1話「冴えない竹馬の友の口説きかた」— 2019.04.04 · 24:00</BlessText>
       </div>
     </BlessSlideTransition>
   </div>

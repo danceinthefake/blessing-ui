@@ -7,7 +7,6 @@ import { BlessButton, BlessSpinner } from "blessing-ui";
     <BlessSpinner size="sm" />
     <BlessSpinner />
     <BlessSpinner size="lg" />
-    <BlessSpinner color="accent" />
-    <BlessButton loading>saving</BlessButton>
+    <BlessButton loading>Saving</BlessButton>
   </div>
 </template>
