@@ -18,7 +18,7 @@ hero:
       link: /components/button
 features:
   - title: Flat by design
-    details: No bevels, no gloss, no rebuilt widgets. Grey does the work; the accent shows what matters. Nothing blurs — a floating thing sits on a thin accent plate.
+    details: No bevels, no gloss, no rebuilt widgets. Grey does the work; the accent shows what you chose, and a control leans when you engage it. Nothing blurs — a floating thing sits on a thin accent plate.
   - title: Themed by tokens
     details: Every value is a --bless-* custom property. Six palettes ship in the box — switch with one attribute, or write your own.
   - title: Built on the platform

@@ -80,7 +80,18 @@ const blocks = [
         :href="withBase(`/blocks/${slug}`)"
         class="hs__block"
       >
-        <img :src="withBase(`/preview-${slug}.png`)" :alt="`${title} block`" loading="lazy" />
+        <img
+          class="hs__shot hs__shot--light"
+          :src="withBase(`/preview-${slug}.png`)"
+          :alt="`${title} block`"
+          loading="lazy"
+        />
+        <img
+          class="hs__shot hs__shot--dark"
+          :src="withBase(`/preview-${slug}-dark.png`)"
+          :alt="`${title} block`"
+          loading="lazy"
+        />
         <span class="hs__block-cap"
           ><span class="hs__block-title">{{ title }}</span
           ><BlessText size="xs" muted>{{ sub }}</BlessText></span
@@ -202,5 +213,13 @@ const blocks = [
   font-size: var(--bless-text-sm);
   color: var(--bless-color-accent-text);
   text-decoration: none;
+}
+/* the preview follows the theme, so dark mode shows no bright patches */
+.hs__block .hs__shot--dark,
+.dark .hs__block .hs__shot--light {
+  display: none;
+}
+.dark .hs__block .hs__shot--dark {
+  display: block;
 }
 </style>
