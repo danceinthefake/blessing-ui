@@ -8,14 +8,14 @@ const fmt = ref<string[]>(["b", "i"]);
 <template>
   <div class="row">
     <BlessToggleGroup v-model="align" label="Align">
-      <BlessToggle value="left">L</BlessToggle>
-      <BlessToggle value="center">C</BlessToggle>
-      <BlessToggle value="right">R</BlessToggle>
+      <BlessToggle value="left" label="Align left">L</BlessToggle>
+      <BlessToggle value="center" label="Align centre">C</BlessToggle>
+      <BlessToggle value="right" label="Align right">R</BlessToggle>
     </BlessToggleGroup>
     <BlessToggleGroup v-model="fmt" type="multiple" label="Format">
-      <BlessToggle value="b">B</BlessToggle>
-      <BlessToggle value="i">I</BlessToggle>
-      <BlessToggle value="u">U</BlessToggle>
+      <BlessToggle value="b" label="Bold">B</BlessToggle>
+      <BlessToggle value="i" label="Italic">I</BlessToggle>
+      <BlessToggle value="u" label="Underline">U</BlessToggle>
     </BlessToggleGroup>
     <small>align: {{ align }} · fmt: {{ fmt }}</small>
   </div>
