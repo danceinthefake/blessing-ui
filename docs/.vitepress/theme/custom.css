@@ -256,6 +256,11 @@ html:not(.dark) .dark-only {
 /* one shape: VitePress's own rounded chrome goes square like the library
  * (html + doubled class: VitePress's scoped rules carry an attribute selector) */
 html .VPFeature.VPFeature,
+html .pager-link.pager-link,
+html .vp-doc .tabs.tabs,
+html .vp-doc button.copy.copy,
+html .vp-doc :not(pre) > code,
+html .outline-marker.outline-marker,
 html .DocSearch-Button.DocSearch-Button,
 html body .DocSearch-Button .DocSearch-Button-Key.DocSearch-Button-Key,
 html .VPSwitch.VPSwitch,
