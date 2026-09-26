@@ -186,3 +186,19 @@ test("BlessVideo takes caption tracks; BlessImg's broken image isn't read twice"
   expect(i.find("img.bless-img__img").attributes("aria-hidden")).toBe("true");
   expect(i.find(".bless-img__error").attributes("aria-label")).toBe("Megumi");
 });
+
+test("BlessUploader: cancel keeps focus on its button; remove hands it to the next row", async () => {
+  const w = mount(BlessUploader, { attachTo: document.body });
+  const f = (n: string) => new File(["x"], n, { type: "text/plain" });
+  w.findComponent({ name: "BlessFileInput" }).vm.$emit("update:modelValue", [
+    f("a.txt"),
+    f("b.txt"),
+  ]);
+  await nextTick();
+  let x = w.find(".bless-uploader__x");
+  (x.element as HTMLElement).focus();
+  await x.trigger("click"); // queued → removed
+  await new Promise((r) => setTimeout(r));
+  expect(document.activeElement?.getAttribute("aria-label")).toBe("Remove b.txt");
+  w.unmount();
+});

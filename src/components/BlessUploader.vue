@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onBeforeUnmount, ref } from "vue";
+import { nextTick, onBeforeUnmount, ref } from "vue";
 import BlessButton from "./BlessButton.vue";
 import BlessFileInput from "./BlessFileInput.vue";
 import BlessProgress from "./BlessProgress.vue";
@@ -89,10 +89,19 @@ function send(item: BlessUpload) {
 }
 const start = () => queue.value.filter((i) => i.status === "queued").forEach(send);
 const cancel = (item: BlessUpload) => (item.xhr ? item.xhr.abort() : (item.status = "cancelled"));
-const remove = (item: BlessUpload) => (
-  item.status === "uploading" && cancel(item),
-  (queue.value = queue.value.filter((i) => i !== item))
-);
+const root = ref<HTMLElement>();
+const list = ref<HTMLElement>();
+// the row goes with the focused ×: hand focus to the next row's ×, or back to the picker
+async function remove(item: BlessUpload) {
+  const at = queue.value.indexOf(item);
+  if (item.status === "uploading") cancel(item);
+  queue.value = queue.value.filter((i) => i !== item);
+  await nextTick();
+  const xs = list.value?.querySelectorAll<HTMLButtonElement>(".bless-uploader__x") ?? [];
+  (
+    xs[Math.min(at, xs.length - 1)] ?? root.value?.querySelector<HTMLElement>("input[type=file]")
+  )?.focus();
+}
 const clear = () => (queue.value = queue.value.filter((i) => i.status === "uploading"));
 const kb = (n: number) =>
   n < 1048576 ? `${(n / 1024).toFixed(0)} KB` : `${(n / 1048576).toFixed(1)} MB`;
@@ -102,7 +111,7 @@ defineExpose({ start, clear, queue });
 </script>
 
 <template>
-  <div class="bless-uploader">
+  <div ref="root" class="bless-uploader">
     <BlessFileInput
       v-model="picked"
       :accept
@@ -112,7 +121,7 @@ defineExpose({ start, clear, queue });
       :list="false"
       @update:model-value="onPick"
     />
-    <ul role="list" v-if="queue.length" class="bless-uploader__list">
+    <ul role="list" v-if="queue.length" ref="list" class="bless-uploader__list">
       <li
         v-for="it in queue"
         :key="it.id"
@@ -134,21 +143,12 @@ defineExpose({ start, clear, queue });
           size="sm"
           class="bless-uploader__bar"
         />
+        <!-- one button that changes its job, so cancelling doesn't swap the focused element out -->
         <button
-          v-if="it.status === 'uploading'"
           type="button"
           class="bless-uploader__x"
-          :aria-label="`Cancel ${it.file.name}`"
-          @click="cancel(it)"
-        >
-          ×
-        </button>
-        <button
-          v-else
-          type="button"
-          class="bless-uploader__x"
-          :aria-label="`Remove ${it.file.name}`"
-          @click="remove(it)"
+          :aria-label="`${it.status === 'uploading' ? 'Cancel' : 'Remove'} ${it.file.name}`"
+          @click="it.status === 'uploading' ? cancel(it) : remove(it)"
         >
           ×
         </button>
@@ -161,7 +161,6 @@ defineExpose({ start, clear, queue });
         <BlessButton
           v-if="!auto"
           size="sm"
-          color="accent"
           :disabled="!queue.some((i) => i.status === 'queued')"
           @click="start"
           >Upload</BlessButton
@@ -211,8 +210,9 @@ defineExpose({ start, clear, queue });
   color: var(--bless-color-text-muted);
   font-variant-numeric: tabular-nums;
 }
+/* "done" in ink: the success colour is a fill, too pale to read as small text */
 .bless-uploader__item--done .bless-uploader__meta {
-  color: var(--bless-color-success);
+  color: var(--bless-color-text);
 }
 .bless-uploader__item--error .bless-uploader__meta {
   color: var(--bless-color-danger-text);
@@ -224,15 +224,18 @@ defineExpose({ start, clear, queue });
   grid-column: 1 / -1;
 }
 .bless-uploader__x {
+  min-width: 24px;
+  min-height: 24px;
   border: 0;
   background: none;
   color: var(--bless-color-text-muted);
   font: inherit;
   font-size: var(--bless-text-md);
   cursor: pointer;
+  transition: opacity var(--bless-duration-slow) var(--bless-ease-in-out);
 }
 .bless-uploader__x:hover {
-  color: var(--bless-color-danger-text);
+  opacity: var(--bless-hover-opacity);
 }
 .bless-uploader__actions {
   display: flex;
