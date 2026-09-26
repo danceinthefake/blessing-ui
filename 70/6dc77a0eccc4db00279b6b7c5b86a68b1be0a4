@@ -1,0 +1,23 @@
+docs/components/button-group.md
+  s_9ec1000e308ddb::t_60e9d49e4fe1e4 13
+docs/components/button.md
+  s_9ec1000e308ddb::t_01078eecb47c33 15
+docs/demos/ButtonGroupBasic.vue
+  s_9ec1000e308ddb::t_916886235376bf 13-16
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "706dc77a0eccc4db00279b6b7c5b86a68b1be0a4",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
