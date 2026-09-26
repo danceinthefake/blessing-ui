@@ -34,10 +34,9 @@ import { encode } from "uqr";
 const matrix = encode("https://…", { ecc: "M" }).data; // boolean[][]
 ```
 
-Modules stay square and default to dark-on-white regardless of theme (inverted codes scan poorly); only the optional `frame` adds a skewed ink plate behind the tile.
+Pass the module grid as `matrix`; any encoder works. Modules stay square and dark-on-white whatever the theme, since inverted or low-contrast codes scan badly — keep the default colours and `border`. The optional `frame` sets the tile on a plate.
 
-- Pass the module grid (`matrix`) from any encoder (e.g. `encode(text).data` from uqr); the library ships no encoder.
-- It is an image named "QR code: …" from `value` (or `label`). Keep the default dark-on-light colours and `border`: inverted or low-contrast codes scan badly.
+- It is an image named "QR code: …" from `value` (or `label`).
 
 ## Usage
 
