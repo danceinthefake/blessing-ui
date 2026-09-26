@@ -1,0 +1,21 @@
+docs/guide/browser.md
+  s_9ec1000e308ddb::t_b946f4eab413e2 2,5-9,13-21,31-32,38,42-43,47-50
+docs/demos/BrowserBasic.vue
+  s_9ec1000e308ddb::t_b946f4eab413e2 1-68
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "31089da4be8b78fd048a3d645fbe677db43e8def",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
