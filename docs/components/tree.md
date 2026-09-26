@@ -21,7 +21,7 @@ A hierarchy people expand and browse — files, a category tree, a table of cont
   </template>
 </Demo>
 
-- One Tab stop: ↑ / ↓ move through the visible rows, → opens a branch or enters it, ← closes it or goes to the parent, Home / End jump. Branches say whether they're open.
+- One Tab stop: ↑ / ↓ move through the visible rows, → opens a branch or enters it, ← closes it or goes to the parent, Home / End jump. Enter picks the row (a branch too — Space opens and closes it). Branches say whether they're open.
 - Branches are native `<details>`, so they work before scripts run. `href` makes a leaf a link; `v-model:selected` holds the picked id.
 
 ## Usage
