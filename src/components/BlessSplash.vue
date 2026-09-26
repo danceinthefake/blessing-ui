@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { nextTick, onMounted, ref } from "vue";
+import { reducedMotion } from "../composables/useMedia";
 
 defineOptions({ name: "BlessSplash" });
 
@@ -41,8 +42,7 @@ onMounted(() => {
     } catch {}
   }
   if (seen) return;
-  if (typeof matchMedia === "function" && matchMedia("(prefers-reduced-motion: reduce)").matches)
-    return emit("done");
+  if (reducedMotion()) return emit("done");
   show.value = true;
   // a modal dialog takes focus: onto Skip, so Enter or Esc leaves at once
   nextTick(() => skip.value?.focus());

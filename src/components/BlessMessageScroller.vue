@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { nextTick, onBeforeUnmount, onMounted, ref } from "vue";
 import BlessButton from "./BlessButton.vue";
+import { scrollBehavior } from "../composables/useMedia";
 
 defineOptions({ name: "BlessMessageScroller" });
 
@@ -50,16 +51,14 @@ function measure() {
 
 function scrollToBottom(behavior: ScrollBehavior = "auto") {
   const el = viewport.value;
-  const reduced =
-    typeof matchMedia === "function" && matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (el) el.scrollTo({ top: el.scrollHeight, behavior: reduced ? "auto" : behavior });
+  if (el) el.scrollTo({ top: el.scrollHeight, behavior: scrollBehavior(behavior) });
 }
 
 /** scroll a message into view by its element id */
 function scrollTo(id: string, behavior: ScrollBehavior = "smooth") {
   viewport.value
     ?.querySelector<HTMLElement>(`#${CSS.escape(id)}`)
-    ?.scrollIntoView?.({ behavior, block: "start" });
+    ?.scrollIntoView?.({ behavior: scrollBehavior(behavior), block: "start" });
 }
 
 // browser scroll anchoring is disabled on the content (see CSS) so this manual

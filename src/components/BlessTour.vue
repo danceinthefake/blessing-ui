@@ -2,6 +2,7 @@
 import { computed, nextTick, ref, watch } from "vue";
 import { useFloating, type Placement } from "../composables/useFloating";
 import BlessButton from "./BlessButton.vue";
+import { scrollBehavior } from "../composables/useMedia";
 
 defineOptions({ name: "BlessTour" });
 
@@ -47,9 +48,7 @@ function locate() {
   const el = cur.value?.target ? document.querySelector<HTMLElement>(cur.value.target) : null;
   anchor.value = el;
   rect.value = el?.getBoundingClientRect() ?? null;
-  const reduced =
-    typeof matchMedia === "function" && matchMedia("(prefers-reduced-motion: reduce)").matches;
-  el?.scrollIntoView?.({ block: "center", behavior: reduced ? "auto" : "smooth" });
+  el?.scrollIntoView?.({ block: "center", behavior: scrollBehavior() });
   nextTick(() => {
     update();
     rect.value = el?.getBoundingClientRect() ?? null;

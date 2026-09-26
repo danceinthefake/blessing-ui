@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { onBeforeUnmount, onMounted, ref } from "vue";
+import { scrollBehavior } from "../composables/useMedia";
 
 defineOptions({ name: "BlessScrollTop" });
 
@@ -21,9 +22,7 @@ function check() {
   visible.value = top() > props.threshold;
 }
 function go() {
-  const reduced =
-    typeof matchMedia === "function" && matchMedia("(prefers-reduced-motion: reduce)").matches;
-  (el() ?? window).scrollTo({ top: 0, behavior: reduced ? "auto" : "smooth" });
+  (el() ?? window).scrollTo({ top: 0, behavior: scrollBehavior() });
 }
 onMounted(() => {
   (el() ?? window).addEventListener("scroll", check, { passive: true });

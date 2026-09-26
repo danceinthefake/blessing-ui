@@ -15,3 +15,11 @@ export function useMedia(query = "(max-width: 800px)") {
   onBeforeUnmount(() => mql?.removeEventListener("change", update));
   return matches;
 }
+
+/** true when the user asked for reduced motion (false outside a browser) */
+export const reducedMotion = () =>
+  typeof matchMedia === "function" && matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/** "smooth" unless the user asked for reduced motion */
+export const scrollBehavior = (b: ScrollBehavior = "smooth"): ScrollBehavior =>
+  reducedMotion() ? "auto" : b;

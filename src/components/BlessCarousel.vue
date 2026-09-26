@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, ref, watch } from "vue";
 import { logicalKey } from "../composables/rtl";
+import { reducedMotion, scrollBehavior } from "../composables/useMedia";
 
 defineOptions({ name: "BlessCarousel" });
 
@@ -59,7 +60,7 @@ function go(i: number, smooth = true) {
   syncing = true;
   track.value?.scrollTo({
     left: dir() * next * slideWidth(),
-    behavior: smooth ? "smooth" : "auto",
+    behavior: smooth ? scrollBehavior() : "auto",
   });
   setTimeout(() => (syncing = false), 400);
 }
@@ -84,9 +85,7 @@ function onKey(e: KeyboardEvent) {
 let mo: MutationObserver | undefined;
 function play() {
   stop();
-  const reduced =
-    typeof matchMedia === "function" && matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (props.autoplay > 0 && !reduced)
+  if (props.autoplay > 0 && !reducedMotion())
     timer = setInterval(() => go(index.value + 1), props.autoplay);
 }
 function stop() {
