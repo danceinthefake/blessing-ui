@@ -54,15 +54,14 @@ const open = defineModel<boolean>("open", { default: false });
   font-weight: var(--bless-font-weight-bold);
   letter-spacing: var(--bless-tracking-wide);
   transition:
-    color var(--bless-duration-slow) var(--bless-ease-in-out),
+    opacity var(--bless-duration-slow) var(--bless-ease-in-out),
     var(--bless-lean-transition);
 }
 .bless-collapsible__summary::-webkit-details-marker {
   display: none;
 }
-/* hover is attention, not a choice: ink */
 .bless-collapsible__summary:hover {
-  color: var(--bless-color-text);
+  opacity: var(--bless-hover-opacity);
 }
 .bless-collapsible__summary:focus-visible {
   outline: 2px solid var(--bless-color-accent);
