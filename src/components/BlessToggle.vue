@@ -14,7 +14,7 @@ const props = withDefaults(
     disabled?: boolean;
     label?: string;
   }>(),
-  { size: "md", color: "text" },
+  { size: "md", color: "accent" },
 );
 
 const pressed = defineModel<boolean>("pressed", { default: false });
@@ -48,6 +48,7 @@ function toggle() {
 .bless-toggle {
   border-radius: var(--bless-radius-plate);
   --_c: var(--bless-color-text);
+  --_on: var(--bless-color-on-text);
   display: inline-flex;
   align-items: center;
   gap: var(--bless-space-2);
@@ -64,13 +65,16 @@ function toggle() {
   transition:
     opacity var(--bless-duration-slow) var(--bless-ease-in-out),
     color var(--bless-duration-slow),
-    border-color var(--bless-duration-slow);
+    border-color var(--bless-duration-slow),
+    background var(--bless-duration-slow);
 }
 .bless-toggle--accent {
   --_c: var(--bless-color-accent);
+  --_on: var(--bless-color-on-accent);
 }
 .bless-toggle--danger {
   --_c: var(--bless-color-danger);
+  --_on: var(--bless-color-on-accent);
 }
 .bless-toggle--sm {
   padding: var(--bless-space-1) var(--bless-space-2);
@@ -83,12 +87,17 @@ function toggle() {
   padding: var(--bless-space-3) var(--bless-space-4);
   font-size: var(--bless-text-md);
 }
+/* hover is attention, not a choice: ink until pressed on */
 .bless-toggle:hover:not(:disabled) {
-  color: var(--_c);
-  border-color: var(--_c);
+  color: var(--bless-color-text);
+  border-color: var(--bless-color-text);
 }
-.bless-toggle--on {
+/* choosing fills */
+.bless-toggle--on,
+.bless-toggle--on:hover:not(:disabled) {
   border-color: var(--_c);
+  background: var(--_c);
+  color: var(--_on);
 }
 .bless-toggle:focus-visible {
   outline: 2px solid var(--bless-color-accent);

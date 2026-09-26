@@ -15,7 +15,7 @@ const props = withDefaults(
     /** module colour — dark on light scans best, so this ignores the theme by default */
     color?: string;
     background?: string;
-    /** skewed accent plate behind the tile */
+    /** skewed ink plate behind the tile */
     frame?: boolean;
     label?: string;
   }>(),
@@ -58,7 +58,7 @@ const view = computed(() => n.value + props.border * 2);
 .bless-qr__svg {
   display: block;
 }
-/* modules stay square (scanners); the frame is a skewed accent plate behind the tile */
+/* modules stay square (scanners); the frame is a skewed ink plate behind the tile */
 .bless-qr--frame {
   border-radius: var(--bless-radius);
   position: relative;
@@ -68,7 +68,7 @@ const view = computed(() => n.value + props.border * 2);
   content: "";
   position: absolute;
   inset: 0;
-  background: var(--bless-color-accent);
+  background: var(--bless-color-text);
   transform: translate(8px, 8px) skewX(var(--bless-skew));
   z-index: -1;
 }

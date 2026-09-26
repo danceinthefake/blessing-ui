@@ -15,7 +15,7 @@ withDefaults(
     color?: "accent" | "danger" | "text";
     placement?: Placement;
   }>(),
-  { confirmLabel: "Confirm", cancelLabel: "Cancel", color: "accent", placement: "bottom" },
+  { confirmLabel: "Confirm", cancelLabel: "Cancel", color: "text", placement: "bottom" },
 );
 const open = defineModel<boolean>("open", { default: false });
 const emit = defineEmits<{ confirm: []; cancel: [] }>();

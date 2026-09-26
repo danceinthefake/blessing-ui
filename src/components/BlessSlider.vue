@@ -122,7 +122,10 @@ const text = computed(() => (props.format ?? String)(model.value));
   border-radius: var(--bless-radius-petal);
   transform: skewX(var(--bless-skew));
 }
-.bless-slider__input:hover::-webkit-slider-thumb {
+.bless-slider__input:active::-webkit-slider-thumb {
+  background: var(--bless-color-accent);
+}
+.bless-slider__input:active::-moz-range-thumb {
   background: var(--bless-color-accent);
 }
 .bless-slider__input:focus-visible {
