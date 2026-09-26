@@ -827,7 +827,13 @@
     "description": "icon-only: equal padding all round — pass an aria-label"
    }
   ],
-  "events": [],
+  "events": [
+   {
+    "name": "click",
+    "type": "[e: MouseEvent]",
+    "description": ""
+   }
+  ],
   "slots": [
    {
     "name": "prefix",

@@ -21,10 +21,23 @@ test("BlessButton renders button by default, anchor with href", () => {
   expect(a.attributes("tabindex")).toBe("-1");
 });
 
-test("BlessButton loading disables and marks busy", () => {
+test("BlessButton loading keeps focus: aria-disabled, busy, click swallowed", async () => {
   const b = mount(BlessButton, { props: { loading: true } });
-  expect(b.attributes("disabled")).toBeDefined();
+  expect(b.attributes("disabled")).toBeUndefined();
+  expect(b.attributes("aria-disabled")).toBe("true");
   expect(b.attributes("aria-busy")).toBe("true");
+  await b.trigger("click");
+  expect(b.emitted("click")).toBeUndefined();
+});
+
+test("BlessButton: a disabled link doesn't run the click handler; an active one does", async () => {
+  const f = vi.fn();
+  const off = mount(BlessButton, { props: { href: "#go", disabled: true }, attrs: { onClick: f } });
+  await off.trigger("click");
+  expect(f).not.toHaveBeenCalled();
+  const on = mount(BlessButton, { props: { href: "#go" }, attrs: { onClick: f } });
+  await on.trigger("click");
+  expect(f).toHaveBeenCalledOnce();
 });
 
 test("outline variant has no skew background", () => {
