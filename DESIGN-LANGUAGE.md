@@ -76,7 +76,7 @@ The main button stands out by weight (solid against outline), not by colour. On 
 
 1. [x] Care rules: interruptible motion, reduced motion, contrast — every later rule has to respect them.
 2. [x] Colour means chosen: tokens, and ink at rest across all components.
-3. [ ] Lean on hover and focus.
+3. [x] Lean on hover and focus.
 4. [ ] Write on the page: fields and inplace editing.
 5. [ ] Fuse when grouped: button groups, input add-ons, date ranges.
 6. [ ] Overflow: headlines, watermarks, finished progress.
