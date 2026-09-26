@@ -46,11 +46,7 @@ function back() {
           @click="read(m)"
         >
           <template #media>
-            <BlessIndicator
-              :value="m.unread"
-              color="accent"
-              :label="m.unread ? 'Unread' : undefined"
-            >
+            <BlessIndicator :value="m.unread" :label="m.unread ? 'Unread' : undefined">
               <BlessAvatar :name="m.from" size="sm" />
             </BlessIndicator>
           </template>

@@ -67,8 +67,8 @@ const blocks = [
       <div>
         <BlessText as="h2" size="lg" weight="light">Blocks</BlessText>
         <BlessText as="p" size="sm" muted
-          >Finished sections you copy into your project — the app screens and the showcase set the
-          system was drawn for.</BlessText
+          >Finished sections you copy into your project — the app screens and the official-site
+          sections the system was drawn for.</BlessText
         >
       </div>
       <a :href="withBase('/blocks/')" class="hs__more">All blocks →</a>

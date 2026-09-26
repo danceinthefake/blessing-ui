@@ -17,7 +17,7 @@ const b = await chromium.launch();
 try {
   for (const dark of [false, true]) {
     const p = await b.newPage({ viewport: { width: 1280, height: 800 }, deviceScaleFactor: 2 });
-    await p.goto(`http://localhost:${port}/blocks/site-demo`, { waitUntil: "networkidle" });
+    await p.goto(`http://localhost:${port}/blocks/site-full`, { waitUntil: "networkidle" });
     await p.evaluate((d) => {
       document.documentElement.classList.toggle("dark", d);
       document.documentElement.dataset.theme = d ? "dark" : "light";

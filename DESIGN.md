@@ -235,7 +235,7 @@ RTL ✅ (2026-09-20): logical properties throughout, skew mirrored under `[dir=r
 
 Not components: finished sections shipped as source you copy, `docs/blocks/<slug>/` as a vertical slice (`index.vue`, optional `parts/`, `use<Name>.ts`, `domain.ts`, `api.ts` port + offline mock, docs-only `meta.ts`). `pnpm docs:blocks` scaffolds pages and the sidebar registry; `BlockDemo` previews at desktop/phone width with per-file code tabs. Contract in `docs/blocks/README.md`.
 
-- [x] Showcase set (official-site front page): News, On Air, Character (hash-routed modals), Staff & Cast, Release, Story, Full site (composition in `BlessStage`, opens full-page)
+- [x] Official-site set (front page): News, On Air, Character (hash-routed modals), Staff & Cast, Release, Story, Full site (composition in `BlessStage`, opens full-page)
 - [x] App set: Sign in, Dashboard, Settings, Data page, Page states, Pricing, Inbox, Chat, Onboarding
 
 ### Shape ✅ merged (2026-09-21)
@@ -286,7 +286,7 @@ blessing-ui/
   package.json          exports: ./tokens.css, . (ESM), ./style.css
 ```
 
-Tooling: Vite + `vite-plugin-dts`, Vitest + `@vue/test-utils` (one smoke test per component), no Storybook — the VitePress docs site is both dev playground and showcase (`docs/`, GitHub Pages via `.github/workflows/docs.yml`).
+Tooling: Vite + `vite-plugin-dts`, Vitest + `@vue/test-utils` (one smoke test per component), no Storybook — the VitePress docs site is both dev playground and documentation (`docs/`, GitHub Pages via `.github/workflows/docs.yml`).
 
 ## 6. Non-goals
 

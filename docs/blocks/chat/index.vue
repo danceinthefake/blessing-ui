@@ -41,7 +41,7 @@ function onEnter(e: KeyboardEvent) {
           ><BlessAvatar name="加藤 恵" size="xs"
         /></template>
         <BlessBubble
-          :variant="m.from === 'me' ? 'accent' : 'surface'"
+          :variant="m.from === 'me' ? 'outline' : 'surface'"
           :align="m.from === 'me' ? 'end' : 'start'"
           >{{ m.text }}</BlessBubble
         >

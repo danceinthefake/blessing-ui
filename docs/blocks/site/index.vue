@@ -7,7 +7,7 @@ import {
   useScrollSpy,
   type BlessNavItem,
 } from "blessing-ui";
-// composition block: it assembles the sibling showcase blocks, so copy those folders too
+// composition block: it assembles the sibling official-site blocks, so copy those folders too
 import News from "../news/index.vue";
 import OnAir from "../onair/index.vue";
 import Character from "../character/index.vue";

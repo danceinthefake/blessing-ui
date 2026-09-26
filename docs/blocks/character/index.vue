@@ -18,7 +18,6 @@ const open = ref<Record<string, boolean>>({});
         :key="c.id"
         :href="`#chara-${c.id}`"
         :label="c.role"
-        label-color="accent"
         class="chara__card"
       >
         <template #media>

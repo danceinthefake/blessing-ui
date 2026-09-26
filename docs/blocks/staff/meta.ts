@@ -1,6 +1,6 @@
 export default {
   title: "Staff & Cast",
-  group: "Showcase",
+  group: "Official site",
   order: 4,
   summary:
     "Credits as two definition tables side by side — roles in skewed labels, names beside them.",

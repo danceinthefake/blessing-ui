@@ -33,10 +33,10 @@ const streaming = ["ABEMA", "dアニメストア", "Netflix", "Amazon Prime Vide
         <BlessBadge v-if="value" color="text">{{ value }}</BlessBadge>
       </template>
     </BlessTable>
-    <BlessSeparator label="配信" color="accent" class="onair__sep" />
+    <BlessSeparator label="配信" class="onair__sep" />
     <ul role="list" class="onair__stream">
       <li v-for="s in streaming" :key="s">
-        <BlessBadge color="accent">{{ s }}</BlessBadge>
+        <BlessBadge variant="outline">{{ s }}</BlessBadge>
       </li>
     </ul>
     <BlessText as="p" size="xs" muted>※放送日時は変更になる場合があります。</BlessText>

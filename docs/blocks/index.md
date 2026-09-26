@@ -22,7 +22,7 @@ Every block follows one contract:
 Nothing crosses block folders. Delete one and the others still build.
 
 ::: tip Two sets
-**Showcase** blocks are the sections of an anime-official-site front page — the shapes Blessing was drawn for. **App** blocks are the everyday product screens: sign-in, dashboards, settings, data pages.
+**Official site** blocks are the sections of an anime-official-site front page — the shapes Blessing was drawn for. **App** blocks are the everyday product screens: sign-in, dashboards, settings, data pages.
 :::
 
 <div v-for="g in groups" :key="g">

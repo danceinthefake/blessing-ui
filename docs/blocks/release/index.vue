@@ -67,7 +67,7 @@ const releases: Release[] = [
       label="Releases"
     >
       <template #default="{ item: r }">
-        <BlessCard :label="r.kind" :label-color="r.kind === 'Blu-ray' ? 'accent' : 'text'">
+        <BlessCard :label="r.kind">
           <template #media>
             <BlessAspectRatio :ratio="r.kind === 'CD' ? 1 : 3 / 4">
               <div class="release__cover" :style="{ '--_c': r.color }" aria-hidden="true">

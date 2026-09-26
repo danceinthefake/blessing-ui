@@ -39,16 +39,13 @@ const price = (m: number) =>
   <div class="pricing">
     <BlessText as="h1" size="lg" weight="light" class="pricing__title">Plans</BlessText>
     <div class="pricing__switch">
-      <BlessSwitch v-model="yearly"
-        >Bill yearly <BlessBadge color="accent">2 months free</BlessBadge></BlessSwitch
-      >
+      <BlessSwitch v-model="yearly">Bill yearly <BlessBadge>2 months free</BlessBadge></BlessSwitch>
     </div>
     <div class="pricing__grid">
       <BlessCard
         v-for="p in plans"
         :key="p.name"
         :label="p.hot ? 'Recommended' : undefined"
-        label-color="accent"
         :bordered="p.hot"
         :surface="p.hot ? 'surface' : 'bg'"
       >
@@ -109,6 +106,6 @@ const price = (m: number) =>
   padding: var(--bless-space-1) 0;
 }
 .pricing__features span {
-  color: var(--bless-color-accent-text);
+  font-weight: var(--bless-font-weight-bold); /* ink: a feature included isn't a choice */
 }
 </style>
