@@ -24,10 +24,10 @@ export function useScrollSpy(
         }
         // entries only carry the elements that changed; measure the rest now, not from a stale rect.
         // Nearest top edge wins, so a section that just scrolled past doesn't beat the one at the top.
-        const top = [...visible].sort(
-          (a, b) =>
-            Math.abs(a.getBoundingClientRect().top) - Math.abs(b.getBoundingClientRect().top),
-        )[0];
+        // measured from the scroll container's top when there is one, else the viewport's
+        const edge = opts.root?.value?.getBoundingClientRect().top ?? 0;
+        const dist = (el: HTMLElement) => Math.abs(el.getBoundingClientRect().top - edge);
+        const top = [...visible].sort((a, b) => dist(a) - dist(b))[0];
         if (top) active.value = top.id;
       },
       { root: opts.root?.value, rootMargin: opts.rootMargin ?? "0px 0px -60% 0px" },
