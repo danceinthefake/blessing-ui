@@ -283,9 +283,9 @@ onBeforeUnmount(() => removeEventListener("keydown", onHotkey));
   font-size: var(--bless-text-sm);
   cursor: pointer;
 }
+/* attention, not a choice: ink on a surface */
 .bless-command__item--active {
   background: var(--bless-color-surface);
-  color: var(--bless-color-accent-text);
 }
 .bless-command__item[aria-disabled="true"] {
   opacity: 0.4;
