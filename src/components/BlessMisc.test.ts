@@ -178,3 +178,14 @@ test("Esc that closes a popup is claimed, so an enclosing dialog stays open", as
   expect(again.defaultPrevented).toBe(false);
   w.unmount();
 });
+
+test("BlessCombobox in an invalid field: styled invalid and reads the error", async () => {
+  const { default: BlessCombobox } = await import("./BlessCombobox.vue");
+  const w = mount(BlessField, {
+    props: { label: "Heroine", error: "Pick one" },
+    slots: { default: () => h(BlessCombobox, { options: [{ value: "m", label: "Megumi" }] }) },
+  });
+  expect(w.find(".bless-combobox").classes()).toContain("bless-combobox--invalid");
+  const d = w.find("input").attributes("aria-describedby");
+  expect(d && w.find(`[id="${d}"]`).text()).toBe("Pick one");
+});

@@ -138,7 +138,7 @@ function onBlur(e: FocusEvent) {
       `bless-combobox--${size}`,
       {
         'bless-combobox--open': open,
-        'bless-combobox--invalid': invalid,
+        'bless-combobox--invalid': invalid || fs.invalid.value,
         'bless-combobox--disabled': disabled,
       },
     ]"
@@ -185,6 +185,7 @@ function onBlur(e: FocusEvent) {
         :aria-controls="`${id}-list`"
         :aria-activedescendant="open ? activeId : undefined"
         :aria-invalid="invalid || fs.invalid.value || undefined"
+        :aria-describedby="fs.describedby.value"
         autocomplete="off"
         @focus="open = true"
         @input="
@@ -343,10 +344,10 @@ function onBlur(e: FocusEvent) {
   line-height: 1;
   padding: 0 2px;
   cursor: pointer;
-  opacity: 0.7;
+  transition: opacity var(--bless-duration-slow) var(--bless-ease-in-out);
 }
 .bless-combobox__chip-x:hover {
-  opacity: 1;
+  opacity: var(--bless-hover-opacity);
 }
 .bless-combobox__panel {
   position: fixed;
@@ -371,9 +372,9 @@ function onBlur(e: FocusEvent) {
   font-size: var(--bless-text-sm);
   cursor: pointer;
 }
+/* the option under the pointer or the arrow keys: attention, not a choice — ink on a surface */
 .bless-combobox__option--active {
   background: var(--bless-color-surface);
-  color: var(--bless-color-accent-text);
 }
 .bless-combobox__option--selected {
   font-weight: var(--bless-font-weight-bold);
@@ -381,9 +382,6 @@ function onBlur(e: FocusEvent) {
 .bless-combobox__option[aria-disabled="true"] {
   opacity: 0.4;
   cursor: not-allowed;
-}
-.bless-combobox__option--create {
-  color: var(--bless-color-accent-text);
 }
 .bless-combobox__check {
   width: 1em;
