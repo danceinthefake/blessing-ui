@@ -7,7 +7,7 @@ withDefaults(
     height?: string;
     /** render n text lines instead of one block */
     lines?: number;
-    /** an avatar placeholder: a petal, like BlessAvatar */
+    /** an avatar placeholder: square like BlessAvatar, never leaning */
     avatar?: boolean;
   }>(),
   { width: "100%", height: "1em" },
@@ -37,7 +37,7 @@ withDefaults(
 .bless-skeleton {
   border-radius: var(--bless-radius-plate);
   display: block;
-  background: var(--bless-color-surface);
+  background: var(--bless-color-border); /* surface on bg all but vanished mid-pulse */
   animation: bless-skeleton-pulse 1.6s var(--bless-ease-in-out) infinite;
   transform: skewX(var(--bless-skew));
 }
