@@ -295,6 +295,8 @@ Tooling: Vite + `vite-plugin-dts`, Vitest + `@vue/test-utils` (one smoke test pe
 
 ## 7. Open questions
 
+- **Design language rework (proposal, 2026-09-26):** the six philosophical threads of the series as design rules — open corner, lean on attention, colour means chosen, fuse when grouped, overflow, care over spectacle — and a new mark. Would replace the cut/petal shape rule below. See [DESIGN-LANGUAGE.md](./DESIGN-LANGUAGE.md); open decisions listed there.
+
 - ~~`ponytail:` ceilings~~ all lifted ✅: Tree arrow-key navigation, VirtualScroller `dynamic` (measured heights), DataTable / useDataTable `server` mode (`state` event, `total`), useFloating `boundary` + `arrow` (Tooltip always, Popover opt-in).
 - ~~Straight / rounded variant~~ → cut + petal merged into one default (2026-09-21); upright variant rejected.
 - ~~Pre-publish component review, one by one~~ ✅ (2026-09-25): every component page opens with when to use it (and when not); behaviour and accessibility fixes landed per component with tests. Library-wide outcomes: Field hands id / invalid / describedby / labelledby to any control; menu, popover and dialog triggers carry aria-haspopup / aria-controls / aria-expanded; unstyled lists keep `role="list"`; clock reads wait for mount (SSR day mismatch); overlays return focus when they close.
