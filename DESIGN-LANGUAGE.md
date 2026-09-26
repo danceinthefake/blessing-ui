@@ -1,6 +1,6 @@
 # Blessing UI — design language (proposal)
 
-Status: **direction approved, not yet implemented.** The prototype behaviours and the leaning-flower mark are accepted; nothing here is in the library yet. Decisions still open are listed at the end.
+Status: **implemented.** All seven build steps below are in the library (September 2026). Decisions still open are listed at the end.
 
 Blessing UI takes the six philosophical threads of _Saekano_ as its design rules. At rest it is calm and upright; a control leans when you look at it, fills with colour when you choose it, and fuses with its neighbours when it belongs to a group. The threads are abstract principles here — they are not tied to any character, palette or colour.
 
@@ -80,7 +80,7 @@ The main button stands out by weight (solid against outline), not by colour. On 
 4. [x] Write on the page: fields and inplace editing.
 5. [x] Fuse when grouped: button groups, input add-ons, date ranges.
 6. [x] Overflow: headlines, watermarks, finished progress.
-7. [ ] The mark: the leaning flower in the docs and README.
+7. [x] The mark: the leaning flower in the docs and README.
 
 ## Trade-offs
 
