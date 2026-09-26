@@ -1,0 +1,81 @@
+docs/blocks/story.md
+  s_9ec1000e308ddb::t_98da290b4de2f5 24
+  s_9ec1000e308ddb::t_c18412dbddd0e0 18
+docs/blocks/chat/meta.ts
+  s_9ec1000e308ddb::t_c18412dbddd0e0 6
+docs/blocks/staff/meta.ts
+  s_9ec1000e308ddb::t_c18412dbddd0e0 6
+docs/blocks/character.md
+  s_9ec1000e308ddb::t_98da290b4de2f5 24
+docs/scripts/blocks.ts
+  s_9ec1000e308ddb::t_98da290b4de2f5 12-16,84
+docs/blocks/staff.md
+  s_9ec1000e308ddb::t_98da290b4de2f5 24
+  s_9ec1000e308ddb::t_c18412dbddd0e0 18
+docs/blocks/data-page.md
+  s_9ec1000e308ddb::t_c18412dbddd0e0 18
+  s_9ec1000e308ddb::t_98da290b4de2f5 24
+docs/blocks/story/meta.ts
+  s_9ec1000e308ddb::t_c18412dbddd0e0 6
+docs/blocks/news.md
+  s_9ec1000e308ddb::t_98da290b4de2f5 24
+  s_9ec1000e308ddb::t_c18412dbddd0e0 18
+docs/blocks/settings.md
+  s_9ec1000e308ddb::t_c18412dbddd0e0 18
+  s_9ec1000e308ddb::t_7acb506e2e207e 24
+docs/blocks/signin.md
+  s_9ec1000e308ddb::t_98da290b4de2f5 24
+docs/blocks/news/meta.ts
+  s_9ec1000e308ddb::t_c18412dbddd0e0 6
+docs/blocks/data-page/meta.ts
+  s_9ec1000e308ddb::t_c18412dbddd0e0 6
+docs/blocks/settings/meta.ts
+  s_9ec1000e308ddb::t_c18412dbddd0e0 6
+docs/blocks/dashboard.md
+  s_9ec1000e308ddb::t_c18412dbddd0e0 18
+  s_9ec1000e308ddb::t_98da290b4de2f5 24
+docs/blocks/release/meta.ts
+  s_9ec1000e308ddb::t_c18412dbddd0e0 6
+docs/blocks/chat.md
+  s_9ec1000e308ddb::t_c18412dbddd0e0 18,24
+docs/.vitepress/blocks.json
+  s_9ec1000e308ddb::t_b9605781cd6362 6,20,41,48,55,62,83,90,104
+docs/blocks/release.md
+  s_9ec1000e308ddb::t_c18412dbddd0e0 18
+  s_9ec1000e308ddb::t_98da290b4de2f5 24
+docs/blocks/dashboard/meta.ts
+  s_9ec1000e308ddb::t_c18412dbddd0e0 6
+docs/blocks/onair.md
+  s_9ec1000e308ddb::t_98da290b4de2f5 24
+docs/blocks/pricing.md
+  s_9ec1000e308ddb::t_98da290b4de2f5 24
+docs/blocks/inbox/meta.ts
+  s_9ec1000e308ddb::t_c18412dbddd0e0 6
+docs/blocks/inbox.md
+  s_9ec1000e308ddb::t_c18412dbddd0e0 18
+  s_9ec1000e308ddb::t_98da290b4de2f5 24
+docs/blocks/index.md
+  s_9ec1000e308ddb::t_8f5931acd327bf 13
+docs/blocks/onboarding.md
+  s_9ec1000e308ddb::t_654ab941227bc8 24
+docs/blocks/site.md
+  s_9ec1000e308ddb::t_719bf36c31a3d4 26
+docs/blocks/states.md
+  s_9ec1000e308ddb::t_42f11f86ba6af1 24
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "12ce6fd06f6484af52288ae39c227af5e1f3eaf9",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "unknown"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
