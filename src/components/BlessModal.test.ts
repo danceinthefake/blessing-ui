@@ -40,7 +40,8 @@ test("v-model opens/closes dialog, close button emits", async () => {
 test("cancel (Esc) and backdrop click close; non-dismissible ignores backdrop", async () => {
   const w = mount(BlessModal, { props: { modelValue: true }, attachTo: document.body });
   await nextTick();
-  await w.find("dialog").trigger("click"); // target is dialog itself = backdrop
+  await w.find("dialog").trigger("pointerdown"); // a press that starts on the backdrop…
+  await w.find("dialog").trigger("click"); // …and ends there (target is the dialog itself)
   expect(w.emitted("update:modelValue")!.at(-1)).toEqual([false]);
 
   const n = mount(BlessModal, {

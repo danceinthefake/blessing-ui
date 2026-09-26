@@ -33,12 +33,20 @@ function sync(isOpen: boolean) {
   } else if (!isOpen && el.open) el.close();
 }
 
+// opening pushes a history entry; closing takes that same entry back off, so Back after a close
+// doesn't land on a page that looks identical
+let pushed = false;
 watch(open, (v) => {
   nextTick(() => sync(v));
   if (!props.hash) return;
-  if (v && hash.value !== props.hash) history.pushState(null, "", `#${props.hash}`);
-  else if (!v && hash.value === props.hash)
-    history.replaceState(null, "", location.pathname + location.search);
+  if (v && hash.value !== props.hash) {
+    history.pushState(null, "", `#${props.hash}`);
+    pushed = true;
+  } else if (!v && hash.value === props.hash) {
+    if (pushed) history.back();
+    else history.replaceState(null, "", location.pathname + location.search);
+  }
+  if (!v) pushed = false;
   hash.value = v ? props.hash : "";
 });
 
@@ -55,8 +63,11 @@ function onClose() {
   emit("close");
 }
 
+// a click on the backdrop closes, but only if the press started there too: a text selection
+// dragged out of the panel ends in a click on the dialog and must not close it
+let downOnBackdrop = false;
 function onBackdrop(e: MouseEvent) {
-  if (props.dismissible && e.target === dialog.value) open.value = false;
+  if (props.dismissible && downOnBackdrop && e.target === dialog.value) open.value = false;
 }
 
 // registered after useHash's onMounted, so hash is already read
@@ -76,6 +87,7 @@ const titleId = `${useId()}-title`;
     :aria-labelledby="title || $slots.title ? titleId : undefined"
     @close="onClose"
     @cancel.prevent="open = false"
+    @pointerdown="downOnBackdrop = $event.target === dialog"
     @click="onBackdrop"
   >
     <div class="bless-modal__panel" tabindex="-1">

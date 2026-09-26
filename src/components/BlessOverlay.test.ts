@@ -28,9 +28,40 @@ test("BlessSheet side class, open/close, backdrop", async () => {
   expect(document.getElementById(w.attributes("aria-labelledby")!)?.textContent?.trim()).toBe(
     "Nav",
   );
+  // a selection dragged out of the panel ends in a click on the dialog: that must not close it
+  await w.find(".bless-sheet__panel, .bless-sheet > *").trigger("pointerdown");
+  await w.trigger("click");
+  expect(w.emitted("update:modelValue")).toBeUndefined();
+  await w.trigger("pointerdown");
   await w.trigger("click");
   expect(w.emitted("update:modelValue")!.at(-1)).toEqual([false]);
   w.unmount();
+});
+
+test("BlessModal: backdrop press closes, a drag out of the panel doesn't; hash close goes back", async () => {
+  const { default: BlessModal } = await import("./BlessModal.vue");
+  const w = mount(BlessModal, { props: { modelValue: true, title: "T" }, attachTo: document.body });
+  await nextTick();
+  const dlg = w.find("dialog");
+  await w.find(".bless-modal__panel").trigger("pointerdown");
+  await dlg.trigger("click");
+  expect(w.emitted("update:modelValue")).toBeUndefined();
+  await dlg.trigger("pointerdown");
+  await dlg.trigger("click");
+  expect(w.emitted("update:modelValue")!.at(-1)).toEqual([false]);
+  w.unmount();
+
+  const back = vi.spyOn(history, "back").mockImplementation(() => {});
+  const h = mount(BlessModal, {
+    props: { modelValue: false, hash: "ep1" },
+    attachTo: document.body,
+  });
+  await h.setProps({ modelValue: true });
+  expect(location.hash).toBe("#ep1");
+  await h.setProps({ modelValue: false });
+  expect(back).toHaveBeenCalledOnce(); // the entry it pushed is taken off, not left behind
+  back.mockRestore();
+  h.unmount();
 });
 
 test("BlessDrawer is bottom sheet with handle; drag down closes", async () => {

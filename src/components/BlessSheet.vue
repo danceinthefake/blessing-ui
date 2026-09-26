@@ -35,8 +35,10 @@ function sync(o: boolean) {
 watch(open, (o) => nextTick(() => sync(o)));
 onMounted(() => sync(open.value));
 
+// only when the press started on the backdrop too — a selection dragged out of the panel isn't a dismissal
+let downOnBackdrop = false;
 function onBackdrop(e: MouseEvent) {
-  if (props.dismissible && e.target === dialog.value) open.value = false;
+  if (props.dismissible && downOnBackdrop && e.target === dialog.value) open.value = false;
 }
 function onDown(e: PointerEvent) {
   startY = e.clientY;
@@ -65,6 +67,7 @@ function onUp() {
       emit('close');
     "
     @cancel.prevent="dismissible && (open = false)"
+    @pointerdown="downOnBackdrop = $event.target === dialog"
     @click="onBackdrop"
   >
     <div
