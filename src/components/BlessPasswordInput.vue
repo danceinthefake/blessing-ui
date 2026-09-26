@@ -51,6 +51,8 @@ const shown = ref(false);
   gap: var(--bless-space-2);
 }
 .bless-password__toggle {
+  min-width: 24px;
+  min-height: 24px;
   border: 0;
   background: none;
   color: inherit;
