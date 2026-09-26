@@ -1,0 +1,43 @@
+src/components/BlessDatePicker.vue
+  s_9ec1000e308ddb::t_c9615834635097 162,226
+src/components/BlessInput.vue
+  s_9ec1000e308ddb::t_c9615834635097 85
+src/components/BlessInputGroup.vue
+  s_9ec1000e308ddb::t_c9615834635097 37
+src/components/BlessInputTags.vue
+  s_9ec1000e308ddb::t_c9615834635097 118
+src/components/BlessTimePicker.vue
+  s_9ec1000e308ddb::t_c9615834635097 87
+src/components/BlessCascadeSelect.vue
+  s_9ec1000e308ddb::t_c9615834635097 224
+src/components/BlessCombobox.vue
+  s_9ec1000e308ddb::t_c9615834635097 283
+src/components/BlessInplace.vue
+  s_9ec1000e308ddb::t_c9615834635097 62-64,71-72
+src/components/BlessInputNumber.vue
+  s_9ec1000e308ddb::t_c9615834635097 152
+src/components/BlessInputOTP.vue
+  s_9ec1000e308ddb::t_c9615834635097 151
+src/components/BlessSelect.vue
+  s_9ec1000e308ddb::t_c9615834635097 94
+src/components/BlessTextarea.vue
+  s_9ec1000e308ddb::t_c9615834635097 85
+src/components/BlessTreeSelect.vue
+  s_9ec1000e308ddb::t_c9615834635097 143
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "2a32b9911ee3e843272f27c23ca107d870d55d99",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
