@@ -310,6 +310,10 @@ watch(open, (o) => {
 .bless-cascade__more {
   color: var(--bless-color-text-muted);
 }
+/* children open towards the inline end, so the arrow points there in RTL too */
+[dir="rtl"] .bless-cascade__more {
+  transform: scaleX(-1);
+}
 /* parallelogram trigger; content counter-skews so text stays upright */
 .bless-cascade__trigger {
   transform: skewX(var(--bless-skew));
