@@ -53,6 +53,7 @@ const shown = computed(() => (props.showDefault ? blessPalettes : blessPalettes.
   transform: skewX(var(--bless-skew));
   transition:
     border-color var(--bless-duration-fast),
+    opacity var(--bless-duration-slow) var(--bless-ease-in-out),
     var(--bless-lean-transition);
 }
 .bless-palette__swatch[aria-pressed="true"] {
