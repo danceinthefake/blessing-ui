@@ -21,7 +21,7 @@ A file in a conversation or a form — its name, type, size, a preview, upload p
   </template>
 </Demo>
 
-- With `href` the name is a link that covers the whole card; the remove button and `#actions` sit above it, so each stays its own control. Remove says which file.
+- With `href` the name is a link that covers the whole card; the remove button and `#actions` sit above it, so each stays its own control. Remove says which file; when you take the attachment away on `@remove`, move focus to its neighbour, as with [Chip](./chip).
 - `state` shows `uploading` (with `progress`, or a spinner) and `error`.
 
 ## Usage

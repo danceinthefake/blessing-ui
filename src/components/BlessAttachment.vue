@@ -200,9 +200,12 @@ const ext = computed(() => props.name.split(".").pop()?.slice(0, 4).toUpperCase(
   font-size: var(--bless-text-md);
   line-height: 1;
   cursor: pointer;
+  transition:
+    opacity var(--bless-duration-slow) var(--bless-ease-in-out),
+    var(--bless-lean-transition);
 }
 .bless-attachment__remove:hover {
-  color: var(--bless-color-danger-text);
+  opacity: var(--bless-hover-opacity);
 }
 .bless-attachment__remove:focus-visible {
   outline: 2px solid var(--bless-color-accent);
