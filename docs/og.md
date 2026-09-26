@@ -62,6 +62,9 @@ import { BlessMockup, BlessSkew } from "blessing-ui";
   letter-spacing: -0.02em;
 }
 .og__ui {
+  /* the wordmark's label is display type: it leans at rest, text upright */
+  --bless-skew: var(--bless-lean);
+  --bless-skew-counter: calc(-1 * var(--bless-lean));
   display: inline-block;
   padding: 0 14px;
   font-size: 22px;
