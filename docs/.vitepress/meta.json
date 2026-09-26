@@ -539,7 +539,7 @@
     "name": "color",
     "type": "\"text\" | \"accent\" | \"danger\" | \"warning\" | \"success\" | \"info\" | \"badge\" | undefined",
     "required": false,
-    "default": "\"badge\"",
+    "default": "\"text\"",
     "description": ""
    },
    {

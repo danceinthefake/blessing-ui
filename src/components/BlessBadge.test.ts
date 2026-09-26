@@ -2,10 +2,10 @@ import { mount } from "@vue/test-utils";
 import BlessBadge from "./BlessBadge.vue";
 import BlessDash from "./BlessDash.vue";
 
-test("BlessBadge defaults to NEW!, full size, solid", () => {
+test("BlessBadge defaults to NEW!, ink, full size, solid", () => {
   const w = mount(BlessBadge);
   expect(w.text()).toBe("NEW!");
-  expect(w.classes()).toContain("bless-badge--badge");
+  expect(w.classes()).toContain("bless-badge--text");
   expect(w.classes()).toContain("bless-badge--solid");
   expect(w.classes()).not.toContain("bless-badge--scaled");
 });

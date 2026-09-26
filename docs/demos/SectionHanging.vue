@@ -15,7 +15,7 @@ import { BlessBadge, BlessSection, BlessText } from "blessing-ui";
       <p class="tags">
         <BlessBadge variant="outline">企画</BlessBadge>
         <BlessBadge variant="outline">サブディレクター</BlessBadge>
-        <BlessBadge variant="outline" color="accent">メインヒロイン</BlessBadge>
+        <BlessBadge variant="outline">メインヒロイン</BlessBadge>
       </p>
       <BlessText as="p" size="lg" weight="bold">加藤 恵</BlessText>
       <BlessText as="p" size="xs" muted tracking="wider">Megumi Kato</BlessText>

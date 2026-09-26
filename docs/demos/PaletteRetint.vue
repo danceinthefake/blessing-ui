@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import {
-  BlessBadge,
   BlessButton,
   BlessCheckbox,
   BlessProgress,
@@ -25,7 +24,6 @@ const tabs = [
     <BlessToggle :pressed="true">Pinned</BlessToggle>
     <BlessCheckbox :model-value="true">Subscribed</BlessCheckbox>
     <BlessSwitch :model-value="true">Notify</BlessSwitch>
-    <BlessBadge>NEW!</BlessBadge>
     <BlessButton>Press me</BlessButton>
   </div>
   <div style="margin-top: 12px; max-width: 360px">

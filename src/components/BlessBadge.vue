@@ -9,7 +9,7 @@ withDefaults(
     /** outline: 1px border and text in the colour, no fill — quiet category/role tags */
     variant?: "solid" | "outline";
   }>(),
-  { color: "badge", scaled: false, variant: "solid" },
+  { color: "text", scaled: false, variant: "solid" },
 );
 </script>
 
@@ -23,7 +23,7 @@ withDefaults(
 </template>
 
 <style>
-/* a cut plate like every other label — the site's NEW! was upright, ours leans with the rest */
+/* an upright plate: a badge is never attended to, so it never leans; ink by default — colour means chosen */
 .bless-badge {
   display: inline-block;
   padding: 2px 5px;
