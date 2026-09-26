@@ -30,13 +30,22 @@ try {
     await p.close();
   }
   // block teasers for the homepage
-  for (const slug of ["signin", "dashboard", "news"]) {
-    const bp = await b.newPage({ viewport: { width: 800, height: 500 }, deviceScaleFactor: 2 });
-    await bp.goto(`http://localhost:${port}/blocks/${slug}-frame`, { waitUntil: "networkidle" });
-    await bp.waitForTimeout(600);
-    await bp.screenshot({ path: `docs/public/preview-${slug}.png` });
-    await bp.close();
-  }
+  for (const slug of ["signin", "dashboard", "news"])
+    for (const dark of [false, true]) {
+      const bp = await b.newPage({
+        viewport: { width: 800, height: 500 },
+        deviceScaleFactor: 2,
+        colorScheme: dark ? "dark" : "light",
+      });
+      await bp.goto(`http://localhost:${port}/blocks/${slug}-frame`, { waitUntil: "networkidle" });
+      await bp.evaluate((d) => {
+        document.documentElement.classList.toggle("dark", d);
+        document.documentElement.dataset.theme = d ? "dark" : "light";
+      }, dark);
+      await bp.waitForTimeout(600);
+      await bp.screenshot({ path: `docs/public/preview-${slug}${dark ? "-dark" : ""}.png` });
+      await bp.close();
+    }
   // the preview server caches misses; restart it so the fresh hero files are served to the OG page
   srv.kill();
   srv = await serve();
@@ -45,7 +54,7 @@ try {
   await p.waitForTimeout(600);
   await p.locator(".og").screenshot({ path: "docs/public/og.png" });
   console.log(
-    "hero-light.png, hero-dark.png, preview-{signin,dashboard,news}.png, og.png written to docs/public/",
+    "hero-light.png, hero-dark.png, preview-{signin,dashboard,news}{,-dark}.png, og.png written to docs/public/",
   );
 } finally {
   await b.close();

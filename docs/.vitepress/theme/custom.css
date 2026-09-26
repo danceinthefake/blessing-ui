@@ -252,3 +252,25 @@ html:not(.dark) .dark-only {
     display: none;
   }
 }
+
+/* one shape: VitePress's own rounded chrome goes square like the library
+ * (html + doubled class: VitePress's scoped rules carry an attribute selector) */
+html .VPFeature.VPFeature,
+html .DocSearch-Button.DocSearch-Button,
+html body .DocSearch-Button .DocSearch-Button-Key.DocSearch-Button-Key,
+html .VPSwitch.VPSwitch,
+html .VPSwitch .check.check,
+html .VPSwitch .icon.icon {
+  border-radius: 0;
+}
+/* buttons table: the secondary hero button is an ink outline, not a grey fill */
+html .VPButton.alt.alt {
+  border: var(--bless-border-width) solid var(--bless-color-text);
+  background: transparent;
+  color: var(--bless-color-text);
+}
+html .VPButton.alt.alt:active {
+  border-color: var(--bless-color-accent);
+  background: var(--bless-color-accent);
+  color: var(--bless-color-on-accent);
+}
