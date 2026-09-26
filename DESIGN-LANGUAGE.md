@@ -74,7 +74,7 @@ The main button stands out by weight (solid against outline), not by colour. On 
 
 ## Build order
 
-1. [ ] Care rules: interruptible motion, reduced motion, contrast — every later rule has to respect them.
+1. [x] Care rules: interruptible motion, reduced motion, contrast — every later rule has to respect them.
 2. [ ] Colour means chosen: tokens, and ink at rest across all components.
 3. [ ] Lean on hover and focus.
 4. [ ] Write on the page: fields and inplace editing.
