@@ -55,7 +55,8 @@ withDefaults(
   text-decoration: none;
   transition: opacity var(--bless-duration-slow) var(--bless-ease-in-out);
 }
-button.bless-item {
+:where(button).bless-item {
+  /* no weight over the variants: a surface button row keeps its surface */
   width: 100%;
   border: 0;
   background: transparent;
