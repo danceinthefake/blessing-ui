@@ -225,9 +225,10 @@ const defs: Record<Exclude<BlessEditorTool, "|">, Def> = {
 .bless-editor__tool:hover:not(:disabled) {
   background: var(--bless-color-bg);
 }
+/* an applied format is chosen: it fills with the accent, like a pressed Toggle */
 .bless-editor__tool--on {
-  background: var(--bless-color-text);
-  color: var(--bless-color-on-text);
+  background: var(--bless-color-accent);
+  color: var(--bless-color-on-accent);
 }
 .bless-editor__tool:disabled {
   opacity: 0.35;
