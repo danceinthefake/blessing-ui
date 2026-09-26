@@ -1,0 +1,26 @@
+src/components/BlessIndicator.vue
+  s_9ec1000e308ddb::t_583d60737a71d2 42,45-47,56-61
+  s_9ec1000e308ddb::t_652c49f653aea5 62
+docs/components/indicator.md
+  s_9ec1000e308ddb::t_583d60737a71d2 13,15
+src/components/BlessExtras.test.ts
+  s_9ec1000e308ddb::t_583d60737a71d2 117-124
+docs/demos/IndicatorBasic.vue
+  s_9ec1000e308ddb::t_583d60737a71d2 2,4,9-12,15,18-20
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "37ac53d5765ce67625b623a428125bd5b8455405",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
