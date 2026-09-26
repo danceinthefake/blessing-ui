@@ -4,7 +4,7 @@
 
 # Blessing UI
 
-Vue 3 component library and design tokens. Grey-scale UI, one pink-red accent, upright plates that lean when you engage them instead of rounded corners, thin oversized watermark type, opacity-fade hovers. The look was re-derived from one anime's official site, ideas only — the [story](docs/design/story.md) says which, what was kept, and what was not taken.
+Vue 3 component library and design tokens. Grey-scale UI with one accent that appears only on what someone has chosen; square, upright plates that lean when you engage them; thin oversized watermark type; opacity-fade hovers. The rules come from a [design language](docs/design/index.md); the look was re-derived from one anime's official site, ideas only — the [story](docs/design/story.md) says which, what was kept, and what was not taken.
 
 - 144 components — from button to data table to chat — styled only through `--bless-*` custom properties, no Tailwind dependency
 - Native platform first: `<dialog>`, Popover API, `<details>`, native form controls, `Intl` dates, scroll-snap — no positioning, date or table library
@@ -40,8 +40,8 @@ Tokens only (no components):
 
 ```css
 @import "blessing-ui/tokens.css";
-.btn {
-  background: var(--bless-color-accent);
+.tab[aria-selected="true"] {
+  background: var(--bless-color-accent); /* the accent marks what is chosen */
 }
 ```
 
@@ -74,7 +74,7 @@ import {
           >Blu-ray Disc BOX 発売決定</BlessListItem
         >
       </BlessList>
-      <BlessButton color="accent" href="/news">More</BlessButton>
+      <BlessButton href="/news">More</BlessButton>
     </BlessSection>
   </BlessStage>
 </template>
@@ -82,42 +82,42 @@ import {
 
 ## Components
 
-144 components across nine groups. Every one styles itself from `--bless-*` tokens and ships with a test and a docs page.
+144 components across eight groups. Every one styles itself from `--bless-*` tokens and ships with a test and a docs page.
 
 ### Primitives
 
-| Component                             | Purpose                                  | Key props / slots                                                                                  |
-| ------------------------------------- | ---------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `BlessSkew`                           | Skewed container, counter-skews its slot | `as`, `color`                                                                                      |
-| `BlessButton`                         | Button or anchor                         | `variant` solid/outline/ghost, `color`, `size`, `href`, `disabled`, `loading`; `#prefix` `#suffix` |
-| `BlessBadge`                          | Small pill                               | `color`, `scaled`                                                                                  |
-| `BlessDash`                           | Inline 10×1px separator                  | `color`                                                                                            |
-| `BlessSeparator`                      | `<hr>` / vertical rule, optional label   | `orientation`, `decorative`, `color`, `label`                                                      |
-| `BlessIcon`                           | SVG slot wrapper                         | `size`, `label`                                                                                    |
-| `BlessText`                           | Typography helper                        | `as`, `size`, `weight`, `tracking`, `leading`, `muted`, `uppercase`                                |
-| `BlessKbd`                            | Key combo                                | `keys[]` or slot                                                                                   |
-| `BlessThemeToggle`                    | Light/dark switch or 3-way group         | `mode` switch/group, `label`                                                                       |
-| `BlessSpinner`                        | Loading indicator (`role=status`)        | `size`, `color`, `label`; `BlessButton loading` uses it                                            |
-| `BlessEmpty`                          | Empty state                              | `title`, `description`, `variant` outline/plain; `#icon` `#title` `#description` default=actions   |
-| `BlessButtonGroup`                    | Joined buttons                           | `orientation`, `label`                                                                             |
-| `BlessIndicator`                      | Count / dot badge on any element         | `value` number or true, `max`, `color`, `position`                                                 |
-| `BlessTimeline`                       | Vertical rail of events                  | `items[{title,time,description,color}]`; `#default="{item}"` `#dot`                                |
-| `BlessSwap`                           | Two-face toggle                          | `v-model`, `label`, `effect` fade/rotate/flip; `#on` `#off`                                        |
-| `BlessWatermarkOverlay`               | Tiled text watermark over content        | `text`, `gap`, `angle`, `fontSize`, `opacity`, `color`                                             |
-| `BlessCircularProgress`               | Ring progress                            | `value` (omit = spinning), `max`, `size`, `thickness`, `color`, `showValue`, `format`              |
-| `BlessLoadingBar` + `useLoadingBar()` | Top-of-page progress                     | `height`, `position`, `color`; `start()` `stop()` `set(p)` `track(promise)`                        |
-| `BlessSlideTransition`                | Height 0 ↔ auto                          | `appear`; wrap one `v-if` element with `transition: height`                                        |
-| `BlessClientOnly`                     | Browser-only render                      | `#fallback`                                                                                        |
-| `BlessChip`                           | Removable pill                           | `label`, `icon`, `image`, `removable`, `color`, `size`; emits `remove`                             |
-| `BlessMeterGroup`                     | Multi-segment meter                      | `segments[{label,value,color}]`, `max`, `legend`, `format`, `orientation`                          |
-| `BlessBlockUI`                        | Blocking overlay                         | `blocked`, `fullscreen`; `#indicator`                                                              |
-| `BlessMockup`                         | Browser / window / phone frame           | `type`, `title`, `dark`                                                                            |
-| `BlessItem`                           | Media + title + description + actions    | `title`, `description`, `href`, `variant` plain/outline/surface, `size`; `#media` `#actions`       |
-| `BlessAvatar`                         | Image with initials fallback             | `src`, `name`, `size`, `lean`, `color`                                                             |
-| `BlessSkeleton`                       | Shimmer placeholder                      | `width`, `height`, `lines`, `avatar`                                                               |
-| `BlessAspectRatio`                    | Ratio box                                | `ratio`                                                                                            |
-| `BlessProgress`                       | Bar, determinate or not                  | `value`, `max`, `label`, `showValue`, `color`, `size`                                              |
-| `BlessAlert`                          | Inline notice                            | `title`, `color`, `live`, `dismissible`, `v-model`; `#icon` `#title`                               |
+| Component                             | Purpose                                               | Key props / slots                                                                                      |
+| ------------------------------------- | ----------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| `BlessSkew`                           | Plate that leans on attention; its slot stays upright | `as`, `color`                                                                                          |
+| `BlessButton`                         | Button or anchor                                      | `variant` solid/outline/ghost, `color`, `size`, `href`, `disabled`, `loading`; `#prefix` `#suffix`     |
+| `BlessBadge`                          | Small label, ink by default                           | `color`, `scaled`                                                                                      |
+| `BlessDash`                           | Inline 10×1px separator                               | `color`                                                                                                |
+| `BlessSeparator`                      | `<hr>` / vertical rule, optional label                | `orientation`, `decorative`, `color`, `label`                                                          |
+| `BlessIcon`                           | SVG slot wrapper                                      | `size`, `label`                                                                                        |
+| `BlessText`                           | Typography helper                                     | `as`, `size`, `weight`, `tracking`, `leading`, `muted`, `uppercase`                                    |
+| `BlessKbd`                            | Key combo                                             | `keys[]` or slot                                                                                       |
+| `BlessThemeToggle`                    | Light/dark switch or 3-way group                      | `mode` switch/group, `label`, `labels`                                                                 |
+| `BlessSpinner`                        | Loading indicator (`role=status`)                     | `size`, `color`, `label`; `BlessButton loading` uses it                                                |
+| `BlessEmpty`                          | Empty state                                           | `title`, `description`, `variant` outline/plain; `#icon` `#title` `#description` default=actions       |
+| `BlessButtonGroup`                    | Joined buttons                                        | `orientation`, `label`                                                                                 |
+| `BlessIndicator`                      | Count / dot badge on any element                      | `value` number or true, `max`, `color`, `position`                                                     |
+| `BlessTimeline`                       | Vertical rail of events                               | `items[{title,time,description,color}]`; `#default="{item}"` `#dot`                                    |
+| `BlessSwap`                           | Two-face toggle                                       | `v-model`, `label`, `effect` fade/rotate/flip; `#on` `#off`                                            |
+| `BlessWatermarkOverlay`               | Tiled text watermark over content                     | `text`, `gap`, `angle`, `fontSize`, `opacity`, `color`                                                 |
+| `BlessCircularProgress`               | Ring progress                                         | `value` (omit = spinning), `max`, `size`, `thickness`, `color`, `showValue`, `format`                  |
+| `BlessLoadingBar` + `useLoadingBar()` | Top-of-page progress                                  | `height`, `position`, `color`; `start()` `stop()` `set(p)` `track(promise)`                            |
+| `BlessSlideTransition`                | Height 0 ↔ auto                                       | `appear`; wrap one `v-if` element with `transition: height`                                            |
+| `BlessClientOnly`                     | Browser-only render                                   | `#fallback`                                                                                            |
+| `BlessChip`                           | Compact token, removable                              | `label`, `icon`, `image`, `removable`, `color`, `size`; emits `remove`                                 |
+| `BlessMeterGroup`                     | Multi-segment meter                                   | `segments[{label,value,color}]`, `max`, `legend`, `format`, `orientation`                              |
+| `BlessBlockUI`                        | Blocking overlay                                      | `blocked`, `fullscreen`; `#indicator`                                                                  |
+| `BlessMockup`                         | Browser / window / phone frame                        | `type`, `title`, `dark`                                                                                |
+| `BlessItem`                           | Media + title + description + actions                 | `title`, `description`, `href`, `button`, `variant` plain/outline/surface, `size`; `#media` `#actions` |
+| `BlessAvatar`                         | Image with initials fallback                          | `src`, `name`, `size`, `lean`, `color`                                                                 |
+| `BlessSkeleton`                       | Placeholder that breathes (no shimmer)                | `width`, `height`, `lines`, `avatar`                                                                   |
+| `BlessAspectRatio`                    | Ratio box                                             | `ratio`                                                                                                |
+| `BlessProgress`                       | Bar, determinate or not                               | `value`, `max`, `label`, `showValue`, `color`, `size`                                                  |
+| `BlessAlert`                          | Inline notice                                         | `title`, `color`, `live`, `dismissible`, `v-model`; `#icon` `#title`                                   |
 
 ### Forms
 
@@ -189,7 +189,7 @@ import {
 | `BlessBreadcrumb`                           | Trail                                    | `items[{label,href}]`, `separator`; `#item`                                                                                |
 | `BlessPagination`                           | Page list                                | `v-model`, `total`, `siblings`, `href(page)`                                                                               |
 | `BlessTabs`                                 | ARIA tablist                             | `tabs`, `v-model`, `activation`, `color`; `#default="{tab}"` `#tab`                                                        |
-| `BlessSection` / `BlessWatermark`           | Titled block with giant skewed word      | `title`, `watermark`, `watermarkPosition`, `headingLevel`                                                                  |
+| `BlessSection` / `BlessWatermark`           | Titled block with a giant watermark word | `title`, `watermark`, `watermarkPosition`, `headingLevel`                                                                  |
 | `BlessBackground`                           | Tiled texture layer                      | `src`, `offset`, `mode`, `opacity`                                                                                         |
 | `BlessCard`                                 | Flat surface                             | `label`, `labelColor`, `surface`, `bordered`, `href`; `#media` `#footer`                                                   |
 | `BlessList` / `BlessListItem`               | Divided rows                             | item `meta`, `badge`, `href`; `#suffix`                                                                                    |
@@ -238,7 +238,7 @@ import {
 | `BlessChart`  | Themed frame for any [Unovis](https://unovis.dev) chart          | `title`, `description`, `height`, `legend[]`; `#header` `#legend` `#footer`, default = chart |
 | `BlessQrCode` | QR SVG from a module matrix ([uqr](https://github.com/unjs/uqr)) | `matrix` boolean[][], `value`, `size`, `border`, `color`, `background`, `frame`              |
 
-Blessing does not bundle a chart library. `BlessChart` maps `--bless-color-chart-{1..5}`, type and dark mode onto Unovis' `--vis-*` variables, and adds a skewed legend. Install Unovis yourself:
+Blessing does not bundle a chart library. `BlessChart` maps `--bless-color-chart-{1..5}`, type and dark mode onto Unovis' `--vis-*` variables, and adds a legend. Install Unovis yourself:
 
 ```sh
 pnpm add @unovis/vue @unovis/ts
@@ -310,7 +310,7 @@ All styling reads `--bless-*` custom properties defined in `tokens.css`. Overrid
 | Leading / tracking | `--bless-leading-{none,tight,normal}`, `--bless-tracking-{tight,normal,wide,wider}`                                                                                                                                   |
 | Space              | `--bless-space-{1,2,3,4,6,8,12,16}` (4px base)                                                                                                                                                                        |
 | Shape              | `--bless-lean`, `--bless-skew`, `--bless-skew-counter`, `--bless-petal`, `--bless-radius-petal` (+`-lg`), `--bless-radius`, `--bless-radius-plate` (0, override points), `--bless-border-width`, `--bless-dash-width` |
-| Elevation          | `--bless-shadow-{none,md}`                                                                                                                                                                                            |
+| Elevation          | `--bless-shadow-plate` (the 1px accent offset behind anything that floats), `--bless-shadow-{none,md}`                                                                                                                |
 | Motion             | `--bless-duration-{fast,base,slow,slower}`, `--bless-ease-{in-out,out,linear}`, `--bless-hover-opacity`, `--bless-press-scale`                                                                                        |
 | Layout             | `--bless-sidebar-width`, `--bless-sidebar-inner`, `--bless-content-max`, `--bless-z-{bg,nav,modal}`                                                                                                                   |
 
