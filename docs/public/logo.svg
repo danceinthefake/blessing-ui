@@ -1,8 +1,10 @@
-<!-- Blessing UI mark: five skewed plates (the system geometry) in a ring, one per member of the circle — Megumi, Utaha, Izumi, Michiru, Eriri -->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
-  <rect x="0" y="-6.5" width="20" height="13" fill="#e85078" transform="rotate(-90 32 32) translate(42 32) skewX(-10)"/>
-  <rect x="0" y="-6.5" width="20" height="13" fill="#e03028" transform="rotate(-18 32 32) translate(42 32) skewX(-10)"/>
-  <rect x="0" y="-6.5" width="20" height="13" fill="#4090d0" transform="rotate(54 32 32) translate(42 32) skewX(-10)"/>
-  <rect x="0" y="-6.5" width="20" height="13" fill="#b878b0" transform="rotate(126 32 32) translate(42 32) skewX(-10)"/>
-  <rect x="0" y="-6.5" width="20" height="13" fill="#c8e018" transform="rotate(198 32 32) translate(42 32) skewX(-10)"/>
+<!-- Blessing UI mark: the leaning flower. Blessing Software's five-petal flower redrawn in the system's terms — teardrop petals, sharp at the centre and soft outside, around an empty middle, each at the house -10° lean. One petal per member of the circle: Megumi, Utaha, Izumi, Michiru, Eriri. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="64" height="64">
+  <g transform="translate(50 50) scale(1.25)">
+    <path d="M0 -5C9 -12 13 -24 10 -31A10.2 10.2 0 0 0 -10 -31C-13 -24 -9 -12 0 -5Z" fill="#e85078" transform="rotate(0) skewX(-10)"/>
+    <path d="M0 -5C9 -12 13 -24 10 -31A10.2 10.2 0 0 0 -10 -31C-13 -24 -9 -12 0 -5Z" fill="#e03028" transform="rotate(72) skewX(-10)"/>
+    <path d="M0 -5C9 -12 13 -24 10 -31A10.2 10.2 0 0 0 -10 -31C-13 -24 -9 -12 0 -5Z" fill="#4090d0" transform="rotate(144) skewX(-10)"/>
+    <path d="M0 -5C9 -12 13 -24 10 -31A10.2 10.2 0 0 0 -10 -31C-13 -24 -9 -12 0 -5Z" fill="#b878b0" transform="rotate(216) skewX(-10)"/>
+    <path d="M0 -5C9 -12 13 -24 10 -31A10.2 10.2 0 0 0 -10 -31C-13 -24 -9 -12 0 -5Z" fill="#c8e018" transform="rotate(288) skewX(-10)"/>
+  </g>
 </svg>

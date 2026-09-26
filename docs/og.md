@@ -109,7 +109,7 @@ import { BlessMockup, BlessSkew } from "blessing-ui";
   font-weight: var(--bless-font-weight-thin);
   line-height: 1;
   color: var(--bless-color-watermark);
-  transform: skewX(var(--bless-skew));
+  transform: skewX(var(--bless-lean)) /* big display type leans at rest */;
   pointer-events: none;
 }
 </style>
