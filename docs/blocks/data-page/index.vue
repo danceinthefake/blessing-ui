@@ -8,6 +8,7 @@ import {
   BlessText,
   BlessToggle,
   BlessToggleGroup,
+  useToast,
   type BlessDataColumn,
 } from "blessing-ui";
 import { statusColor, type Member, type Status } from "./domain";
@@ -24,6 +25,20 @@ const filtered = computed(() =>
   rows.value.filter((r) => status.value === "all" || r.status === status.value),
 );
 const selected = ref<Member[]>([]);
+const table = ref<{ state: { selected: Set<unknown> } }>();
+const { toast } = useToast();
+// remove at once and offer the way back, rather than asking first
+function removeSelected() {
+  const gone = selected.value;
+  const before = rows.value;
+  rows.value = rows.value.filter((r) => !gone.includes(r));
+  table.value?.state.selected.clear();
+  selected.value = [];
+  toast({
+    title: `Removed ${gone.length} ${gone.length === 1 ? "member" : "members"}`,
+    action: { label: "Undo", onClick: () => (rows.value = before) },
+  });
+}
 const columns: BlessDataColumn<Member>[] = [
   { key: "name", label: "Name", sortable: true, header: true },
   { key: "email", label: "Email", hideable: true },
@@ -50,6 +65,7 @@ const filters: { value: Status | "all"; label: string }[] = [
       <BlessButton>Invite</BlessButton>
     </div>
     <BlessDataTable
+      ref="table"
       @update:selected="selected = $event"
       :columns
       :rows="filtered"
@@ -73,10 +89,15 @@ const filters: { value: Status | "all"; label: string }[] = [
             f.label
           }}</BlessToggle>
         </BlessToggleGroup>
+        <!-- the count is a status, so selecting a row is heard -->
+        <span role="status" class="members__count">{{
+          selected.length ? `${selected.length} selected` : ""
+        }}</span>
         <div v-if="selected.length" class="members__bulk">
-          <BlessText size="sm">{{ selected.length }} selected</BlessText>
           <BlessButton size="sm" variant="outline">Change role</BlessButton>
-          <BlessButton size="sm" variant="outline" color="danger">Remove</BlessButton>
+          <BlessButton size="sm" variant="outline" color="danger" @click="removeSelected"
+            >Remove</BlessButton
+          >
         </div>
       </template>
       <template #cell-status="{ value }">
@@ -96,6 +117,9 @@ const filters: { value: Status | "all"; label: string }[] = [
   justify-content: space-between;
   gap: var(--bless-space-4);
   margin: var(--bless-space-4) 0 var(--bless-space-6);
+}
+.members__count {
+  font-size: var(--bless-text-sm);
 }
 .members__bulk {
   display: flex;
