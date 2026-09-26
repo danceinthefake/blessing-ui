@@ -22,7 +22,7 @@ Marks what a thing is — DRAFT, SAMPLE, a viewer's name on a preview — across
 </Demo>
 
 - The layer is hidden from screen readers and lets clicks and selection through. If the mark matters (a draft), say it in the content as well.
-- `color` defaults to the text colour, so it follows dark mode; pass any CSS colour, a token included (`var(--bless-color-accent)`). `opacity`, `angle`, `gap` and `fontSize` tune the tile.
+- `color` defaults to the text colour, so it follows dark mode; pass any CSS colour, a token included (`var(--bless-color-danger-text)` for a warning mark). `opacity`, `angle`, `gap` and `fontSize` tune the tile.
 
 ## Usage
 
