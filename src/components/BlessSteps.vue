@@ -113,6 +113,12 @@ const canGo = (i: number, clickable: boolean | "all" | undefined, cur: number) =
 }
 button.bless-steps__marker {
   cursor: pointer;
+  transition:
+    opacity var(--bless-duration-slow) var(--bless-ease-in-out),
+    var(--bless-lean-transition);
+}
+button.bless-steps__marker:hover {
+  opacity: var(--bless-hover-opacity);
 }
 button.bless-steps__marker:focus-visible {
   outline: 2px solid var(--bless-color-accent);
