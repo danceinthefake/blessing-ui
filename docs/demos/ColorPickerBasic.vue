@@ -10,10 +10,11 @@ const color = ref("#e85078");
       v-model="color"
       :swatches="[
         { value: '#e85078', label: 'Megumi' },
-        { value: '#a759ff', label: 'Utaha' },
-        { value: '#ffa800', label: 'Orange' },
-        { value: '#c0e722', label: 'Eriri' },
-        '#3d3e3f',
+        { value: '#e03028', label: 'Utaha' },
+        { value: '#4090d0', label: 'Izumi' },
+        { value: '#b878b0', label: 'Michiru' },
+        { value: '#c8e018', label: 'Eriri' },
+        { value: '#3d3e3f', label: 'Ink' },
       ]"
       label="Accent"
     />

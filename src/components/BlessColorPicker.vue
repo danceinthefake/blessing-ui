@@ -77,7 +77,7 @@ const norm = (s: string | { value: string; label: string }) =>
   cursor: pointer;
   transform: skewX(var(--bless-skew));
 }
-.bless-color__well:focus-within {
+.bless-color__well:has(:focus-visible) {
   outline: 2px solid var(--bless-color-accent);
   outline-offset: 2px;
 }
@@ -105,6 +105,12 @@ const norm = (s: string | { value: string; label: string }) =>
   background: var(--_c);
   cursor: pointer;
   transform: skewX(var(--bless-skew));
+  transition:
+    opacity var(--bless-duration-slow) var(--bless-ease-in-out),
+    var(--bless-lean-transition);
+}
+.bless-color__swatch:hover {
+  opacity: var(--bless-hover-opacity);
 }
 .bless-color__swatch--on {
   border-color: var(--bless-color-text);
