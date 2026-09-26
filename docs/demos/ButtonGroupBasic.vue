@@ -10,10 +10,10 @@ import { BlessButton, BlessButtonGroup } from "blessing-ui";
       <BlessButton variant="outline">2</BlessButton>
       <BlessButton variant="outline" aria-label="Next">→</BlessButton>
     </BlessButtonGroup>
-    <BlessButtonGroup label="Range">
-      <BlessButton color="accent">Day</BlessButton>
-      <BlessButton>Week</BlessButton>
-      <BlessButton>Month</BlessButton>
+    <BlessButtonGroup label="Zoom">
+      <BlessButton aria-label="Zoom out">−</BlessButton>
+      <BlessButton>100%</BlessButton>
+      <BlessButton aria-label="Zoom in">+</BlessButton>
     </BlessButtonGroup>
     <BlessButtonGroup orientation="vertical" label="Stack">
       <BlessButton size="sm">Top</BlessButton>
