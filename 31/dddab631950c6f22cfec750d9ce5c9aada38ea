@@ -1,0 +1,25 @@
+docs/components/progress.md
+  s_9ec1000e308ddb::t_dd20bee9989873 13
+src/components/BlessDisplay.test.ts
+  s_9ec1000e308ddb::t_dd20bee9989873 14-17
+src/components/BlessProgress.vue
+  s_9ec1000e308ddb::t_dd20bee9989873 53
+docs/demos/ProgressBasic.vue
+  s_9ec1000e308ddb::t_dd20bee9989873 10-19,22
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "31dddab631950c6f22cfec750d9ce5c9aada38ea",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
