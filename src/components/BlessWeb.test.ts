@@ -21,6 +21,11 @@ test("BlessCircularProgress: dashoffset follows value; indeterminate has no valu
     3,
   );
   expect(w.find(".bless-circular__value").text()).toBe("25%");
+  expect(w.attributes("aria-valuetext")).toBeUndefined();
+  const f = mount(BlessCircularProgress, {
+    props: { value: 3, max: 5, format: (v) => `${v} of 5` },
+  });
+  expect(f.attributes("aria-valuetext")).toBe("3 of 5");
   const i = mount(BlessCircularProgress);
   expect(i.attributes("aria-valuenow")).toBeUndefined();
   expect(i.classes()).toContain("bless-circular--indeterminate");
