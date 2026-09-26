@@ -14,10 +14,13 @@ const on = ref(false);
       <template #on>☾</template>
       <template #off>☀</template>
     </BlessSwap>
-    <BlessSwap label="Like" effect="flip">
+    <BlessSwap label="Liked" effect="flip">
       <template #on><span style="color: var(--bless-color-accent)">♥</span></template>
       <template #off>♡</template>
     </BlessSwap>
-    <BlessSwap label="Disabled" disabled />
+    <BlessSwap label="Muted" disabled>
+      <template #on>🔇</template>
+      <template #off>🔈</template>
+    </BlessSwap>
   </div>
 </template>

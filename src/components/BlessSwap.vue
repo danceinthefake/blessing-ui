@@ -49,6 +49,12 @@ const id = useFieldId(props);
   cursor: pointer;
   font-family: var(--bless-font-sans);
   color: var(--bless-color-text);
+  transition:
+    opacity var(--bless-duration-slow) var(--bless-ease-in-out),
+    var(--bless-lean-transition);
+}
+.bless-swap:hover:not(.bless-swap--disabled) {
+  opacity: var(--bless-hover-opacity);
 }
 .bless-swap__input {
   position: absolute;
