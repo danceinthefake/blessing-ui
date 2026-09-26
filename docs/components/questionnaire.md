@@ -12,11 +12,7 @@ import QuestionnaireBasic from "../demos/QuestionnaireBasic.vue";
 
 A short survey, one question at a time — onboarding questions, feedback, a quiz. For a form people fill in at once, use [Form](./form) with [Field](./form)s.
 
-## When to use
-
-A one-question-at-a-time form: onboarding, surveys, quizzes. Give it a list of questions and it handles the step header, the input for each type (single choice, multiple choice, free text), required-answer validation, skipping, keyboard shortcuts `1`–`9` for choices, and the progress bar. Answers collect into one object bound with `v-model`.
-
-For a form where the user should see all fields at once, use `BlessForm` + `BlessField`. For a wizard with arbitrary panels, use `BlessStepper`.
+It handles the step header, the input for each question type, required answers, skipping and the progress bar; answers collect into one object bound with `v-model`. For a wizard with arbitrary panels, [Stepper](./stepper).
 
 <Demo title="Basic">
   <QuestionnaireBasic />

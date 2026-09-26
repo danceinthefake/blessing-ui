@@ -12,9 +12,7 @@ import MessageScrollerBasic from "../demos/MessageScrollerBasic.vue";
 
 The scrolling transcript of a chat: it opens at the latest message, follows new ones while you're at the bottom, keeps your place while you read back, and loads history at the top.
 
-## When to use
-
-The viewport for a chat or activity feed. It follows new messages while you're at the bottom (including streamed, growing ones), stops following the moment you scroll up and offers a "↓ Latest" button instead, and loads older history without the list jumping when you reach the top. Pair it with `BlessMessage` and `BlessBubble` for the rows and `BlessMarker` for day separators and typing indicators.
+Streamed, growing replies are followed too. Pair it with [Message](./message) and [Bubble](./bubble) for the rows and [Marker](./marker) for day separators and typing indicators.
 
 <Demo title="Basic">
   <MessageScrollerBasic />
