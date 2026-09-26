@@ -191,7 +191,15 @@ test("BlessCombobox in an invalid field: styled invalid and reads the error", as
 });
 
 test("field controls look invalid when their BlessField has an error", async () => {
-  const names = ["Input", "Select", "Textarea", "InputNumber", "FileInput", "TimePicker"] as const;
+  const names = [
+    "Input",
+    "Select",
+    "Textarea",
+    "InputNumber",
+    "FileInput",
+    "TimePicker",
+    "Switch",
+  ] as const;
   for (const n of names) {
     const { default: C } = await import(`./Bless${n}.vue`);
     const w = mount(BlessField, {
