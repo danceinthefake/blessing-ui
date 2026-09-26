@@ -22,8 +22,9 @@ test("BlessBadge slot + color + scaled + outline", () => {
   expect(o.classes()).toContain("bless-badge--outline");
 });
 
-test("BlessDash is decorative", () => {
+test("BlessDash carries a word break, nothing else", () => {
   const w = mount(BlessDash, { props: { color: "muted" } });
-  expect(w.attributes("aria-hidden")).toBe("true");
+  expect(w.text()).toBe("");
+  expect(w.element.textContent).toBe(" ");
   expect(w.classes()).toContain("bless-dash--muted");
 });
