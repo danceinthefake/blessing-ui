@@ -12,25 +12,25 @@ The series is built on six ideas, each lived through several characters rather t
 
 | Thread                                 | The idea in the series                                                                                                 |
 | -------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| Archetype and authenticity             | A genre is a wardrobe of costumes. Being real is refusing to wear one, and being seen accurately by someone who looks. |
 | Art and love                           | Some callings ask you to leave the people who made you. The series refuses to call that only betrayal or only courage. |
-| Consumer becoming creator              | To love a story is to receive it; to make one is to answer for it. Passion has to become craft.                        |
+| Archetype and authenticity             | A genre is a wardrobe of costumes. Being real is refusing to wear one, and being seen accurately by someone who looks. |
 | Possibility and commitment             | A harem story lives on open doors. Growing up means finally closing them, and accepting the loss.                      |
-| Talent and the fear of being surpassed | Talent lifts the one who carries it and unsettles everyone beside it. A pupil repays a teacher by surpassing them.     |
+| Consumer becoming creator              | To love a story is to receive it; to make one is to answer for it. Passion has to become craft.                        |
 | Pride and belonging                    | Pride is armor, and armor keeps friends out. Belonging asks what we set down, and whether it was ever really us.       |
+| Talent and the fear of being surpassed | Talent lifts the one who carries it and unsettles everyone beside it. A pupil repays a teacher by surpassing them.     |
 
 ## As design rules
 
 Each thread becomes one rule a component can show: a shape, a behaviour, or a limit on what the library will do.
 
-| Thread                                 | Design idea                           | Concrete form                                                                                                                                                                                                                               |
-| -------------------------------------- | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Possibility and commitment             | Choosing fills; colour means chosen   | **Accent only on the committed.** Idle things are ink and outline; a chosen thing (selected, active, pressed, confirmed) fills with the accent. Where the colour is on a screen tells you what has been decided.                            |
-| Archetype and authenticity             | No costume; revealed to whoever looks | **Lean on attention.** At rest, controls stand upright and plain. On hover, focus or press they lean −10°, showing their character only to the person engaging with them. The lean is a response, not decoration.                           |
-| Pride and belonging                    | Armor apart, one shape together       | **Fuse when grouped.** Things that belong together share one continuous plate: button groups, an input with its add-ons, a selected date range, chips chosen together. Alone, each keeps its own edge; together, the inner edges disappear. |
-| Talent and the fear of being surpassed | Outgrowing the frame                  | **Overflow.** Big type (watermarks, hanging headlines, a finished progress bar) may break out of its container on purpose. Growth shows as exceeding a boundary, not filling one.                                                           |
-| Consumer becoming creator              | Reading turns into writing            | **Write on the page.** Fields look like lines you write on (an underline, a manuscript), and read-to-edit in place is a first-class pattern, not a separate component.                                                                      |
-| Art and love                           | Never break the people for the work   | **Care over spectacle.** Every motion can be interrupted and reversed; destructive actions prefer undo over a confirm dialog; reduced motion means instant; contrast wins over looks. Felt rather than seen, but stated as a rule.          |
+| Thread                                 | Design idea                           | Concrete form                                                                                                                                                                                                                                           |
+| -------------------------------------- | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Art and love                           | Never break the people for the work   | **Care over spectacle.** Every motion can be interrupted and reversed; destructive actions prefer undo over a confirm dialog; reduced motion means instant; contrast wins over looks. Felt rather than seen, but stated as a rule.                      |
+| Archetype and authenticity             | No costume; revealed to whoever looks | **Lean on attention.** At rest, controls stand upright and plain. On hover, focus or press they lean −10°, showing their character only to the person engaging with them. The lean is a response, not decoration.                                       |
+| Possibility and commitment             | Choosing fills; colour means chosen   | **Accent only on the committed.** Idle things are ink and outline; a chosen thing (selected, active, pressed, confirmed) fills with the accent. Where the colour is on a screen tells you what has been decided.                                        |
+| Consumer becoming creator              | Reading turns into writing            | **Write on the page.** Fields look like lines you write on (an underline, a manuscript), and read-to-edit in place is a first-class pattern, not a separate component.                                                                                  |
+| Pride and belonging                    | Armor apart, one shape together       | **Fuse when grouped.** Things that belong together share one continuous plate: button groups, an input with its add-ons, a selected date range, chips chosen together. Alone, each keeps its own edge; together, the inner edges disappear.             |
+| Talent and the fear of being surpassed | Outgrowing the frame                  | **Overflow.** Big type (watermarks, hanging headlines, a finished progress bar) may break out of its container on purpose. Growth shows as exceeding a boundary, not filling one. At most one thing overflows per screen, or it stops meaning anything. |
 
 ## A screen with all six at work
 
@@ -59,16 +59,16 @@ The threads are not equal. The series' title — raising a heroine who fits no t
 | Overrides all               | Art and love → care over spectacle                                                               | When rules conflict, care wins: the lean turns off under reduced motion, contrast beats looks, undo is preferred over a confirm dialog. |
 | Signature (every component) | Archetype and authenticity → lean on attention; Possibility and commitment → colour means chosen | The two rules that make the library recognisable.                                                                                       |
 | Core surface                | Consumer becoming creator → write on the page                                                    | Every input: underline fields and edit in place. The people using a UI library are themselves making something.                         |
-| Used sparingly              | Pride and belonging → fuse when grouped; Talent → overflow                                       | Only where the structure calls for it. Overflow at most once per screen, or it turns into spectacle and breaks the top level.           |
+| Used sparingly              | Pride and belonging → fuse when grouped; Talent → overflow                                       | Only where the structure calls for it. Overflow at most once per screen, or it turns into spectacle and breaks care over spectacle.     |
 
 ## Buttons
 
 "Colour means chosen" applies to main buttons too. A main button at rest is an option the page offers, not a choice the person has made; colouring it chooses for them, and the colourful call-to-action is the kind of stock costume the authenticity thread refuses.
 
-| Button    | At rest              | Hover / focus | Pressed / confirmed |
-| --------- | -------------------- | ------------- | ------------------- |
-| Main      | solid ink fill, bold | leans −10°    | fills with accent   |
-| Secondary | ink outline          | leans −10°    | fills with accent   |
+| Button    | At rest              | Hover             | Focus                   | Pressed / confirmed |
+| --------- | -------------------- | ----------------- | ----------------------- | ------------------- |
+| Main      | solid ink fill, bold | fades, leans −10° | leans −10°, accent ring | fills with accent   |
+| Secondary | ink outline          | fades, leans −10° | leans −10°, accent ring | fills with accent   |
 
 The main button stands out by weight (solid against outline), not by colour. On any screen, the only colour is what the user has chosen.
 
