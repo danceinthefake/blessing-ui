@@ -4,6 +4,7 @@ title: Toaster
 
 <script setup>
 import ToasterBasic from "../demos/ToasterBasic.vue";
+import ToasterUndo from "../demos/ToasterUndo.vue";
 </script>
 
 # Toaster
@@ -17,6 +18,17 @@ Short confirmations that come and go — saved, copied, sent. Nothing only in a 
   <template #code>
 
 <<< ../demos/ToasterBasic.vue
+
+  </template>
+</Demo>
+
+Undo over confirm: if an action can be reversed, do it and offer the way back.
+
+<Demo title="Undo">
+  <ToasterUndo />
+  <template #code>
+
+<<< ../demos/ToasterUndo.vue
 
   </template>
 </Demo>

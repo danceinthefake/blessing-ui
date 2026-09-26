@@ -10,7 +10,7 @@ import AlertDialogBasic from "../demos/AlertDialogBasic.vue";
 
 <p class="bless-lead">Confirm dialog</p>
 
-A question that must be answered before going on, usually before something that can't be undone — delete, discard, leave. For information that needs no answer, use a [Toast](./toaster) or an [Alert](./alert); for a quick confirm next to the button, [ConfirmPopup](./confirm-popup).
+A question that must be answered before going on, usually before something that can't be undone — delete, discard, leave. For information that needs no answer, use a [Toast](./toaster) or an [Alert](./alert); for a quick confirm next to the button, [ConfirmPopup](./confirm-popup). If the action can be reversed, don't ask: do it and offer **Undo** in a toast.
 
 <Demo title="Basic">
   <AlertDialogBasic />
