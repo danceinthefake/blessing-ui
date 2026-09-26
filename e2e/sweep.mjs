@@ -20,8 +20,8 @@ const pages = [
   ...readdirSync("docs/blocks")
     .filter((f) => f.endsWith(".md") && f !== "README.md")
     .map((f) => `/blocks/${f.replace(".md", "")}`),
-  "/stage-demo",
-  "/layout-demo",
+  "/stage-example",
+  "/layout-example",
 ];
 const ignore = [
   /favicon/,

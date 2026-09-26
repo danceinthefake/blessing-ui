@@ -169,7 +169,7 @@ await step("arrow keys move focus, Enter selects, PageDown changes month", async
 
 console.log("Layout (phone)");
 await page.setViewportSize({ width: 390, height: 800 });
-await go("/layout-demo");
+await go("/layout-example");
 await step("menu button opens drawer, Escape closes, header hides on scroll down", async () => {
   await page.getByRole("button", { name: "Menu" }).click();
   await page.waitForTimeout(400);

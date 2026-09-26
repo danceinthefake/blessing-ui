@@ -4,7 +4,7 @@ navbar: false
 sidebar: false
 aside: false
 footer: false
-title: Layout demo
+title: Layout — full page
 ---
 
 <script setup>

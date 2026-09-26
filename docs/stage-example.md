@@ -4,7 +4,7 @@ navbar: false
 sidebar: false
 aside: false
 footer: false
-title: Stage demo
+title: Stage — full page
 ---
 
 <script setup>
