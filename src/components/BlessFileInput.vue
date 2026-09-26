@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { nextTick, ref } from "vue";
 import { useFieldId, useFieldState } from "../composables/useFieldId";
 
 defineOptions({ name: "BlessFileInput", inheritAttrs: false });
@@ -45,9 +45,14 @@ function onDrop(e: DragEvent) {
   over.value = false;
   if (!props.disabled) take(e.dataTransfer?.files ?? null);
 }
-function remove(i: number) {
+const listEl = ref<HTMLElement>();
+// the focused × goes with its row: hand focus to the next row's ×, or back to the input
+async function remove(i: number) {
   model.value = model.value.filter((_, k) => k !== i);
   if (input.value) input.value.value = "";
+  await nextTick();
+  const xs = listEl.value?.querySelectorAll<HTMLButtonElement>(".bless-file__remove") ?? [];
+  (xs[Math.min(i, xs.length - 1)] ?? input.value)?.focus();
 }
 const kb = (n: number) =>
   n < 1024
@@ -92,7 +97,7 @@ const kb = (n: number) =>
       >
       <span v-if="hint" class="bless-file__hint">{{ hint }}</span>
     </label>
-    <ul role="list" v-if="list && model.length" class="bless-file__list">
+    <ul role="list" v-if="list && model.length" ref="listEl" class="bless-file__list">
       <li v-for="(f, i) in model" :key="f.name + i" class="bless-file__item">
         <span class="bless-file__name">{{ f.name }}</span>
         <span class="bless-file__size">{{ kb(f.size) }}</span>
@@ -143,7 +148,7 @@ const kb = (n: number) =>
   border-color: var(--bless-color-accent-text);
   border-style: solid;
 }
-.bless-file__zone:focus-within {
+.bless-file__zone:has(:focus-visible) {
   outline: 2px solid var(--bless-color-accent);
   outline-offset: 2px;
 }
@@ -209,8 +214,9 @@ const kb = (n: number) =>
   font-size: var(--bless-text-md);
   line-height: 1;
   cursor: pointer;
+  transition: opacity var(--bless-duration-slow) var(--bless-ease-in-out);
 }
 .bless-file__remove:hover {
-  color: var(--bless-color-danger-text);
+  opacity: var(--bless-hover-opacity);
 }
 </style>

@@ -246,3 +246,23 @@ test("BlessPaletteToggle: showDefault includes or leaves out the default swatch"
   const all = mount(P).findAll("button").length;
   expect(mount(P, { props: { showDefault: false } }).findAll("button")).toHaveLength(all - 1);
 });
+
+test("BlessFileInput: removing a file hands focus to the next ×, then to the input", async () => {
+  const a = new File(["a"], "a.png", { type: "image/png" });
+  const b = new File(["b"], "b.png", { type: "image/png" });
+  const w = mount(BlessFileInput, {
+    props: { multiple: true, modelValue: [a, b] },
+    attachTo: document.body,
+  });
+  const first = w.findAll(".bless-file__remove")[0];
+  (first.element as HTMLElement).focus();
+  await first.trigger("click");
+  await w.setProps({ modelValue: [b] });
+  await new Promise((r) => setTimeout(r));
+  expect(document.activeElement?.getAttribute("aria-label")).toBe("Remove b.png");
+  await w.find(".bless-file__remove").trigger("click");
+  await w.setProps({ modelValue: [] });
+  await new Promise((r) => setTimeout(r));
+  expect(document.activeElement).toBe(w.find("input").element);
+  w.unmount();
+});
