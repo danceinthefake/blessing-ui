@@ -144,6 +144,10 @@ th.bless-table__cell {
     border: 0;
     text-align: start;
   }
+  /* stacked, an empty cell would be a label with nothing after it: leave it out */
+  .bless-table--stack .bless-table__cell:empty {
+    display: none;
+  }
   .bless-table--stack .bless-table__cell::before {
     content: attr(data-label);
     flex: 0 0 7em;
