@@ -96,3 +96,25 @@ test("BlessTooltip stays while the pointer moves onto it", async () => {
   expect(tip.attributes("data-open")).toBeDefined();
   w.unmount();
 });
+
+test("BlessTooltip: Esc hides a hover-opened tip wherever focus is; joins an existing description", async () => {
+  vi.useFakeTimers();
+  const w = mount(BlessTooltip, {
+    props: { text: "hint", delay: 10 },
+    slots: { default: '<button aria-describedby="own">b</button>' },
+    attachTo: document.body,
+  });
+  const tipId = w.find('[role="tooltip"]').attributes("id");
+  expect(w.find("button").attributes("aria-describedby")).toBe(`own ${tipId}`);
+  await w.find(".bless-tooltip__anchor").trigger("mouseenter");
+  vi.advanceTimersByTime(20);
+  await nextTick();
+  await nextTick();
+  expect(w.find(".bless-tooltip").attributes("data-open")).toBeDefined();
+  document.body.dispatchEvent(new KeyboardEvent("keydown", { key: "Escape", bubbles: true }));
+  await nextTick();
+  await nextTick();
+  expect(w.find(".bless-tooltip").attributes("data-open")).toBeUndefined();
+  vi.useRealTimers();
+  w.unmount();
+});
