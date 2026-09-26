@@ -8,13 +8,9 @@ title: Stage
 
 The page frame of an official site: a fixed sidebar beside the content on wide screens, a drawer behind a menu button on phones, and an optional background and footer. Use it once, at the root of a page.
 
-`BlessStage` owns the viewport, so it can't sit inside a doc page. Open the full-page demo:
+`BlessStage` owns the viewport, so it can't sit inside a doc page:
 
-<script setup>
-import { withBase } from "vitepress";
-</script>
-
-<p><a class="VPButton medium brand" :href="withBase('/stage-demo')" target="_blank" style="display:inline-block;padding:0 20px;line-height:38px;color:var(--bless-color-on-accent);background:var(--bless-color-accent);text-decoration:none">Open Stage demo ↗</a></p>
+[Open Stage on a page of its own ↗](/stage-example){target="_blank"}
 
 <<< ../demos/StageFull.vue
 
