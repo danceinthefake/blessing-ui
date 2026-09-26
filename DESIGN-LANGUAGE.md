@@ -1,6 +1,6 @@
 # Blessing UI — design language (proposal)
 
-Status: **proposal, not adopted.** Nothing here is implemented in the library yet. Decisions still open are listed at the end.
+Status: **direction approved, not yet implemented.** The prototype behaviours and the leaning-flower mark are accepted; nothing here is in the library yet. Decisions still open are listed at the end.
 
 Blessing UI takes the six philosophical threads of _Saekano_ as its design rules. At rest it is calm and upright; a control leans when you look at it, fills with colour when you choose it, and fuses with its neighbours when it belongs to a group. The threads are abstract principles here — they are not tied to any character, palette or colour.
 
@@ -45,7 +45,7 @@ This keeps the library recognisable even as a single button inside someone else'
 The mark comes from blessing software's own logo in the series: a colourful, circular five-petal flower. It is redrawn in the system's terms rather than copied — five teardrop petals, each sharp at the centre and soft outside, around an empty middle.
 
 1. **The flower** (upright): the circle's logo, redrawn.
-2. **The leaning flower** (lead option): the same petals with the house −10° lean, so the flower turns slightly.
+2. **The leaning flower** (chosen — the primary mark): the same petals with the house −10° lean, so the flower turns slightly.
 3. **Ink, one chosen:** for small sizes and one-colour use — the flower in ink with one petal in the accent (colour means chosen).
 
 The earlier mark, five skewed plates in a ring, is built from the system but no longer reads as a flower. Abstract marks (an open plate, woven threads, an overflowing B) were tried and set aside: the mark should come from blessing software's flower.
@@ -60,5 +60,5 @@ The earlier mark, five skewed plates in a ring, is built from the system but no 
 ## Open decisions
 
 - [ ] Does "colour means chosen" apply to primary buttons, or do they keep the accent at rest?
-- [ ] Which flower to develop: upright, leaning, or the ink version as the primary mark?
+- [x] Which flower to develop: **the leaning flower** is the primary mark; the ink version stays for small and one-colour use.
 - [ ] Which threads, if any, to weight differently before implementation?
