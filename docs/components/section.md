@@ -11,7 +11,7 @@ import SectionHanging from "../demos/SectionHanging.vue";
 
 <p class="bless-lead">Titled block with giant skewed word</p>
 
-A titled region of a page — News, Staff, Story — in the system's voice: a skewed label or a hanging headline, and optionally the giant faint word behind it. Use one per top-level part of a page; for a titled box inside a section, [Panel](./panel).
+A titled region of a page — News, Staff, Story — in the system's voice: a small upright label or a hanging headline, and optionally the giant faint word behind it. Use one per top-level part of a page; for a titled box inside a section, [Panel](./panel).
 
 <Demo title="Basic">
   <SectionBasic />
