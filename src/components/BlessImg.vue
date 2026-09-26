@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { onMounted, ref } from "vue";
+import { onMounted, ref, watch } from "vue";
 import BlessSkeleton from "./BlessSkeleton.vue";
 
 defineOptions({ name: "BlessImg" });
 
-withDefaults(
+const props = withDefaults(
   defineProps<{
     src: string;
     alt: string;
@@ -25,6 +25,11 @@ const failed = ref(false);
 const img = ref<HTMLImageElement>();
 // server-rendered: a cached image can finish before the load listener exists, and the skeleton
 // would then sit over it forever. Read its state once mounted.
+// a new src starts over: an error or a load belongs to the old image
+watch(
+  () => props.src,
+  () => ((loaded.value = false), (failed.value = false)),
+);
 onMounted(() => {
   const el = img.value;
   if (el?.complete) el.naturalWidth ? (loaded.value = true) : el.src && (failed.value = true);
