@@ -41,7 +41,7 @@ The source is a marketing site; a library has to do more. Everything below is ou
 
 ## What was bent
 
-One thing, on purpose. The site never rounded a corner, and neither does anything the site had: buttons, tags, fields, cards, menus stay cut. But a library has things the site didn't — avatars, switches, chips, chat bubbles, thumbs — and those are round everywhere else for a reason. They are **petal** here: the same leaning plate with only its two sharp tips rounded, soft body and one point, the shape of the circle's flower. Two corners, one [rule](./conventions#shape-cut-or-petal). The franchise's own film site (saenai-movie.com, 2019) went soft two years after the TV site — pill tags, underlined buttons, no skew; we went halfway, and kept the lean. The mark stays cut.
+One thing, on purpose. The site never rounded a corner, and neither does the library — not even the parts that are round everywhere else (avatars, switches, chips, chat bubbles, thumbs). For a while those were a **petal**, a leaning plate with its two sharp tips rounded; once plates stood upright at rest the petal read as a leaf, so they went square too, and the teardrop moved to where it came from: the mark. The franchise's own film site (saenai-movie.com, 2019) went soft two years after the TV site — pill tags, underlined buttons, no skew; we kept the square and made the lean a response.
 
 ## What was not taken
 

@@ -57,17 +57,10 @@ Care overrides every other rule here — when looks and care disagree, care wins
 - **Nothing blurs.** A floating surface sits on `--bless-shadow-plate`, a 1px accent offset. Modals and sheets rely on the scrim.
 - **Type**: thin for the voice, bold tracked uppercase for the UI. Body is `--bless-text-md`; nothing smaller than `2xs` (8px) and that only on badges.
 
-## Shape: cut or petal
+## Shape
 
-Plates stand upright at rest and lean to `--bless-lean` (−10°) on attention — a control while it is hovered, focused or pressed, a field while you write in it; only big display type (the watermark) leans at rest. There are two corners a plate can have, and one rule for which:
+One shape: the upright plate with a whole, square outline. Buttons, tabs, tags, fields, cards, menus — and the parts that are round anywhere else (avatars, switches, chips, chat bubbles, fabs, slider thumbs, count dots) — are all square. The identity is the lean on attention, not the corners; the teardrop belongs to the [mark](./brand#mark).
 
-|           | Shape                                                                                                          | Rule                                                               | Where                                                                                                                                  |
-| --------- | -------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------- |
-| **Cut**   | sharp on all four corners                                                                                      | **If the source site had it, or it's a box or a label, it's cut.** | buttons, tabs, tags, badges, fields, pickers, steps, pagination, cards, panels, menus, popovers, tables, alerts, toasts, the watermark |
-| **Petal** | only the two acute corners rounded (`--bless-radius-petal`) — soft body, sharp point, like the circle's flower | **If it's ours and round by nature, it's petal.**                  | avatars, switches, chips, chat bubbles, fabs (speed dial, scroll-top, jump), slider and range thumbs, count dots                       |
-
-Tests for a new component: _would a user expect this to be round anywhere else?_ A face, a toggle, a removable token, a speech bubble, a thumb you drag — yes, petal. A thing you read or press — cut. When unsure, cut; petal is the exception, and the exception is what makes it read.
-
-Never: a full circle, a fully rounded plate, or a petal on a label. `--bless-radius` and `--bless-radius-plate` exist at `0` for consumers who want to round the rest; the library itself never sets them.
+Never: a full circle or a rounded plate from the library itself. `--bless-radius`, `--bless-radius-plate` and `--bless-petal` exist at `0` for consumers who want rounding — `--bless-petal: 8px` brings back two rounded opposite corners on the round-by-nature parts.
 
 See [DESIGN.md](https://github.com/danceinthefake/blessing-ui/blob/main/DESIGN.md) for the roadmap and the reasoning behind each phase.

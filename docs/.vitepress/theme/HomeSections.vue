@@ -40,7 +40,7 @@ const blocks = [
       </BlessText>
     </div>
     <div class="hs__strip">
-      <BlessButton color="accent">Sign in</BlessButton>
+      <BlessButton>Sign in</BlessButton>
       <BlessButton variant="outline">Cancel</BlessButton>
       <BlessBadge>NEW!</BlessBadge>
       <BlessChip label="megumi" removable />
