@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { inject } from "vue";
-import { useFieldId } from "../composables/useFieldId";
+import { joinIds, useFieldId } from "../composables/useFieldId";
 import { radioKey } from "./radio";
 
 defineOptions({ name: "BlessRadio", inheritAttrs: false });
@@ -30,7 +30,9 @@ const id = useFieldId(props);
       :checked="group ? group.model.value === value : undefined"
       :disabled="disabled || group?.disabled.value"
       class="bless-radio__input"
-      :aria-describedby="description ? `${id()}-desc` : undefined"
+      :aria-describedby="
+        joinIds(description && `${id()}-desc`, $attrs['aria-describedby'] as string)
+      "
       @change="group && (group.model.value = value)"
     />
     <span class="bless-radio__dot" aria-hidden="true" />
