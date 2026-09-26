@@ -41,8 +41,7 @@ withDefaults(
 .bless-mockup--dark {
   --_frame: var(--bless-color-media-bg);
   --_fg: #9aa4ad;
-  --_title: #e8e9ea;
-  border-color: transparent;
+  --_title: #e8e9ea; /* keeps the border: on a dark page the frame would otherwise vanish */
 }
 .bless-mockup__chrome {
   display: flex;

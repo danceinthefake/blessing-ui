@@ -14,7 +14,10 @@ import { BlessButton, BlessMockup, BlessText } from "blessing-ui";
       <pre style="margin: 0; padding: 12px; font-size: 12px">$ pnpm add blessing-ui</pre>
     </BlessMockup>
     <BlessMockup type="phone" style="width: 200px">
-      <div style="padding: 16px; font-size: 12px">phone</div>
+      <div style="padding: 16px; font-size: 12px">
+        <BlessText as="p" weight="bold">第1話</BlessText>
+        <BlessText as="p" size="xs" muted>冴えないヒロインの育てかた · 24:00</BlessText>
+      </div>
     </BlessMockup>
   </div>
 </template>
