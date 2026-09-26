@@ -3,6 +3,16 @@ import { fileURLToPath } from "node:url";
 import { groups } from "./components";
 import blocks from "./blocks.json" with { type: "json" };
 
+// groups are hand-ordered (coarse → fine); inside a group, alphabetical — the one order a
+// stranger can predict. The nav's Components link opens the first page of that order.
+const componentSidebar = groups.map((g) => ({
+  text: g.title,
+  collapsed: false,
+  items: [...g.items]
+    .sort((a, b) => a.name.localeCompare(b.name))
+    .map((i) => ({ text: i.name.replace(/^Bless/, ""), link: `/components/${i.slug}` })),
+}));
+
 const src = (p: string) => fileURLToPath(new URL(`../../src/${p}`, import.meta.url));
 
 export default defineConfig({
@@ -51,7 +61,7 @@ export default defineConfig({
     siteTitle: "Blessing",
     nav: [
       { text: "Guide", link: "/guide/install" },
-      { text: "Components", link: "/components/button" },
+      { text: "Components", link: componentSidebar[0].items[0].link },
       { text: "Blocks", link: "/blocks/" },
       { text: "Design", link: "/design/" },
     ],
@@ -98,18 +108,7 @@ export default defineConfig({
           ],
         },
       ],
-      "/components/": groups.map((g) => ({
-        text: g.title,
-        collapsed: false,
-        // groups are hand-ordered (coarse → fine); inside a group, alphabetical — the one order a
-        // stranger can predict
-        items: [...g.items]
-          .sort((a, b) => a.name.localeCompare(b.name))
-          .map((i) => ({
-            text: i.name.replace(/^Bless/, ""),
-            link: `/components/${i.slug}`,
-          })),
-      })),
+      "/components/": componentSidebar,
     },
     search: { provider: "local" },
     socialLinks: [{ icon: "github", link: "https://github.com/danceinthefake/blessing-ui" }],
