@@ -1,6 +1,6 @@
 # Blessing UI — design document
 
-Generic Vue 3 UI library. Visual language re-derived from saenai.tv (the reverse-engineered notes are kept outside this repo; the story is in docs/guide/story): grey-scale UI, one accent family (Megumi's pink by default, five more by `data-palette`), skewed labels instead of rounded corners, thin oversized watermark type, opacity-fade hovers.
+Generic Vue 3 UI library. Visual language re-derived from saenai.tv (the reverse-engineered notes are kept outside this repo; the story is in docs/design/story): grey-scale UI, one accent family (Megumi's pink by default, five more by `data-palette`), upright square plates that lean on attention, thin oversized watermark type, opacity-fade hovers.
 
 ## 1. Principles
 
@@ -295,7 +295,7 @@ Tooling: Vite + `vite-plugin-dts`, Vitest + `@vue/test-utils` (one smoke test pe
 
 ## 7. Open questions
 
-- **Design language rework (proposal, 2026-09-26):** the six philosophical threads of the series as design rules — open corner, lean on attention, colour means chosen, fuse when grouped, overflow, care over spectacle — and a new mark. Would replace the cut/petal shape rule below. See [DESIGN-LANGUAGE.md](./DESIGN-LANGUAGE.md); open decisions listed there.
+- ✅ **Design language (implemented, 2026-09-26):** the six philosophical threads of the series as design rules — lean on attention, colour means chosen, fuse when grouped, overflow once, write on the page, care over spectacle — one square plate everywhere, and the leaning-flower mark. Docs: the Design section (`docs/design/`); build record in [DESIGN-LANGUAGE.md](./DESIGN-LANGUAGE.md).
 
 - ~~`ponytail:` ceilings~~ all lifted ✅: Tree arrow-key navigation, VirtualScroller `dynamic` (measured heights), DataTable / useDataTable `server` mode (`state` event, `total`), useFloating `boundary` + `arrow` (Tooltip always, Popover opt-in).
 - ~~Straight / rounded variant~~ → cut + petal merged into one default (2026-09-21); upright variant rejected.

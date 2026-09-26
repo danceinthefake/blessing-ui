@@ -1,10 +1,10 @@
-# Blessing UI — design language (proposal)
+# Blessing UI — design language
 
 Status: **implemented.** All seven build steps below are in the library (September 2026). Decisions still open are listed at the end.
 
 Blessing UI takes the six philosophical threads of _Saekano_ as its design rules. At rest it is calm and upright; a control leans when you look at it, fills with colour when you choose it, and fuses with its neighbours when it belongs to a group. The threads are abstract principles here — they are not tied to any character, palette or colour.
 
-Interactive prototype of these behaviours: [Blessing Threads](https://claude.ai/artifact/RR9MxcvFCFhRSp7C9REYLn) (private).
+The user-facing version is the [Design language](https://danceinthefake.github.io/blessing-ui/design/) page of the docs; this file keeps the build record.
 
 ## The six threads
 

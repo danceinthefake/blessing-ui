@@ -4,7 +4,7 @@
 import { BlessPaletteToggle, BlessButton, BlessBadge, BlessSwitch, BlessProgress, BlessSidebarNav } from "blessing-ui";
 </script>
 
-The accent is Megumi's pink by default. Five more accent families are one switch away — the other petals of the mark, plus the one at its centre. Each is named after a member of the circle the library is named for (the [story](./story)). A palette swaps only the accent family; greys, type and geometry stay, and dark mode composes on top.
+The accent is Megumi's pink by default. Five more accent families are one switch away — the other petals of the mark, plus the one at its centre. Each is named after a member of the circle the library is named for (the [story](../design/story)). A palette swaps only the accent family; greys, type and geometry stay, and dark mode composes on top.
 
 <div style="margin:16px 0"><BlessPaletteToggle /></div>
 

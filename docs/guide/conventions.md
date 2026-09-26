@@ -40,7 +40,7 @@ What holds across all 144 components. If a component breaks one of these, it's a
 
 ## Care
 
-Care overrides every other rule here — when looks and care disagree, care wins ([design language](https://github.com/danceinthefake/blessing-ui/blob/main/DESIGN-LANGUAGE.md)).
+Care overrides every other rule here — when looks and care disagree, care wins ([design language](../design/)).
 
 - **Motion can always be interrupted.** Transitions reverse from where they are; nothing waits for an animation to finish before responding. Anything that moves on its own stops for the person: carousel autoplay pauses on hover and focus, toasts pause while pointed at or focused, the splash skips on click or `Esc`.
 - **Reduced motion means instant.** Durations collapse to `0s`; scripted motion (smooth scrolls, autoplay, height animation, the splash) checks `reducedMotion()` from `composables/useMedia` and skips.
@@ -59,7 +59,7 @@ Care overrides every other rule here — when looks and care disagree, care wins
 
 ## Shape
 
-One shape: the upright plate with a whole, square outline. Buttons, tabs, tags, fields, cards, menus — and the parts that are round anywhere else (avatars, switches, chips, chat bubbles, fabs, slider thumbs, count dots) — are all square. The identity is the lean on attention, not the corners; the teardrop belongs to the [mark](./brand#mark).
+One shape: the upright plate with a whole, square outline. Buttons, tabs, tags, fields, cards, menus — and the parts that are round anywhere else (avatars, switches, chips, chat bubbles, fabs, slider thumbs, count dots) — are all square. The identity is the lean on attention, not the corners; the teardrop belongs to the [mark](../design/brand#mark).
 
 Never: a full circle or a rounded plate from the library itself. `--bless-radius`, `--bless-radius-plate` and `--bless-petal` exist at `0` for consumers who want rounding — `--bless-petal: 8px` brings back two rounded opposite corners on the round-by-nature parts.
 
