@@ -1,0 +1,21 @@
+src/components/BlessTree.vue
+  s_9ec1000e308ddb::t_a55d17d8f7acf1 149-152
+src/components/BlessTreeTable.vue
+  s_9ec1000e308ddb::t_10d8f5801ded14 96-97,107-112,118-120
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "5d6a9f487b2156a28eaca62a2e37c824cad372ef",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
