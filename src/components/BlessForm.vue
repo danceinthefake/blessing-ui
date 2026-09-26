@@ -49,7 +49,8 @@ function onSubmit(e: SubmitEvent) {
   if (!f.checkValidity()) {
     e.preventDefault();
     emit("invalid", f);
-    f.querySelector<HTMLElement>(":invalid")?.focus();
+    // a fieldset around an invalid control matches :invalid too, and comes first — skip it
+    f.querySelector<HTMLElement>(":invalid:not(fieldset)")?.focus();
     return;
   }
   e.preventDefault();

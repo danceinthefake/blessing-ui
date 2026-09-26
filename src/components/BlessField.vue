@@ -22,8 +22,12 @@ const id = props.id ?? uid;
 const nativeError = ref("");
 const form = inject(blessFormKey, undefined);
 const shownError = computed(() => props.error || nativeError.value);
-const describedby = computed(() =>
-  shownError.value ? `${id}-err` : props.description ? `${id}-desc` : undefined,
+// the description stays while an error shows ("3–12 chars" is what fixes "too short"), so both are read
+const describedby = computed(
+  () =>
+    [props.description && `${id}-desc`, shownError.value && `${id}-err`]
+      .filter(Boolean)
+      .join(" ") || undefined,
 );
 // the first control inside takes this id, the invalid flag and the describedby — no v-slot wiring
 provideField(
@@ -62,16 +66,12 @@ watch(
       class="bless-field__label"
       >{{ label }}</BlessLabel
     >
-    <slot
-      :id
-      :error="error || nativeError"
-      :describedby="error || nativeError ? `${id}-err` : description ? `${id}-desc` : undefined"
-    />
-    <p v-if="error || nativeError" :id="`${id}-err`" class="bless-field__error" role="alert">
-      {{ error || nativeError }}
-    </p>
-    <p v-else-if="description" :id="`${id}-desc`" class="bless-field__description">
+    <slot :id :error="error || nativeError" :describedby />
+    <p v-if="description" :id="`${id}-desc`" class="bless-field__description">
       {{ description }}
+    </p>
+    <p v-if="shownError" :id="`${id}-err`" class="bless-field__error" role="alert">
+      {{ shownError }}
     </p>
   </div>
 </template>

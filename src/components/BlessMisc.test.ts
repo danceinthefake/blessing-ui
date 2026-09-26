@@ -132,7 +132,7 @@ test("BlessField wires label/id and surfaces native validation message", async (
   expect(w.find('[role="alert"]').exists()).toBe(false);
   await input.trigger("invalid");
   expect(w.find('[role="alert"]').exists()).toBe(true);
-  expect(w.find(".bless-field__description").exists()).toBe(false);
+  expect(w.find(".bless-field__description").exists()).toBe(true); // the hint stays under the error
   // the control got the field's wiring without v-slot
   expect(w.find("input").attributes("aria-describedby")).toBeUndefined(); // plain <input>: not a Bless control
   await w.setProps({ error: "custom" });
@@ -202,4 +202,31 @@ test("field controls look invalid when their BlessField has an error", async () 
     const own = w.findAll('[class*="--invalid"]').filter((e) => !e.classes("bless-field--invalid"));
     expect(own.length, n).toBeGreaterThan(0);
   }
+});
+
+test("BlessField keeps its description under an error and both are read", () => {
+  const w = mount(BlessField, {
+    props: { label: "Handle", description: "3–12 chars", error: "Too short" },
+    slots: { default: () => h("input") },
+  });
+  expect(w.text()).toContain("3–12 chars");
+  expect(w.text()).toContain("Too short");
+  const slot = mount(BlessField, {
+    props: { description: "d", error: "e" },
+    slots: {
+      default: (p: { describedby: string }) => h("input", { "aria-describedby": p.describedby }),
+    },
+  });
+  const ids = slot.find("input").attributes("aria-describedby")!.split(" ");
+  expect(ids.map((i) => slot.find(`[id="${i}"]`).text())).toEqual(["d", "e"]);
+});
+
+test("BlessForm focuses the first invalid control, not the fieldset around it", async () => {
+  const w = mount(BlessForm, {
+    slots: { default: () => h("fieldset", [h("input", { name: "a", required: true })]) },
+    attachTo: document.body,
+  });
+  await w.find("form").trigger("submit");
+  expect(document.activeElement?.tagName).toBe("INPUT");
+  w.unmount();
 });
