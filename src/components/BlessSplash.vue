@@ -21,11 +21,14 @@ const emit = defineEmits<{ done: [] }>();
 const show = ref(false);
 let timer: ReturnType<typeof setTimeout> | undefined;
 const skip = ref<HTMLButtonElement>();
+let before: HTMLElement | null = null;
 
 function dismiss() {
   if (!show.value) return;
   clearTimeout(timer);
   show.value = false;
+  // Skip goes with the splash: hand focus back to where it was, if anywhere
+  if (before && before !== document.body && before.isConnected) before.focus();
   if (props.once) {
     try {
       localStorage.setItem(props.once, "1");
@@ -44,6 +47,7 @@ onMounted(() => {
   if (seen) return;
   if (reducedMotion()) return emit("done");
   show.value = true;
+  before = document.activeElement as HTMLElement | null;
   // a modal dialog takes focus: onto Skip, so Enter or Esc leaves at once
   nextTick(() => skip.value?.focus());
   if (props.duration > 0) timer = setTimeout(dismiss, props.duration);
