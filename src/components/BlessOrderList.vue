@@ -163,6 +163,12 @@ function step(i: number, d: -1 | 1) {
   font: inherit;
   cursor: pointer;
   transform: skewX(var(--bless-skew));
+  transition:
+    opacity var(--bless-duration-slow) var(--bless-ease-in-out),
+    var(--bless-lean-transition);
+}
+.bless-order__btns button:hover:not(:disabled) {
+  opacity: var(--bless-hover-opacity);
 }
 .bless-order__btns button:disabled {
   opacity: 0.3;
