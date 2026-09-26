@@ -165,7 +165,7 @@
   font-size: 10px;
   font-weight: var(--bless-font-weight-bold);
   letter-spacing: var(--bless-tracking-wider);
-  transform: skewX(var(--bless-skew));
+  transform: skewX(var(--bless-lean)); /* display: leans at rest */
 }
 .VPNavBarTitle .logo {
   height: 26px;
