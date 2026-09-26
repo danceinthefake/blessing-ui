@@ -1,0 +1,27 @@
+src/components/BlessCascadeSelect.vue
+  s_9ec1000e308ddb::t_825c79ed7c5cd9 2,131,133-134,176
+src/components/BlessTreeSelect.vue
+  s_9ec1000e308ddb::t_67a92694f4ad74 34-35,37-43
+src/components/BlessExtras.test.ts
+  s_9ec1000e308ddb::t_abee8c2029d549 271-278
+src/components/BlessTreeItem.vue
+  s_9ec1000e308ddb::t_76c346172fd147 36-41
+docs/components/tree.md
+  s_9ec1000e308ddb::t_abee8c2029d549 24
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "c115250e8e5abc2fb85e0af2d74c4df04ec333fd",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
