@@ -222,7 +222,7 @@ test("BlessField keeps its description under an error and both are read", () => 
   const slot = mount(BlessField, {
     props: { description: "d", error: "e" },
     slots: {
-      default: (p: { describedby: string }) => h("input", { "aria-describedby": p.describedby }),
+      default: (p: { describedby?: string }) => h("input", { "aria-describedby": p.describedby }),
     },
   });
   const ids = slot.find("input").attributes("aria-describedby")!.split(" ");

@@ -70,6 +70,9 @@ function onClose() {
 // a click on the backdrop closes, but only if the press started there too: a text selection
 // dragged out of the panel ends in a click on the dialog and must not close it
 let downOnBackdrop = false;
+function onBackdropDown(e: PointerEvent) {
+  downOnBackdrop = e.target === dialog.value;
+}
 function onBackdrop(e: MouseEvent) {
   if (props.dismissible && downOnBackdrop && e.target === dialog.value) open.value = false;
 }
@@ -91,7 +94,7 @@ const titleId = `${useId()}-title`;
     :aria-labelledby="title || $slots.title ? titleId : undefined"
     @close="onClose"
     @cancel.prevent="open = false"
-    @pointerdown="downOnBackdrop = $event.target === dialog"
+    @pointerdown="onBackdropDown"
     @click="onBackdrop"
   >
     <div class="bless-modal__panel" tabindex="-1">
