@@ -12,7 +12,7 @@ import InputStates from "../demos/InputStates.vue";
 
 <p class="bless-lead">Text-like input</p>
 
-One line of text. Multi-line is [Textarea](./textarea); a number with step and format is [InputNumber](./input-number); a fixed pattern is [InputMask](./input-mask); a secret is [PasswordInput](./password-input); a list of values is [InputTags](./input-tags).
+One line of text. Multi-line is [Textarea](./textarea); a number with step and format is [InputNumber](./input-number); a fixed pattern is [InputMask](./input-mask); a secret is [PasswordInput](./password-input); a list of values is [InputTags](./input-tags). A value people mostly read and only sometimes change — a title, a name — is [Inplace](./inplace): text until clicked, then this field, with no separate edit screen.
 
 <Demo title="Basic">
   <InputBasic />
