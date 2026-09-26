@@ -201,6 +201,20 @@ test("BlessToolbar / BlessFloatLabel / BlessFieldset / BlessPanel render + toggl
   expect(p.emitted("update:collapsed")![0]).toEqual([true]);
 });
 
+test("BlessMeterGroup reads its total in the reader's units", () => {
+  const segments = [
+    { label: "a", value: 30 },
+    { label: "b", value: 45 },
+  ];
+  const w = mount(BlessMeterGroup, { props: { segments, max: 100, format: (v) => `${v} GB` } });
+  expect(w.find('[role="meter"]').attributes("aria-valuetext")).toBe("75 GB of 100 GB");
+  expect(
+    mount(BlessMeterGroup, { props: { segments } })
+      .find('[role="meter"]')
+      .attributes("aria-valuetext"),
+  ).toBe("75");
+});
+
 test("BlessMeterGroup sizes segments by share", () => {
   const w = mount(BlessMeterGroup, {
     props: {

@@ -30,6 +30,11 @@ const col = (s: BlessMeterSegment, i: number) => {
 };
 const pct = (s: BlessMeterSegment) => (total.value ? (s.value / total.value) * 100 : 0);
 const fmt = (v: number) => (props.format ?? String)(v);
+const sum = computed(() => props.segments.reduce((a, s) => a + s.value, 0));
+// read as the reader sees it: "75 GB of 100 GB", not "75"
+const valuetext = computed(() =>
+  props.max == null ? fmt(sum.value) : `${fmt(sum.value)} of ${fmt(props.max)}`,
+);
 </script>
 
 <template>
@@ -38,7 +43,8 @@ const fmt = (v: number) => (props.format ?? String)(v);
       class="bless-metergroup__bar"
       role="meter"
       :aria-label="label"
-      :aria-valuenow="segments.reduce((a, s) => a + s.value, 0)"
+      :aria-valuenow="sum"
+      :aria-valuetext="valuetext"
       aria-valuemin="0"
       :aria-valuemax="total"
     >
