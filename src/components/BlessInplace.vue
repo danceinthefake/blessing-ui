@@ -82,15 +82,20 @@ function close() {
   gap: var(--bless-space-2);
 }
 .bless-inplace__close {
+  min-width: 24px;
+  min-height: 24px;
   border: 0;
   background: none;
   color: var(--bless-color-text-muted);
   font: inherit;
   font-size: var(--bless-text-md);
   cursor: pointer;
+  transition:
+    opacity var(--bless-duration-slow) var(--bless-ease-in-out),
+    var(--bless-lean-transition);
 }
 .bless-inplace__close:hover {
-  color: var(--bless-color-danger-text);
+  opacity: var(--bless-hover-opacity);
 }
 .bless-inplace--disabled {
   opacity: 0.4;
