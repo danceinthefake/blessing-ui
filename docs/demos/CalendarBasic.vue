@@ -2,7 +2,7 @@
 import { ref } from "vue";
 import { BlessCalendar, BlessText } from "blessing-ui";
 const day = ref<string | undefined>("2019-09-25");
-const stay = ref<[string, string]>();
+const stay = ref<[string, string]>(["2019-09-10", "2019-09-16"]);
 </script>
 
 <template>
