@@ -50,6 +50,7 @@ Care overrides every other rule here — when looks and care disagree, care wins
 ## Look
 
 - **Colour means chosen.** Idle things are ink and outline; the accent appears only on what is selected, active, open, pressed or done (a checked box, the current tab, the filled part of a progress bar). The focus ring stays accent. Main buttons are solid ink and fill with the accent while pressed. `color="accent"` props remain for consumers, but the library never defaults to them at rest.
+- **Fuse when grouped.** Things that belong together share one plate: a ButtonGroup is one outline and leans as one, an InputGroup is one field, toggles that are on side by side join, a chosen date range is one band. Alone, each keeps its own edge.
 - **Write on the page.** A field is a line you write on, not a box to fill in: transparent, an underline, the accent line growing under it while you write. Reading turns into writing in place — for values people mostly read, use [Inplace](/components/inplace) rather than a separate edit form.
 - **Hover fades and leans, never slides**: `opacity: var(--bless-hover-opacity)` over `var(--bless-duration-slow)`, and the plate leans to `--bless-lean` in place. Appearances fade in place; only state changes travel (a sheet slides from its edge, a switch thumb moves).
 - **Nothing blurs.** A floating surface sits on `--bless-shadow-plate`, a 1px accent offset. Modals and sheets rely on the scrim.

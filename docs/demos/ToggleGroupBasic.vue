@@ -2,7 +2,7 @@
 import { ref } from "vue";
 import { BlessToggle, BlessToggleGroup } from "blessing-ui";
 const align = ref<string | undefined>("left");
-const fmt = ref<string[]>(["b"]);
+const fmt = ref<string[]>(["b", "i"]);
 </script>
 
 <template>
