@@ -18,7 +18,7 @@ type Release = {
   color: string;
   soon?: boolean;
 };
-const releases: Release[] = [
+const all: Release[] = [
   {
     id: "bd-box",
     kind: "Blu-ray",
@@ -54,6 +54,8 @@ const releases: Release[] = [
     soon: true,
   },
 ];
+// soonest first, whatever order they were entered in
+const releases = [...all].sort((a, b) => a.date.localeCompare(b.date));
 </script>
 
 <template>
