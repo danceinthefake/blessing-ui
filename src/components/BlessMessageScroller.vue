@@ -54,6 +54,12 @@ function scrollToBottom(behavior: ScrollBehavior = "auto") {
   if (el) el.scrollTo({ top: el.scrollHeight, behavior: scrollBehavior(behavior) });
 }
 
+// the button hides once at the bottom, so focus would go with it: land on the transcript instead
+function jump() {
+  scrollToBottom("smooth");
+  viewport.value?.focus({ preventScroll: true });
+}
+
 /** scroll a message into view by its element id */
 function scrollTo(id: string, behavior: ScrollBehavior = "smooth") {
   viewport.value
@@ -100,12 +106,7 @@ defineExpose({ scrollToBottom, scrollTo, loadHistory, atBottom });
       <div ref="content" class="bless-message-scroller__content"><slot /></div>
     </div>
     <Transition name="bless-message-scroller__fade">
-      <BlessButton
-        v-if="!atBottom"
-        size="sm"
-        class="bless-message-scroller__jump"
-        @click="scrollToBottom('smooth')"
-      >
+      <BlessButton v-if="!atBottom" size="sm" class="bless-message-scroller__jump" @click="jump">
         <slot name="jump"><span aria-hidden="true">↓ </span>{{ jumpLabel }}</slot>
       </BlessButton>
     </Transition>
@@ -135,8 +136,9 @@ defineExpose({ scrollToBottom, scrollTo, loadHistory, atBottom });
   border-radius: var(--bless-radius-petal);
   position: absolute;
   bottom: var(--bless-space-3);
-  inset-inline-start: 50%;
-  translate: -50% 0;
+  inset-inline: 0;
+  width: max-content;
+  margin-inline: auto; /* centred without a physical translate, so it stays centred in RTL */
   box-shadow: var(--bless-shadow-plate);
 }
 .bless-message-scroller__fade-enter-active,
