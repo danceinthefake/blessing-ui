@@ -8,5 +8,6 @@ import { BlessButton } from "blessing-ui";
     <BlessButton variant="outline">Outline</BlessButton>
     <BlessButton variant="ghost">Ghost</BlessButton>
     <BlessButton color="danger">Danger</BlessButton>
+    <BlessButton variant="outline" color="danger">Outline danger</BlessButton>
   </div>
 </template>

@@ -24,12 +24,18 @@ const props = withDefaults(
   { variant: "solid", color: "text", size: "md", type: "button" },
 );
 
+const emit = defineEmits<{ click: [e: MouseEvent] }>();
+
 const link = useLink();
 const tag = computed(() => link(props.href, undefined, "button"));
 const inactive = computed(() => props.disabled || props.loading);
 const skewColor = computed(() => (props.variant === "solid" ? props.color : "none"));
-// an <a> has no disabled: swallow the click so a disabled/loading link doesn't navigate
-const onClick = (e: MouseEvent) => inactive.value && e.preventDefault();
+// an <a> has no disabled, and a loading button keeps focus: swallow the click
+// (no navigation, no submit) and don't pass it on
+function onClick(e: MouseEvent) {
+  if (inactive.value) e.preventDefault();
+  else emit("click", e);
+}
 </script>
 
 <template>
@@ -49,7 +55,7 @@ const onClick = (e: MouseEvent) => inactive.value && e.preventDefault();
       },
     ]"
     :type="href ? undefined : type"
-    :disabled="href ? undefined : inactive"
+    :disabled="href ? undefined : disabled"
     :aria-disabled="inactive || undefined"
     :aria-busy="loading || undefined"
     :tabindex="href && inactive ? -1 : undefined"
