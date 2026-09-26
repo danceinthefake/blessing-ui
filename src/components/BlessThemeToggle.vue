@@ -9,9 +9,12 @@ defineOptions({ name: "BlessThemeToggle" });
 withDefaults(
   defineProps<{
     /** three-way (light/system/dark) or a single light↔dark button */ mode?: "switch" | "group";
+    /** the group's name */
     label?: string;
+    /** accessible names: the switch reads `dark` with pressed / not pressed; the group reads all three */
+    labels?: { light?: string; system?: string; dark?: string };
   }>(),
-  { mode: "switch", label: "Theme" },
+  { mode: "switch", label: "Theme", labels: () => ({}) },
 );
 const { theme, isDark, set, toggle } = useTheme();
 // isDark depends on matchMedia, which the server can't know: render state only after mount so
@@ -27,15 +30,15 @@ onMounted(() => (mounted.value = true));
     :label
     @update:model-value="set(($event ?? 'system') as BlessTheme)"
   >
-    <BlessToggle value="light" size="sm" label="Light">☀</BlessToggle>
-    <BlessToggle value="system" size="sm" label="System">◐</BlessToggle>
-    <BlessToggle value="dark" size="sm" label="Dark">☾</BlessToggle>
+    <BlessToggle value="light" size="sm" :label="labels.light ?? 'Light'">☀</BlessToggle>
+    <BlessToggle value="system" size="sm" :label="labels.system ?? 'System'">◐</BlessToggle>
+    <BlessToggle value="dark" size="sm" :label="labels.dark ?? 'Dark'">☾</BlessToggle>
   </BlessToggleGroup>
   <button
     v-else
     type="button"
     class="bless-theme-toggle"
-    aria-label="Dark theme"
+    :aria-label="labels.dark ?? 'Dark theme'"
     :aria-pressed="mounted ? isDark : false"
     @click="toggle"
   >
