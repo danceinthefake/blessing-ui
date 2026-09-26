@@ -35,7 +35,7 @@ Two corners, one rule — see [Conventions](./conventions#shape-cut-or-petal). `
 
 ## Colour pairs
 
-- `accent-text` — the accent **as text** on `bg`/`surface`: darkened per palette to ≥4.5:1 (links, active nav, selected rows). Fills keep `accent`; white on it is 3.6:1, which is AA for UI components and large text, not for body copy — so never set small text in `accent` itself.
+- `accent-text` — the accent **as text** on `bg`/`surface`: darkened per palette to ≥4.5:1 (links, active nav, selected rows). Fills use `accent`, deepened per palette to carry white text at 4.5:1; as text on the page it's too light, so use `accent-text`.
 - `danger` / `danger-text` — `danger` is the fill (destructive buttons, invalid borders); `danger-text` is error copy, ≥4.5:1 on `bg` and `surface`. They're the same red in light mode; dark mode lifts the text one so it stays readable on the dark greys, where no single red could be both.
 - `info` / `info-text` — the same split: `info-text` for info as text (outline badges, alert titles).
 - `on-accent` — text on any accent / danger / info fill (white).
