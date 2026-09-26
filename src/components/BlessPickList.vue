@@ -50,7 +50,7 @@ function transfer(from: "source" | "target", values: T[]) {
         :disabled="!pickS.length"
         :aria-label="`Move selected to ${targetLabel}`"
         @click="transfer('source', pickS)"
-        >›</BlessButton
+        ><span class="bless-picklist__arrow" aria-hidden="true">›</span></BlessButton
       >
       <BlessButton
         size="sm"
@@ -63,7 +63,7 @@ function transfer(from: "source" | "target", values: T[]) {
             source.map((o) => o.value),
           )
         "
-        >»</BlessButton
+        ><span class="bless-picklist__arrow" aria-hidden="true">»</span></BlessButton
       >
       <BlessButton
         size="sm"
@@ -71,7 +71,7 @@ function transfer(from: "source" | "target", values: T[]) {
         :disabled="!pickT.length"
         :aria-label="`Move selected to ${sourceLabel}`"
         @click="transfer('target', pickT)"
-        >‹</BlessButton
+        ><span class="bless-picklist__arrow" aria-hidden="true">‹</span></BlessButton
       >
       <BlessButton
         size="sm"
@@ -84,7 +84,7 @@ function transfer(from: "source" | "target", values: T[]) {
             target.map((o) => o.value),
           )
         "
-        >«</BlessButton
+        ><span class="bless-picklist__arrow" aria-hidden="true">«</span></BlessButton
       >
     </div>
     <div class="bless-picklist__col">
@@ -133,9 +133,20 @@ function transfer(from: "source" | "target", values: T[]) {
   justify-content: center;
   gap: var(--bless-space-1);
 }
+/* the arrows point at the list they move to: mirrored in RTL, down/up when the lists stack */
+.bless-picklist__arrow {
+  display: inline-block;
+}
+[dir="rtl"] .bless-picklist__arrow {
+  transform: scaleX(-1);
+}
 @media (max-width: 800px) {
   .bless-picklist {
     flex-direction: column;
+  }
+  .bless-picklist__arrow,
+  [dir="rtl"] .bless-picklist__arrow {
+    transform: rotate(90deg);
   }
   .bless-picklist__btns {
     flex-direction: row;
