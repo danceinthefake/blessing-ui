@@ -18,7 +18,7 @@
   --bless-color-accent-text: #b63c5c; /* accent as *text* on bg/surface — ≥4.5:1 */
   --bless-color-danger: #cc2020; /* destructive fills, invalid borders */
   --bless-color-danger-text: #cc2020; /* error text on bg/surface — ≥4.5:1; lifted in dark */
-  --bless-color-badge: #dc2f5e; /* NEW! pill */
+  --bless-color-badge: #dc2f5e; /* BlessBadge color="badge": a chosen marker */
   --bless-color-warning: #ffa800;
   --bless-color-success: #c0e722;
   --bless-color-info: #9650e6;

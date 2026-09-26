@@ -58,7 +58,7 @@ A palette of your own is a new `[data-palette="…"]` block with those tokens, k
   --bless-color-accent-text: #a13a61; /* text on bg/surface ≥ 4.5:1 (light) */
   --bless-color-accent-soft: #f2b3c8; /* highlights */
   --bless-color-accent-2: #d06088; /* hover step */
-  --bless-color-badge: #b0406a; /* the NEW! pill */
+  --bless-color-badge: #b0406a; /* BlessBadge color="badge" */
   --bless-color-chart-1: #b0406a;
 }
 /* dark greys need a lighter text cut (repeat under @media (prefers-color-scheme: dark) if you follow the OS) */

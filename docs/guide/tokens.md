@@ -47,7 +47,7 @@ One shape — see [Conventions](./conventions#shape). `--bless-lean` is the hous
 
 - `accent-text` — the accent **as text** on `bg`/`surface`: darkened per palette to ≥4.5:1 (links, active nav, selected rows). Fills use `accent`, deepened per palette to carry white text at 4.5:1; as text on the page it's too light, so use `accent-text`.
 - **The accent's contract**, for any palette of your own: `accent` must carry white text at 4.5:1, and `accent-text` must reach 4.5:1 on `bg` and `surface` in both themes.
-- `badge` — the "NEW!" pill and notification fills; a step of the accent family, so it re-tints with the palette and carries white at 4.5:1.
+- `badge` — `BlessBadge color="badge"` and notification counts; a step of the accent family, so it re-tints with the palette and carries white at 4.5:1. Badges are ink by default.
 - `danger` / `danger-text` — `danger` is the fill (destructive buttons, invalid borders); `danger-text` is error copy, ≥4.5:1 on `bg` and `surface`. They're the same red in light mode; dark mode lifts the text one so it stays readable on the dark greys, where no single red could be both.
 - `info` / `info-text` — the same split: `info-text` for info as text (outline badges, alert titles).
 - `on-accent` — text on any accent / danger / info fill (white).
