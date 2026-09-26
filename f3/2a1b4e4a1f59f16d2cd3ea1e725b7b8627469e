@@ -1,0 +1,38 @@
+docs/design/index.md
+  s_9ec1000e308ddb::t_8868f093e3dbac 22-29,35-40
+  s_9ec1000e308ddb::t_d15f806b81d411 1-21,30-34,41-55
+DESIGN-LANGUAGE.md
+  s_9ec1000e308ddb::t_8868f093e3dbac 1,7
+docs/guide/palettes.md
+  s_9ec1000e308ddb::t_2692fdf92ca142 7
+docs/design/story.md
+  s_9ec1000e308ddb::t_2692fdf92ca142 1-52
+DESIGN.md
+  s_9ec1000e308ddb::t_2692fdf92ca142 3
+  s_9ec1000e308ddb::t_792d83ae5b7590 298
+docs/design/brand.md
+  s_9ec1000e308ddb::t_8868f093e3dbac 14-16,19-20
+  s_9ec1000e308ddb::t_2692fdf92ca142 1-13,17-18,21-131
+docs/.vitepress/config.ts
+  s_9ec1000e308ddb::t_8868f093e3dbac 56,69,71,75,78-97
+docs/guide/conventions.md
+  s_9ec1000e308ddb::t_2692fdf92ca142 43,62
+README.md
+  s_9ec1000e308ddb::t_2692fdf92ca142 7,355
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "f32a1b4e4a1f59f16d2cd3ea1e725b7b8627469e",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
