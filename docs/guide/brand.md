@@ -11,24 +11,24 @@ Blessing UI's identity is the design system itself — nothing is added for the 
 
 ## Five elements
 
-| Element  | Value                                                                                                                                                                           | Where you see it                                                                           |
-| -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
-| Name     | **Blessing** — a nod to a fictional software circle; see the [story](./story)                                                                                                   | wordmark, package name                                                                     |
-| Colour   | one accent at a time — Megumi's `#e85078` by default, six by [palette](./palettes). The mark carries the petal colours; a palette darkens where white text needs it             | buttons, badges, the mark's top petal                                                      |
-| Geometry | `--bless-skew`, the same lean on everything. Two corners, one [rule](./conventions#shape-cut-or-petal): **cut** on what you read or press, **petal** on what is round by nature | every label and field; avatars, switches, chips; every petal of the mark                   |
-| Type     | Roboto 100 oversized for the voice, 700 uppercase tracked for the UI                                                                                                            | watermark, wordmark, labels                                                                |
-| Motif    | the plate: a hard 1px accent hairline offset behind anything that floats — no blur                                                                                              | every popover, menu, tooltip, toast, modal; the QR frame; the site's hero shot and OG card |
+| Element  | Value                                                                                                                                                                                                                            | Where you see it                                                                           |
+| -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| Name     | **Blessing** — a nod to a fictional software circle; see the [story](./story)                                                                                                                                                    | wordmark, package name                                                                     |
+| Colour   | one accent at a time — Megumi's `#e85078` by default, six by [palette](./palettes). The mark carries the petal colours; a palette darkens where white text needs it                                                              | buttons, badges, the mark's top petal                                                      |
+| Geometry | `--bless-lean`, −10°: upright at rest, taken on attention; big type and the mark lean always. Two corners, one [rule](./conventions#shape-cut-or-petal): **cut** on what you read or press, **petal** on what is round by nature | every label and field; avatars, switches, chips; every petal of the mark                   |
+| Type     | Roboto 100 oversized for the voice, 700 uppercase tracked for the UI                                                                                                                                                             | watermark, wordmark, labels                                                                |
+| Motif    | the plate: a hard 1px accent hairline offset behind anything that floats — no blur                                                                                                                                               | every popover, menu, tooltip, toast, modal; the QR frame; the site's hero shot and OG card |
 
 ## Mark
 
-Five skewed plates in a ring, one colour each. Each petal is the same parallelogram every label in the system uses, rotated 72° apart. It answers the name: the fictional circle Blessing is named after has a five-petal flower for a logo, one petal per member — see the [story](./story). Ours is re-drawn from the system's own geometry, no centre; the five colours are the five [palettes](./palettes), so the mark is literally the theme picker.
+The leaning flower. The fictional circle Blessing is named after has a five-petal flower for a logo, one petal per member — see the [story](./story). Ours redraws it in the system's terms: five teardrop petals, sharp at the centre and soft outside, around an empty middle, each at the house −10° lean, so the flower turns as if it just caught the wind. The five colours are the five [palettes](./palettes), so the mark is literally the theme picker.
 
-| File                              | Use                                                                                       |
-| --------------------------------- | ----------------------------------------------------------------------------------------- |
-| [`logo.svg`](/logo.svg)           | any background — the five colours read on light and dark                                  |
-| [`logo-mono.svg`](/logo-mono.svg) | inline `<svg>` where `currentColor` should drive it (footers, print)                      |
-| [`favicon.svg`](/favicon.svg)     | tab icon                                                                                  |
-| [`og.png`](/og.png)               | 1200×630 social card, composed from the system (below); regenerate with `pnpm docs:shots` |
+| File                              | Use                                                                                                                   |
+| --------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| [`logo.svg`](/logo.svg)           | any background — the five colours read on light and dark                                                              |
+| [`logo-mono.svg`](/logo-mono.svg) | one colour for footers and print; inlined on a page with the tokens, the top petal takes the accent — ink, one chosen |
+| [`favicon.svg`](/favicon.svg)     | tab icon                                                                                                              |
+| [`og.png`](/og.png)               | 1200×630 social card, composed from the system (below); regenerate with `pnpm docs:shots`                             |
 
 <img src="/og.png" alt="The OG card: mark, wordmark, tagline, a browser-framed screenshot on a plate, the watermark behind" style="border: var(--bless-border-width) solid var(--bless-color-border); margin: 8px 0 24px">
 
@@ -49,9 +49,9 @@ Five skewed plates in a ring, one colour each. Each petal is the same parallelog
 
 ## Rules
 
-- Keep the skew and the five. Don't unskew, round, outline, or re-space the petals; don't add a centre. The UI has two corners, cut and petal; the mark has one — cut.
+- Keep the lean and the five. Don't straighten, outline, or re-space the petals, and don't swap the teardrop for a circle or a plate; don't fill the centre.
 - One accent in the UI. The mark is the only place the five palette colours sit together; never recolour a petal.
-- Clear space = one petal width on all sides.
+- Clear space = half a petal's length on all sides.
 - Minimum size 16px.
 - Don't set the wordmark in any weight other than 100/300, and don't letterspace it.
 

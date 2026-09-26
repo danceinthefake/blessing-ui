@@ -15,7 +15,7 @@ function replay() {
       size="display"
       weight="thin"
       leading="none"
-      style="transform: skewX(var(--bless-skew))"
+      style="transform: skewX(var(--bless-lean))"
     >
       Blessing
     </BlessText>

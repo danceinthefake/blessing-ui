@@ -1,10 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
-  <!-- Blessing UI mark: five skewed plates (skewX(-10deg), the system geometry) in a ring — a nod to a five-petal flower, one accent -->
-  <g fill="currentColor">
-  <rect x="0" y="-6.5" width="20" height="13" transform="rotate(0 32 32) translate(42 32) skewX(-10)"/>
-  <rect x="0" y="-6.5" width="20" height="13" transform="rotate(72 32 32) translate(42 32) skewX(-10)"/>
-  <rect x="0" y="-6.5" width="20" height="13" transform="rotate(144 32 32) translate(42 32) skewX(-10)"/>
-  <rect x="0" y="-6.5" width="20" height="13" transform="rotate(216 32 32) translate(42 32) skewX(-10)"/>
-  <rect x="0" y="-6.5" width="20" height="13" transform="rotate(288 32 32) translate(42 32) skewX(-10)"/>
+<!-- Blessing UI mark, one colour: the leaning flower in currentColor. Inlined on a page with the tokens, the top petal takes the accent — ink, one chosen. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="64" height="64">
+  <g transform="translate(50 50) scale(1.25)" fill="currentColor">
+    <path d="M0 -5C9 -12 13 -24 10 -31A10.2 10.2 0 0 0 -10 -31C-13 -24 -9 -12 0 -5Z" fill="var(--bless-color-accent, currentColor)" transform="rotate(0) skewX(-10)"/>
+    <path d="M0 -5C9 -12 13 -24 10 -31A10.2 10.2 0 0 0 -10 -31C-13 -24 -9 -12 0 -5Z" transform="rotate(72) skewX(-10)"/>
+    <path d="M0 -5C9 -12 13 -24 10 -31A10.2 10.2 0 0 0 -10 -31C-13 -24 -9 -12 0 -5Z" transform="rotate(144) skewX(-10)"/>
+    <path d="M0 -5C9 -12 13 -24 10 -31A10.2 10.2 0 0 0 -10 -31C-13 -24 -9 -12 0 -5Z" transform="rotate(216) skewX(-10)"/>
+    <path d="M0 -5C9 -12 13 -24 10 -31A10.2 10.2 0 0 0 -10 -31C-13 -24 -9 -12 0 -5Z" transform="rotate(288) skewX(-10)"/>
   </g>
 </svg>
