@@ -21,8 +21,13 @@ const top = () => (el() ? el()!.scrollTop : window.scrollY);
 function check() {
   visible.value = top() > props.threshold;
 }
+// the button hides once the page is back at the top, taking focus with it: move focus to the
+// top too, so Tab carries on from the start of the page (or the container)
 function go() {
   (el() ?? window).scrollTo({ top: 0, behavior: scrollBehavior() });
+  const start = el() ?? document.body;
+  if (!start.hasAttribute("tabindex")) start.setAttribute("tabindex", "-1");
+  start.focus({ preventScroll: true });
 }
 onMounted(() => {
   (el() ?? window).addEventListener("scroll", check, { passive: true });
