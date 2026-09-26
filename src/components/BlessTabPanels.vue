@@ -37,8 +37,11 @@ usePan(root, (e) => {
     drag.value = e.dx;
     if (Math.abs(e.dx) > 8) e.event.preventDefault();
   } else if (e.phase !== "start") {
-    if (drag.value <= -props.threshold) go(1);
-    else if (drag.value >= props.threshold) go(-1);
+    // the next panel lies at the inline end: to the left in RTL, so the swipe that reaches it flips
+    const rtl = root.value && getComputedStyle(root.value).direction === "rtl" ? -1 : 1;
+    const d = drag.value * rtl;
+    if (d <= -props.threshold) go(1);
+    else if (d >= props.threshold) go(-1);
     drag.value = 0;
   }
 });
@@ -98,5 +101,14 @@ defineExpose({ next: () => go(1), prev: () => go(-1) });
 .bless-tabpanels-prev-leave-to {
   transform: translateX(24px);
   opacity: 0;
+}
+/* the next panel comes from the inline end, which is the left in RTL */
+[dir="rtl"] .bless-tabpanels-next-enter-from,
+[dir="rtl"] .bless-tabpanels-prev-leave-to {
+  transform: translateX(-24px);
+}
+[dir="rtl"] .bless-tabpanels-next-leave-to,
+[dir="rtl"] .bless-tabpanels-prev-enter-from {
+  transform: translateX(24px);
 }
 </style>
