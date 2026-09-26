@@ -8,7 +8,7 @@ const sizes = ["xs", "sm", "md", "lg", "xl"] as const;
     <BlessIcon v-for="s in sizes" :key="s" :size="s">
       <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
     </BlessIcon>
-    <BlessIcon size="40px" label="external">
+    <BlessIcon size="40px" label="Opens in a new tab">
       <svg viewBox="0 0 24 24">
         <path d="M14 3h7v7h-2V6.4l-9.3 9.3-1.4-1.4L17.6 5H14zM5 5h6v2H7v10h10v-4h2v6H5z" />
       </svg>
@@ -19,7 +19,7 @@ const sizes = ["xs", "sm", "md", "lg", "xl"] as const;
           ><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg
         ></BlessIcon>
       </template>
-      play
+      Play
     </BlessButton>
   </div>
 </template>
