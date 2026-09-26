@@ -1,0 +1,27 @@
+docs/demos/MessageBasic.vue
+  s_9ec1000e308ddb::t_2863787f2f55d5 12,15
+docs/demos/MessageScrollerBasic.vue
+  s_9ec1000e308ddb::t_2863787f2f55d5 68
+docs/components/bubble.md
+  s_9ec1000e308ddb::t_534cc2f65ad276 24
+docs/demos/BubbleBasic.vue
+  s_9ec1000e308ddb::t_2863787f2f55d5 11
+src/components/BlessBubble.vue
+  s_9ec1000e308ddb::t_2863787f2f55d5 66
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "f28a0e592e144480564918bfd2f133b8df4ff651",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
