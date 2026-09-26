@@ -4,7 +4,7 @@ import { BlessText } from "blessing-ui";
 
 <template>
   <div class="col" style="gap: 6px; max-width: none">
-    <BlessText size="lg" weight="thin">Thin 100 — the voice</BlessText>
+    <BlessText size="headline" weight="thin" leading="none">Thin 100</BlessText>
     <BlessText size="lg" weight="light">Light 300 — headings</BlessText>
     <BlessText size="lg" weight="normal">Normal 400 — body</BlessText>
     <BlessText size="lg" weight="bold">Bold 700 — labels</BlessText>
