@@ -184,8 +184,8 @@ const emit = defineEmits<{ select: [item: BlessBottomTab, e: Event] }>();
   min-width: 8px;
   height: 8px;
   padding: 0 3px;
-  background: var(--bless-color-badge);
-  color: var(--bless-color-on-accent);
+  background: var(--bless-color-text); /* ink: a count isn't a choice (as Indicator) */
+  color: var(--bless-color-on-text);
   font-size: 9px;
   font-weight: var(--bless-font-weight-bold);
   line-height: 8px;
