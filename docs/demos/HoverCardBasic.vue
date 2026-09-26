@@ -12,7 +12,7 @@ import { BlessAvatar, BlessHoverCard, BlessText } from "blessing-ui";
         ></template
       >
       <div style="display: flex; gap: 12px; align-items: center">
-        <BlessAvatar name="Saenai Heroine" color="accent" size="lg" />
+        <BlessAvatar name="Saenai Heroine" color="text" size="lg" />
         <div>
           <BlessText as="p" weight="bold">冴えない彼女の育てかた</BlessText>
           <BlessText as="p" size="xs" muted>TVアニメ公式 · joined 2014</BlessText>
