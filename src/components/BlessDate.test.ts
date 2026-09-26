@@ -170,3 +170,19 @@ test("BlessInputOTP: autofill into the first cell fills all; field wiring; form 
   ).toBe("Character 1 of 6");
   w.unmount();
 });
+
+test("BlessDatePicker: reads the field's error; clearing keeps focus on the field", async () => {
+  const w = mount(BlessField, {
+    props: { label: "Release", error: "Too early" },
+    slots: {
+      default: () => h(BlessDatePicker, { modelValue: "2019-09-25", nativeOnTouch: false }),
+    },
+    attachTo: document.body,
+  });
+  expect(w.find(".bless-datepicker").classes()).toContain("bless-datepicker--invalid");
+  const trigger = w.find(".bless-datepicker__trigger");
+  expect(w.find(`[id="${trigger.attributes("aria-describedby")}"]`).text()).toBe("Too early");
+  await w.find(".bless-datepicker__clear").trigger("click");
+  expect(document.activeElement).toBe(trigger.element);
+  w.unmount();
+});

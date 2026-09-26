@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { BlessDatePicker, BlessLabel, BlessText } from "blessing-ui";
+import { BlessDatePicker, BlessLabel } from "blessing-ui";
 const picked = ref<string>();
 const stay = ref<[string, string]>();
 </script>
@@ -28,8 +28,4 @@ const stay = ref<[string, string]>();
       <BlessDatePicker disabled />
     </div>
   </div>
-  <BlessText as="p" size="xs" muted
-    >on touch devices (pointer: coarse) single mode renders a native &lt;input
-    type=date&gt;</BlessText
-  >
 </template>
