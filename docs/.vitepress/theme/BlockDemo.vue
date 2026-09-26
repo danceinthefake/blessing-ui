@@ -152,14 +152,14 @@ async function copy(what: "file" | "all") {
   cursor: pointer;
   transform: skewX(var(--bless-skew));
 }
-.block__seg button[aria-pressed="true"],
-.block__tabs button[aria-selected="true"] {
-  background: var(--bless-color-text);
-  color: var(--bless-color-on-text);
-}
 .block__toggle:hover,
 .block__tabs button:hover {
-  color: var(--bless-color-accent);
+  color: var(--bless-color-text);
+}
+.block__seg button[aria-pressed="true"],
+.block__tabs button[aria-selected="true"] {
+  background: var(--bless-color-accent);
+  color: var(--bless-color-on-accent);
 }
 .block__used {
   flex: 1;

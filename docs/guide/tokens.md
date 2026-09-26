@@ -5,7 +5,7 @@ All styling reads `--bless-*` custom properties from `tokens.css` — 89 of them
 ```css
 :root {
   --bless-color-accent: #4090d0;
-  --bless-skew: -6deg;
+  --bless-lean: -6deg;
 }
 ```
 
@@ -16,7 +16,7 @@ All styling reads `--bless-*` custom properties from `tokens.css` — 89 of them
 | Type scale         | `--bless-text-{2xs,xs,sm,md,lg,xl,headline,display}` — fluid `clamp()`, 8→151px; `headline` is the hanging page title (36–73px), `display` the watermark                                                                             |
 | Leading / tracking | `--bless-leading-{none,tight,normal}`, `--bless-tracking-{tight,normal,wide,wider}`                                                                                                                                                  |
 | Space              | `--bless-space-{1,2,3,4,6,8,12,16}` — 4px base                                                                                                                                                                                       |
-| Shape              | `--bless-skew`, `--bless-skew-counter`, `--bless-petal`, `--bless-radius-petal` (+`-lg`), `--bless-radius`, `--bless-radius-plate` (0, override points), `--bless-border-width`, `--bless-dash-width`                                |
+| Shape              | `--bless-lean`, `--bless-skew`, `--bless-skew-counter`, `--bless-petal`, `--bless-radius-petal` (+`-lg`), `--bless-radius`, `--bless-radius-plate` (0, override points), `--bless-border-width`, `--bless-dash-width`                |
 | Elevation          | `--bless-shadow-plate` (`1px 1px 0` accent, via `--bless-plate-offset`), `--bless-shadow-none`; `--bless-shadow-md` is an alias of plate                                                                                             |
 | Motion             | `--bless-duration-{fast,base,slow,slower}`, `--bless-ease-{in-out,out,linear}`, `--bless-hover-opacity`, `--bless-press-scale`                                                                                                       |
 | Layout             | `--bless-sidebar-width`, `--bless-sidebar-inner`, `--bless-content-max`, `--bless-z-{bg,nav,modal}`, `--bless-safe-{top,right,bottom,left}` (`env(safe-area-inset-*)`, for notches)                                                  |
@@ -27,11 +27,11 @@ Durations collapse to `0s` under `prefers-reduced-motion`.
 
 - **[Dark mode](./dark-mode)** redefines the greys and what sits on them: `text`, `text-muted`, `bg`, `surface`, `surface-2`, `watermark`, `border`, `rule`, `backdrop`, `danger`, `danger-text`, `info-text`, `accent-text`, `chart-2..5`, and `font-weight-thin` (100 → 300, hairlines read thinner light-on-dark). The accent family is untouched.
 - **A [palette](./palettes)** swaps only the accent family: `accent`, `accent-soft`, `accent-2`, `accent-text`, `badge`, `chart-1`. Greys, type and geometry stay.
-- **[Right-to-left](./rtl)** mirrors `skew`, `skew-counter` and the petal corners.
+- **[Right-to-left](./rtl)** mirrors `lean` and the petal corners.
 
 ## Shape
 
-Two corners, one rule — see [Conventions](./conventions#shape-cut-or-petal). `--bless-skew` is the lean on everything. `--bless-radius-petal` rounds only the two acute corners of a leaning plate (`--bless-petal`, 8px; `-lg` for chat bubbles) and is applied to avatars, switches, chips, bubbles, fabs and thumbs. `--bless-radius` and `--bless-radius-plate` are `0` and unused by the library; set them if you want boxes or plates rounded.
+Two corners, one rule — see [Conventions](./conventions#shape-cut-or-petal). `--bless-lean` is the house angle; `--bless-skew` / `--bless-skew-counter` are the current lean every plate and its text read — `0deg` at rest, set to the lean on hover, focus, press or while writing. Set `--bless-skew: var(--bless-lean)` (and the counter to its negative) on an element to make it lean at rest; set `--bless-lean: 0deg` to turn the lean off. `--bless-radius-petal` rounds only the two acute corners of a leaning plate (`--bless-petal`, 8px; `-lg` for chat bubbles) and is applied to avatars, switches, chips, bubbles, fabs and thumbs. `--bless-radius` and `--bless-radius-plate` are `0` and unused by the library; set them if you want boxes or plates rounded.
 
 ## Colour pairs
 

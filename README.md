@@ -4,7 +4,7 @@
 
 # Blessing UI
 
-Vue 3 component library and design tokens. Grey-scale UI, one pink-red accent, skewed labels instead of rounded corners, thin oversized watermark type, opacity-fade hovers. The look was re-derived from one anime's official site, ideas only — the [story](docs/guide/story.md) says which, what was kept, and what was not taken.
+Vue 3 component library and design tokens. Grey-scale UI, one pink-red accent, upright plates that lean when you engage them instead of rounded corners, thin oversized watermark type, opacity-fade hovers. The look was re-derived from one anime's official site, ideas only — the [story](docs/guide/story.md) says which, what was kept, and what was not taken.
 
 - 144 components — from button to data table to chat — styled only through `--bless-*` custom properties, no Tailwind dependency
 - Native platform first: `<dialog>`, Popover API, `<details>`, native form controls, `Intl` dates, scroll-snap — no positioning, date or table library
@@ -113,7 +113,7 @@ import {
 | `BlessBlockUI`                        | Blocking overlay                         | `blocked`, `fullscreen`; `#indicator`                                                              |
 | `BlessMockup`                         | Browser / window / phone frame           | `type`, `title`, `dark`                                                                            |
 | `BlessItem`                           | Media + title + description + actions    | `title`, `description`, `href`, `variant` plain/outline/surface, `size`; `#media` `#actions`       |
-| `BlessAvatar`                         | Image with initials fallback             | `src`, `name`, `size`, `lean`, `color`                                                           |
+| `BlessAvatar`                         | Image with initials fallback             | `src`, `name`, `size`, `lean`, `color`                                                             |
 | `BlessSkeleton`                       | Shimmer placeholder                      | `width`, `height`, `lines`, `avatar`                                                               |
 | `BlessAspectRatio`                    | Ratio box                                | `ratio`                                                                                            |
 | `BlessProgress`                       | Bar, determinate or not                  | `value`, `max`, `label`, `showValue`, `color`, `size`                                              |
@@ -298,21 +298,21 @@ All styling reads `--bless-*` custom properties defined in `tokens.css`. Overrid
 ```css
 :root {
   --bless-color-accent: #4090d0;
-  --bless-skew: -6deg;
+  --bless-lean: -6deg;
 }
 ```
 
-| Group              | Props                                                                                                                                                                                                          |
-| ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Colour             | `--bless-color-{text,text-muted,bg,surface,surface-2,watermark,accent,accent-soft,accent-2,accent-text,danger,badge,warning,success,info,on-accent,on-text,on-light,border,rule,backdrop,media-bg,chart-1..5}` |
-| Font               | `--bless-font-sans`, `--bless-font-weight-{thin,light,normal,bold}`                                                                                                                                            |
-| Type scale         | `--bless-text-{2xs,xs,sm,md,lg,xl,headline,display}` (fluid `clamp()`, 8→151px)                                                                                                                                |
-| Leading / tracking | `--bless-leading-{none,tight,normal}`, `--bless-tracking-{tight,normal,wide,wider}`                                                                                                                            |
-| Space              | `--bless-space-{1,2,3,4,6,8,12,16}` (4px base)                                                                                                                                                                 |
-| Shape              | `--bless-skew`, `--bless-skew-counter`, `--bless-petal`, `--bless-radius-petal` (+`-lg`), `--bless-radius`, `--bless-radius-plate` (0, override points), `--bless-border-width`, `--bless-dash-width`          |
-| Elevation          | `--bless-shadow-{none,md}`                                                                                                                                                                                     |
-| Motion             | `--bless-duration-{fast,base,slow,slower}`, `--bless-ease-{in-out,out,linear}`, `--bless-hover-opacity`, `--bless-press-scale`                                                                                 |
-| Layout             | `--bless-sidebar-width`, `--bless-sidebar-inner`, `--bless-content-max`, `--bless-z-{bg,nav,modal}`                                                                                                            |
+| Group              | Props                                                                                                                                                                                                                 |
+| ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Colour             | `--bless-color-{text,text-muted,bg,surface,surface-2,watermark,accent,accent-soft,accent-2,accent-text,danger,badge,warning,success,info,on-accent,on-text,on-light,border,rule,backdrop,media-bg,chart-1..5}`        |
+| Font               | `--bless-font-sans`, `--bless-font-weight-{thin,light,normal,bold}`                                                                                                                                                   |
+| Type scale         | `--bless-text-{2xs,xs,sm,md,lg,xl,headline,display}` (fluid `clamp()`, 8→151px)                                                                                                                                       |
+| Leading / tracking | `--bless-leading-{none,tight,normal}`, `--bless-tracking-{tight,normal,wide,wider}`                                                                                                                                   |
+| Space              | `--bless-space-{1,2,3,4,6,8,12,16}` (4px base)                                                                                                                                                                        |
+| Shape              | `--bless-lean`, `--bless-skew`, `--bless-skew-counter`, `--bless-petal`, `--bless-radius-petal` (+`-lg`), `--bless-radius`, `--bless-radius-plate` (0, override points), `--bless-border-width`, `--bless-dash-width` |
+| Elevation          | `--bless-shadow-{none,md}`                                                                                                                                                                                            |
+| Motion             | `--bless-duration-{fast,base,slow,slower}`, `--bless-ease-{in-out,out,linear}`, `--bless-hover-opacity`, `--bless-press-scale`                                                                                        |
+| Layout             | `--bless-sidebar-width`, `--bless-sidebar-inner`, `--bless-content-max`, `--bless-z-{bg,nav,modal}`                                                                                                                   |
 
 ### Palettes
 

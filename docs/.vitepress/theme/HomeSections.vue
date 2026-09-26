@@ -120,7 +120,9 @@ const blocks = [
     monospace;
   cursor: pointer;
   transform: skewX(var(--bless-skew));
-  transition: opacity var(--bless-duration-slow);
+  transition:
+    opacity var(--bless-duration-slow),
+    var(--bless-lean-transition);
 }
 .hs__cmd:hover {
   opacity: var(--bless-hover-opacity);

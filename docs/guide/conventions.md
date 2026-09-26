@@ -56,7 +56,7 @@ Care overrides every other rule here — when looks and care disagree, care wins
 
 ## Shape: cut or petal
 
-Everything leans (`--bless-skew`, −10°). There are two corners a plate can have, and one rule for which:
+Plates stand upright at rest and lean to `--bless-lean` (−10°) on attention — a control while it is hovered, focused or pressed, a field while you write in it; only big display type (the watermark) leans at rest. There are two corners a plate can have, and one rule for which:
 
 |           | Shape                                                                                                          | Rule                                                               | Where                                                                                                                                  |
 | --------- | -------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------- |

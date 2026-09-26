@@ -23,7 +23,7 @@ const tabs = [
 <template>
   <BlessSection title="News" class="news">
     <!-- the list lives in the active tab's panel, so the tabs control what they filter -->
-    <BlessTabs v-model="filter" :tabs label="News category" color="text" class="news__tabs">
+    <BlessTabs v-model="filter" :tabs label="News category" class="news__tabs">
       <template #default="{ active }">
         <template v-if="active">
           <BlessSkeleton v-if="loading" :lines="4" height="14px" />
