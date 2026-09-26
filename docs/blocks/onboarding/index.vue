@@ -26,12 +26,22 @@ const { setPalette } = useTheme();
 // the finished screen replaces the stepper (and the button that had focus): move focus to it
 const doneHead = ref<{ $el: HTMLElement }>();
 watch(done, (d) => d && nextTick(() => doneHead.value?.$el.focus()));
+const cap = (s: string) => s[0].toUpperCase() + s.slice(1);
+// in an app this would navigate; here it starts over — either way focus follows to the new screen
+const welcome = ref<{ $el: HTMLElement }>();
+function restart() {
+  done.value = false;
+  step.value = 0;
+  nextTick(() => welcome.value?.$el.focus());
+}
 </script>
 
 <template>
   <div class="onboard">
     <template v-if="!done">
-      <BlessText as="h1" size="lg" weight="light">Welcome</BlessText>
+      <BlessText ref="welcome" as="h1" size="lg" weight="light" tabindex="-1" class="onboard__head"
+        >Welcome</BlessText
+      >
       <BlessText as="p" size="sm" muted class="onboard__lead"
         >Three quick things and you're in.</BlessText
       >
@@ -59,7 +69,7 @@ watch(done, (d) => d && nextTick(() => doneHead.value?.$el.focus()));
           >
             <BlessRadio v-for="p in blessPalettes" :key="p.name" :value="p.name"
               ><span class="onboard__chip" :style="{ background: p.color }" aria-hidden="true" />{{
-                p.name[0].toUpperCase() + p.name.slice(1)
+                cap(p.name)
               }}</BlessRadio
             >
           </BlessRadioGroup>
@@ -72,15 +82,9 @@ watch(done, (d) => d && nextTick(() => doneHead.value?.$el.focus()));
       >
       <BlessText as="p" size="sm" muted
         >{{ form.invites.length }} invite{{ form.invites.length === 1 ? "" : "s" }} sent · palette
-        {{ form.palette }}</BlessText
+        {{ cap(form.palette) }}</BlessText
       >
-      <BlessButton
-        @click="
-          done = false;
-          step = 0;
-        "
-        >Open workspace</BlessButton
-      >
+      <BlessButton @click="restart">Open workspace</BlessButton>
     </div>
   </div>
 </template>
