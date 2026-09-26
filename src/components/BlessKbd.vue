@@ -34,7 +34,7 @@ defineProps<{
   font-size: var(--bless-text-xs);
   color: var(--bless-color-text);
 }
-/* a small cut plate per key; flat — no keycap shadow */
+/* a small upright plate per key; flat — no keycap shadow */
 .bless-kbd__key {
   display: inline-block;
   min-width: 1.2em;
