@@ -19,10 +19,13 @@
   --vp-c-danger-1: var(--bless-color-danger);
   --vp-c-warning-1: var(--bless-color-warning);
   --vp-c-tip-1: var(--bless-color-info);
-  --vp-button-brand-bg: var(--bless-color-accent);
-  --vp-button-brand-hover-bg: var(--bless-color-accent);
+  /* colour means chosen: the main button is solid ink, accent only while pressed */
+  --vp-button-brand-bg: var(--bless-color-text);
+  --vp-button-brand-hover-bg: var(--bless-color-text);
   --vp-button-brand-active-bg: var(--bless-color-accent);
-  --vp-button-brand-text: var(--bless-color-on-accent);
+  --vp-button-brand-text: var(--bless-color-on-text);
+  --vp-button-brand-hover-text: var(--bless-color-on-text);
+  --vp-button-brand-active-text: var(--bless-color-on-accent);
   --vp-button-brand-border: transparent;
   --vp-home-hero-name-color: var(--bless-color-accent);
   --vp-home-hero-name-background: none;
@@ -35,6 +38,11 @@
 .VPButton.alt {
   border-radius: var(--bless-radius-plate);
   transform: skewX(var(--bless-skew));
+  transition:
+    color 0.25s,
+    border-color 0.25s,
+    background-color 0.25s,
+    var(--bless-lean-transition);
   font-weight: var(--bless-font-weight-bold);
   letter-spacing: var(--bless-tracking-wide);
   text-transform: uppercase;
@@ -85,6 +93,10 @@
   color: inherit;
   font-weight: inherit;
   text-decoration: none;
+  /* VitePress's link transition would otherwise drop the lean's */
+  transition:
+    opacity var(--bless-duration-slow) var(--bless-ease-in-out),
+    var(--bless-lean-transition);
 }
 /* VitePress's `.vp-doc a` (0,1,1) outranks the library's own anchor colours (0,1,0); re-assert the
  * ones that are not "inherit": skewed fills and active/hover accents. Blocks avoid this via iframes. */
@@ -175,7 +187,7 @@
   line-height: 1;
   letter-spacing: var(--bless-tracking-tight);
   color: var(--bless-color-watermark);
-  transform: skewX(var(--bless-skew));
+  transform: skewX(var(--bless-lean)); /* big display type leans at rest */
   white-space: nowrap;
   pointer-events: none;
 }
