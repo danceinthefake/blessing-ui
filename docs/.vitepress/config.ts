@@ -53,7 +53,7 @@ export default defineConfig({
       { text: "Guide", link: "/guide/install" },
       { text: "Components", link: "/components/button" },
       { text: "Blocks", link: "/blocks/" },
-      { text: "Tokens", link: "/guide/tokens" },
+      { text: "Design", link: "/design/" },
     ],
     sidebar: {
       "/blocks/": [
@@ -66,22 +66,35 @@ export default defineConfig({
         })),
       ],
       "/guide/": [
+        { text: "Start", items: [{ text: "Install", link: "/guide/install" }] },
         {
-          text: "Guide",
+          text: "Theming",
           items: [
-            { text: "Install", link: "/guide/install" },
             { text: "Tokens", link: "/guide/tokens" },
-            { text: "Dark mode", link: "/guide/dark-mode" },
             { text: "Palettes", link: "/guide/palettes" },
+            { text: "Dark mode", link: "/guide/dark-mode" },
             { text: "Fonts", link: "/guide/fonts" },
-            { text: "Conventions", link: "/guide/conventions" },
-            { text: "useScrollSpy", link: "/guide/scroll-spy" },
-            { text: "useAnimateOnScroll", link: "/guide/animate-on-scroll" },
-            { text: "Gestures", link: "/guide/gestures" },
-            { text: "Browser composables", link: "/guide/browser" },
             { text: "Right-to-left", link: "/guide/rtl" },
-            { text: "Brand", link: "/guide/brand" },
-            { text: "Story", link: "/guide/story" },
+          ],
+        },
+        { text: "Building", items: [{ text: "Conventions", link: "/guide/conventions" }] },
+        {
+          text: "Composables",
+          items: [
+            { text: "Scroll spy", link: "/guide/scroll-spy" },
+            { text: "Animate on scroll", link: "/guide/animate-on-scroll" },
+            { text: "Gestures", link: "/guide/gestures" },
+            { text: "Browser", link: "/guide/browser" },
+          ],
+        },
+      ],
+      "/design/": [
+        {
+          text: "Design",
+          items: [
+            { text: "Design language", link: "/design/" },
+            { text: "Brand", link: "/design/brand" },
+            { text: "Story", link: "/design/story" },
           ],
         },
       ],
