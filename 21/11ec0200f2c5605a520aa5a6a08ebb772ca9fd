@@ -1,0 +1,28 @@
+docs/components/toaster.md
+  s_9ec1000e308ddb::t_f76fde684f27f3 7,25-31
+  s_9ec1000e308ddb::t_eaf683cabb0505 32-35
+docs/demos/ToasterUndo.vue
+  s_9ec1000e308ddb::t_f76fde684f27f3 1-41
+docs/components/alert-dialog.md
+  s_9ec1000e308ddb::t_1abc8c5b574c21 13
+docs/guide/conventions.md
+  s_9ec1000e308ddb::t_81fe166957ba0d 39
+  s_9ec1000e308ddb::t_1abc8c5b574c21 41-48
+  s_9ec1000e308ddb::t_7d698ed49e25fe 40
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "2111ec0200f2c5605a520aa5a6a08ebb772ca9fd",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
