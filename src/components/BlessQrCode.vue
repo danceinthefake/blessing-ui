@@ -58,7 +58,7 @@ const view = computed(() => n.value + props.border * 2);
 .bless-qr__svg {
   display: block;
 }
-/* modules stay square (scanners); the frame is a skewed ink plate behind the tile */
+/* modules stay square (scanners); the frame is an ink plate behind the tile */
 .bless-qr--frame {
   border-radius: var(--bless-radius);
   position: relative;
