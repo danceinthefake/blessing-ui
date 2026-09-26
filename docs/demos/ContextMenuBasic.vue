@@ -7,7 +7,10 @@ const last = ref("");
 
 <template>
   <BlessContextMenu :items="menu" @select="last = 'label' in $event ? $event.label : ''">
+    <!-- focusable, so the Menu key and Shift+F10 open it too -->
     <div
+      tabindex="0"
+      aria-label="Episode 3 script"
       style="
         display: grid;
         place-items: center;
@@ -16,7 +19,7 @@ const last = ref("");
         border: 1px dashed var(--bless-color-text-muted);
       "
     >
-      right-click here {{ last && `· ${last}` }}
+      right-click, or focus and press Shift+F10 {{ last && `· ${last}` }}
     </div>
   </BlessContextMenu>
 </template>
