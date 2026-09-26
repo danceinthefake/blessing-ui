@@ -42,6 +42,7 @@ withDefaults(
 .bless-badge__inner {
   display: inline-block;
   transform: skewX(var(--bless-skew-counter));
+  unicode-bidi: plaintext; /* direction from its own text: "NEW!" stays "NEW!" inside RTL copy */
 }
 .bless-badge--scaled {
   transform: skewX(var(--bless-skew)) scale(var(--bless-press-scale));
