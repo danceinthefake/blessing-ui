@@ -1,13 +1,23 @@
 # Tokens
 
-All styling reads `--bless-*` custom properties from `tokens.css` — 89 of them. Override on `:root` to retheme the whole app; override on a subtree to change individual values there (a palette or dark mode, which are attribute-driven on `<html>`, stay app-wide).
+<script setup>
+import TokenSwatches from "../demos/TokenSwatches.vue";
+</script>
+
+All styling reads `--bless-*` custom properties from `tokens.css` — 91 of them. Override on `:root` to retheme the whole app; override on a subtree to change individual values there (a palette or dark mode, which are attribute-driven on `<html>`, stay app-wide).
 
 ```css
 :root {
-  --bless-color-accent: #4090d0;
-  --bless-lean: -6deg;
+  --bless-lean: -6deg; /* a gentler lean */
+  --bless-font-sans: "Inter", system-ui, sans-serif;
 }
 ```
+
+To change the accent, pick a [palette](./palettes) or define a whole one — the accent is a family (`accent`, `accent-text`, `accent-soft`, `accent-2`, `badge`, `chart-1`) with contrast rules, and changing `accent` alone leaves the rest on Megumi's pink.
+
+<Demo title="Colour tokens — live; flip the theme or palette in the nav">
+  <TokenSwatches />
+</Demo>
 
 | Group              | Props                                                                                                                                                                                                                                |
 | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -18,7 +28,7 @@ All styling reads `--bless-*` custom properties from `tokens.css` — 89 of them
 | Space              | `--bless-space-{1,2,3,4,6,8,12,16}` — 4px base                                                                                                                                                                                       |
 | Shape              | `--bless-lean`, `--bless-skew`, `--bless-skew-counter`, `--bless-petal`, `--bless-radius-petal` (+`-lg`), `--bless-radius`, `--bless-radius-plate` (0, override points), `--bless-border-width`, `--bless-dash-width`                |
 | Elevation          | `--bless-shadow-plate` (`1px 1px 0` accent, via `--bless-plate-offset`), `--bless-shadow-none`; `--bless-shadow-md` is an alias of plate                                                                                             |
-| Motion             | `--bless-duration-{fast,base,slow,slower}`, `--bless-ease-{in-out,out,linear}`, `--bless-hover-opacity`, `--bless-press-scale`                                                                                                       |
+| Motion             | `--bless-duration-{fast,base,slow,slower}`, `--bless-ease-{in-out,out,linear}`, `--bless-hover-opacity`, `--bless-press-scale`, `--bless-lean-transition`                                                                            |
 | Layout             | `--bless-sidebar-width`, `--bless-sidebar-inner`, `--bless-content-max`, `--bless-z-{bg,nav,modal}`, `--bless-safe-{top,right,bottom,left}` (`env(safe-area-inset-*)`, for notches)                                                  |
 
 Durations collapse to `0s` under `prefers-reduced-motion`.
@@ -31,11 +41,13 @@ Durations collapse to `0s` under `prefers-reduced-motion`.
 
 ## Shape
 
-One shape — see [Conventions](./conventions#shape). `--bless-lean` is the house angle; `--bless-skew` / `--bless-skew-counter` are the current lean every plate and its text read — `0deg` at rest, set to the lean on hover, focus, press or while writing. Set `--bless-skew: var(--bless-lean)` (and the counter to its negative) on an element to make it lean at rest; set `--bless-lean: 0deg` to turn the lean off. `--bless-radius-petal` (and `-lg` for chat bubbles) is what avatars, switches, chips, bubbles, fabs and thumbs read for their corners; it is square because `--bless-petal` is `0`. Set `--bless-petal` to round two opposite corners of those parts, or `--bless-radius` / `--bless-radius-plate` to round boxes and plates — the library itself sets none of them.
+One shape — see [Conventions](./conventions#shape). `--bless-lean` is the house angle; `--bless-skew` / `--bless-skew-counter` are the current lean every plate and its text read — `0deg` at rest, set to the lean on hover, focus, press or while writing. Set `--bless-skew: var(--bless-lean)` (and the counter to its negative) on an element to make it lean at rest; set `--bless-lean: 0deg` to turn the lean off. A control of your own that sets its own `transition` should append `var(--bless-lean-transition)` to the list, or its lean snaps instead of animating. `--bless-radius-petal` (and `-lg` for chat bubbles) is what avatars, switches, chips, bubbles, fabs and thumbs read for their corners; it is square because `--bless-petal` is `0`. Set `--bless-petal` to round two opposite corners of those parts, or `--bless-radius` / `--bless-radius-plate` to round boxes and plates — the library itself sets none of them.
 
 ## Colour pairs
 
 - `accent-text` — the accent **as text** on `bg`/`surface`: darkened per palette to ≥4.5:1 (links, active nav, selected rows). Fills use `accent`, deepened per palette to carry white text at 4.5:1; as text on the page it's too light, so use `accent-text`.
+- **The accent's contract**, for any palette of your own: `accent` must carry white text at 4.5:1, and `accent-text` must reach 4.5:1 on `bg` and `surface` in both themes.
+- `badge` — the "NEW!" pill and notification fills; a step of the accent family, so it re-tints with the palette and carries white at 4.5:1.
 - `danger` / `danger-text` — `danger` is the fill (destructive buttons, invalid borders); `danger-text` is error copy, ≥4.5:1 on `bg` and `surface`. They're the same red in light mode; dark mode lifts the text one so it stays readable on the dark greys, where no single red could be both.
 - `info` / `info-text` — the same split: `info-text` for info as text (outline badges, alert titles).
 - `on-accent` — text on any accent / danger / info fill (white).
