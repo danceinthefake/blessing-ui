@@ -282,8 +282,7 @@ watch(
   font-weight: var(--bless-font-weight-light);
 }
 .bless-calendar__day--today {
-  font-weight: var(--bless-font-weight-bold);
-  color: var(--bless-color-accent-text);
+  font-weight: var(--bless-font-weight-bold); /* a marker, not a choice: ink, with the dot */
 }
 .bless-calendar__day--today::after {
   content: "";
@@ -295,8 +294,9 @@ watch(
   margin-inline-start: -2px;
   background: currentColor;
 }
+/* a chosen range is one plate: the days between the ends take a tint of the accent, no gaps */
 .bless-calendar__day--in-range {
-  background: var(--bless-color-surface);
+  background: color-mix(in srgb, var(--bless-color-accent) 16%, transparent);
 }
 .bless-calendar__day--selected {
   background: var(--bless-color-accent);

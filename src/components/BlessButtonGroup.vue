@@ -8,7 +8,7 @@ withDefaults(defineProps<{ orientation?: "horizontal" | "vertical"; label?: stri
 
 <template>
   <div
-    class="bless-button-group"
+    class="bless-button-group bless-lean"
     :class="`bless-button-group--${orientation}`"
     role="group"
     :aria-label="label"
@@ -18,7 +18,7 @@ withDefaults(defineProps<{ orientation?: "horizontal" | "vertical"; label?: stri
 </template>
 
 <style>
-/* joined buttons: no gap, shared border, parallelogram edges overlap by the skew */
+/* fuse when grouped: one plate — no gap, shared border, and the group leans as one (.bless-lean) */
 .bless-button-group {
   display: inline-flex;
   align-items: stretch;
@@ -66,12 +66,5 @@ withDefaults(defineProps<{ orientation?: "horizontal" | "vertical"; label?: stri
 .bless-button-group > .bless-button:focus-visible {
   position: relative;
   z-index: 1;
-}
-/* solid neighbours get a hairline so they don't fuse */
-.bless-button-group--horizontal > .bless-button--solid + .bless-button--solid {
-  border-inline-start-color: var(--bless-color-bg);
-}
-.bless-button-group--vertical > .bless-button--solid + .bless-button--solid {
-  border-top-color: var(--bless-color-bg);
 }
 </style>
