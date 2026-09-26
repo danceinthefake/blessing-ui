@@ -50,6 +50,7 @@ const pct = computed(() =>
       :aria-valuemin="0"
       :aria-valuemax="max"
       :aria-valuenow="value"
+      :aria-valuetext="format && value !== undefined ? format(value, max) : undefined"
     >
       <div
         class="bless-progress__fill"

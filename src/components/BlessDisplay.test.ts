@@ -11,6 +11,10 @@ test("BlessProgress determinate / indeterminate", () => {
   expect(d.find('[role="progressbar"]').attributes("aria-valuenow")).toBe("25");
   expect(d.find(".bless-progress__fill").attributes("style")).toContain("width: 50%");
   expect(d.find(".bless-progress__value").text()).toBe("50%");
+  const f = mount(BlessProgress, {
+    props: { value: 42, max: 128, format: (v, m) => `${v} of ${m} MB` },
+  });
+  expect(f.find('[role="progressbar"]').attributes("aria-valuetext")).toBe("42 of 128 MB");
   const i = mount(BlessProgress);
   expect(i.classes()).toContain("bless-progress--indeterminate");
   expect(i.find('[role="progressbar"]').attributes("aria-valuenow")).toBeUndefined();
