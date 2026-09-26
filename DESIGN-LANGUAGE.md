@@ -78,7 +78,7 @@ The main button stands out by weight (solid against outline), not by colour. On 
 2. [x] Colour means chosen: tokens, and ink at rest across all components.
 3. [x] Lean on hover and focus.
 4. [x] Write on the page: fields and inplace editing.
-5. [ ] Fuse when grouped: button groups, input add-ons, date ranges.
+5. [x] Fuse when grouped: button groups, input add-ons, date ranges.
 6. [ ] Overflow: headlines, watermarks, finished progress.
 7. [ ] The mark: the leaning flower in the docs and README.
 
