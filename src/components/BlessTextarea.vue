@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from "vue";
-import { useFieldId, useFieldState } from "../composables/useFieldId";
+import { joinIds, useFieldId, useFieldState } from "../composables/useFieldId";
 
 defineOptions({ name: "BlessTextarea", inheritAttrs: false });
 
@@ -55,14 +55,21 @@ const errId = () => `${id()}-err`;
         :maxlength
         class="bless-textarea__control"
         :aria-invalid="invalid || error || fs.invalid.value ? 'true' : undefined"
-        :aria-describedby="error ? errId() : description ? descId() : fs.describedby.value"
+        :aria-describedby="
+          joinIds(
+            description && descId(),
+            error && errId(),
+            fs.describedby.value,
+            $attrs['aria-describedby'] as string,
+          )
+        "
       />
     </div>
     <div class="bless-textarea__foot">
-      <p v-if="error" :id="errId()" class="bless-textarea__error" role="alert">{{ error }}</p>
-      <p v-else-if="description" :id="descId()" class="bless-textarea__description">
+      <p v-if="description" :id="descId()" class="bless-textarea__description">
         {{ description }}
       </p>
+      <p v-if="error" :id="errId()" class="bless-textarea__error" role="alert">{{ error }}</p>
       <span
         v-if="counter && maxlength"
         class="bless-textarea__counter"

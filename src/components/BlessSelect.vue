@@ -1,6 +1,6 @@
 <script setup lang="ts" generic="T extends string | number">
 import { computed } from "vue";
-import { useFieldId, useFieldState } from "../composables/useFieldId";
+import { joinIds, useFieldId, useFieldState } from "../composables/useFieldId";
 import type { BlessOption } from "./select";
 
 defineOptions({ name: "BlessSelect", inheritAttrs: false });
@@ -52,7 +52,12 @@ const isGroup = (o: unknown): o is { label: string; options: BlessOption<T>[] } 
         class="bless-select__control"
         :aria-invalid="invalid || error || fs.invalid.value ? 'true' : undefined"
         :aria-describedby="
-          error ? `${id()}-err` : description ? `${id()}-desc` : fs.describedby.value
+          joinIds(
+            description && `${id()}-desc`,
+            error && `${id()}-err`,
+            fs.describedby.value,
+            $attrs['aria-describedby'] as string,
+          )
         "
       >
         <option v-if="placeholder" value="" disabled hidden>{{ placeholder }}</option>
@@ -67,10 +72,10 @@ const isGroup = (o: unknown): o is { label: string; options: BlessOption<T>[] } 
       </select>
       <span class="bless-select__chevron" aria-hidden="true" />
     </div>
-    <p v-if="error" :id="`${id()}-err`" class="bless-select__error" role="alert">{{ error }}</p>
-    <p v-else-if="description" :id="`${id()}-desc`" class="bless-select__description">
+    <p v-if="description" :id="`${id()}-desc`" class="bless-select__description">
       {{ description }}
     </p>
+    <p v-if="error" :id="`${id()}-err`" class="bless-select__error" role="alert">{{ error }}</p>
   </div>
 </template>
 

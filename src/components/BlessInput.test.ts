@@ -37,9 +37,11 @@ test("BlessInput v-model, attrs passthrough, error wiring", async () => {
 
   await w.setProps({ error: "bad" });
   expect(i.attributes("aria-invalid")).toBe("true");
-  expect(i.attributes("aria-describedby")).toBe(i.attributes("id") + "-err");
+  // the help stays under the error, and both are read
+  const id = i.attributes("id");
+  expect(i.attributes("aria-describedby")).toBe(`${id}-desc ${id}-err`);
   expect(w.find('[role="alert"]').text()).toBe("bad");
-  expect(w.find(".bless-input__description").exists()).toBe(false);
+  expect(w.find(".bless-input__description").exists()).toBe(true);
 });
 
 test("BlessTextarea counter + maxlength", async () => {
