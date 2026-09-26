@@ -60,10 +60,15 @@ const pos = defineModel<number>({ default: 50 });
 .bless-compare--vertical .bless-compare__after {
   clip-path: inset(0 0 calc(100% - var(--_p)) 0);
 }
+/* ink with a page-coloured edge, so it reads on dark and light frames; accent while dragged */
 .bless-compare__handle {
   position: absolute;
   background: var(--bless-color-text);
+  box-shadow: 0 0 0 1px var(--bless-color-bg);
   pointer-events: none;
+}
+.bless-compare:has(.bless-compare__range:active) .bless-compare__handle {
+  background: var(--bless-color-accent);
 }
 .bless-compare--horizontal .bless-compare__handle {
   top: 0;
