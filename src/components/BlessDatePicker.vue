@@ -61,8 +61,10 @@ watch(open, (o) =>
 watch(model, (v) => {
   if (open.value && (!props.range || Array.isArray(v))) close();
 });
+// the × goes away with the value; hand focus to the field rather than dropping it on <body>
 function clear() {
   model.value = undefined;
+  anchor.value?.focus();
 }
 </script>
 
@@ -71,7 +73,10 @@ function clear() {
     class="bless-datepicker"
     :class="[
       `bless-datepicker--${size}`,
-      { 'bless-datepicker--invalid': invalid, 'bless-datepicker--disabled': disabled },
+      {
+        'bless-datepicker--invalid': invalid || fs.invalid.value,
+        'bless-datepicker--disabled': disabled,
+      },
     ]"
   >
     <span v-if="useNative" class="bless-datepicker__field bless-lean--field">
@@ -84,6 +89,7 @@ function clear() {
         :disabled
         class="bless-datepicker__native"
         :aria-invalid="invalid || fs.invalid.value || undefined"
+        :aria-describedby="fs.describedby.value"
       />
     </span>
     <template v-else>
@@ -96,6 +102,7 @@ function clear() {
         :aria-haspopup="'dialog'"
         :aria-expanded="open"
         :aria-invalid="invalid || fs.invalid.value || undefined"
+        :aria-describedby="fs.describedby.value"
         @click="open = !open"
         @keydown.esc="open && ($event.preventDefault(), (open = false))"
       >
@@ -110,7 +117,7 @@ function clear() {
         v-if="text && !disabled"
         type="button"
         class="bless-datepicker__clear"
-        aria-label="Clear"
+        aria-label="Clear date"
         @click="clear"
       >
         ×
@@ -200,7 +207,7 @@ function clear() {
   outline-offset: -2px;
 }
 .bless-datepicker__clear:hover {
-  opacity: 1;
+  opacity: var(--bless-hover-opacity);
 }
 .bless-datepicker__panel {
   position: fixed;
