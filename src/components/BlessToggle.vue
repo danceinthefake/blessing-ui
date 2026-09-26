@@ -66,7 +66,8 @@ function toggle() {
     opacity var(--bless-duration-slow) var(--bless-ease-in-out),
     color var(--bless-duration-slow),
     border-color var(--bless-duration-slow),
-    background var(--bless-duration-slow);
+    background var(--bless-duration-slow),
+    var(--bless-lean-transition);
 }
 .bless-toggle--accent {
   --_c: var(--bless-color-accent);

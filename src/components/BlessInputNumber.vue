@@ -87,7 +87,7 @@ function onKey(e: KeyboardEvent) {
 
 <template>
   <div
-    class="bless-number"
+    class="bless-number bless-lean--field"
     :class="[
       `bless-number--${size}`,
       { 'bless-number--disabled': disabled, 'bless-number--invalid': invalid },
@@ -194,8 +194,9 @@ function onKey(e: KeyboardEvent) {
   font-size: var(--bless-text-md);
   cursor: pointer;
 }
+/* hover is attention, not a choice: ink */
 .bless-number__btn:hover:not(:disabled) {
-  color: var(--bless-color-accent-text);
+  color: var(--bless-color-text);
 }
 .bless-number__btn:disabled {
   opacity: 0.3;

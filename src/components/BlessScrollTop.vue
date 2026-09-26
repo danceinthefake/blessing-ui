@@ -62,7 +62,9 @@ onBeforeUnmount(() => (el() ?? window).removeEventListener("scroll", check));
   cursor: pointer;
   box-shadow: var(--bless-shadow-plate);
   transform: skewX(var(--bless-skew));
-  transition: opacity var(--bless-duration-slow) var(--bless-ease-in-out);
+  transition:
+    opacity var(--bless-duration-slow) var(--bless-ease-in-out),
+    var(--bless-lean-transition);
 }
 .bless-scroll-top > span {
   display: inline-block;

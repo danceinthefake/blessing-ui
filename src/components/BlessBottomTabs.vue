@@ -130,7 +130,9 @@ const emit = defineEmits<{ select: [item: BlessBottomTab, e: Event] }>();
   font: inherit;
   text-decoration: none;
   cursor: pointer;
-  transition: color var(--bless-duration-base);
+  transition:
+    color var(--bless-duration-base),
+    var(--bless-lean-transition);
 }
 .bless-bottom-tabs--dock .bless-bottom-tabs__item {
   flex: none;

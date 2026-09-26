@@ -74,7 +74,7 @@ function clear() {
       { 'bless-datepicker--invalid': invalid, 'bless-datepicker--disabled': disabled },
     ]"
   >
-    <span v-if="useNative" class="bless-datepicker__field">
+    <span v-if="useNative" class="bless-datepicker__field bless-lean--field">
       <input
         :id
         v-model="model"

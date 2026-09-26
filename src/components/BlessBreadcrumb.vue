@@ -62,10 +62,13 @@ withDefaults(defineProps<{ items: BlessCrumb[]; label?: string; separator?: stri
 .bless-breadcrumb__link {
   color: var(--bless-color-text-muted);
   text-decoration: none;
-  transition: color var(--bless-duration-slow) var(--bless-ease-in-out);
+  transition:
+    color var(--bless-duration-slow) var(--bless-ease-in-out),
+    var(--bless-lean-transition);
 }
+/* hover is attention, not a choice: ink */
 .bless-breadcrumb__link:hover {
-  color: var(--bless-color-accent-text);
+  color: var(--bless-color-text);
 }
 .bless-breadcrumb__link:focus-visible {
   outline: 2px solid var(--bless-color-accent);

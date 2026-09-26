@@ -40,7 +40,7 @@ const isGroup = (o: unknown): o is { label: string; options: BlessOption<T>[] } 
       { 'bless-select--invalid': invalid || error, 'bless-select--disabled': disabled },
     ]"
   >
-    <div class="bless-select__field">
+    <div class="bless-select__field bless-lean--field">
       <select
         v-bind="$attrs"
         :id="id()"

@@ -36,7 +36,7 @@ defineExpose({ id });
       { 'bless-input--invalid': invalid || error, 'bless-input--disabled': disabled },
     ]"
   >
-    <div class="bless-input__field">
+    <div class="bless-input__field bless-lean--field">
       <span v-if="$slots.prefix" class="bless-input__affix bless-input__affix--prefix"
         ><slot name="prefix"
       /></span>
@@ -84,7 +84,9 @@ defineExpose({ id });
   height: var(--_h);
   background: var(--bless-color-surface);
   border-bottom: calc(2 * var(--bless-border-width)) solid var(--bless-color-text-muted);
-  transition: border-color var(--bless-duration-slow) var(--bless-ease-in-out);
+  transition:
+    border-color var(--bless-duration-slow) var(--bless-ease-in-out),
+    var(--bless-lean-transition);
 }
 /* skewed accent underline that grows on focus */
 .bless-input__field::after {

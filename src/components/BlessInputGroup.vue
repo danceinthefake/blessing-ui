@@ -6,7 +6,7 @@ withDefaults(defineProps<{ size?: "sm" | "md" | "lg"; disabled?: boolean }>(), {
 
 <template>
   <fieldset
-    class="bless-input-group"
+    class="bless-input-group bless-lean--field"
     :class="[`bless-input-group--${size}`, { 'bless-input-group--disabled': disabled }]"
     :disabled
   >

@@ -90,8 +90,13 @@
   --bless-petal: 8px;
   --bless-radius-petal: 0 var(--bless-petal) 0 var(--bless-petal); /* the acute corners of the -10° lean */
   --bless-radius-petal-lg: 0 calc(var(--bless-petal) * 1.5) 0 calc(var(--bless-petal) * 1.5); /* bubbles */
-  --bless-skew: -10deg;
-  --bless-skew-counter: 10deg; /* apply to inner text */
+  --bless-lean: -10deg; /* the house angle — what a plate leans to when it gets attention */
+  /* append to a control's own transition list so its lean still animates */
+  --bless-lean-transition:
+    --bless-skew var(--bless-duration-base) var(--bless-ease-out),
+    --bless-skew-counter var(--bless-duration-base) var(--bless-ease-out);
+  --bless-skew: 0deg; /* the current lean: upright at rest, set to --bless-lean on attention (below) */
+  --bless-skew-counter: 0deg; /* apply to inner text */
   --bless-border-width: 1px;
   --bless-dash-width: 10px; /* separator dash */
 
@@ -280,13 +285,64 @@
 }
 
 /* ---- right-to-left ----
- * Layout is logical (inline-start/end) throughout; only the skew needs a hand — the parallelogram
+ * Layout is logical (inline-start/end) throughout; only the lean needs a hand — the parallelogram
  * leans with the reading direction. Named-physical props (placement="left", position="top-right",
  * the Layout/Stage drawers) stay physical on purpose.
  */
 [dir="rtl"] {
-  --bless-skew: 10deg;
-  --bless-skew-counter: -10deg;
+  --bless-lean: 10deg;
   --bless-radius-petal: var(--bless-petal) 0 var(--bless-petal) 0; /* the lean flips, so do the petal's corners */
   --bless-radius-petal-lg: calc(var(--bless-petal) * 1.5) 0 calc(var(--bless-petal) * 1.5) 0;
+}
+
+/* ---- lean on attention ----
+ * Upright at rest; a control leans to --bless-lean while it is hovered, focused or pressed, and a
+ * field while you write in it. Every plate reads var(--bless-skew) and its text the counter, so
+ * setting the pair on the attended element leans it and everything drawn inside it. Registered so
+ * the lean animates; the focus ring stays, so the lean is never the only focus signal.
+ * Big display type (the watermark) leans at rest by setting --bless-skew itself.
+ */
+@property --bless-skew {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 0deg;
+}
+@property --bless-skew-counter {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 0deg;
+}
+:where(
+  button,
+  a[href],
+  summary,
+  label,
+  [role="tab"],
+  [role="option"],
+  [role="menuitem"],
+  [role="menuitemradio"],
+  [role="menuitemcheckbox"],
+  [role="treeitem"],
+  .bless-lean,
+  .bless-lean--field
+) {
+  transition: var(--bless-lean-transition);
+}
+:where(
+    button,
+    a[href],
+    summary,
+    label,
+    [role="tab"],
+    [role="option"],
+    [role="menuitem"],
+    [role="menuitemradio"],
+    [role="menuitemcheckbox"],
+    [role="treeitem"],
+    .bless-lean
+  ):where(:not(:disabled, [aria-disabled="true"])):is(:hover, :focus-visible, :active),
+:where(label, .bless-lean):has(:focus-visible),
+:where(.bless-lean--field):focus-within {
+  --bless-skew: var(--bless-lean);
+  --bless-skew-counter: calc(-1 * var(--bless-lean));
 }

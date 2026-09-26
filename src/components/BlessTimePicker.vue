@@ -50,7 +50,7 @@ const options = computed(() => {
 
 <template>
   <div
-    class="bless-time"
+    class="bless-time bless-lean--field"
     :class="[
       `bless-time--${size}`,
       { 'bless-time--disabled': disabled, 'bless-time--invalid': invalid },

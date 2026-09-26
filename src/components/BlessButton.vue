@@ -73,7 +73,9 @@ const onClick = (e: MouseEvent) => inactive.value && e.preventDefault();
   line-height: var(--bless-leading-none);
   text-decoration: none;
   text-transform: uppercase;
-  transition: opacity var(--bless-duration-slow) var(--bless-ease-in-out);
+  transition:
+    opacity var(--bless-duration-slow) var(--bless-ease-in-out),
+    var(--bless-lean-transition);
 }
 .bless-button--accent {
   --_c: var(

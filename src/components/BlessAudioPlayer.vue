@@ -185,7 +185,9 @@ onBeforeUnmount(() => audio.value?.pause());
   border: 0;
   font-size: var(--bless-text-sm);
   cursor: pointer;
-  transition: opacity var(--bless-duration-slow) var(--bless-ease-in-out);
+  transition:
+    opacity var(--bless-duration-slow) var(--bless-ease-in-out),
+    var(--bless-lean-transition);
 }
 .bless-audio__toggle:hover {
   opacity: var(--bless-hover-opacity);
@@ -265,7 +267,9 @@ onBeforeUnmount(() => audio.value?.pause());
   font-size: var(--bless-text-sm);
   text-align: start;
   cursor: pointer;
-  transition: opacity var(--bless-duration-slow) var(--bless-ease-in-out);
+  transition:
+    opacity var(--bless-duration-slow) var(--bless-ease-in-out),
+    var(--bless-lean-transition);
 }
 .bless-audio__track:hover {
   opacity: var(--bless-hover-opacity);

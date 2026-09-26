@@ -56,15 +56,17 @@ onMounted(() => (mounted.value = true));
   transform: skewX(var(--bless-skew));
   transition:
     border-color var(--bless-duration-slow),
-    color var(--bless-duration-slow);
+    color var(--bless-duration-slow),
+    var(--bless-lean-transition);
 }
 .bless-theme-toggle > span {
   display: inline-block;
   transform: skewX(var(--bless-skew-counter));
 }
+/* hover is attention, not a choice: ink */
 .bless-theme-toggle:hover {
-  border-color: var(--bless-color-accent-text);
-  color: var(--bless-color-accent-text);
+  border-color: var(--bless-color-text);
+  color: var(--bless-color-text);
 }
 .bless-theme-toggle:focus-visible {
   outline: 2px solid var(--bless-color-accent);

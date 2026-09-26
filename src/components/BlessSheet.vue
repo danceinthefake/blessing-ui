@@ -190,7 +190,9 @@ function onUp() {
   line-height: 1;
   cursor: pointer;
   transform: skewX(var(--bless-skew));
-  transition: opacity var(--bless-duration-slow) var(--bless-ease-in-out);
+  transition:
+    opacity var(--bless-duration-slow) var(--bless-ease-in-out),
+    var(--bless-lean-transition);
 }
 .bless-sheet__close > span {
   display: inline-block;

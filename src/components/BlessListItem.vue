@@ -45,7 +45,9 @@ defineProps<{
   text-decoration: none;
 }
 .bless-list-item__row--link {
-  transition: opacity var(--bless-duration-slow) var(--bless-ease-in-out);
+  transition:
+    opacity var(--bless-duration-slow) var(--bless-ease-in-out),
+    var(--bless-lean-transition);
 }
 .bless-list-item__row--link:hover {
   opacity: var(--bless-hover-opacity);

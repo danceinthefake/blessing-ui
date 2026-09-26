@@ -322,8 +322,9 @@ defineExpose({ state, selectedRows: dt.selectedRows });
   text-transform: inherit;
   cursor: pointer;
 }
+/* hover is attention, not a choice: ink */
 .bless-datatable__sort:hover {
-  color: var(--bless-color-accent-text);
+  color: var(--bless-color-text);
 }
 .bless-datatable__sort:focus-visible {
   outline: 2px solid var(--bless-color-accent);

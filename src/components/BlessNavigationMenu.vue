@@ -168,9 +168,14 @@ function onKey(e: KeyboardEvent, i: number, item: BlessNavMenuItem) {
   text-transform: uppercase;
   text-decoration: none;
   cursor: pointer;
-  transition: color var(--bless-duration-slow) var(--bless-ease-in-out);
+  transition:
+    color var(--bless-duration-slow) var(--bless-ease-in-out),
+    var(--bless-lean-transition);
 }
-.bless-navmenu__trigger:hover,
+/* hover is attention, not a choice: ink */
+.bless-navmenu__trigger:hover {
+  color: var(--bless-color-text);
+}
 .bless-navmenu__trigger--open {
   color: var(--bless-color-accent-text);
 }
@@ -228,7 +233,10 @@ function onKey(e: KeyboardEvent, i: number, item: BlessNavMenuItem) {
   background: var(--bless-color-surface);
   outline: 0;
 }
-.bless-navmenu__link:hover .bless-navmenu__link-label,
+/* hover is attention, not a choice: ink */
+.bless-navmenu__link:hover .bless-navmenu__link-label {
+  color: var(--bless-color-text);
+}
 .bless-navmenu__link:focus-visible .bless-navmenu__link-label {
   color: var(--bless-color-accent-text);
 }

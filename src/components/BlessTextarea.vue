@@ -44,7 +44,7 @@ const errId = () => `${id()}-err`;
       'bless-textarea--autogrow': autogrow,
     }"
   >
-    <div class="bless-textarea__field">
+    <div class="bless-textarea__field bless-lean--field">
       <textarea
         v-bind="$attrs"
         :id="id()"

@@ -228,10 +228,13 @@ watch(
   color: var(--bless-color-text);
   font-size: var(--bless-text-lg);
   cursor: pointer;
-  transition: color var(--bless-duration-slow);
+  transition:
+    color var(--bless-duration-slow),
+    var(--bless-lean-transition);
 }
+/* hover is attention, not a choice: ink */
 .bless-calendar__nav:hover {
-  color: var(--bless-color-accent-text);
+  color: var(--bless-color-text);
 }
 .bless-calendar__nav:focus-visible {
   outline: 2px solid var(--bless-color-accent);
@@ -263,7 +266,8 @@ watch(
   cursor: pointer;
   transition:
     background var(--bless-duration-fast),
-    color var(--bless-duration-fast);
+    color var(--bless-duration-fast),
+    var(--bless-lean-transition);
 }
 .bless-calendar__day:hover:not(:disabled) {
   background: var(--bless-color-surface);

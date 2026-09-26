@@ -26,6 +26,7 @@ withDefaults(
   letter-spacing: var(--bless-tracking-tight);
   line-height: var(--bless-leading-none);
   color: var(--bless-color-watermark);
+  --bless-skew: var(--bless-lean); /* big display type leans at rest */
   transform: skewX(var(--bless-skew));
   white-space: nowrap;
   pointer-events: none;

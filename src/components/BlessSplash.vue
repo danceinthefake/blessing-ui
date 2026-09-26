@@ -99,7 +99,9 @@ defineExpose({ dismiss });
   text-transform: uppercase;
   cursor: pointer;
   transform: skewX(var(--bless-skew));
-  transition: opacity var(--bless-duration-slow) var(--bless-ease-in-out);
+  transition:
+    opacity var(--bless-duration-slow) var(--bless-ease-in-out),
+    var(--bless-lean-transition);
 }
 .bless-splash__skip:hover {
   opacity: var(--bless-hover-opacity);

@@ -44,7 +44,8 @@ const id = useLabelFor(props.for);
   transition:
     top var(--bless-duration-base) var(--bless-ease-out),
     font-size var(--bless-duration-base) var(--bless-ease-out),
-    translate var(--bless-duration-base) var(--bless-ease-out);
+    translate var(--bless-duration-base) var(--bless-ease-out),
+    var(--bless-lean-transition);
 }
 .bless-float :is(input, textarea, select)::placeholder {
   color: transparent;

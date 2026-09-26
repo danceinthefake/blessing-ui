@@ -128,7 +128,8 @@ function onKey(e: KeyboardEvent) {
   cursor: pointer;
   transition:
     opacity var(--bless-duration-slow) var(--bless-ease-in-out),
-    color var(--bless-duration-slow);
+    color var(--bless-duration-slow),
+    var(--bless-lean-transition);
 }
 .bless-tabs__tab.bless-skew--none {
   background: transparent;
@@ -141,7 +142,10 @@ function onKey(e: KeyboardEvent) {
 }
 .bless-tabs__tab:hover:not(:disabled) {
   opacity: var(--bless-hover-opacity);
-  color: var(--_c);
+}
+/* hover is attention, not a choice: ink, never the accent; the active tab keeps its own text */
+.bless-tabs__tab:hover:not(:disabled, .bless-tabs__tab--active) {
+  color: var(--bless-color-text);
 }
 .bless-tabs__tab:focus-visible {
   outline: 2px solid var(--bless-color-accent);

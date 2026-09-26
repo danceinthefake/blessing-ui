@@ -206,7 +206,9 @@ defineExpose({ go, next: () => go(index.value + 1), prev: () => go(index.value -
   line-height: 1;
   cursor: pointer;
   transform: translateY(-50%) skewX(var(--bless-skew));
-  transition: opacity var(--bless-duration-slow) var(--bless-ease-in-out);
+  transition:
+    opacity var(--bless-duration-slow) var(--bless-ease-in-out),
+    var(--bless-lean-transition);
 }
 .bless-carousel__arrow > span {
   display: inline-block;
@@ -243,7 +245,9 @@ defineExpose({ go, next: () => go(index.value + 1), prev: () => go(index.value -
   background: var(--bless-color-border);
   cursor: pointer;
   transform: skewX(var(--bless-skew));
-  transition: background var(--bless-duration-base);
+  transition:
+    background var(--bless-duration-base),
+    var(--bless-lean-transition);
 }
 .bless-carousel__dot--active {
   background: var(--bless-color-accent);

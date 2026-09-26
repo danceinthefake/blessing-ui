@@ -131,7 +131,9 @@ function onKey(e: KeyboardEvent) {
   background: var(--bless-color-surface);
   line-height: 0;
   cursor: pointer;
-  transition: opacity var(--bless-duration-slow) var(--bless-ease-in-out);
+  transition:
+    opacity var(--bless-duration-slow) var(--bless-ease-in-out),
+    var(--bless-lean-transition);
 }
 .bless-gallery__thumb:hover {
   opacity: var(--bless-hover-opacity);
@@ -185,7 +187,9 @@ function onKey(e: KeyboardEvent) {
   line-height: 1;
   cursor: pointer;
   transform: translateY(-50%) skewX(var(--bless-skew));
-  transition: opacity var(--bless-duration-slow) var(--bless-ease-in-out);
+  transition:
+    opacity var(--bless-duration-slow) var(--bless-ease-in-out),
+    var(--bless-lean-transition);
 }
 .bless-gallery__nav > span {
   display: inline-block;

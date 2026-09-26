@@ -122,7 +122,9 @@ const emit = defineEmits<{ dismiss: [] }>();
   font-size: var(--bless-text-lg);
   line-height: 1;
   cursor: pointer;
-  transition: opacity var(--bless-duration-slow) var(--bless-ease-in-out);
+  transition:
+    opacity var(--bless-duration-slow) var(--bless-ease-in-out),
+    var(--bless-lean-transition);
 }
 .bless-alert__close:hover {
   opacity: var(--bless-hover-opacity);
