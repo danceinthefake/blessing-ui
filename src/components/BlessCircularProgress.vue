@@ -35,6 +35,7 @@ const text = computed(() =>
     role="progressbar"
     :aria-label="label ?? 'Progress'"
     :aria-valuenow="value"
+    :aria-valuetext="value != null && format ? text : undefined"
     aria-valuemin="0"
     :aria-valuemax="max"
   >

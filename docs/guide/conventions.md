@@ -65,6 +65,6 @@ The six rules of the [design language](../design/), as they show in the library,
 
 One shape: the upright plate with a whole, square outline. Buttons, tabs, tags, fields, cards, menus — and the parts that are round anywhere else (avatars, switches, chips, chat bubbles, fabs, slider thumbs, count dots) — are all square. The identity is the lean on attention, not the corners; the teardrop belongs to the [mark](../design/brand#mark).
 
-Never: a full circle or a rounded plate from the library itself. `--bless-radius`, `--bless-radius-plate` and `--bless-petal` exist at `0` for consumers who want rounding — `--bless-petal: 8px` brings back two rounded opposite corners on the round-by-nature parts.
+Never: a full circle or a rounded plate from the library itself — except the three places where the circle is the function, not the look: the radio (it is how a radio differs from a checkbox), the knob and the [CircularProgress](../components/circular-progress) gauge. `--bless-radius`, `--bless-radius-plate` and `--bless-petal` exist at `0` for consumers who want rounding — `--bless-petal: 8px` brings back two rounded opposite corners on the round-by-nature parts.
 
 See [DESIGN.md](https://github.com/danceinthefake/blessing-ui/blob/main/DESIGN.md) for the roadmap and the reasoning behind each phase.
