@@ -91,7 +91,7 @@ const isGroup = (o: unknown): o is { label: string; options: BlessOption<T>[] } 
   border-radius: var(--bless-radius-plate);
   position: relative;
   height: var(--_h);
-  background: var(--bless-color-surface);
+  background: transparent; /* a line you write on, not a box */
   border-bottom: calc(2 * var(--bless-border-width)) solid var(--bless-color-text-muted);
 }
 .bless-select__field::after {

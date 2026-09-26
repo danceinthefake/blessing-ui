@@ -59,17 +59,18 @@ function close() {
 }
 .bless-inplace__display {
   border-radius: var(--bless-radius);
-  padding: var(--bless-space-1) var(--bless-space-2);
-  border: var(--bless-border-width) dashed transparent;
+  padding: var(--bless-space-1) 0;
+  border: 0;
+  border-bottom: var(--bless-border-width) dashed transparent; /* the line you'd write on, shown on attention */
   background: none;
   color: inherit;
   font: inherit;
   text-align: start;
   cursor: text;
 }
-.bless-inplace__display:hover {
+.bless-inplace__display:hover,
+.bless-inplace__display:focus-visible {
   border-color: var(--bless-color-text-muted);
-  background: var(--bless-color-surface);
 }
 .bless-inplace__display:focus-visible {
   outline: 2px solid var(--bless-color-accent);

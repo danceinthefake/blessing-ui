@@ -140,7 +140,7 @@ const remove = (id: string) => (model.value = chosen.value.filter((x) => x !== i
   padding: var(--bless-space-1) var(--bless-space-3);
   border: 0;
   border-bottom: calc(2 * var(--bless-border-width)) solid var(--bless-color-text-muted);
-  background: var(--bless-color-surface);
+  background: transparent; /* a line you write on, not a box */
   color: var(--bless-color-text);
   font: inherit;
   font-family: var(--bless-font-sans);

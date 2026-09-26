@@ -115,7 +115,7 @@ function onKey(e: KeyboardEvent) {
   gap: var(--bless-space-1);
   min-height: 40px;
   padding: var(--bless-space-1) var(--bless-space-2);
-  background: var(--bless-color-surface);
+  background: transparent; /* a line you write on, not a box */
   border-bottom: calc(2 * var(--bless-border-width)) solid var(--bless-color-text-muted);
   font-family: var(--bless-font-sans);
   color: var(--bless-color-text);

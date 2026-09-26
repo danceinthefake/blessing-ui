@@ -159,7 +159,7 @@ function clear() {
   box-sizing: border-box;
   border: 0;
   border-bottom: calc(2 * var(--bless-border-width)) solid var(--bless-color-text-muted);
-  background: var(--bless-color-surface);
+  background: transparent; /* a line you write on, not a box */
   color: inherit;
   font: inherit;
   font-size: var(--_fs);
@@ -223,7 +223,7 @@ function clear() {
   border-radius: var(--bless-radius-plate);
   display: inline-flex;
   transform: skewX(var(--bless-skew));
-  background: var(--bless-color-surface);
+  background: transparent; /* a line you write on, not a box */
   border-bottom: calc(2 * var(--bless-border-width)) solid var(--bless-color-text-muted);
 }
 .bless-datepicker__field:focus-within {
