@@ -280,7 +280,7 @@ function onBlur(e: FocusEvent) {
   min-height: var(--_h);
   padding: var(--bless-space-1) var(--bless-space-8) var(--bless-space-1) var(--bless-space-3);
   box-sizing: border-box;
-  background: var(--bless-color-surface);
+  background: transparent; /* a line you write on, not a box */
   border-bottom: calc(2 * var(--bless-border-width)) solid var(--bless-color-text-muted);
   cursor: text;
 }

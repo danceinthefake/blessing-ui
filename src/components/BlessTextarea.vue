@@ -82,7 +82,7 @@ const errId = () => `${id()}-err`;
 .bless-textarea__field {
   border-radius: var(--bless-radius-plate);
   position: relative;
-  background: var(--bless-color-surface);
+  background: transparent; /* a line you write on, not a box */
   border-bottom: calc(2 * var(--bless-border-width)) solid var(--bless-color-text-muted);
 }
 .bless-textarea__field::after {

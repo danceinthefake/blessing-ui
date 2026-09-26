@@ -148,7 +148,7 @@ function onPaste(i: number, e: ClipboardEvent) {
   box-sizing: border-box;
   border: 0;
   border-bottom: calc(2 * var(--bless-border-width)) solid var(--bless-color-text-muted);
-  background: var(--bless-color-surface);
+  background: transparent; /* a line you write on, not a box */
   color: var(--bless-color-text);
   font: inherit;
   font-size: var(--bless-text-lg);
