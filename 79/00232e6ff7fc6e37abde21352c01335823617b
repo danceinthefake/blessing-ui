@@ -1,0 +1,21 @@
+docs/demos/CascadeSelectBasic.vue
+  s_9ec1000e308ddb::t_b0a0d1241a7acc 33,45
+src/components/BlessCascadeSelect.vue
+  s_9ec1000e308ddb::t_da4c9b2ca9004f 313-316
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "7900232e6ff7fc6e37abde21352c01335823617b",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
