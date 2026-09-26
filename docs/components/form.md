@@ -23,7 +23,7 @@ Use the browser's own validation — `required`, `type="email"`, `minlength`, `p
 
 ## How the wiring works
 
-- `BlessField` gives the first control inside it the label's `for` id, `aria-invalid` while it shows an error, and `aria-describedby` pointing at the description or the error — whichever is showing. Every Bless control takes them; nothing to pass. The slot props (`id`, `error`, `describedby`) remain for a plain `<input>` or a field with two controls.
+- `BlessField` gives the first control inside it the label's `for` id, `aria-invalid` while it shows an error, and `aria-describedby` pointing at the description and the error; the description stays under an error, since it is usually what fixes it. Every Bless control takes them; nothing to pass. The slot props (`id`, `error`, `describedby`) remain for a plain `<input>` or a field with two controls.
 - A native validation message appears on the browser's `invalid` event (a submit) or on blur — but blur only once the field has a value or the form has been submitted, so tabbing through an empty form stays quiet.
 - `error` is for what the browser can't know: the server said no. It wins over the native message while set; clear it when the user edits.
 - `BlessForm` sets `novalidate` so the browser's own bubble never shows; the field speaks instead. `@submit` fires with `(FormData, event)` only when everything is valid; `@invalid` fires with the form element on a failed submit, after focus has moved to the first invalid control. Reset clears every field's message, and every `v-model` inside follows the reset values.
