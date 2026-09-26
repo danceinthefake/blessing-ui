@@ -6,8 +6,10 @@ import { BlessSeparator } from "blessing-ui";
   <div class="col" style="max-width: 480px">
     <BlessSeparator />
     <div class="row" style="height: 40px; align-items: stretch">
-      <span>left</span><BlessSeparator orientation="vertical" color="rule" /><span>right</span>
+      <span>2019.04.04</span><BlessSeparator orientation="vertical" color="rule" /><span
+        >第1話</span
+      >
     </div>
-    <BlessSeparator label="or" color="accent" />
+    <BlessSeparator label="or" />
   </div>
 </template>

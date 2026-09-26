@@ -12,7 +12,7 @@ import SeparatorBasic from "../demos/SeparatorBasic.vue";
 
 A rule between things. Horizontal, it is a real `<hr>` — a thematic break assistive tech announces — unless you say `decorative`, which is right for a line that only tidies a layout (between icons in a toolbar, under a header). Vertical needs a flex row with `align-items: stretch` to have a height. `label` puts a word in the middle — the "— or —" between two sign-in methods — as plain text between two hairlines.
 
-Three colours: `border` (the hairline), `rule` (the text colour — the source site's heavy rules under section titles), `accent`. It comes with a little block margin; override it when the layout supplies its own. An inline dash in a line of text is [Dash](./dash).
+Three colours: `border` (the hairline), `rule` (the text colour — the source site's heavy rules under section titles), and `accent`, which is only for a rule that marks something chosen — like every other part, a separator is never accent at rest. It comes with a little block margin; override it when the layout supplies its own. An inline dash in a line of text is [Dash](./dash).
 
 <Demo title="Basic">
   <SeparatorBasic />

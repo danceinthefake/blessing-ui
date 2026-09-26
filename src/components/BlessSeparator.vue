@@ -63,8 +63,6 @@ withDefaults(
 }
 .bless-separator--labelled {
   margin-block: var(--bless-space-4);
-}
-.bless-separator--labelled {
   display: flex;
   align-items: center;
   gap: var(--bless-space-3);
