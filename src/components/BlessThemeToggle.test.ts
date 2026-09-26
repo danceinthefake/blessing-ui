@@ -27,6 +27,13 @@ test("useTheme applies data-theme and persists; toggle flips", async () => {
   expect(document.documentElement.dataset.theme).toBeUndefined();
 });
 
+test("BlessThemeToggle names can be translated", () => {
+  const s = mount(BlessThemeToggle, { props: { labels: { dark: "ダークテーマ" } } });
+  expect(s.find("button").attributes("aria-label")).toBe("ダークテーマ");
+  const g = mount(BlessThemeToggle, { props: { mode: "group", labels: { system: "システム" } } });
+  expect(g.findAll("button")[1].attributes("aria-label")).toBe("システム");
+});
+
 test("BlessThemeToggle switch and group", async () => {
   const s = mount(BlessThemeToggle);
   await s.find("button").trigger("click");

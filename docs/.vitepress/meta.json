@@ -7150,7 +7150,14 @@
     "type": "string | undefined",
     "required": false,
     "default": "\"Theme\"",
-    "description": ""
+    "description": "the group's name"
+   },
+   {
+    "name": "labels",
+    "type": "{ light?: string | undefined; system?: string | undefined; dark?: string | undefined; } | undefined",
+    "required": false,
+    "default": "{}",
+    "description": "accessible names: the switch reads `dark` with pressed / not pressed; the group reads all three"
    }
   ],
   "events": [],
