@@ -169,12 +169,11 @@ function onKey(e: KeyboardEvent, i: number, item: BlessNavMenuItem) {
   text-decoration: none;
   cursor: pointer;
   transition:
-    color var(--bless-duration-slow) var(--bless-ease-in-out),
+    opacity var(--bless-duration-slow) var(--bless-ease-in-out),
     var(--bless-lean-transition);
 }
-/* hover is attention, not a choice: ink */
 .bless-navmenu__trigger:hover {
-  color: var(--bless-color-text);
+  opacity: var(--bless-hover-opacity);
 }
 .bless-navmenu__trigger--open {
   color: var(--bless-color-accent-text);
@@ -228,17 +227,14 @@ function onKey(e: KeyboardEvent, i: number, item: BlessNavMenuItem) {
   text-decoration: none;
   transition: background var(--bless-duration-fast);
 }
+/* attention is a surface, in ink; keyboard focus keeps its ring, like everywhere else */
 .bless-navmenu__link:hover,
 .bless-navmenu__link:focus-visible {
   background: var(--bless-color-surface);
-  outline: 0;
 }
-/* hover is attention, not a choice: ink */
-.bless-navmenu__link:hover .bless-navmenu__link-label {
-  color: var(--bless-color-text);
-}
-.bless-navmenu__link:focus-visible .bless-navmenu__link-label {
-  color: var(--bless-color-accent-text);
+.bless-navmenu__link:focus-visible {
+  outline: 2px solid var(--bless-color-accent);
+  outline-offset: -2px;
 }
 .bless-navmenu__link-label {
   font-size: var(--bless-text-sm);
