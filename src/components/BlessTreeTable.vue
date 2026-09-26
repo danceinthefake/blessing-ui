@@ -93,8 +93,8 @@ const flat = computed(() => {
 .bless-treetable__spacer {
   display: inline-grid;
   place-items: center;
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   flex: none;
 }
 .bless-treetable__toggle {
@@ -104,10 +104,19 @@ const flat = computed(() => {
   font: inherit;
   font-size: var(--bless-text-md);
   cursor: pointer;
+  transition:
+    opacity var(--bless-duration-slow) var(--bless-ease-in-out),
+    var(--bless-lean-transition);
+}
+.bless-treetable__toggle:hover {
+  opacity: var(--bless-hover-opacity);
 }
 .bless-treetable__toggle > span {
   display: inline-block;
   transition: transform var(--bless-duration-base);
+}
+[dir="rtl"] .bless-treetable__toggle > span {
+  transform: rotate(180deg);
 }
 .bless-treetable__toggle[aria-expanded="true"] > span {
   transform: rotate(90deg);

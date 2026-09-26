@@ -146,6 +146,10 @@ function onSelect(n: BlessTreeNode, p: string) {
   color: var(--bless-color-text-muted);
   transition: transform var(--bless-duration-base);
 }
+/* closed, it points along the line — towards the inline end, so it mirrors in RTL */
+[dir="rtl"] .bless-tree__chevron {
+  transform: rotate(180deg);
+}
 .bless-tree__branch[open] > .bless-tree__row .bless-tree__chevron {
   transform: rotate(90deg);
 }

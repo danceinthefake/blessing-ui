@@ -21,8 +21,6 @@ A hierarchy people expand and browse — files, a category tree, a table of cont
   </template>
 </Demo>
 
-Keyboard: <kbd>↑</kbd> <kbd>↓</kbd> move between visible rows, <kbd>→</kbd> opens a branch (or steps into it), <kbd>←</kbd> closes it (or jumps to the parent), <kbd>Home</kbd> / <kbd>End</kbd>. <kbd>Enter</kbd> / <kbd>Space</kbd> toggle a branch natively.
-
 - One Tab stop: ↑ / ↓ move through the visible rows, → opens a branch or enters it, ← closes it or goes to the parent, Home / End jump. Branches say whether they're open.
 - Branches are native `<details>`, so they work before scripts run. `href` makes a leaf a link; `v-model:selected` holds the picked id.
 
