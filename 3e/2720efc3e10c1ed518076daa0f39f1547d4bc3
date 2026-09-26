@@ -1,0 +1,41 @@
+src/components/BlessRange.vue
+  s_9ec1000e308ddb::t_07eb130fc312de 172-177
+  s_9ec1000e308ddb::t_3bb5146a5c233e 153,163
+src/components/BlessQrCode.vue
+  s_9ec1000e308ddb::t_07eb130fc312de 71
+  s_9ec1000e308ddb::t_26e549ab8387dc 18,61
+src/components/BlessToggle.vue
+  s_9ec1000e308ddb::t_8f44b6c2859c50 51,73,77,90,92-93,95-97,99-100
+  s_9ec1000e308ddb::t_4f37b916f7208a 68-69
+  s_9ec1000e308ddb::t_2d33482c4aa398 17
+src/components/BlessButton.vue
+  s_9ec1000e308ddb::t_5c7eb4866e9de7 113-120
+src/components/BlessCompare.vue
+  s_9ec1000e308ddb::t_eb0fbba4042dec 65
+src/components/BlessConfirmPopup.vue
+  s_9ec1000e308ddb::t_407c39e1ac6900 18
+src/components/BlessEditor.vue
+  s_9ec1000e308ddb::t_75888d0d93828e 296
+src/components/BlessIndicator.vue
+  s_9ec1000e308ddb::t_29f3d4106d0326 17,105-108
+src/components/BlessSlider.vue
+  s_9ec1000e308ddb::t_f72def588785a1 125-128
+src/components/BlessSpeedDial.vue
+  s_9ec1000e308ddb::t_52efc1dda2f28b 22,141-145
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "3e2720efc3e10c1ed518076daa0f39f1547d4bc3",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
