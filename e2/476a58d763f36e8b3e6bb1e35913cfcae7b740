@@ -1,0 +1,20 @@
+src/components/BlessListbox.vue
+  s_9ec1000e308ddb::t_57d6c7b51d8b2f 199
+  s_9ec1000e308ddb::t_c0cb32e0fa192f 179-181
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "e2476a58d763f36e8b3e6bb1e35913cfcae7b740",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
