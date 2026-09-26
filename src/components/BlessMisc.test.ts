@@ -189,3 +189,17 @@ test("BlessCombobox in an invalid field: styled invalid and reads the error", as
   const d = w.find("input").attributes("aria-describedby");
   expect(d && w.find(`[id="${d}"]`).text()).toBe("Pick one");
 });
+
+test("field controls look invalid when their BlessField has an error", async () => {
+  const names = ["Input", "Select", "Textarea", "InputNumber", "FileInput", "TimePicker"] as const;
+  for (const n of names) {
+    const { default: C } = await import(`./Bless${n}.vue`);
+    const w = mount(BlessField, {
+      props: { label: n, error: "Wrong" },
+      slots: { default: () => h(C, n === "Select" ? { options: [] } : {}) },
+    });
+    // the control's own invalid class, not the field's
+    const own = w.findAll('[class*="--invalid"]').filter((e) => !e.classes("bless-field--invalid"));
+    expect(own.length, n).toBeGreaterThan(0);
+  }
+});

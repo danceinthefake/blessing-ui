@@ -93,7 +93,7 @@ const remove = (id: string) => (model.value = chosen.value.filter((x) => x !== i
         class="bless-treeselect__trigger"
         :class="[
           `bless-treeselect__trigger--${size}`,
-          { 'bless-treeselect__trigger--invalid': invalid },
+          { 'bless-treeselect__trigger--invalid': invalid || fs.invalid.value },
         ]"
         :aria-disabled="disabled || undefined"
         :aria-label="label ?? (fs.inField ? undefined : 'Tree select')"

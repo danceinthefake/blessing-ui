@@ -39,7 +39,7 @@ const errId = () => `${id()}-err`;
   <div
     class="bless-textarea"
     :class="{
-      'bless-textarea--invalid': invalid || error,
+      'bless-textarea--invalid': invalid || error || fs.invalid.value,
       'bless-textarea--disabled': disabled,
       'bless-textarea--autogrow': autogrow,
     }"

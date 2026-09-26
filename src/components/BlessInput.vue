@@ -33,7 +33,10 @@ defineExpose({ id });
     class="bless-input"
     :class="[
       `bless-input--${size}`,
-      { 'bless-input--invalid': invalid || error, 'bless-input--disabled': disabled },
+      {
+        'bless-input--invalid': invalid || error || fs.invalid.value,
+        'bless-input--disabled': disabled,
+      },
     ]"
   >
     <div class="bless-input__field bless-lean--field">

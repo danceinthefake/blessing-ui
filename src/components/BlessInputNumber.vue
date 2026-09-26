@@ -90,7 +90,7 @@ function onKey(e: KeyboardEvent) {
     class="bless-number bless-lean--field"
     :class="[
       `bless-number--${size}`,
-      { 'bless-number--disabled': disabled, 'bless-number--invalid': invalid },
+      { 'bless-number--disabled': disabled, 'bless-number--invalid': invalid || fs.invalid.value },
     ]"
   >
     <button
