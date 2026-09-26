@@ -195,6 +195,10 @@ function onKey(e: KeyboardEvent) {
   display: inline-block;
   transform: skewX(var(--bless-skew-counter));
 }
+/* prev sits at the inline start, so in RTL its arrow points right */
+[dir="rtl"] .bless-gallery__nav > span {
+  transform: skewX(var(--bless-skew-counter)) scaleX(-1);
+}
 .bless-gallery__nav--prev {
   inset-inline-start: var(--bless-space-2);
 }
