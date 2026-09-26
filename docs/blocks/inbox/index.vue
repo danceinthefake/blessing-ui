@@ -9,6 +9,7 @@ import {
   BlessItem,
   BlessText,
   BlessToolbar,
+  useToast,
 } from "blessing-ui";
 import type { Mail } from "./domain";
 import { mockMailApi } from "./api";
@@ -24,6 +25,23 @@ function read(m: Mail) {
   m.unread = false;
   openId.value = m.id;
   nextTick(() => subject.value?.$el.focus());
+}
+const { toast } = useToast();
+// archive and delete act at once and offer Undo; focus goes to the row that took its place
+function drop(verb: "Archived" | "Deleted") {
+  const i = mails.value.findIndex((m) => m.id === openId.value);
+  if (i < 0) return;
+  const before = [...mails.value];
+  mails.value.splice(i, 1);
+  openId.value = null;
+  toast({
+    title: `${verb} 1 message`,
+    action: { label: "Undo", onClick: () => (mails.value = before) },
+  });
+  nextTick(() => {
+    const rows = list.value?.querySelectorAll<HTMLElement>("li > *") ?? [];
+    rows[Math.min(i, rows.length - 1)]?.focus();
+  });
 }
 function back() {
   const i = mails.value.findIndex((m) => m.id === openId.value);
@@ -71,8 +89,10 @@ function back() {
             >
           </template>
           <template #end>
-            <BlessButton size="sm" variant="ghost">Archive</BlessButton>
-            <BlessButton size="sm" variant="ghost" color="danger">Delete</BlessButton>
+            <BlessButton size="sm" variant="ghost" @click="drop('Archived')">Archive</BlessButton>
+            <BlessButton size="sm" variant="ghost" color="danger" @click="drop('Deleted')"
+              >Delete</BlessButton
+            >
             <BlessButton size="sm">Reply</BlessButton>
           </template>
         </BlessToolbar>
@@ -97,7 +117,7 @@ function back() {
       <BlessEmpty
         v-else
         title="Nothing selected"
-        description="Pick a message on the left."
+        description="Pick a message from the list."
         variant="plain"
       />
     </div>
