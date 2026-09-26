@@ -152,12 +152,16 @@ watch(open, (o) => {
         class="bless-cascade__trigger"
         :class="[
           `bless-cascade__trigger--${size}`,
-          { 'bless-cascade__trigger--invalid': invalid, 'bless-cascade__trigger--empty': !text },
+          {
+            'bless-cascade__trigger--invalid': invalid || fs.invalid.value,
+            'bless-cascade__trigger--empty': !text,
+          },
         ]"
         :id="id()"
         :disabled
         :aria-label="label ? `${label}: ${text || placeholder}` : undefined"
         :aria-invalid="invalid || fs.invalid.value || undefined"
+        :aria-describedby="fs.describedby.value"
         aria-haspopup="listbox"
         :aria-expanded="open"
       >
