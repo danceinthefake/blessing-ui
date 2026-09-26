@@ -1,0 +1,23 @@
+docs/demos/DatePickerBasic.vue
+  s_9ec1000e308ddb::t_5bddea79b75d48 3
+src/components/BlessDate.test.ts
+  s_9ec1000e308ddb::t_5bddea79b75d48 173-188
+src/components/BlessDatePicker.vue
+  s_9ec1000e308ddb::t_5bddea79b75d48 64,67,76-79,92,105,120,210
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "9a964febffa4cd5a4736961c06db2b3efb378c4c",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
