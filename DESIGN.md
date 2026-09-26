@@ -5,28 +5,29 @@ Generic Vue 3 UI library. Visual language re-derived from saenai.tv (the reverse
 ## 1. Principles
 
 1. **Tokens first.** Every component reads `--bless-*` only. No hard-coded colours, sizes, or durations in components. Theming = override custom props.
-2. **Skew, not radius.** Shape language is `skewX(-10deg)` — buttons, tags, fields, pickers alike; content counter-skews so text stays upright. Two corners: **cut** (site things, boxes, labels) and **petal** (acute corners only — avatars, switches, chips, bubbles, fabs, thumbs). Rule in docs/guide/conventions.
-3. **Fluid, one breakpoint.** `clamp()` for type; single `800px` breakpoint for layout changes.
-4. **Quiet motion.** Hover = opacity `.6` over `.3s`. No bounces. Respect `prefers-reduced-motion`.
-5. **Light DOM, scoped CSS.** Vue SFC with `<style scoped>` + BEM-ish class `bless-<component>__<part>`. No shadow DOM, no CSS-in-JS.
-6. **Accessible by default.** Fix what saenai.tv lacked: visible focus ring, `aria-*` on modal/drawer/tabs, AA contrast on text (accent-soft is decorative only).
-7. **No Tailwind dependency.** Consumers may map tokens into Tailwind v4 `@theme`; library itself stays plain CSS.
+2. **Square plates that lean on attention.** One shape: the upright plate with a square outline, for everything from a button to an avatar. It leans −10° (`--bless-lean`) while hovered, focused or pressed; content counter-skews so text stays upright; only big display type leans at rest. The circles are the radio, the knob and the gauge, where the circle is the function. Rules: [design language](docs/design/index.md), docs/guide/conventions.
+3. **Colour means chosen.** Idle things are ink and outline; the accent appears only on what is selected, active, open, pressed or done, plus the focus ring and links. Hover never adds colour.
+4. **Fluid, one breakpoint.** `clamp()` for type; single `800px` breakpoint for layout changes.
+5. **Quiet motion.** Hover = opacity `.6` over `.3s`, plus the lean. No bounces. Respect `prefers-reduced-motion`.
+6. **Light DOM, plain CSS.** Vue SFC with an unscoped `<style>` and BEM-ish classes `bless-<component>__<part>`, so overrides are ordinary CSS. No shadow DOM, no CSS-in-JS.
+7. **Accessible by default.** Fix what saenai.tv lacked: visible focus ring, `aria-*` on modal/drawer/tabs, AA contrast on text (accent-soft is decorative only).
+8. **No Tailwind dependency.** Consumers may map tokens into Tailwind v4 `@theme`; library itself stays plain CSS.
 
 ## 2. Tokens (done — `tokens.css`)
 
-| Group              | Props                                                                                                                                                                                              | Notes                 |
-| ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- |
-| Colour             | `--bless-color-{text,text-muted,bg,surface,surface-2,watermark,accent,accent-soft,accent-2,danger,badge,warning,success,info,on-accent,on-text,on-light,border,rule,backdrop,media-bg,chart-1..5}` | semantic names        |
-| Font               | `--bless-font-sans`, `--bless-font-weight-{thin,light,normal,bold}`                                                                                                                                | Roboto + Noto Sans JP |
-| Type scale         | `--bless-text-{2xs,xs,sm,md,lg,xl,display}`                                                                                                                                                        | `clamp()` 8→151px     |
-| Leading / tracking | `--bless-leading-{none,tight,normal}`, `--bless-tracking-{tight,normal,wide,wider}`                                                                                                                |                       |
-| Space              | `--bless-space-{1,2,3,4,6,8,12,16}`                                                                                                                                                                | 4px base              |
-| Shape              | `--bless-radius`, `--bless-radius-pill`, `--bless-skew`, `--bless-skew-counter`, `--bless-border-width`, `--bless-dash-width`                                                                      |                       |
-| Elevation          | `--bless-shadow-{none,md}`                                                                                                                                                                         | modal only            |
-| Motion             | `--bless-duration-{fast,base,slow,slower}`, `--bless-ease-{in-out,out,linear}`, `--bless-hover-opacity`, `--bless-press-scale`                                                                     |                       |
-| Layout             | `--bless-sidebar-width`, `--bless-sidebar-inner`, `--bless-content-max`, `--bless-z-{bg,nav,modal}`                                                                                                |                       |
+| Group              | Props                                                                                                                                                                                                                                | Notes                 |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------- |
+| Colour             | `--bless-color-{text,text-muted,bg,surface,surface-2,watermark,accent,accent-text,accent-soft,accent-2,danger,danger-text,badge,warning,success,info,info-text,on-accent,on-text,on-light,border,rule,backdrop,media-bg,chart-1..5}` | semantic names        |
+| Font               | `--bless-font-sans`, `--bless-font-weight-{thin,light,normal,bold}`                                                                                                                                                                  | Roboto + Noto Sans JP |
+| Type scale         | `--bless-text-{2xs,xs,sm,md,lg,xl,headline,display}`                                                                                                                                                                                 | `clamp()` 8→151px     |
+| Leading / tracking | `--bless-leading-{none,tight,normal}`, `--bless-tracking-{tight,normal,wide,wider}`                                                                                                                                                  |                       |
+| Space              | `--bless-space-{1,2,3,4,6,8,12,16}`                                                                                                                                                                                                  | 4px base              |
+| Shape              | `--bless-lean`, `--bless-skew`, `--bless-skew-counter`, `--bless-lean-transition`, `--bless-petal` / `--bless-radius{,-plate,-petal,-petal-lg}` (all 0, override points), `--bless-border-width`, `--bless-dash-width`               |                       |
+| Elevation          | `--bless-shadow-plate` (hard 1px accent offset), `--bless-shadow-{none,md}`                                                                                                                                                          | no blur anywhere      |
+| Motion             | `--bless-duration-{fast,base,slow,slower}`, `--bless-ease-{in-out,out,linear}`, `--bless-hover-opacity`, `--bless-press-scale`                                                                                                       |                       |
+| Layout             | `--bless-sidebar-width`, `--bless-sidebar-inner`, `--bless-content-max`, `--bless-z-{bg,nav,modal}`                                                                                                                                  |                       |
 
-Dark theme ✅: greys/border/rule/backdrop/shadow redefined (and `--bless-font-weight-thin` 100→300, since light-on-dark reads thinner) under `prefers-color-scheme: dark` (unless `data-theme="light"`) and `:root[data-theme="dark"]`; accent unchanged; `color-scheme` set so native controls follow. `useTheme()` + `BlessThemeToggle` manage the attribute + `localStorage`.
+Dark theme ✅: greys/border/rule/backdrop/shadow redefined (and `--bless-font-weight-thin` 100→300, since light-on-dark reads thinner) under `prefers-color-scheme: dark` (unless `data-theme="light"`) and `:root[data-theme="dark"]`; the accent's fills keep their colour, and each palette's `accent-text` is lifted to 4.5:1 on the dark greys; `color-scheme` set so native controls follow. `useTheme()` + `BlessThemeToggle` manage the attribute + `localStorage`.
 
 ## 3. Component roadmap
 
@@ -34,34 +35,34 @@ Order = build order. Each row: saenai.tv origin → generic component.
 
 ### Phase 1 — primitives
 
-- [x] `BlessSkew` — skewed container (`skewX`), counter-skews slot text. Base for label/button/tab. Props: `as`, `color` (`text|accent|danger|surface`).
+- [x] `BlessSkew` — the plate: leans on attention (`skewX(var(--bless-skew))`), counter-skews slot text. Base for label/button/tab. Props: `as`, `color` (`text|accent|danger|surface`).
 - [x] `BlessButton` — `BlessSkew` + `<button>`/`<a>`. Props: `variant` (`solid|outline|ghost`), `color`, `size` (`sm|md|lg`), `href`, `disabled`, `loading`. Hover opacity, focus ring.
-- [x] `BlessBadge` — `NEW!` pill. Props: `color`, `text`. `scale(.8)`, radius-sm.
+- [x] `BlessBadge` — `NEW!` label, ink by default. Props: `color`, `variant`, `scaled` (`scale(.8)`).
 - [x] `BlessDash` — 10×1px separator pseudo (date ― badge). Inline.
 - [x] `BlessIcon` — slot-based SVG wrapper, `size`, `currentColor`.
 - [x] `BlessText` — typographic helper. Props: `size` (token key), `weight`, `muted`, `tracking`.
 
 ### Phase 2 — layout
 
-- [x] `BlessWatermark` — oversized thin skewed background word (`"News"`). Props: `text`, `position` (`top-right` default). `aria-hidden`.
+- [x] `BlessWatermark` — oversized thin background word that leans at rest (`"News"`). Props: `text`, `position` (`top-right` default). `aria-hidden`.
 - [x] `BlessSection` — heading + optional `BlessWatermark` + slot.
 - [x] `BlessStage` — page shell: fixed sidebar (22% / 200px inner) + content (`max 1300px`); collapses to drawer ≤800px. Slots: `sidebar`, `default`, `footer`.
 - [x] `BlessSidebarNav` — vertical nav list. Props: `items[{label,to,badge}]`, `active`. Emits `select`.
-- [x] `BlessDrawer` — folded into `BlessStage` (no standalone need yet). mobile off-canvas; `v-model`, focus trap, `Esc` closes, `aria-modal`.
+- [x] `BlessStage` drawer — mobile off-canvas sidebar; focus moves in, `Esc` closes, closed = `inert`. (A standalone `BlessDrawer` came in Phase 6.)
 - [x] `BlessBackground` — tiled texture layer, `z:-1`, `offset` variants.
 
 ### Phase 3 — content
 
-- [x] `BlessCard` — flat surface, no radius, optional skew header.
+- [x] `BlessCard` — flat surface, square, optional label on top.
 - [x] `BlessList` / `BlessListItem` — date + dash + badge + title row (news pattern).
-- [x] `BlessTabs` — skewed tab labels; `v-model`, roving tabindex, `role=tablist`.
-- [x] `BlessModal` — hash-routable (`?modal=id` or `#id`), shadow-md, `Esc`, focus return. Replaces saenai character modal.
+- [x] `BlessTabs` — tab labels that lean on attention; `v-model`, roving tabindex, `role=tablist`.
+- [x] `BlessModal` — hash-routable (`?modal=id` or `#id`), `Esc`, focus return. Replaces saenai character modal.
 - [x] `BlessGallery` — lightbox with prev/next (fancyBox replacement). `BlessModal` + keyboard nav.
 - [x] `BlessTable` — station/credits table (onair, staff-cast). Responsive: stacked rows ≤800px.
 
 ### Phase 4 — media (optional, defer)
 
-- [x] `BlessAudioPlayer` — sample player (Aniplex sound player analogue). Native `<audio>` + skewed controls.
+- [x] `BlessAudioPlayer` — sample player (Aniplex sound player analogue). Native `<audio>`; play is ink at rest, accent while playing.
 - [x] `BlessSplash` — first-visit intro overlay, `localStorage` flag, reduced-motion skips.
 
 ## 3b. Roadmap v2 — shadcn parity
@@ -76,22 +77,22 @@ Target: cover [shadcn/ui's component list](https://ui.shadcn.com/docs/components
 
 - [x] `BlessSeparator` — block `<hr>` / vertical; `BlessDash` stays inline
 - [x] `BlessLabel` — `<label>`, required mark, muted hint
-- [x] `BlessInput` — `<input>` text/email/number/…; skewed focus underline, `invalid` state, `#prefix` `#suffix`
+- [x] `BlessInput` — `<input>` text/email/number/…; a line you write on, the accent line grows under it while you write, `invalid` state, `#prefix` `#suffix`
 - [x] `BlessTextarea` — auto-grow via `field-sizing: content` + rows fallback
-- [x] `BlessCheckbox` — native `<input type=checkbox>` + skewed box; `indeterminate`
+- [x] `BlessCheckbox` — native `<input type=checkbox>` + square box, accent when checked; `indeterminate`
 - [x] `BlessRadioGroup` / `BlessRadio` — `role=radiogroup`, arrow keys are native
 - [x] `BlessSwitch` — `<input type=checkbox role=switch>`
 - [x] `BlessSelect` — styled native `<select>` (no custom listbox; see Phase 7 for Combobox)
 - [x] `BlessSlider` — `<input type=range>`, accent fill via gradient
-- [x] `BlessProgress` — `<progress>` styled, skewed track; indeterminate
-- [x] `BlessSkeleton` — shimmer block, `width`/`height`/`lines`
-- [x] `BlessAvatar` — img + fallback initials, `size`, `square` (skewed frame)
+- [x] `BlessProgress` — `<progress>` styled; indeterminate; a finished bar runs past its track (overflow, once)
+- [x] `BlessSkeleton` — breathing block (no shimmer), `width`/`height`/`lines`
+- [x] `BlessAvatar` — img + fallback initials, `size`, `lean` (leans on attention)
 - [x] `BlessAspectRatio` — `aspect-ratio` wrapper
 - [x] `BlessAlert` — inline notice, `color`, `#icon` `#title`, dismissible
 - [x] `BlessCollapsible` — `<details>`/`<summary>`, `v-model:open`
 - [x] `BlessAccordion` — group of `BlessCollapsible`, `type` single/multiple (`name` attr gives native exclusivity)
 - [x] `BlessToggle` / `BlessToggleGroup` — pressed button(s), `aria-pressed`, single/multiple
-- [x] `BlessBreadcrumb` — `<nav aria-label>` + `<ol>`, skewed separators
+- [x] `BlessBreadcrumb` — `<nav aria-label>` + `<ol>`, drawn separators
 - [x] `BlessPagination` — page list + prev/next, `v-model`, `siblings`, ellipsis
 - [x] `BlessScrollArea` — thin custom scrollbar via `scrollbar-width` + `scrollbar-color`, fade edges
 - [x] `BlessKbd` — keycap
@@ -111,7 +112,7 @@ Decision: use the native **Popover API** (`popover` attr, top layer, light-dismi
 - [x] `BlessSheet` — side panel on `<dialog>` (extract from `BlessStage` drawer), `side` left/right/top/bottom
 - [x] `BlessDrawer` — bottom sheet with drag handle (mobile); alias of `BlessSheet side=bottom` + touch drag
 - [x] `BlessAlertDialog` — `BlessModal` preset: `role=alertdialog`, no backdrop dismiss, focus on cancel
-- [x] `BlessToaster` / `useToast()` — `role=status` region, stack, auto-dismiss, `action`; skewed cards (Sonner equivalent)
+- [x] `BlessToaster` / `useToast()` — `role=status` region, stack, auto-dismiss, `action`; square cards (Sonner equivalent)
 
 ### Phase 7 — composite
 
@@ -133,7 +134,7 @@ Decision: use the native **Popover API** (`popover` attr, top layer, light-dismi
 
 ### Phase 9 — shadcn additions (2026-09 list)
 
-- [x] `BlessSpinner` — skewed outline square, accent edge, `role=status`; `BlessButton loading` renders it
+- [x] `BlessSpinner` — outline square with one open edge, ink, `role=status`; `BlessButton loading` renders it
 - [x] `BlessEmpty` — icon / title / description / actions, dashed frame or plain
 - [x] `BlessButtonGroup` — joined `BlessButton`s, horizontal / vertical, `role=group`
 - [x] `BlessInputGroup` — shared surface + underline around any control, `#prefix` `#suffix` addons (text or button)
@@ -142,13 +143,13 @@ Decision: use the native **Popover API** (`popover` attr, top layer, light-dismi
 ### Phase 10 — conversation
 
 - [x] `BlessMessage` — avatar + header + body + footer, `align`, `compact` for grouped runs
-- [x] `BlessBubble` — surface/accent/outline/plain, skew-cut tail corner, line-clamp collapsible, reactions
+- [x] `BlessBubble` — surface/accent/outline/plain, square (no tail), line-clamp collapsible, reactions
 - [x] `BlessMarker` — status / note / separator / border, shimmer
 - [x] `BlessAttachment` — ext or image media, uploading (spinner / `BlessProgress`), error, remove
 - [x] `BlessMessageScroller` — ResizeObserver follow-at-bottom, `reach-top` + `loadHistory()` offset restore, jump-to-latest
 - [x] `BlessQuestionnaire` — steps on `BlessRadioGroup` / `BlessCheckbox` / `BlessTextarea`, required + skip, 1–9 shortcuts, `BlessProgress`
 
-Skipped from shadcn: Direction (RTL non-goal), Native Select / Sidebar / Toast (covered by `BlessSelect` / `BlessStage` / `BlessToaster`).
+Skipped from shadcn: Direction (RTL is built in instead — see below), Native Select / Sidebar / Toast (covered by `BlessSelect` / `BlessStage` / `BlessToaster`).
 
 ### Phase 11 — chart
 
@@ -159,7 +160,7 @@ Decision: **Unovis** (`@unovis/vue`) as the documented, consumer-installed pairi
 
 ### Phase 12 — gap fill, native-first (from a broader component list)
 
-- [x] `BlessRating` — radios in a fieldset, skewed glyph, click current to clear
+- [x] `BlessRating` — radios in a fieldset, glyphs lean on attention, ink hover preview, click current to clear
 - [x] `BlessFileInput` — `<input type=file>` + drop zone, file list with remove
 - [x] `BlessColorPicker` — `<input type=color>` well + preset swatches
 - [x] `BlessPasswordMeter` — `<meter>` scored by pluggable rules, rule list
@@ -206,7 +207,7 @@ Decision: **Unovis** (`@unovis/vue`) as the documented, consumer-installed pairi
 - [x] `BlessCascadeSelect` — columns per level in a `BlessPopover`, arrows drill / back, opens on the selected path
 - [x] `BlessTreeSelect` — `BlessTree` in a `BlessPopover`, single closes, multiple shows chips, `leafOnly`
 - [x] `BlessTreeTable` — flattens by expansion and renders through `BlessTable`; cell slots pass through
-- [x] `BlessOrgChart` — recursive `ul/li` with CSS connectors, skewed nodes, `v-model:selected`
+- [x] `BlessOrgChart` — recursive `ul/li` with CSS connectors, square nodes, `v-model:selected`
 - [x] `useDialog()` + `BlessDialogHost` — promise-based, component or text body, `close(result)` prop
 
 ### Phase 18 — mobile (Quasar's touch set)
@@ -238,7 +239,11 @@ Not components: finished sections shipped as source you copy, `docs/blocks/<slug
 - [x] Official-site set (front page): News, On Air, Character (hash-routed modals), Staff & Cast, Release, Story, Full site (composition in `BlessStage`, opens full-page)
 - [x] App set: Sign in, Dashboard, Settings, Data page, Page states, Pricing, Inbox, Chat, Onboarding
 
-### Shape ✅ merged (2026-09-21)
+### Shape ✅ — square everywhere (2026-09-26; supersedes the 2026-09-21 merge below)
+
+Once plates stood upright at rest, the petal read as a leaf: every part is square now, and the teardrop lives only in the mark. `--bless-petal` / `--bless-radius*` stay at 0 as override points. Kept round: radio, knob, CircularProgress (the circle is their function) and the phone Mockup (the device's corners).
+
+#### Earlier: cut + petal merged (2026-09-21)
 
 Cut and petal are one default, no toggle. Rule (docs/guide/conventions): if the source site had it, or it's a box or a label, it's cut; if it's ours and round by nature — avatars, switches, chips, chat bubbles, fabs, slider thumbs, count dots — it's petal (`--bless-radius-petal`, acute corners only, flips under RTL). `data-shape`, `setShape`, `BlessShapeToggle` and the guide page removed. `--bless-radius` / `--bless-radius-plate` remain at 0 as consumer override points. Evidence that led here: the film site's own move to pills; the circle's flower being soft-with-a-point; petal avatars reading as ours where circles read as anyone's.
 
@@ -250,9 +255,9 @@ Cut and petal are one default, no toggle. Rule (docs/guide/conventions): if the 
 
 - Text tokens meet 4.5:1 on `bg` and `surface` in both themes: `text`, `text-muted`, `accent-text` (per palette), `danger-text`, `info-text`. Fills and their text are separate tokens where one colour can't do both (2026-09-25: dark `danger` read 4.18:1 as error text; `info` read 3.8:1 as outline text).
 - Elevation is one hard 1px accent plate (`--bless-shadow-plate`); no blurred shadows anywhere (2026-09-20, replaced `--bless-shadow-md`).
-- Fills (`accent`, `badge`, `danger`, `info`) carry white at 3.6–4.4:1 — the 3:1 UI-component bar, not the text bar. Components never set small copy in a fill colour; `warning`/`success` are fills only (their text is `on-light`/`text`).
+- Fills (`accent`, `badge`, `danger`, `info`) are deepened per palette to carry white at 4.5:1 (2026-09-26). Components never set small copy in a fill colour; `warning`/`success` are fills only (their text is `on-light`/`text`).
 - Decorative type (`BlessWatermark`) is excluded from the audit; disabled controls are exempt by spec.
-- Remaining reported nodes are all white-on-accent by design; `e2e/axe.mjs` fails on serious/critical only.
+- `e2e/axe.mjs` sweeps every page in both themes and fails on serious/critical; the count is 0.
 
 ### Deliberately skipped
 
@@ -261,7 +266,7 @@ Cut and petal are one default, no toggle. Rule (docs/guide/conventions): if the 
 
 ### Order
 
-5 → 6 → 7. Inside each phase, build order = list order. Every component: one test file, docs page with demo, README row, checkbox flipped.
+5 → 6 → 7. Inside each phase, build order = list order. Every component: tests (grouped per area in `src/components/*.test.ts`), a docs page with a live example, a README row, checkbox flipped.
 
 ## 4. API conventions
 
@@ -269,7 +274,7 @@ Cut and petal are one default, no toggle. Rule (docs/guide/conventions): if the 
 - Props: kebab in template, camel in script. Colour/size props accept **token keys**, not raw values.
 - `v-model` for open/selected state; emit `update:modelValue` only.
 - Slots over render props. Named slots `prefix` / `suffix` for icons.
-- No global plugin required; tree-shakable named exports from `src/index.ts`. Optional `install()` for `app.use`.
+- No global plugin: tree-shakable named exports from `src/index.ts`. Router links via `app.provide(blessLinkKey, RouterLink)`.
 - Every component: `defineProps` typed, `defineEmits` typed, `defineOptions({ name })`.
 
 ## 5. Repo layout (target)
@@ -281,7 +286,7 @@ blessing-ui/
   src/
     index.ts            named exports
     components/*.vue
-    composables/        useFocusTrap, useHashModal, useMedia(800px)
+    composables/        useTheme, useFloating, useFieldId, useRovingFocus, useMedia, useGesture, …
   docs/                 VitePress site ✅ — components/*.md (demo + generated API), demos/*.vue, guide/
   package.json          exports: ./tokens.css, . (ESM), ./style.css
 ```
@@ -298,9 +303,10 @@ Tooling: Vite + `vite-plugin-dts`, Vitest + `@vue/test-utils` (one smoke test pe
 - ✅ **Design language (implemented, 2026-09-26):** the six philosophical threads of the series as design rules — lean on attention, colour means chosen, fuse when grouped, overflow once, write on the page, care over spectacle — one square plate everywhere, and the leaning-flower mark. Docs: the Design section (`docs/design/`); build record in [DESIGN-LANGUAGE.md](./DESIGN-LANGUAGE.md).
 
 - ~~`ponytail:` ceilings~~ all lifted ✅: Tree arrow-key navigation, VirtualScroller `dynamic` (measured heights), DataTable / useDataTable `server` mode (`state` event, `total`), useFloating `boundary` + `arrow` (Tooltip always, Popover opt-in).
-- ~~Straight / rounded variant~~ → cut + petal merged into one default (2026-09-21); upright variant rejected.
+- ~~Straight / rounded variant~~ → cut + petal merged (2026-09-21), then square everywhere with the lean on attention (2026-09-26).
 - ~~Pre-publish component review, one by one~~ ✅ (2026-09-25): every component page opens with when to use it (and when not); behaviour and accessibility fixes landed per component with tests. Library-wide outcomes: Field hands id / invalid / describedby / labelledby to any control; menu, popover and dialog triggers carry aria-haspopup / aria-controls / aria-expanded; unstyled lists keep `role="list"`; clock reads wait for mount (SSR day mismatch); overlays return focus when they close.
 - ~~Blocks review~~ ✅ (2026-09-25): all 16 checked at desktop, phone and dark, and fixed per block — among them onboarding's palette step (rendered `[object Object]`), chat's Enter sending mid-IME-conversion, dashboard navigation missing on phones, and focus that followed nothing when a pane or screen replaced another. Next: publish (CHANGELOG, version, npm, Pages).
+- ~~Docs review, page by page~~ ✅ (2026-09-26/27): home, guide, design, all components, all blocks and the README against the design language — accent removed at rest, focus kept whenever a control removes itself, RTL mirroring, Field wiring shared by every control (`joinIds`), and the bugs those passes surfaced, each with a test.
 - ~~Hanging headline, outline badge~~ ✅ `BlessSection headline="hanging"` / `#band`, `BlessBadge variant="outline"`.
 
 - ~~Package as single `style.css` bundle or per-component CSS?~~ Both ✅: `preserveModules` + `cssCodeSplit`, `scripts/postbuild.mjs` links each `BlessX.js` to `BlessX.css` and assembles `blessing-ui.css`; `sideEffects` lists `**/*.css` and `dist/index.js` (so the tokens import survives tree-shaking). One component ≈ 2 KB gzip CSS, measured by `e2e/consumer`.
