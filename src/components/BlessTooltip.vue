@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { nextTick, onMounted, ref, useId, watch } from "vue";
+import { nextTick, onBeforeUnmount, onMounted, ref, useId, watch } from "vue";
 import { useFloating, type Placement } from "../composables/useFloating";
 
 defineOptions({ name: "BlessTooltip" });
@@ -35,10 +35,24 @@ const hideSoon = () => {
   timer = setTimeout(() => (open.value = false), 150);
 };
 // the description belongs on the element that gets focus, not on the wrapper around it
+// (joined to any description it already has, not skipped)
 onMounted(() => {
   const t = anchor.value?.firstElementChild;
-  if (t && !t.hasAttribute("aria-describedby")) t.setAttribute("aria-describedby", id);
+  const had = t?.getAttribute("aria-describedby");
+  if (t && !had?.split(" ").includes(id))
+    t.setAttribute("aria-describedby", had ? `${had} ${id}` : id);
 });
+// Esc hides it wherever focus is — a tip opened by hovering must go without moving the pointer
+function onEsc(e: KeyboardEvent) {
+  if (e.key === "Escape" && open.value) hide();
+}
+onBeforeUnmount(() => {
+  clearTimeout(timer);
+  document.removeEventListener("keydown", onEsc);
+});
+watch(open, (o) =>
+  o ? document.addEventListener("keydown", onEsc) : document.removeEventListener("keydown", onEsc),
+);
 watch(
   open,
   (o) =>
