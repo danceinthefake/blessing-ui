@@ -8,6 +8,7 @@ import {
   BlessText,
   BlessTextarea,
 } from "blessing-ui";
+import { ref } from "vue";
 import { useChat } from "./useChat";
 
 const { messages, draft, typing, send } = useChat();
@@ -15,7 +16,13 @@ const { messages, draft, typing, send } = useChat();
 function onEnter(e: KeyboardEvent) {
   if (e.isComposing || e.keyCode === 229) return;
   e.preventDefault();
+  submit();
+}
+// sending empties the draft, which disables a focused Send: keep writing in the box instead
+const composer = ref<HTMLFormElement>();
+function submit() {
   send();
+  composer.value?.querySelector("textarea")?.focus();
 }
 </script>
 
@@ -54,7 +61,7 @@ function onEnter(e: KeyboardEvent) {
         >
       </BlessMessage>
     </BlessMessageScroller>
-    <form class="chat__composer" @submit.prevent="send">
+    <form ref="composer" class="chat__composer" @submit.prevent="submit">
       <BlessTextarea
         v-model="draft"
         :rows="1"
@@ -96,6 +103,11 @@ function onEnter(e: KeyboardEvent) {
 .chat__dots {
   letter-spacing: 0.2em;
   animation: chat-blink 1s steps(2) infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .chat__dots {
+    animation: none;
+  }
 }
 @keyframes chat-blink {
   50% {
