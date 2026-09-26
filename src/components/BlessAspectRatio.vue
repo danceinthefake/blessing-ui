@@ -5,7 +5,7 @@ withDefaults(
   defineProps<{
     /** `16 / 9` or `"16 / 9"` — anything `aspect-ratio` accepts */
     ratio?: number | string;
-    /** how a bare img / video / iframe child fills the box */
+    /** how a bare img / video child fills the box (an iframe always fills it) */
     fit?: "cover" | "contain";
   }>(),
   { ratio: 16 / 9, fit: "cover" },
@@ -34,8 +34,7 @@ withDefaults(
   border: 0;
 }
 .bless-aspect--contain > img,
-.bless-aspect--contain > video,
-.bless-aspect--contain > iframe {
+.bless-aspect--contain > video {
   object-fit: contain;
 }
 </style>
