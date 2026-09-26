@@ -1,0 +1,29 @@
+docs/components/button.md
+  s_9ec1000e308ddb::t_345a320e39e1e4 15,17
+docs/demos/ButtonBasic.vue
+  s_9ec1000e308ddb::t_345a320e39e1e4 11
+src/components/BlessButton.test.ts
+  s_9ec1000e308ddb::t_171581ea57bb72 24,26-27,29-40
+src/components/BlessButton.vue
+  s_9ec1000e308ddb::t_1aa8837695749c 27-28,33-38,58
+docs/.vitepress/config.ts
+  s_9ec1000e308ddb::t_d86f21cd938f72 6-15,64,111
+docs/.vitepress/meta.json
+  s_9ec1000e308ddb::t_345a320e39e1e4 830-836
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "7e2f92ec370704e68d22602cc1223ec4c0ff68eb",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
