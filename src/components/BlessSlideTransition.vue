@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { reducedMotion as reduced } from "../composables/useMedia";
 defineOptions({ name: "BlessSlideTransition" });
 const props = withDefaults(
   defineProps<{
@@ -9,8 +10,6 @@ const props = withDefaults(
   { duration: 300 },
 );
 const px = (el: HTMLElement) => `${el.scrollHeight}px`;
-const reduced = () =>
-  typeof matchMedia === "function" && matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 // Animate height between two values. A timeout backs up transitionend, which never fires when
 // nothing actually changed — without it a v-if leave would never finish and the element would stay.

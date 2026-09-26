@@ -1,4 +1,5 @@
 import { onBeforeUnmount, onMounted, ref, type Ref } from "vue";
+import { reducedMotion } from "./useMedia";
 
 /**
  * `visible` flips when `el` enters the viewport; pair with a CSS transition on
@@ -12,9 +13,7 @@ export function useAnimateOnScroll(
   const visible = ref(false);
   let io: IntersectionObserver | undefined;
   onMounted(() => {
-    const reduce =
-      typeof matchMedia === "function" && matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduce || !el.value || typeof IntersectionObserver === "undefined")
+    if (reducedMotion() || !el.value || typeof IntersectionObserver === "undefined")
       return void (visible.value = true);
     io = new IntersectionObserver(
       ([e]) => {
