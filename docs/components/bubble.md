@@ -21,7 +21,7 @@ One message in a conversation — chat, comments, an assistant's reply. Put bubb
   </template>
 </Demo>
 
-- `align="end"` for the viewer's own messages. `collapsible` clamps a long message to `lines` with a Show more toggle that says whether it's open.
+- `align="end"` for the viewer's own messages — `variant="outline"` sets them apart without colour; `accent` is for a message that is chosen (a pinned or selected one). `collapsible` clamps a long message to `lines` with a Show more toggle that says whether it's open.
 - `reactions` are pressed-state buttons (`@react`).
 
 ## Usage

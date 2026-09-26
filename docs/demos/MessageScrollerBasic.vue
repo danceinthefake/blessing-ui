@@ -65,7 +65,7 @@ function loadHistory() {
       >
         <BlessBubble
           :align="m.who === 'me' ? 'end' : 'start'"
-          :variant="m.who === 'me' ? 'accent' : 'surface'"
+          :variant="m.who === 'me' ? 'outline' : 'surface'"
           >{{ m.text }}</BlessBubble
         >
       </BlessMessage>
