@@ -30,6 +30,7 @@ const options: BlessCascadeOption<string>[] = [
   { value: "cn", label: "China", disabled: true },
 ];
 const place = ref<string>();
+const area = ref<string>("akiba");
 </script>
 
 <template>
@@ -41,7 +42,7 @@ const place = ref<string>();
     </div>
     <div class="col">
       <BlessLabel>Leaf only</BlessLabel>
-      <BlessCascadeSelect :options model-value="akiba" :show-path="false" size="sm" />
+      <BlessCascadeSelect v-model="area" :options :show-path="false" size="sm" />
     </div>
   </div>
 </template>
