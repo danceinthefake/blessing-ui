@@ -6068,7 +6068,7 @@
     "name": "avatar",
     "type": "boolean | undefined",
     "required": false,
-    "description": "an avatar placeholder: a petal, like BlessAvatar"
+    "description": "an avatar placeholder: square like BlessAvatar, never leaning"
    }
   ],
   "events": [],
