@@ -230,3 +230,14 @@ test("BlessForm focuses the first invalid control, not the fieldset around it", 
   expect(document.activeElement?.tagName).toBe("INPUT");
   w.unmount();
 });
+
+test("a passed-in aria-describedby joins the field's error instead of replacing it", async () => {
+  const { default: BlessSwitch } = await import("./BlessSwitch.vue");
+  const w = mount(BlessField, {
+    props: { label: "Notify", error: "Required" },
+    slots: { default: () => h(BlessSwitch, { "aria-describedby": "extra" }) },
+  });
+  const ids = w.find("input").attributes("aria-describedby")!.split(" ");
+  expect(ids).toContain("extra");
+  expect(ids.some((i) => i.endsWith("-err"))).toBe(true);
+});

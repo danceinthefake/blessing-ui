@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
-import { useFieldId, useFieldState } from "../composables/useFieldId";
+import { joinIds, useFieldId, useFieldState } from "../composables/useFieldId";
 
 defineOptions({ name: "BlessInputNumber", inheritAttrs: false });
 
@@ -115,7 +115,7 @@ function onKey(e: KeyboardEvent) {
       :disabled
       :aria-label="label"
       :aria-invalid="invalid || fs.invalid.value || undefined"
-      :aria-describedby="($attrs['aria-describedby'] as string) ?? fs.describedby.value"
+      :aria-describedby="joinIds(fs.describedby.value, $attrs['aria-describedby'] as string)"
       role="spinbutton"
       :aria-valuenow="model ?? undefined"
       :aria-valuetext="valuetext"
