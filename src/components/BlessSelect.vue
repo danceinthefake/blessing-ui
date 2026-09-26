@@ -37,7 +37,10 @@ const isGroup = (o: unknown): o is { label: string; options: BlessOption<T>[] } 
     class="bless-select"
     :class="[
       `bless-select--${size}`,
-      { 'bless-select--invalid': invalid || error, 'bless-select--disabled': disabled },
+      {
+        'bless-select--invalid': invalid || error || fs.invalid.value,
+        'bless-select--disabled': disabled,
+      },
     ]"
   >
     <div class="bless-select__field bless-lean--field">

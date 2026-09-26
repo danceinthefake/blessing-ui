@@ -53,7 +53,7 @@ const options = computed(() => {
     class="bless-time bless-lean--field"
     :class="[
       `bless-time--${size}`,
-      { 'bless-time--disabled': disabled, 'bless-time--invalid': invalid },
+      { 'bless-time--disabled': disabled, 'bless-time--invalid': invalid || fs.invalid.value },
     ]"
   >
     <input

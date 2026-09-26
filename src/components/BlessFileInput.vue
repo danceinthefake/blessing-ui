@@ -60,7 +60,10 @@ const kb = (n: number) =>
 <template>
   <div
     class="bless-file"
-    :class="{ 'bless-file--disabled': disabled, 'bless-file--invalid': invalid }"
+    :class="{
+      'bless-file--disabled': disabled,
+      'bless-file--invalid': invalid || fs.invalid.value,
+    }"
   >
     <label
       :for="id()"
