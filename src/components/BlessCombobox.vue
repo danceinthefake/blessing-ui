@@ -145,7 +145,7 @@ function onBlur(e: FocusEvent) {
   >
     <div
       ref="anchor"
-      class="bless-combobox__field"
+      class="bless-combobox__field bless-lean--field"
       @click="
         input?.focus();
         open = true;

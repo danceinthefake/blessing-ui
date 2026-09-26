@@ -59,8 +59,9 @@ const shown = ref(false);
   line-height: 1;
   cursor: pointer;
 }
+/* hover is attention, not a choice: ink */
 .bless-password__toggle:hover {
-  color: var(--bless-color-accent-text);
+  color: var(--bless-color-text);
 }
 .bless-password__toggle:focus-visible {
   outline: 2px solid var(--bless-color-accent);

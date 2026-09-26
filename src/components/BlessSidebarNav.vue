@@ -70,7 +70,9 @@ const emit = defineEmits<{ select: [item: BlessNavItem, event: MouseEvent] }>();
   line-height: var(--bless-leading-none);
   color: var(--bless-color-text);
   text-decoration: none;
-  transition: opacity var(--bless-duration-slow) var(--bless-ease-in-out);
+  transition:
+    opacity var(--bless-duration-slow) var(--bless-ease-in-out),
+    var(--bless-lean-transition);
 }
 .bless-sidebar-nav__link:hover {
   opacity: var(--bless-hover-opacity);

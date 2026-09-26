@@ -105,7 +105,9 @@ const hover = ref(0);
   color: var(--bless-color-border);
   cursor: pointer;
   transform: skewX(var(--bless-skew));
-  transition: color var(--bless-duration-fast);
+  transition:
+    color var(--bless-duration-fast),
+    var(--bless-lean-transition);
 }
 .bless-rating__star > span {
   transform: skewX(var(--bless-skew-counter));

@@ -129,7 +129,9 @@ function onBlur(e: FocusEvent) {
   cursor: pointer;
   box-shadow: var(--bless-shadow-plate);
   transform: skewX(var(--bless-skew));
-  transition: opacity var(--bless-duration-slow);
+  transition:
+    opacity var(--bless-duration-slow),
+    var(--bless-lean-transition);
 }
 .bless-speed-dial__fab--accent {
   background: var(--bless-color-accent);
@@ -180,7 +182,8 @@ function onBlur(e: FocusEvent) {
   transform: skewX(var(--bless-skew)) scale(0.6);
   transition:
     opacity var(--bless-duration-base) var(--bless-ease-out),
-    transform var(--bless-duration-base) var(--bless-ease-out);
+    transform var(--bless-duration-base) var(--bless-ease-out),
+    var(--bless-lean-transition);
   transition-delay: calc(var(--_i) * 30ms);
 }
 .bless-speed-dial__action > span:first-child {

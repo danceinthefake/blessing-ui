@@ -123,7 +123,10 @@ function onKey(e: KeyboardEvent) {
   height: 6px;
   cursor: row-resize;
 }
-.bless-resizable__handle:hover,
+/* hover is attention, not a choice: ink */
+.bless-resizable__handle:hover {
+  background: var(--bless-color-text);
+}
 .bless-resizable--dragging > .bless-resizable__handle {
   background: var(--bless-color-accent);
 }

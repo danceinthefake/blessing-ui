@@ -140,7 +140,7 @@ onBeforeUnmount(() => removeEventListener("keydown", onHotkey));
     :class="{ 'bless-command--inline': inline }"
   >
     <div class="bless-command__box">
-      <div class="bless-command__search">
+      <div class="bless-command__search bless-lean--field">
         <span class="bless-command__icon" aria-hidden="true">⌕</span>
         <input
           ref="input"

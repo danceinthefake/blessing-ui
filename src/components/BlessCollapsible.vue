@@ -53,13 +53,16 @@ const open = defineModel<boolean>("open", { default: false });
   font-size: var(--bless-text-md);
   font-weight: var(--bless-font-weight-bold);
   letter-spacing: var(--bless-tracking-wide);
-  transition: color var(--bless-duration-slow) var(--bless-ease-in-out);
+  transition:
+    color var(--bless-duration-slow) var(--bless-ease-in-out),
+    var(--bless-lean-transition);
 }
 .bless-collapsible__summary::-webkit-details-marker {
   display: none;
 }
+/* hover is attention, not a choice: ink */
 .bless-collapsible__summary:hover {
-  color: var(--bless-color-accent-text);
+  color: var(--bless-color-text);
 }
 .bless-collapsible__summary:focus-visible {
   outline: 2px solid var(--bless-color-accent);

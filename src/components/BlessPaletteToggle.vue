@@ -51,7 +51,9 @@ const shown = computed(() => (props.showDefault ? blessPalettes : blessPalettes.
   background: var(--_c);
   cursor: pointer;
   transform: skewX(var(--bless-skew));
-  transition: border-color var(--bless-duration-fast);
+  transition:
+    border-color var(--bless-duration-fast),
+    var(--bless-lean-transition);
 }
 .bless-palette__swatch[aria-pressed="true"] {
   border-color: var(--bless-color-text);

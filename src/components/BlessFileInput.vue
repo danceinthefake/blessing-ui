@@ -124,13 +124,18 @@ const kb = (n: number) =>
   cursor: pointer;
   transition:
     border-color var(--bless-duration-base),
-    background var(--bless-duration-base);
+    background var(--bless-duration-base),
+    var(--bless-lean-transition);
 }
 /* children don't fire dragleave as the cursor crosses them */
 .bless-file__zone > * {
   pointer-events: none;
 }
-.bless-file__zone:hover,
+/* hover is attention, not a choice: ink */
+.bless-file__zone:hover {
+  border-color: var(--bless-color-text);
+  border-style: solid;
+}
 .bless-file__zone--over {
   border-color: var(--bless-color-accent-text);
   border-style: solid;

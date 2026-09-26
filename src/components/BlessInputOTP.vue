@@ -156,7 +156,9 @@ function onPaste(i: number, e: ClipboardEvent) {
   text-align: center;
   caret-color: var(--bless-color-accent-text);
   transform: skewX(var(--bless-skew));
-  transition: border-color var(--bless-duration-base);
+  transition:
+    border-color var(--bless-duration-base),
+    var(--bless-lean-transition);
 }
 .bless-otp__cell:focus {
   outline: 0;

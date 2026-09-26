@@ -72,7 +72,7 @@ function onKey(e: KeyboardEvent) {
 
 <template>
   <div
-    class="bless-tags"
+    class="bless-tags bless-lean--field"
     :class="{
       'bless-tags--disabled': disabled,
       'bless-tags--invalid': invalid || fs.invalid.value,

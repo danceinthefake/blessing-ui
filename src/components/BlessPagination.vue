@@ -117,7 +117,8 @@ function go(p: number) {
   cursor: pointer;
   transition:
     opacity var(--bless-duration-slow) var(--bless-ease-in-out),
-    border-color var(--bless-duration-slow);
+    border-color var(--bless-duration-slow),
+    var(--bless-lean-transition);
 }
 .bless-pagination__btn:hover:not(:disabled):not(.bless-pagination__btn--current) {
   border-color: var(--bless-color-text);

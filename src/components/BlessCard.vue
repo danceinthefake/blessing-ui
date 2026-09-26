@@ -59,7 +59,9 @@ withDefaults(
   border: var(--bless-border-width) solid var(--bless-color-border);
 }
 .bless-card--link {
-  transition: opacity var(--bless-duration-slow) var(--bless-ease-in-out);
+  transition:
+    opacity var(--bless-duration-slow) var(--bless-ease-in-out),
+    var(--bless-lean-transition);
 }
 .bless-card--link:hover {
   opacity: var(--bless-hover-opacity);

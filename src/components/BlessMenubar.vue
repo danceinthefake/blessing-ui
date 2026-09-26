@@ -72,8 +72,12 @@ provide(menubarKey, {
   text-transform: uppercase;
   cursor: pointer;
 }
-.bless-menubar .bless-dropdown__anchor[aria-expanded="true"] > *,
+/* hover is attention, not a choice: ink */
 .bless-menubar .bless-dropdown__anchor > *:hover {
+  background: var(--bless-color-surface);
+  color: var(--bless-color-text);
+}
+.bless-menubar .bless-dropdown__anchor[aria-expanded="true"] > * {
   background: var(--bless-color-surface);
   color: var(--bless-color-accent-text);
 }
