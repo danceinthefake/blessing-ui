@@ -46,6 +46,27 @@ test("BlessAvatar initials fallback and image error", async () => {
   expect(i.text()).toBe("E");
 });
 
+test("BlessAvatar: initials take whole characters; lean joins the attention lean", () => {
+  expect(mount(BlessAvatar, { props: { name: "𠮷田 太郎" } }).text()).toBe("𠮷太");
+  expect(mount(BlessAvatar, { props: { name: "U", lean: true } }).classes()).toContain(
+    "bless-lean",
+  );
+});
+
+test("BlessAvatar: an image that failed before mount shows the initials", async () => {
+  const d = Object.getOwnPropertyDescriptor(HTMLImageElement.prototype, "complete");
+  Object.defineProperty(HTMLImageElement.prototype, "complete", {
+    configurable: true,
+    get: () => true,
+  });
+  const w = mount(BlessAvatar, { props: { src: "/gone.png", name: "Megumi Kato" } });
+  await w.vm.$nextTick();
+  if (d) Object.defineProperty(HTMLImageElement.prototype, "complete", d);
+  else delete (HTMLImageElement.prototype as { complete?: boolean }).complete;
+  expect(w.find("img").exists()).toBe(false);
+  expect(w.text()).toBe("MK");
+});
+
 test("BlessAspectRatio sets aspect-ratio", () => {
   expect(mount(BlessAspectRatio, { props: { ratio: 1 } }).attributes("style")).toContain(
     "aspect-ratio: 1",

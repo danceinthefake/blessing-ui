@@ -479,7 +479,7 @@
     "name": "lean",
     "type": "boolean | undefined",
     "required": false,
-    "description": "lean the frame like a plate (still a petal: soft body, sharp point)"
+    "description": "lean on attention like a plate — its own, or the link or button it sits in"
    },
    {
     "name": "color",
