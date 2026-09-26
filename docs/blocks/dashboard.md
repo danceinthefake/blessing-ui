@@ -15,10 +15,10 @@ const files = Object.fromEntries(
 
 # Dashboard
 
-<p class="bless-lead">Sidebar + toolbar shell with a stats row, a trend chart and a recent-activity table. Wrap in BlessLayout for drawers on phones.</p>
+<p class="bless-lead">Sidebar + toolbar shell with a stats row, a trend chart and recent orders; on a phone the sidebar becomes a strip that scrolls sideways.</p>
 
 <BlockDemo :files :components="meta.components" :height="meta.height" :frame="withBase('/blocks/dashboard-frame')" />
 
 ## Into your app
 
-Copy the folder to `src/features/dashboard/` (Nuxt: `app/features/dashboard/`) and render `index.vue` from a page. Replace `api.ts` — if the block has one — with your real adapter; the view and the use-case don't change.
+Copy the folder to `src/features/dashboard/` (Nuxt: `app/features/dashboard/`) and render `index.vue` from a page. It has no data layer: the arrays at the top of `index.vue` are where your data goes.

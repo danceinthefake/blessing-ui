@@ -3,7 +3,7 @@
   "slug": "news",
   "title": "News",
   "group": "Official site",
-  "summary": "Dated news rows with NEW! badges under an oversized watermark — the front page of an official site.",
+  "summary": "Dated news rows with NEW! badges and category tabs under an oversized watermark — the front page of an official site.",
   "order": 1
  },
  {
@@ -17,7 +17,7 @@
   "slug": "dashboard",
   "title": "Dashboard",
   "group": "App",
-  "summary": "Sidebar + toolbar shell with a stats row, a trend chart and a recent-activity table. Wrap in BlessLayout for drawers on phones.",
+  "summary": "Sidebar + toolbar shell with a stats row, a trend chart and recent orders; on a phone the sidebar becomes a strip that scrolls sideways.",
   "order": 2
  },
  {
@@ -38,28 +38,28 @@
   "slug": "settings",
   "title": "Settings",
   "group": "App",
-  "summary": "Profile, notifications and a danger zone as stacked panels with a sticky save bar — the standard account page.",
+  "summary": "Profile, notifications and a danger zone as stacked panels in one form — Enter saves, Discard restores — with a sticky save bar.",
   "order": 3
  },
  {
   "slug": "data-page",
   "title": "Data page",
   "group": "App",
-  "summary": "Breadcrumb, title row with primary action, filter chips and a sortable, searchable, selectable data table with bulk actions.",
+  "summary": "Breadcrumb, title row with primary action, a status filter and a sortable, searchable, selectable data table whose bulk Remove can be undone.",
   "order": 4
  },
  {
   "slug": "staff",
   "title": "Staff & Cast",
   "group": "Official site",
-  "summary": "Credits as two definition tables side by side — roles in skewed labels, names beside them.",
+  "summary": "Credits as two definition lists side by side — roles in ink labels, names beside them; stacked on a phone.",
   "order": 4
  },
  {
   "slug": "release",
   "title": "Release",
   "group": "Official site",
-  "summary": "Blu-ray / CD release cards with cover, price, date and a purchase button; the grid collapses to one column on phones.",
+  "summary": "Blu-ray / CD release cards with cover, price, date and a purchase button, soonest first; the grid reflows on phones.",
   "order": 5
  },
  {
@@ -80,14 +80,14 @@
   "slug": "story",
   "title": "Story",
   "group": "Official site",
-  "summary": "Episode list: number, title, air date and a synopsis that expands — with a synopsis-free intro above.",
+  "summary": "Episode list: number, title, air date and a synopsis that expands, under a short premise.",
   "order": 6
  },
  {
   "slug": "inbox",
   "title": "Inbox",
   "group": "App",
-  "summary": "Two-pane mail: a list with unread indicators and a reading pane with actions. Collapses to one pane on a phone with a back button.",
+  "summary": "Two-pane mail: a list with unread indicators and a reading pane whose Archive and Delete can be undone. Collapses to one pane on a phone with a back button.",
   "order": 7
  },
  {
@@ -101,7 +101,7 @@
   "slug": "chat",
   "title": "Chat",
   "group": "App",
-  "summary": "A conversation thread that sticks to the bottom, with a composer that sends on Enter and a typing indicator — the LINE-style screen.",
+  "summary": "A conversation thread that sticks to the bottom, with a composer that sends on Enter (never mid-IME conversion) and a typing indicator.",
   "order": 8
  },
  {

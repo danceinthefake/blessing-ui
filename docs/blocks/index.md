@@ -10,7 +10,7 @@ const groups = [...new Set(blocks.map((b) => b.group))];
 
 # Blocks
 
-A block is a finished section — a news list, a schedule table, a login form — built from Blessing components and shipped as **source you copy into your project**, not a package you import. Copy the folder, rename what you like, wire the mock `api.ts` to your backend.
+A block is a finished section — a news list, a schedule table, a login form — built from Blessing components and shipped as **source you copy into your project**, not a package you import. Copy the folder, rename what you like, and point its data at your backend — the offline `api.ts` where a block has one, otherwise the arrays at the top of `index.vue`.
 
 Every block follows one contract:
 

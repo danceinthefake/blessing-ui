@@ -9,6 +9,11 @@ const dir = resolve(docs, "blocks");
 const registry: { slug: string; title: string; group: string; summary: string; order: number }[] =
   [];
 let made = 0;
+// what to swap for real data: the offline api.ts where the block has one, else the arrays in index.vue
+const intoApp = (folder: string) =>
+  existsSync(resolve(folder, "api.ts"))
+    ? "Replace `api.ts` with your real adapter; the view and the use-case don't change."
+    : "It has no data layer: the arrays at the top of `index.vue` are where your data goes.";
 
 for (const slug of readdirSync(dir).sort()) {
   const folder = resolve(dir, slug);
@@ -76,7 +81,7 @@ const files = Object.fromEntries(
 
 ## Into your app
 
-Copy the folder to \`src/features/${slug}/\` (Nuxt: \`app/features/${slug}/\`) and render \`index.vue\` from a page. Replace \`api.ts\` — if the block has one — with your real adapter; the view and the use-case don't change.
+Copy the folder to \`src/features/${slug}/\` (Nuxt: \`app/features/${slug}/\`) and render \`index.vue\` from a page. ${intoApp(folder)}
 `,
   );
   made++;

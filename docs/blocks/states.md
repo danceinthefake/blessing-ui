@@ -21,4 +21,4 @@ const files = Object.fromEntries(
 
 ## Into your app
 
-Copy the folder to `src/features/states/` (Nuxt: `app/features/states/`) and render `index.vue` from a page. Replace `api.ts` — if the block has one — with your real adapter; the view and the use-case don't change.
+Copy the folder to `src/features/states/` (Nuxt: `app/features/states/`) and render `index.vue` from a page. There is no data here: replace the `state` picker with your own loading / empty / error / ready state, and put your list where the three rows are.
