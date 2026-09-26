@@ -7,20 +7,20 @@ const reload = () => location.reload();
 
 <template>
   <div class="row">
-    <BlessButton size="sm" @click="toast('Plain toast')">toast</BlessButton>
+    <BlessButton size="sm" @click="toast('Link copied')">Copy link</BlessButton>
     <BlessButton size="sm" @click="success({ title: 'Saved', description: '2 fields updated' })"
-      >success</BlessButton
+      >Save</BlessButton
     >
     <BlessButton
       size="sm"
       @click="error({ title: 'Failed', description: 'Network error', duration: 0 })"
-      >error (sticky)</BlessButton
+      >Sync (fails, stays)</BlessButton
     >
-    <BlessButton size="sm" @click="warning('Low disk space')">warning</BlessButton>
+    <BlessButton size="sm" @click="warning('Low disk space')">Check storage</BlessButton>
     <BlessButton
       size="sm"
       @click="info({ title: 'Update', action: { label: 'Reload', onClick: reload } })"
-      >info + action</BlessButton
+      >New version</BlessButton
     >
   </div>
 </template>

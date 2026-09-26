@@ -202,12 +202,18 @@ const { dismiss } = useToast();
   text-transform: uppercase;
   cursor: pointer;
   transform: skewX(var(--bless-skew));
+  transition:
+    opacity var(--bless-duration-slow) var(--bless-ease-in-out),
+    var(--bless-lean-transition);
+}
+.bless-toast__action:hover {
+  opacity: var(--bless-hover-opacity);
 }
 .bless-toast__close {
   flex: none;
   width: 24px;
   height: 24px;
-  margin-right: -8px;
+  margin-inline-end: -8px;
   padding: 0;
   border: 0;
   background: transparent;
@@ -215,10 +221,12 @@ const { dismiss } = useToast();
   font-size: var(--bless-text-lg);
   line-height: 1;
   cursor: pointer;
-  opacity: 0.6;
+  transition:
+    opacity var(--bless-duration-slow) var(--bless-ease-in-out),
+    var(--bless-lean-transition);
 }
 .bless-toast__close:hover {
-  opacity: 1;
+  opacity: var(--bless-hover-opacity);
 }
 .bless-toast__action:focus-visible,
 .bless-toast__close:focus-visible {
