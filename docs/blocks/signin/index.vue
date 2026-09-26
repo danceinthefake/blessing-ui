@@ -10,9 +10,17 @@ import {
   BlessSeparator,
   BlessText,
 } from "blessing-ui";
+import { nextTick, ref, watch } from "vue";
 import { useSignIn } from "./useSignIn";
 
 const { email, password, remember, busy, error, done, submit } = useSignIn();
+// the form (and its focused button) gives way to the confirmation: take focus there, so it's read
+const doneAlert = ref<{ $el: HTMLElement }>();
+watch(done, async (d) => {
+  if (!d) return;
+  await nextTick();
+  doneAlert.value?.$el.focus();
+});
 </script>
 
 <template>
@@ -21,7 +29,13 @@ const { email, password, remember, busy, error, done, submit } = useSignIn();
     <BlessText as="p" size="sm" muted class="signin__lead"
       >Use your Blessing Software account.</BlessText
     >
-    <BlessAlert v-if="done" color="success" title="Signed in" :dismissible="false"
+    <BlessAlert
+      v-if="done"
+      ref="doneAlert"
+      color="success"
+      title="Signed in"
+      :dismissible="false"
+      tabindex="-1"
       >Redirecting…</BlessAlert
     >
     <BlessForm v-else @submit="submit">
