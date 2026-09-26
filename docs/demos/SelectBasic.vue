@@ -2,6 +2,8 @@
 import { ref } from "vue";
 import { BlessLabel, BlessSelect } from "blessing-ui";
 const season = ref<string>();
+const small = ref("s1");
+const large = ref<string>();
 const options = [
   { value: "s1", label: "第一期 (2015)" },
   { value: "s2", label: "第二期 ♭ (2017)" },
@@ -19,21 +21,22 @@ const options = [
         v-model="season"
         placeholder="Choose…"
         :options
-        description="native select, styled"
+        description="The two TV seasons and the film"
       />
     </div>
     <div class="col">
-      <BlessLabel for="d-sm">Small</BlessLabel>
-      <BlessSelect id="d-sm" size="sm" :options="[{ value: 1, label: 'sm' }]" :model-value="1" />
+      <BlessLabel for="d-sm">Season (small)</BlessLabel>
+      <BlessSelect id="d-sm" v-model="small" size="sm" :options />
     </div>
     <div class="col">
-      <BlessLabel for="d-lg">Large</BlessLabel>
+      <BlessLabel for="d-lg">Season (large)</BlessLabel>
       <BlessSelect
         id="d-lg"
+        v-model="large"
         size="lg"
-        :options="[{ value: 1, label: 'lg' }]"
-        :model-value="1"
-        error="Pick one"
+        placeholder="Choose…"
+        :options
+        :error="large ? '' : 'Pick one'"
       />
     </div>
   </div>
