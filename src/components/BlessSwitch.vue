@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useFieldId, useFieldState } from "../composables/useFieldId";
+import { joinIds, useFieldId, useFieldState } from "../composables/useFieldId";
 
 defineOptions({ name: "BlessSwitch", inheritAttrs: false });
 
@@ -32,7 +32,7 @@ const fs = useFieldState();
       :disabled
       class="bless-switch__input"
       :aria-invalid="fs.invalid.value || undefined"
-      :aria-describedby="($attrs['aria-describedby'] as string) ?? fs.describedby.value"
+      :aria-describedby="joinIds(fs.describedby.value, $attrs['aria-describedby'] as string)"
     />
     <span class="bless-switch__track" aria-hidden="true"><span class="bless-switch__thumb" /></span>
     <span v-if="$slots.default" class="bless-switch__label"><slot /></span>

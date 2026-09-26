@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from "vue";
-import { useFieldId, useFieldState } from "../composables/useFieldId";
+import { joinIds, useFieldId, useFieldState } from "../composables/useFieldId";
 
 defineOptions({ name: "BlessSlider", inheritAttrs: false });
 
@@ -48,7 +48,7 @@ const text = computed(() => (props.format ?? String)(model.value));
       class="bless-slider__input"
       :aria-valuetext="format ? text : undefined"
       :aria-invalid="fs.invalid.value || undefined"
-      :aria-describedby="($attrs['aria-describedby'] as string) ?? fs.describedby.value"
+      :aria-describedby="joinIds(fs.describedby.value, $attrs['aria-describedby'] as string)"
     />
   </div>
 </template>

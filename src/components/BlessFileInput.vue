@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { nextTick, ref } from "vue";
-import { useFieldId, useFieldState } from "../composables/useFieldId";
+import { joinIds, useFieldId, useFieldState } from "../composables/useFieldId";
 
 defineOptions({ name: "BlessFileInput", inheritAttrs: false });
 
@@ -88,7 +88,7 @@ const kb = (n: number) =>
         :multiple
         :disabled
         :aria-invalid="invalid || fs.invalid.value || undefined"
-        :aria-describedby="($attrs['aria-describedby'] as string) ?? fs.describedby.value"
+        :aria-describedby="joinIds(fs.describedby.value, $attrs['aria-describedby'] as string)"
         @change="take(($event.target as HTMLInputElement).files)"
       />
       <span class="bless-file__icon" aria-hidden="true"><slot name="icon">⇪</slot></span>

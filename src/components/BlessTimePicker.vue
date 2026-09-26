@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from "vue";
-import { useFieldId, useFieldState } from "../composables/useFieldId";
+import { joinIds, useFieldId, useFieldState } from "../composables/useFieldId";
 
 defineOptions({ name: "BlessTimePicker", inheritAttrs: false });
 
@@ -69,7 +69,7 @@ const options = computed(() => {
       :disabled
       :aria-label="label ?? (fs.inField ? undefined : 'Time')"
       :aria-invalid="invalid || fs.invalid.value || undefined"
-      :aria-describedby="($attrs['aria-describedby'] as string) ?? fs.describedby.value"
+      :aria-describedby="joinIds(fs.describedby.value, $attrs['aria-describedby'] as string)"
     />
     <datalist :id="`${id()}-list`">
       <option v-for="o in options" :key="o.value" :value="o.value">{{ o.label }}</option>

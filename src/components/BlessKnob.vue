@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
-import { useFieldId, useFieldState } from "../composables/useFieldId";
+import { joinIds, useFieldId, useFieldState } from "../composables/useFieldId";
 
 defineOptions({ name: "BlessKnob", inheritAttrs: false });
 
@@ -95,7 +95,7 @@ function onMove(e: PointerEvent) {
         :disabled
         :aria-label="label || fs.inField ? undefined : 'Value'"
         :aria-valuetext="text"
-        :aria-describedby="($attrs['aria-describedby'] as string) ?? fs.describedby.value"
+        :aria-describedby="joinIds(fs.describedby.value, $attrs['aria-describedby'] as string)"
       />
       <span v-if="showValue" class="bless-knob__value" aria-hidden="true">{{ text }}</span>
     </div>
