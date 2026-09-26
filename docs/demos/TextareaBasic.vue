@@ -11,7 +11,7 @@ const bio = ref("");
       <BlessTextarea
         id="d-bio"
         v-model="bio"
-        placeholder="autogrow, max 120"
+        placeholder="A line or two about you"
         :maxlength="120"
         counter
       />
