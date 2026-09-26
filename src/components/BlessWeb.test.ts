@@ -202,3 +202,11 @@ test("BlessUploader: cancel keeps focus on its button; remove hands it to the ne
   expect(document.activeElement?.getAttribute("aria-label")).toBe("Remove b.txt");
   w.unmount();
 });
+
+test("BlessImg: a new src clears the old image's error", async () => {
+  const w = mount(BlessImg, { props: { src: "/gone.png", alt: "Key visual" } });
+  await w.find(".bless-img__img").trigger("error");
+  expect(w.classes()).toContain("bless-img--failed");
+  await w.setProps({ src: "/kv.png" });
+  expect(w.classes()).not.toContain("bless-img--failed");
+});
