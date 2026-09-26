@@ -46,6 +46,7 @@ const pending = ref<string>(); // range start awaiting end
 const fmtMonth = computed(() =>
   new Intl.DateTimeFormat(props.locale, { year: "numeric", month: "long" }).format(view.value),
 );
+const fmtFull = computed(() => new Intl.DateTimeFormat(props.locale, { dateStyle: "full" }));
 const dayNames = computed(() => {
   const f = new Intl.DateTimeFormat(props.locale, { weekday: "short" });
   const base = new Date(2024, 0, 7 + props.weekStart); // a Sunday + offset
@@ -183,8 +184,7 @@ watch(
           :tabindex="c.iso === focused ? 0 : -1"
           :aria-selected="isSelected(c.iso) || undefined"
           :aria-disabled="isDisabled(c.iso) || undefined"
-          :disabled="isDisabled(c.iso)"
-          :aria-label="new Intl.DateTimeFormat(locale, { dateStyle: 'full' }).format(c.date)"
+          :aria-label="fmtFull.format(c.date)"
           @click="select(c.iso)"
           @mouseenter="hover = c.iso"
           @mouseleave="hover = undefined"
@@ -229,12 +229,11 @@ watch(
   font-size: var(--bless-text-lg);
   cursor: pointer;
   transition:
-    color var(--bless-duration-slow),
+    opacity var(--bless-duration-slow) var(--bless-ease-in-out),
     var(--bless-lean-transition);
 }
-/* hover is attention, not a choice: ink */
 .bless-calendar__nav:hover {
-  color: var(--bless-color-text);
+  opacity: var(--bless-hover-opacity);
 }
 .bless-calendar__nav:focus-visible {
   outline: 2px solid var(--bless-color-accent);
@@ -269,7 +268,7 @@ watch(
     color var(--bless-duration-fast),
     var(--bless-lean-transition);
 }
-.bless-calendar__day:hover:not(:disabled) {
+.bless-calendar__day:hover:not([aria-disabled]) {
   background: var(--bless-color-surface);
 }
 .bless-calendar__day:focus-visible {
@@ -312,13 +311,22 @@ watch(
 .bless-calendar__day--end {
   clip-path: polygon(0 0, 100% 0, calc(100% - 6px) 100%, 0 100%);
 }
-/* can't pick: struck, at reading weight — distinct from the light "outside this month" days */
-.bless-calendar__day:disabled {
+/* the ends mirror with the reading direction, like the lean */
+[dir="rtl"] .bless-calendar__day--start {
+  clip-path: polygon(0 0, 100% 0, calc(100% - 6px) 100%, 0 100%);
+}
+[dir="rtl"] .bless-calendar__day--end {
+  clip-path: polygon(6px 0, 100% 0, 100% 100%, 0 100%);
+}
+/* can't pick: struck, at reading weight — distinct from the light "outside this month" days.
+   aria-disabled, not disabled: a disabled button can't take focus, and the roving tab stop or an
+   arrow key landing on one would drop the grid out of the keyboard's reach */
+.bless-calendar__day[aria-disabled] {
   color: var(--bless-color-text-muted);
   text-decoration: line-through;
   cursor: not-allowed;
 }
-.bless-calendar__day--outside:disabled {
+.bless-calendar__day--outside[aria-disabled] {
   text-decoration: none;
   opacity: 0.5;
 }

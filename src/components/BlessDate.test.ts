@@ -27,7 +27,9 @@ test("BlessCalendar renders month, selects, keyboard moves and wraps months, min
   const sel = w.find(".bless-calendar__day--selected");
   expect(sel.text()).toBe("25");
   expect(sel.attributes("tabindex")).toBe("0");
-  expect(w.findAll('[role="gridcell"]:disabled').length).toBeGreaterThan(0);
+  // struck out but still focusable, so the roving tab stop can land on one
+  expect(w.findAll('[role="gridcell"][aria-disabled="true"]').length).toBeGreaterThan(0);
+  expect(w.findAll('[role="gridcell"]:disabled')).toHaveLength(0);
 
   const grid = w.find('[role="grid"]');
   (sel.element as HTMLElement).focus();
@@ -39,6 +41,24 @@ test("BlessCalendar renders month, selects, keyboard moves and wraps months, min
   expect(w.emitted("update:modelValue")![0]).toEqual(["2019-10-03"]);
   await w.find(".bless-calendar__nav").trigger("click");
   expect(w.find(".bless-calendar__month").text()).toBe("September 2019");
+  w.unmount();
+});
+
+test("BlessCalendar: a disabled day takes focus but can't be picked", async () => {
+  const w = mount(BlessCalendar, {
+    props: {
+      locale: "en-US",
+      month: "2019-09",
+      disabledDates: (iso: string) => iso === "2019-09-01",
+    },
+    attachTo: document.body,
+  });
+  const first = w.find('[tabindex="0"]');
+  expect(first.attributes("aria-disabled")).toBe("true"); // the tab stop sits on it…
+  (first.element as HTMLElement).focus();
+  expect(document.activeElement).toBe(first.element); // …and can be reached
+  await w.find('[role="grid"]').trigger("keydown", { key: "Enter" });
+  expect(w.emitted("update:modelValue")).toBeUndefined();
   w.unmount();
 });
 
