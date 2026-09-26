@@ -18,6 +18,8 @@ const props = withDefaults(
     label?: string;
     prevLabel?: string;
     nextLabel?: string;
+    /** the autoplay button's name; its pressed state says whether it's paused */
+    pauseLabel?: string;
   }>(),
   {
     perView: 1,
@@ -29,6 +31,7 @@ const props = withDefaults(
     label: "Carousel",
     prevLabel: "Previous slide",
     nextLabel: "Next slide",
+    pauseLabel: "Pause slides",
   },
 );
 
@@ -83,9 +86,11 @@ function onKey(e: KeyboardEvent) {
   }
 }
 let mo: MutationObserver | undefined;
+// moving content needs a way to stop it (WCAG 2.2.2): hover and focus pause, and so does this
+const paused = ref(false);
 function play() {
   stop();
-  if (props.autoplay > 0 && !reducedMotion())
+  if (props.autoplay > 0 && !paused.value && !reducedMotion())
     timer = setInterval(() => go(index.value + 1), props.autoplay);
 }
 function stop() {
@@ -105,6 +110,10 @@ onBeforeUnmount(() => {
   mo?.disconnect();
 });
 watch(() => props.autoplay, play);
+function togglePause() {
+  paused.value = !paused.value;
+  paused.value ? stop() : play();
+}
 defineExpose({ go, next: () => go(index.value + 1), prev: () => go(index.value - 1) });
 </script>
 
@@ -114,7 +123,6 @@ defineExpose({ go, next: () => go(index.value + 1), prev: () => go(index.value -
     role="region"
     :aria-label="label"
     aria-roledescription="carousel"
-    tabindex="0"
     @keydown="onKey"
     @mouseenter="stop"
     @mouseleave="play"
@@ -135,8 +143,8 @@ defineExpose({ go, next: () => go(index.value + 1), prev: () => go(index.value -
         type="button"
         class="bless-carousel__arrow bless-carousel__arrow--prev"
         :aria-label="prevLabel"
-        :disabled="!canPrev"
-        @click="go(index - 1)"
+        :aria-disabled="!canPrev || undefined"
+        @click="canPrev && go(index - 1)"
       >
         <span aria-hidden="true">‹</span>
       </button>
@@ -144,25 +152,38 @@ defineExpose({ go, next: () => go(index.value + 1), prev: () => go(index.value -
         type="button"
         class="bless-carousel__arrow bless-carousel__arrow--next"
         :aria-label="nextLabel"
-        :disabled="!canNext"
-        @click="go(index + 1)"
+        :aria-disabled="!canNext || undefined"
+        @click="canNext && go(index + 1)"
       >
         <span aria-hidden="true">›</span>
       </button>
     </template>
-    <div v-if="dots && pages > 1" class="bless-carousel__dots" role="tablist" aria-label="Slides">
+    <div v-if="dots && pages > 1" class="bless-carousel__dots" role="group" aria-label="Slides">
       <button
         v-for="p in pages"
         :key="p"
         type="button"
-        role="tab"
         class="bless-carousel__dot"
         :class="{ 'bless-carousel__dot--active': p - 1 === index }"
-        :aria-selected="p - 1 === index"
+        :aria-current="p - 1 === index || undefined"
         :aria-label="`Slide ${p}`"
         @click="go(p - 1)"
       />
     </div>
+    <button
+      v-if="autoplay > 0"
+      type="button"
+      class="bless-carousel__pause"
+      :aria-label="pauseLabel"
+      :aria-pressed="paused"
+      @click="togglePause"
+    >
+      <span aria-hidden="true">{{ paused ? "▶" : "❚❚" }}</span>
+    </button>
+    <!-- which slide is showing, read after a step; quiet while it turns by itself -->
+    <span class="bless-carousel__sr" :aria-live="autoplay > 0 && !paused ? 'off' : 'polite'"
+      >{{ label }}: {{ index + 1 }} / {{ pages }}</span
+    >
   </div>
 </template>
 
@@ -171,7 +192,7 @@ defineExpose({ go, next: () => go(index.value + 1), prev: () => go(index.value -
   position: relative;
   outline: 0;
 }
-.bless-carousel:focus-visible {
+.bless-carousel__track:focus-visible {
   outline: 2px solid var(--bless-color-accent);
   outline-offset: 4px;
 }
@@ -224,14 +245,48 @@ defineExpose({ go, next: () => go(index.value + 1), prev: () => go(index.value -
 .bless-carousel__arrow--next {
   inset-inline-end: var(--bless-space-2);
 }
-.bless-carousel__arrow:hover:not(:disabled) {
+.bless-carousel__arrow:hover:not([aria-disabled]) {
   opacity: var(--bless-hover-opacity);
 }
-.bless-carousel__arrow:disabled {
+/* aria-disabled, not disabled: a focused Next that reaches the end keeps focus */
+.bless-carousel__arrow[aria-disabled] {
   opacity: 0.2;
   cursor: not-allowed;
 }
 .bless-carousel__arrow:focus-visible {
+  outline: 2px solid var(--bless-color-accent);
+  outline-offset: 2px;
+}
+.bless-carousel__sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+.bless-carousel__pause {
+  position: absolute;
+  top: var(--bless-space-2);
+  inset-inline-end: var(--bless-space-2);
+  width: 32px;
+  height: 32px;
+  border: 0;
+  background: var(--bless-color-text);
+  color: var(--bless-color-on-text);
+  font-size: var(--bless-text-xs);
+  cursor: pointer;
+  transition:
+    opacity var(--bless-duration-slow) var(--bless-ease-in-out),
+    var(--bless-lean-transition);
+}
+.bless-carousel__pause:hover {
+  opacity: var(--bless-hover-opacity);
+}
+.bless-carousel__pause[aria-pressed="true"] {
+  background: var(--bless-color-accent);
+  color: var(--bless-color-on-accent);
+}
+.bless-carousel__pause:focus-visible {
   outline: 2px solid var(--bless-color-accent);
   outline-offset: 2px;
 }

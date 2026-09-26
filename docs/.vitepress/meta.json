@@ -1076,6 +1076,13 @@
     "description": ""
    },
    {
+    "name": "pauseLabel",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Pause slides\"",
+    "description": "the autoplay button's name; its pressed state says whether it's paused"
+   },
+   {
     "name": "modelValue",
     "type": "number | undefined",
     "required": false,
