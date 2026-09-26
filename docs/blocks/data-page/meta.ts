@@ -11,6 +11,7 @@ export default {
     "BlessBadge",
     "BlessText",
     "BlessToggleGroup",
+    "BlessToaster",
     "BlessToggle",
   ],
   height: "560px",
