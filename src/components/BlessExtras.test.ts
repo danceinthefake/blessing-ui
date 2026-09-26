@@ -142,6 +142,8 @@ test("BlessScrollTop shows after threshold and scrolls", async () => {
   window.scrollTo = vi.fn();
   await w.find("button").trigger("click");
   expect(window.scrollTo).toHaveBeenCalledWith({ top: 0, behavior: "smooth" });
+  expect(document.activeElement).toBe(document.body); // focus went up with the page, not lost
+  expect(document.body.getAttribute("tabindex")).toBe("-1");
 });
 
 test("BlessListbox: keyboard moves, Enter picks, multiple toggles", async () => {
