@@ -32,10 +32,6 @@ Extra content next to the thing that opens it — a small form, details, a colou
   </template>
 </Demo>
 
-::: warning Not inside `<p>`
-The floating panel is a `<div>`. HTML closes a `<p>` when it meets a `<div>`, so a trigger placed inside a paragraph renders differently on the server and the client. Wrap with `<span>`/`<div>` instead.
-:::
-
 <Demo title="Arrow">
   <PopoverArrow />
   <template #code>
@@ -44,6 +40,10 @@ The floating panel is a `<div>`. HTML closes a `<p>` when it meets a `<div>`, so
 
   </template>
 </Demo>
+
+::: warning Not inside `<p>`
+The floating panel is a `<div>`. HTML closes a `<p>` when it meets a `<div>`, so a trigger placed inside a paragraph renders differently on the server and the client. Wrap with `<span>`/`<div>` instead.
+:::
 
 - A click on the trigger opens it; the trigger is told what it opens and whether it's open. Esc or a click outside closes it, and focus goes back to the trigger if it was inside.
 - `modal` turns off the click-outside close (Esc and your own control still close it). `trigger="hover"` opens on hover and focus, for previews only — see [HoverCard](./hover-card).
