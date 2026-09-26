@@ -114,6 +114,14 @@ test("BlessIndicator: count, max, dot, hidden", async () => {
   expect(w.find(".bless-indicator__badge").exists()).toBe(false);
 });
 
+test("BlessIndicator: the label is read in full from a status region that stays", async () => {
+  const w = mount(BlessIndicator, { props: { value: 0, label: "0 unread" } });
+  expect(w.find('[role="status"]').text()).toBe("");
+  await w.setProps({ value: 4, label: "4 unread" });
+  expect(w.find('[role="status"]').text()).toBe("4 unread");
+  expect(w.find(".bless-indicator__badge").attributes("aria-hidden")).toBe("true");
+});
+
 test("BlessStack maps gap and alignment", () => {
   const w = mount(BlessStack, {
     props: { direction: "row", gap: 4, align: "center", justify: "between" },
