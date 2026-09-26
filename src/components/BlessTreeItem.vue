@@ -33,7 +33,12 @@ const expanded = ref(!!props.node.open);
       :open="node.open"
       @toggle="expanded = ($event.target as HTMLDetailsElement).open"
     >
-      <summary class="bless-tree__row" :class="{ 'bless-tree__row--selected': selected === id() }">
+      <!-- Enter picks a branch like a click on its label (→ / ← and Space open and close it) -->
+      <summary
+        class="bless-tree__row"
+        :class="{ 'bless-tree__row--selected': selected === id() }"
+        @keydown.enter.prevent="!node.disabled && emit('select', node, id())"
+      >
         <span class="bless-tree__chevron" aria-hidden="true">›</span>
         <span v-if="node.icon" class="bless-tree__icon" aria-hidden="true">{{ node.icon }}</span>
         <span

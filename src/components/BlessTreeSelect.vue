@@ -31,13 +31,16 @@ const open = ref(false);
 const id = useFieldId(props);
 const fs = useFieldState();
 const panel = ref<HTMLElement>();
-// opening moves focus into the tree (the picked row, else the first)
+// opening moves focus into the tree (the picked row, else the first). The popover shows itself on
+// its own next tick, and a row in a closed popover can't take focus, so wait a frame past that.
 watch(open, (o) =>
-  nextTick(() => {
-    if (!o) return;
-    const rows = panel.value?.querySelectorAll<HTMLElement>(".bless-tree__row");
-    (panel.value?.querySelector<HTMLElement>(".bless-tree__row--selected") ?? rows?.[0])?.focus();
-  }),
+  nextTick(() =>
+    requestAnimationFrame(() => {
+      if (!o) return;
+      const rows = panel.value?.querySelectorAll<HTMLElement>(".bless-tree__row");
+      (panel.value?.querySelector<HTMLElement>(".bless-tree__row--selected") ?? rows?.[0])?.focus();
+    }),
+  ),
 );
 function onKey(e: KeyboardEvent) {
   if (props.disabled) return;

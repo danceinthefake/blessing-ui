@@ -268,3 +268,11 @@ test("BlessFileInput: removing a file hands focus to the next ×, then to the in
   expect(document.activeElement).toBe(w.find("input").element);
   w.unmount();
 });
+
+test("BlessTree: Enter on a branch picks it (Space and the arrows still open and close)", async () => {
+  const w = mount(BlessTree, {
+    props: { nodes: [{ label: "src", id: "src", children: [{ label: "a.ts", id: "a" }] }] },
+  });
+  await w.find("summary").trigger("keydown", { key: "Enter" });
+  expect(w.emitted("select")![0][1]).toBe("src");
+});

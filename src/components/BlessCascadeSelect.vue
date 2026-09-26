@@ -1,5 +1,5 @@
 <script setup lang="ts" generic="T extends string | number">
-import { computed, ref, useId, watch } from "vue";
+import { computed, nextTick, ref, useId, watch } from "vue";
 import { logicalKey } from "../composables/rtl";
 import { useFieldId, useFieldState } from "../composables/useFieldId";
 import BlessPopover from "./BlessPopover.vue";
@@ -128,7 +128,10 @@ function onKey(e: KeyboardEvent) {
       break;
   }
 }
+const panelEl = ref<HTMLElement>();
 watch(open, (o) => {
+  // the keys live on the panel: opening hands it focus (after the popover has shown itself)
+  if (o) nextTick(() => requestAnimationFrame(() => panelEl.value?.focus()));
   if (!o) return;
   // open on the selected path
   const p = selectedPath.value;
@@ -170,6 +173,7 @@ watch(open, (o) => {
       </button>
     </template>
     <div
+      ref="panelEl"
       class="bless-cascade__panel"
       tabindex="0"
       role="group"
