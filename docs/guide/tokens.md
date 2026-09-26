@@ -31,7 +31,7 @@ Durations collapse to `0s` under `prefers-reduced-motion`.
 
 ## Shape
 
-Two corners, one rule — see [Conventions](./conventions#shape-cut-or-petal). `--bless-lean` is the house angle; `--bless-skew` / `--bless-skew-counter` are the current lean every plate and its text read — `0deg` at rest, set to the lean on hover, focus, press or while writing. Set `--bless-skew: var(--bless-lean)` (and the counter to its negative) on an element to make it lean at rest; set `--bless-lean: 0deg` to turn the lean off. `--bless-radius-petal` rounds only the two acute corners of a leaning plate (`--bless-petal`, 8px; `-lg` for chat bubbles) and is applied to avatars, switches, chips, bubbles, fabs and thumbs. `--bless-radius` and `--bless-radius-plate` are `0` and unused by the library; set them if you want boxes or plates rounded.
+One shape — see [Conventions](./conventions#shape). `--bless-lean` is the house angle; `--bless-skew` / `--bless-skew-counter` are the current lean every plate and its text read — `0deg` at rest, set to the lean on hover, focus, press or while writing. Set `--bless-skew: var(--bless-lean)` (and the counter to its negative) on an element to make it lean at rest; set `--bless-lean: 0deg` to turn the lean off. `--bless-radius-petal` (and `-lg` for chat bubbles) is what avatars, switches, chips, bubbles, fabs and thumbs read for their corners; it is square because `--bless-petal` is `0`. Set `--bless-petal` to round two opposite corners of those parts, or `--bless-radius` / `--bless-radius-plate` to round boxes and plates — the library itself sets none of them.
 
 ## Colour pairs
 

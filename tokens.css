@@ -79,16 +79,16 @@
   --bless-space-16: 4rem;
 
   /* ---- shape ----
-   * Two shapes, one rule (docs/guide/conventions). CUT is the sharp skewed plate: everything the
-   * source site had — buttons, tabs, tags, badges, fields, cards, menus, tables. PETAL is the same
-   * plate with only its two acute corners rounded — soft body, sharp point, like the circle's flower —
-   * for what is round by nature: avatars, switches, chips, chat bubbles, fabs, slider thumbs, count dots.
-   * --bless-radius / --bless-radius-plate are 0 and unused by default; set them to round the rest.
+   * One shape: the upright plate with a whole, square outline — buttons, tabs, fields, cards, and the
+   * round-by-nature parts too (avatars, switches, chips, bubbles, fabs, thumbs, count dots). The lean
+   * (--bless-lean) carries the identity, not the corners; the teardrop lives in the mark.
+   * --bless-radius / --bless-radius-plate / --bless-petal are 0 and override points: set --bless-petal
+   * (e.g. 8px) to round the two opposite corners of the round-by-nature parts.
    */
   --bless-radius: 0px; /* unskewed boxes — override point, 0 by design */
   --bless-radius-plate: 0; /* skewed plates — override point, 0 by design */
-  --bless-petal: 8px;
-  --bless-radius-petal: 0 var(--bless-petal) 0 var(--bless-petal); /* the acute corners of the -10° lean */
+  --bless-petal: 0px; /* override point, 0 by design */
+  --bless-radius-petal: 0 var(--bless-petal) 0 var(--bless-petal); /* two opposite corners, square by default */
   --bless-radius-petal-lg: 0 calc(var(--bless-petal) * 1.5) 0 calc(var(--bless-petal) * 1.5); /* bubbles */
   --bless-lean: -10deg; /* the house angle — what a plate leans to when it gets attention */
   /* append to a control's own transition list so its lean still animates */
