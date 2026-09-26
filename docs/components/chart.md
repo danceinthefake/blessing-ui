@@ -13,20 +13,20 @@ import ChartBasic from "../demos/ChartBasic.vue";
 
 The frame around a chart from your charting library — title, description, legend, footer — in the system's type and series colours. The plot itself is yours.
 
-<Demo title="Bars">
-  <ChartBars />
-  <template #code>
-
-<<< ../demos/ChartBars.vue
-
-  </template>
-</Demo>
-
 <Demo title="Basic">
   <ChartBasic />
   <template #code>
 
 <<< ../demos/ChartBasic.vue
+
+  </template>
+</Demo>
+
+<Demo title="Bars">
+  <ChartBars />
+  <template #code>
+
+<<< ../demos/ChartBars.vue
 
   </template>
 </Demo>
