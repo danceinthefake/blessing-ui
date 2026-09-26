@@ -49,7 +49,7 @@ const { email, password, remember, busy, error, done, submit } = useSignIn();
         <BlessCheckbox v-model="remember">Remember me</BlessCheckbox>
         <a href="#" class="signin__link">Forgot password?</a>
       </div>
-      <BlessButton type="submit" color="accent" :loading="busy" block>Sign in</BlessButton>
+      <BlessButton type="submit" :loading="busy" block>Sign in</BlessButton>
       <BlessSeparator label="or" class="signin__sep" />
       <BlessButton variant="outline" block>Continue with GitHub</BlessButton>
       <BlessText as="p" size="xs" muted class="signin__foot"

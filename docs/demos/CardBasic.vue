@@ -10,7 +10,7 @@ import { BlessButton, BlessCard, BlessText } from "blessing-ui";
       /></template>
       <BlessText as="p" weight="bold">Blu-ray Disc BOX</BlessText>
       <BlessText as="p" size="sm" muted>2019.09.25 発売</BlessText>
-      <template #footer><BlessButton size="sm" color="accent">詳細</BlessButton></template>
+      <template #footer><BlessButton size="sm">詳細</BlessButton></template>
     </BlessCard>
     <BlessCard label="Link" label-color="accent" href="#" style="width: 240px">
       <BlessText as="p">whole card is an anchor</BlessText>

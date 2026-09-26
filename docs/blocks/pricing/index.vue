@@ -59,7 +59,6 @@ const price = (m: number) =>
           <BlessText size="xs" muted> / {{ yearly ? "year" : "month" }}</BlessText>
         </p>
         <BlessButton
-          :color="p.hot ? 'accent' : 'text'"
           :variant="p.hot ? 'solid' : 'outline'"
           block
           :aria-label="`${p.monthly ? 'Start trial' : 'Get started'}: ${p.name}`"

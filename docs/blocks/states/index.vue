@@ -45,7 +45,7 @@ const state = ref<State>("loading");
       description="Create your first project to start tracking work."
     >
       <template #icon>◇</template>
-      <BlessButton color="accent" size="sm">New project</BlessButton>
+      <BlessButton size="sm">New project</BlessButton>
     </BlessEmpty>
 
     <BlessAlert

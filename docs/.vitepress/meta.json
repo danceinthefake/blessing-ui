@@ -1810,7 +1810,7 @@
     "name": "color",
     "type": "\"text\" | \"accent\" | \"danger\" | undefined",
     "required": false,
-    "default": "\"accent\"",
+    "default": "\"text\"",
     "description": ""
    },
    {
@@ -2977,7 +2977,7 @@
     "name": "color",
     "type": "\"text\" | \"accent\" | \"danger\" | \"warning\" | \"success\" | \"info\" | undefined",
     "required": false,
-    "default": "\"accent\"",
+    "default": "\"text\"",
     "description": ""
    },
    {
@@ -5179,7 +5179,7 @@
     "type": "boolean | undefined",
     "required": false,
     "default": "false",
-    "description": "skewed accent plate behind the tile"
+    "description": "skewed ink plate behind the tile"
    },
    {
     "name": "label",
@@ -6289,7 +6289,7 @@
     "name": "color",
     "type": "\"text\" | \"accent\" | undefined",
     "required": false,
-    "default": "\"accent\"",
+    "default": "\"text\"",
     "description": ""
    },
    {
@@ -7311,7 +7311,7 @@
     "name": "color",
     "type": "\"text\" | \"accent\" | \"danger\" | undefined",
     "required": false,
-    "default": "\"text\"",
+    "default": "\"accent\"",
     "description": ""
    },
    {

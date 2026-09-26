@@ -77,7 +77,7 @@ function back() {
           <template #end>
             <BlessButton size="sm" variant="ghost">Archive</BlessButton>
             <BlessButton size="sm" variant="ghost" color="danger">Delete</BlessButton>
-            <BlessButton size="sm" color="accent">Reply</BlessButton>
+            <BlessButton size="sm">Reply</BlessButton>
           </template>
         </BlessToolbar>
         <BlessText

@@ -23,7 +23,7 @@ function show(s: typeof side.value) {
     <BlessText as="p">Native &lt;dialog&gt; side panel. Esc / backdrop / × close it.</BlessText>
     <template #footer>
       <BlessButton variant="outline" @click="open = false">Cancel</BlessButton>
-      <BlessButton color="accent" @click="open = false">Apply</BlessButton>
+      <BlessButton @click="open = false">Apply</BlessButton>
     </template>
   </BlessSheet>
 </template>

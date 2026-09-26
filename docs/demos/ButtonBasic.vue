@@ -4,10 +4,9 @@ import { BlessButton } from "blessing-ui";
 
 <template>
   <div class="row">
-    <BlessButton>Default</BlessButton>
-    <BlessButton color="accent">Accent</BlessButton>
-    <BlessButton color="danger">Danger</BlessButton>
-    <BlessButton variant="outline" color="accent">Outline</BlessButton>
+    <BlessButton>Solid</BlessButton>
+    <BlessButton variant="outline">Outline</BlessButton>
     <BlessButton variant="ghost">Ghost</BlessButton>
+    <BlessButton color="danger">Danger</BlessButton>
   </div>
 </template>

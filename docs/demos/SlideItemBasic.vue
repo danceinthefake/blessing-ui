@@ -20,9 +20,7 @@ function remove(name: string, reset: () => void) {
         @right="(reset) => remove(r, reset)"
         @left="(reset) => (toast(`Pinned ${r}`), reset())"
       >
-        <template #left
-          ><BlessButton color="accent" style="height: 100%">Pin</BlessButton></template
-        >
+        <template #left><BlessButton style="height: 100%">Pin</BlessButton></template>
         <div style="padding: 14px 16px">{{ r }}</div>
         <template #right
           ><BlessButton color="danger" style="height: 100%">Delete</BlessButton></template

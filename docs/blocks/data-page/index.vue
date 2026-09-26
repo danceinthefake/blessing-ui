@@ -47,7 +47,7 @@ const filters: { value: Status | "all"; label: string }[] = [
         <BlessText as="h1" size="lg" weight="light">Members</BlessText>
         <BlessText as="p" size="sm" muted>{{ rows.length }} people in this workspace</BlessText>
       </div>
-      <BlessButton color="accent">Invite</BlessButton>
+      <BlessButton>Invite</BlessButton>
     </div>
     <BlessDataTable
       @update:selected="selected = $event"

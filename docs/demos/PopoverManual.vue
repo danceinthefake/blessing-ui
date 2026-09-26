@@ -7,7 +7,7 @@ const open = ref(false);
 <template>
   <BlessPopover v-model:open="open" modal title="Manual (modal)">
     <template #trigger
-      ><BlessButton color="accent">manual, open = {{ open }}</BlessButton></template
+      ><BlessButton>manual, open = {{ open }}</BlessButton></template
     >
     <template #default="{ close }"
       >No light dismiss. <BlessButton size="sm" @click="close">close</BlessButton></template

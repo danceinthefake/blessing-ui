@@ -12,7 +12,7 @@ import ButtonStates from "../demos/ButtonStates.vue";
 
 <p class="bless-lead">Button or anchor</p>
 
-Three variants, one job each: **solid** is the action, **outline** the alternative beside it, **ghost** the tertiary thing you'd otherwise make a link. `color="accent"` for the one thing the screen is for, `danger` for destructive, `text` (default) for the rest. `type` defaults to `button`, so a button inside a form doesn't submit by accident — say `type="submit"` when it should.
+Three variants, one job each: **solid** is the action, **outline** the alternative beside it, **ghost** the tertiary thing you'd otherwise make a link. Colour means chosen: every button is ink at rest and fills with the accent while pressed, so the main action stands out by being **solid**, not by colour. `color="accent"` is for a button that shows something already chosen (the selected segment of a group); `danger` for destructive; `text` (default) for the rest. `type` defaults to `button`, so a button inside a form doesn't submit by accident — say `type="submit"` when it should.
 
 `href` renders an `<a>` (or your [router's link](../guide/install#with-a-router)) with the same look; `disabled` on a link is enforced — no navigation, out of the tab order. `loading` shows a spinner, sets `aria-busy` and disables. `block` fills the container; `icon` makes the padding square for an icon-only button — give it an `aria-label`.
 

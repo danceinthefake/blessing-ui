@@ -62,7 +62,7 @@ const step = ref(1);
     <BlessInput placeholder="بحث" aria-label="بحث"><template #prefix>⌕</template></BlessInput>
     <div class="row">
       <BlessCheckbox :model-value="true">تذكرني</BlessCheckbox>
-      <BlessButton color="accent">تسجيل الدخول</BlessButton>
+      <BlessButton>تسجيل الدخول</BlessButton>
       <BlessButton variant="outline">إلغاء</BlessButton>
     </div>
   </div>

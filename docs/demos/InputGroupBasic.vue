@@ -11,7 +11,7 @@ import { BlessButton, BlessInput, BlessInputGroup } from "blessing-ui";
     </BlessInputGroup>
     <BlessInputGroup>
       <BlessInput placeholder="search episodes" aria-label="Search episodes" />
-      <template #suffix><BlessButton size="sm" color="accent">Go</BlessButton></template>
+      <template #suffix><BlessButton size="sm">Go</BlessButton></template>
     </BlessInputGroup>
     <BlessInputGroup size="sm" disabled>
       <template #prefix>¥</template>

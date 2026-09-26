@@ -8,6 +8,6 @@ import { BlessButton, BlessSpinner } from "blessing-ui";
     <BlessSpinner />
     <BlessSpinner size="lg" />
     <BlessSpinner color="accent" />
-    <BlessButton loading color="accent">saving</BlessButton>
+    <BlessButton loading>saving</BlessButton>
   </div>
 </template>

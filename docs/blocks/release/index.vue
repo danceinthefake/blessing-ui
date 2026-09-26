@@ -84,7 +84,6 @@ const releases: Release[] = [
           <template #footer
             ><BlessButton
               size="sm"
-              :color="r.soon ? 'accent' : 'text'"
               :variant="r.soon ? 'solid' : 'outline'"
               :aria-label="`${r.title} を${r.soon ? '予約' : '購入'}`"
               href="#"

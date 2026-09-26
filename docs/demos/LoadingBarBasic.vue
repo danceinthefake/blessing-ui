@@ -8,7 +8,7 @@ const brief = () => (bar.start(), setTimeout(bar.stop, 800));
 
 <template>
   <div class="row">
-    <BlessButton color="accent" @click="fake">Track a 1.8s request</BlessButton>
+    <BlessButton @click="fake">Track a 1.8s request</BlessButton>
     <BlessButton variant="outline" @click="brief">start / stop</BlessButton>
     <small>watch the top edge of the page</small>
   </div>

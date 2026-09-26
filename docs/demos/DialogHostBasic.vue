@@ -47,7 +47,7 @@ async function info() {
 
 <template>
   <div class="row">
-    <BlessButton color="accent" @click="rename">Rename…</BlessButton>
+    <BlessButton @click="rename">Rename…</BlessButton>
     <BlessButton variant="outline" @click="info">Text only</BlessButton>
     <small>result: {{ result ?? "—" }}</small>
   </div>
