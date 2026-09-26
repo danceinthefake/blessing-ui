@@ -30,10 +30,15 @@ provide(toggleGroupKey, { has, toggle, disabled: toRef(() => props.disabled) });
 .bless-toggle-group {
   display: inline-flex;
   flex-wrap: wrap;
-  gap: var(--bless-space-1);
 }
-/* fuse when grouped: toggles that are on side by side join into one plate */
-.bless-toggle-group > .bless-toggle--on + .bless-toggle--on {
-  margin-inline-start: calc(-1 * var(--bless-space-1));
+/* fuse when grouped: one plate — no gap, shared borders, and the group leans as one (.bless-lean) */
+.bless-toggle-group > .bless-toggle + .bless-toggle {
+  margin-inline-start: calc(-1 * var(--bless-border-width));
+}
+/* the chosen or focused one draws its whole edge over its neighbours' */
+.bless-toggle-group > .bless-toggle--on,
+.bless-toggle-group > .bless-toggle:focus-visible {
+  position: relative;
+  z-index: 1;
 }
 </style>
