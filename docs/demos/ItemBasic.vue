@@ -12,6 +12,12 @@ import { BlessButton, BlessItem } from "blessing-ui";
       <template #media>📀</template>
       <template #actions>→</template>
     </BlessItem>
-    <BlessItem variant="surface" size="sm" title="Staff" description="Original: 丸戸史明" />
+    <BlessItem
+      variant="surface"
+      size="sm"
+      button
+      title="Staff"
+      description="Original: 丸戸史明 · open the credits"
+    />
   </div>
 </template>
