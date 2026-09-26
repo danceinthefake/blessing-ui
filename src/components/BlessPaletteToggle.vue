@@ -37,7 +37,7 @@ const shown = computed(() => (props.showDefault ? blessPalettes : blessPalettes.
 </template>
 
 <style>
-/* five petals: each swatch is the system parallelogram in its member's colour */
+/* one swatch per palette in its member's colour: upright, leaning on attention */
 .bless-palette {
   display: inline-flex;
   gap: var(--bless-space-1);
