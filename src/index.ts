@@ -11,7 +11,7 @@ export { default as BlessSection } from "./components/BlessSection.vue";
 export { default as BlessStage } from "./components/BlessStage.vue";
 export { default as BlessSidebarNav } from "./components/BlessSidebarNav.vue";
 export type { BlessNavItem } from "./components/BlessSidebarNav.vue";
-export { useMedia } from "./composables/useMedia";
+export { useMedia, reducedMotion, scrollBehavior } from "./composables/useMedia";
 export { default as BlessBackground } from "./components/BlessBackground.vue";
 export { default as BlessCard } from "./components/BlessCard.vue";
 export { default as BlessList } from "./components/BlessList.vue";
