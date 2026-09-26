@@ -401,3 +401,16 @@ test("BlessEditor toolbar drives the Tiptap editor", async () => {
   expect(editor.isActive("bold")).toBe(true);
   editor.destroy();
 });
+
+test("BlessSpeedDial: picking an action hands focus back to the button", async () => {
+  const { default: BlessSpeedDial } = await import("./BlessSpeedDial.vue");
+  const w = mount(BlessSpeedDial, {
+    props: { actions: [{ label: "New", value: "n" }], inline: true, open: true },
+    attachTo: document.body,
+  });
+  const action = w.find(".bless-speed-dial__action");
+  (action.element as HTMLElement).focus();
+  await action.trigger("click");
+  expect(document.activeElement).toBe(w.find(".bless-speed-dial__fab").element);
+  w.unmount();
+});
