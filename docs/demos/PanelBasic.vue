@@ -9,7 +9,7 @@ import { BlessButton, BlessPanel } from "blessing-ui";
       <template #footer>updated 2019.09.25</template>
     </BlessPanel>
     <BlessPanel title="Staff" toggleable surface="surface" style="width: 300px">
-      <template #actions><BlessButton size="sm" variant="ghost">edit</BlessButton></template>
+      <template #actions><BlessButton size="sm" variant="ghost">Edit</BlessButton></template>
       原作：丸戸史明 · 監督：亀井幹太
     </BlessPanel>
   </div>

@@ -86,6 +86,12 @@ const id = useId();
   font: inherit;
   cursor: pointer;
   transform: skewX(var(--bless-skew));
+  transition:
+    opacity var(--bless-duration-slow) var(--bless-ease-in-out),
+    var(--bless-lean-transition);
+}
+.bless-panel__toggle:hover {
+  opacity: var(--bless-hover-opacity);
 }
 .bless-panel__toggle > span {
   display: inline-block;
