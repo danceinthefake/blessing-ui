@@ -22,7 +22,7 @@ const { success, info } = useToast();
       placement="right"
       @confirm="success('Published')"
     >
-      <template #trigger><BlessButton color="accent">Publish</BlessButton></template>
+      <template #trigger><BlessButton>Publish</BlessButton></template>
     </BlessConfirmPopup>
   </div>
 </template>

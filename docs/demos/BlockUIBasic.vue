@@ -19,6 +19,6 @@ function run() {
         ></BlessPanel
       >
     </BlessBlockUI>
-    <BlessButton size="sm" color="accent" @click="run">Block for 1.5s</BlessButton>
+    <BlessButton size="sm" @click="run">Block for 1.5s</BlessButton>
   </div>
 </template>

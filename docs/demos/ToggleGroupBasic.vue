@@ -13,9 +13,9 @@ const fmt = ref<string[]>(["b"]);
       <BlessToggle value="right">R</BlessToggle>
     </BlessToggleGroup>
     <BlessToggleGroup v-model="fmt" type="multiple" label="Format">
-      <BlessToggle value="b" color="accent">B</BlessToggle>
-      <BlessToggle value="i" color="accent">I</BlessToggle>
-      <BlessToggle value="u" color="accent">U</BlessToggle>
+      <BlessToggle value="b">B</BlessToggle>
+      <BlessToggle value="i">I</BlessToggle>
+      <BlessToggle value="u">U</BlessToggle>
     </BlessToggleGroup>
     <small>align: {{ align }} · fmt: {{ fmt }}</small>
   </div>

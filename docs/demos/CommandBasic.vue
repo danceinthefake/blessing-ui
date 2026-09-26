@@ -8,7 +8,7 @@ const { toast } = useToast();
 
 <template>
   <div class="row">
-    <BlessButton color="accent" @click="open = true">Command palette</BlessButton>
+    <BlessButton @click="open = true">Command palette</BlessButton>
     <span>or press <BlessKbd :keys="['⌘', 'K']" /></span>
   </div>
   <BlessCommand

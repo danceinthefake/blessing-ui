@@ -42,7 +42,7 @@ const tabs = [
       </template>
     </BlessTabs>
     <div class="news__more">
-      <BlessButton color="accent" href="#">More</BlessButton>
+      <BlessButton href="#">More</BlessButton>
     </div>
   </BlessSection>
 </template>

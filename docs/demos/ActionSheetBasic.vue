@@ -14,7 +14,7 @@ const actions = [
 
 <template>
   <div class="row">
-    <BlessButton color="accent" @click="((grid = false), (open = true))">List sheet</BlessButton>
+    <BlessButton @click="((grid = false), (open = true))">List sheet</BlessButton>
     <BlessButton variant="outline" @click="((grid = true), (open = true))">Grid sheet</BlessButton>
     <BlessActionSheet
       v-model:open="open"

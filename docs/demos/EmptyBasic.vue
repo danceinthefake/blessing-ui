@@ -6,7 +6,7 @@ import { BlessButton, BlessEmpty } from "blessing-ui";
   <div class="col" style="max-width: 480px">
     <BlessEmpty title="No episodes yet" description="New episodes appear here after broadcast.">
       <template #icon>∅</template>
-      <BlessButton color="accent" size="sm">Browse</BlessButton>
+      <BlessButton size="sm">Browse</BlessButton>
       <BlessButton variant="ghost" size="sm">Refresh</BlessButton>
     </BlessEmpty>
     <BlessEmpty variant="plain" title="Nothing found" />

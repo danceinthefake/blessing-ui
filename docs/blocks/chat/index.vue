@@ -63,7 +63,7 @@ function onEnter(e: KeyboardEvent) {
         aria-label="Message"
         @keydown.enter.exact="onEnter"
       />
-      <BlessButton type="submit" color="accent" :disabled="!draft.trim()">Send</BlessButton>
+      <BlessButton type="submit" :disabled="!draft.trim()">Send</BlessButton>
     </form>
   </div>
 </template>

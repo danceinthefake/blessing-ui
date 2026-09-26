@@ -17,7 +17,7 @@ const steps = [
       <BlessButton size="sm" variant="outline" :disabled="step === 0" @click="step--"
         >Back</BlessButton
       >
-      <BlessButton size="sm" color="accent" :disabled="step === steps.length - 1" @click="step++"
+      <BlessButton size="sm" :disabled="step === steps.length - 1" @click="step++"
         >Next</BlessButton
       >
     </div>

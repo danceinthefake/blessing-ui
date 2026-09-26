@@ -66,7 +66,7 @@ const { success } = useToast();
     </BlessPanel>
     <div class="settings__bar">
       <BlessButton variant="ghost">Discard</BlessButton>
-      <BlessButton color="accent" @click="success('Settings saved')">Save changes</BlessButton>
+      <BlessButton @click="success('Settings saved')">Save changes</BlessButton>
     </div>
     <BlessAlertDialog
       v-model="confirmDelete"

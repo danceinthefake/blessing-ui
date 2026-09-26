@@ -22,7 +22,7 @@ function onSubmit(d: FormData) {
       <BlessInput name="x" model-value="megumi" />
     </BlessField>
     <div class="row">
-      <BlessButton type="submit" color="accent">Submit</BlessButton>
+      <BlessButton type="submit">Submit</BlessButton>
       <BlessButton type="reset" variant="outline">Reset</BlessButton>
     </div>
     <small v-if="result">submitted: {{ result }}</small>

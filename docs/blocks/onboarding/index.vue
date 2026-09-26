@@ -75,7 +75,6 @@ watch(done, (d) => d && nextTick(() => doneHead.value?.$el.focus()));
         {{ form.palette }}</BlessText
       >
       <BlessButton
-        color="accent"
         @click="
           done = false;
           step = 0;

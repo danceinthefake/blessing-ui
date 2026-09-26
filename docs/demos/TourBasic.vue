@@ -21,7 +21,7 @@ const steps: BlessTourStep[] = [
 
 <template>
   <div class="col" style="max-width: 480px">
-    <BlessButton color="accent" @click="open = true">Start tour</BlessButton>
+    <BlessButton @click="open = true">Start tour</BlessButton>
     <BlessInput id="tour-search" placeholder="search…" />
     <div><BlessButton id="tour-save" variant="outline">Save</BlessButton></div>
     <BlessTour v-model:open="open" :steps />

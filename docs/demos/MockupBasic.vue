@@ -7,7 +7,7 @@ import { BlessButton, BlessMockup, BlessText } from "blessing-ui";
     <BlessMockup title="saenai.tv/news" style="width: 360px">
       <div style="padding: 16px">
         <BlessText as="p" weight="bold">Blu-ray Disc BOX</BlessText>
-        <BlessButton size="sm" color="accent">詳細</BlessButton>
+        <BlessButton size="sm">詳細</BlessButton>
       </div>
     </BlessMockup>
     <BlessMockup type="window" title="Terminal" dark style="width: 300px">

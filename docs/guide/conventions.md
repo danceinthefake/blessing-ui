@@ -49,6 +49,7 @@ Care overrides every other rule here — when looks and care disagree, care wins
 
 ## Look
 
+- **Colour means chosen.** Idle things are ink and outline; the accent appears only on what is selected, active, open, pressed or done (a checked box, the current tab, the filled part of a progress bar). The focus ring stays accent. Main buttons are solid ink and fill with the accent while pressed. `color="accent"` props remain for consumers, but the library never defaults to them at rest.
 - **Hover fades, never moves**: `opacity: var(--bless-hover-opacity)` over `var(--bless-duration-slow)`. Appearances fade in place; only state changes move (a sheet slides from its edge, a switch thumb travels).
 - **Nothing blurs.** A floating surface sits on `--bless-shadow-plate`, a 1px accent offset. Modals and sheets rely on the scrim.
 - **Type**: thin for the voice, bold tracked uppercase for the UI. Body is `--bless-text-md`; nothing smaller than `2xs` (8px) and that only on badges.

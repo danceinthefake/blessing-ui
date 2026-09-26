@@ -5,7 +5,7 @@ const open = ref(false);
 </script>
 
 <template>
-  <BlessButton color="accent" @click="open = true">Open drawer</BlessButton>
+  <BlessButton @click="open = true">Open drawer</BlessButton>
   <BlessDrawer v-model="open" title="Share">
     <BlessText as="p">Drag the handle down 80px to close.</BlessText>
     <div class="row" style="margin-top: 12px">
