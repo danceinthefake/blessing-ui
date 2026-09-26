@@ -68,21 +68,29 @@ const emit = defineEmits<{ remove: [] }>();
   width: 18px;
   height: 18px;
   object-fit: cover;
-  border-radius: var(--bless-radius-petal); /* a petal, like the chip — never a circle */
+  border-radius: var(--bless-radius-petal); /* square, like the chip — never a circle */
 }
+/* a 24px target without making the chip taller */
 .bless-chip__remove {
-  margin-inline-end: calc(-1 * var(--bless-space-1));
-  padding: 0 2px;
+  display: inline-grid;
+  place-items: center;
+  min-width: 24px;
+  min-height: 24px;
+  margin-block: -4px;
+  margin-inline-end: calc(-1 * var(--bless-space-2));
+  padding: 0;
   border: 0;
   background: none;
   color: inherit;
   font: inherit;
   line-height: 1;
-  opacity: 0.7;
   cursor: pointer;
+  transition:
+    opacity var(--bless-duration-slow) var(--bless-ease-in-out),
+    var(--bless-lean-transition);
 }
 .bless-chip__remove:hover {
-  opacity: 1;
+  opacity: var(--bless-hover-opacity);
 }
 .bless-chip__remove:focus-visible {
   outline: 2px solid var(--bless-color-accent);
