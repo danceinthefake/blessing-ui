@@ -9,6 +9,8 @@ import { BlessButton, BlessEmpty } from "blessing-ui";
       <BlessButton size="sm">Browse</BlessButton>
       <BlessButton variant="ghost" size="sm">Refresh</BlessButton>
     </BlessEmpty>
-    <BlessEmpty variant="plain" title="Nothing found" />
+    <BlessEmpty variant="plain" title="No episodes match “eriri ep.13”">
+      <BlessButton variant="ghost" size="sm">Clear search</BlessButton>
+    </BlessEmpty>
   </div>
 </template>
