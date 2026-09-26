@@ -199,9 +199,17 @@ defineExpose({ focusFirst, focusLast });
   outline: 0;
   user-select: none;
 }
+/* the item under the pointer or the keys is attention: a surface, in ink; keyboard focus keeps
+   its ring. An open submenu's item is chosen, so it takes the accent */
 .bless-menu__item:focus,
 .bless-menu__item[aria-expanded="true"] {
   background: var(--bless-color-surface);
+}
+.bless-menu__item:focus-visible {
+  outline: 2px solid var(--bless-color-accent);
+  outline-offset: -2px;
+}
+.bless-menu__item[aria-expanded="true"] {
   color: var(--bless-color-accent-text);
 }
 .bless-menu__item--danger {
