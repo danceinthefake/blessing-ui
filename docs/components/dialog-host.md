@@ -29,9 +29,8 @@ const result = await open<string>({ title, component, props, size, dismissible }
 const ok = await open({ title, text: "plain body" });
 ```
 
-The component gets your `props` plus a `close(result)` prop; `open()` resolves with that result, or `undefined` when dismissed. Mount `<BlessDialogHost />` once, at the app root.
+The component gets your `props` plus a `close(result)` prop; `open()` resolves with that result, or `undefined` when dismissed.
 
-- `useDialog().open({ title, text | component, props })` returns a promise that resolves with what `close(result)` passes; a component gets `close` as a prop.
 - Each dialog is a [Modal](./modal), with its focus handling and Esc.
 
 ## Usage
