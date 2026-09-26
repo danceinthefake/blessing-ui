@@ -23,7 +23,7 @@ provide(toggleGroupKey, { has, toggle, disabled: toRef(() => props.disabled) });
 </script>
 
 <template>
-  <div class="bless-toggle-group" role="group" :aria-label="label"><slot /></div>
+  <div class="bless-toggle-group bless-lean" role="group" :aria-label="label"><slot /></div>
 </template>
 
 <style>
@@ -31,5 +31,9 @@ provide(toggleGroupKey, { has, toggle, disabled: toRef(() => props.disabled) });
   display: inline-flex;
   flex-wrap: wrap;
   gap: var(--bless-space-1);
+}
+/* fuse when grouped: toggles that are on side by side join into one plate */
+.bless-toggle-group > .bless-toggle--on + .bless-toggle--on {
+  margin-inline-start: calc(-1 * var(--bless-space-1));
 }
 </style>
