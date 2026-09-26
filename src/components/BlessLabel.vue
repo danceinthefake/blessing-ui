@@ -40,8 +40,9 @@ defineProps<{
   opacity: 0.4;
   cursor: not-allowed;
 }
+/* ink: a required mark is a fact about the field, not a choice */
 .bless-label__required {
-  color: var(--bless-color-accent-text);
+  color: inherit;
 }
 .bless-label__hint {
   margin-inline-start: var(--bless-space-1);
