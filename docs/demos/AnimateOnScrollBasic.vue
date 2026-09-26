@@ -14,16 +14,19 @@ const { visible } = useAnimateOnScroll(el, { threshold: 0.4 });
 </template>
 
 <style scoped>
-/* an appearance fades; a 4px rise only says which way it came from */
-.aos {
-  opacity: 0;
-  translate: 0 4px;
-  transition:
-    opacity var(--bless-duration-slower) var(--bless-ease-out),
-    translate var(--bless-duration-slower) var(--bless-ease-out);
-}
-.aos[data-visible="true"] {
-  opacity: 1;
-  translate: 0 0;
+/* an appearance fades; a 4px rise only says which way it came from.
+   Hidden only when scripts run — without them the content simply shows. */
+@media (scripting: enabled) {
+  .aos {
+    opacity: 0;
+    translate: 0 4px;
+    transition:
+      opacity var(--bless-duration-slower) var(--bless-ease-out),
+      translate var(--bless-duration-slower) var(--bless-ease-out);
+  }
+  .aos[data-visible="true"] {
+    opacity: 1;
+    translate: 0 0;
+  }
 }
 </style>
