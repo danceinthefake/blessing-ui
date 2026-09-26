@@ -16,7 +16,7 @@ function check(code: string) {
   <div class="col" style="max-width: none">
     <BlessInputOTP v-model="otp" :separators="[3]" :invalid="bad" @complete="check" />
     <small>code: {{ otp || "—" }} · try 123456 · paste works</small>
-    <BlessInputOTP :length="4" :numeric="false" masked label="PIN" />
+    <BlessInputOTP :length="4" :numeric="false" masked label="Recovery code" />
     <BlessInputOTP :length="4" model-value="42" disabled />
   </div>
 </template>
