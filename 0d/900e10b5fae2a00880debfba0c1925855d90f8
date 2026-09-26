@@ -1,0 +1,23 @@
+docs/guide/tokens.md
+  s_9ec1000e308ddb::t_838c9954e4d240 38
+tokens.css
+  s_9ec1000e308ddb::t_a5f3e9b5662a43 9-13,20,25,30,207,215,223,232,241
+docs/guide/palettes.md
+  s_9ec1000e308ddb::t_b422c894ca0ade 27-31
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "0d900e10b5fae2a00880debfba0c1925855d90f8",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
