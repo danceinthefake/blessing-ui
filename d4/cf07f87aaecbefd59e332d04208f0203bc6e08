@@ -1,0 +1,24 @@
+docs/components/checkbox.md
+  s_9ec1000e308ddb::t_c1f80428151aed 14
+src/components/BlessCheckbox.vue
+  s_9ec1000e308ddb::t_c1f80428151aed 2,19-31,37,49-50
+src/components/BlessChoice.test.ts
+  s_9ec1000e308ddb::t_c1f80428151aed 3,154-163
+  s_9ec1000e308ddb::t_1690764a889968 164
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "d4cf07f87aaecbefd59e332d04208f0203bc6e08",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
