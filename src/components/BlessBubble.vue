@@ -63,7 +63,7 @@ const expanded = ref(false);
 </template>
 
 <style>
-/* flat block, one skewed corner cut (the "tail") on the sender side */
+/* a flat square plate — no tail, no cut corner; the side it sits on says who sent it */
 .bless-bubble {
   border-radius: var(--bless-radius-petal-lg);
   --_bg: var(--bless-color-surface);
@@ -79,10 +79,6 @@ const expanded = ref(false);
   font-family: var(--bless-font-sans);
   font-size: var(--bless-text-sm);
   line-height: var(--bless-leading-normal);
-  clip-path: polygon(6px 0, 100% 0, 100% 100%, 0 100%, 0 6px);
-}
-.bless-bubble--end {
-  clip-path: polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 0 100%);
 }
 .bless-bubble--accent {
   --_bg: var(--bless-color-accent);

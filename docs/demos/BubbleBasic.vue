@@ -8,7 +8,7 @@ import { BlessBubble } from "blessing-ui";
     <BlessBubble variant="outline">outline</BlessBubble>
     <BlessBubble variant="plain">plain — no box</BlessBubble>
     <BlessBubble
-      variant="accent"
+      variant="outline"
       align="end"
       :reactions="[
         { emoji: '👍', count: 3, active: true },
