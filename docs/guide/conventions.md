@@ -36,7 +36,16 @@ What holds across all 144 components. If a component breaks one of these, it's a
 - **Native element first.** `<button>`, `<dialog>`, `<details>`, `<select>`, `<input type=range|date|time|color|file>`, the Popover API. A wrapper only when the platform has no part for it.
 - **Role and name on everything composite**: menus, listboxes, tablists, grids, trees, dialogs, switches, sliders. Every icon-only control has an `aria-label`; every field is associated with its label (`BlessField` does it for you).
 - **Keyboard**: arrow keys move inside a composite (tabs, menus, trees, grids, carousels, steps — ← / → follow reading direction in RTL); `Home` / `End` jump; `Esc` closes anything that floats; `Enter` / `Space` activate. Focus ring is `2px` accent, `outline-offset: 2px`, on `:focus-visible` only.
-- **Contrast**: text tokens ≥ 4.5:1 on `bg` and `surface` in both themes; fills carry white at ≥ 3:1. `prefers-reduced-motion` zeroes every duration.
+- **Contrast**: text tokens ≥ 4.5:1 on `bg` and `surface` in both themes; fills that carry text carry it at ≥ 4.5:1 (accent, badge, info, danger). `prefers-reduced-motion` zeroes every duration.
+
+## Care
+
+Care overrides every other rule here — when looks and care disagree, care wins ([design language](https://github.com/danceinthefake/blessing-ui/blob/main/DESIGN-LANGUAGE.md)).
+
+- **Motion can always be interrupted.** Transitions reverse from where they are; nothing waits for an animation to finish before responding. Anything that moves on its own stops for the person: carousel autoplay pauses on hover and focus, toasts pause while pointed at or focused, the splash skips on click or `Esc`.
+- **Reduced motion means instant.** Durations collapse to `0s`; scripted motion (smooth scrolls, autoplay, height animation, the splash) checks `reducedMotion()` from `composables/useMedia` and skips.
+- **Contrast wins over looks.** See the contrast line under Accessibility; a palette that can't meet it changes its text token, not the rule.
+- **Undo over confirm.** If an action can be reversed, do it and offer **Undo** in a [toast](/components/toaster). Keep the [confirm dialog](/components/alert-dialog) for what truly can't be taken back.
 
 ## Look
 
