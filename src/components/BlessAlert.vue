@@ -50,10 +50,9 @@ const emit = defineEmits<{ dismiss: [] }>();
 .bless-alert {
   border-radius: var(--bless-radius);
   --_c: var(--bless-color-text);
-  position: relative;
   display: flex;
   gap: var(--bless-space-3);
-  margin-inline-start: 4px; /* room for the skewed edge */
+  border-inline-start: 4px solid var(--_c);
   padding: var(--bless-space-3) var(--bless-space-4);
   background: var(--bless-color-surface);
   font-family: var(--bless-font-sans);
@@ -75,17 +74,6 @@ const emit = defineEmits<{ dismiss: [] }>();
 }
 .bless-alert--info {
   --_c: var(--bless-color-info-text);
-}
-/* skewed edge cut, like a label */
-.bless-alert::before {
-  content: "";
-  position: absolute;
-  inset-inline-start: -4px;
-  top: 0;
-  width: 4px;
-  height: 100%;
-  background: var(--_c);
-  transform: skewX(var(--bless-skew));
 }
 .bless-alert__icon {
   flex: none;
@@ -114,7 +102,8 @@ const emit = defineEmits<{ dismiss: [] }>();
   flex: none;
   width: 24px;
   height: 24px;
-  margin: -4px -8px -4px 0;
+  margin-block: -4px;
+  margin-inline-end: -8px;
   padding: 0;
   border: 0;
   background: transparent;
