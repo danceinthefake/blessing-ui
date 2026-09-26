@@ -4,7 +4,7 @@
 import ThemeToggleBasic from "../demos/ThemeToggleBasic.vue";
 </script>
 
-Greys invert, the accent family stays, and `--bless-font-weight-thin` steps 100→300 because hairlines read thinner light-on-dark. The full list of what changes is under [Tokens → What flips](./tokens#what-flips-what-swaps).
+Greys invert, the accent fill stays while its text cut (and the danger and info text) lifts so it reads on dark greys, and `--bless-font-weight-thin` steps 100→300 because hairlines read thinner light-on-dark. The full list of what changes is under [Tokens → What flips](./tokens#what-flips-what-swaps).
 
 Follows `prefers-color-scheme` by default. Force one with `data-theme` on `<html>`:
 
