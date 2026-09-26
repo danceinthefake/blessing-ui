@@ -1,0 +1,20 @@
+docs/demos/SignaturePadBasic.vue
+  s_9ec1000e308ddb::t_2b80721f84351d 3,5,11-13
+  s_9ec1000e308ddb::t_efb14ee7d82251 14
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "3895759abad835e7f2c2e34e26c8db90b1f07340",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
