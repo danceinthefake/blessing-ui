@@ -7,13 +7,12 @@ const want = (process.argv[2] ?? "chromium,firefox,webkit").split(",");
 const base = process.argv[3] ?? "http://localhost:4173";
 const pages = [
   "/",
-  "/guide/install",
-  "/guide/tokens",
-  "/guide/dark-mode",
-  "/guide/palettes",
-  "/guide/brand",
-  "/guide/story",
-  "/guide/gestures",
+  // every guide and design page, read from disk so a moved or added page can't be missed
+  ...["guide", "design"].flatMap((dir) =>
+    readdirSync(`docs/${dir}`)
+      .filter((f) => f.endsWith(".md"))
+      .map((f) => `/${dir}/${f === "index.md" ? "" : f.replace(".md", "")}`),
+  ),
   ...readdirSync("docs/components")
     .filter((f) => f.endsWith(".md"))
     .map((f) => `/components/${f.replace(".md", "")}`),
