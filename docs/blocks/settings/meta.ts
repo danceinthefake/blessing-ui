@@ -5,6 +5,7 @@ export default {
   summary:
     "Profile, notifications and a danger zone as stacked panels with a sticky save bar — the standard account page.",
   components: [
+    "BlessForm",
     "BlessPanel",
     "BlessField",
     "BlessInput",

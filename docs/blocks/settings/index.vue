@@ -6,6 +6,7 @@ import {
   BlessButton,
   BlessCheckbox,
   BlessField,
+  BlessForm,
   BlessInput,
   BlessPanel,
   BlessSelect,
@@ -14,7 +15,7 @@ import {
   useToast,
 } from "blessing-ui";
 
-const form = reactive({
+const saved = {
   name: "加藤 恵",
   email: "megumi@example.com",
   bio: "同じクラスの、目立たない女の子。",
@@ -22,17 +23,27 @@ const form = reactive({
   emails: true,
   push: false,
   digest: true,
-});
+};
+const form = reactive({ ...saved });
 const langs = [
   { value: "ja", label: "日本語" },
   { value: "en", label: "English" },
 ];
 const confirmDelete = ref(false);
-const { success } = useToast();
+const { success, info } = useToast();
+function save() {
+  Object.assign(saved, form);
+  success("Settings saved");
+}
+function discard() {
+  Object.assign(form, saved);
+  info("Changes discarded");
+}
 </script>
 
 <template>
-  <div class="settings">
+  <!-- a form, so Enter in any field saves -->
+  <BlessForm class="settings" @submit="save">
     <BlessText as="h1" size="lg" weight="light">Settings</BlessText>
     <BlessPanel title="Profile" :level="2">
       <div class="settings__avatar">
@@ -65,8 +76,8 @@ const { success } = useToast();
       >
     </BlessPanel>
     <div class="settings__bar">
-      <BlessButton variant="ghost">Discard</BlessButton>
-      <BlessButton @click="success('Settings saved')">Save changes</BlessButton>
+      <BlessButton variant="ghost" @click="discard">Discard</BlessButton>
+      <BlessButton type="submit">Save changes</BlessButton>
     </div>
     <BlessAlertDialog
       v-model="confirmDelete"
@@ -76,7 +87,7 @@ const { success } = useToast();
     >
       Everything goes: profile, history, files. Type your password on the next screen to confirm.
     </BlessAlertDialog>
-  </div>
+  </BlessForm>
 </template>
 
 <style scoped>
