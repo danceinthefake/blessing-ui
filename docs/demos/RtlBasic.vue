@@ -25,6 +25,7 @@ const step = ref(1);
     <BlessSwitch :model-value="dir === 'rtl'" @update:model-value="dir = $event ? 'rtl' : 'ltr'">
       dir="{{ dir }}"
     </BlessSwitch>
+    <small>hover a control — it leans the other way</small>
   </div>
   <div :dir class="col" style="gap: 20px">
     <BlessBreadcrumb
@@ -51,7 +52,7 @@ const step = ref(1);
     <BlessAlert color="accent" title="تنبيه"
       >النص يبدأ من اليمين؛ الحافة الملوّنة تتبعه.</BlessAlert
     >
-    <BlessCard label="جديد" label-color="accent">
+    <BlessCard label="جديد">
       <BlessText as="p" weight="bold">صندوق بلو-راي</BlessText>
       <BlessText as="p" size="sm" muted>يصدر في 24 ديسمبر</BlessText>
     </BlessCard>
