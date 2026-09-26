@@ -32,7 +32,7 @@ const plans = [
   },
 ];
 const price = (m: number) =>
-  m === 0 ? "¥0" : `¥${(yearly.value ? Math.round(m * 10) : m).toLocaleString()}`;
+  m === 0 ? "¥0" : `¥${(yearly.value ? Math.round(m * 10) : m).toLocaleString("ja-JP")}`;
 </script>
 
 <template>

@@ -61,7 +61,7 @@ const statusColor = { paid: "success", pending: "warning", refunded: "text" } as
       <BlessSidebarNav :items="nav" active="#overview" @select="(_, e) => e.preventDefault()" />
     </aside>
     <div class="dash__main">
-      <BlessToolbar class="dash__bar">
+      <BlessToolbar label="Page actions" class="dash__bar">
         <template #start><BlessText weight="bold">Overview</BlessText></template>
         <template #end>
           <BlessButton size="sm" variant="outline">Export</BlessButton>
@@ -100,7 +100,7 @@ const statusColor = { paid: "success", pending: "warning", refunded: "text" } as
 }
 .dash__side {
   padding: var(--bless-space-6) var(--bless-space-4);
-  border-right: var(--bless-border-width) solid var(--bless-color-border);
+  border-inline-end: var(--bless-border-width) solid var(--bless-color-border);
   background: var(--bless-color-surface);
 }
 .dash__brand {
@@ -132,7 +132,7 @@ const statusColor = { paid: "success", pending: "warning", refunded: "text" } as
     align-items: center;
     gap: var(--bless-space-4);
     padding: var(--bless-space-2) var(--bless-space-4);
-    border-right: 0;
+    border-inline-end: 0;
     border-bottom: var(--bless-border-width) solid var(--bless-color-border);
     overflow-x: auto;
   }

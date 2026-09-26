@@ -119,7 +119,7 @@ function back() {
   padding: 0;
   list-style: none;
   overflow: auto;
-  border-right: var(--bless-border-width) solid var(--bless-color-border);
+  border-inline-end: var(--bless-border-width) solid var(--bless-color-border);
 }
 .inbox__from {
   font-weight: var(--bless-font-weight-normal);
@@ -160,7 +160,7 @@ function back() {
     display: none;
   }
   .inbox__list {
-    border-right: 0;
+    border-inline-end: 0;
   }
   .inbox__back {
     display: inline-flex;

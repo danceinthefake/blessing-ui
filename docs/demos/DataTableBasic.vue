@@ -61,6 +61,6 @@ const { toast } = useToast();
     <template #cell-status="{ value }">
       <BlessBadge :color="value === 'aired' ? 'success' : 'warning'">{{ value }}</BlessBadge>
     </template>
-    <template #cell-views="{ value }">{{ Number(value).toLocaleString() }}</template>
+    <template #cell-views="{ value }">{{ Number(value).toLocaleString("en-US") }}</template>
   </BlessDataTable>
 </template>
