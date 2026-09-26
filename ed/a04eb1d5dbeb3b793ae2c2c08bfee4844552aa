@@ -1,0 +1,21 @@
+src/components/BlessCarousel.vue
+  s_9ec1000e308ddb::t_c282d32b4c59de 217-220
+src/components/BlessGallery.vue
+  s_9ec1000e308ddb::t_5be2292111f7e0 198-201
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "eda04eb1d5dbeb3b793ae2c2c08bfee4844552aa",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
