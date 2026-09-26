@@ -1,0 +1,34 @@
+src/components/BlessFileInput.vue
+  s_9ec1000e308ddb::t_b6eb3de0eff9ef 63-66
+src/components/BlessTextarea.vue
+  s_9ec1000e308ddb::t_b6eb3de0eff9ef 42
+src/components/BlessTimePicker.vue
+  s_9ec1000e308ddb::t_b6eb3de0eff9ef 56
+src/components/BlessTreeSelect.vue
+  s_9ec1000e308ddb::t_4eb5c8f3160a5f 96
+src/components/BlessSelect.vue
+  s_9ec1000e308ddb::t_b6eb3de0eff9ef 40-43
+src/components/BlessMisc.test.ts
+  s_9ec1000e308ddb::t_e32436824a3cb7 192-200,204-205
+  s_9ec1000e308ddb::t_b6eb3de0eff9ef 201-203
+src/components/BlessInputNumber.vue
+  s_9ec1000e308ddb::t_b6eb3de0eff9ef 93
+src/components/BlessInput.vue
+  s_9ec1000e308ddb::t_b6eb3de0eff9ef 36-39
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "064b7fdc0505df8568d36ea11e070b7529ce8a95",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
