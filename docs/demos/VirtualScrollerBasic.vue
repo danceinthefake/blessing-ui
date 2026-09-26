@@ -23,7 +23,7 @@ const vs = useTemplateRef<{ scrollTo: (i: number) => void }>("vs");
       <template #default="{ item, index }">
         <span style="width: 3em; color: var(--bless-color-text-muted)">{{ index + 1 }}</span>
         <span style="flex: 1">{{ item.title }}</span>
-        <span>{{ item.views.toLocaleString() }}</span>
+        <span>{{ item.views.toLocaleString("en-US") }}</span>
       </template>
     </BlessVirtualScroller>
     <div class="row">

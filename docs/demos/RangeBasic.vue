@@ -15,7 +15,7 @@ const hours = ref<[number, number]>([9, 17]);
       :gap="500"
       label="Price"
       show-value
-      :format="(v) => `¥${v.toLocaleString()}`"
+      :format="(v) => `¥${v.toLocaleString('ja-JP')}`"
     />
     <BlessRange
       v-model="hours"
