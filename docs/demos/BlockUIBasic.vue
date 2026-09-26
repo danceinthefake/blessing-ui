@@ -2,7 +2,7 @@
 import { ref } from "vue";
 import { BlessBlockUI, BlessButton, BlessPanel } from "blessing-ui";
 const busy = ref(false);
-function run() {
+function rerun() {
   busy.value = true;
   setTimeout(() => (busy.value = false), 1500);
 }
@@ -11,14 +11,13 @@ function run() {
 <template>
   <div class="col" style="max-width: 360px">
     <BlessBlockUI :blocked="busy">
-      <BlessPanel title="Report"
-        >Content is inert while blocked — buttons and inputs inside can't be reached.<br /><BlessButton
-          size="sm"
-          style="margin-top: 8px"
-          >inside</BlessButton
-        ></BlessPanel
-      >
+      <BlessPanel title="Weekly report">
+        <p style="margin: 0 0 8px">Viewers 12,480 · Completion 71% · Shares 3,112</p>
+        <BlessButton size="sm" variant="outline">Export</BlessButton>
+      </BlessPanel>
     </BlessBlockUI>
-    <BlessButton size="sm" @click="run">Block for 1.5s</BlessButton>
+    <div class="row">
+      <BlessButton size="sm" @click="rerun">Re-run report</BlessButton>
+    </div>
   </div>
 </template>

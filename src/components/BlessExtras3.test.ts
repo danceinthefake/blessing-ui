@@ -226,13 +226,35 @@ test("BlessSplitButton: main click and menu select", async () => {
   expect(w.find(".bless-split__more").attributes("aria-label")).toBe("More actions");
 });
 
+test("BlessBlockUI parks focus only when it was inside; status says Busy only while blocked", async () => {
+  const outside = document.createElement("input");
+  document.body.append(outside);
+  const w = mount(BlessBlockUI, {
+    props: { blocked: false },
+    slots: { default: "<button>x</button>" },
+    attachTo: document.body,
+  });
+  expect(w.find('[role="status"]').text()).toBe("");
+  outside.focus();
+  await w.setProps({ blocked: true });
+  await w.vm.$nextTick();
+  expect(document.activeElement).toBe(outside);
+  await w.setProps({ blocked: false });
+  (w.find("button").element as HTMLButtonElement).focus();
+  await w.setProps({ blocked: true });
+  await w.vm.$nextTick();
+  expect(document.activeElement).toBe(w.find(".bless-block__overlay").element);
+  w.unmount();
+  outside.remove();
+});
+
 test("BlessBlockUI inerts content, BlessInplace swaps, BlessDeferredContent defers", async () => {
   const b = mount(BlessBlockUI, {
     props: { blocked: true },
     slots: { default: "<button>x</button>" },
   });
   expect(b.find(".bless-block__content").attributes("inert")).toBeDefined();
-  expect(b.find('[role="status"]').exists()).toBe(true);
+  expect(b.find('[role="status"]').text()).toBe("Busy");
   const i = mount(BlessInplace, {
     props: { closable: true },
     slots: { display: "view", content: "<input>" },
