@@ -1,0 +1,21 @@
+DESIGN-LANGUAGE.md
+  s_9ec1000e308ddb::t_7ed66f162549c8 28
+  s_9ec1000e308ddb::t_2b6255f10061bb 26-27,29-33
+  s_9ec1000e308ddb::t_a726e99fcdf97b 5,37,41,43,45,47-51,55,63
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "044ccf72dbed59c25d8e9b56ecd46f7d74d3aa54",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "unknown"
+      },
+      "human_author": null
+    }
+  }
+}
