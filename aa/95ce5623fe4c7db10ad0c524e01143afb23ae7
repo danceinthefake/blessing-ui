@@ -1,0 +1,28 @@
+docs/components/spinner.md
+  s_9ec1000e308ddb::t_d0efc809bdd74f 13
+docs/demos/SpinnerBasic.vue
+  s_9ec1000e308ddb::t_d0efc809bdd74f 10
+src/components/BlessSlideTransition.test.ts
+  s_9ec1000e308ddb::t_d0efc809bdd74f 1-14,17-24,27-33,35-36,38,40
+  s_9ec1000e308ddb::t_09167cbf9e36c7 15-16,25-26,34,37,39
+docs/demos/SlideTransitionBasic.vue
+  s_9ec1000e308ddb::t_d0efc809bdd74f 10,14
+src/components/BlessSpinner.vue
+  s_9ec1000e308ddb::t_d0efc809bdd74f 26,35,51
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "aa95ce5623fe4c7db10ad0c524e01143afb23ae7",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
