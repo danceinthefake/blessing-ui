@@ -8,6 +8,12 @@ const chars = ref<Character[]>([]);
 onMounted(async () => (chars.value = await mockCharacterApi.list()));
 // one modal per character, each addressable as #chara-<id>
 const open = ref<Record<string, boolean>>({});
+// the art shows the given name's first character (英 for 英梨々, not the iteration mark 々)
+const glyph = (name: string) =>
+  name
+    .split(/[\s・]/)
+    .at(-1)!
+    .charAt(0);
 </script>
 
 <template>
@@ -22,7 +28,7 @@ const open = ref<Record<string, boolean>>({});
       >
         <template #media>
           <div class="chara__art" :style="{ '--_c': c.color }" aria-hidden="true">
-            <span>{{ c.name.at(-1) }}</span>
+            <span>{{ glyph(c.name) }}</span>
           </div>
         </template>
         <BlessText as="p" weight="bold">{{ c.name }}</BlessText>
@@ -39,7 +45,7 @@ const open = ref<Record<string, boolean>>({});
     >
       <div class="chara__profile">
         <div class="chara__art chara__art--lg" :style="{ '--_c': c.color }" aria-hidden="true">
-          <span>{{ c.name.at(-1) }}</span>
+          <span>{{ glyph(c.name) }}</span>
         </div>
         <div>
           <BlessText as="p" size="xs" muted>{{ c.reading }}</BlessText>
@@ -86,10 +92,6 @@ const open = ref<Record<string, boolean>>({});
   align-items: flex-start;
 }
 @media (max-width: 800px) {
-  .chara__art--lg {
-    flex: none;
-    width: 140px;
-  }
   .chara__profile {
     flex-direction: column;
   }
