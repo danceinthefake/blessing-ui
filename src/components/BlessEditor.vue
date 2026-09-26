@@ -293,7 +293,7 @@ const defs: Record<Exclude<BlessEditorTool, "|">, Def> = {
 .bless-editor__content .tiptap blockquote {
   margin: 0;
   padding-inline-start: var(--bless-space-3);
-  border-inline-start: 3px solid var(--bless-color-accent);
+  border-inline-start: 3px solid var(--bless-color-rule);
   color: var(--bless-color-text-muted);
 }
 .bless-editor__content .tiptap code {

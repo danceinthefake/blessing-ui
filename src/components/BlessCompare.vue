@@ -62,7 +62,7 @@ const pos = defineModel<number>({ default: 50 });
 }
 .bless-compare__handle {
   position: absolute;
-  background: var(--bless-color-accent);
+  background: var(--bless-color-text);
   pointer-events: none;
 }
 .bless-compare--horizontal .bless-compare__handle {

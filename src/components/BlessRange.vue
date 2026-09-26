@@ -150,7 +150,7 @@ function setHi(e: Event) {
   border-radius: var(--bless-radius-plate);
   width: 16px;
   height: 16px;
-  background: var(--bless-color-accent);
+  background: var(--bless-color-text);
   border: 2px solid var(--bless-color-bg);
   transform: skewX(var(--bless-skew));
   cursor: grab;
@@ -160,7 +160,7 @@ function setHi(e: Event) {
   width: 16px;
   height: 16px;
   border-radius: var(--bless-radius-petal);
-  background: var(--bless-color-accent);
+  background: var(--bless-color-text);
   border: 2px solid var(--bless-color-bg);
   transform: skewX(var(--bless-skew));
   cursor: grab;
@@ -168,6 +168,12 @@ function setHi(e: Event) {
 }
 .bless-range__input:focus-visible {
   outline: 0;
+}
+.bless-range__input:active::-webkit-slider-thumb {
+  background: var(--bless-color-accent);
+}
+.bless-range__input:active::-moz-range-thumb {
+  background: var(--bless-color-accent);
 }
 .bless-range__input:focus-visible::-webkit-slider-thumb {
   outline: 2px solid var(--bless-color-accent);

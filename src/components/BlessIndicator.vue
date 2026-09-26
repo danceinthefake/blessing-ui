@@ -14,7 +14,7 @@ const props = withDefaults(
     inline?: boolean;
     label?: string;
   }>(),
-  { max: 99, color: "accent", position: "top-right", inline: true },
+  { max: 99, color: "text", position: "top-right", inline: true },
 );
 const text = computed(() =>
   typeof props.value === "number"
@@ -101,6 +101,10 @@ const show = computed(
   bottom: 0;
   left: 0;
   translate: -40% 40%;
+}
+.bless-indicator__badge--accent {
+  background: var(--bless-color-accent);
+  color: var(--bless-color-on-accent);
 }
 .bless-indicator__badge--danger {
   background: var(--bless-color-danger);

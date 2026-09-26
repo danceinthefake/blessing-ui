@@ -110,6 +110,14 @@ const onClick = (e: MouseEvent) => inactive.value && e.preventDefault();
 .bless-button:hover:not([aria-disabled]) {
   opacity: var(--bless-hover-opacity);
 }
+/* colour means chosen: ink at rest, the accent only while pressed */
+.bless-button--text:active:not([aria-disabled]),
+.bless-button--accent:active:not([aria-disabled]) {
+  border-color: var(--bless-color-accent);
+  background: var(--bless-color-accent);
+  color: var(--bless-color-on-accent);
+  opacity: 1;
+}
 .bless-button:focus-visible {
   outline: 2px solid var(--bless-color-accent);
   outline-offset: 2px;

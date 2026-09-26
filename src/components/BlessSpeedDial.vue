@@ -19,7 +19,7 @@ withDefaults(
     /** render in place instead of fixed bottom-right */
     inline?: boolean;
   }>(),
-  { direction: "up", label: "Actions", color: "accent" },
+  { direction: "up", label: "Actions", color: "text" },
 );
 const open = defineModel<boolean>("open", { default: false });
 const emit = defineEmits<{ select: [action: BlessSpeedDialAction] }>();
@@ -137,6 +137,11 @@ function onBlur(e: FocusEvent) {
 .bless-speed-dial__fab--text {
   background: var(--bless-color-text);
   color: var(--bless-color-on-text);
+}
+/* open is chosen */
+.bless-speed-dial__fab[aria-expanded="true"]:not(.bless-speed-dial__fab--danger) {
+  background: var(--bless-color-accent);
+  color: var(--bless-color-on-accent);
 }
 .bless-speed-dial__fab:hover {
   opacity: var(--bless-hover-opacity);
