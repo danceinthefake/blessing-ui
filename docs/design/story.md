@@ -16,13 +16,13 @@ The series logo is set in strokes that are all parallelograms — the same lean,
 
 ## The name
 
-In the story, the protagonist founds a doujin game circle and calls it **Blessing Software**. The name is, most likely, the heroine's: 恵 reads _Megumi_ and means blessing — the series never says so outright, but it is why her pink is the default here. A component library is the kind of thing that circle would have shipped. The circle's logo is a five-petal flower, one petal per member — soft bodies, one sharp point each. Our mark is that flower redrawn in the system's terms — five teardrop petals at the house lean, in those five colours — and each colour is a [palette](../guide/palettes) you can switch the whole library to. The circle's founder sits at the centre of the flower; his colour is a palette too, though the mark keeps its empty middle. The name and the shape are nods in that direction and nothing more — see the note at the bottom.
+In the story, the protagonist founds a doujin game circle and calls it **Blessing Software**. The name is, most likely, the heroine's: 恵 reads _Megumi_ and means blessing — the series never says so outright, but it is why her pink is the default here. A component library is the kind of thing that circle would have shipped. The circle's logo is a five-petal flower, one petal per member — soft bodies, one sharp point each. Our mark is that flower redrawn in the system's terms — five teardrop petals at the house lean, in the five members' colours — and each colour is a [palette](../guide/palettes) you can switch the whole library to. The circle's founder sits at the centre of the flower; his colour is a palette too, though the mark keeps its empty middle. The name and the shape are nods in that direction and nothing more — see the note at the bottom.
 
 ## What was kept
 
 These became the [brand](./brand):
 
-- one angle — `skewX(-10deg)`, on everything: buttons, tags, tabs, and the fields you type into
+- one angle — −10° (`--bless-lean`), now taken on attention: buttons, tags, tabs and the fields you type into lean when hovered, focused or pressed; only big type leans at rest
 - one accent on a scale of greys — the heroine's pink by default
 - thin oversized type for the voice, bold tracked uppercase for the UI
 - the fade on hover, never a bounce; appearances fade too, nothing drifts
@@ -32,7 +32,8 @@ These became the [brand](./brand):
 
 The source is a marketing site; a library has to do more. Everything below is ours:
 
-- **Accessibility.** Focus rings, ARIA roles on menus, dialogs, grids and tablists, `prefers-reduced-motion`, AA contrast on text — which meant darkening the accent one step wherever it is used as text, and the alert red too. The site had none of it.
+- **Accessibility.** Focus rings, ARIA roles on menus, dialogs, grids and tablists, `prefers-reduced-motion`, AA contrast — which meant darkening the accent one step wherever it is used as text, deepening its fills so white text on them reaches 4.5:1, lightening it for text in dark mode, and the same for the alert red. The site had none of it.
+- **A design language.** The series' six threads became six rules — lean on attention, colour means chosen, write on the page, fuse when grouped, overflow once, care over spectacle; see the [design language](./). The biggest departure from the site: its pink sat on things at rest, while here the accent appears only on what someone has chosen.
 - **Dark mode.** The same greys turned over, one token swap. Thin type steps up a weight because hairlines read thinner light-on-dark.
 - **Tokens.** Every value the site hard-coded became a `--bless-*` custom property, so the look can be retuned without touching a component.
 - **The platform.** `<dialog>`, the Popover API, `<details>`, native form controls, `Intl` dates, scroll-snap — the browser's own parts, styled rather than rebuilt.
@@ -41,11 +42,11 @@ The source is a marketing site; a library has to do more. Everything below is ou
 
 ## What was bent
 
-One thing, on purpose. The site never rounded a corner, and neither does the library — not even the parts that are round everywhere else (avatars, switches, chips, chat bubbles, thumbs). For a while those were a **petal**, a leaning plate with its two sharp tips rounded; once plates stood upright at rest the petal read as a leaf, so they went square too, and the teardrop moved to where it came from: the mark. The franchise's own film site (saenai-movie.com, 2019) went soft two years after the TV site — pill tags, underlined buttons, no skew; we kept the square and made the lean a response.
+One thing, on purpose: the lean. On the site every plate leaned all the time. Here plates stand upright at rest and lean only when someone hovers, focuses or presses them — a character shown to whoever looks, not a costume worn for everyone. Hover still fades, and now leans too. The corners stayed square, even on the parts that are round everywhere else (avatars, switches, chips, chat bubbles, thumbs); for a while those were a **petal**, a leaning plate with two rounded tips, but upright at rest it read as a leaf, so the teardrop moved to the mark. The franchise's own film site (saenai-movie.com, 2019) went soft two years after the TV site — pill tags, underlined buttons, no skew; we kept the square and made the lean a response.
 
 ## What was not taken
 
-No logo, artwork, background texture, CSS or JavaScript from the site or the series is in this repository. The visual language was studied and re-derived; the assets were left where they belong. The demo data uses character names and episode titles as flavour text — that is fan colour, not content from the site.
+No logo, artwork, background texture, CSS or JavaScript from the site or the series is in this repository. The visual language was studied and re-derived; the assets were left where they belong. Sample data in the docs uses character names and episode titles as flavour text — that is fan colour, not content from the site.
 
 ## Note
 
