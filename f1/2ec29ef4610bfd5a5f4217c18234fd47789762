@@ -1,0 +1,21 @@
+src/components/BlessExtras.test.ts
+  s_9ec1000e308ddb::t_4c327c80dc31f9 249-268
+src/components/BlessFileInput.vue
+  s_9ec1000e308ddb::t_a519b41a13aa7a 2,48-50,53-55,100,151,217,220
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "f12ec29ef4610bfd5a5f4217c18234fd47789762",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
