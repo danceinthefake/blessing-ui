@@ -51,8 +51,10 @@ test("loop=false disables ends", async () => {
     attachTo: document.body,
   });
   await nextTick();
-  expect(w.find(".bless-gallery__nav--prev").attributes("disabled")).toBeDefined();
-  expect(w.find(".bless-gallery__nav--next").attributes("disabled")).toBeUndefined();
+  // marked, not disabled: a focused arrow at the end keeps focus inside the viewer
+  expect(w.find(".bless-gallery__nav--prev").attributes("aria-disabled")).toBe("true");
+  expect(w.find(".bless-gallery__nav--prev").attributes("disabled")).toBeUndefined();
+  expect(w.find(".bless-gallery__nav--next").attributes("aria-disabled")).toBeUndefined();
   w.unmount();
 });
 
