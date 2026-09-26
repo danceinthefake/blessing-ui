@@ -12,11 +12,7 @@ import TreeTableBasic from "../demos/TreeTableBasic.vue";
 
 Rows that nest — a folder listing with sizes, a budget with sub-items — shown as a table with expandable rows. For a hierarchy without columns, use [Tree](./tree).
 
-## When to use
-
-A table whose rows can contain rows: file systems, org units, nested accounts. It renders through `BlessTable`, so columns, striping, row headers and cell slots all work the same; the first column (or `treeColumn`) gets the indent and the expand toggle. Control which rows are open with `v-model:expanded`.
-
-For a plain hierarchy without columns, `BlessTree` is lighter. For a flat table, `BlessTable` or `BlessDataTable`.
+It renders through [Table](./table), so columns, striping, row headers and cell slots all work the same. For a flat table, Table or [DataTable](./data-table).
 
 <Demo title="Basic">
   <TreeTableBasic />
