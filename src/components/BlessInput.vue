@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useFieldId, useFieldState } from "../composables/useFieldId";
+import { joinIds, useFieldId, useFieldState } from "../composables/useFieldId";
 
 defineOptions({ name: "BlessInput", inheritAttrs: false });
 
@@ -52,14 +52,21 @@ defineExpose({ id });
         :readonly
         class="bless-input__control"
         :aria-invalid="invalid || error || fs.invalid.value ? 'true' : undefined"
-        :aria-describedby="error ? errId() : description ? descId() : fs.describedby.value"
+        :aria-describedby="
+          joinIds(
+            description && descId(),
+            error && errId(),
+            fs.describedby.value,
+            $attrs['aria-describedby'] as string,
+          )
+        "
       />
       <span v-if="$slots.suffix" class="bless-input__affix bless-input__affix--suffix"
         ><slot name="suffix"
       /></span>
     </div>
+    <p v-if="description" :id="descId()" class="bless-input__description">{{ description }}</p>
     <p v-if="error" :id="errId()" class="bless-input__error" role="alert">{{ error }}</p>
-    <p v-else-if="description" :id="descId()" class="bless-input__description">{{ description }}</p>
   </div>
 </template>
 

@@ -57,3 +57,7 @@ export function useLabelFor(explicit?: string) {
     provide(key, { id, claimed: false, invalid: ref(false), describedby: ref(undefined) });
   return id;
 }
+
+/** aria-describedby from any number of ids (a control's own line, its error, the field's, one passed in) */
+export const joinIds = (...ids: (string | false | undefined | null)[]) =>
+  ids.filter(Boolean).join(" ") || undefined;

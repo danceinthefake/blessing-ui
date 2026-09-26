@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, useAttrs } from "vue";
-import { useFieldId, useFieldState } from "../composables/useFieldId";
+import { joinIds, useFieldId, useFieldState } from "../composables/useFieldId";
 
 defineOptions({ name: "BlessCheckbox", inheritAttrs: false });
 
@@ -19,15 +19,12 @@ const fs = useFieldState();
 const attrs = useAttrs();
 const invalidNow = computed(() => props.invalid || fs.invalid.value);
 // every description the box has: its own line, the field's error, and one passed in
-const describedby = computed(
-  () =>
-    [
-      props.description ? `${id()}-desc` : undefined,
-      fs.describedby.value,
-      attrs["aria-describedby"] as string | undefined,
-    ]
-      .filter(Boolean)
-      .join(" ") || undefined,
+const describedby = computed(() =>
+  joinIds(
+    props.description && `${id()}-desc`,
+    fs.describedby.value,
+    attrs["aria-describedby"] as string,
+  ),
 );
 </script>
 
