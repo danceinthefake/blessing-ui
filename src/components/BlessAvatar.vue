@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref, watch } from "vue";
+import { computed, onMounted, ref, watch } from "vue";
 
 defineOptions({ name: "BlessAvatar" });
 
@@ -10,7 +10,7 @@ const props = withDefaults(
     /** used for initials fallback */
     name?: string;
     size?: "xs" | "sm" | "md" | "lg" | "xl";
-    /** lean the frame like a plate (still a petal: soft body, sharp point) */
+    /** lean on attention like a plate — its own, or the link or button it sits in */
     lean?: boolean;
     color?: "surface" | "accent" | "text";
   }>(),
@@ -22,12 +22,18 @@ watch(
   () => props.src,
   () => (failed.value = false),
 );
+const img = ref<HTMLImageElement>();
+// server-rendered: the image can fail before the error listener exists. Read its state once mounted.
+onMounted(() => {
+  const el = img.value;
+  if (el?.complete && !el.naturalWidth) failed.value = true;
+});
 const initials = computed(() =>
   (props.name ?? "")
     .split(/\s+/)
     .filter(Boolean)
     .slice(0, 2)
-    .map((w) => w[0]!.toUpperCase())
+    .map((w) => Array.from(w)[0]!.toUpperCase()) // whole characters, not UTF-16 halves
     .join(""),
 );
 const showImg = computed(() => !!props.src && !failed.value);
@@ -36,12 +42,17 @@ const showImg = computed(() => !!props.src && !failed.value);
 <template>
   <span
     class="bless-avatar"
-    :class="[`bless-avatar--${size}`, `bless-avatar--${color}`, { 'bless-avatar--lean': lean }]"
+    :class="[
+      `bless-avatar--${size}`,
+      `bless-avatar--${color}`,
+      { 'bless-avatar--lean bless-lean': lean },
+    ]"
     :role="showImg || !(alt ?? name) ? undefined : 'img'"
     :aria-label="showImg ? undefined : (alt ?? name)"
   >
     <img
       v-if="showImg"
+      ref="img"
       :src
       :alt="alt ?? name ?? ''"
       class="bless-avatar__img"

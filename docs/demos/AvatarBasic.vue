@@ -7,9 +7,12 @@ const sizes = ["xs", "sm", "md", "lg", "xl"] as const;
 <template>
   <div class="row">
     <BlessAvatar v-for="s in sizes" :key="s" :size="s" name="Megumi Kato" />
-    <BlessAvatar name="Eriri Spencer" color="accent" />
-    <BlessAvatar name="Utaha" color="text" lean size="lg" />
-    <BlessAvatar :src="shots[0].src" name="shot" lean size="lg" />
-    <BlessAvatar src="/nope.png" name="Fallback Test" />
+  </div>
+  <div class="row" style="margin-top: 12px">
+    <BlessAvatar name="Utaha Kasumigaoka" color="text" />
+    <a href="#avatar" aria-label="Eriri's profile"
+      ><BlessAvatar :src="shots[0].src" name="Eriri Spencer" lean size="lg"
+    /></a>
+    <BlessAvatar src="/missing-photo.png" name="Michiru Hyodo" />
   </div>
 </template>
