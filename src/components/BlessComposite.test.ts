@@ -84,13 +84,40 @@ test("BlessCarousel dots, arrows, keyboard", async () => {
     attachTo: document.body,
   });
   await nextTick();
-  expect(w.findAll('[role="tab"]')).toHaveLength(3);
-  expect(w.find(".bless-carousel__arrow--prev").attributes("disabled")).toBeDefined();
+  // plain buttons, the current one marked — not tabs without panels
+  const dots = w.findAll(".bless-carousel__dot");
+  expect(dots).toHaveLength(3);
+  expect(dots[0].attributes("aria-current")).toBe("true");
+  // at an end the arrow is aria-disabled, never disabled: a focused button keeps its focus
+  const prev = w.find(".bless-carousel__arrow--prev");
+  expect(prev.attributes("aria-disabled")).toBe("true");
+  expect(prev.attributes("disabled")).toBeUndefined();
+  await prev.trigger("click");
+  expect(w.emitted("update:modelValue")).toBeUndefined();
   await w.find(".bless-carousel__arrow--next").trigger("click");
   expect(w.emitted("update:modelValue")![0]).toEqual([1]);
   await w.trigger("keydown", { key: "ArrowRight" });
   expect(w.emitted("update:modelValue")![1]).toEqual([2]);
-  expect(w.find(".bless-carousel__arrow--next").attributes("disabled")).toBeDefined();
+  expect(w.find(".bless-carousel__arrow--next").attributes("aria-disabled")).toBe("true");
+  w.unmount();
+});
+
+test("BlessCarousel autoplay has a pause button that stays paused on mouseleave", async () => {
+  vi.useFakeTimers();
+  const w = mount(BlessCarousel, {
+    props: { autoplay: 1000 },
+    slots: { default: () => [1, 2, 3].map((n) => h("div", `s${n}`)) },
+    attachTo: document.body,
+  });
+  await nextTick();
+  const pause = w.find(".bless-carousel__pause");
+  expect(pause.attributes("aria-pressed")).toBe("false");
+  await pause.trigger("click");
+  expect(pause.attributes("aria-pressed")).toBe("true");
+  await w.trigger("mouseleave");
+  vi.advanceTimersByTime(3000);
+  expect(w.emitted("update:modelValue")).toBeUndefined();
+  vi.useRealTimers();
   w.unmount();
 });
 
