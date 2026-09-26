@@ -93,6 +93,7 @@ export function useLongPress(
         ((pressing.value = false), clearTimeout(timer));
     } else ((pressing.value = false), clearTimeout(timer));
   });
+  onBeforeUnmount(() => clearTimeout(timer)); // a hold in progress must not fire after unmount
   return { pressing };
 }
 

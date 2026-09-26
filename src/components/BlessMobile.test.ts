@@ -60,6 +60,13 @@ test("useSwipe reports direction past threshold; useLongPress fires after hold",
   );
   vi.advanceTimersByTime(350);
   expect(held).toBe(1);
+  // unmounting mid-hold cancels it
+  w.element.dispatchEvent(
+    new PointerEvent("pointerdown", { clientX: 0, clientY: 0, pointerId: 3, bubbles: true }),
+  );
+  w.unmount();
+  vi.advanceTimersByTime(350);
+  expect(held).toBe(1);
   vi.useRealTimers();
 });
 
