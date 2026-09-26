@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { computed, useAttrs } from "vue";
 import { useFieldId, useFieldState } from "../composables/useFieldId";
 
 defineOptions({ name: "BlessCheckbox", inheritAttrs: false });
@@ -15,12 +16,25 @@ const props = defineProps<{
 const model = defineModel<boolean | Array<string | number>>({ default: false });
 const id = useFieldId(props);
 const fs = useFieldState();
+const attrs = useAttrs();
+const invalidNow = computed(() => props.invalid || fs.invalid.value);
+// every description the box has: its own line, the field's error, and one passed in
+const describedby = computed(
+  () =>
+    [
+      props.description ? `${id()}-desc` : undefined,
+      fs.describedby.value,
+      attrs["aria-describedby"] as string | undefined,
+    ]
+      .filter(Boolean)
+      .join(" ") || undefined,
+);
 </script>
 
 <template>
   <label
     class="bless-checkbox"
-    :class="{ 'bless-checkbox--disabled': disabled, 'bless-checkbox--invalid': invalid }"
+    :class="{ 'bless-checkbox--disabled': disabled, 'bless-checkbox--invalid': invalidNow }"
     :for="id()"
   >
     <input
@@ -32,8 +46,8 @@ const fs = useFieldState();
       :disabled
       :indeterminate
       class="bless-checkbox__input"
-      :aria-invalid="invalid || fs.invalid.value || undefined"
-      :aria-describedby="description ? `${id()}-desc` : fs.describedby.value"
+      :aria-invalid="invalidNow || undefined"
+      :aria-describedby="describedby"
     />
     <span class="bless-checkbox__box" aria-hidden="true">
       <svg viewBox="0 0 16 16" class="bless-checkbox__check"><path d="M3 8.5l3 3 7-7" /></svg>

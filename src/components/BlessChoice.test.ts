@@ -1,5 +1,6 @@
 import { mount } from "@vue/test-utils";
 import { h, nextTick } from "vue";
+import BlessField from "./BlessField.vue";
 import BlessCheckbox from "./BlessCheckbox.vue";
 import BlessRadio from "./BlessRadio.vue";
 import BlessRadioGroup from "./BlessRadioGroup.vue";
@@ -149,4 +150,15 @@ test("BlessTable stacked keeps table roles; BlessTabs ids survive values with sp
   expect(
     tabs.find(`#${CSS.escape(tab.attributes("aria-controls")!)}`).attributes("aria-labelledby"),
   ).toBe(tab.attributes("id"));
+});
+
+test("BlessCheckbox in an invalid field: red box, and both its line and the error are read", () => {
+  const w = mount(BlessField, {
+    props: { label: "Terms", error: "Required" },
+    slots: { default: () => h(BlessCheckbox, { description: "to continue" }, () => "I agree") },
+  });
+  expect(w.find(".bless-checkbox").classes()).toContain("bless-checkbox--invalid");
+  const ids = w.find("input").attributes("aria-describedby")!.split(" ");
+  expect(ids).toHaveLength(2);
+  for (const i of ids) expect(w.find(`[id="${i}"]`).exists()).toBe(true);
 });
