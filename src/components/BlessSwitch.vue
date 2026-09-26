@@ -19,7 +19,11 @@ const fs = useFieldState();
     class="bless-switch"
     :class="[
       `bless-switch--${size ?? 'md'}`,
-      { 'bless-switch--disabled': disabled, 'bless-switch--start': labelPosition === 'start' },
+      {
+        'bless-switch--disabled': disabled,
+        'bless-switch--start': labelPosition === 'start',
+        'bless-switch--invalid': fs.invalid.value,
+      },
     ]"
     :for="id()"
   >
@@ -74,7 +78,10 @@ const fs = useFieldState();
   height: var(--_h);
   background: var(--bless-color-text-muted);
   transform: skewX(var(--bless-skew));
-  transition: background var(--bless-duration-base);
+  transition:
+    background var(--bless-duration-base),
+    opacity var(--bless-duration-slow) var(--bless-ease-in-out),
+    var(--bless-lean-transition);
 }
 .bless-switch__thumb {
   border-radius: var(--bless-radius-petal);
@@ -102,6 +109,10 @@ const fs = useFieldState();
 }
 .bless-switch:hover .bless-switch__track {
   opacity: var(--bless-hover-opacity);
+}
+.bless-switch--invalid .bless-switch__track {
+  outline: 2px solid var(--bless-color-danger);
+  outline-offset: 2px;
 }
 .bless-switch--disabled {
   opacity: 0.4;
