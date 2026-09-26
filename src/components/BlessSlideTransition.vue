@@ -48,7 +48,3 @@ function leave(el: Element, done: () => void) {
     <slot />
   </Transition>
 </template>
-
-<style>
-/* the transitioned element needs its own `transition: height` — set via the duration prop on the slot root */
-</style>
