@@ -1,0 +1,31 @@
+docs/blocks/dashboard/index.vue
+  s_9ec1000e308ddb::t_6dfe34ad90b8be 64,103,135
+docs/blocks/dashboard/domain.ts
+  s_9ec1000e308ddb::t_6dfe34ad90b8be 9-11,14,17
+docs/demos/DataTableBasic.vue
+  s_9ec1000e308ddb::t_c31902a432f1d9 64
+docs/demos/RangeBasic.vue
+  s_9ec1000e308ddb::t_c3236cddf60e3a 18
+docs/blocks/inbox/index.vue
+  s_9ec1000e308ddb::t_6d0b927d4e77cb 122,163
+docs/blocks/pricing/index.vue
+  s_9ec1000e308ddb::t_6d0b927d4e77cb 35
+docs/demos/VirtualScrollerBasic.vue
+  s_9ec1000e308ddb::t_c31902a432f1d9 26
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "3c68b18bbda4bd4c113775ffa0504cc61e84fa4e",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
