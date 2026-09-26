@@ -1,0 +1,25 @@
+docs/guide/dark-mode.md
+  s_9ec1000e308ddb::t_c5651b800fd2aa 7
+docs/design/index.md
+  s_9ec1000e308ddb::t_04f580ba0e81b5 26
+docs/.vitepress/theme/index.ts
+  s_9ec1000e308ddb::t_c5651b800fd2aa 32-37
+docs/guide/conventions.md
+  s_9ec1000e308ddb::t_04f580ba0e81b5 53
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "d581339265a7b00a95a0942d5d588b652398305e",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
