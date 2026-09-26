@@ -176,7 +176,9 @@ function onKey(e: KeyboardEvent) {
   padding: 0 var(--bless-space-3);
   cursor: pointer;
 }
-.bless-listbox__option--active {
+/* the active row is where the keys or the pointer are — only shown while they are there,
+   so a list at rest doesn't show a grey row that reads as a choice */
+.bless-listbox:is(:focus-visible, :hover) .bless-listbox__option--active {
   background: var(--bless-color-surface);
 }
 .bless-listbox__option--selected {
@@ -194,6 +196,7 @@ function onKey(e: KeyboardEvent) {
   height: 16px;
   border: var(--bless-border-width) solid var(--bless-color-border);
   font-size: var(--bless-text-2xs);
+  line-height: 1;
   transform: skewX(var(--bless-skew));
 }
 .bless-listbox__option--selected .bless-listbox__check {
