@@ -18,6 +18,19 @@ export function useRovingFocus(el: Ref<HTMLElement | undefined | null>) {
     const i = list.indexOf(document.activeElement as HTMLElement);
     if (i < 0) return;
     const k = logicalKey(e);
+    // a text field keeps its caret keys: leave it only from the edge the arrow points past
+    const t = e.target as HTMLInputElement;
+    if (
+      t.matches?.("input:not([type=checkbox],[type=radio],[type=range],[type=button]), textarea")
+    ) {
+      const start = (t.selectionStart ?? 0) === 0 && (t.selectionEnd ?? 0) === 0;
+      const end = (t.selectionStart ?? 0) === t.value.length;
+      // physical ArrowLeft/Right, since the caret moves in the text's own direction
+      if (e.key === "Home" || e.key === "End") return;
+      if (e.key === "ArrowLeft" && !(getComputedStyle(t).direction === "rtl" ? end : start)) return;
+      if (e.key === "ArrowRight" && !(getComputedStyle(t).direction === "rtl" ? start : end))
+        return;
+    }
     let next = -1;
     if (k === "ArrowRight") next = (i + 1) % list.length;
     else if (k === "ArrowLeft") next = (i - 1 + list.length) % list.length;

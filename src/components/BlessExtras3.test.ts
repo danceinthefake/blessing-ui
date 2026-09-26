@@ -433,3 +433,21 @@ test("BlessDrawer is dismissible by default (Esc, backdrop), like Sheet", async 
   const off = mount(BlessDrawer, { props: { modelValue: false, dismissible: false } });
   expect(off.findComponent({ name: "BlessSheet" }).props("dismissible")).toBe(false);
 });
+
+test("BlessToolbar: arrows move the caret in a text field, and leave it only from its edge", async () => {
+  const w = mount(BlessToolbar, {
+    slots: { start: '<button>a</button><input value="abc" /><button>b</button>' },
+    attachTo: document.body,
+  });
+  const input = w.find("input").element as HTMLInputElement;
+  input.focus();
+  input.setSelectionRange(1, 1);
+  await w.find("input").trigger("keydown", { key: "ArrowRight" });
+  expect(document.activeElement).toBe(input); // caret moves, focus stays
+  await w.find("input").trigger("keydown", { key: "Home" });
+  expect(document.activeElement).toBe(input);
+  input.setSelectionRange(3, 3);
+  await w.find("input").trigger("keydown", { key: "ArrowRight" });
+  expect(document.activeElement?.textContent).toBe("b"); // at the end: on to the next tool
+  w.unmount();
+});
