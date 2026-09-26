@@ -39,11 +39,12 @@ const show = computed(
         `bless-indicator__badge--${position}`,
         { 'bless-indicator__badge--dot': !text },
       ]"
-      :aria-label="label"
-      :role="label ? 'status' : undefined"
-      :aria-hidden="label ? undefined : 'true'"
+      aria-hidden="true"
       ><span class="bless-indicator__text">{{ text }}</span></span
     >
+    <!-- the label is the text of an always-present status region, so a change is read in full
+         ("4 unread", not "4") and one that appears from zero isn't missed -->
+    <span v-if="label" class="bless-indicator__sr" role="status">{{ show ? label : "" }}</span>
   </span>
 </template>
 
@@ -51,6 +52,13 @@ const show = computed(
 .bless-indicator {
   position: relative;
   display: inline-flex;
+}
+.bless-indicator__sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
 }
 .bless-indicator--block {
   display: block;
