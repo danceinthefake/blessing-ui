@@ -61,10 +61,12 @@ const id = useId();
   letter-spacing: inherit;
   text-transform: inherit;
   cursor: pointer;
+  transition:
+    opacity var(--bless-duration-slow) var(--bless-ease-in-out),
+    var(--bless-lean-transition);
 }
-/* hover is attention, not a choice: ink */
 .bless-fieldset__toggle:hover {
-  color: var(--bless-color-text);
+  opacity: var(--bless-hover-opacity);
 }
 .bless-fieldset__toggle:focus-visible {
   outline: 2px solid var(--bless-color-accent);
@@ -77,6 +79,10 @@ const id = useId();
 }
 .bless-fieldset--collapsed .bless-fieldset__chevron {
   transform: rotate(0);
+}
+/* collapsed, it points along the line: towards the inline end */
+[dir="rtl"] .bless-fieldset--collapsed .bless-fieldset__chevron {
+  transform: rotate(180deg);
 }
 .bless-fieldset__content {
   font-size: var(--bless-text-sm);
