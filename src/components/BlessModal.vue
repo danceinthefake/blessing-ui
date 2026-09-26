@@ -53,7 +53,11 @@ watch(open, (v) => {
 watch(
   hash,
   (h) => {
-    if (props.hash) open.value = h === props.hash;
+    if (!props.hash) return;
+    // a link to #hash inside the page pushed an entry too: closing should take it off. (A deep
+    // link on load opens in onMounted instead, and closing it must not leave the site.)
+    if (h === props.hash && !open.value) pushed = true;
+    open.value = h === props.hash;
   },
   { immediate: false },
 );
