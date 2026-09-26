@@ -13,7 +13,6 @@ const items = [
   <div class="row">
     <BlessSplitButton
       label="Save"
-      color="accent"
       :items
       @click="toast('Saved')"
       @select="toast('label' in $event ? $event.label : '')"
