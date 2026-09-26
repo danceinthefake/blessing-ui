@@ -1,0 +1,23 @@
+docs/components/color-picker.md
+  s_9ec1000e308ddb::t_2a9aa6676a7cdb 13
+docs/demos/ColorPickerBasic.vue
+  s_9ec1000e308ddb::t_a20ea39709d932 13-17
+src/components/BlessColorPicker.vue
+  s_9ec1000e308ddb::t_412b232d81a067 80,108-113
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "ff3ab8be262a0d1749b7d614a5c783181bf90e1f",
+  "prompts": {},
+  "sessions": {
+    "s_9ec1000e308ddb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1be76f75-7c88-4f13-abbd-6acab906db35",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "DanceInTheFake <18014908+danceinthefake@users.noreply.github.com>"
+    }
+  }
+}
