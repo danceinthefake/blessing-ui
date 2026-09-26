@@ -214,6 +214,10 @@ defineExpose({ go, next: () => go(index.value + 1), prev: () => go(index.value -
   display: inline-block;
   transform: skewX(var(--bless-skew-counter));
 }
+/* prev sits at the inline start, so in RTL its arrow points right */
+[dir="rtl"] .bless-carousel__arrow > span {
+  transform: skewX(var(--bless-skew-counter)) scaleX(-1);
+}
 .bless-carousel__arrow--prev {
   inset-inline-start: var(--bless-space-2);
 }
