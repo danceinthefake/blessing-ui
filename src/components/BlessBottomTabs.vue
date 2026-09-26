@@ -96,7 +96,7 @@ const emit = defineEmits<{ select: [item: BlessBottomTab, e: Event] }>();
 .bless-bottom-tabs--dock {
   border-radius: var(--bless-radius-plate);
   position: fixed;
-  inset-inline-start: 50%;
+  left: 50%; /* physical on purpose: with translate -50% it centres in either direction */
   bottom: var(--bless-space-4);
   translate: -50% 0;
   gap: var(--bless-space-1);
