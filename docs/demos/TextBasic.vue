@@ -12,8 +12,6 @@ import { BlessText } from "blessing-ui";
       >xs bold wider upper — label</BlessText
     >
     <BlessText as="p" size="2xs" muted>2xs caption — ©丸戸史明・深崎暮人</BlessText>
-    <BlessText as="p" size="sm" color="accent"
-      >accent as text — a link colour that passes</BlessText
-    >
+    <BlessText as="p" size="sm" color="accent">accent text — a chosen episode: 第12話</BlessText>
   </div>
 </template>
