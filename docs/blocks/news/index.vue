@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import {
   BlessButton,
+  BlessEmpty,
   BlessList,
   BlessListItem,
   BlessSection,
@@ -12,11 +13,12 @@ import { useNews } from "./useNews";
 
 const { visible, loading, filter } = useNews();
 const tabs = [
-  { value: "all", label: "ALL" },
-  { value: "news", label: "NEWS" },
-  { value: "event", label: "EVENT" },
-  { value: "goods", label: "GOODS" },
-  { value: "onair", label: "ON AIR" },
+  // written as words: the tabs set them in capitals, and "ALL" typed in capitals can be spelled out
+  { value: "all", label: "All" },
+  { value: "news", label: "News" },
+  { value: "event", label: "Event" },
+  { value: "goods", label: "Goods" },
+  { value: "onair", label: "On air" },
 ];
 </script>
 
@@ -27,6 +29,11 @@ const tabs = [
       <template #default="{ active }">
         <template v-if="active">
           <BlessSkeleton v-if="loading" :lines="4" height="14px" />
+          <BlessEmpty
+            v-else-if="!visible.length"
+            variant="plain"
+            title="Nothing in this category yet"
+          />
           <BlessList v-else>
             <BlessListItem
               v-for="n in visible"
@@ -56,6 +63,6 @@ const tabs = [
 }
 .news__more {
   margin-top: var(--bless-space-6);
-  text-align: right;
+  text-align: end;
 }
 </style>
