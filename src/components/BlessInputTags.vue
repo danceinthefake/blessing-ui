@@ -133,10 +133,10 @@ function onKey(e: KeyboardEvent) {
   display: contents;
 }
 /* the field already leans: a chip inside adds no lean of its own (its content still
-   counter-skews, so the text stands upright), and takes the page colour to stand off the field fill */
+   counter-skews, so the text stands upright). It keeps its surface fill — the field is a line,
+   not a box, so a page-coloured chip would vanish */
 .bless-tags .bless-chip {
   transform: none;
-  background: var(--bless-color-bg);
 }
 .bless-tags__live {
   position: absolute;
