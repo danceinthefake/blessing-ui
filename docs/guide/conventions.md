@@ -16,7 +16,7 @@ What holds across all 144 components. If a component breaks one of these, it's a
 - **Override with a plain selector** — no `:deep`, no `!important`:
 
   ```css
-  .bless-button--accent {
+  .bless-button {
     letter-spacing: 0.2em;
   }
   ```
@@ -24,8 +24,9 @@ What holds across all 144 components. If a component breaks one of these, it's a
 - **Or override tokens on a subtree** when it's about values, not rules:
 
   ```css
-  .sidebar {
-    --bless-color-accent: var(--bless-color-text);
+  .dense-table {
+    --bless-lean: 0deg; /* no lean in a dense grid */
+    --bless-space-3: 8px;
   }
   ```
 
@@ -43,19 +44,22 @@ What holds across all 144 components. If a component breaks one of these, it's a
 Care overrides every other rule here — when looks and care disagree, care wins ([design language](../design/)).
 
 - **Motion can always be interrupted.** Transitions reverse from where they are; nothing waits for an animation to finish before responding. Anything that moves on its own stops for the person: carousel autoplay pauses on hover and focus, toasts pause while pointed at or focused, the splash skips on click or `Esc`.
-- **Reduced motion means instant.** Durations collapse to `0s`; scripted motion (smooth scrolls, autoplay, height animation, the splash) checks `reducedMotion()` from `composables/useMedia` and skips.
+- **Reduced motion means instant.** Durations collapse to `0s`; scripted motion (smooth scrolls, autoplay, height animation, the splash) checks `reducedMotion()` and skips. Both helpers are exported for your own code: `reducedMotion()` is `true` when the person asked for less motion, and `scrollBehavior()` returns `"smooth"` or `"auto"` accordingly — `el.scrollTo({ top: 0, behavior: scrollBehavior() })`.
 - **Contrast wins over looks.** See the contrast line under Accessibility; a palette that can't meet it changes its text token, not the rule.
 - **Undo over confirm.** If an action can be reversed, do it and offer **Undo** in a [toast](/components/toaster). Keep the [confirm dialog](/components/alert-dialog) for what truly can't be taken back.
 
-## Look
+## Design rules
 
+The six rules of the [design language](../design/), as they show in the library, then the rest of the look.
+
+- **Lean on attention.** Plates stand upright at rest and lean to `--bless-lean` (−10°, mirrored in RTL) while hovered, focused or pressed; a field leans while you write in it; a group leans as one. The focus ring stays, so the lean is never the only signal, and under reduced motion it switches without animating. Only big display type — the watermark, the mark — leans at rest.
 - **Colour means chosen.** Idle things are ink and outline; the accent appears only on what is selected, active, open, pressed or done (a checked box, the current tab, the filled part of a progress bar). The focus ring stays accent. Main buttons are solid ink and fill with the accent while pressed. `color="accent"` props remain for consumers, but the library never defaults to them at rest.
 - **Fuse when grouped.** Things that belong together share one plate: a ButtonGroup is one outline and leans as one, an InputGroup is one field, a ToggleGroup is one plate too, a chosen date range is one band. Alone, each keeps its own edge.
 - **Overflow, once.** Growth shows as outgrowing a frame: the watermark and the hanging headline spill past their section, a finished Progress bar runs past its track. At most one thing overflows per screen, or it stops meaning anything.
 - **Write on the page.** A field is a line you write on, not a box to fill in: transparent, an underline, the accent line growing under it while you write. Reading turns into writing in place — for values people mostly read, use [Inplace](/components/inplace) rather than a separate edit form.
 - **Hover fades and leans, never slides**: `opacity: var(--bless-hover-opacity)` over `var(--bless-duration-slow)`, and the plate leans to `--bless-lean` in place. Appearances fade in place; only state changes travel (a sheet slides from its edge, a switch thumb moves).
 - **Nothing blurs.** A floating surface sits on `--bless-shadow-plate`, a 1px accent offset. Modals and sheets rely on the scrim.
-- **Type**: thin for the voice, bold tracked uppercase for the UI. Body is `--bless-text-md`; nothing smaller than `2xs` (8px) and that only on badges.
+- **Type**: thin for the voice at headline size and up, bold tracked uppercase for the UI. Body is `--bless-text-md`; nothing smaller than `2xs` (8px) and that only on badges.
 
 ## Shape
 
