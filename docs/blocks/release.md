@@ -15,10 +15,10 @@ const files = Object.fromEntries(
 
 # Release
 
-<p class="bless-lead">Blu-ray / CD release cards with cover, price, date and a purchase button; the grid collapses to one column on phones.</p>
+<p class="bless-lead">Blu-ray / CD release cards with cover, price, date and a purchase button, soonest first; the grid reflows on phones.</p>
 
 <BlockDemo :files :components="meta.components" :height="meta.height" :frame="withBase('/blocks/release-frame')" />
 
 ## Into your app
 
-Copy the folder to `src/features/release/` (Nuxt: `app/features/release/`) and render `index.vue` from a page. Replace `api.ts` — if the block has one — with your real adapter; the view and the use-case don't change.
+Copy the folder to `src/features/release/` (Nuxt: `app/features/release/`) and render `index.vue` from a page. It has no data layer: the arrays at the top of `index.vue` are where your data goes.

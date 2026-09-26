@@ -3,7 +3,7 @@ export default {
   group: "App",
   order: 7,
   summary:
-    "Two-pane mail: a list with unread indicators and a reading pane with actions. Collapses to one pane on a phone with a back button.",
+    "Two-pane mail: a list with unread indicators and a reading pane whose Archive and Delete can be undone. Collapses to one pane on a phone with a back button.",
   components: [
     "BlessItem",
     "BlessIndicator",

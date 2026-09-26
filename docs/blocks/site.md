@@ -23,4 +23,4 @@ const files = Object.fromEntries(
 
 ## Into your app
 
-This is a _composition_ block — it imports the six section blocks, so copy those folders next to it: `news/`, `onair/`, `character/`, `staff/`, `release/`, `story/`. Put your key visual in the `#background` slot and swap each block's `api.ts` for your CMS.
+This is a _composition_ block — it imports the six section blocks, so copy those folders next to it: `news/`, `onair/`, `character/`, `staff/`, `release/`, `story/`. Put your key visual in the `#background` slot, swap News' and Character's `api.ts` for your CMS, and replace the arrays at the top of the other four.

@@ -3,7 +3,7 @@ export default {
   group: "App",
   order: 3,
   summary:
-    "Profile, notifications and a danger zone as stacked panels with a sticky save bar — the standard account page.",
+    "Profile, notifications and a danger zone as stacked panels in one form — Enter saves, Discard restores — with a sticky save bar.",
   components: [
     "BlessForm",
     "BlessPanel",

@@ -21,4 +21,4 @@ const files = Object.fromEntries(
 
 ## Into your app
 
-Copy the folder to `src/features/signin/` (Nuxt: `app/features/signin/`) and render `index.vue` from a page. Replace `api.ts` — if the block has one — with your real adapter; the view and the use-case don't change.
+Copy the folder to `src/features/signin/` (Nuxt: `app/features/signin/`) and render `index.vue` from a page. Replace `api.ts` with your real adapter; the view and the use-case don't change.

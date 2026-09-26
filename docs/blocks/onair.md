@@ -21,4 +21,4 @@ const files = Object.fromEntries(
 
 ## Into your app
 
-Copy the folder to `src/features/onair/` (Nuxt: `app/features/onair/`) and render `index.vue` from a page. Replace `api.ts` — if the block has one — with your real adapter; the view and the use-case don't change.
+Copy the folder to `src/features/onair/` (Nuxt: `app/features/onair/`) and render `index.vue` from a page. It has no data layer: the arrays at the top of `index.vue` are where your data goes.

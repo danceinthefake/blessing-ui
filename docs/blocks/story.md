@@ -15,10 +15,10 @@ const files = Object.fromEntries(
 
 # Story
 
-<p class="bless-lead">Episode list: number, title, air date and a synopsis that expands — with a synopsis-free intro above.</p>
+<p class="bless-lead">Episode list: number, title, air date and a synopsis that expands, under a short premise.</p>
 
 <BlockDemo :files :components="meta.components" :height="meta.height" :frame="withBase('/blocks/story-frame')" />
 
 ## Into your app
 
-Copy the folder to `src/features/story/` (Nuxt: `app/features/story/`) and render `index.vue` from a page. Replace `api.ts` — if the block has one — with your real adapter; the view and the use-case don't change.
+Copy the folder to `src/features/story/` (Nuxt: `app/features/story/`) and render `index.vue` from a page. It has no data layer: the arrays at the top of `index.vue` are where your data goes.
