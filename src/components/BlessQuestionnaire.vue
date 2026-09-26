@@ -152,7 +152,7 @@ function onKey(e: KeyboardEvent) {
       <BlessButton v-if="q.skippable" variant="outline" size="sm" @click="skip">
         {{ L.skip }}
       </BlessButton>
-      <BlessButton type="submit" color="accent" size="sm">
+      <BlessButton type="submit" size="sm">
         {{ last ? L.submit : L.next }}
       </BlessButton>
     </div>

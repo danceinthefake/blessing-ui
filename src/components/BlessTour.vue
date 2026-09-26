@@ -110,7 +110,7 @@ const hole = computed(() => {
           <BlessButton size="sm" variant="outline" :disabled="step === 0" @click="step--">{{
             L.prev
           }}</BlessButton>
-          <BlessButton size="sm" color="accent" @click="last ? close(true) : step++">{{
+          <BlessButton size="sm" @click="last ? close(true) : step++">{{
             last ? L.done : L.next
           }}</BlessButton>
         </div>

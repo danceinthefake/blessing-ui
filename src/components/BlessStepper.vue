@@ -50,9 +50,7 @@ watch(current, () => nextTick(() => panel.value?.focus()));
         <BlessButton variant="outline" size="sm" :disabled="current === 0" @click="prev">{{
           L().prev
         }}</BlessButton>
-        <BlessButton color="accent" size="sm" @click="next">{{
-          last() ? L().finish : L().next
-        }}</BlessButton>
+        <BlessButton size="sm" @click="next">{{ last() ? L().finish : L().next }}</BlessButton>
       </slot>
     </div>
   </div>
