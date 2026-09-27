@@ -10,6 +10,8 @@ const sh = (cmd, cwd = here) => execSync(cmd, { cwd, stdio: "inherit" });
 
 rmSync(resolve(here, "node_modules"), { recursive: true, force: true });
 rmSync(resolve(here, "dist"), { recursive: true, force: true });
+// a tarball from an earlier version would otherwise be the one found below
+for (const f of readdirSync(here)) if (f.endsWith(".tgz")) rmSync(resolve(here, f));
 sh("pnpm pack --pack-destination e2e/consumer", root);
 const tgz = readdirSync(here).find((f) => f.endsWith(".tgz"));
 sh(`pnpm install --ignore-workspace --no-lockfile`);
