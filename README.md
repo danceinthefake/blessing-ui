@@ -352,7 +352,7 @@ Design principles and roadmap: [DESIGN.md](./DESIGN.md).
 
 ## License
 
-Code and design are [MIT](LICENSE).
+Copyright © 2026 DanceInTheFake. Code and design are [MIT](LICENSE).
 
 The name of the anime this project takes its look from, its characters and its artwork belong to their respective owners and are not covered by this licence. Blessing UI is an independent fan project — see the [story](docs/design/story.md).
 

@@ -54,6 +54,11 @@ export default defineConfig({
     ],
   ],
   themeConfig: {
+    footer: {
+      message:
+        "Released under the MIT License. Character names and artwork belong to their owners.",
+      copyright: "Copyright © 2026 DanceInTheFake",
+    },
     logo: "/logo.svg",
     siteTitle: "Blessing",
     nav: [
