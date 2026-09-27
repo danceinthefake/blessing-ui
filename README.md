@@ -4,6 +4,8 @@
 
 # Blessing UI
 
+[![npm](https://img.shields.io/npm/v/blessing-ui)](https://www.npmjs.com/package/blessing-ui) [![ci](https://github.com/danceinthefake/blessing-ui/actions/workflows/ci.yml/badge.svg)](https://github.com/danceinthefake/blessing-ui/actions/workflows/ci.yml)
+
 Vue 3 component library and design tokens. Grey-scale UI with one accent that appears only on what someone has chosen; square, upright plates that lean when you engage them; thin oversized watermark type; opacity-fade hovers. The rules come from a [design language](docs/design/index.md); the look was re-derived from one anime's official site, ideas only — the [story](docs/design/story.md) says which, what was kept, and what was not taken.
 
 Docs, with every component live: **[ui.blessing.id](https://ui.blessing.id)**
