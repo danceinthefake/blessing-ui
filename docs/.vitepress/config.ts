@@ -41,10 +41,7 @@ export default defineConfig({
         content: "Themed Flat Interface. Flat by design, raised with Vue, blessed for everyone.",
       },
     ],
-    [
-      "meta",
-      { property: "og:image", content: "https://danceinthefake.github.io/blessing-ui/og.png" },
-    ],
+    ["meta", { property: "og:image", content: "https://ui.blessing.id/og.png" }],
     ["meta", { name: "twitter:card", content: "summary_large_image" }],
     ["link", { rel: "preconnect", href: "https://fonts.googleapis.com" }],
     ["link", { rel: "preconnect", href: "https://fonts.gstatic.com", crossorigin: "" }],

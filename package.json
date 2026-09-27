@@ -1,8 +1,22 @@
 {
   "name": "blessing-ui",
   "version": "0.0.1",
-  "description": "Blessing UI \u2014 Themed Flat Interface. Flat by design, raised with Vue, blessed for everyone.",
+  "description": "Blessing UI — Themed Flat Interface. Flat by design, raised with Vue, blessed for everyone.",
+  "keywords": [
+    "components",
+    "design-system",
+    "design-tokens",
+    "ui",
+    "vue",
+    "vue3"
+  ],
+  "homepage": "https://ui.blessing.id",
+  "bugs": "https://github.com/danceinthefake/blessing-ui/issues",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danceinthefake/blessing-ui.git"
+  },
   "files": [
     "dist",
     "tokens.css",
