@@ -259,6 +259,12 @@ const cols = computed(() => (props.mode === "inline" ? 4 : 4));
 .bless-diff .bless-diff__table td.bless-diff__cell--del {
   background: color-mix(in srgb, var(--bless-color-danger) 18%, var(--bless-color-bg));
 }
+/* muted numbers fall under 4.5:1 on a tint: full-strength text there */
+.bless-diff .bless-diff__row--add > .bless-diff__no,
+.bless-diff .bless-diff__row--del > .bless-diff__no,
+.bless-diff .bless-diff__table td.bless-diff__cell--add + .bless-diff__no {
+  color: var(--bless-color-text);
+}
 .bless-diff .bless-diff__table td.bless-diff__cell--empty {
   background: var(--bless-color-surface);
 }
