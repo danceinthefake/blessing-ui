@@ -123,6 +123,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         text: "Zoned meter: semi-circle or linear",
       },
       {
+        name: "BlessGantt",
+        slug: "gantt",
+        text: "Bars on a time axis (read-only)",
+      },
+      {
         name: "BlessSliderCaptcha",
         slug: "slider-captcha",
         text: "Slide the piece into the gap: a human check",

@@ -2949,6 +2949,83 @@
   ],
   "exposed": []
  },
+ "BlessGantt": {
+  "props": [
+   {
+    "name": "tasks",
+    "type": "BlessGanttTask[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "dayWidth",
+    "type": "number | undefined",
+    "required": false,
+    "default": "28",
+    "description": "width of one day in px; under 12 the day numbers are left out"
+   },
+   {
+    "name": "rowHeight",
+    "type": "number | undefined",
+    "required": false,
+    "default": "36",
+    "description": ""
+   },
+   {
+    "name": "from",
+    "type": "string | undefined",
+    "required": false,
+    "description": "first and last day shown; defaults to the span of the tasks"
+   },
+   {
+    "name": "to",
+    "type": "string | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "locale",
+    "type": "string | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "labelWidth",
+    "type": "number | undefined",
+    "required": false,
+    "default": "160",
+    "description": "width of the label column in px"
+   },
+   {
+    "name": "label",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Schedule\"",
+    "description": ""
+   },
+   {
+    "name": "selected",
+    "type": "string | number | null | undefined",
+    "required": false,
+    "default": "null",
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "select",
+    "type": "[task: BlessGanttTask]",
+    "description": ""
+   },
+   {
+    "name": "update:selected",
+    "type": "[value: string | number | null]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessGauge": {
   "props": [
    {
