@@ -132,6 +132,7 @@ export { default as BlessSpeedDial } from "./components/BlessSpeedDial.vue";
 export type { BlessSpeedDialAction } from "./components/BlessSpeedDial.vue";
 export { default as BlessVirtualScroller } from "./components/BlessVirtualScroller.vue";
 export { default as BlessOrderList } from "./components/BlessOrderList.vue";
+export { default as BlessHeatmapCalendar } from "./components/BlessHeatmapCalendar.vue";
 export { default as BlessSortable } from "./components/BlessSortable.vue";
 export { useSortable, moveItem, nearestIndex } from "./composables/useSortable";
 export { default as BlessPickList } from "./components/BlessPickList.vue";

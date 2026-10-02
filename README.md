@@ -10,7 +10,7 @@ Vue 3 component library and design tokens. Grey-scale UI with one accent that ap
 
 Docs, with every component live: **[ui.blessing.id](https://ui.blessing.id)**
 
-- 145 components — from button to data table to chat — styled only through `--bless-*` custom properties, no Tailwind dependency
+- 146 components — from button to data table to chat — styled only through `--bless-*` custom properties, no Tailwind dependency
 - Native platform first: `<dialog>`, Popover API, `<details>`, native form controls, `Intl` dates, scroll-snap — no positioning, date or table library
 - Accessible defaults: focus rings, ARIA tablist/dialog/tables, `prefers-reduced-motion`
 - ESM, tree-shakable, `vue` as the only required peer (`@tiptap/vue-3` optional, for `BlessEditor`). One component (`BlessButton`) costs ~1 KB gzip of JS and ~2.6 KB of CSS (tokens + its own styles); everything is ~64 KB + 27 KB. CSS is split per component and pulled in by the import, so you never pay for styles you don't use
@@ -86,7 +86,7 @@ import {
 
 ## Components
 
-145 components across eight groups. Every one styles itself from `--bless-*` tokens and ships with a test and a docs page.
+146 components across eight groups. Every one styles itself from `--bless-*` tokens and ships with a test and a docs page.
 
 ### Primitives
 
@@ -156,6 +156,7 @@ import {
 | `BlessTreeSelect`                  | Tree in a popover                                           | `v-model` id or id[], `nodes`, `multiple`, `leafOnly`, `size`; emits `select`                                                                              |
 | `BlessInputMask`                   | Pattern-masked `BlessInput`                                 | `v-model` masked, `mask` (`#` digit `A` letter `*` either), `placeholder`; emits `update:raw`                                                              |
 | `BlessOrderList`                   | Reorderable list                                            | `v-model` items, `rowKey`, `buttons`; drag, ↑↓, Alt+arrows; emits `move`; `#default="{item,index}"`                                                        |
+| `BlessHeatmapCalendar`             | Activity grid, one square per day                           | `data` {iso: count}, `end`, `weeks`, `weekStart`, `levels`, `max`, `locale`, `unit`, `legend`; `v-model` picked day; arrows move by day / week             |
 | `BlessSortable`                    | Reorder a list or grid by drag handle or keyboard           | `v-model` items, `rowKey`, `label`, `columns`; drag, Space + arrows, Esc cancels; emits `move`; `#default="{item,index}"`                                  |
 | `BlessPickList`                    | Transfer between two listboxes                              | `v-model:source`, `v-model:target`, `sourceLabel`, `targetLabel`, `rows`                                                                                   |
 | `BlessSelect`                      | Styled native `<select>` (picker styled too on Chrome 135+) | `v-model`, `options` (groups ok), `placeholder`, `size`, `error`                                                                                           |

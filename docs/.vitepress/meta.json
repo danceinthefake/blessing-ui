@@ -2825,6 +2825,93 @@
   ],
   "exposed": []
  },
+ "BlessHeatmapCalendar": {
+  "props": [
+   {
+    "name": "data",
+    "type": "Record<string, number> | undefined",
+    "required": false,
+    "default": "{}",
+    "description": "counts by ISO date: `{ \"2026-09-27\": 4 }`; missing days are 0"
+   },
+   {
+    "name": "end",
+    "type": "string | undefined",
+    "required": false,
+    "description": "last day shown, ISO; defaults to today"
+   },
+   {
+    "name": "weeks",
+    "type": "number | undefined",
+    "required": false,
+    "default": "53",
+    "description": ""
+   },
+   {
+    "name": "weekStart",
+    "type": "0 | 1 | undefined",
+    "required": false,
+    "default": "1",
+    "description": "first row of each column: 0 Sunday, 1 Monday"
+   },
+   {
+    "name": "levels",
+    "type": "number | undefined",
+    "required": false,
+    "default": "4",
+    "description": "intensity steps above zero"
+   },
+   {
+    "name": "max",
+    "type": "number | undefined",
+    "required": false,
+    "description": "the count that fills the darkest step; defaults to the largest value in `data`"
+   },
+   {
+    "name": "locale",
+    "type": "string | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "unit",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"contribution\"",
+    "description": "what is counted, singular: \"contribution\""
+   },
+   {
+    "name": "legend",
+    "type": "boolean | undefined",
+    "required": false,
+    "default": "true",
+    "description": ""
+   },
+   {
+    "name": "label",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Activity\"",
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "string | null | undefined",
+    "required": false,
+    "default": "null",
+    "description": "the picked day"
+   }
+  ],
+  "events": [
+   {
+    "name": "update:modelValue",
+    "type": "[value: string | null]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessHoverCard": {
   "props": [
    {

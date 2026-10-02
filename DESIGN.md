@@ -246,7 +246,7 @@ Not copied from another library's list: gaps in direct manipulation, time and nu
 **Tier 1 — foundation (build first)**
 
 - [x] `useSortable` + `BlessSortable` (M) ✅ — drag to reorder a list or grid; keyboard reorder (Space grabs, arrows move, Space drops, Esc cancels) with a live-region announcement. Built on `useGesture`. `BlessOrderList` is button-only today and can adopt it. Unlocks Kanban and the reorderable grid.
-- [ ] `BlessHeatmapCalendar` (S) — contribution-graph grid, one square per day, keyboard-navigable, tooltip per cell, `Intl` weekday and month labels. Needs no new interaction core.
+- [x] `BlessHeatmapCalendar` (S) ✅ — contribution-graph grid, one square per day, keyboard-navigable, tooltip per cell, `Intl` weekday and month labels. Needs no new interaction core.
 - [ ] `BlessMention` (M) — `@` / `#` trigger inside a textarea, suggestions in a `BlessPopover`, inserts a token. Chat and editor use.
 
 **Tier 2 — direct manipulation**
