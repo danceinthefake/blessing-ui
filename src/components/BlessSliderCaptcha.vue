@@ -23,7 +23,9 @@ const W = ref(320);
 const H = () => Math.round(W.value / 2);
 const PIECE = 0.16; // piece width, as a fraction of the stage
 const f = ref(0); // slider position, 0..1 of the track
-const gap = ref({ at: 0.5, y: 0.3 }); // gap position: fraction of the track, fraction of the free height
+// gap position: fraction of the track, fraction of the free height. Fixed until mounted, so the
+// server-rendered page matches what the browser first builds; shuffled on mount.
+const gap = ref({ at: 0.6, y: 0.3 });
 const dragging = ref(false);
 const failed = ref(false);
 const live = ref("");
@@ -32,10 +34,10 @@ let started = 0;
 function shuffle() {
   gap.value = { at: 0.35 + Math.random() * 0.55, y: 0.1 + Math.random() * 0.5 };
 }
-shuffle();
 
 let ro: ResizeObserver | undefined;
 onMounted(() => {
+  shuffle();
   const el = stage.value;
   if (!el) return;
   W.value = el.clientWidth || 320;

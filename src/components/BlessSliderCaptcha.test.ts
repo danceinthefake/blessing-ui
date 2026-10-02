@@ -7,7 +7,7 @@ beforeAll(() => {
 });
 
 let w: VueWrapper<any>;
-const mk = (props = {}) => {
+const mk = async (props = {}) => {
   w = mount(BlessSliderCaptcha, {
     props: {
       verified: false,
@@ -16,6 +16,7 @@ const mk = (props = {}) => {
     },
     attachTo: document.body,
   });
+  await nextTick(); // the gap is shuffled on mount and rendered a tick later
   return w;
 };
 afterEach(() => {
@@ -42,8 +43,16 @@ async function dragTo(to: number) {
   await ptr(handle().element, "pointerup", to * travel);
 }
 
+test("the gap is the same on the server and on first render, and moves on mount", async () => {
+  const spy = vi.spyOn(Math, "random").mockReturnValue(0);
+  await mk();
+  expect(spy).toHaveBeenCalled(); // shuffled on mount, not while setting up
+  const first = (w.find(".bless-captcha__gap").element as HTMLElement).style.left;
+  expect(first).toBe(`${0.35 * 320 * (1 - 0.16)}px`);
+});
+
 test("dropping the piece on the gap verifies and locks the widget", async () => {
-  mk();
+  await mk();
   await dragTo(gapAt() + 0.01);
   expect(w.props("verified")).toBe(true);
   expect(w.emitted("verify")).toHaveLength(1);
@@ -54,7 +63,7 @@ test("dropping the piece on the gap verifies and locks the widget", async () => 
 });
 
 test("a miss fails, resets the slider and moves the gap", async () => {
-  mk();
+  await mk();
   const before = gapAt();
   await dragTo(before + 0.2 > 1 ? before - 0.2 : before + 0.2);
   expect(w.props("verified")).toBe(false);
@@ -65,7 +74,7 @@ test("a miss fails, resets the slider and moves the gap", async () => {
 });
 
 test("keyboard: arrows move, Shift moves further, Enter submits", async () => {
-  mk();
+  await mk();
   await handle().trigger("keydown", { key: "ArrowRight" });
   expect(handle().attributes("aria-valuenow")).toBe("1");
   await handle().trigger("keydown", { key: "ArrowRight", shiftKey: true });
@@ -84,7 +93,7 @@ test("keyboard: arrows move, Shift moves further, Enter submits", async () => {
 });
 
 test("reset unlocks and starts over", async () => {
-  mk({ verified: true });
+  await mk({ verified: true });
   await handle().trigger("keydown", { key: "ArrowRight" });
   expect(handle().attributes("aria-valuenow")).toBe("0"); // locked
   w.vm.reset();
@@ -95,7 +104,7 @@ test("reset unlocks and starts over", async () => {
 });
 
 test("tolerance widens what counts; an image src becomes the background", async () => {
-  mk({ tolerance: 0.5, src: "pic.png" });
+  await mk({ tolerance: 0.5, src: "pic.png" });
   expect(w.find(".bless-captcha__stage").attributes("style")).toContain("pic.png");
   await dragTo(Math.min(1, gapAt() + 0.3));
   expect(w.props("verified")).toBe(true);
