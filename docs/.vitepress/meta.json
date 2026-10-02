@@ -7167,6 +7167,80 @@
   ],
   "exposed": []
  },
+ "BlessSwipeDeck": {
+  "props": [
+   {
+    "name": "rowKey",
+    "type": "((item: T) => string | number) | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "label",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Cards\"",
+    "description": ""
+   },
+   {
+    "name": "controls",
+    "type": "boolean | undefined",
+    "required": false,
+    "default": "true",
+    "description": "show the buttons under the deck"
+   },
+   {
+    "name": "threshold",
+    "type": "number | undefined",
+    "required": false,
+    "default": "100",
+    "description": "how far (px) a drag must travel to count"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<Record<\"undo\" | BlessSwipeDecision, string>> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "T[] | undefined",
+    "required": false,
+    "default": "[]",
+    "description": "the cards still to decide, top of the deck first"
+   }
+  ],
+  "events": [
+   {
+    "name": "undo",
+    "type": "[item: T]",
+    "description": ""
+   },
+   {
+    "name": "decide",
+    "type": "[item: T, decision: BlessSwipeDecision]",
+    "description": ""
+   },
+   {
+    "name": "update:modelValue",
+    "type": "[value: T[]]",
+    "description": ""
+   }
+  ],
+  "slots": [
+   {
+    "name": "card",
+    "type": "{ item: T; index: number; }",
+    "description": ""
+   },
+   {
+    "name": "empty",
+    "type": "{}",
+    "description": ""
+   }
+  ],
+  "exposed": []
+ },
  "BlessSwitch": {
   "props": [
    {

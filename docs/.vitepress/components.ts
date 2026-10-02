@@ -108,6 +108,11 @@ export const groups: { title: string; items: Entry[] }[] = [
       { name: "BlessInputMask", slug: "input-mask", text: "Pattern-masked input (# A *)" },
       { name: "BlessOrderList", slug: "order-list", text: "Drag / button / Alt+arrow reorder" },
       {
+        name: "BlessSwipeDeck",
+        slug: "swipe-deck",
+        text: "Stack of cards to accept, reject or skip, with undo",
+      },
+      {
         name: "BlessHotspots",
         slug: "hotspots",
         text: "Numbered pins on an image or diagram, with popovers",
