@@ -2991,6 +2991,85 @@
   "slots": [],
   "exposed": []
  },
+ "BlessHotspots": {
+  "props": [
+   {
+    "name": "src",
+    "type": "string | undefined",
+    "required": false,
+    "description": "an image to pin onto; leave out and use the default slot for a diagram or anything else"
+   },
+   {
+    "name": "alt",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"\"",
+    "description": ""
+   },
+   {
+    "name": "editable",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": "click the stage to add a pin, drag to move one, Delete to remove it, arrows to nudge it"
+   },
+   {
+    "name": "placement",
+    "type": "\"top\" | \"bottom\" | \"left\" | \"right\" | undefined",
+    "required": false,
+    "default": "\"top\"",
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "S[] | undefined",
+    "required": false,
+    "default": "[]",
+    "description": ""
+   },
+   {
+    "name": "active",
+    "type": "S[\"id\"] | null | undefined",
+    "required": false,
+    "default": "null",
+    "description": "id of the pin whose popover is open"
+   }
+  ],
+  "events": [
+   {
+    "name": "remove",
+    "type": "[spot: S]",
+    "description": ""
+   },
+   {
+    "name": "add",
+    "type": "[spot: S]",
+    "description": ""
+   },
+   {
+    "name": "update:modelValue",
+    "type": "[value: S[]]",
+    "description": ""
+   },
+   {
+    "name": "update:active",
+    "type": "[value: S[\"id\"] | null]",
+    "description": ""
+   }
+  ],
+  "slots": [
+   {
+    "name": "default",
+    "type": "{}",
+    "description": ""
+   },
+   {
+    "name": "spot",
+    "type": "{ spot: S; index: number; }",
+    "description": ""
+   }
+  ],
+  "exposed": []
+ },
  "BlessHoverCard": {
   "props": [
    {

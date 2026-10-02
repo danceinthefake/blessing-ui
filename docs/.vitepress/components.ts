@@ -108,6 +108,11 @@ export const groups: { title: string; items: Entry[] }[] = [
       { name: "BlessInputMask", slug: "input-mask", text: "Pattern-masked input (# A *)" },
       { name: "BlessOrderList", slug: "order-list", text: "Drag / button / Alt+arrow reorder" },
       {
+        name: "BlessHotspots",
+        slug: "hotspots",
+        text: "Numbered pins on an image or diagram, with popovers",
+      },
+      {
         name: "BlessCropper",
         slug: "cropper",
         text: "Crop and rotate an image, export the pixels",

@@ -132,6 +132,8 @@ export { default as BlessSpeedDial } from "./components/BlessSpeedDial.vue";
 export type { BlessSpeedDialAction } from "./components/BlessSpeedDial.vue";
 export { default as BlessVirtualScroller } from "./components/BlessVirtualScroller.vue";
 export { default as BlessOrderList } from "./components/BlessOrderList.vue";
+export { default as BlessHotspots } from "./components/BlessHotspots.vue";
+export type { BlessHotspot } from "./components/BlessHotspots.vue";
 export { default as BlessCropper } from "./components/BlessCropper.vue";
 export type { BlessCropRect } from "./components/BlessCropper.vue";
 export { initialBox, moveBox, resizeBox, scaleBox } from "./composables/cropBox";

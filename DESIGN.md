@@ -253,7 +253,7 @@ Not copied from another library's list: gaps in direct manipulation, time and nu
 
 - [x] `BlessKanban` (M) ✅ — columns of cards, drag between columns, WIP limits; on `useSortable`.
 - [x] `BlessCropper` (L) ✅ — crop and rotate an image with a square handle frame; emits a crop rect or a `Blob`. Pairs with `BlessUploader` and `BlessImg`.
-- [ ] `BlessHotspots` (M) — pins on an image or diagram with popovers, editable or read-only, positions in percent.
+- [x] `BlessHotspots` (M) ✅ — pins on an image or diagram with popovers, editable or read-only, positions in percent.
 - [ ] `BlessSwipeDeck` (M) — stack of cards, swipe or keys to accept, reject or skip, with undo; on `useGesture`.
 - [ ] `BlessSliderCaptcha` (S) — drag a puzzle piece into the gap. A human-check widget, not security.
 
