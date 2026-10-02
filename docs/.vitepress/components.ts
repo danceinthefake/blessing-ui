@@ -148,6 +148,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         text: "Seamless scrolling ticker that pauses",
       },
       {
+        name: "BlessMasonry",
+        slug: "masonry",
+        text: "Variable-height cards in columns",
+      },
+      {
         name: "BlessSliderCaptcha",
         slug: "slider-captcha",
         text: "Slide the piece into the gap: a human check",

@@ -152,6 +152,7 @@ export type { DiffRow } from "./composables/diffLines";
 export { default as BlessCodeBlock } from "./components/BlessCodeBlock.vue";
 export type { BlessCodeFile } from "./components/BlessCodeBlock.vue";
 export { default as BlessMarquee } from "./components/BlessMarquee.vue";
+export { default as BlessMasonry } from "./components/BlessMasonry.vue";
 export { default as BlessSliderCaptcha } from "./components/BlessSliderCaptcha.vue";
 export { default as BlessSwipeDeck } from "./components/BlessSwipeDeck.vue";
 export type { BlessSwipeDecision } from "./components/BlessSwipeDeck.vue";
