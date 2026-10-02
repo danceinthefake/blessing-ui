@@ -3734,6 +3734,54 @@
   ],
   "exposed": []
  },
+ "BlessKanban": {
+  "props": [
+   {
+    "name": "rowKey",
+    "type": "((item: T) => string | number) | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "label",
+    "type": "string | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "BlessKanbanColumn<T>[] | undefined",
+    "required": false,
+    "default": "[]",
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "move",
+    "type": "[item: T, from: { column: string; index: number; }, to: { column: string; index: number; }]",
+    "description": ""
+   },
+   {
+    "name": "update:modelValue",
+    "type": "[value: BlessKanbanColumn<T>[]]",
+    "description": ""
+   }
+  ],
+  "slots": [
+   {
+    "name": "header",
+    "type": "{ column: BlessKanbanColumn<T>; }",
+    "description": ""
+   },
+   {
+    "name": "card",
+    "type": "{ item: T; column: BlessKanbanColumn<T>; index: number; }",
+    "description": ""
+   }
+  ],
+  "exposed": []
+ },
  "BlessKbd": {
   "props": [
    {

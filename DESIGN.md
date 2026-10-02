@@ -251,7 +251,7 @@ Not copied from another library's list: gaps in direct manipulation, time and nu
 
 **Tier 2 — direct manipulation**
 
-- [ ] `BlessKanban` (M) — columns of cards, drag between columns, WIP limits; on `useSortable`.
+- [x] `BlessKanban` (M) ✅ — columns of cards, drag between columns, WIP limits; on `useSortable`.
 - [ ] `BlessCropper` (L) — crop and rotate an image with a square handle frame; emits a crop rect or a `Blob`. Pairs with `BlessUploader` and `BlessImg`.
 - [ ] `BlessHotspots` (M) — pins on an image or diagram with popovers, editable or read-only, positions in percent.
 - [ ] `BlessSwipeDeck` (M) — stack of cards, swipe or keys to accept, reject or skip, with undo; on `useGesture`.
