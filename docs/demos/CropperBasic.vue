@@ -20,6 +20,7 @@ onBeforeUnmount(() => URL.revokeObjectURL(result.value));
   <div class="col" style="max-width: 520px">
     <BlessSelect
       v-model="aspect"
+      aria-label="Crop shape"
       :options="[
         { value: 'free', label: 'Free' },
         { value: '1', label: 'Square 1 : 1' },

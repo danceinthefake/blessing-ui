@@ -13,7 +13,7 @@ const spots = ref<BlessHotspot[]>([
 
 <template>
   <div class="col" style="max-width: 640px">
-    <BlessSwitch v-model="edit" label="Edit pins" />
+    <BlessSwitch v-model="edit">Edit pins</BlessSwitch>
     <BlessHotspots
       v-model="spots"
       v-model:active="active"
