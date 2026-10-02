@@ -132,6 +132,7 @@ export { default as BlessSpeedDial } from "./components/BlessSpeedDial.vue";
 export type { BlessSpeedDialAction } from "./components/BlessSpeedDial.vue";
 export { default as BlessVirtualScroller } from "./components/BlessVirtualScroller.vue";
 export { default as BlessOrderList } from "./components/BlessOrderList.vue";
+export { default as BlessSliderCaptcha } from "./components/BlessSliderCaptcha.vue";
 export { default as BlessSwipeDeck } from "./components/BlessSwipeDeck.vue";
 export type { BlessSwipeDecision } from "./components/BlessSwipeDeck.vue";
 export { default as BlessHotspots } from "./components/BlessHotspots.vue";

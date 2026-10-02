@@ -6621,6 +6621,62 @@
   "slots": [],
   "exposed": []
  },
+ "BlessSliderCaptcha": {
+  "props": [
+   {
+    "name": "src",
+    "type": "string | undefined",
+    "required": false,
+    "description": "background picture; without it a checker pattern is drawn"
+   },
+   {
+    "name": "tolerance",
+    "type": "number | undefined",
+    "required": false,
+    "default": "0.03",
+    "description": "how close counts, as a fraction of the track (0.03 = 3%)"
+   },
+   {
+    "name": "label",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Slide the piece into the gap\"",
+    "description": ""
+   },
+   {
+    "name": "verified",
+    "type": "boolean | undefined",
+    "required": false,
+    "default": "false",
+    "description": "true once solved; the widget then stays locked until `reset()`"
+   }
+  ],
+  "events": [
+   {
+    "name": "update:verified",
+    "type": "[value: boolean]",
+    "description": ""
+   },
+   {
+    "name": "verify",
+    "type": "[info: { ms: number; }]",
+    "description": ""
+   },
+   {
+    "name": "fail",
+    "type": "[]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": [
+   {
+    "name": "reset",
+    "type": "() => void",
+    "description": ""
+   }
+  ]
+ },
  "BlessSortable": {
   "props": [
    {
