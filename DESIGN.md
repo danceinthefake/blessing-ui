@@ -239,6 +239,47 @@ Not components: finished sections shipped as source you copy, `docs/blocks/<slug
 - [x] Official-site set (front page): News, On Air, Character (hash-routed modals), Staff & Cast, Release, Story, Full site (composition in `BlessStage`, opens full-page)
 - [x] App set: Sign in, Dashboard, Settings, Data page, Page states, Pricing, Inbox, Chat, Onboarding
 
+### Phase 21 — interactive and distinctive (proposed 2026-10-02)
+
+Not copied from another library's list: gaps in direct manipulation, time and numbers, text input and spatial layout. Same rules as every phase: native platform first, tokens only, no runtime dependency beyond Vue, keyboard path for every pointer gesture, `prefers-reduced-motion` respected, RTL via `logicalKey()`. Effort: S under a day, M a day or two, L several days. Pick from the top; Tier 1 unlocks the rest.
+
+**Tier 1 — foundation (build first)**
+
+- [ ] `useSortable` + `BlessSortable` (M) — drag to reorder a list or grid; keyboard reorder (Space grabs, arrows move, Space drops, Esc cancels) with a live-region announcement. Built on `useGesture`. `BlessOrderList` is button-only today and can adopt it. Unlocks Kanban and the reorderable grid.
+- [ ] `BlessHeatmapCalendar` (S) — contribution-graph grid, one square per day, keyboard-navigable, tooltip per cell, `Intl` weekday and month labels. Needs no new interaction core.
+- [ ] `BlessMention` (M) — `@` / `#` trigger inside a textarea, suggestions in a `BlessPopover`, inserts a token. Chat and editor use.
+
+**Tier 2 — direct manipulation**
+
+- [ ] `BlessKanban` (M) — columns of cards, drag between columns, WIP limits; on `useSortable`.
+- [ ] `BlessCropper` (L) — crop and rotate an image with a square handle frame; emits a crop rect or a `Blob`. Pairs with `BlessUploader` and `BlessImg`.
+- [ ] `BlessHotspots` (M) — pins on an image or diagram with popovers, editable or read-only, positions in percent.
+- [ ] `BlessSwipeDeck` (M) — stack of cards, swipe or keys to accept, reject or skip, with undo; on `useGesture`.
+- [ ] `BlessSliderCaptcha` (S) — drag a puzzle piece into the gap. A human-check widget, not security.
+
+**Tier 3 — time and numbers**
+
+- [ ] `BlessCountUp` / `BlessOdometer` (S) — numbers roll to a new value; `Intl.NumberFormat`; static under reduced motion.
+- [ ] `BlessTimer` (S) — countdown, stopwatch, interval timer; `performance.now()` drift-free.
+- [ ] `BlessGauge` (M) — semi-circle and linear gauge with zones; read-only, `role="meter"`. `BlessKnob` and `BlessCircularProgress` do not cover zoned reads.
+- [ ] `BlessGantt` (L) — bars on a time axis with drag-resize; read-only first.
+
+**Tier 4 — text and input**
+
+- [ ] `BlessShortcutRecorder` (S) — press a combo to record it, conflict detection; fits `BlessKbd` and `BlessCommand`.
+- [ ] `BlessDiff` (M) — side-by-side and inline text diff with line numbers.
+- [ ] `BlessCodeBlock` (S) — copy button, line highlight, tabs per file; unstyled, a slot takes the consumer's highlighter.
+- [ ] `BlessMarquee` (S) — seamless ticker; pauses on hover and focus; static under reduced motion.
+
+**Tier 5 — layout and spatial**
+
+- [ ] `BlessMasonry` (M) — variable-height cards; CSS `grid-template-rows: masonry` where supported, JS column fallback.
+- [ ] `BlessSplitView` (S) — master / detail with a draggable divider; on `BlessResizable`.
+- [ ] `BlessRadialMenu` (M) — press-and-hold radial menu on touch, right-click on desktop; arrow keys cycle.
+- [ ] `BlessLoupe` (S) — magnifier over an image on hover or touch.
+
+When a component lands: tick it here, add its docs page and test, a README table row, and bump the count in "Numbers that go stale" below.
+
 ### Shape ✅ — square everywhere (2026-09-26; supersedes the 2026-09-21 merge below)
 
 Once plates stood upright at rest, the petal read as a leaf: every part is square now, and the teardrop lives only in the mark. `--bless-petal` / `--bless-radius*` stay at 0 as override points. Kept round: radio, knob, CircularProgress (the circle is their function) and the phone Mockup (the device's corners).
