@@ -107,6 +107,11 @@ export const groups: { title: string; items: Entry[] }[] = [
       { name: "BlessSignaturePad", slug: "signature-pad", text: "Draw a signature on canvas" },
       { name: "BlessInputMask", slug: "input-mask", text: "Pattern-masked input (# A *)" },
       { name: "BlessOrderList", slug: "order-list", text: "Drag / button / Alt+arrow reorder" },
+      {
+        name: "BlessSortable",
+        slug: "sortable",
+        text: "Drag-to-reorder list or grid, keyboard grab and move",
+      },
       { name: "BlessPickList", slug: "pick-list", text: "Two listboxes with transfer buttons" },
       { name: "BlessRating", slug: "rating", text: "Star rating on native radios" },
       { name: "BlessFileInput", slug: "file-input", text: "Native file input with drop zone" },

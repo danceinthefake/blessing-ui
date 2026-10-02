@@ -6276,6 +6276,57 @@
   "slots": [],
   "exposed": []
  },
+ "BlessSortable": {
+  "props": [
+   {
+    "name": "rowKey",
+    "type": "((item: T, index: number) => string | number) | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "label",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Sortable\"",
+    "description": ""
+   },
+   {
+    "name": "columns",
+    "type": "number | undefined",
+    "required": false,
+    "default": "1",
+    "description": "lay the items out in this many equal columns (a grid); 1 is a list"
+   },
+   {
+    "name": "modelValue",
+    "type": "T[] | undefined",
+    "required": false,
+    "default": "[]",
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "move",
+    "type": "[from: number, to: number]",
+    "description": ""
+   },
+   {
+    "name": "update:modelValue",
+    "type": "[value: T[]]",
+    "description": ""
+   }
+  ],
+  "slots": [
+   {
+    "name": "default",
+    "type": "{ item: T; index: number; }",
+    "description": ""
+   }
+  ],
+  "exposed": []
+ },
  "BlessSpeedDial": {
   "props": [
    {
