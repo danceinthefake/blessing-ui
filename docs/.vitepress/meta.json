@@ -1938,6 +1938,85 @@
   ],
   "exposed": []
  },
+ "BlessCropper": {
+  "props": [
+   {
+    "name": "src",
+    "type": "string",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "aspect",
+    "type": "number | undefined",
+    "required": false,
+    "description": "width / height of the result, e.g. `1` or `16 / 9`; leave out to crop freely"
+   },
+   {
+    "name": "crossorigin",
+    "type": "\"anonymous\" | \"use-credentials\" | undefined",
+    "required": false,
+    "default": "\"anonymous\"",
+    "description": "`anonymous` lets `toBlob` read images from another origin that sends CORS headers"
+   },
+   {
+    "name": "controls",
+    "type": "boolean | undefined",
+    "required": false,
+    "default": "true",
+    "description": "show the rotate buttons"
+   },
+   {
+    "name": "label",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Crop area\"",
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "BlessCropRect | null | undefined",
+    "required": false,
+    "default": "null",
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "update:modelValue",
+    "type": "[value: BlessCropRect | null]",
+    "description": ""
+   },
+   {
+    "name": "error",
+    "type": "[]",
+    "description": ""
+   },
+   {
+    "name": "ready",
+    "type": "[]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": [
+   {
+    "name": "toBlob",
+    "type": "(o?: { type?: string | undefined; quality?: number | undefined; maxWidth?: number | undefined; }) => Promise<Blob | null>",
+    "description": ""
+   },
+   {
+    "name": "rotate",
+    "type": "(d: 90 | -90) => 0 | 90 | 180 | 270",
+    "description": ""
+   },
+   {
+    "name": "reset",
+    "type": "() => CropBox",
+    "description": ""
+   }
+  ]
+ },
  "BlessDash": {
   "props": [
    {
@@ -6976,7 +7055,7 @@
    },
    {
     "name": "effect",
-    "type": "\"fade\" | \"rotate\" | \"flip\" | undefined",
+    "type": "\"rotate\" | \"fade\" | \"flip\" | undefined",
     "required": false,
     "description": "how the two faces exchange"
    },
