@@ -113,6 +113,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         text: "Numbers that roll to a new value",
       },
       {
+        name: "BlessTimer",
+        slug: "timer",
+        text: "Countdown, stopwatch and interval timer",
+      },
+      {
         name: "BlessSliderCaptcha",
         slug: "slider-captcha",
         text: "Slide the piece into the gap: a human check",

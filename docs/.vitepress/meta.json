@@ -7855,6 +7855,104 @@
   ],
   "exposed": []
  },
+ "BlessTimer": {
+  "props": [
+   {
+    "name": "mode",
+    "type": "\"countdown\" | \"stopwatch\" | \"interval\" | undefined",
+    "required": false,
+    "default": "\"countdown\"",
+    "description": "`countdown` from `duration`, `stopwatch` up from 0, `interval` through `phases`"
+   },
+   {
+    "name": "duration",
+    "type": "number | undefined",
+    "required": false,
+    "default": "60",
+    "description": "seconds, for a countdown"
+   },
+   {
+    "name": "phases",
+    "type": "BlessTimerPhase[] | undefined",
+    "required": false,
+    "description": "for `interval`: e.g. `[{ label: \"Work\", seconds: 25 }, { label: \"Rest\", seconds: 5 }]`"
+   },
+   {
+    "name": "rounds",
+    "type": "number | undefined",
+    "required": false,
+    "default": "1",
+    "description": "how many times the phases repeat"
+   },
+   {
+    "name": "autostart",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "controls",
+    "type": "boolean | undefined",
+    "required": false,
+    "default": "true",
+    "description": "show Start / Pause / Reset"
+   },
+   {
+    "name": "label",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Timer\"",
+    "description": ""
+   },
+   {
+    "name": "running",
+    "type": "boolean | undefined",
+    "required": false,
+    "default": "false",
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "finish",
+    "type": "[]",
+    "description": ""
+   },
+   {
+    "name": "update:running",
+    "type": "[value: boolean]",
+    "description": ""
+   },
+   {
+    "name": "phase",
+    "type": "[phase: BlessTimerPhase, index: number, round: number]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": [
+   {
+    "name": "start",
+    "type": "() => void",
+    "description": ""
+   },
+   {
+    "name": "pause",
+    "type": "() => void",
+    "description": ""
+   },
+   {
+    "name": "reset",
+    "type": "() => void",
+    "description": ""
+   },
+   {
+    "name": "toggle",
+    "type": "() => boolean",
+    "description": ""
+   }
+  ]
+ },
  "BlessToaster": {
   "props": [
    {
