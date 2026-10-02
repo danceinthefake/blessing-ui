@@ -1938,6 +1938,51 @@
   ],
   "exposed": []
  },
+ "BlessCountUp": {
+  "props": [
+   {
+    "name": "value",
+    "type": "number",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "duration",
+    "type": "number | undefined",
+    "required": false,
+    "default": "800",
+    "description": "milliseconds to travel from the shown number to `value`"
+   },
+   {
+    "name": "locale",
+    "type": "string | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "options",
+    "type": "Intl.NumberFormatOptions | undefined",
+    "required": false,
+    "description": "`Intl.NumberFormat` options: `{ style: \"currency\", currency: \"IDR\" }`"
+   },
+   {
+    "name": "appear",
+    "type": "boolean | undefined",
+    "required": false,
+    "default": "true",
+    "description": "start at 0 and count up when first shown; off shows `value` straight away"
+   },
+   {
+    "name": "odometer",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": "roll each digit in its own column, like an odometer"
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessCropper": {
   "props": [
    {
