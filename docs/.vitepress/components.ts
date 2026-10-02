@@ -108,6 +108,11 @@ export const groups: { title: string; items: Entry[] }[] = [
       { name: "BlessInputMask", slug: "input-mask", text: "Pattern-masked input (# A *)" },
       { name: "BlessOrderList", slug: "order-list", text: "Drag / button / Alt+arrow reorder" },
       {
+        name: "BlessMention",
+        slug: "mention",
+        text: "@ / # suggestions inside a textarea",
+      },
+      {
         name: "BlessHeatmapCalendar",
         slug: "heatmap-calendar",
         text: "Contribution-style grid, one square per day",
