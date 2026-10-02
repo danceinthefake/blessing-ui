@@ -6044,6 +6044,75 @@
   "slots": [],
   "exposed": []
  },
+ "BlessRadialMenu": {
+  "props": [
+   {
+    "name": "items",
+    "type": "T[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "radius",
+    "type": "number | undefined",
+    "required": false,
+    "default": "84",
+    "description": "distance from the centre to the buttons, in px"
+   },
+   {
+    "name": "holdMs",
+    "type": "number | undefined",
+    "required": false,
+    "default": "450",
+    "description": "how long a touch has to stay down to open it, in ms"
+   },
+   {
+    "name": "disabled",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "label",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Actions\"",
+    "description": ""
+   },
+   {
+    "name": "open",
+    "type": "boolean | undefined",
+    "required": false,
+    "default": "false",
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "select",
+    "type": "[item: T]",
+    "description": ""
+   },
+   {
+    "name": "update:open",
+    "type": "[value: boolean]",
+    "description": ""
+   }
+  ],
+  "slots": [
+   {
+    "name": "default",
+    "type": "{}",
+    "description": ""
+   },
+   {
+    "name": "item",
+    "type": "{ item: T; index: number; }",
+    "description": ""
+   }
+  ],
+  "exposed": []
+ },
  "BlessRadio": {
   "props": [
    {

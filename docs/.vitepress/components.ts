@@ -158,6 +158,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         text: "Master / detail with a draggable divider",
       },
       {
+        name: "BlessRadialMenu",
+        slug: "radial-menu",
+        text: "Press-and-hold or right-click radial menu",
+      },
+      {
         name: "BlessSliderCaptcha",
         slug: "slider-captcha",
         text: "Slide the piece into the gap: a human check",
