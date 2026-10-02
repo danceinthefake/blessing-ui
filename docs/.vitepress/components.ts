@@ -118,6 +118,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         text: "Countdown, stopwatch and interval timer",
       },
       {
+        name: "BlessGauge",
+        slug: "gauge",
+        text: "Zoned meter: semi-circle or linear",
+      },
+      {
         name: "BlessSliderCaptcha",
         slug: "slider-captcha",
         text: "Slide the piece into the gap: a human check",

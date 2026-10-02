@@ -2949,6 +2949,59 @@
   ],
   "exposed": []
  },
+ "BlessGauge": {
+  "props": [
+   {
+    "name": "value",
+    "type": "number",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "min",
+    "type": "number | undefined",
+    "required": false,
+    "default": "0",
+    "description": ""
+   },
+   {
+    "name": "max",
+    "type": "number | undefined",
+    "required": false,
+    "default": "100",
+    "description": ""
+   },
+   {
+    "name": "zones",
+    "type": "BlessGaugeZone[] | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "variant",
+    "type": "\"arc\" | \"linear\" | undefined",
+    "required": false,
+    "default": "\"arc\"",
+    "description": ""
+   },
+   {
+    "name": "label",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Gauge\"",
+    "description": "what is measured: names the meter for screen readers and shows under the number"
+   },
+   {
+    "name": "format",
+    "type": "((v: number) => string) | undefined",
+    "required": false,
+    "description": "text for the value, e.g. `(v) => v + \" °C\"`"
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessHeatmapCalendar": {
   "props": [
    {
