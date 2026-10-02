@@ -274,7 +274,7 @@ Not copied from another library's list: gaps in direct manipulation, time and nu
 **Tier 5 — layout and spatial**
 
 - [x] `BlessMasonry` (M) ✅ — variable-height cards; CSS `grid-template-rows: masonry` where supported, JS column fallback.
-- [ ] `BlessSplitView` (S) — master / detail with a draggable divider; on `BlessResizable`.
+- [x] `BlessSplitView` (S) ✅ — master / detail with a draggable divider; on `BlessResizable`.
 - [ ] `BlessRadialMenu` (M) — press-and-hold radial menu on touch, right-click on desktop; arrow keys cycle.
 - [ ] `BlessLoupe` (S) — magnifier over an image on hover or touch.
 

@@ -153,6 +153,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         text: "Variable-height cards in columns",
       },
       {
+        name: "BlessSplitView",
+        slug: "split-view",
+        text: "Master / detail with a draggable divider",
+      },
+      {
         name: "BlessSliderCaptcha",
         slug: "slider-captcha",
         text: "Slide the piece into the gap: a human check",

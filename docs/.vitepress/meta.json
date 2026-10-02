@@ -7454,6 +7454,95 @@
   ],
   "exposed": []
  },
+ "BlessSplitView": {
+  "props": [
+   {
+    "name": "breakpoint",
+    "type": "number | undefined",
+    "required": false,
+    "default": "560",
+    "description": "under this width (px of the view itself) the panes stack: one at a time"
+   },
+   {
+    "name": "min",
+    "type": "number | undefined",
+    "required": false,
+    "default": "20",
+    "description": ""
+   },
+   {
+    "name": "max",
+    "type": "number | undefined",
+    "required": false,
+    "default": "60",
+    "description": ""
+   },
+   {
+    "name": "storageKey",
+    "type": "string | undefined",
+    "required": false,
+    "description": "remember the divider in localStorage under this key"
+   },
+   {
+    "name": "backLabel",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Back\"",
+    "description": "text of the button that goes back from the detail when stacked"
+   },
+   {
+    "name": "label",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Resize list\"",
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "number | undefined",
+    "required": false,
+    "default": "35",
+    "description": "master pane width in %"
+   },
+   {
+    "name": "detail",
+    "type": "boolean | undefined",
+    "required": false,
+    "default": "false",
+    "description": "when stacked: is the detail showing (true) or the list (false)?"
+   }
+  ],
+  "events": [
+   {
+    "name": "update:modelValue",
+    "type": "[value: number]",
+    "description": ""
+   },
+   {
+    "name": "update:detail",
+    "type": "[value: boolean]",
+    "description": ""
+   },
+   {
+    "name": "back",
+    "type": "[]",
+    "description": ""
+   }
+  ],
+  "slots": [
+   {
+    "name": "master",
+    "type": "{ open: () => boolean; stacked: boolean; }",
+    "description": ""
+   },
+   {
+    "name": "detail",
+    "type": "{ stacked: boolean; }",
+    "description": ""
+   }
+  ],
+  "exposed": []
+ },
  "BlessStack": {
   "props": [
    {
