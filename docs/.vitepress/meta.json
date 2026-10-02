@@ -4661,6 +4661,45 @@
   "slots": [],
   "exposed": []
  },
+ "BlessLoupe": {
+  "props": [
+   {
+    "name": "src",
+    "type": "string",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "alt",
+    "type": "string",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "zoomSrc",
+    "type": "string | undefined",
+    "required": false,
+    "description": "a larger version of the same picture for the lens; defaults to `src`"
+   },
+   {
+    "name": "zoom",
+    "type": "number | undefined",
+    "required": false,
+    "default": "2.5",
+    "description": "magnification"
+   },
+   {
+    "name": "size",
+    "type": "number | undefined",
+    "required": false,
+    "default": "140",
+    "description": "side of the square lens, in px"
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessMarker": {
   "props": [
    {

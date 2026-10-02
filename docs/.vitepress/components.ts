@@ -163,6 +163,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         text: "Press-and-hold or right-click radial menu",
       },
       {
+        name: "BlessLoupe",
+        slug: "loupe",
+        text: "Magnifier over an image on hover or touch",
+      },
+      {
         name: "BlessSliderCaptcha",
         slug: "slider-captcha",
         text: "Slide the piece into the gap: a human check",

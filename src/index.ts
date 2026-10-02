@@ -157,6 +157,7 @@ export { default as BlessSplitView } from "./components/BlessSplitView.vue";
 export { default as BlessRadialMenu } from "./components/BlessRadialMenu.vue";
 export { polar, sectorAt, keepInside } from "./composables/radial";
 export type { BlessRadialItem } from "./components/BlessRadialMenu.vue";
+export { default as BlessLoupe } from "./components/BlessLoupe.vue";
 export { default as BlessSliderCaptcha } from "./components/BlessSliderCaptcha.vue";
 export { default as BlessSwipeDeck } from "./components/BlessSwipeDeck.vue";
 export type { BlessSwipeDecision } from "./components/BlessSwipeDeck.vue";

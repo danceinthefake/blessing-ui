@@ -10,7 +10,7 @@ Vue 3 component library and design tokens. Grey-scale UI with one accent that ap
 
 Docs, with every component live: **[ui.blessing.id](https://ui.blessing.id)**
 
-- 163 components — from button to data table to chat — styled only through `--bless-*` custom properties, no Tailwind dependency
+- 164 components — from button to data table to chat — styled only through `--bless-*` custom properties, no Tailwind dependency
 - Native platform first: `<dialog>`, Popover API, `<details>`, native form controls, `Intl` dates, scroll-snap — no positioning, date or table library
 - Accessible defaults: focus rings, ARIA tablist/dialog/tables, `prefers-reduced-motion`
 - ESM, tree-shakable, `vue` as the only required peer (`@tiptap/vue-3` optional, for `BlessEditor`). One component (`BlessButton`) costs ~1 KB gzip of JS and ~2.6 KB of CSS (tokens + its own styles); everything is ~64 KB + 27 KB. CSS is split per component and pulled in by the import, so you never pay for styles you don't use
@@ -86,7 +86,7 @@ import {
 
 ## Components
 
-163 components across eight groups. Every one styles itself from `--bless-*` tokens and ships with a test and a docs page.
+164 components across eight groups. Every one styles itself from `--bless-*` tokens and ships with a test and a docs page.
 
 ### Primitives
 
@@ -167,6 +167,7 @@ import {
 | `BlessMasonry`                     | Variable-height cards packed into columns, in reading order                                | `items`, `rowKey`, `columns`, `minWidth`, `gap`, `label`; `#default="{item,index}"`                                                                                                     |
 | `BlessSplitView`                   | Master / detail: draggable divider when wide, one pane at a time when narrow               | `v-model` master width %, `v-model:detail` (stacked), `breakpoint`, `min`, `max`, `storageKey`, `backLabel`; emits `back`; `#master="{open}"` `#detail`                                 |
 | `BlessRadialMenu`                  | Round menu around the pointer: right-click, long touch (slide and release) or the menu key | `items[{id,label,icon,disabled}]`, `v-model:open`, `radius`, `holdMs`, `disabled`, `label`; emits `select`; default slot is the target, `#item="{item,index}"`                          |
+| `BlessLoupe`                       | Magnifier lens over an image: hover, touch-drag or arrow keys                              | `src`, `alt`, `zoomSrc`, `zoom`, `size`                                                                                                                                                 |
 | `BlessSliderCaptcha`               | Slide the piece into the gap (a human check, not security)                                 | `v-model:verified`, `src`, `tolerance`, `label`; emits `verify({ms})` `fail`; exposes `reset()`; ←→ + Enter from the keyboard                                                           |
 | `BlessSwipeDeck`                   | Stack of cards: swipe or press to accept / reject / skip                                   | `v-model` remaining cards, `rowKey`, `label`, `controls`, `threshold`, `labels`; emits `decide(item, decision)` `undo(item)`; `#card` `#empty`; exposes `accept` `reject` `skip` `undo` |
 | `BlessHotspots`                    | Numbered pins on an image or diagram, each with a popover                                  | `v-model` spots `[{id,x,y,label}]` (percent), `v-model:active`, `src`, `alt`, `editable`, `placement`; emits `add` `remove`; `#spot="{spot,index}"`, default slot for a diagram         |

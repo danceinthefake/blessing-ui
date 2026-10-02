@@ -276,7 +276,7 @@ Not copied from another library's list: gaps in direct manipulation, time and nu
 - [x] `BlessMasonry` (M) ✅ — variable-height cards; CSS `grid-template-rows: masonry` where supported, JS column fallback.
 - [x] `BlessSplitView` (S) ✅ — master / detail with a draggable divider; on `BlessResizable`.
 - [x] `BlessRadialMenu` (M) ✅ — press-and-hold radial menu on touch, right-click on desktop; arrow keys cycle.
-- [ ] `BlessLoupe` (S) — magnifier over an image on hover or touch.
+- [x] `BlessLoupe` (S) ✅ — magnifier over an image on hover or touch.
 
 When a component lands: tick it here, add its docs page and test, a README table row, and bump the count in "Numbers that go stale" below.
 
