@@ -266,10 +266,10 @@ Not copied from another library's list: gaps in direct manipulation, time and nu
 
 **Tier 4 — text and input**
 
-- [ ] `BlessShortcutRecorder` (S) — press a combo to record it, conflict detection; fits `BlessKbd` and `BlessCommand`.
-- [ ] `BlessDiff` (M) — side-by-side and inline text diff with line numbers.
-- [ ] `BlessCodeBlock` (S) — copy button, line highlight, tabs per file; unstyled, a slot takes the consumer's highlighter.
-- [ ] `BlessMarquee` (S) — seamless ticker; pauses on hover and focus; static under reduced motion.
+- [x] `BlessShortcutRecorder` (S) ✅ — press a combo to record it, conflict detection; fits `BlessKbd` and `BlessCommand`.
+- [x] `BlessDiff` (M) ✅ — side-by-side and inline text diff with line numbers.
+- [x] `BlessCodeBlock` (S) ✅ — copy button, line highlight, tabs per file; unstyled, a slot takes the consumer's highlighter.
+- [x] `BlessMarquee` (S) ✅ — seamless ticker; pauses on hover and focus; static under reduced motion.
 
 **Tier 5 — layout and spatial**
 

@@ -142,7 +142,8 @@
   display: table;
   margin: 0;
 }
-.vp-doc .demo__preview :is(th, td) {
+/* Diff styles its own cells; the reset is for the tables VitePress would otherwise style */
+.vp-doc .demo__preview :is(th, td):not(.bless-diff *) {
   border: 0;
   padding: 0;
   background: none;

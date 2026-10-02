@@ -139,6 +139,19 @@ export { default as BlessGauge } from "./components/BlessGauge.vue";
 export type { BlessGaugeZone } from "./components/BlessGauge.vue";
 export { default as BlessGantt } from "./components/BlessGantt.vue";
 export type { BlessGanttTask } from "./components/BlessGantt.vue";
+export { default as BlessShortcutRecorder } from "./components/BlessShortcutRecorder.vue";
+export {
+  shortcutFromEvent,
+  matchShortcut,
+  splitShortcut,
+  isModifierKey,
+} from "./composables/shortcut";
+export { default as BlessDiff } from "./components/BlessDiff.vue";
+export { diffLines } from "./composables/diffLines";
+export type { DiffRow } from "./composables/diffLines";
+export { default as BlessCodeBlock } from "./components/BlessCodeBlock.vue";
+export type { BlessCodeFile } from "./components/BlessCodeBlock.vue";
+export { default as BlessMarquee } from "./components/BlessMarquee.vue";
 export { default as BlessSliderCaptcha } from "./components/BlessSliderCaptcha.vue";
 export { default as BlessSwipeDeck } from "./components/BlessSwipeDeck.vue";
 export type { BlessSwipeDecision } from "./components/BlessSwipeDeck.vue";

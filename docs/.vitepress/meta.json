@@ -1466,6 +1466,93 @@
   ],
   "exposed": []
  },
+ "BlessCodeBlock": {
+  "props": [
+   {
+    "name": "code",
+    "type": "string | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "lang",
+    "type": "string | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "filename",
+    "type": "string | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "files",
+    "type": "BlessCodeFile[] | undefined",
+    "required": false,
+    "description": "several files as tabs; wins over `code`"
+   },
+   {
+    "name": "lines",
+    "type": "string | number[] | undefined",
+    "required": false,
+    "description": "lines to mark, e.g. `\"2,4-6\"` or `[2, 4, 5, 6]` (1-based)"
+   },
+   {
+    "name": "lineNumbers",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "copy",
+    "type": "boolean | undefined",
+    "required": false,
+    "default": "true",
+    "description": ""
+   },
+   {
+    "name": "wrap",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": "wrap long lines instead of scrolling sideways"
+   },
+   {
+    "name": "label",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Code\"",
+    "description": ""
+   },
+   {
+    "name": "active",
+    "type": "number | undefined",
+    "required": false,
+    "default": "0",
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "copy",
+    "type": "[code: string]",
+    "description": ""
+   },
+   {
+    "name": "update:active",
+    "type": "[value: number]",
+    "description": ""
+   }
+  ],
+  "slots": [
+   {
+    "name": "code",
+    "type": "{ code: string; lang: string | undefined; lines: { n: number; text: string; hl: boolean; }[]; }",
+    "description": ""
+   }
+  ],
+  "exposed": []
+ },
  "BlessCollapsible": {
   "props": [
    {
@@ -2399,6 +2486,66 @@
  },
  "BlessDialogHost": {
   "props": [],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
+ "BlessDiff": {
+  "props": [
+   {
+    "name": "a",
+    "type": "string",
+    "required": true,
+    "description": "the old text"
+   },
+   {
+    "name": "b",
+    "type": "string",
+    "required": true,
+    "description": "the new text"
+   },
+   {
+    "name": "mode",
+    "type": "\"inline\" | \"split\" | undefined",
+    "required": false,
+    "default": "\"inline\"",
+    "description": ""
+   },
+   {
+    "name": "context",
+    "type": "number | undefined",
+    "required": false,
+    "description": "unchanged lines kept around each change; the rest fold away. Leave out to show everything"
+   },
+   {
+    "name": "lineNumbers",
+    "type": "boolean | undefined",
+    "required": false,
+    "default": "true",
+    "description": ""
+   },
+   {
+    "name": "labelA",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Before\"",
+    "description": ""
+   },
+   {
+    "name": "labelB",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"After\"",
+    "description": ""
+   },
+   {
+    "name": "label",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Changes\"",
+    "description": ""
+   }
+  ],
   "events": [],
   "slots": [],
   "exposed": []
@@ -3554,13 +3701,13 @@
     "description": ""
    },
    {
-    "name": "close",
-    "type": "[]",
+    "name": "update:active",
+    "type": "[value: boolean]",
     "description": ""
    },
    {
-    "name": "update:active",
-    "type": "[value: boolean]",
+    "name": "close",
+    "type": "[]",
     "description": ""
    }
   ],
@@ -4544,6 +4691,66 @@
     "type": "{}",
     "description": ""
    },
+   {
+    "name": "default",
+    "type": "{}",
+    "description": ""
+   }
+  ],
+  "exposed": []
+ },
+ "BlessMarquee": {
+  "props": [
+   {
+    "name": "speed",
+    "type": "number | undefined",
+    "required": false,
+    "default": "40",
+    "description": "px per second"
+   },
+   {
+    "name": "reverse",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": "run the other way (toward the start of the line)"
+   },
+   {
+    "name": "pauseOnHover",
+    "type": "boolean | undefined",
+    "required": false,
+    "default": "true",
+    "description": "stop while the pointer is over it or focus is inside"
+   },
+   {
+    "name": "controls",
+    "type": "boolean | undefined",
+    "required": false,
+    "default": "true",
+    "description": "show the Pause button (needed when it moves for more than five seconds, WCAG 2.2.2)"
+   },
+   {
+    "name": "label",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Scrolling items\"",
+    "description": ""
+   },
+   {
+    "name": "paused",
+    "type": "boolean | undefined",
+    "required": false,
+    "default": "false",
+    "description": "true while paused by the button"
+   }
+  ],
+  "events": [
+   {
+    "name": "update:paused",
+    "type": "[value: boolean]",
+    "description": ""
+   }
+  ],
+  "slots": [
    {
     "name": "default",
     "type": "{}",
@@ -6434,6 +6641,74 @@
    }
   ],
   "exposed": []
+ },
+ "BlessShortcutRecorder": {
+  "props": [
+   {
+    "name": "taken",
+    "type": "string[] | Record<string, string> | undefined",
+    "required": false,
+    "description": "combos already taken, as a list or `{ \"Ctrl+K\": \"Open search\" }` to say by what"
+   },
+   {
+    "name": "allowBare",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": "accept a bare key such as `G`; off asks for Ctrl, Alt or Meta, or a function key"
+   },
+   {
+    "name": "disabled",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "label",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Shortcut\"",
+    "description": ""
+   },
+   {
+    "name": "placeholder",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Not set\"",
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"\"",
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "update:modelValue",
+    "type": "[value: string]",
+    "description": ""
+   },
+   {
+    "name": "conflict",
+    "type": "[combo: string, by: string | undefined]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": [
+   {
+    "name": "start",
+    "type": "() => void",
+    "description": ""
+   },
+   {
+    "name": "focus",
+    "type": "() => void | undefined",
+    "description": ""
+   }
+  ]
  },
  "BlessSidebarNav": {
   "props": [

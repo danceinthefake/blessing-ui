@@ -128,6 +128,26 @@ export const groups: { title: string; items: Entry[] }[] = [
         text: "Bars on a time axis (read-only)",
       },
       {
+        name: "BlessShortcutRecorder",
+        slug: "shortcut-recorder",
+        text: "Press a key combo to record it",
+      },
+      {
+        name: "BlessDiff",
+        slug: "diff",
+        text: "Side-by-side and inline text diff",
+      },
+      {
+        name: "BlessCodeBlock",
+        slug: "code-block",
+        text: "Copy button, line highlight, tabs per file",
+      },
+      {
+        name: "BlessMarquee",
+        slug: "marquee",
+        text: "Seamless scrolling ticker that pauses",
+      },
+      {
         name: "BlessSliderCaptcha",
         slug: "slider-captcha",
         text: "Slide the piece into the gap: a human check",
