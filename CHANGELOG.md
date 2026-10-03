@@ -1,5 +1,43 @@
 # Changelog
 
+## 0.2.0 — 2026-10-03
+
+20 new components, 164 in all. Every one has a docs page, tests, a keyboard path for what the pointer does, and passes axe in light and dark and the end-to-end flows in Chromium, Firefox and WebKit.
+
+**Direct manipulation**
+
+- `BlessSortable` (and `useSortable`): drag a grip to reorder a list or grid; Space, arrows, Esc from the keyboard
+- `BlessKanban`: columns of cards, drag or keys between columns, per-column limits
+- `BlessCropper`: crop and rotate an image, export the cropped pixels with `toBlob`
+- `BlessHotspots`: numbered pins on an image or diagram with popovers; editable
+- `BlessSwipeDeck`: judge a stack of cards by swiping, keys or buttons, with undo
+- `BlessSliderCaptcha`: slide the piece into the gap (a speed bump, not security)
+- `BlessRadialMenu`: ring of actions from a right-click, a long touch or the menu key
+- `BlessLoupe`: magnifier over an image by hover, touch-drag or arrow keys
+
+**Time and numbers**
+
+- `BlessCountUp`: a number that counts to its value, or rolls as an odometer
+- `BlessTimer`: countdown, stopwatch and interval timer
+- `BlessGauge`: zoned meter as a half circle or a bar
+- `BlessGantt`: task bars on a day axis with progress, dependency arrows and a today line; drag bars to move or resize them
+- `BlessHeatmapCalendar`: one square per day, a year of activity at a glance
+
+**Text and input**
+
+- `BlessMention`: `@` and `#` suggestions inside a textarea
+- `BlessShortcutRecorder`: press a key combo to record it, with conflict detection (`shortcutFromEvent`, `matchShortcut` exported)
+- `BlessDiff`: line diff, inline or side by side, with folding (`diffLines` exported)
+- `BlessCodeBlock`: copy button, line marks, file tabs; bring your own highlighter
+- `BlessMarquee`: seamless ticker that pauses on hover, focus and a button
+
+**Layout**
+
+- `BlessMasonry`: variable-height cards packed into columns, in reading order
+- `BlessSplitView`: master / detail with a draggable divider, one pane at a time when narrow
+
+No breaking changes to existing components.
+
 ## 0.1.0 — 2026-09-27
 
 First public release.
