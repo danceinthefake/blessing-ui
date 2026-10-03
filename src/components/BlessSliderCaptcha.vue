@@ -19,6 +19,8 @@ const emit = defineEmits<{ verify: [info: { ms: number }]; fail: [] }>();
 
 const id = useId();
 const stage = ref<HTMLElement>();
+const track = ref<HTMLElement>();
+const handleEl = ref<HTMLElement>();
 const W = ref(320);
 const H = () => Math.round(W.value / 2);
 const PIECE = 0.16; // piece width, as a fraction of the stage
@@ -90,7 +92,10 @@ function down(e: PointerEvent) {
 }
 function move(e: PointerEvent) {
   if (!dragging.value) return;
-  const travel = (stage.value?.clientWidth || W.value) - size();
+  // the handle travels the track minus its own width: follow the pointer one to one
+  const tw = track.value?.clientWidth || 0;
+  const hw = handleEl.value?.offsetWidth || 0;
+  const travel = tw && hw ? tw - hw : (stage.value?.clientWidth || W.value) - size();
   f.value = Math.min(1, Math.max(0, from.f + (e.clientX - from.x) / travel));
 }
 function up() {
@@ -145,9 +150,10 @@ function onKey(e: KeyboardEvent) {
         }"
       ></span>
     </div>
-    <div class="bless-captcha__track">
+    <div ref="track" class="bless-captcha__track">
       <span :id="`${id}-l`" class="bless-captcha__label">{{ verified ? "Verified" : label }}</span>
       <button
+        ref="handleEl"
         type="button"
         class="bless-captcha__handle"
         :class="{ 'bless-captcha__handle--drag': dragging }"

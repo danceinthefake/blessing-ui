@@ -448,6 +448,8 @@ console.log("SliderCaptcha");
 await go("/components/slider-captcha");
 await step("dragging the handle onto the gap verifies", async () => {
   const c = L(".bless-captcha").first();
+  // the widget measures its width after mount and shuffles the gap; let both settle before aiming
+  await page.waitForTimeout(600);
   const gap = await c.locator(".bless-captcha__gap").boundingBox();
   const stage = await c.locator(".bless-captcha__stage").boundingBox();
   const piece = await c.locator(".bless-captcha__piece").boundingBox();
@@ -581,6 +583,8 @@ await step("it moves, stops on hover and on the Pause button", async () => {
   await page.mouse.move(2, 2);
   await m.getByRole("button", { name: "Pause" }).click();
   await page.mouse.move(2, 2);
+  expect(/paused/.test(await m.getAttribute("class")), "the Pause button set the paused state");
+  await page.waitForTimeout(300); // the browser applies a paused animation on the next frame
   const p = await x();
   await page.waitForTimeout(400);
   expect((await x()) === p, "paused by the button");
