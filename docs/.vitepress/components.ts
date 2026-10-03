@@ -125,7 +125,7 @@ export const groups: { title: string; items: Entry[] }[] = [
       {
         name: "BlessGantt",
         slug: "gantt",
-        text: "Bars on a time axis (read-only)",
+        text: "Bars on a time axis, draggable, with dependencies",
       },
       {
         name: "BlessShortcutRecorder",

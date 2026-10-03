@@ -3099,12 +3099,6 @@
  "BlessGantt": {
   "props": [
    {
-    "name": "tasks",
-    "type": "BlessGanttTask[]",
-    "required": true,
-    "description": ""
-   },
-   {
     "name": "dayWidth",
     "type": "number | undefined",
     "required": false,
@@ -3144,11 +3138,23 @@
     "description": "width of the label column in px"
    },
    {
+    "name": "editable",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": "drag a bar to move it and its ends to resize it; Alt + arrows from the keyboard"
+   },
+   {
     "name": "label",
     "type": "string | undefined",
     "required": false,
     "default": "\"Schedule\"",
     "description": ""
+   },
+   {
+    "name": "tasks",
+    "type": "BlessGanttTask[]",
+    "required": true,
+    "description": "the schedule; with `editable`, moves and resizes come back through here"
    },
    {
     "name": "selected",
@@ -3167,6 +3173,16 @@
    {
     "name": "update:selected",
     "type": "[value: string | number | null]",
+    "description": ""
+   },
+   {
+    "name": "update:tasks",
+    "type": "[value: BlessGanttTask[]]",
+    "description": ""
+   },
+   {
+    "name": "change",
+    "type": "[task: BlessGanttTask, dates: { start: string; end: string; }]",
     "description": ""
    }
   ],

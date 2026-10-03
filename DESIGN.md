@@ -262,7 +262,7 @@ Not copied from another library's list: gaps in direct manipulation, time and nu
 - [x] `BlessCountUp` / `BlessOdometer` (S) ✅ — one component, `odometer` for the reels; numbers roll to a new value; `Intl.NumberFormat`; static under reduced motion.
 - [x] `BlessTimer` (S) ✅ — countdown, stopwatch, interval timer; `performance.now()` drift-free.
 - [x] `BlessGauge` (M) ✅ — semi-circle and linear gauge with zones; read-only, `role="meter"`. `BlessKnob` and `BlessCircularProgress` do not cover zoned reads.
-- [x] `BlessGantt` (L) ✅ read-only (2026-10-02) — bars on a time axis, progress, today line, keyboard + select. Drag-resize is not built yet.
+- [x] `BlessGantt` (L) ✅ — bars on a time axis, progress, today line, keyboard + select; `editable` drag-move and resize (+ Alt+arrows), `after` dependency arrows (2026-10-03).
 
 **Tier 4 — text and input**
 
