@@ -242,6 +242,13 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "node-graph",
         text: "Draggable nodes and links on a pan/zoom canvas",
       },
+      { name: "BlessFormula", slug: "formula", text: "Typed calculation checked as you type" },
+      { name: "BlessRangeCalendar", slug: "range-calendar", text: "Paint many days by dragging" },
+      {
+        name: "BlessScheduler",
+        slug: "scheduler",
+        text: "Day or week grid: drag to create, move and resize",
+      },
     ],
   },
   {
@@ -317,6 +324,7 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "infinite-canvas",
         text: "Pan and zoom surface for your own content",
       },
+      { name: "BlessDock", slug: "dock", text: "Icon strip that swells under the pointer" },
     ],
   },
   {
@@ -339,6 +347,16 @@ export const groups: { title: string; items: Entry[] }[] = [
       { name: "BlessToaster", slug: "toaster", text: "Notifications" },
       { name: "BlessSplash", slug: "splash", text: "First-visit overlay" },
       { name: "BlessConfetti", slug: "confetti", text: "Canvas burst of paper, fired from code" },
+      {
+        name: "BlessCoachmark",
+        slug: "coachmark",
+        text: "Pulsing new-dot on one control, seen once",
+      },
+      {
+        name: "BlessOnboardingChecklist",
+        slug: "onboarding-checklist",
+        text: "First steps with progress that persists",
+      },
     ],
   },
   {
@@ -396,6 +414,7 @@ export const groups: { title: string; items: Entry[] }[] = [
       { name: "BlessParallax", slug: "parallax", text: "Background that scrolls slower" },
       { name: "BlessCarousel", slug: "carousel", text: "Scroll-snap slider" },
       { name: "BlessAudioPlayer", slug: "audio-player", text: "Track list player" },
+      { name: "BlessAnnotator", slug: "annotator", text: "Draw boxes and pins on an image" },
     ],
   },
 ];

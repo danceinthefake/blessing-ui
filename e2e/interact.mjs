@@ -844,6 +844,174 @@ await step("a group opens, the path shows, Backspace goes up, arrows move focus"
   expect((await t.locator(".bless-treemap__tile").count()) === 2, "docs holds two");
 });
 
+console.log("Coachmark");
+await go("/components/coachmark");
+await step("the dot opens a bubble; Got it dismisses it", async () => {
+  const dot = page.locator('button[aria-label^="New:"]').first();
+  await dot.waitFor();
+  await dot.click();
+  expect((await page.locator(".bless-coachmark__bubble").count()) === 1, "bubble open");
+  await page.getByRole("button", { name: "Got it" }).click();
+  expect((await page.locator(".bless-coachmark__dot").count()) === 0, "dot gone");
+  expect(
+    await page
+      .locator("[aria-live=polite]")
+      .filter({ hasText: "Marked as seen." })
+      .first()
+      .isVisible(),
+    "dismiss event fired",
+  );
+  await page.getByRole("button", { name: "Show again" }).click();
+  expect((await page.locator(".bless-coachmark__dot").count()) === 1, "shown again");
+});
+
+console.log("OnboardingChecklist");
+await go("/components/onboarding-checklist");
+await step("ticking updates the count and the bar; the header folds the list", async () => {
+  const c = L(".bless-checklist").first();
+  expect((await c.locator(".bless-checklist__count").textContent()) === "1/3", "starts at 1/3");
+  await c.getByText("Fill in your profile").click();
+  expect((await c.locator(".bless-checklist__count").textContent()) === "2/3", "now 2/3");
+  await c.getByText("Publish your first page").click();
+  expect(
+    await page
+      .locator("[aria-live=polite]")
+      .filter({ hasText: "Everything done!" })
+      .first()
+      .isVisible(),
+    "complete fired",
+  );
+  await c.locator(".bless-checklist__toggle").click();
+  expect(!(await c.locator(".bless-checklist__list").isVisible()), "folded");
+});
+
+console.log("Dock");
+await go("/components/dock");
+await step("the pointer grows the icon under it; arrows move focus", async () => {
+  await page.emulateMedia({ reducedMotion: "no-preference" });
+  const dock = L(".bless-dock").first();
+  await dock.scrollIntoViewIfNeeded();
+  const items = dock.locator(".bless-dock__item");
+  const b = await centre(items.nth(1));
+  await page.mouse.move(b.x, b.y);
+  await page.waitForTimeout(250);
+  const scale = (i) =>
+    items
+      .nth(i)
+      .locator(".bless-dock__icon")
+      .evaluate((el) => new DOMMatrix(getComputedStyle(el).transform).a);
+  expect((await scale(1)) > 1.3, `icon under the pointer grew (${await scale(1)})`);
+  expect((await scale(5)) < 1.05, "a far icon stayed put");
+  await page.mouse.move(2, 2);
+  await items.nth(0).focus();
+  await page.keyboard.press("ArrowRight");
+  expect(
+    (await page.evaluate(() => document.activeElement.getAttribute("aria-label"))) === "Chat",
+    "arrow moved focus",
+  );
+  await page.keyboard.press("End");
+  expect(
+    (await page.evaluate(() => document.activeElement.getAttribute("aria-label"))) === "Music",
+    "End skips the disabled last item",
+  );
+});
+
+console.log("Formula");
+await go("/components/formula");
+await step("shows the result, explains a mistake, fixes a typo, inserts a chip", async () => {
+  const f = L(".bless-formula").first();
+  const input = f.locator("input");
+  expect((await f.locator(".bless-formula__out").textContent()).includes("= 52"), "starts at 52");
+  await input.fill("prise * qty");
+  expect(
+    (await f.locator(".bless-formula__out").textContent()).includes("did you mean"),
+    "explains the typo",
+  );
+  expect((await input.getAttribute("aria-invalid")) === "true", "marked invalid");
+  await f.getByRole("button", { name: /Use .price./ }).click();
+  expect((await input.inputValue()) === "price * qty", "typo fixed in place");
+  expect((await f.locator(".bless-formula__out").textContent()).includes("= 50"), "now 50");
+  await input.fill("2 * ");
+  await f.getByRole("button", { name: "Tax" }).click();
+  expect((await input.inputValue()) === "2 * tax", "chip inserted at the caret");
+  expect(await input.evaluate((el) => el === document.activeElement), "focus stayed in the input");
+});
+
+console.log("RangeCalendar");
+await go("/components/range-calendar");
+await step("dragging adds a stretch of days, dragging from a chosen day clears", async () => {
+  const day = (n) => L(`[data-day="2026-10-${String(n).padStart(2, "0")}"]`);
+  const summary = async () => (await L(".bless-range__summary").first().textContent()).trim();
+  expect((await summary()) === "4 days in 2 blocks", `starts as ${await summary()}`);
+  await day(5).scrollIntoViewIfNeeded();
+  await drag(await centre(day(5)), await centre(day(8)));
+  expect((await summary()) === "8 days in 3 blocks", `after painting: ${await summary()}`);
+  expect((await day(7).getAttribute("aria-selected")) === "true", "a day in the middle is chosen");
+  await drag(await centre(day(12)), await centre(day(13)));
+  expect((await summary()) === "6 days in 3 blocks", `after clearing: ${await summary()}`);
+  await day(20).focus();
+  await page.keyboard.press("Space");
+  expect((await day(20).getAttribute("aria-selected")) === "false", "Space toggled it off");
+});
+
+console.log("Annotator");
+await go("/components/annotator");
+await step("drawing makes a box and focuses its name; Delete on a mark removes it", async () => {
+  const a = L(".bless-annot").first();
+  const stage = a.locator(".bless-annot__stage");
+  await stage.scrollIntoViewIfNeeded();
+  await page.waitForFunction(() => document.querySelector(".bless-annot__img")?.complete);
+  const b = await stage.boundingBox();
+  const at = (fx, fy) => ({ x: b.x + b.width * fx, y: b.y + b.height * fy });
+  const before = await a.locator("[data-region]").count();
+  await drag(at(0.5, 0.65), at(0.85, 0.92));
+  expect((await a.locator("[data-region]").count()) === before + 1, "a box was drawn");
+  expect(
+    await a.locator(".bless-annot__input").evaluate((el) => el === document.activeElement),
+    "name field has focus",
+  );
+  await page.keyboard.type("Footer");
+  expect(await a.getByRole("button", { name: /Box \d+: Footer/ }).count(), "named in the list");
+  await a.locator("[data-region]").last().focus();
+  await page.keyboard.press("ArrowRight");
+  await page.keyboard.press("Delete");
+  expect((await a.locator("[data-region]").count()) === before, "Delete removed it");
+});
+
+console.log("Scheduler");
+await go("/components/scheduler");
+await step(
+  "drag creates an event, ArrowRight moves it a day and keeps focus, Delete removes",
+  async () => {
+    const s = L(".bless-sched").first();
+    await s.scrollIntoViewIfNeeded();
+    const cols = s.locator(".bless-sched__col");
+    const before = await s.locator("[data-event]").count();
+    const fri = await cols.nth(4).boundingBox();
+    // the grid starts at 08:00 and an hour is 48px: 14:00 -> 15:30
+    const top = (await s.locator(".bless-sched__cols").boundingBox()).y;
+    await drag(
+      { x: fri.x + fri.width / 2, y: top + 6 * 48 },
+      { x: fri.x + fri.width / 2, y: top + 7.5 * 48 },
+    );
+    expect((await s.locator("[data-event]").count()) === before + 1, "an event was created");
+    const made = s.locator("[data-event].bless-sched__event--sel");
+    await made.focus();
+    await page.keyboard.press("ArrowRight");
+    await page.waitForTimeout(100);
+    expect(
+      await page.evaluate(() => document.activeElement?.hasAttribute("data-event")),
+      "focus stayed on the event after it changed day",
+    );
+    expect(
+      (await s.locator(".bless-sched__when").textContent()).includes("Saturday"),
+      "moved to Saturday",
+    );
+    await page.keyboard.press("Delete");
+    expect((await s.locator("[data-event]").count()) === before, "Delete removed it");
+  },
+);
+
 await browser.close();
 console.log(failed ? `\n${failed} step(s) failed` : "\nall interaction flows passed");
 process.exit(failed ? 1 : 0);

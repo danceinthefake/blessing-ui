@@ -304,12 +304,12 @@ Cut and petal are one default, no toggle. Rule (docs/guide/conventions): if the 
 
 - ✅ `e2e/motion.mjs` — with `prefers-reduced-motion: reduce` (and VitePress's own blanket reset stripped, which would hide gaps) no demo keeps a CSS animation running; the two spinners' slowed turn is allowed as essential motion.
 - ✅ `src/ssr.test.ts` — every docs demo is rendered on the server and hydrated (teleported markup injected where a framework would); a crash or a hydration warning fails. Found `BlessTour`'s `to="body"` teleport could not hydrate; it now waits for mount.
-- ✅ Bundle budget — the consumer check caps the whole library at 105 KB gz JS / 35 KB gz CSS (today 95.5 / 32.4, raised on purpose when the third catalog round added 5 components).
+- ✅ Bundle budget — the consumer check caps the whole library at 118 KB gz JS / 38 KB gz CSS (today 106.6 / 34.4; raised on purpose after the third catalog round, about 1.6 KB gz per component).
 - ✅ `labels` on every component that speaks English (Sortable, Kanban, Timer, SliderCaptcha, Cropper, ShortcutRecorder, CodeBlock, Gantt, Calendar, InputNumber, DataTable, DataView, OrderList, PickList), single strings as `clearLabel` / `dotsLabel` / `label`.
 - ✅ Remaining English strings made replaceable (Marquee, Uploader, Editor, Attachment, Combobox, FileInput, Pagination, Steps, Tour step name, SliderCaptcha) and Sortable page auto-scroll (2026-10-09). OrderList uses native drag-and-drop, which the browser scrolls itself.
 - ✅ `BlessSortable group` — lists trade items by drag or Alt+←/→; Esc restores every list; `transfer` event.
 - ✅ Kanban auto-scroll — a held card near the board's edge or the window's top/bottom keeps scrolling (`useAutoScroll`).
-- ✅ Third catalog round (2026-10-09, 164 → 169): `BlessSparkline`, `BlessConfetti`, `BlessInfiniteCanvas`, `BlessNodeGraph` (on the canvas), `BlessTreemap` — each with docs, demo, tests and an interaction flow. Left on the list: Annotator, Scheduler, RangeCalendar, Formula, Dock, Coachmark, OnboardingChecklist, PivotBar, SpotlightSearch.
+- ✅ Third catalog round (2026-10-09, 164 → 169): `BlessSparkline`, `BlessConfetti`, `BlessInfiniteCanvas`, `BlessNodeGraph` (on the canvas), `BlessTreemap` — each with docs, demo, tests and an interaction flow. Then the rest of the list, 169 → 176 (2026-10-09): `BlessCoachmark`, `BlessOnboardingChecklist`, `BlessDock`, `BlessFormula`, `BlessRangeCalendar`, `BlessAnnotator`, `BlessScheduler`. Not built, on purpose: PivotBar (MeterGroup already is a share-of-total bar with a legend) and SpotlightSearch (Command already has groups, keywords and shortcuts; recents and scoping would extend it).
 - ⬜ Visual regression snapshots (parked); real-device touch pass (skipped).
 
 ### Deliberately skipped

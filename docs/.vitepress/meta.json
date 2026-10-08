@@ -273,6 +273,83 @@
   ],
   "exposed": []
  },
+ "BlessAnnotator": {
+  "props": [
+   {
+    "name": "src",
+    "type": "string",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "alt",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"\"",
+    "description": ""
+   },
+   {
+    "name": "editable",
+    "type": "boolean | undefined",
+    "required": false,
+    "default": "true",
+    "description": "off: the marks are shown and selected, nothing is drawn, moved or removed"
+   },
+   {
+    "name": "label",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Annotated image\"",
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ tools: string; select: string; box: string; pin: string; add: string; remove: string; name: string; regions: string; regionName: (kind: \"box\" | \"pin\", n: number, label: string) => string; added: (name: string) => string; removed: (name: string) => string; moved: (x: number, y: number) => string; hint: string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "Region[] | undefined",
+    "required": false,
+    "default": "[]",
+    "description": "the marks, as fractions of the image"
+   },
+   {
+    "name": "selected",
+    "type": "string | null | undefined",
+    "required": false,
+    "default": "null",
+    "description": ""
+   },
+   {
+    "name": "tool",
+    "type": "\"select\" | \"box\" | \"pin\" | undefined",
+    "required": false,
+    "default": "\"box\"",
+    "description": "what a drag or click on the empty image does"
+   }
+  ],
+  "events": [
+   {
+    "name": "update:modelValue",
+    "type": "[value: Region[]]",
+    "description": ""
+   },
+   {
+    "name": "update:selected",
+    "type": "[value: string | null]",
+    "description": ""
+   },
+   {
+    "name": "update:tool",
+    "type": "[value: \"select\" | \"box\" | \"pin\"]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessAspectRatio": {
   "props": [
    {
@@ -358,6 +435,13 @@
     "required": false,
     "default": "\"Remove\"",
     "description": ""
+   },
+   {
+    "name": "errorText",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Upload failed\"",
+    "description": "shown for `state=\"error\"`"
    }
   ],
   "events": [
@@ -1479,6 +1563,69 @@
   ],
   "exposed": []
  },
+ "BlessCoachmark": {
+  "props": [
+   {
+    "name": "text",
+    "type": "string",
+    "required": true,
+    "description": "what is new, said in the bubble and to screen readers"
+   },
+   {
+    "name": "id",
+    "type": "string | undefined",
+    "required": false,
+    "description": "remembers a dismissal under this key (localStorage), so it shows once; omit to show until `dismissed` is set"
+   },
+   {
+    "name": "placement",
+    "type": "\"top-end\" | \"top-start\" | \"bottom-end\" | \"bottom-start\" | undefined",
+    "required": false,
+    "default": "\"top-end\"",
+    "description": "which corner of the wrapped element the dot sits on"
+   },
+   {
+    "name": "dismissOnUse",
+    "type": "boolean | undefined",
+    "required": false,
+    "default": "true",
+    "description": "using the wrapped element (a click inside it) counts as seen"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ dot: (text: string) => string; ok: string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "dismissed",
+    "type": "boolean | undefined",
+    "required": false,
+    "default": "false",
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "dismiss",
+    "type": "[]",
+    "description": ""
+   },
+   {
+    "name": "update:dismissed",
+    "type": "[value: boolean]",
+    "description": ""
+   }
+  ],
+  "slots": [
+   {
+    "name": "default",
+    "type": "{}",
+    "description": ""
+   }
+  ],
+  "exposed": []
+ },
  "BlessCodeBlock": {
   "props": [
    {
@@ -1736,6 +1883,12 @@
     "type": "string | undefined",
     "required": false,
     "description": "accessible name when there is no <label for>"
+   },
+   {
+    "name": "removeLabel",
+    "type": "((name: string) => string) | undefined",
+    "required": false,
+    "description": "name of a chip's remove button, from the option's label"
    },
    {
     "name": "modelValue",
@@ -2322,7 +2475,7 @@
    },
    {
     "name": "labels",
-    "type": "Partial<{ selectPage: string; rowsPerPage: string; }> | undefined",
+    "type": "Partial<{ selectPage: string; rowsPerPage: string; selectRow: (name: string) => string; }> | undefined",
     "required": false,
     "description": "names of the select-page checkbox and the page-size select"
    },
@@ -2360,13 +2513,13 @@
   ],
   "events": [
    {
-    "name": "state",
-    "type": "[s: { sortKey: string | null; sortDir: \"asc\" | \"desc\"; query: string; page: number; pageSize: number; }]",
+    "name": "update:selected",
+    "type": "[rows: T[]]",
     "description": ""
    },
    {
-    "name": "update:selected",
-    "type": "[rows: T[]]",
+    "name": "state",
+    "type": "[s: { sortKey: string | null; sortDir: \"asc\" | \"desc\"; query: string; page: number; pageSize: number; }]",
     "description": ""
    },
    {
@@ -2660,6 +2813,66 @@
   "slots": [],
   "exposed": []
  },
+ "BlessDock": {
+  "props": [
+   {
+    "name": "items",
+    "type": "BlessDockItem[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "position",
+    "type": "\"bottom\" | \"left\" | \"right\" | undefined",
+    "required": false,
+    "default": "\"bottom\"",
+    "description": "the screen edge it sits on: sets the direction it lays out, grows and is navigated in"
+   },
+   {
+    "name": "size",
+    "type": "number | undefined",
+    "required": false,
+    "default": "44",
+    "description": "px, the resting size of an icon"
+   },
+   {
+    "name": "magnification",
+    "type": "number | undefined",
+    "required": false,
+    "default": "1.6",
+    "description": "how much the icon under the pointer grows; 1 turns the effect off"
+   },
+   {
+    "name": "radius",
+    "type": "number | undefined",
+    "required": false,
+    "default": "110",
+    "description": "px of reach either side of the pointer"
+   },
+   {
+    "name": "label",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Dock\"",
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "select",
+    "type": "[item: BlessDockItem]",
+    "description": ""
+   }
+  ],
+  "slots": [
+   {
+    "name": "item",
+    "type": "{ item: BlessDockItem; }",
+    "description": ""
+   }
+  ],
+  "exposed": []
+ },
  "BlessDrawer": {
   "props": [
    {
@@ -2819,6 +3032,12 @@
     "required": false,
     "default": "\"Formatting\"",
     "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<Record<\"bold\" | \"strike\" | \"code\" | \"italic\" | \"h1\" | \"h2\" | \"h3\" | \"bulletList\" | \"orderedList\" | \"blockquote\" | \"codeBlock\" | \"hr\" | \"undo\" | \"redo\", string>> | undefined",
+    "required": false,
+    "description": "rename tools by key: `{ bold: \"Tebal\", h1: \"Judul 1\" }`"
    },
    {
     "name": "disabled",
@@ -3052,6 +3271,12 @@
     "description": "show the chosen files under the zone"
    },
    {
+    "name": "removeLabel",
+    "type": "((name: string) => string) | undefined",
+    "required": false,
+    "description": "name of a file's remove button"
+   },
+   {
     "name": "modelValue",
     "type": "File[] | undefined",
     "required": false,
@@ -3145,6 +3370,76 @@
     "description": ""
    }
   ]
+ },
+ "BlessFormula": {
+  "props": [
+   {
+    "name": "variables",
+    "type": "BlessFormulaVariable[] | undefined",
+    "required": false,
+    "default": "[]",
+    "description": ""
+   },
+   {
+    "name": "functions",
+    "type": "FormulaFns | undefined",
+    "required": false,
+    "description": "extra functions: `{ vat: (x) => x * 0.11 }`"
+   },
+   {
+    "name": "label",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Formula\"",
+    "description": ""
+   },
+   {
+    "name": "placeholder",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"price * qty\"",
+    "description": ""
+   },
+   {
+    "name": "disabled",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "locale",
+    "type": "string | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ insert: string; result: (value: string) => string; error: (e: FormulaError) => string; use: (name: string) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"\"",
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "update:modelValue",
+    "type": "[value: string]",
+    "description": ""
+   },
+   {
+    "name": "result",
+    "type": "[value: number | null]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
  },
  "BlessGallery": {
   "props": [
@@ -3490,12 +3785,12 @@
   ],
   "events": [
    {
-    "name": "remove",
+    "name": "add",
     "type": "[spot: S]",
     "description": ""
    },
    {
-    "name": "add",
+    "name": "remove",
     "type": "[spot: S]",
     "description": ""
    },
@@ -5025,6 +5320,12 @@
     "description": ""
    },
    {
+    "name": "labels",
+    "type": "Partial<{ play: string; pause: string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
     "name": "paused",
     "type": "boolean | undefined",
     "required": false,
@@ -5725,6 +6026,109 @@
   ],
   "exposed": []
  },
+ "BlessOnboardingChecklist": {
+  "props": [
+   {
+    "name": "items",
+    "type": "BlessChecklistItem[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "title",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Getting started\"",
+    "description": ""
+   },
+   {
+    "name": "persist",
+    "type": "string | undefined",
+    "required": false,
+    "description": "remember progress, collapsed state and dismissal under this key (localStorage)"
+   },
+   {
+    "name": "floating",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": "pin it to the bottom corner of the window"
+   },
+   {
+    "name": "dismissible",
+    "type": "boolean | undefined",
+    "required": false,
+    "default": "true",
+    "description": "a close button that dismisses it for good"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ progress: (done: number, total: number) => string; complete: string; dismiss: string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "done",
+    "type": "string[] | undefined",
+    "required": false,
+    "default": "[]",
+    "description": "ids of the finished steps"
+   },
+   {
+    "name": "collapsed",
+    "type": "boolean | undefined",
+    "required": false,
+    "default": "false",
+    "description": ""
+   },
+   {
+    "name": "dismissed",
+    "type": "boolean | undefined",
+    "required": false,
+    "default": "false",
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "select",
+    "type": "[item: BlessChecklistItem]",
+    "description": ""
+   },
+   {
+    "name": "dismiss",
+    "type": "[]",
+    "description": ""
+   },
+   {
+    "name": "update:dismissed",
+    "type": "[value: boolean]",
+    "description": ""
+   },
+   {
+    "name": "update:collapsed",
+    "type": "[value: boolean]",
+    "description": ""
+   },
+   {
+    "name": "complete",
+    "type": "[]",
+    "description": ""
+   },
+   {
+    "name": "update:done",
+    "type": "[value: string[]]",
+    "description": ""
+   }
+  ],
+  "slots": [
+   {
+    "name": "complete",
+    "type": "{}",
+    "description": ""
+   }
+  ],
+  "exposed": []
+ },
  "BlessOrderList": {
   "props": [
    {
@@ -5897,6 +6301,12 @@
     "required": false,
     "default": "\"Next\"",
     "description": ""
+   },
+   {
+    "name": "pageLabel",
+    "type": "((page: number) => string) | undefined",
+    "required": false,
+    "description": "name of a page link, from its number"
    },
    {
     "name": "href",
@@ -6758,6 +7168,88 @@
   "slots": [],
   "exposed": []
  },
+ "BlessRangeCalendar": {
+  "props": [
+   {
+    "name": "weekStart",
+    "type": "0 | 1 | undefined",
+    "required": false,
+    "default": "1",
+    "description": "0 = Sunday, 1 = Monday"
+   },
+   {
+    "name": "locale",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"en\"",
+    "description": ""
+   },
+   {
+    "name": "min",
+    "type": "string | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "max",
+    "type": "string | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "disabledDates",
+    "type": "((iso: string) => boolean) | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "month",
+    "type": "string | undefined",
+    "required": false,
+    "description": "month shown first (YYYY-MM); defaults to the first chosen day, else this month"
+   },
+   {
+    "name": "label",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Days\"",
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ prev: string; next: string; clear: string; summary: (days: number, blocks: number) => string; selected: (day: string) => string; cleared: (day: string) => string; hint: string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "string[] | undefined",
+    "required": false,
+    "default": "[]",
+    "description": "every chosen day, as sorted `YYYY-MM-DD`"
+   }
+  ],
+  "events": [
+   {
+    "name": "update:modelValue",
+    "type": "[value: string[]]",
+    "description": ""
+   },
+   {
+    "name": "change",
+    "type": "[blocks: DayBlock[]]",
+    "description": ""
+   }
+  ],
+  "slots": [
+   {
+    "name": "summary",
+    "type": "{ blocks: DayBlock[]; }",
+    "description": ""
+   }
+  ],
+  "exposed": []
+ },
  "BlessRating": {
   "props": [
    {
@@ -6888,6 +7380,134 @@
     "description": ""
    }
   ],
+  "exposed": []
+ },
+ "BlessScheduler": {
+  "props": [
+   {
+    "name": "view",
+    "type": "\"day\" | \"week\" | undefined",
+    "required": false,
+    "default": "\"week\"",
+    "description": ""
+   },
+   {
+    "name": "weekStart",
+    "type": "0 | 1 | undefined",
+    "required": false,
+    "default": "1",
+    "description": "0 = Sunday, 1 = Monday"
+   },
+   {
+    "name": "dayStart",
+    "type": "number | undefined",
+    "required": false,
+    "default": "7",
+    "description": "first and last hour shown (0–24)"
+   },
+   {
+    "name": "dayEnd",
+    "type": "number | undefined",
+    "required": false,
+    "default": "20",
+    "description": ""
+   },
+   {
+    "name": "snap",
+    "type": "number | undefined",
+    "required": false,
+    "default": "15",
+    "description": "minutes events snap to"
+   },
+   {
+    "name": "hourHeight",
+    "type": "number | undefined",
+    "required": false,
+    "default": "48",
+    "description": "px per hour"
+   },
+   {
+    "name": "locale",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"en\"",
+    "description": ""
+   },
+   {
+    "name": "editable",
+    "type": "boolean | undefined",
+    "required": false,
+    "default": "true",
+    "description": ""
+   },
+   {
+    "name": "label",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Schedule\"",
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ prev: string; next: string; today: string; add: string; remove: string; title: string; newEvent: string; eventName: (title: string, day: string, from: string, to: string) => string; moved: (title: string, day: string, from: string, to: string) => string; added: (title: string) => string; removed: (title: string) => string; hint: string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "ScheduleEvent[] | undefined",
+    "required": false,
+    "default": "[]",
+    "description": ""
+   },
+   {
+    "name": "date",
+    "type": "string | null | undefined",
+    "required": false,
+    "default": "null",
+    "description": "any day in the period shown"
+   },
+   {
+    "name": "selected",
+    "type": "string | null | undefined",
+    "required": false,
+    "default": "null",
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "update:modelValue",
+    "type": "[value: ScheduleEvent[]]",
+    "description": ""
+   },
+   {
+    "name": "remove",
+    "type": "[event: ScheduleEvent]",
+    "description": ""
+   },
+   {
+    "name": "update:selected",
+    "type": "[value: string | null]",
+    "description": ""
+   },
+   {
+    "name": "create",
+    "type": "[event: ScheduleEvent]",
+    "description": ""
+   },
+   {
+    "name": "change",
+    "type": "[event: ScheduleEvent]",
+    "description": ""
+   },
+   {
+    "name": "update:date",
+    "type": "[value: string | null]",
+    "description": ""
+   }
+  ],
+  "slots": [],
   "exposed": []
  },
  "BlessScrollArea": {
@@ -8362,6 +8982,12 @@
     "description": ""
    },
    {
+    "name": "goLabel",
+    "type": "((number: number, label: string) => string) | undefined",
+    "required": false,
+    "description": "name of a step you can go to, from its number and label"
+   },
+   {
     "name": "modelValue",
     "type": "number | undefined",
     "required": false,
@@ -9350,7 +9976,7 @@
    },
    {
     "name": "labels",
-    "type": "Partial<{ next: string; prev: string; done: string; skip: string; }> | undefined",
+    "type": "Partial<{ next: string; prev: string; done: string; skip: string; step: (number: number) => string; }> | undefined",
     "required": false,
     "description": ""
    },
@@ -9741,6 +10367,12 @@
     "type": "string | undefined",
     "required": false,
     "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ clear: string; upload: string; tooLarge: string; failed: string; uploaded: (name: string) => string; failedFile: (name: string, why: string) => string; cancel: (name: string) => string; remove: (name: string) => string; }> | undefined",
+    "required": false,
+    "description": "button text, item buttons and the messages said as files finish"
    }
   ],
   "events": [

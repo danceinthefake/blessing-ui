@@ -67,10 +67,10 @@ if (one > LIMIT_ONE) {
   );
   process.exit(1);
 }
-// the whole library, ~10% above today's 95.5 KB JS / 32.4 KB CSS gz: room to add components, not to bloat
+// the whole library, ~10% above today's 106.6 KB JS / 34.4 KB CSS gz: room to add components, not to bloat
 for (const [what, got, limit] of [
-  ["everything JS", all, 105_000],
-  ["everything CSS", allCss, 35_000],
+  ["everything JS", all, 118_000],
+  ["everything CSS", allCss, 38_000],
 ]) {
   if (got > limit) {
     console.error(`✗ ${what} is ${got} B gz (> ${limit}) — raise the budget on purpose or trim`);
