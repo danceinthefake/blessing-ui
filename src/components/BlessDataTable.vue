@@ -26,7 +26,11 @@ const props = withDefaults(
     /** accessible name of the search box */
     searchLabel?: string;
     /** names of the select-page checkbox and the page-size select */
-    labels?: Partial<{ selectPage: string; rowsPerPage: string }>;
+    labels?: Partial<{
+      selectPage: string;
+      rowsPerPage: string;
+      selectRow: (name: string) => string;
+    }>;
     emptyText?: string;
     caption?: string;
     /** rows are one server page; sort / query / page are yours to fetch with (see `state` event) */
@@ -46,6 +50,7 @@ const props = withDefaults(
 const text = computed(() => ({
   selectPage: "Select page",
   rowsPerPage: "Rows per page",
+  selectRow: (n: string) => `Select ${n}`,
   ...props.labels,
 }));
 const emit = defineEmits<{
@@ -219,7 +224,7 @@ defineExpose({ state, selectedRows: dt.selectedRows });
             <td v-if="selectable" class="bless-table__cell bless-datatable__check" @click.stop>
               <BlessCheckbox
                 :model-value="state.selected.has(dt.keyOf(row))"
-                :aria-label="`Select ${rowName(row, i)}`"
+                :aria-label="text.selectRow(rowName(row, i))"
                 @update:model-value="onToggle(row)"
               />
             </td>

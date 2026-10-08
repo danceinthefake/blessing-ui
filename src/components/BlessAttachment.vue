@@ -20,8 +20,10 @@ const props = withDefaults(
     size?: "sm" | "md";
     removable?: boolean;
     removeLabel?: string;
+    /** shown for `state="error"` */
+    errorText?: string;
   }>(),
-  { state: "idle", size: "md", removeLabel: "Remove" },
+  { state: "idle", size: "md", removeLabel: "Remove", errorText: "Upload failed" },
 );
 const emit = defineEmits<{ remove: [] }>();
 const ext = computed(() => props.name.split(".").pop()?.slice(0, 4).toUpperCase() ?? "");
@@ -54,7 +56,7 @@ const ext = computed(() => props.name.split(".").pop()?.slice(0, 4).toUpperCase(
       <a v-if="href" :href class="bless-attachment__name bless-attachment__link">{{ name }}</a>
       <span v-else class="bless-attachment__name">{{ name }}</span>
       <span v-if="description || state === 'error'" class="bless-attachment__desc">
-        <slot name="description">{{ state === "error" ? "Upload failed" : description }}</slot>
+        <slot name="description">{{ state === "error" ? errorText : description }}</slot>
       </span>
       <BlessProgress
         v-if="state === 'uploading' && progress != null"

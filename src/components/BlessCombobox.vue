@@ -21,6 +21,8 @@ const props = withDefaults(
     size?: "sm" | "md" | "lg";
     /** accessible name when there is no <label for> */
     label?: string;
+    /** name of a chip's remove button, from the option's label */
+    removeLabel?: (name: string) => string;
   }>(),
   { emptyText: "No results.", size: "md" },
 );
@@ -162,7 +164,7 @@ function onBlur(e: FocusEvent) {
           <button
             type="button"
             class="bless-combobox__chip-x"
-            :aria-label="`Remove ${labelOf(v)}`"
+            :aria-label="(removeLabel ?? ((n: string) => `Remove ${n}`))(labelOf(v))"
             tabindex="-1"
             @click.stop="remove(v)"
           >

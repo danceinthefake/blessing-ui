@@ -14,6 +14,8 @@ const props = withDefaults(
     label?: string;
     prevLabel?: string;
     nextLabel?: string;
+    /** name of a page link, from its number */
+    pageLabel?: (page: number) => string;
     /** render <a href> using this fn instead of buttons */
     href?: (page: number) => string;
   }>(),
@@ -68,7 +70,7 @@ function go(p: number) {
           :class="{ 'bless-pagination__btn--current': it === page }"
           :color="it === page ? 'accent' : 'none'"
           :aria-current="it === page ? 'page' : undefined"
-          :aria-label="`Page ${it}`"
+          :aria-label="(pageLabel ?? ((n: number) => `Page ${n}`))(it)"
           @click="!href && go(it)"
           >{{ it }}</BlessSkew
         >

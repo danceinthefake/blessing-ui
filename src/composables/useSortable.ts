@@ -1,4 +1,5 @@
-import { ref, type Ref } from "vue";
+import { onBeforeUnmount, ref, type Ref } from "vue";
+import { useAutoScroll } from "./useAutoScroll";
 
 /** `arr` with the item at `from` moved to `to` (a copy). */
 export function moveItem<T>(arr: readonly T[], from: number, to: number): T[] {
@@ -107,7 +108,40 @@ export function useSortable(
 ) {
   const drag = ref<number | null>(null);
   const over = ref<number | null>(null);
-  const reset = () => (drag.value = over.value = null);
+  let at = { x: 0, y: 0 };
+  // a held item near the top or bottom of the window keeps scrolling the page, and the slot is found again
+  const auto = useAutoScroll(
+    () => null,
+    () => place(at.x, at.y),
+  );
+  onBeforeUnmount(auto.stop);
+  const reset = () => {
+    auto.stop();
+    drag.value = over.value = null;
+  };
+  function place(x: number, y: number) {
+    if (drag.value == null) return;
+    const g = group?.name();
+    if (g) {
+      const others = membersOf(g).filter((m) => m !== group!.self);
+      others.forEach((m) => (m.drop.value = null));
+      const target = others.find((m) => {
+        const r = m.root.value?.getBoundingClientRect();
+        return r && x >= r.left && x <= r.right && y >= r.top && y <= r.bottom;
+      });
+      if (target) {
+        target.drop.value = slotAt(target, x, y, selector);
+        over.value = null;
+        return;
+      }
+    }
+    const els = root.value?.querySelectorAll<HTMLElement>(selector) ?? [];
+    over.value = nearestIndex(
+      Array.from(els, (el) => el.getBoundingClientRect()),
+      x,
+      y,
+    );
+  }
   return {
     drag,
     over,
@@ -115,35 +149,14 @@ export function useSortable(
       if (e.button) return;
       (e.currentTarget as HTMLElement).setPointerCapture?.(e.pointerId);
       drag.value = over.value = i;
+      at = { x: e.clientX, y: e.clientY };
+      auto.point(e.clientX, e.clientY);
+      auto.start();
     },
     track(e: PointerEvent) {
-      if (drag.value == null) return;
-      const g = group?.name();
-      if (g) {
-        const others = membersOf(g).filter((m) => m !== group!.self);
-        others.forEach((m) => (m.drop.value = null));
-        const target = others.find((m) => {
-          const r = m.root.value?.getBoundingClientRect();
-          return (
-            r &&
-            e.clientX >= r.left &&
-            e.clientX <= r.right &&
-            e.clientY >= r.top &&
-            e.clientY <= r.bottom
-          );
-        });
-        if (target) {
-          target.drop.value = slotAt(target, e.clientX, e.clientY, selector);
-          over.value = null;
-          return;
-        }
-      }
-      const els = root.value?.querySelectorAll<HTMLElement>(selector) ?? [];
-      over.value = nearestIndex(
-        Array.from(els, (el) => el.getBoundingClientRect()),
-        e.clientX,
-        e.clientY,
-      );
+      at = { x: e.clientX, y: e.clientY };
+      auto.point(e.clientX, e.clientY);
+      place(e.clientX, e.clientY);
     },
     drop() {
       const g = group?.name();

@@ -168,3 +168,21 @@ describe("group: two lists trade items", () => {
     host.unmount();
   });
 });
+
+test("a grip held near the bottom of the window scrolls the page, and letting go stops it", async () => {
+  let frame: FrameRequestCallback = () => {};
+  vi.spyOn(window, "requestAnimationFrame").mockImplementation((cb) => ((frame = cb), 7));
+  const cancel = vi.spyOn(window, "cancelAnimationFrame").mockImplementation(() => {});
+  const by = vi.spyOn(window, "scrollBy").mockImplementation(() => {});
+  w = mk();
+  const g = grip(0)!.element;
+  await ptr(g, "pointerdown", 10, 10);
+  await ptr(g, "pointermove", 10, window.innerHeight - 4);
+  frame(0);
+  expect(by).toHaveBeenCalled();
+  expect(by.mock.calls[0]![1]).toBeGreaterThan(0); // downward
+  cancel.mockClear();
+  await ptr(g, "pointerup", 10, window.innerHeight - 4);
+  expect(cancel).toHaveBeenCalled();
+  vi.restoreAllMocks();
+});

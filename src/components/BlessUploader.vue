@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { nextTick, onBeforeUnmount, ref } from "vue";
+import { computed, nextTick, onBeforeUnmount, ref } from "vue";
 import BlessButton from "./BlessButton.vue";
 import BlessFileInput from "./BlessFileInput.vue";
 import BlessProgress from "./BlessProgress.vue";
@@ -29,9 +29,36 @@ const props = withDefaults(
     maxSize?: number;
     label?: string;
     hint?: string;
+    /** button text, item buttons and the messages said as files finish */
+    labels?: Partial<{
+      clear: string;
+      upload: string;
+      tooLarge: string;
+      failed: string;
+      uploaded: (name: string) => string;
+      failedFile: (name: string, why: string) => string;
+      cancel: (name: string) => string;
+      remove: (name: string) => string;
+    }>;
   }>(),
-  { field: "file", multiple: true, auto: false, label: "Drop files here or click to browse" },
+  {
+    field: "file",
+    multiple: true,
+    auto: false,
+    label: "Drop files here or click to browse",
+  },
 );
+const text = computed(() => ({
+  clear: "Clear",
+  upload: "Upload",
+  tooLarge: "Too large",
+  failed: "Upload failed",
+  uploaded: (n: string) => `${n} uploaded`,
+  failedFile: (n: string, why: string) => `${n}: ${why}`,
+  cancel: (n: string) => `Cancel ${n}`,
+  remove: (n: string) => `Remove ${n}`,
+  ...props.labels,
+}));
 const emit = defineEmits<{
   /** fires per file when `url` is not set: call `progress(n)` then `done()` / `fail(msg)` */
   upload: [
@@ -51,7 +78,13 @@ const live = ref(""); // finished and failed uploads are announced; progress tic
 function onPick(files: File[]) {
   for (const f of files) {
     if (props.maxSize && f.size > props.maxSize) {
-      queue.value.push({ id: ++seq, file: f, progress: 0, status: "error", error: "Too large" });
+      queue.value.push({
+        id: ++seq,
+        file: f,
+        progress: 0,
+        status: "error",
+        error: text.value.tooLarge,
+      });
       continue;
     }
     queue.value.push({ id: ++seq, file: f, progress: 0, status: "queued" });
@@ -65,13 +98,13 @@ function send(item: BlessUpload) {
   const done = () => {
     item.status = "done";
     item.progress = 100;
-    live.value = `${item.file.name} uploaded`;
+    live.value = text.value.uploaded(item.file.name);
     emit("done", item);
   };
   const fail = (msg?: string) => {
     item.status = "error";
-    item.error = msg ?? "Upload failed";
-    live.value = `${item.file.name}: ${item.error}`;
+    item.error = msg ?? text.value.failed;
+    live.value = text.value.failedFile(item.file.name, item.error);
     emit("error", item);
   };
   if (!props.url) return void emit("upload", item, progress, done, fail);
@@ -147,7 +180,7 @@ defineExpose({ start, clear, queue });
         <button
           type="button"
           class="bless-uploader__x"
-          :aria-label="`${it.status === 'uploading' ? 'Cancel' : 'Remove'} ${it.file.name}`"
+          :aria-label="(it.status === 'uploading' ? text.cancel : text.remove)(it.file.name)"
           @click="it.status === 'uploading' ? cancel(it) : remove(it)"
         >
           ×
@@ -157,13 +190,13 @@ defineExpose({ start, clear, queue });
     <span class="bless-uploader__live" aria-live="polite">{{ live }}</span>
     <div v-if="queue.length" class="bless-uploader__actions">
       <slot name="actions" :start :clear :queue>
-        <BlessButton size="sm" variant="outline" @click="clear">Clear</BlessButton>
+        <BlessButton size="sm" variant="outline" @click="clear">{{ text.clear }}</BlessButton>
         <BlessButton
           v-if="!auto"
           size="sm"
           :disabled="!queue.some((i) => i.status === 'queued')"
           @click="start"
-          >Upload</BlessButton
+          >{{ text.upload }}</BlessButton
         >
       </slot>
     </div>

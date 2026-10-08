@@ -1,5 +1,6 @@
 // `labels` swaps the built-in English for another language: announcements, button text, aria-labels.
 import { mount } from "@vue/test-utils";
+import { nextTick } from "vue";
 import BlessSortable from "./components/BlessSortable.vue";
 import BlessKanban from "./components/BlessKanban.vue";
 import BlessTimer from "./components/BlessTimer.vue";
@@ -10,6 +11,15 @@ import BlessInputNumber from "./components/BlessInputNumber.vue";
 import BlessOrderList from "./components/BlessOrderList.vue";
 import BlessPickList from "./components/BlessPickList.vue";
 import BlessLoadingBar from "./components/BlessLoadingBar.vue";
+import BlessAttachment from "./components/BlessAttachment.vue";
+import BlessCombobox from "./components/BlessCombobox.vue";
+import BlessFileInput from "./components/BlessFileInput.vue";
+import BlessDataTable from "./components/BlessDataTable.vue";
+import BlessMarquee from "./components/BlessMarquee.vue";
+import BlessPagination from "./components/BlessPagination.vue";
+import BlessSteps from "./components/BlessSteps.vue";
+import BlessUploader from "./components/BlessUploader.vue";
+import BlessEditor from "./components/BlessEditor.vue";
 
 const space = { key: " " };
 
@@ -101,4 +111,74 @@ test("OrderList and PickList: row buttons and announcements", async () => {
     props: { labels: { moveAll: (to: string) => `Semua ke ${to}` }, targetLabel: "Pilihan" },
   });
   expect(p.find("[aria-label='Semua ke Pilihan']").exists()).toBe(true);
+});
+
+test("names and texts that were fixed English can be replaced", async () => {
+  expect(
+    mount(BlessAttachment, { props: { name: "a.txt", state: "error", errorText: "Gagal" } }).text(),
+  ).toContain("Gagal");
+
+  const cb = mount(BlessCombobox, {
+    props: {
+      options: [{ value: "a", label: "Apel" }],
+      multiple: true,
+      modelValue: ["a"],
+      removeLabel: (n: string) => `Hapus ${n}`,
+    },
+  });
+  expect(cb.find("[aria-label='Hapus Apel']").exists()).toBe(true);
+
+  const fi = mount(BlessFileInput, {
+    props: { modelValue: [new File(["x"], "f.txt")], removeLabel: (n: string) => `Buang ${n}` },
+  });
+  expect(fi.find("[aria-label='Buang f.txt']").exists()).toBe(true);
+
+  const dt = mount(BlessDataTable, {
+    props: {
+      rows: [{ id: 1, name: "Rani" }],
+      rowKey: "id",
+      columns: [{ key: "name", label: "Name" }],
+      selectable: true,
+      labels: { selectRow: (n: string) => `Pilih ${n}`, selectPage: "Pilih halaman" },
+    },
+  });
+  expect(dt.find("[aria-label='Pilih halaman']").exists()).toBe(true);
+  expect(dt.find("[aria-label^='Pilih ']:not([aria-label='Pilih halaman'])").exists()).toBe(true);
+
+  const mq = mount(BlessMarquee, { props: { labels: { pause: "Jeda" } } });
+  expect(mq.find("button").text()).toBe("Jeda");
+
+  const pg = mount(BlessPagination, {
+    props: { total: 5, modelValue: 1, pageLabel: (n: number) => `Halaman ${n}` },
+  });
+  expect(pg.find("[aria-label='Halaman 2']").exists()).toBe(true);
+
+  const st = mount(BlessSteps, {
+    props: {
+      steps: [{ label: "A" }, { label: "B" }, { label: "C" }],
+      modelValue: 2,
+      clickable: true,
+      goLabel: (n: number, l: string) => `Ke langkah ${n}: ${l}`,
+    },
+  });
+  expect(st.find("[aria-label='Ke langkah 1: A']").exists()).toBe(true);
+
+  const up = mount(BlessUploader, {
+    props: {
+      labels: { clear: "Kosongkan", upload: "Unggah", remove: (n: string) => `Buang ${n}` },
+    },
+  });
+  up.findComponent({ name: "BlessFileInput" }).vm.$emit("update:modelValue", [
+    new File(["x"], "a.txt"),
+  ]);
+  await nextTick();
+  expect(up.text()).toContain("Kosongkan");
+  expect(up.text()).toContain("Unggah");
+  expect(up.find("[aria-label='Buang a.txt']").exists()).toBe(true);
+
+  const ed = mount(BlessEditor, {
+    props: { editor: null, tools: ["bold", "italic"], labels: { bold: "Tebal" } },
+  });
+  expect(ed.find("[aria-label=Tebal]").exists()).toBe(true);
+  expect(ed.find("[aria-label=Italic]").exists()).toBe(true);
 });

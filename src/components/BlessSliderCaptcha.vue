@@ -158,7 +158,9 @@ function onKey(e: KeyboardEvent) {
       ></span>
     </div>
     <div ref="track" class="bless-captcha__track">
-      <span :id="`${id}-l`" class="bless-captcha__label">{{ verified ? "Verified" : label }}</span>
+      <span :id="`${id}-l`" class="bless-captcha__label">{{
+        verified ? text.verified : label
+      }}</span>
       <button
         ref="handleEl"
         type="button"

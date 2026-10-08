@@ -43,6 +43,7 @@ A list or grid whose order the user sets by hand — a playlist, a dashboard lay
 
 - Pointer drag works with mouse, touch and pen (the grip sets `touch-action: none`, so the page still scrolls when you swipe elsewhere). A line marks where the item will land; the order changes on release.
 - Keyboard: focus a grip, **Space** or **Enter** grabs the item, **← ↑** and **→ ↓** move it (mirrored under RTL), **Space** drops it, **Esc** puts everything back. Each step is announced.
+- Holding a grip near the top or bottom of the window scrolls the page, so a long list can be dragged across.
 - `:columns="3"` lays the items out as a grid; the drop marker turns vertical.
 - `group="name"` on two or more lists lets them trade items: drag a grip over another list (an empty one shows a dashed outline), or hold an item and press **Alt+←** / **Alt+→** to send it to the neighbouring list, where it stays held. **Esc** puts every list in the group back. Each list keeps its own `v-model`; the sending list emits `transfer` with `(item, from, to)`.
 - Pass `rowKey` when items have an id, so rows keep their state as they move.

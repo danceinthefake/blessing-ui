@@ -13,6 +13,8 @@ withDefaults(
     /** completed steps are buttons that emit select; "all" makes every step one */
     clickable?: boolean | "all";
     label?: string;
+    /** name of a step you can go to, from its number and label */
+    goLabel?: (number: number, label: string) => string;
   }>(),
   { orientation: "horizontal", label: "Progress" },
 );
@@ -38,7 +40,11 @@ const canGo = (i: number, clickable: boolean | "all" | undefined, cur: number) =
         :is="canGo(i, clickable, current) ? 'button' : 'div'"
         :type="canGo(i, clickable, current) ? 'button' : undefined"
         class="bless-steps__marker"
-        :aria-label="canGo(i, clickable, current) ? `Go to step ${i + 1}: ${s.label}` : undefined"
+        :aria-label="
+          canGo(i, clickable, current)
+            ? (goLabel ?? ((n: number, l: string) => `Go to step ${n}: ${l}`))(i + 1, s.label)
+            : undefined
+        "
         @click="canGo(i, clickable, current) && (emit('select', i), (current = i))"
       >
         <span aria-hidden="true">{{ i < current ? "✓" : i + 1 }}</span>

@@ -17,7 +17,13 @@ export interface BlessTourStep {
 const props = withDefaults(
   defineProps<{
     steps: BlessTourStep[];
-    labels?: Partial<{ next: string; prev: string; done: string; skip: string }>;
+    labels?: Partial<{
+      next: string;
+      prev: string;
+      done: string;
+      skip: string;
+      step: (number: number) => string;
+    }>;
     /** dim the page and cut a hole around the target */
     spotlight?: boolean;
   }>(),
@@ -32,6 +38,7 @@ const L = computed(() => ({
   prev: "Back",
   done: "Done",
   skip: "Skip",
+  step: (n: number) => `Step ${n}`,
   ...props.labels,
 }));
 const cur = computed(() => props.steps[step.value]);
@@ -101,7 +108,7 @@ const hole = computed(() => {
         :class="[`bless-tour--${side}`, { 'bless-tour--centred': !anchor }]"
         role="dialog"
         aria-modal="false"
-        :aria-label="cur.title ?? `Step ${step + 1}`"
+        :aria-label="cur.title ?? L.step(step + 1)"
         tabindex="-1"
         :style="anchor ? { left: `${x}px`, top: `${y}px` } : undefined"
         @keydown.esc.prevent="close(false)"

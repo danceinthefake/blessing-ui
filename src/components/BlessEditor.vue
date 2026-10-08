@@ -11,7 +11,7 @@ export interface BlessEditorLike {
 }
 type Editor = BlessEditorLike;
 
-import { ref } from "vue";
+import { computed, ref } from "vue";
 import { useRovingFocus } from "../composables/useRovingFocus";
 
 defineOptions({ name: "BlessEditor" });
@@ -35,12 +35,14 @@ export type BlessEditorTool =
   | "redo"
   | "|";
 
-withDefaults(
+const props = withDefaults(
   defineProps<{
     /** the Tiptap editor from useEditor(); the content goes in the default slot as <EditorContent :editor /> */
     editor: Editor | null | undefined;
     tools?: BlessEditorTool[];
     label?: string;
+    /** rename tools by key: `{ bold: "Tebal", h1: "Judul 1" }` */
+    labels?: Partial<Record<Exclude<BlessEditorTool, "|">, string>>;
     disabled?: boolean;
     /** min height of the writing area */
     minHeight?: string;
@@ -76,6 +78,7 @@ type Def = {
   active?: (e: Editor) => boolean;
   can?: (e: Editor) => boolean;
 };
+const titleOf = (t: Exclude<BlessEditorTool, "|">) => props.labels?.[t] ?? defs[t].title;
 const c = (e: Editor) => e.chain().focus();
 const defs: Record<Exclude<BlessEditorTool, "|">, Def> = {
   bold: {
@@ -165,8 +168,8 @@ const defs: Record<Exclude<BlessEditorTool, "|">, Def> = {
             type="button"
             class="bless-editor__tool"
             :class="{ 'bless-editor__tool--on': editor && defs[t].active?.(editor) }"
-            :title="defs[t].title"
-            :aria-label="defs[t].title"
+            :title="titleOf(t)"
+            :aria-label="titleOf(t)"
             :aria-pressed="defs[t].active ? !!(editor && defs[t].active(editor)) : undefined"
             :disabled="disabled || !editor || (defs[t].can ? !defs[t].can(editor) : false)"
             @mousedown.prevent

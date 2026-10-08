@@ -6,6 +6,8 @@
 - **Fix:** `BlessTour` could not hydrate in a server-rendered app (its teleport to `body`); it now renders after mount.
 - **`labels` prop** on Sortable, Kanban, Timer, SliderCaptcha, Cropper, ShortcutRecorder, CodeBlock, Gantt, Calendar, InputNumber, DataTable, DataView, OrderList and PickList: translate buttons, hints and screen-reader announcements. Single strings: `clearLabel` (DatePicker), `dotsLabel` (Carousel), `label` (LoadingBar).
 - **`BlessSortable` `group`:** lists with the same group name trade items by drag or Alt+←/→ (Esc restores every list); new `transfer` event.
+- **More of the built-in wording is replaceable:** `labels` on Marquee, Uploader and Editor (by tool key); `errorText` (Attachment), `removeLabel` (Combobox, FileInput), `pageLabel` (Pagination), `goLabel` (Steps), and a visible "Verified" in SliderCaptcha.
+- **Sortable** scrolls the page while a grip is held near the window's top or bottom.
 - **Kanban:** a held card near the board's edge scrolls it; new `useAutoScroll` composable.
 
 ## 0.2.0 — 2026-10-03

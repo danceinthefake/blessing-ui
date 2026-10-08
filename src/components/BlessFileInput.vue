@@ -16,6 +16,8 @@ const props = withDefaults(
     hint?: string;
     /** show the chosen files under the zone */
     list?: boolean;
+    /** name of a file's remove button */
+    removeLabel?: (name: string) => string;
   }>(),
   { label: "Drop files here or click to browse", list: true },
 );
@@ -104,7 +106,7 @@ const kb = (n: number) =>
         <button
           type="button"
           class="bless-file__remove"
-          :aria-label="`Remove ${f.name}`"
+          :aria-label="(removeLabel ?? ((n: string) => `Remove ${n}`))(f.name)"
           @click="remove(i)"
         >
           ×

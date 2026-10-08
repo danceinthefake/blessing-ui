@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onBeforeUnmount, onMounted, ref } from "vue";
+import { computed, onBeforeUnmount, onMounted, ref } from "vue";
 import { reducedMotion } from "../composables/useMedia";
 
 defineOptions({ name: "BlessMarquee" });
@@ -15,9 +15,11 @@ const props = withDefaults(
     /** show the Pause button (needed when it moves for more than five seconds, WCAG 2.2.2) */
     controls?: boolean;
     label?: string;
+    labels?: Partial<{ play: string; pause: string }>;
   }>(),
   { speed: 40, pauseOnHover: true, controls: true, label: "Scrolling items" },
 );
+const text = computed(() => ({ play: "Play", pause: "Pause", ...props.labels }));
 /** true while paused by the button */
 const paused = defineModel<boolean>("paused", { default: false });
 
@@ -67,7 +69,7 @@ onBeforeUnmount(() => ro?.disconnect());
       :aria-pressed="paused"
       @click="paused = !paused"
     >
-      {{ paused ? "Play" : "Pause" }}
+      {{ paused ? text.play : text.pause }}
     </button>
   </div>
 </template>
