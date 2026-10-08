@@ -20,8 +20,16 @@ const props = withDefaults(
     /** prefer native <input type=date> on coarse pointers (touch) */
     nativeOnTouch?: boolean;
     size?: "sm" | "md" | "lg";
+    /** accessible name of the clear button */
+    clearLabel?: string;
   }>(),
-  { locale: "ja-JP", nativeOnTouch: true, size: "md", placeholder: "Select date" },
+  {
+    locale: "ja-JP",
+    nativeOnTouch: true,
+    size: "md",
+    placeholder: "Select date",
+    clearLabel: "Clear date",
+  },
 );
 
 const model = defineModel<string | [string, string] | undefined>();
@@ -117,7 +125,7 @@ function clear() {
         v-if="text && !disabled"
         type="button"
         class="bless-datepicker__clear"
-        aria-label="Clear date"
+        :aria-label="clearLabel"
         @click="clear"
       >
         ×

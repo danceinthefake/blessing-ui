@@ -17,9 +17,11 @@ const props = withDefaults(
     disabledDates?: (iso: string) => boolean;
     /** month shown initially (YYYY-MM); defaults to model or today */
     month?: string;
+    labels?: Partial<{ prev: string; next: string }>;
   }>(),
   { weekStart: 1, locale: "ja-JP" },
 );
+const text = computed(() => ({ prev: "Previous month", next: "Next month", ...props.labels }));
 
 const model = defineModel<string | [string, string] | undefined>();
 const id = useId();
@@ -143,7 +145,7 @@ watch(
       <button
         type="button"
         class="bless-calendar__nav"
-        aria-label="Previous month"
+        :aria-label="text.prev"
         @click="shiftMonth(-1)"
       >
         <span aria-hidden="true">‹</span>
@@ -152,7 +154,7 @@ watch(
       <button
         type="button"
         class="bless-calendar__nav"
-        aria-label="Next month"
+        :aria-label="text.next"
         @click="shiftMonth(1)"
       >
         <span aria-hidden="true">›</span>

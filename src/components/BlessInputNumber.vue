@@ -23,9 +23,12 @@ const props = withDefaults(
     disabled?: boolean;
     invalid?: boolean;
     label?: string;
+    /** names of the − and + buttons */
+    labels?: Partial<{ decrease: string; increase: string }>;
   }>(),
   { step: 1, buttons: true, size: "md" },
 );
+const text = computed(() => ({ decrease: "Decrease", increase: "Increase", ...props.labels }));
 const model = defineModel<number | null>({ default: null });
 const id = useFieldId(props);
 const fs = useFieldState();
@@ -97,7 +100,7 @@ function onKey(e: KeyboardEvent) {
       v-if="buttons"
       type="button"
       class="bless-number__btn"
-      aria-label="Decrease"
+      :aria-label="text.decrease"
       :disabled="disabled || (min != null && (model ?? 0) <= min)"
       tabindex="-1"
       @click="nudge(-1)"
@@ -132,7 +135,7 @@ function onKey(e: KeyboardEvent) {
       v-if="buttons"
       type="button"
       class="bless-number__btn"
-      aria-label="Increase"
+      :aria-label="text.increase"
       :disabled="disabled || (max != null && (model ?? 0) >= max)"
       tabindex="-1"
       @click="nudge(1)"

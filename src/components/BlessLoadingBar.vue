@@ -3,8 +3,14 @@ import { loadingBarState, useLoadingBar } from "../composables/useLoadingBar";
 
 defineOptions({ name: "BlessLoadingBar" });
 withDefaults(
-  defineProps<{ height?: string; position?: "top" | "bottom"; color?: "accent" | "text" }>(),
+  defineProps<{
+    height?: string;
+    position?: "top" | "bottom";
+    color?: "accent" | "text";
+    label?: string;
+  }>(),
   {
+    label: "Loading",
     height: "3px",
     position: "top",
     color: "accent",
@@ -26,7 +32,7 @@ useLoadingBar(); // ensures the state exists
     :aria-valuenow="loadingBarState.active ? Math.round(loadingBarState.progress) : undefined"
     aria-valuemin="0"
     aria-valuemax="100"
-    aria-label="Loading"
+    :aria-label="label"
     :aria-hidden="loadingBarState.active ? undefined : 'true'"
   >
     <span class="bless-loadingbar__bar" />

@@ -5,6 +5,11 @@ import BlessKanban from "./components/BlessKanban.vue";
 import BlessTimer from "./components/BlessTimer.vue";
 import BlessShortcutRecorder from "./components/BlessShortcutRecorder.vue";
 import BlessCodeBlock from "./components/BlessCodeBlock.vue";
+import BlessCalendar from "./components/BlessCalendar.vue";
+import BlessInputNumber from "./components/BlessInputNumber.vue";
+import BlessOrderList from "./components/BlessOrderList.vue";
+import BlessPickList from "./components/BlessPickList.vue";
+import BlessLoadingBar from "./components/BlessLoadingBar.vue";
 
 const space = { key: " " };
 
@@ -65,4 +70,35 @@ test("ShortcutRecorder: button name and the recording prompt", async () => {
 test("CodeBlock: copy button", () => {
   const w = mount(BlessCodeBlock, { props: { code: "x", labels: { copy: "Salin" } } });
   expect(w.find(".bless-code__copy").text()).toBe("Salin");
+});
+
+test("Calendar, InputNumber and LoadingBar: button and bar names", () => {
+  const c = mount(BlessCalendar, {
+    props: { labels: { prev: "Bulan lalu", next: "Bulan depan" } },
+  });
+  expect(c.find(".bless-calendar__nav").attributes("aria-label")).toBe("Bulan lalu");
+  const n = mount(BlessInputNumber, { props: { labels: { increase: "Tambah" } } });
+  expect(n.find("[aria-label=Tambah]").exists()).toBe(true);
+  expect(
+    mount(BlessLoadingBar, { props: { label: "Memuat" } })
+      .find("[aria-label=Memuat]")
+      .exists(),
+  ).toBe(true);
+});
+
+test("OrderList and PickList: row buttons and announcements", async () => {
+  const o = mount(BlessOrderList, {
+    props: {
+      modelValue: ["a", "b"],
+      labels: { up: (p: number) => `Naik ${p}`, moved: (p: number) => `Ke ${p}` },
+    },
+  });
+  const up = o.find("[aria-label='Naik 2']");
+  expect(up.exists()).toBe(true);
+  await up.trigger("click");
+  expect(o.find(".bless-order__live, [aria-live]").text()).toBe("Ke 1");
+  const p = mount(BlessPickList, {
+    props: { labels: { moveAll: (to: string) => `Semua ke ${to}` }, targetLabel: "Pilihan" },
+  });
+  expect(p.find("[aria-label='Semua ke Pilihan']").exists()).toBe(true);
 });

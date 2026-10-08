@@ -1,5 +1,5 @@
 <script setup lang="ts" generic="T extends string | number">
-import { nextTick, ref, type Ref } from "vue";
+import { computed, nextTick, ref, type Ref } from "vue";
 import BlessButton from "./BlessButton.vue";
 import BlessListbox from "./BlessListbox.vue";
 import type { BlessOption } from "./select";
@@ -7,13 +7,28 @@ import type { BlessOption } from "./select";
 defineOptions({ name: "BlessPickList" });
 
 const props = withDefaults(
-  defineProps<{ sourceLabel?: string; targetLabel?: string; rows?: number }>(),
+  defineProps<{
+    sourceLabel?: string;
+    targetLabel?: string;
+    rows?: number;
+    labels?: Partial<{
+      moveSelected: (to: string) => string;
+      moveAll: (to: string) => string;
+      moved: (count: number, to: string) => string;
+    }>;
+  }>(),
   {
     sourceLabel: "Available",
     targetLabel: "Selected",
     rows: 6,
   },
 );
+const text = computed(() => ({
+  moveSelected: (to: string) => `Move selected to ${to}`,
+  moveAll: (to: string) => `Move all to ${to}`,
+  moved: (n: number, to: string) => `Moved ${n} to ${to}`,
+  ...props.labels,
+}));
 const source = defineModel<BlessOption<T>[]>("source", { default: () => [] });
 const target = defineModel<BlessOption<T>[]>("target", { default: () => [] });
 const pickS = ref([]) as Ref<T[]>;
@@ -30,7 +45,7 @@ function transfer(from: "source" | "target", values: T[]) {
   pickT.value = [];
   // the clicked button is now disabled and would drop focus: follow the items to their list
   const to = from === "source" ? props.targetLabel : props.sourceLabel;
-  live.value = `Moved ${moving.length} to ${to}`;
+  live.value = text.value.moved(moving.length, to);
   nextTick(() =>
     root.value?.querySelectorAll<HTMLElement>("[role=listbox]")[from === "source" ? 1 : 0]?.focus(),
   );
@@ -48,7 +63,7 @@ function transfer(from: "source" | "target", values: T[]) {
         size="sm"
         variant="outline"
         :disabled="!pickS.length"
-        :aria-label="`Move selected to ${targetLabel}`"
+        :aria-label="text.moveSelected(targetLabel)"
         @click="transfer('source', pickS)"
         ><span class="bless-picklist__arrow" aria-hidden="true">›</span></BlessButton
       >
@@ -56,7 +71,7 @@ function transfer(from: "source" | "target", values: T[]) {
         size="sm"
         variant="outline"
         :disabled="!source.length"
-        :aria-label="`Move all to ${targetLabel}`"
+        :aria-label="text.moveAll(targetLabel)"
         @click="
           transfer(
             'source',
@@ -69,7 +84,7 @@ function transfer(from: "source" | "target", values: T[]) {
         size="sm"
         variant="outline"
         :disabled="!pickT.length"
-        :aria-label="`Move selected to ${sourceLabel}`"
+        :aria-label="text.moveSelected(sourceLabel)"
         @click="transfer('target', pickT)"
         ><span class="bless-picklist__arrow" aria-hidden="true">‹</span></BlessButton
       >
@@ -77,7 +92,7 @@ function transfer(from: "source" | "target", values: T[]) {
         size="sm"
         variant="outline"
         :disabled="!target.length"
-        :aria-label="`Move all to ${sourceLabel}`"
+        :aria-label="text.moveAll(sourceLabel)"
         @click="
           transfer(
             'target',

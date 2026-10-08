@@ -25,6 +25,8 @@ const props = withDefaults(
     searchPlaceholder?: string;
     /** accessible name of the search box */
     searchLabel?: string;
+    /** names of the select-page checkbox and the page-size select */
+    labels?: Partial<{ selectPage: string; rowsPerPage: string }>;
     emptyText?: string;
     caption?: string;
     /** rows are one server page; sort / query / page are yours to fetch with (see `state` event) */
@@ -41,6 +43,11 @@ const props = withDefaults(
     emptyText: "No rows.",
   },
 );
+const text = computed(() => ({
+  selectPage: "Select page",
+  rowsPerPage: "Rows per page",
+  ...props.labels,
+}));
 const emit = defineEmits<{
   "update:selected": [rows: T[]];
   rowClick: [row: T];
@@ -153,7 +160,7 @@ defineExpose({ state, selectedRows: dt.selectedRows });
                 ref="selectAllRef"
                 :model-value="dt.allPageSelected.value"
                 :indeterminate="!dt.allPageSelected.value && dt.somePageSelected.value"
-                aria-label="Select page"
+                :aria-label="text.selectPage"
                 @update:model-value="onTogglePage"
               />
             </th>
@@ -245,7 +252,7 @@ defineExpose({ state, selectedRows: dt.selectedRows });
         <BlessSelect
           :model-value="state.pageSize"
           size="sm"
-          aria-label="Rows per page"
+          :aria-label="text.rowsPerPage"
           :options="sizeOptions"
           class="bless-datatable__size"
           @update:model-value="

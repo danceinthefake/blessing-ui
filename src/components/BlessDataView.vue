@@ -16,9 +16,12 @@ const props = withDefaults(
     label?: string;
     /** hide the list/grid switch */
     switchable?: boolean;
+    /** names of the layout switch and its two buttons */
+    labels?: Partial<{ layout: string; list: string; grid: string }>;
   }>(),
   { pageSize: 0, columns: "220px", label: "Items", switchable: true },
 );
+const text = computed(() => ({ layout: "Layout", list: "List", grid: "Grid", ...props.labels }));
 const layout = defineModel<"list" | "grid">("layout", { default: "list" });
 const page = ref(1);
 const pages = computed(() =>
@@ -40,11 +43,11 @@ const slice = computed(() =>
       <BlessToggleGroup
         v-if="switchable"
         :model-value="layout"
-        label="Layout"
+        :label="text.layout"
         @update:model-value="layout = ($event ?? 'list') as 'list' | 'grid'"
       >
-        <BlessToggle value="list" size="sm" label="List">☰</BlessToggle>
-        <BlessToggle value="grid" size="sm" label="Grid">▦</BlessToggle>
+        <BlessToggle value="list" size="sm" :label="text.list">☰</BlessToggle>
+        <BlessToggle value="grid" size="sm" :label="text.grid">▦</BlessToggle>
       </BlessToggleGroup>
     </div>
     <div v-if="slice.length" class="bless-dataview__items" role="list" :aria-label="label">

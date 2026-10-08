@@ -20,6 +20,8 @@ const props = withDefaults(
     nextLabel?: string;
     /** the autoplay button's name; its pressed state says whether it's paused */
     pauseLabel?: string;
+    /** accessible name of the slide dots */
+    dotsLabel?: string;
   }>(),
   {
     perView: 1,
@@ -32,6 +34,7 @@ const props = withDefaults(
     prevLabel: "Previous slide",
     nextLabel: "Next slide",
     pauseLabel: "Pause slides",
+    dotsLabel: "Slides",
   },
 );
 
@@ -158,7 +161,7 @@ defineExpose({ go, next: () => go(index.value + 1), prev: () => go(index.value -
         <span aria-hidden="true">›</span>
       </button>
     </template>
-    <div v-if="dots && pages > 1" class="bless-carousel__dots" role="group" aria-label="Slides">
+    <div v-if="dots && pages > 1" class="bless-carousel__dots" role="group" :aria-label="dotsLabel">
       <button
         v-for="p in pages"
         :key="p"

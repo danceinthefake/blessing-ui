@@ -32,9 +32,21 @@ const props = withDefaults(
     /** drag a bar to move it and its ends to resize it; Alt + arrows from the keyboard */
     editable?: boolean;
     label?: string;
+    /** the sentence read for a bar and the one announced after an edit; dates arrive formatted */
+    labels?: Partial<{
+      span: (task: string, from: string, to: string) => string;
+      done: (percent: number) => string;
+      after: (names: string[]) => string;
+    }>;
   }>(),
   { dayWidth: 28, rowHeight: 36, labelWidth: 160, label: "Schedule" },
 );
+const text = computed(() => ({
+  span: (t: string, a: string, b: string) => `${t}: ${a} to ${b}`,
+  done: (p: number) => `${p}% done`,
+  after: (names: string[]) => `after ${names.join(" and ")}`,
+  ...props.labels,
+}));
 /** the schedule; with `editable`, moves and resizes come back through here */
 const tasks = defineModel<BlessGanttTask[]>("tasks", { required: true });
 const selected = defineModel<BlessGanttTask["id"] | null>("selected", { default: null });
@@ -125,9 +137,9 @@ const describe = (t: BlessGanttTask) => {
     .map((id) => tasks.value.find((x) => x.id === id)?.label)
     .filter(Boolean);
   return (
-    `${t.label}: ${dayFmt.value.format(date(v.s))} to ${dayFmt.value.format(date(v.e))}` +
-    (t.progress != null ? `, ${pct(t)}% done` : "") +
-    (waits.length ? `, after ${waits.join(" and ")}` : "")
+    text.value.span(t.label, dayFmt.value.format(date(v.s)), dayFmt.value.format(date(v.e))) +
+    (t.progress != null ? `, ${text.value.done(pct(t))}` : "") +
+    (waits.length ? `, ${text.value.after(waits as string[])}` : "")
   );
 };
 
@@ -189,7 +201,7 @@ function commit(t: BlessGanttTask, s: number, e: number) {
   const dates = { start: iso(s), end: iso(e) };
   tasks.value = tasks.value.map((x) => (x.id === t.id ? { ...x, ...dates } : x));
   emit("change", { ...t, ...dates }, dates);
-  live.value = `${t.label}: ${dayFmt.value.format(date(s))} to ${dayFmt.value.format(date(e))}`;
+  live.value = text.value.span(t.label, dayFmt.value.format(date(s)), dayFmt.value.format(date(e)));
 }
 
 // one tab stop on the bars, arrows move between them

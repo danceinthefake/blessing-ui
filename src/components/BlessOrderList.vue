@@ -1,5 +1,5 @@
 <script setup lang="ts" generic="T">
-import { ref, useId } from "vue";
+import { computed, ref, useId } from "vue";
 
 defineOptions({ name: "BlessOrderList" });
 
@@ -9,9 +9,20 @@ const props = withDefaults(
     label?: string;
     /** hide the ↑ ↓ buttons (drag only) */
     buttons?: boolean;
+    labels?: Partial<{
+      up: (position: number) => string;
+      down: (position: number) => string;
+      moved: (position: number, total: number) => string;
+    }>;
   }>(),
   { label: "Reorder", buttons: true },
 );
+const text = computed(() => ({
+  up: (p: number) => `Move item ${p} up`,
+  down: (p: number) => `Move item ${p} down`,
+  moved: (p: number, n: number) => `Moved to position ${p} of ${n}`,
+  ...props.labels,
+}));
 const model = defineModel<T[]>({ default: () => [] });
 const emit = defineEmits<{ move: [from: number, to: number] }>();
 const drag = ref<number | null>(null);
@@ -25,7 +36,7 @@ function move(from: number, to: number) {
   arr.splice(to, 0, it);
   model.value = arr;
   emit("move", from, to);
-  live.value = `Moved to position ${to + 1} of ${arr.length}`;
+  live.value = text.value.moved(to + 1, arr.length);
 }
 function onDrop(i: number) {
   if (drag.value != null) move(drag.value, i);
@@ -83,7 +94,7 @@ function step(i: number, d: -1 | 1) {
           <button
             type="button"
             class="bless-order__up"
-            :aria-label="`Move item ${i + 1} up`"
+            :aria-label="text.up(i + 1)"
             :disabled="i === 0"
             @click="step(i, -1)"
           >
@@ -92,7 +103,7 @@ function step(i: number, d: -1 | 1) {
           <button
             type="button"
             class="bless-order__down"
-            :aria-label="`Move item ${i + 1} down`"
+            :aria-label="text.down(i + 1)"
             :disabled="i === model.length - 1"
             @click="step(i, 1)"
           >
