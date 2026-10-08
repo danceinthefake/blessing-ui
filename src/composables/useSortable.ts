@@ -18,6 +18,82 @@ export function nearestIndex(rects: readonly DOMRect[], x: number, y: number): n
   return best;
 }
 
+/** one list of a group: lists sharing a `group` name accept each other's items */
+export interface SortableMember {
+  root: Ref<HTMLElement | null | undefined>;
+  list: () => unknown[];
+  set: (v: unknown[]) => void;
+  /** where an item coming from another list would land: the nearest item and which side of it */
+  drop: Ref<{ index: number; after: boolean } | null>;
+  /** items run top to bottom (a list) rather than left to right (a grid) */
+  vertical: () => boolean;
+  label: () => string;
+  /** take over a keyboard-held item at `index`, with focus */
+  adopt: (index: number) => void;
+  /** put focus on the grip at `index` */
+  focus: (index: number) => void;
+  /** say something in this list's live region (where focus is, after a hand-over) */
+  say: (message: string) => void;
+}
+const groups = new Map<string, Set<SortableMember>>();
+let session: (() => void) | null = null;
+
+/** Register a list in a group; returns the function that leaves it. */
+export function joinGroup(name: string, m: SortableMember): () => void {
+  if (!groups.has(name)) groups.set(name, new Set());
+  groups.get(name)!.add(m);
+  return () => {
+    groups.get(name)?.delete(m);
+    if (!groups.get(name)?.size) groups.delete(name);
+  };
+}
+/** The lists of a group in document order, so "next" means the one after in the page. */
+export function membersOf(name: string): SortableMember[] {
+  return [...(groups.get(name) ?? [])].sort((a, b) => {
+    const x = a.root.value;
+    const y = b.root.value;
+    if (!x || !y) return 0;
+    return x.compareDocumentPosition(y) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1;
+  });
+}
+/** Where a point would drop into a list: next to the nearest item, or slot 0 when it is empty. */
+export function slotAt(m: SortableMember, x: number, y: number, selector = "[data-sortable-item]") {
+  const els = Array.from(m.root.value?.querySelectorAll<HTMLElement>(selector) ?? []);
+  if (!els.length) return { index: 0, after: false };
+  const rects = els.map((el) => el.getBoundingClientRect());
+  const index = nearestIndex(rects, x, y);
+  const r = rects[index]!;
+  const after = m.vertical() ? y > r.top + r.height / 2 : x > r.left + r.width / 2;
+  return { index, after };
+}
+/** Move the item at `index` of `from` into `to` at `at`; both lists are replaced, not mutated. */
+export function transfer(from: SortableMember, index: number, to: SortableMember, at: number) {
+  const src = from.list().slice();
+  const [item] = src.splice(index, 1);
+  const dst = to.list().slice();
+  dst.splice(at, 0, item);
+  from.set(src);
+  to.set(dst);
+  return item;
+}
+/** Remember every list of the group; the returned `restore` puts them all back (Esc). */
+export function snapshotGroup(name: string) {
+  const snaps = membersOf(name).map((m) => [m, m.list().slice()] as const);
+  session = () => snaps.forEach(([m, l]) => m.set(l));
+  return session;
+}
+export const restoreGroup = () => {
+  session?.();
+  session = null;
+};
+
+export interface SortableGroup {
+  name: () => string | undefined;
+  self: SortableMember;
+  /** the item at `from` was dropped on another list, to land at `at` there */
+  onTransfer: (from: number, to: SortableMember, at: number) => void;
+}
+
 /**
  * Pointer-drag reorder over the children of `root` that match `selector`. Bind `grab` /
  * `track` / `drop` / `cancel` to the drag handle's pointer events and set `touch-action: none`
@@ -27,6 +103,7 @@ export function useSortable(
   root: Ref<HTMLElement | null | undefined>,
   onMove: (from: number, to: number) => void,
   selector = "[data-sortable-item]",
+  group?: SortableGroup,
 ) {
   const drag = ref<number | null>(null);
   const over = ref<number | null>(null);
@@ -41,6 +118,26 @@ export function useSortable(
     },
     track(e: PointerEvent) {
       if (drag.value == null) return;
+      const g = group?.name();
+      if (g) {
+        const others = membersOf(g).filter((m) => m !== group!.self);
+        others.forEach((m) => (m.drop.value = null));
+        const target = others.find((m) => {
+          const r = m.root.value?.getBoundingClientRect();
+          return (
+            r &&
+            e.clientX >= r.left &&
+            e.clientX <= r.right &&
+            e.clientY >= r.top &&
+            e.clientY <= r.bottom
+          );
+        });
+        if (target) {
+          target.drop.value = slotAt(target, e.clientX, e.clientY, selector);
+          over.value = null;
+          return;
+        }
+      }
       const els = root.value?.querySelectorAll<HTMLElement>(selector) ?? [];
       over.value = nearestIndex(
         Array.from(els, (el) => el.getBoundingClientRect()),
@@ -49,10 +146,21 @@ export function useSortable(
       );
     },
     drop() {
-      if (drag.value != null && over.value != null && over.value !== drag.value)
+      const g = group?.name();
+      const others = g ? membersOf(g).filter((m) => m !== group!.self) : [];
+      const target = others.find((m) => m.drop.value);
+      if (drag.value != null && target?.drop.value) {
+        const { index, after } = target.drop.value;
+        group!.onTransfer(drag.value, target, index + (after ? 1 : 0));
+      } else if (drag.value != null && over.value != null && over.value !== drag.value)
         onMove(drag.value, over.value);
+      others.forEach((m) => (m.drop.value = null));
       reset();
     },
-    cancel: reset,
+    cancel() {
+      const g = group?.name();
+      if (g) membersOf(g).forEach((m) => (m.drop.value = null));
+      reset();
+    },
   };
 }

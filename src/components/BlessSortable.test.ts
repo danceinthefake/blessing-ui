@@ -1,5 +1,5 @@
 import { mount, type VueWrapper } from "@vue/test-utils";
-import { nextTick } from "vue";
+import { defineComponent, h, nextTick } from "vue";
 import BlessSortable from "./BlessSortable.vue";
 import { moveItem, nearestIndex } from "../composables/useSortable";
 
@@ -83,4 +83,88 @@ test("a drag cancelled mid-way changes nothing", async () => {
   await ptr(grip(0).element, "pointercancel");
   await ptr(grip(0).element, "pointerup");
   expect(order()).toEqual(["a", "b", "c"]);
+});
+
+describe("group: two lists trade items", () => {
+  const rect = (x: number, y: number, w: number, h: number) =>
+    ({ left: x, top: y, right: x + w, bottom: y + h, width: w, height: h }) as DOMRect;
+  const pair = (a = ["a1", "a2"], b = ["b1"]) => {
+    const Host = defineComponent({
+      data: () => ({ a, b }),
+      render() {
+        return h("div", [
+          h(BlessSortable, {
+            class: "A",
+            label: "Todo",
+            group: "g",
+            modelValue: this.a,
+            "onUpdate:modelValue": (v: unknown[]) => (this.a = v as string[]),
+          }),
+          h(BlessSortable, {
+            class: "B",
+            label: "Done",
+            group: "g",
+            modelValue: this.b,
+            "onUpdate:modelValue": (v: unknown[]) => (this.b = v as string[]),
+          }),
+        ]);
+      },
+    });
+    return mount(Host, { attachTo: document.body });
+  };
+  // list A sits left (x 0-100), list B right (x 200-300); rows are 20 tall
+  const layout = (host: VueWrapper) => {
+    const place = (cls: string, x: number) => {
+      const root = host.find(cls).element as HTMLElement;
+      root.getBoundingClientRect = () => rect(x, 0, 100, 200);
+      root.querySelectorAll<HTMLElement>("[data-sortable-item]").forEach((el, i) => {
+        el.getBoundingClientRect = () => rect(x, i * 20, 100, 20);
+      });
+    };
+    place(".A", 0);
+    place(".B", 200);
+  };
+  const texts = (host: VueWrapper, cls: string) =>
+    host.findAll(`${cls} .bless-sortable__body`).map((e) => e.text());
+
+  test("dragging onto the other list moves the item there", async () => {
+    const host = pair();
+    layout(host);
+    const g = host.findAll(".A .bless-sortable__grip")[0]!.element;
+    await ptr(g, "pointerdown", 10, 10);
+    await ptr(g, "pointermove", 250, 5); // upper half of B's only row: lands before it
+    expect(host.find(".B .bless-sortable__item--before").exists()).toBe(true);
+    await ptr(g, "pointerup", 250, 5);
+    expect(texts(host, ".A")).toEqual(["a2"]);
+    expect(texts(host, ".B")).toEqual(["a1", "b1"]);
+    host.unmount();
+  });
+
+  test("an empty list is a target too", async () => {
+    const host = pair(["a1"], []);
+    layout(host);
+    const g = host.find(".A .bless-sortable__grip").element;
+    await ptr(g, "pointerdown", 10, 10);
+    await ptr(g, "pointermove", 250, 100);
+    expect(host.find(".B").classes()).toContain("bless-sortable--receiving");
+    await ptr(g, "pointerup", 250, 100);
+    expect(texts(host, ".A")).toEqual([]);
+    expect(texts(host, ".B")).toEqual(["a1"]);
+    host.unmount();
+  });
+
+  test("Alt+→ sends the held item on, Esc puts every list back", async () => {
+    const host = pair();
+    const grip = host.findAll(".A .bless-sortable__grip")[1]!;
+    await grip.trigger("keydown", { key: " " });
+    await grip.trigger("keydown", { key: "ArrowRight", altKey: true });
+    await nextTick();
+    expect(texts(host, ".A")).toEqual(["a1"]);
+    expect(texts(host, ".B")).toEqual(["b1", "a2"]);
+    expect(host.find(".B .bless-sortable__live").text()).toBe("Moved to Done, position 2 of 2");
+    await host.findAll(".B .bless-sortable__grip")[1]!.trigger("keydown", { key: "Escape" });
+    expect(texts(host, ".A")).toEqual(["a1", "a2"]);
+    expect(texts(host, ".B")).toEqual(["b1"]);
+    host.unmount();
+  });
 });
