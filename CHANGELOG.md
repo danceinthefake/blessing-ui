@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- **5 new components** (169 in all): `BlessSparkline` (tiny inline line / bar / win-loss), `BlessConfetti` (canvas burst fired with `fire()`, off under reduced motion), `BlessInfiniteCanvas` (pan and zoom surface, with `blessCanvasKey` for children), `BlessNodeGraph` (draggable nodes and links, keyboard linking, `acyclic`) and `BlessTreemap` (squarified part-to-whole with drill-down).
 - **Fix:** `BlessTour` could not hydrate in a server-rendered app (its teleport to `body`); it now renders after mount.
 - **`labels` prop** on Sortable, Kanban, Timer, SliderCaptcha, Cropper, ShortcutRecorder, CodeBlock, Gantt, Calendar, InputNumber, DataTable, DataView, OrderList and PickList: translate buttons, hints and screen-reader announcements. Single strings: `clearLabel` (DatePicker), `dotsLabel` (Carousel), `label` (LoadingBar).
 - **`BlessSortable` `group`:** lists with the same group name trade items by drag or Alt+←/→ (Esc restores every list); new `transfer` event.

@@ -728,6 +728,122 @@ await step("hover shows the lens, leaving hides it, the keyboard drives it", asy
   expect((await l.locator(".bless-loupe__lens").count()) === 0, "Esc hides it");
 });
 
+console.log("Sparkline");
+await go("/components/sparkline");
+await step("line, bar and win/loss draw, each named with a summary", async () => {
+  expect(
+    (await L(".bless-sparkline--line .bless-sparkline__line").count()) >= 1,
+    "a line is drawn",
+  );
+  expect((await L(".bless-sparkline--bar .bless-sparkline__bar").count()) === 9, "nine bars");
+  expect(
+    (await L(".bless-sparkline--winloss .bless-sparkline__bar").count()) === 10,
+    "ten results",
+  );
+  const name = await L(".bless-sparkline--line").first().getAttribute("aria-label");
+  expect(/^Visits: 9 values, from 12 to 40/.test(name), `summary: ${name}`);
+});
+
+console.log("Confetti");
+await go("/components/confetti");
+await step("fire() draws pieces on the canvas, then clears it and says done", async () => {
+  await page.emulateMedia({ reducedMotion: "no-preference" });
+  await go("/components/confetti");
+  const lit = () =>
+    page.evaluate(() => {
+      const c = document.querySelector(".bless-confetti");
+      const d = c.getContext("2d").getImageData(0, 0, c.width, c.height).data;
+      for (let i = 3; i < d.length; i += 4 * 97) if (d[i]) return true;
+      return false;
+    });
+  await page.getByRole("button", { name: "Mark as done" }).click();
+  await page.waitForTimeout(250);
+  expect(await lit(), "pieces on the canvas");
+  await page.waitForFunction(() => document.body.innerText.includes("Finished."), null, {
+    timeout: 6000,
+  });
+  expect(!(await lit()), "canvas empty again");
+});
+
+console.log("InfiniteCanvas");
+await go("/components/infinite-canvas");
+await step("drag pans, Ctrl+wheel zooms, keys pan and reset, buttons zoom", async () => {
+  const cv = L(".bless-canvas").first();
+  await cv.scrollIntoViewIfNeeded();
+  const shown = async () =>
+    (await page.locator("span", { hasText: /% at / }).first().textContent()).trim();
+  const start = await shown();
+  const b = await cv.boundingBox();
+  await drag({ x: b.x + 20, y: b.y + b.height - 30 }, { x: b.x + 120, y: b.y + b.height - 80 });
+  expect((await shown()) !== start, "dragging the background panned");
+  await page.mouse.move(b.x + b.width / 2, b.y + b.height / 2);
+  await page.keyboard.down("Control");
+  await page.mouse.wheel(0, -300);
+  await page.keyboard.up("Control");
+  await page.waitForTimeout(100);
+  expect(parseInt(await shown()) > 100, `Ctrl+wheel zoomed in (${await shown()})`);
+  await cv.focus();
+  await page.keyboard.press("0");
+  expect((await shown()).startsWith("100%"), "0 reset the zoom");
+  await L('button[aria-label="Zoom in"]').first().click();
+  expect((await shown()).startsWith("125%"), "the + button zoomed");
+  await page.getByRole("button", { name: "Fit all" }).click();
+  expect((await shown()) !== "125%", "Fit all changed the view");
+});
+
+console.log("NodeGraph");
+await go("/components/node-graph");
+await step(
+  "drag moves a node, pulling from a port links, L links from the keyboard, Delete removes",
+  async () => {
+    const g = L(".bless-graph").first();
+    await g.scrollIntoViewIfNeeded();
+    const node = (id) => g.locator(`[data-node-id="${id}"]`);
+    const links = () => g.locator(".bless-graph__edge:not(.bless-graph__edge--preview)").count();
+    const before = await links();
+    const a = await centre(node("test"));
+    await drag(a, { x: a.x + 60, y: a.y + 40 });
+    const moved = await centre(node("test"));
+    expect(Math.abs(moved.x - a.x) > 30, "the node moved");
+    // pull from Lint's output square onto Test
+    const port = await centre(node("lint").locator(".bless-graph__port--out"));
+    const to = await centre(node("test"));
+    await drag(port, to);
+    expect((await links()) === before + 1, "a link was drawn");
+    // keyboard: Source -> Ship
+    await node("src").focus();
+    await page.keyboard.press("l");
+    for (let i = 0; i < 3; i++) await page.keyboard.press("ArrowRight"); // lint, test, ship
+    await page.keyboard.press("Enter");
+    expect((await links()) === before + 2, "L, arrows and Enter linked");
+    await node("ship").focus();
+    await page.keyboard.press("Delete");
+    expect((await g.locator("[data-node-id]").count()) === 3, "Delete removed a node");
+    expect((await links()) < before + 2, "its links went with it");
+  },
+);
+
+console.log("Treemap");
+await go("/components/treemap");
+await step("a group opens, the path shows, Backspace goes up, arrows move focus", async () => {
+  const t = L(".bless-treemap").first();
+  const tile = (name) => t.locator(".bless-treemap__tile", { hasText: name }).first();
+  await tile("src").click();
+  expect((await t.locator(".bless-treemap__here").textContent()).trim() === "src", "inside src");
+  expect((await t.locator(".bless-treemap__tile").count()) === 3, "its three children");
+  await t.locator(".bless-treemap__tile").first().focus();
+  await page.keyboard.press("Backspace");
+  expect((await t.locator(".bless-treemap__path").count()) === 0, "back at the top");
+  await t.locator(".bless-treemap__tile").first().focus();
+  const before = await page.evaluate(() => document.activeElement.getAttribute("aria-label"));
+  for (const k of ["ArrowRight", "ArrowDown"]) await page.keyboard.press(k);
+  const after = await page.evaluate(() => document.activeElement.getAttribute("aria-label"));
+  expect(after !== before, "arrows moved focus to another tile");
+  await tile("docs").click();
+  await page.keyboard.press("Home");
+  expect((await t.locator(".bless-treemap__tile").count()) === 2, "docs holds two");
+});
+
 await browser.close();
 console.log(failed ? `\n${failed} step(s) failed` : "\nall interaction flows passed");
 process.exit(failed ? 1 : 0);

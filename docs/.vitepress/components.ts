@@ -237,6 +237,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         text: "Constraint-API form + field wiring",
         also: ["BlessField"],
       },
+      {
+        name: "BlessNodeGraph",
+        slug: "node-graph",
+        text: "Draggable nodes and links on a pan/zoom canvas",
+      },
     ],
   },
   {
@@ -307,6 +312,11 @@ export const groups: { title: string; items: Entry[] }[] = [
       { name: "BlessResizable", slug: "resizable", text: "Two-pane split" },
       { name: "BlessTable", slug: "table", text: "Typed table, stacks on mobile" },
       { name: "BlessDataTable", slug: "data-table", text: "Table + sort/search/select/paginate" },
+      {
+        name: "BlessInfiniteCanvas",
+        slug: "infinite-canvas",
+        text: "Pan and zoom surface for your own content",
+      },
     ],
   },
   {
@@ -328,6 +338,7 @@ export const groups: { title: string; items: Entry[] }[] = [
       { name: "BlessGallery", slug: "gallery", text: "Thumb grid + lightbox" },
       { name: "BlessToaster", slug: "toaster", text: "Notifications" },
       { name: "BlessSplash", slug: "splash", text: "First-visit overlay" },
+      { name: "BlessConfetti", slug: "confetti", text: "Canvas burst of paper, fired from code" },
     ],
   },
   {
@@ -354,6 +365,12 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "chart",
         text: "Themed frame for any [Unovis](https://unovis.dev) chart",
       },
+      {
+        name: "BlessSparkline",
+        slug: "sparkline",
+        text: "Tiny inline line, bar and win/loss chart",
+      },
+      { name: "BlessTreemap", slug: "treemap", text: "Part-to-whole rectangles with drill-down" },
     ],
   },
   {

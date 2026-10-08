@@ -1897,6 +1897,72 @@
   ],
   "exposed": []
  },
+ "BlessConfetti": {
+  "props": [
+   {
+    "name": "count",
+    "type": "number | undefined",
+    "required": false,
+    "default": "90",
+    "description": "pieces per burst"
+   },
+   {
+    "name": "colors",
+    "type": "string[] | undefined",
+    "required": false,
+    "default": "[\"chart-1\", \"chart-2\", \"chart-3\", \"chart-4\", \"chart-5\", \"warning\"]",
+    "description": "token names (`chart-2`, `accent`…) or CSS colours"
+   },
+   {
+    "name": "duration",
+    "type": "number | undefined",
+    "required": false,
+    "default": "2200",
+    "description": "milliseconds until the last piece has faded"
+   },
+   {
+    "name": "spread",
+    "type": "number | undefined",
+    "required": false,
+    "default": "80",
+    "description": "width of the cone the pieces leave in, degrees; 360 is all around"
+   },
+   {
+    "name": "power",
+    "type": "number | undefined",
+    "required": false,
+    "default": "900",
+    "description": "launch strength, px per second"
+   },
+   {
+    "name": "gravity",
+    "type": "number | undefined",
+    "required": false,
+    "default": "1400",
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "done",
+    "type": "[]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": [
+   {
+    "name": "fire",
+    "type": "(from?: HTMLElement | { x: number; y: number; } | undefined, angle?: number) => undefined",
+    "description": ""
+   },
+   {
+    "name": "stop",
+    "type": "() => void",
+    "description": ""
+   }
+  ]
+ },
  "BlessConfirmPopup": {
   "props": [
    {
@@ -2164,7 +2230,7 @@
    },
    {
     "name": "rotate",
-    "type": "(d: 90 | -90) => 0 | 90 | 180 | 270",
+    "type": "(d: 90 | -90) => 0 | 90 | 270 | 180",
     "description": ""
    },
    {
@@ -3656,6 +3722,105 @@
    }
   ],
   "exposed": []
+ },
+ "BlessInfiniteCanvas": {
+  "props": [
+   {
+    "name": "minZoom",
+    "type": "number | undefined",
+    "required": false,
+    "default": "0.25",
+    "description": ""
+   },
+   {
+    "name": "maxZoom",
+    "type": "number | undefined",
+    "required": false,
+    "default": "4",
+    "description": ""
+   },
+   {
+    "name": "grid",
+    "type": "boolean | undefined",
+    "required": false,
+    "default": "true",
+    "description": "draw a dot grid that moves and scales with the view"
+   },
+   {
+    "name": "controls",
+    "type": "boolean | undefined",
+    "required": false,
+    "default": "true",
+    "description": "the + / − / fit buttons in the corner"
+   },
+   {
+    "name": "wheelZoom",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": "turn the plain mouse wheel into zoom (otherwise it pans, and Ctrl+wheel or a pinch zooms)"
+   },
+   {
+    "name": "label",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Canvas\"",
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ zoomIn: string; zoomOut: string; reset: string; zoom: (percent: number) => string; hint: string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "view",
+    "type": "CanvasView | undefined",
+    "required": false,
+    "default": "{ x: 0, y: 0, zoom: 1 }",
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "update:view",
+    "type": "[value: CanvasView]",
+    "description": ""
+   }
+  ],
+  "slots": [
+   {
+    "name": "default",
+    "type": "{ view: CanvasView; zoom: number; }",
+    "description": ""
+   }
+  ],
+  "exposed": [
+   {
+    "name": "zoomBy",
+    "type": "(factor: number, at?: { x: number; y: number; } | undefined) => void",
+    "description": ""
+   },
+   {
+    "name": "reset",
+    "type": "() => void",
+    "description": ""
+   },
+   {
+    "name": "fit",
+    "type": "(rect: { x: number; y: number; width: number; height: number; }, pad?: number) => void",
+    "description": ""
+   },
+   {
+    "name": "centerOn",
+    "type": "(x: number, y: number) => void",
+    "description": ""
+   },
+   {
+    "name": "toWorld",
+    "type": "(cx: number, cy: number) => { x: number; y: number; }",
+    "description": ""
+   }
+  ]
  },
  "BlessInfiniteScroll": {
   "props": [
@@ -5400,6 +5565,161 @@
    {
     "name": "panel",
     "type": "{ item: BlessNavMenuItem; }",
+    "description": ""
+   }
+  ],
+  "exposed": []
+ },
+ "BlessNodeGraph": {
+  "props": [
+   {
+    "name": "nodeWidth",
+    "type": "number | undefined",
+    "required": false,
+    "default": "160",
+    "description": "size used for ports and links; put content that fits it in the `#node` slot"
+   },
+   {
+    "name": "nodeHeight",
+    "type": "number | undefined",
+    "required": false,
+    "default": "56",
+    "description": ""
+   },
+   {
+    "name": "snap",
+    "type": "number | undefined",
+    "required": false,
+    "default": "0",
+    "description": "snap dragged nodes to this grid, px; 0 is free"
+   },
+   {
+    "name": "acyclic",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": "refuse a link that would close a loop"
+   },
+   {
+    "name": "editable",
+    "type": "boolean | undefined",
+    "required": false,
+    "default": "true",
+    "description": "off: nodes can be selected and the view moved, nothing is dragged, linked or removed"
+   },
+   {
+    "name": "grid",
+    "type": "boolean | undefined",
+    "required": false,
+    "default": "true",
+    "description": ""
+   },
+   {
+    "name": "controls",
+    "type": "boolean | undefined",
+    "required": false,
+    "default": "true",
+    "description": ""
+   },
+   {
+    "name": "minZoom",
+    "type": "number | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "maxZoom",
+    "type": "number | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "label",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Graph\"",
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ node: (label: string, to: string[], from: string[]) => string; linkFrom: (from: string) => string; linkTo: (from: string, to: string, exists: boolean) => string; linked: (from: string, to: string) => string; unlinked: (from: string, to: string) => string; refused: (from: string, to: string, why: \"self\" | \"exists\" | \"cycle\") => string; cancelled: string; removed: (label: string) => string; hint: string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "nodes",
+    "type": "BlessGraphNode[] | undefined",
+    "required": false,
+    "default": "[]",
+    "description": ""
+   },
+   {
+    "name": "edges",
+    "type": "GraphEdge[] | undefined",
+    "required": false,
+    "default": "[]",
+    "description": ""
+   },
+   {
+    "name": "selected",
+    "type": "string | null | undefined",
+    "required": false,
+    "default": "null",
+    "description": ""
+   },
+   {
+    "name": "view",
+    "type": "CanvasView | undefined",
+    "required": false,
+    "default": "{ x: 0, y: 0, zoom: 1 }",
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "remove",
+    "type": "[id: string]",
+    "description": ""
+   },
+   {
+    "name": "update:selected",
+    "type": "[value: string | null]",
+    "description": ""
+   },
+   {
+    "name": "move",
+    "type": "[id: string, x: number, y: number]",
+    "description": ""
+   },
+   {
+    "name": "update:view",
+    "type": "[value: CanvasView]",
+    "description": ""
+   },
+   {
+    "name": "update:nodes",
+    "type": "[value: BlessGraphNode[]]",
+    "description": ""
+   },
+   {
+    "name": "update:edges",
+    "type": "[value: GraphEdge[]]",
+    "description": ""
+   },
+   {
+    "name": "connect",
+    "type": "[edge: GraphEdge]",
+    "description": ""
+   },
+   {
+    "name": "disconnect",
+    "type": "[edge: GraphEdge]",
+    "description": ""
+   }
+  ],
+  "slots": [
+   {
+    "name": "node",
+    "type": "{ node: BlessGraphNode; selected: boolean; }",
     "description": ""
    }
   ],
@@ -7463,6 +7783,78 @@
   ],
   "exposed": []
  },
+ "BlessSparkline": {
+  "props": [
+   {
+    "name": "data",
+    "type": "number[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "type",
+    "type": "\"bar\" | \"line\" | \"winloss\" | undefined",
+    "required": false,
+    "default": "\"line\"",
+    "description": "`line`, `bar`, or `winloss` (every value drawn as a same-height win above or loss below the middle)"
+   },
+   {
+    "name": "width",
+    "type": "number | undefined",
+    "required": false,
+    "default": "120",
+    "description": ""
+   },
+   {
+    "name": "height",
+    "type": "number | undefined",
+    "required": false,
+    "default": "28",
+    "description": ""
+   },
+   {
+    "name": "color",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"chart-1\"",
+    "description": "a token name (`chart-2`, `success`, `danger`…) or any CSS colour"
+   },
+   {
+    "name": "negativeColor",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"danger\"",
+    "description": "colour of values below zero in `bar` and `winloss`"
+   },
+   {
+    "name": "fill",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": "line only: shade the area under the line"
+   },
+   {
+    "name": "dot",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": "line only: a dot on the last value"
+   },
+   {
+    "name": "label",
+    "type": "string | undefined",
+    "required": false,
+    "description": "what is plotted; read with the summary by screen readers"
+   },
+   {
+    "name": "format",
+    "type": "((v: number) => string) | undefined",
+    "required": false,
+    "description": "text for one value in the summary, e.g. `(v) => v + \" ms\"`"
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessSpeedDial": {
   "props": [
    {
@@ -9227,6 +9619,63 @@
    {
     "name": "update:expanded",
     "type": "[value: Id[] | undefined]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
+ "BlessTreemap": {
+  "props": [
+   {
+    "name": "data",
+    "type": "TreemapNode[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "height",
+    "type": "number | undefined",
+    "required": false,
+    "default": "320",
+    "description": ""
+   },
+   {
+    "name": "format",
+    "type": "((v: number) => string) | undefined",
+    "required": false,
+    "description": "text for a size, e.g. `(v) => v + \" MB\"`"
+   },
+   {
+    "name": "label",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"All\"",
+    "description": "name of the top level in the path, and of the whole chart for screen readers"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ tile: (label: string, value: string, share: string, children: number) => string; path: string; up: string; hint: string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "path",
+    "type": "string[] | undefined",
+    "required": false,
+    "default": "[]",
+    "description": "ids from the top down to the level being shown"
+   }
+  ],
+  "events": [
+   {
+    "name": "select",
+    "type": "[node: TreemapNode, path: string[]]",
+    "description": ""
+   },
+   {
+    "name": "update:path",
+    "type": "[value: string[]]",
     "description": ""
    }
   ],
