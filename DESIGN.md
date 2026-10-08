@@ -300,6 +300,16 @@ Cut and petal are one default, no toggle. Rule (docs/guide/conventions): if the 
 - Decorative type (`BlessWatermark`) is excluded from the audit; disabled controls are exempt by spec.
 - `e2e/axe.mjs` sweeps every page in both themes and fails on serious/critical; the count is 0.
 
+### Phase 22 — hardening after 0.2.0 (2026-10-08)
+
+- ✅ `e2e/motion.mjs` — with `prefers-reduced-motion: reduce` (and VitePress's own blanket reset stripped, which would hide gaps) no demo keeps a CSS animation running; the two spinners' slowed turn is allowed as essential motion.
+- ✅ `src/ssr.test.ts` — every docs demo is rendered on the server and hydrated (teleported markup injected where a framework would); a crash or a hydration warning fails. Found `BlessTour`'s `to="body"` teleport could not hydrate; it now waits for mount.
+- ✅ Bundle budget — the consumer check caps the whole library at 95 KB gz JS / 35 KB gz CSS (today 86 / 31.6).
+- ✅ `labels` on every component that speaks English (Sortable, Kanban, Timer, SliderCaptcha, Cropper, ShortcutRecorder, CodeBlock, Gantt, Calendar, InputNumber, DataTable, DataView, OrderList, PickList), single strings as `clearLabel` / `dotsLabel` / `label`.
+- ✅ `BlessSortable group` — lists trade items by drag or Alt+←/→; Esc restores every list; `transfer` event.
+- ✅ Kanban auto-scroll — a held card near the board's edge or the window's top/bottom keeps scrolling (`useAutoScroll`).
+- ⬜ Visual regression snapshots (parked); real-device touch pass (skipped).
+
 ### Deliberately skipped
 
 - **Chart** — no bundled lib. Phase 11 ✅: `--bless-color-chart-{1..5}` (≥3:1 both themes) + `BlessChart` frame that maps them onto Unovis `--vis-*` vars; Unovis is the documented pairing, installed by the consumer.

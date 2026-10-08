@@ -174,6 +174,7 @@ export type { BlessMentionOption } from "./components/BlessMention.vue";
 export { default as BlessHeatmapCalendar } from "./components/BlessHeatmapCalendar.vue";
 export { default as BlessSortable } from "./components/BlessSortable.vue";
 export { useSortable, moveItem, nearestIndex } from "./composables/useSortable";
+export { useAutoScroll, edgeSpeed } from "./composables/useAutoScroll";
 export { default as BlessPickList } from "./components/BlessPickList.vue";
 export { default as BlessMockup } from "./components/BlessMockup.vue";
 export { default as BlessTour } from "./components/BlessTour.vue";

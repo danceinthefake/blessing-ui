@@ -318,6 +318,25 @@ await step("keyboard: Space grabs, arrows move, Esc restores; the grip drags", a
   await drag(a, { x: z.x, y: z.y + 10 });
   expect((await body()).join() !== was.join(), "dragging the grip reordered the list");
 });
+await step("between lists: drag across, Alt+→ sends, Esc restores both", async () => {
+  const list = (n) => L(".bless-sortable--group").nth(n);
+  const items = (n) => list(n).locator(".bless-sortable__body").allTextContents();
+  const [a0, b0] = [(await items(0)).length, (await items(1)).length];
+  await list(0).scrollIntoViewIfNeeded();
+  const from = await centre(list(0).locator(".bless-sortable__grip").first());
+  const to = await centre(list(1).locator(".bless-sortable__item").first());
+  await drag(from, { x: to.x, y: to.y + 4 });
+  expect((await items(0)).length === a0 - 1 && (await items(1)).length === b0 + 1, "dragged over");
+  const grip = list(0).locator(".bless-sortable__grip").first();
+  const moved = (await items(0))[0];
+  await grip.focus();
+  await page.keyboard.press("Space");
+  await page.keyboard.press("Alt+ArrowRight");
+  expect((await items(1)).includes(moved), "Alt+→ sent the held item to the other list");
+  expect(await list(1).locator(".bless-sortable__grip:focus").count(), "focus followed the item");
+  await page.keyboard.press("Escape");
+  expect((await items(0))[0] === moved && (await items(1)).length === b0 + 1, "Esc restored");
+});
 
 console.log("HeatmapCalendar");
 await go("/components/heatmap-calendar");
@@ -371,6 +390,25 @@ await step("a card drags to another column; Space + → moves it by keyboard", a
   await page.keyboard.press("ArrowRight");
   await page.keyboard.press("Space");
   expect((await n(2)) === 2, "keyboard moved a card into the last column");
+});
+await step("a card held at the board's edge scrolls it sideways", async () => {
+  const size = page.viewportSize();
+  await page.setViewportSize({ width: 520, height: size.height });
+  await go("/components/kanban");
+  const board = L(".bless-kanban").first();
+  await board.scrollIntoViewIfNeeded();
+  const wide = await board.evaluate((el) => el.scrollWidth > el.clientWidth);
+  expect(wide, "board overflows at this width");
+  const box = await board.boundingBox();
+  const g = await centre(L('[data-grip="0:0"]'));
+  await page.mouse.move(g.x, g.y);
+  await page.mouse.down();
+  await page.mouse.move(box.x + box.width - 6, g.y, { steps: 6 });
+  await page.waitForTimeout(400);
+  const moved = await board.evaluate((el) => el.scrollLeft);
+  await page.mouse.up();
+  await page.setViewportSize(size);
+  expect(moved > 40, `board scrolled while held (${moved}px)`);
 });
 
 console.log("Cropper");

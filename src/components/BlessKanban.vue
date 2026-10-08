@@ -9,7 +9,8 @@ export interface BlessKanbanColumn<T = unknown> {
 </script>
 
 <script setup lang="ts" generic="T">
-import { computed, nextTick, ref, useId } from "vue";
+import { computed, nextTick, onBeforeUnmount, ref, useId } from "vue";
+import { useAutoScroll } from "../composables/useAutoScroll";
 import { logicalKey } from "../composables/rtl";
 
 defineOptions({ name: "BlessKanban" });
@@ -84,16 +85,28 @@ function colAt(x: number, y: number) {
   }
   return null;
 }
+// a held card near the board's side edge, or the window's top or bottom, keeps scrolling it there
+let at = { x: 0, y: 0 };
+const auto = useAutoScroll(
+  () => root.value,
+  () => place(at.x, at.y),
+);
+onBeforeUnmount(auto.stop);
 function track(e: PointerEvent) {
+  at = { x: e.clientX, y: e.clientY };
+  auto.point(e.clientX, e.clientY);
+  place(e.clientX, e.clientY);
+}
+function place(x: number, y: number) {
   if (!drag.value) return;
-  const el = colAt(e.clientX, e.clientY);
+  const el = colAt(x, y);
   if (!el) return void (over.value = null);
   const col = Number(el.dataset.kanbanCol);
   if (full(col, drag.value.col)) return void (over.value = null);
   const cards = Array.from(el.querySelectorAll<HTMLElement>("[data-kanban-card]"));
   const slot = cards.filter((c) => {
     const r = c.getBoundingClientRect();
-    return r.top + r.height / 2 < e.clientY;
+    return r.top + r.height / 2 < y;
   }).length;
   over.value = { col, index: slot };
 }
@@ -102,10 +115,14 @@ function grab(col: number, index: number, e: PointerEvent) {
   (e.currentTarget as HTMLElement).setPointerCapture?.(e.pointerId);
   drag.value = { col, index };
   over.value = { col, index };
+  at = { x: e.clientX, y: e.clientY };
+  auto.point(e.clientX, e.clientY);
+  auto.start();
 }
 function drop() {
   const d = drag.value;
   const o = over.value;
+  auto.stop();
   drag.value = over.value = null;
   if (!d || !o) return;
   // inserting below the card's own old position shifts everything up by one
@@ -118,7 +135,10 @@ function drop() {
     model.value[o.col]!.items.length,
   );
 }
-const cancel = () => (drag.value = over.value = null);
+const cancel = () => {
+  auto.stop();
+  drag.value = over.value = null;
+};
 
 // --- keyboard ---
 const refocus = (col: number, index: number) =>

@@ -926,6 +926,12 @@
     "description": "month shown initially (YYYY-MM); defaults to model or today"
    },
    {
+    "name": "labels",
+    "type": "Partial<{ prev: string; next: string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
     "name": "modelValue",
     "type": "string | [string, string] | undefined",
     "required": false,
@@ -1081,6 +1087,13 @@
     "required": false,
     "default": "\"Pause slides\"",
     "description": "the autoplay button's name; its pressed state says whether it's paused"
+   },
+   {
+    "name": "dotsLabel",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Slides\"",
+    "description": "accessible name of the slide dots"
    },
    {
     "name": "modelValue",
@@ -1522,6 +1535,12 @@
     "type": "string | undefined",
     "required": false,
     "default": "\"Code\"",
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ copy: string; copied: string; copiedLive: string; }> | undefined",
+    "required": false,
     "description": ""
    },
    {
@@ -2106,6 +2125,12 @@
     "description": ""
    },
    {
+    "name": "labels",
+    "type": "Partial<{ size: (width: number, height: number, x: number, y: number) => string; hint: string; rotateLeft: string; rotateRight: string; loadError: string; }> | undefined",
+    "required": false,
+    "description": "the crop readout said after a keystroke, the hint under the image and the rotate buttons"
+   },
+   {
     "name": "modelValue",
     "type": "BlessCropRect | null | undefined",
     "required": false,
@@ -2230,6 +2255,12 @@
     "description": "accessible name of the search box"
    },
    {
+    "name": "labels",
+    "type": "Partial<{ selectPage: string; rowsPerPage: string; }> | undefined",
+    "required": false,
+    "description": "names of the select-page checkbox and the page-size select"
+   },
+   {
     "name": "emptyText",
     "type": "string | undefined",
     "required": false,
@@ -2330,6 +2361,12 @@
     "description": "hide the list/grid switch"
    },
    {
+    "name": "labels",
+    "type": "Partial<{ layout: string; list: string; grid: string; }> | undefined",
+    "required": false,
+    "description": "names of the layout switch and its two buttons"
+   },
+   {
     "name": "layout",
     "type": "\"grid\" | \"list\" | undefined",
     "required": false,
@@ -2428,6 +2465,13 @@
     "required": false,
     "default": "\"md\"",
     "description": ""
+   },
+   {
+    "name": "clearLabel",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Clear date\"",
+    "description": "accessible name of the clear button"
    },
    {
     "name": "modelValue",
@@ -3149,6 +3193,12 @@
     "required": false,
     "default": "\"Schedule\"",
     "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ span: (task: string, from: string, to: string) => string; done: (percent: number) => string; after: (names: string[]) => string; }> | undefined",
+    "required": false,
+    "description": "the sentence read for a bar and the one announced after an edit; dates arrive formatted"
    },
    {
     "name": "tasks",
@@ -3985,6 +4035,12 @@
     "description": ""
    },
    {
+    "name": "labels",
+    "type": "Partial<{ decrease: string; increase: string; }> | undefined",
+    "required": false,
+    "description": "names of the − and + buttons"
+   },
+   {
     "name": "modelValue",
     "type": "number | null | undefined",
     "required": false,
@@ -4243,6 +4299,12 @@
     "type": "string | undefined",
     "required": false,
     "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ card: (index: number, column: string) => string; moved: (column: string, position: number, total: number) => string; position: (column: string, position: number, total: number) => string; dropped: (column: string, position: number) => string; full: (column: string) => string; grabbed: string; cancelled: string; hint: string; roleDescription: string; }> | undefined",
+    "required": false,
+    "description": "screen-reader wording; each message that carries names or numbers is a function of them"
    },
    {
     "name": "modelValue",
@@ -4670,6 +4732,13 @@
     "type": "\"text\" | \"accent\" | undefined",
     "required": false,
     "default": "\"accent\"",
+    "description": ""
+   },
+   {
+    "name": "label",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Loading\"",
     "description": ""
    }
   ],
@@ -5359,6 +5428,12 @@
     "description": "hide the ↑ ↓ buttons (drag only)"
    },
    {
+    "name": "labels",
+    "type": "Partial<{ up: (position: number) => string; down: (position: number) => string; moved: (position: number, total: number) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
     "name": "modelValue",
     "type": "T[] | undefined",
     "required": false,
@@ -5754,6 +5829,12 @@
     "type": "number | undefined",
     "required": false,
     "default": "6",
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ moveSelected: (to: string) => string; moveAll: (to: string) => string; moved: (count: number, to: string) => string; }> | undefined",
+    "required": false,
     "description": ""
    },
    {
@@ -6852,6 +6933,12 @@
     "description": ""
    },
    {
+    "name": "labels",
+    "type": "Partial<{ button: (label: string, combo: string) => string; pressKeys: string; recording: string; set: (combo: string) => string; needsModifier: (combo: string) => string; usedBy: (combo: string, by: string) => string; taken: (combo: string) => string; }> | undefined",
+    "required": false,
+    "description": "button wording and the messages said while recording or on a refusal"
+   },
+   {
     "name": "modelValue",
     "type": "string | undefined",
     "required": false,
@@ -7269,6 +7356,12 @@
     "description": ""
    },
    {
+    "name": "labels",
+    "type": "Partial<{ verified: string; failed: string; }> | undefined",
+    "required": false,
+    "description": "what is announced when the piece lands or misses"
+   },
+   {
     "name": "verified",
     "type": "boolean | undefined",
     "required": false,
@@ -7325,6 +7418,18 @@
     "description": "lay the items out in this many equal columns (a grid); 1 is a list"
    },
    {
+    "name": "group",
+    "type": "string | undefined",
+    "required": false,
+    "description": "lists that share a group name take each other's items: drag across, or hold an item and\npress Alt with ← / → to send it to the neighbouring list. Bind each list's own `v-model`."
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ grip: (index: number) => string; grabbed: (index: number, total: number) => string; moved: (position: number, total: number) => string; sent: (list: string, position: number, total: number) => string; dropped: (position: number, total: number) => string; cancelled: string; hint: string; groupHint: string; roleDescription: string; }> | undefined",
+    "required": false,
+    "description": "screen-reader wording; each message that carries numbers is a function of them"
+   },
+   {
     "name": "modelValue",
     "type": "T[] | undefined",
     "required": false,
@@ -7336,6 +7441,11 @@
    {
     "name": "move",
     "type": "[from: number, to: number]",
+    "description": ""
+   },
+   {
+    "name": "transfer",
+    "type": "[item: T, from: number, to: number]",
     "description": ""
    },
    {
@@ -8387,7 +8497,7 @@
   "props": [
    {
     "name": "mode",
-    "type": "\"switch\" | \"group\" | undefined",
+    "type": "\"group\" | \"switch\" | undefined",
     "required": false,
     "default": "\"switch\"",
     "description": "three-way (light/system/dark) or a single light↔dark button"
@@ -8572,6 +8682,12 @@
     "required": false,
     "default": "\"Timer\"",
     "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ start: string; resume: string; pause: string; reset: string; finished: string; round: (round: number, rounds: number) => string; }> | undefined",
+    "required": false,
+    "description": "button text and the wording said when a phase changes or the time is up"
    },
    {
     "name": "running",
@@ -9198,7 +9314,7 @@
   "slots": [
    {
     "name": "actions",
-    "type": "{ start: () => void; clear: () => { id: number; file: { readonly lastModified: number; readonly name: string; readonly webkitRelativePath: string; readonly size: number; readonly type: string; arrayBuffer: () => Promise<ArrayBuffer>; bytes: () => Promise<Uint8Array<ArrayBuffer>>; slice: (start?: number | undefined, end?: number | undefined, contentType?: string | undefined) => Blob; stream: () => ReadableStream<Uint8Array<ArrayBuffer>>; text: () => Promise<string>; }; progress: number; status: \"done\" | \"uploading\" | \"error\" | \"queued\" | \"cancelled\"; error?: string | undefined; xhr?: { onreadystatechange: ((this: XMLHttpRequest, ev: Event) => any) | null; readonly readyState: number; readonly response: any; readonly responseText: string; responseType: XMLHttpRequestResponseType; readonly responseURL: string; readonly responseXML: Document | null; readonly status: number; readonly statusText: string; timeout: number; readonly upload: { addEventListener: { <K extends keyof XMLHttpRequestEventTargetEventMap>(type: K, listener: (this: XMLHttpRequestUpload, ev: XMLHttpRequestEventTargetEventMap[K]) => any, options?: boolean | AddEventListenerOptions | undefined): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions | undefined): void; }; removeEventListener: { <K extends keyof XMLHttpRequestEventTargetEventMap>(type: K, listener: (this: XMLHttpRequestUpload, ev: XMLHttpRequestEventTargetEventMap[K]) => any, options?: boolean | EventListenerOptions | undefined): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions | undefined): void; }; onabort: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onerror: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onload: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onloadend: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onloadstart: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onprogress: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; ontimeout: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; dispatchEvent: (event: Event) => boolean; }; withCredentials: boolean; abort: () => void; getAllResponseHeaders: () => string; getResponseHeader: (name: string) => string | null; open: { (method: string, url: string | URL): void; (method: string, url: string | URL, async: boolean, username?: string | null | undefined, password?: string | null | undefined): void; }; overrideMimeType: (mime: string) => void; send: (body?: Document | XMLHttpRequestBodyInit | null | undefined) => void; setRequestHeader: (name: string, value: string) => void; readonly UNSENT: 0; readonly OPENED: 1; readonly HEADERS_RECEIVED: 2; readonly LOADING: 3; readonly DONE: 4; addEventListener: { <K extends keyof XMLHttpRequestEventMap>(type: K, listener: (this: XMLHttpRequest, ev: XMLHttpRequestEventMap[K]) => any, options?: boolean | AddEventListenerOptions | undefined): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions | undefined): void; }; removeEventListener: { <K extends keyof XMLHttpRequestEventMap>(type: K, listener: (this: XMLHttpRequest, ev: XMLHttpRequestEventMap[K]) => any, options?: boolean | EventListenerOptions | undefined): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions | undefined): void; }; onabort: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onerror: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onload: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onloadend: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onloadstart: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onprogress: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; ontimeout: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; dispatchEvent: (event: Event) => boolean; } | undefined; }[]; queue: { id: number; file: { readonly lastModified: number; readonly name: string; readonly webkitRelativePath: string; readonly size: number; readonly type: string; arrayBuffer: () => Promise<ArrayBuffer>; bytes: () => Promise<Uint8Array<ArrayBuffer>>; slice: (start?: number | undefined, end?: number | undefined, contentType?: string | undefined) => Blob; stream: () => ReadableStream<Uint8Array<ArrayBuffer>>; text: () => Promise<string>; }; progress: number; status: \"done\" | \"uploading\" | \"error\" | \"queued\" | \"cancelled\"; error?: string | undefined; xhr?: { onreadystatechange: ((this: XMLHttpRequest, ev: Event) => any) | null; readonly readyState: number; readonly response: any; readonly responseText: string; responseType: XMLHttpRequestResponseType; readonly responseURL: string; readonly responseXML: Document | null; readonly status: number; readonly statusText: string; timeout: number; readonly upload: { addEventListener: { <K extends keyof XMLHttpRequestEventTargetEventMap>(type: K, listener: (this: XMLHttpRequestUpload, ev: XMLHttpRequestEventTargetEventMap[K]) => any, options?: boolean | AddEventListenerOptions | undefined): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions | undefined): void; }; removeEventListener: { <K extends keyof XMLHttpRequestEventTargetEventMap>(type: K, listener: (this: XMLHttpRequestUpload, ev: XMLHttpRequestEventTargetEventMap[K]) => any, options?: boolean | EventListenerOptions | undefined): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions | undefined): void; }; onabort: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onerror: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onload: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onloadend: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onloadstart: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onprogress: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; ontimeout: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; dispatchEvent: (event: Event) => boolean; }; withCredentials: boolean; abort: () => void; getAllResponseHeaders: () => string; getResponseHeader: (name: string) => string | null; open: { (method: string, url: string | URL): void; (method: string, url: string | URL, async: boolean, username?: string | null | undefined, password?: string | null | undefined): void; }; overrideMimeType: (mime: string) => void; send: (body?: Document | XMLHttpRequestBodyInit | null | undefined) => void; setRequestHeader: (name: string, value: string) => void; readonly UNSENT: 0; readonly OPENED: 1; readonly HEADERS_RECEIVED: 2; readonly LOADING: 3; readonly DONE: 4; addEventListener: { <K extends keyof XMLHttpRequestEventMap>(type: K, listener: (this: XMLHttpRequest, ev: XMLHttpRequestEventMap[K]) => any, options?: boolean | AddEventListenerOptions | undefined): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions | undefined): void; }; removeEventListener: { <K extends keyof XMLHttpRequestEventMap>(type: K, listener: (this: XMLHttpRequest, ev: XMLHttpRequestEventMap[K]) => any, options?: boolean | EventListenerOptions | undefined): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions | undefined): void; }; onabort: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onerror: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onload: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onloadend: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onloadstart: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onprogress: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; ontimeout: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; dispatchEvent: (event: Event) => boolean; } | undefined; }[]; }",
+    "type": "{ start: () => void; clear: () => { id: number; file: { readonly lastModified: number; readonly name: string; readonly webkitRelativePath: string; readonly size: number; readonly type: string; arrayBuffer: () => Promise<ArrayBuffer>; bytes: () => Promise<Uint8Array<ArrayBuffer>>; slice: (start?: number | undefined, end?: number | undefined, contentType?: string | undefined) => Blob; stream: () => ReadableStream<Uint8Array<ArrayBuffer>>; text: () => Promise<string>; }; progress: number; status: \"done\" | \"uploading\" | \"error\" | \"cancelled\" | \"queued\"; error?: string | undefined; xhr?: { onreadystatechange: ((this: XMLHttpRequest, ev: Event) => any) | null; readonly readyState: number; readonly response: any; readonly responseText: string; responseType: XMLHttpRequestResponseType; readonly responseURL: string; readonly responseXML: Document | null; readonly status: number; readonly statusText: string; timeout: number; readonly upload: { addEventListener: { <K extends keyof XMLHttpRequestEventTargetEventMap>(type: K, listener: (this: XMLHttpRequestUpload, ev: XMLHttpRequestEventTargetEventMap[K]) => any, options?: boolean | AddEventListenerOptions | undefined): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions | undefined): void; }; removeEventListener: { <K extends keyof XMLHttpRequestEventTargetEventMap>(type: K, listener: (this: XMLHttpRequestUpload, ev: XMLHttpRequestEventTargetEventMap[K]) => any, options?: boolean | EventListenerOptions | undefined): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions | undefined): void; }; onabort: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onerror: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onload: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onloadend: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onloadstart: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onprogress: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; ontimeout: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; dispatchEvent: (event: Event) => boolean; }; withCredentials: boolean; abort: () => void; getAllResponseHeaders: () => string; getResponseHeader: (name: string) => string | null; open: { (method: string, url: string | URL): void; (method: string, url: string | URL, async: boolean, username?: string | null | undefined, password?: string | null | undefined): void; }; overrideMimeType: (mime: string) => void; send: (body?: Document | XMLHttpRequestBodyInit | null | undefined) => void; setRequestHeader: (name: string, value: string) => void; readonly UNSENT: 0; readonly OPENED: 1; readonly HEADERS_RECEIVED: 2; readonly LOADING: 3; readonly DONE: 4; addEventListener: { <K extends keyof XMLHttpRequestEventMap>(type: K, listener: (this: XMLHttpRequest, ev: XMLHttpRequestEventMap[K]) => any, options?: boolean | AddEventListenerOptions | undefined): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions | undefined): void; }; removeEventListener: { <K extends keyof XMLHttpRequestEventMap>(type: K, listener: (this: XMLHttpRequest, ev: XMLHttpRequestEventMap[K]) => any, options?: boolean | EventListenerOptions | undefined): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions | undefined): void; }; onabort: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onerror: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onload: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onloadend: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onloadstart: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onprogress: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; ontimeout: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; dispatchEvent: (event: Event) => boolean; } | undefined; }[]; queue: { id: number; file: { readonly lastModified: number; readonly name: string; readonly webkitRelativePath: string; readonly size: number; readonly type: string; arrayBuffer: () => Promise<ArrayBuffer>; bytes: () => Promise<Uint8Array<ArrayBuffer>>; slice: (start?: number | undefined, end?: number | undefined, contentType?: string | undefined) => Blob; stream: () => ReadableStream<Uint8Array<ArrayBuffer>>; text: () => Promise<string>; }; progress: number; status: \"done\" | \"uploading\" | \"error\" | \"cancelled\" | \"queued\"; error?: string | undefined; xhr?: { onreadystatechange: ((this: XMLHttpRequest, ev: Event) => any) | null; readonly readyState: number; readonly response: any; readonly responseText: string; responseType: XMLHttpRequestResponseType; readonly responseURL: string; readonly responseXML: Document | null; readonly status: number; readonly statusText: string; timeout: number; readonly upload: { addEventListener: { <K extends keyof XMLHttpRequestEventTargetEventMap>(type: K, listener: (this: XMLHttpRequestUpload, ev: XMLHttpRequestEventTargetEventMap[K]) => any, options?: boolean | AddEventListenerOptions | undefined): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions | undefined): void; }; removeEventListener: { <K extends keyof XMLHttpRequestEventTargetEventMap>(type: K, listener: (this: XMLHttpRequestUpload, ev: XMLHttpRequestEventTargetEventMap[K]) => any, options?: boolean | EventListenerOptions | undefined): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions | undefined): void; }; onabort: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onerror: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onload: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onloadend: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onloadstart: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onprogress: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; ontimeout: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; dispatchEvent: (event: Event) => boolean; }; withCredentials: boolean; abort: () => void; getAllResponseHeaders: () => string; getResponseHeader: (name: string) => string | null; open: { (method: string, url: string | URL): void; (method: string, url: string | URL, async: boolean, username?: string | null | undefined, password?: string | null | undefined): void; }; overrideMimeType: (mime: string) => void; send: (body?: Document | XMLHttpRequestBodyInit | null | undefined) => void; setRequestHeader: (name: string, value: string) => void; readonly UNSENT: 0; readonly OPENED: 1; readonly HEADERS_RECEIVED: 2; readonly LOADING: 3; readonly DONE: 4; addEventListener: { <K extends keyof XMLHttpRequestEventMap>(type: K, listener: (this: XMLHttpRequest, ev: XMLHttpRequestEventMap[K]) => any, options?: boolean | AddEventListenerOptions | undefined): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions | undefined): void; }; removeEventListener: { <K extends keyof XMLHttpRequestEventMap>(type: K, listener: (this: XMLHttpRequest, ev: XMLHttpRequestEventMap[K]) => any, options?: boolean | EventListenerOptions | undefined): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions | undefined): void; }; onabort: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onerror: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onload: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onloadend: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onloadstart: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onprogress: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; ontimeout: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; dispatchEvent: (event: Event) => boolean; } | undefined; }[]; }",
     "description": ""
    }
   ],
@@ -9210,12 +9326,12 @@
    },
    {
     "name": "clear",
-    "type": "() => { id: number; file: { readonly lastModified: number; readonly name: string; readonly webkitRelativePath: string; readonly size: number; readonly type: string; arrayBuffer: () => Promise<ArrayBuffer>; bytes: () => Promise<Uint8Array<ArrayBuffer>>; slice: (start?: number | undefined, end?: number | undefined, contentType?: string | undefined) => Blob; stream: () => ReadableStream<Uint8Array<ArrayBuffer>>; text: () => Promise<string>; }; progress: number; status: \"done\" | \"uploading\" | \"error\" | \"queued\" | \"cancelled\"; error?: string | undefined; xhr?: { onreadystatechange: ((this: XMLHttpRequest, ev: Event) => any) | null; readonly readyState: number; readonly response: any; readonly responseText: string; responseType: XMLHttpRequestResponseType; readonly responseURL: string; readonly responseXML: Document | null; readonly status: number; readonly statusText: string; timeout: number; readonly upload: { addEventListener: { <K extends keyof XMLHttpRequestEventTargetEventMap>(type: K, listener: (this: XMLHttpRequestUpload, ev: XMLHttpRequestEventTargetEventMap[K]) => any, options?: boolean | AddEventListenerOptions | undefined): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions | undefined): void; }; removeEventListener: { <K extends keyof XMLHttpRequestEventTargetEventMap>(type: K, listener: (this: XMLHttpRequestUpload, ev: XMLHttpRequestEventTargetEventMap[K]) => any, options?: boolean | EventListenerOptions | undefined): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions | undefined): void; }; onabort: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onerror: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onload: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onloadend: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onloadstart: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onprogress: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; ontimeout: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; dispatchEvent: (event: Event) => boolean; }; withCredentials: boolean; abort: () => void; getAllResponseHeaders: () => string; getResponseHeader: (name: string) => string | null; open: { (method: string, url: string | URL): void; (method: string, url: string | URL, async: boolean, username?: string | null | undefined, password?: string | null | undefined): void; }; overrideMimeType: (mime: string) => void; send: (body?: Document | XMLHttpRequestBodyInit | null | undefined) => void; setRequestHeader: (name: string, value: string) => void; readonly UNSENT: 0; readonly OPENED: 1; readonly HEADERS_RECEIVED: 2; readonly LOADING: 3; readonly DONE: 4; addEventListener: { <K extends keyof XMLHttpRequestEventMap>(type: K, listener: (this: XMLHttpRequest, ev: XMLHttpRequestEventMap[K]) => any, options?: boolean | AddEventListenerOptions | undefined): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions | undefined): void; }; removeEventListener: { <K extends keyof XMLHttpRequestEventMap>(type: K, listener: (this: XMLHttpRequest, ev: XMLHttpRequestEventMap[K]) => any, options?: boolean | EventListenerOptions | undefined): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions | undefined): void; }; onabort: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onerror: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onload: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onloadend: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onloadstart: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onprogress: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; ontimeout: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; dispatchEvent: (event: Event) => boolean; } | undefined; }[]",
+    "type": "() => { id: number; file: { readonly lastModified: number; readonly name: string; readonly webkitRelativePath: string; readonly size: number; readonly type: string; arrayBuffer: () => Promise<ArrayBuffer>; bytes: () => Promise<Uint8Array<ArrayBuffer>>; slice: (start?: number | undefined, end?: number | undefined, contentType?: string | undefined) => Blob; stream: () => ReadableStream<Uint8Array<ArrayBuffer>>; text: () => Promise<string>; }; progress: number; status: \"done\" | \"uploading\" | \"error\" | \"cancelled\" | \"queued\"; error?: string | undefined; xhr?: { onreadystatechange: ((this: XMLHttpRequest, ev: Event) => any) | null; readonly readyState: number; readonly response: any; readonly responseText: string; responseType: XMLHttpRequestResponseType; readonly responseURL: string; readonly responseXML: Document | null; readonly status: number; readonly statusText: string; timeout: number; readonly upload: { addEventListener: { <K extends keyof XMLHttpRequestEventTargetEventMap>(type: K, listener: (this: XMLHttpRequestUpload, ev: XMLHttpRequestEventTargetEventMap[K]) => any, options?: boolean | AddEventListenerOptions | undefined): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions | undefined): void; }; removeEventListener: { <K extends keyof XMLHttpRequestEventTargetEventMap>(type: K, listener: (this: XMLHttpRequestUpload, ev: XMLHttpRequestEventTargetEventMap[K]) => any, options?: boolean | EventListenerOptions | undefined): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions | undefined): void; }; onabort: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onerror: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onload: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onloadend: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onloadstart: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onprogress: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; ontimeout: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; dispatchEvent: (event: Event) => boolean; }; withCredentials: boolean; abort: () => void; getAllResponseHeaders: () => string; getResponseHeader: (name: string) => string | null; open: { (method: string, url: string | URL): void; (method: string, url: string | URL, async: boolean, username?: string | null | undefined, password?: string | null | undefined): void; }; overrideMimeType: (mime: string) => void; send: (body?: Document | XMLHttpRequestBodyInit | null | undefined) => void; setRequestHeader: (name: string, value: string) => void; readonly UNSENT: 0; readonly OPENED: 1; readonly HEADERS_RECEIVED: 2; readonly LOADING: 3; readonly DONE: 4; addEventListener: { <K extends keyof XMLHttpRequestEventMap>(type: K, listener: (this: XMLHttpRequest, ev: XMLHttpRequestEventMap[K]) => any, options?: boolean | AddEventListenerOptions | undefined): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions | undefined): void; }; removeEventListener: { <K extends keyof XMLHttpRequestEventMap>(type: K, listener: (this: XMLHttpRequest, ev: XMLHttpRequestEventMap[K]) => any, options?: boolean | EventListenerOptions | undefined): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions | undefined): void; }; onabort: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onerror: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onload: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onloadend: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onloadstart: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onprogress: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; ontimeout: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; dispatchEvent: (event: Event) => boolean; } | undefined; }[]",
     "description": ""
    },
    {
     "name": "queue",
-    "type": "{ id: number; file: { readonly lastModified: number; readonly name: string; readonly webkitRelativePath: string; readonly size: number; readonly type: string; arrayBuffer: () => Promise<ArrayBuffer>; bytes: () => Promise<Uint8Array<ArrayBuffer>>; slice: (start?: number | undefined, end?: number | undefined, contentType?: string | undefined) => Blob; stream: () => ReadableStream<Uint8Array<ArrayBuffer>>; text: () => Promise<string>; }; progress: number; status: \"done\" | \"uploading\" | \"error\" | \"queued\" | \"cancelled\"; error?: string | undefined; xhr?: { onreadystatechange: ((this: XMLHttpRequest, ev: Event) => any) | null; readonly readyState: number; readonly response: any; readonly responseText: string; responseType: XMLHttpRequestResponseType; readonly responseURL: string; readonly responseXML: Document | null; readonly status: number; readonly statusText: string; timeout: number; readonly upload: { addEventListener: { <K extends keyof XMLHttpRequestEventTargetEventMap>(type: K, listener: (this: XMLHttpRequestUpload, ev: XMLHttpRequestEventTargetEventMap[K]) => any, options?: boolean | AddEventListenerOptions | undefined): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions | undefined): void; }; removeEventListener: { <K extends keyof XMLHttpRequestEventTargetEventMap>(type: K, listener: (this: XMLHttpRequestUpload, ev: XMLHttpRequestEventTargetEventMap[K]) => any, options?: boolean | EventListenerOptions | undefined): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions | undefined): void; }; onabort: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onerror: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onload: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onloadend: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onloadstart: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onprogress: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; ontimeout: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; dispatchEvent: (event: Event) => boolean; }; withCredentials: boolean; abort: () => void; getAllResponseHeaders: () => string; getResponseHeader: (name: string) => string | null; open: { (method: string, url: string | URL): void; (method: string, url: string | URL, async: boolean, username?: string | null | undefined, password?: string | null | undefined): void; }; overrideMimeType: (mime: string) => void; send: (body?: Document | XMLHttpRequestBodyInit | null | undefined) => void; setRequestHeader: (name: string, value: string) => void; readonly UNSENT: 0; readonly OPENED: 1; readonly HEADERS_RECEIVED: 2; readonly LOADING: 3; readonly DONE: 4; addEventListener: { <K extends keyof XMLHttpRequestEventMap>(type: K, listener: (this: XMLHttpRequest, ev: XMLHttpRequestEventMap[K]) => any, options?: boolean | AddEventListenerOptions | undefined): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions | undefined): void; }; removeEventListener: { <K extends keyof XMLHttpRequestEventMap>(type: K, listener: (this: XMLHttpRequest, ev: XMLHttpRequestEventMap[K]) => any, options?: boolean | EventListenerOptions | undefined): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions | undefined): void; }; onabort: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onerror: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onload: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onloadend: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onloadstart: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onprogress: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; ontimeout: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; dispatchEvent: (event: Event) => boolean; } | undefined; }[]",
+    "type": "{ id: number; file: { readonly lastModified: number; readonly name: string; readonly webkitRelativePath: string; readonly size: number; readonly type: string; arrayBuffer: () => Promise<ArrayBuffer>; bytes: () => Promise<Uint8Array<ArrayBuffer>>; slice: (start?: number | undefined, end?: number | undefined, contentType?: string | undefined) => Blob; stream: () => ReadableStream<Uint8Array<ArrayBuffer>>; text: () => Promise<string>; }; progress: number; status: \"done\" | \"uploading\" | \"error\" | \"cancelled\" | \"queued\"; error?: string | undefined; xhr?: { onreadystatechange: ((this: XMLHttpRequest, ev: Event) => any) | null; readonly readyState: number; readonly response: any; readonly responseText: string; responseType: XMLHttpRequestResponseType; readonly responseURL: string; readonly responseXML: Document | null; readonly status: number; readonly statusText: string; timeout: number; readonly upload: { addEventListener: { <K extends keyof XMLHttpRequestEventTargetEventMap>(type: K, listener: (this: XMLHttpRequestUpload, ev: XMLHttpRequestEventTargetEventMap[K]) => any, options?: boolean | AddEventListenerOptions | undefined): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions | undefined): void; }; removeEventListener: { <K extends keyof XMLHttpRequestEventTargetEventMap>(type: K, listener: (this: XMLHttpRequestUpload, ev: XMLHttpRequestEventTargetEventMap[K]) => any, options?: boolean | EventListenerOptions | undefined): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions | undefined): void; }; onabort: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onerror: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onload: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onloadend: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onloadstart: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onprogress: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; ontimeout: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; dispatchEvent: (event: Event) => boolean; }; withCredentials: boolean; abort: () => void; getAllResponseHeaders: () => string; getResponseHeader: (name: string) => string | null; open: { (method: string, url: string | URL): void; (method: string, url: string | URL, async: boolean, username?: string | null | undefined, password?: string | null | undefined): void; }; overrideMimeType: (mime: string) => void; send: (body?: Document | XMLHttpRequestBodyInit | null | undefined) => void; setRequestHeader: (name: string, value: string) => void; readonly UNSENT: 0; readonly OPENED: 1; readonly HEADERS_RECEIVED: 2; readonly LOADING: 3; readonly DONE: 4; addEventListener: { <K extends keyof XMLHttpRequestEventMap>(type: K, listener: (this: XMLHttpRequest, ev: XMLHttpRequestEventMap[K]) => any, options?: boolean | AddEventListenerOptions | undefined): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions | undefined): void; }; removeEventListener: { <K extends keyof XMLHttpRequestEventMap>(type: K, listener: (this: XMLHttpRequest, ev: XMLHttpRequestEventMap[K]) => any, options?: boolean | EventListenerOptions | undefined): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions | undefined): void; }; onabort: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onerror: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onload: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onloadend: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onloadstart: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onprogress: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; ontimeout: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; dispatchEvent: (event: Event) => boolean; } | undefined; }[]",
     "description": ""
    }
   ]
