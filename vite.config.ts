@@ -1,3 +1,4 @@
+import { resolve } from "node:path";
 import { defineConfig } from "vitest/config";
 import vue from "@vitejs/plugin-vue";
 import dts from "vite-plugin-dts";
@@ -32,6 +33,8 @@ export default defineConfig({
     },
   },
   test: {
+    // the docs demos import the library by name; point them at the source
+    alias: { "blessing-ui": resolve(import.meta.dirname, "src/index.ts") },
     environment: "jsdom",
     include: ["src/**/*.test.ts"],
     passWithNoTests: true,

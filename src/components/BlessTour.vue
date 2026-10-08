@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, nextTick, ref, watch } from "vue";
+import { computed, nextTick, onMounted, ref, watch } from "vue";
 import { useFloating, type Placement } from "../composables/useFloating";
 import BlessButton from "./BlessButton.vue";
 import { scrollBehavior } from "../composables/useMedia";
@@ -67,6 +67,11 @@ function close(finished: boolean) {
   if (finished) emit("finish");
   else emit("skip");
 }
+// Vue hydrates a teleport by reading the target's first child, which for `body` is the app root,
+// so the teleport waits for the client; the tour only matters once it is opened anyway
+const mounted = ref(false);
+onMounted(() => (mounted.value = true));
+
 const hole = computed(() => {
   const r = rect.value;
   return r
@@ -81,7 +86,7 @@ const hole = computed(() => {
 </script>
 
 <template>
-  <Teleport to="body">
+  <Teleport v-if="mounted" to="body">
     <template v-if="open && cur">
       <div
         v-if="spotlight"
