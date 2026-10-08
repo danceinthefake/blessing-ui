@@ -25,9 +25,16 @@ const props = withDefaults(
     /** wrap long lines instead of scrolling sideways */
     wrap?: boolean;
     label?: string;
+    labels?: Partial<{ copy: string; copied: string; copiedLive: string }>;
   }>(),
   { copy: true, label: "Code" },
 );
+const text = computed(() => ({
+  copy: "Copy",
+  copied: "Copied",
+  copiedLive: "Copied to clipboard",
+  ...props.labels,
+}));
 const active = defineModel<number>("active", { default: 0 });
 const emit = defineEmits<{ copy: [code: string] }>();
 
@@ -132,7 +139,7 @@ onBeforeUnmount(() => clearTimeout(timer));
       <span class="bless-code__spacer"></span>
       <span v-if="lang" class="bless-code__lang">{{ lang }}</span>
       <button v-if="copy" type="button" class="bless-code__copy" @click="doCopy">
-        {{ copied ? "Copied" : "Copy" }}
+        {{ copied ? text.copied : text.copy }}
       </button>
     </figcaption>
     <div
@@ -153,9 +160,7 @@ onBeforeUnmount(() => clearTimeout(timer));
 </span></code></pre>
       </slot>
     </div>
-    <span class="bless-code__live" aria-live="polite">{{
-      copied ? "Copied to clipboard" : ""
-    }}</span>
+    <span class="bless-code__live" aria-live="polite">{{ copied ? text.copiedLive : "" }}</span>
   </figure>
 </template>
 

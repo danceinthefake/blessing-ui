@@ -9,15 +9,40 @@ export interface BlessKanbanColumn<T = unknown> {
 </script>
 
 <script setup lang="ts" generic="T">
-import { nextTick, ref, useId } from "vue";
+import { computed, nextTick, ref, useId } from "vue";
 import { logicalKey } from "../composables/rtl";
 
 defineOptions({ name: "BlessKanban" });
 
-defineProps<{
+const props = defineProps<{
   rowKey?: (item: T) => string | number;
   label?: string;
+  /** screen-reader wording; each message that carries names or numbers is a function of them */
+  labels?: Partial<{
+    card: (index: number, column: string) => string;
+    moved: (column: string, position: number, total: number) => string;
+    position: (column: string, position: number, total: number) => string;
+    dropped: (column: string, position: number) => string;
+    full: (column: string) => string;
+    grabbed: string;
+    cancelled: string;
+    hint: string;
+    roleDescription: string;
+  }>;
 }>();
+const text = computed(() => ({
+  card: (i: number, col: string) => `Move card ${i} of ${col}`,
+  moved: (col: string, p: number, n: number) => `Moved to ${col}, position ${p} of ${n}`,
+  position: (col: string, p: number, n: number) => `${col}, position ${p} of ${n}`,
+  dropped: (col: string, p: number) => `Dropped in ${col}, position ${p}`,
+  full: (col: string) => `${col} is full`,
+  grabbed:
+    "Grabbed. Up and down move it in the column, left and right to another column, Space drops it, Escape cancels.",
+  cancelled: "Cancelled, order restored",
+  hint: "Press Space to grab a card. Up and down move it in its column, left and right to another column. Space drops it, Escape cancels.",
+  roleDescription: "sortable card",
+  ...props.labels,
+}));
 const model = defineModel<BlessKanbanColumn<T>[]>({ default: () => [] });
 const emit = defineEmits<{
   move: [item: T, from: { column: string; index: number }, to: { column: string; index: number }];
@@ -87,7 +112,11 @@ function drop() {
   const at = o.col === d.col && o.index > d.index ? o.index - 1 : o.index;
   if (o.col === d.col && at === d.index) return;
   relocate(d.col, d.index, o.col, at);
-  live.value = `Moved to ${model.value[o.col]!.title}, position ${at + 1} of ${model.value[o.col]!.items.length}`;
+  live.value = text.value.moved(
+    model.value[o.col]!.title,
+    at + 1,
+    model.value[o.col]!.items.length,
+  );
 }
 const cancel = () => (drag.value = over.value = null);
 
@@ -99,7 +128,7 @@ function step(c: number, i: number, to: number, at: number) {
   const n = model.value.length;
   if (to < 0 || to >= n) return;
   if (full(to, c)) {
-    live.value = `${model.value[to]!.title} is full`;
+    live.value = text.value.full(model.value[to]!.title);
     return;
   }
   const len = model.value[to]!.items.length - (to === c ? 1 : 0);
@@ -107,7 +136,7 @@ function step(c: number, i: number, to: number, at: number) {
   if (to === c && at === i) return;
   relocate(c, i, to, at);
   held.value = { col: to, index: at };
-  live.value = `${model.value[to]!.title}, position ${at + 1} of ${model.value[to]!.items.length}`;
+  live.value = text.value.position(model.value[to]!.title, at + 1, model.value[to]!.items.length);
   refocus(to, at);
 }
 function onKey(c: number, i: number, e: KeyboardEvent) {
@@ -119,16 +148,16 @@ function onKey(c: number, i: number, e: KeyboardEvent) {
       held.value = { col: c, index: i };
       origin = { col: c, index: i };
       snapshot = model.value.map((x) => ({ ...x, items: x.items.slice() }));
-      live.value = `Grabbed. Up and down move it in the column, left and right to another column, Space drops it, Escape cancels.`;
+      live.value = text.value.grabbed;
     } else {
       held.value = null;
-      live.value = `Dropped in ${model.value[c]!.title}, position ${i + 1}`;
+      live.value = text.value.dropped(model.value[c]!.title, i + 1);
     }
   } else if (e.key === "Escape" && h) {
     e.preventDefault();
     model.value = snapshot;
     held.value = null;
-    live.value = "Cancelled, order restored";
+    live.value = text.value.cancelled;
     refocus(origin.col, origin.index);
   } else if (h) {
     if (k === "ArrowUp") (e.preventDefault(), step(c, i, c, i - 1));
@@ -187,8 +216,8 @@ const endMark = (c: number) =>
             type="button"
             class="bless-kanban__grip"
             :data-grip="`${c}:${i}`"
-            :aria-label="`Move card ${i + 1} of ${col.title}`"
-            aria-roledescription="sortable card"
+            :aria-label="text.card(i + 1, col.title)"
+            :aria-roledescription="text.roleDescription"
             :aria-pressed="held?.col === c && held.index === i"
             :aria-describedby="hint"
             @pointerdown="grab(c, i, $event)"
@@ -206,10 +235,7 @@ const endMark = (c: number) =>
         </li>
       </ul>
     </section>
-    <span :id="hint" hidden
-      >Press Space to grab a card. Up and down move it in its column, left and right to another
-      column. Space drops it, Escape cancels.</span
-    >
+    <span :id="hint" hidden>{{ text.hint }}</span>
     <span class="bless-kanban__live" aria-live="polite">{{ live }}</span>
   </div>
 </template>

@@ -25,9 +25,27 @@ const props = withDefaults(
     /** show Start / Pause / Reset */
     controls?: boolean;
     label?: string;
+    /** button text and the wording said when a phase changes or the time is up */
+    labels?: Partial<{
+      start: string;
+      resume: string;
+      pause: string;
+      reset: string;
+      finished: string;
+      round: (round: number, rounds: number) => string;
+    }>;
   }>(),
   { mode: "countdown", duration: 60, rounds: 1, controls: true, label: "Timer" },
 );
+const text = computed(() => ({
+  start: "Start",
+  resume: "Resume",
+  pause: "Pause",
+  reset: "Reset",
+  finished: "Finished",
+  round: (r: number, n: number) => `round ${r} of ${n}`,
+  ...props.labels,
+}));
 const running = defineModel<boolean>("running", { default: false });
 const emit = defineEmits<{
   finish: [];
@@ -77,7 +95,7 @@ const clock = (ms: number, up: boolean) => {
 const display = computed(() => clock(at.value.left, props.mode === "stopwatch"));
 const phase = computed(() => (props.mode === "interval" ? plan.value[at.value.i] : undefined));
 const sub = computed(() =>
-  phase.value ? `${phase.value.label} · round ${at.value.round} of ${rounds.value}` : "",
+  phase.value ? `${phase.value.label} · ${text.value.round(at.value.round, rounds.value)}` : "",
 );
 
 function tick() {
@@ -87,7 +105,7 @@ function tick() {
     stop();
     finished.value = true;
     running.value = false;
-    live.value = "Finished";
+    live.value = text.value.finished;
     emit("finish");
   }
 }
@@ -135,7 +153,7 @@ watch(
   (_, old) => {
     const p = plan.value[at.value.i];
     if (old === undefined || !p || props.mode !== "interval" || !running.value) return;
-    live.value = `${p.label}, round ${at.value.round} of ${rounds.value}`;
+    live.value = `${p.label}, ${text.value.round(at.value.round, rounds.value)}`;
     emit("phase", p, at.value.i, at.value.round);
   },
 );
@@ -154,10 +172,12 @@ defineExpose({ start, pause, reset, toggle: () => (running.value = !running.valu
     <span class="bless-timer__clock">{{ display }}</span>
     <span v-if="controls" class="bless-timer__controls">
       <BlessButton v-if="!running" @click="start">{{
-        elapsed && !finished ? "Resume" : "Start"
+        elapsed && !finished ? text.resume : text.start
       }}</BlessButton>
-      <BlessButton v-else variant="outline" @click="pause">Pause</BlessButton>
-      <BlessButton variant="ghost" :disabled="!elapsed" @click="reset">Reset</BlessButton>
+      <BlessButton v-else variant="outline" @click="pause">{{ text.pause }}</BlessButton>
+      <BlessButton variant="ghost" :disabled="!elapsed" @click="reset">{{
+        text.reset
+      }}</BlessButton>
     </span>
     <span class="bless-timer__live" aria-live="polite">{{ live }}</span>
   </div>

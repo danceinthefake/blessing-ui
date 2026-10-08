@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onBeforeUnmount, onMounted, ref, useId } from "vue";
+import { computed, onBeforeUnmount, onMounted, ref, useId } from "vue";
 
 defineOptions({ name: "BlessSliderCaptcha" });
 
@@ -10,9 +10,16 @@ const props = withDefaults(
     /** how close counts, as a fraction of the track (0.03 = 3%) */
     tolerance?: number;
     label?: string;
+    /** what is announced when the piece lands or misses */
+    labels?: Partial<{ verified: string; failed: string }>;
   }>(),
   { tolerance: 0.03, label: "Slide the piece into the gap" },
 );
+const text = computed(() => ({
+  verified: "Verified",
+  failed: "Not quite, try again",
+  ...props.labels,
+}));
 /** true once solved; the widget then stays locked until `reset()` */
 const verified = defineModel<boolean>("verified", { default: false });
 const emit = defineEmits<{ verify: [info: { ms: number }]; fail: [] }>();
@@ -62,11 +69,11 @@ function check() {
   if (Math.abs(f.value - gap.value.at) <= props.tolerance) {
     verified.value = true;
     f.value = gap.value.at;
-    live.value = "Verified";
+    live.value = text.value.verified;
     emit("verify", { ms: Math.round(performance.now() - started) });
   } else {
     failed.value = true;
-    live.value = "Not quite, try again";
+    live.value = text.value.failed;
     emit("fail");
     f.value = 0;
     shuffle();

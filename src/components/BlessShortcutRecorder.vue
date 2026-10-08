@@ -14,9 +14,29 @@ const props = withDefaults(
     disabled?: boolean;
     label?: string;
     placeholder?: string;
+    /** button wording and the messages said while recording or on a refusal */
+    labels?: Partial<{
+      button: (label: string, combo: string) => string;
+      pressKeys: string;
+      recording: string;
+      set: (combo: string) => string;
+      needsModifier: (combo: string) => string;
+      usedBy: (combo: string, by: string) => string;
+      taken: (combo: string) => string;
+    }>;
   }>(),
   { label: "Shortcut", placeholder: "Not set" },
 );
+const text = computed(() => ({
+  button: (l: string, c: string) => `${l}: ${c || "not set"}. Press Enter to change.`,
+  pressKeys: "Press keys…",
+  recording: "Recording. Press the keys you want. Escape cancels, Backspace clears.",
+  set: (c: string) => `Set to ${c}`,
+  needsModifier: (c: string) => `Add Ctrl, Alt or Meta to ${c}`,
+  usedBy: (c: string, by: string) => `${c} is already used by ${by}`,
+  taken: (c: string) => `${c} is already taken`,
+  ...props.labels,
+}));
 const model = defineModel<string>({ default: "" });
 const emit = defineEmits<{ conflict: [combo: string, by: string | undefined] }>();
 
@@ -41,7 +61,7 @@ function start() {
   recording.value = true;
   held.value = "";
   error.value = "";
-  live.value = "Recording. Press the keys you want. Escape cancels, Backspace clears.";
+  live.value = text.value.recording;
 }
 function stop(msg = "") {
   recording.value = false;
@@ -81,21 +101,21 @@ function onKey(e: KeyboardEvent) {
   const combo = shortcutFromEvent(e)!;
   if (needsModifier(combo)) {
     held.value = combo;
-    error.value = `Add Ctrl, Alt or Meta to ${combo}`;
+    error.value = text.value.needsModifier(combo);
     live.value = error.value;
     return;
   }
   const by = owner(combo);
   if (by !== undefined && combo !== model.value) {
     held.value = combo;
-    error.value = by ? `${combo} is already used by ${by}` : `${combo} is already taken`;
+    error.value = by ? text.value.usedBy(combo, by) : text.value.taken(combo);
     live.value = error.value;
     emit("conflict", combo, by || undefined);
     return;
   }
   model.value = combo;
   error.value = "";
-  stop(`Set to ${combo}`);
+  stop(text.value.set(combo));
 }
 function onKeyup(e: KeyboardEvent) {
   // a held modifier let go with nothing else pressed: back to waiting
@@ -123,7 +143,7 @@ defineExpose({ start, focus: () => btn.value?.focus() });
       type="button"
       class="bless-shortcut__btn"
       :disabled
-      :aria-label="`${label}: ${model || 'not set'}. Press Enter to change.`"
+      :aria-label="text.button(label, model)"
       :aria-describedby="error ? `${id}-err` : undefined"
       :aria-invalid="!!error || undefined"
       @click="recording ? stop() : start()"
@@ -131,7 +151,9 @@ defineExpose({ start, focus: () => btn.value?.focus() });
       @keyup="onKeyup"
       @blur="recording && stop()"
     >
-      <span v-if="recording && !parts.length" class="bless-shortcut__hint">Press keys…</span>
+      <span v-if="recording && !parts.length" class="bless-shortcut__hint">{{
+        text.pressKeys
+      }}</span>
       <BlessKbd v-else-if="parts.length" :keys="parts" />
       <span v-else class="bless-shortcut__hint">{{ placeholder }}</span>
     </button>

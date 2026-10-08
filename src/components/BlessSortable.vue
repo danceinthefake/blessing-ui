@@ -1,19 +1,40 @@
 <script setup lang="ts" generic="T">
-import { nextTick, ref, useId } from "vue";
+import { computed, nextTick, ref, useId } from "vue";
 import { logicalKey } from "../composables/rtl";
 import { moveItem, useSortable } from "../composables/useSortable";
 
 defineOptions({ name: "BlessSortable" });
 
-withDefaults(
+const props = withDefaults(
   defineProps<{
     rowKey?: (item: T, index: number) => string | number;
     label?: string;
     /** lay the items out in this many equal columns (a grid); 1 is a list */
     columns?: number;
+    /** screen-reader wording; each message that carries numbers is a function of them */
+    labels?: Partial<{
+      grip: (index: number) => string;
+      grabbed: (index: number, total: number) => string;
+      moved: (position: number, total: number) => string;
+      dropped: (position: number, total: number) => string;
+      cancelled: string;
+      hint: string;
+      roleDescription: string;
+    }>;
   }>(),
   { label: "Sortable", columns: 1 },
 );
+const text = computed(() => ({
+  grip: (i: number) => `Reorder item ${i}`,
+  grabbed: (i: number, n: number) =>
+    `Grabbed item ${i} of ${n}. Arrow keys move it, Space drops it, Escape cancels.`,
+  moved: (p: number, n: number) => `Moved to position ${p} of ${n}`,
+  dropped: (p: number, n: number) => `Dropped at position ${p} of ${n}`,
+  cancelled: "Cancelled, order restored",
+  hint: "Press Space to grab, arrow keys to move, Space to drop, Escape to cancel.",
+  roleDescription: "sortable item",
+  ...props.labels,
+}));
 const model = defineModel<T[]>({ default: () => [] });
 const emit = defineEmits<{ move: [from: number, to: number] }>();
 
@@ -29,7 +50,7 @@ function move(from: number, to: number) {
   if (from === to || to < 0 || to >= model.value.length) return;
   model.value = moveItem(model.value, from, to);
   emit("move", from, to);
-  live.value = `Moved to position ${to + 1} of ${model.value.length}`;
+  live.value = text.value.moved(to + 1, model.value.length);
 }
 const sortable = useSortable(root, move);
 const { drag, over } = sortable;
@@ -45,16 +66,16 @@ function onKey(i: number, e: KeyboardEvent) {
       held.value = i;
       snapshot = model.value.slice();
       origin = i;
-      live.value = `Grabbed item ${i + 1} of ${model.value.length}. Arrow keys move it, Space drops it, Escape cancels.`;
+      live.value = text.value.grabbed(i + 1, model.value.length);
     } else {
-      live.value = `Dropped at position ${held.value + 1} of ${model.value.length}`;
+      live.value = text.value.dropped(held.value + 1, model.value.length);
       held.value = null;
     }
   } else if (e.key === "Escape" && held.value != null) {
     e.preventDefault();
     model.value = snapshot;
     held.value = null;
-    live.value = "Cancelled, order restored";
+    live.value = text.value.cancelled;
     refocus(origin);
   } else if (held.value != null) {
     const d =
@@ -101,8 +122,8 @@ const side = (i: number) =>
         <button
           type="button"
           class="bless-sortable__grip"
-          :aria-label="`Reorder item ${i + 1}`"
-          aria-roledescription="sortable item"
+          :aria-label="text.grip(i + 1)"
+          :aria-roledescription="text.roleDescription"
           :aria-pressed="held === i"
           :aria-describedby="hint"
           @pointerdown="sortable.grab(i, $event)"
@@ -119,9 +140,7 @@ const side = (i: number) =>
         >
       </li>
     </ul>
-    <span :id="hint" hidden
-      >Press Space to grab, arrow keys to move, Space to drop, Escape to cancel.</span
-    >
+    <span :id="hint" hidden>{{ text.hint }}</span>
     <span class="bless-sortable__live" aria-live="polite">{{ live }}</span>
   </div>
 </template>

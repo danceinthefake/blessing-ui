@@ -26,9 +26,25 @@ const props = withDefaults(
     /** show the rotate buttons */
     controls?: boolean;
     label?: string;
+    /** the crop readout said after a keystroke, the hint under the image and the rotate buttons */
+    labels?: Partial<{
+      size: (width: number, height: number, x: number, y: number) => string;
+      hint: string;
+      rotateLeft: string;
+      rotateRight: string;
+      loadError: string;
+    }>;
   }>(),
   { crossorigin: "anonymous", controls: true, label: "Crop area" },
 );
+const text = computed(() => ({
+  size: (w: number, h: number, x: number, y: number) => `${w} by ${h} pixels, from ${x}, ${y}`,
+  hint: "arrows move, + − resize",
+  rotateLeft: "Rotate left",
+  rotateRight: "Rotate right",
+  loadError: "The image could not be loaded.",
+  ...props.labels,
+}));
 const model = defineModel<BlessCropRect | null>({ default: null });
 const emit = defineEmits<{ ready: []; error: [] }>();
 
@@ -157,7 +173,7 @@ function onKey(e: KeyboardEvent) {
   else return;
   e.preventDefault();
   const r = rect.value!;
-  live.value = `${r.width} by ${r.height} pixels, from ${r.x}, ${r.y}`;
+  live.value = text.value.size(r.width, r.height, r.x, r.y);
 }
 
 const handles = computed(() =>
@@ -190,7 +206,7 @@ defineExpose({ toBlob, rotate: turn, reset });
 
 <template>
   <div class="bless-cropper">
-    <p v-if="failed" class="bless-cropper__error" role="alert">The image could not be loaded.</p>
+    <p v-if="failed" class="bless-cropper__error" role="alert">{{ text.loadError }}</p>
     <div v-else ref="stage" class="bless-cropper__stage" :aria-busy="!img">
       <canvas ref="canvas" class="bless-cropper__canvas" aria-hidden="true"></canvas>
       <div
@@ -222,13 +238,13 @@ defineExpose({ toBlob, rotate: turn, reset });
     </div>
     <div v-if="img" class="bless-cropper__foot">
       <span :id="`${id}-hint`" class="bless-cropper__readout"
-        >{{ rect?.width }} × {{ rect?.height }} px · arrows move, + − resize</span
+        >{{ rect?.width }} × {{ rect?.height }} px · {{ text.hint }}</span
       >
       <span v-if="controls" class="bless-cropper__controls">
-        <BlessButton size="sm" variant="ghost" aria-label="Rotate left" @click="turn(-90)"
+        <BlessButton size="sm" variant="ghost" :aria-label="text.rotateLeft" @click="turn(-90)"
           >↺</BlessButton
         >
-        <BlessButton size="sm" variant="ghost" aria-label="Rotate right" @click="turn(90)"
+        <BlessButton size="sm" variant="ghost" :aria-label="text.rotateRight" @click="turn(90)"
           >↻</BlessButton
         >
       </span>
