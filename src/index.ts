@@ -77,7 +77,7 @@ export { default as BlessToaster } from "./components/BlessToaster.vue";
 export { useToast } from "./composables/useToast";
 export type { BlessToastOptions, BlessToastItem } from "./composables/useToast";
 export { default as BlessCommand } from "./components/BlessCommand.vue";
-export type { BlessCommandItem } from "./components/BlessCommand.vue";
+export type { BlessCommandItem, BlessCommandScope } from "./components/BlessCommand.vue";
 export { default as BlessCombobox } from "./components/BlessCombobox.vue";
 export { default as BlessCalendar } from "./components/BlessCalendar.vue";
 export { default as BlessDatePicker } from "./components/BlessDatePicker.vue";
