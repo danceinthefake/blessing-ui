@@ -17,11 +17,17 @@ const props = withDefaults(
     /** hide the list/grid switch */
     switchable?: boolean;
     /** names of the layout switch and its two buttons */
-    labels?: Partial<{ layout: string; list: string; grid: string }>;
+    labels?: Partial<{ layout: string; list: string; grid: string; empty: string }>;
   }>(),
   { pageSize: 0, columns: "220px", label: "Items", switchable: true },
 );
-const text = computed(() => ({ layout: "Layout", list: "List", grid: "Grid", ...props.labels }));
+const text = computed(() => ({
+  layout: "Layout",
+  list: "List",
+  grid: "Grid",
+  empty: "No items",
+  ...props.labels,
+}));
 const layout = defineModel<"list" | "grid">("layout", { default: "list" });
 const page = ref(1);
 const pages = computed(() =>
@@ -61,7 +67,7 @@ const slice = computed(() =>
       </div>
     </div>
     <div v-else class="bless-dataview__empty">
-      <slot name="empty">No items</slot>
+      <slot name="empty">{{ text.empty }}</slot>
     </div>
     <BlessPagination v-if="pages > 1" v-model="page" :total="pages" class="bless-dataview__pager" />
   </div>

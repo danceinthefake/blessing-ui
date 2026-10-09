@@ -1972,11 +1972,49 @@
     "description": ""
    },
    {
+    "name": "scopes",
+    "type": "BlessCommandScope[] | undefined",
+    "required": false,
+    "description": "prefixes that narrow the search to one group: `[{ key: \"@\", group: \"People\" }]`"
+   },
+   {
+    "name": "recent",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": "put the items chosen before at the top while the search is empty"
+   },
+   {
+    "name": "recentLimit",
+    "type": "number | undefined",
+    "required": false,
+    "default": "5",
+    "description": ""
+   },
+   {
+    "name": "persist",
+    "type": "string | undefined",
+    "required": false,
+    "description": "keep the history in localStorage under this key (read after mount)"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ recent: string; scope: (label: string) => string; clearScope: string; scopeHint: (parts: string[]) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
     "name": "open",
     "type": "boolean | undefined",
     "required": false,
     "default": "false",
     "description": ""
+   },
+   {
+    "name": "history",
+    "type": "string[] | undefined",
+    "required": false,
+    "default": "[]",
+    "description": "values of the items chosen so far, most recent first"
    }
   ],
   "events": [
@@ -1988,6 +2026,11 @@
    {
     "name": "select",
     "type": "[item: BlessCommandItem]",
+    "description": ""
+   },
+   {
+    "name": "update:history",
+    "type": "[value: string[]]",
     "description": ""
    }
   ],
@@ -2581,7 +2624,7 @@
    },
    {
     "name": "labels",
-    "type": "Partial<{ layout: string; list: string; grid: string; }> | undefined",
+    "type": "Partial<{ layout: string; list: string; grid: string; empty: string; }> | undefined",
     "required": false,
     "description": "names of the layout switch and its two buttons"
    },
@@ -9096,7 +9139,7 @@
    },
    {
     "name": "labels",
-    "type": "Partial<Record<\"undo\" | BlessSwipeDecision, string>> | undefined",
+    "type": "Partial<Record<\"empty\" | \"undo\" | BlessSwipeDecision, string>> | undefined",
     "required": false,
     "description": ""
    },

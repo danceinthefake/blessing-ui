@@ -20,6 +20,8 @@ import BlessPagination from "./components/BlessPagination.vue";
 import BlessSteps from "./components/BlessSteps.vue";
 import BlessUploader from "./components/BlessUploader.vue";
 import BlessEditor from "./components/BlessEditor.vue";
+import BlessDataView from "./components/BlessDataView.vue";
+import BlessSwipeDeck from "./components/BlessSwipeDeck.vue";
 
 const space = { key: " " };
 
@@ -181,4 +183,13 @@ test("names and texts that were fixed English can be replaced", async () => {
   });
   expect(ed.find("[aria-label=Tebal]").exists()).toBe(true);
   expect(ed.find("[aria-label=Italic]").exists()).toBe(true);
+});
+
+test("DataView and SwipeDeck empty states can be replaced without a slot", () => {
+  expect(
+    mount(BlessDataView, { props: { items: [], labels: { empty: "Kosong" } } }).text(),
+  ).toContain("Kosong");
+  expect(
+    mount(BlessSwipeDeck, { props: { modelValue: [], labels: { empty: "Habis" } } }).text(),
+  ).toContain("Habis");
 });

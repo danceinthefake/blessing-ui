@@ -1012,6 +1012,34 @@ await step(
   },
 );
 
+console.log("Command recent + scopes");
+await go("/components/command");
+await step(
+  "@ scopes the search, Backspace leaves it, a chosen item comes back as Recent",
+  async () => {
+    const c = L(".bless-command--inline").last(); // the scoped demo is the last inline one
+    await c.scrollIntoViewIfNeeded();
+    await page.evaluate(() => localStorage.removeItem("bless-command:docs-demo"));
+    const input = c.locator("input");
+    await input.fill("@");
+    expect((await c.locator(".bless-command__scope").count()) === 1, "chip shown");
+    const names = await c.locator('[role="option"]').allTextContents();
+    expect(names.length === 2 && names.every((n) => /Ayu|Budi/.test(n)), `only people: ${names}`);
+    await input.press("Backspace");
+    expect((await c.locator(".bless-command__scope").count()) === 0, "scope left");
+    await c.locator('[role="option"]', { hasText: "Billing" }).click();
+    await input.fill("");
+    expect(
+      (await c.locator(".bless-command__group").first().textContent()).trim() === "Recent",
+      "Recent group",
+    );
+    expect(
+      (await c.locator(".bless-command__section").first().textContent()).includes("Billing"),
+      "Billing is in it",
+    );
+  },
+);
+
 await browser.close();
 console.log(failed ? `\n${failed} step(s) failed` : "\nall interaction flows passed");
 process.exit(failed ? 1 : 0);

@@ -1,3 +1,8 @@
+// Limit: vitest compiles the demos for the browser, so a template's expressions run before a child's
+// setup does; a real SSR build (VitePress, Nuxt) compiles them to ssrRender, which runs them after.
+// A parent that shows something a child sets during setup (an emitted value) therefore agrees here
+// and not there. e2e/sweep.mjs, on the production build, is what catches that: it fails on
+// "Hydration completed but contains mismatches".
 // Every docs demo is a realistic use of the library: render it on the server, hydrate that HTML in
 // the browser, and fail on a crash (window/document touched during setup) or a hydration mismatch
 // (random or clock values read during setup).

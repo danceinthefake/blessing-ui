@@ -16,7 +16,7 @@ const props = withDefaults(
     controls?: boolean;
     /** how far (px) a drag must travel to count */
     threshold?: number;
-    labels?: Partial<Record<BlessSwipeDecision | "undo", string>>;
+    labels?: Partial<Record<BlessSwipeDecision | "undo" | "empty", string>>;
   }>(),
   { label: "Cards", controls: true, threshold: 100 },
 );
@@ -29,6 +29,7 @@ const text = computed(() => ({
   reject: "Reject",
   skip: "Skip",
   undo: "Undo",
+  empty: "No cards left",
   ...props.labels,
 }));
 const history: { item: T; decision: BlessSwipeDecision }[] = [];
@@ -160,7 +161,7 @@ const shown = computed(() => model.value.slice(0, 3));
         </div>
       </TransitionGroup>
       <div v-if="!model.length" class="bless-deck__empty">
-        <slot name="empty">No cards left</slot>
+        <slot name="empty">{{ text.empty }}</slot>
       </div>
     </div>
     <div v-if="controls" class="bless-deck__controls">
