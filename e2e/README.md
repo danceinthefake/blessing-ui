@@ -10,3 +10,5 @@ Run against a built docs site (`pnpm docs:build && pnpm exec vitepress preview d
 - `node e2e/consumer/check.mjs` — packs the library, installs it into a strict consumer, type-checks, size-gates a single import.
 
 `pnpm e2e` runs sweep + axe + interact on Chromium + Firefox. WebKit needs Playwright's Ubuntu-built deps; CI runs all three.
+
+- `node e2e/visual.mjs <baseUrl> <headUrl> [outDir]` — renders every component demo (light and dark) on two builds of the docs with the same browser and lists the ones that look different, with base / head / diff pictures. No baseline images are kept (fonts differ per machine), so locally serve two builds — e.g. `git worktree add ../base HEAD~1`, build it, `vitepress preview` each on its own port — and compare. A demo that differs from itself when rendered twice is listed as unstable, not compared. CI runs it against the previous commit as a report (the `visual-diff` artifact), never a gate; `--fail-on-change` makes it one.

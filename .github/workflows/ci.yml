@@ -58,6 +58,55 @@ jobs:
           node e2e/interact.mjs ${{ matrix.browser }}
           if [ "${{ matrix.browser }}" = "chromium" ]; then node e2e/axe.mjs; node e2e/motion.mjs; fi
 
+  # which component demos look different from the previous commit: a report (job summary and a
+  # `visual-diff` artifact with base / head / diff pictures), never a gate, since changing how
+  # things look is often the point. No baseline images are stored; both builds are rendered here.
+  visual:
+    name: visual diff
+    needs: build
+    runs-on: ubuntu-24.04
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - uses: actions/download-artifact@v8
+        with:
+          name: docs-dist
+          path: docs/.vitepress/dist
+      - run: pnpm exec playwright install --with-deps chromium
+      - name: build the previous commit
+        run: |
+          base="${{ github.event.pull_request.base.sha || github.event.before }}"
+          if [ -z "$base" ] || [ "$base" = "0000000000000000000000000000000000000000" ] \
+             || ! git cat-file -e "$base^{commit}" 2>/dev/null; then
+            base=$(git rev-parse HEAD~1)
+          fi
+          echo "comparing against $base"
+          git worktree add ../base "$base"
+          cd ../base
+          pnpm install --frozen-lockfile
+          pnpm build
+          pnpm docs:build
+      - name: compare
+        run: |
+          pnpm exec vitepress preview docs --port 4173 &
+          (cd ../base && pnpm exec vitepress preview docs --port 4174) &
+          sleep 5
+          node e2e/visual.mjs http://localhost:4174 http://localhost:4173 visual-out
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: visual-diff
+          path: visual-out
+          retention-days: 14
+
   # the docs that passed every e2e job go live; pull requests never deploy
   deploy:
     name: deploy · cloudflare pages
