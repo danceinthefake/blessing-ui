@@ -1,5 +1,7 @@
 name: release
-# push a v* tag -> npm publish (trusted publishing, no token) + GitHub release
+# push a v* tag -> stage the version on npm (trusted publishing, no token) + GitHub release.
+# The trusted publisher may only *stage*: the version waits, private, until a person approves it
+# with 2FA (npmjs.com/package/blessing-ui, or `npm stage list` / `npm stage approve <id>`).
 on:
   push:
     tags: ["v*"]
@@ -27,7 +29,14 @@ jobs:
           awk -v v="$v" '/^## /{p = index($0, "## " v " ") == 1; next} p' CHANGELOG.md > notes.md
           test -s notes.md
       # prepublishOnly runs pnpm test && pnpm build
-      - run: npm publish --provenance --access public
+      - run: npm stage publish --provenance --access public
+      - name: say what is left to do
+        run: |
+          {
+            echo "### ${GITHUB_REF_NAME} is staged, not published yet"
+            echo
+            echo "Approve it with 2FA at https://www.npmjs.com/package/blessing-ui, or run \`npm stage list\` and \`npm stage approve <id>\`."
+          } >> "$GITHUB_STEP_SUMMARY"
       - run: gh release create "$GITHUB_REF_NAME" --title "${GITHUB_REF_NAME#v}" --notes-file notes.md --verify-tag
         env:
           GH_TOKEN: ${{ github.token }}
