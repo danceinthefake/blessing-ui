@@ -1,16 +1,35 @@
 # Changelog
 
-## Unreleased
+## 0.3.0 — 2026-10-10
 
-- **12 new components** (176 in all): the five below, plus `BlessCoachmark` (a "new" dot seen once), `BlessOnboardingChecklist` (first steps with persisted progress), `BlessDock` (magnifying icon strip), `BlessFormula` (safe typed calculation with live result and "did you mean"; `evaluateFormula` exported), `BlessRangeCalendar` (paint many days by dragging), `BlessAnnotator` (boxes and pins on an image) and `BlessScheduler` (day/week grid with drag to create, move, resize). The first five: `BlessSparkline` (tiny inline line / bar / win-loss), `BlessConfetti` (canvas burst fired with `fire()`, off under reduced motion), `BlessInfiniteCanvas` (pan and zoom surface, with `blessCanvasKey` for children), `BlessNodeGraph` (draggable nodes and links, keyboard linking, `acyclic`) and `BlessTreemap` (squarified part-to-whole with drill-down).
+12 new components, 176 in all, and a round of hardening across the existing ones. Every new component has a docs page, tests, a keyboard path for what the pointer does, and passes axe in light and dark and the end-to-end flows in Chromium, Firefox and WebKit. No breaking changes.
+
+**New components**
+
+- `BlessSparkline`: tiny inline line, bar or win/loss chart, named with a summary for screen readers
+- `BlessConfetti`: canvas burst fired with `fire()`; click-through, and silent under reduced motion
+- `BlessInfiniteCanvas`: pan and zoom surface (drag, Ctrl+wheel, pinch, keys); children can `inject(blessCanvasKey)`
+- `BlessNodeGraph`: draggable nodes and links on the canvas, keyboard linking (L, arrows, Enter), `acyclic`
+- `BlessTreemap`: squarified part-to-whole with drill-down and arrow-key navigation
+- `BlessCoachmark`: a "new" dot with a bubble, seen once (remembered by `id`)
+- `BlessOnboardingChecklist`: first steps with real checkboxes, progress, collapse, dismiss and optional persistence
+- `BlessDock`: magnifying icon strip; off for touch and reduced motion
+- `BlessFormula`: typed calculation parsed without `eval`, live result, exact errors, "did you mean", variable chips; `evaluateFormula` is exported
+- `BlessRangeCalendar`: paint many days by dragging, with keyboard painting
+- `BlessAnnotator`: boxes and pins on an image, as fractions of it
+- `BlessScheduler`: day or week grid; drag to create, move and resize, with overlap lanes
+
+**Existing components**
+
+- `BlessSortable` takes a `group`: lists with the same name trade items by drag or Alt+←/→ (Esc restores every list), with a new `transfer` event. A held grip near the window's top or bottom scrolls the page.
+- `BlessKanban`: a held card near the board's edge scrolls it (`useAutoScroll` is exported).
+- `BlessCommand`: `recent` puts items chosen before at the top while the search is empty (`v-model:history`, `recentLimit`, `persist`), and `scopes` lets a leading `@` or `#` narrow the search to one group, with a chip and a hint. Both are off unless asked for.
 - **Fix:** `BlessTour` could not hydrate in a server-rendered app (its teleport to `body`); it now renders after mount.
-- **`labels` prop** on Sortable, Kanban, Timer, SliderCaptcha, Cropper, ShortcutRecorder, CodeBlock, Gantt, Calendar, InputNumber, DataTable, DataView, OrderList and PickList: translate buttons, hints and screen-reader announcements. Single strings: `clearLabel` (DatePicker), `dotsLabel` (Carousel), `label` (LoadingBar).
-- **`BlessSortable` `group`:** lists with the same group name trade items by drag or Alt+←/→ (Esc restores every list); new `transfer` event.
-- **Command:** `recent` puts the items chosen before at the top while the search is empty (`v-model:history`, `recentLimit`, `persist`), and `scopes` lets a leading `@` or `#` narrow the search to one group, with a chip and a hint. Both are off unless asked for.
-- **More of the built-in wording is replaceable:** `labels` on Marquee, Uploader and Editor (by tool key); `errorText` (Attachment), `removeLabel` (Combobox, FileInput), `pageLabel` (Pagination), `goLabel` (Steps), and a visible "Verified" in SliderCaptcha.
-- **DataView** and **SwipeDeck** empty states take `labels.empty` (the `#empty` slot still wins).
-- **Sortable** scrolls the page while a grip is held near the window's top or bottom.
-- **Kanban:** a held card near the board's edge scrolls it; new `useAutoScroll` composable.
+
+**Wording**
+
+- `labels` on Sortable, Kanban, Timer, SliderCaptcha, Cropper, ShortcutRecorder, CodeBlock, Gantt, Calendar, InputNumber, DataTable, DataView, OrderList, PickList, Marquee, Uploader and Editor (by tool key), so buttons, hints and screen-reader announcements can be written in another language.
+- Single strings: `clearLabel` (DatePicker), `dotsLabel` (Carousel), `label` (LoadingBar), `errorText` (Attachment), `removeLabel` (Combobox, FileInput), `pageLabel` (Pagination), `goLabel` (Steps); DataView and SwipeDeck empty states take `labels.empty`.
 
 ## 0.2.0 — 2026-10-03
 
