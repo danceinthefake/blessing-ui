@@ -4,7 +4,7 @@
 import ThemeToggleBasic from "../demos/ThemeToggleBasic.vue";
 </script>
 
-Greys invert, the accent fill stays while its text cut (and the danger and info text) lifts so it reads on dark greys, and `--bless-font-weight-thin` steps 100→300 because hairlines read thinner light-on-dark. The full list of what changes is under [Tokens → What flips](./tokens#what-flips-what-swaps).
+Grays invert. The accent fill stays the same, but its text color (and the danger and info text) becomes lighter, so it stays readable on dark grays. `--bless-font-weight-thin` changes from 100 to 300, because hairlines look thinner as light text on a dark background. The full list of changes is in [Tokens → What flips](./tokens#what-flips-what-swaps).
 
 Follows `prefers-color-scheme` by default. Force one with `data-theme` on `<html>`:
 
@@ -12,7 +12,7 @@ Follows `prefers-color-scheme` by default. Force one with `data-theme` on `<html
 <html data-theme="dark"></html>
 ```
 
-`data-theme="light"` forces light even when the OS is dark. `color-scheme` is set alongside, so native controls, scrollbars and form fields follow.
+`data-theme="light"` forces light, also on a dark OS. The library also sets `color-scheme`, so native controls, scrollbars, and form fields follow the theme.
 
 <Demo title="The control">
   <ThemeToggleBasic />
@@ -23,7 +23,7 @@ Follows `prefers-color-scheme` by default. Force one with `data-theme` on `<html
   </template>
 </Demo>
 
-`BlessThemeToggle` is the ready-made control — this whole site runs on it. A single ☀/☾ button by default; `mode="group"` for light / system / dark.
+`BlessThemeToggle` is the ready-made control. This site uses it. By default it is a single ☀/☾ button. Use `mode="group"` for a light, system, and dark choice.
 
 ## `useTheme()`
 
@@ -50,11 +50,11 @@ const { theme, isDark, set, toggle } = useTheme();
 </script>
 ```
 
-Nuxt: `app.head.script: [{ innerHTML: "…", tagPosition: "head" }]` in `nuxt.config`. Nothing else is needed — components don't have to be wrapped in `BlessClientOnly` for theming; only the toggle's own `aria-pressed` waits for the client, which is why it is applied post-hydration.
+Nuxt: `app.head.script: [{ innerHTML: "…", tagPosition: "head" }]` in `nuxt.config`. You need nothing else. You do not have to wrap components in `BlessClientOnly` for theming. Only the `aria-pressed` attribute of the toggle waits for the client, so the library sets it after hydration.
 
 ## Overriding the dark palette
 
-Redefine under both selectors that `tokens.css` uses — the forced one and the OS-following one — and load the override **after** `tokens.css`:
+Redefine the tokens under both selectors that `tokens.css` uses: the forced one and the one that follows the OS. Load the override **after** `tokens.css`:
 
 ```css
 :root[data-theme="dark"] {

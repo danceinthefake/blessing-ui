@@ -5,7 +5,7 @@ import { BlessPaletteToggle } from "blessing-ui";
 import PaletteRetint from "../demos/PaletteRetint.vue";
 </script>
 
-The accent is Megumi's pink by default. Five more accent families are one switch away — the other petals of the mark, plus the one at its centre. Each is named after a member of the circle the library is named for (the [story](../design/story)). A palette swaps only the accent family; greys, type and geometry stay, and dark mode composes on top.
+The accent is Megumi's pink by default. Five more accent families are one switch away: the other petals of the mark, and the one at its center. Each is named after a member of the circle that gave the library its name (see the [story](../design/story)). A palette swaps only the accent family. Grays, type, and geometry stay the same, and dark mode composes on top.
 
 <div style="margin:16px 0"><BlessPaletteToggle /></div>
 
@@ -18,16 +18,16 @@ The accent is Megumi's pink by default. Five more accent families are one switch
   </template>
 </Demo>
 
-The petal is the character's colour, used on the mark and the swatches. Fills use `accent`, the petal deepened just enough to carry white text at 4.5:1; text — the active nav item, links, selected rows — uses `accent-text`, a cut that passes 4.5:1 on the background in each theme.
+The petal is the color of the character. The mark and the swatches use it. Fills use `accent`, the petal deepened just enough to carry white text at 4.5:1. Text uses `accent-text`, a cut that passes 4.5:1 on the background in each theme. Text includes the active nav item, links, and selected rows.
 
-| Palette   | Petal                                                                                                                                     | Accent    | As text   | As text (dark) | Note                                                                           |
-| --------- | ----------------------------------------------------------------------------------------------------------------------------------------- | --------- | --------- | -------------- | ------------------------------------------------------------------------------ |
-| `megumi`  | <span style="display:inline-block;width:14px;height:14px;background:#e85078;border:1px solid var(--bless-color-border)"></span> `#e85078` | `#cc466a` | `#b63c5c` | `#e95b80`      | top petal — the default, no attribute needed                                   |
-| `utaha`   | <span style="display:inline-block;width:14px;height:14px;background:#e03028;border:1px solid var(--bless-color-border)"></span> `#e03028` | `#e03028` | `#c62b23` | `#e7625c`      | right petal — red                                                              |
-| `izumi`   | <span style="display:inline-block;width:14px;height:14px;background:#4090d0;border:1px solid var(--bless-color-border)"></span> `#4090d0` | `#367ab1` | `#306d9d` | `#63a6db`      | lower-right petal — sky blue                                                   |
-| `michiru` | <span style="display:inline-block;width:14px;height:14px;background:#b878b0;border:1px solid var(--bless-color-border)"></span> `#b878b0` | `#996492` | `#885882` | `#b878b0`      | lower-left petal — mauve                                                       |
-| `eriri`   | <span style="display:inline-block;width:14px;height:14px;background:#c8e018;border:1px solid var(--bless-color-border)"></span> `#c8e018` | `#6b7e00` | `#5f7000` | `#a3bf0a`      | left petal — `#c8e018` is too pale to carry white, so it becomes `accent-soft` |
-| `tomoya`  | <span style="display:inline-block;width:14px;height:14px;background:#5870f8;border:1px solid var(--bless-color-border)"></span> `#5870f8` | `#546aec` | `#4a5dcf` | `#6f84f9`      | the founder's — indigo, not on the mark                                        |
+| Palette   | Petal                                                                                                                                     | Accent    | As text   | As text (dark) | Note                                                                          |
+| --------- | ----------------------------------------------------------------------------------------------------------------------------------------- | --------- | --------- | -------------- | ----------------------------------------------------------------------------- |
+| `megumi`  | <span style="display:inline-block;width:14px;height:14px;background:#e85078;border:1px solid var(--bless-color-border)"></span> `#e85078` | `#cc466a` | `#b63c5c` | `#e95b80`      | top petal: the default, no attribute needed                                   |
+| `utaha`   | <span style="display:inline-block;width:14px;height:14px;background:#e03028;border:1px solid var(--bless-color-border)"></span> `#e03028` | `#e03028` | `#c62b23` | `#e7625c`      | right petal: red                                                              |
+| `izumi`   | <span style="display:inline-block;width:14px;height:14px;background:#4090d0;border:1px solid var(--bless-color-border)"></span> `#4090d0` | `#367ab1` | `#306d9d` | `#63a6db`      | lower-right petal: sky blue                                                   |
+| `michiru` | <span style="display:inline-block;width:14px;height:14px;background:#b878b0;border:1px solid var(--bless-color-border)"></span> `#b878b0` | `#996492` | `#885882` | `#b878b0`      | lower-left petal: mauve                                                       |
+| `eriri`   | <span style="display:inline-block;width:14px;height:14px;background:#c8e018;border:1px solid var(--bless-color-border)"></span> `#c8e018` | `#6b7e00` | `#5f7000` | `#a3bf0a`      | left petal: `#c8e018` is too pale to carry white, so it becomes `accent-soft` |
+| `tomoya`  | <span style="display:inline-block;width:14px;height:14px;background:#5870f8;border:1px solid var(--bless-color-border)"></span> `#5870f8` | `#546aec` | `#4a5dcf` | `#6f84f9`      | the founder's: indigo, not on the mark                                        |
 
 ## Use
 
@@ -42,15 +42,15 @@ setPalette("izumi");
 setPalette("megumi"); // back to the default
 ```
 
-`BlessPaletteToggle` is the ready-made control — one swatch per palette, `aria-pressed` on the active one.
+`BlessPaletteToggle` is the ready-made control. It shows one swatch per palette and sets `aria-pressed` on the active one.
 
-The persisted choice is applied after hydration, like the theme; to avoid a one-frame default on a static or server-rendered page, set the attribute in `<head>` — the [no-flash script](./dark-mode#no-flash-on-load) covers both keys.
+The library applies the saved choice after hydration, like the theme. On a static or server-rendered page, this causes one frame of the default palette. To avoid that frame, set the attribute in `<head>`. The [no-flash script](./dark-mode#no-flash-on-load) covers both keys.
 
 ## Tokens each palette sets
 
-`--bless-color-accent`, `-accent-soft`, `-accent-2`, `-accent-text`, `-badge`, `-chart-1` — plus a dark-mode `accent-text` lifted to 4.5:1 on dark greys. Override any of them after `tokens.css` to tune a palette.
+These tokens make up a palette: `--bless-color-accent`, `-accent-soft`, `-accent-2`, `-accent-text`, `-badge`, and `-chart-1`. A dark-mode `accent-text` is also lifted to 4.5:1 on dark grays. To tune a palette, override any of them after `tokens.css`.
 
-A palette of your own is a new `[data-palette="…"]` block with those tokens, keeping the [accent's contract](./tokens#colour-pairs): `accent` carries white text at 4.5:1, and `accent-text` reaches 4.5:1 on `bg` and `surface` in both themes. Set the attribute on `<html>` yourself.
+A palette of your own is a new `[data-palette="…"]` block with those tokens, keeping the [accent's contract](./tokens#color-pairs): `accent` carries white text at 4.5:1, and `accent-text` reaches 4.5:1 on `bg` and `surface` in both themes. Set the attribute on `<html>` yourself.
 
 ```css
 :root[data-palette="kato"] {
@@ -67,4 +67,4 @@ A palette of your own is a new `[data-palette="…"]` block with those tokens, k
 }
 ```
 
-`setPalette()` and `BlessPaletteToggle` know only the built-in six (`blessPalettes`), so a custom one won't appear in the toggle or survive a `setPalette` round-trip.
+`setPalette()` and `BlessPaletteToggle` know only the six built-in palettes (`blessPalettes`). A custom palette does not appear in the toggle and does not survive a `setPalette` round-trip.

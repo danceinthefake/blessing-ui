@@ -8,7 +8,7 @@ import AnimateOnScrollBasic from "../demos/AnimateOnScrollBasic.vue";
 
 # Animate on scroll
 
-<p class="bless-lead"><code>useAnimateOnScroll()</code> — a <code>visible</code> ref that flips when the element enters the viewport; bring your own transition.</p>
+<p class="bless-lead"><code>useAnimateOnScroll()</code> gives a <code>visible</code> ref that changes at the moment the element enters the viewport. You supply the transition.</p>
 
 <Demo title="Basic">
   <AnimateOnScrollBasic />
@@ -28,8 +28,8 @@ const { visible } = useAnimateOnScroll(el, { threshold?, rootMargin?, once? });
 // visible: Ref<boolean>
 ```
 
-The pattern is the one above: bind `visible` to a `data-visible` attribute (or a class) and put the transition in CSS. The composable never touches styles. Put the hidden state inside `@media (scripting: enabled)`, as the demo does: a server-rendered page ships with `visible` false, and without scripts — or before they load — content hidden by plain CSS would never appear. Motion must never be the only way to see something. For a list, call it once per item — or observe the list and stagger with `transition-delay: calc(var(--i) * 60ms)` on the children.
+The pattern is the one above. Bind `visible` to a `data-visible` attribute (or a class) and put the transition in CSS. The composable never touches styles. Put the hidden state inside `@media (scripting: enabled)`, as the demo does. A server-rendered page ships with `visible` false. Without scripts, or before they load, content that plain CSS hides will never appear. Motion must never be the only way to see something. For a list, call the composable once per item. Or observe the list and stagger the children with `transition-delay: calc(var(--i) * 60ms)`.
 
-What a good reveal looks like in this system: opacity, `--bless-ease-out`, `--bless-duration-slower`, and at most a few pixels of travel — an appearance fades; only state changes move. Under `prefers-reduced-motion: reduce` the composable sets `visible` to `true` on mount and never creates an observer, so content simply appears; the durations are already `0s` there, so a plain CSS transition needs no extra handling. Without `IntersectionObserver` at all it is likewise `true` immediately.
+A good reveal in this system uses opacity, `--bless-ease-out`, `--bless-duration-slower`, and at most a few pixels of travel. An appearance fades. Only state changes move. With `prefers-reduced-motion: reduce`, the composable sets `visible` to `true` on mount and never creates an observer, so the content appears at once. The durations are already `0s` there, so a plain CSS transition needs no extra handling. Without `IntersectionObserver`, `visible` is also `true` immediately.
 
-Prefer `once` (the default). With `once: false` the element hides again whenever it leaves and fades back in on return — use it only when leaving means something, or the page turns into spectacle.
+Prefer `once` (the default). With `once: false`, the element hides again on leave and fades in again on return. Use this only if leaving means something. Otherwise the page turns into a spectacle.

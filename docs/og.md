@@ -12,7 +12,7 @@ import { withBase } from "vitepress";
 import { BlessMockup, BlessSkew } from "blessing-ui";
 </script>
 
-<!-- 1200×630 social card, rasterised by docs/scripts/shots.mjs → public/og.png -->
+<!-- 1200×630 social card, rasterized by docs/scripts/shots.mjs → public/og.png -->
 <div class="og">
   <div class="og__text">
     <img :src="withBase('/logo.svg')" alt="" class="og__mark" />

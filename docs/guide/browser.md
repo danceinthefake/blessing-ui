@@ -43,8 +43,8 @@ reducedMotion(); // boolean, read now: did the person ask for less motion?
 el.scrollTo({ top: 0, behavior: scrollBehavior() }); // "smooth", or "auto" under reduced motion
 ```
 
-`useLoadingBar` counts: every `start()` needs a `stop()`, the bar hides when the count reaches zero; `track(promise)` wraps both. `useScroll`'s `direction` is what `BlessLayout` uses to hide and reveal its header.
+`useLoadingBar` counts calls. Each `start()` needs a `stop()`. When the count reaches zero, the bar hides. `track(promise)` wraps both calls. `BlessLayout` uses the `direction` value of `useScroll` to hide and show its header.
 
-`useFullscreen().enter()` only works from a user action — a click or a key press; browsers refuse fullscreen requested on mount or from a timer.
+`useFullscreen().enter()` works only from a user action, for example a click or a key press. Browsers refuse fullscreen that a mount or a timer requests.
 
-`reducedMotion()` reads the setting when you call it — right for a one-off decision before scrolling or starting an animation; for a value that updates live, use `useMedia("(prefers-reduced-motion: reduce)")`, as the demo does. Both motion helpers exist so your own scripted motion keeps the [care rules](./conventions#care).
+`reducedMotion()` reads the preference at the time of the call. Use it for a one-off decision before you scroll or start an animation. For a value that updates live, use `useMedia("(prefers-reduced-motion: reduce)")`, as the demo does. Both motion helpers help your own scripted motion keep the [care rules](./conventions#care).
