@@ -10,7 +10,7 @@ import StackBasic from "../demos/StackBasic.vue";
 
 <p class="bless-lead">Flex row / column with token gap</p>
 
-Spacing children in a row or column with token gaps, so layouts don't need one-off margins. For a page grid use CSS grid; Stack is for small groups.
+Spacing children in a row or column with token gaps, so layouts do not need one-off margins. For a page grid use CSS grid. Stack is for small groups.
 
 <Demo title="Basic">
   <StackBasic />
@@ -22,7 +22,7 @@ Spacing children in a row or column with token gaps, so layouts don't need one-o
 </Demo>
 
 - `direction` (column by default), `gap` (a space token: 1–16), `align`, `justify`, `wrap`.
-- `as` sets the element — use `ul` with `li` children when it's really a list.
+- `as` sets the element. Use `ul` with `li` children when it is really a list.
 
 ## Usage
 

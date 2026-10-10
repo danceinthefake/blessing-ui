@@ -4,13 +4,13 @@ title: Layout
 
 # Layout
 
-<p class="bless-lead">App shell: sticky header that hides on scroll down, footer, left / right drawers that sit beside the page on wide screens and slide over it below the breakpoint, edge-swipe to open on touch, safe-area padding for notches and the home bar.</p>
+<p class="bless-lead">App shell with a sticky header that hides on scroll down, a footer, and left and right drawers. The drawers sit beside the page on wide screens and slide over it below the breakpoint. It has edge-swipe to open on touch, and safe-area padding for notches and the home bar.</p>
 
 An app shell: header, page, and side drawers that sit beside the page on wide screens and over it on narrow ones. For an official site's frame with a fixed sidebar, [Stage](./stage).
 
 Dashboards, admin tools, mobile apps: the same header, footer and drawers frame every screen.
 
-`BlessLayout` owns the viewport, so it can't sit inside a doc page — open it and resize the window:
+`BlessLayout` owns the viewport, so it cannot sit inside a doc page. Open it and resize the window:
 
 [Open Layout on a page of its own ↗](/layout-example){target="_blank"}
 

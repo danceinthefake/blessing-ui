@@ -21,8 +21,8 @@ Pull down at the top of a list to reload it, the way phone apps do. It only work
   </template>
 </Demo>
 
-- `@refresh` gets a `done` callback; call it when the reload has finished. "Refreshing" (`refreshingLabel`) is announced meanwhile.
-- `threshold` is how far to pull; `scrollTarget` is the container whose top counts, when it isn't the wrapper.
+- `@refresh` gets a `done` callback. Call it when the reload is finished. "Refreshing" (`refreshingLabel`) is announced meanwhile.
+- `threshold` is how far to pull. `scrollTarget` is the container whose top counts, when it is not the wrapper.
 
 ## Usage
 

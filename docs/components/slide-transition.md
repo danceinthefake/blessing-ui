@@ -10,7 +10,7 @@ import SlideTransitionBasic from "../demos/SlideTransitionBasic.vue";
 
 <p class="bless-lead">Height transition for v-if / v-show</p>
 
-Wrap one element that appears and disappears — an expanding row, a detail panel, an inline message — and it slides open from 0 to its natural height and back, without a fixed `max-height`. For a disclosure with its own button, [Collapsible](./collapsible) already does this.
+Wrap one element that appears and disappears (an expanding row, a detail panel, an inline message). It slides open from 0 to its natural height and back, without a fixed `max-height`. A disclosure with its own button does not need it, because [Collapsible](./collapsible) already does this.
 
 <Demo title="Basic">
   <SlideTransitionBasic />

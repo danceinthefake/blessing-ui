@@ -10,7 +10,7 @@ import TreeBasic from "../demos/TreeBasic.vue";
 
 <p class="bless-lead">Nested details tree, role=tree</p>
 
-A hierarchy people expand and browse — files, a category tree, a table of contents. For a small chart of who reports to whom, [OrgChart](./org-chart); to pick one value from a hierarchy, [TreeSelect](./tree-select).
+A hierarchy people expand and browse: files, a category tree, a table of contents. For a small chart of who reports to whom, [OrgChart](./org-chart). To pick one value from a hierarchy, [TreeSelect](./tree-select).
 
 <Demo title="Basic">
   <TreeBasic />
@@ -21,8 +21,8 @@ A hierarchy people expand and browse — files, a category tree, a table of cont
   </template>
 </Demo>
 
-- One Tab stop: ↑ / ↓ move through the visible rows, → opens a branch or enters it, ← closes it or goes to the parent, Home / End jump. Enter picks the row (a branch too — Space opens and closes it). Branches say whether they're open.
-- Branches are native `<details>`, so they work before scripts run. `href` makes a leaf a link; `v-model:selected` holds the picked id.
+- One Tab stop. ↑ / ↓ move through the visible rows. → opens a branch or enters it. ← closes it or goes to the parent. Home / End jump. Enter picks the row (a branch too: Space opens and closes it). Branches say whether they are open.
+- Branches are native `<details>`, so they work before scripts run. `href` makes a leaf a link. `v-model:selected` holds the picked id.
 
 ## Usage
 

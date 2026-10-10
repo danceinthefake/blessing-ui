@@ -10,7 +10,7 @@ import ListBasic from "../demos/ListBasic.vue";
 
 <p class="bless-lead">Divided rows</p>
 
-A plain vertical list of [Item](./item)s, divided by hairlines — settings rows, a contact list. For collections with paging or a layout switch, use [DataView](./data-view).
+A plain vertical list of [Item](./item)s, divided by hairlines: settings rows, a contact list. For collections with paging or a layout switch, use [DataView](./data-view).
 
 <Demo title="Basic">
   <ListBasic />
@@ -22,7 +22,7 @@ A plain vertical list of [Item](./item)s, divided by hairlines — settings rows
 </Demo>
 
 - It is a `<ul role="list">`: the role keeps it announced as a list in Safari, which drops list semantics from unstyled lists.
-- Put `BlessItem`s (or your own `<li>`s) in it; `divided` (default) draws the hairlines.
+- Put `BlessItem`s (or your own `<li>`s) in it. `divided` (default) draws the hairlines.
 - `BlessListItem` is a row: an optional `meta` (a date) with a dash, a `badge` (`true` shows NEW!), the title, and a `#suffix`. With `href` the row is a link (through your router when provided).
 
 ## Usage

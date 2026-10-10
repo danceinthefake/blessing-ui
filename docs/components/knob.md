@@ -10,7 +10,7 @@ import KnobBasic from "../demos/KnobBasic.vue";
 
 <p class="bless-lead">Rotary dial on a native range input</p>
 
-For compact settings in a dense panel — a mixer, an editor's inspector — where a row of knobs fits in the width one slider takes. Anywhere else use [Slider](./slider): the whole range is visible and it is more precise with a mouse.
+For compact settings in a dense panel (a mixer, an editor's inspector) where a row of knobs fits in the width one slider takes. Anywhere else use [Slider](./slider): the whole range is visible and it is more precise with a mouse.
 
 <Demo title="Basic">
   <KnobBasic />

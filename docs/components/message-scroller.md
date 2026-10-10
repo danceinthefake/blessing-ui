@@ -10,7 +10,7 @@ import MessageScrollerBasic from "../demos/MessageScrollerBasic.vue";
 
 <p class="bless-lead">Chat viewport</p>
 
-The scrolling transcript of a chat: it opens at the latest message, follows new ones while you're at the bottom, keeps your place while you read back, and loads history at the top.
+The scrolling transcript of a chat. It opens at the latest message and follows new messages while you are at the bottom. It keeps your place while you read back. It loads history at the top.
 
 Streamed, growing replies are followed too. Pair it with [Message](./message) and [Bubble](./bubble) for the rows and [Marker](./marker) for day separators and typing indicators.
 
@@ -23,8 +23,8 @@ Streamed, growing replies are followed too. Pair it with [Message](./message) an
   </template>
 </Demo>
 
-- It is a named log (`label`), so new messages are announced politely. While a reply is streaming in, set `aria-busy` on that message so it's read once when it's done, not word by word.
-- The jump button appears when you've scrolled up; `@reach-top` asks for history and `loadHistory(insert)` keeps your place while it's added. Scrolling doesn't animate under reduced motion.
+- It is a named log (`label`), so new messages are announced politely. While a reply is streaming in, set `aria-busy` on that message so it is read once when it is done, not word by word.
+- The jump button appears after you scroll up. `@reach-top` asks for history, and `loadHistory(insert)` keeps your place while it is added. Scrolling does not animate under reduced motion.
 
 ## Usage
 

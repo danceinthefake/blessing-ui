@@ -11,7 +11,7 @@ import SectionHanging from "../demos/SectionHanging.vue";
 
 <p class="bless-lead">Titled block with giant skewed word</p>
 
-A titled region of a page — News, Staff, Story — in the system's voice: a small upright label or a hanging headline, and optionally the giant faint word behind it. Use one per top-level part of a page; for a titled box inside a section, [Panel](./panel).
+A titled region of a page (News, Staff, Story) in the system's voice: a small upright label or a hanging headline, and optionally the giant faint word behind it. Use one per top-level part of a page. For a titled box inside a section, [Panel](./panel).
 
 <Demo title="Basic">
   <SectionBasic />
@@ -31,7 +31,7 @@ A titled region of a page — News, Staff, Story — in the system's voice: a sm
   </template>
 </Demo>
 
-Two headline voices. `label` (default) is the TV site: a small bold uppercase title with the pale skewed watermark behind. `headline="hanging"` is the film site: one big tracked title hung off the bottom edge of the `#band` slot — a key visual, a colour, anything 200px tall — with `subtitle` in tracked muted type under it. Without a band the hanging title simply sits in flow; the watermark is off in this mode.
+Two headline voices. `label` (default) is the TV site: a small bold uppercase title with the pale skewed watermark behind it. `headline="hanging"` is the film site. It has one big tracked title, hung off the bottom edge of the `#band` slot (a key visual, a color, anything 200px tall). `subtitle` sits under it in tracked muted type. Without a band, the hanging title sits in the flow. The watermark is off in this mode.
 
 ## Usage
 

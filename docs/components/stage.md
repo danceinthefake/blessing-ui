@@ -8,13 +8,13 @@ title: Stage
 
 The page frame of an official site: a fixed sidebar beside the content on wide screens, a drawer behind a menu button on phones, and an optional background and footer. Use it once, at the root of a page.
 
-`BlessStage` owns the viewport, so it can't sit inside a doc page:
+`BlessStage` owns the viewport, so it cannot sit inside a doc page:
 
 [Open Stage on a page of its own ↗](/stage-example){target="_blank"}
 
 <<< ../demos/StageFull.vue
 
-- On phones the sidebar becomes a drawer: the menu button says whether it's open, opening moves focus into it, and Esc or the scrim closes it (Esc returns focus to the button). Closed, it is inert.
+- On phones the sidebar becomes a drawer. The menu button says whether it is open. Opening moves focus into the drawer. Esc or the scrim closes it (Esc returns focus to the button). When closed, it is inert.
 - `#sidebar`, the default slot (inside `<main>`), `#footer` and `#background`. `menuLabel` names the button.
 
 ## Usage

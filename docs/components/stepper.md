@@ -10,7 +10,7 @@ import StepperBasic from "../demos/StepperBasic.vue";
 
 <p class="bless-lead">Steps header + panels + next / back</p>
 
-A task split into ordered steps with one panel at a time — checkout, onboarding, a setup wizard. Use it when each step depends on the one before; a single long form is often simpler.
+A task split into ordered steps with one panel at a time: checkout, onboarding, a setup wizard. Use it when each step depends on the one before. A single long form is often simpler.
 
 <Demo title="Basic">
   <StepperBasic />
@@ -22,7 +22,7 @@ A task split into ordered steps with one panel at a time — checkout, onboardin
 </Demo>
 
 - Next / Back / Finish buttons by default (`labels` to rename, `#actions` to replace). On each step change focus moves to the panel, so the new step is read.
-- `linear` (default) lets the header go back to completed steps only; `:linear="false"` lets people jump to any step.
+- `linear` (default) lets the header go back to completed steps only. `:linear="false"` lets people jump to any step.
 
 ## Usage
 

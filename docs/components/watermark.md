@@ -10,7 +10,7 @@ import WatermarkBasic from "../demos/WatermarkBasic.vue";
 
 <p class="bless-lead">Giant faint word behind a block</p>
 
-The giant, faint word behind a section — NEWS, STAFF — from the source site's look. Pure decoration: it's hidden from screen readers, so never put anything in it that isn't also said in the content.
+The giant, faint word behind a section (NEWS, STAFF) from the source site's look. Pure decoration: it is hidden from screen readers, so never put anything in it that is not also said in the content.
 
 <Demo title="Basic">
   <WatermarkBasic />
@@ -21,7 +21,7 @@ The giant, faint word behind a section — NEWS, STAFF — from the source site'
   </template>
 </Demo>
 
-- It fills its nearest positioned parent (`position: relative`); `position` picks the corner. [Section](./section) draws one for you with `watermark`.
+- It fills its nearest positioned parent (`position: relative`). `position` picks the corner. [Section](./section) draws one for you with `watermark`.
 
 ## Usage
 

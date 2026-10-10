@@ -10,7 +10,7 @@ import SpeedDialBasic from "../demos/SpeedDialBasic.vue";
 
 <p class="bless-lead">FAB with fan-out actions</p>
 
-A floating button that fans out a few (two to five) creation actions on a phone screen — new message, new photo. On wide screens, put the actions in the page instead.
+A floating button that fans out a few (two to five) creation actions on a phone screen: new message, new photo. On wide screens, put the actions in the page instead.
 
 <Demo title="Basic">
   <SpeedDialBasic />
@@ -21,8 +21,8 @@ A floating button that fans out a few (two to five) creation actions on a phone 
   </template>
 </Demo>
 
-- The button says whether it's open; the actions are hidden (inert) until it is. Esc closes it and returns focus to the button, and so does leaving it with Tab.
-- Each action needs a `label`: it names the button and shows as its tip. `direction` sets which way they fan; `inline` renders it in place.
+- The button says whether it is open. The actions are hidden (inert) until it is. Esc closes it and returns focus to the button, and so does leaving it with Tab.
+- Each action needs a `label`: it names the button and shows as its tip. `direction` sets which way they fan. `inline` renders it in place.
 
 ## Usage
 

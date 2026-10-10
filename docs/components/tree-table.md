@@ -10,7 +10,7 @@ import TreeTableBasic from "../demos/TreeTableBasic.vue";
 
 <p class="bless-lead">Expandable rows on BlessTable</p>
 
-Rows that nest — a folder listing with sizes, a budget with sub-items — shown as a table with expandable rows. For a hierarchy without columns, use [Tree](./tree).
+Rows that nest (a folder listing with sizes, a budget with sub-items) shown as a table with expandable rows. For a hierarchy without columns, use [Tree](./tree).
 
 It renders through [Table](./table), so columns, striping, row headers and cell slots all work the same. For a flat table, Table or [DataTable](./data-table).
 
@@ -23,8 +23,8 @@ It renders through [Table](./table), so columns, striping, row headers and cell 
   </template>
 </Demo>
 
-- The tree column (`treeColumn`, first by default) carries the indent and a toggle named by the row's value, which says whether it's open.
-- `v-model:expanded` (or `defaultExpanded`) holds the open row ids; `childrenKey` names the children field.
+- The tree column (`treeColumn`, first by default) carries the indent and a toggle. The value of the row names the toggle, and the toggle says whether the row is open.
+- `v-model:expanded` (or `defaultExpanded`) holds the open row ids. `childrenKey` names the children field.
 
 ## Usage
 

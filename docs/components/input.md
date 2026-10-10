@@ -12,7 +12,7 @@ import InputStates from "../demos/InputStates.vue";
 
 <p class="bless-lead">Text-like input</p>
 
-One line of text. Multi-line is [Textarea](./textarea); a number with step and format is [InputNumber](./input-number); a fixed pattern is [InputMask](./input-mask); a secret is [PasswordInput](./password-input); a list of values is [InputTags](./input-tags). A value people mostly read and only sometimes change — a title, a name — is [Inplace](./inplace): text until clicked, then this field, with no separate edit screen.
+One line of text. Multi-line is [Textarea](./textarea). A number with step and format is [InputNumber](./input-number). A fixed pattern is [InputMask](./input-mask). A secret is [PasswordInput](./password-input). A list of values is [InputTags](./input-tags). A value people mostly read and only sometimes change (a title, a name) is [Inplace](./inplace): text until clicked, then this field, with no separate edit screen.
 
 <Demo title="Basic">
   <InputBasic />
@@ -41,8 +41,8 @@ One line of text. Multi-line is [Textarea](./textarea); a number with step and f
   </template>
 </Demo>
 
-- In a form, wrap it in a [Field](./form): that gives the label, description and error, and wires them. Input's own `description` and `error` are for a label-less input — a search box, an inline edit with `aria-label`.
-- `#prefix` / `#suffix` sit inside the plate (a unit, a shortcut hint). Things beside it — a button, `https://` — are [InputGroup](./input-group).
+- In a form, wrap it in a [Field](./form): that gives the label, description and error, and wires them. Input's own `description` and `error` are for a label-less input: a search box, an inline edit with `aria-label`.
+- `#prefix` / `#suffix` sit inside the plate (a unit, a shortcut hint). Things beside it (a button, `https://`) are [InputGroup](./input-group).
 - `type` passes through: `email`, `url`, `search`, `tel` get the right keyboard on phones. `type="number"` works, but InputNumber has the stepper and locale formatting.
 
 ## Usage

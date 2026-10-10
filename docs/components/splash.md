@@ -10,7 +10,7 @@ import SplashBasic from "../demos/SplashBasic.vue";
 
 <p class="bless-lead">First-visit overlay</p>
 
-A brief welcome over the first load — a key visual, a logo moment. It delays people, so keep it short, skippable and rare (`once`).
+A brief welcome over the first load: a key visual, a logo moment. It delays people, so keep it short, skippable and rare (`once`).
 
 <Demo title="Basic">
   <SplashBasic />
@@ -22,7 +22,7 @@ A brief welcome over the first load — a key visual, a logo moment. It delays p
 </Demo>
 
 - It takes focus onto Skip, so Enter or Esc leaves at once, and it is skipped entirely under reduced motion.
-- `duration` auto-dismisses (0 = only Skip closes it); `once` remembers it was seen; `label` names it.
+- `duration` auto-dismisses (0 = only Skip closes it). `once` remembers it was seen. `label` names it.
 
 ## Usage
 

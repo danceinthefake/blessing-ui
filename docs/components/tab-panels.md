@@ -10,7 +10,7 @@ import TabPanelsBasic from "../demos/TabPanelsBasic.vue";
 
 <p class="bless-lead">Swipeable panel pager</p>
 
-Swipeable panels that go with a set of tabs on phones — the content under [Tabs](./tabs), [BottomTabs](./bottom-tabs) or a segmented control, changed by the tabs or by a sideways swipe.
+Swipeable panels that go with a set of tabs on phones: the content under [Tabs](./tabs), [BottomTabs](./bottom-tabs) or a segmented control, changed by the tabs or by a sideways swipe.
 
 <Demo title="Basic">
   <TabPanelsBasic />
@@ -21,8 +21,8 @@ Swipeable panels that go with a set of tabs on phones — the content under [Tab
   </template>
 </Demo>
 
-- `v-model` is the current panel's key, shared with the tabs; `next()` / `prev()` step in code; `loop` wraps.
-- Each panel is a group named by its key. The tabs themselves stay the keyboard way in; the swipe is extra.
+- `v-model` is the current panel's key, shared with the tabs. `next()` / `prev()` step in code. `loop` wraps.
+- Each panel is a group named by its key. The tabs themselves stay the keyboard way in. The swipe is extra.
 
 ## Usage
 

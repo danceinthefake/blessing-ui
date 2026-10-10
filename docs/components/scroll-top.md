@@ -10,7 +10,7 @@ import ScrollTopBasic from "../demos/ScrollTopBasic.vue";
 
 <p class="bless-lead">Back-to-top button past a threshold</p>
 
-A back-to-top button for long pages, shown once the reader has scrolled a way down (`threshold`). Short pages don't need one.
+A back-to-top button for long pages. It shows after the reader scrolls a way down (`threshold`). Short pages do not need one.
 
 <Demo title="Basic">
   <ScrollTopBasic />
@@ -22,7 +22,7 @@ A back-to-top button for long pages, shown once the reader has scrolled a way do
 </Demo>
 
 - It scrolls smoothly, or jumps straight up under reduced motion.
-- `target` watches a scroll container instead of the window; `label` names the button.
+- `target` watches a scroll container instead of the window. `label` names the button.
 
 ## Usage
 

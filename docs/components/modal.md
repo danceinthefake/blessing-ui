@@ -11,7 +11,7 @@ import ModalHash from "../demos/ModalHash.vue";
 
 <p class="bless-lead">Native &lt;dialog&gt;</p>
 
-A task that needs the whole screen's attention before going back — a form, a detail view, a picker. If it only needs a yes / no, use an [AlertDialog](./alert-dialog); if the page should stay usable beside it, a [Sheet](./sheet).
+A task that needs the attention of the whole screen before the user goes back: a form, a detail view, a picker. If it only needs a yes / no, use an [AlertDialog](./alert-dialog). If the page must stay usable beside it, use a [Sheet](./sheet).
 
 <Demo title="Basic">
   <ModalBasic />

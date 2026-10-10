@@ -8,9 +8,9 @@ import ContainerBasic from "../demos/ContainerBasic.vue";
 
 # Container
 
-<p class="bless-lead">Centred max-width box</p>
+<p class="bless-lead">Centerd max-width box</p>
 
-Caps the width of a page's content and centres it, so lines stay readable on wide screens. One per page region; it doesn't lay anything out inside.
+Caps the width of a page's content and centers it, so lines stay readable on wide screens. One per page region. It does not lay anything out inside.
 
 <Demo title="Basic">
   <ContainerBasic />

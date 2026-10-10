@@ -10,7 +10,7 @@ import MarkerBasic from "../demos/MarkerBasic.vue";
 
 <p class="bless-lead">Inline status / note / separator / row</p>
 
-A line between messages that isn't a message — a date, "New", "Megumi joined", a system note. It is a note, not a heading.
+A line between messages that is not a message: a date, "New", "Megumi joined", a system note. It is a note, not a heading.
 
 <Demo title="Basic">
   <MarkerBasic />
@@ -21,7 +21,7 @@ A line between messages that isn't a message — a date, "New", "Megumi joined",
   </template>
 </Demo>
 
-- `variant`: `status` (centred tag), `note` (muted line), `separator` (labelled rule), `border` (boxed row). `shimmer` for pending or streaming states.
+- `variant`: `status` (centerd tag), `note` (muted line), `separator` (labeled rule), `border` (boxed row). `shimmer` for pending or streaming states.
 
 ## Usage
 

@@ -10,7 +10,7 @@ import ConfirmPopupBasic from "../demos/ConfirmPopupBasic.vue";
 
 <p class="bless-lead">Confirm inside a popover</p>
 
-A quick "are you sure?" next to the button that asked, for a small step that can't be taken back — delete a draft, revoke a share link. If it can be taken back, don't ask: do it and offer Undo from a [Toaster](./toaster). For something serious, where the whole page should stop, use an [AlertDialog](./alert-dialog).
+A quick "are you sure?" next to the button that asked, for a small step that cannot be taken back: delete a draft, revoke a share link. If you can take the step back, do not ask. Do it and offer Undo from a [Toaster](./toaster). For something serious, where the whole page must stop, use an [AlertDialog](./alert-dialog).
 
 <Demo title="Basic">
   <ConfirmPopupBasic />
@@ -25,8 +25,8 @@ A quick "are you sure?" next to the button that asked, for a small step that can
 The floating panel is a `<div>`. HTML closes a `<p>` when it meets a `<div>`, so a trigger placed inside a paragraph renders differently on the server and the client. Wrap with `<span>`/`<div>` instead.
 :::
 
-- Opening moves focus to Cancel, the safe choice; confirming or cancelling returns it to the trigger.
-- `@confirm` / `@cancel`; name the action in `confirmLabel` ("Remove", not "OK").
+- Opening moves focus to Cancel, the safe choice. Confirming or canceling returns it to the trigger.
+- `@confirm` / `@cancel`. Name the action in `confirmLabel` ("Remove", not "OK").
 
 ## Usage
 

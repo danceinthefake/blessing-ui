@@ -22,8 +22,8 @@ Data to read and compare in rows and columns. When people need to sort, search, 
 </Demo>
 
 - Mark one column `header: true` so each row is named by it (a row header).
-- `stack` (on by default) turns rows into label/value pairs under 800px instead of scrolling sideways; the table keeps its table semantics either way.
-- `caption` (or `#caption`) names the table; `#cell-<key>` renders one column's cells yourself.
+- `stack` (on by default) turns rows into label/value pairs under 800px instead of scrolling sideways. The table keeps its table semantics either way.
+- `caption` (or `#caption`) names the table. `#cell-<key>` renders one column's cells yourself.
 
 ## Usage
 

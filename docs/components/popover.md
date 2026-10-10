@@ -12,7 +12,7 @@ import PopoverArrow from "../demos/PopoverArrow.vue";
 
 <p class="bless-lead">Popover API panel</p>
 
-Extra content next to the thing that opens it — a small form, details, a colour picker. For a one-line hint use a [Tooltip](./tooltip); for commands, a [DropdownMenu](./dropdown-menu).
+Extra content next to the thing that opens it: a small form, details, a color picker. For a one-line hint use a [Tooltip](./tooltip). For commands, a [DropdownMenu](./dropdown-menu).
 
 <Demo title="Basic">
   <PopoverBasic />
@@ -45,9 +45,9 @@ Extra content next to the thing that opens it — a small form, details, a colou
 The floating panel is a `<div>`. HTML closes a `<p>` when it meets a `<div>`, so a trigger placed inside a paragraph renders differently on the server and the client. Wrap with `<span>`/`<div>` instead.
 :::
 
-- A click on the trigger opens it; the trigger is told what it opens and whether it's open. Esc or a click outside closes it, and focus goes back to the trigger if it was inside.
-- `modal` turns off the click-outside close (Esc and your own control still close it). `trigger="hover"` opens on hover and focus, for previews only — see [HoverCard](./hover-card).
-- `title` names it; `arrow` points its accent edge at the trigger.
+- A click on the trigger opens it. The trigger is told what it opens and whether it is open. Esc or a click outside closes it, and focus goes back to the trigger if it was inside.
+- `modal` turns off the click-outside close (Esc and your own control still close it). `trigger="hover"` opens on hover and focus, for previews only. See [HoverCard](./hover-card).
+- `title` names it. `arrow` points its accent edge at the trigger.
 
 ## Usage
 

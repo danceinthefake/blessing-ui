@@ -10,7 +10,7 @@ import ToolbarBasic from "../demos/ToolbarBasic.vue";
 
 <p class="bless-lead">Start / center / end bar</p>
 
-A row of related controls — formatting buttons, view switches, a filter bar — with start, centre and end slots. It is one Tab stop: arrow keys move between its controls, which keeps a long row from swallowing the Tab key.
+A row of related controls (formatting buttons, view switches, a filter bar) with start, center and end slots. It is one Tab stop: arrow keys move between its controls, which keeps a long row from swallowing the Tab key.
 
 <Demo title="Basic">
   <ToolbarBasic />
@@ -22,7 +22,7 @@ A row of related controls — formatting buttons, view switches, a filter bar �
 </Demo>
 
 - ← / → move between controls, Home / End jump, and right-to-left pages reverse the arrows. Give it a `label` so the group has a name.
-- For a single row of buttons that belong together visually but aren't a tool set, [ButtonGroup](./button-group).
+- For a single row of buttons that belong together visually but are not a tool set, [ButtonGroup](./button-group).
 
 ## Usage
 

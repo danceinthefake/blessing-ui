@@ -10,7 +10,7 @@ import SheetBasic from "../demos/SheetBasic.vue";
 
 <p class="bless-lead">Side panel</p>
 
-A panel from the edge of the screen that keeps the page's context — a cart, filters, a detail pane, navigation on phones. From the bottom on phones, see [Drawer](./drawer).
+A panel from the edge of the screen that keeps the page's context: a cart, filters, a detail pane, navigation on phones. From the bottom on phones, see [Drawer](./drawer).
 
 <Demo title="Basic">
   <SheetBasic />
@@ -22,8 +22,8 @@ A panel from the edge of the screen that keeps the page's context — a cart, fi
 </Demo>
 
 - A native `<dialog>` like [Modal](./modal): inert page, Tab trapped, Esc closes, focus returns. `title` or `#title` names it.
-- `dismissible` (default) lets Esc, the backdrop and (with `handle`) a swipe down close it; off, only your own control does.
-- `side` picks the edge; `size` its width or height.
+- `dismissible` (default) lets Esc, the backdrop and (with `handle`) a swipe down close it. Off, only your own control does.
+- `side` picks the edge. `size` its width or height.
 
 ## Usage
 

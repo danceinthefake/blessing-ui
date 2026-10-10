@@ -10,7 +10,7 @@ import CardBasic from "../demos/CardBasic.vue";
 
 <p class="bless-lead">Flat surface</p>
 
-One item in a set of similar items — an episode, a product, a person — laid out as a box with an optional label, media and footer. For a single block of content use a [Panel](./panel) or a [Section](./section).
+One item in a set of similar items (an episode, a product, a person). It is a box with an optional label, media, and footer. For a single block of content, use a [Panel](./panel) or a [Section](./section).
 
 <Demo title="Basic">
   <CardBasic />
@@ -21,8 +21,8 @@ One item in a set of similar items — an episode, a product, a person — laid 
   </template>
 </Demo>
 
-- `href` makes the whole card one link, and everything in it becomes the link's name. So keep it short, and don't put buttons or other links inside a linked card; they can't be reached properly inside another link. If the card needs actions, leave `href` off and link the title instead.
-- `label` is the tag on top — ink by default, and it leans with a linked card on hover; keep `labelColor="accent"` for a card that is chosen; `surface` and `bordered` set the box.
+- `href` makes the whole card one link, and everything in it becomes the link's name. So keep it short, and do not put buttons or other links inside a linked card. They cannot be reached properly inside another link. If the card needs actions, leave `href` off and link the title instead.
+- `label` is the tag on top: ink by default, and it leans with a linked card on hover. Keep `labelColor="accent"` for a card that is chosen. `surface` and `bordered` set the box.
 
 ## Usage
 

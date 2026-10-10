@@ -21,8 +21,8 @@ One control plus fixed pieces that share its plate: `https://` before a domain, 
   </template>
 </Demo>
 
-- Things that belong **inside** the field — a search icon, a `⌘K` hint — are [Input](./input)'s own `#prefix` / `#suffix`. A button that isn't attached to the field is just a [Button](./button) beside it.
-- `size` sets the group's height; give the control inside the same `size` so its text matches.
+- Things that belong **inside** the field (a search icon, a `⌘K` hint) are [Input](./input)'s own `#prefix` / `#suffix`. A button that is not attached to the field is just a [Button](./button) beside it.
+- `size` sets the group's height. Give the control inside the same `size` so its text matches.
 - The group renders a `<fieldset>`, so `disabled` really disables every control inside it, not just the look.
 
 ## Usage

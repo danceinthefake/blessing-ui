@@ -11,7 +11,7 @@ import ToggleGroupBasic from "../demos/ToggleGroupBasic.vue";
 
 <p class="bless-lead">Pressed buttons</p>
 
-A button that stays pressed — bold in a toolbar, a filter that's on. For a setting that applies at once, a [Switch](./switch) reads clearer; for a set of them, wrap toggles in a [ToggleGroup](#blesstogglegroup).
+A button that stays pressed: bold in a toolbar, a filter that is on. For a setting that applies at once, a [Switch](./switch) reads clearer. For a set of them, wrap toggles in a [ToggleGroup](#blesstogglegroup).
 
 <Demo title="Basic">
   <ToggleBasic />
@@ -31,9 +31,9 @@ A button that stays pressed — bold in a toolbar, a filter that's on. For a set
   </template>
 </Demo>
 
-- It is a `<button aria-pressed>`, so it's read as "Bold, toggle button, pressed".
+- It is a `<button aria-pressed>`, so it is read as "Bold, toggle button, pressed".
 - An icon-only toggle needs `label`.
-- In a ToggleGroup, `type="single"` allows one at a time (click the pressed one again to clear) and `type="multiple"` any number; give the group a `label`.
+- In a ToggleGroup, `type="single"` allows one at a time (click the pressed one again to clear) and `type="multiple"` any number. Give the group a `label`.
 
 ## Usage
 

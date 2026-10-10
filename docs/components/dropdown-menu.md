@@ -10,7 +10,7 @@ import DropdownMenuBasic from "../demos/DropdownMenuBasic.vue";
 
 <p class="bless-lead">ARIA menu</p>
 
-Commands behind a button — row actions, a ⋯ menu, a user menu. For choosing a value use [Select](./select); for navigation, links.
+Commands behind a button: row actions, a ⋯ menu, a user menu. For choosing a value use [Select](./select). For navigation, links.
 
 <Demo title="Basic">
   <DropdownMenuBasic />
@@ -25,8 +25,8 @@ Commands behind a button — row actions, a ⋯ menu, a user menu. For choosing 
 The floating panel is a `<div>`. HTML closes a `<p>` when it meets a `<div>`, so a trigger placed inside a paragraph renders differently on the server and the client. Wrap with `<span>`/`<div>` instead.
 :::
 
-- The trigger is your own button; it is told it opens a menu and whether it's open. ↓ / Enter / Space open it and focus the first item (↑ the last).
-- Arrows, Home / End and typeahead move; Enter selects; Esc closes and returns to the trigger; Tab out closes it.
+- The trigger is your own button. It is told it opens a menu and whether it is open. ↓ / Enter / Space open it and focus the first item (↑ the last).
+- Arrows, Home / End and typeahead move. Enter selects. Esc closes and returns to the trigger. Tab out closes it.
 - Items can be checkboxes (`v-model:checked`), radio groups (`v-model:radios`), separators, labels and submenus. Inside a [Menubar](./menubar), ← / → move between menus.
 
 ## Usage

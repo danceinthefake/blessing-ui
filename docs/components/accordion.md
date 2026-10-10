@@ -10,7 +10,7 @@ import AccordionBasic from "../demos/AccordionBasic.vue";
 
 <p class="bless-lead">Collapsibles, one open at a time</p>
 
-A set of [Collapsible](./collapsible)s where opening one closes the others — an FAQ, a settings list. Use it when only one answer matters at a time; if people compare several, let them stay open (`type="multiple"`).
+A set of [Collapsible](./collapsible)s where opening one closes the others: an FAQ, a settings list. Use it when only one answer matters at a time. If people compare several, let them stay open (`type="multiple"`).
 
 <Demo title="Basic">
   <AccordionBasic />

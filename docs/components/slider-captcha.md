@@ -26,11 +26,11 @@ Everything runs in the browser, so a script can skip it. Treat it as a speed bum
 :::
 
 ::: warning Not accessible on its own
-The puzzle needs sight. Keyboard users can solve it (**← →** move the piece, **Shift** for bigger steps, **Enter** to submit), but a screen-reader user cannot see the gap. Offer another way through — an email link, a text challenge — next to it.
+The puzzle needs sight. Keyboard users can solve it (**← →** move the piece, **Shift** for bigger steps, **Enter** to submit), but a screen-reader user cannot see the gap. Offer another way through (an email link, a text challenge) next to it.
 :::
 
 - A miss resets the slider and moves the gap, so there is nothing to learn from a failed try. `tolerance` is how close counts, as a fraction of the track (default `0.03`).
-- Pass `src` for a picture to cut the piece from; without it a checker pattern is drawn from the theme colours. The widget fills its container up to 360 px.
+- Pass `src` for a picture to cut the piece from. Without it a checker pattern is drawn from the theme colors. The widget fills its container up to 360 px.
 - Once solved it stays locked until `reset()` (exposed) is called.
 
 ## Usage

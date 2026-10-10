@@ -10,7 +10,7 @@ import ParallaxBasic from "../demos/ParallaxBasic.vue";
 
 <p class="bless-lead">Background that scrolls slower</p>
 
-A background image that moves slower than the page as you scroll, behind a heading or a quote. It is decoration: nothing may depend on it, and it holds still under reduced motion.
+A background image that moves slower than the page as you scroll, behind a heading or a quote. It is decoration. Nothing can depend on it, and it holds still under reduced motion.
 
 <Demo title="Basic">
   <ParallaxBasic />
@@ -21,7 +21,7 @@ A background image that moves slower than the page as you scroll, behind a headi
   </template>
 </Demo>
 
-- `speed` (0 fixed – 1 with the page); `height` of the band. `alt` stays empty unless the image says something the text doesn't.
+- `speed` (0 fixed to 1 with the page). `height` of the band. `alt` stays empty unless the image says something that the text does not.
 
 ## Usage
 

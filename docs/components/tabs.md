@@ -11,7 +11,7 @@ import TabsManual from "../demos/TabsManual.vue";
 
 <p class="bless-lead">ARIA tablist</p>
 
-Switching between views of the same thing that don't need to be seen together â€” details / reviews / specs. Not for navigation between pages (that's links), and not for steps (that's [Stepper](./stepper)).
+Switching between views of the same thing that do not need to be seen together: details / reviews / specs. Not for navigation between pages (that is links), and not for steps (that is [Stepper](./stepper)).
 
 <Demo title="Basic">
   <TabsBasic />
@@ -31,8 +31,8 @@ Switching between views of the same thing that don't need to be seen together â€
   </template>
 </Demo>
 
-- One Tab stop for the tab row; arrows move between tabs (in right-to-left pages too), Home / End jump. `activation="manual"` waits for Enter or Space before switching, for panels that are slow to show.
-- Each panel is labelled by its tab. `#tab` renders a tab's content yourself.
+- One Tab stop for the tab row. Arrows move between tabs (in right-to-left pages too), Home / End jump. `activation="manual"` waits for Enter or Space before switching, for panels that are slow to show.
+- Each panel is labeled by its tab. `#tab` renders a tab's content yourself.
 
 ## Usage
 

@@ -21,9 +21,9 @@ A decorative layer behind a page or a section: a tiled image, or the built-in ha
   </template>
 </Demo>
 
-- `mode="fixed"` pins it to the viewport (put it once, at page level); `absolute` (default) fills the nearest positioned parent.
-- `offset` shifts the tile vertically, so neighbouring pages can use different parts of one image.
-- Keep text over it readable: lower `opacity` rather than relying on the text colour.
+- `mode="fixed"` pins it to the viewport (put it once, at page level). `absolute` (default) fills the nearest positioned parent.
+- `offset` shifts the tile vertically, so neighboring pages can use different parts of one image.
+- Keep text over it readable: lower `opacity` rather than relying on the text color.
 
 ## Usage
 

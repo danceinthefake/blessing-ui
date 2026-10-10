@@ -10,7 +10,7 @@ import HoverCardBasic from "../demos/HoverCardBasic.vue";
 
 <p class="bless-lead">Rich hover popover</p>
 
-A preview shown while pointing at (or focusing) a link — a profile, a page summary. It is extra: touch screens can't hover, so nothing in it may be the only way to reach something.
+A preview shown while the pointer is on (or focus is in) a link: a profile, a page summary. It is extra. Touch screens cannot hover, so nothing in it can be the only way to reach something.
 
 <Demo title="Basic">
   <HoverCardBasic />

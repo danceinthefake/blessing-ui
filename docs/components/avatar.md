@@ -10,9 +10,9 @@ import AvatarBasic from "../demos/AvatarBasic.vue";
 
 <p class="bless-lead">Image with initials fallback</p>
 
-A square plate, like everything else — a circle would be the one shape here that can't lean (the [rule](../guide/conventions#shape)). `lean` makes it lean on attention like a plate — when it is hovered or focused itself, or when the link or button it sits in is; the image inside is counter-skewed so the face stays upright. `color` is `surface` (default) or `text`; `accent` marks a chosen person, like the selected assignee, never one at rest.
+A square plate, like everything else: a circle is the one shape here that cannot lean (see the [rule](../guide/conventions#shape)). `lean` makes it lean on attention like a plate. It leans when the avatar itself is hovered or focused. It also leans when the link or button around it is hovered or focused. The image inside is counter-skewed, so the face stays upright. `color` is `surface` (default) or `text`. `accent` marks a chosen person, like the selected assignee, and never one at rest.
 
-Initials are the first letter of the first two words of `name` (`Megumi Kato` → MK, `加藤 恵` → 加恵). They show when there is no `src`, or when the image fails to load — including a failure that happens before the page hydrates. Without an image the avatar is `role="img"` named by `alt` or `name`; with neither it is decorative. Sizes: `xs` 24 · `sm` 32 · `md` 40 · `lg` 56 · `xl` 80 px.
+Initials are the first letter of the first two words of `name` (`Megumi Kato` → MK, `加藤 恵` → 加恵). They show when there is no `src`, or when the image fails to load: including a failure that happens before the page hydrates. Without an image the avatar is `role="img"` named by `alt` or `name`. With neither it is decorative. Sizes: `xs` 24 · `sm` 32 · `md` 40 · `lg` 56 · `xl` 80 px.
 
 <Demo title="Basic">
   <AvatarBasic />
