@@ -10,19 +10,19 @@ const groups = [...new Set(blocks.map((b) => b.group))];
 
 # Blocks
 
-A block is a finished section — a news list, a schedule table, a login form — built from Blessing components and shipped as **source you copy into your project**, not a package you import. Copy the folder, rename what you like, and point its data at your backend — the offline `api.ts` where a block has one, otherwise the arrays at the top of `index.vue`.
+A block is a finished section, for example a news list, a schedule table, or a login form. Blessing components build it. It ships as **source that you copy into your project**. It is not a package that you import. Copy the folder and rename what you like. Then point its data at your backend. Use the offline `api.ts` if the block has one. Otherwise use the arrays at the top of `index.vue`.
 
 Every block follows one contract:
 
-- `index.vue` — the block; imports only from `blessing-ui` and its own folder
-- `parts/` — sub-components when the block outgrows one file
-- `use<Name>.ts` — state and behaviour, plain Vue composable
-- `domain.ts` / `api.ts` — types, pure helpers, and a port with an offline mock
+- `index.vue`: the block. It imports only from `blessing-ui` and its own folder.
+- `parts/`: sub-components, for a block that outgrows one file.
+- `use<Name>.ts`: state and behavior, as a plain Vue composable.
+- `domain.ts` and `api.ts`: types, pure helpers, and a port with an offline mock.
 
 Nothing crosses block folders. Delete one and the others still build.
 
 ::: tip Two sets
-**Official site** blocks are the sections of an anime-official-site front page — the shapes Blessing was drawn for. **App** blocks are the everyday product screens: sign-in, dashboards, settings, data pages.
+**Official site** blocks are the sections of the front page of an anime official site. These are the shapes that Blessing was drawn for. **App** blocks are the everyday product screens: sign-in, dashboards, settings, data pages.
 :::
 
 <div v-for="g in groups" :key="g">

@@ -15,10 +15,10 @@ const files = Object.fromEntries(
 
 # Data page
 
-<p class="bless-lead">Breadcrumb, title row with primary action, a status filter and a sortable, searchable, selectable data table whose bulk Remove can be undone.</p>
+<p class="bless-lead">Breadcrumb, a title row with a primary action, a status filter, and a sortable, searchable, selectable data table. A person can undo the bulk Remove.</p>
 
 <BlockDemo :files :components="meta.components" :height="meta.height" :frame="withBase('/blocks/data-page-frame')" />
 
 ## Into your app
 
-Copy the folder to `src/features/data-page/` (Nuxt: `app/features/data-page/`) and render `index.vue` from a page. Replace `api.ts` with your real adapter; the view and the use-case don't change.
+Copy the folder to `src/features/data-page/` (Nuxt: `app/features/data-page/`) and render `index.vue` from a page. Replace `api.ts` with your real adapter. The view and the use-case stay the same.

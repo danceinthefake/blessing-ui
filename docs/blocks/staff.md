@@ -15,7 +15,7 @@ const files = Object.fromEntries(
 
 # Staff & Cast
 
-<p class="bless-lead">Credits as two definition lists side by side — roles in ink labels, names beside them; stacked on a phone.</p>
+<p class="bless-lead">Credits as two definition lists side by side, with roles in ink labels and names beside them. On a phone, they stack.</p>
 
 <BlockDemo :files :components="meta.components" :height="meta.height" :frame="withBase('/blocks/staff-frame')" />
 

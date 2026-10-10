@@ -15,7 +15,7 @@ const files = Object.fromEntries(
 
 # On Air
 
-<p class="bless-lead">Broadcast schedule as a station table, with streaming services below — stacks into label/value rows on a phone.</p>
+<p class="bless-lead">Broadcast schedule as a station table, with streaming services below. On a phone, it stacks into label and value rows.</p>
 
 <BlockDemo :files :components="meta.components" :height="meta.height" :frame="withBase('/blocks/onair-frame')" />
 

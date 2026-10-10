@@ -15,7 +15,7 @@ const files = Object.fromEntries(
 
 # Pricing
 
-<p class="bless-lead">Three tiers with a monthly/yearly switch, a highlighted recommended plan and a feature checklist.</p>
+<p class="bless-lead">Three tiers with a monthly and yearly switch, a highlighted recommended plan, and a feature checklist.</p>
 
 <BlockDemo :files :components="meta.components" :height="meta.height" :frame="withBase('/blocks/pricing-frame')" />
 

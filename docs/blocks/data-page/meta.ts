@@ -3,7 +3,7 @@ export default {
   group: "App",
   order: 4,
   summary:
-    "Breadcrumb, title row with primary action, a status filter and a sortable, searchable, selectable data table whose bulk Remove can be undone.",
+    "Breadcrumb, a title row with a primary action, a status filter, and a sortable, searchable, selectable data table. A person can undo the bulk Remove.",
   components: [
     "BlessBreadcrumb",
     "BlessDataTable",

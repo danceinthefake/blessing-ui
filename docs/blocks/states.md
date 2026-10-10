@@ -15,7 +15,7 @@ const files = Object.fromEntries(
 
 # Page states
 
-<p class="bless-lead">The three non-happy paths every list needs — loading skeleton, empty with a call to action, and error with retry — behind one `state` switch.</p>
+<p class="bless-lead">The three non-happy paths that every list needs: loading skeleton, empty with a call to action, and error with retry. One `state` switch controls them.</p>
 
 <BlockDemo :files :components="meta.components" :height="meta.height" :frame="withBase('/blocks/states-frame')" />
 

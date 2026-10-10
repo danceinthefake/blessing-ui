@@ -21,4 +21,4 @@ const files = Object.fromEntries(
 
 ## Into your app
 
-Copy the folder to `src/features/chat/` (Nuxt: `app/features/chat/`) and render `index.vue` from a page. Messages live in `useChat.ts`; swap its canned reply for your socket or API, and `send()` for your post call.
+Copy the folder to `src/features/chat/` (Nuxt: `app/features/chat/`) and render `index.vue` from a page. Messages live in `useChat.ts`. Swap its canned reply for your socket or API, and `send()` for your post call.

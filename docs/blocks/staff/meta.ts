@@ -3,6 +3,6 @@ export default {
   group: "Official site",
   order: 4,
   summary:
-    "Credits as two definition lists side by side — roles in ink labels, names beside them; stacked on a phone.",
+    "Credits as two definition lists side by side, with roles in ink labels and names beside them. On a phone, they stack.",
   components: ["BlessSection", "BlessSkew", "BlessText", "BlessSeparator"],
 };

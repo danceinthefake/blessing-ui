@@ -12,7 +12,7 @@ let made = 0;
 // what to swap for real data: the offline api.ts where the block has one, else the arrays in index.vue
 const intoApp = (folder: string) =>
   existsSync(resolve(folder, "api.ts"))
-    ? "Replace `api.ts` with your real adapter; the view and the use-case don't change."
+    ? "Replace `api.ts` with your real adapter. The view and the use-case stay the same."
     : "It has no data layer: the arrays at the top of `index.vue` are where your data goes.";
 
 for (const slug of readdirSync(dir).sort()) {

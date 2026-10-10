@@ -15,7 +15,7 @@ const files = Object.fromEntries(
 
 # Dashboard
 
-<p class="bless-lead">Sidebar + toolbar shell with a stats row, a trend chart and recent orders; on a phone the sidebar becomes a strip that scrolls sideways.</p>
+<p class="bless-lead">Sidebar and toolbar shell with a stats row, a trend chart, and recent orders. On a phone, the sidebar becomes a strip that scrolls sideways.</p>
 
 <BlockDemo :files :components="meta.components" :height="meta.height" :frame="withBase('/blocks/dashboard-frame')" />
 

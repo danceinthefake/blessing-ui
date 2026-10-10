@@ -15,7 +15,7 @@ const files = Object.fromEntries(
 
 # Onboarding
 
-<p class="bless-lead">Three-step first-run wizard — workspace name, invite teammates, pick a palette — with a progress header and a finish screen.</p>
+<p class="bless-lead">A three-step first-run wizard (workspace name, invite teammates, pick a palette) with a progress header and a finish screen.</p>
 
 <BlockDemo :files :components="meta.components" :height="meta.height" :frame="withBase('/blocks/onboarding-frame')" />
 

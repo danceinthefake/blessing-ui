@@ -15,10 +15,10 @@ const files = Object.fromEntries(
 
 # Character
 
-<p class="bless-lead">A grid of character cards; each opens a hash-routed modal with the profile and cast. Deep links survive reload.</p>
+<p class="bless-lead">A grid of character cards. Each card opens a hash-routed modal with the profile and cast. Deep links survive reload.</p>
 
 <BlockDemo :files :components="meta.components" :height="meta.height" :frame="withBase('/blocks/character-frame')" />
 
 ## Into your app
 
-Copy the folder to `src/features/character/` (Nuxt: `app/features/character/`) and render `index.vue` from a page. Replace `api.ts` with your real adapter; the view and the use-case don't change.
+Copy the folder to `src/features/character/` (Nuxt: `app/features/character/`) and render `index.vue` from a page. Replace `api.ts` with your real adapter. The view and the use-case stay the same.

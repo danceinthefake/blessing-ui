@@ -15,12 +15,12 @@ const files = Object.fromEntries(
 
 # Full site
 
-<p class="bless-lead">All six official-site sections inside <code>BlessStage</code> — sidebar nav with scroll-spy, key-visual background, drawer on phones.</p>
+<p class="bless-lead">All six official-site sections inside BlessStage, with sidebar nav and scroll-spy, a key-visual background, and a drawer on phones. It opens full-page.</p>
 
-`BlessStage` owns the viewport, so this one can't sit inside a doc page. Open it full-page and resize the window: under 800px the sidebar becomes a drawer behind the menu button.
+`BlessStage` owns the viewport, so this one cannot sit inside a doc page. Open it full-page and resize the window: under 800px the sidebar becomes a drawer behind the menu button.
 
 <BlockDemo :files :components="meta.components" :full-page="withBase('/blocks/site-full')" />
 
 ## Into your app
 
-This is a _composition_ block — it imports the six section blocks, so copy those folders next to it: `news/`, `onair/`, `character/`, `staff/`, `release/`, `story/`. Put your key visual in the `#background` slot, swap News' and Character's `api.ts` for your CMS, and replace the arrays at the top of the other four.
+This is a _composition_ block. It imports the six section blocks, so copy those folders next to it: `news/`, `onair/`, `character/`, `staff/`, `release/`, `story/`. Put your key visual in the `#background` slot. Swap the `api.ts` of News and Character for your CMS. Replace the arrays at the top of the other four.

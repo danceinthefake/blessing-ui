@@ -15,10 +15,10 @@ const files = Object.fromEntries(
 
 # Sign in
 
-<p class="bless-lead">Email + password with native validation, remember-me, a forgot link and a divider to OAuth — the form every app starts with.</p>
+<p class="bless-lead">Email and password with native validation, remember-me, a forgot link, and a divider to OAuth: the form that every app starts with.</p>
 
 <BlockDemo :files :components="meta.components" :height="meta.height" :frame="withBase('/blocks/signin-frame')" />
 
 ## Into your app
 
-Copy the folder to `src/features/signin/` (Nuxt: `app/features/signin/`) and render `index.vue` from a page. Replace `api.ts` with your real adapter; the view and the use-case don't change.
+Copy the folder to `src/features/signin/` (Nuxt: `app/features/signin/`) and render `index.vue` from a page. Replace `api.ts` with your real adapter. The view and the use-case stay the same.

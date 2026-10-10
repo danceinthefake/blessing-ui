@@ -15,7 +15,7 @@ const files = Object.fromEntries(
 
 # Release
 
-<p class="bless-lead">Blu-ray / CD release cards with cover, price, date and a purchase button, soonest first; the grid reflows on phones.</p>
+<p class="bless-lead">Blu-ray and CD release cards with cover, price, date, and a purchase button, soonest first. The grid reflows on phones.</p>
 
 <BlockDemo :files :components="meta.components" :height="meta.height" :frame="withBase('/blocks/release-frame')" />
 

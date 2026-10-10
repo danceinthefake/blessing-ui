@@ -15,7 +15,7 @@ const files = Object.fromEntries(
 
 # Story
 
-<p class="bless-lead">Episode list: number, title, air date and a synopsis that expands, under a short premise.</p>
+<p class="bless-lead">Episode list: number, title, air date, and a synopsis that expands, under a short premise.</p>
 
 <BlockDemo :files :components="meta.components" :height="meta.height" :frame="withBase('/blocks/story-frame')" />
 

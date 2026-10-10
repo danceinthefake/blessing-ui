@@ -3,6 +3,6 @@ export default {
   group: "Official site",
   order: 2,
   summary:
-    "Broadcast schedule as a station table, with streaming services below — stacks into label/value rows on a phone.",
+    "Broadcast schedule as a station table, with streaming services below. On a phone, it stacks into label and value rows.",
   components: ["BlessSection", "BlessTable", "BlessBadge", "BlessText", "BlessSeparator"],
 };
