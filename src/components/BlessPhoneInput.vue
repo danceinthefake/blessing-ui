@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref, watch } from "vue";
+import { computed, onMounted, ref, watch } from "vue";
 import BlessInput from "./BlessInput.vue";
 import BlessInputGroup from "./BlessInputGroup.vue";
 import BlessSelect from "./BlessSelect.vue";
@@ -28,7 +28,12 @@ const model = defineModel<string>({ default: "" });
 const code = defineModel<string>("country");
 
 const text = computed(() => ({ country: "Country code", number: "Phone number", ...props.labels }));
+// Country names come from `Intl.DisplayNames`, and the server and the browser can spell them
+// differently ("Türkiye" or "Turkey"). So the names appear after mount and the server shows codes.
+const named = ref(false);
+onMounted(() => (named.value = true));
 const names = computed(() => {
+  if (!named.value) return undefined;
   try {
     return new Intl.DisplayNames(props.locale, { type: "region" });
   } catch {

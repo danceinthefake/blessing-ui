@@ -160,6 +160,7 @@ test("BlessPhoneInput: a value from outside picks the country and fills the numb
   await w.setProps({ modelValue: "+442071838750" });
   expect((w.find("select").element as HTMLSelectElement).value).toBe("GB");
   expect((w.find("input").element as HTMLInputElement).value).toBe("2071838750");
+  // the server renders codes: names come after mount, so the two sides agree
   const names = w.findAll("option").map((o) => o.text());
   expect(names).toContain("Japan (+81)");
 });

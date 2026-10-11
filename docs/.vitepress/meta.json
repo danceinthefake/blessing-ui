@@ -3722,6 +3722,45 @@
   "slots": [],
   "exposed": []
  },
+ "BlessFunnel": {
+  "props": [
+   {
+    "name": "stages",
+    "type": "BlessFunnelStage[]",
+    "required": true,
+    "description": "the stages from widest to narrowest, for example visits, sign-ups, purchases"
+   },
+   {
+    "name": "format",
+    "type": "((v: number) => string) | undefined",
+    "required": false,
+    "description": "text for one value, for example `(v) => v.toLocaleString()`"
+   },
+   {
+    "name": "color",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"chart-1\"",
+    "description": "a token name (`chart-2`, `success`…) or any CSS color"
+   },
+   {
+    "name": "label",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Funnel\"",
+    "description": "names the funnel for screen readers"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ ofPrev: (n: string) => string; ofFirst: (n: string) => string; }> | undefined",
+    "required": false,
+    "description": "words for the rates: `ofPrev(n)` and `ofFirst(n)`"
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessGallery": {
   "props": [
    {
@@ -5025,6 +5064,47 @@
     "description": ""
    }
   ],
+  "exposed": []
+ },
+ "BlessJsonViewer": {
+  "props": [
+   {
+    "name": "value",
+    "type": "unknown",
+    "required": true,
+    "description": "any value: a parsed JSON response, a store, a config object"
+   },
+   {
+    "name": "rootLabel",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"root\"",
+    "description": "the name of the root line"
+   },
+   {
+    "name": "openDepth",
+    "type": "number | undefined",
+    "required": false,
+    "default": "1",
+    "description": "levels below the root that start open"
+   },
+   {
+    "name": "limit",
+    "type": "number | undefined",
+    "required": false,
+    "default": "100",
+    "description": "children shown per object or array before a \"… n more\" line"
+   },
+   {
+    "name": "label",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"JSON\"",
+    "description": "names the tree for screen readers"
+   }
+  ],
+  "events": [],
+  "slots": [],
   "exposed": []
  },
  "BlessKanban": {
@@ -6948,6 +7028,54 @@
   "slots": [],
   "exposed": []
  },
+ "BlessPoll": {
+  "props": [
+   {
+    "name": "question",
+    "type": "string",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "options",
+    "type": "BlessPollOption[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "closed",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": "no more votes: show the results to everyone"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ vote: string; yours: string; votes: (n: number) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "string | undefined",
+    "required": false,
+    "description": "the value this person voted for. Set it to show the results."
+   }
+  ],
+  "events": [
+   {
+    "name": "update:modelValue",
+    "type": "[value: string | undefined]",
+    "description": ""
+   },
+   {
+    "name": "vote",
+    "type": "[value: string]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessPopover": {
   "props": [
    {
@@ -7258,6 +7386,58 @@
     "description": ""
    }
   ],
+  "slots": [],
+  "exposed": []
+ },
+ "BlessRadar": {
+  "props": [
+   {
+    "name": "axes",
+    "type": "string[]",
+    "required": true,
+    "description": "the names around the edge. Three or more."
+   },
+   {
+    "name": "series",
+    "type": "BlessRadarSeries[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "max",
+    "type": "number | undefined",
+    "required": false,
+    "description": "the value at the edge. Default: the biggest value."
+   },
+   {
+    "name": "rings",
+    "type": "number | undefined",
+    "required": false,
+    "default": "4",
+    "description": "rings between the center and the edge"
+   },
+   {
+    "name": "size",
+    "type": "number | undefined",
+    "required": false,
+    "default": "320",
+    "description": "width and height in px; the chart scales down with its container"
+   },
+   {
+    "name": "format",
+    "type": "((v: number) => string) | undefined",
+    "required": false,
+    "description": "text for one value"
+   },
+   {
+    "name": "label",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Radar chart\"",
+    "description": "names the chart for screen readers"
+   }
+  ],
+  "events": [],
   "slots": [],
   "exposed": []
  },
@@ -9782,6 +9962,53 @@
   ],
   "exposed": []
  },
+ "BlessTagCloud": {
+  "props": [
+   {
+    "name": "tags",
+    "type": "BlessCloudTag[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "min",
+    "type": "number | undefined",
+    "required": false,
+    "default": "0.75",
+    "description": "smallest and largest text size, in rem"
+   },
+   {
+    "name": "max",
+    "type": "number | undefined",
+    "required": false,
+    "default": "2",
+    "description": ""
+   },
+   {
+    "name": "sort",
+    "type": "\"none\" | \"label\" | \"weight\" | undefined",
+    "required": false,
+    "default": "\"none\"",
+    "description": "`weight` puts the biggest first. `none` keeps your order."
+   },
+   {
+    "name": "label",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Tags\"",
+    "description": "names the list for screen readers"
+   }
+  ],
+  "events": [
+   {
+    "name": "select",
+    "type": "[tag: BlessCloudTag]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessText": {
   "props": [
    {
@@ -10174,6 +10401,50 @@
     "description": ""
    }
   ]
+ },
+ "BlessTimezonePicker": {
+  "props": [
+   {
+    "name": "zones",
+    "type": "string[] | undefined",
+    "required": false,
+    "description": "zones to offer. The default is every IANA zone of the runtime."
+   },
+   {
+    "name": "at",
+    "type": "Date | undefined",
+    "required": false,
+    "description": "the moment that sets the offsets, so summer time shows right. Default: now."
+   },
+   {
+    "name": "detect",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": "choose the zone of this device after mount when the value is empty"
+   },
+   {
+    "name": "placeholder",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Search a city or an offset\"",
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "string | undefined",
+    "required": false,
+    "description": "the IANA name, for example `Asia/Jakarta`"
+   }
+  ],
+  "events": [
+   {
+    "name": "update:modelValue",
+    "type": "[value: string | undefined]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
  },
  "BlessToaster": {
   "props": [
