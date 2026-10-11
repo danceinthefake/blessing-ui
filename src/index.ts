@@ -177,6 +177,8 @@ export { default as BlessPoll } from "./components/BlessPoll.vue";
 export type { BlessPollOption } from "./components/BlessPoll.vue";
 export { default as BlessTagCloud } from "./components/BlessTagCloud.vue";
 export type { BlessCloudTag } from "./components/BlessTagCloud.vue";
+export { default as BlessTimezonePicker } from "./components/BlessTimezonePicker.vue";
+export { offsetText, zoneOffset } from "./components/timezone";
 export { default as BlessJsonViewer } from "./components/BlessJsonViewer.vue";
 export { jsonToNodes } from "./components/json";
 export { default as BlessConfetti } from "./components/BlessConfetti.vue";
