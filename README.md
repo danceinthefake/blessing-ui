@@ -10,7 +10,7 @@ Vue 3 component library and design tokens. The UI is gray-scale, with one accent
 
 Docs, with every component live: **[ui.blessing.id](https://ui.blessing.id)**
 
-- 176 components, from button to data table to chat. Only `--bless-*` custom properties style them. There is no Tailwind dependency.
+- 181 components, from button to data table to chat. Only `--bless-*` custom properties style them. There is no Tailwind dependency.
 - Native platform first: `<dialog>`, Popover API, `<details>`, native form controls, `Intl` dates, and scroll-snap. There is no positioning, date, or table library.
 - Accessible defaults: focus rings, ARIA tablist, dialog, and tables, and `prefers-reduced-motion`
 - ESM, tree-shakable, with `vue` as the only required peer (`@tiptap/vue-3` is optional, for `BlessEditor`). One component (`BlessButton`) costs about 1 KB gzip of JS and about 2.6 KB of CSS (tokens and its own styles). Everything costs about 64 KB and 27 KB. CSS is split per component and the import pulls it in, so you never pay for styles that you do not use
@@ -86,7 +86,7 @@ import {
 
 ## Components
 
-176 components across eight groups. Every one styles itself from `--bless-*` tokens and ships with a test and a docs page.
+181 components across eight groups. Every one styles itself from `--bless-*` tokens and ships with a test and a docs page.
 
 ### Primitives
 
@@ -122,6 +122,8 @@ import {
 | `BlessAspectRatio`                    | Ratio box                                             | `ratio`                                                                                                |
 | `BlessProgress`                       | Bar, determinate or not                               | `value`, `max`, `label`, `showValue`, `color`, `size`                                                  |
 | `BlessAlert`                          | Inline notice                                         | `title`, `color`, `live`, `dismissible`, `v-model`. `#icon` `#title`                                   |
+| `BlessBanner`                         | Page-wide announcement bar                            | `color`, `dismissible`, `persist`, `v-model`, `label`. `#action`                                       |
+| `BlessCopyButton`                     | Copy text, with a Copied state                        | `value`, `variant`, `size`, `timeout`, `labels`. Emits `copy`                                          |
 
 ### Forms
 
@@ -203,6 +205,8 @@ import {
 | `BlessContainer`                            | Centerd max-width box                                                                         | `size` sm/md/lg/full, `padded`, `as`                                                                                                                       |
 | `BlessStack`                                | Flex row / column                                                                             | `direction`, `gap` token, `align`, `justify`, `wrap`, `as`                                                                                                 |
 | `BlessScrollTop`                            | Back-to-top button                                                                            | `threshold`, `target`, `position`, `label`                                                                                                                 |
+| `BlessAffix`                                | Sticky wrapper                                                                                | `offset`, `v-model:stuck`. `#default="{stuck}"`                                                                                                            |
+| `BlessToc`                                  | Table of contents with the current heading marked                                             | `items` `[{id,label,level}]`, `selector`, `label`, `rootMargin`                                                                                            |
 | `BlessToolbar`                              | Start / center / end bar                                                                      | `label`, `surface`. `#start` `#center` `#end`                                                                                                              |
 | `BlessPanel`                                | Titled box                                                                                    | `title`, `toggleable`, `v-model:collapsed`, `surface`. `#actions` `#footer`                                                                                |
 | `BlessStepper`                              | Steps + panels                                                                                | `steps`, `v-model`, `orientation`, `labels`. `#default="{step,index,next,prev,last}"` `#actions`. Emits `finish`                                           |
@@ -271,6 +275,7 @@ import {
 | `BlessChart`     | Themed frame for any [Unovis](https://unovis.dev) chart             | `title`, `description`, `height`, `legend[]`. `#header` `#legend` `#footer`, default = chart                 |
 | `BlessQrCode`    | QR SVG from a module matrix ([uqr](https://github.com/unjs/uqr))    | `matrix` boolean[][], `value`, `size`, `border`, `color`, `background`, `frame`                              |
 | `BlessSparkline` | Tiny inline trend: line, bar or win/loss                            | `data`, `type`, `width`, `height`, `color`, `negativeColor`, `fill`, `dot`, `label`, `format`                |
+| `BlessStat`      | KPI tile: value, change, trend                                      | `label`, `value`, `delta`, `goodWhen`, `deltaUnit`, `data`, `labels`. `#hint`                                |
 | `BlessTreemap`   | Squarified treemap of a tree of sizes. Drill-down path and keyboard | `data` `{id,label,value?,children?,color?}`, `v-model:path`, `height`, `format`, `label`, `labels`. `select` |
 
 Blessing does not bundle a chart library. `BlessChart` maps `--bless-color-chart-{1..5}`, type and dark mode onto Unovis' `--vis-*` variables, and adds a legend. Install Unovis yourself:

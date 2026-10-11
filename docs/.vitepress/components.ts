@@ -61,6 +61,8 @@ export const groups: { title: string; items: Entry[] }[] = [
       { name: "BlessAspectRatio", slug: "aspect-ratio", text: "Ratio box" },
       { name: "BlessProgress", slug: "progress", text: "Bar, determinate or not" },
       { name: "BlessAlert", slug: "alert", text: "Inline notice" },
+      { name: "BlessBanner", slug: "banner", text: "Page-wide announcement bar" },
+      { name: "BlessCopyButton", slug: "copy-button", text: "Copy text with a Copied state" },
     ],
   },
   {
@@ -286,6 +288,8 @@ export const groups: { title: string; items: Entry[] }[] = [
       { name: "BlessContainer", slug: "container", text: "Centred max-width box" },
       { name: "BlessStack", slug: "stack", text: "Flex row / column with token gap" },
       { name: "BlessScrollTop", slug: "scroll-top", text: "Back-to-top button past a threshold" },
+      { name: "BlessAffix", slug: "affix", text: "Sticky wrapper with an offset" },
+      { name: "BlessToc", slug: "toc", text: "Table of contents with current heading" },
       {
         name: "BlessTree",
         slug: "tree",
@@ -389,6 +393,7 @@ export const groups: { title: string; items: Entry[] }[] = [
         text: "Tiny inline line, bar and win/loss chart",
       },
       { name: "BlessTreemap", slug: "treemap", text: "Part-to-whole rectangles with drill-down" },
+      { name: "BlessStat", slug: "stat", text: "KPI tile: value, change, and trend" },
     ],
   },
   {

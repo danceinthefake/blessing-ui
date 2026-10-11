@@ -124,6 +124,39 @@
   "slots": [],
   "exposed": []
  },
+ "BlessAffix": {
+  "props": [
+   {
+    "name": "offset",
+    "type": "number | undefined",
+    "required": false,
+    "default": "0",
+    "description": "distance in px from the top edge where it sticks. The window scroll sets `stuck`."
+   },
+   {
+    "name": "stuck",
+    "type": "boolean | undefined",
+    "required": false,
+    "default": "false",
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "update:stuck",
+    "type": "[value: boolean]",
+    "description": ""
+   }
+  ],
+  "slots": [
+   {
+    "name": "default",
+    "type": "{ stuck: boolean; }",
+    "description": ""
+   }
+  ],
+  "exposed": []
+ },
  "BlessAlert": {
   "props": [
    {
@@ -600,7 +633,7 @@
    },
    {
     "name": "mode",
-    "type": "\"absolute\" | \"fixed\" | undefined",
+    "type": "\"fixed\" | \"absolute\" | undefined",
     "required": false,
     "default": "\"absolute\"",
     "description": "fixed = viewport (use at page level); absolute = fills positioned parent"
@@ -645,6 +678,76 @@
   "slots": [
    {
     "name": "default",
+    "type": "{}",
+    "description": ""
+   }
+  ],
+  "exposed": []
+ },
+ "BlessBanner": {
+  "props": [
+   {
+    "name": "color",
+    "type": "\"text\" | \"danger\" | \"warning\" | \"info\" | undefined",
+    "required": false,
+    "default": "\"text\"",
+    "description": ""
+   },
+   {
+    "name": "dismissible",
+    "type": "boolean | undefined",
+    "required": false,
+    "default": "true",
+    "description": ""
+   },
+   {
+    "name": "persist",
+    "type": "string | undefined",
+    "required": false,
+    "description": "a `localStorage` key. A dismissed banner stays gone on the next visit."
+   },
+   {
+    "name": "closeLabel",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Dismiss\"",
+    "description": ""
+   },
+   {
+    "name": "label",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Announcement\"",
+    "description": "names the region"
+   },
+   {
+    "name": "modelValue",
+    "type": "boolean | undefined",
+    "required": false,
+    "default": "true",
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "update:modelValue",
+    "type": "[value: boolean]",
+    "description": ""
+   },
+   {
+    "name": "dismiss",
+    "type": "[]",
+    "description": ""
+   }
+  ],
+  "slots": [
+   {
+    "name": "default",
+    "type": "{}",
+    "description": ""
+   },
+   {
+    "name": "action",
     "type": "{}",
     "description": ""
    }
@@ -2306,6 +2409,58 @@
   ],
   "exposed": []
  },
+ "BlessCopyButton": {
+  "props": [
+   {
+    "name": "value",
+    "type": "string",
+    "required": true,
+    "description": "the text to copy"
+   },
+   {
+    "name": "variant",
+    "type": "\"solid\" | \"outline\" | \"ghost\" | undefined",
+    "required": false,
+    "default": "\"outline\"",
+    "description": ""
+   },
+   {
+    "name": "size",
+    "type": "\"md\" | \"sm\" | \"lg\" | undefined",
+    "required": false,
+    "default": "\"md\"",
+    "description": ""
+   },
+   {
+    "name": "timeout",
+    "type": "number | undefined",
+    "required": false,
+    "default": "2000",
+    "description": "ms the \"Copied\" state stays"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ copy: string; copied: string; copiedLive: string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "copy",
+    "type": "[value: string]",
+    "description": ""
+   }
+  ],
+  "slots": [
+   {
+    "name": "default",
+    "type": "{ copied: boolean; }",
+    "description": ""
+   }
+  ],
+  "exposed": []
+ },
  "BlessCountUp": {
   "props": [
    {
@@ -2812,7 +2967,7 @@
    },
    {
     "name": "mode",
-    "type": "\"inline\" | \"split\" | undefined",
+    "type": "\"split\" | \"inline\" | undefined",
     "required": false,
     "default": "\"inline\"",
     "description": ""
@@ -8934,6 +9089,74 @@
   ],
   "exposed": []
  },
+ "BlessStat": {
+  "props": [
+   {
+    "name": "label",
+    "type": "string",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "value",
+    "type": "string | number",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "delta",
+    "type": "string | number | undefined",
+    "required": false,
+    "description": "change since the last period. A number shows its sign and a percent sign."
+   },
+   {
+    "name": "goodWhen",
+    "type": "\"down\" | \"up\" | undefined",
+    "required": false,
+    "default": "\"up\"",
+    "description": "which direction is good news: `up` (default) or `down` (for example, error rate)"
+   },
+   {
+    "name": "deltaUnit",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"%\"",
+    "description": "unit text for the delta, read after the number (default `%`)"
+   },
+   {
+    "name": "data",
+    "type": "number[] | undefined",
+    "required": false,
+    "description": "trend line under the value"
+   },
+   {
+    "name": "dataLabel",
+    "type": "string | undefined",
+    "required": false,
+    "description": "names the trend line for screen readers"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ up: string; down: string; flat: string; }> | undefined",
+    "required": false,
+    "description": "words for the direction, read by screen readers"
+   }
+  ],
+  "events": [],
+  "slots": [
+   {
+    "name": "default",
+    "type": "{}",
+    "description": ""
+   },
+   {
+    "name": "hint",
+    "type": "{}",
+    "description": ""
+   }
+  ],
+  "exposed": []
+ },
  "BlessStepper": {
   "props": [
    {
@@ -9821,6 +10044,39 @@
     "required": false,
     "default": "\"Notifications\"",
     "description": "the region's name"
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
+ "BlessToc": {
+  "props": [
+   {
+    "name": "items",
+    "type": "BlessTocItem[] | undefined",
+    "required": false,
+    "description": "the headings to list. Leave out to collect them with `selector`."
+   },
+   {
+    "name": "selector",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"h2, h3\"",
+    "description": "headings to collect after mount. Each one needs an `id`."
+   },
+   {
+    "name": "label",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"On this page\"",
+    "description": "names the navigation landmark"
+   },
+   {
+    "name": "rootMargin",
+    "type": "string | undefined",
+    "required": false,
+    "description": "passed to the observer that marks the current heading"
    }
   ],
   "events": [],

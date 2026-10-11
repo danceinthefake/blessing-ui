@@ -321,13 +321,13 @@ Cut and petal are one default, with no toggle. The rule is in docs/guide/convent
 
 We checked each name against the 176 existing pages. `BlessToggleGroup` already covers a segmented control, so that item is dropped.
 
-First batch. These are small, native-first, and the docs and blocks use them.
+First batch (done, 2026-10-11). These are small, native-first, and the docs and blocks use them.
 
-- ⬜ `BlessStat`: KPI tile with a value, a delta, and an optional `BlessSparkline`.
-- ⬜ `BlessToc`: table of contents that marks the current heading. It builds on `useScrollSpy`.
-- ⬜ `BlessCopyButton`: copies text with the Clipboard API and shows a "Copied" state to assistive technology.
-- ⬜ `BlessBanner`: announcement or cookie banner that a person can dismiss, with `persist`.
-- ⬜ `BlessAffix`: sticky wrapper with an offset.
+- ✅ `BlessStat`: KPI tile with a value, a delta, and an optional `BlessSparkline`.
+- ✅ `BlessToc`: table of contents that marks the current heading. It builds on `useScrollSpy`.
+- ✅ `BlessCopyButton`: copies text with the Clipboard API and shows a "Copied" state to assistive technology.
+- ✅ `BlessBanner`: announcement or cookie banner that a person can dismiss, with `persist`.
+- ✅ `BlessAffix`: sticky wrapper with an offset.
 
 Second batch. These need more design work.
 
