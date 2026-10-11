@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import "./sr.css";
 import { ref, useId } from "vue";
 
 defineOptions({ name: "BlessRating" });
@@ -48,7 +49,7 @@ const hover = ref(0);
     :disabled
     @mouseleave="hover = 0"
   >
-    <legend class="bless-rating__legend">{{ label }}</legend>
+    <legend class="bless-rating__legend bless-sr">{{ label }}</legend>
     <label
       v-for="n in max"
       :key="n"
@@ -89,13 +90,6 @@ const hover = ref(0);
 }
 .bless-rating--lg {
   --_s: 32px;
-}
-.bless-rating__legend {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip-path: inset(50%);
 }
 .bless-rating__star {
   position: relative;

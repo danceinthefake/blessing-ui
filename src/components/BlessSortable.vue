@@ -1,4 +1,5 @@
 <script setup lang="ts" generic="T">
+import "./sr.css";
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, useId, watch } from "vue";
 import { logicalKey } from "../composables/rtl";
 import {
@@ -222,7 +223,7 @@ const side = (i: number) =>
       </li>
     </ul>
     <span :id="hint" hidden>{{ text.hint }}{{ group ? ` ${text.groupHint}` : "" }}</span>
-    <span class="bless-sortable__live" aria-live="polite">{{ live }}</span>
+    <span class="bless-sortable__live bless-sr" aria-live="polite">{{ live }}</span>
   </div>
 </template>
 
@@ -302,12 +303,5 @@ const side = (i: number) =>
 .bless-sortable__body {
   flex: 1;
   min-width: 0;
-}
-.bless-sortable__live {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip-path: inset(50%);
 }
 </style>

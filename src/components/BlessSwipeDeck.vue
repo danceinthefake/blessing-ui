@@ -3,6 +3,7 @@ export type BlessSwipeDecision = "accept" | "reject" | "skip";
 </script>
 
 <script setup lang="ts" generic="T">
+import "./sr.css";
 import { computed, ref } from "vue";
 import BlessButton from "./BlessButton.vue";
 
@@ -178,7 +179,7 @@ const shown = computed(() => model.value.slice(0, 3));
         text.accept
       }}</BlessButton>
     </div>
-    <span class="bless-deck__live" aria-live="polite">{{ live }}</span>
+    <span class="bless-deck__live bless-sr" aria-live="polite">{{ live }}</span>
   </div>
 </template>
 
@@ -268,13 +269,6 @@ const shown = computed(() => model.value.slice(0, 3));
   justify-content: center;
   gap: var(--bless-space-2);
   margin-top: var(--bless-space-4);
-}
-.bless-deck__live {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip-path: inset(50%);
 }
 @media (prefers-reduced-motion: reduce) {
   .bless-deck__card {

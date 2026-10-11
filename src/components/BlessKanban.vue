@@ -9,6 +9,7 @@ export interface BlessKanbanColumn<T = unknown> {
 </script>
 
 <script setup lang="ts" generic="T">
+import "./sr.css";
 import { computed, nextTick, onBeforeUnmount, ref, useId } from "vue";
 import { useAutoScroll } from "../composables/useAutoScroll";
 import { logicalKey } from "../composables/rtl";
@@ -256,7 +257,7 @@ const endMark = (c: number) =>
       </ul>
     </section>
     <span :id="hint" hidden>{{ text.hint }}</span>
-    <span class="bless-kanban__live" aria-live="polite">{{ live }}</span>
+    <span class="bless-kanban__live bless-sr" aria-live="polite">{{ live }}</span>
   </div>
 </template>
 
@@ -347,12 +348,5 @@ const endMark = (c: number) =>
 .bless-kanban__body {
   flex: 1;
   min-width: 0;
-}
-.bless-kanban__live {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip-path: inset(50%);
 }
 </style>

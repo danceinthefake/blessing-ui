@@ -13,6 +13,7 @@ export interface BlessGanttTask {
 </script>
 
 <script setup lang="ts">
+import "./sr.css";
 import { computed, ref } from "vue";
 import { isoToday } from "../composables/date";
 
@@ -365,7 +366,7 @@ function pick(t: BlessGanttTask) {
         </div>
       </div>
     </div>
-    <span class="bless-gantt__live" aria-live="polite">{{ live }}</span>
+    <span class="bless-gantt__live bless-sr" aria-live="polite">{{ live }}</span>
   </div>
 </template>
 
@@ -500,13 +501,6 @@ function pick(t: BlessGanttTask) {
 }
 .bless-gantt__grip--end {
   inset-inline-end: 0;
-}
-.bless-gantt__live {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip-path: inset(50%);
 }
 .bless-gantt__bar:focus-visible {
   outline: 2px solid var(--bless-color-accent);

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import "./sr.css";
 import { computed } from "vue";
 
 defineOptions({ name: "BlessIndicator" });
@@ -44,7 +45,9 @@ const show = computed(
     >
     <!-- the label is the text of an always-present status region, so a change is read in full
          ("4 unread", not "4") and one that appears from zero isn't missed -->
-    <span v-if="label" class="bless-indicator__sr" role="status">{{ show ? label : "" }}</span>
+    <span v-if="label" class="bless-indicator__sr bless-sr" role="status">{{
+      show ? label : ""
+    }}</span>
   </span>
 </template>
 
@@ -52,13 +55,6 @@ const show = computed(
 .bless-indicator {
   position: relative;
   display: inline-flex;
-}
-.bless-indicator__sr {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip-path: inset(50%);
 }
 .bless-indicator--block {
   display: block;

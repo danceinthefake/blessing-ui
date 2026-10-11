@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import "./sr.css";
 import { computed } from "vue";
 
 defineOptions({ name: "BlessPasswordMeter" });
@@ -56,7 +57,7 @@ const label = computed(() =>
     <ul role="list" v-if="showRules" class="bless-pwmeter__rules">
       <li v-for="(r, i) in rules" :key="r.label" :class="{ 'bless-pwmeter__rule--ok': passed[i] }">
         <span aria-hidden="true">{{ passed[i] ? "✓" : "·" }}</span> {{ r.label }}
-        <span class="bless-pwmeter__state">{{ ruleState[passed[i] ? 0 : 1] }}</span>
+        <span class="bless-pwmeter__state bless-sr">{{ ruleState[passed[i] ? 0 : 1] }}</span>
       </li>
     </ul>
   </div>
@@ -110,13 +111,6 @@ const label = computed(() =>
   font-weight: var(--bless-font-weight-bold);
   letter-spacing: var(--bless-tracking-wide);
   text-transform: uppercase;
-}
-.bless-pwmeter__state {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip-path: inset(50%);
 }
 .bless-pwmeter__rules {
   margin: var(--bless-space-2) 0 0;

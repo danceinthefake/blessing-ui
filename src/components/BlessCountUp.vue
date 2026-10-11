@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import "./sr.css";
 import { computed, onBeforeUnmount, onMounted, ref, watch } from "vue";
 import { reducedMotion } from "../composables/useMedia";
 
@@ -79,7 +80,7 @@ onBeforeUnmount(() => cancelAnimationFrame(raf));
       </template>
       <template v-else>{{ text(shown) }}</template>
     </span>
-    <span class="bless-countup__final">{{ final }}</span>
+    <span class="bless-countup__final bless-sr">{{ final }}</span>
   </span>
 </template>
 
@@ -105,13 +106,6 @@ onBeforeUnmount(() => cancelAnimationFrame(raf));
 .bless-countup__reel i {
   font-style: normal;
   height: 1lh;
-}
-.bless-countup__final {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip-path: inset(50%);
 }
 @media (prefers-reduced-motion: reduce) {
   .bless-countup__reel {

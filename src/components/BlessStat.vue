@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import "./sr.css";
 import { computed, useId } from "vue";
 import BlessSparkline from "./BlessSparkline.vue";
 
@@ -57,7 +58,7 @@ const arrow = { up: "▲", down: "▼", flat: "▬" } as const;
       :class="{ 'bless-stat__delta--bad': bad }"
     >
       <span aria-hidden="true">{{ arrow[dir] }}</span>
-      <span class="bless-stat__sr">{{ words[dir] }}</span>
+      <span class="bless-stat__sr bless-sr">{{ words[dir] }}</span>
       {{ shown }}
     </div>
     <BlessSparkline v-if="data?.length" class="bless-stat__trend" :data="data" :label="dataLabel" />
@@ -103,13 +104,5 @@ const arrow = { up: "▲", down: "▼", flat: "▬" } as const;
 .bless-stat__hint {
   font-size: var(--bless-text-sm);
   color: var(--bless-color-text-muted);
-}
-.bless-stat__sr {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip-path: inset(50%);
-  white-space: nowrap;
 }
 </style>

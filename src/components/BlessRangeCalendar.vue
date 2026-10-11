@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import "./sr.css";
 import { computed, nextTick, onMounted, ref, useId } from "vue";
 import { addDays, addMonths, fromISO, isoToday, toISO } from "../composables/date";
 import {
@@ -275,7 +276,7 @@ const stopDay = computed(() =>
       >
     </div>
     <span :id="hint" hidden>{{ text.hint }}</span>
-    <span class="bless-range__live" aria-live="polite">{{ live }}</span>
+    <span class="bless-range__live bless-sr" aria-live="polite">{{ live }}</span>
   </div>
 </template>
 
@@ -354,12 +355,5 @@ const stopDay = computed(() =>
   outline: 2px solid var(--bless-color-accent);
   outline-offset: 2px;
   z-index: 1;
-}
-.bless-range__live {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip-path: inset(50%);
 }
 </style>

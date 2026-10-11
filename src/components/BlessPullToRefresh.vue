@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import "./sr.css";
 import { computed, ref } from "vue";
 import BlessSpinner from "./BlessSpinner.vue";
 import { usePan } from "../composables/useGesture";
@@ -61,7 +62,7 @@ const ready = computed(() => pull.value >= props.threshold);
       role="status"
     >
       <!-- live regions read their text, not aria-label: say it as content -->
-      <span class="bless-ptr__sr">{{ busy ? refreshingLabel : "" }}</span>
+      <span class="bless-ptr__sr bless-sr">{{ busy ? refreshingLabel : "" }}</span>
       <slot name="indicator" :ready :busy :pull>
         <BlessSpinner v-if="busy" size="sm" label="" />
         <span v-else class="bless-ptr__arrow" aria-hidden="true">↓</span>
@@ -72,13 +73,6 @@ const ready = computed(() => pull.value >= props.threshold);
 </template>
 
 <style>
-.bless-ptr__sr {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip-path: inset(50%);
-}
 .bless-ptr {
   position: relative;
   overflow: hidden;

@@ -1,4 +1,5 @@
 <script setup lang="ts" generic="T">
+import "./sr.css";
 import { computed, ref, useId } from "vue";
 
 defineOptions({ name: "BlessOrderList" });
@@ -113,7 +114,7 @@ function step(i: number, d: -1 | 1) {
       </li>
     </ul>
     <span :id="hint" hidden>Alt plus arrow keys move it.</span>
-    <span class="bless-order__live" aria-live="polite">{{ live }}</span>
+    <span class="bless-order__live bless-sr" aria-live="polite">{{ live }}</span>
   </div>
 </template>
 
@@ -187,12 +188,5 @@ function step(i: number, d: -1 | 1) {
 }
 .bless-order__btns button:focus-visible {
   outline: 2px solid var(--bless-color-accent);
-}
-.bless-order__live {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip-path: inset(50%);
 }
 </style>

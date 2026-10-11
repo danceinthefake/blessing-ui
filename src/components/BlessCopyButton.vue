@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import "./sr.css";
 import { onBeforeUnmount, ref } from "vue";
 import { copyText } from "../composables/copyText";
 import BlessButton from "./BlessButton.vue";
@@ -42,7 +43,7 @@ onBeforeUnmount(() => clearTimeout(timer));
     <BlessButton :variant="variant" :size="size" @click="copy">
       <slot :copied="copied">{{ copied ? text().copied : text().copy }}</slot>
     </BlessButton>
-    <span class="bless-copy__live" role="status" aria-live="polite">{{
+    <span class="bless-copy__live bless-sr" role="status" aria-live="polite">{{
       copied ? text().copiedLive : ""
     }}</span>
   </span>
@@ -52,13 +53,5 @@ onBeforeUnmount(() => clearTimeout(timer));
 .bless-copy {
   position: relative;
   display: inline-flex;
-}
-.bless-copy__live {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip-path: inset(50%);
-  white-space: nowrap;
 }
 </style>

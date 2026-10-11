@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import "./sr.css";
 import { computed, onBeforeUnmount, onMounted, ref, watch } from "vue";
 import { logicalKey } from "../composables/rtl";
 import { reducedMotion, scrollBehavior } from "../composables/useMedia";
@@ -184,7 +185,9 @@ defineExpose({ go, next: () => go(index.value + 1), prev: () => go(index.value -
       <span aria-hidden="true">{{ paused ? "▶" : "❚❚" }}</span>
     </button>
     <!-- which slide is showing, read after a step; quiet while it turns by itself -->
-    <span class="bless-carousel__sr" :aria-live="autoplay > 0 && !paused ? 'off' : 'polite'"
+    <span
+      class="bless-carousel__sr bless-sr"
+      :aria-live="autoplay > 0 && !paused ? 'off' : 'polite'"
       >{{ label }}: {{ index + 1 }} / {{ pages }}</span
     >
   </div>
@@ -259,13 +262,6 @@ defineExpose({ go, next: () => go(index.value + 1), prev: () => go(index.value -
 .bless-carousel__arrow:focus-visible {
   outline: 2px solid var(--bless-color-accent);
   outline-offset: 2px;
-}
-.bless-carousel__sr {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip-path: inset(50%);
 }
 .bless-carousel__pause {
   position: absolute;

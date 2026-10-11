@@ -10,6 +10,7 @@ export interface BlessCropRect {
 </script>
 
 <script setup lang="ts">
+import "./sr.css";
 import { computed, nextTick, onBeforeUnmount, ref, useId, watch } from "vue";
 import { initialBox, moveBox, resizeBox, scaleBox, type CropBox } from "../composables/cropBox";
 import BlessButton from "./BlessButton.vue";
@@ -249,7 +250,7 @@ defineExpose({ toBlob, rotate: turn, reset });
         >
       </span>
     </div>
-    <span class="bless-cropper__live" aria-live="polite">{{ live }}</span>
+    <span class="bless-cropper__live bless-sr" aria-live="polite">{{ live }}</span>
   </div>
 </template>
 
@@ -350,12 +351,5 @@ defineExpose({ toBlob, rotate: turn, reset });
 .bless-cropper__error {
   margin: 0;
   color: var(--bless-color-danger-text);
-}
-.bless-cropper__live {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip-path: inset(50%);
 }
 </style>

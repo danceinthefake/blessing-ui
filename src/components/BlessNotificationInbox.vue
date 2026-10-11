@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import "./sr.css";
 import { computed } from "vue";
 import { useLink } from "../composables/useLink";
 import BlessButton from "./BlessButton.vue";
@@ -106,7 +107,8 @@ function pick(n: BlessNotice) {
               :type="n.href ? undefined : 'button'"
               @click="pick(n)"
             >
-              <span v-if="!n.read" class="bless-inbox__sr">{{ text.unread }}: </span>{{ n.title }}
+              <span v-if="!n.read" class="bless-inbox__sr bless-sr">{{ text.unread }}: </span
+              >{{ n.title }}
             </component>
             <span v-if="n.body" class="bless-inbox__body">{{ n.body }}</span>
             <span v-if="n.time" class="bless-inbox__time">{{ n.time }}</span>
@@ -213,13 +215,5 @@ function pick(n: BlessNotice) {
 }
 .bless-inbox__dismiss:hover {
   color: var(--bless-color-text);
-}
-.bless-inbox__sr {
-  position: absolute;
-  inline-size: 1px;
-  block-size: 1px;
-  overflow: hidden;
-  clip-path: inset(50%);
-  white-space: nowrap;
 }
 </style>

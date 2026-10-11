@@ -6,6 +6,7 @@ export interface BlessTimerPhase {
 </script>
 
 <script setup lang="ts">
+import "./sr.css";
 import { computed, onBeforeUnmount, ref, watch } from "vue";
 import BlessButton from "./BlessButton.vue";
 
@@ -179,7 +180,7 @@ defineExpose({ start, pause, reset, toggle: () => (running.value = !running.valu
         text.reset
       }}</BlessButton>
     </span>
-    <span class="bless-timer__live" aria-live="polite">{{ live }}</span>
+    <span class="bless-timer__live bless-sr" aria-live="polite">{{ live }}</span>
   </div>
 </template>
 
@@ -209,12 +210,5 @@ defineExpose({ start, pause, reset, toggle: () => (running.value = !running.valu
 .bless-timer__controls {
   display: inline-flex;
   gap: var(--bless-space-2);
-}
-.bless-timer__live {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip-path: inset(50%);
 }
 </style>

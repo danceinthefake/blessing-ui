@@ -1,4 +1,5 @@
 <script setup lang="ts" generic="T extends string | number">
+import "./sr.css";
 import { computed, nextTick, ref, type Ref } from "vue";
 import BlessButton from "./BlessButton.vue";
 import BlessListbox from "./BlessListbox.vue";
@@ -106,18 +107,11 @@ function transfer(from: "source" | "target", values: T[]) {
       <span class="bless-picklist__title">{{ targetLabel }} · {{ target.length }}</span>
       <BlessListbox v-model="pickT" :options="target" multiple :rows :label="targetLabel" />
     </div>
-    <span class="bless-picklist__live" aria-live="polite">{{ live }}</span>
+    <span class="bless-picklist__live bless-sr" aria-live="polite">{{ live }}</span>
   </div>
 </template>
 
 <style>
-.bless-picklist__live {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip-path: inset(50%);
-}
 .bless-picklist {
   display: flex;
   gap: var(--bless-space-3);

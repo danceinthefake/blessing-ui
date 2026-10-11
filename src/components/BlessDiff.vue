@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import "./sr.css";
 import { computed, ref } from "vue";
 import { diffLines, type DiffRow } from "../composables/diffLines";
 
@@ -106,7 +107,7 @@ const cols = computed(() => (props.mode === "inline" ? 4 : 4));
       <span class="bless-diff__count">
         <span class="bless-diff__plus">+{{ added }}</span>
         <span class="bless-diff__minus">−{{ removed }}</span>
-        <span class="bless-diff__sr">{{ added }} lines added, {{ removed }} removed</span>
+        <span class="bless-diff__sr bless-sr">{{ added }} lines added, {{ removed }} removed</span>
       </span>
     </figcaption>
     <div class="bless-diff__scroll" tabindex="0" role="region" :aria-label="label">
@@ -198,13 +199,6 @@ const cols = computed(() => (props.mode === "inline" ? 4 : 4));
 .bless-diff__minus {
   color: var(--bless-color-danger-text);
   font-weight: 600;
-}
-.bless-diff__sr {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip-path: inset(50%);
 }
 .bless-diff__scroll {
   overflow: auto;

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import "./sr.css";
 import { nextTick, ref, watch } from "vue";
 import BlessSpinner from "./BlessSpinner.vue";
 
@@ -35,7 +36,7 @@ watch(
   <div class="bless-block" :class="{ 'bless-block--on': blocked, 'bless-block--full': fullscreen }">
     <div ref="content" class="bless-block__content" :inert="blocked || undefined"><slot /></div>
     <!-- always present, so the change is announced; a region inserted with its text often isn't -->
-    <span class="bless-block__sr" role="status">{{ blocked ? label : "" }}</span>
+    <span class="bless-block__sr bless-sr" role="status">{{ blocked ? label : "" }}</span>
     <div
       v-if="blocked"
       ref="overlay"
@@ -65,13 +66,6 @@ watch(
 .bless-block--full .bless-block__overlay {
   position: fixed;
   z-index: var(--bless-z-modal);
-}
-.bless-block__sr {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip-path: inset(50%);
 }
 .bless-block--on .bless-block__content {
   pointer-events: none;

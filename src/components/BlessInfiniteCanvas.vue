@@ -13,6 +13,7 @@ export const blessCanvasKey: InjectionKey<BlessCanvasContext> = Symbol("blessCan
 </script>
 
 <script setup lang="ts">
+import "./sr.css";
 import { computed, provide, ref, useId } from "vue";
 import { clampZoom, fitRect, toWorld as worldAt, zoomAt } from "../composables/canvasView";
 import BlessButton from "./BlessButton.vue";
@@ -202,7 +203,7 @@ const bg = computed(() => {
       >
     </div>
     <span :id="hint" hidden>{{ text.hint }}</span>
-    <span class="bless-canvas__live" aria-live="polite">{{ live }}</span>
+    <span class="bless-canvas__live bless-sr" aria-live="polite">{{ live }}</span>
   </div>
 </template>
 
@@ -251,12 +252,5 @@ const bg = computed(() => {
   display: flex;
   gap: var(--bless-space-1);
   cursor: default;
-}
-.bless-canvas__live {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip-path: inset(50%);
 }
 </style>

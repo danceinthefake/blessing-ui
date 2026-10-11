@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import "./sr.css";
 import { computed, ref, watch } from "vue";
 import { joinIds, useFieldId, useFieldState } from "../composables/useFieldId";
 import BlessChip from "./BlessChip.vue";
@@ -102,7 +103,7 @@ function onKey(e: KeyboardEvent) {
     <template v-if="name">
       <input v-for="(t, i) in model" :key="i" type="hidden" :name :value="t" />
     </template>
-    <span class="bless-tags__live" aria-live="polite">{{ said }}</span>
+    <span class="bless-tags__live bless-sr" aria-live="polite">{{ said }}</span>
   </div>
 </template>
 
@@ -137,13 +138,6 @@ function onKey(e: KeyboardEvent) {
    not a box, so a page-coloured chip would vanish */
 .bless-tags .bless-chip {
   transform: none;
-}
-.bless-tags__live {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip-path: inset(50%);
 }
 .bless-tags__input {
   flex: 1;

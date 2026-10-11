@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import "./sr.css";
 import { computed, onBeforeUnmount, onMounted, ref, useId } from "vue";
 
 defineOptions({ name: "BlessSliderCaptcha" });
@@ -182,7 +183,7 @@ function onKey(e: KeyboardEvent) {
         <span aria-hidden="true">{{ verified ? "✓" : "→" }}</span>
       </button>
     </div>
-    <span class="bless-captcha__live" aria-live="polite">{{ live }}</span>
+    <span class="bless-captcha__live bless-sr" aria-live="polite">{{ live }}</span>
   </div>
 </template>
 
@@ -272,13 +273,6 @@ function onKey(e: KeyboardEvent) {
 }
 .bless-captcha--fail .bless-captcha__track {
   border-color: var(--bless-color-danger-text);
-}
-.bless-captcha__live {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip-path: inset(50%);
 }
 @media (prefers-reduced-motion: reduce) {
   .bless-captcha__piece,

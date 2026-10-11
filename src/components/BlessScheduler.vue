@@ -3,6 +3,7 @@ export type { ScheduleEvent as BlessScheduleEvent } from "../composables/schedul
 </script>
 
 <script setup lang="ts">
+import "./sr.css";
 import { computed, nextTick, onMounted, ref, useId } from "vue";
 import { addDays, fromISO, isoToday, toISO } from "../composables/date";
 import {
@@ -396,7 +397,7 @@ const lane = (day: string, id: string) => lanes.value.get(day)?.get(id) ?? { lan
       }}</BlessButton>
     </div>
     <span :id="hint" hidden>{{ text.hint }}</span>
-    <span class="bless-sched__live" aria-live="polite">{{ live }}</span>
+    <span class="bless-sched__live bless-sr" aria-live="polite">{{ live }}</span>
   </div>
 </template>
 
@@ -546,12 +547,5 @@ const lane = (day: string, id: string) => lanes.value.get(day)?.get(id) ?? { lan
 .bless-sched__input:focus-visible {
   outline: 2px solid var(--bless-color-accent);
   outline-offset: 1px;
-}
-.bless-sched__live {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip-path: inset(50%);
 }
 </style>

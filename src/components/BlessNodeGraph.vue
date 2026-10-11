@@ -9,6 +9,7 @@ export type { GraphEdge as BlessGraphEdge } from "../composables/graph";
 </script>
 
 <script setup lang="ts">
+import "./sr.css";
 import { computed, nextTick, ref, useId } from "vue";
 import BlessInfiniteCanvas, { type CanvasView } from "./BlessInfiniteCanvas.vue";
 import {
@@ -364,7 +365,7 @@ const tabId = computed(() =>
       </div>
     </BlessInfiniteCanvas>
     <span :id="hint" hidden>{{ text.hint }}</span>
-    <span class="bless-graph__live" aria-live="polite">{{ live }}</span>
+    <span class="bless-graph__live bless-sr" aria-live="polite">{{ live }}</span>
   </div>
 </template>
 
@@ -460,12 +461,5 @@ const tabId = computed(() =>
 }
 .bless-graph__port--out:hover {
   border-color: var(--bless-color-accent);
-}
-.bless-graph__live {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip-path: inset(50%);
 }
 </style>

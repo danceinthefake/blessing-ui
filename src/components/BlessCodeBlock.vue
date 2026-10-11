@@ -7,6 +7,7 @@ export interface BlessCodeFile {
 </script>
 
 <script setup lang="ts">
+import "./sr.css";
 import { copyText } from "../composables/copyText";
 import { computed, nextTick, onBeforeUnmount, ref, useId } from "vue";
 
@@ -150,7 +151,9 @@ onBeforeUnmount(() => clearTimeout(timer));
 </span></code></pre>
       </slot>
     </div>
-    <span class="bless-code__live" aria-live="polite">{{ copied ? text.copiedLive : "" }}</span>
+    <span class="bless-code__live bless-sr" aria-live="polite">{{
+      copied ? text.copiedLive : ""
+    }}</span>
   </figure>
 </template>
 
@@ -253,12 +256,5 @@ onBeforeUnmount(() => clearTimeout(timer));
   text-align: end;
   color: var(--bless-color-text-muted);
   user-select: none;
-}
-.bless-code__live {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip-path: inset(50%);
 }
 </style>

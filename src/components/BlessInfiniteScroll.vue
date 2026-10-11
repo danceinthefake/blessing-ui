@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import "./sr.css";
 import { onBeforeUnmount, onMounted, ref, watch } from "vue";
 import BlessButton from "./BlessButton.vue";
 import BlessSpinner from "./BlessSpinner.vue";
@@ -66,7 +67,7 @@ defineExpose({ reset: () => ((finished.value = false), (loading.value = false)) 
     <div ref="sentinel" class="bless-infinite__sentinel" aria-hidden="true" />
     <div class="bless-infinite__status" role="status" aria-live="polite">
       <slot v-if="loading" name="loading"
-        ><BlessSpinner size="sm" label="" /><span class="bless-infinite__sr">{{
+        ><BlessSpinner size="sm" label="" /><span class="bless-infinite__sr bless-sr">{{
           loadingText
         }}</span></slot
       >
@@ -86,13 +87,6 @@ defineExpose({ reset: () => ((finished.value = false), (loading.value = false)) 
 </template>
 
 <style>
-.bless-infinite__sr {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip-path: inset(50%);
-}
 .bless-infinite__more {
   display: flex;
   margin: var(--bless-space-3) auto;

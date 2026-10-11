@@ -3,6 +3,7 @@ export type { Region as BlessRegion } from "../composables/annotate";
 </script>
 
 <script setup lang="ts">
+import "./sr.css";
 import { computed, nextTick, ref, useId } from "vue";
 import {
   boxFrom,
@@ -276,7 +277,7 @@ const setName = (v: string) => current.value && patch({ ...current.value, label:
       </li>
     </ol>
     <span :id="hint" hidden>{{ text.hint }}</span>
-    <span class="bless-annot__live" aria-live="polite">{{ live }}</span>
+    <span class="bless-annot__live bless-sr" aria-live="polite">{{ live }}</span>
   </div>
 </template>
 
@@ -406,12 +407,5 @@ const setName = (v: string) => current.value && patch({ ...current.value, label:
 }
 .bless-annot__item[aria-pressed="true"] {
   border-color: var(--bless-color-accent);
-}
-.bless-annot__live {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip-path: inset(50%);
 }
 </style>

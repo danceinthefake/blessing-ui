@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import "./sr.css";
 import { computed, ref, useId } from "vue";
 import { isModifierKey, shortcutFromEvent, splitShortcut } from "../composables/shortcut";
 import BlessKbd from "./BlessKbd.vue";
@@ -158,7 +159,7 @@ defineExpose({ start, focus: () => btn.value?.focus() });
       <span v-else class="bless-shortcut__hint">{{ placeholder }}</span>
     </button>
     <p v-if="error" :id="`${id}-err`" class="bless-shortcut__error" role="alert">{{ error }}</p>
-    <span class="bless-shortcut__live" aria-live="polite">{{ live }}</span>
+    <span class="bless-shortcut__live bless-sr" aria-live="polite">{{ live }}</span>
   </div>
 </template>
 
@@ -204,12 +205,5 @@ defineExpose({ start, focus: () => btn.value?.focus() });
   margin: 0;
   color: var(--bless-color-danger-text);
   font-size: var(--bless-text-xs);
-}
-.bless-shortcut__live {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip-path: inset(50%);
 }
 </style>

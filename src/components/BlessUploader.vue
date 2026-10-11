@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import "./sr.css";
 import { computed, nextTick, onBeforeUnmount, ref } from "vue";
 import BlessButton from "./BlessButton.vue";
 import BlessFileInput from "./BlessFileInput.vue";
@@ -187,7 +188,7 @@ defineExpose({ start, clear, queue });
         </button>
       </li>
     </ul>
-    <span class="bless-uploader__live" aria-live="polite">{{ live }}</span>
+    <span class="bless-uploader__live bless-sr" aria-live="polite">{{ live }}</span>
     <div v-if="queue.length" class="bless-uploader__actions">
       <slot name="actions" :start :clear :queue>
         <BlessButton size="sm" variant="outline" @click="clear">{{ text.clear }}</BlessButton>
@@ -204,13 +205,6 @@ defineExpose({ start, clear, queue });
 </template>
 
 <style>
-.bless-uploader__live {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip-path: inset(50%);
-}
 .bless-uploader {
   display: flex;
   flex-direction: column;

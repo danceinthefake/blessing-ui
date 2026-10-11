@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import "./sr.css";
 import { useLink } from "../composables/useLink";
 defineOptions({ name: "BlessBottomTabs" });
 const link = useLink();
@@ -63,7 +64,7 @@ const emit = defineEmits<{ select: [item: BlessBottomTab, e: Event] }>();
       <span v-if="it.badge" class="bless-bottom-tabs__badge" aria-hidden="true">{{
         it.badge === true ? "" : it.badge
       }}</span>
-      <span v-if="it.badge && variant === 'bar'" class="bless-bottom-tabs__sr">{{
+      <span v-if="it.badge && variant === 'bar'" class="bless-bottom-tabs__sr bless-sr">{{
         badgeText(it)
       }}</span>
     </component>
@@ -71,13 +72,6 @@ const emit = defineEmits<{ select: [item: BlessBottomTab, e: Event] }>();
 </template>
 
 <style>
-.bless-bottom-tabs__sr {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip-path: inset(50%);
-}
 .bless-bottom-tabs {
   display: flex;
   font-family: var(--bless-font-sans);
