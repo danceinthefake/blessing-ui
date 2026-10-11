@@ -190,6 +190,8 @@ export { blessLabelsKey, provideLabels } from "./composables/useLabels";
 export type { BlessLabelPack } from "./composables/useLabels";
 export { default as BlessRelativeTime } from "./components/BlessRelativeTime.vue";
 export { relativeParts } from "./components/relativeTime";
+export { formValues, issuesToErrors } from "./components/schema";
+export type { BlessSchema, BlessIssue, BlessSchemaResult } from "./components/schema";
 export { default as BlessTimezonePicker } from "./components/BlessTimezonePicker.vue";
 export { offsetText, zoneOffset } from "./components/timezone";
 export { default as BlessJsonViewer } from "./components/BlessJsonViewer.vue";

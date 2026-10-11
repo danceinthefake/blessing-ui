@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, useId, watch } from "vue";
+import { onMounted, ref, useId, watch } from "vue";
 import { computed, inject } from "vue";
 import { provideField } from "../composables/useFieldId";
 import { blessFormKey } from "./BlessForm.vue";
@@ -15,13 +15,20 @@ const props = defineProps<{
   /** explicit error; otherwise read from the control's validity after submit/blur */
   error?: string;
   id?: string;
+  /** the `name` of the control, for the messages of a form `schema`. Default: the first named control inside. */
+  name?: string;
 }>();
 
 const uid = useId();
 const id = props.id ?? uid;
 const nativeError = ref("");
 const form = inject(blessFormKey, undefined);
-const shownError = computed(() => props.error || nativeError.value);
+const root = ref<HTMLElement>();
+const found = ref("");
+const fieldName = computed(() => props.name ?? found.value);
+// a message from the form `schema`, matched by the `name` of the control
+const schemaError = computed(() => (fieldName.value && form?.errors.value[fieldName.value]) || "");
+const shownError = computed(() => props.error || nativeError.value || schemaError.value);
 // the description stays while an error shows ("3–12 chars" is what fixes "too short"), so both are read
 const describedby = computed(
   () =>
@@ -47,15 +54,23 @@ watch(
   () => form?.resets.value,
   () => (nativeError.value = ""),
 );
+onMounted(() => {
+  found.value = root.value?.querySelector<HTMLInputElement>("[name]")?.name ?? "";
+});
+function onInput(e: Event) {
+  if (nativeError.value) validate(e);
+  if (fieldName.value) form?.clear(fieldName.value);
+}
 </script>
 
 <template>
   <div
+    ref="root"
     class="bless-field"
-    :class="{ 'bless-field--invalid': error || nativeError }"
+    :class="{ 'bless-field--invalid': error || nativeError || schemaError }"
     @blur.capture="validate"
     @invalid.capture="validate"
-    @input="nativeError && validate($event)"
+    @input="onInput"
   >
     <BlessLabel
       v-if="label"
@@ -66,7 +81,7 @@ watch(
       class="bless-field__label"
       >{{ label }}</BlessLabel
     >
-    <slot :id :error="error || nativeError" :describedby />
+    <slot :id :error="error || nativeError || schemaError" :describedby />
     <p v-if="description" :id="`${id}-desc`" class="bless-field__description">
       {{ description }}
     </p>
