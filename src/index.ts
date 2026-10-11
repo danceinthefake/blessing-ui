@@ -184,6 +184,8 @@ export { default as BlessRadar } from "./components/BlessRadar.vue";
 export type { BlessRadarSeries } from "./components/radar";
 export { default as BlessWaveform } from "./components/BlessWaveform.vue";
 export { downsample, loadPeaks, peaksFromChannel } from "./components/waveform";
+export { default as BlessNotificationInbox } from "./components/BlessNotificationInbox.vue";
+export type { BlessNotice } from "./components/BlessNotificationInbox.vue";
 export { default as BlessTimezonePicker } from "./components/BlessTimezonePicker.vue";
 export { offsetText, zoneOffset } from "./components/timezone";
 export { default as BlessJsonViewer } from "./components/BlessJsonViewer.vue";
