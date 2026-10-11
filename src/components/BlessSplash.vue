@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { readStore, writeStore } from "../composables/storage";
 import { nextTick, onMounted, ref } from "vue";
 import { reducedMotion } from "../composables/useMedia";
 
@@ -30,9 +31,7 @@ function dismiss() {
   // Skip goes with the splash: hand focus back to where it was, if anywhere
   if (before && before !== document.body && before.isConnected) before.focus();
   if (props.once) {
-    try {
-      localStorage.setItem(props.once, "1");
-    } catch {}
+    writeStore(props.once, "1");
   }
   emit("done");
 }
@@ -40,9 +39,7 @@ function dismiss() {
 onMounted(() => {
   let seen = false;
   if (props.once) {
-    try {
-      seen = localStorage.getItem(props.once) === "1";
-    } catch {}
+    seen = readStore(props.once) === "1";
   }
   if (seen) return;
   if (reducedMotion()) return emit("done");

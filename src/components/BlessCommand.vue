@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { readJson, writeJson } from "../composables/storage";
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, useId, watch } from "vue";
 import BlessKbd from "./BlessKbd.vue";
 import BlessModal from "./BlessModal.vue";
@@ -191,12 +192,9 @@ function remember(it: BlessCommandItem) {
   if (!props.recent) return;
   const next = [it.value, ...history.value.filter((v) => v !== it.value)].slice(0, 20);
   history.value = next;
-  try {
-    // from the local copy: a controlled v-model shows the new list only after the parent re-renders
-    if (storeKey.value) localStorage.setItem(storeKey.value, JSON.stringify(next));
-  } catch {
-    /* blocked storage: the history lasts for this visit only */
-  }
+  // from the local copy: a controlled v-model shows the new list only after the parent re-renders.
+  // Blocked storage: the history lasts for this visit only.
+  if (storeKey.value) writeJson(storeKey.value, next);
 }
 function choose(it = flat.value[active.value]) {
   if (!it || it.disabled) return;
@@ -237,14 +235,9 @@ function onHotkey(e: KeyboardEvent) {
 onMounted(() => {
   addEventListener("keydown", onHotkey);
   // the stored history is read after mount, so a server-rendered page and its first client render agree
-  try {
-    const raw = storeKey.value && localStorage.getItem(storeKey.value);
-    const saved = raw ? (JSON.parse(raw) as unknown) : null;
-    if (Array.isArray(saved) && !history.value.length)
-      history.value = saved.filter((v): v is string => typeof v === "string");
-  } catch {
-    /* damaged or blocked storage: start empty */
-  }
+  const saved = storeKey.value ? readJson(storeKey.value) : null;
+  if (Array.isArray(saved) && !history.value.length)
+    history.value = saved.filter((v): v is string => typeof v === "string");
 });
 onBeforeUnmount(() => removeEventListener("keydown", onHotkey));
 </script>

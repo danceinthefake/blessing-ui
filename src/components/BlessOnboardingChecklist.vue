@@ -9,6 +9,7 @@ export interface BlessChecklistItem {
 </script>
 
 <script setup lang="ts">
+import { readJson, writeJson } from "../composables/storage";
 import { computed, onMounted, ref, useId, watch } from "vue";
 import BlessCheckbox from "./BlessCheckbox.vue";
 import BlessButton from "./BlessButton.vue";
@@ -55,29 +56,22 @@ const finished = computed(() => total.value > 0 && known.value === total.value);
 const key = computed(() => (props.persist ? `bless-checklist:${props.persist}` : null));
 const ready = ref(false);
 onMounted(() => {
-  try {
-    const raw = key.value && localStorage.getItem(key.value);
-    if (raw) {
-      const s = JSON.parse(raw) as { done?: string[]; collapsed?: boolean; dismissed?: boolean };
-      if (s.done) done.value = s.done;
-      if (typeof s.collapsed === "boolean") collapsed.value = s.collapsed;
-      if (s.dismissed) dismissed.value = true;
-    }
-  } catch {
-    /* blocked or damaged storage: start fresh */
-  }
+  // blocked or damaged storage reads as null: start fresh
+  const s = key.value
+    ? readJson<{ done?: string[]; collapsed?: boolean; dismissed?: boolean }>(key.value)
+    : null;
+  if (s?.done) done.value = s.done;
+  if (typeof s?.collapsed === "boolean") collapsed.value = s.collapsed;
+  if (s?.dismissed) dismissed.value = true;
   ready.value = true;
 });
 watch([done, collapsed, dismissed], () => {
   if (!ready.value || !key.value) return;
-  try {
-    localStorage.setItem(
-      key.value,
-      JSON.stringify({ done: done.value, collapsed: collapsed.value, dismissed: dismissed.value }),
-    );
-  } catch {
-    /* ignore */
-  }
+  writeJson(key.value, {
+    done: done.value,
+    collapsed: collapsed.value,
+    dismissed: dismissed.value,
+  });
 });
 let told = false;
 watch(finished, (v) => {

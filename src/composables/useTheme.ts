@@ -1,4 +1,5 @@
 import { computed, ref, watchEffect } from "vue";
+import { readStore, removeStore, writeStore } from "./storage";
 
 export type BlessTheme = "light" | "dark" | "system";
 /** accent family; undefined = Megumi, the default */
@@ -26,12 +27,10 @@ function boot() {
   // Persisted choices land in a microtask: after a server-rendered page has hydrated (so the
   // toggles' aria-pressed/title match the HTML), still before first paint on a client-only app.
   queueMicrotask(() => {
-    try {
-      const saved = localStorage.getItem(KEY) as BlessTheme | null;
-      if (saved === "light" || saved === "dark" || saved === "system") theme.value = saved;
-      const p = localStorage.getItem(PKEY);
-      if (p && blessPalettes.some((x) => x.name === p)) palette.value = p as BlessPalette;
-    } catch {}
+    const saved = readStore(KEY) as BlessTheme | null;
+    if (saved === "light" || saved === "dark" || saved === "system") theme.value = saved;
+    const p = readStore(PKEY);
+    if (p && blessPalettes.some((x) => x.name === p)) palette.value = p as BlessPalette;
     loaded = true;
   });
   // some environments (tests, embedded webviews) have no matchMedia: follow light
@@ -43,9 +42,7 @@ function boot() {
     if (theme.value === "system") root.removeAttribute("data-theme");
     else root.setAttribute("data-theme", theme.value);
     if (!loaded) return;
-    try {
-      localStorage.setItem(KEY, theme.value);
-    } catch {}
+    writeStore(KEY, theme.value);
   });
   watchEffect(() => {
     const root = document.documentElement;
@@ -53,10 +50,8 @@ function boot() {
     if (p) root.setAttribute("data-palette", p);
     else root.removeAttribute("data-palette");
     if (!loaded) return;
-    try {
-      if (p) localStorage.setItem(PKEY, p);
-      else localStorage.removeItem(PKEY);
-    } catch {}
+    if (p) writeStore(PKEY, p);
+    else removeStore(PKEY);
   });
 }
 

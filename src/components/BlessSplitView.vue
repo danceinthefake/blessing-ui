@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { readStore, writeStore } from "../composables/storage";
 import { nextTick, onBeforeUnmount, onMounted, ref, watch } from "vue";
 import BlessResizable from "./BlessResizable.vue";
 
@@ -35,12 +36,8 @@ function measure() {
 let ro: ResizeObserver | undefined;
 onMounted(() => {
   if (props.storageKey) {
-    try {
-      const v = parseFloat(localStorage.getItem(props.storageKey) ?? "");
-      if (v >= props.min && v <= props.max) size.value = v;
-    } catch {
-      /* private mode: keep the default */
-    }
+    const v = parseFloat(readStore(props.storageKey) ?? "");
+    if (v >= props.min && v <= props.max) size.value = v;
   }
   measure();
   if (typeof ResizeObserver !== "undefined" && root.value) {
@@ -51,11 +48,7 @@ onMounted(() => {
 onBeforeUnmount(() => ro?.disconnect());
 watch(size, (v) => {
   if (!props.storageKey) return;
-  try {
-    localStorage.setItem(props.storageKey, String(v));
-  } catch {
-    /* ignore */
-  }
+  writeStore(props.storageKey, String(v));
 });
 
 // stacked: hand focus to the pane that just appeared, so keyboard and screen-reader users are not left on nothing

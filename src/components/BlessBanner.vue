@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { readStore, writeStore } from "../composables/storage";
 import { onMounted, ref } from "vue";
 
 defineOptions({ name: "BlessBanner" });
@@ -20,25 +21,14 @@ const open = defineModel<boolean>({ default: true });
 const emit = defineEmits<{ dismiss: [] }>();
 // with `persist`, the banner shows after mount: the server cannot know what the visitor dismissed
 const ready = ref(!props.persist);
-const store = () => {
-  try {
-    return window.localStorage;
-  } catch {
-    return undefined;
-  }
-};
 onMounted(() => {
-  if (props.persist && store()?.getItem(props.persist) === "1") open.value = false;
+  if (props.persist && readStore(props.persist) === "1") open.value = false;
   ready.value = true;
 });
 function close() {
   open.value = false;
-  if (props.persist)
-    try {
-      store()?.setItem(props.persist, "1");
-    } catch {
-      /* private mode: it comes back next visit */
-    }
+  // private mode: it comes back next visit
+  if (props.persist) writeStore(props.persist, "1");
   emit("dismiss");
 }
 </script>

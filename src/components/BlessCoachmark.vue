@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { readStore, writeStore } from "../composables/storage";
 import { computed, onMounted, ref, useId } from "vue";
 import BlessButton from "./BlessButton.vue";
 
@@ -32,22 +33,15 @@ const ready = ref(false); // storage is read after mount, so the server and firs
 const bubble = `${useId()}-bubble`;
 
 onMounted(() => {
-  try {
-    if (key.value && localStorage.getItem(key.value)) dismissed.value = true;
-  } catch {
-    /* storage can be blocked; the mark then shows each visit */
-  }
+  // blocked storage reads as empty: the mark then shows each visit
+  if (key.value && readStore(key.value)) dismissed.value = true;
   ready.value = true;
 });
 function dismiss() {
   if (dismissed.value) return;
   dismissed.value = true;
   open.value = false;
-  try {
-    if (key.value) localStorage.setItem(key.value, "1");
-  } catch {
-    /* ignore */
-  }
+  if (key.value) writeStore(key.value, "1");
   emit("dismiss");
 }
 // a click on the wrapped element counts; a click on the dot or its bubble is the mark itself
