@@ -26,6 +26,7 @@ export const groups: { title: string; items: Entry[] }[] = [
       },
       { name: "BlessClientOnly", slug: "client-only", text: "Render only in the browser" },
       { name: "BlessChip", slug: "chip", text: "Removable pill" },
+      { name: "BlessTagCloud", slug: "tag-cloud", text: "Tags sized by weight" },
       { name: "BlessMeterGroup", slug: "meter-group", text: "Multi-segment meter with legend" },
       { name: "BlessBlockUI", slug: "block-ui", text: "Overlay that blocks its content" },
       {
@@ -311,6 +312,7 @@ export const groups: { title: string; items: Entry[] }[] = [
         text: "Nested details tree, role=tree",
         also: ["BlessTreeItem"],
       },
+      { name: "BlessJsonViewer", slug: "json-viewer", text: "Any value as an open-and-close tree" },
       { name: "BlessStage", slug: "stage", text: "Page shell, sidebar \u2192 drawer under 800px" },
       { name: "BlessSidebarNav", slug: "sidebar-nav", text: "Vertical nav list" },
       { name: "BlessNavigationMenu", slug: "navigation-menu", text: "Horizontal nav with panels" },
@@ -391,6 +393,7 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "questionnaire",
         text: "Multi-step single/multiple/freeform",
       },
+      { name: "BlessPoll", slug: "poll", text: "One-question vote with results" },
     ],
   },
   {
