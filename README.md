@@ -325,7 +325,7 @@ Gestures: `usePan(el, cb)` · `useSwipe(el, cb, { threshold, axis })` · `useLon
 
 ## Blocks
 
-Finished sections (a news list, a sign-in form, a dashboard shell) ship as source that you copy into your project. They are not a package that you import. Each section is a folder (`index.vue`, optional `parts/`, `use<Name>.ts`, `domain.ts`, and `api.ts` with an offline mock) that imports only from `blessing-ui` and itself. Browse them under **Blocks** in the docs. The contract is in `docs/blocks/README.md`.
+Finished sections (a news list, a sign-in form, a dashboard shell) ship as source that you copy into your project. They are not a package that you import. Each section is a folder. The folder holds `index.vue`, optional `parts/`, `use<Name>.ts`, `domain.ts`, and `api.ts` with an offline mock. It imports only from `blessing-ui` and itself. Browse them under **Blocks** in the docs. The contract is in `docs/blocks/README.md`.
 
 ## Tokens
 

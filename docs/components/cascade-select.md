@@ -26,7 +26,7 @@ The model is the leaf's value. `select` emits `(option, path)` with the whole tr
 </Demo>
 
 ::: warning Not inside `<p>`
-The floating panel is a `<div>`. HTML closes a `<p>` when it meets a `<div>`, so a trigger placed inside a paragraph renders differently on the server and the client. Wrap with `<span>`/`<div>` instead.
+The floating panel is a `<div>`. HTML closes a `<p>` at a `<div>`. For this reason, a trigger placed inside a paragraph renders differently on the server and the client. Wrap it in a `<span>` or `<div>` instead.
 :::
 
 ## Usage

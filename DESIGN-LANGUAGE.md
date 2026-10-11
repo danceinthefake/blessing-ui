@@ -86,7 +86,7 @@ The main button stands out by weight (solid against outline), not by color. On a
 
 - **Tried and dropped: the open corner.** A gap in each outline (closing when chosen) read as a broken border. The cover square that it needed showed as a notch inside solid buttons. Outlines stay whole.
 - **Lean on attention cannot be the only focus signal.** The focus ring stays for keyboard users. Under reduced motion the lean switches without animating.
-- **Color means chosen is the biggest behavior change.** Main buttons are ink until pressed, so a call to action stands out by weight, not by color. People who are used to colored call-to-action buttons can find it quiet at first.
+- **Color means chosen is the biggest behavior change.** Main buttons are ink until pressed. A call to action stands out by weight, not by color. People who are used to colored call-to-action buttons can find it quiet at first.
 - **Scope:** a larger rework than a shape swap. It covers tokens, at-rest and active styles across many components, and the logo.
 
 ## Open decisions

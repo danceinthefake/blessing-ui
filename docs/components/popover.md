@@ -42,7 +42,7 @@ Extra content next to the thing that opens it: a small form, details, a color pi
 </Demo>
 
 ::: warning Not inside `<p>`
-The floating panel is a `<div>`. HTML closes a `<p>` when it meets a `<div>`, so a trigger placed inside a paragraph renders differently on the server and the client. Wrap with `<span>`/`<div>` instead.
+The floating panel is a `<div>`. HTML closes a `<p>` at a `<div>`. For this reason, a trigger placed inside a paragraph renders differently on the server and the client. Wrap it in a `<span>` or `<div>` instead.
 :::
 
 - A click on the trigger opens it. The trigger is told what it opens and whether it is open. Esc or a click outside closes it, and focus goes back to the trigger if it was inside.

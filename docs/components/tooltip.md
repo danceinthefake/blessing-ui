@@ -22,7 +22,7 @@ A short hint for a control whose purpose is not obvious from its icon. Never put
 </Demo>
 
 ::: warning Not inside `<p>`
-The floating panel is a `<div>`. HTML closes a `<p>` when it meets a `<div>`, so a trigger placed inside a paragraph renders differently on the server and the client. Wrap with `<span>`/`<div>` instead.
+The floating panel is a `<div>`. HTML closes a `<p>` at a `<div>`. For this reason, a trigger placed inside a paragraph renders differently on the server and the client. Wrap it in a `<span>` or `<div>` instead.
 :::
 
 - It shows on hover and on keyboard focus, and it describes the element inside it (the hint is read after the name). Esc hides it.

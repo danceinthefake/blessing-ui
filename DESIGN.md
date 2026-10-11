@@ -228,7 +228,7 @@ Decision: **Unovis** (`@unovis/vue`) is the documented pairing that the consumer
 - [x] `BlessCircularProgress` (SVG ring), `BlessRange` (two native range inputs), `BlessTimePicker` (`<input type=time>` + datalist), `BlessImg` (lazy, ratio, LQIP placeholder, error), `BlessVideo`, `BlessLoadingBar` + `useLoadingBar` (trickle, nested start/stop, `track()`), `BlessUploader` (XHR with progress + abort, or `upload` event), `BlessParallax`, `BlessSlideTransition` (JS height hooks), `BlessClientOnly`
 - [x] `useResizeObserver`, `useFullscreen`, `useVisibility`, `useScroll`
 
-Skipped from Quasar: Ripple, Morph, and Mutation (directive utilities, no bounces), Meta (use `@unhead`), Cookies, WebStorage, and AddressbarColor (VueUse territory), and spinner variants (one spinner is the brand).
+Skipped from Quasar: Ripple, Morph, and Mutation (directive utilities, no bounces). Also skipped: Meta (use `@unhead`), Cookies, WebStorage, and AddressbarColor (VueUse territory). Spinner variants are skipped too, because one spinner is the brand.
 
 Skipped from PrimeVue: Terminal, Ripple / StyleClass / Fluid / KeyFilter (directive utilities), FocusTrap (native `<dialog>` covers it).
 
@@ -236,7 +236,7 @@ RTL ✅ (2026-09-20): logical properties throughout. The skew is mirrored under 
 
 ### Phase 20 — Blocks (copy-in sections) ✅
 
-Not components: finished sections that ship as source for you to copy. Each is `docs/blocks/<slug>/` as a vertical slice (`index.vue`, optional `parts/`, `use<Name>.ts`, `domain.ts`, `api.ts` port with offline mock, and docs-only `meta.ts`). `pnpm docs:blocks` scaffolds pages and the sidebar registry. `BlockDemo` previews at desktop and phone width with per-file code tabs. The contract is in `docs/blocks/README.md`.
+Not components: finished sections that ship as source for you to copy. Each is a vertical slice in `docs/blocks/<slug>/`. A slice has these files: `index.vue`, optional `parts/`, `use<Name>.ts`, `domain.ts`, an `api.ts` port with offline mock, and a docs-only `meta.ts`. `pnpm docs:blocks` scaffolds pages and the sidebar registry. `BlockDemo` previews at desktop and phone width with per-file code tabs. The contract is in `docs/blocks/README.md`.
 
 - [x] Official-site set (front page): News, On Air, Character (hash-routed modals), Staff & Cast, Release, Story, Full site (composition in `BlessStage`, opens full-page)
 - [x] App set: Sign in, Dashboard, Settings, Data page, Page states, Pricing, Inbox, Chat, Onboarding
@@ -306,7 +306,7 @@ Cut and petal are one default, with no toggle. The rule is in docs/guide/convent
 
 - ✅ `e2e/motion.mjs`: with `prefers-reduced-motion: reduce`, no demo keeps a CSS animation running. The script strips the blanket reset of VitePress, because that reset hides gaps. The slowed turn of the two spinners is allowed as essential motion.
 - ✅ `src/ssr.test.ts`: the test renders every docs demo on the server and hydrates it (with teleported markup injected where a framework does it). A crash or a hydration warning fails the test. It found that the `to="body"` teleport of `BlessTour` did not hydrate. The component now waits for mount.
-- ✅ Bundle budget: the consumer check caps the whole library at 118 KB gz JS / 38 KB gz CSS (today 106.6 / 34.4, raised on purpose after the third catalog round, about 1.6 KB gz per component).
+- ✅ Bundle budget: the consumer check caps the whole library at 118 KB gz JS / 38 KB gz CSS (today 106.6 / 34.4). We raised the cap on purpose after the third catalog round. Each component adds about 1.6 KB gz.
 - ✅ `labels` on every component that speaks English: Sortable, Kanban, Timer, SliderCaptcha, Cropper, ShortcutRecorder, CodeBlock, Gantt, Calendar, InputNumber, DataTable, DataView, OrderList, and PickList. Single strings use `clearLabel`, `dotsLabel`, or `label`.
 - ✅ `BlessCommand` `recent` / `scopes` (2026-10-09): chosen items come back first while the search is empty (`v-model:history`, `persist`). A leading `@` or `#` narrows the search to a group with a chip, and Backspace leaves the group. DataView and SwipeDeck also take `labels.empty`. Known limit, written in `src/ssr.test.ts`: the unit SSR test compiles demos for the browser. It cannot see a parent and child hydration disagreement that only a real `ssrRender` build shows. `e2e/sweep.mjs` on the production build covers it.
 - ✅ Remaining English strings made replaceable (Marquee, Uploader, Editor, Attachment, Combobox, FileInput, Pagination, Steps, Tour step name, SliderCaptcha) and Sortable page auto-scroll (2026-10-09). OrderList uses native drag-and-drop, which the browser scrolls itself.
@@ -363,7 +363,7 @@ Tooling: Vite and `vite-plugin-dts`, and Vitest and `@vue/test-utils` (one smoke
 - ~~`ponytail:` ceilings~~ all lifted ✅: Tree arrow-key navigation, VirtualScroller `dynamic` (measured heights), DataTable / useDataTable `server` mode (`state` event, `total`), useFloating `boundary` + `arrow` (Tooltip always, Popover opt-in).
 - ~~Straight / rounded variant~~ → cut + petal merged (2026-09-21), then square everywhere with the lean on attention (2026-09-26).
 - ~~Pre-publish component review, one by one~~ ✅ (2026-09-25): every component page opens with when to use the component, and when not to. Fixes for behavior and accessibility landed per component with tests. Library-wide outcomes: Field hands id, invalid, describedby, and labelledby to any control. Menu, popover, and dialog triggers carry aria-haspopup, aria-controls, and aria-expanded. Unstyled lists keep `role="list"`. Clock reads wait for mount (SSR day mismatch). Overlays return focus on close.
-- ~~Blocks review~~ ✅ (2026-09-25): we checked all 16 blocks at desktop, phone, and dark, and fixed them per block. Examples: the palette step of onboarding rendered `[object Object]`, the Enter key of chat sent mid-IME-conversion, dashboard navigation was missing on phones, and focus followed nothing when a pane or screen replaced another. Publish done, see below.
+- ~~Blocks review~~ ✅ (2026-09-25): we checked all 16 blocks at desktop, phone, and dark, and fixed them per block. Examples of the fixes: the palette step of onboarding rendered `[object Object]`. The Enter key of chat sent mid-IME-conversion. Dashboard navigation was missing on phones. Focus followed nothing when a pane or screen replaced another. Publish done, see below.
 - ~~Docs review, page by page~~ ✅ (2026-09-26/27): we checked home, guide, design, all components, all blocks, and the README against the design language. We removed the accent at rest, kept focus whenever a control removes itself, mirrored RTL, and shared Field wiring across every control (`joinIds`). Each bug that those passes found got a test.
 - ~~Hanging headline, outline badge~~ ✅ `BlessSection headline="hanging"` / `#band`, `BlessBadge variant="outline"`.
 - ~~Publish~~ ✅ (2026-09-27): `blessing-ui@0.1.0` on npm with CHANGELOG. Docs at ui.blessing.id, deployed to Cloudflare Pages by CI after every e2e browser passes on main.

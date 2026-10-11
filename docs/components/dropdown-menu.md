@@ -22,7 +22,7 @@ Commands behind a button: row actions, a ⋯ menu, a user menu. For choosing a v
 </Demo>
 
 ::: warning Not inside `<p>`
-The floating panel is a `<div>`. HTML closes a `<p>` when it meets a `<div>`, so a trigger placed inside a paragraph renders differently on the server and the client. Wrap with `<span>`/`<div>` instead.
+The floating panel is a `<div>`. HTML closes a `<p>` at a `<div>`. For this reason, a trigger placed inside a paragraph renders differently on the server and the client. Wrap it in a `<span>` or `<div>` instead.
 :::
 
 - The trigger is your own button. It is told it opens a menu and whether it is open. ↓ / Enter / Space open it and focus the first item (↑ the last).

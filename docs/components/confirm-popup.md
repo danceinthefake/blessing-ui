@@ -22,7 +22,7 @@ A quick "are you sure?" next to the button that asked, for a small step that can
 </Demo>
 
 ::: warning Not inside `<p>`
-The floating panel is a `<div>`. HTML closes a `<p>` when it meets a `<div>`, so a trigger placed inside a paragraph renders differently on the server and the client. Wrap with `<span>`/`<div>` instead.
+The floating panel is a `<div>`. HTML closes a `<p>` at a `<div>`. For this reason, a trigger placed inside a paragraph renders differently on the server and the client. Wrap it in a `<span>` or `<div>` instead.
 :::
 
 - Opening moves focus to Cancel, the safe choice. Confirming or canceling returns it to the trigger.

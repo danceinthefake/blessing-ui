@@ -22,7 +22,7 @@ A choice from a hierarchy: a folder, a category under a category, a team inside 
 </Demo>
 
 ::: warning Not inside `<p>`
-The floating panel is a `<div>`. HTML closes a `<p>` when it meets a `<div>`, so a trigger placed inside a paragraph renders differently on the server and the client. Wrap with `<span>`/`<div>` instead.
+The floating panel is a `<div>`. HTML closes a `<p>` at a `<div>`. For this reason, a trigger placed inside a paragraph renders differently on the server and the client. Wrap it in a `<span>` or `<div>` instead.
 :::
 
 - Enter, Space or ↓ opens it and focus moves into the tree (onto the picked row). The tree's own arrow keys take over from there.
