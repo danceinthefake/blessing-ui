@@ -50,6 +50,11 @@ export const groups: { title: string; items: Entry[] }[] = [
       { name: "BlessIcon", slug: "icon", text: "SVG slot wrapper" },
       { name: "BlessText", slug: "text", text: "Typography helper" },
       { name: "BlessKbd", slug: "kbd", text: "Key combo" },
+      {
+        name: "BlessRelativeTime",
+        slug: "relative-time",
+        text: "Time ago, in your language, kept up to date",
+      },
       { name: "BlessThemeToggle", slug: "theme-toggle", text: "Light/dark switch or 3-way group" },
       { name: "BlessPaletteToggle", slug: "palette-toggle", text: "Accent palette swatches" },
       { name: "BlessWatermark", slug: "watermark", text: "Giant faint word behind a block" },
