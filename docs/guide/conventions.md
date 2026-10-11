@@ -36,7 +36,7 @@ What holds across all 192 components. If a component breaks one of these rules, 
 
 - **Native element first.** Use `<button>`, `<dialog>`, `<details>`, `<select>`, `<input type=range|date|time|color|file>`, and the Popover API. The platform must have no part for it before you write a wrapper.
 - **Role and name on everything composite**: menus, listboxes, tablists, grids, trees, dialogs, switches, and sliders. Every icon-only control has an `aria-label`. Every field is associated with its label (`BlessField` does it for you).
-- **Built-in wording is replaceable.** A `labels` prop supplies the text that a component says for you, for example buttons, hints, and screen-reader announcements. The prop is a `Partial`, so you override only what you need. A message that carries numbers or names is a function of them: `:labels="{ grabbed: (i, n) => `Diambil ${i} dari ${n}` }"`.
+- **Built-in wording is replaceable.** A `labels` prop supplies the text that a component says for you, for example buttons, hints, and screen-reader announcements. The prop is a `Partial`, so you override only what you need. A message that carries numbers or names is a function of them: `:labels="{ grabbed: (i, n) => `Diambil ${i} dari ${n}` }"`. To replace the words of many components at once, use a [label pack](./translating).
 
   These components have a `labels` prop:
 

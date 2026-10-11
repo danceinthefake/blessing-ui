@@ -87,6 +87,7 @@ export default defineConfig({
             { text: "Dark mode", link: "/guide/dark-mode" },
             { text: "Fonts", link: "/guide/fonts" },
             { text: "Right-to-left", link: "/guide/rtl" },
+            { text: "Translating", link: "/guide/translating" },
           ],
         },
         { text: "Building", items: [{ text: "Conventions", link: "/guide/conventions" }] },
