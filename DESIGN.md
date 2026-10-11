@@ -332,7 +332,7 @@ First batch (done, 2026-10-11). These are small, native-first, and the docs and 
 Second batch. These need more design work.
 
 - ✅ Forms (2026-10-11): `BlessCardInput`, `BlessDurationInput`, and `BlessPhoneInput`. We dropped two items after a check. `BlessTextarea` already has `autogrow`. `BlessInputNumber` already formats currency through `format`, so a separate currency input adds nothing.
-- ⬜ `BlessTimezonePicker` on top of `BlessCombobox`.
+- ✅ `BlessTimezonePicker` on top of `BlessCombobox` (2026-10-11). It reads the zones and the offsets from `Intl`, so it ships no zone list.
 - ✅ Data display (2026-10-11): `BlessJsonViewer` (on top of `BlessTree`), `BlessTagCloud`, and `BlessPoll` (vote bars). We dropped `BlessReactions`, because `BlessBubble` already has reaction chips.
 - ⬜ `BlessNotificationInbox`: a panel of notices that a person can read and clear.
 - ⬜ Charts on the `BlessChart` frame: Funnel, Radar, and Sankey. Unovis stays a consumer install.

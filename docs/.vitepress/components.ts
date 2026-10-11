@@ -246,6 +246,11 @@ export const groups: { title: string; items: Entry[] }[] = [
       { name: "BlessSlider", slug: "slider", text: "Native range" },
       { name: "BlessToggle", slug: "toggle", text: "Pressed buttons", also: ["BlessToggleGroup"] },
       { name: "BlessCombobox", slug: "combobox", text: "Searchable select" },
+      {
+        name: "BlessTimezonePicker",
+        slug: "timezone-picker",
+        text: "IANA time zone search with offsets",
+      },
       { name: "BlessDatePicker", slug: "date-picker", text: "Calendar in a popover" },
       { name: "BlessCalendar", slug: "calendar", text: "Month grid" },
       { name: "BlessInputOTP", slug: "input-otp", text: "One-time code cells" },
