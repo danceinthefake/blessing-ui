@@ -3,7 +3,12 @@ import { BlessAffix } from "blessing-ui";
 </script>
 
 <template>
-  <div style="height: 14rem; overflow: auto; border: 1px solid var(--bless-color-border)">
+  <div
+    tabindex="0"
+    role="region"
+    aria-label="Scrolling area"
+    style="height: 14rem; overflow: auto; border: 1px solid var(--bless-color-border)"
+  >
     <BlessAffix v-slot="{ stuck }">
       <div
         style="padding: 0.5rem 1rem; background: var(--bless-color-bg)"
