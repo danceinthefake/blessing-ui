@@ -331,7 +331,7 @@ First batch (done, 2026-10-11). These are small, native-first, and the docs and 
 
 Second batch. These need more design work.
 
-- ⬜ Forms: `BlessPhoneInput`, `BlessCardInput`, `BlessCurrencyInput`, `BlessDurationInput`, and an auto-growing mode for `BlessTextarea`.
+- ✅ Forms (2026-10-11): `BlessCardInput`, `BlessDurationInput`, and `BlessPhoneInput`. We dropped two items after a check. `BlessTextarea` already has `autogrow`. `BlessInputNumber` already formats currency through `format`, so a separate currency input adds nothing.
 - ⬜ `BlessTimezonePicker` on top of `BlessCombobox`.
 - ⬜ Data display: `BlessJsonViewer` (on top of `BlessTree`), `BlessTagCloud`, `BlessPoll` (vote bars), and `BlessReactions` (chips with counts).
 - ⬜ `BlessNotificationInbox`: a panel of notices that a person can read and clear.

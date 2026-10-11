@@ -24,6 +24,7 @@ For amounts, quantities and prices: values you count or add up. Something that i
 - `format` (any `Intl.NumberFormat` options) applies while the field is not focused. On focus you edit the plain number, with the locale's decimal mark (`1,5` in `de-DE`).
 - `step` counts from `min`, as in HTML: `min=5 step=10` gives 5, 15, 25. The value snaps to a step on blur.
 - Keys: ↑/↓ one step, Page Up/Down ten, Home/End to `min`/`max` when set. Screen readers hear the formatted value with prefix and suffix.
+- Money needs no separate component. Use `:format="{ style: 'currency', currency: 'USD' }"` with a `locale`. The `Intl` options set the symbol, the decimals, and the grouping.
 - `name` submits the plain number with the form (`1980`), not the formatted text (`￥1,980`).
 - `:buttons="false"` when the steppers make no sense, like a large price.
 

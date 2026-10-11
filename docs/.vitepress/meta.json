@@ -1203,6 +1203,44 @@
   ],
   "exposed": []
  },
+ "BlessCardInput": {
+  "props": [
+   {
+    "name": "validate",
+    "type": "boolean | undefined",
+    "required": false,
+    "default": "true",
+    "description": "check the number with the Luhn algorithm once it is complete"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ invalid: string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"\"",
+    "description": "the digits only, for example `4242424242424242`"
+   }
+  ],
+  "events": [
+   {
+    "name": "update:modelValue",
+    "type": "[value: string]",
+    "description": ""
+   },
+   {
+    "name": "brand",
+    "type": "[brand: BlessCardBrand]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessCarousel": {
   "props": [
    {
@@ -3207,6 +3245,51 @@
     "description": ""
    }
   ],
+  "exposed": []
+ },
+ "BlessDurationInput": {
+  "props": [
+   {
+    "name": "seconds",
+    "type": "boolean | undefined",
+    "required": false,
+    "default": "true",
+    "description": "show and read seconds (`h:mm:ss`). Off gives `h:mm`."
+   },
+   {
+    "name": "min",
+    "type": "number | undefined",
+    "required": false,
+    "description": "the smallest value, in seconds"
+   },
+   {
+    "name": "max",
+    "type": "number | undefined",
+    "required": false,
+    "description": "the largest value, in seconds"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ invalid: string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "number | null | undefined",
+    "required": false,
+    "default": "null",
+    "description": "the duration in seconds, or `null` when the field is empty or unreadable"
+   }
+  ],
+  "events": [
+   {
+    "name": "update:modelValue",
+    "type": "[value: number | null]",
+    "description": ""
+   }
+  ],
+  "slots": [],
   "exposed": []
  },
  "BlessEditor": {
@@ -6733,6 +6816,76 @@
    }
   ],
   "events": [],
+  "slots": [],
+  "exposed": []
+ },
+ "BlessPhoneInput": {
+  "props": [
+   {
+    "name": "countries",
+    "type": "BlessCountry[] | undefined",
+    "required": false,
+    "default": "COUNTRIES",
+    "description": "region codes and calling codes to offer. The default is a list of 46 countries."
+   },
+   {
+    "name": "defaultCountry",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"US\"",
+    "description": "the country shown when the value is empty"
+   },
+   {
+    "name": "locale",
+    "type": "string | undefined",
+    "required": false,
+    "description": "language of the country names (`Intl.DisplayNames`)"
+   },
+   {
+    "name": "size",
+    "type": "\"md\" | \"sm\" | \"lg\" | undefined",
+    "required": false,
+    "default": "\"md\"",
+    "description": ""
+   },
+   {
+    "name": "disabled",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ country: string; number: string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"\"",
+    "description": "the full number as `+` and digits (E.164), for example `+628123456789`. Empty when no digits."
+   },
+   {
+    "name": "country",
+    "type": "string | undefined",
+    "required": false,
+    "description": "the region code of the selected country"
+   }
+  ],
+  "events": [
+   {
+    "name": "update:modelValue",
+    "type": "[value: string]",
+    "description": ""
+   },
+   {
+    "name": "update:country",
+    "type": "[value: string | undefined]",
+    "description": ""
+   }
+  ],
   "slots": [],
   "exposed": []
  },

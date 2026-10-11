@@ -10,7 +10,7 @@ Vue 3 component library and design tokens. The UI is gray-scale, with one accent
 
 Docs, with every component live: **[ui.blessing.id](https://ui.blessing.id)**
 
-- 181 components, from button to data table to chat. Only `--bless-*` custom properties style them. There is no Tailwind dependency.
+- 184 components, from button to data table to chat. Only `--bless-*` custom properties style them. There is no Tailwind dependency.
 - Native platform first: `<dialog>`, Popover API, `<details>`, native form controls, `Intl` dates, and scroll-snap. There is no positioning, date, or table library.
 - Accessible defaults: focus rings, ARIA tablist, dialog, and tables, and `prefers-reduced-motion`
 - ESM, tree-shakable, with `vue` as the only required peer (`@tiptap/vue-3` is optional, for `BlessEditor`). One component (`BlessButton`) costs about 1 KB gzip of JS and about 2.6 KB of CSS (tokens and its own styles). Everything costs about 64 KB and 27 KB. CSS is split per component and the import pulls it in, so you never pay for styles that you do not use
@@ -86,7 +86,7 @@ import {
 
 ## Components
 
-181 components across eight groups. Every one styles itself from `--bless-*` tokens and ships with a test and a docs page.
+184 components across eight groups. Every one styles itself from `--bless-*` tokens and ships with a test and a docs page.
 
 ### Primitives
 
@@ -157,6 +157,9 @@ import {
 | `BlessCascadeSelect`               | Nested options, one column per level                                                                    | `v-model`, `options[{value,label,children}]`, `showPath`, `separator`, `size`. Emits `select(option, path)`                                                                                                                      |
 | `BlessTreeSelect`                  | Tree in a popover                                                                                       | `v-model` id or id[], `nodes`, `multiple`, `leafOnly`, `size`. Emits `select`                                                                                                                                                    |
 | `BlessInputMask`                   | Pattern-masked `BlessInput`                                                                             | `v-model` masked, `mask` (`#` digit `A` letter `*` either), `placeholder`. Emits `update:raw`                                                                                                                                    |
+| `BlessCardInput`                   | Card number: groups, brand, Luhn check                                                                  | `v-model` (digits), `validate`, `labels`. Emits `brand`                                                                                                                                                                          |
+| `BlessDurationInput`               | Time as `h:mm:ss` or `1h 30m`                                                                           | `v-model` (seconds), `seconds`, `min`, `max`, `labels`                                                                                                                                                                           |
+| `BlessPhoneInput`                  | Country code and phone number (E.164)                                                                   | `v-model`, `v-model:country`, `countries`, `defaultCountry`, `locale`, `labels`                                                                                                                                                  |
 | `BlessOrderList`                   | Reorderable list                                                                                        | `v-model` items, `rowKey`, `buttons`. Drag, ↑↓, Alt+arrows. Emits `move`. `#default="{item,index}"`                                                                                                                              |
 | `BlessCountUp`                     | Number that counts up to its value, optionally as odometer reels                                        | `value`, `duration`, `locale`, `options` (Intl), `appear`, `odometer`                                                                                                                                                            |
 | `BlessTimer`                       | Countdown, stopwatch or interval timer with Start / Pause / Reset                                       | `mode`, `duration`, `phases[{label,seconds}]`, `rounds`, `autostart`, `controls`, `v-model:running`. Emits `finish` `phase`. Exposes `start` `pause` `reset` `toggle`                                                            |

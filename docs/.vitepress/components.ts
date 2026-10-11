@@ -108,6 +108,21 @@ export const groups: { title: string; items: Entry[] }[] = [
       { name: "BlessKnob", slug: "knob", text: "Rotary dial on a native range input" },
       { name: "BlessSignaturePad", slug: "signature-pad", text: "Draw a signature on canvas" },
       { name: "BlessInputMask", slug: "input-mask", text: "Pattern-masked input (# A *)" },
+      {
+        name: "BlessCardInput",
+        slug: "card-input",
+        text: "Card number with groups, brand, and Luhn check",
+      },
+      {
+        name: "BlessDurationInput",
+        slug: "duration-input",
+        text: "Time as h:mm:ss or 1h 30m, held in seconds",
+      },
+      {
+        name: "BlessPhoneInput",
+        slug: "phone-input",
+        text: "Country code select and phone number (E.164)",
+      },
       { name: "BlessOrderList", slug: "order-list", text: "Drag / button / Alt+arrow reorder" },
       {
         name: "BlessCountUp",
