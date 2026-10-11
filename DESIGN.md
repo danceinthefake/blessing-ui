@@ -317,6 +317,29 @@ Cut and petal are one default, with no toggle. The rule is in docs/guide/convent
 - ✅ Releases are staged, not published, by CI (2026-10-10). The npm trusted publisher for `blessing-ui` can run only `npm stage publish` and `npm dist-tag`. A `v*` tag makes `release.yml` stage the version and create the GitHub release. A person approves the version on npm with 2FA. On the first try, a direct `npm publish` failed with E403 "OIDC permission denied".
 - ⬜ Real-device touch pass (skipped).
 
+### Phase 23 — next catalog round (proposed 2026-10-11)
+
+We checked each name against the 176 existing pages. `BlessToggleGroup` already covers a segmented control, so that item is dropped.
+
+First batch. These are small, native-first, and the docs and blocks use them.
+
+- ⬜ `BlessStat`: KPI tile with a value, a delta, and an optional `BlessSparkline`.
+- ⬜ `BlessToc`: table of contents that marks the current heading. It builds on `useScrollSpy`.
+- ⬜ `BlessCopyButton`: copies text with the Clipboard API and shows a "Copied" state to assistive technology.
+- ⬜ `BlessBanner`: announcement or cookie banner that a person can dismiss, with `persist`.
+- ⬜ `BlessAffix`: sticky wrapper with an offset.
+
+Second batch. These need more design work.
+
+- ⬜ Forms: `BlessPhoneInput`, `BlessCardInput`, `BlessCurrencyInput`, `BlessDurationInput`, and an auto-growing mode for `BlessTextarea`.
+- ⬜ `BlessTimezonePicker` on top of `BlessCombobox`.
+- ⬜ Data display: `BlessJsonViewer` (on top of `BlessTree`), `BlessTagCloud`, `BlessPoll` (vote bars), and `BlessReactions` (chips with counts).
+- ⬜ `BlessNotificationInbox`: a panel of notices that a person can read and clear.
+- ⬜ Charts on the `BlessChart` frame: Funnel, Radar, and Sankey. Unovis stays a consumer install.
+- ⬜ Media: `BlessWaveform` for audio, and a zoom and pan viewer for `BlessGallery` and `BlessLoupe`.
+
+Each component needs tests, a docs page with a live example, a README row, and a flipped checkbox. This is the build order of Phase 1 to 22.
+
 ### Deliberately skipped
 
 - **Chart**: no bundled lib. Phase 11 ✅: `--bless-color-chart-{1..5}` (≥3:1 both themes) + `BlessChart` frame that maps them onto Unovis `--vis-*` vars. Unovis is the documented pairing, installed by the consumer.
