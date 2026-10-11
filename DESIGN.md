@@ -340,6 +340,15 @@ Second batch. These need more design work.
 
 Each component needs tests, a docs page with a live example, a README row, and a flipped checkbox. This is the build order of Phase 1 to 22.
 
+### Phase 24 — features and cross-cutting work (2026-10-12)
+
+- ✅ One visually-hidden rule (`.bless-sr`) in place of 32 copies. 29 of them lacked `white-space: nowrap`.
+- ✅ One safe `localStorage` helper (`readStore`, `writeStore`, `readJson`) in place of seven hand-written `try` blocks.
+- ✅ Label packs: `provideLabels` replaces the words of the 39 components that have a `labels` prop, in one place. A ref switches the language at run time. Single-string props and `BlessPasswordMeter` are not covered.
+- ✅ `BlessRelativeTime`: "3 hours ago" from `Intl.RelativeTimeFormat`, live. The server writes a plain UTC date so hydration agrees.
+- ✅ `BlessForm` `schema`: any Standard Schema, run after the browser checks. Messages show in the `BlessField` with the same `name`. `submit` has a third argument with the schema output.
+- ⬜ Next: `BlessAvatarGroup`, `BlessUptimeBar`, `BlessThread`, `BlessPinPad`, an auto-import resolver and a Nuxt module, column resize and pinning in `BlessDataTable`.
+
 ### Deliberately skipped
 
 - **Chart**: no bundled lib. Phase 11 ✅: `--bless-color-chart-{1..5}` (≥3:1 both themes) + `BlessChart` frame that maps them onto Unovis `--vis-*` vars. Unovis is the documented pairing, installed by the consumer.
