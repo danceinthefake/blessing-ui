@@ -188,6 +188,8 @@ export { default as BlessNotificationInbox } from "./components/BlessNotificatio
 export type { BlessNotice } from "./components/BlessNotificationInbox.vue";
 export { blessLabelsKey, provideLabels } from "./composables/useLabels";
 export type { BlessLabelPack } from "./composables/useLabels";
+export { default as BlessRelativeTime } from "./components/BlessRelativeTime.vue";
+export { relativeParts } from "./components/relativeTime";
 export { default as BlessTimezonePicker } from "./components/BlessTimezonePicker.vue";
 export { offsetText, zoneOffset } from "./components/timezone";
 export { default as BlessJsonViewer } from "./components/BlessJsonViewer.vue";
