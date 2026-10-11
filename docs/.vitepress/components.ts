@@ -371,6 +371,11 @@ export const groups: { title: string; items: Entry[] }[] = [
       { name: "BlessCommand", slug: "command", text: "\u2318K palette" },
       { name: "BlessGallery", slug: "gallery", text: "Thumb grid + lightbox" },
       { name: "BlessToaster", slug: "toaster", text: "Notifications" },
+      {
+        name: "BlessNotificationInbox",
+        slug: "notification-inbox",
+        text: "Bell with a badge and a list of notices",
+      },
       { name: "BlessSplash", slug: "splash", text: "First-visit overlay" },
       { name: "BlessConfetti", slug: "confetti", text: "Canvas burst of paper, fired from code" },
       {

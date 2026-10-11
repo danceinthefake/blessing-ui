@@ -10,7 +10,7 @@ Vue 3 component library and design tokens. The UI is gray-scale, with one accent
 
 Docs, with every component live: **[ui.blessing.id](https://ui.blessing.id)**
 
-- 191 components, from button to data table to chat. Only `--bless-*` custom properties style them. There is no Tailwind dependency.
+- 192 components, from button to data table to chat. Only `--bless-*` custom properties style them. There is no Tailwind dependency.
 - Native platform first: `<dialog>`, Popover API, `<details>`, native form controls, `Intl` dates, and scroll-snap. There is no positioning, date, or table library.
 - Accessible defaults: focus rings, ARIA tablist, dialog, and tables, and `prefers-reduced-motion`
 - ESM, tree-shakable, with `vue` as the only required peer (`@tiptap/vue-3` is optional, for `BlessEditor`). One component (`BlessButton`) costs about 1 KB gzip of JS and about 2.6 KB of CSS (tokens and its own styles). Everything costs about 64 KB and 27 KB. CSS is split per component and the import pulls it in, so you never pay for styles that you do not use
@@ -86,7 +86,7 @@ import {
 
 ## Components
 
-191 components across eight groups. Every one styles itself from `--bless-*` tokens and ships with a test and a docs page.
+192 components across eight groups. Every one styles itself from `--bless-*` tokens and ships with a test and a docs page.
 
 ### Primitives
 
@@ -258,6 +258,7 @@ import {
 | `BlessDialogHost` + `useDialog()` | Programmatic modals                                                                | `open({ title, component, props, text, size, dismissible })` → Promise, `close(id, result)`                                                                                                              |
 | `BlessTour`                       | Spotlight walkthrough                                                              | `steps[{target,title,text,placement}]`, `v-model:open`, `v-model:step`, `spotlight`, `labels`. Emits `finish` `skip`                                                                                     |
 | `BlessToaster` + `useToast()`     | Notifications                                                                      | `position`. `toast()`, `success()`, `error()`, `warning()`, `info()`, `dismiss()`                                                                                                                        |
+| `BlessNotificationInbox`          | Bell with a badge and a list of notices                                            | `items` `[{id,title,body,time,read,href}]`, `v-model:open`, `placement`, `max`, `labels`. Emits `read`, `readAll`, `dismiss`, `select`                                                                   |
 | `BlessSplash`                     | First-visit overlay                                                                | `once`, `duration`, `skipLabel`. Emits `done`                                                                                                                                                            |
 | `BlessConfetti`                   | Confetti burst fired with `fire(from?, angle?)`. Off under reduced motion          | `count`, `colors`, `duration`, `spread`, `power`, `gravity`. `done`                                                                                                                                      |
 | `BlessCoachmark`                  | Pulsing new-dot with a bubble. Remembers dismissal by id                           | `text`, `id`, `placement`, `dismissOnUse`, `v-model:dismissed`, `labels`. `dismiss`                                                                                                                      |
