@@ -40,7 +40,7 @@ The source is a marketing site, and a library has to do more. Everything below i
 - **Tokens.** Every value that the site hard-coded became a `--bless-*` custom property. You can retune the look without a change to a component.
 - **The platform.** `<dialog>`, the Popover API, `<details>`, native form controls, `Intl` dates, and scroll-snap. These are the parts of the browser itself, styled and not rebuilt.
 - **Right-to-left.** Logical properties throughout. The lean flips with the reading direction.
-- **Breadth.** The site needed a nav, a list, and a modal. The library has 190 components, from a button to a data table to a chat thread. It also has a set of copy-in [blocks](../blocks/). We checked coverage against the component lists of [shadcn/ui](https://ui.shadcn.com/) and [PrimeVue](https://primevue.org/), so that nothing obvious is missing. Every component here is its own implementation. The library uses nothing from either project.
+- **Breadth.** The site needed a nav, a list, and a modal. The library has 191 components, from a button to a data table to a chat thread. It also has a set of copy-in [blocks](../blocks/). We checked coverage against the component lists of [shadcn/ui](https://ui.shadcn.com/) and [PrimeVue](https://primevue.org/), so that nothing obvious is missing. Every component here is its own implementation. The library uses nothing from either project.
 
 ## What was bent
 

@@ -336,7 +336,7 @@ Second batch. These need more design work.
 - ✅ Data display (2026-10-11): `BlessJsonViewer` (on top of `BlessTree`), `BlessTagCloud`, and `BlessPoll` (vote bars). We dropped `BlessReactions`, because `BlessBubble` already has reaction chips.
 - ⬜ `BlessNotificationInbox`: a panel of notices that a person can read and clear.
 - ✅ Charts (2026-10-11): `BlessFunnel` and `BlessRadar`. Unovis has no funnel or radar, so both are our own small components. Sankey is a demo on the Chart page, because Unovis has it. Unovis stays a consumer install.
-- ⬜ Media: `BlessWaveform` for audio, and a zoom and pan viewer for `BlessGallery` and `BlessLoupe`.
+- ✅ `BlessWaveform` for audio (2026-10-11). We dropped the zoom and pan viewer, because `BlessInfiniteCanvas` already pans and zooms any content, an image included.
 
 Each component needs tests, a docs page with a live example, a README row, and a flipped checkbox. This is the build order of Phase 1 to 22.
 

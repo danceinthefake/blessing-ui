@@ -448,6 +448,11 @@ export const groups: { title: string; items: Entry[] }[] = [
       { name: "BlessParallax", slug: "parallax", text: "Background that scrolls slower" },
       { name: "BlessCarousel", slug: "carousel", text: "Scroll-snap slider" },
       { name: "BlessAudioPlayer", slug: "audio-player", text: "Track list player" },
+      {
+        name: "BlessWaveform",
+        slug: "waveform",
+        text: "Audio peaks that you click or key to seek",
+      },
       { name: "BlessAnnotator", slug: "annotator", text: "Draw boxes and pins on an image" },
     ],
   },
