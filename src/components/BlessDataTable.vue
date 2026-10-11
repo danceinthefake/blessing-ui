@@ -1,6 +1,7 @@
 <script setup lang="ts" generic="T extends Record<string, unknown>">
 import { computed, onMounted, ref, toRef, watch } from "vue";
 import { useDataTable } from "../composables/useDataTable";
+import { useLabelPack } from "../composables/useLabels";
 import BlessCheckbox from "./BlessCheckbox.vue";
 import BlessDropdownMenu from "./BlessDropdownMenu.vue";
 import BlessInput from "./BlessInput.vue";
@@ -11,6 +12,7 @@ import type { BlessDataColumn } from "./table";
 import type { BlessMenuItem } from "./menu";
 
 defineOptions({ name: "BlessDataTable" });
+const pack = useLabelPack("BlessDataTable");
 
 const props = withDefaults(
   defineProps<{
@@ -51,6 +53,7 @@ const text = computed(() => ({
   selectPage: "Select page",
   rowsPerPage: "Rows per page",
   selectRow: (n: string) => `Select ${n}`,
+  ...pack(),
   ...props.labels,
 }));
 const emit = defineEmits<{

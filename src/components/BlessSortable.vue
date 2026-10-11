@@ -1,4 +1,5 @@
 <script setup lang="ts" generic="T">
+import { useLabelPack } from "../composables/useLabels";
 import "./sr.css";
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, useId, watch } from "vue";
 import { logicalKey } from "../composables/rtl";
@@ -14,6 +15,7 @@ import {
 } from "../composables/useSortable";
 
 defineOptions({ name: "BlessSortable" });
+const pack = useLabelPack("BlessSortable");
 
 const props = withDefaults(
   defineProps<{
@@ -52,6 +54,7 @@ const text = computed(() => ({
   hint: "Press Space to grab, arrow keys to move, Space to drop, Escape to cancel.",
   groupHint: "Alt with left or right arrow sends it to another list.",
   roleDescription: "sortable item",
+  ...pack(),
   ...props.labels,
 }));
 const model = defineModel<T[]>({ default: () => [] });

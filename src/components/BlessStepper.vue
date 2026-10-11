@@ -1,10 +1,12 @@
 <script setup lang="ts">
+import { useLabelPack } from "../composables/useLabels";
 import { nextTick, ref, watch } from "vue";
 import BlessButton from "./BlessButton.vue";
 import BlessSteps from "./BlessSteps.vue";
 import type { BlessStep } from "./BlessSteps.vue";
 
 defineOptions({ name: "BlessStepper" });
+const pack = useLabelPack("BlessStepper");
 
 const props = withDefaults(
   defineProps<{
@@ -18,7 +20,7 @@ const props = withDefaults(
 );
 const current = defineModel<number>({ default: 0 });
 const emit = defineEmits<{ finish: [] }>();
-const L = () => ({ next: "Next", prev: "Back", finish: "Finish", ...props.labels });
+const L = () => ({ next: "Next", prev: "Back", finish: "Finish", ...pack(), ...props.labels });
 const last = () => current.value >= props.steps.length - 1;
 const next = () => (last() ? emit("finish") : current.value++);
 const prev = () => current.value > 0 && current.value--;

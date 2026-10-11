@@ -1,9 +1,11 @@
 <script setup lang="ts">
+import { useLabelPack } from "../composables/useLabels";
 import "./sr.css";
 import { computed, useId } from "vue";
 import BlessSparkline from "./BlessSparkline.vue";
 
 defineOptions({ name: "BlessStat" });
+const pack = useLabelPack("BlessStat");
 
 const props = withDefaults(
   defineProps<{
@@ -30,6 +32,7 @@ const words = computed(() => ({
   up: "Up",
   down: "Down",
   flat: "No change",
+  ...pack(),
   ...props.labels,
 }));
 // a string delta has no sign to read, so it counts as flat

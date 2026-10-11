@@ -1,10 +1,12 @@
 <script setup lang="ts">
+import { useLabelPack } from "../composables/useLabels";
 import { computed, ref } from "vue";
 import BlessInput from "./BlessInput.vue";
 import { caretAfterDigits, cardBrand, cardDigits, formatCard, luhn } from "./card";
 import type { BlessCardBrand } from "./card";
 
 defineOptions({ name: "BlessCardInput", inheritAttrs: false });
+const pack = useLabelPack("BlessCardInput");
 
 const props = withDefaults(
   defineProps<{
@@ -18,7 +20,7 @@ const props = withDefaults(
 const model = defineModel<string>({ default: "" });
 const emit = defineEmits<{ brand: [brand: BlessCardBrand] }>();
 
-const text = computed(() => ({ invalid: "Check the card number", ...props.labels }));
+const text = computed(() => ({ invalid: "Check the card number", ...pack(), ...props.labels }));
 const digits = computed(() => cardDigits(model.value));
 const brand = computed(() => cardBrand(digits.value));
 const shown = computed(() => formatCard(digits.value));

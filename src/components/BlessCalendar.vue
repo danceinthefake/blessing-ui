@@ -1,9 +1,11 @@
 <script setup lang="ts">
+import { useLabelPack } from "../composables/useLabels";
 import { computed, onMounted, ref, useId, watch } from "vue";
 import { logicalKey } from "../composables/rtl";
 import { addDays, addMonths, fromISO, isoToday, sameDay, toISO } from "../composables/date";
 
 defineOptions({ name: "BlessCalendar" });
+const pack = useLabelPack("BlessCalendar");
 
 const props = withDefaults(
   defineProps<{
@@ -21,7 +23,12 @@ const props = withDefaults(
   }>(),
   { weekStart: 1, locale: "ja-JP" },
 );
-const text = computed(() => ({ prev: "Previous month", next: "Next month", ...props.labels }));
+const text = computed(() => ({
+  prev: "Previous month",
+  next: "Next month",
+  ...pack(),
+  ...props.labels,
+}));
 
 const model = defineModel<string | [string, string] | undefined>();
 const id = useId();

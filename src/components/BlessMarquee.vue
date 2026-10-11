@@ -1,8 +1,10 @@
 <script setup lang="ts">
+import { useLabelPack } from "../composables/useLabels";
 import { computed, onBeforeUnmount, onMounted, ref } from "vue";
 import { reducedMotion } from "../composables/useMedia";
 
 defineOptions({ name: "BlessMarquee" });
+const pack = useLabelPack("BlessMarquee");
 
 const props = withDefaults(
   defineProps<{
@@ -19,7 +21,7 @@ const props = withDefaults(
   }>(),
   { speed: 40, pauseOnHover: true, controls: true, label: "Scrolling items" },
 );
-const text = computed(() => ({ play: "Play", pause: "Pause", ...props.labels }));
+const text = computed(() => ({ play: "Play", pause: "Pause", ...pack(), ...props.labels }));
 /** true while paused by the button */
 const paused = defineModel<boolean>("paused", { default: false });
 

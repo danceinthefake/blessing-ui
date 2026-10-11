@@ -1,8 +1,10 @@
 <script setup lang="ts">
+import { useLabelPack } from "../composables/useLabels";
 import { computed, ref } from "vue";
 import { joinIds, useFieldId, useFieldState } from "../composables/useFieldId";
 
 defineOptions({ name: "BlessInputNumber", inheritAttrs: false });
+const pack = useLabelPack("BlessInputNumber");
 
 const props = withDefaults(
   defineProps<{
@@ -28,7 +30,12 @@ const props = withDefaults(
   }>(),
   { step: 1, buttons: true, size: "md" },
 );
-const text = computed(() => ({ decrease: "Decrease", increase: "Increase", ...props.labels }));
+const text = computed(() => ({
+  decrease: "Decrease",
+  increase: "Increase",
+  ...pack(),
+  ...props.labels,
+}));
 const model = defineModel<number | null>({ default: null });
 const id = useFieldId(props);
 const fs = useFieldState();

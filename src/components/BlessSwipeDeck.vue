@@ -3,11 +3,13 @@ export type BlessSwipeDecision = "accept" | "reject" | "skip";
 </script>
 
 <script setup lang="ts" generic="T">
+import { useLabelPack } from "../composables/useLabels";
 import "./sr.css";
 import { computed, ref } from "vue";
 import BlessButton from "./BlessButton.vue";
 
 defineOptions({ name: "BlessSwipeDeck" });
+const pack = useLabelPack("BlessSwipeDeck");
 
 const props = withDefaults(
   defineProps<{
@@ -31,6 +33,7 @@ const text = computed(() => ({
   skip: "Skip",
   undo: "Undo",
   empty: "No cards left",
+  ...pack(),
   ...props.labels,
 }));
 const history: { item: T; decision: BlessSwipeDecision }[] = [];

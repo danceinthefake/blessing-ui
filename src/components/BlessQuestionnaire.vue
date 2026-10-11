@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useLabelPack } from "../composables/useLabels";
 import { computed, nextTick, ref, useId, watch } from "vue";
 import BlessButton from "./BlessButton.vue";
 import BlessCheckbox from "./BlessCheckbox.vue";
@@ -9,6 +10,7 @@ import BlessTextarea from "./BlessTextarea.vue";
 import type { BlessAnswers, BlessQuestion } from "./questionnaire";
 
 defineOptions({ name: "BlessQuestionnaire" });
+const pack = useLabelPack("BlessQuestionnaire");
 
 const props = withDefaults(
   defineProps<{
@@ -35,6 +37,7 @@ const L = computed(() => ({
   skip: "Skip",
   submit: "Submit",
   required: "Please answer to continue.",
+  ...pack(),
   ...props.labels,
 }));
 const q = computed(() => props.questions[step.value]);

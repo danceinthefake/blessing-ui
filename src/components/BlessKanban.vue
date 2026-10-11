@@ -9,12 +9,14 @@ export interface BlessKanbanColumn<T = unknown> {
 </script>
 
 <script setup lang="ts" generic="T">
+import { useLabelPack } from "../composables/useLabels";
 import "./sr.css";
 import { computed, nextTick, onBeforeUnmount, ref, useId } from "vue";
 import { useAutoScroll } from "../composables/useAutoScroll";
 import { logicalKey } from "../composables/rtl";
 
 defineOptions({ name: "BlessKanban" });
+const pack = useLabelPack("BlessKanban");
 
 const props = defineProps<{
   rowKey?: (item: T) => string | number;
@@ -43,6 +45,7 @@ const text = computed(() => ({
   cancelled: "Cancelled, order restored",
   hint: "Press Space to grab a card. Up and down move it in its column, left and right to another column. Space drops it, Escape cancels.",
   roleDescription: "sortable card",
+  ...pack(),
   ...props.labels,
 }));
 const model = defineModel<BlessKanbanColumn<T>[]>({ default: () => [] });

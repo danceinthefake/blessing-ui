@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useLabelPack } from "../composables/useLabels";
 import "./sr.css";
 import { computed, nextTick, onMounted, ref, useId } from "vue";
 import { addDays, addMonths, fromISO, isoToday, toISO } from "../composables/date";
@@ -11,6 +12,7 @@ import {
 import BlessButton from "./BlessButton.vue";
 
 defineOptions({ name: "BlessRangeCalendar" });
+const pack = useLabelPack("BlessRangeCalendar");
 
 const props = withDefaults(
   defineProps<{
@@ -48,6 +50,7 @@ const text = computed(() => ({
   selected: (d: string) => `${d} chosen`,
   cleared: (d: string) => `${d} cleared`,
   hint: "Arrow keys move, Space toggles a day, hold Shift and press arrows to paint, Page Up and Down change month.",
+  ...pack(),
   ...props.labels,
 }));
 

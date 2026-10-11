@@ -9,10 +9,12 @@ export type { FormulaError as BlessFormulaError } from "../composables/formula";
 </script>
 
 <script setup lang="ts">
+import { useLabelPack } from "../composables/useLabels";
 import { computed, nextTick, onMounted, ref, useId, watch } from "vue";
 import { evaluate, usedNames, type FormulaError, type FormulaFns } from "../composables/formula";
 
 defineOptions({ name: "BlessFormula" });
+const pack = useLabelPack("BlessFormula");
 
 const props = withDefaults(
   defineProps<{
@@ -59,6 +61,7 @@ const text = computed(() => ({
         return "The result is not a number";
     }
   },
+  ...pack(),
   ...props.labels,
 }));
 

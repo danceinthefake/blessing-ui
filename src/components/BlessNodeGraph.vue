@@ -9,6 +9,7 @@ export type { GraphEdge as BlessGraphEdge } from "../composables/graph";
 </script>
 
 <script setup lang="ts">
+import { useLabelPack } from "../composables/useLabels";
 import "./sr.css";
 import { computed, nextTick, ref, useId } from "vue";
 import BlessInfiniteCanvas, { type CanvasView } from "./BlessInfiniteCanvas.vue";
@@ -21,6 +22,7 @@ import {
 } from "../composables/graph";
 
 defineOptions({ name: "BlessNodeGraph" });
+const pack = useLabelPack("BlessNodeGraph");
 
 const props = withDefaults(
   defineProps<{
@@ -87,6 +89,7 @@ const text = computed(() => ({
   cancelled: "Cancelled",
   removed: (l: string) => `Removed ${l}`,
   hint: "Arrow keys move the node, L starts a link, Delete removes it.",
+  ...pack(),
   ...props.labels,
 }));
 

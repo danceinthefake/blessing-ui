@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useLabelPack } from "../composables/useLabels";
 import { computed, ref, useId } from "vue";
 import BlessButton from "./BlessButton.vue";
 import BlessRadio from "./BlessRadio.vue";
@@ -12,6 +13,7 @@ export interface BlessPollOption {
 }
 
 defineOptions({ name: "BlessPoll" });
+const pack = useLabelPack("BlessPoll");
 
 const props = withDefaults(
   defineProps<{
@@ -31,6 +33,7 @@ const text = computed(() => ({
   vote: "Vote",
   yours: "your vote",
   votes: (n: number) => `${n} ${n === 1 ? "vote" : "votes"}`,
+  ...pack(),
   ...props.labels,
 }));
 const id = useId();

@@ -1,9 +1,11 @@
 <script setup lang="ts">
+import { useLabelPack } from "../composables/useLabels";
 import { computed } from "vue";
 import { funnelRows } from "./funnel";
 import type { BlessFunnelStage } from "./funnel";
 
 defineOptions({ name: "BlessFunnel" });
+const pack = useLabelPack("BlessFunnel");
 
 const props = withDefaults(
   defineProps<{
@@ -25,6 +27,7 @@ const fmt = (v: number) => (props.format ?? String)(v);
 const text = computed(() => ({
   ofPrev: (n: string) => `${n}% of the step before`,
   ofFirst: (n: string) => `${n}% of the start`,
+  ...pack(),
   ...props.labels,
 }));
 const rows = computed(() => funnelRows(props.stages));

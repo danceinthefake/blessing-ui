@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useLabelPack } from "../composables/useLabels";
 import { computed, onMounted, ref, watch } from "vue";
 import BlessInput from "./BlessInput.vue";
 import BlessInputGroup from "./BlessInputGroup.vue";
@@ -7,6 +8,7 @@ import { COUNTRIES, joinPhone, nationalDigits, splitPhone } from "./phone";
 import type { BlessCountry } from "./phone";
 
 defineOptions({ name: "BlessPhoneInput", inheritAttrs: false });
+const pack = useLabelPack("BlessPhoneInput");
 
 const props = withDefaults(
   defineProps<{
@@ -27,7 +29,12 @@ const model = defineModel<string>({ default: "" });
 /** the region code of the selected country */
 const code = defineModel<string>("country");
 
-const text = computed(() => ({ country: "Country code", number: "Phone number", ...props.labels }));
+const text = computed(() => ({
+  country: "Country code",
+  number: "Phone number",
+  ...pack(),
+  ...props.labels,
+}));
 // Country names come from `Intl.DisplayNames`, and the server and the browser can spell them
 // differently ("Türkiye" or "Turkey"). So the names appear after mount and the server shows codes.
 const named = ref(false);

@@ -3,6 +3,7 @@ export type { ScheduleEvent as BlessScheduleEvent } from "../composables/schedul
 </script>
 
 <script setup lang="ts">
+import { useLabelPack } from "../composables/useLabels";
 import "./sr.css";
 import { computed, nextTick, onMounted, ref, useId } from "vue";
 import { addDays, fromISO, isoToday, toISO } from "../composables/date";
@@ -19,6 +20,7 @@ import {
 import BlessButton from "./BlessButton.vue";
 
 defineOptions({ name: "BlessScheduler" });
+const pack = useLabelPack("BlessScheduler");
 
 const props = withDefaults(
   defineProps<{
@@ -85,6 +87,7 @@ const text = computed(() => ({
   added: (t: string) => `${t} added`,
   removed: (t: string) => `${t} removed`,
   hint: "Arrow keys move the event, Alt with up or down changes its length, Delete removes it.",
+  ...pack(),
   ...props.labels,
 }));
 

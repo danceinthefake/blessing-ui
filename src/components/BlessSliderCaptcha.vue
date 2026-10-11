@@ -1,8 +1,10 @@
 <script setup lang="ts">
+import { useLabelPack } from "../composables/useLabels";
 import "./sr.css";
 import { computed, onBeforeUnmount, onMounted, ref, useId } from "vue";
 
 defineOptions({ name: "BlessSliderCaptcha" });
+const pack = useLabelPack("BlessSliderCaptcha");
 
 const props = withDefaults(
   defineProps<{
@@ -19,6 +21,7 @@ const props = withDefaults(
 const text = computed(() => ({
   verified: "Verified",
   failed: "Not quite, try again",
+  ...pack(),
   ...props.labels,
 }));
 /** true once solved; the widget then stays locked until `reset()` */

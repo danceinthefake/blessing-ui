@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useLabelPack } from "../composables/useLabels";
 // Structural stand-in for a Tiptap Editor so the shipped d.ts does not depend on @tiptap/*.
 // Any object with chain().focus().<command>().run(), isActive() and can() fits — i.e. useEditor()'s value.
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -15,6 +16,7 @@ import { computed, ref } from "vue";
 import { useRovingFocus } from "../composables/useRovingFocus";
 
 defineOptions({ name: "BlessEditor" });
+const pack = useLabelPack("BlessEditor");
 const toolbar = ref<HTMLElement>();
 useRovingFocus(toolbar); // toolbar pattern: one tab stop, arrows between tools
 
@@ -78,7 +80,8 @@ type Def = {
   active?: (e: Editor) => boolean;
   can?: (e: Editor) => boolean;
 };
-const titleOf = (t: Exclude<BlessEditorTool, "|">) => props.labels?.[t] ?? defs[t].title;
+const titleOf = (t: Exclude<BlessEditorTool, "|">) =>
+  props.labels?.[t] ?? (pack()[t] as string | undefined) ?? defs[t].title;
 const c = (e: Editor) => e.chain().focus();
 const defs: Record<Exclude<BlessEditorTool, "|">, Def> = {
   bold: {

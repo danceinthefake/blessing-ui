@@ -1,10 +1,12 @@
 <script setup lang="ts">
+import { useLabelPack } from "../composables/useLabels";
 import { computed, nextTick, onMounted, ref, watch } from "vue";
 import { useFloating, type Placement } from "../composables/useFloating";
 import BlessButton from "./BlessButton.vue";
 import { scrollBehavior } from "../composables/useMedia";
 
 defineOptions({ name: "BlessTour" });
+const pack = useLabelPack("BlessTour");
 
 export interface BlessTourStep {
   /** CSS selector of the element to point at; omit for a centred step */
@@ -39,6 +41,7 @@ const L = computed(() => ({
   done: "Done",
   skip: "Skip",
   step: (n: number) => `Step ${n}`,
+  ...pack(),
   ...props.labels,
 }));
 const cur = computed(() => props.steps[step.value]);

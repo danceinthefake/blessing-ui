@@ -1,9 +1,11 @@
 <script setup lang="ts">
+import { useLabelPack } from "../composables/useLabels";
 import { readStore, writeStore } from "../composables/storage";
 import { computed, onMounted, ref, useId } from "vue";
 import BlessButton from "./BlessButton.vue";
 
 defineOptions({ name: "BlessCoachmark" });
+const pack = useLabelPack("BlessCoachmark");
 
 const props = withDefaults(
   defineProps<{
@@ -25,6 +27,7 @@ const emit = defineEmits<{ dismiss: [] }>();
 const text = computed(() => ({
   dot: (t: string) => `New: ${t}`,
   ok: "Got it",
+  ...pack(),
   ...props.labels,
 }));
 const key = computed(() => (props.id ? `bless-coachmark:${props.id}` : null));

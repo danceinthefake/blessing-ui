@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useLabelPack } from "../composables/useLabels";
 import "./sr.css";
 import { computed } from "vue";
 import { useLink } from "../composables/useLink";
@@ -19,6 +20,7 @@ export interface BlessNotice {
 }
 
 defineOptions({ name: "BlessNotificationInbox" });
+const pack = useLabelPack("BlessNotificationInbox");
 
 const props = withDefaults(
   defineProps<{
@@ -54,6 +56,7 @@ const text = computed(() => ({
   dismiss: "Dismiss",
   empty: "You are all caught up.",
   unread: "Unread",
+  ...pack(),
   ...props.labels,
 }));
 const unread = computed(() => props.items.filter((i) => !i.read).length);

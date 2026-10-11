@@ -13,12 +13,14 @@ export const blessCanvasKey: InjectionKey<BlessCanvasContext> = Symbol("blessCan
 </script>
 
 <script setup lang="ts">
+import { useLabelPack } from "../composables/useLabels";
 import "./sr.css";
 import { computed, provide, ref, useId } from "vue";
 import { clampZoom, fitRect, toWorld as worldAt, zoomAt } from "../composables/canvasView";
 import BlessButton from "./BlessButton.vue";
 
 defineOptions({ name: "BlessInfiniteCanvas" });
+const pack = useLabelPack("BlessInfiniteCanvas");
 
 const props = withDefaults(
   defineProps<{
@@ -48,6 +50,7 @@ const text = computed(() => ({
   reset: "Reset view",
   zoom: (p: number) => `Zoom ${p}%`,
   hint: "Arrow keys pan, plus and minus zoom, 0 resets.",
+  ...pack(),
   ...props.labels,
 }));
 

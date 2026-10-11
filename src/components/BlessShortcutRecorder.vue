@@ -1,10 +1,12 @@
 <script setup lang="ts">
+import { useLabelPack } from "../composables/useLabels";
 import "./sr.css";
 import { computed, ref, useId } from "vue";
 import { isModifierKey, shortcutFromEvent, splitShortcut } from "../composables/shortcut";
 import BlessKbd from "./BlessKbd.vue";
 
 defineOptions({ name: "BlessShortcutRecorder" });
+const pack = useLabelPack("BlessShortcutRecorder");
 
 const props = withDefaults(
   defineProps<{
@@ -36,6 +38,7 @@ const text = computed(() => ({
   needsModifier: (c: string) => `Add Ctrl, Alt or Meta to ${c}`,
   usedBy: (c: string, by: string) => `${c} is already used by ${by}`,
   taken: (c: string) => `${c} is already taken`,
+  ...pack(),
   ...props.labels,
 }));
 const model = defineModel<string>({ default: "" });

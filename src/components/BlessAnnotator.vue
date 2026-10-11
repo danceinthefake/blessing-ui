@@ -3,6 +3,7 @@ export type { Region as BlessRegion } from "../composables/annotate";
 </script>
 
 <script setup lang="ts">
+import { useLabelPack } from "../composables/useLabels";
 import "./sr.css";
 import { computed, nextTick, ref, useId } from "vue";
 import {
@@ -17,6 +18,7 @@ import {
 import BlessButton from "./BlessButton.vue";
 
 defineOptions({ name: "BlessAnnotator" });
+const pack = useLabelPack("BlessAnnotator");
 
 const props = withDefaults(
   defineProps<{
@@ -64,6 +66,7 @@ const text = computed(() => ({
   removed: (n: string) => `${n} removed`,
   moved: (x: number, y: number) => `${x}% across, ${y}% down`,
   hint: "Arrow keys move the mark, Alt with arrows resizes a box, Delete removes it.",
+  ...pack(),
   ...props.labels,
 }));
 

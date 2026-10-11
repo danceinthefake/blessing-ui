@@ -6,11 +6,13 @@ export interface BlessTimerPhase {
 </script>
 
 <script setup lang="ts">
+import { useLabelPack } from "../composables/useLabels";
 import "./sr.css";
 import { computed, onBeforeUnmount, ref, watch } from "vue";
 import BlessButton from "./BlessButton.vue";
 
 defineOptions({ name: "BlessTimer" });
+const pack = useLabelPack("BlessTimer");
 
 const props = withDefaults(
   defineProps<{
@@ -45,6 +47,7 @@ const text = computed(() => ({
   reset: "Reset",
   finished: "Finished",
   round: (r: number, n: number) => `round ${r} of ${n}`,
+  ...pack(),
   ...props.labels,
 }));
 const running = defineModel<boolean>("running", { default: false });

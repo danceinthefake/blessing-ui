@@ -1,10 +1,12 @@
 <script setup lang="ts" generic="T">
+import { useLabelPack } from "../composables/useLabels";
 import { computed, ref, watch } from "vue";
 import BlessPagination from "./BlessPagination.vue";
 import BlessToggle from "./BlessToggle.vue";
 import BlessToggleGroup from "./BlessToggleGroup.vue";
 
 defineOptions({ name: "BlessDataView" });
+const pack = useLabelPack("BlessDataView");
 
 const props = withDefaults(
   defineProps<{
@@ -26,6 +28,7 @@ const text = computed(() => ({
   list: "List",
   grid: "Grid",
   empty: "No items",
+  ...pack(),
   ...props.labels,
 }));
 const layout = defineModel<"list" | "grid">("layout", { default: "list" });

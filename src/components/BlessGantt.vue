@@ -13,11 +13,13 @@ export interface BlessGanttTask {
 </script>
 
 <script setup lang="ts">
+import { useLabelPack } from "../composables/useLabels";
 import "./sr.css";
 import { computed, ref } from "vue";
 import { isoToday } from "../composables/date";
 
 defineOptions({ name: "BlessGantt" });
+const pack = useLabelPack("BlessGantt");
 
 const props = withDefaults(
   defineProps<{
@@ -46,6 +48,7 @@ const text = computed(() => ({
   span: (t: string, a: string, b: string) => `${t}: ${a} to ${b}`,
   done: (p: number) => `${p}% done`,
   after: (names: string[]) => `after ${names.join(" and ")}`,
+  ...pack(),
   ...props.labels,
 }));
 /** the schedule; with `editable`, moves and resizes come back through here */

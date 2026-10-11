@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useLabelPack } from "../composables/useLabels";
 import "./sr.css";
 import { computed, nextTick, onBeforeUnmount, ref } from "vue";
 import BlessButton from "./BlessButton.vue";
@@ -6,6 +7,7 @@ import BlessFileInput from "./BlessFileInput.vue";
 import BlessProgress from "./BlessProgress.vue";
 
 defineOptions({ name: "BlessUploader" });
+const pack = useLabelPack("BlessUploader");
 
 export interface BlessUpload {
   id: number;
@@ -58,6 +60,7 @@ const text = computed(() => ({
   failedFile: (n: string, why: string) => `${n}: ${why}`,
   cancel: (n: string) => `Cancel ${n}`,
   remove: (n: string) => `Remove ${n}`,
+  ...pack(),
   ...props.labels,
 }));
 const emit = defineEmits<{

@@ -3,10 +3,12 @@ export type { TreemapNode as BlessTreemapNode } from "../composables/treemap";
 </script>
 
 <script setup lang="ts">
+import { useLabelPack } from "../composables/useLabels";
 import { computed, nextTick, onBeforeUnmount, onMounted, ref } from "vue";
 import { neighbour, squarify, totalOf, type TreemapNode } from "../composables/treemap";
 
 defineOptions({ name: "BlessTreemap" });
+const pack = useLabelPack("BlessTreemap");
 
 const props = withDefaults(
   defineProps<{
@@ -35,6 +37,7 @@ const text = computed(() => ({
   path: "Path",
   up: "Up one level",
   hint: "Arrow keys move between tiles, Enter opens or selects, Backspace goes up.",
+  ...pack(),
   ...props.labels,
 }));
 const fmt = computed(() => props.format ?? ((v: number) => new Intl.NumberFormat().format(v)));

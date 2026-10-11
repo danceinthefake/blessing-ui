@@ -1,4 +1,5 @@
 <script setup lang="ts" generic="T extends string | number">
+import { useLabelPack } from "../composables/useLabels";
 import "./sr.css";
 import { computed, nextTick, ref, type Ref } from "vue";
 import BlessButton from "./BlessButton.vue";
@@ -6,6 +7,7 @@ import BlessListbox from "./BlessListbox.vue";
 import type { BlessOption } from "./select";
 
 defineOptions({ name: "BlessPickList" });
+const pack = useLabelPack("BlessPickList");
 
 const props = withDefaults(
   defineProps<{
@@ -28,6 +30,7 @@ const text = computed(() => ({
   moveSelected: (to: string) => `Move selected to ${to}`,
   moveAll: (to: string) => `Move all to ${to}`,
   moved: (n: number, to: string) => `Moved ${n} to ${to}`,
+  ...pack(),
   ...props.labels,
 }));
 const source = defineModel<BlessOption<T>[]>("source", { default: () => [] });

@@ -9,6 +9,7 @@ export interface BlessChecklistItem {
 </script>
 
 <script setup lang="ts">
+import { useLabelPack } from "../composables/useLabels";
 import { readJson, writeJson } from "../composables/storage";
 import { computed, onMounted, ref, useId, watch } from "vue";
 import BlessCheckbox from "./BlessCheckbox.vue";
@@ -16,6 +17,7 @@ import BlessButton from "./BlessButton.vue";
 import BlessProgress from "./BlessProgress.vue";
 
 defineOptions({ name: "BlessOnboardingChecklist" });
+const pack = useLabelPack("BlessOnboardingChecklist");
 
 const props = withDefaults(
   defineProps<{
@@ -45,6 +47,7 @@ const text = computed(() => ({
   progress: (d: number, n: number) => `${d} of ${n} done`,
   complete: "All done — nicely finished.",
   dismiss: "Dismiss",
+  ...pack(),
   ...props.labels,
 }));
 const id = useId();

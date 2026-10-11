@@ -1,10 +1,12 @@
 <script setup lang="ts">
+import { useLabelPack } from "../composables/useLabels";
 import { readJson, writeJson } from "../composables/storage";
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, useId, watch } from "vue";
 import BlessKbd from "./BlessKbd.vue";
 import BlessModal from "./BlessModal.vue";
 
 defineOptions({ name: "BlessCommand" });
+const pack = useLabelPack("BlessCommand");
 
 export interface BlessCommandScope {
   /** the character that starts it when typed first: `@`, `#`, `>` */
@@ -64,6 +66,7 @@ const text = computed(() => ({
   scope: (l: string) => `Only in ${l}`,
   clearScope: "Search everywhere",
   scopeHint: (parts: string[]) => `Type ${parts.join(", ")}`,
+  ...pack(),
   ...props.labels,
 }));
 

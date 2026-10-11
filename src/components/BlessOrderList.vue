@@ -1,8 +1,10 @@
 <script setup lang="ts" generic="T">
+import { useLabelPack } from "../composables/useLabels";
 import "./sr.css";
 import { computed, ref, useId } from "vue";
 
 defineOptions({ name: "BlessOrderList" });
+const pack = useLabelPack("BlessOrderList");
 
 const props = withDefaults(
   defineProps<{
@@ -22,6 +24,7 @@ const text = computed(() => ({
   up: (p: number) => `Move item ${p} up`,
   down: (p: number) => `Move item ${p} down`,
   moved: (p: number, n: number) => `Moved to position ${p} of ${n}`,
+  ...pack(),
   ...props.labels,
 }));
 const model = defineModel<T[]>({ default: () => [] });

@@ -1,10 +1,12 @@
 <script setup lang="ts">
+import { useLabelPack } from "../composables/useLabels";
 import "./sr.css";
 import { onBeforeUnmount, ref } from "vue";
 import { copyText } from "../composables/copyText";
 import BlessButton from "./BlessButton.vue";
 
 defineOptions({ name: "BlessCopyButton" });
+const pack = useLabelPack("BlessCopyButton");
 
 const props = withDefaults(
   defineProps<{
@@ -24,6 +26,7 @@ const text = () => ({
   copy: "Copy",
   copied: "Copied",
   copiedLive: "Copied to clipboard",
+  ...pack(),
   ...props.labels,
 });
 const copied = ref(false);

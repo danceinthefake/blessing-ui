@@ -10,12 +10,14 @@ export interface BlessCropRect {
 </script>
 
 <script setup lang="ts">
+import { useLabelPack } from "../composables/useLabels";
 import "./sr.css";
 import { computed, nextTick, onBeforeUnmount, ref, useId, watch } from "vue";
 import { initialBox, moveBox, resizeBox, scaleBox, type CropBox } from "../composables/cropBox";
 import BlessButton from "./BlessButton.vue";
 
 defineOptions({ name: "BlessCropper" });
+const pack = useLabelPack("BlessCropper");
 
 const props = withDefaults(
   defineProps<{
@@ -44,6 +46,7 @@ const text = computed(() => ({
   rotateLeft: "Rotate left",
   rotateRight: "Rotate right",
   loadError: "The image could not be loaded.",
+  ...pack(),
   ...props.labels,
 }));
 const model = defineModel<BlessCropRect | null>({ default: null });

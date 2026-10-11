@@ -7,11 +7,13 @@ export interface BlessCodeFile {
 </script>
 
 <script setup lang="ts">
+import { useLabelPack } from "../composables/useLabels";
 import "./sr.css";
 import { copyText } from "../composables/copyText";
 import { computed, nextTick, onBeforeUnmount, ref, useId } from "vue";
 
 defineOptions({ name: "BlessCodeBlock" });
+const pack = useLabelPack("BlessCodeBlock");
 
 const props = withDefaults(
   defineProps<{
@@ -35,6 +37,7 @@ const text = computed(() => ({
   copy: "Copy",
   copied: "Copied",
   copiedLive: "Copied to clipboard",
+  ...pack(),
   ...props.labels,
 }));
 const active = defineModel<number>("active", { default: 0 });

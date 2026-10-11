@@ -1,9 +1,11 @@
 <script setup lang="ts">
+import { useLabelPack } from "../composables/useLabels";
 import { computed, ref, watch } from "vue";
 import BlessInput from "./BlessInput.vue";
 import { formatDuration, parseDuration } from "./duration";
 
 defineOptions({ name: "BlessDurationInput", inheritAttrs: false });
+const pack = useLabelPack("BlessDurationInput");
 
 const props = withDefaults(
   defineProps<{
@@ -20,7 +22,11 @@ const props = withDefaults(
 /** the duration in seconds, or `null` when the field is empty or unreadable */
 const model = defineModel<number | null>({ default: null });
 
-const text = computed(() => ({ invalid: "Enter a time such as 1:30 or 1h 30m", ...props.labels }));
+const text = computed(() => ({
+  invalid: "Enter a time such as 1:30 or 1h 30m",
+  ...pack(),
+  ...props.labels,
+}));
 const shown = ref(model.value == null ? "" : formatDuration(model.value, props.seconds));
 const bad = ref(false);
 // the box keeps what the person types. The model changes from outside: show it then.
