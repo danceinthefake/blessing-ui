@@ -5,6 +5,7 @@ title: Chart
 <script setup>
 import ChartBars from "../demos/ChartBars.vue";
 import ChartBasic from "../demos/ChartBasic.vue";
+import ChartSankey from "../demos/ChartSankey.vue";
 </script>
 
 # Chart
@@ -27,6 +28,15 @@ The frame around a chart from your charting library (title, description, legend,
   <template #code>
 
 <<< ../demos/ChartBars.vue
+
+  </template>
+</Demo>
+
+<Demo title="Sankey">
+  <ChartSankey />
+  <template #code>
+
+<<< ../demos/ChartSankey.vue
 
   </template>
 </Demo>

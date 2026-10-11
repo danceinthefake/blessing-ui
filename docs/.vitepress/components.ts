@@ -416,6 +416,12 @@ export const groups: { title: string; items: Entry[] }[] = [
         text: "Tiny inline line, bar and win/loss chart",
       },
       { name: "BlessTreemap", slug: "treemap", text: "Part-to-whole rectangles with drill-down" },
+      {
+        name: "BlessFunnel",
+        slug: "funnel",
+        text: "Stages with the share that is left at each step",
+      },
+      { name: "BlessRadar", slug: "radar", text: "Spider chart: one shape per series" },
       { name: "BlessStat", slug: "stat", text: "KPI tile: value, change, and trend" },
     ],
   },

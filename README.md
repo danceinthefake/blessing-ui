@@ -10,7 +10,7 @@ Vue 3 component library and design tokens. The UI is gray-scale, with one accent
 
 Docs, with every component live: **[ui.blessing.id](https://ui.blessing.id)**
 
-- 188 components, from button to data table to chat. Only `--bless-*` custom properties style them. There is no Tailwind dependency.
+- 190 components, from button to data table to chat. Only `--bless-*` custom properties style them. There is no Tailwind dependency.
 - Native platform first: `<dialog>`, Popover API, `<details>`, native form controls, `Intl` dates, and scroll-snap. There is no positioning, date, or table library.
 - Accessible defaults: focus rings, ARIA tablist, dialog, and tables, and `prefers-reduced-motion`
 - ESM, tree-shakable, with `vue` as the only required peer (`@tiptap/vue-3` is optional, for `BlessEditor`). One component (`BlessButton`) costs about 1 KB gzip of JS and about 2.6 KB of CSS (tokens and its own styles). Everything costs about 64 KB and 27 KB. CSS is split per component and the import pulls it in, so you never pay for styles that you do not use
@@ -86,7 +86,7 @@ import {
 
 ## Components
 
-188 components across eight groups. Every one styles itself from `--bless-*` tokens and ships with a test and a docs page.
+190 components across eight groups. Every one styles itself from `--bless-*` tokens and ships with a test and a docs page.
 
 ### Primitives
 
@@ -284,6 +284,8 @@ import {
 | `BlessSparkline` | Tiny inline trend: line, bar or win/loss                            | `data`, `type`, `width`, `height`, `color`, `negativeColor`, `fill`, `dot`, `label`, `format`                |
 | `BlessStat`      | KPI tile: value, change, trend                                      | `label`, `value`, `delta`, `goodWhen`, `deltaUnit`, `data`, `labels`. `#hint`                                |
 | `BlessTreemap`   | Squarified treemap of a tree of sizes. Drill-down path and keyboard | `data` `{id,label,value?,children?,color?}`, `v-model:path`, `height`, `format`, `label`, `labels`. `select` |
+| `BlessFunnel`    | Stages with the share left at each step                             | `stages` `[{label,value}]`, `format`, `color`, `label`, `labels`                                             |
+| `BlessRadar`     | Spider chart, one shape per series                                  | `axes`, `series` `[{name,values,color}]`, `max`, `rings`, `size`, `format`, `label`                          |
 
 Blessing does not bundle a chart library. `BlessChart` maps `--bless-color-chart-{1..5}`, type and dark mode onto Unovis' `--vis-*` variables, and adds a legend. Install Unovis yourself:
 
