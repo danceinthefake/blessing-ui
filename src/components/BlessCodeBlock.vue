@@ -7,6 +7,7 @@ export interface BlessCodeFile {
 </script>
 
 <script setup lang="ts">
+import { copyText } from "../composables/copyText";
 import { computed, nextTick, onBeforeUnmount, ref, useId } from "vue";
 
 defineOptions({ name: "BlessCodeBlock" });
@@ -89,18 +90,7 @@ const copied = ref(false);
 let timer: ReturnType<typeof setTimeout> | undefined;
 async function doCopy() {
   const text = file.value.code;
-  try {
-    await navigator.clipboard.writeText(text);
-  } catch {
-    const ta = document.createElement("textarea");
-    ta.value = text;
-    ta.style.position = "fixed";
-    ta.style.opacity = "0";
-    document.body.append(ta);
-    ta.select();
-    document.execCommand("copy");
-    ta.remove();
-  }
+  await copyText(text);
   emit("copy", text);
   copied.value = true;
   clearTimeout(timer);
