@@ -1,5 +1,46 @@
 # Changelog
 
+## 0.4.0 — unreleased
+
+16 new components, 192 in all. Every new component has a docs page, tests, and a keyboard path for what the pointer does. Every new component passes axe in light and dark, and its demo hydrates after server rendering. No breaking changes.
+
+**Display and feedback**
+
+- `BlessStat`: KPI tile with a value, a change, and an optional trend line. Only bad news takes a color, and the direction is also text
+- `BlessBanner`: page-wide announcement bar. `persist` keeps a dismissed banner away on the next visit
+- `BlessNotificationInbox`: bell with an unread count and a panel of notices. Your code owns the list
+- `BlessPoll`: one question, then the results with your vote marked
+- `BlessCopyButton`: copies text and says "Copied" to screen readers. `CodeBlock` shares its `copyText` helper
+
+**Navigation and layout**
+
+- `BlessToc`: table of contents that marks the current heading. It builds on `useScrollSpy`
+- `BlessAffix`: sticky wrapper with an `offset` and a `stuck` state
+
+**Forms**
+
+- `BlessCardInput`: card number with groups, the brand name, and a Luhn check. `cardBrand`, `formatCard`, and `luhn` are exported
+- `BlessDurationInput`: reads `1:30:00` and `1h 30m` and holds seconds. `parseDuration` and `formatDuration` are exported
+- `BlessPhoneInput`: country code select and phone number. The value is E.164 text, such as `+628123456789`
+- `BlessTimezonePicker`: IANA time zone search with offsets from `Intl`. It ships no zone list
+
+**Data**
+
+- `BlessJsonViewer`: any value as an open-and-close tree, on top of `BlessTree`
+- `BlessTagCloud`: tags sized by weight, as links or buttons
+- `BlessFunnel`: stages with the share that is left at each step
+- `BlessRadar`: spider chart with one shape per series
+- A Sankey demo on the `BlessChart` page. Unovis has the chart, so there is no new component
+
+**Media**
+
+- `BlessWaveform`: audio peaks as bars, with a native range over them to seek. It decodes a `src` in the browser, or takes `peaks` from your server
+
+**Notes**
+
+- The library is now 115.6 KB gz JS and 36.0 KB gz CSS, under the caps of 118 KB and 38 KB.
+- Money needs no new component. `BlessInputNumber` formats currency through `format`. `BlessTextarea` already grows with `autogrow`. `BlessBubble` already has reaction chips.
+
 ## 0.3.0 — 2026-10-10
 
 12 new components, 176 in all, and a round of hardening across the existing ones. Every new component has a docs page, tests, and a keyboard path for what the pointer does. Every new component passes axe in light and dark. It also passes the end-to-end flows in Chromium, Firefox, and WebKit. No breaking changes.
