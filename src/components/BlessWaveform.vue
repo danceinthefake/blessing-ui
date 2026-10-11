@@ -62,7 +62,7 @@ function onInput(e: Event) {
         :key="i"
         class="bless-wave__bar"
         :class="{ 'bless-wave__bar--played': (i + 0.5) / shown.length <= position }"
-        :style="{ blockSize: `${Math.max(4, p * 100)}%` }"
+        :style="{ blockSize: `${Math.max(4, Math.round(p * 1000) / 10)}%` }"
       />
     </div>
     <!-- a native range lies over the bars, so the pointer and the keyboard both seek -->

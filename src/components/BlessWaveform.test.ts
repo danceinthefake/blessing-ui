@@ -16,13 +16,16 @@ test("peaksFromChannel scales to the loudest slice", () => {
   expect(peaksFromChannel(new Float32Array(4), 2)).toEqual([0, 0]); // silence, not NaN
 });
 
-test("BlessWaveform: draws one bar per peak and marks the played part", () => {
+test("BlessWaveform: draws one bar per peak and marks the played part", async () => {
   const w = mount(BlessWaveform, {
     props: { peaks: [0.2, 0.4, 0.6, 0.8], bars: 4, modelValue: 0.5 },
   });
   expect(w.findAll(".bless-wave__bar")).toHaveLength(4);
   expect(w.findAll(".bless-wave__bar--played")).toHaveLength(2);
   expect(w.find(".bless-wave__bar").attributes("style")).toContain("20%");
+  // heights are rounded to one decimal, so a float that differs in its last digits cannot break hydration
+  await w.setProps({ peaks: [0.123456789], bars: 1 });
+  expect(w.find(".bless-wave__bar").attributes("style")).toContain("12.3%");
   const range = w.find("input[type=range]");
   expect(range.attributes("aria-label")).toBe("Seek");
   expect(range.attributes("aria-valuetext")).toBe("50%");

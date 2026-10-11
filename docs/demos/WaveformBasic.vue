@@ -3,8 +3,10 @@ import { ref } from "vue";
 import { BlessWaveform } from "blessing-ui";
 
 // made-up loudness values; on a real page they come from your server or from `src`
-const peaks = Array.from({ length: 96 }, (_, i) =>
-  Math.abs(Math.sin(i / 6) * 0.6 + Math.sin(i / 2.3) * 0.3 + 0.1),
+// rounded, because the last digits of Math.sin differ between Node and the browser
+const peaks = Array.from(
+  { length: 96 },
+  (_, i) => Math.round(Math.abs(Math.sin(i / 6) * 0.6 + Math.sin(i / 2.3) * 0.3 + 0.1) * 100) / 100,
 );
 const position = ref(0.35);
 const total = 185; // seconds
