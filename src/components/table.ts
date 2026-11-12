@@ -10,4 +10,8 @@ export interface BlessColumn<T = Record<string, unknown>> {
 export interface BlessDataColumn<T = Record<string, unknown>> extends BlessColumn<T> {
   sortable?: boolean;
   hideable?: boolean;
+  /** stays in view while the table scrolls sideways; pinned columns move to that side */
+  pin?: "start" | "end";
+  /** `false` keeps this column out of the table's `resizable` */
+  resizable?: boolean;
 }

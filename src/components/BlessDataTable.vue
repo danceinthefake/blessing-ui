@@ -1,5 +1,6 @@
 <script setup lang="ts" generic="T extends Record<string, unknown>">
-import { computed, onMounted, ref, toRef, watch } from "vue";
+import { computed, onBeforeUnmount, onMounted, ref, toRef, watch, watchPostEffect } from "vue";
+import { logicalKey } from "../composables/rtl";
 import { useDataTable } from "../composables/useDataTable";
 import { useLabelPack } from "../composables/useLabels";
 import BlessCheckbox from "./BlessCheckbox.vue";
@@ -32,6 +33,7 @@ const props = withDefaults(
       selectPage: string;
       rowsPerPage: string;
       selectRow: (name: string) => string;
+      resize: (column: string) => string;
     }>;
     emptyText?: string;
     caption?: string;
@@ -40,6 +42,8 @@ const props = withDefaults(
     /** server mode: total row count */
     total?: number;
     loading?: boolean;
+    /** drag the edge of a header, or focus it and press ←/→, to change a column's width */
+    resizable?: boolean;
   }>(),
   {
     pageSize: 10,
@@ -53,6 +57,7 @@ const text = computed(() => ({
   selectPage: "Select page",
   rowsPerPage: "Rows per page",
   selectRow: (n: string) => `Select ${n}`,
+  resize: (c: string) => `Resize ${c}`,
   ...pack(),
   ...props.labels,
 }));
@@ -98,7 +103,112 @@ watch(
   () => props.server && emit("state", snapshot()),
 );
 onMounted(() => props.server && emit("state", snapshot()));
-const visible = computed(() => props.columns.filter((c) => !state.hidden.has(c.key)));
+/** column widths in px, set by resizing; bind it to keep them */
+const widths = defineModel<Record<string, number>>("widths", { default: () => ({}) });
+const shown = computed(() => props.columns.filter((c) => !state.hidden.has(c.key)));
+// pinned columns move to their side, so the sticky offsets add up from the edge
+const visible = computed(() => [
+  ...shown.value.filter((c) => c.pin === "start"),
+  ...shown.value.filter((c) => !c.pin),
+  ...shown.value.filter((c) => c.pin === "end"),
+]);
+
+// ── pinning: sticky cells, offset by the measured widths of the pinned cells before them
+const CHECK = "__check";
+const headRow = ref<HTMLTableRowElement>();
+const measured = ref<Record<string, number>>({});
+let ro: ResizeObserver | undefined;
+onMounted(() => {
+  if (typeof ResizeObserver === "undefined") return;
+  ro = new ResizeObserver((entries) => {
+    const m = { ...measured.value };
+    for (const e of entries)
+      m[(e.target as HTMLElement).dataset.key!] = (e.target as HTMLElement).offsetWidth;
+    measured.value = m;
+  });
+  watchPostEffect(() => {
+    ro!.disconnect();
+    headRow.value?.querySelectorAll<HTMLElement>("th[data-key]").forEach((th) => ro!.observe(th));
+  });
+});
+onBeforeUnmount(() => ro?.disconnect());
+const hasStartPin = computed(() => visible.value.some((c) => c.pin === "start"));
+const sizeOf = (key: string) => widths.value[key] ?? measured.value[key] ?? 0;
+const pinOffset = (c: BlessDataColumn<T>) => {
+  const side = visible.value.filter((v) => v.pin === c.pin);
+  const before =
+    c.pin === "start" ? side.slice(0, side.indexOf(c)) : side.slice(side.indexOf(c) + 1);
+  const extra = c.pin === "start" && props.selectable ? sizeOf(CHECK) : 0;
+  return before.reduce((n, v) => n + sizeOf(v.key), extra);
+};
+const cellClass = (c: BlessDataColumn<T>) => [
+  c.align && `bless-table__cell--${c.align}`,
+  c.pin && `bless-datatable__pin bless-datatable__pin--${c.pin}`,
+  {
+    "bless-datatable__pin--edge":
+      (c.pin === "start" && visible.value.filter((v) => v.pin === "start").at(-1) === c) ||
+      (c.pin === "end" && visible.value.find((v) => v.pin === "end") === c),
+  },
+];
+const cellStyle = (c: BlessDataColumn<T>, head = false) => {
+  const w = widths.value[c.key] ? `${widths.value[c.key]}px` : c.width;
+  return {
+    ...(head && w ? { width: w } : {}),
+    ...(c.pin === "start" ? { insetInlineStart: `${pinOffset(c)}px` } : {}),
+    ...(c.pin === "end" ? { insetInlineEnd: `${pinOffset(c)}px` } : {}),
+  };
+};
+
+// ── resizing: the first resize records every width, then the layout is fixed so widths hold
+const MIN = 48;
+const STEP = 16;
+const canResize = (c: BlessDataColumn<T>) => props.resizable && c.resizable !== false;
+const fixed = computed(
+  () => props.resizable && visible.value.every((c) => widths.value[c.key] !== undefined),
+);
+const tableStyle = computed(() =>
+  fixed.value
+    ? {
+        tableLayout: "fixed" as const,
+        width: `${visible.value.reduce((n, c) => n + widths.value[c.key]!, props.selectable ? sizeOf(CHECK) : 0)}px`,
+      }
+    : undefined,
+);
+function setWidth(key: string, px: number) {
+  const all = { ...widths.value };
+  // freeze the others at their current size, so one column changes and the rest stay put
+  headRow.value?.querySelectorAll<HTMLElement>("th[data-key]").forEach((th) => {
+    const k = th.dataset.key!;
+    if (k !== CHECK && all[k] === undefined) all[k] = th.offsetWidth;
+  });
+  all[key] = Math.max(MIN, Math.round(px));
+  widths.value = all;
+}
+const thWidth = (e: Event) =>
+  ((e.currentTarget as HTMLElement).parentElement as HTMLElement).offsetWidth;
+function onResizeKey(c: BlessDataColumn<T>, e: KeyboardEvent) {
+  const k = logicalKey(e);
+  if (k !== "ArrowRight" && k !== "ArrowLeft") return;
+  e.preventDefault();
+  setWidth(c.key, (widths.value[c.key] ?? thWidth(e)) + (k === "ArrowRight" ? STEP : -STEP));
+}
+function onResizeStart(c: BlessDataColumn<T>, e: PointerEvent) {
+  e.preventDefault();
+  const handle = e.currentTarget as HTMLElement;
+  const start = widths.value[c.key] ?? thWidth(e);
+  const x0 = e.clientX;
+  const dir = getComputedStyle(handle).direction === "rtl" ? -1 : 1;
+  handle.setPointerCapture?.(e.pointerId);
+  const move = (m: PointerEvent) => setWidth(c.key, start + dir * (m.clientX - x0));
+  const up = () => {
+    handle.removeEventListener("pointermove", move);
+    handle.removeEventListener("pointerup", up);
+    handle.removeEventListener("pointercancel", up);
+  };
+  handle.addEventListener("pointermove", move);
+  handle.addEventListener("pointerup", up);
+  handle.addEventListener("pointercancel", up);
+}
 const colMenu = computed<BlessMenuItem[]>(() => [
   { type: "label", label: "Columns" },
   ...props.columns
@@ -155,15 +265,25 @@ defineExpose({ state, selectedRows: dt.selectedRows });
     </div>
 
     <div class="bless-datatable__scroll">
-      <table class="bless-table bless-datatable__table" :aria-busy="loading || undefined">
+      <table
+        class="bless-table bless-datatable__table"
+        :style="tableStyle"
+        :aria-busy="loading || undefined"
+      >
         <caption v-if="caption" class="bless-table__caption">
           {{
             caption
           }}
         </caption>
         <thead class="bless-table__head">
-          <tr>
-            <th v-if="selectable" scope="col" class="bless-table__th bless-datatable__check">
+          <tr ref="headRow">
+            <th
+              v-if="selectable"
+              scope="col"
+              class="bless-table__th bless-datatable__check"
+              :class="hasStartPin && 'bless-datatable__pin bless-datatable__pin--start'"
+              :data-key="CHECK"
+            >
               <BlessCheckbox
                 ref="selectAllRef"
                 :model-value="dt.allPageSelected.value"
@@ -177,11 +297,9 @@ defineExpose({ state, selectedRows: dt.selectedRows });
               :key="c.key"
               scope="col"
               class="bless-table__th"
-              :class="[
-                c.align && `bless-table__cell--${c.align}`,
-                { 'bless-datatable__th--sortable': c.sortable },
-              ]"
-              :style="c.width ? { width: c.width } : undefined"
+              :class="[cellClass(c), { 'bless-datatable__th--sortable': c.sortable }]"
+              :style="cellStyle(c, true)"
+              :data-key="c.key"
               :aria-sort="
                 state.sortKey === c.key
                   ? state.sortDir === 'asc'
@@ -204,6 +322,19 @@ defineExpose({ state, selectedRows: dt.selectedRows });
                 }}</span>
               </button>
               <template v-else>{{ c.label }}</template>
+              <span
+                v-if="canResize(c)"
+                role="separator"
+                aria-orientation="vertical"
+                tabindex="0"
+                class="bless-datatable__resize"
+                :aria-label="text.resize(c.label)"
+                :aria-valuenow="widths[c.key]"
+                :aria-valuemin="MIN"
+                @pointerdown="onResizeStart(c, $event)"
+                @keydown="onResizeKey(c, $event)"
+                @click.stop
+              />
             </th>
           </tr>
         </thead>
@@ -224,7 +355,12 @@ defineExpose({ state, selectedRows: dt.selectedRows });
             :aria-selected="selectable ? state.selected.has(dt.keyOf(row)) : undefined"
             @click="emit('rowClick', row)"
           >
-            <td v-if="selectable" class="bless-table__cell bless-datatable__check" @click.stop>
+            <td
+              v-if="selectable"
+              class="bless-table__cell bless-datatable__check"
+              :class="hasStartPin && 'bless-datatable__pin bless-datatable__pin--start'"
+              @click.stop
+            >
               <BlessCheckbox
                 :model-value="state.selected.has(dt.keyOf(row))"
                 :aria-label="text.selectRow(rowName(row, i))"
@@ -237,7 +373,8 @@ defineExpose({ state, selectedRows: dt.selectedRows });
               :key="c.key"
               :scope="c.header ? 'row' : undefined"
               class="bless-table__cell"
-              :class="c.align && `bless-table__cell--${c.align}`"
+              :class="cellClass(c)"
+              :style="c.pin ? cellStyle(c) : undefined"
               :data-label="c.label"
             >
               <slot :name="`cell-${c.key}`" :row :value="row[c.key]" :index="i">{{
@@ -323,6 +460,61 @@ defineExpose({ state, selectedRows: dt.selectedRows });
 }
 .bless-datatable__check {
   width: 36px;
+}
+/* pinned: sticky, opaque, so the cells that scroll under it do not show through */
+.bless-datatable__pin {
+  position: sticky;
+  z-index: 1;
+  background: var(--bless-color-bg);
+}
+.bless-datatable__check.bless-datatable__pin--start {
+  inset-inline-start: 0;
+}
+.bless-datatable__pin--edge.bless-datatable__pin--start {
+  border-inline-end: var(--bless-border-width) solid var(--bless-color-border);
+}
+.bless-datatable__pin--edge.bless-datatable__pin--end {
+  border-inline-start: var(--bless-border-width) solid var(--bless-color-border);
+}
+.bless-datatable__row:hover > .bless-datatable__pin {
+  background: var(--bless-color-surface);
+}
+.bless-datatable__row--selected > .bless-datatable__pin {
+  background: color-mix(in srgb, var(--bless-color-accent) 8%, var(--bless-color-bg));
+}
+.bless-datatable__table th {
+  position: relative;
+}
+.bless-datatable__table th.bless-datatable__pin {
+  position: sticky;
+}
+.bless-datatable__table[style*="fixed"] :is(th, td) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.bless-datatable__resize {
+  position: absolute;
+  inset-block: 0;
+  inset-inline-end: -4px;
+  z-index: 2;
+  width: 8px;
+  cursor: col-resize;
+  touch-action: none;
+}
+.bless-datatable__resize::after {
+  content: "";
+  position: absolute;
+  inset-block: 20%;
+  inset-inline-start: 3px;
+  width: 2px;
+  background: var(--bless-color-border);
+}
+.bless-datatable__resize:hover::after {
+  background: var(--bless-color-text);
+}
+.bless-datatable__resize:focus-visible {
+  outline: 2px solid var(--bless-color-accent);
+  outline-offset: -2px;
 }
 .bless-datatable__sort {
   display: inline-flex;
