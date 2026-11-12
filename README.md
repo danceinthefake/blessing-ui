@@ -84,6 +84,8 @@ import {
 </template>
 ```
 
+To skip the imports, use the Nuxt module (`modules: ["blessing-ui/nuxt"]`) or the resolver for unplugin-vue-components (`BlessingUiResolver` from `blessing-ui/resolver`). See [Install](https://ui.blessing.id/guide/install#auto-import).
+
 ## Components
 
 197 components across eight groups. Every one styles itself from `--bless-*` tokens and ships with a test and a docs page.

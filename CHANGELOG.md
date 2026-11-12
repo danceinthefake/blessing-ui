@@ -39,6 +39,7 @@
 **Notes**
 
 - The library is now 115.6 KB gz JS and 36.0 KB gz CSS, under the caps of 118 KB and 38 KB.
+- Auto-import: `blessing-ui/nuxt` is a Nuxt module, and `blessing-ui/resolver` is a resolver for unplugin-vue-components. `@nuxt/kit` is a new optional peer.
 - **Fix:** with a `v-model` on the parent, three events sent the value from before the change: `BlessInputOTP` `complete` lacked the last digit, `BlessWaveform` `seek` sent the old position, and `BlessSignaturePad` `end` sent the old image. They now send the new value.
 - Money needs no new component. `BlessInputNumber` formats currency through `format`. `BlessTextarea` already grows with `autogrow`. `BlessBubble` already has reaction chips.
 

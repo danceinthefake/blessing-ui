@@ -351,7 +351,8 @@ Each component needs tests, a docs page with a live example, a README row, and a
 - ✅ `BlessUptimeBar`: one segment per period, up, degraded (striped), down, or no data. Screen readers hear the uptime percent.
 - ✅ `BlessThread`: nested comments on `BlessMessage`, replies folded in native `<details>`, indent stops at `maxDepth`.
 - ✅ `BlessPinPad`: on-screen keypad, masked dots, a live count for screen readers, hardware digits too.
-- ⬜ Next: an auto-import resolver and a Nuxt module, column resize and pinning in `BlessDataTable`.
+- ✅ Auto-import: `blessing-ui/resolver` for unplugin-vue-components and the `blessing-ui/nuxt` module. Both read the component list from the built files. Checked from the packed tarball in a Vite app and in a server-rendered Nuxt 4 app.
+- ⬜ Next: column resize and pinning in `BlessDataTable`.
 
 ### Deliberately skipped
 

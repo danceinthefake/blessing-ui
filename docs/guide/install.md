@@ -40,6 +40,33 @@ To load all styles up front, for example with no bundler or with a CDN, import t
 import "blessing-ui/style.css"; // tokens + every component's styles, ~26 KB gzipped
 ```
 
+## Auto-import
+
+You can write `<BlessButton>` in a template with no `import` line. Each component then comes from its own file, with only its own styles, and the tokens load once.
+
+In Nuxt, add the module. It needs nothing else:
+
+```ts
+// nuxt.config.ts
+export default defineNuxtConfig({
+  modules: ["blessing-ui/nuxt"],
+});
+```
+
+In Vite, use [unplugin-vue-components](https://github.com/unplugin/unplugin-vue-components) with the resolver of the library:
+
+```ts
+// vite.config.ts
+import Components from "unplugin-vue-components/vite";
+import { BlessingUiResolver } from "blessing-ui/resolver";
+
+export default defineConfig({
+  plugins: [vue(), Components({ resolvers: [BlessingUiResolver()] })],
+});
+```
+
+The resolver and the module know only the names of components. Import functions, keys, and types, such as `provideLabels` and `blessLinkKey`, from `blessing-ui` as before.
+
 ## Tokens only
 
 If you only want the design tokens (no components), follow the same [design language](../design/): ink at rest, the lean on attention, the accent only on what is chosen.
@@ -63,6 +90,7 @@ If you only want the design tokens (no components), follow the same [design lang
 ## Requirements
 
 - Vue `^3.5`.
+- `@nuxt/kit` `^3.15` or `^4` is an **optional** peer. Only `blessing-ui/nuxt` uses it, and every Nuxt app already has it.
 - `@tiptap/vue-3` `^3` is an **optional** peer. Only `BlessEditor` uses it. If you use the editor, install it. Otherwise, ignore the peer warning.
 - Evergreen browsers. Hard requirements: the Popover API, `<dialog>`, `color-mix()`, CSS nesting. No polyfills are shipped.
 - Progressive features degrade quietly where the browser does not support them:
