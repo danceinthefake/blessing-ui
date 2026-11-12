@@ -99,6 +99,8 @@ export { default as BlessThemeToggle } from "./components/BlessThemeToggle.vue";
 export { useTheme } from "./composables/useTheme";
 export type { BlessTheme } from "./composables/useTheme";
 export { default as BlessMessage } from "./components/BlessMessage.vue";
+export { default as BlessThread } from "./components/BlessThread.vue";
+export type { BlessThreadComment } from "./components/BlessThread.vue";
 export { default as BlessBubble } from "./components/BlessBubble.vue";
 export type { BlessReaction } from "./components/BlessBubble.vue";
 export { default as BlessMarker } from "./components/BlessMarker.vue";
