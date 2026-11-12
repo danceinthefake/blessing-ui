@@ -234,6 +234,8 @@ export type { BlessKanbanColumn } from "./components/BlessKanban.vue";
 export { default as BlessMention } from "./components/BlessMention.vue";
 export type { BlessMentionOption } from "./components/BlessMention.vue";
 export { default as BlessHeatmapCalendar } from "./components/BlessHeatmapCalendar.vue";
+export { default as BlessUptimeBar } from "./components/BlessUptimeBar.vue";
+export type { BlessUptimeItem, BlessUptimeStatus } from "./components/BlessUptimeBar.vue";
 export { default as BlessSortable } from "./components/BlessSortable.vue";
 export { useSortable, moveItem, nearestIndex } from "./composables/useSortable";
 export { useAutoScroll, edgeSpeed } from "./composables/useAutoScroll";
