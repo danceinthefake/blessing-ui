@@ -329,7 +329,7 @@ defineExpose({ state, selectedRows: dt.selectedRows });
                 tabindex="0"
                 class="bless-datatable__resize"
                 :aria-label="text.resize(c.label)"
-                :aria-valuenow="widths[c.key]"
+                :aria-valuenow="widths[c.key] ?? (measured[c.key] && Math.round(measured[c.key]))"
                 :aria-valuemin="MIN"
                 @pointerdown="onResizeStart(c, $event)"
                 @keydown="onResizeKey(c, $event)"
