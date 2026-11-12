@@ -41,6 +41,8 @@ export { default as BlessSlider } from "./components/BlessSlider.vue";
 export { default as BlessProgress } from "./components/BlessProgress.vue";
 export { default as BlessSkeleton } from "./components/BlessSkeleton.vue";
 export { default as BlessAvatar } from "./components/BlessAvatar.vue";
+export { default as BlessAvatarGroup } from "./components/BlessAvatarGroup.vue";
+export type { BlessAvatarGroupItem } from "./components/BlessAvatarGroup.vue";
 export { default as BlessAspectRatio } from "./components/BlessAspectRatio.vue";
 export { default as BlessAlert } from "./components/BlessAlert.vue";
 export { default as BlessBanner } from "./components/BlessBanner.vue";
