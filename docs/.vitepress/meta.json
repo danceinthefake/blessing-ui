@@ -616,6 +616,46 @@
   ],
   "exposed": []
  },
+ "BlessAvatarGroup": {
+  "props": [
+   {
+    "name": "items",
+    "type": "BlessAvatarGroupItem[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "max",
+    "type": "number | undefined",
+    "required": false,
+    "default": "5",
+    "description": "how many avatars show; the rest become one \"+N\" plate"
+   },
+   {
+    "name": "size",
+    "type": "\"md\" | \"sm\" | \"xs\" | \"lg\" | \"xl\" | undefined",
+    "required": false,
+    "default": "\"md\"",
+    "description": ""
+   },
+   {
+    "name": "color",
+    "type": "\"text\" | \"accent\" | \"surface\" | undefined",
+    "required": false,
+    "default": "\"surface\"",
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ more: (n: number) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessBackground": {
   "props": [
    {

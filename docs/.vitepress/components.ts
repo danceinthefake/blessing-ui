@@ -63,6 +63,11 @@ export const groups: { title: string; items: Entry[] }[] = [
       { name: "BlessButtonGroup", slug: "button-group", text: "Joined buttons" },
       { name: "BlessItem", slug: "item", text: "Media + title + description + actions" },
       { name: "BlessAvatar", slug: "avatar", text: "Image with initials fallback" },
+      {
+        name: "BlessAvatarGroup",
+        slug: "avatar-group",
+        text: "Fused row of avatars with a +N plate",
+      },
       { name: "BlessSkeleton", slug: "skeleton", text: "Shimmer placeholder" },
       { name: "BlessAspectRatio", slug: "aspect-ratio", text: "Ratio box" },
       { name: "BlessProgress", slug: "progress", text: "Bar, determinate or not" },
