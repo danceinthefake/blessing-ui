@@ -86,6 +86,7 @@ export { default as BlessCombobox } from "./components/BlessCombobox.vue";
 export { default as BlessCalendar } from "./components/BlessCalendar.vue";
 export { default as BlessDatePicker } from "./components/BlessDatePicker.vue";
 export { default as BlessInputOTP } from "./components/BlessInputOTP.vue";
+export { default as BlessPinPad } from "./components/BlessPinPad.vue";
 export { toISO, fromISO, addDays, addMonths, isoToday } from "./composables/date";
 export { default as BlessDataTable } from "./components/BlessDataTable.vue";
 export type { BlessDataColumn } from "./components/table";
