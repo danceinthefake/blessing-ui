@@ -22,6 +22,18 @@ sh(
   `mkdir -p node_modules/blessing-ui && tar xzf ${tgz} -C node_modules/blessing-ui --strip-components=1`,
 );
 sh("pnpm exec vue-tsc --noEmit");
+// the auto-import resolver finds components in the installed package, and nothing else
+const { BlessingUiResolver } = await import(
+  resolve(here, "node_modules/blessing-ui/dist/resolver.js")
+);
+const r = BlessingUiResolver();
+if (
+  r.resolve("BlessButton")?.from !== "blessing-ui/components/BlessButton" ||
+  r.resolve("RouterLink")
+) {
+  console.error("✗ blessing-ui/resolver resolved the wrong names");
+  process.exit(1);
+}
 sh("ENTRY=one pnpm exec vite build");
 sh("ENTRY=all pnpm exec vite build");
 

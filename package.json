@@ -36,6 +36,14 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
     },
+    "./resolver": {
+      "types": "./dist/resolver.d.ts",
+      "import": "./dist/resolver.js"
+    },
+    "./nuxt": {
+      "types": "./dist/nuxt.d.ts",
+      "import": "./dist/nuxt.js"
+    },
     "./style.css": "./dist/blessing-ui.css",
     "./tokens.css": "./tokens.css",
     "./components/*": {
@@ -61,6 +69,8 @@
     "docs:shots": "node docs/scripts/shots.mjs"
   },
   "devDependencies": {
+    "@nuxt/kit": "4.6.4",
+    "@nuxt/schema": "4.6.4",
     "@tiptap/pm": "^3.31.3",
     "@tiptap/starter-kit": "^3.31.3",
     "@tiptap/vue-3": "^3.31.3",
@@ -86,11 +96,15 @@
     "vue-tsc": "^3.3.11"
   },
   "peerDependencies": {
+    "@nuxt/kit": "^3.15 || ^4",
     "@tiptap/vue-3": "^3",
     "vue": "^3.5.0"
   },
   "peerDependenciesMeta": {
     "@tiptap/vue-3": {
+      "optional": true
+    },
+    "@nuxt/kit": {
       "optional": true
     }
   },
