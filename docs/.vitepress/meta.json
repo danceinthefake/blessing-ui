@@ -3438,6 +3438,12 @@
     "type": "string | undefined",
     "required": false,
     "description": ""
+   },
+   {
+    "name": "name",
+    "type": "string | undefined",
+    "required": false,
+    "description": "the `name` of the control, for the messages of a form `schema`. Default: the first named control inside."
    }
   ],
   "events": [],
@@ -3619,11 +3625,18 @@
   "exposed": []
  },
  "BlessForm": {
-  "props": [],
+  "props": [
+   {
+    "name": "schema",
+    "type": "BlessSchema<unknown> | undefined",
+    "required": false,
+    "description": "A Standard Schema (Zod, Valibot, ArkType…) checked after the browser checks pass. Its messages\nshow in the matching `BlessField`, by the `name` of the control. Form data is text, so use the\nschema's own coercion for numbers and dates."
+   }
+  ],
   "events": [
    {
     "name": "submit",
-    "type": "[data: FormData, event: SubmitEvent]",
+    "type": "[data: FormData, event: SubmitEvent, value: unknown]",
     "description": ""
    },
    {
@@ -3635,7 +3648,7 @@
   "slots": [
    {
     "name": "default",
-    "type": "{ submitted: boolean; }",
+    "type": "{ submitted: boolean; errors: Record<string, string>; pending: boolean; }",
     "description": ""
    }
   ],
@@ -7910,6 +7923,52 @@
     "description": ""
    }
   ],
+  "slots": [],
+  "exposed": []
+ },
+ "BlessRelativeTime": {
+  "props": [
+   {
+    "name": "value",
+    "type": "string | number | Date",
+    "required": true,
+    "description": "a Date, a timestamp in ms, or a date string"
+   },
+   {
+    "name": "locale",
+    "type": "string | undefined",
+    "required": false,
+    "description": "language of the words, for example `de`. Default: English until you choose."
+   },
+   {
+    "name": "numeric",
+    "type": "\"auto\" | \"always\" | undefined",
+    "required": false,
+    "default": "\"auto\"",
+    "description": "`auto` writes \"yesterday\" and \"now\". `always` writes \"1 day ago\"."
+   },
+   {
+    "name": "format",
+    "type": "\"long\" | \"short\" | \"narrow\" | undefined",
+    "required": false,
+    "default": "\"long\"",
+    "description": "`long` (\"2 hours ago\"), `short` (\"2 hr. ago\"), or `narrow`"
+   },
+   {
+    "name": "live",
+    "type": "boolean | undefined",
+    "required": false,
+    "default": "true",
+    "description": "keep the text up to date while the page is open"
+   },
+   {
+    "name": "now",
+    "type": "number | Date | undefined",
+    "required": false,
+    "description": "the moment to count from. Default: the time now. Pass one for a fixed result."
+   }
+  ],
+  "events": [],
   "slots": [],
   "exposed": []
  },
