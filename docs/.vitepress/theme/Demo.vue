@@ -50,13 +50,15 @@ const showCode = ref(false);
   padding: 24px;
 }
 /* demo content shouldn't inherit vp-doc paragraph/list styling */
-.vp-doc .demo__preview :is(p, ul, ol, li, details, summary):not(.tiptap *, .bless-org *) {
+.vp-doc
+  .demo__preview
+  :is(p, ul, ol, li, details, summary):not(.tiptap *, .bless-org *, .bless-thread__replies) {
   margin: 0;
   padding: 0;
   list-style: none;
   line-height: var(--bless-leading-normal);
 }
-.vp-doc .demo__preview details {
+.vp-doc .demo__preview details:not(.bless-thread__replies) {
   border: 0;
   background: none;
 }

@@ -409,6 +409,7 @@ export const groups: { title: string; items: Entry[] }[] = [
     title: "Conversation",
     items: [
       { name: "BlessMessage", slug: "message", text: "Avatar + header + content + footer row" },
+      { name: "BlessThread", slug: "thread", text: "Nested comment thread" },
       { name: "BlessBubble", slug: "bubble", text: "Message bubble" },
       { name: "BlessMarker", slug: "marker", text: "Inline status / note / separator / row" },
       { name: "BlessAttachment", slug: "attachment", text: "File / image chip" },

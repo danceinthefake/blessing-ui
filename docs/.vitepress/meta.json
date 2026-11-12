@@ -10350,6 +10350,55 @@
   "slots": [],
   "exposed": []
  },
+ "BlessThread": {
+  "props": [
+   {
+    "name": "comments",
+    "type": "BlessThreadComment[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "maxDepth",
+    "type": "number | undefined",
+    "required": false,
+    "default": "3",
+    "description": "replies deeper than this stop indenting, so a long chain stays readable on a phone"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ replies: (n: number) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "depth",
+    "type": "number | undefined",
+    "required": false,
+    "default": "0",
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [
+   {
+    "name": "default",
+    "type": "{ comment: BlessThreadComment; depth: number; }",
+    "description": ""
+   },
+   {
+    "name": "footer",
+    "type": "{ comment: BlessThreadComment; depth: number; }",
+    "description": ""
+   },
+   {
+    "name": "actions",
+    "type": "{ comment: BlessThreadComment; depth: number; }",
+    "description": ""
+   }
+  ],
+  "exposed": []
+ },
  "BlessTimePicker": {
   "props": [
    {
