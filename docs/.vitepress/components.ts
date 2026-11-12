@@ -269,6 +269,7 @@ export const groups: { title: string; items: Entry[] }[] = [
       { name: "BlessDatePicker", slug: "date-picker", text: "Calendar in a popover" },
       { name: "BlessCalendar", slug: "calendar", text: "Month grid" },
       { name: "BlessInputOTP", slug: "input-otp", text: "One-time code cells" },
+      { name: "BlessPinPad", slug: "pin-pad", text: "On-screen keypad for a PIN" },
       {
         name: "BlessForm",
         slug: "form",
