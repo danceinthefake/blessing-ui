@@ -231,6 +231,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         text: "Contribution-style grid, one square per day",
       },
       {
+        name: "BlessUptimeBar",
+        slug: "uptime-bar",
+        text: "Status history, one segment per period",
+      },
+      {
         name: "BlessSortable",
         slug: "sortable",
         text: "Drag-to-reorder list or grid, keyboard grab and move",

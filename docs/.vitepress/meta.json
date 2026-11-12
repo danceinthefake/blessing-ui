@@ -11305,6 +11305,31 @@
    }
   ]
  },
+ "BlessUptimeBar": {
+  "props": [
+   {
+    "name": "items",
+    "type": "BlessUptimeItem[]",
+    "required": true,
+    "description": "one segment per period, oldest first"
+   },
+   {
+    "name": "locale",
+    "type": "string | undefined",
+    "required": false,
+    "description": "formats the percent; defaults to the language of the browser"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ summary: (percent: string, periods: number) => string; up: string; degraded: string; down: string; none: string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessVideo": {
   "props": [
    {

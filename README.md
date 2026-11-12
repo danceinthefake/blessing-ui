@@ -10,7 +10,7 @@ Vue 3 component library and design tokens. The UI is gray-scale, with one accent
 
 Docs, with every component live: **[ui.blessing.id](https://ui.blessing.id)**
 
-- 194 components, from button to data table to chat. Only `--bless-*` custom properties style them. There is no Tailwind dependency.
+- 195 components, from button to data table to chat. Only `--bless-*` custom properties style them. There is no Tailwind dependency.
 - Native platform first: `<dialog>`, Popover API, `<details>`, native form controls, `Intl` dates, and scroll-snap. There is no positioning, date, or table library.
 - Accessible defaults: focus rings, ARIA tablist, dialog, and tables, and `prefers-reduced-motion`
 - ESM, tree-shakable, with `vue` as the only required peer (`@tiptap/vue-3` is optional, for `BlessEditor`). One component (`BlessButton`) costs about 1 KB gzip of JS and about 2.6 KB of CSS (tokens and its own styles). Everything costs about 64 KB and 27 KB. CSS is split per component and the import pulls it in, so you never pay for styles that you do not use
@@ -86,7 +86,7 @@ import {
 
 ## Components
 
-194 components across eight groups. Every one styles itself from `--bless-*` tokens and ships with a test and a docs page.
+195 components across eight groups. Every one styles itself from `--bless-*` tokens and ships with a test and a docs page.
 
 ### Primitives
 
@@ -183,6 +183,7 @@ import {
 | `BlessKanban`                      | Board: columns of cards, drag or keys between columns                                                   | `v-model` columns `[{id,title,items,limit}]`, `rowKey`, `label`. Emits `move(item, from, to)`. `#card="{item,column,index}"` `#header="{column}"`                                                                                |
 | `BlessMention`                     | Textarea with `@` / `#` suggestions                                                                     | `v-model`, `options` (list or `{trigger: list}`), `triggers`, `limit`, `label`. Other props go to `BlessTextarea`. Emits `select(option, trigger)`                                                                               |
 | `BlessHeatmapCalendar`             | Activity grid, one square per day                                                                       | `data` {iso: count}, `end`, `weeks`, `weekStart`, `levels`, `max`, `locale`, `unit`, `legend`. `v-model` picked day. Arrows move by day / week                                                                                   |
+| `BlessUptimeBar`                   | Status history, one segment per period                                                                  | `items` [{status, label}], `locale`, `labels`. Summary percent read by screen readers                                                                                                                                            |
 | `BlessSortable`                    | Reorder a list or grid by drag handle or keyboard                                                       | `v-model` items, `rowKey`, `label`, `columns`. Drag, Space + arrows, Esc cancels. Emits `move`. `#default="{item,index}"`                                                                                                        |
 | `BlessPickList`                    | Transfer between two listboxes                                                                          | `v-model:source`, `v-model:target`, `sourceLabel`, `targetLabel`, `rows`                                                                                                                                                         |
 | `BlessSelect`                      | Styled native `<select>` (picker styled too on Chrome 135+)                                             | `v-model`, `options` (groups ok), `placeholder`, `size`, `error`                                                                                                                                                                 |
