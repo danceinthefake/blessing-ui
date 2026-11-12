@@ -5,6 +5,7 @@ title: DataTable
 <script setup>
 import DataTableBasic from "../demos/DataTableBasic.vue";
 import DataTableServer from "../demos/DataTableServer.vue";
+import DataTableColumns from "../demos/DataTableColumns.vue";
 </script>
 
 # DataTable
@@ -23,6 +24,21 @@ Everything runs in the browser by default. Hand it the full array and it sorts, 
 
   </template>
 </Demo>
+
+<Demo title="Pinned and resizable columns">
+  <DataTableColumns />
+  <template #code>
+
+<<< ../demos/DataTableColumns.vue
+
+  </template>
+</Demo>
+
+**Pinned and resizable columns**. A wide table scrolls sideways. `pin: "start"` or `pin: "end"` on a column keeps it in view while the rest scroll. Pinned columns move to their side. When a column is pinned to the start, the checkbox column is pinned too.
+
+- `resizable` puts a handle on the end edge of each header. Drag it, or focus it and press ← or → to change the width by 16px. The smallest width is 48px. `resizable: false` on a column keeps that column at its width.
+- The first resize records the width of every column. After that, the table uses those widths exactly, and text that does not fit ends with "…".
+- `v-model:widths` holds the widths in px by column key. Save it, and give it back on the next visit, to keep the layout.
 
 <Demo title="Server mode">
   <DataTableServer />

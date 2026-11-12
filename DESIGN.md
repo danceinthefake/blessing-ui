@@ -352,7 +352,7 @@ Each component needs tests, a docs page with a live example, a README row, and a
 - ✅ `BlessThread`: nested comments on `BlessMessage`, replies folded in native `<details>`, indent stops at `maxDepth`.
 - ✅ `BlessPinPad`: on-screen keypad, masked dots, a live count for screen readers, hardware digits too.
 - ✅ Auto-import: `blessing-ui/resolver` for unplugin-vue-components and the `blessing-ui/nuxt` module. Both read the component list from the built files. Checked from the packed tarball in a Vite app and in a server-rendered Nuxt 4 app.
-- ⬜ Next: column resize and pinning in `BlessDataTable`.
+- ✅ `BlessDataTable` columns: `pin: "start" | "end"` (sticky, offsets measured), `resizable` with a pointer and keyboard handle, `v-model:widths`. Phase 24 is done.
 
 ### Deliberately skipped
 

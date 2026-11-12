@@ -2751,7 +2751,7 @@
    },
    {
     "name": "labels",
-    "type": "Partial<{ selectPage: string; rowsPerPage: string; selectRow: (name: string) => string; }> | undefined",
+    "type": "Partial<{ selectPage: string; rowsPerPage: string; selectRow: (name: string) => string; resize: (column: string) => string; }> | undefined",
     "required": false,
     "description": "names of the select-page checkbox and the page-size select"
    },
@@ -2785,6 +2785,19 @@
     "type": "boolean | undefined",
     "required": false,
     "description": ""
+   },
+   {
+    "name": "resizable",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": "drag the edge of a header, or focus it and press ←/→, to change a column's width"
+   },
+   {
+    "name": "widths",
+    "type": "Record<string, number> | undefined",
+    "required": false,
+    "default": "{}",
+    "description": "column widths in px, set by resizing; bind it to keep them"
    }
   ],
   "events": [
@@ -2801,6 +2814,11 @@
    {
     "name": "rowClick",
     "type": "[row: T]",
+    "description": ""
+   },
+   {
+    "name": "update:widths",
+    "type": "[value: Record<string, number>]",
     "description": ""
    }
   ],
