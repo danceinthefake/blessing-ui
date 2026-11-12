@@ -8,7 +8,7 @@ const showCode = ref(false);
 <template>
   <div class="demo">
     <div v-if="title" class="demo__title">{{ title }}</div>
-    <div class="demo__preview" :class="{ 'demo__preview--padded': padded }">
+    <div class="demo__preview vp-raw" :class="{ 'demo__preview--padded': padded }">
       <slot />
     </div>
     <div v-if="$slots.code" class="demo__bar">
@@ -108,5 +108,12 @@ const showCode = ref(false);
 }
 .demo__preview .pad {
   padding: var(--bless-space-2) var(--bless-space-4);
+}
+/* the preview is .vp-raw, so a plain <code> written in a demo gets no VitePress style */
+.demo__preview code:not([class]) {
+  padding: 0.15em 0.4em;
+  background: var(--bless-color-surface);
+  font-family: ui-monospace, monospace;
+  font-size: 0.9em;
 }
 </style>

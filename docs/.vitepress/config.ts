@@ -1,4 +1,4 @@
-import { defineConfig } from "vitepress";
+import { defineConfig, postcssIsolateStyles } from "vitepress";
 import { fileURLToPath } from "node:url";
 import { groups } from "./components";
 import blocks from "./blocks.json" with { type: "json" };
@@ -119,6 +119,9 @@ export default defineConfig({
   },
   vite: {
     define: { __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: "true" },
+    // VitePress's table, list and text styles stay out of `.vp-raw` (the demo preview), so a
+    // component looks the same in the docs as in an app
+    css: { postcss: { plugins: [postcssIsolateStyles({ includeFiles: [/vp-doc\.css/] })] } },
     resolve: {
       alias: {
         "blessing-ui/style.css": src("style.css"),
