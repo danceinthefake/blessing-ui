@@ -72,8 +72,9 @@ function move(e: PointerEvent) {
 function up() {
   if (!drawing) return;
   drawing = false;
-  model.value = empty.value ? "" : canvas.value!.toDataURL(props.type);
-  emit("end", model.value);
+  const url = empty.value ? "" : canvas.value!.toDataURL(props.type);
+  model.value = url;
+  emit("end", url); // not model.value: under a parent v-model it updates on the next render
 }
 function clear() {
   ctx?.clearRect(0, 0, canvas.value!.width, canvas.value!.height);

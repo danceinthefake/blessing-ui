@@ -45,8 +45,9 @@ const text = computed(() =>
   props.valueText ? props.valueText(position.value) : `${Math.round(position.value * 100)}%`,
 );
 function onInput(e: Event) {
-  position.value = Number((e.target as HTMLInputElement).value);
-  emit("seek", position.value);
+  const at = Number((e.target as HTMLInputElement).value);
+  position.value = at;
+  emit("seek", at); // not position.value: under a parent v-model it updates on the next render
 }
 </script>
 

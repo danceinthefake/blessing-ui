@@ -41,8 +41,10 @@ const pattern = computed(() => (props.numeric ? /\d/ : /./));
 
 function commit(arr: string[]) {
   chars.value = arr;
-  model.value = arr.join("");
-  if (arr.every(Boolean)) emit("complete", model.value);
+  // under a parent v-model, model.value updates on the next render: emit the new value
+  const code = arr.join("");
+  model.value = code;
+  if (arr.every(Boolean)) emit("complete", code);
 }
 function set(i: number, ch: string) {
   const arr = chars.value.slice();
