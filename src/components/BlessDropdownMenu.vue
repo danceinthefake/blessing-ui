@@ -5,7 +5,8 @@ import { useFloating, type Placement } from "../composables/useFloating";
 import BlessMenuList from "./BlessMenuList.vue";
 import { menubarKey, type BlessMenuItem } from "./menu";
 
-defineOptions({ name: "BlessDropdownMenu" });
+// two roots (anchor + popover panel): class, style, and other attrs go to the anchor, the part in the layout
+defineOptions({ name: "BlessDropdownMenu", inheritAttrs: false });
 
 const props = withDefaults(
   defineProps<{
@@ -150,6 +151,7 @@ onBeforeUnmount(() => bar?.unregister(id));
 
 <template>
   <span
+    v-bind="$attrs"
     ref="anchor"
     class="bless-dropdown__anchor"
     :class="{ 'bless-dropdown__anchor--block': block }"

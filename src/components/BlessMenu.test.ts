@@ -194,3 +194,18 @@ test("DropdownMenu closes when focus tabs out of it", async () => {
   w.unmount();
   outside.remove();
 });
+
+test("DropdownMenu puts class and other attrs on its anchor, with no warning", () => {
+  const warn = vi.spyOn(console, "warn").mockImplementation(() => {});
+  const w = mount(BlessDropdownMenu, {
+    props: { items: [{ label: "A" }] },
+    attrs: { class: "mine", "data-x": "1" },
+    slots: { trigger: () => h("button", "Open") },
+  });
+  const anchor = w.find(".bless-dropdown__anchor");
+  expect(anchor.classes()).toContain("mine");
+  expect(anchor.attributes("data-x")).toBe("1");
+  expect(w.find(".bless-dropdown").classes()).not.toContain("mine");
+  expect(warn).not.toHaveBeenCalled();
+  warn.mockRestore();
+});
