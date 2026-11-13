@@ -2,7 +2,7 @@
 
 ## 0.4.0 — unreleased
 
-16 new components, 192 in all. Every new component has a docs page, tests, and a keyboard path for what the pointer does. Every new component passes axe in light and dark, and its demo hydrates after server rendering. No breaking changes.
+21 new components, 197 in all. Every new component has a docs page, tests, and a keyboard path for what the pointer does. Every new component passes axe in light and dark, and its demo hydrates after server rendering. No breaking changes.
 
 **Display and feedback**
 
@@ -10,6 +10,9 @@
 - `BlessBanner`: page-wide announcement bar. `persist` keeps a dismissed banner away on the next visit
 - `BlessNotificationInbox`: bell with an unread count and a panel of notices. Your code owns the list
 - `BlessPoll`: one question, then the results with your vote marked
+- `BlessUptimeBar`: one segment per period, up, degraded, or down, with the uptime percent as its accessible name
+- `BlessAvatarGroup`: overlapping avatars with a `+N` plate that names the rest
+- `BlessRelativeTime`: "2 hours ago" from `Intl.RelativeTimeFormat` in a `<time>` element. It stays up to date while the page is open
 - `BlessCopyButton`: copies text and says "Copied" to screen readers. `CodeBlock` shares its `copyText` helper
 
 **Navigation and layout**
@@ -22,6 +25,7 @@
 - `BlessCardInput`: card number with groups, the brand name, and a Luhn check. `cardBrand`, `formatCard`, and `luhn` are exported
 - `BlessDurationInput`: reads `1:30:00` and `1h 30m` and holds seconds. `parseDuration` and `formatDuration` are exported
 - `BlessPhoneInput`: country code select and phone number. The value is E.164 text, such as `+628123456789`
+- `BlessPinPad`: on-screen number pad for a PIN, with masked squares and hardware keys. It emits `complete`
 - `BlessTimezonePicker`: IANA time zone search with offsets from `Intl`. It ships no zone list
 
 **Data**
@@ -31,6 +35,10 @@
 - `BlessFunnel`: stages with the share that is left at each step
 - `BlessRadar`: spider chart with one shape per series
 - A Sankey demo on the `BlessChart` page. Unovis has the chart, so there is no new component
+
+**Conversation**
+
+- `BlessThread`: nested comments with folding replies. Past `maxDepth`, replies stop indenting
 
 **Media**
 
