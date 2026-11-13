@@ -50,6 +50,7 @@
 - `BlessDataTable`: `pin: "start"` or `"end"` on a column keeps it in view while the table scrolls sideways. `resizable` adds a handle to each header for the pointer and the arrow keys. `v-model:widths` holds the widths.
 - Auto-import: `blessing-ui/nuxt` is a Nuxt module, and `blessing-ui/resolver` is a resolver for unplugin-vue-components. `@nuxt/kit` is a new optional peer.
 - **Fix:** with a `v-model` on the parent, three events sent the value from before the change: `BlessInputOTP` `complete` lacked the last digit, `BlessWaveform` `seek` sent the old position, and `BlessSignaturePad` `end` sent the old image. They now send the new value.
+- **Fix:** `BlessDropdownMenu` dropped a `class` or other attribute that you gave it, and Vue showed a warning. It now puts them on the trigger. In `BlessDataTable`, the Columns button now sits at the end of the toolbar.
 - Money needs no new component. `BlessInputNumber` formats currency through `format`. `BlessTextarea` already grows with `autogrow`. `BlessBubble` already has reaction chips.
 
 ## 0.3.0 — 2026-10-10
