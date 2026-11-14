@@ -6,7 +6,8 @@
 - `BlessTypingIndicator`: who is typing now, as a status line under a chat. One, two, and more names each have a sentence, and the dots stop under reduced motion.
 - `BlessConnectionStatus`: online, offline, or reconnecting. It reads the browser's state and takes your socket's state, stays quiet while all is well, and says "Back online" for a moment after a problem.
 - `BlessLogViewer`: a live log on virtual rows, with ANSI colors that follow the theme, a filter that keeps line numbers, and follow, which keeps the newest line in view until you scroll up.
-- `BlessCronInput`: a five-field cron schedule with a field per part, a mark on a part that is not valid, and the next run times in the local date format. `blessCronNext` is exported. 206 components in all.
+- `BlessCronInput`: a five-field cron schedule with a field per part, a mark on a part that is not valid, and the next run times in the local date format. `blessCronNext` is exported.
+- `BlessKeyValueEditor`: rows of key and value pairs, such as headers or environment variables, with an empty row always at the end. `toggle` turns a row off without removing it, `secret` hides the values, and a key used twice is marked. 207 components in all.
 
 ## 0.5.0 — 2026-11-15
 

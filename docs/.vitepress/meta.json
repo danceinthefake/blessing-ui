@@ -5503,6 +5503,50 @@
   ],
   "exposed": []
  },
+ "BlessKeyValueEditor": {
+  "props": [
+   {
+    "name": "toggle",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": "an on and off box per row"
+   },
+   {
+    "name": "secret",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": "hide the values, for secrets"
+   },
+   {
+    "name": "disabled",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ key: string; value: string; enabled: string; remove: string; duplicate: string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "BlessKeyValue[] | undefined",
+    "required": false,
+    "default": "[]",
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "update:modelValue",
+    "type": "[value: BlessKeyValue[]]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessKnob": {
   "props": [
    {

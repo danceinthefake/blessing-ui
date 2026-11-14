@@ -323,3 +323,5 @@ export { default as BlessConnectionStatus } from "./components/BlessConnectionSt
 export { default as BlessLogViewer } from "./components/BlessLogViewer.vue";
 export { default as BlessCronInput } from "./components/BlessCronInput.vue";
 export { blessCronNext } from "./components/cron";
+export { default as BlessKeyValueEditor } from "./components/BlessKeyValueEditor.vue";
+export type { BlessKeyValue } from "./components/BlessKeyValueEditor.vue";

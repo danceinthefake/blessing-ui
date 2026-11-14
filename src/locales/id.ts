@@ -23,6 +23,7 @@ import type BlessGantt from "../components/BlessGantt.vue";
 import type BlessInfiniteCanvas from "../components/BlessInfiniteCanvas.vue";
 import type BlessInputNumber from "../components/BlessInputNumber.vue";
 import type BlessKanban from "../components/BlessKanban.vue";
+import type BlessKeyValueEditor from "../components/BlessKeyValueEditor.vue";
 import type BlessLogViewer from "../components/BlessLogViewer.vue";
 import type BlessMarquee from "../components/BlessMarquee.vue";
 import type BlessNodeGraph from "../components/BlessNodeGraph.vue";
@@ -82,6 +83,7 @@ export type BlessLabelsFull = {
   BlessInfiniteCanvas: All<typeof BlessInfiniteCanvas>;
   BlessInputNumber: All<typeof BlessInputNumber>;
   BlessKanban: All<typeof BlessKanban>;
+  BlessKeyValueEditor: All<typeof BlessKeyValueEditor>;
   BlessLogViewer: All<typeof BlessLogViewer>;
   BlessMarquee: All<typeof BlessMarquee>;
   BlessNodeGraph: All<typeof BlessNodeGraph>;
@@ -261,6 +263,13 @@ export const labelsId: BlessLabelsFull = {
     cancelled: "Dibatalkan, urutan dikembalikan",
     hint: "Tekan Spasi untuk memegang kartu. Atas dan bawah memindahkannya di dalam kolom, kiri dan kanan ke kolom lain. Spasi meletakkannya, Escape membatalkan.",
     roleDescription: "kartu yang dapat diurutkan",
+  },
+  BlessKeyValueEditor: {
+    key: "Kunci",
+    value: "Nilai",
+    enabled: "Aktif",
+    remove: "Hapus",
+    duplicate: "Kunci ini dipakai lebih dari sekali",
   },
   BlessLogViewer: {
     filter: "Saring baris",
