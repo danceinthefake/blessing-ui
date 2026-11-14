@@ -523,6 +523,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "audio-recorder",
         text: "Record from the microphone, with a preview",
       },
+      {
+        name: "BlessCameraCapture",
+        slug: "camera-capture",
+        text: "Take a photo with the camera, in the page",
+      },
       { name: "BlessAnnotator", slug: "annotator", text: "Draw boxes and pins on an image" },
     ],
   },
