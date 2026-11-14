@@ -52,6 +52,11 @@ const mk = async (props = {}) => {
 afterEach(() => w?.unmount());
 const cells = () => w.findAll(".bless-masonry__cell");
 const at = (i: number) => cells()[i].attributes("style")!;
+// [x, y] of a card: jsdom 31 writes translate(0px, 0px) in its short form, translate(0px)
+const xy = (i: number) => {
+  const [x = 0, y = 0] = /translate\(([^)]*)\)/.exec(at(i))![1]!.split(",").map(parseFloat);
+  return [x, y];
+};
 
 test("before layout the cards are a plain stack (no JS needed to read them)", () => {
   w = mount(BlessMasonry, { props: { items: ["a"], gap: 10 }, attachTo: document.body });
@@ -64,10 +69,10 @@ test("each card goes into the shortest column, in order", async () => {
   // two columns of (200 - 10) / 2 = 95px; heights 100, 50, 70, 30
   expect(w.classes()).toContain("bless-masonry--ready");
   expect(at(0)).toContain("width: 95px");
-  expect(at(0)).toContain("translate(0px, 0px)"); // col 0
-  expect(at(1)).toContain("translate(105px, 0px)"); // col 1 (empty)
-  expect(at(2)).toContain("translate(105px, 60px)"); // col 1 is shorter: 50 + gap
-  expect(at(3)).toContain("translate(0px, 110px)"); // col 0 is now 100 + gap, col 1 is 140
+  expect(xy(0)).toEqual([0, 0]); // col 0
+  expect(xy(1)).toEqual([105, 0]); // col 1 (empty)
+  expect(xy(2)).toEqual([105, 60]); // col 1 is shorter: 50 + gap
+  expect(xy(3)).toEqual([0, 110]); // col 0 is now 100 + gap, col 1 is 140
   expect(w.attributes("style")).toContain("height: 140px"); // col 0 ends at 110 + 30 = 140
 });
 
@@ -78,7 +83,7 @@ test("columns come from minWidth when not fixed", async () => {
   width = 320;
   await mk({ columns: undefined, minWidth: 90 }); // 3 columns of (320 - 20) / 3 = 100
   expect(at(0)).toContain("width: 100px");
-  expect(at(2)).toContain("translate(220px, 0px)");
+  expect(xy(2)).toEqual([220, 0]);
   width = 200;
 });
 
@@ -89,7 +94,7 @@ test("a card growing re-places the ones after it; the container resizing re-coun
     .at(-1)!
     .cb([{ target: cells()[1].element } as ResizeObserverEntry], {} as ResizeObserver);
   await nextTick();
-  expect(at(2)).toContain("translate(0px, 110px)"); // col 0 (100) is shorter than col 1 (200) now
+  expect(xy(2)).toEqual([0, 110]); // col 0 (100) is shorter than col 1 (200) now
   expect(observers.at(-1)!.targets).toContain(cells()[0].element);
 });
 

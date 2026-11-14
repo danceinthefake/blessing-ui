@@ -1,6 +1,13 @@
 /** jsdom lacks the Popover API; emulate enough for tests */
 export function stubPopover() {
   const open = new WeakSet<Element>();
+  // jsdom 31 hides a closed [popover] (display: none) and refuses focus() inside it, so an
+  // "open" one must be shown, as the browser does
+  if (!document.getElementById("stub-popover")) {
+    const style = Object.assign(document.createElement("style"), { id: "stub-popover" });
+    style.textContent = "[popover][data-open] { display: block; }";
+    document.head.append(style);
+  }
   Object.assign(HTMLElement.prototype, {
     showPopover(this: HTMLElement) {
       open.add(this);

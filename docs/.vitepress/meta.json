@@ -4154,7 +4154,7 @@
    },
    {
     "name": "placement",
-    "type": "\"top\" | \"bottom\" | \"left\" | \"right\" | undefined",
+    "type": "\"bottom\" | \"top\" | \"left\" | \"right\" | undefined",
     "required": false,
     "default": "\"top\"",
     "description": ""
@@ -5614,7 +5614,7 @@
    },
    {
     "name": "position",
-    "type": "\"top\" | \"bottom\" | undefined",
+    "type": "\"bottom\" | \"top\" | undefined",
     "required": false,
     "default": "\"top\"",
     "description": ""
@@ -6038,7 +6038,7 @@
    },
    {
     "name": "initial",
-    "type": "\"top\" | \"bottom\" | undefined",
+    "type": "\"bottom\" | \"top\" | undefined",
     "required": false,
     "default": "\"bottom\"",
     "description": "where to open: latest message or top of transcript"
@@ -6419,13 +6419,13 @@
     "description": ""
    },
    {
-    "name": "move",
-    "type": "[id: string, x: number, y: number]",
+    "name": "update:view",
+    "type": "[value: CanvasView]",
     "description": ""
    },
    {
-    "name": "update:view",
-    "type": "[value: CanvasView]",
+    "name": "move",
+    "type": "[id: string, x: number, y: number]",
     "description": ""
    },
    {
@@ -8532,7 +8532,7 @@
   "props": [
    {
     "name": "side",
-    "type": "\"top\" | \"bottom\" | \"left\" | \"right\" | undefined",
+    "type": "\"bottom\" | \"top\" | \"left\" | \"right\" | undefined",
     "required": false,
     "default": "\"right\"",
     "description": ""
@@ -9255,7 +9255,7 @@
    },
    {
     "name": "direction",
-    "type": "\"left\" | \"right\" | \"down\" | \"up\" | undefined",
+    "type": "\"left\" | \"right\" | \"up\" | \"down\" | undefined",
     "required": false,
     "default": "\"up\"",
     "description": ""
@@ -9683,7 +9683,7 @@
    },
    {
     "name": "goodWhen",
-    "type": "\"down\" | \"up\" | undefined",
+    "type": "\"up\" | \"down\" | undefined",
     "required": false,
     "default": "\"up\"",
     "description": "which direction is good news: `up` (default) or `down` (for example, error rate)"
