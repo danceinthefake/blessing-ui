@@ -335,3 +335,4 @@ export type {
 export { default as BlessAudioRecorder } from "./components/BlessAudioRecorder.vue";
 export { default as BlessCameraCapture } from "./components/BlessCameraCapture.vue";
 export { default as BlessHighlight } from "./components/BlessHighlight.vue";
+export { default as BlessReadMore } from "./components/BlessReadMore.vue";
