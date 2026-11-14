@@ -193,6 +193,7 @@ export { default as BlessNotificationInbox } from "./components/BlessNotificatio
 export type { BlessNotice } from "./components/BlessNotificationInbox.vue";
 export { blessLabelsKey, provideLabels } from "./composables/useLabels";
 export type { BlessLabelPack } from "./composables/useLabels";
+export { labelsId, type BlessLabelsFull } from "./locales/id";
 export { default as BlessRelativeTime } from "./components/BlessRelativeTime.vue";
 export { relativeParts } from "./components/relativeTime";
 export { formValues, issuesToErrors } from "./components/schema";

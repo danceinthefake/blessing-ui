@@ -4,6 +4,7 @@ import {
   BlessCopyButton,
   BlessPoll,
   BlessButton,
+  labelsId,
   provideLabels,
   type BlessLabelPack,
 } from "blessing-ui";
@@ -18,8 +19,10 @@ const packs: Record<string, BlessLabelPack> = {
       votes: (n: number) => `${n} ${n === 1 ? "voto" : "votos"}`,
     },
   },
+  // the Indonesian pack ships with the library
+  id: labelsId,
 };
-const lang = ref<"en" | "es">("es");
+const lang = ref<"en" | "es" | "id">("es");
 // a getter, so the words change the moment `lang` does
 provideLabels(computed(() => packs[lang.value]));
 </script>
@@ -32,6 +35,9 @@ provideLabels(computed(() => packs[lang.value]));
       >
       <BlessButton size="sm" :variant="lang === 'es' ? 'solid' : 'outline'" @click="lang = 'es'"
         >Español</BlessButton
+      >
+      <BlessButton size="sm" :variant="lang === 'id' ? 'solid' : 'outline'" @click="lang = 'id'"
+        >Indonesia</BlessButton
       >
     </div>
     <BlessCopyButton value="npm install blessing-ui" />

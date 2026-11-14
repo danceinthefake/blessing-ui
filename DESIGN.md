@@ -354,6 +354,13 @@ Each component needs tests, a docs page with a live example, a README row, and a
 - ✅ Auto-import: `blessing-ui/resolver` for unplugin-vue-components and the `blessing-ui/nuxt` module. Both read the component list from the built files. Checked from the packed tarball in a Vite app and in a server-rendered Nuxt 4 app.
 - ✅ `BlessDataTable` columns: `pin: "start" | "end"` (sticky, offsets measured), `resizable` with a pointer and keyboard handle, `v-model:widths`. Phase 24 is done.
 
+### Phase 25 — reach and review (2026-11-14)
+
+- ✅ Indonesian label pack: `labelsId`, every word of every component with a `labels` prop. Its type requires each key, so a new word without a translation fails the typecheck. A docs section shows it.
+- NuxtLink by default: the `blessing-ui/nuxt` module provides `NuxtLink` as the link component, so the install guide needs no plugin.
+- Label in Name review: find the remaining buttons that show only an icon or a number, and make sure that their names contain what they show. axe 4.14 found seven. More are likely in parts that the demos do not show.
+- Watch: TypeScript 7, when vue-tsc supports it.
+
 ### Deliberately skipped
 
 - **Chart**: no bundled lib. Phase 11 ✅: `--bless-color-chart-{1..5}` (≥3:1 both themes) + `BlessChart` frame that maps them onto Unovis `--vis-*` vars. Unovis is the documented pairing, installed by the consumer.

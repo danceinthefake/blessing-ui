@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- `labelsId`: a complete Indonesian label pack. `provideLabels(labelsId)` switches the words of all 43 components that have a `labels` prop. The `BlessLabelsFull` type helps you write a complete pack for another language, because the typecheck names each word that is missing.
+
 ## 0.4.1 — 2026-11-14
 
 Accessibility fixes found by axe-core 4.14 and jsdom 31. No API changes, but some screen reader names now read in a different order.
