@@ -14,6 +14,7 @@ import type BlessDataView from "../components/BlessDataView.vue";
 import type BlessDateTimePicker from "../components/BlessDateTimePicker.vue";
 import type BlessDurationInput from "../components/BlessDurationInput.vue";
 import type BlessEditor from "../components/BlessEditor.vue";
+import type BlessEmojiPicker from "../components/BlessEmojiPicker.vue";
 import type BlessFormula from "../components/BlessFormula.vue";
 import type BlessFunnel from "../components/BlessFunnel.vue";
 import type BlessGantt from "../components/BlessGantt.vue";
@@ -68,6 +69,7 @@ export type BlessLabelsFull = {
   BlessDateTimePicker: All<typeof BlessDateTimePicker>;
   BlessDurationInput: All<typeof BlessDurationInput>;
   BlessEditor: All<typeof BlessEditor>;
+  BlessEmojiPicker: All<typeof BlessEmojiPicker>;
   BlessFormula: All<typeof BlessFormula>;
   BlessFunnel: All<typeof BlessFunnel>;
   BlessGantt: All<typeof BlessGantt>;
@@ -166,6 +168,22 @@ export const labelsId: BlessLabelsFull = {
     hr: "Garis pemisah",
     undo: "Urungkan",
     redo: "Ulangi",
+  },
+  // the emoji names stay English: pass `emojis` with Indonesian names to search in Indonesian
+  BlessEmojiPicker: {
+    search: "Cari emoji",
+    groups: "Grup emoji",
+    recent: "Terakhir",
+    results: "Hasil",
+    empty: "Emoji tidak ditemukan",
+    smileys: "Wajah",
+    people: "Orang",
+    nature: "Hewan dan alam",
+    food: "Makanan dan minuman",
+    activities: "Aktivitas",
+    travel: "Perjalanan dan tempat",
+    objects: "Benda",
+    symbols: "Simbol",
   },
   BlessFormula: {
     insert: "Sisipkan nilai",

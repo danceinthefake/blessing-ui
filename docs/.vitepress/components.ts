@@ -86,6 +86,7 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "date-time-picker",
         text: "A date and a time in one field",
       },
+      { name: "BlessEmojiPicker", slug: "emoji-picker", text: "Search and pick an emoji" },
       {
         name: "BlessUploader",
         slug: "uploader",
