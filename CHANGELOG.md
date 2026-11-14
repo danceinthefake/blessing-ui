@@ -4,7 +4,8 @@
 
 - `BlessDescriptions`: label and value pairs for a detail page, as a native `<dl>`. `columns` sets the most columns, and they stack on a phone. `bordered` puts the pairs in one plate.
 - `BlessDateTimePicker`: a date and a time in one field, as `YYYY-MM-DDTHH:MM` in local time. `min` and `max` limit the time only on their own day. `labelsId` has its word.
-- `BlessEmojiPicker`: search and pick from 353 common emoji in eight groups, recent ones first. The grid is one Tab stop, and the arrow keys move by row and column. `blessEmojis` is exported, and `emojis` takes your own list. 200 components in all.
+- `BlessEmojiPicker`: search and pick from 353 common emoji in eight groups, recent ones first. The grid is one Tab stop, and the arrow keys move by row and column. `blessEmojis` is exported, and `emojis` takes your own list.
+- `BlessMarkdown`: Markdown text with the library's type. You pass `lexer` from [marked](https://marked.js.org/), a new optional peer, so the library never loads it. The component builds each element itself: raw HTML shows as text, and only safe links and images render. GFM tables and task lists work. 201 components in all.
 - Docs: a [Bundle size](https://ui.blessing.id/guide/sizes) page shows the gzipped JS and CSS of each component on its own. The consumer check measures them on every push and prints the ten largest. The install guide had old numbers, and they are now correct.
 - The `blessing-ui/nuxt` module now provides `NuxtLink` as the link component, so in-app links navigate on the client with no plugin. A plugin of your own that provides `blessLinkKey` still wins.
 - `labelsId`: a complete Indonesian label pack. `provideLabels(labelsId)` switches the words of all 43 components that have a `labels` prop. The `BlessLabelsFull` type helps you write a complete pack for another language, because the typecheck names each word that is missing.

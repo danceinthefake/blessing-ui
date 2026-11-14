@@ -176,6 +176,7 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "code-block",
         text: "Copy button, line highlight, tabs per file",
       },
+      { name: "BlessMarkdown", slug: "markdown", text: "Markdown text, safely rendered" },
       {
         name: "BlessMarquee",
         slug: "marquee",

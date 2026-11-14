@@ -1,5 +1,5 @@
 // The cost of each component on its own: bundle `blessing-ui/components/BlessX` from the installed
-// package, minified, with vue and the optional peers left out as in a real app, and gzip the result.
+// package, minified, with vue and the optional peers (marked, Tiptap, Unovis) left out as in a real app, and gzip the result.
 // The tokens are not counted: every app loads them once. Writes docs/.vitepress/sizes.json for the
 // docs table. Run by check.mjs after it installs the packed package.
 import { readFileSync, writeFileSync } from "node:fs";
@@ -9,7 +9,7 @@ import { build } from "vite";
 
 const here = import.meta.dirname;
 const root = resolve(here, "../..");
-const external = ["vue", /^@tiptap\//, /^@unovis\//];
+const external = ["vue", "marked", /^@tiptap\//, /^@unovis\//];
 // the public components: the ones the package entry exports by name
 const entry = readFileSync(resolve(here, "node_modules/blessing-ui/dist/index.js"), "utf8");
 const names = [...new Set([...entry.matchAll(/ as (Bless[A-Za-z0-9]+)\b/g)].map((m) => m[1]))]

@@ -91,6 +91,7 @@ If you only want the design tokens (no components), follow the same [design lang
 
 - Vue `^3.5`.
 - `@nuxt/kit` `^3.15` or `^4` is an **optional** peer. Only `blessing-ui/nuxt` uses it, and every Nuxt app already has it.
+- `marked` `^18` is an **optional** peer. Only `BlessMarkdown` uses it, and you pass its `lexer` to the component, so the library never loads it. If you do not use Markdown, ignore the peer warning.
 - `@tiptap/vue-3` `^3` is an **optional** peer. Only `BlessEditor` uses it. If you use the editor, install it. Otherwise, ignore the peer warning.
 - Evergreen browsers. Hard requirements: the Popover API, `<dialog>`, `color-mix()`, CSS nesting. No polyfills are shipped.
 - Progressive features degrade quietly where the browser does not support them:
