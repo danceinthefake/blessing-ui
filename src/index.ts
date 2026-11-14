@@ -332,3 +332,4 @@ export type {
   BlessQueryRule,
   BlessQueryOp,
 } from "./components/query";
+export { default as BlessAudioRecorder } from "./components/BlessAudioRecorder.vue";

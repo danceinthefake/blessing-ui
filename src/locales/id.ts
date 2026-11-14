@@ -1,6 +1,7 @@
 // Indonesian label pack. Its type asks for every word of every component with a `labels` prop, so
 // a new English word without an Indonesian one fails the typecheck.
 import type BlessAnnotator from "../components/BlessAnnotator.vue";
+import type BlessAudioRecorder from "../components/BlessAudioRecorder.vue";
 import type BlessAvatarGroup from "../components/BlessAvatarGroup.vue";
 import type BlessCalendar from "../components/BlessCalendar.vue";
 import type BlessCardInput from "../components/BlessCardInput.vue";
@@ -62,6 +63,7 @@ type All<C> = C extends new (...a: never[]) => { $props: { labels?: infer L } }
 /** a pack with every word of the library; use it as the type of your own complete pack */
 export type BlessLabelsFull = {
   BlessAnnotator: All<typeof BlessAnnotator>;
+  BlessAudioRecorder: All<typeof BlessAudioRecorder>;
   BlessAvatarGroup: All<typeof BlessAvatarGroup>;
   BlessCalendar: All<typeof BlessCalendar>;
   BlessCardInput: All<typeof BlessCardInput>;
@@ -135,6 +137,17 @@ export const labelsId: BlessLabelsFull = {
     removed: (n) => `${n} dihapus`,
     moved: (x, y) => `${x}% dari kiri, ${y}% dari atas`,
     hint: "Tombol panah menggeser tanda, Alt dengan panah mengubah ukuran kotak, Delete menghapusnya.",
+  },
+  BlessAudioRecorder: {
+    record: "Rekam",
+    pause: "Jeda",
+    resume: "Lanjutkan",
+    stop: "Berhenti",
+    again: "Rekam lagi",
+    recording: "Merekam",
+    paused: "Dijeda",
+    done: "Terekam",
+    unavailable: "Mikrofon tidak tersedia",
   },
   BlessAvatarGroup: { more: (n) => `${n} lainnya` },
   BlessCalendar: month,
