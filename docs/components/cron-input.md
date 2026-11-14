@@ -27,7 +27,7 @@ Edits a schedule for a job, a backup, or a report, in the five-field cron format
 - The next run times show under the fields (`count`, default 3, `0` hides them). They use the date format of `locale`. They are read after mount, because the server does not know the time zone of the browser.
 - The run times are in the time zone of the browser. If your server runs the job in another zone, say so in the description.
 - `blessCronNext(expr, from, count)` is exported. Use it to show the next run somewhere else, for example in a table of jobs.
-- In a [field](./field), the field's label names the group and its first part.
+- In a [field](./form), the field's label names the group and its first part.
 - Change the words with `labels` or a [label pack](../guide/translating): the names of the five parts, `next`, and `invalid`.
 
 ## Usage
