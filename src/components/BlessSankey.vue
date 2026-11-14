@@ -88,26 +88,28 @@ const colour = (c: string | undefined, i: number) => {
         </text>
       </g>
     </svg>
-    <!-- the same flows in words, for screen readers -->
-    <table class="bless-sr">
-      <caption>
-        {{ label }}
-      </caption>
-      <thead>
-        <tr>
-          <th scope="col">{{ text.from }}</th>
-          <th scope="col">{{ text.to }}</th>
-          <th scope="col">{{ text.value }}</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="(l, i) in laid.links" :key="i">
-          <td>{{ l.from.label }}</td>
-          <td>{{ l.to.label }}</td>
-          <td>{{ fmt(l.value) }}</td>
-        </tr>
-      </tbody>
-    </table>
+    <!-- the same flows in words, for screen readers; a table ignores overflow, so a box clips it -->
+    <div class="bless-sr">
+      <table>
+        <caption>
+          {{ label }}
+        </caption>
+        <thead>
+          <tr>
+            <th scope="col">{{ text.from }}</th>
+            <th scope="col">{{ text.to }}</th>
+            <th scope="col">{{ text.value }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(l, i) in laid.links" :key="i">
+            <td>{{ l.from.label }}</td>
+            <td>{{ l.to.label }}</td>
+            <td>{{ fmt(l.value) }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </figure>
 </template>
 

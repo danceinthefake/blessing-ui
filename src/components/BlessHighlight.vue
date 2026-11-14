@@ -35,7 +35,8 @@ const parts = computed(() => {
 
 <style>
 .bless-highlight__mark {
-  background: var(--bless-color-accent-soft);
+  /* a light tint of the accent under the text color: 4.5:1 in both themes */
+  background: color-mix(in srgb, var(--bless-color-accent) 25%, transparent);
   color: inherit;
   font-weight: var(--bless-font-weight-bold);
 }

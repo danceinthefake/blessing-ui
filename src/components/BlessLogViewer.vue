@@ -190,8 +190,9 @@ const uid = useId();
 .bless-ansi--bold {
   font-weight: var(--bless-font-weight-bold);
 }
+/* the muted text color, not opacity: it keeps 4.5:1 */
 .bless-ansi--dim {
-  opacity: 0.7;
+  color: var(--bless-color-text-muted);
 }
 .bless-ansi--underline {
   text-decoration: underline;
