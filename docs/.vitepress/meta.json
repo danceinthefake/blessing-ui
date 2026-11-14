@@ -5839,6 +5839,52 @@
   "slots": [],
   "exposed": []
  },
+ "BlessLogViewer": {
+  "props": [
+   {
+    "name": "lines",
+    "type": "string[]",
+    "required": true,
+    "description": "the log, one string per line; ANSI colors are kept, other escape codes dropped"
+   },
+   {
+    "name": "height",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"320px\"",
+    "description": "CSS height of the line area"
+   },
+   {
+    "name": "label",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Log\"",
+    "description": "names the log for screen readers"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ filter: string; follow: string; empty: string; count: (shown: number, total: number) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "follow",
+    "type": "boolean | undefined",
+    "required": false,
+    "default": "true",
+    "description": "keep the newest line in view; scrolling up turns it off, scrolling to the end turns it on"
+   }
+  ],
+  "events": [
+   {
+    "name": "update:follow",
+    "type": "[value: boolean]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessLoupe": {
   "props": [
    {
