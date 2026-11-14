@@ -2416,6 +2416,31 @@
   ],
   "exposed": []
  },
+ "BlessConnectionStatus": {
+  "props": [
+   {
+    "name": "state",
+    "type": "\"online\" | \"connecting\" | \"offline\" | undefined",
+    "required": false,
+    "description": "your socket's state; the browser's own offline state wins over it"
+   },
+   {
+    "name": "always",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": "show the online state too, not only a problem and the recovery"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ online: string; back: string; connecting: string; offline: string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessContainer": {
   "props": [
    {
@@ -8290,7 +8315,7 @@
    },
    {
     "name": "numeric",
-    "type": "\"auto\" | \"always\" | undefined",
+    "type": "\"always\" | \"auto\" | undefined",
     "required": false,
     "default": "\"auto\"",
     "description": "`auto` writes \"yesterday\" and \"now\". `always` writes \"1 day ago\"."

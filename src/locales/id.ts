@@ -7,6 +7,7 @@ import type BlessCardInput from "../components/BlessCardInput.vue";
 import type BlessCoachmark from "../components/BlessCoachmark.vue";
 import type BlessCodeBlock from "../components/BlessCodeBlock.vue";
 import type BlessCommand from "../components/BlessCommand.vue";
+import type BlessConnectionStatus from "../components/BlessConnectionStatus.vue";
 import type BlessCopyButton from "../components/BlessCopyButton.vue";
 import type BlessCropper from "../components/BlessCropper.vue";
 import type BlessDataTable from "../components/BlessDataTable.vue";
@@ -63,6 +64,7 @@ export type BlessLabelsFull = {
   BlessCoachmark: All<typeof BlessCoachmark>;
   BlessCodeBlock: All<typeof BlessCodeBlock>;
   BlessCommand: All<typeof BlessCommand>;
+  BlessConnectionStatus: All<typeof BlessConnectionStatus>;
   BlessCopyButton: All<typeof BlessCopyButton>;
   BlessCropper: All<typeof BlessCropper>;
   BlessDataTable: All<typeof BlessDataTable>;
@@ -136,6 +138,12 @@ export const labelsId: BlessLabelsFull = {
     scope: (l) => `Hanya di ${l}`,
     clearScope: "Cari di semua tempat",
     scopeHint: (parts) => `Ketik ${parts.join(", ")}`,
+  },
+  BlessConnectionStatus: {
+    online: "Daring",
+    back: "Kembali daring",
+    connecting: "Menyambung ulang…",
+    offline: "Anda sedang luring",
   },
   BlessCopyButton: copy,
   BlessCropper: {
