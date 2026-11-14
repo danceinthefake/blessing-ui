@@ -96,6 +96,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "cron-input",
         text: "A cron schedule, with the next run times",
       },
+      {
+        name: "BlessKeyValueEditor",
+        slug: "key-value-editor",
+        text: "Rows of key and value pairs to edit",
+      },
       { name: "BlessEmojiPicker", slug: "emoji-picker", text: "Search and pick an emoji" },
       {
         name: "BlessUploader",

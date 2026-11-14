@@ -379,7 +379,7 @@ Twelve components, 201 → 213. Each uses native platform APIs only: the library
 - ✅ `BlessConnectionStatus`: online, offline, or reconnecting. It reads `navigator.onLine` and takes a prop for the socket state. It speaks a change once, and it stays quiet while the connection is good.
 - ✅ `BlessLogViewer`: lines of a log on `BlessVirtualScroller`, with ANSI colors, a filter, and a follow mode that keeps the newest line in view.
 - ✅ `BlessCronInput`: a five-field cron expression with a field per part, a check of each part, and the next run times in the local format. (Next run times, not a sentence: a date format from `Intl` needs no grammar in each language.)
-- `BlessKeyValueEditor`: rows of key and value pairs, such as headers or environment variables. A row can be on or off, and a new empty row is always at the end.
+- ✅ `BlessKeyValueEditor`: rows of key and value pairs, such as headers or environment variables. A row can be on or off, and a new empty row is always at the end.
 - `BlessQueryBuilder`: filter rules (field, operator, value) in nested "all" and "any" groups. The value is plain data that the app turns into a query.
 - `BlessAudioRecorder`: record from the microphone with `MediaRecorder`, with live levels drawn as bars, pause, and a preview before the app takes the file.
 - `BlessCameraCapture`: a camera preview with `getUserMedia`, a switch between cameras, and a still photo as a `Blob`.
