@@ -386,6 +386,7 @@ Twelve components, 201 → 213. Each uses native platform APIs only: the library
 - ✅ `BlessHighlight`: text with the search terms marked by `<mark>`. It ignores case and accents, and it never uses `v-html`.
 - ✅ `BlessReadMore`: long text cut to some lines, with a button that shows all of it. The button shows only when the text is cut.
 - ✅ `BlessSankey`: flows between nodes as an SVG chart, in columns, with the chart colors and a table for screen readers.
+- ✅ Budget: after the round, the whole library is 139.6 KB gz JS and 39.3 KB gz CSS, under the old cap of 143 / 41. The cap is now 154 / 43, again about 10% of room. Phase 27 is done.
 
 ### Deliberately skipped
 

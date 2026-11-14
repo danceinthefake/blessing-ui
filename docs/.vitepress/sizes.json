@@ -50,6 +50,11 @@
     "css": 1111
   },
   {
+    "name": "BlessAudioRecorder",
+    "js": 2550,
+    "css": 1125
+  },
+  {
     "name": "BlessAvatar",
     "js": 691,
     "css": 410
@@ -108,6 +113,11 @@
     "name": "BlessCalendar",
     "js": 2247,
     "css": 903
+  },
+  {
+    "name": "BlessCameraCapture",
+    "js": 2142,
+    "css": 1056
   },
   {
     "name": "BlessCard",
@@ -200,6 +210,11 @@
     "css": 1277
   },
   {
+    "name": "BlessConnectionStatus",
+    "js": 730,
+    "css": 298
+  },
+  {
     "name": "BlessContainer",
     "js": 312,
     "css": 191
@@ -218,6 +233,11 @@
     "name": "BlessCountUp",
     "js": 985,
     "css": 283
+  },
+  {
+    "name": "BlessCronInput",
+    "js": 1872,
+    "css": 559
   },
   {
     "name": "BlessCropper",
@@ -360,6 +380,11 @@
     "css": 520
   },
   {
+    "name": "BlessHighlight",
+    "js": 721,
+    "css": 122
+  },
+  {
     "name": "BlessHotspots",
     "js": 3024,
     "css": 812
@@ -450,6 +475,11 @@
     "css": 310
   },
   {
+    "name": "BlessKeyValueEditor",
+    "js": 1542,
+    "css": 706
+  },
+  {
     "name": "BlessKnob",
     "js": 1451,
     "css": 649
@@ -483,6 +513,11 @@
     "name": "BlessLoadingBar",
     "js": 484,
     "css": 278
+  },
+  {
+    "name": "BlessLogViewer",
+    "js": 2576,
+    "css": 877
   },
   {
     "name": "BlessLoupe",
@@ -635,6 +670,11 @@
     "css": 593
   },
   {
+    "name": "BlessPresenceCursors",
+    "js": 831,
+    "css": 439
+  },
+  {
     "name": "BlessProgress",
     "js": 662,
     "css": 643
@@ -648,6 +688,11 @@
     "name": "BlessQrCode",
     "js": 627,
     "css": 239
+  },
+  {
+    "name": "BlessQueryBuilder",
+    "js": 3898,
+    "css": 2157
   },
   {
     "name": "BlessQuestionnaire",
@@ -690,6 +735,11 @@
     "css": 437
   },
   {
+    "name": "BlessReadMore",
+    "js": 851,
+    "css": 342
+  },
+  {
     "name": "BlessRelativeTime",
     "js": 889,
     "css": 0
@@ -698,6 +748,11 @@
     "name": "BlessResizable",
     "js": 1079,
     "css": 469
+  },
+  {
+    "name": "BlessSankey",
+    "js": 1951,
+    "css": 350
   },
   {
     "name": "BlessScheduler",
@@ -968,6 +1023,11 @@
     "name": "BlessTreemap",
     "js": 2563,
     "css": 546
+  },
+  {
+    "name": "BlessTypingIndicator",
+    "js": 541,
+    "css": 337
   },
   {
     "name": "BlessUploader",

@@ -14,6 +14,7 @@
 - `BlessHighlight`: text with the search terms marked by native `<mark>`. Case and accents do not matter, so "cafe" marks "Café", and the text is never HTML.
 - `BlessReadMore`: long text cut to some lines, with a button that shows all of it. The button shows only when the text is cut, measured again when the size changes.
 - `BlessSankey`: flows between steps as bands in plain SVG, in columns by the longest path, with the chart colors, a hover for each flow, and a table of the flows for screen readers. 213 components in all.
+- The consumer check caps the whole library at 154 KB gz JS and 43 KB gz CSS (today 139.6 and 39.3). The README had the old total of 64 KB and 27 KB, and it is now correct.
 
 ## 0.5.0 — 2026-11-15
 
