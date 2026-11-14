@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onMounted } from "vue";
+import { computed, onMounted, ref } from "vue";
 import BlessCombobox from "./BlessCombobox.vue";
 import { allZones, localZone, zoneOptions } from "./timezone";
 
@@ -20,9 +20,19 @@ const props = withDefaults(
 /** the IANA name, for example `Asia/Jakarta` */
 const model = defineModel<string | undefined>();
 
-const options = computed(() => zoneOptions(props.zones ?? allZones(), props.at ?? new Date()));
+// Each runtime has its own zone list (Firefox adds Etc/GMT+12 and more than Node has), so the
+// full list is read after mount. Before that, the server and the browser both offer only the
+// chosen zone, and hydration agrees.
+const mounted = ref(false);
+const options = computed(() =>
+  zoneOptions(
+    props.zones ?? (mounted.value ? allZones() : model.value ? [model.value] : []),
+    props.at ?? new Date(),
+  ),
+);
 // the device zone is only known in the browser, so it is set after mount, never on the server
 onMounted(() => {
+  mounted.value = true;
   if (props.detect && !model.value) {
     const z = localZone();
     if (options.value.some((o) => o.value === z)) model.value = z;

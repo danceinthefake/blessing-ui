@@ -68,3 +68,21 @@ test("BlessTimezonePicker: detect leaves a chosen zone alone and skips a zone th
   await nextTick();
   expect(set.emitted("update:modelValue")).toBeUndefined();
 });
+
+test("BlessTimezonePicker: the server renders only the chosen zone, and the full list comes after mount", async () => {
+  const { createSSRApp, h } = await import("vue");
+  const { renderToString } = await import("vue/server-renderer");
+  const html = await renderToString(
+    createSSRApp({ render: () => h(BlessTimezonePicker, { modelValue: "Asia/Jakarta" }) }),
+  );
+  expect(html).toContain("Asia/Jakarta");
+  // with no value the list is not filtered, so the old code rendered every zone of the server
+  const empty = await renderToString(createSSRApp({ render: () => h(BlessTimezonePicker) }));
+  expect(empty).not.toContain("Europe/London");
+  const w = mount(BlessTimezonePicker, { props: { modelValue: "Asia/Jakarta" } });
+  await nextTick();
+  const offered = (
+    w.findComponent({ name: "BlessCombobox" }).props("options") as { value: string }[]
+  ).map((o) => o.value);
+  expect(offered).toContain("Europe/London");
+});
