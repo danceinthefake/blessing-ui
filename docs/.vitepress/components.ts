@@ -55,6 +55,7 @@ export const groups: { title: string; items: Entry[] }[] = [
       { name: "BlessIcon", slug: "icon", text: "SVG slot wrapper" },
       { name: "BlessText", slug: "text", text: "Typography helper" },
       { name: "BlessKbd", slug: "kbd", text: "Key combo" },
+      { name: "BlessHighlight", slug: "highlight", text: "Text with the search terms marked" },
       {
         name: "BlessRelativeTime",
         slug: "relative-time",

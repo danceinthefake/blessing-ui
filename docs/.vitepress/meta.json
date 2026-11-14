@@ -4471,6 +4471,25 @@
   "slots": [],
   "exposed": []
  },
+ "BlessHighlight": {
+  "props": [
+   {
+    "name": "text",
+    "type": "string",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "query",
+    "type": "string | string[] | undefined",
+    "required": false,
+    "description": "a search: its words are marked; or a list of terms, each marked as written"
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessHotspots": {
   "props": [
    {
