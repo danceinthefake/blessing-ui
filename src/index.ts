@@ -325,3 +325,10 @@ export { default as BlessCronInput } from "./components/BlessCronInput.vue";
 export { blessCronNext } from "./components/cron";
 export { default as BlessKeyValueEditor } from "./components/BlessKeyValueEditor.vue";
 export type { BlessKeyValue } from "./components/BlessKeyValueEditor.vue";
+export { default as BlessQueryBuilder } from "./components/BlessQueryBuilder.vue";
+export type {
+  BlessQueryField,
+  BlessQueryGroup,
+  BlessQueryRule,
+  BlessQueryOp,
+} from "./components/query";
