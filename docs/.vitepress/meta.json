@@ -7921,6 +7921,105 @@
   "slots": [],
   "exposed": []
  },
+ "BlessQueryBuilder": {
+  "props": [
+   {
+    "name": "fields",
+    "type": "BlessQueryField[]",
+    "required": true,
+    "description": "what people can filter by"
+   },
+   {
+    "name": "maxDepth",
+    "type": "number | undefined",
+    "required": false,
+    "default": "2",
+    "description": "how deep groups can go; 1 allows no groups inside the top one"
+   },
+   {
+    "name": "disabled",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ group: string; match: string; all: string; any: string; field: string; op: string; value: string; addRule: string; addGroup: string; remove: string; removeGroup: string; eq: string; neq: string; contains: string; starts: string; lt: string; lte: string; gt: string; gte: string; empty: string; notEmpty: string; before: string; onOrBefore: string; after: string; onOrAfter: string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "BlessQueryGroup | undefined",
+    "required": false,
+    "default": "{ match: \"all\", rules: [] }",
+    "description": "the rules as plain data; turn it into your query on the server"
+   }
+  ],
+  "events": [
+   {
+    "name": "update:modelValue",
+    "type": "[value: BlessQueryGroup]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
+ "BlessQueryGroup": {
+  "props": [
+   {
+    "name": "fields",
+    "type": "BlessQueryField[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "text",
+    "type": "Record<string, string>",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "depth",
+    "type": "number",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "maxDepth",
+    "type": "number",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "disabled",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "BlessQueryGroup",
+    "required": true,
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "update:modelValue",
+    "type": "[value: BlessQueryGroup]",
+    "description": ""
+   },
+   {
+    "name": "remove",
+    "type": "[]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessQuestionnaire": {
   "props": [
    {

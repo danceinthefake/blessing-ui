@@ -34,6 +34,7 @@ import type BlessPhoneInput from "../components/BlessPhoneInput.vue";
 import type BlessPickList from "../components/BlessPickList.vue";
 import type BlessPinPad from "../components/BlessPinPad.vue";
 import type BlessPoll from "../components/BlessPoll.vue";
+import type BlessQueryBuilder from "../components/BlessQueryBuilder.vue";
 import type BlessQuestionnaire from "../components/BlessQuestionnaire.vue";
 import type BlessRangeCalendar from "../components/BlessRangeCalendar.vue";
 import type BlessScheduler from "../components/BlessScheduler.vue";
@@ -94,6 +95,7 @@ export type BlessLabelsFull = {
   BlessPickList: All<typeof BlessPickList>;
   BlessPinPad: All<typeof BlessPinPad>;
   BlessPoll: All<typeof BlessPoll>;
+  BlessQueryBuilder: All<typeof BlessQueryBuilder>;
   BlessQuestionnaire: All<typeof BlessQuestionnaire>;
   BlessRangeCalendar: All<typeof BlessRangeCalendar>;
   BlessScheduler: All<typeof BlessScheduler>;
@@ -330,6 +332,33 @@ export const labelsId: BlessLabelsFull = {
     clear: "Kosongkan",
   },
   BlessPoll: { vote: "Pilih", yours: "pilihan Anda", votes: (n) => `${n} suara` },
+  BlessQueryBuilder: {
+    group: "Aturan",
+    match: "Cocokkan",
+    all: "Semua aturan ini",
+    any: "Salah satu aturan ini",
+    field: "Kolom",
+    op: "Operator",
+    value: "Nilai",
+    addRule: "Tambah aturan",
+    addGroup: "Tambah grup",
+    remove: "Hapus aturan",
+    removeGroup: "Hapus grup",
+    eq: "adalah",
+    neq: "bukan",
+    contains: "berisi",
+    starts: "diawali",
+    lt: "kurang dari",
+    lte: "paling banyak",
+    gt: "lebih dari",
+    gte: "paling sedikit",
+    empty: "kosong",
+    notEmpty: "tidak kosong",
+    before: "sebelum",
+    onOrBefore: "pada atau sebelum",
+    after: "sesudah",
+    onOrAfter: "pada atau sesudah",
+  },
   BlessQuestionnaire: {
     next: "Lanjut",
     previous: "Kembali",

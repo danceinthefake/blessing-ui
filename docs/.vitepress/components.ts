@@ -101,6 +101,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "key-value-editor",
         text: "Rows of key and value pairs to edit",
       },
+      {
+        name: "BlessQueryBuilder",
+        slug: "query-builder",
+        text: "Filter rules in nested all and any groups",
+      },
       { name: "BlessEmojiPicker", slug: "emoji-picker", text: "Search and pick an emoji" },
       {
         name: "BlessUploader",
