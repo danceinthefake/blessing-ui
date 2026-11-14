@@ -25,7 +25,8 @@ let trigger: HTMLElement | null = null;
 watch(open, (o) => {
   if (o) {
     trigger = document.activeElement as HTMLElement | null;
-    nextTick(() => (cancelBtn.value?.$el as HTMLElement | undefined)?.focus());
+    // two ticks: the popover shows its panel on the first, and a hidden button takes no focus
+    nextTick(() => nextTick(() => (cancelBtn.value?.$el as HTMLElement | undefined)?.focus()));
   } else nextTick(() => trigger?.focus?.());
 });
 function done(ok: boolean) {
