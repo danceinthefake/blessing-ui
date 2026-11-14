@@ -28,7 +28,7 @@ export default defineConfig({
     // links each module to its CSS and assembles the all-in-one stylesheet
     cssCodeSplit: true,
     rollupOptions: {
-      external: ["vue", "@nuxt/kit", /^node:/],
+      external: ["vue", "@nuxt/kit", "marked", /^node:/],
       output: {
         preserveModules: true,
         preserveModulesRoot: "src",

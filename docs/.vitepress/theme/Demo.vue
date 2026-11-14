@@ -52,7 +52,12 @@ const showCode = ref(false);
 /* demo content shouldn't inherit vp-doc paragraph/list styling */
 .vp-doc
   .demo__preview
-  :is(p, ul, ol, li, details, summary):not(.tiptap *, .bless-org *, .bless-thread__replies) {
+  :is(p, ul, ol, li, details, summary):not(
+    .tiptap *,
+    .bless-org *,
+    .bless-markdown *,
+    .bless-thread__replies
+  ) {
   margin: 0;
   padding: 0;
   list-style: none;

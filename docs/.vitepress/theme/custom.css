@@ -66,12 +66,12 @@
 .VPHero .text {
   font-weight: var(--bless-font-weight-light);
 }
-.vp-doc h1,
-.vp-doc h2 {
+/* the site's own headings; demos (.vp-raw) show the library's */
+.vp-doc :is(h1, h2):not(.vp-raw *) {
   font-weight: var(--bless-font-weight-light);
   letter-spacing: var(--bless-tracking-tight);
 }
-.vp-doc h2 {
+.vp-doc h2:not(.vp-raw *) {
   border-top: var(--bless-border-width) solid var(--bless-color-border);
 }
 /* component pages: one-liner under h1 */
@@ -89,7 +89,8 @@
   --vp-code-color: var(--bless-color-text);
 }
 /* demo content is the library's, not prose */
-.vp-doc .demo__preview a {
+/* Markdown is prose: its links keep the library's own link style */
+.vp-doc .demo__preview a:not(.bless-markdown *) {
   color: inherit;
   font-weight: inherit;
   text-decoration: none;
@@ -129,7 +130,9 @@
   border: 0;
   padding: 0;
 }
-.vp-doc .demo__preview :is(h1, h2, h3, h4, h5, h6):not(.tiptap *, .bless-section__title) {
+.vp-doc
+  .demo__preview
+  :is(h1, h2, h3, h4, h5, h6):not(.tiptap *, .bless-markdown *, .bless-section__title) {
   margin: 0;
   padding: 0;
   border: 0;

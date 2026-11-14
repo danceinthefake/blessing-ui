@@ -367,7 +367,7 @@ Each component needs tests, a docs page with a live example, a README row, and a
 - ✅ `BlessDescriptions`: a key-value list (`<dl>`) for detail pages: label and value pairs, in one or more columns, with a bordered variant. (No `span` per item: with columns that collapse, a span wider than the row would add columns.)
 - ✅ `BlessDateTimePicker`: one field for a date and a time, on top of `BlessDatePicker` and `BlessTimePicker`. The value is an ISO date-time text in local time.
 - ✅ `BlessEmojiPicker`: search and pick an emoji, by group, with recent ones first. It ships a small emoji list and has keyboard navigation in the grid.
-- `BlessMarkdown`: render Markdown text with the library's typography. It uses a small parser that you install, and it makes the HTML safe. It renders nothing that the text does not ask for.
+- ✅ `BlessMarkdown`: render Markdown text with the library's typography. You pass marked's `lexer` (an optional peer), so the library has no run-time import of it, as `BlessEditor` takes its editor. The tokens become VNodes, never `v-html`: raw HTML stays text, and only http, https, mailto, tel, and relative URLs link or load.
 - Indonesian docs: the guide and design pages in Bahasa Indonesia under `/id/`, with a language switch. Component pages stay in English and link back.
 
 ### Deliberately skipped
