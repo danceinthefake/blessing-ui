@@ -43,6 +43,7 @@ import type BlessThread from "../components/BlessThread.vue";
 import type BlessTimer from "../components/BlessTimer.vue";
 import type BlessTour from "../components/BlessTour.vue";
 import type BlessTreemap from "../components/BlessTreemap.vue";
+import type BlessTypingIndicator from "../components/BlessTypingIndicator.vue";
 import type BlessUploader from "../components/BlessUploader.vue";
 import type BlessUptimeBar from "../components/BlessUptimeBar.vue";
 
@@ -98,6 +99,7 @@ export type BlessLabelsFull = {
   BlessTimer: All<typeof BlessTimer>;
   BlessTour: All<typeof BlessTour>;
   BlessTreemap: All<typeof BlessTreemap>;
+  BlessTypingIndicator: All<typeof BlessTypingIndicator>;
   BlessUploader: All<typeof BlessUploader>;
   BlessUptimeBar: All<typeof BlessUptimeBar>;
 };
@@ -373,6 +375,11 @@ export const labelsId: BlessLabelsFull = {
     path: "Jalur",
     up: "Naik satu tingkat",
     hint: "Tombol panah berpindah antarpetak, Enter membuka atau memilih, Backspace naik satu tingkat.",
+  },
+  BlessTypingIndicator: {
+    one: (n) => `${n} sedang mengetik…`,
+    two: (a, b) => `${a} dan ${b} sedang mengetik…`,
+    many: (n, more) => `${n} dan ${more} lainnya sedang mengetik…`,
   },
   BlessUploader: {
     clear: "Kosongkan",

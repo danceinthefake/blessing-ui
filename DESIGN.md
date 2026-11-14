@@ -375,7 +375,7 @@ Each component needs tests, a docs page with a live example, a README row, and a
 Twelve components, 201 → 213. Each uses native platform APIs only: the library adds no dependency. Each needs tests, a docs page with a live example, a README row, and words in `labelsId`. The whole-library budget goes up again for this round.
 
 - ✅ `BlessPresenceCursors`: the live pointers of other people over an area, each with a name tag. The app sends the positions, for example from Phoenix Presence. It also reports the local pointer, as a fraction of the area.
-- `BlessTypingIndicator`: "Ana is typing…" for one, two, or more people, with three dots that stop under reduced motion.
+- ✅ `BlessTypingIndicator`: "Ana is typing…" for one, two, or more people, with three dots that stop under reduced motion.
 - `BlessConnectionStatus`: online, offline, or reconnecting. It reads `navigator.onLine` and takes a prop for the socket state. It speaks a change once, and it stays quiet while the connection is good.
 - `BlessLogViewer`: lines of a log on `BlessVirtualScroller`, with ANSI colors, a filter, and a follow mode that keeps the newest line in view.
 - `BlessCronInput`: a five-field cron expression with a field per part, a check of each part, and the schedule as a sentence.

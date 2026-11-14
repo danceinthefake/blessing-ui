@@ -11553,6 +11553,25 @@
   "slots": [],
   "exposed": []
  },
+ "BlessTypingIndicator": {
+  "props": [
+   {
+    "name": "names",
+    "type": "string[]",
+    "required": true,
+    "description": "the people who type now; empty shows nothing"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ one: (name: string) => string; two: (a: string, b: string) => string; many: (name: string, more: number) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessUploader": {
   "props": [
    {

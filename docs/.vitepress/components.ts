@@ -433,6 +433,7 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "presence-cursors",
         text: "Live pointers of other people over an area",
       },
+      { name: "BlessTypingIndicator", slug: "typing-indicator", text: "Who is typing now" },
     ],
   },
   {
