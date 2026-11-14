@@ -9,7 +9,8 @@
 - `BlessCronInput`: a five-field cron schedule with a field per part, a mark on a part that is not valid, and the next run times in the local date format. `blessCronNext` is exported.
 - `BlessKeyValueEditor`: rows of key and value pairs, such as headers or environment variables, with an empty row always at the end. `toggle` turns a row off without removing it, `secret` hides the values, and a key used twice is marked.
 - `BlessQueryBuilder`: filter rules (field, operator, value) in nested "all" and "any" groups. The value is plain data that you turn into a query on the server. The operators follow the type of the field.
-- `BlessAudioRecorder`: record from the microphone with the native `MediaRecorder`, with live levels, pause, and a player for the recording. `record` sends the `Blob` when it stops. The browser asks for the microphone only when you press Record. 209 components in all.
+- `BlessAudioRecorder`: record from the microphone with the native `MediaRecorder`, with live levels, pause, and a player for the recording. `record` sends the `Blob` when it stops. The browser asks for the microphone only when you press Record.
+- `BlessCameraCapture`: a camera preview with `getUserMedia`, a switch between cameras, and a photo as a `Blob` with `capture`. The browser asks for the camera only when you press Start, and the camera turns off after the photo. 210 components in all.
 
 ## 0.5.0 — 2026-11-15
 

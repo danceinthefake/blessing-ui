@@ -333,3 +333,4 @@ export type {
   BlessQueryOp,
 } from "./components/query";
 export { default as BlessAudioRecorder } from "./components/BlessAudioRecorder.vue";
+export { default as BlessCameraCapture } from "./components/BlessCameraCapture.vue";

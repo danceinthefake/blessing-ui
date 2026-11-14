@@ -10,7 +10,7 @@ Vue 3 component library and design tokens. The UI is gray-scale, with one accent
 
 Docs, with every component live: **[ui.blessing.id](https://ui.blessing.id)**
 
-- 209 components, from button to data table to chat. Only `--bless-*` custom properties style them. There is no Tailwind dependency.
+- 210 components, from button to data table to chat. Only `--bless-*` custom properties style them. There is no Tailwind dependency.
 - Native platform first: `<dialog>`, Popover API, `<details>`, native form controls, `Intl` dates, and scroll-snap. There is no positioning, date, or table library.
 - Accessible defaults: focus rings, ARIA tablist, dialog, and tables, and `prefers-reduced-motion`
 - ESM, tree-shakable, with `vue` as the only required peer (`@tiptap/vue-3` is optional, for `BlessEditor`). One component (`BlessButton`) costs about 1 KB gzip of JS and about 2.6 KB of CSS (tokens and its own styles). Everything costs about 64 KB and 27 KB. CSS is split per component and the import pulls it in, so you never pay for styles that you do not use
@@ -92,7 +92,7 @@ The words that components say are English by default. `provideLabels(labelsId)` 
 
 ## Components
 
-209 components across eight groups. Every one styles itself from `--bless-*` tokens and ships with a test and a docs page.
+210 components across eight groups. Every one styles itself from `--bless-*` tokens and ships with a test and a docs page.
 
 ### Primitives
 
@@ -352,6 +352,7 @@ Gestures: `usePan(el, cb)` · `useSwipe(el, cb, { threshold, axis })` · `useLon
 | `BlessAudioPlayer`   | Track list player                                                               | `tracks`, `v-model` index, `color`. Emits `play` `pause` `ended`                                                          |
 | `BlessWaveform`      | Audio peaks to click or key to seek                                             | `peaks`, `src`, `bars`, `height`, `v-model`, `label`, `valueText`. Emits `seek`                                           |
 | `BlessAudioRecorder` | Record from the microphone, with a preview                                      | `maxDuration`, `mimeType`, `bars`, `labels`. Emits `record(blob)` `error`. Native MediaRecorder                           |
+| `BlessCameraCapture` | Take a photo with the camera, in the page                                       | `facing` user/environment, `type`, `quality`, `labels`. Emits `capture(blob)` `error`. Native getUserMedia                |
 | `BlessAnnotator`     | Draw / move / resize boxes and pins on an image. Regions as fractions. Keyboard | `v-model` regions `{id,x,y,w?,h?,label}`, `v-model:selected`, `v-model:tool`, `src`, `alt`, `editable`, `label`, `labels` |
 
 ### Composables

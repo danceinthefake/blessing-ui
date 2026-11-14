@@ -1218,6 +1218,51 @@
   "slots": [],
   "exposed": []
  },
+ "BlessCameraCapture": {
+  "props": [
+   {
+    "name": "facing",
+    "type": "\"user\" | \"environment\" | undefined",
+    "required": false,
+    "default": "\"user\"",
+    "description": "the camera to start with: `user` faces the person, `environment` faces away"
+   },
+   {
+    "name": "type",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"image/jpeg\"",
+    "description": "the image type of the photo"
+   },
+   {
+    "name": "quality",
+    "type": "number | undefined",
+    "required": false,
+    "default": "0.9",
+    "description": "0 to 1, for `image/jpeg` and `image/webp`"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ start: string; capture: string; switch: string; retake: string; preview: string; photo: string; unavailable: string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "error",
+    "type": "[error: unknown]",
+    "description": ""
+   },
+   {
+    "name": "capture",
+    "type": "[photo: Blob]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessCard": {
   "props": [
    {
@@ -9313,7 +9358,7 @@
    },
    {
     "name": "type",
-    "type": "\"image/png\" | \"image/jpeg\" | \"image/webp\" | undefined",
+    "type": "\"image/jpeg\" | \"image/png\" | \"image/webp\" | undefined",
     "required": false,
     "default": "\"image/png\"",
     "description": "export format"
@@ -10942,7 +10987,7 @@
   "props": [
    {
     "name": "mode",
-    "type": "\"group\" | \"switch\" | undefined",
+    "type": "\"switch\" | \"group\" | undefined",
     "required": false,
     "default": "\"switch\"",
     "description": "three-way (light/system/dark) or a single light↔dark button"

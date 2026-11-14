@@ -4,6 +4,7 @@ import type BlessAnnotator from "../components/BlessAnnotator.vue";
 import type BlessAudioRecorder from "../components/BlessAudioRecorder.vue";
 import type BlessAvatarGroup from "../components/BlessAvatarGroup.vue";
 import type BlessCalendar from "../components/BlessCalendar.vue";
+import type BlessCameraCapture from "../components/BlessCameraCapture.vue";
 import type BlessCardInput from "../components/BlessCardInput.vue";
 import type BlessCoachmark from "../components/BlessCoachmark.vue";
 import type BlessCodeBlock from "../components/BlessCodeBlock.vue";
@@ -66,6 +67,7 @@ export type BlessLabelsFull = {
   BlessAudioRecorder: All<typeof BlessAudioRecorder>;
   BlessAvatarGroup: All<typeof BlessAvatarGroup>;
   BlessCalendar: All<typeof BlessCalendar>;
+  BlessCameraCapture: All<typeof BlessCameraCapture>;
   BlessCardInput: All<typeof BlessCardInput>;
   BlessCoachmark: All<typeof BlessCoachmark>;
   BlessCodeBlock: All<typeof BlessCodeBlock>;
@@ -151,6 +153,15 @@ export const labelsId: BlessLabelsFull = {
   },
   BlessAvatarGroup: { more: (n) => `${n} lainnya` },
   BlessCalendar: month,
+  BlessCameraCapture: {
+    start: "Nyalakan kamera",
+    capture: "Ambil foto",
+    switch: "Ganti kamera",
+    retake: "Ambil ulang",
+    preview: "Pratinjau kamera",
+    photo: "Foto",
+    unavailable: "Kamera tidak tersedia",
+  },
   BlessCardInput: { invalid: "Periksa nomor kartu" },
   BlessCoachmark: { dot: (t) => `Baru: ${t}`, ok: "Mengerti" },
   BlessCodeBlock: copy,
