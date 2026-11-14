@@ -1,8 +1,8 @@
 # Changelog
 
-## 0.4.0 — unreleased
+## 0.4.0 — 2026-11-14
 
-21 new components, 197 in all. Every new component has a docs page, tests, and a keyboard path for what the pointer does. Every new component passes axe in light and dark, and its demo hydrates after server rendering. No breaking changes.
+21 new components, 197 in all, pinned and resizable DataTable columns, and auto-import for Nuxt and Vite. Every new component has a docs page, tests, and a keyboard path for what the pointer does. Every new component passes axe in light and dark, and its demo hydrates after server rendering. No breaking changes.
 
 **Display and feedback**
 
@@ -44,13 +44,22 @@
 
 - `BlessWaveform`: audio peaks as bars, with a native range over them to seek. It decodes a `src` in the browser, or takes `peaks` from your server
 
+**Existing components**
+
+- `BlessDataTable`: `pin: "start"` or `"end"` on a column keeps it in view while the table scrolls sideways. `resizable` adds a handle to each header for the pointer and the arrow keys. `v-model:widths` holds the widths.
+
+**Auto-import**
+
+- `blessing-ui/nuxt` is a Nuxt module, and `blessing-ui/resolver` is a resolver for unplugin-vue-components. With either one, you can use a component in a template without an `import` line. `@nuxt/kit` is a new optional peer.
+
+**Fixes**
+
+- With a `v-model` on the parent, two events sent the value from before the change. `BlessInputOTP` `complete` did not have the last digit, and `BlessSignaturePad` `end` sent the old image. They now send the new value.
+- `BlessDropdownMenu` dropped a `class` or other attribute that you gave it, and Vue showed a warning. It now puts them on the element that holds the trigger. In `BlessDataTable`, the Columns button now sits at the end of the toolbar.
+
 **Notes**
 
-- The library is now 118.6 KB gz JS and 36.1 KB gz CSS, under the caps of 130 KB and 40 KB.
-- `BlessDataTable`: `pin: "start"` or `"end"` on a column keeps it in view while the table scrolls sideways. `resizable` adds a handle to each header for the pointer and the arrow keys. `v-model:widths` holds the widths.
-- Auto-import: `blessing-ui/nuxt` is a Nuxt module, and `blessing-ui/resolver` is a resolver for unplugin-vue-components. `@nuxt/kit` is a new optional peer.
-- **Fix:** with a `v-model` on the parent, three events sent the value from before the change: `BlessInputOTP` `complete` lacked the last digit, `BlessWaveform` `seek` sent the old position, and `BlessSignaturePad` `end` sent the old image. They now send the new value.
-- **Fix:** `BlessDropdownMenu` dropped a `class` or other attribute that you gave it, and Vue showed a warning. It now puts them on the element that holds the trigger. In `BlessDataTable`, the Columns button now sits at the end of the toolbar.
+- The library is now 119.8 KB gz JS and 36.5 KB gz CSS, under the caps of 130 KB and 40 KB.
 - Money needs no new component. `BlessInputNumber` formats currency through `format`. `BlessTextarea` already grows with `autogrow`. `BlessBubble` already has reaction chips.
 
 ## 0.3.0 — 2026-10-10
