@@ -316,3 +316,5 @@ export {
   useVisibility,
   useScroll,
 } from "./composables/useBrowser";
+export { default as BlessPresenceCursors } from "./components/BlessPresenceCursors.vue";
+export type { BlessPresenceCursor } from "./components/BlessPresenceCursors.vue";

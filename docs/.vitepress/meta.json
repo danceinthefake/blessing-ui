@@ -7554,6 +7554,38 @@
   ],
   "exposed": []
  },
+ "BlessPresenceCursors": {
+  "props": [
+   {
+    "name": "cursors",
+    "type": "BlessPresenceCursor[]",
+    "required": true,
+    "description": "the other people's pointers; leave out the local one"
+   },
+   {
+    "name": "track",
+    "type": "boolean | undefined",
+    "required": false,
+    "default": "true",
+    "description": "report the local pointer with `move`"
+   }
+  ],
+  "events": [
+   {
+    "name": "move",
+    "type": "[at: { x: number; y: number; } | null]",
+    "description": ""
+   }
+  ],
+  "slots": [
+   {
+    "name": "default",
+    "type": "{}",
+    "description": ""
+   }
+  ],
+  "exposed": []
+ },
  "BlessProgress": {
   "props": [
    {

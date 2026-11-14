@@ -370,6 +370,23 @@ Each component needs tests, a docs page with a live example, a README row, and a
 - ✅ `BlessMarkdown`: render Markdown text with the library's typography. You pass marked's `lexer` (an optional peer), so the library has no run-time import of it, as `BlessEditor` takes its editor. The tokens become VNodes, never `v-html`: raw HTML stays text, and only http, https, mailto, tel, and relative URLs link or load.
 - ✅ Indonesian docs: the home, guide, and design pages in Bahasa Indonesia under `/id/` (17 pages), with a language switch. Component and block pages stay English: the switch on them redirects to the English page (a route guard, and `public/_redirects` for direct visits). `e2e/sweep.mjs` fails when an English guide or design page has no Indonesian page. Phase 26 is done.
 
+### Phase 27 — realtime, tools, and media (2026-11-15)
+
+Twelve components, 201 → 213. Each uses native platform APIs only: the library adds no dependency. Each needs tests, a docs page with a live example, a README row, and words in `labelsId`. The whole-library budget goes up again for this round.
+
+- ✅ `BlessPresenceCursors`: the live pointers of other people over an area, each with a name tag. The app sends the positions, for example from Phoenix Presence. It also reports the local pointer, as a fraction of the area.
+- `BlessTypingIndicator`: "Ana is typing…" for one, two, or more people, with three dots that stop under reduced motion.
+- `BlessConnectionStatus`: online, offline, or reconnecting. It reads `navigator.onLine` and takes a prop for the socket state. It speaks a change once, and it stays quiet while the connection is good.
+- `BlessLogViewer`: lines of a log on `BlessVirtualScroller`, with ANSI colors, a filter, and a follow mode that keeps the newest line in view.
+- `BlessCronInput`: a five-field cron expression with a field per part, a check of each part, and the schedule as a sentence.
+- `BlessKeyValueEditor`: rows of key and value pairs, such as headers or environment variables. A row can be on or off, and a new empty row is always at the end.
+- `BlessQueryBuilder`: filter rules (field, operator, value) in nested "all" and "any" groups. The value is plain data that the app turns into a query.
+- `BlessAudioRecorder`: record from the microphone with `MediaRecorder`, with live levels drawn as bars, pause, and a preview before the app takes the file.
+- `BlessCameraCapture`: a camera preview with `getUserMedia`, a switch between cameras, and a still photo as a `Blob`.
+- `BlessHighlight`: text with the search terms marked by `<mark>`. It ignores case and accents, and it never uses `v-html`.
+- `BlessReadMore`: long text cut to some lines, with a button that shows all of it. The button shows only when the text is cut.
+- `BlessSankey`: flows between nodes as an SVG chart, in columns, with the chart colors and a table for screen readers.
+
 ### Deliberately skipped
 
 - **Chart**: no bundled lib. Phase 11 ✅: `--bless-color-chart-{1..5}` (≥3:1 both themes) + `BlessChart` frame that maps them onto Unovis `--vis-*` vars. Unovis is the documented pairing, installed by the consumer.

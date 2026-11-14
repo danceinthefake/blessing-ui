@@ -428,6 +428,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         text: "Multi-step single/multiple/freeform",
       },
       { name: "BlessPoll", slug: "poll", text: "One-question vote with results" },
+      {
+        name: "BlessPresenceCursors",
+        slug: "presence-cursors",
+        text: "Live pointers of other people over an area",
+      },
     ],
   },
   {
