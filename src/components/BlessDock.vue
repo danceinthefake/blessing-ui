@@ -118,7 +118,7 @@ function onKey(e: KeyboardEvent) {
       :type="it.href ? undefined : 'button'"
       :disabled="it.href ? undefined : it.disabled"
       :aria-disabled="it.href && it.disabled ? true : undefined"
-      :aria-label="it.label"
+      :aria-label="it.badge != null ? `${it.label} ${it.badge}` : it.label"
       :tabindex="active === i ? 0 : -1"
       :style="{ '--_s': scaleOf(i) }"
       @click="!it.disabled && emit('select', it)"
@@ -126,10 +126,10 @@ function onKey(e: KeyboardEvent) {
       <span class="bless-dock__icon" aria-hidden="true">
         <slot name="item" :item="it">{{ it.icon }}</slot>
       </span>
+      <span class="bless-dock__tip" aria-hidden="true">{{ it.label }}</span>
       <span v-if="it.badge != null" class="bless-dock__badge" aria-hidden="true">{{
         it.badge
       }}</span>
-      <span class="bless-dock__tip" aria-hidden="true">{{ it.label }}</span>
     </component>
   </div>
 </template>

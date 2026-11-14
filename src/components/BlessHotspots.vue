@@ -131,7 +131,7 @@ function onKey(i: number, e: KeyboardEvent) {
             type="button"
             class="bless-hotspots__pin"
             :class="{ 'bless-hotspots__pin--on': active === s.id }"
-            :aria-label="s.label"
+            :aria-label="`${i + 1}. ${s.label}`"
             :aria-keyshortcuts="editable ? 'Delete' : undefined"
             @pointerdown="down(i, $event)"
             @pointermove="move"

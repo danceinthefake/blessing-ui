@@ -190,7 +190,8 @@ const hint = `bless-treemap-hint`;
       >
         <template v-if="t.big">
           <span class="bless-treemap__name">{{ t.node.label }}</span>
-          <span v-if="t.tall" class="bless-treemap__value">{{ fmt(t.v) }}</span>
+          <!-- a space for tools that read the text: flex does not render it -->
+          {{ " " }}<span v-if="t.tall" class="bless-treemap__value">{{ fmt(t.v) }}</span>
         </template>
       </button>
     </div>

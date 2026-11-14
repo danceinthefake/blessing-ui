@@ -118,7 +118,7 @@ test("the buttons zoom and reset, with names", async () => {
   const w = mk({ labels: { zoomIn: "Perbesar" } });
   await w.find("[aria-label=Perbesar]").trigger("click");
   expect(view(w).zoom).toBe(1.25);
-  await w.find("[aria-label='Reset view']").trigger("click");
+  await w.find("[aria-label$='Reset view']").trigger("click");
   expect(view(w).zoom).toBe(1);
   expect(mk({ controls: false }).find(".bless-canvas__controls").exists()).toBe(false);
   w.unmount();

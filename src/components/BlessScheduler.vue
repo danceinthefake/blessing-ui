@@ -45,6 +45,7 @@ const props = withDefaults(
       remove: string;
       title: string;
       newEvent: string;
+      /** keep the title and the time as shown on the event first: voice control users say them */
       eventName: (title: string, day: string, from: string, to: string) => string;
       moved: (title: string, day: string, from: string, to: string) => string;
       added: (title: string) => string;
@@ -82,7 +83,7 @@ const text = computed(() => ({
   remove: "Remove",
   title: "Title",
   newEvent: "New event",
-  eventName: (t: string, d: string, a: string, b: string) => `${t}, ${d}, ${a} to ${b}`,
+  eventName: (t: string, d: string, a: string, b: string) => `${t}, ${a}–${b}, ${d}`,
   moved: (t: string, d: string, a: string, b: string) => `${t}: ${d}, ${a} to ${b}`,
   added: (t: string) => `${t} added`,
   removed: (t: string) => `${t} removed`,

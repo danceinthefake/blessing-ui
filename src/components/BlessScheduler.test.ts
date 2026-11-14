@@ -67,7 +67,7 @@ test("a week: seven named columns, hours down the side, events named with day an
   expect(w.findAll(".bless-sched__day")[0]!.text()).toBe("Mon 4");
   expect(w.findAll(".bless-sched__hour")).toHaveLength(10);
   expect(w.find(".bless-sched__title").text()).toBe("4 May 2026 – 10 May 2026");
-  expect(evs()[0]!.attributes("aria-label")).toBe("Standup, Wednesday 6 May, 9:00 to 10:00");
+  expect(evs()[0]!.attributes("aria-label")).toBe("Standup, 9:00–10:00, Wednesday 6 May");
 });
 
 test("an event sits at its time and has its length", () => {

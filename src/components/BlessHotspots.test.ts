@@ -41,7 +41,7 @@ const mouse = (el: Element, type: string, x = 0, y = 0) => {
 test("pins are numbered, named, and placed in percent", () => {
   mk();
   expect(pin(0).text()).toBe("1");
-  expect(pin(1).attributes("aria-label")).toBe("Wheel");
+  expect(pin(1).attributes("aria-label")).toBe("2. Wheel");
   expect(w.findAll(".bless-hotspots__spot")[0].attributes("style")).toContain("left: 10%");
   expect(w.find("img").attributes("alt")).toBe("Car");
 });

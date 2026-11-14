@@ -1,5 +1,17 @@
 # Changelog
 
+## Unreleased
+
+**Fixes**
+
+- `BlessConfirmPopup` now moves focus to Cancel when it opens. Before, focus stayed on the trigger, because the button was still hidden when the popup tried to focus it.
+- Accessible names now contain the text that you see, so voice control users can say it (WCAG 2.5.3, "Label in Name"). A `BlessHotspots` pin is "1. Search", not "Search". A `BlessDock` item with a badge is "Mail 3". The `BlessInfiniteCanvas` reset button is "100%, Reset view". A `BlessScheduler` event is "Standup, 9:00 AM–9:30 AM, Monday, October 12", in the same order as on screen. If you replaced `labels.eventName`, keep the title and the time first.
+- `BlessEditor` draws its tool symbols, such as "H1", with CSS. They are icons for the names that screen readers already hear, such as "Heading 1".
+
+**Tooling**
+
+- The dev dependencies are on their latest versions, and the e2e checks use axe-core 4.14. TypeScript stays on 6, because vue-tsc does not support TypeScript 7 yet.
+
 ## 0.4.0 — 2026-11-14
 
 21 new components, 197 in all, pinned and resizable DataTable columns, and auto-import for Nuxt and Vite. Every new component has a docs page, tests, and a keyboard path for what the pointer does. Every new component passes axe in light and dark, and its demo hydrates after server rendering. No breaking changes.

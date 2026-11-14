@@ -178,7 +178,8 @@ const defs: Record<Exclude<BlessEditorTool, "|">, Def> = {
             @mousedown.prevent
             @click="editor && defs[t].run(editor)"
           >
-            <span aria-hidden="true">{{ defs[t].icon }}</span>
+            <!-- drawn by CSS: "H1" is an icon for "Heading 1", not text to say -->
+            <span class="bless-editor__icon" :data-icon="defs[t].icon" aria-hidden="true" />
           </button>
         </template>
       </slot>
@@ -189,6 +190,9 @@ const defs: Record<Exclude<BlessEditorTool, "|">, Def> = {
 </template>
 
 <style>
+.bless-editor__icon::before {
+  content: attr(data-icon);
+}
 .bless-editor {
   border-radius: var(--bless-radius);
   display: flex;

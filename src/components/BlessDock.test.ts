@@ -54,7 +54,7 @@ test("magnify: biggest at the pointer, 1 beyond the radius, falling in between",
 test("a toolbar of named items: links for hrefs, buttons for the rest, a badge, one tab stop", () => {
   mk();
   expect(w.attributes("role")).toBe("toolbar");
-  expect(els().map((e) => e.attributes("aria-label"))).toEqual(["Mail", "Docs", "Chat", "Off"]);
+  expect(els().map((e) => e.attributes("aria-label"))).toEqual(["Mail 3", "Docs", "Chat", "Off"]);
   expect(els()[1]!.element.tagName).toBe("A");
   expect(els()[0]!.element.tagName).toBe("BUTTON");
   expect(w.find(".bless-dock__badge").text()).toBe("3");

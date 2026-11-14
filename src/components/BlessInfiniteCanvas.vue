@@ -198,7 +198,11 @@ const bg = computed(() => {
       <BlessButton size="sm" variant="outline" :aria-label="text.zoomOut" @click="zoomBy(0.8)"
         >−</BlessButton
       >
-      <BlessButton size="sm" variant="outline" :aria-label="text.reset" @click="reset"
+      <BlessButton
+        size="sm"
+        variant="outline"
+        :aria-label="`${percent}%, ${text.reset}`"
+        @click="reset"
         >{{ percent }}%</BlessButton
       >
       <BlessButton size="sm" variant="outline" :aria-label="text.zoomIn" @click="zoomBy(1.25)"
