@@ -250,6 +250,11 @@
     "css": 0
   },
   {
+    "name": "BlessDescriptions",
+    "js": 453,
+    "css": 463
+  },
+  {
     "name": "BlessDialogHost",
     "js": 1678,
     "css": 836

@@ -178,6 +178,8 @@ export type { BlessRadialItem } from "./components/BlessRadialMenu.vue";
 export { default as BlessLoupe } from "./components/BlessLoupe.vue";
 export { default as BlessSparkline } from "./components/BlessSparkline.vue";
 export { default as BlessStat } from "./components/BlessStat.vue";
+export { default as BlessDescriptions } from "./components/BlessDescriptions.vue";
+export type { BlessDescriptionItem } from "./components/BlessDescriptions.vue";
 export { default as BlessPoll } from "./components/BlessPoll.vue";
 export type { BlessPollOption } from "./components/BlessPoll.vue";
 export { default as BlessTagCloud } from "./components/BlessTagCloud.vue";
