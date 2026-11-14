@@ -4,7 +4,8 @@
 
 - `BlessPresenceCursors`: the live pointers of other people over an area, each with a name tag. Positions go from 0 to 1 across the area, and `move` sends the local pointer in the same form.
 - `BlessTypingIndicator`: who is typing now, as a status line under a chat. One, two, and more names each have a sentence, and the dots stop under reduced motion.
-- `BlessConnectionStatus`: online, offline, or reconnecting. It reads the browser's state and takes your socket's state, stays quiet while all is well, and says "Back online" for a moment after a problem. 204 components in all.
+- `BlessConnectionStatus`: online, offline, or reconnecting. It reads the browser's state and takes your socket's state, stays quiet while all is well, and says "Back online" for a moment after a problem.
+- `BlessLogViewer`: a live log on virtual rows, with ANSI colors that follow the theme, a filter that keeps line numbers, and follow, which keeps the newest line in view until you scroll up. 205 components in all.
 
 ## 0.5.0 — 2026-11-15
 

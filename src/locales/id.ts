@@ -22,6 +22,7 @@ import type BlessGantt from "../components/BlessGantt.vue";
 import type BlessInfiniteCanvas from "../components/BlessInfiniteCanvas.vue";
 import type BlessInputNumber from "../components/BlessInputNumber.vue";
 import type BlessKanban from "../components/BlessKanban.vue";
+import type BlessLogViewer from "../components/BlessLogViewer.vue";
 import type BlessMarquee from "../components/BlessMarquee.vue";
 import type BlessNodeGraph from "../components/BlessNodeGraph.vue";
 import type BlessNotificationInbox from "../components/BlessNotificationInbox.vue";
@@ -79,6 +80,7 @@ export type BlessLabelsFull = {
   BlessInfiniteCanvas: All<typeof BlessInfiniteCanvas>;
   BlessInputNumber: All<typeof BlessInputNumber>;
   BlessKanban: All<typeof BlessKanban>;
+  BlessLogViewer: All<typeof BlessLogViewer>;
   BlessMarquee: All<typeof BlessMarquee>;
   BlessNodeGraph: All<typeof BlessNodeGraph>;
   BlessNotificationInbox: All<typeof BlessNotificationInbox>;
@@ -248,6 +250,12 @@ export const labelsId: BlessLabelsFull = {
     cancelled: "Dibatalkan, urutan dikembalikan",
     hint: "Tekan Spasi untuk memegang kartu. Atas dan bawah memindahkannya di dalam kolom, kiri dan kanan ke kolom lain. Spasi meletakkannya, Escape membatalkan.",
     roleDescription: "kartu yang dapat diurutkan",
+  },
+  BlessLogViewer: {
+    filter: "Saring baris",
+    follow: "Ikuti",
+    empty: "Tidak ada baris",
+    count: (shown, total) => `${shown} dari ${total} baris`,
   },
   BlessMarquee: { play: "Putar", pause: "Jeda" },
   BlessNodeGraph: {
