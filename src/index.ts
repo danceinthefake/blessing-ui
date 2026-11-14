@@ -298,6 +298,8 @@ export { default as BlessCircularProgress } from "./components/BlessCircularProg
 export { default as BlessRange } from "./components/BlessRange.vue";
 export { default as BlessTimePicker } from "./components/BlessTimePicker.vue";
 export { default as BlessDateTimePicker } from "./components/BlessDateTimePicker.vue";
+export { default as BlessEmojiPicker } from "./components/BlessEmojiPicker.vue";
+export { blessEmojis, type BlessEmoji, type BlessEmojiGroup } from "./components/emoji";
 export { default as BlessImg } from "./components/BlessImg.vue";
 export { default as BlessVideo } from "./components/BlessVideo.vue";
 export { default as BlessLoadingBar } from "./components/BlessLoadingBar.vue";

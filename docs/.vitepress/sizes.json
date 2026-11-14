@@ -295,6 +295,11 @@
     "css": 920
   },
   {
+    "name": "BlessEmojiPicker",
+    "js": 6202,
+    "css": 704
+  },
+  {
     "name": "BlessEmpty",
     "js": 450,
     "css": 443

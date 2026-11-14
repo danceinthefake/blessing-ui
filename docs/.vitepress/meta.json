@@ -3531,6 +3531,63 @@
   ],
   "exposed": []
  },
+ "BlessEmojiPicker": {
+  "props": [
+   {
+    "name": "emojis",
+    "type": "BlessEmoji[] | undefined",
+    "required": false,
+    "description": "the set to offer; the default is the built-in one"
+   },
+   {
+    "name": "columns",
+    "type": "number | undefined",
+    "required": false,
+    "default": "8",
+    "description": "emoji per row"
+   },
+   {
+    "name": "recentLimit",
+    "type": "number | undefined",
+    "required": false,
+    "default": "16",
+    "description": "how many recent emoji to keep; 0 hides the row"
+   },
+   {
+    "name": "persist",
+    "type": "string | undefined",
+    "required": false,
+    "description": "keep the recent emoji in localStorage under this key (read after mount)"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ search: string; groups: string; recent: string; results: string; empty: string; } & Record<BlessEmojiGroup, string>> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "recent",
+    "type": "string[] | undefined",
+    "required": false,
+    "default": "[]",
+    "description": "the chars of the recent emoji, newest first"
+   }
+  ],
+  "events": [
+   {
+    "name": "select",
+    "type": "[emoji: BlessEmoji]",
+    "description": ""
+   },
+   {
+    "name": "update:recent",
+    "type": "[value: string[]]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessEmpty": {
   "props": [
    {
