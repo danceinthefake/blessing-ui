@@ -384,7 +384,7 @@ Twelve components, 201 → 213. Each uses native platform APIs only: the library
 - ✅ `BlessAudioRecorder`: record from the microphone with `MediaRecorder`, with live levels drawn as bars, pause, and a preview before the app takes the file.
 - ✅ `BlessCameraCapture`: a camera preview with `getUserMedia`, a switch between cameras, and a still photo as a `Blob`.
 - ✅ `BlessHighlight`: text with the search terms marked by `<mark>`. It ignores case and accents, and it never uses `v-html`.
-- `BlessReadMore`: long text cut to some lines, with a button that shows all of it. The button shows only when the text is cut.
+- ✅ `BlessReadMore`: long text cut to some lines, with a button that shows all of it. The button shows only when the text is cut.
 - `BlessSankey`: flows between nodes as an SVG chart, in columns, with the chart colors and a table for screen readers.
 
 ### Deliberately skipped

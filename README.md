@@ -10,7 +10,7 @@ Vue 3 component library and design tokens. The UI is gray-scale, with one accent
 
 Docs, with every component live: **[ui.blessing.id](https://ui.blessing.id)**
 
-- 211 components, from button to data table to chat. Only `--bless-*` custom properties style them. There is no Tailwind dependency.
+- 212 components, from button to data table to chat. Only `--bless-*` custom properties style them. There is no Tailwind dependency.
 - Native platform first: `<dialog>`, Popover API, `<details>`, native form controls, `Intl` dates, and scroll-snap. There is no positioning, date, or table library.
 - Accessible defaults: focus rings, ARIA tablist, dialog, and tables, and `prefers-reduced-motion`
 - ESM, tree-shakable, with `vue` as the only required peer (`@tiptap/vue-3` is optional, for `BlessEditor`). One component (`BlessButton`) costs about 1 KB gzip of JS and about 2.6 KB of CSS (tokens and its own styles). Everything costs about 64 KB and 27 KB. CSS is split per component and the import pulls it in, so you never pay for styles that you do not use
@@ -92,49 +92,50 @@ The words that components say are English by default. `provideLabels(labelsId)` 
 
 ## Components
 
-211 components across eight groups. Every one styles itself from `--bless-*` tokens and ships with a test and a docs page.
+212 components across eight groups. Every one styles itself from `--bless-*` tokens and ships with a test and a docs page.
 
 ### Primitives
 
-| Component                             | Purpose                                               | Key props / slots                                                                                      |
-| ------------------------------------- | ----------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
-| `BlessSkew`                           | Plate that leans on attention. Its slot stays upright | `as`, `color`                                                                                          |
-| `BlessButton`                         | Button or anchor                                      | `variant` solid/outline/ghost, `color`, `size`, `href`, `disabled`, `loading`. `#prefix` `#suffix`     |
-| `BlessBadge`                          | Small label, ink by default                           | `color`, `scaled`                                                                                      |
-| `BlessDash`                           | Inline 10×1px separator                               | `color`                                                                                                |
-| `BlessSeparator`                      | `<hr>` / vertical rule, optional label                | `orientation`, `decorative`, `color`, `label`                                                          |
-| `BlessIcon`                           | SVG slot wrapper                                      | `size`, `label`                                                                                        |
-| `BlessText`                           | Typography helper                                     | `as`, `size`, `weight`, `tracking`, `leading`, `muted`, `uppercase`                                    |
-| `BlessKbd`                            | Key combo                                             | `keys[]` or slot                                                                                       |
-| `BlessHighlight`                      | Text with the search terms marked                     | `text`, `query` (a search, or a list of whole terms). Native `<mark>`, case and accents ignored        |
-| `BlessRelativeTime`                   | "3 hours ago" in any language, kept up to date        | `value`, `locale`, `numeric`, `format`, `live`, `now`                                                  |
-| `BlessThemeToggle`                    | Light/dark switch or 3-way group                      | `mode` switch/group, `label`, `labels`                                                                 |
-| `BlessSpinner`                        | Loading indicator (`role=status`)                     | `size`, `color`, `label`. `BlessButton loading` uses it                                                |
-| `BlessEmpty`                          | Empty state                                           | `title`, `description`, `variant` outline/plain. `#icon` `#title` `#description` default=actions       |
-| `BlessButtonGroup`                    | Joined buttons                                        | `orientation`, `label`                                                                                 |
-| `BlessIndicator`                      | Count / dot badge on any element                      | `value` number or true, `max`, `color`, `position`                                                     |
-| `BlessTimeline`                       | Vertical rail of events                               | `items[{title,time,description,color}]`. `#default="{item}"` `#dot`                                    |
-| `BlessSwap`                           | Two-face toggle                                       | `v-model`, `label`, `effect` fade/rotate/flip. `#on` `#off`                                            |
-| `BlessWatermarkOverlay`               | Tiled text watermark over content                     | `text`, `gap`, `angle`, `fontSize`, `opacity`, `color`                                                 |
-| `BlessCircularProgress`               | Ring progress                                         | `value` (omit = spinning), `max`, `size`, `thickness`, `color`, `showValue`, `format`                  |
-| `BlessLoadingBar` + `useLoadingBar()` | Top-of-page progress                                  | `height`, `position`, `color`. `start()` `stop()` `set(p)` `track(promise)`                            |
-| `BlessSlideTransition`                | Height 0 ↔ auto                                       | `appear`. Wrap one `v-if` element with `transition: height`                                            |
-| `BlessClientOnly`                     | Browser-only render                                   | `#fallback`                                                                                            |
-| `BlessChip`                           | Compact token, removable                              | `label`, `icon`, `image`, `removable`, `color`, `size`. Emits `remove`                                 |
-| `BlessTagCloud`                       | Tags sized by weight                                  | `tags` `[{label,weight,href}]`, `min`, `max`, `sort`, `label`. Emits `select`                          |
-| `BlessMeterGroup`                     | Multi-segment meter                                   | `segments[{label,value,color}]`, `max`, `legend`, `format`, `orientation`                              |
-| `BlessConnectionStatus`               | Online, offline, or reconnecting                      | `state` online/connecting/offline (your socket), `always`, `labels`. Reads `navigator.onLine`          |
-| `BlessBlockUI`                        | Blocking overlay                                      | `blocked`, `fullscreen`. `#indicator`                                                                  |
-| `BlessMockup`                         | Browser / window / phone frame                        | `type`, `title`, `dark`                                                                                |
-| `BlessItem`                           | Media + title + description + actions                 | `title`, `description`, `href`, `button`, `variant` plain/outline/surface, `size`. `#media` `#actions` |
-| `BlessAvatar`                         | Image with initials fallback                          | `src`, `name`, `size`, `lean`, `color`                                                                 |
-| `BlessAvatarGroup`                    | Fused row of avatars with a +N plate                  | `items`, `max`, `size`, `color`, `labels`                                                              |
-| `BlessSkeleton`                       | Placeholder that breathes (no shimmer)                | `width`, `height`, `lines`, `avatar`                                                                   |
-| `BlessAspectRatio`                    | Ratio box                                             | `ratio`                                                                                                |
-| `BlessProgress`                       | Bar, determinate or not                               | `value`, `max`, `label`, `showValue`, `color`, `size`                                                  |
-| `BlessAlert`                          | Inline notice                                         | `title`, `color`, `live`, `dismissible`, `v-model`. `#icon` `#title`                                   |
-| `BlessBanner`                         | Page-wide announcement bar                            | `color`, `dismissible`, `persist`, `v-model`, `label`. `#action`                                       |
-| `BlessCopyButton`                     | Copy text, with a Copied state                        | `value`, `variant`, `size`, `timeout`, `labels`. Emits `copy`                                          |
+| Component                             | Purpose                                                | Key props / slots                                                                                      |
+| ------------------------------------- | ------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
+| `BlessSkew`                           | Plate that leans on attention. Its slot stays upright  | `as`, `color`                                                                                          |
+| `BlessButton`                         | Button or anchor                                       | `variant` solid/outline/ghost, `color`, `size`, `href`, `disabled`, `loading`. `#prefix` `#suffix`     |
+| `BlessBadge`                          | Small label, ink by default                            | `color`, `scaled`                                                                                      |
+| `BlessDash`                           | Inline 10×1px separator                                | `color`                                                                                                |
+| `BlessSeparator`                      | `<hr>` / vertical rule, optional label                 | `orientation`, `decorative`, `color`, `label`                                                          |
+| `BlessIcon`                           | SVG slot wrapper                                       | `size`, `label`                                                                                        |
+| `BlessText`                           | Typography helper                                      | `as`, `size`, `weight`, `tracking`, `leading`, `muted`, `uppercase`                                    |
+| `BlessKbd`                            | Key combo                                              | `keys[]` or slot                                                                                       |
+| `BlessHighlight`                      | Text with the search terms marked                      | `text`, `query` (a search, or a list of whole terms). Native `<mark>`, case and accents ignored        |
+| `BlessReadMore`                       | Long text cut to some lines, with a button to show all | `lines`, `v-model:open`, `labels`. Default slot: the text. The button shows only when the text is cut  |
+| `BlessRelativeTime`                   | "3 hours ago" in any language, kept up to date         | `value`, `locale`, `numeric`, `format`, `live`, `now`                                                  |
+| `BlessThemeToggle`                    | Light/dark switch or 3-way group                       | `mode` switch/group, `label`, `labels`                                                                 |
+| `BlessSpinner`                        | Loading indicator (`role=status`)                      | `size`, `color`, `label`. `BlessButton loading` uses it                                                |
+| `BlessEmpty`                          | Empty state                                            | `title`, `description`, `variant` outline/plain. `#icon` `#title` `#description` default=actions       |
+| `BlessButtonGroup`                    | Joined buttons                                         | `orientation`, `label`                                                                                 |
+| `BlessIndicator`                      | Count / dot badge on any element                       | `value` number or true, `max`, `color`, `position`                                                     |
+| `BlessTimeline`                       | Vertical rail of events                                | `items[{title,time,description,color}]`. `#default="{item}"` `#dot`                                    |
+| `BlessSwap`                           | Two-face toggle                                        | `v-model`, `label`, `effect` fade/rotate/flip. `#on` `#off`                                            |
+| `BlessWatermarkOverlay`               | Tiled text watermark over content                      | `text`, `gap`, `angle`, `fontSize`, `opacity`, `color`                                                 |
+| `BlessCircularProgress`               | Ring progress                                          | `value` (omit = spinning), `max`, `size`, `thickness`, `color`, `showValue`, `format`                  |
+| `BlessLoadingBar` + `useLoadingBar()` | Top-of-page progress                                   | `height`, `position`, `color`. `start()` `stop()` `set(p)` `track(promise)`                            |
+| `BlessSlideTransition`                | Height 0 ↔ auto                                        | `appear`. Wrap one `v-if` element with `transition: height`                                            |
+| `BlessClientOnly`                     | Browser-only render                                    | `#fallback`                                                                                            |
+| `BlessChip`                           | Compact token, removable                               | `label`, `icon`, `image`, `removable`, `color`, `size`. Emits `remove`                                 |
+| `BlessTagCloud`                       | Tags sized by weight                                   | `tags` `[{label,weight,href}]`, `min`, `max`, `sort`, `label`. Emits `select`                          |
+| `BlessMeterGroup`                     | Multi-segment meter                                    | `segments[{label,value,color}]`, `max`, `legend`, `format`, `orientation`                              |
+| `BlessConnectionStatus`               | Online, offline, or reconnecting                       | `state` online/connecting/offline (your socket), `always`, `labels`. Reads `navigator.onLine`          |
+| `BlessBlockUI`                        | Blocking overlay                                       | `blocked`, `fullscreen`. `#indicator`                                                                  |
+| `BlessMockup`                         | Browser / window / phone frame                         | `type`, `title`, `dark`                                                                                |
+| `BlessItem`                           | Media + title + description + actions                  | `title`, `description`, `href`, `button`, `variant` plain/outline/surface, `size`. `#media` `#actions` |
+| `BlessAvatar`                         | Image with initials fallback                           | `src`, `name`, `size`, `lean`, `color`                                                                 |
+| `BlessAvatarGroup`                    | Fused row of avatars with a +N plate                   | `items`, `max`, `size`, `color`, `labels`                                                              |
+| `BlessSkeleton`                       | Placeholder that breathes (no shimmer)                 | `width`, `height`, `lines`, `avatar`                                                                   |
+| `BlessAspectRatio`                    | Ratio box                                              | `ratio`                                                                                                |
+| `BlessProgress`                       | Bar, determinate or not                                | `value`, `max`, `label`, `showValue`, `color`, `size`                                                  |
+| `BlessAlert`                          | Inline notice                                          | `title`, `color`, `live`, `dismissible`, `v-model`. `#icon` `#title`                                   |
+| `BlessBanner`                         | Page-wide announcement bar                             | `color`, `dismissible`, `persist`, `v-model`, `label`. `#action`                                       |
+| `BlessCopyButton`                     | Copy text, with a Copied state                         | `value`, `variant`, `size`, `timeout`, `labels`. Emits `copy`                                          |
 
 ### Forms
 
