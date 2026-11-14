@@ -3041,6 +3041,38 @@
   ],
   "exposed": []
  },
+ "BlessDescriptions": {
+  "props": [
+   {
+    "name": "items",
+    "type": "BlessDescriptionItem[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "columns",
+    "type": "number | undefined",
+    "required": false,
+    "default": "1",
+    "description": "the most columns; a column is never narrower than `--bless-descriptions-min` (12rem)"
+   },
+   {
+    "name": "bordered",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": "lines between the pairs, as one plate"
+   }
+  ],
+  "events": [],
+  "slots": [
+   {
+    "name": "value",
+    "type": "{ item: BlessDescriptionItem; index: number; }",
+    "description": ""
+   }
+  ],
+  "exposed": []
+ },
  "BlessDialogHost": {
   "props": [],
   "events": [],
