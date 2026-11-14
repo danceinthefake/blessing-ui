@@ -25,6 +25,6 @@ Each component is its own file with its own stylesheet, so your app pays only fo
 - It bundles each component alone with Vite, minified, and gzips the JS and the CSS.
 - Vue is not counted, because your app has it already. The design tokens (about 2 KB) are not counted either, because the app loads them once for all components.
 - A component that uses other components counts them too. For example, `BlessDataTable` includes its pagination and its select.
-- `BlessEditor` and `BlessChart` do not count Tiptap and Unovis, which you install yourself.
+- `BlessEditor`, `BlessChart`, and `BlessMarkdown` do not count Tiptap, Unovis, and marked, which you install yourself.
 
 Two components that share a part pay for it once in your app, so the sum of two rows is more than their real cost together. The check runs on every push, so the table matches the current code. To see the cost of the whole library, read [Install](./install).

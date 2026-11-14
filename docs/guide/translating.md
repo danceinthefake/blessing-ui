@@ -22,6 +22,15 @@ provideLabels({
 
 You can also provide it for the whole app: `app.provide(blessLabelsKey, pack)`.
 
+<Demo title="Switch the language">
+  <LabelsSwitch />
+  <template #code>
+
+<<< ../demos/LabelsSwitch.vue
+
+  </template>
+</Demo>
+
 ## Bahasa Indonesia
 
 The library ships one complete pack: `labelsId`, in Indonesian. It has every word of every component that has a `labels` prop.
@@ -35,15 +44,6 @@ provideLabels(labelsId);
 To change a few words, spread it and replace them: `{ ...labelsId, BlessPoll: { ...labelsId.BlessPoll, vote: "Coblos" } }`.
 
 To write your own complete pack for another language, give it the type `BlessLabelsFull`. Then the typecheck tells you each word that is missing, also when a new version of the library adds one.
-
-<Demo title="Switch the language">
-  <LabelsSwitch />
-  <template #code>
-
-<<< ../demos/LabelsSwitch.vue
-
-  </template>
-</Demo>
 
 ## How it works
 

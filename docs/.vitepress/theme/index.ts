@@ -46,7 +46,16 @@ export default {
         h(BlessPaletteToggle, { class: "nav-palette", showDefault: true }),
     });
   },
-  enhanceApp({ app }) {
+  enhanceApp({ app, router }) {
+    // Component and block pages are English only: the language switch on them points at
+    // /id/components/… and /id/blocks/…, so send those to the English page. public/_redirects
+    // does the same for a direct visit.
+    router.onBeforeRouteChange = (to) => {
+      const english = to.match(/^\/id(\/(components|blocks)\/.*)$/)?.[1];
+      if (!english) return;
+      router.go(english);
+      return false;
+    };
     app.component("Demo", Demo);
     app.component("PropsTable", PropsTable);
     app.component("BlockDemo", BlockDemo);

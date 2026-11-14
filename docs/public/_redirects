@@ -1,0 +1,3 @@
+# Component and block pages are English only (see .vitepress/theme/index.ts)
+/id/components/* /components/:splat 302
+/id/blocks/* /blocks/:splat 302

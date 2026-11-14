@@ -53,6 +53,81 @@ export default defineConfig({
       },
     ],
   ],
+  // Bahasa Indonesia: the guide, design, and home pages. Component and block pages stay English.
+  locales: {
+    root: { label: "English", lang: "en" },
+    id: {
+      label: "Bahasa Indonesia",
+      lang: "id",
+      link: "/id/",
+      description:
+        "Themed Flat Interface. Datar sejak awal, dibangun dengan Vue, untuk semua orang.",
+      themeConfig: {
+        nav: [
+          { text: "Panduan", link: "/id/guide/install" },
+          { text: "Komponen", link: componentSidebar[0].items[0].link },
+          { text: "Blok", link: "/blocks/" },
+          { text: "Desain", link: "/id/design/" },
+        ],
+        sidebar: {
+          "/id/guide/": [
+            {
+              text: "Mulai",
+              items: [
+                { text: "Instalasi", link: "/id/guide/install" },
+                { text: "Ukuran bundle", link: "/id/guide/sizes" },
+              ],
+            },
+            {
+              text: "Tema",
+              items: [
+                { text: "Token", link: "/id/guide/tokens" },
+                { text: "Palet", link: "/id/guide/palettes" },
+                { text: "Mode gelap", link: "/id/guide/dark-mode" },
+                { text: "Font", link: "/id/guide/fonts" },
+                { text: "Kanan-ke-kiri", link: "/id/guide/rtl" },
+                { text: "Menerjemahkan", link: "/id/guide/translating" },
+              ],
+            },
+            { text: "Membangun", items: [{ text: "Konvensi", link: "/id/guide/conventions" }] },
+            {
+              text: "Composable",
+              items: [
+                { text: "Scroll spy", link: "/id/guide/scroll-spy" },
+                { text: "Animasi saat menggulir", link: "/id/guide/animate-on-scroll" },
+                { text: "Gestur", link: "/id/guide/gestures" },
+                { text: "Browser", link: "/id/guide/browser" },
+              ],
+            },
+          ],
+          "/id/design/": [
+            {
+              text: "Desain",
+              items: [
+                { text: "Bahasa desain", link: "/id/design/" },
+                { text: "Merek", link: "/id/design/brand" },
+                { text: "Cerita", link: "/id/design/story" },
+              ],
+            },
+          ],
+        },
+        outline: { level: [2, 3], label: "Di halaman ini" },
+        docFooter: { prev: "Sebelumnya", next: "Berikutnya" },
+        lastUpdated: { text: "Terakhir diperbarui" },
+        langMenuLabel: "Ganti bahasa",
+        returnToTopLabel: "Kembali ke atas",
+        sidebarMenuLabel: "Menu",
+        darkModeSwitchLabel: "Tampilan",
+        lightModeSwitchTitle: "Ganti ke tema terang",
+        darkModeSwitchTitle: "Ganti ke tema gelap",
+        footer: {
+          message:
+            "Dirilis dengan Lisensi MIT. Nama karakter dan gambarnya milik pemiliknya masing-masing.",
+          copyright: "Copyright © 2026 DanceInTheFake",
+        },
+      },
+    },
+  },
   themeConfig: {
     footer: {
       message:
