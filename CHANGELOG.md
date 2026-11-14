@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Docs in Bahasa Indonesia at [ui.blessing.id/id/](https://ui.blessing.id/id/): the home page and every guide and design page, with a language switch. Component and block pages stay English. The page sweep fails if a new guide or design page has no Indonesian version.
 - `BlessDescriptions`: label and value pairs for a detail page, as a native `<dl>`. `columns` sets the most columns, and they stack on a phone. `bordered` puts the pairs in one plate.
 - `BlessDateTimePicker`: a date and a time in one field, as `YYYY-MM-DDTHH:MM` in local time. `min` and `max` limit the time only on their own day. `labelsId` has its word.
 - `BlessEmojiPicker`: search and pick from 353 common emoji in eight groups, recent ones first. The grid is one Tab stop, and the arrow keys move by row and column. `blessEmojis` is exported, and `emojis` takes your own list.

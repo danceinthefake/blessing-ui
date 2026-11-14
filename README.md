@@ -86,6 +86,8 @@ import {
 
 To skip the imports, use the Nuxt module (`modules: ["blessing-ui/nuxt"]`) or the resolver for unplugin-vue-components (`BlessingUiResolver` from `blessing-ui/resolver`). See [Install](https://ui.blessing.id/guide/install#auto-import).
 
+The docs are also in [Bahasa Indonesia](https://ui.blessing.id/id/), apart from the component pages.
+
 The words that components say are English by default. `provideLabels(labelsId)` switches every one of them to Indonesian. You can also give your own pack for another language. See [Translating](https://ui.blessing.id/guide/translating).
 
 ## Components

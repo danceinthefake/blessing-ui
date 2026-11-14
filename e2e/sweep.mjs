@@ -8,7 +8,8 @@ const base = process.argv[3] ?? "http://localhost:4173";
 const pages = [
   "/",
   // every guide and design page, read from disk so a moved or added page can't be missed
-  ...["guide", "design"].flatMap((dir) =>
+  "/id/",
+  ...["guide", "design", "id/guide", "id/design"].flatMap((dir) =>
     readdirSync(`docs/${dir}`)
       .filter((f) => f.endsWith(".md"))
       .map((f) => `/${dir}/${f === "index.md" ? "" : f.replace(".md", "")}`),
@@ -22,6 +23,16 @@ const pages = [
   "/stage-example",
   "/layout-example",
 ];
+// every guide and design page has its Indonesian page: a new English page cannot skip it
+const untranslated = ["guide", "design"].flatMap((dir) =>
+  readdirSync(`docs/${dir}`)
+    .filter((f) => f.endsWith(".md") && !readdirSync(`docs/id/${dir}`).includes(f))
+    .map((f) => `${dir}/${f}`),
+);
+if (untranslated.length) {
+  console.error(`✗ no Indonesian page under docs/id/ for: ${untranslated.join(", ")}`);
+  process.exit(1);
+}
 const ignore = [
   /favicon/,
   /404 \(Not Found\)/,
@@ -35,6 +46,7 @@ const allow = {
   "/components/editor": [/Applying a mismatched transaction/],
   // VitePress sets --vp-offset on its navbar client-side (style="" on the server); not ours
   "/": [/Hydration completed but contains mismatches/],
+  "/id/": [/Hydration completed but contains mismatches/],
 };
 const engines = { chromium, firefox, webkit };
 let failed = 0;
