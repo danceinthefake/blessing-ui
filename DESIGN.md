@@ -358,7 +358,7 @@ Each component needs tests, a docs page with a live example, a README row, and a
 
 - ✅ Indonesian label pack: `labelsId`, every word of every component with a `labels` prop. Its type requires each key, so a new word without a translation fails the typecheck. A docs section shows it.
 - ✅ NuxtLink by default: the `blessing-ui/nuxt` module provides `NuxtLink` as the link component, so the install guide needs no plugin.
-- Label in Name review: find the remaining buttons that show only an icon or a number, and make sure that their names contain what they show. axe 4.14 found seven. More are likely in parts that the demos do not show.
+- ✅ Label in Name review: a template scan found 86 elements with both a name and text. Most are containers, which the rule does not check. The controls in states that the demos do not show passed axe 4.14 in Chromium: BottomTabs dock with badges, ShortcutRecorder with a value, clickable Steps, Pagination, Calendar days, OrderList, Sortable, SpeedDial, and RadialMenu without icons. No change was needed. Phase 25 is done.
 - Watch: TypeScript 7, when vue-tsc supports it.
 
 ### Deliberately skipped
