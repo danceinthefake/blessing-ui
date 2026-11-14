@@ -321,3 +321,5 @@ export type { BlessPresenceCursor } from "./components/BlessPresenceCursors.vue"
 export { default as BlessTypingIndicator } from "./components/BlessTypingIndicator.vue";
 export { default as BlessConnectionStatus } from "./components/BlessConnectionStatus.vue";
 export { default as BlessLogViewer } from "./components/BlessLogViewer.vue";
+export { default as BlessCronInput } from "./components/BlessCronInput.vue";
+export { blessCronNext } from "./components/cron";

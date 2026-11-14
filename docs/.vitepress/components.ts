@@ -91,6 +91,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "date-time-picker",
         text: "A date and a time in one field",
       },
+      {
+        name: "BlessCronInput",
+        slug: "cron-input",
+        text: "A cron schedule, with the next run times",
+      },
       { name: "BlessEmojiPicker", slug: "emoji-picker", text: "Search and pick an emoji" },
       {
         name: "BlessUploader",

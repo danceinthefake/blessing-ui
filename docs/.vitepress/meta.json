@@ -2609,6 +2609,57 @@
   "slots": [],
   "exposed": []
  },
+ "BlessCronInput": {
+  "props": [
+   {
+    "name": "id",
+    "type": "string | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "count",
+    "type": "number | undefined",
+    "required": false,
+    "default": "3",
+    "description": "how many next run times to show; 0 hides the list"
+   },
+   {
+    "name": "locale",
+    "type": "string | undefined",
+    "required": false,
+    "description": "for the run times, for example `id-ID`"
+   },
+   {
+    "name": "disabled",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ minute: string; hour: string; day: string; month: string; weekday: string; next: string; invalid: string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"* * * * *\"",
+    "description": "five fields separated by spaces, for example `0 9 * * 1-5`"
+   }
+  ],
+  "events": [
+   {
+    "name": "update:modelValue",
+    "type": "[value: string]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessCropper": {
   "props": [
    {

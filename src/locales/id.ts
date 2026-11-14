@@ -9,6 +9,7 @@ import type BlessCodeBlock from "../components/BlessCodeBlock.vue";
 import type BlessCommand from "../components/BlessCommand.vue";
 import type BlessConnectionStatus from "../components/BlessConnectionStatus.vue";
 import type BlessCopyButton from "../components/BlessCopyButton.vue";
+import type BlessCronInput from "../components/BlessCronInput.vue";
 import type BlessCropper from "../components/BlessCropper.vue";
 import type BlessDataTable from "../components/BlessDataTable.vue";
 import type BlessDataView from "../components/BlessDataView.vue";
@@ -67,6 +68,7 @@ export type BlessLabelsFull = {
   BlessCommand: All<typeof BlessCommand>;
   BlessConnectionStatus: All<typeof BlessConnectionStatus>;
   BlessCopyButton: All<typeof BlessCopyButton>;
+  BlessCronInput: All<typeof BlessCronInput>;
   BlessCropper: All<typeof BlessCropper>;
   BlessDataTable: All<typeof BlessDataTable>;
   BlessDataView: All<typeof BlessDataView>;
@@ -148,6 +150,15 @@ export const labelsId: BlessLabelsFull = {
     offline: "Anda sedang luring",
   },
   BlessCopyButton: copy,
+  BlessCronInput: {
+    minute: "Menit",
+    hour: "Jam",
+    day: "Tanggal",
+    month: "Bulan",
+    weekday: "Hari",
+    next: "Jalan berikutnya",
+    invalid: "Periksa bagian yang ditandai",
+  },
   BlessCropper: {
     size: (w, h, x, y) => `${w} kali ${h} piksel, dari ${x}, ${y}`,
     hint: "panah menggeser, + − mengubah ukuran",
