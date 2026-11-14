@@ -318,3 +318,4 @@ export {
 } from "./composables/useBrowser";
 export { default as BlessPresenceCursors } from "./components/BlessPresenceCursors.vue";
 export type { BlessPresenceCursor } from "./components/BlessPresenceCursors.vue";
+export { default as BlessTypingIndicator } from "./components/BlessTypingIndicator.vue";
