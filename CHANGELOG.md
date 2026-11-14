@@ -8,7 +8,8 @@
 - `BlessLogViewer`: a live log on virtual rows, with ANSI colors that follow the theme, a filter that keeps line numbers, and follow, which keeps the newest line in view until you scroll up.
 - `BlessCronInput`: a five-field cron schedule with a field per part, a mark on a part that is not valid, and the next run times in the local date format. `blessCronNext` is exported.
 - `BlessKeyValueEditor`: rows of key and value pairs, such as headers or environment variables, with an empty row always at the end. `toggle` turns a row off without removing it, `secret` hides the values, and a key used twice is marked.
-- `BlessQueryBuilder`: filter rules (field, operator, value) in nested "all" and "any" groups. The value is plain data that you turn into a query on the server. The operators follow the type of the field. 208 components in all.
+- `BlessQueryBuilder`: filter rules (field, operator, value) in nested "all" and "any" groups. The value is plain data that you turn into a query on the server. The operators follow the type of the field.
+- `BlessAudioRecorder`: record from the microphone with the native `MediaRecorder`, with live levels, pause, and a player for the recording. `record` sends the `Blob` when it stops. The browser asks for the microphone only when you press Record. 209 components in all.
 
 ## 0.5.0 — 2026-11-15
 

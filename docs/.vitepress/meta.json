@@ -565,6 +565,49 @@
   "slots": [],
   "exposed": []
  },
+ "BlessAudioRecorder": {
+  "props": [
+   {
+    "name": "maxDuration",
+    "type": "number | undefined",
+    "required": false,
+    "description": "stop by itself after this many seconds"
+   },
+   {
+    "name": "mimeType",
+    "type": "string | undefined",
+    "required": false,
+    "description": "a type for MediaRecorder, for example `audio/webm`; used when the browser supports it"
+   },
+   {
+    "name": "bars",
+    "type": "number | undefined",
+    "required": false,
+    "default": "40",
+    "description": "level bars drawn while recording"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ record: string; pause: string; resume: string; stop: string; again: string; recording: string; paused: string; done: string; unavailable: string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "error",
+    "type": "[error: unknown]",
+    "description": ""
+   },
+   {
+    "name": "record",
+    "type": "[audio: Blob]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessAvatar": {
   "props": [
    {

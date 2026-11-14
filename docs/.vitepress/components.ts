@@ -518,6 +518,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "waveform",
         text: "Audio peaks that you click or key to seek",
       },
+      {
+        name: "BlessAudioRecorder",
+        slug: "audio-recorder",
+        text: "Record from the microphone, with a preview",
+      },
       { name: "BlessAnnotator", slug: "annotator", text: "Draw boxes and pins on an image" },
     ],
   },
