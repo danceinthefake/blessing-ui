@@ -1,6 +1,8 @@
 # Changelog
 
-## Unreleased
+## 0.4.1 — 2026-11-14
+
+Accessibility fixes found by axe-core 4.14 and jsdom 31. No API changes, but some screen reader names now read in a different order.
 
 **Fixes**
 
