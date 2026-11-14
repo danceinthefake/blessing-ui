@@ -245,6 +245,11 @@
     "css": 1345
   },
   {
+    "name": "BlessDateTimePicker",
+    "js": 5010,
+    "css": 1507
+  },
+  {
     "name": "BlessDeferredContent",
     "js": 471,
     "css": 0

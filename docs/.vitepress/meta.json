@@ -3003,6 +3003,93 @@
   "slots": [],
   "exposed": []
  },
+ "BlessDateTimePicker": {
+  "props": [
+   {
+    "name": "id",
+    "type": "string | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "min",
+    "type": "string | undefined",
+    "required": false,
+    "description": "earliest moment, `YYYY-MM-DDTHH:MM`"
+   },
+   {
+    "name": "max",
+    "type": "string | undefined",
+    "required": false,
+    "description": "latest moment, `YYYY-MM-DDTHH:MM`"
+   },
+   {
+    "name": "step",
+    "type": "number | undefined",
+    "required": false,
+    "default": "15",
+    "description": "minutes between the suggested times"
+   },
+   {
+    "name": "hour12",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "locale",
+    "type": "string | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "placeholder",
+    "type": "string | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "disabled",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "invalid",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "size",
+    "type": "\"md\" | \"sm\" | \"lg\" | undefined",
+    "required": false,
+    "default": "\"md\"",
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ time: string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "string | undefined",
+    "required": false,
+    "description": "`YYYY-MM-DDTHH:MM` in local time, as `<input type=\"datetime-local\">` holds it; unset until both parts are chosen"
+   }
+  ],
+  "events": [
+   {
+    "name": "update:modelValue",
+    "type": "[value: string | undefined]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessDeferredContent": {
   "props": [
    {

@@ -11,6 +11,7 @@ import type BlessCopyButton from "../components/BlessCopyButton.vue";
 import type BlessCropper from "../components/BlessCropper.vue";
 import type BlessDataTable from "../components/BlessDataTable.vue";
 import type BlessDataView from "../components/BlessDataView.vue";
+import type BlessDateTimePicker from "../components/BlessDateTimePicker.vue";
 import type BlessDurationInput from "../components/BlessDurationInput.vue";
 import type BlessEditor from "../components/BlessEditor.vue";
 import type BlessFormula from "../components/BlessFormula.vue";
@@ -64,6 +65,7 @@ export type BlessLabelsFull = {
   BlessCropper: All<typeof BlessCropper>;
   BlessDataTable: All<typeof BlessDataTable>;
   BlessDataView: All<typeof BlessDataView>;
+  BlessDateTimePicker: All<typeof BlessDateTimePicker>;
   BlessDurationInput: All<typeof BlessDurationInput>;
   BlessEditor: All<typeof BlessEditor>;
   BlessFormula: All<typeof BlessFormula>;
@@ -146,6 +148,7 @@ export const labelsId: BlessLabelsFull = {
     resize: (c) => `Ubah lebar ${c}`,
   },
   BlessDataView: { layout: "Tata letak", list: "Daftar", grid: "Kisi", empty: "Tidak ada item" },
+  BlessDateTimePicker: { time: "Waktu" },
   // the parser reads h and m, so the example keeps them
   BlessDurationInput: { invalid: "Masukkan waktu seperti 1:30 atau 1h 30m" },
   BlessEditor: {
