@@ -78,7 +78,13 @@ export default defineConfig({
         })),
       ],
       "/guide/": [
-        { text: "Start", items: [{ text: "Install", link: "/guide/install" }] },
+        {
+          text: "Start",
+          items: [
+            { text: "Install", link: "/guide/install" },
+            { text: "Bundle size", link: "/guide/sizes" },
+          ],
+        },
         {
           text: "Theming",
           items: [

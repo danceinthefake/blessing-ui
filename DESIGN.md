@@ -361,6 +361,15 @@ Each component needs tests, a docs page with a live example, a README row, and a
 - ✅ Label in Name review: a template scan found 86 elements with both a name and text. Most are containers, which the rule does not check. The controls in states that the demos do not show passed axe 4.14 in Chromium: BottomTabs dock with badges, ShortcutRecorder with a value, clickable Steps, Pagination, Calendar days, OrderList, Sortable, SpeedDial, and RadialMenu without icons. No change was needed. Phase 25 is done.
 - Watch: TypeScript 7, when vue-tsc supports it.
 
+### Phase 26 — gaps, Indonesian docs, sizes (2026-11-14)
+
+- ✅ Size table: the gzip JS and CSS of each component, measured from the packed package in a real bundler, on a docs page and in CI, so a component that grows shows up. (The visual diff already runs in CI as the `visual` job.)
+- `BlessDescriptions`: a key-value list (`<dl>`) for detail pages: label and value pairs, in one or more columns, with a bordered variant.
+- `BlessDateTimePicker`: one field for a date and a time, on top of `BlessDatePicker` and `BlessTimePicker`. The value is an ISO date-time text in local time.
+- `BlessEmojiPicker`: search and pick an emoji, by group, with recent ones first. It ships a small emoji list and has keyboard navigation in the grid.
+- `BlessMarkdown`: render Markdown text with the library's typography. It uses a small parser that you install, and it makes the HTML safe. It renders nothing that the text does not ask for.
+- Indonesian docs: the guide and design pages in Bahasa Indonesia under `/id/`, with a language switch. Component pages stay in English and link back.
+
 ### Deliberately skipped
 
 - **Chart**: no bundled lib. Phase 11 ✅: `--bless-color-chart-{1..5}` (≥3:1 both themes) + `BlessChart` frame that maps them onto Unovis `--vis-*` vars. Unovis is the documented pairing, installed by the consumer.

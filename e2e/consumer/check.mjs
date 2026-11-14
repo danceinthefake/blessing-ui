@@ -89,5 +89,7 @@ for (const [what, got, limit] of [
     process.exit(1);
   }
 }
+// the cost of each component alone, for the docs table and the log
+sh("node sizes.mjs");
 rmSync(resolve(here, tgz));
 console.log("✓ consumer check passed");
