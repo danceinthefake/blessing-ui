@@ -94,9 +94,7 @@ const kb = (n: number) =>
         @change="take(($event.target as HTMLInputElement).files)"
       />
       <span class="bless-file__icon" aria-hidden="true"><slot name="icon">⇪</slot></span>
-      <span class="bless-file__label"
-        ><slot>{{ label }}</slot></span
-      >
+      <span class="bless-file__label"><slot>{{ label }}</slot></span>
       <span v-if="hint" class="bless-file__hint">{{ hint }}</span>
     </label>
     <ul role="list" v-if="list && model.length" ref="listEl" class="bless-file__list">

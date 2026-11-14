@@ -91,9 +91,7 @@ function step(i: number, d: -1 | 1) {
         @keydown="onKey(i, $event)"
       >
         <span class="bless-order__grip" aria-hidden="true">⋮⋮</span>
-        <span class="bless-order__body"
-          ><slot :item :index="i">{{ item }}</slot></span
-        >
+        <span class="bless-order__body"><slot :item :index="i">{{ item }}</slot></span>
         <span v-if="props.buttons" class="bless-order__btns">
           <button
             type="button"

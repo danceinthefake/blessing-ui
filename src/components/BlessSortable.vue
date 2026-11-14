@@ -220,9 +220,7 @@ const side = (i: number) =>
         >
           <span aria-hidden="true">⋮⋮</span>
         </button>
-        <span class="bless-sortable__body"
-          ><slot :item :index="i">{{ item }}</slot></span
-        >
+        <span class="bless-sortable__body"><slot :item :index="i">{{ item }}</slot></span>
       </li>
     </ul>
     <span :id="hint" hidden>{{ text.hint }}{{ group ? ` ${text.groupHint}` : "" }}</span>

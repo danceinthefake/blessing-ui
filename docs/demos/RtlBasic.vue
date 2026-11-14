@@ -49,9 +49,7 @@ const step = ref(1);
       :steps="[{ label: 'الحساب' }, { label: 'الفريق' }, { label: 'المظهر' }]"
       clickable
     />
-    <BlessAlert color="accent" title="تنبيه"
-      >النص يبدأ من اليمين؛ الحافة الملوّنة تتبعه.</BlessAlert
-    >
+    <BlessAlert color="accent" title="تنبيه">النص يبدأ من اليمين؛ الحافة الملوّنة تتبعه.</BlessAlert>
     <BlessCard label="جديد">
       <BlessText as="p" weight="bold">صندوق بلو-راي</BlessText>
       <BlessText as="p" size="sm" muted>يصدر في 24 ديسمبر</BlessText>

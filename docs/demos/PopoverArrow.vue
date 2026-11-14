@@ -11,9 +11,7 @@ import { BlessButton, BlessPopover } from "blessing-ui";
       arrow
       title="With arrow"
     >
-      <template #trigger
-        ><BlessButton variant="outline" size="sm">{{ p }}</BlessButton></template
-      >
+      <template #trigger><BlessButton variant="outline" size="sm">{{ p }}</BlessButton></template>
       The arrow points at the trigger and stays inside the panel when it shifts.
     </BlessPopover>
   </div>

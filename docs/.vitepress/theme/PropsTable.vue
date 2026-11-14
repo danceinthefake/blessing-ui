@@ -35,16 +35,12 @@ const tidy = (t: string) => t.replace(/ \| undefined$/, "").replace(/\bundefined
         <tbody>
           <tr v-for="p in m.props" :key="p.name">
             <td>
-              <code>{{ p.name }}</code
-              ><span v-if="p.required" class="props-table__req">*</span>
+              <code>{{ p.name }}</code><span v-if="p.required" class="props-table__req">*</span>
             </td>
             <td>
               <code>{{ tidy(p.type) }}</code>
             </td>
-            <td>
-              <code v-if="p.default">{{ p.default }}</code
-              ><span v-else>—</span>
-            </td>
+            <td><code v-if="p.default">{{ p.default }}</code><span v-else>—</span></td>
             <td>{{ p.description }}</td>
           </tr>
         </tbody>
@@ -120,9 +116,7 @@ const tidy = (t: string) => t.replace(/ \| undefined$/, "").replace(/\bundefined
       </table>
     </template>
   </div>
-  <p v-else>
-    No metadata for <code>{{ name }}</code> — run <code>pnpm docs:meta</code>.
-  </p>
+  <p v-else>No metadata for <code>{{ name }}</code> — run <code>pnpm docs:meta</code>.</p>
 </template>
 
 <style>

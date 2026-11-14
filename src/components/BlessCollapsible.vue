@@ -25,9 +25,7 @@ const open = defineModel<boolean>("open", { default: false });
       :aria-disabled="disabled || undefined"
       @click="disabled && $event.preventDefault()"
     >
-      <span class="bless-collapsible__title"
-        ><slot name="title">{{ title }}</slot></span
-      >
+      <span class="bless-collapsible__title"><slot name="title">{{ title }}</slot></span>
       <span class="bless-collapsible__chevron" aria-hidden="true" />
     </summary>
     <div class="bless-collapsible__content">

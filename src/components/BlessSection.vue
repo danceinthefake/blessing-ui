@@ -35,9 +35,7 @@ withDefaults(
     />
     <div class="bless-section__body">
       <component :is="`h${headingLevel}`" v-if="title || $slots.title" class="bless-section__title">
-        <span class="bless-section__title-text"
-          ><slot name="title">{{ title }}</slot></span
-        >
+        <span class="bless-section__title-text"><slot name="title">{{ title }}</slot></span>
         <span v-if="headline === 'hanging' && subtitle" class="bless-section__subtitle">{{
           subtitle
         }}</span>

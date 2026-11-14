@@ -115,8 +115,7 @@ function onKey(e: KeyboardEvent) {
           :value="c.value"
           :description="c.description"
         >
-          <kbd v-if="shortcuts" class="bless-questionnaire__key">{{ i + 1 }}</kbd
-          >{{ c.label }}
+          <kbd v-if="shortcuts" class="bless-questionnaire__key">{{ i + 1 }}</kbd>{{ c.label }}
         </BlessRadio>
       </BlessRadioGroup>
 
@@ -130,8 +129,7 @@ function onKey(e: KeyboardEvent) {
           :invalid="!!error"
           @update:model-value="set($event as string[])"
         >
-          <kbd v-if="shortcuts" class="bless-questionnaire__key">{{ i + 1 }}</kbd
-          >{{ c.label }}
+          <kbd v-if="shortcuts" class="bless-questionnaire__key">{{ i + 1 }}</kbd>{{ c.label }}
         </BlessCheckbox>
       </div>
 

@@ -32,9 +32,7 @@ withDefaults(
   >
     <span v-if="$slots.media" class="bless-item__media"><slot name="media" /></span>
     <span class="bless-item__body">
-      <span class="bless-item__title"
-        ><slot name="title">{{ title }}</slot></span
-      >
+      <span class="bless-item__title"><slot name="title">{{ title }}</slot></span>
       <span v-if="description || $slots.description" class="bless-item__desc"
         ><slot name="description">{{ description }}</slot></span
       >

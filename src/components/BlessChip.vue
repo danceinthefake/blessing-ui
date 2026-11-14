@@ -20,9 +20,7 @@ const emit = defineEmits<{ remove: [] }>();
   <span class="bless-chip" :class="[`bless-chip--${color}`, `bless-chip--${size}`]">
     <img v-if="image" :src="image" alt="" class="bless-chip__img" />
     <span v-else-if="icon" class="bless-chip__icon" aria-hidden="true">{{ icon }}</span>
-    <span class="bless-chip__label"
-      ><slot>{{ label }}</slot></span
-    >
+    <span class="bless-chip__label"><slot>{{ label }}</slot></span>
     <button
       v-if="removable"
       type="button"

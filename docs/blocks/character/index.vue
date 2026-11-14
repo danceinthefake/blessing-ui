@@ -49,9 +49,7 @@ const glyph = (name: string) =>
         </div>
         <div>
           <BlessText as="p" size="xs" muted>{{ c.reading }}</BlessText>
-          <BlessText as="p"
-            ><BlessSkew color="text" label>{{ c.role }}</BlessSkew></BlessText
-          >
+          <BlessText as="p"><BlessSkew color="text" label>{{ c.role }}</BlessSkew></BlessText>
           <BlessText as="p" size="sm" style="margin-top: 8px">{{ c.bio }}</BlessText>
           <BlessText as="p" size="sm" muted style="margin-top: 12px"
             >CV<BlessDash />{{ c.cv }}</BlessText

@@ -21,9 +21,7 @@ const id = useId();
         <span class="bless-fieldset__chevron" aria-hidden="true">›</span>
         <slot name="legend">{{ legend }}</slot>
       </button>
-      <span v-else
-        ><slot name="legend">{{ legend }}</slot></span
-      >
+      <span v-else><slot name="legend">{{ legend }}</slot></span>
     </legend>
     <div v-show="!collapsed" :id class="bless-fieldset__content"><slot /></div>
   </fieldset>

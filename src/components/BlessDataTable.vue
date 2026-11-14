@@ -271,9 +271,7 @@ defineExpose({ state, selectedRows: dt.selectedRows });
         :aria-busy="loading || undefined"
       >
         <caption v-if="caption" class="bless-table__caption">
-          {{
-            caption
-          }}
+          {{ caption }}
         </caption>
         <thead class="bless-table__head">
           <tr ref="headRow">

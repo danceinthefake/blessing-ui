@@ -11,8 +11,7 @@ defineProps<{
   <kbd class="bless-kbd">
     <template v-if="keys?.length">
       <template v-for="(k, i) in keys" :key="k"
-        ><kbd class="bless-kbd__key"
-          ><span>{{ k }}</span></kbd
+        ><kbd class="bless-kbd__key"><span>{{ k }}</span></kbd
         ><span v-if="i < keys.length - 1" class="bless-kbd__plus" aria-hidden="true"
           >+</span
         ></template
