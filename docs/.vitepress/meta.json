@@ -8797,6 +8797,52 @@
   ],
   "exposed": []
  },
+ "BlessSankey": {
+  "props": [
+   {
+    "name": "links",
+    "type": "BlessSankeyLink[]",
+    "required": true,
+    "description": "the flows; a node is any id that a link names"
+   },
+   {
+    "name": "nodes",
+    "type": "BlessSankeyNode[] | undefined",
+    "required": false,
+    "default": "[]",
+    "description": "labels, colors, and order for the nodes; optional"
+   },
+   {
+    "name": "height",
+    "type": "number | undefined",
+    "required": false,
+    "default": "320",
+    "description": ""
+   },
+   {
+    "name": "format",
+    "type": "((v: number) => string) | undefined",
+    "required": false,
+    "description": "text for one value, for example `(v) => v.toLocaleString()`"
+   },
+   {
+    "name": "label",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Flows\"",
+    "description": "names the chart and its table for screen readers"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ from: string; to: string; value: string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessScheduler": {
   "props": [
    {

@@ -40,6 +40,7 @@ import type BlessQueryBuilder from "../components/BlessQueryBuilder.vue";
 import type BlessQuestionnaire from "../components/BlessQuestionnaire.vue";
 import type BlessRangeCalendar from "../components/BlessRangeCalendar.vue";
 import type BlessReadMore from "../components/BlessReadMore.vue";
+import type BlessSankey from "../components/BlessSankey.vue";
 import type BlessScheduler from "../components/BlessScheduler.vue";
 import type BlessShortcutRecorder from "../components/BlessShortcutRecorder.vue";
 import type BlessSliderCaptcha from "../components/BlessSliderCaptcha.vue";
@@ -104,6 +105,7 @@ export type BlessLabelsFull = {
   BlessQuestionnaire: All<typeof BlessQuestionnaire>;
   BlessRangeCalendar: All<typeof BlessRangeCalendar>;
   BlessReadMore: All<typeof BlessReadMore>;
+  BlessSankey: All<typeof BlessSankey>;
   BlessScheduler: All<typeof BlessScheduler>;
   BlessShortcutRecorder: All<typeof BlessShortcutRecorder>;
   BlessSliderCaptcha: All<typeof BlessSliderCaptcha>;
@@ -401,6 +403,7 @@ export const labelsId: BlessLabelsFull = {
     hint: "Tombol panah berpindah, Spasi memilih atau melepas hari, tahan Shift dan tekan panah untuk mewarnai, Page Up dan Page Down mengganti bulan.",
   },
   BlessReadMore: { more: "Baca selengkapnya", less: "Tampilkan lebih sedikit" },
+  BlessSankey: { from: "Dari", to: "Ke", value: "Nilai" },
   BlessScheduler: {
     prev: "Sebelumnya",
     next: "Berikutnya",
