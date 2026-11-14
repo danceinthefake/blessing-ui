@@ -28,6 +28,11 @@ export const groups: { title: string; items: Entry[] }[] = [
       { name: "BlessChip", slug: "chip", text: "Removable pill" },
       { name: "BlessTagCloud", slug: "tag-cloud", text: "Tags sized by weight" },
       { name: "BlessMeterGroup", slug: "meter-group", text: "Multi-segment meter with legend" },
+      {
+        name: "BlessConnectionStatus",
+        slug: "connection-status",
+        text: "Online, offline, or reconnecting",
+      },
       { name: "BlessBlockUI", slug: "block-ui", text: "Overlay that blocks its content" },
       {
         name: "BlessWatermarkOverlay",
