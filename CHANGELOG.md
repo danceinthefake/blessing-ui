@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- `BlessPresenceCursors`: the live pointers of other people over an area, each with a name tag. Positions go from 0 to 1 across the area, and `move` sends the local pointer in the same form. 202 components in all.
+
 ## 0.5.0 — 2026-11-15
 
 Four new components, 201 in all, docs in Bahasa Indonesia, an Indonesian label pack, and a bundle size page. No breaking changes.
