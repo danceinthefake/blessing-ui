@@ -44,7 +44,7 @@ import "blessing-ui/style.css"; // tokens + every component's styles, ~26 KB gzi
 
 You can write `<BlessButton>` in a template with no `import` line. Each component then comes from its own file, with only its own styles, and the tokens load once.
 
-In Nuxt, add the module. It needs nothing else:
+In Nuxt, add the module. It needs nothing else, and it also makes in-app links use `NuxtLink`:
 
 ```ts
 // nuxt.config.ts
@@ -111,13 +111,18 @@ import { blessLinkKey } from "blessing-ui";
 app.provide(blessLinkKey, RouterLink);
 ```
 
+In Nuxt, the `blessing-ui/nuxt` module provides `NuxtLink` for you. Without the module, add a plugin:
+
 ```ts
-// Nuxt — plugins/blessing.ts
+// plugins/blessing.ts
 import { blessLinkKey } from "blessing-ui";
+import { NuxtLink } from "#components";
 export default defineNuxtPlugin((nuxtApp) => {
-  nuxtApp.vueApp.provide(blessLinkKey, resolveComponent("NuxtLink"));
+  nuxtApp.vueApp.provide(blessLinkKey, NuxtLink);
 });
 ```
+
+To use another link component in Nuxt, provide it in a plugin of your own. Your plugin runs after the module, so your component wins.
 
 Rule: an `href` that starts with `/` or is a bare relative path goes to the router as `to`. Anything else stays a native `<a>`: a scheme (`https:`, `mailto:`), a protocol-relative `//`, a `#hash`, or `external: true`. The library imports nothing from any router.
 

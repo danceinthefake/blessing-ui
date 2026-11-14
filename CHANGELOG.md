@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- The `blessing-ui/nuxt` module now provides `NuxtLink` as the link component, so in-app links navigate on the client with no plugin. A plugin of your own that provides `blessLinkKey` still wins.
 - `labelsId`: a complete Indonesian label pack. `provideLabels(labelsId)` switches the words of all 43 components that have a `labels` prop. The `BlessLabelsFull` type helps you write a complete pack for another language, because the typecheck names each word that is missing.
 
 ## 0.4.1 — 2026-11-14
