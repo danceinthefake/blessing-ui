@@ -12,7 +12,8 @@
 - `BlessAudioRecorder`: record from the microphone with the native `MediaRecorder`, with live levels, pause, and a player for the recording. `record` sends the `Blob` when it stops. The browser asks for the microphone only when you press Record.
 - `BlessCameraCapture`: a camera preview with `getUserMedia`, a switch between cameras, and a photo as a `Blob` with `capture`. The browser asks for the camera only when you press Start, and the camera turns off after the photo.
 - `BlessHighlight`: text with the search terms marked by native `<mark>`. Case and accents do not matter, so "cafe" marks "Café", and the text is never HTML.
-- `BlessReadMore`: long text cut to some lines, with a button that shows all of it. The button shows only when the text is cut, measured again when the size changes. 212 components in all.
+- `BlessReadMore`: long text cut to some lines, with a button that shows all of it. The button shows only when the text is cut, measured again when the size changes.
+- `BlessSankey`: flows between steps as bands in plain SVG, in columns by the longest path, with the chart colors, a hover for each flow, and a table of the flows for screen readers. 213 components in all.
 
 ## 0.5.0 — 2026-11-15
 

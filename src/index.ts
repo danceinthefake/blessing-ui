@@ -336,3 +336,5 @@ export { default as BlessAudioRecorder } from "./components/BlessAudioRecorder.v
 export { default as BlessCameraCapture } from "./components/BlessCameraCapture.vue";
 export { default as BlessHighlight } from "./components/BlessHighlight.vue";
 export { default as BlessReadMore } from "./components/BlessReadMore.vue";
+export { default as BlessSankey } from "./components/BlessSankey.vue";
+export type { BlessSankeyLink, BlessSankeyNode } from "./components/sankey";
