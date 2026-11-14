@@ -79,10 +79,11 @@ if (one > LIMIT_ONE) {
   );
   process.exit(1);
 }
-// the whole library, ~10% above today's 118.6 KB JS / 36.1 KB CSS gz (after Phase 24): room to add components, not to bloat
+// the whole library, ~10% above today's 129.6 KB JS / 37.4 KB CSS gz (after Phase 26): room to add
+// components, not to bloat. An app pays only for what it imports; this caps the growth of the catalog.
 for (const [what, got, limit] of [
-  ["everything JS", all, 130_000],
-  ["everything CSS", allCss, 40_000],
+  ["everything JS", all, 143_000],
+  ["everything CSS", allCss, 41_000],
 ]) {
   if (got > limit) {
     console.error(`✗ ${what} is ${got} B gz (> ${limit}) — raise the budget on purpose or trim`);
