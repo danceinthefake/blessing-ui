@@ -478,7 +478,7 @@ Sixteen components, 270 → 286. Each uses native platform APIs only: the librar
 - ✅ `BlessLollipop`: a thin stick with a dot for each category, for long lists.
 - ✅ `BlessVenn`: two or three circles that overlap, with the count in each part.
 - ✅ `BlessRoseChart`: wedges of equal angle whose length is the value.
-- `BlessCodeTabs`: one command in tabs for each package manager, with copy, and the choice kept on the page.
+- ✅ `BlessCodeTabs`: one command in tabs for each package manager, with copy, and the choice kept on the page.
 - `BlessSpoiler`: text hidden under a blur until a click shows it.
 - `BlessFootnotes`: numbered notes, with marks in the text that link to them and back.
 - `BlessGlossary`: a term with a dotted line that shows its meaning on hover or focus.

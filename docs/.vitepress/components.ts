@@ -233,6 +233,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "code-block",
         text: "Copy button, line highlight, tabs per file",
       },
+      {
+        name: "BlessCodeTabs",
+        slug: "code-tabs",
+        text: "One command in tabs for each package manager",
+      },
       { name: "BlessMarkdown", slug: "markdown", text: "Markdown text, safely rendered" },
       {
         name: "BlessMarquee",

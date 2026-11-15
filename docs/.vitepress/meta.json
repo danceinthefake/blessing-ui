@@ -2606,6 +2606,64 @@
   ],
   "exposed": []
  },
+ "BlessCodeTabs": {
+  "props": [
+   {
+    "name": "install",
+    "type": "string | undefined",
+    "required": false,
+    "description": "packages to add, for example `blessing-ui vue`"
+   },
+   {
+    "name": "dev",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": "add them as dev dependencies"
+   },
+   {
+    "name": "run",
+    "type": "string | undefined",
+    "required": false,
+    "description": "a script of package.json to run, for example `dev`"
+   },
+   {
+    "name": "exec",
+    "type": "string | undefined",
+    "required": false,
+    "description": "a package to run once, for example `nuxi init app`"
+   },
+   {
+    "name": "tabs",
+    "type": "BlessCodeFile[] | undefined",
+    "required": false,
+    "description": "your own tabs in place of the package managers"
+   },
+   {
+    "name": "managers",
+    "type": "BlessPackageManager[] | undefined",
+    "required": false,
+    "default": "[\"pnpm\", \"npm\", \"yarn\", \"bun\"]",
+    "description": ""
+   },
+   {
+    "name": "group",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"package-manager\"",
+    "description": "tabs with the same group keep the same choice on the page and on the next visit"
+   },
+   {
+    "name": "label",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Command\"",
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessCollapsible": {
   "props": [
    {
