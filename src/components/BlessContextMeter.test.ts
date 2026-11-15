@@ -10,7 +10,7 @@ const parts = [
 test("BlessContextMeter: a ring button with the use in words, and a breakdown with the free tokens", () => {
   const w = mount(BlessContextMeter, { props: { parts, max: 200_000 } });
   const b = w.find("button.bless-ctx");
-  expect(b.attributes("aria-label")).toBe("Context: 160K of 200K tokens used (80%)");
+  expect(b.attributes("aria-label")).toBe("80% of the context used: 160K of 200K tokens");
   expect(b.classes()).toContain("bless-ctx--warning");
   expect(w.find(".bless-ctx__pct").text()).toBe("80%");
   const rows = w.findAll(".bless-ctx__list > div").map((r) => r.text());

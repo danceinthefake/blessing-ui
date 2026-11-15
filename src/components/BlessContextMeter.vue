@@ -39,7 +39,7 @@ const props = withDefaults(
 const text = computed(() => ({
   title: "Context window",
   free: "Free",
-  used: (u: string, m: string, s: string) => `Context: ${u} of ${m} tokens used (${s})`,
+  used: (u: string, m: string, s: string) => `${s} of the context used: ${u} of ${m} tokens`,
   ...pack(),
   ...props.labels,
 }));

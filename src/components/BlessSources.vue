@@ -87,7 +87,7 @@ const host = (url: string) => {
 /* a mark in the reply that links here lights the item up */
 .bless-sources__item:target {
   border-color: var(--bless-color-accent);
-  background: var(--bless-color-accent-soft);
+  background: color-mix(in srgb, var(--bless-color-accent) 16%, var(--bless-color-bg));
 }
 .bless-sources__num {
   flex: none;
@@ -140,7 +140,7 @@ const host = (url: string) => {
   text-decoration: none;
 }
 .bless-source-mark:hover {
-  background: var(--bless-color-accent-soft);
+  background: color-mix(in srgb, var(--bless-color-accent) 16%, var(--bless-color-bg));
 }
 .bless-source-mark:focus-visible {
   outline: 2px solid var(--bless-color-accent);

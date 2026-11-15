@@ -23,8 +23,8 @@ const paragraph =
   >
     <BlessReadingProgress v-if="article" :target="article" position="sticky" minutes :wpm="120" />
     <article style="padding: 16px">
-      <h3 style="margin-top: 0">Sound on a small budget</h3>
-      <p v-for="n in 8" :key="n">{{ paragraph }}</p>
+      <h3 style="margin: 0 0 12px">Sound on a small budget</h3>
+      <p v-for="n in 8" :key="n" style="margin: 0 0 12px">{{ paragraph }}</p>
     </article>
   </div>
 </template>

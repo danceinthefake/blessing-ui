@@ -97,7 +97,7 @@ const pct = computed(() => Math.round(progress.value * 100));
 .bless-reading {
   inset-block-start: 0;
   inset-inline: 0;
-  z-index: var(--bless-z-sticky, 20);
+  z-index: var(--bless-z-nav);
   pointer-events: none;
 }
 .bless-reading--fixed {
