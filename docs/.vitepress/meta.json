@@ -9444,6 +9444,39 @@
   "slots": [],
   "exposed": []
  },
+ "BlessRadialBar": {
+  "props": [
+   {
+    "name": "data",
+    "type": "BlessRadialItem[]",
+    "required": true,
+    "description": "one ring for each item, from the outside in"
+   },
+   {
+    "name": "size",
+    "type": "number | undefined",
+    "required": false,
+    "default": "180",
+    "description": "the width of the circle in pixels"
+   },
+   {
+    "name": "format",
+    "type": "((v: number) => string) | undefined",
+    "required": false,
+    "description": "text for one value, for example `(v) => v + \" min\"`"
+   },
+   {
+    "name": "label",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Chart\"",
+    "description": "names the chart for screen readers"
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessRadialMenu": {
   "props": [
    {

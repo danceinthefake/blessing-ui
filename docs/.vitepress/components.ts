@@ -646,6 +646,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         text: "Back-to-back bars for two groups on each row",
       },
       {
+        name: "BlessRadialBar",
+        slug: "radial-bar",
+        text: "Rings that fill to a share, one for each goal",
+      },
+      {
         name: "BlessPricingTable",
         slug: "pricing-table",
         text: "Plans side by side, with a monthly or yearly switch",

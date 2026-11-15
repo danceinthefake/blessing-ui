@@ -29,7 +29,8 @@ Sixteen new components, 254 in all: more charts, parts for the replies of an ass
 - `BlessActivityFeed`: events of a team with a person, an action, and a time, newest first in groups by day, with `BlessAvatar` and `BlessRelativeTime`.
 - `BlessLeaderboard`: ranked rows with shared places for equal scores, the move since last time, and the row of the reader, which shows even below the limit.
 - `BlessSpreadsheet`: a grid of text cells with arrow keys, a selection, edit by typing, and copy and paste as tab text, so data moves to and from a spreadsheet app.
-- `BlessPyramid`: back-to-back bars for two groups on each row, on one scale, with a legend and a table for screen readers. 255 components in all.
+- `BlessPyramid`: back-to-back bars for two groups on each row, on one scale, with a legend and a table for screen readers.
+- `BlessRadialBar`: rings in one circle that fill to the share of each goal, with a legend that shows the share, the value, and the max. 256 components in all.
 
 ## 0.6.0 — 2026-11-15
 

@@ -406,3 +406,5 @@ export type { BlessLeader } from "./components/BlessLeaderboard.vue";
 export { default as BlessSpreadsheet } from "./components/BlessSpreadsheet.vue";
 export { default as BlessPyramid } from "./components/BlessPyramid.vue";
 export type { BlessPyramidRow } from "./components/BlessPyramid.vue";
+export { default as BlessRadialBar } from "./components/BlessRadialBar.vue";
+export type { BlessRadialItem } from "./components/BlessRadialBar.vue";

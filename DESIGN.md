@@ -453,7 +453,7 @@ Sixteen components, 238 → 254. Each uses native platform APIs only: the librar
 Sixteen components, 254 → 270. Each uses native platform APIs only: the library adds no dependency. Each needs tests, a docs page with a live example, a README row, and words in `labelsId`. Each new component must pass `src/classes.test.ts`.
 
 - ✅ `BlessPyramid`: back-to-back bars for two groups on each row, for example listeners by age.
-- `BlessRadialBar`: rings that fill to a share, one ring for each goal, in one circle.
+- ✅ `BlessRadialBar`: rings that fill to a share, one ring for each goal, in one circle.
 - `BlessStreamgraph`: stacked areas around a center line, to show how a mix changes over time.
 - `BlessPareto`: bars from high to low, with a line for the running share of the total.
 - `BlessModelPicker`: a select for a model, with a note, marks for speed and cost, and tags.
