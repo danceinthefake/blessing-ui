@@ -403,6 +403,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         text: "Nested details tree, role=tree",
         also: ["BlessTreeItem"],
       },
+      {
+        name: "BlessFileTree",
+        slug: "file-tree",
+        text: "Files and folders from a flat list of paths",
+      },
       { name: "BlessJsonViewer", slug: "json-viewer", text: "Any value as an open-and-close tree" },
       {
         name: "BlessLogViewer",

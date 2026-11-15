@@ -39,7 +39,8 @@
 - `BlessColorSwatches`: a set of ready colors as a group of native radios with names for screen readers and a ring on the picked color. `BlessColorPicker` now uses it for its presets, so the arrow keys move between them.
 - `BlessPricingTable`: plans side by side with a monthly or yearly switch, the best saving next to it, prices in the currency and locale format, features with checks, and one featured plan.
 - `BlessChangelog`: release notes with a heading per release at a level that fits the page, the date in the locale format, and the changes in the groups of Keep a Changelog.
-- `BlessShortcutSheet`: keyboard shortcuts in groups with `BlessKbd` keys, alternatives with "or", `Mod` as ⌘ on Apple devices and Ctrl elsewhere, and a search by words or keys. 237 components in all.
+- `BlessShortcutSheet`: keyboard shortcuts in groups with `BlessKbd` keys, alternatives with "or", `Mod` as ⌘ on Apple devices and Ctrl elsewhere, and a search by words or keys.
+- `BlessFileTree`: files and folders from a flat list of paths on top of `BlessTree`, with folders first, an icon for each file type, and the folders of the selected file open. 238 components in all.
 
 ## 0.5.0 — 2026-11-15
 
