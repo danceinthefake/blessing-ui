@@ -49,6 +49,7 @@ import type BlessReadMore from "../components/BlessReadMore.vue";
 import type BlessSankey from "../components/BlessSankey.vue";
 import type BlessScatterChart from "../components/BlessScatterChart.vue";
 import type BlessScheduler from "../components/BlessScheduler.vue";
+import type BlessSelectionToolbar from "../components/BlessSelectionToolbar.vue";
 import type BlessShortcutRecorder from "../components/BlessShortcutRecorder.vue";
 import type BlessSliderCaptcha from "../components/BlessSliderCaptcha.vue";
 import type BlessSortable from "../components/BlessSortable.vue";
@@ -123,6 +124,7 @@ export type BlessLabelsFull = {
   BlessSankey: All<typeof BlessSankey>;
   BlessScatterChart: All<typeof BlessScatterChart>;
   BlessScheduler: All<typeof BlessScheduler>;
+  BlessSelectionToolbar: All<typeof BlessSelectionToolbar>;
   BlessShortcutRecorder: All<typeof BlessShortcutRecorder>;
   BlessSliderCaptcha: All<typeof BlessSliderCaptcha>;
   BlessSortable: All<typeof BlessSortable>;
@@ -486,6 +488,7 @@ export const labelsId: BlessLabelsFull = {
     removed: (t) => `${t} dihapus`,
     hint: "Tombol panah menggeser acara, Alt dengan atas atau bawah mengubah durasinya, Delete menghapusnya.",
   },
+  BlessSelectionToolbar: { label: "Aksi teks" },
   BlessShortcutRecorder: {
     button: (l, c) => `${l}: ${c || "belum diatur"}. Tekan Enter untuk mengubah.`,
     pressKeys: "Tekan tombol…",

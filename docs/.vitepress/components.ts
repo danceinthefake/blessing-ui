@@ -336,6 +336,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         also: ["BlessOrgChartNode"],
       },
       { name: "BlessToolbar", slug: "toolbar", text: "Start / center / end bar" },
+      {
+        name: "BlessSelectionToolbar",
+        slug: "selection-toolbar",
+        text: "Actions above the selected text",
+      },
       { name: "BlessPanel", slug: "panel", text: "Titled box with actions, toggleable" },
       { name: "BlessStepper", slug: "stepper", text: "Steps header + panels + next / back" },
       { name: "BlessSplitButton", slug: "split-button", text: "Button with a menu half" },
