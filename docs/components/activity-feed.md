@@ -21,7 +21,7 @@ Shows the recent events of a team or a project: who did what, and when. The newe
   </template>
 </Demo>
 
-- `events` is a list of events. Each event has an `id`, an `actor` with a `name` and an optional `avatar`, an `action`, an optional `target` with an optional `href`, and a `time`.
+- `events` is a list of events. Each event has an `id`, an `actor`, an `action`, and a `time`. The actor has a `name` and an optional `avatar`. An optional `target` names the thing, and an optional `href` makes it a link.
 - The feed puts the events in order, newest first, and in groups by day: "Today", "Yesterday", then the date. Each event shows its time as a [relative time](./relative-time), such as "2 hr. ago".
 - The `event` slot replaces the text of an event. It gets `{ event }`.
 - `locale` sets the language of the day names and the times (default English). `now` sets a fixed "now", for example in a test or an example.
