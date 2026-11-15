@@ -25,6 +25,7 @@ import type BlessDataTable from "../components/BlessDataTable.vue";
 import type BlessDataView from "../components/BlessDataView.vue";
 import type BlessDateTimePicker from "../components/BlessDateTimePicker.vue";
 import type BlessDonutChart from "../components/BlessDonutChart.vue";
+import type BlessDumbbell from "../components/BlessDumbbell.vue";
 import type BlessDurationInput from "../components/BlessDurationInput.vue";
 import type BlessEditor from "../components/BlessEditor.vue";
 import type BlessEmojiPicker from "../components/BlessEmojiPicker.vue";
@@ -112,6 +113,7 @@ export type BlessLabelsFull = {
   BlessDataView: All<typeof BlessDataView>;
   BlessDateTimePicker: All<typeof BlessDateTimePicker>;
   BlessDonutChart: All<typeof BlessDonutChart>;
+  BlessDumbbell: All<typeof BlessDumbbell>;
   BlessDurationInput: All<typeof BlessDurationInput>;
   BlessEditor: All<typeof BlessEditor>;
   BlessEmojiPicker: All<typeof BlessEmojiPicker>;
@@ -288,6 +290,7 @@ export const labelsId: BlessLabelsFull = {
   BlessDataView: { layout: "Tata letak", list: "Daftar", grid: "Kisi", empty: "Tidak ada item" },
   BlessDateTimePicker: { time: "Waktu" },
   BlessDonutChart: { total: "Total" },
+  BlessDumbbell: { start: "Sebelum", end: "Sesudah", row: "Item", change: "Perubahan" },
   // the parser reads h and m, so the example keeps them
   BlessDurationInput: { invalid: "Masukkan waktu seperti 1:30 atau 1h 30m" },
   BlessEditor: {
