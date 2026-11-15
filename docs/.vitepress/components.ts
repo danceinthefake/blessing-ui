@@ -221,6 +221,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         text: "A secret key with show, copy and make a new key",
       },
       {
+        name: "BlessPermissionMatrix",
+        slug: "permission-matrix",
+        text: "Roles by permissions as check boxes",
+      },
+      {
         name: "BlessWebhookLog",
         slug: "webhook-log",
         text: "Sent events with the status and a retry button",
