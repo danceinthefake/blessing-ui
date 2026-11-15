@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { computed, onBeforeUnmount, onMounted, ref } from "vue";
+import { computed, ref } from "vue";
 import { useLabelPack } from "../composables/useLabels";
+import { chartColor, numberText, useWidth } from "./chart";
 import { layoutSankey, type BlessSankeyLink, type BlessSankeyNode } from "./sankey";
 import "./sr.css";
 
@@ -30,20 +31,10 @@ const text = computed(() => ({
   ...pack(),
   ...props.labels,
 }));
-const fmt = computed(() => props.format ?? ((v: number) => new Intl.NumberFormat().format(v)));
+const fmt = computed(() => props.format ?? numberText);
 
 const box = ref<HTMLElement>();
-const width = ref(640); // measured on mount, so the server and the first client render agree
-let ro: ResizeObserver | undefined;
-onMounted(() => {
-  const read = () => (width.value = box.value?.clientWidth || width.value);
-  read();
-  if (typeof ResizeObserver === "function" && box.value) {
-    ro = new ResizeObserver(read);
-    ro.observe(box.value);
-  }
-});
-onBeforeUnmount(() => ro?.disconnect());
+const width = useWidth(box);
 
 const NODE = 12;
 // room at both sides for the labels of the first and the last column
@@ -52,10 +43,6 @@ const laid = computed(() =>
   layoutSankey(props.links, props.nodes, width.value - 2 * PAD, props.height, NODE),
 );
 const last = computed(() => Math.max(0, ...laid.value.nodes.map((n) => n.col)));
-const colour = (c: string | undefined, i: number) => {
-  const v = c ?? `chart-${(i % 5) + 1}`;
-  return /^[a-z0-9-]+$/i.test(v) ? `var(--bless-color-${v})` : v;
-};
 </script>
 
 <template>
@@ -71,11 +58,11 @@ const colour = (c: string | undefined, i: number) => {
         :key="i"
         class="bless-sankey__link"
         :d="l.d"
-        :style="{ '--_c': colour(l.from.color, l.from.index) }"
+        :style="{ '--_c': chartColor(l.from.color, l.from.index) }"
       >
         <title>{{ l.from.label }} → {{ l.to.label }}: {{ fmt(l.value) }}</title>
       </path>
-      <g v-for="n in laid.nodes" :key="n.id" :style="{ '--_c': colour(n.color, n.index) }">
+      <g v-for="n in laid.nodes" :key="n.id" :style="{ '--_c': chartColor(n.color, n.index) }">
         <rect class="bless-sankey__node" :x="n.x" :y="n.y" :width="NODE" :height="n.h" />
         <text
           class="bless-sankey__label"
