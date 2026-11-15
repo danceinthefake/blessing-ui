@@ -21,14 +21,21 @@ const props = withDefaults(
     color?: string;
     /** text for one value, for example `(v) => v + "%"` */
     format?: (v: number) => string;
-    labels?: Partial<{ target: string; bands: string[] }>;
+    labels?: Partial<{
+      target: string;
+      /** the name of the band that holds the value */ band: (
+        index: number,
+        count: number,
+      ) => string;
+    }>;
   }>(),
   { bands: () => [], min: 0, color: "chart-1" },
 );
 
 const text = computed(() => ({
   target: "target",
-  bands: ["poor", "fair", "good"],
+  band: (i: number, n: number) =>
+    n === 3 ? ["poor", "fair", "good"][i]! : `band ${i + 1} of ${n}`,
   ...pack(),
   ...props.labels,
 }));
@@ -44,7 +51,8 @@ const pct = (v: number) =>
 // the band that holds the value, for screen readers: the color alone does not say it
 const band = computed(() => {
   const i = props.bands.findIndex((b) => props.value <= b);
-  return props.bands.length ? text.value.bands[i < 0 ? props.bands.length - 1 : i] : undefined;
+  const n = props.bands.length;
+  return n ? text.value.band(i < 0 ? n - 1 : i, n) : undefined;
 });
 const valuetext = computed(() =>
   [

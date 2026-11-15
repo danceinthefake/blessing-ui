@@ -27,7 +27,7 @@ Shows one key number with its goal and how good it is, in a row that takes littl
 - The scale goes from `min` (default 0) to `max`. With no `max`, the scale ends at the last band, or at a round number above the value and the target. A value past the end fills the bar.
 - The labels of all rows have the same width, so the bars line up. Set the width with the `--bless-bullet-label` CSS variable (default `8rem`).
 - `color` sets the color of the value bar, as a token name or any CSS color (default `chart-1`). `format` sets the text of a value.
-- For screen readers, the bar is a meter. It says the value, the target, and the name of the band, for example "72%, target 80%, fair". Change the words with `labels` or a [label pack](../guide/translating): `target`, and `bands` (a list with one name for each band).
+- For screen readers, the bar is a meter. It says the value, the target, and the name of the band, for example "72%, target 80%, fair". Change the words with `labels` or a [label pack](../guide/translating): `target`, and `band` (a function of the place of the band and the number of bands).
 
 ## Usage
 
