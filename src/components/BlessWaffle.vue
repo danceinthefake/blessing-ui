@@ -1,4 +1,10 @@
 <script lang="ts">
+export interface BlessWaffleSlice {
+  label: string;
+  value: number;
+  /** a token name or any CSS color; default: the chart colors in order */
+  color?: string;
+}
 /** Whole cells for each share that add up to `cells`: each gets its floor, then the largest remainders get one more. */
 export function waffleCells(values: number[], cells = 100): number[] {
   const vs = values.map((v) => Math.max(0, v || 0));
@@ -18,14 +24,6 @@ import { computed } from "vue";
 import { chartColor, numberText } from "./chart";
 
 defineOptions({ name: "BlessWaffle" });
-
-export interface BlessWaffleSlice {
-  label: string;
-  value: number;
-  /** a token name or any CSS color; default: the chart colors in order */
-  color?: string;
-}
-
 const props = withDefaults(
   defineProps<{
     data: BlessWaffleSlice[];
