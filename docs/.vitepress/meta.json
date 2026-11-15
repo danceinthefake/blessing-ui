@@ -9620,6 +9620,50 @@
   "slots": [],
   "exposed": []
  },
+ "BlessPermissionMatrix": {
+  "props": [
+   {
+    "name": "roles",
+    "type": "BlessRole[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "permissions",
+    "type": "BlessPermission[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "label",
+    "type": "string | undefined",
+    "required": false,
+    "description": "names the table"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ title: string; permission: string; all: (role: string) => string; cell: (role: string, permission: string) => string; locked: string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "CheckMatrix | undefined",
+    "required": false,
+    "default": "{}",
+    "description": "the permissions of each role, by role key"
+   }
+  ],
+  "events": [
+   {
+    "name": "update:modelValue",
+    "type": "[value: CheckMatrix]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessPhoneInput": {
   "props": [
    {

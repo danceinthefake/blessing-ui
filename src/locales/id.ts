@@ -72,6 +72,7 @@ import type BlessOpeningHours from "../components/BlessOpeningHours.vue";
 import type BlessOrderList from "../components/BlessOrderList.vue";
 import type BlessOrderSummary from "../components/BlessOrderSummary.vue";
 import type BlessPareto from "../components/BlessPareto.vue";
+import type BlessPermissionMatrix from "../components/BlessPermissionMatrix.vue";
 import type BlessPhoneInput from "../components/BlessPhoneInput.vue";
 import type BlessPickList from "../components/BlessPickList.vue";
 import type BlessPictogram from "../components/BlessPictogram.vue";
@@ -207,6 +208,7 @@ export type BlessLabelsFull = {
   BlessOrderList: All<typeof BlessOrderList>;
   BlessOrderSummary: All<typeof BlessOrderSummary>;
   BlessPareto: All<typeof BlessPareto>;
+  BlessPermissionMatrix: All<typeof BlessPermissionMatrix>;
   BlessPhoneInput: All<typeof BlessPhoneInput>;
   BlessPickList: All<typeof BlessPickList>;
   BlessPictogram: All<typeof BlessPictogram>;
@@ -738,6 +740,13 @@ export const labelsId: BlessLabelsFull = {
     quantity: (n) => `Jml ${n}`,
   },
   BlessPareto: { item: "Item", value: "Nilai", running: "Porsi kumulatif" },
+  BlessPermissionMatrix: {
+    title: "Izin",
+    permission: "Izin",
+    all: (r) => `Semua izin untuk ${r}`,
+    cell: (r, p) => `${r} boleh ${p}`,
+    locked: "tidak bisa diubah",
+  },
   BlessPhoneInput: { country: "Kode negara", number: "Nomor telepon" },
   BlessPickList: {
     moveSelected: (to) => `Pindahkan yang dipilih ke ${to}`,
