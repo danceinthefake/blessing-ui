@@ -693,6 +693,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         text: "The steps of a delivery, with the latest update",
       },
       {
+        name: "BlessVariantPicker",
+        slug: "variant-picker",
+        text: "The options of a product, with sold-out values",
+      },
+      {
         name: "BlessFunnel",
         slug: "funnel",
         text: "Stages with the share that is left at each step",
