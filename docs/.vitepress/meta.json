@@ -8757,6 +8757,50 @@
   "slots": [],
   "exposed": []
  },
+ "BlessNotificationPrefs": {
+  "props": [
+   {
+    "name": "events",
+    "type": "BlessNotifyEvent[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "channels",
+    "type": "BlessNotifyChannel[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "label",
+    "type": "string | undefined",
+    "required": false,
+    "description": "names the table"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ title: string; event: string; all: (channel: string) => string; cell: (event: string, channel: string) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "CheckMatrix | undefined",
+    "required": false,
+    "default": "{}",
+    "description": "the channels that are on for each event, by key"
+   }
+  ],
+  "events": [
+   {
+    "name": "update:modelValue",
+    "type": "[value: CheckMatrix]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessOnboardingChecklist": {
   "props": [
    {

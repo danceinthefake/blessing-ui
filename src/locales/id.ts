@@ -62,6 +62,7 @@ import type BlessMessageFeedback from "../components/BlessMessageFeedback.vue";
 import type BlessModelPicker from "../components/BlessModelPicker.vue";
 import type BlessNodeGraph from "../components/BlessNodeGraph.vue";
 import type BlessNotificationInbox from "../components/BlessNotificationInbox.vue";
+import type BlessNotificationPrefs from "../components/BlessNotificationPrefs.vue";
 import type BlessOnboardingChecklist from "../components/BlessOnboardingChecklist.vue";
 import type BlessOpeningHours from "../components/BlessOpeningHours.vue";
 import type BlessOrderList from "../components/BlessOrderList.vue";
@@ -190,6 +191,7 @@ export type BlessLabelsFull = {
   BlessModelPicker: All<typeof BlessModelPicker>;
   BlessNodeGraph: All<typeof BlessNodeGraph>;
   BlessNotificationInbox: All<typeof BlessNotificationInbox>;
+  BlessNotificationPrefs: All<typeof BlessNotificationPrefs>;
   BlessOnboardingChecklist: All<typeof BlessOnboardingChecklist>;
   BlessOpeningHours: All<typeof BlessOpeningHours>;
   BlessOrderList: All<typeof BlessOrderList>;
@@ -656,6 +658,12 @@ export const labelsId: BlessLabelsFull = {
     dismiss: "Tutup",
     empty: "Tidak ada notifikasi baru.",
     unread: "Belum dibaca",
+  },
+  BlessNotificationPrefs: {
+    title: "Notifikasi",
+    event: "Kejadian",
+    all: (c) => `Semua lewat ${c}`,
+    cell: (e, c) => `${e} lewat ${c}`,
   },
   BlessOnboardingChecklist: {
     progress: (d, n) => `${d} dari ${n} selesai`,
