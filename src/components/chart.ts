@@ -1,7 +1,7 @@
 // Shared parts of the plain SVG charts: round axis steps, colors, the measured width, and number text.
 import { onBeforeUnmount, onMounted, ref, type Ref } from "vue";
 
-/** Ticks at round steps (1, 2, 2.5, 5 × 10ⁿ) that cover lo..hi. The first and last tick are the axis ends. */
+/** Ticks at round steps (1, 2, 2.5, 5 × 10ⁿ) that cover lo..hi, after "nice numbers" (Heckbert, 1990). The first and last tick are the axis ends. */
 export function niceTicks(lo: number, hi: number, count = 5): number[] {
   if (!Number.isFinite(lo) || !Number.isFinite(hi)) return [0, 1];
   if (lo === hi) [lo, hi] = lo === 0 ? [0, 1] : lo > 0 ? [0, lo] : [lo, 0];
@@ -67,7 +67,7 @@ export interface BoxStats {
   outliers: number[];
 }
 
-/** The five numbers of a box plot. The whiskers end at the last values inside 1.5 × IQR. */
+/** The five numbers of a box plot. The whiskers end at the last values inside 1.5 × IQR (Tukey, 1977). */
 export function boxStats(values: number[]): BoxStats | undefined {
   const s = values.filter(Number.isFinite).sort((a, b) => a - b);
   if (!s.length) return undefined;

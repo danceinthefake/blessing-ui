@@ -1,0 +1,63 @@
+---
+title: Kredit
+---
+
+# Kredit
+
+Blessing UI tidak punya dependensi saat berjalan. Meski begitu, pustaka ini berdiri di atas karya banyak orang. Halaman ini menyebut mereka: situs yang memberi tampilannya, pustaka yang kami jadikan pembanding, metode yang dipakai komponen, dan alat yang membangun serta mengujinya.
+
+## Tampilan
+
+Bahasa visualnya berasal dari [saenai.tv](https://www.saenai.tv/), situs resmi anime _Saenai Heroine no Sodatekata_. Kami mencatat aturannya lalu menggambar ulang setiap bagian. Kami tidak menyalin aset, lembar gaya, maupun skrip apa pun. [Cerita](./story) menjelaskan caranya. Anime itu, judulnya, karakternya, dan karya seninya milik pemiliknya masing-masing. Proyek ini tidak berafiliasi dengan mereka.
+
+Fon bawaannya adalah [Roboto](https://fonts.google.com/specimen/Roboto) karya Christian Robertson dan [Noto Sans JP](https://fonts.google.com/noto/specimen/Noto+Sans+JP) dari Google. Pustaka ini tidak menyertakannya. Anda memuatnya sendiri, seperti yang ditunjukkan [panduan fon](../guide/fonts).
+
+## Pustaka pembanding
+
+Kami mencocokkan daftar komponen dengan proyek-proyek ini, untuk mengetahui apa saja yang wajib ada di pustaka sejenis. Setiap komponen Blessing dibuat sendiri. Pustaka ini tidak memakai kode dari mereka, dan nama mereka milik pemiliknya.
+
+- [shadcn/ui](https://ui.shadcn.com/): daftar target pertama, dan bentuk pembungkus grafik.
+- [PrimeVue](https://primevue.org/): daftar target kedua, untuk komponen data dan formulir yang lebih besar.
+- [Sonner](https://sonner.emilkowal.ski/), [Radix](https://www.radix-ui.com/), dan [cmdk](https://cmdk.paco.me/): perilaku toaster, komponen dasar, dan menu perintah. Kami menulis versi kecil dari perilaku itu dan tidak membungkus pustakanya.
+
+## Standar
+
+- [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/) memberi aturan keyboard dan peran untuk listbox, grid, tab, combobox, tree, menu, dialog, dan pola lainnya.
+- [WCAG 2.1](https://www.w3.org/TR/WCAG21/) tingkat AA adalah patokan untuk kontras, fokus, dan gerak. [axe-core](https://github.com/dequelabs/axe-core) memeriksa setiap halaman terhadapnya.
+- [ASD-STE100](https://www.asd-ste100.org/) Simplified Technical English adalah standar untuk semua teks berbahasa Inggris di repositori dan dokumentasi.
+- Platform web mengerjakan bagian terberat: Popover API, elemen `dialog`, `Intl`, Web Speech API, Web Audio, dan properti logis CSS. [MDN Web Docs](https://developer.mozilla.org/) menjadi rujukan untuk semuanya.
+
+## Metode
+
+Beberapa komponen memakai metode yang sudah dikenal. Kami menulis ulang masing-masing dari uraiannya.
+
+- [Treemap](../../components/treemap) memakai tata letak squarified dari Bruls, Huijsmans, dan van Wijk (2000).
+- [Input kartu](../../components/card-input) memeriksa nomor dengan algoritma Luhn (Hans Peter Luhn, 1954).
+- Sumbu grafik memakai langkah bulat 1, 2, 2,5, dan 5, mengikuti "nice numbers" dari Paul Heckbert (1990).
+- [Box plot](../../components/box-plot) mengakhiri kumisnya pada 1,5 kali tinggi kotak, seperti usulan John Tukey.
+- [Waffle](../../components/waffle) membulatkan porsinya dengan metode sisa terbesar, sehingga jumlah kotaknya selalu 100.
+- [Streamgraph](../../components/streamgraph) menempatkan alirannya di sekitar garis tengah, seperti ThemeRiver dari Havre, Hetzler, dan Nowell (2000). Byron dan Wattenberg (2008) memberi nama bentuk ini.
+- Grafik [Pareto](../../components/pareto) menampilkan aturan 80/20 yang dinamai Joseph Juran dari Vilfredo Pareto.
+
+## Paket yang bisa Anda tambahkan
+
+Beberapa komponen bekerja dengan paket yang Anda pasang sendiri. Pustaka ini tidak mengimpor paket tersebut, dan Anda cukup memasang yang Anda pakai.
+
+- [Vue](https://vuejs.org/) karya Evan You dan tim Vue: satu-satunya peer yang wajib.
+- [Tiptap](https://tiptap.dev/) dan [ProseMirror](https://prosemirror.net/): mesin di balik [editor](../../components/editor).
+- [marked](https://marked.js.org/): lexer untuk komponen [markdown](../../components/markdown).
+- [Unovis](https://unovis.dev/): grafik di dalam bingkai [chart](../../components/chart).
+- [uqr](https://github.com/unjs/uqr) dari tim UnJS: encoder untuk [kode QR](../../components/qr-code).
+- [Nuxt](https://nuxt.com/): modul untuk aplikasi Nuxt.
+
+## Alat
+
+Alat-alat ini membangun, menguji, dan mendokumentasikan pustaka.
+
+- [Vite](https://vite.dev/), [vite-plugin-dts](https://github.com/qmhc/vite-plugin-dts), dan [TypeScript](https://www.typescriptlang.org/) dengan [vue-tsc](https://github.com/vuejs/language-tools).
+- [VitePress](https://vitepress.dev/) untuk situs ini, dan [vue-component-meta](https://github.com/vuejs/language-tools) untuk tabel props.
+- [Vitest](https://vitest.dev/), [Vue Test Utils](https://test-utils.vuejs.org/), dan [jsdom](https://github.com/jsdom/jsdom) untuk uji unit.
+- [Playwright](https://playwright.dev/) untuk pemeriksaan di Chromium, Firefox, dan WebKit, dengan [axe-core](https://github.com/dequelabs/axe-core), [pixelmatch](https://github.com/mapbox/pixelmatch), dan [pngjs](https://github.com/pngjs/pngjs) untuk audit dan perbandingan visual.
+- [oxfmt](https://oxc.rs/) dari proyek Oxc untuk format kode.
+
+Terima kasih kepada semua orang yang membuat proyek-proyek ini.

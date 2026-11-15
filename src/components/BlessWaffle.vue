@@ -5,7 +5,7 @@ export interface BlessWaffleSlice {
   /** a token name or any CSS color; default: the chart colors in order */
   color?: string;
 }
-/** Whole cells for each share that add up to `cells`: each gets its floor, then the largest remainders get one more. */
+/** Whole cells for each share that add up to `cells`, by the largest remainder method: each gets its floor, then the largest remainders get one more. */
 export function waffleCells(values: number[], cells = 100): number[] {
   const vs = values.map((v) => Math.max(0, v || 0));
   const total = vs.reduce((a, b) => a + b, 0);
