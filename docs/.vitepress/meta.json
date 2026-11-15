@@ -5500,6 +5500,58 @@
   ],
   "exposed": []
  },
+ "BlessHabitTracker": {
+  "props": [
+   {
+    "name": "habits",
+    "type": "BlessHabit[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "days",
+    "type": "number | undefined",
+    "required": false,
+    "default": "7",
+    "description": "the number of days to show"
+   },
+   {
+    "name": "end",
+    "type": "string | undefined",
+    "required": false,
+    "description": "the last day to show, as YYYY-MM-DD; default: today of the reader"
+   },
+   {
+    "name": "locale",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"en\"",
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ habit: string; streak: string; streakOf: (days: number) => string; mark: (habit: string, day: string) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "done",
+    "type": "Record<string, string[]> | undefined",
+    "required": false,
+    "default": "{}",
+    "description": "the done days of each habit, by id"
+   }
+  ],
+  "events": [
+   {
+    "name": "update:done",
+    "type": "[value: Record<string, string[]>]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessHeatmap": {
   "props": [
    {
@@ -8580,13 +8632,13 @@
     "description": ""
    },
    {
-    "name": "complete",
-    "type": "[]",
+    "name": "update:done",
+    "type": "[value: string[]]",
     "description": ""
    },
    {
-    "name": "update:done",
-    "type": "[value: string[]]",
+    "name": "complete",
+    "type": "[]",
     "description": ""
    }
   ],

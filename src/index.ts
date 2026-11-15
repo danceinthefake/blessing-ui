@@ -450,3 +450,5 @@ export { toRRule } from "./components/BlessRecurrencePicker.vue";
 export type { BlessRecurrence, BlessRepeatFreq } from "./components/BlessRecurrencePicker.vue";
 export { default as BlessOpeningHours } from "./components/BlessOpeningHours.vue";
 export type { BlessShift, BlessWeekHours } from "./components/BlessOpeningHours.vue";
+export { default as BlessHabitTracker } from "./components/BlessHabitTracker.vue";
+export type { BlessHabit } from "./components/BlessHabitTracker.vue";
