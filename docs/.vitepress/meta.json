@@ -1000,6 +1000,45 @@
   ],
   "exposed": []
  },
+ "BlessBoxPlot": {
+  "props": [
+   {
+    "name": "groups",
+    "type": "BlessBoxGroup[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "height",
+    "type": "number | undefined",
+    "required": false,
+    "default": "280",
+    "description": ""
+   },
+   {
+    "name": "format",
+    "type": "((v: number) => string) | undefined",
+    "required": false,
+    "description": "text for one value, for example `(v) => v + \" ms\"`"
+   },
+   {
+    "name": "label",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Chart\"",
+    "description": "names the chart and its table for screen readers"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ group: string; min: string; q1: string; median: string; q3: string; max: string; outliers: string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessBreadcrumb": {
   "props": [
    {
@@ -11328,7 +11367,7 @@
   "props": [
    {
     "name": "mode",
-    "type": "\"switch\" | \"group\" | undefined",
+    "type": "\"group\" | \"switch\" | undefined",
     "required": false,
     "default": "\"switch\"",
     "description": "three-way (light/system/dark) or a single light↔dark button"

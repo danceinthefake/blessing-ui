@@ -503,6 +503,7 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "scatter-chart",
         text: "Points on two number axes, or bubbles with a size",
       },
+      { name: "BlessBoxPlot", slug: "box-plot", text: "The spread of values in groups" },
       {
         name: "BlessFunnel",
         slug: "funnel",
