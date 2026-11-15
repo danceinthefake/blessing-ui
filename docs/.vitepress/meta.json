@@ -10894,6 +10894,38 @@
   "slots": [],
   "exposed": []
  },
+ "BlessStreamingText": {
+  "props": [
+   {
+    "name": "text",
+    "type": "string",
+    "required": true,
+    "description": "all the text that has come in so far; it grows as parts arrive"
+   },
+   {
+    "name": "done",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": "the last part came in: the caret goes away and screen readers read the text"
+   },
+   {
+    "name": "pace",
+    "type": "number | undefined",
+    "required": false,
+    "default": "0",
+    "description": "letters a second, to show the text at an even pace between parts; 0 shows each part at once"
+   }
+  ],
+  "events": [],
+  "slots": [
+   {
+    "name": "default",
+    "type": "{ text: string; }",
+    "description": ""
+   }
+  ],
+  "exposed": []
+ },
  "BlessSwap": {
   "props": [
    {
