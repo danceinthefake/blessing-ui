@@ -10,7 +10,7 @@ import OpeningHoursBasic from "../demos/OpeningHoursBasic.vue";
 
 <p class="bless-lead">The hours of each day of the week, and "Open now"</p>
 
-Shows when a shop, a studio, or a help desk is open. A line at the top says if it is open now, and when it closes or opens next. For the free times of one day to book, use the [slot picker](./slot-picker).
+Shows when a shop, a studio, or a help desk is open. A line at the top shows the state now and the time of the next change. For the free times of one day to book, use the [slot picker](./slot-picker).
 
 <Demo title="Basic">
   <OpeningHoursBasic />
