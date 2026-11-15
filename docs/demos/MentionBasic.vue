@@ -18,7 +18,7 @@ const options = {
 
 <template>
   <div class="col" style="max-width: 420px">
-    <BlessMention v-model="text" :options rows="3" placeholder="Type @ or #" />
+    <BlessMention v-model="text" :options :rows="3" placeholder="Type @ or #" />
     <small>type @ or #, ↑ ↓ to choose, Enter or Tab to insert, Esc to close</small>
   </div>
 </template>

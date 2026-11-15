@@ -118,3 +118,14 @@ test("BlessTooltip: Esc hides a hover-opened tip wherever focus is; joins an exi
   vi.useRealTimers();
   w.unmount();
 });
+
+test("BlessPopover: class and other attributes go on the panel, so a parent can style it", () => {
+  const w = mount(BlessPopover, {
+    attrs: { class: "my-panel", "data-x": "1" },
+    slots: { trigger: "<button>Open</button>", default: "<p>Body</p>" },
+  });
+  const panel = w.find(".bless-popover");
+  expect(panel.classes()).toContain("my-panel");
+  expect(panel.attributes("data-x")).toBe("1");
+  expect(w.find(".bless-popover__anchor").classes()).not.toContain("my-panel");
+});

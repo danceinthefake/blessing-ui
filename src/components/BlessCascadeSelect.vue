@@ -272,7 +272,7 @@ watch(open, (o) => {
   border-bottom: 2px solid currentColor;
   transform: translateY(-2px) rotate(45deg);
 }
-.bless-cascade .bless-popover {
+.bless-cascade.bless-popover {
   padding: 0;
 }
 .bless-cascade__panel {
