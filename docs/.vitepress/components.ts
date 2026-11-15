@@ -688,6 +688,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         text: "A field for a code, then the saving",
       },
       {
+        name: "BlessShipmentTracker",
+        slug: "shipment-tracker",
+        text: "The steps of a delivery, with the latest update",
+      },
+      {
         name: "BlessFunnel",
         slug: "funnel",
         text: "Stages with the share that is left at each step",
