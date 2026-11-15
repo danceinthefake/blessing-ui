@@ -482,3 +482,4 @@ export { default as BlessFaqSearch } from "./components/BlessFaqSearch.vue";
 export type { BlessFaq } from "./components/BlessFaqSearch.vue";
 export { default as BlessComparisonTable } from "./components/BlessComparisonTable.vue";
 export type { BlessComparePlan, BlessCompareRow } from "./components/BlessComparisonTable.vue";
+export { default as BlessNewsletterSignup } from "./components/BlessNewsletterSignup.vue";
