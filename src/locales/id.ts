@@ -85,6 +85,7 @@ import type BlessRoseChart from "../components/BlessRoseChart.vue";
 import type BlessSankey from "../components/BlessSankey.vue";
 import type BlessScatterChart from "../components/BlessScatterChart.vue";
 import type BlessScheduler from "../components/BlessScheduler.vue";
+import type BlessSeatPicker from "../components/BlessSeatPicker.vue";
 import type BlessSelectionToolbar from "../components/BlessSelectionToolbar.vue";
 import type BlessShipmentTracker from "../components/BlessShipmentTracker.vue";
 import type BlessShortcutRecorder from "../components/BlessShortcutRecorder.vue";
@@ -204,6 +205,7 @@ export type BlessLabelsFull = {
   BlessSankey: All<typeof BlessSankey>;
   BlessScatterChart: All<typeof BlessScatterChart>;
   BlessScheduler: All<typeof BlessScheduler>;
+  BlessSeatPicker: All<typeof BlessSeatPicker>;
   BlessSelectionToolbar: All<typeof BlessSelectionToolbar>;
   BlessShipmentTracker: All<typeof BlessShipmentTracker>;
   BlessShortcutRecorder: All<typeof BlessShortcutRecorder>;
@@ -770,6 +772,14 @@ export const labelsId: BlessLabelsFull = {
     added: (t) => `${t} ditambahkan`,
     removed: (t) => `${t} dihapus`,
     hint: "Tombol panah menggeser acara, Alt dengan atas atau bawah mengubah durasinya, Delete menghapusnya.",
+  },
+  BlessSeatPicker: {
+    stage: "Panggung",
+    free: "Kosong",
+    taken: "Terisi",
+    chosen: "Dipilih",
+    seat: (r, n, z, p) => `Baris ${r}, kursi ${n}${z ? `, ${z}` : ""}${p ? `, ${p}` : ""}`,
+    summary: (n, t) => `${n} kursi · ${t}`,
   },
   BlessSelectionToolbar: { label: "Aksi teks" },
   BlessShipmentTracker: {

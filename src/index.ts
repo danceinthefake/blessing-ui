@@ -454,3 +454,5 @@ export { default as BlessHabitTracker } from "./components/BlessHabitTracker.vue
 export type { BlessHabit } from "./components/BlessHabitTracker.vue";
 export { default as BlessQuotaUsage } from "./components/BlessQuotaUsage.vue";
 export type { BlessQuota } from "./components/BlessQuotaUsage.vue";
+export { default as BlessSeatPicker } from "./components/BlessSeatPicker.vue";
+export type { BlessSeat, BlessSeatRow, BlessSeatZone } from "./components/BlessSeatPicker.vue";
