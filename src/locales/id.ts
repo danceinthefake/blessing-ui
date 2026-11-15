@@ -10,6 +10,7 @@ import type BlessBarChart from "../components/BlessBarChart.vue";
 import type BlessBoxPlot from "../components/BlessBoxPlot.vue";
 import type BlessBulkActionBar from "../components/BlessBulkActionBar.vue";
 import type BlessBulletChart from "../components/BlessBulletChart.vue";
+import type BlessBumpChart from "../components/BlessBumpChart.vue";
 import type BlessCalendar from "../components/BlessCalendar.vue";
 import type BlessCameraCapture from "../components/BlessCameraCapture.vue";
 import type BlessCandlestick from "../components/BlessCandlestick.vue";
@@ -119,6 +120,7 @@ export type BlessLabelsFull = {
   BlessBoxPlot: All<typeof BlessBoxPlot>;
   BlessBulkActionBar: All<typeof BlessBulkActionBar>;
   BlessBulletChart: All<typeof BlessBulletChart>;
+  BlessBumpChart: All<typeof BlessBumpChart>;
   BlessCalendar: All<typeof BlessCalendar>;
   BlessCameraCapture: All<typeof BlessCameraCapture>;
   BlessCandlestick: All<typeof BlessCandlestick>;
@@ -289,6 +291,7 @@ export const labelsId: BlessLabelsFull = {
     target: "target",
     band: (i, n) => (n === 3 ? ["buruk", "cukup", "baik"][i]! : `pita ${i + 1} dari ${n}`),
   },
+  BlessBumpChart: { step: "Langkah", rank: (r, v) => `#${r} (${v})` },
   BlessCalendar: month,
   BlessCameraCapture: {
     start: "Nyalakan kamera",
