@@ -1531,6 +1531,59 @@
   "slots": [],
   "exposed": []
  },
+ "BlessCandlestick": {
+  "props": [
+   {
+    "name": "data",
+    "type": "BlessCandle[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "height",
+    "type": "number | undefined",
+    "required": false,
+    "default": "260",
+    "description": ""
+   },
+   {
+    "name": "up",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"success\"",
+    "description": "the color of a period that closes at or above its open; drawn hollow"
+   },
+   {
+    "name": "down",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"danger\"",
+    "description": "the color of a period that closes below its open; drawn filled"
+   },
+   {
+    "name": "format",
+    "type": "((v: number) => string) | undefined",
+    "required": false,
+    "description": "text for one value, for example `(v) => \"$\" + v`"
+   },
+   {
+    "name": "label",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Chart\"",
+    "description": "names the chart and its table for screen readers"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ period: string; open: string; high: string; low: string; close: string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessCard": {
   "props": [
    {
@@ -5612,13 +5665,13 @@
     "description": ""
    },
    {
-    "name": "update:active",
-    "type": "[value: boolean]",
+    "name": "close",
+    "type": "[]",
     "description": ""
    },
    {
-    "name": "close",
-    "type": "[]",
+    "name": "update:active",
+    "type": "[value: boolean]",
     "description": ""
    }
   ],
@@ -11000,7 +11053,7 @@
    },
    {
     "name": "direction",
-    "type": "\"left\" | \"right\" | \"up\" | \"down\" | undefined",
+    "type": "\"up\" | \"down\" | \"left\" | \"right\" | undefined",
     "required": false,
     "default": "\"up\"",
     "description": ""
