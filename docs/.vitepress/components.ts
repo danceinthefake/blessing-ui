@@ -133,6 +133,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         text: "A cron schedule, with the next run times",
       },
       {
+        name: "BlessRecurrencePicker",
+        slug: "recurrence-picker",
+        text: "A rule that repeats, in one sentence",
+      },
+      {
         name: "BlessKeyValueEditor",
         slug: "key-value-editor",
         text: "Rows of key and value pairs to edit",

@@ -52,7 +52,8 @@ Thirty-two new components, 270 in all: more charts, parts for an assistant and i
 - `BlessCodeTabs`: one command in tabs for pnpm, npm, yarn, and bun on top of `BlessCodeBlock`. Blocks of one group keep the same tab on the page and on the next visit.
 - `BlessSpoiler`: text hidden under a blur, out of reach of screen readers and the keyboard, until a click shows it, in a line or as a block.
 - `BlessFootnotes`: numbered notes at the end of an article, with `BlessFootnoteRef` marks in the text that link down to each note and back.
-- `BlessGlossary`: a term in a line of text with a dotted line, whose meaning shows in a `BlessTooltip` on hover and focus. 278 components in all.
+- `BlessGlossary`: a term in a line of text with a dotted line, whose meaning shows in a `BlessTooltip` on hover and focus.
+- `BlessRecurrencePicker`: a rule that repeats, with native fields, day buttons, an end, the rule in one sentence, and `toRRule` for the iCalendar form. 279 components in all.
 
 ## 0.6.0 — 2026-11-15
 

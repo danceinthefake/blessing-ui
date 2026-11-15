@@ -33,6 +33,7 @@ Beberapa komponen memakai metode yang sudah dikenal. Kami menulis ulang masing-m
 
 - [Treemap](../../components/treemap) memakai tata letak squarified dari Bruls, Huijsmans, dan van Wijk (2000).
 - [Input kartu](../../components/card-input) memeriksa nomor dengan algoritma Luhn (Hans Peter Luhn, 1954).
+- [Pemilih pengulangan](../../components/recurrence-picker) menulis aturannya sebagai RRULE dari [RFC 5545](https://www.rfc-editor.org/rfc/rfc5545), standar iCalendar.
 - Sumbu grafik memakai langkah bulat 1, 2, 2,5, dan 5, mengikuti "nice numbers" dari Paul Heckbert (1990).
 - [Box plot](../../components/box-plot) mengakhiri kumisnya pada 1,5 kali tinggi kotak, seperti usulan John Tukey.
 - [Waffle](../../components/waffle) membulatkan porsinya dengan metode sisa terbesar, sehingga jumlah kotaknya selalu 100.

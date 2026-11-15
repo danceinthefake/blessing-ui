@@ -76,6 +76,7 @@ import type BlessReactions from "../components/BlessReactions.vue";
 import type BlessReadMore from "../components/BlessReadMore.vue";
 import type BlessReadingProgress from "../components/BlessReadingProgress.vue";
 import type BlessReasoning from "../components/BlessReasoning.vue";
+import type BlessRecurrencePicker from "../components/BlessRecurrencePicker.vue";
 import type BlessReviewSummary from "../components/BlessReviewSummary.vue";
 import type BlessRoseChart from "../components/BlessRoseChart.vue";
 import type BlessSankey from "../components/BlessSankey.vue";
@@ -191,6 +192,7 @@ export type BlessLabelsFull = {
   BlessReadMore: All<typeof BlessReadMore>;
   BlessReadingProgress: All<typeof BlessReadingProgress>;
   BlessReasoning: All<typeof BlessReasoning>;
+  BlessRecurrencePicker: All<typeof BlessRecurrencePicker>;
   BlessReviewSummary: All<typeof BlessReviewSummary>;
   BlessRoseChart: All<typeof BlessRoseChart>;
   BlessSankey: All<typeof BlessSankey>;
@@ -707,6 +709,20 @@ export const labelsId: BlessLabelsFull = {
     thinking: "Sedang berpikir…",
     thought: (s) => (s < 1 ? "Berpikir sejenak" : `Berpikir selama ${s} dtk`),
     done: "Penalaran",
+  },
+  BlessRecurrencePicker: {
+    every: "Ulangi setiap",
+    unit: (f) => ({ daily: "hari", weekly: "minggu", monthly: "bulan", yearly: "tahun" })[f],
+    on: "Pada",
+    ends: "Berakhir",
+    never: "Tidak pernah",
+    after: "Setelah",
+    times: "kali",
+    onDate: "Pada",
+    summary: (p) => [p.every, p.days && `pada ${p.days}`, p.end].filter(Boolean).join(", "),
+    everyUnit: (n, u) => (n === 1 ? `Setiap ${u}` : `Setiap ${n} ${u}`),
+    endCount: (n) => `${n} kali`,
+    endUntil: (d) => `sampai ${d}`,
   },
   BlessReviewSummary: {
     average: (s) => `Rata-rata ${s} dari 5 bintang`,
