@@ -11758,6 +11758,52 @@
   ],
   "exposed": []
  },
+ "BlessSpreadsheet": {
+  "props": [
+   {
+    "name": "columns",
+    "type": "string[] | undefined",
+    "required": false,
+    "description": "the names over the columns; default: A, B, C …"
+   },
+   {
+    "name": "minColumns",
+    "type": "number | undefined",
+    "required": false,
+    "default": "0",
+    "description": "at least this many columns, for an empty sheet"
+   },
+   {
+    "name": "readonly",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "label",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Spreadsheet\"",
+    "description": "names the grid for screen readers"
+   },
+   {
+    "name": "modelValue",
+    "type": "string[][] | undefined",
+    "required": false,
+    "default": "[]",
+    "description": "the cells, row by row, as text"
+   }
+  ],
+  "events": [
+   {
+    "name": "update:modelValue",
+    "type": "[value: string[][]]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessStack": {
   "props": [
    {

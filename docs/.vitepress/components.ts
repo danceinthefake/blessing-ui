@@ -447,6 +447,11 @@ export const groups: { title: string; items: Entry[] }[] = [
       { name: "BlessTable", slug: "table", text: "Typed table, stacks on mobile" },
       { name: "BlessDataTable", slug: "data-table", text: "Table + sort/search/select/paginate" },
       {
+        name: "BlessSpreadsheet",
+        slug: "spreadsheet",
+        text: "A grid of cells to edit and paste into",
+      },
+      {
         name: "BlessInfiniteCanvas",
         slug: "infinite-canvas",
         text: "Pan and zoom surface for your own content",
