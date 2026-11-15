@@ -10452,6 +10452,51 @@
   ],
   "exposed": []
  },
+ "BlessReviewSummary": {
+  "props": [
+   {
+    "name": "counts",
+    "type": "number[]",
+    "required": true,
+    "description": "the number of reviews with 5, 4, 3, 2, and 1 star, in that order"
+   },
+   {
+    "name": "filterable",
+    "type": "boolean | undefined",
+    "required": false,
+    "default": "true",
+    "description": "the bars are buttons that set `v-model:filter`"
+   },
+   {
+    "name": "locale",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"en\"",
+    "description": "the language of the numbers, for example `id`"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ average: (score: string) => string; reviews: (count: number) => string; level: (stars: number, count: number) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "filter",
+    "type": "number | undefined",
+    "required": false,
+    "description": "the star level that filters the reviews, or none"
+   }
+  ],
+  "events": [
+   {
+    "name": "update:filter",
+    "type": "[value: number | undefined]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessSankey": {
   "props": [
    {

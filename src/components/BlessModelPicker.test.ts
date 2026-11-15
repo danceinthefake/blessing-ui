@@ -10,8 +10,8 @@ const models = [
 test("BlessModelPicker: the trigger names the model, and the list shows notes, tags, and marks in words", () => {
   const w = mount(BlessModelPicker, { props: { models, modelValue: "fast" } });
   const b = w.find("button.bless-modelpick");
-  expect(b.text()).toBe("Swift");
-  expect(b.attributes("aria-label")).toBe("Model: Swift");
+  expect(b.find(".bless-modelpick__name").text()).toBe("Swift");
+  expect(b.text()).toBe("Model: Swift");
   expect(b.attributes("aria-haspopup")).toBe("dialog");
   const opts = w.findAll("[role=option]");
   expect(opts).toHaveLength(3);
@@ -26,7 +26,7 @@ test("BlessModelPicker: the trigger names the model, and the list shows notes, t
 
 test("BlessModelPicker: a pick sets the model, and labels translate", async () => {
   const w = mount(BlessModelPicker, { props: { models, labels: { choose: "Pilih model" } } });
-  expect(w.find("button.bless-modelpick").text()).toBe("Pilih model");
+  expect(w.find(".bless-modelpick__name").text()).toBe("Pilih model");
   w.findComponent({ name: "BlessListbox" }).vm.$emit("update:modelValue", "deep");
   await w.vm.$nextTick();
   expect(w.emitted("update:modelValue")).toEqual([["deep"]]);

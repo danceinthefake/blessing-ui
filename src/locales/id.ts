@@ -70,6 +70,7 @@ import type BlessReactions from "../components/BlessReactions.vue";
 import type BlessReadMore from "../components/BlessReadMore.vue";
 import type BlessReadingProgress from "../components/BlessReadingProgress.vue";
 import type BlessReasoning from "../components/BlessReasoning.vue";
+import type BlessReviewSummary from "../components/BlessReviewSummary.vue";
 import type BlessSankey from "../components/BlessSankey.vue";
 import type BlessScatterChart from "../components/BlessScatterChart.vue";
 import type BlessScheduler from "../components/BlessScheduler.vue";
@@ -176,6 +177,7 @@ export type BlessLabelsFull = {
   BlessReadMore: All<typeof BlessReadMore>;
   BlessReadingProgress: All<typeof BlessReadingProgress>;
   BlessReasoning: All<typeof BlessReasoning>;
+  BlessReviewSummary: All<typeof BlessReviewSummary>;
   BlessSankey: All<typeof BlessSankey>;
   BlessScatterChart: All<typeof BlessScatterChart>;
   BlessScheduler: All<typeof BlessScheduler>;
@@ -669,6 +671,11 @@ export const labelsId: BlessLabelsFull = {
     thinking: "Sedang berpikir…",
     thought: (s) => (s < 1 ? "Berpikir sejenak" : `Berpikir selama ${s} dtk`),
     done: "Penalaran",
+  },
+  BlessReviewSummary: {
+    average: (s) => `Rata-rata ${s} dari 5 bintang`,
+    reviews: (n) => `${n} ulasan`,
+    level: (s, n) => `${s} bintang: ${n} ulasan`,
   },
   BlessSankey: { from: "Dari", to: "Ke", value: "Nilai" },
   BlessScatterChart: { point: "Titik", group: "Grup", size: "Ukuran" },
