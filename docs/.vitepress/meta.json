@@ -155,6 +155,59 @@
   ],
   "exposed": []
  },
+ "BlessAddressFields": {
+  "props": [
+   {
+    "name": "countries",
+    "type": "string[] | undefined",
+    "required": false,
+    "default": "[\"ID\", \"US\", \"GB\", \"DE\", \"FR\", \"JP\", \"CA\"]",
+    "description": "the countries to offer, as ISO codes"
+   },
+   {
+    "name": "formats",
+    "type": "Record<string, BlessAddressFormat> | undefined",
+    "required": false,
+    "description": "more formats, or changes to the built-in ones, by country code"
+   },
+   {
+    "name": "locale",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"en\"",
+    "description": "the language of the country names, for example `id`"
+   },
+   {
+    "name": "label",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Address\"",
+    "description": "names the group of fields"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ country: string; line1: string; line2: string; city: string; state: string; province: string; prefecture: string; county: string; zip: string; postcode: string; postal: string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "BlessAddress | undefined",
+    "required": false,
+    "default": "{ country: \"ID\" }",
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "update:modelValue",
+    "type": "[value: BlessAddress]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessAffix": {
   "props": [
    {
@@ -3926,13 +3979,13 @@
   ],
   "events": [
    {
-    "name": "update:selected",
-    "type": "[rows: T[]]",
+    "name": "state",
+    "type": "[s: { sortKey: string | null; sortDir: \"asc\" | \"desc\"; query: string; page: number; pageSize: number; }]",
     "description": ""
    },
    {
-    "name": "state",
-    "type": "[s: { sortKey: string | null; sortDir: \"asc\" | \"desc\"; query: string; page: number; pageSize: number; }]",
+    "name": "update:selected",
+    "type": "[rows: T[]]",
     "description": ""
    },
    {
@@ -14169,7 +14222,7 @@
    },
    {
     "name": "sort",
-    "type": "\"none\" | \"label\" | \"weight\" | undefined",
+    "type": "\"label\" | \"none\" | \"weight\" | undefined",
     "required": false,
     "default": "\"none\"",
     "description": "`weight` puts the biggest first. `none` keeps your order."

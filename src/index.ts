@@ -471,3 +471,6 @@ export { default as BlessConsentBanner } from "./components/BlessConsentBanner.v
 export type { BlessConsentCategory } from "./components/BlessConsentBanner.vue";
 export { default as BlessNotificationPrefs } from "./components/BlessNotificationPrefs.vue";
 export type { BlessNotifyEvent, BlessNotifyChannel } from "./components/BlessNotificationPrefs.vue";
+export { default as BlessAddressFields } from "./components/BlessAddressFields.vue";
+export { addressFormats } from "./components/BlessAddressFields.vue";
+export type { BlessAddress, BlessAddressFormat } from "./components/BlessAddressFields.vue";
