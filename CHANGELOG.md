@@ -58,7 +58,8 @@ Thirty-two new components, 270 in all: more charts, parts for an assistant and i
 - `BlessHabitTracker`: a grid of days for each habit with native check boxes, the streak back from the last day, and a name for each check.
 - `BlessQuotaUsage`: the limits of a plan as meters, with the use in words, and a warning near the end and at the limit.
 - `BlessSeatPicker`: a map of seats in rows with gaps, zones with prices, free, taken, and chosen seats, a total, and arrow keys over one tab stop.
-- `BlessTicket`: an event ticket with the details, a tear line with notches, and a stub with a `BlessQrCode` and the code. 284 components in all.
+- `BlessTicket`: an event ticket with the details, a tear line with notches, and a stub with a `BlessQrCode` and the code.
+- `BlessRsvp`: going, maybe, and not going as toggle buttons with counts that include the reader, and the faces of some people who go. 285 components in all.
 
 ## 0.6.0 — 2026-11-15
 

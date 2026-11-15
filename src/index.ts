@@ -457,3 +457,5 @@ export type { BlessQuota } from "./components/BlessQuotaUsage.vue";
 export { default as BlessSeatPicker } from "./components/BlessSeatPicker.vue";
 export type { BlessSeat, BlessSeatRow, BlessSeatZone } from "./components/BlessSeatPicker.vue";
 export { default as BlessTicket } from "./components/BlessTicket.vue";
+export { default as BlessRsvp } from "./components/BlessRsvp.vue";
+export type { BlessRsvpAnswer } from "./components/BlessRsvp.vue";
