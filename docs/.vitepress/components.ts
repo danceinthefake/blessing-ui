@@ -209,6 +209,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         text: "Press a key combo to record it",
       },
       {
+        name: "BlessShortcutSheet",
+        slug: "shortcut-sheet",
+        text: "Keyboard shortcuts in groups, with a search",
+      },
+      {
         name: "BlessDiff",
         slug: "diff",
         text: "Side-by-side and inline text diff",

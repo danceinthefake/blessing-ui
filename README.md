@@ -10,7 +10,7 @@ Vue 3 component library and design tokens. The UI is gray-scale, with one accent
 
 Docs, with every component live: **[ui.blessing.id](https://ui.blessing.id)**
 
-- 236 components, from button to data table to chat. Only `--bless-*` custom properties style them. There is no Tailwind dependency.
+- 237 components, from button to data table to chat. Only `--bless-*` custom properties style them. There is no Tailwind dependency.
 - Native platform first: `<dialog>`, Popover API, `<details>`, native form controls, `Intl` dates, and scroll-snap. There is no positioning, date, or table library.
 - Accessible defaults: focus rings, ARIA tablist, dialog, and tables, and `prefers-reduced-motion`
 - ESM, tree-shakable, with `vue` as the only required peer (`@tiptap/vue-3` is optional, for `BlessEditor`). One component (`BlessButton`) costs about 1 KB gzip of JS and about 2.6 KB of CSS (tokens and its own styles). Everything costs about 151 KB and 41 KB. CSS is split per component and the import pulls it in, so you never pay for styles that you do not use
@@ -92,7 +92,7 @@ The words that components say are English by default. `provideLabels(labelsId)` 
 
 ## Components
 
-236 components across eight groups. Every one styles itself from `--bless-*` tokens and ships with a test and a docs page.
+237 components across eight groups. Every one styles itself from `--bless-*` tokens and ships with a test and a docs page.
 
 ### Primitives
 
@@ -188,6 +188,7 @@ The words that components say are English by default. `provideLabels(labelsId)` 
 | `BlessGauge`                       | Read-only gauge with zones, as a half circle or a bar (role=meter)                                      | `value`, `min`, `max`, `zones[{to,color,label}]`, `variant` arc/linear, `label`, `format`                                                                                                                                        |
 | `BlessGantt`                       | Schedule: task bars on a day axis with progress, dependencies and a today line. Draggable if `editable` | `v-model:tasks` `[{id,label,start,end,progress,after}]`, `editable`, `dayWidth`, `rowHeight`, `from`, `to`, `locale`, `labelWidth`, `v-model:selected`. Emits `select` `change`                                                  |
 | `BlessShortcutRecorder`            | Press-to-record key combo with conflict detection                                                       | `v-model` for example `Ctrl+K`, `taken` (list or `{combo: name}`), `allowBare`, `label`, `placeholder`. Emits `conflict`                                                                                                         |
+| `BlessShortcutSheet`               | Keyboard shortcuts in groups, with a search                                                             | `groups`, `search`                                                                                                                                                                                                               |
 | `BlessDiff`                        | Line diff of two texts, inline or side by side, with folding                                            | `a`, `b`, `mode` inline/split, `context`, `lineNumbers`, `labelA`, `labelB`, `label`                                                                                                                                             |
 | `BlessCodeBlock`                   | Code listing with copy, line marks, line numbers and file tabs. You bring the highlighter               | `code`, `lang`, `filename`, `files[{name,code,lang}]`, `v-model:active`, `lines` "2,4-6", `lineNumbers`, `copy`, `wrap`. Emits `copy`. `#code="{code,lang,lines}"`                                                               |
 | `BlessMarkdown`                    | Markdown text, rendered without `v-html` ([marked](https://marked.js.org/) lexer, installed by you)     | `source`, `lexer`, `level`                                                                                                                                                                                                       |

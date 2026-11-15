@@ -59,6 +59,7 @@ import type BlessScatterChart from "../components/BlessScatterChart.vue";
 import type BlessScheduler from "../components/BlessScheduler.vue";
 import type BlessSelectionToolbar from "../components/BlessSelectionToolbar.vue";
 import type BlessShortcutRecorder from "../components/BlessShortcutRecorder.vue";
+import type BlessShortcutSheet from "../components/BlessShortcutSheet.vue";
 import type BlessSliderCaptcha from "../components/BlessSliderCaptcha.vue";
 import type BlessSlotPicker from "../components/BlessSlotPicker.vue";
 import type BlessSortable from "../components/BlessSortable.vue";
@@ -143,6 +144,7 @@ export type BlessLabelsFull = {
   BlessScheduler: All<typeof BlessScheduler>;
   BlessSelectionToolbar: All<typeof BlessSelectionToolbar>;
   BlessShortcutRecorder: All<typeof BlessShortcutRecorder>;
+  BlessShortcutSheet: All<typeof BlessShortcutSheet>;
   BlessSliderCaptcha: All<typeof BlessSliderCaptcha>;
   BlessSlotPicker: All<typeof BlessSlotPicker>;
   BlessSortable: All<typeof BlessSortable>;
@@ -552,6 +554,7 @@ export const labelsId: BlessLabelsFull = {
     usedBy: (c, by) => `${c} sudah dipakai oleh ${by}`,
     taken: (c) => `${c} sudah dipakai`,
   },
+  BlessShortcutSheet: { search: "Cari pintasan", none: "Pintasan tidak ditemukan", or: "atau" },
   BlessSliderCaptcha: { verified: "Terverifikasi", failed: "Belum pas, coba lagi" },
   BlessSlotPicker: {
     morning: "Pagi",
