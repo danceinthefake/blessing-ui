@@ -8309,6 +8309,69 @@
   ],
   "exposed": []
  },
+ "BlessOrderSummary": {
+  "props": [
+   {
+    "name": "lines",
+    "type": "BlessOrderLine[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "currency",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"USD\"",
+    "description": "an ISO code, for example `IDR`"
+   },
+   {
+    "name": "locale",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"en\"",
+    "description": "the language of the money, for example `id`"
+   },
+   {
+    "name": "discount",
+    "type": "number | undefined",
+    "required": false,
+    "description": "the money off, as a positive amount"
+   },
+   {
+    "name": "discountLabel",
+    "type": "string | undefined",
+    "required": false,
+    "description": "the name of the discount, for example the code"
+   },
+   {
+    "name": "shipping",
+    "type": "number | undefined",
+    "required": false,
+    "description": "the cost of shipping; 0 shows \"Free\", and none hides the row"
+   },
+   {
+    "name": "tax",
+    "type": "number | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ title: string; subtotal: string; discount: string; shipping: string; free: string; tax: string; total: string; quantity: (n: number) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [
+   {
+    "name": "footer",
+    "type": "{ total: number; }",
+    "description": ""
+   }
+  ],
+  "exposed": []
+ },
  "BlessOrgChart": {
   "props": [
    {

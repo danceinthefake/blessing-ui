@@ -678,6 +678,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         text: "Plans side by side, with a monthly or yearly switch",
       },
       {
+        name: "BlessOrderSummary",
+        slug: "order-summary",
+        text: "The lines of an order, then the sums and the total",
+      },
+      {
         name: "BlessFunnel",
         slug: "funnel",
         text: "Stages with the share that is left at each step",
