@@ -403,3 +403,4 @@ export { default as BlessActivityFeed } from "./components/BlessActivityFeed.vue
 export type { BlessActivity } from "./components/BlessActivityFeed.vue";
 export { default as BlessLeaderboard } from "./components/BlessLeaderboard.vue";
 export type { BlessLeader } from "./components/BlessLeaderboard.vue";
+export { default as BlessSpreadsheet } from "./components/BlessSpreadsheet.vue";

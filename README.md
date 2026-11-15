@@ -10,7 +10,7 @@ Vue 3 component library and design tokens. The UI is gray-scale, with one accent
 
 Docs, with every component live: **[ui.blessing.id](https://ui.blessing.id)**
 
-- 253 components, from button to data table to chat. Only `--bless-*` custom properties style them. There is no Tailwind dependency.
+- 254 components, from button to data table to chat. Only `--bless-*` custom properties style them. There is no Tailwind dependency.
 - Native platform first: `<dialog>`, Popover API, `<details>`, native form controls, `Intl` dates, and scroll-snap. There is no positioning, date, or table library.
 - Accessible defaults: focus rings, ARIA tablist, dialog, and tables, and `prefers-reduced-motion`
 - ESM, tree-shakable, with `vue` as the only required peer (`@tiptap/vue-3` is optional, for `BlessEditor`). One component (`BlessButton`) costs about 1 KB gzip of JS and about 2.6 KB of CSS (tokens and its own styles). Everything costs about 158 KB and 43 KB. CSS is split per component and the import pulls it in, so you never pay for styles that you do not use
@@ -92,7 +92,7 @@ The words that components say are English by default. `provideLabels(labelsId)` 
 
 ## Components
 
-253 components across eight groups. Every one styles itself from `--bless-*` tokens and ships with a test and a docs page.
+254 components across eight groups. Every one styles itself from `--bless-*` tokens and ships with a test and a docs page.
 
 ### Primitives
 
@@ -267,6 +267,7 @@ The words that components say are English by default. `provideLabels(labelsId)` 
 | `BlessResizable`                            | Two-pane split                                                                                | `v-model` (% of first pane), `direction`, `min`, `max`, `step`. `#a` `#b`                                                                                  |
 | `BlessTable`                                | Typed table, stacks on mobile                                                                 | `columns`, `rows`, `rowKey`, `caption`, `striped`, `stack`. `#cell-<key>`                                                                                  |
 | `BlessDataTable`                            | Table + sort/search/select/paginate                                                           | `columns` (+`sortable`, `hideable`), `rows`, `rowKey`, `selectable`, `searchable`, `pageSize`. `#toolbar` `#cell-<key>`                                    |
+| `BlessSpreadsheet`                          | A grid of cells to edit and paste into                                                        | `v-model` string[][], `columns`, `minColumns`, `readonly`, `label`                                                                                         |
 | `BlessInfiniteCanvas`                       | Pan / zoom surface. Ctrl+wheel and pinch zoom, arrows and +/− from the keyboard               | `v-model:view` `{x,y,zoom}`, `minZoom`, `maxZoom`, `grid`, `controls`, `wheelZoom`, `label`, `labels`. Exposes `fit` `centerOn` `zoomBy` `reset` `toWorld` |
 | `BlessDock`                                 | Magnifying icon dock. Toolbar keys, links or buttons, badge. Off for touch and reduced motion | `items` `{id,label,icon?,href?,badge?,disabled?}`, `position`, `size`, `magnification`, `radius`, `label`. `#item`. `select`                               |
 

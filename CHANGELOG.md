@@ -18,7 +18,8 @@
 - `BlessReadingProgress`: a thin bar that fills as the reader scrolls an article or a box, with the minutes left from the count of words.
 - `BlessReactions`: emoji reactions with counts. A click adds or removes the reaction of the reader, and a button opens `BlessEmojiPicker` for a new one.
 - `BlessActivityFeed`: events of a team with a person, an action, and a time, newest first in groups by day, with `BlessAvatar` and `BlessRelativeTime`.
-- `BlessLeaderboard`: ranked rows with shared places for equal scores, the move since last time, and the row of the reader, which shows even below the limit. 253 components in all.
+- `BlessLeaderboard`: ranked rows with shared places for equal scores, the move since last time, and the row of the reader, which shows even below the limit.
+- `BlessSpreadsheet`: a grid of text cells with arrow keys, a selection, edit by typing, and copy and paste as tab text, so data moves to and from a spreadsheet app. 254 components in all.
 
 ## 0.6.0 — 2026-11-15
 
