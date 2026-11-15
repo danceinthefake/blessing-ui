@@ -36,7 +36,8 @@
 - `BlessSlotPicker`: the free times of a day as native radio buttons, sorted into morning, afternoon, and evening, with taken slots that cannot be picked and times in the locale format.
 - `BlessAvailabilityGrid`: a week of time cells where a drag paints a rectangle free or busy, with a grid that works with the keyboard and says each state in words.
 - `BlessBulkActionBar`: a dark bar that slides up when rows are selected, with the count, the actions in a slot, and a clear button. It sticks to the bottom of its box, or of the window with `fixed`, and it speaks a new count.
-- `BlessColorSwatches`: a set of ready colors as a group of native radios with names for screen readers and a ring on the picked color. `BlessColorPicker` now uses it for its presets, so the arrow keys move between them. 234 components in all.
+- `BlessColorSwatches`: a set of ready colors as a group of native radios with names for screen readers and a ring on the picked color. `BlessColorPicker` now uses it for its presets, so the arrow keys move between them.
+- `BlessPricingTable`: plans side by side with a monthly or yearly switch, the best saving next to it, prices in the currency and locale format, features with checks, and one featured plan. 235 components in all.
 
 ## 0.5.0 — 2026-11-15
 

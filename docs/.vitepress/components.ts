@@ -569,6 +569,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         text: "One value against a target and bands, in one thin bar",
       },
       {
+        name: "BlessPricingTable",
+        slug: "pricing-table",
+        text: "Plans side by side, with a monthly or yearly switch",
+      },
+      {
         name: "BlessFunnel",
         slug: "funnel",
         text: "Stages with the share that is left at each step",
