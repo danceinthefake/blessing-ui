@@ -594,6 +594,7 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "dumbbell",
         text: "Two values for each row, joined by a line",
       },
+      { name: "BlessWaffle", slug: "waffle", text: "Parts of a whole as a grid of 100 squares" },
       {
         name: "BlessPricingTable",
         slug: "pricing-table",
