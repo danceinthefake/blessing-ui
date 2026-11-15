@@ -21,7 +21,7 @@ const props = withDefaults(
     data: BlessChartRow[];
     /** the field of a row with the text of its step, for example the month */
     x: string;
-    /** one stream for each series; the first is the top one */
+    /** one stream for each series; the first is the bottom one */
     series: BlessChartSeries[];
     height?: number;
     /** text for one value, for example `(v) => v + "k"` */
@@ -52,22 +52,20 @@ const py = computed(() => {
 const streams = computed(() => {
   const n = props.data.length;
   const base = totals.value.map((t) => -t / 2);
-  return props.series
-    .map((s, i) => {
-      const lo = base.slice();
-      const hi = props.data.map((r, k) => (base[k]! += num(r, s.key)));
-      const top = hi.map((v, k) => `${px.value(k).toFixed(1)},${py.value(v).toFixed(1)}`);
-      const bottom = lo
-        .map((v, k) => `${px.value(k).toFixed(1)},${py.value(v).toFixed(1)}`)
-        .reverse();
-      return {
-        key: s.key,
-        name: s.label ?? s.key,
-        color: chartColor(s.color, i),
-        d: n ? `M${top.join("L")}L${bottom.join("L")}Z` : "",
-      };
-    })
-    .reverse(); // the first series is on top: draw it from the bottom of the stack up
+  return props.series.map((s, i) => {
+    const lo = base.slice();
+    const hi = props.data.map((r, k) => (base[k]! += num(r, s.key)));
+    const top = hi.map((v, k) => `${px.value(k).toFixed(1)},${py.value(v).toFixed(1)}`);
+    const bottom = lo
+      .map((v, k) => `${px.value(k).toFixed(1)},${py.value(v).toFixed(1)}`)
+      .reverse();
+    return {
+      key: s.key,
+      name: s.label ?? s.key,
+      color: chartColor(s.color, i),
+      d: n ? `M${top.join("L")}L${bottom.join("L")}Z` : "",
+    };
+  });
 });
 // one step label for about every 64 pixels
 const every = computed(() =>
@@ -78,9 +76,7 @@ const every = computed(() =>
 <template>
   <figure ref="box" class="bless-plot bless-stream">
     <ul class="bless-stream__legend" aria-hidden="true">
-      <li v-for="s in [...streams].reverse()" :key="s.key">
-        <i :style="{ background: s.color }" />{{ s.name }}
-      </li>
+      <li v-for="s in streams" :key="s.key"><i :style="{ background: s.color }" />{{ s.name }}</li>
     </ul>
     <svg :viewBox="`0 0 ${width} ${height}`" :height class="bless-plot__svg" aria-hidden="true">
       <path

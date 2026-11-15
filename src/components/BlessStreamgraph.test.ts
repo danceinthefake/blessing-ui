@@ -16,8 +16,7 @@ test("BlessStreamgraph: a stream per series around the center, a legend, and a t
   });
   const areas = w.findAll(".bless-stream__area");
   expect(areas).toHaveLength(2);
-  // drawn from the bottom of the stack: the last series first
-  expect(areas[0]!.attributes("style")).toContain("chart-4");
+  expect(areas[1]!.attributes("style")).toContain("chart-4");
   expect(areas[0]!.attributes("d")).toMatch(/^M.+Z$/);
   expect(w.findAll(".bless-stream__legend li").map((l) => l.text())).toEqual(["News", "Tech"]);
   expect(w.findAll("tbody tr").map((r) => r.text())).toEqual(["Jan42", "Feb26"]);
