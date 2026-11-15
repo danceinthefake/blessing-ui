@@ -11,6 +11,10 @@ Thirty-two new components, 270 in all: more charts, parts for an assistant and i
 - `BlessSplitButton` now uses `.bless-splitbtn` and `.bless-splitbtn__more`, not `.bless-split*`. The old root class also took the layout of `BlessSplitView`.
 - If your CSS targets one of the old classes, change it to the new class.
 
+### Fixed
+
+- `BlessTooltip` renders its tip as a `span`, not a `div`. A tooltip in a paragraph made the HTML not valid, and the browser cut the paragraph, so server rendering and hydration did not agree.
+
 ### Added
 
 - `BlessCandlestick`: candles for the open, high, low, and close of each period. A rise is hollow and a fall is filled, and a table reads the numbers to screen readers.
