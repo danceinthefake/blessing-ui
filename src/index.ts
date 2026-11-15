@@ -387,3 +387,4 @@ export { default as BlessMessageFeedback } from "./components/BlessMessageFeedba
 export type { BlessMessageFeedbackEvent } from "./components/BlessMessageFeedback.vue";
 export { default as BlessContextMeter } from "./components/BlessContextMeter.vue";
 export { default as BlessTranscript } from "./components/BlessTranscript.vue";
+export { default as BlessChapterList } from "./components/BlessChapterList.vue";
