@@ -104,6 +104,11 @@ export const groups: { title: string; items: Entry[] }[] = [
       { name: "BlessProgress", slug: "progress", text: "Bar, determinate or not" },
       { name: "BlessAlert", slug: "alert", text: "Inline notice" },
       { name: "BlessBanner", slug: "banner", text: "Page-wide announcement bar" },
+      {
+        name: "BlessConsentBanner",
+        slug: "consent-banner",
+        text: "A cookie consent bar with a choice per category",
+      },
       { name: "BlessCopyButton", slug: "copy-button", text: "Copy text with a Copied state" },
     ],
   },

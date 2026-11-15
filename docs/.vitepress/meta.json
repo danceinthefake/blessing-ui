@@ -3303,6 +3303,61 @@
   "slots": [],
   "exposed": []
  },
+ "BlessConsentBanner": {
+  "props": [
+   {
+    "name": "categories",
+    "type": "BlessConsentCategory[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "persist",
+    "type": "string | undefined",
+    "required": false,
+    "description": "a `localStorage` key: the choice stays for the next visit, and the banner does not show again"
+   },
+   {
+    "name": "position",
+    "type": "\"fixed\" | \"static\" | undefined",
+    "required": false,
+    "default": "\"fixed\"",
+    "description": "`fixed` sits at the bottom of the window; `static` stays in the flow of the page"
+   },
+   {
+    "name": "policyHref",
+    "type": "string | undefined",
+    "required": false,
+    "description": "a link to the privacy policy"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ title: string; message: string; accept: string; reject: string; customize: string; save: string; policy: string; required: string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "Record<string, boolean> | undefined",
+    "required": false,
+    "description": "the choice for each category by key; none until the person decides"
+   }
+  ],
+  "events": [
+   {
+    "name": "update:modelValue",
+    "type": "[value: Record<string, boolean> | undefined]",
+    "description": ""
+   },
+   {
+    "name": "change",
+    "type": "[consent: Record<string, boolean>]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessContainer": {
   "props": [
    {

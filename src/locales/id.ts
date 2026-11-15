@@ -24,6 +24,7 @@ import type BlessCodeBlock from "../components/BlessCodeBlock.vue";
 import type BlessColorSwatches from "../components/BlessColorSwatches.vue";
 import type BlessCommand from "../components/BlessCommand.vue";
 import type BlessConnectionStatus from "../components/BlessConnectionStatus.vue";
+import type BlessConsentBanner from "../components/BlessConsentBanner.vue";
 import type BlessContextMeter from "../components/BlessContextMeter.vue";
 import type BlessCopyButton from "../components/BlessCopyButton.vue";
 import type BlessCountdownBanner from "../components/BlessCountdownBanner.vue";
@@ -151,6 +152,7 @@ export type BlessLabelsFull = {
   BlessColorSwatches: All<typeof BlessColorSwatches>;
   BlessCommand: All<typeof BlessCommand>;
   BlessConnectionStatus: All<typeof BlessConnectionStatus>;
+  BlessConsentBanner: All<typeof BlessConsentBanner>;
   BlessContextMeter: All<typeof BlessContextMeter>;
   BlessCopyButton: All<typeof BlessCopyButton>;
   BlessCountdownBanner: All<typeof BlessCountdownBanner>;
@@ -388,6 +390,17 @@ export const labelsId: BlessLabelsFull = {
     back: "Kembali daring",
     connecting: "Menyambung ulang…",
     offline: "Anda sedang luring",
+  },
+  BlessConsentBanner: {
+    title: "Cookie di situs ini",
+    message:
+      "Kami memakai beberapa cookie agar situs berjalan, dan yang lain hanya jika Anda izinkan.",
+    accept: "Terima semua",
+    reject: "Hanya yang perlu",
+    customize: "Pilih",
+    save: "Simpan pilihan",
+    policy: "Kebijakan privasi",
+    required: "Selalu aktif",
   },
   BlessContextMeter: {
     title: "Jendela konteks",
