@@ -71,7 +71,14 @@ const total = computed(
     <p class="bless-ordersum__title">{{ text.title }}</p>
     <ul class="bless-ordersum__lines">
       <li v-for="l in lines" :key="l.id" class="bless-ordersum__line">
-        <img v-if="l.image" class="bless-ordersum__img" :src="l.image" alt="" width="48" height="48" />
+        <img
+          v-if="l.image"
+          class="bless-ordersum__img"
+          :src="l.image"
+          alt=""
+          width="48"
+          height="48"
+        />
         <div class="bless-ordersum__what">
           <span class="bless-ordersum__name">{{ l.name }}</span>
           <span v-if="l.note" class="bless-ordersum__note">{{ l.note }}</span>

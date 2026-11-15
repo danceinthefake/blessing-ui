@@ -420,3 +420,5 @@ export type { BlessChat } from "./components/BlessChatHistory.vue";
 export { default as BlessVoiceInput } from "./components/BlessVoiceInput.vue";
 export { default as BlessOrderSummary } from "./components/BlessOrderSummary.vue";
 export type { BlessOrderLine } from "./components/BlessOrderSummary.vue";
+export { default as BlessCouponInput } from "./components/BlessCouponInput.vue";
+export type { BlessCoupon } from "./components/BlessCouponInput.vue";

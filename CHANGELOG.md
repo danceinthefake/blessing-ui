@@ -37,7 +37,8 @@ Sixteen new components, 254 in all: more charts, parts for the replies of an ass
 - `BlessAgentPlan`: the steps of an agent, each waiting, running, done, failed, or skipped, with an icon for each state, the progress, and the running step read aloud.
 - `BlessChatHistory`: past chats in groups by age, with search, rename in place, and delete, for the sidebar of an assistant.
 - `BlessVoiceInput`: a microphone button that turns speech into text with the Web Speech API, with a ring that follows the loudness. `BlessAudioRecorder` now shares its level meter with it.
-- `BlessOrderSummary`: the lines of an order, then the subtotal, discount, shipping, tax, and total, with `Intl` money in any currency. 263 components in all.
+- `BlessOrderSummary`: the lines of an order, then the subtotal, discount, shipping, tax, and total, with `Intl` money in any currency.
+- `BlessCouponInput`: a field for a discount code. Your server checks it, then the field changes to a chip with the saving and a remove button, or shows the error. 264 components in all.
 
 ## 0.6.0 — 2026-11-15
 

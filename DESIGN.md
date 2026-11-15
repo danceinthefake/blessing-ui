@@ -461,7 +461,7 @@ Sixteen components, 254 → 270. Each uses native platform APIs only: the librar
 - ✅ `BlessChatHistory`: past chats in groups by age, with search, rename, and delete.
 - ✅ `BlessVoiceInput`: a microphone button that turns speech into text with the Web Speech API.
 - ✅ `BlessOrderSummary`: the lines of an order, then the subtotal, discount, shipping, tax, and total.
-- `BlessCouponInput`: a field for a code, then the saving with a button to remove it, or the error.
+- ✅ `BlessCouponInput`: a field for a code, then the saving with a button to remove it, or the error.
 - `BlessShipmentTracker`: the steps of a delivery, with dates and the latest event.
 - `BlessVariantPicker`: the options of a product, such as size and color, with sold-out options crossed out.
 - `BlessReviewSummary`: the average stars, the count, and a bar for each star level that filters.

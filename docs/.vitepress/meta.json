@@ -3281,6 +3281,55 @@
   "slots": [],
   "exposed": []
  },
+ "BlessCouponInput": {
+  "props": [
+   {
+    "name": "applied",
+    "type": "BlessCoupon | undefined",
+    "required": false,
+    "description": "the code that the shop took; with it, a chip shows in place of the field"
+   },
+   {
+    "name": "error",
+    "type": "string | undefined",
+    "required": false,
+    "description": "why the shop did not take the code"
+   },
+   {
+    "name": "loading",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": "the shop is checking the code"
+   },
+   {
+    "name": "uppercase",
+    "type": "boolean | undefined",
+    "required": false,
+    "default": "true",
+    "description": "write the code in capital letters"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ label: string; apply: string; remove: (code: string) => string; applied: (code: string) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "remove",
+    "type": "[code: string]",
+    "description": ""
+   },
+   {
+    "name": "apply",
+    "type": "[code: string]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessCronInput": {
   "props": [
    {

@@ -683,6 +683,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         text: "The lines of an order, then the sums and the total",
       },
       {
+        name: "BlessCouponInput",
+        slug: "coupon-input",
+        text: "A field for a code, then the saving",
+      },
+      {
         name: "BlessFunnel",
         slug: "funnel",
         text: "Stages with the share that is left at each step",
