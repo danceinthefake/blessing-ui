@@ -22,6 +22,7 @@ import type BlessDonutChart from "../components/BlessDonutChart.vue";
 import type BlessDurationInput from "../components/BlessDurationInput.vue";
 import type BlessEditor from "../components/BlessEditor.vue";
 import type BlessEmojiPicker from "../components/BlessEmojiPicker.vue";
+import type BlessEventCalendar from "../components/BlessEventCalendar.vue";
 import type BlessFormula from "../components/BlessFormula.vue";
 import type BlessFunnel from "../components/BlessFunnel.vue";
 import type BlessGantt from "../components/BlessGantt.vue";
@@ -94,6 +95,7 @@ export type BlessLabelsFull = {
   BlessDurationInput: All<typeof BlessDurationInput>;
   BlessEditor: All<typeof BlessEditor>;
   BlessEmojiPicker: All<typeof BlessEmojiPicker>;
+  BlessEventCalendar: All<typeof BlessEventCalendar>;
   BlessFormula: All<typeof BlessFormula>;
   BlessFunnel: All<typeof BlessFunnel>;
   BlessGantt: All<typeof BlessGantt>;
@@ -264,6 +266,13 @@ export const labelsId: BlessLabelsFull = {
     travel: "Perjalanan dan tempat",
     objects: "Benda",
     symbols: "Simbol",
+  },
+  BlessEventCalendar: {
+    prev: "Bulan sebelumnya",
+    next: "Bulan berikutnya",
+    today: "Hari ini",
+    more: (n) => `+${n} lagi`,
+    less: "Tampilkan lebih sedikit",
   },
   BlessFormula: {
     insert: "Sisipkan nilai",

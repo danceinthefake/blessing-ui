@@ -24,7 +24,8 @@
 - `BlessPromptInput`: the text box of a chat with an assistant. It grows with the text, Enter sends (not inside an input method), Shift+Enter adds a line, files go with the message, and the send button becomes a stop button while `busy`.
 - `BlessStreamingText`: the reply of an assistant as it comes in, with a caret until `done`, an optional even `pace` between parts, and `aria-busy` so screen readers read the full reply once.
 - `BlessToolCall`: one step of an assistant, such as a web search, with its name, a status word and icon (running, done, or failed), and its input and output as text or JSON in a native `<details>`.
-- `BlessSuggestions`: ready prompts as a row of chips that wrap or scroll. A click emits `select` with the prompt. 222 components in all.
+- `BlessSuggestions`: ready prompts as a row of chips that wrap or scroll. A click emits `select` with the prompt.
+- `BlessEventCalendar`: a month of events in a grid, with whole-day events first, times in the locale format, "+2 more" when a day is full, and buttons for the previous and next month. The events fit `BlessScheduler`. 223 components in all.
 
 ## 0.5.0 — 2026-11-15
 
