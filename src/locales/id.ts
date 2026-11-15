@@ -41,6 +41,7 @@ import type BlessDurationInput from "../components/BlessDurationInput.vue";
 import type BlessEditor from "../components/BlessEditor.vue";
 import type BlessEmojiPicker from "../components/BlessEmojiPicker.vue";
 import type BlessEventCalendar from "../components/BlessEventCalendar.vue";
+import type BlessFaqSearch from "../components/BlessFaqSearch.vue";
 import type BlessFilterBar from "../components/BlessFilterBar.vue";
 import type BlessFootnoteRef from "../components/BlessFootnoteRef.vue";
 import type BlessFootnotes from "../components/BlessFootnotes.vue";
@@ -173,6 +174,7 @@ export type BlessLabelsFull = {
   BlessEditor: All<typeof BlessEditor>;
   BlessEmojiPicker: All<typeof BlessEmojiPicker>;
   BlessEventCalendar: All<typeof BlessEventCalendar>;
+  BlessFaqSearch: All<typeof BlessFaqSearch>;
   BlessFilterBar: All<typeof BlessFilterBar>;
   BlessFootnoteRef: All<typeof BlessFootnoteRef>;
   BlessFootnotes: All<typeof BlessFootnotes>;
@@ -510,6 +512,11 @@ export const labelsId: BlessLabelsFull = {
     today: "Hari ini",
     more: (n) => `+${n} lagi`,
     less: "Tampilkan lebih sedikit",
+  },
+  BlessFaqSearch: {
+    search: "Cari pertanyaan",
+    none: "Tidak ada pertanyaan yang cocok. Coba kata lain.",
+    count: (s, t) => `${s} dari ${t} pertanyaan`,
   },
   BlessFilterBar: {
     label: "Filter",

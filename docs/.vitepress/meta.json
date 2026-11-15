@@ -4961,6 +4961,25 @@
   "slots": [],
   "exposed": []
  },
+ "BlessFaqSearch": {
+  "props": [
+   {
+    "name": "items",
+    "type": "BlessFaq[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ search: string; none: string; count: (shown: number, total: number) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessField": {
   "props": [
    {
