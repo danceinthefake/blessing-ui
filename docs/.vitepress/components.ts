@@ -475,6 +475,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "streaming-text",
         text: "Text that comes in part by part, with a caret",
       },
+      {
+        name: "BlessToolCall",
+        slug: "tool-call",
+        text: "One step of an assistant, with its input and output",
+      },
     ],
   },
   {
