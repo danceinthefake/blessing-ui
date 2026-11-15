@@ -288,6 +288,11 @@ export const groups: { title: string; items: Entry[] }[] = [
       { name: "BlessRating", slug: "rating", text: "Star rating on native radios" },
       { name: "BlessFileInput", slug: "file-input", text: "Native file input with drop zone" },
       { name: "BlessColorPicker", slug: "color-picker", text: "Native colour input + swatches" },
+      {
+        name: "BlessColorSwatches",
+        slug: "color-swatches",
+        text: "A set of ready colors, to pick one",
+      },
       { name: "BlessPasswordMeter", slug: "password-meter", text: "Strength meter from rules" },
       { name: "BlessListbox", slug: "listbox", text: "Single / multi select list, role=listbox" },
       { name: "BlessLabel", slug: "label", text: "`<label>` with required mark and hint" },

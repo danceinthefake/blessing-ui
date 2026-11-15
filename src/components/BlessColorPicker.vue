@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useFieldId } from "../composables/useFieldId";
+import BlessColorSwatches from "./BlessColorSwatches.vue";
 
 defineOptions({ name: "BlessColorPicker", inheritAttrs: false });
 
@@ -18,8 +19,6 @@ const props = withDefaults(
 );
 const model = defineModel<string>({ default: "#e85078" });
 const id = useFieldId(props);
-const norm = (s: string | { value: string; label: string }) =>
-  typeof s === "string" ? { value: s, label: s } : s;
 </script>
 
 <template>
@@ -36,25 +35,15 @@ const norm = (s: string | { value: string; label: string }) =>
       />
     </label>
     <output v-if="showValue" :for="id()" class="bless-color__value">{{ model }}</output>
-    <div
+    <BlessColorSwatches
       v-if="swatches.length"
+      v-model="model"
       class="bless-color__swatches"
-      role="group"
-      :aria-label="`${label ?? 'Colour'} presets`"
-    >
-      <button
-        v-for="s in swatches.map(norm)"
-        :key="s.value"
-        type="button"
-        class="bless-color__swatch"
-        :class="{ 'bless-color__swatch--on': s.value.toLowerCase() === model.toLowerCase() }"
-        :style="{ '--_c': s.value }"
-        :aria-label="s.label"
-        :aria-pressed="s.value.toLowerCase() === model.toLowerCase()"
-        :disabled
-        @click="model = s.value"
-      />
-    </div>
+      size="sm"
+      :swatches
+      :disabled
+      :labels="{ label: `${label ?? 'Colour'} presets` }"
+    />
   </div>
 </template>
 
@@ -93,31 +82,6 @@ const norm = (s: string | { value: string; label: string }) =>
   font-size: var(--bless-text-xs);
   letter-spacing: var(--bless-tracking-wide);
   color: var(--bless-color-text-muted);
-}
-.bless-color__swatches {
-  display: inline-flex;
-  gap: var(--bless-space-1);
-}
-.bless-color__swatch {
-  width: 20px;
-  height: 20px;
-  border: 2px solid transparent;
-  background: var(--_c);
-  cursor: pointer;
-  transform: skewX(var(--bless-skew));
-  transition:
-    opacity var(--bless-duration-slow) var(--bless-ease-in-out),
-    var(--bless-lean-transition);
-}
-.bless-color__swatch:hover {
-  opacity: var(--bless-hover-opacity);
-}
-.bless-color__swatch--on {
-  border-color: var(--bless-color-text);
-}
-.bless-color__swatch:focus-visible {
-  outline: 2px solid var(--bless-color-accent);
-  outline-offset: 2px;
 }
 .bless-color--disabled {
   opacity: 0.4;
