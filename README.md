@@ -10,7 +10,7 @@ Vue 3 component library and design tokens. The UI is gray-scale, with one accent
 
 Docs, with every component live: **[ui.blessing.id](https://ui.blessing.id)**
 
-- 268 components, from button to data table to chat. Only `--bless-*` custom properties style them. There is no Tailwind dependency.
+- 269 components, from button to data table to chat. Only `--bless-*` custom properties style them. There is no Tailwind dependency.
 - Native platform first: `<dialog>`, Popover API, `<details>`, native form controls, `Intl` dates, and scroll-snap. There is no positioning, date, or table library.
 - Accessible defaults: focus rings, ARIA tablist, dialog, and tables, and `prefers-reduced-motion`
 - ESM, tree-shakable, with `vue` as the only required peer (`@tiptap/vue-3` is optional, for `BlessEditor`). One component (`BlessButton`) costs about 1 KB gzip of JS and about 2.6 KB of CSS (tokens and its own styles). Everything costs about 169 KB and 46 KB. CSS is split per component and the import pulls it in, so you never pay for styles that you do not use
@@ -92,7 +92,7 @@ The words that components say are English by default. `provideLabels(labelsId)` 
 
 ## Components
 
-268 components across eight groups. Every one styles itself from `--bless-*` tokens and ships with a test and a docs page.
+269 components across eight groups. Every one styles itself from `--bless-*` tokens and ships with a test and a docs page.
 
 ### Primitives
 
@@ -171,6 +171,7 @@ The words that components say are English by default. `provideLabels(labelsId)` 
 | `BlessUploader`                    | Upload queue                                                                                            | `url`, `field`, `headers`, `accept`, `multiple`, `auto`, `maxSize`. Emits `upload(item, progress, done, fail)` `done` `error`. Exposes `start()` `clear()`                                                                       |
 | `BlessInputNumber`                 | Number with ± and Intl format                                                                           | `v-model` number, `min`, `max`, `step`, `buttons`, `prefix`, `suffix`, `format`, `locale`                                                                                                                                        |
 | `BlessPasswordInput`               | Password + reveal + meter                                                                               | `v-model`, `meter`. Wraps `BlessInput`                                                                                                                                                                                           |
+| `BlessApiKeyField`                 | A secret key with show, copy and make a new key                                                         | `value`, `name`, `created`, `lastUsed`, `noRegenerate`. Emits `copy` `regenerate`                                                                                                                                                |
 | `BlessInputTags`                   | Free-text tags                                                                                          | `v-model` string[], `separators`, `max`, `duplicates`                                                                                                                                                                            |
 | `BlessFloatLabel`                  | Floating / in-field label                                                                               | `label`, `for`, `variant` over/in. Wrap a control with `placeholder=" "`                                                                                                                                                         |
 | `BlessFieldset`                    | `<fieldset>` + legend                                                                                   | `legend`, `toggleable`, `v-model:collapsed`, `disabled`                                                                                                                                                                          |

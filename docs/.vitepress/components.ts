@@ -154,6 +154,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "password-input",
         text: "Password with reveal toggle and meter",
       },
+      {
+        name: "BlessApiKeyField",
+        slug: "api-key-field",
+        text: "A secret key with show, copy and make a new key",
+      },
       { name: "BlessInputTags", slug: "input-tags", text: "Free-text tags" },
       { name: "BlessFloatLabel", slug: "float-label", text: "Floating / in-field label wrapper" },
       { name: "BlessFieldset", slug: "fieldset", text: "Legend group, toggleable" },

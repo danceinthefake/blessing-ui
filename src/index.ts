@@ -429,3 +429,4 @@ export type { BlessVariantOption, BlessVariantValue } from "./components/BlessVa
 export { default as BlessReviewSummary } from "./components/BlessReviewSummary.vue";
 export { default as BlessProfileCard } from "./components/BlessProfileCard.vue";
 export type { BlessProfileStat } from "./components/BlessProfileCard.vue";
+export { default as BlessApiKeyField } from "./components/BlessApiKeyField.vue";

@@ -2,6 +2,7 @@ import type BlessAgentPlan from "../components/BlessAgentPlan.vue";
 // Indonesian label pack. Its type asks for every word of every component with a `labels` prop, so
 // a new English word without an Indonesian one fails the typecheck.
 import type BlessAnnotator from "../components/BlessAnnotator.vue";
+import type BlessApiKeyField from "../components/BlessApiKeyField.vue";
 import type BlessAudioRecorder from "../components/BlessAudioRecorder.vue";
 import type BlessAvailabilityGrid from "../components/BlessAvailabilityGrid.vue";
 import type BlessAvatarGroup from "../components/BlessAvatarGroup.vue";
@@ -110,6 +111,7 @@ type All<C> = C extends new (...a: never[]) => { $props: { labels?: infer L } }
 export type BlessLabelsFull = {
   BlessAgentPlan: All<typeof BlessAgentPlan>;
   BlessAnnotator: All<typeof BlessAnnotator>;
+  BlessApiKeyField: All<typeof BlessApiKeyField>;
   BlessAudioRecorder: All<typeof BlessAudioRecorder>;
   BlessAvailabilityGrid: All<typeof BlessAvailabilityGrid>;
   BlessAvatarGroup: All<typeof BlessAvatarGroup>;
@@ -240,6 +242,19 @@ export const labelsId: BlessLabelsFull = {
     removed: (n) => `${n} dihapus`,
     moved: (x, y) => `${x}% dari kiri, ${y}% dari atas`,
     hint: "Tombol panah menggeser tanda, Alt dengan panah mengubah ukuran kotak, Delete menghapusnya.",
+  },
+  BlessApiKeyField: {
+    show: "Tampilkan kunci",
+    hide: "Sembunyikan kunci",
+    copy: "Salin",
+    copied: "Tersalin",
+    regenerate: "Buat kunci baru",
+    confirm:
+      "Kunci lama langsung berhenti bekerja. Aplikasi yang memakainya harus mendapat kunci baru.",
+    confirmLabel: "Buat kunci baru",
+    cancel: "Batal",
+    created: (w) => `Dibuat ${w}`,
+    lastUsed: (w) => `Terakhir dipakai ${w}`,
   },
   BlessAudioRecorder: {
     record: "Rekam",

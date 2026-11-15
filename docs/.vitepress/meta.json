@@ -439,6 +439,60 @@
   "slots": [],
   "exposed": []
  },
+ "BlessApiKeyField": {
+  "props": [
+   {
+    "name": "value",
+    "type": "string",
+    "required": true,
+    "description": "the secret key"
+   },
+   {
+    "name": "name",
+    "type": "string | undefined",
+    "required": false,
+    "description": "the name of the key, for example \"Upload script\""
+   },
+   {
+    "name": "created",
+    "type": "string | undefined",
+    "required": false,
+    "description": "when the key was made, as text"
+   },
+   {
+    "name": "lastUsed",
+    "type": "string | undefined",
+    "required": false,
+    "description": "when the key was last used, as text"
+   },
+   {
+    "name": "noRegenerate",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": "hide the button that makes a new key"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ show: string; hide: string; copy: string; copied: string; regenerate: string; confirm: string; confirmLabel: string; cancel: string; created: (when: string) => string; lastUsed: (when: string) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "regenerate",
+    "type": "[]",
+    "description": ""
+   },
+   {
+    "name": "copy",
+    "type": "[]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessAspectRatio": {
   "props": [
    {
