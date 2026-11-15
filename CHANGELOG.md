@@ -1,6 +1,21 @@
 # Changelog
 
-## Unreleased
+## 0.6.0 — 2026-11-15
+
+Thirty-seven new components, 238 in all: charts in plain SVG, parts for a chat with an assistant, realtime and media parts, booking, and content pages. The library still has no dependencies. The Indonesian label pack covers all 76 components with a `labels` prop. No API is removed, but some CSS class names changed: see "Changed" below.
+
+### Changed
+
+- `BlessGallery` shows its images in the new `BlessLightbox`, so the viewer gets swipe and zoom. The classes of the viewer changed: `.bless-gallery__modal`, `__image`, `__nav`, `__count`, and `__caption` are now `.bless-lightbox`, `.bless-lightbox__image`, `__nav`, `__count`, and `__caption`. Change your CSS if it styles them.
+- `BlessColorPicker` shows its presets with the new `BlessColorSwatches`: a radio group, so the arrow keys move between the colors. The class `.bless-color__swatch` is now `.bless-swatches__swatch`, and a preset has `checked`, not `aria-pressed`.
+- `BlessPopover` puts a `class` and other attributes on its panel. Before, it dropped them with a warning, because it has two root elements.
+
+### Fixed
+
+- `BlessCropper` loads its image after mount. Before, a server render (Nuxt, VitePress) threw "Image is not defined".
+- `BlessTreeSelect` marks the chosen rows in `multiple` mode, and the `BlessCascadeSelect` panel has its intended padding. Both lost the class on their popover.
+
+### Added
 
 - `BlessPresenceCursors`: the live pointers of other people over an area, each with a name tag. Positions go from 0 to 1 across the area, and `move` sends the local pointer in the same form.
 - `BlessTypingIndicator`: who is typing now, as a status line under a chat. One, two, and more names each have a sentence, and the dots stop under reduced motion.
