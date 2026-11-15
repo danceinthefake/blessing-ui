@@ -10926,6 +10926,43 @@
   ],
   "exposed": []
  },
+ "BlessSuggestions": {
+  "props": [
+   {
+    "name": "items",
+    "type": "(string | BlessSuggestion)[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "scroll",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": "one row that scrolls to the side, not rows that wrap"
+   },
+   {
+    "name": "disabled",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ label: string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "select",
+    "type": "[prompt: string, item: BlessSuggestion]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessSwap": {
   "props": [
    {
