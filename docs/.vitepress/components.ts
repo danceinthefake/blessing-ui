@@ -253,6 +253,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "phone-input",
         text: "Country code select and phone number (E.164)",
       },
+      {
+        name: "BlessAddressFields",
+        slug: "address-fields",
+        text: "Address fields that follow the country",
+      },
       { name: "BlessOrderList", slug: "order-list", text: "Drag / button / Alt+arrow reorder" },
       {
         name: "BlessCountUp",

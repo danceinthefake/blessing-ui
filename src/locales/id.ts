@@ -1,3 +1,4 @@
+import type BlessAddressFields from "../components/BlessAddressFields.vue";
 import type BlessAgentPlan from "../components/BlessAgentPlan.vue";
 // Indonesian label pack. Its type asks for every word of every component with a `labels` prop, so
 // a new English word without an Indonesian one fails the typecheck.
@@ -129,6 +130,7 @@ type All<C> = C extends new (...a: never[]) => { $props: { labels?: infer L } }
 
 /** a pack with every word of the library; use it as the type of your own complete pack */
 export type BlessLabelsFull = {
+  BlessAddressFields: All<typeof BlessAddressFields>;
   BlessAgentPlan: All<typeof BlessAgentPlan>;
   BlessAnnotator: All<typeof BlessAnnotator>;
   BlessApiKeyField: All<typeof BlessApiKeyField>;
@@ -262,6 +264,19 @@ const unknown = (what: string, name: string, suggestion?: string) =>
 
 /** Bahasa Indonesia for every component: `provideLabels(labelsId)` */
 export const labelsId: BlessLabelsFull = {
+  BlessAddressFields: {
+    country: "Negara",
+    line1: "Jalan dan nomor",
+    line2: "Apartemen, lantai, atau gedung (opsional)",
+    city: "Kota",
+    state: "Negara bagian",
+    province: "Provinsi",
+    prefecture: "Prefektur",
+    county: "Daerah",
+    zip: "Kode ZIP",
+    postcode: "Kode pos",
+    postal: "Kode pos",
+  },
   BlessAgentPlan: {
     pending: "Menunggu",
     running: "Berjalan",
