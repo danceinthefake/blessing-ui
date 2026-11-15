@@ -454,7 +454,7 @@ Sixteen components, 254 → 270. Each uses native platform APIs only: the librar
 
 - ✅ `BlessPyramid`: back-to-back bars for two groups on each row, for example listeners by age.
 - ✅ `BlessRadialBar`: rings that fill to a share, one ring for each goal, in one circle.
-- `BlessStreamgraph`: stacked areas around a center line, to show how a mix changes over time.
+- ✅ `BlessStreamgraph`: stacked areas around a center line, to show how a mix changes over time.
 - `BlessPareto`: bars from high to low, with a line for the running share of the total.
 - `BlessModelPicker`: a select for a model, with a note, marks for speed and cost, and tags.
 - `BlessAgentPlan`: the steps of an agent, each waiting, running, done, or failed.

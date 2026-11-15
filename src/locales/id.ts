@@ -76,6 +76,7 @@ import type BlessSortable from "../components/BlessSortable.vue";
 import type BlessSources from "../components/BlessSources.vue";
 import type BlessStat from "../components/BlessStat.vue";
 import type BlessStepper from "../components/BlessStepper.vue";
+import type BlessStreamgraph from "../components/BlessStreamgraph.vue";
 import type BlessSuggestions from "../components/BlessSuggestions.vue";
 import type BlessSunburst from "../components/BlessSunburst.vue";
 import type BlessSwipeDeck from "../components/BlessSwipeDeck.vue";
@@ -174,6 +175,7 @@ export type BlessLabelsFull = {
   BlessSources: All<typeof BlessSources>;
   BlessStat: All<typeof BlessStat>;
   BlessStepper: All<typeof BlessStepper>;
+  BlessStreamgraph: All<typeof BlessStreamgraph>;
   BlessSuggestions: All<typeof BlessSuggestions>;
   BlessSunburst: All<typeof BlessSunburst>;
   BlessSwipeDeck: All<typeof BlessSwipeDeck>;
@@ -658,6 +660,7 @@ export const labelsId: BlessLabelsFull = {
   BlessSources: { title: "Sumber" },
   BlessStat: { up: "Naik", down: "Turun", flat: "Tidak berubah" },
   BlessStepper: { next: "Lanjut", prev: "Kembali", finish: "Selesai" },
+  BlessStreamgraph: { step: "Langkah" },
   BlessSuggestions: { label: "Saran" },
   BlessSunburst: { part: "Bagian", value: "Nilai", share: "Porsi", total: "Total" },
   BlessSwipeDeck: {

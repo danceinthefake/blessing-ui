@@ -650,6 +650,7 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "radial-bar",
         text: "Rings that fill to a share, one for each goal",
       },
+      { name: "BlessStreamgraph", slug: "streamgraph", text: "Stacked areas around a center line" },
       {
         name: "BlessPricingTable",
         slug: "pricing-table",
