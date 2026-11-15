@@ -42,7 +42,8 @@ Sixteen new components, 254 in all: more charts, parts for the replies of an ass
 - `BlessShipmentTracker`: the five steps of a delivery with dates, a line that fills, the latest update of the carrier, all updates in a fold, a problem as an alert, and the tracking number.
 - `BlessVariantPicker`: the options of a product, such as size and color, as native radio groups with swatches, and sold-out values crossed out.
 - `BlessReviewSummary`: the average stars with one decimal, the count, and a bar for each star level that filters the reviews.
-- `BlessProfileCard`: a person with a cover, an avatar, a bio, short counts, and a follow toggle. 268 components in all.
+- `BlessProfileCard`: a person with a cover, an avatar, a bio, short counts, and a follow toggle.
+- `BlessApiKeyField`: a secret key, hidden to its start and last four letters, with show, copy, and a new key behind a confirm. 269 components in all.
 
 ## 0.6.0 — 2026-11-15
 
