@@ -121,7 +121,7 @@ const valuetext = computed(() =>
   block-size: 20px;
   background: var(--bless-color-surface-2);
 }
-/* darker bands are worse: the first band is the darkest gray */
+/* the first band (poor) has the strongest shade of the text color, in both themes */
 .bless-bullet__band {
   position: absolute;
   inset-block: 0;

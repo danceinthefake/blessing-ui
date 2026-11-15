@@ -58,7 +58,9 @@ const showCode = ref(false);
     .bless-markdown *,
     .bless-thread__replies,
     .bless-toolcall,
-    .bless-toolcall *
+    .bless-toolcall *,
+    .bless-pricing *,
+    .bless-changelog *
   ) {
   margin: 0;
   padding: 0;

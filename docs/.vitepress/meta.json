@@ -1295,7 +1295,7 @@
    },
    {
     "name": "labels",
-    "type": "Partial<{ target: string; bands: string[]; }> | undefined",
+    "type": "Partial<{ target: string; band: (index: number, count: number) => string; }> | undefined",
     "required": false,
     "description": ""
    }
