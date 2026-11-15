@@ -5011,6 +5011,43 @@
   "slots": [],
   "exposed": []
  },
+ "BlessFeatureFlags": {
+  "props": [
+   {
+    "name": "flags",
+    "type": "BlessFlag[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ title: string; rollout: (pct: number) => string; everyone: string; off: string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "Record<string, boolean> | undefined",
+    "required": false,
+    "default": "{}",
+    "description": "which flags are on, by key"
+   }
+  ],
+  "events": [
+   {
+    "name": "update:modelValue",
+    "type": "[value: Record<string, boolean>]",
+    "description": ""
+   },
+   {
+    "name": "toggle",
+    "type": "[key: string, on: boolean]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessField": {
   "props": [
    {
