@@ -55,6 +55,7 @@ import type BlessScheduler from "../components/BlessScheduler.vue";
 import type BlessSelectionToolbar from "../components/BlessSelectionToolbar.vue";
 import type BlessShortcutRecorder from "../components/BlessShortcutRecorder.vue";
 import type BlessSliderCaptcha from "../components/BlessSliderCaptcha.vue";
+import type BlessSlotPicker from "../components/BlessSlotPicker.vue";
 import type BlessSortable from "../components/BlessSortable.vue";
 import type BlessStat from "../components/BlessStat.vue";
 import type BlessStepper from "../components/BlessStepper.vue";
@@ -133,6 +134,7 @@ export type BlessLabelsFull = {
   BlessSelectionToolbar: All<typeof BlessSelectionToolbar>;
   BlessShortcutRecorder: All<typeof BlessShortcutRecorder>;
   BlessSliderCaptcha: All<typeof BlessSliderCaptcha>;
+  BlessSlotPicker: All<typeof BlessSlotPicker>;
   BlessSortable: All<typeof BlessSortable>;
   BlessStat: All<typeof BlessStat>;
   BlessStepper: All<typeof BlessStepper>;
@@ -515,6 +517,12 @@ export const labelsId: BlessLabelsFull = {
     taken: (c) => `${c} sudah dipakai`,
   },
   BlessSliderCaptcha: { verified: "Terverifikasi", failed: "Belum pas, coba lagi" },
+  BlessSlotPicker: {
+    morning: "Pagi",
+    afternoon: "Siang",
+    evening: "Malam",
+    none: "Tidak ada waktu kosong",
+  },
   BlessSortable: {
     grip: (i) => `Urutkan ulang item ${i}`,
     grabbed: (i, n) =>

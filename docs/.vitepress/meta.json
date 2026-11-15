@@ -10506,6 +10506,50 @@
    }
   ]
  },
+ "BlessSlotPicker": {
+  "props": [
+   {
+    "name": "slots",
+    "type": "(string | BlessSlot)[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "locale",
+    "type": "string | undefined",
+    "required": false,
+    "description": "shows the times in the format of this locale, for example `en` for 9:30 AM"
+   },
+   {
+    "name": "disabled",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ morning: string; afternoon: string; evening: string; none: string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "string | null | undefined",
+    "required": false,
+    "default": "null",
+    "description": "the picked time, `HH:MM`"
+   }
+  ],
+  "events": [
+   {
+    "name": "update:modelValue",
+    "type": "[value: string | null]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessSortable": {
   "props": [
    {
