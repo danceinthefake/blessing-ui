@@ -388,3 +388,4 @@ export type { BlessMessageFeedbackEvent } from "./components/BlessMessageFeedbac
 export { default as BlessContextMeter } from "./components/BlessContextMeter.vue";
 export { default as BlessTranscript } from "./components/BlessTranscript.vue";
 export { default as BlessChapterList } from "./components/BlessChapterList.vue";
+export { default as BlessWorldClock } from "./components/BlessWorldClock.vue";

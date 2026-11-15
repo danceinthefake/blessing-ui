@@ -14037,5 +14037,44 @@
   ],
   "slots": [],
   "exposed": []
+ },
+ "BlessWorldClock": {
+  "props": [
+   {
+    "name": "zones",
+    "type": "(string | BlessClockZone)[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "locale",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"en\"",
+    "description": "language of the times and the day words, for example `id`. Default: English."
+   },
+   {
+    "name": "hour12",
+    "type": "boolean | undefined",
+    "required": false,
+    "default": "undefined",
+    "description": "a 12-hour clock; default: the habit of the locale"
+   },
+   {
+    "name": "home",
+    "type": "string | undefined",
+    "required": false,
+    "description": "the zone that \"today\" and \"tomorrow\" compare with; default: the zone of the reader"
+   },
+   {
+    "name": "now",
+    "type": "number | Date | undefined",
+    "required": false,
+    "description": "a fixed moment; with it the clocks do not run"
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
  }
 }

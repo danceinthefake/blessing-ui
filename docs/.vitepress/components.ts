@@ -672,6 +672,7 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "chapter-list",
         text: "The chapters of an episode, with the current one",
       },
+      { name: "BlessWorldClock", slug: "world-clock", text: "The time now in several time zones" },
       {
         name: "BlessAudioRecorder",
         slug: "audio-recorder",
