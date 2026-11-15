@@ -50,6 +50,7 @@ import type BlessNodeGraph from "../components/BlessNodeGraph.vue";
 import type BlessNotificationInbox from "../components/BlessNotificationInbox.vue";
 import type BlessOnboardingChecklist from "../components/BlessOnboardingChecklist.vue";
 import type BlessOrderList from "../components/BlessOrderList.vue";
+import type BlessPareto from "../components/BlessPareto.vue";
 import type BlessPhoneInput from "../components/BlessPhoneInput.vue";
 import type BlessPickList from "../components/BlessPickList.vue";
 import type BlessPinPad from "../components/BlessPinPad.vue";
@@ -149,6 +150,7 @@ export type BlessLabelsFull = {
   BlessNotificationInbox: All<typeof BlessNotificationInbox>;
   BlessOnboardingChecklist: All<typeof BlessOnboardingChecklist>;
   BlessOrderList: All<typeof BlessOrderList>;
+  BlessPareto: All<typeof BlessPareto>;
   BlessPhoneInput: All<typeof BlessPhoneInput>;
   BlessPickList: All<typeof BlessPickList>;
   BlessPinPad: All<typeof BlessPinPad>;
@@ -521,6 +523,7 @@ export const labelsId: BlessLabelsFull = {
     down: (p) => `Turunkan item ${p}`,
     moved: (p, n) => `Dipindah ke posisi ${p} dari ${n}`,
   },
+  BlessPareto: { item: "Item", value: "Nilai", running: "Porsi kumulatif" },
   BlessPhoneInput: { country: "Kode negara", number: "Nomor telepon" },
   BlessPickList: {
     moveSelected: (to) => `Pindahkan yang dipilih ke ${to}`,

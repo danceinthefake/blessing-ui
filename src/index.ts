@@ -409,3 +409,5 @@ export type { BlessPyramidRow } from "./components/BlessPyramid.vue";
 export { default as BlessRadialBar } from "./components/BlessRadialBar.vue";
 export type { BlessRadialItem } from "./components/BlessRadialBar.vue";
 export { default as BlessStreamgraph } from "./components/BlessStreamgraph.vue";
+export { default as BlessPareto } from "./components/BlessPareto.vue";
+export type { BlessParetoItem } from "./components/BlessPareto.vue";
