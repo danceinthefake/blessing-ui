@@ -73,6 +73,7 @@ import type BlessPromptInput from "../components/BlessPromptInput.vue";
 import type BlessPyramid from "../components/BlessPyramid.vue";
 import type BlessQueryBuilder from "../components/BlessQueryBuilder.vue";
 import type BlessQuestionnaire from "../components/BlessQuestionnaire.vue";
+import type BlessQuotaUsage from "../components/BlessQuotaUsage.vue";
 import type BlessRangeCalendar from "../components/BlessRangeCalendar.vue";
 import type BlessReactions from "../components/BlessReactions.vue";
 import type BlessReadMore from "../components/BlessReadMore.vue";
@@ -191,6 +192,7 @@ export type BlessLabelsFull = {
   BlessPyramid: All<typeof BlessPyramid>;
   BlessQueryBuilder: All<typeof BlessQueryBuilder>;
   BlessQuestionnaire: All<typeof BlessQuestionnaire>;
+  BlessQuotaUsage: All<typeof BlessQuotaUsage>;
   BlessRangeCalendar: All<typeof BlessRangeCalendar>;
   BlessReactions: All<typeof BlessReactions>;
   BlessReadMore: All<typeof BlessReadMore>;
@@ -704,6 +706,11 @@ export const labelsId: BlessLabelsFull = {
     skip: "Lewati",
     submit: "Kirim",
     required: "Jawab dulu untuk melanjutkan.",
+  },
+  BlessQuotaUsage: {
+    of: (u, l) => `${u} dari ${l}`,
+    almost: "Hampir penuh",
+    full: "Batas tercapai",
   },
   BlessRangeCalendar: {
     ...month,
