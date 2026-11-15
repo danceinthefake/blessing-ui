@@ -75,7 +75,8 @@ Forty-eight new components, 286 in all: more charts, parts for an assistant and 
 - `BlessPresetRange`: a date range with common presets or your own, next to `BlessCalendar` in range mode, with the range in words.
 - `BlessTestimonials`: quotes with a name, a role, an avatar, and stars, in a grid or one at a time with buttons.
 - `BlessFaqSearch`: questions and answers in native folds, with a search that keeps the matches, opens them, and marks the words.
-- `BlessComparisonTable`: features by plan with checks, dashes, and values, group rows, a highlighted plan, and a header that stays at the top. 297 components in all.
+- `BlessComparisonTable`: features by plan with checks, dashes, and values, group rows, a highlighted plan, and a header that stays at the top.
+- `BlessNewsletterSignup`: an email field and a button with a native check of the address, a loading state, the server error, a thank-you, and a privacy line. 298 components in all.
 
 ## 0.6.0 — 2026-11-15
 

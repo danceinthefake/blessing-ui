@@ -63,6 +63,7 @@ import type BlessMarimekko from "../components/BlessMarimekko.vue";
 import type BlessMarquee from "../components/BlessMarquee.vue";
 import type BlessMessageFeedback from "../components/BlessMessageFeedback.vue";
 import type BlessModelPicker from "../components/BlessModelPicker.vue";
+import type BlessNewsletterSignup from "../components/BlessNewsletterSignup.vue";
 import type BlessNodeGraph from "../components/BlessNodeGraph.vue";
 import type BlessNotificationInbox from "../components/BlessNotificationInbox.vue";
 import type BlessNotificationPrefs from "../components/BlessNotificationPrefs.vue";
@@ -197,6 +198,7 @@ export type BlessLabelsFull = {
   BlessMarquee: All<typeof BlessMarquee>;
   BlessMessageFeedback: All<typeof BlessMessageFeedback>;
   BlessModelPicker: All<typeof BlessModelPicker>;
+  BlessNewsletterSignup: All<typeof BlessNewsletterSignup>;
   BlessNodeGraph: All<typeof BlessNodeGraph>;
   BlessNotificationInbox: All<typeof BlessNotificationInbox>;
   BlessNotificationPrefs: All<typeof BlessNotificationPrefs>;
@@ -663,6 +665,14 @@ export const labelsId: BlessLabelsFull = {
     choose: "Pilih model",
     speed: (n) => `kecepatan ${n} dari 3`,
     cost: (n) => `biaya ${n} dari 3`,
+  },
+  BlessNewsletterSignup: {
+    label: "Alamat email",
+    button: "Langganan",
+    done: "Terima kasih! Cek kotak masuk untuk konfirmasi.",
+    invalid: "Masukkan alamat email seperti nama@contoh.com.",
+    privacy: "Satu email per minggu. Berhenti kapan saja.",
+    policy: "Kebijakan privasi",
   },
   BlessNodeGraph: {
     node: (l, to, from) =>

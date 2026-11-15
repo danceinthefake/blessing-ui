@@ -508,7 +508,7 @@ Sixteen components, 286 → 302. Each uses native platform APIs only: the librar
 - ✅ `BlessTestimonials`: quotes with a name, a role, an avatar, and stars.
 - ✅ `BlessFaqSearch`: questions and answers in folds, with a search that filters and opens them.
 - ✅ `BlessComparisonTable`: features by plan, with checks, crosses, and values, and a header that stays at the top.
-- `BlessNewsletterSignup`: an email field and a button, with checks, a success state, and a privacy line.
+- ✅ `BlessNewsletterSignup`: an email field and a button, with checks, a success state, and a privacy line.
 - `BlessPermissionMatrix`: roles by permissions as check boxes, in groups, with a role that cannot change.
 - `BlessFeatureFlags`: flags with a switch, a note, the rollout share, and the environment.
 - `BlessIncidentTimeline`: the updates of an incident with times, states, and the parts it affects.

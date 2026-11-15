@@ -40,7 +40,7 @@ Sumbernya adalah situs pemasaran, dan sebuah library harus melakukan lebih. Semu
 - **Token.** Setiap nilai yang ditulis mati di situs itu menjadi custom property `--bless-*`. Anda bisa menyetel ulang tampilan tanpa mengubah komponen.
 - **Platform.** `<dialog>`, Popover API, `<details>`, kontrol formulir bawaan, tanggal `Intl`, dan scroll-snap. Ini bagian dari browser sendiri, diberi gaya dan tidak dibuat ulang.
 - **Kanan-ke-kiri.** Properti logis di semua tempat. Kemiringan berbalik dengan arah baca.
-- **Keluasan.** Situs itu memerlukan navigasi, daftar, dan modal. Library ini punya 297 komponen, dari tombol sampai tabel data sampai utas obrolan. Ia juga punya kumpulan [blok](/blocks/) siap salin. Kami memeriksa cakupannya terhadap daftar komponen [shadcn/ui](https://ui.shadcn.com/) dan [PrimeVue](https://primevue.org/), agar tidak ada yang jelas terlewat. Setiap komponen di sini adalah implementasi sendiri. Library ini tidak memakai apa pun dari kedua proyek itu.
+- **Keluasan.** Situs itu memerlukan navigasi, daftar, dan modal. Library ini punya 298 komponen, dari tombol sampai tabel data sampai utas obrolan. Ia juga punya kumpulan [blok](/blocks/) siap salin. Kami memeriksa cakupannya terhadap daftar komponen [shadcn/ui](https://ui.shadcn.com/) dan [PrimeVue](https://primevue.org/), agar tidak ada yang jelas terlewat. Setiap komponen di sini adalah implementasi sendiri. Library ini tidak memakai apa pun dari kedua proyek itu.
 
 ## Yang dibengkokkan
 

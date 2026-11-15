@@ -8639,6 +8639,56 @@
   ],
   "exposed": []
  },
+ "BlessNewsletterSignup": {
+  "props": [
+   {
+    "name": "status",
+    "type": "\"done\" | \"loading\" | \"idle\" | undefined",
+    "required": false,
+    "default": "\"idle\"",
+    "description": "`loading` while your server works, `done` after it took the address"
+   },
+   {
+    "name": "error",
+    "type": "string | undefined",
+    "required": false,
+    "description": "a reason from your server, for example \"This address is already on the list\""
+   },
+   {
+    "name": "privacyHref",
+    "type": "string | undefined",
+    "required": false,
+    "description": "a link to the privacy policy"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ label: string; button: string; done: string; invalid: string; privacy: string; policy: string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"\"",
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "update:modelValue",
+    "type": "[value: string]",
+    "description": ""
+   },
+   {
+    "name": "subscribe",
+    "type": "[email: string]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessNodeGraph": {
   "props": [
    {
