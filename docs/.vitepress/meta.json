@@ -12707,7 +12707,7 @@
     "name": "series",
     "type": "BlessChartSeries[]",
     "required": true,
-    "description": "one stream for each series; the first is the top one"
+    "description": "one stream for each series; the first is the bottom one"
    },
    {
     "name": "height",
