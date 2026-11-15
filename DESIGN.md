@@ -441,7 +441,7 @@ Sixteen components, 238 → 254. Each uses native platform APIs only: the librar
 - ✅ `BlessChapterList`: the chapters of an episode, with a time and a title, and the current chapter marked.
 - ✅ `BlessWorldClock`: the time now in several time zones, side by side.
 - ✅ `BlessReadingProgress`: a thin bar that fills as the reader scrolls an article, and the minutes left.
-- `BlessReactions`: emoji reactions with counts. A click adds or removes yours, and a button opens `BlessEmojiPicker`.
+- ✅ `BlessReactions`: emoji reactions with counts. A click adds or removes yours, and a button opens `BlessEmojiPicker`.
 - `BlessActivityFeed`: events with a person, an action, and a time, in groups by day.
 - `BlessLeaderboard`: ranked rows with the place, the change since last time, and the score, with your row marked.
 - `BlessSpreadsheet`: a grid of cells that you edit, with arrow keys, Enter to edit, and paste from a spreadsheet app.

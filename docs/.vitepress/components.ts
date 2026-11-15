@@ -501,6 +501,11 @@ export const groups: { title: string; items: Entry[] }[] = [
     items: [
       { name: "BlessMessage", slug: "message", text: "Avatar + header + content + footer row" },
       { name: "BlessThread", slug: "thread", text: "Nested comment thread" },
+      {
+        name: "BlessReactions",
+        slug: "reactions",
+        text: "Emoji reactions with counts under a post",
+      },
       { name: "BlessBubble", slug: "bubble", text: "Message bubble" },
       { name: "BlessMarker", slug: "marker", text: "Inline status / note / separator / row" },
       { name: "BlessAttachment", slug: "attachment", text: "File / image chip" },

@@ -9735,6 +9735,50 @@
   "slots": [],
   "exposed": []
  },
+ "BlessReactions": {
+  "props": [
+   {
+    "name": "noAdd",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": "hide the button that opens the emoji picker"
+   },
+   {
+    "name": "max",
+    "type": "number | undefined",
+    "required": false,
+    "default": "0",
+    "description": "reactions a reader can add at most, counting their own; 0 has no limit"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ add: string; group: string; reaction: (emoji: string, count: number) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "BlessReaction[] | undefined",
+    "required": false,
+    "default": "[]",
+    "description": "the reactions; a click changes the count and `mine`"
+   }
+  ],
+  "events": [
+   {
+    "name": "update:modelValue",
+    "type": "[value: BlessReaction[]]",
+    "description": ""
+   },
+   {
+    "name": "toggle",
+    "type": "[emoji: string, on: boolean]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessReadMore": {
   "props": [
    {
