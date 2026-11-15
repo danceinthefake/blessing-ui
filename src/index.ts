@@ -433,3 +433,5 @@ export { default as BlessApiKeyField } from "./components/BlessApiKeyField.vue";
 export { default as BlessWebhookLog } from "./components/BlessWebhookLog.vue";
 export type { BlessWebhookDelivery } from "./components/BlessWebhookLog.vue";
 export { default as BlessBumpChart } from "./components/BlessBumpChart.vue";
+export { default as BlessLollipop } from "./components/BlessLollipop.vue";
+export type { BlessLollipopItem } from "./components/BlessLollipop.vue";

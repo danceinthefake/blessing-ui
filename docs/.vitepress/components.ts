@@ -694,6 +694,11 @@ export const groups: { title: string; items: Entry[] }[] = [
       },
       { name: "BlessBumpChart", slug: "bump-chart", text: "The rank of each item over time" },
       {
+        name: "BlessLollipop",
+        slug: "lollipop",
+        text: "A thin stick with a dot for each category",
+      },
+      {
         name: "BlessPricingTable",
         slug: "pricing-table",
         text: "Plans side by side, with a monthly or yearly switch",

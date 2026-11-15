@@ -475,7 +475,7 @@ Sixteen components, 254 → 270. Each uses native platform APIs only: the librar
 Sixteen components, 270 → 286. Each uses native platform APIs only: the library adds no dependency. Each needs tests, a docs page with a live example, a README row, words in `labelsId`, and a pass of `src/classes.test.ts`. If a component uses a known method, credit it on the credits page.
 
 - ✅ `BlessBumpChart`: the rank of each item over time, as lines that cross.
-- `BlessLollipop`: a thin stick with a dot for each category, for long lists.
+- ✅ `BlessLollipop`: a thin stick with a dot for each category, for long lists.
 - `BlessVenn`: two or three circles that overlap, with the count in each part.
 - `BlessRoseChart`: wedges of equal angle whose length is the value.
 - `BlessCodeTabs`: one command in tabs for each package manager, with copy, and the choice kept on the page.
