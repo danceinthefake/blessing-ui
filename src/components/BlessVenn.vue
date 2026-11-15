@@ -14,7 +14,7 @@ export interface BlessVennOverlap {
 }
 const id = (keys: string[]) => [...keys].sort().join("&");
 
-/** The count of each region that only those sets cover, for two or three sets (inclusion and exclusion). */
+/** The count of each region that only those sets cover, for two or three sets: the diagram of John Venn (1880), counted by inclusion and exclusion. */
 export function vennRegions(
   sets: BlessVennSet[],
   overlaps: BlessVennOverlap[],
