@@ -641,6 +641,11 @@ export const groups: { title: string; items: Entry[] }[] = [
       },
       { name: "BlessWaffle", slug: "waffle", text: "Parts of a whole as a grid of 100 squares" },
       {
+        name: "BlessPyramid",
+        slug: "pyramid",
+        text: "Back-to-back bars for two groups on each row",
+      },
+      {
         name: "BlessPricingTable",
         slug: "pricing-table",
         text: "Plans side by side, with a monthly or yearly switch",

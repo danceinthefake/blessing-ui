@@ -56,6 +56,7 @@ import type BlessPinPad from "../components/BlessPinPad.vue";
 import type BlessPoll from "../components/BlessPoll.vue";
 import type BlessPricingTable from "../components/BlessPricingTable.vue";
 import type BlessPromptInput from "../components/BlessPromptInput.vue";
+import type BlessPyramid from "../components/BlessPyramid.vue";
 import type BlessQueryBuilder from "../components/BlessQueryBuilder.vue";
 import type BlessQuestionnaire from "../components/BlessQuestionnaire.vue";
 import type BlessRangeCalendar from "../components/BlessRangeCalendar.vue";
@@ -153,6 +154,7 @@ export type BlessLabelsFull = {
   BlessPoll: All<typeof BlessPoll>;
   BlessPricingTable: All<typeof BlessPricingTable>;
   BlessPromptInput: All<typeof BlessPromptInput>;
+  BlessPyramid: All<typeof BlessPyramid>;
   BlessQueryBuilder: All<typeof BlessQueryBuilder>;
   BlessQuestionnaire: All<typeof BlessQuestionnaire>;
   BlessRangeCalendar: All<typeof BlessRangeCalendar>;
@@ -549,6 +551,7 @@ export const labelsId: BlessLabelsFull = {
     attach: "Lampirkan berkas",
     remove: "Hapus",
   },
+  BlessPyramid: { left: "Kiri", right: "Kanan", row: "Kelompok" },
   BlessQueryBuilder: {
     group: "Aturan",
     match: "Cocokkan",

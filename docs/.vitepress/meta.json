@@ -9133,6 +9133,45 @@
   ],
   "exposed": []
  },
+ "BlessPyramid": {
+  "props": [
+   {
+    "name": "data",
+    "type": "BlessPyramidRow[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "colors",
+    "type": "[string, string] | undefined",
+    "required": false,
+    "default": "[\"chart-1\", \"chart-2\"]",
+    "description": "the colors of the left and the right bars"
+   },
+   {
+    "name": "format",
+    "type": "((v: number) => string) | undefined",
+    "required": false,
+    "description": "text for one value, for example `(v) => v + \"%\"`"
+   },
+   {
+    "name": "label",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Chart\"",
+    "description": "names the chart and its table for screen readers"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ left: string; right: string; row: string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessQrCode": {
   "props": [
    {
