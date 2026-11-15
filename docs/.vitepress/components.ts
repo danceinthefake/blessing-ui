@@ -226,6 +226,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         text: "Roles by permissions as check boxes",
       },
       {
+        name: "BlessFeatureFlags",
+        slug: "feature-flags",
+        text: "Flags with a switch and the rollout share",
+      },
+      {
         name: "BlessWebhookLog",
         slug: "webhook-log",
         text: "Sent events with the status and a retry button",

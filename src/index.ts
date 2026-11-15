@@ -485,3 +485,5 @@ export type { BlessComparePlan, BlessCompareRow } from "./components/BlessCompar
 export { default as BlessNewsletterSignup } from "./components/BlessNewsletterSignup.vue";
 export { default as BlessPermissionMatrix } from "./components/BlessPermissionMatrix.vue";
 export type { BlessRole, BlessPermission } from "./components/BlessPermissionMatrix.vue";
+export { default as BlessFeatureFlags } from "./components/BlessFeatureFlags.vue";
+export type { BlessFlag } from "./components/BlessFeatureFlags.vue";
