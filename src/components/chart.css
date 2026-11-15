@@ -1,0 +1,41 @@
+/* Shared look of the plain SVG charts: the box, the grid, and the axis text. */
+.bless-plot {
+  position: relative;
+  margin: 0;
+  font-family: var(--bless-font-sans);
+  color: var(--bless-color-text);
+}
+.bless-plot__svg {
+  display: block;
+  inline-size: 100%;
+  overflow: visible;
+}
+.bless-plot__grid {
+  stroke: var(--bless-color-border);
+  stroke-width: 1;
+  shape-rendering: crispEdges;
+}
+.bless-plot__zero {
+  stroke: var(--bless-color-text-muted);
+}
+.bless-plot__tick {
+  font-size: var(--bless-text-2xs, 10px);
+  fill: var(--bless-color-text-muted);
+  font-variant-numeric: tabular-nums;
+}
+.bless-plot__cat {
+  font-size: var(--bless-text-xs);
+  fill: var(--bless-color-text);
+}
+.bless-plot__mark {
+  fill: var(--_c);
+  transition: opacity var(--bless-duration-fast) var(--bless-ease-out);
+}
+.bless-plot__mark:hover {
+  opacity: 0.75;
+}
+@media (prefers-reduced-motion: reduce) {
+  .bless-plot__mark {
+    transition: none;
+  }
+}

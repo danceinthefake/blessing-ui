@@ -484,6 +484,11 @@ export const groups: { title: string; items: Entry[] }[] = [
       { name: "BlessTreemap", slug: "treemap", text: "Part-to-whole rectangles with drill-down" },
       { name: "BlessSankey", slug: "sankey", text: "Flows between steps, as bands" },
       {
+        name: "BlessBarChart",
+        slug: "bar-chart",
+        text: "Bars for categories, side by side or stacked",
+      },
+      {
         name: "BlessFunnel",
         slug: "funnel",
         text: "Stages with the share that is left at each step",

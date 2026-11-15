@@ -388,6 +388,24 @@ Twelve components, 201 → 213. Each uses native platform APIs only: the library
 - ✅ `BlessSankey`: flows between nodes as an SVG chart, in columns, with the chart colors and a table for screen readers.
 - ✅ Budget: after the round, the whole library is 139.6 KB gz JS and 39.3 KB gz CSS, under the old cap of 143 / 41. The cap is now 154 / 43, again about 10% of room. Phase 27 is done.
 
+### Phase 28 — charts, AI chat, and calendar (2026-11-15)
+
+Thirteen components, 213 → 226. Each uses native platform APIs only: the library adds no dependency. Each needs tests, a docs page with a live example, a README row, and words in `labelsId`. The charts are plain SVG with the chart colors, a hover for each value, and a table for screen readers, as `BlessSankey`.
+
+- ✅ `BlessBarChart`: bars for categories, vertical or horizontal, one or more series, grouped or stacked, with a value axis.
+- `BlessLineChart`: lines or filled areas for one or more series over a number or a date axis, with a crosshair on hover.
+- `BlessDonutChart`: parts of one whole as a donut or a pie, with the total in the center and a legend.
+- `BlessScatterChart`: points on two number axes, with an optional size for each point (a bubble chart).
+- `BlessBoxPlot`: the spread of values in groups: the median, the quartiles, the whiskers, and the outliers.
+- `BlessPromptInput`: the text box of a chat with an assistant. It grows with the text, Enter sends, Shift+Enter adds a line, and the send button becomes a stop button while a reply comes in.
+- `BlessStreamingText`: text that comes in part by part, with a caret at the end. Screen readers get the text once, when it is complete.
+- `BlessToolCall`: one step of an assistant, for example a search, with its name, its status (running, done, or failed), and its input and output in a part that opens.
+- `BlessSuggestions`: a row of ready prompts as chips. A click sends the prompt.
+- `BlessEventCalendar`: a month of events in a grid, with "+3 more" when a day is full, next to the week view of `BlessScheduler`.
+- `BlessFilterBar`: filters as chips in a row (field, operator, value), with a menu to add one. It is a flat form of `BlessQueryBuilder`, with the same data for a rule.
+- `BlessSelectionToolbar`: a toolbar above the selected text in an area, for actions such as Bold, Comment, or Copy.
+- `BlessLightbox`: a full view of one image from a list, with arrows, keys, swipe, and zoom. `BlessGallery` uses it for its viewer.
+
 ### Deliberately skipped
 
 - **Chart**: no bundled lib. Phase 11 ✅: `--bless-color-chart-{1..5}` (≥3:1 both themes) + `BlessChart` frame that maps them onto Unovis `--vis-*` vars. Unovis is the documented pairing, installed by the consumer.

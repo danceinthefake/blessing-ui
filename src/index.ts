@@ -338,3 +338,5 @@ export { default as BlessHighlight } from "./components/BlessHighlight.vue";
 export { default as BlessReadMore } from "./components/BlessReadMore.vue";
 export { default as BlessSankey } from "./components/BlessSankey.vue";
 export type { BlessSankeyLink, BlessSankeyNode } from "./components/sankey";
+export { default as BlessBarChart } from "./components/BlessBarChart.vue";
+export type { BlessChartRow, BlessChartSeries } from "./components/chart";

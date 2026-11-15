@@ -837,6 +837,69 @@
   ],
   "exposed": []
  },
+ "BlessBarChart": {
+  "props": [
+   {
+    "name": "data",
+    "type": "BlessChartRow[]",
+    "required": true,
+    "description": "one row for each category"
+   },
+   {
+    "name": "x",
+    "type": "string",
+    "required": true,
+    "description": "the field of a row that names its category"
+   },
+   {
+    "name": "series",
+    "type": "BlessChartSeries[]",
+    "required": true,
+    "description": "one bar for each series in each category"
+   },
+   {
+    "name": "horizontal",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": "bars that grow to the side, with the categories down the start edge"
+   },
+   {
+    "name": "stacked",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": "the series on top of each other, not side by side"
+   },
+   {
+    "name": "height",
+    "type": "number | undefined",
+    "required": false,
+    "default": "280",
+    "description": ""
+   },
+   {
+    "name": "format",
+    "type": "((v: number) => string) | undefined",
+    "required": false,
+    "description": "text for one value, for example `(v) => v + \" ms\"`"
+   },
+   {
+    "name": "label",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Chart\"",
+    "description": "names the chart and its table for screen readers"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ category: string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessBlockUI": {
   "props": [
    {
