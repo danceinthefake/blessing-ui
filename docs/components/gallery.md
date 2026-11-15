@@ -22,7 +22,7 @@ A grid of thumbnails that open one large image at a time: stills, key visuals, a
 </Demo>
 
 - Give every item `alt` text. Without it, thumbs and the viewer fall back to the caption or "Image 2 of 8".
-- The viewer is a [Modal](./modal): ← / → (and the buttons) step through, the count is announced, Esc closes and focus returns to the thumb. `loop` wraps at the ends.
+- The viewer is a [lightbox](./lightbox) in a [modal](./modal): ← / → (and the buttons) step through, a swipe to the side steps too, and the zoom button or a double click enlarges the image. The count is announced, Esc closes, and focus returns to the thumb. `loop` wraps at the ends.
 
 ## Usage
 

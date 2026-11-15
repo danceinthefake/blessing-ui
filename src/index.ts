@@ -357,3 +357,5 @@ export type { BlessCalendarEvent } from "./components/BlessEventCalendar.vue";
 export { default as BlessFilterBar } from "./components/BlessFilterBar.vue";
 export { default as BlessSelectionToolbar } from "./components/BlessSelectionToolbar.vue";
 export type { BlessSelection, BlessSelectionAction } from "./components/BlessSelectionToolbar.vue";
+export { default as BlessLightbox } from "./components/BlessLightbox.vue";
+export type { BlessLightboxItem } from "./components/BlessLightbox.vue";

@@ -431,6 +431,11 @@ export const groups: { title: string; items: Entry[] }[] = [
       { name: "BlessContextMenu", slug: "context-menu", text: "Menu on right click" },
       { name: "BlessCommand", slug: "command", text: "\u2318K palette" },
       { name: "BlessGallery", slug: "gallery", text: "Thumb grid + lightbox" },
+      {
+        name: "BlessLightbox",
+        slug: "lightbox",
+        text: "One image from a list, in full, with zoom and swipe",
+      },
       { name: "BlessToaster", slug: "toaster", text: "Notifications" },
       {
         name: "BlessNotificationInbox",

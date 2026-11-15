@@ -4426,7 +4426,7 @@
   "props": [
    {
     "name": "items",
-    "type": "BlessGalleryItem[]",
+    "type": "BlessLightboxItem[]",
     "required": true,
     "description": ""
    },
@@ -4476,7 +4476,7 @@
   "slots": [
    {
     "name": "thumb",
-    "type": "{ item: BlessGalleryItem; index: number; }",
+    "type": "{ item: BlessLightboxItem; index: number; }",
     "description": ""
    }
   ],
@@ -6125,6 +6125,52 @@
     "description": ""
    }
   ],
+  "exposed": []
+ },
+ "BlessLightbox": {
+  "props": [
+   {
+    "name": "items",
+    "type": "BlessLightboxItem[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "loop",
+    "type": "boolean | undefined",
+    "required": false,
+    "default": "true",
+    "description": "after the last image comes the first"
+   },
+   {
+    "name": "zoom",
+    "type": "number | undefined",
+    "required": false,
+    "default": "2",
+    "description": "how much the zoom enlarges the image"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ prev: string; next: string; zoomIn: string; zoomOut: string; image: (n: number, of: number) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "number | undefined",
+    "required": false,
+    "default": "-1",
+    "description": "the index of the open image; -1 is closed"
+   }
+  ],
+  "events": [
+   {
+    "name": "update:modelValue",
+    "type": "[value: number]",
+    "description": ""
+   }
+  ],
+  "slots": [],
   "exposed": []
  },
  "BlessLineChart": {
