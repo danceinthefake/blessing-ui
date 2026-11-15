@@ -465,6 +465,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         text: "Live pointers of other people over an area",
       },
       { name: "BlessTypingIndicator", slug: "typing-indicator", text: "Who is typing now" },
+      {
+        name: "BlessPromptInput",
+        slug: "prompt-input",
+        text: "The text box of a chat with an assistant",
+      },
     ],
   },
   {

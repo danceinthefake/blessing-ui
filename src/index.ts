@@ -347,3 +347,4 @@ export { default as BlessScatterChart } from "./components/BlessScatterChart.vue
 export type { BlessScatterGroup, BlessScatterPoint } from "./components/BlessScatterChart.vue";
 export { default as BlessBoxPlot } from "./components/BlessBoxPlot.vue";
 export type { BlessBoxGroup } from "./components/BlessBoxPlot.vue";
+export { default as BlessPromptInput } from "./components/BlessPromptInput.vue";

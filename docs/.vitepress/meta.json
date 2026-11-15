@@ -8121,6 +8121,85 @@
   "slots": [],
   "exposed": []
  },
+ "BlessPromptInput": {
+  "props": [
+   {
+    "name": "busy",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": "a reply is coming in: the send button becomes a stop button"
+   },
+   {
+    "name": "disabled",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "attach",
+    "type": "string | boolean | undefined",
+    "required": false,
+    "description": "show the attach button; a text sets the file types, as `accept` on a file input"
+   },
+   {
+    "name": "maxRows",
+    "type": "number | undefined",
+    "required": false,
+    "default": "8",
+    "description": "the most lines before the box scrolls"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ label: string; placeholder: string; send: string; stop: string; attach: string; remove: string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"\"",
+    "description": ""
+   },
+   {
+    "name": "files",
+    "type": "File[] | undefined",
+    "required": false,
+    "default": "[]",
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "update:modelValue",
+    "type": "[value: string]",
+    "description": ""
+   },
+   {
+    "name": "stop",
+    "type": "[]",
+    "description": ""
+   },
+   {
+    "name": "send",
+    "type": "[message: { text: string; files: File[]; }]",
+    "description": ""
+   },
+   {
+    "name": "update:files",
+    "type": "[value: File[]]",
+    "description": ""
+   }
+  ],
+  "slots": [
+   {
+    "name": "actions",
+    "type": "{}",
+    "description": ""
+   }
+  ],
+  "exposed": []
+ },
  "BlessPullToRefresh": {
   "props": [
    {
