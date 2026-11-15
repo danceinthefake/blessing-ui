@@ -16,13 +16,14 @@ const pages = [
     .map((f) => `/blocks/${f.replace(".md", "")}`),
 ];
 const browser = await chromium.launch();
-const page = await browser.newPage({ viewport: { width: 1200, height: 900 } });
-let total = 0;
-const seen = new Map();
-// both themes: contrast has to hold in each
-for (const scheme of ["light", "dark"]) {
-  await page.emulateMedia({ colorScheme: scheme });
-  for (const path of pages) {
+// both themes: contrast has to hold in each. Four tabs share the queue; the report is sorted after.
+const queue = ["light", "dark"].flatMap((scheme) => pages.map((path) => ({ scheme, path })));
+const found = [];
+async function worker() {
+  const page = await browser.newPage({ viewport: { width: 1200, height: 900 } });
+  for (let job; (job = queue.shift());) {
+    const { scheme, path } = job;
+    await page.emulateMedia({ colorScheme: scheme });
     // external media (video page) may never go network-idle; the DOM is what axe needs
     await page
       .goto(base + path, { waitUntil: "networkidle", timeout: 20000 })
@@ -37,19 +38,26 @@ for (const scheme of ["light", "dark"]) {
       ),
     );
     const bad = r.violations.filter((v) => ["serious", "critical"].includes(v.impact));
-    if (bad.length) {
-      total += bad.length;
-      console.log(`✗ ${path} (${scheme})`);
-      for (const v of bad) {
-        console.log(
-          `   ${v.impact} ${v.id}: ${v.help} — ${v.nodes
-            .slice(0, 2)
-            .map((n) => n.target.join(" "))
-            .join(" | ")}`,
-        );
-        seen.set(v.id, (seen.get(v.id) ?? 0) + 1);
-      }
-    }
+    if (bad.length) found.push({ scheme, path, bad });
+  }
+  await page.close();
+}
+await Promise.all(Array.from({ length: 4 }, worker));
+
+let total = 0;
+const seen = new Map();
+found.sort((a, b) => a.scheme.localeCompare(b.scheme) || a.path.localeCompare(b.path));
+for (const { scheme, path, bad } of found) {
+  total += bad.length;
+  console.log(`✗ ${path} (${scheme})`);
+  for (const v of bad) {
+    console.log(
+      `   ${v.impact} ${v.id}: ${v.help} — ${v.nodes
+        .slice(0, 2)
+        .map((n) => n.target.join(" "))
+        .join(" | ")}`,
+    );
+    seen.set(v.id, (seen.get(v.id) ?? 0) + 1);
   }
 }
 console.log(`\n${pages.length} pages × 2 themes, ${total} serious/critical violations`);
