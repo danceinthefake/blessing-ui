@@ -68,6 +68,7 @@ import type BlessOrderSummary from "../components/BlessOrderSummary.vue";
 import type BlessPareto from "../components/BlessPareto.vue";
 import type BlessPhoneInput from "../components/BlessPhoneInput.vue";
 import type BlessPickList from "../components/BlessPickList.vue";
+import type BlessPictogram from "../components/BlessPictogram.vue";
 import type BlessPinPad from "../components/BlessPinPad.vue";
 import type BlessPoll from "../components/BlessPoll.vue";
 import type BlessPricingTable from "../components/BlessPricingTable.vue";
@@ -194,6 +195,7 @@ export type BlessLabelsFull = {
   BlessPareto: All<typeof BlessPareto>;
   BlessPhoneInput: All<typeof BlessPhoneInput>;
   BlessPickList: All<typeof BlessPickList>;
+  BlessPictogram: All<typeof BlessPictogram>;
   BlessPinPad: All<typeof BlessPinPad>;
   BlessPoll: All<typeof BlessPoll>;
   BlessPricingTable: All<typeof BlessPricingTable>;
@@ -677,6 +679,7 @@ export const labelsId: BlessLabelsFull = {
     moveAll: (to) => `Pindahkan semua ke ${to}`,
     moved: (n, to) => `${n} dipindah ke ${to}`,
   },
+  BlessPictogram: { key: (u, n) => `Satu ikon = ${u}${n ? ` ${n}` : ""}` },
   BlessPinPad: {
     pin: "PIN",
     entered: (n, l) => `${n} dari ${l} digit dimasukkan`,

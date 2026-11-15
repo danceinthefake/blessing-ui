@@ -9497,6 +9497,57 @@
   "slots": [],
   "exposed": []
  },
+ "BlessPictogram": {
+  "props": [
+   {
+    "name": "data",
+    "type": "BlessPictogramItem[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "unit",
+    "type": "number",
+    "required": true,
+    "description": "what one icon stands for"
+   },
+   {
+    "name": "noun",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"\"",
+    "description": "the name of what you count, for example \"listeners\""
+   },
+   {
+    "name": "format",
+    "type": "((v: number) => string) | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "label",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Chart\"",
+    "description": "names the chart for screen readers"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ key: (unit: string, noun: string) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [
+   {
+    "name": "icon",
+    "type": "{}",
+    "description": ""
+   }
+  ],
+  "exposed": []
+ },
  "BlessPinPad": {
   "props": [
    {
