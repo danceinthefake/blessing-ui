@@ -539,6 +539,11 @@ export const groups: { title: string; items: Entry[] }[] = [
       },
       { name: "BlessHistogram", slug: "histogram", text: "Raw values in round bins, as bars" },
       {
+        name: "BlessWaterfallChart",
+        slug: "waterfall-chart",
+        text: "How a value goes up and down, step by step",
+      },
+      {
         name: "BlessFunnel",
         slug: "funnel",
         text: "Stages with the share that is left at each step",

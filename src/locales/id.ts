@@ -144,6 +144,7 @@ export type BlessLabelsFull = {
   BlessTypingIndicator: All<typeof BlessTypingIndicator>;
   BlessUploader: All<typeof BlessUploader>;
   BlessUptimeBar: All<typeof BlessUptimeBar>;
+  BlessWaterfallChart: All<typeof BlessWaterfallChart>;
 };
 
 const copy = { copy: "Salin", copied: "Tersalin", copiedLive: "Disalin ke papan klip" };
@@ -584,4 +585,7 @@ export const labelsId: BlessLabelsFull = {
     down: "Mati",
     none: "Tidak ada data",
   },
+  BlessWaterfallChart: { step: "Langkah", change: "Perubahan", total: "Total" },
 };
+
+import type BlessWaterfallChart from "../components/BlessWaterfallChart.vue";

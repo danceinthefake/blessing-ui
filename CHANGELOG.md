@@ -30,7 +30,8 @@
 - `BlessSelectionToolbar`: a toolbar above the selected text in an area, with actions that get the text and a copy of the range. A click keeps the selection, Tab reaches the toolbar, and Escape closes it.
 - `BlessLightbox`: one image from a list in a modal, with arrows, keys, a swipe to the side, and zoom with a drag to move. `BlessGallery` now uses it for its viewer, so the gallery gets swipe and zoom too.
 - `BlessHeatmap`: a grid of rows and columns with each cell colored by its value, a legend of the scale, and a real table, so screen readers read each value with its row and column.
-- `BlessHistogram`: raw values counted in round bins of equal width, as bars that touch, with the bin edges on the axis and a table of the counts for screen readers. 228 components in all.
+- `BlessHistogram`: raw values counted in round bins of equal width, as bars that touch, with the bin edges on the axis and a table of the counts for screen readers.
+- `BlessWaterfallChart`: how a start value goes up and down in steps to an end value, with green and red steps, totals from zero, dashed links between bars, and a table for screen readers. 229 components in all.
 
 ## 0.5.0 — 2026-11-15
 

@@ -13049,6 +13049,45 @@
   ],
   "exposed": []
  },
+ "BlessWaterfallChart": {
+  "props": [
+   {
+    "name": "steps",
+    "type": "BlessWaterfallStep[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "height",
+    "type": "number | undefined",
+    "required": false,
+    "default": "280",
+    "description": ""
+   },
+   {
+    "name": "format",
+    "type": "((v: number) => string) | undefined",
+    "required": false,
+    "description": "text for one value, for example `(v) => \"$\" + v`"
+   },
+   {
+    "name": "label",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Chart\"",
+    "description": "names the chart and its table for screen readers"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ step: string; change: string; total: string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessWatermark": {
   "props": [
    {
