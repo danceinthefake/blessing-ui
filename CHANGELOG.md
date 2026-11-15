@@ -12,7 +12,8 @@
 - `BlessSources`: the sources of a reply as a numbered list with the site and a snippet. Each item has an id, so a mark in the reply with the `bless-source-mark` class links to it.
 - `BlessMessageFeedback`: good and bad marks, copy, and retry under a reply. A bad mark opens a short form with reasons and a note.
 - `BlessContextMeter`: a small ring that shows how full the context window is. A click opens the tokens of each part and the free tokens.
-- `BlessTranscript`: lines of text with times that follow the time of the media. A click on a time seeks, and the box keeps the current line in view. 247 components in all.
+- `BlessTranscript`: lines of text with times that follow the time of the media. A click on a time seeks, and the box keeps the current line in view.
+- `BlessChapterList`: the chapters of an episode with the start and length of each. The current chapter is marked with a line that grows as it plays, and a click seeks. 248 components in all.
 
 ## 0.6.0 — 2026-11-15
 

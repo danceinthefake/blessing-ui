@@ -1924,6 +1924,44 @@
   "slots": [],
   "exposed": []
  },
+ "BlessChapterList": {
+  "props": [
+   {
+    "name": "chapters",
+    "type": "BlessChapter[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "time",
+    "type": "number | undefined",
+    "required": false,
+    "default": "0",
+    "description": "the time of the media now, in seconds"
+   },
+   {
+    "name": "duration",
+    "type": "number | undefined",
+    "required": false,
+    "description": "the length of the media, in seconds; it gives the last chapter its length"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ title: string; length: (minutes: number) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "seek",
+    "type": "[seconds: number]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessChart": {
   "props": [
    {

@@ -438,7 +438,7 @@ Sixteen components, 238 → 254. Each uses native platform APIs only: the librar
 - ✅ `BlessMessageFeedback`: buttons under a reply: good, bad, copy, and retry. A bad mark asks for a reason.
 - ✅ `BlessContextMeter`: how much of the context window the tokens use, as a ring, with a breakdown.
 - ✅ `BlessTranscript`: lines of text with times. The current line follows the media time, and a click on a line seeks.
-- `BlessChapterList`: the chapters of an episode, with a time and a title, and the current chapter marked.
+- ✅ `BlessChapterList`: the chapters of an episode, with a time and a title, and the current chapter marked.
 - `BlessWorldClock`: the time now in several time zones, side by side.
 - `BlessReadingProgress`: a thin bar that fills as the reader scrolls an article, and the minutes left.
 - `BlessReactions`: emoji reactions with counts. A click adds or removes yours, and a button opens `BlessEmojiPicker`.

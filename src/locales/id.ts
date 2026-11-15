@@ -13,6 +13,7 @@ import type BlessCameraCapture from "../components/BlessCameraCapture.vue";
 import type BlessCandlestick from "../components/BlessCandlestick.vue";
 import type BlessCardInput from "../components/BlessCardInput.vue";
 import type BlessChangelog from "../components/BlessChangelog.vue";
+import type BlessChapterList from "../components/BlessChapterList.vue";
 import type BlessCoachmark from "../components/BlessCoachmark.vue";
 import type BlessCodeBlock from "../components/BlessCodeBlock.vue";
 import type BlessColorSwatches from "../components/BlessColorSwatches.vue";
@@ -106,6 +107,7 @@ export type BlessLabelsFull = {
   BlessCandlestick: All<typeof BlessCandlestick>;
   BlessCardInput: All<typeof BlessCardInput>;
   BlessChangelog: All<typeof BlessChangelog>;
+  BlessChapterList: All<typeof BlessChapterList>;
   BlessCoachmark: All<typeof BlessCoachmark>;
   BlessCodeBlock: All<typeof BlessCodeBlock>;
   BlessColorSwatches: All<typeof BlessColorSwatches>;
@@ -259,6 +261,7 @@ export const labelsId: BlessLabelsFull = {
     fixed: "Diperbaiki",
     security: "Keamanan",
   },
+  BlessChapterList: { title: "Bab", length: (m) => (m < 1 ? "< 1 mnt" : `${m} mnt`) },
   BlessCoachmark: { dot: (t) => `Baru: ${t}`, ok: "Mengerti" },
   BlessCodeBlock: copy,
   BlessColorSwatches: { label: "Warna" },

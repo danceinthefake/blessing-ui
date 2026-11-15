@@ -668,6 +668,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         text: "Lines of text that follow the media time",
       },
       {
+        name: "BlessChapterList",
+        slug: "chapter-list",
+        text: "The chapters of an episode, with the current one",
+      },
+      {
         name: "BlessAudioRecorder",
         slug: "audio-recorder",
         text: "Record from the microphone, with a preview",
