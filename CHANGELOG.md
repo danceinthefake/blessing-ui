@@ -51,7 +51,8 @@ Thirty-two new components, 270 in all: more charts, parts for an assistant and i
 - `BlessRoseChart`: a polar area chart: wedges of equal angle whose area follows the value, for cycles such as months or hours.
 - `BlessCodeTabs`: one command in tabs for pnpm, npm, yarn, and bun on top of `BlessCodeBlock`. Blocks of one group keep the same tab on the page and on the next visit.
 - `BlessSpoiler`: text hidden under a blur, out of reach of screen readers and the keyboard, until a click shows it, in a line or as a block.
-- `BlessFootnotes`: numbered notes at the end of an article, with `BlessFootnoteRef` marks in the text that link down to each note and back. 277 components in all.
+- `BlessFootnotes`: numbered notes at the end of an article, with `BlessFootnoteRef` marks in the text that link down to each note and back.
+- `BlessGlossary`: a term in a line of text with a dotted line, whose meaning shows in a `BlessTooltip` on hover and focus. 278 components in all.
 
 ## 0.6.0 — 2026-11-15
 

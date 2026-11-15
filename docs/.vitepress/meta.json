@@ -5468,6 +5468,38 @@
   "slots": [],
   "exposed": []
  },
+ "BlessGlossary": {
+  "props": [
+   {
+    "name": "definition",
+    "type": "string",
+    "required": true,
+    "description": "what the term means, in a sentence or two"
+   },
+   {
+    "name": "term",
+    "type": "string | undefined",
+    "required": false,
+    "description": "the word to define in the tip, if it differs from the text in the line"
+   },
+   {
+    "name": "placement",
+    "type": "Placement | undefined",
+    "required": false,
+    "default": "\"top\"",
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [
+   {
+    "name": "default",
+    "type": "{}",
+    "description": ""
+   }
+  ],
+  "exposed": []
+ },
  "BlessHeatmap": {
   "props": [
    {

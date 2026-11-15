@@ -77,6 +77,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         text: "Numbered notes with marks that link both ways",
       },
       {
+        name: "BlessGlossary",
+        slug: "glossary",
+        text: "A term with a dotted line that shows its meaning",
+      },
+      {
         name: "BlessRelativeTime",
         slug: "relative-time",
         text: "Time ago, in your language, kept up to date",
