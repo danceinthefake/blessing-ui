@@ -405,6 +405,7 @@ Thirteen components, 213 → 226. Each uses native platform APIs only: the libra
 - ✅ `BlessFilterBar`: filters as chips in a row (field, operator, value), with a menu to add one. It is a flat form of `BlessQueryBuilder`, with the same data for a rule.
 - ✅ `BlessSelectionToolbar`: a toolbar above the selected text in an area, for actions such as Bold, Comment, or Copy.
 - ✅ `BlessLightbox`: a full view of one image from a list, with arrows, keys, swipe, and zoom. `BlessGallery` uses it for its viewer.
+- ✅ Budget: after the round, the whole library is 151.0 KB gz JS and 41.4 KB gz CSS, under the cap of 154 / 43, so the cap stays. The room left is about 2%, so the next round needs a new cap. Phase 28 is done.
 
 ### Deliberately skipped
 
