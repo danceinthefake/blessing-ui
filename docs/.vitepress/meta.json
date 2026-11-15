@@ -9643,6 +9643,50 @@
   "slots": [],
   "exposed": []
  },
+ "BlessSelectionToolbar": {
+  "props": [
+   {
+    "name": "actions",
+    "type": "BlessSelectionAction[] | undefined",
+    "required": false,
+    "default": "[]",
+    "description": ""
+   },
+   {
+    "name": "minLength",
+    "type": "number | undefined",
+    "required": false,
+    "default": "1",
+    "description": "the fewest letters a selection needs before the toolbar shows"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ label: string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "action",
+    "type": "[id: string, selection: BlessSelection]",
+    "description": ""
+   }
+  ],
+  "slots": [
+   {
+    "name": "default",
+    "type": "{}",
+    "description": ""
+   },
+   {
+    "name": "toolbar",
+    "type": "{ selection: BlessSelection | undefined; run: (id: string) => void; }",
+    "description": ""
+   }
+  ],
+  "exposed": []
+ },
  "BlessSeparator": {
   "props": [
    {

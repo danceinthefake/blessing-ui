@@ -403,7 +403,7 @@ Thirteen components, 213 → 226. Each uses native platform APIs only: the libra
 - ✅ `BlessSuggestions`: a row of ready prompts as chips. A click sends the prompt.
 - ✅ `BlessEventCalendar`: a month of events in a grid, with "+3 more" when a day is full, next to the week view of `BlessScheduler`.
 - ✅ `BlessFilterBar`: filters as chips in a row (field, operator, value), with a menu to add one. It is a flat form of `BlessQueryBuilder`, with the same data for a rule.
-- `BlessSelectionToolbar`: a toolbar above the selected text in an area, for actions such as Bold, Comment, or Copy.
+- ✅ `BlessSelectionToolbar`: a toolbar above the selected text in an area, for actions such as Bold, Comment, or Copy.
 - `BlessLightbox`: a full view of one image from a list, with arrows, keys, swipe, and zoom. `BlessGallery` uses it for its viewer.
 
 ### Deliberately skipped

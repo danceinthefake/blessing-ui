@@ -26,7 +26,8 @@
 - `BlessToolCall`: one step of an assistant, such as a web search, with its name, a status word and icon (running, done, or failed), and its input and output as text or JSON in a native `<details>`.
 - `BlessSuggestions`: ready prompts as a row of chips that wrap or scroll. A click emits `select` with the prompt.
 - `BlessEventCalendar`: a month of events in a grid, with whole-day events first, times in the locale format, "+2 more" when a day is full, and buttons for the previous and next month. The events fit `BlessScheduler`.
-- `BlessFilterBar`: filters as chips in a row ("Status is Live"), with an editor for each chip, a list of fields to add one, and Clear all. The rules are the same data as in `BlessQueryBuilder`. 224 components in all.
+- `BlessFilterBar`: filters as chips in a row ("Status is Live"), with an editor for each chip, a list of fields to add one, and Clear all. The rules are the same data as in `BlessQueryBuilder`.
+- `BlessSelectionToolbar`: a toolbar above the selected text in an area, with actions that get the text and a copy of the range. A click keeps the selection, Tab reaches the toolbar, and Escape closes it. 225 components in all.
 
 ## 0.5.0 — 2026-11-15
 
