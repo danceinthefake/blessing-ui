@@ -93,6 +93,7 @@ import type BlessShipmentTracker from "../components/BlessShipmentTracker.vue";
 import type BlessShortcutRecorder from "../components/BlessShortcutRecorder.vue";
 import type BlessShortcutSheet from "../components/BlessShortcutSheet.vue";
 import type BlessSliderCaptcha from "../components/BlessSliderCaptcha.vue";
+import type BlessSlopeChart from "../components/BlessSlopeChart.vue";
 import type BlessSlotPicker from "../components/BlessSlotPicker.vue";
 import type BlessSortable from "../components/BlessSortable.vue";
 import type BlessSources from "../components/BlessSources.vue";
@@ -216,6 +217,7 @@ export type BlessLabelsFull = {
   BlessShortcutRecorder: All<typeof BlessShortcutRecorder>;
   BlessShortcutSheet: All<typeof BlessShortcutSheet>;
   BlessSliderCaptcha: All<typeof BlessSliderCaptcha>;
+  BlessSlopeChart: All<typeof BlessSlopeChart>;
   BlessSlotPicker: All<typeof BlessSlotPicker>;
   BlessSortable: All<typeof BlessSortable>;
   BlessSources: All<typeof BlessSources>;
@@ -829,6 +831,7 @@ export const labelsId: BlessLabelsFull = {
   },
   BlessShortcutSheet: { search: "Cari pintasan", none: "Pintasan tidak ditemukan", or: "atau" },
   BlessSliderCaptcha: { verified: "Terverifikasi", failed: "Belum pas, coba lagi" },
+  BlessSlopeChart: { start: "Sebelum", end: "Sesudah", item: "Item", change: "Perubahan" },
   BlessSlotPicker: {
     morning: "Pagi",
     afternoon: "Siang",

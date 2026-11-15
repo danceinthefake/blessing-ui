@@ -761,6 +761,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         text: "Wedges of equal angle whose size is the value",
       },
       {
+        name: "BlessSlopeChart",
+        slug: "slope-chart",
+        text: "Two columns with a line for each item",
+      },
+      {
         name: "BlessPricingTable",
         slug: "pricing-table",
         text: "Plans side by side, with a monthly or yearly switch",
