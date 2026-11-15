@@ -48,6 +48,7 @@ The floating panel is a `<div>`. HTML closes a `<p>` at a `<div>`. For this reas
 - A click on the trigger opens it. The trigger is told what it opens and whether it is open. Esc or a click outside closes it, and focus goes back to the trigger if it was inside.
 - `modal` turns off the click-outside close (Esc and your own control still close it). `trigger="hover"` opens on hover and focus, for previews only. See [HoverCard](./hover-card).
 - `title` names it. `arrow` points its accent edge at the trigger.
+- A `class` or another attribute on `BlessPopover` goes on the panel, so you can style the panel from the parent.
 
 ## Usage
 

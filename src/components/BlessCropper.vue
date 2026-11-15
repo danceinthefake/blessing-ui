@@ -12,7 +12,7 @@ export interface BlessCropRect {
 <script setup lang="ts">
 import { useLabelPack } from "../composables/useLabels";
 import "./sr.css";
-import { computed, nextTick, onBeforeUnmount, ref, useId, watch } from "vue";
+import { computed, nextTick, onBeforeUnmount, onMounted, ref, useId, watch } from "vue";
 import { initialBox, moveBox, resizeBox, scaleBox, type CropBox } from "../composables/cropBox";
 import BlessButton from "./BlessButton.vue";
 
@@ -115,28 +115,27 @@ watch(
 watch(() => [img.value, rot.value, props.aspect], reset);
 
 let loading: HTMLImageElement | undefined;
-watch(
-  () => [props.src, props.crossorigin] as const,
-  ([src, cors]) => {
-    img.value = null;
-    failed.value = false;
-    const i = new Image();
-    loading = i;
-    i.crossOrigin = cors;
-    i.onload = () => {
-      if (loading !== i) return;
-      img.value = i;
-      emit("ready");
-    };
-    i.onerror = () => {
-      if (loading !== i) return;
-      failed.value = true;
-      emit("error");
-    };
-    i.src = src;
-  },
-  { immediate: true },
-);
+// the image loads in the browser only: a server render has no Image, so it starts after mount
+function load() {
+  img.value = null;
+  failed.value = false;
+  const i = new Image();
+  loading = i;
+  i.crossOrigin = props.crossorigin ?? null;
+  i.onload = () => {
+    if (loading !== i) return;
+    img.value = i;
+    emit("ready");
+  };
+  i.onerror = () => {
+    if (loading !== i) return;
+    failed.value = true;
+    emit("error");
+  };
+  i.src = props.src;
+}
+onMounted(load);
+watch(() => [props.src, props.crossorigin] as const, load);
 onBeforeUnmount(() => (loading = undefined));
 
 const turn = (d: 90 | -90) => (rot.value = ((rot.value + d + 360) % 360) as 0 | 90 | 180 | 270);

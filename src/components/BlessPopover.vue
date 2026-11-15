@@ -2,7 +2,8 @@
 import { nextTick, onMounted, ref, useId, watch } from "vue";
 import { useFloating, type Placement } from "../composables/useFloating";
 
-defineOptions({ name: "BlessPopover" });
+// two roots (the trigger and the panel): `class` and other attributes go on the panel
+defineOptions({ name: "BlessPopover", inheritAttrs: false });
 
 const props = withDefaults(
   defineProps<{
@@ -89,7 +90,7 @@ function onToggle(e: Event) {
     :style="{ left: `${x}px`, top: `${y}px`, '--_ax': `${arrowX}px`, '--_ay': `${arrowY}px` }"
     role="dialog"
     :aria-label="title"
-    v-bind="hover"
+    v-bind="{ ...$attrs, ...hover }"
     @toggle="onToggle"
     @keydown.esc="modal && ($event.preventDefault(), (open = false))"
   >
