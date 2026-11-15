@@ -425,6 +425,27 @@ Twelve components, 226 → 238. Each uses native platform APIs only: the library
 - ✅ `BlessFileTree`: files and folders from a flat list of paths, with an icon for each type, on top of `BlessTree`.
 - ✅ Budget: after the round, the whole library is 157.5 KB gz JS and 43.2 KB gz CSS, over the old cap of 154 / 43. The cap is now 173 / 48, about 10% of room. Phase 29 is done.
 
+### Phase 30 — more charts, assistant replies, media, and social parts (2026-11-15)
+
+Sixteen components, 238 → 254. Each uses native platform APIs only: the library adds no dependency. Each needs tests, a docs page with a live example, a README row, and words in `labelsId`.
+
+- ✅ `BlessCandlestick`: the open, high, low, and close of each day, as a thin line and a box, for prices or daily ranges.
+- `BlessSunburst`: a tree of parts as rings around a center, for example budget, team, and item.
+- `BlessDumbbell`: two dots for each row, joined by a line, for before and after, or plan and actual.
+- `BlessWaffle`: a grid of 100 squares that shows parts of a whole.
+- `BlessReasoning`: a panel that folds, with the reasoning of a model, the time it took, and a live state while it thinks.
+- `BlessSources`: the sources of a reply, as a list with the site name and a link, and numbered marks that point to it.
+- `BlessMessageFeedback`: buttons under a reply: good, bad, copy, and retry. A bad mark asks for a reason.
+- `BlessContextMeter`: how much of the context window the tokens use, as a ring, with a breakdown.
+- `BlessTranscript`: lines of text with times. The current line follows the media time, and a click on a line seeks.
+- `BlessChapterList`: the chapters of an episode, with a time and a title, and the current chapter marked.
+- `BlessWorldClock`: the time now in several time zones, side by side.
+- `BlessReadingProgress`: a thin bar that fills as the reader scrolls an article, and the minutes left.
+- `BlessReactions`: emoji reactions with counts. A click adds or removes yours, and a button opens `BlessEmojiPicker`.
+- `BlessActivityFeed`: events with a person, an action, and a time, in groups by day.
+- `BlessLeaderboard`: ranked rows with the place, the change since last time, and the score, with your row marked.
+- `BlessSpreadsheet`: a grid of cells that you edit, with arrow keys, Enter to edit, and paste from a spreadsheet app.
+
 ### Deliberately skipped
 
 - **Chart**: no bundled lib. Phase 11 ✅: `--bless-color-chart-{1..5}` (≥3:1 both themes) + `BlessChart` frame that maps them onto Unovis `--vis-*` vars. Unovis is the documented pairing, installed by the consumer.

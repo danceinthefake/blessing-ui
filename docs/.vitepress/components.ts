@@ -584,6 +584,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         text: "One value against a target and bands, in one thin bar",
       },
       {
+        name: "BlessCandlestick",
+        slug: "candlestick",
+        text: "Open, high, low and close of each period",
+      },
+      {
         name: "BlessPricingTable",
         slug: "pricing-table",
         text: "Plans side by side, with a monthly or yearly switch",

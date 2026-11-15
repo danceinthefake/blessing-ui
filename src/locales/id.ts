@@ -10,6 +10,7 @@ import type BlessBulkActionBar from "../components/BlessBulkActionBar.vue";
 import type BlessBulletChart from "../components/BlessBulletChart.vue";
 import type BlessCalendar from "../components/BlessCalendar.vue";
 import type BlessCameraCapture from "../components/BlessCameraCapture.vue";
+import type BlessCandlestick from "../components/BlessCandlestick.vue";
 import type BlessCardInput from "../components/BlessCardInput.vue";
 import type BlessChangelog from "../components/BlessChangelog.vue";
 import type BlessCoachmark from "../components/BlessCoachmark.vue";
@@ -95,6 +96,7 @@ export type BlessLabelsFull = {
   BlessBulletChart: All<typeof BlessBulletChart>;
   BlessCalendar: All<typeof BlessCalendar>;
   BlessCameraCapture: All<typeof BlessCameraCapture>;
+  BlessCandlestick: All<typeof BlessCandlestick>;
   BlessCardInput: All<typeof BlessCardInput>;
   BlessChangelog: All<typeof BlessChangelog>;
   BlessCoachmark: All<typeof BlessCoachmark>;
@@ -226,6 +228,13 @@ export const labelsId: BlessLabelsFull = {
     preview: "Pratinjau kamera",
     photo: "Foto",
     unavailable: "Kamera tidak tersedia",
+  },
+  BlessCandlestick: {
+    period: "Periode",
+    open: "Buka",
+    high: "Tertinggi",
+    low: "Terendah",
+    close: "Tutup",
   },
   BlessCardInput: { invalid: "Periksa nomor kartu" },
   BlessChangelog: {

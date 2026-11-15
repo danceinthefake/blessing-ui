@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+### Added
+
+- `BlessCandlestick`: candles for the open, high, low, and close of each period. A rise is hollow and a fall is filled, and a table reads the numbers to screen readers. 239 components in all.
+
 ## 0.6.0 — 2026-11-15
 
 Thirty-seven new components, 238 in all: charts in plain SVG, parts for a chat with an assistant, realtime and media parts, booking, and content pages. The library still has no dependencies. The Indonesian label pack covers all 76 components with a `labels` prop. No API is removed, but some CSS class names changed: see "Changed" below.
