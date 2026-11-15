@@ -608,6 +608,71 @@
   "slots": [],
   "exposed": []
  },
+ "BlessAvailabilityGrid": {
+  "props": [
+   {
+    "name": "days",
+    "type": "string[]",
+    "required": true,
+    "description": "the columns: any text, for example `Mon` or `2026-11-16`"
+   },
+   {
+    "name": "dayStart",
+    "type": "number | undefined",
+    "required": false,
+    "default": "9",
+    "description": "the first and the last hour (0–24)"
+   },
+   {
+    "name": "dayEnd",
+    "type": "number | undefined",
+    "required": false,
+    "default": "18",
+    "description": ""
+   },
+   {
+    "name": "step",
+    "type": "number | undefined",
+    "required": false,
+    "default": "30",
+    "description": "minutes in one cell"
+   },
+   {
+    "name": "locale",
+    "type": "string | undefined",
+    "required": false,
+    "description": "shows the times in the format of this locale"
+   },
+   {
+    "name": "disabled",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ label: string; free: string; busy: string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "string[] | undefined",
+    "required": false,
+    "default": "[]",
+    "description": "the free cells, each as `day HH:MM`, for example `Mon 09:30`"
+   }
+  ],
+  "events": [
+   {
+    "name": "update:modelValue",
+    "type": "[value: string[]]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessAvatar": {
   "props": [
    {
