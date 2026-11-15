@@ -583,6 +583,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         text: "The steps of an agent, each with its state",
       },
       { name: "BlessChatHistory", slug: "chat-history", text: "Past chats in groups by age" },
+      {
+        name: "BlessVoiceInput",
+        slug: "voice-input",
+        text: "A microphone button that turns speech into text",
+      },
       { name: "BlessSuggestions", slug: "suggestions", text: "Ready prompts as a row of chips" },
     ],
   },
