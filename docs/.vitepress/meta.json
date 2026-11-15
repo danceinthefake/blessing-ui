@@ -5054,6 +5054,58 @@
   ],
   "exposed": []
  },
+ "BlessFootnoteRef": {
+  "props": [
+   {
+    "name": "n",
+    "type": "number",
+    "required": true,
+    "description": "the number of the note, from 1"
+   },
+   {
+    "name": "id",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"fn\"",
+    "description": "the same id as on `BlessFootnotes`"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ note: (n: number) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
+ "BlessFootnotes": {
+  "props": [
+   {
+    "name": "notes",
+    "type": "string[]",
+    "required": true,
+    "description": "the notes, in the order of their marks; note 1 is the first"
+   },
+   {
+    "name": "id",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"fn\"",
+    "description": "the start of the ids: note 2 is `<id>-2`, and its mark is `<id>-ref-2`. Use the same id on each `BlessFootnoteRef`."
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ title: string; back: (n: number) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessForm": {
   "props": [
    {
@@ -12536,13 +12588,13 @@
     "description": ""
    },
    {
-    "name": "update:detail",
-    "type": "[value: boolean]",
+    "name": "back",
+    "type": "[]",
     "description": ""
    },
    {
-    "name": "back",
-    "type": "[]",
+    "name": "update:detail",
+    "type": "[value: boolean]",
     "description": ""
    }
   ],

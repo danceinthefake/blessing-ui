@@ -442,3 +442,5 @@ export type { BlessRoseItem } from "./components/BlessRoseChart.vue";
 export { default as BlessCodeTabs } from "./components/BlessCodeTabs.vue";
 export type { BlessPackageManager } from "./components/BlessCodeTabs.vue";
 export { default as BlessSpoiler } from "./components/BlessSpoiler.vue";
+export { default as BlessFootnotes } from "./components/BlessFootnotes.vue";
+export { default as BlessFootnoteRef } from "./components/BlessFootnoteRef.vue";

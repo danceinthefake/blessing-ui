@@ -38,6 +38,8 @@ import type BlessEditor from "../components/BlessEditor.vue";
 import type BlessEmojiPicker from "../components/BlessEmojiPicker.vue";
 import type BlessEventCalendar from "../components/BlessEventCalendar.vue";
 import type BlessFilterBar from "../components/BlessFilterBar.vue";
+import type BlessFootnoteRef from "../components/BlessFootnoteRef.vue";
+import type BlessFootnotes from "../components/BlessFootnotes.vue";
 import type BlessFormula from "../components/BlessFormula.vue";
 import type BlessFunnel from "../components/BlessFunnel.vue";
 import type BlessGantt from "../components/BlessGantt.vue";
@@ -151,6 +153,8 @@ export type BlessLabelsFull = {
   BlessEmojiPicker: All<typeof BlessEmojiPicker>;
   BlessEventCalendar: All<typeof BlessEventCalendar>;
   BlessFilterBar: All<typeof BlessFilterBar>;
+  BlessFootnoteRef: All<typeof BlessFootnoteRef>;
+  BlessFootnotes: All<typeof BlessFootnotes>;
   BlessFormula: All<typeof BlessFormula>;
   BlessFunnel: All<typeof BlessFunnel>;
   BlessGantt: All<typeof BlessGantt>;
@@ -455,6 +459,8 @@ export const labelsId: BlessLabelsFull = {
     after: "sesudah",
     onOrAfter: "pada atau sesudah",
   },
+  BlessFootnoteRef: { note: (n) => `Catatan ${n}` },
+  BlessFootnotes: { title: "Catatan", back: (n) => `Kembali ke teks catatan ${n}` },
   BlessFormula: {
     insert: "Sisipkan nilai",
     result: (v) => `= ${v}`,
