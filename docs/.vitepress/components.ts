@@ -123,6 +123,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         text: "A map of seats in rows, with prices by zone",
       },
       {
+        name: "BlessTicket",
+        slug: "ticket",
+        text: "An event ticket with a tear line and a QR code",
+      },
+      {
         name: "BlessAvailabilityGrid",
         slug: "availability-grid",
         text: "A week of time cells, to mark when a person is free",
