@@ -59,6 +59,7 @@ import type BlessQueryBuilder from "../components/BlessQueryBuilder.vue";
 import type BlessQuestionnaire from "../components/BlessQuestionnaire.vue";
 import type BlessRangeCalendar from "../components/BlessRangeCalendar.vue";
 import type BlessReadMore from "../components/BlessReadMore.vue";
+import type BlessReadingProgress from "../components/BlessReadingProgress.vue";
 import type BlessReasoning from "../components/BlessReasoning.vue";
 import type BlessSankey from "../components/BlessSankey.vue";
 import type BlessScatterChart from "../components/BlessScatterChart.vue";
@@ -153,6 +154,7 @@ export type BlessLabelsFull = {
   BlessQuestionnaire: All<typeof BlessQuestionnaire>;
   BlessRangeCalendar: All<typeof BlessRangeCalendar>;
   BlessReadMore: All<typeof BlessReadMore>;
+  BlessReadingProgress: All<typeof BlessReadingProgress>;
   BlessReasoning: All<typeof BlessReasoning>;
   BlessSankey: All<typeof BlessSankey>;
   BlessScatterChart: All<typeof BlessScatterChart>;
@@ -575,6 +577,10 @@ export const labelsId: BlessLabelsFull = {
     hint: "Tombol panah berpindah, Spasi memilih atau melepas hari, tahan Shift dan tekan panah untuk mewarnai, Page Up dan Page Down mengganti bulan.",
   },
   BlessReadMore: { more: "Baca selengkapnya", less: "Tampilkan lebih sedikit" },
+  BlessReadingProgress: {
+    label: "Progres membaca",
+    left: (m) => (m < 1 ? "Kurang dari semenit lagi" : `${m} menit lagi`),
+  },
   BlessReasoning: {
     thinking: "Sedang berpikir…",
     thought: (s) => (s < 1 ? "Berpikir sejenak" : `Berpikir selama ${s} dtk`),

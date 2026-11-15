@@ -395,6 +395,11 @@ export const groups: { title: string; items: Entry[] }[] = [
       { name: "BlessContainer", slug: "container", text: "Centred max-width box" },
       { name: "BlessStack", slug: "stack", text: "Flex row / column with token gap" },
       { name: "BlessScrollTop", slug: "scroll-top", text: "Back-to-top button past a threshold" },
+      {
+        name: "BlessReadingProgress",
+        slug: "reading-progress",
+        text: "A thin bar that fills as the reader scrolls",
+      },
       { name: "BlessAffix", slug: "affix", text: "Sticky wrapper with an offset" },
       { name: "BlessToc", slug: "toc", text: "Table of contents with current heading" },
       {

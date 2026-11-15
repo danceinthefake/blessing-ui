@@ -14,7 +14,8 @@
 - `BlessContextMeter`: a small ring that shows how full the context window is. A click opens the tokens of each part and the free tokens.
 - `BlessTranscript`: lines of text with times that follow the time of the media. A click on a time seeks, and the box keeps the current line in view.
 - `BlessChapterList`: the chapters of an episode with the start and length of each. The current chapter is marked with a line that grows as it plays, and a click seeks.
-- `BlessWorldClock`: the time now in several time zones, with the day compared with the reader, the UTC offset, and a dark plate for night hours. 249 components in all.
+- `BlessWorldClock`: the time now in several time zones, with the day compared with the reader, the UTC offset, and a dark plate for night hours.
+- `BlessReadingProgress`: a thin bar that fills as the reader scrolls an article or a box, with the minutes left from the count of words. 250 components in all.
 
 ## 0.6.0 — 2026-11-15
 

@@ -9774,6 +9774,51 @@
   ],
   "exposed": []
  },
+ "BlessReadingProgress": {
+  "props": [
+   {
+    "name": "target",
+    "type": "string | HTMLElement | undefined",
+    "required": false,
+    "description": "the article: an element or a CSS selector. A box that scrolls by itself is read by its own scroll. Default: the page."
+   },
+   {
+    "name": "position",
+    "type": "\"fixed\" | \"sticky\" | undefined",
+    "required": false,
+    "default": "\"fixed\"",
+    "description": "`fixed` sits at the top of the window; `sticky` sits at the top of the box it is in"
+   },
+   {
+    "name": "minutes",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": "show the minutes left at the end of the bar"
+   },
+   {
+    "name": "wpm",
+    "type": "number | undefined",
+    "required": false,
+    "default": "230",
+    "description": "words a minute of a reader, for the minutes left"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ label: string; left: (minutes: number) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "done",
+    "type": "[]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessReasoning": {
   "props": [
    {
