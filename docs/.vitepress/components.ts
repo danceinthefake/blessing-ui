@@ -537,6 +537,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "sources",
         text: "The sources of a reply, with numbered marks",
       },
+      {
+        name: "BlessMessageFeedback",
+        slug: "message-feedback",
+        text: "Good, bad, copy and retry under a reply",
+      },
       { name: "BlessSuggestions", slug: "suggestions", text: "Ready prompts as a row of chips" },
     ],
   },

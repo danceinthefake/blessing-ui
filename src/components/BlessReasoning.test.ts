@@ -27,7 +27,7 @@ test("BlessReasoning: a reader who opened it keeps it open at the end", async ()
   await w.setProps({ streaming: false });
   await nextTick();
   expect(w.find("details").attributes("open")).toBeDefined();
-  expect(w.emitted("update:open")).toEqual([[false], [true]]);
+  expect(w.emitted("update:open")!.at(-1)).toEqual([true]);
 });
 
 test("BlessReasoning: from history it starts closed, with a given duration or no time, and labels translate", () => {

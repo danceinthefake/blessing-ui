@@ -7331,6 +7331,59 @@
   ],
   "exposed": []
  },
+ "BlessMessageFeedback": {
+  "props": [
+   {
+    "name": "copy",
+    "type": "string | undefined",
+    "required": false,
+    "description": "the text of the reply; with it, a copy button shows"
+   },
+   {
+    "name": "retry",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": "show a button that asks for a new reply"
+   },
+   {
+    "name": "reasons",
+    "type": "string[] | undefined",
+    "required": false,
+    "description": "reasons to pick from after a bad mark, for example `[\"Not true\", \"Too long\"]`"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ good: string; bad: string; copy: string; copied: string; retry: string; ask: string; note: string; send: string; cancel: string; thanks: string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "rating",
+    "type": "\"good\" | \"bad\" | undefined",
+    "required": false,
+    "description": "the mark of the reader: `good`, `bad`, or none"
+   }
+  ],
+  "events": [
+   {
+    "name": "update:rating",
+    "type": "[value: \"good\" | \"bad\" | undefined]",
+    "description": ""
+   },
+   {
+    "name": "feedback",
+    "type": "[event: BlessMessageFeedbackEvent]",
+    "description": ""
+   },
+   {
+    "name": "retry",
+    "type": "[]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessMessageScroller": {
   "props": [
    {

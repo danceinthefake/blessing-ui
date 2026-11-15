@@ -435,7 +435,7 @@ Sixteen components, 238 → 254. Each uses native platform APIs only: the librar
 - ✅ `BlessWaffle`: a grid of 100 squares that shows parts of a whole.
 - ✅ `BlessReasoning`: a panel that folds, with the reasoning of a model, the time it took, and a live state while it thinks.
 - ✅ `BlessSources`: the sources of a reply, as a list with the site name and a link, and numbered marks that point to it.
-- `BlessMessageFeedback`: buttons under a reply: good, bad, copy, and retry. A bad mark asks for a reason.
+- ✅ `BlessMessageFeedback`: buttons under a reply: good, bad, copy, and retry. A bad mark asks for a reason.
 - `BlessContextMeter`: how much of the context window the tokens use, as a ring, with a breakdown.
 - `BlessTranscript`: lines of text with times. The current line follows the media time, and a click on a line seeks.
 - `BlessChapterList`: the chapters of an episode, with a time and a title, and the current chapter marked.
