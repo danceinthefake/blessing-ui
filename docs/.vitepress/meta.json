@@ -5940,6 +5940,69 @@
   ],
   "exposed": []
  },
+ "BlessLineChart": {
+  "props": [
+   {
+    "name": "data",
+    "type": "BlessChartRow[]",
+    "required": true,
+    "description": "one row for each point on the x axis"
+   },
+   {
+    "name": "x",
+    "type": "string",
+    "required": true,
+    "description": "the field of a row with its x value: a number, a `Date`, or a date text"
+   },
+   {
+    "name": "series",
+    "type": "BlessChartSeries[]",
+    "required": true,
+    "description": "one line for each series"
+   },
+   {
+    "name": "area",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": "fill the area under each line"
+   },
+   {
+    "name": "height",
+    "type": "number | undefined",
+    "required": false,
+    "default": "280",
+    "description": ""
+   },
+   {
+    "name": "format",
+    "type": "((v: number) => string) | undefined",
+    "required": false,
+    "description": "text for one value, for example `(v) => v + \" ms\"`"
+   },
+   {
+    "name": "formatX",
+    "type": "((x: number | Date) => string) | undefined",
+    "required": false,
+    "description": "text for one x value; default: the number, or a short date in the local format"
+   },
+   {
+    "name": "xLabel",
+    "type": "string | undefined",
+    "required": false,
+    "description": "the name of the x column in the table for screen readers; default: `x`"
+   },
+   {
+    "name": "label",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Chart\"",
+    "description": "names the chart and its table for screen readers"
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessList": {
   "props": [
    {

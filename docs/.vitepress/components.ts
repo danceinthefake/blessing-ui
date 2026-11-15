@@ -489,6 +489,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         text: "Bars for categories, side by side or stacked",
       },
       {
+        name: "BlessLineChart",
+        slug: "line-chart",
+        text: "Lines or areas over a number or a date axis",
+      },
+      {
         name: "BlessFunnel",
         slug: "funnel",
         text: "Stages with the share that is left at each step",
