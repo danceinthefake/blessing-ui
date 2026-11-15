@@ -87,6 +87,7 @@ import type BlessSliderCaptcha from "../components/BlessSliderCaptcha.vue";
 import type BlessSlotPicker from "../components/BlessSlotPicker.vue";
 import type BlessSortable from "../components/BlessSortable.vue";
 import type BlessSources from "../components/BlessSources.vue";
+import type BlessSpoiler from "../components/BlessSpoiler.vue";
 import type BlessStat from "../components/BlessStat.vue";
 import type BlessStepper from "../components/BlessStepper.vue";
 import type BlessStreamgraph from "../components/BlessStreamgraph.vue";
@@ -199,6 +200,7 @@ export type BlessLabelsFull = {
   BlessSlotPicker: All<typeof BlessSlotPicker>;
   BlessSortable: All<typeof BlessSortable>;
   BlessSources: All<typeof BlessSources>;
+  BlessSpoiler: All<typeof BlessSpoiler>;
   BlessStat: All<typeof BlessStat>;
   BlessStepper: All<typeof BlessStepper>;
   BlessStreamgraph: All<typeof BlessStreamgraph>;
@@ -766,6 +768,7 @@ export const labelsId: BlessLabelsFull = {
     roleDescription: "item yang dapat diurutkan",
   },
   BlessSources: { title: "Sumber" },
+  BlessSpoiler: { show: "Tampilkan spoiler", showAbout: (h) => `Tampilkan spoiler: ${h}` },
   BlessStat: { up: "Naik", down: "Turun", flat: "Tidak berubah" },
   BlessStepper: { next: "Lanjut", prev: "Kembali", finish: "Selesai" },
   BlessStreamgraph: { step: "Langkah" },
