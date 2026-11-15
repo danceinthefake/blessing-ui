@@ -21,7 +21,7 @@ Shows where an order is: ordered, packed, shipped, out for delivery, or delivere
   </template>
 </Demo>
 
-- `stage` is the step the order has reached: 0 ordered, 1 packed, 2 shipped, 3 out for delivery, and 4 delivered. The steps before it have a check, and a line fills up to it.
+- `stage` is the last step that the order reached: 0 ordered, 1 packed, 2 shipped, 3 out for delivery, and 4 delivered. The steps before it have a check, and a line fills up to it.
 - `dates` gives the date of each step that is done, as text, in the same order.
 - `events` is the list of updates of the carrier, newest first. Each update has a `time` and a `text`, both as text, and an optional `place`. The newest update shows under the steps. "All updates" opens the full list.
 - `problem` shows a problem with the delivery as an alert. The current step then shows a "!" in the danger color.
