@@ -28,10 +28,15 @@ test("BlessBulletChart: a meter with the value, target and band in words, bands 
 
 test("BlessBulletChart: no bands takes a round max, clamps the bar, and labels translate", () => {
   const w = mount(BlessBulletChart, {
-    props: { label: "Plays", value: 870, target: 1000, labels: { target: "target", bands: [] } },
+    props: { label: "Plays", value: 870, target: 1000, labels: { target: "target" } },
   });
   expect(w.find("[role=meter]").attributes("aria-valuemax")).toBe("1000");
   expect(w.find("[role=meter]").attributes("aria-valuetext")).toBe("870, target 1,000");
   const over = mount(BlessBulletChart, { props: { label: "x", value: 150, max: 100 } });
   expect(over.find(".bless-bullet__bar").attributes("style")).toContain("inline-size: 100%");
+});
+
+test("BlessBulletChart: a band count other than three names the band by its place", () => {
+  const w = mount(BlessBulletChart, { props: { label: "x", value: 5, bands: [4, 8] } });
+  expect(w.find("[role=meter]").attributes("aria-valuetext")).toBe("5, band 2 of 2");
 });

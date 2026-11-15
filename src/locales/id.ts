@@ -213,7 +213,10 @@ export const labelsId: BlessLabelsFull = {
     selected: (n) => `${n} dipilih`,
     clear: "Hapus pilihan",
   },
-  BlessBulletChart: { target: "target", bands: ["buruk", "cukup", "baik"] },
+  BlessBulletChart: {
+    target: "target",
+    band: (i, n) => (n === 3 ? ["buruk", "cukup", "baik"][i]! : `pita ${i + 1} dari ${n}`),
+  },
   BlessCalendar: month,
   BlessCameraCapture: {
     start: "Nyalakan kamera",
