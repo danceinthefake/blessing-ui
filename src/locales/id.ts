@@ -47,6 +47,7 @@ import type BlessPhoneInput from "../components/BlessPhoneInput.vue";
 import type BlessPickList from "../components/BlessPickList.vue";
 import type BlessPinPad from "../components/BlessPinPad.vue";
 import type BlessPoll from "../components/BlessPoll.vue";
+import type BlessPricingTable from "../components/BlessPricingTable.vue";
 import type BlessPromptInput from "../components/BlessPromptInput.vue";
 import type BlessQueryBuilder from "../components/BlessQueryBuilder.vue";
 import type BlessQuestionnaire from "../components/BlessQuestionnaire.vue";
@@ -129,6 +130,7 @@ export type BlessLabelsFull = {
   BlessPickList: All<typeof BlessPickList>;
   BlessPinPad: All<typeof BlessPinPad>;
   BlessPoll: All<typeof BlessPoll>;
+  BlessPricingTable: All<typeof BlessPricingTable>;
   BlessPromptInput: All<typeof BlessPromptInput>;
   BlessQueryBuilder: All<typeof BlessQueryBuilder>;
   BlessQuestionnaire: All<typeof BlessQuestionnaire>;
@@ -452,6 +454,17 @@ export const labelsId: BlessLabelsFull = {
     clear: "Kosongkan",
   },
   BlessPoll: { vote: "Pilih", yours: "pilihan Anda", votes: (n) => `${n} suara` },
+  BlessPricingTable: {
+    period: "Periode tagihan",
+    monthly: "Bulanan",
+    yearly: "Tahunan",
+    perMonth: "/ bulan",
+    perYear: "/ tahun",
+    free: "Gratis",
+    featured: "Paling populer",
+    choose: "Pilih paket",
+    save: (pct) => `Hemat ${pct}%`,
+  },
   BlessPromptInput: {
     label: "Pesan",
     placeholder: "Tanyakan apa saja",

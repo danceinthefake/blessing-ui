@@ -8527,6 +8527,57 @@
   ],
   "exposed": []
  },
+ "BlessPricingTable": {
+  "props": [
+   {
+    "name": "plans",
+    "type": "BlessPricingPlan[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "currency",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"USD\"",
+    "description": "an ISO 4217 code, for example `USD` or `IDR`"
+   },
+   {
+    "name": "locale",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"en\"",
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ period: string; monthly: string; yearly: string; perMonth: string; perYear: string; free: string; featured: string; choose: string; save: (pct: number) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "period",
+    "type": "BlessPricingPeriod | undefined",
+    "required": false,
+    "default": "\"monthly\"",
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "select",
+    "type": "[plan: BlessPricingPlan, period: BlessPricingPeriod]",
+    "description": ""
+   },
+   {
+    "name": "update:period",
+    "type": "[value: BlessPricingPeriod]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessProgress": {
   "props": [
    {

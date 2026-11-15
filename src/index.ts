@@ -370,3 +370,5 @@ export { default as BlessAvailabilityGrid } from "./components/BlessAvailability
 export { default as BlessBulkActionBar } from "./components/BlessBulkActionBar.vue";
 export { default as BlessColorSwatches } from "./components/BlessColorSwatches.vue";
 export type { BlessColorSwatch } from "./components/BlessColorSwatches.vue";
+export { default as BlessPricingTable } from "./components/BlessPricingTable.vue";
+export type { BlessPricingPeriod, BlessPricingPlan } from "./components/BlessPricingTable.vue";
