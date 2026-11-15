@@ -93,7 +93,9 @@ function edit(start?: string) {
   if (props.readonly) return;
   editing.value = true;
   draft.value = start ?? value(at.value.r, at.value.c);
-  nextTick(() => table.value?.querySelector<HTMLInputElement>(".bless-spreadsheet__input")?.focus());
+  nextTick(() =>
+    table.value?.querySelector<HTMLInputElement>(".bless-spreadsheet__input")?.focus(),
+  );
 }
 function commit(dr: number, dc: number) {
   if (!editing.value) return;
@@ -220,7 +222,9 @@ function onDown(e: PointerEvent, r: number, c: number) {
       <thead>
         <tr>
           <td class="bless-spreadsheet__corner" />
-          <th v-for="(h, c) in heads" :key="c" scope="col" class="bless-spreadsheet__col">{{ h }}</th>
+          <th v-for="(h, c) in heads" :key="c" scope="col" class="bless-spreadsheet__col">
+            {{ h }}
+          </th>
         </tr>
       </thead>
       <tbody>

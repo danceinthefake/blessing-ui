@@ -448,6 +448,27 @@ Sixteen components, 238 → 254. Each uses native platform APIs only: the librar
 - ✅ Class names: two components may not style the same block of classes. `src/classes.test.ts` checks it. The check found three old clashes (`.bless-time`, `.bless-range`, `.bless-split`), and their classes are now unique.
 - ✅ Budget: after the round, the whole library is 168.8 KB gz JS and 45.9 KB gz CSS, under the cap of 173 / 48. Phase 30 is done.
 
+### Phase 31 — more charts, agents, a shop, and developer parts (2026-11-15)
+
+Sixteen components, 254 → 270. Each uses native platform APIs only: the library adds no dependency. Each needs tests, a docs page with a live example, a README row, and words in `labelsId`. Each new component must pass `src/classes.test.ts`.
+
+- ✅ `BlessPyramid`: back-to-back bars for two groups on each row, for example listeners by age.
+- `BlessRadialBar`: rings that fill to a share, one ring for each goal, in one circle.
+- `BlessStreamgraph`: stacked areas around a center line, to show how a mix changes over time.
+- `BlessPareto`: bars from high to low, with a line for the running share of the total.
+- `BlessModelPicker`: a select for a model, with a note, marks for speed and cost, and tags.
+- `BlessAgentPlan`: the steps of an agent, each waiting, running, done, or failed.
+- `BlessChatHistory`: past chats in groups by age, with search, rename, and delete.
+- `BlessVoiceInput`: a microphone button that turns speech into text with the Web Speech API.
+- `BlessOrderSummary`: the lines of an order, then the subtotal, discount, shipping, tax, and total.
+- `BlessCouponInput`: a field for a code, then the saving with a button to remove it, or the error.
+- `BlessShipmentTracker`: the steps of a delivery, with dates and the latest event.
+- `BlessVariantPicker`: the options of a product, such as size and color, with sold-out options crossed out.
+- `BlessReviewSummary`: the average stars, the count, and a bar for each star level that filters.
+- `BlessProfileCard`: a person with a cover, an avatar, a bio, counts, and a follow button.
+- `BlessApiKeyField`: a secret key, hidden by default, with show, copy, and make a new key.
+- `BlessWebhookLog`: sent events with the status, the time, a retry button, and the bodies in a fold.
+
 ### Deliberately skipped
 
 - **Chart**: no bundled lib. Phase 11 ✅: `--bless-color-chart-{1..5}` (≥3:1 both themes) + `BlessChart` frame that maps them onto Unovis `--vis-*` vars. Unovis is the documented pairing, installed by the consumer.
