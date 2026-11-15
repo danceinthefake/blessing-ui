@@ -138,6 +138,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         text: "A rule that repeats, in one sentence",
       },
       {
+        name: "BlessOpeningHours",
+        slug: "opening-hours",
+        text: "The hours of each day, and Open now",
+      },
+      {
         name: "BlessKeyValueEditor",
         slug: "key-value-editor",
         text: "Rows of key and value pairs to edit",
