@@ -11060,6 +11060,31 @@
   ],
   "exposed": []
  },
+ "BlessSources": {
+  "props": [
+   {
+    "name": "sources",
+    "type": "BlessSource[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "id",
+    "type": "string | undefined",
+    "required": false,
+    "description": "the start of the ids of the items: item 2 is `<id>-2`, so a mark `[2]` in the reply can link to `#<id>-2`"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ title: string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessSparkline": {
   "props": [
    {
