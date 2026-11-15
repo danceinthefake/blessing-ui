@@ -3450,6 +3450,56 @@
   "slots": [],
   "exposed": []
  },
+ "BlessCountdownBanner": {
+  "props": [
+   {
+    "name": "to",
+    "type": "string | number | Date",
+    "required": true,
+    "description": "the start of the event: a Date, a timestamp in ms, or a date string"
+   },
+   {
+    "name": "title",
+    "type": "string",
+    "required": true,
+    "description": "what starts, for example \"Live recording of episode 50\""
+   },
+   {
+    "name": "locale",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"en\"",
+    "description": "the language of the date for screen readers"
+   },
+   {
+    "name": "now",
+    "type": "number | Date | undefined",
+    "required": false,
+    "description": "a fixed \"now\", for example in a test; with it the clock does not run"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ startsIn: string; live: string; startsAt: (date: string) => string; days: string; hours: string; minutes: string; seconds: string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "start",
+    "type": "[]",
+    "description": ""
+   }
+  ],
+  "slots": [
+   {
+    "name": "action",
+    "type": "{}",
+    "description": ""
+   }
+  ],
+  "exposed": []
+ },
  "BlessCouponInput": {
   "props": [
    {

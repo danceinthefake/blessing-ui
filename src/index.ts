@@ -459,3 +459,4 @@ export type { BlessSeat, BlessSeatRow, BlessSeatZone } from "./components/BlessS
 export { default as BlessTicket } from "./components/BlessTicket.vue";
 export { default as BlessRsvp } from "./components/BlessRsvp.vue";
 export type { BlessRsvpAnswer } from "./components/BlessRsvp.vue";
+export { default as BlessCountdownBanner } from "./components/BlessCountdownBanner.vue";
