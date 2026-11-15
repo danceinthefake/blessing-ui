@@ -143,6 +143,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         text: "The hours of each day, and Open now",
       },
       {
+        name: "BlessHabitTracker",
+        slug: "habit-tracker",
+        text: "A grid of days for each habit, with the streak",
+      },
+      {
         name: "BlessKeyValueEditor",
         slug: "key-value-editor",
         text: "Rows of key and value pairs to edit",

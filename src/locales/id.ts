@@ -43,6 +43,7 @@ import type BlessFootnotes from "../components/BlessFootnotes.vue";
 import type BlessFormula from "../components/BlessFormula.vue";
 import type BlessFunnel from "../components/BlessFunnel.vue";
 import type BlessGantt from "../components/BlessGantt.vue";
+import type BlessHabitTracker from "../components/BlessHabitTracker.vue";
 import type BlessHistogram from "../components/BlessHistogram.vue";
 import type BlessInfiniteCanvas from "../components/BlessInfiniteCanvas.vue";
 import type BlessInputNumber from "../components/BlessInputNumber.vue";
@@ -160,6 +161,7 @@ export type BlessLabelsFull = {
   BlessFormula: All<typeof BlessFormula>;
   BlessFunnel: All<typeof BlessFunnel>;
   BlessGantt: All<typeof BlessGantt>;
+  BlessHabitTracker: All<typeof BlessHabitTracker>;
   BlessHistogram: All<typeof BlessHistogram>;
   BlessInfiniteCanvas: All<typeof BlessInfiniteCanvas>;
   BlessInputNumber: All<typeof BlessInputNumber>;
@@ -498,6 +500,12 @@ export const labelsId: BlessLabelsFull = {
     span: (t, a, b) => `${t}: ${a} sampai ${b}`,
     done: (p) => `${p}% selesai`,
     after: (names) => `setelah ${names.join(" dan ")}`,
+  },
+  BlessHabitTracker: {
+    habit: "Kebiasaan",
+    streak: "Beruntun",
+    streakOf: (n) => `${n} hari beruntun`,
+    mark: (h, d) => `${h}, ${d}`,
   },
   BlessHistogram: { range: "Rentang", count: "Jumlah" },
   BlessInfiniteCanvas: {
