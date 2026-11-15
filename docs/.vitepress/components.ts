@@ -527,6 +527,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "tool-call",
         text: "One step of an assistant, with its input and output",
       },
+      {
+        name: "BlessReasoning",
+        slug: "reasoning",
+        text: "The thinking of a model, in a panel that folds",
+      },
       { name: "BlessSuggestions", slug: "suggestions", text: "Ready prompts as a row of chips" },
     ],
   },

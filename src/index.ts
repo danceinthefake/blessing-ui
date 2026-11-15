@@ -381,3 +381,4 @@ export { default as BlessCandlestick } from "./components/BlessCandlestick.vue";
 export { default as BlessSunburst } from "./components/BlessSunburst.vue";
 export { default as BlessDumbbell } from "./components/BlessDumbbell.vue";
 export { default as BlessWaffle } from "./components/BlessWaffle.vue";
+export { default as BlessReasoning } from "./components/BlessReasoning.vue";
