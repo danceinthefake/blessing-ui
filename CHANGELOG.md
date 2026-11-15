@@ -39,7 +39,8 @@ Sixteen new components, 254 in all: more charts, parts for the replies of an ass
 - `BlessVoiceInput`: a microphone button that turns speech into text with the Web Speech API, with a ring that follows the loudness. `BlessAudioRecorder` now shares its level meter with it.
 - `BlessOrderSummary`: the lines of an order, then the subtotal, discount, shipping, tax, and total, with `Intl` money in any currency.
 - `BlessCouponInput`: a field for a discount code. Your server checks it, then the field changes to a chip with the saving and a remove button, or shows the error.
-- `BlessShipmentTracker`: the five steps of a delivery with dates, a line that fills, the latest update of the carrier, all updates in a fold, a problem as an alert, and the tracking number. 265 components in all.
+- `BlessShipmentTracker`: the five steps of a delivery with dates, a line that fills, the latest update of the carrier, all updates in a fold, a problem as an alert, and the tracking number.
+- `BlessVariantPicker`: the options of a product, such as size and color, as native radio groups with swatches, and sold-out values crossed out. 266 components in all.
 
 ## 0.6.0 — 2026-11-15
 

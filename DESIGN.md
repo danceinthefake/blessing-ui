@@ -463,7 +463,7 @@ Sixteen components, 254 → 270. Each uses native platform APIs only: the librar
 - ✅ `BlessOrderSummary`: the lines of an order, then the subtotal, discount, shipping, tax, and total.
 - ✅ `BlessCouponInput`: a field for a code, then the saving with a button to remove it, or the error.
 - ✅ `BlessShipmentTracker`: the steps of a delivery, with dates and the latest event.
-- `BlessVariantPicker`: the options of a product, such as size and color, with sold-out options crossed out.
+- ✅ `BlessVariantPicker`: the options of a product, such as size and color, with sold-out options crossed out.
 - `BlessReviewSummary`: the average stars, the count, and a bar for each star level that filters.
 - `BlessProfileCard`: a person with a cover, an avatar, a bio, counts, and a follow button.
 - `BlessApiKeyField`: a secret key, hidden by default, with show, copy, and make a new key.

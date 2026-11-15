@@ -424,3 +424,5 @@ export { default as BlessCouponInput } from "./components/BlessCouponInput.vue";
 export type { BlessCoupon } from "./components/BlessCouponInput.vue";
 export { default as BlessShipmentTracker } from "./components/BlessShipmentTracker.vue";
 export type { BlessShipmentEvent } from "./components/BlessShipmentTracker.vue";
+export { default as BlessVariantPicker } from "./components/BlessVariantPicker.vue";
+export type { BlessVariantOption, BlessVariantValue } from "./components/BlessVariantPicker.vue";

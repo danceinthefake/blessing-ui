@@ -14392,6 +14392,38 @@
   "slots": [],
   "exposed": []
  },
+ "BlessVariantPicker": {
+  "props": [
+   {
+    "name": "options",
+    "type": "BlessVariantOption[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ soldOut: string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "Record<string, string> | undefined",
+    "required": false,
+    "default": "{}",
+    "description": "the chosen value of each option, by key"
+   }
+  ],
+  "events": [
+   {
+    "name": "update:modelValue",
+    "type": "[value: Record<string, string>]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessVideo": {
   "props": [
    {
