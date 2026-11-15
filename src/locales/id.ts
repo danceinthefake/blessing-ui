@@ -78,6 +78,7 @@ import type BlessThread from "../components/BlessThread.vue";
 import type BlessTimer from "../components/BlessTimer.vue";
 import type BlessToolCall from "../components/BlessToolCall.vue";
 import type BlessTour from "../components/BlessTour.vue";
+import type BlessTranscript from "../components/BlessTranscript.vue";
 import type BlessTreemap from "../components/BlessTreemap.vue";
 import type BlessTypingIndicator from "../components/BlessTypingIndicator.vue";
 import type BlessUploader from "../components/BlessUploader.vue";
@@ -170,6 +171,7 @@ export type BlessLabelsFull = {
   BlessTimer: All<typeof BlessTimer>;
   BlessToolCall: All<typeof BlessToolCall>;
   BlessTour: All<typeof BlessTour>;
+  BlessTranscript: All<typeof BlessTranscript>;
   BlessTreemap: All<typeof BlessTreemap>;
   BlessTypingIndicator: All<typeof BlessTypingIndicator>;
   BlessUploader: All<typeof BlessUploader>;
@@ -656,6 +658,7 @@ export const labelsId: BlessLabelsFull = {
     skip: "Lewati",
     step: (n) => `Langkah ${n}`,
   },
+  BlessTranscript: { title: "Transkrip", seek: (t) => `Putar dari ${t}` },
   BlessTreemap: {
     tile: (l, v, s, n) => `${l}, ${v}, ${s}${n ? `, berisi ${n} item, Enter membuka` : ""}`,
     path: "Jalur",

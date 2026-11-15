@@ -13210,6 +13210,45 @@
   "slots": [],
   "exposed": []
  },
+ "BlessTranscript": {
+  "props": [
+   {
+    "name": "cues",
+    "type": "BlessCue[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "time",
+    "type": "number | undefined",
+    "required": false,
+    "default": "0",
+    "description": "the time of the media now, in seconds"
+   },
+   {
+    "name": "follow",
+    "type": "boolean | undefined",
+    "required": false,
+    "default": "true",
+    "description": "keep the current line in view while the media plays"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ title: string; seek: (time: string) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "seek",
+    "type": "[seconds: number]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessTree": {
   "props": [
    {
