@@ -4634,6 +4634,51 @@
   "slots": [],
   "exposed": []
  },
+ "BlessHeatmap": {
+  "props": [
+   {
+    "name": "rows",
+    "type": "string[]",
+    "required": true,
+    "description": "the names of the rows, down the start edge"
+   },
+   {
+    "name": "columns",
+    "type": "string[]",
+    "required": true,
+    "description": "the names of the columns, along the top"
+   },
+   {
+    "name": "values",
+    "type": "(number | null | undefined)[][]",
+    "required": true,
+    "description": "`values[row][column]`; `null` is a cell with no data"
+   },
+   {
+    "name": "color",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"chart-1\"",
+    "description": "a token name or any CSS color for the highest value"
+   },
+   {
+    "name": "format",
+    "type": "((v: number) => string) | undefined",
+    "required": false,
+    "description": "text for one value, for example `(v) => v + \" plays\"`"
+   },
+   {
+    "name": "label",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Heatmap\"",
+    "description": "names the table"
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessHeatmapCalendar": {
   "props": [
    {

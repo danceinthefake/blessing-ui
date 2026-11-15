@@ -533,6 +533,11 @@ export const groups: { title: string; items: Entry[] }[] = [
       },
       { name: "BlessBoxPlot", slug: "box-plot", text: "The spread of values in groups" },
       {
+        name: "BlessHeatmap",
+        slug: "heatmap",
+        text: "A grid of rows and columns, colored by value",
+      },
+      {
         name: "BlessFunnel",
         slug: "funnel",
         text: "Stages with the share that is left at each step",

@@ -359,3 +359,4 @@ export { default as BlessSelectionToolbar } from "./components/BlessSelectionToo
 export type { BlessSelection, BlessSelectionAction } from "./components/BlessSelectionToolbar.vue";
 export { default as BlessLightbox } from "./components/BlessLightbox.vue";
 export type { BlessLightboxItem } from "./components/BlessLightbox.vue";
+export { default as BlessHeatmap } from "./components/BlessHeatmap.vue";

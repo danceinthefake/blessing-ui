@@ -407,6 +407,23 @@ Thirteen components, 213 → 226. Each uses native platform APIs only: the libra
 - ✅ `BlessLightbox`: a full view of one image from a list, with arrows, keys, swipe, and zoom. `BlessGallery` uses it for its viewer.
 - ✅ Budget: after the round, the whole library is 151.0 KB gz JS and 41.4 KB gz CSS, under the cap of 154 / 43, so the cap stays. The room left is about 2%, so the next round needs a new cap. Phase 28 is done.
 
+### Phase 29 — more charts, booking, and content pages (2026-11-15)
+
+Twelve components, 226 → 238. Each uses native platform APIs only: the library adds no dependency. Each needs tests, a docs page with a live example, a README row, and words in `labelsId`. The whole-library budget goes up again for this round, to about 10% above the size after it.
+
+- ✅ `BlessHeatmap`: a grid of rows and columns, each cell colored by its value, for example plays by weekday and hour, with a legend of the scale.
+- `BlessHistogram`: raw values in round bins as bars, so the shape of the data shows.
+- `BlessWaterfallChart`: how a start value goes up and down in steps to an end value, with a bar for each step and totals.
+- `BlessBulletChart`: one value against a target and bands (poor, fair, good) in one thin bar, for rows of key numbers.
+- `BlessSlotPicker`: the free times of a day as buttons, in groups such as morning and afternoon, for booking a call.
+- `BlessAvailabilityGrid`: a week of time cells. A drag marks the times when a person is free, and the keyboard works too.
+- `BlessBulkActionBar`: a bar that comes up when rows are selected, with the count, the actions, and a button to clear the selection.
+- `BlessColorSwatches`: a set of ready colors as a radio group, with arrow keys. `BlessColorPicker` uses it for its presets.
+- `BlessPricingTable`: plans side by side, with a monthly or yearly switch, the features of each plan, and one plan that stands out.
+- `BlessChangelog`: release notes, with a version, a date, and the changes in groups (added, changed, fixed).
+- `BlessShortcutSheet`: keyboard shortcuts in groups, with `BlessKbd` keys and a search.
+- `BlessFileTree`: files and folders from a flat list of paths, with an icon for each type, on top of `BlessTree`.
+
 ### Deliberately skipped
 
 - **Chart**: no bundled lib. Phase 11 ✅: `--bless-color-chart-{1..5}` (≥3:1 both themes) + `BlessChart` frame that maps them onto Unovis `--vis-*` vars. Unovis is the documented pairing, installed by the consumer.
