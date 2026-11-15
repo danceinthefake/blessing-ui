@@ -188,6 +188,31 @@
   ],
   "exposed": []
  },
+ "BlessAgentPlan": {
+  "props": [
+   {
+    "name": "steps",
+    "type": "BlessPlanStep[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "title",
+    "type": "string | undefined",
+    "required": false,
+    "description": "the goal of the plan, at the top"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<Record<BlessStepStatus, string> & { summary: (done: number, total: number) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessAlert": {
   "props": [
    {
@@ -13467,7 +13492,7 @@
    },
    {
     "name": "status",
-    "type": "\"done\" | \"error\" | \"running\" | undefined",
+    "type": "\"done\" | \"running\" | \"error\" | undefined",
     "required": false,
     "default": "\"running\"",
     "description": ""
