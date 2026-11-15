@@ -32,7 +32,8 @@ Sixteen new components, 254 in all: more charts, parts for the replies of an ass
 - `BlessPyramid`: back-to-back bars for two groups on each row, on one scale, with a legend and a table for screen readers.
 - `BlessRadialBar`: rings in one circle that fill to the share of each goal, with a legend that shows the share, the value, and the max.
 - `BlessStreamgraph`: stacked areas around a center line, to show how a mix changes over time, with a legend and a table for screen readers.
-- `BlessPareto`: bars from high to low with a line for the running share of the total. A dashed line marks the cut, and the bars after it are lighter. 258 components in all.
+- `BlessPareto`: bars from high to low with a line for the running share of the total. A dashed line marks the cut, and the bars after it are lighter.
+- `BlessModelPicker`: a select for a model, with a note, marks for speed and cost, and tags, on top of `BlessListbox` in a popover. 259 components in all.
 
 ## 0.6.0 — 2026-11-15
 

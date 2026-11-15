@@ -456,7 +456,7 @@ Sixteen components, 254 → 270. Each uses native platform APIs only: the librar
 - ✅ `BlessRadialBar`: rings that fill to a share, one ring for each goal, in one circle.
 - ✅ `BlessStreamgraph`: stacked areas around a center line, to show how a mix changes over time.
 - ✅ `BlessPareto`: bars from high to low, with a line for the running share of the total.
-- `BlessModelPicker`: a select for a model, with a note, marks for speed and cost, and tags.
+- ✅ `BlessModelPicker`: a select for a model, with a note, marks for speed and cost, and tags.
 - `BlessAgentPlan`: the steps of an agent, each waiting, running, done, or failed.
 - `BlessChatHistory`: past chats in groups by age, with search, rename, and delete.
 - `BlessVoiceInput`: a microphone button that turns speech into text with the Web Speech API.

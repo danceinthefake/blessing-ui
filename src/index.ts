@@ -411,3 +411,5 @@ export type { BlessRadialBarItem } from "./components/BlessRadialBar.vue";
 export { default as BlessStreamgraph } from "./components/BlessStreamgraph.vue";
 export { default as BlessPareto } from "./components/BlessPareto.vue";
 export type { BlessParetoItem } from "./components/BlessPareto.vue";
+export { default as BlessModelPicker } from "./components/BlessModelPicker.vue";
+export type { BlessModel } from "./components/BlessModelPicker.vue";

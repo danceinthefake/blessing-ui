@@ -7781,6 +7781,37 @@
   ],
   "exposed": []
  },
+ "BlessModelPicker": {
+  "props": [
+   {
+    "name": "models",
+    "type": "BlessModel[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ label: string; choose: string; speed: (level: number) => string; cost: (level: number) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "string | undefined",
+    "required": false,
+    "description": "the id of the chosen model"
+   }
+  ],
+  "events": [
+   {
+    "name": "update:modelValue",
+    "type": "[value: string | undefined]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessNavigationMenu": {
   "props": [
    {
@@ -9501,7 +9532,7 @@
   "props": [
    {
     "name": "data",
-    "type": "BlessRadialItem[]",
+    "type": "BlessRadialBarItem[]",
     "required": true,
     "description": "one ring for each item, from the outside in"
    },

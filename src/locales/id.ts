@@ -46,6 +46,7 @@ import type BlessLightbox from "../components/BlessLightbox.vue";
 import type BlessLogViewer from "../components/BlessLogViewer.vue";
 import type BlessMarquee from "../components/BlessMarquee.vue";
 import type BlessMessageFeedback from "../components/BlessMessageFeedback.vue";
+import type BlessModelPicker from "../components/BlessModelPicker.vue";
 import type BlessNodeGraph from "../components/BlessNodeGraph.vue";
 import type BlessNotificationInbox from "../components/BlessNotificationInbox.vue";
 import type BlessOnboardingChecklist from "../components/BlessOnboardingChecklist.vue";
@@ -146,6 +147,7 @@ export type BlessLabelsFull = {
   BlessLogViewer: All<typeof BlessLogViewer>;
   BlessMarquee: All<typeof BlessMarquee>;
   BlessMessageFeedback: All<typeof BlessMessageFeedback>;
+  BlessModelPicker: All<typeof BlessModelPicker>;
   BlessNodeGraph: All<typeof BlessNodeGraph>;
   BlessNotificationInbox: All<typeof BlessNotificationInbox>;
   BlessOnboardingChecklist: All<typeof BlessOnboardingChecklist>;
@@ -483,6 +485,12 @@ export const labelsId: BlessLabelsFull = {
     send: "Kirim",
     cancel: "Batal",
     thanks: "Terima kasih atas masukannya",
+  },
+  BlessModelPicker: {
+    label: "Model",
+    choose: "Pilih model",
+    speed: (n) => `kecepatan ${n} dari 3`,
+    cost: (n) => `biaya ${n} dari 3`,
   },
   BlessNodeGraph: {
     node: (l, to, from) =>
