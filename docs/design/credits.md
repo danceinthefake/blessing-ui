@@ -38,6 +38,8 @@ Some components use known methods. We wrote each one again from its description.
 - The [waffle](../components/waffle) rounds its shares with the largest remainder method, so the squares always add up to 100.
 - The [streamgraph](../components/streamgraph) centers its streams on a middle line, as in ThemeRiver by Havre, Hetzler, and Nowell (2000). Byron and Wattenberg (2008) named the form.
 - The [Pareto](../components/pareto) chart shows the 80/20 rule that Joseph Juran named after Vilfredo Pareto.
+- The [Venn](../components/venn) diagram is the form of John Venn (1880). It counts each part by inclusion and exclusion.
+- The [rose chart](../components/rose-chart) is the polar area diagram of Florence Nightingale (1858). The area of a wedge follows the value.
 
 ## Packages that you can add
 

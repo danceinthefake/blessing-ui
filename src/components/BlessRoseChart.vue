@@ -38,7 +38,8 @@ const wedges = computed(() => {
   const step = (Math.PI * 2) / n;
   const top = Math.max(0, ...props.data.map((d) => d.value)) || 1;
   return props.data.map((d, i) => {
-    // the area of a wedge follows the value, so its radius is the square root of the share
+    // the area of a wedge follows the value, as in the polar area diagrams of Florence Nightingale (1858),
+    // so its radius is the square root of the share
     const r = Math.sqrt(Math.max(0, d.value) / top) * MAX_R;
     const a0 = i * step + 0.01;
     const a1 = (i + 1) * step - 0.01;
