@@ -364,7 +364,7 @@ const lane = (day: string, id: string) => lanes.value.get(day)?.get(id) ?? { lan
               @keydown="onKey(e, $event)"
               @focus="selected = e.id"
             >
-              <span class="bless-sched__etitle">{{ e.title }}</span>
+              <span class="bless-sched__etitle">{{ e.title }}</span>{{ " " }}
               <span class="bless-sched__etime">{{ t(e.start) }}–{{ t(e.end) }}</span>
               <span
                 v-if="editable"
