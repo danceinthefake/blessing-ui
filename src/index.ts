@@ -350,3 +350,5 @@ export type { BlessBoxGroup } from "./components/BlessBoxPlot.vue";
 export { default as BlessPromptInput } from "./components/BlessPromptInput.vue";
 export { default as BlessStreamingText } from "./components/BlessStreamingText.vue";
 export { default as BlessToolCall } from "./components/BlessToolCall.vue";
+export { default as BlessSuggestions } from "./components/BlessSuggestions.vue";
+export type { BlessSuggestion } from "./components/BlessSuggestions.vue";

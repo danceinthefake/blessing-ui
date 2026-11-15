@@ -52,6 +52,7 @@ import type BlessSliderCaptcha from "../components/BlessSliderCaptcha.vue";
 import type BlessSortable from "../components/BlessSortable.vue";
 import type BlessStat from "../components/BlessStat.vue";
 import type BlessStepper from "../components/BlessStepper.vue";
+import type BlessSuggestions from "../components/BlessSuggestions.vue";
 import type BlessSwipeDeck from "../components/BlessSwipeDeck.vue";
 import type BlessThread from "../components/BlessThread.vue";
 import type BlessTimer from "../components/BlessTimer.vue";
@@ -123,6 +124,7 @@ export type BlessLabelsFull = {
   BlessSortable: All<typeof BlessSortable>;
   BlessStat: All<typeof BlessStat>;
   BlessStepper: All<typeof BlessStepper>;
+  BlessSuggestions: All<typeof BlessSuggestions>;
   BlessSwipeDeck: All<typeof BlessSwipeDeck>;
   BlessThread: All<typeof BlessThread>;
   BlessTimer: All<typeof BlessTimer>;
@@ -474,6 +476,7 @@ export const labelsId: BlessLabelsFull = {
   },
   BlessStat: { up: "Naik", down: "Turun", flat: "Tidak berubah" },
   BlessStepper: { next: "Lanjut", prev: "Kembali", finish: "Selesai" },
+  BlessSuggestions: { label: "Saran" },
   BlessSwipeDeck: {
     accept: "Terima",
     reject: "Tolak",
