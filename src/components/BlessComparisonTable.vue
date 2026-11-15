@@ -19,7 +19,7 @@ export interface BlessCompareRow {
   /** a heading row that starts a group */
   group?: boolean;
   /** by plan key: `true` (yes), `false` (no), or a text such as "10 GB" */
-  values?: Record<string, boolean | string>;
+  values?: Partial<Record<string, boolean | string>>;
 }
 
 const props = defineProps<{
