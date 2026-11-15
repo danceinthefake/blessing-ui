@@ -398,7 +398,7 @@ Thirteen components, 213 → 226. Each uses native platform APIs only: the libra
 - ✅ `BlessScatterChart`: points on two number axes, with an optional size for each point (a bubble chart).
 - ✅ `BlessBoxPlot`: the spread of values in groups: the median, the quartiles, the whiskers, and the outliers.
 - ✅ `BlessPromptInput`: the text box of a chat with an assistant. It grows with the text, Enter sends, Shift+Enter adds a line, and the send button becomes a stop button while a reply comes in.
-- `BlessStreamingText`: text that comes in part by part, with a caret at the end. Screen readers get the text once, when it is complete.
+- ✅ `BlessStreamingText`: text that comes in part by part, with a caret at the end. Screen readers get the text once, when it is complete.
 - `BlessToolCall`: one step of an assistant, for example a search, with its name, its status (running, done, or failed), and its input and output in a part that opens.
 - `BlessSuggestions`: a row of ready prompts as chips. A click sends the prompt.
 - `BlessEventCalendar`: a month of events in a grid, with "+3 more" when a day is full, next to the week view of `BlessScheduler`.

@@ -470,6 +470,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "prompt-input",
         text: "The text box of a chat with an assistant",
       },
+      {
+        name: "BlessStreamingText",
+        slug: "streaming-text",
+        text: "Text that comes in part by part, with a caret",
+      },
     ],
   },
   {
