@@ -21,7 +21,7 @@ Shows which items went up and which went down between two moments. The angle of 
   </template>
 </Demo>
 
-- `data` is a list of items. Each item has a `label`, a `start` value, a `end` value, and an optional `color`.
+- `data` is a list of items. Each item has a `label`, a `start` value, an `end` value, and an optional `color`.
 - A rise has a solid line in the chart color. A fall has a dashed gray line, so the direction does not rest on the color alone.
 - The name and the start value sit to the left, and the end value to the right. A hover on a line makes the others faint.
 - `format` sets the text of a value, and `height` sets the height in pixels (default 300).

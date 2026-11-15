@@ -498,7 +498,7 @@ Sixteen components, 270 → 286. Each uses native platform APIs only: the librar
 Sixteen components, 286 → 302. Each uses native platform APIs only: the library adds no dependency. Each needs tests, a docs page with a live example, a README row, words in `labelsId`, and a pass of `src/classes.test.ts`. If a component uses a known method or names another party, credit it on the credits page.
 
 - ✅ `BlessSlopeChart`: two columns, such as before and after, with a line for each item.
-- `BlessBeeswarm`: each value as a dot on one axis, moved aside so the dots do not overlap.
+- ✅ `BlessBeeswarm`: each value as a dot on one axis, moved aside so the dots do not overlap.
 - `BlessMarimekko`: bars whose width and height both show a share.
 - `BlessPictogram`: a count as rows of icons, where one icon stands for a fixed number.
 - `BlessConsentBanner`: a cookie consent bar with accept, reject, and a panel of categories, kept in the browser.

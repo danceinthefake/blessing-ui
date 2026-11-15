@@ -766,6 +766,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         text: "Two columns with a line for each item",
       },
       {
+        name: "BlessBeeswarm",
+        slug: "beeswarm",
+        text: "Each value as a dot on one axis, with no overlap",
+      },
+      {
         name: "BlessPricingTable",
         slug: "pricing-table",
         text: "Plans side by side, with a monthly or yearly switch",
