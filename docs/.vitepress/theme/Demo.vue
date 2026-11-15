@@ -56,14 +56,16 @@ const showCode = ref(false);
     .tiptap *,
     .bless-org *,
     .bless-markdown *,
-    .bless-thread__replies
+    .bless-thread__replies,
+    .bless-toolcall,
+    .bless-toolcall *
   ) {
   margin: 0;
   padding: 0;
   list-style: none;
   line-height: var(--bless-leading-normal);
 }
-.vp-doc .demo__preview details:not(.bless-thread__replies) {
+.vp-doc .demo__preview details:not(.bless-thread__replies, .bless-toolcall) {
   border: 0;
   background: none;
 }

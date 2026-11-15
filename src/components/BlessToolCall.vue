@@ -168,6 +168,7 @@ const show = (v: unknown) => (typeof v === "string" ? v : JSON.stringify(v, null
   background: var(--bless-color-surface-2);
   font-family: var(--bless-font-mono);
   font-size: var(--bless-text-xs);
+  line-height: 1.5;
   white-space: pre-wrap;
   overflow-wrap: anywhere;
 }
