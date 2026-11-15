@@ -4446,6 +4446,49 @@
   ],
   "exposed": []
  },
+ "BlessFileTree": {
+  "props": [
+   {
+    "name": "paths",
+    "type": "string[]",
+    "required": true,
+    "description": "the files, each as a path such as `audio/ep41/raw.wav`; a path that ends in `/` is an empty folder"
+   },
+   {
+    "name": "expanded",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": "open every folder, not only the folders of the selected file"
+   },
+   {
+    "name": "label",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Files\"",
+    "description": ""
+   },
+   {
+    "name": "selected",
+    "type": "string | undefined",
+    "required": false,
+    "description": "the path of the selected file or folder"
+   }
+  ],
+  "events": [
+   {
+    "name": "select",
+    "type": "[path: string, folder: boolean]",
+    "description": ""
+   },
+   {
+    "name": "update:selected",
+    "type": "[value: string | undefined]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessFilterBar": {
   "props": [
    {

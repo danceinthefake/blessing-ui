@@ -422,7 +422,7 @@ Twelve components, 226 → 238. Each uses native platform APIs only: the library
 - ✅ `BlessPricingTable`: plans side by side, with a monthly or yearly switch, the features of each plan, and one plan that stands out.
 - ✅ `BlessChangelog`: release notes, with a version, a date, and the changes in groups (added, changed, fixed).
 - ✅ `BlessShortcutSheet`: keyboard shortcuts in groups, with `BlessKbd` keys and a search.
-- `BlessFileTree`: files and folders from a flat list of paths, with an icon for each type, on top of `BlessTree`.
+- ✅ `BlessFileTree`: files and folders from a flat list of paths, with an icon for each type, on top of `BlessTree`.
 
 ### Deliberately skipped
 

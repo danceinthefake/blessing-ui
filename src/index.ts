@@ -376,3 +376,4 @@ export { default as BlessChangelog } from "./components/BlessChangelog.vue";
 export type { BlessChangeType, BlessRelease } from "./components/BlessChangelog.vue";
 export { default as BlessShortcutSheet } from "./components/BlessShortcutSheet.vue";
 export type { BlessShortcut, BlessShortcutGroup } from "./components/BlessShortcutSheet.vue";
+export { default as BlessFileTree } from "./components/BlessFileTree.vue";
