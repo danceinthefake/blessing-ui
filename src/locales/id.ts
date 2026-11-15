@@ -58,6 +58,7 @@ import type BlessPromptInput from "../components/BlessPromptInput.vue";
 import type BlessQueryBuilder from "../components/BlessQueryBuilder.vue";
 import type BlessQuestionnaire from "../components/BlessQuestionnaire.vue";
 import type BlessRangeCalendar from "../components/BlessRangeCalendar.vue";
+import type BlessReactions from "../components/BlessReactions.vue";
 import type BlessReadMore from "../components/BlessReadMore.vue";
 import type BlessReadingProgress from "../components/BlessReadingProgress.vue";
 import type BlessReasoning from "../components/BlessReasoning.vue";
@@ -153,6 +154,7 @@ export type BlessLabelsFull = {
   BlessQueryBuilder: All<typeof BlessQueryBuilder>;
   BlessQuestionnaire: All<typeof BlessQuestionnaire>;
   BlessRangeCalendar: All<typeof BlessRangeCalendar>;
+  BlessReactions: All<typeof BlessReactions>;
   BlessReadMore: All<typeof BlessReadMore>;
   BlessReadingProgress: All<typeof BlessReadingProgress>;
   BlessReasoning: All<typeof BlessReasoning>;
@@ -575,6 +577,11 @@ export const labelsId: BlessLabelsFull = {
     selected: (d) => `${d} dipilih`,
     cleared: (d) => `${d} dihapus`,
     hint: "Tombol panah berpindah, Spasi memilih atau melepas hari, tahan Shift dan tekan panah untuk mewarnai, Page Up dan Page Down mengganti bulan.",
+  },
+  BlessReactions: {
+    add: "Tambah reaksi",
+    group: "Reaksi",
+    reaction: (e, n) => `${e} ${n} reaksi`,
   },
   BlessReadMore: { more: "Baca selengkapnya", less: "Tampilkan lebih sedikit" },
   BlessReadingProgress: {
