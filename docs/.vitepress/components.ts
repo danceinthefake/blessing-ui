@@ -663,6 +663,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         text: "Audio peaks that you click or key to seek",
       },
       {
+        name: "BlessTranscript",
+        slug: "transcript",
+        text: "Lines of text that follow the media time",
+      },
+      {
         name: "BlessAudioRecorder",
         slug: "audio-recorder",
         text: "Record from the microphone, with a preview",
