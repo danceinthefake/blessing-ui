@@ -60,7 +60,8 @@ const showCode = ref(false);
     .bless-toolcall,
     .bless-toolcall *,
     .bless-pricing *,
-    .bless-changelog *
+    .bless-changelog *,
+    .bless-footnotes *
   ) {
   margin: 0;
   padding: 0;
