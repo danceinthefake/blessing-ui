@@ -55,7 +55,8 @@ Thirty-two new components, 270 in all: more charts, parts for an assistant and i
 - `BlessGlossary`: a term in a line of text with a dotted line, whose meaning shows in a `BlessTooltip` on hover and focus.
 - `BlessRecurrencePicker`: a rule that repeats, with native fields, day buttons, an end, the rule in one sentence, and `toRRule` for the iCalendar form.
 - `BlessOpeningHours`: the hours of each day of the week with closed days, two shifts, and shifts past midnight, and an Open now line in the time zone of the place.
-- `BlessHabitTracker`: a grid of days for each habit with native check boxes, the streak back from the last day, and a name for each check. 281 components in all.
+- `BlessHabitTracker`: a grid of days for each habit with native check boxes, the streak back from the last day, and a name for each check.
+- `BlessQuotaUsage`: the limits of a plan as meters, with the use in words, and a warning near the end and at the limit. 282 components in all.
 
 ## 0.6.0 — 2026-11-15
 

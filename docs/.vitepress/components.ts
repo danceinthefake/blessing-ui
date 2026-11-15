@@ -148,6 +148,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         text: "A grid of days for each habit, with the streak",
       },
       {
+        name: "BlessQuotaUsage",
+        slug: "quota-usage",
+        text: "The limits of a plan as bars, with the use in words",
+      },
+      {
         name: "BlessKeyValueEditor",
         slug: "key-value-editor",
         text: "Rows of key and value pairs to edit",

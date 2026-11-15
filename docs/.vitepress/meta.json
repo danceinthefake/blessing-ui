@@ -10148,6 +10148,45 @@
   "slots": [],
   "exposed": []
  },
+ "BlessQuotaUsage": {
+  "props": [
+   {
+    "name": "quotas",
+    "type": "BlessQuota[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "warn",
+    "type": "number | undefined",
+    "required": false,
+    "default": "0.8",
+    "description": "the share at which a bar warns"
+   },
+   {
+    "name": "locale",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"en\"",
+    "description": "the language of the numbers"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ of: (used: string, limit: string) => string; almost: string; full: string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [
+   {
+    "name": "footer",
+    "type": "{}",
+    "description": ""
+   }
+  ],
+  "exposed": []
+ },
  "BlessRadar": {
   "props": [
    {

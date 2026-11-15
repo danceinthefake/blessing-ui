@@ -452,3 +452,5 @@ export { default as BlessOpeningHours } from "./components/BlessOpeningHours.vue
 export type { BlessShift, BlessWeekHours } from "./components/BlessOpeningHours.vue";
 export { default as BlessHabitTracker } from "./components/BlessHabitTracker.vue";
 export type { BlessHabit } from "./components/BlessHabitTracker.vue";
+export { default as BlessQuotaUsage } from "./components/BlessQuotaUsage.vue";
+export type { BlessQuota } from "./components/BlessQuotaUsage.vue";
