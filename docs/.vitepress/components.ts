@@ -544,6 +544,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         text: "How a value goes up and down, step by step",
       },
       {
+        name: "BlessBulletChart",
+        slug: "bullet-chart",
+        text: "One value against a target and bands, in one thin bar",
+      },
+      {
         name: "BlessFunnel",
         slug: "funnel",
         text: "Stages with the share that is left at each step",

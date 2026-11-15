@@ -414,7 +414,7 @@ Twelve components, 226 → 238. Each uses native platform APIs only: the library
 - ✅ `BlessHeatmap`: a grid of rows and columns, each cell colored by its value, for example plays by weekday and hour, with a legend of the scale.
 - ✅ `BlessHistogram`: raw values in round bins as bars, so the shape of the data shows.
 - ✅ `BlessWaterfallChart`: how a start value goes up and down in steps to an end value, with a bar for each step and totals.
-- `BlessBulletChart`: one value against a target and bands (poor, fair, good) in one thin bar, for rows of key numbers.
+- ✅ `BlessBulletChart`: one value against a target and bands (poor, fair, good) in one thin bar, for rows of key numbers.
 - `BlessSlotPicker`: the free times of a day as buttons, in groups such as morning and afternoon, for booking a call.
 - `BlessAvailabilityGrid`: a week of time cells. A drag marks the times when a person is free, and the keyboard works too.
 - `BlessBulkActionBar`: a bar that comes up when rows are selected, with the count, the actions, and a button to clear the selection.

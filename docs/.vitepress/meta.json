@@ -1138,6 +1138,70 @@
   ],
   "exposed": []
  },
+ "BlessBulletChart": {
+  "props": [
+   {
+    "name": "label",
+    "type": "string",
+    "required": true,
+    "description": "the name of the number, at the start of the row"
+   },
+   {
+    "name": "value",
+    "type": "number",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "target",
+    "type": "number | undefined",
+    "required": false,
+    "description": "the goal, drawn as a line across the bar"
+   },
+   {
+    "name": "bands",
+    "type": "number[] | undefined",
+    "required": false,
+    "default": "[]",
+    "description": "the ends of the bands, low to high, for example `[50, 80, 100]` for poor, fair, and good"
+   },
+   {
+    "name": "min",
+    "type": "number | undefined",
+    "required": false,
+    "default": "0",
+    "description": ""
+   },
+   {
+    "name": "max",
+    "type": "number | undefined",
+    "required": false,
+    "description": "the end of the scale; default: the last band, or a round number above the value and the target"
+   },
+   {
+    "name": "color",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"chart-1\"",
+    "description": ""
+   },
+   {
+    "name": "format",
+    "type": "((v: number) => string) | undefined",
+    "required": false,
+    "description": "text for one value, for example `(v) => v + \"%\"`"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ target: string; bands: string[]; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessButton": {
   "props": [
    {
