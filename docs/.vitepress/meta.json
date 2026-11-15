@@ -14029,6 +14029,73 @@
   ],
   "exposed": []
  },
+ "BlessTicket": {
+  "props": [
+   {
+    "name": "event",
+    "type": "string",
+    "required": true,
+    "description": "the name of the event, as the heading"
+   },
+   {
+    "name": "subtitle",
+    "type": "string | undefined",
+    "required": false,
+    "description": "a short line under it, for example the name of the show"
+   },
+   {
+    "name": "date",
+    "type": "string | undefined",
+    "required": false,
+    "description": "as text, for example \"Sat 28 Nov 2026\""
+   },
+   {
+    "name": "time",
+    "type": "string | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "venue",
+    "type": "string | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "seat",
+    "type": "string | undefined",
+    "required": false,
+    "description": "for example \"C5\""
+   },
+   {
+    "name": "holder",
+    "type": "string | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "code",
+    "type": "string | undefined",
+    "required": false,
+    "description": "the ticket code, shown under the QR code"
+   },
+   {
+    "name": "qr",
+    "type": "boolean[][] | undefined",
+    "required": false,
+    "description": "the QR modules of the code, for example `encode(code).data` from uqr"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ date: string; time: string; venue: string; seat: string; holder: string; code: string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessTimePicker": {
   "props": [
    {

@@ -102,6 +102,7 @@ import type BlessSuggestions from "../components/BlessSuggestions.vue";
 import type BlessSunburst from "../components/BlessSunburst.vue";
 import type BlessSwipeDeck from "../components/BlessSwipeDeck.vue";
 import type BlessThread from "../components/BlessThread.vue";
+import type BlessTicket from "../components/BlessTicket.vue";
 import type BlessTimer from "../components/BlessTimer.vue";
 import type BlessToolCall from "../components/BlessToolCall.vue";
 import type BlessTour from "../components/BlessTour.vue";
@@ -222,6 +223,7 @@ export type BlessLabelsFull = {
   BlessSunburst: All<typeof BlessSunburst>;
   BlessSwipeDeck: All<typeof BlessSwipeDeck>;
   BlessThread: All<typeof BlessThread>;
+  BlessTicket: All<typeof BlessTicket>;
   BlessTimer: All<typeof BlessTimer>;
   BlessToolCall: All<typeof BlessToolCall>;
   BlessTour: All<typeof BlessTour>;
@@ -839,6 +841,14 @@ export const labelsId: BlessLabelsFull = {
     empty: "Tidak ada kartu lagi",
   },
   BlessThread: { replies: (n) => `${n} balasan` },
+  BlessTicket: {
+    date: "Tanggal",
+    time: "Waktu",
+    venue: "Tempat",
+    seat: "Kursi",
+    holder: "Nama",
+    code: "Kode tiket",
+  },
   BlessTimer: {
     start: "Mulai",
     resume: "Lanjutkan",
