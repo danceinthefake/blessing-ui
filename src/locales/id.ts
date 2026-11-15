@@ -55,6 +55,7 @@ import type BlessLeaderboard from "../components/BlessLeaderboard.vue";
 import type BlessLightbox from "../components/BlessLightbox.vue";
 import type BlessLogViewer from "../components/BlessLogViewer.vue";
 import type BlessLollipop from "../components/BlessLollipop.vue";
+import type BlessMarimekko from "../components/BlessMarimekko.vue";
 import type BlessMarquee from "../components/BlessMarquee.vue";
 import type BlessMessageFeedback from "../components/BlessMessageFeedback.vue";
 import type BlessModelPicker from "../components/BlessModelPicker.vue";
@@ -180,6 +181,7 @@ export type BlessLabelsFull = {
   BlessLightbox: All<typeof BlessLightbox>;
   BlessLogViewer: All<typeof BlessLogViewer>;
   BlessLollipop: All<typeof BlessLollipop>;
+  BlessMarimekko: All<typeof BlessMarimekko>;
   BlessMarquee: All<typeof BlessMarquee>;
   BlessMessageFeedback: All<typeof BlessMessageFeedback>;
   BlessModelPicker: All<typeof BlessModelPicker>;
@@ -591,6 +593,7 @@ export const labelsId: BlessLabelsFull = {
     count: (shown, total) => `${shown} dari ${total} baris`,
   },
   BlessLollipop: { item: "Item", value: "Nilai" },
+  BlessMarimekko: { column: "Kolom", share: "Porsi dari semua" },
   BlessMarquee: { play: "Putar", pause: "Jeda" },
   BlessMessageFeedback: {
     good: "Jawaban bagus",
