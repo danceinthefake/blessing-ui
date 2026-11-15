@@ -415,3 +415,5 @@ export { default as BlessModelPicker } from "./components/BlessModelPicker.vue";
 export type { BlessModel } from "./components/BlessModelPicker.vue";
 export { default as BlessAgentPlan } from "./components/BlessAgentPlan.vue";
 export type { BlessPlanStep, BlessStepStatus } from "./components/BlessAgentPlan.vue";
+export { default as BlessChatHistory } from "./components/BlessChatHistory.vue";
+export type { BlessChat } from "./components/BlessChatHistory.vue";

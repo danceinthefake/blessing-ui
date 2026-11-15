@@ -2071,6 +2071,65 @@
   ],
   "exposed": []
  },
+ "BlessChatHistory": {
+  "props": [
+   {
+    "name": "chats",
+    "type": "BlessChat[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "search",
+    "type": "boolean | undefined",
+    "required": false,
+    "default": "true",
+    "description": "show a search box over the list"
+   },
+   {
+    "name": "now",
+    "type": "number | Date | undefined",
+    "required": false,
+    "description": "a fixed \"now\" for the groups"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ title: string; search: string; none: string; today: string; yesterday: string; week: string; month: string; older: string; rename: string; remove: string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "selected",
+    "type": "string | number | undefined",
+    "required": false,
+    "description": "the id of the open chat"
+   }
+  ],
+  "events": [
+   {
+    "name": "select",
+    "type": "[id: string | number]",
+    "description": ""
+   },
+   {
+    "name": "remove",
+    "type": "[id: string | number]",
+    "description": ""
+   },
+   {
+    "name": "update:selected",
+    "type": "[value: string | number | undefined]",
+    "description": ""
+   },
+   {
+    "name": "rename",
+    "type": "[id: string | number, title: string]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessCheckbox": {
   "props": [
    {
@@ -10397,7 +10456,7 @@
   "props": [
    {
     "name": "view",
-    "type": "\"day\" | \"week\" | undefined",
+    "type": "\"week\" | \"day\" | undefined",
     "required": false,
     "default": "\"week\"",
     "description": ""

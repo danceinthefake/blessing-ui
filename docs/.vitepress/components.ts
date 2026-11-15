@@ -582,6 +582,7 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "agent-plan",
         text: "The steps of an agent, each with its state",
       },
+      { name: "BlessChatHistory", slug: "chat-history", text: "Past chats in groups by age" },
       { name: "BlessSuggestions", slug: "suggestions", text: "Ready prompts as a row of chips" },
     ],
   },

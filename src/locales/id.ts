@@ -15,6 +15,7 @@ import type BlessCandlestick from "../components/BlessCandlestick.vue";
 import type BlessCardInput from "../components/BlessCardInput.vue";
 import type BlessChangelog from "../components/BlessChangelog.vue";
 import type BlessChapterList from "../components/BlessChapterList.vue";
+import type BlessChatHistory from "../components/BlessChatHistory.vue";
 import type BlessCoachmark from "../components/BlessCoachmark.vue";
 import type BlessCodeBlock from "../components/BlessCodeBlock.vue";
 import type BlessColorSwatches from "../components/BlessColorSwatches.vue";
@@ -117,6 +118,7 @@ export type BlessLabelsFull = {
   BlessCardInput: All<typeof BlessCardInput>;
   BlessChangelog: All<typeof BlessChangelog>;
   BlessChapterList: All<typeof BlessChapterList>;
+  BlessChatHistory: All<typeof BlessChatHistory>;
   BlessCoachmark: All<typeof BlessCoachmark>;
   BlessCodeBlock: All<typeof BlessCodeBlock>;
   BlessColorSwatches: All<typeof BlessColorSwatches>;
@@ -286,6 +288,18 @@ export const labelsId: BlessLabelsFull = {
     security: "Keamanan",
   },
   BlessChapterList: { title: "Bab", length: (m) => (m < 1 ? "< 1 mnt" : `${m} mnt`) },
+  BlessChatHistory: {
+    title: "Obrolan",
+    search: "Cari obrolan",
+    none: "Obrolan tidak ditemukan",
+    today: "Hari ini",
+    yesterday: "Kemarin",
+    week: "7 hari terakhir",
+    month: "30 hari terakhir",
+    older: "Lebih lama",
+    rename: "Ganti nama",
+    remove: "Hapus",
+  },
   BlessCoachmark: { dot: (t) => `Baru: ${t}`, ok: "Mengerti" },
   BlessCodeBlock: copy,
   BlessColorSwatches: { label: "Warna" },
