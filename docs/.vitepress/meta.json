@@ -12560,6 +12560,50 @@
   ],
   "exposed": []
  },
+ "BlessSpoiler": {
+  "props": [
+   {
+    "name": "hint",
+    "type": "string | undefined",
+    "required": false,
+    "description": "what the hidden text is about, for example \"the end of episode 41\""
+   },
+   {
+    "name": "block",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": "a block of text in place of a few words in a line"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ show: string; showAbout: (hint: string) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "shown",
+    "type": "boolean | undefined",
+    "required": false,
+    "default": "false",
+    "description": "the text shows"
+   }
+  ],
+  "events": [
+   {
+    "name": "update:shown",
+    "type": "[value: boolean]",
+    "description": ""
+   }
+  ],
+  "slots": [
+   {
+    "name": "default",
+    "type": "{}",
+    "description": ""
+   }
+  ],
+  "exposed": []
+ },
  "BlessSpreadsheet": {
   "props": [
    {

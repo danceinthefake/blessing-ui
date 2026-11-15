@@ -441,3 +441,4 @@ export { default as BlessRoseChart } from "./components/BlessRoseChart.vue";
 export type { BlessRoseItem } from "./components/BlessRoseChart.vue";
 export { default as BlessCodeTabs } from "./components/BlessCodeTabs.vue";
 export type { BlessPackageManager } from "./components/BlessCodeTabs.vue";
+export { default as BlessSpoiler } from "./components/BlessSpoiler.vue";
