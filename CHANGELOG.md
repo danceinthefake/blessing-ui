@@ -71,7 +71,8 @@ Forty-eight new components, 286 in all: more charts, parts for an assistant and 
 - `BlessPictogram`: a count as rows of icons where one icon stands for a fixed number, with a part icon for the rest and a key line.
 - `BlessConsentBanner`: a cookie consent bar with accept, reject, and a switch for each category, with required categories always on and the choice kept in the browser.
 - `BlessNotificationPrefs`: a grid of events by channel with native check boxes, and a box for each column that is on, off, or mixed.
-- `BlessAddressFields`: address fields whose order and names follow the country, with country names from `Intl.DisplayNames` and the right `autocomplete` values. 293 components in all.
+- `BlessAddressFields`: address fields whose order and names follow the country, with country names from `Intl.DisplayNames` and the right `autocomplete` values.
+- `BlessPresetRange`: a date range with common presets or your own, next to `BlessCalendar` in range mode, with the range in words. 294 components in all.
 
 ## 0.6.0 — 2026-11-15
 

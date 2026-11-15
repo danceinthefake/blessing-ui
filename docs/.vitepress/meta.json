@@ -9919,6 +9919,57 @@
   ],
   "exposed": []
  },
+ "BlessPresetRange": {
+  "props": [
+   {
+    "name": "presets",
+    "type": "BlessRangePreset[] | undefined",
+    "required": false,
+    "description": "your own presets in place of the common ones"
+   },
+   {
+    "name": "today",
+    "type": "string | undefined",
+    "required": false,
+    "description": "today, as YYYY-MM-DD; default: today of the reader, after mount"
+   },
+   {
+    "name": "locale",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"en\"",
+    "description": ""
+   },
+   {
+    "name": "weekStart",
+    "type": "0 | 1 | undefined",
+    "required": false,
+    "default": "1",
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ presets: string; today: string; yesterday: string; last7: string; last30: string; thisMonth: string; lastMonth: string; none: string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "[string, string] | undefined",
+    "required": false,
+    "description": "the range as [start, end], YYYY-MM-DD"
+   }
+  ],
+  "events": [
+   {
+    "name": "update:modelValue",
+    "type": "[value: [string, string] | undefined]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessPricingTable": {
   "props": [
    {

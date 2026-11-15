@@ -74,6 +74,7 @@ import type BlessPickList from "../components/BlessPickList.vue";
 import type BlessPictogram from "../components/BlessPictogram.vue";
 import type BlessPinPad from "../components/BlessPinPad.vue";
 import type BlessPoll from "../components/BlessPoll.vue";
+import type BlessPresetRange from "../components/BlessPresetRange.vue";
 import type BlessPricingTable from "../components/BlessPricingTable.vue";
 import type BlessProfileCard from "../components/BlessProfileCard.vue";
 import type BlessPromptInput from "../components/BlessPromptInput.vue";
@@ -204,6 +205,7 @@ export type BlessLabelsFull = {
   BlessPictogram: All<typeof BlessPictogram>;
   BlessPinPad: All<typeof BlessPinPad>;
   BlessPoll: All<typeof BlessPoll>;
+  BlessPresetRange: All<typeof BlessPresetRange>;
   BlessPricingTable: All<typeof BlessPricingTable>;
   BlessProfileCard: All<typeof BlessProfileCard>;
   BlessPromptInput: All<typeof BlessPromptInput>;
@@ -723,6 +725,16 @@ export const labelsId: BlessLabelsFull = {
     clear: "Kosongkan",
   },
   BlessPoll: { vote: "Pilih", yours: "pilihan Anda", votes: (n) => `${n} suara` },
+  BlessPresetRange: {
+    presets: "Rentang cepat",
+    today: "Hari ini",
+    yesterday: "Kemarin",
+    last7: "7 hari terakhir",
+    last30: "30 hari terakhir",
+    thisMonth: "Bulan ini",
+    lastMonth: "Bulan lalu",
+    none: "Belum ada tanggal",
+  },
   BlessPricingTable: {
     period: "Periode tagihan",
     monthly: "Bulanan",

@@ -474,3 +474,5 @@ export type { BlessNotifyEvent, BlessNotifyChannel } from "./components/BlessNot
 export { default as BlessAddressFields } from "./components/BlessAddressFields.vue";
 export { addressFormats } from "./components/BlessAddressFields.vue";
 export type { BlessAddress, BlessAddressFormat } from "./components/BlessAddressFields.vue";
+export { default as BlessPresetRange } from "./components/BlessPresetRange.vue";
+export type { BlessRangePreset } from "./components/BlessPresetRange.vue";
