@@ -72,6 +72,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         text: "Text hidden under a blur until a click shows it",
       },
       {
+        name: "BlessFootnotes",
+        slug: "footnotes",
+        text: "Numbered notes with marks that link both ways",
+      },
+      {
         name: "BlessRelativeTime",
         slug: "relative-time",
         text: "Time ago, in your language, kept up to date",
