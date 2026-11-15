@@ -55,6 +55,11 @@
     "css": 1125
   },
   {
+    "name": "BlessAvailabilityGrid",
+    "js": 1803,
+    "css": 499
+  },
+  {
     "name": "BlessAvatar",
     "js": 691,
     "css": 410
@@ -110,6 +115,16 @@
     "css": 712
   },
   {
+    "name": "BlessBulkActionBar",
+    "js": 1516,
+    "css": 649
+  },
+  {
+    "name": "BlessBulletChart",
+    "js": 1279,
+    "css": 409
+  },
+  {
     "name": "BlessButton",
     "js": 1044,
     "css": 904
@@ -148,6 +163,11 @@
     "name": "BlessCascadeSelect",
     "js": 3525,
     "css": 1147
+  },
+  {
+    "name": "BlessChangelog",
+    "js": 946,
+    "css": 567
   },
   {
     "name": "BlessChart",
@@ -191,8 +211,13 @@
   },
   {
     "name": "BlessColorPicker",
-    "js": 936,
-    "css": 496
+    "js": 1219,
+    "css": 617
+  },
+  {
+    "name": "BlessColorSwatches",
+    "js": 758,
+    "css": 431
   },
   {
     "name": "BlessCombobox",
@@ -342,7 +367,7 @@
   {
     "name": "BlessEventCalendar",
     "js": 2826,
-    "css": 1434
+    "css": 1425
   },
   {
     "name": "BlessField",
@@ -360,9 +385,14 @@
     "css": 705
   },
   {
+    "name": "BlessFileTree",
+    "js": 2438,
+    "css": 586
+  },
+  {
     "name": "BlessFilterBar",
     "js": 5329,
-    "css": 2487
+    "css": 2478
   },
   {
     "name": "BlessFloatLabel",
@@ -400,6 +430,11 @@
     "css": 481
   },
   {
+    "name": "BlessHeatmap",
+    "js": 961,
+    "css": 450
+  },
+  {
     "name": "BlessHeatmapCalendar",
     "js": 1935,
     "css": 520
@@ -408,6 +443,11 @@
     "name": "BlessHighlight",
     "js": 721,
     "css": 145
+  },
+  {
+    "name": "BlessHistogram",
+    "js": 1836,
+    "css": 0
   },
   {
     "name": "BlessHotspots",
@@ -710,6 +750,11 @@
     "css": 439
   },
   {
+    "name": "BlessPricingTable",
+    "js": 2554,
+    "css": 1531
+  },
+  {
     "name": "BlessProgress",
     "js": 662,
     "css": 643
@@ -845,6 +890,11 @@
     "css": 529
   },
   {
+    "name": "BlessShortcutSheet",
+    "js": 1951,
+    "css": 1124
+  },
+  {
     "name": "BlessSidebarNav",
     "js": 1053,
     "css": 746
@@ -883,6 +933,11 @@
     "name": "BlessSliderCaptcha",
     "js": 1743,
     "css": 670
+  },
+  {
+    "name": "BlessSlotPicker",
+    "js": 1115,
+    "css": 630
   },
   {
     "name": "BlessSortable",
@@ -1052,7 +1107,7 @@
   {
     "name": "BlessToolCall",
     "js": 1171,
-    "css": 939
+    "css": 948
   },
   {
     "name": "BlessToolbar",
@@ -1113,6 +1168,11 @@
     "name": "BlessVirtualScroller",
     "js": 1212,
     "css": 327
+  },
+  {
+    "name": "BlessWaterfallChart",
+    "js": 1748,
+    "css": 146
   },
   {
     "name": "BlessWatermark",
