@@ -521,6 +521,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "leaderboard",
         text: "Ranked rows with the place, the move and the score",
       },
+      {
+        name: "BlessReviewSummary",
+        slug: "review-summary",
+        text: "The average stars and a bar for each level",
+      },
       { name: "BlessBubble", slug: "bubble", text: "Message bubble" },
       { name: "BlessMarker", slug: "marker", text: "Inline status / note / separator / row" },
       { name: "BlessAttachment", slug: "attachment", text: "File / image chip" },

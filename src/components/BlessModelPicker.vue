@@ -69,12 +69,8 @@ function pick(id: unknown) {
     class="bless-modelpick__panel"
   >
     <template #trigger>
-      <button
-        type="button"
-        class="bless-modelpick"
-        :aria-label="`${text.label}: ${current?.name ?? text.choose}`"
-        :aria-expanded="open"
-      >
+      <button type="button" class="bless-modelpick" :aria-expanded="open">
+        <span class="bless-sr">{{ text.label }}: </span>
         <span class="bless-modelpick__name">{{ current?.name ?? text.choose }}</span>
         <svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true">
           <path d="M3 4.5 6 7.5 9 4.5" fill="none" stroke="currentColor" stroke-width="1.5" />

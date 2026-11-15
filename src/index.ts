@@ -426,3 +426,4 @@ export { default as BlessShipmentTracker } from "./components/BlessShipmentTrack
 export type { BlessShipmentEvent } from "./components/BlessShipmentTracker.vue";
 export { default as BlessVariantPicker } from "./components/BlessVariantPicker.vue";
 export type { BlessVariantOption, BlessVariantValue } from "./components/BlessVariantPicker.vue";
+export { default as BlessReviewSummary } from "./components/BlessReviewSummary.vue";
