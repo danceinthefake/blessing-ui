@@ -40,10 +40,10 @@ test("a month of days in a labelled grid, Monday first, with blanks before the 1
   mk();
   expect(w.findAll("[data-day]")).toHaveLength(31);
   expect(w.find("[role=grid]").exists()).toBe(true);
-  expect(w.find(".bless-range__title").text()).toBe("May 2026");
-  expect(w.findAll(".bless-range__head")[0]!.text()).toBe("Mon");
+  expect(w.find(".bless-rangecal__title").text()).toBe("May 2026");
+  expect(w.findAll(".bless-rangecal__head")[0]!.text()).toBe("Mon");
   // 1 May 2026 is a Friday: four blanks in the first row
-  expect(w.findAll(".bless-range__row")[1]!.findAll(".bless-range__gap")).toHaveLength(4);
+  expect(w.findAll(".bless-rangecal__row")[1]!.findAll(".bless-rangecal__gap")).toHaveLength(4);
   expect(day(1).attributes("aria-label")).toBe("Friday, May 1, 2026");
 });
 
@@ -63,7 +63,7 @@ test("dragging across days adds the whole stretch, and previews it first", async
   document.elementFromPoint = () => day(8).element;
   await ptr(day(5).element, "pointerdown");
   await ptr(day(8).element, "pointermove");
-  expect(day(6).classes()).toContain("bless-range__day--set");
+  expect(day(6).classes()).toContain("bless-rangecal__day--set");
   expect(model()).toEqual([]); // nothing committed until release
   await ptr(day(8).element, "pointerup");
   expect(model()).toEqual(["2026-05-05", "2026-05-06", "2026-05-07", "2026-05-08"]);
@@ -78,7 +78,7 @@ test("a drag that starts on a chosen day clears instead; separate drags make sep
   expect(model()).toEqual(["2026-05-05", "2026-05-08"]);
   await paintDrag(20, 21);
   expect(model()).toEqual(["2026-05-05", "2026-05-08", "2026-05-20", "2026-05-21"]);
-  expect(w.find(".bless-range__summary").text()).toBe("4 days in 3 blocks");
+  expect(w.find(".bless-rangecal__summary").text()).toBe("4 days in 3 blocks");
 });
 
 test("days outside min / max / disabledDates cannot be painted", async () => {
@@ -118,14 +118,14 @@ test("Page Down opens the next month and focuses the same day", async () => {
   (day(14).element as HTMLElement).focus();
   await day(14).trigger("keydown", { key: "PageDown" });
   await nextTick();
-  expect(w.find(".bless-range__title").text()).toBe("June 2026");
+  expect(w.find(".bless-rangecal__title").text()).toBe("June 2026");
   expect(document.activeElement?.getAttribute("data-day")).toBe("2026-06-14");
 });
 
 test("the month buttons move the month; one day is a tab stop", async () => {
   mk();
   await w.find("[aria-label='Next month']").trigger("click");
-  expect(w.find(".bless-range__title").text()).toBe("June 2026");
+  expect(w.find(".bless-rangecal__title").text()).toBe("June 2026");
   expect(w.findAll("[data-day]").filter((d) => d.attributes("tabindex") === "0")).toHaveLength(1);
 });
 
@@ -134,7 +134,7 @@ test("Clear all empties it; the summary and the wording can be replaced", async 
     modelValue: ["2026-05-01", "2026-05-02"],
     labels: { summary: (d: number, b: number) => `${d} hari, ${b} blok`, clear: "Hapus semua" },
   });
-  expect(w.find(".bless-range__summary").text()).toBe("2 hari, 1 blok");
-  await w.findAll(".bless-range__foot button")[0]!.trigger("click");
+  expect(w.find(".bless-rangecal__summary").text()).toBe("2 hari, 1 blok");
+  await w.findAll(".bless-rangecal__foot button")[0]!.trigger("click");
   expect(model()).toEqual([]);
 });

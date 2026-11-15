@@ -237,7 +237,7 @@ test("BlessSplitButton: main click and menu select", async () => {
   });
   await w.findAll(".bless-button")[0].trigger("click");
   expect(w.emitted("click")).toHaveLength(1);
-  expect(w.find(".bless-split__more").attributes("aria-label")).toBe("More actions");
+  expect(w.find(".bless-splitbtn__more").attributes("aria-label")).toBe("More actions");
 });
 
 test("BlessBlockUI parks focus only when it was inside; status says Busy only while blocked", async () => {

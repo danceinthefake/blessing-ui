@@ -941,7 +941,7 @@ console.log("RangeCalendar");
 await go("/components/range-calendar");
 await step("dragging adds a stretch of days, dragging from a chosen day clears", async () => {
   const day = (n) => L(`[data-day="2026-10-${String(n).padStart(2, "0")}"]`);
-  const summary = async () => (await L(".bless-range__summary").first().textContent()).trim();
+  const summary = async () => (await L(".bless-rangecal__summary").first().textContent()).trim();
   expect((await summary()) === "4 days in 2 blocks", `starts as ${await summary()}`);
   await day(5).scrollIntoViewIfNeeded();
   await drag(await centre(day(5)), await centre(day(8)));

@@ -209,44 +209,44 @@ const stopDay = computed(() =>
 </script>
 
 <template>
-  <div class="bless-range" role="group" :aria-label="label">
-    <div class="bless-range__bar">
+  <div class="bless-rangecal" role="group" :aria-label="label">
+    <div class="bless-rangecal__bar">
       <BlessButton size="sm" variant="ghost" :aria-label="text.prev" @click="nav(-1)"
         >‹</BlessButton
       >
-      <strong class="bless-range__title" aria-live="polite">{{
+      <strong class="bless-rangecal__title" aria-live="polite">{{
         shown ? monthFmt.format(shown) : ""
       }}</strong>
       <BlessButton size="sm" variant="ghost" :aria-label="text.next" @click="nav(1)">›</BlessButton>
     </div>
     <div
       v-if="shown"
-      class="bless-range__grid"
+      class="bless-rangecal__grid"
       role="grid"
       :aria-label="`${label}, ${monthFmt.format(shown)}`"
       :aria-describedby="hint"
       aria-multiselectable="true"
       @keyup="onKeyup"
     >
-      <div class="bless-range__row" role="row">
-        <span v-for="h in heads" :key="h" class="bless-range__head" role="columnheader">{{
+      <div class="bless-rangecal__row" role="row">
+        <span v-for="h in heads" :key="h" class="bless-rangecal__head" role="columnheader">{{
           h
         }}</span>
       </div>
-      <div v-for="(w, wi) in weeks" :key="wi" class="bless-range__row" role="row">
+      <div v-for="(w, wi) in weeks" :key="wi" class="bless-rangecal__row" role="row">
         <template v-for="(iso, ci) in w" :key="ci">
-          <span v-if="!iso" class="bless-range__gap" role="gridcell" aria-hidden="true" />
+          <span v-if="!iso" class="bless-rangecal__gap" role="gridcell" aria-hidden="true" />
           <button
             v-else
             :id="`${id}-${iso}`"
             type="button"
             role="gridcell"
-            class="bless-range__day"
+            class="bless-rangecal__day"
             :class="{
-              'bless-range__day--on': chosen.has(iso),
-              'bless-range__day--set': paint?.mode === 'set' && preview?.has(iso),
-              'bless-range__day--clear': paint?.mode === 'clear' && preview?.has(iso),
-              'bless-range__day--today': iso === today,
+              'bless-rangecal__day--on': chosen.has(iso),
+              'bless-rangecal__day--set': paint?.mode === 'set' && preview?.has(iso),
+              'bless-rangecal__day--clear': paint?.mode === 'clear' && preview?.has(iso),
+              'bless-rangecal__day--today': iso === today,
             }"
             :data-day="iso"
             :aria-selected="chosen.has(iso)"
@@ -266,8 +266,8 @@ const stopDay = computed(() =>
         </template>
       </div>
     </div>
-    <div class="bless-range__foot">
-      <span class="bless-range__summary">
+    <div class="bless-rangecal__foot">
+      <span class="bless-rangecal__summary">
         <slot name="summary" :blocks="runs">{{ summary }}</slot>
       </span>
       <BlessButton
@@ -279,12 +279,12 @@ const stopDay = computed(() =>
       >
     </div>
     <span :id="hint" hidden>{{ text.hint }}</span>
-    <span class="bless-range__live bless-sr" aria-live="polite">{{ live }}</span>
+    <span class="bless-rangecal__live bless-sr" aria-live="polite">{{ live }}</span>
   </div>
 </template>
 
 <style>
-.bless-range {
+.bless-rangecal {
   position: relative;
   display: grid;
   gap: var(--bless-space-2);
@@ -294,33 +294,33 @@ const stopDay = computed(() =>
   font-size: var(--bless-text-sm);
   color: var(--bless-color-text);
 }
-.bless-range__bar,
-.bless-range__foot {
+.bless-rangecal__bar,
+.bless-rangecal__foot {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: var(--bless-space-2);
 }
-.bless-range__title {
+.bless-rangecal__title {
   text-transform: capitalize;
 }
-.bless-range__grid {
+.bless-rangecal__grid {
   display: grid;
   gap: 2px;
   user-select: none;
 }
-.bless-range__row {
+.bless-rangecal__row {
   display: grid;
   grid-template-columns: repeat(7, 40px);
   gap: 2px;
 }
-.bless-range__head {
+.bless-rangecal__head {
   padding: var(--bless-space-1) 0;
   color: var(--bless-color-text-muted);
   font-size: var(--bless-text-xs);
   text-align: center;
 }
-.bless-range__day {
+.bless-rangecal__day {
   height: 40px;
   padding: 0;
   background: var(--bless-color-bg);
@@ -330,31 +330,31 @@ const stopDay = computed(() =>
   cursor: pointer;
   touch-action: none;
 }
-.bless-range__day[aria-disabled="true"] {
+.bless-rangecal__day[aria-disabled="true"] {
   opacity: 0.4;
   cursor: not-allowed;
 }
-.bless-range__day--today {
+.bless-rangecal__day--today {
   font-weight: var(--bless-font-weight-bold, 700);
   text-decoration: underline;
 }
-.bless-range__day--on {
+.bless-rangecal__day--on {
   background: var(--bless-color-accent);
   border-color: var(--bless-color-accent);
   color: var(--bless-color-on-accent);
 }
-.bless-range__day--set {
+.bless-rangecal__day--set {
   border-color: var(--bless-color-accent);
   background: color-mix(in srgb, var(--bless-color-accent) 25%, var(--bless-color-bg));
   color: var(--bless-color-text);
 }
-.bless-range__day--clear {
+.bless-rangecal__day--clear {
   border-style: dashed;
   border-color: var(--bless-color-danger);
   background: var(--bless-color-bg);
   color: var(--bless-color-text);
 }
-.bless-range__day:focus-visible {
+.bless-rangecal__day:focus-visible {
   outline: 2px solid var(--bless-color-accent);
   outline-offset: 2px;
   z-index: 1;

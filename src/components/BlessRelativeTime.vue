@@ -80,7 +80,7 @@ onBeforeUnmount(() => clearTimeout(timer));
 <template>
   <time
     v-if="valid"
-    class="bless-time"
+    class="bless-reltime"
     :datetime="date.toISOString()"
     :title="mounted ? full : undefined"
     >{{ mounted || now !== undefined ? relative : absolute }}</time
