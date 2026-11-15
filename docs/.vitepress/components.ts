@@ -321,6 +321,7 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "scheduler",
         text: "Day or week grid: drag to create, move and resize",
       },
+      { name: "BlessEventCalendar", slug: "event-calendar", text: "A month of events in a grid" },
     ],
   },
   {

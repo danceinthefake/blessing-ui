@@ -3946,6 +3946,71 @@
   ],
   "exposed": []
  },
+ "BlessEventCalendar": {
+  "props": [
+   {
+    "name": "events",
+    "type": "BlessCalendarEvent[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "weekStart",
+    "type": "0 | 1 | undefined",
+    "required": false,
+    "default": "1",
+    "description": "0 = Sunday, 1 = Monday"
+   },
+   {
+    "name": "max",
+    "type": "number | undefined",
+    "required": false,
+    "default": "3",
+    "description": "the most events in a day before \"+n more\""
+   },
+   {
+    "name": "locale",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"en\"",
+    "description": ""
+   },
+   {
+    "name": "label",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Calendar\"",
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ prev: string; next: string; today: string; more: (n: number) => string; less: string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "date",
+    "type": "string | null | undefined",
+    "required": false,
+    "default": "null",
+    "description": "any day in the month shown"
+   }
+  ],
+  "events": [
+   {
+    "name": "select",
+    "type": "[event: BlessCalendarEvent]",
+    "description": ""
+   },
+   {
+    "name": "update:date",
+    "type": "[value: string | null]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessField": {
   "props": [
    {
@@ -9313,13 +9378,13 @@
     "description": ""
    },
    {
-    "name": "change",
-    "type": "[event: ScheduleEvent]",
+    "name": "update:date",
+    "type": "[value: string | null]",
     "description": ""
    },
    {
-    "name": "update:date",
-    "type": "[value: string | null]",
+    "name": "change",
+    "type": "[event: ScheduleEvent]",
     "description": ""
    }
   ],
