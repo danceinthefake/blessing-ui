@@ -10,7 +10,7 @@ Vue 3 component library and design tokens. The UI is gray-scale, with one accent
 
 Docs, with every component live: **[ui.blessing.id](https://ui.blessing.id)**
 
-- 235 components, from button to data table to chat. Only `--bless-*` custom properties style them. There is no Tailwind dependency.
+- 236 components, from button to data table to chat. Only `--bless-*` custom properties style them. There is no Tailwind dependency.
 - Native platform first: `<dialog>`, Popover API, `<details>`, native form controls, `Intl` dates, and scroll-snap. There is no positioning, date, or table library.
 - Accessible defaults: focus rings, ARIA tablist, dialog, and tables, and `prefers-reduced-motion`
 - ESM, tree-shakable, with `vue` as the only required peer (`@tiptap/vue-3` is optional, for `BlessEditor`). One component (`BlessButton`) costs about 1 KB gzip of JS and about 2.6 KB of CSS (tokens and its own styles). Everything costs about 151 KB and 41 KB. CSS is split per component and the import pulls it in, so you never pay for styles that you do not use
@@ -92,7 +92,7 @@ The words that components say are English by default. `provideLabels(labelsId)` 
 
 ## Components
 
-235 components across eight groups. Every one styles itself from `--bless-*` tokens and ships with a test and a docs page.
+236 components across eight groups. Every one styles itself from `--bless-*` tokens and ships with a test and a docs page.
 
 ### Primitives
 
@@ -115,6 +115,7 @@ The words that components say are English by default. `provideLabels(labelsId)` 
 | `BlessButtonGroup`                    | Joined buttons                                         | `orientation`, `label`                                                                                 |
 | `BlessIndicator`                      | Count / dot badge on any element                       | `value` number or true, `max`, `color`, `position`                                                     |
 | `BlessTimeline`                       | Vertical rail of events                                | `items[{title,time,description,color}]`. `#default="{item}"` `#dot`                                    |
+| `BlessChangelog`                      | Release notes, with the changes in groups              | `releases`, `level`, `locale`                                                                          |
 | `BlessSwap`                           | Two-face toggle                                        | `v-model`, `label`, `effect` fade/rotate/flip. `#on` `#off`                                            |
 | `BlessWatermarkOverlay`               | Tiled text watermark over content                      | `text`, `gap`, `angle`, `fontSize`, `opacity`, `color`                                                 |
 | `BlessCircularProgress`               | Ring progress                                          | `value` (omit = spinning), `max`, `size`, `thickness`, `color`, `showValue`, `format`                  |

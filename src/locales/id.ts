@@ -11,6 +11,7 @@ import type BlessBulletChart from "../components/BlessBulletChart.vue";
 import type BlessCalendar from "../components/BlessCalendar.vue";
 import type BlessCameraCapture from "../components/BlessCameraCapture.vue";
 import type BlessCardInput from "../components/BlessCardInput.vue";
+import type BlessChangelog from "../components/BlessChangelog.vue";
 import type BlessCoachmark from "../components/BlessCoachmark.vue";
 import type BlessCodeBlock from "../components/BlessCodeBlock.vue";
 import type BlessColorSwatches from "../components/BlessColorSwatches.vue";
@@ -94,6 +95,7 @@ export type BlessLabelsFull = {
   BlessCalendar: All<typeof BlessCalendar>;
   BlessCameraCapture: All<typeof BlessCameraCapture>;
   BlessCardInput: All<typeof BlessCardInput>;
+  BlessChangelog: All<typeof BlessChangelog>;
   BlessCoachmark: All<typeof BlessCoachmark>;
   BlessCodeBlock: All<typeof BlessCodeBlock>;
   BlessColorSwatches: All<typeof BlessColorSwatches>;
@@ -221,6 +223,14 @@ export const labelsId: BlessLabelsFull = {
     unavailable: "Kamera tidak tersedia",
   },
   BlessCardInput: { invalid: "Periksa nomor kartu" },
+  BlessChangelog: {
+    added: "Ditambah",
+    changed: "Diubah",
+    deprecated: "Usang",
+    removed: "Dihapus",
+    fixed: "Diperbaiki",
+    security: "Keamanan",
+  },
   BlessCoachmark: { dot: (t) => `Baru: ${t}`, ok: "Mengerti" },
   BlessCodeBlock: copy,
   BlessColorSwatches: { label: "Warna" },

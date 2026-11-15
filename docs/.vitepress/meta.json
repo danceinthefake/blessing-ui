@@ -1838,6 +1838,39 @@
   "slots": [],
   "exposed": []
  },
+ "BlessChangelog": {
+  "props": [
+   {
+    "name": "releases",
+    "type": "BlessRelease[]",
+    "required": true,
+    "description": "newest first"
+   },
+   {
+    "name": "level",
+    "type": "2 | 3 | 4 | 5 | undefined",
+    "required": false,
+    "default": "3",
+    "description": "the heading level of each release, to fit the page"
+   },
+   {
+    "name": "locale",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"en\"",
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<Record<BlessChangeType, string>> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessChart": {
   "props": [
    {
