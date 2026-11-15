@@ -12438,6 +12438,45 @@
    }
   ]
  },
+ "BlessSlopeChart": {
+  "props": [
+   {
+    "name": "data",
+    "type": "BlessSlopeItem[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "height",
+    "type": "number | undefined",
+    "required": false,
+    "default": "300",
+    "description": ""
+   },
+   {
+    "name": "format",
+    "type": "((v: number) => string) | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "label",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Chart\"",
+    "description": "names the chart and its table for screen readers"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ start: string; end: string; item: string; change: string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessSlotPicker": {
   "props": [
    {

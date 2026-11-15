@@ -64,7 +64,8 @@ Forty-eight new components, 286 in all: more charts, parts for an assistant and 
 - `BlessSeatPicker`: a map of seats in rows with gaps, zones with prices, free, taken, and chosen seats, a total, and arrow keys over one tab stop.
 - `BlessTicket`: an event ticket with the details, a tear line with notches, and a stub with a `BlessQrCode` and the code.
 - `BlessRsvp`: going, maybe, and not going as toggle buttons with counts that include the reader, and the faces of some people who go.
-- `BlessCountdownBanner`: a `BlessBanner` with the days, hours, minutes, and seconds left to an event, Live now at the start, and the date of the start for screen readers. 286 components in all.
+- `BlessCountdownBanner`: a `BlessBanner` with the days, hours, minutes, and seconds left to an event, Live now at the start, and the date of the start for screen readers.
+- `BlessSlopeChart`: two columns, such as before and after, with a line for each item. A rise is solid and a fall is dashed and gray. 287 components in all.
 
 ## 0.6.0 — 2026-11-15
 

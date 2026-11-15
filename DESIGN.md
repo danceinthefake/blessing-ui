@@ -493,6 +493,27 @@ Sixteen components, 270 → 286. Each uses native platform APIs only: the librar
 - ✅ Fixed on the way: `BlessTooltip` renders its tip as a `span`, so a tooltip can sit in a paragraph. The SSR test found it with `BlessGlossary`.
 - ✅ Budget: after the round, the whole library is 190.5 KB gz JS and 51.8 KB gz CSS, under the cap of 198 / 54. Phase 32 is done.
 
+### Phase 33 — more charts, settings forms, marketing pages, and admin parts (2026-11-16)
+
+Sixteen components, 286 → 302. Each uses native platform APIs only: the library adds no dependency. Each needs tests, a docs page with a live example, a README row, words in `labelsId`, and a pass of `src/classes.test.ts`. If a component uses a known method or names another party, credit it on the credits page.
+
+- ✅ `BlessSlopeChart`: two columns, such as before and after, with a line for each item.
+- `BlessBeeswarm`: each value as a dot on one axis, moved aside so the dots do not overlap.
+- `BlessMarimekko`: bars whose width and height both show a share.
+- `BlessPictogram`: a count as rows of icons, where one icon stands for a fixed number.
+- `BlessConsentBanner`: a cookie consent bar with accept, reject, and a panel of categories, kept in the browser.
+- `BlessNotificationPrefs`: a grid of events by channel, with a switch in each cell and switches for a whole row or column.
+- `BlessAddressFields`: address fields whose order and names follow the country.
+- `BlessPresetRange`: a date range with presets, such as the last 7 days, next to a calendar.
+- `BlessTestimonials`: quotes with a name, a role, an avatar, and stars.
+- `BlessFaqSearch`: questions and answers in folds, with a search that filters and opens them.
+- `BlessComparisonTable`: features by plan, with checks, crosses, and values, and a header that stays at the top.
+- `BlessNewsletterSignup`: an email field and a button, with checks, a success state, and a privacy line.
+- `BlessPermissionMatrix`: roles by permissions as check boxes, in groups, with a role that cannot change.
+- `BlessFeatureFlags`: flags with a switch, a note, the rollout share, and the environment.
+- `BlessIncidentTimeline`: the updates of an incident with times, states, and the parts it affects.
+- `BlessSystemStatus`: the parts of a service with their state, and one line for the whole service.
+
 ### Deliberately skipped
 
 - **Chart**: no bundled lib. Phase 11 ✅: `--bless-color-chart-{1..5}` (≥3:1 both themes) + `BlessChart` frame that maps them onto Unovis `--vis-*` vars. Unovis is the documented pairing, installed by the consumer.
