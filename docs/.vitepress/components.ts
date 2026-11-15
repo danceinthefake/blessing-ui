@@ -159,6 +159,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "api-key-field",
         text: "A secret key with show, copy and make a new key",
       },
+      {
+        name: "BlessWebhookLog",
+        slug: "webhook-log",
+        text: "Sent events with the status and a retry button",
+      },
       { name: "BlessInputTags", slug: "input-tags", text: "Free-text tags" },
       { name: "BlessFloatLabel", slug: "float-label", text: "Floating / in-field label wrapper" },
       { name: "BlessFieldset", slug: "fieldset", text: "Legend group, toggleable" },

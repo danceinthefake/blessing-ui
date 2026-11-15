@@ -430,3 +430,5 @@ export { default as BlessReviewSummary } from "./components/BlessReviewSummary.v
 export { default as BlessProfileCard } from "./components/BlessProfileCard.vue";
 export type { BlessProfileStat } from "./components/BlessProfileCard.vue";
 export { default as BlessApiKeyField } from "./components/BlessApiKeyField.vue";
+export { default as BlessWebhookLog } from "./components/BlessWebhookLog.vue";
+export type { BlessWebhookDelivery } from "./components/BlessWebhookLog.vue";
