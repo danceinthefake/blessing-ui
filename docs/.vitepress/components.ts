@@ -258,6 +258,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "address-fields",
         text: "Address fields that follow the country",
       },
+      {
+        name: "BlessPresetRange",
+        slug: "preset-range",
+        text: "A date range with presets next to a calendar",
+      },
       { name: "BlessOrderList", slug: "order-list", text: "Drag / button / Alt+arrow reorder" },
       {
         name: "BlessCountUp",

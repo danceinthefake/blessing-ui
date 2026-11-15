@@ -23,6 +23,7 @@ Kami mencocokkan daftar komponen dengan proyek-proyek ini, untuk mengetahui apa 
 ## Standar
 
 - [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/) memberi aturan keyboard dan peran untuk listbox, grid, tab, combobox, tree, menu, dialog, dan pola lainnya.
+- [Kolom alamat](../../components/address-fields) memakai kode negara [ISO 3166](https://www.iso.org/iso-3166-country-codes.html) dan token `autocomplete` dari standar HTML.
 - [WCAG 2.1](https://www.w3.org/TR/WCAG21/) tingkat AA adalah patokan untuk kontras, fokus, dan gerak. [axe-core](https://github.com/dequelabs/axe-core) memeriksa setiap halaman terhadapnya.
 - [ASD-STE100](https://www.asd-ste100.org/) Simplified Technical English adalah standar untuk semua teks berbahasa Inggris di repositori dan dokumentasi.
 - Platform web mengerjakan bagian terberat: Popover API, elemen `dialog`, `Intl`, Web Speech API, Web Audio, dan properti logis CSS. [MDN Web Docs](https://developer.mozilla.org/) menjadi rujukan untuk semuanya.
