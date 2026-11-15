@@ -129,6 +129,11 @@ export const groups: { title: string; items: Entry[] }[] = [
       },
       { name: "BlessRsvp", slug: "rsvp", text: "Going, maybe, or not going, with counts" },
       {
+        name: "BlessCountdownBanner",
+        slug: "countdown-banner",
+        text: "A strip with the time left to an event",
+      },
+      {
         name: "BlessAvailabilityGrid",
         slug: "availability-grid",
         text: "A week of time cells, to mark when a person is free",

@@ -489,7 +489,7 @@ Sixteen components, 270 → 286. Each uses native platform APIs only: the librar
 - ✅ `BlessSeatPicker`: a map of seats in rows, with free, taken, and chosen seats, and prices by zone.
 - ✅ `BlessTicket`: an event ticket with a tear line, the date, the seat, and a QR code.
 - ✅ `BlessRsvp`: going, maybe, and not going, with counts and the faces of people who go.
-- `BlessCountdownBanner`: a strip at the top with the time left to an event and a link.
+- ✅ `BlessCountdownBanner`: a strip at the top with the time left to an event and a link.
 
 ### Deliberately skipped
 

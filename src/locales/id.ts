@@ -25,6 +25,7 @@ import type BlessCommand from "../components/BlessCommand.vue";
 import type BlessConnectionStatus from "../components/BlessConnectionStatus.vue";
 import type BlessContextMeter from "../components/BlessContextMeter.vue";
 import type BlessCopyButton from "../components/BlessCopyButton.vue";
+import type BlessCountdownBanner from "../components/BlessCountdownBanner.vue";
 import type BlessCouponInput from "../components/BlessCouponInput.vue";
 import type BlessCronInput from "../components/BlessCronInput.vue";
 import type BlessCropper from "../components/BlessCropper.vue";
@@ -147,6 +148,7 @@ export type BlessLabelsFull = {
   BlessConnectionStatus: All<typeof BlessConnectionStatus>;
   BlessContextMeter: All<typeof BlessContextMeter>;
   BlessCopyButton: All<typeof BlessCopyButton>;
+  BlessCountdownBanner: All<typeof BlessCountdownBanner>;
   BlessCouponInput: All<typeof BlessCouponInput>;
   BlessCronInput: All<typeof BlessCronInput>;
   BlessCropper: All<typeof BlessCropper>;
@@ -377,6 +379,15 @@ export const labelsId: BlessLabelsFull = {
     used: (u, m, s) => `${s} konteks terpakai: ${u} dari ${m} token`,
   },
   BlessCopyButton: copy,
+  BlessCountdownBanner: {
+    startsIn: "Mulai dalam",
+    live: "Siaran langsung",
+    startsAt: (d) => `Mulai ${d}`,
+    days: "h",
+    hours: "j",
+    minutes: "m",
+    seconds: "d",
+  },
   BlessCouponInput: {
     label: "Kode diskon",
     apply: "Pakai",
