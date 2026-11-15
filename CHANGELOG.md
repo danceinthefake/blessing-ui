@@ -65,7 +65,8 @@ Forty-eight new components, 286 in all: more charts, parts for an assistant and 
 - `BlessTicket`: an event ticket with the details, a tear line with notches, and a stub with a `BlessQrCode` and the code.
 - `BlessRsvp`: going, maybe, and not going as toggle buttons with counts that include the reader, and the faces of some people who go.
 - `BlessCountdownBanner`: a `BlessBanner` with the days, hours, minutes, and seconds left to an event, Live now at the start, and the date of the start for screen readers.
-- `BlessSlopeChart`: two columns, such as before and after, with a line for each item. A rise is solid and a fall is dashed and gray. 287 components in all.
+- `BlessSlopeChart`: two columns, such as before and after, with a line for each item. A rise is solid and a fall is dashed and gray.
+- `BlessBeeswarm`: each value as a dot on one axis, moved aside by a greedy swarm so no dots overlap, with groups and a summary table. 288 components in all.
 
 ## 0.6.0 — 2026-11-15
 

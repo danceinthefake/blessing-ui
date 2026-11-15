@@ -462,3 +462,5 @@ export type { BlessRsvpAnswer } from "./components/BlessRsvp.vue";
 export { default as BlessCountdownBanner } from "./components/BlessCountdownBanner.vue";
 export { default as BlessSlopeChart } from "./components/BlessSlopeChart.vue";
 export type { BlessSlopeItem } from "./components/BlessSlopeChart.vue";
+export { default as BlessBeeswarm } from "./components/BlessBeeswarm.vue";
+export type { BlessSwarmPoint } from "./components/BlessBeeswarm.vue";

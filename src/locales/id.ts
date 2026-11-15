@@ -7,6 +7,7 @@ import type BlessAudioRecorder from "../components/BlessAudioRecorder.vue";
 import type BlessAvailabilityGrid from "../components/BlessAvailabilityGrid.vue";
 import type BlessAvatarGroup from "../components/BlessAvatarGroup.vue";
 import type BlessBarChart from "../components/BlessBarChart.vue";
+import type BlessBeeswarm from "../components/BlessBeeswarm.vue";
 import type BlessBoxPlot from "../components/BlessBoxPlot.vue";
 import type BlessBulkActionBar from "../components/BlessBulkActionBar.vue";
 import type BlessBulletChart from "../components/BlessBulletChart.vue";
@@ -131,6 +132,7 @@ export type BlessLabelsFull = {
   BlessAvailabilityGrid: All<typeof BlessAvailabilityGrid>;
   BlessAvatarGroup: All<typeof BlessAvatarGroup>;
   BlessBarChart: All<typeof BlessBarChart>;
+  BlessBeeswarm: All<typeof BlessBeeswarm>;
   BlessBoxPlot: All<typeof BlessBoxPlot>;
   BlessBulkActionBar: All<typeof BlessBulkActionBar>;
   BlessBulletChart: All<typeof BlessBulletChart>;
@@ -302,6 +304,14 @@ export const labelsId: BlessLabelsFull = {
   BlessAvailabilityGrid: { label: "Waktu luang", free: "luang", busy: "sibuk" },
   BlessAvatarGroup: { more: (n) => `${n} lainnya` },
   BlessBarChart: { category: "Kategori" },
+  BlessBeeswarm: {
+    group: "Kelompok",
+    count: "Jumlah",
+    min: "Terendah",
+    median: "Median",
+    max: "Tertinggi",
+    all: "Semua",
+  },
   BlessBoxPlot: {
     group: "Grup",
     min: "Terendah",

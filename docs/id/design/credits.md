@@ -40,6 +40,7 @@ Beberapa komponen memakai metode yang sudah dikenal. Kami menulis ulang masing-m
 - [Streamgraph](../../components/streamgraph) menempatkan alirannya di sekitar garis tengah, seperti ThemeRiver dari Havre, Hetzler, dan Nowell (2000). Byron dan Wattenberg (2008) memberi nama bentuk ini.
 - Grafik [Pareto](../../components/pareto) menampilkan aturan 80/20 yang dinamai Joseph Juran dari Vilfredo Pareto.
 - Diagram [Venn](../../components/venn) adalah bentuk dari John Venn (1880). Diagram ini menghitung setiap bagian dengan inklusi dan eksklusi.
+- [Beeswarm](../../components/beeswarm) menempatkan titiknya dengan cara swarm yang rakus, seperti paket beeswarm untuk R karya Aron Eklund.
 - [Grafik mawar](../../components/rose-chart) adalah diagram area polar dari Florence Nightingale (1858). Luas setiap irisan mengikuti nilainya.
 
 ## Paket yang bisa Anda tambahkan
