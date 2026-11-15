@@ -232,9 +232,6 @@ const dayLabel = computed(
 .bless-evcal__day--out {
   background: var(--bless-color-surface-2);
 }
-.bless-evcal__day--out .bless-evcal__num {
-  color: var(--bless-color-text-muted);
-}
 .bless-evcal__num {
   display: inline-grid;
   place-items: center;

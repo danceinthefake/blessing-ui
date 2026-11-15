@@ -231,9 +231,6 @@ function remove(i: number) {
   padding-block: var(--bless-space-1);
   padding-inline: var(--bless-space-3) var(--bless-space-2);
 }
-.bless-filterbar__field {
-  color: var(--bless-color-text-muted);
-}
 .bless-filterbar__x {
   display: inline-grid;
   place-items: center;

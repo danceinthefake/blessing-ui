@@ -80,6 +80,11 @@
     "css": 443
   },
   {
+    "name": "BlessBarChart",
+    "js": 2117,
+    "css": 0
+  },
+  {
     "name": "BlessBlockUI",
     "js": 771,
     "css": 511
@@ -88,6 +93,11 @@
     "name": "BlessBottomTabs",
     "js": 1109,
     "css": 813
+  },
+  {
+    "name": "BlessBoxPlot",
+    "js": 2320,
+    "css": 184
   },
   {
     "name": "BlessBreadcrumb",
@@ -251,7 +261,7 @@
   },
   {
     "name": "BlessDataTable",
-    "js": 9700,
+    "js": 9696,
     "css": 3128
   },
   {
@@ -291,8 +301,13 @@
   },
   {
     "name": "BlessDock",
-    "js": 1466,
+    "js": 1484,
     "css": 765
+  },
+  {
+    "name": "BlessDonutChart",
+    "js": 1216,
+    "css": 583
   },
   {
     "name": "BlessDrawer",
@@ -325,6 +340,11 @@
     "css": 443
   },
   {
+    "name": "BlessEventCalendar",
+    "js": 2826,
+    "css": 1434
+  },
+  {
     "name": "BlessField",
     "js": 1114,
     "css": 369
@@ -338,6 +358,11 @@
     "name": "BlessFileInput",
     "js": 1637,
     "css": 705
+  },
+  {
+    "name": "BlessFilterBar",
+    "js": 5329,
+    "css": 2487
   },
   {
     "name": "BlessFloatLabel",
@@ -361,8 +386,8 @@
   },
   {
     "name": "BlessGallery",
-    "js": 2185,
-    "css": 1225
+    "js": 2990,
+    "css": 1429
   },
   {
     "name": "BlessGantt",
@@ -382,7 +407,7 @@
   {
     "name": "BlessHighlight",
     "js": 721,
-    "css": 122
+    "css": 145
   },
   {
     "name": "BlessHotspots",
@@ -495,6 +520,16 @@
     "css": 581
   },
   {
+    "name": "BlessLightbox",
+    "js": 2657,
+    "css": 1300
+  },
+  {
+    "name": "BlessLineChart",
+    "js": 2584,
+    "css": 441
+  },
+  {
     "name": "BlessList",
     "js": 251,
     "css": 153
@@ -517,7 +552,7 @@
   {
     "name": "BlessLogViewer",
     "js": 2576,
-    "css": 877
+    "css": 868
   },
   {
     "name": "BlessLoupe",
@@ -680,6 +715,11 @@
     "css": 643
   },
   {
+    "name": "BlessPromptInput",
+    "js": 3411,
+    "css": 1935
+  },
+  {
     "name": "BlessPullToRefresh",
     "js": 1272,
     "css": 539
@@ -691,7 +731,7 @@
   },
   {
     "name": "BlessQueryBuilder",
-    "js": 3898,
+    "js": 3909,
     "css": 2157
   },
   {
@@ -751,12 +791,17 @@
   },
   {
     "name": "BlessSankey",
-    "js": 1951,
+    "js": 1968,
     "css": 350
   },
   {
+    "name": "BlessScatterChart",
+    "js": 2093,
+    "css": 124
+  },
+  {
     "name": "BlessScheduler",
-    "js": 4711,
+    "js": 4727,
     "css": 1581
   },
   {
@@ -778,6 +823,11 @@
     "name": "BlessSelect",
     "js": 1171,
     "css": 1134
+  },
+  {
+    "name": "BlessSelectionToolbar",
+    "js": 1851,
+    "css": 345
   },
   {
     "name": "BlessSeparator",
@@ -895,6 +945,16 @@
     "css": 711
   },
   {
+    "name": "BlessStreamingText",
+    "js": 632,
+    "css": 270
+  },
+  {
+    "name": "BlessSuggestions",
+    "js": 647,
+    "css": 478
+  },
+  {
     "name": "BlessSwap",
     "js": 698,
     "css": 455
@@ -988,6 +1048,11 @@
     "name": "BlessToggleGroup",
     "js": 499,
     "css": 171
+  },
+  {
+    "name": "BlessToolCall",
+    "js": 1171,
+    "css": 939
   },
   {
     "name": "BlessToolbar",
