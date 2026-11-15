@@ -204,7 +204,6 @@ const status = computed(() => {
 }
 .bless-hours__today {
   font-weight: normal;
-  color: var(--bless-color-text-muted);
 }
 .bless-hours__closed {
   color: var(--bless-color-text-muted);

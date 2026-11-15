@@ -31,6 +31,7 @@ export function toRRule(r: BlessRecurrence): string {
 <script setup lang="ts">
 import { computed, useId } from "vue";
 import { useLabelPack } from "../composables/useLabels";
+import "./sr.css";
 
 defineOptions({ name: "BlessRecurrencePicker" });
 const pack = useLabelPack("BlessRecurrencePicker");
@@ -162,11 +163,11 @@ const today = new Date().toISOString().slice(0, 10);
           type="button"
           class="bless-repeat__day"
           :aria-pressed="!!rule.days?.includes(i)"
-          :aria-label="d.long"
           :title="d.long"
           @click="toggleDay(i)"
         >
-          {{ d.short }}
+          <span aria-hidden="true">{{ d.short }}</span>
+          <span class="bless-sr">{{ d.long }}</span>
         </button>
       </span>
     </div>
