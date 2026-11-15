@@ -38,7 +38,8 @@
 - `BlessBulkActionBar`: a dark bar that slides up when rows are selected, with the count, the actions in a slot, and a clear button. It sticks to the bottom of its box, or of the window with `fixed`, and it speaks a new count.
 - `BlessColorSwatches`: a set of ready colors as a group of native radios with names for screen readers and a ring on the picked color. `BlessColorPicker` now uses it for its presets, so the arrow keys move between them.
 - `BlessPricingTable`: plans side by side with a monthly or yearly switch, the best saving next to it, prices in the currency and locale format, features with checks, and one featured plan.
-- `BlessChangelog`: release notes with a heading per release at a level that fits the page, the date in the locale format, and the changes in the groups of Keep a Changelog. 236 components in all.
+- `BlessChangelog`: release notes with a heading per release at a level that fits the page, the date in the locale format, and the changes in the groups of Keep a Changelog.
+- `BlessShortcutSheet`: keyboard shortcuts in groups with `BlessKbd` keys, alternatives with "or", `Mod` as ⌘ on Apple devices and Ctrl elsewhere, and a search by words or keys. 237 components in all.
 
 ## 0.5.0 — 2026-11-15
 

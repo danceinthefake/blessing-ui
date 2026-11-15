@@ -10314,6 +10314,32 @@
    }
   ]
  },
+ "BlessShortcutSheet": {
+  "props": [
+   {
+    "name": "groups",
+    "type": "BlessShortcutGroup[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "search",
+    "type": "boolean | undefined",
+    "required": false,
+    "default": "true",
+    "description": "show a search box over the list"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ search: string; none: string; or: string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessSidebarNav": {
   "props": [
    {

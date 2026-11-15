@@ -374,3 +374,5 @@ export { default as BlessPricingTable } from "./components/BlessPricingTable.vue
 export type { BlessPricingPeriod, BlessPricingPlan } from "./components/BlessPricingTable.vue";
 export { default as BlessChangelog } from "./components/BlessChangelog.vue";
 export type { BlessChangeType, BlessRelease } from "./components/BlessChangelog.vue";
+export { default as BlessShortcutSheet } from "./components/BlessShortcutSheet.vue";
+export type { BlessShortcut, BlessShortcutGroup } from "./components/BlessShortcutSheet.vue";
