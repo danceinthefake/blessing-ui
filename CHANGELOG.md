@@ -78,7 +78,8 @@ Forty-eight new components, 286 in all: more charts, parts for an assistant and 
 - `BlessComparisonTable`: features by plan with checks, dashes, and values, group rows, a highlighted plan, and a header that stays at the top.
 - `BlessNewsletterSignup`: an email field and a button with a native check of the address, a loading state, the server error, a thank-you, and a privacy line.
 - `BlessPermissionMatrix`: roles by permissions as native check boxes in groups, with a box for each role and a locked role that has every permission.
-- `BlessFeatureFlags`: flags with a `BlessSwitch`, the key, a note, the environment, and the share of users that get each flag. 300 components in all.
+- `BlessFeatureFlags`: flags with a `BlessSwitch`, the key, a note, the environment, and the share of users that get each flag.
+- `BlessIncidentTimeline`: the updates of an incident newest first, with the impact and the state as words, the affected parts, and an edge color that follows the state. 301 components in all.
 
 ## 0.6.0 — 2026-11-15
 

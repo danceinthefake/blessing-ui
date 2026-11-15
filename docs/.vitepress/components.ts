@@ -231,6 +231,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         text: "Flags with a switch and the rollout share",
       },
       {
+        name: "BlessIncidentTimeline",
+        slug: "incident-timeline",
+        text: "The updates of an incident with states and times",
+      },
+      {
         name: "BlessWebhookLog",
         slug: "webhook-log",
         text: "Sent events with the status and a retry button",

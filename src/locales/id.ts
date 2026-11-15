@@ -52,6 +52,7 @@ import type BlessFunnel from "../components/BlessFunnel.vue";
 import type BlessGantt from "../components/BlessGantt.vue";
 import type BlessHabitTracker from "../components/BlessHabitTracker.vue";
 import type BlessHistogram from "../components/BlessHistogram.vue";
+import type BlessIncidentTimeline from "../components/BlessIncidentTimeline.vue";
 import type BlessInfiniteCanvas from "../components/BlessInfiniteCanvas.vue";
 import type BlessInputNumber from "../components/BlessInputNumber.vue";
 import type BlessKanban from "../components/BlessKanban.vue";
@@ -189,6 +190,7 @@ export type BlessLabelsFull = {
   BlessGantt: All<typeof BlessGantt>;
   BlessHabitTracker: All<typeof BlessHabitTracker>;
   BlessHistogram: All<typeof BlessHistogram>;
+  BlessIncidentTimeline: All<typeof BlessIncidentTimeline>;
   BlessInfiniteCanvas: All<typeof BlessInfiniteCanvas>;
   BlessInputNumber: All<typeof BlessInputNumber>;
   BlessKanban: All<typeof BlessKanban>;
@@ -604,6 +606,17 @@ export const labelsId: BlessLabelsFull = {
     mark: (h, d) => `${h}, ${d}`,
   },
   BlessHistogram: { range: "Rentang", count: "Jumlah" },
+  BlessIncidentTimeline: {
+    investigating: "Diselidiki",
+    identified: "Ditemukan",
+    monitoring: "Dipantau",
+    resolved: "Selesai",
+    minor: "Ringan",
+    major: "Berat",
+    critical: "Kritis",
+    affected: "Terdampak",
+    impact: "Dampak",
+  },
   BlessInfiniteCanvas: {
     zoomIn: "Perbesar",
     zoomOut: "Perkecil",
