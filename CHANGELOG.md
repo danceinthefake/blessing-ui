@@ -30,7 +30,8 @@ Sixteen new components, 254 in all: more charts, parts for the replies of an ass
 - `BlessLeaderboard`: ranked rows with shared places for equal scores, the move since last time, and the row of the reader, which shows even below the limit.
 - `BlessSpreadsheet`: a grid of text cells with arrow keys, a selection, edit by typing, and copy and paste as tab text, so data moves to and from a spreadsheet app.
 - `BlessPyramid`: back-to-back bars for two groups on each row, on one scale, with a legend and a table for screen readers.
-- `BlessRadialBar`: rings in one circle that fill to the share of each goal, with a legend that shows the share, the value, and the max. 256 components in all.
+- `BlessRadialBar`: rings in one circle that fill to the share of each goal, with a legend that shows the share, the value, and the max.
+- `BlessStreamgraph`: stacked areas around a center line, to show how a mix changes over time, with a legend and a table for screen readers. 257 components in all.
 
 ## 0.6.0 — 2026-11-15
 

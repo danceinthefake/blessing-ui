@@ -12165,6 +12165,57 @@
   "slots": [],
   "exposed": []
  },
+ "BlessStreamgraph": {
+  "props": [
+   {
+    "name": "data",
+    "type": "BlessChartRow[]",
+    "required": true,
+    "description": "one row for each step on the x axis, in order"
+   },
+   {
+    "name": "x",
+    "type": "string",
+    "required": true,
+    "description": "the field of a row with the text of its step, for example the month"
+   },
+   {
+    "name": "series",
+    "type": "BlessChartSeries[]",
+    "required": true,
+    "description": "one stream for each series; the first is the top one"
+   },
+   {
+    "name": "height",
+    "type": "number | undefined",
+    "required": false,
+    "default": "260",
+    "description": ""
+   },
+   {
+    "name": "format",
+    "type": "((v: number) => string) | undefined",
+    "required": false,
+    "description": "text for one value, for example `(v) => v + \"k\"`"
+   },
+   {
+    "name": "label",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Chart\"",
+    "description": "names the chart and its table for screen readers"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ step: string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessStreamingText": {
   "props": [
    {
