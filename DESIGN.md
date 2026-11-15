@@ -502,7 +502,7 @@ Sixteen components, 286 → 302. Each uses native platform APIs only: the librar
 - ✅ `BlessMarimekko`: bars whose width and height both show a share.
 - ✅ `BlessPictogram`: a count as rows of icons, where one icon stands for a fixed number.
 - ✅ `BlessConsentBanner`: a cookie consent bar with accept, reject, and a panel of categories, kept in the browser.
-- `BlessNotificationPrefs`: a grid of events by channel, with a switch in each cell and switches for a whole row or column.
+- ✅ `BlessNotificationPrefs`: a grid of events by channel, with a switch in each cell and switches for a whole row or column.
 - `BlessAddressFields`: address fields whose order and names follow the country.
 - `BlessPresetRange`: a date range with presets, such as the last 7 days, next to a calendar.
 - `BlessTestimonials`: quotes with a name, a role, an avatar, and stars.

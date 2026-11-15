@@ -469,3 +469,5 @@ export { default as BlessPictogram } from "./components/BlessPictogram.vue";
 export type { BlessPictogramItem } from "./components/BlessPictogram.vue";
 export { default as BlessConsentBanner } from "./components/BlessConsentBanner.vue";
 export type { BlessConsentCategory } from "./components/BlessConsentBanner.vue";
+export { default as BlessNotificationPrefs } from "./components/BlessNotificationPrefs.vue";
+export type { BlessNotifyEvent, BlessNotifyChannel } from "./components/BlessNotificationPrefs.vue";

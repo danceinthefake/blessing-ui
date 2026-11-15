@@ -109,6 +109,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "consent-banner",
         text: "A cookie consent bar with a choice per category",
       },
+      {
+        name: "BlessNotificationPrefs",
+        slug: "notification-prefs",
+        text: "A grid of events by channel",
+      },
       { name: "BlessCopyButton", slug: "copy-button", text: "Copy text with a Copied state" },
     ],
   },

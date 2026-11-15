@@ -69,7 +69,8 @@ Forty-eight new components, 286 in all: more charts, parts for an assistant and 
 - `BlessBeeswarm`: each value as a dot on one axis, moved aside by a greedy swarm so no dots overlap, with groups and a summary table.
 - `BlessMarimekko`: bars whose width is the share of all and whose parts are shares of the column, with a legend and a table.
 - `BlessPictogram`: a count as rows of icons where one icon stands for a fixed number, with a part icon for the rest and a key line.
-- `BlessConsentBanner`: a cookie consent bar with accept, reject, and a switch for each category, with required categories always on and the choice kept in the browser. 291 components in all.
+- `BlessConsentBanner`: a cookie consent bar with accept, reject, and a switch for each category, with required categories always on and the choice kept in the browser.
+- `BlessNotificationPrefs`: a grid of events by channel with native check boxes, and a box for each column that is on, off, or mixed. 292 components in all.
 
 ## 0.6.0 — 2026-11-15
 
