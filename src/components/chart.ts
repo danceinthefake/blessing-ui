@@ -94,3 +94,25 @@ export interface BlessChartSeries {
 }
 /** A row of data: the category or x value and one number for each series. */
 export type BlessChartRow = Record<string, unknown>;
+
+export interface HistogramBin {
+  from: number;
+  to: number;
+  count: number;
+}
+/** Values counted in round bins of equal width; a bin holds `from <= v < to`, the last one `v <= to`. */
+export function histogramBins(values: number[], count = 10): HistogramBin[] {
+  const vs = values.filter(Number.isFinite);
+  if (!vs.length) return [];
+  let lo = Math.min(...vs);
+  let hi = Math.max(...vs);
+  if (lo === hi) [lo, hi] = [lo - 0.5, hi + 0.5];
+  const edges = niceTicks(lo, hi, count);
+  // the edges are round ticks; the last bin also takes a value equal to its end
+  const bins = edges.slice(0, -1).map((from, i) => ({ from, to: edges[i + 1]!, count: 0 }));
+  for (const v of vs) {
+    const i = bins.findIndex((b, k) => v >= b.from && (v < b.to || k === bins.length - 1));
+    if (i >= 0) bins[i]!.count++;
+  }
+  return bins;
+}

@@ -27,6 +27,7 @@ import type BlessFilterBar from "../components/BlessFilterBar.vue";
 import type BlessFormula from "../components/BlessFormula.vue";
 import type BlessFunnel from "../components/BlessFunnel.vue";
 import type BlessGantt from "../components/BlessGantt.vue";
+import type BlessHistogram from "../components/BlessHistogram.vue";
 import type BlessInfiniteCanvas from "../components/BlessInfiniteCanvas.vue";
 import type BlessInputNumber from "../components/BlessInputNumber.vue";
 import type BlessKanban from "../components/BlessKanban.vue";
@@ -103,6 +104,7 @@ export type BlessLabelsFull = {
   BlessFormula: All<typeof BlessFormula>;
   BlessFunnel: All<typeof BlessFunnel>;
   BlessGantt: All<typeof BlessGantt>;
+  BlessHistogram: All<typeof BlessHistogram>;
   BlessInfiniteCanvas: All<typeof BlessInfiniteCanvas>;
   BlessInputNumber: All<typeof BlessInputNumber>;
   BlessKanban: All<typeof BlessKanban>;
@@ -337,6 +339,7 @@ export const labelsId: BlessLabelsFull = {
     done: (p) => `${p}% selesai`,
     after: (names) => `setelah ${names.join(" dan ")}`,
   },
+  BlessHistogram: { range: "Rentang", count: "Jumlah" },
   BlessInfiniteCanvas: {
     zoomIn: "Perbesar",
     zoomOut: "Perkecil",

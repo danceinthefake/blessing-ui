@@ -537,6 +537,7 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "heatmap",
         text: "A grid of rows and columns, colored by value",
       },
+      { name: "BlessHistogram", slug: "histogram", text: "Raw values in round bins, as bars" },
       {
         name: "BlessFunnel",
         slug: "funnel",
