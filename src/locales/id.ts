@@ -23,6 +23,7 @@ import type BlessDurationInput from "../components/BlessDurationInput.vue";
 import type BlessEditor from "../components/BlessEditor.vue";
 import type BlessEmojiPicker from "../components/BlessEmojiPicker.vue";
 import type BlessEventCalendar from "../components/BlessEventCalendar.vue";
+import type BlessFilterBar from "../components/BlessFilterBar.vue";
 import type BlessFormula from "../components/BlessFormula.vue";
 import type BlessFunnel from "../components/BlessFunnel.vue";
 import type BlessGantt from "../components/BlessGantt.vue";
@@ -96,6 +97,7 @@ export type BlessLabelsFull = {
   BlessEditor: All<typeof BlessEditor>;
   BlessEmojiPicker: All<typeof BlessEmojiPicker>;
   BlessEventCalendar: All<typeof BlessEventCalendar>;
+  BlessFilterBar: All<typeof BlessFilterBar>;
   BlessFormula: All<typeof BlessFormula>;
   BlessFunnel: All<typeof BlessFunnel>;
   BlessGantt: All<typeof BlessGantt>;
@@ -273,6 +275,29 @@ export const labelsId: BlessLabelsFull = {
     today: "Hari ini",
     more: (n) => `+${n} lagi`,
     less: "Tampilkan lebih sedikit",
+  },
+  BlessFilterBar: {
+    label: "Filter",
+    add: "Tambah filter",
+    clear: "Hapus semua",
+    done: "Selesai",
+    remove: "Hapus filter",
+    op: "Operator",
+    value: "Nilai",
+    eq: "adalah",
+    neq: "bukan",
+    contains: "berisi",
+    starts: "diawali",
+    lt: "kurang dari",
+    lte: "paling banyak",
+    gt: "lebih dari",
+    gte: "paling sedikit",
+    empty: "kosong",
+    notEmpty: "tidak kosong",
+    before: "sebelum",
+    onOrBefore: "pada atau sebelum",
+    after: "sesudah",
+    onOrAfter: "pada atau sesudah",
   },
   BlessFormula: {
     insert: "Sisipkan nilai",

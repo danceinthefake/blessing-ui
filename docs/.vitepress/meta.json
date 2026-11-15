@@ -4202,6 +4202,44 @@
   ],
   "exposed": []
  },
+ "BlessFilterBar": {
+  "props": [
+   {
+    "name": "fields",
+    "type": "BlessQueryField[]",
+    "required": true,
+    "description": "what people can filter by"
+   },
+   {
+    "name": "disabled",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ label: string; add: string; clear: string; done: string; remove: string; op: string; value: string; eq: string; neq: string; contains: string; starts: string; lt: string; lte: string; gt: string; gte: string; empty: string; notEmpty: string; before: string; onOrBefore: string; after: string; onOrAfter: string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "BlessQueryRule[] | undefined",
+    "required": false,
+    "default": "[]",
+    "description": "the filters, all of which must match; the same rules as `BlessQueryBuilder`"
+   }
+  ],
+  "events": [
+   {
+    "name": "update:modelValue",
+    "type": "[value: BlessQueryRule[]]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessFloatLabel": {
   "props": [
    {

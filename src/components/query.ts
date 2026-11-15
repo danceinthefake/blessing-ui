@@ -40,3 +40,14 @@ export const opsFor = (f?: BlessQueryField) => OPS[f?.type ?? "text"];
 /** the operators that take no value */
 export const noValue = (op: BlessQueryOp) => op === "empty" || op === "notEmpty";
 export const isGroup = (r: BlessQueryRule | BlessQueryGroup): r is BlessQueryGroup => "rules" in r;
+
+// dates read better as before and after
+const DATE: Partial<Record<BlessQueryOp, string>> = {
+  lt: "before",
+  lte: "onOrBefore",
+  gt: "after",
+  gte: "onOrAfter",
+};
+/** the label key of an operator for a field */
+export const opKey = (f: BlessQueryField | undefined, op: BlessQueryOp): string =>
+  (f?.type === "date" && DATE[op]) || op;
