@@ -532,6 +532,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "reasoning",
         text: "The thinking of a model, in a panel that folds",
       },
+      {
+        name: "BlessSources",
+        slug: "sources",
+        text: "The sources of a reply, with numbered marks",
+      },
       { name: "BlessSuggestions", slug: "suggestions", text: "Ready prompts as a row of chips" },
     ],
   },

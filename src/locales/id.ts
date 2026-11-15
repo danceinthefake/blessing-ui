@@ -66,6 +66,7 @@ import type BlessShortcutSheet from "../components/BlessShortcutSheet.vue";
 import type BlessSliderCaptcha from "../components/BlessSliderCaptcha.vue";
 import type BlessSlotPicker from "../components/BlessSlotPicker.vue";
 import type BlessSortable from "../components/BlessSortable.vue";
+import type BlessSources from "../components/BlessSources.vue";
 import type BlessStat from "../components/BlessStat.vue";
 import type BlessStepper from "../components/BlessStepper.vue";
 import type BlessSuggestions from "../components/BlessSuggestions.vue";
@@ -155,6 +156,7 @@ export type BlessLabelsFull = {
   BlessSliderCaptcha: All<typeof BlessSliderCaptcha>;
   BlessSlotPicker: All<typeof BlessSlotPicker>;
   BlessSortable: All<typeof BlessSortable>;
+  BlessSources: All<typeof BlessSources>;
   BlessStat: All<typeof BlessStat>;
   BlessStepper: All<typeof BlessStepper>;
   BlessSuggestions: All<typeof BlessSuggestions>;
@@ -598,6 +600,7 @@ export const labelsId: BlessLabelsFull = {
     groupHint: "Alt dengan panah kiri atau kanan mengirimnya ke daftar lain.",
     roleDescription: "item yang dapat diurutkan",
   },
+  BlessSources: { title: "Sumber" },
   BlessStat: { up: "Naik", down: "Turun", flat: "Tidak berubah" },
   BlessStepper: { next: "Lanjut", prev: "Kembali", finish: "Selesai" },
   BlessSuggestions: { label: "Saran" },
