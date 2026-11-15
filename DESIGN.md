@@ -393,7 +393,7 @@ Twelve components, 201 → 213. Each uses native platform APIs only: the library
 Thirteen components, 213 → 226. Each uses native platform APIs only: the library adds no dependency. Each needs tests, a docs page with a live example, a README row, and words in `labelsId`. The charts are plain SVG with the chart colors, a hover for each value, and a table for screen readers, as `BlessSankey`.
 
 - ✅ `BlessBarChart`: bars for categories, vertical or horizontal, one or more series, grouped or stacked, with a value axis.
-- `BlessLineChart`: lines or filled areas for one or more series over a number or a date axis, with a crosshair on hover.
+- ✅ `BlessLineChart`: lines or filled areas for one or more series over a number or a date axis, with a crosshair on hover.
 - `BlessDonutChart`: parts of one whole as a donut or a pie, with the total in the center and a legend.
 - `BlessScatterChart`: points on two number axes, with an optional size for each point (a bubble chart).
 - `BlessBoxPlot`: the spread of values in groups: the median, the quartiles, the whiskers, and the outliers.

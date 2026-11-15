@@ -340,3 +340,4 @@ export { default as BlessSankey } from "./components/BlessSankey.vue";
 export type { BlessSankeyLink, BlessSankeyNode } from "./components/sankey";
 export { default as BlessBarChart } from "./components/BlessBarChart.vue";
 export type { BlessChartRow, BlessChartSeries } from "./components/chart";
+export { default as BlessLineChart } from "./components/BlessLineChart.vue";
