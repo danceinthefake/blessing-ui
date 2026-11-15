@@ -61,5 +61,6 @@ Alat-alat ini membangun, menguji, dan mendokumentasikan pustaka.
 - [Vitest](https://vitest.dev/), [Vue Test Utils](https://test-utils.vuejs.org/), dan [jsdom](https://github.com/jsdom/jsdom) untuk uji unit.
 - [Playwright](https://playwright.dev/) untuk pemeriksaan di Chromium, Firefox, dan WebKit, dengan [axe-core](https://github.com/dequelabs/axe-core), [pixelmatch](https://github.com/mapbox/pixelmatch), dan [pngjs](https://github.com/pngjs/pngjs) untuk audit dan perbandingan visual.
 - [oxfmt](https://oxc.rs/) dari proyek Oxc untuk format kode.
+- [pnpm](https://pnpm.io/) mengelola paket repositori. [Tab kode](../../components/code-tabs) juga memberi perintah untuk [npm](https://www.npmjs.com/), [Yarn](https://yarnpkg.com/), dan [Bun](https://bun.sh/).
 
 Terima kasih kepada semua orang yang membuat proyek-proyek ini.

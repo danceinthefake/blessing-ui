@@ -61,5 +61,6 @@ These tools build, test, and document the library.
 - [Vitest](https://vitest.dev/), [Vue Test Utils](https://test-utils.vuejs.org/), and [jsdom](https://github.com/jsdom/jsdom) for the unit tests.
 - [Playwright](https://playwright.dev/) for the checks in Chromium, Firefox, and WebKit, with [axe-core](https://github.com/dequelabs/axe-core), [pixelmatch](https://github.com/mapbox/pixelmatch), and [pngjs](https://github.com/pngjs/pngjs) for the audits and the visual diff.
 - [oxfmt](https://oxc.rs/) from the Oxc project for the format of the code.
+- [pnpm](https://pnpm.io/) manages the packages of the repository. The [code tabs](../components/code-tabs) also give the commands of [npm](https://www.npmjs.com/), [Yarn](https://yarnpkg.com/), and [Bun](https://bun.sh/).
 
 Thank you to everyone who made these projects.
