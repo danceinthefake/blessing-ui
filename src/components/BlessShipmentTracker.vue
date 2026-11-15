@@ -213,8 +213,35 @@ const at = computed(() => Math.min(Math.max(0, Math.round(props.stage)), STAGES.
   color: var(--bless-color-text-muted);
 }
 .bless-ship__history summary {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--bless-space-2);
   cursor: pointer;
   font-weight: var(--bless-font-weight-bold);
+  list-style: none;
+}
+.bless-ship__history summary::-webkit-details-marker {
+  display: none;
+}
+.bless-ship__history summary::after {
+  content: "";
+  inline-size: 6px;
+  block-size: 6px;
+  border-inline-end: 1.5px solid currentColor;
+  border-block-end: 1.5px solid currentColor;
+  rotate: -45deg;
+  transition: rotate var(--bless-duration-fast) var(--bless-ease-out);
+}
+[dir="rtl"] .bless-ship__history summary::after {
+  rotate: 135deg;
+}
+.bless-ship__history[open] summary::after {
+  rotate: 45deg;
+}
+@media (prefers-reduced-motion: reduce) {
+  .bless-ship__history summary::after {
+    transition: none;
+  }
 }
 .bless-ship__history summary:focus-visible {
   outline: 2px solid var(--bless-color-accent);

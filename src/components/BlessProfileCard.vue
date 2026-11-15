@@ -120,6 +120,7 @@ const compact = computed(
 .bless-profile__name {
   margin: var(--bless-space-3) 0 0;
   font-size: var(--bless-text-lg);
+  font-weight: var(--bless-font-weight-bold);
   line-height: 1.3;
 }
 .bless-profile__name a {

@@ -103,7 +103,7 @@ const toggle = (s: number) => (filter.value = filter.value === s ? undefined : s
   gap: var(--bless-space-1);
 }
 .bless-reviews__avg {
-  font-size: var(--bless-text-display, 3rem);
+  font-size: var(--bless-text-headline);
   line-height: 1;
   font-variant-numeric: tabular-nums;
 }

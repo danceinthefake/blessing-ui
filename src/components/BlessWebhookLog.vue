@@ -95,6 +95,7 @@ const show = (v: unknown) => (typeof v === "string" ? v : JSON.stringify(v, null
         >
           {{ text.retry }}
         </BlessButton>
+        <span v-else aria-hidden="true" />
       </li>
     </ul>
   </section>
@@ -116,10 +117,11 @@ const show = (v: unknown) => (typeof v === "string" ? v : JSON.stringify(v, null
   border: var(--bless-border-width) solid var(--bless-color-border);
   list-style: none;
 }
+/* every row keeps a column for the retry button, so the times line up */
 .bless-hooks__item {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 7.5rem;
+  align-items: start;
   gap: var(--bless-space-2);
   padding: var(--bless-space-1) var(--bless-space-2);
 }
@@ -127,7 +129,6 @@ const show = (v: unknown) => (typeof v === "string" ? v : JSON.stringify(v, null
   border-block-start: var(--bless-border-width) solid var(--bless-color-border);
 }
 .bless-hooks__details {
-  flex: 1;
   min-inline-size: 0;
 }
 .bless-hooks__head {
@@ -213,6 +214,7 @@ const show = (v: unknown) => (typeof v === "string" ? v : JSON.stringify(v, null
   overflow-wrap: anywhere;
 }
 .bless-hooks__retry {
+  justify-self: end;
   margin-block-start: var(--bless-space-1);
 }
 </style>
