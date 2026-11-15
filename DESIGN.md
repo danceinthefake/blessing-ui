@@ -486,7 +486,7 @@ Sixteen components, 270 → 286. Each uses native platform APIs only: the librar
 - ✅ `BlessOpeningHours`: the hours of each day of the week, with closed days, two shifts, and "Open now".
 - ✅ `BlessHabitTracker`: a grid of days for each habit, with check marks, the streak, and the rate.
 - ✅ `BlessQuotaUsage`: the limits of a plan as bars, with the use in words and a warning near the end.
-- `BlessSeatPicker`: a map of seats in rows, with free, taken, and chosen seats, and prices by zone.
+- ✅ `BlessSeatPicker`: a map of seats in rows, with free, taken, and chosen seats, and prices by zone.
 - `BlessTicket`: an event ticket with a tear line, the date, the seat, and a QR code.
 - `BlessRsvp`: going, maybe, and not going, with counts and the faces of people who go.
 - `BlessCountdownBanner`: a strip at the top with the time left to an event and a link.

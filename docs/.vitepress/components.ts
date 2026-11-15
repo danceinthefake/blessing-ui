@@ -118,6 +118,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         text: "The free times of a day, as buttons to pick one",
       },
       {
+        name: "BlessSeatPicker",
+        slug: "seat-picker",
+        text: "A map of seats in rows, with prices by zone",
+      },
+      {
         name: "BlessAvailabilityGrid",
         slug: "availability-grid",
         text: "A week of time cells, to mark when a person is free",

@@ -11416,6 +11416,66 @@
   ],
   "exposed": []
  },
+ "BlessSeatPicker": {
+  "props": [
+   {
+    "name": "rows",
+    "type": "BlessSeatRow[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "zones",
+    "type": "BlessSeatZone[] | undefined",
+    "required": false,
+    "default": "[]",
+    "description": ""
+   },
+   {
+    "name": "max",
+    "type": "number | undefined",
+    "required": false,
+    "default": "0",
+    "description": "the most seats in one order; 0 has no limit"
+   },
+   {
+    "name": "currency",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"USD\"",
+    "description": ""
+   },
+   {
+    "name": "locale",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"en\"",
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ stage: string; free: string; taken: string; chosen: string; seat: (row: string, number: string, zone: string, price: string) => string; summary: (count: number, total: string) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "string[] | undefined",
+    "required": false,
+    "default": "[]",
+    "description": "the ids of the chosen seats"
+   }
+  ],
+  "events": [
+   {
+    "name": "update:modelValue",
+    "type": "[value: string[]]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessSection": {
   "props": [
    {
