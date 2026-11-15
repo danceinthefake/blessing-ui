@@ -126,7 +126,8 @@ function onKey(e: KeyboardEvent) {
       <span class="bless-dock__icon" aria-hidden="true">
         <slot name="item" :item="it">{{ it.icon }}</slot>
       </span>
-      <span class="bless-dock__tip" aria-hidden="true">{{ it.label }}</span>
+      <!-- the space keeps "Mail 3" apart for tools that read the text -->
+      <span class="bless-dock__tip" aria-hidden="true">{{ it.label }}</span>{{ " " }}
       <span v-if="it.badge != null" class="bless-dock__badge" aria-hidden="true">{{
         it.badge
       }}</span>
