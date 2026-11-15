@@ -2999,6 +2999,38 @@
   ],
   "exposed": []
  },
+ "BlessContextMeter": {
+  "props": [
+   {
+    "name": "parts",
+    "type": "BlessContextPart[]",
+    "required": true,
+    "description": "the parts of the context that use tokens"
+   },
+   {
+    "name": "max",
+    "type": "number",
+    "required": true,
+    "description": "the size of the context window, in tokens"
+   },
+   {
+    "name": "warn",
+    "type": "number | undefined",
+    "required": false,
+    "default": "0.8",
+    "description": "the share at which the ring turns to the warning color"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ title: string; free: string; used: (used: string, max: string, share: string) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessCopyButton": {
   "props": [
    {
@@ -9734,14 +9766,13 @@
     "name": "open",
     "type": "boolean | undefined",
     "required": false,
-    "default": "undefined",
     "description": "open while it streams, and it closes at the end unless the reader opened or closed it"
    }
   ],
   "events": [
    {
     "name": "update:open",
-    "type": "[value: boolean]",
+    "type": "[value: boolean | undefined]",
     "description": ""
    }
   ],

@@ -18,6 +18,7 @@ import type BlessCodeBlock from "../components/BlessCodeBlock.vue";
 import type BlessColorSwatches from "../components/BlessColorSwatches.vue";
 import type BlessCommand from "../components/BlessCommand.vue";
 import type BlessConnectionStatus from "../components/BlessConnectionStatus.vue";
+import type BlessContextMeter from "../components/BlessContextMeter.vue";
 import type BlessCopyButton from "../components/BlessCopyButton.vue";
 import type BlessCronInput from "../components/BlessCronInput.vue";
 import type BlessCropper from "../components/BlessCropper.vue";
@@ -109,6 +110,7 @@ export type BlessLabelsFull = {
   BlessColorSwatches: All<typeof BlessColorSwatches>;
   BlessCommand: All<typeof BlessCommand>;
   BlessConnectionStatus: All<typeof BlessConnectionStatus>;
+  BlessContextMeter: All<typeof BlessContextMeter>;
   BlessCopyButton: All<typeof BlessCopyButton>;
   BlessCronInput: All<typeof BlessCronInput>;
   BlessCropper: All<typeof BlessCropper>;
@@ -269,6 +271,11 @@ export const labelsId: BlessLabelsFull = {
     back: "Kembali daring",
     connecting: "Menyambung ulang…",
     offline: "Anda sedang luring",
+  },
+  BlessContextMeter: {
+    title: "Jendela konteks",
+    free: "Kosong",
+    used: (u, m, s) => `Konteks: ${u} dari ${m} token terpakai (${s})`,
   },
   BlessCopyButton: copy,
   BlessCronInput: {
