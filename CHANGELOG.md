@@ -5,7 +5,8 @@
 ### Added
 
 - `BlessCandlestick`: candles for the open, high, low, and close of each period. A rise is hollow and a fall is filled, and a table reads the numbers to screen readers.
-- `BlessSunburst`: a tree of parts as rings around the total, with the same nodes as `BlessTreemap`. Children use a lighter shade of their parent, and a table reads each path to screen readers. 240 components in all.
+- `BlessSunburst`: a tree of parts as rings around the total, with the same nodes as `BlessTreemap`. Children use a lighter shade of their parent, and a table reads each path to screen readers.
+- `BlessDumbbell`: two values for each row, such as before and after, as a hollow dot and a filled dot joined by a line. A table reads the change of each row to screen readers. 241 components in all.
 
 ## 0.6.0 — 2026-11-15
 

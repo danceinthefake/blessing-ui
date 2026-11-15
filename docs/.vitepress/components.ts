@@ -590,6 +590,11 @@ export const groups: { title: string; items: Entry[] }[] = [
       },
       { name: "BlessSunburst", slug: "sunburst", text: "A tree of parts as rings around a center" },
       {
+        name: "BlessDumbbell",
+        slug: "dumbbell",
+        text: "Two values for each row, joined by a line",
+      },
+      {
         name: "BlessPricingTable",
         slug: "pricing-table",
         text: "Plans side by side, with a monthly or yearly switch",

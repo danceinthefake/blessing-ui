@@ -431,7 +431,7 @@ Sixteen components, 238 → 254. Each uses native platform APIs only: the librar
 
 - ✅ `BlessCandlestick`: the open, high, low, and close of each day, as a thin line and a box, for prices or daily ranges.
 - ✅ `BlessSunburst`: a tree of parts as rings around a center, for example budget, team, and item.
-- `BlessDumbbell`: two dots for each row, joined by a line, for before and after, or plan and actual.
+- ✅ `BlessDumbbell`: two dots for each row, joined by a line, for before and after, or plan and actual.
 - `BlessWaffle`: a grid of 100 squares that shows parts of a whole.
 - `BlessReasoning`: a panel that folds, with the reasoning of a model, the time it took, and a live state while it thinks.
 - `BlessSources`: the sources of a reply, as a list with the site name and a link, and numbered marks that point to it.
