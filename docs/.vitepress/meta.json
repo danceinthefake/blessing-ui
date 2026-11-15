@@ -11975,6 +11975,74 @@
   ],
   "exposed": []
  },
+ "BlessToolCall": {
+  "props": [
+   {
+    "name": "name",
+    "type": "string",
+    "required": true,
+    "description": "the name of the tool, for example `search_web`"
+   },
+   {
+    "name": "status",
+    "type": "\"done\" | \"error\" | \"running\" | undefined",
+    "required": false,
+    "default": "\"running\"",
+    "description": ""
+   },
+   {
+    "name": "summary",
+    "type": "string | undefined",
+    "required": false,
+    "description": "a short line after the name, for example the search words"
+   },
+   {
+    "name": "input",
+    "type": "unknown",
+    "required": false,
+    "description": "the arguments: a text, or data that shows as JSON"
+   },
+   {
+    "name": "output",
+    "type": "unknown",
+    "required": false,
+    "description": "the result or the error: a text, or data that shows as JSON"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ running: string; done: string; error: string; input: string; output: string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "open",
+    "type": "boolean | undefined",
+    "required": false,
+    "default": "false",
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "update:open",
+    "type": "[value: boolean]",
+    "description": ""
+   }
+  ],
+  "slots": [
+   {
+    "name": "input",
+    "type": "{}",
+    "description": ""
+   },
+   {
+    "name": "output",
+    "type": "{}",
+    "description": ""
+   }
+  ],
+  "exposed": []
+ },
  "BlessToolbar": {
   "props": [
    {

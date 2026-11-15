@@ -22,7 +22,8 @@
 - `BlessScatterChart`: points on two number axes in plain SVG, colored by group, with an optional size for a bubble chart, axis names, a hover for each point, and a table for screen readers.
 - `BlessBoxPlot`: the spread of values in groups in plain SVG: the box from the quartiles, the median, whiskers to 1.5 × IQR, outliers as dots, and a table for screen readers. You give the raw values.
 - `BlessPromptInput`: the text box of a chat with an assistant. It grows with the text, Enter sends (not inside an input method), Shift+Enter adds a line, files go with the message, and the send button becomes a stop button while `busy`.
-- `BlessStreamingText`: the reply of an assistant as it comes in, with a caret until `done`, an optional even `pace` between parts, and `aria-busy` so screen readers read the full reply once. 220 components in all.
+- `BlessStreamingText`: the reply of an assistant as it comes in, with a caret until `done`, an optional even `pace` between parts, and `aria-busy` so screen readers read the full reply once.
+- `BlessToolCall`: one step of an assistant, such as a web search, with its name, a status word and icon (running, done, or failed), and its input and output as text or JSON in a native `<details>`. 221 components in all.
 
 ## 0.5.0 — 2026-11-15
 

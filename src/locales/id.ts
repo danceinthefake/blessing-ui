@@ -55,6 +55,7 @@ import type BlessStepper from "../components/BlessStepper.vue";
 import type BlessSwipeDeck from "../components/BlessSwipeDeck.vue";
 import type BlessThread from "../components/BlessThread.vue";
 import type BlessTimer from "../components/BlessTimer.vue";
+import type BlessToolCall from "../components/BlessToolCall.vue";
 import type BlessTour from "../components/BlessTour.vue";
 import type BlessTreemap from "../components/BlessTreemap.vue";
 import type BlessTypingIndicator from "../components/BlessTypingIndicator.vue";
@@ -125,6 +126,7 @@ export type BlessLabelsFull = {
   BlessSwipeDeck: All<typeof BlessSwipeDeck>;
   BlessThread: All<typeof BlessThread>;
   BlessTimer: All<typeof BlessTimer>;
+  BlessToolCall: All<typeof BlessToolCall>;
   BlessTour: All<typeof BlessTour>;
   BlessTreemap: All<typeof BlessTreemap>;
   BlessTypingIndicator: All<typeof BlessTypingIndicator>;
@@ -487,6 +489,13 @@ export const labelsId: BlessLabelsFull = {
     reset: "Atur ulang",
     finished: "Selesai",
     round: (r, n) => `ronde ${r} dari ${n}`,
+  },
+  BlessToolCall: {
+    running: "Berjalan",
+    done: "Selesai",
+    error: "Gagal",
+    input: "Masukan",
+    output: "Keluaran",
   },
   BlessTour: {
     next: "Lanjut",
