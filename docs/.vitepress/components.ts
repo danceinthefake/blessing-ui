@@ -511,6 +511,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "activity-feed",
         text: "What people did, in groups by day",
       },
+      {
+        name: "BlessLeaderboard",
+        slug: "leaderboard",
+        text: "Ranked rows with the place, the move and the score",
+      },
       { name: "BlessBubble", slug: "bubble", text: "Message bubble" },
       { name: "BlessMarker", slug: "marker", text: "Inline status / note / separator / row" },
       { name: "BlessAttachment", slug: "attachment", text: "File / image chip" },
