@@ -6,6 +6,10 @@ type Status = "running" | "done" | "error";
 const search = ref<Status>("done");
 const fetchPage = ref<Status>("error");
 const write = ref<Status>("running");
+const results = [
+  { title: "How to name an episode", url: "https://example.com/a" },
+  { title: "Titles that get clicks", url: "https://example.com/b" },
+];
 
 function rerun() {
   write.value = "running";
@@ -20,10 +24,7 @@ function rerun() {
       summary="podcast episode titles"
       :status="search"
       :input="{ query: 'podcast episode titles', limit: 3 }"
-      :output="[
-        { title: 'How to name an episode', url: 'https://example.com/a' },
-        { title: 'Titles that get clicks', url: 'https://example.com/b' },
-      ]"
+      :output="results"
     />
     <BlessToolCall
       name="fetch_page"
