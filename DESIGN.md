@@ -465,7 +465,7 @@ Sixteen components, 254 → 270. Each uses native platform APIs only: the librar
 - ✅ `BlessShipmentTracker`: the steps of a delivery, with dates and the latest event.
 - ✅ `BlessVariantPicker`: the options of a product, such as size and color, with sold-out options crossed out.
 - ✅ `BlessReviewSummary`: the average stars, the count, and a bar for each star level that filters.
-- `BlessProfileCard`: a person with a cover, an avatar, a bio, counts, and a follow button.
+- ✅ `BlessProfileCard`: a person with a cover, an avatar, a bio, counts, and a follow button.
 - `BlessApiKeyField`: a secret key, hidden by default, with show, copy, and make a new key.
 - `BlessWebhookLog`: sent events with the status, the time, a retry button, and the bodies in a fold.
 

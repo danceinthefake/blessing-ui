@@ -61,6 +61,7 @@ import type BlessPickList from "../components/BlessPickList.vue";
 import type BlessPinPad from "../components/BlessPinPad.vue";
 import type BlessPoll from "../components/BlessPoll.vue";
 import type BlessPricingTable from "../components/BlessPricingTable.vue";
+import type BlessProfileCard from "../components/BlessProfileCard.vue";
 import type BlessPromptInput from "../components/BlessPromptInput.vue";
 import type BlessPyramid from "../components/BlessPyramid.vue";
 import type BlessQueryBuilder from "../components/BlessQueryBuilder.vue";
@@ -168,6 +169,7 @@ export type BlessLabelsFull = {
   BlessPinPad: All<typeof BlessPinPad>;
   BlessPoll: All<typeof BlessPoll>;
   BlessPricingTable: All<typeof BlessPricingTable>;
+  BlessProfileCard: All<typeof BlessProfileCard>;
   BlessPromptInput: All<typeof BlessPromptInput>;
   BlessPyramid: All<typeof BlessPyramid>;
   BlessQueryBuilder: All<typeof BlessQueryBuilder>;
@@ -606,6 +608,7 @@ export const labelsId: BlessLabelsFull = {
     choose: "Pilih paket",
     save: (pct) => `Hemat ${pct}%`,
   },
+  BlessProfileCard: { follow: "Ikuti", following: "Mengikuti" },
   BlessPromptInput: {
     label: "Pesan",
     placeholder: "Tanyakan apa saja",

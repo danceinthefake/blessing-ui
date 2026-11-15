@@ -9225,6 +9225,94 @@
   "slots": [],
   "exposed": []
  },
+ "BlessProfileCard": {
+  "props": [
+   {
+    "name": "name",
+    "type": "string",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "handle",
+    "type": "string | undefined",
+    "required": false,
+    "description": "for example `@ana`"
+   },
+   {
+    "name": "avatar",
+    "type": "string | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "cover",
+    "type": "string | undefined",
+    "required": false,
+    "description": "a picture for the band at the top"
+   },
+   {
+    "name": "bio",
+    "type": "string | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "stats",
+    "type": "BlessProfileStat[] | undefined",
+    "required": false,
+    "default": "[]",
+    "description": "counts under the bio, for example followers and episodes"
+   },
+   {
+    "name": "href",
+    "type": "string | undefined",
+    "required": false,
+    "description": "a link for the name"
+   },
+   {
+    "name": "followable",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": "show the follow button"
+   },
+   {
+    "name": "locale",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"en\"",
+    "description": "the language of the counts, for example `id`"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ follow: string; following: string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "following",
+    "type": "boolean | undefined",
+    "required": false,
+    "default": "false",
+    "description": "the reader follows this person"
+   }
+  ],
+  "events": [
+   {
+    "name": "update:following",
+    "type": "[value: boolean]",
+    "description": ""
+   }
+  ],
+  "slots": [
+   {
+    "name": "actions",
+    "type": "{}",
+    "description": ""
+   }
+  ],
+  "exposed": []
+ },
  "BlessProgress": {
   "props": [
    {
