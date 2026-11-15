@@ -10,7 +10,7 @@ import SeatPickerBasic from "../demos/SeatPickerBasic.vue";
 
 <p class="bless-lead">A map of seats in rows, with prices by zone</p>
 
-Lets a person choose seats for a show, a talk, or a live recording. Each seat shows if it is free, taken, or chosen, and its zone sets the price. For times in place of seats, use the [slot picker](./slot-picker).
+Lets a person choose seats for a show, a talk, or a live recording. Each seat shows its state: free, taken, or chosen. Its zone sets the price. For times in place of seats, use the [slot picker](./slot-picker).
 
 <Demo title="Basic">
   <SeatPickerBasic />
