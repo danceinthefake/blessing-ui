@@ -23,7 +23,7 @@ const emit = defineEmits<{ click: [e: MouseEvent]; select: [item: BlessMenuItem]
 </script>
 
 <template>
-  <BlessButtonGroup class="bless-split" :label="label">
+  <BlessButtonGroup class="bless-splitbtn" :label="label">
     <BlessButton :color :variant :size :disabled :loading @click="emit('click', $event)">
       <slot>{{ label }}</slot>
     </BlessButton>
@@ -36,7 +36,7 @@ const emit = defineEmits<{ click: [e: MouseEvent]; select: [item: BlessMenuItem]
           :disabled
           :aria-label="menuLabel"
           :aria-expanded="open"
-          class="bless-split__more"
+          class="bless-splitbtn__more"
           >▾</BlessButton
         >
       </template>
@@ -45,7 +45,7 @@ const emit = defineEmits<{ click: [e: MouseEvent]; select: [item: BlessMenuItem]
 </template>
 
 <style>
-.bless-split__more {
+.bless-splitbtn__more {
   padding-inline: var(--bless-space-2);
 }
 </style>

@@ -93,7 +93,7 @@ function edit(start?: string) {
   if (props.readonly) return;
   editing.value = true;
   draft.value = start ?? value(at.value.r, at.value.c);
-  nextTick(() => table.value?.querySelector<HTMLInputElement>(".bless-sheet__input")?.focus());
+  nextTick(() => table.value?.querySelector<HTMLInputElement>(".bless-spreadsheet__input")?.focus());
 }
 function commit(dr: number, dc: number) {
   if (!editing.value) return;
@@ -202,10 +202,10 @@ function onDown(e: PointerEvent, r: number, c: number) {
 </script>
 
 <template>
-  <div class="bless-sheet">
+  <div class="bless-spreadsheet">
     <table
       ref="table"
-      class="bless-sheet__table"
+      class="bless-spreadsheet__table"
       role="grid"
       :aria-label="label"
       :aria-rowcount="rows.length + 1"
@@ -219,18 +219,18 @@ function onDown(e: PointerEvent, r: number, c: number) {
     >
       <thead>
         <tr>
-          <td class="bless-sheet__corner" />
-          <th v-for="(h, c) in heads" :key="c" scope="col" class="bless-sheet__col">{{ h }}</th>
+          <td class="bless-spreadsheet__corner" />
+          <th v-for="(h, c) in heads" :key="c" scope="col" class="bless-spreadsheet__col">{{ h }}</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="(_, r) in rows" :key="r">
-          <th scope="row" class="bless-sheet__row">{{ r + 1 }}</th>
+          <th scope="row" class="bless-spreadsheet__row">{{ r + 1 }}</th>
           <td
             v-for="c in colCount"
             :key="c"
             role="gridcell"
-            class="bless-sheet__cell"
+            class="bless-spreadsheet__cell"
             :class="{
               'is-active': at.r === r && at.c === c - 1,
               'is-number': numeric(value(r, c - 1)),
@@ -244,7 +244,7 @@ function onDown(e: PointerEvent, r: number, c: number) {
             <input
               v-if="editing && at.r === r && at.c === c - 1"
               v-model="draft"
-              class="bless-sheet__input"
+              class="bless-spreadsheet__input"
               :aria-label="`${heads[c - 1]}${r + 1}`"
               @keydown.stop="onEditKey"
               @blur="commit(0, 0)"
@@ -258,40 +258,40 @@ function onDown(e: PointerEvent, r: number, c: number) {
 </template>
 
 <style>
-.bless-sheet {
+.bless-spreadsheet {
   max-inline-size: 100%;
   overflow: auto;
   font-family: var(--bless-font-sans);
   font-size: var(--bless-text-sm);
   color: var(--bless-color-text);
 }
-.bless-sheet__table {
+.bless-spreadsheet__table {
   border-collapse: collapse;
   table-layout: fixed;
 }
-.bless-sheet__table th,
-.bless-sheet__table td {
+.bless-spreadsheet__table th,
+.bless-spreadsheet__table td {
   block-size: 2rem;
   border: var(--bless-border-width) solid var(--bless-color-border);
 }
-.bless-sheet__col,
-.bless-sheet__row,
-.bless-sheet__corner {
+.bless-spreadsheet__col,
+.bless-spreadsheet__row,
+.bless-spreadsheet__corner {
   background: var(--bless-color-surface-2);
-  color: var(--bless-color-text-muted);
+  color: var(--bless-color-text);
   font-size: var(--bless-text-xs);
   font-weight: normal;
 }
-.bless-sheet__col {
-  min-inline-size: var(--bless-sheet-column, 7.5rem);
+.bless-spreadsheet__col {
+  min-inline-size: var(--bless-spreadsheet-column, 7.5rem);
 }
-.bless-sheet__row {
+.bless-spreadsheet__row {
   inline-size: 2.5rem;
   font-variant-numeric: tabular-nums;
 }
-.bless-sheet__cell {
+.bless-spreadsheet__cell {
   position: relative;
-  max-inline-size: var(--bless-sheet-column, 7.5rem);
+  max-inline-size: var(--bless-spreadsheet-column, 7.5rem);
   padding: 0 var(--bless-space-2);
   overflow: hidden;
   text-overflow: ellipsis;
@@ -300,21 +300,21 @@ function onDown(e: PointerEvent, r: number, c: number) {
   outline: none;
   user-select: none;
 }
-.bless-sheet__cell.is-number {
+.bless-spreadsheet__cell.is-number {
   font-variant-numeric: tabular-nums;
   text-align: end;
 }
-.bless-sheet__cell[aria-selected="true"] {
-  background: var(--bless-color-accent-soft);
+.bless-spreadsheet__cell[aria-selected="true"] {
+  background: color-mix(in srgb, var(--bless-color-accent) 16%, var(--bless-color-bg));
 }
 /* the active cell has a thick frame, and a focus ring when the grid has the focus */
-.bless-sheet__cell.is-active {
+.bless-spreadsheet__cell.is-active {
   box-shadow: inset 0 0 0 2px var(--bless-color-accent);
 }
-.bless-sheet__cell.is-active:focus-visible {
+.bless-spreadsheet__cell.is-active:focus-visible {
   box-shadow: inset 0 0 0 3px var(--bless-color-accent);
 }
-.bless-sheet__input {
+.bless-spreadsheet__input {
   position: absolute;
   inset: 0;
   inline-size: 100%;

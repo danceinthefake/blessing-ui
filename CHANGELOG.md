@@ -2,6 +2,15 @@
 
 ## Unreleased
 
+Sixteen new components, 254 in all: more charts, parts for the replies of an assistant, media and reading parts, and social parts. The library still has no dependencies. No API is removed, but three components have new CSS class names: see "Changed" below.
+
+### Changed
+
+- `BlessRelativeTime` now has the class `.bless-reltime`, not `.bless-time`. The old class was also the class of `BlessTimePicker`, so a page with both components put the border of the time field on each relative time.
+- `BlessRangeCalendar` now uses `.bless-rangecal` and `.bless-rangecal__*`, not `.bless-range*`. The old classes were also the classes of the `BlessRange` slider, and the two components changed the look of each other.
+- `BlessSplitButton` now uses `.bless-splitbtn` and `.bless-splitbtn__more`, not `.bless-split*`. The old root class also took the layout of `BlessSplitView`.
+- If your CSS targets one of the old classes, change it to the new class.
+
 ### Added
 
 - `BlessCandlestick`: candles for the open, high, low, and close of each period. A rise is hollow and a fall is filled, and a table reads the numbers to screen readers.

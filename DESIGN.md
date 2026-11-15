@@ -445,6 +445,8 @@ Sixteen components, 238 → 254. Each uses native platform APIs only: the librar
 - ✅ `BlessActivityFeed`: events with a person, an action, and a time, in groups by day.
 - ✅ `BlessLeaderboard`: ranked rows with the place, the change since last time, and the score, with your row marked.
 - ✅ `BlessSpreadsheet`: a grid of cells that you edit, with arrow keys, Enter to edit, and paste from a spreadsheet app.
+- ✅ Class names: two components may not style the same block of classes. `src/classes.test.ts` checks it. The check found three old clashes (`.bless-time`, `.bless-range`, `.bless-split`), and their classes are now unique.
+- ✅ Budget: after the round, the whole library is 168.8 KB gz JS and 45.9 KB gz CSS, under the cap of 173 / 48. Phase 30 is done.
 
 ### Deliberately skipped
 
