@@ -3189,6 +3189,37 @@
   ],
   "exposed": []
  },
+ "BlessComparisonTable": {
+  "props": [
+   {
+    "name": "plans",
+    "type": "BlessComparePlan[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "rows",
+    "type": "BlessCompareRow[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "label",
+    "type": "string | undefined",
+    "required": false,
+    "description": "names the table"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ feature: string; yes: string; no: string; title: string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessConfetti": {
   "props": [
    {
