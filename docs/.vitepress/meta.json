@@ -1203,6 +1203,43 @@
   ],
   "exposed": []
  },
+ "BlessBulkActionBar": {
+  "props": [
+   {
+    "name": "count",
+    "type": "number",
+    "required": true,
+    "description": "how many rows are selected; the bar shows when it is more than 0"
+   },
+   {
+    "name": "fixed",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": "on the bottom of the window, not the bottom of its box"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ label: string; selected: (n: number) => string; clear: string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "clear",
+    "type": "[]",
+    "description": ""
+   }
+  ],
+  "slots": [
+   {
+    "name": "default",
+    "type": "{}",
+    "description": ""
+   }
+  ],
+  "exposed": []
+ },
  "BlessBulletChart": {
   "props": [
    {

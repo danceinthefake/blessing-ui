@@ -351,6 +351,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "selection-toolbar",
         text: "Actions above the selected text",
       },
+      {
+        name: "BlessBulkActionBar",
+        slug: "bulk-action-bar",
+        text: "A bar of actions for the selected rows",
+      },
       { name: "BlessPanel", slug: "panel", text: "Titled box with actions, toggleable" },
       { name: "BlessStepper", slug: "stepper", text: "Steps header + panels + next / back" },
       { name: "BlessSplitButton", slug: "split-button", text: "Button with a menu half" },

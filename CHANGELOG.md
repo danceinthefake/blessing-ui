@@ -34,7 +34,8 @@
 - `BlessWaterfallChart`: how a start value goes up and down in steps to an end value, with green and red steps, totals from zero, dashed links between bars, and a table for screen readers.
 - `BlessBulletChart`: one value against a target and gray bands (poor, fair, good) in one thin bar, with labels that line up across rows, and a meter that says the value, the target, and the band in words.
 - `BlessSlotPicker`: the free times of a day as native radio buttons, sorted into morning, afternoon, and evening, with taken slots that cannot be picked and times in the locale format.
-- `BlessAvailabilityGrid`: a week of time cells where a drag paints a rectangle free or busy, with a grid that works with the keyboard and says each state in words. 232 components in all.
+- `BlessAvailabilityGrid`: a week of time cells where a drag paints a rectangle free or busy, with a grid that works with the keyboard and says each state in words.
+- `BlessBulkActionBar`: a dark bar that slides up when rows are selected, with the count, the actions in a slot, and a clear button. It sticks to the bottom of its box, or of the window with `fixed`, and it speaks a new count. 233 components in all.
 
 ## 0.5.0 — 2026-11-15
 

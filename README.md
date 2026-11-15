@@ -10,7 +10,7 @@ Vue 3 component library and design tokens. The UI is gray-scale, with one accent
 
 Docs, with every component live: **[ui.blessing.id](https://ui.blessing.id)**
 
-- 232 components, from button to data table to chat. Only `--bless-*` custom properties style them. There is no Tailwind dependency.
+- 233 components, from button to data table to chat. Only `--bless-*` custom properties style them. There is no Tailwind dependency.
 - Native platform first: `<dialog>`, Popover API, `<details>`, native form controls, `Intl` dates, and scroll-snap. There is no positioning, date, or table library.
 - Accessible defaults: focus rings, ARIA tablist, dialog, and tables, and `prefers-reduced-motion`
 - ESM, tree-shakable, with `vue` as the only required peer (`@tiptap/vue-3` is optional, for `BlessEditor`). One component (`BlessButton`) costs about 1 KB gzip of JS and about 2.6 KB of CSS (tokens and its own styles). Everything costs about 151 KB and 41 KB. CSS is split per component and the import pulls it in, so you never pay for styles that you do not use
@@ -92,7 +92,7 @@ The words that components say are English by default. `provideLabels(labelsId)` 
 
 ## Components
 
-232 components across eight groups. Every one styles itself from `--bless-*` tokens and ships with a test and a docs page.
+233 components across eight groups. Every one styles itself from `--bless-*` tokens and ships with a test and a docs page.
 
 ### Primitives
 
@@ -239,6 +239,7 @@ The words that components say are English by default. `provideLabels(labelsId)` 
 | `BlessToc`                                  | Table of contents with the current heading marked                                             | `items` `[{id,label,level}]`, `selector`, `label`, `rootMargin`                                                                                            |
 | `BlessToolbar`                              | Start / center / end bar                                                                      | `label`, `surface`. `#start` `#center` `#end`                                                                                                              |
 | `BlessSelectionToolbar`                     | Actions above the selected text                                                               | `actions`, `min-length`, `action`, `#toolbar`                                                                                                              |
+| `BlessBulkActionBar`                        | A bar of actions for the selected rows                                                        | `count`, `fixed`, `clear`, default slot                                                                                                                    |
 | `BlessPanel`                                | Titled box                                                                                    | `title`, `toggleable`, `v-model:collapsed`, `surface`. `#actions` `#footer`                                                                                |
 | `BlessStepper`                              | Steps + panels                                                                                | `steps`, `v-model`, `orientation`, `labels`. `#default="{step,index,next,prev,last}"` `#actions`. Emits `finish`                                           |
 | `BlessSplitButton`                          | Button + menu                                                                                 | `label`, `items`, `color`, `variant`, `size`. Emits `click` `select`                                                                                       |

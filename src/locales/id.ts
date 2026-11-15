@@ -6,6 +6,7 @@ import type BlessAvailabilityGrid from "../components/BlessAvailabilityGrid.vue"
 import type BlessAvatarGroup from "../components/BlessAvatarGroup.vue";
 import type BlessBarChart from "../components/BlessBarChart.vue";
 import type BlessBoxPlot from "../components/BlessBoxPlot.vue";
+import type BlessBulkActionBar from "../components/BlessBulkActionBar.vue";
 import type BlessBulletChart from "../components/BlessBulletChart.vue";
 import type BlessCalendar from "../components/BlessCalendar.vue";
 import type BlessCameraCapture from "../components/BlessCameraCapture.vue";
@@ -86,6 +87,7 @@ export type BlessLabelsFull = {
   BlessAvatarGroup: All<typeof BlessAvatarGroup>;
   BlessBarChart: All<typeof BlessBarChart>;
   BlessBoxPlot: All<typeof BlessBoxPlot>;
+  BlessBulkActionBar: All<typeof BlessBulkActionBar>;
   BlessBulletChart: All<typeof BlessBulletChart>;
   BlessCalendar: All<typeof BlessCalendar>;
   BlessCameraCapture: All<typeof BlessCameraCapture>;
@@ -197,6 +199,11 @@ export const labelsId: BlessLabelsFull = {
     q3: "Kuartil atas",
     max: "Tertinggi",
     outliers: "Pencilan",
+  },
+  BlessBulkActionBar: {
+    label: "Item terpilih",
+    selected: (n) => `${n} dipilih`,
+    clear: "Hapus pilihan",
   },
   BlessBulletChart: { target: "target", bands: ["buruk", "cukup", "baik"] },
   BlessCalendar: month,
