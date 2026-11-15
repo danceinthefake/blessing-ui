@@ -437,3 +437,5 @@ export { default as BlessLollipop } from "./components/BlessLollipop.vue";
 export type { BlessLollipopItem } from "./components/BlessLollipop.vue";
 export { default as BlessVenn } from "./components/BlessVenn.vue";
 export type { BlessVennSet, BlessVennOverlap } from "./components/BlessVenn.vue";
+export { default as BlessRoseChart } from "./components/BlessRoseChart.vue";
+export type { BlessRoseItem } from "./components/BlessRoseChart.vue";

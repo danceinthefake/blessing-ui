@@ -700,6 +700,11 @@ export const groups: { title: string; items: Entry[] }[] = [
       },
       { name: "BlessVenn", slug: "venn", text: "Two or three circles that overlap" },
       {
+        name: "BlessRoseChart",
+        slug: "rose-chart",
+        text: "Wedges of equal angle whose size is the value",
+      },
+      {
         name: "BlessPricingTable",
         slug: "pricing-table",
         text: "Plans side by side, with a monthly or yearly switch",
