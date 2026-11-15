@@ -39,6 +39,7 @@ import type BlessPhoneInput from "../components/BlessPhoneInput.vue";
 import type BlessPickList from "../components/BlessPickList.vue";
 import type BlessPinPad from "../components/BlessPinPad.vue";
 import type BlessPoll from "../components/BlessPoll.vue";
+import type BlessPromptInput from "../components/BlessPromptInput.vue";
 import type BlessQueryBuilder from "../components/BlessQueryBuilder.vue";
 import type BlessQuestionnaire from "../components/BlessQuestionnaire.vue";
 import type BlessRangeCalendar from "../components/BlessRangeCalendar.vue";
@@ -108,6 +109,7 @@ export type BlessLabelsFull = {
   BlessPickList: All<typeof BlessPickList>;
   BlessPinPad: All<typeof BlessPinPad>;
   BlessPoll: All<typeof BlessPoll>;
+  BlessPromptInput: All<typeof BlessPromptInput>;
   BlessQueryBuilder: All<typeof BlessQueryBuilder>;
   BlessQuestionnaire: All<typeof BlessQuestionnaire>;
   BlessRangeCalendar: All<typeof BlessRangeCalendar>;
@@ -379,6 +381,14 @@ export const labelsId: BlessLabelsFull = {
     clear: "Kosongkan",
   },
   BlessPoll: { vote: "Pilih", yours: "pilihan Anda", votes: (n) => `${n} suara` },
+  BlessPromptInput: {
+    label: "Pesan",
+    placeholder: "Tanyakan apa saja",
+    send: "Kirim",
+    stop: "Hentikan",
+    attach: "Lampirkan berkas",
+    remove: "Hapus",
+  },
   BlessQueryBuilder: {
     group: "Aturan",
     match: "Cocokkan",
