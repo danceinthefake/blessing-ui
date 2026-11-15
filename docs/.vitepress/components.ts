@@ -93,6 +93,11 @@ export const groups: { title: string; items: Entry[] }[] = [
       { name: "BlessRange", slug: "range", text: "Two-thumb range on native inputs" },
       { name: "BlessTimePicker", slug: "time-picker", text: "Native time input with quick picks" },
       {
+        name: "BlessSlotPicker",
+        slug: "slot-picker",
+        text: "The free times of a day, as buttons to pick one",
+      },
+      {
         name: "BlessDateTimePicker",
         slug: "date-time-picker",
         text: "A date and a time in one field",

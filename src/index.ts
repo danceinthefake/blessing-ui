@@ -364,3 +364,5 @@ export { default as BlessHistogram } from "./components/BlessHistogram.vue";
 export { default as BlessWaterfallChart } from "./components/BlessWaterfallChart.vue";
 export type { BlessWaterfallStep } from "./components/BlessWaterfallChart.vue";
 export { default as BlessBulletChart } from "./components/BlessBulletChart.vue";
+export { default as BlessSlotPicker } from "./components/BlessSlotPicker.vue";
+export type { BlessSlot } from "./components/BlessSlotPicker.vue";
