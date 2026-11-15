@@ -31,6 +31,7 @@ import type BlessInfiniteCanvas from "../components/BlessInfiniteCanvas.vue";
 import type BlessInputNumber from "../components/BlessInputNumber.vue";
 import type BlessKanban from "../components/BlessKanban.vue";
 import type BlessKeyValueEditor from "../components/BlessKeyValueEditor.vue";
+import type BlessLightbox from "../components/BlessLightbox.vue";
 import type BlessLogViewer from "../components/BlessLogViewer.vue";
 import type BlessMarquee from "../components/BlessMarquee.vue";
 import type BlessNodeGraph from "../components/BlessNodeGraph.vue";
@@ -106,6 +107,7 @@ export type BlessLabelsFull = {
   BlessInputNumber: All<typeof BlessInputNumber>;
   BlessKanban: All<typeof BlessKanban>;
   BlessKeyValueEditor: All<typeof BlessKeyValueEditor>;
+  BlessLightbox: All<typeof BlessLightbox>;
   BlessLogViewer: All<typeof BlessLogViewer>;
   BlessMarquee: All<typeof BlessMarquee>;
   BlessNodeGraph: All<typeof BlessNodeGraph>;
@@ -361,6 +363,13 @@ export const labelsId: BlessLabelsFull = {
     enabled: "Aktif",
     remove: "Hapus",
     duplicate: "Kunci ini dipakai lebih dari sekali",
+  },
+  BlessLightbox: {
+    prev: "Sebelumnya",
+    next: "Berikutnya",
+    zoomIn: "Perbesar",
+    zoomOut: "Perkecil",
+    image: (n, of) => `Gambar ${n} dari ${of}`,
   },
   BlessLogViewer: {
     filter: "Saring baris",

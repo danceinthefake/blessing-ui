@@ -29,15 +29,15 @@ test("thumb click opens viewer at index; arrows step and wrap", async () => {
   await nextTick();
   expect(w.emitted("update:modelValue")![0]).toEqual([2]);
   expect(w.find("dialog").attributes("open")).toBeDefined();
-  expect(w.find(".bless-gallery__image").attributes("src")).toBe("/c.jpg");
-  expect(w.find(".bless-gallery__count").text()).toBe("3 / 3");
+  expect(w.find(".bless-lightbox__image").attributes("src")).toBe("/c.jpg");
+  expect(w.find(".bless-lightbox__count").text()).toBe("3 / 3");
 
-  await w.find(".bless-gallery__nav--next").trigger("click");
-  expect(w.find(".bless-gallery__image").attributes("src")).toBe("/a.jpg"); // wrapped
-  expect(w.find(".bless-gallery__caption").text()).toBe("cap A");
+  await w.find(".bless-lightbox__nav--next").trigger("click");
+  expect(w.find(".bless-lightbox__image").attributes("src")).toBe("/a.jpg"); // wrapped
+  expect(w.find(".bless-lightbox__caption").text()).toBe("cap A");
 
   await w.find(".bless-modal__close").trigger("keydown", { key: "ArrowLeft" });
-  expect(w.find(".bless-gallery__image").attributes("src")).toBe("/c.jpg");
+  expect(w.find(".bless-lightbox__image").attributes("src")).toBe("/c.jpg");
 
   await w.find(".bless-modal__close").trigger("click");
   await nextTick();
@@ -52,9 +52,9 @@ test("loop=false disables ends", async () => {
   });
   await nextTick();
   // marked, not disabled: a focused arrow at the end keeps focus inside the viewer
-  expect(w.find(".bless-gallery__nav--prev").attributes("aria-disabled")).toBe("true");
-  expect(w.find(".bless-gallery__nav--prev").attributes("disabled")).toBeUndefined();
-  expect(w.find(".bless-gallery__nav--next").attributes("aria-disabled")).toBeUndefined();
+  expect(w.find(".bless-lightbox__nav--prev").attributes("aria-disabled")).toBe("true");
+  expect(w.find(".bless-lightbox__nav--prev").attributes("disabled")).toBeUndefined();
+  expect(w.find(".bless-lightbox__nav--next").attributes("aria-disabled")).toBeUndefined();
   w.unmount();
 });
 
