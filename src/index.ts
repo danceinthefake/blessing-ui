@@ -360,3 +360,4 @@ export type { BlessSelection, BlessSelectionAction } from "./components/BlessSel
 export { default as BlessLightbox } from "./components/BlessLightbox.vue";
 export type { BlessLightboxItem } from "./components/BlessLightbox.vue";
 export { default as BlessHeatmap } from "./components/BlessHeatmap.vue";
+export { default as BlessHistogram } from "./components/BlessHistogram.vue";

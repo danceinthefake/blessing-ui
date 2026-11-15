@@ -4785,6 +4785,59 @@
   "slots": [],
   "exposed": []
  },
+ "BlessHistogram": {
+  "props": [
+   {
+    "name": "values",
+    "type": "number[]",
+    "required": true,
+    "description": "the raw values; the chart counts them in bins"
+   },
+   {
+    "name": "bins",
+    "type": "number | undefined",
+    "required": false,
+    "default": "10",
+    "description": "about how many bins; the edges are round numbers"
+   },
+   {
+    "name": "color",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"chart-1\"",
+    "description": ""
+   },
+   {
+    "name": "height",
+    "type": "number | undefined",
+    "required": false,
+    "default": "240",
+    "description": ""
+   },
+   {
+    "name": "format",
+    "type": "((v: number) => string) | undefined",
+    "required": false,
+    "description": "text for a bin edge, for example `(v) => v + \" min\"`"
+   },
+   {
+    "name": "label",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Chart\"",
+    "description": "names the chart and its table for screen readers"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ range: string; count: string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessHotspots": {
   "props": [
    {

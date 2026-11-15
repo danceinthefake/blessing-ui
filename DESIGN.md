@@ -412,7 +412,7 @@ Thirteen components, 213 → 226. Each uses native platform APIs only: the libra
 Twelve components, 226 → 238. Each uses native platform APIs only: the library adds no dependency. Each needs tests, a docs page with a live example, a README row, and words in `labelsId`. The whole-library budget goes up again for this round, to about 10% above the size after it.
 
 - ✅ `BlessHeatmap`: a grid of rows and columns, each cell colored by its value, for example plays by weekday and hour, with a legend of the scale.
-- `BlessHistogram`: raw values in round bins as bars, so the shape of the data shows.
+- ✅ `BlessHistogram`: raw values in round bins as bars, so the shape of the data shows.
 - `BlessWaterfallChart`: how a start value goes up and down in steps to an end value, with a bar for each step and totals.
 - `BlessBulletChart`: one value against a target and bands (poor, fair, good) in one thin bar, for rows of key numbers.
 - `BlessSlotPicker`: the free times of a day as buttons, in groups such as morning and afternoon, for booking a call.

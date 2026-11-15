@@ -1,4 +1,4 @@
-import { boxStats, chartColor, niceTicks, quantile, scale } from "./chart";
+import { boxStats, chartColor, histogramBins, niceTicks, quantile, scale } from "./chart";
 
 test("niceTicks: round steps that cover the data, from zero for one value, with no float noise", () => {
   expect(niceTicks(0, 87)).toEqual([0, 20, 40, 60, 80, 100]);
@@ -23,4 +23,16 @@ test("quantile and boxStats: quartiles, whiskers inside 1.5 IQR, and outliers", 
   const s = boxStats([1, 2, 3, 4, 5, 6, 7, 8, 9, 40, NaN])!;
   expect(s).toMatchObject({ q1: 3.25, median: 5.5, q3: 7.75, min: 1, max: 9, outliers: [40] });
   expect(boxStats([])).toBeUndefined();
+});
+
+test("histogramBins: round bins of equal width, the top value in the last bin", () => {
+  expect(histogramBins([1, 2, 2, 3, 9, 10, NaN], 5)).toEqual([
+    { from: 0, to: 2, count: 1 },
+    { from: 2, to: 4, count: 3 },
+    { from: 4, to: 6, count: 0 },
+    { from: 6, to: 8, count: 0 },
+    { from: 8, to: 10, count: 2 },
+  ]);
+  expect(histogramBins([5, 5]).reduce((n, b) => n + b.count, 0)).toBe(2);
+  expect(histogramBins([])).toEqual([]);
 });
