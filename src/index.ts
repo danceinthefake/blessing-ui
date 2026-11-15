@@ -345,3 +345,5 @@ export { default as BlessDonutChart } from "./components/BlessDonutChart.vue";
 export type { BlessDonutSlice } from "./components/BlessDonutChart.vue";
 export { default as BlessScatterChart } from "./components/BlessScatterChart.vue";
 export type { BlessScatterGroup, BlessScatterPoint } from "./components/BlessScatterChart.vue";
+export { default as BlessBoxPlot } from "./components/BlessBoxPlot.vue";
+export type { BlessBoxGroup } from "./components/BlessBoxPlot.vue";
