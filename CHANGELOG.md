@@ -28,7 +28,8 @@
 - `BlessEventCalendar`: a month of events in a grid, with whole-day events first, times in the locale format, "+2 more" when a day is full, and buttons for the previous and next month. The events fit `BlessScheduler`.
 - `BlessFilterBar`: filters as chips in a row ("Status is Live"), with an editor for each chip, a list of fields to add one, and Clear all. The rules are the same data as in `BlessQueryBuilder`.
 - `BlessSelectionToolbar`: a toolbar above the selected text in an area, with actions that get the text and a copy of the range. A click keeps the selection, Tab reaches the toolbar, and Escape closes it.
-- `BlessLightbox`: one image from a list in a modal, with arrows, keys, a swipe to the side, and zoom with a drag to move. `BlessGallery` now uses it for its viewer, so the gallery gets swipe and zoom too. 226 components in all.
+- `BlessLightbox`: one image from a list in a modal, with arrows, keys, a swipe to the side, and zoom with a drag to move. `BlessGallery` now uses it for its viewer, so the gallery gets swipe and zoom too.
+- `BlessHeatmap`: a grid of rows and columns with each cell colored by its value, a legend of the scale, and a real table, so screen readers read each value with its row and column. 227 components in all.
 
 ## 0.5.0 — 2026-11-15
 
