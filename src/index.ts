@@ -464,3 +464,4 @@ export { default as BlessSlopeChart } from "./components/BlessSlopeChart.vue";
 export type { BlessSlopeItem } from "./components/BlessSlopeChart.vue";
 export { default as BlessBeeswarm } from "./components/BlessBeeswarm.vue";
 export type { BlessSwarmPoint } from "./components/BlessBeeswarm.vue";
+export { default as BlessMarimekko } from "./components/BlessMarimekko.vue";

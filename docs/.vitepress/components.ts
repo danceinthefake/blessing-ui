@@ -771,6 +771,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         text: "Each value as a dot on one axis, with no overlap",
       },
       {
+        name: "BlessMarimekko",
+        slug: "marimekko",
+        text: "Bars whose width and height both show a share",
+      },
+      {
         name: "BlessPricingTable",
         slug: "pricing-table",
         text: "Plans side by side, with a monthly or yearly switch",

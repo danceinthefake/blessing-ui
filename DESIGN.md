@@ -499,7 +499,7 @@ Sixteen components, 286 → 302. Each uses native platform APIs only: the librar
 
 - ✅ `BlessSlopeChart`: two columns, such as before and after, with a line for each item.
 - ✅ `BlessBeeswarm`: each value as a dot on one axis, moved aside so the dots do not overlap.
-- `BlessMarimekko`: bars whose width and height both show a share.
+- ✅ `BlessMarimekko`: bars whose width and height both show a share.
 - `BlessPictogram`: a count as rows of icons, where one icon stands for a fixed number.
 - `BlessConsentBanner`: a cookie consent bar with accept, reject, and a panel of categories, kept in the browser.
 - `BlessNotificationPrefs`: a grid of events by channel, with a switch in each cell and switches for a whole row or column.
