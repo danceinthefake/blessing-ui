@@ -9651,6 +9651,56 @@
   ],
   "exposed": []
  },
+ "BlessReasoning": {
+  "props": [
+   {
+    "name": "text",
+    "type": "string | undefined",
+    "required": false,
+    "description": "the reasoning text so far; or put it in the default slot"
+   },
+   {
+    "name": "streaming",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": "the model is still thinking: the panel is open and the head says so"
+   },
+   {
+    "name": "duration",
+    "type": "number | undefined",
+    "required": false,
+    "description": "how long the model thought, in seconds; default: the time it was streaming"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ thinking: string; thought: (seconds: number) => string; done: string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "open",
+    "type": "boolean | undefined",
+    "required": false,
+    "default": "undefined",
+    "description": "open while it streams, and it closes at the end unless the reader opened or closed it"
+   }
+  ],
+  "events": [
+   {
+    "name": "update:open",
+    "type": "[value: boolean]",
+    "description": ""
+   }
+  ],
+  "slots": [
+   {
+    "name": "default",
+    "type": "{}",
+    "description": ""
+   }
+  ],
+  "exposed": []
+ },
  "BlessRelativeTime": {
   "props": [
    {
