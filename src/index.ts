@@ -363,3 +363,4 @@ export { default as BlessHeatmap } from "./components/BlessHeatmap.vue";
 export { default as BlessHistogram } from "./components/BlessHistogram.vue";
 export { default as BlessWaterfallChart } from "./components/BlessWaterfallChart.vue";
 export type { BlessWaterfallStep } from "./components/BlessWaterfallChart.vue";
+export { default as BlessBulletChart } from "./components/BlessBulletChart.vue";

@@ -5,6 +5,7 @@ import type BlessAudioRecorder from "../components/BlessAudioRecorder.vue";
 import type BlessAvatarGroup from "../components/BlessAvatarGroup.vue";
 import type BlessBarChart from "../components/BlessBarChart.vue";
 import type BlessBoxPlot from "../components/BlessBoxPlot.vue";
+import type BlessBulletChart from "../components/BlessBulletChart.vue";
 import type BlessCalendar from "../components/BlessCalendar.vue";
 import type BlessCameraCapture from "../components/BlessCameraCapture.vue";
 import type BlessCardInput from "../components/BlessCardInput.vue";
@@ -82,6 +83,7 @@ export type BlessLabelsFull = {
   BlessAvatarGroup: All<typeof BlessAvatarGroup>;
   BlessBarChart: All<typeof BlessBarChart>;
   BlessBoxPlot: All<typeof BlessBoxPlot>;
+  BlessBulletChart: All<typeof BlessBulletChart>;
   BlessCalendar: All<typeof BlessCalendar>;
   BlessCameraCapture: All<typeof BlessCameraCapture>;
   BlessCardInput: All<typeof BlessCardInput>;
@@ -191,6 +193,7 @@ export const labelsId: BlessLabelsFull = {
     max: "Tertinggi",
     outliers: "Pencilan",
   },
+  BlessBulletChart: { target: "target", bands: ["buruk", "cukup", "baik"] },
   BlessCalendar: month,
   BlessCameraCapture: {
     start: "Nyalakan kamera",
