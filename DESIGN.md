@@ -423,6 +423,7 @@ Twelve components, 226 → 238. Each uses native platform APIs only: the library
 - ✅ `BlessChangelog`: release notes, with a version, a date, and the changes in groups (added, changed, fixed).
 - ✅ `BlessShortcutSheet`: keyboard shortcuts in groups, with `BlessKbd` keys and a search.
 - ✅ `BlessFileTree`: files and folders from a flat list of paths, with an icon for each type, on top of `BlessTree`.
+- ✅ Budget: after the round, the whole library is 157.5 KB gz JS and 43.2 KB gz CSS, over the old cap of 154 / 43. The cap is now 173 / 48, about 10% of room. Phase 29 is done.
 
 ### Deliberately skipped
 
