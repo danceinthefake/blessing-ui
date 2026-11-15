@@ -138,13 +138,14 @@ const dateText = computed(
   --_c: var(--bless-color-danger);
 }
 .bless-changelog__list {
-  display: flex;
-  flex-direction: column;
-  gap: var(--bless-space-1);
   margin: 0;
+  list-style: disc;
   padding-inline-start: 1.1em;
   font-size: var(--bless-text-sm);
   line-height: var(--bless-leading-normal);
+}
+.bless-changelog__list > li + li {
+  margin-block-start: var(--bless-space-1);
 }
 @media (max-width: 480px) {
   .bless-changelog__group {
