@@ -367,3 +367,4 @@ export { default as BlessBulletChart } from "./components/BlessBulletChart.vue";
 export { default as BlessSlotPicker } from "./components/BlessSlotPicker.vue";
 export type { BlessSlot } from "./components/BlessSlotPicker.vue";
 export { default as BlessAvailabilityGrid } from "./components/BlessAvailabilityGrid.vue";
+export { default as BlessBulkActionBar } from "./components/BlessBulkActionBar.vue";
