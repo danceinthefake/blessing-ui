@@ -82,6 +82,7 @@ import type BlessReasoning from "../components/BlessReasoning.vue";
 import type BlessRecurrencePicker from "../components/BlessRecurrencePicker.vue";
 import type BlessReviewSummary from "../components/BlessReviewSummary.vue";
 import type BlessRoseChart from "../components/BlessRoseChart.vue";
+import type BlessRsvp from "../components/BlessRsvp.vue";
 import type BlessSankey from "../components/BlessSankey.vue";
 import type BlessScatterChart from "../components/BlessScatterChart.vue";
 import type BlessScheduler from "../components/BlessScheduler.vue";
@@ -203,6 +204,7 @@ export type BlessLabelsFull = {
   BlessRecurrencePicker: All<typeof BlessRecurrencePicker>;
   BlessReviewSummary: All<typeof BlessReviewSummary>;
   BlessRoseChart: All<typeof BlessRoseChart>;
+  BlessRsvp: All<typeof BlessRsvp>;
   BlessSankey: All<typeof BlessSankey>;
   BlessScatterChart: All<typeof BlessScatterChart>;
   BlessScheduler: All<typeof BlessScheduler>;
@@ -759,6 +761,14 @@ export const labelsId: BlessLabelsFull = {
     level: (s, n) => `${s} bintang: ${n} ulasan`,
   },
   BlessRoseChart: { item: "Item", value: "Nilai" },
+  BlessRsvp: {
+    yes: "Hadir",
+    maybe: "Mungkin",
+    no: "Tidak bisa",
+    question: "Kamu datang?",
+    you: "kamu",
+    goingCount: (n) => `${n} hadir`,
+  },
   BlessSankey: { from: "Dari", to: "Ke", value: "Nilai" },
   BlessScatterChart: { point: "Titik", group: "Grup", size: "Ukuran" },
   BlessScheduler: {

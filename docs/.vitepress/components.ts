@@ -127,6 +127,7 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "ticket",
         text: "An event ticket with a tear line and a QR code",
       },
+      { name: "BlessRsvp", slug: "rsvp", text: "Going, maybe, or not going, with counts" },
       {
         name: "BlessAvailabilityGrid",
         slug: "availability-grid",

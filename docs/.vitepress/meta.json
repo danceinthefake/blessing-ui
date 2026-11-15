@@ -11091,6 +11091,51 @@
   "slots": [],
   "exposed": []
  },
+ "BlessRsvp": {
+  "props": [
+   {
+    "name": "counts",
+    "type": "Partial<Record<BlessRsvpAnswer, number>> | undefined",
+    "required": false,
+    "default": "{}",
+    "description": "the answers of the other people, without the reader"
+   },
+   {
+    "name": "going",
+    "type": "BlessAvatarGroupItem[] | undefined",
+    "required": false,
+    "default": "[]",
+    "description": "some of the people who go, for the faces"
+   },
+   {
+    "name": "label",
+    "type": "string | undefined",
+    "required": false,
+    "description": "the question, for example the name of the event"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<Record<BlessRsvpAnswer, string> & { question: string; you: string; goingCount: (n: number) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "BlessRsvpAnswer | undefined",
+    "required": false,
+    "description": "the answer of the reader; a second click on it clears it"
+   }
+  ],
+  "events": [
+   {
+    "name": "update:modelValue",
+    "type": "[value: BlessRsvpAnswer | undefined]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessSankey": {
   "props": [
    {
