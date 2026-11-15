@@ -435,3 +435,5 @@ export type { BlessWebhookDelivery } from "./components/BlessWebhookLog.vue";
 export { default as BlessBumpChart } from "./components/BlessBumpChart.vue";
 export { default as BlessLollipop } from "./components/BlessLollipop.vue";
 export type { BlessLollipopItem } from "./components/BlessLollipop.vue";
+export { default as BlessVenn } from "./components/BlessVenn.vue";
+export type { BlessVennSet, BlessVennOverlap } from "./components/BlessVenn.vue";

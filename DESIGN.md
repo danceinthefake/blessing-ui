@@ -476,7 +476,7 @@ Sixteen components, 270 → 286. Each uses native platform APIs only: the librar
 
 - ✅ `BlessBumpChart`: the rank of each item over time, as lines that cross.
 - ✅ `BlessLollipop`: a thin stick with a dot for each category, for long lists.
-- `BlessVenn`: two or three circles that overlap, with the count in each part.
+- ✅ `BlessVenn`: two or three circles that overlap, with the count in each part.
 - `BlessRoseChart`: wedges of equal angle whose length is the value.
 - `BlessCodeTabs`: one command in tabs for each package manager, with copy, and the choice kept on the page.
 - `BlessSpoiler`: text hidden under a blur until a click shows it.
