@@ -211,6 +211,7 @@ export type BlessLabelsFull = {
   BlessVariantPicker: All<typeof BlessVariantPicker>;
   BlessVoiceInput: All<typeof BlessVoiceInput>;
   BlessWaterfallChart: All<typeof BlessWaterfallChart>;
+  BlessWebhookLog: All<typeof BlessWebhookLog>;
 };
 
 const copy = { copy: "Salin", copied: "Tersalin", copiedLive: "Disalin ke papan klip" };
@@ -829,8 +830,20 @@ export const labelsId: BlessLabelsFull = {
     denied: "Mikrofon tidak diizinkan",
   },
   BlessWaterfallChart: { step: "Langkah", change: "Perubahan", total: "Total" },
+  BlessWebhookLog: {
+    title: "Pengiriman webhook",
+    pending: "Menunggu",
+    ok: "Terkirim",
+    failed: "Gagal",
+    retry: "Kirim ulang",
+    request: "Permintaan",
+    response: "Balasan",
+    empty: "Belum ada pengiriman",
+  },
 };
 
 import type BlessVariantPicker from "../components/BlessVariantPicker.vue";
 import type BlessVoiceInput from "../components/BlessVoiceInput.vue";
 import type BlessWaterfallChart from "../components/BlessWaterfallChart.vue";
+
+import type BlessWebhookLog from "../components/BlessWebhookLog.vue";
