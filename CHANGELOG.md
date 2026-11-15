@@ -9,7 +9,8 @@
 - `BlessDumbbell`: two values for each row, such as before and after, as a hollow dot and a filled dot joined by a line. A table reads the change of each row to screen readers.
 - `BlessWaffle`: parts of a whole as a grid of 100 squares, one for each percent, with a legend that shows the share and the value of each part.
 - `BlessReasoning`: the reasoning of a model in a panel that folds. It is open while the model thinks, closes at the end, and says how long the model thought.
-- `BlessSources`: the sources of a reply as a numbered list with the site and a snippet. Each item has an id, so a mark in the reply with the `bless-source-mark` class links to it. 244 components in all.
+- `BlessSources`: the sources of a reply as a numbered list with the site and a snippet. Each item has an id, so a mark in the reply with the `bless-source-mark` class links to it.
+- `BlessMessageFeedback`: good and bad marks, copy, and retry under a reply. A bad mark opens a short form with reasons and a note. 245 components in all.
 
 ## 0.6.0 — 2026-11-15
 

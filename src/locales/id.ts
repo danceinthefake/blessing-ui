@@ -42,6 +42,7 @@ import type BlessKeyValueEditor from "../components/BlessKeyValueEditor.vue";
 import type BlessLightbox from "../components/BlessLightbox.vue";
 import type BlessLogViewer from "../components/BlessLogViewer.vue";
 import type BlessMarquee from "../components/BlessMarquee.vue";
+import type BlessMessageFeedback from "../components/BlessMessageFeedback.vue";
 import type BlessNodeGraph from "../components/BlessNodeGraph.vue";
 import type BlessNotificationInbox from "../components/BlessNotificationInbox.vue";
 import type BlessOnboardingChecklist from "../components/BlessOnboardingChecklist.vue";
@@ -132,6 +133,7 @@ export type BlessLabelsFull = {
   BlessLightbox: All<typeof BlessLightbox>;
   BlessLogViewer: All<typeof BlessLogViewer>;
   BlessMarquee: All<typeof BlessMarquee>;
+  BlessMessageFeedback: All<typeof BlessMessageFeedback>;
   BlessNodeGraph: All<typeof BlessNodeGraph>;
   BlessNotificationInbox: All<typeof BlessNotificationInbox>;
   BlessOnboardingChecklist: All<typeof BlessOnboardingChecklist>;
@@ -435,6 +437,18 @@ export const labelsId: BlessLabelsFull = {
     count: (shown, total) => `${shown} dari ${total} baris`,
   },
   BlessMarquee: { play: "Putar", pause: "Jeda" },
+  BlessMessageFeedback: {
+    good: "Jawaban bagus",
+    bad: "Jawaban buruk",
+    copy: "Salin",
+    copied: "Tersalin",
+    retry: "Coba lagi",
+    ask: "Apa yang salah?",
+    note: "Ceritakan lebih lanjut (opsional)",
+    send: "Kirim",
+    cancel: "Batal",
+    thanks: "Terima kasih atas masukannya",
+  },
   BlessNodeGraph: {
     node: (l, to, from) =>
       l +

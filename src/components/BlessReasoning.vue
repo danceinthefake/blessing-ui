@@ -30,8 +30,8 @@ const text = computed(() => ({
 }));
 
 /** open while it streams, and it closes at the end unless the reader opened or closed it */
-const open = defineModel<boolean>("open", { default: undefined });
-const shown = ref(open.value ?? !!props.streaming);
+const open = defineModel<boolean>("open");
+const shown = ref(open.value || !!props.streaming);
 let touched = false;
 let started = 0;
 const measured = ref<number>();
@@ -48,7 +48,7 @@ watch(
   },
   { immediate: true },
 );
-watch(open, (v) => v !== undefined && (shown.value = v));
+watch(open, (v) => (shown.value = !!v));
 
 const seconds = computed(() => props.duration ?? measured.value);
 const head = computed(() =>
