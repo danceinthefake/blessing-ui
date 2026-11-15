@@ -427,3 +427,5 @@ export type { BlessShipmentEvent } from "./components/BlessShipmentTracker.vue";
 export { default as BlessVariantPicker } from "./components/BlessVariantPicker.vue";
 export type { BlessVariantOption, BlessVariantValue } from "./components/BlessVariantPicker.vue";
 export { default as BlessReviewSummary } from "./components/BlessReviewSummary.vue";
+export { default as BlessProfileCard } from "./components/BlessProfileCard.vue";
+export type { BlessProfileStat } from "./components/BlessProfileCard.vue";

@@ -526,6 +526,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "review-summary",
         text: "The average stars and a bar for each level",
       },
+      {
+        name: "BlessProfileCard",
+        slug: "profile-card",
+        text: "A person with a cover, a bio, counts and follow",
+      },
       { name: "BlessBubble", slug: "bubble", text: "Message bubble" },
       { name: "BlessMarker", slug: "marker", text: "Inline status / note / separator / row" },
       { name: "BlessAttachment", slug: "attachment", text: "File / image chip" },
