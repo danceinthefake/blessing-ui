@@ -506,6 +506,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "reactions",
         text: "Emoji reactions with counts under a post",
       },
+      {
+        name: "BlessActivityFeed",
+        slug: "activity-feed",
+        text: "What people did, in groups by day",
+      },
       { name: "BlessBubble", slug: "bubble", text: "Message bubble" },
       { name: "BlessMarker", slug: "marker", text: "Inline status / note / separator / row" },
       { name: "BlessAttachment", slug: "attachment", text: "File / image chip" },

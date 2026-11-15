@@ -124,6 +124,37 @@
   "slots": [],
   "exposed": []
  },
+ "BlessActivityFeed": {
+  "props": [
+   {
+    "name": "events",
+    "type": "BlessActivity[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "locale",
+    "type": "string | undefined",
+    "required": false,
+    "description": "language of the day names and the times, for example `id`. Default: English."
+   },
+   {
+    "name": "now",
+    "type": "number | Date | undefined",
+    "required": false,
+    "description": "a fixed \"now\" for the day groups and the times"
+   }
+  ],
+  "events": [],
+  "slots": [
+   {
+    "name": "event",
+    "type": "{ event: BlessActivity; }",
+    "description": ""
+   }
+  ],
+  "exposed": []
+ },
  "BlessAffix": {
   "props": [
    {
@@ -9761,7 +9792,7 @@
     "type": "BlessReaction[] | undefined",
     "required": false,
     "default": "[]",
-    "description": "the reactions; a click changes the count and `mine`"
+    "description": "the reactions, with the same type as in `BlessBubble`; a click changes `count` and `active`"
    }
   ],
   "events": [

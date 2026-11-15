@@ -399,3 +399,5 @@ export { default as BlessWorldClock } from "./components/BlessWorldClock.vue";
 export type { BlessClockZone } from "./components/BlessWorldClock.vue";
 export { default as BlessReadingProgress } from "./components/BlessReadingProgress.vue";
 export { default as BlessReactions } from "./components/BlessReactions.vue";
+export { default as BlessActivityFeed } from "./components/BlessActivityFeed.vue";
+export type { BlessActivity } from "./components/BlessActivityFeed.vue";
