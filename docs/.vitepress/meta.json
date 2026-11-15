@@ -8599,6 +8599,44 @@
   ],
   "exposed": []
  },
+ "BlessOpeningHours": {
+  "props": [
+   {
+    "name": "hours",
+    "type": "BlessWeekHours",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "timeZone",
+    "type": "string | undefined",
+    "required": false,
+    "description": "the time zone of the place, for example `Asia/Jakarta`; default: the zone of the reader"
+   },
+   {
+    "name": "locale",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"en\"",
+    "description": "the language of the days and times, for example `id`"
+   },
+   {
+    "name": "now",
+    "type": "number | Date | undefined",
+    "required": false,
+    "description": "a fixed moment, for example in a test"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ title: string; open: string; closed: string; closesAt: (time: string) => string; opensAt: (day: string, time: string) => string; today: string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessOrderList": {
   "props": [
    {

@@ -58,6 +58,7 @@ import type BlessModelPicker from "../components/BlessModelPicker.vue";
 import type BlessNodeGraph from "../components/BlessNodeGraph.vue";
 import type BlessNotificationInbox from "../components/BlessNotificationInbox.vue";
 import type BlessOnboardingChecklist from "../components/BlessOnboardingChecklist.vue";
+import type BlessOpeningHours from "../components/BlessOpeningHours.vue";
 import type BlessOrderList from "../components/BlessOrderList.vue";
 import type BlessOrderSummary from "../components/BlessOrderSummary.vue";
 import type BlessPareto from "../components/BlessPareto.vue";
@@ -174,6 +175,7 @@ export type BlessLabelsFull = {
   BlessNodeGraph: All<typeof BlessNodeGraph>;
   BlessNotificationInbox: All<typeof BlessNotificationInbox>;
   BlessOnboardingChecklist: All<typeof BlessOnboardingChecklist>;
+  BlessOpeningHours: All<typeof BlessOpeningHours>;
   BlessOrderList: All<typeof BlessOrderList>;
   BlessOrderSummary: All<typeof BlessOrderSummary>;
   BlessPareto: All<typeof BlessPareto>;
@@ -602,6 +604,14 @@ export const labelsId: BlessLabelsFull = {
     progress: (d, n) => `${d} dari ${n} selesai`,
     complete: "Semua selesai. Kerja bagus.",
     dismiss: "Tutup",
+  },
+  BlessOpeningHours: {
+    title: "Jam buka",
+    open: "Buka sekarang",
+    closed: "Tutup",
+    closesAt: (t) => `tutup pukul ${t}`,
+    opensAt: (d, t) => `buka ${d} pukul ${t}`,
+    today: "hari ini",
   },
   BlessOrderList: {
     up: (p) => `Naikkan item ${p}`,

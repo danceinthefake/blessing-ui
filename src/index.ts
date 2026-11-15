@@ -448,3 +448,5 @@ export { default as BlessGlossary } from "./components/BlessGlossary.vue";
 export { default as BlessRecurrencePicker } from "./components/BlessRecurrencePicker.vue";
 export { toRRule } from "./components/BlessRecurrencePicker.vue";
 export type { BlessRecurrence, BlessRepeatFreq } from "./components/BlessRecurrencePicker.vue";
+export { default as BlessOpeningHours } from "./components/BlessOpeningHours.vue";
+export type { BlessShift, BlessWeekHours } from "./components/BlessOpeningHours.vue";

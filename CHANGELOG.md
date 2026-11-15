@@ -53,7 +53,8 @@ Thirty-two new components, 270 in all: more charts, parts for an assistant and i
 - `BlessSpoiler`: text hidden under a blur, out of reach of screen readers and the keyboard, until a click shows it, in a line or as a block.
 - `BlessFootnotes`: numbered notes at the end of an article, with `BlessFootnoteRef` marks in the text that link down to each note and back.
 - `BlessGlossary`: a term in a line of text with a dotted line, whose meaning shows in a `BlessTooltip` on hover and focus.
-- `BlessRecurrencePicker`: a rule that repeats, with native fields, day buttons, an end, the rule in one sentence, and `toRRule` for the iCalendar form. 279 components in all.
+- `BlessRecurrencePicker`: a rule that repeats, with native fields, day buttons, an end, the rule in one sentence, and `toRRule` for the iCalendar form.
+- `BlessOpeningHours`: the hours of each day of the week with closed days, two shifts, and shifts past midnight, and an Open now line in the time zone of the place. 280 components in all.
 
 ## 0.6.0 — 2026-11-15
 
