@@ -17,7 +17,8 @@
 - The consumer check caps the whole library at 154 KB gz JS and 43 KB gz CSS (today 139.6 and 39.3). The README had the old total of 64 KB and 27 KB, and it is now correct.
 - Accessibility: the `BlessDataTable` resize handle always has a value for screen readers, and the `BlessDock` item and `BlessScheduler` event text now matches their names ("Mail 3", not "Mail3"). axe is clean on every page again.
 - `BlessBarChart`: bars for categories in plain SVG, one or more series, side by side or stacked, vertical or horizontal, with round axis steps, a hover for each bar, and a table for screen readers.
-- `BlessLineChart`: lines or filled areas for one or more series over a number or a date axis, in plain SVG, with gaps for missing values, a crosshair with the values on hover, and a table for screen readers. 215 components in all.
+- `BlessLineChart`: lines or filled areas for one or more series over a number or a date axis, in plain SVG, with gaps for missing values, a crosshair with the values on hover, and a table for screen readers.
+- `BlessDonutChart`: parts of one whole as a ring or a pie in plain SVG, with the total in the center, a legend with each value and share, and a hover for each slice. 216 components in all.
 
 ## 0.5.0 — 2026-11-15
 

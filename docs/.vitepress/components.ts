@@ -494,6 +494,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         text: "Lines or areas over a number or a date axis",
       },
       {
+        name: "BlessDonutChart",
+        slug: "donut-chart",
+        text: "Parts of one whole, as a ring or a pie",
+      },
+      {
         name: "BlessFunnel",
         slug: "funnel",
         text: "Stages with the share that is left at each step",

@@ -3513,6 +3513,51 @@
   ],
   "exposed": []
  },
+ "BlessDonutChart": {
+  "props": [
+   {
+    "name": "data",
+    "type": "BlessDonutSlice[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "pie",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": "a full pie, with no hole and no total"
+   },
+   {
+    "name": "size",
+    "type": "number | undefined",
+    "required": false,
+    "default": "180",
+    "description": "the width of the circle in pixels"
+   },
+   {
+    "name": "format",
+    "type": "((v: number) => string) | undefined",
+    "required": false,
+    "description": "text for one value, for example `(v) => v + \" GB\"`"
+   },
+   {
+    "name": "label",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Chart\"",
+    "description": "names the chart for screen readers"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ total: string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessDrawer": {
   "props": [
    {
