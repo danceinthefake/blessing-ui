@@ -6705,6 +6705,51 @@
   ],
   "exposed": []
  },
+ "BlessLeaderboard": {
+  "props": [
+   {
+    "name": "rows",
+    "type": "BlessLeader[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "me",
+    "type": "string | number | undefined",
+    "required": false,
+    "description": "the id of the reader's row: it stands out, and it shows even below the limit"
+   },
+   {
+    "name": "limit",
+    "type": "number | undefined",
+    "required": false,
+    "default": "0",
+    "description": "show only the first places; 0 shows all"
+   },
+   {
+    "name": "format",
+    "type": "((v: number) => string) | undefined",
+    "required": false,
+    "description": "text for a score, for example `(v) => v + \" pts\"`"
+   },
+   {
+    "name": "label",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Leaderboard\"",
+    "description": "names the table for screen readers"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ rank: string; name: string; score: string; change: string; up: (places: number) => string; down: (places: number) => string; same: string; new: string; you: string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessLightbox": {
   "props": [
    {

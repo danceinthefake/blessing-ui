@@ -41,6 +41,7 @@ import type BlessInfiniteCanvas from "../components/BlessInfiniteCanvas.vue";
 import type BlessInputNumber from "../components/BlessInputNumber.vue";
 import type BlessKanban from "../components/BlessKanban.vue";
 import type BlessKeyValueEditor from "../components/BlessKeyValueEditor.vue";
+import type BlessLeaderboard from "../components/BlessLeaderboard.vue";
 import type BlessLightbox from "../components/BlessLightbox.vue";
 import type BlessLogViewer from "../components/BlessLogViewer.vue";
 import type BlessMarquee from "../components/BlessMarquee.vue";
@@ -137,6 +138,7 @@ export type BlessLabelsFull = {
   BlessInputNumber: All<typeof BlessInputNumber>;
   BlessKanban: All<typeof BlessKanban>;
   BlessKeyValueEditor: All<typeof BlessKeyValueEditor>;
+  BlessLeaderboard: All<typeof BlessLeaderboard>;
   BlessLightbox: All<typeof BlessLightbox>;
   BlessLogViewer: All<typeof BlessLogViewer>;
   BlessMarquee: All<typeof BlessMarquee>;
@@ -438,6 +440,17 @@ export const labelsId: BlessLabelsFull = {
     enabled: "Aktif",
     remove: "Hapus",
     duplicate: "Kunci ini dipakai lebih dari sekali",
+  },
+  BlessLeaderboard: {
+    rank: "Peringkat",
+    name: "Nama",
+    score: "Skor",
+    change: "Perubahan",
+    up: (n) => `naik ${n}`,
+    down: (n) => `turun ${n}`,
+    same: "tetap",
+    new: "baru",
+    you: "kamu",
   },
   BlessLightbox: {
     prev: "Sebelumnya",

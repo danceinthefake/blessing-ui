@@ -401,3 +401,5 @@ export { default as BlessReadingProgress } from "./components/BlessReadingProgre
 export { default as BlessReactions } from "./components/BlessReactions.vue";
 export { default as BlessActivityFeed } from "./components/BlessActivityFeed.vue";
 export type { BlessActivity } from "./components/BlessActivityFeed.vue";
+export { default as BlessLeaderboard } from "./components/BlessLeaderboard.vue";
+export type { BlessLeader } from "./components/BlessLeaderboard.vue";

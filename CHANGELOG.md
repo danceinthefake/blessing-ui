@@ -17,7 +17,8 @@
 - `BlessWorldClock`: the time now in several time zones, with the day compared with the reader, the UTC offset, and a dark plate for night hours.
 - `BlessReadingProgress`: a thin bar that fills as the reader scrolls an article or a box, with the minutes left from the count of words.
 - `BlessReactions`: emoji reactions with counts. A click adds or removes the reaction of the reader, and a button opens `BlessEmojiPicker` for a new one.
-- `BlessActivityFeed`: events of a team with a person, an action, and a time, newest first in groups by day, with `BlessAvatar` and `BlessRelativeTime`. 252 components in all.
+- `BlessActivityFeed`: events of a team with a person, an action, and a time, newest first in groups by day, with `BlessAvatar` and `BlessRelativeTime`.
+- `BlessLeaderboard`: ranked rows with shared places for equal scores, the move since last time, and the row of the reader, which shows even below the limit. 253 components in all.
 
 ## 0.6.0 — 2026-11-15
 
