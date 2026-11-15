@@ -7,6 +7,7 @@ import BlessSelect from "./BlessSelect.vue";
 import {
   isGroup,
   noValue,
+  opKey,
   opsFor,
   type BlessQueryField,
   type BlessQueryGroup,
@@ -26,15 +27,7 @@ const group = defineModel<BlessQueryGroup>({ required: true });
 const emit = defineEmits<{ remove: [] }>();
 
 const field = (name: string) => props.fields.find((f) => f.name === name);
-// dates read better as before and after
-const DATE: Partial<Record<BlessQueryOp, string>> = {
-  lt: "before",
-  lte: "onOrBefore",
-  gt: "after",
-  gte: "onOrAfter",
-};
-const opText = (f: BlessQueryField | undefined, op: BlessQueryOp) =>
-  props.text[(f?.type === "date" && DATE[op]) || op]!;
+const opText = (f: BlessQueryField | undefined, op: BlessQueryOp) => props.text[opKey(f, op)]!;
 
 function setRules(rules: BlessQueryGroup["rules"]) {
   group.value = { ...group.value, rules };

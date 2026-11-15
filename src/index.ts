@@ -354,3 +354,4 @@ export { default as BlessSuggestions } from "./components/BlessSuggestions.vue";
 export type { BlessSuggestion } from "./components/BlessSuggestions.vue";
 export { default as BlessEventCalendar } from "./components/BlessEventCalendar.vue";
 export type { BlessCalendarEvent } from "./components/BlessEventCalendar.vue";
+export { default as BlessFilterBar } from "./components/BlessFilterBar.vue";
