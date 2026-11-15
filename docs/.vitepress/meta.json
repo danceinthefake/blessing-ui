@@ -8473,6 +8473,59 @@
   ],
   "exposed": []
  },
+ "BlessPareto": {
+  "props": [
+   {
+    "name": "data",
+    "type": "BlessParetoItem[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "cut",
+    "type": "number | undefined",
+    "required": false,
+    "default": "0.8",
+    "description": "the share that marks \"the few\": a dashed line, and the bars up to it are in full color"
+   },
+   {
+    "name": "color",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"chart-1\"",
+    "description": ""
+   },
+   {
+    "name": "height",
+    "type": "number | undefined",
+    "required": false,
+    "default": "260",
+    "description": ""
+   },
+   {
+    "name": "format",
+    "type": "((v: number) => string) | undefined",
+    "required": false,
+    "description": "text for one value, for example `(v) => v + \" min\"`"
+   },
+   {
+    "name": "label",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Chart\"",
+    "description": "names the chart and its table for screen readers"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ item: string; value: string; running: string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessPasswordInput": {
   "props": [
    {

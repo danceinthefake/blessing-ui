@@ -652,6 +652,11 @@ export const groups: { title: string; items: Entry[] }[] = [
       },
       { name: "BlessStreamgraph", slug: "streamgraph", text: "Stacked areas around a center line" },
       {
+        name: "BlessPareto",
+        slug: "pareto",
+        text: "Bars from high to low, with the running share",
+      },
+      {
         name: "BlessPricingTable",
         slug: "pricing-table",
         text: "Plans side by side, with a monthly or yearly switch",
