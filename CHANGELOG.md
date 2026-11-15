@@ -72,7 +72,8 @@ Forty-eight new components, 286 in all: more charts, parts for an assistant and 
 - `BlessConsentBanner`: a cookie consent bar with accept, reject, and a switch for each category, with required categories always on and the choice kept in the browser.
 - `BlessNotificationPrefs`: a grid of events by channel with native check boxes, and a box for each column that is on, off, or mixed.
 - `BlessAddressFields`: address fields whose order and names follow the country, with country names from `Intl.DisplayNames` and the right `autocomplete` values.
-- `BlessPresetRange`: a date range with common presets or your own, next to `BlessCalendar` in range mode, with the range in words. 294 components in all.
+- `BlessPresetRange`: a date range with common presets or your own, next to `BlessCalendar` in range mode, with the range in words.
+- `BlessTestimonials`: quotes with a name, a role, an avatar, and stars, in a grid or one at a time with buttons. 295 components in all.
 
 ## 0.6.0 — 2026-11-15
 

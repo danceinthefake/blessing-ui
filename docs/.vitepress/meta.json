@@ -14296,6 +14296,32 @@
   "slots": [],
   "exposed": []
  },
+ "BlessTestimonials": {
+  "props": [
+   {
+    "name": "items",
+    "type": "BlessTestimonial[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "layout",
+    "type": "\"single\" | \"grid\" | undefined",
+    "required": false,
+    "default": "\"grid\"",
+    "description": "`grid` shows all; `single` shows one at a time with buttons"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ title: string; prev: string; next: string; position: (n: number, total: number) => string; rating: (stars: number) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessText": {
   "props": [
    {
