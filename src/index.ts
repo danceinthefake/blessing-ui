@@ -407,7 +407,7 @@ export { default as BlessSpreadsheet } from "./components/BlessSpreadsheet.vue";
 export { default as BlessPyramid } from "./components/BlessPyramid.vue";
 export type { BlessPyramidRow } from "./components/BlessPyramid.vue";
 export { default as BlessRadialBar } from "./components/BlessRadialBar.vue";
-export type { BlessRadialItem } from "./components/BlessRadialBar.vue";
+export type { BlessRadialBarItem } from "./components/BlessRadialBar.vue";
 export { default as BlessStreamgraph } from "./components/BlessStreamgraph.vue";
 export { default as BlessPareto } from "./components/BlessPareto.vue";
 export type { BlessParetoItem } from "./components/BlessPareto.vue";
