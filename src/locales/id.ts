@@ -43,6 +43,7 @@ import type BlessQuestionnaire from "../components/BlessQuestionnaire.vue";
 import type BlessRangeCalendar from "../components/BlessRangeCalendar.vue";
 import type BlessReadMore from "../components/BlessReadMore.vue";
 import type BlessSankey from "../components/BlessSankey.vue";
+import type BlessScatterChart from "../components/BlessScatterChart.vue";
 import type BlessScheduler from "../components/BlessScheduler.vue";
 import type BlessShortcutRecorder from "../components/BlessShortcutRecorder.vue";
 import type BlessSliderCaptcha from "../components/BlessSliderCaptcha.vue";
@@ -110,6 +111,7 @@ export type BlessLabelsFull = {
   BlessRangeCalendar: All<typeof BlessRangeCalendar>;
   BlessReadMore: All<typeof BlessReadMore>;
   BlessSankey: All<typeof BlessSankey>;
+  BlessScatterChart: All<typeof BlessScatterChart>;
   BlessScheduler: All<typeof BlessScheduler>;
   BlessShortcutRecorder: All<typeof BlessShortcutRecorder>;
   BlessSliderCaptcha: All<typeof BlessSliderCaptcha>;
@@ -410,6 +412,7 @@ export const labelsId: BlessLabelsFull = {
   },
   BlessReadMore: { more: "Baca selengkapnya", less: "Tampilkan lebih sedikit" },
   BlessSankey: { from: "Dari", to: "Ke", value: "Nilai" },
+  BlessScatterChart: { point: "Titik", group: "Grup", size: "Ukuran" },
   BlessScheduler: {
     prev: "Sebelumnya",
     next: "Berikutnya",

@@ -9014,6 +9014,72 @@
   "slots": [],
   "exposed": []
  },
+ "BlessScatterChart": {
+  "props": [
+   {
+    "name": "points",
+    "type": "BlessScatterPoint[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "groups",
+    "type": "BlessScatterGroup[] | undefined",
+    "required": false,
+    "default": "[]",
+    "description": "the names and colors of the groups, in the order of the legend"
+   },
+   {
+    "name": "xLabel",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"x\"",
+    "description": "the name of each axis, under it and in the table"
+   },
+   {
+    "name": "yLabel",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"y\"",
+    "description": ""
+   },
+   {
+    "name": "height",
+    "type": "number | undefined",
+    "required": false,
+    "default": "280",
+    "description": ""
+   },
+   {
+    "name": "format",
+    "type": "((v: number) => string) | undefined",
+    "required": false,
+    "description": "text for a y value; `formatX` for an x value"
+   },
+   {
+    "name": "formatX",
+    "type": "((v: number) => string) | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "label",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Chart\"",
+    "description": "names the chart and its table for screen readers"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ point: string; group: string; size: string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessScheduler": {
   "props": [
    {

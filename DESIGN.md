@@ -395,7 +395,7 @@ Thirteen components, 213 → 226. Each uses native platform APIs only: the libra
 - ✅ `BlessBarChart`: bars for categories, vertical or horizontal, one or more series, grouped or stacked, with a value axis.
 - ✅ `BlessLineChart`: lines or filled areas for one or more series over a number or a date axis, with a crosshair on hover.
 - ✅ `BlessDonutChart`: parts of one whole as a donut or a pie, with the total in the center and a legend.
-- `BlessScatterChart`: points on two number axes, with an optional size for each point (a bubble chart).
+- ✅ `BlessScatterChart`: points on two number axes, with an optional size for each point (a bubble chart).
 - `BlessBoxPlot`: the spread of values in groups: the median, the quartiles, the whiskers, and the outliers.
 - `BlessPromptInput`: the text box of a chat with an assistant. It grows with the text, Enter sends, Shift+Enter adds a line, and the send button becomes a stop button while a reply comes in.
 - `BlessStreamingText`: text that comes in part by part, with a caret at the end. Screen readers get the text once, when it is complete.

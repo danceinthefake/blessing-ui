@@ -499,6 +499,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         text: "Parts of one whole, as a ring or a pie",
       },
       {
+        name: "BlessScatterChart",
+        slug: "scatter-chart",
+        text: "Points on two number axes, or bubbles with a size",
+      },
+      {
         name: "BlessFunnel",
         slug: "funnel",
         text: "Stages with the share that is left at each step",
