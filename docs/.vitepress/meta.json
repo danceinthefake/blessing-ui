@@ -1414,6 +1414,63 @@
   "slots": [],
   "exposed": []
  },
+ "BlessBumpChart": {
+  "props": [
+   {
+    "name": "data",
+    "type": "BlessChartRow[]",
+    "required": true,
+    "description": "one row for each step, in order, with a value for each series"
+   },
+   {
+    "name": "x",
+    "type": "string",
+    "required": true,
+    "description": "the field of a row with the text of its step"
+   },
+   {
+    "name": "series",
+    "type": "BlessChartSeries[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "lower",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": "a lower value ranks higher, for example a time"
+   },
+   {
+    "name": "height",
+    "type": "number | undefined",
+    "required": false,
+    "default": "260",
+    "description": ""
+   },
+   {
+    "name": "format",
+    "type": "((v: number) => string) | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "label",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Chart\"",
+    "description": "names the chart and its table for screen readers"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ step: string; rank: (rank: number, value: string) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessButton": {
   "props": [
    {

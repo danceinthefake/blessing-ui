@@ -692,6 +692,7 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "pareto",
         text: "Bars from high to low, with the running share",
       },
+      { name: "BlessBumpChart", slug: "bump-chart", text: "The rank of each item over time" },
       {
         name: "BlessPricingTable",
         slug: "pricing-table",

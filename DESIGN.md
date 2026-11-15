@@ -470,6 +470,27 @@ Sixteen components, 254 → 270. Each uses native platform APIs only: the librar
 - ✅ `BlessWebhookLog`: sent events with the status, the time, a retry button, and the bodies in a fold.
 - ✅ Budget: after the round, the whole library is 179.7 KB gz JS and 49.2 KB gz CSS, over the old cap of 173 / 48. The cap is now 198 / 54, about 10% of room. Phase 31 is done.
 
+### Phase 32 — more charts, reading parts, time and habits, and events (2026-11-15)
+
+Sixteen components, 270 → 286. Each uses native platform APIs only: the library adds no dependency. Each needs tests, a docs page with a live example, a README row, words in `labelsId`, and a pass of `src/classes.test.ts`. If a component uses a known method, credit it on the credits page.
+
+- ✅ `BlessBumpChart`: the rank of each item over time, as lines that cross.
+- `BlessLollipop`: a thin stick with a dot for each category, for long lists.
+- `BlessVenn`: two or three circles that overlap, with the count in each part.
+- `BlessRoseChart`: wedges of equal angle whose length is the value.
+- `BlessCodeTabs`: one command in tabs for each package manager, with copy, and the choice kept on the page.
+- `BlessSpoiler`: text hidden under a blur until a click shows it.
+- `BlessFootnotes`: numbered notes, with marks in the text that link to them and back.
+- `BlessGlossary`: a term with a dotted line that shows its meaning on hover or focus.
+- `BlessRecurrencePicker`: a rule that repeats, such as every two weeks on Monday and Thursday, with the rule in a sentence.
+- `BlessOpeningHours`: the hours of each day of the week, with closed days, two shifts, and "Open now".
+- `BlessHabitTracker`: a grid of days for each habit, with check marks, the streak, and the rate.
+- `BlessQuotaUsage`: the limits of a plan as bars, with the use in words and a warning near the end.
+- `BlessSeatPicker`: a map of seats in rows, with free, taken, and chosen seats, and prices by zone.
+- `BlessTicket`: an event ticket with a tear line, the date, the seat, and a QR code.
+- `BlessRsvp`: going, maybe, and not going, with counts and the faces of people who go.
+- `BlessCountdownBanner`: a strip at the top with the time left to an event and a link.
+
 ### Deliberately skipped
 
 - **Chart**: no bundled lib. Phase 11 ✅: `--bless-color-chart-{1..5}` (≥3:1 both themes) + `BlessChart` frame that maps them onto Unovis `--vis-*` vars. Unovis is the documented pairing, installed by the consumer.
