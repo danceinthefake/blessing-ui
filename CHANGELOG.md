@@ -33,7 +33,8 @@
 - `BlessHistogram`: raw values counted in round bins of equal width, as bars that touch, with the bin edges on the axis and a table of the counts for screen readers.
 - `BlessWaterfallChart`: how a start value goes up and down in steps to an end value, with green and red steps, totals from zero, dashed links between bars, and a table for screen readers.
 - `BlessBulletChart`: one value against a target and gray bands (poor, fair, good) in one thin bar, with labels that line up across rows, and a meter that says the value, the target, and the band in words.
-- `BlessSlotPicker`: the free times of a day as native radio buttons, sorted into morning, afternoon, and evening, with taken slots that cannot be picked and times in the locale format. 231 components in all.
+- `BlessSlotPicker`: the free times of a day as native radio buttons, sorted into morning, afternoon, and evening, with taken slots that cannot be picked and times in the locale format.
+- `BlessAvailabilityGrid`: a week of time cells where a drag paints a rectangle free or busy, with a grid that works with the keyboard and says each state in words. 232 components in all.
 
 ## 0.5.0 — 2026-11-15
 

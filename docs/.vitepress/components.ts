@@ -98,6 +98,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         text: "The free times of a day, as buttons to pick one",
       },
       {
+        name: "BlessAvailabilityGrid",
+        slug: "availability-grid",
+        text: "A week of time cells, to mark when a person is free",
+      },
+      {
         name: "BlessDateTimePicker",
         slug: "date-time-picker",
         text: "A date and a time in one field",

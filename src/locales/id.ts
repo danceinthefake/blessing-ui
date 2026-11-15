@@ -2,6 +2,7 @@
 // a new English word without an Indonesian one fails the typecheck.
 import type BlessAnnotator from "../components/BlessAnnotator.vue";
 import type BlessAudioRecorder from "../components/BlessAudioRecorder.vue";
+import type BlessAvailabilityGrid from "../components/BlessAvailabilityGrid.vue";
 import type BlessAvatarGroup from "../components/BlessAvatarGroup.vue";
 import type BlessBarChart from "../components/BlessBarChart.vue";
 import type BlessBoxPlot from "../components/BlessBoxPlot.vue";
@@ -81,6 +82,7 @@ type All<C> = C extends new (...a: never[]) => { $props: { labels?: infer L } }
 export type BlessLabelsFull = {
   BlessAnnotator: All<typeof BlessAnnotator>;
   BlessAudioRecorder: All<typeof BlessAudioRecorder>;
+  BlessAvailabilityGrid: All<typeof BlessAvailabilityGrid>;
   BlessAvatarGroup: All<typeof BlessAvatarGroup>;
   BlessBarChart: All<typeof BlessBarChart>;
   BlessBoxPlot: All<typeof BlessBoxPlot>;
@@ -184,6 +186,7 @@ export const labelsId: BlessLabelsFull = {
     done: "Terekam",
     unavailable: "Mikrofon tidak tersedia",
   },
+  BlessAvailabilityGrid: { label: "Waktu luang", free: "luang", busy: "sibuk" },
   BlessAvatarGroup: { more: (n) => `${n} lainnya` },
   BlessBarChart: { category: "Kategori" },
   BlessBoxPlot: {

@@ -416,7 +416,7 @@ Twelve components, 226 → 238. Each uses native platform APIs only: the library
 - ✅ `BlessWaterfallChart`: how a start value goes up and down in steps to an end value, with a bar for each step and totals.
 - ✅ `BlessBulletChart`: one value against a target and bands (poor, fair, good) in one thin bar, for rows of key numbers.
 - ✅ `BlessSlotPicker`: the free times of a day as buttons, in groups such as morning and afternoon, for booking a call.
-- `BlessAvailabilityGrid`: a week of time cells. A drag marks the times when a person is free, and the keyboard works too.
+- ✅ `BlessAvailabilityGrid`: a week of time cells. A drag marks the times when a person is free, and the keyboard works too.
 - `BlessBulkActionBar`: a bar that comes up when rows are selected, with the count, the actions, and a button to clear the selection.
 - `BlessColorSwatches`: a set of ready colors as a radio group, with arrow keys. `BlessColorPicker` uses it for its presets.
 - `BlessPricingTable`: plans side by side, with a monthly or yearly switch, the features of each plan, and one plan that stands out.
