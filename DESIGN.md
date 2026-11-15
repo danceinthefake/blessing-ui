@@ -458,7 +458,7 @@ Sixteen components, 254 → 270. Each uses native platform APIs only: the librar
 - ✅ `BlessPareto`: bars from high to low, with a line for the running share of the total.
 - ✅ `BlessModelPicker`: a select for a model, with a note, marks for speed and cost, and tags.
 - ✅ `BlessAgentPlan`: the steps of an agent, each waiting, running, done, or failed.
-- `BlessChatHistory`: past chats in groups by age, with search, rename, and delete.
+- ✅ `BlessChatHistory`: past chats in groups by age, with search, rename, and delete.
 - `BlessVoiceInput`: a microphone button that turns speech into text with the Web Speech API.
 - `BlessOrderSummary`: the lines of an order, then the subtotal, discount, shipping, tax, and total.
 - `BlessCouponInput`: a field for a code, then the saving with a button to remove it, or the error.
