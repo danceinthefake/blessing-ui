@@ -286,7 +286,7 @@ export const labelsId: BlessLabelsFull = {
   BlessContextMeter: {
     title: "Jendela konteks",
     free: "Kosong",
-    used: (u, m, s) => `Konteks: ${u} dari ${m} token terpakai (${s})`,
+    used: (u, m, s) => `${s} konteks terpakai: ${u} dari ${m} token`,
   },
   BlessCopyButton: copy,
   BlessCronInput: {

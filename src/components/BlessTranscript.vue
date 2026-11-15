@@ -120,6 +120,9 @@ watch(current, async (i) => {
   border-inline-start-color: var(--bless-color-accent);
   background: var(--bless-color-surface-2);
 }
+.is-current .bless-transcript__time {
+  color: var(--bless-color-text);
+}
 .is-current .bless-transcript__text {
   font-weight: var(--bless-font-weight-bold);
 }

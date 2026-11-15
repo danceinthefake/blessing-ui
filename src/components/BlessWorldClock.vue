@@ -129,7 +129,7 @@ const clocks = computed(() => {
   font-weight: var(--bless-font-weight-bold);
 }
 .bless-clock__time {
-  font-size: var(--bless-text-2xl, 1.5rem);
+  font-size: var(--bless-text-xl);
   font-variant-numeric: tabular-nums;
   line-height: 1.2;
 }

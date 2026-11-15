@@ -115,9 +115,11 @@ const move = (r: BlessLeader & { rank: number }) =>
         >
           <td class="bless-leaders__rank">{{ r.rank }}</td>
           <th scope="row" class="bless-leaders__name">
-            <BlessAvatar :src="r.avatar" :name="r.name" alt="" size="sm" />
-            <span>{{ r.name }}</span>
-            <span v-if="r.id === me" class="bless-leaders__you">{{ text.you }}</span>
+            <span class="bless-leaders__who">
+              <BlessAvatar :src="r.avatar" :name="r.name" alt="" size="sm" />
+              <span>{{ r.name }}</span>
+              <span v-if="r.id === me" class="bless-leaders__you">{{ text.you }}</span>
+            </span>
           </th>
           <td class="bless-leaders__move" :class="`is-${move(r).dir}`">
             <span aria-hidden="true">{{
@@ -176,7 +178,7 @@ const move = (r: BlessLeader & { rank: number }) =>
 .is-top3 .bless-leaders__rank {
   background-color: var(--bless-color-surface-2);
 }
-.bless-leaders__name {
+.bless-leaders__who {
   display: flex;
   align-items: center;
   gap: var(--bless-space-2);
@@ -189,9 +191,9 @@ const move = (r: BlessLeader & { rank: number }) =>
   font-weight: var(--bless-font-weight-bold);
 }
 .bless-leaders__row.is-me {
-  background: var(--bless-color-accent-soft);
+  background: color-mix(in srgb, var(--bless-color-accent) 16%, var(--bless-color-bg));
 }
-.bless-leaders__row.is-me .bless-leaders__name > span:not(.bless-leaders__you) {
+.bless-leaders__row.is-me .bless-leaders__who > span:not(.bless-leaders__you) {
   font-weight: var(--bless-font-weight-bold);
 }
 .bless-leaders__move {

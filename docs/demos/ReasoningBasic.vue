@@ -30,7 +30,13 @@ onBeforeUnmount(() => clearInterval(timer));
 
 <template>
   <BlessStack :gap="4" style="max-width: 560px">
-    <BlessButton size="sm" variant="outline" :disabled="streaming" @click="ask">
+    <BlessButton
+      size="sm"
+      variant="outline"
+      :disabled="streaming"
+      style="align-self: flex-start"
+      @click="ask"
+    >
       Ask for a title
     </BlessButton>
     <BlessReasoning v-if="text || streaming" :text :streaming />

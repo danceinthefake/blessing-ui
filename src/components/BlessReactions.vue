@@ -129,7 +129,7 @@ function pick(e: BlessEmoji) {
 /* your own reaction has the accent border and a bold count, not only a tint */
 .bless-reactions__chip[aria-pressed="true"] {
   border-color: var(--bless-color-accent);
-  background: var(--bless-color-accent-soft);
+  background: color-mix(in srgb, var(--bless-color-accent) 16%, var(--bless-color-bg));
 }
 .bless-reactions__chip[aria-pressed="true"] .bless-reactions__count {
   font-weight: var(--bless-font-weight-bold);

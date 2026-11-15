@@ -79,7 +79,7 @@ const grid = computed(() =>
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: var(--bless-space-5);
+  gap: var(--bless-space-6);
   margin: 0;
   font-family: var(--bless-font-sans);
   color: var(--bless-color-text);
