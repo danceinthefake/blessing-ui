@@ -11,6 +11,9 @@ const paragraph =
 <template>
   <div
     ref="article"
+    tabindex="0"
+    role="region"
+    aria-label="Article"
     style="
       max-width: 560px;
       height: 260px;
