@@ -24,7 +24,7 @@ Shows on a status page if each part of a service works. The line at the top sums
 - `parts` is a list of parts. Each part has a `name`, a `status`, and an optional `description`. The status is `operational`, `maintenance`, `degraded`, `partial`, or `major`.
 - The whole service takes the worst state of its parts. If all parts work, the line says "All systems are working".
 - Each state has its own mark and word: a check for working, a tool for maintenance, a dash for slow, a "!" for a partial outage, and a cross for a major outage.
-- `updated` says when the states were last checked, as text.
+- `updated` is the time of the last check, as text.
 - The line at the top is a status line, so screen readers hear a change. Change the words with `labels` or a [label pack](../guide/translating): `title`, `operational`, `maintenance`, `degraded`, `partial`, `major`, `all`, and the functions `summary` and `updated`.
 
 ## Usage
