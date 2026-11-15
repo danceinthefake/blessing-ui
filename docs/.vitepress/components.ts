@@ -236,6 +236,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         text: "The updates of an incident with states and times",
       },
       {
+        name: "BlessSystemStatus",
+        slug: "system-status",
+        text: "The parts of a service with their state",
+      },
+      {
         name: "BlessWebhookLog",
         slug: "webhook-log",
         text: "Sent events with the status and a retry button",

@@ -492,3 +492,5 @@ export type {
   BlessIncidentStatus,
   BlessIncidentUpdate,
 } from "./components/BlessIncidentTimeline.vue";
+export { default as BlessSystemStatus } from "./components/BlessSystemStatus.vue";
+export type { BlessServicePart, BlessServiceState } from "./components/BlessSystemStatus.vue";
