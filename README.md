@@ -509,6 +509,12 @@ Do not apply the rules to code, identifiers, commands, file paths, quoted errors
 
 The `release` workflow cuts the release notes from the `CHANGELOG.md` heading that starts with `## <version> `. Keep that prefix. Do not put an em-dash between the version and the date in new headings.
 
+## Credits
+
+Blessing UI takes its look from saenai.tv. It uses the WAI-ARIA patterns, WCAG 2.1, and methods such as the squarified treemap and the Luhn check. Vite, VitePress, Vitest, Playwright, axe-core, and other tools build and test it. The [credits page](docs/design/credits.md) names each one, with links and what it is for.
+
+If a change uses something from an external party, add it to the credits page (`docs/design/credits.md` and `docs/id/design/credits.md`) in the same change. This covers a package, a tool, a font, a method, a standard, a design, or a project that you compared with.
+
 ## License
 
 Copyright © 2026 DanceInTheFake. Code and design are [MIT](LICENSE).

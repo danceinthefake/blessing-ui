@@ -44,7 +44,7 @@ const totals = computed(() =>
   props.data.map((r) => props.series.reduce((n, s) => n + num(r, s.key), 0)),
 );
 const px = computed(() => scale([0, Math.max(1, props.data.length - 1)], [8, width.value - 8]));
-// the streams sit around a center line: each step starts at minus half its total
+// the streams sit around a center line, as in ThemeRiver (Havre et al., 2000): each step starts at minus half its total
 const py = computed(() => {
   const half = Math.max(1, ...totals.value) / 2;
   return scale([-half, half], [props.height - BOTTOM, 4]);
