@@ -490,6 +490,8 @@ Sixteen components, 270 → 286. Each uses native platform APIs only: the librar
 - ✅ `BlessTicket`: an event ticket with a tear line, the date, the seat, and a QR code.
 - ✅ `BlessRsvp`: going, maybe, and not going, with counts and the faces of people who go.
 - ✅ `BlessCountdownBanner`: a strip at the top with the time left to an event and a link.
+- ✅ Fixed on the way: `BlessTooltip` renders its tip as a `span`, so a tooltip can sit in a paragraph. The SSR test found it with `BlessGlossary`.
+- ✅ Budget: after the round, the whole library is 190.5 KB gz JS and 51.8 KB gz CSS, under the cap of 198 / 54. Phase 32 is done.
 
 ### Deliberately skipped
 
