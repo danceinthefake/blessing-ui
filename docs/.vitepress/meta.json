@@ -14295,6 +14295,31 @@
   ],
   "exposed": []
  },
+ "BlessSystemStatus": {
+  "props": [
+   {
+    "name": "parts",
+    "type": "BlessServicePart[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "updated",
+    "type": "string | undefined",
+    "required": false,
+    "description": "when the states were last checked, as text"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<Record<BlessServiceState, string> & { title: string; all: string; summary: (state: string) => string; updated: (when: string) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessTabPanels": {
   "props": [
    {

@@ -117,6 +117,7 @@ import type BlessStreamgraph from "../components/BlessStreamgraph.vue";
 import type BlessSuggestions from "../components/BlessSuggestions.vue";
 import type BlessSunburst from "../components/BlessSunburst.vue";
 import type BlessSwipeDeck from "../components/BlessSwipeDeck.vue";
+import type BlessSystemStatus from "../components/BlessSystemStatus.vue";
 import type BlessTestimonials from "../components/BlessTestimonials.vue";
 import type BlessThread from "../components/BlessThread.vue";
 import type BlessTicket from "../components/BlessTicket.vue";
@@ -255,6 +256,7 @@ export type BlessLabelsFull = {
   BlessSuggestions: All<typeof BlessSuggestions>;
   BlessSunburst: All<typeof BlessSunburst>;
   BlessSwipeDeck: All<typeof BlessSwipeDeck>;
+  BlessSystemStatus: All<typeof BlessSystemStatus>;
   BlessTestimonials: All<typeof BlessTestimonials>;
   BlessThread: All<typeof BlessThread>;
   BlessTicket: All<typeof BlessTicket>;
@@ -984,6 +986,17 @@ export const labelsId: BlessLabelsFull = {
     skip: "Lewati",
     undo: "Urungkan",
     empty: "Tidak ada kartu lagi",
+  },
+  BlessSystemStatus: {
+    title: "Status sistem",
+    operational: "Berjalan",
+    maintenance: "Pemeliharaan",
+    degraded: "Lambat",
+    partial: "Gangguan sebagian",
+    major: "Gangguan besar",
+    all: "Semua sistem berjalan",
+    summary: (s) => `Ada sistem yang bermasalah: ${s.toLowerCase()}`,
+    updated: (w) => `Diperiksa ${w}`,
   },
   BlessTestimonials: {
     title: "Kata mereka",
