@@ -468,6 +468,7 @@ Sixteen components, 254 → 270. Each uses native platform APIs only: the librar
 - ✅ `BlessProfileCard`: a person with a cover, an avatar, a bio, counts, and a follow button.
 - ✅ `BlessApiKeyField`: a secret key, hidden by default, with show, copy, and make a new key.
 - ✅ `BlessWebhookLog`: sent events with the status, the time, a retry button, and the bodies in a fold.
+- ✅ Budget: after the round, the whole library is 179.7 KB gz JS and 49.2 KB gz CSS, over the old cap of 173 / 48. The cap is now 198 / 54, about 10% of room. Phase 31 is done.
 
 ### Deliberately skipped
 

@@ -2,7 +2,7 @@
 
 ## Unreleased
 
-Sixteen new components, 254 in all: more charts, parts for the replies of an assistant, media and reading parts, and social parts. The library still has no dependencies. No API is removed, but three components have new CSS class names: see "Changed" below.
+Thirty-two new components, 270 in all: more charts, parts for an assistant and its agents, media and reading parts, a shop, social parts, and parts for developers. The library still has no dependencies. No API is removed, but three components have new CSS class names: see "Changed" below.
 
 ### Changed
 
