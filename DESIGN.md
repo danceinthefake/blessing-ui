@@ -418,7 +418,7 @@ Twelve components, 226 → 238. Each uses native platform APIs only: the library
 - ✅ `BlessSlotPicker`: the free times of a day as buttons, in groups such as morning and afternoon, for booking a call.
 - ✅ `BlessAvailabilityGrid`: a week of time cells. A drag marks the times when a person is free, and the keyboard works too.
 - ✅ `BlessBulkActionBar`: a bar that comes up when rows are selected, with the count, the actions, and a button to clear the selection.
-- `BlessColorSwatches`: a set of ready colors as a radio group, with arrow keys. `BlessColorPicker` uses it for its presets.
+- ✅ `BlessColorSwatches`: a set of ready colors as a radio group, with arrow keys. `BlessColorPicker` uses it for its presets.
 - `BlessPricingTable`: plans side by side, with a monthly or yearly switch, the features of each plan, and one plan that stands out.
 - `BlessChangelog`: release notes, with a version, a date, and the changes in groups (added, changed, fixed).
 - `BlessShortcutSheet`: keyboard shortcuts in groups, with `BlessKbd` keys and a search.

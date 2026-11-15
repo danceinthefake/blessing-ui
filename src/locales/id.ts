@@ -13,6 +13,7 @@ import type BlessCameraCapture from "../components/BlessCameraCapture.vue";
 import type BlessCardInput from "../components/BlessCardInput.vue";
 import type BlessCoachmark from "../components/BlessCoachmark.vue";
 import type BlessCodeBlock from "../components/BlessCodeBlock.vue";
+import type BlessColorSwatches from "../components/BlessColorSwatches.vue";
 import type BlessCommand from "../components/BlessCommand.vue";
 import type BlessConnectionStatus from "../components/BlessConnectionStatus.vue";
 import type BlessCopyButton from "../components/BlessCopyButton.vue";
@@ -94,6 +95,7 @@ export type BlessLabelsFull = {
   BlessCardInput: All<typeof BlessCardInput>;
   BlessCoachmark: All<typeof BlessCoachmark>;
   BlessCodeBlock: All<typeof BlessCodeBlock>;
+  BlessColorSwatches: All<typeof BlessColorSwatches>;
   BlessCommand: All<typeof BlessCommand>;
   BlessConnectionStatus: All<typeof BlessConnectionStatus>;
   BlessCopyButton: All<typeof BlessCopyButton>;
@@ -219,6 +221,7 @@ export const labelsId: BlessLabelsFull = {
   BlessCardInput: { invalid: "Periksa nomor kartu" },
   BlessCoachmark: { dot: (t) => `Baru: ${t}`, ok: "Mengerti" },
   BlessCodeBlock: copy,
+  BlessColorSwatches: { label: "Warna" },
   BlessCommand: {
     recent: "Terakhir",
     scope: (l) => `Hanya di ${l}`,

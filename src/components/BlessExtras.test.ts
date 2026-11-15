@@ -62,13 +62,14 @@ test("BlessFileInput: accept filters dropped files by mime, wildcard and extensi
   ]);
 });
 
-test("BlessColorPicker: swatch click sets model and aria-pressed", async () => {
+test("BlessColorPicker: a preset swatch is a checked radio, and a pick sets the model", async () => {
   const w = mount(BlessColorPicker, {
-    props: { modelValue: "#e85078", swatches: ["#e85078", "#a759ff"] },
+    props: { modelValue: "#E85078", swatches: ["#e85078", "#a759ff"] },
   });
-  const sw = w.findAll(".bless-color__swatch");
-  expect(sw[0].attributes("aria-pressed")).toBe("true");
-  await sw[1].trigger("click");
+  expect(w.find("[role=radiogroup]").attributes("aria-label")).toBe("Colour presets");
+  const sw = w.findAll(".bless-swatches__input");
+  expect((sw[0].element as HTMLInputElement).checked).toBe(true);
+  await sw[1].trigger("change");
   expect(w.emitted("update:modelValue")![0][0]).toBe("#a759ff");
 });
 

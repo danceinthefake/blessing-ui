@@ -2357,6 +2357,51 @@
   "slots": [],
   "exposed": []
  },
+ "BlessColorSwatches": {
+  "props": [
+   {
+    "name": "swatches",
+    "type": "(string | BlessColorSwatch)[]",
+    "required": true,
+    "description": "the colors: a CSS color, or `{ value, label }` so a screen reader says a name, not a code"
+   },
+   {
+    "name": "size",
+    "type": "\"md\" | \"sm\" | undefined",
+    "required": false,
+    "default": "\"md\"",
+    "description": ""
+   },
+   {
+    "name": "disabled",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ label: string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "string | null | undefined",
+    "required": false,
+    "default": "null",
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "update:modelValue",
+    "type": "[value: string | null]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessCombobox": {
   "props": [
    {
