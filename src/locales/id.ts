@@ -24,6 +24,7 @@ import type BlessCoachmark from "../components/BlessCoachmark.vue";
 import type BlessCodeBlock from "../components/BlessCodeBlock.vue";
 import type BlessColorSwatches from "../components/BlessColorSwatches.vue";
 import type BlessCommand from "../components/BlessCommand.vue";
+import type BlessComparisonTable from "../components/BlessComparisonTable.vue";
 import type BlessConnectionStatus from "../components/BlessConnectionStatus.vue";
 import type BlessConsentBanner from "../components/BlessConsentBanner.vue";
 import type BlessContextMeter from "../components/BlessContextMeter.vue";
@@ -157,6 +158,7 @@ export type BlessLabelsFull = {
   BlessCodeBlock: All<typeof BlessCodeBlock>;
   BlessColorSwatches: All<typeof BlessColorSwatches>;
   BlessCommand: All<typeof BlessCommand>;
+  BlessComparisonTable: All<typeof BlessComparisonTable>;
   BlessConnectionStatus: All<typeof BlessConnectionStatus>;
   BlessConsentBanner: All<typeof BlessConsentBanner>;
   BlessContextMeter: All<typeof BlessContextMeter>;
@@ -407,6 +409,12 @@ export const labelsId: BlessLabelsFull = {
     scope: (l) => `Hanya di ${l}`,
     clearScope: "Cari di semua tempat",
     scopeHint: (parts) => `Ketik ${parts.join(", ")}`,
+  },
+  BlessComparisonTable: {
+    title: "Bandingkan paket",
+    feature: "Fitur",
+    yes: "Termasuk",
+    no: "Tidak termasuk",
   },
   BlessConnectionStatus: {
     online: "Daring",

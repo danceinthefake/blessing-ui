@@ -808,6 +808,11 @@ export const groups: { title: string; items: Entry[] }[] = [
       },
       { name: "BlessFaqSearch", slug: "faq-search", text: "Questions and answers with a search" },
       {
+        name: "BlessComparisonTable",
+        slug: "comparison-table",
+        text: "Features by plan, with checks and values",
+      },
+      {
         name: "BlessOrderSummary",
         slug: "order-summary",
         text: "The lines of an order, then the sums and the total",
