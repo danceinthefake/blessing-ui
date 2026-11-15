@@ -53,6 +53,7 @@ import type BlessNodeGraph from "../components/BlessNodeGraph.vue";
 import type BlessNotificationInbox from "../components/BlessNotificationInbox.vue";
 import type BlessOnboardingChecklist from "../components/BlessOnboardingChecklist.vue";
 import type BlessOrderList from "../components/BlessOrderList.vue";
+import type BlessOrderSummary from "../components/BlessOrderSummary.vue";
 import type BlessPareto from "../components/BlessPareto.vue";
 import type BlessPhoneInput from "../components/BlessPhoneInput.vue";
 import type BlessPickList from "../components/BlessPickList.vue";
@@ -156,6 +157,7 @@ export type BlessLabelsFull = {
   BlessNotificationInbox: All<typeof BlessNotificationInbox>;
   BlessOnboardingChecklist: All<typeof BlessOnboardingChecklist>;
   BlessOrderList: All<typeof BlessOrderList>;
+  BlessOrderSummary: All<typeof BlessOrderSummary>;
   BlessPareto: All<typeof BlessPareto>;
   BlessPhoneInput: All<typeof BlessPhoneInput>;
   BlessPickList: All<typeof BlessPickList>;
@@ -555,6 +557,16 @@ export const labelsId: BlessLabelsFull = {
     up: (p) => `Naikkan item ${p}`,
     down: (p) => `Turunkan item ${p}`,
     moved: (p, n) => `Dipindah ke posisi ${p} dari ${n}`,
+  },
+  BlessOrderSummary: {
+    title: "Ringkasan pesanan",
+    subtotal: "Subtotal",
+    discount: "Diskon",
+    shipping: "Ongkos kirim",
+    free: "Gratis",
+    tax: "Pajak",
+    total: "Total",
+    quantity: (n) => `Jml ${n}`,
   },
   BlessPareto: { item: "Item", value: "Nilai", running: "Porsi kumulatif" },
   BlessPhoneInput: { country: "Kode negara", number: "Nomor telepon" },
