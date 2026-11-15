@@ -444,3 +444,4 @@ export type { BlessPackageManager } from "./components/BlessCodeTabs.vue";
 export { default as BlessSpoiler } from "./components/BlessSpoiler.vue";
 export { default as BlessFootnotes } from "./components/BlessFootnotes.vue";
 export { default as BlessFootnoteRef } from "./components/BlessFootnoteRef.vue";
+export { default as BlessGlossary } from "./components/BlessGlossary.vue";
