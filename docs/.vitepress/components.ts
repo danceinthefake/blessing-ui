@@ -542,6 +542,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "message-feedback",
         text: "Good, bad, copy and retry under a reply",
       },
+      {
+        name: "BlessContextMeter",
+        slug: "context-meter",
+        text: "How much of the context window the tokens use",
+      },
       { name: "BlessSuggestions", slug: "suggestions", text: "Ready prompts as a row of chips" },
     ],
   },
