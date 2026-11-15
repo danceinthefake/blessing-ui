@@ -74,6 +74,7 @@ import type BlessSankey from "../components/BlessSankey.vue";
 import type BlessScatterChart from "../components/BlessScatterChart.vue";
 import type BlessScheduler from "../components/BlessScheduler.vue";
 import type BlessSelectionToolbar from "../components/BlessSelectionToolbar.vue";
+import type BlessShipmentTracker from "../components/BlessShipmentTracker.vue";
 import type BlessShortcutRecorder from "../components/BlessShortcutRecorder.vue";
 import type BlessShortcutSheet from "../components/BlessShortcutSheet.vue";
 import type BlessSliderCaptcha from "../components/BlessSliderCaptcha.vue";
@@ -179,6 +180,7 @@ export type BlessLabelsFull = {
   BlessScatterChart: All<typeof BlessScatterChart>;
   BlessScheduler: All<typeof BlessScheduler>;
   BlessSelectionToolbar: All<typeof BlessSelectionToolbar>;
+  BlessShipmentTracker: All<typeof BlessShipmentTracker>;
   BlessShortcutRecorder: All<typeof BlessShortcutRecorder>;
   BlessShortcutSheet: All<typeof BlessShortcutSheet>;
   BlessSliderCaptcha: All<typeof BlessSliderCaptcha>;
@@ -684,6 +686,19 @@ export const labelsId: BlessLabelsFull = {
     hint: "Tombol panah menggeser acara, Alt dengan atas atau bawah mengubah durasinya, Delete menghapusnya.",
   },
   BlessSelectionToolbar: { label: "Aksi teks" },
+  BlessShipmentTracker: {
+    title: "Pengiriman",
+    ordered: "Dipesan",
+    packed: "Dikemas",
+    shipped: "Dikirim",
+    out: "Sedang diantar",
+    delivered: "Diterima",
+    latest: "Kabar terbaru",
+    history: "Semua kabar",
+    tracking: "Nomor resi",
+    done: "selesai",
+    current: "langkah sekarang",
+  },
   BlessShortcutRecorder: {
     button: (l, c) => `${l}: ${c || "belum diatur"}. Tekan Enter untuk mengubah.`,
     pressKeys: "Tekan tombol…",

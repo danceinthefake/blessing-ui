@@ -11064,6 +11064,63 @@
   ],
   "exposed": []
  },
+ "BlessShipmentTracker": {
+  "props": [
+   {
+    "name": "stage",
+    "type": "number",
+    "required": true,
+    "description": "the stage the order has reached: 0 ordered, 1 packed, 2 shipped, 3 out for delivery, 4 delivered"
+   },
+   {
+    "name": "dates",
+    "type": "(string | undefined)[] | undefined",
+    "required": false,
+    "default": "[]",
+    "description": "the date of each stage that is done, as text"
+   },
+   {
+    "name": "events",
+    "type": "BlessShipmentEvent[] | undefined",
+    "required": false,
+    "default": "[]",
+    "description": "the updates of the carrier, newest first"
+   },
+   {
+    "name": "problem",
+    "type": "string | undefined",
+    "required": false,
+    "description": "a problem with the delivery: the current stage shows it"
+   },
+   {
+    "name": "carrier",
+    "type": "string | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "tracking",
+    "type": "string | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "trackingUrl",
+    "type": "string | undefined",
+    "required": false,
+    "description": "a link to the page of the carrier"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<Record<\"ordered\" | \"packed\" | \"shipped\" | \"out\" | \"delivered\", string> & { title: string; latest: string; history: string; tracking: string; done: string; current: string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessShortcutRecorder": {
   "props": [
    {
