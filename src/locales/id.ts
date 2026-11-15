@@ -111,6 +111,7 @@ import type BlessStreamgraph from "../components/BlessStreamgraph.vue";
 import type BlessSuggestions from "../components/BlessSuggestions.vue";
 import type BlessSunburst from "../components/BlessSunburst.vue";
 import type BlessSwipeDeck from "../components/BlessSwipeDeck.vue";
+import type BlessTestimonials from "../components/BlessTestimonials.vue";
 import type BlessThread from "../components/BlessThread.vue";
 import type BlessTicket from "../components/BlessTicket.vue";
 import type BlessTimer from "../components/BlessTimer.vue";
@@ -242,6 +243,7 @@ export type BlessLabelsFull = {
   BlessSuggestions: All<typeof BlessSuggestions>;
   BlessSunburst: All<typeof BlessSunburst>;
   BlessSwipeDeck: All<typeof BlessSwipeDeck>;
+  BlessTestimonials: All<typeof BlessTestimonials>;
   BlessThread: All<typeof BlessThread>;
   BlessTicket: All<typeof BlessTicket>;
   BlessTimer: All<typeof BlessTimer>;
@@ -927,6 +929,13 @@ export const labelsId: BlessLabelsFull = {
     skip: "Lewati",
     undo: "Urungkan",
     empty: "Tidak ada kartu lagi",
+  },
+  BlessTestimonials: {
+    title: "Kata mereka",
+    prev: "Kutipan sebelumnya",
+    next: "Kutipan berikutnya",
+    position: (n, t) => `${n} dari ${t}`,
+    rating: (s) => `${s} dari 5 bintang`,
   },
   BlessThread: { replies: (n) => `${n} balasan` },
   BlessTicket: {

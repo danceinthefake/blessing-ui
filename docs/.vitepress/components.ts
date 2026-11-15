@@ -802,6 +802,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         text: "Plans side by side, with a monthly or yearly switch",
       },
       {
+        name: "BlessTestimonials",
+        slug: "testimonials",
+        text: "Quotes with a name, a role and stars",
+      },
+      {
         name: "BlessOrderSummary",
         slug: "order-summary",
         text: "The lines of an order, then the sums and the total",

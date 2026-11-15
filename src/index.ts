@@ -476,3 +476,5 @@ export { addressFormats } from "./components/BlessAddressFields.vue";
 export type { BlessAddress, BlessAddressFormat } from "./components/BlessAddressFields.vue";
 export { default as BlessPresetRange } from "./components/BlessPresetRange.vue";
 export type { BlessRangePreset } from "./components/BlessPresetRange.vue";
+export { default as BlessTestimonials } from "./components/BlessTestimonials.vue";
+export type { BlessTestimonial } from "./components/BlessTestimonials.vue";
