@@ -698,6 +698,7 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "lollipop",
         text: "A thin stick with a dot for each category",
       },
+      { name: "BlessVenn", slug: "venn", text: "Two or three circles that overlap" },
       {
         name: "BlessPricingTable",
         slug: "pricing-table",

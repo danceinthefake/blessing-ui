@@ -46,7 +46,8 @@ Thirty-two new components, 270 in all: more charts, parts for an assistant and i
 - `BlessApiKeyField`: a secret key, hidden to its start and last four letters, with show, copy, and a new key behind a confirm.
 - `BlessWebhookLog`: sent events with the status in a word and a dot, the time, the request and reply bodies in a fold, and a retry button on failed rows.
 - `BlessBumpChart`: the rank of each series at each step as lines that cross, with the names at the end and a hover that fades the other lines.
-- `BlessLollipop`: a thin stick with a dot for each category, with the value after the dot, an optional sort, and one item in its own color. 272 components in all.
+- `BlessLollipop`: a thin stick with a dot for each category, with the value after the dot, an optional sort, and one item in its own color.
+- `BlessVenn`: two or three circles that overlap, with the count of each part worked out by inclusion and exclusion, and a table that names each part. 273 components in all.
 
 ## 0.6.0 — 2026-11-15
 

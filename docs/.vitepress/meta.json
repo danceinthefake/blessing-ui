@@ -14713,6 +14713,45 @@
   "slots": [],
   "exposed": []
  },
+ "BlessVenn": {
+  "props": [
+   {
+    "name": "sets",
+    "type": "BlessVennSet[]",
+    "required": true,
+    "description": "two or three sets"
+   },
+   {
+    "name": "overlaps",
+    "type": "BlessVennOverlap[] | undefined",
+    "required": false,
+    "default": "[]",
+    "description": "the size of each overlap: each pair, and all three"
+   },
+   {
+    "name": "format",
+    "type": "((v: number) => string) | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "label",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Chart\"",
+    "description": "names the chart and its table for screen readers"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ part: string; count: string; only: (name: string) => string; and: (names: string[]) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessVideo": {
   "props": [
    {
