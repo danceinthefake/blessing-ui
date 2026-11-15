@@ -192,7 +192,7 @@ function move(e: KeyboardEvent, r: number, c: number) {
   letter-spacing: var(--bless-tracking-wide);
   text-align: center;
   text-transform: uppercase;
-  color: var(--bless-color-text-muted);
+  color: var(--bless-color-text);
 }
 .bless-seats__map {
   display: grid;

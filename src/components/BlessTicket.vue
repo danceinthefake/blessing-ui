@@ -158,7 +158,6 @@ const fields = computed(() =>
 }
 .bless-ticket__code-label {
   font-size: var(--bless-text-xs);
-  color: var(--bless-color-text-muted);
 }
 .bless-ticket__code code {
   font-family: var(--bless-font-mono);

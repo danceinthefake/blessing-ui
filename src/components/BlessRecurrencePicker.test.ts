@@ -30,7 +30,7 @@ test("BlessRecurrencePicker: the sentence follows the rule", () => {
   expect(days).toHaveLength(7);
   expect(days[0]!.attributes("aria-pressed")).toBe("true");
   expect(days[1]!.attributes("aria-pressed")).toBe("false");
-  expect(days[3]!.attributes("aria-label")).toBe("Thursday");
+  expect(days[3]!.find(".bless-sr").text()).toBe("Thursday");
 });
 
 test("BlessRecurrencePicker: days toggle but one stays, the interval and the end change", async () => {
