@@ -30,13 +30,29 @@ jobs:
           retention-days: 1
 
   e2e:
-    name: e2e · ${{ matrix.browser }}
+    name: e2e · ${{ matrix.name }}
     needs: build
     runs-on: ubuntu-24.04
     strategy:
       fail-fast: false
       matrix:
-        browser: [chromium, firefox, webkit]
+        # axe and motion get their own runners: in series after the chromium sweep they took ~11 min
+        include:
+          - name: chromium
+            browser: chromium
+            run: node e2e/sweep.mjs chromium && node e2e/interact.mjs chromium
+          - name: firefox
+            browser: firefox
+            run: node e2e/sweep.mjs firefox && node e2e/interact.mjs firefox
+          - name: webkit
+            browser: webkit
+            run: node e2e/sweep.mjs webkit && node e2e/interact.mjs webkit
+          - name: axe
+            browser: chromium
+            run: node e2e/axe.mjs
+          - name: motion
+            browser: chromium
+            run: node e2e/motion.mjs
     steps:
       - uses: actions/checkout@v7
       - uses: pnpm/action-setup@v6
@@ -50,13 +66,11 @@ jobs:
           name: docs-dist
           path: docs/.vitepress/dist
       - run: pnpm exec playwright install --with-deps ${{ matrix.browser }}
-      - name: sweep + interact (+ axe, motion on chromium)
+      - name: ${{ matrix.name }}
         run: |
           pnpm exec vitepress preview docs --port 4173 &
           sleep 3
-          node e2e/sweep.mjs ${{ matrix.browser }}
-          node e2e/interact.mjs ${{ matrix.browser }}
-          if [ "${{ matrix.browser }}" = "chromium" ]; then node e2e/axe.mjs; node e2e/motion.mjs; fi
+          ${{ matrix.run }}
 
   # which component demos look different from the previous commit: a report (job summary and a
   # `visual-diff` artifact with base / head / diff pictures), never a gate, since changing how
