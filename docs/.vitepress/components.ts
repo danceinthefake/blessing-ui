@@ -588,6 +588,7 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "candlestick",
         text: "Open, high, low and close of each period",
       },
+      { name: "BlessSunburst", slug: "sunburst", text: "A tree of parts as rings around a center" },
       {
         name: "BlessPricingTable",
         slug: "pricing-table",
