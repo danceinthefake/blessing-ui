@@ -46,6 +46,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         text: "Count or dot badge anchored on any element",
       },
       { name: "BlessTimeline", slug: "timeline", text: "Vertical rail of dated events" },
+      {
+        name: "BlessChangelog",
+        slug: "changelog",
+        text: "Release notes, with the changes in groups",
+      },
       { name: "BlessSwap", slug: "swap", text: "Two-face toggle (icon swap)" },
       { name: "BlessSkew", slug: "skew", text: "Skewed container, counter-skews its slot" },
       { name: "BlessButton", slug: "button", text: "Button or anchor" },

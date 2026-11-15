@@ -372,3 +372,5 @@ export { default as BlessColorSwatches } from "./components/BlessColorSwatches.v
 export type { BlessColorSwatch } from "./components/BlessColorSwatches.vue";
 export { default as BlessPricingTable } from "./components/BlessPricingTable.vue";
 export type { BlessPricingPeriod, BlessPricingPlan } from "./components/BlessPricingTable.vue";
+export { default as BlessChangelog } from "./components/BlessChangelog.vue";
+export type { BlessChangeType, BlessRelease } from "./components/BlessChangelog.vue";
