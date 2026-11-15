@@ -6279,6 +6279,45 @@
   ],
   "exposed": []
  },
+ "BlessIncidentTimeline": {
+  "props": [
+   {
+    "name": "title",
+    "type": "string",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "impact",
+    "type": "\"minor\" | \"major\" | \"critical\" | undefined",
+    "required": false,
+    "default": "\"minor\"",
+    "description": ""
+   },
+   {
+    "name": "affected",
+    "type": "string[] | undefined",
+    "required": false,
+    "default": "[]",
+    "description": "the parts of the service that it affects"
+   },
+   {
+    "name": "updates",
+    "type": "BlessIncidentUpdate[]",
+    "required": true,
+    "description": "newest first"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<Record<\"minor\" | BlessIncidentStatus | \"major\" | \"critical\", string> & { affected: string; impact: string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessIndicator": {
   "props": [
    {

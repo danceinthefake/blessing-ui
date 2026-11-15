@@ -511,7 +511,7 @@ Sixteen components, 286 → 302. Each uses native platform APIs only: the librar
 - ✅ `BlessNewsletterSignup`: an email field and a button, with checks, a success state, and a privacy line.
 - ✅ `BlessPermissionMatrix`: roles by permissions as check boxes, in groups, with a role that cannot change.
 - ✅ `BlessFeatureFlags`: flags with a switch, a note, the rollout share, and the environment.
-- `BlessIncidentTimeline`: the updates of an incident with times, states, and the parts it affects.
+- ✅ `BlessIncidentTimeline`: the updates of an incident with times, states, and the parts it affects.
 - `BlessSystemStatus`: the parts of a service with their state, and one line for the whole service.
 
 ### Deliberately skipped

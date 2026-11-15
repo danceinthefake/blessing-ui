@@ -487,3 +487,8 @@ export { default as BlessPermissionMatrix } from "./components/BlessPermissionMa
 export type { BlessRole, BlessPermission } from "./components/BlessPermissionMatrix.vue";
 export { default as BlessFeatureFlags } from "./components/BlessFeatureFlags.vue";
 export type { BlessFlag } from "./components/BlessFeatureFlags.vue";
+export { default as BlessIncidentTimeline } from "./components/BlessIncidentTimeline.vue";
+export type {
+  BlessIncidentStatus,
+  BlessIncidentUpdate,
+} from "./components/BlessIncidentTimeline.vue";
