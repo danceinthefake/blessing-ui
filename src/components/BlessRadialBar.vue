@@ -4,7 +4,7 @@ import { chartColor, numberText } from "./chart";
 
 defineOptions({ name: "BlessRadialBar" });
 
-export interface BlessRadialItem {
+export interface BlessRadialBarItem {
   label: string;
   value: number;
   /** the value of a full ring; default 100 */
@@ -16,7 +16,7 @@ export interface BlessRadialItem {
 const props = withDefaults(
   defineProps<{
     /** one ring for each item, from the outside in */
-    data: BlessRadialItem[];
+    data: BlessRadialBarItem[];
     /** the width of the circle in pixels */
     size?: number;
     /** text for one value, for example `(v) => v + " min"` */
