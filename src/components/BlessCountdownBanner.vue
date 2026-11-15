@@ -102,7 +102,8 @@ const when = computed(() =>
         </template>
         <span v-else class="bless-countdown__part"><b>--</b></span>
       </span>
-      <span class="bless-sr">{{ text.startsAt(when) }}</span>
+      <!-- the date is in the zone of the reader, so it shows after mount with the clock -->
+      <span v-if="parts" class="bless-sr">{{ text.startsAt(when) }}</span>
     </template>
     <template v-if="$slots.action" #action><slot name="action" /></template>
   </BlessBanner>

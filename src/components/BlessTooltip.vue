@@ -78,7 +78,7 @@ watch(
   >
     <slot />
   </span>
-  <div
+  <span
     ref="tip"
     :id
     popover="manual"
@@ -91,12 +91,16 @@ watch(
   >
     <slot name="content">{{ text }}</slot>
     <span class="bless-tooltip__arrow" aria-hidden="true" />
-  </div>
+  </span>
 </template>
 
 <style>
 .bless-tooltip__anchor {
   display: inline-flex;
+}
+/* a span, so a tooltip can sit in a paragraph; while open it is a box */
+.bless-tooltip:popover-open {
+  display: block;
 }
 .bless-tooltip {
   border-radius: var(--bless-radius-plate);
