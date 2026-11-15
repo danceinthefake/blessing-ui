@@ -482,7 +482,7 @@ Sixteen components, 270 → 286. Each uses native platform APIs only: the librar
 - ✅ `BlessSpoiler`: text hidden under a blur until a click shows it.
 - ✅ `BlessFootnotes`: numbered notes, with marks in the text that link to them and back.
 - ✅ `BlessGlossary`: a term with a dotted line that shows its meaning on hover or focus.
-- `BlessRecurrencePicker`: a rule that repeats, such as every two weeks on Monday and Thursday, with the rule in a sentence.
+- ✅ `BlessRecurrencePicker`: a rule that repeats, such as every two weeks on Monday and Thursday, with the rule in a sentence.
 - `BlessOpeningHours`: the hours of each day of the week, with closed days, two shifts, and "Open now".
 - `BlessHabitTracker`: a grid of days for each habit, with check marks, the streak, and the rate.
 - `BlessQuotaUsage`: the limits of a plan as bars, with the use in words and a warning near the end.

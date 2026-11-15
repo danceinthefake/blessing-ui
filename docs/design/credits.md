@@ -33,6 +33,7 @@ Some components use known methods. We wrote each one again from its description.
 
 - The [treemap](../components/treemap) uses the squarified layout of Bruls, Huijsmans, and van Wijk (2000).
 - The [card input](../components/card-input) checks numbers with the Luhn algorithm (Hans Peter Luhn, 1954).
+- The [recurrence picker](../components/recurrence-picker) writes its rule as an RRULE of [RFC 5545](https://www.rfc-editor.org/rfc/rfc5545), the iCalendar standard.
 - The chart axes use round steps of 1, 2, 2.5, and 5, after "nice numbers" by Paul Heckbert (1990).
 - The [box plot](../components/box-plot) ends its whiskers at 1.5 times the box height, as John Tukey proposed.
 - The [waffle](../components/waffle) rounds its shares with the largest remainder method, so the squares always add up to 100.

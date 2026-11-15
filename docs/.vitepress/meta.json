@@ -10726,6 +10726,39 @@
   ],
   "exposed": []
  },
+ "BlessRecurrencePicker": {
+  "props": [
+   {
+    "name": "locale",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"en\"",
+    "description": "the language of the day names and the date, for example `id`"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ every: string; unit: (freq: BlessRepeatFreq, n: number) => string; on: string; ends: string; never: string; after: string; times: string; onDate: string; summary: (parts: { every: string; days: string; end: string; }) => string; everyUnit: (n: number, unit: string) => string; endCount: (n: number) => string; endUntil: (date: string) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "BlessRecurrence | undefined",
+    "required": false,
+    "default": "{ freq: \"weekly\", interval: 1, days: [0], end: { type: \"never\" } }",
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "update:modelValue",
+    "type": "[value: BlessRecurrence]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessRelativeTime": {
   "props": [
    {
