@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, onBeforeUnmount, ref } from "vue";
+import { micLevel } from "../composables/micLevel";
 import { useLabelPack } from "../composables/useLabels";
 import BlessButton from "./BlessButton.vue";
 
@@ -57,38 +58,21 @@ const url = ref<string>();
 
 let stream: MediaStream | undefined;
 let rec: MediaRecorder | undefined;
-let ctx: AudioContext | undefined;
-let frame = 0;
+let stopMeter = () => {};
 let tick: ReturnType<typeof setInterval> | undefined;
 let last = 0;
 
 function release() {
   clearInterval(tick);
-  cancelAnimationFrame(frame);
+  stopMeter();
   stream?.getTracks().forEach((t) => t.stop());
-  void ctx?.close();
-  stream = ctx = undefined;
+  stream = undefined;
 }
 // draw the loudness of the last moment as a bar, while recording
 function meter(s: MediaStream) {
-  if (typeof AudioContext === "undefined") return;
-  ctx = new AudioContext();
-  const an = ctx.createAnalyser();
-  an.fftSize = 512;
-  ctx.createMediaStreamSource(s).connect(an);
-  const buf = new Uint8Array(an.fftSize);
-  const draw = () => {
-    if (state.value === "recording") {
-      an.getByteTimeDomainData(buf);
-      let sum = 0;
-      for (const v of buf) sum += ((v - 128) / 128) ** 2;
-      levels.value = [...levels.value, Math.min(1, Math.sqrt(sum / buf.length) * 3)].slice(
-        -props.bars,
-      );
-    }
-    frame = requestAnimationFrame(draw);
-  };
-  frame = requestAnimationFrame(draw);
+  stopMeter = micLevel(s, (l) => {
+    if (state.value === "recording") levels.value = [...levels.value, l].slice(-props.bars);
+  });
 }
 
 async function start() {

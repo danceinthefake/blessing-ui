@@ -196,6 +196,7 @@ export type BlessLabelsFull = {
   BlessTypingIndicator: All<typeof BlessTypingIndicator>;
   BlessUploader: All<typeof BlessUploader>;
   BlessUptimeBar: All<typeof BlessUptimeBar>;
+  BlessVoiceInput: All<typeof BlessVoiceInput>;
   BlessWaterfallChart: All<typeof BlessWaterfallChart>;
 };
 
@@ -757,7 +758,16 @@ export const labelsId: BlessLabelsFull = {
     down: "Mati",
     none: "Tidak ada data",
   },
+  BlessVoiceInput: {
+    start: "Mulai dikte",
+    stop: "Hentikan dikte",
+    listening: "Mendengarkan…",
+    stopped: "Dikte berhenti",
+    unsupported: "Ucapan ke teks tidak tersedia di peramban ini",
+    denied: "Mikrofon tidak diizinkan",
+  },
   BlessWaterfallChart: { step: "Langkah", change: "Perubahan", total: "Total" },
 };
 
+import type BlessVoiceInput from "../components/BlessVoiceInput.vue";
 import type BlessWaterfallChart from "../components/BlessWaterfallChart.vue";

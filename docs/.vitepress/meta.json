@@ -14326,6 +14326,61 @@
   ],
   "exposed": []
  },
+ "BlessVoiceInput": {
+  "props": [
+   {
+    "name": "lang",
+    "type": "string | undefined",
+    "required": false,
+    "description": "the language of the speech, for example `id-ID`; default: the language of the page"
+   },
+   {
+    "name": "continuous",
+    "type": "boolean | undefined",
+    "required": false,
+    "default": "true",
+    "description": "keep listening after a pause, until the reader stops it"
+   },
+   {
+    "name": "disabled",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ start: string; stop: string; listening: string; stopped: string; unsupported: string; denied: string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"\"",
+    "description": "the text: each finished phrase is added at the end"
+   }
+  ],
+  "events": [
+   {
+    "name": "update:modelValue",
+    "type": "[value: string]",
+    "description": ""
+   },
+   {
+    "name": "error",
+    "type": "[error: string]",
+    "description": ""
+   },
+   {
+    "name": "result",
+    "type": "[text: string]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessWaffle": {
   "props": [
    {
