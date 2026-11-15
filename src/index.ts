@@ -413,3 +413,5 @@ export { default as BlessPareto } from "./components/BlessPareto.vue";
 export type { BlessParetoItem } from "./components/BlessPareto.vue";
 export { default as BlessModelPicker } from "./components/BlessModelPicker.vue";
 export type { BlessModel } from "./components/BlessModelPicker.vue";
+export { default as BlessAgentPlan } from "./components/BlessAgentPlan.vue";
+export type { BlessPlanStep, BlessStepStatus } from "./components/BlessAgentPlan.vue";

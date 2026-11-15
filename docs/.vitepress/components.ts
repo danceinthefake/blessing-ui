@@ -577,6 +577,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "model-picker",
         text: "A select for a model, with notes and marks",
       },
+      {
+        name: "BlessAgentPlan",
+        slug: "agent-plan",
+        text: "The steps of an agent, each with its state",
+      },
       { name: "BlessSuggestions", slug: "suggestions", text: "Ready prompts as a row of chips" },
     ],
   },

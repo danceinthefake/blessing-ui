@@ -1,3 +1,4 @@
+import type BlessAgentPlan from "../components/BlessAgentPlan.vue";
 // Indonesian label pack. Its type asks for every word of every component with a `labels` prop, so
 // a new English word without an Indonesian one fails the typecheck.
 import type BlessAnnotator from "../components/BlessAnnotator.vue";
@@ -101,6 +102,7 @@ type All<C> = C extends new (...a: never[]) => { $props: { labels?: infer L } }
 
 /** a pack with every word of the library; use it as the type of your own complete pack */
 export type BlessLabelsFull = {
+  BlessAgentPlan: All<typeof BlessAgentPlan>;
   BlessAnnotator: All<typeof BlessAnnotator>;
   BlessAudioRecorder: All<typeof BlessAudioRecorder>;
   BlessAvailabilityGrid: All<typeof BlessAvailabilityGrid>;
@@ -202,6 +204,14 @@ const unknown = (what: string, name: string, suggestion?: string) =>
 
 /** Bahasa Indonesia for every component: `provideLabels(labelsId)` */
 export const labelsId: BlessLabelsFull = {
+  BlessAgentPlan: {
+    pending: "Menunggu",
+    running: "Berjalan",
+    done: "Selesai",
+    failed: "Gagal",
+    skipped: "Dilewati",
+    summary: (d, t) => `${d} dari ${t} langkah selesai`,
+  },
   BlessAnnotator: {
     tools: "Alat",
     select: "Pilih",

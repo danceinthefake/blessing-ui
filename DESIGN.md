@@ -457,7 +457,7 @@ Sixteen components, 254 → 270. Each uses native platform APIs only: the librar
 - ✅ `BlessStreamgraph`: stacked areas around a center line, to show how a mix changes over time.
 - ✅ `BlessPareto`: bars from high to low, with a line for the running share of the total.
 - ✅ `BlessModelPicker`: a select for a model, with a note, marks for speed and cost, and tags.
-- `BlessAgentPlan`: the steps of an agent, each waiting, running, done, or failed.
+- ✅ `BlessAgentPlan`: the steps of an agent, each waiting, running, done, or failed.
 - `BlessChatHistory`: past chats in groups by age, with search, rename, and delete.
 - `BlessVoiceInput`: a microphone button that turns speech into text with the Web Speech API.
 - `BlessOrderSummary`: the lines of an order, then the subtotal, discount, shipping, tax, and total.
