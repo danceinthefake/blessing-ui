@@ -775,6 +775,7 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "marimekko",
         text: "Bars whose width and height both show a share",
       },
+      { name: "BlessPictogram", slug: "pictogram", text: "A count as rows of icons" },
       {
         name: "BlessPricingTable",
         slug: "pricing-table",
