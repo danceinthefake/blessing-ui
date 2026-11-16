@@ -61,7 +61,8 @@ Fifty-four new components, 372 in all, for finance, commerce, communication, soc
 - `BlessLyrics`: the lines of a song with the current one marked from the position, a box that keeps it in the middle, and lines that seek.
 - `BlessContinueWatching`: a row of items with the place where the viewer stopped as a bar and in words, one link per card, and a remove button named with the title.
 - `BlessRecordHeader`: the top of a record page with the code, the title at the level you choose, a status word with a mark, key facts as a description list, and an actions slot.
-- `BlessCsvImport`: a CSV import with an RFC 4180 parser, columns matched to your fields by name, a preview, skipped rows, and an import event. 374 components in all.
+- `BlessCsvImport`: a CSV import with an RFC 4180 parser, columns matched to your fields by name, a preview, skipped rows, and an import event.
+- `BlessAuditLog`: who changed which record and when, the action as a mark and a word, and each field with the old value struck and the new value. 375 components in all.
 
 ## 0.7.0 — 2026-11-16
 

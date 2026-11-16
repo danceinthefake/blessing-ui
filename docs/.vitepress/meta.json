@@ -975,6 +975,25 @@
   "slots": [],
   "exposed": []
  },
+ "BlessAuditLog": {
+  "props": [
+   {
+    "name": "entries",
+    "type": "BlessAuditEntry[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<Record<BlessAuditAction, string> & { title: string; from: string; to: string; empty: string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessAvailabilityGrid": {
   "props": [
    {

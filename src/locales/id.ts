@@ -9,6 +9,7 @@ import type BlessAppointmentCard from "../components/BlessAppointmentCard.vue";
 import type BlessApprovalFlow from "../components/BlessApprovalFlow.vue";
 import type BlessArticleHeader from "../components/BlessArticleHeader.vue";
 import type BlessAudioRecorder from "../components/BlessAudioRecorder.vue";
+import type BlessAuditLog from "../components/BlessAuditLog.vue";
 import type BlessAvailabilityGrid from "../components/BlessAvailabilityGrid.vue";
 import type BlessAvatarGroup from "../components/BlessAvatarGroup.vue";
 import type BlessBalanceCard from "../components/BlessBalanceCard.vue";
@@ -214,6 +215,7 @@ export type BlessLabelsFull = {
   BlessApprovalFlow: All<typeof BlessApprovalFlow>;
   BlessArticleHeader: All<typeof BlessArticleHeader>;
   BlessAudioRecorder: All<typeof BlessAudioRecorder>;
+  BlessAuditLog: All<typeof BlessAuditLog>;
   BlessAvailabilityGrid: All<typeof BlessAvailabilityGrid>;
   BlessAvatarGroup: All<typeof BlessAvatarGroup>;
   BlessBalanceCard: All<typeof BlessBalanceCard>;
@@ -511,6 +513,16 @@ export const labelsId: BlessLabelsFull = {
     paused: "Dijeda",
     done: "Terekam",
     unavailable: "Mikrofon tidak tersedia",
+  },
+  BlessAuditLog: {
+    title: "Log audit",
+    created: "membuat",
+    updated: "mengubah",
+    deleted: "menghapus",
+    viewed: "melihat",
+    from: "sebelumnya",
+    to: "sekarang",
+    empty: "kosong",
   },
   BlessAvailabilityGrid: { label: "Waktu luang", free: "luang", busy: "sibuk" },
   BlessAvatarGroup: { more: (n) => `${n} lainnya` },
