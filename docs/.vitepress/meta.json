@@ -6107,6 +6107,51 @@
   ],
   "exposed": []
  },
+ "BlessFollowButton": {
+  "props": [
+   {
+    "name": "name",
+    "type": "string",
+    "required": true,
+    "description": "the person or page to follow, for screen readers"
+   },
+   {
+    "name": "followers",
+    "type": "number | undefined",
+    "required": false,
+    "description": "the number of followers, without the reader"
+   },
+   {
+    "name": "locale",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"en\"",
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ follow: string; following: string; followers: (count: string) => string; followed: (name: string) => string; unfollowed: (name: string) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "boolean | undefined",
+    "required": false,
+    "default": "false",
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "update:modelValue",
+    "type": "[value: boolean]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessFootnoteRef": {
   "props": [
    {

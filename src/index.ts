@@ -575,3 +575,4 @@ export { default as BlessPostComposer } from "./components/BlessPostComposer.vue
 export type { BlessNewPost } from "./components/BlessPostComposer.vue";
 export { default as BlessStories } from "./components/BlessStories.vue";
 export type { BlessStory, BlessStoryPerson } from "./components/BlessStories.vue";
+export { default as BlessFollowButton } from "./components/BlessFollowButton.vue";
