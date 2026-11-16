@@ -20346,6 +20346,49 @@
   "slots": [],
   "exposed": []
  },
+ "BlessWorkInstructions": {
+  "props": [
+   {
+    "name": "job",
+    "type": "string | undefined",
+    "required": false,
+    "description": "the job, for the title"
+   },
+   {
+    "name": "steps",
+    "type": "BlessInstructionStep[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ title: string; step: (n: number, total: number) => string; back: string; next: string; finish: string; caution: string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "number | undefined",
+    "required": false,
+    "default": "0",
+    "description": "the index of the step on the screen"
+   }
+  ],
+  "events": [
+   {
+    "name": "update:modelValue",
+    "type": "[value: number]",
+    "description": ""
+   },
+   {
+    "name": "finish",
+    "type": "[]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessWorkOrderCard": {
   "props": [
    {

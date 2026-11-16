@@ -78,7 +78,8 @@ Sixty-eight new components, 386 in all, for finance, commerce, communication, so
 - `BlessProductionCounter`: good and scrap counts with big touch buttons, the target with a bar, the yield, undo of the last taps, and a status after each tap.
 - `BlessMachineBoard`: a board of machines with the state as a mark, a word, and an edge, the time in it, the job, a summary, and the machines that need help first.
 - `BlessOeeGauge`: overall equipment effectiveness on a gauge with zones from the goal, the three parts as bars, and the lowest part named.
-- `BlessDowntimePicker`: the reason for a stop as big radio tiles, unplanned and planned groups, a note, and a save event. 391 components in all.
+- `BlessDowntimePicker`: the reason for a stop as big radio tiles, unplanned and planned groups, a note, and a save event.
+- `BlessWorkInstructions`: the steps of a job one at a time with a picture, a caution box, a step bar and count, big back and next buttons, focus on each step, and finish. 392 components in all.
 
 ## 0.7.0 — 2026-11-16
 

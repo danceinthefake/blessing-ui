@@ -440,6 +440,7 @@ export type BlessLabelsFull = {
   BlessWaterfallChart: All<typeof BlessWaterfallChart>;
   BlessWebhookLog: All<typeof BlessWebhookLog>;
   BlessWishlistButton: All<typeof BlessWishlistButton>;
+  BlessWorkInstructions: All<typeof BlessWorkInstructions>;
   BlessWorkOrderCard: All<typeof BlessWorkOrderCard>;
   BlessWorkoutLog: All<typeof BlessWorkoutLog>;
 };
@@ -1954,6 +1955,14 @@ export const labelsId: BlessLabelsFull = {
     added: (n) => `${n} ada di wishlist Anda.`,
     removed: (n) => `${n} keluar dari wishlist Anda.`,
   },
+  BlessWorkInstructions: {
+    title: "Instruksi kerja",
+    step: (n, t) => `Langkah ${n} dari ${t}`,
+    back: "Kembali",
+    next: "Langkah berikutnya",
+    finish: "Selesai",
+    caution: "Perhatian",
+  },
   BlessWorkOrderCard: {
     queued: "Antre",
     running: "Berjalan",
@@ -1991,5 +2000,6 @@ import type BlessWebhookLog from "../components/BlessWebhookLog.vue";
 
 import type BlessWishlistButton from "../components/BlessWishlistButton.vue";
 
+import type BlessWorkInstructions from "../components/BlessWorkInstructions.vue";
 import type BlessWorkOrderCard from "../components/BlessWorkOrderCard.vue";
 import type BlessWorkoutLog from "../components/BlessWorkoutLog.vue";
