@@ -531,3 +531,5 @@ export type { BlessLesson } from "./components/BlessLessonPath.vue";
 export { default as BlessAchievements } from "./components/BlessAchievements.vue";
 export type { BlessAchievement } from "./components/BlessAchievements.vue";
 export { default as BlessBalanceCard } from "./components/BlessBalanceCard.vue";
+export { default as BlessTransactionList } from "./components/BlessTransactionList.vue";
+export type { BlessTransaction } from "./components/BlessTransactionList.vue";
