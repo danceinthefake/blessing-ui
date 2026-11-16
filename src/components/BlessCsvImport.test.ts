@@ -37,7 +37,7 @@ test("BlessCsvImport: auto match by name, a preview, skipped rows, and import of
   expect((selects[2]!.element as HTMLSelectElement).value).toBe("-1");
   expect(w.findAll("tbody tr")[1]!.find(".is-missing").text()).toBe("—");
   expect(w.find(".bless-csv__warn").text()).toBe(
-    "1 rows miss a required value and will be skipped.",
+    "1 row misses a required value and will be skipped.",
   );
   await selects[2]!.setValue("2");
   await w.find("button").trigger("click");

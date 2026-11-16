@@ -625,7 +625,7 @@ Fourteen components, 372 → 386. Each uses native platform APIs only: the libra
 
 - ✅ `BlessRecordHeader`: the top of a record page: the name, the status, key facts, and the main actions.
 - ✅ `BlessCsvImport`: read a CSV file, match its columns to your fields, and check the rows before the import.
-- `BlessAuditLog`: who changed what and when, with the old and the new value.
+- ✅ `BlessAuditLog`: who changed what and when, with the old and the new value.
 - `BlessInvoice`: an invoice with the parties, the lines, the tax, the totals, and the payment state.
 - `BlessTicketView`: a help desk ticket with the customer, the messages, the state, and a reply box.
 - `BlessSlaTimer`: the time left to answer or to solve a ticket, with a warning and a breach state.

@@ -634,3 +634,5 @@ export type { BlessRecordFact } from "./components/BlessRecordHeader.vue";
 export { default as BlessCsvImport } from "./components/BlessCsvImport.vue";
 export { parseCsv } from "./components/BlessCsvImport.vue";
 export type { BlessImportField } from "./components/BlessCsvImport.vue";
+export { default as BlessAuditLog } from "./components/BlessAuditLog.vue";
+export type { BlessAuditEntry, BlessAuditAction } from "./components/BlessAuditLog.vue";

@@ -72,7 +72,10 @@ const text = computed(() => ({
   required: "required",
   previewTitle: "Preview",
   rows: (n: number) => `${n} rows in the file`,
-  missing: (n: number) => `${n} rows miss a required value and will be skipped.`,
+  missing: (n: number) =>
+    n === 1
+      ? "1 row misses a required value and will be skipped."
+      : `${n} rows miss a required value and will be skipped.`,
   unmatched: (f: string) => `Match these required fields: ${f}`,
   import: (n: number) => `Import ${n} rows`,
   empty: "The file has no rows.",

@@ -1091,6 +1091,11 @@ export const groups: { title: string; items: Entry[] }[] = [
       },
       { name: "BlessRecordHeader", slug: "record-header", text: "The top of a record page" },
       { name: "BlessCsvImport", slug: "csv-import", text: "Import a CSV with column matching" },
+      {
+        name: "BlessAuditLog",
+        slug: "audit-log",
+        text: "Who changed what, with old and new values",
+      },
     ],
   },
   {
