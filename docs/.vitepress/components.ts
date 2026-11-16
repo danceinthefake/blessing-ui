@@ -381,6 +381,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         text: "Columns of cards, drag between columns, WIP limits",
       },
       {
+        name: "BlessStickyBoard",
+        slug: "sticky-board",
+        text: "Sticky notes that you add, edit, color and move",
+      },
+      {
         name: "BlessMention",
         slug: "mention",
         text: "@ / # suggestions inside a textarea",

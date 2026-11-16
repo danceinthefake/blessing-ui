@@ -88,7 +88,8 @@ Sixty-four new components, 302 in all: more charts, parts for an assistant and i
 - `BlessContrastChecker`: two colors in, the WCAG 2.1 contrast ratio and the AA and AAA levels out, with `contrastRatio` and `wcagLevels` as functions.
 - `BlessPaletteViewer`: the shades of each palette with the value, copy on click, and the contrast on white and black with an AA mark.
 - `BlessIconPicker`: a grid of your icons as path data, with a search on names and keywords, as a native radio group.
-- `BlessTypeScale`: a specimen of the font sizes with the measured size and line height, the text tokens of the library by default. 310 components in all.
+- `BlessTypeScale`: a specimen of the font sizes with the measured size and line height, the text tokens of the library by default.
+- `BlessStickyBoard`: sticky notes on a board that you add, type in, color, delete, and move by drag or with the arrow keys. 311 components in all.
 
 ## 0.6.0 — 2026-11-15
 

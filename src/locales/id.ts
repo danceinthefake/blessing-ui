@@ -120,6 +120,7 @@ import type BlessSources from "../components/BlessSources.vue";
 import type BlessSpoiler from "../components/BlessSpoiler.vue";
 import type BlessStat from "../components/BlessStat.vue";
 import type BlessStepper from "../components/BlessStepper.vue";
+import type BlessStickyBoard from "../components/BlessStickyBoard.vue";
 import type BlessStreamgraph from "../components/BlessStreamgraph.vue";
 import type BlessSuggestions from "../components/BlessSuggestions.vue";
 import type BlessSunburst from "../components/BlessSunburst.vue";
@@ -267,6 +268,7 @@ export type BlessLabelsFull = {
   BlessSpoiler: All<typeof BlessSpoiler>;
   BlessStat: All<typeof BlessStat>;
   BlessStepper: All<typeof BlessStepper>;
+  BlessStickyBoard: All<typeof BlessStickyBoard>;
   BlessStreamgraph: All<typeof BlessStreamgraph>;
   BlessSuggestions: All<typeof BlessSuggestions>;
   BlessSunburst: All<typeof BlessSunburst>;
@@ -1027,6 +1029,14 @@ export const labelsId: BlessLabelsFull = {
   BlessSpoiler: { show: "Tampilkan spoiler", showAbout: (h) => `Tampilkan spoiler: ${h}` },
   BlessStat: { up: "Naik", down: "Turun", flat: "Tidak berubah" },
   BlessStepper: { next: "Lanjut", prev: "Kembali", finish: "Selesai" },
+  BlessStickyBoard: {
+    board: "Papan",
+    add: "Tambah catatan",
+    note: (n) => `Catatan ${n}`,
+    move: "Pindah: seret, atau pakai tombol panah",
+    color: "Ganti warna",
+    remove: "Hapus catatan",
+  },
   BlessStreamgraph: { step: "Langkah" },
   BlessSuggestions: { label: "Saran" },
   BlessSunburst: { part: "Bagian", value: "Nilai", share: "Porsi", total: "Total" },
