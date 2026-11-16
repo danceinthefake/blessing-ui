@@ -520,3 +520,5 @@ export type {
   BlessApprover,
   BlessDecision,
 } from "./components/BlessApprovalFlow.vue";
+export { default as BlessVersionHistory } from "./components/BlessVersionHistory.vue";
+export type { BlessVersion } from "./components/BlessVersionHistory.vue";
