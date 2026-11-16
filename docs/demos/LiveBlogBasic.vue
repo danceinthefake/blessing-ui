@@ -22,7 +22,11 @@ let n = 4;
 // in a real page, new updates come from the server
 function arrive() {
   updates.value = [
-    { id: String(n), time: `19:${40 + n * 3}`, body: `Update ${n} from the studio.` },
+    {
+      id: String(n),
+      time: `20:${String(n).padStart(2, "0")}`,
+      body: `Update ${n} from the studio.`,
+    },
     ...updates.value,
   ];
   n++;

@@ -1113,6 +1113,7 @@ export const groups: { title: string; items: Entry[] }[] = [
       { name: "BlessFigure", slug: "figure", text: "An image with a caption and a credit" },
       { name: "BlessPullQuote", slug: "pull-quote", text: "A big quote with the speaker" },
       { name: "BlessLiveBlog", slug: "live-blog", text: "Timed updates with a new-updates button" },
+      { name: "BlessPaywall", slug: "paywall", text: "The end of a free preview with plans" },
       { name: "BlessVideo", slug: "video", text: "Responsive embed or native video" },
       { name: "BlessParallax", slug: "parallax", text: "Background that scrolls slower" },
       { name: "BlessCarousel", slug: "carousel", text: "Scroll-snap slider" },

@@ -616,3 +616,5 @@ export { default as BlessFigure } from "./components/BlessFigure.vue";
 export { default as BlessPullQuote } from "./components/BlessPullQuote.vue";
 export { default as BlessLiveBlog } from "./components/BlessLiveBlog.vue";
 export type { BlessLiveUpdate } from "./components/BlessLiveBlog.vue";
+export { default as BlessPaywall } from "./components/BlessPaywall.vue";
+export type { BlessPaywallPlan } from "./components/BlessPaywall.vue";
