@@ -62,6 +62,25 @@
   ],
   "exposed": []
  },
+ "BlessAchievements": {
+  "props": [
+   {
+    "name": "achievements",
+    "type": "BlessAchievement[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ title: string; earned: (when: string) => string; locked: string; count: (earned: number, total: number) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessActionSheet": {
   "props": [
    {

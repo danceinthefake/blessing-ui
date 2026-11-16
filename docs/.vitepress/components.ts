@@ -681,6 +681,11 @@ export const groups: { title: string; items: Entry[] }[] = [
       { name: "BlessQuiz", slug: "quiz", text: "Questions with choices, a check and a score" },
       { name: "BlessFlashcards", slug: "flashcards", text: "Cards with a question and an answer" },
       { name: "BlessLessonPath", slug: "lesson-path", text: "The lessons of a course as a path" },
+      {
+        name: "BlessAchievements",
+        slug: "achievements",
+        text: "Badges that a user earns, with progress",
+      },
       { name: "BlessPoll", slug: "poll", text: "One-question vote with results" },
       {
         name: "BlessPresenceCursors",
