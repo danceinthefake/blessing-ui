@@ -2828,6 +2828,67 @@
   "slots": [],
   "exposed": []
  },
+ "BlessCertificate": {
+  "props": [
+   {
+    "name": "name",
+    "type": "string",
+    "required": true,
+    "description": "the person who gets the certificate"
+   },
+   {
+    "name": "course",
+    "type": "string",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "date",
+    "type": "string",
+    "required": true,
+    "description": "the date of completion as text"
+   },
+   {
+    "name": "issuer",
+    "type": "string",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "signer",
+    "type": "string | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "signerRole",
+    "type": "string | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "code",
+    "type": "string | undefined",
+    "required": false,
+    "description": "a code that a reader can look up to make sure that the certificate is real"
+   },
+   {
+    "name": "verifyUrl",
+    "type": "string | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ title: string; given: string; completed: string; on: (date: string) => string; code: (code: string) => string; verify: string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessChangelog": {
   "props": [
    {

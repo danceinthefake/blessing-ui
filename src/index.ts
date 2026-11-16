@@ -707,3 +707,4 @@ export { default as BlessCourseCard } from "./components/BlessCourseCard.vue";
 export { default as BlessGradebook } from "./components/BlessGradebook.vue";
 export type { BlessGradeTask, BlessScores } from "./components/BlessGradebook.vue";
 export { default as BlessAssignment } from "./components/BlessAssignment.vue";
+export { default as BlessCertificate } from "./components/BlessCertificate.vue";
