@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, reactive, ref } from "vue";
 import { useLabelPack } from "../composables/useLabels";
+import { moneyFormat } from "../composables/money";
 import BlessButton from "./BlessButton.vue";
 
 defineOptions({ name: "BlessReturnRequest" });
@@ -64,9 +65,7 @@ const back = reactive<Record<string, number>>({});
 const reason = ref("");
 const note = ref("");
 const tried = ref(false);
-const money = computed(
-  () => new Intl.NumberFormat(props.locale, { style: "currency", currency: props.currency }),
-);
+const money = computed(() => moneyFormat(props.locale, props.currency));
 const refund = computed(() => props.items.reduce((n, it) => n + (back[it.id] ?? 0) * it.price, 0));
 const chosen = computed(() =>
   props.items

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
+import { moneyFormat } from "../composables/money";
 import "./sr.css";
 
 defineOptions({ name: "BlessBalanceCard" });
@@ -34,9 +35,7 @@ const text = computed(() => ({
   ...pack(),
   ...props.labels,
 }));
-const money = computed(
-  () => new Intl.NumberFormat(props.locale, { style: "currency", currency: props.currency }),
-);
+const money = computed(() => moneyFormat(props.locale, props.currency));
 const changeText = computed(() => {
   if (props.change === undefined) return "";
   const word = props.change < 0 ? text.value.down : text.value.up;

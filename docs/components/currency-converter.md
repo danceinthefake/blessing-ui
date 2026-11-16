@@ -25,7 +25,7 @@ Converts money for a travel, shop, or bank app. You give the rates, and the comp
 - `v-model:amount`, `v-model:from`, and `v-model:to` hold the amount and the two currencies. The ⇄ button swaps the currencies.
 - The result is an `output` element, so screen readers hear each new value. Under it, a line shows the rate for one unit, such as "$1.00 = IDR 16,250".
 - `updated` is the time of the rates, as text. It shows after the rate line.
-- Each currency uses its own number of decimals, as `Intl.NumberFormat` gives it.
+- Each currency uses its own number of decimals, such as 0 for IDR and 2 for USD. The number is the same in every browser and on the server.
 - Change the words with `labels` or a [label pack](../guide/translating): `amount`, `from`, `to`, `swap`, `result`, and `updated` (a function).
 
 ## Usage

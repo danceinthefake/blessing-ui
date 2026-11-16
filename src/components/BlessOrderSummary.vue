@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
+import { moneyFormat } from "../composables/money";
 
 defineOptions({ name: "BlessOrderSummary" });
 const pack = useLabelPack("BlessOrderSummary");
@@ -56,9 +57,7 @@ const text = computed(() => ({
   ...pack(),
   ...props.labels,
 }));
-const money = computed(
-  () => new Intl.NumberFormat(props.locale, { style: "currency", currency: props.currency }),
-);
+const money = computed(() => moneyFormat(props.locale, props.currency));
 const subtotal = computed(() => props.lines.reduce((n, l) => n + l.price * l.quantity, 0));
 const total = computed(
   () =>

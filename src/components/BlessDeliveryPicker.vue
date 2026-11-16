@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, ref, useId, watch } from "vue";
 import { useLabelPack } from "../composables/useLabels";
+import { moneyFormat } from "../composables/money";
 
 defineOptions({ name: "BlessDeliveryPicker" });
 const pack = useLabelPack("BlessDeliveryPicker");
@@ -57,9 +58,7 @@ const dayFmt = computed(() => ({
   date: new Intl.DateTimeFormat(props.locale, { day: "numeric", month: "short", timeZone: "UTC" }),
 }));
 const at = (iso: string) => new Date(`${iso}T00:00:00Z`);
-const money = computed(
-  () => new Intl.NumberFormat(props.locale, { style: "currency", currency: props.currency }),
-);
+const money = computed(() => moneyFormat(props.locale, props.currency));
 const fee = (n: number) => (n === 0 ? text.value.free : money.value.format(n));
 const allFull = (d: BlessDeliveryDay) => d.windows.every((w) => w.full);
 </script>

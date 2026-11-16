@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
+import { moneyFormat } from "../composables/money";
 
 defineOptions({ name: "BlessTransactionList" });
 const pack = useLabelPack("BlessTransactionList");
@@ -35,9 +36,7 @@ const text = computed(() => ({
   ...pack(),
   ...props.labels,
 }));
-const money = computed(
-  () => new Intl.NumberFormat(props.locale, { style: "currency", currency: props.currency }),
-);
+const money = computed(() => moneyFormat(props.locale, props.currency));
 // the sign is always written, so money in and out do not rest on the color
 const signed = (n: number) => `${n < 0 ? "−" : "+"}${money.value.format(Math.abs(n))}`;
 const dayName = computed(

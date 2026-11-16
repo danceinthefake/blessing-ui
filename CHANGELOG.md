@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+Sixteen new components, 334 in all, for finance and commerce sites. They come from the new [site types](https://ui.blessing.id/design/site-types) page, which sorts websites and apps into 18 groups and lists the parts that each group needs. The library still has no dependencies.
+
 ### Added
 
 - `BlessBalanceCard`: the balance of an account with a hide button, the change over a period with a sign and a word, and a slot for actions.

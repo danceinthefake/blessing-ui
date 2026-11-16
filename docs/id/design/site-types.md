@@ -8,7 +8,7 @@ title: Jenis situs
 
 Tidak ada satu daftar resmi jenis situs. Setiap pengelompok menghitung dengan caranya sendiri. [Similarweb](https://support.similarweb.com/hc/en-us/articles/38066805004317-Using-Industry-Plus-in-Lead-Generation) membagi situs web ke dalam 27 industri dan 436 kategori. [App Store](https://developer.apple.com/documentation/appstoreconnectapi/app-categories-and-subcategories) menaruh setiap aplikasi di salah satu dari sekitar 26 kategori. [IAB Content Taxonomy](https://iabtechlab.com/standards/content-taxonomy/) 3.1 punya 37 topik tingkat atas untuk iklan.
 
-Daftar-daftar itu mengelompokkan menurut topik, seperti olahraga atau perjalanan. Pustaka komponen butuh cara lain: menurut apa yang orang lakukan di situs itu. Dua situs dengan tugas yang sama butuh bagian yang sama, apa pun topiknya. Halaman ini memakai 17 kelompok seperti itu.
+Daftar-daftar itu mengelompokkan menurut topik, seperti olahraga atau perjalanan. Pustaka komponen butuh cara lain: menurut apa yang orang lakukan di situs itu. Dua situs dengan tugas yang sama butuh bagian yang sama, apa pun topiknya. Halaman ini memakai 18 kelompok seperti itu.
 
 Untuk setiap kelompok, halaman ini mendaftar komponen dan [blok](../../blocks/) yang sudah melayaninya. Halaman ini juga mendaftar bagian yang belum ada di pustaka. Bagian-bagian itu adalah calon untuk putaran komponen berikutnya.
 
@@ -22,7 +22,7 @@ Untuk setiap kelompok, halaman ini mendaftar komponen dan [blok](../../blocks/) 
 | 4. Komunikasi                     |                 9 |         6 |
 | 5. Media dan hiburan              |                 8 |         7 |
 | 6. Produktivitas dan kolaborasi   |                14 |         6 |
-| 7. Perangkat lunak bisnis         |                13 |         6 |
+| 7. Perangkat lunak bisnis dan ERP |                13 |        14 |
 | 8. Keuangan                       |                15 |         0 |
 | 9. Pendidikan                     |                 7 |         5 |
 | 10. Kesehatan dan kebugaran       |                 6 |         6 |
@@ -33,6 +33,7 @@ Untuk setiap kelompok, halaman ini mendaftar komponen dan [blok](../../blocks/) 
 | 15. Situs merek dan pemasaran     |                11 |         5 |
 | 16. Asisten dan agen AI           |                11 |         6 |
 | 17. Perangkat terhubung           |                 6 |         6 |
+| 18. Operasional                   |                 9 |        10 |
 
 ## 1. Konten dan penerbitan
 
@@ -90,15 +91,15 @@ Sekarang: [Editor](../../components/editor), [Kanban](../../components/kanban), 
 
 Belum ada: komentar di pinggir, dialog bagikan dengan tingkat akses, peta pikiran, pencatat waktu dengan entri, pemesanan ruang rapat, penjelajah berkas dengan kisi dan daftar.
 
-## 7. Perangkat lunak bisnis
+## 7. Perangkat lunak bisnis dan ERP
 
-CRM, SDM, help desk, dan panel admin. Orang mencari data, mengubahnya, dan memantau angka.
+CRM, SDM, help desk, panel admin, dan ERP: satu sistem untuk stok, pembelian, penjualan, akuntansi, dan karyawan. Orang mencari data, mengubahnya, dan memantau angka.
 
 Sekarang: [DataTable](../../components/data-table), [TreeTable](../../components/tree-table), [QueryBuilder](../../components/query-builder), [FilterBar](../../components/filter-bar), [BulkActionBar](../../components/bulk-action-bar), [Stat](../../components/stat), [Funnel](../../components/funnel), [Descriptions](../../components/descriptions), [PermissionMatrix](../../components/permission-matrix), [ApprovalFlow](../../components/approval-flow), [OrgChart](../../components/org-chart), [KeyValueEditor](../../components/key-value-editor), [Timeline](../../components/timeline).
 
 Blok: [dashboard](../../blocks/dashboard), [data-page](../../blocks/data-page), [settings](../../blocks/settings), [staff](../../blocks/staff).
 
-Belum ada: kepala data dengan aksi, impor CSV dengan pencocokan kolom, log audit, faktur, tiket help desk dengan kotak balasan, pengatur waktu SLA.
+Belum ada: kepala data dengan aksi, impor CSV dengan pencocokan kolom, log audit, faktur, tiket help desk dengan kotak balasan, pengatur waktu SLA, editor baris barang untuk pesanan dan penawaran, jurnal dengan debit dan kredit seimbang, level stok dengan titik pemesanan ulang, daftar bahan (BOM), kolom barcode dan SKU, pengonversi satuan, alur status dokumen, slip gaji.
 
 ## 8. Keuangan
 
@@ -187,3 +188,11 @@ Aplikasi rumah pintar dan kendaraan. Orang melihat status perangkat dan mengubah
 Sekarang: [Knob](../../components/knob), [Switch](../../components/switch), [Slider](../../components/slider), [Gauge](../../components/gauge), [ConnectionStatus](../../components/connection-status), [Sparkline](../../components/sparkline).
 
 Belum ada: ubin perangkat, dial termostat, denah dengan perangkat, tombol skena, level baterai, aturan otomatis.
+
+## 18. Operasional
+
+Lantai produksi, gudang, dan kerja lapangan. Orang mengerjakan pekerjaan fisik di sebuah stasiun dengan panduan layar: mengikuti pekerjaan, memindai, menghitung, dan melapor. Perencanaan di meja tetap di kelompok 7. Kolom barcode dan SKU di kelompok 7 juga melayani kelompok ini.
+
+Sekarang: [Gantt](../../components/gantt), [Scheduler](../../components/scheduler), [Stepper](../../components/stepper), [Timer](../../components/timer), [Gauge](../../components/gauge), [UptimeBar](../../components/uptime-bar), [ConnectionStatus](../../components/connection-status), [SignaturePad](../../components/signature-pad), [CameraCapture](../../components/camera-capture).
+
+Belum ada: kartu perintah kerja, penghitung produksi dengan barang bagus dan reject terhadap target, papan status mesin, gauge OEE, pemilih alasan berhenti dengan tombol sentuh besar, instruksi kerja dengan gambar tiap langkah, pemeriksaan mutu dengan batas, grafik kendali (SPC), catatan serah terima shift, daftar ambil barang dengan pindai untuk konfirmasi.

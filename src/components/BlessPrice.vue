@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
+import { moneyFormat } from "../composables/money";
 import "./sr.css";
 
 defineOptions({ name: "BlessPrice" });
@@ -34,9 +35,7 @@ const text = computed(() => ({
   ...pack(),
   ...props.labels,
 }));
-const money = computed(
-  () => new Intl.NumberFormat(props.locale, { style: "currency", currency: props.currency }),
-);
+const money = computed(() => moneyFormat(props.locale, props.currency));
 const onSale = computed(() => props.was !== undefined && props.was > props.amount);
 const off = computed(() =>
   new Intl.NumberFormat(props.locale, { style: "percent", maximumFractionDigits: 0 }).format(
