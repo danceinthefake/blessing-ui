@@ -10,7 +10,7 @@ Vue 3 component library and design tokens. The UI is gray-scale, with one accent
 
 Docs, with every component live: **[ui.blessing.id](https://ui.blessing.id)**
 
-- 393 components, from button to data table to chat. Only `--bless-*` custom properties style them. There is no Tailwind dependency.
+- 394 components, from button to data table to chat. Only `--bless-*` custom properties style them. There is no Tailwind dependency.
 - Native platform first: `<dialog>`, Popover API, `<details>`, native form controls, `Intl` dates, and scroll-snap. There is no positioning, date, or table library.
 - Accessible defaults: focus rings, ARIA tablist, dialog, and tables, and `prefers-reduced-motion`
 - ESM, tree-shakable, with `vue` as the only required peer (`@tiptap/vue-3` is optional, for `BlessEditor`). One component (`BlessButton`) costs about 1 KB gzip of JS and about 2.6 KB of CSS (tokens and its own styles). Everything costs about 256 KB and 71 KB. CSS is split per component and the import pulls it in, so you never pay for styles that you do not use
@@ -92,7 +92,7 @@ The words that components say are English by default. `provideLabels(labelsId)` 
 
 ## Components
 
-393 components across eight groups. Every one styles itself from `--bless-*` tokens and ships with a test and a docs page.
+394 components across eight groups. Every one styles itself from `--bless-*` tokens and ships with a test and a docs page.
 
 ### Primitives
 
@@ -464,6 +464,7 @@ The words that components say are English by default. `provideLabels(labelsId)` 
 | `BlessParallelCoordinates` | Each item as a line across several axes                             | `data`, `name`, `axes` `{key,label,format}`, `height`                                                                                         |
 | `BlessSmallMultiples`      | A grid of small line charts on one scale                            | `series` `{label,values,color}`, `steps`, `height`, `format`                                                                                  |
 | `BlessSleepChart`          | The stages of sleep across a night                                  | `spans` `{stage,start,end}`, `height`                                                                                                         |
+| `BlessControlChart`        | Measures over time with control limits                              | `values`, `points`, `center`, `ucl`, `lcl`, `unit`, `height`                                                                                  |
 | `BlessPricingTable`        | Plans side by side, with a monthly or yearly switch                 | `plans`, `v-model:period`, `currency`, `select`                                                                                               |
 | `BlessPrice`               | A price with a sale and a unit price                                | `amount`, `was`, `unitPrice`, `unit`, `currency`, `size`                                                                                      |
 | `BlessProductCard`         | A product with image, price, rating, add                            | `name`, `href`, `image`, `price`, `was`, `rating`, `reviews`, `badge`, `soldOut`. Emits `add`                                                 |

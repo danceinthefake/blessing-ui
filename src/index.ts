@@ -685,3 +685,5 @@ export type { BlessInstructionStep } from "./components/BlessWorkInstructions.vu
 export { default as BlessQualityCheck } from "./components/BlessQualityCheck.vue";
 export { checkPasses } from "./components/BlessQualityCheck.vue";
 export type { BlessQualityItem, BlessQualityResult } from "./components/BlessQualityCheck.vue";
+export { default as BlessControlChart } from "./components/BlessControlChart.vue";
+export { controlLimits } from "./components/BlessControlChart.vue";

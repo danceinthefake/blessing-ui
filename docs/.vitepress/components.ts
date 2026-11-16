@@ -968,6 +968,11 @@ export const groups: { title: string; items: Entry[] }[] = [
       },
       { name: "BlessSleepChart", slug: "sleep-chart", text: "The stages of sleep across a night" },
       {
+        name: "BlessControlChart",
+        slug: "control-chart",
+        text: "Measures over time with control limits",
+      },
+      {
         name: "BlessPricingTable",
         slug: "pricing-table",
         text: "Plans side by side, with a monthly or yearly switch",

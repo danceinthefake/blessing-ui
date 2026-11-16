@@ -44,6 +44,7 @@ import type BlessContactPicker from "../components/BlessContactPicker.vue";
 import type BlessContextMeter from "../components/BlessContextMeter.vue";
 import type BlessContinueWatching from "../components/BlessContinueWatching.vue";
 import type BlessContrastChecker from "../components/BlessContrastChecker.vue";
+import type BlessControlChart from "../components/BlessControlChart.vue";
 import type BlessConversationList from "../components/BlessConversationList.vue";
 import type BlessCopyButton from "../components/BlessCopyButton.vue";
 import type BlessCountdownBanner from "../components/BlessCountdownBanner.vue";
@@ -266,6 +267,7 @@ export type BlessLabelsFull = {
   BlessContextMeter: All<typeof BlessContextMeter>;
   BlessContinueWatching: All<typeof BlessContinueWatching>;
   BlessContrastChecker: All<typeof BlessContrastChecker>;
+  BlessControlChart: All<typeof BlessControlChart>;
   BlessConversationList: All<typeof BlessConversationList>;
   BlessCopyButton: All<typeof BlessCopyButton>;
   BlessCountdownBanner: All<typeof BlessCountdownBanner>;
@@ -760,6 +762,19 @@ export const labelsId: BlessLabelsFull = {
     aaaText: "AAA, teks biasa",
     aaaLarge: "AAA, teks besar",
     ui: "Bagian antarmuka",
+  },
+  BlessControlChart: {
+    title: "Grafik kendali",
+    center: "Rata-rata",
+    ucl: "Batas atas",
+    lcl: "Batas bawah",
+    inControl: "Semua titik di dalam batas kendali.",
+    out: (n) => `${n} titik di luar kendali.`,
+    point: "Titik",
+    value: "Nilai",
+    state: "Status",
+    ok: "terkendali",
+    bad: "di luar kendali",
   },
   BlessConversationList: {
     title: "Percakapan",

@@ -80,7 +80,8 @@ Sixty-eight new components, 386 in all, for finance, commerce, communication, so
 - `BlessOeeGauge`: overall equipment effectiveness on a gauge with zones from the goal, the three parts as bars, and the lowest part named.
 - `BlessDowntimePicker`: the reason for a stop as big radio tiles, unplanned and planned groups, a note, and a save event.
 - `BlessWorkInstructions`: the steps of a job one at a time with a picture, a caution box, a step bar and count, big back and next buttons, focus on each step, and finish.
-- `BlessQualityCheck`: pass or fail checks as big radios and measures that pass inside their limits, verdicts in words, a summary with the result of the unit, and submit. 393 components in all.
+- `BlessQualityCheck`: pass or fail checks as big radios and measures that pass inside their limits, verdicts in words, a summary with the result of the unit, and submit.
+- `BlessControlChart`: a Shewhart control chart in SVG with the mean and control limits, out-of-control points as diamonds, a caption with the count, and a hidden table. 394 components in all.
 
 ## 0.7.0 — 2026-11-16
 
