@@ -622,3 +622,5 @@ export { default as BlessPosterRow } from "./components/BlessPosterRow.vue";
 export type { BlessPoster } from "./components/BlessPosterRow.vue";
 export { default as BlessEpisodeList } from "./components/BlessEpisodeList.vue";
 export type { BlessEpisode } from "./components/BlessEpisodeList.vue";
+export { default as BlessPlayQueue } from "./components/BlessPlayQueue.vue";
+export type { BlessQueueTrack } from "./components/BlessPlayQueue.vue";

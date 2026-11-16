@@ -116,6 +116,7 @@ import type BlessPhoneInput from "../components/BlessPhoneInput.vue";
 import type BlessPickList from "../components/BlessPickList.vue";
 import type BlessPictogram from "../components/BlessPictogram.vue";
 import type BlessPinPad from "../components/BlessPinPad.vue";
+import type BlessPlayQueue from "../components/BlessPlayQueue.vue";
 import type BlessPoll from "../components/BlessPoll.vue";
 import type BlessPostComposer from "../components/BlessPostComposer.vue";
 import type BlessPosterRow from "../components/BlessPosterRow.vue";
@@ -316,6 +317,7 @@ export type BlessLabelsFull = {
   BlessPickList: All<typeof BlessPickList>;
   BlessPictogram: All<typeof BlessPictogram>;
   BlessPinPad: All<typeof BlessPinPad>;
+  BlessPlayQueue: All<typeof BlessPlayQueue>;
   BlessPoll: All<typeof BlessPoll>;
   BlessPostComposer: All<typeof BlessPostComposer>;
   BlessPosterRow: All<typeof BlessPosterRow>;
@@ -1196,6 +1198,15 @@ export const labelsId: BlessLabelsFull = {
     entered: (n, l) => `${n} dari ${l} digit dimasukkan`,
     delete: "Hapus",
     clear: "Kosongkan",
+  },
+  BlessPlayQueue: {
+    now: "Sedang diputar",
+    next: "Berikutnya",
+    empty: "Antrean kosong.",
+    clear: "Kosongkan antrean",
+    play: (t) => `Putar ${t}`,
+    remove: (t) => `Hapus ${t}`,
+    total: (n, t) => `${n} lagu, ${t}`,
   },
   BlessPoll: { vote: "Pilih", yours: "pilihan Anda", votes: (n) => `${n} suara` },
   BlessPostComposer: {
