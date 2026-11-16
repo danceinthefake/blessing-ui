@@ -21,10 +21,10 @@ Untuk setiap kelompok, halaman ini mendaftar komponen dan [blok](../../blocks/) 
 | 3. Sosial dan komunitas           |                18 |         0 |
 | 4. Komunikasi                     |                15 |         0 |
 | 5. Media dan hiburan              |                14 |         0 |
-| 6. Produktivitas dan kolaborasi   |                14 |         6 |
+| 6. Produktivitas dan kolaborasi   |                20 |         0 |
 | 7. Perangkat lunak bisnis dan ERP |                27 |         0 |
 | 8. Keuangan                       |                15 |         0 |
-| 9. Pendidikan                     |                 7 |         5 |
+| 9. Pendidikan                     |                12 |         0 |
 | 10. Kesehatan dan kebugaran       |                12 |         0 |
 | 11. Alat pengembang               |                13 |         5 |
 | 12. Utilitas                      |                 6 |         5 |
@@ -87,9 +87,9 @@ Belum ada: tidak ada dari daftar pertama. Setiap bagian yang disebut halaman ini
 
 Dokumen, catatan, tugas, papan, dan kalender. Orang membuat sesuatu, sendiri atau bersama tim.
 
-Sekarang: [Editor](../../components/editor), [Kanban](../../components/kanban), [StickyBoard](../../components/sticky-board), [TaskList](../../components/task-list), [Gantt](../../components/gantt), [Scheduler](../../components/scheduler), [EventCalendar](../../components/event-calendar), [Spreadsheet](../../components/spreadsheet), [InfiniteCanvas](../../components/infinite-canvas), [VersionHistory](../../components/version-history), [PresenceCursors](../../components/presence-cursors), [Command](../../components/command), [FileTree](../../components/file-tree), [Annotator](../../components/annotator).
+Sekarang: [MarginComments](../../components/margin-comments), [ShareAccess](../../components/share-access), [MindMap](../../components/mind-map), [TimeTracker](../../components/time-tracker), [RoomBooking](../../components/room-booking), [FileBrowser](../../components/file-browser), [Editor](../../components/editor), [Kanban](../../components/kanban), [StickyBoard](../../components/sticky-board), [TaskList](../../components/task-list), [Gantt](../../components/gantt), [Scheduler](../../components/scheduler), [EventCalendar](../../components/event-calendar), [Spreadsheet](../../components/spreadsheet), [InfiniteCanvas](../../components/infinite-canvas), [VersionHistory](../../components/version-history), [PresenceCursors](../../components/presence-cursors), [Command](../../components/command), [FileTree](../../components/file-tree), [Annotator](../../components/annotator).
 
-Belum ada: komentar di pinggir, dialog bagikan dengan tingkat akses, peta pikiran, pencatat waktu dengan entri, pemesanan ruang rapat, penjelajah berkas dengan kisi dan daftar.
+Belum ada: tidak ada dari daftar pertama. Setiap bagian yang disebut halaman ini sudah menjadi komponen.
 
 ## 7. Perangkat lunak bisnis dan ERP
 
@@ -113,9 +113,9 @@ Belum ada: tidak ada dari daftar pertama. Setiap bagian yang disebut halaman ini
 
 Kursus, sekolah, dan latihan. Orang belajar dan menunjukkan yang mereka tahu.
 
-Sekarang: [Quiz](../../components/quiz), [Flashcards](../../components/flashcards), [LessonPath](../../components/lesson-path), [Achievements](../../components/achievements), [Questionnaire](../../components/questionnaire), [Progress](../../components/progress), [Transcript](../../components/transcript).
+Sekarang: [CourseCard](../../components/course-card), [Gradebook](../../components/gradebook), [Assignment](../../components/assignment), [Certificate](../../components/certificate), [LessonVideo](../../components/lesson-video), [Quiz](../../components/quiz), [Flashcards](../../components/flashcards), [LessonPath](../../components/lesson-path), [Achievements](../../components/achievements), [Questionnaire](../../components/questionnaire), [Progress](../../components/progress), [Transcript](../../components/transcript).
 
-Belum ada: kartu kursus, buku nilai, tugas dengan pengumpulan, sertifikat, video pelajaran dengan catatan.
+Belum ada: tidak ada dari daftar pertama. Setiap bagian yang disebut halaman ini sudah menjadi komponen.
 
 ## 10. Kesehatan dan kebugaran
 

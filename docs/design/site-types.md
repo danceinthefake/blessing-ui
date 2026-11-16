@@ -21,10 +21,10 @@ For each group, the page lists the components and the [blocks](../blocks/) that 
 | 3. Social and community           |               18 |       0 |
 | 4. Communication                  |               15 |       0 |
 | 5. Media and entertainment        |               14 |       0 |
-| 6. Productivity and collaboration |               14 |       6 |
+| 6. Productivity and collaboration |               20 |       0 |
 | 7. Business software and ERP      |               27 |       0 |
 | 8. Finance                        |               15 |       0 |
-| 9. Education                      |                7 |       5 |
+| 9. Education                      |               12 |       0 |
 | 10. Health and fitness            |               12 |       0 |
 | 11. Developer tools               |               13 |       5 |
 | 12. Utilities                     |                6 |       5 |
@@ -87,9 +87,9 @@ Not yet: nothing from the first list. Every part that this page named is now a c
 
 Documents, notes, tasks, boards, and calendars. People make things, alone or as a team.
 
-Today: [Editor](../components/editor), [Kanban](../components/kanban), [StickyBoard](../components/sticky-board), [TaskList](../components/task-list), [Gantt](../components/gantt), [Scheduler](../components/scheduler), [EventCalendar](../components/event-calendar), [Spreadsheet](../components/spreadsheet), [InfiniteCanvas](../components/infinite-canvas), [VersionHistory](../components/version-history), [PresenceCursors](../components/presence-cursors), [Command](../components/command), [FileTree](../components/file-tree), [Annotator](../components/annotator).
+Today: [MarginComments](../components/margin-comments), [ShareAccess](../components/share-access), [MindMap](../components/mind-map), [TimeTracker](../components/time-tracker), [RoomBooking](../components/room-booking), [FileBrowser](../components/file-browser), [Editor](../components/editor), [Kanban](../components/kanban), [StickyBoard](../components/sticky-board), [TaskList](../components/task-list), [Gantt](../components/gantt), [Scheduler](../components/scheduler), [EventCalendar](../components/event-calendar), [Spreadsheet](../components/spreadsheet), [InfiniteCanvas](../components/infinite-canvas), [VersionHistory](../components/version-history), [PresenceCursors](../components/presence-cursors), [Command](../components/command), [FileTree](../components/file-tree), [Annotator](../components/annotator).
 
-Not yet: comments in the margin, share dialog with access levels, mind map, time tracker with entries, meeting room booking, file browser with a grid and a list.
+Not yet: nothing from the first list. Every part that this page named is now a component.
 
 ## 7. Business software and ERP
 
@@ -113,9 +113,9 @@ Not yet: nothing from the first list. Every part that this page named is now a c
 
 Courses, schools, and practice. People learn and show what they know.
 
-Today: [Quiz](../components/quiz), [Flashcards](../components/flashcards), [LessonPath](../components/lesson-path), [Achievements](../components/achievements), [Questionnaire](../components/questionnaire), [Progress](../components/progress), [Transcript](../components/transcript).
+Today: [CourseCard](../components/course-card), [Gradebook](../components/gradebook), [Assignment](../components/assignment), [Certificate](../components/certificate), [LessonVideo](../components/lesson-video), [Quiz](../components/quiz), [Flashcards](../components/flashcards), [LessonPath](../components/lesson-path), [Achievements](../components/achievements), [Questionnaire](../components/questionnaire), [Progress](../components/progress), [Transcript](../components/transcript).
 
-Not yet: course card, gradebook, assignment with a submission, certificate, lesson video with notes.
+Not yet: nothing from the first list. Every part that this page named is now a component.
 
 ## 10. Health and fitness
 

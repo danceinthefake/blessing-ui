@@ -80,6 +80,11 @@
     "css": 168
   },
   {
+    "name": "BlessAssignment",
+    "js": 3175,
+    "css": 1666
+  },
+  {
     "name": "BlessAttachment",
     "js": 1422,
     "css": 1387
@@ -260,6 +265,11 @@
     "css": 1147
   },
   {
+    "name": "BlessCertificate",
+    "js": 711,
+    "css": 597
+  },
+  {
     "name": "BlessChangelog",
     "js": 946,
     "css": 584
@@ -433,6 +443,11 @@
     "name": "BlessCouponInput",
     "js": 2575,
     "css": 1642
+  },
+  {
+    "name": "BlessCourseCard",
+    "js": 888,
+    "css": 565
   },
   {
     "name": "BlessCronInput",
@@ -615,6 +630,11 @@
     "css": 378
   },
   {
+    "name": "BlessFileBrowser",
+    "js": 1726,
+    "css": 807
+  },
+  {
     "name": "BlessFileInput",
     "js": 1637,
     "css": 705
@@ -698,6 +718,11 @@
     "name": "BlessGlossary",
     "js": 1889,
     "css": 668
+  },
+  {
+    "name": "BlessGradebook",
+    "js": 1471,
+    "css": 539
   },
   {
     "name": "BlessGroupCard",
@@ -870,6 +895,11 @@
     "css": 563
   },
   {
+    "name": "BlessLessonVideo",
+    "js": 1347,
+    "css": 628
+  },
+  {
     "name": "BlessLightbox",
     "js": 2657,
     "css": 1300
@@ -932,7 +962,12 @@
   {
     "name": "BlessMachineBoard",
     "js": 1069,
-    "css": 540
+    "css": 548
+  },
+  {
+    "name": "BlessMarginComments",
+    "js": 1145,
+    "css": 562
   },
   {
     "name": "BlessMarimekko",
@@ -998,6 +1033,11 @@
     "name": "BlessMeterGroup",
     "js": 894,
     "css": 474
+  },
+  {
+    "name": "BlessMindMap",
+    "js": 1397,
+    "css": 284
   },
   {
     "name": "BlessMiniPlayer",
@@ -1405,6 +1445,11 @@
     "css": 652
   },
   {
+    "name": "BlessRoomBooking",
+    "js": 1518,
+    "css": 653
+  },
+  {
     "name": "BlessRoseChart",
     "js": 1168,
     "css": 308
@@ -1473,6 +1518,11 @@
     "name": "BlessSeparator",
     "js": 494,
     "css": 371
+  },
+  {
+    "name": "BlessShareAccess",
+    "js": 2244,
+    "css": 799
   },
   {
     "name": "BlessShareBar",
@@ -1778,6 +1828,11 @@
     "name": "BlessTimePicker",
     "js": 1160,
     "css": 428
+  },
+  {
+    "name": "BlessTimeTracker",
+    "js": 1653,
+    "css": 642
   },
   {
     "name": "BlessTimeline",

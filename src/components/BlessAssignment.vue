@@ -121,6 +121,7 @@ const state = computed(() =>
   padding: 0;
   border: 0;
   font-size: var(--bless-text-lg);
+  font-weight: var(--bless-font-weight-bold);
 }
 .bless-assign__state {
   padding: 2px var(--bless-space-2);
