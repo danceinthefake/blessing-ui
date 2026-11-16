@@ -9541,6 +9541,25 @@
   "slots": [],
   "exposed": []
  },
+ "BlessPaletteViewer": {
+  "props": [
+   {
+    "name": "palettes",
+    "type": "BlessColorPalette[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ copy: (value: string) => string; copied: (value: string) => string; onWhite: string; onBlack: string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessPanel": {
   "props": [
    {

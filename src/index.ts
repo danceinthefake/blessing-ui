@@ -504,3 +504,5 @@ export { default as BlessSmallMultiples } from "./components/BlessSmallMultiples
 export type { BlessMultiple } from "./components/BlessSmallMultiples.vue";
 export { default as BlessContrastChecker } from "./components/BlessContrastChecker.vue";
 export { contrastRatio, hexToRgb, luminance, wcagLevels } from "./composables/contrast";
+export { default as BlessPaletteViewer } from "./components/BlessPaletteViewer.vue";
+export type { BlessColorPalette } from "./components/BlessPaletteViewer.vue";
