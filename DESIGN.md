@@ -567,7 +567,7 @@ Sixteen components, 318 → 334. Each uses native platform APIs only: the librar
 
 Thirteen components, 334 → 347. Each uses native platform APIs only: the library adds no dependency. Each needs tests, a docs page with a live example, a README row, words in `labelsId`, and a pass of `src/classes.test.ts`. If a component uses a known method or names another party, credit it on the credits page. When a component lands, move its part from "Not yet" to "Today" on the site types page, in both languages.
 
-- `BlessConversationList`: conversations with the last message, the time, and the unread count.
+- ✅ `BlessConversationList`: conversations with the last message, the time, and the unread count.
 - `BlessReadReceipt`: sent, delivered, and read marks for a message, with who read it.
 - `BlessEmailView`: an email with the sender, the recipients, the body, and attachments.
 - `BlessEmailComposer`: to, cc, and subject fields with recipient chips, and the body.

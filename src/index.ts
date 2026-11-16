@@ -559,3 +559,5 @@ export { default as BlessOrderHistory } from "./components/BlessOrderHistory.vue
 export type { BlessPastOrder, BlessOrderStatus } from "./components/BlessOrderHistory.vue";
 export { default as BlessReturnRequest } from "./components/BlessReturnRequest.vue";
 export type { BlessReturnItem, BlessReturnPayload } from "./components/BlessReturnRequest.vue";
+export { default as BlessConversationList } from "./components/BlessConversationList.vue";
+export type { BlessConversation } from "./components/BlessConversationList.vue";

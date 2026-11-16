@@ -3845,6 +3845,37 @@
   "slots": [],
   "exposed": []
  },
+ "BlessConversationList": {
+  "props": [
+   {
+    "name": "conversations",
+    "type": "BlessConversation[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ title: string; typing: string; online: string; unread: (count: number) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "string | undefined",
+    "required": false,
+    "description": "the id of the open conversation"
+   }
+  ],
+  "events": [
+   {
+    "name": "update:modelValue",
+    "type": "[value: string | undefined]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessCopyButton": {
   "props": [
    {

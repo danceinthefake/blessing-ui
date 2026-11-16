@@ -35,6 +35,7 @@ import type BlessConnectionStatus from "../components/BlessConnectionStatus.vue"
 import type BlessConsentBanner from "../components/BlessConsentBanner.vue";
 import type BlessContextMeter from "../components/BlessContextMeter.vue";
 import type BlessContrastChecker from "../components/BlessContrastChecker.vue";
+import type BlessConversationList from "../components/BlessConversationList.vue";
 import type BlessCopyButton from "../components/BlessCopyButton.vue";
 import type BlessCountdownBanner from "../components/BlessCountdownBanner.vue";
 import type BlessCouponInput from "../components/BlessCouponInput.vue";
@@ -204,6 +205,7 @@ export type BlessLabelsFull = {
   BlessConsentBanner: All<typeof BlessConsentBanner>;
   BlessContextMeter: All<typeof BlessContextMeter>;
   BlessContrastChecker: All<typeof BlessContrastChecker>;
+  BlessConversationList: All<typeof BlessConversationList>;
   BlessCopyButton: All<typeof BlessCopyButton>;
   BlessCountdownBanner: All<typeof BlessCountdownBanner>;
   BlessCouponInput: All<typeof BlessCouponInput>;
@@ -570,6 +572,12 @@ export const labelsId: BlessLabelsFull = {
     aaaText: "AAA, teks biasa",
     aaaLarge: "AAA, teks besar",
     ui: "Bagian antarmuka",
+  },
+  BlessConversationList: {
+    title: "Percakapan",
+    typing: "sedang mengetik…",
+    online: "online",
+    unread: (n) => `${n} pesan belum dibaca`,
   },
   BlessCopyButton: copy,
   BlessCountdownBanner: {
