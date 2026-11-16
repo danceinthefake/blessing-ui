@@ -84,7 +84,8 @@ Sixty-four new components, 302 in all: more charts, parts for an assistant and i
 - `BlessRangeChart`: floating bars from a low to a high value for each row, with an optional mark such as the average.
 - `BlessChordDiagram`: groups around a circle with ribbons for the flows both ways between them, laid out after d3-chord, with a table of the full matrix.
 - `BlessParallelCoordinates`: each item as a line across several axes, each with its own scale, with a legend and a table.
-- `BlessSmallMultiples`: a grid of small line charts on one shared scale with the last value of each. `BlessSparkline` gets `min` and `max` for it. 306 components in all.
+- `BlessSmallMultiples`: a grid of small line charts on one shared scale with the last value of each. `BlessSparkline` gets `min` and `max` for it.
+- `BlessContrastChecker`: two colors in, the WCAG 2.1 contrast ratio and the AA and AAA levels out, with `contrastRatio` and `wcagLevels` as functions. 307 components in all.
 
 ## 0.6.0 — 2026-11-15
 
