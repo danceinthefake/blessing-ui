@@ -50,6 +50,7 @@ import type BlessDonutChart from "../components/BlessDonutChart.vue";
 import type BlessDumbbell from "../components/BlessDumbbell.vue";
 import type BlessDurationInput from "../components/BlessDurationInput.vue";
 import type BlessEditor from "../components/BlessEditor.vue";
+import type BlessEmailComposer from "../components/BlessEmailComposer.vue";
 import type BlessEmailView from "../components/BlessEmailView.vue";
 import type BlessEmojiPicker from "../components/BlessEmojiPicker.vue";
 import type BlessEventCalendar from "../components/BlessEventCalendar.vue";
@@ -222,6 +223,7 @@ export type BlessLabelsFull = {
   BlessDumbbell: All<typeof BlessDumbbell>;
   BlessDurationInput: All<typeof BlessDurationInput>;
   BlessEditor: All<typeof BlessEditor>;
+  BlessEmailComposer: All<typeof BlessEmailComposer>;
   BlessEmailView: All<typeof BlessEmailView>;
   BlessEmojiPicker: All<typeof BlessEmojiPicker>;
   BlessEventCalendar: All<typeof BlessEventCalendar>;
@@ -656,6 +658,19 @@ export const labelsId: BlessLabelsFull = {
     hr: "Garis pemisah",
     undo: "Urungkan",
     redo: "Ulangi",
+  },
+  BlessEmailComposer: {
+    title: "Email baru",
+    to: "Kepada",
+    cc: "Cc",
+    addCc: "Tambah Cc",
+    subject: "Subjek",
+    body: "Pesan",
+    send: "Kirim",
+    discard: "Buang",
+    hint: "Tekan Enter atau koma setelah tiap alamat.",
+    noRecipient: "Tambahkan minimal satu penerima.",
+    bad: (a) => `Alamat ini tidak valid: ${a}`,
   },
   BlessEmailView: {
     to: "kepada",

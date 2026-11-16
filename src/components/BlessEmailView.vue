@@ -167,11 +167,14 @@ const paragraphs = computed(() =>
   flex: none;
   white-space: nowrap;
 }
+/* a gap, not p margins, spaces the paragraphs, so a host reset of p keeps the space */
 .bless-email__body {
+  display: grid;
+  gap: var(--bless-space-3);
   line-height: 1.6;
 }
 .bless-email__body > p {
-  margin: 0 0 var(--bless-space-3);
+  margin: 0;
 }
 .bless-email__files {
   display: grid;
