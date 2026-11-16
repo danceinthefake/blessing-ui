@@ -513,6 +513,7 @@ Sixteen components, 286 → 302. Each uses native platform APIs only: the librar
 - ✅ `BlessFeatureFlags`: flags with a switch, a note, the rollout share, and the environment.
 - ✅ `BlessIncidentTimeline`: the updates of an incident with times, states, and the parts it affects.
 - ✅ `BlessSystemStatus`: the parts of a service with their state, and one line for the whole service.
+- ✅ Budget: after the round, the whole library is 200.6 KB gz JS and 54.4 KB gz CSS, over the old cap of 198 / 54. The cap is now 221 / 60, about 10% of room. Phase 33 is done.
 
 ### Deliberately skipped
 
