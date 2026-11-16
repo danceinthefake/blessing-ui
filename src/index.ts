@@ -614,3 +614,5 @@ export { default as BlessRelatedArticles } from "./components/BlessRelatedArticl
 export type { BlessRelatedArticle } from "./components/BlessRelatedArticles.vue";
 export { default as BlessFigure } from "./components/BlessFigure.vue";
 export { default as BlessPullQuote } from "./components/BlessPullQuote.vue";
+export { default as BlessLiveBlog } from "./components/BlessLiveBlog.vue";
+export type { BlessLiveUpdate } from "./components/BlessLiveBlog.vue";
