@@ -598,3 +598,5 @@ export type { BlessBodyPart } from "./components/BlessBodyMap.vue";
 export { default as BlessAppointmentCard } from "./components/BlessAppointmentCard.vue";
 export type { BlessAppointmentStatus } from "./components/BlessAppointmentCard.vue";
 export { default as BlessDeviceTile } from "./components/BlessDeviceTile.vue";
+export { default as BlessThermostat } from "./components/BlessThermostat.vue";
+export type { BlessThermostatMode } from "./components/BlessThermostat.vue";

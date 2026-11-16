@@ -16798,6 +16798,85 @@
   "slots": [],
   "exposed": []
  },
+ "BlessThermostat": {
+  "props": [
+   {
+    "name": "current",
+    "type": "number",
+    "required": true,
+    "description": "the temperature in the room now"
+   },
+   {
+    "name": "min",
+    "type": "number | undefined",
+    "required": false,
+    "default": "16",
+    "description": ""
+   },
+   {
+    "name": "max",
+    "type": "number | undefined",
+    "required": false,
+    "default": "30",
+    "description": ""
+   },
+   {
+    "name": "step",
+    "type": "number | undefined",
+    "required": false,
+    "default": "0.5",
+    "description": ""
+   },
+   {
+    "name": "unit",
+    "type": "\"°C\" | \"°F\" | undefined",
+    "required": false,
+    "default": "\"°C\"",
+    "description": ""
+   },
+   {
+    "name": "locale",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"en\"",
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<Record<BlessThermostatMode, string> & { title: string; target: string; now: (t: string) => string; lower: string; higher: string; heating: (t: string) => string; cooling: (t: string) => string; holding: (t: string) => string; stopped: string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "number | undefined",
+    "required": false,
+    "default": "22",
+    "description": ""
+   },
+   {
+    "name": "mode",
+    "type": "BlessThermostatMode | undefined",
+    "required": false,
+    "default": "\"auto\"",
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "update:modelValue",
+    "type": "[value: number]",
+    "description": ""
+   },
+   {
+    "name": "update:mode",
+    "type": "[value: BlessThermostatMode]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessThread": {
   "props": [
    {

@@ -22,7 +22,7 @@ Shows one device in a smart home app. Put many tiles in a grid for a room. For a
 </Demo>
 
 - `name` is the name of the device. `room`, `icon`, and `reading` are optional. The reading is text, such as "22 °C" or "Closed".
-- `v-model` is true when the device is on. The [switch](./switch) is named with the device, such as "Power, Desk lamp".
+- If the device is on, `v-model` is true. The [switch](./switch) is named with the device, such as "Power, Desk lamp".
 - A device that is on has a thick top edge in the accent color and the word "On".
 - `offline` turns the switch off and shows "Offline" with a dashed edge.
 - `sensor` is for a device that only reads, such as a door sensor. It has no switch.
