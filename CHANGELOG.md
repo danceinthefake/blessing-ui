@@ -23,7 +23,8 @@ Sixteen new components, 334 in all, for finance and commerce sites. They come fr
 - `BlessOrderHistory`: past orders with the status as a mark and a word, up to three item pictures read as a list, the total, and view and buy-again actions named with the order number.
 - `BlessReturnRequest`: a return form with check boxes for the items, a quantity menu, a reason, a note, a live refund, and an error that says what is missing.
 - `BlessConversationList`: conversations with an avatar, the last message, the time, an unread count read in words, online and typing states, and the open one marked.
-- `BlessReadReceipt`: sending, sent, delivered, read, and failed marks for a message, with words for screen readers, who read it, and retry. 336 components in all.
+- `BlessReadReceipt`: sending, sent, delivered, read, and failed marks for a message, with words for screen readers, who read it, and retry.
+- `BlessEmailView`: an email with the subject, the sender, recipients by name that expand to addresses, a plain text body or a slot, attachments, and actions. 337 components in all.
 
 ## 0.7.0 — 2026-11-16
 
