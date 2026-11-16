@@ -133,6 +133,7 @@ import type BlessToolCall from "../components/BlessToolCall.vue";
 import type BlessTour from "../components/BlessTour.vue";
 import type BlessTranscript from "../components/BlessTranscript.vue";
 import type BlessTreemap from "../components/BlessTreemap.vue";
+import type BlessTypeScale from "../components/BlessTypeScale.vue";
 import type BlessTypingIndicator from "../components/BlessTypingIndicator.vue";
 import type BlessUploader from "../components/BlessUploader.vue";
 import type BlessUptimeBar from "../components/BlessUptimeBar.vue";
@@ -279,6 +280,7 @@ export type BlessLabelsFull = {
   BlessTour: All<typeof BlessTour>;
   BlessTranscript: All<typeof BlessTranscript>;
   BlessTreemap: All<typeof BlessTreemap>;
+  BlessTypeScale: All<typeof BlessTypeScale>;
   BlessTypingIndicator: All<typeof BlessTypingIndicator>;
   BlessUploader: All<typeof BlessUploader>;
   BlessUptimeBar: All<typeof BlessUptimeBar>;
@@ -1091,6 +1093,7 @@ export const labelsId: BlessLabelsFull = {
     up: "Naik satu tingkat",
     hint: "Tombol panah berpindah antarpetak, Enter membuka atau memilih, Backspace naik satu tingkat.",
   },
+  BlessTypeScale: { title: "Skala huruf", size: "ukuran", line: "baris" },
   BlessTypingIndicator: {
     one: (n) => `${n} sedang mengetik…`,
     two: (a, b) => `${a} dan ${b} sedang mengetik…`,
