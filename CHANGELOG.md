@@ -48,7 +48,8 @@ Forty-one new components, 359 in all, for finance, commerce, communication, soci
 - `BlessBatteryLevel`: a battery meter with the percent, charging and low states in words, and the name of the device for screen readers.
 - `BlessRuleBuilder`: an automation rule with a trigger, conditions, and actions in native menus, rows to add and remove, a sentence that reads the rule, and save.
 - `BlessArticleHeader`: the top of an article with the topic, a title at the heading level you choose, a summary, the author, dates in time elements, and the reading time.
-- `BlessShareBar`: a share button for the Web Share API after mount, copy link with a status, and your own share links. 361 components in all.
+- `BlessShareBar`: a share button for the Web Share API after mount, copy link with a status, and your own share links.
+- `BlessRelatedArticles`: a titled block of article cards with one link each, an image, the topic, and the reading time. 362 components in all.
 
 ## 0.7.0 — 2026-11-16
 

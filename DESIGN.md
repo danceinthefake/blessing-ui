@@ -606,7 +606,7 @@ Thirteen components, 359 → 372. Each uses native platform APIs only: the libra
 
 - ✅ `BlessArticleHeader`: the title, the author, the date, the reading time, and the topic of an article.
 - ✅ `BlessShareBar`: share a page through the Web Share API, with copy link as a fallback.
-- `BlessRelatedArticles`: articles on the same topic, with an image and the reading time.
+- ✅ `BlessRelatedArticles`: articles on the same topic, with an image and the reading time.
 - `BlessFigure`: an image with a caption and a credit.
 - `BlessPullQuote`: a big quote from the text, with the speaker.
 - `BlessLiveBlog`: timed updates that arrive while the reader reads, with a new-updates button.
