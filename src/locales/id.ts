@@ -143,6 +143,7 @@ import type BlessProductionCounter from "../components/BlessProductionCounter.vu
 import type BlessProfileCard from "../components/BlessProfileCard.vue";
 import type BlessPromptInput from "../components/BlessPromptInput.vue";
 import type BlessPyramid from "../components/BlessPyramid.vue";
+import type BlessQualityCheck from "../components/BlessQualityCheck.vue";
 import type BlessQueryBuilder from "../components/BlessQueryBuilder.vue";
 import type BlessQuestionnaire from "../components/BlessQuestionnaire.vue";
 import type BlessQuiz from "../components/BlessQuiz.vue";
@@ -364,6 +365,7 @@ export type BlessLabelsFull = {
   BlessProfileCard: All<typeof BlessProfileCard>;
   BlessPromptInput: All<typeof BlessPromptInput>;
   BlessPyramid: All<typeof BlessPyramid>;
+  BlessQualityCheck: All<typeof BlessQualityCheck>;
   BlessQueryBuilder: All<typeof BlessQueryBuilder>;
   BlessQuestionnaire: All<typeof BlessQuestionnaire>;
   BlessQuiz: All<typeof BlessQuiz>;
@@ -1465,6 +1467,18 @@ export const labelsId: BlessLabelsFull = {
     remove: "Hapus",
   },
   BlessPyramid: { left: "Kiri", right: "Kanan", row: "Kelompok" },
+  BlessQualityCheck: {
+    title: "Pemeriksaan mutu",
+    pass: "Lolos",
+    fail: "Gagal",
+    inLimits: "Dalam batas",
+    outLimits: "Di luar batas",
+    limits: (l, h) => `${l} – ${h}`,
+    summary: (p, d, t) => `${p} lolos, ${d - p} gagal, ${t - d} belum`,
+    ok: "Unit lolos.",
+    notOk: "Unit gagal.",
+    submit: "Simpan pemeriksaan",
+  },
   BlessQueryBuilder: {
     group: "Aturan",
     match: "Cocokkan",

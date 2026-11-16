@@ -649,7 +649,7 @@ Ten components, 386 → 396. Each uses native platform APIs only: the library ad
 - ✅ `BlessOeeGauge`: overall equipment effectiveness: availability × performance × quality.
 - ✅ `BlessDowntimePicker`: the reason for a stop, with big touch buttons.
 - ✅ `BlessWorkInstructions`: the steps of a job with a picture for each step.
-- `BlessQualityCheck`: pass or fail checks and measured values against their limits.
+- ✅ `BlessQualityCheck`: pass or fail checks and measured values against their limits.
 - `BlessControlChart`: measured values over time with the center line and the control limits (SPC).
 - `BlessShiftHandover`: notes from one shift to the next, with open issues.
 - `BlessPickingList`: the items to pick in a warehouse, with the place and a scan to confirm.
