@@ -541,6 +541,80 @@ Sixteen components, 302 → 318. Each uses native platform APIs only: the librar
 
 From Phase 35, each round takes its components from the "Not yet" lists of the [site types](docs/design/site-types.md) page. That page sorts websites and apps into 17 groups by what people do on them. For each group, it lists the components and blocks that serve it and the parts that are missing. If a round adds one of those parts, move it from "Not yet" to "Today" and update the count in the overview table. Do this in the English page and in the Indonesian page (`docs/id/design/site-types.md`).
 
+### Phase 35 — finance and commerce (2026-11-16)
+
+Sixteen components, 318 → 334. Each uses native platform APIs only: the library adds no dependency. Each needs tests, a docs page with a live example, a README row, words in `labelsId`, and a pass of `src/classes.test.ts`. If a component uses a known method or names another party, credit it on the credits page. When a component lands, move its part from "Not yet" to "Today" on the site types page, in both languages.
+
+- `BlessBalanceCard`: the balance of an account, with the change over a period and the main actions.
+- `BlessTransactionList`: payments in and out, grouped by day, with a category and a running total.
+- `BlessPriceTicker`: prices that move across the screen, with the change of each, and a pause.
+- `BlessOrderBook`: the bids and asks of a market, with depth bars and the spread.
+- `BlessCurrencyConverter`: an amount in one currency and its value in another, with the rate and a swap.
+- `BlessBudgetBars`: the money spent against the plan for each category, with what is left.
+- `BlessPaymentSchedule`: the payments of a loan or a plan, with dates, the principal, and the interest.
+- `BlessProductCard`: a product with an image, the name, the price, the rating, and an add button.
+- `BlessPrice`: a price with the old price, the discount, and a unit price, in the format of the locale.
+- `BlessCartDrawer`: the cart in a side panel, with quantities, the subtotal, and the checkout button.
+- `BlessWishlistButton`: a heart that saves a product, with a count and a status message.
+- `BlessFacetFilter`: filters for a catalog: checkboxes with counts, a price range, and clear buttons.
+- `BlessStoreLocator`: a list of stores by distance, with opening hours and directions links.
+- `BlessDeliveryPicker`: a day and a time window for delivery, with the fee of each window.
+- `BlessOrderHistory`: past orders with the status, the items, and actions such as buy again.
+- `BlessReturnRequest`: pick the items and the reason for a return, then see the refund.
+
+### Phase 36 — communication and social (2026-11-16)
+
+Thirteen components, 334 → 347. Each uses native platform APIs only: the library adds no dependency. Each needs tests, a docs page with a live example, a README row, words in `labelsId`, and a pass of `src/classes.test.ts`. If a component uses a known method or names another party, credit it on the credits page. When a component lands, move its part from "Not yet" to "Today" on the site types page, in both languages.
+
+- `BlessConversationList`: conversations with the last message, the time, and the unread count.
+- `BlessReadReceipt`: sent, delivered, and read marks for a message, with who read it.
+- `BlessEmailView`: an email with the sender, the recipients, the body, and attachments.
+- `BlessEmailComposer`: to, cc, and subject fields with recipient chips, and the body.
+- `BlessCallScreen`: video tiles for each person, with mute, camera, share, and hang up.
+- `BlessContactPicker`: search people and pick one or more, with recent contacts.
+- `BlessPostComposer`: write a post with images, a poll, and a count of the characters left.
+- `BlessStories`: rings of people with new stories, and a viewer with a timer for each story.
+- `BlessFollowButton`: follow and unfollow, with the count of followers.
+- `BlessTrendList`: topics that people talk about now, with the count of posts.
+- `BlessReportDialog`: report a post or a person, with a reason and a note.
+- `BlessGroupCard`: a group with a cover, the members, and a join button.
+- `BlessForumTopics`: topics of a forum with replies, views, the last post, and pinned topics.
+
+### Phase 37 — health and connected devices (2026-11-16)
+
+Twelve components, 347 → 359. Each uses native platform APIs only: the library adds no dependency. Each needs tests, a docs page with a live example, a README row, words in `labelsId`, and a pass of `src/classes.test.ts`. If a component uses a known method or names another party, credit it on the credits page. When a component lands, move its part from "Not yet" to "Today" on the site types page, in both languages.
+
+- `BlessVitalsPanel`: heart rate, blood pressure, and other readings with the normal range.
+- `BlessMedicationSchedule`: the doses of each medicine for the day, which you mark as taken.
+- `BlessWorkoutLog`: sets of an exercise with weight and repetitions, and the last session.
+- `BlessSleepChart`: the stages of sleep across a night.
+- `BlessBodyMap`: a body outline where a person points to the place of pain.
+- `BlessAppointmentCard`: an appointment with the doctor, the place, the time, and actions.
+- `BlessDeviceTile`: a device with its state, a switch, and the main reading.
+- `BlessThermostat`: a dial that sets the target temperature and shows the current one.
+- `BlessFloorPlan`: the rooms of a home with the devices in each room.
+- `BlessSceneButtons`: buttons that set many devices at once, such as Night or Away.
+- `BlessBatteryLevel`: the charge of a battery, with charging and low states.
+- `BlessRuleBuilder`: an automation rule: when something happens, if a condition holds, then do an action.
+
+### Phase 38 — content and media (2026-11-16)
+
+Thirteen components, 359 → 372. Each uses native platform APIs only: the library adds no dependency. Each needs tests, a docs page with a live example, a README row, words in `labelsId`, and a pass of `src/classes.test.ts`. If a component uses a known method or names another party, credit it on the credits page. When a component lands, move its part from "Not yet" to "Today" on the site types page, in both languages.
+
+- `BlessArticleHeader`: the title, the author, the date, the reading time, and the topic of an article.
+- `BlessShareBar`: share a page through the Web Share API, with copy link as a fallback.
+- `BlessRelatedArticles`: articles on the same topic, with an image and the reading time.
+- `BlessFigure`: an image with a caption and a credit.
+- `BlessPullQuote`: a big quote from the text, with the speaker.
+- `BlessLiveBlog`: timed updates that arrive while the reader reads, with a new-updates button.
+- `BlessPaywall`: the end of a free preview, with the plans and a sign-in link.
+- `BlessPosterRow`: a row of posters that scrolls, with arrow buttons and the keyboard.
+- `BlessEpisodeList`: the episodes of a season with the length, a summary, and the progress.
+- `BlessPlayQueue`: the next tracks in order, which you can change and clear.
+- `BlessMiniPlayer`: a small player that stays on the screen, with the track and the controls.
+- `BlessLyrics`: the lines of a song that follow the playback.
+- `BlessContinueWatching`: items with the place where you stopped, and a remove button.
+
 ### Deliberately skipped
 
 - **Chart**: no bundled lib. Phase 11 ✅: `--bless-color-chart-{1..5}` (≥3:1 both themes) + `BlessChart` frame that maps them onto Unovis `--vis-*` vars. Unovis is the documented pairing, installed by the consumer.
