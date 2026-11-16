@@ -16,6 +16,7 @@ import type BlessBalanceCard from "../components/BlessBalanceCard.vue";
 import type BlessBarChart from "../components/BlessBarChart.vue";
 import type BlessBatteryLevel from "../components/BlessBatteryLevel.vue";
 import type BlessBeeswarm from "../components/BlessBeeswarm.vue";
+import type BlessBillOfMaterials from "../components/BlessBillOfMaterials.vue";
 import type BlessBodyMap from "../components/BlessBodyMap.vue";
 import type BlessBoxPlot from "../components/BlessBoxPlot.vue";
 import type BlessBudgetBars from "../components/BlessBudgetBars.vue";
@@ -228,6 +229,7 @@ export type BlessLabelsFull = {
   BlessBarChart: All<typeof BlessBarChart>;
   BlessBatteryLevel: All<typeof BlessBatteryLevel>;
   BlessBeeswarm: All<typeof BlessBeeswarm>;
+  BlessBillOfMaterials: All<typeof BlessBillOfMaterials>;
   BlessBodyMap: All<typeof BlessBodyMap>;
   BlessBoxPlot: All<typeof BlessBoxPlot>;
   BlessBudgetBars: All<typeof BlessBudgetBars>;
@@ -558,6 +560,14 @@ export const labelsId: BlessLabelsFull = {
     median: "Median",
     max: "Tertinggi",
     all: "Semua",
+  },
+  BlessBillOfMaterials: {
+    title: "Daftar bahan",
+    build: "Jumlah unit dibuat",
+    per: (q) => `${q} per unit`,
+    total: (q) => `${q} total`,
+    cost: (a) => `Biaya bahan ${a}`,
+    open: (n) => `Bagian dari ${n}`,
   },
   BlessBodyMap: {
     title: "Di mana yang sakit?",

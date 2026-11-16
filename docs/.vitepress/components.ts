@@ -1118,6 +1118,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "stock-levels",
         text: "Stock with a reorder point and low state",
       },
+      {
+        name: "BlessBillOfMaterials",
+        slug: "bill-of-materials",
+        text: "A tree of parts with quantities",
+      },
     ],
   },
   {

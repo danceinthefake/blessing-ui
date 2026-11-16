@@ -1512,6 +1512,58 @@
   "slots": [],
   "exposed": []
  },
+ "BlessBillOfMaterials": {
+  "props": [
+   {
+    "name": "product",
+    "type": "string",
+    "required": true,
+    "description": "the product at the top"
+   },
+   {
+    "name": "parts",
+    "type": "BlessBomPart[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "currency",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"USD\"",
+    "description": ""
+   },
+   {
+    "name": "locale",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"en\"",
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ title: string; build: string; per: (q: string) => string; total: (q: string) => string; cost: (amount: string) => string; open: (name: string) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "count",
+    "type": "number | undefined",
+    "required": false,
+    "default": "1",
+    "description": "how many of the product to build"
+   }
+  ],
+  "events": [
+   {
+    "name": "update:count",
+    "type": "[value: number]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessBlockUI": {
   "props": [
    {
