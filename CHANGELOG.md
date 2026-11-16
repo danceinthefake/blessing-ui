@@ -9,7 +9,8 @@
 - `BlessPriceTicker`: prices that scroll in a marquee with a Pause button, each with the change as an arrow, a sign, and a percent.
 - `BlessOrderBook`: the bids and asks of a market in a table, with the best prices next to the spread, running totals, and depth bars.
 - `BlessCurrencyConverter`: an amount in one currency and its value in another from your rates, with a swap button, the rate for one unit, and a live result.
-- `BlessBudgetBars`: the money spent against the budget for each category, with what is left or over in words, a striped full bar when over, and a total row. 324 components in all.
+- `BlessBudgetBars`: the money spent against the budget for each category, with what is left or over in words, a striped full bar when over, and a total row.
+- `BlessPaymentSchedule`: the payments of a loan from the principal, the yearly rate, and the months, with the principal, interest, and balance of each month, paid rows, and totals. 325 components in all.
 
 ## 0.7.0 — 2026-11-16
 

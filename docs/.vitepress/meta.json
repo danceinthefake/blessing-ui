@@ -10205,6 +10205,64 @@
   "slots": [],
   "exposed": []
  },
+ "BlessPaymentSchedule": {
+  "props": [
+   {
+    "name": "principal",
+    "type": "number",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "rate",
+    "type": "number",
+    "required": true,
+    "description": "the yearly interest rate in percent"
+   },
+   {
+    "name": "months",
+    "type": "number",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "start",
+    "type": "string",
+    "required": true,
+    "description": "the month of the first payment, YYYY-MM"
+   },
+   {
+    "name": "paid",
+    "type": "number | undefined",
+    "required": false,
+    "default": "0",
+    "description": "how many payments are already paid"
+   },
+   {
+    "name": "currency",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"USD\"",
+    "description": ""
+   },
+   {
+    "name": "locale",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"en\"",
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ title: string; number: string; month: string; payment: string; principal: string; interest: string; balance: string; paid: string; totals: (paid: string, interest: string) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessPermissionMatrix": {
   "props": [
    {

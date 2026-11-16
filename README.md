@@ -10,7 +10,7 @@ Vue 3 component library and design tokens. The UI is gray-scale, with one accent
 
 Docs, with every component live: **[ui.blessing.id](https://ui.blessing.id)**
 
-- 324 components, from button to data table to chat. Only `--bless-*` custom properties style them. There is no Tailwind dependency.
+- 325 components, from button to data table to chat. Only `--bless-*` custom properties style them. There is no Tailwind dependency.
 - Native platform first: `<dialog>`, Popover API, `<details>`, native form controls, `Intl` dates, and scroll-snap. There is no positioning, date, or table library.
 - Accessible defaults: focus rings, ARIA tablist, dialog, and tables, and `prefers-reduced-motion`
 - ESM, tree-shakable, with `vue` as the only required peer (`@tiptap/vue-3` is optional, for `BlessEditor`). One component (`BlessButton`) costs about 1 KB gzip of JS and about 2.6 KB of CSS (tokens and its own styles). Everything costs about 212 KB and 57 KB. CSS is split per component and the import pulls it in, so you never pay for styles that you do not use
@@ -92,7 +92,7 @@ The words that components say are English by default. `provideLabels(labelsId)` 
 
 ## Components
 
-324 components across eight groups. Every one styles itself from `--bless-*` tokens and ships with a test and a docs page.
+325 components across eight groups. Every one styles itself from `--bless-*` tokens and ships with a test and a docs page.
 
 ### Primitives
 
@@ -390,6 +390,7 @@ The words that components say are English by default. `provideLabels(labelsId)` 
 | `BlessOrderBook`           | Bids and asks with depth and spread                                 | `bids`, `asks` `{price,size}`, `depth`, `precision`                                                                                           |
 | `BlessCurrencyConverter`   | Convert an amount between currencies                                | `rates`, `v-model:amount`, `v-model:from`, `v-model:to`, `updated`                                                                            |
 | `BlessBudgetBars`          | Spending against the plan by category                               | `budgets` `{name,spent,budget}`, `currency`, `locale`                                                                                         |
+| `BlessPaymentSchedule`     | The payments of a loan, month by month                              | `principal`, `rate`, `months`, `start`, `paid`, `currency`                                                                                    |
 | `BlessSunburst`            | A tree of parts as rings around a center                            | `data`, `size`, `format`                                                                                                                      |
 | `BlessDumbbell`            | Two values for each row, joined by a line                           | `data`, `color`, `format`                                                                                                                     |
 | `BlessWaffle`              | Parts of a whole as a grid of 100 squares                           | `data`, `format`                                                                                                                              |

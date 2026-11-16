@@ -816,6 +816,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "budget-bars",
         text: "Spending against the plan by category",
       },
+      {
+        name: "BlessPaymentSchedule",
+        slug: "payment-schedule",
+        text: "The payments of a loan, month by month",
+      },
       { name: "BlessSunburst", slug: "sunburst", text: "A tree of parts as rings around a center" },
       {
         name: "BlessDumbbell",
