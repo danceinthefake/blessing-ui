@@ -1049,6 +1049,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         text: "A visit with the doctor, place, and time",
       },
       {
+        name: "BlessDeviceTile",
+        slug: "device-tile",
+        text: "A device with a switch and a reading",
+      },
+      {
         name: "BlessBalanceCard",
         slug: "balance-card",
         text: "An account balance with the change",

@@ -50,6 +50,7 @@ import type BlessDataTable from "../components/BlessDataTable.vue";
 import type BlessDataView from "../components/BlessDataView.vue";
 import type BlessDateTimePicker from "../components/BlessDateTimePicker.vue";
 import type BlessDeliveryPicker from "../components/BlessDeliveryPicker.vue";
+import type BlessDeviceTile from "../components/BlessDeviceTile.vue";
 import type BlessDonutChart from "../components/BlessDonutChart.vue";
 import type BlessDumbbell from "../components/BlessDumbbell.vue";
 import type BlessDurationInput from "../components/BlessDurationInput.vue";
@@ -236,6 +237,7 @@ export type BlessLabelsFull = {
   BlessDataView: All<typeof BlessDataView>;
   BlessDateTimePicker: All<typeof BlessDateTimePicker>;
   BlessDeliveryPicker: All<typeof BlessDeliveryPicker>;
+  BlessDeviceTile: All<typeof BlessDeviceTile>;
   BlessDonutChart: All<typeof BlessDonutChart>;
   BlessDumbbell: All<typeof BlessDumbbell>;
   BlessDurationInput: All<typeof BlessDurationInput>;
@@ -712,6 +714,12 @@ export const labelsId: BlessLabelsFull = {
     time: "Jam pengiriman",
     free: "Gratis",
     full: "Penuh",
+  },
+  BlessDeviceTile: {
+    on: "Nyala",
+    off: "Mati",
+    offline: "Offline",
+    power: (n) => `Daya, ${n}`,
   },
   BlessDonutChart: { total: "Total" },
   BlessDumbbell: { start: "Sebelum", end: "Sesudah", row: "Item", change: "Perubahan" },
