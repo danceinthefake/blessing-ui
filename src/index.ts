@@ -697,3 +697,5 @@ export { default as BlessShareAccess } from "./components/BlessShareAccess.vue";
 export type { BlessAccessRole, BlessSharePerson } from "./components/BlessShareAccess.vue";
 export { default as BlessMindMap } from "./components/BlessMindMap.vue";
 export type { BlessMindNode } from "./components/BlessMindMap.vue";
+export { default as BlessTimeTracker } from "./components/BlessTimeTracker.vue";
+export type { BlessTimeEntry } from "./components/BlessTimeTracker.vue";
