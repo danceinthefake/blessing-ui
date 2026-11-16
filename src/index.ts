@@ -581,3 +581,5 @@ export type { BlessTrend } from "./components/BlessTrendList.vue";
 export { default as BlessReportDialog } from "./components/BlessReportDialog.vue";
 export { default as BlessGroupCard } from "./components/BlessGroupCard.vue";
 export type { BlessGroupState } from "./components/BlessGroupCard.vue";
+export { default as BlessForumTopics } from "./components/BlessForumTopics.vue";
+export type { BlessForumTopic } from "./components/BlessForumTopics.vue";
