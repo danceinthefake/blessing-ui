@@ -533,3 +533,5 @@ export type { BlessAchievement } from "./components/BlessAchievements.vue";
 export { default as BlessBalanceCard } from "./components/BlessBalanceCard.vue";
 export { default as BlessTransactionList } from "./components/BlessTransactionList.vue";
 export type { BlessTransaction } from "./components/BlessTransactionList.vue";
+export { default as BlessPriceTicker } from "./components/BlessPriceTicker.vue";
+export type { BlessTick } from "./components/BlessPriceTicker.vue";
