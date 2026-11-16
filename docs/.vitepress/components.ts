@@ -832,6 +832,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         text: "Each item as a line across several axes",
       },
       {
+        name: "BlessSmallMultiples",
+        slug: "small-multiples",
+        text: "A grid of small line charts on one scale",
+      },
+      {
         name: "BlessPricingTable",
         slug: "pricing-table",
         text: "Plans side by side, with a monthly or yearly switch",
