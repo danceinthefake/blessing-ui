@@ -520,7 +520,7 @@ Sixteen components, 286 → 302. Each uses native platform APIs only: the librar
 Sixteen components, 302 → 318. Each uses native platform APIs only: the library adds no dependency. Each needs tests, a docs page with a live example, a README row, words in `labelsId`, and a pass of `src/classes.test.ts`. If a component uses a known method or names another party, credit it on the credits page.
 
 - ✅ `BlessRangeChart`: floating bars from a low to a high value for each row.
-- `BlessChordDiagram`: groups around a circle, with ribbons for the flows between them.
+- ✅ `BlessChordDiagram`: groups around a circle, with ribbons for the flows between them.
 - `BlessParallelCoordinates`: each item as a line across several axes.
 - `BlessSmallMultiples`: a grid of small line charts on one scale.
 - `BlessPaletteViewer`: the shades of each color with the value, a copy button, and the contrast on white and black.

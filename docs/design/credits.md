@@ -42,6 +42,7 @@ Some components use known methods. We wrote each one again from its description.
 - The [Pareto](../components/pareto) chart shows the 80/20 rule that Joseph Juran named after Vilfredo Pareto.
 - The [Venn](../components/venn) diagram is the form of John Venn (1880). It counts each part by inclusion and exclusion.
 - The [beeswarm](../components/beeswarm) places its dots with a greedy swarm, as in the beeswarm package for R by Aron Eklund.
+- The [chord diagram](../components/chord-diagram) lays out its arcs and ribbons as [d3-chord](https://github.com/d3/d3-chord) by Mike Bostock does. We wrote the method again and use no code from it.
 - The [rose chart](../components/rose-chart) is the polar area diagram of Florence Nightingale (1858). The area of a wedge follows the value.
 
 ## Packages that you can add

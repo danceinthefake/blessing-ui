@@ -2473,6 +2473,51 @@
   ],
   "exposed": []
  },
+ "BlessChordDiagram": {
+  "props": [
+   {
+    "name": "groups",
+    "type": "BlessChordGroup[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "matrix",
+    "type": "number[][]",
+    "required": true,
+    "description": "`matrix[i][j]` is the flow from group i to group j"
+   },
+   {
+    "name": "size",
+    "type": "number | undefined",
+    "required": false,
+    "default": "320",
+    "description": "the width of the chart in pixels"
+   },
+   {
+    "name": "format",
+    "type": "((v: number) => string) | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "label",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Chart\"",
+    "description": "names the chart and its table for screen readers"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ from: string; to: (name: string) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessCircularProgress": {
   "props": [
    {

@@ -42,6 +42,7 @@ Beberapa komponen memakai metode yang sudah dikenal. Kami menulis ulang masing-m
 - Grafik [Pareto](../../components/pareto) menampilkan aturan 80/20 yang dinamai Joseph Juran dari Vilfredo Pareto.
 - Diagram [Venn](../../components/venn) adalah bentuk dari John Venn (1880). Diagram ini menghitung setiap bagian dengan inklusi dan eksklusi.
 - [Beeswarm](../../components/beeswarm) menempatkan titiknya dengan cara swarm yang rakus, seperti paket beeswarm untuk R karya Aron Eklund.
+- [Diagram chord](../../components/chord-diagram) menata busur dan pitanya seperti [d3-chord](https://github.com/d3/d3-chord) karya Mike Bostock. Kami menulis ulang metodenya dan tidak memakai kodenya.
 - [Grafik mawar](../../components/rose-chart) adalah diagram area polar dari Florence Nightingale (1858). Luas setiap irisan mengikuti nilainya.
 
 ## Paket yang bisa Anda tambahkan
