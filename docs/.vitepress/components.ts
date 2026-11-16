@@ -699,6 +699,11 @@ export const groups: { title: string; items: Entry[] }[] = [
       { name: "BlessAttachment", slug: "attachment", text: "File / image chip" },
       { name: "BlessMessageScroller", slug: "message-scroller", text: "Chat viewport" },
       {
+        name: "BlessConversationList",
+        slug: "conversation-list",
+        text: "Chats with the last message and unread count",
+      },
+      {
         name: "BlessQuestionnaire",
         slug: "questionnaire",
         text: "Multi-step single/multiple/freeform",
