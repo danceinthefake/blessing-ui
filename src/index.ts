@@ -624,3 +624,4 @@ export { default as BlessEpisodeList } from "./components/BlessEpisodeList.vue";
 export type { BlessEpisode } from "./components/BlessEpisodeList.vue";
 export { default as BlessPlayQueue } from "./components/BlessPlayQueue.vue";
 export type { BlessQueueTrack } from "./components/BlessPlayQueue.vue";
+export { default as BlessMiniPlayer } from "./components/BlessMiniPlayer.vue";

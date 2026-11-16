@@ -56,7 +56,8 @@ Forty-one new components, 359 in all, for finance, commerce, communication, soci
 - `BlessPaywall`: a faded free preview, plan radios, a subscribe event, and a sign-in link for readers who already pay.
 - `BlessPosterRow`: a titled row of poster links that scrolls with snap points, buttons that turn off at each end, and tall, wide, or square posters.
 - `BlessEpisodeList`: the episodes of a season with a picture that plays, a progress bar and words, the length, a two-line summary, and the current one.
-- `BlessPlayQueue`: the track that plays now and the next tracks in a sortable list, with play and remove buttons named with the track, the total time, and clear. 369 components in all.
+- `BlessPlayQueue`: the track that plays now and the next tracks in a sortable list, with play and remove buttons named with the track, the total time, and clear.
+- `BlessMiniPlayer`: a small player with the track, play and pause, previous and next, a native seek slider read in words, and a docked mode. 370 components in all.
 
 ## 0.7.0 — 2026-11-16
 

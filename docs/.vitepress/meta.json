@@ -9996,6 +9996,89 @@
   ],
   "exposed": []
  },
+ "BlessMiniPlayer": {
+  "props": [
+   {
+    "name": "title",
+    "type": "string",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "artist",
+    "type": "string | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "image",
+    "type": "string | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "duration",
+    "type": "number",
+    "required": true,
+    "description": "the length in seconds"
+   },
+   {
+    "name": "docked",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": "stick to the bottom of the screen"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ title: string; play: string; pause: string; previous: string; next: string; open: string; position: string; time: (now: string, total: string) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "playing",
+    "type": "boolean | undefined",
+    "required": false,
+    "default": "false",
+    "description": ""
+   },
+   {
+    "name": "position",
+    "type": "number | undefined",
+    "required": false,
+    "default": "0",
+    "description": "where the track is, in seconds"
+   }
+  ],
+  "events": [
+   {
+    "name": "open",
+    "type": "[]",
+    "description": ""
+   },
+   {
+    "name": "next",
+    "type": "[]",
+    "description": ""
+   },
+   {
+    "name": "previous",
+    "type": "[]",
+    "description": ""
+   },
+   {
+    "name": "update:playing",
+    "type": "[value: boolean]",
+    "description": ""
+   },
+   {
+    "name": "update:position",
+    "type": "[value: number]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessMockup": {
   "props": [
    {
