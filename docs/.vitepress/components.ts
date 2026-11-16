@@ -1155,6 +1155,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "oee-gauge",
         text: "OEE from availability, performance, quality",
       },
+      {
+        name: "BlessDowntimePicker",
+        slug: "downtime-picker",
+        text: "The reason for a stop, with big buttons",
+      },
     ],
   },
   {

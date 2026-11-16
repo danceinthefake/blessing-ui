@@ -678,3 +678,5 @@ export { default as BlessProductionCounter } from "./components/BlessProductionC
 export { default as BlessMachineBoard } from "./components/BlessMachineBoard.vue";
 export type { BlessMachine, BlessMachineState } from "./components/BlessMachineBoard.vue";
 export { default as BlessOeeGauge } from "./components/BlessOeeGauge.vue";
+export { default as BlessDowntimePicker } from "./components/BlessDowntimePicker.vue";
+export type { BlessDowntimeReason } from "./components/BlessDowntimePicker.vue";
