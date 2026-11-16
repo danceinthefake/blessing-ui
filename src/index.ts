@@ -613,3 +613,4 @@ export type { BlessShareTarget } from "./components/BlessShareBar.vue";
 export { default as BlessRelatedArticles } from "./components/BlessRelatedArticles.vue";
 export type { BlessRelatedArticle } from "./components/BlessRelatedArticles.vue";
 export { default as BlessFigure } from "./components/BlessFigure.vue";
+export { default as BlessPullQuote } from "./components/BlessPullQuote.vue";
