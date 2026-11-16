@@ -1140,6 +1140,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "work-order-card",
         text: "A work order with progress and state",
       },
+      {
+        name: "BlessProductionCounter",
+        slug: "production-counter",
+        text: "Good and scrap counts with big buttons",
+      },
     ],
   },
   {
