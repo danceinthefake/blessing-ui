@@ -9866,6 +9866,37 @@
   "slots": [],
   "exposed": []
  },
+ "BlessMarginComments": {
+  "props": [
+   {
+    "name": "blocks",
+    "type": "BlessDocBlock[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "comments",
+    "type": "BlessMarginComment[] | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ comment: string; send: string; cancel: string; placeholder: string; on: (index: number) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "add",
+    "type": "[block: string, text: string]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessMarimekko": {
   "props": [
    {
