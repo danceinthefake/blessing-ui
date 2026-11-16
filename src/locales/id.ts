@@ -163,6 +163,7 @@ import type BlessShareBar from "../components/BlessShareBar.vue";
 import type BlessShipmentTracker from "../components/BlessShipmentTracker.vue";
 import type BlessShortcutRecorder from "../components/BlessShortcutRecorder.vue";
 import type BlessShortcutSheet from "../components/BlessShortcutSheet.vue";
+import type BlessSlaTimer from "../components/BlessSlaTimer.vue";
 import type BlessSleepChart from "../components/BlessSleepChart.vue";
 import type BlessSliderCaptcha from "../components/BlessSliderCaptcha.vue";
 import type BlessSlopeChart from "../components/BlessSlopeChart.vue";
@@ -371,6 +372,7 @@ export type BlessLabelsFull = {
   BlessShipmentTracker: All<typeof BlessShipmentTracker>;
   BlessShortcutRecorder: All<typeof BlessShortcutRecorder>;
   BlessShortcutSheet: All<typeof BlessShortcutSheet>;
+  BlessSlaTimer: All<typeof BlessSlaTimer>;
   BlessSleepChart: All<typeof BlessSleepChart>;
   BlessSliderCaptcha: All<typeof BlessSliderCaptcha>;
   BlessSlopeChart: All<typeof BlessSlopeChart>;
@@ -1548,6 +1550,13 @@ export const labelsId: BlessLabelsFull = {
     taken: (c) => `${c} sudah dipakai`,
   },
   BlessShortcutSheet: { search: "Cari pintasan", none: "Pintasan tidak ditemukan", or: "atau" },
+  BlessSlaTimer: {
+    left: (t) => `sisa ${t}`,
+    over: (t) => `Terlambat ${t}`,
+    met: "Terpenuhi",
+    atRisk: "Berisiko",
+    time: (h, m) => (h ? (m ? `${h} j ${m} mnt` : `${h} j`) : `${m} mnt`),
+  },
   BlessSleepChart: {
     title: "Tidur",
     awake: "Terjaga",

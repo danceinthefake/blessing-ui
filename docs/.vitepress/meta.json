@@ -15527,6 +15527,57 @@
   ],
   "exposed": []
  },
+ "BlessSlaTimer": {
+  "props": [
+   {
+    "name": "label",
+    "type": "string",
+    "required": true,
+    "description": "what the time limit is for, for example \"First reply\""
+   },
+   {
+    "name": "due",
+    "type": "string",
+    "required": true,
+    "description": "the deadline, as an ISO date and time"
+   },
+   {
+    "name": "window",
+    "type": "number | undefined",
+    "required": false,
+    "default": "480",
+    "description": "the length of the whole window in minutes, for the bar"
+   },
+   {
+    "name": "warn",
+    "type": "number | undefined",
+    "required": false,
+    "default": "60",
+    "description": "below this many minutes, the timer warns"
+   },
+   {
+    "name": "now",
+    "type": "string | undefined",
+    "required": false,
+    "description": "the time now, as an ISO date and time; without it, the clock of the reader after mount"
+   },
+   {
+    "name": "met",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": "the work is done: the timer stops and says so"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ left: (time: string) => string; over: (time: string) => string; met: string; atRisk: string; time: (h: number, m: number) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessSleepChart": {
   "props": [
    {
