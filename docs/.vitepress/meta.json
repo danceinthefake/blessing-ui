@@ -777,6 +777,91 @@
   ],
   "exposed": []
  },
+ "BlessAssignment": {
+  "props": [
+   {
+    "name": "title",
+    "type": "string",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "due",
+    "type": "string | undefined",
+    "required": false,
+    "description": "the due date as text"
+   },
+   {
+    "name": "points",
+    "type": "number | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "instructions",
+    "type": "string | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "submitted",
+    "type": "string | undefined",
+    "required": false,
+    "description": "when the work was handed in, as text; leave it out before that"
+   },
+   {
+    "name": "late",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "grade",
+    "type": "string | undefined",
+    "required": false,
+    "description": "the grade as text, for example \"88 / 100\" or \"A-\""
+   },
+   {
+    "name": "feedback",
+    "type": "string | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "accept",
+    "type": "string | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ due: (when: string) => string; points: (n: number) => string; todo: string; done: string; late: string; graded: string; yourWork: string; drop: string; submit: string; submittedAt: (when: string) => string; grade: string; feedback: string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "File[] | undefined",
+    "required": false,
+    "default": "[]",
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "update:modelValue",
+    "type": "[value: File[]]",
+    "description": ""
+   },
+   {
+    "name": "submit",
+    "type": "[files: File[]]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessAttachment": {
   "props": [
    {
@@ -2062,7 +2147,7 @@
    },
    {
     "name": "type",
-    "type": "\"button\" | \"submit\" | \"reset\" | undefined",
+    "type": "\"submit\" | \"button\" | \"reset\" | undefined",
     "required": false,
     "default": "\"button\"",
     "description": ""
@@ -10572,13 +10657,13 @@
   ],
   "events": [
    {
-    "name": "update:rating",
-    "type": "[value: \"bad\" | \"good\" | undefined]",
+    "name": "feedback",
+    "type": "[event: BlessMessageFeedbackEvent]",
     "description": ""
    },
    {
-    "name": "feedback",
-    "type": "[event: BlessMessageFeedbackEvent]",
+    "name": "update:rating",
+    "type": "[value: \"bad\" | \"good\" | undefined]",
     "description": ""
    },
    {

@@ -10,7 +10,7 @@ import ShareAccessBasic from "../demos/ShareAccessBasic.vue";
 
 <p class="bless-lead">The people who can open a file, their access level, and the access for a link</p>
 
-Controls who can see and change a shared file. Put it in a [dialog](./dialog) behind a Share button. To send a link through the apps of the device, use the [share bar](./share-bar).
+Controls who can see and change a shared file. Put it in a [modal](./modal) behind a Share button. To send a link through the apps of the device, use the [share bar](./share-bar).
 
 <Demo title="Basic">
   <ShareAccessBasic />

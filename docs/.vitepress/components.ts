@@ -775,6 +775,7 @@ export const groups: { title: string; items: Entry[] }[] = [
         text: "A course with its facts and progress",
       },
       { name: "BlessGradebook", slug: "gradebook", text: "Scores by student and assignment" },
+      { name: "BlessAssignment", slug: "assignment", text: "Instructions, hand-in, and grade" },
       {
         name: "BlessAchievements",
         slug: "achievements",

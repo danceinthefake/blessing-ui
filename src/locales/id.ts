@@ -8,6 +8,7 @@ import type BlessApiKeyField from "../components/BlessApiKeyField.vue";
 import type BlessAppointmentCard from "../components/BlessAppointmentCard.vue";
 import type BlessApprovalFlow from "../components/BlessApprovalFlow.vue";
 import type BlessArticleHeader from "../components/BlessArticleHeader.vue";
+import type BlessAssignment from "../components/BlessAssignment.vue";
 import type BlessAudioRecorder from "../components/BlessAudioRecorder.vue";
 import type BlessAuditLog from "../components/BlessAuditLog.vue";
 import type BlessAvailabilityGrid from "../components/BlessAvailabilityGrid.vue";
@@ -240,6 +241,7 @@ export type BlessLabelsFull = {
   BlessAppointmentCard: All<typeof BlessAppointmentCard>;
   BlessApprovalFlow: All<typeof BlessApprovalFlow>;
   BlessArticleHeader: All<typeof BlessArticleHeader>;
+  BlessAssignment: All<typeof BlessAssignment>;
   BlessAudioRecorder: All<typeof BlessAudioRecorder>;
   BlessAuditLog: All<typeof BlessAuditLog>;
   BlessAvailabilityGrid: All<typeof BlessAvailabilityGrid>;
@@ -556,6 +558,20 @@ export const labelsId: BlessLabelsFull = {
     by: (n) => `Oleh ${n}`,
     read: (m) => `${m} menit baca`,
     updated: (d) => `Diperbarui ${d}`,
+  },
+  BlessAssignment: {
+    due: (w) => `Tenggat ${w}`,
+    points: (n) => `${n} poin`,
+    todo: "Belum dikerjakan",
+    done: "Sudah dikumpulkan",
+    late: "Dikumpulkan terlambat",
+    graded: "Sudah dinilai",
+    yourWork: "Tugas Anda",
+    drop: "Letakkan berkas di sini atau klik untuk memilih",
+    submit: "Kumpulkan",
+    submittedAt: (w) => `Dikumpulkan ${w}`,
+    grade: "Nilai",
+    feedback: "Umpan balik",
   },
   BlessAudioRecorder: {
     record: "Rekam",

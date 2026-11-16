@@ -91,7 +91,8 @@ Seventy-eight new components, 396 in all, for finance, commerce, communication, 
 - `BlessRoomBooking`: rooms and half hours of a day as a table, booked times with stripes, picks that extend in a room, a status line, and a book event.
 - `BlessFileBrowser`: the files and folders of one folder as a grid or a table, natural sort with folders first, sizes and dates by locale, and a path to go back.
 - `BlessCourseCard`: a course with the picture, the teacher, the lessons, the length, the level, and the progress, with a link over the whole card.
-- `BlessGradebook`: scores by student and assignment, missing work, student and class averages, a mark under the pass line, and number fields to edit. 404 components in all.
+- `BlessGradebook`: scores by student and assignment, missing work, student and class averages, a mark under the pass line, and number fields to edit.
+- `BlessAssignment`: the instructions, the due date, a file hand-in, the state in words, and the grade with feedback. 405 components in all.
 
 ## 0.7.0 — 2026-11-16
 
