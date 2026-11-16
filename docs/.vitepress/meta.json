@@ -10552,6 +10552,19 @@
   ],
   "exposed": []
  },
+ "BlessMindMap": {
+  "props": [
+   {
+    "name": "root",
+    "type": "BlessMindNode",
+    "required": true,
+    "description": "the central idea; its children go to the two sides"
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessMiniPlayer": {
   "props": [
    {

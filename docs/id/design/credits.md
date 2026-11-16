@@ -44,6 +44,7 @@ Beberapa komponen memakai metode yang sudah dikenal. Kami menulis ulang masing-m
 
 - [Treemap](../../components/treemap) memakai tata letak squarified dari Bruls, Huijsmans, dan van Wijk (2000).
 - [Input kartu](../../components/card-input) memeriksa nomor dengan algoritma Luhn (Hans Peter Luhn, 1954).
+- [Peta pikiran](../../components/mind-map) mengikuti peta pikiran yang dikenalkan Tony Buzan dalam _Use Your Head_ (1974).
 - [Grafik kendali](../../components/control-chart) mengikuti grafik kendali Walter A. Shewhart (1924), dengan batas pada rata-rata ± 3 simpangan baku.
 - [Gauge OEE](../../components/oee-gauge) memakai overall equipment effectiveness, ketersediaan × performa × mutu, dari total productive maintenance oleh Seiichi Nakajima.
 - [Papan mesin](../../components/machine-board) mengikuti papan andon dari Toyota Production System.
