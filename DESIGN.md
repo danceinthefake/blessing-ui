@@ -667,7 +667,7 @@ Eleven components, 396 → 407. Each uses native platform APIs only: the library
 - ✅ `BlessFileBrowser`: the files and folders of one folder as a grid or a list, with a path to go back.
 - ✅ `BlessCourseCard`: a course with the picture, the teacher, the number of lessons, the level, and the progress.
 - ✅ `BlessGradebook`: the scores of each student for each assignment, with averages and missing work.
-- `BlessAssignment`: an assignment with the instructions, the due date, a submission, and the grade.
+- ✅ `BlessAssignment`: an assignment with the instructions, the due date, a submission, and the grade.
 - `BlessCertificate`: a certificate of completion that prints on one page.
 - `BlessLessonVideo`: a lesson video with notes at points in time that take you back to that point.
 
