@@ -1103,6 +1103,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "sla-timer",
         text: "Time left to answer, with a breach state",
       },
+      {
+        name: "BlessLineItemEditor",
+        slug: "line-item-editor",
+        text: "Rows of products with totals",
+      },
     ],
   },
   {

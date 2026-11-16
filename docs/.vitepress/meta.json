@@ -9187,6 +9187,53 @@
   "slots": [],
   "exposed": []
  },
+ "BlessLineItemEditor": {
+  "props": [
+   {
+    "name": "currency",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"USD\"",
+    "description": ""
+   },
+   {
+    "name": "locale",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"en\"",
+    "description": ""
+   },
+   {
+    "name": "units",
+    "type": "string[] | undefined",
+    "required": false,
+    "default": "[\"pcs\", \"hour\", \"box\", \"kg\"]",
+    "description": "units to pick from"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ title: string; product: string; quantity: string; unit: string; price: string; discount: string; tax: string; amount: string; add: string; remove: (row: number) => string; field: (what: string, row: number) => string; subtotal: string; discounts: string; taxes: string; total: string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "BlessLineItem[] | undefined",
+    "required": false,
+    "default": "[]",
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "update:modelValue",
+    "type": "[value: BlessLineItem[]]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessList": {
   "props": [
    {
