@@ -541,3 +541,6 @@ export type { BlessBookLevel } from "./components/BlessOrderBook.vue";
 export { default as BlessCurrencyConverter } from "./components/BlessCurrencyConverter.vue";
 export { default as BlessBudgetBars } from "./components/BlessBudgetBars.vue";
 export type { BlessBudget } from "./components/BlessBudgetBars.vue";
+export { default as BlessPaymentSchedule } from "./components/BlessPaymentSchedule.vue";
+export { amortize } from "./components/BlessPaymentSchedule.vue";
+export type { BlessPaymentRow } from "./components/BlessPaymentSchedule.vue";

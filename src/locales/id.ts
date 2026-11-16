@@ -87,6 +87,7 @@ import type BlessOrderSummary from "../components/BlessOrderSummary.vue";
 import type BlessPaletteViewer from "../components/BlessPaletteViewer.vue";
 import type BlessParallelCoordinates from "../components/BlessParallelCoordinates.vue";
 import type BlessPareto from "../components/BlessPareto.vue";
+import type BlessPaymentSchedule from "../components/BlessPaymentSchedule.vue";
 import type BlessPermissionMatrix from "../components/BlessPermissionMatrix.vue";
 import type BlessPhoneInput from "../components/BlessPhoneInput.vue";
 import type BlessPickList from "../components/BlessPickList.vue";
@@ -247,6 +248,7 @@ export type BlessLabelsFull = {
   BlessPaletteViewer: All<typeof BlessPaletteViewer>;
   BlessParallelCoordinates: All<typeof BlessParallelCoordinates>;
   BlessPareto: All<typeof BlessPareto>;
+  BlessPaymentSchedule: All<typeof BlessPaymentSchedule>;
   BlessPermissionMatrix: All<typeof BlessPermissionMatrix>;
   BlessPhoneInput: All<typeof BlessPhoneInput>;
   BlessPickList: All<typeof BlessPickList>;
@@ -901,6 +903,17 @@ export const labelsId: BlessLabelsFull = {
   },
   BlessParallelCoordinates: { item: "Item" },
   BlessPareto: { item: "Item", value: "Nilai", running: "Porsi kumulatif" },
+  BlessPaymentSchedule: {
+    title: "Jadwal pembayaran",
+    number: "No.",
+    month: "Bulan",
+    payment: "Cicilan",
+    principal: "Pokok",
+    interest: "Bunga",
+    balance: "Sisa",
+    paid: "lunas",
+    totals: (p, i) => `Total yang Anda bayar ${p}, dengan bunga ${i}.`,
+  },
   BlessPermissionMatrix: {
     title: "Izin",
     permission: "Izin",
