@@ -1045,6 +1045,76 @@
   ],
   "exposed": []
  },
+ "BlessBalanceCard": {
+  "props": [
+   {
+    "name": "label",
+    "type": "string",
+    "required": true,
+    "description": "the name of the account, for example \"Main account\""
+   },
+   {
+    "name": "amount",
+    "type": "number",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "currency",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"USD\"",
+    "description": "ISO 4217 code, for example `IDR` or `USD`"
+   },
+   {
+    "name": "locale",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"en\"",
+    "description": ""
+   },
+   {
+    "name": "change",
+    "type": "number | undefined",
+    "required": false,
+    "description": "the change over `period`, in the same currency"
+   },
+   {
+    "name": "period",
+    "type": "string | undefined",
+    "required": false,
+    "description": "the period of the change, for example \"this month\""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ show: string; hide: string; hidden: string; up: string; down: string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "masked",
+    "type": "boolean | undefined",
+    "required": false,
+    "default": "false",
+    "description": "hide the amounts, for a screen that other people can see"
+   }
+  ],
+  "events": [
+   {
+    "name": "update:masked",
+    "type": "[value: boolean]",
+    "description": ""
+   }
+  ],
+  "slots": [
+   {
+    "name": "default",
+    "type": "{}",
+    "description": ""
+   }
+  ],
+  "exposed": []
+ },
  "BlessBanner": {
   "props": [
    {
@@ -12341,12 +12411,12 @@
     "description": ""
    },
    {
-    "name": "create",
+    "name": "change",
     "type": "[event: ScheduleEvent]",
     "description": ""
    },
    {
-    "name": "change",
+    "name": "create",
     "type": "[event: ScheduleEvent]",
     "description": ""
    },

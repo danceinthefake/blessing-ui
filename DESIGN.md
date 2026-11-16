@@ -545,7 +545,7 @@ From Phase 35, each round takes its components from the "Not yet" lists of the [
 
 Sixteen components, 318 → 334. Each uses native platform APIs only: the library adds no dependency. Each needs tests, a docs page with a live example, a README row, words in `labelsId`, and a pass of `src/classes.test.ts`. If a component uses a known method or names another party, credit it on the credits page. When a component lands, move its part from "Not yet" to "Today" on the site types page, in both languages.
 
-- `BlessBalanceCard`: the balance of an account, with the change over a period and the main actions.
+- ✅ `BlessBalanceCard`: the balance of an account, with the change over a period and the main actions.
 - `BlessTransactionList`: payments in and out, grouped by day, with a category and a running total.
 - `BlessPriceTicker`: prices that move across the screen, with the change of each, and a pause.
 - `BlessOrderBook`: the bids and asks of a market, with depth bars and the spread.
