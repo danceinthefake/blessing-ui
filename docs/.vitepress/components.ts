@@ -1125,6 +1125,7 @@ export const groups: { title: string; items: Entry[] }[] = [
       },
       { name: "BlessPlayQueue", slug: "play-queue", text: "The next tracks in order" },
       { name: "BlessAudioPlayer", slug: "audio-player", text: "Track list player" },
+      { name: "BlessMiniPlayer", slug: "mini-player", text: "A small player with the controls" },
       {
         name: "BlessWaveform",
         slug: "waveform",

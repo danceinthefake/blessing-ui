@@ -95,6 +95,7 @@ import type BlessMarimekko from "../components/BlessMarimekko.vue";
 import type BlessMarquee from "../components/BlessMarquee.vue";
 import type BlessMedicationSchedule from "../components/BlessMedicationSchedule.vue";
 import type BlessMessageFeedback from "../components/BlessMessageFeedback.vue";
+import type BlessMiniPlayer from "../components/BlessMiniPlayer.vue";
 import type BlessModelPicker from "../components/BlessModelPicker.vue";
 import type BlessNewsletterSignup from "../components/BlessNewsletterSignup.vue";
 import type BlessNodeGraph from "../components/BlessNodeGraph.vue";
@@ -296,6 +297,7 @@ export type BlessLabelsFull = {
   BlessMarquee: All<typeof BlessMarquee>;
   BlessMedicationSchedule: All<typeof BlessMedicationSchedule>;
   BlessMessageFeedback: All<typeof BlessMessageFeedback>;
+  BlessMiniPlayer: All<typeof BlessMiniPlayer>;
   BlessModelPicker: All<typeof BlessModelPicker>;
   BlessNewsletterSignup: All<typeof BlessNewsletterSignup>;
   BlessNodeGraph: All<typeof BlessNodeGraph>;
@@ -1055,6 +1057,16 @@ export const labelsId: BlessLabelsFull = {
     send: "Kirim",
     cancel: "Batal",
     thanks: "Terima kasih atas masukannya",
+  },
+  BlessMiniPlayer: {
+    title: "Pemutar",
+    play: "Putar",
+    pause: "Jeda",
+    previous: "Sebelumnya",
+    next: "Berikutnya",
+    open: "Buka pemutar penuh",
+    position: "Posisi",
+    time: (n, t) => `${n} dari ${t}`,
   },
   BlessModelPicker: {
     label: "Model",
