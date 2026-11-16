@@ -1098,6 +1098,11 @@ export const groups: { title: string; items: Entry[] }[] = [
       },
       { name: "BlessInvoice", slug: "invoice", text: "An invoice with lines, tax, and totals" },
       { name: "BlessTicketView", slug: "ticket-view", text: "A help desk ticket with a reply box" },
+      {
+        name: "BlessSlaTimer",
+        slug: "sla-timer",
+        text: "Time left to answer, with a breach state",
+      },
     ],
   },
   {

@@ -649,3 +649,5 @@ export type {
   BlessTicketStatus,
   BlessTicketPriority,
 } from "./components/BlessTicketView.vue";
+export { default as BlessSlaTimer } from "./components/BlessSlaTimer.vue";
+export { minutesLeft } from "./components/BlessSlaTimer.vue";

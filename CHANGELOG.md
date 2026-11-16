@@ -64,7 +64,8 @@ Fifty-four new components, 372 in all, for finance, commerce, communication, soc
 - `BlessCsvImport`: a CSV import with an RFC 4180 parser, columns matched to your fields by name, a preview, skipped rows, and an import event.
 - `BlessAuditLog`: who changed which record and when, the action as a mark and a word, and each field with the old value struck and the new value.
 - `BlessInvoice`: an invoice with the parties, the dates, the lines, a subtotal, tax by rate, the total, paid, the amount due, the status in words, and print styles.
-- `BlessTicketView`: a help desk ticket with the customer, the priority in words, a status menu, the thread with internal notes marked, and a reply or note box. 377 components in all.
+- `BlessTicketView`: a help desk ticket with the customer, the priority in words, a status menu, the thread with internal notes marked, and a reply or note box.
+- `BlessSlaTimer`: the time left on a service promise with a bar, at risk and overdue states in words, met, and the clock of the reader after mount. 378 components in all.
 
 ## 0.7.0 — 2026-11-16
 
