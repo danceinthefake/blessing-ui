@@ -157,6 +157,7 @@ thead .bless-cmptable__feature {
   font-variant-numeric: tabular-nums;
 }
 .bless-cmptable__yes {
+  display: inline-block;
   vertical-align: middle;
   fill: none;
   stroke: var(--bless-color-text);
