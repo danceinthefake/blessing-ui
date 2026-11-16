@@ -1135,6 +1135,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         text: "The states of a document with the next step",
       },
       { name: "BlessPayslip", slug: "payslip", text: "Pay of a period with the net pay" },
+      {
+        name: "BlessWorkOrderCard",
+        slug: "work-order-card",
+        text: "A work order with progress and state",
+      },
     ],
   },
   {

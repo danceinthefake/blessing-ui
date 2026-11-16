@@ -643,7 +643,7 @@ Fourteen components, 372 → 386. Each uses native platform APIs only: the libra
 
 Ten components, 386 → 396. Each uses native platform APIs only: the library adds no dependency. Each needs tests, a docs page with a live example, a README row, words in `labelsId`, and a pass of `src/classes.test.ts`. If a component uses a known method or names another party, credit it on the credits page. When a component lands, move its part from "Not yet" to "Today" on the site types page, in both languages.
 
-- `BlessWorkOrderCard`: a work order with the product, the quantity, the due time, and the state.
+- ✅ `BlessWorkOrderCard`: a work order with the product, the quantity, the due time, and the state.
 - `BlessProductionCounter`: good and scrap pieces against the target, with big buttons for a station.
 - `BlessMachineBoard`: the machines of a line with their state and how long they are in it.
 - `BlessOeeGauge`: overall equipment effectiveness: availability × performance × quality.

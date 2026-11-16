@@ -73,7 +73,8 @@ Sixty-eight new components, 386 in all, for finance, commerce, communication, so
 - `BlessSkuField`: a field for a barcode scanner that checks GS1 numbers with their check digit, or takes your own SKUs in upper case, and emits scan on Enter.
 - `BlessUnitConverter`: an amount in one unit of measure and its value in another, a swap, a live result, and the split into whole units.
 - `BlessDocumentStatus`: the chain of states of a document with done, current, and next in words, the time of each, a button to the next state, and a stopped end.
-- `BlessPayslip`: a payslip with the employee, the period, earnings and deductions as tables with totals, and the net pay. 386 components in all.
+- `BlessPayslip`: a payslip with the employee, the period, earnings and deductions as tables with totals, and the net pay.
+- `BlessWorkOrderCard`: a work order with the product, a named progress bar of done against target, the station and due time, the state as a mark and a word, and buttons for the state. 387 components in all.
 
 ## 0.7.0 — 2026-11-16
 
