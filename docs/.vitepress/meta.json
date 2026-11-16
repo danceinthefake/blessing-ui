@@ -13676,6 +13676,55 @@
   "slots": [],
   "exposed": []
  },
+ "BlessRuleBuilder": {
+  "props": [
+   {
+    "name": "triggers",
+    "type": "BlessRuleOption[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "conditions",
+    "type": "BlessRuleOption[] | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "actions",
+    "type": "BlessRuleOption[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ when: string; if: string; then: string; pick: string; addIf: string; addThen: string; remove: (what: string) => string; save: string; preview: string; sentence: (when: string, ifs: string, thens: string) => string; and: string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "BlessRule | undefined",
+    "required": false,
+    "default": "{ when: \"\", if: [], then: [\"\"] }",
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "update:modelValue",
+    "type": "[value: BlessRule]",
+    "description": ""
+   },
+   {
+    "name": "save",
+    "type": "[rule: BlessRule]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessSankey": {
   "props": [
    {

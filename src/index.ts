@@ -605,3 +605,5 @@ export type { BlessRoom, BlessRoomDevice } from "./components/BlessFloorPlan.vue
 export { default as BlessSceneButtons } from "./components/BlessSceneButtons.vue";
 export type { BlessScene } from "./components/BlessSceneButtons.vue";
 export { default as BlessBatteryLevel } from "./components/BlessBatteryLevel.vue";
+export { default as BlessRuleBuilder } from "./components/BlessRuleBuilder.vue";
+export type { BlessRule, BlessRuleOption } from "./components/BlessRuleBuilder.vue";

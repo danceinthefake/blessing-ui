@@ -597,7 +597,7 @@ Twelve components, 347 → 359. Each uses native platform APIs only: the library
 - ✅ `BlessFloorPlan`: the rooms of a home with the devices in each room.
 - ✅ `BlessSceneButtons`: buttons that set many devices at once, such as Night or Away.
 - ✅ `BlessBatteryLevel`: the charge of a battery, with charging and low states.
-- `BlessRuleBuilder`: an automation rule: when something happens, if a condition holds, then do an action.
+- ✅ `BlessRuleBuilder`: an automation rule: when something happens, if a condition holds, then do an action.
 
 ### Phase 38 — content and media (2026-11-16)
 

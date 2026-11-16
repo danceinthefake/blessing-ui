@@ -138,6 +138,7 @@ import type BlessReturnRequest from "../components/BlessReturnRequest.vue";
 import type BlessReviewSummary from "../components/BlessReviewSummary.vue";
 import type BlessRoseChart from "../components/BlessRoseChart.vue";
 import type BlessRsvp from "../components/BlessRsvp.vue";
+import type BlessRuleBuilder from "../components/BlessRuleBuilder.vue";
 import type BlessSankey from "../components/BlessSankey.vue";
 import type BlessScatterChart from "../components/BlessScatterChart.vue";
 import type BlessSceneButtons from "../components/BlessSceneButtons.vue";
@@ -329,6 +330,7 @@ export type BlessLabelsFull = {
   BlessReviewSummary: All<typeof BlessReviewSummary>;
   BlessRoseChart: All<typeof BlessRoseChart>;
   BlessRsvp: All<typeof BlessRsvp>;
+  BlessRuleBuilder: All<typeof BlessRuleBuilder>;
   BlessSankey: All<typeof BlessSankey>;
   BlessScatterChart: All<typeof BlessScatterChart>;
   BlessSceneButtons: All<typeof BlessSceneButtons>;
@@ -1335,6 +1337,19 @@ export const labelsId: BlessLabelsFull = {
     question: "Kamu datang?",
     you: "kamu",
     goingCount: (n) => `${n} hadir`,
+  },
+  BlessRuleBuilder: {
+    when: "Ketika",
+    if: "Hanya jika",
+    then: "Maka",
+    pick: "Pilih satu",
+    addIf: "Tambah syarat",
+    addThen: "Tambah aksi",
+    remove: (w) => `Hapus: ${w}`,
+    save: "Simpan aturan",
+    preview: "Aturannya",
+    sentence: (w, i, t) => `Ketika ${w}${i ? `, jika ${i}` : ""}, maka ${t}.`,
+    and: "dan",
   },
   BlessSankey: { from: "Dari", to: "Ke", value: "Nilai" },
   BlessScatterChart: { point: "Titik", group: "Grup", size: "Ukuran" },
