@@ -15512,6 +15512,38 @@
   "slots": [],
   "exposed": []
  },
+ "BlessStories": {
+  "props": [
+   {
+    "name": "people",
+    "type": "BlessStoryPerson[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "duration",
+    "type": "number | undefined",
+    "required": false,
+    "default": "5",
+    "description": "seconds for each story"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ title: string; open: (name: string) => string; new: string; previous: string; next: string; pause: string; play: string; progress: (n: number, total: number) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "seen",
+    "type": "[personId: string, storyId: string]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessStreamgraph": {
   "props": [
    {
