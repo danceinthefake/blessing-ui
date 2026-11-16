@@ -1,0 +1,189 @@
+---
+title: Jenis situs
+---
+
+# Jenis situs
+
+<p class="bless-lead">Jenis-jenis situs web dan aplikasi, dan bagian yang dibutuhkan tiap jenis</p>
+
+Tidak ada satu daftar resmi jenis situs. Setiap pengelompok menghitung dengan caranya sendiri. [Similarweb](https://support.similarweb.com/hc/en-us/articles/38066805004317-Using-Industry-Plus-in-Lead-Generation) membagi situs web ke dalam 27 industri dan 436 kategori. [App Store](https://developer.apple.com/documentation/appstoreconnectapi/app-categories-and-subcategories) menaruh setiap aplikasi di salah satu dari sekitar 26 kategori. [IAB Content Taxonomy](https://iabtechlab.com/standards/content-taxonomy/) 3.1 punya 37 topik tingkat atas untuk iklan.
+
+Daftar-daftar itu mengelompokkan menurut topik, seperti olahraga atau perjalanan. Pustaka komponen butuh cara lain: menurut apa yang orang lakukan di situs itu. Dua situs dengan tugas yang sama butuh bagian yang sama, apa pun topiknya. Halaman ini memakai 17 kelompok seperti itu.
+
+Untuk setiap kelompok, halaman ini mendaftar komponen dan [blok](../../blocks/) yang sudah melayaninya. Halaman ini juga mendaftar bagian yang belum ada di pustaka. Bagian-bagian itu adalah calon untuk putaran komponen berikutnya.
+
+## Ringkasan
+
+| Kelompok                          | Komponen sekarang | Belum ada |
+| --------------------------------- | ----------------: | --------: |
+| 1. Konten dan penerbitan          |                15 |         7 |
+| 2. Perdagangan                    |                16 |         9 |
+| 3. Sosial dan komunitas           |                11 |         7 |
+| 4. Komunikasi                     |                 9 |         6 |
+| 5. Media dan hiburan              |                 8 |         7 |
+| 6. Produktivitas dan kolaborasi   |                14 |         6 |
+| 7. Perangkat lunak bisnis         |                13 |         6 |
+| 8. Keuangan                       |                 8 |         7 |
+| 9. Pendidikan                     |                 7 |         5 |
+| 10. Kesehatan dan kebugaran       |                 6 |         6 |
+| 11. Alat pengembang               |                13 |         5 |
+| 12. Utilitas                      |                 6 |         5 |
+| 13. Pencarian dan referensi       |                 6 |         4 |
+| 14. Layanan pemerintah dan publik |                 9 |         5 |
+| 15. Situs merek dan pemasaran     |                11 |         5 |
+| 16. Asisten dan agen AI           |                11 |         6 |
+| 17. Perangkat terhubung           |                 6 |         6 |
+
+## 1. Konten dan penerbitan
+
+Situs berita, blog, majalah, dan dokumentasi. Orang membaca, memindai, dan berbagi.
+
+Sekarang: [Markdown](../../components/markdown), [Toc](../../components/toc), [ReadingProgress](../../components/reading-progress), [Footnotes](../../components/footnotes), [Glossary](../../components/glossary), [Highlight](../../components/highlight), [ReadMore](../../components/read-more), [Spoiler](../../components/spoiler), [CodeBlock](../../components/code-block), [Changelog](../../components/changelog), [Breadcrumb](../../components/breadcrumb), [Pagination](../../components/pagination), [NewsletterSignup](../../components/newsletter-signup), [Img](../../components/img), [Masonry](../../components/masonry).
+
+Blok: [news](../../blocks/news), [story](../../blocks/story), [release](../../blocks/release).
+
+Belum ada: kepala artikel dengan penulis, tanggal, dan waktu baca, bilah bagikan, artikel terkait, gambar dengan keterangan dan kredit, kutipan besar, blog langsung dengan pembaruan berwaktu, paywall yang mengajak pembaca berlangganan.
+
+## 2. Perdagangan
+
+Toko, marketplace, pemesanan, dan pesan-antar makanan. Orang membandingkan, memilih, dan membayar.
+
+Sekarang: [VariantPicker](../../components/variant-picker), [OrderSummary](../../components/order-summary), [CouponInput](../../components/coupon-input), [CardInput](../../components/card-input), [AddressFields](../../components/address-fields), [ShipmentTracker](../../components/shipment-tracker), [PricingTable](../../components/pricing-table), [ComparisonTable](../../components/comparison-table), [ReviewSummary](../../components/review-summary), [Rating](../../components/rating), [Carousel](../../components/carousel), [Loupe](../../components/loupe), [SeatPicker](../../components/seat-picker), [SlotPicker](../../components/slot-picker), [Ticket](../../components/ticket), [InputNumber](../../components/input-number).
+
+Blok: [pricing](../../blocks/pricing).
+
+Belum ada: kartu produk, harga dengan harga diskon dan harga satuan, laci keranjang, tombol wishlist, filter katalog dengan jumlah, pencari toko, pemilih waktu antar, riwayat pesanan, permintaan retur.
+
+## 3. Sosial dan komunitas
+
+Jejaring sosial, forum, dan kencan. Orang mengirim kiriman, bereaksi, dan mengikuti.
+
+Sekarang: [ProfileCard](../../components/profile-card), [ActivityFeed](../../components/activity-feed), [Reactions](../../components/reactions), [Thread](../../components/thread), [Message](../../components/message), [Mention](../../components/mention), [Poll](../../components/poll), [Leaderboard](../../components/leaderboard), [AvatarGroup](../../components/avatar-group), [SwipeDeck](../../components/swipe-deck), [HoverCard](../../components/hover-card).
+
+Belum ada: penyusun kiriman dengan media, penampil stories, tombol ikuti dengan jumlah, topik yang sedang tren, dialog laporkan, kartu grup, daftar topik forum.
+
+## 4. Komunikasi
+
+Chat, email, dan panggilan. Orang mengirim dan menerima pesan.
+
+Sekarang: [Bubble](../../components/bubble), [MessageScroller](../../components/message-scroller), [TypingIndicator](../../components/typing-indicator), [Attachment](../../components/attachment), [NotificationInbox](../../components/notification-inbox), [EmojiPicker](../../components/emoji-picker), [VoiceInput](../../components/voice-input), [AudioRecorder](../../components/audio-recorder), [ConnectionStatus](../../components/connection-status).
+
+Blok: [chat](../../blocks/chat), [inbox](../../blocks/inbox).
+
+Belum ada: daftar percakapan dengan jumlah belum dibaca, tanda dibaca, pembaca email, penyusun email dengan penerima, layar panggilan dengan ubin video dan kontrol, pemilih kontak.
+
+## 5. Media dan hiburan
+
+Video, musik, podcast, dan gim. Orang menonton, mendengar, dan bermain.
+
+Sekarang: [Video](../../components/video), [AudioPlayer](../../components/audio-player), [Waveform](../../components/waveform), [Transcript](../../components/transcript), [ChapterList](../../components/chapter-list), [Carousel](../../components/carousel), [Lightbox](../../components/lightbox), [Gallery](../../components/gallery).
+
+Blok: [onair](../../blocks/onair), [character](../../blocks/character).
+
+Belum ada: baris poster, daftar episode dengan progres, antrean putar, pemutar mini, bilah sedang diputar, lirik yang mengikuti lagu, lanjutkan menonton.
+
+## 6. Produktivitas dan kolaborasi
+
+Dokumen, catatan, tugas, papan, dan kalender. Orang membuat sesuatu, sendiri atau bersama tim.
+
+Sekarang: [Editor](../../components/editor), [Kanban](../../components/kanban), [StickyBoard](../../components/sticky-board), [TaskList](../../components/task-list), [Gantt](../../components/gantt), [Scheduler](../../components/scheduler), [EventCalendar](../../components/event-calendar), [Spreadsheet](../../components/spreadsheet), [InfiniteCanvas](../../components/infinite-canvas), [VersionHistory](../../components/version-history), [PresenceCursors](../../components/presence-cursors), [Command](../../components/command), [FileTree](../../components/file-tree), [Annotator](../../components/annotator).
+
+Belum ada: komentar di pinggir, dialog bagikan dengan tingkat akses, peta pikiran, pencatat waktu dengan entri, pemesanan ruang rapat, penjelajah berkas dengan kisi dan daftar.
+
+## 7. Perangkat lunak bisnis
+
+CRM, SDM, help desk, dan panel admin. Orang mencari data, mengubahnya, dan memantau angka.
+
+Sekarang: [DataTable](../../components/data-table), [TreeTable](../../components/tree-table), [QueryBuilder](../../components/query-builder), [FilterBar](../../components/filter-bar), [BulkActionBar](../../components/bulk-action-bar), [Stat](../../components/stat), [Funnel](../../components/funnel), [Descriptions](../../components/descriptions), [PermissionMatrix](../../components/permission-matrix), [ApprovalFlow](../../components/approval-flow), [OrgChart](../../components/org-chart), [KeyValueEditor](../../components/key-value-editor), [Timeline](../../components/timeline).
+
+Blok: [dashboard](../../blocks/dashboard), [data-page](../../blocks/data-page), [settings](../../blocks/settings), [staff](../../blocks/staff).
+
+Belum ada: kepala data dengan aksi, impor CSV dengan pencocokan kolom, log audit, faktur, tiket help desk dengan kotak balasan, pengatur waktu SLA.
+
+## 8. Keuangan
+
+Perbankan, investasi, pembayaran, dan akuntansi. Orang memeriksa uang dan memindahkannya.
+
+Sekarang: [Candlestick](../../components/candlestick), [Sparkline](../../components/sparkline), [Stat](../../components/stat), [WaterfallChart](../../components/waterfall-chart), [DonutChart](../../components/donut-chart), [CardInput](../../components/card-input), [PinPad](../../components/pin-pad), [InputOTP](../../components/input-otp).
+
+Belum ada: kartu saldo, daftar transaksi dengan kategori, papan harga berjalan, buku pesanan, pengonversi mata uang, anggaran per kategori, jadwal pembayaran.
+
+## 9. Pendidikan
+
+Kursus, sekolah, dan latihan. Orang belajar dan menunjukkan yang mereka tahu.
+
+Sekarang: [Quiz](../../components/quiz), [Flashcards](../../components/flashcards), [LessonPath](../../components/lesson-path), [Achievements](../../components/achievements), [Questionnaire](../../components/questionnaire), [Progress](../../components/progress), [Transcript](../../components/transcript).
+
+Belum ada: kartu kursus, buku nilai, tugas dengan pengumpulan, sertifikat, video pelajaran dengan catatan.
+
+## 10. Kesehatan dan kebugaran
+
+Pelacak, klinik, dan telemedis. Orang mencatat kondisi tubuh dan memesan layanan.
+
+Sekarang: [HabitTracker](../../components/habit-tracker), [HeatmapCalendar](../../components/heatmap-calendar), [Gauge](../../components/gauge), [Timer](../../components/timer), [SlotPicker](../../components/slot-picker), [RangeChart](../../components/range-chart).
+
+Belum ada: tampilan tanda vital, jadwal obat, pencatat set latihan, grafik tidur, peta tubuh untuk menunjuk rasa sakit, kartu janji temu.
+
+## 11. Alat pengembang
+
+Hosting kode, CI, konsol cloud, dan dokumentasi API. Orang membangun, merilis, dan memantau layanan.
+
+Sekarang: [CodeBlock](../../components/code-block), [CodeTabs](../../components/code-tabs), [Diff](../../components/diff), [JsonViewer](../../components/json-viewer), [LogViewer](../../components/log-viewer), [ApiKeyField](../../components/api-key-field), [WebhookLog](../../components/webhook-log), [CronInput](../../components/cron-input), [UptimeBar](../../components/uptime-bar), [SystemStatus](../../components/system-status), [IncidentTimeline](../../components/incident-timeline), [FeatureFlags](../../components/feature-flags), [QuotaUsage](../../components/quota-usage).
+
+Blok: [release](../../blocks/release).
+
+Belum ada: terminal, referensi endpoint API, daftar deploy, daftar commit, pemeriksa permintaan.
+
+## 12. Utilitas
+
+Kalkulator, pengonversi, cuaca, dan peta. Orang menyelesaikan satu tugas kecil dengan cepat.
+
+Sekarang: [Formula](../../components/formula), [WorldClock](../../components/world-clock), [TimezonePicker](../../components/timezone-picker), [QrCode](../../components/qr-code), [ColorPicker](../../components/color-picker), [Compare](../../components/compare).
+
+Belum ada: peta dengan penanda, langkah rute, prakiraan cuaca, pengonversi satuan, pencarian tempat.
+
+## 13. Pencarian dan referensi
+
+Mesin pencari, wiki, dan direktori. Orang bertanya dan menemukan.
+
+Sekarang: [Command](../../components/command), [Combobox](../../components/combobox), [Glossary](../../components/glossary), [FaqSearch](../../components/faq-search), [Tree](../../components/tree), [Highlight](../../components/highlight).
+
+Belum ada: butir hasil pencarian, halaman hasil dengan faset, indeks A sampai Z, artikel basis pengetahuan.
+
+## 14. Layanan pemerintah dan publik
+
+Izin, pajak, dan layanan publik. Orang mengisi formulir panjang dan melacak permohonan.
+
+Sekarang: [Form](../../components/form), [Stepper](../../components/stepper), [AddressFields](../../components/address-fields), [PhoneInput](../../components/phone-input), [InputMask](../../components/input-mask), [DatePicker](../../components/date-picker), [Uploader](../../components/uploader), [SignaturePad](../../components/signature-pad), [CameraCapture](../../components/camera-capture).
+
+Blok: [signin](../../blocks/signin), [onboarding](../../blocks/onboarding).
+
+Belum ada: formulir panjang yang menyimpan dan melanjutkan, halaman tinjau sebelum mengirim, pelacak status permohonan, cek kelayakan, daftar periksa dokumen.
+
+## 15. Situs merek dan pemasaran
+
+Halaman arahan, portofolio, dan situs perusahaan. Orang mengenal produk lalu mendaftar.
+
+Sekarang: [PricingTable](../../components/pricing-table), [Testimonials](../../components/testimonials), [ComparisonTable](../../components/comparison-table), [NewsletterSignup](../../components/newsletter-signup), [Marquee](../../components/marquee), [Parallax](../../components/parallax), [CountUp](../../components/count-up), [FaqSearch](../../components/faq-search), [ConsentBanner](../../components/consent-banner), [CountdownBanner](../../components/countdown-banner), [Background](../../components/background).
+
+Blok: [site](../../blocks/site), [pricing](../../blocks/pricing).
+
+Belum ada: deretan logo, kisi fitur, kisi tim, formulir kontak, kisi portofolio dengan filter.
+
+## 16. Asisten dan agen AI
+
+Chat dengan model dan agen yang bekerja. Orang bertanya, mengamati, dan mengoreksi.
+
+Sekarang: [PromptInput](../../components/prompt-input), [StreamingText](../../components/streaming-text), [ToolCall](../../components/tool-call), [Reasoning](../../components/reasoning), [Sources](../../components/sources), [MessageFeedback](../../components/message-feedback), [ContextMeter](../../components/context-meter), [ModelPicker](../../components/model-picker), [AgentPlan](../../components/agent-plan), [ChatHistory](../../components/chat-history), [Suggestions](../../components/suggestions).
+
+Blok: [chat](../../blocks/chat).
+
+Belum ada: panel samping untuk dokumen yang ditulis model, cip konteks untuk berkas dan halaman, jejak eksekusi, pustaka prompt, dua jawaban berdampingan, biaya token.
+
+## 17. Perangkat terhubung
+
+Aplikasi rumah pintar dan kendaraan. Orang melihat status perangkat dan mengubahnya.
+
+Sekarang: [Knob](../../components/knob), [Switch](../../components/switch), [Slider](../../components/slider), [Gauge](../../components/gauge), [ConnectionStatus](../../components/connection-status), [Sparkline](../../components/sparkline).
+
+Belum ada: ubin perangkat, dial termostat, denah dengan perangkat, tombol skena, level baterai, aturan otomatis.
