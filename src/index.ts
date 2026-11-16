@@ -643,3 +643,9 @@ export type {
   BlessInvoiceParty,
   BlessInvoiceStatus,
 } from "./components/BlessInvoice.vue";
+export { default as BlessTicketView } from "./components/BlessTicketView.vue";
+export type {
+  BlessTicketMessage,
+  BlessTicketStatus,
+  BlessTicketPriority,
+} from "./components/BlessTicketView.vue";

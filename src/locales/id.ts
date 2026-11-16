@@ -186,6 +186,7 @@ import type BlessTestimonials from "../components/BlessTestimonials.vue";
 import type BlessThermostat from "../components/BlessThermostat.vue";
 import type BlessThread from "../components/BlessThread.vue";
 import type BlessTicket from "../components/BlessTicket.vue";
+import type BlessTicketView from "../components/BlessTicketView.vue";
 import type BlessTimer from "../components/BlessTimer.vue";
 import type BlessToolCall from "../components/BlessToolCall.vue";
 import type BlessTour from "../components/BlessTour.vue";
@@ -393,6 +394,7 @@ export type BlessLabelsFull = {
   BlessThermostat: All<typeof BlessThermostat>;
   BlessThread: All<typeof BlessThread>;
   BlessTicket: All<typeof BlessTicket>;
+  BlessTicketView: All<typeof BlessTicketView>;
   BlessTimer: All<typeof BlessTimer>;
   BlessToolCall: All<typeof BlessToolCall>;
   BlessTour: All<typeof BlessTour>;
@@ -1669,6 +1671,23 @@ export const labelsId: BlessLabelsFull = {
     seat: "Kursi",
     holder: "Nama",
     code: "Kode tiket",
+  },
+  BlessTicketView: {
+    open: "Terbuka",
+    pending: "Menunggu pelanggan",
+    solved: "Selesai",
+    low: "Rendah",
+    normal: "Normal",
+    high: "Tinggi",
+    urgent: "Mendesak",
+    status: "Status",
+    priority: "Prioritas",
+    reply: "Balas",
+    note: "Catatan internal",
+    send: "Kirim balasan",
+    addNote: "Tambah catatan",
+    internal: "Hanya tim Anda yang melihat catatan ini.",
+    placeholder: "Tulis pesan",
   },
   BlessTimer: {
     start: "Mulai",
