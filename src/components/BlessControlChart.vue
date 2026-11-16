@@ -131,7 +131,10 @@ const lines = computed(() => [
       </svg>
     </div>
     <figcaption class="bless-spc__caption" :class="{ 'is-bad': outCount }">
-      <span><span aria-hidden="true">{{ outCount ? "◆" : "✓" }}</span> {{ outCount ? text.out(outCount) : text.inControl }}</span>
+      <span
+        ><span aria-hidden="true">{{ outCount ? "◆" : "✓" }}</span>
+        {{ outCount ? text.out(outCount) : text.inControl }}</span
+      >
       <span class="bless-spc__limits"
         >{{ text.center }} {{ fmt(limits.mean) }} · {{ text.ucl }} {{ fmt(limits.ucl) }} ·
         {{ text.lcl }} {{ fmt(limits.lcl) }}</span

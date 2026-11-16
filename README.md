@@ -10,7 +10,7 @@ Vue 3 component library and design tokens. The UI is gray-scale, with one accent
 
 Docs, with every component live: **[ui.blessing.id](https://ui.blessing.id)**
 
-- 396 components, from button to data table to chat. Only `--bless-*` custom properties style them. There is no Tailwind dependency.
+- 397 components, from button to data table to chat. Only `--bless-*` custom properties style them. There is no Tailwind dependency.
 - Native platform first: `<dialog>`, Popover API, `<details>`, native form controls, `Intl` dates, and scroll-snap. There is no positioning, date, or table library.
 - Accessible defaults: focus rings, ARIA tablist, dialog, and tables, and `prefers-reduced-motion`
 - ESM, tree-shakable, with `vue` as the only required peer (`@tiptap/vue-3` is optional, for `BlessEditor`). One component (`BlessButton`) costs about 1 KB gzip of JS and about 2.6 KB of CSS (tokens and its own styles). Everything costs about 263 KB and 73 KB. CSS is split per component and the import pulls it in, so you never pay for styles that you do not use
@@ -92,7 +92,7 @@ The words that components say are English by default. `provideLabels(labelsId)` 
 
 ## Components
 
-396 components across eight groups. Every one styles itself from `--bless-*` tokens and ships with a test and a docs page.
+397 components across eight groups. Every one styles itself from `--bless-*` tokens and ships with a test and a docs page.
 
 ### Primitives
 
@@ -342,6 +342,7 @@ The words that components say are English by default. `provideLabels(labelsId)` 
 | ----------------------- | --------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
 | `BlessMessage`          | Avatar + header + content + footer row              | `name`, `time`, `avatar`, `align` start/end, `compact`. `#avatar` `#header` `#footer` `#actions`                               |
 | `BlessThread`           | Nested comment thread                               | `comments` `[{id,name,avatar,time,body,replies,collapsed}]`, `maxDepth`, `labels`. `#default` `#footer` `#actions` per comment |
+| `BlessMarginComments`   | Comments next to the parts of a text                | `blocks`, `comments` `{id,block,author,text,time}`. Emits `add`                                                                |
 | `BlessReactions`        | Emoji reactions with counts under a post            | `v-model` `{emoji,count,active}`, `max`, `noAdd`. Emits `toggle`                                                               |
 | `BlessActivityFeed`     | What people did, in groups by day                   | `events` `{id,actor,action,target,href,time}`, `locale`, `now`. `#event`                                                       |
 | `BlessPostComposer`     | Write a post with images and a poll                 | `v-model`, `max`, `maxImages`, `author`. Emits `post`                                                                          |

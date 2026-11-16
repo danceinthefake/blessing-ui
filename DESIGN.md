@@ -655,6 +655,22 @@ Ten components, 386 → 396. Each uses native platform APIs only: the library ad
 - ✅ `BlessPickingList`: the items to pick in a warehouse, with the place and a scan to confirm.
 - ✅ Budget: after the round, the whole library is 263.0 KB gz JS and 73.0 KB gz CSS, under the cap of 269 / 74. Phase 40 is done.
 
+### Phase 41 — productivity and education (2026-11-17)
+
+Eleven components, 396 → 407. Each uses native platform APIs only: the library adds no dependency. Each needs tests, a docs page with a live example, a README row, words in `labelsId`, and a pass of `src/classes.test.ts`. If a component uses a known method or names another party, credit it on the credits page. When a component lands, move its part from "Not yet" to "Today" on the site types page, in both languages.
+
+- ✅ `BlessMarginComments`: the blocks of a document with their comments in the margin next to them.
+- `BlessShareAccess`: the people who can open a file, their access level, and the access for a link.
+- `BlessMindMap`: a central idea with its branches on two sides, drawn in SVG.
+- `BlessTimeTracker`: a timer for the current task and a list of time entries with a total for each day.
+- `BlessRoomBooking`: the rooms and the hours of one day, with the booked times and a free time to pick.
+- `BlessFileBrowser`: the files and folders of one folder as a grid or a list, with a path to go back.
+- `BlessCourseCard`: a course with the picture, the teacher, the number of lessons, the level, and the progress.
+- `BlessGradebook`: the scores of each student for each assignment, with averages and missing work.
+- `BlessAssignment`: an assignment with the instructions, the due date, a submission, and the grade.
+- `BlessCertificate`: a certificate of completion that prints on one page.
+- `BlessLessonVideo`: a lesson video with notes at points in time that take you back to that point.
+
 ### Deliberately skipped
 
 - **Chart**: no bundled lib. Phase 11 ✅: `--bless-color-chart-{1..5}` (≥3:1 both themes) + `BlessChart` frame that maps them onto Unovis `--vis-*` vars. Unovis is the documented pairing, installed by the consumer.

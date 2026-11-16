@@ -103,6 +103,7 @@ import type BlessLogViewer from "../components/BlessLogViewer.vue";
 import type BlessLollipop from "../components/BlessLollipop.vue";
 import type BlessLyrics from "../components/BlessLyrics.vue";
 import type BlessMachineBoard from "../components/BlessMachineBoard.vue";
+import type BlessMarginComments from "../components/BlessMarginComments.vue";
 import type BlessMarimekko from "../components/BlessMarimekko.vue";
 import type BlessMarquee from "../components/BlessMarquee.vue";
 import type BlessMedicationSchedule from "../components/BlessMedicationSchedule.vue";
@@ -328,6 +329,7 @@ export type BlessLabelsFull = {
   BlessLollipop: All<typeof BlessLollipop>;
   BlessLyrics: All<typeof BlessLyrics>;
   BlessMachineBoard: All<typeof BlessMachineBoard>;
+  BlessMarginComments: All<typeof BlessMarginComments>;
   BlessMarimekko: All<typeof BlessMarimekko>;
   BlessMarquee: All<typeof BlessMarquee>;
   BlessMedicationSchedule: All<typeof BlessMedicationSchedule>;
@@ -1215,6 +1217,13 @@ export const labelsId: BlessLabelsFull = {
     since: (t) => `selama ${t}`,
     time: (h, m) => (h ? `${h} j ${m} mnt` : `${m} mnt`),
     summary: (p) => p,
+  },
+  BlessMarginComments: {
+    comment: "Komentar",
+    send: "Kirim",
+    cancel: "Batal",
+    placeholder: "Tulis komentar",
+    on: (i) => `Komentar pada bagian ${i}`,
   },
   BlessMarimekko: { column: "Kolom", share: "Porsi dari semua" },
   BlessMarquee: { play: "Putar", pause: "Jeda" },

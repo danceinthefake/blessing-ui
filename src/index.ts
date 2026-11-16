@@ -691,3 +691,5 @@ export { default as BlessShiftHandover } from "./components/BlessShiftHandover.v
 export type { BlessHandoverIssue, BlessIssueLevel } from "./components/BlessShiftHandover.vue";
 export { default as BlessPickingList } from "./components/BlessPickingList.vue";
 export type { BlessPickLine } from "./components/BlessPickingList.vue";
+export { default as BlessMarginComments } from "./components/BlessMarginComments.vue";
+export type { BlessDocBlock, BlessMarginComment } from "./components/BlessMarginComments.vue";
