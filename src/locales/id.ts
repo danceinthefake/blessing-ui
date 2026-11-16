@@ -117,6 +117,7 @@ import type BlessReadMore from "../components/BlessReadMore.vue";
 import type BlessReadingProgress from "../components/BlessReadingProgress.vue";
 import type BlessReasoning from "../components/BlessReasoning.vue";
 import type BlessRecurrencePicker from "../components/BlessRecurrencePicker.vue";
+import type BlessReturnRequest from "../components/BlessReturnRequest.vue";
 import type BlessReviewSummary from "../components/BlessReviewSummary.vue";
 import type BlessRoseChart from "../components/BlessRoseChart.vue";
 import type BlessRsvp from "../components/BlessRsvp.vue";
@@ -285,6 +286,7 @@ export type BlessLabelsFull = {
   BlessReadingProgress: All<typeof BlessReadingProgress>;
   BlessReasoning: All<typeof BlessReasoning>;
   BlessRecurrencePicker: All<typeof BlessRecurrencePicker>;
+  BlessReturnRequest: All<typeof BlessReturnRequest>;
   BlessReviewSummary: All<typeof BlessReviewSummary>;
   BlessRoseChart: All<typeof BlessRoseChart>;
   BlessRsvp: All<typeof BlessRsvp>;
@@ -1114,6 +1116,16 @@ export const labelsId: BlessLabelsFull = {
     everyUnit: (n, u) => (n === 1 ? `Setiap ${u}` : `Setiap ${n} ${u}`),
     endCount: (n) => `${n} kali`,
     endUntil: (d) => `sampai ${d}`,
+  },
+  BlessReturnRequest: {
+    items: "Barang apa yang ingin Anda kembalikan?",
+    quantity: (n) => `Berapa ${n}`,
+    reason: "Alasan",
+    pick: "Pilih alasan",
+    note: "Ceritakan lebih lanjut (opsional)",
+    refund: "Pengembalian dana",
+    submit: "Ajukan pengembalian",
+    missing: "Pilih minimal satu barang dan satu alasan.",
   },
   BlessReviewSummary: {
     average: (s) => `Rata-rata ${s} dari 5 bintang`,
