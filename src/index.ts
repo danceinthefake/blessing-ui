@@ -506,3 +506,5 @@ export { default as BlessContrastChecker } from "./components/BlessContrastCheck
 export { contrastRatio, hexToRgb, luminance, wcagLevels } from "./composables/contrast";
 export { default as BlessPaletteViewer } from "./components/BlessPaletteViewer.vue";
 export type { BlessColorPalette } from "./components/BlessPaletteViewer.vue";
+export { default as BlessIconPicker } from "./components/BlessIconPicker.vue";
+export type { BlessPickIcon } from "./components/BlessIconPicker.vue";

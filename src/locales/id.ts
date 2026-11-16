@@ -54,6 +54,7 @@ import type BlessFunnel from "../components/BlessFunnel.vue";
 import type BlessGantt from "../components/BlessGantt.vue";
 import type BlessHabitTracker from "../components/BlessHabitTracker.vue";
 import type BlessHistogram from "../components/BlessHistogram.vue";
+import type BlessIconPicker from "../components/BlessIconPicker.vue";
 import type BlessIncidentTimeline from "../components/BlessIncidentTimeline.vue";
 import type BlessInfiniteCanvas from "../components/BlessInfiniteCanvas.vue";
 import type BlessInputNumber from "../components/BlessInputNumber.vue";
@@ -199,6 +200,7 @@ export type BlessLabelsFull = {
   BlessGantt: All<typeof BlessGantt>;
   BlessHabitTracker: All<typeof BlessHabitTracker>;
   BlessHistogram: All<typeof BlessHistogram>;
+  BlessIconPicker: All<typeof BlessIconPicker>;
   BlessIncidentTimeline: All<typeof BlessIncidentTimeline>;
   BlessInfiniteCanvas: All<typeof BlessInfiniteCanvas>;
   BlessInputNumber: All<typeof BlessInputNumber>;
@@ -636,6 +638,12 @@ export const labelsId: BlessLabelsFull = {
     mark: (h, d) => `${h}, ${d}`,
   },
   BlessHistogram: { range: "Rentang", count: "Jumlah" },
+  BlessIconPicker: {
+    search: "Cari ikon",
+    group: "Ikon",
+    none: "Tidak ada ikon yang cocok",
+    count: (n) => `${n} ikon`,
+  },
   BlessIncidentTimeline: {
     investigating: "Diselidiki",
     identified: "Ditemukan",

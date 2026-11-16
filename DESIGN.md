@@ -525,7 +525,7 @@ Sixteen components, 302 → 318. Each uses native platform APIs only: the librar
 - ✅ `BlessSmallMultiples`: a grid of small line charts on one scale.
 - ✅ `BlessPaletteViewer`: the shades of each color with the value, a copy button, and the contrast on white and black.
 - ✅ `BlessContrastChecker`: two colors in, the contrast ratio out, with the WCAG levels for text.
-- `BlessIconPicker`: a grid of your icons with a search and arrow keys.
+- ✅ `BlessIconPicker`: a grid of your icons with a search and arrow keys.
 - `BlessTypeScale`: a specimen of the font sizes, with the size, the line height, and the token.
 - `BlessStickyBoard`: sticky notes that you add, edit, color, and move, with the keyboard too.
 - `BlessTaskList`: tasks with check boxes, an assignee, a due date, and subtasks.

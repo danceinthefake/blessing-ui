@@ -6294,6 +6294,50 @@
   ],
   "exposed": []
  },
+ "BlessIconPicker": {
+  "props": [
+   {
+    "name": "icons",
+    "type": "BlessPickIcon[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "viewBox",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"0 0 24 24\"",
+    "description": "the box of the path data"
+   },
+   {
+    "name": "stroke",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": "draw the paths as lines, not filled shapes"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ search: string; group: string; none: string; count: (n: number) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "string | undefined",
+    "required": false,
+    "description": "the name of the chosen icon"
+   }
+  ],
+  "events": [
+   {
+    "name": "update:modelValue",
+    "type": "[value: string | undefined]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessImg": {
   "props": [
    {
