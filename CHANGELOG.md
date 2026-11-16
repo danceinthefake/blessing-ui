@@ -82,7 +82,8 @@ Sixty-eight new components, 386 in all, for finance, commerce, communication, so
 - `BlessWorkInstructions`: the steps of a job one at a time with a picture, a caution box, a step bar and count, big back and next buttons, focus on each step, and finish.
 - `BlessQualityCheck`: pass or fail checks as big radios and measures that pass inside their limits, verdicts in words, a summary with the result of the unit, and submit.
 - `BlessControlChart`: a Shewhart control chart in SVG with the mean and control limits, out-of-control points as diamonds, a caption with the count, and a hidden table.
-- `BlessShiftHandover`: notes from one shift to the next with key facts, issues by level in words that you close, a count of open issues, and a take-over button. 395 components in all.
+- `BlessShiftHandover`: notes from one shift to the next with key facts, issues by level in words that you close, a count of open issues, and a take-over button.
+- `BlessPickingList`: items to pick in walk order by location, scans that count through the SKU field, wrong and extra scans in an alert, hand counts, and a complete event. 396 components in all.
 
 ## 0.7.0 — 2026-11-16
 

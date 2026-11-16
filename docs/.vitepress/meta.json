@@ -12287,6 +12287,43 @@
   "slots": [],
   "exposed": []
  },
+ "BlessPickingList": {
+  "props": [
+   {
+    "name": "order",
+    "type": "string | undefined",
+    "required": false,
+    "description": "the order or the wave, for the title"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ title: string; scan: string; progress: (picked: number, total: number) => string; done: string; unknown: (code: string) => string; tooMany: (name: string) => string; picked: (name: string, n: number, q: number) => string; add: (name: string) => string; remove: (name: string) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "BlessPickLine[] | undefined",
+    "required": false,
+    "default": "[]",
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "update:modelValue",
+    "type": "[value: BlessPickLine[]]",
+    "description": ""
+   },
+   {
+    "name": "complete",
+    "type": "[]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessPictogram": {
   "props": [
    {

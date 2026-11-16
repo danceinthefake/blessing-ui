@@ -1180,6 +1180,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "shift-handover",
         text: "Notes from one shift to the next",
       },
+      {
+        name: "BlessPickingList",
+        slug: "picking-list",
+        text: "Items to pick with a scan to confirm",
+      },
     ],
   },
   {
