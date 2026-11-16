@@ -146,6 +146,9 @@ thead .bless-cmptable__feature {
   font-weight: normal;
   color: var(--bless-color-text-muted);
 }
+.bless-cmptable__plan.is-highlight .bless-cmptable__note {
+  color: var(--bless-color-text);
+}
 .bless-cmptable__plan.is-highlight {
   border-block-start: 4px solid var(--bless-color-accent);
 }
