@@ -539,3 +539,5 @@ export { default as BlessOrderBook } from "./components/BlessOrderBook.vue";
 export { bookSides } from "./components/BlessOrderBook.vue";
 export type { BlessBookLevel } from "./components/BlessOrderBook.vue";
 export { default as BlessCurrencyConverter } from "./components/BlessCurrencyConverter.vue";
+export { default as BlessBudgetBars } from "./components/BlessBudgetBars.vue";
+export type { BlessBudget } from "./components/BlessBudgetBars.vue";

@@ -550,7 +550,7 @@ Sixteen components, 318 → 334. Each uses native platform APIs only: the librar
 - ✅ `BlessPriceTicker`: prices that move across the screen, with the change of each, and a pause.
 - ✅ `BlessOrderBook`: the bids and asks of a market, with depth bars and the spread.
 - ✅ `BlessCurrencyConverter`: an amount in one currency and its value in another, with the rate and a swap.
-- `BlessBudgetBars`: the money spent against the plan for each category, with what is left.
+- ✅ `BlessBudgetBars`: the money spent against the plan for each category, with what is left.
 - `BlessPaymentSchedule`: the payments of a loan or a plan, with dates, the principal, and the interest.
 - `BlessProductCard`: a product with an image, the name, the price, the rating, and an add button.
 - `BlessPrice`: a price with the old price, the discount, and a unit price, in the format of the locale.
