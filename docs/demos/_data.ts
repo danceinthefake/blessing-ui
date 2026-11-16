@@ -20,3 +20,7 @@ export const heroines = [
   { value: "utaha", label: "霞ヶ丘詩羽" },
   { value: "michiru", label: "氷堂美智留", disabled: true },
 ];
+
+// a square placeholder with one emoji, for product and media demos
+export const art = (emoji: string, color: string) =>
+  `data:image/svg+xml;utf8,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600"><rect width="100%" height="100%" fill="#${color}"/><text x="50%" y="54%" font-size="300" text-anchor="middle" dominant-baseline="middle">${emoji}</text></svg>`)}`;

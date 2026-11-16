@@ -10905,6 +10905,100 @@
   "slots": [],
   "exposed": []
  },
+ "BlessProductCard": {
+  "props": [
+   {
+    "name": "name",
+    "type": "string",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "href",
+    "type": "string | undefined",
+    "required": false,
+    "description": "the page of the product"
+   },
+   {
+    "name": "image",
+    "type": "string | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "imageAlt",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"\"",
+    "description": "describe the image; leave empty when the name says enough"
+   },
+   {
+    "name": "price",
+    "type": "number",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "was",
+    "type": "number | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "currency",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"USD\"",
+    "description": ""
+   },
+   {
+    "name": "locale",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"en\"",
+    "description": ""
+   },
+   {
+    "name": "rating",
+    "type": "number | undefined",
+    "required": false,
+    "description": "the average rating, out of 5"
+   },
+   {
+    "name": "reviews",
+    "type": "number | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "badge",
+    "type": "string | undefined",
+    "required": false,
+    "description": "a short tag on the image, such as \"New\""
+   },
+   {
+    "name": "soldOut",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ add: string; soldOut: string; rated: (value: string, count: number) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "add",
+    "type": "[]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessProfileCard": {
   "props": [
    {
