@@ -292,6 +292,7 @@ export type BlessLabelsFull = {
   BlessUptimeBar: All<typeof BlessUptimeBar>;
   BlessVariantPicker: All<typeof BlessVariantPicker>;
   BlessVenn: All<typeof BlessVenn>;
+  BlessVersionHistory: All<typeof BlessVersionHistory>;
   BlessVoiceInput: All<typeof BlessVoiceInput>;
   BlessWaterfallChart: All<typeof BlessWaterfallChart>;
   BlessWebhookLog: All<typeof BlessWebhookLog>;
@@ -1159,6 +1160,12 @@ export const labelsId: BlessLabelsFull = {
     and: (ns) =>
       ns.length === 2 ? `${ns[0]} dan ${ns[1]}` : `${ns.slice(0, -1).join(", ")}, dan ${ns.at(-1)}`,
   },
+  BlessVersionHistory: {
+    title: "Riwayat versi",
+    current: "Sekarang",
+    restore: "Pulihkan",
+    changes: (a, r) => `${a} ditambah, ${r} dihapus`,
+  },
   BlessVoiceInput: {
     start: "Mulai dikte",
     stop: "Hentikan dikte",
@@ -1182,6 +1189,7 @@ export const labelsId: BlessLabelsFull = {
 
 import type BlessVariantPicker from "../components/BlessVariantPicker.vue";
 import type BlessVenn from "../components/BlessVenn.vue";
+import type BlessVersionHistory from "../components/BlessVersionHistory.vue";
 import type BlessVoiceInput from "../components/BlessVoiceInput.vue";
 import type BlessWaterfallChart from "../components/BlessWaterfallChart.vue";
 

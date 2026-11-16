@@ -16459,6 +16459,42 @@
   "slots": [],
   "exposed": []
  },
+ "BlessVersionHistory": {
+  "props": [
+   {
+    "name": "versions",
+    "type": "BlessVersion[]",
+    "required": true,
+    "description": "newest first; the first is the current version"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ title: string; current: string; restore: string; changes: (added: number, removed: number) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "selected",
+    "type": "string | undefined",
+    "required": false,
+    "description": "the id of the version the reader looks at"
+   }
+  ],
+  "events": [
+   {
+    "name": "update:selected",
+    "type": "[value: string | undefined]",
+    "description": ""
+   },
+   {
+    "name": "restore",
+    "type": "[id: string]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessVideo": {
   "props": [
    {

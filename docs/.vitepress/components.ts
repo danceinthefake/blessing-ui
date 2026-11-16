@@ -396,6 +396,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         text: "The steps of a request with approvers",
       },
       {
+        name: "BlessVersionHistory",
+        slug: "version-history",
+        text: "Saved versions with a restore button",
+      },
+      {
         name: "BlessMention",
         slug: "mention",
         text: "@ / # suggestions inside a textarea",
