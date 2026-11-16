@@ -356,6 +356,7 @@ export const groups: { title: string; items: Entry[] }[] = [
         text: "One command in tabs for each package manager",
       },
       { name: "BlessMarkdown", slug: "markdown", text: "Markdown text, safely rendered" },
+      { name: "BlessArticleHeader", slug: "article-header", text: "The top of an article" },
       {
         name: "BlessMarquee",
         slug: "marquee",

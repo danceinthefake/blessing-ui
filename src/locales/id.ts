@@ -7,6 +7,7 @@ import type BlessAnnotator from "../components/BlessAnnotator.vue";
 import type BlessApiKeyField from "../components/BlessApiKeyField.vue";
 import type BlessAppointmentCard from "../components/BlessAppointmentCard.vue";
 import type BlessApprovalFlow from "../components/BlessApprovalFlow.vue";
+import type BlessArticleHeader from "../components/BlessArticleHeader.vue";
 import type BlessAudioRecorder from "../components/BlessAudioRecorder.vue";
 import type BlessAvailabilityGrid from "../components/BlessAvailabilityGrid.vue";
 import type BlessAvatarGroup from "../components/BlessAvatarGroup.vue";
@@ -199,6 +200,7 @@ export type BlessLabelsFull = {
   BlessApiKeyField: All<typeof BlessApiKeyField>;
   BlessAppointmentCard: All<typeof BlessAppointmentCard>;
   BlessApprovalFlow: All<typeof BlessApprovalFlow>;
+  BlessArticleHeader: All<typeof BlessArticleHeader>;
   BlessAudioRecorder: All<typeof BlessAudioRecorder>;
   BlessAvailabilityGrid: All<typeof BlessAvailabilityGrid>;
   BlessAvatarGroup: All<typeof BlessAvatarGroup>;
@@ -469,6 +471,11 @@ export const labelsId: BlessLabelsFull = {
     done: "Disetujui semua",
     stopped: "Berhenti: ada langkah yang ditolak",
     waiting: (s) => `Menunggu: ${s}`,
+  },
+  BlessArticleHeader: {
+    by: (n) => `Oleh ${n}`,
+    read: (m) => `${m} menit baca`,
+    updated: (d) => `Diperbarui ${d}`,
   },
   BlessAudioRecorder: {
     record: "Rekam",

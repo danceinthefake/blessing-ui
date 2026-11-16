@@ -604,7 +604,7 @@ Twelve components, 347 → 359. Each uses native platform APIs only: the library
 
 Thirteen components, 359 → 372. Each uses native platform APIs only: the library adds no dependency. Each needs tests, a docs page with a live example, a README row, words in `labelsId`, and a pass of `src/classes.test.ts`. If a component uses a known method or names another party, credit it on the credits page. When a component lands, move its part from "Not yet" to "Today" on the site types page, in both languages.
 
-- `BlessArticleHeader`: the title, the author, the date, the reading time, and the topic of an article.
+- ✅ `BlessArticleHeader`: the title, the author, the date, the reading time, and the topic of an article.
 - `BlessShareBar`: share a page through the Web Share API, with copy link as a fallback.
 - `BlessRelatedArticles`: articles on the same topic, with an image and the reading time.
 - `BlessFigure`: an image with a caption and a credit.
