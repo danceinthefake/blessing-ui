@@ -199,6 +199,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "store-locator",
         text: "Stores by distance with hours and directions",
       },
+      {
+        name: "BlessDeliveryPicker",
+        slug: "delivery-picker",
+        text: "A delivery day and time window with fees",
+      },
       { name: "BlessEmojiPicker", slug: "emoji-picker", text: "Search and pick an emoji" },
       {
         name: "BlessUploader",
