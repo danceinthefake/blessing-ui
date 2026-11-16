@@ -98,6 +98,7 @@ import type BlessPresetRange from "../components/BlessPresetRange.vue";
 import type BlessPrice from "../components/BlessPrice.vue";
 import type BlessPriceTicker from "../components/BlessPriceTicker.vue";
 import type BlessPricingTable from "../components/BlessPricingTable.vue";
+import type BlessProductCard from "../components/BlessProductCard.vue";
 import type BlessProfileCard from "../components/BlessProfileCard.vue";
 import type BlessPromptInput from "../components/BlessPromptInput.vue";
 import type BlessPyramid from "../components/BlessPyramid.vue";
@@ -260,6 +261,7 @@ export type BlessLabelsFull = {
   BlessPrice: All<typeof BlessPrice>;
   BlessPriceTicker: All<typeof BlessPriceTicker>;
   BlessPricingTable: All<typeof BlessPricingTable>;
+  BlessProductCard: All<typeof BlessProductCard>;
   BlessProfileCard: All<typeof BlessProfileCard>;
   BlessPromptInput: All<typeof BlessPromptInput>;
   BlessPyramid: All<typeof BlessPyramid>;
@@ -963,6 +965,11 @@ export const labelsId: BlessLabelsFull = {
     featured: "Paling populer",
     choose: "Pilih paket",
     save: (pct) => `Hemat ${pct}%`,
+  },
+  BlessProductCard: {
+    add: "Tambah ke keranjang",
+    soldOut: "Habis",
+    rated: (v, n) => `Rating ${v} dari 5, ${n} ulasan`,
   },
   BlessProfileCard: { follow: "Ikuti", following: "Mengikuti" },
   BlessPromptInput: {

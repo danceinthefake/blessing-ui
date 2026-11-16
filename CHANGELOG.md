@@ -11,7 +11,8 @@
 - `BlessCurrencyConverter`: an amount in one currency and its value in another from your rates, with a swap button, the rate for one unit, and a live result.
 - `BlessBudgetBars`: the money spent against the budget for each category, with what is left or over in words, a striped full bar when over, and a total row.
 - `BlessPaymentSchedule`: the payments of a loan from the principal, the yearly rate, and the months, with the principal, interest, and balance of each month, paid rows, and totals.
-- `BlessPrice`: a price with the old price struck through, the percent off, one sentence for screen readers, and a unit price. 326 components in all.
+- `BlessPrice`: a price with the old price struck through, the percent off, one sentence for screen readers, and a unit price.
+- `BlessProductCard`: a product with an image, a linked name, a rating read in words, the price with a sale, a badge, sold out, and an add button named after the product. 327 components in all.
 
 ## 0.7.0 — 2026-11-16
 
