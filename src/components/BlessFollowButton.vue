@@ -1,4 +1,6 @@
 <script setup lang="ts">
+// The words change from Follow to Following, so the button has no aria-pressed:
+// a toggle with a name that changes would say the state twice.
 import { computed, ref } from "vue";
 import { useLabelPack } from "../composables/useLabels";
 import "./sr.css";
@@ -56,7 +58,6 @@ function toggle() {
       type="button"
       class="bless-follow__button"
       :class="{ 'is-on': following }"
-      :aria-pressed="following"
       @click="toggle"
     >
       <span aria-hidden="true">{{ following ? "✓" : "+" }}</span>
