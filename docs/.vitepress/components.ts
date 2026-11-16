@@ -822,6 +822,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         text: "Floating bars from a low to a high value",
       },
       {
+        name: "BlessChordDiagram",
+        slug: "chord-diagram",
+        text: "Groups around a circle with ribbons for flows",
+      },
+      {
         name: "BlessPricingTable",
         slug: "pricing-table",
         text: "Plans side by side, with a monthly or yearly switch",

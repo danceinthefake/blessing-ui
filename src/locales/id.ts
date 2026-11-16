@@ -20,6 +20,7 @@ import type BlessCardInput from "../components/BlessCardInput.vue";
 import type BlessChangelog from "../components/BlessChangelog.vue";
 import type BlessChapterList from "../components/BlessChapterList.vue";
 import type BlessChatHistory from "../components/BlessChatHistory.vue";
+import type BlessChordDiagram from "../components/BlessChordDiagram.vue";
 import type BlessCoachmark from "../components/BlessCoachmark.vue";
 import type BlessCodeBlock from "../components/BlessCodeBlock.vue";
 import type BlessColorSwatches from "../components/BlessColorSwatches.vue";
@@ -160,6 +161,7 @@ export type BlessLabelsFull = {
   BlessChangelog: All<typeof BlessChangelog>;
   BlessChapterList: All<typeof BlessChapterList>;
   BlessChatHistory: All<typeof BlessChatHistory>;
+  BlessChordDiagram: All<typeof BlessChordDiagram>;
   BlessCoachmark: All<typeof BlessCoachmark>;
   BlessCodeBlock: All<typeof BlessCodeBlock>;
   BlessColorSwatches: All<typeof BlessColorSwatches>;
@@ -413,6 +415,7 @@ export const labelsId: BlessLabelsFull = {
     rename: "Ganti nama",
     remove: "Hapus",
   },
+  BlessChordDiagram: { from: "Dari", to: (n) => `Ke ${n}` },
   BlessCoachmark: { dot: (t) => `Baru: ${t}`, ok: "Mengerti" },
   BlessCodeBlock: copy,
   BlessColorSwatches: { label: "Warna" },
