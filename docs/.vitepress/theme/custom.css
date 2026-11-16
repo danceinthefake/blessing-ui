@@ -144,7 +144,8 @@
     .bless-payslip__title,
     .bless-workorder__product,
     .bless-instructions__title,
-    .bless-handover__title
+    .bless-handover__title,
+    .bless-course__title
   ) {
   margin: 0;
   padding: 0;

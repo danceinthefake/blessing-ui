@@ -89,7 +89,8 @@ Seventy-eight new components, 396 in all, for finance, commerce, communication, 
 - `BlessMindMap`: a central idea with branches on two sides in SVG, colored main branches, and the tree as hidden nested lists. Credits Tony Buzan.
 - `BlessTimeTracker`: a timer for the current task, entries grouped by day with totals, delete buttons, and a time zone prop for server rendering.
 - `BlessRoomBooking`: rooms and half hours of a day as a table, booked times with stripes, picks that extend in a room, a status line, and a book event.
-- `BlessFileBrowser`: the files and folders of one folder as a grid or a table, natural sort with folders first, sizes and dates by locale, and a path to go back. 402 components in all.
+- `BlessFileBrowser`: the files and folders of one folder as a grid or a table, natural sort with folders first, sizes and dates by locale, and a path to go back.
+- `BlessCourseCard`: a course with the picture, the teacher, the lessons, the length, the level, and the progress, with a link over the whole card. 403 components in all.
 
 ## 0.7.0 — 2026-11-16
 

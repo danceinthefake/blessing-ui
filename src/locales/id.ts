@@ -49,6 +49,7 @@ import type BlessConversationList from "../components/BlessConversationList.vue"
 import type BlessCopyButton from "../components/BlessCopyButton.vue";
 import type BlessCountdownBanner from "../components/BlessCountdownBanner.vue";
 import type BlessCouponInput from "../components/BlessCouponInput.vue";
+import type BlessCourseCard from "../components/BlessCourseCard.vue";
 import type BlessCronInput from "../components/BlessCronInput.vue";
 import type BlessCropper from "../components/BlessCropper.vue";
 import type BlessCsvImport from "../components/BlessCsvImport.vue";
@@ -279,6 +280,7 @@ export type BlessLabelsFull = {
   BlessCopyButton: All<typeof BlessCopyButton>;
   BlessCountdownBanner: All<typeof BlessCountdownBanner>;
   BlessCouponInput: All<typeof BlessCouponInput>;
+  BlessCourseCard: All<typeof BlessCourseCard>;
   BlessCronInput: All<typeof BlessCronInput>;
   BlessCropper: All<typeof BlessCropper>;
   BlessCsvImport: All<typeof BlessCsvImport>;
@@ -811,6 +813,13 @@ export const labelsId: BlessLabelsFull = {
     apply: "Pakai",
     remove: (c) => `Hapus kode ${c}`,
     applied: (c) => `Kode ${c} terpakai`,
+  },
+  BlessCourseCard: {
+    by: (n) => `oleh ${n}`,
+    lessons: (n) => `${n} pelajaran`,
+    level: "Tingkat",
+    done: (p) => `${p}% selesai`,
+    finished: "Selesai",
   },
   BlessCronInput: {
     minute: "Menit",

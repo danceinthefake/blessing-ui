@@ -4568,6 +4568,74 @@
   "slots": [],
   "exposed": []
  },
+ "BlessCourseCard": {
+  "props": [
+   {
+    "name": "title",
+    "type": "string",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "href",
+    "type": "string | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "image",
+    "type": "string | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "imageAlt",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"\"",
+    "description": "describe the image; leave empty when the title says enough"
+   },
+   {
+    "name": "teacher",
+    "type": "string | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "lessons",
+    "type": "number | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "duration",
+    "type": "string | undefined",
+    "required": false,
+    "description": "the length as text, for example \"6 h 30 min\""
+   },
+   {
+    "name": "level",
+    "type": "string | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "progress",
+    "type": "number | undefined",
+    "required": false,
+    "description": "the share of the course that the learner did, 0 to 100; leave it out before they start"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ by: (name: string) => string; lessons: (n: number) => string; level: string; done: (pct: number) => string; finished: string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessCronInput": {
   "props": [
    {
