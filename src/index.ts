@@ -607,3 +607,4 @@ export type { BlessScene } from "./components/BlessSceneButtons.vue";
 export { default as BlessBatteryLevel } from "./components/BlessBatteryLevel.vue";
 export { default as BlessRuleBuilder } from "./components/BlessRuleBuilder.vue";
 export type { BlessRule, BlessRuleOption } from "./components/BlessRuleBuilder.vue";
+export { default as BlessArticleHeader } from "./components/BlessArticleHeader.vue";

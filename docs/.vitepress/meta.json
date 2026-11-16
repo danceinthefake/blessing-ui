@@ -675,6 +675,81 @@
   "slots": [],
   "exposed": []
  },
+ "BlessArticleHeader": {
+  "props": [
+   {
+    "name": "title",
+    "type": "string",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "topic",
+    "type": "string | undefined",
+    "required": false,
+    "description": "the topic above the title, for example \"Gear\""
+   },
+   {
+    "name": "topicHref",
+    "type": "string | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "summary",
+    "type": "string | undefined",
+    "required": false,
+    "description": "one or two lines under the title"
+   },
+   {
+    "name": "author",
+    "type": "{ name: string; avatar?: string | undefined; href?: string | undefined; } | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "date",
+    "type": "string | undefined",
+    "required": false,
+    "description": "YYYY-MM-DD"
+   },
+   {
+    "name": "updated",
+    "type": "string | undefined",
+    "required": false,
+    "description": "YYYY-MM-DD of the last change"
+   },
+   {
+    "name": "minutes",
+    "type": "number | undefined",
+    "required": false,
+    "description": "minutes to read"
+   },
+   {
+    "name": "level",
+    "type": "1 | 2 | 3 | undefined",
+    "required": false,
+    "default": "1",
+    "description": "the heading level of the title"
+   },
+   {
+    "name": "locale",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"en\"",
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ by: (name: string) => string; read: (minutes: number) => string; updated: (date: string) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessAspectRatio": {
   "props": [
    {
@@ -10237,13 +10312,13 @@
     "description": ""
    },
    {
-    "name": "readAll",
-    "type": "[]",
+    "name": "read",
+    "type": "[id: string]",
     "description": ""
    },
    {
-    "name": "read",
-    "type": "[id: string]",
+    "name": "readAll",
+    "type": "[]",
     "description": ""
    }
   ],
