@@ -61,7 +61,11 @@ const showCode = ref(false);
     .bless-toolcall *,
     .bless-pricing *,
     .bless-changelog *,
-    .bless-footnotes *
+    .bless-footnotes *,
+    .bless-faq *,
+    .bless-flags *,
+    .bless-status *,
+    .bless-incident *
   ) {
   margin: 0;
   padding: 0;
