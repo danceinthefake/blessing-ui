@@ -93,7 +93,8 @@ Sixty-four new components, 302 in all: more charts, parts for an assistant and i
 - `BlessTaskList`: tasks with native check boxes, an assignee, a due date that says late, subtasks with a count, and done tasks at the bottom.
 - `BlessApprovalFlow`: the steps of a request with approvers and their decisions under an all or any rule, and Approve and Reject for the reader when it is their turn.
 - `BlessVersionHistory`: saved versions newest first with the author, the time, a summary, and the change counts, a current tag, and a restore button on older versions.
-- `BlessQuiz`: questions with native radio choices, a check after each answer with the right choice and the reason, and a score at the end. 315 components in all.
+- `BlessQuiz`: questions with native radio choices, a check after each answer with the right choice and the reason, and a score at the end.
+- `BlessFlashcards`: cards with a front and a back that the learner shows, then marks as known or again, with the missed cards at the end of the deck. 316 components in all.
 
 ## 0.6.0 — 2026-11-15
 

@@ -5434,6 +5434,31 @@
   "slots": [],
   "exposed": []
  },
+ "BlessFlashcards": {
+  "props": [
+   {
+    "name": "cards",
+    "type": "BlessFlashcard[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ flip: string; know: string; again: string; restart: string; progress: (n: number, total: number) => string; done: (known: number, total: number) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "finish",
+    "type": "[known: number, total: number]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessFloatLabel": {
   "props": [
    {
@@ -15896,6 +15921,11 @@
     "description": ""
    },
    {
+    "name": "finish",
+    "type": "[]",
+    "description": ""
+   },
+   {
     "name": "skip",
     "type": "[]",
     "description": ""
@@ -15903,11 +15933,6 @@
    {
     "name": "update:step",
     "type": "[value: number]",
-    "description": ""
-   },
-   {
-    "name": "finish",
-    "type": "[]",
     "description": ""
    }
   ],

@@ -524,3 +524,5 @@ export { default as BlessVersionHistory } from "./components/BlessVersionHistory
 export type { BlessVersion } from "./components/BlessVersionHistory.vue";
 export { default as BlessQuiz } from "./components/BlessQuiz.vue";
 export type { BlessQuizQuestion } from "./components/BlessQuiz.vue";
+export { default as BlessFlashcards } from "./components/BlessFlashcards.vue";
+export type { BlessFlashcard } from "./components/BlessFlashcards.vue";

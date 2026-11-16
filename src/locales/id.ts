@@ -48,6 +48,7 @@ import type BlessEventCalendar from "../components/BlessEventCalendar.vue";
 import type BlessFaqSearch from "../components/BlessFaqSearch.vue";
 import type BlessFeatureFlags from "../components/BlessFeatureFlags.vue";
 import type BlessFilterBar from "../components/BlessFilterBar.vue";
+import type BlessFlashcards from "../components/BlessFlashcards.vue";
 import type BlessFootnoteRef from "../components/BlessFootnoteRef.vue";
 import type BlessFootnotes from "../components/BlessFootnotes.vue";
 import type BlessFormula from "../components/BlessFormula.vue";
@@ -199,6 +200,7 @@ export type BlessLabelsFull = {
   BlessFaqSearch: All<typeof BlessFaqSearch>;
   BlessFeatureFlags: All<typeof BlessFeatureFlags>;
   BlessFilterBar: All<typeof BlessFilterBar>;
+  BlessFlashcards: All<typeof BlessFlashcards>;
   BlessFootnoteRef: All<typeof BlessFootnoteRef>;
   BlessFootnotes: All<typeof BlessFootnotes>;
   BlessFormula: All<typeof BlessFormula>;
@@ -619,6 +621,14 @@ export const labelsId: BlessLabelsFull = {
     onOrBefore: "pada atau sebelum",
     after: "sesudah",
     onOrAfter: "pada atau sesudah",
+  },
+  BlessFlashcards: {
+    flip: "Lihat jawaban",
+    know: "Saya tahu",
+    again: "Ulangi",
+    restart: "Mulai lagi",
+    progress: (n, t) => `Kartu ${n} dari ${t}`,
+    done: (k, t) => `Kamu tahu ${k} dari ${t} pada percobaan pertama.`,
   },
   BlessFootnoteRef: { note: (n) => `Catatan ${n}` },
   BlessFootnotes: { title: "Catatan", back: (n) => `Kembali ke teks catatan ${n}` },
