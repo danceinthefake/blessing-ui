@@ -553,3 +553,5 @@ export { default as BlessFacetFilter } from "./components/BlessFacetFilter.vue";
 export type { BlessFacet } from "./components/BlessFacetFilter.vue";
 export { default as BlessStoreLocator } from "./components/BlessStoreLocator.vue";
 export type { BlessStore } from "./components/BlessStoreLocator.vue";
+export { default as BlessDeliveryPicker } from "./components/BlessDeliveryPicker.vue";
+export type { BlessDeliveryDay, BlessDeliveryWindow } from "./components/BlessDeliveryPicker.vue";

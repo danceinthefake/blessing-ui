@@ -16,7 +16,8 @@
 - `BlessCartDrawer`: the cart in a side sheet with quantity buttons and a field kept between 1 and max, remove, the subtotal, and a checkout button.
 - `BlessWishlistButton`: a heart toggle named after the product, filled when saved, with a count and a status message after each click.
 - `BlessFacetFilter`: catalog filters as fieldsets of check boxes with counts, empty options off, a price range, and clear buttons for one facet and for all.
-- `BlessStoreLocator`: stores nearest first with a search, open or closed in words, hours, directions and call links named with the store, and a radio to pick one. 331 components in all.
+- `BlessStoreLocator`: stores nearest first with a search, open or closed in words, hours, directions and call links named with the store, and a radio to pick one.
+- `BlessDeliveryPicker`: a delivery day and a time window as two radio groups, with the fee or Free on each window, and full windows and days turned off. 332 components in all.
 
 ## 0.7.0 — 2026-11-16
 
