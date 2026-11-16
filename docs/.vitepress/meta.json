@@ -15654,6 +15654,55 @@
   "slots": [],
   "exposed": []
  },
+ "BlessShareAccess": {
+  "props": [
+   {
+    "name": "link",
+    "type": "string | undefined",
+    "required": false,
+    "description": "the link to the file, for the copy button"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<Record<BlessAccessRole | \"owner\", string> & { email: string; newRole: string; invite: string; people: string; remove: string; roleFor: (name: string) => string; removeFor: (name: string) => string; general: string; restricted: string; anyone: string; restrictedHint: string; anyoneHint: (role: string) => string; copy: string; copied: string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "people",
+    "type": "BlessSharePerson[] | undefined",
+    "required": false,
+    "default": "[]",
+    "description": ""
+   },
+   {
+    "name": "linkAccess",
+    "type": "\"restricted\" | BlessAccessRole | undefined",
+    "required": false,
+    "default": "\"restricted\"",
+    "description": "who can open the link: only the people on the list, or anyone with the link at this role"
+   }
+  ],
+  "events": [
+   {
+    "name": "update:people",
+    "type": "[value: BlessSharePerson[]]",
+    "description": ""
+   },
+   {
+    "name": "update:linkAccess",
+    "type": "[value: \"restricted\" | BlessAccessRole]",
+    "description": ""
+   },
+   {
+    "name": "invite",
+    "type": "[email: string, role: BlessAccessRole]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessShareBar": {
   "props": [
    {

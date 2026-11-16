@@ -678,6 +678,7 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "margin-comments",
         text: "Comments next to the parts of a text",
       },
+      { name: "BlessShareAccess", slug: "share-access", text: "Who can open a file, and how" },
       {
         name: "BlessReactions",
         slug: "reactions",

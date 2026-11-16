@@ -693,3 +693,5 @@ export { default as BlessPickingList } from "./components/BlessPickingList.vue";
 export type { BlessPickLine } from "./components/BlessPickingList.vue";
 export { default as BlessMarginComments } from "./components/BlessMarginComments.vue";
 export type { BlessDocBlock, BlessMarginComment } from "./components/BlessMarginComments.vue";
+export { default as BlessShareAccess } from "./components/BlessShareAccess.vue";
+export type { BlessAccessRole, BlessSharePerson } from "./components/BlessShareAccess.vue";
