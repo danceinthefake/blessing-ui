@@ -579,3 +579,5 @@ export { default as BlessFollowButton } from "./components/BlessFollowButton.vue
 export { default as BlessTrendList } from "./components/BlessTrendList.vue";
 export type { BlessTrend } from "./components/BlessTrendList.vue";
 export { default as BlessReportDialog } from "./components/BlessReportDialog.vue";
+export { default as BlessGroupCard } from "./components/BlessGroupCard.vue";
+export type { BlessGroupState } from "./components/BlessGroupCard.vue";

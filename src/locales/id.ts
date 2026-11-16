@@ -67,6 +67,7 @@ import type BlessFootnotes from "../components/BlessFootnotes.vue";
 import type BlessFormula from "../components/BlessFormula.vue";
 import type BlessFunnel from "../components/BlessFunnel.vue";
 import type BlessGantt from "../components/BlessGantt.vue";
+import type BlessGroupCard from "../components/BlessGroupCard.vue";
 import type BlessHabitTracker from "../components/BlessHabitTracker.vue";
 import type BlessHistogram from "../components/BlessHistogram.vue";
 import type BlessIconPicker from "../components/BlessIconPicker.vue";
@@ -247,6 +248,7 @@ export type BlessLabelsFull = {
   BlessFormula: All<typeof BlessFormula>;
   BlessFunnel: All<typeof BlessFunnel>;
   BlessGantt: All<typeof BlessGantt>;
+  BlessGroupCard: All<typeof BlessGroupCard>;
   BlessHabitTracker: All<typeof BlessHabitTracker>;
   BlessHistogram: All<typeof BlessHistogram>;
   BlessIconPicker: All<typeof BlessIconPicker>;
@@ -826,6 +828,15 @@ export const labelsId: BlessLabelsFull = {
     span: (t, a, b) => `${t}: ${a} sampai ${b}`,
     done: (p) => `${p}% selesai`,
     after: (names) => `setelah ${names.join(" dan ")}`,
+  },
+  BlessGroupCard: {
+    join: "Gabung",
+    request: "Minta bergabung",
+    requested: "Permintaan terkirim",
+    member: "Sudah bergabung",
+    public: "Grup publik",
+    private: "Grup privat",
+    members: (n) => `${n} anggota`,
   },
   BlessHabitTracker: {
     habit: "Kebiasaan",
