@@ -1539,6 +1539,39 @@
   ],
   "exposed": []
  },
+ "BlessBudgetBars": {
+  "props": [
+   {
+    "name": "budgets",
+    "type": "BlessBudget[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "currency",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"USD\"",
+    "description": ""
+   },
+   {
+    "name": "locale",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"en\"",
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ title: string; of: (spent: string, budget: string) => string; left: (amount: string) => string; over: (amount: string) => string; total: string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessBulkActionBar": {
   "props": [
    {
@@ -4716,7 +4749,7 @@
    },
    {
     "name": "position",
-    "type": "\"bottom\" | \"left\" | \"right\" | undefined",
+    "type": "\"left\" | \"bottom\" | \"right\" | undefined",
     "required": false,
     "default": "\"bottom\"",
     "description": "the screen edge it sits on: sets the direction it lays out, grows and is navigated in"
@@ -6374,7 +6407,7 @@
    },
    {
     "name": "placement",
-    "type": "\"bottom\" | \"top\" | \"left\" | \"right\" | undefined",
+    "type": "\"left\" | \"bottom\" | \"top\" | \"right\" | undefined",
     "required": false,
     "default": "\"top\"",
     "description": ""
@@ -12939,7 +12972,7 @@
   "props": [
    {
     "name": "side",
-    "type": "\"bottom\" | \"top\" | \"left\" | \"right\" | undefined",
+    "type": "\"left\" | \"bottom\" | \"top\" | \"right\" | undefined",
     "required": false,
     "default": "\"right\"",
     "description": ""

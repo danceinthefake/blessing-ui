@@ -811,6 +811,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "currency-converter",
         text: "Convert an amount between currencies",
       },
+      {
+        name: "BlessBudgetBars",
+        slug: "budget-bars",
+        text: "Spending against the plan by category",
+      },
       { name: "BlessSunburst", slug: "sunburst", text: "A tree of parts as rings around a center" },
       {
         name: "BlessDumbbell",

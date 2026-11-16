@@ -13,6 +13,7 @@ import type BlessBalanceCard from "../components/BlessBalanceCard.vue";
 import type BlessBarChart from "../components/BlessBarChart.vue";
 import type BlessBeeswarm from "../components/BlessBeeswarm.vue";
 import type BlessBoxPlot from "../components/BlessBoxPlot.vue";
+import type BlessBudgetBars from "../components/BlessBudgetBars.vue";
 import type BlessBulkActionBar from "../components/BlessBulkActionBar.vue";
 import type BlessBulletChart from "../components/BlessBulletChart.vue";
 import type BlessBumpChart from "../components/BlessBumpChart.vue";
@@ -172,6 +173,7 @@ export type BlessLabelsFull = {
   BlessBarChart: All<typeof BlessBarChart>;
   BlessBeeswarm: All<typeof BlessBeeswarm>;
   BlessBoxPlot: All<typeof BlessBoxPlot>;
+  BlessBudgetBars: All<typeof BlessBudgetBars>;
   BlessBulkActionBar: All<typeof BlessBulkActionBar>;
   BlessBulletChart: All<typeof BlessBulletChart>;
   BlessBumpChart: All<typeof BlessBumpChart>;
@@ -429,6 +431,13 @@ export const labelsId: BlessLabelsFull = {
     q3: "Kuartil atas",
     max: "Tertinggi",
     outliers: "Pencilan",
+  },
+  BlessBudgetBars: {
+    title: "Anggaran",
+    of: (s, b) => `${s} dari ${b}`,
+    left: (a) => `sisa ${a}`,
+    over: (a) => `lebih ${a}`,
+    total: "Total",
   },
   BlessBulkActionBar: {
     label: "Item terpilih",

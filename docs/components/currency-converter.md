@@ -23,7 +23,7 @@ Converts money for a travel, shop, or bank app. You give the rates, and the comp
 
 - `rates` maps each ISO 4217 code to its units for one unit of a common base. For example, `{ USD: 1, IDR: 16250 }` means 16,250 rupiah for one dollar. The menus list these codes with the name of each currency in the `locale`.
 - `v-model:amount`, `v-model:from`, and `v-model:to` hold the amount and the two currencies. The ⇄ button swaps the currencies.
-- The result is an `output` element, so screen readers hear each new value. Under it, a line shows the rate for one unit, such as "$1.00 = Rp16,250".
+- The result is an `output` element, so screen readers hear each new value. Under it, a line shows the rate for one unit, such as "$1.00 = IDR 16,250".
 - `updated` is the time of the rates, as text. It shows after the rate line.
 - Each currency uses its own number of decimals, as `Intl.NumberFormat` gives it.
 - Change the words with `labels` or a [label pack](../guide/translating): `amount`, `from`, `to`, `swap`, `result`, and `updated` (a function).
