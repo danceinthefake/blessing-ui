@@ -109,34 +109,36 @@ const MARK: Record<BlessDecision, string> = { approved: "✓", rejected: "✕", 
         :class="[`is-${states[i]}`, { 'is-current': i === current }]"
         :aria-current="i === current ? 'step' : undefined"
       >
-        <div class="bless-approval__head">
-          <span class="bless-approval__mark" aria-hidden="true">{{ MARK[states[i]!] }}</span>
-          <strong>{{ s.title }}</strong>
-          <span class="bless-approval__state">{{ text[states[i]!] }}</span>
-          <span class="bless-approval__rule">{{ s.rule === "any" ? text.any : text.all }}</span>
-        </div>
-        <ul class="bless-approval__people">
-          <li v-for="a in s.approvers" :key="a.name" :class="`is-${a.decision ?? 'pending'}`">
-            <BlessAvatar :name="a.name" :src="a.avatar" alt="" size="xs" />
-            <span class="bless-approval__name">{{ a.name }}</span>
-            <span class="bless-approval__decision">{{ text[a.decision ?? "pending"] }}</span>
-            <span v-if="a.time" class="bless-approval__time">{{ a.time }}</span>
-            <p v-if="a.note" class="bless-approval__note">“{{ a.note }}”</p>
-          </li>
-        </ul>
-        <div v-if="i === current && canDecide" class="bless-approval__act">
-          <textarea
-            v-model="note"
-            class="bless-approval__field"
-            rows="2"
-            :aria-label="text.note"
-            :placeholder="text.note"
-          />
-          <div class="bless-approval__buttons">
-            <BlessButton size="sm" @click="decide('approved')">{{ text.approve }}</BlessButton>
-            <BlessButton size="sm" variant="outline" color="danger" @click="decide('rejected')">{{
-              text.reject
-            }}</BlessButton>
+        <div class="bless-approval__box">
+          <div class="bless-approval__head">
+            <span class="bless-approval__mark" aria-hidden="true">{{ MARK[states[i]!] }}</span>
+            <strong>{{ s.title }}</strong>
+            <span class="bless-approval__state">{{ text[states[i]!] }}</span>
+            <span class="bless-approval__rule">{{ s.rule === "any" ? text.any : text.all }}</span>
+          </div>
+          <ul class="bless-approval__people">
+            <li v-for="a in s.approvers" :key="a.name" :class="`is-${a.decision ?? 'pending'}`">
+              <BlessAvatar :name="a.name" :src="a.avatar" alt="" size="xs" />
+              <span class="bless-approval__name">{{ a.name }}</span>
+              <span class="bless-approval__decision">{{ text[a.decision ?? "pending"] }}</span>
+              <span v-if="a.time" class="bless-approval__time">{{ a.time }}</span>
+              <div v-if="a.note" class="bless-approval__note">“{{ a.note }}”</div>
+            </li>
+          </ul>
+          <div v-if="i === current && canDecide" class="bless-approval__act">
+            <textarea
+              v-model="note"
+              class="bless-approval__field"
+              rows="2"
+              :aria-label="text.note"
+              :placeholder="text.note"
+            />
+            <div class="bless-approval__buttons">
+              <BlessButton size="sm" @click="decide('approved')">{{ text.approve }}</BlessButton>
+              <BlessButton size="sm" variant="outline" color="danger" @click="decide('rejected')">{{
+                text.reject
+              }}</BlessButton>
+            </div>
           </div>
         </div>
       </li>
@@ -145,13 +147,16 @@ const MARK: Record<BlessDecision, string> = { approved: "✓", rejected: "✕", 
 </template>
 
 <style>
+/* spacing sits on divs, not on p and li, so a list reset of the host page does not remove it */
 .bless-approval {
+  display: grid;
+  gap: var(--bless-space-3);
   font-family: var(--bless-font-sans);
   font-size: var(--bless-text-sm);
   color: var(--bless-color-text);
 }
 .bless-approval__summary {
-  margin: 0 0 var(--bless-space-3);
+  margin: 0;
   font-weight: var(--bless-font-weight-bold);
 }
 .bless-approval__steps {
@@ -161,18 +166,20 @@ const MARK: Record<BlessDecision, string> = { approved: "✓", rejected: "✕", 
   padding: 0;
   list-style: none;
 }
-.bless-approval__step {
+.bless-approval__box {
+  display: grid;
+  gap: var(--bless-space-2);
   padding: var(--bless-space-3);
   border: var(--bless-border-width) solid var(--bless-color-border);
   border-inline-start: 4px solid var(--bless-color-border);
 }
-.bless-approval__step.is-approved {
+.is-approved > .bless-approval__box {
   border-inline-start-color: var(--bless-color-success);
 }
-.bless-approval__step.is-rejected {
+.is-rejected > .bless-approval__box {
   border-inline-start-color: var(--bless-color-danger);
 }
-.bless-approval__step.is-current.is-pending {
+.is-current.is-pending > .bless-approval__box {
   border-inline-start-color: var(--bless-color-accent);
 }
 .bless-approval__head {
@@ -197,7 +204,7 @@ const MARK: Record<BlessDecision, string> = { approved: "✓", rejected: "✕", 
   text-transform: uppercase;
   letter-spacing: var(--bless-tracking-wide);
 }
-.is-rejected > .bless-approval__head .bless-approval__state {
+.bless-approval__step.is-rejected .bless-approval__head .bless-approval__state {
   color: var(--bless-color-danger-text);
 }
 .bless-approval__rule {
@@ -208,7 +215,7 @@ const MARK: Record<BlessDecision, string> = { approved: "✓", rejected: "✕", 
 .bless-approval__people {
   display: grid;
   gap: var(--bless-space-1);
-  margin: var(--bless-space-2) 0 0;
+  margin: 0;
   padding: 0;
   list-style: none;
 }
@@ -229,14 +236,12 @@ const MARK: Record<BlessDecision, string> = { approved: "✓", rejected: "✕", 
 }
 .bless-approval__note {
   flex-basis: 100%;
-  margin: 0;
   padding-inline-start: 2rem;
   font-style: italic;
 }
 .bless-approval__act {
   display: grid;
   gap: var(--bless-space-2);
-  margin-block-start: var(--bless-space-3);
 }
 .bless-approval__field {
   padding: var(--bless-space-2);

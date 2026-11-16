@@ -143,12 +143,13 @@ function add() {
   padding: 0;
   list-style: none;
 }
+/* spacing sits on the row and the labels, not on ul and li, so a list reset of the host page keeps it */
 .bless-tasks__task {
-  padding: var(--bless-space-2) 0;
   border-block-end: var(--bless-border-width) solid var(--bless-color-border);
 }
 .bless-tasks__row {
   display: flex;
+  padding-block: var(--bless-space-2);
   flex-wrap: wrap;
   align-items: center;
   gap: var(--bless-space-2);
@@ -186,11 +187,8 @@ function add() {
   color: var(--bless-color-danger-text);
   font-weight: var(--bless-font-weight-bold);
 }
-.bless-tasks__subs {
-  display: grid;
-  gap: var(--bless-space-1);
-  margin-block-start: var(--bless-space-1);
-  padding-inline-start: var(--bless-space-6);
+.bless-tasks__subs .bless-tasks__check {
+  padding: 0 0 var(--bless-space-2) var(--bless-space-6);
 }
 .bless-tasks__add {
   margin-block-start: var(--bless-space-2);
