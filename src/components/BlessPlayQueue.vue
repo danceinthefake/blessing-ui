@@ -167,6 +167,10 @@ const remove = (id: string) => (queue.value = queue.value.filter((t) => t.id !==
   padding: var(--bless-space-2);
   background: color-mix(in srgb, var(--bless-color-accent) 10%, var(--bless-color-bg));
 }
+/* gray text is too faint on the tint */
+.is-now .bless-queue__artist {
+  color: var(--bless-color-text);
+}
 .bless-queue__art {
   position: relative;
   flex: none;

@@ -103,7 +103,9 @@ const day = (iso: string) =>
 /* two classes, so the heading styles of a host page do not win */
 .bless-article .bless-article__title {
   margin: 0;
-  font-size: var(--bless-text-headline);
+  padding: 0;
+  border: 0;
+  font-size: var(--bless-text-xl);
   line-height: var(--bless-leading-tight);
 }
 .bless-article__summary {
