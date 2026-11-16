@@ -85,7 +85,8 @@ Seventy-eight new components, 396 in all, for finance, commerce, communication, 
 - `BlessShiftHandover`: notes from one shift to the next with key facts, issues by level in words that you close, a count of open issues, and a take-over button.
 - `BlessPickingList`: items to pick in walk order by location, scans that count through the SKU field, wrong and extra scans in an alert, hand counts, and a complete event.
 - `BlessMarginComments`: the parts of a document with their comments in the margin, a box to add one, and a named landmark for each margin.
-- `BlessShareAccess`: the people with access to a file and their role, an email invite, general access for the link, and a copy button. 398 components in all.
+- `BlessShareAccess`: the people with access to a file and their role, an email invite, general access for the link, and a copy button.
+- `BlessMindMap`: a central idea with branches on two sides in SVG, colored main branches, and the tree as hidden nested lists. Credits Tony Buzan. 399 components in all.
 
 ## 0.7.0 — 2026-11-16
 

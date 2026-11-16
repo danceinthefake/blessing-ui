@@ -695,3 +695,5 @@ export { default as BlessMarginComments } from "./components/BlessMarginComments
 export type { BlessDocBlock, BlessMarginComment } from "./components/BlessMarginComments.vue";
 export { default as BlessShareAccess } from "./components/BlessShareAccess.vue";
 export type { BlessAccessRole, BlessSharePerson } from "./components/BlessShareAccess.vue";
+export { default as BlessMindMap } from "./components/BlessMindMap.vue";
+export type { BlessMindNode } from "./components/BlessMindMap.vue";
