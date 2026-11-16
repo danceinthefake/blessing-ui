@@ -40,6 +40,7 @@ export function amortize(principal: number, yearlyRate: number, months: number, 
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
+import { moneyFormat } from "../composables/money";
 
 defineOptions({ name: "BlessPaymentSchedule" });
 const pack = useLabelPack("BlessPaymentSchedule");
@@ -85,9 +86,7 @@ const text = computed(() => ({
   ...props.labels,
 }));
 const rows = computed(() => amortize(props.principal, props.rate, props.months, props.start));
-const money = computed(
-  () => new Intl.NumberFormat(props.locale, { style: "currency", currency: props.currency }),
-);
+const money = computed(() => moneyFormat(props.locale, props.currency));
 const monthName = computed(
   () => new Intl.DateTimeFormat(props.locale, { month: "short", year: "numeric", timeZone: "UTC" }),
 );

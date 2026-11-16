@@ -539,7 +539,7 @@ Sixteen components, 302 → 318. Each uses native platform APIs only: the librar
 
 ### Site types (2026-11-16)
 
-From Phase 35, each round takes its components from the "Not yet" lists of the [site types](docs/design/site-types.md) page. That page sorts websites and apps into 17 groups by what people do on them. For each group, it lists the components and blocks that serve it and the parts that are missing. If a round adds one of those parts, move it from "Not yet" to "Today" and update the count in the overview table. Do this in the English page and in the Indonesian page (`docs/id/design/site-types.md`).
+From Phase 35, each round takes its components from the "Not yet" lists of the [site types](docs/design/site-types.md) page. That page sorts websites and apps into 18 groups by what people do on them. For each group, it lists the components and blocks that serve it and the parts that are missing. If a round adds one of those parts, move it from "Not yet" to "Today" and update the count in the overview table. Do this in the English page and in the Indonesian page (`docs/id/design/site-types.md`).
 
 ### Phase 35 — finance and commerce (2026-11-16)
 
@@ -561,6 +561,7 @@ Sixteen components, 318 → 334. Each uses native platform APIs only: the librar
 - ✅ `BlessDeliveryPicker`: a day and a time window for delivery, with the fee of each window.
 - ✅ `BlessOrderHistory`: past orders with the status, the items, and actions such as buy again.
 - ✅ `BlessReturnRequest`: pick the items and the reason for a return, then see the refund.
+- ✅ Budget: after the round, the whole library is 221.8 KB gz JS and 60.1 KB gz CSS, over the old cap of 221 / 60. The cap is now 244 / 66, about 10% of room. Phase 35 is done.
 
 ### Phase 36 — communication and social (2026-11-16)
 

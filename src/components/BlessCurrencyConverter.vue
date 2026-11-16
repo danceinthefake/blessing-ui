@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
+import { moneyFormat } from "../composables/money";
 
 defineOptions({ name: "BlessCurrencyConverter" });
 const pack = useLabelPack("BlessCurrencyConverter");
@@ -40,9 +41,7 @@ const text = computed(() => ({
 const codes = computed(() => Object.keys(props.rates).sort());
 const rate = computed(() => (props.rates[to.value] ?? NaN) / (props.rates[from.value] ?? NaN));
 const fmt = (code: string, n: number) =>
-  Number.isFinite(n)
-    ? new Intl.NumberFormat(props.locale, { style: "currency", currency: code }).format(n)
-    : "—";
+  Number.isFinite(n) ? moneyFormat(props.locale, code).format(n) : "—";
 const name = (code: string) =>
   new Intl.DisplayNames([props.locale], { type: "currency" }).of(code) ?? code;
 function swap() {

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
+import { moneyFormat } from "../composables/money";
 import "./sr.css";
 
 defineOptions({ name: "BlessOrderHistory" });
@@ -58,9 +59,7 @@ const MARK: Record<BlessOrderStatus, string> = {
   delivered: "✓",
   cancelled: "✕",
 };
-const money = computed(
-  () => new Intl.NumberFormat(props.locale, { style: "currency", currency: props.currency }),
-);
+const money = computed(() => moneyFormat(props.locale, props.currency));
 const count = (o: BlessPastOrder) => o.items.reduce((n, i) => n + i.quantity, 0);
 </script>
 

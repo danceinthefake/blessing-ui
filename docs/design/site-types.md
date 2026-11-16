@@ -8,7 +8,7 @@ title: Site types
 
 No single official list of site types exists. Each classifier counts in its own way. [Similarweb](https://support.similarweb.com/hc/en-us/articles/38066805004317-Using-Industry-Plus-in-Lead-Generation) sorts websites into 27 industries and 436 categories. The [App Store](https://developer.apple.com/documentation/appstoreconnectapi/app-categories-and-subcategories) puts each app in one of about 26 categories. The [IAB Content Taxonomy](https://iabtechlab.com/standards/content-taxonomy/) 3.1 has 37 top-level topics for ads.
 
-These lists sort by topic, such as sports or travel. A component library needs a different sort: by what people do on the site. Two sites with the same task need the same parts, whatever the topic. This page uses 17 groups of that kind.
+These lists sort by topic, such as sports or travel. A component library needs a different sort: by what people do on the site. Two sites with the same task need the same parts, whatever the topic. This page uses 18 groups of that kind.
 
 For each group, the page lists the components and the [blocks](../blocks/) that serve it today. It also lists the parts that are not in the library yet. Those parts are the candidates for the next rounds of components.
 
@@ -22,7 +22,7 @@ For each group, the page lists the components and the [blocks](../blocks/) that 
 | 4. Communication                  |                9 |       6 |
 | 5. Media and entertainment        |                8 |       7 |
 | 6. Productivity and collaboration |               14 |       6 |
-| 7. Business software              |               13 |       6 |
+| 7. Business software and ERP      |               13 |      14 |
 | 8. Finance                        |               15 |       0 |
 | 9. Education                      |                7 |       5 |
 | 10. Health and fitness            |                6 |       6 |
@@ -33,6 +33,7 @@ For each group, the page lists the components and the [blocks](../blocks/) that 
 | 15. Brand and marketing sites     |               11 |       5 |
 | 16. AI assistants and agents      |               11 |       6 |
 | 17. Connected devices             |                6 |       6 |
+| 18. Operations                    |                9 |      10 |
 
 ## 1. Content and publishing
 
@@ -90,15 +91,15 @@ Today: [Editor](../components/editor), [Kanban](../components/kanban), [StickyBo
 
 Not yet: comments in the margin, share dialog with access levels, mind map, time tracker with entries, meeting room booking, file browser with a grid and a list.
 
-## 7. Business software
+## 7. Business software and ERP
 
-CRM, HR, help desks, and admin panels. People find records, change them, and watch numbers.
+CRM, HR, help desks, admin panels, and ERP: one system for stock, buying, sales, accounting, and staff. People find records, change them, and watch numbers.
 
 Today: [DataTable](../components/data-table), [TreeTable](../components/tree-table), [QueryBuilder](../components/query-builder), [FilterBar](../components/filter-bar), [BulkActionBar](../components/bulk-action-bar), [Stat](../components/stat), [Funnel](../components/funnel), [Descriptions](../components/descriptions), [PermissionMatrix](../components/permission-matrix), [ApprovalFlow](../components/approval-flow), [OrgChart](../components/org-chart), [KeyValueEditor](../components/key-value-editor), [Timeline](../components/timeline).
 
 Blocks: [dashboard](../blocks/dashboard), [data-page](../blocks/data-page), [settings](../blocks/settings), [staff](../blocks/staff).
 
-Not yet: record header with actions, CSV import with column matching, audit log, invoice, help desk ticket with a reply box, SLA timer.
+Not yet: record header with actions, CSV import with column matching, audit log, invoice, help desk ticket with a reply box, SLA timer, line-item editor for orders and quotes, journal entry with balanced debit and credit, stock levels with a reorder point, bill of materials, barcode and SKU field, units of measure converter, document status flow, payslip.
 
 ## 8. Finance
 
@@ -187,3 +188,11 @@ Smart home and vehicle apps. People see the state of a device and change it.
 Today: [Knob](../components/knob), [Switch](../components/switch), [Slider](../components/slider), [Gauge](../components/gauge), [ConnectionStatus](../components/connection-status), [Sparkline](../components/sparkline).
 
 Not yet: device tile, thermostat dial, floor plan with devices, scene buttons, battery level, automation rule.
+
+## 18. Operations
+
+Shop floors, warehouses, and field work. People do physical work at a station, guided by a screen: they follow a job, scan, count, and report. Planning at a desk stays in group 7. The barcode and SKU field of group 7 serves this group too.
+
+Today: [Gantt](../components/gantt), [Scheduler](../components/scheduler), [Stepper](../components/stepper), [Timer](../components/timer), [Gauge](../components/gauge), [UptimeBar](../components/uptime-bar), [ConnectionStatus](../components/connection-status), [SignaturePad](../components/signature-pad), [CameraCapture](../components/camera-capture).
+
+Not yet: work order card, production counter with good and scrap against the target, machine status board, OEE gauge, downtime reason picker with big touch buttons, work instructions with a picture for each step, quality check with limits, control chart (SPC), shift handover notes, pick list with scan to confirm.
