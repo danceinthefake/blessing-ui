@@ -386,6 +386,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         text: "Sticky notes that you add, edit, color and move",
       },
       {
+        name: "BlessTaskList",
+        slug: "task-list",
+        text: "Tasks with an assignee, a due date and subtasks",
+      },
+      {
         name: "BlessMention",
         slug: "mention",
         text: "@ / # suggestions inside a textarea",

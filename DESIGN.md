@@ -528,7 +528,7 @@ Sixteen components, 302 → 318. Each uses native platform APIs only: the librar
 - ✅ `BlessIconPicker`: a grid of your icons with a search and arrow keys.
 - ✅ `BlessTypeScale`: a specimen of the font sizes, with the size, the line height, and the token.
 - ✅ `BlessStickyBoard`: sticky notes that you add, edit, color, and move, with the keyboard too.
-- `BlessTaskList`: tasks with check boxes, an assignee, a due date, and subtasks.
+- ✅ `BlessTaskList`: tasks with check boxes, an assignee, a due date, and subtasks.
 - `BlessApprovalFlow`: the steps of a request, with approvers and their decisions.
 - `BlessVersionHistory`: saved versions with the author and the time, and a restore button.
 - `BlessQuiz`: questions with choices, a check after each answer with the reason, and a score.

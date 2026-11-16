@@ -89,7 +89,8 @@ Sixty-four new components, 302 in all: more charts, parts for an assistant and i
 - `BlessPaletteViewer`: the shades of each palette with the value, copy on click, and the contrast on white and black with an AA mark.
 - `BlessIconPicker`: a grid of your icons as path data, with a search on names and keywords, as a native radio group.
 - `BlessTypeScale`: a specimen of the font sizes with the measured size and line height, the text tokens of the library by default.
-- `BlessStickyBoard`: sticky notes on a board that you add, type in, color, delete, and move by drag or with the arrow keys. 311 components in all.
+- `BlessStickyBoard`: sticky notes on a board that you add, type in, color, delete, and move by drag or with the arrow keys.
+- `BlessTaskList`: tasks with native check boxes, an assignee, a due date that says late, subtasks with a count, and done tasks at the bottom. 312 components in all.
 
 ## 0.6.0 — 2026-11-15
 

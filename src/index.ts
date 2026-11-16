@@ -512,3 +512,5 @@ export { default as BlessTypeScale } from "./components/BlessTypeScale.vue";
 export type { BlessTypeStep } from "./components/BlessTypeScale.vue";
 export { default as BlessStickyBoard } from "./components/BlessStickyBoard.vue";
 export type { BlessStickyNote } from "./components/BlessStickyBoard.vue";
+export { default as BlessTaskList } from "./components/BlessTaskList.vue";
+export type { BlessTask, BlessSubtask } from "./components/BlessTaskList.vue";

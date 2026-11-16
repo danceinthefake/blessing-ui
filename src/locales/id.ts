@@ -126,6 +126,7 @@ import type BlessSuggestions from "../components/BlessSuggestions.vue";
 import type BlessSunburst from "../components/BlessSunburst.vue";
 import type BlessSwipeDeck from "../components/BlessSwipeDeck.vue";
 import type BlessSystemStatus from "../components/BlessSystemStatus.vue";
+import type BlessTaskList from "../components/BlessTaskList.vue";
 import type BlessTestimonials from "../components/BlessTestimonials.vue";
 import type BlessThread from "../components/BlessThread.vue";
 import type BlessTicket from "../components/BlessTicket.vue";
@@ -274,6 +275,7 @@ export type BlessLabelsFull = {
   BlessSunburst: All<typeof BlessSunburst>;
   BlessSwipeDeck: All<typeof BlessSwipeDeck>;
   BlessSystemStatus: All<typeof BlessSystemStatus>;
+  BlessTaskList: All<typeof BlessTaskList>;
   BlessTestimonials: All<typeof BlessTestimonials>;
   BlessThread: All<typeof BlessThread>;
   BlessTicket: All<typeof BlessTicket>;
@@ -1057,6 +1059,13 @@ export const labelsId: BlessLabelsFull = {
     all: "Semua sistem berjalan",
     summary: (s) => `Ada sistem yang bermasalah: ${s.toLowerCase()}`,
     updated: (w) => `Diperiksa ${w}`,
+  },
+  BlessTaskList: {
+    title: "Tugas",
+    add: "Tambah tugas",
+    late: "terlambat",
+    due: (d) => `tenggat ${d}`,
+    subtasks: (d, t) => `${d} dari ${t}`,
   },
   BlessTestimonials: {
     title: "Kata mereka",
