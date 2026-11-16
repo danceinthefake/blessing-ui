@@ -115,6 +115,7 @@ import type BlessRangeCalendar from "../components/BlessRangeCalendar.vue";
 import type BlessRangeChart from "../components/BlessRangeChart.vue";
 import type BlessReactions from "../components/BlessReactions.vue";
 import type BlessReadMore from "../components/BlessReadMore.vue";
+import type BlessReadReceipt from "../components/BlessReadReceipt.vue";
 import type BlessReadingProgress from "../components/BlessReadingProgress.vue";
 import type BlessReasoning from "../components/BlessReasoning.vue";
 import type BlessRecurrencePicker from "../components/BlessRecurrencePicker.vue";
@@ -285,6 +286,7 @@ export type BlessLabelsFull = {
   BlessRangeChart: All<typeof BlessRangeChart>;
   BlessReactions: All<typeof BlessReactions>;
   BlessReadMore: All<typeof BlessReadMore>;
+  BlessReadReceipt: All<typeof BlessReadReceipt>;
   BlessReadingProgress: All<typeof BlessReadingProgress>;
   BlessReasoning: All<typeof BlessReasoning>;
   BlessRecurrencePicker: All<typeof BlessRecurrencePicker>;
@@ -1102,6 +1104,15 @@ export const labelsId: BlessLabelsFull = {
     reaction: (e, n) => `${e} ${n} reaksi`,
   },
   BlessReadMore: { more: "Baca selengkapnya", less: "Tampilkan lebih sedikit" },
+  BlessReadReceipt: {
+    sending: "Mengirim",
+    sent: "Terkirim",
+    delivered: "Sampai",
+    read: "Dibaca",
+    failed: "Gagal terkirim",
+    retry: "Coba lagi",
+    readBy: (n) => `Dibaca oleh ${n}`,
+  },
   BlessReadingProgress: {
     label: "Progres membaca",
     left: (m) => (m < 1 ? "Kurang dari semenit lagi" : `${m} menit lagi`),

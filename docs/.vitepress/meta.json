@@ -12454,6 +12454,50 @@
   ],
   "exposed": []
  },
+ "BlessReadReceipt": {
+  "props": [
+   {
+    "name": "status",
+    "type": "BlessReceiptStatus",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "readBy",
+    "type": "string[] | undefined",
+    "required": false,
+    "description": "who read it, in a group chat"
+   },
+   {
+    "name": "time",
+    "type": "string | undefined",
+    "required": false,
+    "description": "when, as text"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<Record<BlessReceiptStatus, string> & { retry: string; readBy: (names: string) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "locale",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"en\"",
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "retry",
+    "type": "[]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessReadingProgress": {
   "props": [
    {

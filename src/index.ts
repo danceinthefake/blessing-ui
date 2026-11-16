@@ -561,3 +561,5 @@ export { default as BlessReturnRequest } from "./components/BlessReturnRequest.v
 export type { BlessReturnItem, BlessReturnPayload } from "./components/BlessReturnRequest.vue";
 export { default as BlessConversationList } from "./components/BlessConversationList.vue";
 export type { BlessConversation } from "./components/BlessConversationList.vue";
+export { default as BlessReadReceipt } from "./components/BlessReadReceipt.vue";
+export type { BlessReceiptStatus } from "./components/BlessReadReceipt.vue";

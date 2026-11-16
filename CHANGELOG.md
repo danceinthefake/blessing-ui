@@ -22,7 +22,8 @@ Sixteen new components, 334 in all, for finance and commerce sites. They come fr
 - `BlessDeliveryPicker`: a delivery day and a time window as two radio groups, with the fee or Free on each window, and full windows and days turned off.
 - `BlessOrderHistory`: past orders with the status as a mark and a word, up to three item pictures read as a list, the total, and view and buy-again actions named with the order number.
 - `BlessReturnRequest`: a return form with check boxes for the items, a quantity menu, a reason, a note, a live refund, and an error that says what is missing.
-- `BlessConversationList`: conversations with an avatar, the last message, the time, an unread count read in words, online and typing states, and the open one marked. 335 components in all.
+- `BlessConversationList`: conversations with an avatar, the last message, the time, an unread count read in words, online and typing states, and the open one marked.
+- `BlessReadReceipt`: sending, sent, delivered, read, and failed marks for a message, with words for screen readers, who read it, and retry. 336 components in all.
 
 ## 0.7.0 — 2026-11-16
 
