@@ -770,6 +770,11 @@ export const groups: { title: string; items: Entry[] }[] = [
       { name: "BlessFlashcards", slug: "flashcards", text: "Cards with a question and an answer" },
       { name: "BlessLessonPath", slug: "lesson-path", text: "The lessons of a course as a path" },
       {
+        name: "BlessCourseCard",
+        slug: "course-card",
+        text: "A course with its facts and progress",
+      },
+      {
         name: "BlessAchievements",
         slug: "achievements",
         text: "Badges that a user earns, with progress",
