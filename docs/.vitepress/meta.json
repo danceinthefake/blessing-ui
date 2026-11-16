@@ -6162,6 +6162,62 @@
   ],
   "exposed": []
  },
+ "BlessFigure": {
+  "props": [
+   {
+    "name": "src",
+    "type": "string",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "alt",
+    "type": "string",
+    "required": true,
+    "description": "what the picture shows; the caption does not replace it"
+   },
+   {
+    "name": "caption",
+    "type": "string | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "credit",
+    "type": "string | undefined",
+    "required": false,
+    "description": "who made the picture"
+   },
+   {
+    "name": "creditHref",
+    "type": "string | undefined",
+    "required": false,
+    "description": "a link to the source of the picture"
+   },
+   {
+    "name": "width",
+    "type": "\"full\" | \"normal\" | \"wide\" | undefined",
+    "required": false,
+    "default": "\"normal\"",
+    "description": "`wide` grows past the text column a little, `full` takes the whole width"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ credit: (who: string) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [
+   {
+    "name": "default",
+    "type": "{}",
+    "description": ""
+   }
+  ],
+  "exposed": []
+ },
  "BlessFileInput": {
   "props": [
    {
@@ -16952,14 +17008,14 @@
    },
    {
     "name": "weight",
-    "type": "\"bold\" | \"light\" | \"normal\" | \"thin\" | undefined",
+    "type": "\"bold\" | \"normal\" | \"light\" | \"thin\" | undefined",
     "required": false,
     "default": "\"normal\"",
     "description": ""
    },
    {
     "name": "tracking",
-    "type": "\"normal\" | \"tight\" | \"wide\" | \"wider\" | undefined",
+    "type": "\"normal\" | \"wide\" | \"tight\" | \"wider\" | undefined",
     "required": false,
     "default": "\"normal\"",
     "description": ""

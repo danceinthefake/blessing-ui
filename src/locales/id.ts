@@ -64,6 +64,7 @@ import type BlessEventCalendar from "../components/BlessEventCalendar.vue";
 import type BlessFacetFilter from "../components/BlessFacetFilter.vue";
 import type BlessFaqSearch from "../components/BlessFaqSearch.vue";
 import type BlessFeatureFlags from "../components/BlessFeatureFlags.vue";
+import type BlessFigure from "../components/BlessFigure.vue";
 import type BlessFilterBar from "../components/BlessFilterBar.vue";
 import type BlessFlashcards from "../components/BlessFlashcards.vue";
 import type BlessFloorPlan from "../components/BlessFloorPlan.vue";
@@ -259,6 +260,7 @@ export type BlessLabelsFull = {
   BlessFacetFilter: All<typeof BlessFacetFilter>;
   BlessFaqSearch: All<typeof BlessFaqSearch>;
   BlessFeatureFlags: All<typeof BlessFeatureFlags>;
+  BlessFigure: All<typeof BlessFigure>;
   BlessFilterBar: All<typeof BlessFilterBar>;
   BlessFlashcards: All<typeof BlessFlashcards>;
   BlessFloorPlan: All<typeof BlessFloorPlan>;
@@ -828,6 +830,7 @@ export const labelsId: BlessLabelsFull = {
     everyone: "Semua pengguna",
     off: "Mati",
   },
+  BlessFigure: { credit: (w) => `Foto: ${w}` },
   BlessFilterBar: {
     label: "Filter",
     add: "Tambah filter",
