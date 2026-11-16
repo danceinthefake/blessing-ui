@@ -85,6 +85,7 @@ import type BlessNotificationPrefs from "../components/BlessNotificationPrefs.vu
 import type BlessOnboardingChecklist from "../components/BlessOnboardingChecklist.vue";
 import type BlessOpeningHours from "../components/BlessOpeningHours.vue";
 import type BlessOrderBook from "../components/BlessOrderBook.vue";
+import type BlessOrderHistory from "../components/BlessOrderHistory.vue";
 import type BlessOrderList from "../components/BlessOrderList.vue";
 import type BlessOrderSummary from "../components/BlessOrderSummary.vue";
 import type BlessPaletteViewer from "../components/BlessPaletteViewer.vue";
@@ -252,6 +253,7 @@ export type BlessLabelsFull = {
   BlessOnboardingChecklist: All<typeof BlessOnboardingChecklist>;
   BlessOpeningHours: All<typeof BlessOpeningHours>;
   BlessOrderBook: All<typeof BlessOrderBook>;
+  BlessOrderHistory: All<typeof BlessOrderHistory>;
   BlessOrderList: All<typeof BlessOrderList>;
   BlessOrderSummary: All<typeof BlessOrderSummary>;
   BlessPaletteViewer: All<typeof BlessPaletteViewer>;
@@ -917,6 +919,17 @@ export const labelsId: BlessLabelsFull = {
     ask: "Jual",
     bid: "Beli",
     spread: (v, p) => `Selisih ${v} (${p})`,
+  },
+  BlessOrderHistory: {
+    title: "Pesanan",
+    processing: "Diproses",
+    shipped: "Dikirim",
+    delivered: "Diterima",
+    cancelled: "Dibatalkan",
+    again: "Beli lagi",
+    view: "Lihat pesanan",
+    items: (n) => `${n} barang`,
+    more: (n) => `+${n}`,
   },
   BlessOrderList: {
     up: (p) => `Naikkan item ${p}`,

@@ -9789,6 +9789,45 @@
   "slots": [],
   "exposed": []
  },
+ "BlessOrderHistory": {
+  "props": [
+   {
+    "name": "orders",
+    "type": "BlessPastOrder[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "currency",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"USD\"",
+    "description": ""
+   },
+   {
+    "name": "locale",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"en\"",
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<Record<BlessOrderStatus, string> & { title: string; again: string; view: string; items: (count: number) => string; more: (count: number) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "again",
+    "type": "[id: string]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessOrderList": {
   "props": [
    {
@@ -13479,7 +13518,7 @@
    },
    {
     "name": "labels",
-    "type": "Partial<Record<\"ordered\" | \"packed\" | \"shipped\" | \"out\" | \"delivered\", string> & { title: string; latest: string; history: string; tracking: string; done: string; current: string; }> | undefined",
+    "type": "Partial<Record<\"shipped\" | \"delivered\" | \"ordered\" | \"packed\" | \"out\", string> & { title: string; latest: string; history: string; tracking: string; done: string; current: string; }> | undefined",
     "required": false,
     "description": ""
    }

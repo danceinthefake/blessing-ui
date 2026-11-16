@@ -559,7 +559,7 @@ Sixteen components, 318 → 334. Each uses native platform APIs only: the librar
 - ✅ `BlessFacetFilter`: filters for a catalog: checkboxes with counts, a price range, and clear buttons.
 - ✅ `BlessStoreLocator`: a list of stores by distance, with opening hours and directions links.
 - ✅ `BlessDeliveryPicker`: a day and a time window for delivery, with the fee of each window.
-- `BlessOrderHistory`: past orders with the status, the items, and actions such as buy again.
+- ✅ `BlessOrderHistory`: past orders with the status, the items, and actions such as buy again.
 - `BlessReturnRequest`: pick the items and the reason for a return, then see the refund.
 
 ### Phase 36 — communication and social (2026-11-16)
