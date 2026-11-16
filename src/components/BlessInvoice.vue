@@ -185,7 +185,7 @@ const MARK: Record<BlessInvoiceStatus, string> = { draft: "○", sent: "→", pa
         </tfoot>
       </table>
     </div>
-    <p v-if="notes" class="bless-invoice__notes">{{ notes }}</p>
+    <div v-if="notes" class="bless-invoice__notes">{{ notes }}</div>
   </article>
 </template>
 
