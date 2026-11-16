@@ -13412,6 +13412,32 @@
   "slots": [],
   "exposed": []
  },
+ "BlessRelatedArticles": {
+  "props": [
+   {
+    "name": "articles",
+    "type": "BlessRelatedArticle[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "level",
+    "type": "2 | 3 | 4 | undefined",
+    "required": false,
+    "default": "2",
+    "description": "the heading level of the title of the block"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ title: string; read: (minutes: number) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessRelativeTime": {
   "props": [
    {

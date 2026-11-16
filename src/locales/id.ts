@@ -134,6 +134,7 @@ import type BlessReadReceipt from "../components/BlessReadReceipt.vue";
 import type BlessReadingProgress from "../components/BlessReadingProgress.vue";
 import type BlessReasoning from "../components/BlessReasoning.vue";
 import type BlessRecurrencePicker from "../components/BlessRecurrencePicker.vue";
+import type BlessRelatedArticles from "../components/BlessRelatedArticles.vue";
 import type BlessReportDialog from "../components/BlessReportDialog.vue";
 import type BlessReturnRequest from "../components/BlessReturnRequest.vue";
 import type BlessReviewSummary from "../components/BlessReviewSummary.vue";
@@ -328,6 +329,7 @@ export type BlessLabelsFull = {
   BlessReadingProgress: All<typeof BlessReadingProgress>;
   BlessReasoning: All<typeof BlessReasoning>;
   BlessRecurrencePicker: All<typeof BlessRecurrencePicker>;
+  BlessRelatedArticles: All<typeof BlessRelatedArticles>;
   BlessReportDialog: All<typeof BlessReportDialog>;
   BlessReturnRequest: All<typeof BlessReturnRequest>;
   BlessReviewSummary: All<typeof BlessReviewSummary>;
@@ -1311,6 +1313,10 @@ export const labelsId: BlessLabelsFull = {
     everyUnit: (n, u) => (n === 1 ? `Setiap ${u}` : `Setiap ${n} ${u}`),
     endCount: (n) => `${n} kali`,
     endUntil: (d) => `sampai ${d}`,
+  },
+  BlessRelatedArticles: {
+    title: "Baca selanjutnya",
+    read: (m) => `${m} menit baca`,
   },
   BlessReportDialog: {
     title: (s) => `Laporkan ${s}`,
