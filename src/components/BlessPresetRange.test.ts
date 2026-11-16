@@ -35,7 +35,7 @@ test("BlessPresetRange: a preset sets the range, the matching one is pressed, an
   await presets[2]!.trigger("click");
   expect(w.props("modelValue")).toEqual(["2026-11-10", "2026-11-16"]);
   expect(w.findAll(".bless-presetrange__preset")[2]!.attributes("aria-pressed")).toBe("true");
-  expect(w.find("[role=status]").text().replace(/\s/g, " ")).toBe("Nov 10 – 16, 2026");
+  expect(w.find("[role=status]").text()).toBe("Nov 10, 2026 – Nov 16, 2026");
   expect(w.findComponent({ name: "BlessCalendar" }).props("month")).toBe("2026-11");
 });
 
