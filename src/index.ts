@@ -538,3 +538,4 @@ export type { BlessTick } from "./components/BlessPriceTicker.vue";
 export { default as BlessOrderBook } from "./components/BlessOrderBook.vue";
 export { bookSides } from "./components/BlessOrderBook.vue";
 export type { BlessBookLevel } from "./components/BlessOrderBook.vue";
+export { default as BlessCurrencyConverter } from "./components/BlessCurrencyConverter.vue";
