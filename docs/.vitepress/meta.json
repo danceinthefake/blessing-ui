@@ -4080,6 +4080,75 @@
    }
   ]
  },
+ "BlessCurrencyConverter": {
+  "props": [
+   {
+    "name": "rates",
+    "type": "Record<string, number>",
+    "required": true,
+    "description": "units of each currency for one unit of a common base, for example `{ USD: 1, IDR: 16250 }`"
+   },
+   {
+    "name": "locale",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"en\"",
+    "description": ""
+   },
+   {
+    "name": "updated",
+    "type": "string | undefined",
+    "required": false,
+    "description": "when the rates were last updated, as text"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ amount: string; from: string; to: string; swap: string; result: string; updated: (when: string) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "amount",
+    "type": "number | undefined",
+    "required": false,
+    "default": "1",
+    "description": ""
+   },
+   {
+    "name": "from",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"USD\"",
+    "description": ""
+   },
+   {
+    "name": "to",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"EUR\"",
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "update:amount",
+    "type": "[value: number]",
+    "description": ""
+   },
+   {
+    "name": "update:from",
+    "type": "[value: string]",
+    "description": ""
+   },
+   {
+    "name": "update:to",
+    "type": "[value: string]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessDash": {
   "props": [
    {

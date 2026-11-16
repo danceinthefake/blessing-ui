@@ -38,6 +38,7 @@ import type BlessCountdownBanner from "../components/BlessCountdownBanner.vue";
 import type BlessCouponInput from "../components/BlessCouponInput.vue";
 import type BlessCronInput from "../components/BlessCronInput.vue";
 import type BlessCropper from "../components/BlessCropper.vue";
+import type BlessCurrencyConverter from "../components/BlessCurrencyConverter.vue";
 import type BlessDataTable from "../components/BlessDataTable.vue";
 import type BlessDataView from "../components/BlessDataView.vue";
 import type BlessDateTimePicker from "../components/BlessDateTimePicker.vue";
@@ -196,6 +197,7 @@ export type BlessLabelsFull = {
   BlessCouponInput: All<typeof BlessCouponInput>;
   BlessCronInput: All<typeof BlessCronInput>;
   BlessCropper: All<typeof BlessCropper>;
+  BlessCurrencyConverter: All<typeof BlessCurrencyConverter>;
   BlessDataTable: All<typeof BlessDataTable>;
   BlessDataView: All<typeof BlessDataView>;
   BlessDateTimePicker: All<typeof BlessDateTimePicker>;
@@ -561,6 +563,14 @@ export const labelsId: BlessLabelsFull = {
     rotateLeft: "Putar ke kiri",
     rotateRight: "Putar ke kanan",
     loadError: "Gambar tidak dapat dimuat.",
+  },
+  BlessCurrencyConverter: {
+    amount: "Jumlah",
+    from: "Dari",
+    to: "Ke",
+    swap: "Tukar mata uang",
+    result: "Hasil",
+    updated: (w) => `Kurs per ${w}`,
   },
   BlessDataTable: {
     selectPage: "Pilih halaman",
