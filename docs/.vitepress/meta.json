@@ -1327,6 +1327,44 @@
   "slots": [],
   "exposed": []
  },
+ "BlessBatteryLevel": {
+  "props": [
+   {
+    "name": "level",
+    "type": "number",
+    "required": true,
+    "description": "the charge, 0 to 100"
+   },
+   {
+    "name": "charging",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "low",
+    "type": "number | undefined",
+    "required": false,
+    "default": "20",
+    "description": "at or below this level, the battery is low"
+   },
+   {
+    "name": "label",
+    "type": "string | undefined",
+    "required": false,
+    "description": "what the battery is in, for example \"Door sensor\""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ battery: string; charging: string; low: string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessBeeswarm": {
   "props": [
    {

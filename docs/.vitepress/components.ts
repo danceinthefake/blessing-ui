@@ -1061,6 +1061,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         text: "Buttons that set many devices at once",
       },
       {
+        name: "BlessBatteryLevel",
+        slug: "battery-level",
+        text: "Battery charge with charging and low",
+      },
+      {
         name: "BlessBalanceCard",
         slug: "balance-card",
         text: "An account balance with the change",
