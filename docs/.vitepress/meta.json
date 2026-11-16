@@ -9341,6 +9341,37 @@
   "slots": [],
   "exposed": []
  },
+ "BlessLyrics": {
+  "props": [
+   {
+    "name": "lines",
+    "type": "BlessLyricLine[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "position",
+    "type": "number",
+    "required": true,
+    "description": "the place of the song now, in seconds"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ title: string; seek: (time: string) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "seek",
+    "type": "[time: number]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessMarimekko": {
   "props": [
    {
