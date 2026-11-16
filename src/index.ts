@@ -544,3 +544,4 @@ export type { BlessBudget } from "./components/BlessBudgetBars.vue";
 export { default as BlessPaymentSchedule } from "./components/BlessPaymentSchedule.vue";
 export { amortize } from "./components/BlessPaymentSchedule.vue";
 export type { BlessPaymentRow } from "./components/BlessPaymentSchedule.vue";
+export { default as BlessPrice } from "./components/BlessPrice.vue";

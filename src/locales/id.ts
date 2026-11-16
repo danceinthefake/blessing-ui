@@ -95,6 +95,7 @@ import type BlessPictogram from "../components/BlessPictogram.vue";
 import type BlessPinPad from "../components/BlessPinPad.vue";
 import type BlessPoll from "../components/BlessPoll.vue";
 import type BlessPresetRange from "../components/BlessPresetRange.vue";
+import type BlessPrice from "../components/BlessPrice.vue";
 import type BlessPriceTicker from "../components/BlessPriceTicker.vue";
 import type BlessPricingTable from "../components/BlessPricingTable.vue";
 import type BlessProfileCard from "../components/BlessProfileCard.vue";
@@ -256,6 +257,7 @@ export type BlessLabelsFull = {
   BlessPinPad: All<typeof BlessPinPad>;
   BlessPoll: All<typeof BlessPoll>;
   BlessPresetRange: All<typeof BlessPresetRange>;
+  BlessPrice: All<typeof BlessPrice>;
   BlessPriceTicker: All<typeof BlessPriceTicker>;
   BlessPricingTable: All<typeof BlessPricingTable>;
   BlessProfileCard: All<typeof BlessProfileCard>;
@@ -944,6 +946,11 @@ export const labelsId: BlessLabelsFull = {
     thisMonth: "Bulan ini",
     lastMonth: "Bulan lalu",
     none: "Belum ada tanggal",
+  },
+  BlessPrice: {
+    off: (p) => `hemat ${p}`,
+    sale: (n, w) => `Sekarang ${n}, sebelumnya ${w}`,
+    per: (p, u) => `${p} / ${u}`,
   },
   BlessPriceTicker: { title: "Harga" },
   BlessPricingTable: {

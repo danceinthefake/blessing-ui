@@ -897,6 +897,7 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "pricing-table",
         text: "Plans side by side, with a monthly or yearly switch",
       },
+      { name: "BlessPrice", slug: "price", text: "A price with a sale and a unit price" },
       {
         name: "BlessTestimonials",
         slug: "testimonials",
