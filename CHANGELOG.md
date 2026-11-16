@@ -38,7 +38,8 @@ Twenty-nine new components, 347 in all, for finance, commerce, communication, an
 - `BlessVitalsPanel`: body readings with the unit, the normal range, a state as a mark and a word, and a bar that shows where the value falls.
 - `BlessMedicationSchedule`: the doses of the day grouped by time, a check box for each, late doses in words, and a count of the doses taken.
 - `BlessWorkoutLog`: sets of an exercise with weight and reps fields, the matching set from last time, done boxes, the volume, and add and remove.
-- `BlessSleepChart`: a hypnogram of one night with a row for each stage, hour ticks across midnight, and the time in each stage as text. 351 components in all.
+- `BlessSleepChart`: a hypnogram of one night with a row for each stage, hour ticks across midnight, and the time in each stage as text.
+- `BlessBodyMap`: a front body outline with 13 parts as keyboard check boxes, a filled dashed state, and a line that names the chosen parts. 352 components in all.
 
 ## 0.7.0 — 2026-11-16
 

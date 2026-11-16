@@ -1042,6 +1042,7 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "workout-log",
         text: "Sets with weight and reps, and last time",
       },
+      { name: "BlessBodyMap", slug: "body-map", text: "A body outline to point at pain" },
       {
         name: "BlessBalanceCard",
         slug: "balance-card",

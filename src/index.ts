@@ -593,3 +593,5 @@ export type { BlessWorkoutSet } from "./components/BlessWorkoutLog.vue";
 export { default as BlessSleepChart } from "./components/BlessSleepChart.vue";
 export { sleepSpans } from "./components/BlessSleepChart.vue";
 export type { BlessSleepSpan, BlessSleepStage } from "./components/BlessSleepChart.vue";
+export { default as BlessBodyMap } from "./components/BlessBodyMap.vue";
+export type { BlessBodyPart } from "./components/BlessBodyMap.vue";
