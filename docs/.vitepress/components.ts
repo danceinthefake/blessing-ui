@@ -1118,6 +1118,11 @@ export const groups: { title: string; items: Entry[] }[] = [
       { name: "BlessParallax", slug: "parallax", text: "Background that scrolls slower" },
       { name: "BlessCarousel", slug: "carousel", text: "Scroll-snap slider" },
       { name: "BlessPosterRow", slug: "poster-row", text: "A row of posters that scrolls" },
+      {
+        name: "BlessEpisodeList",
+        slug: "episode-list",
+        text: "Episodes with length, summary, and progress",
+      },
       { name: "BlessAudioPlayer", slug: "audio-player", text: "Track list player" },
       {
         name: "BlessWaveform",

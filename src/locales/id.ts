@@ -60,6 +60,7 @@ import type BlessEditor from "../components/BlessEditor.vue";
 import type BlessEmailComposer from "../components/BlessEmailComposer.vue";
 import type BlessEmailView from "../components/BlessEmailView.vue";
 import type BlessEmojiPicker from "../components/BlessEmojiPicker.vue";
+import type BlessEpisodeList from "../components/BlessEpisodeList.vue";
 import type BlessEventCalendar from "../components/BlessEventCalendar.vue";
 import type BlessFacetFilter from "../components/BlessFacetFilter.vue";
 import type BlessFaqSearch from "../components/BlessFaqSearch.vue";
@@ -259,6 +260,7 @@ export type BlessLabelsFull = {
   BlessEmailComposer: All<typeof BlessEmailComposer>;
   BlessEmailView: All<typeof BlessEmailView>;
   BlessEmojiPicker: All<typeof BlessEmojiPicker>;
+  BlessEpisodeList: All<typeof BlessEpisodeList>;
   BlessEventCalendar: All<typeof BlessEventCalendar>;
   BlessFacetFilter: All<typeof BlessFacetFilter>;
   BlessFaqSearch: All<typeof BlessFaqSearch>;
@@ -809,6 +811,14 @@ export const labelsId: BlessLabelsFull = {
     travel: "Perjalanan dan tempat",
     objects: "Benda",
     symbols: "Simbol",
+  },
+  BlessEpisodeList: {
+    title: "Episode",
+    play: (n, t) => `Putar episode ${n}: ${t}`,
+    length: (m) => `${m} mnt`,
+    left: (m) => `sisa ${m} mnt`,
+    watched: "Sudah ditonton",
+    playing: "Sedang diputar",
   },
   BlessEventCalendar: {
     prev: "Bulan sebelumnya",

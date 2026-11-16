@@ -5873,6 +5873,37 @@
   ],
   "exposed": []
  },
+ "BlessEpisodeList": {
+  "props": [
+   {
+    "name": "episodes",
+    "type": "BlessEpisode[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "current",
+    "type": "string | undefined",
+    "required": false,
+    "description": "the id of the episode that plays now"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ title: string; play: (n: number, title: string) => string; length: (minutes: number) => string; left: (minutes: number) => string; watched: string; playing: string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "play",
+    "type": "[id: string]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessEventCalendar": {
   "props": [
    {
