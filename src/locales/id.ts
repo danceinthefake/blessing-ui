@@ -129,6 +129,7 @@ import type BlessPaywall from "../components/BlessPaywall.vue";
 import type BlessPermissionMatrix from "../components/BlessPermissionMatrix.vue";
 import type BlessPhoneInput from "../components/BlessPhoneInput.vue";
 import type BlessPickList from "../components/BlessPickList.vue";
+import type BlessPickingList from "../components/BlessPickingList.vue";
 import type BlessPictogram from "../components/BlessPictogram.vue";
 import type BlessPinPad from "../components/BlessPinPad.vue";
 import type BlessPlayQueue from "../components/BlessPlayQueue.vue";
@@ -353,6 +354,7 @@ export type BlessLabelsFull = {
   BlessPermissionMatrix: All<typeof BlessPermissionMatrix>;
   BlessPhoneInput: All<typeof BlessPhoneInput>;
   BlessPickList: All<typeof BlessPickList>;
+  BlessPickingList: All<typeof BlessPickingList>;
   BlessPictogram: All<typeof BlessPictogram>;
   BlessPinPad: All<typeof BlessPinPad>;
   BlessPlayQueue: All<typeof BlessPlayQueue>;
@@ -1398,6 +1400,17 @@ export const labelsId: BlessLabelsFull = {
     moveSelected: (to) => `Pindahkan yang dipilih ke ${to}`,
     moveAll: (to) => `Pindahkan semua ke ${to}`,
     moved: (n, to) => `${n} dipindah ke ${to}`,
+  },
+  BlessPickingList: {
+    title: "Daftar ambil",
+    scan: "Pindai barang",
+    progress: (p, t) => `${p} dari ${t} barang diambil`,
+    done: "Semua barang sudah diambil.",
+    unknown: (c) => `${c} tidak ada di daftar ini.`,
+    tooMany: (n) => `${n}: semua sudah diambil.`,
+    picked: (n, p, q) => `${n}: ${p} dari ${q}`,
+    add: (n) => `Tambah satu ${n}`,
+    remove: (n) => `Kurangi satu ${n}`,
   },
   BlessPictogram: { key: (u, n) => `Satu ikon = ${u}${n ? ` ${n}` : ""}` },
   BlessPinPad: {

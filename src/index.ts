@@ -689,3 +689,5 @@ export { default as BlessControlChart } from "./components/BlessControlChart.vue
 export { controlLimits } from "./components/BlessControlChart.vue";
 export { default as BlessShiftHandover } from "./components/BlessShiftHandover.vue";
 export type { BlessHandoverIssue, BlessIssueLevel } from "./components/BlessShiftHandover.vue";
+export { default as BlessPickingList } from "./components/BlessPickingList.vue";
+export type { BlessPickLine } from "./components/BlessPickingList.vue";
