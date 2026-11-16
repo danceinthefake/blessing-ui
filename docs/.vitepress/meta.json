@@ -13377,6 +13377,50 @@
   "slots": [],
   "exposed": []
  },
+ "BlessQualityCheck": {
+  "props": [
+   {
+    "name": "items",
+    "type": "BlessQualityItem[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "locale",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"en\"",
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ title: string; pass: string; fail: string; inLimits: string; outLimits: string; limits: (low: string, high: string) => string; summary: (passed: number, done: number, total: number) => string; ok: string; notOk: string; submit: string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "BlessQualityResult | undefined",
+    "required": false,
+    "default": "{}",
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "update:modelValue",
+    "type": "[value: BlessQualityResult]",
+    "description": ""
+   },
+   {
+    "name": "submit",
+    "type": "[results: BlessQualityResult, passed: boolean]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessQueryBuilder": {
   "props": [
    {
@@ -16280,6 +16324,11 @@
   ],
   "events": [
    {
+    "name": "fail",
+    "type": "[]",
+    "description": ""
+   },
+   {
     "name": "update:verified",
     "type": "[value: boolean]",
     "description": ""
@@ -16287,11 +16336,6 @@
    {
     "name": "verify",
     "type": "[info: { ms: number; }]",
-    "description": ""
-   },
-   {
-    "name": "fail",
-    "type": "[]",
     "description": ""
    }
   ],

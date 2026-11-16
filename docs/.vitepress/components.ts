@@ -1165,6 +1165,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "work-instructions",
         text: "The steps of a job with pictures",
       },
+      {
+        name: "BlessQualityCheck",
+        slug: "quality-check",
+        text: "Pass or fail checks and measures with limits",
+      },
     ],
   },
   {
