@@ -33,7 +33,7 @@ Untuk setiap kelompok, halaman ini mendaftar komponen dan [blok](../../blocks/) 
 | 15. Situs merek dan pemasaran     |                11 |         5 |
 | 16. Asisten dan agen AI           |                11 |         6 |
 | 17. Perangkat terhubung           |                12 |         0 |
-| 18. Operasional                   |                 9 |        10 |
+| 18. Operasional                   |                20 |         0 |
 
 ## 1. Konten dan penerbitan
 
@@ -193,6 +193,6 @@ Belum ada: tidak ada dari daftar pertama. Setiap bagian yang disebut halaman ini
 
 Lantai produksi, gudang, dan kerja lapangan. Orang mengerjakan pekerjaan fisik di sebuah stasiun dengan panduan layar: mengikuti pekerjaan, memindai, menghitung, dan melapor. Perencanaan di meja tetap di kelompok 7. Kolom barcode dan SKU di kelompok 7 juga melayani kelompok ini.
 
-Sekarang: [Gantt](../../components/gantt), [Scheduler](../../components/scheduler), [Stepper](../../components/stepper), [Timer](../../components/timer), [Gauge](../../components/gauge), [UptimeBar](../../components/uptime-bar), [ConnectionStatus](../../components/connection-status), [SignaturePad](../../components/signature-pad), [CameraCapture](../../components/camera-capture).
+Sekarang: [WorkOrderCard](../../components/work-order-card), [ProductionCounter](../../components/production-counter), [MachineBoard](../../components/machine-board), [OeeGauge](../../components/oee-gauge), [DowntimePicker](../../components/downtime-picker), [WorkInstructions](../../components/work-instructions), [QualityCheck](../../components/quality-check), [ControlChart](../../components/control-chart), [ShiftHandover](../../components/shift-handover), [PickingList](../../components/picking-list), [SkuField](../../components/sku-field), [Gantt](../../components/gantt), [Scheduler](../../components/scheduler), [Stepper](../../components/stepper), [Timer](../../components/timer), [Gauge](../../components/gauge), [UptimeBar](../../components/uptime-bar), [ConnectionStatus](../../components/connection-status), [SignaturePad](../../components/signature-pad), [CameraCapture](../../components/camera-capture).
 
-Belum ada: kartu perintah kerja, penghitung produksi dengan barang bagus dan reject terhadap target, papan status mesin, gauge OEE, pemilih alasan berhenti dengan tombol sentuh besar, instruksi kerja dengan gambar tiap langkah, pemeriksaan mutu dengan batas, grafik kendali (SPC), catatan serah terima shift, daftar ambil barang dengan pindai untuk konfirmasi.
+Belum ada: tidak ada dari daftar pertama. Setiap bagian yang disebut halaman ini sudah menjadi komponen.

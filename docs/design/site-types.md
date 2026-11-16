@@ -33,7 +33,7 @@ For each group, the page lists the components and the [blocks](../blocks/) that 
 | 15. Brand and marketing sites     |               11 |       5 |
 | 16. AI assistants and agents      |               11 |       6 |
 | 17. Connected devices             |               12 |       0 |
-| 18. Operations                    |                9 |      10 |
+| 18. Operations                    |               20 |       0 |
 
 ## 1. Content and publishing
 
@@ -193,6 +193,6 @@ Not yet: nothing from the first list. Every part that this page named is now a c
 
 Shop floors, warehouses, and field work. People do physical work at a station, guided by a screen: they follow a job, scan, count, and report. Planning at a desk stays in group 7. The barcode and SKU field of group 7 serves this group too.
 
-Today: [Gantt](../components/gantt), [Scheduler](../components/scheduler), [Stepper](../components/stepper), [Timer](../components/timer), [Gauge](../components/gauge), [UptimeBar](../components/uptime-bar), [ConnectionStatus](../components/connection-status), [SignaturePad](../components/signature-pad), [CameraCapture](../components/camera-capture).
+Today: [WorkOrderCard](../components/work-order-card), [ProductionCounter](../components/production-counter), [MachineBoard](../components/machine-board), [OeeGauge](../components/oee-gauge), [DowntimePicker](../components/downtime-picker), [WorkInstructions](../components/work-instructions), [QualityCheck](../components/quality-check), [ControlChart](../components/control-chart), [ShiftHandover](../components/shift-handover), [PickingList](../components/picking-list), [SkuField](../components/sku-field), [Gantt](../components/gantt), [Scheduler](../components/scheduler), [Stepper](../components/stepper), [Timer](../components/timer), [Gauge](../components/gauge), [UptimeBar](../components/uptime-bar), [ConnectionStatus](../components/connection-status), [SignaturePad](../components/signature-pad), [CameraCapture](../components/camera-capture).
 
-Not yet: work order card, production counter with good and scrap against the target, machine status board, OEE gauge, downtime reason picker with big touch buttons, work instructions with a picture for each step, quality check with limits, control chart (SPC), shift handover notes, pick list with scan to confirm.
+Not yet: nothing from the first list. Every part that this page named is now a component.

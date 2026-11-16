@@ -405,6 +405,11 @@
     "css": 611
   },
   {
+    "name": "BlessControlChart",
+    "js": 2081,
+    "css": 401
+  },
+  {
     "name": "BlessConversationList",
     "js": 1402,
     "css": 869
@@ -518,6 +523,11 @@
     "name": "BlessDonutChart",
     "js": 1216,
     "css": 583
+  },
+  {
+    "name": "BlessDowntimePicker",
+    "js": 1906,
+    "css": 1290
   },
   {
     "name": "BlessDrawer",
@@ -801,7 +811,7 @@
   },
   {
     "name": "BlessInvoice",
-    "js": 1844,
+    "js": 1842,
     "css": 802
   },
   {
@@ -920,6 +930,11 @@
     "css": 407
   },
   {
+    "name": "BlessMachineBoard",
+    "js": 1069,
+    "css": 540
+  },
+  {
     "name": "BlessMarimekko",
     "js": 1269,
     "css": 438
@@ -1028,6 +1043,11 @@
     "name": "BlessNotificationPrefs",
     "js": 1034,
     "css": 404
+  },
+  {
+    "name": "BlessOeeGauge",
+    "js": 1838,
+    "css": 732
   },
   {
     "name": "BlessOnboardingChecklist",
@@ -1140,6 +1160,11 @@
     "css": 1317
   },
   {
+    "name": "BlessPickingList",
+    "js": 2423,
+    "css": 858
+  },
+  {
     "name": "BlessPictogram",
     "js": 1056,
     "css": 462
@@ -1205,6 +1230,11 @@
     "css": 1343
   },
   {
+    "name": "BlessProductionCounter",
+    "js": 1164,
+    "css": 608
+  },
+  {
     "name": "BlessProfileCard",
     "js": 2206,
     "css": 1412
@@ -1238,6 +1268,11 @@
     "name": "BlessQrCode",
     "js": 627,
     "css": 239
+  },
+  {
+    "name": "BlessQualityCheck",
+    "js": 2412,
+    "css": 1345
   },
   {
     "name": "BlessQueryBuilder",
@@ -1448,6 +1483,11 @@
     "name": "BlessSheet",
     "js": 1188,
     "css": 916
+  },
+  {
+    "name": "BlessShiftHandover",
+    "js": 2102,
+    "css": 1342
   },
   {
     "name": "BlessShipmentTracker",
@@ -1732,7 +1772,7 @@
   {
     "name": "BlessTicketView",
     "js": 2832,
-    "css": 1544
+    "css": 1556
   },
   {
     "name": "BlessTimePicker",
@@ -1923,6 +1963,16 @@
     "name": "BlessWishlistButton",
     "js": 867,
     "css": 415
+  },
+  {
+    "name": "BlessWorkInstructions",
+    "js": 1985,
+    "css": 1291
+  },
+  {
+    "name": "BlessWorkOrderCard",
+    "js": 1942,
+    "css": 1269
   },
   {
     "name": "BlessWorkoutLog",
