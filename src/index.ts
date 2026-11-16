@@ -522,3 +522,5 @@ export type {
 } from "./components/BlessApprovalFlow.vue";
 export { default as BlessVersionHistory } from "./components/BlessVersionHistory.vue";
 export type { BlessVersion } from "./components/BlessVersionHistory.vue";
+export { default as BlessQuiz } from "./components/BlessQuiz.vue";
+export type { BlessQuizQuestion } from "./components/BlessQuiz.vue";

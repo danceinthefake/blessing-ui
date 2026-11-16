@@ -531,7 +531,7 @@ Sixteen components, 302 → 318. Each uses native platform APIs only: the librar
 - ✅ `BlessTaskList`: tasks with check boxes, an assignee, a due date, and subtasks.
 - ✅ `BlessApprovalFlow`: the steps of a request, with approvers and their decisions.
 - ✅ `BlessVersionHistory`: saved versions with the author and the time, and a restore button.
-- `BlessQuiz`: questions with choices, a check after each answer with the reason, and a score.
+- ✅ `BlessQuiz`: questions with choices, a check after each answer with the reason, and a score.
 - `BlessFlashcards`: cards that flip to show the answer, sorted by what the learner knows.
 - `BlessLessonPath`: a path of lessons that are done, current, or locked.
 - `BlessAchievements`: a grid of badges that are earned or locked, with the progress to each.
