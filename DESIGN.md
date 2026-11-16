@@ -662,7 +662,7 @@ Eleven components, 396 → 407. Each uses native platform APIs only: the library
 - ✅ `BlessMarginComments`: the blocks of a document with their comments in the margin next to them.
 - ✅ `BlessShareAccess`: the people who can open a file, their access level, and the access for a link.
 - ✅ `BlessMindMap`: a central idea with its branches on two sides, drawn in SVG.
-- `BlessTimeTracker`: a timer for the current task and a list of time entries with a total for each day.
+- ✅ `BlessTimeTracker`: a timer for the current task and a list of time entries with a total for each day.
 - `BlessRoomBooking`: the rooms and the hours of one day, with the booked times and a free time to pick.
 - `BlessFileBrowser`: the files and folders of one folder as a grid or a list, with a path to go back.
 - `BlessCourseCard`: a course with the picture, the teacher, the number of lessons, the level, and the progress.

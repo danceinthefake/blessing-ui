@@ -18900,6 +18900,57 @@
   "slots": [],
   "exposed": []
  },
+ "BlessTimeTracker": {
+  "props": [
+   {
+    "name": "locale",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"en\"",
+    "description": ""
+   },
+   {
+    "name": "timeZone",
+    "type": "string | undefined",
+    "required": false,
+    "description": "an IANA time zone for the days and times; set it when you render on a server"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ task: string; start: string; stop: string; remove: (task: string) => string; total: string; untitled: string; duration: (h: number, m: number) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "BlessTimeEntry[] | undefined",
+    "required": false,
+    "default": "[]",
+    "description": ""
+   },
+   {
+    "name": "running",
+    "type": "{ task: string; start: number; } | null | undefined",
+    "required": false,
+    "default": "null",
+    "description": "the task that runs now, if any; keep it in your store so a reload does not lose it"
+   }
+  ],
+  "events": [
+   {
+    "name": "update:modelValue",
+    "type": "[value: BlessTimeEntry[]]",
+    "description": ""
+   },
+   {
+    "name": "update:running",
+    "type": "[value: { task: string; start: number; } | null]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessTimeline": {
   "props": [
    {

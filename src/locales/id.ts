@@ -205,6 +205,7 @@ import type BlessThermostat from "../components/BlessThermostat.vue";
 import type BlessThread from "../components/BlessThread.vue";
 import type BlessTicket from "../components/BlessTicket.vue";
 import type BlessTicketView from "../components/BlessTicketView.vue";
+import type BlessTimeTracker from "../components/BlessTimeTracker.vue";
 import type BlessTimer from "../components/BlessTimer.vue";
 import type BlessToolCall from "../components/BlessToolCall.vue";
 import type BlessTour from "../components/BlessTour.vue";
@@ -432,6 +433,7 @@ export type BlessLabelsFull = {
   BlessThread: All<typeof BlessThread>;
   BlessTicket: All<typeof BlessTicket>;
   BlessTicketView: All<typeof BlessTicketView>;
+  BlessTimeTracker: All<typeof BlessTimeTracker>;
   BlessTimer: All<typeof BlessTimer>;
   BlessToolCall: All<typeof BlessToolCall>;
   BlessTour: All<typeof BlessTour>;
@@ -1926,6 +1928,15 @@ export const labelsId: BlessLabelsFull = {
     addNote: "Tambah catatan",
     internal: "Hanya tim Anda yang melihat catatan ini.",
     placeholder: "Tulis pesan",
+  },
+  BlessTimeTracker: {
+    task: "Sedang mengerjakan apa?",
+    start: "Mulai",
+    stop: "Berhenti",
+    remove: (t) => `Hapus ${t}`,
+    total: "Total",
+    untitled: "Tanpa nama tugas",
+    duration: (h, m) => (h ? `${h} j ${String(m).padStart(2, "0")} mnt` : `${m} mnt`),
   },
   BlessTimer: {
     start: "Mulai",
