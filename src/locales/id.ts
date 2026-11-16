@@ -5,6 +5,7 @@ import type BlessAgentPlan from "../components/BlessAgentPlan.vue";
 // a new English word without an Indonesian one fails the typecheck.
 import type BlessAnnotator from "../components/BlessAnnotator.vue";
 import type BlessApiKeyField from "../components/BlessApiKeyField.vue";
+import type BlessAppointmentCard from "../components/BlessAppointmentCard.vue";
 import type BlessApprovalFlow from "../components/BlessApprovalFlow.vue";
 import type BlessAudioRecorder from "../components/BlessAudioRecorder.vue";
 import type BlessAvailabilityGrid from "../components/BlessAvailabilityGrid.vue";
@@ -190,6 +191,7 @@ export type BlessLabelsFull = {
   BlessAgentPlan: All<typeof BlessAgentPlan>;
   BlessAnnotator: All<typeof BlessAnnotator>;
   BlessApiKeyField: All<typeof BlessApiKeyField>;
+  BlessAppointmentCard: All<typeof BlessAppointmentCard>;
   BlessApprovalFlow: All<typeof BlessApprovalFlow>;
   BlessAudioRecorder: All<typeof BlessAudioRecorder>;
   BlessAvailabilityGrid: All<typeof BlessAvailabilityGrid>;
@@ -432,6 +434,15 @@ export const labelsId: BlessLabelsFull = {
     cancel: "Batal",
     created: (w) => `Dibuat ${w}`,
     lastUsed: (w) => `Terakhir dipakai ${w}`,
+  },
+  BlessAppointmentCard: {
+    confirmed: "Terkonfirmasi",
+    pending: "Menunggu konfirmasi",
+    cancelled: "Dibatalkan",
+    video: "Panggilan video",
+    join: "Masuk panggilan",
+    reschedule: "Ubah jadwal",
+    cancel: "Batalkan",
   },
   BlessApprovalFlow: {
     title: "Persetujuan",

@@ -591,7 +591,7 @@ Twelve components, 347 → 359. Each uses native platform APIs only: the library
 - ✅ `BlessWorkoutLog`: sets of an exercise with weight and repetitions, and the last session.
 - ✅ `BlessSleepChart`: the stages of sleep across a night.
 - ✅ `BlessBodyMap`: a body outline where a person points to the place of pain.
-- `BlessAppointmentCard`: an appointment with the doctor, the place, the time, and actions.
+- ✅ `BlessAppointmentCard`: an appointment with the doctor, the place, the time, and actions.
 - `BlessDeviceTile`: a device with its state, a switch, and the main reading.
 - `BlessThermostat`: a dial that sets the target temperature and shows the current one.
 - `BlessFloorPlan`: the rooms of a home with the devices in each room.
