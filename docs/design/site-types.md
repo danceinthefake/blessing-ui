@@ -25,14 +25,14 @@ For each group, the page lists the components and the [blocks](../blocks/) that 
 | 7. Business software and ERP      |               13 |      14 |
 | 8. Finance                        |               15 |       0 |
 | 9. Education                      |                7 |       5 |
-| 10. Health and fitness            |                6 |       6 |
+| 10. Health and fitness            |               12 |       0 |
 | 11. Developer tools               |               13 |       5 |
 | 12. Utilities                     |                6 |       5 |
 | 13. Search and reference          |                6 |       4 |
 | 14. Government and civic services |                9 |       5 |
 | 15. Brand and marketing sites     |               11 |       5 |
 | 16. AI assistants and agents      |               11 |       6 |
-| 17. Connected devices             |                6 |       6 |
+| 17. Connected devices             |               12 |       0 |
 | 18. Operations                    |                9 |      10 |
 
 ## 1. Content and publishing
@@ -121,9 +121,9 @@ Not yet: course card, gradebook, assignment with a submission, certificate, less
 
 Trackers, clinics, and telemedicine. People log the body and book care.
 
-Today: [HabitTracker](../components/habit-tracker), [HeatmapCalendar](../components/heatmap-calendar), [Gauge](../components/gauge), [Timer](../components/timer), [SlotPicker](../components/slot-picker), [RangeChart](../components/range-chart).
+Today: [VitalsPanel](../components/vitals-panel), [MedicationSchedule](../components/medication-schedule), [WorkoutLog](../components/workout-log), [SleepChart](../components/sleep-chart), [BodyMap](../components/body-map), [AppointmentCard](../components/appointment-card), [HabitTracker](../components/habit-tracker), [HeatmapCalendar](../components/heatmap-calendar), [Gauge](../components/gauge), [Timer](../components/timer), [SlotPicker](../components/slot-picker), [RangeChart](../components/range-chart).
 
-Not yet: vital signs readout, medication schedule, workout set logger, sleep chart, body map to point at pain, appointment card.
+Not yet: nothing from the first list. Every part that this page named is now a component.
 
 ## 11. Developer tools
 
@@ -185,9 +185,9 @@ Not yet: side panel for a document that the model writes, context chips for file
 
 Smart home and vehicle apps. People see the state of a device and change it.
 
-Today: [Knob](../components/knob), [Switch](../components/switch), [Slider](../components/slider), [Gauge](../components/gauge), [ConnectionStatus](../components/connection-status), [Sparkline](../components/sparkline).
+Today: [DeviceTile](../components/device-tile), [Thermostat](../components/thermostat), [FloorPlan](../components/floor-plan), [SceneButtons](../components/scene-buttons), [BatteryLevel](../components/battery-level), [RuleBuilder](../components/rule-builder), [Knob](../components/knob), [Switch](../components/switch), [Slider](../components/slider), [Gauge](../components/gauge), [ConnectionStatus](../components/connection-status), [Sparkline](../components/sparkline).
 
-Not yet: device tile, thermostat dial, floor plan with devices, scene buttons, battery level, automation rule.
+Not yet: nothing from the first list. Every part that this page named is now a component.
 
 ## 18. Operations
 

@@ -48,7 +48,6 @@ const words = computed(() =>
   >
     <span class="bless-battery__body" aria-hidden="true">
       <span class="bless-battery__fill" :style="{ inlineSize: `${value}%` }" />
-      <span v-if="charging" class="bless-battery__bolt">⚡︎</span>
     </span>
     <span class="bless-battery__text" aria-hidden="true">
       {{ value }}%<template v-if="charging"> · {{ text.charging }}</template
@@ -89,16 +88,7 @@ const words = computed(() =>
   block-size: 100%;
   background: currentColor;
 }
-.bless-battery__bolt {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  color: var(--bless-color-bg);
-  font-size: 0.7rem;
-  mix-blend-mode: difference;
-}
-/* low: red with the word; charging: the bolt with the word */
+/* low: red with the word; charging: the word */
 .bless-battery.is-low {
   color: var(--bless-color-danger-text);
   font-weight: var(--bless-font-weight-bold);
