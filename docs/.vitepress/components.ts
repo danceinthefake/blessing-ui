@@ -1108,6 +1108,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "line-item-editor",
         text: "Rows of products with totals",
       },
+      {
+        name: "BlessJournalEntry",
+        slug: "journal-entry",
+        text: "Debit and credit lines that must balance",
+      },
     ],
   },
   {

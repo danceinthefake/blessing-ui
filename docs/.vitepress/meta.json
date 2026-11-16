@@ -8627,6 +8627,57 @@
   ],
   "exposed": []
  },
+ "BlessJournalEntry": {
+  "props": [
+   {
+    "name": "accounts",
+    "type": "{ code: string; name: string; }[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "currency",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"USD\"",
+    "description": ""
+   },
+   {
+    "name": "locale",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"en\"",
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ title: string; account: string; debit: string; credit: string; memo: string; pick: string; add: string; remove: (row: number) => string; field: (what: string, row: number) => string; total: string; balanced: string; off: (amount: string, side: string) => string; post: string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "BlessJournalLine[] | undefined",
+    "required": false,
+    "default": "[]",
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "update:modelValue",
+    "type": "[value: BlessJournalLine[]]",
+    "description": ""
+   },
+   {
+    "name": "post",
+    "type": "[lines: BlessJournalLine[]]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessJsonViewer": {
   "props": [
    {

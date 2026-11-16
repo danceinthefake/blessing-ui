@@ -43,6 +43,7 @@ Beberapa komponen memakai metode yang sudah dikenal. Kami menulis ulang masing-m
 
 - [Treemap](../../components/treemap) memakai tata letak squarified dari Bruls, Huijsmans, dan van Wijk (2000).
 - [Input kartu](../../components/card-input) memeriksa nomor dengan algoritma Luhn (Hans Peter Luhn, 1954).
+- [Jurnal](../../components/journal-entry) mengikuti pembukuan berpasangan, seperti yang ditulis Luca Pacioli pada 1494: debit dan kredit harus sama.
 - [Jadwal pembayaran](../../components/payment-schedule) memakai rumus anuitas standar untuk pinjaman dengan cicilan bulanan yang sama.
 - [Pemilih pengulangan](../../components/recurrence-picker) menulis aturannya sebagai RRULE dari [RFC 5545](https://www.rfc-editor.org/rfc/rfc5545), standar iCalendar.
 - Sumbu grafik memakai langkah bulat 1, 2, 2,5, dan 5, mengikuti "nice numbers" dari Paul Heckbert (1990).

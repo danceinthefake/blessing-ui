@@ -87,6 +87,7 @@ import type BlessIncidentTimeline from "../components/BlessIncidentTimeline.vue"
 import type BlessInfiniteCanvas from "../components/BlessInfiniteCanvas.vue";
 import type BlessInputNumber from "../components/BlessInputNumber.vue";
 import type BlessInvoice from "../components/BlessInvoice.vue";
+import type BlessJournalEntry from "../components/BlessJournalEntry.vue";
 import type BlessKanban from "../components/BlessKanban.vue";
 import type BlessKeyValueEditor from "../components/BlessKeyValueEditor.vue";
 import type BlessLeaderboard from "../components/BlessLeaderboard.vue";
@@ -297,6 +298,7 @@ export type BlessLabelsFull = {
   BlessInfiniteCanvas: All<typeof BlessInfiniteCanvas>;
   BlessInputNumber: All<typeof BlessInputNumber>;
   BlessInvoice: All<typeof BlessInvoice>;
+  BlessJournalEntry: All<typeof BlessJournalEntry>;
   BlessKanban: All<typeof BlessKanban>;
   BlessKeyValueEditor: All<typeof BlessKeyValueEditor>;
   BlessLeaderboard: All<typeof BlessLeaderboard>;
@@ -1043,6 +1045,21 @@ export const labelsId: BlessLabelsFull = {
     sent: "Terkirim",
     paid: "Lunas",
     overdue: "Lewat jatuh tempo",
+  },
+  BlessJournalEntry: {
+    title: "Jurnal",
+    account: "Akun",
+    debit: "Debit",
+    credit: "Kredit",
+    memo: "Keterangan",
+    pick: "Pilih akun",
+    add: "Tambah baris",
+    remove: (r) => `Hapus baris ${r}`,
+    field: (w, r) => `${w}, baris ${r}`,
+    total: "Total",
+    balanced: "Seimbang",
+    off: (a, side) => `Belum seimbang: sisi ${side} lebih ${a}`,
+    post: "Posting jurnal",
   },
   BlessKanban: {
     card: (i, col) => `Pindahkan kartu ${i} di ${col}`,
