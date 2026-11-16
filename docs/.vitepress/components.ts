@@ -962,6 +962,7 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "small-multiples",
         text: "A grid of small line charts on one scale",
       },
+      { name: "BlessSleepChart", slug: "sleep-chart", text: "The stages of sleep across a night" },
       {
         name: "BlessPricingTable",
         slug: "pricing-table",
