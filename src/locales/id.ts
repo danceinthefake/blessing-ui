@@ -120,6 +120,7 @@ import type BlessPaletteViewer from "../components/BlessPaletteViewer.vue";
 import type BlessParallelCoordinates from "../components/BlessParallelCoordinates.vue";
 import type BlessPareto from "../components/BlessPareto.vue";
 import type BlessPaymentSchedule from "../components/BlessPaymentSchedule.vue";
+import type BlessPayslip from "../components/BlessPayslip.vue";
 import type BlessPaywall from "../components/BlessPaywall.vue";
 import type BlessPermissionMatrix from "../components/BlessPermissionMatrix.vue";
 import type BlessPhoneInput from "../components/BlessPhoneInput.vue";
@@ -336,6 +337,7 @@ export type BlessLabelsFull = {
   BlessParallelCoordinates: All<typeof BlessParallelCoordinates>;
   BlessPareto: All<typeof BlessPareto>;
   BlessPaymentSchedule: All<typeof BlessPaymentSchedule>;
+  BlessPayslip: All<typeof BlessPayslip>;
   BlessPaywall: All<typeof BlessPaywall>;
   BlessPermissionMatrix: All<typeof BlessPermissionMatrix>;
   BlessPhoneInput: All<typeof BlessPhoneInput>;
@@ -1310,6 +1312,17 @@ export const labelsId: BlessLabelsFull = {
     balance: "Sisa",
     paid: "lunas",
     totals: (p, i) => `Total yang Anda bayar ${p}, dengan bunga ${i}.`,
+  },
+  BlessPayslip: {
+    title: "Slip gaji",
+    employee: "Karyawan",
+    period: "Periode",
+    payDate: "Tanggal gajian",
+    earnings: "Pendapatan",
+    deductions: "Potongan",
+    totalEarnings: "Total pendapatan",
+    totalDeductions: "Total potongan",
+    net: "Gaji bersih",
   },
   BlessPaywall: {
     title: "Baca sisa artikel ini",

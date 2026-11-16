@@ -140,7 +140,8 @@
     .bless-record__title,
     .bless-invoice__title,
     .bless-invoice__label,
-    .bless-tkview__subject
+    .bless-tkview__subject,
+    .bless-payslip__title
   ) {
   margin: 0;
   padding: 0;

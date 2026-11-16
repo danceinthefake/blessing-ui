@@ -670,3 +670,5 @@ export { splitUnits } from "./components/BlessUnitConverter.vue";
 export type { BlessUnit } from "./components/BlessUnitConverter.vue";
 export { default as BlessDocumentStatus } from "./components/BlessDocumentStatus.vue";
 export type { BlessDocState } from "./components/BlessDocumentStatus.vue";
+export { default as BlessPayslip } from "./components/BlessPayslip.vue";
+export type { BlessPayLine } from "./components/BlessPayslip.vue";

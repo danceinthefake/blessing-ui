@@ -1134,6 +1134,7 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "document-status",
         text: "The states of a document with the next step",
       },
+      { name: "BlessPayslip", slug: "payslip", text: "Pay of a period with the net pay" },
     ],
   },
   {

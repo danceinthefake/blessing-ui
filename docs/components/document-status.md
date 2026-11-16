@@ -21,7 +21,7 @@ Shows where an order, an invoice, or a contract is in its life in an ERP. For th
   </template>
 </Demo>
 
-- `states` is the list of states in order. Each state has an `id`, a `label`, and an optional `time` when the document reached it.
+- `states` is the list of states in order. Each state has an `id` and a `label`. `time` is optional: it says when the document reached the state.
 - `v-model` is the id of the current state. It is filled, and it has `aria-current`. Done states have a tick, and states to come are dashed. Screen readers hear "done", "current state", or "not yet" after each name.
 - The button moves the document to the next state, such as "Mark as Sent", and emits `advance` with its id. After the last state, the button goes away.
 - `stopped` ends the chain with a word, such as "Cancelled". The states to come are struck through, and there is no button.
