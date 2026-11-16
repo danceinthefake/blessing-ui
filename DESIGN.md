@@ -617,6 +617,7 @@ Thirteen components, 359 → 372. Each uses native platform APIs only: the libra
 - ✅ `BlessMiniPlayer`: a small player that stays on the screen, with the track and the controls.
 - ✅ `BlessLyrics`: the lines of a song that follow the playback.
 - ✅ `BlessContinueWatching`: items with the place where you stopped, and a remove button.
+- ✅ Budget: after the round, the whole library is 244.2 KB gz JS and 67.5 KB gz CSS, over the old cap of 244 / 66. The cap is now 269 / 74, about 10% of room. Phase 38 is done.
 
 ### Deliberately skipped
 

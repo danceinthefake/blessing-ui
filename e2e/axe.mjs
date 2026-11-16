@@ -42,7 +42,8 @@ async function worker() {
   }
   await page.close();
 }
-await Promise.all(Array.from({ length: 4 }, worker));
+// AXE_TABS=1 checks one page at a time, for a machine with little free memory
+await Promise.all(Array.from({ length: Number(process.env.AXE_TABS) || 4 }, worker));
 
 let total = 0;
 const seen = new Map();
