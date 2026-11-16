@@ -586,3 +586,5 @@ export type { BlessForumTopic } from "./components/BlessForumTopics.vue";
 export { default as BlessVitalsPanel } from "./components/BlessVitalsPanel.vue";
 export { vitalState } from "./components/BlessVitalsPanel.vue";
 export type { BlessVital } from "./components/BlessVitalsPanel.vue";
+export { default as BlessMedicationSchedule } from "./components/BlessMedicationSchedule.vue";
+export type { BlessDose } from "./components/BlessMedicationSchedule.vue";

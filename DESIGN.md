@@ -587,7 +587,7 @@ Thirteen components, 334 → 347. Each uses native platform APIs only: the libra
 Twelve components, 347 → 359. Each uses native platform APIs only: the library adds no dependency. Each needs tests, a docs page with a live example, a README row, words in `labelsId`, and a pass of `src/classes.test.ts`. If a component uses a known method or names another party, credit it on the credits page. When a component lands, move its part from "Not yet" to "Today" on the site types page, in both languages.
 
 - ✅ `BlessVitalsPanel`: heart rate, blood pressure, and other readings with the normal range.
-- `BlessMedicationSchedule`: the doses of each medicine for the day, which you mark as taken.
+- ✅ `BlessMedicationSchedule`: the doses of each medicine for the day, which you mark as taken.
 - `BlessWorkoutLog`: sets of an exercise with weight and repetitions, and the last session.
 - `BlessSleepChart`: the stages of sleep across a night.
 - `BlessBodyMap`: a body outline where a person points to the place of pain.

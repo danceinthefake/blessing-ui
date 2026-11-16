@@ -1032,6 +1032,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         text: "Body readings with the normal range",
       },
       {
+        name: "BlessMedicationSchedule",
+        slug: "medication-schedule",
+        text: "Doses for the day to mark as taken",
+      },
+      {
         name: "BlessBalanceCard",
         slug: "balance-card",
         text: "An account balance with the change",

@@ -9130,6 +9130,44 @@
   ],
   "exposed": []
  },
+ "BlessMedicationSchedule": {
+  "props": [
+   {
+    "name": "doses",
+    "type": "BlessDose[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "now",
+    "type": "string | undefined",
+    "required": false,
+    "description": "the time now as HH:MM; with it, a dose that is due and not taken says late"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ title: string; late: string; taken: (done: number, total: number) => string; mark: (medicine: string, time: string) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "string[] | undefined",
+    "required": false,
+    "default": "[]",
+    "description": "the ids of the doses taken today"
+   }
+  ],
+  "events": [
+   {
+    "name": "update:modelValue",
+    "type": "[value: string[]]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessMention": {
   "props": [
    {
