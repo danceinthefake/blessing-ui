@@ -675,3 +675,5 @@ export type { BlessPayLine } from "./components/BlessPayslip.vue";
 export { default as BlessWorkOrderCard } from "./components/BlessWorkOrderCard.vue";
 export type { BlessWorkOrderState } from "./components/BlessWorkOrderCard.vue";
 export { default as BlessProductionCounter } from "./components/BlessProductionCounter.vue";
+export { default as BlessMachineBoard } from "./components/BlessMachineBoard.vue";
+export type { BlessMachine, BlessMachineState } from "./components/BlessMachineBoard.vue";
