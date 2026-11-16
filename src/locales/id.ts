@@ -364,6 +364,7 @@ export type BlessLabelsFull = {
   BlessWaterfallChart: All<typeof BlessWaterfallChart>;
   BlessWebhookLog: All<typeof BlessWebhookLog>;
   BlessWishlistButton: All<typeof BlessWishlistButton>;
+  BlessWorkoutLog: All<typeof BlessWorkoutLog>;
 };
 
 const copy = { copy: "Salin", copied: "Tersalin", copiedLive: "Disalin ke papan klip" };
@@ -1531,6 +1532,17 @@ export const labelsId: BlessLabelsFull = {
     added: (n) => `${n} ada di wishlist Anda.`,
     removed: (n) => `${n} keluar dari wishlist Anda.`,
   },
+  BlessWorkoutLog: {
+    set: "Set",
+    last: "Sebelumnya",
+    weight: "Beban",
+    reps: "Repetisi",
+    done: "Selesai",
+    add: "Tambah set",
+    remove: (n) => `Hapus set ${n}`,
+    volume: (t) => `Volume ${t}`,
+    field: (w, n) => `${w}, set ${n}`,
+  },
 };
 
 import type BlessVariantPicker from "../components/BlessVariantPicker.vue";
@@ -1543,3 +1555,5 @@ import type BlessWaterfallChart from "../components/BlessWaterfallChart.vue";
 import type BlessWebhookLog from "../components/BlessWebhookLog.vue";
 
 import type BlessWishlistButton from "../components/BlessWishlistButton.vue";
+
+import type BlessWorkoutLog from "../components/BlessWorkoutLog.vue";

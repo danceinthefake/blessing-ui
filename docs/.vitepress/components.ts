@@ -1037,6 +1037,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         text: "Doses for the day to mark as taken",
       },
       {
+        name: "BlessWorkoutLog",
+        slug: "workout-log",
+        text: "Sets with weight and reps, and last time",
+      },
+      {
         name: "BlessBalanceCard",
         slug: "balance-card",
         text: "An account balance with the change",
