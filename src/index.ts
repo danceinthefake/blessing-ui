@@ -508,3 +508,5 @@ export { default as BlessPaletteViewer } from "./components/BlessPaletteViewer.v
 export type { BlessColorPalette } from "./components/BlessPaletteViewer.vue";
 export { default as BlessIconPicker } from "./components/BlessIconPicker.vue";
 export type { BlessPickIcon } from "./components/BlessIconPicker.vue";
+export { default as BlessTypeScale } from "./components/BlessTypeScale.vue";
+export type { BlessTypeStep } from "./components/BlessTypeScale.vue";

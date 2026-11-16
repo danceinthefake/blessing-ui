@@ -16099,6 +16099,32 @@
   "slots": [],
   "exposed": []
  },
+ "BlessTypeScale": {
+  "props": [
+   {
+    "name": "steps",
+    "type": "BlessTypeStep[] | undefined",
+    "required": false,
+    "description": "the steps to show; default: the text sizes of the library"
+   },
+   {
+    "name": "sample",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Home Studio, real sound\"",
+    "description": "the words to show in each size"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ title: string; size: string; line: string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessTypingIndicator": {
   "props": [
    {
