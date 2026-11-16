@@ -84,7 +84,8 @@ Seventy-eight new components, 396 in all, for finance, commerce, communication, 
 - `BlessControlChart`: a Shewhart control chart in SVG with the mean and control limits, out-of-control points as diamonds, a caption with the count, and a hidden table.
 - `BlessShiftHandover`: notes from one shift to the next with key facts, issues by level in words that you close, a count of open issues, and a take-over button.
 - `BlessPickingList`: items to pick in walk order by location, scans that count through the SKU field, wrong and extra scans in an alert, hand counts, and a complete event.
-- `BlessMarginComments`: the parts of a document with their comments in the margin, a box to add one, and a named landmark for each margin. 397 components in all.
+- `BlessMarginComments`: the parts of a document with their comments in the margin, a box to add one, and a named landmark for each margin.
+- `BlessShareAccess`: the people with access to a file and their role, an email invite, general access for the link, and a copy button. 398 components in all.
 
 ## 0.7.0 — 2026-11-16
 

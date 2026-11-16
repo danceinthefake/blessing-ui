@@ -660,7 +660,7 @@ Ten components, 386 → 396. Each uses native platform APIs only: the library ad
 Eleven components, 396 → 407. Each uses native platform APIs only: the library adds no dependency. Each needs tests, a docs page with a live example, a README row, words in `labelsId`, and a pass of `src/classes.test.ts`. If a component uses a known method or names another party, credit it on the credits page. When a component lands, move its part from "Not yet" to "Today" on the site types page, in both languages.
 
 - ✅ `BlessMarginComments`: the blocks of a document with their comments in the margin next to them.
-- `BlessShareAccess`: the people who can open a file, their access level, and the access for a link.
+- ✅ `BlessShareAccess`: the people who can open a file, their access level, and the access for a link.
 - `BlessMindMap`: a central idea with its branches on two sides, drawn in SVG.
 - `BlessTimeTracker`: a timer for the current task and a list of time entries with a total for each day.
 - `BlessRoomBooking`: the rooms and the hours of one day, with the booked times and a free time to pick.

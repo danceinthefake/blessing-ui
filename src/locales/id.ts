@@ -172,6 +172,7 @@ import type BlessSceneButtons from "../components/BlessSceneButtons.vue";
 import type BlessScheduler from "../components/BlessScheduler.vue";
 import type BlessSeatPicker from "../components/BlessSeatPicker.vue";
 import type BlessSelectionToolbar from "../components/BlessSelectionToolbar.vue";
+import type BlessShareAccess from "../components/BlessShareAccess.vue";
 import type BlessShareBar from "../components/BlessShareBar.vue";
 import type BlessShiftHandover from "../components/BlessShiftHandover.vue";
 import type BlessShipmentTracker from "../components/BlessShipmentTracker.vue";
@@ -398,6 +399,7 @@ export type BlessLabelsFull = {
   BlessScheduler: All<typeof BlessScheduler>;
   BlessSeatPicker: All<typeof BlessSeatPicker>;
   BlessSelectionToolbar: All<typeof BlessSelectionToolbar>;
+  BlessShareAccess: All<typeof BlessShareAccess>;
   BlessShareBar: All<typeof BlessShareBar>;
   BlessShiftHandover: All<typeof BlessShiftHandover>;
   BlessShipmentTracker: All<typeof BlessShipmentTracker>;
@@ -1695,6 +1697,26 @@ export const labelsId: BlessLabelsFull = {
     summary: (n, t) => `${n} kursi · ${t}`,
   },
   BlessSelectionToolbar: { label: "Aksi teks" },
+  BlessShareAccess: {
+    view: "Bisa melihat",
+    comment: "Bisa berkomentar",
+    edit: "Bisa mengedit",
+    owner: "Pemilik",
+    email: "Tambahkan orang lewat email",
+    newRole: "Akses untuk orang baru",
+    invite: "Undang",
+    people: "Orang yang punya akses",
+    remove: "Hapus",
+    roleFor: (n) => `Akses untuk ${n}`,
+    removeFor: (n) => `Hapus ${n}`,
+    general: "Akses umum",
+    restricted: "Hanya orang di daftar",
+    anyone: "Siapa pun yang punya tautan",
+    restrictedHint: "Hanya orang di atas yang bisa membukanya.",
+    anyoneHint: (r) => `Siapa pun yang punya tautan: ${r.toLowerCase()}.`,
+    copy: "Salin tautan",
+    copied: "Tautan disalin",
+  },
   BlessShareBar: {
     title: "Bagikan",
     share: "Bagikan…",
