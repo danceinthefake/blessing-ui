@@ -45,7 +45,8 @@ Twenty-nine new components, 347 in all, for finance, commerce, communication, an
 - `BlessThermostat`: a knob for the target temperature, the room temperature, step buttons, heat, cool, auto, and off modes, and a status line.
 - `BlessFloorPlan`: the rooms of a home as buttons on a grid with a count of devices and how many are on, and a slot for the open room.
 - `BlessSceneButtons`: scene buttons that set many devices at once, with the running scene pressed and a status after each start.
-- `BlessBatteryLevel`: a battery meter with the percent, charging and low states in words, and the name of the device for screen readers. 358 components in all.
+- `BlessBatteryLevel`: a battery meter with the percent, charging and low states in words, and the name of the device for screen readers.
+- `BlessRuleBuilder`: an automation rule with a trigger, conditions, and actions in native menus, rows to add and remove, a sentence that reads the rule, and save. 359 components in all.
 
 ## 0.7.0 — 2026-11-16
 

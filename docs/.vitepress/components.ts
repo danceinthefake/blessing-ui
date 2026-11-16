@@ -188,6 +188,7 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "query-builder",
         text: "Filter rules in nested all and any groups",
       },
+      { name: "BlessRuleBuilder", slug: "rule-builder", text: "When, if, then automation rules" },
       { name: "BlessFilterBar", slug: "filter-bar", text: "Filters as chips in a row" },
       {
         name: "BlessFacetFilter",
