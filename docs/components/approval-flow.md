@@ -10,7 +10,7 @@ import ApprovalFlowBasic from "../demos/ApprovalFlowBasic.vue";
 
 <p class="bless-lead">The steps of a request, with approvers and their decisions</p>
 
-Shows who must sign off a request, in which order, and what each person decided. The reader can approve or reject when it is their turn. For steps that one person goes through, use the [stepper](./stepper).
+Shows who must sign off a request, in which order, and what each person decided. If it is the turn of the reader, they can approve or reject. For steps that one person goes through, use the [stepper](./stepper).
 
 <Demo title="Basic">
   <ApprovalFlowBasic />
