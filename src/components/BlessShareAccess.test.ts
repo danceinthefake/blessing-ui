@@ -18,7 +18,7 @@ test("BlessShareAccess: invite, change and remove access, general access, and co
   expect(w.findAll("li")[0]!.text()).toContain("Owner");
   expect(w.findAll("li")[0]!.find("select").exists()).toBe(false);
   await w.find('[aria-label="Access for Budi"]').setValue("edit");
-  expect(w.props("people")[1]!.role).toBe("edit");
+  expect(w.props("people")![1]!.role).toBe("edit");
   await w.find('input[type="email"]').setValue("cici@example.com");
   await w.find('[aria-label="Access for the new people"]').setValue("comment");
   await w.find("form").trigger("submit");
