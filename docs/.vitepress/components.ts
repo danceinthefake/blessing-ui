@@ -679,6 +679,7 @@ export const groups: { title: string; items: Entry[] }[] = [
         text: "Multi-step single/multiple/freeform",
       },
       { name: "BlessQuiz", slug: "quiz", text: "Questions with choices, a check and a score" },
+      { name: "BlessFlashcards", slug: "flashcards", text: "Cards with a question and an answer" },
       { name: "BlessPoll", slug: "poll", text: "One-question vote with results" },
       {
         name: "BlessPresenceCursors",
