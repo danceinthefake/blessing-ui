@@ -12,6 +12,7 @@ import type BlessAvailabilityGrid from "../components/BlessAvailabilityGrid.vue"
 import type BlessAvatarGroup from "../components/BlessAvatarGroup.vue";
 import type BlessBalanceCard from "../components/BlessBalanceCard.vue";
 import type BlessBarChart from "../components/BlessBarChart.vue";
+import type BlessBatteryLevel from "../components/BlessBatteryLevel.vue";
 import type BlessBeeswarm from "../components/BlessBeeswarm.vue";
 import type BlessBodyMap from "../components/BlessBodyMap.vue";
 import type BlessBoxPlot from "../components/BlessBoxPlot.vue";
@@ -202,6 +203,7 @@ export type BlessLabelsFull = {
   BlessAvatarGroup: All<typeof BlessAvatarGroup>;
   BlessBalanceCard: All<typeof BlessBalanceCard>;
   BlessBarChart: All<typeof BlessBarChart>;
+  BlessBatteryLevel: All<typeof BlessBatteryLevel>;
   BlessBeeswarm: All<typeof BlessBeeswarm>;
   BlessBodyMap: All<typeof BlessBodyMap>;
   BlessBoxPlot: All<typeof BlessBoxPlot>;
@@ -487,6 +489,11 @@ export const labelsId: BlessLabelsFull = {
     down: "turun",
   },
   BlessBarChart: { category: "Kategori" },
+  BlessBatteryLevel: {
+    battery: "Baterai",
+    charging: "Mengisi",
+    low: "Lemah",
+  },
   BlessBeeswarm: {
     group: "Kelompok",
     count: "Jumlah",

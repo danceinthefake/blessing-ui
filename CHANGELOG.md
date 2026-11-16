@@ -44,7 +44,8 @@ Twenty-nine new components, 347 in all, for finance, commerce, communication, an
 - `BlessDeviceTile`: a device with a switch named with it, on, off, or offline in words, the room, and the main reading, or no switch for a sensor.
 - `BlessThermostat`: a knob for the target temperature, the room temperature, step buttons, heat, cool, auto, and off modes, and a status line.
 - `BlessFloorPlan`: the rooms of a home as buttons on a grid with a count of devices and how many are on, and a slot for the open room.
-- `BlessSceneButtons`: scene buttons that set many devices at once, with the running scene pressed and a status after each start. 357 components in all.
+- `BlessSceneButtons`: scene buttons that set many devices at once, with the running scene pressed and a status after each start.
+- `BlessBatteryLevel`: a battery meter with the percent, charging and low states in words, and the name of the device for screen readers. 358 components in all.
 
 ## 0.7.0 — 2026-11-16
 
