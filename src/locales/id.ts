@@ -92,6 +92,7 @@ import type BlessKeyValueEditor from "../components/BlessKeyValueEditor.vue";
 import type BlessLeaderboard from "../components/BlessLeaderboard.vue";
 import type BlessLessonPath from "../components/BlessLessonPath.vue";
 import type BlessLightbox from "../components/BlessLightbox.vue";
+import type BlessLineItemEditor from "../components/BlessLineItemEditor.vue";
 import type BlessLiveBlog from "../components/BlessLiveBlog.vue";
 import type BlessLogViewer from "../components/BlessLogViewer.vue";
 import type BlessLollipop from "../components/BlessLollipop.vue";
@@ -301,6 +302,7 @@ export type BlessLabelsFull = {
   BlessLeaderboard: All<typeof BlessLeaderboard>;
   BlessLessonPath: All<typeof BlessLessonPath>;
   BlessLightbox: All<typeof BlessLightbox>;
+  BlessLineItemEditor: All<typeof BlessLineItemEditor>;
   BlessLiveBlog: All<typeof BlessLiveBlog>;
   BlessLogViewer: All<typeof BlessLogViewer>;
   BlessLollipop: All<typeof BlessLollipop>;
@@ -1085,6 +1087,23 @@ export const labelsId: BlessLabelsFull = {
     zoomIn: "Perbesar",
     zoomOut: "Perkecil",
     image: (n, of) => `Gambar ${n} dari ${of}`,
+  },
+  BlessLineItemEditor: {
+    title: "Baris",
+    product: "Produk",
+    quantity: "Jml",
+    unit: "Satuan",
+    price: "Harga",
+    discount: "Disk. %",
+    tax: "Pajak %",
+    amount: "Jumlah",
+    add: "Tambah baris",
+    remove: (r) => `Hapus baris ${r}`,
+    field: (w, r) => `${w}, baris ${r}`,
+    subtotal: "Subtotal",
+    discounts: "Diskon",
+    taxes: "Pajak",
+    total: "Total",
   },
   BlessLiveBlog: {
     title: "Kabar langsung",

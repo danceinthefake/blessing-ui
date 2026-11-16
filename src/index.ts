@@ -651,3 +651,6 @@ export type {
 } from "./components/BlessTicketView.vue";
 export { default as BlessSlaTimer } from "./components/BlessSlaTimer.vue";
 export { minutesLeft } from "./components/BlessSlaTimer.vue";
+export { default as BlessLineItemEditor } from "./components/BlessLineItemEditor.vue";
+export { lineTotals, lineNet } from "./components/BlessLineItemEditor.vue";
+export type { BlessLineItem } from "./components/BlessLineItemEditor.vue";
