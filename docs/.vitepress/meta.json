@@ -15701,7 +15701,7 @@
    },
    {
     "name": "labels",
-    "type": "Partial<{ label: string; hint: string; valid: string; invalid: string; scanned: (code: string) => string; }> | undefined",
+    "type": "Partial<{ hint: string; valid: string; invalid: string; scanned: (code: string) => string; }> | undefined",
     "required": false,
     "description": ""
    },
@@ -19298,6 +19298,67 @@
    }
   ],
   "events": [],
+  "slots": [],
+  "exposed": []
+ },
+ "BlessUnitConverter": {
+  "props": [
+   {
+    "name": "units",
+    "type": "BlessUnit[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "locale",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"en\"",
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ amount: string; from: string; to: string; swap: string; result: string; split: string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "amount",
+    "type": "number | undefined",
+    "required": false,
+    "default": "1",
+    "description": ""
+   },
+   {
+    "name": "from",
+    "type": "string | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "to",
+    "type": "string | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "update:amount",
+    "type": "[value: number]",
+    "description": ""
+   },
+   {
+    "name": "update:from",
+    "type": "[value: string | undefined]",
+    "description": ""
+   },
+   {
+    "name": "update:to",
+    "type": "[value: string | undefined]",
+    "description": ""
+   }
+  ],
   "slots": [],
   "exposed": []
  },

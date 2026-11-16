@@ -77,7 +77,9 @@ function submit() {
 
 <template>
   <form class="bless-sku" :class="state && `is-${state}`" @submit.prevent="submit">
-    <label class="bless-sku__label" :for="`${uid}-in`">{{ label ?? (kind === "barcode" ? "Barcode" : "SKU") }}</label>
+    <label class="bless-sku__label" :for="`${uid}-in`">{{
+      label ?? (kind === "barcode" ? "Barcode" : "SKU")
+    }}</label>
     <div class="bless-sku__box">
       <span class="bless-sku__icon" aria-hidden="true">|||</span>
       <input
