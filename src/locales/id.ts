@@ -86,6 +86,7 @@ import type BlessIconPicker from "../components/BlessIconPicker.vue";
 import type BlessIncidentTimeline from "../components/BlessIncidentTimeline.vue";
 import type BlessInfiniteCanvas from "../components/BlessInfiniteCanvas.vue";
 import type BlessInputNumber from "../components/BlessInputNumber.vue";
+import type BlessInvoice from "../components/BlessInvoice.vue";
 import type BlessKanban from "../components/BlessKanban.vue";
 import type BlessKeyValueEditor from "../components/BlessKeyValueEditor.vue";
 import type BlessLeaderboard from "../components/BlessLeaderboard.vue";
@@ -292,6 +293,7 @@ export type BlessLabelsFull = {
   BlessIncidentTimeline: All<typeof BlessIncidentTimeline>;
   BlessInfiniteCanvas: All<typeof BlessInfiniteCanvas>;
   BlessInputNumber: All<typeof BlessInputNumber>;
+  BlessInvoice: All<typeof BlessInvoice>;
   BlessKanban: All<typeof BlessKanban>;
   BlessKeyValueEditor: All<typeof BlessKeyValueEditor>;
   BlessLeaderboard: All<typeof BlessLeaderboard>;
@@ -1016,6 +1018,26 @@ export const labelsId: BlessLabelsFull = {
     hint: "Tombol panah menggeser, plus dan minus mengubah zoom, 0 mengatur ulang.",
   },
   BlessInputNumber: { decrease: "Kurangi", increase: "Tambah" },
+  BlessInvoice: {
+    invoice: "Faktur",
+    from: "Dari",
+    to: "Ditagihkan kepada",
+    issued: "Tanggal",
+    due: "Jatuh tempo",
+    item: "Barang",
+    quantity: "Jml",
+    price: "Harga",
+    amount: "Jumlah",
+    subtotal: "Subtotal",
+    tax: (r) => `Pajak ${r}%`,
+    total: "Total",
+    paidAmount: "Dibayar",
+    balance: "Sisa tagihan",
+    draft: "Draf",
+    sent: "Terkirim",
+    paid: "Lunas",
+    overdue: "Lewat jatuh tempo",
+  },
   BlessKanban: {
     card: (i, col) => `Pindahkan kartu ${i} di ${col}`,
     moved: (col, p, n) => `Dipindah ke ${col}, posisi ${p} dari ${n}`,

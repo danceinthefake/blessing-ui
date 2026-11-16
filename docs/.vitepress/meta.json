@@ -8473,6 +8473,89 @@
   "slots": [],
   "exposed": []
  },
+ "BlessInvoice": {
+  "props": [
+   {
+    "name": "number",
+    "type": "string",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "issued",
+    "type": "string",
+    "required": true,
+    "description": "YYYY-MM-DD"
+   },
+   {
+    "name": "due",
+    "type": "string | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "from",
+    "type": "BlessInvoiceParty",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "to",
+    "type": "BlessInvoiceParty",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "lines",
+    "type": "BlessInvoiceLine[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "status",
+    "type": "BlessInvoiceStatus | undefined",
+    "required": false,
+    "default": "\"draft\"",
+    "description": ""
+   },
+   {
+    "name": "paid",
+    "type": "number | undefined",
+    "required": false,
+    "default": "0",
+    "description": "what is already paid"
+   },
+   {
+    "name": "notes",
+    "type": "string | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "currency",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"USD\"",
+    "description": ""
+   },
+   {
+    "name": "locale",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"en\"",
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<Record<BlessInvoiceStatus, string> & { invoice: string; from: string; to: string; issued: string; due: string; item: string; quantity: string; price: string; amount: string; subtotal: string; tax: (rate: number) => string; total: string; paidAmount: string; balance: string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessItem": {
   "props": [
    {

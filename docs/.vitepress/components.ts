@@ -1096,6 +1096,7 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "audit-log",
         text: "Who changed what, with old and new values",
       },
+      { name: "BlessInvoice", slug: "invoice", text: "An invoice with lines, tax, and totals" },
     ],
   },
   {

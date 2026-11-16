@@ -636,3 +636,10 @@ export { parseCsv } from "./components/BlessCsvImport.vue";
 export type { BlessImportField } from "./components/BlessCsvImport.vue";
 export { default as BlessAuditLog } from "./components/BlessAuditLog.vue";
 export type { BlessAuditEntry, BlessAuditAction } from "./components/BlessAuditLog.vue";
+export { default as BlessInvoice } from "./components/BlessInvoice.vue";
+export { invoiceTotals } from "./components/BlessInvoice.vue";
+export type {
+  BlessInvoiceLine,
+  BlessInvoiceParty,
+  BlessInvoiceStatus,
+} from "./components/BlessInvoice.vue";
