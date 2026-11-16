@@ -93,6 +93,7 @@ import type BlessPromptInput from "../components/BlessPromptInput.vue";
 import type BlessPyramid from "../components/BlessPyramid.vue";
 import type BlessQueryBuilder from "../components/BlessQueryBuilder.vue";
 import type BlessQuestionnaire from "../components/BlessQuestionnaire.vue";
+import type BlessQuiz from "../components/BlessQuiz.vue";
 import type BlessQuotaUsage from "../components/BlessQuotaUsage.vue";
 import type BlessRangeCalendar from "../components/BlessRangeCalendar.vue";
 import type BlessRangeChart from "../components/BlessRangeChart.vue";
@@ -243,6 +244,7 @@ export type BlessLabelsFull = {
   BlessPyramid: All<typeof BlessPyramid>;
   BlessQueryBuilder: All<typeof BlessQueryBuilder>;
   BlessQuestionnaire: All<typeof BlessQuestionnaire>;
+  BlessQuiz: All<typeof BlessQuiz>;
   BlessQuotaUsage: All<typeof BlessQuotaUsage>;
   BlessRangeCalendar: All<typeof BlessRangeCalendar>;
   BlessRangeChart: All<typeof BlessRangeChart>;
@@ -914,6 +916,16 @@ export const labelsId: BlessLabelsFull = {
     skip: "Lewati",
     submit: "Kirim",
     required: "Jawab dulu untuk melanjutkan.",
+  },
+  BlessQuiz: {
+    check: "Periksa",
+    next: "Pertanyaan berikutnya",
+    finish: "Lihat skor",
+    restart: "Mulai lagi",
+    right: "Benar!",
+    wrong: (a) => `Bukan yang ini. Jawabannya: ${a}`,
+    progress: (n, t) => `Pertanyaan ${n} dari ${t}`,
+    score: (r, t) => `Kamu benar ${r} dari ${t}.`,
   },
   BlessQuotaUsage: {
     of: (u, l) => `${u} dari ${l}`,

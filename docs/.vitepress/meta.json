@@ -10998,6 +10998,31 @@
   "slots": [],
   "exposed": []
  },
+ "BlessQuiz": {
+  "props": [
+   {
+    "name": "questions",
+    "type": "BlessQuizQuestion[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ check: string; next: string; finish: string; restart: string; right: string; wrong: (answer: string) => string; progress: (n: number, total: number) => string; score: (right: number, total: number) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "finish",
+    "type": "[right: number, total: number]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessQuotaUsage": {
   "props": [
    {

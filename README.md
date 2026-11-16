@@ -10,7 +10,7 @@ Vue 3 component library and design tokens. The UI is gray-scale, with one accent
 
 Docs, with every component live: **[ui.blessing.id](https://ui.blessing.id)**
 
-- 314 components, from button to data table to chat. Only `--bless-*` custom properties style them. There is no Tailwind dependency.
+- 315 components, from button to data table to chat. Only `--bless-*` custom properties style them. There is no Tailwind dependency.
 - Native platform first: `<dialog>`, Popover API, `<details>`, native form controls, `Intl` dates, and scroll-snap. There is no positioning, date, or table library.
 - Accessible defaults: focus rings, ARIA tablist, dialog, and tables, and `prefers-reduced-motion`
 - ESM, tree-shakable, with `vue` as the only required peer (`@tiptap/vue-3` is optional, for `BlessEditor`). One component (`BlessButton`) costs about 1 KB gzip of JS and about 2.6 KB of CSS (tokens and its own styles). Everything costs about 201 KB and 54 KB. CSS is split per component and the import pulls it in, so you never pay for styles that you do not use
@@ -92,7 +92,7 @@ The words that components say are English by default. `provideLabels(labelsId)` 
 
 ## Components
 
-314 components across eight groups. Every one styles itself from `--bless-*` tokens and ships with a test and a docs page.
+315 components across eight groups. Every one styles itself from `--bless-*` tokens and ships with a test and a docs page.
 
 ### Primitives
 
@@ -343,6 +343,7 @@ The words that components say are English by default. `provideLabels(labelsId)` 
 | `BlessAttachment`      | File / image chip                                   | `name`, `description`, `src`, `href`, `state` idle/uploading/error, `progress`, `size`, `removable`. Emits `remove`            |
 | `BlessMessageScroller` | Chat viewport                                       | `height`, `initial`, `threshold`. Emits `reach-top` `at-bottom`. Exposes `scrollToBottom()` `scrollTo(id)` `loadHistory(fn)`   |
 | `BlessQuestionnaire`   | Multi-step single/multiple/freeform                 | `questions[]`, `v-model` answers, `v-model:step`, `shortcuts`, `labels`. Emits `submit` `skip`                                 |
+| `BlessQuiz`            | Questions with choices, a check and a score         | `questions` `{question,choices,answer,explain}`. Emits `finish`                                                                |
 | `BlessPoll`            | One-question vote with results                      | `question`, `options` `[{value,label,votes}]`, `v-model`, `closed`, `labels`. Emits `vote`                                     |
 | `BlessPresenceCursors` | Live pointers of other people over an area          | `cursors` `[{id,name,x,y,color}]` (0–1 of the area), `track`. Emits `move({x,y} \| null)`. Default slot: the shared content    |
 | `BlessTypingIndicator` | Who is typing now                                   | `names`, `labels` (`one`, `two`, `many`). A status line with pulsing dots                                                      |
