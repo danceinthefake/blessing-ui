@@ -54,7 +54,8 @@ Forty-one new components, 359 in all, for finance, commerce, communication, soci
 - `BlessPullQuote`: a big quote in a blockquote with quote marks in the style of the language, the speaker and role in a caption, and start or center.
 - `BlessLiveBlog`: timed updates with pinned and key ones marked, new updates held behind a button with a status, and a live tag.
 - `BlessPaywall`: a faded free preview, plan radios, a subscribe event, and a sign-in link for readers who already pay.
-- `BlessPosterRow`: a titled row of poster links that scrolls with snap points, buttons that turn off at each end, and tall, wide, or square posters. 367 components in all.
+- `BlessPosterRow`: a titled row of poster links that scrolls with snap points, buttons that turn off at each end, and tall, wide, or square posters.
+- `BlessEpisodeList`: the episodes of a season with a picture that plays, a progress bar and words, the length, a two-line summary, and the current one. 368 components in all.
 
 ## 0.7.0 — 2026-11-16
 
