@@ -680,6 +680,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         text: "What people did, in groups by day",
       },
       {
+        name: "BlessPostComposer",
+        slug: "post-composer",
+        text: "Write a post with images and a poll",
+      },
+      {
         name: "BlessLeaderboard",
         slug: "leaderboard",
         text: "Ranked rows with the place, the move and the score",

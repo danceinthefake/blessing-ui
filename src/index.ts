@@ -571,3 +571,5 @@ export { default as BlessCallScreen } from "./components/BlessCallScreen.vue";
 export type { BlessCallPerson } from "./components/BlessCallScreen.vue";
 export { default as BlessContactPicker } from "./components/BlessContactPicker.vue";
 export type { BlessContact } from "./components/BlessContactPicker.vue";
+export { default as BlessPostComposer } from "./components/BlessPostComposer.vue";
+export type { BlessNewPost } from "./components/BlessPostComposer.vue";
