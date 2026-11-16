@@ -690,6 +690,7 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "follow-button",
         text: "Follow with the count of followers",
       },
+      { name: "BlessTrendList", slug: "trend-list", text: "Topics people talk about now" },
       {
         name: "BlessLeaderboard",
         slug: "leaderboard",

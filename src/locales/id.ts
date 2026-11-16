@@ -164,6 +164,7 @@ import type BlessTour from "../components/BlessTour.vue";
 import type BlessTransactionList from "../components/BlessTransactionList.vue";
 import type BlessTranscript from "../components/BlessTranscript.vue";
 import type BlessTreemap from "../components/BlessTreemap.vue";
+import type BlessTrendList from "../components/BlessTrendList.vue";
 import type BlessTypeScale from "../components/BlessTypeScale.vue";
 import type BlessTypingIndicator from "../components/BlessTypingIndicator.vue";
 import type BlessUploader from "../components/BlessUploader.vue";
@@ -342,6 +343,7 @@ export type BlessLabelsFull = {
   BlessTransactionList: All<typeof BlessTransactionList>;
   BlessTranscript: All<typeof BlessTranscript>;
   BlessTreemap: All<typeof BlessTreemap>;
+  BlessTrendList: All<typeof BlessTrendList>;
   BlessTypeScale: All<typeof BlessTypeScale>;
   BlessTypingIndicator: All<typeof BlessTypingIndicator>;
   BlessUploader: All<typeof BlessUploader>;
@@ -1411,6 +1413,10 @@ export const labelsId: BlessLabelsFull = {
     path: "Jalur",
     up: "Naik satu tingkat",
     hint: "Tombol panah berpindah antarpetak, Enter membuka atau memilih, Backspace naik satu tingkat.",
+  },
+  BlessTrendList: {
+    title: "Sedang tren",
+    posts: (n) => `${n} kiriman`,
   },
   BlessTypeScale: { title: "Skala huruf", size: "ukuran", line: "baris" },
   BlessTypingIndicator: {
