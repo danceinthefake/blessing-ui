@@ -30,6 +30,7 @@ import type BlessCameraCapture from "../components/BlessCameraCapture.vue";
 import type BlessCandlestick from "../components/BlessCandlestick.vue";
 import type BlessCardInput from "../components/BlessCardInput.vue";
 import type BlessCartDrawer from "../components/BlessCartDrawer.vue";
+import type BlessCertificate from "../components/BlessCertificate.vue";
 import type BlessChangelog from "../components/BlessChangelog.vue";
 import type BlessChapterList from "../components/BlessChapterList.vue";
 import type BlessChatHistory from "../components/BlessChatHistory.vue";
@@ -263,6 +264,7 @@ export type BlessLabelsFull = {
   BlessCandlestick: All<typeof BlessCandlestick>;
   BlessCardInput: All<typeof BlessCardInput>;
   BlessCartDrawer: All<typeof BlessCartDrawer>;
+  BlessCertificate: All<typeof BlessCertificate>;
   BlessChangelog: All<typeof BlessChangelog>;
   BlessChapterList: All<typeof BlessChapterList>;
   BlessChatHistory: All<typeof BlessChatHistory>;
@@ -707,6 +709,14 @@ export const labelsId: BlessLabelsFull = {
     less: (n) => `Kurangi satu ${n}`,
     more: (n) => `Tambah satu ${n}`,
     quantity: (n) => `Jumlah ${n}`,
+  },
+  BlessCertificate: {
+    title: "Sertifikat kelulusan",
+    given: "Sertifikat ini diberikan kepada",
+    completed: "karena telah menyelesaikan",
+    on: (d) => `pada ${d}`,
+    code: (c) => `ID sertifikat ${c}`,
+    verify: "Pastikan keasliannya di",
   },
   BlessChangelog: {
     added: "Ditambah",

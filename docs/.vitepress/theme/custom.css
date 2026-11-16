@@ -146,7 +146,8 @@
     .bless-instructions__title,
     .bless-handover__title,
     .bless-course__title,
-    .bless-assign__title
+    .bless-assign__title,
+    .bless-cert__title
   ) {
   margin: 0;
   padding: 0;
