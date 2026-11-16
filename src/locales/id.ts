@@ -139,6 +139,7 @@ import type BlessRoseChart from "../components/BlessRoseChart.vue";
 import type BlessRsvp from "../components/BlessRsvp.vue";
 import type BlessSankey from "../components/BlessSankey.vue";
 import type BlessScatterChart from "../components/BlessScatterChart.vue";
+import type BlessSceneButtons from "../components/BlessSceneButtons.vue";
 import type BlessScheduler from "../components/BlessScheduler.vue";
 import type BlessSeatPicker from "../components/BlessSeatPicker.vue";
 import type BlessSelectionToolbar from "../components/BlessSelectionToolbar.vue";
@@ -328,6 +329,7 @@ export type BlessLabelsFull = {
   BlessRsvp: All<typeof BlessRsvp>;
   BlessSankey: All<typeof BlessSankey>;
   BlessScatterChart: All<typeof BlessScatterChart>;
+  BlessSceneButtons: All<typeof BlessSceneButtons>;
   BlessScheduler: All<typeof BlessScheduler>;
   BlessSeatPicker: All<typeof BlessSeatPicker>;
   BlessSelectionToolbar: All<typeof BlessSelectionToolbar>;
@@ -1329,6 +1331,10 @@ export const labelsId: BlessLabelsFull = {
   },
   BlessSankey: { from: "Dari", to: "Ke", value: "Nilai" },
   BlessScatterChart: { point: "Titik", group: "Grup", size: "Ukuran" },
+  BlessSceneButtons: {
+    title: "Skena",
+    started: (n) => `${n} aktif.`,
+  },
   BlessScheduler: {
     prev: "Sebelumnya",
     next: "Berikutnya",

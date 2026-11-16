@@ -1056,6 +1056,11 @@ export const groups: { title: string; items: Entry[] }[] = [
       { name: "BlessThermostat", slug: "thermostat", text: "A dial for the target temperature" },
       { name: "BlessFloorPlan", slug: "floor-plan", text: "Rooms of a home with their devices" },
       {
+        name: "BlessSceneButtons",
+        slug: "scene-buttons",
+        text: "Buttons that set many devices at once",
+      },
+      {
         name: "BlessBalanceCard",
         slug: "balance-card",
         text: "An account balance with the change",
