@@ -12788,6 +12788,57 @@
   "slots": [],
   "exposed": []
  },
+ "BlessProductionCounter": {
+  "props": [
+   {
+    "name": "target",
+    "type": "number | undefined",
+    "required": false,
+    "description": "how many good pieces the shift must make"
+   },
+   {
+    "name": "locale",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"en\"",
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ title: string; good: string; scrap: string; addGood: string; addScrap: string; undo: string; target: (n: string) => string; yield: (percent: string) => string; said: (good: string, scrap: string) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "good",
+    "type": "number | undefined",
+    "required": false,
+    "default": "0",
+    "description": ""
+   },
+   {
+    "name": "scrap",
+    "type": "number | undefined",
+    "required": false,
+    "default": "0",
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "update:good",
+    "type": "[value: number]",
+    "description": ""
+   },
+   {
+    "name": "update:scrap",
+    "type": "[value: number]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessProfileCard": {
   "props": [
    {

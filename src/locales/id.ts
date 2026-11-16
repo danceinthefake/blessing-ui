@@ -136,6 +136,7 @@ import type BlessPrice from "../components/BlessPrice.vue";
 import type BlessPriceTicker from "../components/BlessPriceTicker.vue";
 import type BlessPricingTable from "../components/BlessPricingTable.vue";
 import type BlessProductCard from "../components/BlessProductCard.vue";
+import type BlessProductionCounter from "../components/BlessProductionCounter.vue";
 import type BlessProfileCard from "../components/BlessProfileCard.vue";
 import type BlessPromptInput from "../components/BlessPromptInput.vue";
 import type BlessPyramid from "../components/BlessPyramid.vue";
@@ -353,6 +354,7 @@ export type BlessLabelsFull = {
   BlessPriceTicker: All<typeof BlessPriceTicker>;
   BlessPricingTable: All<typeof BlessPricingTable>;
   BlessProductCard: All<typeof BlessProductCard>;
+  BlessProductionCounter: All<typeof BlessProductionCounter>;
   BlessProfileCard: All<typeof BlessProfileCard>;
   BlessPromptInput: All<typeof BlessPromptInput>;
   BlessPyramid: All<typeof BlessPyramid>;
@@ -1408,6 +1410,17 @@ export const labelsId: BlessLabelsFull = {
     add: "Tambah ke keranjang",
     soldOut: "Habis",
     rated: (v, n) => `Rating ${v} dari 5, ${n} ulasan`,
+  },
+  BlessProductionCounter: {
+    title: "Hitungan produksi",
+    good: "Bagus",
+    scrap: "Reject",
+    addGood: "+1 Bagus",
+    addScrap: "+1 Reject",
+    undo: "Batalkan hitungan terakhir",
+    target: (n) => `dari ${n}`,
+    yield: (p) => `Hasil baik ${p}`,
+    said: (g, s) => `${g} bagus, ${s} reject`,
   },
   BlessProfileCard: { follow: "Ikuti", following: "Mengikuti" },
   BlessPromptInput: {
