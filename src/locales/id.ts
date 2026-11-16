@@ -18,6 +18,7 @@ import type BlessBulkActionBar from "../components/BlessBulkActionBar.vue";
 import type BlessBulletChart from "../components/BlessBulletChart.vue";
 import type BlessBumpChart from "../components/BlessBumpChart.vue";
 import type BlessCalendar from "../components/BlessCalendar.vue";
+import type BlessCallScreen from "../components/BlessCallScreen.vue";
 import type BlessCameraCapture from "../components/BlessCameraCapture.vue";
 import type BlessCandlestick from "../components/BlessCandlestick.vue";
 import type BlessCardInput from "../components/BlessCardInput.vue";
@@ -191,6 +192,7 @@ export type BlessLabelsFull = {
   BlessBulletChart: All<typeof BlessBulletChart>;
   BlessBumpChart: All<typeof BlessBumpChart>;
   BlessCalendar: All<typeof BlessCalendar>;
+  BlessCallScreen: All<typeof BlessCallScreen>;
   BlessCameraCapture: All<typeof BlessCameraCapture>;
   BlessCandlestick: All<typeof BlessCandlestick>;
   BlessCardInput: All<typeof BlessCardInput>;
@@ -477,6 +479,16 @@ export const labelsId: BlessLabelsFull = {
   },
   BlessBumpChart: { step: "Langkah", rank: (r, v) => `#${r} (${v})` },
   BlessCalendar: month,
+  BlessCallScreen: {
+    title: "Panggilan",
+    mute: "Bisukan",
+    camera: "Kamera",
+    share: "Bagikan layar",
+    leave: "Keluar dari panggilan",
+    muted: "dibisukan",
+    speaking: "sedang bicara",
+    controls: "Kontrol panggilan",
+  },
   BlessCameraCapture: {
     start: "Nyalakan kamera",
     capture: "Ambil foto",
