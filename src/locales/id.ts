@@ -73,6 +73,7 @@ import type BlessFacetFilter from "../components/BlessFacetFilter.vue";
 import type BlessFaqSearch from "../components/BlessFaqSearch.vue";
 import type BlessFeatureFlags from "../components/BlessFeatureFlags.vue";
 import type BlessFigure from "../components/BlessFigure.vue";
+import type BlessFileBrowser from "../components/BlessFileBrowser.vue";
 import type BlessFilterBar from "../components/BlessFilterBar.vue";
 import type BlessFlashcards from "../components/BlessFlashcards.vue";
 import type BlessFloorPlan from "../components/BlessFloorPlan.vue";
@@ -302,6 +303,7 @@ export type BlessLabelsFull = {
   BlessFaqSearch: All<typeof BlessFaqSearch>;
   BlessFeatureFlags: All<typeof BlessFeatureFlags>;
   BlessFigure: All<typeof BlessFigure>;
+  BlessFileBrowser: All<typeof BlessFileBrowser>;
   BlessFilterBar: All<typeof BlessFilterBar>;
   BlessFlashcards: All<typeof BlessFlashcards>;
   BlessFloorPlan: All<typeof BlessFloorPlan>;
@@ -970,6 +972,18 @@ export const labelsId: BlessLabelsFull = {
     off: "Mati",
   },
   BlessFigure: { credit: (w) => `Foto: ${w}` },
+  BlessFileBrowser: {
+    path: "Jalur folder",
+    view: "Tampilan",
+    grid: "Kisi",
+    list: "Daftar",
+    name: "Nama",
+    modified: "Diubah",
+    size: "Ukuran",
+    folder: "Folder",
+    empty: "Folder ini kosong.",
+    items: (n) => `${n} item`,
+  },
   BlessFilterBar: {
     label: "Filter",
     add: "Tambah filter",

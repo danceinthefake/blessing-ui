@@ -683,6 +683,11 @@ export const groups: { title: string; items: Entry[] }[] = [
       { name: "BlessTimeTracker", slug: "time-tracker", text: "Timer and time entries by day" },
       { name: "BlessRoomBooking", slug: "room-booking", text: "Rooms and free times for a day" },
       {
+        name: "BlessFileBrowser",
+        slug: "file-browser",
+        text: "Files of a folder as a grid or a list",
+      },
+      {
         name: "BlessReactions",
         slug: "reactions",
         text: "Emoji reactions with counts under a post",

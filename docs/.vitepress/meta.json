@@ -6530,6 +6530,62 @@
   ],
   "exposed": []
  },
+ "BlessFileBrowser": {
+  "props": [
+   {
+    "name": "items",
+    "type": "BlessFileItem[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "path",
+    "type": "{ id: string; label: string; }[] | undefined",
+    "required": false,
+    "default": "[]",
+    "description": "the folders from the top down to this one; the last is the current folder"
+   },
+   {
+    "name": "locale",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"en\"",
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ path: string; view: string; grid: string; list: string; name: string; modified: string; size: string; folder: string; empty: string; items: (n: number) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "view",
+    "type": "\"grid\" | \"list\" | undefined",
+    "required": false,
+    "default": "\"grid\"",
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "open",
+    "type": "[item: BlessFileItem]",
+    "description": ""
+   },
+   {
+    "name": "update:view",
+    "type": "[value: \"grid\" | \"list\"]",
+    "description": ""
+   },
+   {
+    "name": "navigate",
+    "type": "[id: string]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessFileInput": {
   "props": [
    {
