@@ -609,7 +609,7 @@ Thirteen components, 359 → 372. Each uses native platform APIs only: the libra
 - ✅ `BlessRelatedArticles`: articles on the same topic, with an image and the reading time.
 - ✅ `BlessFigure`: an image with a caption and a credit.
 - ✅ `BlessPullQuote`: a big quote from the text, with the speaker.
-- `BlessLiveBlog`: timed updates that arrive while the reader reads, with a new-updates button.
+- ✅ `BlessLiveBlog`: timed updates that arrive while the reader reads, with a new-updates button.
 - `BlessPaywall`: the end of a free preview, with the plans and a sign-in link.
 - `BlessPosterRow`: a row of posters that scrolls, with arrow buttons and the keyboard.
 - `BlessEpisodeList`: the episodes of a season with the length, a summary, and the progress.

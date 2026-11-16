@@ -87,6 +87,7 @@ import type BlessKeyValueEditor from "../components/BlessKeyValueEditor.vue";
 import type BlessLeaderboard from "../components/BlessLeaderboard.vue";
 import type BlessLessonPath from "../components/BlessLessonPath.vue";
 import type BlessLightbox from "../components/BlessLightbox.vue";
+import type BlessLiveBlog from "../components/BlessLiveBlog.vue";
 import type BlessLogViewer from "../components/BlessLogViewer.vue";
 import type BlessLollipop from "../components/BlessLollipop.vue";
 import type BlessMarimekko from "../components/BlessMarimekko.vue";
@@ -283,6 +284,7 @@ export type BlessLabelsFull = {
   BlessLeaderboard: All<typeof BlessLeaderboard>;
   BlessLessonPath: All<typeof BlessLessonPath>;
   BlessLightbox: All<typeof BlessLightbox>;
+  BlessLiveBlog: All<typeof BlessLiveBlog>;
   BlessLogViewer: All<typeof BlessLogViewer>;
   BlessLollipop: All<typeof BlessLollipop>;
   BlessMarimekko: All<typeof BlessMarimekko>;
@@ -1003,6 +1005,13 @@ export const labelsId: BlessLabelsFull = {
     zoomIn: "Perbesar",
     zoomOut: "Perkecil",
     image: (n, of) => `Gambar ${n} dari ${of}`,
+  },
+  BlessLiveBlog: {
+    title: "Kabar langsung",
+    live: "Langsung",
+    pinned: "Disematkan",
+    key: "Momen penting",
+    show: (n) => `Tampilkan ${n} kabar baru`,
   },
   BlessLogViewer: {
     filter: "Saring baris",

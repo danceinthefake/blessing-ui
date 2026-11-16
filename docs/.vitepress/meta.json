@@ -9120,6 +9120,31 @@
   ],
   "exposed": []
  },
+ "BlessLiveBlog": {
+  "props": [
+   {
+    "name": "updates",
+    "type": "BlessLiveUpdate[]",
+    "required": true,
+    "description": "newest first"
+   },
+   {
+    "name": "live",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": "the event is still going on"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ title: string; live: string; pinned: string; key: string; show: (count: number) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessLoadingBar": {
   "props": [
    {

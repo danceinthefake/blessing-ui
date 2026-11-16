@@ -1112,6 +1112,7 @@ export const groups: { title: string; items: Entry[] }[] = [
       { name: "BlessImg", slug: "img", text: "Lazy image with ratio, placeholder, error" },
       { name: "BlessFigure", slug: "figure", text: "An image with a caption and a credit" },
       { name: "BlessPullQuote", slug: "pull-quote", text: "A big quote with the speaker" },
+      { name: "BlessLiveBlog", slug: "live-blog", text: "Timed updates with a new-updates button" },
       { name: "BlessVideo", slug: "video", text: "Responsive embed or native video" },
       { name: "BlessParallax", slug: "parallax", text: "Background that scrolls slower" },
       { name: "BlessCarousel", slug: "carousel", text: "Scroll-snap slider" },
