@@ -909,6 +909,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         text: "The cart in a side panel with checkout",
       },
       {
+        name: "BlessWishlistButton",
+        slug: "wishlist-button",
+        text: "A heart that saves a product",
+      },
+      {
         name: "BlessTestimonials",
         slug: "testimonials",
         text: "Quotes with a name, a role and stars",
