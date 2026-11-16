@@ -20176,6 +20176,93 @@
   "slots": [],
   "exposed": []
  },
+ "BlessWorkOrderCard": {
+  "props": [
+   {
+    "name": "number",
+    "type": "string",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "product",
+    "type": "string",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "target",
+    "type": "number",
+    "required": true,
+    "description": "how many to make"
+   },
+   {
+    "name": "done",
+    "type": "number | undefined",
+    "required": false,
+    "default": "0",
+    "description": "how many are made"
+   },
+   {
+    "name": "unit",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"pcs\"",
+    "description": ""
+   },
+   {
+    "name": "due",
+    "type": "string | undefined",
+    "required": false,
+    "description": "the due time, as text"
+   },
+   {
+    "name": "station",
+    "type": "string | undefined",
+    "required": false,
+    "description": "the station or the line"
+   },
+   {
+    "name": "state",
+    "type": "BlessWorkOrderState | undefined",
+    "required": false,
+    "default": "\"queued\"",
+    "description": ""
+   },
+   {
+    "name": "locale",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"en\"",
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<Record<BlessWorkOrderState, string> & { start: string; pause: string; resume: string; finish: string; due: (time: string) => string; progress: (done: string, target: string) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "pause",
+    "type": "[]",
+    "description": ""
+   },
+   {
+    "name": "start",
+    "type": "[]",
+    "description": ""
+   },
+   {
+    "name": "finish",
+    "type": "[]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessWorkoutLog": {
   "props": [
    {

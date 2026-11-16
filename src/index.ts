@@ -672,3 +672,5 @@ export { default as BlessDocumentStatus } from "./components/BlessDocumentStatus
 export type { BlessDocState } from "./components/BlessDocumentStatus.vue";
 export { default as BlessPayslip } from "./components/BlessPayslip.vue";
 export type { BlessPayLine } from "./components/BlessPayslip.vue";
+export { default as BlessWorkOrderCard } from "./components/BlessWorkOrderCard.vue";
+export type { BlessWorkOrderState } from "./components/BlessWorkOrderCard.vue";
