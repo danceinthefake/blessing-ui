@@ -9656,6 +9656,62 @@
   "slots": [],
   "exposed": []
  },
+ "BlessLessonVideo": {
+  "props": [
+   {
+    "name": "src",
+    "type": "string",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "title",
+    "type": "string",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "poster",
+    "type": "string | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "captions",
+    "type": "string | undefined",
+    "required": false,
+    "description": "a WebVTT file with the captions"
+   },
+   {
+    "name": "captionsLang",
+    "type": "string | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ notes: string; write: string; add: (time: string) => string; go: (time: string) => string; remove: (time: string) => string; empty: string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "BlessVideoNote[] | undefined",
+    "required": false,
+    "default": "[]",
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "update:modelValue",
+    "type": "[value: BlessVideoNote[]]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessLightbox": {
   "props": [
    {

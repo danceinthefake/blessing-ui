@@ -101,6 +101,7 @@ import type BlessKanban from "../components/BlessKanban.vue";
 import type BlessKeyValueEditor from "../components/BlessKeyValueEditor.vue";
 import type BlessLeaderboard from "../components/BlessLeaderboard.vue";
 import type BlessLessonPath from "../components/BlessLessonPath.vue";
+import type BlessLessonVideo from "../components/BlessLessonVideo.vue";
 import type BlessLightbox from "../components/BlessLightbox.vue";
 import type BlessLineItemEditor from "../components/BlessLineItemEditor.vue";
 import type BlessLiveBlog from "../components/BlessLiveBlog.vue";
@@ -335,6 +336,7 @@ export type BlessLabelsFull = {
   BlessKeyValueEditor: All<typeof BlessKeyValueEditor>;
   BlessLeaderboard: All<typeof BlessLeaderboard>;
   BlessLessonPath: All<typeof BlessLessonPath>;
+  BlessLessonVideo: All<typeof BlessLessonVideo>;
   BlessLightbox: All<typeof BlessLightbox>;
   BlessLineItemEditor: All<typeof BlessLineItemEditor>;
   BlessLiveBlog: All<typeof BlessLiveBlog>;
@@ -1231,6 +1233,14 @@ export const labelsId: BlessLabelsFull = {
     current: "mulai di sini",
     locked: "terkunci",
     progress: (d, t) => `${d} dari ${t} pelajaran selesai`,
+  },
+  BlessLessonVideo: {
+    notes: "Catatan",
+    write: "Tulis catatan",
+    add: (t) => `Tambah catatan di ${t}`,
+    go: (t) => `Ke ${t}`,
+    remove: (t) => `Hapus catatan di ${t}`,
+    empty: "Belum ada catatan. Jeda di satu titik dan tulis yang ingin Anda simpan.",
   },
   BlessLightbox: {
     prev: "Sebelumnya",
