@@ -18,8 +18,8 @@ Untuk setiap kelompok, halaman ini mendaftar komponen dan [blok](../../blocks/) 
 | --------------------------------- | ----------------: | --------: |
 | 1. Konten dan penerbitan          |                15 |         7 |
 | 2. Perdagangan                    |                25 |         0 |
-| 3. Sosial dan komunitas           |                11 |         7 |
-| 4. Komunikasi                     |                 9 |         6 |
+| 3. Sosial dan komunitas           |                18 |         0 |
+| 4. Komunikasi                     |                15 |         0 |
 | 5. Media dan hiburan              |                 8 |         7 |
 | 6. Produktivitas dan kolaborasi   |                14 |         6 |
 | 7. Perangkat lunak bisnis dan ERP |                13 |        14 |
@@ -59,19 +59,19 @@ Belum ada: tidak ada dari daftar pertama. Setiap bagian yang disebut halaman ini
 
 Jejaring sosial, forum, dan kencan. Orang mengirim kiriman, bereaksi, dan mengikuti.
 
-Sekarang: [ProfileCard](../../components/profile-card), [ActivityFeed](../../components/activity-feed), [Reactions](../../components/reactions), [Thread](../../components/thread), [Message](../../components/message), [Mention](../../components/mention), [Poll](../../components/poll), [Leaderboard](../../components/leaderboard), [AvatarGroup](../../components/avatar-group), [SwipeDeck](../../components/swipe-deck), [HoverCard](../../components/hover-card).
+Sekarang: [PostComposer](../../components/post-composer), [Stories](../../components/stories), [FollowButton](../../components/follow-button), [TrendList](../../components/trend-list), [ReportDialog](../../components/report-dialog), [GroupCard](../../components/group-card), [ForumTopics](../../components/forum-topics), [ProfileCard](../../components/profile-card), [ActivityFeed](../../components/activity-feed), [Reactions](../../components/reactions), [Thread](../../components/thread), [Message](../../components/message), [Mention](../../components/mention), [Poll](../../components/poll), [Leaderboard](../../components/leaderboard), [AvatarGroup](../../components/avatar-group), [SwipeDeck](../../components/swipe-deck), [HoverCard](../../components/hover-card).
 
-Belum ada: penyusun kiriman dengan media, penampil stories, tombol ikuti dengan jumlah, topik yang sedang tren, dialog laporkan, kartu grup, daftar topik forum.
+Belum ada: tidak ada dari daftar pertama. Setiap bagian yang disebut halaman ini sudah menjadi komponen.
 
 ## 4. Komunikasi
 
 Chat, email, dan panggilan. Orang mengirim dan menerima pesan.
 
-Sekarang: [Bubble](../../components/bubble), [MessageScroller](../../components/message-scroller), [TypingIndicator](../../components/typing-indicator), [Attachment](../../components/attachment), [NotificationInbox](../../components/notification-inbox), [EmojiPicker](../../components/emoji-picker), [VoiceInput](../../components/voice-input), [AudioRecorder](../../components/audio-recorder), [ConnectionStatus](../../components/connection-status).
+Sekarang: [ConversationList](../../components/conversation-list), [ReadReceipt](../../components/read-receipt), [EmailView](../../components/email-view), [EmailComposer](../../components/email-composer), [CallScreen](../../components/call-screen), [ContactPicker](../../components/contact-picker), [Bubble](../../components/bubble), [MessageScroller](../../components/message-scroller), [TypingIndicator](../../components/typing-indicator), [Attachment](../../components/attachment), [NotificationInbox](../../components/notification-inbox), [EmojiPicker](../../components/emoji-picker), [VoiceInput](../../components/voice-input), [AudioRecorder](../../components/audio-recorder), [ConnectionStatus](../../components/connection-status).
 
 Blok: [chat](../../blocks/chat), [inbox](../../blocks/inbox).
 
-Belum ada: daftar percakapan dengan jumlah belum dibaca, tanda dibaca, pembaca email, penyusun email dengan penerima, layar panggilan dengan ubin video dan kontrol, pemilih kontak.
+Belum ada: tidak ada dari daftar pertama. Setiap bagian yang disebut halaman ini sudah menjadi komponen.
 
 ## 5. Media dan hiburan
 

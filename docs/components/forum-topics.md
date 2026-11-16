@@ -21,7 +21,7 @@ The list page of a forum or a community board. To show one topic with its replie
   </template>
 </Demo>
 
-- `topics` is a list of topics. Each topic has an `id`, a `title`, an `author`, and the number of `replies`. It can also have an `href`, `views`, the `last` post with its author and time, `tags`, `pinned`, `locked`, and `solved`.
+- `topics` is a list of topics. Each topic has an `id`, a `title`, an `author`, and the number of `replies`. It can also have an `href`, `views`, and `tags`. `last` is the last post, with its author and time. `pinned`, `locked`, and `solved` mark the state.
 - Pinned topics come first and have a light tint. The rest keep their order.
 - Pinned, solved, and locked each show as a mark and a word, such as "✓ Solved". Screen readers hear only the word.
 - The counts show in short form, such as "1.5K replies", in the `locale`.

@@ -175,6 +175,7 @@ const paragraphs = computed(() =>
 }
 .bless-email__body > p {
   margin: 0;
+  white-space: pre-line;
 }
 .bless-email__files {
   display: grid;
