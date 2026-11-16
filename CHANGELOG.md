@@ -93,7 +93,8 @@ Seventy-eight new components, 396 in all, for finance, commerce, communication, 
 - `BlessCourseCard`: a course with the picture, the teacher, the lessons, the length, the level, and the progress, with a link over the whole card.
 - `BlessGradebook`: scores by student and assignment, missing work, student and class averages, a mark under the pass line, and number fields to edit.
 - `BlessAssignment`: the instructions, the due date, a file hand-in, the state in words, and the grade with feedback.
-- `BlessCertificate`: a certificate of completion in the shape of an A4 page that scales with its width and does not break on paper. 406 components in all.
+- `BlessCertificate`: a certificate of completion in the shape of an A4 page that scales with its width and does not break on paper.
+- `BlessLessonVideo`: a lesson video with captions and notes at points in time that move the video back to that point. 407 components in all.
 
 ## 0.7.0 — 2026-11-16
 

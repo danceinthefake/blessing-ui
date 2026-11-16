@@ -669,7 +669,7 @@ Eleven components, 396 → 407. Each uses native platform APIs only: the library
 - ✅ `BlessGradebook`: the scores of each student for each assignment, with averages and missing work.
 - ✅ `BlessAssignment`: an assignment with the instructions, the due date, a submission, and the grade.
 - ✅ `BlessCertificate`: a certificate of completion that prints on one page.
-- `BlessLessonVideo`: a lesson video with notes at points in time that take you back to that point.
+- ✅ `BlessLessonVideo`: a lesson video with notes at points in time that take you back to that point.
 
 ### Deliberately skipped
 
