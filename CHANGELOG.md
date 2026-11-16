@@ -50,7 +50,8 @@ Forty-one new components, 359 in all, for finance, commerce, communication, soci
 - `BlessArticleHeader`: the top of an article with the topic, a title at the heading level you choose, a summary, the author, dates in time elements, and the reading time.
 - `BlessShareBar`: a share button for the Web Share API after mount, copy link with a status, and your own share links.
 - `BlessRelatedArticles`: a titled block of article cards with one link each, an image, the topic, and the reading time.
-- `BlessFigure`: an image in a native figure with a caption or a slot, a credit that can link, and normal, wide, or full width. 363 components in all.
+- `BlessFigure`: an image in a native figure with a caption or a slot, a credit that can link, and normal, wide, or full width.
+- `BlessPullQuote`: a big quote in a blockquote with quote marks in the style of the language, the speaker and role in a caption, and start or center. 364 components in all.
 
 ## 0.7.0 — 2026-11-16
 

@@ -12304,6 +12304,50 @@
   ],
   "exposed": []
  },
+ "BlessPullQuote": {
+  "props": [
+   {
+    "name": "text",
+    "type": "string | undefined",
+    "required": false,
+    "description": "the quote, without quote marks"
+   },
+   {
+    "name": "speaker",
+    "type": "string | undefined",
+    "required": false,
+    "description": "who said it"
+   },
+   {
+    "name": "role",
+    "type": "string | undefined",
+    "required": false,
+    "description": "a role or a source under the name"
+   },
+   {
+    "name": "cite",
+    "type": "string | undefined",
+    "required": false,
+    "description": "a link to the source, for the cite attribute"
+   },
+   {
+    "name": "align",
+    "type": "\"start\" | \"center\" | undefined",
+    "required": false,
+    "default": "\"start\"",
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [
+   {
+    "name": "default",
+    "type": "{}",
+    "description": ""
+   }
+  ],
+  "exposed": []
+ },
  "BlessPullToRefresh": {
   "props": [
    {

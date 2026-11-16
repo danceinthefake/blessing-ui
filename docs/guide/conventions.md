@@ -1,6 +1,6 @@
 # Conventions
 
-What holds across all 363 components. If a component breaks one of these rules, it is a bug.
+What holds across all 364 components. If a component breaks one of these rules, it is a bug.
 
 ## API
 
