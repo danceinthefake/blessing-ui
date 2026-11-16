@@ -498,3 +498,5 @@ export { default as BlessRangeChart } from "./components/BlessRangeChart.vue";
 export type { BlessRangeRow } from "./components/BlessRangeChart.vue";
 export { default as BlessChordDiagram } from "./components/BlessChordDiagram.vue";
 export type { BlessChordGroup } from "./components/BlessChordDiagram.vue";
+export { default as BlessParallelCoordinates } from "./components/BlessParallelCoordinates.vue";
+export type { BlessParallelAxis } from "./components/BlessParallelCoordinates.vue";

@@ -9615,6 +9615,51 @@
   ],
   "exposed": []
  },
+ "BlessParallelCoordinates": {
+  "props": [
+   {
+    "name": "data",
+    "type": "BlessChartRow[]",
+    "required": true,
+    "description": "one line for each row"
+   },
+   {
+    "name": "name",
+    "type": "string",
+    "required": true,
+    "description": "the field with the name of a row"
+   },
+   {
+    "name": "axes",
+    "type": "BlessParallelAxis[]",
+    "required": true,
+    "description": "the axes, left to right; each has its own scale"
+   },
+   {
+    "name": "height",
+    "type": "number | undefined",
+    "required": false,
+    "default": "280",
+    "description": ""
+   },
+   {
+    "name": "label",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Chart\"",
+    "description": "names the chart and its table for screen readers"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ item: string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessPareto": {
   "props": [
    {
