@@ -17,13 +17,13 @@ Untuk setiap kelompok, halaman ini mendaftar komponen dan [blok](../../blocks/) 
 | Kelompok                          | Komponen sekarang | Belum ada |
 | --------------------------------- | ----------------: | --------: |
 | 1. Konten dan penerbitan          |                15 |         7 |
-| 2. Perdagangan                    |                16 |         9 |
+| 2. Perdagangan                    |                25 |         0 |
 | 3. Sosial dan komunitas           |                11 |         7 |
 | 4. Komunikasi                     |                 9 |         6 |
 | 5. Media dan hiburan              |                 8 |         7 |
 | 6. Produktivitas dan kolaborasi   |                14 |         6 |
 | 7. Perangkat lunak bisnis         |                13 |         6 |
-| 8. Keuangan                       |                 8 |         7 |
+| 8. Keuangan                       |                15 |         0 |
 | 9. Pendidikan                     |                 7 |         5 |
 | 10. Kesehatan dan kebugaran       |                 6 |         6 |
 | 11. Alat pengembang               |                13 |         5 |
@@ -48,11 +48,11 @@ Belum ada: kepala artikel dengan penulis, tanggal, dan waktu baca, bilah bagikan
 
 Toko, marketplace, pemesanan, dan pesan-antar makanan. Orang membandingkan, memilih, dan membayar.
 
-Sekarang: [VariantPicker](../../components/variant-picker), [OrderSummary](../../components/order-summary), [CouponInput](../../components/coupon-input), [CardInput](../../components/card-input), [AddressFields](../../components/address-fields), [ShipmentTracker](../../components/shipment-tracker), [PricingTable](../../components/pricing-table), [ComparisonTable](../../components/comparison-table), [ReviewSummary](../../components/review-summary), [Rating](../../components/rating), [Carousel](../../components/carousel), [Loupe](../../components/loupe), [SeatPicker](../../components/seat-picker), [SlotPicker](../../components/slot-picker), [Ticket](../../components/ticket), [InputNumber](../../components/input-number).
+Sekarang: [ProductCard](../../components/product-card), [Price](../../components/price), [CartDrawer](../../components/cart-drawer), [WishlistButton](../../components/wishlist-button), [FacetFilter](../../components/facet-filter), [StoreLocator](../../components/store-locator), [DeliveryPicker](../../components/delivery-picker), [OrderHistory](../../components/order-history), [ReturnRequest](../../components/return-request), [VariantPicker](../../components/variant-picker), [OrderSummary](../../components/order-summary), [CouponInput](../../components/coupon-input), [CardInput](../../components/card-input), [AddressFields](../../components/address-fields), [ShipmentTracker](../../components/shipment-tracker), [PricingTable](../../components/pricing-table), [ComparisonTable](../../components/comparison-table), [ReviewSummary](../../components/review-summary), [Rating](../../components/rating), [Carousel](../../components/carousel), [Loupe](../../components/loupe), [SeatPicker](../../components/seat-picker), [SlotPicker](../../components/slot-picker), [Ticket](../../components/ticket), [InputNumber](../../components/input-number).
 
 Blok: [pricing](../../blocks/pricing).
 
-Belum ada: kartu produk, harga dengan harga diskon dan harga satuan, laci keranjang, tombol wishlist, filter katalog dengan jumlah, pencari toko, pemilih waktu antar, riwayat pesanan, permintaan retur.
+Belum ada: tidak ada dari daftar pertama. Setiap bagian yang disebut halaman ini sudah menjadi komponen.
 
 ## 3. Sosial dan komunitas
 
@@ -104,9 +104,9 @@ Belum ada: kepala data dengan aksi, impor CSV dengan pencocokan kolom, log audit
 
 Perbankan, investasi, pembayaran, dan akuntansi. Orang memeriksa uang dan memindahkannya.
 
-Sekarang: [Candlestick](../../components/candlestick), [Sparkline](../../components/sparkline), [Stat](../../components/stat), [WaterfallChart](../../components/waterfall-chart), [DonutChart](../../components/donut-chart), [CardInput](../../components/card-input), [PinPad](../../components/pin-pad), [InputOTP](../../components/input-otp).
+Sekarang: [BalanceCard](../../components/balance-card), [TransactionList](../../components/transaction-list), [PriceTicker](../../components/price-ticker), [OrderBook](../../components/order-book), [CurrencyConverter](../../components/currency-converter), [BudgetBars](../../components/budget-bars), [PaymentSchedule](../../components/payment-schedule), [Candlestick](../../components/candlestick), [Sparkline](../../components/sparkline), [Stat](../../components/stat), [WaterfallChart](../../components/waterfall-chart), [DonutChart](../../components/donut-chart), [CardInput](../../components/card-input), [PinPad](../../components/pin-pad), [InputOTP](../../components/input-otp).
 
-Belum ada: kartu saldo, daftar transaksi dengan kategori, papan harga berjalan, buku pesanan, pengonversi mata uang, anggaran per kategori, jadwal pembayaran.
+Belum ada: tidak ada dari daftar pertama. Setiap bagian yang disebut halaman ini sudah menjadi komponen.
 
 ## 9. Pendidikan
 
