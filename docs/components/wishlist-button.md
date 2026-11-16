@@ -26,7 +26,7 @@ Lets a buyer keep a product for later. Put it on a [product card](./product-card
 - A saved heart is filled, and a heart that is not saved is an outline. The shape changes, not only the color.
 - After a click, a hidden status line says that the product is in or out of the wishlist. A page load says nothing.
 - `count` shows how many people saved the product. Give the new count after a click.
-- The heart grows for a moment when the reader saves the product, except under reduced motion.
+- If the reader saves the product, the heart grows for a moment. Under reduced motion, it does not move.
 - Change the words with `labels` or a [label pack](../guide/translating): the functions `save`, `added`, and `removed`.
 
 ## Usage

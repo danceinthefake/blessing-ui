@@ -556,7 +556,7 @@ Sixteen components, 318 → 334. Each uses native platform APIs only: the librar
 - ✅ `BlessPrice`: a price with the old price, the discount, and a unit price, in the format of the locale.
 - ✅ `BlessCartDrawer`: the cart in a side panel, with quantities, the subtotal, and the checkout button.
 - ✅ `BlessWishlistButton`: a heart that saves a product, with a count and a status message.
-- `BlessFacetFilter`: filters for a catalog: checkboxes with counts, a price range, and clear buttons.
+- ✅ `BlessFacetFilter`: filters for a catalog: checkboxes with counts, a price range, and clear buttons.
 - `BlessStoreLocator`: a list of stores by distance, with opening hours and directions links.
 - `BlessDeliveryPicker`: a day and a time window for delivery, with the fee of each window.
 - `BlessOrderHistory`: past orders with the status, the items, and actions such as buy again.

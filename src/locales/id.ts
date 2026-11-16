@@ -50,6 +50,7 @@ import type BlessDurationInput from "../components/BlessDurationInput.vue";
 import type BlessEditor from "../components/BlessEditor.vue";
 import type BlessEmojiPicker from "../components/BlessEmojiPicker.vue";
 import type BlessEventCalendar from "../components/BlessEventCalendar.vue";
+import type BlessFacetFilter from "../components/BlessFacetFilter.vue";
 import type BlessFaqSearch from "../components/BlessFaqSearch.vue";
 import type BlessFeatureFlags from "../components/BlessFeatureFlags.vue";
 import type BlessFilterBar from "../components/BlessFilterBar.vue";
@@ -214,6 +215,7 @@ export type BlessLabelsFull = {
   BlessEditor: All<typeof BlessEditor>;
   BlessEmojiPicker: All<typeof BlessEmojiPicker>;
   BlessEventCalendar: All<typeof BlessEventCalendar>;
+  BlessFacetFilter: All<typeof BlessFacetFilter>;
   BlessFaqSearch: All<typeof BlessFaqSearch>;
   BlessFeatureFlags: All<typeof BlessFeatureFlags>;
   BlessFilterBar: All<typeof BlessFilterBar>;
@@ -651,6 +653,14 @@ export const labelsId: BlessLabelsFull = {
     today: "Hari ini",
     more: (n) => `+${n} lagi`,
     less: "Tampilkan lebih sedikit",
+  },
+  BlessFacetFilter: {
+    title: "Filter",
+    price: "Harga",
+    min: "Terendah",
+    max: "Tertinggi",
+    clear: "Hapus",
+    clearAll: (n) => `Hapus semua (${n})`,
   },
   BlessFaqSearch: {
     search: "Cari pertanyaan",
