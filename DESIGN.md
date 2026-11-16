@@ -619,6 +619,40 @@ Thirteen components, 359 → 372. Each uses native platform APIs only: the libra
 - ✅ `BlessContinueWatching`: items with the place where you stopped, and a remove button.
 - ✅ Budget: after the round, the whole library is 244.2 KB gz JS and 67.5 KB gz CSS, over the old cap of 244 / 66. The cap is now 269 / 74, about 10% of room. Phase 38 is done.
 
+### Phase 39 — ERP and business software (2026-11-16)
+
+Fourteen components, 372 → 386. Each uses native platform APIs only: the library adds no dependency. Each needs tests, a docs page with a live example, a README row, words in `labelsId`, and a pass of `src/classes.test.ts`. If a component uses a known method or names another party, credit it on the credits page. When a component lands, move its part from "Not yet" to "Today" on the site types page, in both languages.
+
+- `BlessRecordHeader`: the top of a record page: the name, the status, key facts, and the main actions.
+- `BlessCsvImport`: read a CSV file, match its columns to your fields, and check the rows before the import.
+- `BlessAuditLog`: who changed what and when, with the old and the new value.
+- `BlessInvoice`: an invoice with the parties, the lines, the tax, the totals, and the payment state.
+- `BlessTicketView`: a help desk ticket with the customer, the messages, the state, and a reply box.
+- `BlessSlaTimer`: the time left to answer or to solve a ticket, with a warning and a breach state.
+- `BlessLineItemEditor`: rows of products with quantity, unit, price, discount, and tax, and the totals.
+- `BlessJournalEntry`: debit and credit lines that must balance before the entry can be saved.
+- `BlessStockLevels`: stock for each item and place, with a reorder point and a low state.
+- `BlessBillOfMaterials`: a tree of parts with quantities, and the total for one or more units.
+- `BlessSkuField`: a field for a barcode or a SKU that takes a scanner and checks the code.
+- `BlessUnitConverter`: an amount in one unit of measure and its value in another, such as boxes and pieces.
+- `BlessDocumentStatus`: the states of a document, such as draft, approved, sent, and paid, with the next step.
+- `BlessPayslip`: the pay of a period with earnings, deductions, and the net pay.
+
+### Phase 40 — operations: shop floor and warehouse (2026-11-16)
+
+Ten components, 386 → 396. Each uses native platform APIs only: the library adds no dependency. Each needs tests, a docs page with a live example, a README row, words in `labelsId`, and a pass of `src/classes.test.ts`. If a component uses a known method or names another party, credit it on the credits page. When a component lands, move its part from "Not yet" to "Today" on the site types page, in both languages.
+
+- `BlessWorkOrderCard`: a work order with the product, the quantity, the due time, and the state.
+- `BlessProductionCounter`: good and scrap pieces against the target, with big buttons for a station.
+- `BlessMachineBoard`: the machines of a line with their state and how long they are in it.
+- `BlessOeeGauge`: overall equipment effectiveness: availability × performance × quality.
+- `BlessDowntimePicker`: the reason for a stop, with big touch buttons.
+- `BlessWorkInstructions`: the steps of a job with a picture for each step.
+- `BlessQualityCheck`: pass or fail checks and measured values against their limits.
+- `BlessControlChart`: measured values over time with the center line and the control limits (SPC).
+- `BlessShiftHandover`: notes from one shift to the next, with open issues.
+- `BlessPickingList`: the items to pick in a warehouse, with the place and a scan to confirm.
+
 ### Deliberately skipped
 
 - **Chart**: no bundled lib. Phase 11 ✅: `--bless-color-chart-{1..5}` (≥3:1 both themes) + `BlessChart` frame that maps them onto Unovis `--vis-*` vars. Unovis is the documented pairing, installed by the consumer.
