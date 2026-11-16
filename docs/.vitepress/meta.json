@@ -17556,6 +17556,44 @@
   "slots": [],
   "exposed": []
  },
+ "BlessWishlistButton": {
+  "props": [
+   {
+    "name": "name",
+    "type": "string",
+    "required": true,
+    "description": "the name of the product, for the name of the button"
+   },
+   {
+    "name": "count",
+    "type": "number | undefined",
+    "required": false,
+    "description": "how many people saved it"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ save: (name: string) => string; added: (name: string) => string; removed: (name: string) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "boolean | undefined",
+    "required": false,
+    "default": "false",
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "update:modelValue",
+    "type": "[value: boolean]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessWorldClock": {
   "props": [
    {

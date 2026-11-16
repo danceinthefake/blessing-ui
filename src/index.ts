@@ -548,3 +548,4 @@ export { default as BlessPrice } from "./components/BlessPrice.vue";
 export { default as BlessProductCard } from "./components/BlessProductCard.vue";
 export { default as BlessCartDrawer } from "./components/BlessCartDrawer.vue";
 export type { BlessCartLine } from "./components/BlessCartDrawer.vue";
+export { default as BlessWishlistButton } from "./components/BlessWishlistButton.vue";

@@ -13,7 +13,8 @@
 - `BlessPaymentSchedule`: the payments of a loan from the principal, the yearly rate, and the months, with the principal, interest, and balance of each month, paid rows, and totals.
 - `BlessPrice`: a price with the old price struck through, the percent off, one sentence for screen readers, and a unit price.
 - `BlessProductCard`: a product with an image, a linked name, a rating read in words, the price with a sale, a badge, sold out, and an add button named after the product.
-- `BlessCartDrawer`: the cart in a side sheet with quantity buttons and a field kept between 1 and max, remove, the subtotal, and a checkout button. 328 components in all.
+- `BlessCartDrawer`: the cart in a side sheet with quantity buttons and a field kept between 1 and max, remove, the subtotal, and a checkout button.
+- `BlessWishlistButton`: a heart toggle named after the product, filled when saved, with a count and a status message after each click. 329 components in all.
 
 ## 0.7.0 — 2026-11-16
 

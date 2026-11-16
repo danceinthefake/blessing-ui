@@ -324,6 +324,7 @@ export type BlessLabelsFull = {
   BlessVoiceInput: All<typeof BlessVoiceInput>;
   BlessWaterfallChart: All<typeof BlessWaterfallChart>;
   BlessWebhookLog: All<typeof BlessWebhookLog>;
+  BlessWishlistButton: All<typeof BlessWishlistButton>;
 };
 
 const copy = { copy: "Salin", copied: "Tersalin", copiedLive: "Disalin ke papan klip" };
@@ -1313,6 +1314,11 @@ export const labelsId: BlessLabelsFull = {
     response: "Balasan",
     empty: "Belum ada pengiriman",
   },
+  BlessWishlistButton: {
+    save: (n) => `Simpan ${n} ke wishlist`,
+    added: (n) => `${n} ada di wishlist Anda.`,
+    removed: (n) => `${n} keluar dari wishlist Anda.`,
+  },
 };
 
 import type BlessVariantPicker from "../components/BlessVariantPicker.vue";
@@ -1322,3 +1328,5 @@ import type BlessVoiceInput from "../components/BlessVoiceInput.vue";
 import type BlessWaterfallChart from "../components/BlessWaterfallChart.vue";
 
 import type BlessWebhookLog from "../components/BlessWebhookLog.vue";
+
+import type BlessWishlistButton from "../components/BlessWishlistButton.vue";
