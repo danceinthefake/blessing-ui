@@ -117,6 +117,7 @@ import type BlessPictogram from "../components/BlessPictogram.vue";
 import type BlessPinPad from "../components/BlessPinPad.vue";
 import type BlessPoll from "../components/BlessPoll.vue";
 import type BlessPostComposer from "../components/BlessPostComposer.vue";
+import type BlessPosterRow from "../components/BlessPosterRow.vue";
 import type BlessPresetRange from "../components/BlessPresetRange.vue";
 import type BlessPrice from "../components/BlessPrice.vue";
 import type BlessPriceTicker from "../components/BlessPriceTicker.vue";
@@ -315,6 +316,7 @@ export type BlessLabelsFull = {
   BlessPinPad: All<typeof BlessPinPad>;
   BlessPoll: All<typeof BlessPoll>;
   BlessPostComposer: All<typeof BlessPostComposer>;
+  BlessPosterRow: All<typeof BlessPosterRow>;
   BlessPresetRange: All<typeof BlessPresetRange>;
   BlessPrice: All<typeof BlessPrice>;
   BlessPriceTicker: All<typeof BlessPriceTicker>;
@@ -1196,6 +1198,10 @@ export const labelsId: BlessLabelsFull = {
     addChoice: "Tambah pilihan",
     removeImage: (n) => `Hapus gambar ${n}`,
     post: "Kirim",
+  },
+  BlessPosterRow: {
+    previous: "Gulir mundur",
+    next: "Gulir maju",
   },
   BlessPresetRange: {
     presets: "Rentang cepat",
