@@ -132,7 +132,13 @@
 }
 .vp-doc
   .demo__preview
-  :is(h1, h2, h3, h4, h5, h6):not(.tiptap *, .bless-markdown *, .bless-section__title, .bless-article__title) {
+  :is(h1, h2, h3, h4, h5, h6):not(
+    .tiptap *,
+    .bless-markdown *,
+    .bless-section__title,
+    .bless-article__title,
+    .bless-record__title
+  ) {
   margin: 0;
   padding: 0;
   border: 0;

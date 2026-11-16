@@ -629,3 +629,5 @@ export { default as BlessLyrics } from "./components/BlessLyrics.vue";
 export type { BlessLyricLine } from "./components/BlessLyrics.vue";
 export { default as BlessContinueWatching } from "./components/BlessContinueWatching.vue";
 export type { BlessResumeItem } from "./components/BlessContinueWatching.vue";
+export { default as BlessRecordHeader } from "./components/BlessRecordHeader.vue";
+export type { BlessRecordFact } from "./components/BlessRecordHeader.vue";

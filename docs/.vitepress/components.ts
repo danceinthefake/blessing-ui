@@ -1089,6 +1089,7 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "descriptions",
         text: "Label and value pairs for a detail page",
       },
+      { name: "BlessRecordHeader", slug: "record-header", text: "The top of a record page" },
     ],
   },
   {
