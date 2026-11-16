@@ -171,6 +171,7 @@ import type BlessScheduler from "../components/BlessScheduler.vue";
 import type BlessSeatPicker from "../components/BlessSeatPicker.vue";
 import type BlessSelectionToolbar from "../components/BlessSelectionToolbar.vue";
 import type BlessShareBar from "../components/BlessShareBar.vue";
+import type BlessShiftHandover from "../components/BlessShiftHandover.vue";
 import type BlessShipmentTracker from "../components/BlessShipmentTracker.vue";
 import type BlessShortcutRecorder from "../components/BlessShortcutRecorder.vue";
 import type BlessShortcutSheet from "../components/BlessShortcutSheet.vue";
@@ -394,6 +395,7 @@ export type BlessLabelsFull = {
   BlessSeatPicker: All<typeof BlessSeatPicker>;
   BlessSelectionToolbar: All<typeof BlessSelectionToolbar>;
   BlessShareBar: All<typeof BlessShareBar>;
+  BlessShiftHandover: All<typeof BlessShiftHandover>;
   BlessShipmentTracker: All<typeof BlessShipmentTracker>;
   BlessShortcutRecorder: All<typeof BlessShortcutRecorder>;
   BlessShortcutSheet: All<typeof BlessShortcutSheet>;
@@ -1676,6 +1678,17 @@ export const labelsId: BlessLabelsFull = {
     share: "Bagikan…",
     copy: "Salin tautan",
     copied: "Tautan disalin",
+  },
+  BlessShiftHandover: {
+    info: "Info",
+    watch: "Pantau",
+    stop: "Berhenti",
+    issues: "Masalah terbuka",
+    open: (n) => `${n} masalah terbuka`,
+    close: (t) => `Ditutup: ${t}`,
+    acknowledge: "Baca dan ambil alih",
+    readBy: (n) => `Diambil alih oleh ${n}`,
+    owner: (n) => `penanggung jawab ${n}`,
   },
   BlessShipmentTracker: {
     title: "Pengiriman",

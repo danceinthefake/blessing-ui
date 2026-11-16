@@ -1175,6 +1175,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "quality-check",
         text: "Pass or fail checks and measures with limits",
       },
+      {
+        name: "BlessShiftHandover",
+        slug: "shift-handover",
+        text: "Notes from one shift to the next",
+      },
     ],
   },
   {

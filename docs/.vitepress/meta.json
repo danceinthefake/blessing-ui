@@ -15703,6 +15703,67 @@
   ],
   "exposed": []
  },
+ "BlessShiftHandover": {
+  "props": [
+   {
+    "name": "title",
+    "type": "string",
+    "required": true,
+    "description": "for example \"Night shift → Morning shift\""
+   },
+   {
+    "name": "by",
+    "type": "string",
+    "required": true,
+    "description": "who wrote it and when, as text"
+   },
+   {
+    "name": "notes",
+    "type": "string | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "facts",
+    "type": "{ label: string; value: string; }[] | undefined",
+    "required": false,
+    "description": "key numbers of the shift, for example output against target"
+   },
+   {
+    "name": "readBy",
+    "type": "string | undefined",
+    "required": false,
+    "description": "who took over, after the button"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<Record<BlessIssueLevel, string> & { issues: string; open: (count: number) => string; close: (text: string) => string; acknowledge: string; readBy: (name: string) => string; owner: (name: string) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "issues",
+    "type": "BlessHandoverIssue[] | undefined",
+    "required": false,
+    "default": "[]",
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "update:issues",
+    "type": "[value: BlessHandoverIssue[]]",
+    "description": ""
+   },
+   {
+    "name": "acknowledge",
+    "type": "[]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessShipmentTracker": {
   "props": [
    {
