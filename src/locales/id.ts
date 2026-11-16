@@ -29,6 +29,7 @@ import type BlessComparisonTable from "../components/BlessComparisonTable.vue";
 import type BlessConnectionStatus from "../components/BlessConnectionStatus.vue";
 import type BlessConsentBanner from "../components/BlessConsentBanner.vue";
 import type BlessContextMeter from "../components/BlessContextMeter.vue";
+import type BlessContrastChecker from "../components/BlessContrastChecker.vue";
 import type BlessCopyButton from "../components/BlessCopyButton.vue";
 import type BlessCountdownBanner from "../components/BlessCountdownBanner.vue";
 import type BlessCouponInput from "../components/BlessCouponInput.vue";
@@ -172,6 +173,7 @@ export type BlessLabelsFull = {
   BlessConnectionStatus: All<typeof BlessConnectionStatus>;
   BlessConsentBanner: All<typeof BlessConsentBanner>;
   BlessContextMeter: All<typeof BlessContextMeter>;
+  BlessContrastChecker: All<typeof BlessContrastChecker>;
   BlessCopyButton: All<typeof BlessCopyButton>;
   BlessCountdownBanner: All<typeof BlessCountdownBanner>;
   BlessCouponInput: All<typeof BlessCouponInput>;
@@ -456,6 +458,21 @@ export const labelsId: BlessLabelsFull = {
     title: "Jendela konteks",
     free: "Kosong",
     used: (u, m, s) => `${s} konteks terpakai: ${u} dari ${m} token`,
+  },
+  BlessContrastChecker: {
+    text: "Warna teks",
+    background: "Latar",
+    swap: "Tukar warna",
+    ratio: "Rasio kontras",
+    sample: "Kucing cokelat melompati anjing yang malas.",
+    pass: "Lulus",
+    fail: "Gagal",
+    invalid: "Tulis warna sebagai hex, seperti #3f4245.",
+    aaText: "AA, teks biasa",
+    aaLarge: "AA, teks besar",
+    aaaText: "AAA, teks biasa",
+    aaaLarge: "AAA, teks besar",
+    ui: "Bagian antarmuka",
   },
   BlessCopyButton: copy,
   BlessCountdownBanner: {

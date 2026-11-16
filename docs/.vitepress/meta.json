@@ -3590,6 +3590,44 @@
   "slots": [],
   "exposed": []
  },
+ "BlessContrastChecker": {
+  "props": [
+   {
+    "name": "labels",
+    "type": "Partial<{ text: string; background: string; swap: string; ratio: string; sample: string; pass: string; fail: string; invalid: string; aaText: string; aaLarge: string; aaaText: string; aaaLarge: string; ui: string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "text",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"#3f4245\"",
+    "description": ""
+   },
+   {
+    "name": "background",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"#f4f4f5\"",
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "update:text",
+    "type": "[value: string]",
+    "description": ""
+   },
+   {
+    "name": "update:background",
+    "type": "[value: string]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessCopyButton": {
   "props": [
    {

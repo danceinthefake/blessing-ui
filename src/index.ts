@@ -502,3 +502,5 @@ export { default as BlessParallelCoordinates } from "./components/BlessParallelC
 export type { BlessParallelAxis } from "./components/BlessParallelCoordinates.vue";
 export { default as BlessSmallMultiples } from "./components/BlessSmallMultiples.vue";
 export type { BlessMultiple } from "./components/BlessSmallMultiples.vue";
+export { default as BlessContrastChecker } from "./components/BlessContrastChecker.vue";
+export { contrastRatio, hexToRgb, luminance, wcagLevels } from "./composables/contrast";
