@@ -572,7 +572,7 @@ Thirteen components, 334 → 347. Each uses native platform APIs only: the libra
 - ✅ `BlessEmailView`: an email with the sender, the recipients, the body, and attachments.
 - ✅ `BlessEmailComposer`: to, cc, and subject fields with recipient chips, and the body.
 - ✅ `BlessCallScreen`: video tiles for each person, with mute, camera, share, and hang up.
-- `BlessContactPicker`: search people and pick one or more, with recent contacts.
+- ✅ `BlessContactPicker`: search people and pick one or more, with recent contacts.
 - `BlessPostComposer`: write a post with images, a poll, and a count of the characters left.
 - `BlessStories`: rings of people with new stories, and a viewer with a timer for each story.
 - `BlessFollowButton`: follow and unfollow, with the count of followers.

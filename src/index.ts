@@ -569,3 +569,5 @@ export { default as BlessEmailComposer } from "./components/BlessEmailComposer.v
 export type { BlessEmailDraft } from "./components/BlessEmailComposer.vue";
 export { default as BlessCallScreen } from "./components/BlessCallScreen.vue";
 export type { BlessCallPerson } from "./components/BlessCallScreen.vue";
+export { default as BlessContactPicker } from "./components/BlessContactPicker.vue";
+export type { BlessContact } from "./components/BlessContactPicker.vue";

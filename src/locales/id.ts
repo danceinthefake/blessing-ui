@@ -34,6 +34,7 @@ import type BlessCommand from "../components/BlessCommand.vue";
 import type BlessComparisonTable from "../components/BlessComparisonTable.vue";
 import type BlessConnectionStatus from "../components/BlessConnectionStatus.vue";
 import type BlessConsentBanner from "../components/BlessConsentBanner.vue";
+import type BlessContactPicker from "../components/BlessContactPicker.vue";
 import type BlessContextMeter from "../components/BlessContextMeter.vue";
 import type BlessContrastChecker from "../components/BlessContrastChecker.vue";
 import type BlessConversationList from "../components/BlessConversationList.vue";
@@ -208,6 +209,7 @@ export type BlessLabelsFull = {
   BlessComparisonTable: All<typeof BlessComparisonTable>;
   BlessConnectionStatus: All<typeof BlessConnectionStatus>;
   BlessConsentBanner: All<typeof BlessConsentBanner>;
+  BlessContactPicker: All<typeof BlessContactPicker>;
   BlessContextMeter: All<typeof BlessContextMeter>;
   BlessContrastChecker: All<typeof BlessContrastChecker>;
   BlessConversationList: All<typeof BlessConversationList>;
@@ -570,6 +572,15 @@ export const labelsId: BlessLabelsFull = {
     save: "Simpan pilihan",
     policy: "Kebijakan privasi",
     required: "Selalu aktif",
+  },
+  BlessContactPicker: {
+    title: "Orang",
+    search: "Cari orang",
+    recent: "Terbaru",
+    all: "Semua orang",
+    none: "Tidak ada yang cocok.",
+    chosen: "Dipilih",
+    remove: "Hapus",
   },
   BlessContextMeter: {
     title: "Jendela konteks",

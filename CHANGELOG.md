@@ -26,7 +26,8 @@ Sixteen new components, 334 in all, for finance and commerce sites. They come fr
 - `BlessReadReceipt`: sending, sent, delivered, read, and failed marks for a message, with words for screen readers, who read it, and retry.
 - `BlessEmailView`: an email with the subject, the sender, recipients by name that expand to addresses, a plain text body or a slot, attachments, and actions.
 - `BlessEmailComposer`: To and Cc as tag inputs with an address check, a subject, a message, and send and discard events.
-- `BlessCallScreen`: video tiles from a slot or the avatar, muted and speaking in words, and mute, camera, share, and leave controls. 339 components in all.
+- `BlessCallScreen`: video tiles from a slot or the avatar, muted and speaking in words, and mute, camera, share, and leave controls.
+- `BlessContactPicker`: a search over people with recent contacts first, check boxes or radios, and the chosen people as chips that remove. 340 components in all.
 
 ## 0.7.0 — 2026-11-16
 
