@@ -84,6 +84,7 @@ import type BlessLogViewer from "../components/BlessLogViewer.vue";
 import type BlessLollipop from "../components/BlessLollipop.vue";
 import type BlessMarimekko from "../components/BlessMarimekko.vue";
 import type BlessMarquee from "../components/BlessMarquee.vue";
+import type BlessMedicationSchedule from "../components/BlessMedicationSchedule.vue";
 import type BlessMessageFeedback from "../components/BlessMessageFeedback.vue";
 import type BlessModelPicker from "../components/BlessModelPicker.vue";
 import type BlessNewsletterSignup from "../components/BlessNewsletterSignup.vue";
@@ -266,6 +267,7 @@ export type BlessLabelsFull = {
   BlessLollipop: All<typeof BlessLollipop>;
   BlessMarimekko: All<typeof BlessMarimekko>;
   BlessMarquee: All<typeof BlessMarquee>;
+  BlessMedicationSchedule: All<typeof BlessMedicationSchedule>;
   BlessMessageFeedback: All<typeof BlessMessageFeedback>;
   BlessModelPicker: All<typeof BlessModelPicker>;
   BlessNewsletterSignup: All<typeof BlessNewsletterSignup>;
@@ -936,6 +938,12 @@ export const labelsId: BlessLabelsFull = {
   BlessLollipop: { item: "Item", value: "Nilai" },
   BlessMarimekko: { column: "Kolom", share: "Porsi dari semua" },
   BlessMarquee: { play: "Putar", pause: "Jeda" },
+  BlessMedicationSchedule: {
+    title: "Obat hari ini",
+    late: "terlambat",
+    taken: (d, t) => `${d} dari ${t} dosis sudah diminum`,
+    mark: (m, t) => `${m} jam ${t}`,
+  },
   BlessMessageFeedback: {
     good: "Jawaban bagus",
     bad: "Jawaban buruk",
