@@ -414,6 +414,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "contrast-checker",
         text: "Two colors in, the contrast ratio and WCAG levels out",
       },
+      {
+        name: "BlessPaletteViewer",
+        slug: "palette-viewer",
+        text: "The shades of each color with the contrast",
+      },
       { name: "BlessPasswordMeter", slug: "password-meter", text: "Strength meter from rules" },
       { name: "BlessListbox", slug: "listbox", text: "Single / multi select list, role=listbox" },
       { name: "BlessLabel", slug: "label", text: "`<label>` with required mark and hint" },

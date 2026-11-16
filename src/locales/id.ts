@@ -75,6 +75,7 @@ import type BlessOnboardingChecklist from "../components/BlessOnboardingChecklis
 import type BlessOpeningHours from "../components/BlessOpeningHours.vue";
 import type BlessOrderList from "../components/BlessOrderList.vue";
 import type BlessOrderSummary from "../components/BlessOrderSummary.vue";
+import type BlessPaletteViewer from "../components/BlessPaletteViewer.vue";
 import type BlessParallelCoordinates from "../components/BlessParallelCoordinates.vue";
 import type BlessPareto from "../components/BlessPareto.vue";
 import type BlessPermissionMatrix from "../components/BlessPermissionMatrix.vue";
@@ -219,6 +220,7 @@ export type BlessLabelsFull = {
   BlessOpeningHours: All<typeof BlessOpeningHours>;
   BlessOrderList: All<typeof BlessOrderList>;
   BlessOrderSummary: All<typeof BlessOrderSummary>;
+  BlessPaletteViewer: All<typeof BlessPaletteViewer>;
   BlessParallelCoordinates: All<typeof BlessParallelCoordinates>;
   BlessPareto: All<typeof BlessPareto>;
   BlessPermissionMatrix: All<typeof BlessPermissionMatrix>;
@@ -787,6 +789,12 @@ export const labelsId: BlessLabelsFull = {
     tax: "Pajak",
     total: "Total",
     quantity: (n) => `Jml ${n}`,
+  },
+  BlessPaletteViewer: {
+    copy: (v) => `Salin ${v}`,
+    copied: (v) => `${v} tersalin`,
+    onWhite: "di putih",
+    onBlack: "di hitam",
   },
   BlessParallelCoordinates: { item: "Item" },
   BlessPareto: { item: "Item", value: "Nilai", running: "Porsi kumulatif" },
