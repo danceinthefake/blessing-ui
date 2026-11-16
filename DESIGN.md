@@ -636,7 +636,7 @@ Fourteen components, 372 → 386. Each uses native platform APIs only: the libra
 - ✅ `BlessSkuField`: a field for a barcode or a SKU that takes a scanner and checks the code.
 - ✅ `BlessUnitConverter`: an amount in one unit of measure and its value in another, such as boxes and pieces.
 - ✅ `BlessDocumentStatus`: the states of a document, such as draft, approved, sent, and paid, with the next step.
-- `BlessPayslip`: the pay of a period with earnings, deductions, and the net pay.
+- ✅ `BlessPayslip`: the pay of a period with earnings, deductions, and the net pay.
 
 ### Phase 40 — operations: shop floor and warehouse (2026-11-16)
 

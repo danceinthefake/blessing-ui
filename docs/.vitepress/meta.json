@@ -11825,6 +11825,70 @@
   "slots": [],
   "exposed": []
  },
+ "BlessPayslip": {
+  "props": [
+   {
+    "name": "employee",
+    "type": "{ name: string; id?: string | undefined; role?: string | undefined; }",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "company",
+    "type": "string | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "period",
+    "type": "string",
+    "required": true,
+    "description": "the pay period, as text, for example \"November 2026\""
+   },
+   {
+    "name": "payDate",
+    "type": "string | undefined",
+    "required": false,
+    "description": "the pay day, as text"
+   },
+   {
+    "name": "earnings",
+    "type": "BlessPayLine[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "deductions",
+    "type": "BlessPayLine[] | undefined",
+    "required": false,
+    "default": "[]",
+    "description": ""
+   },
+   {
+    "name": "currency",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"USD\"",
+    "description": ""
+   },
+   {
+    "name": "locale",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"en\"",
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ title: string; employee: string; period: string; payDate: string; earnings: string; deductions: string; totalEarnings: string; totalDeductions: string; net: string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessPaywall": {
   "props": [
    {
