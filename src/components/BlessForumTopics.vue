@@ -58,7 +58,7 @@ const flags = (t: BlessForumTopic) =>
   [
     t.pinned && { key: "pinned", mark: "📌︎", word: text.value.pinned },
     t.solved && { key: "solved", mark: "✓", word: text.value.solved },
-    t.locked && { key: "locked", mark: "🔒︎", word: text.value.locked },
+    t.locked && { key: "locked", mark: "⊘", word: text.value.locked },
   ].filter((f): f is { key: string; mark: string; word: string } => !!f);
 // pinned topics first; the rest keep their order
 const ordered = computed(() => [

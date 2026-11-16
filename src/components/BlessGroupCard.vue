@@ -78,7 +78,6 @@ const press = () =>
         <template v-else>{{ name }}</template>
       </h3>
       <p class="bless-group__meta">
-        <span aria-hidden="true">{{ private ? "🔒︎" : "🌐︎" }}</span>
         {{ private ? text.private : text.public }} · {{ text.members(count) }}
       </p>
       <p v-if="description" class="bless-group__desc">{{ description }}</p>

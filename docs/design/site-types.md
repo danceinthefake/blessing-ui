@@ -18,8 +18,8 @@ For each group, the page lists the components and the [blocks](../blocks/) that 
 | --------------------------------- | ---------------: | ------: |
 | 1. Content and publishing         |               15 |       7 |
 | 2. Commerce                       |               25 |       0 |
-| 3. Social and community           |               11 |       7 |
-| 4. Communication                  |                9 |       6 |
+| 3. Social and community           |               18 |       0 |
+| 4. Communication                  |               15 |       0 |
 | 5. Media and entertainment        |                8 |       7 |
 | 6. Productivity and collaboration |               14 |       6 |
 | 7. Business software and ERP      |               13 |      14 |
@@ -59,19 +59,19 @@ Not yet: nothing from the first list. Every part that this page named is now a c
 
 Social networks, forums, and dating. People post, react, and follow.
 
-Today: [ProfileCard](../components/profile-card), [ActivityFeed](../components/activity-feed), [Reactions](../components/reactions), [Thread](../components/thread), [Message](../components/message), [Mention](../components/mention), [Poll](../components/poll), [Leaderboard](../components/leaderboard), [AvatarGroup](../components/avatar-group), [SwipeDeck](../components/swipe-deck), [HoverCard](../components/hover-card).
+Today: [PostComposer](../components/post-composer), [Stories](../components/stories), [FollowButton](../components/follow-button), [TrendList](../components/trend-list), [ReportDialog](../components/report-dialog), [GroupCard](../components/group-card), [ForumTopics](../components/forum-topics), [ProfileCard](../components/profile-card), [ActivityFeed](../components/activity-feed), [Reactions](../components/reactions), [Thread](../components/thread), [Message](../components/message), [Mention](../components/mention), [Poll](../components/poll), [Leaderboard](../components/leaderboard), [AvatarGroup](../components/avatar-group), [SwipeDeck](../components/swipe-deck), [HoverCard](../components/hover-card).
 
-Not yet: post composer with media, stories viewer, follow button with counts, trending topics, report dialog, group card, forum topic list.
+Not yet: nothing from the first list. Every part that this page named is now a component.
 
 ## 4. Communication
 
 Chat, email, and calls. People send and receive messages.
 
-Today: [Bubble](../components/bubble), [MessageScroller](../components/message-scroller), [TypingIndicator](../components/typing-indicator), [Attachment](../components/attachment), [NotificationInbox](../components/notification-inbox), [EmojiPicker](../components/emoji-picker), [VoiceInput](../components/voice-input), [AudioRecorder](../components/audio-recorder), [ConnectionStatus](../components/connection-status).
+Today: [ConversationList](../components/conversation-list), [ReadReceipt](../components/read-receipt), [EmailView](../components/email-view), [EmailComposer](../components/email-composer), [CallScreen](../components/call-screen), [ContactPicker](../components/contact-picker), [Bubble](../components/bubble), [MessageScroller](../components/message-scroller), [TypingIndicator](../components/typing-indicator), [Attachment](../components/attachment), [NotificationInbox](../components/notification-inbox), [EmojiPicker](../components/emoji-picker), [VoiceInput](../components/voice-input), [AudioRecorder](../components/audio-recorder), [ConnectionStatus](../components/connection-status).
 
 Blocks: [chat](../blocks/chat), [inbox](../blocks/inbox).
 
-Not yet: conversation list with unread counts, read receipts, email reader, email composer with recipients, call screen with video tiles and controls, contact picker.
+Not yet: nothing from the first list. Every part that this page named is now a component.
 
 ## 5. Media and entertainment
 

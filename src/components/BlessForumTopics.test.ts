@@ -23,7 +23,7 @@ test("BlessForumTopics: pinned first, flags in words, tags, short counts, and th
   const topics = w.findAll(".bless-forum__topic");
   expect(topics[0]!.find(".bless-forum__title").text()).toBe("Rules");
   expect(topics[0]!.find(".bless-forum__flags").text().replace(/\s+/g, " ")).toBe(
-    "📌︎ Pinned 🔒︎ Locked",
+    "📌︎ Pinned ⊘ Locked",
   );
   const a = topics[1]!;
   expect(a.find("a").attributes("href")).toBe("/t/a");

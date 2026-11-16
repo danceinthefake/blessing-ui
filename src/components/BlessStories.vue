@@ -186,7 +186,6 @@ function onKey(e: KeyboardEvent) {
 .bless-stories__avatar {
   padding: 3px;
   border: 3px solid var(--bless-color-accent);
-  border-radius: 50%;
 }
 .is-seen .bless-stories__avatar {
   border: 2px dashed var(--bless-color-border);

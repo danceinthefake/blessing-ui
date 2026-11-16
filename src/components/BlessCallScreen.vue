@@ -72,7 +72,6 @@ const cols = computed(() => (props.people.length > 4 ? 3 : props.people.length >
           />
         </div>
         <span class="bless-call__name">
-          <span v-if="p.muted" aria-hidden="true">🔇︎</span>
           {{ p.name }}<span v-if="p.muted" class="bless-call__state">, {{ text.muted }}</span
           ><span v-if="p.speaking" class="bless-call__state">, {{ text.speaking }}</span>
         </span>
@@ -81,7 +80,7 @@ const cols = computed(() => (props.people.length > 4 ? 3 : props.people.length >
     <div class="bless-call__bar" role="group" :aria-label="text.controls">
       <span v-if="elapsed" class="bless-call__time">{{ elapsed }}</span>
       <button type="button" class="bless-call__btn" :aria-pressed="muted" @click="muted = !muted">
-        <span aria-hidden="true">{{ muted ? "🔇︎" : "🎤︎" }}</span> {{ text.mute }}
+        <span aria-hidden="true">{{ muted ? "✕" : "🎤︎" }}</span> {{ text.mute }}
       </button>
       <button
         type="button"
