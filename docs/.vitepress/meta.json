@@ -11677,6 +11677,43 @@
   "slots": [],
   "exposed": []
  },
+ "BlessPlayQueue": {
+  "props": [
+   {
+    "name": "current",
+    "type": "BlessQueueTrack | undefined",
+    "required": false,
+    "description": "the track that plays now, above the queue"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ now: string; next: string; empty: string; clear: string; play: (title: string) => string; remove: (title: string) => string; total: (count: number, time: string) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "BlessQueueTrack[] | undefined",
+    "required": false,
+    "default": "[]",
+    "description": "the tracks after the current one, in order"
+   }
+  ],
+  "events": [
+   {
+    "name": "update:modelValue",
+    "type": "[value: BlessQueueTrack[]]",
+    "description": ""
+   },
+   {
+    "name": "play",
+    "type": "[id: string]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessPoll": {
   "props": [
    {
