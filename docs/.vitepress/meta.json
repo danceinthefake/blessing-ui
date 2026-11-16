@@ -11828,6 +11828,38 @@
   "slots": [],
   "exposed": []
  },
+ "BlessPosterRow": {
+  "props": [
+   {
+    "name": "title",
+    "type": "string",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "items",
+    "type": "BlessPoster[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "shape",
+    "type": "\"wide\" | \"tall\" | \"square\" | undefined",
+    "required": false,
+    "default": "\"tall\"",
+    "description": "the shape of the posters"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ previous: string; next: string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessPresenceCursors": {
   "props": [
    {
