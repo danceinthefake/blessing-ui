@@ -194,6 +194,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "facet-filter",
         text: "Catalog filters with counts and a price range",
       },
+      {
+        name: "BlessStoreLocator",
+        slug: "store-locator",
+        text: "Stores by distance with hours and directions",
+      },
       { name: "BlessEmojiPicker", slug: "emoji-picker", text: "Search and pick an emoji" },
       {
         name: "BlessUploader",
