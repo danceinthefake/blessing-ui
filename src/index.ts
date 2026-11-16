@@ -535,3 +535,6 @@ export { default as BlessTransactionList } from "./components/BlessTransactionLi
 export type { BlessTransaction } from "./components/BlessTransactionList.vue";
 export { default as BlessPriceTicker } from "./components/BlessPriceTicker.vue";
 export type { BlessTick } from "./components/BlessPriceTicker.vue";
+export { default as BlessOrderBook } from "./components/BlessOrderBook.vue";
+export { bookSides } from "./components/BlessOrderBook.vue";
+export type { BlessBookLevel } from "./components/BlessOrderBook.vue";

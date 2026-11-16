@@ -548,7 +548,7 @@ Sixteen components, 318 → 334. Each uses native platform APIs only: the librar
 - ✅ `BlessBalanceCard`: the balance of an account, with the change over a period and the main actions.
 - ✅ `BlessTransactionList`: payments in and out, grouped by day, with a category and a total for each day.
 - ✅ `BlessPriceTicker`: prices that move across the screen, with the change of each, and a pause.
-- `BlessOrderBook`: the bids and asks of a market, with depth bars and the spread.
+- ✅ `BlessOrderBook`: the bids and asks of a market, with depth bars and the spread.
 - `BlessCurrencyConverter`: an amount in one currency and its value in another, with the rate and a swap.
 - `BlessBudgetBars`: the money spent against the plan for each category, with what is left.
 - `BlessPaymentSchedule`: the payments of a loan or a plan, with dates, the principal, and the interest.
