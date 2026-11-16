@@ -59,7 +59,8 @@ Fifty-four new components, 372 in all, for finance, commerce, communication, soc
 - `BlessPlayQueue`: the track that plays now and the next tracks in a sortable list, with play and remove buttons named with the track, the total time, and clear.
 - `BlessMiniPlayer`: a small player with the track, play and pause, previous and next, a native seek slider read in words, and a docked mode.
 - `BlessLyrics`: the lines of a song with the current one marked from the position, a box that keeps it in the middle, and lines that seek.
-- `BlessContinueWatching`: a row of items with the place where the viewer stopped as a bar and in words, one link per card, and a remove button named with the title. 372 components in all.
+- `BlessContinueWatching`: a row of items with the place where the viewer stopped as a bar and in words, one link per card, and a remove button named with the title.
+- `BlessRecordHeader`: the top of a record page with the code, the title at the level you choose, a status word with a mark, key facts as a description list, and an actions slot. 373 components in all.
 
 ## 0.7.0 — 2026-11-16
 

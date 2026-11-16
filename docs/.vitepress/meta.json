@@ -13786,6 +13786,58 @@
   ],
   "exposed": []
  },
+ "BlessRecordHeader": {
+  "props": [
+   {
+    "name": "title",
+    "type": "string",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "code",
+    "type": "string | undefined",
+    "required": false,
+    "description": "the code of the record, for example \"PO-2026-0142\""
+   },
+   {
+    "name": "status",
+    "type": "string | undefined",
+    "required": false,
+    "description": "the state, as a word"
+   },
+   {
+    "name": "tone",
+    "type": "\"danger\" | \"warning\" | \"success\" | \"neutral\" | undefined",
+    "required": false,
+    "default": "\"neutral\"",
+    "description": "how the state reads: a mark and a tint"
+   },
+   {
+    "name": "facts",
+    "type": "BlessRecordFact[] | undefined",
+    "required": false,
+    "default": "[]",
+    "description": ""
+   },
+   {
+    "name": "level",
+    "type": "1 | 2 | 3 | undefined",
+    "required": false,
+    "default": "1",
+    "description": "the heading level of the title"
+   }
+  ],
+  "events": [],
+  "slots": [
+   {
+    "name": "default",
+    "type": "{}",
+    "description": ""
+   }
+  ],
+  "exposed": []
+ },
  "BlessRecurrencePicker": {
   "props": [
    {
