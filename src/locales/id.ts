@@ -40,6 +40,7 @@ import type BlessConnectionStatus from "../components/BlessConnectionStatus.vue"
 import type BlessConsentBanner from "../components/BlessConsentBanner.vue";
 import type BlessContactPicker from "../components/BlessContactPicker.vue";
 import type BlessContextMeter from "../components/BlessContextMeter.vue";
+import type BlessContinueWatching from "../components/BlessContinueWatching.vue";
 import type BlessContrastChecker from "../components/BlessContrastChecker.vue";
 import type BlessConversationList from "../components/BlessConversationList.vue";
 import type BlessCopyButton from "../components/BlessCopyButton.vue";
@@ -243,6 +244,7 @@ export type BlessLabelsFull = {
   BlessConsentBanner: All<typeof BlessConsentBanner>;
   BlessContactPicker: All<typeof BlessContactPicker>;
   BlessContextMeter: All<typeof BlessContextMeter>;
+  BlessContinueWatching: All<typeof BlessContinueWatching>;
   BlessContrastChecker: All<typeof BlessContrastChecker>;
   BlessConversationList: All<typeof BlessConversationList>;
   BlessCopyButton: All<typeof BlessCopyButton>;
@@ -681,6 +683,12 @@ export const labelsId: BlessLabelsFull = {
     title: "Jendela konteks",
     free: "Kosong",
     used: (u, m, s) => `${s} konteks terpakai: ${u} dari ${m} token`,
+  },
+  BlessContinueWatching: {
+    title: "Lanjutkan menonton",
+    left: (m) => `sisa ${m} mnt`,
+    done: (p) => `${p}% selesai`,
+    remove: (t) => `Hapus ${t} dari baris ini`,
   },
   BlessContrastChecker: {
     text: "Warna teks",

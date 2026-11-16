@@ -10,7 +10,7 @@ Vue 3 component library and design tokens. The UI is gray-scale, with one accent
 
 Docs, with every component live: **[ui.blessing.id](https://ui.blessing.id)**
 
-- 371 components, from button to data table to chat. Only `--bless-*` custom properties style them. There is no Tailwind dependency.
+- 372 components, from button to data table to chat. Only `--bless-*` custom properties style them. There is no Tailwind dependency.
 - Native platform first: `<dialog>`, Popover API, `<details>`, native form controls, `Intl` dates, and scroll-snap. There is no positioning, date, or table library.
 - Accessible defaults: focus rings, ARIA tablist, dialog, and tables, and `prefers-reduced-motion`
 - ESM, tree-shakable, with `vue` as the only required peer (`@tiptap/vue-3` is optional, for `BlessEditor`). One component (`BlessButton`) costs about 1 KB gzip of JS and about 2.6 KB of CSS (tokens and its own styles). Everything costs about 238 KB and 65 KB. CSS is split per component and the import pulls it in, so you never pay for styles that you do not use
@@ -92,7 +92,7 @@ The words that components say are English by default. `provideLabels(labelsId)` 
 
 ## Components
 
-371 components across eight groups. Every one styles itself from `--bless-*` tokens and ships with a test and a docs page.
+372 components across eight groups. Every one styles itself from `--bless-*` tokens and ships with a test and a docs page.
 
 ### Primitives
 
@@ -492,29 +492,30 @@ Gestures: `usePan(el, cb)` · `useSwipe(el, cb, { threshold, axis })` · `useLon
 
 ### Media
 
-| Component            | Purpose                                                                         | Key props / slots                                                                                                         |
-| -------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| `BlessImg`           | Lazy image                                                                      | `src`, `alt`, `ratio`, `fit`, `loading`, `placeholder`, `srcset`, `sizes`. Default slot = caption overlay. `#error`       |
-| `BlessFigure`        | An image with a caption and a credit                                            | `src`, `alt`, `caption`, `credit`, `creditHref`, `width`                                                                  |
-| `BlessPullQuote`     | A big quote with the speaker                                                    | `text`, `speaker`, `role`, `cite`, `align`                                                                                |
-| `BlessLiveBlog`      | Timed updates with a new-updates button                                         | `updates` `{id,time,title,body,pinned,key}`, `live`                                                                       |
-| `BlessPaywall`       | The end of a free preview with plans                                            | `plans` `{id,name,price,note}`, `pick`, `signInHref`. Emits `subscribe`                                                   |
-| `BlessVideo`         | Responsive embed / video                                                        | `src`, `title`, `ratio`, `native`, `poster`                                                                               |
-| `BlessParallax`      | Slow-scrolling background                                                       | `src`, `height`, `speed`. `#media` default                                                                                |
-| `BlessCarousel`      | Scroll-snap slider                                                              | `v-model`, `perView`, `gap`, `loop`, `autoplay`, `dots`, `arrows`                                                         |
-| `BlessPosterRow`     | A row of posters that scrolls                                                   | `title`, `items` `{id,title,image,href,meta}`, `shape`                                                                    |
-| `BlessEpisodeList`   | Episodes with length, summary, and progress                                     | `episodes` `{id,number,title,minutes,summary,image,progress}`, `current`. Emits `play`                                    |
-| `BlessPlayQueue`     | The next tracks in order                                                        | `current`, `v-model` `{id,title,artist,seconds,image}`. Emits `play`                                                      |
-| `BlessAudioPlayer`   | Track list player                                                               | `tracks`, `v-model` index, `color`. Emits `play` `pause` `ended`                                                          |
-| `BlessMiniPlayer`    | A small player with the controls                                                | `title`, `artist`, `image`, `duration`, `v-model:playing`, `v-model:position`, `docked`. Emits `previous`, `next`, `open` |
-| `BlessWaveform`      | Audio peaks to click or key to seek                                             | `peaks`, `src`, `bars`, `height`, `v-model`, `label`, `valueText`. Emits `seek`                                           |
-| `BlessTranscript`    | Lines of text that follow the media time                                        | `cues`, `time`, `follow`. Emits `seek`                                                                                    |
-| `BlessLyrics`        | Song lines that follow the playback                                             | `lines` `{time,text}`, `position`. Emits `seek`                                                                           |
-| `BlessChapterList`   | The chapters of an episode, with the current one                                | `chapters`, `time`, `duration`. Emits `seek`                                                                              |
-| `BlessWorldClock`    | The time now in several time zones                                              | `zones`, `locale`, `hour12`, `home`, `now`                                                                                |
-| `BlessAudioRecorder` | Record from the microphone, with a preview                                      | `maxDuration`, `mimeType`, `bars`, `labels`. Emits `record(blob)` `error`. Native MediaRecorder                           |
-| `BlessCameraCapture` | Take a photo with the camera, in the page                                       | `facing` user/environment, `type`, `quality`, `labels`. Emits `capture(blob)` `error`. Native getUserMedia                |
-| `BlessAnnotator`     | Draw / move / resize boxes and pins on an image. Regions as fractions. Keyboard | `v-model` regions `{id,x,y,w?,h?,label}`, `v-model:selected`, `v-model:tool`, `src`, `alt`, `editable`, `label`, `labels` |
+| Component               | Purpose                                                                         | Key props / slots                                                                                                         |
+| ----------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| `BlessImg`              | Lazy image                                                                      | `src`, `alt`, `ratio`, `fit`, `loading`, `placeholder`, `srcset`, `sizes`. Default slot = caption overlay. `#error`       |
+| `BlessFigure`           | An image with a caption and a credit                                            | `src`, `alt`, `caption`, `credit`, `creditHref`, `width`                                                                  |
+| `BlessPullQuote`        | A big quote with the speaker                                                    | `text`, `speaker`, `role`, `cite`, `align`                                                                                |
+| `BlessLiveBlog`         | Timed updates with a new-updates button                                         | `updates` `{id,time,title,body,pinned,key}`, `live`                                                                       |
+| `BlessPaywall`          | The end of a free preview with plans                                            | `plans` `{id,name,price,note}`, `pick`, `signInHref`. Emits `subscribe`                                                   |
+| `BlessVideo`            | Responsive embed / video                                                        | `src`, `title`, `ratio`, `native`, `poster`                                                                               |
+| `BlessParallax`         | Slow-scrolling background                                                       | `src`, `height`, `speed`. `#media` default                                                                                |
+| `BlessCarousel`         | Scroll-snap slider                                                              | `v-model`, `perView`, `gap`, `loop`, `autoplay`, `dots`, `arrows`                                                         |
+| `BlessPosterRow`        | A row of posters that scrolls                                                   | `title`, `items` `{id,title,image,href,meta}`, `shape`                                                                    |
+| `BlessEpisodeList`      | Episodes with length, summary, and progress                                     | `episodes` `{id,number,title,minutes,summary,image,progress}`, `current`. Emits `play`                                    |
+| `BlessPlayQueue`        | The next tracks in order                                                        | `current`, `v-model` `{id,title,artist,seconds,image}`. Emits `play`                                                      |
+| `BlessContinueWatching` | Where you stopped, with a remove button                                         | `items` `{id,title,subtitle,image,href,progress,minutes}`. Emits `remove`                                                 |
+| `BlessAudioPlayer`      | Track list player                                                               | `tracks`, `v-model` index, `color`. Emits `play` `pause` `ended`                                                          |
+| `BlessMiniPlayer`       | A small player with the controls                                                | `title`, `artist`, `image`, `duration`, `v-model:playing`, `v-model:position`, `docked`. Emits `previous`, `next`, `open` |
+| `BlessWaveform`         | Audio peaks to click or key to seek                                             | `peaks`, `src`, `bars`, `height`, `v-model`, `label`, `valueText`. Emits `seek`                                           |
+| `BlessTranscript`       | Lines of text that follow the media time                                        | `cues`, `time`, `follow`. Emits `seek`                                                                                    |
+| `BlessLyrics`           | Song lines that follow the playback                                             | `lines` `{time,text}`, `position`. Emits `seek`                                                                           |
+| `BlessChapterList`      | The chapters of an episode, with the current one                                | `chapters`, `time`, `duration`. Emits `seek`                                                                              |
+| `BlessWorldClock`       | The time now in several time zones                                              | `zones`, `locale`, `hour12`, `home`, `now`                                                                                |
+| `BlessAudioRecorder`    | Record from the microphone, with a preview                                      | `maxDuration`, `mimeType`, `bars`, `labels`. Emits `record(blob)` `error`. Native MediaRecorder                           |
+| `BlessCameraCapture`    | Take a photo with the camera, in the page                                       | `facing` user/environment, `type`, `quality`, `labels`. Emits `capture(blob)` `error`. Native getUserMedia                |
+| `BlessAnnotator`        | Draw / move / resize boxes and pins on an image. Regions as fractions. Keyboard | `v-model` regions `{id,x,y,w?,h?,label}`, `v-model:selected`, `v-model:tool`, `src`, `alt`, `editable`, `label`, `labels` |
 
 ### Composables
 
