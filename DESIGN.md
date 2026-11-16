@@ -627,7 +627,7 @@ Fourteen components, 372 → 386. Each uses native platform APIs only: the libra
 - ✅ `BlessCsvImport`: read a CSV file, match its columns to your fields, and check the rows before the import.
 - ✅ `BlessAuditLog`: who changed what and when, with the old and the new value.
 - ✅ `BlessInvoice`: an invoice with the parties, the lines, the tax, the totals, and the payment state.
-- `BlessTicketView`: a help desk ticket with the customer, the messages, the state, and a reply box.
+- ✅ `BlessTicketView`: a help desk ticket with the customer, the messages, the state, and a reply box.
 - `BlessSlaTimer`: the time left to answer or to solve a ticket, with a warning and a breach state.
 - `BlessLineItemEditor`: rows of products with quantity, unit, price, discount, and tax, and the totals.
 - `BlessJournalEntry`: debit and credit lines that must balance before the entry can be saved.

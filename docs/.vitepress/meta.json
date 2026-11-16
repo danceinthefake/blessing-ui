@@ -17904,6 +17904,68 @@
   "slots": [],
   "exposed": []
  },
+ "BlessTicketView": {
+  "props": [
+   {
+    "name": "subject",
+    "type": "string",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "number",
+    "type": "string",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "customer",
+    "type": "{ name: string; email?: string | undefined; }",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "priority",
+    "type": "BlessTicketPriority | undefined",
+    "required": false,
+    "default": "\"normal\"",
+    "description": ""
+   },
+   {
+    "name": "messages",
+    "type": "BlessTicketMessage[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<Record<BlessTicketStatus, string> & Record<BlessTicketPriority, string> & { status: string; priority: string; reply: string; note: string; send: string; addNote: string; internal: string; placeholder: string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "status",
+    "type": "BlessTicketStatus | undefined",
+    "required": false,
+    "default": "\"open\"",
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "reply",
+    "type": "[body: string, internal: boolean]",
+    "description": ""
+   },
+   {
+    "name": "update:status",
+    "type": "[value: BlessTicketStatus]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessTimePicker": {
   "props": [
    {
