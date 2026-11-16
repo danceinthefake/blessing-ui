@@ -103,6 +103,7 @@ import type BlessPickList from "../components/BlessPickList.vue";
 import type BlessPictogram from "../components/BlessPictogram.vue";
 import type BlessPinPad from "../components/BlessPinPad.vue";
 import type BlessPoll from "../components/BlessPoll.vue";
+import type BlessPostComposer from "../components/BlessPostComposer.vue";
 import type BlessPresetRange from "../components/BlessPresetRange.vue";
 import type BlessPrice from "../components/BlessPrice.vue";
 import type BlessPriceTicker from "../components/BlessPriceTicker.vue";
@@ -278,6 +279,7 @@ export type BlessLabelsFull = {
   BlessPictogram: All<typeof BlessPictogram>;
   BlessPinPad: All<typeof BlessPinPad>;
   BlessPoll: All<typeof BlessPoll>;
+  BlessPostComposer: All<typeof BlessPostComposer>;
   BlessPresetRange: All<typeof BlessPresetRange>;
   BlessPrice: All<typeof BlessPrice>;
   BlessPriceTicker: All<typeof BlessPriceTicker>;
@@ -1044,6 +1046,17 @@ export const labelsId: BlessLabelsFull = {
     clear: "Kosongkan",
   },
   BlessPoll: { vote: "Pilih", yours: "pilihan Anda", votes: (n) => `${n} suara` },
+  BlessPostComposer: {
+    placeholder: "Ada kabar apa?",
+    left: (n) => `sisa ${n} karakter`,
+    over: (n) => `kelebihan ${n} karakter`,
+    image: "Tambah gambar",
+    poll: "Tambah polling",
+    choice: (n) => `Pilihan ${n}`,
+    addChoice: "Tambah pilihan",
+    removeImage: (n) => `Hapus gambar ${n}`,
+    post: "Kirim",
+  },
   BlessPresetRange: {
     presets: "Rentang cepat",
     today: "Hari ini",

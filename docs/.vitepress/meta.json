@@ -11138,6 +11138,57 @@
   ],
   "exposed": []
  },
+ "BlessPostComposer": {
+  "props": [
+   {
+    "name": "author",
+    "type": "{ name: string; avatar?: string | undefined; } | undefined",
+    "required": false,
+    "description": "the author, for the avatar"
+   },
+   {
+    "name": "max",
+    "type": "number | undefined",
+    "required": false,
+    "default": "280",
+    "description": "the most characters in a post"
+   },
+   {
+    "name": "maxImages",
+    "type": "number | undefined",
+    "required": false,
+    "default": "4",
+    "description": "the most images in a post"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ placeholder: string; left: (count: number) => string; over: (count: number) => string; image: string; poll: string; choice: (n: number) => string; addChoice: string; removeImage: (n: number) => string; post: string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"\"",
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "update:modelValue",
+    "type": "[value: string]",
+    "description": ""
+   },
+   {
+    "name": "post",
+    "type": "[post: BlessNewPost]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessPresenceCursors": {
   "props": [
    {
