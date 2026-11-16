@@ -565,3 +565,5 @@ export { default as BlessReadReceipt } from "./components/BlessReadReceipt.vue";
 export type { BlessReceiptStatus } from "./components/BlessReadReceipt.vue";
 export { default as BlessEmailView } from "./components/BlessEmailView.vue";
 export type { BlessMailbox, BlessEmailAttachment } from "./components/BlessEmailView.vue";
+export { default as BlessEmailComposer } from "./components/BlessEmailComposer.vue";
+export type { BlessEmailDraft } from "./components/BlessEmailComposer.vue";

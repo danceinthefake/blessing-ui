@@ -5268,6 +5268,42 @@
   ],
   "exposed": []
  },
+ "BlessEmailComposer": {
+  "props": [
+   {
+    "name": "labels",
+    "type": "Partial<{ title: string; to: string; cc: string; addCc: string; subject: string; body: string; send: string; discard: string; hint: string; noRecipient: string; bad: (addresses: string) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "BlessEmailDraft | undefined",
+    "required": false,
+    "default": "{ to: [], cc: [], subject: \"\", body: \"\" }",
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "update:modelValue",
+    "type": "[value: BlessEmailDraft]",
+    "description": ""
+   },
+   {
+    "name": "send",
+    "type": "[draft: BlessEmailDraft]",
+    "description": ""
+   },
+   {
+    "name": "discard",
+    "type": "[]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessEmailView": {
   "props": [
    {
