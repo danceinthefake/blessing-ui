@@ -100,7 +100,8 @@ const day = (iso: string) =>
   outline: 2px solid var(--bless-color-accent);
   outline-offset: 2px;
 }
-.bless-article__title {
+/* two classes, so the heading styles of a host page do not win */
+.bless-article .bless-article__title {
   margin: 0;
   font-size: var(--bless-text-headline);
   line-height: var(--bless-leading-tight);

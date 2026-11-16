@@ -16,11 +16,11 @@ Untuk setiap kelompok, halaman ini mendaftar komponen dan [blok](../../blocks/) 
 
 | Kelompok                          | Komponen sekarang | Belum ada |
 | --------------------------------- | ----------------: | --------: |
-| 1. Konten dan penerbitan          |                15 |         7 |
+| 1. Konten dan penerbitan          |                22 |         0 |
 | 2. Perdagangan                    |                25 |         0 |
 | 3. Sosial dan komunitas           |                18 |         0 |
 | 4. Komunikasi                     |                15 |         0 |
-| 5. Media dan hiburan              |                 8 |         7 |
+| 5. Media dan hiburan              |                14 |         0 |
 | 6. Produktivitas dan kolaborasi   |                14 |         6 |
 | 7. Perangkat lunak bisnis dan ERP |                13 |        14 |
 | 8. Keuangan                       |                15 |         0 |
@@ -39,11 +39,11 @@ Untuk setiap kelompok, halaman ini mendaftar komponen dan [blok](../../blocks/) 
 
 Situs berita, blog, majalah, dan dokumentasi. Orang membaca, memindai, dan berbagi.
 
-Sekarang: [Markdown](../../components/markdown), [Toc](../../components/toc), [ReadingProgress](../../components/reading-progress), [Footnotes](../../components/footnotes), [Glossary](../../components/glossary), [Highlight](../../components/highlight), [ReadMore](../../components/read-more), [Spoiler](../../components/spoiler), [CodeBlock](../../components/code-block), [Changelog](../../components/changelog), [Breadcrumb](../../components/breadcrumb), [Pagination](../../components/pagination), [NewsletterSignup](../../components/newsletter-signup), [Img](../../components/img), [Masonry](../../components/masonry).
+Sekarang: [ArticleHeader](../../components/article-header), [ShareBar](../../components/share-bar), [RelatedArticles](../../components/related-articles), [Figure](../../components/figure), [PullQuote](../../components/pull-quote), [LiveBlog](../../components/live-blog), [Paywall](../../components/paywall), [Markdown](../../components/markdown), [Toc](../../components/toc), [ReadingProgress](../../components/reading-progress), [Footnotes](../../components/footnotes), [Glossary](../../components/glossary), [Highlight](../../components/highlight), [ReadMore](../../components/read-more), [Spoiler](../../components/spoiler), [CodeBlock](../../components/code-block), [Changelog](../../components/changelog), [Breadcrumb](../../components/breadcrumb), [Pagination](../../components/pagination), [NewsletterSignup](../../components/newsletter-signup), [Img](../../components/img), [Masonry](../../components/masonry).
 
 Blok: [news](../../blocks/news), [story](../../blocks/story), [release](../../blocks/release).
 
-Belum ada: kepala artikel dengan penulis, tanggal, dan waktu baca, bilah bagikan, artikel terkait, gambar dengan keterangan dan kredit, kutipan besar, blog langsung dengan pembaruan berwaktu, paywall yang mengajak pembaca berlangganan.
+Belum ada: tidak ada dari daftar pertama. Setiap bagian yang disebut halaman ini sudah menjadi komponen.
 
 ## 2. Perdagangan
 
@@ -77,11 +77,11 @@ Belum ada: tidak ada dari daftar pertama. Setiap bagian yang disebut halaman ini
 
 Video, musik, podcast, dan gim. Orang menonton, mendengar, dan bermain.
 
-Sekarang: [Video](../../components/video), [AudioPlayer](../../components/audio-player), [Waveform](../../components/waveform), [Transcript](../../components/transcript), [ChapterList](../../components/chapter-list), [Carousel](../../components/carousel), [Lightbox](../../components/lightbox), [Gallery](../../components/gallery).
+Sekarang: [PosterRow](../../components/poster-row), [EpisodeList](../../components/episode-list), [PlayQueue](../../components/play-queue), [MiniPlayer](../../components/mini-player), [Lyrics](../../components/lyrics), [ContinueWatching](../../components/continue-watching), [Video](../../components/video), [AudioPlayer](../../components/audio-player), [Waveform](../../components/waveform), [Transcript](../../components/transcript), [ChapterList](../../components/chapter-list), [Carousel](../../components/carousel), [Lightbox](../../components/lightbox), [Gallery](../../components/gallery).
 
 Blok: [onair](../../blocks/onair), [character](../../blocks/character).
 
-Belum ada: baris poster, daftar episode dengan progres, antrean putar, pemutar mini, bilah sedang diputar, lirik yang mengikuti lagu, lanjutkan menonton.
+Belum ada: tidak ada dari daftar pertama. Setiap bagian yang disebut halaman ini sudah menjadi komponen.
 
 ## 6. Produktivitas dan kolaborasi
 

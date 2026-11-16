@@ -70,6 +70,11 @@
     "css": 1450
   },
   {
+    "name": "BlessArticleHeader",
+    "js": 1453,
+    "css": 658
+  },
+  {
     "name": "BlessAspectRatio",
     "js": 278,
     "css": 168
@@ -131,8 +136,8 @@
   },
   {
     "name": "BlessBatteryLevel",
-    "js": 794,
-    "css": 375
+    "js": 759,
+    "css": 329
   },
   {
     "name": "BlessBeeswarm",
@@ -380,6 +385,11 @@
     "css": 980
   },
   {
+    "name": "BlessContinueWatching",
+    "js": 964,
+    "css": 571
+  },
+  {
     "name": "BlessContrastChecker",
     "js": 1657,
     "css": 611
@@ -535,6 +545,11 @@
     "css": 443
   },
   {
+    "name": "BlessEpisodeList",
+    "js": 1080,
+    "css": 683
+  },
+  {
     "name": "BlessEventCalendar",
     "js": 2826,
     "css": 1425
@@ -563,6 +578,11 @@
     "name": "BlessFieldset",
     "js": 645,
     "css": 522
+  },
+  {
+    "name": "BlessFigure",
+    "js": 623,
+    "css": 378
   },
   {
     "name": "BlessFileInput",
@@ -835,6 +855,11 @@
     "css": 505
   },
   {
+    "name": "BlessLiveBlog",
+    "js": 1066,
+    "css": 715
+  },
+  {
     "name": "BlessLoadingBar",
     "js": 484,
     "css": 278
@@ -853,6 +878,11 @@
     "name": "BlessLoupe",
     "js": 959,
     "css": 314
+  },
+  {
+    "name": "BlessLyrics",
+    "js": 867,
+    "css": 407
   },
   {
     "name": "BlessMarimekko",
@@ -918,6 +948,11 @@
     "name": "BlessMeterGroup",
     "js": 894,
     "css": 474
+  },
+  {
+    "name": "BlessMiniPlayer",
+    "js": 1310,
+    "css": 757
   },
   {
     "name": "BlessMockup",
@@ -1045,6 +1080,11 @@
     "css": 439
   },
   {
+    "name": "BlessPaywall",
+    "js": 1853,
+    "css": 1291
+  },
+  {
     "name": "BlessPermissionMatrix",
     "js": 1178,
     "css": 483
@@ -1070,6 +1110,11 @@
     "css": 1061
   },
   {
+    "name": "BlessPlayQueue",
+    "js": 4173,
+    "css": 1039
+  },
+  {
     "name": "BlessPoll",
     "js": 2665,
     "css": 1507
@@ -1083,6 +1128,11 @@
     "name": "BlessPostComposer",
     "js": 3027,
     "css": 1657
+  },
+  {
+    "name": "BlessPosterRow",
+    "js": 1152,
+    "css": 726
   },
   {
     "name": "BlessPresenceCursors",
@@ -1128,6 +1178,11 @@
     "name": "BlessPromptInput",
     "js": 3411,
     "css": 1935
+  },
+  {
+    "name": "BlessPullQuote",
+    "js": 439,
+    "css": 344
   },
   {
     "name": "BlessPullToRefresh",
@@ -1240,6 +1295,11 @@
     "css": 523
   },
   {
+    "name": "BlessRelatedArticles",
+    "js": 770,
+    "css": 539
+  },
+  {
     "name": "BlessRelativeTime",
     "js": 891,
     "css": 0
@@ -1333,6 +1393,11 @@
     "name": "BlessSeparator",
     "js": 494,
     "css": 371
+  },
+  {
+    "name": "BlessShareBar",
+    "js": 916,
+    "css": 315
   },
   {
     "name": "BlessSheet",

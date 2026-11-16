@@ -16,11 +16,11 @@ For each group, the page lists the components and the [blocks](../blocks/) that 
 
 | Group                             | Components today | Not yet |
 | --------------------------------- | ---------------: | ------: |
-| 1. Content and publishing         |               15 |       7 |
+| 1. Content and publishing         |               22 |       0 |
 | 2. Commerce                       |               25 |       0 |
 | 3. Social and community           |               18 |       0 |
 | 4. Communication                  |               15 |       0 |
-| 5. Media and entertainment        |                8 |       7 |
+| 5. Media and entertainment        |               14 |       0 |
 | 6. Productivity and collaboration |               14 |       6 |
 | 7. Business software and ERP      |               13 |      14 |
 | 8. Finance                        |               15 |       0 |
@@ -39,11 +39,11 @@ For each group, the page lists the components and the [blocks](../blocks/) that 
 
 News sites, blogs, magazines, and documentation. People read, scan, and share.
 
-Today: [Markdown](../components/markdown), [Toc](../components/toc), [ReadingProgress](../components/reading-progress), [Footnotes](../components/footnotes), [Glossary](../components/glossary), [Highlight](../components/highlight), [ReadMore](../components/read-more), [Spoiler](../components/spoiler), [CodeBlock](../components/code-block), [Changelog](../components/changelog), [Breadcrumb](../components/breadcrumb), [Pagination](../components/pagination), [NewsletterSignup](../components/newsletter-signup), [Img](../components/img), [Masonry](../components/masonry).
+Today: [ArticleHeader](../components/article-header), [ShareBar](../components/share-bar), [RelatedArticles](../components/related-articles), [Figure](../components/figure), [PullQuote](../components/pull-quote), [LiveBlog](../components/live-blog), [Paywall](../components/paywall), [Markdown](../components/markdown), [Toc](../components/toc), [ReadingProgress](../components/reading-progress), [Footnotes](../components/footnotes), [Glossary](../components/glossary), [Highlight](../components/highlight), [ReadMore](../components/read-more), [Spoiler](../components/spoiler), [CodeBlock](../components/code-block), [Changelog](../components/changelog), [Breadcrumb](../components/breadcrumb), [Pagination](../components/pagination), [NewsletterSignup](../components/newsletter-signup), [Img](../components/img), [Masonry](../components/masonry).
 
 Blocks: [news](../blocks/news), [story](../blocks/story), [release](../blocks/release).
 
-Not yet: article header with the author, the date, and the reading time, share bar, related articles, figure with a caption and a credit, pull quote, live blog with timed updates, paywall that asks the reader to subscribe.
+Not yet: nothing from the first list. Every part that this page named is now a component.
 
 ## 2. Commerce
 
@@ -77,11 +77,11 @@ Not yet: nothing from the first list. Every part that this page named is now a c
 
 Video, music, podcasts, and games. People watch, listen, and play.
 
-Today: [Video](../components/video), [AudioPlayer](../components/audio-player), [Waveform](../components/waveform), [Transcript](../components/transcript), [ChapterList](../components/chapter-list), [Carousel](../components/carousel), [Lightbox](../components/lightbox), [Gallery](../components/gallery).
+Today: [PosterRow](../components/poster-row), [EpisodeList](../components/episode-list), [PlayQueue](../components/play-queue), [MiniPlayer](../components/mini-player), [Lyrics](../components/lyrics), [ContinueWatching](../components/continue-watching), [Video](../components/video), [AudioPlayer](../components/audio-player), [Waveform](../components/waveform), [Transcript](../components/transcript), [ChapterList](../components/chapter-list), [Carousel](../components/carousel), [Lightbox](../components/lightbox), [Gallery](../components/gallery).
 
 Blocks: [onair](../blocks/onair), [character](../blocks/character).
 
-Not yet: row of posters, episode list with progress, play queue, mini player, now playing bar, lyrics that follow the song, continue watching.
+Not yet: nothing from the first list. Every part that this page named is now a component.
 
 ## 6. Productivity and collaboration
 
