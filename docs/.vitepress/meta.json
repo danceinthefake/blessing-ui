@@ -14861,6 +14861,52 @@
   "slots": [],
   "exposed": []
  },
+ "BlessTaskList": {
+  "props": [
+   {
+    "name": "today",
+    "type": "string | undefined",
+    "required": false,
+    "description": "today as YYYY-MM-DD, for late tasks; default: today of the reader, after mount"
+   },
+   {
+    "name": "locale",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"en\"",
+    "description": ""
+   },
+   {
+    "name": "addable",
+    "type": "boolean | undefined",
+    "required": false,
+    "default": "true",
+    "description": "show a field that adds a task"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ title: string; add: string; late: string; due: (date: string) => string; subtasks: (done: number, total: number) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "BlessTask[] | undefined",
+    "required": false,
+    "default": "[]",
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "update:modelValue",
+    "type": "[value: BlessTask[]]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessTestimonials": {
   "props": [
    {
