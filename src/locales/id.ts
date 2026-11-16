@@ -1,3 +1,4 @@
+import type BlessAchievements from "../components/BlessAchievements.vue";
 import type BlessAddressFields from "../components/BlessAddressFields.vue";
 import type BlessAgentPlan from "../components/BlessAgentPlan.vue";
 // Indonesian label pack. Its type asks for every word of every component with a `labels` prop, so
@@ -153,6 +154,7 @@ type All<C> = C extends new (...a: never[]) => { $props: { labels?: infer L } }
 
 /** a pack with every word of the library; use it as the type of your own complete pack */
 export type BlessLabelsFull = {
+  BlessAchievements: All<typeof BlessAchievements>;
   BlessAddressFields: All<typeof BlessAddressFields>;
   BlessAgentPlan: All<typeof BlessAgentPlan>;
   BlessAnnotator: All<typeof BlessAnnotator>;
@@ -311,6 +313,12 @@ const unknown = (what: string, name: string, suggestion?: string) =>
 
 /** Bahasa Indonesia for every component: `provideLabels(labelsId)` */
 export const labelsId: BlessLabelsFull = {
+  BlessAchievements: {
+    title: "Pencapaian",
+    earned: (w) => `Diraih ${w}`,
+    locked: "Belum diraih",
+    count: (e, t) => `${e} dari ${t} diraih`,
+  },
   BlessAddressFields: {
     country: "Negara",
     line1: "Jalan dan nomor",
