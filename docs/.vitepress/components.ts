@@ -695,6 +695,7 @@ export const groups: { title: string; items: Entry[] }[] = [
         text: "A person with a cover, a bio, counts and follow",
       },
       { name: "BlessBubble", slug: "bubble", text: "Message bubble" },
+      { name: "BlessReadReceipt", slug: "read-receipt", text: "Sent, delivered, and read marks" },
       { name: "BlessMarker", slug: "marker", text: "Inline status / note / separator / row" },
       { name: "BlessAttachment", slug: "attachment", text: "File / image chip" },
       { name: "BlessMessageScroller", slug: "message-scroller", text: "Chat viewport" },
