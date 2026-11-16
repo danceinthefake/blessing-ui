@@ -602,3 +602,5 @@ export { default as BlessThermostat } from "./components/BlessThermostat.vue";
 export type { BlessThermostatMode } from "./components/BlessThermostat.vue";
 export { default as BlessFloorPlan } from "./components/BlessFloorPlan.vue";
 export type { BlessRoom, BlessRoomDevice } from "./components/BlessFloorPlan.vue";
+export { default as BlessSceneButtons } from "./components/BlessSceneButtons.vue";
+export type { BlessScene } from "./components/BlessSceneButtons.vue";

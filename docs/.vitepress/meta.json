@@ -13750,6 +13750,42 @@
   "slots": [],
   "exposed": []
  },
+ "BlessSceneButtons": {
+  "props": [
+   {
+    "name": "scenes",
+    "type": "BlessScene[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ title: string; started: (name: string) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "string | undefined",
+    "required": false,
+    "description": "the id of the scene that runs now"
+   }
+  ],
+  "events": [
+   {
+    "name": "update:modelValue",
+    "type": "[value: string | undefined]",
+    "description": ""
+   },
+   {
+    "name": "run",
+    "type": "[id: string]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessScheduler": {
   "props": [
    {

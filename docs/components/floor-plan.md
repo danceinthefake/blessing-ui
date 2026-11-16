@@ -21,7 +21,7 @@ Shows a home as a simple plan in a smart home app. The reader picks a room to se
   </template>
 </Demo>
 
-- `rooms` is a list of rooms. Each room has an `id`, a `name`, a place `x` and `y`, and a size `w` and `h`, all in grid cells from the top left.
+- `rooms` is a list of rooms. Each room has an `id` and a `name`. `x` and `y` give its place, and `w` and `h` give its size, in grid cells from the top left.
 - `columns` is the number of cells across the plan (default 12). Each row of cells is 3rem high.
 - `devices` is a list of devices. Each device has an `id`, a `name`, the `room` id, an optional `icon`, and `on`.
 - Each room is a button with its name and a count in words, such as "2 devices, 1 on". The icons of devices that are off are gray.
