@@ -637,6 +637,7 @@ Fourteen components, 372 → 386. Each uses native platform APIs only: the libra
 - ✅ `BlessUnitConverter`: an amount in one unit of measure and its value in another, such as boxes and pieces.
 - ✅ `BlessDocumentStatus`: the states of a document, such as draft, approved, sent, and paid, with the next step.
 - ✅ `BlessPayslip`: the pay of a period with earnings, deductions, and the net pay.
+- ✅ Budget: after the round, the whole library is 255.6 KB gz JS and 70.7 KB gz CSS, under the cap of 269 / 74. Phase 39 is done.
 
 ### Phase 40 — operations: shop floor and warehouse (2026-11-16)
 
