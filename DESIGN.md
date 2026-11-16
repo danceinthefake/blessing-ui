@@ -539,7 +539,7 @@ Sixteen components, 302 → 318. Each uses native platform APIs only: the librar
 
 ### Site types (2026-11-16)
 
-From Phase 35, each round takes its components from the "Not yet" lists of the [site types](docs/design/site-types.md) page. That page sorts websites and apps into 17 groups by what people do on them. For each group, it lists the components and blocks that serve it and the parts that are missing. If a round adds one of those parts, move it from "Not yet" to "Today" in the script that builds the page. The script is at `tmp/sitetypes/gen.mjs`, outside the repository.
+From Phase 35, each round takes its components from the "Not yet" lists of the [site types](docs/design/site-types.md) page. That page sorts websites and apps into 17 groups by what people do on them. For each group, it lists the components and blocks that serve it and the parts that are missing. If a round adds one of those parts, move it from "Not yet" to "Today" and update the count in the overview table. Do this in the English page and in the Indonesian page (`docs/id/design/site-types.md`).
 
 ### Deliberately skipped
 
