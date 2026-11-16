@@ -4278,6 +4278,69 @@
   "slots": [],
   "exposed": []
  },
+ "BlessControlChart": {
+  "props": [
+   {
+    "name": "values",
+    "type": "number[]",
+    "required": true,
+    "description": "the measures in time order"
+   },
+   {
+    "name": "points",
+    "type": "string[] | undefined",
+    "required": false,
+    "description": "a label for each point, for example the time or the sample number"
+   },
+   {
+    "name": "ucl",
+    "type": "number | undefined",
+    "required": false,
+    "description": "fixed limits; without them, the chart works them out from the values"
+   },
+   {
+    "name": "lcl",
+    "type": "number | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "center",
+    "type": "number | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "unit",
+    "type": "string | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "height",
+    "type": "number | undefined",
+    "required": false,
+    "default": "240",
+    "description": ""
+   },
+   {
+    "name": "locale",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"en\"",
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ title: string; center: string; ucl: string; lcl: string; inControl: string; out: (count: number) => string; point: string; value: string; state: string; ok: string; bad: string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessConversationList": {
   "props": [
    {
@@ -10289,7 +10352,7 @@
    },
    {
     "name": "rating",
-    "type": "\"good\" | \"bad\" | undefined",
+    "type": "\"bad\" | \"good\" | undefined",
     "required": false,
     "description": "the mark of the reader: `good`, `bad`, or none"
    }
@@ -10297,7 +10360,7 @@
   "events": [
    {
     "name": "update:rating",
-    "type": "[value: \"good\" | \"bad\" | undefined]",
+    "type": "[value: \"bad\" | \"good\" | undefined]",
     "description": ""
    },
    {
@@ -15688,7 +15751,7 @@
    },
    {
     "name": "labels",
-    "type": "Partial<Record<\"shipped\" | \"delivered\" | \"ordered\" | \"packed\" | \"out\", string> & { title: string; latest: string; history: string; tracking: string; done: string; current: string; }> | undefined",
+    "type": "Partial<Record<\"out\" | \"shipped\" | \"delivered\" | \"ordered\" | \"packed\", string> & { title: string; latest: string; history: string; tracking: string; done: string; current: string; }> | undefined",
     "required": false,
     "description": ""
    }

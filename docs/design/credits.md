@@ -44,6 +44,7 @@ Some components use known methods. We wrote each one again from its description.
 
 - The [treemap](../components/treemap) uses the squarified layout of Bruls, Huijsmans, and van Wijk (2000).
 - The [card input](../components/card-input) checks numbers with the Luhn algorithm (Hans Peter Luhn, 1954).
+- The [control chart](../components/control-chart) follows the control chart of Walter A. Shewhart (1924), with limits at the mean ± 3 standard deviations.
 - The [OEE gauge](../components/oee-gauge) uses overall equipment effectiveness, availability × performance × quality, from total productive maintenance by Seiichi Nakajima.
 - The [machine board](../components/machine-board) follows the andon board of the Toyota Production System.
 - The [journal entry](../components/journal-entry) follows double-entry bookkeeping, as Luca Pacioli described it in 1494: the debits and the credits must be equal.
