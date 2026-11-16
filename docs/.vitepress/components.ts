@@ -209,6 +209,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "order-history",
         text: "Past orders with status and buy again",
       },
+      {
+        name: "BlessReturnRequest",
+        slug: "return-request",
+        text: "Pick items and a reason for a return",
+      },
       { name: "BlessEmojiPicker", slug: "emoji-picker", text: "Search and pick an emoji" },
       {
         name: "BlessUploader",

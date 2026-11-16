@@ -12662,6 +12662,52 @@
   ],
   "exposed": []
  },
+ "BlessReturnRequest": {
+  "props": [
+   {
+    "name": "items",
+    "type": "BlessReturnItem[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "reasons",
+    "type": "string[] | undefined",
+    "required": false,
+    "default": "[\"Damaged or broken\", \"Not as described\", \"Wrong item\", \"No longer needed\"]",
+    "description": "the reasons to choose from"
+   },
+   {
+    "name": "currency",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"USD\"",
+    "description": ""
+   },
+   {
+    "name": "locale",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"en\"",
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ items: string; quantity: (name: string) => string; reason: string; pick: string; note: string; refund: string; submit: string; missing: string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "submit",
+    "type": "[payload: BlessReturnPayload]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessReviewSummary": {
   "props": [
    {

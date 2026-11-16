@@ -10,7 +10,7 @@ Vue 3 component library and design tokens. The UI is gray-scale, with one accent
 
 Docs, with every component live: **[ui.blessing.id](https://ui.blessing.id)**
 
-- 333 components, from button to data table to chat. Only `--bless-*` custom properties style them. There is no Tailwind dependency.
+- 334 components, from button to data table to chat. Only `--bless-*` custom properties style them. There is no Tailwind dependency.
 - Native platform first: `<dialog>`, Popover API, `<details>`, native form controls, `Intl` dates, and scroll-snap. There is no positioning, date, or table library.
 - Accessible defaults: focus rings, ARIA tablist, dialog, and tables, and `prefers-reduced-motion`
 - ESM, tree-shakable, with `vue` as the only required peer (`@tiptap/vue-3` is optional, for `BlessEditor`). One component (`BlessButton`) costs about 1 KB gzip of JS and about 2.6 KB of CSS (tokens and its own styles). Everything costs about 212 KB and 57 KB. CSS is split per component and the import pulls it in, so you never pay for styles that you do not use
@@ -92,7 +92,7 @@ The words that components say are English by default. `provideLabels(labelsId)` 
 
 ## Components
 
-333 components across eight groups. Every one styles itself from `--bless-*` tokens and ships with a test and a docs page.
+334 components across eight groups. Every one styles itself from `--bless-*` tokens and ships with a test and a docs page.
 
 ### Primitives
 
@@ -188,6 +188,7 @@ The words that components say are English by default. `provideLabels(labelsId)` 
 | `BlessStoreLocator`                | Stores by distance with hours and directions                                                            | `stores` `{id,name,address,distance,open,hours,phone,directions}`, `v-model`                                                                                                                                                     |
 | `BlessDeliveryPicker`              | A delivery day and time window with fees                                                                | `days` `{date,windows}`, `v-model`, `currency`                                                                                                                                                                                   |
 | `BlessOrderHistory`                | Past orders with status and buy again                                                                   | `orders` `{id,number,date,status,total,items,href}`. Emits `again`                                                                                                                                                               |
+| `BlessReturnRequest`               | Pick items and a reason for a return                                                                    | `items` `{id,name,quantity,price,image}`, `reasons`. Emits `submit`                                                                                                                                                              |
 | `BlessEmojiPicker`                 | Search and pick an emoji, by group, recent first                                                        | `emojis`, `columns`, `v-model:recent`, `recentLimit`, `persist`, `labels`. Emits `select`                                                                                                                                        |
 | `BlessUploader`                    | Upload queue                                                                                            | `url`, `field`, `headers`, `accept`, `multiple`, `auto`, `maxSize`. Emits `upload(item, progress, done, fail)` `done` `error`. Exposes `start()` `clear()`                                                                       |
 | `BlessInputNumber`                 | Number with ± and Intl format                                                                           | `v-model` number, `min`, `max`, `step`, `buttons`, `prefix`, `suffix`, `format`, `locale`                                                                                                                                        |

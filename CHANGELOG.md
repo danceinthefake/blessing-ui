@@ -18,7 +18,8 @@
 - `BlessFacetFilter`: catalog filters as fieldsets of check boxes with counts, empty options off, a price range, and clear buttons for one facet and for all.
 - `BlessStoreLocator`: stores nearest first with a search, open or closed in words, hours, directions and call links named with the store, and a radio to pick one.
 - `BlessDeliveryPicker`: a delivery day and a time window as two radio groups, with the fee or Free on each window, and full windows and days turned off.
-- `BlessOrderHistory`: past orders with the status as a mark and a word, up to three item pictures read as a list, the total, and view and buy-again actions named with the order number. 333 components in all.
+- `BlessOrderHistory`: past orders with the status as a mark and a word, up to three item pictures read as a list, the total, and view and buy-again actions named with the order number.
+- `BlessReturnRequest`: a return form with check boxes for the items, a quantity menu, a reason, a note, a live refund, and an error that says what is missing. 334 components in all.
 
 ## 0.7.0 — 2026-11-16
 
