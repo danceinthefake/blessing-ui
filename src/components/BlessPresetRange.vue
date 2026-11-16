@@ -84,11 +84,11 @@ const same = (p: BlessRangePreset) =>
   range.value?.[0] === p.range[0] && range.value?.[1] === p.range[1];
 const summary = computed(() => {
   if (!range.value) return text.value.none;
-  const [a, b] = range.value.map((x) => new Date(`${x}T00:00:00Z`));
-  return new Intl.DateTimeFormat(props.locale, {
-    dateStyle: "medium",
-    timeZone: "UTC",
-  }).formatRange(a!, b!);
+  // two dates and a dash, not formatRange: Node and the browsers space its output in different ways,
+  // so the server render and the page would not agree
+  const f = new Intl.DateTimeFormat(props.locale, { dateStyle: "medium", timeZone: "UTC" });
+  const [a, b] = range.value.map((x) => f.format(new Date(`${x}T00:00:00Z`)));
+  return a === b ? a! : `${a} – ${b}`;
 });
 // the calendar opens on the month of the start, so a preset in another month shows
 const month = computed(() => range.value?.[0].slice(0, 7));

@@ -25,7 +25,7 @@ Lets a person pick a common range in one click, or any range on the calendar. It
 - The common presets are today, yesterday, the last 7 days, the last 30 days, this month, and last month. `presets` puts your own list in their place, each with a `label` and a `range`.
 - The common presets need today. `today` sets it. Without it, the presets use today of the reader and show after the page loads.
 - The preset that matches the range has a bar and bold words. A preset in another month opens the calendar on that month.
-- The line above the calendar says the range in words, such as `Nov 10 – 16, 2026`. It is a status line, so screen readers hear the change. `locale` sets the language, and `week-start` the first day of the week.
+- The line above the calendar says the range in words, such as `Nov 10, 2026 – Nov 16, 2026`. It is a status line, so screen readers hear the change. `locale` sets the language, and `week-start` the first day of the week.
 - The presets are toggle buttons in a group. Change the words with `labels` or a [label pack](../guide/translating): `presets`, `today`, `yesterday`, `last7`, `last30`, `thisMonth`, `lastMonth`, and `none`.
 
 ## Usage
