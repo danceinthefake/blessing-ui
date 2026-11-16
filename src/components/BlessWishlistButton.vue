@@ -43,7 +43,6 @@ function toggle() {
       class="bless-wish__button"
       :class="{ 'is-saved': saved }"
       :aria-pressed="saved"
-      :aria-label="text.save(name)"
       :title="text.save(name)"
       @click="toggle"
     >
@@ -52,9 +51,7 @@ function toggle() {
           d="M12 20.5s-7.5-4.6-9.4-9.3C1.3 8 3.3 4.5 6.8 4.5c2 0 3.6 1.1 5.2 3 1.6-1.9 3.2-3 5.2-3 3.5 0 5.5 3.5 4.2 6.7-1.9 4.7-9.4 9.3-9.4 9.3Z"
         />
       </svg>
-      <span v-if="count !== undefined" class="bless-wish__count" aria-hidden="true">{{
-        count
-      }}</span>
+      <span class="bless-sr">{{ text.save(name) }}</span>{{ " " }}<span v-if="count !== undefined" class="bless-wish__count">{{ count }}</span>
     </button>
     <span class="bless-sr" role="status">{{ said }}</span>
   </span>

@@ -17,13 +17,13 @@ For each group, the page lists the components and the [blocks](../blocks/) that 
 | Group                             | Components today | Not yet |
 | --------------------------------- | ---------------: | ------: |
 | 1. Content and publishing         |               15 |       7 |
-| 2. Commerce                       |               16 |       9 |
+| 2. Commerce                       |               25 |       0 |
 | 3. Social and community           |               11 |       7 |
 | 4. Communication                  |                9 |       6 |
 | 5. Media and entertainment        |                8 |       7 |
 | 6. Productivity and collaboration |               14 |       6 |
 | 7. Business software              |               13 |       6 |
-| 8. Finance                        |                8 |       7 |
+| 8. Finance                        |               15 |       0 |
 | 9. Education                      |                7 |       5 |
 | 10. Health and fitness            |                6 |       6 |
 | 11. Developer tools               |               13 |       5 |
@@ -48,11 +48,11 @@ Not yet: article header with the author, the date, and the reading time, share b
 
 Shops, marketplaces, booking, and food delivery. People compare, choose, and pay.
 
-Today: [VariantPicker](../components/variant-picker), [OrderSummary](../components/order-summary), [CouponInput](../components/coupon-input), [CardInput](../components/card-input), [AddressFields](../components/address-fields), [ShipmentTracker](../components/shipment-tracker), [PricingTable](../components/pricing-table), [ComparisonTable](../components/comparison-table), [ReviewSummary](../components/review-summary), [Rating](../components/rating), [Carousel](../components/carousel), [Loupe](../components/loupe), [SeatPicker](../components/seat-picker), [SlotPicker](../components/slot-picker), [Ticket](../components/ticket), [InputNumber](../components/input-number).
+Today: [ProductCard](../components/product-card), [Price](../components/price), [CartDrawer](../components/cart-drawer), [WishlistButton](../components/wishlist-button), [FacetFilter](../components/facet-filter), [StoreLocator](../components/store-locator), [DeliveryPicker](../components/delivery-picker), [OrderHistory](../components/order-history), [ReturnRequest](../components/return-request), [VariantPicker](../components/variant-picker), [OrderSummary](../components/order-summary), [CouponInput](../components/coupon-input), [CardInput](../components/card-input), [AddressFields](../components/address-fields), [ShipmentTracker](../components/shipment-tracker), [PricingTable](../components/pricing-table), [ComparisonTable](../components/comparison-table), [ReviewSummary](../components/review-summary), [Rating](../components/rating), [Carousel](../components/carousel), [Loupe](../components/loupe), [SeatPicker](../components/seat-picker), [SlotPicker](../components/slot-picker), [Ticket](../components/ticket), [InputNumber](../components/input-number).
 
 Blocks: [pricing](../blocks/pricing).
 
-Not yet: product card, price with a sale price and a unit price, cart drawer, wishlist button, catalog filters with counts, store locator, delivery time picker, order history, return request.
+Not yet: nothing from the first list. Every part that this page named is now a component.
 
 ## 3. Social and community
 
@@ -104,9 +104,9 @@ Not yet: record header with actions, CSV import with column matching, audit log,
 
 Banking, investing, payments, and accounting. People check money and move it.
 
-Today: [Candlestick](../components/candlestick), [Sparkline](../components/sparkline), [Stat](../components/stat), [WaterfallChart](../components/waterfall-chart), [DonutChart](../components/donut-chart), [CardInput](../components/card-input), [PinPad](../components/pin-pad), [InputOTP](../components/input-otp).
+Today: [BalanceCard](../components/balance-card), [TransactionList](../components/transaction-list), [PriceTicker](../components/price-ticker), [OrderBook](../components/order-book), [CurrencyConverter](../components/currency-converter), [BudgetBars](../components/budget-bars), [PaymentSchedule](../components/payment-schedule), [Candlestick](../components/candlestick), [Sparkline](../components/sparkline), [Stat](../components/stat), [WaterfallChart](../components/waterfall-chart), [DonutChart](../components/donut-chart), [CardInput](../components/card-input), [PinPad](../components/pin-pad), [InputOTP](../components/input-otp).
 
-Not yet: balance card, transaction list with categories, price ticker, order book, currency converter, budget by category, payment schedule.
+Not yet: nothing from the first list. Every part that this page named is now a component.
 
 ## 9. Education
 

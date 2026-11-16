@@ -10,7 +10,7 @@ test("BlessWishlistButton: a pressed toggle named after the product, a count, an
     },
   });
   const b = w.find("button");
-  expect(b.attributes("aria-label")).toBe("Save Mic to the wishlist");
+  expect(b.text()).toBe("Save Mic to the wishlist 12");
   expect(b.attributes("aria-pressed")).toBe("false");
   expect(w.find(".bless-wish__count").text()).toBe("12");
   expect(w.find("[role=status]").text()).toBe("");
