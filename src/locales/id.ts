@@ -59,6 +59,7 @@ import type BlessDeliveryPicker from "../components/BlessDeliveryPicker.vue";
 import type BlessDeviceTile from "../components/BlessDeviceTile.vue";
 import type BlessDocumentStatus from "../components/BlessDocumentStatus.vue";
 import type BlessDonutChart from "../components/BlessDonutChart.vue";
+import type BlessDowntimePicker from "../components/BlessDowntimePicker.vue";
 import type BlessDumbbell from "../components/BlessDumbbell.vue";
 import type BlessDurationInput from "../components/BlessDurationInput.vue";
 import type BlessEditor from "../components/BlessEditor.vue";
@@ -279,6 +280,7 @@ export type BlessLabelsFull = {
   BlessDeviceTile: All<typeof BlessDeviceTile>;
   BlessDocumentStatus: All<typeof BlessDocumentStatus>;
   BlessDonutChart: All<typeof BlessDonutChart>;
+  BlessDowntimePicker: All<typeof BlessDowntimePicker>;
   BlessDumbbell: All<typeof BlessDumbbell>;
   BlessDurationInput: All<typeof BlessDurationInput>;
   BlessEditor: All<typeof BlessEditor>;
@@ -842,6 +844,13 @@ export const labelsId: BlessLabelsFull = {
     move: (s) => `Tandai ${s}`,
   },
   BlessDonutChart: { total: "Total" },
+  BlessDowntimePicker: {
+    title: (m) => (m ? `Mengapa ${m} berhenti?` : "Mengapa berhenti?"),
+    unplanned: "Tidak terencana",
+    planned: "Terencana",
+    note: "Catatan (opsional)",
+    save: "Simpan alasan",
+  },
   BlessDumbbell: { start: "Sebelum", end: "Sesudah", row: "Item", change: "Perubahan" },
   // the parser reads h and m, so the example keeps them
   BlessDurationInput: { invalid: "Masukkan waktu seperti 1:30 atau 1h 30m" },

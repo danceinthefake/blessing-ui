@@ -5559,6 +5559,48 @@
   "slots": [],
   "exposed": []
  },
+ "BlessDowntimePicker": {
+  "props": [
+   {
+    "name": "reasons",
+    "type": "BlessDowntimeReason[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "machine",
+    "type": "string | undefined",
+    "required": false,
+    "description": "the machine or the station, for the title"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ title: (machine: string) => string; unplanned: string; planned: string; note: string; save: string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "string | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "update:modelValue",
+    "type": "[value: string | undefined]",
+    "description": ""
+   },
+   {
+    "name": "save",
+    "type": "[reason: string, note: string]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessDrawer": {
   "props": [
    {

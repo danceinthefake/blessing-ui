@@ -10,7 +10,7 @@ Vue 3 component library and design tokens. The UI is gray-scale, with one accent
 
 Docs, with every component live: **[ui.blessing.id](https://ui.blessing.id)**
 
-- 390 components, from button to data table to chat. Only `--bless-*` custom properties style them. There is no Tailwind dependency.
+- 391 components, from button to data table to chat. Only `--bless-*` custom properties style them. There is no Tailwind dependency.
 - Native platform first: `<dialog>`, Popover API, `<details>`, native form controls, `Intl` dates, and scroll-snap. There is no positioning, date, or table library.
 - Accessible defaults: focus rings, ARIA tablist, dialog, and tables, and `prefers-reduced-motion`
 - ESM, tree-shakable, with `vue` as the only required peer (`@tiptap/vue-3` is optional, for `BlessEditor`). One component (`BlessButton`) costs about 1 KB gzip of JS and about 2.6 KB of CSS (tokens and its own styles). Everything costs about 256 KB and 71 KB. CSS is split per component and the import pulls it in, so you never pay for styles that you do not use
@@ -92,7 +92,7 @@ The words that components say are English by default. `provideLabels(labelsId)` 
 
 ## Components
 
-390 components across eight groups. Every one styles itself from `--bless-*` tokens and ships with a test and a docs page.
+391 components across eight groups. Every one styles itself from `--bless-*` tokens and ships with a test and a docs page.
 
 ### Primitives
 
@@ -425,6 +425,7 @@ The words that components say are English by default. `provideLabels(labelsId)` 
 | `BlessProductionCounter`   | Good and scrap counts with big buttons                              | `v-model:good`, `v-model:scrap`, `target`                                                                                                     |
 | `BlessMachineBoard`        | Machines with their state and time                                  | `machines` `{id,name,state,minutes,job,reading}`, `sort`. Emits `select`                                                                      |
 | `BlessOeeGauge`            | OEE from availability, performance, quality                         | `availability`, `performance`, `quality`, `goal`                                                                                              |
+| `BlessDowntimePicker`      | The reason for a stop, with big buttons                             | `reasons` `{id,label,planned,icon}`, `machine`, `v-model`. Emits `save`                                                                       |
 | `BlessTreemap`             | Squarified treemap of a tree of sizes. Drill-down path and keyboard | `data` `{id,label,value?,children?,color?}`, `v-model:path`, `height`, `format`, `label`, `labels`. `select`                                  |
 | `BlessSankey`              | Flows between steps, as bands                                       | `links` `[{source,target,value}]`, `nodes` `[{id,label,color}]`, `height`, `format`, `label`, `labels`. Plain SVG, a table for screen readers |
 | `BlessBarChart`            | Bars for categories, side by side or stacked                        | `data`, `x`, `series`, `stacked`, `horizontal`                                                                                                |

@@ -647,7 +647,7 @@ Ten components, 386 → 396. Each uses native platform APIs only: the library ad
 - ✅ `BlessProductionCounter`: good and scrap pieces against the target, with big buttons for a station.
 - ✅ `BlessMachineBoard`: the machines of a line with their state and how long they are in it.
 - ✅ `BlessOeeGauge`: overall equipment effectiveness: availability × performance × quality.
-- `BlessDowntimePicker`: the reason for a stop, with big touch buttons.
+- ✅ `BlessDowntimePicker`: the reason for a stop, with big touch buttons.
 - `BlessWorkInstructions`: the steps of a job with a picture for each step.
 - `BlessQualityCheck`: pass or fail checks and measured values against their limits.
 - `BlessControlChart`: measured values over time with the center line and the control limits (SPC).
