@@ -139,6 +139,7 @@ import type BlessTicket from "../components/BlessTicket.vue";
 import type BlessTimer from "../components/BlessTimer.vue";
 import type BlessToolCall from "../components/BlessToolCall.vue";
 import type BlessTour from "../components/BlessTour.vue";
+import type BlessTransactionList from "../components/BlessTransactionList.vue";
 import type BlessTranscript from "../components/BlessTranscript.vue";
 import type BlessTreemap from "../components/BlessTreemap.vue";
 import type BlessTypeScale from "../components/BlessTypeScale.vue";
@@ -294,6 +295,7 @@ export type BlessLabelsFull = {
   BlessTimer: All<typeof BlessTimer>;
   BlessToolCall: All<typeof BlessToolCall>;
   BlessTour: All<typeof BlessTour>;
+  BlessTransactionList: All<typeof BlessTransactionList>;
   BlessTranscript: All<typeof BlessTranscript>;
   BlessTreemap: All<typeof BlessTreemap>;
   BlessTypeScale: All<typeof BlessTypeScale>;
@@ -1169,6 +1171,11 @@ export const labelsId: BlessLabelsFull = {
     done: "Selesai",
     skip: "Lewati",
     step: (n) => `Langkah ${n}`,
+  },
+  BlessTransactionList: {
+    title: "Transaksi",
+    pending: "tertunda",
+    total: (s) => `Total hari ini ${s}`,
   },
   BlessTranscript: { title: "Transkrip", seek: (t) => `Putar dari ${t}` },
   BlessTreemap: {

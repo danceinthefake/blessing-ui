@@ -930,6 +930,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         text: "An account balance with the change",
       },
       {
+        name: "BlessTransactionList",
+        slug: "transaction-list",
+        text: "Payments grouped by day with totals",
+      },
+      {
         name: "BlessDescriptions",
         slug: "descriptions",
         text: "Label and value pairs for a detail page",
