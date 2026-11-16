@@ -29,7 +29,8 @@ Sixteen new components, 334 in all, for finance and commerce sites. They come fr
 - `BlessCallScreen`: video tiles from a slot or the avatar, muted and speaking in words, and mute, camera, share, and leave controls.
 - `BlessContactPicker`: a search over people with recent contacts first, check boxes or radios, and the chosen people as chips that remove.
 - `BlessPostComposer`: a post box with a count of characters as people see them, up to four images with previews, a poll of two to four choices, and a post event.
-- `BlessStories`: rings of people with new or seen stories, and a modal viewer with a timer, progress bars, pause, buttons and arrow keys, and a seen event. 342 components in all.
+- `BlessStories`: rings of people with new or seen stories, and a modal viewer with a timer, progress bars, pause, buttons and arrow keys, and a seen event.
+- `BlessFollowButton`: a follow toggle named with the person, a short count of followers with the reader, and a status message after each click. 343 components in all.
 
 ## 0.7.0 — 2026-11-16
 

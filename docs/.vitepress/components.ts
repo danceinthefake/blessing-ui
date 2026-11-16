@@ -686,6 +686,11 @@ export const groups: { title: string; items: Entry[] }[] = [
       },
       { name: "BlessStories", slug: "stories", text: "Story rings and a timed viewer" },
       {
+        name: "BlessFollowButton",
+        slug: "follow-button",
+        text: "Follow with the count of followers",
+      },
+      {
         name: "BlessLeaderboard",
         slug: "leaderboard",
         text: "Ranked rows with the place, the move and the score",

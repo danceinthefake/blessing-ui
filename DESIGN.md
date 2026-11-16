@@ -575,7 +575,7 @@ Thirteen components, 334 → 347. Each uses native platform APIs only: the libra
 - ✅ `BlessContactPicker`: search people and pick one or more, with recent contacts.
 - ✅ `BlessPostComposer`: write a post with images, a poll, and a count of the characters left.
 - ✅ `BlessStories`: rings of people with new stories, and a viewer with a timer for each story.
-- `BlessFollowButton`: follow and unfollow, with the count of followers.
+- ✅ `BlessFollowButton`: follow and unfollow, with the count of followers.
 - `BlessTrendList`: topics that people talk about now, with the count of posts.
 - `BlessReportDialog`: report a post or a person, with a reason and a note.
 - `BlessGroupCard`: a group with a cover, the members, and a join button.

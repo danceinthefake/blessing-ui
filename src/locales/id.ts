@@ -61,6 +61,7 @@ import type BlessFaqSearch from "../components/BlessFaqSearch.vue";
 import type BlessFeatureFlags from "../components/BlessFeatureFlags.vue";
 import type BlessFilterBar from "../components/BlessFilterBar.vue";
 import type BlessFlashcards from "../components/BlessFlashcards.vue";
+import type BlessFollowButton from "../components/BlessFollowButton.vue";
 import type BlessFootnoteRef from "../components/BlessFootnoteRef.vue";
 import type BlessFootnotes from "../components/BlessFootnotes.vue";
 import type BlessFormula from "../components/BlessFormula.vue";
@@ -238,6 +239,7 @@ export type BlessLabelsFull = {
   BlessFeatureFlags: All<typeof BlessFeatureFlags>;
   BlessFilterBar: All<typeof BlessFilterBar>;
   BlessFlashcards: All<typeof BlessFlashcards>;
+  BlessFollowButton: All<typeof BlessFollowButton>;
   BlessFootnoteRef: All<typeof BlessFootnoteRef>;
   BlessFootnotes: All<typeof BlessFootnotes>;
   BlessFormula: All<typeof BlessFormula>;
@@ -777,6 +779,13 @@ export const labelsId: BlessLabelsFull = {
     restart: "Mulai lagi",
     progress: (n, t) => `Kartu ${n} dari ${t}`,
     done: (k, t) => `Kamu tahu ${k} dari ${t} pada percobaan pertama.`,
+  },
+  BlessFollowButton: {
+    follow: "Ikuti",
+    following: "Mengikuti",
+    followers: (n) => `${n} pengikut`,
+    followed: (n) => `Anda mengikuti ${n}.`,
+    unfollowed: (n) => `Anda tidak lagi mengikuti ${n}.`,
   },
   BlessFootnoteRef: { note: (n) => `Catatan ${n}` },
   BlessFootnotes: { title: "Catatan", back: (n) => `Kembali ke teks catatan ${n}` },
