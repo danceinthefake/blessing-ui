@@ -827,6 +827,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         text: "Groups around a circle with ribbons for flows",
       },
       {
+        name: "BlessParallelCoordinates",
+        slug: "parallel-coordinates",
+        text: "Each item as a line across several axes",
+      },
+      {
         name: "BlessPricingTable",
         slug: "pricing-table",
         text: "Plans side by side, with a monthly or yearly switch",

@@ -82,7 +82,8 @@ Sixty-four new components, 302 in all: more charts, parts for an assistant and i
 - `BlessIncidentTimeline`: the updates of an incident newest first, with the impact and the state as words, the affected parts, and an edge color that follows the state.
 - `BlessSystemStatus`: the parts of a service with a mark and a word for each state, and one status line that takes the worst state.
 - `BlessRangeChart`: floating bars from a low to a high value for each row, with an optional mark such as the average.
-- `BlessChordDiagram`: groups around a circle with ribbons for the flows both ways between them, laid out after d3-chord, with a table of the full matrix. 304 components in all.
+- `BlessChordDiagram`: groups around a circle with ribbons for the flows both ways between them, laid out after d3-chord, with a table of the full matrix.
+- `BlessParallelCoordinates`: each item as a line across several axes, each with its own scale, with a legend and a table. 305 components in all.
 
 ## 0.6.0 — 2026-11-15
 

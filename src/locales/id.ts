@@ -74,6 +74,7 @@ import type BlessOnboardingChecklist from "../components/BlessOnboardingChecklis
 import type BlessOpeningHours from "../components/BlessOpeningHours.vue";
 import type BlessOrderList from "../components/BlessOrderList.vue";
 import type BlessOrderSummary from "../components/BlessOrderSummary.vue";
+import type BlessParallelCoordinates from "../components/BlessParallelCoordinates.vue";
 import type BlessPareto from "../components/BlessPareto.vue";
 import type BlessPermissionMatrix from "../components/BlessPermissionMatrix.vue";
 import type BlessPhoneInput from "../components/BlessPhoneInput.vue";
@@ -215,6 +216,7 @@ export type BlessLabelsFull = {
   BlessOpeningHours: All<typeof BlessOpeningHours>;
   BlessOrderList: All<typeof BlessOrderList>;
   BlessOrderSummary: All<typeof BlessOrderSummary>;
+  BlessParallelCoordinates: All<typeof BlessParallelCoordinates>;
   BlessPareto: All<typeof BlessPareto>;
   BlessPermissionMatrix: All<typeof BlessPermissionMatrix>;
   BlessPhoneInput: All<typeof BlessPhoneInput>;
@@ -767,6 +769,7 @@ export const labelsId: BlessLabelsFull = {
     total: "Total",
     quantity: (n) => `Jml ${n}`,
   },
+  BlessParallelCoordinates: { item: "Item" },
   BlessPareto: { item: "Item", value: "Nilai", running: "Porsi kumulatif" },
   BlessPermissionMatrix: {
     title: "Izin",

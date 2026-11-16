@@ -521,7 +521,7 @@ Sixteen components, 302 → 318. Each uses native platform APIs only: the librar
 
 - ✅ `BlessRangeChart`: floating bars from a low to a high value for each row.
 - ✅ `BlessChordDiagram`: groups around a circle, with ribbons for the flows between them.
-- `BlessParallelCoordinates`: each item as a line across several axes.
+- ✅ `BlessParallelCoordinates`: each item as a line across several axes.
 - `BlessSmallMultiples`: a grid of small line charts on one scale.
 - `BlessPaletteViewer`: the shades of each color with the value, a copy button, and the contrast on white and black.
 - `BlessContrastChecker`: two colors in, the contrast ratio out, with the WCAG levels for text.
