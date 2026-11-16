@@ -1113,6 +1113,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "journal-entry",
         text: "Debit and credit lines that must balance",
       },
+      {
+        name: "BlessStockLevels",
+        slug: "stock-levels",
+        text: "Stock with a reorder point and low state",
+      },
     ],
   },
   {
