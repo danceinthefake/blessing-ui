@@ -59,7 +59,7 @@
     "typecheck": "vue-tsc --noEmit",
     "format": "oxfmt .",
     "docs:dev": "vitepress dev docs",
-    "docs:build": "pnpm docs:meta && pnpm docs:blocks && vitepress build docs",
+    "docs:build": "pnpm docs:meta && pnpm docs:blocks && node --max-old-space-size=6144 node_modules/vitepress/bin/vitepress.js build docs",
     "docs:preview": "vitepress preview docs",
     "docs:meta": "node docs/scripts/meta.ts",
     "docs:pages": "node docs/scripts/pages.ts",

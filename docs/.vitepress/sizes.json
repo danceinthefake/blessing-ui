@@ -60,6 +60,11 @@
     "css": 1477
   },
   {
+    "name": "BlessAppointmentCard",
+    "js": 2348,
+    "css": 1385
+  },
+  {
     "name": "BlessApprovalFlow",
     "js": 2654,
     "css": 1450
@@ -125,6 +130,11 @@
     "css": 0
   },
   {
+    "name": "BlessBatteryLevel",
+    "js": 794,
+    "css": 375
+  },
+  {
     "name": "BlessBeeswarm",
     "js": 2068,
     "css": 270
@@ -133,6 +143,11 @@
     "name": "BlessBlockUI",
     "js": 771,
     "css": 511
+  },
+  {
+    "name": "BlessBodyMap",
+    "js": 1190,
+    "css": 332
   },
   {
     "name": "BlessBottomTabs",
@@ -191,7 +206,7 @@
   },
   {
     "name": "BlessCallScreen",
-    "js": 1683,
+    "js": 1664,
     "css": 914
   },
   {
@@ -450,6 +465,11 @@
     "css": 463
   },
   {
+    "name": "BlessDeviceTile",
+    "js": 1386,
+    "css": 851
+  },
+  {
     "name": "BlessDialogHost",
     "js": 1678,
     "css": 836
@@ -502,7 +522,7 @@
   {
     "name": "BlessEmailView",
     "js": 2562,
-    "css": 1804
+    "css": 1811
   },
   {
     "name": "BlessEmojiPicker",
@@ -570,6 +590,11 @@
     "css": 494
   },
   {
+    "name": "BlessFloorPlan",
+    "js": 940,
+    "css": 556
+  },
+  {
     "name": "BlessFollowButton",
     "js": 787,
     "css": 335
@@ -596,7 +621,7 @@
   },
   {
     "name": "BlessForumTopics",
-    "js": 1575,
+    "js": 1574,
     "css": 822
   },
   {
@@ -626,7 +651,7 @@
   },
   {
     "name": "BlessGroupCard",
-    "js": 2493,
+    "js": 2444,
     "css": 1340
   },
   {
@@ -853,6 +878,11 @@
     "name": "BlessMasonry",
     "js": 1156,
     "css": 256
+  },
+  {
+    "name": "BlessMedicationSchedule",
+    "js": 1120,
+    "css": 492
   },
   {
     "name": "BlessMention",
@@ -1245,6 +1275,11 @@
     "css": 739
   },
   {
+    "name": "BlessRuleBuilder",
+    "js": 2318,
+    "css": 1166
+  },
+  {
     "name": "BlessSankey",
     "js": 1968,
     "css": 350
@@ -1253,6 +1288,11 @@
     "name": "BlessScatterChart",
     "js": 2093,
     "css": 124
+  },
+  {
+    "name": "BlessSceneButtons",
+    "js": 707,
+    "css": 405
   },
   {
     "name": "BlessScheduler",
@@ -1333,6 +1373,11 @@
     "name": "BlessSkew",
     "js": 343,
     "css": 297
+  },
+  {
+    "name": "BlessSleepChart",
+    "js": 1691,
+    "css": 327
   },
   {
     "name": "BlessSlideItem",
@@ -1457,7 +1502,7 @@
   {
     "name": "BlessStories",
     "js": 2861,
-    "css": 1356
+    "css": 1348
   },
   {
     "name": "BlessStreamgraph",
@@ -1543,6 +1588,11 @@
     "name": "BlessThemeToggle",
     "js": 1889,
     "css": 774
+  },
+  {
+    "name": "BlessThermostat",
+    "js": 2352,
+    "css": 929
   },
   {
     "name": "BlessThread",
@@ -1695,6 +1745,11 @@
     "css": 327
   },
   {
+    "name": "BlessVitalsPanel",
+    "js": 1099,
+    "css": 561
+  },
+  {
     "name": "BlessVoiceInput",
     "js": 1709,
     "css": 593
@@ -1733,6 +1788,11 @@
     "name": "BlessWishlistButton",
     "js": 867,
     "css": 415
+  },
+  {
+    "name": "BlessWorkoutLog",
+    "js": 1355,
+    "css": 581
   },
   {
     "name": "BlessWorldClock",

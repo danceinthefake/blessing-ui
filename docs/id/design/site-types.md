@@ -25,14 +25,14 @@ Untuk setiap kelompok, halaman ini mendaftar komponen dan [blok](../../blocks/) 
 | 7. Perangkat lunak bisnis dan ERP |                13 |        14 |
 | 8. Keuangan                       |                15 |         0 |
 | 9. Pendidikan                     |                 7 |         5 |
-| 10. Kesehatan dan kebugaran       |                 6 |         6 |
+| 10. Kesehatan dan kebugaran       |                12 |         0 |
 | 11. Alat pengembang               |                13 |         5 |
 | 12. Utilitas                      |                 6 |         5 |
 | 13. Pencarian dan referensi       |                 6 |         4 |
 | 14. Layanan pemerintah dan publik |                 9 |         5 |
 | 15. Situs merek dan pemasaran     |                11 |         5 |
 | 16. Asisten dan agen AI           |                11 |         6 |
-| 17. Perangkat terhubung           |                 6 |         6 |
+| 17. Perangkat terhubung           |                12 |         0 |
 | 18. Operasional                   |                 9 |        10 |
 
 ## 1. Konten dan penerbitan
@@ -121,9 +121,9 @@ Belum ada: kartu kursus, buku nilai, tugas dengan pengumpulan, sertifikat, video
 
 Pelacak, klinik, dan telemedis. Orang mencatat kondisi tubuh dan memesan layanan.
 
-Sekarang: [HabitTracker](../../components/habit-tracker), [HeatmapCalendar](../../components/heatmap-calendar), [Gauge](../../components/gauge), [Timer](../../components/timer), [SlotPicker](../../components/slot-picker), [RangeChart](../../components/range-chart).
+Sekarang: [VitalsPanel](../../components/vitals-panel), [MedicationSchedule](../../components/medication-schedule), [WorkoutLog](../../components/workout-log), [SleepChart](../../components/sleep-chart), [BodyMap](../../components/body-map), [AppointmentCard](../../components/appointment-card), [HabitTracker](../../components/habit-tracker), [HeatmapCalendar](../../components/heatmap-calendar), [Gauge](../../components/gauge), [Timer](../../components/timer), [SlotPicker](../../components/slot-picker), [RangeChart](../../components/range-chart).
 
-Belum ada: tampilan tanda vital, jadwal obat, pencatat set latihan, grafik tidur, peta tubuh untuk menunjuk rasa sakit, kartu janji temu.
+Belum ada: tidak ada dari daftar pertama. Setiap bagian yang disebut halaman ini sudah menjadi komponen.
 
 ## 11. Alat pengembang
 
@@ -185,9 +185,9 @@ Belum ada: panel samping untuk dokumen yang ditulis model, cip konteks untuk ber
 
 Aplikasi rumah pintar dan kendaraan. Orang melihat status perangkat dan mengubahnya.
 
-Sekarang: [Knob](../../components/knob), [Switch](../../components/switch), [Slider](../../components/slider), [Gauge](../../components/gauge), [ConnectionStatus](../../components/connection-status), [Sparkline](../../components/sparkline).
+Sekarang: [DeviceTile](../../components/device-tile), [Thermostat](../../components/thermostat), [FloorPlan](../../components/floor-plan), [SceneButtons](../../components/scene-buttons), [BatteryLevel](../../components/battery-level), [RuleBuilder](../../components/rule-builder), [Knob](../../components/knob), [Switch](../../components/switch), [Slider](../../components/slider), [Gauge](../../components/gauge), [ConnectionStatus](../../components/connection-status), [Sparkline](../../components/sparkline).
 
-Belum ada: ubin perangkat, dial termostat, denah dengan perangkat, tombol skena, level baterai, aturan otomatis.
+Belum ada: tidak ada dari daftar pertama. Setiap bagian yang disebut halaman ini sudah menjadi komponen.
 
 ## 18. Operasional
 
