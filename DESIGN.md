@@ -598,6 +598,7 @@ Twelve components, 347 → 359. Each uses native platform APIs only: the library
 - ✅ `BlessSceneButtons`: buttons that set many devices at once, such as Night or Away.
 - ✅ `BlessBatteryLevel`: the charge of a battery, with charging and low states.
 - ✅ `BlessRuleBuilder`: an automation rule: when something happens, if a condition holds, then do an action.
+- ✅ Budget: after the round, the whole library is 238.2 KB gz JS and 64.7 KB gz CSS, under the cap of 244 / 66. Phase 37 is done.
 
 ### Phase 38 — content and media (2026-11-16)
 
