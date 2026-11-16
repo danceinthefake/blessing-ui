@@ -935,6 +935,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         text: "Payments grouped by day with totals",
       },
       {
+        name: "BlessPriceTicker",
+        slug: "price-ticker",
+        text: "Prices that scroll, with the change",
+      },
+      {
         name: "BlessDescriptions",
         slug: "descriptions",
         text: "Label and value pairs for a detail page",

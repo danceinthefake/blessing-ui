@@ -15,8 +15,8 @@ test("BlessTransactionList: newest day first, a day total, signs, categories, an
   });
   const days = w.findAll(".bless-txns__day");
   expect(days.map((d) => norm(d.find(".bless-txns__head").text()))).toEqual([
-    "Mon, Nov 16Day total +$280.00",
-    "Sat, Nov 14Day total −$4.50",
+    "Mon, Nov 16 Day total +$280.00",
+    "Sat, Nov 14 Day total −$4.50",
   ]);
   const rows = days[0]!.findAll(".bless-txns__row");
   expect(rows[0]!.find(".bless-txns__amount").text()).toBe("+$300.00");

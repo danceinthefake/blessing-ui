@@ -68,7 +68,7 @@ const days = computed(() => {
   <section class="bless-txns" :aria-label="text.title">
     <div v-for="d in days" :key="d.date" class="bless-txns__day">
       <h3 class="bless-txns__head">
-        <span>{{ d.name }}</span>
+        <span>{{ d.name }}</span>{{ " " }}
         <span class="bless-txns__total">{{ text.total(signed(d.total)) }}</span>
       </h3>
       <ul class="bless-txns__list">

@@ -5,7 +5,8 @@
 ### Added
 
 - `BlessBalanceCard`: the balance of an account with a hide button, the change over a period with a sign and a word, and a slot for actions.
-- `BlessTransactionList`: payments in and out grouped by day with the total of each day, a sign on every amount, a category, and a pending tag. 320 components in all.
+- `BlessTransactionList`: payments in and out grouped by day with the total of each day, a sign on every amount, a category, and a pending tag.
+- `BlessPriceTicker`: prices that scroll in a marquee with a Pause button, each with the change as an arrow, a sign, and a percent. 321 components in all.
 
 ## 0.7.0 — 2026-11-16
 
