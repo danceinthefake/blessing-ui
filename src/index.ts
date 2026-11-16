@@ -494,3 +494,5 @@ export type {
 } from "./components/BlessIncidentTimeline.vue";
 export { default as BlessSystemStatus } from "./components/BlessSystemStatus.vue";
 export type { BlessServicePart, BlessServiceState } from "./components/BlessSystemStatus.vue";
+export { default as BlessRangeChart } from "./components/BlessRangeChart.vue";
+export type { BlessRangeRow } from "./components/BlessRangeChart.vue";

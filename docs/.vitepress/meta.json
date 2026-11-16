@@ -11240,6 +11240,45 @@
   ],
   "exposed": []
  },
+ "BlessRangeChart": {
+  "props": [
+   {
+    "name": "data",
+    "type": "BlessRangeRow[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "color",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"chart-1\"",
+    "description": ""
+   },
+   {
+    "name": "format",
+    "type": "((v: number) => string) | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "label",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"Chart\"",
+    "description": "names the chart and its table for screen readers"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ item: string; low: string; high: string; value: string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessRating": {
   "props": [
    {

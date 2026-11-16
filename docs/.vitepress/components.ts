@@ -817,6 +817,11 @@ export const groups: { title: string; items: Entry[] }[] = [
       },
       { name: "BlessPictogram", slug: "pictogram", text: "A count as rows of icons" },
       {
+        name: "BlessRangeChart",
+        slug: "range-chart",
+        text: "Floating bars from a low to a high value",
+      },
+      {
         name: "BlessPricingTable",
         slug: "pricing-table",
         text: "Plans side by side, with a monthly or yearly switch",
