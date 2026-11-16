@@ -704,3 +704,5 @@ export type { BlessMeetingRoom, BlessRoomSlot } from "./components/BlessRoomBook
 export { default as BlessFileBrowser } from "./components/BlessFileBrowser.vue";
 export type { BlessFileItem } from "./components/BlessFileBrowser.vue";
 export { default as BlessCourseCard } from "./components/BlessCourseCard.vue";
+export { default as BlessGradebook } from "./components/BlessGradebook.vue";
+export type { BlessGradeTask, BlessScores } from "./components/BlessGradebook.vue";
