@@ -9468,6 +9468,52 @@
   "slots": [],
   "exposed": []
  },
+ "BlessOrderBook": {
+  "props": [
+   {
+    "name": "bids",
+    "type": "BlessBookLevel[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "asks",
+    "type": "BlessBookLevel[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "depth",
+    "type": "number | undefined",
+    "required": false,
+    "default": "8",
+    "description": "rows on each side"
+   },
+   {
+    "name": "precision",
+    "type": "number | undefined",
+    "required": false,
+    "default": "2",
+    "description": "decimals of the price"
+   },
+   {
+    "name": "locale",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"en\"",
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ title: string; price: string; size: string; total: string; ask: string; bid: string; spread: (value: string, percent: string) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessOrderList": {
   "props": [
    {

@@ -805,6 +805,7 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "candlestick",
         text: "Open, high, low and close of each period",
       },
+      { name: "BlessOrderBook", slug: "order-book", text: "Bids and asks with depth and spread" },
       { name: "BlessSunburst", slug: "sunburst", text: "A tree of parts as rings around a center" },
       {
         name: "BlessDumbbell",
