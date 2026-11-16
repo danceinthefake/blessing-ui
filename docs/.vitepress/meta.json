@@ -16956,6 +16956,32 @@
   "slots": [],
   "exposed": []
  },
+ "BlessStockLevels": {
+  "props": [
+   {
+    "name": "items",
+    "type": "BlessStockItem[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "locale",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"en\"",
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<Record<BlessStockState, string> & { title: string; sku: string; item: string; location: string; onHand: string; reserved: string; available: string; reorder: string; state: string; onlyLow: string; count: (low: number, total: number) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessStoreLocator": {
   "props": [
    {

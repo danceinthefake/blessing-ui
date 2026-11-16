@@ -177,6 +177,7 @@ import type BlessSpoiler from "../components/BlessSpoiler.vue";
 import type BlessStat from "../components/BlessStat.vue";
 import type BlessStepper from "../components/BlessStepper.vue";
 import type BlessStickyBoard from "../components/BlessStickyBoard.vue";
+import type BlessStockLevels from "../components/BlessStockLevels.vue";
 import type BlessStoreLocator from "../components/BlessStoreLocator.vue";
 import type BlessStories from "../components/BlessStories.vue";
 import type BlessStreamgraph from "../components/BlessStreamgraph.vue";
@@ -388,6 +389,7 @@ export type BlessLabelsFull = {
   BlessStat: All<typeof BlessStat>;
   BlessStepper: All<typeof BlessStepper>;
   BlessStickyBoard: All<typeof BlessStickyBoard>;
+  BlessStockLevels: All<typeof BlessStockLevels>;
   BlessStoreLocator: All<typeof BlessStoreLocator>;
   BlessStories: All<typeof BlessStories>;
   BlessStreamgraph: All<typeof BlessStreamgraph>;
@@ -1637,6 +1639,22 @@ export const labelsId: BlessLabelsFull = {
     move: "Pindah: seret, atau pakai tombol panah",
     color: "Ganti warna",
     remove: "Hapus catatan",
+  },
+  BlessStockLevels: {
+    title: "Level stok",
+    sku: "SKU",
+    item: "Barang",
+    location: "Lokasi",
+    onHand: "Di gudang",
+    reserved: "Dipesan",
+    available: "Tersedia",
+    reorder: "Pesan ulang di",
+    state: "Status",
+    ok: "Tersedia",
+    low: "Menipis",
+    out: "Habis",
+    onlyLow: "Tampilkan hanya yang perlu dipesan",
+    count: (l, t) => `${l} dari ${t} barang perlu dipesan ulang`,
   },
   BlessStoreLocator: {
     title: "Toko",
