@@ -660,3 +660,6 @@ export type { BlessJournalLine } from "./components/BlessJournalEntry.vue";
 export { default as BlessStockLevels } from "./components/BlessStockLevels.vue";
 export { stockState } from "./components/BlessStockLevels.vue";
 export type { BlessStockItem, BlessStockState } from "./components/BlessStockLevels.vue";
+export { default as BlessBillOfMaterials } from "./components/BlessBillOfMaterials.vue";
+export { bomNeeds } from "./components/BlessBillOfMaterials.vue";
+export type { BlessBomPart } from "./components/BlessBillOfMaterials.vue";
