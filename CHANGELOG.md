@@ -86,7 +86,8 @@ Sixty-four new components, 302 in all: more charts, parts for an assistant and i
 - `BlessParallelCoordinates`: each item as a line across several axes, each with its own scale, with a legend and a table.
 - `BlessSmallMultiples`: a grid of small line charts on one shared scale with the last value of each. `BlessSparkline` gets `min` and `max` for it.
 - `BlessContrastChecker`: two colors in, the WCAG 2.1 contrast ratio and the AA and AAA levels out, with `contrastRatio` and `wcagLevels` as functions.
-- `BlessPaletteViewer`: the shades of each palette with the value, copy on click, and the contrast on white and black with an AA mark. 308 components in all.
+- `BlessPaletteViewer`: the shades of each palette with the value, copy on click, and the contrast on white and black with an AA mark.
+- `BlessIconPicker`: a grid of your icons as path data, with a search on names and keywords, as a native radio group. 309 components in all.
 
 ## 0.6.0 — 2026-11-15
 

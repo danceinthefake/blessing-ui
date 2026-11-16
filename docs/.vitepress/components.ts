@@ -419,6 +419,7 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "palette-viewer",
         text: "The shades of each color with the contrast",
       },
+      { name: "BlessIconPicker", slug: "icon-picker", text: "A grid of your icons with a search" },
       { name: "BlessPasswordMeter", slug: "password-meter", text: "Strength meter from rules" },
       { name: "BlessListbox", slug: "listbox", text: "Single / multi select list, role=listbox" },
       { name: "BlessLabel", slug: "label", text: "`<label>` with required mark and hint" },
