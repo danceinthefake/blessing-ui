@@ -6274,6 +6274,57 @@
   ],
   "exposed": []
  },
+ "BlessFloorPlan": {
+  "props": [
+   {
+    "name": "rooms",
+    "type": "BlessRoom[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "devices",
+    "type": "BlessRoomDevice[] | undefined",
+    "required": false,
+    "default": "[]",
+    "description": ""
+   },
+   {
+    "name": "columns",
+    "type": "number | undefined",
+    "required": false,
+    "default": "12",
+    "description": "the number of grid columns of the plan"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ title: string; devices: (count: number, on: number) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "string | undefined",
+    "required": false,
+    "description": "the id of the open room"
+   }
+  ],
+  "events": [
+   {
+    "name": "update:modelValue",
+    "type": "[value: string | undefined]",
+    "description": ""
+   }
+  ],
+  "slots": [
+   {
+    "name": "room",
+    "type": "{ room: BlessRoom; devices: BlessRoomDevice[]; }",
+    "description": ""
+   }
+  ],
+  "exposed": []
+ },
  "BlessFollowButton": {
   "props": [
    {

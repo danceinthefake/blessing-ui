@@ -600,3 +600,5 @@ export type { BlessAppointmentStatus } from "./components/BlessAppointmentCard.v
 export { default as BlessDeviceTile } from "./components/BlessDeviceTile.vue";
 export { default as BlessThermostat } from "./components/BlessThermostat.vue";
 export type { BlessThermostatMode } from "./components/BlessThermostat.vue";
+export { default as BlessFloorPlan } from "./components/BlessFloorPlan.vue";
+export type { BlessRoom, BlessRoomDevice } from "./components/BlessFloorPlan.vue";

@@ -64,6 +64,7 @@ import type BlessFaqSearch from "../components/BlessFaqSearch.vue";
 import type BlessFeatureFlags from "../components/BlessFeatureFlags.vue";
 import type BlessFilterBar from "../components/BlessFilterBar.vue";
 import type BlessFlashcards from "../components/BlessFlashcards.vue";
+import type BlessFloorPlan from "../components/BlessFloorPlan.vue";
 import type BlessFollowButton from "../components/BlessFollowButton.vue";
 import type BlessFootnoteRef from "../components/BlessFootnoteRef.vue";
 import type BlessFootnotes from "../components/BlessFootnotes.vue";
@@ -252,6 +253,7 @@ export type BlessLabelsFull = {
   BlessFeatureFlags: All<typeof BlessFeatureFlags>;
   BlessFilterBar: All<typeof BlessFilterBar>;
   BlessFlashcards: All<typeof BlessFlashcards>;
+  BlessFloorPlan: All<typeof BlessFloorPlan>;
   BlessFollowButton: All<typeof BlessFollowButton>;
   BlessFootnoteRef: All<typeof BlessFootnoteRef>;
   BlessFootnotes: All<typeof BlessFootnotes>;
@@ -834,6 +836,10 @@ export const labelsId: BlessLabelsFull = {
     restart: "Mulai lagi",
     progress: (n, t) => `Kartu ${n} dari ${t}`,
     done: (k, t) => `Kamu tahu ${k} dari ${t} pada percobaan pertama.`,
+  },
+  BlessFloorPlan: {
+    title: "Denah",
+    devices: (n, on) => (n === 0 ? "Tidak ada perangkat" : `${n} perangkat, ${on} nyala`),
   },
   BlessFollowButton: {
     follow: "Ikuti",
