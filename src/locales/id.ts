@@ -4,6 +4,7 @@ import type BlessAgentPlan from "../components/BlessAgentPlan.vue";
 // a new English word without an Indonesian one fails the typecheck.
 import type BlessAnnotator from "../components/BlessAnnotator.vue";
 import type BlessApiKeyField from "../components/BlessApiKeyField.vue";
+import type BlessApprovalFlow from "../components/BlessApprovalFlow.vue";
 import type BlessAudioRecorder from "../components/BlessAudioRecorder.vue";
 import type BlessAvailabilityGrid from "../components/BlessAvailabilityGrid.vue";
 import type BlessAvatarGroup from "../components/BlessAvatarGroup.vue";
@@ -153,6 +154,7 @@ export type BlessLabelsFull = {
   BlessAgentPlan: All<typeof BlessAgentPlan>;
   BlessAnnotator: All<typeof BlessAnnotator>;
   BlessApiKeyField: All<typeof BlessApiKeyField>;
+  BlessApprovalFlow: All<typeof BlessApprovalFlow>;
   BlessAudioRecorder: All<typeof BlessAudioRecorder>;
   BlessAvailabilityGrid: All<typeof BlessAvailabilityGrid>;
   BlessAvatarGroup: All<typeof BlessAvatarGroup>;
@@ -350,6 +352,20 @@ export const labelsId: BlessLabelsFull = {
     cancel: "Batal",
     created: (w) => `Dibuat ${w}`,
     lastUsed: (w) => `Terakhir dipakai ${w}`,
+  },
+  BlessApprovalFlow: {
+    title: "Persetujuan",
+    approved: "Disetujui",
+    rejected: "Ditolak",
+    pending: "Menunggu",
+    approve: "Setujui",
+    reject: "Tolak",
+    note: "Catatan (opsional)",
+    all: "Semua harus setuju",
+    any: "Satu persetujuan cukup",
+    done: "Disetujui semua",
+    stopped: "Berhenti: ada langkah yang ditolak",
+    waiting: (s) => `Menunggu: ${s}`,
   },
   BlessAudioRecorder: {
     record: "Rekam",

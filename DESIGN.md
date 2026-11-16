@@ -529,7 +529,7 @@ Sixteen components, 302 → 318. Each uses native platform APIs only: the librar
 - ✅ `BlessTypeScale`: a specimen of the font sizes, with the size, the line height, and the token.
 - ✅ `BlessStickyBoard`: sticky notes that you add, edit, color, and move, with the keyboard too.
 - ✅ `BlessTaskList`: tasks with check boxes, an assignee, a due date, and subtasks.
-- `BlessApprovalFlow`: the steps of a request, with approvers and their decisions.
+- ✅ `BlessApprovalFlow`: the steps of a request, with approvers and their decisions.
 - `BlessVersionHistory`: saved versions with the author and the time, and a restore button.
 - `BlessQuiz`: questions with choices, a check after each answer with the reason, and a score.
 - `BlessFlashcards`: cards that flip to show the answer, sorted by what the learner knows.

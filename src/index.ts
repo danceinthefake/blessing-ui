@@ -514,3 +514,9 @@ export { default as BlessStickyBoard } from "./components/BlessStickyBoard.vue";
 export type { BlessStickyNote } from "./components/BlessStickyBoard.vue";
 export { default as BlessTaskList } from "./components/BlessTaskList.vue";
 export type { BlessTask, BlessSubtask } from "./components/BlessTaskList.vue";
+export { default as BlessApprovalFlow } from "./components/BlessApprovalFlow.vue";
+export type {
+  BlessApprovalStep,
+  BlessApprover,
+  BlessDecision,
+} from "./components/BlessApprovalFlow.vue";
