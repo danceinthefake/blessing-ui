@@ -1124,6 +1124,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         text: "A tree of parts with quantities",
       },
       { name: "BlessSkuField", slug: "sku-field", text: "A barcode or SKU field for scanners" },
+      {
+        name: "BlessUnitConverter",
+        slug: "unit-converter",
+        text: "Convert between units such as boxes and pieces",
+      },
     ],
   },
   {

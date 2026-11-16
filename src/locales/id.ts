@@ -202,6 +202,7 @@ import type BlessTreemap from "../components/BlessTreemap.vue";
 import type BlessTrendList from "../components/BlessTrendList.vue";
 import type BlessTypeScale from "../components/BlessTypeScale.vue";
 import type BlessTypingIndicator from "../components/BlessTypingIndicator.vue";
+import type BlessUnitConverter from "../components/BlessUnitConverter.vue";
 import type BlessUploader from "../components/BlessUploader.vue";
 import type BlessUptimeBar from "../components/BlessUptimeBar.vue";
 
@@ -416,6 +417,7 @@ export type BlessLabelsFull = {
   BlessTrendList: All<typeof BlessTrendList>;
   BlessTypeScale: All<typeof BlessTypeScale>;
   BlessTypingIndicator: All<typeof BlessTypingIndicator>;
+  BlessUnitConverter: All<typeof BlessUnitConverter>;
   BlessUploader: All<typeof BlessUploader>;
   BlessUptimeBar: All<typeof BlessUptimeBar>;
   BlessVariantPicker: All<typeof BlessVariantPicker>;
@@ -1813,6 +1815,14 @@ export const labelsId: BlessLabelsFull = {
     one: (n) => `${n} sedang mengetik…`,
     two: (a, b) => `${a} dan ${b} sedang mengetik…`,
     many: (n, more) => `${n} dan ${more} lainnya sedang mengetik…`,
+  },
+  BlessUnitConverter: {
+    amount: "Jumlah",
+    from: "Dari",
+    to: "Ke",
+    swap: "Tukar satuan",
+    result: "Hasil",
+    split: "Dalam satuan utuh",
   },
   BlessUploader: {
     clear: "Kosongkan",

@@ -665,3 +665,6 @@ export { bomNeeds } from "./components/BlessBillOfMaterials.vue";
 export type { BlessBomPart } from "./components/BlessBillOfMaterials.vue";
 export { default as BlessSkuField } from "./components/BlessSkuField.vue";
 export { gs1Valid } from "./components/BlessSkuField.vue";
+export { default as BlessUnitConverter } from "./components/BlessUnitConverter.vue";
+export { splitUnits } from "./components/BlessUnitConverter.vue";
+export type { BlessUnit } from "./components/BlessUnitConverter.vue";
