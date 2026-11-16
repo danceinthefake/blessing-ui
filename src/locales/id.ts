@@ -63,6 +63,7 @@ import type BlessInputNumber from "../components/BlessInputNumber.vue";
 import type BlessKanban from "../components/BlessKanban.vue";
 import type BlessKeyValueEditor from "../components/BlessKeyValueEditor.vue";
 import type BlessLeaderboard from "../components/BlessLeaderboard.vue";
+import type BlessLessonPath from "../components/BlessLessonPath.vue";
 import type BlessLightbox from "../components/BlessLightbox.vue";
 import type BlessLogViewer from "../components/BlessLogViewer.vue";
 import type BlessLollipop from "../components/BlessLollipop.vue";
@@ -215,6 +216,7 @@ export type BlessLabelsFull = {
   BlessKanban: All<typeof BlessKanban>;
   BlessKeyValueEditor: All<typeof BlessKeyValueEditor>;
   BlessLeaderboard: All<typeof BlessLeaderboard>;
+  BlessLessonPath: All<typeof BlessLessonPath>;
   BlessLightbox: All<typeof BlessLightbox>;
   BlessLogViewer: All<typeof BlessLogViewer>;
   BlessLollipop: All<typeof BlessLollipop>;
@@ -727,6 +729,13 @@ export const labelsId: BlessLabelsFull = {
     same: "tetap",
     new: "baru",
     you: "kamu",
+  },
+  BlessLessonPath: {
+    title: "Pelajaran",
+    done: "selesai",
+    current: "mulai di sini",
+    locked: "terkunci",
+    progress: (d, t) => `${d} dari ${t} pelajaran selesai`,
   },
   BlessLightbox: {
     prev: "Sebelumnya",
