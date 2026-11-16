@@ -34,7 +34,8 @@ Twenty-nine new components, 347 in all, for finance, commerce, communication, an
 - `BlessTrendList`: topics that people talk about now as an ordered list with a category, a linked topic, and a short count of posts.
 - `BlessReportDialog`: a report form in a modal with reason radios, a note, an error for no reason, a fresh form on each open, and a thank-you.
 - `BlessGroupCard`: a group with a cover, public or private in words, a short member count, member faces, and a join or ask-to-join button named with the group.
-- `BlessForumTopics`: forum topics with pinned ones first, pinned, solved, and locked as a mark and a word, tags, short counts, and the last post. 347 components in all.
+- `BlessForumTopics`: forum topics with pinned ones first, pinned, solved, and locked as a mark and a word, tags, short counts, and the last post.
+- `BlessVitalsPanel`: body readings with the unit, the normal range, a state as a mark and a word, and a bar that shows where the value falls. 348 components in all.
 
 ## 0.7.0 — 2026-11-16
 

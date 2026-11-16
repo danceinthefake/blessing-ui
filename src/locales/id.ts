@@ -357,6 +357,7 @@ export type BlessLabelsFull = {
   BlessVariantPicker: All<typeof BlessVariantPicker>;
   BlessVenn: All<typeof BlessVenn>;
   BlessVersionHistory: All<typeof BlessVersionHistory>;
+  BlessVitalsPanel: All<typeof BlessVitalsPanel>;
   BlessVoiceInput: All<typeof BlessVoiceInput>;
   BlessWaterfallChart: All<typeof BlessWaterfallChart>;
   BlessWebhookLog: All<typeof BlessWebhookLog>;
@@ -1491,6 +1492,13 @@ export const labelsId: BlessLabelsFull = {
     restore: "Pulihkan",
     changes: (a, r) => `${a} ditambah, ${r} dihapus`,
   },
+  BlessVitalsPanel: {
+    title: "Tanda vital",
+    low: "Rendah",
+    high: "Tinggi",
+    normal: "Normal",
+    range: (l, h) => `normal ${l}–${h}`,
+  },
   BlessVoiceInput: {
     start: "Mulai dikte",
     stop: "Hentikan dikte",
@@ -1520,6 +1528,7 @@ export const labelsId: BlessLabelsFull = {
 import type BlessVariantPicker from "../components/BlessVariantPicker.vue";
 import type BlessVenn from "../components/BlessVenn.vue";
 import type BlessVersionHistory from "../components/BlessVersionHistory.vue";
+import type BlessVitalsPanel from "../components/BlessVitalsPanel.vue";
 import type BlessVoiceInput from "../components/BlessVoiceInput.vue";
 import type BlessWaterfallChart from "../components/BlessWaterfallChart.vue";
 
