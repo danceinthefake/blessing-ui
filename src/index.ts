@@ -699,3 +699,5 @@ export { default as BlessMindMap } from "./components/BlessMindMap.vue";
 export type { BlessMindNode } from "./components/BlessMindMap.vue";
 export { default as BlessTimeTracker } from "./components/BlessTimeTracker.vue";
 export type { BlessTimeEntry } from "./components/BlessTimeTracker.vue";
+export { default as BlessRoomBooking } from "./components/BlessRoomBooking.vue";
+export type { BlessMeetingRoom, BlessRoomSlot } from "./components/BlessRoomBooking.vue";

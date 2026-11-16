@@ -163,6 +163,7 @@ import type BlessRelatedArticles from "../components/BlessRelatedArticles.vue";
 import type BlessReportDialog from "../components/BlessReportDialog.vue";
 import type BlessReturnRequest from "../components/BlessReturnRequest.vue";
 import type BlessReviewSummary from "../components/BlessReviewSummary.vue";
+import type BlessRoomBooking from "../components/BlessRoomBooking.vue";
 import type BlessRoseChart from "../components/BlessRoseChart.vue";
 import type BlessRsvp from "../components/BlessRsvp.vue";
 import type BlessRuleBuilder from "../components/BlessRuleBuilder.vue";
@@ -391,6 +392,7 @@ export type BlessLabelsFull = {
   BlessReportDialog: All<typeof BlessReportDialog>;
   BlessReturnRequest: All<typeof BlessReturnRequest>;
   BlessReviewSummary: All<typeof BlessReviewSummary>;
+  BlessRoomBooking: All<typeof BlessRoomBooking>;
   BlessRoseChart: All<typeof BlessRoseChart>;
   BlessRsvp: All<typeof BlessRsvp>;
   BlessRuleBuilder: All<typeof BlessRuleBuilder>;
@@ -1647,6 +1649,16 @@ export const labelsId: BlessLabelsFull = {
     average: (s) => `Rata-rata ${s} dari 5 bintang`,
     reviews: (n) => `${n} ulasan`,
     level: (s, n) => `${s} bintang: ${n} ulasan`,
+  },
+  BlessRoomBooking: {
+    caption: "Ruangan dan waktu",
+    room: "Ruangan",
+    seats: (n) => `${n} kursi`,
+    free: (r, t) => `${r}, ${t}, kosong`,
+    busy: "Dipesan",
+    pick: "Pilih waktu yang kosong.",
+    chosen: (r, s, e) => `${r}, ${s}–${e}`,
+    book: "Pesan",
   },
   BlessRoseChart: { item: "Item", value: "Nilai" },
   BlessRsvp: {
