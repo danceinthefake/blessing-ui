@@ -4144,6 +4144,31 @@
   "slots": [],
   "exposed": []
  },
+ "BlessContinueWatching": {
+  "props": [
+   {
+    "name": "items",
+    "type": "BlessResumeItem[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ title: string; left: (minutes: number) => string; done: (percent: number) => string; remove: (title: string) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "remove",
+    "type": "[id: string]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessContrastChecker": {
   "props": [
    {

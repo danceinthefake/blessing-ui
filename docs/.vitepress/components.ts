@@ -1124,6 +1124,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         text: "Episodes with length, summary, and progress",
       },
       { name: "BlessPlayQueue", slug: "play-queue", text: "The next tracks in order" },
+      {
+        name: "BlessContinueWatching",
+        slug: "continue-watching",
+        text: "Where you stopped, with a remove button",
+      },
       { name: "BlessAudioPlayer", slug: "audio-player", text: "Track list player" },
       { name: "BlessMiniPlayer", slug: "mini-player", text: "A small player with the controls" },
       {
