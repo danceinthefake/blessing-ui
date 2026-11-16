@@ -687,3 +687,5 @@ export { checkPasses } from "./components/BlessQualityCheck.vue";
 export type { BlessQualityItem, BlessQualityResult } from "./components/BlessQualityCheck.vue";
 export { default as BlessControlChart } from "./components/BlessControlChart.vue";
 export { controlLimits } from "./components/BlessControlChart.vue";
+export { default as BlessShiftHandover } from "./components/BlessShiftHandover.vue";
+export type { BlessHandoverIssue, BlessIssueLevel } from "./components/BlessShiftHandover.vue";
