@@ -631,3 +631,6 @@ export { default as BlessContinueWatching } from "./components/BlessContinueWatc
 export type { BlessResumeItem } from "./components/BlessContinueWatching.vue";
 export { default as BlessRecordHeader } from "./components/BlessRecordHeader.vue";
 export type { BlessRecordFact } from "./components/BlessRecordHeader.vue";
+export { default as BlessCsvImport } from "./components/BlessCsvImport.vue";
+export { parseCsv } from "./components/BlessCsvImport.vue";
+export type { BlessImportField } from "./components/BlessCsvImport.vue";

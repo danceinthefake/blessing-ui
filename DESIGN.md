@@ -624,7 +624,7 @@ Thirteen components, 359 → 372. Each uses native platform APIs only: the libra
 Fourteen components, 372 → 386. Each uses native platform APIs only: the library adds no dependency. Each needs tests, a docs page with a live example, a README row, words in `labelsId`, and a pass of `src/classes.test.ts`. If a component uses a known method or names another party, credit it on the credits page. When a component lands, move its part from "Not yet" to "Today" on the site types page, in both languages.
 
 - ✅ `BlessRecordHeader`: the top of a record page: the name, the status, key facts, and the main actions.
-- `BlessCsvImport`: read a CSV file, match its columns to your fields, and check the rows before the import.
+- ✅ `BlessCsvImport`: read a CSV file, match its columns to your fields, and check the rows before the import.
 - `BlessAuditLog`: who changed what and when, with the old and the new value.
 - `BlessInvoice`: an invoice with the parties, the lines, the tax, the totals, and the payment state.
 - `BlessTicketView`: a help desk ticket with the customer, the messages, the state, and a reply box.

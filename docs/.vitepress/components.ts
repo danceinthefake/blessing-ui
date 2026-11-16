@@ -1090,6 +1090,7 @@ export const groups: { title: string; items: Entry[] }[] = [
         text: "Label and value pairs for a detail page",
       },
       { name: "BlessRecordHeader", slug: "record-header", text: "The top of a record page" },
+      { name: "BlessCsvImport", slug: "csv-import", text: "Import a CSV with column matching" },
     ],
   },
   {
