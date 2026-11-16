@@ -11323,6 +11323,49 @@
   "slots": [],
   "exposed": []
  },
+ "BlessPaywall": {
+  "props": [
+   {
+    "name": "plans",
+    "type": "BlessPaywallPlan[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "pick",
+    "type": "string | undefined",
+    "required": false,
+    "description": "the id of the plan that is picked at first"
+   },
+   {
+    "name": "signInHref",
+    "type": "string | undefined",
+    "required": false,
+    "description": "the sign-in page, for readers who already pay"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ title: string; body: string; subscribe: string; signIn: string; plans: string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "subscribe",
+    "type": "[planId: string]",
+    "description": ""
+   }
+  ],
+  "slots": [
+   {
+    "name": "default",
+    "type": "{}",
+    "description": ""
+   }
+  ],
+  "exposed": []
+ },
  "BlessPermissionMatrix": {
   "props": [
    {

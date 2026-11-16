@@ -109,6 +109,7 @@ import type BlessPaletteViewer from "../components/BlessPaletteViewer.vue";
 import type BlessParallelCoordinates from "../components/BlessParallelCoordinates.vue";
 import type BlessPareto from "../components/BlessPareto.vue";
 import type BlessPaymentSchedule from "../components/BlessPaymentSchedule.vue";
+import type BlessPaywall from "../components/BlessPaywall.vue";
 import type BlessPermissionMatrix from "../components/BlessPermissionMatrix.vue";
 import type BlessPhoneInput from "../components/BlessPhoneInput.vue";
 import type BlessPickList from "../components/BlessPickList.vue";
@@ -306,6 +307,7 @@ export type BlessLabelsFull = {
   BlessParallelCoordinates: All<typeof BlessParallelCoordinates>;
   BlessPareto: All<typeof BlessPareto>;
   BlessPaymentSchedule: All<typeof BlessPaymentSchedule>;
+  BlessPaywall: All<typeof BlessPaywall>;
   BlessPermissionMatrix: All<typeof BlessPermissionMatrix>;
   BlessPhoneInput: All<typeof BlessPhoneInput>;
   BlessPickList: All<typeof BlessPickList>;
@@ -1155,6 +1157,13 @@ export const labelsId: BlessLabelsFull = {
     balance: "Sisa",
     paid: "lunas",
     totals: (p, i) => `Total yang Anda bayar ${p}, dengan bunga ${i}.`,
+  },
+  BlessPaywall: {
+    title: "Baca sisa artikel ini",
+    body: "Berlangganan untuk membaca semua artikel, tanpa batas.",
+    subscribe: "Berlangganan",
+    signIn: "Sudah berlangganan? Masuk",
+    plans: "Paket",
   },
   BlessPermissionMatrix: {
     title: "Izin",
