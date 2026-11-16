@@ -7447,6 +7447,64 @@
   ],
   "exposed": []
  },
+ "BlessGradebook": {
+  "props": [
+   {
+    "name": "students",
+    "type": "{ id: string; name: string; }[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "assignments",
+    "type": "BlessGradeTask[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "editable",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": "let the teacher type scores"
+   },
+   {
+    "name": "pass",
+    "type": "number | undefined",
+    "required": false,
+    "default": "60",
+    "description": "the average in percent under which a student needs help"
+   },
+   {
+    "name": "locale",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"en\"",
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ caption: string; student: string; average: string; classAverage: string; missing: string; low: string; scoreOf: (student: string, task: string) => string; outOf: (max: number) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "BlessScores | undefined",
+    "required": false,
+    "default": "{}",
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "update:modelValue",
+    "type": "[value: BlessScores]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessGroupCard": {
   "props": [
    {

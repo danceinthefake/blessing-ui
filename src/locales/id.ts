@@ -85,6 +85,7 @@ import type BlessFormula from "../components/BlessFormula.vue";
 import type BlessForumTopics from "../components/BlessForumTopics.vue";
 import type BlessFunnel from "../components/BlessFunnel.vue";
 import type BlessGantt from "../components/BlessGantt.vue";
+import type BlessGradebook from "../components/BlessGradebook.vue";
 import type BlessGroupCard from "../components/BlessGroupCard.vue";
 import type BlessHabitTracker from "../components/BlessHabitTracker.vue";
 import type BlessHistogram from "../components/BlessHistogram.vue";
@@ -316,6 +317,7 @@ export type BlessLabelsFull = {
   BlessForumTopics: All<typeof BlessForumTopics>;
   BlessFunnel: All<typeof BlessFunnel>;
   BlessGantt: All<typeof BlessGantt>;
+  BlessGradebook: All<typeof BlessGradebook>;
   BlessGroupCard: All<typeof BlessGroupCard>;
   BlessHabitTracker: All<typeof BlessHabitTracker>;
   BlessHistogram: All<typeof BlessHistogram>;
@@ -1080,6 +1082,16 @@ export const labelsId: BlessLabelsFull = {
     span: (t, a, b) => `${t}: ${a} sampai ${b}`,
     done: (p) => `${p}% selesai`,
     after: (names) => `setelah ${names.join(" dan ")}`,
+  },
+  BlessGradebook: {
+    caption: "Buku nilai",
+    student: "Siswa",
+    average: "Rata-rata",
+    classAverage: "Rata-rata kelas",
+    missing: "Belum ada",
+    low: "di bawah batas lulus",
+    scoreOf: (s, t) => `Nilai ${t} untuk ${s}`,
+    outOf: (m) => `dari ${m}`,
   },
   BlessGroupCard: {
     join: "Gabung",
