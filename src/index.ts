@@ -500,3 +500,5 @@ export { default as BlessChordDiagram } from "./components/BlessChordDiagram.vue
 export type { BlessChordGroup } from "./components/BlessChordDiagram.vue";
 export { default as BlessParallelCoordinates } from "./components/BlessParallelCoordinates.vue";
 export type { BlessParallelAxis } from "./components/BlessParallelCoordinates.vue";
+export { default as BlessSmallMultiples } from "./components/BlessSmallMultiples.vue";
+export type { BlessMultiple } from "./components/BlessSmallMultiples.vue";

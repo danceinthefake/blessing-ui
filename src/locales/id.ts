@@ -111,6 +111,7 @@ import type BlessShortcutSheet from "../components/BlessShortcutSheet.vue";
 import type BlessSliderCaptcha from "../components/BlessSliderCaptcha.vue";
 import type BlessSlopeChart from "../components/BlessSlopeChart.vue";
 import type BlessSlotPicker from "../components/BlessSlotPicker.vue";
+import type BlessSmallMultiples from "../components/BlessSmallMultiples.vue";
 import type BlessSortable from "../components/BlessSortable.vue";
 import type BlessSources from "../components/BlessSources.vue";
 import type BlessSpoiler from "../components/BlessSpoiler.vue";
@@ -253,6 +254,7 @@ export type BlessLabelsFull = {
   BlessSliderCaptcha: All<typeof BlessSliderCaptcha>;
   BlessSlopeChart: All<typeof BlessSlopeChart>;
   BlessSlotPicker: All<typeof BlessSlotPicker>;
+  BlessSmallMultiples: All<typeof BlessSmallMultiples>;
   BlessSortable: All<typeof BlessSortable>;
   BlessSources: All<typeof BlessSources>;
   BlessSpoiler: All<typeof BlessSpoiler>;
@@ -969,6 +971,10 @@ export const labelsId: BlessLabelsFull = {
     afternoon: "Siang",
     evening: "Malam",
     none: "Tidak ada waktu kosong",
+  },
+  BlessSmallMultiples: {
+    item: "Item",
+    scale: (lo, hi) => `Semua grafik memakai satu skala: ${lo} sampai ${hi}`,
   },
   BlessSortable: {
     grip: (i) => `Urutkan ulang item ${i}`,

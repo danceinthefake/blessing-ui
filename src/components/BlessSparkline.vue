@@ -22,14 +22,21 @@ const props = withDefaults(
     label?: string;
     /** text for one value in the summary, e.g. `(v) => v + " ms"` */
     format?: (v: number) => string;
+    /** the bottom and the top of the scale, to put several sparklines on one scale */
+    min?: number;
+    max?: number;
   }>(),
   { type: "line", width: 120, height: 28, color: "chart-1", negativeColor: "danger" },
 );
 
 const PAD = 2;
 const values = computed(() => props.data.filter((v) => Number.isFinite(v)));
-const lo = computed(() => Math.min(...values.value, props.type === "line" ? Infinity : 0));
-const hi = computed(() => Math.max(...values.value, props.type === "line" ? -Infinity : 0));
+const lo = computed(
+  () => props.min ?? Math.min(...values.value, props.type === "line" ? Infinity : 0),
+);
+const hi = computed(
+  () => props.max ?? Math.max(...values.value, props.type === "line" ? -Infinity : 0),
+);
 const span = computed(() => hi.value - lo.value || 1);
 const y = (v: number) =>
   +(props.height - PAD - ((v - lo.value) / span.value) * (props.height - PAD * 2)).toFixed(2);

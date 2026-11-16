@@ -10,7 +10,7 @@ Vue 3 component library and design tokens. The UI is gray-scale, with one accent
 
 Docs, with every component live: **[ui.blessing.id](https://ui.blessing.id)**
 
-- 305 components, from button to data table to chat. Only `--bless-*` custom properties style them. There is no Tailwind dependency.
+- 306 components, from button to data table to chat. Only `--bless-*` custom properties style them. There is no Tailwind dependency.
 - Native platform first: `<dialog>`, Popover API, `<details>`, native form controls, `Intl` dates, and scroll-snap. There is no positioning, date, or table library.
 - Accessible defaults: focus rings, ARIA tablist, dialog, and tables, and `prefers-reduced-motion`
 - ESM, tree-shakable, with `vue` as the only required peer (`@tiptap/vue-3` is optional, for `BlessEditor`). One component (`BlessButton`) costs about 1 KB gzip of JS and about 2.6 KB of CSS (tokens and its own styles). Everything costs about 201 KB and 54 KB. CSS is split per component and the import pulls it in, so you never pay for styles that you do not use
@@ -92,7 +92,7 @@ The words that components say are English by default. `provideLabels(labelsId)` 
 
 ## Components
 
-305 components across eight groups. Every one styles itself from `--bless-*` tokens and ships with a test and a docs page.
+306 components across eight groups. Every one styles itself from `--bless-*` tokens and ships with a test and a docs page.
 
 ### Primitives
 
@@ -390,6 +390,7 @@ The words that components say are English by default. `provideLabels(labelsId)` 
 | `BlessRangeChart`          | Floating bars from a low to a high value                            | `data` `{label,low,high,value}`, `color`, `format`                                                                                            |
 | `BlessChordDiagram`        | Groups around a circle with ribbons for flows                       | `groups` `{key,label,color}`, `matrix`, `size`, `format`                                                                                      |
 | `BlessParallelCoordinates` | Each item as a line across several axes                             | `data`, `name`, `axes` `{key,label,format}`, `height`                                                                                         |
+| `BlessSmallMultiples`      | A grid of small line charts on one scale                            | `series` `{label,values,color}`, `steps`, `height`, `format`                                                                                  |
 | `BlessPricingTable`        | Plans side by side, with a monthly or yearly switch                 | `plans`, `v-model:period`, `currency`, `select`                                                                                               |
 | `BlessTestimonials`        | Quotes with a name, a role and stars                                | `items` `{quote,name,role,avatar,rating}`, `layout` grid/single                                                                               |
 | `BlessFaqSearch`           | Questions and answers with a search                                 | `items` `{question,answer}`                                                                                                                   |
