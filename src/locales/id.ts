@@ -12,6 +12,7 @@ import type BlessAvatarGroup from "../components/BlessAvatarGroup.vue";
 import type BlessBalanceCard from "../components/BlessBalanceCard.vue";
 import type BlessBarChart from "../components/BlessBarChart.vue";
 import type BlessBeeswarm from "../components/BlessBeeswarm.vue";
+import type BlessBodyMap from "../components/BlessBodyMap.vue";
 import type BlessBoxPlot from "../components/BlessBoxPlot.vue";
 import type BlessBudgetBars from "../components/BlessBudgetBars.vue";
 import type BlessBulkActionBar from "../components/BlessBulkActionBar.vue";
@@ -196,6 +197,7 @@ export type BlessLabelsFull = {
   BlessBalanceCard: All<typeof BlessBalanceCard>;
   BlessBarChart: All<typeof BlessBarChart>;
   BlessBeeswarm: All<typeof BlessBeeswarm>;
+  BlessBodyMap: All<typeof BlessBodyMap>;
   BlessBoxPlot: All<typeof BlessBoxPlot>;
   BlessBudgetBars: All<typeof BlessBudgetBars>;
   BlessBulkActionBar: All<typeof BlessBulkActionBar>;
@@ -473,6 +475,24 @@ export const labelsId: BlessLabelsFull = {
     median: "Median",
     max: "Tertinggi",
     all: "Semua",
+  },
+  BlessBodyMap: {
+    title: "Di mana yang sakit?",
+    head: "Kepala",
+    neck: "Leher",
+    chest: "Dada",
+    belly: "Perut",
+    pelvis: "Pinggul",
+    rightArm: "Lengan kanan",
+    leftArm: "Lengan kiri",
+    rightHand: "Tangan kanan",
+    leftHand: "Tangan kiri",
+    rightLeg: "Kaki kanan",
+    leftLeg: "Kaki kiri",
+    rightFoot: "Telapak kaki kanan",
+    leftFoot: "Telapak kaki kiri",
+    chosen: (p) => `Dipilih: ${p}`,
+    none: "Belum ada yang dipilih.",
   },
   BlessBoxPlot: {
     group: "Grup",

@@ -1338,6 +1338,32 @@
   ],
   "exposed": []
  },
+ "BlessBodyMap": {
+  "props": [
+   {
+    "name": "labels",
+    "type": "Partial<Record<BlessBodyPart, string> & { title: string; chosen: (parts: string) => string; none: string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "BlessBodyPart[] | undefined",
+    "required": false,
+    "default": "[]",
+    "description": "the parts the person points at"
+   }
+  ],
+  "events": [
+   {
+    "name": "update:modelValue",
+    "type": "[value: BlessBodyPart[]]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessBottomTabs": {
   "props": [
    {
