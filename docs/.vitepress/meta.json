@@ -6598,6 +6598,81 @@
   ],
   "exposed": []
  },
+ "BlessGroupCard": {
+  "props": [
+   {
+    "name": "name",
+    "type": "string",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "href",
+    "type": "string | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "cover",
+    "type": "string | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "description",
+    "type": "string | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "members",
+    "type": "number",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "faces",
+    "type": "BlessAvatarGroupItem[] | undefined",
+    "required": false,
+    "description": "a few members to show as faces"
+   },
+   {
+    "name": "private",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": "a private group needs an approval to join"
+   },
+   {
+    "name": "locale",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"en\"",
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ join: string; request: string; requested: string; member: string; public: string; private: string; members: (count: string) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "BlessGroupState | undefined",
+    "required": false,
+    "default": "\"none\"",
+    "description": "where the reader stands: not in, asked to join, or a member"
+   }
+  ],
+  "events": [
+   {
+    "name": "update:modelValue",
+    "type": "[value: BlessGroupState]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessHabitTracker": {
   "props": [
    {
@@ -13001,7 +13076,7 @@
     "name": "reasons",
     "type": "string[] | undefined",
     "required": false,
-    "default": "[\"Spam\", \"Harassment or hate\", \"Violence or danger\", \"False information\", \"Something else\"]",
+    "default": "[\n    \"Spam\",\n    \"Harassment or hate\",\n    \"Violence or danger\",\n    \"False information\",\n    \"Something else\",\n]",
     "description": "the reasons to choose from"
    },
    {

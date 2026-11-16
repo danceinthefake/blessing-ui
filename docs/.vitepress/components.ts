@@ -693,6 +693,11 @@ export const groups: { title: string; items: Entry[] }[] = [
       { name: "BlessTrendList", slug: "trend-list", text: "Topics people talk about now" },
       { name: "BlessReportDialog", slug: "report-dialog", text: "Report a post or a person" },
       {
+        name: "BlessGroupCard",
+        slug: "group-card",
+        text: "A group with a cover and a join button",
+      },
+      {
         name: "BlessLeaderboard",
         slug: "leaderboard",
         text: "Ranked rows with the place, the move and the score",
