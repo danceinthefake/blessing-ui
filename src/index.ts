@@ -549,3 +549,5 @@ export { default as BlessProductCard } from "./components/BlessProductCard.vue";
 export { default as BlessCartDrawer } from "./components/BlessCartDrawer.vue";
 export type { BlessCartLine } from "./components/BlessCartDrawer.vue";
 export { default as BlessWishlistButton } from "./components/BlessWishlistButton.vue";
+export { default as BlessFacetFilter } from "./components/BlessFacetFilter.vue";
+export type { BlessFacet } from "./components/BlessFacetFilter.vue";

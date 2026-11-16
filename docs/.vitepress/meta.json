@@ -5361,6 +5361,70 @@
   "slots": [],
   "exposed": []
  },
+ "BlessFacetFilter": {
+  "props": [
+   {
+    "name": "facets",
+    "type": "BlessFacet[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "priceRange",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": "show a price range with two fields"
+   },
+   {
+    "name": "currency",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"USD\"",
+    "description": ""
+   },
+   {
+    "name": "locale",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"en\"",
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ title: string; price: string; min: string; max: string; clear: string; clearAll: (count: number) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "Record<string, string[]> | undefined",
+    "required": false,
+    "default": "{}",
+    "description": "the chosen values of each facet, by facet id"
+   },
+   {
+    "name": "price",
+    "type": "[number | undefined, number | undefined] | undefined",
+    "required": false,
+    "default": "[undefined, undefined]",
+    "description": "[lowest, highest]; an empty end is undefined"
+   }
+  ],
+  "events": [
+   {
+    "name": "update:modelValue",
+    "type": "[value: Record<string, string[]>]",
+    "description": ""
+   },
+   {
+    "name": "update:price",
+    "type": "[value: [number | undefined, number | undefined]]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessFaqSearch": {
   "props": [
    {

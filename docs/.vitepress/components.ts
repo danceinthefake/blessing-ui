@@ -189,6 +189,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         text: "Filter rules in nested all and any groups",
       },
       { name: "BlessFilterBar", slug: "filter-bar", text: "Filters as chips in a row" },
+      {
+        name: "BlessFacetFilter",
+        slug: "facet-filter",
+        text: "Catalog filters with counts and a price range",
+      },
       { name: "BlessEmojiPicker", slug: "emoji-picker", text: "Search and pick an emoji" },
       {
         name: "BlessUploader",

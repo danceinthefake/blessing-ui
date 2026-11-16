@@ -14,7 +14,8 @@
 - `BlessPrice`: a price with the old price struck through, the percent off, one sentence for screen readers, and a unit price.
 - `BlessProductCard`: a product with an image, a linked name, a rating read in words, the price with a sale, a badge, sold out, and an add button named after the product.
 - `BlessCartDrawer`: the cart in a side sheet with quantity buttons and a field kept between 1 and max, remove, the subtotal, and a checkout button.
-- `BlessWishlistButton`: a heart toggle named after the product, filled when saved, with a count and a status message after each click. 329 components in all.
+- `BlessWishlistButton`: a heart toggle named after the product, filled when saved, with a count and a status message after each click.
+- `BlessFacetFilter`: catalog filters as fieldsets of check boxes with counts, empty options off, a price range, and clear buttons for one facet and for all. 330 components in all.
 
 ## 0.7.0 — 2026-11-16
 
