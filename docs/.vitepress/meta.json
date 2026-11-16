@@ -5037,6 +5037,68 @@
   ],
   "exposed": []
  },
+ "BlessDeviceTile": {
+  "props": [
+   {
+    "name": "name",
+    "type": "string",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "room",
+    "type": "string | undefined",
+    "required": false,
+    "description": "the room, for example \"Studio\""
+   },
+   {
+    "name": "icon",
+    "type": "string | undefined",
+    "required": false,
+    "description": "an emoji or a short text for the device"
+   },
+   {
+    "name": "reading",
+    "type": "string | undefined",
+    "required": false,
+    "description": "the main reading, as text, for example \"21.5 °C\" or \"Door closed\""
+   },
+   {
+    "name": "offline",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": "the device does not answer: the switch is off and the tile says so"
+   },
+   {
+    "name": "sensor",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": "a sensor has no switch"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ on: string; off: string; offline: string; power: (name: string) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "boolean | undefined",
+    "required": false,
+    "default": "false",
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "update:modelValue",
+    "type": "[value: boolean]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessDialogHost": {
   "props": [],
   "events": [],
