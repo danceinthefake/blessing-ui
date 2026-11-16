@@ -42,7 +42,8 @@ Twenty-nine new components, 347 in all, for finance, commerce, communication, an
 - `BlessBodyMap`: a front body outline with 13 parts as keyboard check boxes, a filled dashed state, and a line that names the chosen parts.
 - `BlessAppointmentCard`: a visit with a date block, the full date for screen readers, the person, the place or a video call, the status as a mark and a word, and actions.
 - `BlessDeviceTile`: a device with a switch named with it, on, off, or offline in words, the room, and the main reading, or no switch for a sensor.
-- `BlessThermostat`: a knob for the target temperature, the room temperature, step buttons, heat, cool, auto, and off modes, and a status line. 355 components in all.
+- `BlessThermostat`: a knob for the target temperature, the room temperature, step buttons, heat, cool, auto, and off modes, and a status line.
+- `BlessFloorPlan`: the rooms of a home as buttons on a grid with a count of devices and how many are on, and a slot for the open room. 356 components in all.
 
 ## 0.7.0 — 2026-11-16
 
