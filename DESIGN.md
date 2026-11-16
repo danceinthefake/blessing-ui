@@ -653,6 +653,7 @@ Ten components, 386 → 396. Each uses native platform APIs only: the library ad
 - ✅ `BlessControlChart`: measured values over time with the center line and the control limits (SPC).
 - ✅ `BlessShiftHandover`: notes from one shift to the next, with open issues.
 - ✅ `BlessPickingList`: the items to pick in a warehouse, with the place and a scan to confirm.
+- ✅ Budget: after the round, the whole library is 263.0 KB gz JS and 73.0 KB gz CSS, under the cap of 269 / 74. Phase 40 is done.
 
 ### Deliberately skipped
 

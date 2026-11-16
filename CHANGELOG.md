@@ -2,7 +2,7 @@
 
 ## Unreleased
 
-Sixty-eight new components, 386 in all, for finance, commerce, communication, social, health, smart home, content, media, and ERP sites. They come from the new [site types](https://ui.blessing.id/design/site-types) page, which sorts websites and apps into 18 groups and lists the parts that each group needs. The library still has no dependencies.
+Seventy-eight new components, 396 in all, for finance, commerce, communication, social, health, smart home, content, media, ERP, and operations sites. They come from the new [site types](https://ui.blessing.id/design/site-types) page, which sorts websites and apps into 18 groups and lists the parts that each group needs. The library still has no dependencies.
 
 ### Added
 

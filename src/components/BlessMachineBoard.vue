@@ -167,8 +167,10 @@ const span = (m: number) => text.value.time(Math.floor(m / 60), m % 60);
   border: 3px solid var(--bless-color-danger);
   background: color-mix(in srgb, var(--bless-color-danger) 10%, var(--bless-color-bg));
 }
+/* red text is too faint on the red tint; the frame and the mark carry the alarm */
 .bless-machines__tile.is-down .bless-machines__state {
-  color: var(--bless-color-danger-text);
+  color: var(--bless-color-text);
+  text-transform: uppercase;
 }
 .bless-machines__tile.is-offline {
   border-style: dotted;
