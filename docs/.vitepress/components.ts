@@ -1027,6 +1027,11 @@ export const groups: { title: string; items: Entry[] }[] = [
       { name: "BlessRadar", slug: "radar", text: "Spider chart: one shape per series" },
       { name: "BlessStat", slug: "stat", text: "KPI tile: value, change, and trend" },
       {
+        name: "BlessVitalsPanel",
+        slug: "vitals-panel",
+        text: "Body readings with the normal range",
+      },
+      {
         name: "BlessBalanceCard",
         slug: "balance-card",
         text: "An account balance with the change",

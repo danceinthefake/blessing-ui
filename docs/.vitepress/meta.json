@@ -18084,6 +18084,32 @@
   ],
   "exposed": []
  },
+ "BlessVitalsPanel": {
+  "props": [
+   {
+    "name": "vitals",
+    "type": "BlessVital[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "locale",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"en\"",
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ title: string; low: string; high: string; normal: string; range: (low: string, high: string) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessVoiceInput": {
   "props": [
    {
