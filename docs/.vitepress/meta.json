@@ -15677,6 +15677,57 @@
   ],
   "exposed": []
  },
+ "BlessSkuField": {
+  "props": [
+   {
+    "name": "kind",
+    "type": "\"barcode\" | \"sku\" | undefined",
+    "required": false,
+    "default": "\"barcode\"",
+    "description": "`barcode` takes GS1 numbers and checks them; `sku` takes your own codes"
+   },
+   {
+    "name": "label",
+    "type": "string | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "clearOnScan",
+    "type": "boolean | undefined",
+    "required": false,
+    "default": "false",
+    "description": "clear the field after each scan, for a run of scans"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ label: string; hint: string; valid: string; invalid: string; scanned: (code: string) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"\"",
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "update:modelValue",
+    "type": "[value: string]",
+    "description": ""
+   },
+   {
+    "name": "scan",
+    "type": "[code: string]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessSlaTimer": {
   "props": [
    {

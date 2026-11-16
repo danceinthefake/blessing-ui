@@ -31,6 +31,7 @@ The [site types](./site-types) page compares three lists of site and app categor
 ## Standards
 
 - The [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/) gives the keyboard and the roles of the listbox, grid, tabs, combobox, tree, menu, dialog, and other patterns.
+- The [SKU field](../components/sku-field) checks barcodes with the mod-10 check digit of [GS1](https://www.gs1.org/), the body behind EAN and UPC numbers.
 - The [CSV import](../components/csv-import) reads files after [RFC 4180](https://www.rfc-editor.org/rfc/rfc4180), the common format of comma-separated values.
 - The [address fields](../components/address-fields) use the country codes of [ISO 3166](https://www.iso.org/iso-3166-country-codes.html) and the `autocomplete` tokens of the HTML standard.
 - [WCAG 2.1](https://www.w3.org/TR/WCAG21/) at level AA is the bar for contrast, focus, and motion. [axe-core](https://github.com/dequelabs/axe-core) checks every page against it.

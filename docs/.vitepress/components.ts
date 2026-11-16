@@ -1123,6 +1123,7 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "bill-of-materials",
         text: "A tree of parts with quantities",
       },
+      { name: "BlessSkuField", slug: "sku-field", text: "A barcode or SKU field for scanners" },
     ],
   },
   {
