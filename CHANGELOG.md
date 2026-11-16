@@ -30,7 +30,8 @@ Sixteen new components, 334 in all, for finance and commerce sites. They come fr
 - `BlessContactPicker`: a search over people with recent contacts first, check boxes or radios, and the chosen people as chips that remove.
 - `BlessPostComposer`: a post box with a count of characters as people see them, up to four images with previews, a poll of two to four choices, and a post event.
 - `BlessStories`: rings of people with new or seen stories, and a modal viewer with a timer, progress bars, pause, buttons and arrow keys, and a seen event.
-- `BlessFollowButton`: a follow toggle named with the person, a short count of followers with the reader, and a status message after each click. 343 components in all.
+- `BlessFollowButton`: a follow toggle named with the person, a short count of followers with the reader, and a status message after each click.
+- `BlessTrendList`: topics that people talk about now as an ordered list with a category, a linked topic, and a short count of posts. 344 components in all.
 
 ## 0.7.0 — 2026-11-16
 
