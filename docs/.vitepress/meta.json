@@ -14449,6 +14449,32 @@
   ],
   "exposed": []
  },
+ "BlessSleepChart": {
+  "props": [
+   {
+    "name": "spans",
+    "type": "BlessSleepSpan[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "height",
+    "type": "number | undefined",
+    "required": false,
+    "default": "180",
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<Record<BlessSleepStage, string> & { title: string; total: (time: string) => string; hours: (h: number, m: number) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessSlideItem": {
   "props": [
    {
@@ -16447,7 +16473,7 @@
    },
    {
     "name": "weight",
-    "type": "\"bold\" | \"normal\" | \"thin\" | \"light\" | undefined",
+    "type": "\"bold\" | \"light\" | \"normal\" | \"thin\" | undefined",
     "required": false,
     "default": "\"normal\"",
     "description": ""

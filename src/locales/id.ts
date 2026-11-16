@@ -141,6 +141,7 @@ import type BlessSelectionToolbar from "../components/BlessSelectionToolbar.vue"
 import type BlessShipmentTracker from "../components/BlessShipmentTracker.vue";
 import type BlessShortcutRecorder from "../components/BlessShortcutRecorder.vue";
 import type BlessShortcutSheet from "../components/BlessShortcutSheet.vue";
+import type BlessSleepChart from "../components/BlessSleepChart.vue";
 import type BlessSliderCaptcha from "../components/BlessSliderCaptcha.vue";
 import type BlessSlopeChart from "../components/BlessSlopeChart.vue";
 import type BlessSlotPicker from "../components/BlessSlotPicker.vue";
@@ -324,6 +325,7 @@ export type BlessLabelsFull = {
   BlessShipmentTracker: All<typeof BlessShipmentTracker>;
   BlessShortcutRecorder: All<typeof BlessShortcutRecorder>;
   BlessShortcutSheet: All<typeof BlessShortcutSheet>;
+  BlessSleepChart: All<typeof BlessSleepChart>;
   BlessSliderCaptcha: All<typeof BlessSliderCaptcha>;
   BlessSlopeChart: All<typeof BlessSlopeChart>;
   BlessSlotPicker: All<typeof BlessSlotPicker>;
@@ -1326,6 +1328,15 @@ export const labelsId: BlessLabelsFull = {
     taken: (c) => `${c} sudah dipakai`,
   },
   BlessShortcutSheet: { search: "Cari pintasan", none: "Pintasan tidak ditemukan", or: "atau" },
+  BlessSleepChart: {
+    title: "Tidur",
+    awake: "Terjaga",
+    rem: "REM",
+    light: "Ringan",
+    deep: "Nyenyak",
+    total: (t) => `Tidur ${t}`,
+    hours: (h, m) => (h ? `${h} j ${m} mnt` : `${m} mnt`),
+  },
   BlessSliderCaptcha: { verified: "Terverifikasi", failed: "Belum pas, coba lagi" },
   BlessSlopeChart: { start: "Sebelum", end: "Sesudah", item: "Item", change: "Perubahan" },
   BlessSlotPicker: {
