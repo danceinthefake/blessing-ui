@@ -57,6 +57,7 @@ import type BlessDataView from "../components/BlessDataView.vue";
 import type BlessDateTimePicker from "../components/BlessDateTimePicker.vue";
 import type BlessDeliveryPicker from "../components/BlessDeliveryPicker.vue";
 import type BlessDeviceTile from "../components/BlessDeviceTile.vue";
+import type BlessDocumentStatus from "../components/BlessDocumentStatus.vue";
 import type BlessDonutChart from "../components/BlessDonutChart.vue";
 import type BlessDumbbell from "../components/BlessDumbbell.vue";
 import type BlessDurationInput from "../components/BlessDurationInput.vue";
@@ -272,6 +273,7 @@ export type BlessLabelsFull = {
   BlessDateTimePicker: All<typeof BlessDateTimePicker>;
   BlessDeliveryPicker: All<typeof BlessDeliveryPicker>;
   BlessDeviceTile: All<typeof BlessDeviceTile>;
+  BlessDocumentStatus: All<typeof BlessDocumentStatus>;
   BlessDonutChart: All<typeof BlessDonutChart>;
   BlessDumbbell: All<typeof BlessDumbbell>;
   BlessDurationInput: All<typeof BlessDurationInput>;
@@ -822,6 +824,13 @@ export const labelsId: BlessLabelsFull = {
     off: "Mati",
     offline: "Offline",
     power: (n) => `Daya, ${n}`,
+  },
+  BlessDocumentStatus: {
+    title: "Status dokumen",
+    done: "selesai",
+    current: "status sekarang",
+    next: "belum",
+    move: (s) => `Tandai ${s}`,
   },
   BlessDonutChart: { total: "Total" },
   BlessDumbbell: { start: "Sebelum", end: "Sesudah", row: "Item", change: "Perubahan" },

@@ -71,7 +71,8 @@ Fifty-four new components, 372 in all, for finance, commerce, communication, soc
 - `BlessStockLevels`: stock for each item with the free amount, a reorder point, out, low, and in stock as a mark and a word, the worst first, and a low filter.
 - `BlessBillOfMaterials`: a tree of parts that opens and closes, the quantity each and in all for the units to build, and the cost of the raw parts.
 - `BlessSkuField`: a field for a barcode scanner that checks GS1 numbers with their check digit, or takes your own SKUs in upper case, and emits scan on Enter.
-- `BlessUnitConverter`: an amount in one unit of measure and its value in another, a swap, a live result, and the split into whole units. 384 components in all.
+- `BlessUnitConverter`: an amount in one unit of measure and its value in another, a swap, a live result, and the split into whole units.
+- `BlessDocumentStatus`: the chain of states of a document with done, current, and next in words, the time of each, a button to the next state, and a stopped end. 385 components in all.
 
 ## 0.7.0 — 2026-11-16
 
