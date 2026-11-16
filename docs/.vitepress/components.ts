@@ -706,6 +706,7 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "email-composer",
         text: "To, Cc, subject, and message fields",
       },
+      { name: "BlessCallScreen", slug: "call-screen", text: "Video tiles with call controls" },
       { name: "BlessMarker", slug: "marker", text: "Inline status / note / separator / row" },
       { name: "BlessAttachment", slug: "attachment", text: "File / image chip" },
       { name: "BlessMessageScroller", slug: "message-scroller", text: "Chat viewport" },

@@ -1912,6 +1912,79 @@
   "slots": [],
   "exposed": []
  },
+ "BlessCallScreen": {
+  "props": [
+   {
+    "name": "people",
+    "type": "BlessCallPerson[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "elapsed",
+    "type": "string | undefined",
+    "required": false,
+    "description": "the time in the call, as text, for example \"12:04\""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ title: string; mute: string; camera: string; share: string; leave: string; muted: string; speaking: string; controls: string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "muted",
+    "type": "boolean | undefined",
+    "required": false,
+    "default": "false",
+    "description": ""
+   },
+   {
+    "name": "camera",
+    "type": "boolean | undefined",
+    "required": false,
+    "default": "true",
+    "description": ""
+   },
+   {
+    "name": "sharing",
+    "type": "boolean | undefined",
+    "required": false,
+    "default": "false",
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "update:muted",
+    "type": "[value: boolean]",
+    "description": ""
+   },
+   {
+    "name": "update:camera",
+    "type": "[value: boolean]",
+    "description": ""
+   },
+   {
+    "name": "update:sharing",
+    "type": "[value: boolean]",
+    "description": ""
+   },
+   {
+    "name": "leave",
+    "type": "[]",
+    "description": ""
+   }
+  ],
+  "slots": [
+   {
+    "name": "video",
+    "type": "{ person: BlessCallPerson; }",
+    "description": ""
+   }
+  ],
+  "exposed": []
+ },
  "BlessCameraCapture": {
   "props": [
    {
