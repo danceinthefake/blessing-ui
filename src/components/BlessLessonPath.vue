@@ -40,7 +40,7 @@ const current = computed(() => props.lessons.findIndex((l) => !l.done));
 const state = (i: number) =>
   props.lessons[i]!.done ? "done" : i === current.value ? "current" : "locked";
 const doneCount = computed(() => props.lessons.filter((l) => l.done).length);
-const MARK = { done: "✓", current: "▶", locked: "🔒︎" } as const;
+const MARK = { done: "✓", current: "▶", locked: "" } as const;
 </script>
 
 <template>
@@ -60,7 +60,18 @@ const MARK = { done: "✓", current: "▶", locked: "🔒︎" } as const;
           :aria-current="state(i) === 'current' ? 'step' : undefined"
           @click="emit('select', l.id)"
         >
-          <span class="bless-path__mark" aria-hidden="true">{{ MARK[state(i)] }}</span>
+          <span class="bless-path__mark" aria-hidden="true">
+            <svg
+              v-if="state(i) === 'locked'"
+              viewBox="0 0 16 16"
+              width="16"
+              height="16"
+              fill="currentColor"
+            >
+              <path d="M5 7V5a3 3 0 0 1 6 0v2h1v7H4V7h1Zm1.5 0h3V5a1.5 1.5 0 0 0-3 0v2Z" />
+            </svg>
+            <template v-else>{{ MARK[state(i)] }}</template>
+          </span>
           <span class="bless-path__text">
             <strong>{{ l.title }}</strong>
             <span class="bless-path__meta">
@@ -75,13 +86,15 @@ const MARK = { done: "✓", current: "▶", locked: "🔒︎" } as const;
 
 <style>
 .bless-path {
+  display: grid;
+  gap: var(--bless-space-3);
   max-inline-size: 26rem;
   font-family: var(--bless-font-sans);
   font-size: var(--bless-text-sm);
   color: var(--bless-color-text);
 }
 .bless-path__progress {
-  margin: 0 0 var(--bless-space-3);
+  margin: 0;
   font-weight: var(--bless-font-weight-bold);
 }
 .bless-path__list {
@@ -96,11 +109,12 @@ const MARK = { done: "✓", current: "▶", locked: "🔒︎" } as const;
   position: relative;
   display: flex;
 }
-.bless-path__item.is-right {
-  padding-inline-start: 22%;
+/* the swing is a margin on the button, so a list reset of the host page does not remove it */
+.is-right > .bless-path__node {
+  margin-inline-start: 22%;
 }
-.bless-path__item.is-left {
-  padding-inline-start: 11%;
+.is-left > .bless-path__node {
+  margin-inline-start: 11%;
 }
 .bless-path__node {
   display: flex;

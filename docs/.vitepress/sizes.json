@@ -10,6 +10,11 @@
     "css": 620
   },
   {
+    "name": "BlessAchievements",
+    "js": 795,
+    "css": 512
+  },
+  {
     "name": "BlessActionSheet",
     "js": 1849,
     "css": 1219
@@ -53,6 +58,11 @@
     "name": "BlessApiKeyField",
     "js": 4205,
     "css": 1477
+  },
+  {
+    "name": "BlessApprovalFlow",
+    "js": 2643,
+    "css": 1457
   },
   {
     "name": "BlessAspectRatio",
@@ -230,6 +240,11 @@
     "css": 503
   },
   {
+    "name": "BlessChordDiagram",
+    "js": 1520,
+    "css": 322
+  },
+  {
     "name": "BlessCircularProgress",
     "js": 875,
     "css": 451
@@ -287,7 +302,7 @@
   {
     "name": "BlessComparisonTable",
     "js": 942,
-    "css": 541
+    "css": 557
   },
   {
     "name": "BlessConfetti",
@@ -323,6 +338,11 @@
     "name": "BlessContextMeter",
     "js": 2936,
     "css": 980
+  },
+  {
+    "name": "BlessContrastChecker",
+    "js": 1657,
+    "css": 611
   },
   {
     "name": "BlessCopyButton",
@@ -485,6 +505,11 @@
     "css": 2478
   },
   {
+    "name": "BlessFlashcards",
+    "js": 1875,
+    "css": 1126
+  },
+  {
     "name": "BlessFloatLabel",
     "js": 448,
     "css": 494
@@ -573,6 +598,11 @@
     "name": "BlessIcon",
     "js": 355,
     "css": 165
+  },
+  {
+    "name": "BlessIconPicker",
+    "js": 1707,
+    "css": 1070
   },
   {
     "name": "BlessImg",
@@ -678,6 +708,11 @@
     "name": "BlessLeaderboard",
     "js": 1768,
     "css": 802
+  },
+  {
+    "name": "BlessLessonPath",
+    "js": 903,
+    "css": 559
   },
   {
     "name": "BlessLightbox",
@@ -860,6 +895,11 @@
     "css": 328
   },
   {
+    "name": "BlessPaletteViewer",
+    "js": 1362,
+    "css": 449
+  },
+  {
     "name": "BlessPanel",
     "js": 785,
     "css": 531
@@ -868,6 +908,11 @@
     "name": "BlessParallax",
     "js": 612,
     "css": 290
+  },
+  {
+    "name": "BlessParallelCoordinates",
+    "js": 1682,
+    "css": 380
   },
   {
     "name": "BlessPareto",
@@ -926,7 +971,7 @@
   },
   {
     "name": "BlessPresetRange",
-    "js": 2928,
+    "js": 2950,
     "css": 1058
   },
   {
@@ -975,6 +1020,11 @@
     "css": 2410
   },
   {
+    "name": "BlessQuiz",
+    "js": 2179,
+    "css": 1206
+  },
+  {
     "name": "BlessQuotaUsage",
     "js": 959,
     "css": 346
@@ -1013,6 +1063,11 @@
     "name": "BlessRangeCalendar",
     "js": 3739,
     "css": 1245
+  },
+  {
+    "name": "BlessRangeChart",
+    "js": 1720,
+    "css": 139
   },
   {
     "name": "BlessRating",
@@ -1190,6 +1245,11 @@
     "css": 630
   },
   {
+    "name": "BlessSmallMultiples",
+    "js": 2250,
+    "css": 525
+  },
+  {
     "name": "BlessSortable",
     "js": 3304,
     "css": 555
@@ -1201,7 +1261,7 @@
   },
   {
     "name": "BlessSparkline",
-    "js": 1319,
+    "js": 1335,
     "css": 243
   },
   {
@@ -1251,7 +1311,7 @@
   },
   {
     "name": "BlessStat",
-    "js": 1959,
+    "js": 1971,
     "css": 492
   },
   {
@@ -1263,6 +1323,11 @@
     "name": "BlessSteps",
     "js": 831,
     "css": 711
+  },
+  {
+    "name": "BlessStickyBoard",
+    "js": 1592,
+    "css": 587
   },
   {
     "name": "BlessStreamgraph",
@@ -1323,6 +1388,11 @@
     "name": "BlessTagCloud",
     "js": 832,
     "css": 338
+  },
+  {
+    "name": "BlessTaskList",
+    "js": 1910,
+    "css": 809
   },
   {
     "name": "BlessTestimonials",
@@ -1440,6 +1510,11 @@
     "css": 546
   },
   {
+    "name": "BlessTypeScale",
+    "js": 967,
+    "css": 358
+  },
+  {
     "name": "BlessTypingIndicator",
     "js": 541,
     "css": 337
@@ -1463,6 +1538,11 @@
     "name": "BlessVenn",
     "js": 1533,
     "css": 389
+  },
+  {
+    "name": "BlessVersionHistory",
+    "js": 1515,
+    "css": 792
   },
   {
     "name": "BlessVideo",

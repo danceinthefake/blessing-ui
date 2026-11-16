@@ -12,7 +12,7 @@ test("BlessAchievements: earned badges with the date, locked ones with a progres
     },
   });
   expect(w.find(".bless-achieve__count").text()).toBe("1 of 3 earned");
-  const items = w.findAll(".bless-achieve__item");
+  const items = w.findAll(".bless-achieve__card");
   expect(items[0]!.classes()).toContain("is-earned");
   expect(items[0]!.find(".bless-achieve__state").text()).toBe("Earned 14 Nov");
   expect(items[0]!.find("progress").exists()).toBe(false);

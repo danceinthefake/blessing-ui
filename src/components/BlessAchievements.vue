@@ -42,28 +42,25 @@ const earnedCount = computed(() => props.achievements.filter((a) => a.earned).le
   <section class="bless-achieve" :aria-label="text.title">
     <p class="bless-achieve__count">{{ text.count(earnedCount, achievements.length) }}</p>
     <ul class="bless-achieve__grid">
-      <li
-        v-for="a in achievements"
-        :key="a.id"
-        class="bless-achieve__item"
-        :class="{ 'is-earned': a.earned }"
-      >
-        <span class="bless-achieve__icon" aria-hidden="true">{{ a.icon }}</span>
-        <strong class="bless-achieve__title">{{ a.title }}</strong>
-        <span v-if="a.description" class="bless-achieve__desc">{{ a.description }}</span>
-        <span class="bless-achieve__state">{{
-          a.earned ? text.earned(a.earned) : text.locked
-        }}</span>
-        <progress
-          v-if="!a.earned && a.progress"
-          class="bless-achieve__bar"
-          :value="a.progress[0]"
-          :max="a.progress[1]"
-          :aria-label="`${a.title}: ${a.progress[0]} / ${a.progress[1]}`"
-        />
-        <span v-if="!a.earned && a.progress" class="bless-achieve__num" aria-hidden="true">
-          {{ a.progress[0] }} / {{ a.progress[1] }}
-        </span>
+      <li v-for="a in achievements" :key="a.id" class="bless-achieve__item">
+        <div class="bless-achieve__card" :class="{ 'is-earned': a.earned }">
+          <span class="bless-achieve__icon" aria-hidden="true">{{ a.icon }}</span>
+          <strong class="bless-achieve__title">{{ a.title }}</strong>
+          <span v-if="a.description" class="bless-achieve__desc">{{ a.description }}</span>
+          <span class="bless-achieve__state">{{
+            a.earned ? text.earned(a.earned) : text.locked
+          }}</span>
+          <progress
+            v-if="!a.earned && a.progress"
+            class="bless-achieve__bar"
+            :value="a.progress[0]"
+            :max="a.progress[1]"
+            :aria-label="`${a.title}: ${a.progress[0]} / ${a.progress[1]}`"
+          />
+          <span v-if="!a.earned && a.progress" class="bless-achieve__num" aria-hidden="true">
+            {{ a.progress[0] }} / {{ a.progress[1] }}
+          </span>
+        </div>
       </li>
     </ul>
   </section>
@@ -71,12 +68,14 @@ const earnedCount = computed(() => props.achievements.filter((a) => a.earned).le
 
 <style>
 .bless-achieve {
+  display: grid;
+  gap: var(--bless-space-3);
   font-family: var(--bless-font-sans);
   font-size: var(--bless-text-sm);
   color: var(--bless-color-text);
 }
 .bless-achieve__count {
-  margin: 0 0 var(--bless-space-3);
+  margin: 0;
   font-weight: var(--bless-font-weight-bold);
 }
 .bless-achieve__grid {
@@ -87,7 +86,11 @@ const earnedCount = computed(() => props.achievements.filter((a) => a.earned).le
   padding: 0;
   list-style: none;
 }
+/* the card is a div, so a list reset of the host page does not remove its padding */
 .bless-achieve__item {
+  display: grid;
+}
+.bless-achieve__card {
   display: grid;
   justify-items: center;
   align-content: start;
@@ -97,7 +100,7 @@ const earnedCount = computed(() => props.achievements.filter((a) => a.earned).le
   text-align: center;
 }
 /* an earned badge has a solid edge, a shadow, and full color; a locked one is dashed and gray */
-.bless-achieve__item.is-earned {
+.bless-achieve__card.is-earned {
   border-style: solid;
   box-shadow: 4px 4px 0 var(--bless-color-border);
 }
