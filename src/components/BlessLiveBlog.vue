@@ -84,13 +84,15 @@ const rest = computed(() => visible.value.filter((u) => !u.pinned));
         :class="{ 'is-pinned': u.pinned, 'is-key': u.key }"
         tabindex="-1"
       >
-        <div class="bless-live__meta">
-          <time class="bless-live__time">{{ u.time }}</time>
-          <span v-if="u.pinned" class="bless-live__tag">{{ text.pinned }}</span>
-          <span v-if="u.key" class="bless-live__tag is-key">★ {{ text.key }}</span>
+        <div class="bless-live__card">
+          <div class="bless-live__meta">
+            <time class="bless-live__time">{{ u.time }}</time>
+            <span v-if="u.pinned" class="bless-live__tag">{{ text.pinned }}</span>
+            <span v-if="u.key" class="bless-live__tag is-key">★ {{ text.key }}</span>
+          </div>
+          <h3 v-if="u.title" class="bless-live__title">{{ u.title }}</h3>
+          <p class="bless-live__body">{{ u.body }}</p>
         </div>
-        <h3 v-if="u.title" class="bless-live__title">{{ u.title }}</h3>
-        <p class="bless-live__body">{{ u.body }}</p>
       </li>
     </ol>
   </section>
@@ -158,15 +160,11 @@ const rest = computed(() => visible.value.filter((u) => !u.pinned));
   list-style: none;
   border-inline-start: 2px solid var(--bless-color-border);
 }
-/* the space sits on the children, so a list reset of the host page keeps it */
-.bless-live__update > * {
-  margin-inline: var(--bless-space-4) 0;
-}
-.bless-live__update > :first-child {
-  margin-block-start: var(--bless-space-3);
-}
-.bless-live__update > :last-child {
-  margin-block-end: var(--bless-space-3);
+/* the space sits on a div, so a list or p reset of the host page keeps it */
+.bless-live__card {
+  display: grid;
+  gap: var(--bless-space-1);
+  padding: var(--bless-space-3) var(--bless-space-4);
 }
 .bless-live__update {
   border-block-end: var(--bless-border-width) solid var(--bless-color-border);
@@ -193,12 +191,12 @@ const rest = computed(() => visible.value.filter((u) => !u.pinned));
 .bless-live__tag {
   font-weight: var(--bless-font-weight-bold);
 }
-.bless-live__title {
-  margin-block: var(--bless-space-1) 0;
+.bless-live .bless-live__title {
+  margin: 0;
   font-size: var(--bless-text-md);
 }
 .bless-live__body {
-  margin-block: var(--bless-space-1) 0;
+  margin: 0;
   line-height: 1.55;
 }
 </style>
