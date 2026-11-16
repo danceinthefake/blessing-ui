@@ -36,7 +36,8 @@ Twenty-nine new components, 347 in all, for finance, commerce, communication, an
 - `BlessGroupCard`: a group with a cover, public or private in words, a short member count, member faces, and a join or ask-to-join button named with the group.
 - `BlessForumTopics`: forum topics with pinned ones first, pinned, solved, and locked as a mark and a word, tags, short counts, and the last post.
 - `BlessVitalsPanel`: body readings with the unit, the normal range, a state as a mark and a word, and a bar that shows where the value falls.
-- `BlessMedicationSchedule`: the doses of the day grouped by time, a check box for each, late doses in words, and a count of the doses taken. 349 components in all.
+- `BlessMedicationSchedule`: the doses of the day grouped by time, a check box for each, late doses in words, and a count of the doses taken.
+- `BlessWorkoutLog`: sets of an exercise with weight and reps fields, the matching set from last time, done boxes, the volume, and add and remove. 350 components in all.
 
 ## 0.7.0 — 2026-11-16
 

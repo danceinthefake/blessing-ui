@@ -588,3 +588,5 @@ export { vitalState } from "./components/BlessVitalsPanel.vue";
 export type { BlessVital } from "./components/BlessVitalsPanel.vue";
 export { default as BlessMedicationSchedule } from "./components/BlessMedicationSchedule.vue";
 export type { BlessDose } from "./components/BlessMedicationSchedule.vue";
+export { default as BlessWorkoutLog } from "./components/BlessWorkoutLog.vue";
+export type { BlessWorkoutSet } from "./components/BlessWorkoutLog.vue";

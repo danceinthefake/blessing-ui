@@ -18486,6 +18486,59 @@
   "slots": [],
   "exposed": []
  },
+ "BlessWorkoutLog": {
+  "props": [
+   {
+    "name": "exercise",
+    "type": "string",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "previous",
+    "type": "{ weight: number; reps: number; }[] | undefined",
+    "required": false,
+    "default": "[]",
+    "description": "the sets of the last session, for each row"
+   },
+   {
+    "name": "unit",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"kg\"",
+    "description": "the unit of the weight"
+   },
+   {
+    "name": "locale",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"en\"",
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ set: string; last: string; weight: string; reps: string; done: string; add: string; remove: (n: number) => string; volume: (total: string) => string; field: (what: string, n: number) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "BlessWorkoutSet[] | undefined",
+    "required": false,
+    "default": "[]",
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "update:modelValue",
+    "type": "[value: BlessWorkoutSet[]]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessWorldClock": {
   "props": [
    {
