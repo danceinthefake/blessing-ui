@@ -101,6 +101,7 @@ const pct = computed(() =>
   padding: 0;
   border: 0;
   font-size: var(--bless-text-md);
+  font-weight: var(--bless-font-weight-bold);
   line-height: 1.3;
 }
 .bless-course__title a {

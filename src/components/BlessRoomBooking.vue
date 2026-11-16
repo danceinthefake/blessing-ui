@@ -220,7 +220,7 @@ const roomName = (id: string) => props.rooms.find((r) => r.id === id)?.name ?? i
   outline-offset: -3px;
 }
 /* stripes mark a booked time by more than color */
-.bless-rooms__busy {
+.bless-rooms__table .bless-rooms__busy {
   padding: 0 var(--bless-space-2);
   background: repeating-linear-gradient(
     135deg,
