@@ -668,3 +668,5 @@ export { gs1Valid } from "./components/BlessSkuField.vue";
 export { default as BlessUnitConverter } from "./components/BlessUnitConverter.vue";
 export { splitUnits } from "./components/BlessUnitConverter.vue";
 export type { BlessUnit } from "./components/BlessUnitConverter.vue";
+export { default as BlessDocumentStatus } from "./components/BlessDocumentStatus.vue";
+export type { BlessDocState } from "./components/BlessDocumentStatus.vue";

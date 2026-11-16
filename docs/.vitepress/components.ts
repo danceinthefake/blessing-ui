@@ -1129,6 +1129,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "unit-converter",
         text: "Convert between units such as boxes and pieces",
       },
+      {
+        name: "BlessDocumentStatus",
+        slug: "document-status",
+        text: "The states of a document with the next step",
+      },
     ],
   },
   {

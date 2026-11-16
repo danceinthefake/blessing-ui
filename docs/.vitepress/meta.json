@@ -5472,6 +5472,48 @@
   ],
   "exposed": []
  },
+ "BlessDocumentStatus": {
+  "props": [
+   {
+    "name": "states",
+    "type": "BlessDocState[]",
+    "required": true,
+    "description": "the states in order"
+   },
+   {
+    "name": "stopped",
+    "type": "string | undefined",
+    "required": false,
+    "description": "the document stopped, for example cancelled; the chain ends with this word"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ title: string; done: string; current: string; next: string; move: (state: string) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "string | undefined",
+    "required": false,
+    "description": "the id of the state the document is in"
+   }
+  ],
+  "events": [
+   {
+    "name": "update:modelValue",
+    "type": "[value: string | undefined]",
+    "description": ""
+   },
+   {
+    "name": "advance",
+    "type": "[id: string]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessDonutChart": {
   "props": [
    {
