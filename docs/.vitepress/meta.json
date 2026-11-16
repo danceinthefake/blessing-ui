@@ -3777,6 +3777,52 @@
   "slots": [],
   "exposed": []
  },
+ "BlessContactPicker": {
+  "props": [
+   {
+    "name": "contacts",
+    "type": "BlessContact[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "recent",
+    "type": "string[] | undefined",
+    "required": false,
+    "default": "[]",
+    "description": "ids of recent contacts, shown first while the search is empty"
+   },
+   {
+    "name": "multiple",
+    "type": "boolean | undefined",
+    "required": false,
+    "default": "true",
+    "description": "pick more than one"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ title: string; search: string; recent: string; all: string; none: string; chosen: string; remove: string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "string[] | undefined",
+    "required": false,
+    "default": "[]",
+    "description": "the ids of the chosen contacts"
+   }
+  ],
+  "events": [
+   {
+    "name": "update:modelValue",
+    "type": "[value: string[]]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessContainer": {
   "props": [
    {
