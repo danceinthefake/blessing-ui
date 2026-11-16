@@ -21,6 +21,7 @@ import type BlessCalendar from "../components/BlessCalendar.vue";
 import type BlessCameraCapture from "../components/BlessCameraCapture.vue";
 import type BlessCandlestick from "../components/BlessCandlestick.vue";
 import type BlessCardInput from "../components/BlessCardInput.vue";
+import type BlessCartDrawer from "../components/BlessCartDrawer.vue";
 import type BlessChangelog from "../components/BlessChangelog.vue";
 import type BlessChapterList from "../components/BlessChapterList.vue";
 import type BlessChatHistory from "../components/BlessChatHistory.vue";
@@ -184,6 +185,7 @@ export type BlessLabelsFull = {
   BlessCameraCapture: All<typeof BlessCameraCapture>;
   BlessCandlestick: All<typeof BlessCandlestick>;
   BlessCardInput: All<typeof BlessCardInput>;
+  BlessCartDrawer: All<typeof BlessCartDrawer>;
   BlessChangelog: All<typeof BlessChangelog>;
   BlessChapterList: All<typeof BlessChapterList>;
   BlessChatHistory: All<typeof BlessChatHistory>;
@@ -473,6 +475,17 @@ export const labelsId: BlessLabelsFull = {
     close: "Tutup",
   },
   BlessCardInput: { invalid: "Periksa nomor kartu" },
+  BlessCartDrawer: {
+    title: (n) => `Keranjang (${n})`,
+    empty: "Keranjang Anda kosong.",
+    subtotal: "Subtotal",
+    note: "Ongkos kirim dan pajak dihitung saat checkout.",
+    checkout: "Checkout",
+    remove: (n) => `Hapus ${n}`,
+    less: (n) => `Kurangi satu ${n}`,
+    more: (n) => `Tambah satu ${n}`,
+    quantity: (n) => `Jumlah ${n}`,
+  },
   BlessChangelog: {
     added: "Ditambah",
     changed: "Diubah",

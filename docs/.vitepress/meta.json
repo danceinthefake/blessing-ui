@@ -2235,6 +2235,70 @@
    }
   ]
  },
+ "BlessCartDrawer": {
+  "props": [
+   {
+    "name": "currency",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"USD\"",
+    "description": ""
+   },
+   {
+    "name": "locale",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"en\"",
+    "description": ""
+   },
+   {
+    "name": "max",
+    "type": "number | undefined",
+    "required": false,
+    "default": "99",
+    "description": "the most of one line a buyer can take"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ title: (count: number) => string; empty: string; subtotal: string; note: string; checkout: string; remove: (name: string) => string; less: (name: string) => string; more: (name: string) => string; quantity: (name: string) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "open",
+    "type": "boolean | undefined",
+    "required": false,
+    "default": "false",
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "BlessCartLine[] | undefined",
+    "required": false,
+    "default": "[]",
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "update:open",
+    "type": "[value: boolean]",
+    "description": ""
+   },
+   {
+    "name": "update:modelValue",
+    "type": "[value: BlessCartLine[]]",
+    "description": ""
+   },
+   {
+    "name": "checkout",
+    "type": "[]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessCascadeSelect": {
   "props": [
    {
