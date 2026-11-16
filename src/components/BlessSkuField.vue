@@ -28,7 +28,6 @@ const props = withDefaults(
     /** clear the field after each scan, for a run of scans */
     clearOnScan?: boolean;
     labels?: Partial<{
-      label: string;
       hint: string;
       valid: string;
       invalid: string;
@@ -41,7 +40,6 @@ const code = defineModel<string>({ default: "" });
 const emit = defineEmits<{ scan: [code: string] }>();
 
 const text = computed(() => ({
-  label: props.label ?? (props.kind === "barcode" ? "Barcode" : "SKU"),
   hint: "Scan or type the code, then press Enter.",
   valid: "The check digit is right.",
   invalid: "This barcode is not valid. Check the digits.",
@@ -79,7 +77,7 @@ function submit() {
 
 <template>
   <form class="bless-sku" :class="state && `is-${state}`" @submit.prevent="submit">
-    <label class="bless-sku__label" :for="`${uid}-in`">{{ text.label }}</label>
+    <label class="bless-sku__label" :for="`${uid}-in`">{{ label ?? (kind === "barcode" ? "Barcode" : "SKU") }}</label>
     <div class="bless-sku__box">
       <span class="bless-sku__icon" aria-hidden="true">|||</span>
       <input
