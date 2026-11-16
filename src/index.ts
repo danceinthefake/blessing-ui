@@ -595,3 +595,5 @@ export { sleepSpans } from "./components/BlessSleepChart.vue";
 export type { BlessSleepSpan, BlessSleepStage } from "./components/BlessSleepChart.vue";
 export { default as BlessBodyMap } from "./components/BlessBodyMap.vue";
 export type { BlessBodyPart } from "./components/BlessBodyMap.vue";
+export { default as BlessAppointmentCard } from "./components/BlessAppointmentCard.vue";
+export type { BlessAppointmentStatus } from "./components/BlessAppointmentCard.vue";

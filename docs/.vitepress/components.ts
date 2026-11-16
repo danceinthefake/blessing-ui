@@ -1044,6 +1044,11 @@ export const groups: { title: string; items: Entry[] }[] = [
       },
       { name: "BlessBodyMap", slug: "body-map", text: "A body outline to point at pain" },
       {
+        name: "BlessAppointmentCard",
+        slug: "appointment-card",
+        text: "A visit with the doctor, place, and time",
+      },
+      {
         name: "BlessBalanceCard",
         slug: "balance-card",
         text: "An account balance with the change",
