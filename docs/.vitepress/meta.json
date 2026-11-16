@@ -10757,6 +10757,64 @@
   "slots": [],
   "exposed": []
  },
+ "BlessPrice": {
+  "props": [
+   {
+    "name": "amount",
+    "type": "number",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "was",
+    "type": "number | undefined",
+    "required": false,
+    "description": "the price before the sale; it shows only when it is higher than `amount`"
+   },
+   {
+    "name": "unitPrice",
+    "type": "number | undefined",
+    "required": false,
+    "description": "the price for one unit, with `unit`"
+   },
+   {
+    "name": "unit",
+    "type": "string | undefined",
+    "required": false,
+    "description": "the unit, for example \"kg\" or \"100 ml\""
+   },
+   {
+    "name": "currency",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"USD\"",
+    "description": ""
+   },
+   {
+    "name": "locale",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"en\"",
+    "description": ""
+   },
+   {
+    "name": "size",
+    "type": "\"md\" | \"sm\" | \"lg\" | undefined",
+    "required": false,
+    "default": "\"md\"",
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ off: (percent: string) => string; sale: (now: string, was: string) => string; per: (price: string, unit: string) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessPriceTicker": {
   "props": [
    {
