@@ -1160,6 +1160,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "downtime-picker",
         text: "The reason for a stop, with big buttons",
       },
+      {
+        name: "BlessWorkInstructions",
+        slug: "work-instructions",
+        text: "The steps of a job with pictures",
+      },
     ],
   },
   {

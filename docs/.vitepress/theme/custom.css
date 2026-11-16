@@ -142,7 +142,8 @@
     .bless-invoice__label,
     .bless-tkview__subject,
     .bless-payslip__title,
-    .bless-workorder__product
+    .bless-workorder__product,
+    .bless-instructions__title
   ) {
   margin: 0;
   padding: 0;
