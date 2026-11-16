@@ -608,3 +608,5 @@ export { default as BlessBatteryLevel } from "./components/BlessBatteryLevel.vue
 export { default as BlessRuleBuilder } from "./components/BlessRuleBuilder.vue";
 export type { BlessRule, BlessRuleOption } from "./components/BlessRuleBuilder.vue";
 export { default as BlessArticleHeader } from "./components/BlessArticleHeader.vue";
+export { default as BlessShareBar } from "./components/BlessShareBar.vue";
+export type { BlessShareTarget } from "./components/BlessShareBar.vue";

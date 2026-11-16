@@ -146,6 +146,7 @@ import type BlessSceneButtons from "../components/BlessSceneButtons.vue";
 import type BlessScheduler from "../components/BlessScheduler.vue";
 import type BlessSeatPicker from "../components/BlessSeatPicker.vue";
 import type BlessSelectionToolbar from "../components/BlessSelectionToolbar.vue";
+import type BlessShareBar from "../components/BlessShareBar.vue";
 import type BlessShipmentTracker from "../components/BlessShipmentTracker.vue";
 import type BlessShortcutRecorder from "../components/BlessShortcutRecorder.vue";
 import type BlessShortcutSheet from "../components/BlessShortcutSheet.vue";
@@ -339,6 +340,7 @@ export type BlessLabelsFull = {
   BlessScheduler: All<typeof BlessScheduler>;
   BlessSeatPicker: All<typeof BlessSeatPicker>;
   BlessSelectionToolbar: All<typeof BlessSelectionToolbar>;
+  BlessShareBar: All<typeof BlessShareBar>;
   BlessShipmentTracker: All<typeof BlessShipmentTracker>;
   BlessShortcutRecorder: All<typeof BlessShortcutRecorder>;
   BlessShortcutSheet: All<typeof BlessShortcutSheet>;
@@ -1387,6 +1389,12 @@ export const labelsId: BlessLabelsFull = {
     summary: (n, t) => `${n} kursi · ${t}`,
   },
   BlessSelectionToolbar: { label: "Aksi teks" },
+  BlessShareBar: {
+    title: "Bagikan",
+    share: "Bagikan…",
+    copy: "Salin tautan",
+    copied: "Tautan disalin",
+  },
   BlessShipmentTracker: {
     title: "Pengiriman",
     ordered: "Dipesan",

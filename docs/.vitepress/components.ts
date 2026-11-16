@@ -357,6 +357,7 @@ export const groups: { title: string; items: Entry[] }[] = [
       },
       { name: "BlessMarkdown", slug: "markdown", text: "Markdown text, safely rendered" },
       { name: "BlessArticleHeader", slug: "article-header", text: "The top of an article" },
+      { name: "BlessShareBar", slug: "share-bar", text: "Share with Web Share or copy the link" },
       {
         name: "BlessMarquee",
         slug: "marquee",
