@@ -14997,6 +14997,44 @@
   "slots": [],
   "exposed": []
  },
+ "BlessStoreLocator": {
+  "props": [
+   {
+    "name": "stores",
+    "type": "BlessStore[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "locale",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"en\"",
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ title: string; search: string; open: string; closed: string; directions: string; call: string; none: string; away: (distance: string) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "string | undefined",
+    "required": false,
+    "description": "the id of the chosen store, for pickup"
+   }
+  ],
+  "events": [
+   {
+    "name": "update:modelValue",
+    "type": "[value: string | undefined]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessStreamgraph": {
   "props": [
    {

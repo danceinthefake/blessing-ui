@@ -136,6 +136,7 @@ import type BlessSpoiler from "../components/BlessSpoiler.vue";
 import type BlessStat from "../components/BlessStat.vue";
 import type BlessStepper from "../components/BlessStepper.vue";
 import type BlessStickyBoard from "../components/BlessStickyBoard.vue";
+import type BlessStoreLocator from "../components/BlessStoreLocator.vue";
 import type BlessStreamgraph from "../components/BlessStreamgraph.vue";
 import type BlessSuggestions from "../components/BlessSuggestions.vue";
 import type BlessSunburst from "../components/BlessSunburst.vue";
@@ -301,6 +302,7 @@ export type BlessLabelsFull = {
   BlessStat: All<typeof BlessStat>;
   BlessStepper: All<typeof BlessStepper>;
   BlessStickyBoard: All<typeof BlessStickyBoard>;
+  BlessStoreLocator: All<typeof BlessStoreLocator>;
   BlessStreamgraph: All<typeof BlessStreamgraph>;
   BlessSuggestions: All<typeof BlessSuggestions>;
   BlessSunburst: All<typeof BlessSunburst>;
@@ -1189,6 +1191,16 @@ export const labelsId: BlessLabelsFull = {
     move: "Pindah: seret, atau pakai tombol panah",
     color: "Ganti warna",
     remove: "Hapus catatan",
+  },
+  BlessStoreLocator: {
+    title: "Toko",
+    search: "Cari nama atau alamat",
+    open: "Buka sekarang",
+    closed: "Tutup",
+    directions: "Petunjuk arah",
+    call: "Telepon",
+    none: "Tidak ada toko yang cocok.",
+    away: (d) => `${d} dari Anda`,
   },
   BlessStreamgraph: { step: "Langkah" },
   BlessSuggestions: { label: "Saran" },
