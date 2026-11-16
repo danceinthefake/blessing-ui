@@ -22,7 +22,7 @@ Untuk setiap kelompok, halaman ini mendaftar komponen dan [blok](../../blocks/) 
 | 4. Komunikasi                     |                15 |         0 |
 | 5. Media dan hiburan              |                14 |         0 |
 | 6. Produktivitas dan kolaborasi   |                14 |         6 |
-| 7. Perangkat lunak bisnis dan ERP |                13 |        14 |
+| 7. Perangkat lunak bisnis dan ERP |                27 |         0 |
 | 8. Keuangan                       |                15 |         0 |
 | 9. Pendidikan                     |                 7 |         5 |
 | 10. Kesehatan dan kebugaran       |                12 |         0 |
@@ -95,11 +95,11 @@ Belum ada: komentar di pinggir, dialog bagikan dengan tingkat akses, peta pikira
 
 CRM, SDM, help desk, panel admin, dan ERP: satu sistem untuk stok, pembelian, penjualan, akuntansi, dan karyawan. Orang mencari data, mengubahnya, dan memantau angka.
 
-Sekarang: [DataTable](../../components/data-table), [TreeTable](../../components/tree-table), [QueryBuilder](../../components/query-builder), [FilterBar](../../components/filter-bar), [BulkActionBar](../../components/bulk-action-bar), [Stat](../../components/stat), [Funnel](../../components/funnel), [Descriptions](../../components/descriptions), [PermissionMatrix](../../components/permission-matrix), [ApprovalFlow](../../components/approval-flow), [OrgChart](../../components/org-chart), [KeyValueEditor](../../components/key-value-editor), [Timeline](../../components/timeline).
+Sekarang: [RecordHeader](../../components/record-header), [CsvImport](../../components/csv-import), [AuditLog](../../components/audit-log), [Invoice](../../components/invoice), [TicketView](../../components/ticket-view), [SlaTimer](../../components/sla-timer), [LineItemEditor](../../components/line-item-editor), [JournalEntry](../../components/journal-entry), [StockLevels](../../components/stock-levels), [BillOfMaterials](../../components/bill-of-materials), [SkuField](../../components/sku-field), [UnitConverter](../../components/unit-converter), [DocumentStatus](../../components/document-status), [Payslip](../../components/payslip), [DataTable](../../components/data-table), [TreeTable](../../components/tree-table), [QueryBuilder](../../components/query-builder), [FilterBar](../../components/filter-bar), [BulkActionBar](../../components/bulk-action-bar), [Stat](../../components/stat), [Funnel](../../components/funnel), [Descriptions](../../components/descriptions), [PermissionMatrix](../../components/permission-matrix), [ApprovalFlow](../../components/approval-flow), [OrgChart](../../components/org-chart), [KeyValueEditor](../../components/key-value-editor), [Timeline](../../components/timeline).
 
 Blok: [dashboard](../../blocks/dashboard), [data-page](../../blocks/data-page), [settings](../../blocks/settings), [staff](../../blocks/staff).
 
-Belum ada: kepala data dengan aksi, impor CSV dengan pencocokan kolom, log audit, faktur, tiket help desk dengan kotak balasan, pengatur waktu SLA, editor baris barang untuk pesanan dan penawaran, jurnal dengan debit dan kredit seimbang, level stok dengan titik pemesanan ulang, daftar bahan (BOM), kolom barcode dan SKU, pengonversi satuan, alur status dokumen, slip gaji.
+Belum ada: tidak ada dari daftar pertama. Setiap bagian yang disebut halaman ini sudah menjadi komponen.
 
 ## 8. Keuangan
 

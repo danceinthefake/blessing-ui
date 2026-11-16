@@ -251,6 +251,9 @@ const PRIO = { low: "▽", normal: "○", high: "△", urgent: "▲" } as const;
   display: flex;
   gap: var(--bless-space-4);
 }
+.bless-tkview__modes input {
+  accent-color: var(--bless-color-accent);
+}
 .bless-tkview__modes label {
   display: inline-flex;
   align-items: center;

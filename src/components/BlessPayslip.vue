@@ -118,10 +118,10 @@ const deducted = computed(() => sum(props.deductions));
         </tfoot>
       </table>
     </div>
-    <p class="bless-payslip__net">
+    <div class="bless-payslip__net">
       <span>{{ text.net }}</span>
       <strong>{{ money.format(earned - deducted) }}</strong>
-    </p>
+    </div>
   </article>
 </template>
 

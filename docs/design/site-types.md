@@ -22,7 +22,7 @@ For each group, the page lists the components and the [blocks](../blocks/) that 
 | 4. Communication                  |               15 |       0 |
 | 5. Media and entertainment        |               14 |       0 |
 | 6. Productivity and collaboration |               14 |       6 |
-| 7. Business software and ERP      |               13 |      14 |
+| 7. Business software and ERP      |               27 |       0 |
 | 8. Finance                        |               15 |       0 |
 | 9. Education                      |                7 |       5 |
 | 10. Health and fitness            |               12 |       0 |
@@ -95,11 +95,11 @@ Not yet: comments in the margin, share dialog with access levels, mind map, time
 
 CRM, HR, help desks, admin panels, and ERP: one system for stock, buying, sales, accounting, and staff. People find records, change them, and watch numbers.
 
-Today: [DataTable](../components/data-table), [TreeTable](../components/tree-table), [QueryBuilder](../components/query-builder), [FilterBar](../components/filter-bar), [BulkActionBar](../components/bulk-action-bar), [Stat](../components/stat), [Funnel](../components/funnel), [Descriptions](../components/descriptions), [PermissionMatrix](../components/permission-matrix), [ApprovalFlow](../components/approval-flow), [OrgChart](../components/org-chart), [KeyValueEditor](../components/key-value-editor), [Timeline](../components/timeline).
+Today: [RecordHeader](../components/record-header), [CsvImport](../components/csv-import), [AuditLog](../components/audit-log), [Invoice](../components/invoice), [TicketView](../components/ticket-view), [SlaTimer](../components/sla-timer), [LineItemEditor](../components/line-item-editor), [JournalEntry](../components/journal-entry), [StockLevels](../components/stock-levels), [BillOfMaterials](../components/bill-of-materials), [SkuField](../components/sku-field), [UnitConverter](../components/unit-converter), [DocumentStatus](../components/document-status), [Payslip](../components/payslip), [DataTable](../components/data-table), [TreeTable](../components/tree-table), [QueryBuilder](../components/query-builder), [FilterBar](../components/filter-bar), [BulkActionBar](../components/bulk-action-bar), [Stat](../components/stat), [Funnel](../components/funnel), [Descriptions](../components/descriptions), [PermissionMatrix](../components/permission-matrix), [ApprovalFlow](../components/approval-flow), [OrgChart](../components/org-chart), [KeyValueEditor](../components/key-value-editor), [Timeline](../components/timeline).
 
 Blocks: [dashboard](../blocks/dashboard), [data-page](../blocks/data-page), [settings](../blocks/settings), [staff](../blocks/staff).
 
-Not yet: record header with actions, CSV import with column matching, audit log, invoice, help desk ticket with a reply box, SLA timer, line-item editor for orders and quotes, journal entry with balanced debit and credit, stock levels with a reorder point, bill of materials, barcode and SKU field, units of measure converter, document status flow, payslip.
+Not yet: nothing from the first list. Every part that this page named is now a component.
 
 ## 8. Finance
 
