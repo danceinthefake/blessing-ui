@@ -100,6 +100,7 @@ import type BlessLiveBlog from "../components/BlessLiveBlog.vue";
 import type BlessLogViewer from "../components/BlessLogViewer.vue";
 import type BlessLollipop from "../components/BlessLollipop.vue";
 import type BlessLyrics from "../components/BlessLyrics.vue";
+import type BlessMachineBoard from "../components/BlessMachineBoard.vue";
 import type BlessMarimekko from "../components/BlessMarimekko.vue";
 import type BlessMarquee from "../components/BlessMarquee.vue";
 import type BlessMedicationSchedule from "../components/BlessMedicationSchedule.vue";
@@ -318,6 +319,7 @@ export type BlessLabelsFull = {
   BlessLogViewer: All<typeof BlessLogViewer>;
   BlessLollipop: All<typeof BlessLollipop>;
   BlessLyrics: All<typeof BlessLyrics>;
+  BlessMachineBoard: All<typeof BlessMachineBoard>;
   BlessMarimekko: All<typeof BlessMarimekko>;
   BlessMarquee: All<typeof BlessMarquee>;
   BlessMedicationSchedule: All<typeof BlessMedicationSchedule>;
@@ -1169,6 +1171,17 @@ export const labelsId: BlessLabelsFull = {
   BlessLyrics: {
     title: "Lirik",
     seek: (t) => `Putar dari ${t}`,
+  },
+  BlessMachineBoard: {
+    title: "Mesin",
+    running: "Berjalan",
+    idle: "Diam",
+    setup: "Persiapan",
+    down: "Rusak",
+    offline: "Offline",
+    since: (t) => `selama ${t}`,
+    time: (h, m) => (h ? `${h} j ${m} mnt` : `${m} mnt`),
+    summary: (p) => p,
   },
   BlessMarimekko: { column: "Kolom", share: "Porsi dari semua" },
   BlessMarquee: { play: "Putar", pause: "Jeda" },

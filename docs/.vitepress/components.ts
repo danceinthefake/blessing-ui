@@ -1145,6 +1145,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "production-counter",
         text: "Good and scrap counts with big buttons",
       },
+      {
+        name: "BlessMachineBoard",
+        slug: "machine-board",
+        text: "Machines with their state and time",
+      },
     ],
   },
   {

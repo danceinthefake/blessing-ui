@@ -9729,6 +9729,38 @@
   "slots": [],
   "exposed": []
  },
+ "BlessMachineBoard": {
+  "props": [
+   {
+    "name": "machines",
+    "type": "BlessMachine[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "sort",
+    "type": "boolean | undefined",
+    "required": false,
+    "default": "true",
+    "description": "put the machines that need help first"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<Record<BlessMachineState, string> & { title: string; since: (time: string) => string; time: (h: number, m: number) => string; summary: (parts: string) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "select",
+    "type": "[id: string]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessMarimekko": {
   "props": [
    {

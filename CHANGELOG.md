@@ -75,7 +75,8 @@ Sixty-eight new components, 386 in all, for finance, commerce, communication, so
 - `BlessDocumentStatus`: the chain of states of a document with done, current, and next in words, the time of each, a button to the next state, and a stopped end.
 - `BlessPayslip`: a payslip with the employee, the period, earnings and deductions as tables with totals, and the net pay.
 - `BlessWorkOrderCard`: a work order with the product, a named progress bar of done against target, the station and due time, the state as a mark and a word, and buttons for the state.
-- `BlessProductionCounter`: good and scrap counts with big touch buttons, the target with a bar, the yield, undo of the last taps, and a status after each tap. 388 components in all.
+- `BlessProductionCounter`: good and scrap counts with big touch buttons, the target with a bar, the yield, undo of the last taps, and a status after each tap.
+- `BlessMachineBoard`: a board of machines with the state as a mark, a word, and an edge, the time in it, the job, a summary, and the machines that need help first. 389 components in all.
 
 ## 0.7.0 — 2026-11-16
 
