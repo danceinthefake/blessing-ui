@@ -555,3 +555,5 @@ export { default as BlessStoreLocator } from "./components/BlessStoreLocator.vue
 export type { BlessStore } from "./components/BlessStoreLocator.vue";
 export { default as BlessDeliveryPicker } from "./components/BlessDeliveryPicker.vue";
 export type { BlessDeliveryDay, BlessDeliveryWindow } from "./components/BlessDeliveryPicker.vue";
+export { default as BlessOrderHistory } from "./components/BlessOrderHistory.vue";
+export type { BlessPastOrder, BlessOrderStatus } from "./components/BlessOrderHistory.vue";
