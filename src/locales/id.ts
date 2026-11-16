@@ -164,6 +164,7 @@ import type BlessSwipeDeck from "../components/BlessSwipeDeck.vue";
 import type BlessSystemStatus from "../components/BlessSystemStatus.vue";
 import type BlessTaskList from "../components/BlessTaskList.vue";
 import type BlessTestimonials from "../components/BlessTestimonials.vue";
+import type BlessThermostat from "../components/BlessThermostat.vue";
 import type BlessThread from "../components/BlessThread.vue";
 import type BlessTicket from "../components/BlessTicket.vue";
 import type BlessTimer from "../components/BlessTimer.vue";
@@ -351,6 +352,7 @@ export type BlessLabelsFull = {
   BlessSystemStatus: All<typeof BlessSystemStatus>;
   BlessTaskList: All<typeof BlessTaskList>;
   BlessTestimonials: All<typeof BlessTestimonials>;
+  BlessThermostat: All<typeof BlessThermostat>;
   BlessThread: All<typeof BlessThread>;
   BlessTicket: All<typeof BlessTicket>;
   BlessTimer: All<typeof BlessTimer>;
@@ -1466,6 +1468,21 @@ export const labelsId: BlessLabelsFull = {
     next: "Kutipan berikutnya",
     position: (n, t) => `${n} dari ${t}`,
     rating: (s) => `${s} dari 5 bintang`,
+  },
+  BlessThermostat: {
+    title: "Termostat",
+    target: "Suhu target",
+    now: (t) => `Sekarang ${t}`,
+    lower: "Turunkan",
+    higher: "Naikkan",
+    heat: "Panas",
+    cool: "Dingin",
+    auto: "Otomatis",
+    off: "Mati",
+    heating: (t) => `Memanaskan ke ${t}`,
+    cooling: (t) => `Mendinginkan ke ${t}`,
+    holding: (t) => `Menjaga ${t}`,
+    stopped: "Sistem mati",
   },
   BlessThread: { replies: (n) => `${n} balasan` },
   BlessTicket: {
