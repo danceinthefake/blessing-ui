@@ -7708,6 +7708,31 @@
   "slots": [],
   "exposed": []
  },
+ "BlessLessonPath": {
+  "props": [
+   {
+    "name": "lessons",
+    "type": "BlessLesson[]",
+    "required": true,
+    "description": "in order; the first lesson that is not done is the current one, and the ones after it are locked"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ title: string; done: string; current: string; locked: string; progress: (done: number, total: number) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "select",
+    "type": "[id: string]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessLightbox": {
   "props": [
    {

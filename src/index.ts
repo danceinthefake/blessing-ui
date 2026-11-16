@@ -526,3 +526,5 @@ export { default as BlessQuiz } from "./components/BlessQuiz.vue";
 export type { BlessQuizQuestion } from "./components/BlessQuiz.vue";
 export { default as BlessFlashcards } from "./components/BlessFlashcards.vue";
 export type { BlessFlashcard } from "./components/BlessFlashcards.vue";
+export { default as BlessLessonPath } from "./components/BlessLessonPath.vue";
+export type { BlessLesson } from "./components/BlessLessonPath.vue";
