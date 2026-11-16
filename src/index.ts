@@ -663,3 +663,5 @@ export type { BlessStockItem, BlessStockState } from "./components/BlessStockLev
 export { default as BlessBillOfMaterials } from "./components/BlessBillOfMaterials.vue";
 export { bomNeeds } from "./components/BlessBillOfMaterials.vue";
 export type { BlessBomPart } from "./components/BlessBillOfMaterials.vue";
+export { default as BlessSkuField } from "./components/BlessSkuField.vue";
+export { gs1Valid } from "./components/BlessSkuField.vue";

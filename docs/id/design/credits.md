@@ -31,6 +31,7 @@ Halaman [jenis situs](./site-types) membandingkan tiga daftar kategori situs dan
 ## Standar
 
 - [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/) memberi aturan keyboard dan peran untuk listbox, grid, tab, combobox, tree, menu, dialog, dan pola lainnya.
+- [Kolom SKU](../../components/sku-field) memeriksa barcode dengan check digit mod-10 dari [GS1](https://www.gs1.org/), lembaga di balik nomor EAN dan UPC.
 - [Impor CSV](../../components/csv-import) membaca berkas mengikuti [RFC 4180](https://www.rfc-editor.org/rfc/rfc4180), format umum nilai yang dipisah koma.
 - [Kolom alamat](../../components/address-fields) memakai kode negara [ISO 3166](https://www.iso.org/iso-3166-country-codes.html) dan token `autocomplete` dari standar HTML.
 - [WCAG 2.1](https://www.w3.org/TR/WCAG21/) tingkat AA adalah patokan untuk kontras, fokus, dan gerak. [axe-core](https://github.com/dequelabs/axe-core) memeriksa setiap halaman terhadapnya.
