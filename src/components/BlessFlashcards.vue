@@ -2,6 +2,7 @@
 import { computed, nextTick, ref } from "vue";
 import { useLabelPack } from "../composables/useLabels";
 import BlessButton from "./BlessButton.vue";
+import "./sr.css";
 
 defineOptions({ name: "BlessFlashcards" });
 const pack = useLabelPack("BlessFlashcards");
@@ -74,10 +75,10 @@ function restart() {
         class="bless-flash__card"
         :class="{ 'is-flipped': flipped }"
         :aria-pressed="flipped"
-        :aria-label="flipped ? undefined : text.flip"
         @click="flipped = !flipped"
       >
         <span class="bless-flash__face">{{ card.front }}</span>
+        <span v-if="!flipped" class="bless-sr">{{ text.flip }}</span>
         <span v-if="flipped" class="bless-flash__back" aria-live="polite">{{ card.back }}</span>
       </button>
       <div class="bless-flash__actions">

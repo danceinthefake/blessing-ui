@@ -535,6 +535,7 @@ Sixteen components, 302 → 318. Each uses native platform APIs only: the librar
 - ✅ `BlessFlashcards`: cards that flip to show the answer, sorted by what the learner knows.
 - ✅ `BlessLessonPath`: a path of lessons that are done, current, or locked.
 - ✅ `BlessAchievements`: a grid of badges that are earned or locked, with the progress to each.
+- ✅ Budget: after the round, the whole library is 211.7 KB gz JS and 57.2 KB gz CSS, under the cap of 221 / 60. Phase 34 is done.
 
 ### Deliberately skipped
 

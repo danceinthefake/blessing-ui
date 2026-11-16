@@ -113,10 +113,10 @@ const text = computed(() => ({
   gap: var(--bless-space-2);
   border-inline-start: 2px solid var(--bless-color-border);
 }
-/* the version that shows has a bar in the accent color and a gray fill */
+/* the version that shows has a bar in the accent color and a frame; no fill, so the gray and red text keep their contrast */
 .bless-versions__item.is-selected {
   border-inline-start-color: var(--bless-color-accent);
-  background: var(--bless-color-surface-2);
+  box-shadow: inset 0 0 0 1px var(--bless-color-border);
 }
 .bless-versions__pick {
   display: grid;
