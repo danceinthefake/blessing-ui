@@ -4570,6 +4570,44 @@
    }
   ]
  },
+ "BlessCsvImport": {
+  "props": [
+   {
+    "name": "fields",
+    "type": "BlessImportField[]",
+    "required": true,
+    "description": "the fields of your records"
+   },
+   {
+    "name": "preview",
+    "type": "number | undefined",
+    "required": false,
+    "default": "5",
+    "description": "the rows to show in the preview"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ file: string; match: string; skip: string; required: string; previewTitle: string; rows: (count: number) => string; missing: (count: number) => string; unmatched: (fields: string) => string; import: (count: number) => string; empty: string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "import",
+    "type": "[rows: Record<string, string>[]]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": [
+   {
+    "name": "loadText",
+    "type": "(csv: string) => void",
+    "description": ""
+   }
+  ]
+ },
  "BlessCurrencyConverter": {
   "props": [
    {
@@ -18379,12 +18417,12 @@
     "description": ""
    },
    {
-    "name": "finish",
+    "name": "skip",
     "type": "[]",
     "description": ""
    },
    {
-    "name": "skip",
+    "name": "finish",
     "type": "[]",
     "description": ""
    },

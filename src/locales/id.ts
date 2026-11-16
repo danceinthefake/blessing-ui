@@ -48,6 +48,7 @@ import type BlessCountdownBanner from "../components/BlessCountdownBanner.vue";
 import type BlessCouponInput from "../components/BlessCouponInput.vue";
 import type BlessCronInput from "../components/BlessCronInput.vue";
 import type BlessCropper from "../components/BlessCropper.vue";
+import type BlessCsvImport from "../components/BlessCsvImport.vue";
 import type BlessCurrencyConverter from "../components/BlessCurrencyConverter.vue";
 import type BlessDataTable from "../components/BlessDataTable.vue";
 import type BlessDataView from "../components/BlessDataView.vue";
@@ -252,6 +253,7 @@ export type BlessLabelsFull = {
   BlessCouponInput: All<typeof BlessCouponInput>;
   BlessCronInput: All<typeof BlessCronInput>;
   BlessCropper: All<typeof BlessCropper>;
+  BlessCsvImport: All<typeof BlessCsvImport>;
   BlessCurrencyConverter: All<typeof BlessCurrencyConverter>;
   BlessDataTable: All<typeof BlessDataTable>;
   BlessDataView: All<typeof BlessDataView>;
@@ -742,6 +744,18 @@ export const labelsId: BlessLabelsFull = {
     rotateLeft: "Putar ke kiri",
     rotateRight: "Putar ke kanan",
     loadError: "Gambar tidak dapat dimuat.",
+  },
+  BlessCsvImport: {
+    file: "Berkas CSV",
+    match: "Cocokkan kolom",
+    skip: "Lewati",
+    required: "wajib",
+    previewTitle: "Pratinjau",
+    rows: (n) => `${n} baris dalam berkas`,
+    missing: (n) => `${n} baris tidak punya nilai wajib dan akan dilewati.`,
+    unmatched: (f) => `Cocokkan kolom wajib ini: ${f}`,
+    import: (n) => `Impor ${n} baris`,
+    empty: "Berkas tidak punya baris.",
   },
   BlessCurrencyConverter: {
     amount: "Jumlah",
