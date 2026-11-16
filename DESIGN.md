@@ -537,6 +537,10 @@ Sixteen components, 302 → 318. Each uses native platform APIs only: the librar
 - ✅ `BlessAchievements`: a grid of badges that are earned or locked, with the progress to each.
 - ✅ Budget: after the round, the whole library is 211.7 KB gz JS and 57.2 KB gz CSS, under the cap of 221 / 60. Phase 34 is done.
 
+### Site types (2026-11-16)
+
+From Phase 35, each round takes its components from the "Not yet" lists of the [site types](docs/design/site-types.md) page. That page sorts websites and apps into 17 groups by what people do on them. For each group, it lists the components and blocks that serve it and the parts that are missing. If a round adds one of those parts, move it from "Not yet" to "Today" in the script that builds the page. The script is at `tmp/sitetypes/gen.mjs`, outside the repository.
+
 ### Deliberately skipped
 
 - **Chart**: no bundled lib. Phase 11 ✅: `--bless-color-chart-{1..5}` (≥3:1 both themes) + `BlessChart` frame that maps them onto Unovis `--vis-*` vars. Unovis is the documented pairing, installed by the consumer.

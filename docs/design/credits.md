@@ -20,6 +20,14 @@ We checked the list of components against these projects, to find what a library
 - [PrimeVue](https://primevue.org/): the second target list, for the larger data and form components.
 - [Sonner](https://sonner.emilkowal.ski/), [Radix](https://www.radix-ui.com/), and [cmdk](https://cmdk.paco.me/): the behavior of the toaster, the primitives, and the command menu. We wrote small versions of these behaviors and did not wrap the libraries.
 
+## Classifications we used
+
+The [site types](./site-types) page compares three lists of site and app categories. We used their counts and took no text from them.
+
+- [Similarweb](https://www.similarweb.com/) Industry Plus: 27 industries and 436 categories of websites.
+- The [App Store](https://developer.apple.com/documentation/appstoreconnectapi/app-categories-and-subcategories) by Apple: the categories of apps.
+- The [IAB Tech Lab Content Taxonomy](https://iabtechlab.com/standards/content-taxonomy/) 3.1: 37 top-level topics for content and ads.
+
 ## Standards
 
 - The [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/) gives the keyboard and the roles of the listbox, grid, tabs, combobox, tree, menu, dialog, and other patterns.

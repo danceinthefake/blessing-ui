@@ -20,6 +20,14 @@ Kami mencocokkan daftar komponen dengan proyek-proyek ini, untuk mengetahui apa 
 - [PrimeVue](https://primevue.org/): daftar target kedua, untuk komponen data dan formulir yang lebih besar.
 - [Sonner](https://sonner.emilkowal.ski/), [Radix](https://www.radix-ui.com/), dan [cmdk](https://cmdk.paco.me/): perilaku toaster, komponen dasar, dan menu perintah. Kami menulis versi kecil dari perilaku itu dan tidak membungkus pustakanya.
 
+## Klasifikasi yang kami pakai
+
+Halaman [jenis situs](./site-types) membandingkan tiga daftar kategori situs dan aplikasi. Kami memakai jumlahnya dan tidak mengambil teks dari mereka.
+
+- [Similarweb](https://www.similarweb.com/) Industry Plus: 27 industri dan 436 kategori situs web.
+- [App Store](https://developer.apple.com/documentation/appstoreconnectapi/app-categories-and-subcategories) dari Apple: kategori aplikasi.
+- [IAB Tech Lab Content Taxonomy](https://iabtechlab.com/standards/content-taxonomy/) 3.1: 37 topik tingkat atas untuk konten dan iklan.
+
 ## Standar
 
 - [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/) memberi aturan keyboard dan peran untuk listbox, grid, tab, combobox, tree, menu, dialog, dan pola lainnya.
