@@ -1136,6 +1136,7 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "transcript",
         text: "Lines of text that follow the media time",
       },
+      { name: "BlessLyrics", slug: "lyrics", text: "Song lines that follow the playback" },
       {
         name: "BlessChapterList",
         slug: "chapter-list",

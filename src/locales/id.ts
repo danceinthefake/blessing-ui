@@ -91,6 +91,7 @@ import type BlessLightbox from "../components/BlessLightbox.vue";
 import type BlessLiveBlog from "../components/BlessLiveBlog.vue";
 import type BlessLogViewer from "../components/BlessLogViewer.vue";
 import type BlessLollipop from "../components/BlessLollipop.vue";
+import type BlessLyrics from "../components/BlessLyrics.vue";
 import type BlessMarimekko from "../components/BlessMarimekko.vue";
 import type BlessMarquee from "../components/BlessMarquee.vue";
 import type BlessMedicationSchedule from "../components/BlessMedicationSchedule.vue";
@@ -293,6 +294,7 @@ export type BlessLabelsFull = {
   BlessLiveBlog: All<typeof BlessLiveBlog>;
   BlessLogViewer: All<typeof BlessLogViewer>;
   BlessLollipop: All<typeof BlessLollipop>;
+  BlessLyrics: All<typeof BlessLyrics>;
   BlessMarimekko: All<typeof BlessMarimekko>;
   BlessMarquee: All<typeof BlessMarquee>;
   BlessMedicationSchedule: All<typeof BlessMedicationSchedule>;
@@ -1038,6 +1040,10 @@ export const labelsId: BlessLabelsFull = {
     count: (shown, total) => `${shown} dari ${total} baris`,
   },
   BlessLollipop: { item: "Item", value: "Nilai" },
+  BlessLyrics: {
+    title: "Lirik",
+    seek: (t) => `Putar dari ${t}`,
+  },
   BlessMarimekko: { column: "Kolom", share: "Porsi dari semua" },
   BlessMarquee: { play: "Putar", pause: "Jeda" },
   BlessMedicationSchedule: {

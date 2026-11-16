@@ -615,7 +615,7 @@ Thirteen components, 359 → 372. Each uses native platform APIs only: the libra
 - ✅ `BlessEpisodeList`: the episodes of a season with the length, a summary, and the progress.
 - ✅ `BlessPlayQueue`: the next tracks in order, which you can change and clear.
 - ✅ `BlessMiniPlayer`: a small player that stays on the screen, with the track and the controls.
-- `BlessLyrics`: the lines of a song that follow the playback.
+- ✅ `BlessLyrics`: the lines of a song that follow the playback.
 - `BlessContinueWatching`: items with the place where you stopped, and a remove button.
 
 ### Deliberately skipped
