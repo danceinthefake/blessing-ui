@@ -80,7 +80,8 @@ Sixty-four new components, 302 in all: more charts, parts for an assistant and i
 - `BlessPermissionMatrix`: roles by permissions as native check boxes in groups, with a box for each role and a locked role that has every permission.
 - `BlessFeatureFlags`: flags with a `BlessSwitch`, the key, a note, the environment, and the share of users that get each flag.
 - `BlessIncidentTimeline`: the updates of an incident newest first, with the impact and the state as words, the affected parts, and an edge color that follows the state.
-- `BlessSystemStatus`: the parts of a service with a mark and a word for each state, and one status line that takes the worst state. 302 components in all.
+- `BlessSystemStatus`: the parts of a service with a mark and a word for each state, and one status line that takes the worst state.
+- `BlessRangeChart`: floating bars from a low to a high value for each row, with an optional mark such as the average. 303 components in all.
 
 ## 0.6.0 — 2026-11-15
 

@@ -10,7 +10,7 @@ Vue 3 component library and design tokens. The UI is gray-scale, with one accent
 
 Docs, with every component live: **[ui.blessing.id](https://ui.blessing.id)**
 
-- 302 components, from button to data table to chat. Only `--bless-*` custom properties style them. There is no Tailwind dependency.
+- 303 components, from button to data table to chat. Only `--bless-*` custom properties style them. There is no Tailwind dependency.
 - Native platform first: `<dialog>`, Popover API, `<details>`, native form controls, `Intl` dates, and scroll-snap. There is no positioning, date, or table library.
 - Accessible defaults: focus rings, ARIA tablist, dialog, and tables, and `prefers-reduced-motion`
 - ESM, tree-shakable, with `vue` as the only required peer (`@tiptap/vue-3` is optional, for `BlessEditor`). One component (`BlessButton`) costs about 1 KB gzip of JS and about 2.6 KB of CSS (tokens and its own styles). Everything costs about 201 KB and 54 KB. CSS is split per component and the import pulls it in, so you never pay for styles that you do not use
@@ -92,7 +92,7 @@ The words that components say are English by default. `provideLabels(labelsId)` 
 
 ## Components
 
-302 components across eight groups. Every one styles itself from `--bless-*` tokens and ships with a test and a docs page.
+303 components across eight groups. Every one styles itself from `--bless-*` tokens and ships with a test and a docs page.
 
 ### Primitives
 
@@ -387,6 +387,7 @@ The words that components say are English by default. `provideLabels(labelsId)` 
 | `BlessBeeswarm`         | Each value as a dot on one axis, with no overlap                    | `data` (numbers or `{value,label,group}`), `groups`, `radius`, `format`                                                                       |
 | `BlessMarimekko`        | Bars whose width and height both show a share                       | `data`, `x`, `series`, `height`, `format`                                                                                                     |
 | `BlessPictogram`        | A count as rows of icons                                            | `data` `{label,value,color}`, `unit`, `noun`, `format`. `#icon`                                                                               |
+| `BlessRangeChart`       | Floating bars from a low to a high value                            | `data` `{label,low,high,value}`, `color`, `format`                                                                                            |
 | `BlessPricingTable`     | Plans side by side, with a monthly or yearly switch                 | `plans`, `v-model:period`, `currency`, `select`                                                                                               |
 | `BlessTestimonials`     | Quotes with a name, a role and stars                                | `items` `{quote,name,role,avatar,rating}`, `layout` grid/single                                                                               |
 | `BlessFaqSearch`        | Questions and answers with a search                                 | `items` `{question,answer}`                                                                                                                   |

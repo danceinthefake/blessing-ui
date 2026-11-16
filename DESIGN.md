@@ -515,6 +515,27 @@ Sixteen components, 286 → 302. Each uses native platform APIs only: the librar
 - ✅ `BlessSystemStatus`: the parts of a service with their state, and one line for the whole service.
 - ✅ Budget: after the round, the whole library is 200.6 KB gz JS and 54.4 KB gz CSS, over the old cap of 198 / 54. The cap is now 221 / 60, about 10% of room. Phase 33 is done.
 
+### Phase 34 — more charts, design tools, teamwork, and learning (2026-11-16)
+
+Sixteen components, 302 → 318. Each uses native platform APIs only: the library adds no dependency. Each needs tests, a docs page with a live example, a README row, words in `labelsId`, and a pass of `src/classes.test.ts`. If a component uses a known method or names another party, credit it on the credits page.
+
+- ✅ `BlessRangeChart`: floating bars from a low to a high value for each row.
+- `BlessChordDiagram`: groups around a circle, with ribbons for the flows between them.
+- `BlessParallelCoordinates`: each item as a line across several axes.
+- `BlessSmallMultiples`: a grid of small line charts on one scale.
+- `BlessPaletteViewer`: the shades of each color with the value, a copy button, and the contrast on white and black.
+- `BlessContrastChecker`: two colors in, the contrast ratio out, with the WCAG levels for text.
+- `BlessIconPicker`: a grid of your icons with a search and arrow keys.
+- `BlessTypeScale`: a specimen of the font sizes, with the size, the line height, and the token.
+- `BlessStickyBoard`: sticky notes that you add, edit, color, and move, with the keyboard too.
+- `BlessTaskList`: tasks with check boxes, an assignee, a due date, and subtasks.
+- `BlessApprovalFlow`: the steps of a request, with approvers and their decisions.
+- `BlessVersionHistory`: saved versions with the author and the time, and a restore button.
+- `BlessQuiz`: questions with choices, a check after each answer with the reason, and a score.
+- `BlessFlashcards`: cards that flip to show the answer, sorted by what the learner knows.
+- `BlessLessonPath`: a path of lessons that are done, current, or locked.
+- `BlessAchievements`: a grid of badges that are earned or locked, with the progress to each.
+
 ### Deliberately skipped
 
 - **Chart**: no bundled lib. Phase 11 ✅: `--bless-color-chart-{1..5}` (≥3:1 both themes) + `BlessChart` frame that maps them onto Unovis `--vis-*` vars. Unovis is the documented pairing, installed by the consumer.
