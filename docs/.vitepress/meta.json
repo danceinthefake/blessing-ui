@@ -10984,6 +10984,51 @@
   "slots": [],
   "exposed": []
  },
+ "BlessOeeGauge": {
+  "props": [
+   {
+    "name": "availability",
+    "type": "number",
+    "required": true,
+    "description": "run time / planned time, 0 to 1"
+   },
+   {
+    "name": "performance",
+    "type": "number",
+    "required": true,
+    "description": "actual output / output at the ideal speed, 0 to 1"
+   },
+   {
+    "name": "quality",
+    "type": "number",
+    "required": true,
+    "description": "good pieces / all pieces, 0 to 1"
+   },
+   {
+    "name": "goal",
+    "type": "number | undefined",
+    "required": false,
+    "default": "0.85",
+    "description": "the goal for OEE, 0 to 1; 0.85 is often called world class"
+   },
+   {
+    "name": "locale",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"en\"",
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ oee: string; availability: string; performance: string; quality: string; goal: (percent: string) => string; below: string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessOnboardingChecklist": {
   "props": [
    {

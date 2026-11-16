@@ -111,6 +111,7 @@ import type BlessNewsletterSignup from "../components/BlessNewsletterSignup.vue"
 import type BlessNodeGraph from "../components/BlessNodeGraph.vue";
 import type BlessNotificationInbox from "../components/BlessNotificationInbox.vue";
 import type BlessNotificationPrefs from "../components/BlessNotificationPrefs.vue";
+import type BlessOeeGauge from "../components/BlessOeeGauge.vue";
 import type BlessOnboardingChecklist from "../components/BlessOnboardingChecklist.vue";
 import type BlessOpeningHours from "../components/BlessOpeningHours.vue";
 import type BlessOrderBook from "../components/BlessOrderBook.vue";
@@ -330,6 +331,7 @@ export type BlessLabelsFull = {
   BlessNodeGraph: All<typeof BlessNodeGraph>;
   BlessNotificationInbox: All<typeof BlessNotificationInbox>;
   BlessNotificationPrefs: All<typeof BlessNotificationPrefs>;
+  BlessOeeGauge: All<typeof BlessOeeGauge>;
   BlessOnboardingChecklist: All<typeof BlessOnboardingChecklist>;
   BlessOpeningHours: All<typeof BlessOpeningHours>;
   BlessOrderBook: All<typeof BlessOrderBook>;
@@ -1261,6 +1263,14 @@ export const labelsId: BlessLabelsFull = {
     event: "Kejadian",
     all: (c) => `Semua lewat ${c}`,
     cell: (e, c) => `${e} lewat ${c}`,
+  },
+  BlessOeeGauge: {
+    oee: "OEE",
+    availability: "Ketersediaan",
+    performance: "Performa",
+    quality: "Mutu",
+    goal: (p) => `Target ${p}`,
+    below: "Bagian terendah",
   },
   BlessOnboardingChecklist: {
     progress: (d, n) => `${d} dari ${n} selesai`,

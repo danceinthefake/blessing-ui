@@ -677,3 +677,4 @@ export type { BlessWorkOrderState } from "./components/BlessWorkOrderCard.vue";
 export { default as BlessProductionCounter } from "./components/BlessProductionCounter.vue";
 export { default as BlessMachineBoard } from "./components/BlessMachineBoard.vue";
 export type { BlessMachine, BlessMachineState } from "./components/BlessMachineBoard.vue";
+export { default as BlessOeeGauge } from "./components/BlessOeeGauge.vue";
