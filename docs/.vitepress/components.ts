@@ -1150,6 +1150,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "machine-board",
         text: "Machines with their state and time",
       },
+      {
+        name: "BlessOeeGauge",
+        slug: "oee-gauge",
+        text: "OEE from availability, performance, quality",
+      },
     ],
   },
   {
