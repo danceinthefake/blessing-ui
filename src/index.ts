@@ -573,3 +573,5 @@ export { default as BlessContactPicker } from "./components/BlessContactPicker.v
 export type { BlessContact } from "./components/BlessContactPicker.vue";
 export { default as BlessPostComposer } from "./components/BlessPostComposer.vue";
 export type { BlessNewPost } from "./components/BlessPostComposer.vue";
+export { default as BlessStories } from "./components/BlessStories.vue";
+export type { BlessStory, BlessStoryPerson } from "./components/BlessStories.vue";

@@ -147,6 +147,7 @@ import type BlessStat from "../components/BlessStat.vue";
 import type BlessStepper from "../components/BlessStepper.vue";
 import type BlessStickyBoard from "../components/BlessStickyBoard.vue";
 import type BlessStoreLocator from "../components/BlessStoreLocator.vue";
+import type BlessStories from "../components/BlessStories.vue";
 import type BlessStreamgraph from "../components/BlessStreamgraph.vue";
 import type BlessSuggestions from "../components/BlessSuggestions.vue";
 import type BlessSunburst from "../components/BlessSunburst.vue";
@@ -323,6 +324,7 @@ export type BlessLabelsFull = {
   BlessStepper: All<typeof BlessStepper>;
   BlessStickyBoard: All<typeof BlessStickyBoard>;
   BlessStoreLocator: All<typeof BlessStoreLocator>;
+  BlessStories: All<typeof BlessStories>;
   BlessStreamgraph: All<typeof BlessStreamgraph>;
   BlessSuggestions: All<typeof BlessSuggestions>;
   BlessSunburst: All<typeof BlessSunburst>;
@@ -1312,6 +1314,16 @@ export const labelsId: BlessLabelsFull = {
     call: "Telepon",
     none: "Tidak ada toko yang cocok.",
     away: (d) => `${d} dari Anda`,
+  },
+  BlessStories: {
+    title: "Stories",
+    open: (n) => `Stories dari ${n}`,
+    new: "baru",
+    previous: "Story sebelumnya",
+    next: "Story berikutnya",
+    pause: "Jeda",
+    play: "Putar",
+    progress: (n, t) => `Story ${n} dari ${t}`,
   },
   BlessStreamgraph: { step: "Langkah" },
   BlessSuggestions: { label: "Saran" },

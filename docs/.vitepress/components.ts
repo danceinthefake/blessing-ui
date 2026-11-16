@@ -684,6 +684,7 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "post-composer",
         text: "Write a post with images and a poll",
       },
+      { name: "BlessStories", slug: "stories", text: "Story rings and a timed viewer" },
       {
         name: "BlessLeaderboard",
         slug: "leaderboard",
