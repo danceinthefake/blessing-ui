@@ -698,6 +698,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         text: "A group with a cover and a join button",
       },
       {
+        name: "BlessForumTopics",
+        slug: "forum-topics",
+        text: "Forum topics with replies and the last post",
+      },
+      {
         name: "BlessLeaderboard",
         slug: "leaderboard",
         text: "Ranked rows with the place, the move and the score",

@@ -6315,6 +6315,32 @@
   "slots": [],
   "exposed": []
  },
+ "BlessForumTopics": {
+  "props": [
+   {
+    "name": "topics",
+    "type": "BlessForumTopic[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "locale",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"en\"",
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ title: string; pinned: string; locked: string; solved: string; by: (name: string) => string; replies: (count: string) => string; views: (count: string) => string; last: (name: string, time: string) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessFunnel": {
   "props": [
    {

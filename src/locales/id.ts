@@ -65,6 +65,7 @@ import type BlessFollowButton from "../components/BlessFollowButton.vue";
 import type BlessFootnoteRef from "../components/BlessFootnoteRef.vue";
 import type BlessFootnotes from "../components/BlessFootnotes.vue";
 import type BlessFormula from "../components/BlessFormula.vue";
+import type BlessForumTopics from "../components/BlessForumTopics.vue";
 import type BlessFunnel from "../components/BlessFunnel.vue";
 import type BlessGantt from "../components/BlessGantt.vue";
 import type BlessGroupCard from "../components/BlessGroupCard.vue";
@@ -246,6 +247,7 @@ export type BlessLabelsFull = {
   BlessFootnoteRef: All<typeof BlessFootnoteRef>;
   BlessFootnotes: All<typeof BlessFootnotes>;
   BlessFormula: All<typeof BlessFormula>;
+  BlessForumTopics: All<typeof BlessForumTopics>;
   BlessFunnel: All<typeof BlessFunnel>;
   BlessGantt: All<typeof BlessGantt>;
   BlessGroupCard: All<typeof BlessGroupCard>;
@@ -819,6 +821,16 @@ export const labelsId: BlessLabelsFull = {
           return "Hasilnya bukan angka";
       }
     },
+  },
+  BlessForumTopics: {
+    title: "Topik",
+    pinned: "Disematkan",
+    locked: "Dikunci",
+    solved: "Terjawab",
+    by: (n) => `oleh ${n}`,
+    replies: (n) => `${n} balasan`,
+    views: (n) => `${n} dilihat`,
+    last: (n, t) => `Balasan terakhir oleh ${n}, ${t}`,
   },
   BlessFunnel: {
     ofPrev: (n) => `${n}% dari langkah sebelumnya`,

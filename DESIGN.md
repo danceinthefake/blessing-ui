@@ -579,7 +579,7 @@ Thirteen components, 334 → 347. Each uses native platform APIs only: the libra
 - ✅ `BlessTrendList`: topics that people talk about now, with the count of posts.
 - ✅ `BlessReportDialog`: report a post or a person, with a reason and a note.
 - ✅ `BlessGroupCard`: a group with a cover, the members, and a join button.
-- `BlessForumTopics`: topics of a forum with replies, views, the last post, and pinned topics.
+- ✅ `BlessForumTopics`: topics of a forum with replies, views, the last post, and pinned topics.
 
 ### Phase 37 — health and connected devices (2026-11-16)
 
