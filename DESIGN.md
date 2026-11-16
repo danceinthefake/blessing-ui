@@ -580,6 +580,7 @@ Thirteen components, 334 → 347. Each uses native platform APIs only: the libra
 - ✅ `BlessReportDialog`: report a post or a person, with a reason and a note.
 - ✅ `BlessGroupCard`: a group with a cover, the members, and a join button.
 - ✅ `BlessForumTopics`: topics of a forum with replies, views, the last post, and pinned topics.
+- ✅ Budget: after the round, the whole library is 230.5 KB gz JS and 62.7 KB gz CSS, under the cap of 244 / 66. Phase 36 is done.
 
 ### Phase 37 — health and connected devices (2026-11-16)
 
