@@ -12988,6 +12988,51 @@
   "slots": [],
   "exposed": []
  },
+ "BlessReportDialog": {
+  "props": [
+   {
+    "name": "subject",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"this post\"",
+    "description": "what is reported, for the title, for example \"this post\""
+   },
+   {
+    "name": "reasons",
+    "type": "string[] | undefined",
+    "required": false,
+    "default": "[\"Spam\", \"Harassment or hate\", \"Violence or danger\", \"False information\", \"Something else\"]",
+    "description": "the reasons to choose from"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ title: (subject: string) => string; why: string; note: string; send: string; cancel: string; missing: string; thanks: string; thanksBody: string; close: string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "open",
+    "type": "boolean | undefined",
+    "required": false,
+    "default": "false",
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "update:open",
+    "type": "[value: boolean]",
+    "description": ""
+   },
+   {
+    "name": "report",
+    "type": "[reason: string, note: string]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessResizable": {
   "props": [
    {

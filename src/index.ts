@@ -578,3 +578,4 @@ export type { BlessStory, BlessStoryPerson } from "./components/BlessStories.vue
 export { default as BlessFollowButton } from "./components/BlessFollowButton.vue";
 export { default as BlessTrendList } from "./components/BlessTrendList.vue";
 export type { BlessTrend } from "./components/BlessTrendList.vue";
+export { default as BlessReportDialog } from "./components/BlessReportDialog.vue";

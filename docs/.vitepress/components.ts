@@ -691,6 +691,7 @@ export const groups: { title: string; items: Entry[] }[] = [
         text: "Follow with the count of followers",
       },
       { name: "BlessTrendList", slug: "trend-list", text: "Topics people talk about now" },
+      { name: "BlessReportDialog", slug: "report-dialog", text: "Report a post or a person" },
       {
         name: "BlessLeaderboard",
         slug: "leaderboard",
