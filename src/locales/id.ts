@@ -50,6 +50,7 @@ import type BlessDonutChart from "../components/BlessDonutChart.vue";
 import type BlessDumbbell from "../components/BlessDumbbell.vue";
 import type BlessDurationInput from "../components/BlessDurationInput.vue";
 import type BlessEditor from "../components/BlessEditor.vue";
+import type BlessEmailView from "../components/BlessEmailView.vue";
 import type BlessEmojiPicker from "../components/BlessEmojiPicker.vue";
 import type BlessEventCalendar from "../components/BlessEventCalendar.vue";
 import type BlessFacetFilter from "../components/BlessFacetFilter.vue";
@@ -221,6 +222,7 @@ export type BlessLabelsFull = {
   BlessDumbbell: All<typeof BlessDumbbell>;
   BlessDurationInput: All<typeof BlessDurationInput>;
   BlessEditor: All<typeof BlessEditor>;
+  BlessEmailView: All<typeof BlessEmailView>;
   BlessEmojiPicker: All<typeof BlessEmojiPicker>;
   BlessEventCalendar: All<typeof BlessEventCalendar>;
   BlessFacetFilter: All<typeof BlessFacetFilter>;
@@ -654,6 +656,12 @@ export const labelsId: BlessLabelsFull = {
     hr: "Garis pemisah",
     undo: "Urungkan",
     redo: "Ulangi",
+  },
+  BlessEmailView: {
+    to: "kepada",
+    cc: "cc",
+    details: "Tampilkan alamat",
+    attachments: (n) => `${n} lampiran`,
   },
   // the emoji names stay English: pass `emojis` with Indonesian names to search in Indonesian
   BlessEmojiPicker: {

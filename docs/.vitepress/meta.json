@@ -5268,6 +5268,72 @@
   ],
   "exposed": []
  },
+ "BlessEmailView": {
+  "props": [
+   {
+    "name": "subject",
+    "type": "string",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "from",
+    "type": "BlessMailbox & { avatar?: string | undefined; }",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "to",
+    "type": "BlessMailbox[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "cc",
+    "type": "BlessMailbox[] | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "date",
+    "type": "string",
+    "required": true,
+    "description": "when, as text"
+   },
+   {
+    "name": "body",
+    "type": "string | undefined",
+    "required": false,
+    "description": "the body as plain text; blank lines start a new paragraph. For rich mail, use the slot"
+   },
+   {
+    "name": "attachments",
+    "type": "BlessEmailAttachment[] | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ to: string; cc: string; details: string; attachments: (count: number) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [
+   {
+    "name": "default",
+    "type": "{}",
+    "description": ""
+   },
+   {
+    "name": "actions",
+    "type": "{}",
+    "description": ""
+   }
+  ],
+  "exposed": []
+ },
  "BlessEmojiPicker": {
   "props": [
    {

@@ -563,3 +563,5 @@ export { default as BlessConversationList } from "./components/BlessConversation
 export type { BlessConversation } from "./components/BlessConversationList.vue";
 export { default as BlessReadReceipt } from "./components/BlessReadReceipt.vue";
 export type { BlessReceiptStatus } from "./components/BlessReadReceipt.vue";
+export { default as BlessEmailView } from "./components/BlessEmailView.vue";
+export type { BlessMailbox, BlessEmailAttachment } from "./components/BlessEmailView.vue";
