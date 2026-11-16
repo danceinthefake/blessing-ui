@@ -1175,7 +1175,7 @@ export const labelsId: BlessLabelsFull = {
   BlessTransactionList: {
     title: "Transaksi",
     pending: "tertunda",
-    total: (s) => `Total hari ini ${s}`,
+    total: (s) => `Total harian ${s}`,
   },
   BlessTranscript: { title: "Transkrip", seek: (t) => `Putar dari ${t}` },
   BlessTreemap: {
