@@ -10,7 +10,7 @@ Vue 3 component library and design tokens. The UI is gray-scale, with one accent
 
 Docs, with every component live: **[ui.blessing.id](https://ui.blessing.id)**
 
-- 310 components, from button to data table to chat. Only `--bless-*` custom properties style them. There is no Tailwind dependency.
+- 311 components, from button to data table to chat. Only `--bless-*` custom properties style them. There is no Tailwind dependency.
 - Native platform first: `<dialog>`, Popover API, `<details>`, native form controls, `Intl` dates, and scroll-snap. There is no positioning, date, or table library.
 - Accessible defaults: focus rings, ARIA tablist, dialog, and tables, and `prefers-reduced-motion`
 - ESM, tree-shakable, with `vue` as the only required peer (`@tiptap/vue-3` is optional, for `BlessEditor`). One component (`BlessButton`) costs about 1 KB gzip of JS and about 2.6 KB of CSS (tokens and its own styles). Everything costs about 201 KB and 54 KB. CSS is split per component and the import pulls it in, so you never pay for styles that you do not use
@@ -92,7 +92,7 @@ The words that components say are English by default. `provideLabels(labelsId)` 
 
 ## Components
 
-310 components across eight groups. Every one styles itself from `--bless-*` tokens and ships with a test and a docs page.
+311 components across eight groups. Every one styles itself from `--bless-*` tokens and ships with a test and a docs page.
 
 ### Primitives
 
@@ -228,6 +228,7 @@ The words that components say are English by default. `provideLabels(labelsId)` 
 | `BlessHotspots`                    | Numbered pins on an image or diagram, each with a popover                                               | `v-model` spots `[{id,x,y,label}]` (percent), `v-model:active`, `src`, `alt`, `editable`, `placement`. Emits `add` `remove`. `#spot="{spot,index}"`, default slot for a diagram                                                  |
 | `BlessCropper`                     | Crop and rotate an image. Exports the cropped pixels                                                    | `src`, `aspect`, `crossorigin`, `controls`, `label`. `v-model` rect `{x,y,width,height,rotation}`. `toBlob({type,quality,maxWidth})`. Emits `ready` `error`                                                                      |
 | `BlessKanban`                      | Board: columns of cards, drag or keys between columns                                                   | `v-model` columns `[{id,title,items,limit}]`, `rowKey`, `label`. Emits `move(item, from, to)`. `#card="{item,column,index}"` `#header="{column}"`                                                                                |
+| `BlessStickyBoard`                 | Sticky notes that you add, edit, color and move                                                         | `v-model` `{id,text,x,y,color}`, `height`                                                                                                                                                                                        |
 | `BlessMention`                     | Textarea with `@` / `#` suggestions                                                                     | `v-model`, `options` (list or `{trigger: list}`), `triggers`, `limit`, `label`. Other props go to `BlessTextarea`. Emits `select(option, trigger)`                                                                               |
 | `BlessHeatmapCalendar`             | Activity grid, one square per day                                                                       | `data` {iso: count}, `end`, `weeks`, `weekStart`, `levels`, `max`, `locale`, `unit`, `legend`. `v-model` picked day. Arrows move by day / week                                                                                   |
 | `BlessUptimeBar`                   | Status history, one segment per period                                                                  | `items` [{status, label}], `locale`, `labels`. Summary percent read by screen readers                                                                                                                                            |

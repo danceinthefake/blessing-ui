@@ -510,3 +510,5 @@ export { default as BlessIconPicker } from "./components/BlessIconPicker.vue";
 export type { BlessPickIcon } from "./components/BlessIconPicker.vue";
 export { default as BlessTypeScale } from "./components/BlessTypeScale.vue";
 export type { BlessTypeStep } from "./components/BlessTypeScale.vue";
+export { default as BlessStickyBoard } from "./components/BlessStickyBoard.vue";
+export type { BlessStickyNote } from "./components/BlessStickyBoard.vue";
