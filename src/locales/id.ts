@@ -9,6 +9,7 @@ import type BlessApprovalFlow from "../components/BlessApprovalFlow.vue";
 import type BlessAudioRecorder from "../components/BlessAudioRecorder.vue";
 import type BlessAvailabilityGrid from "../components/BlessAvailabilityGrid.vue";
 import type BlessAvatarGroup from "../components/BlessAvatarGroup.vue";
+import type BlessBalanceCard from "../components/BlessBalanceCard.vue";
 import type BlessBarChart from "../components/BlessBarChart.vue";
 import type BlessBeeswarm from "../components/BlessBeeswarm.vue";
 import type BlessBoxPlot from "../components/BlessBoxPlot.vue";
@@ -163,6 +164,7 @@ export type BlessLabelsFull = {
   BlessAudioRecorder: All<typeof BlessAudioRecorder>;
   BlessAvailabilityGrid: All<typeof BlessAvailabilityGrid>;
   BlessAvatarGroup: All<typeof BlessAvatarGroup>;
+  BlessBalanceCard: All<typeof BlessBalanceCard>;
   BlessBarChart: All<typeof BlessBarChart>;
   BlessBeeswarm: All<typeof BlessBeeswarm>;
   BlessBoxPlot: All<typeof BlessBoxPlot>;
@@ -395,6 +397,13 @@ export const labelsId: BlessLabelsFull = {
   },
   BlessAvailabilityGrid: { label: "Waktu luang", free: "luang", busy: "sibuk" },
   BlessAvatarGroup: { more: (n) => `${n} lainnya` },
+  BlessBalanceCard: {
+    show: "Tampilkan saldo",
+    hide: "Sembunyikan saldo",
+    hidden: "Disembunyikan",
+    up: "naik",
+    down: "turun",
+  },
   BlessBarChart: { category: "Kategori" },
   BlessBeeswarm: {
     group: "Kelompok",

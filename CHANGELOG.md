@@ -4,6 +4,8 @@
 
 ### Added
 
+- `BlessBalanceCard`: the balance of an account with a hide button, the change over a period with a sign and a word, and a slot for actions. 319 components in all.
+
 ## 0.7.0 — 2026-11-16
 
 Eighty new components, 318 in all: more charts, parts for an assistant and its agents, media and reading parts, a shop, social parts, parts for developers and admins, time and habits, events, settings forms, marketing pages, design tools, teamwork, and learning. The library still has no dependencies. The Indonesian label pack covers all 150 components that read a label pack. No API is removed, but three components have new CSS class names: see "Changed" below.
