@@ -391,6 +391,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         text: "Tasks with an assignee, a due date and subtasks",
       },
       {
+        name: "BlessApprovalFlow",
+        slug: "approval-flow",
+        text: "The steps of a request with approvers",
+      },
+      {
         name: "BlessMention",
         slug: "mention",
         text: "@ / # suggestions inside a textarea",

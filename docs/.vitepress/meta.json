@@ -546,6 +546,37 @@
   "slots": [],
   "exposed": []
  },
+ "BlessApprovalFlow": {
+  "props": [
+   {
+    "name": "steps",
+    "type": "BlessApprovalStep[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "me",
+    "type": "string | undefined",
+    "required": false,
+    "description": "the name of the reader: if they are a waiting approver of the current step, they get the buttons"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<Record<BlessDecision, string> & { title: string; approve: string; reject: string; note: string; all: string; any: string; done: string; stopped: string; waiting: (step: string) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "decide",
+    "type": "[stepId: string, decision: \"approved\" | \"rejected\", note: string]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessAspectRatio": {
   "props": [
    {
@@ -14536,13 +14567,13 @@
   ],
   "events": [
    {
-    "name": "undo",
-    "type": "[item: T]",
+    "name": "decide",
+    "type": "[item: T, decision: BlessSwipeDecision]",
     "description": ""
    },
    {
-    "name": "decide",
-    "type": "[item: T, decision: BlessSwipeDecision]",
+    "name": "undo",
+    "type": "[item: T]",
     "description": ""
    },
    {
