@@ -14899,6 +14899,64 @@
   "slots": [],
   "exposed": []
  },
+ "BlessRoomBooking": {
+  "props": [
+   {
+    "name": "rooms",
+    "type": "BlessMeetingRoom[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "bookings",
+    "type": "BlessRoomSlot[] | undefined",
+    "required": false,
+    "default": "[]",
+    "description": ""
+   },
+   {
+    "name": "from",
+    "type": "number | undefined",
+    "required": false,
+    "default": "8",
+    "description": "the first and the last hour of the day, as whole hours"
+   },
+   {
+    "name": "to",
+    "type": "number | undefined",
+    "required": false,
+    "default": "18",
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ caption: string; room: string; seats: (n: number) => string; free: (room: string, time: string) => string; busy: string; pick: string; chosen: (room: string, start: string, end: string) => string; book: string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "BlessRoomSlot | null | undefined",
+    "required": false,
+    "default": "null",
+    "description": "the time that the person picks; a second click later in the same room makes it longer"
+   }
+  ],
+  "events": [
+   {
+    "name": "update:modelValue",
+    "type": "[value: BlessRoomSlot | null]",
+    "description": ""
+   },
+   {
+    "name": "book",
+    "type": "[slot: BlessRoomSlot]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessRoseChart": {
   "props": [
    {

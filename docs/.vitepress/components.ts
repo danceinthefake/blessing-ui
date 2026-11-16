@@ -681,6 +681,7 @@ export const groups: { title: string; items: Entry[] }[] = [
       { name: "BlessShareAccess", slug: "share-access", text: "Who can open a file, and how" },
       { name: "BlessMindMap", slug: "mind-map", text: "A central idea with branches" },
       { name: "BlessTimeTracker", slug: "time-tracker", text: "Timer and time entries by day" },
+      { name: "BlessRoomBooking", slug: "room-booking", text: "Rooms and free times for a day" },
       {
         name: "BlessReactions",
         slug: "reactions",
