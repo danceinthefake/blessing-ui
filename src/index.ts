@@ -723,3 +723,5 @@ export type { BlessHttpMessage } from "./components/BlessRequestInspector.vue";
 export { default as BlessMapPins } from "./components/BlessMapPins.vue";
 export { project, unproject } from "./components/BlessMapPins.vue";
 export type { BlessMapPin } from "./components/BlessMapPins.vue";
+export { default as BlessRouteSteps } from "./components/BlessRouteSteps.vue";
+export type { BlessRouteStep, BlessTurn } from "./components/BlessRouteSteps.vue";

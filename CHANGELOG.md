@@ -100,7 +100,8 @@ Eighty-nine new components, 407 in all, for finance, commerce, communication, so
 - `BlessDeployList`: the deploys of a project with the state as a shape and a word, the live deploy, the short hash, and rollback and deploy-again actions.
 - `BlessCommitList`: the commits of a branch grouped by day with the author, the line changes in words for screen readers, and a copy button for the hash.
 - `BlessRequestInspector`: one HTTP request and its response with the status class in words, the time and the size, the headers, and bodies with JSON indents.
-- `BlessMapPins`: web map tiles in Web Mercator with pins as buttons, drag, zoom buttons and keys, arrow keys to move, and the tile credit. Credits OpenStreetMap. 413 components in all.
+- `BlessMapPins`: web map tiles in Web Mercator with pins as buttons, drag, zoom buttons and keys, arrow keys to move, and the tile credit. Credits OpenStreetMap.
+- `BlessRouteSteps`: the turns of a route with an arrow for each turn, distances in meters or kilometers, the total, and the current step. 414 components in all.
 
 ## 0.7.0 — 2026-11-16
 
