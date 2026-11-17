@@ -19732,6 +19732,25 @@
   "slots": [],
   "exposed": []
  },
+ "BlessTeamGrid": {
+  "props": [
+   {
+    "name": "people",
+    "type": "BlessTeamMember[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ of: (name: string) => string; }> | undefined",
+    "required": false,
+    "description": "the words after a link label for screen readers, such as \" of Ana\""
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessTerminal": {
   "props": [
    {

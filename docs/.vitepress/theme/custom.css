@@ -155,7 +155,8 @@
     .bless-kb__heading,
     .bless-answers__title,
     .bless-elig__title,
-    .bless-features__title
+    .bless-features__title,
+    .bless-team__name
   ) {
   margin: 0;
   padding: 0;

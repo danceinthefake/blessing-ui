@@ -761,3 +761,5 @@ export { default as BlessLogoCloud } from "./components/BlessLogoCloud.vue";
 export type { BlessLogo } from "./components/BlessLogoCloud.vue";
 export { default as BlessFeatureGrid } from "./components/BlessFeatureGrid.vue";
 export type { BlessFeature } from "./components/BlessFeatureGrid.vue";
+export { default as BlessTeamGrid } from "./components/BlessTeamGrid.vue";
+export type { BlessTeamMember } from "./components/BlessTeamGrid.vue";
