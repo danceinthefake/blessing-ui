@@ -672,6 +672,21 @@ Eleven components, 396 → 407. Each uses native platform APIs only: the library
 - ✅ `BlessLessonVideo`: a lesson video with notes at points in time that take you back to that point.
 - ✅ Budget: after the round, the whole library is 272.4 KB gz JS and 75.6 KB gz CSS. It went over 269 / 74, so the cap rose about 10% to 296 / 82. Phase 41 is done.
 
+### Phase 42 — developer tools and utilities (2026-11-17)
+
+Ten components, 407 → 417. Each uses native platform APIs only: the library adds no dependency. Each needs tests, a docs page with a live example, a README row, words in `labelsId`, and a pass of `src/classes.test.ts`. If a component uses a known method or names another party, credit it on the credits page. When a component lands, move its part from "Not yet" to "Today" on the site types page, in both languages.
+
+- ✅ `BlessTerminal`: the output of a shell with a prompt, a history of commands, and colors for errors.
+- `BlessApiEndpoint`: one endpoint of an API with the method, the path, the parameters, and the responses.
+- `BlessDeployList`: the deploys of a project with the state, the commit, the time, and a rollback.
+- `BlessCommitList`: the commits of a branch by day, with the author, the short hash, and the changes.
+- `BlessRequestInspector`: one HTTP request and its response, with the headers and the bodies.
+- `BlessMapPins`: a map from web map tiles with pins that you can select, zoom, and drag.
+- `BlessRouteSteps`: the turns of a route with a direction, the distance, and the time.
+- `BlessWeatherForecast`: the weather now and for the next days, with the high, the low, and the rain.
+- `BlessMeasureConverter`: an amount in one unit of length, mass, volume, or temperature in another.
+- `BlessPlaceSearch`: a search for places with results that show the address and the distance.
+
 ### Deliberately skipped
 
 - **Chart**: no bundled lib. Phase 11 ✅: `--bless-color-chart-{1..5}` (≥3:1 both themes) + `BlessChart` frame that maps them onto Unovis `--vis-*` vars. Unovis is the documented pairing, installed by the consumer.

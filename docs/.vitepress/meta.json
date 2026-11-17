@@ -18801,6 +18801,50 @@
   "slots": [],
   "exposed": []
  },
+ "BlessTerminal": {
+  "props": [
+   {
+    "name": "lines",
+    "type": "BlessTerminalLine[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "prompt",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"$\"",
+    "description": ""
+   },
+   {
+    "name": "title",
+    "type": "string | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "readonly",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": "without input, the terminal only shows output, for example a build log"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ output: string; command: string; error: string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "run",
+    "type": "[command: string]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessTestimonials": {
   "props": [
    {

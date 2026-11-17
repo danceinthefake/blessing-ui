@@ -710,3 +710,5 @@ export { default as BlessAssignment } from "./components/BlessAssignment.vue";
 export { default as BlessCertificate } from "./components/BlessCertificate.vue";
 export { default as BlessLessonVideo } from "./components/BlessLessonVideo.vue";
 export type { BlessVideoNote } from "./components/BlessLessonVideo.vue";
+export { default as BlessTerminal } from "./components/BlessTerminal.vue";
+export type { BlessTerminalLine } from "./components/BlessTerminal.vue";
