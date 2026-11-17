@@ -149,7 +149,8 @@
     .bless-assign__title,
     .bless-cert__title,
     .bless-api__path,
-    .bless-result__title
+    .bless-result__title,
+    .bless-az__letter
   ) {
   margin: 0;
   padding: 0;

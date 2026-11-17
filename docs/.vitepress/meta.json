@@ -1296,6 +1296,39 @@
   "slots": [],
   "exposed": []
  },
+ "BlessAzIndex": {
+  "props": [
+   {
+    "name": "items",
+    "type": "BlessAzItem[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "letters",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"ABCDEFGHIJKLMNOPQRSTUVWXYZ\"",
+    "description": "the letters of the bar; names that start with another sign go under \"#\""
+   },
+   {
+    "name": "locale",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"en\"",
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ letters: string; other: string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessBackground": {
   "props": [
    {
