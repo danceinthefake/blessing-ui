@@ -730,3 +730,5 @@ export type { BlessWeather, BlessWeatherDay } from "./components/BlessWeatherFor
 export { default as BlessMeasureConverter } from "./components/BlessMeasureConverter.vue";
 export { convertMeasure, MEASURES } from "./components/BlessMeasureConverter.vue";
 export type { BlessMeasureKind } from "./components/BlessMeasureConverter.vue";
+export { default as BlessPlaceSearch } from "./components/BlessPlaceSearch.vue";
+export type { BlessPlace } from "./components/BlessPlaceSearch.vue";

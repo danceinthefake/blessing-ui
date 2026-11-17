@@ -1,5 +1,8 @@
 import { mount } from "@vue/test-utils";
-import BlessMeasureConverter, { convertMeasure, type BlessMeasureKind } from "./BlessMeasureConverter.vue";
+import BlessMeasureConverter, {
+  convertMeasure,
+  type BlessMeasureKind,
+} from "./BlessMeasureConverter.vue";
 
 test("convertMeasure: exact factors and temperatures through Celsius", () => {
   expect(convertMeasure(1, "mile", "kilometer")).toBeCloseTo(1.609344, 9);

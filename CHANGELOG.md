@@ -103,7 +103,8 @@ Eighty-nine new components, 407 in all, for finance, commerce, communication, so
 - `BlessMapPins`: web map tiles in Web Mercator with pins as buttons, drag, zoom buttons and keys, arrow keys to move, and the tile credit. Credits OpenStreetMap.
 - `BlessRouteSteps`: the turns of a route with an arrow for each turn, distances in meters or kilometers, the total, and the current step.
 - `BlessWeatherForecast`: the weather now with key facts and the next days with icons, words for screen readers, rain chances, and a range bar.
-- `BlessMeasureConverter`: an amount in one unit of length, mass, volume, or temperature in another, with exact factors and unit names from Intl. 416 components in all.
+- `BlessMeasureConverter`: an amount in one unit of length, mass, volume, or temperature in another, with exact factors and unit names from Intl.
+- `BlessPlaceSearch`: a combobox that searches places with your async function after a short wait, results with the address and the distance, keys, and a status line. 417 components in all.
 
 ## 0.7.0 — 2026-11-16
 

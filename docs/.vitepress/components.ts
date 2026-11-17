@@ -611,6 +611,7 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "measure-converter",
         text: "Length, mass, volume, and temperature",
       },
+      { name: "BlessPlaceSearch", slug: "place-search", text: "Search for places with distance" },
       { name: "BlessStage", slug: "stage", text: "Page shell, sidebar \u2192 drawer under 800px" },
       { name: "BlessSidebarNav", slug: "sidebar-nav", text: "Vertical nav list" },
       { name: "BlessNavigationMenu", slug: "navigation-menu", text: "Horizontal nav with panels" },

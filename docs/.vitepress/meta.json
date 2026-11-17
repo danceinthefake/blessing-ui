@@ -13134,6 +13134,59 @@
   "slots": [],
   "exposed": []
  },
+ "BlessPlaceSearch": {
+  "props": [
+   {
+    "name": "search",
+    "type": "(query: string) => Promise<BlessPlace[]>",
+    "required": true,
+    "description": "your search: it gets the text and returns the places"
+   },
+   {
+    "name": "delay",
+    "type": "number | undefined",
+    "required": false,
+    "default": "250",
+    "description": "the wait after the last key before a search, in milliseconds"
+   },
+   {
+    "name": "minLength",
+    "type": "number | undefined",
+    "required": false,
+    "default": "2",
+    "description": ""
+   },
+   {
+    "name": "locale",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"en\"",
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ label: string; placeholder: string; searching: string; results: (n: number) => string; none: string; failed: string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "BlessPlace | null | undefined",
+    "required": false,
+    "default": "null",
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "update:modelValue",
+    "type": "[value: BlessPlace | null]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessPlayQueue": {
   "props": [
    {

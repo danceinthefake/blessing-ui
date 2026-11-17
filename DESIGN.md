@@ -685,7 +685,7 @@ Ten components, 407 → 417. Each uses native platform APIs only: the library ad
 - ✅ `BlessRouteSteps`: the turns of a route with a direction, the distance, and the time.
 - ✅ `BlessWeatherForecast`: the weather now and for the next days, with the high, the low, and the rain.
 - ✅ `BlessMeasureConverter`: an amount in one unit of length, mass, volume, or temperature in another.
-- `BlessPlaceSearch`: a search for places with results that show the address and the distance.
+- ✅ `BlessPlaceSearch`: a search for places with results that show the address and the distance.
 
 ### Deliberately skipped
 
