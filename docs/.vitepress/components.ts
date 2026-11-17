@@ -657,6 +657,7 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "contact-form",
         text: "A contact form with a clear result",
       },
+      { name: "BlessPortfolioGrid", slug: "portfolio-grid", text: "Work in a grid with filters" },
       { name: "BlessStage", slug: "stage", text: "Page shell, sidebar \u2192 drawer under 800px" },
       { name: "BlessSidebarNav", slug: "sidebar-nav", text: "Vertical nav list" },
       { name: "BlessNavigationMenu", slug: "navigation-menu", text: "Horizontal nav with panels" },

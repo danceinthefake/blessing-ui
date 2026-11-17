@@ -13680,6 +13680,38 @@
   ],
   "exposed": []
  },
+ "BlessPortfolioGrid": {
+  "props": [
+   {
+    "name": "works",
+    "type": "BlessWork[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ filter: string; all: string; count: (n: number) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "filter",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"\"",
+    "description": "the kind to show; an empty string shows all"
+   }
+  ],
+  "events": [
+   {
+    "name": "update:filter",
+    "type": "[value: string]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessPostComposer": {
   "props": [
    {
