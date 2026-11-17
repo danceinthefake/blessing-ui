@@ -112,6 +112,7 @@ import type BlessLogViewer from "../components/BlessLogViewer.vue";
 import type BlessLollipop from "../components/BlessLollipop.vue";
 import type BlessLyrics from "../components/BlessLyrics.vue";
 import type BlessMachineBoard from "../components/BlessMachineBoard.vue";
+import type BlessMapPins from "../components/BlessMapPins.vue";
 import type BlessMarginComments from "../components/BlessMarginComments.vue";
 import type BlessMarimekko from "../components/BlessMarimekko.vue";
 import type BlessMarquee from "../components/BlessMarquee.vue";
@@ -352,6 +353,7 @@ export type BlessLabelsFull = {
   BlessLollipop: All<typeof BlessLollipop>;
   BlessLyrics: All<typeof BlessLyrics>;
   BlessMachineBoard: All<typeof BlessMachineBoard>;
+  BlessMapPins: All<typeof BlessMapPins>;
   BlessMarginComments: All<typeof BlessMarginComments>;
   BlessMarimekko: All<typeof BlessMarimekko>;
   BlessMarquee: All<typeof BlessMarquee>;
@@ -1332,6 +1334,12 @@ export const labelsId: BlessLabelsFull = {
     since: (t) => `selama ${t}`,
     time: (h, m) => (h ? `${h} j ${m} mnt` : `${m} mnt`),
     summary: (p) => p,
+  },
+  BlessMapPins: {
+    map: "Peta",
+    zoomIn: "Perbesar",
+    zoomOut: "Perkecil",
+    keys: "Gunakan tombol panah untuk menggeser peta.",
   },
   BlessMarginComments: {
     comment: "Komentar",

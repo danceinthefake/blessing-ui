@@ -44,6 +44,7 @@ Some components use known methods. We wrote each one again from its description.
 
 - The [treemap](../components/treemap) uses the squarified layout of Bruls, Huijsmans, and van Wijk (2000).
 - The [card input](../components/card-input) checks numbers with the Luhn algorithm (Hans Peter Luhn, 1954).
+- The [map with pins](../components/map-pins) places tiles and pins with the Web Mercator projection (EPSG:3857). Its default tiles and map data come from [OpenStreetMap](https://www.openstreetmap.org/copyright) and its contributors, under the ODbL.
 - The [mind map](../components/mind-map) follows the mind map that Tony Buzan made known in _Use Your Head_ (1974).
 - The [control chart](../components/control-chart) follows the control chart of Walter A. Shewhart (1924), with limits at the mean ± 3 standard deviations.
 - The [OEE gauge](../components/oee-gauge) uses overall equipment effectiveness, availability × performance × quality, from total productive maintenance by Seiichi Nakajima.
