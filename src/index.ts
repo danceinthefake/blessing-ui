@@ -733,3 +733,5 @@ export type { BlessMeasureKind } from "./components/BlessMeasureConverter.vue";
 export { default as BlessPlaceSearch } from "./components/BlessPlaceSearch.vue";
 export type { BlessPlace } from "./components/BlessPlaceSearch.vue";
 export { default as BlessSearchResult } from "./components/BlessSearchResult.vue";
+export { default as BlessSearchResults } from "./components/BlessSearchResults.vue";
+export type { BlessSearchHit } from "./components/BlessSearchResults.vue";
