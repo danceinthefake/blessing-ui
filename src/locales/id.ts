@@ -36,6 +36,7 @@ import type BlessCertificate from "../components/BlessCertificate.vue";
 import type BlessChangelog from "../components/BlessChangelog.vue";
 import type BlessChapterList from "../components/BlessChapterList.vue";
 import type BlessChatHistory from "../components/BlessChatHistory.vue";
+import type BlessCheckAnswers from "../components/BlessCheckAnswers.vue";
 import type BlessChordDiagram from "../components/BlessChordDiagram.vue";
 import type BlessCoachmark from "../components/BlessCoachmark.vue";
 import type BlessCodeBlock from "../components/BlessCodeBlock.vue";
@@ -284,6 +285,7 @@ export type BlessLabelsFull = {
   BlessChangelog: All<typeof BlessChangelog>;
   BlessChapterList: All<typeof BlessChapterList>;
   BlessChatHistory: All<typeof BlessChatHistory>;
+  BlessCheckAnswers: All<typeof BlessCheckAnswers>;
   BlessChordDiagram: All<typeof BlessChordDiagram>;
   BlessCoachmark: All<typeof BlessCoachmark>;
   BlessCodeBlock: All<typeof BlessCodeBlock>;
@@ -781,6 +783,13 @@ export const labelsId: BlessLabelsFull = {
     older: "Lebih lama",
     rename: "Ganti nama",
     remove: "Hapus",
+  },
+  BlessCheckAnswers: {
+    change: "Ubah",
+    empty: "Tidak diisi",
+    agree: "Saya setuju",
+    send: "Setujui dan kirim",
+    mustAgree: "Untuk mengirim, Anda harus menyetujui pernyataan ini.",
   },
   BlessChordDiagram: { from: "Dari", to: (n) => `Ke ${n}` },
   BlessCoachmark: { dot: (t) => `Baru: ${t}`, ok: "Mengerti" },

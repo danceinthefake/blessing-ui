@@ -44,6 +44,7 @@ Beberapa komponen memakai metode yang sudah dikenal. Kami menulis ulang masing-m
 
 - [Treemap](../../components/treemap) memakai tata letak squarified dari Bruls, Huijsmans, dan van Wijk (2000).
 - [Input kartu](../../components/card-input) memeriksa nomor dengan algoritma Luhn (Hans Peter Luhn, 1954).
+- Halaman [periksa jawaban](../../components/check-answers) mengikuti pola "Check answers" dari [GOV.UK Design System](https://design-system.service.gov.uk/patterns/check-answers/) karya Government Digital Service Inggris.
 - [Peta dengan penanda](../../components/map-pins) menempatkan ubin dan penanda dengan proyeksi Web Mercator (EPSG:3857). Ubin dan data peta bawaannya berasal dari [OpenStreetMap](https://www.openstreetmap.org/copyright) dan para kontributornya, dengan lisensi ODbL.
 - [Peta pikiran](../../components/mind-map) mengikuti peta pikiran yang dikenalkan Tony Buzan dalam _Use Your Head_ (1974).
 - [Grafik kendali](../../components/control-chart) mengikuti grafik kendali Walter A. Shewhart (1924), dengan batas pada rata-rata ± 3 simpangan baku.

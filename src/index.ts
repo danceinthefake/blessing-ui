@@ -740,3 +740,5 @@ export type { BlessAzItem } from "./components/BlessAzIndex.vue";
 export { default as BlessKnowledgeArticle } from "./components/BlessKnowledgeArticle.vue";
 export type { BlessArticleSection } from "./components/BlessKnowledgeArticle.vue";
 export { default as BlessSavedForm } from "./components/BlessSavedForm.vue";
+export { default as BlessCheckAnswers } from "./components/BlessCheckAnswers.vue";
+export type { BlessAnswer, BlessAnswerGroup } from "./components/BlessCheckAnswers.vue";
