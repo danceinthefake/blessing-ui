@@ -116,6 +116,7 @@ import type BlessMapPins from "../components/BlessMapPins.vue";
 import type BlessMarginComments from "../components/BlessMarginComments.vue";
 import type BlessMarimekko from "../components/BlessMarimekko.vue";
 import type BlessMarquee from "../components/BlessMarquee.vue";
+import type BlessMeasureConverter from "../components/BlessMeasureConverter.vue";
 import type BlessMedicationSchedule from "../components/BlessMedicationSchedule.vue";
 import type BlessMessageFeedback from "../components/BlessMessageFeedback.vue";
 import type BlessMiniPlayer from "../components/BlessMiniPlayer.vue";
@@ -358,6 +359,7 @@ export type BlessLabelsFull = {
   BlessMarginComments: All<typeof BlessMarginComments>;
   BlessMarimekko: All<typeof BlessMarimekko>;
   BlessMarquee: All<typeof BlessMarquee>;
+  BlessMeasureConverter: All<typeof BlessMeasureConverter>;
   BlessMedicationSchedule: All<typeof BlessMedicationSchedule>;
   BlessMessageFeedback: All<typeof BlessMessageFeedback>;
   BlessMiniPlayer: All<typeof BlessMiniPlayer>;
@@ -1353,6 +1355,19 @@ export const labelsId: BlessLabelsFull = {
   },
   BlessMarimekko: { column: "Kolom", share: "Porsi dari semua" },
   BlessMarquee: { play: "Putar", pause: "Jeda" },
+  BlessMeasureConverter: {
+    length: "Panjang",
+    mass: "Massa",
+    volume: "Volume",
+    temperature: "Suhu",
+    kind: "Ukuran",
+    amount: "Jumlah",
+    from: "Dari",
+    to: "Ke",
+    swap: "Tukar satuan",
+    cup: "cangkir (AS)",
+    kelvin: "kelvin (K)",
+  },
   BlessMedicationSchedule: {
     title: "Obat hari ini",
     late: "terlambat",

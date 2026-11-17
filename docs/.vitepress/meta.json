@@ -10719,6 +10719,75 @@
   ],
   "exposed": []
  },
+ "BlessMeasureConverter": {
+  "props": [
+   {
+    "name": "locale",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"en\"",
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<Record<BlessMeasureKind, string> & { kind: string; amount: string; from: string; to: string; swap: string; cup: string; kelvin: string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "kind",
+    "type": "BlessMeasureKind | undefined",
+    "required": false,
+    "default": "\"length\"",
+    "description": ""
+   },
+   {
+    "name": "amount",
+    "type": "number | undefined",
+    "required": false,
+    "default": "1",
+    "description": ""
+   },
+   {
+    "name": "from",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"kilometer\"",
+    "description": ""
+   },
+   {
+    "name": "to",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"mile\"",
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "update:amount",
+    "type": "[value: number]",
+    "description": ""
+   },
+   {
+    "name": "update:from",
+    "type": "[value: string]",
+    "description": ""
+   },
+   {
+    "name": "update:to",
+    "type": "[value: string]",
+    "description": ""
+   },
+   {
+    "name": "update:kind",
+    "type": "[value: BlessMeasureKind]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessMedicationSchedule": {
   "props": [
    {
