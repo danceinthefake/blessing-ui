@@ -16363,6 +16363,32 @@
   "slots": [],
   "exposed": []
  },
+ "BlessRunTrace": {
+  "props": [
+   {
+    "name": "steps",
+    "type": "BlessTraceStep[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "locale",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"en\"",
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<Record<BlessTraceStatus, string> & { summary: (steps: number, time: string, errors: number) => string; input: string; output: string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessSankey": {
   "props": [
    {
