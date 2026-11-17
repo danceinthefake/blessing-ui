@@ -9605,6 +9605,49 @@
   "slots": [],
   "exposed": []
  },
+ "BlessKnowledgeArticle": {
+  "props": [
+   {
+    "name": "title",
+    "type": "string",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "updated",
+    "type": "string | undefined",
+    "required": false,
+    "description": "the date of the last change, as text"
+   },
+   {
+    "name": "sections",
+    "type": "BlessArticleSection[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "related",
+    "type": "{ title: string; href: string; }[] | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ updated: (date: string) => string; minutes: (n: number) => string; contents: string; helpful: string; yes: string; no: string; thanks: string; related: string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "helpful",
+    "type": "[yes: boolean]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessLabel": {
   "props": [
    {

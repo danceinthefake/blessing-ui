@@ -103,6 +103,7 @@ import type BlessInvoice from "../components/BlessInvoice.vue";
 import type BlessJournalEntry from "../components/BlessJournalEntry.vue";
 import type BlessKanban from "../components/BlessKanban.vue";
 import type BlessKeyValueEditor from "../components/BlessKeyValueEditor.vue";
+import type BlessKnowledgeArticle from "../components/BlessKnowledgeArticle.vue";
 import type BlessLeaderboard from "../components/BlessLeaderboard.vue";
 import type BlessLessonPath from "../components/BlessLessonPath.vue";
 import type BlessLessonVideo from "../components/BlessLessonVideo.vue";
@@ -349,6 +350,7 @@ export type BlessLabelsFull = {
   BlessJournalEntry: All<typeof BlessJournalEntry>;
   BlessKanban: All<typeof BlessKanban>;
   BlessKeyValueEditor: All<typeof BlessKeyValueEditor>;
+  BlessKnowledgeArticle: All<typeof BlessKnowledgeArticle>;
   BlessLeaderboard: All<typeof BlessLeaderboard>;
   BlessLessonPath: All<typeof BlessLessonPath>;
   BlessLessonVideo: All<typeof BlessLessonVideo>;
@@ -1270,6 +1272,16 @@ export const labelsId: BlessLabelsFull = {
     enabled: "Aktif",
     remove: "Hapus",
     duplicate: "Kunci ini dipakai lebih dari sekali",
+  },
+  BlessKnowledgeArticle: {
+    updated: (d) => `Terakhir diubah ${d}`,
+    minutes: (n) => `${n} menit baca`,
+    contents: "Di artikel ini",
+    helpful: "Apakah artikel ini membantu Anda?",
+    yes: "Ya",
+    no: "Tidak",
+    thanks: "Terima kasih. Jawaban Anda membantu kami membuat halaman bantuan lebih baik.",
+    related: "Artikel terkait",
   },
   BlessLeaderboard: {
     rank: "Peringkat",

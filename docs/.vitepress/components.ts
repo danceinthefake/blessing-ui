@@ -623,6 +623,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         text: "A results page with facets and pages",
       },
       { name: "BlessAzIndex", slug: "az-index", text: "A list by first letter with a jump bar" },
+      {
+        name: "BlessKnowledgeArticle",
+        slug: "knowledge-article",
+        text: "A help article with contents and feedback",
+      },
       { name: "BlessStage", slug: "stage", text: "Page shell, sidebar \u2192 drawer under 800px" },
       { name: "BlessSidebarNav", slug: "sidebar-nav", text: "Vertical nav list" },
       { name: "BlessNavigationMenu", slug: "navigation-menu", text: "Horizontal nav with panels" },
