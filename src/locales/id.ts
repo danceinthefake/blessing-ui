@@ -185,6 +185,7 @@ import type BlessSankey from "../components/BlessSankey.vue";
 import type BlessScatterChart from "../components/BlessScatterChart.vue";
 import type BlessSceneButtons from "../components/BlessSceneButtons.vue";
 import type BlessScheduler from "../components/BlessScheduler.vue";
+import type BlessSearchResults from "../components/BlessSearchResults.vue";
 import type BlessSeatPicker from "../components/BlessSeatPicker.vue";
 import type BlessSelectionToolbar from "../components/BlessSelectionToolbar.vue";
 import type BlessShareAccess from "../components/BlessShareAccess.vue";
@@ -429,6 +430,7 @@ export type BlessLabelsFull = {
   BlessScatterChart: All<typeof BlessScatterChart>;
   BlessSceneButtons: All<typeof BlessSceneButtons>;
   BlessScheduler: All<typeof BlessScheduler>;
+  BlessSearchResults: All<typeof BlessSearchResults>;
   BlessSeatPicker: All<typeof BlessSeatPicker>;
   BlessSelectionToolbar: All<typeof BlessSelectionToolbar>;
   BlessShareAccess: All<typeof BlessShareAccess>;
@@ -1862,6 +1864,14 @@ export const labelsId: BlessLabelsFull = {
     added: (t) => `${t} ditambahkan`,
     removed: (t) => `${t} dihapus`,
     hint: "Tombol panah menggeser acara, Alt dengan atas atau bawah mengubah durasinya, Delete menghapusnya.",
+  },
+  BlessSearchResults: {
+    count: (s, t, q) => `${s} dari ${t} hasil untuk “${q}”`,
+    none: (q) => `Tidak ada hasil untuk “${q}”.`,
+    tips: "Periksa ejaan, pakai lebih sedikit kata, atau hapus filter.",
+    sort: "Urutkan",
+    filters: "Filter",
+    didYouMean: "Mungkin maksud Anda",
   },
   BlessSeatPicker: {
     stage: "Panggung",

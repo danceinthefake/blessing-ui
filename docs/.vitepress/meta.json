@@ -16313,6 +16313,112 @@
   "slots": [],
   "exposed": []
  },
+ "BlessSearchResults": {
+  "props": [
+   {
+    "name": "query",
+    "type": "string",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "results",
+    "type": "BlessSearchHit[]",
+    "required": true,
+    "description": "the hits of this page only"
+   },
+   {
+    "name": "total",
+    "type": "number",
+    "required": true,
+    "description": "the number of hits on all pages"
+   },
+   {
+    "name": "pageSize",
+    "type": "number | undefined",
+    "required": false,
+    "default": "10",
+    "description": ""
+   },
+   {
+    "name": "facets",
+    "type": "BlessFacet[] | undefined",
+    "required": false,
+    "default": "[]",
+    "description": ""
+   },
+   {
+    "name": "sorts",
+    "type": "{ value: string; label: string; }[] | undefined",
+    "required": false,
+    "default": "[]",
+    "description": ""
+   },
+   {
+    "name": "suggestion",
+    "type": "string | undefined",
+    "required": false,
+    "description": "a better spelling of the search, if your search engine has one"
+   },
+   {
+    "name": "locale",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"en\"",
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ count: (shown: string, total: string, query: string) => string; none: (query: string) => string; tips: string; sort: string; filters: string; didYouMean: string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "selected",
+    "type": "Record<string, string[]> | undefined",
+    "required": false,
+    "default": "{}",
+    "description": ""
+   },
+   {
+    "name": "sort",
+    "type": "string | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "page",
+    "type": "number | undefined",
+    "required": false,
+    "default": "1",
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "update:selected",
+    "type": "[value: Record<string, string[]>]",
+    "description": ""
+   },
+   {
+    "name": "update:sort",
+    "type": "[value: string | undefined]",
+    "description": ""
+   },
+   {
+    "name": "update:page",
+    "type": "[value: number]",
+    "description": ""
+   },
+   {
+    "name": "suggest",
+    "type": "[query: string]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessSeatPicker": {
   "props": [
    {

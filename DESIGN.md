@@ -693,7 +693,7 @@ Ten components, 407 → 417. Each uses native platform APIs only: the library ad
 Nine components, 417 → 426. Each uses native platform APIs only: the library adds no dependency. Each needs tests, a docs page with a live example, a README row, words in `labelsId`, and a pass of `src/classes.test.ts`. If a component uses a known method or names another party, credit it on the credits page. When a component lands, move its part from "Not yet" to "Today" on the site types page, in both languages.
 
 - ✅ `BlessSearchResult`: one result with the title, the address, and a snippet with the search words marked.
-- `BlessSearchResults`: a results page with the count, the sort, the facets, the results, and the pages.
+- ✅ `BlessSearchResults`: a results page with the count, the sort, the facets, the results, and the pages.
 - `BlessAzIndex`: a list in groups by first letter, with a bar of letters to jump.
 - `BlessKnowledgeArticle`: a help article with contents, the date of the last change, and a question if it helped.
 - `BlessSavedForm`: a long form that saves a draft in the browser and offers to go on with it later.
