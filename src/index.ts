@@ -775,3 +775,5 @@ export type { BlessTraceStatus, BlessTraceStep } from "./components/BlessRunTrac
 export { default as BlessPromptLibrary } from "./components/BlessPromptLibrary.vue";
 export { fillPrompt, promptFields } from "./components/BlessPromptLibrary.vue";
 export type { BlessSavedPrompt } from "./components/BlessPromptLibrary.vue";
+export { default as BlessAnswerCompare } from "./components/BlessAnswerCompare.vue";
+export type { BlessAnswerVote, BlessComparedAnswer } from "./components/BlessAnswerCompare.vue";

@@ -511,6 +511,51 @@
   "slots": [],
   "exposed": []
  },
+ "BlessAnswerCompare": {
+  "props": [
+   {
+    "name": "prompt",
+    "type": "string | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "answers",
+    "type": "[BlessComparedAnswer, BlessComparedAnswer]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "blind",
+    "type": "boolean | undefined",
+    "required": false,
+    "default": "true",
+    "description": "hide the sources until the person votes, so the names do not sway the vote"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<Record<BlessAnswerVote, string> & { prompt: string; answer: (letter: string) => string; question: string; thanks: string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "BlessAnswerVote | null | undefined",
+    "required": false,
+    "default": "null",
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "update:modelValue",
+    "type": "[value: BlessAnswerVote | null]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessApiEndpoint": {
   "props": [
    {
