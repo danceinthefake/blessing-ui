@@ -40,6 +40,7 @@ import type BlessCoachmark from "../components/BlessCoachmark.vue";
 import type BlessCodeBlock from "../components/BlessCodeBlock.vue";
 import type BlessColorSwatches from "../components/BlessColorSwatches.vue";
 import type BlessCommand from "../components/BlessCommand.vue";
+import type BlessCommitList from "../components/BlessCommitList.vue";
 import type BlessComparisonTable from "../components/BlessComparisonTable.vue";
 import type BlessConnectionStatus from "../components/BlessConnectionStatus.vue";
 import type BlessConsentBanner from "../components/BlessConsentBanner.vue";
@@ -278,6 +279,7 @@ export type BlessLabelsFull = {
   BlessCodeBlock: All<typeof BlessCodeBlock>;
   BlessColorSwatches: All<typeof BlessColorSwatches>;
   BlessCommand: All<typeof BlessCommand>;
+  BlessCommitList: All<typeof BlessCommitList>;
   BlessComparisonTable: All<typeof BlessComparisonTable>;
   BlessConnectionStatus: All<typeof BlessConnectionStatus>;
   BlessConsentBanner: All<typeof BlessConsentBanner>;
@@ -766,6 +768,12 @@ export const labelsId: BlessLabelsFull = {
     scope: (l) => `Hanya di ${l}`,
     clearScope: "Cari di semua tempat",
     scopeHint: (parts) => `Ketik ${parts.join(", ")}`,
+  },
+  BlessCommitList: {
+    day: (d) => `Commit pada ${d}`,
+    changes: (a, r) => `${a} baris ditambah, ${r} baris dihapus`,
+    copy: "Salin",
+    copied: "Disalin",
   },
   BlessComparisonTable: {
     title: "Bandingkan paket",

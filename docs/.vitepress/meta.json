@@ -3975,6 +3975,38 @@
   ],
   "exposed": []
  },
+ "BlessCommitList": {
+  "props": [
+   {
+    "name": "commits",
+    "type": "BlessCommit[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "locale",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"en\"",
+    "description": ""
+   },
+   {
+    "name": "timeZone",
+    "type": "string | undefined",
+    "required": false,
+    "description": "an IANA time zone for the days; set it when you render on a server"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ day: (date: string) => string; changes: (added: number, removed: number) => string; copy: string; copied: string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessCompare": {
   "props": [
    {

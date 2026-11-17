@@ -589,6 +589,11 @@ export const groups: { title: string; items: Entry[] }[] = [
       { name: "BlessTerminal", slug: "terminal", text: "Shell output with a prompt and history" },
       { name: "BlessApiEndpoint", slug: "api-endpoint", text: "One endpoint of an API reference" },
       { name: "BlessDeployList", slug: "deploy-list", text: "Deploys with state and rollback" },
+      {
+        name: "BlessCommitList",
+        slug: "commit-list",
+        text: "Commits by day with hashes and changes",
+      },
       { name: "BlessStage", slug: "stage", text: "Page shell, sidebar \u2192 drawer under 800px" },
       { name: "BlessSidebarNav", slug: "sidebar-nav", text: "Vertical nav list" },
       { name: "BlessNavigationMenu", slug: "navigation-menu", text: "Horizontal nav with panels" },
