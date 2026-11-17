@@ -4,7 +4,7 @@ import { BlessLogoCloud } from "blessing-ui";
 // made-up word marks drawn as SVG; use the real logo files of your customers
 const mark = (name: string, color: string, shape: string) =>
   `data:image/svg+xml;utf8,${encodeURIComponent(
-    `<svg xmlns="http://www.w3.org/2000/svg" width="180" height="48"><g fill="#${color}">${shape}</g><text x="52" y="31" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#${color}">${name}</text></svg>`,
+    `<svg xmlns="http://www.w3.org/2000/svg" width="200" height="48"><g fill="#${color}">${shape}</g><text x="52" y="31" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#${color}">${name}</text></svg>`,
   )}`;
 const logos = [
   { name: "Gema Audio", src: mark("Gema Audio", "c2185b", '<circle cx="22" cy="24" r="16"/>') },

@@ -30,8 +30,8 @@ For each group, the page lists the components and the [blocks](../blocks/) that 
 | 12. Utilities                     |               11 |       0 |
 | 13. Search and reference          |               10 |       0 |
 | 14. Government and civic services |               14 |       0 |
-| 15. Brand and marketing sites     |               11 |       5 |
-| 16. AI assistants and agents      |               11 |       6 |
+| 15. Brand and marketing sites     |               16 |       0 |
+| 16. AI assistants and agents      |               17 |       0 |
 | 17. Connected devices             |               12 |       0 |
 | 18. Operations                    |               20 |       0 |
 
@@ -165,21 +165,21 @@ Not yet: nothing from the first list. Every part that this page named is now a c
 
 Landing pages, portfolios, and company sites. People learn about a product and sign up.
 
-Today: [PricingTable](../components/pricing-table), [Testimonials](../components/testimonials), [ComparisonTable](../components/comparison-table), [NewsletterSignup](../components/newsletter-signup), [Marquee](../components/marquee), [Parallax](../components/parallax), [CountUp](../components/count-up), [FaqSearch](../components/faq-search), [ConsentBanner](../components/consent-banner), [CountdownBanner](../components/countdown-banner), [Background](../components/background).
+Today: [LogoCloud](../components/logo-cloud), [FeatureGrid](../components/feature-grid), [TeamGrid](../components/team-grid), [ContactForm](../components/contact-form), [PortfolioGrid](../components/portfolio-grid), [PricingTable](../components/pricing-table), [Testimonials](../components/testimonials), [ComparisonTable](../components/comparison-table), [NewsletterSignup](../components/newsletter-signup), [Marquee](../components/marquee), [Parallax](../components/parallax), [CountUp](../components/count-up), [FaqSearch](../components/faq-search), [ConsentBanner](../components/consent-banner), [CountdownBanner](../components/countdown-banner), [Background](../components/background).
 
 Blocks: [site](../blocks/site), [pricing](../blocks/pricing).
 
-Not yet: logo cloud, feature grid, team grid, contact form, portfolio grid with filters.
+Not yet: nothing from the first list. Every part that this page named is now a component.
 
 ## 16. AI assistants and agents
 
 Chat with a model and agents that do work. People ask, watch, and correct.
 
-Today: [PromptInput](../components/prompt-input), [StreamingText](../components/streaming-text), [ToolCall](../components/tool-call), [Reasoning](../components/reasoning), [Sources](../components/sources), [MessageFeedback](../components/message-feedback), [ContextMeter](../components/context-meter), [ModelPicker](../components/model-picker), [AgentPlan](../components/agent-plan), [ChatHistory](../components/chat-history), [Suggestions](../components/suggestions).
+Today: [ArtifactPanel](../components/artifact-panel), [ContextChips](../components/context-chips), [RunTrace](../components/run-trace), [PromptLibrary](../components/prompt-library), [AnswerCompare](../components/answer-compare), [TokenCost](../components/token-cost), [PromptInput](../components/prompt-input), [StreamingText](../components/streaming-text), [ToolCall](../components/tool-call), [Reasoning](../components/reasoning), [Sources](../components/sources), [MessageFeedback](../components/message-feedback), [ContextMeter](../components/context-meter), [ModelPicker](../components/model-picker), [AgentPlan](../components/agent-plan), [ChatHistory](../components/chat-history), [Suggestions](../components/suggestions).
 
 Blocks: [chat](../blocks/chat).
 
-Not yet: side panel for a document that the model writes, context chips for files and pages, run trace, prompt library, two answers side by side, token cost.
+Not yet: nothing from the first list. Every part that this page named is now a component.
 
 ## 17. Connected devices
 
