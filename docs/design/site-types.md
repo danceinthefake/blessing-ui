@@ -28,8 +28,8 @@ For each group, the page lists the components and the [blocks](../blocks/) that 
 | 10. Health and fitness            |               12 |       0 |
 | 11. Developer tools               |               18 |       0 |
 | 12. Utilities                     |               11 |       0 |
-| 13. Search and reference          |                6 |       4 |
-| 14. Government and civic services |                9 |       5 |
+| 13. Search and reference          |               10 |       0 |
+| 14. Government and civic services |               14 |       0 |
 | 15. Brand and marketing sites     |               11 |       5 |
 | 16. AI assistants and agents      |               11 |       6 |
 | 17. Connected devices             |               12 |       0 |
@@ -147,19 +147,19 @@ Not yet: nothing from the first list. Every part that this page named is now a c
 
 Search engines, wikis, and directories. People ask and find.
 
-Today: [Command](../components/command), [Combobox](../components/combobox), [Glossary](../components/glossary), [FaqSearch](../components/faq-search), [Tree](../components/tree), [Highlight](../components/highlight).
+Today: [SearchResult](../components/search-result), [SearchResults](../components/search-results), [AzIndex](../components/az-index), [KnowledgeArticle](../components/knowledge-article), [Command](../components/command), [Combobox](../components/combobox), [Glossary](../components/glossary), [FaqSearch](../components/faq-search), [Tree](../components/tree), [Highlight](../components/highlight).
 
-Not yet: search result item, results page with facets, A to Z index, knowledge base article.
+Not yet: nothing from the first list. Every part that this page named is now a component.
 
 ## 14. Government and civic services
 
 Permits, taxes, and public services. People fill long forms and track a request.
 
-Today: [Form](../components/form), [Stepper](../components/stepper), [AddressFields](../components/address-fields), [PhoneInput](../components/phone-input), [InputMask](../components/input-mask), [DatePicker](../components/date-picker), [Uploader](../components/uploader), [SignaturePad](../components/signature-pad), [CameraCapture](../components/camera-capture).
+Today: [SavedForm](../components/saved-form), [CheckAnswers](../components/check-answers), [ApplicationStatus](../components/application-status), [EligibilityCheck](../components/eligibility-check), [DocumentChecklist](../components/document-checklist), [Form](../components/form), [Stepper](../components/stepper), [AddressFields](../components/address-fields), [PhoneInput](../components/phone-input), [InputMask](../components/input-mask), [DatePicker](../components/date-picker), [Uploader](../components/uploader), [SignaturePad](../components/signature-pad), [CameraCapture](../components/camera-capture).
 
 Blocks: [signin](../blocks/signin), [onboarding](../blocks/onboarding).
 
-Not yet: long form that saves and resumes, review page before you send, application status tracker, eligibility check, document checklist.
+Not yet: nothing from the first list. Every part that this page named is now a component.
 
 ## 15. Brand and marketing sites
 

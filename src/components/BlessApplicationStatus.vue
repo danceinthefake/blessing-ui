@@ -168,6 +168,7 @@ const when = (i: number) =>
   justify-self: start;
   color: inherit;
   font-weight: var(--bless-font-weight-bold);
+  text-decoration: underline;
   text-underline-offset: 3px;
 }
 .bless-appstatus__action a:focus-visible {

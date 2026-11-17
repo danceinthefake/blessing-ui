@@ -33,7 +33,7 @@ test("BlessSearchResults: count, list, pages, sort, suggestion, and no results",
   expect(w.props("sort")).toBe("new");
   await w.find(".bless-results__suggest button").trigger("click");
   expect(w.emitted("suggest")).toEqual([["passports"]]);
-  expect(w.find("details summary").text()).toBe("Filters");
+  expect(w.findAll(".bless-results input[type=checkbox]")).toHaveLength(1);
   await w.setProps({ total: 0, results: [] });
   expect(w.find("[role=status]").text()).toBe("No results for “passport”.");
   expect(w.find(".bless-results__tips").exists()).toBe(true);

@@ -65,6 +65,11 @@
     "css": 1477
   },
   {
+    "name": "BlessApplicationStatus",
+    "js": 1137,
+    "css": 802
+  },
+  {
     "name": "BlessAppointmentCard",
     "js": 2348,
     "css": 1385
@@ -123,6 +128,11 @@
     "name": "BlessAvatarGroup",
     "js": 1082,
     "css": 447
+  },
+  {
+    "name": "BlessAzIndex",
+    "js": 1048,
+    "css": 550
   },
   {
     "name": "BlessBackground",
@@ -293,6 +303,11 @@
     "name": "BlessChatHistory",
     "js": 2552,
     "css": 1209
+  },
+  {
+    "name": "BlessCheckAnswers",
+    "js": 1197,
+    "css": 658
   },
   {
     "name": "BlessCheckbox",
@@ -545,6 +560,11 @@
     "css": 765
   },
   {
+    "name": "BlessDocumentChecklist",
+    "js": 1301,
+    "css": 602
+  },
+  {
     "name": "BlessDocumentStatus",
     "js": 1781,
     "css": 1213
@@ -583,6 +603,11 @@
     "name": "BlessEditor",
     "js": 2030,
     "css": 920
+  },
+  {
+    "name": "BlessEligibilityCheck",
+    "js": 1526,
+    "css": 684
   },
   {
     "name": "BlessEmailComposer",
@@ -888,6 +913,11 @@
     "name": "BlessKnob",
     "js": 1451,
     "css": 649
+  },
+  {
+    "name": "BlessKnowledgeArticle",
+    "js": 1904,
+    "css": 791
   },
   {
     "name": "BlessLabel",
@@ -1510,6 +1540,11 @@
     "css": 350
   },
   {
+    "name": "BlessSavedForm",
+    "js": 1165,
+    "css": 412
+  },
+  {
     "name": "BlessScatterChart",
     "js": 2093,
     "css": 124
@@ -1533,6 +1568,16 @@
     "name": "BlessScrollTop",
     "js": 753,
     "css": 413
+  },
+  {
+    "name": "BlessSearchResult",
+    "js": 1130,
+    "css": 474
+  },
+  {
+    "name": "BlessSearchResults",
+    "js": 4148,
+    "css": 1487
   },
   {
     "name": "BlessSeatPicker",

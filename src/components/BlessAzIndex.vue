@@ -90,7 +90,8 @@ const anchor = (l: string) => `${id}-${l === "#" ? "other" : l}`;
 }
 .bless-az__bar {
   position: sticky;
-  inset-block-start: 0;
+  /* a page with a fixed header sets --bless-az-top to its height */
+  inset-block-start: var(--bless-az-top, 0);
   z-index: 1;
   padding-block: var(--bless-space-2);
   background: var(--bless-color-bg);
@@ -134,7 +135,7 @@ const anchor = (l: string) => `${id}-${l === "#" ? "other" : l}`;
   gap: var(--bless-space-3);
   padding-block-start: var(--bless-space-3);
   border-block-start: 2px solid var(--bless-color-text);
-  scroll-margin-block-start: 3.5rem;
+  scroll-margin-block-start: calc(var(--bless-az-top, 0px) + 3.5rem);
 }
 /* two classes, so the heading styles of a host page do not win */
 .bless-az .bless-az__letter {
@@ -157,6 +158,7 @@ const anchor = (l: string) => `${id}-${l === "#" ? "other" : l}`;
 }
 .bless-az__list a {
   color: inherit;
+  text-decoration: underline;
   text-underline-offset: 3px;
 }
 </style>
