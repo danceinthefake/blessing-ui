@@ -30,8 +30,8 @@ Untuk setiap kelompok, halaman ini mendaftar komponen dan [blok](../../blocks/) 
 | 12. Utilitas                      |                11 |         0 |
 | 13. Pencarian dan referensi       |                10 |         0 |
 | 14. Layanan pemerintah dan publik |                14 |         0 |
-| 15. Situs merek dan pemasaran     |                11 |         5 |
-| 16. Asisten dan agen AI           |                11 |         6 |
+| 15. Situs merek dan pemasaran     |                16 |         0 |
+| 16. Asisten dan agen AI           |                17 |         0 |
 | 17. Perangkat terhubung           |                12 |         0 |
 | 18. Operasional                   |                20 |         0 |
 
@@ -165,21 +165,21 @@ Belum ada: tidak ada dari daftar pertama. Setiap bagian yang disebut halaman ini
 
 Halaman arahan, portofolio, dan situs perusahaan. Orang mengenal produk lalu mendaftar.
 
-Sekarang: [PricingTable](../../components/pricing-table), [Testimonials](../../components/testimonials), [ComparisonTable](../../components/comparison-table), [NewsletterSignup](../../components/newsletter-signup), [Marquee](../../components/marquee), [Parallax](../../components/parallax), [CountUp](../../components/count-up), [FaqSearch](../../components/faq-search), [ConsentBanner](../../components/consent-banner), [CountdownBanner](../../components/countdown-banner), [Background](../../components/background).
+Sekarang: [LogoCloud](../../components/logo-cloud), [FeatureGrid](../../components/feature-grid), [TeamGrid](../../components/team-grid), [ContactForm](../../components/contact-form), [PortfolioGrid](../../components/portfolio-grid), [PricingTable](../../components/pricing-table), [Testimonials](../../components/testimonials), [ComparisonTable](../../components/comparison-table), [NewsletterSignup](../../components/newsletter-signup), [Marquee](../../components/marquee), [Parallax](../../components/parallax), [CountUp](../../components/count-up), [FaqSearch](../../components/faq-search), [ConsentBanner](../../components/consent-banner), [CountdownBanner](../../components/countdown-banner), [Background](../../components/background).
 
 Blok: [site](../../blocks/site), [pricing](../../blocks/pricing).
 
-Belum ada: deretan logo, kisi fitur, kisi tim, formulir kontak, kisi portofolio dengan filter.
+Belum ada: tidak ada dari daftar pertama. Setiap bagian yang disebut halaman ini sudah menjadi komponen.
 
 ## 16. Asisten dan agen AI
 
 Chat dengan model dan agen yang bekerja. Orang bertanya, mengamati, dan mengoreksi.
 
-Sekarang: [PromptInput](../../components/prompt-input), [StreamingText](../../components/streaming-text), [ToolCall](../../components/tool-call), [Reasoning](../../components/reasoning), [Sources](../../components/sources), [MessageFeedback](../../components/message-feedback), [ContextMeter](../../components/context-meter), [ModelPicker](../../components/model-picker), [AgentPlan](../../components/agent-plan), [ChatHistory](../../components/chat-history), [Suggestions](../../components/suggestions).
+Sekarang: [ArtifactPanel](../../components/artifact-panel), [ContextChips](../../components/context-chips), [RunTrace](../../components/run-trace), [PromptLibrary](../../components/prompt-library), [AnswerCompare](../../components/answer-compare), [TokenCost](../../components/token-cost), [PromptInput](../../components/prompt-input), [StreamingText](../../components/streaming-text), [ToolCall](../../components/tool-call), [Reasoning](../../components/reasoning), [Sources](../../components/sources), [MessageFeedback](../../components/message-feedback), [ContextMeter](../../components/context-meter), [ModelPicker](../../components/model-picker), [AgentPlan](../../components/agent-plan), [ChatHistory](../../components/chat-history), [Suggestions](../../components/suggestions).
 
 Blok: [chat](../../blocks/chat).
 
-Belum ada: panel samping untuk dokumen yang ditulis model, cip konteks untuk berkas dan halaman, jejak eksekusi, pustaka prompt, dua jawaban berdampingan, biaya token.
+Belum ada: tidak ada dari daftar pertama. Setiap bagian yang disebut halaman ini sudah menjadi komponen.
 
 ## 17. Perangkat terhubung
 
