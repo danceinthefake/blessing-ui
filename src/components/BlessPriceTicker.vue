@@ -86,4 +86,7 @@ const pct = computed(
 .bless-ticker__change.is-up {
   font-weight: var(--bless-font-weight-bold);
 }
+.bless-ticker {
+  animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft);
+}
 </style>

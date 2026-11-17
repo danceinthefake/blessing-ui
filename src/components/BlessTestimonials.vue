@@ -177,4 +177,7 @@ const step = (d: number) => (at.value = (at.value + d + props.items.length) % pr
   color: var(--bless-color-text-muted);
   font-variant-numeric: tabular-nums;
 }
+.bless-quotes {
+  animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft);
+}
 </style>

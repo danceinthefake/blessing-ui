@@ -61,7 +61,7 @@ const toggle = (s: number) => (filter.value = filter.value === s ? undefined : s
       </span>
       <span class="bless-reviews__total">{{ text.reviews(total) }}</span>
     </div>
-    <ul class="bless-reviews__bars">
+    <ul class="bless-stagger bless-reviews__bars">
       <li v-for="r in rows" :key="r.stars">
         <component
           :is="filterable ? 'button' : 'div'"

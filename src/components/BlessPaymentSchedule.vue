@@ -111,7 +111,7 @@ const interest = computed(() => rows.value.reduce((n, r) => n + r.interest, 0));
             <th scope="col">{{ text.balance }}</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody class="bless-stagger">
           <tr v-for="r in rows" :key="r.n" :class="{ 'is-paid': r.n <= paid }">
             <th scope="row">
               {{ r.n

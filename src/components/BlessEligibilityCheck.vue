@@ -264,4 +264,7 @@ function restart() {
   line-height: 1.6;
   white-space: pre-line;
 }
+.bless-elig {
+  animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft);
+}
 </style>

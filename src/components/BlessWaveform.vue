@@ -122,4 +122,9 @@ function onInput(e: Event) {
 .bless-wave--disabled .bless-wave__range {
   cursor: not-allowed;
 }
+.bless-wave__bar {
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+  animation: bless-grow var(--bless-duration-draw) var(--bless-ease-soft) backwards;
+}
 </style>

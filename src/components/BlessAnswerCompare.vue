@@ -175,4 +175,7 @@ const won = (i: number) => (vote.value === "a" && i === 0) || (vote.value === "b
 .bless-ab__thanks:empty {
   display: none;
 }
+.bless-ab {
+  animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft);
+}
 </style>

@@ -115,7 +115,7 @@ const lines = computed(() => [
           />
           <text :x="width - PAD.r + 6" :y="y(l.v)" class="bless-spc__name">{{ l.label }}</text>
         </g>
-        <path :d="line" class="bless-spc__path" />
+        <path :d="line" class="bless-spc__path" pathLength="1" />
         <template v-for="(v, i) in values" :key="i">
           <rect
             v-if="out(v)"
@@ -225,5 +225,9 @@ const lines = computed(() => [
   font-weight: var(--bless-font-weight-normal);
   color: var(--bless-color-text);
   font-variant-numeric: tabular-nums;
+}
+.bless-spc__path {
+  stroke-dasharray: 1;
+  animation: bless-draw var(--bless-duration-draw) var(--bless-ease-soft) backwards;
 }
 </style>

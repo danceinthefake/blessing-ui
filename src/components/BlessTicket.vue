@@ -183,4 +183,7 @@ const fields = computed(() =>
     border-block-start: 2px dashed var(--bless-color-border);
   }
 }
+.bless-ticket {
+  animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft);
+}
 </style>

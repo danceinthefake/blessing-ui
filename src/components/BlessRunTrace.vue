@@ -225,4 +225,7 @@ const errors = computed(() => rows.value.filter((r) => r.status === "error").len
   font-size: var(--bless-text-xs);
   white-space: pre-wrap;
 }
+.bless-trace {
+  animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft);
+}
 </style>

@@ -108,7 +108,7 @@ async function copy() {
     </form>
     <section class="bless-access__part" :aria-label="text.people">
       <div class="bless-access__title" aria-hidden="true">{{ text.people }}</div>
-      <ul class="bless-access__list" role="list">
+      <ul class="bless-stagger bless-access__list" role="list">
         <li v-for="p in people" :key="p.id">
           <div class="bless-access__person">
             <BlessAvatar :name="p.name" size="sm" />

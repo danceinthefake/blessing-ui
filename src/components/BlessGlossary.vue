@@ -59,4 +59,7 @@ withDefaults(
 .bless-glossary__term {
   font-weight: var(--bless-font-weight-bold);
 }
+.bless-glossary {
+  animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft);
+}
 </style>

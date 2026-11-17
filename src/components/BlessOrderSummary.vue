@@ -190,4 +190,7 @@ const total = computed(
 .bless-ordersum__total dt {
   color: var(--bless-color-text);
 }
+.bless-ordersum {
+  animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft);
+}
 </style>

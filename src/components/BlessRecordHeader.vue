@@ -124,4 +124,7 @@ const MARK = { neutral: "●", success: "✓", warning: "!", danger: "✕" } as 
   font-weight: var(--bless-font-weight-bold);
   font-variant-numeric: tabular-nums;
 }
+.bless-record {
+  animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft);
+}
 </style>

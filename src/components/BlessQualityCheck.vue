@@ -90,7 +90,7 @@ const range = (i: BlessQualityItem) =>
         · <strong>{{ passed === items.length ? text.ok : text.notOk }}</strong></template
       >
     </p>
-    <ol class="bless-quality__list" role="list">
+    <ol class="bless-stagger bless-quality__list" role="list">
       <li
         v-for="i in items"
         :key="i.id"

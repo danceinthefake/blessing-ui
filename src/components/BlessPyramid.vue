@@ -155,4 +155,7 @@ const share = (v: number) => Math.max(0, v) / max.value;
   text-align: center;
   font-variant-numeric: tabular-nums;
 }
+.bless-pyramid__rows {
+  animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft);
+}
 </style>

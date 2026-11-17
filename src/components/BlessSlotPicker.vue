@@ -163,4 +163,7 @@ const groups = computed(() => {
     transition: none;
   }
 }
+.bless-slots {
+  animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft);
+}
 </style>

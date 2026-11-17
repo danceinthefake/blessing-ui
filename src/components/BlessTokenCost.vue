@@ -169,4 +169,7 @@ const allTokens = computed(() => rows.value.reduce((a, r) => a + r.n, 0));
   border-block-end: 0;
   font-weight: var(--bless-font-weight-bold);
 }
+.bless-tokens {
+  animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft);
+}
 </style>

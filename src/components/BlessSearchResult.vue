@@ -101,4 +101,7 @@ const crumbs = computed(() => {
 .bless-result__date {
   color: var(--bless-color-text-muted);
 }
+.bless-result {
+  animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft);
+}
 </style>

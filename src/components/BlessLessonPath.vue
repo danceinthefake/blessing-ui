@@ -46,7 +46,7 @@ const MARK = { done: "✓", current: "▶", locked: "" } as const;
 <template>
   <nav class="bless-path" :aria-label="text.title">
     <p class="bless-path__progress">{{ text.progress(doneCount, lessons.length) }}</p>
-    <ol class="bless-path__list">
+    <ol class="bless-stagger bless-path__list">
       <li
         v-for="(l, i) in lessons"
         :key="l.id"

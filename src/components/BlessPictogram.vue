@@ -63,7 +63,7 @@ const rows = computed(() =>
       ></span>
       {{ text.key(fmt(unit), noun) }}
     </p>
-    <ul class="bless-picto__rows">
+    <ul class="bless-stagger bless-picto__rows">
       <li v-for="r in rows" :key="r.label" class="bless-picto__row" :style="{ '--_c': r.color }">
         <span class="bless-picto__label">{{ r.label }}</span>
         <span class="bless-picto__icons" aria-hidden="true">

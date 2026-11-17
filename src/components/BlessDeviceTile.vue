@@ -122,4 +122,7 @@ const state = computed(() =>
 .bless-device__reading {
   font-variant-numeric: tabular-nums;
 }
+.bless-device {
+  animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft);
+}
 </style>

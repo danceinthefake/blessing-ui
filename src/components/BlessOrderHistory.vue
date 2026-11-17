@@ -212,4 +212,7 @@ const count = (o: BlessPastOrder) => o.items.reduce((n, i) => n + i.quantity, 0)
   outline: 2px solid var(--bless-color-accent);
   outline-offset: 2px;
 }
+.bless-orders {
+  animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft);
+}
 </style>

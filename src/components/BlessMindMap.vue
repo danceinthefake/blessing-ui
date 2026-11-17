@@ -200,4 +200,7 @@ const curve = (d: Laid) => {
   font-weight: var(--bless-font-weight-bold);
   dominant-baseline: middle;
 }
+.bless-mind {
+  animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft);
+}
 </style>

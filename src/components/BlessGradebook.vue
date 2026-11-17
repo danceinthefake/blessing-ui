@@ -210,4 +210,7 @@ function set(s: string, t: BlessGradeTask, raw: string) {
   border-block-end: 0;
   font-weight: var(--bless-font-weight-bold);
 }
+.bless-grades {
+  animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft);
+}
 </style>

@@ -77,4 +77,7 @@ withDefaults(
   gap: var(--bless-space-2);
   margin-top: var(--bless-space-3);
 }
+.bless-empty {
+  animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft);
+}
 </style>

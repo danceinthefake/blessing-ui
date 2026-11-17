@@ -145,4 +145,7 @@ const text = computed(() => ({
     break-inside: avoid;
   }
 }
+.bless-cert {
+  animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft);
+}
 </style>

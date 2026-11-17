@@ -78,7 +78,7 @@ const read = (e: Event) => Math.max(0, (e.target as HTMLInputElement).valueAsNum
           <td></td>
         </tr>
       </thead>
-      <tbody>
+      <tbody class="bless-stagger">
         <tr v-for="(s, i) in sets" :key="i" :class="{ 'is-done': s.done }">
           <th scope="row">{{ i + 1 }}</th>
           <td class="bless-workout__last">

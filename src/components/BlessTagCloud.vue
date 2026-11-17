@@ -43,7 +43,7 @@ const size = (w: number) => {
 </script>
 
 <template>
-  <ul class="bless-cloud" :aria-label="label">
+  <ul class="bless-stagger bless-cloud" :aria-label="label">
     <li v-for="t in list" :key="t.label">
       <component
         :is="link(t.href, undefined, 'button').is"

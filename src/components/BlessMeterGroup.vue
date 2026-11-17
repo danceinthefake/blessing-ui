@@ -130,4 +130,7 @@ const valuetext = computed(() =>
 .bless-metergroup__val {
   color: var(--bless-color-text-muted);
 }
+.bless-metergroup {
+  animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft);
+}
 </style>

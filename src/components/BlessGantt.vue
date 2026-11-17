@@ -513,4 +513,14 @@ function pick(t: BlessGanttTask) {
   border-color: var(--bless-color-accent);
   outline: 2px solid var(--bless-color-accent);
 }
+.bless-gantt__bar {
+  transform-box: fill-box;
+  transform-origin: 0 50%;
+  --_gx: var(--bless-grow);
+  --_gy: 1;
+  animation: bless-grow var(--bless-duration-draw) var(--bless-ease-soft) backwards;
+}
+.bless-gantt__bar:dir(rtl) {
+  transform-origin: 100% 50%;
+}
 </style>

@@ -154,4 +154,7 @@ const shown = computed(() => {
   font-size: var(--bless-text-xs);
   color: var(--bless-color-text-muted);
 }
+.bless-shortcuts {
+  animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft);
+}
 </style>

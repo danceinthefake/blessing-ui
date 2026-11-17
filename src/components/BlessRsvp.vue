@@ -135,4 +135,7 @@ const pick = (a: BlessRsvpAnswer) => (answer.value = answer.value === a ? undefi
 .bless-rsvp__total {
   color: var(--bless-color-text-muted);
 }
+.bless-rsvp {
+  animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft);
+}
 </style>

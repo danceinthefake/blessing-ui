@@ -106,7 +106,7 @@ function onKey(e: KeyboardEvent) {
 
 <template>
   <div class="bless-stories">
-    <ul class="bless-stories__rings" :aria-label="text.title">
+    <ul class="bless-stagger bless-stories__rings" :aria-label="text.title">
       <li v-for="(p, i) in people" :key="p.id">
         <button
           type="button"

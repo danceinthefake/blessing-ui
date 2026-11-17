@@ -98,4 +98,7 @@ withDefaults(
   padding: var(--bless-space-3) var(--bless-space-4);
   border-top: var(--bless-border-width) solid var(--bless-color-border);
 }
+.bless-card {
+  animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft);
+}
 </style>

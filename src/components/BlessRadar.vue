@@ -163,4 +163,11 @@ const summary = computed(
   margin-inline-end: var(--bless-space-2);
   background: var(--_c);
 }
+.bless-radar__area {
+  transform-box: view-box;
+  transform-origin: 50% 50%;
+  --_gx: var(--bless-grow);
+  --_gy: var(--bless-grow);
+  animation: bless-grow var(--bless-duration-draw) var(--bless-ease-soft) backwards;
+}
 </style>

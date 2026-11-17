@@ -141,4 +141,7 @@ const last = computed(() => Math.max(0, ...laid.value.nodes.map((n) => n.col)));
     transition: none;
   }
 }
+.bless-sankey__svg {
+  animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft);
+}
 </style>

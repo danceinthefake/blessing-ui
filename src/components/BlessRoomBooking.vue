@@ -253,4 +253,7 @@ const roomName = (id: string) => props.rooms.find((r) => r.id === id)?.name ?? i
   outline: 2px solid var(--bless-color-text);
   outline-offset: 2px;
 }
+.bless-rooms {
+  animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft);
+}
 </style>

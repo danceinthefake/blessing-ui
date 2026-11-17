@@ -325,4 +325,7 @@ const MARK: Record<BlessInvoiceStatus, string> = { draft: "○", sent: "→", pa
     background: #fff;
   }
 }
+.bless-invoice {
+  animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft);
+}
 </style>

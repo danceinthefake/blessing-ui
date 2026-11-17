@@ -58,7 +58,7 @@ const MARK = { done: "✓", current: "●", next: "○" } as const;
 
 <template>
   <div class="bless-docstate" :class="{ 'is-stopped': stopped }">
-    <ol class="bless-docstate__chain" :aria-label="text.title" role="list">
+    <ol class="bless-stagger bless-docstate__chain" :aria-label="text.title" role="list">
       <li
         v-for="(s, i) in states"
         :key="s.id"

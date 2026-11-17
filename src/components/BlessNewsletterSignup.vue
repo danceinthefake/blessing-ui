@@ -107,4 +107,7 @@ function submit(e: Event) {
   background: var(--bless-color-surface-2);
   font-weight: var(--bless-font-weight-bold);
 }
+.bless-newsletter {
+  animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft);
+}
 </style>

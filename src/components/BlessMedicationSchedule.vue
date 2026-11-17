@@ -156,4 +156,7 @@ const done = computed(() => props.doses.filter((d) => isTaken(d.id)).length);
   font-size: var(--bless-text-xs);
   font-weight: var(--bless-font-weight-bold);
 }
+.bless-meds {
+  animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft);
+}
 </style>

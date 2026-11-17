@@ -190,4 +190,7 @@ const summary = computed(
   inline-size: 0.75rem;
   block-size: 0.75rem;
 }
+.bless-sleep__box {
+  animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft);
+}
 </style>

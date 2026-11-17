@@ -83,7 +83,7 @@ const when = (i: number) =>
       <div>{{ action }}</div>
       <a v-if="actionHref" :href="actionHref">{{ actionLabel ?? action }}</a>
     </div>
-    <ol class="bless-appstatus__steps" :aria-label="text.steps">
+    <ol class="bless-stagger bless-appstatus__steps" :aria-label="text.steps">
       <li
         v-for="(s, i) in steps"
         :key="i"

@@ -285,4 +285,7 @@ const remove = (id: string) => (lines.value = lines.value.filter((l) => l.id !==
 .bless-journal__status.is-ok {
   color: var(--bless-color-text);
 }
+.bless-journal {
+  animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft);
+}
 </style>

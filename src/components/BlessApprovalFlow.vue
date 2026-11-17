@@ -101,7 +101,7 @@ const MARK: Record<BlessDecision, string> = { approved: "✓", rejected: "✕", 
 <template>
   <section class="bless-approval" :aria-label="text.title">
     <p class="bless-approval__summary" role="status">{{ summary }}</p>
-    <ol class="bless-approval__steps">
+    <ol class="bless-stagger bless-approval__steps">
       <li
         v-for="(s, i) in steps"
         :key="s.id"

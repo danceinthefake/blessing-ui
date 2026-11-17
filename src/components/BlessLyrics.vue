@@ -114,4 +114,7 @@ watch(current, () =>
   outline: 2px solid var(--bless-color-accent);
   outline-offset: -2px;
 }
+.bless-lyrics {
+  animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft);
+}
 </style>

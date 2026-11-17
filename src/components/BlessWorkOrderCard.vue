@@ -188,4 +188,7 @@ const MARK: Record<BlessWorkOrderState, string> = {
   flex-wrap: wrap;
   gap: var(--bless-space-2);
 }
+.bless-workorder {
+  animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft);
+}
 </style>

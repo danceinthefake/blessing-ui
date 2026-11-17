@@ -143,4 +143,7 @@ const stars = computed(() =>
   justify-self: start;
   margin-block-start: var(--bless-space-1);
 }
+.bless-product {
+  animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft);
+}
 </style>

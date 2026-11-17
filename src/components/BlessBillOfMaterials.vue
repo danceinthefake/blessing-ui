@@ -118,7 +118,7 @@ const qty = (n: number, unit?: string) =>
         />
       </label>
     </div>
-    <ul class="bless-bom__list" role="list">
+    <ul class="bless-stagger bless-bom__list" role="list">
       <li
         v-for="r in rows"
         :key="`${r.part.id}-${r.depth}`"

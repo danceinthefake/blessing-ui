@@ -41,6 +41,12 @@ Panel tab yang baru, langkah baru [Stepper](../../components/stepper), dan isi [
 
 Teks yang diketik bersifat pilihan. Untuk mengetik balasan seperti kotak teks gim, beri [StreamingText](../../components/streaming-text) sebuah `pace` dalam huruf per detik. Pembaca layar menunggu teks lengkap. Dengan reduced motion, teks langsung tampil.
 
+## Yang tetap diam
+
+Kontrol, field, tata letak, dan teks tidak datang. Tombol, input, stack, atau judul sudah ada saat halaman ada. Mereka hanya bergerak saat Anda berinteraksi: condong saat diperhatikan, lompatan toggle, dan flair jika Anda menyalakannya. Editor, kanvas, kalender, dan tabel tempat Anda bekerja juga tetap diam, agar pekerjaan tidak pernah menunggu gerak.
+
+Konten memang datang. Kartu, panel, struk, dan artikel naik. Meteran terisi, batang tumbuh, grafik bundar terbuka dari tengahnya, dan grid sel memudar masuk.
+
 ## Flair
 
 Flair mati secara bawaan, karena letupan di setiap klik melelahkan pada formulir yang dipakai seharian. Untuk menyalakannya, pasang `data-flair` di `<html>` atau di satu wadah, misalnya layar hadiah atau gim.

@@ -244,4 +244,7 @@ function onKey(iso: string, e: KeyboardEvent) {
 .bless-heat__legend .bless-heat__cell {
   --bless-heat-size: 12px;
 }
+.bless-heat__grid {
+  animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft);
+}
 </style>

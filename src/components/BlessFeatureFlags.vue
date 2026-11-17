@@ -45,7 +45,7 @@ function set(key: string, on: boolean) {
 
 <template>
   <section class="bless-flags" :aria-label="text.title">
-    <ul class="bless-flags__list">
+    <ul class="bless-stagger bless-flags__list">
       <li
         v-for="f in flags"
         :key="f.key"

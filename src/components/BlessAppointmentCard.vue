@@ -179,4 +179,7 @@ const MARK: Record<BlessAppointmentStatus, string> = {
   flex-wrap: wrap;
   gap: var(--bless-space-2);
 }
+.bless-appt {
+  animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft);
+}
 </style>

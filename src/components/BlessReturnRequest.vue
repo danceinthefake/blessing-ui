@@ -243,4 +243,7 @@ textarea.bless-return__input {
 .bless-return__error {
   animation: bless-enter var(--bless-duration-voice) var(--bless-ease-snap);
 }
+.bless-return {
+  animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft);
+}
 </style>

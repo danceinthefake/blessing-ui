@@ -83,7 +83,7 @@ const total = computed(() =>
 <template>
   <div class="bless-route">
     <div class="bless-route__total">{{ total }}</div>
-    <ol class="bless-route__list" :aria-label="text.route">
+    <ol class="bless-stagger bless-route__list" :aria-label="text.route">
       <li
         v-for="(s, i) in steps"
         :key="i"

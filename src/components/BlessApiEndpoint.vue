@@ -228,4 +228,7 @@ const tab = ref(tabs.value[0]?.value ?? "");
   gap: var(--bless-space-2);
   padding-block-start: var(--bless-space-2);
 }
+.bless-api {
+  animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft);
+}
 </style>

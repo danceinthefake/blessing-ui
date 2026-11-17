@@ -146,4 +146,14 @@ const valuetext = computed(() =>
   font-variant-numeric: tabular-nums;
   text-align: end;
 }
+.bless-bullet__bar {
+  transform-box: fill-box;
+  transform-origin: 0 50%;
+  --_gx: var(--bless-grow);
+  --_gy: 1;
+  animation: bless-grow var(--bless-duration-draw) var(--bless-ease-soft) backwards;
+}
+.bless-bullet__bar:dir(rtl) {
+  transform-origin: 100% 50%;
+}
 </style>

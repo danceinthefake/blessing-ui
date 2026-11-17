@@ -232,4 +232,10 @@ const regions = computed(() =>
   color: var(--bless-color-text-muted);
   font-variant-numeric: tabular-nums;
 }
+/* the chart opens out from its middle */
+.bless-venn__svg {
+  --_gx: calc(0.6 + 0.4 * var(--bless-grow));
+  --_gy: var(--_gx);
+  animation: bless-grow var(--bless-duration-draw) var(--bless-ease-soft) backwards;
+}
 </style>
