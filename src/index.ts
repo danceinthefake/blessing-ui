@@ -727,3 +727,6 @@ export { default as BlessRouteSteps } from "./components/BlessRouteSteps.vue";
 export type { BlessRouteStep, BlessTurn } from "./components/BlessRouteSteps.vue";
 export { default as BlessWeatherForecast } from "./components/BlessWeatherForecast.vue";
 export type { BlessWeather, BlessWeatherDay } from "./components/BlessWeatherForecast.vue";
+export { default as BlessMeasureConverter } from "./components/BlessMeasureConverter.vue";
+export { convertMeasure, MEASURES } from "./components/BlessMeasureConverter.vue";
+export type { BlessMeasureKind } from "./components/BlessMeasureConverter.vue";
