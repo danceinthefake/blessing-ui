@@ -148,7 +148,8 @@
     .bless-course__title,
     .bless-assign__title,
     .bless-cert__title,
-    .bless-api__path
+    .bless-api__path,
+    .bless-result__title
   ) {
   margin: 0;
   padding: 0;

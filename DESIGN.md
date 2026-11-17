@@ -688,6 +688,20 @@ Ten components, 407 → 417. Each uses native platform APIs only: the library ad
 - ✅ `BlessPlaceSearch`: a search for places with results that show the address and the distance.
 - ✅ Budget: after the round, the whole library is 281.5 KB gz JS and 78.0 KB gz CSS, under the cap of 296 / 82. Phase 42 is done.
 
+### Phase 43 — search and government services (2026-11-17)
+
+Nine components, 417 → 426. Each uses native platform APIs only: the library adds no dependency. Each needs tests, a docs page with a live example, a README row, words in `labelsId`, and a pass of `src/classes.test.ts`. If a component uses a known method or names another party, credit it on the credits page. When a component lands, move its part from "Not yet" to "Today" on the site types page, in both languages.
+
+- ✅ `BlessSearchResult`: one result with the title, the address, and a snippet with the search words marked.
+- `BlessSearchResults`: a results page with the count, the sort, the facets, the results, and the pages.
+- `BlessAzIndex`: a list in groups by first letter, with a bar of letters to jump.
+- `BlessKnowledgeArticle`: a help article with contents, the date of the last change, and a question if it helped.
+- `BlessSavedForm`: a long form that saves a draft in the browser and offers to go on with it later.
+- `BlessCheckAnswers`: the answers of a form in groups with a change link for each, and a statement to agree to before you send.
+- `BlessApplicationStatus`: the reference, the steps of a request with their dates, and what happens next.
+- `BlessEligibilityCheck`: questions one at a time that lead to a result, with a way back.
+- `BlessDocumentChecklist`: the documents that a request needs, with an upload and a state for each.
+
 ### Deliberately skipped
 
 - **Chart**: no bundled lib. Phase 11 ✅: `--bless-color-chart-{1..5}` (≥3:1 both themes) + `BlessChart` frame that maps them onto Unovis `--vis-*` vars. Unovis is the documented pairing, installed by the consumer.
