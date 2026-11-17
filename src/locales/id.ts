@@ -73,6 +73,7 @@ import type BlessDowntimePicker from "../components/BlessDowntimePicker.vue";
 import type BlessDumbbell from "../components/BlessDumbbell.vue";
 import type BlessDurationInput from "../components/BlessDurationInput.vue";
 import type BlessEditor from "../components/BlessEditor.vue";
+import type BlessEligibilityCheck from "../components/BlessEligibilityCheck.vue";
 import type BlessEmailComposer from "../components/BlessEmailComposer.vue";
 import type BlessEmailView from "../components/BlessEmailView.vue";
 import type BlessEmojiPicker from "../components/BlessEmojiPicker.vue";
@@ -323,6 +324,7 @@ export type BlessLabelsFull = {
   BlessDumbbell: All<typeof BlessDumbbell>;
   BlessDurationInput: All<typeof BlessDurationInput>;
   BlessEditor: All<typeof BlessEditor>;
+  BlessEligibilityCheck: All<typeof BlessEligibilityCheck>;
   BlessEmailComposer: All<typeof BlessEmailComposer>;
   BlessEmailView: All<typeof BlessEmailView>;
   BlessEmojiPicker: All<typeof BlessEmojiPicker>;
@@ -1022,6 +1024,15 @@ export const labelsId: BlessLabelsFull = {
     hr: "Garis pemisah",
     undo: "Urungkan",
     redo: "Ulangi",
+  },
+  BlessEligibilityCheck: {
+    question: (n) => `Pertanyaan ${n}`,
+    next: "Lanjut",
+    back: "Kembali",
+    restart: "Mulai dari awal",
+    pick: "Pilih satu jawaban.",
+    yes: "Anda bisa mengajukan",
+    no: "Anda tidak bisa mengajukan",
   },
   BlessEmailComposer: {
     title: "Email baru",

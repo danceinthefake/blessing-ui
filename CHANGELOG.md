@@ -111,7 +111,8 @@ Ninety-nine new components, 417 in all, for finance, commerce, communication, so
 - `BlessKnowledgeArticle`: a help article with contents, the date of the last change, the reading time, paragraphs from plain text, a helpful question, and related links.
 - `BlessSavedForm`: a long form that saves a draft in localStorage after a short wait, offers to go on with it, saves at once on request, and deletes it on send.
 - `BlessCheckAnswers`: the answers of a form in groups with a change action for each, empty answers in words, and a statement to agree to before sending. Credits the GOV.UK Design System.
-- `BlessApplicationStatus`: the reference, the state in words, the steps done, now, and to come with their dates, an action with a link, and what happens next. 424 components in all.
+- `BlessApplicationStatus`: the reference, the state in words, the steps done, now, and to come with their dates, an action with a link, and what happens next.
+- `BlessEligibilityCheck`: questions one at a time that lead to an outcome, an error without a choice, focus on each new step, a way back, and a result event. 425 components in all.
 
 ## 0.7.0 — 2026-11-16
 

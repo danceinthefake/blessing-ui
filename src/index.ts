@@ -747,3 +747,8 @@ export type {
   BlessApplicationState,
   BlessApplicationStep,
 } from "./components/BlessApplicationStatus.vue";
+export { default as BlessEligibilityCheck } from "./components/BlessEligibilityCheck.vue";
+export type {
+  BlessEligibilityOutcome,
+  BlessEligibilityQuestion,
+} from "./components/BlessEligibilityCheck.vue";

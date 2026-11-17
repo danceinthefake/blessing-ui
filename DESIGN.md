@@ -699,7 +699,7 @@ Nine components, 417 → 426. Each uses native platform APIs only: the library a
 - ✅ `BlessSavedForm`: a long form that saves a draft in the browser and offers to go on with it later.
 - ✅ `BlessCheckAnswers`: the answers of a form in groups with a change link for each, and a statement to agree to before you send.
 - ✅ `BlessApplicationStatus`: the reference, the steps of a request with their dates, and what happens next.
-- `BlessEligibilityCheck`: questions one at a time that lead to a result, with a way back.
+- ✅ `BlessEligibilityCheck`: questions one at a time that lead to a result, with a way back.
 - `BlessDocumentChecklist`: the documents that a request needs, with an upload and a state for each.
 
 ### Deliberately skipped
