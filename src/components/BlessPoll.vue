@@ -64,7 +64,7 @@ function submit() {
     </template>
     <figure v-else :aria-labelledby="`${id}-q`" class="bless-poll__results">
       <figcaption :id="`${id}-q`" class="bless-poll__question">{{ question }}</figcaption>
-      <ul class="bless-poll__list">
+      <ul class="bless-stagger bless-poll__list">
         <li v-for="o in options" :key="o.value" class="bless-poll__row">
           <span class="bless-poll__label"
             >{{ o.label

@@ -210,4 +210,7 @@ const kb = computed(
 .bless-inspect__empty {
   padding-block: var(--bless-space-3);
 }
+.bless-inspect {
+  animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft);
+}
 </style>

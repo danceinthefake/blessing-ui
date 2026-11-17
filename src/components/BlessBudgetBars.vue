@@ -140,4 +140,14 @@ const rows = computed(() => {
   color: var(--bless-color-danger-text);
   font-weight: var(--bless-font-weight-bold);
 }
+.bless-budget__fill {
+  transform-box: fill-box;
+  transform-origin: 0 50%;
+  --_gx: var(--bless-grow);
+  --_gy: 1;
+  animation: bless-grow var(--bless-duration-draw) var(--bless-ease-soft) backwards;
+}
+.bless-budget__fill:dir(rtl) {
+  transform-origin: 100% 50%;
+}
 </style>

@@ -20,6 +20,7 @@ Motion in three layers, like the series: a soft base on every appearance, a game
 - Feeds, timelines, search results, inboxes, and grids of cards stagger their items.
 - Bar, histogram, Pareto, and waterfall bars grow from the baseline. Scatter dots pop. Line and sparkline lines draw. The donut ring opens.
 - Message bubbles and the typing indicator wipe up. Tool calls, reasoning, and artifact panels rise in. AgentPlan steps, Suggestions, and Thread comments stagger.
+- More charts and meters move: bars grow, round charts open from their middle, the radar area grows, the control chart line draws, and grids of cells rise in. 18 more collections stagger, and 54 content components, such as cards, receipts, and panels, rise in. Controls, fields, layout, and text stay still until someone engages them.
 - Tab panels, Stepper steps, and open Collapsible and Accordion content arrive with the base layer. Field error messages rise in. Switch, Checkbox, and Radio snap into place. Progress bars and rings fill with a long soft ease.
 - The `bless-pop-in` and `bless-modal-in` keyframes are gone. If your CSS used them, use `bless-enter` and `bless-voice`.
 

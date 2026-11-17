@@ -63,7 +63,7 @@ const at = computed(() => Math.min(Math.max(0, Math.round(props.stage)), STAGES.
 
 <template>
   <section class="bless-ship" :class="{ 'has-problem': problem }" :aria-label="text.title">
-    <ol class="bless-ship__stages" :style="{ '--_done': at / (STAGES.length - 1) }">
+    <ol class="bless-stagger bless-ship__stages" :style="{ '--_done': at / (STAGES.length - 1) }">
       <li
         v-for="(s, i) in STAGES"
         :key="s"

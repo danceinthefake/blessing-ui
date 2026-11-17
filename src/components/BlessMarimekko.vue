@@ -179,4 +179,9 @@ const cols = computed(() => {
   color: var(--bless-color-text-muted);
   font-weight: normal;
 }
+.bless-mekko__col {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: bless-grow var(--bless-duration-draw) var(--bless-ease-soft) backwards;
+}
 </style>

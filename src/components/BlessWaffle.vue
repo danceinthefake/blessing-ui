@@ -120,4 +120,7 @@ const grid = computed(() =>
   color: var(--bless-color-text-muted);
   font-variant-numeric: tabular-nums;
 }
+.bless-waffle__grid {
+  animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft);
+}
 </style>

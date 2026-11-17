@@ -143,4 +143,7 @@ const changeText = computed(() => {
   gap: var(--bless-space-2);
   margin-block-start: var(--bless-space-2);
 }
+.bless-balance {
+  animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft);
+}
 </style>

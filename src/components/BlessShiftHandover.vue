@@ -81,7 +81,7 @@ const flip = (id: string, closed: boolean) =>
     <div v-if="notes" class="bless-handover__notes">{{ notes }}</div>
     <section v-if="issues.length" class="bless-handover__issues" :aria-label="text.issues">
       <p class="bless-handover__count" role="status">{{ text.open(openCount) }}</p>
-      <ul class="bless-handover__list" role="list">
+      <ul class="bless-stagger bless-handover__list" role="list">
         <li v-for="i in sorted" :key="i.id" :class="[`is-${i.level}`, { 'is-closed': i.closed }]">
           <label class="bless-handover__issue">
             <input

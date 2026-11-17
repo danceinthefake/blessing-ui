@@ -208,4 +208,7 @@ const status = computed(() => {
 .bless-hours__closed {
   color: var(--bless-color-text-muted);
 }
+.bless-hours {
+  animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft);
+}
 </style>

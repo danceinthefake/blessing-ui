@@ -276,4 +276,7 @@ const PRIO = { low: "▽", normal: "○", high: "△", urgent: "▲" } as const;
   outline: 2px solid var(--bless-color-accent);
   outline-offset: 1px;
 }
+.bless-tkview {
+  animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft);
+}
 </style>

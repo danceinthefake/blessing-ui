@@ -196,4 +196,7 @@ const share = computed(() => (props.target ? Math.min(1, good.value / props.targ
   opacity: 0.4;
   cursor: default;
 }
+.bless-prodcount {
+  animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft);
+}
 </style>

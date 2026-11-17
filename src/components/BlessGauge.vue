@@ -187,4 +187,20 @@ const needle = computed(() => ({ a: pt(t.value, R - 22), b: pt(t.value, R + 10) 
   font-size: var(--bless-text-xs);
   color: var(--bless-color-text-muted);
 }
+.bless-gauge__bar {
+  transform-box: fill-box;
+  transform-origin: 0 50%;
+  --_gx: var(--bless-grow);
+  --_gy: 1;
+  animation: bless-grow var(--bless-duration-draw) var(--bless-ease-soft) backwards;
+}
+.bless-gauge__bar:dir(rtl) {
+  transform-origin: 100% 50%;
+}
+/* the chart opens out from its middle */
+.bless-gauge__svg {
+  --_gx: calc(0.6 + 0.4 * var(--bless-grow));
+  --_gy: var(--_gx);
+  animation: bless-grow var(--bless-duration-draw) var(--bless-ease-soft) backwards;
+}
 </style>

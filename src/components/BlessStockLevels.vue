@@ -104,7 +104,7 @@ const MARK: Record<BlessStockState, string> = { ok: "✓", low: "!", out: "✕" 
             <th scope="col">{{ text.state }}</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody class="bless-stagger">
           <tr v-for="r in rows" :key="r.sku" :class="`is-${r.state}`">
             <td class="bless-stock__sku">{{ r.sku }}</td>
             <th scope="row">{{ r.name }}</th>

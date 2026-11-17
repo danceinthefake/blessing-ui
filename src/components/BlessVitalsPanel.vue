@@ -184,4 +184,7 @@ const MARK = { low: "▼", high: "▲", normal: "✓" } as const;
   font-size: var(--bless-text-xs);
   color: var(--bless-color-text-muted);
 }
+.bless-vitals {
+  animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft);
+}
 </style>

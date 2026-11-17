@@ -41,6 +41,12 @@ A [Message](../components/message) talks, so its bubble wipes up with the voice 
 
 Typed text is opt-in. To type a reply out like a game text box, give [StreamingText](../components/streaming-text) a `pace` in letters a second. Screen readers wait for the full text. Under reduced motion, the text shows at once.
 
+## What stays still
+
+Controls, fields, layout, and text do not arrive. A button, an input, a stack, or a heading is there when the page is. They move only when you engage them: the lean on attention, the snap of a toggle, and the flair if you turn it on. Editors, canvases, calendars, and tables that you work in stay still too, so that the work never waits for the motion.
+
+Content does arrive. Cards, panels, receipts, and articles rise in. Meters fill, bars grow, round charts open from their middle, and grids of cells fade in.
+
 ## Flair
 
 Flair is off by default, because a pop on every click gets tiring in a form that someone uses all day. To turn it on, set `data-flair` on `<html>` or on one container, for example a reward screen or a game.

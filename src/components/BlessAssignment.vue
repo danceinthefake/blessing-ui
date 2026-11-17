@@ -189,4 +189,7 @@ const state = computed(() =>
   margin: 0;
   padding-inline-start: var(--bless-space-4);
 }
+.bless-assign {
+  animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft);
+}
 </style>

@@ -157,4 +157,7 @@ const chosen = ref(props.pick ?? props.plans[0]?.id ?? "");
   outline: 2px solid var(--bless-color-accent);
   outline-offset: 2px;
 }
+.bless-paywall {
+  animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft);
+}
 </style>

@@ -162,4 +162,7 @@ const compact = computed(
   font-weight: var(--bless-font-weight-bold);
   font-variant-numeric: tabular-nums;
 }
+.bless-profile {
+  animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft);
+}
 </style>

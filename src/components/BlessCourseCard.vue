@@ -152,4 +152,7 @@ const pct = computed(() =>
   block-size: 100%;
   background: var(--bless-color-accent);
 }
+.bless-course {
+  animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft);
+}
 </style>

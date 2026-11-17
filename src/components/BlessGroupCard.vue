@@ -154,4 +154,7 @@ const press = () =>
 .bless-group__join {
   margin-inline-start: auto;
 }
+.bless-group {
+  animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft);
+}
 </style>

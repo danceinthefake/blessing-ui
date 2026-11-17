@@ -78,7 +78,7 @@ const span = (m: number) => text.value.time(Math.floor(m / 60), m % 60);
 <template>
   <section class="bless-machines" :aria-label="text.title">
     <p class="bless-machines__summary" role="status">{{ summary }}</p>
-    <ul class="bless-machines__grid" role="list">
+    <ul class="bless-stagger bless-machines__grid" role="list">
       <li v-for="m in list" :key="m.id">
         <button
           type="button"

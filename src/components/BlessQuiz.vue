@@ -208,4 +208,7 @@ function restart() {
   font-size: var(--bless-text-lg);
   font-weight: var(--bless-font-weight-bold);
 }
+.bless-quiz {
+  animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft);
+}
 </style>

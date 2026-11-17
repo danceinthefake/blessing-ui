@@ -140,4 +140,7 @@ const emit = defineEmits<{ select: [node: BlessTreeNode, id: string] }>();
   font-size: var(--bless-text-xs);
   color: var(--bless-color-text-muted);
 }
+.bless-org {
+  animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft);
+}
 </style>

@@ -227,4 +227,7 @@ const err = (k: string) => (errors[k] ? `${id}-${k}-err` : undefined);
   opacity: 0.7;
   cursor: progress;
 }
+.bless-contact {
+  animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft);
+}
 </style>

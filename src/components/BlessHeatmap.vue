@@ -133,4 +133,7 @@ const base = computed(() => chartColor(props.color, 0));
 [dir="rtl"] .bless-heatmap__ramp {
   scale: -1 1;
 }
+.bless-heatmap__table {
+  animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft);
+}
 </style>

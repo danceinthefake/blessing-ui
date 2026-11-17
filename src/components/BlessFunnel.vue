@@ -105,4 +105,12 @@ const colour = computed(() =>
     grid-column: 1 / -1;
   }
 }
+.bless-funnel__bar {
+  /* the funnel is centered, so each bar grows out from its middle */
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+  --_gx: var(--bless-grow);
+  --_gy: 1;
+  animation: bless-grow var(--bless-duration-draw) var(--bless-ease-soft) backwards;
+}
 </style>

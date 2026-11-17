@@ -240,4 +240,7 @@ const filled = computed(() => (prompt.value ? fillPrompt(prompt.value.text, valu
   color: var(--bless-color-on-accent);
   font-weight: var(--bless-font-weight-bold);
 }
+.bless-prompts {
+  animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft);
+}
 </style>

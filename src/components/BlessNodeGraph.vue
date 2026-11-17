@@ -465,4 +465,7 @@ const tabId = computed(() =>
 .bless-graph__port--out:hover {
   border-color: var(--bless-color-accent);
 }
+.bless-graph {
+  animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft);
+}
 </style>

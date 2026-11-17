@@ -205,4 +205,7 @@ const lines = (v: string | string[]) => (Array.isArray(v) ? v : [v]).filter(Bool
   font-weight: var(--bless-font-weight-bold);
   cursor: pointer;
 }
+.bless-answers {
+  animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft);
+}
 </style>

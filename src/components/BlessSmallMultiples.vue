@@ -49,7 +49,7 @@ const cols = computed(() => Math.max(0, ...props.series.map((s) => s.values.leng
 <template>
   <figure class="bless-multiples">
     <p class="bless-multiples__scale">{{ text.scale(fmt(lo), fmt(hi)) }}</p>
-    <ul class="bless-multiples__grid" aria-hidden="true">
+    <ul class="bless-stagger bless-multiples__grid" aria-hidden="true">
       <li v-for="(s, i) in series" :key="s.label" class="bless-multiples__cell">
         <span class="bless-multiples__head">
           <span class="bless-multiples__name">{{ s.label }}</span>

@@ -229,4 +229,7 @@ const deducted = computed(() => sum(props.deductions));
     padding: 0;
   }
 }
+.bless-payslip {
+  animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft);
+}
 </style>

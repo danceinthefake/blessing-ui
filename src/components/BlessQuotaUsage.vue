@@ -125,4 +125,14 @@ const rows = computed(() =>
 .bless-quota__footer {
   padding-block-start: var(--bless-space-1);
 }
+.bless-quota__bar {
+  transform-box: fill-box;
+  transform-origin: 0 50%;
+  --_gx: var(--bless-grow);
+  --_gy: 1;
+  animation: bless-grow var(--bless-duration-draw) var(--bless-ease-soft) backwards;
+}
+.bless-quota__bar:dir(rtl) {
+  transform-origin: 100% 50%;
+}
 </style>

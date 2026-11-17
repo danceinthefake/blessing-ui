@@ -270,4 +270,7 @@ const hint = `bless-treemap-hint`;
 .bless-treemap__value {
   font-size: var(--bless-text-xs);
 }
+.bless-treemap__box {
+  animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft);
+}
 </style>

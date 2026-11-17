@@ -101,7 +101,7 @@ const move = (r: BlessLeader & { rank: number }) =>
         <th scope="col">{{ text.score }}</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody class="bless-stagger">
       <template v-for="(group, g) in [shown.top, shown.mine ? [shown.mine] : []]" :key="g">
         <tr v-if="g === 1 && group.length" class="bless-leaders__gap" aria-hidden="true">
           <td colspan="4">⋯</td>

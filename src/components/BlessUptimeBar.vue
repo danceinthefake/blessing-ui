@@ -149,4 +149,9 @@ function onKey(e: KeyboardEvent) {
 .bless-uptime__tip:dir(rtl) {
   translate: calc(var(--p) * 100%);
 }
+.bless-uptime__seg {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: bless-grow var(--bless-duration-draw) var(--bless-ease-soft) backwards;
+}
 </style>

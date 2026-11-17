@@ -201,4 +201,7 @@ const allFull = (d: BlessDeliveryDay) => d.windows.every((w) => w.full);
   font-weight: var(--bless-font-weight-normal);
   text-decoration: line-through;
 }
+.bless-delivery {
+  animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft);
+}
 </style>

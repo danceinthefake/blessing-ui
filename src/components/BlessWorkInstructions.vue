@@ -176,4 +176,7 @@ button.bless-instructions__btn:focus-visible {
   outline: 3px solid var(--bless-color-accent);
   outline-offset: 2px;
 }
+.bless-instructions {
+  animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft);
+}
 </style>
