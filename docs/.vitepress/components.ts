@@ -601,6 +601,11 @@ export const groups: { title: string; items: Entry[] }[] = [
       },
       { name: "BlessMapPins", slug: "map-pins", text: "Web map tiles with pins" },
       { name: "BlessRouteSteps", slug: "route-steps", text: "The turns of a route" },
+      {
+        name: "BlessWeatherForecast",
+        slug: "weather-forecast",
+        text: "Weather now and for the next days",
+      },
       { name: "BlessStage", slug: "stage", text: "Page shell, sidebar \u2192 drawer under 800px" },
       { name: "BlessSidebarNav", slug: "sidebar-nav", text: "Vertical nav list" },
       { name: "BlessNavigationMenu", slug: "navigation-menu", text: "Horizontal nav with panels" },

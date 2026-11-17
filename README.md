@@ -10,7 +10,7 @@ Vue 3 component library and design tokens. The UI is gray-scale, with one accent
 
 Docs, with every component live: **[ui.blessing.id](https://ui.blessing.id)**
 
-- 414 components, from button to data table to chat. Only `--bless-*` custom properties style them. There is no Tailwind dependency.
+- 415 components, from button to data table to chat. Only `--bless-*` custom properties style them. There is no Tailwind dependency.
 - Native platform first: `<dialog>`, Popover API, `<details>`, native form controls, `Intl` dates, and scroll-snap. There is no positioning, date, or table library.
 - Accessible defaults: focus rings, ARIA tablist, dialog, and tables, and `prefers-reduced-motion`
 - ESM, tree-shakable, with `vue` as the only required peer (`@tiptap/vue-3` is optional, for `BlessEditor`). One component (`BlessButton`) costs about 1 KB gzip of JS and about 2.6 KB of CSS (tokens and its own styles). Everything costs about 272 KB and 76 KB. CSS is split per component and the import pulls it in, so you never pay for styles that you do not use
@@ -92,7 +92,7 @@ The words that components say are English by default. `provideLabels(labelsId)` 
 
 ## Components
 
-414 components across eight groups. Every one styles itself from `--bless-*` tokens and ships with a test and a docs page.
+415 components across eight groups. Every one styles itself from `--bless-*` tokens and ships with a test and a docs page.
 
 ### Primitives
 
@@ -282,6 +282,7 @@ The words that components say are English by default. `provideLabels(labelsId)` 
 | `BlessRequestInspector`                     | One HTTP request and its response                                                             | `method`, `url`, `status`, `statusText`, `duration`, `size`, `request`, `response` `{headers,body}`                                                        |
 | `BlessMapPins`                              | Web map tiles with pins                                                                       | `v-model:center`, `v-model:zoom`, `v-model:selected`, `pins` `{id,lat,lng,label}`, `tiles`, `attribution`, `height`                                        |
 | `BlessRouteSteps`                           | The turns of a route                                                                          | `steps` `{turn,text,distance,duration}`, `current`, `locale`                                                                                               |
+| `BlessWeatherForecast`                      | Weather now and for the next days                                                             | `place`, `temp`, `weather`, `feelsLike`, `humidity`, `wind`, `days` `{date,weather,high,low,rain}`, `unit`, `locale`                                       |
 | `BlessContainer`                            | Centerd max-width box                                                                         | `size` sm/md/lg/full, `padded`, `as`                                                                                                                       |
 | `BlessStack`                                | Flex row / column                                                                             | `direction`, `gap` token, `align`, `justify`, `wrap`, `as`                                                                                                 |
 | `BlessScrollTop`                            | Back-to-top button                                                                            | `threshold`, `target`, `position`, `label`                                                                                                                 |

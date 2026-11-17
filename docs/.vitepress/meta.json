@@ -21418,6 +21418,76 @@
   "slots": [],
   "exposed": []
  },
+ "BlessWeatherForecast": {
+  "props": [
+   {
+    "name": "place",
+    "type": "string",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "temp",
+    "type": "number",
+    "required": true,
+    "description": "the temperature now, in the unit of `unit`"
+   },
+   {
+    "name": "weather",
+    "type": "BlessWeather",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "feelsLike",
+    "type": "number | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "humidity",
+    "type": "number | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "wind",
+    "type": "number | undefined",
+    "required": false,
+    "description": "the wind speed in kilometers per hour"
+   },
+   {
+    "name": "days",
+    "type": "BlessWeatherDay[] | undefined",
+    "required": false,
+    "default": "[]",
+    "description": ""
+   },
+   {
+    "name": "unit",
+    "type": "\"celsius\" | \"fahrenheit\" | undefined",
+    "required": false,
+    "default": "\"celsius\"",
+    "description": ""
+   },
+   {
+    "name": "locale",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"en\"",
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<Record<BlessWeather, string> & { feelsLike: string; humidity: string; wind: string; days: string; rainOf: (pct: string) => string; range: (low: string, high: string) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessWebhookLog": {
   "props": [
    {
