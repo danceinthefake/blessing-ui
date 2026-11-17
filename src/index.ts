@@ -765,3 +765,5 @@ export { default as BlessTeamGrid } from "./components/BlessTeamGrid.vue";
 export type { BlessTeamMember } from "./components/BlessTeamGrid.vue";
 export { default as BlessContactForm } from "./components/BlessContactForm.vue";
 export type { BlessContactMessage } from "./components/BlessContactForm.vue";
+export { default as BlessPortfolioGrid } from "./components/BlessPortfolioGrid.vue";
+export type { BlessWork } from "./components/BlessPortfolioGrid.vue";

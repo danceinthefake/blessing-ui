@@ -154,6 +154,7 @@ import type BlessPinPad from "../components/BlessPinPad.vue";
 import type BlessPlaceSearch from "../components/BlessPlaceSearch.vue";
 import type BlessPlayQueue from "../components/BlessPlayQueue.vue";
 import type BlessPoll from "../components/BlessPoll.vue";
+import type BlessPortfolioGrid from "../components/BlessPortfolioGrid.vue";
 import type BlessPostComposer from "../components/BlessPostComposer.vue";
 import type BlessPosterRow from "../components/BlessPosterRow.vue";
 import type BlessPresetRange from "../components/BlessPresetRange.vue";
@@ -408,6 +409,7 @@ export type BlessLabelsFull = {
   BlessPlaceSearch: All<typeof BlessPlaceSearch>;
   BlessPlayQueue: All<typeof BlessPlayQueue>;
   BlessPoll: All<typeof BlessPoll>;
+  BlessPortfolioGrid: All<typeof BlessPortfolioGrid>;
   BlessPostComposer: All<typeof BlessPostComposer>;
   BlessPosterRow: All<typeof BlessPosterRow>;
   BlessPresetRange: All<typeof BlessPresetRange>;
@@ -1677,6 +1679,11 @@ export const labelsId: BlessLabelsFull = {
     total: (n, t) => `${n} lagu, ${t}`,
   },
   BlessPoll: { vote: "Pilih", yours: "pilihan Anda", votes: (n) => `${n} suara` },
+  BlessPortfolioGrid: {
+    filter: "Tampilkan",
+    all: "Semua",
+    count: (n) => `${n} karya`,
+  },
   BlessPostComposer: {
     placeholder: "Ada kabar apa?",
     left: (n) => `sisa ${n} karakter`,
