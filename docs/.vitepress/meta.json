@@ -6421,6 +6421,37 @@
   ],
   "exposed": []
  },
+ "BlessEligibilityCheck": {
+  "props": [
+   {
+    "name": "questions",
+    "type": "BlessEligibilityQuestion[]",
+    "required": true,
+    "description": "the first question in the list is the start"
+   },
+   {
+    "name": "outcomes",
+    "type": "BlessEligibilityOutcome[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ question: (n: number) => string; next: string; back: string; restart: string; pick: string; yes: string; no: string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "result",
+    "type": "[outcome: string, answers: Record<string, string>]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessEmailComposer": {
   "props": [
    {
