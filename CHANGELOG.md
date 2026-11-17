@@ -121,7 +121,8 @@ A hundred and eight new components, 426 in all, for finance, commerce, communica
 - `BlessPortfolioGrid`: work in a grid with filter buttons made from the kinds, a count in a status line, and cards that link.
 - `BlessArtifactPanel`: a side panel for a document that the model writes, with versions to step through, a writing state, copy, download, and close.
 - `BlessContextChips`: the files and pages that go with a message as chips with the kind in words, a detail, remove buttons named with the label, and an add button.
-- `BlessRunTrace`: the steps of an agent run as an indented tree with the status in words, bars on a shared time line, times, and input and output that open. 434 components in all.
+- `BlessRunTrace`: the steps of an agent run as an indented tree with the status in words, bars on a shared time line, times, and input and output that open.
+- `BlessPromptLibrary`: saved prompts with a search, tag buttons, a text box for each field, a live preview, and a use event. 435 components in all.
 
 ## 0.7.0 — 2026-11-16
 

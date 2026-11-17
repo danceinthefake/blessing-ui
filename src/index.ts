@@ -772,3 +772,6 @@ export { default as BlessContextChips } from "./components/BlessContextChips.vue
 export type { BlessContextItem, BlessContextKind } from "./components/BlessContextChips.vue";
 export { default as BlessRunTrace } from "./components/BlessRunTrace.vue";
 export type { BlessTraceStatus, BlessTraceStep } from "./components/BlessRunTrace.vue";
+export { default as BlessPromptLibrary } from "./components/BlessPromptLibrary.vue";
+export { fillPrompt, promptFields } from "./components/BlessPromptLibrary.vue";
+export type { BlessSavedPrompt } from "./components/BlessPromptLibrary.vue";

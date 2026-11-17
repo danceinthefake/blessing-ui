@@ -167,6 +167,7 @@ import type BlessProductCard from "../components/BlessProductCard.vue";
 import type BlessProductionCounter from "../components/BlessProductionCounter.vue";
 import type BlessProfileCard from "../components/BlessProfileCard.vue";
 import type BlessPromptInput from "../components/BlessPromptInput.vue";
+import type BlessPromptLibrary from "../components/BlessPromptLibrary.vue";
 import type BlessPyramid from "../components/BlessPyramid.vue";
 import type BlessQualityCheck from "../components/BlessQualityCheck.vue";
 import type BlessQueryBuilder from "../components/BlessQueryBuilder.vue";
@@ -425,6 +426,7 @@ export type BlessLabelsFull = {
   BlessProductionCounter: All<typeof BlessProductionCounter>;
   BlessProfileCard: All<typeof BlessProfileCard>;
   BlessPromptInput: All<typeof BlessPromptInput>;
+  BlessPromptLibrary: All<typeof BlessPromptLibrary>;
   BlessPyramid: All<typeof BlessPyramid>;
   BlessQualityCheck: All<typeof BlessQualityCheck>;
   BlessQueryBuilder: All<typeof BlessQueryBuilder>;
@@ -1777,6 +1779,16 @@ export const labelsId: BlessLabelsFull = {
     stop: "Hentikan",
     attach: "Lampirkan berkas",
     remove: "Hapus",
+  },
+  BlessPromptLibrary: {
+    search: "Cari prompt",
+    all: "Semua",
+    tags: "Tag",
+    list: "Prompt",
+    none: "Tidak ada prompt yang cocok.",
+    preview: "Pratinjau",
+    use: "Pakai prompt ini",
+    pick: "Pilih prompt di kiri.",
   },
   BlessPyramid: { left: "Kiri", right: "Kanan", row: "Kelompok" },
   BlessQualityCheck: {
