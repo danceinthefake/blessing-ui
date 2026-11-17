@@ -50,6 +50,7 @@ import type BlessConnectionStatus from "../components/BlessConnectionStatus.vue"
 import type BlessConsentBanner from "../components/BlessConsentBanner.vue";
 import type BlessContactForm from "../components/BlessContactForm.vue";
 import type BlessContactPicker from "../components/BlessContactPicker.vue";
+import type BlessContextChips from "../components/BlessContextChips.vue";
 import type BlessContextMeter from "../components/BlessContextMeter.vue";
 import type BlessContinueWatching from "../components/BlessContinueWatching.vue";
 import type BlessContrastChecker from "../components/BlessContrastChecker.vue";
@@ -306,6 +307,7 @@ export type BlessLabelsFull = {
   BlessConsentBanner: All<typeof BlessConsentBanner>;
   BlessContactForm: All<typeof BlessContactForm>;
   BlessContactPicker: All<typeof BlessContactPicker>;
+  BlessContextChips: All<typeof BlessContextChips>;
   BlessContextMeter: All<typeof BlessContextMeter>;
   BlessContinueWatching: All<typeof BlessContinueWatching>;
   BlessContrastChecker: All<typeof BlessContrastChecker>;
@@ -887,6 +889,16 @@ export const labelsId: BlessLabelsFull = {
     all: "Semua orang",
     none: "Tidak ada yang cocok.",
     chosen: "Dipilih",
+    remove: "Hapus",
+  },
+  BlessContextChips: {
+    file: "Berkas",
+    page: "Halaman",
+    image: "Gambar",
+    folder: "Folder",
+    selection: "Pilihan",
+    list: "Konteks untuk pesan",
+    add: "Tambah konteks",
     remove: "Hapus",
   },
   BlessContextMeter: {
