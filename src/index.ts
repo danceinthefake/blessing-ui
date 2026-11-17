@@ -768,3 +768,5 @@ export type { BlessContactMessage } from "./components/BlessContactForm.vue";
 export { default as BlessPortfolioGrid } from "./components/BlessPortfolioGrid.vue";
 export type { BlessWork } from "./components/BlessPortfolioGrid.vue";
 export { default as BlessArtifactPanel } from "./components/BlessArtifactPanel.vue";
+export { default as BlessContextChips } from "./components/BlessContextChips.vue";
+export type { BlessContextItem, BlessContextKind } from "./components/BlessContextChips.vue";

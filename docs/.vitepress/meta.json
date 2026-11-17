@@ -4615,6 +4615,42 @@
   ],
   "exposed": []
  },
+ "BlessContextChips": {
+  "props": [
+   {
+    "name": "items",
+    "type": "BlessContextItem[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "addable",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": "show an Add button that emits `add`"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<Record<BlessContextKind, string> & { list: string; add: string; remove: string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "add",
+    "type": "[]",
+    "description": ""
+   },
+   {
+    "name": "remove",
+    "type": "[id: string]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessContextMenu": {
   "props": [
    {
