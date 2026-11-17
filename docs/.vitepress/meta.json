@@ -6904,6 +6904,32 @@
   "slots": [],
   "exposed": []
  },
+ "BlessFeatureGrid": {
+  "props": [
+   {
+    "name": "features",
+    "type": "BlessFeature[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "columns",
+    "type": "2 | 3 | 4 | undefined",
+    "required": false,
+    "default": "3",
+    "description": "the most columns on a wide screen"
+   }
+  ],
+  "events": [],
+  "slots": [
+   {
+    "name": "icon",
+    "type": "{ feature: BlessFeature; index: number; }",
+    "description": "an icon for each feature, often an SVG"
+   }
+  ],
+  "exposed": []
+ },
  "BlessField": {
   "props": [
    {
