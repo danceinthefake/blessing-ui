@@ -112,7 +112,8 @@ Ninety-nine new components, 417 in all, for finance, commerce, communication, so
 - `BlessSavedForm`: a long form that saves a draft in localStorage after a short wait, offers to go on with it, saves at once on request, and deletes it on send.
 - `BlessCheckAnswers`: the answers of a form in groups with a change action for each, empty answers in words, and a statement to agree to before sending. Credits the GOV.UK Design System.
 - `BlessApplicationStatus`: the reference, the state in words, the steps done, now, and to come with their dates, an action with a link, and what happens next.
-- `BlessEligibilityCheck`: questions one at a time that lead to an outcome, an error without a choice, focus on each new step, a way back, and a result event. 425 components in all.
+- `BlessEligibilityCheck`: questions one at a time that lead to an outcome, an error without a choice, focus on each new step, a way back, and a result event.
+- `BlessDocumentChecklist`: the documents of a request with a state as a mark and words, the reason for a rejection, upload and replace buttons, and a count of the required documents. 426 components in all.
 
 ## 0.7.0 — 2026-11-16
 

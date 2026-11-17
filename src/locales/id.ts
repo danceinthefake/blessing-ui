@@ -67,6 +67,7 @@ import type BlessDateTimePicker from "../components/BlessDateTimePicker.vue";
 import type BlessDeliveryPicker from "../components/BlessDeliveryPicker.vue";
 import type BlessDeployList from "../components/BlessDeployList.vue";
 import type BlessDeviceTile from "../components/BlessDeviceTile.vue";
+import type BlessDocumentChecklist from "../components/BlessDocumentChecklist.vue";
 import type BlessDocumentStatus from "../components/BlessDocumentStatus.vue";
 import type BlessDonutChart from "../components/BlessDonutChart.vue";
 import type BlessDowntimePicker from "../components/BlessDowntimePicker.vue";
@@ -318,6 +319,7 @@ export type BlessLabelsFull = {
   BlessDeliveryPicker: All<typeof BlessDeliveryPicker>;
   BlessDeployList: All<typeof BlessDeployList>;
   BlessDeviceTile: All<typeof BlessDeviceTile>;
+  BlessDocumentChecklist: All<typeof BlessDocumentChecklist>;
   BlessDocumentStatus: All<typeof BlessDocumentStatus>;
   BlessDonutChart: All<typeof BlessDonutChart>;
   BlessDowntimePicker: All<typeof BlessDowntimePicker>;
@@ -990,6 +992,19 @@ export const labelsId: BlessLabelsFull = {
     off: "Mati",
     offline: "Offline",
     power: (n) => `Daya, ${n}`,
+  },
+  BlessDocumentChecklist: {
+    missing: "Belum dikirim",
+    uploaded: "Terkirim",
+    checking: "Sedang diperiksa",
+    accepted: "Diterima",
+    rejected: "Tidak diterima",
+    progress: (d, t) => `${d} dari ${t} dokumen wajib terkirim`,
+    required: "Wajib",
+    optional: "Opsional",
+    upload: "Unggah",
+    replace: "Ganti",
+    remove: (n) => `Hapus ${n}`,
   },
   BlessDocumentStatus: {
     title: "Status dokumen",
