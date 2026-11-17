@@ -651,6 +651,7 @@ export const groups: { title: string; items: Entry[] }[] = [
       },
       { name: "BlessLogoCloud", slug: "logo-cloud", text: "Customer logos in a calm grid" },
       { name: "BlessFeatureGrid", slug: "feature-grid", text: "Product features with icons" },
+      { name: "BlessTeamGrid", slug: "team-grid", text: "The people of a team" },
       { name: "BlessStage", slug: "stage", text: "Page shell, sidebar \u2192 drawer under 800px" },
       { name: "BlessSidebarNav", slug: "sidebar-nav", text: "Vertical nav list" },
       { name: "BlessNavigationMenu", slug: "navigation-menu", text: "Horizontal nav with panels" },
