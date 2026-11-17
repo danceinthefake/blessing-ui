@@ -712,7 +712,7 @@ Eleven components, 426 → 437. Each uses native platform APIs only: the library
 - ✅ `BlessTeamGrid`: the people of a team with a photo, the name, the role, and links.
 - ✅ `BlessContactForm`: a contact form with the name, the email, the topic, the message, and a clear result.
 - ✅ `BlessPortfolioGrid`: work in a grid with filter buttons by kind.
-- `BlessArtifactPanel`: a side panel for a document that the model writes, with versions, a copy, and a download.
+- ✅ `BlessArtifactPanel`: a side panel for a document that the model writes, with versions, a copy, and a download.
 - `BlessContextChips`: the files and pages that go with a message, as chips that you can remove.
 - `BlessRunTrace`: the steps of an agent run with tools, inputs, outputs, and times.
 - `BlessPromptLibrary`: saved prompts with a search, tags, and fill-in fields.

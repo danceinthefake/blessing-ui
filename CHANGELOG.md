@@ -118,7 +118,8 @@ A hundred and eight new components, 426 in all, for finance, commerce, communica
 - `BlessFeatureGrid`: the features of a product with an icon slot, a level 3 title, and a short text each, in a grid of up to four columns.
 - `BlessTeamGrid`: the people of a team with a photo or initials, a level 3 name, the role, a bio, and links named with the person.
 - `BlessContactForm`: a contact form with errors linked to their fields, the focus on the first wrong field, a hidden field for bots, and sending, sent, and error states.
-- `BlessPortfolioGrid`: work in a grid with filter buttons made from the kinds, a count in a status line, and cards that link. 431 components in all.
+- `BlessPortfolioGrid`: work in a grid with filter buttons made from the kinds, a count in a status line, and cards that link.
+- `BlessArtifactPanel`: a side panel for a document that the model writes, with versions to step through, a writing state, copy, download, and close. 432 components in all.
 
 ## 0.7.0 — 2026-11-16
 

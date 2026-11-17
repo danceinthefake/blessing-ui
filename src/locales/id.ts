@@ -10,6 +10,7 @@ import type BlessApplicationStatus from "../components/BlessApplicationStatus.vu
 import type BlessAppointmentCard from "../components/BlessAppointmentCard.vue";
 import type BlessApprovalFlow from "../components/BlessApprovalFlow.vue";
 import type BlessArticleHeader from "../components/BlessArticleHeader.vue";
+import type BlessArtifactPanel from "../components/BlessArtifactPanel.vue";
 import type BlessAssignment from "../components/BlessAssignment.vue";
 import type BlessAudioRecorder from "../components/BlessAudioRecorder.vue";
 import type BlessAuditLog from "../components/BlessAuditLog.vue";
@@ -265,6 +266,7 @@ export type BlessLabelsFull = {
   BlessAppointmentCard: All<typeof BlessAppointmentCard>;
   BlessApprovalFlow: All<typeof BlessApprovalFlow>;
   BlessArticleHeader: All<typeof BlessArticleHeader>;
+  BlessArtifactPanel: All<typeof BlessArtifactPanel>;
   BlessAssignment: All<typeof BlessAssignment>;
   BlessAudioRecorder: All<typeof BlessAudioRecorder>;
   BlessAuditLog: All<typeof BlessAuditLog>;
@@ -625,6 +627,17 @@ export const labelsId: BlessLabelsFull = {
     by: (n) => `Oleh ${n}`,
     read: (m) => `${m} menit baca`,
     updated: (d) => `Diperbarui ${d}`,
+  },
+  BlessArtifactPanel: {
+    panel: "Dokumen",
+    version: (n, t) => `Versi ${n} dari ${t}`,
+    older: "Versi lebih lama",
+    newer: "Versi lebih baru",
+    copy: "Salin",
+    copied: "Disalin",
+    download: "Unduh",
+    close: "Tutup panel",
+    writing: "Menulis…",
   },
   BlessAssignment: {
     due: (w) => `Tenggat ${w}`,
