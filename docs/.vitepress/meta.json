@@ -14487,6 +14487,31 @@
   ],
   "exposed": []
  },
+ "BlessPromptLibrary": {
+  "props": [
+   {
+    "name": "prompts",
+    "type": "BlessSavedPrompt[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ search: string; all: string; tags: string; list: string; none: string; preview: string; use: string; pick: string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "use",
+    "type": "[text: string, prompt: BlessSavedPrompt]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessPullQuote": {
   "props": [
    {

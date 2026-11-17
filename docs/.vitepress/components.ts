@@ -669,6 +669,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         text: "Files and pages that go with a message",
       },
       { name: "BlessRunTrace", slug: "run-trace", text: "The steps of an agent run" },
+      {
+        name: "BlessPromptLibrary",
+        slug: "prompt-library",
+        text: "Saved prompts with fill-in fields",
+      },
       { name: "BlessStage", slug: "stage", text: "Page shell, sidebar \u2192 drawer under 800px" },
       { name: "BlessSidebarNav", slug: "sidebar-nav", text: "Vertical nav list" },
       { name: "BlessNavigationMenu", slug: "navigation-menu", text: "Horizontal nav with panels" },
