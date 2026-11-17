@@ -1,6 +1,6 @@
 # Konvensi
 
-Apa yang berlaku di semua 435 komponen. Jika sebuah komponen melanggar salah satu aturan ini, itu bug.
+Apa yang berlaku di semua 436 komponen. Jika sebuah komponen melanggar salah satu aturan ini, itu bug.
 
 ## API
 

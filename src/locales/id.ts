@@ -4,6 +4,7 @@ import type BlessAgentPlan from "../components/BlessAgentPlan.vue";
 // Indonesian label pack. Its type asks for every word of every component with a `labels` prop, so
 // a new English word without an Indonesian one fails the typecheck.
 import type BlessAnnotator from "../components/BlessAnnotator.vue";
+import type BlessAnswerCompare from "../components/BlessAnswerCompare.vue";
 import type BlessApiEndpoint from "../components/BlessApiEndpoint.vue";
 import type BlessApiKeyField from "../components/BlessApiKeyField.vue";
 import type BlessApplicationStatus from "../components/BlessApplicationStatus.vue";
@@ -263,6 +264,7 @@ export type BlessLabelsFull = {
   BlessAddressFields: All<typeof BlessAddressFields>;
   BlessAgentPlan: All<typeof BlessAgentPlan>;
   BlessAnnotator: All<typeof BlessAnnotator>;
+  BlessAnswerCompare: All<typeof BlessAnswerCompare>;
   BlessApiEndpoint: All<typeof BlessApiEndpoint>;
   BlessApiKeyField: All<typeof BlessApiKeyField>;
   BlessApplicationStatus: All<typeof BlessApplicationStatus>;
@@ -570,6 +572,16 @@ export const labelsId: BlessLabelsFull = {
     removed: (n) => `${n} dihapus`,
     moved: (x, y) => `${x}% dari kiri, ${y}% dari atas`,
     hint: "Tombol panah menggeser tanda, Alt dengan panah mengubah ukuran kotak, Delete menghapusnya.",
+  },
+  BlessAnswerCompare: {
+    a: "A lebih baik",
+    b: "B lebih baik",
+    tie: "Keduanya bagus",
+    bad: "Keduanya buruk",
+    prompt: "Prompt",
+    answer: (l) => `Jawaban ${l}`,
+    question: "Jawaban mana yang lebih baik?",
+    thanks: "Terima kasih. Suara Anda membantu jawaban menjadi lebih baik.",
   },
   BlessApiEndpoint: {
     params: "Parameter",
