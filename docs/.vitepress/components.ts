@@ -634,6 +634,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "check-answers",
         text: "Answers to review before you send",
       },
+      {
+        name: "BlessApplicationStatus",
+        slug: "application-status",
+        text: "Where a request is and what comes next",
+      },
       { name: "BlessStage", slug: "stage", text: "Page shell, sidebar \u2192 drawer under 800px" },
       { name: "BlessSidebarNav", slug: "sidebar-nav", text: "Vertical nav list" },
       { name: "BlessNavigationMenu", slug: "navigation-menu", text: "Horizontal nav with panels" },
