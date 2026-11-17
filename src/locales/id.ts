@@ -144,6 +144,7 @@ import type BlessPickList from "../components/BlessPickList.vue";
 import type BlessPickingList from "../components/BlessPickingList.vue";
 import type BlessPictogram from "../components/BlessPictogram.vue";
 import type BlessPinPad from "../components/BlessPinPad.vue";
+import type BlessPlaceSearch from "../components/BlessPlaceSearch.vue";
 import type BlessPlayQueue from "../components/BlessPlayQueue.vue";
 import type BlessPoll from "../components/BlessPoll.vue";
 import type BlessPostComposer from "../components/BlessPostComposer.vue";
@@ -387,6 +388,7 @@ export type BlessLabelsFull = {
   BlessPickingList: All<typeof BlessPickingList>;
   BlessPictogram: All<typeof BlessPictogram>;
   BlessPinPad: All<typeof BlessPinPad>;
+  BlessPlaceSearch: All<typeof BlessPlaceSearch>;
   BlessPlayQueue: All<typeof BlessPlayQueue>;
   BlessPoll: All<typeof BlessPoll>;
   BlessPostComposer: All<typeof BlessPostComposer>;
@@ -1568,6 +1570,14 @@ export const labelsId: BlessLabelsFull = {
     entered: (n, l) => `${n} dari ${l} digit dimasukkan`,
     delete: "Hapus",
     clear: "Kosongkan",
+  },
+  BlessPlaceSearch: {
+    label: "Cari tempat",
+    placeholder: "Nama atau alamat",
+    searching: "Mencari…",
+    results: (n) => `${n} tempat ditemukan`,
+    none: "Tidak ada tempat ditemukan.",
+    failed: "Pencarian gagal. Coba lagi.",
   },
   BlessPlayQueue: {
     now: "Sedang diputar",
