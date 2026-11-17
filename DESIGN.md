@@ -695,7 +695,7 @@ Nine components, 417 → 426. Each uses native platform APIs only: the library a
 - ✅ `BlessSearchResult`: one result with the title, the address, and a snippet with the search words marked.
 - ✅ `BlessSearchResults`: a results page with the count, the sort, the facets, the results, and the pages.
 - ✅ `BlessAzIndex`: a list in groups by first letter, with a bar of letters to jump.
-- `BlessKnowledgeArticle`: a help article with contents, the date of the last change, and a question if it helped.
+- ✅ `BlessKnowledgeArticle`: a help article with contents, the date of the last change, and a question if it helped.
 - `BlessSavedForm`: a long form that saves a draft in the browser and offers to go on with it later.
 - `BlessCheckAnswers`: the answers of a form in groups with a change link for each, and a statement to agree to before you send.
 - `BlessApplicationStatus`: the reference, the steps of a request with their dates, and what happens next.

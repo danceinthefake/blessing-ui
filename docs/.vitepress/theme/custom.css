@@ -150,7 +150,9 @@
     .bless-cert__title,
     .bless-api__path,
     .bless-result__title,
-    .bless-az__letter
+    .bless-az__letter,
+    .bless-kb__title,
+    .bless-kb__heading
   ) {
   margin: 0;
   padding: 0;
