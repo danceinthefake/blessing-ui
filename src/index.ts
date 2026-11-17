@@ -720,3 +720,6 @@ export { default as BlessCommitList } from "./components/BlessCommitList.vue";
 export type { BlessCommit } from "./components/BlessCommitList.vue";
 export { default as BlessRequestInspector } from "./components/BlessRequestInspector.vue";
 export type { BlessHttpMessage } from "./components/BlessRequestInspector.vue";
+export { default as BlessMapPins } from "./components/BlessMapPins.vue";
+export { project, unproject } from "./components/BlessMapPins.vue";
+export type { BlessMapPin } from "./components/BlessMapPins.vue";

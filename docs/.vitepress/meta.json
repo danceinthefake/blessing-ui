@@ -10373,6 +10373,89 @@
   "slots": [],
   "exposed": []
  },
+ "BlessMapPins": {
+  "props": [
+   {
+    "name": "pins",
+    "type": "BlessMapPin[] | undefined",
+    "required": false,
+    "default": "[]",
+    "description": ""
+   },
+   {
+    "name": "height",
+    "type": "number | undefined",
+    "required": false,
+    "default": "360",
+    "description": ""
+   },
+   {
+    "name": "tiles",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"https://tile.openstreetmap.org/{z}/{x}/{y}.png\"",
+    "description": "a tile URL with {z}, {x}, and {y}; the default is the OpenStreetMap tile server"
+   },
+   {
+    "name": "attribution",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"© OpenStreetMap contributors\"",
+    "description": "the credit that the tile server asks for, as text"
+   },
+   {
+    "name": "attributionUrl",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"https://www.openstreetmap.org/copyright\"",
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ map: string; zoomIn: string; zoomOut: string; keys: string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "center",
+    "type": "[number, number]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "zoom",
+    "type": "number | undefined",
+    "required": false,
+    "default": "13",
+    "description": ""
+   },
+   {
+    "name": "selected",
+    "type": "string | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "update:selected",
+    "type": "[value: string | undefined]",
+    "description": ""
+   },
+   {
+    "name": "update:center",
+    "type": "[value: [number, number]]",
+    "description": ""
+   },
+   {
+    "name": "update:zoom",
+    "type": "[value: number]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessMarginComments": {
   "props": [
    {

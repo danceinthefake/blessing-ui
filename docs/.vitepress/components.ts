@@ -599,6 +599,7 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "request-inspector",
         text: "One HTTP request and its response",
       },
+      { name: "BlessMapPins", slug: "map-pins", text: "Web map tiles with pins" },
       { name: "BlessStage", slug: "stage", text: "Page shell, sidebar \u2192 drawer under 800px" },
       { name: "BlessSidebarNav", slug: "sidebar-nav", text: "Vertical nav list" },
       { name: "BlessNavigationMenu", slug: "navigation-menu", text: "Horizontal nav with panels" },
