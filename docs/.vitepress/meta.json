@@ -6008,6 +6008,36 @@
   ],
   "exposed": []
  },
+ "BlessDocumentChecklist": {
+  "props": [
+   {
+    "name": "docs",
+    "type": "BlessChecklistDoc[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<Record<BlessChecklistDocState, string> & { progress: (done: number, total: number) => string; required: string; optional: string; upload: string; replace: string; remove: (name: string) => string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "remove",
+    "type": "[id: string]",
+    "description": ""
+   },
+   {
+    "name": "upload",
+    "type": "[id: string, file: File]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessDocumentStatus": {
   "props": [
    {

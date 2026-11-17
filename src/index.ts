@@ -752,3 +752,8 @@ export type {
   BlessEligibilityOutcome,
   BlessEligibilityQuestion,
 } from "./components/BlessEligibilityCheck.vue";
+export { default as BlessDocumentChecklist } from "./components/BlessDocumentChecklist.vue";
+export type {
+  BlessChecklistDoc,
+  BlessChecklistDocState,
+} from "./components/BlessDocumentChecklist.vue";
