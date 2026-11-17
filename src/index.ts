@@ -757,3 +757,5 @@ export type {
   BlessChecklistDoc,
   BlessChecklistDocState,
 } from "./components/BlessDocumentChecklist.vue";
+export { default as BlessLogoCloud } from "./components/BlessLogoCloud.vue";
+export type { BlessLogo } from "./components/BlessLogoCloud.vue";

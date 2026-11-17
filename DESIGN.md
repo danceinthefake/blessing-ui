@@ -703,6 +703,22 @@ Nine components, 417 → 426. Each uses native platform APIs only: the library a
 - ✅ `BlessDocumentChecklist`: the documents that a request needs, with an upload and a state for each.
 - ✅ Budget: after the round, the whole library is 287.6 KB gz JS and 80.2 KB gz CSS, under the cap of 296 / 82. Phase 43 is done.
 
+### Phase 44 — marketing and AI assistants (2026-11-17)
+
+Eleven components, 426 → 437. Each uses native platform APIs only: the library adds no dependency. Each needs tests, a docs page with a live example, a README row, words in `labelsId`, and a pass of `src/classes.test.ts`. If a component uses a known method or names another party, credit it on the credits page. When a component lands, move its part from "Not yet" to "Today" on the site types page, in both languages.
+
+- ✅ `BlessLogoCloud`: the logos of customers or partners in a calm grid, in one color.
+- `BlessFeatureGrid`: the features of a product with an icon, a title, and a short text each.
+- `BlessTeamGrid`: the people of a team with a photo, the name, the role, and links.
+- `BlessContactForm`: a contact form with the name, the email, the topic, the message, and a clear result.
+- `BlessPortfolioGrid`: work in a grid with filter buttons by kind.
+- `BlessArtifactPanel`: a side panel for a document that the model writes, with versions, a copy, and a download.
+- `BlessContextChips`: the files and pages that go with a message, as chips that you can remove.
+- `BlessRunTrace`: the steps of an agent run with tools, inputs, outputs, and times.
+- `BlessPromptLibrary`: saved prompts with a search, tags, and fill-in fields.
+- `BlessAnswerCompare`: two answers side by side with a vote for the better one.
+- `BlessTokenCost`: the tokens of a request and what they cost.
+
 ### Deliberately skipped
 
 - **Chart**: no bundled lib. Phase 11 ✅: `--bless-color-chart-{1..5}` (≥3:1 both themes) + `BlessChart` frame that maps them onto Unovis `--vis-*` vars. Unovis is the documented pairing, installed by the consumer.

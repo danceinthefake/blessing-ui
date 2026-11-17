@@ -10466,6 +10466,32 @@
   "slots": [],
   "exposed": []
  },
+ "BlessLogoCloud": {
+  "props": [
+   {
+    "name": "logos",
+    "type": "BlessLogo[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "title",
+    "type": "string | undefined",
+    "required": false,
+    "description": "a short line on top, for example \"Trusted by 2,000 studios\""
+   },
+   {
+    "name": "mono",
+    "type": "boolean | undefined",
+    "required": false,
+    "default": "true",
+    "description": "show the logos in gray until the pointer is on them"
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessLollipop": {
   "props": [
    {
