@@ -116,7 +116,8 @@ A hundred and eight new components, 426 in all, for finance, commerce, communica
 - `BlessDocumentChecklist`: the documents of a request with a state as a mark and words, the reason for a rejection, upload and replace buttons, and a count of the required documents.
 - `BlessLogoCloud`: the logos of customers or partners in a grid, gray until the pointer or the focus is on a linked one, with names as alt text.
 - `BlessFeatureGrid`: the features of a product with an icon slot, a level 3 title, and a short text each, in a grid of up to four columns.
-- `BlessTeamGrid`: the people of a team with a photo or initials, a level 3 name, the role, a bio, and links named with the person. 429 components in all.
+- `BlessTeamGrid`: the people of a team with a photo or initials, a level 3 name, the role, a bio, and links named with the person.
+- `BlessContactForm`: a contact form with errors linked to their fields, the focus on the first wrong field, a hidden field for bots, and sending, sent, and error states. 430 components in all.
 
 ## 0.7.0 — 2026-11-16
 

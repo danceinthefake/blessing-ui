@@ -763,3 +763,5 @@ export { default as BlessFeatureGrid } from "./components/BlessFeatureGrid.vue";
 export type { BlessFeature } from "./components/BlessFeatureGrid.vue";
 export { default as BlessTeamGrid } from "./components/BlessTeamGrid.vue";
 export type { BlessTeamMember } from "./components/BlessTeamGrid.vue";
+export { default as BlessContactForm } from "./components/BlessContactForm.vue";
+export type { BlessContactMessage } from "./components/BlessContactForm.vue";

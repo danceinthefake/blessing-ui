@@ -4441,6 +4441,39 @@
   "slots": [],
   "exposed": []
  },
+ "BlessContactForm": {
+  "props": [
+   {
+    "name": "topics",
+    "type": "string[] | undefined",
+    "required": false,
+    "default": "[]",
+    "description": "the topics of the menu; without them, the form has no topic"
+   },
+   {
+    "name": "state",
+    "type": "\"idle\" | \"error\" | \"sending\" | \"sent\" | undefined",
+    "required": false,
+    "default": "\"idle\"",
+    "description": "your part after the submit event: sending, sent, or error"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ name: string; email: string; topic: string; message: string; send: string; sending: string; sent: string; error: string; needName: string; needEmail: string; needMessage: string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "submit",
+    "type": "[message: BlessContactMessage]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessContactPicker": {
   "props": [
    {
