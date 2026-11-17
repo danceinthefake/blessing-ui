@@ -20987,6 +20987,51 @@
   ],
   "exposed": []
  },
+ "BlessTokenCost": {
+  "props": [
+   {
+    "name": "usage",
+    "type": "BlessTokenUsage",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "prices",
+    "type": "BlessTokenPrices",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "model",
+    "type": "string | undefined",
+    "required": false,
+    "description": "the model, for the caption"
+   },
+   {
+    "name": "currency",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"USD\"",
+    "description": ""
+   },
+   {
+    "name": "locale",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"en\"",
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ caption: (model?: string | undefined) => string; kind: string; tokens: string; price: string; cost: string; input: string; cached: string; output: string; total: string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessToolCall": {
   "props": [
    {
