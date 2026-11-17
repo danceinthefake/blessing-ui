@@ -739,3 +739,4 @@ export { default as BlessAzIndex } from "./components/BlessAzIndex.vue";
 export type { BlessAzItem } from "./components/BlessAzIndex.vue";
 export { default as BlessKnowledgeArticle } from "./components/BlessKnowledgeArticle.vue";
 export type { BlessArticleSection } from "./components/BlessKnowledgeArticle.vue";
+export { default as BlessSavedForm } from "./components/BlessSavedForm.vue";

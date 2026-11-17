@@ -16031,6 +16031,68 @@
   "slots": [],
   "exposed": []
  },
+ "BlessSavedForm": {
+  "props": [
+   {
+    "name": "storageKey",
+    "type": "string",
+    "required": true,
+    "description": "the key of the draft in localStorage; make it unique for each form and each person"
+   },
+   {
+    "name": "delay",
+    "type": "number | undefined",
+    "required": false,
+    "default": "600",
+    "description": "the wait after the last change before a save, in milliseconds"
+   },
+   {
+    "name": "locale",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"en\"",
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ found: (time: string) => string; resume: string; restart: string; saved: (time: string) => string; later: string; send: string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "Values | undefined",
+    "required": false,
+    "default": "{}",
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "update:modelValue",
+    "type": "[value: Values]",
+    "description": ""
+   },
+   {
+    "name": "submit",
+    "type": "[values: Values]",
+    "description": ""
+   },
+   {
+    "name": "later",
+    "type": "[values: Values]",
+    "description": ""
+   }
+  ],
+  "slots": [
+   {
+    "name": "default",
+    "type": "{}",
+    "description": ""
+   }
+  ],
+  "exposed": []
+ },
  "BlessScatterChart": {
   "props": [
    {

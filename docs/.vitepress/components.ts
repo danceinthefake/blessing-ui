@@ -628,6 +628,7 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "knowledge-article",
         text: "A help article with contents and feedback",
       },
+      { name: "BlessSavedForm", slug: "saved-form", text: "A long form that keeps a draft" },
       { name: "BlessStage", slug: "stage", text: "Page shell, sidebar \u2192 drawer under 800px" },
       { name: "BlessSidebarNav", slug: "sidebar-nav", text: "Vertical nav list" },
       { name: "BlessNavigationMenu", slug: "navigation-menu", text: "Horizontal nav with panels" },
