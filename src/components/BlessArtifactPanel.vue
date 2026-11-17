@@ -189,4 +189,7 @@ function download() {
   line-height: 1.65;
   white-space: pre-wrap;
 }
+.bless-artifact {
+  animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft);
+}
 </style>

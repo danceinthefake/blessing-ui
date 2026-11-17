@@ -177,4 +177,8 @@ const show = (v: unknown) => (typeof v === "string" ? v : JSON.stringify(v, null
     transition: none;
   }
 }
+.bless-toolcall,
+.bless-toolcall[open] .bless-toolcall__body {
+  animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft);
+}
 </style>

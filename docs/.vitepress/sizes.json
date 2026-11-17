@@ -36,7 +36,7 @@
   },
   {
     "name": "BlessAgentPlan",
-    "js": 1186,
+    "js": 1195,
     "css": 864
   },
   {
@@ -92,7 +92,7 @@
   {
     "name": "BlessArtifactPanel",
     "js": 2612,
-    "css": 974
+    "css": 1002
   },
   {
     "name": "BlessAspectRatio",
@@ -1102,12 +1102,12 @@
   {
     "name": "BlessMessage",
     "js": 1080,
-    "css": 695
+    "css": 720
   },
   {
     "name": "BlessMessageFeedback",
     "js": 3277,
-    "css": 1646
+    "css": 1660
   },
   {
     "name": "BlessMessageScroller",
@@ -1502,7 +1502,7 @@
   {
     "name": "BlessReasoning",
     "js": 1009,
-    "css": 637
+    "css": 665
   },
   {
     "name": "BlessRecordHeader",
@@ -1821,7 +1821,7 @@
   },
   {
     "name": "BlessStepper",
-    "js": 2147,
+    "js": 2145,
     "css": 1430
   },
   {
@@ -1861,7 +1861,7 @@
   },
   {
     "name": "BlessSuggestions",
-    "js": 647,
+    "js": 654,
     "css": 478
   },
   {
@@ -1951,8 +1951,8 @@
   },
   {
     "name": "BlessThread",
-    "js": 1685,
-    "css": 861
+    "js": 1692,
+    "css": 887
   },
   {
     "name": "BlessTicket",
@@ -2017,7 +2017,7 @@
   {
     "name": "BlessToolCall",
     "js": 1171,
-    "css": 948
+    "css": 972
   },
   {
     "name": "BlessToolbar",
@@ -2077,7 +2077,7 @@
   {
     "name": "BlessTypingIndicator",
     "js": 541,
-    "css": 337
+    "css": 361
   },
   {
     "name": "BlessUnitConverter",

@@ -111,4 +111,8 @@ withDefaults(
 .bless-message:focus-within .bless-message__actions {
   opacity: 1;
 }
+/* a message talks: it wipes up like a game text box */
+.bless-message__content {
+  animation: bless-voice var(--bless-duration-voice) var(--bless-ease-snap);
+}
 </style>

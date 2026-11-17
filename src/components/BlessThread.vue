@@ -48,7 +48,7 @@ const words = (n: number) =>
 </script>
 
 <template>
-  <ol class="bless-thread" :class="{ 'bless-thread--flat': depth > maxDepth }">
+  <ol class="bless-stagger bless-thread" :class="{ 'bless-thread--flat': depth > maxDepth }">
     <li v-for="c in comments" :key="c.id" class="bless-thread__item">
       <BlessMessage :name="c.name" :avatar="c.avatar" :time="c.time" :datetime="c.datetime">
         <slot :comment="c" :depth>{{ c.body }}</slot>

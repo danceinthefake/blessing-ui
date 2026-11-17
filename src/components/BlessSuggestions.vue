@@ -33,7 +33,7 @@ const list = computed(() => props.items.map((it) => (typeof it === "string" ? { 
 <template>
   <ul
     role="list"
-    class="bless-suggestions"
+    class="bless-stagger bless-suggestions"
     :class="{ 'bless-suggestions--scroll': scroll }"
     :aria-label="text.label"
   >

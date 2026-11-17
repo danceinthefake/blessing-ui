@@ -35,6 +35,12 @@ Daftar yang Anda susun ulang, seperti [OrderList](../../components/order-list), 
 
 Panel tab yang baru, langkah baru [Stepper](../../components/stepper), dan isi [Collapsible](../../components/collapsible) yang terbuka datang dengan lapis dasar. Pesan galat di bawah field naik dengan cepat. Thumb switch, tanda centang, dan titik radio melompat ke tempatnya. Bilah dan cincin progres terisi dengan ease lembut yang panjang selama `--bless-duration-draw`.
 
+## Chat dan AI
+
+[Message](../../components/message) berbicara, jadi gelembungnya tersibak dengan lapis suara. Begitu juga [TypingIndicator](../../components/typing-indicator). Panggilan alat, penalaran, dan panel artefak datang dengan lapis dasar, begitu juga isinya saat Anda membukanya. Langkah [AgentPlan](../../components/agent-plan), chip [Suggestions](../../components/suggestions), dan komentar [Thread](../../components/thread) datang berurutan.
+
+Teks yang diketik bersifat pilihan. Untuk mengetik balasan seperti kotak teks gim, beri [StreamingText](../../components/streaming-text) sebuah `pace` dalam huruf per detik. Pembaca layar menunggu teks lengkap. Dengan reduced motion, teks langsung tampil.
+
 ## Flair
 
 Flair mati secara bawaan, karena letupan di setiap klik melelahkan pada formulir yang dipakai seharian. Untuk menyalakannya, pasang `data-flair` di `<html>` atau di satu wadah, misalnya layar hadiah atau gim.
