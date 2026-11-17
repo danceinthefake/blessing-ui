@@ -104,7 +104,8 @@ Ninety-nine new components, 417 in all, for finance, commerce, communication, so
 - `BlessRouteSteps`: the turns of a route with an arrow for each turn, distances in meters or kilometers, the total, and the current step.
 - `BlessWeatherForecast`: the weather now with key facts and the next days with icons, words for screen readers, rain chances, and a range bar.
 - `BlessMeasureConverter`: an amount in one unit of length, mass, volume, or temperature in another, with exact factors and unit names from Intl.
-- `BlessPlaceSearch`: a combobox that searches places with your async function after a short wait, results with the address and the distance, keys, and a status line. 417 components in all.
+- `BlessPlaceSearch`: a combobox that searches places with your async function after a short wait, results with the address and the distance, keys, and a status line.
+- `BlessSearchResult`: one result with the address as parts, the title link, and the search words marked in the title and the snippet. 418 components in all.
 
 ## 0.7.0 — 2026-11-16
 

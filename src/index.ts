@@ -732,3 +732,4 @@ export { convertMeasure, MEASURES } from "./components/BlessMeasureConverter.vue
 export type { BlessMeasureKind } from "./components/BlessMeasureConverter.vue";
 export { default as BlessPlaceSearch } from "./components/BlessPlaceSearch.vue";
 export type { BlessPlace } from "./components/BlessPlaceSearch.vue";
+export { default as BlessSearchResult } from "./components/BlessSearchResult.vue";

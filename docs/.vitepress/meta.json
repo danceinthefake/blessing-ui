@@ -16270,6 +16270,49 @@
   ],
   "exposed": []
  },
+ "BlessSearchResult": {
+  "props": [
+   {
+    "name": "title",
+    "type": "string",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "href",
+    "type": "string",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "snippet",
+    "type": "string | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "query",
+    "type": "string | string[] | undefined",
+    "required": false,
+    "description": "the words to mark in the title and the snippet"
+   },
+   {
+    "name": "kind",
+    "type": "string | undefined",
+    "required": false,
+    "description": "for example \"Help article\" or \"PDF\""
+   },
+   {
+    "name": "date",
+    "type": "string | undefined",
+    "required": false,
+    "description": "the date as text"
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessSeatPicker": {
   "props": [
    {
