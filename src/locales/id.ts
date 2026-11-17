@@ -184,6 +184,7 @@ import type BlessRouteSteps from "../components/BlessRouteSteps.vue";
 import type BlessRsvp from "../components/BlessRsvp.vue";
 import type BlessRuleBuilder from "../components/BlessRuleBuilder.vue";
 import type BlessSankey from "../components/BlessSankey.vue";
+import type BlessSavedForm from "../components/BlessSavedForm.vue";
 import type BlessScatterChart from "../components/BlessScatterChart.vue";
 import type BlessSceneButtons from "../components/BlessSceneButtons.vue";
 import type BlessScheduler from "../components/BlessScheduler.vue";
@@ -431,6 +432,7 @@ export type BlessLabelsFull = {
   BlessRsvp: All<typeof BlessRsvp>;
   BlessRuleBuilder: All<typeof BlessRuleBuilder>;
   BlessSankey: All<typeof BlessSankey>;
+  BlessSavedForm: All<typeof BlessSavedForm>;
   BlessScatterChart: All<typeof BlessScatterChart>;
   BlessSceneButtons: All<typeof BlessSceneButtons>;
   BlessScheduler: All<typeof BlessScheduler>;
@@ -1864,6 +1866,14 @@ export const labelsId: BlessLabelsFull = {
     and: "dan",
   },
   BlessSankey: { from: "Dari", to: "Ke", value: "Nilai" },
+  BlessSavedForm: {
+    found: (t) => `Anda punya draf dari ${t}. Lanjutkan draf itu?`,
+    resume: "Lanjutkan draf",
+    restart: "Mulai dari awal",
+    saved: (t) => `Draf disimpan ${t}`,
+    later: "Simpan dan lanjutkan nanti",
+    send: "Kirim",
+  },
   BlessScatterChart: { point: "Titik", group: "Grup", size: "Ukuran" },
   BlessSceneButtons: {
     title: "Skena",
