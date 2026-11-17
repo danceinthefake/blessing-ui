@@ -511,6 +511,67 @@
   "slots": [],
   "exposed": []
  },
+ "BlessApiEndpoint": {
+  "props": [
+   {
+    "name": "method",
+    "type": "string",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "path",
+    "type": "string",
+    "required": true,
+    "description": "with path parameters in braces, for example /orders/{id}"
+   },
+   {
+    "name": "summary",
+    "type": "string | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "description",
+    "type": "string | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "params",
+    "type": "BlessApiParam[] | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "example",
+    "type": "string | undefined",
+    "required": false,
+    "description": "an example request, for example a curl command"
+   },
+   {
+    "name": "exampleLang",
+    "type": "string | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "responses",
+    "type": "BlessApiResponse[] | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ params: string; name: string; type: string; where: string; required: string; optional: string; example: string; responses: string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessApiKeyField": {
   "props": [
    {

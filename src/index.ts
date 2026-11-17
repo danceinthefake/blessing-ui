@@ -712,3 +712,5 @@ export { default as BlessLessonVideo } from "./components/BlessLessonVideo.vue";
 export type { BlessVideoNote } from "./components/BlessLessonVideo.vue";
 export { default as BlessTerminal } from "./components/BlessTerminal.vue";
 export type { BlessTerminalLine } from "./components/BlessTerminal.vue";
+export { default as BlessApiEndpoint } from "./components/BlessApiEndpoint.vue";
+export type { BlessApiParam, BlessApiResponse } from "./components/BlessApiEndpoint.vue";

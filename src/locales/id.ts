@@ -4,6 +4,7 @@ import type BlessAgentPlan from "../components/BlessAgentPlan.vue";
 // Indonesian label pack. Its type asks for every word of every component with a `labels` prop, so
 // a new English word without an Indonesian one fails the typecheck.
 import type BlessAnnotator from "../components/BlessAnnotator.vue";
+import type BlessApiEndpoint from "../components/BlessApiEndpoint.vue";
 import type BlessApiKeyField from "../components/BlessApiKeyField.vue";
 import type BlessAppointmentCard from "../components/BlessAppointmentCard.vue";
 import type BlessApprovalFlow from "../components/BlessApprovalFlow.vue";
@@ -240,6 +241,7 @@ export type BlessLabelsFull = {
   BlessAddressFields: All<typeof BlessAddressFields>;
   BlessAgentPlan: All<typeof BlessAgentPlan>;
   BlessAnnotator: All<typeof BlessAnnotator>;
+  BlessApiEndpoint: All<typeof BlessApiEndpoint>;
   BlessApiKeyField: All<typeof BlessApiKeyField>;
   BlessAppointmentCard: All<typeof BlessAppointmentCard>;
   BlessApprovalFlow: All<typeof BlessApprovalFlow>;
@@ -523,6 +525,16 @@ export const labelsId: BlessLabelsFull = {
     removed: (n) => `${n} dihapus`,
     moved: (x, y) => `${x}% dari kiri, ${y}% dari atas`,
     hint: "Tombol panah menggeser tanda, Alt dengan panah mengubah ukuran kotak, Delete menghapusnya.",
+  },
+  BlessApiEndpoint: {
+    params: "Parameter",
+    name: "Nama",
+    type: "Tipe",
+    where: "Di",
+    required: "wajib",
+    optional: "opsional",
+    example: "Contoh permintaan",
+    responses: "Respons",
   },
   BlessApiKeyField: {
     show: "Tampilkan kunci",

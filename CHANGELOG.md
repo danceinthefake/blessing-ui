@@ -95,7 +95,8 @@ Eighty-nine new components, 407 in all, for finance, commerce, communication, so
 - `BlessAssignment`: the instructions, the due date, a file hand-in, the state in words, and the grade with feedback.
 - `BlessCertificate`: a certificate of completion in the shape of an A4 page that scales with its width and does not break on paper.
 - `BlessLessonVideo`: a lesson video with captions and notes at points in time that move the video back to that point.
-- `BlessTerminal`: shell output with a prompt, errors with a bar and words for screen readers, a history on the arrow keys, and a run event. 408 components in all.
+- `BlessTerminal`: shell output with a prompt, errors with a bar and words for screen readers, a history on the arrow keys, and a run event.
+- `BlessApiEndpoint`: one endpoint of an API with the method, the path with marked parameters, a table of parameters, an example request, and a tab for each response. 409 components in all.
 
 ## 0.7.0 — 2026-11-16
 
