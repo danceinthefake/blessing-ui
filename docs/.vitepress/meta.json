@@ -3166,6 +3166,42 @@
   "slots": [],
   "exposed": []
  },
+ "BlessCheckAnswers": {
+  "props": [
+   {
+    "name": "groups",
+    "type": "BlessAnswerGroup[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "declaration",
+    "type": "string | undefined",
+    "required": false,
+    "description": "what the person agrees to before they send, for example that the answers are true"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ change: string; empty: string; agree: string; send: string; mustAgree: string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "submit",
+    "type": "[]",
+    "description": ""
+   },
+   {
+    "name": "change",
+    "type": "[key: string]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessCheckbox": {
   "props": [
    {
