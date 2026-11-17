@@ -176,6 +176,7 @@ import type BlessReturnRequest from "../components/BlessReturnRequest.vue";
 import type BlessReviewSummary from "../components/BlessReviewSummary.vue";
 import type BlessRoomBooking from "../components/BlessRoomBooking.vue";
 import type BlessRoseChart from "../components/BlessRoseChart.vue";
+import type BlessRouteSteps from "../components/BlessRouteSteps.vue";
 import type BlessRsvp from "../components/BlessRsvp.vue";
 import type BlessRuleBuilder from "../components/BlessRuleBuilder.vue";
 import type BlessSankey from "../components/BlessSankey.vue";
@@ -417,6 +418,7 @@ export type BlessLabelsFull = {
   BlessReviewSummary: All<typeof BlessReviewSummary>;
   BlessRoomBooking: All<typeof BlessRoomBooking>;
   BlessRoseChart: All<typeof BlessRoseChart>;
+  BlessRouteSteps: All<typeof BlessRouteSteps>;
   BlessRsvp: All<typeof BlessRsvp>;
   BlessRuleBuilder: All<typeof BlessRuleBuilder>;
   BlessSankey: All<typeof BlessSankey>;
@@ -1790,6 +1792,10 @@ export const labelsId: BlessLabelsFull = {
     book: "Pesan",
   },
   BlessRoseChart: { item: "Item", value: "Nilai" },
+  BlessRouteSteps: {
+    route: "Rute",
+    total: (d, t) => `${d} · ${t}`,
+  },
   BlessRsvp: {
     yes: "Hadir",
     maybe: "Mungkin",
