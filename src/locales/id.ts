@@ -207,6 +207,7 @@ import type BlessSunburst from "../components/BlessSunburst.vue";
 import type BlessSwipeDeck from "../components/BlessSwipeDeck.vue";
 import type BlessSystemStatus from "../components/BlessSystemStatus.vue";
 import type BlessTaskList from "../components/BlessTaskList.vue";
+import type BlessTerminal from "../components/BlessTerminal.vue";
 import type BlessTestimonials from "../components/BlessTestimonials.vue";
 import type BlessThermostat from "../components/BlessThermostat.vue";
 import type BlessThread from "../components/BlessThread.vue";
@@ -442,6 +443,7 @@ export type BlessLabelsFull = {
   BlessSwipeDeck: All<typeof BlessSwipeDeck>;
   BlessSystemStatus: All<typeof BlessSystemStatus>;
   BlessTaskList: All<typeof BlessTaskList>;
+  BlessTerminal: All<typeof BlessTerminal>;
   BlessTestimonials: All<typeof BlessTestimonials>;
   BlessThermostat: All<typeof BlessThermostat>;
   BlessThread: All<typeof BlessThread>;
@@ -1963,6 +1965,11 @@ export const labelsId: BlessLabelsFull = {
     late: "terlambat",
     due: (d) => `tenggat ${d}`,
     subtasks: (d, t) => `${d} dari ${t}`,
+  },
+  BlessTerminal: {
+    output: "Keluaran terminal",
+    command: "Perintah",
+    error: "Galat:",
   },
   BlessTestimonials: {
     title: "Kata mereka",

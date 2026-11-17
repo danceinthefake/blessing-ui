@@ -586,6 +586,7 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "log-viewer",
         text: "A live log with colors, a filter, and follow",
       },
+      { name: "BlessTerminal", slug: "terminal", text: "Shell output with a prompt and history" },
       { name: "BlessStage", slug: "stage", text: "Page shell, sidebar \u2192 drawer under 800px" },
       { name: "BlessSidebarNav", slug: "sidebar-nav", text: "Vertical nav list" },
       { name: "BlessNavigationMenu", slug: "navigation-menu", text: "Horizontal nav with panels" },
