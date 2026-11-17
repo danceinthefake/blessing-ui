@@ -714,7 +714,7 @@ Eleven components, 426 → 437. Each uses native platform APIs only: the library
 - ✅ `BlessPortfolioGrid`: work in a grid with filter buttons by kind.
 - ✅ `BlessArtifactPanel`: a side panel for a document that the model writes, with versions, a copy, and a download.
 - ✅ `BlessContextChips`: the files and pages that go with a message, as chips that you can remove.
-- `BlessRunTrace`: the steps of an agent run with tools, inputs, outputs, and times.
+- ✅ `BlessRunTrace`: the steps of an agent run with tools, inputs, outputs, and times.
 - `BlessPromptLibrary`: saved prompts with a search, tags, and fill-in fields.
 - `BlessAnswerCompare`: two answers side by side with a vote for the better one.
 - `BlessTokenCost`: the tokens of a request and what they cost.

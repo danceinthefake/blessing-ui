@@ -191,6 +191,7 @@ import type BlessRoseChart from "../components/BlessRoseChart.vue";
 import type BlessRouteSteps from "../components/BlessRouteSteps.vue";
 import type BlessRsvp from "../components/BlessRsvp.vue";
 import type BlessRuleBuilder from "../components/BlessRuleBuilder.vue";
+import type BlessRunTrace from "../components/BlessRunTrace.vue";
 import type BlessSankey from "../components/BlessSankey.vue";
 import type BlessSavedForm from "../components/BlessSavedForm.vue";
 import type BlessScatterChart from "../components/BlessScatterChart.vue";
@@ -448,6 +449,7 @@ export type BlessLabelsFull = {
   BlessRouteSteps: All<typeof BlessRouteSteps>;
   BlessRsvp: All<typeof BlessRsvp>;
   BlessRuleBuilder: All<typeof BlessRuleBuilder>;
+  BlessRunTrace: All<typeof BlessRunTrace>;
   BlessSankey: All<typeof BlessSankey>;
   BlessSavedForm: All<typeof BlessSavedForm>;
   BlessScatterChart: All<typeof BlessScatterChart>;
@@ -1962,6 +1964,14 @@ export const labelsId: BlessLabelsFull = {
     preview: "Aturannya",
     sentence: (w, i, t) => `Ketika ${w}${i ? `, jika ${i}` : ""}, maka ${t}.`,
     and: "dan",
+  },
+  BlessRunTrace: {
+    ok: "selesai",
+    error: "galat",
+    running: "berjalan",
+    summary: (n, t, e) => `${n} langkah · ${t}${e ? ` · ${e} galat` : ""}`,
+    input: "Masukan",
+    output: "Keluaran",
   },
   BlessSankey: { from: "Dari", to: "Ke", value: "Nilai" },
   BlessSavedForm: {
