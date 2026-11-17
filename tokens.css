@@ -101,7 +101,7 @@
   --bless-dash-width: 10px; /* separator dash */
 
   /* ---- elevation ----
-   * Nothing blurs. A floating thing sits on a plate: a hard offset slab in the accent, the same
+   * Nothing blurs at rest. A floating thing sits on a plate: a hard offset slab in the accent, the same
    * motif as the QR frame and the mark's plates. Modal and sheet rely on the scrim instead.
    */
   --bless-plate-offset: 1px;
@@ -120,6 +120,19 @@
   --bless-ease-linear: linear;
   --bless-hover-opacity: 0.6;
   --bless-press-scale: 0.8;
+  /* three layers, like the show (see docs/guide/motion): a soft base on every appearance, a
+   * snappy voice for the parts that talk, and opt-in flair for comedy beats */
+  --bless-ease-soft: cubic-bezier(0.22, 1, 0.36, 1); /* base: a long settle, like a rack focus */
+  --bless-ease-snap: cubic-bezier(0.2, 0.8, 0.2, 1); /* voice: a game text box */
+  --bless-ease-pop: cubic-bezier(0.34, 1.56, 0.64, 1); /* flair: overshoot */
+  --bless-duration-enter: 0.28s;
+  --bless-duration-voice: 0.24s;
+  --bless-duration-flair: 0.42s;
+  --bless-rise: 8px; /* how far an appearance travels */
+  --bless-focus-blur: 2px; /* soft focus at the start of an appearance; sharp at rest */
+  --bless-stagger: 50ms; /* the delay from one item to the next in a list */
+  --bless-wipe: 100%; /* how much of a text box is hidden when it starts to wipe up */
+  --bless-flair: 1; /* the strength of the flair: 0 turns it off */
 
   /* ---- layout ---- */
   --bless-sidebar-width: 22%;
@@ -190,7 +203,74 @@
     --bless-duration-base: 0s;
     --bless-duration-slow: 0s;
     --bless-duration-slower: 0s;
+    --bless-duration-enter: 0s;
+    --bless-duration-voice: 0s;
+    --bless-duration-flair: 0s;
+    --bless-stagger: 0s;
   }
+}
+/* calm motion, for people who want less but not none: set on <html> or on any container */
+[data-motion="calm"] {
+  --bless-duration-enter: 0.14s;
+  --bless-duration-voice: 0.14s;
+  --bless-rise: 0px;
+  --bless-focus-blur: 0px;
+  --bless-stagger: 0s;
+  --bless-wipe: 0%;
+  --bless-flair: 0;
+}
+
+/* ---- shared motion ----
+ * Every keyframe starts from a token, so calm and reduced motion reach them without new rules.
+ * They use the translate and scale properties, so the lean (a transform) keeps working.
+ */
+@keyframes bless-enter {
+  from {
+    opacity: 0;
+    translate: 0 var(--bless-rise);
+    filter: blur(var(--bless-focus-blur));
+  }
+}
+/* a text box: wipes up from its bottom edge */
+@keyframes bless-voice {
+  from {
+    opacity: 0;
+    translate: 0 var(--bless-rise);
+    clip-path: inset(var(--bless-wipe) 0 0 0);
+  }
+}
+/* squash and stretch (Thomas and Johnston, The Illusion of Life, 1981) */
+@keyframes bless-pop {
+  35% {
+    scale: calc(1 + 0.12 * var(--bless-flair)) calc(1 - 0.12 * var(--bless-flair));
+  }
+  65% {
+    scale: calc(1 - 0.05 * var(--bless-flair)) calc(1 + 0.06 * var(--bless-flair));
+  }
+}
+@keyframes bless-shake {
+  20%,
+  60% {
+    translate: calc(-6px * var(--bless-flair)) 0;
+  }
+  40%,
+  80% {
+    translate: calc(6px * var(--bless-flair)) 0;
+  }
+}
+/* flair: opt in with data-flair on <html> or on any container. A choice pops and a wrong value
+ * shakes. A thing that is already chosen when the page loads pops once too. */
+[data-flair]
+  :is(
+    [aria-pressed="true"],
+    [aria-checked="true"],
+    [role="tab"][aria-selected="true"],
+    input:is([type="checkbox"], [type="radio"]):checked
+  ) {
+  animation: bless-pop var(--bless-duration-flair) var(--bless-ease-pop);
+}
+[data-flair] [aria-invalid="true"] {
+  animation: bless-shake var(--bless-duration-flair) var(--bless-ease-out);
 }
 
 /* ---- palettes ----

@@ -135,6 +135,7 @@ function customize() {
 
 <style>
 .bless-consent {
+  animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft);
   display: grid;
   gap: var(--bless-space-3);
   padding: var(--bless-space-4);
@@ -165,6 +166,7 @@ function customize() {
   color: inherit;
 }
 .bless-consent__panel {
+  animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft);
   display: grid;
   gap: var(--bless-space-3);
   margin: 0;

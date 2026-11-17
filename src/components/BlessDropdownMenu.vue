@@ -193,6 +193,6 @@ onBeforeUnmount(() => bar?.unregister(id));
   overflow: visible;
 }
 .bless-dropdown:popover-open {
-  animation: bless-pop-in var(--bless-duration-base) var(--bless-ease-out);
+  animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft);
 }
 </style>

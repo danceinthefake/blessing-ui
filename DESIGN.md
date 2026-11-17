@@ -720,6 +720,23 @@ Eleven components, 426 → 437. Each uses native platform APIs only: the library
 - ✅ `BlessTokenCost`: the tokens of a request and what they cost.
 - ✅ Budget: after the round, the whole library is 294.0 KB gz JS and 82.4 KB gz CSS. The CSS went over 82, so the cap rose about 10% to 326 / 90. Phase 44 is done, and every part on the site types page is now a component.
 
+### Phase 45 — motion, three layers like the show (2026-11-17)
+
+The user chose the three layers from the motion study, with Saekano as the reference. Calm motion stays for people who want less. Reduced motion turns everything off. The motion uses CSS keyframes and tokens only: the library adds no dependency.
+
+- ✅ Tokens: `--bless-ease-soft`, `--bless-ease-snap`, `--bless-ease-pop`, `--bless-duration-enter`, `--bless-duration-voice`, `--bless-duration-flair`, `--bless-rise`, `--bless-focus-blur`, `--bless-stagger`, `--bless-wipe`, `--bless-flair`. Reduced motion sets every duration to `0s`.
+- ✅ Shared keyframes in `tokens.css`: `bless-enter` (base), `bless-voice` (voice), `bless-pop` and `bless-shake` (flair). They animate `translate`, `scale`, `filter`, and `clip-path`, so the lean keeps working.
+- ✅ Calm: `data-motion="calm"` on any container. Fade in 140 ms, no travel, no blur, no flair.
+- ✅ Flair: `data-flair` on any container. Chosen things pop, invalid fields shake.
+- ✅ Base layer on the overlays: Popover (and HoverCard, ConfirmPopup, NotificationInbox through it), DropdownMenu (and ContextMenu), NavigationMenu, Combobox, DatePicker, Mention, Alert, Banner, ConsentBanner, SelectionToolbar, Sheet easing.
+- ✅ Voice layer: Modal (and AlertDialog, Command, Lightbox through it), Toaster, Tooltip, Tour, Coachmark.
+- ✅ Docs: the motion guide in English and Indonesian, the rules in the conventions and the story, and the credits.
+- ✅ Budget and checks: the whole library is 294.0 KB gz JS and 82.8 KB gz CSS, under the cap of 326 / 90. Axe is clean on 447 pages in both themes, reduced motion is calm on 431 pages, the Chromium sweep is clean on 507 pages, and the interaction tests pass. The foundation of Phase 45 is done.
+- [ ] Phase 46: lists and data. Stagger for list items, rows, and cards. Charts draw in.
+- [ ] Phase 47: forms and controls. Tabs, steppers, toggles, and progress use the base and the flair.
+- [ ] Phase 48: chat and AI. The voice layer with typed text as an opt-in.
+- [ ] Phase 49: the remaining components, page by page.
+
 ### Deliberately skipped
 
 - **Chart**: no bundled lib. Phase 11 ✅: `--bless-color-chart-{1..5}` (≥3:1 both themes) + `BlessChart` frame that maps them onto Unovis `--vis-*` vars. Unovis is the documented pairing, installed by the consumer.

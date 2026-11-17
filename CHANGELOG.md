@@ -1,5 +1,22 @@
 # Changelog
 
+## Unreleased
+
+Motion in three layers, like the series: a soft base on every appearance, a game text box for the parts that talk, and opt-in flair. See the [motion](https://ui.blessing.id/guide/motion) guide. No component API is removed or renamed.
+
+### Added
+
+- Motion tokens: `--bless-ease-soft`, `--bless-ease-snap`, `--bless-ease-pop`, `--bless-duration-enter`, `--bless-duration-voice`, `--bless-duration-flair`, `--bless-rise`, `--bless-focus-blur`, `--bless-stagger`, `--bless-wipe`, and `--bless-flair`.
+- Global keyframes `bless-enter`, `bless-voice`, `bless-pop`, and `bless-shake`, for your own components too.
+- `data-motion="calm"` on any container: a short fade, with no travel and no flair.
+- `data-flair` on any container: chosen things pop, and invalid fields shake.
+
+### Changed
+
+- Popovers, menus, pickers, alerts, and banners rise out of a soft focus when they appear.
+- Dialogs, toasts, tooltips, tours, and coachmarks wipe up from their bottom edge.
+- The `bless-pop-in` and `bless-modal-in` keyframes are gone. If your CSS used them, use `bless-enter` and `bless-voice`.
+
 ## 0.8.0 — 2026-11-17
 
 A hundred and nineteen new components, 437 in all, for finance, commerce, communication, social, health, smart home, content, media, ERP, operations, productivity, education, developer tool, utility, search, government, marketing, and AI assistant sites. Every part that the site types page names is now a component. They come from the new [site types](https://ui.blessing.id/design/site-types) page, which sorts websites and apps into 18 groups and lists the parts that each group needs. The library still has no dependencies. The Indonesian label pack covers all 263 components that read a label pack. No API is removed or renamed.

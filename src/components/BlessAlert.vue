@@ -49,6 +49,7 @@ const emit = defineEmits<{ dismiss: [] }>();
 <style>
 .bless-alert {
   border-radius: var(--bless-radius);
+  animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft);
   --_c: var(--bless-color-text);
   display: flex;
   gap: var(--bless-space-3);

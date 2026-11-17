@@ -27,7 +27,7 @@ Hal-hal ini menjadi [merek](./brand):
 - Satu sudut: −10° (`--bless-lean`). Sekarang ia merespons perhatian. Tombol, tag, tab, dan isian tempat Anda mengetik miring saat hover, fokus, atau ditekan. Hanya huruf besar yang miring saat diam.
 - Satu aksen di atas skala abu-abu. Merah muda sang heroine adalah bawaannya.
 - Huruf tipis berukuran besar untuk suara, dan huruf kapital tebal berjarak untuk UI.
-- Memudar saat hover, tidak pernah memantul. Kemunculan juga memudar, dan tidak ada yang melayang pergi.
+- Memudar saat hover, tidak pernah memantul.
 - Pelat: apa pun yang melayang duduk di atas geseran tegas 1px berwarna aksen, tidak pernah buram.
 
 ## Yang ditambahkan
@@ -36,6 +36,7 @@ Sumbernya adalah situs pemasaran, dan sebuah library harus melakukan lebih. Semu
 
 - **Aksesibilitas.** Cincin fokus, peran ARIA pada menu, dialog, grid, dan tablist, `prefers-reduced-motion`, dan kontras AA. Untuk kontras, kami menggelapkan aksen satu langkah di mana pun ia menjadi teks. Kami memperdalam isiannya agar teks putih di atasnya mencapai 4.5:1. Kami menerangkannya untuk teks di mode gelap. Kami melakukan hal yang sama untuk merah peringatan. Situs itu tidak punya semua ini.
 - **Bahasa desain.** Enam benang seri ini menjadi enam aturan: miring saat diperhatikan, warna berarti terpilih, menulis di halaman, menyatu saat berkelompok, meluap sekali saja, dan kepedulian di atas tontonan. Lihat [bahasa desain](./). Ini perbedaan terbesar dari situs itu. Merah mudanya ada pada benda yang diam. Di sini aksen hanya muncul pada apa yang dipilih seseorang.
+- **Gerak.** Tiga lapis, seperti serialnya: dasar yang lembut di setiap kemunculan, kotak teks gim untuk bagian yang berbicara, dan adegan komedi yang bisa dipilih. Pengaturan tenang memberi lebih sedikit. Lihat [gerak](../guide/motion).
 - **Mode gelap.** Abu-abu yang sama dibalik, dengan satu pertukaran token. Huruf tipis naik satu ketebalan, karena garis tipis terlihat lebih tipis sebagai teks terang di latar gelap.
 - **Token.** Setiap nilai yang ditulis mati di situs itu menjadi custom property `--bless-*`. Anda bisa menyetel ulang tampilan tanpa mengubah komponen.
 - **Platform.** `<dialog>`, Popover API, `<details>`, kontrol formulir bawaan, tanggal `Intl`, dan scroll-snap. Ini bagian dari browser sendiri, diberi gaya dan tidak dibuat ulang.

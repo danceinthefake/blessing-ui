@@ -148,7 +148,7 @@ const titleId = `${useId()}-title`;
   overflow: auto;
   background: var(--bless-color-bg);
   box-shadow: var(--bless-shadow-plate);
-  animation: bless-modal-in var(--bless-duration-slow) var(--bless-ease-out);
+  animation: bless-voice var(--bless-duration-voice) var(--bless-ease-snap);
 }
 .bless-modal--sm {
   --_w: 400px;
@@ -213,16 +213,5 @@ const titleId = `${useId()}-title`;
   display: flex;
   gap: var(--bless-space-2);
   justify-content: flex-end;
-}
-@keyframes bless-modal-in {
-  from {
-    opacity: 0;
-    transform: translateY(var(--bless-space-3));
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  .bless-modal__panel {
-    animation: none;
-  }
 }
 </style>

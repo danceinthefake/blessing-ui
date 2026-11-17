@@ -193,4 +193,7 @@ watch(open, (o) =>
 .bless-mention__option--active {
   background: var(--bless-color-surface);
 }
+.bless-mention__panel:popover-open {
+  animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft);
+}
 </style>

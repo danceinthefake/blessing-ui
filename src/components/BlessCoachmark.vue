@@ -132,6 +132,7 @@ const used = (e: MouseEvent) => {
   inset-inline-start: -4px;
 }
 .bless-coachmark__bubble {
+  animation: bless-voice var(--bless-duration-voice) var(--bless-ease-snap);
   position: absolute;
   z-index: 2;
   display: grid;
