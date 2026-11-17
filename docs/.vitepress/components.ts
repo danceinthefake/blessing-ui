@@ -594,6 +594,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         slug: "commit-list",
         text: "Commits by day with hashes and changes",
       },
+      {
+        name: "BlessRequestInspector",
+        slug: "request-inspector",
+        text: "One HTTP request and its response",
+      },
       { name: "BlessStage", slug: "stage", text: "Page shell, sidebar \u2192 drawer under 800px" },
       { name: "BlessSidebarNav", slug: "sidebar-nav", text: "Vertical nav list" },
       { name: "BlessNavigationMenu", slug: "navigation-menu", text: "Horizontal nav with panels" },

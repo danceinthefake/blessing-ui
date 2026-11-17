@@ -15249,6 +15249,74 @@
   "slots": [],
   "exposed": []
  },
+ "BlessRequestInspector": {
+  "props": [
+   {
+    "name": "method",
+    "type": "string",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "url",
+    "type": "string",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "status",
+    "type": "number",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "statusText",
+    "type": "string | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "duration",
+    "type": "number | undefined",
+    "required": false,
+    "description": "how long it took, in milliseconds"
+   },
+   {
+    "name": "size",
+    "type": "number | undefined",
+    "required": false,
+    "description": "the size of the response body, in bytes"
+   },
+   {
+    "name": "request",
+    "type": "BlessHttpMessage | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "response",
+    "type": "BlessHttpMessage | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "locale",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"en\"",
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ headers: string; request: string; response: string; requestHeaders: string; responseHeaders: string; noBody: string; ok: string; redirect: string; clientError: string; serverError: string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessResizable": {
   "props": [
    {
