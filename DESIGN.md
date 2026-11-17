@@ -710,7 +710,7 @@ Eleven components, 426 → 437. Each uses native platform APIs only: the library
 - ✅ `BlessLogoCloud`: the logos of customers or partners in a calm grid, in one color.
 - ✅ `BlessFeatureGrid`: the features of a product with an icon, a title, and a short text each.
 - ✅ `BlessTeamGrid`: the people of a team with a photo, the name, the role, and links.
-- `BlessContactForm`: a contact form with the name, the email, the topic, the message, and a clear result.
+- ✅ `BlessContactForm`: a contact form with the name, the email, the topic, the message, and a clear result.
 - `BlessPortfolioGrid`: work in a grid with filter buttons by kind.
 - `BlessArtifactPanel`: a side panel for a document that the model writes, with versions, a copy, and a download.
 - `BlessContextChips`: the files and pages that go with a message, as chips that you can remove.

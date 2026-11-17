@@ -47,6 +47,7 @@ import type BlessCommitList from "../components/BlessCommitList.vue";
 import type BlessComparisonTable from "../components/BlessComparisonTable.vue";
 import type BlessConnectionStatus from "../components/BlessConnectionStatus.vue";
 import type BlessConsentBanner from "../components/BlessConsentBanner.vue";
+import type BlessContactForm from "../components/BlessContactForm.vue";
 import type BlessContactPicker from "../components/BlessContactPicker.vue";
 import type BlessContextMeter from "../components/BlessContextMeter.vue";
 import type BlessContinueWatching from "../components/BlessContinueWatching.vue";
@@ -300,6 +301,7 @@ export type BlessLabelsFull = {
   BlessComparisonTable: All<typeof BlessComparisonTable>;
   BlessConnectionStatus: All<typeof BlessConnectionStatus>;
   BlessConsentBanner: All<typeof BlessConsentBanner>;
+  BlessContactForm: All<typeof BlessContactForm>;
   BlessContactPicker: All<typeof BlessContactPicker>;
   BlessContextMeter: All<typeof BlessContextMeter>;
   BlessContinueWatching: All<typeof BlessContinueWatching>;
@@ -849,6 +851,19 @@ export const labelsId: BlessLabelsFull = {
     save: "Simpan pilihan",
     policy: "Kebijakan privasi",
     required: "Selalu aktif",
+  },
+  BlessContactForm: {
+    name: "Nama Anda",
+    email: "Email Anda",
+    topic: "Topik",
+    message: "Pesan",
+    send: "Kirim pesan",
+    sending: "Mengirim…",
+    sent: "Terima kasih. Pesan Anda sudah kami terima dan kami balas dalam dua hari kerja.",
+    error: "Pesan gagal terkirim. Coba lagi, atau kirim email kepada kami.",
+    needName: "Isi nama Anda.",
+    needEmail: "Isi alamat email, misalnya nama@contoh.com.",
+    needMessage: "Tulis pesan.",
   },
   BlessContactPicker: {
     title: "Orang",
