@@ -237,4 +237,7 @@ function scan(c: string) {
   font-variant-numeric: tabular-nums;
   text-align: center;
 }
+.bless-picking__error {
+  animation: bless-enter var(--bless-duration-voice) var(--bless-ease-snap);
+}
 </style>

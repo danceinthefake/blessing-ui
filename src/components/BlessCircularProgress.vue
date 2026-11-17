@@ -101,7 +101,7 @@ const text = computed(() =>
 .bless-circular__bar {
   stroke: var(--_c);
   stroke-linecap: butt;
-  transition: stroke-dashoffset var(--bless-duration-slow) var(--bless-ease-out);
+  transition: stroke-dashoffset var(--bless-duration-draw) var(--bless-ease-soft);
 }
 .bless-circular--indeterminate svg {
   animation: bless-circular-spin 1s var(--bless-ease-linear) infinite;

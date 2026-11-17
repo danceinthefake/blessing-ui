@@ -240,4 +240,7 @@ textarea.bless-return__input {
 .bless-return__error:empty {
   display: none;
 }
+.bless-return__error {
+  animation: bless-enter var(--bless-duration-voice) var(--bless-ease-snap);
+}
 </style>

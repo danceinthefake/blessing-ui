@@ -118,7 +118,7 @@ const pct = computed(() =>
   min-width: 0; /* a length, so the done state's overflow animates */
   height: 100%;
   background: var(--_c);
-  transition: width var(--bless-duration-slow) var(--bless-ease-out);
+  transition: width var(--bless-duration-draw) var(--bless-ease-soft);
 }
 .bless-progress--indeterminate .bless-progress__fill {
   width: 40%;

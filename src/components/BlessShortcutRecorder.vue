@@ -209,4 +209,7 @@ defineExpose({ start, focus: () => btn.value?.focus() });
   color: var(--bless-color-danger-text);
   font-size: var(--bless-text-xs);
 }
+.bless-shortcut__error {
+  animation: bless-enter var(--bless-duration-voice) var(--bless-ease-snap);
+}
 </style>

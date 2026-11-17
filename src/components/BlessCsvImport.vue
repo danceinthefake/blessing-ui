@@ -276,4 +276,7 @@ const missing = computed(() => records.value.length - good.value.length);
 .bless-csv__preview td.is-missing {
   border: 2px dashed var(--bless-color-danger);
 }
+.bless-csv__error {
+  animation: bless-enter var(--bless-duration-voice) var(--bless-ease-snap);
+}
 </style>

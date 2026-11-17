@@ -168,4 +168,7 @@ function onKey(e: KeyboardEvent) {
   outline: 2px solid var(--bless-color-accent);
   outline-offset: 2px;
 }
+.bless-tabs__panel {
+  animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft);
+}
 </style>

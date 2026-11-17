@@ -19,6 +19,7 @@ Motion in three layers, like the series: a soft base on every appearance, a game
 - Dialogs, toasts, tooltips, tours, and coachmarks wipe up from their bottom edge.
 - Feeds, timelines, search results, inboxes, and grids of cards stagger their items.
 - Bar, histogram, Pareto, and waterfall bars grow from the baseline. Scatter dots pop. Line and sparkline lines draw. The donut ring opens.
+- Tab panels, Stepper steps, and open Collapsible and Accordion content arrive with the base layer. Field error messages rise in. Switch, Checkbox, and Radio snap into place. Progress bars and rings fill with a long soft ease.
 - The `bless-pop-in` and `bless-modal-in` keyframes are gone. If your CSS used them, use `bless-enter` and `bless-voice`.
 
 ## 0.8.0 — 2026-11-17

@@ -108,4 +108,7 @@ function onInput(e: Event) {
   color: var(--bless-color-danger-text);
   font-weight: var(--bless-font-weight-bold);
 }
+.bless-field__error {
+  animation: bless-enter var(--bless-duration-voice) var(--bless-ease-snap);
+}
 </style>

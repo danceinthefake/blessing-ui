@@ -101,7 +101,7 @@ const describedby = computed(() =>
   stroke-width: 2.5;
   stroke-linecap: square;
   transform: skewX(var(--bless-skew-counter)) scale(0);
-  transition: transform var(--bless-duration-base) var(--bless-ease-out);
+  transition: transform var(--bless-duration-base) var(--bless-ease-snap);
 }
 .bless-checkbox__mixed {
   position: absolute;
@@ -109,7 +109,7 @@ const describedby = computed(() =>
   height: 2px;
   background: var(--bless-color-on-accent);
   transform: scaleX(0);
-  transition: transform var(--bless-duration-base) var(--bless-ease-out);
+  transition: transform var(--bless-duration-base) var(--bless-ease-snap);
 }
 .bless-checkbox__input:checked + .bless-checkbox__box,
 .bless-checkbox__input:indeterminate + .bless-checkbox__box {

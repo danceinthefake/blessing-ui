@@ -26,7 +26,17 @@ const next = () => (last() ? emit("finish") : current.value++);
 const prev = () => current.value > 0 && current.value--;
 // a new step swaps the panel's content: move focus there so it is read, not silently replaced
 const panel = ref<HTMLElement>();
-watch(current, () => nextTick(() => panel.value?.focus()));
+// the panel stays, so restart its CSS arrival for the new step
+watch(current, () =>
+  nextTick(() => {
+    const el = panel.value;
+    if (!el) return;
+    el.style.animation = "none";
+    void el.offsetWidth;
+    el.style.animation = "";
+    el.focus();
+  }),
+);
 </script>
 
 <template>
@@ -87,5 +97,8 @@ watch(current, () => nextTick(() => panel.value?.focus()));
   display: flex;
   justify-content: flex-end;
   gap: var(--bless-space-2);
+}
+.bless-stepper__panel {
+  animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft);
 }
 </style>

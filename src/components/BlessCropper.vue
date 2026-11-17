@@ -354,4 +354,7 @@ defineExpose({ toBlob, rotate: turn, reset });
   margin: 0;
   color: var(--bless-color-danger-text);
 }
+.bless-cropper__error {
+  animation: bless-enter var(--bless-duration-voice) var(--bless-ease-snap);
+}
 </style>
