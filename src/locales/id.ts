@@ -14,6 +14,7 @@ import type BlessAudioRecorder from "../components/BlessAudioRecorder.vue";
 import type BlessAuditLog from "../components/BlessAuditLog.vue";
 import type BlessAvailabilityGrid from "../components/BlessAvailabilityGrid.vue";
 import type BlessAvatarGroup from "../components/BlessAvatarGroup.vue";
+import type BlessAzIndex from "../components/BlessAzIndex.vue";
 import type BlessBalanceCard from "../components/BlessBalanceCard.vue";
 import type BlessBarChart from "../components/BlessBarChart.vue";
 import type BlessBatteryLevel from "../components/BlessBatteryLevel.vue";
@@ -259,6 +260,7 @@ export type BlessLabelsFull = {
   BlessAuditLog: All<typeof BlessAuditLog>;
   BlessAvailabilityGrid: All<typeof BlessAvailabilityGrid>;
   BlessAvatarGroup: All<typeof BlessAvatarGroup>;
+  BlessAzIndex: All<typeof BlessAzIndex>;
   BlessBalanceCard: All<typeof BlessBalanceCard>;
   BlessBarChart: All<typeof BlessBarChart>;
   BlessBatteryLevel: All<typeof BlessBatteryLevel>;
@@ -631,6 +633,10 @@ export const labelsId: BlessLabelsFull = {
   },
   BlessAvailabilityGrid: { label: "Waktu luang", free: "luang", busy: "sibuk" },
   BlessAvatarGroup: { more: (n) => `${n} lainnya` },
+  BlessAzIndex: {
+    letters: "Lompat ke huruf",
+    other: "Lainnya",
+  },
   BlessBalanceCard: {
     show: "Tampilkan saldo",
     hide: "Sembunyikan saldo",

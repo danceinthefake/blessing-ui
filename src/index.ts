@@ -735,3 +735,5 @@ export type { BlessPlace } from "./components/BlessPlaceSearch.vue";
 export { default as BlessSearchResult } from "./components/BlessSearchResult.vue";
 export { default as BlessSearchResults } from "./components/BlessSearchResults.vue";
 export type { BlessSearchHit } from "./components/BlessSearchResults.vue";
+export { default as BlessAzIndex } from "./components/BlessAzIndex.vue";
+export type { BlessAzItem } from "./components/BlessAzIndex.vue";
