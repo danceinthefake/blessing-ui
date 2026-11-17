@@ -60,6 +60,8 @@ for (const name of want) {
     continue;
   }
   const ctx = await browser.newContext({ viewport: { width: 1200, height: 900 } });
+  // a demo button can call print(); the print dialog of Firefox blocks every later page
+  await ctx.addInitScript(() => (window.print = () => {}));
   const page = await ctx.newPage();
   const errors = [];
   page.on("pageerror", (e) => errors.push(`pageerror: ${e.message}`));

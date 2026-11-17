@@ -670,6 +670,7 @@ Eleven components, 396 → 407. Each uses native platform APIs only: the library
 - ✅ `BlessAssignment`: an assignment with the instructions, the due date, a submission, and the grade.
 - ✅ `BlessCertificate`: a certificate of completion that prints on one page.
 - ✅ `BlessLessonVideo`: a lesson video with notes at points in time that take you back to that point.
+- ✅ Budget: after the round, the whole library is 272.4 KB gz JS and 75.6 KB gz CSS. It went over 269 / 74, so the cap rose about 10% to 296 / 82. Phase 41 is done.
 
 ### Deliberately skipped
 
