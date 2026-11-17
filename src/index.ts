@@ -725,3 +725,5 @@ export { project, unproject } from "./components/BlessMapPins.vue";
 export type { BlessMapPin } from "./components/BlessMapPins.vue";
 export { default as BlessRouteSteps } from "./components/BlessRouteSteps.vue";
 export type { BlessRouteStep, BlessTurn } from "./components/BlessRouteSteps.vue";
+export { default as BlessWeatherForecast } from "./components/BlessWeatherForecast.vue";
+export type { BlessWeather, BlessWeatherDay } from "./components/BlessWeatherForecast.vue";

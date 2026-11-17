@@ -480,6 +480,7 @@ export type BlessLabelsFull = {
   BlessVitalsPanel: All<typeof BlessVitalsPanel>;
   BlessVoiceInput: All<typeof BlessVoiceInput>;
   BlessWaterfallChart: All<typeof BlessWaterfallChart>;
+  BlessWeatherForecast: All<typeof BlessWeatherForecast>;
   BlessWebhookLog: All<typeof BlessWebhookLog>;
   BlessWishlistButton: All<typeof BlessWishlistButton>;
   BlessWorkInstructions: All<typeof BlessWorkInstructions>;
@@ -2189,6 +2190,21 @@ export const labelsId: BlessLabelsFull = {
     denied: "Mikrofon tidak diizinkan",
   },
   BlessWaterfallChart: { step: "Langkah", change: "Perubahan", total: "Total" },
+  BlessWeatherForecast: {
+    clear: "Cerah",
+    "partly-cloudy": "Cerah berawan",
+    cloudy: "Berawan",
+    rain: "Hujan",
+    storm: "Badai petir",
+    snow: "Salju",
+    fog: "Kabut",
+    feelsLike: "Terasa seperti",
+    humidity: "Kelembapan",
+    wind: "Angin",
+    days: "Hari berikutnya",
+    rainOf: (p) => `${p} hujan`,
+    range: (l, h) => `terendah ${l}, tertinggi ${h}`,
+  },
   BlessWebhookLog: {
     title: "Pengiriman webhook",
     pending: "Menunggu",
@@ -2245,6 +2261,7 @@ import type BlessVitalsPanel from "../components/BlessVitalsPanel.vue";
 import type BlessVoiceInput from "../components/BlessVoiceInput.vue";
 import type BlessWaterfallChart from "../components/BlessWaterfallChart.vue";
 
+import type BlessWeatherForecast from "../components/BlessWeatherForecast.vue";
 import type BlessWebhookLog from "../components/BlessWebhookLog.vue";
 
 import type BlessWishlistButton from "../components/BlessWishlistButton.vue";
