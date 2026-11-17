@@ -5590,6 +5590,36 @@
   "slots": [],
   "exposed": []
  },
+ "BlessDeployList": {
+  "props": [
+   {
+    "name": "deploys",
+    "type": "BlessDeploy[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<Record<BlessDeployState, string> & { live: string; open: string; rollback: string; redeploy: string; list: string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "rollback",
+    "type": "[id: string]",
+    "description": ""
+   },
+   {
+    "name": "redeploy",
+    "type": "[id: string]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessDescriptions": {
   "props": [
    {

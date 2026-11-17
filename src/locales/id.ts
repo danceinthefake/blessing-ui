@@ -61,6 +61,7 @@ import type BlessDataTable from "../components/BlessDataTable.vue";
 import type BlessDataView from "../components/BlessDataView.vue";
 import type BlessDateTimePicker from "../components/BlessDateTimePicker.vue";
 import type BlessDeliveryPicker from "../components/BlessDeliveryPicker.vue";
+import type BlessDeployList from "../components/BlessDeployList.vue";
 import type BlessDeviceTile from "../components/BlessDeviceTile.vue";
 import type BlessDocumentStatus from "../components/BlessDocumentStatus.vue";
 import type BlessDonutChart from "../components/BlessDonutChart.vue";
@@ -298,6 +299,7 @@ export type BlessLabelsFull = {
   BlessDataView: All<typeof BlessDataView>;
   BlessDateTimePicker: All<typeof BlessDateTimePicker>;
   BlessDeliveryPicker: All<typeof BlessDeliveryPicker>;
+  BlessDeployList: All<typeof BlessDeployList>;
   BlessDeviceTile: All<typeof BlessDeviceTile>;
   BlessDocumentStatus: All<typeof BlessDocumentStatus>;
   BlessDonutChart: All<typeof BlessDonutChart>;
@@ -914,6 +916,18 @@ export const labelsId: BlessLabelsFull = {
     time: "Jam pengiriman",
     free: "Gratis",
     full: "Penuh",
+  },
+  BlessDeployList: {
+    queued: "Antre",
+    building: "Dibangun",
+    ready: "Siap",
+    failed: "Gagal",
+    canceled: "Dibatalkan",
+    live: "Aktif",
+    open: "Buka",
+    rollback: "Kembali ke yang ini",
+    redeploy: "Deploy lagi",
+    list: "Deploy",
   },
   BlessDeviceTile: {
     on: "Nyala",

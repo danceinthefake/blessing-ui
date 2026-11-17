@@ -96,7 +96,8 @@ Eighty-nine new components, 407 in all, for finance, commerce, communication, so
 - `BlessCertificate`: a certificate of completion in the shape of an A4 page that scales with its width and does not break on paper.
 - `BlessLessonVideo`: a lesson video with captions and notes at points in time that move the video back to that point.
 - `BlessTerminal`: shell output with a prompt, errors with a bar and words for screen readers, a history on the arrow keys, and a run event.
-- `BlessApiEndpoint`: one endpoint of an API with the method, the path with marked parameters, a table of parameters, an example request, and a tab for each response. 409 components in all.
+- `BlessApiEndpoint`: one endpoint of an API with the method, the path with marked parameters, a table of parameters, an example request, and a tab for each response.
+- `BlessDeployList`: the deploys of a project with the state as a shape and a word, the live deploy, the short hash, and rollback and deploy-again actions. 410 components in all.
 
 ## 0.7.0 — 2026-11-16
 

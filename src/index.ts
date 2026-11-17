@@ -714,3 +714,5 @@ export { default as BlessTerminal } from "./components/BlessTerminal.vue";
 export type { BlessTerminalLine } from "./components/BlessTerminal.vue";
 export { default as BlessApiEndpoint } from "./components/BlessApiEndpoint.vue";
 export type { BlessApiParam, BlessApiResponse } from "./components/BlessApiEndpoint.vue";
+export { default as BlessDeployList } from "./components/BlessDeployList.vue";
+export type { BlessDeploy, BlessDeployState } from "./components/BlessDeployList.vue";
