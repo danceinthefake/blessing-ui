@@ -35,7 +35,6 @@ const props = withDefaults(
       none: (query: string) => string;
       tips: string;
       sort: string;
-      filters: string;
       didYouMean: string;
     }>;
   }>(),
@@ -51,7 +50,6 @@ const text = computed(() => ({
   none: (q: string) => `No results for “${q}”.`,
   tips: "Check the spelling, use fewer words, or remove a filter.",
   sort: "Sort by",
-  filters: "Filters",
   didYouMean: "Did you mean",
   ...pack(),
   ...props.labels,
@@ -66,10 +64,7 @@ const shown = computed(() => {
 
 <template>
   <div class="bless-results" :class="{ 'has-facets': facets.length }">
-    <details v-if="facets.length" class="bless-results__facets" open>
-      <summary>{{ text.filters }}</summary>
-      <BlessFacetFilter v-model="selected" :facets :locale />
-    </details>
+    <BlessFacetFilter v-if="facets.length" v-model="selected" :facets :locale />
     <section class="bless-results__main" :aria-label="query">
       <div class="bless-results__bar">
         <p class="bless-results__count" role="status">
@@ -113,11 +108,6 @@ const shown = computed(() => {
   .bless-results.has-facets {
     grid-template-columns: 1fr;
   }
-}
-.bless-results__facets > summary {
-  margin-block-end: var(--bless-space-2);
-  font-weight: var(--bless-font-weight-bold);
-  cursor: pointer;
 }
 .bless-results__main {
   display: grid;

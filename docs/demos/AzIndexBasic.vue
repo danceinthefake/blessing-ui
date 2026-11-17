@@ -32,5 +32,6 @@ const services = [
 </script>
 
 <template>
-  <BlessAzIndex :items="services" />
+  <!-- the docs have a fixed header of 64 px -->
+  <BlessAzIndex :items="services" style="--bless-az-top: 64px" />
 </template>

@@ -1947,7 +1947,6 @@ export const labelsId: BlessLabelsFull = {
     none: (q) => `Tidak ada hasil untuk “${q}”.`,
     tips: "Periksa ejaan, pakai lebih sedikit kata, atau hapus filter.",
     sort: "Urutkan",
-    filters: "Filter",
     didYouMean: "Mungkin maksud Anda",
   },
   BlessSeatPicker: {

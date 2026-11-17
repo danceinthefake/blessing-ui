@@ -28,8 +28,8 @@ Untuk setiap kelompok, halaman ini mendaftar komponen dan [blok](../../blocks/) 
 | 10. Kesehatan dan kebugaran       |                12 |         0 |
 | 11. Alat pengembang               |                18 |         0 |
 | 12. Utilitas                      |                11 |         0 |
-| 13. Pencarian dan referensi       |                 6 |         4 |
-| 14. Layanan pemerintah dan publik |                 9 |         5 |
+| 13. Pencarian dan referensi       |                10 |         0 |
+| 14. Layanan pemerintah dan publik |                14 |         0 |
 | 15. Situs merek dan pemasaran     |                11 |         5 |
 | 16. Asisten dan agen AI           |                11 |         6 |
 | 17. Perangkat terhubung           |                12 |         0 |
@@ -147,19 +147,19 @@ Belum ada: tidak ada dari daftar pertama. Setiap bagian yang disebut halaman ini
 
 Mesin pencari, wiki, dan direktori. Orang bertanya dan menemukan.
 
-Sekarang: [Command](../../components/command), [Combobox](../../components/combobox), [Glossary](../../components/glossary), [FaqSearch](../../components/faq-search), [Tree](../../components/tree), [Highlight](../../components/highlight).
+Sekarang: [SearchResult](../../components/search-result), [SearchResults](../../components/search-results), [AzIndex](../../components/az-index), [KnowledgeArticle](../../components/knowledge-article), [Command](../../components/command), [Combobox](../../components/combobox), [Glossary](../../components/glossary), [FaqSearch](../../components/faq-search), [Tree](../../components/tree), [Highlight](../../components/highlight).
 
-Belum ada: butir hasil pencarian, halaman hasil dengan faset, indeks A sampai Z, artikel basis pengetahuan.
+Belum ada: tidak ada dari daftar pertama. Setiap bagian yang disebut halaman ini sudah menjadi komponen.
 
 ## 14. Layanan pemerintah dan publik
 
 Izin, pajak, dan layanan publik. Orang mengisi formulir panjang dan melacak permohonan.
 
-Sekarang: [Form](../../components/form), [Stepper](../../components/stepper), [AddressFields](../../components/address-fields), [PhoneInput](../../components/phone-input), [InputMask](../../components/input-mask), [DatePicker](../../components/date-picker), [Uploader](../../components/uploader), [SignaturePad](../../components/signature-pad), [CameraCapture](../../components/camera-capture).
+Sekarang: [SavedForm](../../components/saved-form), [CheckAnswers](../../components/check-answers), [ApplicationStatus](../../components/application-status), [EligibilityCheck](../../components/eligibility-check), [DocumentChecklist](../../components/document-checklist), [Form](../../components/form), [Stepper](../../components/stepper), [AddressFields](../../components/address-fields), [PhoneInput](../../components/phone-input), [InputMask](../../components/input-mask), [DatePicker](../../components/date-picker), [Uploader](../../components/uploader), [SignaturePad](../../components/signature-pad), [CameraCapture](../../components/camera-capture).
 
 Blok: [signin](../../blocks/signin), [onboarding](../../blocks/onboarding).
 
-Belum ada: formulir panjang yang menyimpan dan melanjutkan, halaman tinjau sebelum mengirim, pelacak status permohonan, cek kelayakan, daftar periksa dokumen.
+Belum ada: tidak ada dari daftar pertama. Setiap bagian yang disebut halaman ini sudah menjadi komponen.
 
 ## 15. Situs merek dan pemasaran
 

@@ -199,6 +199,7 @@ function vote(yes: boolean) {
 }
 .bless-kb__related a {
   color: inherit;
+  text-decoration: underline;
   text-underline-offset: 3px;
 }
 </style>
