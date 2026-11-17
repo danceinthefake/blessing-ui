@@ -680,7 +680,7 @@ Ten components, 407 → 417. Each uses native platform APIs only: the library ad
 - ✅ `BlessApiEndpoint`: one endpoint of an API with the method, the path, the parameters, and the responses.
 - ✅ `BlessDeployList`: the deploys of a project with the state, the commit, the time, and a rollback.
 - ✅ `BlessCommitList`: the commits of a branch by day, with the author, the short hash, and the changes.
-- `BlessRequestInspector`: one HTTP request and its response, with the headers and the bodies.
+- ✅ `BlessRequestInspector`: one HTTP request and its response, with the headers and the bodies.
 - `BlessMapPins`: a map from web map tiles with pins that you can select, zoom, and drag.
 - `BlessRouteSteps`: the turns of a route with a direction, the distance, and the time.
 - `BlessWeatherForecast`: the weather now and for the next days, with the high, the low, and the rain.

@@ -170,6 +170,7 @@ import type BlessReasoning from "../components/BlessReasoning.vue";
 import type BlessRecurrencePicker from "../components/BlessRecurrencePicker.vue";
 import type BlessRelatedArticles from "../components/BlessRelatedArticles.vue";
 import type BlessReportDialog from "../components/BlessReportDialog.vue";
+import type BlessRequestInspector from "../components/BlessRequestInspector.vue";
 import type BlessReturnRequest from "../components/BlessReturnRequest.vue";
 import type BlessReviewSummary from "../components/BlessReviewSummary.vue";
 import type BlessRoomBooking from "../components/BlessRoomBooking.vue";
@@ -409,6 +410,7 @@ export type BlessLabelsFull = {
   BlessRecurrencePicker: All<typeof BlessRecurrencePicker>;
   BlessRelatedArticles: All<typeof BlessRelatedArticles>;
   BlessReportDialog: All<typeof BlessReportDialog>;
+  BlessRequestInspector: All<typeof BlessRequestInspector>;
   BlessReturnRequest: All<typeof BlessReturnRequest>;
   BlessReviewSummary: All<typeof BlessReviewSummary>;
   BlessRoomBooking: All<typeof BlessRoomBooking>;
@@ -1741,6 +1743,18 @@ export const labelsId: BlessLabelsFull = {
     thanks: "Terima kasih",
     thanksBody: "Kami akan memeriksanya. Orang tersebut tidak tahu siapa yang melapor.",
     close: "Tutup",
+  },
+  BlessRequestInspector: {
+    headers: "Header",
+    request: "Isi permintaan",
+    response: "Isi respons",
+    requestHeaders: "Header permintaan",
+    responseHeaders: "Header respons",
+    noBody: "Tidak ada isi.",
+    ok: "berhasil",
+    redirect: "dialihkan",
+    clientError: "galat klien",
+    serverError: "galat server",
   },
   BlessReturnRequest: {
     items: "Barang apa yang ingin Anda kembalikan?",

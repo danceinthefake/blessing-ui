@@ -718,3 +718,5 @@ export { default as BlessDeployList } from "./components/BlessDeployList.vue";
 export type { BlessDeploy, BlessDeployState } from "./components/BlessDeployList.vue";
 export { default as BlessCommitList } from "./components/BlessCommitList.vue";
 export type { BlessCommit } from "./components/BlessCommitList.vue";
+export { default as BlessRequestInspector } from "./components/BlessRequestInspector.vue";
+export type { BlessHttpMessage } from "./components/BlessRequestInspector.vue";
