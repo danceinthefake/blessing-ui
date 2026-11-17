@@ -158,13 +158,13 @@ const dots = computed(() =>
         {{ yLabel }}
       </text>
       <circle
-        v-for="d in dots"
+        v-for="(d, i) in dots"
         :key="d.key"
         class="bless-plot__mark bless-scatter__dot"
         :cx="d.cx"
         :cy="d.cy"
         :r="d.r"
-        :style="{ '--_c': d.color }"
+        :style="{ '--_c': d.color, '--_i': i }"
       >
         <title>{{ d.title }}</title>
       </circle>

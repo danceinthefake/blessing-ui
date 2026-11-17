@@ -54,7 +54,7 @@ const state = (e: BlessEpisode) => {
 
 <template>
   <section class="bless-episodes" :aria-label="text.title">
-    <ol class="bless-episodes__list" role="list">
+    <ol class="bless-stagger bless-episodes__list" role="list">
       <li
         v-for="e in episodes"
         :key="e.id"

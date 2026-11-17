@@ -39,7 +39,7 @@ const short = computed(
 <template>
   <section class="bless-trends" :aria-label="text.title">
     <h3 class="bless-trends__title">{{ text.title }}</h3>
-    <ol class="bless-trends__list" role="list">
+    <ol class="bless-stagger bless-trends__list" role="list">
       <li v-for="(t, i) in trends" :key="t.id" class="bless-trends__item">
         <span class="bless-trends__rank" aria-hidden="true">{{ i + 1 }}</span>
         <span class="bless-trends__body">

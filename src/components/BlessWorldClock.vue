@@ -85,7 +85,7 @@ const clocks = computed(() => {
 </script>
 
 <template>
-  <ul class="bless-clock">
+  <ul class="bless-stagger bless-clock">
     <li
       v-for="c in clocks"
       :key="c.zone"

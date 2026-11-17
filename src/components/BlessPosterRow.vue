@@ -74,7 +74,7 @@ onBeforeUnmount(() => ro?.disconnect());
         <button type="button" :aria-label="text.next" :disabled="atEnd" @click="page(1)">›</button>
       </div>
     </div>
-    <ul ref="track" class="bless-posters__track" @scroll.passive="measure">
+    <ul ref="track" class="bless-stagger bless-posters__track" @scroll.passive="measure">
       <li v-for="p in items" :key="p.id" class="bless-posters__item">
         <a class="bless-posters__link" :href="p.href">
           <span class="bless-posters__image"><img :src="p.image" alt="" loading="lazy" /></span>

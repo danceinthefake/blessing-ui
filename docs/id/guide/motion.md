@@ -25,6 +25,12 @@ import MotionLayers from "../../demos/MotionLayers.vue";
 
 Hover tidak berubah. Kontrol memudar dan condong saat diperhatikan, dan tidak pernah memantul.
 
+## Daftar dan grafik
+
+Daftar item datang satu per satu, berjarak `--bless-stagger`. Contohnya feed, linimasa, hasil pencarian, dan grid kartu. Item kedelapan dan seterusnya berbagi satu jeda, agar daftar panjang tidak membuat Anda menunggu. Batang tumbuh dari garis dasarnya, garis menggambar dirinya sendiri, dan titik-titik garis mendarat setelah garis lewat. Grafik memakai `--bless-duration-draw`. Dalam gerak tenang, semuanya memudar.
+
+Daftar yang Anda susun ulang, seperti [OrderList](../../components/order-list), tidak berurutan datang. Item yang berpindah akan memutar ulang kedatangannya.
+
 ## Flair
 
 Flair mati secara bawaan, karena letupan di setiap klik melelahkan pada formulir yang dipakai seharian. Untuk menyalakannya, pasang `data-flair` di `<html>` atau di satu wadah, misalnya layar hadiah atau gim.
@@ -54,6 +60,15 @@ Keyframe bersifat global, jadi Anda bisa memakainya dengan token.
 ```css
 .my-panel {
   animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft);
+}
+```
+
+Untuk membuat daftar Anda sendiri datang berurutan, tambahkan class `bless-stagger` ke induknya. Untuk menggambar garis Anda sendiri, beri path `pathLength="1"`.
+
+```css
+.my-line {
+  stroke-dasharray: 1;
+  animation: bless-draw var(--bless-duration-draw) var(--bless-ease-soft) backwards;
 }
 ```
 

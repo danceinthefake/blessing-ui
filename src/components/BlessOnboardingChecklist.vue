@@ -123,7 +123,7 @@ function close() {
       :label="text.progress(known, total)"
     />
     <div v-show="!collapsed" :id="`${id}-b`" class="bless-checklist__body">
-      <ul class="bless-checklist__list" role="list">
+      <ul class="bless-stagger bless-checklist__list" role="list">
         <li v-for="it in items" :key="it.id" class="bless-checklist__item">
           <BlessCheckbox v-model="done" :value="it.id" :description="it.description">{{
             it.label

@@ -70,7 +70,7 @@ const num = computed(() => new Intl.NumberFormat(props.locale));
   <div class="bless-commits">
     <section v-for="[day, list] in days" :key="day" :aria-label="text.day(day)">
       <div class="bless-commits__day" aria-hidden="true">{{ text.day(day) }}</div>
-      <ol class="bless-commits__list" role="list">
+      <ol class="bless-stagger bless-commits__list" role="list">
         <li v-for="c in list" :key="c.sha">
           <div class="bless-commits__row">
             <BlessAvatar :name="c.author" size="sm" />

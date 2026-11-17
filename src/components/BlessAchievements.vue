@@ -41,7 +41,7 @@ const earnedCount = computed(() => props.achievements.filter((a) => a.earned).le
 <template>
   <section class="bless-achieve" :aria-label="text.title">
     <p class="bless-achieve__count">{{ text.count(earnedCount, achievements.length) }}</p>
-    <ul class="bless-achieve__grid">
+    <ul class="bless-stagger bless-achieve__grid">
       <li v-for="a in achievements" :key="a.id" class="bless-achieve__item">
         <div class="bless-achieve__card" :class="{ 'is-earned': a.earned }">
           <span class="bless-achieve__icon" aria-hidden="true">{{ a.icon }}</span>

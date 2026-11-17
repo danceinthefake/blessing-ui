@@ -107,6 +107,10 @@ const r = computed(() => (props.pie ? R / 2 : R - ring.value / 2));
   display: block;
   inline-size: 100%;
   rotate: -90deg;
+  /* the ring opens out from its middle */
+  --_gx: calc(0.6 + 0.4 * var(--bless-grow));
+  --_gy: var(--_gx);
+  animation: bless-grow var(--bless-duration-draw) var(--bless-ease-soft);
 }
 .bless-donut__track {
   fill: none;

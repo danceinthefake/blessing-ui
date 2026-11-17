@@ -104,6 +104,7 @@ const barW = computed(() => band.value * 0.7);
         <rect
           class="bless-plot__mark bless-waterfall__bar"
           :class="`bless-waterfall__bar--${b.kind}`"
+          :style="{ '--_i': i }"
           :x="left(i)"
           :y="Math.min(py(b.from), py(b.to))"
           :width="barW"

@@ -142,7 +142,12 @@ const at = (v: number) => ((v - lo.value) / (hi.value - lo.value || 1)) * 100;
         </div>
       </dl>
     </div>
-    <ul v-if="days.length" class="bless-weather__days" :aria-label="text.days" role="list">
+    <ul
+      v-if="days.length"
+      class="bless-stagger bless-weather__days"
+      :aria-label="text.days"
+      role="list"
+    >
       <li v-for="d in days" :key="d.date">
         <div class="bless-weather__day">
           <span class="bless-weather__name">{{ day.format(new Date(`${d.date}T00:00:00Z`)) }}</span>

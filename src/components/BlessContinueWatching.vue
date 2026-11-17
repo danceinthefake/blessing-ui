@@ -47,7 +47,7 @@ const where = (i: BlessResumeItem) =>
 <template>
   <section v-if="items.length" class="bless-resume" :aria-labelledby="`${uid}-title`">
     <h3 :id="`${uid}-title`" class="bless-resume__title">{{ text.title }}</h3>
-    <ul class="bless-resume__list">
+    <ul class="bless-stagger bless-resume__list">
       <li v-for="i in items" :key="i.id" class="bless-resume__item">
         <a class="bless-resume__link" :href="i.href">
           <span class="bless-resume__image">

@@ -94,7 +94,7 @@ function scan(c: string) {
     </div>
     <BlessSkuField v-model="code" kind="sku" :label="text.scan" clear-on-scan @scan="scan" />
     <p class="bless-picking__error" role="alert">{{ error }}</p>
-    <ol class="bless-picking__list" role="list">
+    <ol class="bless-stagger bless-picking__list" role="list">
       <li
         v-for="l in ordered"
         :key="l.id"

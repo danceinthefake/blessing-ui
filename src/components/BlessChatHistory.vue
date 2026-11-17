@@ -121,7 +121,7 @@ function open(c: BlessChat) {
       :aria-label="g.title || undefined"
     >
       <p v-if="g.title" class="bless-chats__date" aria-hidden="true">{{ g.title }}</p>
-      <ul class="bless-chats__list">
+      <ul class="bless-stagger bless-chats__list">
         <li
           v-for="c in g.chats"
           :key="c.id"

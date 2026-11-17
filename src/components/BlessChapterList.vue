@@ -51,7 +51,7 @@ const progress = computed(() => {
 
 <template>
   <nav class="bless-chapters" :aria-label="text.title">
-    <ol class="bless-chapters__list">
+    <ol class="bless-stagger bless-chapters__list">
       <li v-for="(c, i) in rows" :key="c.start">
         <button
           type="button"

@@ -81,7 +81,7 @@ const action = (d: BlessChecklistDoc) => (d.state === "missing" ? "upload" : "re
         <span :style="{ inlineSize: `${required.length ? (done / required.length) * 100 : 0}%` }" />
       </span>
     </div>
-    <ul class="bless-docs__list" role="list">
+    <ul class="bless-stagger bless-docs__list" role="list">
       <li v-for="d in docs" :key="d.id">
         <div class="bless-docs__item" :class="`is-${d.state}`">
           <span class="bless-docs__mark" aria-hidden="true">{{ MARK[d.state] }}</span>

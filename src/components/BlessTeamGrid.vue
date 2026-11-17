@@ -30,7 +30,7 @@ const text = computed(() => ({
 </script>
 
 <template>
-  <ul class="bless-team" role="list">
+  <ul class="bless-stagger bless-team" role="list">
     <li v-for="p in people" :key="p.name" class="bless-team__person">
       <img v-if="p.photo" :src="p.photo" alt="" class="bless-team__photo" loading="lazy" />
       <BlessAvatar v-else :name="p.name" size="xl" class="bless-team__photo" />

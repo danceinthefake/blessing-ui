@@ -112,7 +112,7 @@ const summary = computed(() => {
   >
     <template v-if="type === 'line'">
       <path v-if="fill && area" class="bless-sparkline__area" :d="area" />
-      <path v-if="points.length > 1" class="bless-sparkline__line" :d="line" />
+      <path v-if="points.length > 1" class="bless-sparkline__line" :d="line" pathLength="1" />
       <circle
         v-if="(dot || points.length === 1) && last"
         class="bless-sparkline__dot"
@@ -157,9 +157,14 @@ const summary = computed(() => {
   stroke-width: 1.5;
   stroke-linejoin: round;
   stroke-linecap: round;
+  stroke-dasharray: 1;
+  animation: bless-draw var(--bless-duration-draw) var(--bless-ease-soft) backwards;
 }
 .bless-sparkline__area {
   fill: color-mix(in srgb, var(--_c) 18%, transparent);
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: bless-grow var(--bless-duration-draw) var(--bless-ease-soft) backwards;
 }
 .bless-sparkline__dot,
 .bless-sparkline__bar {

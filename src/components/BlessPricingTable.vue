@@ -92,7 +92,7 @@ const save = computed(() =>
       </BlessToggleGroup>
       <span v-if="save > 0" class="bless-pricing__save">{{ text.save(save) }}</span>
     </div>
-    <ul role="list" class="bless-pricing__plans">
+    <ul role="list" class="bless-stagger bless-pricing__plans">
       <li
         v-for="p in plans"
         :key="p.id"

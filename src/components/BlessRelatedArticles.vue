@@ -39,7 +39,7 @@ const uid = useId();
     <component :is="`h${level}`" :id="`${uid}-title`" class="bless-related__title">{{
       text.title
     }}</component>
-    <ul class="bless-related__list">
+    <ul class="bless-stagger bless-related__list">
       <li v-for="a in articles" :key="a.id" class="bless-related__item">
         <article class="bless-related__card">
           <div class="bless-related__media">

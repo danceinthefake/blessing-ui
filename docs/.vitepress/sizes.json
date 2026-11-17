@@ -11,7 +11,7 @@
   },
   {
     "name": "BlessAchievements",
-    "js": 806,
+    "js": 814,
     "css": 514
   },
   {
@@ -21,7 +21,7 @@
   },
   {
     "name": "BlessActivityFeed",
-    "js": 2026,
+    "js": 2035,
     "css": 688
   },
   {
@@ -121,7 +121,7 @@
   },
   {
     "name": "BlessAuditLog",
-    "js": 1394,
+    "js": 1403,
     "css": 742
   },
   {
@@ -166,7 +166,7 @@
   },
   {
     "name": "BlessBarChart",
-    "js": 2117,
+    "js": 2139,
     "css": 0
   },
   {
@@ -296,12 +296,12 @@
   },
   {
     "name": "BlessChangelog",
-    "js": 946,
+    "js": 955,
     "css": 584
   },
   {
     "name": "BlessChapterList",
-    "js": 1028,
+    "js": 1037,
     "css": 514
   },
   {
@@ -311,7 +311,7 @@
   },
   {
     "name": "BlessChatHistory",
-    "js": 2552,
+    "js": 2559,
     "css": 1209
   },
   {
@@ -386,7 +386,7 @@
   },
   {
     "name": "BlessCommitList",
-    "js": 2695,
+    "js": 2702,
     "css": 1425
   },
   {
@@ -451,7 +451,7 @@
   },
   {
     "name": "BlessContinueWatching",
-    "js": 964,
+    "js": 974,
     "css": 571
   },
   {
@@ -466,7 +466,7 @@
   },
   {
     "name": "BlessConversationList",
-    "js": 1402,
+    "js": 1411,
     "css": 869
   },
   {
@@ -551,7 +551,7 @@
   },
   {
     "name": "BlessDeployList",
-    "js": 1028,
+    "js": 1036,
     "css": 709
   },
   {
@@ -581,7 +581,7 @@
   },
   {
     "name": "BlessDocumentChecklist",
-    "js": 1301,
+    "js": 1309,
     "css": 602
   },
   {
@@ -592,7 +592,7 @@
   {
     "name": "BlessDonutChart",
     "js": 1216,
-    "css": 583
+    "css": 631
   },
   {
     "name": "BlessDowntimePicker",
@@ -651,7 +651,7 @@
   },
   {
     "name": "BlessEpisodeList",
-    "js": 1080,
+    "js": 1091,
     "css": 683
   },
   {
@@ -676,7 +676,7 @@
   },
   {
     "name": "BlessFeatureGrid",
-    "js": 499,
+    "js": 507,
     "css": 431
   },
   {
@@ -756,7 +756,7 @@
   },
   {
     "name": "BlessForumTopics",
-    "js": 1574,
+    "js": 1582,
     "css": 822
   },
   {
@@ -766,7 +766,7 @@
   },
   {
     "name": "BlessGallery",
-    "js": 2990,
+    "js": 2998,
     "css": 1403
   },
   {
@@ -816,7 +816,7 @@
   },
   {
     "name": "BlessHistogram",
-    "js": 1836,
+    "js": 1847,
     "css": 0
   },
   {
@@ -846,7 +846,7 @@
   },
   {
     "name": "BlessIncidentTimeline",
-    "js": 845,
+    "js": 854,
     "css": 560
   },
   {
@@ -976,8 +976,8 @@
   },
   {
     "name": "BlessLineChart",
-    "js": 2584,
-    "css": 441
+    "js": 2592,
+    "css": 539
   },
   {
     "name": "BlessLineItemEditor",
@@ -986,7 +986,7 @@
   },
   {
     "name": "BlessList",
-    "js": 251,
+    "js": 258,
     "css": 153
   },
   {
@@ -1001,7 +1001,7 @@
   },
   {
     "name": "BlessLiveBlog",
-    "js": 1077,
+    "js": 1084,
     "css": 694
   },
   {
@@ -1016,7 +1016,7 @@
   },
   {
     "name": "BlessLogoCloud",
-    "js": 503,
+    "js": 510,
     "css": 454
   },
   {
@@ -1161,7 +1161,7 @@
   },
   {
     "name": "BlessNotificationInbox",
-    "js": 3945,
+    "js": 3952,
     "css": 1777
   },
   {
@@ -1176,7 +1176,7 @@
   },
   {
     "name": "BlessOnboardingChecklist",
-    "js": 3419,
+    "js": 3427,
     "css": 1929
   },
   {
@@ -1241,7 +1241,7 @@
   },
   {
     "name": "BlessPareto",
-    "js": 2043,
+    "js": 2053,
     "css": 185
   },
   {
@@ -1286,7 +1286,7 @@
   },
   {
     "name": "BlessPickingList",
-    "js": 2423,
+    "js": 2432,
     "css": 858
   },
   {
@@ -1321,7 +1321,7 @@
   },
   {
     "name": "BlessPortfolioGrid",
-    "js": 969,
+    "js": 977,
     "css": 594
   },
   {
@@ -1331,7 +1331,7 @@
   },
   {
     "name": "BlessPosterRow",
-    "js": 1152,
+    "js": 1160,
     "css": 726
   },
   {
@@ -1356,7 +1356,7 @@
   },
   {
     "name": "BlessPricingTable",
-    "js": 2554,
+    "js": 2564,
     "css": 1531
   },
   {
@@ -1516,7 +1516,7 @@
   },
   {
     "name": "BlessRelatedArticles",
-    "js": 770,
+    "js": 779,
     "css": 539
   },
   {
@@ -1591,7 +1591,7 @@
   },
   {
     "name": "BlessScatterChart",
-    "js": 2093,
+    "js": 2099,
     "css": 124
   },
   {
@@ -1621,7 +1621,7 @@
   },
   {
     "name": "BlessSearchResults",
-    "js": 4105,
+    "js": 4114,
     "css": 1471
   },
   {
@@ -1751,8 +1751,8 @@
   },
   {
     "name": "BlessSmallMultiples",
-    "js": 2250,
-    "css": 525
+    "js": 2259,
+    "css": 598
   },
   {
     "name": "BlessSortable",
@@ -1761,13 +1761,13 @@
   },
   {
     "name": "BlessSources",
-    "js": 697,
+    "js": 706,
     "css": 722
   },
   {
     "name": "BlessSparkline",
-    "js": 1335,
-    "css": 243
+    "js": 1344,
+    "css": 319
   },
   {
     "name": "BlessSpeedDial",
@@ -1816,8 +1816,8 @@
   },
   {
     "name": "BlessStat",
-    "js": 1971,
-    "css": 492
+    "js": 1980,
+    "css": 563
   },
   {
     "name": "BlessStepper",
@@ -1886,7 +1886,7 @@
   },
   {
     "name": "BlessSystemStatus",
-    "js": 1067,
+    "js": 1074,
     "css": 586
   },
   {
@@ -1911,12 +1911,12 @@
   },
   {
     "name": "BlessTaskList",
-    "js": 1910,
+    "js": 1919,
     "css": 805
   },
   {
     "name": "BlessTeamGrid",
-    "js": 1146,
+    "js": 1154,
     "css": 748
   },
   {
@@ -1976,7 +1976,7 @@
   },
   {
     "name": "BlessTimeline",
-    "js": 535,
+    "js": 542,
     "css": 504
   },
   {
@@ -2036,7 +2036,7 @@
   },
   {
     "name": "BlessTransactionList",
-    "js": 1285,
+    "js": 1295,
     "css": 502
   },
   {
@@ -2066,7 +2066,7 @@
   },
   {
     "name": "BlessTrendList",
-    "js": 722,
+    "js": 729,
     "css": 432
   },
   {
@@ -2106,7 +2106,7 @@
   },
   {
     "name": "BlessVersionHistory",
-    "js": 1515,
+    "js": 1520,
     "css": 808
   },
   {
@@ -2136,7 +2136,7 @@
   },
   {
     "name": "BlessWaterfallChart",
-    "js": 1748,
+    "js": 1774,
     "css": 146
   },
   {
@@ -2156,12 +2156,12 @@
   },
   {
     "name": "BlessWeatherForecast",
-    "js": 1711,
+    "js": 1719,
     "css": 639
   },
   {
     "name": "BlessWebhookLog",
-    "js": 1895,
+    "js": 1903,
     "css": 1418
   },
   {
@@ -2186,7 +2186,7 @@
   },
   {
     "name": "BlessWorldClock",
-    "js": 1000,
+    "js": 1009,
     "css": 357
   }
 ]

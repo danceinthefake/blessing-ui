@@ -74,7 +74,7 @@ const ICONS: Record<BlessServiceState, string> = {
       </span>
       {{ headline }}
     </p>
-    <ul class="bless-status__parts">
+    <ul class="bless-stagger bless-status__parts">
       <li v-for="p in parts" :key="p.name" class="bless-status__part" :class="`is-${p.status}`">
         <span class="bless-status__name">
           {{ p.name }}
