@@ -26,8 +26,8 @@ Untuk setiap kelompok, halaman ini mendaftar komponen dan [blok](../../blocks/) 
 | 8. Keuangan                       |                15 |         0 |
 | 9. Pendidikan                     |                12 |         0 |
 | 10. Kesehatan dan kebugaran       |                12 |         0 |
-| 11. Alat pengembang               |                13 |         5 |
-| 12. Utilitas                      |                 6 |         5 |
+| 11. Alat pengembang               |                18 |         0 |
+| 12. Utilitas                      |                11 |         0 |
 | 13. Pencarian dan referensi       |                 6 |         4 |
 | 14. Layanan pemerintah dan publik |                 9 |         5 |
 | 15. Situs merek dan pemasaran     |                11 |         5 |
@@ -129,19 +129,19 @@ Belum ada: tidak ada dari daftar pertama. Setiap bagian yang disebut halaman ini
 
 Hosting kode, CI, konsol cloud, dan dokumentasi API. Orang membangun, merilis, dan memantau layanan.
 
-Sekarang: [CodeBlock](../../components/code-block), [CodeTabs](../../components/code-tabs), [Diff](../../components/diff), [JsonViewer](../../components/json-viewer), [LogViewer](../../components/log-viewer), [ApiKeyField](../../components/api-key-field), [WebhookLog](../../components/webhook-log), [CronInput](../../components/cron-input), [UptimeBar](../../components/uptime-bar), [SystemStatus](../../components/system-status), [IncidentTimeline](../../components/incident-timeline), [FeatureFlags](../../components/feature-flags), [QuotaUsage](../../components/quota-usage).
+Sekarang: [Terminal](../../components/terminal), [ApiEndpoint](../../components/api-endpoint), [DeployList](../../components/deploy-list), [CommitList](../../components/commit-list), [RequestInspector](../../components/request-inspector), [CodeBlock](../../components/code-block), [CodeTabs](../../components/code-tabs), [Diff](../../components/diff), [JsonViewer](../../components/json-viewer), [LogViewer](../../components/log-viewer), [ApiKeyField](../../components/api-key-field), [WebhookLog](../../components/webhook-log), [CronInput](../../components/cron-input), [UptimeBar](../../components/uptime-bar), [SystemStatus](../../components/system-status), [IncidentTimeline](../../components/incident-timeline), [FeatureFlags](../../components/feature-flags), [QuotaUsage](../../components/quota-usage).
 
 Blok: [release](../../blocks/release).
 
-Belum ada: terminal, referensi endpoint API, daftar deploy, daftar commit, pemeriksa permintaan.
+Belum ada: tidak ada dari daftar pertama. Setiap bagian yang disebut halaman ini sudah menjadi komponen.
 
 ## 12. Utilitas
 
 Kalkulator, pengonversi, cuaca, dan peta. Orang menyelesaikan satu tugas kecil dengan cepat.
 
-Sekarang: [Formula](../../components/formula), [WorldClock](../../components/world-clock), [TimezonePicker](../../components/timezone-picker), [QrCode](../../components/qr-code), [ColorPicker](../../components/color-picker), [Compare](../../components/compare).
+Sekarang: [MapPins](../../components/map-pins), [RouteSteps](../../components/route-steps), [WeatherForecast](../../components/weather-forecast), [MeasureConverter](../../components/measure-converter), [PlaceSearch](../../components/place-search), [Formula](../../components/formula), [WorldClock](../../components/world-clock), [TimezonePicker](../../components/timezone-picker), [QrCode](../../components/qr-code), [ColorPicker](../../components/color-picker), [Compare](../../components/compare).
 
-Belum ada: peta dengan penanda, langkah rute, prakiraan cuaca, pengonversi satuan, pencarian tempat.
+Belum ada: tidak ada dari daftar pertama. Setiap bagian yang disebut halaman ini sudah menjadi komponen.
 
 ## 13. Pencarian dan referensi
 

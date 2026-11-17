@@ -686,6 +686,7 @@ Ten components, 407 → 417. Each uses native platform APIs only: the library ad
 - ✅ `BlessWeatherForecast`: the weather now and for the next days, with the high, the low, and the rain.
 - ✅ `BlessMeasureConverter`: an amount in one unit of length, mass, volume, or temperature in another.
 - ✅ `BlessPlaceSearch`: a search for places with results that show the address and the distance.
+- ✅ Budget: after the round, the whole library is 281.5 KB gz JS and 78.0 KB gz CSS, under the cap of 296 / 82. Phase 42 is done.
 
 ### Deliberately skipped
 
