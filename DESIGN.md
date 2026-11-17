@@ -677,7 +677,7 @@ Eleven components, 396 → 407. Each uses native platform APIs only: the library
 Ten components, 407 → 417. Each uses native platform APIs only: the library adds no dependency. Each needs tests, a docs page with a live example, a README row, words in `labelsId`, and a pass of `src/classes.test.ts`. If a component uses a known method or names another party, credit it on the credits page. When a component lands, move its part from "Not yet" to "Today" on the site types page, in both languages.
 
 - ✅ `BlessTerminal`: the output of a shell with a prompt, a history of commands, and colors for errors.
-- `BlessApiEndpoint`: one endpoint of an API with the method, the path, the parameters, and the responses.
+- ✅ `BlessApiEndpoint`: one endpoint of an API with the method, the path, the parameters, and the responses.
 - `BlessDeployList`: the deploys of a project with the state, the commit, the time, and a rollback.
 - `BlessCommitList`: the commits of a branch by day, with the author, the short hash, and the changes.
 - `BlessRequestInspector`: one HTTP request and its response, with the headers and the bodies.
