@@ -114,7 +114,8 @@ A hundred and eight new components, 426 in all, for finance, commerce, communica
 - `BlessApplicationStatus`: the reference, the state in words, the steps done, now, and to come with their dates, an action with a link, and what happens next.
 - `BlessEligibilityCheck`: questions one at a time that lead to an outcome, an error without a choice, focus on each new step, a way back, and a result event.
 - `BlessDocumentChecklist`: the documents of a request with a state as a mark and words, the reason for a rejection, upload and replace buttons, and a count of the required documents.
-- `BlessLogoCloud`: the logos of customers or partners in a grid, gray until the pointer or the focus is on a linked one, with names as alt text. 427 components in all.
+- `BlessLogoCloud`: the logos of customers or partners in a grid, gray until the pointer or the focus is on a linked one, with names as alt text.
+- `BlessFeatureGrid`: the features of a product with an icon slot, a level 3 title, and a short text each, in a grid of up to four columns. 428 components in all.
 
 ## 0.7.0 — 2026-11-16
 

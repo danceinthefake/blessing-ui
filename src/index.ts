@@ -759,3 +759,5 @@ export type {
 } from "./components/BlessDocumentChecklist.vue";
 export { default as BlessLogoCloud } from "./components/BlessLogoCloud.vue";
 export type { BlessLogo } from "./components/BlessLogoCloud.vue";
+export { default as BlessFeatureGrid } from "./components/BlessFeatureGrid.vue";
+export type { BlessFeature } from "./components/BlessFeatureGrid.vue";
