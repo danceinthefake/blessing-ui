@@ -111,6 +111,7 @@ const every = computed(() => Math.max(1, Math.ceil(56 / step.value)));
         <rect
           class="bless-plot__mark"
           :class="{ 'is-rest': i >= few }"
+          :style="{ '--_i': i }"
           :x="cx(i) - step * 0.35"
           :y="py(r.value)"
           :width="step * 0.7"

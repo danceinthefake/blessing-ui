@@ -25,6 +25,12 @@ import MotionLayers from "../demos/MotionLayers.vue";
 
 Hover does not change. A control fades and leans on attention, and it never bounces.
 
+## Lists and charts
+
+A list of items arrives one item after another, `--bless-stagger` apart. Examples are a feed, a timeline, search results, and a grid of cards. The eighth item and later share one delay, so a long list does not keep you waiting. Bars grow from their baseline, lines draw themselves, and the dots of a line land after the line passes. A chart takes `--bless-duration-draw`. In calm motion, all of these fade.
+
+A list that you reorder, such as [OrderList](../components/order-list), does not stagger. An item that moves would replay its arrival.
+
 ## Flair
 
 Flair is off by default, because a pop on every click gets tiring in a form that someone uses all day. To turn it on, set `data-flair` on `<html>` or on one container, for example a reward screen or a game.
@@ -54,6 +60,15 @@ The keyframes are global, so you can use them with the tokens.
 ```css
 .my-panel {
   animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft);
+}
+```
+
+To stagger your own list, add the `bless-stagger` class to its parent. To draw your own line, give the path `pathLength="1"`.
+
+```css
+.my-line {
+  stroke-dasharray: 1;
+  animation: bless-draw var(--bless-duration-draw) var(--bless-ease-soft) backwards;
 }
 ```
 

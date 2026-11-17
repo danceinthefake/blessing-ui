@@ -84,10 +84,11 @@ const range = (b: { from: number; to: number }) => `${fmt.value(b.from)}–${fmt
       >
         {{ fmt(e) }}
       </text>
-      <template v-for="b in data" :key="b.from">
+      <template v-for="(b, i) in data" :key="b.from">
         <rect
           v-if="b.count"
           class="bless-plot__mark"
+          :style="{ '--_i': i }"
           :x="px(b.from) + 0.5"
           :y="py(b.count)"
           :width="Math.max(1, px(b.to) - px(b.from) - 1)"

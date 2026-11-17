@@ -30,12 +30,21 @@
 .bless-plot__mark {
   fill: var(--_c);
   transition: opacity var(--bless-duration-fast) var(--bless-ease-out);
+  /* bars grow from the baseline one after another; dots pop from their middle */
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: bless-grow var(--bless-duration-draw) var(--bless-ease-soft) backwards;
+  animation-delay: calc(min(var(--_i, 0), 12) * var(--bless-stagger) / 2);
+}
+.bless-plot--h .bless-plot__mark {
+  transform-origin: 0 50%;
+  --_gx: var(--bless-grow);
+  --_gy: 1;
+}
+circle.bless-plot__mark {
+  transform-origin: 50% 50%;
+  --_gx: var(--bless-grow);
 }
 .bless-plot__mark:hover {
   opacity: 0.75;
-}
-@media (prefers-reduced-motion: reduce) {
-  .bless-plot__mark {
-    transition: none;
-  }
 }

@@ -205,7 +205,7 @@ const tip = computed(() => {
       </text>
       <g v-for="l in lines" :key="l.key" :style="{ '--_c': l.color }">
         <path v-if="area" class="bless-linechart__area" :d="l.area" />
-        <path class="bless-linechart__line" :d="l.line" />
+        <path class="bless-linechart__line" :d="l.line" pathLength="1" />
         <circle
           v-for="(d, k) in l.dots"
           :key="k"
@@ -283,12 +283,23 @@ const tip = computed(() => {
   stroke-width: 2;
   stroke-linejoin: round;
   stroke-linecap: round;
+  stroke-dasharray: 1;
+  animation: bless-draw var(--bless-duration-draw) var(--bless-ease-soft) backwards;
 }
 .bless-linechart__area {
   fill: color-mix(in srgb, var(--_c) 18%, transparent);
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: bless-grow var(--bless-duration-draw) var(--bless-ease-soft) backwards;
 }
+/* the dots land after the line passes */
 .bless-linechart__dot {
   fill: var(--_c);
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+  --_gx: var(--bless-grow);
+  animation: bless-grow var(--bless-duration-enter) var(--bless-ease-pop) var(--bless-duration-draw)
+    backwards;
   stroke: var(--bless-color-bg);
   stroke-width: 2;
 }

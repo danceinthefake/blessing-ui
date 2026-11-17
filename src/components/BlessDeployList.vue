@@ -62,7 +62,7 @@ const MARK: Record<BlessDeployState, string> = {
 </script>
 
 <template>
-  <ul class="bless-deploys" role="list" :aria-label="text.list">
+  <ul class="bless-stagger bless-deploys" role="list" :aria-label="text.list">
     <li v-for="d in deploys" :key="d.id">
       <div class="bless-deploys__row" :class="[`is-${d.state}`, { 'is-live': d.live }]">
         <span class="bless-deploys__state">

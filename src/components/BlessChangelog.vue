@@ -64,7 +64,7 @@ const dateText = computed(
         <span class="bless-changelog__type" :class="`bless-changelog__type--${g.type}`">{{
           text[g.type]
         }}</span>
-        <ul class="bless-changelog__list">
+        <ul class="bless-stagger bless-changelog__list">
           <li v-for="(c, i) in g.items" :key="i">{{ c.text }}</li>
         </ul>
       </section>

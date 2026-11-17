@@ -132,7 +132,7 @@ const bars = computed(() => {
 </script>
 
 <template>
-  <figure ref="box" class="bless-plot bless-barchart">
+  <figure ref="box" class="bless-plot bless-barchart" :class="{ 'bless-plot--h': horizontal }">
     <svg :viewBox="`0 0 ${width} ${height}`" :height class="bless-plot__svg" aria-hidden="true">
       <g v-for="t in ticks" :key="t">
         <line
@@ -175,14 +175,14 @@ const bars = computed(() => {
         {{ c }}
       </text>
       <rect
-        v-for="b in bars"
+        v-for="(b, i) in bars"
         :key="b.key"
         class="bless-plot__mark"
         :x="b.x"
         :y="b.y"
         :width="b.width"
         :height="b.height"
-        :style="{ '--_c': b.color }"
+        :style="{ '--_c': b.color, '--_i': i }"
       >
         <title>{{ b.title }}</title>
       </rect>

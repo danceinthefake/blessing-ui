@@ -94,7 +94,7 @@ function pick(n: BlessNotice) {
         }}</BlessButton>
       </div>
       <p v-if="!items.length" class="bless-inbox__empty">{{ text.empty }}</p>
-      <ul v-else class="bless-inbox__list">
+      <ul v-else class="bless-stagger bless-inbox__list">
         <li
           v-for="n in items"
           :key="n.id"

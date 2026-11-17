@@ -23,7 +23,7 @@ defineSlots<{
 </script>
 
 <template>
-  <ul class="bless-features" role="list" :style="{ '--_cols': columns }">
+  <ul class="bless-stagger bless-features" role="list" :style="{ '--_cols': columns }">
     <li v-for="(f, i) in features" :key="f.title" class="bless-features__item">
       <span v-if="$slots.icon" class="bless-features__icon" aria-hidden="true">
         <slot name="icon" :feature="f" :index="i" />

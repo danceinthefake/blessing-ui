@@ -54,7 +54,7 @@ const shown = computed(() =>
       </div>
       <span class="bless-folio__count" role="status">{{ text.count(shown.length) }}</span>
     </div>
-    <ul class="bless-folio__grid" role="list">
+    <ul class="bless-stagger bless-folio__grid" role="list">
       <li v-for="w in shown" :key="w.id">
         <component :is="w.href ? 'a' : 'div'" :href="w.href" class="bless-folio__card">
           <img :src="w.image" :alt="w.imageAlt ?? ''" class="bless-folio__image" loading="lazy" />

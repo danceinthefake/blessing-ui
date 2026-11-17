@@ -55,7 +55,7 @@ const MARK: Record<BlessAuditAction, string> = {
 
 <template>
   <section class="bless-audit" :aria-label="text.title">
-    <ol class="bless-audit__list" role="list">
+    <ol class="bless-stagger bless-audit__list" role="list">
       <li v-for="e in entries" :key="e.id" class="bless-audit__entry" :class="`is-${e.action}`">
         <div class="bless-audit__box">
           <div class="bless-audit__head">

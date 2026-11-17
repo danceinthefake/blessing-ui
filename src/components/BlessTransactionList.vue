@@ -70,7 +70,7 @@ const days = computed(() => {
         <span>{{ d.name }}</span>{{ " " }}
         <span class="bless-txns__total">{{ text.total(signed(d.total)) }}</span>
       </h3>
-      <ul class="bless-txns__list">
+      <ul class="bless-stagger bless-txns__list">
         <li v-for="t in d.rows" :key="t.id" class="bless-txns__row">
           <span class="bless-txns__icon" aria-hidden="true">{{ t.icon ?? t.title.charAt(0) }}</span>
           <span class="bless-txns__main">

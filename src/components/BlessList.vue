@@ -6,7 +6,7 @@ withDefaults(defineProps<{ divided?: boolean }>(), { divided: true });
 </script>
 
 <template>
-  <ul class="bless-list" :class="{ 'bless-list--divided': divided }" role="list">
+  <ul class="bless-stagger bless-list" :class="{ 'bless-list--divided': divided }" role="list">
     <slot />
   </ul>
 </template>

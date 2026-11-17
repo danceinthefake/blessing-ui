@@ -59,7 +59,7 @@ const show = (v: unknown) => (typeof v === "string" ? v : JSON.stringify(v, null
 <template>
   <section class="bless-hooks" :aria-label="text.title">
     <p v-if="!deliveries.length" class="bless-hooks__empty">{{ text.empty }}</p>
-    <ul v-else class="bless-hooks__list">
+    <ul v-else class="bless-stagger bless-hooks__list">
       <li v-for="d in deliveries" :key="d.id" class="bless-hooks__item" :class="`is-${state(d)}`">
         <details class="bless-hooks__details">
           <summary class="bless-hooks__head">

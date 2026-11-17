@@ -81,7 +81,7 @@ function add() {
 
 <template>
   <section class="bless-tasks" :aria-label="text.title">
-    <ul class="bless-tasks__list">
+    <ul class="bless-stagger bless-tasks__list">
       <li v-for="t in ordered" :key="t.id" class="bless-tasks__task" :class="{ 'is-done': t.done }">
         <div class="bless-tasks__row">
           <label class="bless-tasks__check">

@@ -62,7 +62,7 @@ const current = computed(() => props.updates[0]?.status);
         {{ text.affected }}: {{ affected.join(", ") }}
       </p>
     </header>
-    <ol class="bless-incident__updates">
+    <ol class="bless-stagger bless-incident__updates">
       <li
         v-for="(u, i) in updates"
         :key="i"

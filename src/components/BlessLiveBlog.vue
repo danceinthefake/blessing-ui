@@ -76,7 +76,7 @@ const rest = computed(() => visible.value.filter((u) => !u.pinned));
         waiting.length ? text.show(waiting.length) : ""
       }}</span>
     </div>
-    <ol ref="list" class="bless-live__list" role="list">
+    <ol ref="list" class="bless-stagger bless-live__list" role="list">
       <li
         v-for="u in [...pinned, ...rest]"
         :key="u.id"

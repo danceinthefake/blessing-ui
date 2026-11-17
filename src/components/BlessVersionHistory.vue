@@ -47,7 +47,7 @@ const text = computed(() => ({
 
 <template>
   <section class="bless-versions" :aria-label="text.title">
-    <ol class="bless-versions__list">
+    <ol class="bless-stagger bless-versions__list">
       <li
         v-for="(v, i) in versions"
         :key="v.id"

@@ -29,7 +29,7 @@ const nameOf = (item: BlessGalleryItem, i: number) =>
 
 <template>
   <div class="bless-gallery">
-    <ul role="list" class="bless-gallery__grid" :style="{ '--_col': columns }">
+    <ul role="list" class="bless-stagger bless-gallery__grid" :style="{ '--_col': columns }">
       <li v-for="(item, i) in items" :key="item.src" class="bless-gallery__cell">
         <button
           type="button"

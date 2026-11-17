@@ -69,7 +69,7 @@ const ordered = computed(() => [
 
 <template>
   <section class="bless-forum" :aria-label="text.title">
-    <ul class="bless-forum__list">
+    <ul class="bless-stagger bless-forum__list">
       <li
         v-for="t in ordered"
         :key="t.id"

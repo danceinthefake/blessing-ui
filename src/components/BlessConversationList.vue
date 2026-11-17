@@ -45,7 +45,7 @@ const text = computed(() => ({
 
 <template>
   <nav class="bless-convos" :aria-label="text.title">
-    <ul class="bless-convos__list">
+    <ul class="bless-stagger bless-convos__list">
       <li v-for="c in conversations" :key="c.id">
         <button
           type="button"

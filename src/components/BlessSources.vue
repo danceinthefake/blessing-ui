@@ -36,7 +36,7 @@ const host = (url: string) => {
 <template>
   <section class="bless-sources" :aria-labelledby="`${base}-title`">
     <p :id="`${base}-title`" class="bless-sources__title">{{ text.title }}</p>
-    <ol class="bless-sources__list">
+    <ol class="bless-stagger bless-sources__list">
       <li
         v-for="(s, i) in sources"
         :id="`${base}-${i + 1}`"

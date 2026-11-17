@@ -10,11 +10,15 @@ Motion in three layers, like the series: a soft base on every appearance, a game
 - Global keyframes `bless-enter`, `bless-voice`, `bless-pop`, and `bless-shake`, for your own components too.
 - `data-motion="calm"` on any container: a short fade, with no travel and no flair.
 - `data-flair` on any container: chosen things pop, and invalid fields shake.
+- The `bless-stagger` class: the items of a list arrive one after another.
+- Chart motion: the keyframes `bless-grow` and `bless-draw`, and the tokens `--bless-duration-draw`, `--bless-grow`, and `--bless-draw`.
 
 ### Changed
 
 - Popovers, menus, pickers, alerts, and banners rise out of a soft focus when they appear.
 - Dialogs, toasts, tooltips, tours, and coachmarks wipe up from their bottom edge.
+- Feeds, timelines, search results, inboxes, and grids of cards stagger their items.
+- Bar, histogram, Pareto, and waterfall bars grow from the baseline. Scatter dots pop. Line and sparkline lines draw. The donut ring opens.
 - The `bless-pop-in` and `bless-modal-in` keyframes are gone. If your CSS used them, use `bless-enter` and `bless-voice`.
 
 ## 0.8.0 — 2026-11-17

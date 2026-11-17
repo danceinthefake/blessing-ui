@@ -732,7 +732,7 @@ The user chose the three layers from the motion study, with Saekano as the refer
 - ✅ Voice layer: Modal (and AlertDialog, Command, Lightbox through it), Toaster, Tooltip, Tour, Coachmark.
 - ✅ Docs: the motion guide in English and Indonesian, the rules in the conventions and the story, and the credits.
 - ✅ Budget and checks: the whole library is 294.0 KB gz JS and 82.8 KB gz CSS, under the cap of 326 / 90. Axe is clean on 447 pages in both themes, reduced motion is calm on 431 pages, the Chromium sweep is clean on 507 pages, and the interaction tests pass. The foundation of Phase 45 is done.
-- [ ] Phase 46: lists and data. Stagger for list items, rows, and cards. Charts draw in.
+- ✅ Phase 46: lists and data. The `bless-stagger` class on the lists of 38 components: feeds, timelines, results, inboxes, and grids of cards. OrderList is left out, because it reorders. The bars of BarChart, Histogram, Pareto, and WaterfallChart grow one after another, ScatterChart dots pop, LineChart and Sparkline lines draw, and the DonutChart ring opens. New tokens: `--bless-duration-draw`, `--bless-grow`, `--bless-draw`. New keyframes: `bless-grow`, `bless-draw`. DataTable rows do not stagger yet: a sort moves the rows, and a moved row would replay its arrival. Budget and checks: 294.3 KB gz JS and 83.2 KB gz CSS, under the cap of 326 / 90. Axe is clean on 447 pages in both themes, reduced motion is calm on 431 pages, the Chromium sweep is clean on 507 pages, and the interaction tests pass.
 - [ ] Phase 47: forms and controls. Tabs, steppers, toggles, and progress use the base and the flair.
 - [ ] Phase 48: chat and AI. The voice layer with typed text as an opt-in.
 - [ ] Phase 49: the remaining components, page by page.

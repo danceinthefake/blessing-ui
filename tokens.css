@@ -133,6 +133,9 @@
   --bless-stagger: 50ms; /* the delay from one item to the next in a list */
   --bless-wipe: 100%; /* how much of a text box is hidden when it starts to wipe up */
   --bless-flair: 1; /* the strength of the flair: 0 turns it off */
+  --bless-duration-draw: 0.6s; /* a chart that draws itself */
+  --bless-grow: 0; /* the size a bar grows from: 0 is nothing, 1 is full size */
+  --bless-draw: 1; /* how much of a line is still to draw when it starts: 0 shows it whole */
 
   /* ---- layout ---- */
   --bless-sidebar-width: 22%;
@@ -206,6 +209,7 @@
     --bless-duration-enter: 0s;
     --bless-duration-voice: 0s;
     --bless-duration-flair: 0s;
+    --bless-duration-draw: 0s;
     --bless-stagger: 0s;
   }
 }
@@ -217,6 +221,9 @@
   --bless-focus-blur: 0px;
   --bless-stagger: 0s;
   --bless-wipe: 0%;
+  --bless-grow: 1;
+  --bless-draw: 0;
+  --bless-duration-draw: 0.14s;
   --bless-flair: 0;
 }
 
@@ -238,6 +245,48 @@
     translate: 0 var(--bless-rise);
     clip-path: inset(var(--bless-wipe) 0 0 0);
   }
+}
+/* a bar grows from its baseline; set --_gx or --_gy to 1 for the axis that does not grow */
+@keyframes bless-grow {
+  from {
+    opacity: 0;
+    scale: var(--_gx, 1) var(--_gy, var(--bless-grow));
+  }
+}
+/* a line draws itself; give the path pathLength="1" and stroke-dasharray: 1 */
+@keyframes bless-draw {
+  from {
+    opacity: 0;
+    stroke-dashoffset: var(--bless-draw);
+  }
+  10% {
+    opacity: 1;
+  }
+}
+/* the items of a list arrive one after another; the eighth and later share one delay */
+.bless-stagger > * {
+  animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft) backwards;
+}
+.bless-stagger > :nth-child(2) {
+  animation-delay: var(--bless-stagger);
+}
+.bless-stagger > :nth-child(3) {
+  animation-delay: calc(2 * var(--bless-stagger));
+}
+.bless-stagger > :nth-child(4) {
+  animation-delay: calc(3 * var(--bless-stagger));
+}
+.bless-stagger > :nth-child(5) {
+  animation-delay: calc(4 * var(--bless-stagger));
+}
+.bless-stagger > :nth-child(6) {
+  animation-delay: calc(5 * var(--bless-stagger));
+}
+.bless-stagger > :nth-child(7) {
+  animation-delay: calc(6 * var(--bless-stagger));
+}
+.bless-stagger > :nth-child(n + 8) {
+  animation-delay: calc(7 * var(--bless-stagger));
 }
 /* squash and stretch (Thomas and Johnston, The Illusion of Life, 1981) */
 @keyframes bless-pop {

@@ -82,7 +82,7 @@ const shown = computed(() => {
         <button type="button" @click="emit('suggest', suggestion)">{{ suggestion }}</button>?
       </p>
       <p v-if="!total" class="bless-results__tips">{{ text.tips }}</p>
-      <ol v-else class="bless-results__list" role="list">
+      <ol v-else class="bless-stagger bless-results__list" role="list">
         <li v-for="r in results" :key="r.id">
           <BlessSearchResult v-bind="r" :query />
         </li>
