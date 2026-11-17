@@ -250,4 +250,7 @@ const ICON = {
   display: flex;
   gap: var(--bless-space-2);
 }
+.bless-feedback__form {
+  animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft);
+}
 </style>

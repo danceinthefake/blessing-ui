@@ -85,4 +85,7 @@ const line = computed(() => {
     opacity: 0.6;
   }
 }
+.bless-typing {
+  animation: bless-voice var(--bless-duration-voice) var(--bless-ease-snap);
+}
 </style>

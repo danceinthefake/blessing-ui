@@ -35,6 +35,12 @@ A list that you reorder, such as [OrderList](../components/order-list), does not
 
 A new tab panel, a new step of a [Stepper](../components/stepper), and the content of an open [Collapsible](../components/collapsible) arrive with the base layer. An error message under a field rises in quickly. A switch thumb, a check mark, and a radio dot snap into place. Progress bars and rings fill with the long soft ease over `--bless-duration-draw`.
 
+## Chat and AI
+
+A [Message](../components/message) talks, so its bubble wipes up with the voice layer. So does the [TypingIndicator](../components/typing-indicator). Tool calls, reasoning, and artifact panels arrive with the base layer, and so does their content when you open it. The steps of an [AgentPlan](../components/agent-plan), the chips of [Suggestions](../components/suggestions), and the comments of a [Thread](../components/thread) stagger.
+
+Typed text is opt-in. To type a reply out like a game text box, give [StreamingText](../components/streaming-text) a `pace` in letters a second. Screen readers wait for the full text. Under reduced motion, the text shows at once.
+
 ## Flair
 
 Flair is off by default, because a pop on every click gets tiring in a form that someone uses all day. To turn it on, set `data-flair` on `<html>` or on one container, for example a reward screen or a game.

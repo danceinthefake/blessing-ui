@@ -55,7 +55,7 @@ const ICON: Partial<Record<BlessStepStatus, string>> = {
         <span :style="{ inlineSize: `${(done / Math.max(1, steps.length)) * 100}%` }" />
       </span>
     </header>
-    <ol class="bless-plan__list">
+    <ol class="bless-stagger bless-plan__list">
       <li
         v-for="s in steps"
         :key="s.id"

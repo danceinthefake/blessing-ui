@@ -180,4 +180,8 @@ function toggle(e: Event) {
     background: none;
   }
 }
+.bless-reasoning,
+.bless-reasoning[open] .bless-reasoning__body {
+  animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft);
+}
 </style>
