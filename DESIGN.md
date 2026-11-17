@@ -701,6 +701,7 @@ Nine components, 417 → 426. Each uses native platform APIs only: the library a
 - ✅ `BlessApplicationStatus`: the reference, the steps of a request with their dates, and what happens next.
 - ✅ `BlessEligibilityCheck`: questions one at a time that lead to a result, with a way back.
 - ✅ `BlessDocumentChecklist`: the documents that a request needs, with an upload and a state for each.
+- ✅ Budget: after the round, the whole library is 287.6 KB gz JS and 80.2 KB gz CSS, under the cap of 296 / 82. Phase 43 is done.
 
 ### Deliberately skipped
 

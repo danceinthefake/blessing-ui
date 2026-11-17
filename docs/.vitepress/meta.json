@@ -16671,7 +16671,7 @@
    },
    {
     "name": "labels",
-    "type": "Partial<{ count: (shown: string, total: string, query: string) => string; none: (query: string) => string; tips: string; sort: string; filters: string; didYouMean: string; }> | undefined",
+    "type": "Partial<{ count: (shown: string, total: string, query: string) => string; none: (query: string) => string; tips: string; sort: string; didYouMean: string; }> | undefined",
     "required": false,
     "description": ""
    },
