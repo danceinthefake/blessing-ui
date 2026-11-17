@@ -239,6 +239,7 @@ import type BlessTicket from "../components/BlessTicket.vue";
 import type BlessTicketView from "../components/BlessTicketView.vue";
 import type BlessTimeTracker from "../components/BlessTimeTracker.vue";
 import type BlessTimer from "../components/BlessTimer.vue";
+import type BlessTokenCost from "../components/BlessTokenCost.vue";
 import type BlessToolCall from "../components/BlessToolCall.vue";
 import type BlessTour from "../components/BlessTour.vue";
 import type BlessTransactionList from "../components/BlessTransactionList.vue";
@@ -499,6 +500,7 @@ export type BlessLabelsFull = {
   BlessTicketView: All<typeof BlessTicketView>;
   BlessTimeTracker: All<typeof BlessTimeTracker>;
   BlessTimer: All<typeof BlessTimer>;
+  BlessTokenCost: All<typeof BlessTokenCost>;
   BlessToolCall: All<typeof BlessToolCall>;
   BlessTour: All<typeof BlessTour>;
   BlessTransactionList: All<typeof BlessTransactionList>;
@@ -2295,6 +2297,17 @@ export const labelsId: BlessLabelsFull = {
     reset: "Atur ulang",
     finished: "Selesai",
     round: (r, n) => `ronde ${r} dari ${n}`,
+  },
+  BlessTokenCost: {
+    caption: (m) => (m ? `Biaya permintaan, ${m}` : "Biaya permintaan"),
+    kind: "Token",
+    tokens: "Jumlah",
+    price: "Harga per juta",
+    cost: "Biaya",
+    input: "Masukan",
+    cached: "Masukan dari cache",
+    output: "Keluaran",
+    total: "Total",
   },
   BlessToolCall: {
     running: "Berjalan",

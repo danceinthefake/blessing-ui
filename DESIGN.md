@@ -717,7 +717,7 @@ Eleven components, 426 → 437. Each uses native platform APIs only: the library
 - ✅ `BlessRunTrace`: the steps of an agent run with tools, inputs, outputs, and times.
 - ✅ `BlessPromptLibrary`: saved prompts with a search, tags, and fill-in fields.
 - ✅ `BlessAnswerCompare`: two answers side by side with a vote for the better one.
-- `BlessTokenCost`: the tokens of a request and what they cost.
+- ✅ `BlessTokenCost`: the tokens of a request and what they cost.
 
 ### Deliberately skipped
 

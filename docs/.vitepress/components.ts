@@ -675,6 +675,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         text: "Saved prompts with fill-in fields",
       },
       { name: "BlessAnswerCompare", slug: "answer-compare", text: "Two answers and a vote" },
+      {
+        name: "BlessTokenCost",
+        slug: "token-cost",
+        text: "The tokens of a request and their cost",
+      },
       { name: "BlessStage", slug: "stage", text: "Page shell, sidebar \u2192 drawer under 800px" },
       { name: "BlessSidebarNav", slug: "sidebar-nav", text: "Vertical nav list" },
       { name: "BlessNavigationMenu", slug: "navigation-menu", text: "Horizontal nav with panels" },

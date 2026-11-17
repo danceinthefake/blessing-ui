@@ -777,3 +777,6 @@ export { fillPrompt, promptFields } from "./components/BlessPromptLibrary.vue";
 export type { BlessSavedPrompt } from "./components/BlessPromptLibrary.vue";
 export { default as BlessAnswerCompare } from "./components/BlessAnswerCompare.vue";
 export type { BlessAnswerVote, BlessComparedAnswer } from "./components/BlessAnswerCompare.vue";
+export { default as BlessTokenCost } from "./components/BlessTokenCost.vue";
+export { tokenCost } from "./components/BlessTokenCost.vue";
+export type { BlessTokenPrices, BlessTokenUsage } from "./components/BlessTokenCost.vue";

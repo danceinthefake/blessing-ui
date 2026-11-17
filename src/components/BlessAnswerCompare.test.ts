@@ -1,5 +1,8 @@
 import { mount } from "@vue/test-utils";
-import BlessAnswerCompare, { type BlessAnswerVote, type BlessComparedAnswer } from "./BlessAnswerCompare.vue";
+import BlessAnswerCompare, {
+  type BlessAnswerVote,
+  type BlessComparedAnswer,
+} from "./BlessAnswerCompare.vue";
 
 test("BlessAnswerCompare: blind sources, a vote that shows them, the winner, and thanks", async () => {
   const w = mount(BlessAnswerCompare, {
@@ -24,7 +27,13 @@ test("BlessAnswerCompare: blind sources, a vote that shows them, the winner, and
   expect(w.findAll(".bless-ab__vote button")[1]!.attributes("aria-pressed")).toBe("true");
   expect(w.find("[role=status]").text()).toContain("Thank you");
   const open = mount(BlessAnswerCompare, {
-    props: { blind: false, answers: [{ text: "x", source: "S1" }, { text: "y" }] as [BlessComparedAnswer, BlessComparedAnswer] },
+    props: {
+      blind: false,
+      answers: [{ text: "x", source: "S1" }, { text: "y" }] as [
+        BlessComparedAnswer,
+        BlessComparedAnswer,
+      ],
+    },
   });
   expect(open.find(".bless-ab__source").text()).toBe("S1");
 });
