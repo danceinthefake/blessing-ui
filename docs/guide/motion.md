@@ -31,6 +31,10 @@ A list of items arrives one item after another, `--bless-stagger` apart. Example
 
 A list that you reorder, such as [OrderList](../components/order-list), does not stagger. An item that moves would replay its arrival.
 
+## Forms and controls
+
+A new tab panel, a new step of a [Stepper](../components/stepper), and the content of an open [Collapsible](../components/collapsible) arrive with the base layer. An error message under a field rises in quickly. A switch thumb, a check mark, and a radio dot snap into place. Progress bars and rings fill with the long soft ease over `--bless-duration-draw`.
+
 ## Flair
 
 Flair is off by default, because a pop on every click gets tiring in a form that someone uses all day. To turn it on, set `data-flair` on `<html>` or on one container, for example a reward screen or a game.

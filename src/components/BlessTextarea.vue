@@ -179,4 +179,7 @@ const errId = () => `${id()}-err`;
 .bless-textarea__field > :last-child {
   padding-inline-end: calc(var(--bless-space-3) + 4px);
 }
+.bless-textarea__error {
+  animation: bless-enter var(--bless-duration-voice) var(--bless-ease-snap);
+}
 </style>

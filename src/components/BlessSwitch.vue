@@ -91,7 +91,7 @@ const fs = useFieldState();
   width: calc(var(--_h) - 6px);
   height: calc(var(--_h) - 6px);
   background: var(--bless-color-bg);
-  transition: transform var(--bless-duration-base) var(--bless-ease-out);
+  transition: transform var(--bless-duration-base) var(--bless-ease-snap);
 }
 .bless-switch__input:checked + .bless-switch__track {
   background: var(--bless-color-accent);

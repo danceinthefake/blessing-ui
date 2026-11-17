@@ -171,4 +171,7 @@ function send() {
   display: flex;
   gap: var(--bless-space-2);
 }
+.bless-report__error {
+  animation: bless-enter var(--bless-duration-voice) var(--bless-ease-snap);
+}
 </style>

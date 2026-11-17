@@ -31,6 +31,10 @@ Daftar item datang satu per satu, berjarak `--bless-stagger`. Contohnya feed, li
 
 Daftar yang Anda susun ulang, seperti [OrderList](../../components/order-list), tidak berurutan datang. Item yang berpindah akan memutar ulang kedatangannya.
 
+## Formulir dan kontrol
+
+Panel tab yang baru, langkah baru [Stepper](../../components/stepper), dan isi [Collapsible](../../components/collapsible) yang terbuka datang dengan lapis dasar. Pesan galat di bawah field naik dengan cepat. Thumb switch, tanda centang, dan titik radio melompat ke tempatnya. Bilah dan cincin progres terisi dengan ease lembut yang panjang selama `--bless-duration-draw`.
+
 ## Flair
 
 Flair mati secara bawaan, karena letupan di setiap klik melelahkan pada formulir yang dipakai seharian. Untuk menyalakannya, pasang `data-flair` di `<html>` atau di satu wadah, misalnya layar hadiah atau gim.

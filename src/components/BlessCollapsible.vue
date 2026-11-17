@@ -99,11 +99,14 @@ const open = defineModel<boolean>("open", { default: false });
     height: 0;
     overflow: clip;
     transition:
-      height var(--bless-duration-slow) var(--bless-ease-in-out),
+      height var(--bless-duration-slow) var(--bless-ease-soft),
       content-visibility var(--bless-duration-slow) allow-discrete;
   }
   .bless-collapsible[open]::details-content {
     height: auto;
   }
+}
+.bless-collapsible[open] .bless-collapsible__content {
+  animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft);
 }
 </style>

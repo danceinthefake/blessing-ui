@@ -199,4 +199,7 @@ function send() {
   display: flex;
   gap: var(--bless-space-2);
 }
+.bless-compose__error {
+  animation: bless-enter var(--bless-duration-voice) var(--bless-ease-snap);
+}
 </style>

@@ -223,4 +223,7 @@ function onKey(e: KeyboardEvent) {
 .bless-questionnaire__spacer {
   flex: 1;
 }
+.bless-questionnaire__error {
+  animation: bless-enter var(--bless-duration-voice) var(--bless-ease-snap);
+}
 </style>

@@ -83,7 +83,7 @@ const id = useFieldId(props);
   border-radius: 50%;
   background: var(--bless-color-accent);
   transform: scale(0);
-  transition: transform var(--bless-duration-base) var(--bless-ease-out);
+  transition: transform var(--bless-duration-base) var(--bless-ease-snap);
 }
 .bless-radio__input:checked + .bless-radio__dot {
   border-color: var(--bless-color-accent-text);

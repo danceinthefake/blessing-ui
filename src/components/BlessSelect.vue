@@ -259,4 +259,7 @@ const isGroup = (o: unknown): o is { label: string; options: BlessOption<T>[] } 
   transform: skewX(var(--bless-skew-counter)) translateY(-50%);
   inset-inline-end: calc(var(--bless-space-3) + 4px);
 }
+.bless-select__error {
+  animation: bless-enter var(--bless-duration-voice) var(--bless-ease-snap);
+}
 </style>
