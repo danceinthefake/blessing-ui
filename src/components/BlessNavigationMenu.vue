@@ -208,7 +208,7 @@ function onKey(e: KeyboardEvent, i: number, item: BlessNavMenuItem) {
   min-width: 280px;
 }
 .bless-navmenu__panel:popover-open {
-  animation: bless-pop-in var(--bless-duration-base) var(--bless-ease-out);
+  animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft);
 }
 .bless-navmenu__grid {
   display: grid;

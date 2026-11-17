@@ -72,6 +72,10 @@ The threads are not equal. The title of the series is about raising a heroine wh
 
 The main button stands out by weight (solid against outline), not by color. On any screen, the only color is what the user chose.
 
+## Motion
+
+Motion follows the three layers of the series. The base is soft: an appearance rises out of a short soft focus and settles. The voice is for the parts that talk: dialogs and toasts wipe up like the text box of a visual novel. Flair is the comedy beat: a pop or a shake, opt-in only. Care over spectacle still overrides all three. Hover stays a fade and a lean, calm motion removes travel and flair, and reduced motion removes everything. See `docs/guide/motion.md`.
+
 ## Build order
 
 1. [x] Care rules: interruptible motion, reduced motion, and contrast. Every later rule must respect them.

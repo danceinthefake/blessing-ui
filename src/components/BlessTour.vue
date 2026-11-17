@@ -155,6 +155,7 @@ const hole = computed(() => {
   background: var(--bless-color-backdrop);
 }
 .bless-tour {
+  animation: bless-voice var(--bless-duration-voice) var(--bless-ease-snap);
   border-radius: var(--bless-radius);
   position: fixed;
   z-index: calc(var(--bless-z-modal) + 1);

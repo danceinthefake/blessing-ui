@@ -429,4 +429,7 @@ function onBlur(e: FocusEvent) {
 .bless-combobox--open .bless-combobox__field > .bless-combobox__chevron {
   transform: skewX(var(--bless-skew-counter)) translateY(-50%) scaleY(-1);
 }
+.bless-combobox__panel:popover-open {
+  animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft);
+}
 </style>

@@ -112,6 +112,7 @@ onBeforeUnmount(() => {
 
 <style>
 .bless-seltool__bar {
+  animation: bless-enter var(--bless-duration-voice) var(--bless-ease-snap);
   position: fixed;
   z-index: var(--bless-z-nav);
   display: flex;

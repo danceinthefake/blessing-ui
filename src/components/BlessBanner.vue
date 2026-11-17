@@ -56,6 +56,7 @@ function close() {
 
 <style>
 .bless-banner {
+  animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft);
   --_bg: var(--bless-color-text);
   --_fg: var(--bless-color-on-text);
   box-sizing: border-box;

@@ -27,7 +27,7 @@ These items became the [brand](./brand):
 - One angle: −10° (`--bless-lean`). It now responds to attention. Buttons, tags, tabs, and the fields you type into lean on hover, focus, or press. Only big type leans at rest.
 - One accent on a scale of grays. The pink of the heroine is the default.
 - Thin oversized type for the voice, and bold tracked uppercase for the UI.
-- A fade on hover, never a bounce. Appearances fade too, and nothing drifts.
+- A fade on hover, never a bounce.
 - The plate: whatever floats sits on a hard 1px offset in the accent, never a blur.
 
 ## What was added
@@ -36,6 +36,7 @@ The source is a marketing site, and a library has to do more. Everything below i
 
 - **Accessibility.** Focus rings, ARIA roles on menus, dialogs, grids, and tablists, `prefers-reduced-motion`, and AA contrast. For contrast, we darkened the accent one step wherever it is text. We deepened its fills so that white text on them reaches 4.5:1. We lightened it for text in dark mode. We did the same for the alert red. The site had none of this.
 - **A design language.** The six threads of the series became six rules: lean on attention, color means chosen, write on the page, fuse when grouped, overflow once, and care over spectacle. See the [design language](./). This is the biggest departure from the site. Its pink sat on things at rest. Here the accent appears only on what someone chose.
+- **Motion.** Three layers, like the series: a soft base on every appearance, a game text box for the parts that talk, and opt-in comedy beats. A calm setting gives less. See [motion](../guide/motion).
 - **Dark mode.** The same grays turn over, with one token swap. Thin type steps up one weight, because hairlines look thinner as light text on a dark background.
 - **Tokens.** Every value that the site hard-coded became a `--bless-*` custom property. You can retune the look without a change to a component.
 - **The platform.** `<dialog>`, the Popover API, `<details>`, native form controls, `Intl` dates, and scroll-snap. These are the parts of the browser itself, styled and not rebuilt.

@@ -68,8 +68,8 @@ The six rules of the [design language](../design/), as they show in the library,
 - **Fuse when grouped.** Things that belong together share one plate. A ButtonGroup is one outline and leans as one. An InputGroup is one field. A ToggleGroup is one plate too. A chosen date range is one band. Each part alone keeps its own edge.
 - **Overflow, once.** Growth shows as outgrowing a frame: the watermark and the hanging headline spill past their section, a finished Progress bar runs past its track. At most one thing overflows per screen, or it stops meaning anything.
 - **Write on the page.** A field is a line you write on, not a box to fill in. It is transparent, with an underline, and the accent line grows under it while you write. Reading turns into writing in place. For values that people mostly read, use [Inplace](/components/inplace) instead of a separate edit form.
-- **Hover fades and leans, never slides**: `opacity: var(--bless-hover-opacity)` over `var(--bless-duration-slow)`, and the plate leans to `--bless-lean` in place. Appearances fade in place. Only state changes travel (a sheet slides from its edge, a switch thumb moves).
-- **Nothing blurs.** A floating surface sits on `--bless-shadow-plate`, a 1px accent offset. Modals and sheets rely on the scrim.
+- **Hover fades and leans, never slides**: `opacity: var(--bless-hover-opacity)` over `var(--bless-duration-slow)`, and the plate leans to `--bless-lean` in place. Appearances follow the three [motion](./motion) layers: a soft rise for most, a text-box wipe for the parts that talk, and opt-in flair. State changes travel (a sheet slides from its edge, a switch thumb moves).
+- **Nothing blurs at rest.** The only blur is the short soft focus at the start of an appearance. A floating surface sits on `--bless-shadow-plate`, a 1px accent offset. Modals and sheets rely on the scrim.
 - **Type**: use thin for the voice at headline size and up, and bold tracked uppercase for the UI. Body is `--bless-text-md`. Nothing is smaller than `2xs` (8–9px), and `2xs` is only for small meta beside larger text: badges, counts, dates, and captions.
 
 ## Shape

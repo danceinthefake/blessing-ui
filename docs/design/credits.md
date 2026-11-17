@@ -10,6 +10,8 @@ Blessing UI has no runtime dependencies. It still stands on the work of many peo
 
 The visual language comes from [saenai.tv](https://www.saenai.tv/), the official site of the anime _Saenai Heroine no Sodatekata_. We wrote down its rules and drew every part again. We copied no asset, style sheet, or script. The [story](./story) tells how. The anime, its title, its characters, and its artwork belong to their respective owners. This project is not affiliated with them.
 
+The three [motion](../guide/motion) layers come from the anime itself, made by A-1 Pictures and CloverWorks: the soft focus and drift of its calm scenes, the text boxes of the visual novel that the circle makes, and its short comedy beats. [UniqueUI](https://github.com/pras75299/uniqueui) and [Rare UI](https://github.com/swamimalode07/rare-ui) showed how much motion a component library can carry. We took no components or code from them.
+
 The default fonts are [Roboto](https://fonts.google.com/specimen/Roboto) by Christian Robertson and [Noto Sans JP](https://fonts.google.com/noto/specimen/Noto+Sans+JP) by Google. The library does not bundle them. You load them yourself, as the [fonts guide](../guide/fonts) shows.
 
 ## Libraries we compared with
@@ -42,6 +44,7 @@ The [site types](./site-types) page compares three lists of site and app categor
 
 Some components use known methods. We wrote each one again from its description.
 
+- The flair [motion](../guide/motion) uses squash and stretch, from _The Illusion of Life_ by Frank Thomas and Ollie Johnston (1981).
 - The [treemap](../components/treemap) uses the squarified layout of Bruls, Huijsmans, and van Wijk (2000).
 - The [card input](../components/card-input) checks numbers with the Luhn algorithm (Hans Peter Luhn, 1954).
 - The [check answers](../components/check-answers) page follows the "Check answers" pattern of the [GOV.UK Design System](https://design-system.service.gov.uk/patterns/check-answers/) by the UK Government Digital Service.

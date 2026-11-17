@@ -138,7 +138,7 @@ function onUp() {
   box-sizing: border-box;
   background: var(--bless-color-bg);
   outline: 0;
-  animation: var(--_anim) var(--bless-duration-slow) var(--bless-ease-out);
+  animation: var(--_anim) var(--bless-duration-slow) var(--bless-ease-soft);
 }
 .bless-sheet--right {
   justify-content: flex-end;
@@ -254,11 +254,6 @@ function onUp() {
 @keyframes bless-sheet-bottom {
   from {
     transform: translateY(100%);
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  .bless-sheet__panel {
-    animation: none;
   }
 }
 </style>

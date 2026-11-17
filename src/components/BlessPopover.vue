@@ -120,7 +120,7 @@ function onToggle(e: Event) {
   max-width: min(320px, calc(100vw - 16px));
 }
 .bless-popover:popover-open {
-  animation: bless-pop-in var(--bless-duration-base) var(--bless-ease-out);
+  animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft);
 }
 .bless-popover__title {
   display: block;
@@ -162,17 +162,6 @@ function onToggle(e: Event) {
   width: 3px;
   height: 32px;
   transform: none;
-}
-/* fade only — the site's rule: appearances and hovers fade, nothing drifts */
-@keyframes bless-pop-in {
-  from {
-    opacity: 0;
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  .bless-popover:popover-open {
-    animation: none;
-  }
 }
 .bless-popover--arrow.bless-popover--bottom::before,
 .bless-popover--arrow.bless-popover--top::before {

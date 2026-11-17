@@ -258,4 +258,7 @@ function clear() {
 .bless-datepicker__trigger > * {
   transform: skewX(var(--bless-skew-counter));
 }
+.bless-datepicker__panel:popover-open {
+  animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft);
+}
 </style>

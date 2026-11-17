@@ -10,6 +10,8 @@ Blessing UI tidak punya dependensi saat berjalan. Meski begitu, pustaka ini berd
 
 Bahasa visualnya berasal dari [saenai.tv](https://www.saenai.tv/), situs resmi anime _Saenai Heroine no Sodatekata_. Kami mencatat aturannya lalu menggambar ulang setiap bagian. Kami tidak menyalin aset, lembar gaya, maupun skrip apa pun. [Cerita](./story) menjelaskan caranya. Anime itu, judulnya, karakternya, dan karya seninya milik pemiliknya masing-masing. Proyek ini tidak berafiliasi dengan mereka.
 
+Tiga lapis [gerak](../guide/motion) berasal dari anime itu sendiri, buatan A-1 Pictures dan CloverWorks: fokus lembut dan hanyutan di adegan tenangnya, kotak teks visual novel yang dibuat lingkaran itu, dan adegan komedinya yang singkat. [UniqueUI](https://github.com/pras75299/uniqueui) dan [Rare UI](https://github.com/swamimalode07/rare-ui) menunjukkan seberapa banyak gerak yang bisa dibawa library komponen. Kami tidak mengambil komponen atau kode dari keduanya.
+
 Fon bawaannya adalah [Roboto](https://fonts.google.com/specimen/Roboto) karya Christian Robertson dan [Noto Sans JP](https://fonts.google.com/noto/specimen/Noto+Sans+JP) dari Google. Pustaka ini tidak menyertakannya. Anda memuatnya sendiri, seperti yang ditunjukkan [panduan fon](../guide/fonts).
 
 ## Pustaka pembanding
@@ -42,6 +44,7 @@ Halaman [jenis situs](./site-types) membandingkan tiga daftar kategori situs dan
 
 Beberapa komponen memakai metode yang sudah dikenal. Kami menulis ulang masing-masing dari uraiannya.
 
+- [Gerak](../guide/motion) flair memakai squash and stretch, dari _The Illusion of Life_ karya Frank Thomas dan Ollie Johnston (1981).
 - [Treemap](../../components/treemap) memakai tata letak squarified dari Bruls, Huijsmans, dan van Wijk (2000).
 - [Input kartu](../../components/card-input) memeriksa nomor dengan algoritma Luhn (Hans Peter Luhn, 1954).
 - Halaman [periksa jawaban](../../components/check-answers) mengikuti pola "Check answers" dari [GOV.UK Design System](https://design-system.service.gov.uk/patterns/check-answers/) karya Government Digital Service Inggris.

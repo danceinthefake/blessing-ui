@@ -233,13 +233,11 @@ const { dismiss } = useToast();
   outline: 2px solid var(--bless-color-accent);
   outline-offset: 2px;
 }
-.bless-toast-enter-active,
+.bless-toast-enter-active {
+  animation: bless-voice var(--bless-duration-voice) var(--bless-ease-snap);
+}
 .bless-toast-leave-active {
   transition: all var(--bless-duration-slow) var(--bless-ease-out);
-}
-.bless-toast-enter-from {
-  opacity: 0;
-  transform: translateY(12px);
 }
 .bless-toast-leave-to {
   opacity: 0;

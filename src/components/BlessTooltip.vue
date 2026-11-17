@@ -127,7 +127,7 @@ watch(
   transform: skewX(var(--bless-skew-counter));
 }
 .bless-tooltip:popover-open {
-  animation: bless-pop-in var(--bless-duration-fast) var(--bless-ease-out);
+  animation: bless-enter var(--bless-duration-voice) var(--bless-ease-snap);
 }
 /* arrow: a small square rotated 45°, sitting on the edge that faces the anchor */
 .bless-tooltip__arrow {
