@@ -26,8 +26,8 @@ For each group, the page lists the components and the [blocks](../blocks/) that 
 | 8. Finance                        |               15 |       0 |
 | 9. Education                      |               12 |       0 |
 | 10. Health and fitness            |               12 |       0 |
-| 11. Developer tools               |               13 |       5 |
-| 12. Utilities                     |                6 |       5 |
+| 11. Developer tools               |               18 |       0 |
+| 12. Utilities                     |               11 |       0 |
 | 13. Search and reference          |                6 |       4 |
 | 14. Government and civic services |                9 |       5 |
 | 15. Brand and marketing sites     |               11 |       5 |
@@ -129,19 +129,19 @@ Not yet: nothing from the first list. Every part that this page named is now a c
 
 Code hosting, CI, cloud consoles, and API docs. People build, ship, and watch services.
 
-Today: [CodeBlock](../components/code-block), [CodeTabs](../components/code-tabs), [Diff](../components/diff), [JsonViewer](../components/json-viewer), [LogViewer](../components/log-viewer), [ApiKeyField](../components/api-key-field), [WebhookLog](../components/webhook-log), [CronInput](../components/cron-input), [UptimeBar](../components/uptime-bar), [SystemStatus](../components/system-status), [IncidentTimeline](../components/incident-timeline), [FeatureFlags](../components/feature-flags), [QuotaUsage](../components/quota-usage).
+Today: [Terminal](../components/terminal), [ApiEndpoint](../components/api-endpoint), [DeployList](../components/deploy-list), [CommitList](../components/commit-list), [RequestInspector](../components/request-inspector), [CodeBlock](../components/code-block), [CodeTabs](../components/code-tabs), [Diff](../components/diff), [JsonViewer](../components/json-viewer), [LogViewer](../components/log-viewer), [ApiKeyField](../components/api-key-field), [WebhookLog](../components/webhook-log), [CronInput](../components/cron-input), [UptimeBar](../components/uptime-bar), [SystemStatus](../components/system-status), [IncidentTimeline](../components/incident-timeline), [FeatureFlags](../components/feature-flags), [QuotaUsage](../components/quota-usage).
 
 Blocks: [release](../blocks/release).
 
-Not yet: terminal, API endpoint reference, deploy list, commit list, request inspector.
+Not yet: nothing from the first list. Every part that this page named is now a component.
 
 ## 12. Utilities
 
 Calculators, converters, weather, and maps. People do one small job fast.
 
-Today: [Formula](../components/formula), [WorldClock](../components/world-clock), [TimezonePicker](../components/timezone-picker), [QrCode](../components/qr-code), [ColorPicker](../components/color-picker), [Compare](../components/compare).
+Today: [MapPins](../components/map-pins), [RouteSteps](../components/route-steps), [WeatherForecast](../components/weather-forecast), [MeasureConverter](../components/measure-converter), [PlaceSearch](../components/place-search), [Formula](../components/formula), [WorldClock](../components/world-clock), [TimezonePicker](../components/timezone-picker), [QrCode](../components/qr-code), [ColorPicker](../components/color-picker), [Compare](../components/compare).
 
-Not yet: map with pins, route steps, weather forecast, unit converter, place search.
+Not yet: nothing from the first list. Every part that this page named is now a component.
 
 ## 13. Search and reference
 
