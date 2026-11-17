@@ -767,3 +767,4 @@ export { default as BlessContactForm } from "./components/BlessContactForm.vue";
 export type { BlessContactMessage } from "./components/BlessContactForm.vue";
 export { default as BlessPortfolioGrid } from "./components/BlessPortfolioGrid.vue";
 export type { BlessWork } from "./components/BlessPortfolioGrid.vue";
+export { default as BlessArtifactPanel } from "./components/BlessArtifactPanel.vue";

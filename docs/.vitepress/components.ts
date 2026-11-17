@@ -658,6 +658,11 @@ export const groups: { title: string; items: Entry[] }[] = [
         text: "A contact form with a clear result",
       },
       { name: "BlessPortfolioGrid", slug: "portfolio-grid", text: "Work in a grid with filters" },
+      {
+        name: "BlessArtifactPanel",
+        slug: "artifact-panel",
+        text: "A document the model writes, with versions",
+      },
       { name: "BlessStage", slug: "stage", text: "Page shell, sidebar \u2192 drawer under 800px" },
       { name: "BlessSidebarNav", slug: "sidebar-nav", text: "Vertical nav list" },
       { name: "BlessNavigationMenu", slug: "navigation-menu", text: "Horizontal nav with panels" },

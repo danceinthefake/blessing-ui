@@ -878,6 +878,67 @@
   "slots": [],
   "exposed": []
  },
+ "BlessArtifactPanel": {
+  "props": [
+   {
+    "name": "title",
+    "type": "string",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "versions",
+    "type": "string[]",
+    "required": true,
+    "description": "each version of the document, oldest first"
+   },
+   {
+    "name": "lang",
+    "type": "string | undefined",
+    "required": false,
+    "description": "a code language shows the text as code; leave it out for a plain document"
+   },
+   {
+    "name": "filename",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"document.txt\"",
+    "description": "the name of the file for the download"
+   },
+   {
+    "name": "writing",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": "the model writes the last version now"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ panel: string; version: (n: number, total: number) => string; older: string; newer: string; copy: string; copied: string; download: string; close: string; writing: string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "version",
+    "type": "number | undefined",
+    "required": false,
+    "description": "the index of the version in view; the newest by default"
+   }
+  ],
+  "events": [
+   {
+    "name": "close",
+    "type": "[]",
+    "description": ""
+   },
+   {
+    "name": "update:version",
+    "type": "[value: number | undefined]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessAspectRatio": {
   "props": [
    {
