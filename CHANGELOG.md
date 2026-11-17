@@ -1,8 +1,8 @@
 # Changelog
 
-## Unreleased
+## 0.8.0 — 2026-11-17
 
-A hundred and nineteen new components, 437 in all, for finance, commerce, communication, social, health, smart home, content, media, ERP, operations, productivity, education, developer tool, utility, search, government, marketing, and AI assistant sites. Every part that the site types page names is now a component. They come from the new [site types](https://ui.blessing.id/design/site-types) page, which sorts websites and apps into 18 groups and lists the parts that each group needs. The library still has no dependencies.
+A hundred and nineteen new components, 437 in all, for finance, commerce, communication, social, health, smart home, content, media, ERP, operations, productivity, education, developer tool, utility, search, government, marketing, and AI assistant sites. Every part that the site types page names is now a component. They come from the new [site types](https://ui.blessing.id/design/site-types) page, which sorts websites and apps into 18 groups and lists the parts that each group needs. The library still has no dependencies. The Indonesian label pack covers all 263 components that read a label pack. No API is removed or renamed.
 
 ### Added
 
