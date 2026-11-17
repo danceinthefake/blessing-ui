@@ -742,3 +742,8 @@ export type { BlessArticleSection } from "./components/BlessKnowledgeArticle.vue
 export { default as BlessSavedForm } from "./components/BlessSavedForm.vue";
 export { default as BlessCheckAnswers } from "./components/BlessCheckAnswers.vue";
 export type { BlessAnswer, BlessAnswerGroup } from "./components/BlessCheckAnswers.vue";
+export { default as BlessApplicationStatus } from "./components/BlessApplicationStatus.vue";
+export type {
+  BlessApplicationState,
+  BlessApplicationStep,
+} from "./components/BlessApplicationStatus.vue";

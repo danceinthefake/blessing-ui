@@ -6,6 +6,7 @@ import type BlessAgentPlan from "../components/BlessAgentPlan.vue";
 import type BlessAnnotator from "../components/BlessAnnotator.vue";
 import type BlessApiEndpoint from "../components/BlessApiEndpoint.vue";
 import type BlessApiKeyField from "../components/BlessApiKeyField.vue";
+import type BlessApplicationStatus from "../components/BlessApplicationStatus.vue";
 import type BlessAppointmentCard from "../components/BlessAppointmentCard.vue";
 import type BlessApprovalFlow from "../components/BlessApprovalFlow.vue";
 import type BlessArticleHeader from "../components/BlessArticleHeader.vue";
@@ -255,6 +256,7 @@ export type BlessLabelsFull = {
   BlessAnnotator: All<typeof BlessAnnotator>;
   BlessApiEndpoint: All<typeof BlessApiEndpoint>;
   BlessApiKeyField: All<typeof BlessApiKeyField>;
+  BlessApplicationStatus: All<typeof BlessApplicationStatus>;
   BlessAppointmentCard: All<typeof BlessAppointmentCard>;
   BlessApprovalFlow: All<typeof BlessApprovalFlow>;
   BlessArticleHeader: All<typeof BlessArticleHeader>;
@@ -573,6 +575,18 @@ export const labelsId: BlessLabelsFull = {
     cancel: "Batal",
     created: (w) => `Dibuat ${w}`,
     lastUsed: (w) => `Terakhir dipakai ${w}`,
+  },
+  BlessApplicationStatus: {
+    progress: "Sedang diproses",
+    action: "Kami butuh sesuatu dari Anda",
+    approved: "Disetujui",
+    rejected: "Tidak disetujui",
+    reference: "Nomor",
+    steps: "Tahap",
+    done: "selesai",
+    now: "sekarang",
+    later: "berikutnya",
+    next: "Yang terjadi berikutnya",
   },
   BlessAppointmentCard: {
     confirmed: "Terkonfirmasi",

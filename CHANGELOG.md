@@ -110,7 +110,8 @@ Ninety-nine new components, 417 in all, for finance, commerce, communication, so
 - `BlessAzIndex`: a list in groups by first letter without accents, a sticky bar of letters to jump, and a group for other signs.
 - `BlessKnowledgeArticle`: a help article with contents, the date of the last change, the reading time, paragraphs from plain text, a helpful question, and related links.
 - `BlessSavedForm`: a long form that saves a draft in localStorage after a short wait, offers to go on with it, saves at once on request, and deletes it on send.
-- `BlessCheckAnswers`: the answers of a form in groups with a change action for each, empty answers in words, and a statement to agree to before sending. Credits the GOV.UK Design System. 423 components in all.
+- `BlessCheckAnswers`: the answers of a form in groups with a change action for each, empty answers in words, and a statement to agree to before sending. Credits the GOV.UK Design System.
+- `BlessApplicationStatus`: the reference, the state in words, the steps done, now, and to come with their dates, an action with a link, and what happens next. 424 components in all.
 
 ## 0.7.0 — 2026-11-16
 

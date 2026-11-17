@@ -626,6 +626,73 @@
   "slots": [],
   "exposed": []
  },
+ "BlessApplicationStatus": {
+  "props": [
+   {
+    "name": "title",
+    "type": "string",
+    "required": true,
+    "description": "the name of the service, for example \"Business permit\""
+   },
+   {
+    "name": "reference",
+    "type": "string",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "steps",
+    "type": "BlessApplicationStep[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "current",
+    "type": "number",
+    "required": true,
+    "description": "the index of the step that is going on now"
+   },
+   {
+    "name": "state",
+    "type": "BlessApplicationState | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "next",
+    "type": "string | undefined",
+    "required": false,
+    "description": "what happens next, in plain words"
+   },
+   {
+    "name": "action",
+    "type": "string | undefined",
+    "required": false,
+    "description": "when the person needs to do something: what, and a link to do it"
+   },
+   {
+    "name": "actionHref",
+    "type": "string | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "actionLabel",
+    "type": "string | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<Record<BlessApplicationState, string> & { reference: string; steps: string; done: string; now: string; later: string; next: string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [],
+  "exposed": []
+ },
  "BlessAppointmentCard": {
   "props": [
    {
