@@ -521,7 +521,7 @@
   },
   {
     "name": "BlessDataTable",
-    "js": 9696,
+    "js": 9761,
     "css": 3153
   },
   {
@@ -921,7 +921,7 @@
   },
   {
     "name": "BlessKanban",
-    "js": 2782,
+    "js": 2869,
     "css": 607
   },
   {
@@ -1196,7 +1196,7 @@
   },
   {
     "name": "BlessOrderList",
-    "js": 1435,
+    "js": 1514,
     "css": 546
   },
   {
@@ -1306,7 +1306,7 @@
   },
   {
     "name": "BlessPlayQueue",
-    "js": 4173,
+    "js": 4254,
     "css": 1049
   },
   {
@@ -1756,7 +1756,7 @@
   },
   {
     "name": "BlessSortable",
-    "js": 3304,
+    "js": 3388,
     "css": 555
   },
   {

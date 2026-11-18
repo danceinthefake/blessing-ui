@@ -11,7 +11,7 @@ const eps = ref([
 
 <template>
   <div class="col" style="max-width: 420px">
-    <BlessSortable v-model="eps" label="Episodes" />
+    <BlessSortable v-model="eps" label="Episodes" :row-key="(s: string) => s" />
     <small>drag the grip, or focus it and press Space, then ↑ ↓</small>
   </div>
 </template>

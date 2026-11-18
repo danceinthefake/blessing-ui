@@ -29,7 +29,7 @@ Hover does not change. A control fades and leans on attention, and it never boun
 
 A list of items arrives one item after another, `--bless-stagger` apart. Examples are a feed, a timeline, search results, and a grid of cards. The eighth item and later share one delay, so a long list does not keep you waiting. Bars grow from their baseline, lines draw themselves, and the dots of a line land after the line passes. A chart takes `--bless-duration-draw`. In calm motion, all of these fade.
 
-A list that you reorder, such as [OrderList](../components/order-list), does not stagger. An item that moves would replay its arrival.
+A list that you reorder works differently: [DataTable](../components/data-table) rows, [Kanban](../components/kanban) cards, [Sortable](../components/sortable) and [PlayQueue](../components/play-queue) items, and [OrderList](../components/order-list) items. They stagger on the first load, and a new item rises in. When you sort, drag, or move an item with the keyboard, the items slide to their new places. A moved item does not replay its arrival. For the slide, give the component a `rowKey`, so that each item keeps its identity when it moves.
 
 ## Forms and controls
 
@@ -79,7 +79,7 @@ The keyframes are global, so you can use them with the tokens.
 }
 ```
 
-To stagger your own list, add the `bless-stagger` class to its parent. To draw your own line, give the path `pathLength="1"`.
+To stagger your own list, add the `bless-stagger` class to its parent. If the list reorders, wrap it in `<TransitionGroup appear appear-active-class="bless-appear" enter-active-class="bless-arrive" move-class="bless-move" @leave="(el, done) => done()">` instead. To draw your own line, give the path `pathLength="1"`.
 
 ```css
 .my-line {

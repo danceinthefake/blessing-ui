@@ -74,7 +74,17 @@ function step(i: number, d: -1 | 1) {
 
 <template>
   <div ref="root" class="bless-order">
-    <ul class="bless-order__list" role="list" :aria-label="label">
+    <TransitionGroup
+      tag="ul"
+      appear
+      appear-active-class="bless-appear"
+      enter-active-class="bless-arrive"
+      move-class="bless-move"
+      @leave="(_el: Element, done: () => void) => done()"
+      class="bless-order__list"
+      role="list"
+      :aria-label="label"
+    >
       <li
         v-for="(item, i) in model"
         :key="rowKey ? rowKey(item, i) : i"
@@ -113,7 +123,7 @@ function step(i: number, d: -1 | 1) {
           </button>
         </span>
       </li>
-    </ul>
+    </TransitionGroup>
     <span :id="hint" hidden>Alt plus arrow keys move it.</span>
     <span class="bless-order__live bless-sr" aria-live="polite">{{ live }}</span>
   </div>

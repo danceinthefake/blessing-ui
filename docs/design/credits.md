@@ -45,6 +45,7 @@ The [site types](./site-types) page compares three lists of site and app categor
 Some components use known methods. We wrote each one again from its description.
 
 - The flair [motion](../guide/motion) uses squash and stretch, from _The Illusion of Life_ by Frank Thomas and Ollie Johnston (1981).
+- Lists that reorder slide with FLIP (First, Last, Invert, Play) by Paul Lewis (2015), through the `<TransitionGroup>` of Vue.
 - The [treemap](../components/treemap) uses the squarified layout of Bruls, Huijsmans, and van Wijk (2000).
 - The [card input](../components/card-input) checks numbers with the Luhn algorithm (Hans Peter Luhn, 1954).
 - The [check answers](../components/check-answers) page follows the "Check answers" pattern of the [GOV.UK Design System](https://design-system.service.gov.uk/patterns/check-answers/) by the UK Government Digital Service.

@@ -222,7 +222,17 @@ const endMark = (c: number) =>
           }}<template v-if="col.limit != null"> / {{ col.limit }}</template></span
         >
       </header>
-      <ul class="bless-kanban__list" role="list" :class="{ 'bless-kanban__list--end': endMark(c) }">
+      <TransitionGroup
+        tag="ul"
+        appear
+        appear-active-class="bless-appear"
+        enter-active-class="bless-arrive"
+        move-class="bless-move"
+        @leave="(_el: Element, done: () => void) => done()"
+        class="bless-kanban__list"
+        role="list"
+        :class="{ 'bless-kanban__list--end': endMark(c) }"
+      >
         <li
           v-for="(item, i) in col.items"
           :key="rowKey ? rowKey(item) : i"
@@ -257,7 +267,7 @@ const endMark = (c: number) =>
             <slot name="card" :item :column="col" :index="i">{{ item }}</slot>
           </div>
         </li>
-      </ul>
+      </TransitionGroup>
     </section>
     <span :id="hint" hidden>{{ text.hint }}</span>
     <span class="bless-kanban__live bless-sr" aria-live="polite">{{ live }}</span>

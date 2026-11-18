@@ -263,28 +263,46 @@
     opacity: 1;
   }
 }
+/* a list that reorders: wrap it in <TransitionGroup appear appear-active-class="bless-appear"
+ * enter-active-class="bless-arrive" move-class="bless-move">. Items arrive once, then slide to
+ * their new place; a moved item does not replay its arrival (FLIP, Lewis 2015, through Vue).
+ * Add @leave="(el, done) => done()": a leaving item with its own transition would linger. */
+.bless-arrive {
+  animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft) backwards;
+}
+.bless-move {
+  transition: transform var(--bless-duration-enter) var(--bless-ease-soft) !important;
+}
 /* the items of a list arrive one after another; the eighth and later share one delay */
+.bless-appear,
 .bless-stagger > * {
   animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft) backwards;
 }
+.bless-appear:nth-child(2),
 .bless-stagger > :nth-child(2) {
   animation-delay: var(--bless-stagger);
 }
+.bless-appear:nth-child(3),
 .bless-stagger > :nth-child(3) {
   animation-delay: calc(2 * var(--bless-stagger));
 }
+.bless-appear:nth-child(4),
 .bless-stagger > :nth-child(4) {
   animation-delay: calc(3 * var(--bless-stagger));
 }
+.bless-appear:nth-child(5),
 .bless-stagger > :nth-child(5) {
   animation-delay: calc(4 * var(--bless-stagger));
 }
+.bless-appear:nth-child(6),
 .bless-stagger > :nth-child(6) {
   animation-delay: calc(5 * var(--bless-stagger));
 }
+.bless-appear:nth-child(7),
 .bless-stagger > :nth-child(7) {
   animation-delay: calc(6 * var(--bless-stagger));
 }
+.bless-appear:nth-child(n + 8),
 .bless-stagger > :nth-child(n + 8) {
   animation-delay: calc(7 * var(--bless-stagger));
 }
