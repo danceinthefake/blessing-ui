@@ -28,10 +28,11 @@ export default defineConfig({
     // Before first paint, mirror VitePress's saved appearance onto data-theme (what the library's
     // tokens read) and restore the palette, so Bless components don't flash the OS theme or the
     // default accent. "auto" leaves data-theme off: the tokens then follow the OS, as VitePress does.
+    // Calm motion comes back the same way.
     [
       "script",
       {},
-      `try{var a=localStorage.getItem("vitepress-theme-appearance");if(a==="dark"||a==="light")document.documentElement.dataset.theme=a;var p=localStorage.getItem("bless-palette");if(p)document.documentElement.dataset.palette=p}catch(e){}`,
+      `try{var a=localStorage.getItem("vitepress-theme-appearance");if(a==="dark"||a==="light")document.documentElement.dataset.theme=a;var p=localStorage.getItem("bless-palette");if(p)document.documentElement.dataset.palette=p;if(localStorage.getItem("bless-motion")==="calm")document.documentElement.dataset.motion="calm"}catch(e){}`,
     ],
     ["meta", { property: "og:title", content: "Blessing UI" }],
     [
@@ -64,7 +65,7 @@ export default defineConfig({
         "Themed Flat Interface. Datar sejak awal, dibangun dengan Vue, untuk semua orang.",
       themeConfig: {
         nav: [
-          { text: "Panduan", link: "/id/guide/install" },
+          { text: "Panduan", link: "/id/guide/" },
           { text: "Komponen", link: componentSidebar[0].items[0].link },
           { text: "Blok", link: "/blocks/" },
           { text: "Desain", link: "/id/design/" },
@@ -74,6 +75,7 @@ export default defineConfig({
             {
               text: "Mulai",
               items: [
+                { text: "Ringkasan", link: "/id/guide/" },
                 { text: "Instalasi", link: "/id/guide/install" },
                 { text: "Ukuran bundle", link: "/id/guide/sizes" },
               ],
@@ -140,7 +142,7 @@ export default defineConfig({
     logo: "/logo.svg",
     siteTitle: "Blessing",
     nav: [
-      { text: "Guide", link: "/guide/install" },
+      { text: "Guide", link: "/guide/" },
       { text: "Components", link: componentSidebar[0].items[0].link },
       { text: "Blocks", link: "/blocks/" },
       { text: "Design", link: "/design/" },
@@ -159,6 +161,7 @@ export default defineConfig({
         {
           text: "Start",
           items: [
+            { text: "Overview", link: "/guide/" },
             { text: "Install", link: "/guide/install" },
             { text: "Bundle size", link: "/guide/sizes" },
           ],

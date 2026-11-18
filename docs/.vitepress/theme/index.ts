@@ -1,6 +1,6 @@
 import DefaultTheme from "vitepress/theme";
 import { useData } from "vitepress";
-import { h, watch } from "vue";
+import { h, nextTick, watch } from "vue";
 import type { Theme } from "vitepress";
 import {
   BlessDialogHost,
@@ -16,6 +16,10 @@ import PropsTable from "./PropsTable.vue";
 import BlockDemo from "./BlockDemo.vue";
 import BlockFrame from "./BlockFrame.vue";
 import HomeBrochure from "./HomeBrochure.vue";
+import Eyecatch from "./Eyecatch.vue";
+import ChapterCards from "./ChapterCards.vue";
+import PageStrip from "./PageStrip.vue";
+import MotionToggle from "./MotionToggle.vue";
 
 export default {
   extends: DefaultTheme,
@@ -41,24 +45,55 @@ export default {
     }
     return h(DefaultTheme.Layout, null, {
       "layout-bottom": () => [h(BlessToaster), h(BlessDialogHost), h(BlessLoadingBar)],
-      "nav-bar-content-after": () =>
+      "doc-before": () => h(PageStrip),
+      "nav-bar-content-after": () => [
         h(BlessPaletteToggle, { class: "nav-palette", showDefault: true }),
+        h(MotionToggle),
+      ],
+      "nav-screen-content-after": () => h(MotionToggle),
     });
   },
   enhanceApp({ app, router }) {
     // Component and block pages are English only: the language switch on them points at
     // /id/components/… and /id/blocks/…, so send those to the English page. public/_redirects
     // does the same for a direct visit.
+    // A move to another page wipes the content in with the voice layer (View Transitions API).
+    // The old page stays as a still frame until the new one has rendered.
+    let rendered: (() => void) | undefined;
     router.onBeforeRouteChange = (to) => {
       const english = to.match(/^\/id(\/(components|blocks)\/.*)$/)?.[1];
-      if (!english) return;
-      router.go(english);
-      return false;
+      if (english) {
+        router.go(english);
+        return false;
+      }
+      if (
+        typeof document === "undefined" ||
+        !document.startViewTransition ||
+        matchMedia("(prefers-reduced-motion: reduce)").matches
+      )
+        return;
+      return new Promise<void>((go) => {
+        document.startViewTransition(
+          () =>
+            new Promise<void>((done) => {
+              rendered = done;
+              setTimeout(done, 1500); // a page that fails to load must not freeze the frame
+              go();
+            }),
+        );
+      });
+    };
+    router.onAfterRouteChange = () => {
+      const done = rendered;
+      rendered = undefined;
+      nextTick(() => done?.());
     };
     app.component("Demo", Demo);
     app.component("PropsTable", PropsTable);
     app.component("BlockDemo", BlockDemo);
     app.component("BlockFrame", BlockFrame);
     app.component("HomeBrochure", HomeBrochure);
+    app.component("Eyecatch", Eyecatch);
+    app.component("ChapterCards", ChapterCards);
   },
 } satisfies Theme;

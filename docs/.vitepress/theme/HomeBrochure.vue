@@ -13,6 +13,7 @@ import {
   BlessTabs,
 } from "blessing-ui";
 import { groups } from "../components";
+import Eyecatch from "./Eyecatch.vue";
 
 const props = defineProps<{ lang?: "en" | "id" }>();
 const id = computed(() => props.lang === "id");
@@ -160,20 +161,12 @@ onBeforeUnmount(() => io?.disconnect());
     </section>
 
     <template v-for="(eye, i) in t.eye" :key="i">
-      <!-- eyecatch: a slash of accent wipes across the band, like the break in an anime -->
-      <section
-        class="hb__eye"
-        :class="`hb__eye--${i}`"
-        data-reveal
-        :aria-labelledby="`hb-eye-${i}`"
-      >
-        <span class="hb__slash" aria-hidden="true" />
-        <span class="hb__eye-num" aria-hidden="true">0{{ i + 1 }}</span>
-        <div class="hb__eye-text">
-          <p class="hb__eye-kicker">{{ t.episode }} 0{{ i + 1 }}</p>
-          <h2 :id="`hb-eye-${i}`" class="hb__eye-title">{{ eye }}</h2>
-        </div>
-      </section>
+      <Eyecatch
+        :kicker="`${t.episode} 0${i + 1}`"
+        :title="eye"
+        :num="`0${i + 1}`"
+        :accent="i === 1"
+      />
 
       <!-- chapter 01: flat, with live parts -->
       <section v-if="i === 0" class="hb__chapter hb__chapter--surface">
@@ -393,14 +386,14 @@ onBeforeUnmount(() => io?.disconnect());
   color: var(--bless-color-on-accent);
   font-size: var(--bless-text-lg);
   font-weight: var(--bless-font-weight-light);
-  transform: skewX(var(--bless-skew));
+  transform: skewX(var(--bless-lean));
   animation-name: bless-voice !important;
   animation-duration: var(--bless-duration-voice) !important;
   animation-timing-function: var(--bless-ease-snap) !important;
 }
 .hb__plate > span {
   display: inline-block;
-  transform: skewX(var(--bless-skew-counter));
+  transform: skewX(calc(-1 * var(--bless-lean)));
 }
 .hb__lead {
   margin: 0;
@@ -408,59 +401,6 @@ onBeforeUnmount(() => io?.disconnect());
   font-size: 17px;
   line-height: 1.7;
   color: var(--bless-color-text-muted);
-}
-
-/* eyecatch */
-.hb__eye {
-  position: relative;
-  overflow: hidden;
-  display: grid;
-  place-items: center;
-  min-height: 200px;
-  background: var(--bless-color-media-bg);
-  color: #f5f5f6;
-  text-align: center;
-}
-.hb__slash {
-  position: absolute;
-  inset: 30% -10%;
-  background: var(--bless-color-accent);
-  transform: skewY(-4deg);
-}
-.hb__eye--1 {
-  background: var(--bless-color-accent);
-}
-.hb__eye--1 .hb__slash {
-  background: var(--bless-color-media-bg);
-}
-.hb__eye-num {
-  position: absolute;
-  right: -0.05em;
-  top: -0.25em;
-  font-size: 240px;
-  font-weight: var(--bless-font-weight-thin);
-  line-height: 1;
-  opacity: 0.18;
-}
-.hb__eye-text {
-  position: relative;
-  color: var(--bless-color-on-accent);
-}
-.hb__eye-kicker {
-  margin: 0;
-  font-size: var(--bless-text-sm);
-  font-weight: var(--bless-font-weight-bold);
-  letter-spacing: 0.4em;
-  text-transform: uppercase;
-}
-.hb__eye-title {
-  margin: 6px 0 0;
-  border: 0;
-  padding: 0;
-  font-size: clamp(32px, 5vw, 54px);
-  font-weight: var(--bless-font-weight-thin);
-  line-height: 1.15;
-  letter-spacing: 0.06em;
 }
 
 /* chapters */
@@ -571,7 +511,7 @@ onBeforeUnmount(() => io?.disconnect());
   transition: var(--bless-lean-transition);
 }
 .hb__block:hover {
-  transform: skewX(var(--bless-skew));
+  transform: skewX(var(--bless-lean));
 }
 .hb__block img {
   width: 100%;
@@ -638,8 +578,7 @@ onBeforeUnmount(() => io?.disconnect());
 }
 
 /* scroll reveal: a chapter waits off stage until it is in view, then each child arrives */
-.hb[data-live] [data-reveal]:not([data-seen]) > *,
-.hb[data-live] .hb__eye[data-reveal]:not([data-seen]) .hb__slash {
+.hb[data-live] [data-reveal]:not([data-seen]) > * {
   opacity: 0;
 }
 .hb [data-reveal][data-seen] > * {
@@ -651,21 +590,11 @@ onBeforeUnmount(() => io?.disconnect());
 .hb [data-reveal][data-seen] > :nth-child(n + 3) {
   animation-delay: calc(4 * var(--bless-stagger));
 }
-.hb__eye[data-seen] .hb__slash {
-  animation: hb-slash 0.6s var(--bless-ease-snap) both;
-}
-@keyframes hb-slash {
-  from {
-    clip-path: inset(0 100% 0 0);
-  }
-}
-[data-motion="calm"] .hb__eye[data-seen] .hb__slash,
 .hb__mark:is([data-motion="calm"] *)::before {
   animation: none;
 }
 @media (prefers-reduced-motion: reduce) {
-  .hb__mark::before,
-  .hb__eye .hb__slash {
+  .hb__mark::before {
     animation: none !important;
   }
 }
@@ -678,8 +607,7 @@ onBeforeUnmount(() => io?.disconnect());
   .hb__stats {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-  .hb__vert,
-  .hb__eye-num {
+  .hb__vert {
     display: none;
   }
 }

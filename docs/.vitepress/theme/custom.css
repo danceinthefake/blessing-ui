@@ -226,3 +226,35 @@ html .VPButton.alt.alt:active {
   background: var(--bless-color-accent);
   color: var(--bless-color-on-accent);
 }
+
+/* motion on the leaf pages: the content wipes in on a page change (View Transitions API, see
+ * index.ts), a live demo arrives with the base layer, and the current sidebar item leans */
+.VPContent {
+  view-transition-name: bless-page;
+}
+::view-transition-old(bless-page) {
+  animation: none;
+  opacity: 0;
+}
+::view-transition-new(bless-page) {
+  animation: bless-voice var(--bless-duration-voice) var(--bless-ease-snap) both;
+}
+.demo__preview {
+  animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft) backwards;
+}
+.VPSidebarItem.is-active > .item .text {
+  display: inline-block;
+  transform: skewX(var(--bless-lean));
+  transition: var(--bless-lean-transition);
+}
+.nav-calm {
+  margin-left: 8px;
+}
+@media (max-width: 767px) {
+  .VPNavBar .nav-calm {
+    display: none;
+  }
+}
+.VPNavScreen .nav-calm {
+  margin: 16px 0 0;
+}
