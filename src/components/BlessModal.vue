@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { nextTick, onMounted, ref, useId, watch } from "vue";
+import { useLabelPack } from "../composables/useLabels";
+import { nextTick, onMounted, ref, useId, watch, computed } from "vue";
 import { useHash } from "../composables/useHash";
 
 defineOptions({ name: "BlessModal" });
@@ -12,10 +13,16 @@ const props = withDefaults(
     size?: "sm" | "md" | "lg" | "full";
     /** click on backdrop closes */
     dismissible?: boolean;
-    closeLabel?: string;
+    labels?: Partial<{ close: string }>;
   }>(),
-  { size: "md", dismissible: true, closeLabel: "Close" },
+  { size: "md", dismissible: true },
 );
+const pack = useLabelPack("BlessModal");
+const text = computed(() => ({
+  close: "Close",
+  ...pack(),
+  ...props.labels,
+}));
 
 const open = defineModel<boolean>({ default: false });
 const emit = defineEmits<{ close: [] }>();
@@ -101,7 +108,7 @@ const titleId = `${useId()}-title`;
       <button
         type="button"
         class="bless-modal__close"
-        :aria-label="closeLabel"
+        :aria-label="text.close"
         @click="open = false"
       >
         <span aria-hidden="true">×</span>

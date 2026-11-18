@@ -16,7 +16,7 @@ withDefaults(
     direction?: "up" | "down" | "left" | "right";
     label?: string;
     color?: "text" | "accent";
-    /** render in place instead of fixed bottom-right */
+    /** render in place instead of fixed at the bottom end corner */
     inline?: boolean;
   }>(),
   { direction: "up", label: "Actions", color: "text" },
@@ -96,7 +96,7 @@ function onBlur(e: FocusEvent) {
 <style>
 .bless-speed-dial {
   position: fixed;
-  right: var(--bless-space-6);
+  inset-inline-end: var(--bless-space-6);
   bottom: var(--bless-space-6);
   z-index: var(--bless-z-nav);
   display: inline-flex;
@@ -107,7 +107,7 @@ function onBlur(e: FocusEvent) {
 }
 .bless-speed-dial--inline {
   position: relative;
-  right: auto;
+  inset-inline-end: auto;
   bottom: auto;
 }
 .bless-speed-dial--down {

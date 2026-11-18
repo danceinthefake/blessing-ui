@@ -1,5 +1,6 @@
 <script setup lang="ts" generic="T extends string | number">
 import { computed, nextTick, ref, watch } from "vue";
+import { useLabelPack } from "../composables/useLabels";
 import { useFieldId, useFieldState } from "../composables/useFieldId";
 import { useFloating } from "../composables/useFloating";
 import BlessBadge from "./BlessBadge.vue";
@@ -21,11 +22,16 @@ const props = withDefaults(
     size?: "sm" | "md" | "lg";
     /** accessible name when there is no <label for> */
     label?: string;
-    /** name of a chip's remove button, from the option's label */
-    removeLabel?: (name: string) => string;
+    labels?: Partial<{ remove: (name: string) => string }>;
   }>(),
   { emptyText: "No results.", size: "md" },
 );
+const pack = useLabelPack("BlessCombobox");
+const text = computed(() => ({
+  remove: (n: string) => `Remove ${n}`,
+  ...pack(),
+  ...props.labels,
+}));
 
 const model = defineModel<T | T[] | undefined>();
 const emit = defineEmits<{
@@ -164,7 +170,7 @@ function onBlur(e: FocusEvent) {
           <button
             type="button"
             class="bless-combobox__chip-x"
-            :aria-label="(removeLabel ?? ((n: string) => `Remove ${n}`))(labelOf(v))"
+            :aria-label="text.remove(labelOf(v))"
             tabindex="-1"
             @click.stop="remove(v)"
           >

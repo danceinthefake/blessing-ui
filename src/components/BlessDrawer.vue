@@ -1,13 +1,18 @@
 <script setup lang="ts">
 import BlessSheet from "./BlessSheet.vue";
+import { useLabelPack } from "../composables/useLabels";
 
 defineOptions({ name: "BlessDrawer" });
+const pack = useLabelPack("BlessDrawer");
 
 // dismissible defaults to true like Sheet's: an absent boolean prop is cast to false, which would
 // otherwise be passed down and turn off Esc and the backdrop click
-withDefaults(defineProps<{ title?: string; dismissible?: boolean; closeLabel?: string }>(), {
-  dismissible: true,
-});
+const props = withDefaults(
+  defineProps<{ title?: string; dismissible?: boolean; labels?: Partial<{ close: string }> }>(),
+  {
+    dismissible: true,
+  },
+);
 const open = defineModel<boolean>({ default: false });
 const emit = defineEmits<{ close: [] }>();
 </script>
@@ -19,7 +24,7 @@ const emit = defineEmits<{ close: [] }>();
     handle
     :title
     :dismissible
-    :close-label="closeLabel"
+    :labels="{ ...pack(), ...props.labels }"
     class="bless-drawer"
     @close="emit('close')"
   >

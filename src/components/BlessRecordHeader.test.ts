@@ -7,7 +7,7 @@ test("BlessRecordHeader: code, title at the level, status with a mark and a word
       title: "Studio gear order",
       code: "PO-2026-0142",
       status: "Approved",
-      tone: "success",
+      color: "success",
       level: 2,
       facts: [
         { label: "Supplier", value: "Toko Audio" },

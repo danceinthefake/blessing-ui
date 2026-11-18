@@ -21,7 +21,7 @@ One main action with related variants a click away: Save / Save as…, Merge / S
   </template>
 </Demo>
 
-- The main part fires `@click`. The arrow opens the menu (`items`, `@select`) and is named by `menuLabel`.
+- The main part fires `@click`. The arrow opens the menu (`items`, `@select`) and is named by `labels.menu`.
 - `color`, `variant`, `size`, `disabled` and `loading` apply to both halves.
 
 ## Usage

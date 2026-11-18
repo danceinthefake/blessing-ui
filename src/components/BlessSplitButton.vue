@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { useLabelPack } from "../composables/useLabels";
+import { computed } from "vue";
 import BlessButton from "./BlessButton.vue";
 import BlessButtonGroup from "./BlessButtonGroup.vue";
 import BlessDropdownMenu from "./BlessDropdownMenu.vue";
@@ -6,7 +8,7 @@ import type { BlessMenuItem } from "./menu";
 
 defineOptions({ name: "BlessSplitButton" });
 
-withDefaults(
+const props = withDefaults(
   defineProps<{
     label: string;
     items: BlessMenuItem[];
@@ -15,10 +17,17 @@ withDefaults(
     size?: "sm" | "md" | "lg";
     disabled?: boolean;
     loading?: boolean;
-    menuLabel?: string;
+    labels?: Partial<{ menu: string }>;
   }>(),
-  { color: "text", variant: "solid", size: "md", menuLabel: "More actions" },
+  { color: "text", variant: "solid", size: "md" },
 );
+const pack = useLabelPack("BlessSplitButton");
+const text = computed(() => ({
+  menu: "More actions",
+  ...pack(),
+  ...props.labels,
+}));
+
 const emit = defineEmits<{ click: [e: MouseEvent]; select: [item: BlessMenuItem] }>();
 </script>
 
@@ -34,7 +43,7 @@ const emit = defineEmits<{ click: [e: MouseEvent]; select: [item: BlessMenuItem]
           :variant
           :size
           :disabled
-          :aria-label="menuLabel"
+          :aria-label="text.menu"
           :aria-expanded="open"
           class="bless-splitbtn__more"
           >▾</BlessButton

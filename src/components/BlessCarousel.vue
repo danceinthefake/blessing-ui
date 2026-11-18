@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useLabelPack } from "../composables/useLabels";
 import "./sr.css";
 import { computed, onBeforeUnmount, onMounted, ref, watch } from "vue";
 import { logicalKey } from "../composables/rtl";
@@ -17,12 +18,7 @@ const props = withDefaults(
     dots?: boolean;
     arrows?: boolean;
     label?: string;
-    prevLabel?: string;
-    nextLabel?: string;
-    /** the autoplay button's name; its pressed state says whether it's paused */
-    pauseLabel?: string;
-    /** accessible name of the slide dots */
-    dotsLabel?: string;
+    labels?: Partial<{ prev: string; next: string; pause: string; dots: string }>;
   }>(),
   {
     perView: 1,
@@ -32,12 +28,17 @@ const props = withDefaults(
     dots: true,
     arrows: true,
     label: "Carousel",
-    prevLabel: "Previous slide",
-    nextLabel: "Next slide",
-    pauseLabel: "Pause slides",
-    dotsLabel: "Slides",
   },
 );
+const pack = useLabelPack("BlessCarousel");
+const text = computed(() => ({
+  prev: "Previous slide",
+  next: "Next slide",
+  pause: "Pause slides",
+  dots: "Slides",
+  ...pack(),
+  ...props.labels,
+}));
 
 const index = defineModel<number>({ default: 0 });
 const track = ref<HTMLElement>();
@@ -146,7 +147,7 @@ defineExpose({ go, next: () => go(index.value + 1), prev: () => go(index.value -
       <button
         type="button"
         class="bless-carousel__arrow bless-carousel__arrow--prev"
-        :aria-label="prevLabel"
+        :aria-label="text.prev"
         :aria-disabled="!canPrev || undefined"
         @click="canPrev && go(index - 1)"
       >
@@ -155,14 +156,14 @@ defineExpose({ go, next: () => go(index.value + 1), prev: () => go(index.value -
       <button
         type="button"
         class="bless-carousel__arrow bless-carousel__arrow--next"
-        :aria-label="nextLabel"
+        :aria-label="text.next"
         :aria-disabled="!canNext || undefined"
         @click="canNext && go(index + 1)"
       >
         <span aria-hidden="true">›</span>
       </button>
     </template>
-    <div v-if="dots && pages > 1" class="bless-carousel__dots" role="group" :aria-label="dotsLabel">
+    <div v-if="dots && pages > 1" class="bless-carousel__dots" role="group" :aria-label="text.dots">
       <button
         v-for="p in pages"
         :key="p"
@@ -178,7 +179,7 @@ defineExpose({ go, next: () => go(index.value + 1), prev: () => go(index.value -
       v-if="autoplay > 0"
       type="button"
       class="bless-carousel__pause"
-      :aria-label="pauseLabel"
+      :aria-label="text.pause"
       :aria-pressed="paused"
       @click="togglePause"
     >

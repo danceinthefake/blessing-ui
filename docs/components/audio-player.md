@@ -21,7 +21,7 @@ Playing a few tracks in the page: a soundtrack sampler, a voice sample, a podcas
   </template>
 </Demo>
 
-- The play button keeps one name (`playLabel`) and says whether it is playing by its pressed state. The bar is a native range (`seekLabel`): arrows seek, and it reads "1:23 of 3:45".
+- The play button keeps one name (`labels.play`) and says whether it is playing by its pressed state. The bar is a native range (`labels.seek`): arrows seek, and it reads "1:23 of 3:45".
 - With several tracks, the list picks one and playback moves on to the next when one ends.
 
 ## Usage

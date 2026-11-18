@@ -7,7 +7,7 @@ import { BlessButton, BlessRecordHeader } from "blessing-ui";
     title="Studio gear order"
     code="PO-2026-0142"
     status="Waiting for approval"
-    tone="warning"
+    color="warning"
     :level="2"
     :facts="[
       { label: 'Supplier', value: 'Toko Audio Jaya' },

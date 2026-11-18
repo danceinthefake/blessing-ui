@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { useLabelPack } from "../composables/useLabels";
+import { computed } from "vue";
 import "./sr.css";
 import { useLink } from "../composables/useLink";
 defineOptions({ name: "BlessBottomTabs" });
@@ -21,14 +23,20 @@ const props = withDefaults(
     /** render in place instead of fixed to the viewport (docs / previews) */
     inline?: boolean;
     label?: string;
-    /** read after a tab with a badge: a count becomes "3 new", `true` becomes "new" */
-    badgeLabel?: string;
+    labels?: Partial<{ badge: string }>;
   }>(),
-  { variant: "bar", label: "Primary", badgeLabel: "new" },
+  { variant: "bar", label: "Primary" },
 );
+const pack = useLabelPack("BlessBottomTabs");
+const text = computed(() => ({
+  badge: "new",
+  ...pack(),
+  ...props.labels,
+}));
+
 const active = defineModel<string>();
 const badgeText = (it: BlessBottomTab) =>
-  !it.badge ? "" : it.badge === true ? props.badgeLabel : `${it.badge} ${props.badgeLabel}`;
+  !it.badge ? "" : it.badge === true ? text.value.badge : `${it.badge} ${text.value.badge}`;
 const emit = defineEmits<{ select: [item: BlessBottomTab, e: Event] }>();
 </script>
 

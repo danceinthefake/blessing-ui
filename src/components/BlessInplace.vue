@@ -1,10 +1,19 @@
 <script setup lang="ts">
-import { nextTick, ref } from "vue";
+import { useLabelPack } from "../composables/useLabels";
+import { nextTick, ref, computed } from "vue";
 
 defineOptions({ name: "BlessInplace" });
-withDefaults(defineProps<{ closable?: boolean; disabled?: boolean; closeLabel?: string }>(), {
-  closeLabel: "Close",
-});
+const props = withDefaults(
+  defineProps<{ dismissible?: boolean; disabled?: boolean; labels?: Partial<{ close: string }> }>(),
+  {},
+);
+const pack = useLabelPack("BlessInplace");
+const text = computed(() => ({
+  close: "Close",
+  ...pack(),
+  ...props.labels,
+}));
+
 const active = defineModel<boolean>("active", { default: false });
 const emit = defineEmits<{ open: []; close: [] }>();
 const root = ref<HTMLElement>();
@@ -39,10 +48,10 @@ function close() {
     <div v-else class="bless-inplace__content" @keydown.esc.stop.prevent="close">
       <slot name="content" :close />
       <button
-        v-if="closable"
+        v-if="dismissible"
         type="button"
         class="bless-inplace__close"
-        :aria-label="closeLabel"
+        :aria-label="text.close"
         @click="close"
       >
         <span aria-hidden="true">×</span>

@@ -1,16 +1,22 @@
 <script setup lang="ts">
-import { nextTick, ref, useId, watch } from "vue";
+import { useLabelPack } from "../composables/useLabels";
+import { nextTick, ref, useId, watch, computed } from "vue";
 import { useMedia } from "../composables/useMedia";
 
 defineOptions({ name: "BlessStage" });
 
-withDefaults(
+const props = withDefaults(
   defineProps<{
-    /** the phone menu button's name; aria-expanded says whether it's open */
-    menuLabel?: string;
+    labels?: Partial<{ menu: string }>;
   }>(),
-  { menuLabel: "Menu" },
+  {},
 );
+const pack = useLabelPack("BlessStage");
+const text = computed(() => ({
+  menu: "Menu",
+  ...pack(),
+  ...props.labels,
+}));
 
 /** mobile drawer state; v-model:open optional */
 const open = defineModel<boolean>("open", { default: false });
@@ -52,7 +58,7 @@ function onKey(e: KeyboardEvent) {
       @click="open = !open"
     >
       <span class="bless-stage__toggle-bar" aria-hidden="true" />
-      <span class="bless-stage__sr">{{ menuLabel }}</span>
+      <span class="bless-stage__sr">{{ text.menu }}</span>
     </button>
     <div v-if="sp && open" class="bless-stage__scrim" @click="open = false" />
 

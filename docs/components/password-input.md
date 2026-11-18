@@ -22,7 +22,7 @@ A password field with a reveal button. Add `meter` where someone is **making** a
 </Demo>
 
 - `autocomplete` is `current-password`, or `new-password` with `meter`. Pass your own to override.
-- The reveal button keeps one name (`showLabel`) and says whether it is on by its pressed state.
+- The reveal button keeps one name (`labels.show`) and says whether it is on by its pressed state.
 - Label it with a [Field](./form) like any input.
 
 ## Usage

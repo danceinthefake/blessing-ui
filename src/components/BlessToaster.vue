@@ -1,27 +1,35 @@
 <script setup lang="ts">
+import { useLabelPack } from "../composables/useLabels";
+import { computed } from "vue";
 import { pauseToasts, resumeToasts, toastState, useToast } from "../composables/useToast";
 
 defineOptions({ name: "BlessToaster" });
 
-withDefaults(
+const props = withDefaults(
   defineProps<{
     position?:
-      | "top-right"
-      | "top-left"
-      | "bottom-right"
-      | "bottom-left"
+      | "top-end"
+      | "top-start"
+      | "bottom-end"
+      | "bottom-start"
       | "top-center"
       | "bottom-center";
-    closeLabel?: string;
     /** the region's name */
     label?: string;
+    labels?: Partial<{ close: string }>;
   }>(),
   {
-    position: "bottom-right",
-    closeLabel: "Dismiss",
+    position: "bottom-end",
     label: "Notifications",
   },
 );
+const pack = useLabelPack("BlessToaster");
+const text = computed(() => ({
+  close: "Dismiss",
+  ...pack(),
+  ...props.labels,
+}));
+
 const { dismiss } = useToast();
 </script>
 
@@ -69,7 +77,7 @@ const { dismiss } = useToast();
         <button
           type="button"
           class="bless-toast__close"
-          :aria-label="closeLabel"
+          :aria-label="text.close"
           @click="dismiss(t.id)"
         >
           <span aria-hidden="true">×</span>
@@ -87,26 +95,26 @@ const { dismiss } = useToast();
   padding: var(--bless-space-4);
   max-width: 100%;
 }
-.bless-toaster--top-right {
+.bless-toaster--top-end {
   top: 0;
-  right: 0;
+  inset-inline-end: 0;
 }
-.bless-toaster--top-left {
+.bless-toaster--top-start {
   top: 0;
-  left: 0;
+  inset-inline-start: 0;
 }
 .bless-toaster--top-center {
   top: 0;
   left: 50%;
   transform: translateX(-50%);
 }
-.bless-toaster--bottom-right {
+.bless-toaster--bottom-end {
   bottom: 0;
-  right: 0;
+  inset-inline-end: 0;
 }
-.bless-toaster--bottom-left {
+.bless-toaster--bottom-start {
   bottom: 0;
-  left: 0;
+  inset-inline-start: 0;
 }
 .bless-toaster--bottom-center {
   bottom: 0;
@@ -123,8 +131,8 @@ const { dismiss } = useToast();
   width: 340px;
   max-width: calc(100vw - 2 * var(--bless-space-4));
 }
-.bless-toaster--top-right .bless-toaster__list,
-.bless-toaster--top-left .bless-toaster__list,
+.bless-toaster--top-end .bless-toaster__list,
+.bless-toaster--top-start .bless-toaster__list,
 .bless-toaster--top-center .bless-toaster__list {
   flex-direction: column-reverse;
 }

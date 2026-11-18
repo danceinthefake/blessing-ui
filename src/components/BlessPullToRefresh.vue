@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useLabelPack } from "../composables/useLabels";
 import "./sr.css";
 import { computed, ref } from "vue";
 import BlessSpinner from "./BlessSpinner.vue";
@@ -15,11 +16,17 @@ const props = withDefaults(
     disabled?: boolean;
     /** scroll container to check; default = the wrapper itself, falling back to window */
     scrollTarget?: HTMLElement | null;
-    /** announced while refreshing */
-    refreshingLabel?: string;
+    labels?: Partial<{ refreshing: string }>;
   }>(),
-  { threshold: 64, max: 96, refreshingLabel: "Refreshing" },
+  { threshold: 64, max: 96 },
 );
+const pack = useLabelPack("BlessPullToRefresh");
+const text = computed(() => ({
+  refreshing: "Refreshing",
+  ...pack(),
+  ...props.labels,
+}));
+
 const emit = defineEmits<{ refresh: [done: () => void] }>();
 const root = ref<HTMLElement>();
 const pull = ref(0);
@@ -62,7 +69,7 @@ const ready = computed(() => pull.value >= props.threshold);
       role="status"
     >
       <!-- live regions read their text, not aria-label: say it as content -->
-      <span class="bless-ptr__sr bless-sr">{{ busy ? refreshingLabel : "" }}</span>
+      <span class="bless-ptr__sr bless-sr">{{ busy ? text.refreshing : "" }}</span>
       <slot name="indicator" :ready :busy :pull>
         <BlessSpinner v-if="busy" size="sm" label="" />
         <span v-else class="bless-ptr__arrow" aria-hidden="true">↓</span>

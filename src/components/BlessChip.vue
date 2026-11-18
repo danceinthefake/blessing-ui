@@ -1,18 +1,27 @@
 <script setup lang="ts">
+import { useLabelPack } from "../composables/useLabels";
+import { computed } from "vue";
 defineOptions({ name: "BlessChip" });
 
-withDefaults(
+const props = withDefaults(
   defineProps<{
     label?: string;
     icon?: string;
     image?: string;
     removable?: boolean;
-    removeLabel?: string;
     color?: "surface" | "accent" | "text";
     size?: "sm" | "md";
+    labels?: Partial<{ remove: string }>;
   }>(),
-  { removeLabel: "Remove", color: "surface", size: "md" },
+  { color: "surface", size: "md" },
 );
+const pack = useLabelPack("BlessChip");
+const text = computed(() => ({
+  remove: "Remove",
+  ...pack(),
+  ...props.labels,
+}));
+
 const emit = defineEmits<{ remove: [] }>();
 </script>
 
@@ -25,7 +34,7 @@ const emit = defineEmits<{ remove: [] }>();
       v-if="removable"
       type="button"
       class="bless-chip__remove"
-      :aria-label="`${removeLabel} ${label ?? ''}`"
+      :aria-label="`${text.remove} ${label ?? ''}`"
       @click="emit('remove')"
     >
       <span aria-hidden="true">×</span>

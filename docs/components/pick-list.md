@@ -22,7 +22,7 @@ Choosing a subset from a long list where both sides matter: the columns to show,
 </Demo>
 
 - Select in either list (Space, or click), then move with the buttons between them. Buttons are named after the list they move to. After a move, focus goes to that list and the move is announced.
-- `v-model:source` and `v-model:target` both update. `sourceLabel` / `targetLabel` name the lists.
+- `v-model:source` and `v-model:target` both update. `labels.source` / `labels.target` name the lists.
 
 ## Usage
 

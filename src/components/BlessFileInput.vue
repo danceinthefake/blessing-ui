@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { nextTick, ref } from "vue";
+import { useLabelPack } from "../composables/useLabels";
+import { nextTick, ref, computed } from "vue";
 import { joinIds, useFieldId, useFieldState } from "../composables/useFieldId";
 
 defineOptions({ name: "BlessFileInput", inheritAttrs: false });
@@ -16,11 +17,17 @@ const props = withDefaults(
     hint?: string;
     /** show the chosen files under the zone */
     list?: boolean;
-    /** name of a file's remove button */
-    removeLabel?: (name: string) => string;
+    labels?: Partial<{ remove: (name: string) => string }>;
   }>(),
   { label: "Drop files here or click to browse", list: true },
 );
+const pack = useLabelPack("BlessFileInput");
+const text = computed(() => ({
+  remove: (n: string) => `Remove ${n}`,
+  ...pack(),
+  ...props.labels,
+}));
+
 const model = defineModel<File[]>({ default: () => [] });
 const id = useFieldId(props);
 const fs = useFieldState();
@@ -104,7 +111,7 @@ const kb = (n: number) =>
         <button
           type="button"
           class="bless-file__remove"
-          :aria-label="(removeLabel ?? ((n: string) => `Remove ${n}`))(f.name)"
+          :aria-label="text.remove(f.name)"
           @click="remove(i)"
         >
           ×

@@ -8,7 +8,7 @@ withDefaults(
     title?: string;
     /** watermark text; defaults to title. Pass "" to hide */
     watermark?: string;
-    watermarkPosition?: "top-right" | "top-left" | "bottom-right" | "bottom-left";
+    watermarkPosition?: "top-end" | "top-start" | "bottom-end" | "bottom-start";
     headingLevel?: 1 | 2 | 3 | 4;
     /**
      * `label` (default): small bold uppercase title + pale skewed watermark — the TV site.

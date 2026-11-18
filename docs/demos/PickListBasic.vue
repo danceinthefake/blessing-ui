@@ -16,8 +16,7 @@ const target = ref([{ value: "tomoya", label: "倫也" }]);
     <BlessPickList
       v-model:source="source"
       v-model:target="target"
-      source-label="Cast"
-      target-label="Main"
+      :labels="{ source: 'Cast', target: 'Main' }"
       :rows="4"
     />
   </div>

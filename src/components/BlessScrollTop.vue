@@ -11,9 +11,9 @@ const props = withDefaults(
     /** scroll container; default window */
     target?: HTMLElement | null;
     label?: string;
-    position?: "bottom-right" | "bottom-left";
+    position?: "bottom-end" | "bottom-start";
   }>(),
-  { threshold: 300, label: "Back to top", position: "bottom-right" },
+  { threshold: 300, label: "Back to top", position: "bottom-end" },
 );
 const visible = ref(false);
 const el = () => props.target ?? undefined;
@@ -75,11 +75,11 @@ onBeforeUnmount(() => (el() ?? window).removeEventListener("scroll", check));
   display: inline-block;
   transform: skewX(var(--bless-skew-counter));
 }
-.bless-scroll-top--bottom-right {
-  right: var(--bless-space-6);
+.bless-scroll-top--bottom-end {
+  inset-inline-end: var(--bless-space-6);
 }
-.bless-scroll-top--bottom-left {
-  left: var(--bless-space-6);
+.bless-scroll-top--bottom-start {
+  inset-inline-start: var(--bless-space-6);
 }
 .bless-scroll-top:hover {
   opacity: var(--bless-hover-opacity);

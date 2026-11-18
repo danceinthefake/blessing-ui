@@ -15,7 +15,7 @@ The page frame of an official site: a fixed sidebar beside the content on wide s
 <<< ../demos/StageFull.vue
 
 - On phones the sidebar becomes a drawer. The menu button says whether it is open. Opening moves focus into the drawer. Esc or the scrim closes it (Esc returns focus to the button). When closed, it is inert.
-- `#sidebar`, the default slot (inside `<main>`), `#footer` and `#background`. `menuLabel` names the button.
+- `#sidebar`, the default slot (inside `<main>`), `#footer` and `#background`. `labels.menu` names the button.
 
 ## Usage
 

@@ -75,6 +75,7 @@ export const groups: { title: string; items: Entry[] }[] = [
         name: "BlessFootnotes",
         slug: "footnotes",
         text: "Numbered notes with marks that link both ways",
+        also: ["BlessFootnoteRef"],
       },
       {
         name: "BlessGlossary",
@@ -525,7 +526,6 @@ export const groups: { title: string; items: Entry[] }[] = [
         name: "BlessOrgChart",
         slug: "org-chart",
         text: "Node tree with connectors",
-        also: ["BlessOrgChartNode"],
       },
       { name: "BlessToolbar", slug: "toolbar", text: "Start / center / end bar" },
       {
@@ -573,7 +573,6 @@ export const groups: { title: string; items: Entry[] }[] = [
         name: "BlessTree",
         slug: "tree",
         text: "Nested details tree, role=tree",
-        also: ["BlessTreeItem"],
       },
       {
         name: "BlessFileTree",

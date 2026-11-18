@@ -747,6 +747,17 @@ The user chose direction A from the brochure study (chapters like a light novel)
 - ✅ Leaf pages: `PageStrip` puts a slim eyecatch over the title with the volume, or the component group and number. Demos arrive with the base layer, the current sidebar item leans, and the content wipes in with the voice layer on a page change (View Transitions API). Reduced motion skips the wipe.
 - ✅ A calm-motion switch in the nav and in the phone menu. It sets `data-motion="calm"` on `<html>`, and a head script restores it before the first paint.
 
+### Phase 52 — API audit (2026-11-18)
+
+A script read the props, models, events, and slots of every `.vue` file and grouped them by name to find drift. The user chose four groups of fixes. Each fix that breaks the API is in CHANGELOG under Breaking.
+
+- ✅ Exports and docs agree at 437. BlessMenuList is internal now. BlessOrgChartNode and BlessTreeItem leave the docs list, and BlessFootnoteRef joins it. `blessComponents()` skips the internal parts, so the Nuxt module and the resolver register only public components. A test keeps `internalComponents` in step with `src/index.ts`.
+- ✅ Every built-in word is in `labels`. 33 components lose their single `xxxLabel` props (and Attachment its `errorText`), DataTable and PickList move theirs into `labels`, and the Indonesian pack covers all of them. Names from the data stay props: `xLabel`, `yLabel`, `actionLabel`, `discountLabel`, `dataLabel`.
+- ✅ Corners are logical: `top-end`, `top-start`, `bottom-end`, `bottom-start` on Indicator, Watermark, ScrollTop, Toaster, and the Section watermark. The Indicator badge and the speed dial follow the reading direction.
+- ✅ Small renames: MessageScroller emits `reachTop` and `atBottom`, RecordHeader takes `color` (`text` in place of `neutral`), and Inplace takes `dismissible`.
+- ✅ The light code theme of the docs is GitHub light high-contrast, because github-light failed 4.5:1 on the surface.
+- Not changed: the synonyms close / dismiss and finish / done / complete in events, and the negative booleans `noRegenerate` and `noAdd`. A `label` prop with an English default (Banner "Announcement", Splash "Welcome") stays a prop, as the conventions say.
+
 ### Deliberately skipped
 
 - **Chart**: no bundled lib. Phase 11 ✅: `--bless-color-chart-{1..5}` (≥3:1 both themes) + `BlessChart` frame that maps them onto Unovis `--vis-*` vars. Unovis is the documented pairing, installed by the consumer.

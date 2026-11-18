@@ -21,7 +21,7 @@ A value shown as text until someone clicks it to change it: a title, a name in a
   </template>
 </Demo>
 
-- Opening moves focus into the first control of `#content`. Esc, the × (`closable`) or the `close` slot prop close it and put focus back on the text.
+- Opening moves focus into the first control of `#content`. Esc, the × (`dismissible`) or the `close` slot prop close it and put focus back on the text.
 - The `#display` button needs text that says it can be edited: the value itself usually does, but an empty value needs a placeholder ("Add a title").
 
 ## Usage

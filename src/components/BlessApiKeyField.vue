@@ -104,8 +104,7 @@ onBeforeUnmount(() => clearTimeout(timer));
       <BlessConfirmPopup
         v-if="!noRegenerate"
         :message="text.confirm"
-        :confirm-label="text.confirmLabel"
-        :cancel-label="text.cancel"
+        :labels="{ confirm: text.confirmLabel, cancel: text.cancel }"
         color="danger"
         @confirm="emit('regenerate')"
       >

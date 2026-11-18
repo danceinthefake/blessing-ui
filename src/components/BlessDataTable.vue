@@ -26,10 +26,9 @@ const props = withDefaults(
     searchable?: boolean;
     searchKeys?: (keyof T & string)[];
     searchPlaceholder?: string;
-    /** accessible name of the search box */
-    searchLabel?: string;
     /** names of the select-page checkbox and the page-size select */
     labels?: Partial<{
+      search: string;
       selectPage: string;
       rowsPerPage: string;
       selectRow: (name: string) => string;
@@ -49,11 +48,11 @@ const props = withDefaults(
     pageSize: 10,
     pageSizes: () => [10, 25, 50],
     searchPlaceholder: "Search…",
-    searchLabel: "Search rows",
     emptyText: "No rows.",
   },
 );
 const text = computed(() => ({
+  search: "Search rows",
   selectPage: "Select page",
   rowsPerPage: "Rows per page",
   selectRow: (n: string) => `Select ${n}`,
@@ -246,7 +245,7 @@ defineExpose({ state, selectedRows: dt.selectedRows });
         type="search"
         size="sm"
         :placeholder="searchPlaceholder"
-        :aria-label="searchLabel"
+        :aria-label="text.search"
         class="bless-datatable__search"
         @update:model-value="state.page = 1"
       />

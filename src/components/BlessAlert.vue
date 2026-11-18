@@ -1,17 +1,25 @@
 <script setup lang="ts">
+import { useLabelPack } from "../composables/useLabels";
+import { computed } from "vue";
 defineOptions({ name: "BlessAlert" });
 
-withDefaults(
+const props = withDefaults(
   defineProps<{
     title?: string;
     color?: "text" | "accent" | "danger" | "warning" | "success" | "info";
     /** assertive (role=alert) vs polite (role=status) */
     live?: "alert" | "status" | "none";
     dismissible?: boolean;
-    closeLabel?: string;
+    labels?: Partial<{ close: string }>;
   }>(),
-  { color: "text", live: "status", closeLabel: "Dismiss" },
+  { color: "text", live: "status" },
 );
+const pack = useLabelPack("BlessAlert");
+const text = computed(() => ({
+  close: "Dismiss",
+  ...pack(),
+  ...props.labels,
+}));
 
 const open = defineModel<boolean>({ default: true });
 const emit = defineEmits<{ dismiss: [] }>();
@@ -35,7 +43,7 @@ const emit = defineEmits<{ dismiss: [] }>();
       v-if="dismissible"
       type="button"
       class="bless-alert__close"
-      :aria-label="closeLabel"
+      :aria-label="text.close"
       @click="
         open = false;
         emit('dismiss');

@@ -1,6 +1,7 @@
 <script setup lang="ts">
+import { useLabelPack } from "../composables/useLabels";
 import { readStore, writeStore } from "../composables/storage";
-import { nextTick, onMounted, ref } from "vue";
+import { nextTick, onMounted, ref, computed } from "vue";
 import { reducedMotion } from "../composables/useMedia";
 
 defineOptions({ name: "BlessSplash" });
@@ -11,12 +12,18 @@ const props = withDefaults(
     once?: string;
     /** auto-dismiss after ms; 0 = manual only */
     duration?: number;
-    skipLabel?: string;
     /** the dialog's accessible name */
     label?: string;
+    labels?: Partial<{ skip: string }>;
   }>(),
-  { duration: 2500, skipLabel: "Skip", label: "Welcome" },
+  { duration: 2500, label: "Welcome" },
 );
+const pack = useLabelPack("BlessSplash");
+const text = computed(() => ({
+  skip: "Skip",
+  ...pack(),
+  ...props.labels,
+}));
 
 const emit = defineEmits<{ done: [] }>();
 const show = ref(false);
@@ -65,7 +72,7 @@ defineExpose({ dismiss });
     >
       <div class="bless-splash__content"><slot :dismiss /></div>
       <button ref="skip" type="button" class="bless-splash__skip" @click="dismiss">
-        {{ skipLabel }}
+        {{ text.skip }}
       </button>
     </div>
   </Transition>

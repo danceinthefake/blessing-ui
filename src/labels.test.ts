@@ -110,14 +110,16 @@ test("OrderList and PickList: row buttons and announcements", async () => {
   await up.trigger("click");
   expect(o.find(".bless-order__live, [aria-live]").text()).toBe("Ke 1");
   const p = mount(BlessPickList, {
-    props: { labels: { moveAll: (to: string) => `Semua ke ${to}` }, targetLabel: "Pilihan" },
+    props: { labels: { moveAll: (to: string) => `Semua ke ${to}`, target: "Pilihan" } },
   });
   expect(p.find("[aria-label='Semua ke Pilihan']").exists()).toBe(true);
 });
 
 test("names and texts that were fixed English can be replaced", async () => {
   expect(
-    mount(BlessAttachment, { props: { name: "a.txt", state: "error", errorText: "Gagal" } }).text(),
+    mount(BlessAttachment, {
+      props: { name: "a.txt", state: "error", labels: { error: "Gagal" } },
+    }).text(),
   ).toContain("Gagal");
 
   const cb = mount(BlessCombobox, {
@@ -125,13 +127,16 @@ test("names and texts that were fixed English can be replaced", async () => {
       options: [{ value: "a", label: "Apel" }],
       multiple: true,
       modelValue: ["a"],
-      removeLabel: (n: string) => `Hapus ${n}`,
+      labels: { remove: (n: string) => `Hapus ${n}` },
     },
   });
   expect(cb.find("[aria-label='Hapus Apel']").exists()).toBe(true);
 
   const fi = mount(BlessFileInput, {
-    props: { modelValue: [new File(["x"], "f.txt")], removeLabel: (n: string) => `Buang ${n}` },
+    props: {
+      modelValue: [new File(["x"], "f.txt")],
+      labels: { remove: (n: string) => `Buang ${n}` },
+    },
   });
   expect(fi.find("[aria-label='Buang f.txt']").exists()).toBe(true);
 
@@ -151,7 +156,7 @@ test("names and texts that were fixed English can be replaced", async () => {
   expect(mq.find("button").text()).toBe("Jeda");
 
   const pg = mount(BlessPagination, {
-    props: { total: 5, modelValue: 1, pageLabel: (n: number) => `Halaman ${n}` },
+    props: { total: 5, modelValue: 1, labels: { page: (n: number) => `Halaman ${n}` } },
   });
   expect(pg.find("[aria-label='Halaman 2']").exists()).toBe(true);
 
@@ -160,7 +165,7 @@ test("names and texts that were fixed English can be replaced", async () => {
       steps: [{ label: "A" }, { label: "B" }, { label: "C" }],
       modelValue: 2,
       clickable: true,
-      goLabel: (n: number, l: string) => `Ke langkah ${n}: ${l}`,
+      labels: { go: (n: number, l: string) => `Ke langkah ${n}: ${l}` },
     },
   });
   expect(st.find("[aria-label='Ke langkah 1: A']").exists()).toBe(true);

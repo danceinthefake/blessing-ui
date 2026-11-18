@@ -85,7 +85,7 @@ Some components work with a package that you install. The library does not impor
 These tools build, test, and document the library.
 
 - [Vite](https://vite.dev/), [vite-plugin-dts](https://github.com/qmhc/vite-plugin-dts), and [TypeScript](https://www.typescriptlang.org/) with [vue-tsc](https://github.com/vuejs/language-tools).
-- [VitePress](https://vitepress.dev/) for this site, and [vue-component-meta](https://github.com/vuejs/language-tools) for the tables of props.
+- [VitePress](https://vitepress.dev/) for this site, [Shiki](https://shiki.style/) for the code colors (the GitHub light high-contrast theme), and [vue-component-meta](https://github.com/vuejs/language-tools) for the tables of props.
 - [Vitest](https://vitest.dev/), [Vue Test Utils](https://test-utils.vuejs.org/), and [jsdom](https://github.com/jsdom/jsdom) for the unit tests.
 - [Playwright](https://playwright.dev/) for the checks in Chromium, Firefox, and WebKit, with [axe-core](https://github.com/dequelabs/axe-core), [pixelmatch](https://github.com/mapbox/pixelmatch), and [pngjs](https://github.com/pngjs/pngjs) for the audits and the visual diff.
 - [oxfmt](https://oxc.rs/) from the Oxc project for the format of the code.

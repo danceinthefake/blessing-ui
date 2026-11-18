@@ -102,18 +102,17 @@
     "description": "icon grid instead of a list"
    },
    {
-    "name": "cancelLabel",
-    "type": "string | undefined",
-    "required": false,
-    "default": "\"Cancel\"",
-    "description": ""
-   },
-   {
     "name": "cancel",
     "type": "boolean | undefined",
     "required": false,
     "default": "true",
     "description": "show a cancel row at the bottom"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ cancel: string; }> | undefined",
+    "required": false,
+    "description": ""
    },
    {
     "name": "open",
@@ -314,10 +313,9 @@
     "description": ""
    },
    {
-    "name": "closeLabel",
-    "type": "string | undefined",
+    "name": "labels",
+    "type": "Partial<{ close: string; }> | undefined",
     "required": false,
-    "default": "\"Dismiss\"",
     "description": ""
    },
    {
@@ -374,20 +372,6 @@
     "description": ""
    },
    {
-    "name": "confirmLabel",
-    "type": "string | undefined",
-    "required": false,
-    "default": "\"Confirm\"",
-    "description": ""
-   },
-   {
-    "name": "cancelLabel",
-    "type": "string | undefined",
-    "required": false,
-    "default": "\"Cancel\"",
-    "description": ""
-   },
-   {
     "name": "color",
     "type": "\"text\" | \"accent\" | \"danger\" | undefined",
     "required": false,
@@ -397,6 +381,12 @@
    {
     "name": "loading",
     "type": "boolean | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ confirm: string; cancel: string; }> | undefined",
     "required": false,
     "description": ""
    },
@@ -1124,7 +1114,7 @@
    },
    {
     "name": "state",
-    "type": "\"idle\" | \"uploading\" | \"error\" | undefined",
+    "type": "\"idle\" | \"error\" | \"uploading\" | undefined",
     "required": false,
     "default": "\"idle\"",
     "description": ""
@@ -1149,18 +1139,10 @@
     "description": ""
    },
    {
-    "name": "removeLabel",
-    "type": "string | undefined",
+    "name": "labels",
+    "type": "Partial<{ remove: string; error: string; }> | undefined",
     "required": false,
-    "default": "\"Remove\"",
     "description": ""
-   },
-   {
-    "name": "errorText",
-    "type": "string | undefined",
-    "required": false,
-    "default": "\"Upload failed\"",
-    "description": "shown for `state=\"error\"`"
    }
   ],
   "events": [
@@ -1205,18 +1187,10 @@
     "description": ""
    },
    {
-    "name": "playLabel",
-    "type": "string | undefined",
+    "name": "labels",
+    "type": "Partial<{ play: string; seek: string; }> | undefined",
     "required": false,
-    "default": "\"Play\"",
-    "description": "the play button's name; its pressed state says whether it's playing"
-   },
-   {
-    "name": "seekLabel",
-    "type": "string | undefined",
-    "required": false,
-    "default": "\"Seek\"",
-    "description": "name of the seek slider"
+    "description": ""
    },
    {
     "name": "modelValue",
@@ -1663,18 +1637,17 @@
     "description": "a `localStorage` key. A dismissed banner stays gone on the next visit."
    },
    {
-    "name": "closeLabel",
-    "type": "string | undefined",
-    "required": false,
-    "default": "\"Dismiss\"",
-    "description": ""
-   },
-   {
     "name": "label",
     "type": "string | undefined",
     "required": false,
     "default": "\"Announcement\"",
     "description": "names the region"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ close: string; }> | undefined",
+    "required": false,
+    "description": ""
    },
    {
     "name": "modelValue",
@@ -2008,11 +1981,10 @@
     "description": ""
    },
    {
-    "name": "badgeLabel",
-    "type": "string | undefined",
+    "name": "labels",
+    "type": "Partial<{ badge: string; }> | undefined",
     "required": false,
-    "default": "\"new\"",
-    "description": "read after a tab with a badge: a count becomes \"3 new\", `true` becomes \"new\""
+    "description": ""
    },
    {
     "name": "modelValue",
@@ -2150,17 +2122,9 @@
     "description": ""
    },
    {
-    "name": "moreLabel",
-    "type": "string | undefined",
+    "name": "labels",
+    "type": "Partial<{ more: string; less: string; }> | undefined",
     "required": false,
-    "default": "\"Show more\"",
-    "description": ""
-   },
-   {
-    "name": "lessLabel",
-    "type": "string | undefined",
-    "required": false,
-    "default": "\"Show less\"",
     "description": ""
    }
   ],
@@ -2882,32 +2846,10 @@
     "description": ""
    },
    {
-    "name": "prevLabel",
-    "type": "string | undefined",
+    "name": "labels",
+    "type": "Partial<{ prev: string; next: string; pause: string; dots: string; }> | undefined",
     "required": false,
-    "default": "\"Previous slide\"",
     "description": ""
-   },
-   {
-    "name": "nextLabel",
-    "type": "string | undefined",
-    "required": false,
-    "default": "\"Next slide\"",
-    "description": ""
-   },
-   {
-    "name": "pauseLabel",
-    "type": "string | undefined",
-    "required": false,
-    "default": "\"Pause slides\"",
-    "description": "the autoplay button's name; its pressed state says whether it's paused"
-   },
-   {
-    "name": "dotsLabel",
-    "type": "string | undefined",
-    "required": false,
-    "default": "\"Slides\"",
-    "description": "accessible name of the slide dots"
    },
    {
     "name": "modelValue",
@@ -3464,13 +3406,6 @@
     "description": ""
    },
    {
-    "name": "removeLabel",
-    "type": "string | undefined",
-    "required": false,
-    "default": "\"Remove\"",
-    "description": ""
-   },
-   {
     "name": "color",
     "type": "\"text\" | \"accent\" | \"surface\" | undefined",
     "required": false,
@@ -3482,6 +3417,12 @@
     "type": "\"md\" | \"sm\" | undefined",
     "required": false,
     "default": "\"md\"",
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ remove: string; }> | undefined",
+    "required": false,
     "description": ""
    }
   ],
@@ -4054,10 +3995,10 @@
     "description": "accessible name when there is no <label for>"
    },
    {
-    "name": "removeLabel",
-    "type": "((name: string) => string) | undefined",
+    "name": "labels",
+    "type": "Partial<{ remove: (name: string) => string; }> | undefined",
     "required": false,
-    "description": "name of a chip's remove button, from the option's label"
+    "description": ""
    },
    {
     "name": "modelValue",
@@ -4406,20 +4347,6 @@
     "description": ""
    },
    {
-    "name": "confirmLabel",
-    "type": "string | undefined",
-    "required": false,
-    "default": "\"Confirm\"",
-    "description": ""
-   },
-   {
-    "name": "cancelLabel",
-    "type": "string | undefined",
-    "required": false,
-    "default": "\"Cancel\"",
-    "description": ""
-   },
-   {
     "name": "color",
     "type": "\"text\" | \"accent\" | \"danger\" | undefined",
     "required": false,
@@ -4431,6 +4358,12 @@
     "type": "Placement | undefined",
     "required": false,
     "default": "\"bottom\"",
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ confirm: string; cancel: string; }> | undefined",
+    "required": false,
     "description": ""
    },
    {
@@ -5503,15 +5436,8 @@
     "description": ""
    },
    {
-    "name": "searchLabel",
-    "type": "string | undefined",
-    "required": false,
-    "default": "\"Search rows\"",
-    "description": "accessible name of the search box"
-   },
-   {
     "name": "labels",
-    "type": "Partial<{ selectPage: string; rowsPerPage: string; selectRow: (name: string) => string; resize: (column: string) => string; }> | undefined",
+    "type": "Partial<{ search: string; selectPage: string; rowsPerPage: string; selectRow: (name: string) => string; resize: (column: string) => string; }> | undefined",
     "required": false,
     "description": "names of the select-page checkbox and the page-size select"
    },
@@ -5740,11 +5666,10 @@
     "description": ""
    },
    {
-    "name": "clearLabel",
-    "type": "string | undefined",
+    "name": "labels",
+    "type": "Partial<{ clear: string; }> | undefined",
     "required": false,
-    "default": "\"Clear date\"",
-    "description": "accessible name of the clear button"
+    "description": ""
    },
    {
     "name": "modelValue",
@@ -6358,8 +6283,8 @@
     "description": ""
    },
    {
-    "name": "closeLabel",
-    "type": "string | undefined",
+    "name": "labels",
+    "type": "Partial<{ close: string; }> | undefined",
     "required": false,
     "description": ""
    },
@@ -7374,10 +7299,10 @@
     "description": "show the chosen files under the zone"
    },
    {
-    "name": "removeLabel",
-    "type": "((name: string) => string) | undefined",
+    "name": "labels",
+    "type": "Partial<{ remove: (name: string) => string; }> | undefined",
     "required": false,
-    "description": "name of a file's remove button"
+    "description": ""
    },
    {
     "name": "modelValue",
@@ -7893,17 +7818,9 @@
     "description": ""
    },
    {
-    "name": "prevLabel",
-    "type": "string | undefined",
+    "name": "labels",
+    "type": "Partial<{ prev: string; next: string; }> | undefined",
     "required": false,
-    "default": "\"Previous\"",
-    "description": ""
-   },
-   {
-    "name": "nextLabel",
-    "type": "string | undefined",
-    "required": false,
-    "default": "\"Next\"",
     "description": ""
    },
    {
@@ -8835,9 +8752,9 @@
    },
    {
     "name": "position",
-    "type": "\"top-right\" | \"top-left\" | \"bottom-right\" | \"bottom-left\" | undefined",
+    "type": "\"top-end\" | \"top-start\" | \"bottom-end\" | \"bottom-start\" | undefined",
     "required": false,
-    "default": "\"top-right\"",
+    "default": "\"top-end\"",
     "description": ""
    },
    {
@@ -8998,11 +8915,10 @@
     "description": "read while a page loads (the spinner is decorative)"
    },
    {
-    "name": "moreLabel",
-    "type": "string | undefined",
+    "name": "labels",
+    "type": "Partial<{ more: string; }> | undefined",
     "required": false,
-    "default": "\"Load more\"",
-    "description": "label of the button shown where scrolling can't trigger loading"
+    "description": ""
    }
   ],
   "events": [
@@ -9040,7 +8956,7 @@
  "BlessInplace": {
   "props": [
    {
-    "name": "closable",
+    "name": "dismissible",
     "type": "boolean | undefined",
     "required": false,
     "description": ""
@@ -9052,10 +8968,9 @@
     "description": ""
    },
    {
-    "name": "closeLabel",
-    "type": "string | undefined",
+    "name": "labels",
+    "type": "Partial<{ close: string; }> | undefined",
     "required": false,
-    "default": "\"Close\"",
     "description": ""
    },
    {
@@ -9735,13 +9650,6 @@
     "description": "any value: a parsed JSON response, a store, a config object"
    },
    {
-    "name": "rootLabel",
-    "type": "string | undefined",
-    "required": false,
-    "default": "\"root\"",
-    "description": "the name of the root line"
-   },
-   {
     "name": "openDepth",
     "type": "number | undefined",
     "required": false,
@@ -9761,6 +9669,12 @@
     "required": false,
     "default": "\"JSON\"",
     "description": "names the tree for screen readers"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ root: string; }> | undefined",
+    "required": false,
+    "description": ""
    }
   ],
   "events": [],
@@ -11548,7 +11462,7 @@
     "type": "number | undefined",
     "required": false,
     "default": "80",
-    "description": "px from top that fires `reach-top` (history load)"
+    "description": "px from top that fires `reachTop` (history load)"
    },
    {
     "name": "initial",
@@ -11556,13 +11470,6 @@
     "required": false,
     "default": "\"bottom\"",
     "description": "where to open: latest message or top of transcript"
-   },
-   {
-    "name": "jumpLabel",
-    "type": "string | undefined",
-    "required": false,
-    "default": "\"Latest\"",
-    "description": ""
    },
    {
     "name": "height",
@@ -11577,16 +11484,22 @@
     "required": false,
     "default": "\"Messages\"",
     "description": "names the transcript"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ jump: string; }> | undefined",
+    "required": false,
+    "description": ""
    }
   ],
   "events": [
    {
-    "name": "reach-top",
+    "name": "reachTop",
     "type": "[]",
     "description": ""
    },
    {
-    "name": "at-bottom",
+    "name": "atBottom",
     "type": "[value: boolean]",
     "description": ""
    }
@@ -11836,10 +11749,9 @@
     "description": "click on backdrop closes"
    },
    {
-    "name": "closeLabel",
-    "type": "string | undefined",
+    "name": "labels",
+    "type": "Partial<{ close: string; }> | undefined",
     "required": false,
-    "default": "\"Close\"",
     "description": ""
    },
    {
@@ -12753,30 +12665,16 @@
     "description": ""
    },
    {
-    "name": "prevLabel",
-    "type": "string | undefined",
-    "required": false,
-    "default": "\"Previous\"",
-    "description": ""
-   },
-   {
-    "name": "nextLabel",
-    "type": "string | undefined",
-    "required": false,
-    "default": "\"Next\"",
-    "description": ""
-   },
-   {
-    "name": "pageLabel",
-    "type": "((page: number) => string) | undefined",
-    "required": false,
-    "description": "name of a page link, from its number"
-   },
-   {
     "name": "href",
     "type": "((page: number) => string) | undefined",
     "required": false,
     "description": "render <a href> using this fn instead of buttons"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ prev: string; next: string; page: (page: number) => string; }> | undefined",
+    "required": false,
+    "description": ""
    },
    {
     "name": "modelValue",
@@ -13055,11 +12953,10 @@
     "description": "show the strength meter under the field"
    },
    {
-    "name": "showLabel",
-    "type": "string | undefined",
+    "name": "labels",
+    "type": "Partial<{ show: string; }> | undefined",
     "required": false,
-    "default": "\"Show password\"",
-    "description": "the reveal button's name; its pressed state says whether it's showing"
+    "description": ""
    },
    {
     "name": "modelValue",
@@ -13401,20 +13298,6 @@
  "BlessPickList": {
   "props": [
    {
-    "name": "sourceLabel",
-    "type": "string | undefined",
-    "required": false,
-    "default": "\"Available\"",
-    "description": ""
-   },
-   {
-    "name": "targetLabel",
-    "type": "string | undefined",
-    "required": false,
-    "default": "\"Selected\"",
-    "description": ""
-   },
-   {
     "name": "rows",
     "type": "number | undefined",
     "required": false,
@@ -13423,7 +13306,7 @@
    },
    {
     "name": "labels",
-    "type": "Partial<{ moveSelected: (to: string) => string; moveAll: (to: string) => string; moved: (count: number, to: string) => string; }> | undefined",
+    "type": "Partial<{ source: string; target: string; moveSelected: (to: string) => string; moveAll: (to: string) => string; moved: (count: number, to: string) => string; }> | undefined",
     "required": false,
     "description": ""
    },
@@ -14630,11 +14513,10 @@
     "description": "scroll container to check; default = the wrapper itself, falling back to window"
    },
    {
-    "name": "refreshingLabel",
-    "type": "string | undefined",
+    "name": "labels",
+    "type": "Partial<{ refreshing: string; }> | undefined",
     "required": false,
-    "default": "\"Refreshing\"",
-    "description": "announced while refreshing"
+    "description": ""
    }
   ],
   "events": [
@@ -15797,10 +15679,10 @@
     "description": "the state, as a word"
    },
    {
-    "name": "tone",
-    "type": "\"danger\" | \"warning\" | \"success\" | \"neutral\" | undefined",
+    "name": "color",
+    "type": "\"text\" | \"danger\" | \"warning\" | \"success\" | undefined",
     "required": false,
-    "default": "\"neutral\"",
+    "default": "\"text\"",
     "description": "how the state reads: a mark and a tint"
    },
    {
@@ -16866,9 +16748,9 @@
    },
    {
     "name": "position",
-    "type": "\"bottom-right\" | \"bottom-left\" | undefined",
+    "type": "\"bottom-end\" | \"bottom-start\" | undefined",
     "required": false,
-    "default": "\"bottom-right\"",
+    "default": "\"bottom-end\"",
     "description": ""
    }
   ],
@@ -17107,7 +16989,7 @@
    },
    {
     "name": "watermarkPosition",
-    "type": "\"top-right\" | \"top-left\" | \"bottom-right\" | \"bottom-left\" | undefined",
+    "type": "\"top-end\" | \"top-start\" | \"bottom-end\" | \"bottom-start\" | undefined",
     "required": false,
     "description": ""
    },
@@ -17413,17 +17295,16 @@
     "description": ""
    },
    {
-    "name": "closeLabel",
-    "type": "string | undefined",
-    "required": false,
-    "default": "\"Close\"",
-    "description": ""
-   },
-   {
     "name": "handle",
     "type": "boolean | undefined",
     "required": false,
     "description": "bottom drawer: show drag handle and allow swipe-down to close"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ close: string; }> | undefined",
+    "required": false,
+    "description": ""
    },
    {
     "name": "modelValue",
@@ -17750,13 +17631,6 @@
     "description": ""
    },
    {
-    "name": "clearLabel",
-    "type": "string | undefined",
-    "required": false,
-    "default": "\"Clear\"",
-    "description": ""
-   },
-   {
     "name": "hint",
     "type": "string | undefined",
     "required": false,
@@ -17775,6 +17649,12 @@
     "required": false,
     "default": "\"image/png\"",
     "description": "export format"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ clear: string; }> | undefined",
+    "required": false,
+    "description": ""
    },
    {
     "name": "modelValue",
@@ -18571,7 +18451,7 @@
     "name": "inline",
     "type": "boolean | undefined",
     "required": false,
-    "description": "render in place instead of fixed bottom-right"
+    "description": "render in place instead of fixed at the bottom end corner"
    },
    {
     "name": "open",
@@ -18651,18 +18531,17 @@
     "description": "auto-dismiss after ms; 0 = manual only"
    },
    {
-    "name": "skipLabel",
-    "type": "string | undefined",
-    "required": false,
-    "default": "\"Skip\"",
-    "description": ""
-   },
-   {
     "name": "label",
     "type": "string | undefined",
     "required": false,
     "default": "\"Welcome\"",
     "description": "the dialog's accessible name"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ skip: string; }> | undefined",
+    "required": false,
+    "description": ""
    }
   ],
   "events": [
@@ -18735,10 +18614,9 @@
     "description": ""
    },
    {
-    "name": "menuLabel",
-    "type": "string | undefined",
+    "name": "labels",
+    "type": "Partial<{ menu: string; }> | undefined",
     "required": false,
-    "default": "\"More actions\"",
     "description": ""
    }
   ],
@@ -18793,17 +18671,16 @@
     "description": "remember the divider in localStorage under this key"
    },
    {
-    "name": "backLabel",
-    "type": "string | undefined",
-    "required": false,
-    "default": "\"Back\"",
-    "description": "text of the button that goes back from the detail when stacked"
-   },
-   {
     "name": "label",
     "type": "string | undefined",
     "required": false,
     "default": "\"Resize list\"",
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ back: string; }> | undefined",
+    "required": false,
     "description": ""
    },
    {
@@ -18999,11 +18876,10 @@
  "BlessStage": {
   "props": [
    {
-    "name": "menuLabel",
-    "type": "string | undefined",
+    "name": "labels",
+    "type": "Partial<{ menu: string; }> | undefined",
     "required": false,
-    "default": "\"Menu\"",
-    "description": "the phone menu button's name; aria-expanded says whether it's open"
+    "description": ""
    },
    {
     "name": "open",
@@ -19203,10 +19079,10 @@
     "description": ""
    },
    {
-    "name": "goLabel",
-    "type": "((number: number, label: string) => string) | undefined",
+    "name": "labels",
+    "type": "Partial<{ go: (number: number, label: string) => string; }> | undefined",
     "required": false,
-    "description": "name of a step you can go to, from its number and label"
+    "description": ""
    },
    {
     "name": "modelValue",
@@ -20828,16 +20704,9 @@
   "props": [
    {
     "name": "position",
-    "type": "\"top-right\" | \"top-left\" | \"bottom-right\" | \"bottom-left\" | \"top-center\" | \"bottom-center\" | undefined",
+    "type": "\"top-end\" | \"top-start\" | \"bottom-end\" | \"bottom-start\" | \"top-center\" | \"bottom-center\" | undefined",
     "required": false,
-    "default": "\"bottom-right\"",
-    "description": ""
-   },
-   {
-    "name": "closeLabel",
-    "type": "string | undefined",
-    "required": false,
-    "default": "\"Dismiss\"",
+    "default": "\"bottom-end\"",
     "description": ""
    },
    {
@@ -20846,6 +20715,12 @@
     "required": false,
     "default": "\"Notifications\"",
     "description": "the region's name"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ close: string; }> | undefined",
+    "required": false,
+    "description": ""
    }
   ],
   "events": [],
@@ -21813,7 +21688,7 @@
   "slots": [
    {
     "name": "actions",
-    "type": "{ start: () => void; clear: () => { id: number; file: { readonly lastModified: number; readonly name: string; readonly webkitRelativePath: string; readonly size: number; readonly type: string; arrayBuffer: () => Promise<ArrayBuffer>; bytes: () => Promise<Uint8Array<ArrayBuffer>>; slice: (start?: number | undefined, end?: number | undefined, contentType?: string | undefined) => Blob; stream: () => ReadableStream<Uint8Array<ArrayBuffer>>; text: () => Promise<string>; }; progress: number; status: \"done\" | \"cancelled\" | \"uploading\" | \"error\" | \"queued\"; error?: string | undefined; xhr?: { onreadystatechange: ((this: XMLHttpRequest, ev: Event) => any) | null; readonly readyState: number; readonly response: any; readonly responseText: string; responseType: XMLHttpRequestResponseType; readonly responseURL: string; readonly responseXML: Document | null; readonly status: number; readonly statusText: string; timeout: number; readonly upload: { addEventListener: { <K extends keyof XMLHttpRequestEventTargetEventMap>(type: K, listener: (this: XMLHttpRequestUpload, ev: XMLHttpRequestEventTargetEventMap[K]) => any, options?: boolean | AddEventListenerOptions | undefined): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions | undefined): void; }; removeEventListener: { <K extends keyof XMLHttpRequestEventTargetEventMap>(type: K, listener: (this: XMLHttpRequestUpload, ev: XMLHttpRequestEventTargetEventMap[K]) => any, options?: boolean | EventListenerOptions | undefined): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions | undefined): void; }; onabort: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onerror: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onload: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onloadend: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onloadstart: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onprogress: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; ontimeout: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; dispatchEvent: (event: Event) => boolean; }; withCredentials: boolean; abort: () => void; getAllResponseHeaders: () => string; getResponseHeader: (name: string) => string | null; open: { (method: string, url: string | URL): void; (method: string, url: string | URL, async: boolean, username?: string | null | undefined, password?: string | null | undefined): void; }; overrideMimeType: (mime: string) => void; send: (body?: Document | XMLHttpRequestBodyInit | null | undefined) => void; setRequestHeader: (name: string, value: string) => void; readonly UNSENT: 0; readonly OPENED: 1; readonly HEADERS_RECEIVED: 2; readonly LOADING: 3; readonly DONE: 4; addEventListener: { <K extends keyof XMLHttpRequestEventMap>(type: K, listener: (this: XMLHttpRequest, ev: XMLHttpRequestEventMap[K]) => any, options?: boolean | AddEventListenerOptions | undefined): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions | undefined): void; }; removeEventListener: { <K extends keyof XMLHttpRequestEventMap>(type: K, listener: (this: XMLHttpRequest, ev: XMLHttpRequestEventMap[K]) => any, options?: boolean | EventListenerOptions | undefined): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions | undefined): void; }; onabort: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onerror: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onload: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onloadend: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onloadstart: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onprogress: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; ontimeout: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; dispatchEvent: (event: Event) => boolean; } | undefined; }[]; queue: { id: number; file: { readonly lastModified: number; readonly name: string; readonly webkitRelativePath: string; readonly size: number; readonly type: string; arrayBuffer: () => Promise<ArrayBuffer>; bytes: () => Promise<Uint8Array<ArrayBuffer>>; slice: (start?: number | undefined, end?: number | undefined, contentType?: string | undefined) => Blob; stream: () => ReadableStream<Uint8Array<ArrayBuffer>>; text: () => Promise<string>; }; progress: number; status: \"done\" | \"cancelled\" | \"uploading\" | \"error\" | \"queued\"; error?: string | undefined; xhr?: { onreadystatechange: ((this: XMLHttpRequest, ev: Event) => any) | null; readonly readyState: number; readonly response: any; readonly responseText: string; responseType: XMLHttpRequestResponseType; readonly responseURL: string; readonly responseXML: Document | null; readonly status: number; readonly statusText: string; timeout: number; readonly upload: { addEventListener: { <K extends keyof XMLHttpRequestEventTargetEventMap>(type: K, listener: (this: XMLHttpRequestUpload, ev: XMLHttpRequestEventTargetEventMap[K]) => any, options?: boolean | AddEventListenerOptions | undefined): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions | undefined): void; }; removeEventListener: { <K extends keyof XMLHttpRequestEventTargetEventMap>(type: K, listener: (this: XMLHttpRequestUpload, ev: XMLHttpRequestEventTargetEventMap[K]) => any, options?: boolean | EventListenerOptions | undefined): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions | undefined): void; }; onabort: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onerror: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onload: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onloadend: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onloadstart: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onprogress: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; ontimeout: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; dispatchEvent: (event: Event) => boolean; }; withCredentials: boolean; abort: () => void; getAllResponseHeaders: () => string; getResponseHeader: (name: string) => string | null; open: { (method: string, url: string | URL): void; (method: string, url: string | URL, async: boolean, username?: string | null | undefined, password?: string | null | undefined): void; }; overrideMimeType: (mime: string) => void; send: (body?: Document | XMLHttpRequestBodyInit | null | undefined) => void; setRequestHeader: (name: string, value: string) => void; readonly UNSENT: 0; readonly OPENED: 1; readonly HEADERS_RECEIVED: 2; readonly LOADING: 3; readonly DONE: 4; addEventListener: { <K extends keyof XMLHttpRequestEventMap>(type: K, listener: (this: XMLHttpRequest, ev: XMLHttpRequestEventMap[K]) => any, options?: boolean | AddEventListenerOptions | undefined): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions | undefined): void; }; removeEventListener: { <K extends keyof XMLHttpRequestEventMap>(type: K, listener: (this: XMLHttpRequest, ev: XMLHttpRequestEventMap[K]) => any, options?: boolean | EventListenerOptions | undefined): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions | undefined): void; }; onabort: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onerror: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onload: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onloadend: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onloadstart: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onprogress: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; ontimeout: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; dispatchEvent: (event: Event) => boolean; } | undefined; }[]; }",
+    "type": "{ start: () => void; clear: () => { id: number; file: { readonly lastModified: number; readonly name: string; readonly webkitRelativePath: string; readonly size: number; readonly type: string; arrayBuffer: () => Promise<ArrayBuffer>; bytes: () => Promise<Uint8Array<ArrayBuffer>>; slice: (start?: number | undefined, end?: number | undefined, contentType?: string | undefined) => Blob; stream: () => ReadableStream<Uint8Array<ArrayBuffer>>; text: () => Promise<string>; }; progress: number; status: \"done\" | \"cancelled\" | \"error\" | \"uploading\" | \"queued\"; error?: string | undefined; xhr?: { onreadystatechange: ((this: XMLHttpRequest, ev: Event) => any) | null; readonly readyState: number; readonly response: any; readonly responseText: string; responseType: XMLHttpRequestResponseType; readonly responseURL: string; readonly responseXML: Document | null; readonly status: number; readonly statusText: string; timeout: number; readonly upload: { addEventListener: { <K extends keyof XMLHttpRequestEventTargetEventMap>(type: K, listener: (this: XMLHttpRequestUpload, ev: XMLHttpRequestEventTargetEventMap[K]) => any, options?: boolean | AddEventListenerOptions | undefined): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions | undefined): void; }; removeEventListener: { <K extends keyof XMLHttpRequestEventTargetEventMap>(type: K, listener: (this: XMLHttpRequestUpload, ev: XMLHttpRequestEventTargetEventMap[K]) => any, options?: boolean | EventListenerOptions | undefined): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions | undefined): void; }; onabort: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onerror: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onload: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onloadend: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onloadstart: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onprogress: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; ontimeout: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; dispatchEvent: (event: Event) => boolean; }; withCredentials: boolean; abort: () => void; getAllResponseHeaders: () => string; getResponseHeader: (name: string) => string | null; open: { (method: string, url: string | URL): void; (method: string, url: string | URL, async: boolean, username?: string | null | undefined, password?: string | null | undefined): void; }; overrideMimeType: (mime: string) => void; send: (body?: Document | XMLHttpRequestBodyInit | null | undefined) => void; setRequestHeader: (name: string, value: string) => void; readonly UNSENT: 0; readonly OPENED: 1; readonly HEADERS_RECEIVED: 2; readonly LOADING: 3; readonly DONE: 4; addEventListener: { <K extends keyof XMLHttpRequestEventMap>(type: K, listener: (this: XMLHttpRequest, ev: XMLHttpRequestEventMap[K]) => any, options?: boolean | AddEventListenerOptions | undefined): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions | undefined): void; }; removeEventListener: { <K extends keyof XMLHttpRequestEventMap>(type: K, listener: (this: XMLHttpRequest, ev: XMLHttpRequestEventMap[K]) => any, options?: boolean | EventListenerOptions | undefined): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions | undefined): void; }; onabort: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onerror: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onload: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onloadend: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onloadstart: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onprogress: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; ontimeout: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; dispatchEvent: (event: Event) => boolean; } | undefined; }[]; queue: { id: number; file: { readonly lastModified: number; readonly name: string; readonly webkitRelativePath: string; readonly size: number; readonly type: string; arrayBuffer: () => Promise<ArrayBuffer>; bytes: () => Promise<Uint8Array<ArrayBuffer>>; slice: (start?: number | undefined, end?: number | undefined, contentType?: string | undefined) => Blob; stream: () => ReadableStream<Uint8Array<ArrayBuffer>>; text: () => Promise<string>; }; progress: number; status: \"done\" | \"cancelled\" | \"error\" | \"uploading\" | \"queued\"; error?: string | undefined; xhr?: { onreadystatechange: ((this: XMLHttpRequest, ev: Event) => any) | null; readonly readyState: number; readonly response: any; readonly responseText: string; responseType: XMLHttpRequestResponseType; readonly responseURL: string; readonly responseXML: Document | null; readonly status: number; readonly statusText: string; timeout: number; readonly upload: { addEventListener: { <K extends keyof XMLHttpRequestEventTargetEventMap>(type: K, listener: (this: XMLHttpRequestUpload, ev: XMLHttpRequestEventTargetEventMap[K]) => any, options?: boolean | AddEventListenerOptions | undefined): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions | undefined): void; }; removeEventListener: { <K extends keyof XMLHttpRequestEventTargetEventMap>(type: K, listener: (this: XMLHttpRequestUpload, ev: XMLHttpRequestEventTargetEventMap[K]) => any, options?: boolean | EventListenerOptions | undefined): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions | undefined): void; }; onabort: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onerror: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onload: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onloadend: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onloadstart: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onprogress: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; ontimeout: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; dispatchEvent: (event: Event) => boolean; }; withCredentials: boolean; abort: () => void; getAllResponseHeaders: () => string; getResponseHeader: (name: string) => string | null; open: { (method: string, url: string | URL): void; (method: string, url: string | URL, async: boolean, username?: string | null | undefined, password?: string | null | undefined): void; }; overrideMimeType: (mime: string) => void; send: (body?: Document | XMLHttpRequestBodyInit | null | undefined) => void; setRequestHeader: (name: string, value: string) => void; readonly UNSENT: 0; readonly OPENED: 1; readonly HEADERS_RECEIVED: 2; readonly LOADING: 3; readonly DONE: 4; addEventListener: { <K extends keyof XMLHttpRequestEventMap>(type: K, listener: (this: XMLHttpRequest, ev: XMLHttpRequestEventMap[K]) => any, options?: boolean | AddEventListenerOptions | undefined): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions | undefined): void; }; removeEventListener: { <K extends keyof XMLHttpRequestEventMap>(type: K, listener: (this: XMLHttpRequest, ev: XMLHttpRequestEventMap[K]) => any, options?: boolean | EventListenerOptions | undefined): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions | undefined): void; }; onabort: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onerror: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onload: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onloadend: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onloadstart: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onprogress: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; ontimeout: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; dispatchEvent: (event: Event) => boolean; } | undefined; }[]; }",
     "description": ""
    }
   ],
@@ -21825,12 +21700,12 @@
    },
    {
     "name": "clear",
-    "type": "() => { id: number; file: { readonly lastModified: number; readonly name: string; readonly webkitRelativePath: string; readonly size: number; readonly type: string; arrayBuffer: () => Promise<ArrayBuffer>; bytes: () => Promise<Uint8Array<ArrayBuffer>>; slice: (start?: number | undefined, end?: number | undefined, contentType?: string | undefined) => Blob; stream: () => ReadableStream<Uint8Array<ArrayBuffer>>; text: () => Promise<string>; }; progress: number; status: \"done\" | \"cancelled\" | \"uploading\" | \"error\" | \"queued\"; error?: string | undefined; xhr?: { onreadystatechange: ((this: XMLHttpRequest, ev: Event) => any) | null; readonly readyState: number; readonly response: any; readonly responseText: string; responseType: XMLHttpRequestResponseType; readonly responseURL: string; readonly responseXML: Document | null; readonly status: number; readonly statusText: string; timeout: number; readonly upload: { addEventListener: { <K extends keyof XMLHttpRequestEventTargetEventMap>(type: K, listener: (this: XMLHttpRequestUpload, ev: XMLHttpRequestEventTargetEventMap[K]) => any, options?: boolean | AddEventListenerOptions | undefined): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions | undefined): void; }; removeEventListener: { <K extends keyof XMLHttpRequestEventTargetEventMap>(type: K, listener: (this: XMLHttpRequestUpload, ev: XMLHttpRequestEventTargetEventMap[K]) => any, options?: boolean | EventListenerOptions | undefined): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions | undefined): void; }; onabort: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onerror: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onload: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onloadend: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onloadstart: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onprogress: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; ontimeout: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; dispatchEvent: (event: Event) => boolean; }; withCredentials: boolean; abort: () => void; getAllResponseHeaders: () => string; getResponseHeader: (name: string) => string | null; open: { (method: string, url: string | URL): void; (method: string, url: string | URL, async: boolean, username?: string | null | undefined, password?: string | null | undefined): void; }; overrideMimeType: (mime: string) => void; send: (body?: Document | XMLHttpRequestBodyInit | null | undefined) => void; setRequestHeader: (name: string, value: string) => void; readonly UNSENT: 0; readonly OPENED: 1; readonly HEADERS_RECEIVED: 2; readonly LOADING: 3; readonly DONE: 4; addEventListener: { <K extends keyof XMLHttpRequestEventMap>(type: K, listener: (this: XMLHttpRequest, ev: XMLHttpRequestEventMap[K]) => any, options?: boolean | AddEventListenerOptions | undefined): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions | undefined): void; }; removeEventListener: { <K extends keyof XMLHttpRequestEventMap>(type: K, listener: (this: XMLHttpRequest, ev: XMLHttpRequestEventMap[K]) => any, options?: boolean | EventListenerOptions | undefined): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions | undefined): void; }; onabort: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onerror: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onload: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onloadend: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onloadstart: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onprogress: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; ontimeout: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; dispatchEvent: (event: Event) => boolean; } | undefined; }[]",
+    "type": "() => { id: number; file: { readonly lastModified: number; readonly name: string; readonly webkitRelativePath: string; readonly size: number; readonly type: string; arrayBuffer: () => Promise<ArrayBuffer>; bytes: () => Promise<Uint8Array<ArrayBuffer>>; slice: (start?: number | undefined, end?: number | undefined, contentType?: string | undefined) => Blob; stream: () => ReadableStream<Uint8Array<ArrayBuffer>>; text: () => Promise<string>; }; progress: number; status: \"done\" | \"cancelled\" | \"error\" | \"uploading\" | \"queued\"; error?: string | undefined; xhr?: { onreadystatechange: ((this: XMLHttpRequest, ev: Event) => any) | null; readonly readyState: number; readonly response: any; readonly responseText: string; responseType: XMLHttpRequestResponseType; readonly responseURL: string; readonly responseXML: Document | null; readonly status: number; readonly statusText: string; timeout: number; readonly upload: { addEventListener: { <K extends keyof XMLHttpRequestEventTargetEventMap>(type: K, listener: (this: XMLHttpRequestUpload, ev: XMLHttpRequestEventTargetEventMap[K]) => any, options?: boolean | AddEventListenerOptions | undefined): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions | undefined): void; }; removeEventListener: { <K extends keyof XMLHttpRequestEventTargetEventMap>(type: K, listener: (this: XMLHttpRequestUpload, ev: XMLHttpRequestEventTargetEventMap[K]) => any, options?: boolean | EventListenerOptions | undefined): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions | undefined): void; }; onabort: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onerror: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onload: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onloadend: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onloadstart: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onprogress: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; ontimeout: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; dispatchEvent: (event: Event) => boolean; }; withCredentials: boolean; abort: () => void; getAllResponseHeaders: () => string; getResponseHeader: (name: string) => string | null; open: { (method: string, url: string | URL): void; (method: string, url: string | URL, async: boolean, username?: string | null | undefined, password?: string | null | undefined): void; }; overrideMimeType: (mime: string) => void; send: (body?: Document | XMLHttpRequestBodyInit | null | undefined) => void; setRequestHeader: (name: string, value: string) => void; readonly UNSENT: 0; readonly OPENED: 1; readonly HEADERS_RECEIVED: 2; readonly LOADING: 3; readonly DONE: 4; addEventListener: { <K extends keyof XMLHttpRequestEventMap>(type: K, listener: (this: XMLHttpRequest, ev: XMLHttpRequestEventMap[K]) => any, options?: boolean | AddEventListenerOptions | undefined): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions | undefined): void; }; removeEventListener: { <K extends keyof XMLHttpRequestEventMap>(type: K, listener: (this: XMLHttpRequest, ev: XMLHttpRequestEventMap[K]) => any, options?: boolean | EventListenerOptions | undefined): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions | undefined): void; }; onabort: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onerror: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onload: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onloadend: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onloadstart: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onprogress: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; ontimeout: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; dispatchEvent: (event: Event) => boolean; } | undefined; }[]",
     "description": ""
    },
    {
     "name": "queue",
-    "type": "{ id: number; file: { readonly lastModified: number; readonly name: string; readonly webkitRelativePath: string; readonly size: number; readonly type: string; arrayBuffer: () => Promise<ArrayBuffer>; bytes: () => Promise<Uint8Array<ArrayBuffer>>; slice: (start?: number | undefined, end?: number | undefined, contentType?: string | undefined) => Blob; stream: () => ReadableStream<Uint8Array<ArrayBuffer>>; text: () => Promise<string>; }; progress: number; status: \"done\" | \"cancelled\" | \"uploading\" | \"error\" | \"queued\"; error?: string | undefined; xhr?: { onreadystatechange: ((this: XMLHttpRequest, ev: Event) => any) | null; readonly readyState: number; readonly response: any; readonly responseText: string; responseType: XMLHttpRequestResponseType; readonly responseURL: string; readonly responseXML: Document | null; readonly status: number; readonly statusText: string; timeout: number; readonly upload: { addEventListener: { <K extends keyof XMLHttpRequestEventTargetEventMap>(type: K, listener: (this: XMLHttpRequestUpload, ev: XMLHttpRequestEventTargetEventMap[K]) => any, options?: boolean | AddEventListenerOptions | undefined): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions | undefined): void; }; removeEventListener: { <K extends keyof XMLHttpRequestEventTargetEventMap>(type: K, listener: (this: XMLHttpRequestUpload, ev: XMLHttpRequestEventTargetEventMap[K]) => any, options?: boolean | EventListenerOptions | undefined): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions | undefined): void; }; onabort: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onerror: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onload: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onloadend: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onloadstart: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onprogress: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; ontimeout: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; dispatchEvent: (event: Event) => boolean; }; withCredentials: boolean; abort: () => void; getAllResponseHeaders: () => string; getResponseHeader: (name: string) => string | null; open: { (method: string, url: string | URL): void; (method: string, url: string | URL, async: boolean, username?: string | null | undefined, password?: string | null | undefined): void; }; overrideMimeType: (mime: string) => void; send: (body?: Document | XMLHttpRequestBodyInit | null | undefined) => void; setRequestHeader: (name: string, value: string) => void; readonly UNSENT: 0; readonly OPENED: 1; readonly HEADERS_RECEIVED: 2; readonly LOADING: 3; readonly DONE: 4; addEventListener: { <K extends keyof XMLHttpRequestEventMap>(type: K, listener: (this: XMLHttpRequest, ev: XMLHttpRequestEventMap[K]) => any, options?: boolean | AddEventListenerOptions | undefined): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions | undefined): void; }; removeEventListener: { <K extends keyof XMLHttpRequestEventMap>(type: K, listener: (this: XMLHttpRequest, ev: XMLHttpRequestEventMap[K]) => any, options?: boolean | EventListenerOptions | undefined): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions | undefined): void; }; onabort: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onerror: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onload: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onloadend: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onloadstart: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onprogress: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; ontimeout: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; dispatchEvent: (event: Event) => boolean; } | undefined; }[]",
+    "type": "{ id: number; file: { readonly lastModified: number; readonly name: string; readonly webkitRelativePath: string; readonly size: number; readonly type: string; arrayBuffer: () => Promise<ArrayBuffer>; bytes: () => Promise<Uint8Array<ArrayBuffer>>; slice: (start?: number | undefined, end?: number | undefined, contentType?: string | undefined) => Blob; stream: () => ReadableStream<Uint8Array<ArrayBuffer>>; text: () => Promise<string>; }; progress: number; status: \"done\" | \"cancelled\" | \"error\" | \"uploading\" | \"queued\"; error?: string | undefined; xhr?: { onreadystatechange: ((this: XMLHttpRequest, ev: Event) => any) | null; readonly readyState: number; readonly response: any; readonly responseText: string; responseType: XMLHttpRequestResponseType; readonly responseURL: string; readonly responseXML: Document | null; readonly status: number; readonly statusText: string; timeout: number; readonly upload: { addEventListener: { <K extends keyof XMLHttpRequestEventTargetEventMap>(type: K, listener: (this: XMLHttpRequestUpload, ev: XMLHttpRequestEventTargetEventMap[K]) => any, options?: boolean | AddEventListenerOptions | undefined): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions | undefined): void; }; removeEventListener: { <K extends keyof XMLHttpRequestEventTargetEventMap>(type: K, listener: (this: XMLHttpRequestUpload, ev: XMLHttpRequestEventTargetEventMap[K]) => any, options?: boolean | EventListenerOptions | undefined): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions | undefined): void; }; onabort: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onerror: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onload: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onloadend: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onloadstart: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onprogress: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; ontimeout: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; dispatchEvent: (event: Event) => boolean; }; withCredentials: boolean; abort: () => void; getAllResponseHeaders: () => string; getResponseHeader: (name: string) => string | null; open: { (method: string, url: string | URL): void; (method: string, url: string | URL, async: boolean, username?: string | null | undefined, password?: string | null | undefined): void; }; overrideMimeType: (mime: string) => void; send: (body?: Document | XMLHttpRequestBodyInit | null | undefined) => void; setRequestHeader: (name: string, value: string) => void; readonly UNSENT: 0; readonly OPENED: 1; readonly HEADERS_RECEIVED: 2; readonly LOADING: 3; readonly DONE: 4; addEventListener: { <K extends keyof XMLHttpRequestEventMap>(type: K, listener: (this: XMLHttpRequest, ev: XMLHttpRequestEventMap[K]) => any, options?: boolean | AddEventListenerOptions | undefined): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions | undefined): void; }; removeEventListener: { <K extends keyof XMLHttpRequestEventMap>(type: K, listener: (this: XMLHttpRequest, ev: XMLHttpRequestEventMap[K]) => any, options?: boolean | EventListenerOptions | undefined): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions | undefined): void; }; onabort: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onerror: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onload: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onloadend: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onloadstart: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; onprogress: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; ontimeout: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null; dispatchEvent: (event: Event) => boolean; } | undefined; }[]",
     "description": ""
    }
   ]
@@ -22226,9 +22101,9 @@
    },
    {
     "name": "position",
-    "type": "\"top-right\" | \"top-left\" | \"bottom-right\" | \"bottom-left\" | undefined",
+    "type": "\"top-end\" | \"top-start\" | \"bottom-end\" | \"bottom-start\" | undefined",
     "required": false,
-    "default": "\"top-right\"",
+    "default": "\"top-end\"",
     "description": ""
    }
   ],

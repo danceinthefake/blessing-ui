@@ -20,7 +20,7 @@ async function del() {
     v-model="open"
     title="Delete project?"
     description="This permanently removes the project and its 12 files."
-    confirm-label="Delete"
+    :labels="{ confirm: 'Delete' }"
     :loading="busy"
     @confirm="del"
   />

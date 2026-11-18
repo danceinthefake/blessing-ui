@@ -65,7 +65,7 @@ Berikan ref atau getter, dan kata-katanya berubah saat nilainya berubah. Demo di
 
 Paket mencakup komponen yang punya prop `labels`. Kata-kata berikut tetap terpisah:
 
-- Prop yang menamai satu hal, seperti `label`, `placeholder`, `emptyText`, `closeLabel`, dan `removeLabel`. Anda memberikannya di setiap komponen.
+- Prop yang menamai satu hal, seperti `label`, `placeholder`, dan `emptyText`. Anda memberikannya di setiap komponen.
 - `BlessPasswordMeter`, yang `labels`-nya berupa daftar kata kekuatan sandi secara berurutan.
 - Tanggal, angka, dan zona waktu. Semuanya memakai `Intl` dengan prop `locale`, atau bahasa browser.
 

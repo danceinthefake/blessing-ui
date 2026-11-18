@@ -82,7 +82,7 @@ function discard() {
     <BlessAlertDialog
       v-model="confirmDelete"
       title="Delete account?"
-      confirm-label="Delete"
+      :labels="{ confirm: 'Delete' }"
       @confirm="confirmDelete = false"
     >
       Everything goes: profile, history, files. Type your password on the next screen to confirm.
