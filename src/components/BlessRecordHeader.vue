@@ -14,14 +14,14 @@ withDefaults(
     /** the state, as a word */
     status?: string;
     /** how the state reads: a mark and a tint */
-    tone?: "neutral" | "success" | "warning" | "danger";
+    color?: "text" | "success" | "warning" | "danger";
     facts?: BlessRecordFact[];
     /** the heading level of the title */
     level?: 1 | 2 | 3;
   }>(),
-  { tone: "neutral", facts: () => [], level: 1 },
+  { color: "text", facts: () => [], level: 1 },
 );
-const MARK = { neutral: "●", success: "✓", warning: "!", danger: "✕" } as const;
+const MARK = { text: "●", success: "✓", warning: "!", danger: "✕" } as const;
 </script>
 
 <template>
@@ -30,8 +30,8 @@ const MARK = { neutral: "●", success: "✓", warning: "!", danger: "✕" } as 
       <div class="bless-record__name">
         <span v-if="code" class="bless-record__code">{{ code }}</span>
         <component :is="`h${level}`" class="bless-record__title">{{ title }}</component>
-        <span v-if="status" class="bless-record__status" :class="`is-${tone}`">
-          <span aria-hidden="true">{{ MARK[tone] }}</span> {{ status }}
+        <span v-if="status" class="bless-record__status" :class="`is-${color}`">
+          <span aria-hidden="true">{{ MARK[color] }}</span> {{ status }}
         </span>
       </div>
       <div v-if="$slots.default" class="bless-record__actions"><slot /></div>

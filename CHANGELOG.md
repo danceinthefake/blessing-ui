@@ -2,11 +2,22 @@
 
 ## Unreleased
 
+### Breaking
+
+- Built-in words move into the `labels` prop. For example, `closeLabel` on Modal is now `labels.close`, and a label pack can now set it. This covers ActionSheet, Alert, AlertDialog, Attachment (`errorText` is `labels.error`), AudioPlayer, Banner, BottomTabs, Bubble, Carousel, Chip, Combobox, ConfirmPopup, DataTable (`searchLabel`), DatePicker, Drawer, FileInput, Gallery, InfiniteScroll, Inplace, JsonViewer, MessageScroller, Modal, Pagination, PasswordInput, PickList (`sourceLabel`, `targetLabel`), PullToRefresh, Sheet, SignaturePad, Splash, SplitButton, SplitView, Stage, Steps, and Toaster. The new key is the old prop name without `Label`. The Indonesian pack has all of these words.
+- Corner positions use the reading direction: `top-right` is now `top-end`, `top-left` is `top-start`, `bottom-right` is `bottom-end`, and `bottom-left` is `bottom-start`. This changes `position` on Indicator, Watermark, ScrollTop, and Toaster, and `watermarkPosition` on Section. In RTL, these corners and the speed dial go to the other side.
+- MessageScroller emits `reachTop` and `atBottom`. In a template, `@reach-top` still works.
+- RecordHeader takes `color` in place of `tone`, and `text` in place of `neutral`.
+- Inplace takes `dismissible` in place of `closable`.
+- `BlessMenuList` is no longer exported. BlessDropdownMenu uses it inside.
+- The Nuxt module and the resolver no longer register the internal parts BlessMenuList, BlessOrgChartNode, BlessQueryGroup, and BlessTreeItem.
+
 ### Changed
 
 - The docs home page is now a brochure: chapters like a light novel, with eyecatch bands between them and a next-episode preview at the end. It uses the real components and the motion layers.
 - The landing pages of the guide, the blocks, and the design open with an eyecatch band and a grid of cards. The guide has a new overview page.
 - Each docs page has a slim eyecatch over its title, and a page change wipes the content in. A Calm switch in the nav turns on calm motion for the whole site.
+- The docs code blocks use a light theme with enough contrast.
 
 ## 0.9.0 — 2026-11-18
 

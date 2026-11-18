@@ -22,7 +22,7 @@ Loads the next page as the reader nears the end of a feed. It suits browsing (a 
 </Demo>
 
 - `@load` gets a `done` callback: call `done()` when the page is in, `done(true)` when there are no more. While loading, "Loading more" (`loadingText`) is announced.
-- `disabled` pauses it and turning it back on resumes. Where scrolling cannot trigger loading (no IntersectionObserver), a Load more button (`moreLabel`) takes its place.
+- `disabled` pauses it and turning it back on resumes. Where scrolling cannot trigger loading (no IntersectionObserver), a Load more button (`labels.more`) takes its place.
 
 ## Usage
 

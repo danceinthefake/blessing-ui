@@ -7,7 +7,7 @@ const { success, info } = useToast();
   <div class="row">
     <BlessConfirmPopup
       message="Delete this episode? This cannot be undone."
-      confirm-label="Delete"
+      :labels="{ confirm: 'Delete' }"
       color="danger"
       @confirm="success('Deleted')"
       @cancel="info('Kept')"

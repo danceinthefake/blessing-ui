@@ -1,22 +1,29 @@
 <script setup lang="ts">
-import { nextTick, ref, useId, watch } from "vue";
+import { useLabelPack } from "../composables/useLabels";
+import { nextTick, ref, useId, watch, computed } from "vue";
 import BlessButton from "./BlessButton.vue";
 import BlessModal from "./BlessModal.vue";
 
 defineOptions({ name: "BlessAlertDialog" });
 
-withDefaults(
+const props = withDefaults(
   defineProps<{
     title: string;
     description?: string;
-    confirmLabel?: string;
-    cancelLabel?: string;
     /** confirm button color */
     color?: "text" | "accent" | "danger";
     loading?: boolean;
+    labels?: Partial<{ confirm: string; cancel: string }>;
   }>(),
-  { confirmLabel: "Confirm", cancelLabel: "Cancel", color: "danger" },
+  { color: "danger" },
 );
+const pack = useLabelPack("BlessAlertDialog");
+const text = computed(() => ({
+  confirm: "Confirm",
+  cancel: "Cancel",
+  ...pack(),
+  ...props.labels,
+}));
 
 const open = defineModel<boolean>({ default: false });
 const emit = defineEmits<{ confirm: []; cancel: [] }>();
@@ -57,9 +64,9 @@ function onClose() {
     <slot />
     <template #footer>
       <BlessButton ref="cancelBtn" variant="outline" @click="open = false">{{
-        cancelLabel
+        text.cancel
       }}</BlessButton>
-      <BlessButton :color :loading @click="onConfirm">{{ confirmLabel }}</BlessButton>
+      <BlessButton :color :loading @click="onConfirm">{{ text.confirm }}</BlessButton>
     </template>
   </BlessModal>
 </template>

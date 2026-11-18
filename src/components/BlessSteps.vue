@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { useLabelPack } from "../composables/useLabels";
+import { computed } from "vue";
 defineOptions({ name: "BlessSteps" });
 
 export interface BlessStep {
@@ -6,18 +8,24 @@ export interface BlessStep {
   description?: string;
 }
 
-withDefaults(
+const props = withDefaults(
   defineProps<{
     steps: BlessStep[];
     orientation?: "horizontal" | "vertical";
     /** completed steps are buttons that emit select; "all" makes every step one */
     clickable?: boolean | "all";
     label?: string;
-    /** name of a step you can go to, from its number and label */
-    goLabel?: (number: number, label: string) => string;
+    labels?: Partial<{ go: (number: number, label: string) => string }>;
   }>(),
   { orientation: "horizontal", label: "Progress" },
 );
+const pack = useLabelPack("BlessSteps");
+const text = computed(() => ({
+  go: (n: number, l: string) => `Go to step ${n}: ${l}`,
+  ...pack(),
+  ...props.labels,
+}));
+
 const current = defineModel<number>({ default: 0 });
 const emit = defineEmits<{ select: [index: number] }>();
 const canGo = (i: number, clickable: boolean | "all" | undefined, cur: number) =>
@@ -40,11 +48,7 @@ const canGo = (i: number, clickable: boolean | "all" | undefined, cur: number) =
         :is="canGo(i, clickable, current) ? 'button' : 'div'"
         :type="canGo(i, clickable, current) ? 'button' : undefined"
         class="bless-steps__marker"
-        :aria-label="
-          canGo(i, clickable, current)
-            ? (goLabel ?? ((n: number, l: string) => `Go to step ${n}: ${l}`))(i + 1, s.label)
-            : undefined
-        "
+        :aria-label="canGo(i, clickable, current) ? text.go(i + 1, s.label) : undefined"
         @click="canGo(i, clickable, current) && (emit('select', i), (current = i))"
       >
         <span aria-hidden="true">{{ i < current ? "✓" : i + 1 }}</span>

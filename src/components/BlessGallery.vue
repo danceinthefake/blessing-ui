@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useLabelPack } from "../composables/useLabels";
 import { computed } from "vue";
 import BlessLightbox, { type BlessLightboxItem } from "./BlessLightbox.vue";
 
@@ -12,15 +13,21 @@ const props = withDefaults(
     /** thumbnail grid column min width */
     columns?: string;
     loop?: boolean;
-    prevLabel?: string;
-    nextLabel?: string;
+    labels?: Partial<{ prev: string; next: string }>;
   }>(),
-  { columns: "160px", loop: true, prevLabel: "Previous", nextLabel: "Next" },
+  { columns: "160px", loop: true },
 );
+const pack = useLabelPack("BlessGallery");
+const text = computed(() => ({
+  prev: "Previous",
+  next: "Next",
+  ...pack(),
+  ...props.labels,
+}));
 
 /** index of open item, -1 = closed */
 const index = defineModel<number>({ default: -1 });
-const labels = computed(() => ({ prev: props.prevLabel, next: props.nextLabel }));
+const labels = computed(() => ({ prev: text.value.prev, next: text.value.next }));
 
 // thumbs need names even when an image has no alt text
 const nameOf = (item: BlessGalleryItem, i: number) =>

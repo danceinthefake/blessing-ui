@@ -14,7 +14,7 @@ const response = {
 <template>
   <BlessJsonViewer
     :value="response"
-    root-label="response"
+    :labels="{ root: 'response' }"
     :open-depth="2"
     :limit="4"
     label="API response"

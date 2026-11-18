@@ -23,7 +23,7 @@ A question that must be answered before going on, usually before something that 
 
 - It is read as an alert dialog with its title and `description`. Focus starts on Cancel, the safe choice. Esc also cancels.
 - Clicking outside does not close it. `@confirm` and `@cancel` say which way it went. `loading` holds the confirm button while you work.
-- Name the action in the button (`confirmLabel="Delete"`), not "OK".
+- Name the action in the button (`:labels="{ confirm: 'Delete' }"`), not "OK".
 
 ## Usage
 

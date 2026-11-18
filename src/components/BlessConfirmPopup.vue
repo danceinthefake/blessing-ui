@@ -1,22 +1,30 @@
 <script setup lang="ts">
-import { nextTick, ref, watch } from "vue";
+import { useLabelPack } from "../composables/useLabels";
+import { nextTick, ref, watch, computed } from "vue";
 import BlessButton from "./BlessButton.vue";
 import BlessPopover from "./BlessPopover.vue";
 import type { Placement } from "../composables/useFloating";
 
 defineOptions({ name: "BlessConfirmPopup" });
 
-withDefaults(
+const props = withDefaults(
   defineProps<{
     message: string;
     title?: string;
-    confirmLabel?: string;
-    cancelLabel?: string;
     color?: "accent" | "danger" | "text";
     placement?: Placement;
+    labels?: Partial<{ confirm: string; cancel: string }>;
   }>(),
-  { confirmLabel: "Confirm", cancelLabel: "Cancel", color: "text", placement: "bottom" },
+  { color: "text", placement: "bottom" },
 );
+const pack = useLabelPack("BlessConfirmPopup");
+const text = computed(() => ({
+  confirm: "Confirm",
+  cancel: "Cancel",
+  ...pack(),
+  ...props.labels,
+}));
+
 const open = defineModel<boolean>("open", { default: false });
 const emit = defineEmits<{ confirm: []; cancel: [] }>();
 // focus goes to Cancel, the safe choice, on open; back to the trigger when it closes
@@ -42,9 +50,9 @@ function done(ok: boolean) {
     <p class="bless-confirm__msg">{{ message }}</p>
     <div class="bless-confirm__actions">
       <BlessButton ref="cancelBtn" size="sm" variant="outline" @click="done(false)">{{
-        cancelLabel
+        text.cancel
       }}</BlessButton>
-      <BlessButton size="sm" :color @click="done(true)">{{ confirmLabel }}</BlessButton>
+      <BlessButton size="sm" :color @click="done(true)">{{ text.confirm }}</BlessButton>
     </div>
   </BlessPopover>
 </template>

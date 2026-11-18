@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useLabelPack } from "../composables/useLabels";
 import { computed, onBeforeUnmount, ref, watch } from "vue";
 import BlessSkew from "./BlessSkew.vue";
 
@@ -14,13 +15,17 @@ const props = withDefaults(
   defineProps<{
     tracks: BlessTrack[];
     color?: "text" | "accent" | "danger";
-    /** the play button's name; its pressed state says whether it's playing */
-    playLabel?: string;
-    /** name of the seek slider */
-    seekLabel?: string;
+    labels?: Partial<{ play: string; seek: string }>;
   }>(),
-  { color: "accent", playLabel: "Play", seekLabel: "Seek" },
+  { color: "accent" },
 );
+const pack = useLabelPack("BlessAudioPlayer");
+const text = computed(() => ({
+  play: "Play",
+  seek: "Seek",
+  ...pack(),
+  ...props.labels,
+}));
 
 /** index of the current track */
 const index = defineModel<number>({ default: 0 });
@@ -107,7 +112,7 @@ onBeforeUnmount(() => audio.value?.pause());
         :color="playing ? color : 'text'"
         type="button"
         class="bless-audio__toggle"
-        :aria-label="playLabel"
+        :aria-label="text.play"
         :aria-pressed="playing"
         @click="toggle"
       >
@@ -128,7 +133,7 @@ onBeforeUnmount(() => audio.value?.pause());
           step="1"
           :value="time"
           :disabled="!duration"
-          :aria-label="seekLabel"
+          :aria-label="text.seek"
           :aria-valuetext="`${fmt(time)} of ${fmt(duration)}`"
           @input="seek"
         />

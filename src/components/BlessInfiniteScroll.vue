@@ -1,6 +1,7 @@
 <script setup lang="ts">
+import { useLabelPack } from "../composables/useLabels";
 import "./sr.css";
-import { onBeforeUnmount, onMounted, ref, watch } from "vue";
+import { onBeforeUnmount, onMounted, ref, watch, computed } from "vue";
 import BlessButton from "./BlessButton.vue";
 import BlessSpinner from "./BlessSpinner.vue";
 
@@ -17,11 +18,17 @@ const props = withDefaults(
     doneText?: string;
     /** read while a page loads (the spinner is decorative) */
     loadingText?: string;
-    /** label of the button shown where scrolling can't trigger loading */
-    moreLabel?: string;
+    labels?: Partial<{ more: string }>;
   }>(),
-  { offset: 200, loadingText: "Loading more", moreLabel: "Load more" },
+  { offset: 200, loadingText: "Loading more" },
 );
+const pack = useLabelPack("BlessInfiniteScroll");
+const text = computed(() => ({
+  more: "Load more",
+  ...pack(),
+  ...props.labels,
+}));
+
 const emit = defineEmits<{ load: [done: (finished?: boolean) => void] }>();
 const sentinel = ref<HTMLElement>();
 const loading = ref(false);
@@ -81,7 +88,7 @@ defineExpose({ reset: () => ((finished.value = false), (loading.value = false)) 
       size="sm"
       class="bless-infinite__more"
       @click="fire"
-      >{{ moreLabel }}</BlessButton
+      >{{ text.more }}</BlessButton
     >
   </div>
 </template>

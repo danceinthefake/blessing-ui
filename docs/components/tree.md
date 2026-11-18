@@ -27,7 +27,7 @@ A hierarchy people expand and browse: files, a category tree, a table of content
 ## Usage
 
 ```ts
-import { BlessTree, BlessTreeItem } from "blessing-ui";
+import { BlessTree } from "blessing-ui";
 ```
 
 ## API
@@ -35,7 +35,3 @@ import { BlessTree, BlessTreeItem } from "blessing-ui";
 ### BlessTree
 
 <PropsTable name="BlessTree" />
-
-### BlessTreeItem
-
-<PropsTable name="BlessTreeItem" />

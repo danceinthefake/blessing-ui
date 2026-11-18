@@ -76,7 +76,7 @@ test("BlessAttachment with href: the name is the link, the remove button is outs
   expect(w.find(".bless-attachment__remove").attributes("aria-label")).toBe("Remove a.pdf");
 });
 
-test("BlessMessageScroller: jump button appears when scrolled up, reach-top emits once", async () => {
+test("BlessMessageScroller: jump button appears when scrolled up, reachTop emits once", async () => {
   const w = mount(BlessMessageScroller, { slots: { default: "<p>m</p>" } });
   const vp = w.find(".bless-message-scroller__viewport").element as HTMLElement;
   Object.defineProperty(vp, "scrollHeight", { value: 1000, configurable: true });
@@ -84,9 +84,9 @@ test("BlessMessageScroller: jump button appears when scrolled up, reach-top emit
   vp.scrollTop = 0;
   await w.find(".bless-message-scroller__viewport").trigger("scroll");
   expect(w.find(".bless-message-scroller__jump").exists()).toBe(true);
-  expect(w.emitted("reach-top")).toHaveLength(1);
+  expect(w.emitted("reachTop")).toHaveLength(1);
   await w.find(".bless-message-scroller__viewport").trigger("scroll");
-  expect(w.emitted("reach-top")).toHaveLength(1);
+  expect(w.emitted("reachTop")).toHaveLength(1);
   await w.find(".bless-message-scroller__jump").trigger("click");
   expect(vp.scrollTop).toBe(1000);
   await w.find(".bless-message-scroller__viewport").trigger("scroll");

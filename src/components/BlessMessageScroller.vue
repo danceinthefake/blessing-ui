@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { nextTick, onBeforeUnmount, onMounted, ref } from "vue";
+import { useLabelPack } from "../composables/useLabels";
+import { nextTick, onBeforeUnmount, onMounted, ref, computed } from "vue";
 import BlessButton from "./BlessButton.vue";
 import { scrollBehavior } from "../composables/useMedia";
 
@@ -9,25 +10,31 @@ const props = withDefaults(
   defineProps<{
     /** px from bottom still counted as "at bottom" */
     threshold?: number;
-    /** px from top that fires `reach-top` (history load) */
+    /** px from top that fires `reachTop` (history load) */
     topThreshold?: number;
     /** where to open: latest message or top of transcript */
     initial?: "bottom" | "top";
-    jumpLabel?: string;
     height?: string;
     /** names the transcript */
     label?: string;
+    labels?: Partial<{ jump: string }>;
   }>(),
   {
     threshold: 48,
     topThreshold: 80,
     initial: "bottom",
-    jumpLabel: "Latest",
     height: "400px",
     label: "Messages",
   },
 );
-const emit = defineEmits<{ "reach-top": []; "at-bottom": [value: boolean] }>();
+const pack = useLabelPack("BlessMessageScroller");
+const text = computed(() => ({
+  jump: "Latest",
+  ...pack(),
+  ...props.labels,
+}));
+
+const emit = defineEmits<{ reachTop: []; atBottom: [value: boolean] }>();
 
 const viewport = ref<HTMLElement>();
 const content = ref<HTMLElement>();
@@ -38,13 +45,13 @@ function measure() {
   const el = viewport.value!;
   const was = atBottom.value;
   atBottom.value = el.scrollHeight - el.scrollTop - el.clientHeight <= props.threshold;
-  if (was !== atBottom.value) emit("at-bottom", atBottom.value);
+  if (was !== atBottom.value) emit("atBottom", atBottom.value);
   // only a real scroll-up near the top asks for history; a short transcript never does
   const scrollable = el.scrollHeight > el.clientHeight;
   if (scrollable && el.scrollTop <= props.topThreshold) {
     if (topArmed) {
       topArmed = false;
-      emit("reach-top");
+      emit("reachTop");
     }
   } else topArmed = true;
 }
@@ -107,7 +114,7 @@ defineExpose({ scrollToBottom, scrollTo, loadHistory, atBottom });
     </div>
     <Transition name="bless-message-scroller__fade">
       <BlessButton v-if="!atBottom" size="sm" class="bless-message-scroller__jump" @click="jump">
-        <slot name="jump"><span aria-hidden="true">↓ </span>{{ jumpLabel }}</slot>
+        <slot name="jump"><span aria-hidden="true">↓ </span>{{ text.jump }}</slot>
       </BlessButton>
     </Transition>
   </div>

@@ -96,7 +96,7 @@ const size = (n: number) =>
           :description="size(f.size)"
           size="sm"
           removable
-          :remove-label="`${text.remove} ${f.name}`"
+          :labels="{ remove: `${text.remove} ${f.name}` }"
           @remove="files = files.filter((_, k) => k !== i)"
         />
       </li>

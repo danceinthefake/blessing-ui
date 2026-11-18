@@ -23,7 +23,7 @@ The main sections of a phone-sized app, three to five of them, in reach of the t
 
 - `bar` is fixed to the bottom and pads itself for the home indicator (`--bless-safe-bottom`). Leave the same room at the bottom of the page so nothing hides under it. `dock` floats as an icon strip.
 - `href` makes a tab a link (through your router, see [Install](/guide/install#with-a-router)). The active one has `aria-current="page"`.
-- A badge is read with its tab ("Inbox, 3 new"). `badgeLabel` sets the word.
+- A badge is read with its tab ("Inbox, 3 new"). `labels.badge` sets the word.
 
 ## Usage
 

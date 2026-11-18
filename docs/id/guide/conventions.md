@@ -38,14 +38,9 @@ Apa yang berlaku di semua 437 komponen. Jika sebuah komponen melanggar salah sat
 - **Peran dan nama pada semua yang majemuk**: menu, listbox, tablist, grid, tree, dialog, switch, dan slider. Setiap kontrol yang hanya berisi ikon punya `aria-label`. Setiap isian terhubung ke labelnya (`BlessField` melakukannya untuk Anda).
 - **Kata bawaan bisa diganti.** Prop `labels` memberi teks yang diucapkan komponen untuk Anda, misalnya tombol, petunjuk, dan pengumuman pembaca layar. Prop ini `Partial`, sehingga Anda hanya mengganti yang perlu. Pesan yang membawa angka atau nama adalah fungsi dari keduanya: `:labels="{ grabbed: (i, n) => `Diambil ${i} dari ${n}` }"`. Untuk mengganti kata banyak komponen sekaligus, pakai [paket label](./translating).
 
-  Komponen-komponen ini punya prop `labels`:
-
-  - Sortable, Kanban, Timer, SliderCaptcha, Cropper, ShortcutRecorder, CodeBlock, Gantt, Calendar, InputNumber, DataTable, DataView, OrderList, PickList, Marquee, Uploader.
-  - Editor (per key alat), Stepper, Tour, SwipeDeck, Questionnaire, ThemeToggle, InfiniteCanvas, NodeGraph, Treemap.
+  Setiap komponen yang mengucapkan kata sendiri mengambilnya dari `labels`. Ini termasuk satu kata, misalnya tombol tutup Modal (`labels.close`). Ini juga termasuk pesan yang berupa fungsi dari nama atau angka, misalnya `labels.remove` (Combobox, FileInput) dan `labels.page` (Pagination).
 
   Kata awal sebuah komponen adalah prop biasa dengan nilai bawaan itu, sehingga tidak perlu entri `labels`. Prop itu adalah `label`, `placeholder`, dan `emptyText`. Keadaan kosong DataView dan SwipeDeck juga menerima `labels.empty` (atau slot `#empty`).
-
-  Satu string punya prop sendiri: `clearLabel` (DatePicker), `dotsLabel` (Carousel), `label` (LoadingBar), dan `errorText` (Attachment). Fungsi dari nama atau angka juga punya prop sendiri: `removeLabel` (Combobox, FileInput), `pageLabel` (Pagination), dan `goLabel` (Steps).
 
 - **Keyboard**: tombol panah bergerak di dalam komponen majemuk (tab, menu, tree, grid, carousel, langkah). Tombol ← dan → mengikuti arah baca di RTL. `Home` dan `End` melompat ke item pertama dan terakhir. `Esc` menutup apa pun yang melayang. `Enter` dan `Space` mengaktifkan. Cincin fokusnya `2px` aksen dengan `outline-offset: 2px`, hanya pada `:focus-visible`.
 - **Kontras**: token teks minimal 4.5:1 di atas `bg` dan `surface` di kedua tema. Isian yang membawa teks juga membawanya minimal 4.5:1 (accent, badge, info, danger). `prefers-reduced-motion` mengatur setiap durasi menjadi nol.

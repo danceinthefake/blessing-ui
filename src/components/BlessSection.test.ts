@@ -3,10 +3,10 @@ import BlessSection from "./BlessSection.vue";
 import BlessWatermark from "./BlessWatermark.vue";
 
 test("BlessWatermark is decorative and positioned", () => {
-  const w = mount(BlessWatermark, { props: { text: "News", position: "bottom-left" } });
+  const w = mount(BlessWatermark, { props: { text: "News", position: "bottom-start" } });
   expect(w.attributes("aria-hidden")).toBe("true");
   expect(w.text()).toBe("News");
-  expect(w.classes()).toContain("bless-watermark--bottom-left");
+  expect(w.classes()).toContain("bless-watermark--bottom-start");
 });
 
 test("BlessSection uses title as watermark and heading", () => {

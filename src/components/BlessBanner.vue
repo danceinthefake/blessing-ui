@@ -1,6 +1,7 @@
 <script setup lang="ts">
+import { useLabelPack } from "../composables/useLabels";
 import { readStore, writeStore } from "../composables/storage";
-import { onMounted, ref } from "vue";
+import { onMounted, ref, computed } from "vue";
 
 defineOptions({ name: "BlessBanner" });
 
@@ -10,12 +11,18 @@ const props = withDefaults(
     dismissible?: boolean;
     /** a `localStorage` key. A dismissed banner stays gone on the next visit. */
     persist?: string;
-    closeLabel?: string;
     /** names the region */
     label?: string;
+    labels?: Partial<{ close: string }>;
   }>(),
-  { color: "text", dismissible: true, closeLabel: "Dismiss", label: "Announcement" },
+  { color: "text", dismissible: true, label: "Announcement" },
 );
+const pack = useLabelPack("BlessBanner");
+const text = computed(() => ({
+  close: "Dismiss",
+  ...pack(),
+  ...props.labels,
+}));
 
 const open = defineModel<boolean>({ default: true });
 const emit = defineEmits<{ dismiss: [] }>();
@@ -46,7 +53,7 @@ function close() {
       v-if="dismissible"
       type="button"
       class="bless-banner__close"
-      :aria-label="closeLabel"
+      :aria-label="text.close"
       @click="close"
     >
       <span aria-hidden="true">×</span>

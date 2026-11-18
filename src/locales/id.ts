@@ -252,6 +252,39 @@ import type BlessUnitConverter from "../components/BlessUnitConverter.vue";
 import type BlessUploader from "../components/BlessUploader.vue";
 import type BlessUptimeBar from "../components/BlessUptimeBar.vue";
 
+import type BlessActionSheet from "../components/BlessActionSheet.vue";
+import type BlessAlert from "../components/BlessAlert.vue";
+import type BlessAlertDialog from "../components/BlessAlertDialog.vue";
+import type BlessAttachment from "../components/BlessAttachment.vue";
+import type BlessAudioPlayer from "../components/BlessAudioPlayer.vue";
+import type BlessBanner from "../components/BlessBanner.vue";
+import type BlessBottomTabs from "../components/BlessBottomTabs.vue";
+import type BlessBubble from "../components/BlessBubble.vue";
+import type BlessCarousel from "../components/BlessCarousel.vue";
+import type BlessChip from "../components/BlessChip.vue";
+import type BlessCombobox from "../components/BlessCombobox.vue";
+import type BlessConfirmPopup from "../components/BlessConfirmPopup.vue";
+import type BlessDatePicker from "../components/BlessDatePicker.vue";
+import type BlessDrawer from "../components/BlessDrawer.vue";
+import type BlessFileInput from "../components/BlessFileInput.vue";
+import type BlessGallery from "../components/BlessGallery.vue";
+import type BlessInfiniteScroll from "../components/BlessInfiniteScroll.vue";
+import type BlessInplace from "../components/BlessInplace.vue";
+import type BlessJsonViewer from "../components/BlessJsonViewer.vue";
+import type BlessMessageScroller from "../components/BlessMessageScroller.vue";
+import type BlessModal from "../components/BlessModal.vue";
+import type BlessPagination from "../components/BlessPagination.vue";
+import type BlessPasswordInput from "../components/BlessPasswordInput.vue";
+import type BlessPullToRefresh from "../components/BlessPullToRefresh.vue";
+import type BlessSheet from "../components/BlessSheet.vue";
+import type BlessSignaturePad from "../components/BlessSignaturePad.vue";
+import type BlessSplash from "../components/BlessSplash.vue";
+import type BlessSplitButton from "../components/BlessSplitButton.vue";
+import type BlessSplitView from "../components/BlessSplitView.vue";
+import type BlessStage from "../components/BlessStage.vue";
+import type BlessSteps from "../components/BlessSteps.vue";
+import type BlessToaster from "../components/BlessToaster.vue";
+
 /** every word of one component: its `labels` prop, with no key left out */
 type All<C> = C extends new (...a: never[]) => { $props: { labels?: infer L } }
   ? Required<NonNullable<L>>
@@ -524,6 +557,38 @@ export type BlessLabelsFull = {
   BlessWorkInstructions: All<typeof BlessWorkInstructions>;
   BlessWorkOrderCard: All<typeof BlessWorkOrderCard>;
   BlessWorkoutLog: All<typeof BlessWorkoutLog>;
+  BlessActionSheet: All<typeof BlessActionSheet>;
+  BlessAlert: All<typeof BlessAlert>;
+  BlessAlertDialog: All<typeof BlessAlertDialog>;
+  BlessAttachment: All<typeof BlessAttachment>;
+  BlessAudioPlayer: All<typeof BlessAudioPlayer>;
+  BlessBanner: All<typeof BlessBanner>;
+  BlessBottomTabs: All<typeof BlessBottomTabs>;
+  BlessBubble: All<typeof BlessBubble>;
+  BlessCarousel: All<typeof BlessCarousel>;
+  BlessChip: All<typeof BlessChip>;
+  BlessCombobox: All<typeof BlessCombobox>;
+  BlessConfirmPopup: All<typeof BlessConfirmPopup>;
+  BlessDatePicker: All<typeof BlessDatePicker>;
+  BlessDrawer: All<typeof BlessDrawer>;
+  BlessFileInput: All<typeof BlessFileInput>;
+  BlessGallery: All<typeof BlessGallery>;
+  BlessInfiniteScroll: All<typeof BlessInfiniteScroll>;
+  BlessInplace: All<typeof BlessInplace>;
+  BlessJsonViewer: All<typeof BlessJsonViewer>;
+  BlessMessageScroller: All<typeof BlessMessageScroller>;
+  BlessModal: All<typeof BlessModal>;
+  BlessPagination: All<typeof BlessPagination>;
+  BlessPasswordInput: All<typeof BlessPasswordInput>;
+  BlessPullToRefresh: All<typeof BlessPullToRefresh>;
+  BlessSheet: All<typeof BlessSheet>;
+  BlessSignaturePad: All<typeof BlessSignaturePad>;
+  BlessSplash: All<typeof BlessSplash>;
+  BlessSplitButton: All<typeof BlessSplitButton>;
+  BlessSplitView: All<typeof BlessSplitView>;
+  BlessStage: All<typeof BlessStage>;
+  BlessSteps: All<typeof BlessSteps>;
+  BlessToaster: All<typeof BlessToaster>;
 };
 
 const copy = { copy: "Salin", copied: "Tersalin", copiedLive: "Disalin ke papan klip" };
@@ -1024,6 +1089,7 @@ export const labelsId: BlessLabelsFull = {
     updated: (w) => `Kurs per ${w}`,
   },
   BlessDataTable: {
+    search: "Cari baris",
     selectPage: "Pilih halaman",
     rowsPerPage: "Baris per halaman",
     selectRow: (n) => `Pilih ${n}`,
@@ -1682,6 +1748,8 @@ export const labelsId: BlessLabelsFull = {
   },
   BlessPhoneInput: { country: "Kode negara", number: "Nomor telepon" },
   BlessPickList: {
+    source: "Tersedia",
+    target: "Dipilih",
     moveSelected: (to) => `Pindahkan yang dipilih ke ${to}`,
     moveAll: (to) => `Pindahkan semua ke ${to}`,
     moved: (n, to) => `${n} dipindah ke ${to}`,
@@ -2462,6 +2530,43 @@ export const labelsId: BlessLabelsFull = {
     volume: (t) => `Volume ${t}`,
     field: (w, n) => `${w}, set ${n}`,
   },
+  BlessActionSheet: { cancel: "Batal" },
+  BlessAlert: { close: "Tutup" },
+  BlessAlertDialog: { confirm: "Konfirmasi", cancel: "Batal" },
+  BlessAttachment: { remove: "Hapus", error: "Gagal mengunggah" },
+  BlessAudioPlayer: { play: "Putar", seek: "Geser posisi" },
+  BlessBanner: { close: "Tutup" },
+  BlessBottomTabs: { badge: "baru" },
+  BlessBubble: { more: "Tampilkan lebih banyak", less: "Tampilkan lebih sedikit" },
+  BlessCarousel: {
+    prev: "Slide sebelumnya",
+    next: "Slide berikutnya",
+    pause: "Jeda slide",
+    dots: "Slide",
+  },
+  BlessChip: { remove: "Hapus" },
+  BlessCombobox: { remove: (n) => `Hapus ${n}` },
+  BlessConfirmPopup: { confirm: "Konfirmasi", cancel: "Batal" },
+  BlessDatePicker: { clear: "Hapus tanggal" },
+  BlessDrawer: { close: "Tutup" },
+  BlessFileInput: { remove: (n) => `Hapus ${n}` },
+  BlessGallery: { prev: "Sebelumnya", next: "Berikutnya" },
+  BlessInfiniteScroll: { more: "Muat lebih banyak" },
+  BlessInplace: { close: "Tutup" },
+  BlessJsonViewer: { root: "akar" },
+  BlessMessageScroller: { jump: "Terbaru" },
+  BlessModal: { close: "Tutup" },
+  BlessPagination: { prev: "Sebelumnya", next: "Berikutnya", page: (n) => `Halaman ${n}` },
+  BlessPasswordInput: { show: "Tampilkan kata sandi" },
+  BlessPullToRefresh: { refreshing: "Memuat ulang" },
+  BlessSheet: { close: "Tutup" },
+  BlessSignaturePad: { clear: "Hapus" },
+  BlessSplash: { skip: "Lewati" },
+  BlessSplitButton: { menu: "Aksi lain" },
+  BlessSplitView: { back: "Kembali" },
+  BlessStage: { menu: "Menu" },
+  BlessSteps: { go: (n, l) => `Ke langkah ${n}: ${l}` },
+  BlessToaster: { close: "Tutup" },
 };
 
 import type BlessVariantPicker from "../components/BlessVariantPicker.vue";

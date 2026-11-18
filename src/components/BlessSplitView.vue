@@ -1,6 +1,7 @@
 <script setup lang="ts">
+import { useLabelPack } from "../composables/useLabels";
 import { readStore, writeStore } from "../composables/storage";
-import { nextTick, onBeforeUnmount, onMounted, ref, watch } from "vue";
+import { nextTick, onBeforeUnmount, onMounted, ref, watch, computed } from "vue";
 import BlessResizable from "./BlessResizable.vue";
 
 defineOptions({ name: "BlessSplitView" });
@@ -13,12 +14,18 @@ const props = withDefaults(
     max?: number;
     /** remember the divider in localStorage under this key */
     storageKey?: string;
-    /** text of the button that goes back from the detail when stacked */
-    backLabel?: string;
     label?: string;
+    labels?: Partial<{ back: string }>;
   }>(),
-  { breakpoint: 560, min: 20, max: 60, backLabel: "Back", label: "Resize list" },
+  { breakpoint: 560, min: 20, max: 60, label: "Resize list" },
 );
+const pack = useLabelPack("BlessSplitView");
+const text = computed(() => ({
+  back: "Back",
+  ...pack(),
+  ...props.labels,
+}));
+
 /** master pane width in % */
 const size = defineModel<number>({ default: 35 });
 /** when stacked: is the detail showing (true) or the list (false)? */
@@ -73,7 +80,7 @@ function back() {
       </div>
       <div v-show="detail" ref="detailEl" class="bless-split__pane" tabindex="-1">
         <button type="button" class="bless-split__back" @click="back">
-          <span aria-hidden="true">←</span> {{ backLabel }}
+          <span aria-hidden="true">←</span> {{ text.back }}
         </button>
         <slot name="detail" :stacked="true" />
       </div>

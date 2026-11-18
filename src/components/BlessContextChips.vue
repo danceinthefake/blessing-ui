@@ -47,7 +47,7 @@ const text = computed(() => ({
           :label="c.label"
           size="sm"
           removable
-          :remove-label="text.remove"
+          :labels="{ remove: text.remove }"
           @remove="emit('remove', c.id)"
         >
           <span class="bless-ctxchips__kind">{{ text[c.kind] }}</span>{{ " "

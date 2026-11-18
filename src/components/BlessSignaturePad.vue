@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { onBeforeUnmount, onMounted, ref, watch } from "vue";
+import { useLabelPack } from "../composables/useLabels";
+import { onBeforeUnmount, onMounted, ref, watch, computed } from "vue";
 import BlessButton from "./BlessButton.vue";
 
 defineOptions({ name: "BlessSignaturePad" });
@@ -10,22 +11,28 @@ const props = withDefaults(
     lineWidth?: number;
     color?: string;
     label?: string;
-    clearLabel?: string;
     /** shown under an empty pad */
     hint?: string;
     disabled?: boolean;
     /** export format */
     type?: "image/png" | "image/jpeg" | "image/webp";
+    labels?: Partial<{ clear: string }>;
   }>(),
   {
     height: 160,
     lineWidth: 2,
     label: "Signature",
-    clearLabel: "Clear",
     hint: "Sign above",
     type: "image/png",
   },
 );
+const pack = useLabelPack("BlessSignaturePad");
+const text = computed(() => ({
+  clear: "Clear",
+  ...pack(),
+  ...props.labels,
+}));
+
 /** data URL of the drawing; empty when blank */
 const model = defineModel<string>({ default: "" });
 const emit = defineEmits<{ end: [dataUrl: string] }>();
@@ -111,7 +118,7 @@ defineExpose({ clear, isEmpty: () => empty.value });
       <span class="bless-signature__hint">{{ empty ? hint : "" }}</span>
       <slot name="actions" :clear :empty>
         <BlessButton size="sm" variant="outline" :disabled="empty || disabled" @click="clear">{{
-          clearLabel
+          text.clear
         }}</BlessButton>
       </slot>
     </div>

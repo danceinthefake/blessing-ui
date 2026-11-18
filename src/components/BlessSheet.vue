@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { nextTick, onMounted, ref, useId, watch } from "vue";
+import { useLabelPack } from "../composables/useLabels";
+import { nextTick, onMounted, ref, useId, watch, computed } from "vue";
 
 defineOptions({ name: "BlessSheet" });
 
@@ -9,12 +10,18 @@ const props = withDefaults(
     title?: string;
     size?: string;
     dismissible?: boolean;
-    closeLabel?: string;
     /** bottom drawer: show drag handle and allow swipe-down to close */
     handle?: boolean;
+    labels?: Partial<{ close: string }>;
   }>(),
-  { side: "right", dismissible: true, closeLabel: "Close" },
+  { side: "right", dismissible: true },
 );
+const pack = useLabelPack("BlessSheet");
+const text = computed(() => ({
+  close: "Close",
+  ...pack(),
+  ...props.labels,
+}));
 
 const open = defineModel<boolean>({ default: false });
 const emit = defineEmits<{ close: [] }>();
@@ -91,7 +98,7 @@ function onUp() {
       <button
         type="button"
         class="bless-sheet__close"
-        :aria-label="closeLabel"
+        :aria-label="text.close"
         @click="open = false"
       >
         <span aria-hidden="true">×</span>

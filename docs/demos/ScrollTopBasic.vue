@@ -4,7 +4,7 @@ import { BlessScrollTop } from "blessing-ui";
 
 <template>
   <small
-    >Scroll this page past 300px — a skewed ↑ button appears bottom-right (fixed to the
+    >Scroll this page past 300px — a skewed ↑ button appears bottom-end (fixed to the
     window).</small
   >
   <BlessScrollTop />

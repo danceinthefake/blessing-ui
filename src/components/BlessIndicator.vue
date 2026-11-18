@@ -10,12 +10,12 @@ const props = withDefaults(
     value?: number | boolean;
     max?: number;
     color?: "accent" | "danger" | "success" | "warning" | "info" | "text";
-    position?: "top-right" | "top-left" | "bottom-right" | "bottom-left";
+    position?: "top-end" | "top-start" | "bottom-end" | "bottom-start";
     /** wrapped element is inline (icon) vs block */
     inline?: boolean;
     label?: string;
   }>(),
-  { max: 99, color: "text", position: "top-right", inline: true },
+  { max: 99, color: "text", position: "top-end", inline: true },
 );
 const text = computed(() =>
   typeof props.value === "number"
@@ -86,25 +86,29 @@ const show = computed(
   height: 10px;
   padding: 0;
 }
-.bless-indicator__badge--top-right {
+/* the badge leans out past the end corner, which is on the left in RTL */
+.bless-indicator__badge:dir(rtl) {
+  --_flip: -1;
+}
+.bless-indicator__badge--top-end {
   top: 0;
-  right: 0;
-  translate: 40% -40%;
+  inset-inline-end: 0;
+  translate: calc(40% * var(--_flip, 1)) -40%;
 }
-.bless-indicator__badge--top-left {
+.bless-indicator__badge--top-start {
   top: 0;
-  left: 0;
-  translate: -40% -40%;
+  inset-inline-start: 0;
+  translate: calc(-40% * var(--_flip, 1)) -40%;
 }
-.bless-indicator__badge--bottom-right {
+.bless-indicator__badge--bottom-end {
   bottom: 0;
-  right: 0;
-  translate: 40% 40%;
+  inset-inline-end: 0;
+  translate: calc(40% * var(--_flip, 1)) 40%;
 }
-.bless-indicator__badge--bottom-left {
+.bless-indicator__badge--bottom-start {
   bottom: 0;
-  left: 0;
-  translate: -40% 40%;
+  inset-inline-start: 0;
+  translate: calc(-40% * var(--_flip, 1)) 40%;
 }
 .bless-indicator__badge--accent {
   background: var(--bless-color-accent);

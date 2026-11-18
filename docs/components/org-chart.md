@@ -27,7 +27,7 @@ Who reports to whom, drawn top-down: a team, a cast and crew, a small hierarchy 
 ## Usage
 
 ```ts
-import { BlessOrgChart, BlessOrgChartNode } from "blessing-ui";
+import { BlessOrgChart } from "blessing-ui";
 ```
 
 ## API
@@ -35,7 +35,3 @@ import { BlessOrgChart, BlessOrgChartNode } from "blessing-ui";
 ### BlessOrgChart
 
 <PropsTable name="BlessOrgChart" />
-
-### BlessOrgChartNode
-
-<PropsTable name="BlessOrgChartNode" />

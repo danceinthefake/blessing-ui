@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useLabelPack } from "../composables/useLabels";
 import { computed } from "vue";
 import BlessProgress from "./BlessProgress.vue";
 import BlessSpinner from "./BlessSpinner.vue";
@@ -19,12 +20,18 @@ const props = withDefaults(
     progress?: number;
     size?: "sm" | "md";
     removable?: boolean;
-    removeLabel?: string;
-    /** shown for `state="error"` */
-    errorText?: string;
+    labels?: Partial<{ remove: string; error: string }>;
   }>(),
-  { state: "idle", size: "md", removeLabel: "Remove", errorText: "Upload failed" },
+  { state: "idle", size: "md" },
 );
+const pack = useLabelPack("BlessAttachment");
+const text = computed(() => ({
+  remove: "Remove",
+  error: "Upload failed",
+  ...pack(),
+  ...props.labels,
+}));
+
 const emit = defineEmits<{ remove: [] }>();
 const ext = computed(() => props.name.split(".").pop()?.slice(0, 4).toUpperCase() ?? "");
 </script>
@@ -56,7 +63,7 @@ const ext = computed(() => props.name.split(".").pop()?.slice(0, 4).toUpperCase(
       <a v-if="href" :href class="bless-attachment__name bless-attachment__link">{{ name }}</a>
       <span v-else class="bless-attachment__name">{{ name }}</span>
       <span v-if="description || state === 'error'" class="bless-attachment__desc">
-        <slot name="description">{{ state === "error" ? errorText : description }}</slot>
+        <slot name="description">{{ state === "error" ? text.error : description }}</slot>
       </span>
       <BlessProgress
         v-if="state === 'uploading' && progress != null"
@@ -71,7 +78,7 @@ const ext = computed(() => props.name.split(".").pop()?.slice(0, 4).toUpperCase(
         v-if="removable"
         type="button"
         class="bless-attachment__remove"
-        :aria-label="`${removeLabel} ${name}`"
+        :aria-label="`${text.remove} ${name}`"
         @click="emit('remove')"
       >
         <span aria-hidden="true">×</span>

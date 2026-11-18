@@ -1,19 +1,26 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { useLabelPack } from "../composables/useLabels";
+import { ref, computed } from "vue";
 import BlessInput from "./BlessInput.vue";
 import BlessPasswordMeter from "./BlessPasswordMeter.vue";
 
 defineOptions({ name: "BlessPasswordInput", inheritAttrs: false });
 
-withDefaults(
+const props = withDefaults(
   defineProps<{
     /** show the strength meter under the field */
     meter?: boolean;
-    /** the reveal button's name; its pressed state says whether it's showing */
-    showLabel?: string;
+    labels?: Partial<{ show: string }>;
   }>(),
-  { showLabel: "Show password" },
+  {},
 );
+const pack = useLabelPack("BlessPasswordInput");
+const text = computed(() => ({
+  show: "Show password",
+  ...pack(),
+  ...props.labels,
+}));
+
 const model = defineModel<string>({ default: "" });
 const shown = ref(false);
 </script>
@@ -32,7 +39,7 @@ const shown = ref(false);
         <button
           type="button"
           class="bless-password__toggle"
-          :aria-label="showLabel"
+          :aria-label="text.show"
           :aria-pressed="shown"
           @click="shown = !shown"
         >

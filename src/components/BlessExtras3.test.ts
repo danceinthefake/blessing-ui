@@ -270,7 +270,7 @@ test("BlessBlockUI inerts content, BlessInplace swaps, BlessDeferredContent defe
   expect(b.find(".bless-block__content").attributes("inert")).toBeDefined();
   expect(b.find('[role="status"]').text()).toBe("Busy");
   const i = mount(BlessInplace, {
-    props: { closable: true },
+    props: { dismissible: true },
     slots: { display: "view", content: "<input>" },
   });
   await i.find(".bless-inplace__display").trigger("click");

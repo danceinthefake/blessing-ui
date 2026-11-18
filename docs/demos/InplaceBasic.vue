@@ -6,7 +6,7 @@ const title = ref("第3話 フラグの立たない");
 
 <template>
   <div class="col">
-    <BlessInplace closable>
+    <BlessInplace dismissible>
       <template #display>{{ title || "Click to edit" }}</template>
       <template #content="{ close }"
         ><BlessInput v-model="title" size="sm" @keydown.enter="close"

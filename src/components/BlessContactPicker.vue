@@ -83,7 +83,7 @@ function pick(id: string, checked: boolean) {
         :label="byId.get(id)?.name ?? id"
         size="sm"
         removable
-        :remove-label="text.remove"
+        :labels="{ remove: text.remove }"
         @remove="pick(id, false)"
       />
     </div>

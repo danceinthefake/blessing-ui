@@ -65,7 +65,7 @@ Pass a ref or a getter, and the words change when it changes. The demo above doe
 
 A pack covers components that have a `labels` prop. These words stay separate:
 
-- Props that name a single thing, such as `label`, `placeholder`, `emptyText`, `closeLabel`, and `removeLabel`. You pass them on each component.
+- Props that name a single thing, such as `label`, `placeholder`, and `emptyText`. You pass them on each component.
 - `BlessPasswordMeter`, whose `labels` is a list of strength words in order.
 - Dates, numbers, and time zones. They use `Intl` with the `locale` prop, or the language of the browser.
 

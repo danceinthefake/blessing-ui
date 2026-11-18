@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useLabelPack } from "../composables/useLabels";
 import { computed, nextTick, onMounted, ref, watch } from "vue";
 import { useFieldId, useFieldState } from "../composables/useFieldId";
 import { useFloating } from "../composables/useFloating";
@@ -20,17 +21,21 @@ const props = withDefaults(
     /** prefer native <input type=date> on coarse pointers (touch) */
     nativeOnTouch?: boolean;
     size?: "sm" | "md" | "lg";
-    /** accessible name of the clear button */
-    clearLabel?: string;
+    labels?: Partial<{ clear: string }>;
   }>(),
   {
     locale: "ja-JP",
     nativeOnTouch: true,
     size: "md",
     placeholder: "Select date",
-    clearLabel: "Clear date",
   },
 );
+const pack = useLabelPack("BlessDatePicker");
+const words = computed(() => ({
+  clear: "Clear date",
+  ...pack(),
+  ...props.labels,
+}));
 
 const model = defineModel<string | [string, string] | undefined>();
 const id = useFieldId(props)();
@@ -125,7 +130,7 @@ function clear() {
         v-if="text && !disabled"
         type="button"
         class="bless-datepicker__clear"
-        :aria-label="clearLabel"
+        :aria-label="words.clear"
         @click="clear"
       >
         ×

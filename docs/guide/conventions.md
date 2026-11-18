@@ -38,14 +38,9 @@ What holds across all 437 components. If a component breaks one of these rules, 
 - **Role and name on everything composite**: menus, listboxes, tablists, grids, trees, dialogs, switches, and sliders. Every icon-only control has an `aria-label`. Every field is associated with its label (`BlessField` does it for you).
 - **Built-in wording is replaceable.** A `labels` prop supplies the text that a component says for you, for example buttons, hints, and screen-reader announcements. The prop is a `Partial`, so you override only what you need. A message that carries numbers or names is a function of them: `:labels="{ grabbed: (i, n) => `Diambil ${i} dari ${n}` }"`. To replace the words of many components at once, use a [label pack](./translating).
 
-  These components have a `labels` prop:
-
-  - Sortable, Kanban, Timer, SliderCaptcha, Cropper, ShortcutRecorder, CodeBlock, Gantt, Calendar, InputNumber, DataTable, DataView, OrderList, PickList, Marquee, Uploader.
-  - Editor (by tool key), Stepper, Tour, SwipeDeck, Questionnaire, ThemeToggle, InfiniteCanvas, NodeGraph, Treemap.
+  Every component that says words of its own takes them from `labels`. This includes a single word, for example the close button of Modal (`labels.close`). It also includes a message that is a function of a name or a number, for example `labels.remove` (Combobox, FileInput) and `labels.page` (Pagination).
 
   The words that a component starts with are ordinary props with those defaults, so they need no `labels` entry. These props are `label`, `placeholder`, and `emptyText`. The empty states of DataView and SwipeDeck also take `labels.empty` (or the `#empty` slot).
-
-  A single string has its own prop instead: `clearLabel` (DatePicker), `dotsLabel` (Carousel), `label` (LoadingBar), and `errorText` (Attachment). Functions of a name or number also have their own props: `removeLabel` (Combobox, FileInput), `pageLabel` (Pagination), and `goLabel` (Steps).
 
 - **Keyboard**: arrow keys move inside a composite (tabs, menus, trees, grids, carousels, steps). The ← and → keys follow the reading direction in RTL. `Home` and `End` jump to the first and last item. `Esc` closes anything that floats. `Enter` and `Space` activate. The focus ring is `2px` accent with `outline-offset: 2px`, on `:focus-visible` only.
 - **Contrast**: text tokens are at least 4.5:1 on `bg` and `surface` in both themes. Fills that carry text also carry it at at least 4.5:1 (accent, badge, info, danger). `prefers-reduced-motion` sets every duration to zero.

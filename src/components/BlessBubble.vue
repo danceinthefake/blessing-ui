@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { useLabelPack } from "../composables/useLabels";
+import { ref, computed } from "vue";
 
 defineOptions({ name: "BlessBubble" });
 
@@ -10,7 +11,7 @@ export interface BlessReaction {
   active?: boolean;
 }
 
-withDefaults(
+const props = withDefaults(
   defineProps<{
     variant?: "surface" | "accent" | "outline" | "plain";
     align?: "start" | "end";
@@ -18,11 +19,18 @@ withDefaults(
     collapsible?: boolean;
     lines?: number;
     reactions?: BlessReaction[];
-    moreLabel?: string;
-    lessLabel?: string;
+    labels?: Partial<{ more: string; less: string }>;
   }>(),
-  { variant: "surface", align: "start", lines: 4, moreLabel: "Show more", lessLabel: "Show less" },
+  { variant: "surface", align: "start", lines: 4 },
 );
+const pack = useLabelPack("BlessBubble");
+const text = computed(() => ({
+  more: "Show more",
+  less: "Show less",
+  ...pack(),
+  ...props.labels,
+}));
+
 const emit = defineEmits<{ react: [reaction: BlessReaction] }>();
 const expanded = ref(false);
 </script>
@@ -45,7 +53,7 @@ const expanded = ref(false);
       :aria-expanded="expanded"
       @click="expanded = !expanded"
     >
-      {{ expanded ? lessLabel : moreLabel }}
+      {{ expanded ? text.less : text.more }}
     </button>
     <div v-if="reactions?.length" class="bless-bubble__reactions">
       <button

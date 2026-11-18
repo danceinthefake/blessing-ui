@@ -26,7 +26,7 @@ The floating panel is a `<div>`. HTML closes a `<p>` at a `<div>`. For this reas
 :::
 
 - Opening moves focus to Cancel, the safe choice. Confirming or canceling returns it to the trigger.
-- `@confirm` / `@cancel`. Name the action in `confirmLabel` ("Remove", not "OK").
+- `@confirm` / `@cancel`. Name the action in `labels.confirm` ("Remove", not "OK").
 
 ## Usage
 

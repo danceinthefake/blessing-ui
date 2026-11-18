@@ -12,7 +12,7 @@ const unread = ref(3);
     <BlessIndicator :value="120" color="danger" label="120 alerts"
       ><BlessButton variant="outline">Alerts</BlessButton></BlessIndicator
     >
-    <BlessIndicator :value="true" color="success" position="bottom-right" label="online"
+    <BlessIndicator :value="true" color="success" position="bottom-end" label="online"
       ><BlessAvatar name="Megumi Kato"
     /></BlessIndicator>
     <BlessIndicator :value="0" label="0 drafts"

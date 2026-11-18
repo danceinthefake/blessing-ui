@@ -72,7 +72,6 @@ export { default as BlessHoverCard } from "./components/BlessHoverCard.vue";
 export { default as BlessDropdownMenu } from "./components/BlessDropdownMenu.vue";
 export { default as BlessContextMenu } from "./components/BlessContextMenu.vue";
 export { default as BlessMenubar } from "./components/BlessMenubar.vue";
-export { default as BlessMenuList } from "./components/BlessMenuList.vue";
 export type { BlessMenuItem } from "./components/menu";
 export { default as BlessSheet } from "./components/BlessSheet.vue";
 export { default as BlessDrawer } from "./components/BlessDrawer.vue";

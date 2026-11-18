@@ -23,6 +23,8 @@ export default defineConfig({
   srcExclude: ["blocks/README.md"],
   cleanUrls: true,
   lastUpdated: true,
+  // github-light puts red and green under 4.5:1 on the light surface; the high-contrast one does not
+  markdown: { theme: { light: "github-light-high-contrast", dark: "github-dark" } },
   head: [
     ["link", { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" }],
     // Before first paint, mirror VitePress's saved appearance onto data-theme (what the library's

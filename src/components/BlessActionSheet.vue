@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { watch } from "vue";
+import { useLabelPack } from "../composables/useLabels";
+import { watch, computed } from "vue";
 import BlessDrawer from "./BlessDrawer.vue";
 
 defineOptions({ name: "BlessActionSheet" });
@@ -13,18 +14,25 @@ export interface BlessAction {
   disabled?: boolean;
 }
 
-withDefaults(
+const props = withDefaults(
   defineProps<{
     actions: BlessAction[];
     title?: string;
     /** icon grid instead of a list */
     grid?: boolean;
-    cancelLabel?: string;
     /** show a cancel row at the bottom */
     cancel?: boolean;
+    labels?: Partial<{ cancel: string }>;
   }>(),
-  { cancelLabel: "Cancel", cancel: true },
+  { cancel: true },
 );
+const pack = useLabelPack("BlessActionSheet");
+const text = computed(() => ({
+  cancel: "Cancel",
+  ...pack(),
+  ...props.labels,
+}));
+
 const open = defineModel<boolean>("open", { default: false });
 const emit = defineEmits<{ select: [action: BlessAction]; cancel: [] }>();
 // closing after a pick fires the drawer's close too; that close is not a cancel
@@ -74,7 +82,7 @@ function onClose() {
     </div>
     <template v-if="cancel" #footer>
       <button type="button" class="bless-actionsheet__cancel" @click="dismiss">
-        {{ cancelLabel }}
+        {{ text.cancel }}
       </button>
     </template>
   </BlessDrawer>

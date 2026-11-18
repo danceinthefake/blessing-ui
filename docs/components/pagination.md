@@ -23,7 +23,7 @@ Moving between pages of results. For a feed people read to the end, [InfiniteScr
 
 - With `href`, pages are links (through your router when provided), so each page has a URL. Without it they are buttons and `v-model` holds the page.
 - `siblings` sets how many pages show either side of the current one. The rest collapse to `…`.
-- The current page has `aria-current="page"`. `prevLabel` / `nextLabel` name the arrows.
+- The current page has `aria-current="page"`. `labels.prev` / `labels.next` name the arrows.
 
 ## Usage
 

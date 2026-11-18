@@ -4,9 +4,9 @@ defineOptions({ name: "BlessWatermark" });
 withDefaults(
   defineProps<{
     text: string;
-    position?: "top-right" | "top-left" | "bottom-right" | "bottom-left";
+    position?: "top-end" | "top-start" | "bottom-end" | "bottom-start";
   }>(),
-  { position: "top-right" },
+  { position: "top-end" },
 );
 </script>
 
@@ -32,20 +32,20 @@ withDefaults(
   pointer-events: none;
   user-select: none;
 }
-.bless-watermark--top-right {
+.bless-watermark--top-end {
   top: -0.2em;
-  right: -0.05em;
+  inset-inline-end: -0.05em;
 }
-.bless-watermark--top-left {
+.bless-watermark--top-start {
   top: -0.2em;
-  left: -0.05em;
+  inset-inline-start: -0.05em;
 }
-.bless-watermark--bottom-right {
+.bless-watermark--bottom-end {
   bottom: -0.2em;
-  right: -0.05em;
+  inset-inline-end: -0.05em;
 }
-.bless-watermark--bottom-left {
+.bless-watermark--bottom-start {
   bottom: -0.2em;
-  left: -0.05em;
+  inset-inline-start: -0.05em;
 }
 </style>
