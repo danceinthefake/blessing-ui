@@ -12,6 +12,8 @@ Bahasa visualnya berasal dari [saenai.tv](https://www.saenai.tv/), situs resmi a
 
 Tiga lapis [gerak](../guide/motion) berasal dari anime itu sendiri, buatan A-1 Pictures dan CloverWorks: fokus lembut dan hanyutan di adegan tenangnya, kotak teks visual novel yang dibuat lingkaran itu, dan adegan komedinya yang singkat. [UniqueUI](https://github.com/pras75299/uniqueui) dan [Rare UI](https://github.com/swamimalode07/rare-ui) menunjukkan seberapa banyak gerak yang bisa dibawa library komponen. Kami tidak mengambil komponen atau kode dari keduanya.
 
+Halaman depan dibaca seperti light novel dalam bab. Di antara bab, halaman itu memakai dua kebiasaan anime TV: eyecatch, yaitu kartu judul singkat saat jeda, dan cuplikan episode berikutnya (次回予告) di akhir.
+
 Fon bawaannya adalah [Roboto](https://fonts.google.com/specimen/Roboto) karya Christian Robertson dan [Noto Sans JP](https://fonts.google.com/noto/specimen/Noto+Sans+JP) dari Google. Pustaka ini tidak menyertakannya. Anda memuatnya sendiri, seperti yang ditunjukkan [panduan fon](../guide/fonts).
 
 ## Pustaka pembanding

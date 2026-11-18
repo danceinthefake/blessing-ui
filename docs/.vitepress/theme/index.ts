@@ -15,7 +15,7 @@ import Demo from "./Demo.vue";
 import PropsTable from "./PropsTable.vue";
 import BlockDemo from "./BlockDemo.vue";
 import BlockFrame from "./BlockFrame.vue";
-import HomeSections from "./HomeSections.vue";
+import HomeBrochure from "./HomeBrochure.vue";
 
 export default {
   extends: DefaultTheme,
@@ -41,7 +41,6 @@ export default {
     }
     return h(DefaultTheme.Layout, null, {
       "layout-bottom": () => [h(BlessToaster), h(BlessDialogHost), h(BlessLoadingBar)],
-      "home-features-after": () => h(HomeSections),
       "nav-bar-content-after": () =>
         h(BlessPaletteToggle, { class: "nav-palette", showDefault: true }),
     });
@@ -60,5 +59,6 @@ export default {
     app.component("PropsTable", PropsTable);
     app.component("BlockDemo", BlockDemo);
     app.component("BlockFrame", BlockFrame);
+    app.component("HomeBrochure", HomeBrochure);
   },
 } satisfies Theme;
