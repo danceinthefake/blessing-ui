@@ -12,6 +12,8 @@ The visual language comes from [saenai.tv](https://www.saenai.tv/), the official
 
 The three [motion](../guide/motion) layers come from the anime itself, made by A-1 Pictures and CloverWorks: the soft focus and drift of its calm scenes, the text boxes of the visual novel that the circle makes, and its short comedy beats. [UniqueUI](https://github.com/pras75299/uniqueui) and [Rare UI](https://github.com/swamimalode07/rare-ui) showed how much motion a component library can carry. We took no components or code from them.
 
+The home page reads like a light novel in chapters. Between the chapters it uses two habits of TV anime: the eyecatch, which is a short title card at the break, and the next-episode preview (次回予告) at the end.
+
 The default fonts are [Roboto](https://fonts.google.com/specimen/Roboto) by Christian Robertson and [Noto Sans JP](https://fonts.google.com/noto/specimen/Noto+Sans+JP) by Google. The library does not bundle them. You load them yourself, as the [fonts guide](../guide/fonts) shows.
 
 ## Libraries we compared with

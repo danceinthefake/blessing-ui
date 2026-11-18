@@ -27,8 +27,6 @@
   --vp-button-brand-hover-text: var(--bless-color-on-text);
   --vp-button-brand-active-text: var(--bless-color-on-accent);
   --vp-button-brand-border: transparent;
-  --vp-home-hero-name-color: var(--bless-color-accent);
-  --vp-home-hero-name-background: none;
   --vp-code-tab-bg: var(--bless-color-surface);
   --vp-code-block-bg: var(--bless-color-surface);
   --vp-custom-block-tip-bg: var(--bless-color-surface);
@@ -52,19 +50,11 @@
 .VPButton.alt:hover {
   opacity: var(--bless-hover-opacity);
 }
-.VPFeature,
 .vp-doc div[class*="language-"],
 .VPLocalSearchBox .shell,
 .VPNavBarMenuGroup .menu,
 .custom-block {
   border-radius: var(--bless-radius);
-}
-.VPHero .name {
-  font-weight: var(--bless-font-weight-thin);
-  letter-spacing: var(--bless-tracking-tight);
-}
-.VPHero .text {
-  font-weight: var(--bless-font-weight-light);
 }
 /* the site's own headings; demos (.vp-raw) show the library's */
 .vp-doc :is(h1, h2):not(.vp-raw *) {
@@ -194,72 +184,7 @@
   height: 26px;
   margin-right: 0;
 }
-/* hero: oversized thin watermark behind, the thin mark as image */
-.VPHero {
-  position: relative;
-  overflow: hidden;
-}
-.VPHero::before {
-  content: "Blessing";
-  position: absolute;
-  right: -2vw;
-  top: 0.05em;
-  z-index: 0;
-  font-size: clamp(100px, 18vw, 260px);
-  font-weight: var(--bless-font-weight-thin);
-  line-height: 1;
-  letter-spacing: var(--bless-tracking-tight);
-  color: var(--bless-color-watermark);
-  transform: skewX(var(--bless-lean)); /* big display type leans at rest */
-  white-space: nowrap;
-  pointer-events: none;
-}
-.VPHero .container {
-  position: relative;
-  z-index: 1;
-}
-.VPHero .image-bg {
-  display: none;
-}
-/* product shot: a browser-framed screenshot of the full-site block, wider than the default 320px */
-.VPHero .image-container {
-  width: 100%;
-  max-width: 560px;
-  height: auto;
-  transform: none;
-}
-.VPHero .image {
-  margin: 0 0 24px;
-}
-/* phone: text leads, the watermark would collide with the nav */
-@media (max-width: 639px) {
-  .VPHero::before {
-    display: none;
-  }
-  .VPHero .image {
-    order: 3;
-    margin: 24px 0 0;
-  }
-}
-.VPHero .image-src {
-  border-radius: var(--bless-radius);
-  position: static;
-  width: 100%;
-  max-width: 560px;
-  max-height: none;
-  margin: 0 auto;
-  border: var(--bless-border-width) solid var(--bless-color-border);
-  box-shadow: var(--bless-shadow-plate);
-  transform: none;
-}
-@media (min-width: 960px) {
-  .VPHero .image {
-    flex-grow: 1;
-    max-width: 640px;
-  }
-}
-.VPNavBarTitle .title::after,
-.VPHero .name {
+.VPNavBarTitle .title::after {
   font-family: var(--bless-font-sans);
 }
 .dark .light-only,
@@ -278,7 +203,6 @@ html:not(.dark) .dark-only {
 
 /* one shape: VitePress's own rounded chrome goes square like the library
  * (html + doubled class: VitePress's scoped rules carry an attribute selector) */
-html .VPFeature.VPFeature,
 html .pager-link.pager-link,
 html .vp-doc .tabs.tabs,
 html .vp-doc button.copy.copy,

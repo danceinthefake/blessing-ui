@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+### Changed
+
+- The docs home page is now a brochure: chapters like a light novel, with eyecatch bands between them and a next-episode preview at the end. It uses the real components and the motion layers.
+
 ## 0.9.0 — 2026-11-18
 
 Motion in three layers, like the series that the library is named for: a soft base on every appearance, a game text box for the parts that talk, and opt-in flair for the comedy beats. Content now arrives, lists stagger, charts draw, and lists that reorder slide. Controls, fields, layout, and text stay still until someone engages them. See the [motion](https://ui.blessing.id/guide/motion) guide. The motion is on by default. If you want less, set `data-motion="calm"`. Reduced motion in the system still turns all of it off. The library still has no dependencies. No component API is removed or renamed.
