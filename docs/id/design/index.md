@@ -1,8 +1,12 @@
+---
+title: Bahasa desain
+---
+
 <script setup>
 import DesignRules from "../../demos/DesignRules.vue";
 </script>
 
-# Bahasa desain
+<Eyecatch kicker="Volume 03 · desain" title="Bahasa desain" num="03" :level="1" accent />
 
 Blessing UI mengambil enam benang filosofis dari _Saenai Heroine no Sodatekata_ sebagai aturan desainnya. Saat diam, sebuah kontrol tenang dan tegak. Saat diperhatikan, ia miring. Pilihan mengisinya dengan warna. Kelompok menyatukannya dengan tetangganya. Di sini benang-benang itu adalah prinsip abstrak. Semuanya tidak terikat pada karakter, palet, atau warna mana pun. [Cerita](./story) menjelaskan dari mana tampilan ini berasal. [Merek](./brand) menunjukkan cara menggambarnya.
 

@@ -5,6 +5,8 @@
 ### Changed
 
 - The docs home page is now a brochure: chapters like a light novel, with eyecatch bands between them and a next-episode preview at the end. It uses the real components and the motion layers.
+- The landing pages of the guide, the blocks, and the design open with an eyecatch band and a grid of cards. The guide has a new overview page.
+- Each docs page has a slim eyecatch over its title, and a page change wipes the content in. A Calm switch in the nav turns on calm motion for the whole site.
 
 ## 0.9.0 — 2026-11-18
 

@@ -6,9 +6,19 @@ title: Blocks
 import blocks from "../.vitepress/blocks.json";
 import { withBase } from "vitepress";
 const groups = [...new Set(blocks.map((b) => b.group))];
+const shots = ["news", "dashboard", "signin"];
+const cards = (g) =>
+  blocks
+    .filter((b) => b.group === g)
+    .map((b) => ({
+      title: b.title,
+      text: b.summary,
+      link: `/blocks/${b.slug}`,
+      img: shots.includes(b.slug) ? `/preview-${b.slug}.png` : undefined,
+    }));
 </script>
 
-# Blocks
+<Eyecatch kicker="Volume 02 · finished screens" title="Blocks" num="02" :level="1" />
 
 A block is a finished section, for example a news list, a schedule table, or a login form. Blessing components build it. It ships as **source that you copy into your project**. It is not a package that you import. Copy the folder and rename what you like. Then point its data at your backend. Use the offline `api.ts` if the block has one. Otherwise use the arrays at the top of `index.vue`.
 
@@ -27,9 +37,5 @@ Nothing crosses block folders. Delete one and the others still build.
 
 <div v-for="g in groups" :key="g">
   <h2>{{ g }}</h2>
-  <ul>
-    <li v-for="b in blocks.filter((x) => x.group === g)" :key="b.slug">
-      <a :href="withBase(`/blocks/${b.slug}`)"><strong>{{ b.title }}</strong></a> — {{ b.summary }}
-    </li>
-  </ul>
+  <ChapterCards :items="cards(g)" />
 </div>

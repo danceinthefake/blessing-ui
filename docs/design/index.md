@@ -1,8 +1,12 @@
+---
+title: Design language
+---
+
 <script setup>
 import DesignRules from "../demos/DesignRules.vue";
 </script>
 
-# Design language
+<Eyecatch kicker="Volume 03 · design" title="Design language" num="03" :level="1" accent />
 
 Blessing UI takes the six philosophical threads of _Saenai Heroine no Sodatekata_ as its design rules. At rest a control is calm and upright. A look at it makes it lean. A choice fills it with color. A group fuses it with its neighbors. Here the threads are abstract principles. They are not tied to any character, palette, or color. The [story](./story) tells where the look came from. The [brand](./brand) shows how it is drawn.
 

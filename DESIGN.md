@@ -743,9 +743,9 @@ The user chose the three layers from the motion study, with Saekano as the refer
 The user chose direction A from the brochure study (chapters like a light novel) with the eyecatch bands of direction B. The motion uses the library tokens, so calm motion and reduced motion work on the whole site.
 
 - ✅ Home page, `/` and `/id/`: `HomeBrochure.vue` with a prologue, three eyecatch bands, three chapters (live parts, the motion stage, the numbers and the blocks), and a next-episode epilogue. Each chapter arrives when it scrolls into view. The component count comes from the sidebar list, so it cannot go stale. Axe is clean in both themes, and there is no sideways scroll at 390 px.
-- ⏳ Landing pages: `/blocks/`, `/guide/`, `/design/` get a short chapter hero, an eyecatch band, and a card grid that staggers in.
-- ⏳ Leaf pages: a slim eyecatch strip over the title, demos that arrive with the base layer, a sidebar item that leans, and a wipe between pages through the View Transitions API.
-- ⏳ A calm-motion switch in the nav.
+- ✅ Landing pages: `/blocks/`, `/guide/` (new, EN and ID), and `/design/` open with an `Eyecatch` band as their h1, a volume number, and a `ChapterCards` grid that staggers in when it scrolls into view. The home page uses the same `Eyecatch`.
+- ✅ Leaf pages: `PageStrip` puts a slim eyecatch over the title with the volume, or the component group and number. Demos arrive with the base layer, the current sidebar item leans, and the content wipes in with the voice layer on a page change (View Transitions API). Reduced motion skips the wipe.
+- ✅ A calm-motion switch in the nav and in the phone menu. It sets `data-motion="calm"` on `<html>`, and a head script restores it before the first paint.
 
 ### Deliberately skipped
 
