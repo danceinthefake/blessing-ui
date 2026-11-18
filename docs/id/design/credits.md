@@ -45,6 +45,7 @@ Halaman [jenis situs](./site-types) membandingkan tiga daftar kategori situs dan
 Beberapa komponen memakai metode yang sudah dikenal. Kami menulis ulang masing-masing dari uraiannya.
 
 - [Gerak](../guide/motion) flair memakai squash and stretch, dari _The Illusion of Life_ karya Frank Thomas dan Ollie Johnston (1981).
+- Daftar yang disusun ulang meluncur dengan FLIP (First, Last, Invert, Play) oleh Paul Lewis (2015), melalui `<TransitionGroup>` milik Vue.
 - [Treemap](../../components/treemap) memakai tata letak squarified dari Bruls, Huijsmans, dan van Wijk (2000).
 - [Input kartu](../../components/card-input) memeriksa nomor dengan algoritma Luhn (Hans Peter Luhn, 1954).
 - Halaman [periksa jawaban](../../components/check-answers) mengikuti pola "Check answers" dari [GOV.UK Design System](https://design-system.service.gov.uk/patterns/check-answers/) karya Government Digital Service Inggris.

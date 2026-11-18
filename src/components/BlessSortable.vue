@@ -187,7 +187,13 @@ const side = (i: number) =>
       'bless-sortable--receiving': drop && !model.length,
     }"
   >
-    <ul
+    <TransitionGroup
+      tag="ul"
+      appear
+      appear-active-class="bless-appear"
+      enter-active-class="bless-arrive"
+      move-class="bless-move"
+      @leave="(_el: Element, done: () => void) => done()"
       class="bless-sortable__list"
       role="list"
       :aria-label="label"
@@ -222,7 +228,7 @@ const side = (i: number) =>
         </button>
         <span class="bless-sortable__body"><slot :item :index="i">{{ item }}</slot></span>
       </li>
-    </ul>
+    </TransitionGroup>
     <span :id="hint" hidden>{{ text.hint }}{{ group ? ` ${text.groupHint}` : "" }}</span>
     <span class="bless-sortable__live bless-sr" aria-live="polite">{{ live }}</span>
   </div>

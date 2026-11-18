@@ -41,6 +41,7 @@ export default defineConfig({
     // the docs demos import the library by name; point them at the source
     alias: { "blessing-ui": resolve(import.meta.dirname, "src/index.ts") },
     environment: "jsdom",
+    setupFiles: ["src/test/setup.ts"],
     include: ["src/**/*.test.ts"],
     passWithNoTests: true,
     globals: true,

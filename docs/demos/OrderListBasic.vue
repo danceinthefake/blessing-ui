@@ -11,7 +11,7 @@ const eps = ref([
 
 <template>
   <div class="col" style="max-width: 420px">
-    <BlessOrderList v-model="eps" />
+    <BlessOrderList v-model="eps" :row-key="(s: string) => s" />
     <small>drag, ↑ ↓ buttons, or focus a row and Alt+↑/↓</small>
   </div>
 </template>

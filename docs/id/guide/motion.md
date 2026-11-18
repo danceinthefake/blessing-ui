@@ -29,7 +29,7 @@ Hover tidak berubah. Kontrol memudar dan condong saat diperhatikan, dan tidak pe
 
 Daftar item datang satu per satu, berjarak `--bless-stagger`. Contohnya feed, linimasa, hasil pencarian, dan grid kartu. Item kedelapan dan seterusnya berbagi satu jeda, agar daftar panjang tidak membuat Anda menunggu. Batang tumbuh dari garis dasarnya, garis menggambar dirinya sendiri, dan titik-titik garis mendarat setelah garis lewat. Grafik memakai `--bless-duration-draw`. Dalam gerak tenang, semuanya memudar.
 
-Daftar yang Anda susun ulang, seperti [OrderList](../../components/order-list), tidak berurutan datang. Item yang berpindah akan memutar ulang kedatangannya.
+Daftar yang Anda susun ulang bekerja berbeda: baris [DataTable](../../components/data-table), kartu [Kanban](../../components/kanban), item [Sortable](../../components/sortable) dan [PlayQueue](../../components/play-queue), serta item [OrderList](../../components/order-list). Semuanya datang berurutan saat pertama dimuat, dan item baru naik. Saat Anda mengurutkan, menyeret, atau memindahkan item dengan keyboard, item meluncur ke tempat barunya. Item yang berpindah tidak memutar ulang kedatangannya. Agar bisa meluncur, beri komponen sebuah `rowKey`, supaya setiap item tetap dikenali saat berpindah.
 
 ## Formulir dan kontrol
 
@@ -79,7 +79,7 @@ Keyframe bersifat global, jadi Anda bisa memakainya dengan token.
 }
 ```
 
-Untuk membuat daftar Anda sendiri datang berurutan, tambahkan class `bless-stagger` ke induknya. Untuk menggambar garis Anda sendiri, beri path `pathLength="1"`.
+Untuk membuat daftar Anda sendiri datang berurutan, tambahkan class `bless-stagger` ke induknya. Jika daftar itu bisa disusun ulang, bungkus dengan `<TransitionGroup appear appear-active-class="bless-appear" enter-active-class="bless-arrive" move-class="bless-move" @leave="(el, done) => done()">`. Untuk menggambar garis Anda sendiri, beri path `pathLength="1"`.
 
 ```css
 .my-line {

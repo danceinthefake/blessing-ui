@@ -336,8 +336,15 @@ defineExpose({ state, selectedRows: dt.selectedRows });
             </th>
           </tr>
         </thead>
-        <tbody>
-          <tr v-if="!dt.pageRows.value.length">
+        <TransitionGroup
+          tag="tbody"
+          appear
+          appear-active-class="bless-appear"
+          enter-active-class="bless-arrive"
+          move-class="bless-move"
+          @leave="(_el: Element, done: () => void) => done()"
+        >
+          <tr v-if="!dt.pageRows.value.length" key="bless-empty">
             <td
               :colspan="visible.length + (selectable ? 1 : 0)"
               class="bless-table__cell bless-datatable__empty"
@@ -380,7 +387,7 @@ defineExpose({ state, selectedRows: dt.selectedRows });
               }}</slot>
             </component>
           </tr>
-        </tbody>
+        </TransitionGroup>
       </table>
     </div>
 
