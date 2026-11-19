@@ -20,6 +20,6 @@ const complete = ref(false);
 </script>
 
 <template>
-  <BlessPickingList v-model="lines" order="Order SO-2026-0417" @complete="complete = true" />
+  <BlessPickingList v-model="lines" order="Order SO-2026-0417" @finish="complete = true" />
   <p v-if="complete" style="margin-top: 12px">Take the tote to packing.</p>
 </template>

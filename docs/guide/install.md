@@ -53,6 +53,16 @@ export default defineNuxtConfig({
 });
 ```
 
+To import each component yourself, turn off the auto-import. The module still loads the tokens and provides `NuxtLink`:
+
+```ts
+// nuxt.config.ts
+export default defineNuxtConfig({
+  modules: ["blessing-ui/nuxt"],
+  blessingUi: { components: false },
+});
+```
+
 In Vite, use [unplugin-vue-components](https://github.com/unplugin/unplugin-vue-components) with the resolver of the library:
 
 ```ts

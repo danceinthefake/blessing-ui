@@ -53,6 +53,16 @@ export default defineNuxtConfig({
 });
 ```
 
+Untuk mengimpor setiap komponen sendiri, matikan impor otomatis. Modul tetap memuat token dan memberikan `NuxtLink`:
+
+```ts
+// nuxt.config.ts
+export default defineNuxtConfig({
+  modules: ["blessing-ui/nuxt"],
+  blessingUi: { components: false },
+});
+```
+
 Di Vite, pakai [unplugin-vue-components](https://github.com/unplugin/unplugin-vue-components) dengan resolver dari library:
 
 ```ts

@@ -21,7 +21,7 @@ A keypad with large keys, for a PIN on a kiosk, a point of sale, a tablet, or a 
   </template>
 </Demo>
 
-- `v-model` is the PIN as a string of digits. `length` (default 4) sets the number of digits. When the last digit is entered, `complete` sends the PIN, and more keys do nothing.
+- `v-model` is the PIN as a string of digits. `length` (default 4) sets the number of digits. When the last digit is entered, `finish` sends the PIN, and more keys do nothing.
 - The dots show how many digits are entered, never the digits. A screen reader hears "2 of 4 digits entered" after each key.
 - Clear removes all digits and ⌫ removes the last one. A hardware keyboard works too, when the focus is in the pad: digits type, Backspace removes the last one, and Delete clears.
 - `invalid` makes the dots red. Set it when the PIN is wrong, and clear the PIN, as the demo does. Say why in text as well, because color alone does not tell everyone.

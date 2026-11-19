@@ -72,7 +72,7 @@ test("fire() animates until every piece has gone, then says done", () => {
   let now = performance.now();
   for (let i = 0; i < 60 && t.pending(); i++) t.run((now += 50));
   expect(t.pending()).toBe(0);
-  expect(w.emitted("done")).toHaveLength(1);
+  expect(w.emitted("finish")).toHaveLength(1);
 });
 
 test("under reduced motion nothing is drawn and done comes at once", () => {
@@ -81,7 +81,7 @@ test("under reduced motion nothing is drawn and done comes at once", () => {
   const w = mount(BlessConfetti);
   (w.vm as unknown as { fire: () => void }).fire();
   expect(t.pending()).toBe(0);
-  expect(w.emitted("done")).toHaveLength(1);
+  expect(w.emitted("finish")).toHaveLength(1);
 });
 
 test("the canvas is hidden from assistive tech and lets clicks through", () => {

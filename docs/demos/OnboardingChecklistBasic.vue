@@ -22,7 +22,7 @@ const last = ref("");
       v-model:done="done"
       :items
       @select="(it) => (last = `Go to “${it.label}”`)"
-      @complete="last = 'Everything done!'"
+      @finish="last = 'Everything done!'"
     />
     <p style="margin: 0" aria-live="polite">{{ last }}</p>
   </div>

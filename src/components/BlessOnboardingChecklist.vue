@@ -41,7 +41,7 @@ const props = withDefaults(
 const done = defineModel<string[]>("done", { default: () => [] });
 const collapsed = defineModel<boolean>("collapsed", { default: false });
 const dismissed = defineModel<boolean>("dismissed", { default: false });
-const emit = defineEmits<{ select: [item: BlessChecklistItem]; complete: []; dismiss: [] }>();
+const emit = defineEmits<{ select: [item: BlessChecklistItem]; finish: []; dismiss: [] }>();
 
 const text = computed(() => ({
   progress: (d: number, n: number) => `${d} of ${n} done`,
@@ -78,7 +78,7 @@ watch([done, collapsed, dismissed], () => {
 });
 let told = false;
 watch(finished, (v) => {
-  if (v && !told) ((told = true), emit("complete"));
+  if (v && !told) ((told = true), emit("finish"));
   if (!v) told = false;
 });
 function close() {

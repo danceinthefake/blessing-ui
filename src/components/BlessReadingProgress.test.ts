@@ -38,7 +38,7 @@ test("BlessReadingProgress: a box that scrolls by itself fills the bar and count
   el.scrollTop = 1000;
   el.dispatchEvent(new Event("scroll"));
   await nextTick();
-  expect(w.emitted("done")).toHaveLength(1);
+  expect(w.emitted("finish")).toHaveLength(1);
   expect(w.find(".bless-reading__left").text()).toBe("Less than a minute left");
   w.unmount();
   el.remove();

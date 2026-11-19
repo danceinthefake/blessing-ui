@@ -18,30 +18,33 @@ import "./sr.css";
 defineOptions({ name: "BlessApiKeyField" });
 const pack = useLabelPack("BlessApiKeyField");
 
-const props = defineProps<{
-  /** the secret key */
-  value: string;
-  /** the name of the key, for example "Upload script" */
-  name?: string;
-  /** when the key was made, as text */
-  created?: string;
-  /** when the key was last used, as text */
-  lastUsed?: string;
-  /** hide the button that makes a new key */
-  noRegenerate?: boolean;
-  labels?: Partial<{
-    show: string;
-    hide: string;
-    copy: string;
-    copied: string;
-    regenerate: string;
-    confirm: string;
-    confirmLabel: string;
-    cancel: string;
-    created: (when: string) => string;
-    lastUsed: (when: string) => string;
-  }>;
-}>();
+const props = withDefaults(
+  defineProps<{
+    /** the secret key */
+    value: string;
+    /** the name of the key, for example "Upload script" */
+    name?: string;
+    /** when the key was made, as text */
+    created?: string;
+    /** when the key was last used, as text */
+    lastUsed?: string;
+    /** show the button that makes a new key; false hides it */
+    regenerable?: boolean;
+    labels?: Partial<{
+      show: string;
+      hide: string;
+      copy: string;
+      copied: string;
+      regenerate: string;
+      confirm: string;
+      confirmLabel: string;
+      cancel: string;
+      created: (when: string) => string;
+      lastUsed: (when: string) => string;
+    }>;
+  }>(),
+  { regenerable: true },
+);
 const emit = defineEmits<{ regenerate: []; copy: [] }>();
 
 const text = computed(() => ({
@@ -102,7 +105,7 @@ onBeforeUnmount(() => clearTimeout(timer));
         {{ copied ? text.copied : text.copy }}
       </BlessButton>
       <BlessConfirmPopup
-        v-if="!noRegenerate"
+        v-if="regenerable"
         :message="text.confirm"
         :labels="{ confirm: text.confirmLabel, cancel: text.cancel }"
         color="danger"

@@ -33,7 +33,7 @@ const props = defineProps<{
   }>;
 }>();
 const lines = defineModel<BlessPickLine[]>({ default: () => [] });
-const emit = defineEmits<{ complete: [] }>();
+const emit = defineEmits<{ finish: [] }>();
 
 const text = computed(() => ({
   title: "Picking list",
@@ -70,7 +70,7 @@ function bump(id: string, d: 1 | -1) {
   const next = lines.value.map((x) => (x.id === id ? { ...x, picked: p } : x));
   lines.value = next;
   said.value = text.value.picked(l.name, p, l.quantity);
-  if (d === 1 && next.every((x) => (x.picked ?? 0) >= x.quantity)) emit("complete");
+  if (d === 1 && next.every((x) => (x.picked ?? 0) >= x.quantity)) emit("finish");
 }
 function scan(c: string) {
   error.value = "";

@@ -25,7 +25,7 @@ const props = withDefaults(
 );
 
 const model = defineModel<string>({ default: "" });
-const emit = defineEmits<{ complete: [code: string] }>();
+const emit = defineEmits<{ finish: [code: string] }>();
 const inputs = ref<HTMLInputElement[]>([]);
 const id = useFieldId(props);
 const fs = useFieldState();
@@ -44,7 +44,7 @@ function commit(arr: string[]) {
   // under a parent v-model, model.value updates on the next render: emit the new value
   const code = arr.join("");
   model.value = code;
-  if (arr.every(Boolean)) emit("complete", code);
+  if (arr.every(Boolean)) emit("finish", code);
 }
 function set(i: number, ch: string) {
   const arr = chars.value.slice();

@@ -49,7 +49,7 @@ test("BlessReactions: a picked emoji adds a new chip, and the max stops more", a
 
 test("BlessReactions: no add button on request, and labels translate", () => {
   const w = mount(BlessReactions, {
-    props: { modelValue: start(), noAdd: true, labels: { group: "Reaksi" } },
+    props: { modelValue: start(), addable: false, labels: { group: "Reaksi" } },
   });
   expect(w.find(".bless-reactions__add").exists()).toBe(false);
   expect(w.attributes("aria-label")).toBe("Reaksi");

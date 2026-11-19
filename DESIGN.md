@@ -756,7 +756,9 @@ A script read the props, models, events, and slots of every `.vue` file and grou
 - ✅ Corners are logical: `top-end`, `top-start`, `bottom-end`, `bottom-start` on Indicator, Watermark, ScrollTop, Toaster, and the Section watermark. The Indicator badge and the speed dial follow the reading direction.
 - ✅ Small renames: MessageScroller emits `reachTop` and `atBottom`, RecordHeader takes `color` (`text` in place of `neutral`), and Inplace takes `dismissible`.
 - ✅ The light code theme of the docs is GitHub light high-contrast, because github-light failed 4.5:1 on the surface.
-- Not changed: the synonyms close / dismiss and finish / done / complete in events, and the negative booleans `noRegenerate` and `noAdd`. A `label` prop with an English default (Banner "Announcement", Splash "Welcome") stays a prop, as the conventions say.
+- ✅ (follow-up) The end events `done` and `complete` are `finish`, as the conventions say. `close` and `dismiss` stay, because they mean different things, and the conventions say which is which. `noAdd` is `addable` and `noRegenerate` is `regenerable`, both on by default.
+- ✅ (follow-up) The Nuxt module takes `blessingUi: { components: false }`.
+- Not changed: a `label` prop with an English default (Banner "Announcement", Splash "Welcome") stays a prop, as the conventions say.
 
 ### Phase 53 — CSS anchor positioning (2026-11-19)
 

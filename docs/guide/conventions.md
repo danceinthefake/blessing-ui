@@ -7,7 +7,8 @@ What holds across all 437 components. If a component breaks one of these rules, 
 - **Names.** Use the `Bless` prefix and one component per file: `BlessButton` in `src/components/BlessButton.vue`. Exports are named. There is no plugin to install, and nothing is global.
 - **Props take token keys, never raw values.** For example: `color="accent"`, `size="sm"`, `weight="thin"`. If you want a color that is not a token, add the token.
 - **`v-model` for the primary state.** Named models cover the rest: `v-model:open` (dialogs, popovers, drawers), `v-model:step`, `v-model:selected`, `v-model:collapsed`, and `v-model:left` / `:right` on the layout.
-- **Events.** `update:*` exists for every model. Anything that lists navigable things (nav, menus, trees, lists) emits `select(item, event)`. If you route yourself, call `preventDefault()` on the event. Or [provide a router link](./install#with-a-router) and do not call it. The lifecycle events are `close`, `cancel`, `confirm`, `finish`, and `submit`.
+- **Events.** `update:*` exists for every model. Anything that lists navigable things (nav, menus, trees, lists) emits `select(item, event)`. If you route yourself, call `preventDefault()` on the event. Or [provide a router link](./install#with-a-router) and do not call it. The lifecycle events are `close`, `cancel`, `confirm`, `finish`, and `submit`. `close` hides a panel that can open again. `dismiss` removes a notice (an alert, a banner). `finish` fires when the work of a part ends: the last step, the last digit, the end of an animation.
+- **Booleans.** A boolean prop names what it turns on, never `no…`. To turn off a part that is on by default, pass `false`, for example `:addable="false"`.
 - **Slots over render props.** Recurring names: `#prefix` / `#suffix` (icons beside text), `#title`, `#media`, `#actions`, `#footer`, `#icon`, `#trigger` (the thing a popover anchors to). A slot with the same name means the same place in every component.
 
 ## CSS

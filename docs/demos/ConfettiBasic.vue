@@ -17,6 +17,6 @@ function celebrate(e: MouseEvent) {
       >From the middle</BlessButton
     >
     <span aria-live="polite">{{ done ? "Finished." : "" }}</span>
-    <BlessConfetti ref="confetti" @done="done = true" />
+    <BlessConfetti ref="confetti" @finish="done = true" />
   </div>
 </template>

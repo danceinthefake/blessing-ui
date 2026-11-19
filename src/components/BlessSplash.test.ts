@@ -17,7 +17,7 @@ test("shows, skip dismisses and persists once-key", async () => {
   await nextTick();
   expect(w.find(".bless-splash").exists()).toBe(true);
   await w.find(".bless-splash__skip").trigger("click");
-  expect(w.emitted("done")).toHaveLength(1);
+  expect(w.emitted("finish")).toHaveLength(1);
   expect(localStorage.getItem("seen")).toBe("1");
 
   const again = mount(BlessSplash, { props: { once: "seen" } });
@@ -31,7 +31,7 @@ test("auto-dismiss after duration; reduced motion skips entirely", async () => {
   await nextTick();
   expect(w.find(".bless-splash").exists()).toBe(true);
   vi.advanceTimersByTime(150);
-  expect(w.emitted("done")).toHaveLength(1);
+  expect(w.emitted("finish")).toHaveLength(1);
   vi.useRealTimers();
 
   window.matchMedia = () =>
@@ -43,5 +43,5 @@ test("auto-dismiss after duration; reduced motion skips entirely", async () => {
   const r = mount(BlessSplash);
   await nextTick();
   expect(r.find(".bless-splash").exists()).toBe(false);
-  expect(r.emitted("done")).toHaveLength(1);
+  expect(r.emitted("finish")).toHaveLength(1);
 });
