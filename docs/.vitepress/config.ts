@@ -89,6 +89,7 @@ export default defineConfig({
               items: [
                 { text: "Token", link: "/id/guide/tokens" },
                 { text: "Palet", link: "/id/guide/palettes" },
+                { text: "Pembuat tema", link: "/id/guide/theme-maker" },
                 { text: "Mode gelap", link: "/id/guide/dark-mode" },
                 { text: "Gerak", link: "/id/guide/motion" },
                 { text: "Font", link: "/id/guide/fonts" },
@@ -175,6 +176,7 @@ export default defineConfig({
           items: [
             { text: "Tokens", link: "/guide/tokens" },
             { text: "Palettes", link: "/guide/palettes" },
+            { text: "Theme maker", link: "/guide/theme-maker" },
             { text: "Dark mode", link: "/guide/dark-mode" },
             { text: "Motion", link: "/guide/motion" },
             { text: "Fonts", link: "/guide/fonts" },
