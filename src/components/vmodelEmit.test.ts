@@ -27,16 +27,16 @@ function withModel(C: Component, event: string, props: Record<string, unknown> =
   return { w, got };
 }
 
-test("BlessInputOTP: complete carries the full code", async () => {
-  const { w, got } = withModel(BlessInputOTP, "complete", { length: 2 });
+test("BlessInputOTP: finish carries the full code", async () => {
+  const { w, got } = withModel(BlessInputOTP, "finish", { length: 2 });
   const cells = w.findAll("input");
   await cells[0]!.setValue("1");
   await cells[1]!.setValue("2");
   expect(got).toEqual(["12"]);
 });
 
-test("BlessPinPad: complete carries the full PIN", async () => {
-  const { w, got } = withModel(BlessPinPad, "complete", { length: 2 });
+test("BlessPinPad: finish carries the full PIN", async () => {
+  const { w, got } = withModel(BlessPinPad, "finish", { length: 2 });
   for (const d of ["4", "2"])
     await w
       .findAll("button")

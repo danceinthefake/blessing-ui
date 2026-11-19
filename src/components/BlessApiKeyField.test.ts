@@ -39,6 +39,6 @@ test("BlessApiKeyField: copy writes the full key, and a new key waits for a conf
   expect(w.emitted("regenerate")).toBeUndefined();
   w.findComponent({ name: "BlessConfirmPopup" }).vm.$emit("confirm");
   expect(w.emitted("regenerate")).toHaveLength(1);
-  const plain = mount(BlessApiKeyField, { props: { value: key, noRegenerate: true } });
+  const plain = mount(BlessApiKeyField, { props: { value: key, regenerable: false } });
   expect(plain.findComponent({ name: "BlessConfirmPopup" }).exists()).toBe(false);
 });

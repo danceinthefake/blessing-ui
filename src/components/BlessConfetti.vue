@@ -28,7 +28,7 @@ const props = withDefaults(
     gravity: 1400,
   },
 );
-const emit = defineEmits<{ done: [] }>();
+const emit = defineEmits<{ finish: [] }>();
 
 const canvas = ref<HTMLCanvasElement>();
 let pieces: Particle[] = [];
@@ -67,7 +67,7 @@ function frame(now: number) {
   if (pieces.length) raf = requestAnimationFrame(frame);
   else {
     stop();
-    emit("done");
+    emit("finish");
   }
 }
 function stop() {
@@ -85,7 +85,7 @@ function stop() {
  */
 function fire(from?: { x: number; y: number } | HTMLElement, angle = 270) {
   const cv = canvas.value;
-  if (!cv || reducedMotion()) return void emit("done");
+  if (!cv || reducedMotion()) return void emit("finish");
   const k = window.devicePixelRatio || 1;
   cv.width = window.innerWidth * k;
   cv.height = window.innerHeight * k;

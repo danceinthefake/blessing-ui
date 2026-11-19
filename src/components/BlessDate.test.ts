@@ -105,7 +105,7 @@ test("BlessInputOTP typing advances, backspace retreats, paste fills, complete e
   cells[0].element.dispatchEvent(paste);
   await nextTick();
   expect(w.emitted("update:modelValue")!.at(-1)).toEqual(["9876"]);
-  expect(w.emitted("complete")![0]).toEqual(["9876"]);
+  expect(w.emitted("finish")![0]).toEqual(["9876"]);
   w.unmount();
 });
 
@@ -119,7 +119,7 @@ test("BlessInputOTP: clearing a middle cell keeps later digits in place", async 
   expect(cells[3].element.value).toBe("4");
   expect(cells[1].element.value).toBe("");
   expect(w.emitted("update:modelValue")!.at(-1)![0]).toBe("134");
-  expect(w.emitted("complete")).toBeUndefined();
+  expect(w.emitted("finish")).toBeUndefined();
   w.unmount();
 });
 

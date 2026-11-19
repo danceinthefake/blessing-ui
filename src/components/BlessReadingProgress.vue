@@ -19,7 +19,7 @@ const props = withDefaults(
   }>(),
   { position: "fixed", wpm: 230 },
 );
-const emit = defineEmits<{ done: [] }>();
+const emit = defineEmits<{ finish: [] }>();
 
 const text = computed(() => ({
   label: "Reading progress",
@@ -44,7 +44,7 @@ function read() {
     p = -r.top / Math.max(1, r.height - window.innerHeight);
   }
   const next = Math.min(1, Math.max(0, p));
-  if (next === 1 && progress.value < 1) emit("done");
+  if (next === 1 && progress.value < 1) emit("finish");
   progress.value = next;
 }
 const onScroll = () => (frame ||= requestAnimationFrame(read));

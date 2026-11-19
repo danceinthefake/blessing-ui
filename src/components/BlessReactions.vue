@@ -11,8 +11,8 @@ const pack = useLabelPack("BlessReactions");
 
 const props = withDefaults(
   defineProps<{
-    /** hide the button that opens the emoji picker */
-    noAdd?: boolean;
+    /** show the button that opens the emoji picker; false hides it */
+    addable?: boolean;
     /** reactions a reader can add at most, counting their own; 0 has no limit */
     max?: number;
     labels?: Partial<{
@@ -21,7 +21,7 @@ const props = withDefaults(
       /** the name of a reaction button */ reaction: (emoji: string, count: number) => string;
     }>;
   }>(),
-  { max: 0 },
+  { addable: true, max: 0 },
 );
 /** the reactions, with the same type as in `BlessBubble`; a click changes `count` and `active` */
 const reactions = defineModel<BlessReaction[]>({ default: () => [] });
@@ -72,7 +72,7 @@ function pick(e: BlessEmoji) {
       <span class="bless-reactions__emoji" aria-hidden="true">{{ r.emoji }}</span>
       <span class="bless-reactions__count" aria-hidden="true">{{ r.count ?? 0 }}</span>
     </button>
-    <BlessPopover v-if="!noAdd" v-model:open="open" placement="bottom-start" :title="text.add">
+    <BlessPopover v-if="addable" v-model:open="open" placement="bottom-start" :title="text.add">
       <template #trigger>
         <button
           type="button"

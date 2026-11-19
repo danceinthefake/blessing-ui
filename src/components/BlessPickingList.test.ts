@@ -33,5 +33,5 @@ test("BlessPickingList: walk order by location, scans that count, wrong and extr
   expect(w.find("[role=alert]").text()).toBe("Mic: all are picked already.");
   await scan(w, "CBL-3");
   expect(w.find("[role=status]").text()).toBe("All items are picked.");
-  expect(w.emitted("complete")).toHaveLength(1);
+  expect(w.emitted("finish")).toHaveLength(1);
 });

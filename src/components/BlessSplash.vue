@@ -25,7 +25,7 @@ const text = computed(() => ({
   ...props.labels,
 }));
 
-const emit = defineEmits<{ done: [] }>();
+const emit = defineEmits<{ finish: [] }>();
 const show = ref(false);
 let timer: ReturnType<typeof setTimeout> | undefined;
 const skip = ref<HTMLButtonElement>();
@@ -40,7 +40,7 @@ function dismiss() {
   if (props.once) {
     writeStore(props.once, "1");
   }
-  emit("done");
+  emit("finish");
 }
 
 onMounted(() => {
@@ -49,7 +49,7 @@ onMounted(() => {
     seen = readStore(props.once) === "1";
   }
   if (seen) return;
-  if (reducedMotion()) return emit("done");
+  if (reducedMotion()) return emit("finish");
   show.value = true;
   before = document.activeElement as HTMLElement | null;
   // a modal dialog takes focus: onto Skip, so Enter or Esc leaves at once

@@ -53,7 +53,7 @@ test("finishing every step says so and emits complete once", async () => {
   await boxes()[2]!.setValue(true);
   await nextTick();
   expect(w.find(".bless-checklist__all").text()).toContain("All done");
-  expect(w.emitted("complete")).toHaveLength(1);
+  expect(w.emitted("finish")).toHaveLength(1);
   await boxes()[2]!.setValue(false);
   await nextTick();
   expect(w.find(".bless-checklist__all").exists()).toBe(false);

@@ -16,7 +16,7 @@ function check(value: string) {
     <BlessPinPad
       v-model="pin"
       :invalid="wrong"
-      @complete="check"
+      @finish="check"
       @update:model-value="wrong && pin && (wrong = false)"
     />
     <p aria-live="polite" style="min-height: 1.6em">

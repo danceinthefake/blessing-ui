@@ -25,7 +25,7 @@ Guides a picker through the shelves to collect the items of an order, on a phone
 - The lines sort by location, with numbers in their natural order, so the picker walks one way and does not go back.
 - The scan field is a [SKU field](./sku-field). A scan of a code adds one to its line. A code that is not on the list, or one that is already picked in full, shows an error that screen readers hear at once.
 - The − and + buttons change a count by hand. Each button has a name with the item.
-- A bar and a status line show the progress. When all items are picked, the list says so and emits `complete`.
+- A bar and a status line show the progress. When all items are picked, the list says so and emits `finish`.
 - `order` names the order on top. Change the words with `labels` or a [label pack](../guide/translating). The API table lists the keys.
 
 ## Usage

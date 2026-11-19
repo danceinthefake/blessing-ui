@@ -71,7 +71,7 @@ const emit = defineEmits<{
     done: () => void,
     fail: (msg?: string) => void,
   ];
-  done: [item: BlessUpload];
+  finish: [item: BlessUpload];
   error: [item: BlessUpload];
 }>();
 const queue = ref<BlessUpload[]>([]);
@@ -103,7 +103,7 @@ function send(item: BlessUpload) {
     item.status = "done";
     item.progress = 100;
     live.value = text.value.uploaded(item.file.name);
-    emit("done", item);
+    emit("finish", item);
   };
   const fail = (msg?: string) => {
     item.status = "error";

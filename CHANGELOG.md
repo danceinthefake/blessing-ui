@@ -4,6 +4,7 @@
 
 ### Added
 
+- The Nuxt module takes `blessingUi: { components: false }` to turn off the auto-import. The tokens and `NuxtLink` stay.
 - `useFloating` returns `style`: bind it on the floating element. It has the CSS anchor properties where the browser supports them, or `left` and `top`. The `facing` option marks a part on the edge that faces the anchor.
 
 ### Breaking
@@ -13,6 +14,8 @@
 - MessageScroller emits `reachTop` and `atBottom`. In a template, `@reach-top` still works.
 - RecordHeader takes `color` in place of `tone`, and `text` in place of `neutral`.
 - Inplace takes `dismissible` in place of `closable`.
+- The end events are all `finish`: `done` on Confetti, ReadingProgress, Splash, and Uploader, and `complete` on InputOTP, OnboardingChecklist, PickingList, and PinPad are now `finish`.
+- Booleans name what they turn on: Reactions takes `addable` (default `true`) in place of `noAdd`, and ApiKeyField takes `regenerable` (default `true`) in place of `noRegenerate`.
 - `BlessMenuList` is no longer exported. BlessDropdownMenu uses it inside.
 - The Nuxt module and the resolver no longer register the internal parts BlessMenuList, BlessOrgChartNode, BlessQueryGroup, and BlessTreeItem.
 

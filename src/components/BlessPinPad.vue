@@ -27,7 +27,7 @@ const props = withDefaults(
   { length: 4 },
 );
 const model = defineModel<string>({ default: "" });
-const emit = defineEmits<{ complete: [pin: string] }>();
+const emit = defineEmits<{ finish: [pin: string] }>();
 
 const text = computed(() => ({
   pin: "PIN",
@@ -44,7 +44,7 @@ function press(d: string) {
   // with a parent v-model, model.value updates on the next render: use the new value directly
   const next = model.value + d;
   model.value = next;
-  if (next.length >= props.length) emit("complete", next);
+  if (next.length >= props.length) emit("finish", next);
 }
 const back = () => !props.disabled && (model.value = model.value.slice(0, -1));
 const clear = () => !props.disabled && (model.value = "");

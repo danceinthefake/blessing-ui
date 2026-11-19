@@ -10,7 +10,7 @@ test("BlessPinPad: keys fill the PIN, stop at length, and emit complete once", a
   const w = mount(BlessPinPad, { props: { length: 4, name: "pin" } });
   for (const d of ["1", "9", "8", "4", "5"]) await key(w, d).trigger("click");
   expect(w.emitted("update:modelValue")!.at(-1)).toEqual(["1984"]);
-  expect(w.emitted("complete")).toEqual([["1984"]]);
+  expect(w.emitted("finish")).toEqual([["1984"]]);
   await w.setProps({ modelValue: "1984" });
   expect(w.findAll(".bless-pinpad__dot--on")).toHaveLength(4);
   expect(w.find('input[type="hidden"]').attributes("value")).toBe("1984");
@@ -72,7 +72,7 @@ test("BlessPinPad: complete fires under a parent v-model", async () => {
         h(BlessPinPad, {
           modelValue: pin.value,
           "onUpdate:modelValue": (v: string) => (pin.value = v),
-          onComplete: (v: string) => done.push(v),
+          onFinish: (v: string) => done.push(v),
         });
     },
   };
