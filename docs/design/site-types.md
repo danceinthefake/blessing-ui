@@ -105,11 +105,15 @@ Courses, schools, and practice. People learn and show what they know.
 
 Today: [CourseCard](../components/course-card), [Gradebook](../components/gradebook), [Assignment](../components/assignment), [Certificate](../components/certificate), [LessonVideo](../components/lesson-video), [Quiz](../components/quiz), [Flashcards](../components/flashcards), [LessonPath](../components/lesson-path), [Achievements](../components/achievements), [Questionnaire](../components/questionnaire), [Progress](../components/progress), [Transcript](../components/transcript).
 
+Blocks: [course](../blocks/course).
+
 ## 10. Health and fitness
 
 Trackers, clinics, and telemedicine. People log the body and book care.
 
 Today: [VitalsPanel](../components/vitals-panel), [MedicationSchedule](../components/medication-schedule), [WorkoutLog](../components/workout-log), [SleepChart](../components/sleep-chart), [BodyMap](../components/body-map), [AppointmentCard](../components/appointment-card), [HabitTracker](../components/habit-tracker), [HeatmapCalendar](../components/heatmap-calendar), [Gauge](../components/gauge), [Timer](../components/timer), [SlotPicker](../components/slot-picker), [RangeChart](../components/range-chart).
+
+Blocks: [health](../blocks/health).
 
 ## 11. Developer tools
 
@@ -124,6 +128,8 @@ Blocks: [release](../blocks/release).
 Calculators, converters, weather, and maps. People do one small job fast.
 
 Today: [MapPins](../components/map-pins), [RouteSteps](../components/route-steps), [WeatherForecast](../components/weather-forecast), [MeasureConverter](../components/measure-converter), [PlaceSearch](../components/place-search), [Formula](../components/formula), [WorldClock](../components/world-clock), [TimezonePicker](../components/timezone-picker), [QrCode](../components/qr-code), [ColorPicker](../components/color-picker), [Compare](../components/compare).
+
+Blocks: [trip](../blocks/trip).
 
 ## 13. Search and reference
 

@@ -105,11 +105,15 @@ Kursus, sekolah, dan latihan. Orang belajar dan menunjukkan yang mereka tahu.
 
 Sekarang: [CourseCard](../../components/course-card), [Gradebook](../../components/gradebook), [Assignment](../../components/assignment), [Certificate](../../components/certificate), [LessonVideo](../../components/lesson-video), [Quiz](../../components/quiz), [Flashcards](../../components/flashcards), [LessonPath](../../components/lesson-path), [Achievements](../../components/achievements), [Questionnaire](../../components/questionnaire), [Progress](../../components/progress), [Transcript](../../components/transcript).
 
+Blok: [course](../../blocks/course).
+
 ## 10. Kesehatan dan kebugaran
 
 Pelacak, klinik, dan telemedis. Orang mencatat kondisi tubuh dan memesan layanan.
 
 Sekarang: [VitalsPanel](../../components/vitals-panel), [MedicationSchedule](../../components/medication-schedule), [WorkoutLog](../../components/workout-log), [SleepChart](../../components/sleep-chart), [BodyMap](../../components/body-map), [AppointmentCard](../../components/appointment-card), [HabitTracker](../../components/habit-tracker), [HeatmapCalendar](../../components/heatmap-calendar), [Gauge](../../components/gauge), [Timer](../../components/timer), [SlotPicker](../../components/slot-picker), [RangeChart](../../components/range-chart).
+
+Blok: [health](../../blocks/health).
 
 ## 11. Alat pengembang
 
@@ -124,6 +128,8 @@ Blok: [release](../../blocks/release).
 Kalkulator, pengonversi, cuaca, dan peta. Orang menyelesaikan satu tugas kecil dengan cepat.
 
 Sekarang: [MapPins](../../components/map-pins), [RouteSteps](../../components/route-steps), [WeatherForecast](../../components/weather-forecast), [MeasureConverter](../../components/measure-converter), [PlaceSearch](../../components/place-search), [Formula](../../components/formula), [WorldClock](../../components/world-clock), [TimezonePicker](../../components/timezone-picker), [QrCode](../../components/qr-code), [ColorPicker](../../components/color-picker), [Compare](../../components/compare).
+
+Blok: [trip](../../blocks/trip).
 
 ## 13. Pencarian dan referensi
 

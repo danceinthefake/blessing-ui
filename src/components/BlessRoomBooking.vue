@@ -163,6 +163,7 @@ const roomName = (id: string) => props.rooms.find((r) => r.id === id)?.name ?? i
 }
 .bless-rooms__scroll {
   overflow-x: auto;
+  position: relative; /* hidden screen-reader text inside stays in the scroll box */
 }
 .bless-rooms__scroll:focus-visible {
   outline: 2px solid var(--bless-color-accent);

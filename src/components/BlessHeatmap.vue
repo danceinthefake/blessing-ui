@@ -85,6 +85,7 @@ const base = computed(() => chartColor(props.color, 0));
 }
 .bless-heatmap__scroll {
   overflow-x: auto;
+  position: relative; /* hidden screen-reader text inside stays in the scroll box */
 }
 .bless-heatmap__table {
   border-collapse: separate;

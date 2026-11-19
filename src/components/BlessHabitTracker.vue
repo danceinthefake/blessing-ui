@@ -134,6 +134,7 @@ function toggle(id: string, day: string) {
 .bless-habits {
   max-inline-size: 100%;
   overflow-x: auto;
+  position: relative; /* hidden screen-reader text inside stays in the scroll box */
   font-family: var(--bless-font-sans);
   font-size: var(--bless-text-sm);
   color: var(--bless-color-text);

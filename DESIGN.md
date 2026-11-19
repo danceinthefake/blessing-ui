@@ -789,7 +789,7 @@ The user asked for a review of the design pages, section by section, and chose a
 The user chose both: new blocks for the site-type groups that have no block, three per round, then a round that deepens the 16 blocks that exist. Each new block has a mock `api.ts`, works in every palette, in dark mode, and on a phone, and goes on the site types page in both languages.
 
 - ✅ Round 1: Community (group 3, social), Project (group 6, productivity), Bank (group 8, finance).
-- ⬜ Round 2: Education, Health and fitness, Utilities.
+- ✅ Round 2: Course (group 9, education), Health (group 10), Trip (group 12, utilities). The blocks found two library bugs. SleepChart and ControlChart did not shrink in a grid. Five components with a scroll box let their hidden screen-reader text out, so the page scrolled sideways.
 - ⬜ Round 3: Search and reference, Connected devices, Operations.
 - ⬜ Round 4: deepen the 16 blocks that exist.
 
