@@ -137,6 +137,8 @@ Search engines, wikis, and directories. People ask and find.
 
 Today: [SearchResult](../components/search-result), [SearchResults](../components/search-results), [AzIndex](../components/az-index), [KnowledgeArticle](../components/knowledge-article), [Command](../components/command), [Combobox](../components/combobox), [Glossary](../components/glossary), [FaqSearch](../components/faq-search), [Tree](../components/tree), [Highlight](../components/highlight).
 
+Blocks: [help](../blocks/help).
+
 ## 14. Government and civic services
 
 Permits, taxes, and public services. People fill long forms and track a request.
@@ -167,8 +169,12 @@ Smart home and vehicle apps. People see the state of a device and change it.
 
 Today: [DeviceTile](../components/device-tile), [Thermostat](../components/thermostat), [FloorPlan](../components/floor-plan), [SceneButtons](../components/scene-buttons), [BatteryLevel](../components/battery-level), [RuleBuilder](../components/rule-builder), [Knob](../components/knob), [Switch](../components/switch), [Slider](../components/slider), [Gauge](../components/gauge), [ConnectionStatus](../components/connection-status), [Sparkline](../components/sparkline).
 
+Blocks: [home](../blocks/home).
+
 ## 18. Operations
 
 Shop floors, warehouses, and field work. People do physical work at a station, guided by a screen: they follow a job, scan, count, and report. Planning at a desk stays in group 7. The barcode and SKU field of group 7 serves this group too.
 
 Today: [WorkOrderCard](../components/work-order-card), [ProductionCounter](../components/production-counter), [MachineBoard](../components/machine-board), [OeeGauge](../components/oee-gauge), [DowntimePicker](../components/downtime-picker), [WorkInstructions](../components/work-instructions), [QualityCheck](../components/quality-check), [ControlChart](../components/control-chart), [ShiftHandover](../components/shift-handover), [PickingList](../components/picking-list), [SkuField](../components/sku-field), [Gantt](../components/gantt), [Scheduler](../components/scheduler), [Stepper](../components/stepper), [Timer](../components/timer), [Gauge](../components/gauge), [UptimeBar](../components/uptime-bar), [ConnectionStatus](../components/connection-status), [SignaturePad](../components/signature-pad), [CameraCapture](../components/camera-capture).
+
+Blocks: [station](../blocks/station).

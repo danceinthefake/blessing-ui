@@ -137,6 +137,8 @@ Mesin pencari, wiki, dan direktori. Orang bertanya dan menemukan.
 
 Sekarang: [SearchResult](../../components/search-result), [SearchResults](../../components/search-results), [AzIndex](../../components/az-index), [KnowledgeArticle](../../components/knowledge-article), [Command](../../components/command), [Combobox](../../components/combobox), [Glossary](../../components/glossary), [FaqSearch](../../components/faq-search), [Tree](../../components/tree), [Highlight](../../components/highlight).
 
+Blok: [help](../../blocks/help).
+
 ## 14. Layanan pemerintah dan publik
 
 Izin, pajak, dan layanan publik. Orang mengisi formulir panjang dan melacak permohonan.
@@ -167,8 +169,12 @@ Aplikasi rumah pintar dan kendaraan. Orang melihat status perangkat dan mengubah
 
 Sekarang: [DeviceTile](../../components/device-tile), [Thermostat](../../components/thermostat), [FloorPlan](../../components/floor-plan), [SceneButtons](../../components/scene-buttons), [BatteryLevel](../../components/battery-level), [RuleBuilder](../../components/rule-builder), [Knob](../../components/knob), [Switch](../../components/switch), [Slider](../../components/slider), [Gauge](../../components/gauge), [ConnectionStatus](../../components/connection-status), [Sparkline](../../components/sparkline).
 
+Blok: [home](../../blocks/home).
+
 ## 18. Operasional
 
 Lantai produksi, gudang, dan kerja lapangan. Orang mengerjakan pekerjaan fisik di sebuah stasiun dengan panduan layar: mengikuti pekerjaan, memindai, menghitung, dan melapor. Perencanaan di meja tetap di kelompok 7. Kolom barcode dan SKU di kelompok 7 juga melayani kelompok ini.
 
 Sekarang: [WorkOrderCard](../../components/work-order-card), [ProductionCounter](../../components/production-counter), [MachineBoard](../../components/machine-board), [OeeGauge](../../components/oee-gauge), [DowntimePicker](../../components/downtime-picker), [WorkInstructions](../../components/work-instructions), [QualityCheck](../../components/quality-check), [ControlChart](../../components/control-chart), [ShiftHandover](../../components/shift-handover), [PickingList](../../components/picking-list), [SkuField](../../components/sku-field), [Gantt](../../components/gantt), [Scheduler](../../components/scheduler), [Stepper](../../components/stepper), [Timer](../../components/timer), [Gauge](../../components/gauge), [UptimeBar](../../components/uptime-bar), [ConnectionStatus](../../components/connection-status), [SignaturePad](../../components/signature-pad), [CameraCapture](../../components/camera-capture).
+
+Blok: [station](../../blocks/station).
