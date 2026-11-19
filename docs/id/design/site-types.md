@@ -10,30 +10,30 @@ Tidak ada satu daftar resmi jenis situs. Setiap pengelompok menghitung dengan ca
 
 Daftar-daftar itu mengelompokkan menurut topik, seperti olahraga atau perjalanan. Pustaka komponen butuh cara lain: menurut apa yang orang lakukan di situs itu. Dua situs dengan tugas yang sama butuh bagian yang sama, apa pun topiknya. Halaman ini memakai 18 kelompok seperti itu.
 
-Untuk setiap kelompok, halaman ini mendaftar komponen dan [blok](../../blocks/) yang sudah melayaninya. Halaman ini juga mendaftar bagian yang belum ada di pustaka. Bagian-bagian itu adalah calon untuk putaran komponen berikutnya.
+Untuk setiap kelompok, halaman ini mendaftar komponen dan [blok](../../blocks/) yang sudah melayaninya. Halaman ini bermula sebagai daftar kekurangan: bagian yang dibutuhkan tiap kelompok dan belum ada di pustaka. Setiap bagian itu kini sudah menjadi komponen, jadi halaman ini kini adalah peta.
 
 ## Ringkasan
 
-| Kelompok                          | Komponen sekarang | Belum ada |
-| --------------------------------- | ----------------: | --------: |
-| 1. Konten dan penerbitan          |                22 |         0 |
-| 2. Perdagangan                    |                25 |         0 |
-| 3. Sosial dan komunitas           |                18 |         0 |
-| 4. Komunikasi                     |                15 |         0 |
-| 5. Media dan hiburan              |                14 |         0 |
-| 6. Produktivitas dan kolaborasi   |                20 |         0 |
-| 7. Perangkat lunak bisnis dan ERP |                27 |         0 |
-| 8. Keuangan                       |                15 |         0 |
-| 9. Pendidikan                     |                12 |         0 |
-| 10. Kesehatan dan kebugaran       |                12 |         0 |
-| 11. Alat pengembang               |                18 |         0 |
-| 12. Utilitas                      |                11 |         0 |
-| 13. Pencarian dan referensi       |                10 |         0 |
-| 14. Layanan pemerintah dan publik |                14 |         0 |
-| 15. Situs merek dan pemasaran     |                16 |         0 |
-| 16. Asisten dan agen AI           |                17 |         0 |
-| 17. Perangkat terhubung           |                12 |         0 |
-| 18. Operasional                   |                20 |         0 |
+| Kelompok                          | Komponen sekarang |
+| --------------------------------- | ----------------: |
+| 1. Konten dan penerbitan          |                22 |
+| 2. Perdagangan                    |                25 |
+| 3. Sosial dan komunitas           |                18 |
+| 4. Komunikasi                     |                15 |
+| 5. Media dan hiburan              |                14 |
+| 6. Produktivitas dan kolaborasi   |                20 |
+| 7. Perangkat lunak bisnis dan ERP |                27 |
+| 8. Keuangan                       |                15 |
+| 9. Pendidikan                     |                12 |
+| 10. Kesehatan dan kebugaran       |                12 |
+| 11. Alat pengembang               |                18 |
+| 12. Utilitas                      |                11 |
+| 13. Pencarian dan referensi       |                10 |
+| 14. Layanan pemerintah dan publik |                14 |
+| 15. Situs merek dan pemasaran     |                16 |
+| 16. Asisten dan agen AI           |                17 |
+| 17. Perangkat terhubung           |                12 |
+| 18. Operasional                   |                20 |
 
 ## 1. Konten dan penerbitan
 
@@ -43,8 +43,6 @@ Sekarang: [ArticleHeader](../../components/article-header), [ShareBar](../../com
 
 Blok: [news](../../blocks/news), [story](../../blocks/story), [release](../../blocks/release).
 
-Belum ada: tidak ada dari daftar pertama. Setiap bagian yang disebut halaman ini sudah menjadi komponen.
-
 ## 2. Perdagangan
 
 Toko, marketplace, pemesanan, dan pesan-antar makanan. Orang membandingkan, memilih, dan membayar.
@@ -53,15 +51,11 @@ Sekarang: [ProductCard](../../components/product-card), [Price](../../components
 
 Blok: [pricing](../../blocks/pricing).
 
-Belum ada: tidak ada dari daftar pertama. Setiap bagian yang disebut halaman ini sudah menjadi komponen.
-
 ## 3. Sosial dan komunitas
 
 Jejaring sosial, forum, dan kencan. Orang mengirim kiriman, bereaksi, dan mengikuti.
 
 Sekarang: [PostComposer](../../components/post-composer), [Stories](../../components/stories), [FollowButton](../../components/follow-button), [TrendList](../../components/trend-list), [ReportDialog](../../components/report-dialog), [GroupCard](../../components/group-card), [ForumTopics](../../components/forum-topics), [ProfileCard](../../components/profile-card), [ActivityFeed](../../components/activity-feed), [Reactions](../../components/reactions), [Thread](../../components/thread), [Message](../../components/message), [Mention](../../components/mention), [Poll](../../components/poll), [Leaderboard](../../components/leaderboard), [AvatarGroup](../../components/avatar-group), [SwipeDeck](../../components/swipe-deck), [HoverCard](../../components/hover-card).
-
-Belum ada: tidak ada dari daftar pertama. Setiap bagian yang disebut halaman ini sudah menjadi komponen.
 
 ## 4. Komunikasi
 
@@ -71,8 +65,6 @@ Sekarang: [ConversationList](../../components/conversation-list), [ReadReceipt](
 
 Blok: [chat](../../blocks/chat), [inbox](../../blocks/inbox).
 
-Belum ada: tidak ada dari daftar pertama. Setiap bagian yang disebut halaman ini sudah menjadi komponen.
-
 ## 5. Media dan hiburan
 
 Video, musik, podcast, dan gim. Orang menonton, mendengar, dan bermain.
@@ -81,15 +73,11 @@ Sekarang: [PosterRow](../../components/poster-row), [EpisodeList](../../componen
 
 Blok: [onair](../../blocks/onair), [character](../../blocks/character).
 
-Belum ada: tidak ada dari daftar pertama. Setiap bagian yang disebut halaman ini sudah menjadi komponen.
-
 ## 6. Produktivitas dan kolaborasi
 
 Dokumen, catatan, tugas, papan, dan kalender. Orang membuat sesuatu, sendiri atau bersama tim.
 
 Sekarang: [MarginComments](../../components/margin-comments), [ShareAccess](../../components/share-access), [MindMap](../../components/mind-map), [TimeTracker](../../components/time-tracker), [RoomBooking](../../components/room-booking), [FileBrowser](../../components/file-browser), [Editor](../../components/editor), [Kanban](../../components/kanban), [StickyBoard](../../components/sticky-board), [TaskList](../../components/task-list), [Gantt](../../components/gantt), [Scheduler](../../components/scheduler), [EventCalendar](../../components/event-calendar), [Spreadsheet](../../components/spreadsheet), [InfiniteCanvas](../../components/infinite-canvas), [VersionHistory](../../components/version-history), [PresenceCursors](../../components/presence-cursors), [Command](../../components/command), [FileTree](../../components/file-tree), [Annotator](../../components/annotator).
-
-Belum ada: tidak ada dari daftar pertama. Setiap bagian yang disebut halaman ini sudah menjadi komponen.
 
 ## 7. Perangkat lunak bisnis dan ERP
 
@@ -99,15 +87,11 @@ Sekarang: [RecordHeader](../../components/record-header), [CsvImport](../../comp
 
 Blok: [dashboard](../../blocks/dashboard), [data-page](../../blocks/data-page), [settings](../../blocks/settings), [staff](../../blocks/staff).
 
-Belum ada: tidak ada dari daftar pertama. Setiap bagian yang disebut halaman ini sudah menjadi komponen.
-
 ## 8. Keuangan
 
 Perbankan, investasi, pembayaran, dan akuntansi. Orang memeriksa uang dan memindahkannya.
 
 Sekarang: [BalanceCard](../../components/balance-card), [TransactionList](../../components/transaction-list), [PriceTicker](../../components/price-ticker), [OrderBook](../../components/order-book), [CurrencyConverter](../../components/currency-converter), [BudgetBars](../../components/budget-bars), [PaymentSchedule](../../components/payment-schedule), [Candlestick](../../components/candlestick), [Sparkline](../../components/sparkline), [Stat](../../components/stat), [WaterfallChart](../../components/waterfall-chart), [DonutChart](../../components/donut-chart), [CardInput](../../components/card-input), [PinPad](../../components/pin-pad), [InputOTP](../../components/input-otp).
-
-Belum ada: tidak ada dari daftar pertama. Setiap bagian yang disebut halaman ini sudah menjadi komponen.
 
 ## 9. Pendidikan
 
@@ -115,15 +99,11 @@ Kursus, sekolah, dan latihan. Orang belajar dan menunjukkan yang mereka tahu.
 
 Sekarang: [CourseCard](../../components/course-card), [Gradebook](../../components/gradebook), [Assignment](../../components/assignment), [Certificate](../../components/certificate), [LessonVideo](../../components/lesson-video), [Quiz](../../components/quiz), [Flashcards](../../components/flashcards), [LessonPath](../../components/lesson-path), [Achievements](../../components/achievements), [Questionnaire](../../components/questionnaire), [Progress](../../components/progress), [Transcript](../../components/transcript).
 
-Belum ada: tidak ada dari daftar pertama. Setiap bagian yang disebut halaman ini sudah menjadi komponen.
-
 ## 10. Kesehatan dan kebugaran
 
 Pelacak, klinik, dan telemedis. Orang mencatat kondisi tubuh dan memesan layanan.
 
 Sekarang: [VitalsPanel](../../components/vitals-panel), [MedicationSchedule](../../components/medication-schedule), [WorkoutLog](../../components/workout-log), [SleepChart](../../components/sleep-chart), [BodyMap](../../components/body-map), [AppointmentCard](../../components/appointment-card), [HabitTracker](../../components/habit-tracker), [HeatmapCalendar](../../components/heatmap-calendar), [Gauge](../../components/gauge), [Timer](../../components/timer), [SlotPicker](../../components/slot-picker), [RangeChart](../../components/range-chart).
-
-Belum ada: tidak ada dari daftar pertama. Setiap bagian yang disebut halaman ini sudah menjadi komponen.
 
 ## 11. Alat pengembang
 
@@ -133,23 +113,17 @@ Sekarang: [Terminal](../../components/terminal), [ApiEndpoint](../../components/
 
 Blok: [release](../../blocks/release).
 
-Belum ada: tidak ada dari daftar pertama. Setiap bagian yang disebut halaman ini sudah menjadi komponen.
-
 ## 12. Utilitas
 
 Kalkulator, pengonversi, cuaca, dan peta. Orang menyelesaikan satu tugas kecil dengan cepat.
 
 Sekarang: [MapPins](../../components/map-pins), [RouteSteps](../../components/route-steps), [WeatherForecast](../../components/weather-forecast), [MeasureConverter](../../components/measure-converter), [PlaceSearch](../../components/place-search), [Formula](../../components/formula), [WorldClock](../../components/world-clock), [TimezonePicker](../../components/timezone-picker), [QrCode](../../components/qr-code), [ColorPicker](../../components/color-picker), [Compare](../../components/compare).
 
-Belum ada: tidak ada dari daftar pertama. Setiap bagian yang disebut halaman ini sudah menjadi komponen.
-
 ## 13. Pencarian dan referensi
 
 Mesin pencari, wiki, dan direktori. Orang bertanya dan menemukan.
 
 Sekarang: [SearchResult](../../components/search-result), [SearchResults](../../components/search-results), [AzIndex](../../components/az-index), [KnowledgeArticle](../../components/knowledge-article), [Command](../../components/command), [Combobox](../../components/combobox), [Glossary](../../components/glossary), [FaqSearch](../../components/faq-search), [Tree](../../components/tree), [Highlight](../../components/highlight).
-
-Belum ada: tidak ada dari daftar pertama. Setiap bagian yang disebut halaman ini sudah menjadi komponen.
 
 ## 14. Layanan pemerintah dan publik
 
@@ -159,8 +133,6 @@ Sekarang: [SavedForm](../../components/saved-form), [CheckAnswers](../../compone
 
 Blok: [signin](../../blocks/signin), [onboarding](../../blocks/onboarding).
 
-Belum ada: tidak ada dari daftar pertama. Setiap bagian yang disebut halaman ini sudah menjadi komponen.
-
 ## 15. Situs merek dan pemasaran
 
 Halaman arahan, portofolio, dan situs perusahaan. Orang mengenal produk lalu mendaftar.
@@ -168,8 +140,6 @@ Halaman arahan, portofolio, dan situs perusahaan. Orang mengenal produk lalu men
 Sekarang: [LogoCloud](../../components/logo-cloud), [FeatureGrid](../../components/feature-grid), [TeamGrid](../../components/team-grid), [ContactForm](../../components/contact-form), [PortfolioGrid](../../components/portfolio-grid), [PricingTable](../../components/pricing-table), [Testimonials](../../components/testimonials), [ComparisonTable](../../components/comparison-table), [NewsletterSignup](../../components/newsletter-signup), [Marquee](../../components/marquee), [Parallax](../../components/parallax), [CountUp](../../components/count-up), [FaqSearch](../../components/faq-search), [ConsentBanner](../../components/consent-banner), [CountdownBanner](../../components/countdown-banner), [Background](../../components/background).
 
 Blok: [site](../../blocks/site), [pricing](../../blocks/pricing).
-
-Belum ada: tidak ada dari daftar pertama. Setiap bagian yang disebut halaman ini sudah menjadi komponen.
 
 ## 16. Asisten dan agen AI
 
@@ -179,20 +149,14 @@ Sekarang: [ArtifactPanel](../../components/artifact-panel), [ContextChips](../..
 
 Blok: [chat](../../blocks/chat).
 
-Belum ada: tidak ada dari daftar pertama. Setiap bagian yang disebut halaman ini sudah menjadi komponen.
-
 ## 17. Perangkat terhubung
 
 Aplikasi rumah pintar dan kendaraan. Orang melihat status perangkat dan mengubahnya.
 
 Sekarang: [DeviceTile](../../components/device-tile), [Thermostat](../../components/thermostat), [FloorPlan](../../components/floor-plan), [SceneButtons](../../components/scene-buttons), [BatteryLevel](../../components/battery-level), [RuleBuilder](../../components/rule-builder), [Knob](../../components/knob), [Switch](../../components/switch), [Slider](../../components/slider), [Gauge](../../components/gauge), [ConnectionStatus](../../components/connection-status), [Sparkline](../../components/sparkline).
 
-Belum ada: tidak ada dari daftar pertama. Setiap bagian yang disebut halaman ini sudah menjadi komponen.
-
 ## 18. Operasional
 
 Lantai produksi, gudang, dan kerja lapangan. Orang mengerjakan pekerjaan fisik di sebuah stasiun dengan panduan layar: mengikuti pekerjaan, memindai, menghitung, dan melapor. Perencanaan di meja tetap di kelompok 7. Kolom barcode dan SKU di kelompok 7 juga melayani kelompok ini.
 
 Sekarang: [WorkOrderCard](../../components/work-order-card), [ProductionCounter](../../components/production-counter), [MachineBoard](../../components/machine-board), [OeeGauge](../../components/oee-gauge), [DowntimePicker](../../components/downtime-picker), [WorkInstructions](../../components/work-instructions), [QualityCheck](../../components/quality-check), [ControlChart](../../components/control-chart), [ShiftHandover](../../components/shift-handover), [PickingList](../../components/picking-list), [SkuField](../../components/sku-field), [Gantt](../../components/gantt), [Scheduler](../../components/scheduler), [Stepper](../../components/stepper), [Timer](../../components/timer), [Gauge](../../components/gauge), [UptimeBar](../../components/uptime-bar), [ConnectionStatus](../../components/connection-status), [SignaturePad](../../components/signature-pad), [CameraCapture](../../components/camera-capture).
-
-Belum ada: tidak ada dari daftar pertama. Setiap bagian yang disebut halaman ini sudah menjadi komponen.

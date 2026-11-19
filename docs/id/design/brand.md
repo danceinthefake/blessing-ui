@@ -9,7 +9,7 @@ Identitas Blessing UI adalah sistem desain itu sendiri. Logonya tidak memerlukan
   <img src="/logo.svg" width="16" height="16" alt="">
 </div>
 
-## Lima unsur
+## Enam unsur
 
 | Unsur    | Nilai                                                                                                                                                                                                    | Tempat Anda melihatnya                                                                               |
 | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
@@ -18,6 +18,7 @@ Identitas Blessing UI adalah sistem desain itu sendiri. Logonya tidak memerlukan
 | Geometri | `--bless-lean`, −10°: tegak saat diam, miring saat diperhatikan. Huruf besar dan logo selalu miring. Satu [bentuk](../guide/conventions#shape): pelat persegi yang tegak. Bentuk tetes hanya ada di logo | setiap label, isian, switch, dan chip, serta setiap kelopak logo                                     |
 | Huruf    | Roboto 100 berukuran besar untuk suara, 700 huruf kapital berjarak untuk UI                                                                                                                              | watermark, wordmark, label                                                                           |
 | Motif    | pelat: garis aksen 1px yang tegas, digeser di belakang apa pun yang melayang, tanpa blur                                                                                                                 | setiap popover, menu, tooltip, toast, dan modal, bingkai QR, gambar utama situs, dan kartu OG        |
+| Eyecatch | kartu judul anime TV saat jeda: pita dengan baris kecil, judul besar, dan nomor besar. Cuplikan episode berikutnya menutup halaman depan                                                                 | halaman depan, halaman pembuka panduan, blok, dan desain, dan strip di atas setiap halaman           |
 
 ## Logo {#mark}
 

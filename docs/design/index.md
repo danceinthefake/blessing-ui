@@ -70,3 +70,16 @@ The main button stands out by weight (solid against outline), not by color.
 ## Shape
 
 One shape: the upright plate with a whole, square outline, for everything from a button to an avatar. The lean carries the identity, not the corners. The teardrop lives in the [mark](./brand#mark). [Conventions](../guide/conventions#shape) shows the rule in practice.
+
+## Motion
+
+Motion follows the series in three layers. Most scenes of the series are calm, so the base layer is a soft rise when a part appears. The game in the story talks through text boxes, so the parts that talk to the person (a dialog, a toast, a tooltip) arrive with a snap, like a text box. The comedy beats are short breaks, so the flair layer (a pop, a shake) turns on only with `data-flair`. Care over spectacle sets the limits. Calm motion only fades, and reduced motion in the system turns all motion off. The [motion guide](../guide/motion) shows the tokens and the classes.
+
+## The rest of this volume
+
+<ChapterCards :items="[
+  { title: 'Brand', text: 'The mark, the wordmark, and the elements that every part uses.', link: '/design/brand' },
+  { title: 'Story', text: 'Where the look came from, and what we added.', link: '/design/story' },
+  { title: 'Site types', text: '18 kinds of sites, and the parts that serve each kind.', link: '/design/site-types' },
+  { title: 'Credits', text: 'The sources, standards, and tools that we used.', link: '/design/credits' },
+]" />

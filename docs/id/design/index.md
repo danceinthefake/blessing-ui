@@ -70,3 +70,16 @@ Tombol utama menonjol lewat bobotnya (penuh lawan garis tepi), bukan lewat warna
 ## Bentuk {#shape}
 
 Satu bentuk: pelat tegak dengan garis tepi utuh dan persegi, untuk semua hal dari tombol sampai avatar. Kemiringan membawa identitasnya, bukan sudutnya. Bentuk tetes ada di [logo](./brand#mark). [Konvensi](../guide/conventions#shape) menunjukkan aturan ini dalam praktik.
+
+## Gerak {#motion}
+
+Gerak mengikuti serinya dalam tiga lapis. Sebagian besar adegan seri ini tenang, jadi lapis dasar adalah naik yang lembut saat sebuah bagian muncul. Gim dalam cerita berbicara lewat kotak teks, jadi bagian yang berbicara kepada orang (dialog, toast, tooltip) datang dengan hentakan, seperti kotak teks. Adegan komedi adalah jeda singkat, jadi lapis flair (meletup, bergoyang) hanya menyala dengan `data-flair`. Kepedulian di atas tontonan menetapkan batasnya. Gerak tenang hanya memudar, dan gerakan dikurangi di sistem mematikan semua gerak. [Panduan gerak](../guide/motion) menunjukkan token dan kelasnya.
+
+## Isi lain volume ini
+
+<ChapterCards :items="[
+  { title: 'Merek', text: 'Logo, wordmark, dan unsur yang dipakai setiap bagian.', link: '/id/design/brand' },
+  { title: 'Cerita', text: 'Dari mana tampilan ini berasal, dan apa yang kami tambahkan.', link: '/id/design/story' },
+  { title: 'Jenis situs', text: '18 jenis situs, dan bagian yang melayani tiap jenis.', link: '/id/design/site-types' },
+  { title: 'Kredit', text: 'Sumber, standar, dan alat yang kami pakai.', link: '/id/design/credits' },
+]" />
