@@ -17,8 +17,12 @@
     "type": "git",
     "url": "git+https://github.com/danceinthefake/blessing-ui.git"
   },
+  "bin": {
+    "blessing-ui": "./bin/blessing-ui.mjs"
+  },
   "files": [
     "dist",
+    "bin",
     "CHANGELOG.md",
     "tokens.css",
     "LICENSE"

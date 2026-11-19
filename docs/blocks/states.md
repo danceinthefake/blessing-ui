@@ -21,4 +21,4 @@ const files = Object.fromEntries(
 
 ## Into your app
 
-Copy the folder to `src/features/states/` (Nuxt: `app/features/states/`) and render `index.vue` from a page. There is no data here: replace the `state` picker with your own loading / empty / error / ready state, and put your list where the three rows are.
+Run `npx blessing-ui add states` to copy the folder to `src/features/states/` (Nuxt: `app/features/states/`). Then render `index.vue` from a page. There is no data here: replace the `state` picker with your own loading / empty / error / ready state, and put your list where the three rows are.

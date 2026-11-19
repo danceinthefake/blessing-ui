@@ -21,4 +21,4 @@ const files = Object.fromEntries(
 
 ## Into your app
 
-Copy the folder to `src/features/settings/` (Nuxt: `app/features/settings/`) and render `index.vue` from a page. Load `saved` from your API and send `form` in `save()`. Discard already puts `saved` back.
+Run `npx blessing-ui add settings` to copy the folder to `src/features/settings/` (Nuxt: `app/features/settings/`). Then render `index.vue` from a page. Load `saved` from your API and send `form` in `save()`. Discard already puts `saved` back.

@@ -23,4 +23,4 @@ const files = Object.fromEntries(
 
 ## Into your app
 
-This is a _composition_ block. It imports the six section blocks, so copy those folders next to it: `news/`, `onair/`, `character/`, `staff/`, `release/`, `story/`. Put your key visual in the `#background` slot. Swap the `api.ts` of News and Character for your CMS. Replace the arrays at the top of the other four.
+This is a _composition_ block. It imports the six section blocks. Run `npx blessing-ui add site` to copy it with those folders next to it: `news/`, `onair/`, `character/`, `staff/`, `release/`, `story/`. Put your key visual in the `#background` slot. Swap the `api.ts` of News and Character for your CMS. Replace the arrays at the top of the other four.
