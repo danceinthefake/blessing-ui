@@ -6,9 +6,10 @@ Build the docs site and start a preview first: `pnpm docs:build && pnpm exec vit
 - `node e2e/motion.mjs` sets `prefers-reduced-motion: reduce` and removes the blanket reset of VitePress. No component demo can keep a CSS animation running, except the slowed turn of the spinners.
 - `node e2e/axe.mjs` runs axe-core over every component demo. It fails on serious and critical violations, except `color-contrast`. The script reports `color-contrast` only, because white text on the accent color has a 3.6:1 ratio by palette design. This ratio is AA for UI and large text.
 - `node e2e/interact.mjs [chromium|firefox|webkit]` operates keyboard and pointer flows on DataTable, Command, Combobox, DropdownMenu (submenu), Calendar, Layout (phone viewport), and Tour.
+- `node e2e/blocks.mjs [chromium|firefox|webkit]` opens every block on desktop and phone, light and dark. It fails on page errors, console errors, and a page that scrolls sideways. In Chromium it also runs axe with the rules of `axe.mjs`. Then it operates the main flow of each block that has a data layer, for example a transfer with a PIN in Bank and a quiz in Course.
 - `node e2e/consumer/check.mjs` packs the library, installs it into a strict consumer project, and type-checks it. It also measures the size of a single import. When the size is over the limit, the script fails.
 
-`pnpm e2e` runs sweep, axe, and interact on Chromium and Firefox. WebKit needs the Ubuntu-built dependencies of Playwright. CI runs all three browsers.
+`pnpm e2e` runs sweep, axe, interact, and blocks on Chromium and Firefox. WebKit needs the Ubuntu-built dependencies of Playwright. CI runs sweep and interact in all three browsers, and blocks in Chromium and Firefox.
 
 ## Visual diff
 

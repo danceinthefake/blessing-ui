@@ -792,6 +792,7 @@ The user chose both: new blocks for the site-type groups that have no block, thr
 - ✅ Round 2: Course (group 9, education), Health (group 10), Trip (group 12, utilities). The blocks found two library bugs. SleepChart and ControlChart did not shrink in a grid. Five components with a scroll box let their hidden screen-reader text out, so the page scrolled sideways.
 - ✅ Round 3: Help center (group 13, search), Smart home (group 17, connected devices), Station (group 18, operations). Every site-type group now has a block.
 - ✅ Round 4: the blocks are in `tsconfig.json`, so `vue-tsc` checks them, and it found one error in data-page. The sidebar has six groups in place of two: Official site, Accounts and admin, People and messages, Work, Money, and Everyday. Every card on the Blocks page has a preview (`node docs/scripts/shots.mjs blocks`). Dashboard, Chat, Settings, and Onboarding get a mock `api.ts`. Dashboard loads again for a 7-day or 30-day period and shows skeletons while it loads, and Inbox says so when it is empty. The static official-site blocks keep their arrays, as the block contract says.
+- ✅ The flows of the round scripts moved into `e2e/blocks.mjs`. `pnpm e2e` and the Chromium and Firefox jobs of CI run it.
 
 ### Order
 
