@@ -110,5 +110,26 @@
   "group": "App",
   "summary": "A three-step first-run wizard (workspace name, invite teammates, pick a palette) with a progress header and a finish screen.",
   "order": 9
+ },
+ {
+  "slug": "community",
+  "title": "Community",
+  "group": "App",
+  "summary": "A social feed with a composer, posts with polls and reactions, your profile and groups on one side, and trends and people to follow on the other. On a phone, the sides move under the feed.",
+  "order": 11
+ },
+ {
+  "slug": "project",
+  "title": "Project",
+  "group": "App",
+  "summary": "A team project with a board and a timeline in tabs. Cards move between columns with a limit on work in progress, the timeline shows the plan, and Share opens access by person and by link.",
+  "order": 12
+ },
+ {
+  "slug": "bank",
+  "title": "Bank",
+  "group": "App",
+  "summary": "An account page: the balance with Transfer, the budget for the month, and the recent transactions. Transfer opens a sheet that checks the amount, then asks for a PIN before the money moves.",
+  "order": 13
  }
 ]
