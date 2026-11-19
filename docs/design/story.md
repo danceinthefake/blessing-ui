@@ -39,7 +39,8 @@ The source is a marketing site, and a library has to do more. Everything below i
 - **Motion.** Three layers, like the series: a soft base on every appearance, a game text box for the parts that talk, and opt-in comedy beats. A calm setting gives less. See [motion](../guide/motion).
 - **Dark mode.** The same grays turn over, with one token swap. Thin type steps up one weight, because hairlines look thinner as light text on a dark background.
 - **Tokens.** Every value that the site hard-coded became a `--bless-*` custom property. You can retune the look without a change to a component.
-- **The platform.** `<dialog>`, the Popover API, `<details>`, native form controls, `Intl` dates, and scroll-snap. These are the parts of the browser itself, styled and not rebuilt.
+- **The platform.** `<dialog>`, the Popover API, `<details>`, native form controls, `Intl` dates, scroll-snap, and CSS anchor positioning. These are the parts of the browser itself, styled and not rebuilt.
+- **The docs as a light novel.** The docs site reads like a light novel in volumes and chapters. It uses two habits of TV anime: the eyecatch at a break and the next-episode preview at the end. See the [credits](./credits#the-look).
 - **Right-to-left.** Logical properties throughout. The lean flips with the reading direction.
 - **Breadth.** The site needed a nav, a list, and a modal. The library has 437 components, from a button to a data table to a chat thread. It also has a set of copy-in [blocks](../blocks/). We checked coverage against the component lists of [shadcn/ui](https://ui.shadcn.com/) and [PrimeVue](https://primevue.org/), so that nothing obvious is missing. Every component here is its own implementation. The library uses nothing from either project.
 

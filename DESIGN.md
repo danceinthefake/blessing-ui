@@ -541,6 +541,8 @@ Sixteen components, 302 → 318. Each uses native platform APIs only: the librar
 
 From Phase 35, each round takes its components from the "Not yet" lists of the [site types](docs/design/site-types.md) page. That page sorts websites and apps into 18 groups by what people do on them. For each group, it lists the components and blocks that serve it and the parts that are missing. If a round adds one of those parts, move it from "Not yet" to "Today" and update the count in the overview table. Do this in the English page and in the Indonesian page (`docs/id/design/site-types.md`).
 
+After Phase 44 the first list was complete, so the page no longer has "Not yet" lists. It is a map of the groups and the parts that serve them. A new gap gets its own line again.
+
 ### Phase 35 — finance and commerce (2026-11-16)
 
 Sixteen components, 318 → 334. Each uses native platform APIs only: the library adds no dependency. Each needs tests, a docs page with a live example, a README row, words in `labelsId`, and a pass of `src/classes.test.ts`. If a component uses a known method or names another party, credit it on the credits page. When a component lands, move its part from "Not yet" to "Today" on the site types page, in both languages.
@@ -771,6 +773,16 @@ The user chose all eight floating parts, with the arrows in CSS. `useFloating` n
 
 - **Chart**: no bundled lib. Phase 11 ✅: `--bless-color-chart-{1..5}` (≥3:1 both themes) + `BlessChart` frame that maps them onto Unovis `--vis-*` vars. Unovis is the documented pairing, installed by the consumer.
 - **Sonner / Radix / cmdk ports**: behaviors re-implemented minimally, not wrapped.
+
+### Phase 54 — design pages review (2026-11-19)
+
+The user asked for a review of the design pages, section by section, and chose all the proposed changes. Each change is in English and Indonesian.
+
+- ✅ Design language: a Motion section that ties the three layers to the series and to care over spectacle, and chapter cards to the other design pages.
+- ✅ Brand: the eyecatch is the sixth element.
+- ✅ Story: CSS anchor positioning joins the platform list, and the docs as a light novel joins what we added.
+- ✅ Site types: the first list is complete, so the 18 "Not yet" lines and the "Not yet" column go. The intro says that the page is now a map.
+- ✅ The calm switch in the docs nav has a tooltip. This found a Tooltip bug: the text did not wrap under a parent with `white-space: nowrap`.
 
 ### Order
 

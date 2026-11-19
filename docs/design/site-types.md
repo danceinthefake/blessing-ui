@@ -10,30 +10,30 @@ No single official list of site types exists. Each classifier counts in its own 
 
 These lists sort by topic, such as sports or travel. A component library needs a different sort: by what people do on the site. Two sites with the same task need the same parts, whatever the topic. This page uses 18 groups of that kind.
 
-For each group, the page lists the components and the [blocks](../blocks/) that serve it today. It also lists the parts that are not in the library yet. Those parts are the candidates for the next rounds of components.
+For each group, the page lists the components and the [blocks](../blocks/) that serve it today. The page started as a list of gaps: the parts that each group needed and the library did not have. Every one of those parts is now a component, so the page is now a map.
 
 ## Overview
 
-| Group                             | Components today | Not yet |
-| --------------------------------- | ---------------: | ------: |
-| 1. Content and publishing         |               22 |       0 |
-| 2. Commerce                       |               25 |       0 |
-| 3. Social and community           |               18 |       0 |
-| 4. Communication                  |               15 |       0 |
-| 5. Media and entertainment        |               14 |       0 |
-| 6. Productivity and collaboration |               20 |       0 |
-| 7. Business software and ERP      |               27 |       0 |
-| 8. Finance                        |               15 |       0 |
-| 9. Education                      |               12 |       0 |
-| 10. Health and fitness            |               12 |       0 |
-| 11. Developer tools               |               18 |       0 |
-| 12. Utilities                     |               11 |       0 |
-| 13. Search and reference          |               10 |       0 |
-| 14. Government and civic services |               14 |       0 |
-| 15. Brand and marketing sites     |               16 |       0 |
-| 16. AI assistants and agents      |               17 |       0 |
-| 17. Connected devices             |               12 |       0 |
-| 18. Operations                    |               20 |       0 |
+| Group                             | Components today |
+| --------------------------------- | ---------------: |
+| 1. Content and publishing         |               22 |
+| 2. Commerce                       |               25 |
+| 3. Social and community           |               18 |
+| 4. Communication                  |               15 |
+| 5. Media and entertainment        |               14 |
+| 6. Productivity and collaboration |               20 |
+| 7. Business software and ERP      |               27 |
+| 8. Finance                        |               15 |
+| 9. Education                      |               12 |
+| 10. Health and fitness            |               12 |
+| 11. Developer tools               |               18 |
+| 12. Utilities                     |               11 |
+| 13. Search and reference          |               10 |
+| 14. Government and civic services |               14 |
+| 15. Brand and marketing sites     |               16 |
+| 16. AI assistants and agents      |               17 |
+| 17. Connected devices             |               12 |
+| 18. Operations                    |               20 |
 
 ## 1. Content and publishing
 
@@ -43,8 +43,6 @@ Today: [ArticleHeader](../components/article-header), [ShareBar](../components/s
 
 Blocks: [news](../blocks/news), [story](../blocks/story), [release](../blocks/release).
 
-Not yet: nothing from the first list. Every part that this page named is now a component.
-
 ## 2. Commerce
 
 Shops, marketplaces, booking, and food delivery. People compare, choose, and pay.
@@ -53,15 +51,11 @@ Today: [ProductCard](../components/product-card), [Price](../components/price), 
 
 Blocks: [pricing](../blocks/pricing).
 
-Not yet: nothing from the first list. Every part that this page named is now a component.
-
 ## 3. Social and community
 
 Social networks, forums, and dating. People post, react, and follow.
 
 Today: [PostComposer](../components/post-composer), [Stories](../components/stories), [FollowButton](../components/follow-button), [TrendList](../components/trend-list), [ReportDialog](../components/report-dialog), [GroupCard](../components/group-card), [ForumTopics](../components/forum-topics), [ProfileCard](../components/profile-card), [ActivityFeed](../components/activity-feed), [Reactions](../components/reactions), [Thread](../components/thread), [Message](../components/message), [Mention](../components/mention), [Poll](../components/poll), [Leaderboard](../components/leaderboard), [AvatarGroup](../components/avatar-group), [SwipeDeck](../components/swipe-deck), [HoverCard](../components/hover-card).
-
-Not yet: nothing from the first list. Every part that this page named is now a component.
 
 ## 4. Communication
 
@@ -71,8 +65,6 @@ Today: [ConversationList](../components/conversation-list), [ReadReceipt](../com
 
 Blocks: [chat](../blocks/chat), [inbox](../blocks/inbox).
 
-Not yet: nothing from the first list. Every part that this page named is now a component.
-
 ## 5. Media and entertainment
 
 Video, music, podcasts, and games. People watch, listen, and play.
@@ -81,15 +73,11 @@ Today: [PosterRow](../components/poster-row), [EpisodeList](../components/episod
 
 Blocks: [onair](../blocks/onair), [character](../blocks/character).
 
-Not yet: nothing from the first list. Every part that this page named is now a component.
-
 ## 6. Productivity and collaboration
 
 Documents, notes, tasks, boards, and calendars. People make things, alone or as a team.
 
 Today: [MarginComments](../components/margin-comments), [ShareAccess](../components/share-access), [MindMap](../components/mind-map), [TimeTracker](../components/time-tracker), [RoomBooking](../components/room-booking), [FileBrowser](../components/file-browser), [Editor](../components/editor), [Kanban](../components/kanban), [StickyBoard](../components/sticky-board), [TaskList](../components/task-list), [Gantt](../components/gantt), [Scheduler](../components/scheduler), [EventCalendar](../components/event-calendar), [Spreadsheet](../components/spreadsheet), [InfiniteCanvas](../components/infinite-canvas), [VersionHistory](../components/version-history), [PresenceCursors](../components/presence-cursors), [Command](../components/command), [FileTree](../components/file-tree), [Annotator](../components/annotator).
-
-Not yet: nothing from the first list. Every part that this page named is now a component.
 
 ## 7. Business software and ERP
 
@@ -99,15 +87,11 @@ Today: [RecordHeader](../components/record-header), [CsvImport](../components/cs
 
 Blocks: [dashboard](../blocks/dashboard), [data-page](../blocks/data-page), [settings](../blocks/settings), [staff](../blocks/staff).
 
-Not yet: nothing from the first list. Every part that this page named is now a component.
-
 ## 8. Finance
 
 Banking, investing, payments, and accounting. People check money and move it.
 
 Today: [BalanceCard](../components/balance-card), [TransactionList](../components/transaction-list), [PriceTicker](../components/price-ticker), [OrderBook](../components/order-book), [CurrencyConverter](../components/currency-converter), [BudgetBars](../components/budget-bars), [PaymentSchedule](../components/payment-schedule), [Candlestick](../components/candlestick), [Sparkline](../components/sparkline), [Stat](../components/stat), [WaterfallChart](../components/waterfall-chart), [DonutChart](../components/donut-chart), [CardInput](../components/card-input), [PinPad](../components/pin-pad), [InputOTP](../components/input-otp).
-
-Not yet: nothing from the first list. Every part that this page named is now a component.
 
 ## 9. Education
 
@@ -115,15 +99,11 @@ Courses, schools, and practice. People learn and show what they know.
 
 Today: [CourseCard](../components/course-card), [Gradebook](../components/gradebook), [Assignment](../components/assignment), [Certificate](../components/certificate), [LessonVideo](../components/lesson-video), [Quiz](../components/quiz), [Flashcards](../components/flashcards), [LessonPath](../components/lesson-path), [Achievements](../components/achievements), [Questionnaire](../components/questionnaire), [Progress](../components/progress), [Transcript](../components/transcript).
 
-Not yet: nothing from the first list. Every part that this page named is now a component.
-
 ## 10. Health and fitness
 
 Trackers, clinics, and telemedicine. People log the body and book care.
 
 Today: [VitalsPanel](../components/vitals-panel), [MedicationSchedule](../components/medication-schedule), [WorkoutLog](../components/workout-log), [SleepChart](../components/sleep-chart), [BodyMap](../components/body-map), [AppointmentCard](../components/appointment-card), [HabitTracker](../components/habit-tracker), [HeatmapCalendar](../components/heatmap-calendar), [Gauge](../components/gauge), [Timer](../components/timer), [SlotPicker](../components/slot-picker), [RangeChart](../components/range-chart).
-
-Not yet: nothing from the first list. Every part that this page named is now a component.
 
 ## 11. Developer tools
 
@@ -133,23 +113,17 @@ Today: [Terminal](../components/terminal), [ApiEndpoint](../components/api-endpo
 
 Blocks: [release](../blocks/release).
 
-Not yet: nothing from the first list. Every part that this page named is now a component.
-
 ## 12. Utilities
 
 Calculators, converters, weather, and maps. People do one small job fast.
 
 Today: [MapPins](../components/map-pins), [RouteSteps](../components/route-steps), [WeatherForecast](../components/weather-forecast), [MeasureConverter](../components/measure-converter), [PlaceSearch](../components/place-search), [Formula](../components/formula), [WorldClock](../components/world-clock), [TimezonePicker](../components/timezone-picker), [QrCode](../components/qr-code), [ColorPicker](../components/color-picker), [Compare](../components/compare).
 
-Not yet: nothing from the first list. Every part that this page named is now a component.
-
 ## 13. Search and reference
 
 Search engines, wikis, and directories. People ask and find.
 
 Today: [SearchResult](../components/search-result), [SearchResults](../components/search-results), [AzIndex](../components/az-index), [KnowledgeArticle](../components/knowledge-article), [Command](../components/command), [Combobox](../components/combobox), [Glossary](../components/glossary), [FaqSearch](../components/faq-search), [Tree](../components/tree), [Highlight](../components/highlight).
-
-Not yet: nothing from the first list. Every part that this page named is now a component.
 
 ## 14. Government and civic services
 
@@ -159,8 +133,6 @@ Today: [SavedForm](../components/saved-form), [CheckAnswers](../components/check
 
 Blocks: [signin](../blocks/signin), [onboarding](../blocks/onboarding).
 
-Not yet: nothing from the first list. Every part that this page named is now a component.
-
 ## 15. Brand and marketing sites
 
 Landing pages, portfolios, and company sites. People learn about a product and sign up.
@@ -168,8 +140,6 @@ Landing pages, portfolios, and company sites. People learn about a product and s
 Today: [LogoCloud](../components/logo-cloud), [FeatureGrid](../components/feature-grid), [TeamGrid](../components/team-grid), [ContactForm](../components/contact-form), [PortfolioGrid](../components/portfolio-grid), [PricingTable](../components/pricing-table), [Testimonials](../components/testimonials), [ComparisonTable](../components/comparison-table), [NewsletterSignup](../components/newsletter-signup), [Marquee](../components/marquee), [Parallax](../components/parallax), [CountUp](../components/count-up), [FaqSearch](../components/faq-search), [ConsentBanner](../components/consent-banner), [CountdownBanner](../components/countdown-banner), [Background](../components/background).
 
 Blocks: [site](../blocks/site), [pricing](../blocks/pricing).
-
-Not yet: nothing from the first list. Every part that this page named is now a component.
 
 ## 16. AI assistants and agents
 
@@ -179,20 +149,14 @@ Today: [ArtifactPanel](../components/artifact-panel), [ContextChips](../componen
 
 Blocks: [chat](../blocks/chat).
 
-Not yet: nothing from the first list. Every part that this page named is now a component.
-
 ## 17. Connected devices
 
 Smart home and vehicle apps. People see the state of a device and change it.
 
 Today: [DeviceTile](../components/device-tile), [Thermostat](../components/thermostat), [FloorPlan](../components/floor-plan), [SceneButtons](../components/scene-buttons), [BatteryLevel](../components/battery-level), [RuleBuilder](../components/rule-builder), [Knob](../components/knob), [Switch](../components/switch), [Slider](../components/slider), [Gauge](../components/gauge), [ConnectionStatus](../components/connection-status), [Sparkline](../components/sparkline).
 
-Not yet: nothing from the first list. Every part that this page named is now a component.
-
 ## 18. Operations
 
 Shop floors, warehouses, and field work. People do physical work at a station, guided by a screen: they follow a job, scan, count, and report. Planning at a desk stays in group 7. The barcode and SKU field of group 7 serves this group too.
 
 Today: [WorkOrderCard](../components/work-order-card), [ProductionCounter](../components/production-counter), [MachineBoard](../components/machine-board), [OeeGauge](../components/oee-gauge), [DowntimePicker](../components/downtime-picker), [WorkInstructions](../components/work-instructions), [QualityCheck](../components/quality-check), [ControlChart](../components/control-chart), [ShiftHandover](../components/shift-handover), [PickingList](../components/picking-list), [SkuField](../components/sku-field), [Gantt](../components/gantt), [Scheduler](../components/scheduler), [Stepper](../components/stepper), [Timer](../components/timer), [Gauge](../components/gauge), [UptimeBar](../components/uptime-bar), [ConnectionStatus](../components/connection-status), [SignaturePad](../components/signature-pad), [CameraCapture](../components/camera-capture).
-
-Not yet: nothing from the first list. Every part that this page named is now a component.

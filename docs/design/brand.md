@@ -9,7 +9,7 @@ The identity of Blessing UI is the design system itself. The logo needs nothing 
   <img src="/logo.svg" width="16" height="16" alt="">
 </div>
 
-## Five elements
+## Six elements
 
 | Element  | Value                                                                                                                                                                                             | Where you see it                                                                                         |
 | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
@@ -18,6 +18,7 @@ The identity of Blessing UI is the design system itself. The logo needs nothing 
 | Geometry | `--bless-lean`, −10°: upright at rest, taken on attention. Big type and the mark always lean. One [shape](../guide/conventions#shape): the upright square plate. The teardrop is only in the mark | every label, field, switch, and chip, and every petal of the mark                                        |
 | Type     | Roboto 100 oversized for the voice, 700 uppercase tracked for the UI                                                                                                                              | watermark, wordmark, labels                                                                              |
 | Motif    | the plate: a hard 1px accent hairline offset behind anything that floats, with no blur                                                                                                            | every popover, menu, tooltip, toast, and modal, the QR frame, the hero shot of the site, and the OG card |
+| Eyecatch | the title card of TV anime at a break: a band with a small kicker, a large title, and a big number. A next-episode preview closes the home page                                                   | the home page, the landing pages of the guide, the blocks, and the design, and the strip over each page  |
 
 ## Mark
 
