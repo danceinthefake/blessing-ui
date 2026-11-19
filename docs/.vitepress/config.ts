@@ -30,11 +30,13 @@ export default defineConfig({
     // Before first paint, mirror VitePress's saved appearance onto data-theme (what the library's
     // tokens read) and restore the palette, so Bless components don't flash the OS theme or the
     // default accent. "auto" leaves data-theme off: the tokens then follow the OS, as VitePress does.
-    // Calm motion comes back the same way.
+    // A first visit has no saved appearance: save "light", so the site opens light. This script
+    // runs before the dark-mode check of VitePress, which then reads the same value. The theme
+    // switch still saves the choice of the visitor. Calm motion comes back the same way.
     [
       "script",
       {},
-      `try{var a=localStorage.getItem("vitepress-theme-appearance");if(a==="dark"||a==="light")document.documentElement.dataset.theme=a;var p=localStorage.getItem("bless-palette");if(p)document.documentElement.dataset.palette=p;if(localStorage.getItem("bless-motion")==="calm")document.documentElement.dataset.motion="calm"}catch(e){}`,
+      `try{var a=localStorage.getItem("vitepress-theme-appearance");if(!a){a="light";localStorage.setItem("vitepress-theme-appearance",a)}if(a==="dark"||a==="light")document.documentElement.dataset.theme=a;var p=localStorage.getItem("bless-palette");if(p)document.documentElement.dataset.palette=p;if(localStorage.getItem("bless-motion")==="calm")document.documentElement.dataset.motion="calm"}catch(e){}`,
     ],
     ["meta", { property: "og:title", content: "Blessing UI" }],
     [

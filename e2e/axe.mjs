@@ -21,6 +21,8 @@ const queue = ["light", "dark"].flatMap((scheme) => pages.map((path) => ({ schem
 const found = [];
 async function worker() {
   const page = await browser.newPage({ viewport: { width: 1200, height: 900 } });
+  // the docs open light on a first visit; "auto" makes them follow the emulated color scheme
+  await page.addInitScript(() => localStorage.setItem("vitepress-theme-appearance", "auto"));
   for (let job; (job = queue.shift());) {
     const { scheme, path } = job;
     await page.emulateMedia({ colorScheme: scheme });

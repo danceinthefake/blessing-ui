@@ -35,6 +35,8 @@ for (const { slug } of blocks)
     ])
       for (const colorScheme of ["light", "dark"]) {
         const p = await browser.newPage({ viewport: { width: w, height: h }, colorScheme });
+        // the docs open light on a first visit; "auto" makes them follow the emulated color scheme
+        await p.addInitScript(() => localStorage.setItem("vitepress-theme-appearance", "auto"));
         const errs = [];
         p.on("pageerror", (e) => errs.push(e.message));
         p.on("console", (m) => m.type() === "error" && errs.push(m.text()));

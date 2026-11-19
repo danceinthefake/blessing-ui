@@ -132,6 +132,8 @@ for (const scheme of ["light", "dark"]) {
         colorScheme: scheme,
         reducedMotion: "reduce",
       });
+      // the docs open light on a first visit; "auto" makes them follow the emulated color scheme
+      await ctx.addInitScript(() => localStorage.setItem("vitepress-theme-appearance", "auto"));
       const page = await ctx.newPage();
       for (let slug; (slug = queue.shift());) {
         await check(browser, scheme, slug, page).catch((e) =>
