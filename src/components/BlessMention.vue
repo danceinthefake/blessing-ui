@@ -34,7 +34,7 @@ const open = ref(false);
 const active = ref(0);
 /** the trigger, the text typed after it, and where the trigger sits in the value */
 const at = ref({ trigger: "", query: "", start: 0 });
-const { x, y } = useFloating(root, panel, open, { placement: "bottom-start", offset: 4 });
+const { style } = useFloating(root, panel, open, { placement: "bottom-start", offset: 4 });
 
 const keys = computed(() =>
   Array.isArray(props.options) ? props.triggers : Object.keys(props.options),
@@ -132,8 +132,7 @@ watch(open, (o) =>
       popover="manual"
       class="bless-mention__panel"
       :style="{
-        left: `${x}px`,
-        top: `${y}px`,
+        ...style,
         minWidth: root ? `${Math.min(root.offsetWidth, 280)}px` : undefined,
       }"
     >

@@ -43,7 +43,7 @@ const fs = useFieldState();
 const open = ref(false);
 const anchor = ref<HTMLElement>();
 const panel = ref<HTMLElement>();
-const { x, y } = useFloating(anchor, panel, open, { placement: "bottom-start", offset: 4 });
+const { style } = useFloating(anchor, panel, open, { placement: "bottom-start", offset: 4 });
 
 // pointer type is a client fact: decide after mount so server and client render the same button
 const coarse = ref(false);
@@ -139,7 +139,7 @@ function clear() {
         ref="panel"
         popover="auto"
         class="bless-datepicker__panel"
-        :style="{ left: `${x}px`, top: `${y}px` }"
+        :style
         role="dialog"
         :aria-label="placeholder"
         @toggle="open = ($event as ToggleEvent).newState === 'open'"
