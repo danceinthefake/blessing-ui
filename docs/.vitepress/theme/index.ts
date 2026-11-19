@@ -21,6 +21,14 @@ import ChapterCards from "./ChapterCards.vue";
 import PageStrip from "./PageStrip.vue";
 import MotionToggle from "./MotionToggle.vue";
 
+// The site opens light on a first visit. The head script in config.ts does this before the first
+// paint of a built page; the dev server adds head scripts only after the app reads the setting, so
+// the same default runs here too, when the theme loads and before the app starts.
+try {
+  if (typeof localStorage !== "undefined" && !localStorage.getItem("vitepress-theme-appearance"))
+    localStorage.setItem("vitepress-theme-appearance", "light");
+} catch {}
+
 export default {
   extends: DefaultTheme,
   Layout() {
