@@ -1,7 +1,7 @@
 export default {
   title: "Data page",
-  group: "App",
-  order: 4,
+  group: "Accounts and admin",
+  order: 11,
   summary:
     "Breadcrumb, a title row with a primary action, a status filter, and a sortable, searchable, selectable data table. A person can undo the bulk Remove.",
   components: [

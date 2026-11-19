@@ -17,7 +17,11 @@ import { mockMailApi } from "./api";
 const mails = ref<Mail[]>([]);
 const openId = ref<number | null>(null);
 const open = computed(() => mails.value.find((m) => m.id === openId.value) ?? null);
-onMounted(async () => (mails.value = await mockMailApi.list()));
+const loaded = ref(false);
+onMounted(async () => {
+  mails.value = await mockMailApi.list();
+  loaded.value = true;
+});
 // On a phone the pane replaces the list: send focus to the message, and back to its row after.
 const subject = ref<{ $el: HTMLElement }>();
 const list = ref<HTMLElement>();
@@ -52,7 +56,14 @@ function back() {
 
 <template>
   <div class="inbox" :class="{ 'inbox--open': open }">
-    <ul ref="list" role="list" class="inbox__list" aria-label="Inbox">
+    <BlessEmpty
+      v-if="loaded && !mails.length"
+      class="inbox__list"
+      title="Inbox zero"
+      description="Every message is archived or deleted."
+      variant="plain"
+    />
+    <ul v-else ref="list" role="list" class="inbox__list" aria-label="Inbox">
       <li v-for="m in mails" :key="m.id">
         <BlessItem
           :title="m.subject"

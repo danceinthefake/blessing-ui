@@ -83,7 +83,7 @@ const filters: { value: Status | "all"; label: string }[] = [
         <BlessToggleGroup
           :model-value="status"
           label="Filter by status"
-          @update:model-value="status = $event ?? 'all'"
+          @update:model-value="status = Array.isArray($event) ? 'all' : ($event ?? 'all')"
         >
           <BlessToggle v-for="f in filters" :key="f.value" :value="f.value" size="sm">{{
             f.label

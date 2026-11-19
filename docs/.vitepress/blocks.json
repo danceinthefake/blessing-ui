@@ -7,20 +7,6 @@
   "order": 1
  },
  {
-  "slug": "signin",
-  "title": "Sign in",
-  "group": "App",
-  "summary": "Email and password with native validation, remember-me, a forgot link, and a divider to OAuth: the form that every app starts with.",
-  "order": 1
- },
- {
-  "slug": "dashboard",
-  "title": "Dashboard",
-  "group": "App",
-  "summary": "Sidebar and toolbar shell with a stats row, a trend chart, and recent orders. On a phone, the sidebar becomes a strip that scrolls sideways.",
-  "order": 2
- },
- {
   "slug": "onair",
   "title": "On Air",
   "group": "Official site",
@@ -33,20 +19,6 @@
   "group": "Official site",
   "summary": "A grid of character cards. Each card opens a hash-routed modal with the profile and cast. Deep links survive reload.",
   "order": 3
- },
- {
-  "slug": "settings",
-  "title": "Settings",
-  "group": "App",
-  "summary": "Profile, notifications, and a danger zone as stacked panels in one form. Enter saves and Discard restores. A sticky save bar stays in view.",
-  "order": 3
- },
- {
-  "slug": "data-page",
-  "title": "Data page",
-  "group": "App",
-  "summary": "Breadcrumb, a title row with a primary action, a status filter, and a sortable, searchable, selectable data table. A person can undo the bulk Remove.",
-  "order": 4
  },
  {
   "slug": "staff",
@@ -63,32 +35,11 @@
   "order": 5
  },
  {
-  "slug": "states",
-  "title": "Page states",
-  "group": "App",
-  "summary": "The three non-happy paths that every list needs: loading skeleton, empty with a call to action, and error with retry. One `state` switch controls them.",
-  "order": 5
- },
- {
-  "slug": "pricing",
-  "title": "Pricing",
-  "group": "App",
-  "summary": "Three tiers with a monthly and yearly switch, a highlighted recommended plan, and a feature checklist.",
-  "order": 6
- },
- {
   "slug": "story",
   "title": "Story",
   "group": "Official site",
   "summary": "Episode list: number, title, air date, and a synopsis that expands, under a short premise.",
   "order": 6
- },
- {
-  "slug": "inbox",
-  "title": "Inbox",
-  "group": "App",
-  "summary": "Two-pane mail: a list with unread indicators, and a reading pane. A person can undo Archive and Delete. On a phone, it collapses to one pane with a back button.",
-  "order": 7
  },
  {
   "slug": "site",
@@ -98,80 +49,129 @@
   "order": 7
  },
  {
-  "slug": "chat",
-  "title": "Chat",
-  "group": "App",
-  "summary": "A conversation thread that sticks to the bottom, with a composer that sends on Enter (never mid-IME conversion) and a typing indicator.",
+  "slug": "signin",
+  "title": "Sign in",
+  "group": "Accounts and admin",
+  "summary": "Email and password with native validation, remember-me, a forgot link, and a divider to OAuth: the form that every app starts with.",
   "order": 8
  },
  {
   "slug": "onboarding",
   "title": "Onboarding",
-  "group": "App",
+  "group": "Accounts and admin",
   "summary": "A three-step first-run wizard (workspace name, invite teammates, pick a palette) with a progress header and a finish screen.",
   "order": 9
  },
  {
+  "slug": "dashboard",
+  "title": "Dashboard",
+  "group": "Accounts and admin",
+  "summary": "Sidebar and toolbar shell with a stats row, a trend chart, and recent orders. On a phone, the sidebar becomes a strip that scrolls sideways.",
+  "order": 10
+ },
+ {
+  "slug": "data-page",
+  "title": "Data page",
+  "group": "Accounts and admin",
+  "summary": "Breadcrumb, a title row with a primary action, a status filter, and a sortable, searchable, selectable data table. A person can undo the bulk Remove.",
+  "order": 11
+ },
+ {
+  "slug": "settings",
+  "title": "Settings",
+  "group": "Accounts and admin",
+  "summary": "Profile, notifications, and a danger zone as stacked panels in one form. Enter saves and Discard restores. A sticky save bar stays in view.",
+  "order": 12
+ },
+ {
+  "slug": "states",
+  "title": "Page states",
+  "group": "Accounts and admin",
+  "summary": "The three non-happy paths that every list needs: loading skeleton, empty with a call to action, and error with retry. One `state` switch controls them.",
+  "order": 13
+ },
+ {
+  "slug": "inbox",
+  "title": "Inbox",
+  "group": "People and messages",
+  "summary": "Two-pane mail: a list with unread indicators, and a reading pane. A person can undo Archive and Delete. On a phone, it collapses to one pane with a back button.",
+  "order": 14
+ },
+ {
+  "slug": "chat",
+  "title": "Chat",
+  "group": "People and messages",
+  "summary": "A conversation thread that sticks to the bottom, with a composer that sends on Enter (never mid-IME conversion) and a typing indicator.",
+  "order": 15
+ },
+ {
   "slug": "community",
   "title": "Community",
-  "group": "App",
+  "group": "People and messages",
   "summary": "A social feed with a composer, posts with polls and reactions, your profile and groups on one side, and trends and people to follow on the other. On a phone, the sides move under the feed.",
-  "order": 11
+  "order": 16
  },
  {
   "slug": "project",
   "title": "Project",
-  "group": "App",
+  "group": "Work",
   "summary": "A team project with a board and a timeline in tabs. Cards move between columns with a limit on work in progress, the timeline shows the plan, and Share opens access by person and by link.",
-  "order": 12
- },
- {
-  "slug": "bank",
-  "title": "Bank",
-  "group": "App",
-  "summary": "An account page: the balance with Transfer, the budget for the month, and the recent transactions. Transfer opens a sheet that checks the amount, then asks for a PIN before the money moves.",
-  "order": 13
- },
- {
-  "slug": "course",
-  "title": "Course",
-  "group": "App",
-  "summary": "An online course: the lesson path with locked lessons, the lesson video with notes at a time, and a short quiz. A full score marks the lesson done and opens the next one.",
-  "order": 14
- },
- {
-  "slug": "health",
-  "title": "Health",
-  "group": "App",
-  "summary": "A health tracker for one day: vitals with their normal ranges, the medicines to take, last night's sleep, the habits of the week, and the next doctor visit. Reschedule opens free times in a sheet.",
-  "order": 15
- },
- {
-  "slug": "trip",
-  "title": "Trip",
-  "group": "App",
-  "summary": "A trip helper: search a city, then see its weather for five days, the time there next to the time at home, and the places to visit on a map. Each part does one small job.",
-  "order": 16
+  "order": 17
  },
  {
   "slug": "help",
   "title": "Help center",
-  "group": "App",
+  "group": "Work",
   "summary": "A help center: a search box, results with a filter by kind, and an article page with sections and related links. With no search, the common questions show. Each article has its own link.",
-  "order": 17
- },
- {
-  "slug": "home",
-  "title": "Smart home",
-  "group": "App",
-  "summary": "A smart home app: scenes that set many devices at once, a floor plan that opens a room and its devices, the thermostat, and the batteries that run low. A scene and a device switch stay in step.",
   "order": 18
  },
  {
   "slug": "station",
   "title": "Station",
-  "group": "App",
+  "group": "Work",
   "summary": "A work station on a shop floor: the work order, a counter of good and scrap units, step-by-step instructions, and a quality check for each unit. Pause asks why the line stopped.",
   "order": 19
+ },
+ {
+  "slug": "pricing",
+  "title": "Pricing",
+  "group": "Money",
+  "summary": "Three tiers with a monthly and yearly switch, a highlighted recommended plan, and a feature checklist.",
+  "order": 20
+ },
+ {
+  "slug": "bank",
+  "title": "Bank",
+  "group": "Money",
+  "summary": "An account page: the balance with Transfer, the budget for the month, and the recent transactions. Transfer opens a sheet that checks the amount, then asks for a PIN before the money moves.",
+  "order": 21
+ },
+ {
+  "slug": "course",
+  "title": "Course",
+  "group": "Everyday",
+  "summary": "An online course: the lesson path with locked lessons, the lesson video with notes at a time, and a short quiz. A full score marks the lesson done and opens the next one.",
+  "order": 22
+ },
+ {
+  "slug": "health",
+  "title": "Health",
+  "group": "Everyday",
+  "summary": "A health tracker for one day: vitals with their normal ranges, the medicines to take, last night's sleep, the habits of the week, and the next doctor visit. Reschedule opens free times in a sheet.",
+  "order": 23
+ },
+ {
+  "slug": "home",
+  "title": "Smart home",
+  "group": "Everyday",
+  "summary": "A smart home app: scenes that set many devices at once, a floor plan that opens a room and its devices, the thermostat, and the batteries that run low. A scene and a device switch stay in step.",
+  "order": 24
+ },
+ {
+  "slug": "trip",
+  "title": "Trip",
+  "group": "Everyday",
+  "summary": "A trip helper: search a city, then see its weather for five days, the time there next to the time at home, and the places to visit on a map. Each part does one small job.",
+  "order": 25
  }
 ]

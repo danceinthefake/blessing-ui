@@ -1,7 +1,7 @@
 export default {
   title: "Inbox",
-  group: "App",
-  order: 7,
+  group: "People and messages",
+  order: 14,
   summary:
     "Two-pane mail: a list with unread indicators, and a reading pane. A person can undo Archive and Delete. On a phone, it collapses to one pane with a back button.",
   components: [

@@ -1,7 +1,7 @@
 export default {
   title: "Dashboard",
-  group: "App",
-  order: 2,
+  group: "Accounts and admin",
+  order: 10,
   summary:
     "Sidebar and toolbar shell with a stats row, a trend chart, and recent orders. On a phone, the sidebar becomes a strip that scrolls sideways.",
   components: [

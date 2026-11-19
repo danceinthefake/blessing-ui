@@ -1,7 +1,7 @@
 export default {
   title: "Bank",
-  group: "App",
-  order: 13,
+  group: "Money",
+  order: 21,
   summary:
     "An account page: the balance with Transfer, the budget for the month, and the recent transactions. Transfer opens a sheet that checks the amount, then asks for a PIN before the money moves.",
   components: [
