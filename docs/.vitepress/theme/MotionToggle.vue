@@ -3,7 +3,7 @@
 // The head script in config.ts restores it before the first paint.
 import { onMounted, ref, watch } from "vue";
 import { useData } from "vitepress";
-import { BlessToggle } from "blessing-ui";
+import { BlessToggle, BlessTooltip } from "blessing-ui";
 
 const { lang } = useData();
 const calm = ref(false);
@@ -21,11 +21,16 @@ onMounted(() => {
 </script>
 
 <template>
-  <BlessToggle
-    v-model:pressed="calm"
-    size="sm"
-    class="nav-calm"
-    :title="lang === 'id' ? 'Gerak tenang' : 'Calm motion'"
-    >{{ lang === "id" ? "Tenang" : "Calm" }}</BlessToggle
+  <BlessTooltip
+    placement="bottom"
+    :text="
+      lang === 'id'
+        ? 'Gerak tenang: animasi di situs ini memudar saja, tanpa bergeser'
+        : 'Calm motion: animations on this site only fade, with no movement'
+    "
   >
+    <BlessToggle v-model:pressed="calm" size="sm" class="nav-calm">{{
+      lang === "id" ? "Tenang" : "Calm"
+    }}</BlessToggle>
+  </BlessTooltip>
 </template>

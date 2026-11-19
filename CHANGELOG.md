@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Fixed
+
+- Tooltip text wraps at its 240px width also inside a parent with `white-space: nowrap`, for example a nav bar. Before, the text ran out of the tip.
+
 ### Changed
 
 - `dist/blessing-ui.css` has no comment before each component, so it is 3 KB gz smaller (82.3 KB). Apps that bundle the library see no change.

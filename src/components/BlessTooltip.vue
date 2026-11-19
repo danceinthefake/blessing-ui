@@ -150,6 +150,7 @@ onMounted(() =>
   letter-spacing: var(--bless-tracking-wide);
   line-height: var(--bless-leading-tight);
   max-width: 240px;
+  white-space: normal; /* wrap inside max-width, also under a nowrap parent (a nav, a table cell) */
   pointer-events: none;
   transform: skewX(var(--bless-skew));
 }
