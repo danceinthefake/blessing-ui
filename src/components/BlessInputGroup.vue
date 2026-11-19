@@ -101,7 +101,7 @@ withDefaults(defineProps<{ size?: "sm" | "md" | "lg"; disabled?: boolean }>(), {
 .bless-input-group {
   transform: skewX(var(--bless-skew));
 }
-.bless-input-group > :not(.bless-skew, .bless-chip, .bless-badge, .bless-input-group__after) {
+.bless-input-group > :not(.bless-skew, .bless-chip, .bless-badge) {
   transform: skewX(var(--bless-skew-counter));
 }
 /* the group is the parallelogram; the inputs inside it stay straight */
