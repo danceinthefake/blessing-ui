@@ -20,6 +20,7 @@ Pasang pustaka, beri warna Anda sendiri, dan pelajari aturan yang diikuti setiap
 <ChapterCards :items="[
   { title: 'Token', text: 'Setiap nilai adalah custom property --bless-*.', link: '/id/guide/tokens' },
   { title: 'Palet', text: 'Enam palet, satu atribut.', link: '/id/guide/palettes' },
+  { title: 'Pembuat tema', text: 'Satu warna kelopak masuk, satu palet keluar.', link: '/id/guide/theme-maker' },
   { title: 'Mode gelap', text: 'Ikuti sistem, atau paksa terang atau gelap.', link: '/id/guide/dark-mode' },
   { title: 'Gerak', text: 'Tiga lapis seperti di serinya, gerak tenang, dan gerak dikurangi.', link: '/id/guide/motion' },
   { title: 'Font', text: 'Susunan huruf dan cara menggantinya.', link: '/id/guide/fonts' },
