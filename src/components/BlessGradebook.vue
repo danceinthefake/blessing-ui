@@ -140,6 +140,7 @@ function set(s: string, t: BlessGradeTask, raw: string) {
 <style>
 .bless-grades {
   overflow-x: auto;
+  position: relative; /* hidden screen-reader text inside stays in the scroll box */
   font-family: var(--bless-font-sans);
   font-size: var(--bless-text-sm);
   color: var(--bless-color-text);

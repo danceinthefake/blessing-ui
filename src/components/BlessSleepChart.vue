@@ -153,6 +153,7 @@ const summary = computed(
 }
 .bless-sleep__box {
   inline-size: 100%;
+  min-inline-size: 0; /* in a grid, do not keep the width of the first measure */
 }
 .bless-sleep__box svg {
   display: block;

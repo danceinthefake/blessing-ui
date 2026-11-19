@@ -5,9 +5,12 @@
 ### Added
 
 - Three blocks: Community (a social feed with polls, reactions, and people to follow), Project (a board and a timeline with sharing), and Bank (an account with a transfer that asks for a PIN).
+- Three more blocks: Course (a lesson path, a lesson video with notes, and a quiz that opens the next lesson), Health (vitals, medicines, sleep, habits, and a doctor visit to reschedule), and Trip (weather, clocks, and a map for a city that you search).
 
 ### Fixed
 
+- SleepChart and ControlChart shrink to a narrow column in a grid. Before, they kept the 640px width of their first measure.
+- ComparisonTable, Gradebook, HabitTracker, Heatmap, and RoomBooking keep their hidden screen-reader text inside their scroll box. Before, that text made the whole page scroll sideways on a phone.
 - Tooltip text wraps at its 240px width also inside a parent with `white-space: nowrap`, for example a nav bar. Before, the text ran out of the tip.
 
 ### Changed

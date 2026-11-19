@@ -230,4 +230,7 @@ const lines = computed(() => [
   stroke-dasharray: 1;
   animation: bless-draw var(--bless-duration-draw) var(--bless-ease-soft) backwards;
 }
+.bless-spc__box {
+  min-inline-size: 0; /* in a grid, do not keep the width of the first measure */
+}
 </style>

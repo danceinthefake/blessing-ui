@@ -131,5 +131,26 @@
   "group": "App",
   "summary": "An account page: the balance with Transfer, the budget for the month, and the recent transactions. Transfer opens a sheet that checks the amount, then asks for a PIN before the money moves.",
   "order": 13
+ },
+ {
+  "slug": "course",
+  "title": "Course",
+  "group": "App",
+  "summary": "An online course: the lesson path with locked lessons, the lesson video with notes at a time, and a short quiz. A full score marks the lesson done and opens the next one.",
+  "order": 14
+ },
+ {
+  "slug": "health",
+  "title": "Health",
+  "group": "App",
+  "summary": "A health tracker for one day: vitals with their normal ranges, the medicines to take, last night's sleep, the habits of the week, and the next doctor visit. Reschedule opens free times in a sheet.",
+  "order": 15
+ },
+ {
+  "slug": "trip",
+  "title": "Trip",
+  "group": "App",
+  "summary": "A trip helper: search a city, then see its weather for five days, the time there next to the time at home, and the places to visit on a map. Each part does one small job.",
+  "order": 16
  }
 ]
