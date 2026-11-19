@@ -49,7 +49,7 @@ const last = computed(() => step.value >= props.steps.length - 1);
 const anchor = ref<HTMLElement | null>(null);
 const panel = ref<HTMLElement>();
 const rect = ref<DOMRect | null>(null);
-const { x, y, side, update } = useFloating(anchor, panel, open, () => ({
+const { side, style, update } = useFloating(anchor, panel, open, () => ({
   placement: cur.value?.placement ?? "bottom",
   offset: 12,
 }));
@@ -113,7 +113,7 @@ const hole = computed(() => {
         aria-modal="false"
         :aria-label="cur.title ?? L.step(step + 1)"
         tabindex="-1"
-        :style="anchor ? { left: `${x}px`, top: `${y}px` } : undefined"
+        :style="anchor ? style : undefined"
         @keydown.esc.prevent="close(false)"
       >
         <span class="bless-tour__count">{{ step + 1 }} / {{ steps.length }}</span>

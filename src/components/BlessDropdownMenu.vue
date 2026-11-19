@@ -34,7 +34,7 @@ const panel = ref<HTMLElement>();
 const list = ref<InstanceType<typeof BlessMenuList>>();
 const virtual = ref<{ x: number; y: number } | null>(null);
 const anchorEl = ref<HTMLElement>();
-const { x, y } = useFloating(anchorEl, panel, open, () => ({
+const { style } = useFloating(anchorEl, panel, open, () => ({
   placement: props.placement,
   offset: 4,
 }));
@@ -167,7 +167,7 @@ onBeforeUnmount(() => bar?.unregister(id));
     :id
     popover="auto"
     class="bless-dropdown"
-    :style="{ left: `${x}px`, top: `${y}px` }"
+    :style
     @toggle="open = ($event as ToggleEvent).newState === 'open'"
     @keydown="onListKey"
     @focusout="onFocusOut"

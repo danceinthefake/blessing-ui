@@ -48,7 +48,7 @@ const active = ref(0);
 const anchor = ref<HTMLElement>();
 const panel = ref<HTMLElement>();
 const input = ref<HTMLInputElement>();
-const { x, y } = useFloating(anchor, panel, open, { placement: "bottom-start", offset: 4 });
+const { style } = useFloating(anchor, panel, open, { placement: "bottom-start", offset: 4 });
 
 const selected = computed<T[]>(() =>
   Array.isArray(model.value) ? model.value : model.value === undefined ? [] : [model.value],
@@ -210,8 +210,7 @@ function onBlur(e: FocusEvent) {
       popover="manual"
       class="bless-combobox__panel"
       :style="{
-        left: `${x}px`,
-        top: `${y}px`,
+        ...style,
         width: anchor ? `${anchor.offsetWidth}px` : undefined,
       }"
     >

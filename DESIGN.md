@@ -102,7 +102,7 @@ Target: cover [shadcn/ui's component list](https://ui.shadcn.com/docs/components
 
 ### Phase 6 — floating (Popover API + one positioning composable)
 
-Decision: use the native **Popover API** (`popover` attribute, top layer, light-dismiss) and `useFloating()` (about 60 lines: anchor rect, flip, shift). If edge cases pile up, revisit `@floating-ui/dom`. Later, add `anchor-name` CSS anchor positioning as a progressive upgrade.
+Decision: use the native **Popover API** (`popover` attribute, top layer, light-dismiss) and `useFloating()` (about 60 lines: anchor rect, flip, shift). If edge cases pile up, revisit `@floating-ui/dom`. Later, add `anchor-name` CSS anchor positioning as a progressive upgrade (done in Phase 53).
 
 - [x] `useFloating(anchor, floating, { placement, offset })`
 - [x] `BlessPopover`: trigger + content, `v-model:open`, placement
@@ -758,7 +758,14 @@ A script read the props, models, events, and slots of every `.vue` file and grou
 - ✅ The light code theme of the docs is GitHub light high-contrast, because github-light failed 4.5:1 on the surface.
 - Not changed: the synonyms close / dismiss and finish / done / complete in events, and the negative booleans `noRegenerate` and `noAdd`. A `label` prop with an English default (Banner "Announcement", Splash "Welcome") stays a prop, as the conventions say.
 
-### Deliberately skipped
+### Phase 53 — CSS anchor positioning (2026-11-19)
+
+The user chose all eight floating parts, with the arrows in CSS. `useFloating` now returns a `style` to bind. Where the browser has CSS anchor positioning, `style` names the anchor and sets `position-area` and `position-try-fallbacks`, so CSS places and flips the panel with no scroll or resize listeners. Elsewhere, and for a virtual anchor (the context menu) or a `boundary`, the JS path is as before.
+
+- ✅ `useFloating` CSS path: `anchor-name` on the anchor (any earlier name comes back after), `position-area` from the placement, flips with `flip-block` and `flip-inline`, and the offset as a margin.
+- ✅ Combobox, DatePicker, Mention, NavigationMenu, DropdownMenu, and Tour bind `style`.
+- ✅ Tooltip and Popover: `anchor()` cannot reach the trigger from inside the panel, so the arrow keeps its side classes. The panel is `container-type: anchored`, and an `@container anchored(fallback: …)` rule moves the arrow or the accent edge when CSS flips the panel. JS measures the arrow's place along the edge when the panel opens. The `@container anchored(…)` rules are added at run time by `adoptCss` (a constructed stylesheet), because Lightning CSS 1.33, the CSS minifier of Vite 8, fails the whole build of an app on them. The consumer check caught this. A part with an arrow or an accent edge (`arrow` or the new `facing` option) uses CSS only where `container-type: anchored` works too. Chromium 158 has it. Firefox 159 does not, so there Tooltip and Popover stay on JS.
+- ✅ Checked in Chromium and Firefox: the panels sit next to their trigger, flip above at the bottom of the viewport, and the arrow and the accent edge face the trigger after a flip. The interaction tests pass in both.
 
 - **Chart**: no bundled lib. Phase 11 ✅: `--bless-color-chart-{1..5}` (≥3:1 both themes) + `BlessChart` frame that maps them onto Unovis `--vis-*` vars. Unovis is the documented pairing, installed by the consumer.
 - **Sonner / Radix / cmdk ports**: behaviors re-implemented minimally, not wrapped.

@@ -24,7 +24,7 @@ const anchors = ref<HTMLElement[]>([]);
 const panel = ref<HTMLElement>();
 const anchor = ref<HTMLElement>();
 const isOpen = ref(false);
-const { x, y } = useFloating(anchor, panel, isOpen, { placement: "bottom-start", offset: 6 });
+const { style } = useFloating(anchor, panel, isOpen, { placement: "bottom-start", offset: 6 });
 let closeTimer: ReturnType<typeof setTimeout> | undefined;
 
 function setAnchor(i: number, el: unknown) {
@@ -110,7 +110,7 @@ function onKey(e: KeyboardEvent, i: number, item: BlessNavMenuItem) {
       :id="`${id}-panel`"
       popover="manual"
       class="bless-navmenu__panel"
-      :style="{ left: `${x}px`, top: `${y}px` }"
+      :style
       @pointerenter="hold"
       @pointerleave="$event.pointerType === 'mouse' && close()"
       @keydown.esc="escape"

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { nextTick, onBeforeUnmount, onMounted, ref, useId, watch } from "vue";
+import { adoptCss } from "../composables/adoptCss";
 import { useFloating, type Placement } from "../composables/useFloating";
 
 defineOptions({ name: "BlessTooltip" });
@@ -13,7 +14,7 @@ const open = ref(false);
 const id = useId();
 const anchor = ref<HTMLElement>();
 const tip = ref<HTMLElement>();
-const { x, y, side, arrowX, arrowY } = useFloating(anchor, tip, open, () => ({
+const { side, style } = useFloating(anchor, tip, open, () => ({
   placement: props.placement,
   offset: 8,
   arrow: 5,
@@ -64,6 +65,35 @@ watch(
     }),
   { immediate: true },
 );
+
+// CSS anchor positioning flipped the panel: the arrow goes to the other edge. Added at run time,
+// because the CSS minifier of Vite 8 cannot parse `@container anchored(...)` yet.
+onMounted(() =>
+  adoptCss(
+    "bless-tooltip-flip",
+    `@container anchored(fallback: flip-block) or anchored(fallback: flip-block flip-inline) or anchored(fallback: flip-inline flip-block) {
+  .bless-tooltip--top .bless-tooltip__arrow {
+    bottom: auto;
+    top: -6px;
+  }
+  .bless-tooltip--bottom .bless-tooltip__arrow {
+    top: auto;
+    bottom: -6px;
+  }
+}
+@container anchored(fallback: flip-inline) or anchored(fallback: flip-block flip-inline) or anchored(fallback: flip-inline flip-block) {
+  .bless-tooltip--left .bless-tooltip__arrow {
+    right: auto;
+    left: -6px;
+  }
+  .bless-tooltip--right .bless-tooltip__arrow {
+    left: auto;
+    right: -6px;
+  }
+}
+`,
+  ),
+);
 </script>
 
 <template>
@@ -87,7 +117,7 @@ watch(
     @mouseenter="keep"
     @mouseleave="hideSoon"
     :class="`bless-tooltip--${side}`"
-    :style="{ left: `${x}px`, top: `${y}px`, '--_ax': `${arrowX}px`, '--_ay': `${arrowY}px` }"
+    :style
   >
     <slot name="content">{{ text }}</slot>
     <span class="bless-tooltip__arrow" aria-hidden="true" />
@@ -109,6 +139,7 @@ watch(
   margin: 0;
   box-shadow: var(--bless-shadow-plate);
   overflow: visible; /* UA [popover] sets overflow:auto, which would clip the arrow */
+  container-type: anchored; /* the arrow asks it which way CSS flipped the tip */
   padding: var(--bless-space-1) var(--bless-space-3);
   border: 0;
   background: var(--bless-color-text);

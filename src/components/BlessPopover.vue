@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { nextTick, onMounted, ref, useId, watch } from "vue";
+import { adoptCss } from "../composables/adoptCss";
 import { useFloating, type Placement } from "../composables/useFloating";
 
 // two roots (the trigger and the panel): `class` and other attributes go on the panel
@@ -26,10 +27,11 @@ const open = defineModel<boolean>("open", { default: false });
 const id = useId();
 const anchor = ref<HTMLElement>();
 const panel = ref<HTMLElement>();
-const { x, y, side, arrowX, arrowY } = useFloating(anchor, panel, open, () => ({
+const { side, style } = useFloating(anchor, panel, open, () => ({
   placement: props.placement,
   offset: props.arrow ? Math.max(props.offset ?? 8, 10) : props.offset,
   arrow: props.arrow ? 6 : 0,
+  facing: true,
 }));
 
 function sync(o: boolean) {
@@ -70,6 +72,35 @@ function onToggle(e: Event) {
     (anchor.value?.firstElementChild as HTMLElement | null)?.focus?.();
   open.value = opening;
 }
+
+// CSS anchor positioning flipped the panel: the accent edge goes to the other edge. Added at run time,
+// because the CSS minifier of Vite 8 cannot parse `@container anchored(...)` yet.
+onMounted(() =>
+  adoptCss(
+    "bless-popover-flip",
+    `@container anchored(fallback: flip-block) or anchored(fallback: flip-block flip-inline) or anchored(fallback: flip-inline flip-block) {
+  .bless-popover--bottom::before {
+    top: auto;
+    bottom: -1px;
+  }
+  .bless-popover--top::before {
+    bottom: auto;
+    top: -1px;
+  }
+}
+@container anchored(fallback: flip-inline) or anchored(fallback: flip-block flip-inline) or anchored(fallback: flip-inline flip-block) {
+  .bless-popover--right::before {
+    left: auto;
+    right: -1px;
+  }
+  .bless-popover--left::before {
+    right: auto;
+    left: -1px;
+  }
+}
+`,
+  ),
+);
 </script>
 
 <template>
@@ -87,7 +118,7 @@ function onToggle(e: Event) {
     :popover="modal ? 'manual' : 'auto'"
     class="bless-popover"
     :class="[`bless-popover--${side}`, { 'bless-popover--arrow': arrow }]"
-    :style="{ left: `${x}px`, top: `${y}px`, '--_ax': `${arrowX}px`, '--_ay': `${arrowY}px` }"
+    :style
     role="dialog"
     :aria-label="title"
     v-bind="{ ...$attrs, ...hover }"
@@ -109,6 +140,7 @@ function onToggle(e: Event) {
   inset: unset;
   margin: 0;
   overflow: visible; /* UA [popover] sets overflow:auto, which would clip the accent edge */
+  container-type: anchored; /* the accent edge asks it which way CSS flipped the panel */
   padding: var(--bless-space-4);
   border: var(--bless-border-width) solid var(--bless-color-border);
   background: var(--bless-color-bg);
