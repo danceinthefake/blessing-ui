@@ -784,6 +784,15 @@ The user asked for a review of the design pages, section by section, and chose a
 - ✅ Site types: the first list is complete, so the 18 "Not yet" lines and the "Not yet" column go. The intro says that the page is now a map.
 - ✅ The calm switch in the docs nav has a tooltip. This found a Tooltip bug: the text did not wrap under a parent with `white-space: nowrap`.
 
+### Phase 55 — richer blocks (2026-11-19)
+
+The user chose both: new blocks for the site-type groups that have no block, three per round, then a round that deepens the 16 blocks that exist. Each new block has a mock `api.ts`, works in every palette, in dark mode, and on a phone, and goes on the site types page in both languages.
+
+- ✅ Round 1: Community (group 3, social), Project (group 6, productivity), Bank (group 8, finance).
+- ⬜ Round 2: Education, Health and fitness, Utilities.
+- ⬜ Round 3: Search and reference, Connected devices, Operations.
+- ⬜ Round 4: deepen the 16 blocks that exist.
+
 ### Order
 
 5 → 6 → 7. Inside each phase, build order = list order. Every component: tests (grouped per area in `src/components/*.test.ts`), a docs page with a live example, a README row, checkbox flipped.

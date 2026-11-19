@@ -57,6 +57,8 @@ Social networks, forums, and dating. People post, react, and follow.
 
 Today: [PostComposer](../components/post-composer), [Stories](../components/stories), [FollowButton](../components/follow-button), [TrendList](../components/trend-list), [ReportDialog](../components/report-dialog), [GroupCard](../components/group-card), [ForumTopics](../components/forum-topics), [ProfileCard](../components/profile-card), [ActivityFeed](../components/activity-feed), [Reactions](../components/reactions), [Thread](../components/thread), [Message](../components/message), [Mention](../components/mention), [Poll](../components/poll), [Leaderboard](../components/leaderboard), [AvatarGroup](../components/avatar-group), [SwipeDeck](../components/swipe-deck), [HoverCard](../components/hover-card).
 
+Blocks: [community](../blocks/community).
+
 ## 4. Communication
 
 Chat, email, and calls. People send and receive messages.
@@ -79,6 +81,8 @@ Documents, notes, tasks, boards, and calendars. People make things, alone or as 
 
 Today: [MarginComments](../components/margin-comments), [ShareAccess](../components/share-access), [MindMap](../components/mind-map), [TimeTracker](../components/time-tracker), [RoomBooking](../components/room-booking), [FileBrowser](../components/file-browser), [Editor](../components/editor), [Kanban](../components/kanban), [StickyBoard](../components/sticky-board), [TaskList](../components/task-list), [Gantt](../components/gantt), [Scheduler](../components/scheduler), [EventCalendar](../components/event-calendar), [Spreadsheet](../components/spreadsheet), [InfiniteCanvas](../components/infinite-canvas), [VersionHistory](../components/version-history), [PresenceCursors](../components/presence-cursors), [Command](../components/command), [FileTree](../components/file-tree), [Annotator](../components/annotator).
 
+Blocks: [project](../blocks/project).
+
 ## 7. Business software and ERP
 
 CRM, HR, help desks, admin panels, and ERP: one system for stock, buying, sales, accounting, and staff. People find records, change them, and watch numbers.
@@ -92,6 +96,8 @@ Blocks: [dashboard](../blocks/dashboard), [data-page](../blocks/data-page), [set
 Banking, investing, payments, and accounting. People check money and move it.
 
 Today: [BalanceCard](../components/balance-card), [TransactionList](../components/transaction-list), [PriceTicker](../components/price-ticker), [OrderBook](../components/order-book), [CurrencyConverter](../components/currency-converter), [BudgetBars](../components/budget-bars), [PaymentSchedule](../components/payment-schedule), [Candlestick](../components/candlestick), [Sparkline](../components/sparkline), [Stat](../components/stat), [WaterfallChart](../components/waterfall-chart), [DonutChart](../components/donut-chart), [CardInput](../components/card-input), [PinPad](../components/pin-pad), [InputOTP](../components/input-otp).
+
+Blocks: [bank](../blocks/bank).
 
 ## 9. Education
 

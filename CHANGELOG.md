@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Added
+
+- Three blocks: Community (a social feed with polls, reactions, and people to follow), Project (a board and a timeline with sharing), and Bank (an account with a transfer that asks for a PIN).
+
 ### Fixed
 
 - Tooltip text wraps at its 240px width also inside a parent with `white-space: nowrap`, for example a nav bar. Before, the text ran out of the tip.
