@@ -634,10 +634,11 @@
     "description": "when the key was last used, as text"
    },
    {
-    "name": "noRegenerate",
+    "name": "regenerable",
     "type": "boolean | undefined",
     "required": false,
-    "description": "hide the button that makes a new key"
+    "default": "true",
+    "description": "show the button that makes a new key; false hides it"
    },
    {
     "name": "labels",
@@ -648,12 +649,12 @@
   ],
   "events": [
    {
-    "name": "regenerate",
+    "name": "copy",
     "type": "[]",
     "description": ""
    },
    {
-    "name": "copy",
+    "name": "regenerate",
     "type": "[]",
     "description": ""
    }
@@ -4313,7 +4314,7 @@
   ],
   "events": [
    {
-    "name": "done",
+    "name": "finish",
     "type": "[]",
     "description": ""
    }
@@ -9353,7 +9354,7 @@
     "description": ""
    },
    {
-    "name": "complete",
+    "name": "finish",
     "type": "[code: string]",
     "description": ""
    }
@@ -12295,6 +12296,11 @@
     "description": ""
    },
    {
+    "name": "finish",
+    "type": "[]",
+    "description": ""
+   },
+   {
     "name": "update:collapsed",
     "type": "[value: boolean]",
     "description": ""
@@ -12302,11 +12308,6 @@
    {
     "name": "update:done",
     "type": "[value: string[]]",
-    "description": ""
-   },
-   {
-    "name": "complete",
-    "type": "[]",
     "description": ""
    }
   ],
@@ -13369,7 +13370,7 @@
     "description": ""
    },
    {
-    "name": "complete",
+    "name": "finish",
     "type": "[]",
     "description": ""
    }
@@ -13476,7 +13477,7 @@
     "description": ""
    },
    {
-    "name": "complete",
+    "name": "finish",
     "type": "[pin: string]",
     "description": ""
    }
@@ -15440,10 +15441,11 @@
  "BlessReactions": {
   "props": [
    {
-    "name": "noAdd",
+    "name": "addable",
     "type": "boolean | undefined",
     "required": false,
-    "description": "hide the button that opens the emoji picker"
+    "default": "true",
+    "description": "show the button that opens the emoji picker; false hides it"
    },
    {
     "name": "max",
@@ -15601,7 +15603,7 @@
   ],
   "events": [
    {
-    "name": "done",
+    "name": "finish",
     "type": "[]",
     "description": ""
    }
@@ -18546,7 +18548,7 @@
   ],
   "events": [
    {
-    "name": "done",
+    "name": "finish",
     "type": "[]",
     "description": ""
    }
@@ -21098,12 +21100,12 @@
     "description": ""
    },
    {
-    "name": "skip",
+    "name": "finish",
     "type": "[]",
     "description": ""
    },
    {
-    "name": "finish",
+    "name": "skip",
     "type": "[]",
     "description": ""
    },
@@ -21670,12 +21672,12 @@
   ],
   "events": [
    {
-    "name": "done",
+    "name": "error",
     "type": "[item: BlessUpload]",
     "description": ""
    },
    {
-    "name": "error",
+    "name": "finish",
     "type": "[item: BlessUpload]",
     "description": ""
    },
