@@ -794,6 +794,10 @@ The user chose both: new blocks for the site-type groups that have no block, thr
 - ✅ Round 4: the blocks are in `tsconfig.json`, so `vue-tsc` checks them, and it found one error in data-page. The sidebar has six groups in place of two: Official site, Accounts and admin, People and messages, Work, Money, and Everyday. Every card on the Blocks page has a preview (`node docs/scripts/shots.mjs blocks`). Dashboard, Chat, Settings, and Onboarding get a mock `api.ts`. Dashboard loads again for a 7-day or 30-day period and shows skeletons while it loads, and Inbox says so when it is empty. The static official-site blocks keep their arrays, as the block contract says.
 - ✅ The flows of the round scripts moved into `e2e/blocks.mjs`. `pnpm e2e` and the Chromium and Firefox jobs of CI run it.
 
+### Phase 56 — copy-in command for blocks (2026-11-19)
+
+- ✅ `npx blessing-ui add <block...> [--dir] [--force]` and `npx blessing-ui list`, in `bin/blessing-ui.mjs` with `node:fs` only. `scripts/postbuild.mjs` copies the blocks (without `meta.ts`) and `blocks.json` to `dist/blocks/`. The command brings the sibling blocks that a block imports, keeps a folder that exists, and names packages beyond `vue` and `blessing-ui` (Dashboard needs `@unovis/vue`). Tested in `src/cli.test.ts` and from a packed tarball. The block pages and the generator say to run it.
+
 ### Order
 
 5 → 6 → 7. Inside each phase, build order = list order. Every component: tests (grouped per area in `src/components/*.test.ts`), a docs page with a live example, a README row, checkbox flipped.

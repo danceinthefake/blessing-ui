@@ -21,4 +21,4 @@ const files = Object.fromEntries(
 
 ## Into your app
 
-Copy the folder to `src/features/onair/` (Nuxt: `app/features/onair/`) and render `index.vue` from a page. It has no data layer: the arrays at the top of `index.vue` are where your data goes.
+Run `npx blessing-ui add onair` to copy the folder to `src/features/onair/` (Nuxt: `app/features/onair/`). Then render `index.vue` from a page. It has no data layer: the arrays at the top of `index.vue` are where your data goes.

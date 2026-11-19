@@ -21,4 +21,4 @@ const files = Object.fromEntries(
 
 ## Into your app
 
-Copy the folder to `src/features/pricing/` (Nuxt: `app/features/pricing/`) and render `index.vue` from a page. It has no data layer: the arrays at the top of `index.vue` are where your data goes.
+Run `npx blessing-ui add pricing` to copy the folder to `src/features/pricing/` (Nuxt: `app/features/pricing/`). Then render `index.vue` from a page. It has no data layer: the arrays at the top of `index.vue` are where your data goes.

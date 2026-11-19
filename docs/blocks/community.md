@@ -21,4 +21,4 @@ const files = Object.fromEntries(
 
 ## Into your app
 
-Copy the folder to `src/features/community/` (Nuxt: `app/features/community/`) and render `index.vue` from a page. Replace `api.ts` with your real adapter. The view and the use-case stay the same.
+Run `npx blessing-ui add community` to copy the folder to `src/features/community/` (Nuxt: `app/features/community/`). Then render `index.vue` from a page. Replace `api.ts` with your real adapter. The view and the use-case stay the same.

@@ -21,4 +21,4 @@ const files = Object.fromEntries(
 
 ## Into your app
 
-Copy the folder to `src/features/inbox/` (Nuxt: `app/features/inbox/`) and render `index.vue` from a page. Replace `api.ts` with your real adapter. The view and the use-case stay the same.
+Run `npx blessing-ui add inbox` to copy the folder to `src/features/inbox/` (Nuxt: `app/features/inbox/`). Then render `index.vue` from a page. Replace `api.ts` with your real adapter. The view and the use-case stay the same.

@@ -19,7 +19,7 @@ const cards = (g) =>
 
 <Eyecatch kicker="Volume 02 · finished screens" title="Blocks" num="02" :level="1" />
 
-A block is a finished section, for example a news list, a schedule table, or a login form. Blessing components build it. It ships as **source that you copy into your project**. It is not a package that you import. Copy the folder and rename what you like. Then point its data at your backend. Use the offline `api.ts` if the block has one. Otherwise use the arrays at the top of `index.vue`.
+A block is a finished section, for example a news list, a schedule table, or a login form. Blessing components build it. It ships as **source that you copy into your project**. It is not a package that you import. Run `npx blessing-ui add <block>` to copy the folder into `src/features/`, or copy it by hand. Then rename what you like. Then point its data at your backend. Use the offline `api.ts` if the block has one. Otherwise use the arrays at the top of `index.vue`.
 
 Every block follows one contract:
 

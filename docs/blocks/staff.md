@@ -21,4 +21,4 @@ const files = Object.fromEntries(
 
 ## Into your app
 
-Copy the folder to `src/features/staff/` (Nuxt: `app/features/staff/`) and render `index.vue` from a page. It has no data layer: the arrays at the top of `index.vue` are where your data goes.
+Run `npx blessing-ui add staff` to copy the folder to `src/features/staff/` (Nuxt: `app/features/staff/`). Then render `index.vue` from a page. It has no data layer: the arrays at the top of `index.vue` are where your data goes.

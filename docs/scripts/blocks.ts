@@ -81,7 +81,7 @@ const files = Object.fromEntries(
 
 ## Into your app
 
-Copy the folder to \`src/features/${slug}/\` (Nuxt: \`app/features/${slug}/\`) and render \`index.vue\` from a page. ${intoApp(folder)}
+Run \`npx blessing-ui add ${slug}\` to copy the folder to \`src/features/${slug}/\` (Nuxt: \`app/features/${slug}/\`). Then render \`index.vue\` from a page. ${intoApp(folder)}
 `,
   );
   made++;

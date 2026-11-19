@@ -21,4 +21,4 @@ const files = Object.fromEntries(
 
 ## Into your app
 
-Copy the folder to `src/features/onboarding/` (Nuxt: `app/features/onboarding/`) and render `index.vue` from a page. There is nothing to fetch: on `@finish`, send `form` to your API and route to the workspace instead of starting over.
+Run `npx blessing-ui add onboarding` to copy the folder to `src/features/onboarding/` (Nuxt: `app/features/onboarding/`). Then render `index.vue` from a page. There is nothing to fetch: on `@finish`, send `form` to your API and route to the workspace instead of starting over.

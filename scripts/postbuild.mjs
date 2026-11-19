@@ -3,7 +3,7 @@
 //  2. prepend `import "./X.css"` to X.js so bundlers pull only the CSS of what you import
 //  3. prepend `import "./style.css"` (tokens) to index.js
 //  4. write dist/blessing-ui.css = tokens + every component's CSS, for the no-bundler / import-everything case
-import { readdirSync, readFileSync, renameSync, writeFileSync, existsSync } from "node:fs";
+import { cpSync, readdirSync, readFileSync, renameSync, writeFileSync, existsSync } from "node:fs";
 import { join } from "node:path";
 
 const dist = "dist";
@@ -42,3 +42,9 @@ writeFileSync(join(dist, "blessing-ui.css"), all.join("\n"));
 console.log(
   `postbuild: linked ${linked} component stylesheets, wrote dist/blessing-ui.css (${(all.join("\n").length / 1024).toFixed(0)} KB)`,
 );
+// 5. ship the blocks for `npx blessing-ui add` (meta.ts is docs-only; blocks.json is the list)
+cpSync("docs/blocks", join(dist, "blocks"), {
+  recursive: true,
+  filter: (p) => !p.endsWith(".md") && !p.endsWith("meta.ts"),
+});
+cpSync("docs/.vitepress/blocks.json", join(dist, "blocks/blocks.json"));
