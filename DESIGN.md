@@ -790,7 +790,7 @@ The user chose both: new blocks for the site-type groups that have no block, thr
 
 - ✅ Round 1: Community (group 3, social), Project (group 6, productivity), Bank (group 8, finance).
 - ✅ Round 2: Course (group 9, education), Health (group 10), Trip (group 12, utilities). The blocks found two library bugs. SleepChart and ControlChart did not shrink in a grid. Five components with a scroll box let their hidden screen-reader text out, so the page scrolled sideways.
-- ⬜ Round 3: Search and reference, Connected devices, Operations.
+- ✅ Round 3: Help center (group 13, search), Smart home (group 17, connected devices), Station (group 18, operations). Every site-type group now has a block.
 - ⬜ Round 4: deepen the 16 blocks that exist.
 
 ### Order
