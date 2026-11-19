@@ -9,6 +9,7 @@
 - The last three gap blocks: Help center (search, results by kind, and articles with their own link), Smart home (scenes, a floor plan, a thermostat, and batteries), and Station (a work order, a counter, instructions, a quality check, and a reason when the line stops).
 - The Blocks page has six groups and a preview on every card. Dashboard, Chat, Settings, and Onboarding have a mock `api.ts`, Dashboard has a period switch with a loading state, and Inbox has an empty state. `vue-tsc` now checks the blocks.
 - `npx blessing-ui add <block>` copies a block into `src/features/` (Nuxt: `app/features/`), with the sibling blocks that it imports. It keeps a folder that exists unless you add `--force`, and it names the extra packages to install. `npx blessing-ui list` shows the blocks. The package now ships the block sources in `dist/blocks/`.
+- Theme maker (Guide, Theming): pick one petal color and get a palette block for your CSS. The page derives the six accent tokens and the dark text cut, shows the contrast of each against the accent contract, and previews the palette in the site theme.
 
 ### Fixed
 

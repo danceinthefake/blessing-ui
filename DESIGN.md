@@ -798,6 +798,10 @@ The user chose both: new blocks for the site-type groups that have no block, thr
 
 - ✅ `npx blessing-ui add <block...> [--dir] [--force]` and `npx blessing-ui list`, in `bin/blessing-ui.mjs` with `node:fs` only. `scripts/postbuild.mjs` copies the blocks (without `meta.ts`) and `blocks.json` to `dist/blocks/`. The command brings the sibling blocks that a block imports, keeps a folder that exists, and names packages beyond `vue` and `blessing-ui` (Dashboard needs `@unovis/vue`). Tested in `src/cli.test.ts` and from a packed tarball. The block pages and the generator say to run it.
 
+### Phase 57 — theme maker (2026-11-20)
+
+- ✅ `docs/guide/theme-maker` and its Indonesian page: one petal color and a name give the CSS of a custom palette. `docs/.vitepress/theme/palette.ts` darkens the petal until it meets each part of the accent contract (white on `accent`, `accent-text` on both grays in each theme, `chart-1` at 3:1), and tints it for `accent-soft` and `accent-2`. The six built-in petals come out within one or two shades of `tokens.css`. The preview reuses the PaletteRetint demo. The Palettes page links to it. Grays, type, and geometry stay out of scope.
+
 ### Order
 
 5 → 6 → 7. Inside each phase, build order = list order. Every component: tests (grouped per area in `src/components/*.test.ts`), a docs page with a live example, a README row, checkbox flipped.

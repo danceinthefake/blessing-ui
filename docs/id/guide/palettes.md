@@ -50,7 +50,7 @@ Library menerapkan pilihan yang tersimpan setelah hidrasi, seperti tema. Di hala
 
 Token berikut membentuk sebuah palet: `--bless-color-accent`, `-accent-soft`, `-accent-2`, `-accent-text`, `-badge`, dan `-chart-1`. `accent-text` di mode gelap juga dinaikkan sampai 4.5:1 di atas abu-abu gelap. Untuk menyetel palet, ganti token mana pun setelah `tokens.css`.
 
-Palet buatan Anda adalah blok `[data-palette="…"]` baru dengan token-token itu, dengan tetap memegang [janji aksen](./tokens#color-pairs): `accent` membawa teks putih pada 4.5:1, dan `accent-text` mencapai 4.5:1 di atas `bg` dan `surface` di kedua tema. Atur sendiri atributnya di `<html>`.
+[Pembuat tema](./theme-maker) membuat blok ini dari satu warna kelopak. Palet buatan Anda adalah blok `[data-palette="…"]` baru dengan token-token itu, dengan tetap memegang [janji aksen](./tokens#color-pairs): `accent` membawa teks putih pada 4.5:1, dan `accent-text` mencapai 4.5:1 di atas `bg` dan `surface` di kedua tema. Atur sendiri atributnya di `<html>`.
 
 ```css
 :root[data-palette="kato"] {

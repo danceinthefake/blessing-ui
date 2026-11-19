@@ -50,7 +50,7 @@ The library applies the saved choice after hydration, like the theme. On a stati
 
 These tokens make up a palette: `--bless-color-accent`, `-accent-soft`, `-accent-2`, `-accent-text`, `-badge`, and `-chart-1`. A dark-mode `accent-text` is also lifted to 4.5:1 on dark grays. To tune a palette, override any of them after `tokens.css`.
 
-A palette of your own is a new `[data-palette="…"]` block with those tokens, keeping the [accent's contract](./tokens#color-pairs): `accent` carries white text at 4.5:1, and `accent-text` reaches 4.5:1 on `bg` and `surface` in both themes. Set the attribute on `<html>` yourself.
+The [theme maker](./theme-maker) makes this block from one petal color. A palette of your own is a new `[data-palette="…"]` block with those tokens, keeping the [accent's contract](./tokens#color-pairs): `accent` carries white text at 4.5:1, and `accent-text` reaches 4.5:1 on `bg` and `surface` in both themes. Set the attribute on `<html>` yourself.
 
 ```css
 :root[data-palette="kato"] {
