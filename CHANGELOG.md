@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+### Changed
+
+- `dist/blessing-ui.css` has no comment before each component, so it is 3 KB gz smaller (82.3 KB). Apps that bundle the library see no change.
+
 ## 0.10.0 — 2026-11-19
 
 ### Added

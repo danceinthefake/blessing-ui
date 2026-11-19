@@ -163,8 +163,6 @@ export function useFloating(
       maxX = (b?.right ?? window.innerWidth) - pad;
     const minY = (b?.top ?? 0) + pad,
       maxY = (b?.bottom ?? window.innerHeight) - pad;
-    const vw = window.innerWidth;
-    const vh = window.innerHeight;
 
     const fits = (s: typeof side.value) =>
       s === "top"
@@ -198,8 +196,6 @@ export function useFloating(
       arrowX.value = Math.round(Math.min(Math.max(aw, r.left + r.width / 2 - left), fw - aw));
       arrowY.value = Math.round(Math.min(Math.max(aw, r.top + r.height / 2 - top), fh - aw));
     }
-    void vw;
-    void vh;
   }
 
   // the floating element is display:none until the popover opens, so the first compute may see a

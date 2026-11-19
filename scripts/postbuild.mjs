@@ -18,7 +18,7 @@ for (const f of readdirSync(comps).sort()) {
   const css = join(comps, `${name}.css`);
   renameSync(join(comps, f), css);
   const body = readFileSync(css, "utf8");
-  if (body.trim()) all.push(`/* ${name} */\n${body}`);
+  if (body.trim()) all.push(body);
   const js = join(comps, `${name}.js`);
   if (existsSync(js)) {
     const src = readFileSync(js, "utf8").replace(/\/\* empty css\s*\*\/\n?/g, "");
