@@ -40,10 +40,10 @@ jobs:
         include:
           - name: chromium
             browser: chromium
-            run: node e2e/sweep.mjs chromium && node e2e/interact.mjs chromium
+            run: node e2e/sweep.mjs chromium && node e2e/interact.mjs chromium && node e2e/blocks.mjs chromium
           - name: firefox
             browser: firefox
-            run: node e2e/sweep.mjs firefox && node e2e/interact.mjs firefox
+            run: node e2e/sweep.mjs firefox && node e2e/interact.mjs firefox && node e2e/blocks.mjs firefox
           - name: webkit
             browser: webkit
             run: node e2e/sweep.mjs webkit && node e2e/interact.mjs webkit
