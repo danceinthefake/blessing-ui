@@ -1,7 +1,7 @@
 export default {
   title: "Project",
-  group: "App",
-  order: 12,
+  group: "Work",
+  order: 17,
   summary:
     "A team project with a board and a timeline in tabs. Cards move between columns with a limit on work in progress, the timeline shows the plan, and Share opens access by person and by link.",
   components: [

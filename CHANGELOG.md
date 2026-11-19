@@ -7,6 +7,7 @@
 - Three blocks: Community (a social feed with polls, reactions, and people to follow), Project (a board and a timeline with sharing), and Bank (an account with a transfer that asks for a PIN).
 - Three more blocks: Course (a lesson path, a lesson video with notes, and a quiz that opens the next lesson), Health (vitals, medicines, sleep, habits, and a doctor visit to reschedule), and Trip (weather, clocks, and a map for a city that you search).
 - The last three gap blocks: Help center (search, results by kind, and articles with their own link), Smart home (scenes, a floor plan, a thermostat, and batteries), and Station (a work order, a counter, instructions, a quality check, and a reason when the line stops).
+- The Blocks page has six groups and a preview on every card. Dashboard, Chat, Settings, and Onboarding have a mock `api.ts`, Dashboard has a period switch with a loading state, and Inbox has an empty state. `vue-tsc` now checks the blocks.
 
 ### Fixed
 

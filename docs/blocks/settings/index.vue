@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { reactive, ref } from "vue";
+import { onMounted, reactive, ref } from "vue";
+import { mockSettingsApi, type Profile } from "./api";
 import {
   BlessAlertDialog,
   BlessAvatar,
@@ -15,24 +16,33 @@ import {
   useToast,
 } from "blessing-ui";
 
-const saved = {
-  name: "加藤 恵",
-  email: "megumi@example.com",
-  bio: "同じクラスの、目立たない女の子。",
+// the last saved profile; the form edits a copy, so Discard can bring it back
+let saved: Profile = {
+  name: "",
+  email: "",
+  bio: "",
   lang: "ja",
-  emails: true,
+  emails: false,
   push: false,
-  digest: true,
+  digest: false,
 };
-const form = reactive({ ...saved });
+const form = reactive<Profile>({ ...saved });
+onMounted(async () => {
+  saved = await mockSettingsApi.load();
+  Object.assign(form, saved);
+});
+const saving = ref(false);
 const langs = [
   { value: "ja", label: "日本語" },
   { value: "en", label: "English" },
 ];
 const confirmDelete = ref(false);
 const { success, info } = useToast();
-function save() {
-  Object.assign(saved, form);
+async function save() {
+  saving.value = true;
+  await mockSettingsApi.save({ ...form });
+  saved = { ...form };
+  saving.value = false;
   success("Settings saved");
 }
 function discard() {
@@ -77,7 +87,7 @@ function discard() {
     </BlessPanel>
     <div class="settings__bar">
       <BlessButton variant="ghost" @click="discard">Discard</BlessButton>
-      <BlessButton type="submit">Save changes</BlessButton>
+      <BlessButton type="submit" :loading="saving">Save changes</BlessButton>
     </div>
     <BlessAlertDialog
       v-model="confirmDelete"

@@ -1,26 +1,23 @@
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 import { now, type ChatMessage } from "./domain";
+import type { ChatApi } from "./api";
 
-/** local thread with a canned reply — swap the reply for your transport */
-export function useChat() {
-  const messages = ref<ChatMessage[]>([
-    { id: 1, from: "them", text: "今日、部室来る？", time: "16:02" },
-    { id: 2, from: "me", text: "行く。スクリプトの続き、詩羽先輩から来た？", time: "16:03" },
-    { id: 3, from: "them", text: "来た。第3章、めっちゃ長い。", time: "16:03" },
-  ]);
+/** the thread, the draft, and sending; the api is the only way out */
+export function useChat(api: ChatApi) {
+  const messages = ref<ChatMessage[]>([]);
   const draft = ref("");
   const typing = ref(false);
-  let seq = 3;
-  function send() {
+  onMounted(async () => (messages.value = await api.history()));
+  const nextId = () => Math.max(0, ...messages.value.map((m) => m.id)) + 1;
+  async function send() {
     const text = draft.value.trim();
     if (!text) return;
-    messages.value.push({ id: ++seq, from: "me", text, time: now() });
+    messages.value.push({ id: nextId(), from: "me", text, time: now() });
     draft.value = "";
     typing.value = true;
-    setTimeout(() => {
-      typing.value = false;
-      messages.value.push({ id: ++seq, from: "them", text: "了解。", time: now() });
-    }, 1200);
+    const answer = await api.send(text);
+    typing.value = false;
+    messages.value.push({ id: nextId(), from: "them", text: answer, time: now() });
   }
   return { messages, draft, typing, send };
 }

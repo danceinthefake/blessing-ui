@@ -1,7 +1,7 @@
 export default {
   title: "Pricing",
-  group: "App",
-  order: 6,
+  group: "Money",
+  order: 20,
   summary:
     "Three tiers with a monthly and yearly switch, a highlighted recommended plan, and a feature checklist.",
   components: [

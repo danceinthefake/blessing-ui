@@ -6,14 +6,19 @@ import {
   BlessChart,
   BlessSidebarNav,
   BlessTable,
+  BlessSkeleton,
   BlessText,
+  BlessToggle,
+  BlessToggleGroup,
   BlessToolbar,
   type BlessColumn,
   type BlessNavItem,
 } from "blessing-ui";
 import { VisArea, VisAxis, VisLine, VisXYContainer } from "@unovis/vue";
+import { ref, watch } from "vue";
 import StatCard from "./parts/StatCard.vue";
-import type { Stat } from "./domain";
+import { mockDashboardApi } from "./api";
+import { statusColor, type Order, type Overview, type Period, type Point } from "./domain";
 
 const nav: BlessNavItem[] = [
   { label: "Overview", href: "#overview" },
@@ -22,36 +27,24 @@ const nav: BlessNavItem[] = [
   { label: "Products", href: "#products" },
   { label: "Settings", href: "#settings" },
 ];
-const stats: Stat[] = [
-  { label: "Revenue", value: 1_284_000, delta: 0.12, format: "currency" },
-  { label: "Orders", value: 3_421, delta: 0.04 },
-  { label: "Conversion", value: 0.037, delta: -0.006, format: "percent" },
-  { label: "Active users", value: 18_902, delta: 0.21 },
-];
-type Pt = { d: number; v: number };
-const trend: Pt[] = Array.from({ length: 30 }, (_, i) => ({
-  d: i + 1,
-  v: Math.round(60 + 25 * Math.sin(i / 4) + i * 1.5),
-}));
-type Order = {
-  id: string;
-  customer: string;
-  status: "paid" | "pending" | "refunded";
-  total: string;
-};
+const days = ref<Period>(30);
+const data = ref<Overview>();
+const loading = ref(true);
+watch(
+  days,
+  async (d) => {
+    loading.value = true;
+    data.value = await mockDashboardApi.overview(d);
+    loading.value = false;
+  },
+  { immediate: true },
+);
 const columns: BlessColumn<Order>[] = [
   { key: "id", label: "Order", header: true },
   { key: "customer", label: "Customer" },
   { key: "status", label: "Status" },
   { key: "total", label: "Total", align: "right" },
 ];
-const orders: Order[] = [
-  { id: "#4821", customer: "加藤 恵", status: "paid", total: "¥12,800" },
-  { id: "#4820", customer: "澤村 英梨々", status: "pending", total: "¥3,300" },
-  { id: "#4819", customer: "霞ヶ丘 詩羽", status: "paid", total: "¥38,500" },
-  { id: "#4818", customer: "氷堂 美智留", status: "refunded", total: "¥1,980" },
-];
-const statusColor = { paid: "success", pending: "warning", refunded: "text" } as const;
 </script>
 
 <template>
@@ -64,26 +57,46 @@ const statusColor = { paid: "success", pending: "warning", refunded: "text" } as
       <BlessToolbar label="Page actions" class="dash__bar">
         <template #start><BlessText weight="bold">Overview</BlessText></template>
         <template #end>
+          <BlessToggleGroup
+            :model-value="days"
+            label="Period"
+            @update:model-value="(v) => typeof v === 'number' && (days = v as Period)"
+          >
+            <BlessToggle :value="7" size="sm">7 days</BlessToggle>
+            <BlessToggle :value="30" size="sm">30 days</BlessToggle>
+          </BlessToggleGroup>
           <BlessButton size="sm" variant="outline">Export</BlessButton>
           <BlessAvatar name="Tomoya Aki" size="sm" />
         </template>
       </BlessToolbar>
-      <div class="dash__stats">
-        <StatCard v-for="s in stats" :key="s.label" :stat="s" />
+      <div class="dash__stats" :aria-busy="loading">
+        <template v-if="data && !loading">
+          <StatCard v-for="s in data.stats" :key="s.label" :stat="s" />
+        </template>
+        <BlessSkeleton v-for="i in 4" v-else :key="i" height="88px" />
       </div>
       <BlessChart
         title="Daily revenue"
-        description="Last 30 days: up from about 60 to 125, with a dip mid-month"
+        :description="`Last ${days} days: a rise with a dip in the middle`"
         height="200px"
       >
-        <VisXYContainer :data="trend" :margin="{ top: 8, right: 8 }">
-          <VisArea :x="(d: Pt) => d.d" :y="(d: Pt) => d.v" :opacity="0.15" />
-          <VisLine :x="(d: Pt) => d.d" :y="(d: Pt) => d.v" :lineWidth="1.5" />
+        <BlessSkeleton v-if="loading || !data" height="200px" />
+        <VisXYContainer v-else :data="data.trend" :margin="{ top: 8, right: 8 }">
+          <VisArea :x="(d: Point) => d.d" :y="(d: Point) => d.v" :opacity="0.15" />
+          <VisLine :x="(d: Point) => d.d" :y="(d: Point) => d.v" :lineWidth="1.5" />
           <VisAxis type="x" :numTicks="6" :gridLine="false" />
           <VisAxis type="y" :numTicks="3" />
         </VisXYContainer>
       </BlessChart>
-      <BlessTable :columns :rows="orders" row-key="id" caption="Recent orders" class="dash__table">
+      <BlessSkeleton v-if="loading || !data" :lines="5" class="dash__table" />
+      <BlessTable
+        v-else
+        :columns
+        :rows="data.orders"
+        row-key="id"
+        caption="Recent orders"
+        class="dash__table"
+      >
         <template #cell-status="{ value }">
           <BlessBadge :color="statusColor[value as Order['status']]">{{ value }}</BlessBadge>
         </template>

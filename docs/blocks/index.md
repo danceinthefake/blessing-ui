@@ -6,7 +6,6 @@ title: Blocks
 import blocks from "../.vitepress/blocks.json";
 import { withBase } from "vitepress";
 const groups = [...new Set(blocks.map((b) => b.group))];
-const shots = ["news", "dashboard", "signin"];
 const cards = (g) =>
   blocks
     .filter((b) => b.group === g)
@@ -14,7 +13,7 @@ const cards = (g) =>
       title: b.title,
       text: b.summary,
       link: `/blocks/${b.slug}`,
-      img: shots.includes(b.slug) ? `/preview-${b.slug}.png` : undefined,
+      img: `/preview-${b.slug}.png`,
     }));
 </script>
 
@@ -31,8 +30,8 @@ Every block follows one contract:
 
 Nothing crosses block folders. Delete one and the others still build.
 
-::: tip Two sets
-**Official site** blocks are the sections of the front page of an anime official site. These are the shapes that Blessing was drawn for. **App** blocks are the everyday product screens: sign-in, dashboards, settings, data pages.
+::: tip Two kinds
+**Official site** blocks are the sections of the front page of an anime official site. These are the shapes that Blessing was drawn for. The other groups are product screens. Accounts and admin, People and messages, Work, Money, and Everyday cover every kind of site on the [site types](../design/site-types) page.
 :::
 
 <div v-for="g in groups" :key="g">

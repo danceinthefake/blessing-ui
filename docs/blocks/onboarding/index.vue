@@ -13,6 +13,7 @@ import {
   useTheme,
   type BlessPalette,
 } from "blessing-ui";
+import { mockOnboardingApi } from "./api";
 
 const steps = [
   { label: "Workspace", description: "Name it" },
@@ -22,6 +23,14 @@ const steps = [
 const step = ref(0);
 const form = reactive({ name: "", invites: [] as string[], palette: "megumi" as BlessPalette });
 const done = ref(false);
+const creating = ref(false);
+async function create() {
+  if (creating.value) return;
+  creating.value = true;
+  await mockOnboardingApi.create({ ...form, invites: [...form.invites] });
+  creating.value = false;
+  done.value = true;
+}
 const { setPalette } = useTheme();
 // the finished screen replaces the stepper (and the button that had focus): move focus to it
 const doneHead = ref<{ $el: HTMLElement }>();
@@ -45,7 +54,7 @@ function restart() {
       <BlessText as="p" size="sm" muted class="onboard__lead"
         >Three quick things and you're in.</BlessText
       >
-      <BlessStepper v-model="step" :steps @finish="done = true">
+      <BlessStepper v-model="step" :steps :aria-busy="creating" @finish="create">
         <template #default="{ index }">
           <BlessField
             v-if="index === 0"

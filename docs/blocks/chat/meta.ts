@@ -1,7 +1,7 @@
 export default {
   title: "Chat",
-  group: "App",
-  order: 8,
+  group: "People and messages",
+  order: 15,
   summary:
     "A conversation thread that sticks to the bottom, with a composer that sends on Enter (never mid-IME conversion) and a typing indicator.",
   components: [

@@ -9,9 +9,10 @@ import {
   BlessTextarea,
 } from "blessing-ui";
 import { ref } from "vue";
+import { mockChatApi } from "./api";
 import { useChat } from "./useChat";
 
-const { messages, draft, typing, send } = useChat();
+const { messages, draft, typing, send } = useChat(mockChatApi);
 // Enter sends — but not the Enter that confirms an IME conversion (Japanese, Chinese, Korean input)
 function onEnter(e: KeyboardEvent) {
   if (e.isComposing || e.keyCode === 229) return;
