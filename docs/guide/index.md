@@ -20,6 +20,7 @@ Install the library, give it your colors, and learn the rules that every part fo
 <ChapterCards :items="[
   { title: 'Tokens', text: 'Every value is a --bless-* custom property.', link: '/guide/tokens' },
   { title: 'Palettes', text: 'Six palettes, one attribute.', link: '/guide/palettes' },
+  { title: 'Theme maker', text: 'One petal color in, a palette out.', link: '/guide/theme-maker' },
   { title: 'Dark mode', text: 'Follow the system, or force light or dark.', link: '/guide/dark-mode' },
   { title: 'Motion', text: 'Three layers like the show, calm motion, and reduced motion.', link: '/guide/motion' },
   { title: 'Fonts', text: 'The type stack and how to change it.', link: '/guide/fonts' },

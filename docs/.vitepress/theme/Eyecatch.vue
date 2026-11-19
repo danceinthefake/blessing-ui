@@ -2,10 +2,10 @@
 // An anime eyecatch: a title card at a break. A slash of accent wipes across a dark band
 // when the band first scrolls into view. The home page puts one between its chapters; a
 // landing page opens with one in place of its h1.
-import { onMounted, ref } from "vue";
+import { computed, onMounted, ref } from "vue";
 import { useAnimateOnScroll } from "blessing-ui";
 
-withDefaults(
+const props = withDefaults(
   defineProps<{
     /** the small line over the title, for example "Episode 01" */
     kicker: string;
@@ -22,13 +22,16 @@ const el = ref<HTMLElement>();
 const { visible } = useAnimateOnScroll(el);
 const live = ref(false); // the server render shows the slash
 onMounted(() => (live.value = true));
+// A page opener (level 1) is in view on load: it plays from the first paint, server render
+// included. Waiting for the observer showed it, hid it, and played it again (a flicker).
+const seen = computed(() => props.level === 1 || visible.value);
 </script>
 
 <template>
   <section
     ref="el"
     class="eye vp-raw"
-    :class="{ 'eye--accent': accent, 'eye--seen': visible, 'eye--wait': live && !visible }"
+    :class="{ 'eye--accent': accent, 'eye--seen': seen, 'eye--wait': live && !seen }"
   >
     <span class="eye__slash" aria-hidden="true" />
     <span v-if="num" class="eye__num" aria-hidden="true" :data-num="num" />
@@ -105,6 +108,10 @@ onMounted(() => (live.value = true));
 /* before the band is in view the slash waits; then it wipes across */
 .eye--wait .eye__slash {
   clip-path: inset(0 100% 0 0);
+}
+/* the text waits too, so it does not show and then play in again */
+.eye--wait .eye__text {
+  opacity: 0;
 }
 .eye--seen .eye__slash {
   animation: eye-slash var(--bless-duration-draw) var(--bless-ease-snap) both;

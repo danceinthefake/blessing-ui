@@ -258,3 +258,13 @@ html .VPButton.alt.alt:active {
 .VPNavScreen .nav-calm {
   margin: 16px 0 0;
 }
+/* Shiki's comment grays miss 4.5:1 on the code box (4.1:1 light, 3.2:1 dark): use the muted ink */
+html .vp-doc [class*="language-"] code span[style*="--shiki-light:#66707B"],
+html .vp-doc [class*="language-"] code span[style*="--shiki-light:#6A737D"] {
+  color: var(--bless-color-text-muted);
+}
+/* code inside a link: no gray box under the accent text, which already passes on the page */
+html .vp-doc a > code {
+  background: none;
+  padding-inline: 0;
+}

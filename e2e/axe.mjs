@@ -6,7 +6,18 @@ import { createRequire } from "node:module";
 
 const axeSrc = readFileSync(createRequire(import.meta.url).resolve("axe-core/axe.min.js"), "utf8");
 const base = process.argv[2] ?? "http://localhost:4173";
+// prose pages: the home pages and every guide and design page, read from disk like the sweep
+const prose = [
+  "/",
+  "/id/",
+  ...["guide", "design", "id/guide", "id/design"].flatMap((dir) =>
+    readdirSync(`docs/${dir}`)
+      .filter((f) => f.endsWith(".md"))
+      .map((f) => `/${dir}/${f === "index.md" ? "" : f.replace(".md", "")}`),
+  ),
+];
 const pages = [
+  ...prose,
   ...readdirSync("docs/components")
     .filter((f) => f.endsWith(".md"))
     .map((f) => `/components/${f.replace(".md", "")}`),
@@ -30,14 +41,21 @@ async function worker() {
     await page
       .goto(base + path, { waitUntil: "networkidle", timeout: 20000 })
       .catch(() => page.waitForLoadState("domcontentloaded"));
-    if (!(await page.locator(".demo__preview, .block-frame").count())) continue; // full-page demos live elsewhere
+    // a prose page is checked whole (the VitePress nav and search are not ours); a component page by its demos
+    const whole = prose.includes(path);
+    if (!whole && !(await page.locator(".demo__preview, .block-frame").count())) continue; // full-page demos live elsewhere
+    // the docs fade a hovered part; park the pointer away from (0,0) and let the fade settle
+    await page.mouse.move(1150, 850);
+    if (whole) await page.waitForTimeout(500);
     await page.addScriptTag({ content: axeSrc });
-    const r = await page.evaluate(() =>
-      // eslint-disable-next-line no-undef
-      axe.run(
-        { include: [[".demo__preview"], [".block-frame"]], exclude: [[".bless-watermark"]] },
-        { runOnly: ["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "best-practice"] },
-      ),
+    const r = await page.evaluate(
+      (include) =>
+        // eslint-disable-next-line no-undef
+        axe.run(
+          { include, exclude: [[".bless-watermark"]] },
+          { runOnly: ["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "best-practice"] },
+        ),
+      whole ? [[".VPContent"]] : [[".demo__preview"], [".block-frame"]],
     );
     const bad = r.violations.filter((v) => ["serious", "critical"].includes(v.impact));
     if (bad.length) found.push({ scheme, path, bad });
