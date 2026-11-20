@@ -17,6 +17,7 @@
 - ComparisonTable, Gradebook, HabitTracker, Heatmap, and RoomBooking keep their hidden screen-reader text inside their scroll box. Before, that text made the whole page scroll sideways on a phone.
 - Tooltip text wraps at its 240px width also inside a parent with `white-space: nowrap`, for example a nav bar. Before, the text ran out of the tip.
 - Docs: the title band on top of the Guide, Blocks, and Design pages plays its wipe once. Before, it showed, went blank, and played again (a flicker).
+- Docs: on a page change, the nav and the sidebar switch at once, and only the content wipes in. Before, the browser's default cross-fade showed the old and the new sidebar on top of each other.
 - Docs: code comments and inline code in links reach 4.5:1 in both themes. Before, Shiki's comment gray was 4.1:1 (light) and 3.2:1 (dark) on the code box.
 
 ### Changed

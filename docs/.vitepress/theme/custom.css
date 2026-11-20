@@ -232,6 +232,12 @@ html .VPButton.alt.alt:active {
 .VPContent {
   view-transition-name: bless-page;
 }
+/* the rest of the page (nav, sidebar) swaps at once: the browser's default cross-fade showed
+ * the old and the new sidebar on top of each other */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+}
 ::view-transition-old(bless-page) {
   animation: none;
   opacity: 0;
