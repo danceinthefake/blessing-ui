@@ -40,6 +40,8 @@ Dua baris `preconnect` itu penting: tanpanya, tampilan pertama menunggu koneksi 
 
 Susunan font sudah jatuh ke Hiragino (macOS dan iOS) dan Meiryo (Windows). Setiap pembaca Jepang punya salah satunya. Noto Sans JP untuk Linux, Android, dan tampilan yang seragam. Dari Google Fonts, biayanya kecil. Hurufnya dipecah menjadi banyak potongan `unicode-range` kecil, dan halaman hanya mengunduh potongan yang diperlukan karakternya. Sebagai file utuh yang Anda host sendiri, ukurannya besar, sekitar 1–2 MB untuk dua ketebalan. Pangkas hurufnya. Jika pembaca Anda memakai Mac atau Windows, buang saja dan biarkan font sistem membawa teks Jepang. Roboto tipis adalah satu-satunya huruf yang menentukan tampilannya.
 
+Potongan yang datang belakangan punya biaya di Firefox: selama file font dimuat, Firefox menggambar ulang teks halaman tanpa fontnya, sehingga perpindahan halaman bisa berkedip kosong. Karena itu situs ini tidak memuat Noto Sans JP. Situs ini juga memuat subset `symbols` milik Roboto saat halaman pertama sedang senggang, dengan `document.fonts.load("400 1em Roboto", "★")`.
+
 ## Host sendiri
 
 Jalan terpendek adalah [Fontsource](https://fontsource.org), yang mengemas tiap ketebalan sebagai stylesheet beserta filenya:

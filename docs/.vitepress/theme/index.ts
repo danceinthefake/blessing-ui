@@ -28,6 +28,12 @@ try {
   if (typeof localStorage !== "undefined" && !localStorage.getItem("vitepress-theme-appearance"))
     localStorage.setItem("vitepress-theme-appearance", "light");
 } catch {}
+// Firefox redraws the text without its font while a late font file loads: the first visit to a
+// page with a symbol (★ ▶ ⚙) flashed blank. Load Roboto's symbols subset once the first page is idle.
+if (typeof document !== "undefined" && document.fonts)
+  (window.requestIdleCallback ?? setTimeout)(() => {
+    for (const w of [100, 300, 400, 700]) void document.fonts.load(`${w} 1em Roboto`, "★");
+  });
 
 export default {
   extends: DefaultTheme,
