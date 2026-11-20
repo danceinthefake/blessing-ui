@@ -802,6 +802,7 @@ The user chose both: new blocks for the site-type groups that have no block, thr
 
 - ✅ `docs/guide/theme-maker` and its Indonesian page: one petal color and a name give the CSS of a custom palette. `docs/.vitepress/theme/palette.ts` darkens the petal until it meets each part of the accent contract (white on `accent`, `accent-text` on both grays in each theme, `chart-1` at 3:1), and tints it for `accent-soft` and `accent-2`. The six built-in petals come out within one or two shades of `tokens.css`. The preview reuses the PaletteRetint demo. The Palettes page links to it. Grays, type, and geometry stay out of scope.
 - ✅ The Guide page has a Theme maker card. The Eyecatch of a page opener (level 1) plays from the first paint, so it does not show, blank, and replay.
+- ✅ Page changes turn off the root cross-fade of the View Transitions API (`::view-transition-old(root)`), so the old and the new sidebar do not overlap. Only `.VPContent` wipes in.
 - ✅ `e2e/axe.mjs` checks the home pages and every guide and design page in both languages as whole pages, not only component demos and block frames: 500 pages × 2 themes. It found 44 contrast misses, from two causes: Shiki's comment gray, and the gray box under inline code in a link. Both are fixed in `custom.css`.
 
 ### Order
