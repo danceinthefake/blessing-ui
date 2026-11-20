@@ -18,7 +18,7 @@
   --vp-c-gutter: var(--bless-color-border);
   --vp-c-danger-1: var(--bless-color-danger);
   --vp-c-warning-1: var(--bless-color-warning);
-  --vp-c-tip-1: var(--bless-color-info);
+  --vp-c-tip-1: var(--bless-color-info-text); /* tip links are text: the text cut passes 4.5:1 */
   /* colour means chosen: the main button is solid ink, accent only while pressed */
   --vp-button-brand-bg: var(--bless-color-text);
   --vp-button-brand-hover-bg: var(--bless-color-text);

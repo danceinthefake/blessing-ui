@@ -10,6 +10,8 @@ const base = process.argv[2] ?? "http://localhost:4173";
 const prose = [
   "/",
   "/id/",
+  "/components/",
+  "/blocks/",
   ...["guide", "design", "id/guide", "id/design"].flatMap((dir) =>
     readdirSync(`docs/${dir}`)
       .filter((f) => f.endsWith(".md"))
@@ -19,7 +21,7 @@ const prose = [
 const pages = [
   ...prose,
   ...readdirSync("docs/components")
-    .filter((f) => f.endsWith(".md"))
+    .filter((f) => f.endsWith(".md") && f !== "index.md")
     .map((f) => `/components/${f.replace(".md", "")}`),
   // block previews render inside iframes; audit the frame pages themselves
   ...readdirSync("docs/blocks")

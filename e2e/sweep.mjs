@@ -16,7 +16,7 @@ const pages = [
   ),
   ...readdirSync("docs/components")
     .filter((f) => f.endsWith(".md"))
-    .map((f) => `/components/${f.replace(".md", "")}`),
+    .map((f) => `/components/${f === "index.md" ? "" : f.replace(".md", "")}`),
   ...readdirSync("docs/blocks")
     .filter((f) => f.endsWith(".md") && f !== "README.md")
     .map((f) => `/blocks/${f.replace(".md", "")}`),

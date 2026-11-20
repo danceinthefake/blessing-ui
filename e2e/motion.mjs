@@ -6,7 +6,7 @@ import { readdirSync } from "node:fs";
 
 const base = process.argv[2] ?? "http://localhost:4173";
 const pages = readdirSync("docs/components")
-  .filter((f) => f.endsWith(".md"))
+  .filter((f) => f.endsWith(".md") && f !== "index.md")
   .map((f) => `/components/${f.replace(".md", "")}`);
 
 // a busy indicator that stopped dead would read as frozen; the spinners slow to 2s instead (WCAG

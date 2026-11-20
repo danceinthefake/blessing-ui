@@ -804,6 +804,10 @@ The user chose both: new blocks for the site-type groups that have no block, thr
 - ✅ The Guide page has a Theme maker card. The Eyecatch of a page opener (level 1) plays from the first paint, so it does not show, blank, and replay.
 - ✅ The page-change wipe of Phase 51 is gone: on a real screen it read as a flicker (the content went blank, then faded in, and the root cross-fade overlapped the old and the new sidebar). A page change swaps at once. What is in view when a page opens (the Eyecatch, the cards, the page strip, the demos) shows at once too, because an entrance on arrival also read as a flicker. A band or a card grid further down still plays when it scrolls into view.
 - ✅ Firefox blanked the page text for about 100ms on a first visit to a page with a symbol or Japanese text, while a late `unicode-range` font file loaded. The docs warm Roboto's `symbols` subset when idle and do not load Noto Sans JP (Japanese uses the system fonts in the stack). The fonts guide says why.
+
+### Phase 58 — Components as Volume 02 (2026-11-20)
+
+- ✅ `docs/components/index.md`: an Eyecatch "Volume 02 · the catalog", then each group as a heading with its count and a card per component (sidebar order). The top-bar link (both languages) opens it, and the components sidebar has an Overview item. The volumes follow the top bar: Guide 01, Components 02, Blocks 03, Design 04, in the Eyecatches and in `PageStrip`. The strip on a component page reads "Volume 02 · group · number". English only, like the blocks. Axe checks the catalog and the blocks index as whole pages. The motion and visual tests skip `index.md`. Axe on the blocks index found the link in a tip box at 3.4–3.7:1, so `--vp-c-tip-1` uses `info-text` now.
 - ✅ `e2e/axe.mjs` checks the home pages and every guide and design page in both languages as whole pages, not only component demos and block frames: 500 pages × 2 themes. It found 44 contrast misses, from two causes: Shiki's comment gray, and the gray box under inline code in a link. Both are fixed in `custom.css`.
 
 ### Order

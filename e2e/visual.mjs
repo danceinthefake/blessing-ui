@@ -25,7 +25,7 @@ if (!baseUrl || !headUrl) {
 const WORKERS = Number(process.env.VISUAL_WORKERS ?? 4);
 const TOLERANCE = 4; // pixels that may differ before a demo counts as changed
 const slugs = readdirSync("docs/components")
-  .filter((f) => f.endsWith(".md"))
+  .filter((f) => f.endsWith(".md") && f !== "index.md")
   .map((f) => f.replace(".md", ""));
 
 rmSync(out, { recursive: true, force: true });

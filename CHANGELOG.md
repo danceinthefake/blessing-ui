@@ -9,6 +9,7 @@
 - The last three gap blocks: Help center (search, results by kind, and articles with their own link), Smart home (scenes, a floor plan, a thermostat, and batteries), and Station (a work order, a counter, instructions, a quality check, and a reason when the line stops).
 - The Blocks page has six groups and a preview on every card. Dashboard, Chat, Settings, and Onboarding have a mock `api.ts`, Dashboard has a period switch with a loading state, and Inbox has an empty state. `vue-tsc` now checks the blocks.
 - `npx blessing-ui add <block>` copies a block into `src/features/` (Nuxt: `app/features/`), with the sibling blocks that it imports. It keeps a folder that exists unless you add `--force`, and it names the extra packages to install. `npx blessing-ui list` shows the blocks. The package now ships the block sources in `dist/blocks/`.
+- Components catalog page (Volume 02): every component in its group as a card with its one-line summary. The Components link in the top bar opens it. The volumes follow the top bar: Guide 01, Components 02, Blocks 03, Design 04.
 - Theme maker (Guide, Theming): pick one petal color and get a palette block for your CSS. The page derives the six accent tokens and the dark text cut, shows the contrast of each against the accent contract, and previews the palette in the site theme.
 
 ### Fixed
@@ -18,7 +19,7 @@
 - Tooltip text wraps at its 240px width also inside a parent with `white-space: nowrap`, for example a nav bar. Before, the text ran out of the tip.
 - Docs: the title band on top of the Guide, Blocks, and Design pages plays its wipe once. Before, it showed, went blank, and played again (a flicker).
 - Docs: a page change swaps the page at once, and what is in view shows at once. Before, the content went blank and faded in (View Transitions API), the old and the new sidebar showed on top of each other, and the title band, cards, page strip, and demos played an entrance: a flicker. In Firefox, a font file that loaded late (Roboto symbols, Noto Sans JP slices) also blanked the text for a moment. The docs no longer load Noto Sans JP and warm the Roboto symbols subset when idle.
-- Docs: code comments and inline code in links reach 4.5:1 in both themes. Before, Shiki's comment gray was 4.1:1 (light) and 3.2:1 (dark) on the code box.
+- Docs: code comments and inline code in links reach 4.5:1 in both themes. Before, Shiki's comment gray was 4.1:1 (light) and 3.2:1 (dark) on the code box. Links in a tip box use the info text color (4.5:1); before, they were 3.4–3.7:1.
 
 ### Changed
 
