@@ -47,7 +47,6 @@ const kicker = computed(() => {
   margin-bottom: 20px;
   padding-inline: 14px;
   background: var(--bless-color-media-bg);
-  animation: bless-voice var(--bless-duration-voice) var(--bless-ease-snap) both;
 }
 .strip__text {
   position: relative;

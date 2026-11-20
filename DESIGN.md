@@ -746,7 +746,7 @@ The user chose direction A from the brochure study (chapters like a light novel)
 
 - ✅ Home page, `/` and `/id/`: `HomeBrochure.vue` with a prologue, three eyecatch bands, three chapters (live parts, the motion stage, the numbers and the blocks), and a next-episode epilogue. Each chapter arrives when it scrolls into view. The component count comes from the sidebar list, so it cannot go stale. Axe is clean in both themes, and there is no sideways scroll at 390 px.
 - ✅ Landing pages: `/blocks/`, `/guide/` (new, EN and ID), and `/design/` open with an `Eyecatch` band as their h1, a volume number, and a `ChapterCards` grid that staggers in when it scrolls into view. The home page uses the same `Eyecatch`.
-- ✅ Leaf pages: `PageStrip` puts a slim eyecatch over the title with the volume, or the component group and number. Demos arrive with the base layer, the current sidebar item leans, and the content wipes in with the voice layer on a page change (View Transitions API). Reduced motion skips the wipe.
+- ✅ Leaf pages: `PageStrip` puts a slim eyecatch over the title with the volume, or the component group and number. Demos arrive with the base layer and the current sidebar item leans, and the content wiped in on a page change (View Transitions API; removed in Phase 57, see there).
 - ✅ A calm-motion switch in the nav and in the phone menu. It sets `data-motion="calm"` on `<html>`, and a head script restores it before the first paint.
 
 ### Phase 52 — API audit (2026-11-18)
@@ -802,7 +802,7 @@ The user chose both: new blocks for the site-type groups that have no block, thr
 
 - ✅ `docs/guide/theme-maker` and its Indonesian page: one petal color and a name give the CSS of a custom palette. `docs/.vitepress/theme/palette.ts` darkens the petal until it meets each part of the accent contract (white on `accent`, `accent-text` on both grays in each theme, `chart-1` at 3:1), and tints it for `accent-soft` and `accent-2`. The six built-in petals come out within one or two shades of `tokens.css`. The preview reuses the PaletteRetint demo. The Palettes page links to it. Grays, type, and geometry stay out of scope.
 - ✅ The Guide page has a Theme maker card. The Eyecatch of a page opener (level 1) plays from the first paint, so it does not show, blank, and replay.
-- ✅ Page changes turn off the root cross-fade of the View Transitions API (`::view-transition-old(root)`), so the old and the new sidebar do not overlap. Only `.VPContent` wipes in.
+- ✅ The page-change wipe of Phase 51 is gone: on a real screen it read as a flicker (the content went blank, then faded in, and the root cross-fade overlapped the old and the new sidebar). A page change swaps at once. What is in view when a page opens (the Eyecatch, the cards, the page strip, the demos) shows at once too, because an entrance on arrival also read as a flicker. A band or a card grid further down still plays when it scrolls into view.
 - ✅ `e2e/axe.mjs` checks the home pages and every guide and design page in both languages as whole pages, not only component demos and block frames: 500 pages × 2 themes. It found 44 contrast misses, from two causes: Shiki's comment gray, and the gray box under inline code in a link. Both are fixed in `custom.css`.
 
 ### Order

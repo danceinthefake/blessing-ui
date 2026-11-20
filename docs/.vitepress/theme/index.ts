@@ -1,6 +1,6 @@
 import DefaultTheme from "vitepress/theme";
 import { useData } from "vitepress";
-import { h, nextTick, watch } from "vue";
+import { h, watch } from "vue";
 import type { Theme } from "vitepress";
 import {
   BlessDialogHost,
@@ -65,36 +65,12 @@ export default {
     // Component and block pages are English only: the language switch on them points at
     // /id/components/… and /id/blocks/…, so send those to the English page. public/_redirects
     // does the same for a direct visit.
-    // A move to another page wipes the content in with the voice layer (View Transitions API).
-    // The old page stays as a still frame until the new one has rendered.
-    let rendered: (() => void) | undefined;
     router.onBeforeRouteChange = (to) => {
       const english = to.match(/^\/id(\/(components|blocks)\/.*)$/)?.[1];
       if (english) {
         router.go(english);
         return false;
       }
-      if (
-        typeof document === "undefined" ||
-        !document.startViewTransition ||
-        matchMedia("(prefers-reduced-motion: reduce)").matches
-      )
-        return;
-      return new Promise<void>((go) => {
-        document.startViewTransition(
-          () =>
-            new Promise<void>((done) => {
-              rendered = done;
-              setTimeout(done, 1500); // a page that fails to load must not freeze the frame
-              go();
-            }),
-        );
-      });
-    };
-    router.onAfterRouteChange = () => {
-      const done = rendered;
-      rendered = undefined;
-      nextTick(() => done?.());
     };
     app.component("Demo", Demo);
     app.component("PropsTable", PropsTable);

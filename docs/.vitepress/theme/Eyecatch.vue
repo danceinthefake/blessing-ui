@@ -2,10 +2,10 @@
 // An anime eyecatch: a title card at a break. A slash of accent wipes across a dark band
 // when the band first scrolls into view. The home page puts one between its chapters; a
 // landing page opens with one in place of its h1.
-import { computed, onMounted, ref } from "vue";
+import { onMounted, ref } from "vue";
 import { useAnimateOnScroll } from "blessing-ui";
 
-const props = withDefaults(
+withDefaults(
   defineProps<{
     /** the small line over the title, for example "Episode 01" */
     kicker: string;
@@ -21,17 +21,23 @@ const props = withDefaults(
 const el = ref<HTMLElement>();
 const { visible } = useAnimateOnScroll(el);
 const live = ref(false); // the server render shows the slash
-onMounted(() => (live.value = true));
-// A page opener (level 1) is in view on load: it plays from the first paint, server render
-// included. Waiting for the observer showed it, hid it, and played it again (a flicker).
-const seen = computed(() => props.level === 1 || visible.value);
+// A band in view when the page opens shows at once: an entrance on arrival reads as a flicker.
+const opener = ref(false);
+onMounted(() => {
+  opener.value = el.value!.getBoundingClientRect().top < innerHeight;
+  live.value = true;
+});
 </script>
 
 <template>
   <section
     ref="el"
     class="eye vp-raw"
-    :class="{ 'eye--accent': accent, 'eye--seen': seen, 'eye--wait': live && !seen }"
+    :class="{
+      'eye--accent': accent,
+      'eye--seen': !opener && visible,
+      'eye--wait': live && !opener && !visible,
+    }"
   >
     <span class="eye__slash" aria-hidden="true" />
     <span v-if="num" class="eye__num" aria-hidden="true" :data-num="num" />

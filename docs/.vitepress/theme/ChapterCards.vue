@@ -1,6 +1,7 @@
 <script setup lang="ts">
 // A grid of link cards for a landing page. The cards arrive one after another (the
-// library's bless-stagger) when the grid first scrolls into view.
+// library's bless-stagger) when the grid first scrolls into view. A grid that is in view
+// when the page opens shows at once: an entrance on arrival reads as a flicker.
 import { onMounted, ref } from "vue";
 import { withBase } from "vitepress";
 import { useAnimateOnScroll } from "blessing-ui";
@@ -11,14 +12,18 @@ defineProps<{
 const el = ref<HTMLElement>();
 const { visible } = useAnimateOnScroll(el);
 const live = ref(false); // the server render shows every card
-onMounted(() => (live.value = true));
+const opener = ref(false);
+onMounted(() => {
+  opener.value = el.value!.getBoundingClientRect().top < innerHeight;
+  live.value = true;
+});
 </script>
 
 <template>
   <div
     ref="el"
     class="cards vp-raw"
-    :class="{ 'bless-stagger': visible, 'cards--wait': live && !visible }"
+    :class="{ 'bless-stagger': !opener && visible, 'cards--wait': live && !opener && !visible }"
   >
     <a v-for="c in items" :key="c.link" :href="withBase(c.link)" class="card">
       <img v-if="c.img" :src="withBase(c.img)" alt="" loading="lazy" class="card__img" />
