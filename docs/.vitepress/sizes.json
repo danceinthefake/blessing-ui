@@ -66,7 +66,7 @@
   },
   {
     "name": "BlessApiKeyField",
-    "js": 5020,
+    "js": 5011,
     "css": 1466
   },
   {
@@ -286,7 +286,7 @@
   },
   {
     "name": "BlessCascadeSelect",
-    "js": 4352,
+    "js": 4341,
     "css": 1110
   },
   {
@@ -376,7 +376,7 @@
   },
   {
     "name": "BlessCombobox",
-    "js": 3929,
+    "js": 3922,
     "css": 1453
   },
   {
@@ -397,7 +397,7 @@
   {
     "name": "BlessComparisonTable",
     "js": 942,
-    "css": 557
+    "css": 565
   },
   {
     "name": "BlessConfetti",
@@ -406,7 +406,7 @@
   },
   {
     "name": "BlessConfirmPopup",
-    "js": 3938,
+    "js": 3929,
     "css": 1264
   },
   {
@@ -441,12 +441,12 @@
   },
   {
     "name": "BlessContextMenu",
-    "js": 4627,
+    "js": 4617,
     "css": 838
   },
   {
     "name": "BlessContextMeter",
-    "js": 3734,
+    "js": 3725,
     "css": 940
   },
   {
@@ -462,7 +462,7 @@
   {
     "name": "BlessControlChart",
     "js": 2088,
-    "css": 440
+    "css": 454
   },
   {
     "name": "BlessConversationList",
@@ -521,7 +521,7 @@
   },
   {
     "name": "BlessDataTable",
-    "js": 10373,
+    "js": 10364,
     "css": 3153
   },
   {
@@ -531,12 +531,12 @@
   },
   {
     "name": "BlessDatePicker",
-    "js": 4728,
+    "js": 4719,
     "css": 1373
   },
   {
     "name": "BlessDateTimePicker",
-    "js": 5614,
+    "js": 5605,
     "css": 1534
   },
   {
@@ -606,7 +606,7 @@
   },
   {
     "name": "BlessDropdownMenu",
-    "js": 4537,
+    "js": 4528,
     "css": 838
   },
   {
@@ -711,7 +711,7 @@
   },
   {
     "name": "BlessFilterBar",
-    "js": 6151,
+    "js": 6141,
     "css": 2491
   },
   {
@@ -781,13 +781,13 @@
   },
   {
     "name": "BlessGlossary",
-    "js": 2693,
-    "css": 691
+    "js": 2685,
+    "css": 702
   },
   {
     "name": "BlessGradebook",
     "js": 1471,
-    "css": 566
+    "css": 574
   },
   {
     "name": "BlessGroupCard",
@@ -797,12 +797,12 @@
   {
     "name": "BlessHabitTracker",
     "js": 1318,
-    "css": 556
+    "css": 568
   },
   {
     "name": "BlessHeatmap",
     "js": 961,
-    "css": 478
+    "css": 489
   },
   {
     "name": "BlessHeatmapCalendar",
@@ -821,12 +821,12 @@
   },
   {
     "name": "BlessHotspots",
-    "js": 3853,
+    "js": 3844,
     "css": 770
   },
   {
     "name": "BlessHoverCard",
-    "js": 2886,
+    "js": 2877,
     "css": 569
   },
   {
@@ -877,7 +877,7 @@
   {
     "name": "BlessInputGroup",
     "js": 415,
-    "css": 670
+    "css": 664
   },
   {
     "name": "BlessInputMask",
@@ -1086,7 +1086,7 @@
   },
   {
     "name": "BlessMention",
-    "js": 3700,
+    "js": 3690,
     "css": 965
   },
   {
@@ -1136,12 +1136,12 @@
   },
   {
     "name": "BlessModelPicker",
-    "js": 4892,
+    "js": 4883,
     "css": 1023
   },
   {
     "name": "BlessNavigationMenu",
-    "js": 3082,
+    "js": 3073,
     "css": 754
   },
   {
@@ -1156,7 +1156,7 @@
   },
   {
     "name": "BlessNotificationInbox",
-    "js": 4764,
+    "js": 4755,
     "css": 1887
   },
   {
@@ -1272,7 +1272,7 @@
   {
     "name": "BlessPhoneInput",
     "js": 2771,
-    "css": 1637
+    "css": 1627
   },
   {
     "name": "BlessPickList",
@@ -1311,7 +1311,7 @@
   },
   {
     "name": "BlessPopover",
-    "js": 2724,
+    "js": 2714,
     "css": 551
   },
   {
@@ -1476,7 +1476,7 @@
   },
   {
     "name": "BlessReactions",
-    "js": 9286,
+    "js": 9275,
     "css": 1301
   },
   {
@@ -1547,7 +1547,7 @@
   {
     "name": "BlessRoomBooking",
     "js": 1518,
-    "css": 684
+    "css": 695
   },
   {
     "name": "BlessRoseChart",
@@ -1712,7 +1712,7 @@
   {
     "name": "BlessSleepChart",
     "js": 1691,
-    "css": 355
+    "css": 360
   },
   {
     "name": "BlessSlideItem",
@@ -1781,7 +1781,7 @@
   },
   {
     "name": "BlessSplitButton",
-    "js": 5516,
+    "js": 5506,
     "css": 1616
   },
   {
@@ -1981,7 +1981,7 @@
   },
   {
     "name": "BlessTimezonePicker",
-    "js": 4545,
+    "js": 4535,
     "css": 1453
   },
   {
@@ -2021,12 +2021,12 @@
   },
   {
     "name": "BlessTooltip",
-    "js": 2502,
-    "css": 510
+    "js": 2493,
+    "css": 520
   },
   {
     "name": "BlessTour",
-    "js": 3589,
+    "js": 3580,
     "css": 1222
   },
   {
@@ -2046,7 +2046,7 @@
   },
   {
     "name": "BlessTreeSelect",
-    "js": 5552,
+    "js": 5542,
     "css": 1492
   },
   {

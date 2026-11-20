@@ -10,10 +10,10 @@ import { createSSRApp, type Component } from "vue";
 import { renderToString } from "vue/server-renderer";
 import { afterEach, describe, expect, it, vi } from "vitest";
 
-// left out: they pull in vitepress itself (LayoutFull, StageFull) or ProseMirror, which needs a
+// left out: they pull in vitepress itself (LayoutFull, StageFull, ThemeMaker) or ProseMirror, which needs a
 // real DOM to build its document (Editor), and AudioPlayerBasic builds a WAV Blob that jsdom can't
 const demos = import.meta.glob<Component>(
-  ["../docs/demos/*.vue", "!../docs/demos/{Audio,Editor,LayoutFull,StageFull}*.vue"],
+  ["../docs/demos/*.vue", "!../docs/demos/{Audio,Editor,LayoutFull,StageFull,ThemeMaker}*.vue"],
   { eager: true, import: "default" },
 );
 
