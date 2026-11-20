@@ -7,7 +7,12 @@ import { groups } from "../components";
 import blocks from "../blocks.json";
 
 const route = useRoute();
-const order = groups.flatMap((g) => g.items.map((e) => ({ slug: e.slug, group: g.title })));
+// the number follows the sidebar and the catalog: alphabetical inside a group
+const order = groups.flatMap((g) =>
+  [...g.items]
+    .sort((a, b) => a.name.localeCompare(b.name))
+    .map((e) => ({ slug: e.slug, group: g.title })),
+);
 const pad = (n: number) => String(n).padStart(3, "0");
 
 const kicker = computed(() => {
@@ -17,14 +22,14 @@ const kicker = computed(() => {
   const [, section, slug] = path.replace(/^\/id/, "").split("/");
   if (section === "components") {
     const i = order.findIndex((e) => e.slug === slug);
-    return i < 0 ? "" : `${order[i]!.group} · ${pad(i + 1)}`;
+    return i < 0 ? "" : `Volume 02 · ${order[i]!.group} · ${pad(i + 1)}`;
   }
   if (section === "blocks") {
     const b = blocks.find((x) => x.slug === (slug ?? "").replace(/-frame$/, ""));
-    return b ? `Volume 02 · ${b.group}` : "";
+    return b ? `Volume 03 · ${b.group}` : "";
   }
   if (section === "guide") return `Volume 01 · ${id ? "Panduan" : "Guide"}`;
-  if (section === "design") return `Volume 03 · ${id ? "Desain" : "Design"}`;
+  if (section === "design") return `Volume 04 · ${id ? "Desain" : "Design"}`;
   return "";
 });
 </script>

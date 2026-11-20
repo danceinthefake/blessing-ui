@@ -4,7 +4,7 @@ import { groups } from "./components";
 import blocks from "./blocks.json" with { type: "json" };
 
 // groups are hand-ordered (coarse → fine); inside a group, alphabetical — the one order a
-// stranger can predict. The nav's Components link opens the first page of that order.
+// stranger can predict. The nav's Components link opens the catalog page (Volume 02).
 const componentSidebar = groups.map((g) => ({
   text: g.title,
   collapsed: false,
@@ -70,7 +70,7 @@ export default defineConfig({
       themeConfig: {
         nav: [
           { text: "Panduan", link: "/id/guide/" },
-          { text: "Komponen", link: componentSidebar[0].items[0].link },
+          { text: "Komponen", link: "/components/" },
           { text: "Blok", link: "/blocks/" },
           { text: "Desain", link: "/id/design/" },
         ],
@@ -148,7 +148,7 @@ export default defineConfig({
     siteTitle: "Blessing",
     nav: [
       { text: "Guide", link: "/guide/" },
-      { text: "Components", link: componentSidebar[0].items[0].link },
+      { text: "Components", link: "/components/" },
       { text: "Blocks", link: "/blocks/" },
       { text: "Design", link: "/design/" },
     ],
@@ -207,7 +207,10 @@ export default defineConfig({
           ],
         },
       ],
-      "/components/": componentSidebar,
+      "/components/": [
+        { text: "Components", items: [{ text: "Overview", link: "/components/" }] },
+        ...componentSidebar,
+      ],
     },
     search: { provider: "local" },
     socialLinks: [{ icon: "github", link: "https://github.com/danceinthefake/blessing-ui" }],
