@@ -40,7 +40,7 @@ Halaman [jenis situs](./site-types) membandingkan tiga daftar kategori situs dan
 - [Kolom alamat](../../components/address-fields) memakai kode negara [ISO 3166](https://www.iso.org/iso-3166-country-codes.html) dan token `autocomplete` dari standar HTML.
 - [WCAG 2.1](https://www.w3.org/TR/WCAG21/) tingkat AA adalah patokan untuk kontras, fokus, dan gerak. [axe-core](https://github.com/dequelabs/axe-core) memeriksa setiap halaman terhadapnya.
 - [ASD-STE100](https://www.asd-ste100.org/) Simplified Technical English adalah standar untuk semua teks berbahasa Inggris di repositori dan dokumentasi.
-- Platform web mengerjakan bagian terberat: Popover API, elemen `dialog`, `Intl`, Web Speech API, Web Audio, properti logis CSS, [CSS anchor positioning](https://www.w3.org/TR/css-anchor-position-1/) (panel melayang, dengan container query anchored untuk panah), dan View Transitions API (sapuan antarhalaman di situs ini). [MDN Web Docs](https://developer.mozilla.org/) menjadi rujukan untuk semuanya.
+- Platform web mengerjakan bagian terberat: Popover API, elemen `dialog`, `Intl`, Web Speech API, Web Audio, properti logis CSS, dan [CSS anchor positioning](https://www.w3.org/TR/css-anchor-position-1/) (panel melayang, dengan container query anchored untuk panah). [MDN Web Docs](https://developer.mozilla.org/) menjadi rujukan untuk semuanya.
 
 ## Metode
 
