@@ -40,6 +40,8 @@ The two `preconnect` lines matter: without them the first paint waits on a cold 
 
 The font stack already falls back to Hiragino (macOS and iOS) and Meiryo (Windows). Every Japanese reader has one of them. Noto Sans JP is for Linux, Android, and a consistent look. From Google Fonts it is cheap. The face is split into many small `unicode-range` slices, and a page downloads only the slices that its characters need. As whole self-hosted files it is big, about 1–2 MB for the two weights. Subset it. If your audience is on Mac or Windows, drop it and let the system fonts carry the Japanese text. The thin Roboto is the only face that the look depends on.
 
+A late slice has a cost in Firefox: while a font file loads, Firefox redraws the page text without its font, so a page change can flash blank. This site does not load Noto Sans JP for that reason. It also loads Roboto's `symbols` subset when the first page is idle, with `document.fonts.load("400 1em Roboto", "★")`.
+
 ## Self-hosting
 
 The shortest route is [Fontsource](https://fontsource.org), which packages each weight as a stylesheet with its files:
