@@ -1,27 +1,32 @@
 <script setup lang="ts">
 import { computed } from "vue";
+import { useLabelPack } from "../composables/useLabels";
 import { blessPalettes, useTheme, type BlessPalette } from "../composables/useTheme";
 
 defineOptions({ name: "BlessPaletteToggle" });
+const pack = useLabelPack("BlessPaletteToggle");
 
 const props = withDefaults(
   defineProps<{
+    /** the name of the group for screen readers; wins over `labels.palette` */
     label?: string;
     /** include the default palette's swatch (Megumi), which clears any other */
     showDefault?: boolean;
+    labels?: Partial<{ palette: string }>;
   }>(),
   {
-    label: "Palette",
     showDefault: true,
   },
 );
+// the palette names stay as they are: they are names, not words
+const groupName = () => props.label ?? props.labels?.palette ?? (pack().palette as string) ?? "Palette";
 const { palette, setPalette } = useTheme();
 const cap = (s: string) => s[0].toUpperCase() + s.slice(1);
 const shown = computed(() => (props.showDefault ? blessPalettes : blessPalettes.slice(1)));
 </script>
 
 <template>
-  <div class="bless-palette" role="group" :aria-label="label">
+  <div class="bless-palette" role="group" :aria-label="groupName()">
     <button
       v-for="p in shown"
       :key="p.name"

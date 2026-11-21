@@ -28,6 +28,7 @@ const date = computed(() => toDate(props.value));
 const valid = computed(() => !Number.isNaN(date.value.getTime()));
 const nowMs = computed(() => {
   void tick.value; // reading it makes the text update when the timer fires
+  void props.value; // and a new value counts from the time now, not from the old "now"
   return props.now !== undefined ? +props.now : Date.now();
 });
 const seconds = computed(() => (date.value.getTime() - nowMs.value) / 1000);

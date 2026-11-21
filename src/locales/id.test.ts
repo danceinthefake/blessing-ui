@@ -1,6 +1,8 @@
 import { mount } from "@vue/test-utils";
 import { defineComponent, h } from "vue";
 import BlessCopyButton from "../components/BlessCopyButton.vue";
+import BlessPaletteToggle from "../components/BlessPaletteToggle.vue";
+import BlessThemeToggle from "../components/BlessThemeToggle.vue";
 import BlessThread from "../components/BlessThread.vue";
 import { provideLabels } from "../composables/useLabels";
 import { labelsId, type BlessLabelsFull } from "./id";
@@ -60,4 +62,28 @@ test("with the pack provided, components speak Indonesian", () => {
   );
   expect(w.find("button").text()).toBe("Salin");
   expect(w.find("summary").text()).toBe("2 balasan");
+});
+
+// Found by blessing.id: settings gave labelsId, and the palette group still said "Palette".
+test("with the pack provided, the theme and palette toggles speak Indonesian; a label prop still wins", () => {
+  const w = mount(
+    defineComponent({
+      setup() {
+        provideLabels(labelsId);
+        return () =>
+          h("div", [
+            h(BlessPaletteToggle),
+            h(BlessThemeToggle),
+            h(BlessThemeToggle, { mode: "group" }),
+            h(BlessPaletteToggle, { label: "Warna aksen" }),
+          ]);
+      },
+    }),
+  );
+  const groups = w.findAll('[role="group"]');
+  expect(groups[0].attributes("aria-label")).toBe("Palet warna");
+  expect(w.find(".bless-theme-toggle").attributes("aria-label")).toBe("Tema gelap");
+  expect(groups[1].attributes("aria-label")).toBe("Tema");
+  expect(groups[1].text() + groups[1].html()).toContain("Ikuti perangkat");
+  expect(groups[2].attributes("aria-label")).toBe("Warna aksen");
 });

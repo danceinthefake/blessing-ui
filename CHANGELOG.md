@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased
+
+### Fixed
+
+- RelativeTime counts a new `value` from the time now. Before, a component that a list reused for a newer value kept its old "now" and said, for example, "in 1 second". Found by blessing.id.
+- ThemeToggle and PaletteToggle read the label pack, so `provideLabels(labelsId)` gives them Indonesian names ("Tema", "Palet warna"). Each has a new `labels` prop: ThemeToggle `theme`, `light`, `system`, `dark`, and `darkTheme`, and PaletteToggle `palette`. The `label` prop still wins over both. Found by blessing.id.
+
 ## 0.11.0 — 2026-11-20
 
 ### Added

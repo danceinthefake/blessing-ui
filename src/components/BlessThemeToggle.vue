@@ -1,21 +1,39 @@
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
+import { useLabelPack } from "../composables/useLabels";
 import { useTheme, type BlessTheme } from "../composables/useTheme";
 import BlessToggle from "./BlessToggle.vue";
 import BlessToggleGroup from "./BlessToggleGroup.vue";
 
 defineOptions({ name: "BlessThemeToggle" });
+const pack = useLabelPack("BlessThemeToggle");
 
-withDefaults(
+const props = withDefaults(
   defineProps<{
     /** three-way (light/system/dark) or a single light↔dark button */ mode?: "switch" | "group";
-    /** the group's name */
+    /** the group's name; wins over `labels.theme` */
     label?: string;
-    /** accessible names: the switch reads `dark` with pressed / not pressed; the group reads all three */
-    labels?: { light?: string; system?: string; dark?: string };
+    /** accessible names: the group reads `theme` and all three; the switch reads `darkTheme`
+     * (or `dark`, if you set it) with pressed / not pressed */
+    labels?: Partial<{
+      theme: string;
+      light: string;
+      system: string;
+      dark: string;
+      darkTheme: string;
+    }>;
   }>(),
-  { mode: "switch", label: "Theme", labels: () => ({}) },
+  { mode: "switch" },
 );
+const text = () => ({
+  theme: "Theme",
+  light: "Light",
+  system: "System",
+  dark: "Dark",
+  darkTheme: "Dark theme",
+  ...(pack() as Record<string, string>),
+  ...props.labels,
+});
 const { theme, isDark, set, toggle } = useTheme();
 // isDark depends on matchMedia, which the server can't know: render state only after mount so
 // server HTML and the first client render agree
@@ -27,18 +45,18 @@ onMounted(() => (mounted.value = true));
   <BlessToggleGroup
     v-if="mode === 'group'"
     :model-value="theme"
-    :label
+    :label="label ?? text().theme"
     @update:model-value="set(($event ?? 'system') as BlessTheme)"
   >
-    <BlessToggle value="light" size="sm" :label="labels.light ?? 'Light'">☀</BlessToggle>
-    <BlessToggle value="system" size="sm" :label="labels.system ?? 'System'">◐</BlessToggle>
-    <BlessToggle value="dark" size="sm" :label="labels.dark ?? 'Dark'">☾</BlessToggle>
+    <BlessToggle value="light" size="sm" :label="text().light">☀</BlessToggle>
+    <BlessToggle value="system" size="sm" :label="text().system">◐</BlessToggle>
+    <BlessToggle value="dark" size="sm" :label="text().dark">☾</BlessToggle>
   </BlessToggleGroup>
   <button
     v-else
     type="button"
     class="bless-theme-toggle"
-    :aria-label="labels.dark ?? 'Dark theme'"
+    :aria-label="props.labels?.dark ?? text().darkTheme"
     :aria-pressed="mounted ? isDark : false"
     @click="toggle"
   >

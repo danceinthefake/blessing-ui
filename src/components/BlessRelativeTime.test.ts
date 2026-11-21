@@ -96,3 +96,18 @@ test("BlessRelativeTime: an invalid date renders nothing; live updates the text 
   w.unmount();
   vi.useRealTimers();
 });
+
+// Found by blessing.id: a list reused the component for a newer value, and it said "in 1 second".
+test("BlessRelativeTime: a new value counts from the time now, not from the time of the old value", async () => {
+  vi.useFakeTimers();
+  vi.setSystemTime(NOW);
+  const w = mount(BlessRelativeTime, { props: { value: ago(5), live: false } });
+  await nextTick();
+  expect(w.text()).toBe("5 seconds ago");
+  // time goes on with no timer, then the parent passes a value from this moment
+  vi.setSystemTime(+NOW + 30_000);
+  await w.setProps({ value: new Date(+NOW + 30_000) });
+  expect(w.text()).toBe("now");
+  w.unmount();
+  vi.useRealTimers();
+});

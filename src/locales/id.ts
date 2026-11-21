@@ -274,6 +274,7 @@ import type BlessJsonViewer from "../components/BlessJsonViewer.vue";
 import type BlessMessageScroller from "../components/BlessMessageScroller.vue";
 import type BlessModal from "../components/BlessModal.vue";
 import type BlessPagination from "../components/BlessPagination.vue";
+import type BlessPaletteToggle from "../components/BlessPaletteToggle.vue";
 import type BlessPasswordInput from "../components/BlessPasswordInput.vue";
 import type BlessPullToRefresh from "../components/BlessPullToRefresh.vue";
 import type BlessSheet from "../components/BlessSheet.vue";
@@ -283,6 +284,7 @@ import type BlessSplitButton from "../components/BlessSplitButton.vue";
 import type BlessSplitView from "../components/BlessSplitView.vue";
 import type BlessStage from "../components/BlessStage.vue";
 import type BlessSteps from "../components/BlessSteps.vue";
+import type BlessThemeToggle from "../components/BlessThemeToggle.vue";
 import type BlessToaster from "../components/BlessToaster.vue";
 
 /** every word of one component: its `labels` prop, with no key left out */
@@ -579,6 +581,7 @@ export type BlessLabelsFull = {
   BlessMessageScroller: All<typeof BlessMessageScroller>;
   BlessModal: All<typeof BlessModal>;
   BlessPagination: All<typeof BlessPagination>;
+  BlessPaletteToggle: All<typeof BlessPaletteToggle>;
   BlessPasswordInput: All<typeof BlessPasswordInput>;
   BlessPullToRefresh: All<typeof BlessPullToRefresh>;
   BlessSheet: All<typeof BlessSheet>;
@@ -588,6 +591,7 @@ export type BlessLabelsFull = {
   BlessSplitView: All<typeof BlessSplitView>;
   BlessStage: All<typeof BlessStage>;
   BlessSteps: All<typeof BlessSteps>;
+  BlessThemeToggle: All<typeof BlessThemeToggle>;
   BlessToaster: All<typeof BlessToaster>;
 };
 
@@ -2557,6 +2561,7 @@ export const labelsId: BlessLabelsFull = {
   BlessMessageScroller: { jump: "Terbaru" },
   BlessModal: { close: "Tutup" },
   BlessPagination: { prev: "Sebelumnya", next: "Berikutnya", page: (n) => `Halaman ${n}` },
+  BlessPaletteToggle: { palette: "Palet warna" },
   BlessPasswordInput: { show: "Tampilkan kata sandi" },
   BlessPullToRefresh: { refreshing: "Memuat ulang" },
   BlessSheet: { close: "Tutup" },
@@ -2566,6 +2571,13 @@ export const labelsId: BlessLabelsFull = {
   BlessSplitView: { back: "Kembali" },
   BlessStage: { menu: "Menu" },
   BlessSteps: { go: (n, l) => `Ke langkah ${n}: ${l}` },
+  BlessThemeToggle: {
+    theme: "Tema",
+    light: "Terang",
+    system: "Ikuti perangkat",
+    dark: "Gelap",
+    darkTheme: "Tema gelap",
+  },
   BlessToaster: { close: "Tutup" },
 };
 
