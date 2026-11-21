@@ -1,13 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { withBase } from "vitepress";
-import { BlessBottomTabs, BlessButton, BlessLayout, BlessSidebarNav, BlessText } from "blessing-ui";
-import { navItems } from "./_nav";
-const left = ref(false);
-const right = ref(false);
-const tab = ref("home");
-</script>
-
 <template>
   <BlessLayout v-model:left="left" v-model:right="right" :breakpoint="900">
     <template #header>
@@ -69,3 +59,13 @@ const tab = ref("home");
     </template>
   </BlessLayout>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { withBase } from "vitepress";
+import { BlessBottomTabs, BlessButton, BlessLayout, BlessSidebarNav, BlessText } from "blessing-ui";
+import { navItems } from "./_nav";
+const left = ref(false);
+const right = ref(false);
+const tab = ref("home");
+</script>

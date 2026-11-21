@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import { BlessButton, BlessMockup, BlessText } from "blessing-ui";
-</script>
-
 <template>
   <div class="row" style="align-items: flex-start">
     <BlessMockup title="saenai.tv/news" style="width: 360px">
@@ -21,3 +17,7 @@ import { BlessButton, BlessMockup, BlessText } from "blessing-ui";
     </BlessMockup>
   </div>
 </template>
+
+<script setup lang="ts">
+import { BlessButton, BlessMockup, BlessText } from "blessing-ui";
+</script>

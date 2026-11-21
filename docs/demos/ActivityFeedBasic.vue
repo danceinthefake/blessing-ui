@@ -1,3 +1,7 @@
+<template>
+  <BlessActivityFeed :events :now style="max-width: 560px" />
+</template>
+
 <script setup lang="ts">
 import { BlessActivityFeed } from "blessing-ui";
 
@@ -47,7 +51,3 @@ const events = [
   },
 ];
 </script>
-
-<template>
-  <BlessActivityFeed :events :now style="max-width: 560px" />
-</template>

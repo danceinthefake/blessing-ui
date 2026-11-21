@@ -1,3 +1,17 @@
+<template>
+  <div class="row" style="align-items: flex-start">
+    <div class="col">
+      <BlessLabel>Where</BlessLabel>
+      <BlessCascadeSelect v-model="place" :options placeholder="Country › City › Area" />
+      <small>{{ place ?? "—" }} · ↑↓ move, → drill, ← back, Enter pick</small>
+    </div>
+    <div class="col">
+      <BlessLabel>Leaf only</BlessLabel>
+      <BlessCascadeSelect v-model="area" :options :show-path="false" size="sm" />
+    </div>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessCascadeSelect, BlessLabel, type BlessCascadeOption } from "blessing-ui";
@@ -32,17 +46,3 @@ const options: BlessCascadeOption<string>[] = [
 const place = ref<string>();
 const area = ref<string>("akiba");
 </script>
-
-<template>
-  <div class="row" style="align-items: flex-start">
-    <div class="col">
-      <BlessLabel>Where</BlessLabel>
-      <BlessCascadeSelect v-model="place" :options placeholder="Country › City › Area" />
-      <small>{{ place ?? "—" }} · ↑↓ move, → drill, ← back, Enter pick</small>
-    </div>
-    <div class="col">
-      <BlessLabel>Leaf only</BlessLabel>
-      <BlessCascadeSelect v-model="area" :options :show-path="false" size="sm" />
-    </div>
-  </div>
-</template>

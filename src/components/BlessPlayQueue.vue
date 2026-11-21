@@ -1,58 +1,3 @@
-<script setup lang="ts">
-import { computed } from "vue";
-import { useLabelPack } from "../composables/useLabels";
-import BlessSortable from "./BlessSortable.vue";
-
-defineOptions({ name: "BlessPlayQueue" });
-const pack = useLabelPack("BlessPlayQueue");
-
-export interface BlessQueueTrack {
-  id: string;
-  title: string;
-  artist?: string;
-  /** the length in seconds */
-  seconds: number;
-  image?: string;
-}
-
-const props = defineProps<{
-  /** the track that plays now, above the queue */
-  current?: BlessQueueTrack;
-  labels?: Partial<{
-    now: string;
-    next: string;
-    empty: string;
-    clear: string;
-    play: (title: string) => string;
-    remove: (title: string) => string;
-    total: (count: number, time: string) => string;
-  }>;
-}>();
-/** the tracks after the current one, in order */
-const queue = defineModel<BlessQueueTrack[]>({ default: () => [] });
-const emit = defineEmits<{ play: [id: string] }>();
-
-const text = computed(() => ({
-  now: "Now playing",
-  next: "Next up",
-  empty: "The queue is empty.",
-  clear: "Clear the queue",
-  play: (t: string) => `Play ${t}`,
-  remove: (t: string) => `Remove ${t}`,
-  total: (n: number, t: string) => `${n} ${n === 1 ? "track" : "tracks"}, ${t}`,
-  ...pack(),
-  ...props.labels,
-}));
-const clock = (s: number) => {
-  const h = Math.floor(s / 3600);
-  const m = Math.floor((s % 3600) / 60);
-  const sec = String(Math.floor(s % 60)).padStart(2, "0");
-  return h ? `${h}:${String(m).padStart(2, "0")}:${sec}` : `${m}:${sec}`;
-};
-const total = computed(() => clock(queue.value.reduce((n, t) => n + t.seconds, 0)));
-const remove = (id: string) => (queue.value = queue.value.filter((t) => t.id !== id));
-</script>
-
 <template>
   <section class="bless-queue" :aria-label="text.next">
     <div v-if="current" class="bless-queue__now">
@@ -111,6 +56,61 @@ const remove = (id: string) => (queue.value = queue.value.filter((t) => t.id !==
     </BlessSortable>
   </section>
 </template>
+
+<script setup lang="ts">
+import { computed } from "vue";
+import { useLabelPack } from "../composables/useLabels";
+import BlessSortable from "./BlessSortable.vue";
+
+defineOptions({ name: "BlessPlayQueue" });
+const pack = useLabelPack("BlessPlayQueue");
+
+export interface BlessQueueTrack {
+  id: string;
+  title: string;
+  artist?: string;
+  /** the length in seconds */
+  seconds: number;
+  image?: string;
+}
+
+const props = defineProps<{
+  /** the track that plays now, above the queue */
+  current?: BlessQueueTrack;
+  labels?: Partial<{
+    now: string;
+    next: string;
+    empty: string;
+    clear: string;
+    play: (title: string) => string;
+    remove: (title: string) => string;
+    total: (count: number, time: string) => string;
+  }>;
+}>();
+/** the tracks after the current one, in order */
+const queue = defineModel<BlessQueueTrack[]>({ default: () => [] });
+const emit = defineEmits<{ play: [id: string] }>();
+
+const text = computed(() => ({
+  now: "Now playing",
+  next: "Next up",
+  empty: "The queue is empty.",
+  clear: "Clear the queue",
+  play: (t: string) => `Play ${t}`,
+  remove: (t: string) => `Remove ${t}`,
+  total: (n: number, t: string) => `${n} ${n === 1 ? "track" : "tracks"}, ${t}`,
+  ...pack(),
+  ...props.labels,
+}));
+const clock = (s: number) => {
+  const h = Math.floor(s / 3600);
+  const m = Math.floor((s % 3600) / 60);
+  const sec = String(Math.floor(s % 60)).padStart(2, "0");
+  return h ? `${h}:${String(m).padStart(2, "0")}:${sec}` : `${m}:${sec}`;
+};
+const total = computed(() => clock(queue.value.reduce((n, t) => n + t.seconds, 0)));
+const remove = (id: string) => (queue.value = queue.value.filter((t) => t.id !== id));
+</script>
 
 <style>
 .bless-queue {

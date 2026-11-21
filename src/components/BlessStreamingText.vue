@@ -1,3 +1,11 @@
+<template>
+  <div class="bless-streaming" :aria-busy="!done" aria-live="polite">
+    <!-- aria-busy: screen readers wait for the full text, not each part -->
+    <slot :text="shown">{{ shown }}</slot
+    ><span v-if="!done" class="bless-streaming__caret" aria-hidden="true" />
+  </div>
+</template>
+
 <script setup lang="ts">
 import { onBeforeUnmount, ref, watch } from "vue";
 
@@ -51,14 +59,6 @@ watch(
 );
 onBeforeUnmount(stop);
 </script>
-
-<template>
-  <div class="bless-streaming" :aria-busy="!done" aria-live="polite">
-    <!-- aria-busy: screen readers wait for the full text, not each part -->
-    <slot :text="shown">{{ shown }}</slot
-    ><span v-if="!done" class="bless-streaming__caret" aria-hidden="true" />
-  </div>
-</template>
 
 <style>
 .bless-streaming {

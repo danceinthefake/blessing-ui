@@ -1,3 +1,7 @@
+<template>
+  <BlessAchievements :achievements />
+</template>
+
 <script setup lang="ts">
 import { BlessAchievements, type BlessAchievement } from "blessing-ui";
 
@@ -41,7 +45,3 @@ const achievements: BlessAchievement[] = [
   { id: "owl", icon: "🦉", title: "Night owl", description: "Publish an episode after midnight" },
 ];
 </script>
-
-<template>
-  <BlessAchievements :achievements />
-</template>

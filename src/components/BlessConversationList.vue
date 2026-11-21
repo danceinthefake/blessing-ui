@@ -1,3 +1,40 @@
+<template>
+  <nav class="bless-convos" :aria-label="text.title">
+    <ul class="bless-stagger bless-convos__list">
+      <li v-for="c in conversations" :key="c.id">
+        <button
+          type="button"
+          class="bless-convos__item"
+          :class="{ 'is-unread': (c.unread ?? 0) > 0 }"
+          :aria-current="selected === c.id ? 'true' : undefined"
+          @click="selected = c.id"
+        >
+          <span class="bless-convos__avatar">
+            <BlessAvatar :name="c.name" :src="c.avatar" alt="" size="md" />
+            <span v-if="c.online" class="bless-convos__dot" aria-hidden="true" />
+          </span>
+          <span class="bless-convos__main">
+            <span class="bless-convos__top">
+              <span class="bless-convos__name">{{ c.name }}</span
+              ><span v-if="c.online" class="bless-sr">, {{ text.online }}</span>
+              <span class="bless-convos__time">{{ c.time }}</span>
+            </span>
+            <span class="bless-convos__bottom">
+              <span class="bless-convos__last" :class="{ 'is-typing': c.typing }">{{
+                c.typing ? text.typing : c.last
+              }}</span>
+              <span v-if="(c.unread ?? 0) > 0" class="bless-convos__badge">
+                <span aria-hidden="true">{{ c.unread! > 99 ? "99+" : c.unread }}</span>
+                <span class="bless-sr">{{ text.unread(c.unread!) }}</span>
+              </span>
+            </span>
+          </span>
+        </button>
+      </li>
+    </ul>
+  </nav>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -42,43 +79,6 @@ const text = computed(() => ({
   ...props.labels,
 }));
 </script>
-
-<template>
-  <nav class="bless-convos" :aria-label="text.title">
-    <ul class="bless-stagger bless-convos__list">
-      <li v-for="c in conversations" :key="c.id">
-        <button
-          type="button"
-          class="bless-convos__item"
-          :class="{ 'is-unread': (c.unread ?? 0) > 0 }"
-          :aria-current="selected === c.id ? 'true' : undefined"
-          @click="selected = c.id"
-        >
-          <span class="bless-convos__avatar">
-            <BlessAvatar :name="c.name" :src="c.avatar" alt="" size="md" />
-            <span v-if="c.online" class="bless-convos__dot" aria-hidden="true" />
-          </span>
-          <span class="bless-convos__main">
-            <span class="bless-convos__top">
-              <span class="bless-convos__name">{{ c.name }}</span
-              ><span v-if="c.online" class="bless-sr">, {{ text.online }}</span>
-              <span class="bless-convos__time">{{ c.time }}</span>
-            </span>
-            <span class="bless-convos__bottom">
-              <span class="bless-convos__last" :class="{ 'is-typing': c.typing }">{{
-                c.typing ? text.typing : c.last
-              }}</span>
-              <span v-if="(c.unread ?? 0) > 0" class="bless-convos__badge">
-                <span aria-hidden="true">{{ c.unread! > 99 ? "99+" : c.unread }}</span>
-                <span class="bless-sr">{{ text.unread(c.unread!) }}</span>
-              </span>
-            </span>
-          </span>
-        </button>
-      </li>
-    </ul>
-  </nav>
-</template>
 
 <style>
 .bless-convos {

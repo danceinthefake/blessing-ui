@@ -1,3 +1,60 @@
+<template>
+  <div
+    class="bless-number bless-lean--field"
+    :class="[
+      `bless-number--${size}`,
+      { 'bless-number--disabled': disabled, 'bless-number--invalid': invalid || fs.invalid.value },
+    ]"
+  >
+    <button
+      v-if="buttons"
+      type="button"
+      class="bless-number__btn"
+      :aria-label="text.decrease"
+      :disabled="disabled || (min != null && (model ?? 0) <= min)"
+      tabindex="-1"
+      @click="nudge(-1)"
+    >
+      −
+    </button>
+    <span v-if="prefix" class="bless-number__affix">{{ prefix }}</span>
+    <input
+      v-bind="$attrs"
+      :id="id()"
+      type="text"
+      inputmode="decimal"
+      class="bless-number__control"
+      :value="shown"
+      :disabled
+      :aria-label="label"
+      :aria-invalid="invalid || fs.invalid.value || undefined"
+      :aria-describedby="joinIds(fs.describedby.value, $attrs['aria-describedby'] as string)"
+      role="spinbutton"
+      :aria-valuenow="model ?? undefined"
+      :aria-valuetext="valuetext"
+      :aria-valuemin="min"
+      :aria-valuemax="max"
+      @focus="focused = true"
+      @blur="onBlur"
+      @input="onInput"
+      @keydown="onKey"
+    />
+    <input v-if="name" type="hidden" :name :value="model ?? ''" />
+    <span v-if="suffix" class="bless-number__affix">{{ suffix }}</span>
+    <button
+      v-if="buttons"
+      type="button"
+      class="bless-number__btn"
+      :aria-label="text.increase"
+      :disabled="disabled || (max != null && (model ?? 0) >= max)"
+      tabindex="-1"
+      @click="nudge(1)"
+    >
+      +
+    </button>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { useLabelPack } from "../composables/useLabels";
 import { computed, ref } from "vue";
@@ -94,63 +151,6 @@ function onKey(e: KeyboardEvent) {
   e.preventDefault();
 }
 </script>
-
-<template>
-  <div
-    class="bless-number bless-lean--field"
-    :class="[
-      `bless-number--${size}`,
-      { 'bless-number--disabled': disabled, 'bless-number--invalid': invalid || fs.invalid.value },
-    ]"
-  >
-    <button
-      v-if="buttons"
-      type="button"
-      class="bless-number__btn"
-      :aria-label="text.decrease"
-      :disabled="disabled || (min != null && (model ?? 0) <= min)"
-      tabindex="-1"
-      @click="nudge(-1)"
-    >
-      −
-    </button>
-    <span v-if="prefix" class="bless-number__affix">{{ prefix }}</span>
-    <input
-      v-bind="$attrs"
-      :id="id()"
-      type="text"
-      inputmode="decimal"
-      class="bless-number__control"
-      :value="shown"
-      :disabled
-      :aria-label="label"
-      :aria-invalid="invalid || fs.invalid.value || undefined"
-      :aria-describedby="joinIds(fs.describedby.value, $attrs['aria-describedby'] as string)"
-      role="spinbutton"
-      :aria-valuenow="model ?? undefined"
-      :aria-valuetext="valuetext"
-      :aria-valuemin="min"
-      :aria-valuemax="max"
-      @focus="focused = true"
-      @blur="onBlur"
-      @input="onInput"
-      @keydown="onKey"
-    />
-    <input v-if="name" type="hidden" :name :value="model ?? ''" />
-    <span v-if="suffix" class="bless-number__affix">{{ suffix }}</span>
-    <button
-      v-if="buttons"
-      type="button"
-      class="bless-number__btn"
-      :aria-label="text.increase"
-      :disabled="disabled || (max != null && (model ?? 0) >= max)"
-      tabindex="-1"
-      @click="nudge(1)"
-    >
-      +
-    </button>
-  </div>
-</template>
 
 <style>
 .bless-number {

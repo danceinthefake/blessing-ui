@@ -1,3 +1,34 @@
+<template>
+  <div
+    class="bless-wave"
+    :class="{ 'bless-wave--disabled': disabled }"
+    :style="{ blockSize: `${height}px` }"
+  >
+    <div class="bless-wave__bars" aria-hidden="true">
+      <span
+        v-for="(p, i) in shown"
+        :key="i"
+        class="bless-wave__bar"
+        :class="{ 'bless-wave__bar--played': (i + 0.5) / shown.length <= position }"
+        :style="{ blockSize: `${Math.max(4, Math.round(p * 1000) / 10)}%` }"
+      />
+    </div>
+    <!-- a native range lies over the bars, so the pointer and the keyboard both seek -->
+    <input
+      class="bless-wave__range"
+      type="range"
+      min="0"
+      max="1"
+      step="0.01"
+      :value="position"
+      :disabled="disabled"
+      :aria-label="label"
+      :aria-valuetext="text"
+      @input="onInput"
+    />
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed, ref, watch } from "vue";
 import { downsample, loadPeaks } from "./waveform";
@@ -50,37 +81,6 @@ function onInput(e: Event) {
   emit("seek", at); // not position.value: under a parent v-model it updates on the next render
 }
 </script>
-
-<template>
-  <div
-    class="bless-wave"
-    :class="{ 'bless-wave--disabled': disabled }"
-    :style="{ blockSize: `${height}px` }"
-  >
-    <div class="bless-wave__bars" aria-hidden="true">
-      <span
-        v-for="(p, i) in shown"
-        :key="i"
-        class="bless-wave__bar"
-        :class="{ 'bless-wave__bar--played': (i + 0.5) / shown.length <= position }"
-        :style="{ blockSize: `${Math.max(4, Math.round(p * 1000) / 10)}%` }"
-      />
-    </div>
-    <!-- a native range lies over the bars, so the pointer and the keyboard both seek -->
-    <input
-      class="bless-wave__range"
-      type="range"
-      min="0"
-      max="1"
-      step="0.01"
-      :value="position"
-      :disabled="disabled"
-      :aria-label="label"
-      :aria-valuetext="text"
-      @input="onInput"
-    />
-  </div>
-</template>
 
 <style>
 .bless-wave {

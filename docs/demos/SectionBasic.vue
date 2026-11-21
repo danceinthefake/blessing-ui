@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import { BlessBadge, BlessDash, BlessSection, BlessSkew, BlessText } from "blessing-ui";
-</script>
-
 <template>
   <div class="col" style="max-width: none">
     <BlessSection title="News" class="boxed">
@@ -19,3 +15,7 @@ import { BlessBadge, BlessDash, BlessSection, BlessSkew, BlessText } from "bless
     </BlessSection>
   </div>
 </template>
+
+<script setup lang="ts">
+import { BlessBadge, BlessDash, BlessSection, BlessSkew, BlessText } from "blessing-ui";
+</script>

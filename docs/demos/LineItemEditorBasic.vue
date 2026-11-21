@@ -1,3 +1,7 @@
+<template>
+  <BlessLineItemEditor v-model="lines" currency="IDR" locale="id-ID" />
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessLineItemEditor, type BlessLineItem } from "blessing-ui";
@@ -17,7 +21,3 @@ const lines = ref<BlessLineItem[]>([
   { id: "3", product: "Setup and room tuning", quantity: 4, unit: "hour", price: 350000, tax: 11 },
 ]);
 </script>
-
-<template>
-  <BlessLineItemEditor v-model="lines" currency="IDR" locale="id-ID" />
-</template>

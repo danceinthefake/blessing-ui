@@ -1,3 +1,43 @@
+<template>
+  <section class="bless-vitals" :aria-label="text.title">
+    <ul class="bless-vitals__grid">
+      <li
+        v-for="v in vitals"
+        :key="v.id"
+        class="bless-vitals__card"
+        :class="vitalState(v) && `is-${vitalState(v)}`"
+      >
+        <span class="bless-vitals__label">{{ v.label }}</span>
+        <span class="bless-vitals__value">
+          {{ show(v.value)
+          }}<template v-if="v.unit"
+            >{{ " " }}<span class="bless-vitals__unit">{{ v.unit }}</span></template
+          >
+        </span>
+        <span v-if="vitalState(v)" class="bless-vitals__state">
+          <span aria-hidden="true">{{ MARK[vitalState(v)!] }}</span> {{ text[vitalState(v)!] }}
+        </span>
+        <span v-if="place(v)" class="bless-vitals__bar" aria-hidden="true">
+          <span
+            class="bless-vitals__band"
+            :style="{
+              insetInlineStart: `${place(v)!.from}%`,
+              inlineSize: `${place(v)!.to - place(v)!.from}%`,
+            }"
+          />
+          <span class="bless-vitals__dot" :style="{ insetInlineStart: `${place(v)!.value}%` }" />
+        </span>
+        <span class="bless-vitals__meta">
+          <template v-if="v.normal">{{
+            text.range(num.format(v.normal[0]), num.format(v.normal[1]))
+          }}</template
+          ><template v-if="v.normal && v.time"> · </template>{{ v.time }}
+        </span>
+      </li>
+    </ul>
+  </section>
+</template>
+
 <script lang="ts">
 export interface BlessVital {
   id: string;
@@ -62,46 +102,6 @@ function place(v: BlessVital) {
 }
 const MARK = { low: "▼", high: "▲", normal: "✓" } as const;
 </script>
-
-<template>
-  <section class="bless-vitals" :aria-label="text.title">
-    <ul class="bless-vitals__grid">
-      <li
-        v-for="v in vitals"
-        :key="v.id"
-        class="bless-vitals__card"
-        :class="vitalState(v) && `is-${vitalState(v)}`"
-      >
-        <span class="bless-vitals__label">{{ v.label }}</span>
-        <span class="bless-vitals__value">
-          {{ show(v.value)
-          }}<template v-if="v.unit"
-            >{{ " " }}<span class="bless-vitals__unit">{{ v.unit }}</span></template
-          >
-        </span>
-        <span v-if="vitalState(v)" class="bless-vitals__state">
-          <span aria-hidden="true">{{ MARK[vitalState(v)!] }}</span> {{ text[vitalState(v)!] }}
-        </span>
-        <span v-if="place(v)" class="bless-vitals__bar" aria-hidden="true">
-          <span
-            class="bless-vitals__band"
-            :style="{
-              insetInlineStart: `${place(v)!.from}%`,
-              inlineSize: `${place(v)!.to - place(v)!.from}%`,
-            }"
-          />
-          <span class="bless-vitals__dot" :style="{ insetInlineStart: `${place(v)!.value}%` }" />
-        </span>
-        <span class="bless-vitals__meta">
-          <template v-if="v.normal">{{
-            text.range(num.format(v.normal[0]), num.format(v.normal[1]))
-          }}</template
-          ><template v-if="v.normal && v.time"> · </template>{{ v.time }}
-        </span>
-      </li>
-    </ul>
-  </section>
-</template>
 
 <style>
 .bless-vitals {

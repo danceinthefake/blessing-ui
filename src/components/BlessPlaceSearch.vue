@@ -1,3 +1,56 @@
+<template>
+  <div class="bless-places">
+    <label :for="`${id}-q`" class="bless-places__label">{{ text.label }}</label>
+    <div class="bless-places__box">
+      <svg viewBox="0 0 24 24" class="bless-places__glass" aria-hidden="true">
+        <circle cx="10" cy="10" r="6" />
+        <path d="M15 15l6 6" />
+      </svg>
+      <input
+        :id="`${id}-q`"
+        v-model="query"
+        type="search"
+        role="combobox"
+        autocomplete="off"
+        :placeholder="text.placeholder"
+        aria-autocomplete="list"
+        :aria-expanded="open && results.length > 0"
+        :aria-controls="`${id}-list`"
+        :aria-activedescendant="active >= 0 ? `${id}-o${active}` : undefined"
+        @input="typed"
+        @keydown="key"
+        @blur="open = false"
+      />
+      <ul
+        v-show="open && results.length"
+        :id="`${id}-list`"
+        role="listbox"
+        :aria-label="text.label"
+        class="bless-places__list"
+      >
+        <li
+          v-for="(p, i) in results"
+          :id="`${id}-o${i}`"
+          :key="p.id"
+          role="option"
+          :aria-selected="i === active"
+          class="bless-places__option"
+          @mousedown.prevent="choose(p)"
+        >
+          <span class="bless-places__main">
+            <strong>{{ p.name }}</strong>
+            <span v-if="p.address || p.kind" class="bless-places__address">{{
+              [p.kind, p.address].filter(Boolean).join(" · ")
+            }}</span>
+          </span>
+          <span class="bless-places__dist">{{ dist(p.distance) }}</span>
+        </li>
+      </ul>
+    </div>
+    <p class="bless-places__status" role="status">{{ status }}</p>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed, onBeforeUnmount, ref, useId } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -123,59 +176,6 @@ const status = computed(() =>
         : "",
 );
 </script>
-
-<template>
-  <div class="bless-places">
-    <label :for="`${id}-q`" class="bless-places__label">{{ text.label }}</label>
-    <div class="bless-places__box">
-      <svg viewBox="0 0 24 24" class="bless-places__glass" aria-hidden="true">
-        <circle cx="10" cy="10" r="6" />
-        <path d="M15 15l6 6" />
-      </svg>
-      <input
-        :id="`${id}-q`"
-        v-model="query"
-        type="search"
-        role="combobox"
-        autocomplete="off"
-        :placeholder="text.placeholder"
-        aria-autocomplete="list"
-        :aria-expanded="open && results.length > 0"
-        :aria-controls="`${id}-list`"
-        :aria-activedescendant="active >= 0 ? `${id}-o${active}` : undefined"
-        @input="typed"
-        @keydown="key"
-        @blur="open = false"
-      />
-      <ul
-        v-show="open && results.length"
-        :id="`${id}-list`"
-        role="listbox"
-        :aria-label="text.label"
-        class="bless-places__list"
-      >
-        <li
-          v-for="(p, i) in results"
-          :id="`${id}-o${i}`"
-          :key="p.id"
-          role="option"
-          :aria-selected="i === active"
-          class="bless-places__option"
-          @mousedown.prevent="choose(p)"
-        >
-          <span class="bless-places__main">
-            <strong>{{ p.name }}</strong>
-            <span v-if="p.address || p.kind" class="bless-places__address">{{
-              [p.kind, p.address].filter(Boolean).join(" · ")
-            }}</span>
-          </span>
-          <span class="bless-places__dist">{{ dist(p.distance) }}</span>
-        </li>
-      </ul>
-    </div>
-    <p class="bless-places__status" role="status">{{ status }}</p>
-  </div>
-</template>
 
 <style>
 .bless-places {

@@ -1,3 +1,14 @@
+<template>
+  <div class="row">
+    <BlessButton @click="celebrate">Mark as done</BlessButton>
+    <BlessButton variant="outline" @click="confetti?.fire(undefined, 270)"
+      >From the middle</BlessButton
+    >
+    <span aria-live="polite">{{ done ? "Finished." : "" }}</span>
+    <BlessConfetti ref="confetti" @finish="done = true" />
+  </div>
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessButton, BlessConfetti } from "blessing-ui";
@@ -9,14 +20,3 @@ function celebrate(e: MouseEvent) {
   confetti.value?.fire(e.currentTarget as HTMLElement);
 }
 </script>
-
-<template>
-  <div class="row">
-    <BlessButton @click="celebrate">Mark as done</BlessButton>
-    <BlessButton variant="outline" @click="confetti?.fire(undefined, 270)"
-      >From the middle</BlessButton
-    >
-    <span aria-live="polite">{{ done ? "Finished." : "" }}</span>
-    <BlessConfetti ref="confetti" @finish="done = true" />
-  </div>
-</template>

@@ -1,3 +1,53 @@
+<template>
+  <section class="bless-ship" :class="{ 'has-problem': problem }" :aria-label="text.title">
+    <ol class="bless-stagger bless-ship__stages" :style="{ '--_done': at / (STAGES.length - 1) }">
+      <li
+        v-for="(s, i) in STAGES"
+        :key="s"
+        class="bless-ship__stage"
+        :class="{ 'is-done': i < at || (i === at && s === 'delivered'), 'is-current': i === at }"
+        :aria-current="i === at ? 'step' : undefined"
+      >
+        <span class="bless-ship__dot" aria-hidden="true">
+          <svg v-if="i < at || (i === at && !problem)" viewBox="0 0 16 16" width="12" height="12">
+            <path d="M3 8.5 6.5 12 13 4.5" />
+          </svg>
+          <b v-else-if="i === at">!</b>
+        </span>
+        <span class="bless-ship__name">{{ text[s] }}</span>
+        <span v-if="dates[i] && i <= at" class="bless-ship__date">{{ dates[i] }}</span>
+        <span class="bless-sr">{{
+          i < at ? `, ${text.done}` : i === at ? `, ${text.current}` : ""
+        }}</span>
+      </li>
+    </ol>
+    <p v-if="problem" class="bless-ship__problem" role="alert">{{ problem }}</p>
+    <div v-if="events.length" class="bless-ship__latest">
+      <span class="bless-ship__label">{{ text.latest }}</span>
+      <p>
+        <strong>{{ events[0]!.text }}</strong>
+        <span class="bless-ship__meta">{{
+          [events[0]!.place, events[0]!.time].filter(Boolean).join(" · ")
+        }}</span>
+      </p>
+    </div>
+    <details v-if="events.length > 1" class="bless-ship__history">
+      <summary>{{ text.history }} ({{ events.length }})</summary>
+      <ol>
+        <li v-for="(e, i) in events" :key="i">
+          <span class="bless-ship__meta">{{ e.time }}</span>
+          <span>{{ e.text }}<template v-if="e.place"> · {{ e.place }}</template></span>
+        </li>
+      </ol>
+    </details>
+    <p v-if="tracking" class="bless-ship__tracking">
+      {{ text.tracking }}<template v-if="carrier"> ({{ carrier }})</template>:
+      <a v-if="trackingUrl" :href="trackingUrl">{{ tracking }}</a>
+      <code v-else>{{ tracking }}</code>
+    </p>
+  </section>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -60,56 +110,6 @@ const text = computed(() => ({
 }));
 const at = computed(() => Math.min(Math.max(0, Math.round(props.stage)), STAGES.length - 1));
 </script>
-
-<template>
-  <section class="bless-ship" :class="{ 'has-problem': problem }" :aria-label="text.title">
-    <ol class="bless-stagger bless-ship__stages" :style="{ '--_done': at / (STAGES.length - 1) }">
-      <li
-        v-for="(s, i) in STAGES"
-        :key="s"
-        class="bless-ship__stage"
-        :class="{ 'is-done': i < at || (i === at && s === 'delivered'), 'is-current': i === at }"
-        :aria-current="i === at ? 'step' : undefined"
-      >
-        <span class="bless-ship__dot" aria-hidden="true">
-          <svg v-if="i < at || (i === at && !problem)" viewBox="0 0 16 16" width="12" height="12">
-            <path d="M3 8.5 6.5 12 13 4.5" />
-          </svg>
-          <b v-else-if="i === at">!</b>
-        </span>
-        <span class="bless-ship__name">{{ text[s] }}</span>
-        <span v-if="dates[i] && i <= at" class="bless-ship__date">{{ dates[i] }}</span>
-        <span class="bless-sr">{{
-          i < at ? `, ${text.done}` : i === at ? `, ${text.current}` : ""
-        }}</span>
-      </li>
-    </ol>
-    <p v-if="problem" class="bless-ship__problem" role="alert">{{ problem }}</p>
-    <div v-if="events.length" class="bless-ship__latest">
-      <span class="bless-ship__label">{{ text.latest }}</span>
-      <p>
-        <strong>{{ events[0]!.text }}</strong>
-        <span class="bless-ship__meta">{{
-          [events[0]!.place, events[0]!.time].filter(Boolean).join(" · ")
-        }}</span>
-      </p>
-    </div>
-    <details v-if="events.length > 1" class="bless-ship__history">
-      <summary>{{ text.history }} ({{ events.length }})</summary>
-      <ol>
-        <li v-for="(e, i) in events" :key="i">
-          <span class="bless-ship__meta">{{ e.time }}</span>
-          <span>{{ e.text }}<template v-if="e.place"> · {{ e.place }}</template></span>
-        </li>
-      </ol>
-    </details>
-    <p v-if="tracking" class="bless-ship__tracking">
-      {{ text.tracking }}<template v-if="carrier"> ({{ carrier }})</template>:
-      <a v-if="trackingUrl" :href="trackingUrl">{{ tracking }}</a>
-      <code v-else>{{ tracking }}</code>
-    </p>
-  </section>
-</template>
 
 <style>
 .bless-ship {

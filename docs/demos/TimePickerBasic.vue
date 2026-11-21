@@ -1,11 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { BlessLabel, BlessTimePicker } from "blessing-ui";
-const t = ref("00:00");
-const s = ref("13:30");
-const lap = ref("00:01:30");
-</script>
-
 <template>
   <div class="row" style="align-items: flex-start">
     <div class="col" style="max-width: 200px">
@@ -23,3 +15,11 @@ const lap = ref("00:01:30");
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { BlessLabel, BlessTimePicker } from "blessing-ui";
+const t = ref("00:00");
+const s = ref("13:30");
+const lap = ref("00:01:30");
+</script>

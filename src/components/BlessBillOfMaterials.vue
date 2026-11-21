@@ -1,3 +1,52 @@
+<template>
+  <section class="bless-bom" :aria-label="text.title">
+    <div class="bless-bom__head">
+      <strong class="bless-bom__product">{{ product }}</strong>
+      <label class="bless-bom__count">
+        <span>{{ text.build }}</span>
+        <input
+          type="number"
+          min="1"
+          step="1"
+          :value="count"
+          @change="
+            count = Math.max(1, Math.round(($event.target as HTMLInputElement).valueAsNumber) || 1)
+          "
+        />
+      </label>
+    </div>
+    <ul class="bless-stagger bless-bom__list" role="list">
+      <li
+        v-for="r in rows"
+        :key="`${r.part.id}-${r.depth}`"
+        class="bless-bom__row"
+        :style="{ '--_depth': r.depth }"
+      >
+        <button
+          v-if="r.part.children?.length"
+          type="button"
+          class="bless-bom__toggle"
+          :aria-expanded="!closed.has(r.part.id)"
+          :aria-label="text.open(r.part.name)"
+          @click="flip(r.part.id)"
+        >
+          {{ closed.has(r.part.id) ? "▸" : "▾" }}
+        </button>
+        <span v-else class="bless-bom__leaf" aria-hidden="true">·</span>
+        <span class="bless-bom__name">
+          {{ r.part.name
+          }}<template v-if="r.part.sku"
+            >{{ " " }}<span class="bless-bom__sku">{{ r.part.sku }}</span></template
+          >
+        </span>
+        <span class="bless-bom__per">{{ text.per(qty(r.part.quantity, r.part.unit)) }}</span>
+        <span class="bless-bom__total">{{ text.total(qty(r.total, r.part.unit)) }}</span>
+      </li>
+    </ul>
+    <p class="bless-bom__cost" role="status">{{ text.cost(money.format(needs.cost)) }}</p>
+  </section>
+</template>
+
 <script lang="ts">
 export interface BlessBomPart {
   id: string;
@@ -100,55 +149,6 @@ const rows = computed(() => {
 const qty = (n: number, unit?: string) =>
   unit ? `${num.value.format(n)} ${unit}` : num.value.format(n);
 </script>
-
-<template>
-  <section class="bless-bom" :aria-label="text.title">
-    <div class="bless-bom__head">
-      <strong class="bless-bom__product">{{ product }}</strong>
-      <label class="bless-bom__count">
-        <span>{{ text.build }}</span>
-        <input
-          type="number"
-          min="1"
-          step="1"
-          :value="count"
-          @change="
-            count = Math.max(1, Math.round(($event.target as HTMLInputElement).valueAsNumber) || 1)
-          "
-        />
-      </label>
-    </div>
-    <ul class="bless-stagger bless-bom__list" role="list">
-      <li
-        v-for="r in rows"
-        :key="`${r.part.id}-${r.depth}`"
-        class="bless-bom__row"
-        :style="{ '--_depth': r.depth }"
-      >
-        <button
-          v-if="r.part.children?.length"
-          type="button"
-          class="bless-bom__toggle"
-          :aria-expanded="!closed.has(r.part.id)"
-          :aria-label="text.open(r.part.name)"
-          @click="flip(r.part.id)"
-        >
-          {{ closed.has(r.part.id) ? "▸" : "▾" }}
-        </button>
-        <span v-else class="bless-bom__leaf" aria-hidden="true">·</span>
-        <span class="bless-bom__name">
-          {{ r.part.name
-          }}<template v-if="r.part.sku"
-            >{{ " " }}<span class="bless-bom__sku">{{ r.part.sku }}</span></template
-          >
-        </span>
-        <span class="bless-bom__per">{{ text.per(qty(r.part.quantity, r.part.unit)) }}</span>
-        <span class="bless-bom__total">{{ text.total(qty(r.total, r.part.unit)) }}</span>
-      </li>
-    </ul>
-    <p class="bless-bom__cost" role="status">{{ text.cost(money.format(needs.cost)) }}</p>
-  </section>
-</template>
 
 <style>
 .bless-bom {

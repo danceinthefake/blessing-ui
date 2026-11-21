@@ -1,3 +1,20 @@
+<template>
+  <div class="bless-reading" :class="`bless-reading--${position}`">
+    <div
+      class="bless-reading__track"
+      role="progressbar"
+      :aria-label="text.label"
+      aria-valuemin="0"
+      aria-valuemax="100"
+      :aria-valuenow="pct"
+      :aria-valuetext="minutes ? `${pct}%, ${text.left(left)}` : undefined"
+    >
+      <span class="bless-reading__bar" :style="{ transform: `scaleX(${progress})` }" />
+    </div>
+    <span v-if="minutes" class="bless-reading__left" aria-hidden="true">{{ text.left(left) }}</span>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, ref, watch } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -75,23 +92,6 @@ onBeforeUnmount(unbind);
 const left = computed(() => Math.round((words.value * (1 - progress.value)) / props.wpm));
 const pct = computed(() => Math.round(progress.value * 100));
 </script>
-
-<template>
-  <div class="bless-reading" :class="`bless-reading--${position}`">
-    <div
-      class="bless-reading__track"
-      role="progressbar"
-      :aria-label="text.label"
-      aria-valuemin="0"
-      aria-valuemax="100"
-      :aria-valuenow="pct"
-      :aria-valuetext="minutes ? `${pct}%, ${text.left(left)}` : undefined"
-    >
-      <span class="bless-reading__bar" :style="{ transform: `scaleX(${progress})` }" />
-    </div>
-    <span v-if="minutes" class="bless-reading__left" aria-hidden="true">{{ text.left(left) }}</span>
-  </div>
-</template>
 
 <style>
 .bless-reading {

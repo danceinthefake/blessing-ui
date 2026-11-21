@@ -1,3 +1,46 @@
+<template>
+  <section
+    class="bless-quotes"
+    :class="`bless-quotes--${layout}`"
+    :aria-label="text.title"
+    :aria-roledescription="layout === 'single' ? 'carousel' : undefined"
+  >
+    <figure
+      v-for="(t, i) in shown"
+      :key="t.name + i"
+      class="bless-quotes__item"
+      :aria-roledescription="layout === 'single' ? 'slide' : undefined"
+      :aria-label="layout === 'single' ? text.position(at + 1, items.length) : undefined"
+    >
+      <p v-if="t.rating" class="bless-quotes__stars">
+        <span aria-hidden="true"
+          >{{ "★".repeat(Math.round(t.rating)) }}{{ "☆".repeat(5 - Math.round(t.rating)) }}</span
+        >
+        <span class="bless-sr">{{ text.rating(t.rating) }}</span>
+      </p>
+      <blockquote class="bless-quotes__quote">{{ t.quote }}</blockquote>
+      <figcaption class="bless-quotes__who">
+        <BlessAvatar :src="t.avatar" :name="t.name" alt="" size="sm" />
+        <span>
+          <strong>{{ t.name }}</strong>
+          <span v-if="t.role" class="bless-quotes__role">{{ t.role }}</span>
+        </span>
+      </figcaption>
+    </figure>
+    <div v-if="layout === 'single' && items.length > 1" class="bless-quotes__nav">
+      <button type="button" class="bless-quotes__btn" :aria-label="text.prev" @click="step(-1)">
+        ‹
+      </button>
+      <span class="bless-quotes__pos" aria-live="polite">{{
+        text.position(at + 1, items.length)
+      }}</span>
+      <button type="button" class="bless-quotes__btn" :aria-label="text.next" @click="step(1)">
+        ›
+      </button>
+    </div>
+  </section>
+</template>
+
 <script setup lang="ts">
 import { computed, ref } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -48,49 +91,6 @@ const shown = computed(() =>
 );
 const step = (d: number) => (at.value = (at.value + d + props.items.length) % props.items.length);
 </script>
-
-<template>
-  <section
-    class="bless-quotes"
-    :class="`bless-quotes--${layout}`"
-    :aria-label="text.title"
-    :aria-roledescription="layout === 'single' ? 'carousel' : undefined"
-  >
-    <figure
-      v-for="(t, i) in shown"
-      :key="t.name + i"
-      class="bless-quotes__item"
-      :aria-roledescription="layout === 'single' ? 'slide' : undefined"
-      :aria-label="layout === 'single' ? text.position(at + 1, items.length) : undefined"
-    >
-      <p v-if="t.rating" class="bless-quotes__stars">
-        <span aria-hidden="true"
-          >{{ "★".repeat(Math.round(t.rating)) }}{{ "☆".repeat(5 - Math.round(t.rating)) }}</span
-        >
-        <span class="bless-sr">{{ text.rating(t.rating) }}</span>
-      </p>
-      <blockquote class="bless-quotes__quote">{{ t.quote }}</blockquote>
-      <figcaption class="bless-quotes__who">
-        <BlessAvatar :src="t.avatar" :name="t.name" alt="" size="sm" />
-        <span>
-          <strong>{{ t.name }}</strong>
-          <span v-if="t.role" class="bless-quotes__role">{{ t.role }}</span>
-        </span>
-      </figcaption>
-    </figure>
-    <div v-if="layout === 'single' && items.length > 1" class="bless-quotes__nav">
-      <button type="button" class="bless-quotes__btn" :aria-label="text.prev" @click="step(-1)">
-        ‹
-      </button>
-      <span class="bless-quotes__pos" aria-live="polite">{{
-        text.position(at + 1, items.length)
-      }}</span>
-      <button type="button" class="bless-quotes__btn" :aria-label="text.next" @click="step(1)">
-        ›
-      </button>
-    </div>
-  </section>
-</template>
 
 <style>
 .bless-quotes {

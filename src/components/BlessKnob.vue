@@ -1,3 +1,38 @@
+<template>
+  <div class="bless-knob" :class="[`bless-knob--${size}`, { 'bless-knob--disabled': disabled }]">
+    <div
+      ref="dial"
+      class="bless-knob__dial"
+      :style="{
+        '--_start': `${startDeg}deg`,
+        '--_sweep': `${sweep}deg`,
+        '--_fill': `${ratio * sweep}deg`,
+        '--_deg': `${deg}deg`,
+      }"
+      @pointerdown="onDown"
+      @pointermove="onMove"
+    >
+      <span class="bless-knob__hand" aria-hidden="true" />
+      <input
+        v-bind="$attrs"
+        :id="id()"
+        v-model.number="model"
+        type="range"
+        class="bless-knob__input"
+        :min
+        :max
+        :step
+        :disabled
+        :aria-label="label || fs.inField ? undefined : 'Value'"
+        :aria-valuetext="text"
+        :aria-describedby="joinIds(fs.describedby.value, $attrs['aria-describedby'] as string)"
+      />
+      <span v-if="showValue" class="bless-knob__value" aria-hidden="true">{{ text }}</span>
+    </div>
+    <label v-if="label" :for="id()" class="bless-knob__label">{{ label }}</label>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed, ref } from "vue";
 import { joinIds, useFieldId, useFieldState } from "../composables/useFieldId";
@@ -67,41 +102,6 @@ function onMove(e: PointerEvent) {
   if ((e.currentTarget as HTMLElement).hasPointerCapture(e.pointerId)) fromPointer(e, true);
 }
 </script>
-
-<template>
-  <div class="bless-knob" :class="[`bless-knob--${size}`, { 'bless-knob--disabled': disabled }]">
-    <div
-      ref="dial"
-      class="bless-knob__dial"
-      :style="{
-        '--_start': `${startDeg}deg`,
-        '--_sweep': `${sweep}deg`,
-        '--_fill': `${ratio * sweep}deg`,
-        '--_deg': `${deg}deg`,
-      }"
-      @pointerdown="onDown"
-      @pointermove="onMove"
-    >
-      <span class="bless-knob__hand" aria-hidden="true" />
-      <input
-        v-bind="$attrs"
-        :id="id()"
-        v-model.number="model"
-        type="range"
-        class="bless-knob__input"
-        :min
-        :max
-        :step
-        :disabled
-        :aria-label="label || fs.inField ? undefined : 'Value'"
-        :aria-valuetext="text"
-        :aria-describedby="joinIds(fs.describedby.value, $attrs['aria-describedby'] as string)"
-      />
-      <span v-if="showValue" class="bless-knob__value" aria-hidden="true">{{ text }}</span>
-    </div>
-    <label v-if="label" :for="id()" class="bless-knob__label">{{ label }}</label>
-  </div>
-</template>
 
 <style>
 .bless-knob {

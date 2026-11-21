@@ -1,3 +1,20 @@
+<template>
+  <BlessChart
+    title="Shows"
+    description="Bubble size: episodes in the archive"
+    :legend="groups.map((g) => g.label)"
+    height="auto"
+  >
+    <BlessScatterChart
+      :points
+      :groups
+      x-label="Episodes a month"
+      y-label="Listeners (k)"
+      label="Shows by output and listeners"
+    />
+  </BlessChart>
+</template>
+
 <script setup lang="ts">
 import { BlessChart, BlessScatterChart, type BlessScatterPoint } from "blessing-ui";
 
@@ -17,20 +34,3 @@ const groups = [
   { id: "tech", label: "Tech" },
 ];
 </script>
-
-<template>
-  <BlessChart
-    title="Shows"
-    description="Bubble size: episodes in the archive"
-    :legend="groups.map((g) => g.label)"
-    height="auto"
-  >
-    <BlessScatterChart
-      :points
-      :groups
-      x-label="Episodes a month"
-      y-label="Listeners (k)"
-      label="Shows by output and listeners"
-    />
-  </BlessChart>
-</template>

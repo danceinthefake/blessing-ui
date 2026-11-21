@@ -1,3 +1,16 @@
+<template>
+  <div
+    class="bless-scroll"
+    :class="[`bless-scroll--${axis}`, { 'bless-scroll--fade': fade }]"
+    :style="{ height, width }"
+    tabindex="0"
+    :role="label ? 'region' : undefined"
+    :aria-label="label"
+  >
+    <slot />
+  </div>
+</template>
+
 <script setup lang="ts">
 defineOptions({ name: "BlessScrollArea" });
 
@@ -14,19 +27,6 @@ withDefaults(
   { axis: "y", fade: true },
 );
 </script>
-
-<template>
-  <div
-    class="bless-scroll"
-    :class="[`bless-scroll--${axis}`, { 'bless-scroll--fade': fade }]"
-    :style="{ height, width }"
-    tabindex="0"
-    :role="label ? 'region' : undefined"
-    :aria-label="label"
-  >
-    <slot />
-  </div>
-</template>
 
 <style>
 .bless-scroll {

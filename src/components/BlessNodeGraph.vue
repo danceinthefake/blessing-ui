@@ -1,3 +1,90 @@
+<template>
+  <div ref="root" class="bless-graph" @keydown="canvasKey">
+    <BlessInfiniteCanvas
+      ref="canvas"
+      v-model:view="view"
+      :grid
+      :controls
+      :min-zoom
+      :max-zoom
+      :label
+    >
+      <svg class="bless-graph__edges" aria-hidden="true">
+        <defs>
+          <marker
+            :id="markerId"
+            viewBox="0 0 8 8"
+            refX="7"
+            refY="4"
+            markerWidth="8"
+            markerHeight="8"
+            orient="auto"
+          >
+            <path d="M0 0L8 4L0 8z" class="bless-graph__arrow" />
+          </marker>
+        </defs>
+        <g v-for="d in drawn" :key="d.key">
+          <path
+            class="bless-graph__edge"
+            :class="{ 'bless-graph__edge--sel': edgeSel === d.key }"
+            :d="d.d"
+            :marker-end="`url(#${markerId})`"
+          />
+          <path
+            class="bless-graph__edge-hit"
+            :d="d.d"
+            @pointerdown.stop="((edgeSel = d.key), (selected = null))"
+          />
+        </g>
+        <path v-if="preview" class="bless-graph__edge bless-graph__edge--preview" :d="preview" />
+      </svg>
+      <div
+        v-for="n in nodes"
+        :key="n.id"
+        class="bless-graph__node"
+        :class="{
+          'bless-graph__node--sel': selected === n.id,
+          'bless-graph__node--target': linking?.target === n.id && linking.from !== n.id,
+          'bless-graph__node--drag': dragging?.id === n.id,
+        }"
+        :data-node-id="n.id"
+        role="group"
+        aria-roledescription="node"
+        :aria-label="nameFor(n)"
+        :aria-describedby="hint"
+        :tabindex="tabId === n.id ? 0 : -1"
+        :style="{
+          left: `${n.x}px`,
+          top: `${n.y}px`,
+          width: `${nodeWidth}px`,
+          height: `${nodeHeight}px`,
+        }"
+        @pointerdown="nodeDown(n, $event)"
+        @pointermove="nodeMove(n, $event)"
+        @pointerup="nodeUp(n)"
+        @pointercancel="nodeUp(n)"
+        @keydown.self="onKey(n, $event)"
+      >
+        <span class="bless-graph__port bless-graph__port--in" aria-hidden="true" />
+        <slot name="node" :node="n" :selected="selected === n.id">
+          <span class="bless-graph__label">{{ n.label }}</span>
+        </slot>
+        <span
+          v-if="editable"
+          class="bless-graph__port bless-graph__port--out"
+          aria-hidden="true"
+          @pointerdown="portDown(n, $event)"
+          @pointermove="portMove"
+          @pointerup="portUp"
+          @pointercancel="pulling = null"
+        />
+      </div>
+    </BlessInfiniteCanvas>
+    <span :id="hint" hidden>{{ text.hint }}</span>
+    <span class="bless-graph__live bless-sr" aria-live="polite">{{ live }}</span>
+  </div>
+</template>
+
 <script lang="ts">
 export interface BlessGraphNode {
   id: string;
@@ -284,93 +371,6 @@ const tabId = computed(() =>
   selected.value && byId.value.has(selected.value) ? selected.value : nodes.value[0]?.id,
 );
 </script>
-
-<template>
-  <div ref="root" class="bless-graph" @keydown="canvasKey">
-    <BlessInfiniteCanvas
-      ref="canvas"
-      v-model:view="view"
-      :grid
-      :controls
-      :min-zoom
-      :max-zoom
-      :label
-    >
-      <svg class="bless-graph__edges" aria-hidden="true">
-        <defs>
-          <marker
-            :id="markerId"
-            viewBox="0 0 8 8"
-            refX="7"
-            refY="4"
-            markerWidth="8"
-            markerHeight="8"
-            orient="auto"
-          >
-            <path d="M0 0L8 4L0 8z" class="bless-graph__arrow" />
-          </marker>
-        </defs>
-        <g v-for="d in drawn" :key="d.key">
-          <path
-            class="bless-graph__edge"
-            :class="{ 'bless-graph__edge--sel': edgeSel === d.key }"
-            :d="d.d"
-            :marker-end="`url(#${markerId})`"
-          />
-          <path
-            class="bless-graph__edge-hit"
-            :d="d.d"
-            @pointerdown.stop="((edgeSel = d.key), (selected = null))"
-          />
-        </g>
-        <path v-if="preview" class="bless-graph__edge bless-graph__edge--preview" :d="preview" />
-      </svg>
-      <div
-        v-for="n in nodes"
-        :key="n.id"
-        class="bless-graph__node"
-        :class="{
-          'bless-graph__node--sel': selected === n.id,
-          'bless-graph__node--target': linking?.target === n.id && linking.from !== n.id,
-          'bless-graph__node--drag': dragging?.id === n.id,
-        }"
-        :data-node-id="n.id"
-        role="group"
-        aria-roledescription="node"
-        :aria-label="nameFor(n)"
-        :aria-describedby="hint"
-        :tabindex="tabId === n.id ? 0 : -1"
-        :style="{
-          left: `${n.x}px`,
-          top: `${n.y}px`,
-          width: `${nodeWidth}px`,
-          height: `${nodeHeight}px`,
-        }"
-        @pointerdown="nodeDown(n, $event)"
-        @pointermove="nodeMove(n, $event)"
-        @pointerup="nodeUp(n)"
-        @pointercancel="nodeUp(n)"
-        @keydown.self="onKey(n, $event)"
-      >
-        <span class="bless-graph__port bless-graph__port--in" aria-hidden="true" />
-        <slot name="node" :node="n" :selected="selected === n.id">
-          <span class="bless-graph__label">{{ n.label }}</span>
-        </slot>
-        <span
-          v-if="editable"
-          class="bless-graph__port bless-graph__port--out"
-          aria-hidden="true"
-          @pointerdown="portDown(n, $event)"
-          @pointermove="portMove"
-          @pointerup="portUp"
-          @pointercancel="pulling = null"
-        />
-      </div>
-    </BlessInfiniteCanvas>
-    <span :id="hint" hidden>{{ text.hint }}</span>
-    <span class="bless-graph__live bless-sr" aria-live="polite">{{ live }}</span>
-  </div>
-</template>
 
 <style>
 .bless-graph {

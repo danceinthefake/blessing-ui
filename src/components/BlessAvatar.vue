@@ -1,3 +1,28 @@
+<template>
+  <span
+    class="bless-avatar"
+    :class="[
+      `bless-avatar--${size}`,
+      `bless-avatar--${color}`,
+      { 'bless-avatar--lean bless-lean': lean },
+    ]"
+    :role="showImg || !(alt ?? name) ? undefined : 'img'"
+    :aria-label="showImg ? undefined : (alt ?? name)"
+  >
+    <img
+      v-if="showImg"
+      ref="img"
+      :src
+      :alt="alt ?? name ?? ''"
+      class="bless-avatar__img"
+      @error="failed = true"
+    />
+    <span v-else class="bless-avatar__fallback" aria-hidden="true"
+      ><slot>{{ initials }}</slot></span
+    >
+  </span>
+</template>
+
 <script setup lang="ts">
 import { computed, onMounted, ref, watch } from "vue";
 
@@ -38,31 +63,6 @@ const initials = computed(() =>
 );
 const showImg = computed(() => !!props.src && !failed.value);
 </script>
-
-<template>
-  <span
-    class="bless-avatar"
-    :class="[
-      `bless-avatar--${size}`,
-      `bless-avatar--${color}`,
-      { 'bless-avatar--lean bless-lean': lean },
-    ]"
-    :role="showImg || !(alt ?? name) ? undefined : 'img'"
-    :aria-label="showImg ? undefined : (alt ?? name)"
-  >
-    <img
-      v-if="showImg"
-      ref="img"
-      :src
-      :alt="alt ?? name ?? ''"
-      class="bless-avatar__img"
-      @error="failed = true"
-    />
-    <span v-else class="bless-avatar__fallback" aria-hidden="true"
-      ><slot>{{ initials }}</slot></span
-    >
-  </span>
-</template>
 
 <style>
 .bless-avatar {

@@ -1,3 +1,81 @@
+<template>
+  <figure ref="box" class="bless-plot bless-barchart" :class="{ 'bless-plot--h': horizontal }">
+    <svg :viewBox="`0 0 ${width} ${height}`" :height class="bless-plot__svg" aria-hidden="true">
+      <g v-for="t in ticks" :key="t">
+        <line
+          v-if="horizontal"
+          class="bless-plot__grid"
+          :class="{ 'bless-plot__zero': t === 0 }"
+          :x1="valueAt(t)"
+          :x2="valueAt(t)"
+          :y1="frame.y0"
+          :y2="frame.y1"
+        />
+        <line
+          v-else
+          class="bless-plot__grid"
+          :class="{ 'bless-plot__zero': t === 0 }"
+          :x1="frame.x0"
+          :x2="frame.x1"
+          :y1="valueAt(t)"
+          :y2="valueAt(t)"
+        />
+        <text
+          class="bless-plot__tick"
+          :x="horizontal ? valueAt(t) : frame.x0 - 6"
+          :y="horizontal ? frame.y1 + 14 : valueAt(t)"
+          :text-anchor="horizontal ? 'middle' : 'end'"
+          dominant-baseline="middle"
+        >
+          {{ fmt(t) }}
+        </text>
+      </g>
+      <text
+        v-for="(c, i) in cats"
+        :key="i"
+        class="bless-plot__cat"
+        :x="horizontal ? frame.x0 - 6 : band.start + (i + 0.5) * band.size"
+        :y="horizontal ? band.start + (i + 0.5) * band.size : frame.y1 + 14"
+        :text-anchor="horizontal ? 'end' : 'middle'"
+        dominant-baseline="middle"
+      >
+        {{ c }}
+      </text>
+      <rect
+        v-for="(b, i) in bars"
+        :key="b.key"
+        class="bless-plot__mark"
+        :x="b.x"
+        :y="b.y"
+        :width="b.width"
+        :height="b.height"
+        :style="{ '--_c': b.color, '--_i': i }"
+      >
+        <title>{{ b.title }}</title>
+      </rect>
+    </svg>
+    <div class="bless-sr">
+      <table>
+        <caption>
+          {{ label }}
+        </caption>
+        <thead>
+          <tr>
+            <th scope="col">{{ text.category }}</th>
+            <th v-for="s in series" :key="s.key" scope="col">{{ s.label ?? s.key }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(r, i) in data" :key="i">
+            <th scope="row">{{ cats[i] }}</th>
+            <td v-for="s in series" :key="s.key">{{ fmt(num(r, s.key)) }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </figure>
+</template>
+
 <script setup lang="ts">
 import { computed, ref } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -130,81 +208,3 @@ const bars = computed(() => {
   });
 });
 </script>
-
-<template>
-  <figure ref="box" class="bless-plot bless-barchart" :class="{ 'bless-plot--h': horizontal }">
-    <svg :viewBox="`0 0 ${width} ${height}`" :height class="bless-plot__svg" aria-hidden="true">
-      <g v-for="t in ticks" :key="t">
-        <line
-          v-if="horizontal"
-          class="bless-plot__grid"
-          :class="{ 'bless-plot__zero': t === 0 }"
-          :x1="valueAt(t)"
-          :x2="valueAt(t)"
-          :y1="frame.y0"
-          :y2="frame.y1"
-        />
-        <line
-          v-else
-          class="bless-plot__grid"
-          :class="{ 'bless-plot__zero': t === 0 }"
-          :x1="frame.x0"
-          :x2="frame.x1"
-          :y1="valueAt(t)"
-          :y2="valueAt(t)"
-        />
-        <text
-          class="bless-plot__tick"
-          :x="horizontal ? valueAt(t) : frame.x0 - 6"
-          :y="horizontal ? frame.y1 + 14 : valueAt(t)"
-          :text-anchor="horizontal ? 'middle' : 'end'"
-          dominant-baseline="middle"
-        >
-          {{ fmt(t) }}
-        </text>
-      </g>
-      <text
-        v-for="(c, i) in cats"
-        :key="i"
-        class="bless-plot__cat"
-        :x="horizontal ? frame.x0 - 6 : band.start + (i + 0.5) * band.size"
-        :y="horizontal ? band.start + (i + 0.5) * band.size : frame.y1 + 14"
-        :text-anchor="horizontal ? 'end' : 'middle'"
-        dominant-baseline="middle"
-      >
-        {{ c }}
-      </text>
-      <rect
-        v-for="(b, i) in bars"
-        :key="b.key"
-        class="bless-plot__mark"
-        :x="b.x"
-        :y="b.y"
-        :width="b.width"
-        :height="b.height"
-        :style="{ '--_c': b.color, '--_i': i }"
-      >
-        <title>{{ b.title }}</title>
-      </rect>
-    </svg>
-    <div class="bless-sr">
-      <table>
-        <caption>
-          {{ label }}
-        </caption>
-        <thead>
-          <tr>
-            <th scope="col">{{ text.category }}</th>
-            <th v-for="s in series" :key="s.key" scope="col">{{ s.label ?? s.key }}</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="(r, i) in data" :key="i">
-            <th scope="row">{{ cats[i] }}</th>
-            <td v-for="s in series" :key="s.key">{{ fmt(num(r, s.key)) }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </figure>
-</template>

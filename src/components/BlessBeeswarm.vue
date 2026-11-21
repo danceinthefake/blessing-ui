@@ -1,3 +1,57 @@
+<template>
+  <figure ref="box" class="bless-plot bless-swarm">
+    <ul v-if="groups.length" class="bless-swarm__legend" aria-hidden="true">
+      <li v-for="(g, i) in groups" :key="g.key">
+        <i :style="{ background: chartColor(g.color, i) }" />{{ g.label }}
+      </li>
+    </ul>
+    <svg :viewBox="`0 0 ${width} ${height}`" :height class="bless-plot__svg" aria-hidden="true">
+      <g v-for="t in xt" :key="t">
+        <line class="bless-plot__grid" :x1="px(t)" :x2="px(t)" y1="0" :y2="height - BOTTOM" />
+        <text class="bless-plot__tick" :x="px(t)" :y="height - 6" text-anchor="middle">
+          {{ fmt(t) }}
+        </text>
+      </g>
+      <circle
+        v-for="(d, i) in dots"
+        :key="i"
+        class="bless-swarm__dot"
+        :cx="d.x"
+        :cy="d.y"
+        :r="radius"
+        :style="{ '--_c': d.color }"
+      >
+        <title>{{ d.label ? `${d.label}: ` : "" }}{{ fmt(d.value) }}</title>
+      </circle>
+    </svg>
+    <div class="bless-sr">
+      <table>
+        <caption>
+          {{ label }}
+        </caption>
+        <thead>
+          <tr>
+            <th scope="col">{{ text.group }}</th>
+            <th scope="col">{{ text.count }}</th>
+            <th scope="col">{{ text.min }}</th>
+            <th scope="col">{{ text.median }}</th>
+            <th scope="col">{{ text.max }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="s in summary" :key="s.name">
+            <th scope="row">{{ s.name }}</th>
+            <td>{{ s.n }}</td>
+            <td>{{ show(s.min) }}</td>
+            <td>{{ show(s.med) }}</td>
+            <td>{{ show(s.max) }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </figure>
+</template>
+
 <script lang="ts">
 export interface BlessSwarmPoint {
   value: number;
@@ -127,60 +181,6 @@ const summary = computed(() => {
 });
 const show = (v: number | undefined) => (v === undefined ? "–" : fmt.value(v));
 </script>
-
-<template>
-  <figure ref="box" class="bless-plot bless-swarm">
-    <ul v-if="groups.length" class="bless-swarm__legend" aria-hidden="true">
-      <li v-for="(g, i) in groups" :key="g.key">
-        <i :style="{ background: chartColor(g.color, i) }" />{{ g.label }}
-      </li>
-    </ul>
-    <svg :viewBox="`0 0 ${width} ${height}`" :height class="bless-plot__svg" aria-hidden="true">
-      <g v-for="t in xt" :key="t">
-        <line class="bless-plot__grid" :x1="px(t)" :x2="px(t)" y1="0" :y2="height - BOTTOM" />
-        <text class="bless-plot__tick" :x="px(t)" :y="height - 6" text-anchor="middle">
-          {{ fmt(t) }}
-        </text>
-      </g>
-      <circle
-        v-for="(d, i) in dots"
-        :key="i"
-        class="bless-swarm__dot"
-        :cx="d.x"
-        :cy="d.y"
-        :r="radius"
-        :style="{ '--_c': d.color }"
-      >
-        <title>{{ d.label ? `${d.label}: ` : "" }}{{ fmt(d.value) }}</title>
-      </circle>
-    </svg>
-    <div class="bless-sr">
-      <table>
-        <caption>
-          {{ label }}
-        </caption>
-        <thead>
-          <tr>
-            <th scope="col">{{ text.group }}</th>
-            <th scope="col">{{ text.count }}</th>
-            <th scope="col">{{ text.min }}</th>
-            <th scope="col">{{ text.median }}</th>
-            <th scope="col">{{ text.max }}</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="s in summary" :key="s.name">
-            <th scope="row">{{ s.name }}</th>
-            <td>{{ s.n }}</td>
-            <td>{{ show(s.min) }}</td>
-            <td>{{ show(s.med) }}</td>
-            <td>{{ show(s.max) }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </figure>
-</template>
 
 <style>
 .bless-swarm__legend {

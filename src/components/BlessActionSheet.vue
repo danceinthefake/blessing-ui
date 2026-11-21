@@ -1,3 +1,37 @@
+<template>
+  <BlessDrawer v-model="open" :title class="bless-actionsheet" @close="onClose">
+    <div
+      class="bless-actionsheet__list"
+      :class="{ 'bless-actionsheet__list--grid': grid }"
+      role="group"
+      :aria-label="title ?? 'Actions'"
+    >
+      <button
+        v-for="a in actions"
+        :key="a.value"
+        type="button"
+        class="bless-actionsheet__item"
+        :class="{ 'bless-actionsheet__item--danger': a.danger }"
+        :disabled="a.disabled"
+        @click="pick(a)"
+      >
+        <span v-if="a.icon" class="bless-actionsheet__icon" aria-hidden="true">{{ a.icon }}</span>
+        <span class="bless-actionsheet__text">
+          <span class="bless-actionsheet__label">{{ a.label }}</span>
+          <span v-if="a.description && !grid" class="bless-actionsheet__desc">{{
+            a.description
+          }}</span>
+        </span>
+      </button>
+    </div>
+    <template v-if="cancel" #footer>
+      <button type="button" class="bless-actionsheet__cancel" @click="dismiss">
+        {{ text.cancel }}
+      </button>
+    </template>
+  </BlessDrawer>
+</template>
+
 <script setup lang="ts">
 import { useLabelPack } from "../composables/useLabels";
 import { watch, computed } from "vue";
@@ -53,40 +87,6 @@ function onClose() {
   picked = false;
 }
 </script>
-
-<template>
-  <BlessDrawer v-model="open" :title class="bless-actionsheet" @close="onClose">
-    <div
-      class="bless-actionsheet__list"
-      :class="{ 'bless-actionsheet__list--grid': grid }"
-      role="group"
-      :aria-label="title ?? 'Actions'"
-    >
-      <button
-        v-for="a in actions"
-        :key="a.value"
-        type="button"
-        class="bless-actionsheet__item"
-        :class="{ 'bless-actionsheet__item--danger': a.danger }"
-        :disabled="a.disabled"
-        @click="pick(a)"
-      >
-        <span v-if="a.icon" class="bless-actionsheet__icon" aria-hidden="true">{{ a.icon }}</span>
-        <span class="bless-actionsheet__text">
-          <span class="bless-actionsheet__label">{{ a.label }}</span>
-          <span v-if="a.description && !grid" class="bless-actionsheet__desc">{{
-            a.description
-          }}</span>
-        </span>
-      </button>
-    </div>
-    <template v-if="cancel" #footer>
-      <button type="button" class="bless-actionsheet__cancel" @click="dismiss">
-        {{ text.cancel }}
-      </button>
-    </template>
-  </BlessDrawer>
-</template>
 
 <style>
 .bless-actionsheet__list {

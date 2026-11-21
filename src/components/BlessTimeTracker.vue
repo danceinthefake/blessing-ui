@@ -1,3 +1,45 @@
+<template>
+  <div class="bless-timetrack">
+    <form class="bless-timetrack__bar" :class="{ 'is-on': running }" @submit.prevent="toggle">
+      <input
+        v-model="task"
+        :aria-label="text.task"
+        :placeholder="text.task"
+        :readonly="!!running"
+      />
+      <span class="bless-timetrack__clock" role="timer">{{ clock }}</span>
+      <button type="submit">
+        <span aria-hidden="true">{{ running ? "■" : "▶" }}</span>
+        {{ running ? text.stop : text.start }}
+      </button>
+    </form>
+    <section v-for="d in days" :key="d.day" class="bless-timetrack__day" :aria-label="d.day">
+      <div class="bless-timetrack__head">
+        <strong>{{ d.day }}</strong>
+        <span>{{ text.total }} {{ dur(d.total) }}</span>
+      </div>
+      <ul class="bless-timetrack__list" role="list">
+        <li v-for="e in d.list" :key="e.id">
+          <div class="bless-timetrack__entry">
+            <span class="bless-timetrack__task">{{ e.task || text.untitled }}</span>
+            <span class="bless-timetrack__range">
+              {{ timeFmt.format(e.start) }}–{{ timeFmt.format(e.end) }}
+            </span>
+            <span class="bless-timetrack__dur">{{ dur(e.end - e.start) }}</span>
+            <button
+              type="button"
+              :aria-label="text.remove(e.task || text.untitled)"
+              @click="remove(e.id)"
+            >
+              ✕
+            </button>
+          </div>
+        </li>
+      </ul>
+    </section>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, ref, watch } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -107,48 +149,6 @@ const days = computed(() => {
 });
 const remove = (id: string) => (entries.value = entries.value.filter((e) => e.id !== id));
 </script>
-
-<template>
-  <div class="bless-timetrack">
-    <form class="bless-timetrack__bar" :class="{ 'is-on': running }" @submit.prevent="toggle">
-      <input
-        v-model="task"
-        :aria-label="text.task"
-        :placeholder="text.task"
-        :readonly="!!running"
-      />
-      <span class="bless-timetrack__clock" role="timer">{{ clock }}</span>
-      <button type="submit">
-        <span aria-hidden="true">{{ running ? "■" : "▶" }}</span>
-        {{ running ? text.stop : text.start }}
-      </button>
-    </form>
-    <section v-for="d in days" :key="d.day" class="bless-timetrack__day" :aria-label="d.day">
-      <div class="bless-timetrack__head">
-        <strong>{{ d.day }}</strong>
-        <span>{{ text.total }} {{ dur(d.total) }}</span>
-      </div>
-      <ul class="bless-timetrack__list" role="list">
-        <li v-for="e in d.list" :key="e.id">
-          <div class="bless-timetrack__entry">
-            <span class="bless-timetrack__task">{{ e.task || text.untitled }}</span>
-            <span class="bless-timetrack__range">
-              {{ timeFmt.format(e.start) }}–{{ timeFmt.format(e.end) }}
-            </span>
-            <span class="bless-timetrack__dur">{{ dur(e.end - e.start) }}</span>
-            <button
-              type="button"
-              :aria-label="text.remove(e.task || text.untitled)"
-              @click="remove(e.id)"
-            >
-              ✕
-            </button>
-          </div>
-        </li>
-      </ul>
-    </section>
-  </div>
-</template>
 
 <style>
 .bless-timetrack {

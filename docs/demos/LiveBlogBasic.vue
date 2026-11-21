@@ -1,3 +1,10 @@
+<template>
+  <BlessButton size="sm" variant="outline" style="margin-bottom: 12px" @click="arrive"
+    >Simulate a new update</BlessButton
+  >
+  <BlessLiveBlog :updates live style="max-width: 560px" />
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessButton, BlessLiveBlog, type BlessLiveUpdate } from "blessing-ui";
@@ -32,10 +39,3 @@ function arrive() {
   n++;
 }
 </script>
-
-<template>
-  <BlessButton size="sm" variant="outline" style="margin-bottom: 12px" @click="arrive"
-    >Simulate a new update</BlessButton
-  >
-  <BlessLiveBlog :updates live style="max-width: 560px" />
-</template>

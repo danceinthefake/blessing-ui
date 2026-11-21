@@ -1,11 +1,11 @@
+<template>
+  <slot v-if="mounted" />
+  <slot v-else name="fallback" />
+</template>
+
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
 defineOptions({ name: "BlessClientOnly" });
 const mounted = ref(false);
 onMounted(() => (mounted.value = true));
 </script>
-
-<template>
-  <slot v-if="mounted" />
-  <slot v-else name="fallback" />
-</template>

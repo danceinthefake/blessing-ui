@@ -1,3 +1,24 @@
+<template>
+  <BlessBanner class="bless-countdown" v-bind="$attrs">
+    <span class="bless-countdown__title">{{ title }}</span>
+    <span v-if="live" class="bless-countdown__live">{{ text.live }}</span>
+    <template v-else>
+      <span class="bless-countdown__in" aria-hidden="true">{{ text.startsIn }}</span>
+      <span class="bless-countdown__clock" aria-hidden="true">
+        <template v-if="parts">
+          <span v-for="(p, i) in parts" :key="i" class="bless-countdown__part">
+            <b>{{ String(p.v).padStart(2, "0") }}</b>{{ p.u }}
+          </span>
+        </template>
+        <span v-else class="bless-countdown__part"><b>--</b></span>
+      </span>
+      <!-- the date is in the zone of the reader, so it shows after mount with the clock -->
+      <span v-if="parts" class="bless-sr">{{ text.startsAt(when) }}</span>
+    </template>
+    <template v-if="$slots.action" #action><slot name="action" /></template>
+  </BlessBanner>
+</template>
+
 <script lang="ts">
 /** Whole days, hours, minutes, and seconds in a span of milliseconds; a span in the past is all zero. */
 export function splitSpan(ms: number): { d: number; h: number; m: number; s: number } {
@@ -87,27 +108,6 @@ const when = computed(() =>
   ),
 );
 </script>
-
-<template>
-  <BlessBanner class="bless-countdown" v-bind="$attrs">
-    <span class="bless-countdown__title">{{ title }}</span>
-    <span v-if="live" class="bless-countdown__live">{{ text.live }}</span>
-    <template v-else>
-      <span class="bless-countdown__in" aria-hidden="true">{{ text.startsIn }}</span>
-      <span class="bless-countdown__clock" aria-hidden="true">
-        <template v-if="parts">
-          <span v-for="(p, i) in parts" :key="i" class="bless-countdown__part">
-            <b>{{ String(p.v).padStart(2, "0") }}</b>{{ p.u }}
-          </span>
-        </template>
-        <span v-else class="bless-countdown__part"><b>--</b></span>
-      </span>
-      <!-- the date is in the zone of the reader, so it shows after mount with the clock -->
-      <span v-if="parts" class="bless-sr">{{ text.startsAt(when) }}</span>
-    </template>
-    <template v-if="$slots.action" #action><slot name="action" /></template>
-  </BlessBanner>
-</template>
 
 <style>
 .bless-countdown .bless-banner__body {

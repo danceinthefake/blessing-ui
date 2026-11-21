@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import { BlessBackground, BlessText } from "blessing-ui";
-</script>
-
 <template>
   <div class="row">
     <div class="boxed" style="position: relative; width: 260px; height: 120px">
@@ -14,3 +10,7 @@ import { BlessBackground, BlessText } from "blessing-ui";
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+import { BlessBackground, BlessText } from "blessing-ui";
+</script>

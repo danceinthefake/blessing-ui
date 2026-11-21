@@ -1,3 +1,56 @@
+<template>
+  <section class="bless-call" :aria-label="text.title">
+    <ul class="bless-call__grid" :style="{ '--_cols': cols }">
+      <li
+        v-for="p in people"
+        :key="p.id"
+        class="bless-call__tile"
+        :class="{ 'is-speaking': p.speaking }"
+      >
+        <div class="bless-call__video">
+          <slot v-if="!p.cameraOff" name="video" :person="p" />
+          <BlessAvatar
+            v-if="p.cameraOff || !$slots.video"
+            :name="p.name"
+            :src="p.avatar"
+            alt=""
+            size="xl"
+          />
+        </div>
+        <span class="bless-call__name">
+          {{ p.name }}<span v-if="p.muted" class="bless-call__state">, {{ text.muted }}</span
+          ><span v-if="p.speaking" class="bless-call__state">, {{ text.speaking }}</span>
+        </span>
+      </li>
+    </ul>
+    <div class="bless-call__bar" role="group" :aria-label="text.controls">
+      <span v-if="elapsed" class="bless-call__time">{{ elapsed }}</span>
+      <button type="button" class="bless-call__btn" :aria-pressed="muted" @click="muted = !muted">
+        <span aria-hidden="true">{{ muted ? "✕" : "🎤︎" }}</span> {{ text.mute }}
+      </button>
+      <button
+        type="button"
+        class="bless-call__btn"
+        :aria-pressed="camera"
+        @click="camera = !camera"
+      >
+        <span aria-hidden="true">{{ camera ? "📷︎" : "⊘" }}</span> {{ text.camera }}
+      </button>
+      <button
+        type="button"
+        class="bless-call__btn"
+        :aria-pressed="sharing"
+        @click="sharing = !sharing"
+      >
+        <span aria-hidden="true">⇪</span> {{ text.share }}
+      </button>
+      <button type="button" class="bless-call__btn is-leave" @click="emit('leave')">
+        <span aria-hidden="true">✆</span> {{ text.leave }}
+      </button>
+    </div>
+  </section>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -51,59 +104,6 @@ const text = computed(() => ({
 // two columns from two people, three from five
 const cols = computed(() => (props.people.length > 4 ? 3 : props.people.length > 1 ? 2 : 1));
 </script>
-
-<template>
-  <section class="bless-call" :aria-label="text.title">
-    <ul class="bless-call__grid" :style="{ '--_cols': cols }">
-      <li
-        v-for="p in people"
-        :key="p.id"
-        class="bless-call__tile"
-        :class="{ 'is-speaking': p.speaking }"
-      >
-        <div class="bless-call__video">
-          <slot v-if="!p.cameraOff" name="video" :person="p" />
-          <BlessAvatar
-            v-if="p.cameraOff || !$slots.video"
-            :name="p.name"
-            :src="p.avatar"
-            alt=""
-            size="xl"
-          />
-        </div>
-        <span class="bless-call__name">
-          {{ p.name }}<span v-if="p.muted" class="bless-call__state">, {{ text.muted }}</span
-          ><span v-if="p.speaking" class="bless-call__state">, {{ text.speaking }}</span>
-        </span>
-      </li>
-    </ul>
-    <div class="bless-call__bar" role="group" :aria-label="text.controls">
-      <span v-if="elapsed" class="bless-call__time">{{ elapsed }}</span>
-      <button type="button" class="bless-call__btn" :aria-pressed="muted" @click="muted = !muted">
-        <span aria-hidden="true">{{ muted ? "✕" : "🎤︎" }}</span> {{ text.mute }}
-      </button>
-      <button
-        type="button"
-        class="bless-call__btn"
-        :aria-pressed="camera"
-        @click="camera = !camera"
-      >
-        <span aria-hidden="true">{{ camera ? "📷︎" : "⊘" }}</span> {{ text.camera }}
-      </button>
-      <button
-        type="button"
-        class="bless-call__btn"
-        :aria-pressed="sharing"
-        @click="sharing = !sharing"
-      >
-        <span aria-hidden="true">⇪</span> {{ text.share }}
-      </button>
-      <button type="button" class="bless-call__btn is-leave" @click="emit('leave')">
-        <span aria-hidden="true">✆</span> {{ text.leave }}
-      </button>
-    </div>
-  </section>
-</template>
 
 <style>
 .bless-call {

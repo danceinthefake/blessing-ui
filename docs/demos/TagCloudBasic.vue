@@ -1,3 +1,8 @@
+<template>
+  <BlessTagCloud :tags="tags" sort="label" @select="last = $event.label" />
+  <small>picked: {{ last || "—" }}</small>
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessTagCloud } from "blessing-ui";
@@ -15,8 +20,3 @@ const tags = [
 ];
 const last = ref("");
 </script>
-
-<template>
-  <BlessTagCloud :tags="tags" sort="label" @select="last = $event.label" />
-  <small>picked: {{ last || "—" }}</small>
-</template>

@@ -1,3 +1,19 @@
+<template>
+  <BlessForm v-slot="{ errors }" :schema="schema" style="max-width: 420px" @submit="onSubmit">
+    <BlessField label="Handle" required>
+      <BlessInput name="handle" placeholder="megumi" />
+    </BlessField>
+    <BlessField label="Age" required>
+      <BlessInput name="age" placeholder="17" />
+    </BlessField>
+    <p v-if="errors['']" role="alert">{{ errors[""] }}</p>
+    <div class="row">
+      <BlessButton type="submit">Submit</BlessButton>
+    </div>
+    <small v-if="result">submitted: {{ result }}</small>
+  </BlessForm>
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessButton, BlessField, BlessForm, BlessInput, type BlessSchema } from "blessing-ui";
@@ -22,19 +38,3 @@ const result = ref("");
 const onSubmit = (_: FormData, __: SubmitEvent, value: unknown) =>
   (result.value = JSON.stringify(value));
 </script>
-
-<template>
-  <BlessForm v-slot="{ errors }" :schema="schema" style="max-width: 420px" @submit="onSubmit">
-    <BlessField label="Handle" required>
-      <BlessInput name="handle" placeholder="megumi" />
-    </BlessField>
-    <BlessField label="Age" required>
-      <BlessInput name="age" placeholder="17" />
-    </BlessField>
-    <p v-if="errors['']" role="alert">{{ errors[""] }}</p>
-    <div class="row">
-      <BlessButton type="submit">Submit</BlessButton>
-    </div>
-    <small v-if="result">submitted: {{ result }}</small>
-  </BlessForm>
-</template>

@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import { BlessBubble, BlessButton, BlessMessage } from "blessing-ui";
-</script>
-
 <template>
   <div class="col" style="max-width: 560px">
     <BlessMessage name="Megumi" time="12:01">
@@ -17,3 +13,7 @@ import { BlessBubble, BlessButton, BlessMessage } from "blessing-ui";
     </BlessMessage>
   </div>
 </template>
+
+<script setup lang="ts">
+import { BlessBubble, BlessButton, BlessMessage } from "blessing-ui";
+</script>

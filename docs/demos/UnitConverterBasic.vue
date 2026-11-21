@@ -1,3 +1,7 @@
+<template>
+  <BlessUnitConverter v-model:amount="amount" v-model:from="from" v-model:to="to" :units />
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessUnitConverter, type BlessUnit } from "blessing-ui";
@@ -12,7 +16,3 @@ const amount = ref(275);
 const from = ref("pcs");
 const to = ref("box");
 </script>
-
-<template>
-  <BlessUnitConverter v-model:amount="amount" v-model:from="from" v-model:to="to" :units />
-</template>

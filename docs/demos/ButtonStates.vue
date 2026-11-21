@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import { BlessButton } from "blessing-ui";
-</script>
-
 <template>
   <div class="row">
     <BlessButton href="#">Link</BlessButton>
@@ -13,3 +9,7 @@ import { BlessButton } from "blessing-ui";
   </div>
   <BlessButton block style="margin-top: 12px">Block — full width</BlessButton>
 </template>
+
+<script setup lang="ts">
+import { BlessButton } from "blessing-ui";
+</script>

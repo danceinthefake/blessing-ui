@@ -1,3 +1,7 @@
+<template>
+  <BlessVenn :sets :overlaps :format="thousands" label="Where people follow the show" />
+</template>
+
 <script setup lang="ts">
 import { BlessVenn } from "blessing-ui";
 
@@ -15,7 +19,3 @@ const overlaps = [
 ];
 const thousands = (v: number) => `${v}k`;
 </script>
-
-<template>
-  <BlessVenn :sets :overlaps :format="thousands" label="Where people follow the show" />
-</template>

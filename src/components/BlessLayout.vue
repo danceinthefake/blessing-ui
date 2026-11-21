@@ -1,3 +1,45 @@
+<template>
+  <div
+    ref="root"
+    class="bless-layout"
+    :class="{
+      'bless-layout--narrow': narrow,
+      'bless-layout--hidden': hidden,
+      'bless-layout--left': left,
+      'bless-layout--right': right,
+    }"
+    :style="{ '--_lw': leftWidth, '--_rw': rightWidth }"
+    @keydown="onKey"
+  >
+    <header v-if="$slots.header" class="bless-layout__header"><slot name="header" /></header>
+    <div class="bless-layout__body">
+      <aside
+        v-if="$slots.left"
+        class="bless-layout__drawer bless-layout__drawer--left"
+        :inert="narrow && !left ? true : undefined"
+        :aria-hidden="narrow && !left ? 'true' : undefined"
+      >
+        <slot name="left" />
+      </aside>
+      <main class="bless-layout__page"><slot /></main>
+      <aside
+        v-if="$slots.right"
+        class="bless-layout__drawer bless-layout__drawer--right"
+        :inert="narrow && !right ? true : undefined"
+        :aria-hidden="narrow && !right ? 'true' : undefined"
+      >
+        <slot name="right" />
+      </aside>
+      <div
+        v-if="narrow && (left || right)"
+        class="bless-layout__backdrop"
+        @click="((left = false), (right = false))"
+      />
+    </div>
+    <footer v-if="$slots.footer" class="bless-layout__footer"><slot name="footer" /></footer>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { nextTick, onBeforeUnmount, onMounted, ref, watch } from "vue";
 import { useMedia } from "../composables/useMedia";
@@ -98,48 +140,6 @@ watch([left, right], ([l, r], [pl, pr]) => {
   } else if (!l && !r) nextTick(() => opener?.focus?.());
 });
 </script>
-
-<template>
-  <div
-    ref="root"
-    class="bless-layout"
-    :class="{
-      'bless-layout--narrow': narrow,
-      'bless-layout--hidden': hidden,
-      'bless-layout--left': left,
-      'bless-layout--right': right,
-    }"
-    :style="{ '--_lw': leftWidth, '--_rw': rightWidth }"
-    @keydown="onKey"
-  >
-    <header v-if="$slots.header" class="bless-layout__header"><slot name="header" /></header>
-    <div class="bless-layout__body">
-      <aside
-        v-if="$slots.left"
-        class="bless-layout__drawer bless-layout__drawer--left"
-        :inert="narrow && !left ? true : undefined"
-        :aria-hidden="narrow && !left ? 'true' : undefined"
-      >
-        <slot name="left" />
-      </aside>
-      <main class="bless-layout__page"><slot /></main>
-      <aside
-        v-if="$slots.right"
-        class="bless-layout__drawer bless-layout__drawer--right"
-        :inert="narrow && !right ? true : undefined"
-        :aria-hidden="narrow && !right ? 'true' : undefined"
-      >
-        <slot name="right" />
-      </aside>
-      <div
-        v-if="narrow && (left || right)"
-        class="bless-layout__backdrop"
-        @click="((left = false), (right = false))"
-      />
-    </div>
-    <footer v-if="$slots.footer" class="bless-layout__footer"><slot name="footer" /></footer>
-  </div>
-</template>
 
 <style>
 .bless-layout {

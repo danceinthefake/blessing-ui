@@ -1,3 +1,39 @@
+<template>
+  <div class="bless-reactions" role="group" :aria-label="text.group">
+    <button
+      v-for="r in reactions"
+      :key="r.emoji"
+      type="button"
+      class="bless-reactions__chip"
+      :aria-pressed="!!r.active"
+      :aria-label="text.reaction(r.emoji, r.count ?? 0)"
+      :disabled="!r.active && full"
+      @click="toggle(r.emoji)"
+    >
+      <span class="bless-reactions__emoji" aria-hidden="true">{{ r.emoji }}</span>
+      <span class="bless-reactions__count" aria-hidden="true">{{ r.count ?? 0 }}</span>
+    </button>
+    <BlessPopover v-if="addable" v-model:open="open" placement="bottom-start" :title="text.add">
+      <template #trigger>
+        <button
+          type="button"
+          class="bless-reactions__chip bless-reactions__add"
+          :aria-label="text.add"
+          :title="text.add"
+          :aria-expanded="open"
+          :disabled="full"
+        >
+          <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true">
+            <circle cx="7" cy="8.5" r="5.5" />
+            <path d="M5 7.5h.01M9 7.5h.01M5 10.5c1.2 1.2 2.8 1.2 4 0M13 1.5v4M11 3.5h4" />
+          </svg>
+        </button>
+      </template>
+      <BlessEmojiPicker @select="pick" />
+    </BlessPopover>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed, ref } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -56,42 +92,6 @@ function pick(e: BlessEmoji) {
   if (!reactions.value.find((r) => r.emoji === e.char)?.active) toggle(e.char);
 }
 </script>
-
-<template>
-  <div class="bless-reactions" role="group" :aria-label="text.group">
-    <button
-      v-for="r in reactions"
-      :key="r.emoji"
-      type="button"
-      class="bless-reactions__chip"
-      :aria-pressed="!!r.active"
-      :aria-label="text.reaction(r.emoji, r.count ?? 0)"
-      :disabled="!r.active && full"
-      @click="toggle(r.emoji)"
-    >
-      <span class="bless-reactions__emoji" aria-hidden="true">{{ r.emoji }}</span>
-      <span class="bless-reactions__count" aria-hidden="true">{{ r.count ?? 0 }}</span>
-    </button>
-    <BlessPopover v-if="addable" v-model:open="open" placement="bottom-start" :title="text.add">
-      <template #trigger>
-        <button
-          type="button"
-          class="bless-reactions__chip bless-reactions__add"
-          :aria-label="text.add"
-          :title="text.add"
-          :aria-expanded="open"
-          :disabled="full"
-        >
-          <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true">
-            <circle cx="7" cy="8.5" r="5.5" />
-            <path d="M5 7.5h.01M9 7.5h.01M5 10.5c1.2 1.2 2.8 1.2 4 0M13 1.5v4M11 3.5h4" />
-          </svg>
-        </button>
-      </template>
-      <BlessEmojiPicker @select="pick" />
-    </BlessPopover>
-  </div>
-</template>
 
 <style>
 .bless-reactions {

@@ -1,3 +1,78 @@
+<template>
+  <div class="bless-rangecal" role="group" :aria-label="label">
+    <div class="bless-rangecal__bar">
+      <BlessButton size="sm" variant="ghost" :aria-label="text.prev" @click="nav(-1)"
+        >‹</BlessButton
+      >
+      <strong class="bless-rangecal__title" aria-live="polite">{{
+        shown ? monthFmt.format(shown) : ""
+      }}</strong>
+      <BlessButton size="sm" variant="ghost" :aria-label="text.next" @click="nav(1)">›</BlessButton>
+    </div>
+    <div
+      v-if="shown"
+      class="bless-rangecal__grid"
+      role="grid"
+      :aria-label="`${label}, ${monthFmt.format(shown)}`"
+      :aria-describedby="hint"
+      aria-multiselectable="true"
+      @keyup="onKeyup"
+    >
+      <div class="bless-rangecal__row" role="row">
+        <span v-for="h in heads" :key="h" class="bless-rangecal__head" role="columnheader">{{
+          h
+        }}</span>
+      </div>
+      <div v-for="(w, wi) in weeks" :key="wi" class="bless-rangecal__row" role="row">
+        <template v-for="(iso, ci) in w" :key="ci">
+          <span v-if="!iso" class="bless-rangecal__gap" role="gridcell" aria-hidden="true" />
+          <button
+            v-else
+            :id="`${id}-${iso}`"
+            type="button"
+            role="gridcell"
+            class="bless-rangecal__day"
+            :class="{
+              'bless-rangecal__day--on': chosen.has(iso),
+              'bless-rangecal__day--set': paint?.mode === 'set' && preview?.has(iso),
+              'bless-rangecal__day--clear': paint?.mode === 'clear' && preview?.has(iso),
+              'bless-rangecal__day--today': iso === today,
+            }"
+            :data-day="iso"
+            :aria-selected="chosen.has(iso)"
+            :aria-disabled="off(iso) || undefined"
+            :aria-label="dayFmt.format(fromISO(iso))"
+            :aria-current="iso === today ? 'date' : undefined"
+            :tabindex="stopDay === iso ? 0 : -1"
+            @pointerdown="down(iso, $event)"
+            @pointermove="move"
+            @pointerup="up"
+            @pointercancel="paint = null"
+            @keydown="onKey(iso, $event)"
+            @focus="cursor = iso"
+          >
+            {{ Number(iso.slice(8)) }}
+          </button>
+        </template>
+      </div>
+    </div>
+    <div class="bless-rangecal__foot">
+      <span class="bless-rangecal__summary">
+        <slot name="summary" :blocks="runs">{{ summary }}</slot>
+      </span>
+      <BlessButton
+        size="sm"
+        variant="outline"
+        :disabled="!model.length"
+        @click="((model = []), emit('change', []))"
+        >{{ text.clear }}</BlessButton
+      >
+    </div>
+    <span :id="hint" hidden>{{ text.hint }}</span>
+    <span class="bless-rangecal__live bless-sr" aria-live="polite">{{ live }}</span>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { useLabelPack } from "../composables/useLabels";
 import "./sr.css";
@@ -207,81 +282,6 @@ const stopDay = computed(() =>
   weeks.value.flat().includes(cursor.value) ? cursor.value : firstOf(shown.value ?? new Date()),
 );
 </script>
-
-<template>
-  <div class="bless-rangecal" role="group" :aria-label="label">
-    <div class="bless-rangecal__bar">
-      <BlessButton size="sm" variant="ghost" :aria-label="text.prev" @click="nav(-1)"
-        >‹</BlessButton
-      >
-      <strong class="bless-rangecal__title" aria-live="polite">{{
-        shown ? monthFmt.format(shown) : ""
-      }}</strong>
-      <BlessButton size="sm" variant="ghost" :aria-label="text.next" @click="nav(1)">›</BlessButton>
-    </div>
-    <div
-      v-if="shown"
-      class="bless-rangecal__grid"
-      role="grid"
-      :aria-label="`${label}, ${monthFmt.format(shown)}`"
-      :aria-describedby="hint"
-      aria-multiselectable="true"
-      @keyup="onKeyup"
-    >
-      <div class="bless-rangecal__row" role="row">
-        <span v-for="h in heads" :key="h" class="bless-rangecal__head" role="columnheader">{{
-          h
-        }}</span>
-      </div>
-      <div v-for="(w, wi) in weeks" :key="wi" class="bless-rangecal__row" role="row">
-        <template v-for="(iso, ci) in w" :key="ci">
-          <span v-if="!iso" class="bless-rangecal__gap" role="gridcell" aria-hidden="true" />
-          <button
-            v-else
-            :id="`${id}-${iso}`"
-            type="button"
-            role="gridcell"
-            class="bless-rangecal__day"
-            :class="{
-              'bless-rangecal__day--on': chosen.has(iso),
-              'bless-rangecal__day--set': paint?.mode === 'set' && preview?.has(iso),
-              'bless-rangecal__day--clear': paint?.mode === 'clear' && preview?.has(iso),
-              'bless-rangecal__day--today': iso === today,
-            }"
-            :data-day="iso"
-            :aria-selected="chosen.has(iso)"
-            :aria-disabled="off(iso) || undefined"
-            :aria-label="dayFmt.format(fromISO(iso))"
-            :aria-current="iso === today ? 'date' : undefined"
-            :tabindex="stopDay === iso ? 0 : -1"
-            @pointerdown="down(iso, $event)"
-            @pointermove="move"
-            @pointerup="up"
-            @pointercancel="paint = null"
-            @keydown="onKey(iso, $event)"
-            @focus="cursor = iso"
-          >
-            {{ Number(iso.slice(8)) }}
-          </button>
-        </template>
-      </div>
-    </div>
-    <div class="bless-rangecal__foot">
-      <span class="bless-rangecal__summary">
-        <slot name="summary" :blocks="runs">{{ summary }}</slot>
-      </span>
-      <BlessButton
-        size="sm"
-        variant="outline"
-        :disabled="!model.length"
-        @click="((model = []), emit('change', []))"
-        >{{ text.clear }}</BlessButton
-      >
-    </div>
-    <span :id="hint" hidden>{{ text.hint }}</span>
-    <span class="bless-rangecal__live bless-sr" aria-live="polite">{{ live }}</span>
-  </div>
-</template>
 
 <style>
 .bless-rangecal {

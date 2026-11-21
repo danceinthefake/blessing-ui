@@ -1,3 +1,30 @@
+<template>
+  <div class="bless-slots">
+    <p v-if="!groups.length" class="bless-slots__none">{{ text.none }}</p>
+    <fieldset v-for="g in groups" :key="g.key" class="bless-slots__group" :disabled>
+      <legend class="bless-slots__legend">{{ text[g.key] }}</legend>
+      <div class="bless-slots__grid">
+        <label
+          v-for="s in g.slots"
+          :key="s.time"
+          class="bless-slots__slot"
+          :class="{ 'bless-slots__slot--on': model === s.time }"
+        >
+          <input
+            v-model="model"
+            type="radio"
+            class="bless-slots__input"
+            :name
+            :value="s.time"
+            :disabled="s.disabled"
+          />
+          {{ fmtTime(minutes(s.time), locale) }}
+        </label>
+      </div>
+    </fieldset>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed, useId } from "vue";
 import { fmtTime } from "../composables/schedule";
@@ -58,33 +85,6 @@ const groups = computed(() => {
     .filter((g) => g.slots.length);
 });
 </script>
-
-<template>
-  <div class="bless-slots">
-    <p v-if="!groups.length" class="bless-slots__none">{{ text.none }}</p>
-    <fieldset v-for="g in groups" :key="g.key" class="bless-slots__group" :disabled>
-      <legend class="bless-slots__legend">{{ text[g.key] }}</legend>
-      <div class="bless-slots__grid">
-        <label
-          v-for="s in g.slots"
-          :key="s.time"
-          class="bless-slots__slot"
-          :class="{ 'bless-slots__slot--on': model === s.time }"
-        >
-          <input
-            v-model="model"
-            type="radio"
-            class="bless-slots__input"
-            :name
-            :value="s.time"
-            :disabled="s.disabled"
-          />
-          {{ fmtTime(minutes(s.time), locale) }}
-        </label>
-      </div>
-    </fieldset>
-  </div>
-</template>
 
 <style>
 .bless-slots {

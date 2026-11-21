@@ -1,50 +1,3 @@
-<script setup lang="ts">
-import { nextTick, reactive, ref, watch } from "vue";
-import {
-  BlessButton,
-  BlessField,
-  BlessInput,
-  BlessInputTags,
-  BlessRadio,
-  BlessRadioGroup,
-  BlessStepper,
-  BlessText,
-  blessPalettes,
-  useTheme,
-  type BlessPalette,
-} from "blessing-ui";
-import { mockOnboardingApi } from "./api";
-
-const steps = [
-  { label: "Workspace", description: "Name it" },
-  { label: "Team", description: "Invite people" },
-  { label: "Look", description: "Pick a palette" },
-];
-const step = ref(0);
-const form = reactive({ name: "", invites: [] as string[], palette: "megumi" as BlessPalette });
-const done = ref(false);
-const creating = ref(false);
-async function create() {
-  if (creating.value) return;
-  creating.value = true;
-  await mockOnboardingApi.create({ ...form, invites: [...form.invites] });
-  creating.value = false;
-  done.value = true;
-}
-const { setPalette } = useTheme();
-// the finished screen replaces the stepper (and the button that had focus): move focus to it
-const doneHead = ref<{ $el: HTMLElement }>();
-watch(done, (d) => d && nextTick(() => doneHead.value?.$el.focus()));
-const cap = (s: string) => s[0].toUpperCase() + s.slice(1);
-// in an app this would navigate; here it starts over — either way focus follows to the new screen
-const welcome = ref<{ $el: HTMLElement }>();
-function restart() {
-  done.value = false;
-  step.value = 0;
-  nextTick(() => welcome.value?.$el.focus());
-}
-</script>
-
 <template>
   <div class="onboard">
     <template v-if="!done">
@@ -97,6 +50,53 @@ function restart() {
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+import { nextTick, reactive, ref, watch } from "vue";
+import {
+  BlessButton,
+  BlessField,
+  BlessInput,
+  BlessInputTags,
+  BlessRadio,
+  BlessRadioGroup,
+  BlessStepper,
+  BlessText,
+  blessPalettes,
+  useTheme,
+  type BlessPalette,
+} from "blessing-ui";
+import { mockOnboardingApi } from "./api";
+
+const steps = [
+  { label: "Workspace", description: "Name it" },
+  { label: "Team", description: "Invite people" },
+  { label: "Look", description: "Pick a palette" },
+];
+const step = ref(0);
+const form = reactive({ name: "", invites: [] as string[], palette: "megumi" as BlessPalette });
+const done = ref(false);
+const creating = ref(false);
+async function create() {
+  if (creating.value) return;
+  creating.value = true;
+  await mockOnboardingApi.create({ ...form, invites: [...form.invites] });
+  creating.value = false;
+  done.value = true;
+}
+const { setPalette } = useTheme();
+// the finished screen replaces the stepper (and the button that had focus): move focus to it
+const doneHead = ref<{ $el: HTMLElement }>();
+watch(done, (d) => d && nextTick(() => doneHead.value?.$el.focus()));
+const cap = (s: string) => s[0].toUpperCase() + s.slice(1);
+// in an app this would navigate; here it starts over — either way focus follows to the new screen
+const welcome = ref<{ $el: HTMLElement }>();
+function restart() {
+  done.value = false;
+  step.value = 0;
+  nextTick(() => welcome.value?.$el.focus());
+}
+</script>
 
 <style scoped>
 .onboard__head:focus {

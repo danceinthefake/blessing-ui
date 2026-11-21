@@ -1,3 +1,41 @@
+<template>
+  <section class="bless-audit" :aria-label="text.title">
+    <ol class="bless-stagger bless-audit__list" role="list">
+      <li v-for="e in entries" :key="e.id" class="bless-audit__entry" :class="`is-${e.action}`">
+        <div class="bless-audit__box">
+          <div class="bless-audit__head">
+            <BlessAvatar :name="e.who" alt="" size="xs" />
+            <span class="bless-audit__line">
+              <strong>{{ e.who }}</strong>{{ " "
+              }}<span class="bless-audit__action"
+                ><span aria-hidden="true">{{ MARK[e.action] }}</span> {{ text[e.action] }}</span
+              >{{ " " }}<span class="bless-audit__target">{{ e.target }}</span>
+            </span>
+            <span class="bless-audit__when"
+              >{{ e.when }}<template v-if="e.source"> · {{ e.source }}</template></span
+            >
+          </div>
+          <dl v-if="e.changes?.length" class="bless-audit__changes">
+            <div v-for="c in e.changes" :key="c.field" class="bless-audit__change">
+              <dt>{{ c.field }}</dt>
+              <dd>
+                <del
+                  ><span class="bless-sr">{{ text.from }}</span>{{ " "
+                  }}{{ c.from || text.empty }}</del
+                >
+                <span aria-hidden="true"> → </span>
+                <ins
+                  ><span class="bless-sr">{{ text.to }}</span>{{ " " }}{{ c.to || text.empty }}</ins
+                >
+              </dd>
+            </div>
+          </dl>
+        </div>
+      </li>
+    </ol>
+  </section>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -52,44 +90,6 @@ const MARK: Record<BlessAuditAction, string> = {
   viewed: "◉",
 };
 </script>
-
-<template>
-  <section class="bless-audit" :aria-label="text.title">
-    <ol class="bless-stagger bless-audit__list" role="list">
-      <li v-for="e in entries" :key="e.id" class="bless-audit__entry" :class="`is-${e.action}`">
-        <div class="bless-audit__box">
-          <div class="bless-audit__head">
-            <BlessAvatar :name="e.who" alt="" size="xs" />
-            <span class="bless-audit__line">
-              <strong>{{ e.who }}</strong>{{ " "
-              }}<span class="bless-audit__action"
-                ><span aria-hidden="true">{{ MARK[e.action] }}</span> {{ text[e.action] }}</span
-              >{{ " " }}<span class="bless-audit__target">{{ e.target }}</span>
-            </span>
-            <span class="bless-audit__when"
-              >{{ e.when }}<template v-if="e.source"> · {{ e.source }}</template></span
-            >
-          </div>
-          <dl v-if="e.changes?.length" class="bless-audit__changes">
-            <div v-for="c in e.changes" :key="c.field" class="bless-audit__change">
-              <dt>{{ c.field }}</dt>
-              <dd>
-                <del
-                  ><span class="bless-sr">{{ text.from }}</span>{{ " "
-                  }}{{ c.from || text.empty }}</del
-                >
-                <span aria-hidden="true"> → </span>
-                <ins
-                  ><span class="bless-sr">{{ text.to }}</span>{{ " " }}{{ c.to || text.empty }}</ins
-                >
-              </dd>
-            </div>
-          </dl>
-        </div>
-      </li>
-    </ol>
-  </section>
-</template>
 
 <style>
 .bless-audit {

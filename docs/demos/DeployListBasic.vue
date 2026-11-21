@@ -1,3 +1,7 @@
+<template>
+  <BlessDeployList :deploys @rollback="rollback" @redeploy="redeploy" />
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessDeployList, type BlessDeploy } from "blessing-ui";
@@ -75,7 +79,3 @@ function redeploy(id: string) {
   });
 }
 </script>
-
-<template>
-  <BlessDeployList :deploys @rollback="rollback" @redeploy="redeploy" />
-</template>

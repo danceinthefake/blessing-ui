@@ -1,3 +1,29 @@
+<template>
+  <section class="bless-machines" :aria-label="text.title">
+    <p class="bless-machines__summary" role="status">{{ summary }}</p>
+    <ul class="bless-stagger bless-machines__grid" role="list">
+      <li v-for="m in list" :key="m.id">
+        <button
+          type="button"
+          class="bless-machines__tile"
+          :class="`is-${m.state}`"
+          @click="emit('select', m.id)"
+        >
+          <span class="bless-machines__name">{{ m.name }}</span>
+          <span class="bless-machines__state">
+            <span aria-hidden="true">{{ MARK[m.state] }}</span> {{ text[m.state]
+            }}<template v-if="m.minutes !== undefined"
+              >{{ " " }}{{ text.since(span(m.minutes)) }}</template
+            >
+          </span>
+          <span v-if="m.job" class="bless-machines__job">{{ m.job }}</span>
+          <span v-if="m.reading" class="bless-machines__reading">{{ m.reading }}</span>
+        </button>
+      </li>
+    </ul>
+  </section>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -74,32 +100,6 @@ const summary = computed(() =>
 );
 const span = (m: number) => text.value.time(Math.floor(m / 60), m % 60);
 </script>
-
-<template>
-  <section class="bless-machines" :aria-label="text.title">
-    <p class="bless-machines__summary" role="status">{{ summary }}</p>
-    <ul class="bless-stagger bless-machines__grid" role="list">
-      <li v-for="m in list" :key="m.id">
-        <button
-          type="button"
-          class="bless-machines__tile"
-          :class="`is-${m.state}`"
-          @click="emit('select', m.id)"
-        >
-          <span class="bless-machines__name">{{ m.name }}</span>
-          <span class="bless-machines__state">
-            <span aria-hidden="true">{{ MARK[m.state] }}</span> {{ text[m.state]
-            }}<template v-if="m.minutes !== undefined"
-              >{{ " " }}{{ text.since(span(m.minutes)) }}</template
-            >
-          </span>
-          <span v-if="m.job" class="bless-machines__job">{{ m.job }}</span>
-          <span v-if="m.reading" class="bless-machines__reading">{{ m.reading }}</span>
-        </button>
-      </li>
-    </ul>
-  </section>
-</template>
 
 <style>
 .bless-machines {

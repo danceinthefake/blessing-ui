@@ -1,3 +1,54 @@
+<template>
+  <aside class="bless-artifact" :aria-label="`${text.panel}: ${title}`">
+    <header class="bless-artifact__head">
+      <span class="bless-artifact__title">{{ title }}</span>
+      <button
+        type="button"
+        class="bless-artifact__icon"
+        :aria-label="text.close"
+        @click="emit('close')"
+      >
+        ✕
+      </button>
+    </header>
+    <div class="bless-artifact__bar">
+      <span class="bless-artifact__versions">
+        <button
+          type="button"
+          class="bless-artifact__icon"
+          :aria-label="text.older"
+          :disabled="at === 0"
+          @click="version = at - 1"
+        >
+          ‹
+        </button>
+        <span>{{ text.version(at + 1, versions.length) }}</span>
+        <button
+          type="button"
+          class="bless-artifact__icon"
+          :aria-label="text.newer"
+          :disabled="at >= versions.length - 1"
+          @click="version = at + 1"
+        >
+          ›
+        </button>
+      </span>
+      <span v-if="writing && at === versions.length - 1" class="bless-artifact__writing">{{
+        text.writing
+      }}</span>
+      <span class="bless-artifact__actions">
+        <button type="button" @click="copy">{{ said || text.copy }}</button>
+        <button type="button" :disabled="writing" @click="download">{{ text.download }}</button>
+      </span>
+      <span class="bless-sr" role="status">{{ said }}</span>
+    </div>
+    <div class="bless-artifact__body" :aria-busy="writing || undefined">
+      <BlessCodeBlock v-if="lang" :code="body" :lang :label="title" />
+      <div v-else class="bless-artifact__text" tabindex="0">{{ body }}</div>
+    </div>
+  </aside>
+</template>
+
 <script setup lang="ts">
 import { computed, ref } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -66,57 +117,6 @@ function download() {
   setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 </script>
-
-<template>
-  <aside class="bless-artifact" :aria-label="`${text.panel}: ${title}`">
-    <header class="bless-artifact__head">
-      <span class="bless-artifact__title">{{ title }}</span>
-      <button
-        type="button"
-        class="bless-artifact__icon"
-        :aria-label="text.close"
-        @click="emit('close')"
-      >
-        ✕
-      </button>
-    </header>
-    <div class="bless-artifact__bar">
-      <span class="bless-artifact__versions">
-        <button
-          type="button"
-          class="bless-artifact__icon"
-          :aria-label="text.older"
-          :disabled="at === 0"
-          @click="version = at - 1"
-        >
-          ‹
-        </button>
-        <span>{{ text.version(at + 1, versions.length) }}</span>
-        <button
-          type="button"
-          class="bless-artifact__icon"
-          :aria-label="text.newer"
-          :disabled="at >= versions.length - 1"
-          @click="version = at + 1"
-        >
-          ›
-        </button>
-      </span>
-      <span v-if="writing && at === versions.length - 1" class="bless-artifact__writing">{{
-        text.writing
-      }}</span>
-      <span class="bless-artifact__actions">
-        <button type="button" @click="copy">{{ said || text.copy }}</button>
-        <button type="button" :disabled="writing" @click="download">{{ text.download }}</button>
-      </span>
-      <span class="bless-sr" role="status">{{ said }}</span>
-    </div>
-    <div class="bless-artifact__body" :aria-busy="writing || undefined">
-      <BlessCodeBlock v-if="lang" :code="body" :lang :label="title" />
-      <div v-else class="bless-artifact__text" tabindex="0">{{ body }}</div>
-    </div>
-  </aside>
-</template>
 
 <style>
 .bless-artifact {

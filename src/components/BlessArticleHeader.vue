@@ -1,3 +1,31 @@
+<template>
+  <header class="bless-article">
+    <p v-if="topic" class="bless-article__topic">
+      <a v-if="topicHref" :href="topicHref">{{ topic }}</a>
+      <template v-else>{{ topic }}</template>
+    </p>
+    <component :is="`h${level}`" class="bless-article__title">{{ title }}</component>
+    <p v-if="summary" class="bless-article__summary">{{ summary }}</p>
+    <div v-if="author || date || minutes" class="bless-article__meta">
+      <BlessAvatar v-if="author" :name="author.name" :src="author.avatar" alt="" size="sm" />
+      <span class="bless-article__lines">
+        <span v-if="author" class="bless-article__author">
+          <a v-if="author.href" :href="author.href">{{ text.by(author.name) }}</a>
+          <template v-else>{{ text.by(author.name) }}</template>
+        </span>
+        <span class="bless-article__when">
+          <time v-if="date" :datetime="date">{{ day(date) }}</time>
+          <template v-if="date && minutes"> · </template>
+          <span v-if="minutes">{{ text.read(minutes) }}</span>
+          <template v-if="updated">
+            · <time :datetime="updated">{{ text.updated(day(updated)) }}</time>
+          </template>
+        </span>
+      </span>
+    </div>
+  </header>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -48,34 +76,6 @@ const day = (iso: string) =>
     timeZone: "UTC",
   }).format(new Date(`${iso}T00:00:00Z`));
 </script>
-
-<template>
-  <header class="bless-article">
-    <p v-if="topic" class="bless-article__topic">
-      <a v-if="topicHref" :href="topicHref">{{ topic }}</a>
-      <template v-else>{{ topic }}</template>
-    </p>
-    <component :is="`h${level}`" class="bless-article__title">{{ title }}</component>
-    <p v-if="summary" class="bless-article__summary">{{ summary }}</p>
-    <div v-if="author || date || minutes" class="bless-article__meta">
-      <BlessAvatar v-if="author" :name="author.name" :src="author.avatar" alt="" size="sm" />
-      <span class="bless-article__lines">
-        <span v-if="author" class="bless-article__author">
-          <a v-if="author.href" :href="author.href">{{ text.by(author.name) }}</a>
-          <template v-else>{{ text.by(author.name) }}</template>
-        </span>
-        <span class="bless-article__when">
-          <time v-if="date" :datetime="date">{{ day(date) }}</time>
-          <template v-if="date && minutes"> · </template>
-          <span v-if="minutes">{{ text.read(minutes) }}</span>
-          <template v-if="updated">
-            · <time :datetime="updated">{{ text.updated(day(updated)) }}</time>
-          </template>
-        </span>
-      </span>
-    </div>
-  </header>
-</template>
 
 <style>
 .bless-article {

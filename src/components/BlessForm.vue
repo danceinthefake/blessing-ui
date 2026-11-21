@@ -1,3 +1,16 @@
+<template>
+  <form
+    ref="form"
+    class="bless-form"
+    :class="{ 'bless-form--submitted': submitted }"
+    novalidate
+    @submit="onSubmit"
+    @reset="onReset"
+  >
+    <slot :submitted :errors :pending />
+  </form>
+</template>
+
 <script lang="ts">
 import type { InjectionKey, Ref } from "vue";
 /** BlessField reads these: whether the form has been submitted, and a counter bumped on reset */
@@ -107,19 +120,6 @@ defineExpose({
   el: form,
 });
 </script>
-
-<template>
-  <form
-    ref="form"
-    class="bless-form"
-    :class="{ 'bless-form--submitted': submitted }"
-    novalidate
-    @submit="onSubmit"
-    @reset="onReset"
-  >
-    <slot :submitted :errors :pending />
-  </form>
-</template>
 
 <style>
 .bless-form {

@@ -1,3 +1,38 @@
+<template>
+  <article
+    class="bless-incident"
+    :class="[`is-${impact}`, { 'is-resolved': current === 'resolved' }]"
+  >
+    <header class="bless-incident__head">
+      <h3 class="bless-incident__title">{{ title }}</h3>
+      <p class="bless-incident__meta">
+        <span class="bless-incident__impact">{{ text.impact }}: {{ text[impact] }}</span>
+        <span v-if="current" class="bless-incident__state">{{ text[current] }}</span>
+      </p>
+      <p v-if="affected.length" class="bless-incident__affected">
+        {{ text.affected }}: {{ affected.join(", ") }}
+      </p>
+    </header>
+    <ol class="bless-stagger bless-incident__updates">
+      <li
+        v-for="(u, i) in updates"
+        :key="i"
+        class="bless-incident__update"
+        :class="`is-${u.status}`"
+      >
+        <span class="bless-incident__dot" aria-hidden="true" />
+        <div>
+          <p class="bless-incident__line">
+            <strong>{{ text[u.status] }}</strong>
+            <time class="bless-incident__time">{{ u.time }}</time>
+          </p>
+          <p class="bless-incident__text">{{ u.text }}</p>
+        </div>
+      </li>
+    </ol>
+  </article>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -46,41 +81,6 @@ const text = computed(() => ({
 }));
 const current = computed(() => props.updates[0]?.status);
 </script>
-
-<template>
-  <article
-    class="bless-incident"
-    :class="[`is-${impact}`, { 'is-resolved': current === 'resolved' }]"
-  >
-    <header class="bless-incident__head">
-      <h3 class="bless-incident__title">{{ title }}</h3>
-      <p class="bless-incident__meta">
-        <span class="bless-incident__impact">{{ text.impact }}: {{ text[impact] }}</span>
-        <span v-if="current" class="bless-incident__state">{{ text[current] }}</span>
-      </p>
-      <p v-if="affected.length" class="bless-incident__affected">
-        {{ text.affected }}: {{ affected.join(", ") }}
-      </p>
-    </header>
-    <ol class="bless-stagger bless-incident__updates">
-      <li
-        v-for="(u, i) in updates"
-        :key="i"
-        class="bless-incident__update"
-        :class="`is-${u.status}`"
-      >
-        <span class="bless-incident__dot" aria-hidden="true" />
-        <div>
-          <p class="bless-incident__line">
-            <strong>{{ text[u.status] }}</strong>
-            <time class="bless-incident__time">{{ u.time }}</time>
-          </p>
-          <p class="bless-incident__text">{{ u.text }}</p>
-        </div>
-      </li>
-    </ol>
-  </article>
-</template>
 
 <style>
 .bless-incident {

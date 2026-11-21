@@ -1,3 +1,13 @@
+<template>
+  <BlessIncidentTimeline
+    title="Audio uploads fail for some hosts"
+    impact="major"
+    :affected="['Uploads', 'Transcripts']"
+    :updates
+    style="max-width: 560px"
+  />
+</template>
+
 <script setup lang="ts">
 import { BlessIncidentTimeline, type BlessIncidentUpdate } from "blessing-ui";
 
@@ -19,13 +29,3 @@ const updates: BlessIncidentUpdate[] = [
   },
 ];
 </script>
-
-<template>
-  <BlessIncidentTimeline
-    title="Audio uploads fail for some hosts"
-    impact="major"
-    :affected="['Uploads', 'Transcripts']"
-    :updates
-    style="max-width: 560px"
-  />
-</template>

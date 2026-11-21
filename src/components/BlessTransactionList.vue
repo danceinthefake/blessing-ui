@@ -1,3 +1,29 @@
+<template>
+  <section class="bless-txns" :aria-label="text.title">
+    <div v-for="d in days" :key="d.date" class="bless-txns__day">
+      <h3 class="bless-txns__head">
+        <span>{{ d.name }}</span>{{ " " }}
+        <span class="bless-txns__total">{{ text.total(signed(d.total)) }}</span>
+      </h3>
+      <ul class="bless-stagger bless-txns__list">
+        <li v-for="t in d.rows" :key="t.id" class="bless-txns__row">
+          <span class="bless-txns__icon" aria-hidden="true">{{ t.icon ?? t.title.charAt(0) }}</span>
+          <span class="bless-txns__main">
+            <span class="bless-txns__title">{{ t.title }}</span>
+            <span v-if="t.category || t.pending" class="bless-txns__meta">
+              {{ t.category }}<template v-if="t.category && t.pending"> · </template
+              ><span v-if="t.pending" class="bless-txns__pending">{{ text.pending }}</span>
+            </span>
+          </span>
+          <span class="bless-txns__amount" :class="{ 'is-in': t.amount > 0 }">{{
+            signed(t.amount)
+          }}</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -62,32 +88,6 @@ const days = computed(() => {
     }));
 });
 </script>
-
-<template>
-  <section class="bless-txns" :aria-label="text.title">
-    <div v-for="d in days" :key="d.date" class="bless-txns__day">
-      <h3 class="bless-txns__head">
-        <span>{{ d.name }}</span>{{ " " }}
-        <span class="bless-txns__total">{{ text.total(signed(d.total)) }}</span>
-      </h3>
-      <ul class="bless-stagger bless-txns__list">
-        <li v-for="t in d.rows" :key="t.id" class="bless-txns__row">
-          <span class="bless-txns__icon" aria-hidden="true">{{ t.icon ?? t.title.charAt(0) }}</span>
-          <span class="bless-txns__main">
-            <span class="bless-txns__title">{{ t.title }}</span>
-            <span v-if="t.category || t.pending" class="bless-txns__meta">
-              {{ t.category }}<template v-if="t.category && t.pending"> · </template
-              ><span v-if="t.pending" class="bless-txns__pending">{{ text.pending }}</span>
-            </span>
-          </span>
-          <span class="bless-txns__amount" :class="{ 'is-in': t.amount > 0 }">{{
-            signed(t.amount)
-          }}</span>
-        </li>
-      </ul>
-    </div>
-  </section>
-</template>
 
 <style>
 .bless-txns {

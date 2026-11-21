@@ -1,3 +1,35 @@
+<template>
+  <section class="bless-meds" :aria-label="text.title">
+    <p class="bless-meds__summary" role="status">{{ text.taken(done, doses.length) }}</p>
+    <div class="bless-meds__track" aria-hidden="true">
+      <span :style="{ inlineSize: `${doses.length ? (done / doses.length) * 100 : 0}%` }" />
+    </div>
+    <div v-for="s in slots" :key="s.time" class="bless-meds__slot">
+      <h3 class="bless-meds__time">{{ s.time }}</h3>
+      <label
+        v-for="d in s.list"
+        :key="d.id"
+        class="bless-meds__dose"
+        :class="{ 'is-taken': isTaken(d.id), 'is-late': late(d) }"
+      >
+        <input
+          type="checkbox"
+          :checked="isTaken(d.id)"
+          :aria-label="text.mark(d.medicine, d.time)"
+          @change="set(d.id, ($event.target as HTMLInputElement).checked)"
+        />
+        <span class="bless-meds__main">
+          <span class="bless-meds__name">{{ d.medicine }}</span>
+          <span class="bless-meds__amount"
+            >{{ d.amount }}<template v-if="d.note"> · {{ d.note }}</template></span
+          >
+        </span>
+        <span v-if="late(d)" class="bless-meds__late">{{ text.late }}</span>
+      </label>
+    </div>
+  </section>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -51,38 +83,6 @@ const set = (id: string, on: boolean) =>
   (taken.value = on ? [...taken.value, id] : taken.value.filter((x) => x !== id));
 const done = computed(() => props.doses.filter((d) => isTaken(d.id)).length);
 </script>
-
-<template>
-  <section class="bless-meds" :aria-label="text.title">
-    <p class="bless-meds__summary" role="status">{{ text.taken(done, doses.length) }}</p>
-    <div class="bless-meds__track" aria-hidden="true">
-      <span :style="{ inlineSize: `${doses.length ? (done / doses.length) * 100 : 0}%` }" />
-    </div>
-    <div v-for="s in slots" :key="s.time" class="bless-meds__slot">
-      <h3 class="bless-meds__time">{{ s.time }}</h3>
-      <label
-        v-for="d in s.list"
-        :key="d.id"
-        class="bless-meds__dose"
-        :class="{ 'is-taken': isTaken(d.id), 'is-late': late(d) }"
-      >
-        <input
-          type="checkbox"
-          :checked="isTaken(d.id)"
-          :aria-label="text.mark(d.medicine, d.time)"
-          @change="set(d.id, ($event.target as HTMLInputElement).checked)"
-        />
-        <span class="bless-meds__main">
-          <span class="bless-meds__name">{{ d.medicine }}</span>
-          <span class="bless-meds__amount"
-            >{{ d.amount }}<template v-if="d.note"> · {{ d.note }}</template></span
-          >
-        </span>
-        <span v-if="late(d)" class="bless-meds__late">{{ text.late }}</span>
-      </label>
-    </div>
-  </section>
-</template>
 
 <style>
 .bless-meds {

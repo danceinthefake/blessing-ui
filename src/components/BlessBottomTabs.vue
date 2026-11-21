@@ -1,3 +1,42 @@
+<template>
+  <nav
+    class="bless-bottom-tabs"
+    :class="[`bless-bottom-tabs--${variant}`, { 'bless-bottom-tabs--inline': inline }]"
+    :aria-label="label"
+  >
+    <component
+      :is="link(it.href, undefined, 'button').is"
+      v-bind="link(it.href, undefined, 'button').attrs"
+      v-for="it in items"
+      :key="it.value"
+      :type="it.href ? undefined : 'button'"
+      class="bless-bottom-tabs__item"
+      :class="{ 'bless-bottom-tabs__item--active': active === it.value }"
+      :aria-current="active === it.value ? 'page' : undefined"
+      :aria-label="
+        variant === 'dock' ? [it.label, badgeText(it)].filter(Boolean).join(', ') : undefined
+      "
+      :title="variant === 'dock' ? it.label : undefined"
+      :disabled="it.href ? undefined : it.disabled"
+      :aria-disabled="it.disabled || undefined"
+      @click="
+        it.disabled ? $event.preventDefault() : ((active = it.value), emit('select', it, $event))
+      "
+    >
+      <span class="bless-bottom-tabs__icon" aria-hidden="true"
+        ><slot name="icon" :item="it">{{ it.icon }}</slot></span
+      >
+      <span v-if="variant === 'bar'" class="bless-bottom-tabs__label">{{ it.label }}</span>
+      <span v-if="it.badge" class="bless-bottom-tabs__badge" aria-hidden="true">{{
+        it.badge === true ? "" : it.badge
+      }}</span>
+      <span v-if="it.badge && variant === 'bar'" class="bless-bottom-tabs__sr bless-sr">{{
+        badgeText(it)
+      }}</span>
+    </component>
+  </nav>
+</template>
+
 <script setup lang="ts">
 import { useLabelPack } from "../composables/useLabels";
 import { computed } from "vue";
@@ -39,45 +78,6 @@ const badgeText = (it: BlessBottomTab) =>
   !it.badge ? "" : it.badge === true ? text.value.badge : `${it.badge} ${text.value.badge}`;
 const emit = defineEmits<{ select: [item: BlessBottomTab, e: Event] }>();
 </script>
-
-<template>
-  <nav
-    class="bless-bottom-tabs"
-    :class="[`bless-bottom-tabs--${variant}`, { 'bless-bottom-tabs--inline': inline }]"
-    :aria-label="label"
-  >
-    <component
-      :is="link(it.href, undefined, 'button').is"
-      v-bind="link(it.href, undefined, 'button').attrs"
-      v-for="it in items"
-      :key="it.value"
-      :type="it.href ? undefined : 'button'"
-      class="bless-bottom-tabs__item"
-      :class="{ 'bless-bottom-tabs__item--active': active === it.value }"
-      :aria-current="active === it.value ? 'page' : undefined"
-      :aria-label="
-        variant === 'dock' ? [it.label, badgeText(it)].filter(Boolean).join(', ') : undefined
-      "
-      :title="variant === 'dock' ? it.label : undefined"
-      :disabled="it.href ? undefined : it.disabled"
-      :aria-disabled="it.disabled || undefined"
-      @click="
-        it.disabled ? $event.preventDefault() : ((active = it.value), emit('select', it, $event))
-      "
-    >
-      <span class="bless-bottom-tabs__icon" aria-hidden="true"
-        ><slot name="icon" :item="it">{{ it.icon }}</slot></span
-      >
-      <span v-if="variant === 'bar'" class="bless-bottom-tabs__label">{{ it.label }}</span>
-      <span v-if="it.badge" class="bless-bottom-tabs__badge" aria-hidden="true">{{
-        it.badge === true ? "" : it.badge
-      }}</span>
-      <span v-if="it.badge && variant === 'bar'" class="bless-bottom-tabs__sr bless-sr">{{
-        badgeText(it)
-      }}</span>
-    </component>
-  </nav>
-</template>
 
 <style>
 .bless-bottom-tabs {

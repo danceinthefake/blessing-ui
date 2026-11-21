@@ -1,3 +1,7 @@
+<template>
+  <BlessSleepChart :spans />
+</template>
+
 <script setup lang="ts">
 import { BlessSleepChart, type BlessSleepSpan } from "blessing-ui";
 
@@ -17,7 +21,3 @@ const spans: BlessSleepSpan[] = [
   { stage: "awake", start: "06:20", end: "06:30" },
 ];
 </script>
-
-<template>
-  <BlessSleepChart :spans />
-</template>

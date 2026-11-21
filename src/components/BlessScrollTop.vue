@@ -1,3 +1,18 @@
+<template>
+  <Transition name="bless-scroll-top">
+    <button
+      v-if="visible"
+      type="button"
+      class="bless-scroll-top"
+      :class="`bless-scroll-top--${position}`"
+      :aria-label="label"
+      @click="go"
+    >
+      <span aria-hidden="true"><slot>↑</slot></span>
+    </button>
+  </Transition>
+</template>
+
 <script setup lang="ts">
 import { onBeforeUnmount, onMounted, ref } from "vue";
 import { scrollBehavior } from "../composables/useMedia";
@@ -35,21 +50,6 @@ onMounted(() => {
 });
 onBeforeUnmount(() => (el() ?? window).removeEventListener("scroll", check));
 </script>
-
-<template>
-  <Transition name="bless-scroll-top">
-    <button
-      v-if="visible"
-      type="button"
-      class="bless-scroll-top"
-      :class="`bless-scroll-top--${position}`"
-      :aria-label="label"
-      @click="go"
-    >
-      <span aria-hidden="true"><slot>↑</slot></span>
-    </button>
-  </Transition>
-</template>
 
 <style>
 .bless-scroll-top {

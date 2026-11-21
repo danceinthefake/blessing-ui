@@ -1,3 +1,14 @@
+<template>
+  <span class="bless-copy">
+    <BlessButton :variant="variant" :size="size" @click="copy">
+      <slot :copied="copied">{{ copied ? text().copied : text().copy }}</slot>
+    </BlessButton>
+    <span class="bless-copy__live bless-sr" role="status" aria-live="polite">{{
+      copied ? text().copiedLive : ""
+    }}</span>
+  </span>
+</template>
+
 <script setup lang="ts">
 import { useLabelPack } from "../composables/useLabels";
 import "./sr.css";
@@ -40,17 +51,6 @@ async function copy() {
 }
 onBeforeUnmount(() => clearTimeout(timer));
 </script>
-
-<template>
-  <span class="bless-copy">
-    <BlessButton :variant="variant" :size="size" @click="copy">
-      <slot :copied="copied">{{ copied ? text().copied : text().copy }}</slot>
-    </BlessButton>
-    <span class="bless-copy__live bless-sr" role="status" aria-live="polite">{{
-      copied ? text().copiedLive : ""
-    }}</span>
-  </span>
-</template>
 
 <style>
 .bless-copy {

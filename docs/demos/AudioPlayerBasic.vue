@@ -1,3 +1,8 @@
+<template>
+  <!-- blob: URLs only exist in the browser, so this demo is client-only -->
+  <BlessClientOnly><BlessAudioPlayer :tracks style="max-width: 480px" /></BlessClientOnly>
+</template>
+
 <script setup lang="ts">
 import { BlessAudioPlayer, BlessClientOnly } from "blessing-ui";
 
@@ -32,8 +37,3 @@ const tracks = [
   { src: beep(880), title: "Sample 03 (880Hz)" },
 ];
 </script>
-
-<template>
-  <!-- blob: URLs only exist in the browser, so this demo is client-only -->
-  <BlessClientOnly><BlessAudioPlayer :tracks style="max-width: 480px" /></BlessClientOnly>
-</template>

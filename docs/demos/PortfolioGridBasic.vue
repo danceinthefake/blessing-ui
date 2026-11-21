@@ -1,3 +1,7 @@
+<template>
+  <BlessPortfolioGrid v-model:filter="filter" :works />
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessPortfolioGrid, type BlessWork } from "blessing-ui";
@@ -55,7 +59,3 @@ const works: BlessWork[] = [
 ];
 const filter = ref("");
 </script>
-
-<template>
-  <BlessPortfolioGrid v-model:filter="filter" :works />
-</template>

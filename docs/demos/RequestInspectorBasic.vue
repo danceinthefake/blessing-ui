@@ -1,3 +1,16 @@
+<template>
+  <BlessRequestInspector
+    method="POST"
+    url="https://api.example.com/v1/carts/C-2291/checkout"
+    :status="422"
+    status-text="Unprocessable Content"
+    :duration="183"
+    :size="96"
+    :request
+    :response
+  />
+</template>
+
 <script setup lang="ts">
 import { BlessRequestInspector } from "blessing-ui";
 
@@ -18,16 +31,3 @@ const response = {
   body: '{"error":"coupon_expired","message":"The coupon LAUNCH ended on 1 November."}',
 };
 </script>
-
-<template>
-  <BlessRequestInspector
-    method="POST"
-    url="https://api.example.com/v1/carts/C-2291/checkout"
-    :status="422"
-    status-text="Unprocessable Content"
-    :duration="183"
-    :size="96"
-    :request
-    :response
-  />
-</template>

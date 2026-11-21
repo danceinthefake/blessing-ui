@@ -1,3 +1,18 @@
+<template>
+  <ul class="bless-stagger bless-features" role="list" :style="{ '--_cols': columns }">
+    <li v-for="(f, i) in features" :key="f.title" class="bless-features__item">
+      <span v-if="$slots.icon" class="bless-features__icon" aria-hidden="true">
+        <slot name="icon" :feature="f" :index="i" />
+      </span>
+      <h3 class="bless-features__title">
+        <a v-if="f.href" :href="f.href">{{ f.title }}</a>
+        <template v-else>{{ f.title }}</template>
+      </h3>
+      <div class="bless-features__text">{{ f.text }}</div>
+    </li>
+  </ul>
+</template>
+
 <script setup lang="ts">
 defineOptions({ name: "BlessFeatureGrid" });
 
@@ -21,21 +36,6 @@ defineSlots<{
   icon?: (p: { feature: BlessFeature; index: number }) => unknown;
 }>();
 </script>
-
-<template>
-  <ul class="bless-stagger bless-features" role="list" :style="{ '--_cols': columns }">
-    <li v-for="(f, i) in features" :key="f.title" class="bless-features__item">
-      <span v-if="$slots.icon" class="bless-features__icon" aria-hidden="true">
-        <slot name="icon" :feature="f" :index="i" />
-      </span>
-      <h3 class="bless-features__title">
-        <a v-if="f.href" :href="f.href">{{ f.title }}</a>
-        <template v-else>{{ f.title }}</template>
-      </h3>
-      <div class="bless-features__text">{{ f.text }}</div>
-    </li>
-  </ul>
-</template>
 
 <style>
 .bless-features {

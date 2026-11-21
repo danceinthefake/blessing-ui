@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import { BlessPayslip } from "blessing-ui";
-</script>
-
 <template>
   <BlessPayslip
     company="Home Studio"
@@ -22,3 +18,7 @@ import { BlessPayslip } from "blessing-ui";
     locale="id-ID"
   />
 </template>
+
+<script setup lang="ts">
+import { BlessPayslip } from "blessing-ui";
+</script>

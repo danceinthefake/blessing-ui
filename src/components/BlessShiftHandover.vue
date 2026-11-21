@@ -1,3 +1,44 @@
+<template>
+  <article class="bless-handover">
+    <header class="bless-handover__head">
+      <h3 class="bless-handover__title">{{ title }}</h3>
+      <span class="bless-handover__by">{{ by }}</span>
+    </header>
+    <dl v-if="facts?.length" class="bless-handover__facts">
+      <div v-for="f in facts" :key="f.label">
+        <dt>{{ f.label }}</dt>
+        <dd>{{ f.value }}</dd>
+      </div>
+    </dl>
+    <div v-if="notes" class="bless-handover__notes">{{ notes }}</div>
+    <section v-if="issues.length" class="bless-handover__issues" :aria-label="text.issues">
+      <p class="bless-handover__count" role="status">{{ text.open(openCount) }}</p>
+      <ul class="bless-stagger bless-handover__list" role="list">
+        <li v-for="i in sorted" :key="i.id" :class="[`is-${i.level}`, { 'is-closed': i.closed }]">
+          <label class="bless-handover__issue">
+            <input
+              type="checkbox"
+              :checked="!!i.closed"
+              :aria-label="text.close(i.text)"
+              @change="flip(i.id, ($event.target as HTMLInputElement).checked)"
+            />
+            <span class="bless-handover__level"
+              ><span aria-hidden="true">{{ MARK[i.level] }}</span> {{ text[i.level] }}</span
+            >
+            <span class="bless-handover__text"
+              >{{ i.text }}<template v-if="i.owner"> · {{ text.owner(i.owner) }}</template></span
+            >
+          </label>
+        </li>
+      </ul>
+    </section>
+    <footer class="bless-handover__foot">
+      <p v-if="readBy" class="bless-handover__read">✓ {{ text.readBy(readBy) }}</p>
+      <BlessButton v-else @click="emit('acknowledge')">{{ text.acknowledge }}</BlessButton>
+    </footer>
+  </article>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -65,47 +106,6 @@ const openCount = computed(() => issues.value.filter((i) => !i.closed).length);
 const flip = (id: string, closed: boolean) =>
   (issues.value = issues.value.map((i) => (i.id === id ? { ...i, closed } : i)));
 </script>
-
-<template>
-  <article class="bless-handover">
-    <header class="bless-handover__head">
-      <h3 class="bless-handover__title">{{ title }}</h3>
-      <span class="bless-handover__by">{{ by }}</span>
-    </header>
-    <dl v-if="facts?.length" class="bless-handover__facts">
-      <div v-for="f in facts" :key="f.label">
-        <dt>{{ f.label }}</dt>
-        <dd>{{ f.value }}</dd>
-      </div>
-    </dl>
-    <div v-if="notes" class="bless-handover__notes">{{ notes }}</div>
-    <section v-if="issues.length" class="bless-handover__issues" :aria-label="text.issues">
-      <p class="bless-handover__count" role="status">{{ text.open(openCount) }}</p>
-      <ul class="bless-stagger bless-handover__list" role="list">
-        <li v-for="i in sorted" :key="i.id" :class="[`is-${i.level}`, { 'is-closed': i.closed }]">
-          <label class="bless-handover__issue">
-            <input
-              type="checkbox"
-              :checked="!!i.closed"
-              :aria-label="text.close(i.text)"
-              @change="flip(i.id, ($event.target as HTMLInputElement).checked)"
-            />
-            <span class="bless-handover__level"
-              ><span aria-hidden="true">{{ MARK[i.level] }}</span> {{ text[i.level] }}</span
-            >
-            <span class="bless-handover__text"
-              >{{ i.text }}<template v-if="i.owner"> · {{ text.owner(i.owner) }}</template></span
-            >
-          </label>
-        </li>
-      </ul>
-    </section>
-    <footer class="bless-handover__foot">
-      <p v-if="readBy" class="bless-handover__read">✓ {{ text.readBy(readBy) }}</p>
-      <BlessButton v-else @click="emit('acknowledge')">{{ text.acknowledge }}</BlessButton>
-    </footer>
-  </article>
-</template>
 
 <style>
 .bless-handover {

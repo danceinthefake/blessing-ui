@@ -1,3 +1,19 @@
+<template>
+  <div class="bless-palette" role="group" :aria-label="groupName()">
+    <button
+      v-for="p in shown"
+      :key="p.name"
+      type="button"
+      class="bless-palette__swatch"
+      :style="{ '--_c': p.color }"
+      :aria-label="cap(p.name)"
+      :title="cap(p.name)"
+      :aria-pressed="palette === p.name"
+      @click="setPalette(p.name as BlessPalette)"
+    />
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -24,22 +40,6 @@ const { palette, setPalette } = useTheme();
 const cap = (s: string) => s[0].toUpperCase() + s.slice(1);
 const shown = computed(() => (props.showDefault ? blessPalettes : blessPalettes.slice(1)));
 </script>
-
-<template>
-  <div class="bless-palette" role="group" :aria-label="groupName()">
-    <button
-      v-for="p in shown"
-      :key="p.name"
-      type="button"
-      class="bless-palette__swatch"
-      :style="{ '--_c': p.color }"
-      :aria-label="cap(p.name)"
-      :title="cap(p.name)"
-      :aria-pressed="palette === p.name"
-      @click="setPalette(p.name as BlessPalette)"
-    />
-  </div>
-</template>
 
 <style>
 /* one swatch per palette in its member's colour: upright, leaning on attention */

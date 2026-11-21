@@ -1,3 +1,12 @@
+<template>
+  <BlessKnowledgeArticle
+    title="Reset the password of your tax account"
+    updated="3 November 2026"
+    :sections
+    :related
+  />
+</template>
+
 <script setup lang="ts">
 import { BlessKnowledgeArticle } from "blessing-ui";
 
@@ -20,12 +29,3 @@ const related = [
   { title: "Sign in with your identity card", href: "#ktp" },
 ];
 </script>
-
-<template>
-  <BlessKnowledgeArticle
-    title="Reset the password of your tax account"
-    updated="3 November 2026"
-    :sections
-    :related
-  />
-</template>

@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import { BlessText, BlessWatermarkOverlay } from "blessing-ui";
-</script>
-
 <template>
   <div class="row" style="align-items: flex-start">
     <BlessWatermarkOverlay
@@ -24,3 +20,7 @@ import { BlessText, BlessWatermarkOverlay } from "blessing-ui";
     />
   </div>
 </template>
+
+<script setup lang="ts">
+import { BlessText, BlessWatermarkOverlay } from "blessing-ui";
+</script>

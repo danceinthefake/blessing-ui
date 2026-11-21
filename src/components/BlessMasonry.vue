@@ -1,3 +1,34 @@
+<template>
+  <div
+    ref="root"
+    class="bless-masonry"
+    :class="{ 'bless-masonry--ready': ready, 'bless-masonry--animate': animate }"
+    role="list"
+    :aria-label="label"
+    :style="ready ? { height: `${height}px` } : { '--bless-masonry-gap': `${gap}px` }"
+  >
+    <div
+      v-for="(item, i) in items"
+      :key="rowKey ? rowKey(item, i) : i"
+      :ref="(el) => setCell(el, i)"
+      class="bless-masonry__cell"
+      role="listitem"
+      :style="
+        colWidth
+          ? {
+              width: `${colWidth}px`,
+              ...(ready && {
+                transform: `translate(${(rtl ? -1 : 1) * (pos[i]?.left ?? 0)}px, ${pos[i]?.top ?? 0}px)`,
+              }),
+            }
+          : undefined
+      "
+    >
+      <slot :item :index="i">{{ item }}</slot>
+    </div>
+  </div>
+</template>
+
 <script setup lang="ts" generic="T">
 import { nextTick, onBeforeUnmount, onMounted, ref, watch } from "vue";
 
@@ -90,37 +121,6 @@ watch(
     }),
 );
 </script>
-
-<template>
-  <div
-    ref="root"
-    class="bless-masonry"
-    :class="{ 'bless-masonry--ready': ready, 'bless-masonry--animate': animate }"
-    role="list"
-    :aria-label="label"
-    :style="ready ? { height: `${height}px` } : { '--bless-masonry-gap': `${gap}px` }"
-  >
-    <div
-      v-for="(item, i) in items"
-      :key="rowKey ? rowKey(item, i) : i"
-      :ref="(el) => setCell(el, i)"
-      class="bless-masonry__cell"
-      role="listitem"
-      :style="
-        colWidth
-          ? {
-              width: `${colWidth}px`,
-              ...(ready && {
-                transform: `translate(${(rtl ? -1 : 1) * (pos[i]?.left ?? 0)}px, ${pos[i]?.top ?? 0}px)`,
-              }),
-            }
-          : undefined
-      "
-    >
-      <slot :item :index="i">{{ item }}</slot>
-    </div>
-  </div>
-</template>
 
 <style>
 .bless-masonry {

@@ -1,12 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { BlessButton, BlessSliderCaptcha } from "blessing-ui";
-
-const verified = ref(false);
-const captcha = ref<InstanceType<typeof BlessSliderCaptcha>>();
-const took = ref<number | null>(null);
-</script>
-
 <template>
   <div class="col" style="max-width: 360px">
     <BlessSliderCaptcha
@@ -22,3 +13,12 @@ const took = ref<number | null>(null);
     >
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { BlessButton, BlessSliderCaptcha } from "blessing-ui";
+
+const verified = ref(false);
+const captcha = ref<InstanceType<typeof BlessSliderCaptcha>>();
+const took = ref<number | null>(null);
+</script>

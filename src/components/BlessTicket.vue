@@ -1,3 +1,30 @@
+<template>
+  <article class="bless-ticket">
+    <div class="bless-ticket__main">
+      <h3 class="bless-ticket__event">{{ event }}</h3>
+      <p v-if="subtitle" class="bless-ticket__subtitle">{{ subtitle }}</p>
+      <dl class="bless-ticket__fields">
+        <div v-for="f in fields" :key="f.key" :class="`is-${f.key}`">
+          <dt>{{ f.label }}</dt>
+          <dd>{{ f.value }}</dd>
+        </div>
+      </dl>
+    </div>
+    <div v-if="qr || code" class="bless-ticket__stub">
+      <BlessQrCode
+        v-if="qr"
+        :matrix="qr"
+        :value="code ? `${text.code}: ${code}` : text.code"
+        :size="112"
+      />
+      <p v-if="code" class="bless-ticket__code">
+        <span class="bless-ticket__code-label">{{ text.code }}</span>
+        <code>{{ code }}</code>
+      </p>
+    </div>
+  </article>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -48,33 +75,6 @@ const fields = computed(() =>
     .map((k) => ({ key: k, label: text.value[k], value: props[k]! })),
 );
 </script>
-
-<template>
-  <article class="bless-ticket">
-    <div class="bless-ticket__main">
-      <h3 class="bless-ticket__event">{{ event }}</h3>
-      <p v-if="subtitle" class="bless-ticket__subtitle">{{ subtitle }}</p>
-      <dl class="bless-ticket__fields">
-        <div v-for="f in fields" :key="f.key" :class="`is-${f.key}`">
-          <dt>{{ f.label }}</dt>
-          <dd>{{ f.value }}</dd>
-        </div>
-      </dl>
-    </div>
-    <div v-if="qr || code" class="bless-ticket__stub">
-      <BlessQrCode
-        v-if="qr"
-        :matrix="qr"
-        :value="code ? `${text.code}: ${code}` : text.code"
-        :size="112"
-      />
-      <p v-if="code" class="bless-ticket__code">
-        <span class="bless-ticket__code-label">{{ text.code }}</span>
-        <code>{{ code }}</code>
-      </p>
-    </div>
-  </article>
-</template>
 
 <style>
 /* two parts joined by a tear line, with a notch at each end of it */

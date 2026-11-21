@@ -1,3 +1,19 @@
+<template>
+  <span class="bless-receipt" :class="`is-${status}`" :title="words">
+    <span v-if="time" class="bless-receipt__time">{{ time }}</span>
+    <span class="bless-receipt__mark" aria-hidden="true">{{ MARK[status] }}</span>
+    <span class="bless-receipt__words">{{ words }}</span>
+    <button
+      v-if="status === 'failed'"
+      type="button"
+      class="bless-receipt__retry"
+      @click="emit('retry')"
+    >
+      {{ text.retry }}
+    </button>
+  </span>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -53,22 +69,6 @@ const MARK: Record<BlessReceiptStatus, string> = {
   failed: "!",
 };
 </script>
-
-<template>
-  <span class="bless-receipt" :class="`is-${status}`" :title="words">
-    <span v-if="time" class="bless-receipt__time">{{ time }}</span>
-    <span class="bless-receipt__mark" aria-hidden="true">{{ MARK[status] }}</span>
-    <span class="bless-receipt__words">{{ words }}</span>
-    <button
-      v-if="status === 'failed'"
-      type="button"
-      class="bless-receipt__retry"
-      @click="emit('retry')"
-    >
-      {{ text.retry }}
-    </button>
-  </span>
-</template>
 
 <style>
 .bless-receipt {

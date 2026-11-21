@@ -1,3 +1,64 @@
+<template>
+  <div class="bless-emoji" :style="{ '--_cols': columns }">
+    <input
+      v-model="query"
+      type="search"
+      class="bless-emoji__search"
+      :aria-label="text.search"
+      :placeholder="text.search"
+      :aria-controls="`${uid}-grid`"
+      @keydown="onSearchKey"
+    />
+    <div
+      v-if="!query"
+      ref="bar"
+      class="bless-emoji__groups"
+      role="toolbar"
+      :aria-label="text.groups"
+    >
+      <button
+        v-for="g in groups"
+        :key="g"
+        type="button"
+        class="bless-emoji__group"
+        :aria-label="text[g]"
+        :title="text[g]"
+        @click="jump(g)"
+      >
+        <span aria-hidden="true">{{ blessEmojiGroupIcons[g] }}</span>
+      </button>
+    </div>
+    <div :id="`${uid}-grid`" ref="grid" class="bless-emoji__grid" @keydown="onGridKey">
+      <section v-for="(sec, s) in sections" :key="sec.key" class="bless-emoji__section">
+        <!-- a label, not a heading: the picker must not change the outline of the page around it -->
+        <div :id="`${uid}-${sec.key}`" class="bless-emoji__title">{{ sec.title }}</div>
+        <div class="bless-emoji__items" role="group" :aria-labelledby="`${uid}-${sec.key}`">
+          <button
+            v-for="(e, i) in sec.items"
+            :key="e.char"
+            type="button"
+            class="bless-emoji__item"
+            :data-i="start(s) + i"
+            :tabindex="start(s) + i === active ? 0 : -1"
+            :aria-label="e.name"
+            :title="e.name"
+            @focus="active = start(s) + i"
+            @click="pick(e)"
+          >
+            {{ e.char }}
+          </button>
+        </div>
+      </section>
+      <p v-if="!sections.length" class="bless-emoji__empty" role="status">{{ text.empty }}</p>
+    </div>
+    <!-- a title does not show on focus: the keyboard gets the name here -->
+    <div v-if="shown" class="bless-emoji__preview" aria-hidden="true">
+      <span class="bless-emoji__preview-char">{{ shown.char }}</span>
+      <span>{{ shown.name }}</span>
+    </div>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed, nextTick, onMounted, ref, useId } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -171,67 +232,6 @@ onMounted(() => {
 const bar = ref<HTMLElement>();
 useRovingFocus(bar);
 </script>
-
-<template>
-  <div class="bless-emoji" :style="{ '--_cols': columns }">
-    <input
-      v-model="query"
-      type="search"
-      class="bless-emoji__search"
-      :aria-label="text.search"
-      :placeholder="text.search"
-      :aria-controls="`${uid}-grid`"
-      @keydown="onSearchKey"
-    />
-    <div
-      v-if="!query"
-      ref="bar"
-      class="bless-emoji__groups"
-      role="toolbar"
-      :aria-label="text.groups"
-    >
-      <button
-        v-for="g in groups"
-        :key="g"
-        type="button"
-        class="bless-emoji__group"
-        :aria-label="text[g]"
-        :title="text[g]"
-        @click="jump(g)"
-      >
-        <span aria-hidden="true">{{ blessEmojiGroupIcons[g] }}</span>
-      </button>
-    </div>
-    <div :id="`${uid}-grid`" ref="grid" class="bless-emoji__grid" @keydown="onGridKey">
-      <section v-for="(sec, s) in sections" :key="sec.key" class="bless-emoji__section">
-        <!-- a label, not a heading: the picker must not change the outline of the page around it -->
-        <div :id="`${uid}-${sec.key}`" class="bless-emoji__title">{{ sec.title }}</div>
-        <div class="bless-emoji__items" role="group" :aria-labelledby="`${uid}-${sec.key}`">
-          <button
-            v-for="(e, i) in sec.items"
-            :key="e.char"
-            type="button"
-            class="bless-emoji__item"
-            :data-i="start(s) + i"
-            :tabindex="start(s) + i === active ? 0 : -1"
-            :aria-label="e.name"
-            :title="e.name"
-            @focus="active = start(s) + i"
-            @click="pick(e)"
-          >
-            {{ e.char }}
-          </button>
-        </div>
-      </section>
-      <p v-if="!sections.length" class="bless-emoji__empty" role="status">{{ text.empty }}</p>
-    </div>
-    <!-- a title does not show on focus: the keyboard gets the name here -->
-    <div v-if="shown" class="bless-emoji__preview" aria-hidden="true">
-      <span class="bless-emoji__preview-char">{{ shown.char }}</span>
-      <span>{{ shown.name }}</span>
-    </div>
-  </div>
-</template>
 
 <style>
 .bless-emoji {

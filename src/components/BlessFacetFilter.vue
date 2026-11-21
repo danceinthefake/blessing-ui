@@ -1,3 +1,73 @@
+<template>
+  <div class="bless-facets" role="group" :aria-label="text.title">
+    <div class="bless-facets__top">
+      <strong>{{ text.title }}</strong>
+      <button v-if="active" type="button" class="bless-facets__clear" @click="clearAll">
+        {{ text.clearAll(active) }}
+      </button>
+    </div>
+    <fieldset v-for="f in facets" :key="f.id" class="bless-facets__set">
+      <legend class="bless-facets__legend">{{ f.label }}</legend>
+      <button
+        v-if="selected[f.id]?.length"
+        type="button"
+        class="bless-facets__clear bless-facets__one"
+        :aria-label="`${text.clear}: ${f.label}`"
+        @click="clear(f.id)"
+      >
+        {{ text.clear }}
+      </button>
+      <label
+        v-for="o in f.options"
+        :key="o.value"
+        class="bless-facets__option"
+        :class="{ 'is-empty': o.count === 0 && !has(f.id, o.value) }"
+      >
+        <input
+          type="checkbox"
+          :checked="has(f.id, o.value)"
+          :disabled="o.count === 0 && !has(f.id, o.value)"
+          @change="flip(f.id, o.value, ($event.target as HTMLInputElement).checked)"
+        />
+        <span class="bless-facets__name">{{ o.label }}</span>
+        <span v-if="o.count !== undefined" class="bless-facets__count">{{ o.count }}</span>
+      </label>
+    </fieldset>
+    <fieldset v-if="priceRange" class="bless-facets__set">
+      <legend class="bless-facets__legend">{{ text.price }}</legend>
+      <div class="bless-facets__range">
+        <label class="bless-facets__end">
+          <span>{{ text.min }}</span>
+          <span class="bless-facets__money">
+            <span aria-hidden="true">{{ symbol }}</span>
+            <input
+              type="number"
+              inputmode="decimal"
+              min="0"
+              :value="price[0] ?? ''"
+              @change="setPrice(0, ($event.target as HTMLInputElement).value)"
+            />
+          </span>
+        </label>
+        <span aria-hidden="true">–</span>
+        <label class="bless-facets__end">
+          <span>{{ text.max }}</span>
+          <span class="bless-facets__money">
+            <span aria-hidden="true">{{ symbol }}</span>
+            <input
+              type="number"
+              inputmode="decimal"
+              min="0"
+              :value="price[1] ?? ''"
+              @change="setPrice(1, ($event.target as HTMLInputElement).value)"
+            />
+          </span>
+        </label>
+      </div>
+    </fieldset>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -74,76 +144,6 @@ function setPrice(i: 0 | 1, raw: string) {
   price.value = next;
 }
 </script>
-
-<template>
-  <div class="bless-facets" role="group" :aria-label="text.title">
-    <div class="bless-facets__top">
-      <strong>{{ text.title }}</strong>
-      <button v-if="active" type="button" class="bless-facets__clear" @click="clearAll">
-        {{ text.clearAll(active) }}
-      </button>
-    </div>
-    <fieldset v-for="f in facets" :key="f.id" class="bless-facets__set">
-      <legend class="bless-facets__legend">{{ f.label }}</legend>
-      <button
-        v-if="selected[f.id]?.length"
-        type="button"
-        class="bless-facets__clear bless-facets__one"
-        :aria-label="`${text.clear}: ${f.label}`"
-        @click="clear(f.id)"
-      >
-        {{ text.clear }}
-      </button>
-      <label
-        v-for="o in f.options"
-        :key="o.value"
-        class="bless-facets__option"
-        :class="{ 'is-empty': o.count === 0 && !has(f.id, o.value) }"
-      >
-        <input
-          type="checkbox"
-          :checked="has(f.id, o.value)"
-          :disabled="o.count === 0 && !has(f.id, o.value)"
-          @change="flip(f.id, o.value, ($event.target as HTMLInputElement).checked)"
-        />
-        <span class="bless-facets__name">{{ o.label }}</span>
-        <span v-if="o.count !== undefined" class="bless-facets__count">{{ o.count }}</span>
-      </label>
-    </fieldset>
-    <fieldset v-if="priceRange" class="bless-facets__set">
-      <legend class="bless-facets__legend">{{ text.price }}</legend>
-      <div class="bless-facets__range">
-        <label class="bless-facets__end">
-          <span>{{ text.min }}</span>
-          <span class="bless-facets__money">
-            <span aria-hidden="true">{{ symbol }}</span>
-            <input
-              type="number"
-              inputmode="decimal"
-              min="0"
-              :value="price[0] ?? ''"
-              @change="setPrice(0, ($event.target as HTMLInputElement).value)"
-            />
-          </span>
-        </label>
-        <span aria-hidden="true">–</span>
-        <label class="bless-facets__end">
-          <span>{{ text.max }}</span>
-          <span class="bless-facets__money">
-            <span aria-hidden="true">{{ symbol }}</span>
-            <input
-              type="number"
-              inputmode="decimal"
-              min="0"
-              :value="price[1] ?? ''"
-              @change="setPrice(1, ($event.target as HTMLInputElement).value)"
-            />
-          </span>
-        </label>
-      </div>
-    </fieldset>
-  </div>
-</template>
 
 <style>
 .bless-facets {

@@ -1,28 +1,3 @@
-<script setup lang="ts">
-import {
-  BlessAlert,
-  BlessButton,
-  BlessCheckbox,
-  BlessField,
-  BlessForm,
-  BlessInput,
-  BlessPasswordInput,
-  BlessSeparator,
-  BlessText,
-} from "blessing-ui";
-import { nextTick, ref, watch } from "vue";
-import { useSignIn } from "./useSignIn";
-
-const { email, password, remember, busy, error, done, submit } = useSignIn();
-// the form (and its focused button) gives way to the confirmation: take focus there, so it's read
-const doneAlert = ref<{ $el: HTMLElement }>();
-watch(done, async (d) => {
-  if (!d) return;
-  await nextTick();
-  doneAlert.value?.$el.focus();
-});
-</script>
-
 <template>
   <div class="signin">
     <BlessText as="h1" size="lg" weight="light">Sign in</BlessText>
@@ -72,6 +47,31 @@ watch(done, async (d) => {
     </BlessForm>
   </div>
 </template>
+
+<script setup lang="ts">
+import {
+  BlessAlert,
+  BlessButton,
+  BlessCheckbox,
+  BlessField,
+  BlessForm,
+  BlessInput,
+  BlessPasswordInput,
+  BlessSeparator,
+  BlessText,
+} from "blessing-ui";
+import { nextTick, ref, watch } from "vue";
+import { useSignIn } from "./useSignIn";
+
+const { email, password, remember, busy, error, done, submit } = useSignIn();
+// the form (and its focused button) gives way to the confirmation: take focus there, so it's read
+const doneAlert = ref<{ $el: HTMLElement }>();
+watch(done, async (d) => {
+  if (!d) return;
+  await nextTick();
+  doneAlert.value?.$el.focus();
+});
+</script>
 
 <style scoped>
 .signin {

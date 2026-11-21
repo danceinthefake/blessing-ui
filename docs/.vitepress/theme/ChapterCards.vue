@@ -1,3 +1,18 @@
+<template>
+  <div
+    ref="el"
+    class="cards vp-raw"
+    :class="{ 'bless-stagger': !opener && visible, 'cards--wait': live && !opener && !visible }"
+  >
+    <a v-for="c in items" :key="c.link" :href="withBase(c.link)" class="card">
+      <img v-if="c.img" :src="withBase(c.img)" alt="" loading="lazy" class="card__img" />
+      <span v-if="c.tag" class="card__tag">{{ c.tag }}</span>
+      <span class="card__title">{{ c.title }}</span>
+      <span v-if="c.text" class="card__text">{{ c.text }}</span>
+    </a>
+  </div>
+</template>
+
 <script setup lang="ts">
 // A grid of link cards for a landing page. The cards arrive one after another (the
 // library's bless-stagger) when the grid first scrolls into view. A grid that is in view
@@ -18,21 +33,6 @@ onMounted(() => {
   live.value = true;
 });
 </script>
-
-<template>
-  <div
-    ref="el"
-    class="cards vp-raw"
-    :class="{ 'bless-stagger': !opener && visible, 'cards--wait': live && !opener && !visible }"
-  >
-    <a v-for="c in items" :key="c.link" :href="withBase(c.link)" class="card">
-      <img v-if="c.img" :src="withBase(c.img)" alt="" loading="lazy" class="card__img" />
-      <span v-if="c.tag" class="card__tag">{{ c.tag }}</span>
-      <span class="card__title">{{ c.title }}</span>
-      <span v-if="c.text" class="card__text">{{ c.text }}</span>
-    </a>
-  </div>
-</template>
 
 <style scoped>
 .cards {

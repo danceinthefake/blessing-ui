@@ -1,3 +1,7 @@
+<template>
+  <BlessContinueWatching :items @remove="(id) => (items = items.filter((i) => i.id !== id))" />
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessContinueWatching, type BlessResumeItem } from "blessing-ui";
@@ -32,7 +36,3 @@ const items = ref<BlessResumeItem[]>([
   },
 ]);
 </script>
-
-<template>
-  <BlessContinueWatching :items @remove="(id) => (items = items.filter((i) => i.id !== id))" />
-</template>

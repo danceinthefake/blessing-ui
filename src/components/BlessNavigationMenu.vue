@@ -1,3 +1,72 @@
+<template>
+  <nav class="bless-navmenu" :aria-label="label">
+    <ul role="list" class="bless-navmenu__list">
+      <li
+        v-for="(item, i) in items"
+        :key="item.label"
+        class="bless-navmenu__item"
+        @pointerenter="$event.pointerType === 'mouse' && (item.items ? open(i) : close(0))"
+        @pointerleave="$event.pointerType === 'mouse' && close()"
+      >
+        <component
+          :is="link(item.items ? undefined : item.href, undefined, 'button').is"
+          v-bind="link(item.items ? undefined : item.href, undefined, 'button').attrs"
+          :ref="(el: unknown) => setAnchor(i, el)"
+          :type="item.items ? 'button' : undefined"
+          class="bless-navmenu__trigger"
+          :class="{
+            'bless-navmenu__trigger--active': item.active,
+            'bless-navmenu__trigger--open': openIdx === i,
+          }"
+          :aria-expanded="item.items ? openIdx === i : undefined"
+          :aria-controls="item.items ? `${id}-panel` : undefined"
+          :aria-current="item.active ? 'page' : undefined"
+          @click="item.items ? (openIdx === i ? close(0) : open(i)) : undefined"
+          @keydown="onKey($event, i, item)"
+          @focusout="isOpen && onFocusOut($event)"
+        >
+          {{ item.label }}
+          <span v-if="item.items" class="bless-navmenu__chevron" aria-hidden="true" />
+        </component>
+      </li>
+    </ul>
+    <div
+      ref="panel"
+      :id="`${id}-panel`"
+      popover="manual"
+      class="bless-navmenu__panel"
+      :style
+      @pointerenter="hold"
+      @pointerleave="$event.pointerType === 'mouse' && close()"
+      @keydown.esc="escape"
+      @focusout="onFocusOut"
+    >
+      <template v-if="openIdx !== null && items[openIdx]?.items">
+        <slot name="panel" :item="items[openIdx]">
+          <ul role="list" class="bless-navmenu__grid">
+            <li v-for="sub in items[openIdx].items" :key="sub.href">
+              <component
+                :is="link(sub.href).is"
+                v-bind="link(sub.href).attrs"
+                class="bless-navmenu__link"
+                @click="
+                  emit('select', sub, $event);
+                  close(0);
+                "
+              >
+                <span class="bless-navmenu__link-label">{{ sub.label }}</span>
+                <span v-if="sub.description" class="bless-navmenu__link-desc">{{
+                  sub.description
+                }}</span>
+              </component>
+            </li>
+          </ul>
+        </slot>
+      </template>
+    </div>
+  </nav>
+</template>
+
 <script setup lang="ts">
 import { useLink } from "../composables/useLink";
 import { nextTick, ref, useId } from "vue";
@@ -72,75 +141,6 @@ function onKey(e: KeyboardEvent, i: number, item: BlessNavMenuItem) {
     anchors.value[(i - 1 + anchors.value.length) % anchors.value.length]?.focus();
 }
 </script>
-
-<template>
-  <nav class="bless-navmenu" :aria-label="label">
-    <ul role="list" class="bless-navmenu__list">
-      <li
-        v-for="(item, i) in items"
-        :key="item.label"
-        class="bless-navmenu__item"
-        @pointerenter="$event.pointerType === 'mouse' && (item.items ? open(i) : close(0))"
-        @pointerleave="$event.pointerType === 'mouse' && close()"
-      >
-        <component
-          :is="link(item.items ? undefined : item.href, undefined, 'button').is"
-          v-bind="link(item.items ? undefined : item.href, undefined, 'button').attrs"
-          :ref="(el: unknown) => setAnchor(i, el)"
-          :type="item.items ? 'button' : undefined"
-          class="bless-navmenu__trigger"
-          :class="{
-            'bless-navmenu__trigger--active': item.active,
-            'bless-navmenu__trigger--open': openIdx === i,
-          }"
-          :aria-expanded="item.items ? openIdx === i : undefined"
-          :aria-controls="item.items ? `${id}-panel` : undefined"
-          :aria-current="item.active ? 'page' : undefined"
-          @click="item.items ? (openIdx === i ? close(0) : open(i)) : undefined"
-          @keydown="onKey($event, i, item)"
-          @focusout="isOpen && onFocusOut($event)"
-        >
-          {{ item.label }}
-          <span v-if="item.items" class="bless-navmenu__chevron" aria-hidden="true" />
-        </component>
-      </li>
-    </ul>
-    <div
-      ref="panel"
-      :id="`${id}-panel`"
-      popover="manual"
-      class="bless-navmenu__panel"
-      :style
-      @pointerenter="hold"
-      @pointerleave="$event.pointerType === 'mouse' && close()"
-      @keydown.esc="escape"
-      @focusout="onFocusOut"
-    >
-      <template v-if="openIdx !== null && items[openIdx]?.items">
-        <slot name="panel" :item="items[openIdx]">
-          <ul role="list" class="bless-navmenu__grid">
-            <li v-for="sub in items[openIdx].items" :key="sub.href">
-              <component
-                :is="link(sub.href).is"
-                v-bind="link(sub.href).attrs"
-                class="bless-navmenu__link"
-                @click="
-                  emit('select', sub, $event);
-                  close(0);
-                "
-              >
-                <span class="bless-navmenu__link-label">{{ sub.label }}</span>
-                <span v-if="sub.description" class="bless-navmenu__link-desc">{{
-                  sub.description
-                }}</span>
-              </component>
-            </li>
-          </ul>
-        </slot>
-      </template>
-    </div>
-  </nav>
-</template>
 
 <style>
 .bless-navmenu {

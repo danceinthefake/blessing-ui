@@ -1,3 +1,46 @@
+<template>
+  <article class="bless-workorder" :class="`is-${state}`">
+    <div class="bless-workorder__top">
+      <span class="bless-workorder__number">{{ number }}</span>
+      <span class="bless-workorder__state"
+        ><span aria-hidden="true">{{ MARK[state] }}</span> {{ text[state] }}</span
+      >
+    </div>
+    <h3 class="bless-workorder__product">{{ product }}</h3>
+    <p class="bless-workorder__meta">
+      <template v-if="station">{{ station }}</template><template v-if="station && due"> · </template
+      ><template v-if="due">{{ text.due(due) }}</template>
+    </p>
+    <div class="bless-workorder__progress">
+      <span class="bless-workorder__count">{{
+        text.progress(num.format(done), `${num.format(target)} ${unit}`)
+      }}</span>
+      <progress
+        :value="done"
+        :max="target"
+        :aria-label="text.progress(num.format(done), `${num.format(target)} ${unit}`)"
+      />
+      <span class="bless-workorder__pct" aria-hidden="true">{{ Math.round(share * 100) }}%</span>
+    </div>
+    <div v-if="state !== 'done'" class="bless-workorder__actions">
+      <BlessButton v-if="state === 'queued'" size="sm" @click="emit('start')">{{
+        text.start
+      }}</BlessButton>
+      <BlessButton
+        v-else-if="state === 'running'"
+        size="sm"
+        variant="outline"
+        @click="emit('pause')"
+        >{{ text.pause }}</BlessButton
+      >
+      <BlessButton v-else size="sm" @click="emit('start')">{{ text.resume }}</BlessButton>
+      <BlessButton v-if="state !== 'queued'" size="sm" variant="ghost" @click="emit('finish')">{{
+        text.finish
+      }}</BlessButton>
+    </div>
+  </article>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -63,49 +106,6 @@ const MARK: Record<BlessWorkOrderState, string> = {
   done: "✓",
 };
 </script>
-
-<template>
-  <article class="bless-workorder" :class="`is-${state}`">
-    <div class="bless-workorder__top">
-      <span class="bless-workorder__number">{{ number }}</span>
-      <span class="bless-workorder__state"
-        ><span aria-hidden="true">{{ MARK[state] }}</span> {{ text[state] }}</span
-      >
-    </div>
-    <h3 class="bless-workorder__product">{{ product }}</h3>
-    <p class="bless-workorder__meta">
-      <template v-if="station">{{ station }}</template><template v-if="station && due"> · </template
-      ><template v-if="due">{{ text.due(due) }}</template>
-    </p>
-    <div class="bless-workorder__progress">
-      <span class="bless-workorder__count">{{
-        text.progress(num.format(done), `${num.format(target)} ${unit}`)
-      }}</span>
-      <progress
-        :value="done"
-        :max="target"
-        :aria-label="text.progress(num.format(done), `${num.format(target)} ${unit}`)"
-      />
-      <span class="bless-workorder__pct" aria-hidden="true">{{ Math.round(share * 100) }}%</span>
-    </div>
-    <div v-if="state !== 'done'" class="bless-workorder__actions">
-      <BlessButton v-if="state === 'queued'" size="sm" @click="emit('start')">{{
-        text.start
-      }}</BlessButton>
-      <BlessButton
-        v-else-if="state === 'running'"
-        size="sm"
-        variant="outline"
-        @click="emit('pause')"
-        >{{ text.pause }}</BlessButton
-      >
-      <BlessButton v-else size="sm" @click="emit('start')">{{ text.resume }}</BlessButton>
-      <BlessButton v-if="state !== 'queued'" size="sm" variant="ghost" @click="emit('finish')">{{
-        text.finish
-      }}</BlessButton>
-    </div>
-  </article>
-</template>
 
 <style>
 .bless-workorder {

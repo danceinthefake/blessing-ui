@@ -1,35 +1,3 @@
-<script setup lang="ts">
-import {
-  BlessMapPins,
-  BlessPlaceSearch,
-  BlessText,
-  BlessWeatherForecast,
-  BlessWorldClock,
-  type BlessPlace,
-} from "blessing-ui";
-import { computed, onMounted, ref, watch } from "vue";
-import { mockTripApi } from "./api";
-import type { City } from "./domain";
-
-const place = ref<BlessPlace | null>(null);
-const city = ref<City>();
-// the search returns whole cities, so the chosen place is one of them
-watch(place, (p) => p && (city.value = p as City));
-onMounted(async () => (city.value = (await mockTripApi.search("tokyo"))[0]));
-const zones = computed(() =>
-  city.value
-    ? [
-        { zone: "Asia/Jakarta", label: "Home" },
-        { zone: city.value.zone, label: city.value.name },
-      ]
-    : [],
-);
-const center = ref<[number, number]>([0, 0]);
-const selected = ref<string>();
-const zoom = ref(11);
-watch(city, (c) => c && ((center.value = c.center), (selected.value = undefined)));
-</script>
-
 <template>
   <div class="trip">
     <BlessPlaceSearch
@@ -66,6 +34,38 @@ watch(city, (c) => c && ((center.value = c.center), (selected.value = undefined)
     </template>
   </div>
 </template>
+
+<script setup lang="ts">
+import {
+  BlessMapPins,
+  BlessPlaceSearch,
+  BlessText,
+  BlessWeatherForecast,
+  BlessWorldClock,
+  type BlessPlace,
+} from "blessing-ui";
+import { computed, onMounted, ref, watch } from "vue";
+import { mockTripApi } from "./api";
+import type { City } from "./domain";
+
+const place = ref<BlessPlace | null>(null);
+const city = ref<City>();
+// the search returns whole cities, so the chosen place is one of them
+watch(place, (p) => p && (city.value = p as City));
+onMounted(async () => (city.value = (await mockTripApi.search("tokyo"))[0]));
+const zones = computed(() =>
+  city.value
+    ? [
+        { zone: "Asia/Jakarta", label: "Home" },
+        { zone: city.value.zone, label: city.value.name },
+      ]
+    : [],
+);
+const center = ref<[number, number]>([0, 0]);
+const selected = ref<string>();
+const zoom = ref(11);
+watch(city, (c) => c && ((center.value = c.center), (selected.value = undefined)));
+</script>
 
 <style scoped>
 .trip {

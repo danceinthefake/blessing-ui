@@ -1,9 +1,3 @@
-<script setup lang="ts">
-import { BlessCommand, useToast } from "blessing-ui";
-import { commands } from "./_commands";
-const { toast } = useToast();
-</script>
-
 <template>
   <div style="max-width: 480px">
     <BlessCommand
@@ -14,3 +8,9 @@ const { toast } = useToast();
     />
   </div>
 </template>
+
+<script setup lang="ts">
+import { BlessCommand, useToast } from "blessing-ui";
+import { commands } from "./_commands";
+const { toast } = useToast();
+</script>

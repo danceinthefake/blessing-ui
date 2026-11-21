@@ -1,3 +1,23 @@
+<template>
+  <section
+    ref="el"
+    class="bless-eyecatch"
+    :class="{
+      'bless-eyecatch--accent': accent,
+      'bless-eyecatch--seen': !opener && visible,
+      'bless-eyecatch--wait': live && !opener && !visible,
+    }"
+  >
+    <span class="bless-eyecatch__slash" aria-hidden="true" />
+    <span v-if="num" class="bless-eyecatch__num" aria-hidden="true" :data-num="num" />
+    <div class="bless-eyecatch__text">
+      <p v-if="kicker" class="bless-eyecatch__kicker">{{ kicker }}</p>
+      <component :is="`h${headingLevel}`" class="bless-eyecatch__title">{{ title }}</component>
+      <slot />
+    </div>
+  </section>
+</template>
+
 <script setup lang="ts">
 // An anime eyecatch: the title card at a break. A slash of accent wipes across a dark band
 // when the band first scrolls into view. A band that is in view when the page opens shows at
@@ -29,26 +49,6 @@ onMounted(() => {
   live.value = true;
 });
 </script>
-
-<template>
-  <section
-    ref="el"
-    class="bless-eyecatch"
-    :class="{
-      'bless-eyecatch--accent': accent,
-      'bless-eyecatch--seen': !opener && visible,
-      'bless-eyecatch--wait': live && !opener && !visible,
-    }"
-  >
-    <span class="bless-eyecatch__slash" aria-hidden="true" />
-    <span v-if="num" class="bless-eyecatch__num" aria-hidden="true" :data-num="num" />
-    <div class="bless-eyecatch__text">
-      <p v-if="kicker" class="bless-eyecatch__kicker">{{ kicker }}</p>
-      <component :is="`h${headingLevel}`" class="bless-eyecatch__title">{{ title }}</component>
-      <slot />
-    </div>
-  </section>
-</template>
 
 <style>
 .bless-eyecatch {

@@ -1,3 +1,7 @@
+<template>
+  <BlessTerminal :lines title="studio@server: ~" @run="run" />
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessTerminal, type BlessTerminalLine } from "blessing-ui";
@@ -22,7 +26,3 @@ function run(cmd: string) {
   else lines.value.push({ kind: "err", text: `${name}: command not found` });
 }
 </script>
-
-<template>
-  <BlessTerminal :lines title="studio@server: ~" @run="run" />
-</template>

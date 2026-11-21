@@ -1,23 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { useLink } from "../composables/useLink";
-import type { BlessTreeNode } from "./tree";
-
-defineOptions({ name: "BlessTreeItem" });
-const link = useLink();
-
-const props = defineProps<{
-  node: BlessTreeNode;
-  path: string;
-  selected?: string;
-  level: number;
-}>();
-const emit = defineEmits<{ select: [node: BlessTreeNode, path: string] }>();
-const id = () => props.node.id ?? props.path;
-// a branch reports whether it's open; native <details> toggles it, so follow its toggle event
-const expanded = ref(!!props.node.open);
-</script>
-
 <template>
   <li
     class="bless-tree__item"
@@ -74,3 +54,23 @@ const expanded = ref(!!props.node.open);
     </component>
   </li>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { useLink } from "../composables/useLink";
+import type { BlessTreeNode } from "./tree";
+
+defineOptions({ name: "BlessTreeItem" });
+const link = useLink();
+
+const props = defineProps<{
+  node: BlessTreeNode;
+  path: string;
+  selected?: string;
+  level: number;
+}>();
+const emit = defineEmits<{ select: [node: BlessTreeNode, path: string] }>();
+const id = () => props.node.id ?? props.path;
+// a branch reports whether it's open; native <details> toggles it, so follow its toggle event
+const expanded = ref(!!props.node.open);
+</script>

@@ -1,3 +1,50 @@
+<template>
+  <div class="bless-lesson">
+    <video
+      ref="video"
+      class="bless-lesson__video"
+      :src
+      :poster
+      :title
+      controls
+      preload="metadata"
+      @timeupdate="now = ($event.target as HTMLVideoElement).currentTime"
+    >
+      <track v-if="captions" kind="captions" :src="captions" :srclang="captionsLang" default />
+    </video>
+    <section class="bless-lesson__notes" :aria-label="text.notes">
+      <form class="bless-lesson__form" @submit.prevent="add">
+        <textarea v-model="draft" rows="2" :aria-label="text.write" :placeholder="text.write" />
+        <button type="submit">{{ text.add(clock(now)) }}</button>
+      </form>
+      <p v-if="!notes.length" class="bless-lesson__empty">{{ text.empty }}</p>
+      <ol v-else class="bless-lesson__list" role="list">
+        <li v-for="n in sorted" :key="n.id">
+          <div class="bless-lesson__note">
+            <button
+              type="button"
+              class="bless-lesson__time"
+              :aria-label="text.go(clock(n.at))"
+              @click="go(n.at)"
+            >
+              {{ clock(n.at) }}
+            </button>
+            <span class="bless-lesson__text">{{ n.text }}</span>
+            <button
+              type="button"
+              class="bless-lesson__remove"
+              :aria-label="text.remove(clock(n.at))"
+              @click="remove(n.id)"
+            >
+              ✕
+            </button>
+          </div>
+        </li>
+      </ol>
+    </section>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed, ref } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -65,53 +112,6 @@ function go(at: number) {
 }
 const remove = (id: string) => (notes.value = notes.value.filter((n) => n.id !== id));
 </script>
-
-<template>
-  <div class="bless-lesson">
-    <video
-      ref="video"
-      class="bless-lesson__video"
-      :src
-      :poster
-      :title
-      controls
-      preload="metadata"
-      @timeupdate="now = ($event.target as HTMLVideoElement).currentTime"
-    >
-      <track v-if="captions" kind="captions" :src="captions" :srclang="captionsLang" default />
-    </video>
-    <section class="bless-lesson__notes" :aria-label="text.notes">
-      <form class="bless-lesson__form" @submit.prevent="add">
-        <textarea v-model="draft" rows="2" :aria-label="text.write" :placeholder="text.write" />
-        <button type="submit">{{ text.add(clock(now)) }}</button>
-      </form>
-      <p v-if="!notes.length" class="bless-lesson__empty">{{ text.empty }}</p>
-      <ol v-else class="bless-lesson__list" role="list">
-        <li v-for="n in sorted" :key="n.id">
-          <div class="bless-lesson__note">
-            <button
-              type="button"
-              class="bless-lesson__time"
-              :aria-label="text.go(clock(n.at))"
-              @click="go(n.at)"
-            >
-              {{ clock(n.at) }}
-            </button>
-            <span class="bless-lesson__text">{{ n.text }}</span>
-            <button
-              type="button"
-              class="bless-lesson__remove"
-              :aria-label="text.remove(clock(n.at))"
-              @click="remove(n.id)"
-            >
-              ✕
-            </button>
-          </div>
-        </li>
-      </ol>
-    </section>
-  </div>
-</template>
 
 <style>
 .bless-lesson {

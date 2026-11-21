@@ -1,3 +1,14 @@
+<template>
+  <BlessInput
+    :inputmode="numeric ? 'numeric' : undefined"
+    v-bind="$attrs"
+    :model-value="model"
+    :placeholder="ph"
+    @update:model-value="onInput"
+    @input.capture="fix"
+  />
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import BlessInput from "./BlessInput.vue";
@@ -36,14 +47,3 @@ function fix(e: Event) {
   el.setSelectionRange(at, at);
 }
 </script>
-
-<template>
-  <BlessInput
-    :inputmode="numeric ? 'numeric' : undefined"
-    v-bind="$attrs"
-    :model-value="model"
-    :placeholder="ph"
-    @update:model-value="onInput"
-    @input.capture="fix"
-  />
-</template>

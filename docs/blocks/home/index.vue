@@ -1,3 +1,42 @@
+<template>
+  <div class="home">
+    <section class="home__scenes" aria-labelledby="home-scenes">
+      <BlessText id="home-scenes" as="h2" size="sm" weight="bold">Scenes</BlessText>
+      <BlessSceneButtons v-model="scene" :scenes />
+    </section>
+    <BlessFloorPlan v-model="room" :rooms :devices class="home__plan">
+      <template #room="{ room: r, devices: list }">
+        <BlessText as="h3" size="sm" weight="bold">{{ r.name }}</BlessText>
+        <div class="home__tiles">
+          <BlessDeviceTile
+            v-for="d in list"
+            :key="d.id"
+            :model-value="!!d.on"
+            :name="d.name"
+            :icon="d.icon"
+            :reading="
+              (d as Device).battery !== undefined ? `Battery ${(d as Device).battery}%` : undefined
+            "
+            @update:model-value="set(d.id, $event)"
+          />
+        </div>
+      </template>
+    </BlessFloorPlan>
+    <aside class="home__side">
+      <BlessThermostat v-model="target" v-model:mode="mode" :current="26.5" />
+      <section aria-labelledby="home-batteries">
+        <BlessText id="home-batteries" as="h2" size="sm" weight="bold">Batteries</BlessText>
+        <ul role="list" class="home__batteries">
+          <li v-for="d in batteries" :key="d.id">
+            <span class="home__device">{{ d.name }}</span>
+            <BlessBatteryLevel :level="d.battery!" :label="d.name" />
+          </li>
+        </ul>
+      </section>
+    </aside>
+  </div>
+</template>
+
 <script setup lang="ts">
 import {
   BlessBatteryLevel,
@@ -44,45 +83,6 @@ const batteries = computed(() =>
   devices.value.filter((d) => d.battery !== undefined).sort((a, b) => a.battery! - b.battery!),
 );
 </script>
-
-<template>
-  <div class="home">
-    <section class="home__scenes" aria-labelledby="home-scenes">
-      <BlessText id="home-scenes" as="h2" size="sm" weight="bold">Scenes</BlessText>
-      <BlessSceneButtons v-model="scene" :scenes />
-    </section>
-    <BlessFloorPlan v-model="room" :rooms :devices class="home__plan">
-      <template #room="{ room: r, devices: list }">
-        <BlessText as="h3" size="sm" weight="bold">{{ r.name }}</BlessText>
-        <div class="home__tiles">
-          <BlessDeviceTile
-            v-for="d in list"
-            :key="d.id"
-            :model-value="!!d.on"
-            :name="d.name"
-            :icon="d.icon"
-            :reading="
-              (d as Device).battery !== undefined ? `Battery ${(d as Device).battery}%` : undefined
-            "
-            @update:model-value="set(d.id, $event)"
-          />
-        </div>
-      </template>
-    </BlessFloorPlan>
-    <aside class="home__side">
-      <BlessThermostat v-model="target" v-model:mode="mode" :current="26.5" />
-      <section aria-labelledby="home-batteries">
-        <BlessText id="home-batteries" as="h2" size="sm" weight="bold">Batteries</BlessText>
-        <ul role="list" class="home__batteries">
-          <li v-for="d in batteries" :key="d.id">
-            <span class="home__device">{{ d.name }}</span>
-            <BlessBatteryLevel :level="d.battery!" :label="d.name" />
-          </li>
-        </ul>
-      </section>
-    </aside>
-  </div>
-</template>
 
 <style scoped>
 .home {

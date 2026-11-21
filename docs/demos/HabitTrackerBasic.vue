@@ -1,3 +1,7 @@
+<template>
+  <BlessHabitTracker v-model:done="done" :habits end="2026-11-16" />
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessHabitTracker } from "blessing-ui";
@@ -14,7 +18,3 @@ const done = ref<Record<string, string[]>>({
   edit: ["2026-11-10", "2026-11-11"],
 });
 </script>
-
-<template>
-  <BlessHabitTracker v-model:done="done" :habits end="2026-11-16" />
-</template>

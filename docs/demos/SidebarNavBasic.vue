@@ -1,10 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { BlessSidebarNav } from "blessing-ui";
-import { navItems } from "./_nav";
-const active = ref("#news");
-</script>
-
 <template>
   <div style="max-width: 220px">
     <BlessSidebarNav
@@ -21,3 +14,10 @@ const active = ref("#news");
     />
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { BlessSidebarNav } from "blessing-ui";
+import { navItems } from "./_nav";
+const active = ref("#news");
+</script>

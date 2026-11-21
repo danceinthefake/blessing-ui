@@ -1,3 +1,52 @@
+<template>
+  <!-- a form, so Enter in any field saves -->
+  <BlessForm class="settings" @submit="save">
+    <BlessText as="h1" size="lg" weight="light">Settings</BlessText>
+    <BlessPanel title="Profile" :level="2">
+      <div class="settings__avatar">
+        <BlessAvatar :name="form.name" size="lg" />
+        <BlessButton size="sm" variant="outline">Change photo</BlessButton>
+      </div>
+      <div class="settings__grid">
+        <BlessField label="Name"><BlessInput v-model="form.name" /></BlessField>
+        <BlessField label="Email"><BlessInput v-model="form.email" type="email" /></BlessField>
+      </div>
+      <BlessField label="Bio" description="Shown on your public profile."
+        ><BlessTextarea v-model="form.bio" :rows="2" autogrow
+      /></BlessField>
+      <BlessField label="Language"><BlessSelect v-model="form.lang" :options="langs" /></BlessField>
+    </BlessPanel>
+    <BlessPanel title="Notifications" :level="2">
+      <div class="settings__checks">
+        <!-- checkboxes, not switches: these apply on Save, and a switch promises it's done now -->
+        <BlessCheckbox v-model="form.emails">Email me about account activity</BlessCheckbox>
+        <BlessCheckbox v-model="form.push">Push notifications</BlessCheckbox>
+        <BlessCheckbox v-model="form.digest">Weekly digest</BlessCheckbox>
+      </div>
+    </BlessPanel>
+    <BlessPanel title="Danger zone" :level="2" class="settings__danger">
+      <BlessText as="p" size="sm" muted
+        >Deleting your account removes all your data. This cannot be undone.</BlessText
+      >
+      <BlessButton color="danger" variant="outline" size="sm" @click="confirmDelete = true"
+        >Delete account</BlessButton
+      >
+    </BlessPanel>
+    <div class="settings__bar">
+      <BlessButton variant="ghost" @click="discard">Discard</BlessButton>
+      <BlessButton type="submit" :loading="saving">Save changes</BlessButton>
+    </div>
+    <BlessAlertDialog
+      v-model="confirmDelete"
+      title="Delete account?"
+      :labels="{ confirm: 'Delete' }"
+      @confirm="confirmDelete = false"
+    >
+      Everything goes: profile, history, files. Type your password on the next screen to confirm.
+    </BlessAlertDialog>
+  </BlessForm>
+</template>
+
 <script setup lang="ts">
 import { onMounted, reactive, ref } from "vue";
 import { mockSettingsApi, type Profile } from "./api";
@@ -50,55 +99,6 @@ function discard() {
   info("Changes discarded");
 }
 </script>
-
-<template>
-  <!-- a form, so Enter in any field saves -->
-  <BlessForm class="settings" @submit="save">
-    <BlessText as="h1" size="lg" weight="light">Settings</BlessText>
-    <BlessPanel title="Profile" :level="2">
-      <div class="settings__avatar">
-        <BlessAvatar :name="form.name" size="lg" />
-        <BlessButton size="sm" variant="outline">Change photo</BlessButton>
-      </div>
-      <div class="settings__grid">
-        <BlessField label="Name"><BlessInput v-model="form.name" /></BlessField>
-        <BlessField label="Email"><BlessInput v-model="form.email" type="email" /></BlessField>
-      </div>
-      <BlessField label="Bio" description="Shown on your public profile."
-        ><BlessTextarea v-model="form.bio" :rows="2" autogrow
-      /></BlessField>
-      <BlessField label="Language"><BlessSelect v-model="form.lang" :options="langs" /></BlessField>
-    </BlessPanel>
-    <BlessPanel title="Notifications" :level="2">
-      <div class="settings__checks">
-        <!-- checkboxes, not switches: these apply on Save, and a switch promises it's done now -->
-        <BlessCheckbox v-model="form.emails">Email me about account activity</BlessCheckbox>
-        <BlessCheckbox v-model="form.push">Push notifications</BlessCheckbox>
-        <BlessCheckbox v-model="form.digest">Weekly digest</BlessCheckbox>
-      </div>
-    </BlessPanel>
-    <BlessPanel title="Danger zone" :level="2" class="settings__danger">
-      <BlessText as="p" size="sm" muted
-        >Deleting your account removes all your data. This cannot be undone.</BlessText
-      >
-      <BlessButton color="danger" variant="outline" size="sm" @click="confirmDelete = true"
-        >Delete account</BlessButton
-      >
-    </BlessPanel>
-    <div class="settings__bar">
-      <BlessButton variant="ghost" @click="discard">Discard</BlessButton>
-      <BlessButton type="submit" :loading="saving">Save changes</BlessButton>
-    </div>
-    <BlessAlertDialog
-      v-model="confirmDelete"
-      title="Delete account?"
-      :labels="{ confirm: 'Delete' }"
-      @confirm="confirmDelete = false"
-    >
-      Everything goes: profile, history, files. Type your password on the next screen to confirm.
-    </BlessAlertDialog>
-  </BlessForm>
-</template>
 
 <style scoped>
 .settings {

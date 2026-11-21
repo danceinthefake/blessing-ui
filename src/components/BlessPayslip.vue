@@ -1,62 +1,3 @@
-<script setup lang="ts">
-import { computed } from "vue";
-import { moneyFormat } from "../composables/money";
-import { useLabelPack } from "../composables/useLabels";
-
-defineOptions({ name: "BlessPayslip" });
-const pack = useLabelPack("BlessPayslip");
-
-export interface BlessPayLine {
-  label: string;
-  amount: number;
-}
-
-const props = withDefaults(
-  defineProps<{
-    employee: { name: string; id?: string; role?: string };
-    company?: string;
-    /** the pay period, as text, for example "November 2026" */
-    period: string;
-    /** the pay day, as text */
-    payDate?: string;
-    earnings: BlessPayLine[];
-    deductions?: BlessPayLine[];
-    currency?: string;
-    locale?: string;
-    labels?: Partial<{
-      title: string;
-      employee: string;
-      period: string;
-      payDate: string;
-      earnings: string;
-      deductions: string;
-      totalEarnings: string;
-      totalDeductions: string;
-      net: string;
-    }>;
-  }>(),
-  { deductions: () => [], currency: "USD", locale: "en" },
-);
-
-const text = computed(() => ({
-  title: "Payslip",
-  employee: "Employee",
-  period: "Period",
-  payDate: "Pay day",
-  earnings: "Earnings",
-  deductions: "Deductions",
-  totalEarnings: "Total earnings",
-  totalDeductions: "Total deductions",
-  net: "Net pay",
-  ...pack(),
-  ...props.labels,
-}));
-const money = computed(() => moneyFormat(props.locale, props.currency));
-const sum = (l: BlessPayLine[]) => l.reduce((n, x) => n + x.amount, 0);
-const earned = computed(() => sum(props.earnings));
-const deducted = computed(() => sum(props.deductions));
-</script>
-
 <template>
   <article class="bless-payslip">
     <header class="bless-payslip__head">
@@ -124,6 +65,65 @@ const deducted = computed(() => sum(props.deductions));
     </div>
   </article>
 </template>
+
+<script setup lang="ts">
+import { computed } from "vue";
+import { moneyFormat } from "../composables/money";
+import { useLabelPack } from "../composables/useLabels";
+
+defineOptions({ name: "BlessPayslip" });
+const pack = useLabelPack("BlessPayslip");
+
+export interface BlessPayLine {
+  label: string;
+  amount: number;
+}
+
+const props = withDefaults(
+  defineProps<{
+    employee: { name: string; id?: string; role?: string };
+    company?: string;
+    /** the pay period, as text, for example "November 2026" */
+    period: string;
+    /** the pay day, as text */
+    payDate?: string;
+    earnings: BlessPayLine[];
+    deductions?: BlessPayLine[];
+    currency?: string;
+    locale?: string;
+    labels?: Partial<{
+      title: string;
+      employee: string;
+      period: string;
+      payDate: string;
+      earnings: string;
+      deductions: string;
+      totalEarnings: string;
+      totalDeductions: string;
+      net: string;
+    }>;
+  }>(),
+  { deductions: () => [], currency: "USD", locale: "en" },
+);
+
+const text = computed(() => ({
+  title: "Payslip",
+  employee: "Employee",
+  period: "Period",
+  payDate: "Pay day",
+  earnings: "Earnings",
+  deductions: "Deductions",
+  totalEarnings: "Total earnings",
+  totalDeductions: "Total deductions",
+  net: "Net pay",
+  ...pack(),
+  ...props.labels,
+}));
+const money = computed(() => moneyFormat(props.locale, props.currency));
+const sum = (l: BlessPayLine[]) => l.reduce((n, x) => n + x.amount, 0);
+const earned = computed(() => sum(props.earnings));
+const deducted = computed(() => sum(props.deductions));
+</script>
 
 <style>
 .bless-payslip {

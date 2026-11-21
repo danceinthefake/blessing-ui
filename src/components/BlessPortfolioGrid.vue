@@ -1,3 +1,36 @@
+<template>
+  <div class="bless-folio">
+    <div class="bless-folio__bar">
+      <div class="bless-folio__filters" role="group" :aria-label="text.filter">
+        <button type="button" :aria-pressed="!filter" @click="filter = ''">{{ text.all }}</button>
+        <button
+          v-for="k in kinds"
+          :key="k"
+          type="button"
+          :aria-pressed="filter === k"
+          @click="filter = k"
+        >
+          {{ k }}
+        </button>
+      </div>
+      <span class="bless-folio__count" role="status">{{ text.count(shown.length) }}</span>
+    </div>
+    <ul class="bless-stagger bless-folio__grid" role="list">
+      <li v-for="w in shown" :key="w.id">
+        <component :is="w.href ? 'a' : 'div'" :href="w.href" class="bless-folio__card">
+          <img :src="w.image" :alt="w.imageAlt ?? ''" class="bless-folio__image" loading="lazy" />
+          <span class="bless-folio__caption">
+            <span class="bless-folio__title">{{ w.title }}</span>
+            <span class="bless-folio__meta"
+              >{{ w.kind }}<template v-if="w.year"> · {{ w.year }}</template></span
+            >
+          </span>
+        </component>
+      </li>
+    </ul>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -36,39 +69,6 @@ const shown = computed(() =>
   filter.value ? props.works.filter((w) => w.kind === filter.value) : props.works,
 );
 </script>
-
-<template>
-  <div class="bless-folio">
-    <div class="bless-folio__bar">
-      <div class="bless-folio__filters" role="group" :aria-label="text.filter">
-        <button type="button" :aria-pressed="!filter" @click="filter = ''">{{ text.all }}</button>
-        <button
-          v-for="k in kinds"
-          :key="k"
-          type="button"
-          :aria-pressed="filter === k"
-          @click="filter = k"
-        >
-          {{ k }}
-        </button>
-      </div>
-      <span class="bless-folio__count" role="status">{{ text.count(shown.length) }}</span>
-    </div>
-    <ul class="bless-stagger bless-folio__grid" role="list">
-      <li v-for="w in shown" :key="w.id">
-        <component :is="w.href ? 'a' : 'div'" :href="w.href" class="bless-folio__card">
-          <img :src="w.image" :alt="w.imageAlt ?? ''" class="bless-folio__image" loading="lazy" />
-          <span class="bless-folio__caption">
-            <span class="bless-folio__title">{{ w.title }}</span>
-            <span class="bless-folio__meta"
-              >{{ w.kind }}<template v-if="w.year"> · {{ w.year }}</template></span
-            >
-          </span>
-        </component>
-      </li>
-    </ul>
-  </div>
-</template>
 
 <style>
 .bless-folio {

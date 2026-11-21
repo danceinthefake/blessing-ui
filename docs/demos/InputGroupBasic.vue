@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import { BlessButton, BlessInput, BlessInputGroup } from "blessing-ui";
-</script>
-
 <template>
   <div class="col">
     <BlessInputGroup>
@@ -19,3 +15,7 @@ import { BlessButton, BlessInput, BlessInputGroup } from "blessing-ui";
     </BlessInputGroup>
   </div>
 </template>
+
+<script setup lang="ts">
+import { BlessButton, BlessInput, BlessInputGroup } from "blessing-ui";
+</script>

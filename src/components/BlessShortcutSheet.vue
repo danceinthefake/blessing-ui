@@ -1,3 +1,34 @@
+<template>
+  <div class="bless-shortcuts">
+    <BlessInput
+      v-if="search"
+      v-model="query"
+      class="bless-shortcuts__search"
+      type="search"
+      size="sm"
+      :aria-label="text.search"
+      :placeholder="text.search"
+    />
+    <p v-if="!shown.length" class="bless-shortcuts__none" role="status">{{ text.none }}</p>
+    <div class="bless-shortcuts__groups">
+      <section v-for="g in shown" :key="g.title" class="bless-shortcuts__group">
+        <p class="bless-shortcuts__title">{{ g.title }}</p>
+        <dl class="bless-shortcuts__list">
+          <div v-for="s in g.shortcuts" :key="s.description" class="bless-shortcuts__row">
+            <dt>{{ s.description }}</dt>
+            <dd>
+              <template v-for="(c, i) in combos(s)" :key="c">
+                <span v-if="i" class="bless-shortcuts__or">{{ text.or }}</span>
+                <BlessKbd :keys="splitShortcut(c).map(keyName)" />
+              </template>
+            </dd>
+          </div>
+        </dl>
+      </section>
+    </div>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed, onMounted, ref } from "vue";
 import { splitShortcut } from "../composables/shortcut";
@@ -67,37 +98,6 @@ const shown = computed(() => {
     .filter((g) => g.shortcuts.length);
 });
 </script>
-
-<template>
-  <div class="bless-shortcuts">
-    <BlessInput
-      v-if="search"
-      v-model="query"
-      class="bless-shortcuts__search"
-      type="search"
-      size="sm"
-      :aria-label="text.search"
-      :placeholder="text.search"
-    />
-    <p v-if="!shown.length" class="bless-shortcuts__none" role="status">{{ text.none }}</p>
-    <div class="bless-shortcuts__groups">
-      <section v-for="g in shown" :key="g.title" class="bless-shortcuts__group">
-        <p class="bless-shortcuts__title">{{ g.title }}</p>
-        <dl class="bless-shortcuts__list">
-          <div v-for="s in g.shortcuts" :key="s.description" class="bless-shortcuts__row">
-            <dt>{{ s.description }}</dt>
-            <dd>
-              <template v-for="(c, i) in combos(s)" :key="c">
-                <span v-if="i" class="bless-shortcuts__or">{{ text.or }}</span>
-                <BlessKbd :keys="splitShortcut(c).map(keyName)" />
-              </template>
-            </dd>
-          </div>
-        </dl>
-      </section>
-    </div>
-  </div>
-</template>
 
 <style>
 .bless-shortcuts {

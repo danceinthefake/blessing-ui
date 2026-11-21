@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import { BlessBadge } from "blessing-ui";
-</script>
-
 <template>
   <div class="col">
     <div class="row">
@@ -17,3 +13,7 @@ import { BlessBadge } from "blessing-ui";
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+import { BlessBadge } from "blessing-ui";
+</script>

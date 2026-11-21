@@ -1,41 +1,3 @@
-<script setup lang="ts">
-import { useLabelPack } from "../composables/useLabels";
-import { computed } from "vue";
-import BlessProgress from "./BlessProgress.vue";
-import BlessSpinner from "./BlessSpinner.vue";
-
-defineOptions({ name: "BlessAttachment" });
-
-const props = withDefaults(
-  defineProps<{
-    name: string;
-    /** size / type line */
-    description?: string;
-    /** image preview */
-    src?: string;
-    /** renders <a> when set */
-    href?: string;
-    state?: "idle" | "uploading" | "error";
-    /** 0–100 while uploading; omit for indeterminate */
-    progress?: number;
-    size?: "sm" | "md";
-    removable?: boolean;
-    labels?: Partial<{ remove: string; error: string }>;
-  }>(),
-  { state: "idle", size: "md" },
-);
-const pack = useLabelPack("BlessAttachment");
-const text = computed(() => ({
-  remove: "Remove",
-  error: "Upload failed",
-  ...pack(),
-  ...props.labels,
-}));
-
-const emit = defineEmits<{ remove: [] }>();
-const ext = computed(() => props.name.split(".").pop()?.slice(0, 4).toUpperCase() ?? "");
-</script>
-
 <template>
   <div
     class="bless-attachment"
@@ -86,6 +48,44 @@ const ext = computed(() => props.name.split(".").pop()?.slice(0, 4).toUpperCase(
     </span>
   </div>
 </template>
+
+<script setup lang="ts">
+import { useLabelPack } from "../composables/useLabels";
+import { computed } from "vue";
+import BlessProgress from "./BlessProgress.vue";
+import BlessSpinner from "./BlessSpinner.vue";
+
+defineOptions({ name: "BlessAttachment" });
+
+const props = withDefaults(
+  defineProps<{
+    name: string;
+    /** size / type line */
+    description?: string;
+    /** image preview */
+    src?: string;
+    /** renders <a> when set */
+    href?: string;
+    state?: "idle" | "uploading" | "error";
+    /** 0–100 while uploading; omit for indeterminate */
+    progress?: number;
+    size?: "sm" | "md";
+    removable?: boolean;
+    labels?: Partial<{ remove: string; error: string }>;
+  }>(),
+  { state: "idle", size: "md" },
+);
+const pack = useLabelPack("BlessAttachment");
+const text = computed(() => ({
+  remove: "Remove",
+  error: "Upload failed",
+  ...pack(),
+  ...props.labels,
+}));
+
+const emit = defineEmits<{ remove: [] }>();
+const ext = computed(() => props.name.split(".").pop()?.slice(0, 4).toUpperCase() ?? "");
+</script>
 
 <style>
 .bless-attachment {

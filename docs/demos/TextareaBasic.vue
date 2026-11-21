@@ -1,9 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { BlessLabel, BlessTextarea } from "blessing-ui";
-const bio = ref("");
-</script>
-
 <template>
   <div class="row" style="align-items: flex-start">
     <div class="col">
@@ -22,3 +16,9 @@ const bio = ref("");
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { BlessLabel, BlessTextarea } from "blessing-ui";
+const bio = ref("");
+</script>

@@ -1,3 +1,51 @@
+<template>
+  <div class="bless-formula" :class="{ 'bless-formula--bad': error }">
+    <label class="bless-formula__label" :for="`${id}-in`">{{ label }}</label>
+    <input
+      :id="`${id}-in`"
+      ref="input"
+      v-model="model"
+      class="bless-formula__input"
+      type="text"
+      spellcheck="false"
+      autocomplete="off"
+      autocapitalize="off"
+      :placeholder
+      :disabled
+      :aria-invalid="error ? true : undefined"
+      :aria-describedby="`${id}-out`"
+    />
+    <div v-if="variables.length" class="bless-formula__vars" role="group" :aria-label="text.insert">
+      <button
+        v-for="v in variables"
+        :key="v.name"
+        type="button"
+        class="bless-formula__chip"
+        :aria-pressed="used.has(v.name)"
+        :title="`${v.name} = ${v.value}`"
+        :disabled
+        @click="insert(v.name)"
+      >
+        {{ v.label ?? v.name }}
+      </button>
+    </div>
+    <p :id="`${id}-out`" class="bless-formula__out" role="status" aria-live="polite">
+      <template v-if="error">
+        <span class="bless-formula__error">{{ text.error(error) }}</span>
+        <button
+          v-if="error.suggestion"
+          type="button"
+          class="bless-formula__fix"
+          @click="applySuggestion(error)"
+        >
+          {{ text.use(error.suggestion) }}
+        </button>
+      </template>
+      <span v-else-if="outcome.ok" class="bless-formula__value">{{ text.result(shown) }}</span>
+    </p>
+  </div>
+</template>
+
 <script lang="ts">
 export interface BlessFormulaVariable {
   name: string;
@@ -103,54 +151,6 @@ function applySuggestion(e: FormulaError) {
   nextTick(() => input.value?.focus());
 }
 </script>
-
-<template>
-  <div class="bless-formula" :class="{ 'bless-formula--bad': error }">
-    <label class="bless-formula__label" :for="`${id}-in`">{{ label }}</label>
-    <input
-      :id="`${id}-in`"
-      ref="input"
-      v-model="model"
-      class="bless-formula__input"
-      type="text"
-      spellcheck="false"
-      autocomplete="off"
-      autocapitalize="off"
-      :placeholder
-      :disabled
-      :aria-invalid="error ? true : undefined"
-      :aria-describedby="`${id}-out`"
-    />
-    <div v-if="variables.length" class="bless-formula__vars" role="group" :aria-label="text.insert">
-      <button
-        v-for="v in variables"
-        :key="v.name"
-        type="button"
-        class="bless-formula__chip"
-        :aria-pressed="used.has(v.name)"
-        :title="`${v.name} = ${v.value}`"
-        :disabled
-        @click="insert(v.name)"
-      >
-        {{ v.label ?? v.name }}
-      </button>
-    </div>
-    <p :id="`${id}-out`" class="bless-formula__out" role="status" aria-live="polite">
-      <template v-if="error">
-        <span class="bless-formula__error">{{ text.error(error) }}</span>
-        <button
-          v-if="error.suggestion"
-          type="button"
-          class="bless-formula__fix"
-          @click="applySuggestion(error)"
-        >
-          {{ text.use(error.suggestion) }}
-        </button>
-      </template>
-      <span v-else-if="outcome.ok" class="bless-formula__value">{{ text.result(shown) }}</span>
-    </p>
-  </div>
-</template>
 
 <style>
 .bless-formula {

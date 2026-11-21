@@ -1,3 +1,32 @@
+<template>
+  <BlessDataTable
+    :rows
+    :columns
+    row-key="id"
+    selectable
+    searchable
+    :search-keys="['title', 'air']"
+    :page-size="5"
+    caption="Episodes"
+    @update:selected="selected = $event"
+  >
+    <template #toolbar="{ selected: s }">
+      <BlessButton
+        v-if="s.length"
+        size="sm"
+        color="danger"
+        variant="outline"
+        @click="toast(`${s.length} removed`)"
+        >Delete {{ s.length }}</BlessButton
+      >
+    </template>
+    <template #cell-status="{ value }">
+      <BlessBadge :color="value === 'aired' ? 'success' : 'warning'">{{ value }}</BlessBadge>
+    </template>
+    <template #cell-views="{ value }">{{ Number(value).toLocaleString("en-US") }}</template>
+  </BlessDataTable>
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import {
@@ -35,32 +64,3 @@ const columns: BlessDataColumn<Ep>[] = [
 const selected = ref<Ep[]>([]);
 const { toast } = useToast();
 </script>
-
-<template>
-  <BlessDataTable
-    :rows
-    :columns
-    row-key="id"
-    selectable
-    searchable
-    :search-keys="['title', 'air']"
-    :page-size="5"
-    caption="Episodes"
-    @update:selected="selected = $event"
-  >
-    <template #toolbar="{ selected: s }">
-      <BlessButton
-        v-if="s.length"
-        size="sm"
-        color="danger"
-        variant="outline"
-        @click="toast(`${s.length} removed`)"
-        >Delete {{ s.length }}</BlessButton
-      >
-    </template>
-    <template #cell-status="{ value }">
-      <BlessBadge :color="value === 'aired' ? 'success' : 'warning'">{{ value }}</BlessBadge>
-    </template>
-    <template #cell-views="{ value }">{{ Number(value).toLocaleString("en-US") }}</template>
-  </BlessDataTable>
-</template>

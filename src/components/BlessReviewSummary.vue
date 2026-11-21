@@ -1,3 +1,42 @@
+<template>
+  <div class="bless-reviews">
+    <div class="bless-reviews__score">
+      <strong class="bless-reviews__avg" aria-hidden="true">{{ one.format(avg) }}</strong>
+      <span
+        class="bless-reviews__stars"
+        role="img"
+        :aria-label="text.average(one.format(avg))"
+        :style="{ '--_fill': `${Math.round(avg * 2000) / 100}%` }"
+      >
+        <span aria-hidden="true">★★★★★</span>
+      </span>
+      <span class="bless-reviews__total">{{ text.reviews(total) }}</span>
+    </div>
+    <ul class="bless-stagger bless-reviews__bars">
+      <li v-for="r in rows" :key="r.stars">
+        <component
+          :is="filterable ? 'button' : 'div'"
+          :type="filterable ? 'button' : undefined"
+          class="bless-reviews__row"
+          :class="{
+            'is-on': filter === r.stars,
+            'is-off': filter !== undefined && filter !== r.stars,
+          }"
+          :aria-pressed="filterable ? filter === r.stars : undefined"
+          @click="filterable && toggle(r.stars)"
+        >
+          <span class="bless-reviews__level" aria-hidden="true">{{ r.stars }} ★</span>
+          <span class="bless-reviews__bar" aria-hidden="true">
+            <span :style="{ inlineSize: `${total ? (r.count / total) * 100 : 0}%` }" />
+          </span>
+          <span class="bless-reviews__count" aria-hidden="true">{{ count.format(r.count) }}</span>
+          <span class="bless-sr">{{ text.level(r.stars, r.count) }}</span>
+        </component>
+      </li>
+    </ul>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -46,45 +85,6 @@ const one = computed(
 const count = computed(() => new Intl.NumberFormat(props.locale));
 const toggle = (s: number) => (filter.value = filter.value === s ? undefined : s);
 </script>
-
-<template>
-  <div class="bless-reviews">
-    <div class="bless-reviews__score">
-      <strong class="bless-reviews__avg" aria-hidden="true">{{ one.format(avg) }}</strong>
-      <span
-        class="bless-reviews__stars"
-        role="img"
-        :aria-label="text.average(one.format(avg))"
-        :style="{ '--_fill': `${Math.round(avg * 2000) / 100}%` }"
-      >
-        <span aria-hidden="true">★★★★★</span>
-      </span>
-      <span class="bless-reviews__total">{{ text.reviews(total) }}</span>
-    </div>
-    <ul class="bless-stagger bless-reviews__bars">
-      <li v-for="r in rows" :key="r.stars">
-        <component
-          :is="filterable ? 'button' : 'div'"
-          :type="filterable ? 'button' : undefined"
-          class="bless-reviews__row"
-          :class="{
-            'is-on': filter === r.stars,
-            'is-off': filter !== undefined && filter !== r.stars,
-          }"
-          :aria-pressed="filterable ? filter === r.stars : undefined"
-          @click="filterable && toggle(r.stars)"
-        >
-          <span class="bless-reviews__level" aria-hidden="true">{{ r.stars }} ★</span>
-          <span class="bless-reviews__bar" aria-hidden="true">
-            <span :style="{ inlineSize: `${total ? (r.count / total) * 100 : 0}%` }" />
-          </span>
-          <span class="bless-reviews__count" aria-hidden="true">{{ count.format(r.count) }}</span>
-          <span class="bless-sr">{{ text.level(r.stars, r.count) }}</span>
-        </component>
-      </li>
-    </ul>
-  </div>
-</template>
 
 <style>
 .bless-reviews {

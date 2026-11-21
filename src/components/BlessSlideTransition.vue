@@ -1,3 +1,9 @@
+<template>
+  <Transition :appear :css="false" @enter="enter" @leave="leave">
+    <slot />
+  </Transition>
+</template>
+
 <script setup lang="ts">
 import { reducedMotion as reduced } from "../composables/useMedia";
 defineOptions({ name: "BlessSlideTransition" });
@@ -42,9 +48,3 @@ function leave(el: Element, done: () => void) {
   run(h, px(h), "0", done);
 }
 </script>
-
-<template>
-  <Transition :appear :css="false" @enter="enter" @leave="leave">
-    <slot />
-  </Transition>
-</template>

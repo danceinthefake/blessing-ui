@@ -1,9 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { BlessButton, BlessProgress } from "blessing-ui";
-const value = ref(35);
-</script>
-
 <template>
   <div class="col">
     <BlessProgress :value label="Upload" show-value />
@@ -23,3 +17,9 @@ const value = ref(35);
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { BlessButton, BlessProgress } from "blessing-ui";
+const value = ref(35);
+</script>

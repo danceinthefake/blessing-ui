@@ -1,3 +1,33 @@
+<template>
+  <BlessSkew
+    :as="tag.is"
+    v-bind="tag.attrs"
+    :color="skewColor"
+    class="bless-button"
+    :class="[
+      `bless-button--${variant}`,
+      `bless-button--${color}`,
+      `bless-button--${size}`,
+      {
+        'bless-button--loading': loading,
+        'bless-button--block': block,
+        'bless-button--icon': icon,
+      },
+    ]"
+    :type="href ? undefined : type"
+    :disabled="href ? undefined : disabled"
+    :aria-disabled="inactive || undefined"
+    :aria-busy="loading || undefined"
+    :tabindex="href && inactive ? -1 : undefined"
+    @click="onClick"
+  >
+    <BlessSpinner v-if="loading" size="sm" label="" />
+    <slot v-else name="prefix" />
+    <slot />
+    <slot name="suffix" />
+  </BlessSkew>
+</template>
+
 <script setup lang="ts">
 import { useLink } from "../composables/useLink";
 import { computed } from "vue";
@@ -37,36 +67,6 @@ function onClick(e: MouseEvent) {
   else emit("click", e);
 }
 </script>
-
-<template>
-  <BlessSkew
-    :as="tag.is"
-    v-bind="tag.attrs"
-    :color="skewColor"
-    class="bless-button"
-    :class="[
-      `bless-button--${variant}`,
-      `bless-button--${color}`,
-      `bless-button--${size}`,
-      {
-        'bless-button--loading': loading,
-        'bless-button--block': block,
-        'bless-button--icon': icon,
-      },
-    ]"
-    :type="href ? undefined : type"
-    :disabled="href ? undefined : disabled"
-    :aria-disabled="inactive || undefined"
-    :aria-busy="loading || undefined"
-    :tabindex="href && inactive ? -1 : undefined"
-    @click="onClick"
-  >
-    <BlessSpinner v-if="loading" size="sm" label="" />
-    <slot v-else name="prefix" />
-    <slot />
-    <slot name="suffix" />
-  </BlessSkew>
-</template>
 
 <style>
 .bless-button {

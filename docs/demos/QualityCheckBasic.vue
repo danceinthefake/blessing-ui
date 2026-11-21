@@ -1,3 +1,14 @@
+<template>
+  <BlessQualityCheck
+    v-model="results"
+    :items
+    @submit="
+      (_, ok) => (verdict = ok ? 'Saved: the unit passes.' : 'Saved: the unit goes to rework.')
+    "
+  />
+  <p v-if="verdict" style="margin-top: 12px">{{ verdict }}</p>
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessQualityCheck, type BlessQualityItem, type BlessQualityResult } from "blessing-ui";
@@ -11,14 +22,3 @@ const items: BlessQualityItem[] = [
 const results = ref<BlessQualityResult>({ length: { value: 120.1 }, screws: { pass: true } });
 const verdict = ref("");
 </script>
-
-<template>
-  <BlessQualityCheck
-    v-model="results"
-    :items
-    @submit="
-      (_, ok) => (verdict = ok ? 'Saved: the unit passes.' : 'Saved: the unit goes to rework.')
-    "
-  />
-  <p v-if="verdict" style="margin-top: 12px">{{ verdict }}</p>
-</template>

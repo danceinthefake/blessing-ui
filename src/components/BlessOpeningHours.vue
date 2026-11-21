@@ -1,3 +1,30 @@
+<template>
+  <section class="bless-hours" :aria-label="text.title">
+    <p v-if="state" class="bless-hours__status" :class="state.open ? 'is-open' : 'is-closed'">
+      <span class="bless-hours__dot" aria-hidden="true" />{{ status }}
+    </p>
+    <dl class="bless-hours__week">
+      <div
+        v-for="(shifts, d) in hours"
+        :key="d"
+        class="bless-hours__day"
+        :class="{ 'is-today': here?.day === d }"
+      >
+        <dt>
+          {{ dayName(d)
+          }}<span v-if="here?.day === d" class="bless-hours__today"> · {{ text.today }}</span>
+        </dt>
+        <dd>
+          <template v-if="shifts.length">
+            <span v-for="(s, i) in shifts" :key="i">{{ span(s) }}</span>
+          </template>
+          <span v-else class="bless-hours__closed">{{ text.closed }}</span>
+        </dd>
+      </div>
+    </dl>
+  </section>
+</template>
+
 <script lang="ts">
 export interface BlessShift {
   /** `HH:MM`, 24-hour */
@@ -127,33 +154,6 @@ const status = computed(() => {
   return `${text.value.closed} · ${text.value.opensAt(day, clock(s.opens))}`;
 });
 </script>
-
-<template>
-  <section class="bless-hours" :aria-label="text.title">
-    <p v-if="state" class="bless-hours__status" :class="state.open ? 'is-open' : 'is-closed'">
-      <span class="bless-hours__dot" aria-hidden="true" />{{ status }}
-    </p>
-    <dl class="bless-hours__week">
-      <div
-        v-for="(shifts, d) in hours"
-        :key="d"
-        class="bless-hours__day"
-        :class="{ 'is-today': here?.day === d }"
-      >
-        <dt>
-          {{ dayName(d)
-          }}<span v-if="here?.day === d" class="bless-hours__today"> · {{ text.today }}</span>
-        </dt>
-        <dd>
-          <template v-if="shifts.length">
-            <span v-for="(s, i) in shifts" :key="i">{{ span(s) }}</span>
-          </template>
-          <span v-else class="bless-hours__closed">{{ text.closed }}</span>
-        </dd>
-      </div>
-    </dl>
-  </section>
-</template>
 
 <style>
 .bless-hours {

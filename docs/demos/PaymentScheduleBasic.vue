@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import { BlessPaymentSchedule } from "blessing-ui";
-</script>
-
 <template>
   <!-- a loan of Rp 24,000,000 for studio gear: 9.5% a year over 12 months, 3 payments made -->
   <BlessPaymentSchedule
@@ -14,3 +10,7 @@ import { BlessPaymentSchedule } from "blessing-ui";
     locale="id-ID"
   />
 </template>
+
+<script setup lang="ts">
+import { BlessPaymentSchedule } from "blessing-ui";
+</script>

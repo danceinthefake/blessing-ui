@@ -1,27 +1,3 @@
-<script setup lang="ts">
-import "./sr.css";
-import BlessAvatar from "./BlessAvatar.vue";
-
-defineOptions({ name: "BlessMessage" });
-
-withDefaults(
-  defineProps<{
-    /** sender name, shown in header and used for avatar initials */
-    name?: string;
-    /** timestamp / meta text in header */
-    time?: string;
-    /** machine-readable form of `time` for the <time> element */
-    datetime?: string;
-    avatar?: string;
-    /** start = other party, end = self */
-    align?: "start" | "end";
-    /** hide avatar column (consecutive messages in a group) */
-    compact?: boolean;
-  }>(),
-  { align: "start" },
-);
-</script>
-
 <template>
   <article
     class="bless-message"
@@ -45,6 +21,30 @@ withDefaults(
     <span v-if="$slots.actions" class="bless-message__actions"><slot name="actions" /></span>
   </article>
 </template>
+
+<script setup lang="ts">
+import "./sr.css";
+import BlessAvatar from "./BlessAvatar.vue";
+
+defineOptions({ name: "BlessMessage" });
+
+withDefaults(
+  defineProps<{
+    /** sender name, shown in header and used for avatar initials */
+    name?: string;
+    /** timestamp / meta text in header */
+    time?: string;
+    /** machine-readable form of `time` for the <time> element */
+    datetime?: string;
+    avatar?: string;
+    /** start = other party, end = self */
+    align?: "start" | "end";
+    /** hide avatar column (consecutive messages in a group) */
+    compact?: boolean;
+  }>(),
+  { align: "start" },
+);
+</script>
 
 <style>
 .bless-message {

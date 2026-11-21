@@ -1,11 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { BlessKnob } from "blessing-ui";
-const vol = ref(35);
-const rating = ref(3);
-const gain = ref(-20);
-</script>
-
 <template>
   <div class="row" style="gap: 32px; align-items: flex-end">
     <BlessKnob v-model="vol" label="Volume" :format="(v) => `${v}%`" />
@@ -24,3 +16,11 @@ const gain = ref(-20);
     <small>drag the dial · keyboard via the native range</small>
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { BlessKnob } from "blessing-ui";
+const vol = ref(35);
+const rating = ref(3);
+const gain = ref(-20);
+</script>

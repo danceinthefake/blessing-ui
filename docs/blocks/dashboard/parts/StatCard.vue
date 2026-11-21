@@ -1,10 +1,3 @@
-<script setup lang="ts">
-import { BlessBadge, BlessCard, BlessText } from "blessing-ui";
-import { fmt, fmtDelta, type Stat } from "../domain";
-
-defineProps<{ stat: Stat }>();
-</script>
-
 <template>
   <BlessCard>
     <BlessText as="p" size="xs" muted tracking="wider" uppercase>{{ stat.label }}</BlessText>
@@ -16,6 +9,13 @@ defineProps<{ stat: Stat }>();
     </div>
   </BlessCard>
 </template>
+
+<script setup lang="ts">
+import { BlessBadge, BlessCard, BlessText } from "blessing-ui";
+import { fmt, fmtDelta, type Stat } from "../domain";
+
+defineProps<{ stat: Stat }>();
+</script>
 
 <style scoped>
 .stat__row {

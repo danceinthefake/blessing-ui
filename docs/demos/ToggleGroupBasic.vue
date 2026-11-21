@@ -1,10 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { BlessToggle, BlessToggleGroup } from "blessing-ui";
-const align = ref<string | undefined>("left");
-const fmt = ref<string[]>(["b", "i"]);
-</script>
-
 <template>
   <div class="row">
     <BlessToggleGroup v-model="align" label="Align">
@@ -20,3 +13,10 @@ const fmt = ref<string[]>(["b", "i"]);
     <small>align: {{ align }} · fmt: {{ fmt }}</small>
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { BlessToggle, BlessToggleGroup } from "blessing-ui";
+const align = ref<string | undefined>("left");
+const fmt = ref<string[]>(["b", "i"]);
+</script>

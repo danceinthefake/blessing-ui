@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import { BlessBadge, BlessSection, BlessText } from "blessing-ui";
-</script>
-
 <template>
   <BlessSection title="Character" subtitle="登場人物" headline="hanging">
     <template #band>
@@ -22,6 +18,10 @@ import { BlessBadge, BlessSection, BlessText } from "blessing-ui";
     </div>
   </BlessSection>
 </template>
+
+<script setup lang="ts">
+import { BlessBadge, BlessSection, BlessText } from "blessing-ui";
+</script>
 
 <style scoped>
 .kv {

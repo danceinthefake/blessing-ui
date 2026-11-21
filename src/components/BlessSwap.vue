@@ -1,19 +1,3 @@
-<script setup lang="ts">
-import { useFieldId } from "../composables/useFieldId";
-
-defineOptions({ name: "BlessSwap" });
-
-const props = defineProps<{
-  id?: string;
-  label: string;
-  disabled?: boolean;
-  /** how the two faces exchange */
-  effect?: "fade" | "rotate" | "flip";
-}>();
-const model = defineModel<boolean>({ default: false });
-const id = useFieldId(props);
-</script>
-
 <template>
   <label
     :for="id()"
@@ -39,6 +23,22 @@ const id = useFieldId(props);
     >
   </label>
 </template>
+
+<script setup lang="ts">
+import { useFieldId } from "../composables/useFieldId";
+
+defineOptions({ name: "BlessSwap" });
+
+const props = defineProps<{
+  id?: string;
+  label: string;
+  disabled?: boolean;
+  /** how the two faces exchange */
+  effect?: "fade" | "rotate" | "flip";
+}>();
+const model = defineModel<boolean>({ default: false });
+const id = useFieldId(props);
+</script>
 
 <style>
 .bless-swap {

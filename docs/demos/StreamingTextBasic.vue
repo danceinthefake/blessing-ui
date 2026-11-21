@@ -1,3 +1,13 @@
+<template>
+  <BlessStack :gap="3" style="max-width: 560px">
+    <BlessStack direction="row" :gap="4" align="center" wrap>
+      <BlessButton size="sm" @click="ask">Ask for a reply</BlessButton>
+      <BlessSwitch v-model="even">Even pace</BlessSwitch>
+    </BlessStack>
+    <BlessStreamingText :text :done :pace="even ? 80 : 0" />
+  </BlessStack>
+</template>
+
 <script setup lang="ts">
 import { onBeforeUnmount, ref } from "vue";
 import { BlessButton, BlessStack, BlessStreamingText, BlessSwitch } from "blessing-ui";
@@ -24,13 +34,3 @@ function ask() {
 }
 onBeforeUnmount(() => clearInterval(timer));
 </script>
-
-<template>
-  <BlessStack :gap="3" style="max-width: 560px">
-    <BlessStack direction="row" :gap="4" align="center" wrap>
-      <BlessButton size="sm" @click="ask">Ask for a reply</BlessButton>
-      <BlessSwitch v-model="even">Even pace</BlessSwitch>
-    </BlessStack>
-    <BlessStreamingText :text :done :pace="even ? 80 : 0" />
-  </BlessStack>
-</template>

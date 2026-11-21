@@ -1,3 +1,40 @@
+<template>
+  <section class="bless-episodes" :aria-label="text.title">
+    <ol class="bless-stagger bless-episodes__list" role="list">
+      <li
+        v-for="e in episodes"
+        :key="e.id"
+        class="bless-episodes__item"
+        :class="{ 'is-current': e.id === current, 'is-watched': (e.progress ?? 0) >= 0.95 }"
+        :aria-current="e.id === current ? 'true' : undefined"
+      >
+        <button
+          type="button"
+          class="bless-episodes__thumb"
+          :aria-label="text.play(e.number, e.title)"
+          @click="emit('play', e.id)"
+        >
+          <img v-if="e.image" :src="e.image" alt="" loading="lazy" />
+          <span class="bless-episodes__play" aria-hidden="true">▶</span>
+          <span v-if="(e.progress ?? 0) > 0" class="bless-episodes__bar" aria-hidden="true">
+            <span :style="{ inlineSize: `${Math.min(1, e.progress!) * 100}%` }" />
+          </span>
+        </button>
+        <div class="bless-episodes__body">
+          <h4 class="bless-episodes__title">
+            <span class="bless-episodes__num">{{ e.number }}.</span> {{ e.title }}
+          </h4>
+          <p class="bless-episodes__meta">
+            {{ text.length(e.minutes)
+            }}<template v-if="state(e)"> · <strong>{{ state(e) }}</strong></template>
+          </p>
+          <p v-if="e.summary" class="bless-episodes__summary">{{ e.summary }}</p>
+        </div>
+      </li>
+    </ol>
+  </section>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -51,43 +88,6 @@ const state = (e: BlessEpisode) => {
   return "";
 };
 </script>
-
-<template>
-  <section class="bless-episodes" :aria-label="text.title">
-    <ol class="bless-stagger bless-episodes__list" role="list">
-      <li
-        v-for="e in episodes"
-        :key="e.id"
-        class="bless-episodes__item"
-        :class="{ 'is-current': e.id === current, 'is-watched': (e.progress ?? 0) >= 0.95 }"
-        :aria-current="e.id === current ? 'true' : undefined"
-      >
-        <button
-          type="button"
-          class="bless-episodes__thumb"
-          :aria-label="text.play(e.number, e.title)"
-          @click="emit('play', e.id)"
-        >
-          <img v-if="e.image" :src="e.image" alt="" loading="lazy" />
-          <span class="bless-episodes__play" aria-hidden="true">▶</span>
-          <span v-if="(e.progress ?? 0) > 0" class="bless-episodes__bar" aria-hidden="true">
-            <span :style="{ inlineSize: `${Math.min(1, e.progress!) * 100}%` }" />
-          </span>
-        </button>
-        <div class="bless-episodes__body">
-          <h4 class="bless-episodes__title">
-            <span class="bless-episodes__num">{{ e.number }}.</span> {{ e.title }}
-          </h4>
-          <p class="bless-episodes__meta">
-            {{ text.length(e.minutes)
-            }}<template v-if="state(e)"> · <strong>{{ state(e) }}</strong></template>
-          </p>
-          <p v-if="e.summary" class="bless-episodes__summary">{{ e.summary }}</p>
-        </div>
-      </li>
-    </ol>
-  </section>
-</template>
 
 <style>
 .bless-episodes {

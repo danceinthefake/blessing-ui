@@ -1,14 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { BlessWorkoutLog, type BlessWorkoutSet } from "blessing-ui";
-
-const sets = ref<BlessWorkoutSet[]>([
-  { weight: 60, reps: 8, done: true },
-  { weight: 62.5, reps: 8, done: true },
-  { weight: 62.5, reps: 6 },
-]);
-</script>
-
 <template>
   <BlessWorkoutLog
     v-model="sets"
@@ -21,3 +10,14 @@ const sets = ref<BlessWorkoutSet[]>([
     style="max-width: 480px"
   />
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { BlessWorkoutLog, type BlessWorkoutSet } from "blessing-ui";
+
+const sets = ref<BlessWorkoutSet[]>([
+  { weight: 60, reps: 8, done: true },
+  { weight: 62.5, reps: 8, done: true },
+  { weight: 62.5, reps: 6 },
+]);
+</script>

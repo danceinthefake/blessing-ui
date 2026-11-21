@@ -1,3 +1,7 @@
+<template>
+  <BlessFaqSearch :items style="max-width: 560px" />
+</template>
+
 <script setup lang="ts">
 import { BlessFaqSearch } from "blessing-ui";
 
@@ -28,7 +32,3 @@ const items = [
   },
 ];
 </script>
-
-<template>
-  <BlessFaqSearch :items style="max-width: 560px" />
-</template>

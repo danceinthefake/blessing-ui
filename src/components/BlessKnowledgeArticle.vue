@@ -1,3 +1,48 @@
+<template>
+  <article class="bless-kb">
+    <header class="bless-kb__head">
+      <h2 class="bless-kb__title">{{ title }}</h2>
+      <div class="bless-kb__meta">
+        <span v-if="updated">{{ text.updated(updated) }}</span>
+        <span>{{ text.minutes(minutes) }}</span>
+      </div>
+    </header>
+    <BlessToc
+      v-if="sections.length > 1"
+      :items="toc"
+      :label="text.contents"
+      class="bless-kb__toc"
+    />
+    <section
+      v-for="(s, i) in sections"
+      :key="i"
+      class="bless-kb__section"
+      :aria-labelledby="toc[i]!.id"
+    >
+      <h3 :id="toc[i]!.id" class="bless-kb__heading">{{ s.title }}</h3>
+      <div v-for="(p, j) in paras(s.body)" :key="j" class="bless-kb__para">{{ p }}</div>
+    </section>
+    <footer class="bless-kb__foot">
+      <div class="bless-kb__ask" role="group" :aria-label="text.helpful">
+        <template v-if="!answered">
+          <span>{{ text.helpful }}</span>
+          <button type="button" @click="vote(true)">{{ text.yes }}</button>
+          <button type="button" @click="vote(false)">{{ text.no }}</button>
+        </template>
+        <span v-else role="status">✓ {{ text.thanks }}</span>
+      </div>
+      <nav v-if="related?.length" class="bless-kb__related" :aria-label="text.related">
+        <div class="bless-kb__label" aria-hidden="true">{{ text.related }}</div>
+        <ul role="list">
+          <li v-for="r in related" :key="r.href">
+            <a :href="r.href">{{ r.title }}</a>
+          </li>
+        </ul>
+      </nav>
+    </footer>
+  </article>
+</template>
+
 <script setup lang="ts">
 import { computed, ref, useId } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -60,51 +105,6 @@ function vote(yes: boolean) {
   emit("helpful", yes);
 }
 </script>
-
-<template>
-  <article class="bless-kb">
-    <header class="bless-kb__head">
-      <h2 class="bless-kb__title">{{ title }}</h2>
-      <div class="bless-kb__meta">
-        <span v-if="updated">{{ text.updated(updated) }}</span>
-        <span>{{ text.minutes(minutes) }}</span>
-      </div>
-    </header>
-    <BlessToc
-      v-if="sections.length > 1"
-      :items="toc"
-      :label="text.contents"
-      class="bless-kb__toc"
-    />
-    <section
-      v-for="(s, i) in sections"
-      :key="i"
-      class="bless-kb__section"
-      :aria-labelledby="toc[i]!.id"
-    >
-      <h3 :id="toc[i]!.id" class="bless-kb__heading">{{ s.title }}</h3>
-      <div v-for="(p, j) in paras(s.body)" :key="j" class="bless-kb__para">{{ p }}</div>
-    </section>
-    <footer class="bless-kb__foot">
-      <div class="bless-kb__ask" role="group" :aria-label="text.helpful">
-        <template v-if="!answered">
-          <span>{{ text.helpful }}</span>
-          <button type="button" @click="vote(true)">{{ text.yes }}</button>
-          <button type="button" @click="vote(false)">{{ text.no }}</button>
-        </template>
-        <span v-else role="status">✓ {{ text.thanks }}</span>
-      </div>
-      <nav v-if="related?.length" class="bless-kb__related" :aria-label="text.related">
-        <div class="bless-kb__label" aria-hidden="true">{{ text.related }}</div>
-        <ul role="list">
-          <li v-for="r in related" :key="r.href">
-            <a :href="r.href">{{ r.title }}</a>
-          </li>
-        </ul>
-      </nav>
-    </footer>
-  </article>
-</template>
 
 <style>
 .bless-kb {

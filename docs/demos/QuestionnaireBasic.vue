@@ -1,3 +1,10 @@
+<template>
+  <div class="col" style="max-width: 480px">
+    <BlessQuestionnaire v-model="answers" :questions @submit="submitted = $event" />
+    <pre style="font-size: 12px; margin: 0">{{ submitted ?? answers }}</pre>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessQuestionnaire, type BlessAnswers, type BlessQuestion } from "blessing-ui";
@@ -35,10 +42,3 @@ const questions: BlessQuestion[] = [
 const answers = ref<BlessAnswers>({});
 const submitted = ref<BlessAnswers>();
 </script>
-
-<template>
-  <div class="col" style="max-width: 480px">
-    <BlessQuestionnaire v-model="answers" :questions @submit="submitted = $event" />
-    <pre style="font-size: 12px; margin: 0">{{ submitted ?? answers }}</pre>
-  </div>
-</template>

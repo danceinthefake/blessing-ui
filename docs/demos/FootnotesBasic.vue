@@ -1,13 +1,3 @@
-<script setup lang="ts">
-import { BlessFootnoteRef, BlessFootnotes } from "blessing-ui";
-
-const notes = [
-  "Recorded on 2 November 2026 in a bedroom in Bandung, with a USB microphone and a wardrobe full of coats.",
-  "Most podcast apps play episodes at about −16 LUFS, so a louder file gets turned down.",
-  "The guest asked us to leave out the name of the school.",
-];
-</script>
-
 <template>
   <article style="max-width: 560px">
     <p style="margin: 0 0 12px">
@@ -22,3 +12,13 @@ const notes = [
     <BlessFootnotes :notes id="ep41" />
   </article>
 </template>
+
+<script setup lang="ts">
+import { BlessFootnoteRef, BlessFootnotes } from "blessing-ui";
+
+const notes = [
+  "Recorded on 2 November 2026 in a bedroom in Bandung, with a USB microphone and a wardrobe full of coats.",
+  "Most podcast apps play episodes at about −16 LUFS, so a louder file gets turned down.",
+  "The guest asked us to leave out the name of the school.",
+];
+</script>

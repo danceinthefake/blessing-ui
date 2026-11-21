@@ -1,11 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { BlessButton, BlessInput, BlessProgress, BlessToggle, BlessToggleGroup } from "blessing-ui";
-const view = ref<string | undefined>("week");
-const note = ref("");
-const done = ref(60);
-</script>
-
 <template>
   <div class="col">
     <div class="row">
@@ -21,3 +13,11 @@ const done = ref(60);
     <BlessProgress :value="done" label="Chapter" show-value />
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { BlessButton, BlessInput, BlessProgress, BlessToggle, BlessToggleGroup } from "blessing-ui";
+const view = ref<string | undefined>("week");
+const note = ref("");
+const done = ref(60);
+</script>

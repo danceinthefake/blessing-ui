@@ -1,3 +1,39 @@
+<template>
+  <div class="bless-commits">
+    <section v-for="[day, list] in days" :key="day" :aria-label="text.day(day)">
+      <div class="bless-commits__day" aria-hidden="true">{{ text.day(day) }}</div>
+      <ol class="bless-stagger bless-commits__list" role="list">
+        <li v-for="c in list" :key="c.sha">
+          <div class="bless-commits__row">
+            <BlessAvatar :name="c.author" size="sm" />
+            <span class="bless-commits__main">
+              <a v-if="c.url" :href="c.url" class="bless-commits__title">{{ c.title }}</a>
+              <span v-else class="bless-commits__title">{{ c.title }}</span>
+              <span class="bless-commits__meta"
+                >{{ c.author }} · {{ timeFmt.format(new Date(c.time)) }}</span
+              >
+            </span>
+            <span v-if="c.added != null || c.removed != null" class="bless-commits__diff">
+              <span aria-hidden="true" class="is-add">+{{ num.format(c.added ?? 0) }}</span>
+              <span aria-hidden="true" class="is-del">−{{ num.format(c.removed ?? 0) }}</span>
+              <span class="bless-sr">{{ text.changes(c.added ?? 0, c.removed ?? 0) }}</span>
+            </span>
+            <span class="bless-commits__sha">
+              <code>{{ c.sha.slice(0, 7) }}</code>
+              <BlessCopyButton :value="c.sha" size="sm" variant="ghost">
+                <template #default="{ copied }"
+                  >{{ copied ? text.copied : text.copy
+                  }}<span class="bless-sr">{{ ` ${c.sha.slice(0, 7)}` }}</span></template
+                >
+              </BlessCopyButton>
+            </span>
+          </div>
+        </li>
+      </ol>
+    </section>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -65,42 +101,6 @@ const days = computed(() => {
 });
 const num = computed(() => new Intl.NumberFormat(props.locale));
 </script>
-
-<template>
-  <div class="bless-commits">
-    <section v-for="[day, list] in days" :key="day" :aria-label="text.day(day)">
-      <div class="bless-commits__day" aria-hidden="true">{{ text.day(day) }}</div>
-      <ol class="bless-stagger bless-commits__list" role="list">
-        <li v-for="c in list" :key="c.sha">
-          <div class="bless-commits__row">
-            <BlessAvatar :name="c.author" size="sm" />
-            <span class="bless-commits__main">
-              <a v-if="c.url" :href="c.url" class="bless-commits__title">{{ c.title }}</a>
-              <span v-else class="bless-commits__title">{{ c.title }}</span>
-              <span class="bless-commits__meta"
-                >{{ c.author }} · {{ timeFmt.format(new Date(c.time)) }}</span
-              >
-            </span>
-            <span v-if="c.added != null || c.removed != null" class="bless-commits__diff">
-              <span aria-hidden="true" class="is-add">+{{ num.format(c.added ?? 0) }}</span>
-              <span aria-hidden="true" class="is-del">−{{ num.format(c.removed ?? 0) }}</span>
-              <span class="bless-sr">{{ text.changes(c.added ?? 0, c.removed ?? 0) }}</span>
-            </span>
-            <span class="bless-commits__sha">
-              <code>{{ c.sha.slice(0, 7) }}</code>
-              <BlessCopyButton :value="c.sha" size="sm" variant="ghost">
-                <template #default="{ copied }"
-                  >{{ copied ? text.copied : text.copy
-                  }}<span class="bless-sr">{{ ` ${c.sha.slice(0, 7)}` }}</span></template
-                >
-              </BlessCopyButton>
-            </span>
-          </div>
-        </li>
-      </ol>
-    </section>
-  </div>
-</template>
 
 <style>
 .bless-commits {

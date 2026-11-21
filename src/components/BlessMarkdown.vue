@@ -1,3 +1,7 @@
+<template>
+  <div class="bless-markdown"><Content /></div>
+</template>
+
 <script setup lang="ts">
 import { computed, h, useId, type VNodeChild } from "vue";
 // types only: the library never loads marked itself, so an app that does not use this needs no marked
@@ -133,10 +137,6 @@ const content = computed(() => {
 });
 const Content = () => content.value;
 </script>
-
-<template>
-  <div class="bless-markdown"><Content /></div>
-</template>
 
 <style>
 .bless-markdown {

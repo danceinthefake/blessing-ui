@@ -1,3 +1,19 @@
+<template>
+  <section class="bless-logos" :class="{ 'is-mono': mono }" :aria-label="title">
+    <div v-if="title" class="bless-logos__title">{{ title }}</div>
+    <ul class="bless-stagger bless-logos__list" role="list">
+      <li v-for="l in logos" :key="l.name">
+        <a v-if="l.href" :href="l.href" class="bless-logos__item">
+          <img :src="l.src" :alt="l.name" loading="lazy" />
+        </a>
+        <span v-else class="bless-logos__item">
+          <img :src="l.src" :alt="l.name" loading="lazy" />
+        </span>
+      </li>
+    </ul>
+  </section>
+</template>
+
 <script setup lang="ts">
 defineOptions({ name: "BlessLogoCloud" });
 
@@ -19,22 +35,6 @@ withDefaults(
   { mono: true },
 );
 </script>
-
-<template>
-  <section class="bless-logos" :class="{ 'is-mono': mono }" :aria-label="title">
-    <div v-if="title" class="bless-logos__title">{{ title }}</div>
-    <ul class="bless-stagger bless-logos__list" role="list">
-      <li v-for="l in logos" :key="l.name">
-        <a v-if="l.href" :href="l.href" class="bless-logos__item">
-          <img :src="l.src" :alt="l.name" loading="lazy" />
-        </a>
-        <span v-else class="bless-logos__item">
-          <img :src="l.src" :alt="l.name" loading="lazy" />
-        </span>
-      </li>
-    </ul>
-  </section>
-</template>
 
 <style>
 .bless-logos {

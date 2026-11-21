@@ -1,3 +1,18 @@
+<template>
+  <dl
+    class="bless-desc"
+    :class="{ 'bless-desc--bordered': bordered }"
+    :style="{ '--_cols': columns }"
+  >
+    <div v-for="(item, index) in items" :key="index" class="bless-desc__item">
+      <dt class="bless-desc__label">{{ item.label }}</dt>
+      <dd class="bless-desc__value">
+        <slot name="value" :item :index>{{ item.value ?? "—" }}</slot>
+      </dd>
+    </div>
+  </dl>
+</template>
+
 <script setup lang="ts">
 defineOptions({ name: "BlessDescriptions" });
 
@@ -21,21 +36,6 @@ defineSlots<{
   value?(p: { item: BlessDescriptionItem; index: number }): unknown;
 }>();
 </script>
-
-<template>
-  <dl
-    class="bless-desc"
-    :class="{ 'bless-desc--bordered': bordered }"
-    :style="{ '--_cols': columns }"
-  >
-    <div v-for="(item, index) in items" :key="index" class="bless-desc__item">
-      <dt class="bless-desc__label">{{ item.label }}</dt>
-      <dd class="bless-desc__value">
-        <slot name="value" :item :index>{{ item.value ?? "—" }}</slot>
-      </dd>
-    </div>
-  </dl>
-</template>
 
 <style>
 .bless-desc {

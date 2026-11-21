@@ -1,3 +1,12 @@
+<template>
+  <div ref="root" class="bless-parallax" :style="{ height, '--_y': `${y}px` }">
+    <div class="bless-parallax__media">
+      <slot name="media"><img v-if="src" :src :alt /></slot>
+    </div>
+    <div class="bless-parallax__content"><slot /></div>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { onBeforeUnmount, onMounted, ref } from "vue";
 
@@ -41,15 +50,6 @@ onBeforeUnmount(
   ),
 );
 </script>
-
-<template>
-  <div ref="root" class="bless-parallax" :style="{ height, '--_y': `${y}px` }">
-    <div class="bless-parallax__media">
-      <slot name="media"><img v-if="src" :src :alt /></slot>
-    </div>
-    <div class="bless-parallax__content"><slot /></div>
-  </div>
-</template>
 
 <style>
 .bless-parallax {

@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import { BlessBalanceCard, BlessButton } from "blessing-ui";
-</script>
-
 <template>
   <div style="display: grid; gap: 16px; max-width: 360px">
     <BlessBalanceCard
@@ -18,3 +14,7 @@ import { BlessBalanceCard, BlessButton } from "blessing-ui";
     <BlessBalanceCard label="Savings" :amount="3120.4" :change="-85.2" period="this week" />
   </div>
 </template>
+
+<script setup lang="ts">
+import { BlessBalanceCard, BlessButton } from "blessing-ui";
+</script>

@@ -1,3 +1,35 @@
+<template>
+  <BlessStage v-model:open="open">
+    <template #background>
+      <!-- key visual goes here; a gradient stands in -->
+      <div class="site__kv" />
+    </template>
+    <template #sidebar>
+      <!-- the site's name is the page's one h1; each section below carries its own h2 -->
+      <BlessText as="h1" size="xl" weight="thin" leading="none" class="site__brand"
+        >Blessing</BlessText
+      >
+      <BlessText as="p" size="2xs" muted tracking="wider" uppercase class="site__sub"
+        >TV Anime Official</BlessText
+      >
+      <BlessSidebarNav
+        :items="nav"
+        :active="`#${active}`"
+        @select="(i) => !i.external && (open = false)"
+      />
+      <slot name="sidebar-after" />
+    </template>
+
+    <section v-for="s in sections" :id="s.id" :key="s.id" class="site__section">
+      <component :is="s.c" />
+    </section>
+
+    <template #footer>
+      <BlessText size="2xs" muted>© Blessing Software</BlessText>
+    </template>
+  </BlessStage>
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import {
@@ -30,38 +62,6 @@ const nav: BlessNavItem[] = [
 const open = ref(false);
 const { active } = useScrollSpy(sections.map((s) => s.id));
 </script>
-
-<template>
-  <BlessStage v-model:open="open">
-    <template #background>
-      <!-- key visual goes here; a gradient stands in -->
-      <div class="site__kv" />
-    </template>
-    <template #sidebar>
-      <!-- the site's name is the page's one h1; each section below carries its own h2 -->
-      <BlessText as="h1" size="xl" weight="thin" leading="none" class="site__brand"
-        >Blessing</BlessText
-      >
-      <BlessText as="p" size="2xs" muted tracking="wider" uppercase class="site__sub"
-        >TV Anime Official</BlessText
-      >
-      <BlessSidebarNav
-        :items="nav"
-        :active="`#${active}`"
-        @select="(i) => !i.external && (open = false)"
-      />
-      <slot name="sidebar-after" />
-    </template>
-
-    <section v-for="s in sections" :id="s.id" :key="s.id" class="site__section">
-      <component :is="s.c" />
-    </section>
-
-    <template #footer>
-      <BlessText size="2xs" muted>© Blessing Software</BlessText>
-    </template>
-  </BlessStage>
-</template>
 
 <style scoped>
 .site__kv {

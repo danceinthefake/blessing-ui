@@ -1,3 +1,13 @@
+<template>
+  <BlessTree
+    class="bless-filetree"
+    :nodes
+    :label
+    :selected
+    @select="(n, p) => ((selected = n.id ?? p), emit('select', n.id ?? p, !!n.children))"
+  />
+</template>
+
 <script lang="ts">
 import type { BlessTreeNode } from "./tree";
 
@@ -67,13 +77,3 @@ const nodes = computed(() =>
   filesToTree(props.paths, (p) => props.expanded || !!selected.value?.startsWith(`${p}/`)),
 );
 </script>
-
-<template>
-  <BlessTree
-    class="bless-filetree"
-    :nodes
-    :label
-    :selected
-    @select="(n, p) => ((selected = n.id ?? p), emit('select', n.id ?? p, !!n.children))"
-  />
-</template>

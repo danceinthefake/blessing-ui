@@ -1,3 +1,40 @@
+<template>
+  <section class="bless-oee" :aria-label="text.oee">
+    <div class="bless-oee__dial">
+      <BlessGauge
+        :value="oee * 100"
+        :label="text.oee"
+        :format="(v) => pct.format(v / 100)"
+        :zones="[
+          { to: goal * 100 * 0.75, color: 'danger' },
+          { to: goal * 100, color: 'warning' },
+          { to: 100, color: 'success' },
+        ]"
+      />
+      <p class="bless-oee__goal" :class="{ 'is-met': oee >= goal }">
+        <span aria-hidden="true">{{ oee >= goal ? "✓" : "↓" }}</span>
+        {{ text.goal(pct.format(goal)) }}
+      </p>
+    </div>
+    <dl class="bless-oee__parts">
+      <div
+        v-for="p in parts"
+        :key="p.key"
+        class="bless-oee__part"
+        :class="{ 'is-weak': p.key === weakest }"
+      >
+        <dt>{{ text[p.key] }}<template v-if="p.key === weakest"> · {{ text.below }}</template></dt>
+        <dd>
+          <span class="bless-oee__value">{{ pct.format(p.value) }}</span>
+          <span class="bless-oee__bar" aria-hidden="true"
+            ><span :style="{ inlineSize: `${p.value * 100}%` }"
+          /></span>
+        </dd>
+      </div>
+    </dl>
+  </section>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -54,43 +91,6 @@ const parts = computed(() => [
 ]);
 const weakest = computed(() => parts.value.reduce((a, b) => (b.value < a.value ? b : a)).key);
 </script>
-
-<template>
-  <section class="bless-oee" :aria-label="text.oee">
-    <div class="bless-oee__dial">
-      <BlessGauge
-        :value="oee * 100"
-        :label="text.oee"
-        :format="(v) => pct.format(v / 100)"
-        :zones="[
-          { to: goal * 100 * 0.75, color: 'danger' },
-          { to: goal * 100, color: 'warning' },
-          { to: 100, color: 'success' },
-        ]"
-      />
-      <p class="bless-oee__goal" :class="{ 'is-met': oee >= goal }">
-        <span aria-hidden="true">{{ oee >= goal ? "✓" : "↓" }}</span>
-        {{ text.goal(pct.format(goal)) }}
-      </p>
-    </div>
-    <dl class="bless-oee__parts">
-      <div
-        v-for="p in parts"
-        :key="p.key"
-        class="bless-oee__part"
-        :class="{ 'is-weak': p.key === weakest }"
-      >
-        <dt>{{ text[p.key] }}<template v-if="p.key === weakest"> · {{ text.below }}</template></dt>
-        <dd>
-          <span class="bless-oee__value">{{ pct.format(p.value) }}</span>
-          <span class="bless-oee__bar" aria-hidden="true"
-            ><span :style="{ inlineSize: `${p.value * 100}%` }"
-          /></span>
-        </dd>
-      </div>
-    </dl>
-  </section>
-</template>
 
 <style>
 .bless-oee {

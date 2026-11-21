@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import { BlessButton, BlessPopover } from "blessing-ui";
-</script>
-
 <template>
   <div class="row">
     <BlessPopover
@@ -16,3 +12,7 @@ import { BlessButton, BlessPopover } from "blessing-ui";
     </BlessPopover>
   </div>
 </template>
+
+<script setup lang="ts">
+import { BlessButton, BlessPopover } from "blessing-ui";
+</script>

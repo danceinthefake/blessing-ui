@@ -1,3 +1,10 @@
+<template>
+  <div ref="el" class="bless-deferred" :style="{ minHeight: loaded ? undefined : minHeight }">
+    <slot v-if="loaded" />
+    <slot v-else name="placeholder" />
+  </div>
+</template>
+
 <script setup lang="ts">
 import { onBeforeUnmount, onMounted, ref } from "vue";
 
@@ -29,10 +36,3 @@ onMounted(() => {
 });
 onBeforeUnmount(() => io?.disconnect());
 </script>
-
-<template>
-  <div ref="el" class="bless-deferred" :style="{ minHeight: loaded ? undefined : minHeight }">
-    <slot v-if="loaded" />
-    <slot v-else name="placeholder" />
-  </div>
-</template>

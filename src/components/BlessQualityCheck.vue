@@ -1,3 +1,77 @@
+<template>
+  <form
+    class="bless-quality"
+    :aria-label="text.title"
+    @submit.prevent="emit('submit', results, passed === items.length)"
+  >
+    <p class="bless-quality__summary" role="status">
+      {{ text.summary(passed, done, items.length)
+      }}<template v-if="complete">
+        · <strong>{{ passed === items.length ? text.ok : text.notOk }}</strong></template
+      >
+    </p>
+    <ol class="bless-stagger bless-quality__list" role="list">
+      <li
+        v-for="i in items"
+        :key="i.id"
+        class="bless-quality__item"
+        :class="state(i) === true ? 'is-pass' : state(i) === false ? 'is-fail' : ''"
+      >
+        <div class="bless-quality__box">
+          <span :id="`${uid}-${i.id}`" class="bless-quality__label">{{ i.label }}</span>
+          <template v-if="measured(i)">
+            <span class="bless-quality__limits">{{ range(i) }}</span>
+            <input
+              type="number"
+              step="any"
+              inputmode="decimal"
+              :value="results[i.id]?.value ?? ''"
+              :aria-labelledby="`${uid}-${i.id}`"
+              :aria-invalid="state(i) === false || undefined"
+              @change="
+                set(i.id, {
+                  value:
+                    ($event.target as HTMLInputElement).value === ''
+                      ? undefined
+                      : ($event.target as HTMLInputElement).valueAsNumber,
+                })
+              "
+            />
+            <span v-if="state(i) !== undefined" class="bless-quality__verdict">
+              <span aria-hidden="true">{{ state(i) ? "✓" : "✕" }}</span>
+              {{ state(i) ? text.inLimits : text.outLimits }}
+            </span>
+          </template>
+          <div
+            v-else
+            class="bless-quality__toggle"
+            role="radiogroup"
+            :aria-labelledby="`${uid}-${i.id}`"
+          >
+            <label class="is-pass"
+              ><input
+                type="radio"
+                :name="`${uid}-${i.id}-r`"
+                :checked="results[i.id]?.pass === true"
+                @change="set(i.id, { pass: true })"
+              /><span aria-hidden="true">✓</span> {{ text.pass }}</label
+            >
+            <label class="is-fail"
+              ><input
+                type="radio"
+                :name="`${uid}-${i.id}-r`"
+                :checked="results[i.id]?.pass === false"
+                @change="set(i.id, { pass: false })"
+              /><span aria-hidden="true">✕</span> {{ text.fail }}</label
+            >
+          </div>
+        </div>
+      </li>
+    </ol>
+    <BlessButton type="submit" :disabled="!complete">{{ text.submit }}</BlessButton>
+  </form>
+</template>
+
 <script lang="ts">
 export interface BlessQualityItem {
   id: string;
@@ -77,80 +151,6 @@ const measured = (i: BlessQualityItem) => i.min !== undefined || i.max !== undef
 const range = (i: BlessQualityItem) =>
   `${text.value.limits(i.min !== undefined ? num.value.format(i.min) : "…", i.max !== undefined ? num.value.format(i.max) : "…")}${i.unit ? ` ${i.unit}` : ""}`;
 </script>
-
-<template>
-  <form
-    class="bless-quality"
-    :aria-label="text.title"
-    @submit.prevent="emit('submit', results, passed === items.length)"
-  >
-    <p class="bless-quality__summary" role="status">
-      {{ text.summary(passed, done, items.length)
-      }}<template v-if="complete">
-        · <strong>{{ passed === items.length ? text.ok : text.notOk }}</strong></template
-      >
-    </p>
-    <ol class="bless-stagger bless-quality__list" role="list">
-      <li
-        v-for="i in items"
-        :key="i.id"
-        class="bless-quality__item"
-        :class="state(i) === true ? 'is-pass' : state(i) === false ? 'is-fail' : ''"
-      >
-        <div class="bless-quality__box">
-          <span :id="`${uid}-${i.id}`" class="bless-quality__label">{{ i.label }}</span>
-          <template v-if="measured(i)">
-            <span class="bless-quality__limits">{{ range(i) }}</span>
-            <input
-              type="number"
-              step="any"
-              inputmode="decimal"
-              :value="results[i.id]?.value ?? ''"
-              :aria-labelledby="`${uid}-${i.id}`"
-              :aria-invalid="state(i) === false || undefined"
-              @change="
-                set(i.id, {
-                  value:
-                    ($event.target as HTMLInputElement).value === ''
-                      ? undefined
-                      : ($event.target as HTMLInputElement).valueAsNumber,
-                })
-              "
-            />
-            <span v-if="state(i) !== undefined" class="bless-quality__verdict">
-              <span aria-hidden="true">{{ state(i) ? "✓" : "✕" }}</span>
-              {{ state(i) ? text.inLimits : text.outLimits }}
-            </span>
-          </template>
-          <div
-            v-else
-            class="bless-quality__toggle"
-            role="radiogroup"
-            :aria-labelledby="`${uid}-${i.id}`"
-          >
-            <label class="is-pass"
-              ><input
-                type="radio"
-                :name="`${uid}-${i.id}-r`"
-                :checked="results[i.id]?.pass === true"
-                @change="set(i.id, { pass: true })"
-              /><span aria-hidden="true">✓</span> {{ text.pass }}</label
-            >
-            <label class="is-fail"
-              ><input
-                type="radio"
-                :name="`${uid}-${i.id}-r`"
-                :checked="results[i.id]?.pass === false"
-                @change="set(i.id, { pass: false })"
-              /><span aria-hidden="true">✕</span> {{ text.fail }}</label
-            >
-          </div>
-        </div>
-      </li>
-    </ol>
-    <BlessButton type="submit" :disabled="!complete">{{ text.submit }}</BlessButton>
-  </form>
-</template>
 
 <style>
 .bless-quality {

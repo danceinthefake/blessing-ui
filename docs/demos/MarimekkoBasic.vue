@@ -1,3 +1,13 @@
+<template>
+  <BlessMarimekko
+    :data="islands"
+    x="island"
+    :series
+    :format="thousands"
+    label="Listeners by island and app"
+  />
+</template>
+
 <script setup lang="ts">
 import { BlessMarimekko } from "blessing-ui";
 
@@ -15,13 +25,3 @@ const series = [
 ];
 const thousands = (v: number) => `${v}k`;
 </script>
-
-<template>
-  <BlessMarimekko
-    :data="islands"
-    x="island"
-    :series
-    :format="thousands"
-    label="Listeners by island and app"
-  />
-</template>

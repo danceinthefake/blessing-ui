@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import { BlessSkeleton } from "blessing-ui";
-</script>
-
 <template>
   <div class="row">
     <BlessSkeleton avatar width="56px" height="56px" />
@@ -9,3 +5,7 @@ import { BlessSkeleton } from "blessing-ui";
     <BlessSkeleton width="120px" height="40px" />
   </div>
 </template>
+
+<script setup lang="ts">
+import { BlessSkeleton } from "blessing-ui";
+</script>

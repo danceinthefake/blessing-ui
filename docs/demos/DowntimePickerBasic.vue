@@ -1,3 +1,13 @@
+<template>
+  <BlessDowntimePicker
+    v-model="reason"
+    :reasons
+    machine="Press 2"
+    @save="(r, note) => (saved = note ? `${r}: ${note}` : r)"
+  />
+  <p v-if="saved" style="margin-top: 12px">Saved: {{ saved }}</p>
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessDowntimePicker, type BlessDowntimeReason } from "blessing-ui";
@@ -14,13 +24,3 @@ const reasons: BlessDowntimeReason[] = [
 const reason = ref<string>();
 const saved = ref("");
 </script>
-
-<template>
-  <BlessDowntimePicker
-    v-model="reason"
-    :reasons
-    machine="Press 2"
-    @save="(r, note) => (saved = note ? `${r}: ${note}` : r)"
-  />
-  <p v-if="saved" style="margin-top: 12px">Saved: {{ saved }}</p>
-</template>

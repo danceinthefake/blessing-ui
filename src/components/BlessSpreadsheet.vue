@@ -1,3 +1,61 @@
+<template>
+  <div class="bless-spreadsheet">
+    <table
+      ref="table"
+      class="bless-spreadsheet__table"
+      role="grid"
+      :aria-label="label"
+      :aria-rowcount="rows.length + 1"
+      :aria-colcount="colCount + 1"
+      :aria-readonly="readonly || undefined"
+      :aria-multiselectable="true"
+      @keydown="onKey"
+      @copy="onCopy"
+      @cut="(e) => onCopy(e, !readonly)"
+      @paste="onPaste"
+    >
+      <thead>
+        <tr>
+          <td class="bless-spreadsheet__corner" />
+          <th v-for="(h, c) in heads" :key="c" scope="col" class="bless-spreadsheet__col">
+            {{ h }}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="(_, r) in rows" :key="r">
+          <th scope="row" class="bless-spreadsheet__row">{{ r + 1 }}</th>
+          <td
+            v-for="c in colCount"
+            :key="c"
+            role="gridcell"
+            class="bless-spreadsheet__cell"
+            :class="{
+              'is-active': at.r === r && at.c === c - 1,
+              'is-number': numeric(value(r, c - 1)),
+            }"
+            :data-cell="`${r}:${c - 1}`"
+            :tabindex="at.r === r && at.c === c - 1 ? 0 : -1"
+            :aria-selected="inRange(r, c - 1)"
+            @pointerdown="onDown($event, r, c - 1)"
+            @dblclick="edit()"
+          >
+            <input
+              v-if="editing && at.r === r && at.c === c - 1"
+              v-model="draft"
+              class="bless-spreadsheet__input"
+              :aria-label="`${heads[c - 1]}${r + 1}`"
+              @keydown.stop="onEditKey"
+              @blur="commit(0, 0)"
+            />
+            <template v-else>{{ value(r, c - 1) }}</template>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</template>
+
 <script lang="ts">
 /** The name of a column as in a spreadsheet app: A … Z, AA, AB … */
 export function columnName(i: number): string {
@@ -202,64 +260,6 @@ function onDown(e: PointerEvent, r: number, c: number) {
   go(r, c, e.shiftKey);
 }
 </script>
-
-<template>
-  <div class="bless-spreadsheet">
-    <table
-      ref="table"
-      class="bless-spreadsheet__table"
-      role="grid"
-      :aria-label="label"
-      :aria-rowcount="rows.length + 1"
-      :aria-colcount="colCount + 1"
-      :aria-readonly="readonly || undefined"
-      :aria-multiselectable="true"
-      @keydown="onKey"
-      @copy="onCopy"
-      @cut="(e) => onCopy(e, !readonly)"
-      @paste="onPaste"
-    >
-      <thead>
-        <tr>
-          <td class="bless-spreadsheet__corner" />
-          <th v-for="(h, c) in heads" :key="c" scope="col" class="bless-spreadsheet__col">
-            {{ h }}
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="(_, r) in rows" :key="r">
-          <th scope="row" class="bless-spreadsheet__row">{{ r + 1 }}</th>
-          <td
-            v-for="c in colCount"
-            :key="c"
-            role="gridcell"
-            class="bless-spreadsheet__cell"
-            :class="{
-              'is-active': at.r === r && at.c === c - 1,
-              'is-number': numeric(value(r, c - 1)),
-            }"
-            :data-cell="`${r}:${c - 1}`"
-            :tabindex="at.r === r && at.c === c - 1 ? 0 : -1"
-            :aria-selected="inRange(r, c - 1)"
-            @pointerdown="onDown($event, r, c - 1)"
-            @dblclick="edit()"
-          >
-            <input
-              v-if="editing && at.r === r && at.c === c - 1"
-              v-model="draft"
-              class="bless-spreadsheet__input"
-              :aria-label="`${heads[c - 1]}${r + 1}`"
-              @keydown.stop="onEditKey"
-              @blur="commit(0, 0)"
-            />
-            <template v-else>{{ value(r, c - 1) }}</template>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</template>
 
 <style>
 .bless-spreadsheet {

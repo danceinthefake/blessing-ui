@@ -1,3 +1,49 @@
+<template>
+  <div v-if="day" class="health">
+    <header class="health__head">
+      <BlessText as="h2" size="lg" weight="bold">Today</BlessText>
+      <BlessText as="p" size="sm" muted>Thursday, 19 November</BlessText>
+    </header>
+    <BlessVitalsPanel :vitals="day.vitals" class="health__wide" />
+    <section aria-labelledby="health-meds">
+      <BlessText id="health-meds" as="h3" size="sm" weight="bold">Medicines</BlessText>
+      <BlessMedicationSchedule v-model="day.taken" :doses="day.doses" now="10:05" />
+    </section>
+    <section aria-labelledby="health-sleep">
+      <BlessText id="health-sleep" as="h3" size="sm" weight="bold">Last night</BlessText>
+      <BlessSleepChart :spans="day.sleep" />
+    </section>
+    <section aria-labelledby="health-habits" class="health__wide">
+      <BlessText id="health-habits" as="h3" size="sm" weight="bold">This week</BlessText>
+      <BlessHabitTracker v-model:done="day.done" :habits="day.habits" end="2026-11-19" />
+    </section>
+    <section aria-labelledby="health-visit" class="health__wide">
+      <BlessText id="health-visit" as="h3" size="sm" weight="bold">Next visit</BlessText>
+      <BlessAppointmentCard
+        v-if="day.visit"
+        :title="day.visit.title"
+        :date="day.visit.date"
+        :time="span(day.visit.start, day.visit.minutes)"
+        :person="day.visit.doctor"
+        :place="day.visit.place"
+        @reschedule="reschedule"
+        @cancel="cancel"
+      />
+      <BlessText v-else as="p" size="sm" muted>No visit booked.</BlessText>
+    </section>
+
+    <BlessSheet v-model="picking" side="right" title="Pick a new time">
+      <div class="health__pick">
+        <BlessText as="p" size="sm">Free times on Tuesday, 24 November.</BlessText>
+        <BlessSlotPicker v-model="pick" :slots locale="en" />
+        <BlessButton :disabled="!pick || pick === day.visit?.start" @click="save"
+          >Move the visit</BlessButton
+        >
+      </div>
+    </BlessSheet>
+  </div>
+</template>
+
 <script setup lang="ts">
 import {
   BlessAppointmentCard,
@@ -46,52 +92,6 @@ function cancel() {
   });
 }
 </script>
-
-<template>
-  <div v-if="day" class="health">
-    <header class="health__head">
-      <BlessText as="h2" size="lg" weight="bold">Today</BlessText>
-      <BlessText as="p" size="sm" muted>Thursday, 19 November</BlessText>
-    </header>
-    <BlessVitalsPanel :vitals="day.vitals" class="health__wide" />
-    <section aria-labelledby="health-meds">
-      <BlessText id="health-meds" as="h3" size="sm" weight="bold">Medicines</BlessText>
-      <BlessMedicationSchedule v-model="day.taken" :doses="day.doses" now="10:05" />
-    </section>
-    <section aria-labelledby="health-sleep">
-      <BlessText id="health-sleep" as="h3" size="sm" weight="bold">Last night</BlessText>
-      <BlessSleepChart :spans="day.sleep" />
-    </section>
-    <section aria-labelledby="health-habits" class="health__wide">
-      <BlessText id="health-habits" as="h3" size="sm" weight="bold">This week</BlessText>
-      <BlessHabitTracker v-model:done="day.done" :habits="day.habits" end="2026-11-19" />
-    </section>
-    <section aria-labelledby="health-visit" class="health__wide">
-      <BlessText id="health-visit" as="h3" size="sm" weight="bold">Next visit</BlessText>
-      <BlessAppointmentCard
-        v-if="day.visit"
-        :title="day.visit.title"
-        :date="day.visit.date"
-        :time="span(day.visit.start, day.visit.minutes)"
-        :person="day.visit.doctor"
-        :place="day.visit.place"
-        @reschedule="reschedule"
-        @cancel="cancel"
-      />
-      <BlessText v-else as="p" size="sm" muted>No visit booked.</BlessText>
-    </section>
-
-    <BlessSheet v-model="picking" side="right" title="Pick a new time">
-      <div class="health__pick">
-        <BlessText as="p" size="sm">Free times on Tuesday, 24 November.</BlessText>
-        <BlessSlotPicker v-model="pick" :slots locale="en" />
-        <BlessButton :disabled="!pick || pick === day.visit?.start" @click="save"
-          >Move the visit</BlessButton
-        >
-      </div>
-    </BlessSheet>
-  </div>
-</template>
 
 <style scoped>
 .health {

@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import { BlessButton, BlessList, BlessListItem } from "blessing-ui";
-</script>
-
 <template>
   <BlessList style="max-width: 640px">
     <BlessListItem meta="2019.04.04" badge href="#"
@@ -17,3 +13,7 @@ import { BlessButton, BlessList, BlessListItem } from "blessing-ui";
     <BlessListItem>no meta, plain row</BlessListItem>
   </BlessList>
 </template>
+
+<script setup lang="ts">
+import { BlessButton, BlessList, BlessListItem } from "blessing-ui";
+</script>

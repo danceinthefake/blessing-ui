@@ -1,49 +1,3 @@
-<script setup lang="ts">
-import { ref, useId } from "vue";
-
-defineOptions({ name: "BlessSpeedDial" });
-
-export interface BlessSpeedDialAction {
-  label: string;
-  value: string;
-  icon?: string;
-  color?: "text" | "accent" | "danger";
-}
-
-withDefaults(
-  defineProps<{
-    actions: BlessSpeedDialAction[];
-    direction?: "up" | "down" | "left" | "right";
-    label?: string;
-    color?: "text" | "accent";
-    /** render in place instead of fixed at the bottom end corner */
-    inline?: boolean;
-  }>(),
-  { direction: "up", label: "Actions", color: "text" },
-);
-const open = defineModel<boolean>("open", { default: false });
-const emit = defineEmits<{ select: [action: BlessSpeedDialAction] }>();
-const id = useId();
-const root = ref<HTMLElement>();
-const fab = () => root.value?.querySelector<HTMLElement>(".bless-speed-dial__fab");
-// picking closes the list, which goes inert under the focused action: hand focus back, as Esc does
-function pick(a: BlessSpeedDialAction) {
-  emit("select", a);
-  open.value = false;
-  fab()?.focus();
-}
-// Esc from an action: the list turns inert while focus is in it, so hand focus back to the button
-function escape(e?: KeyboardEvent) {
-  if (!open.value) return;
-  e?.preventDefault(); // an enclosing dialog stays open
-  open.value = false;
-  fab()?.focus();
-}
-function onBlur(e: FocusEvent) {
-  if (!root.value?.contains(e.relatedTarget as Node)) open.value = false;
-}
-</script>
-
 <template>
   <div
     ref="root"
@@ -92,6 +46,52 @@ function onBlur(e: FocusEvent) {
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref, useId } from "vue";
+
+defineOptions({ name: "BlessSpeedDial" });
+
+export interface BlessSpeedDialAction {
+  label: string;
+  value: string;
+  icon?: string;
+  color?: "text" | "accent" | "danger";
+}
+
+withDefaults(
+  defineProps<{
+    actions: BlessSpeedDialAction[];
+    direction?: "up" | "down" | "left" | "right";
+    label?: string;
+    color?: "text" | "accent";
+    /** render in place instead of fixed at the bottom end corner */
+    inline?: boolean;
+  }>(),
+  { direction: "up", label: "Actions", color: "text" },
+);
+const open = defineModel<boolean>("open", { default: false });
+const emit = defineEmits<{ select: [action: BlessSpeedDialAction] }>();
+const id = useId();
+const root = ref<HTMLElement>();
+const fab = () => root.value?.querySelector<HTMLElement>(".bless-speed-dial__fab");
+// picking closes the list, which goes inert under the focused action: hand focus back, as Esc does
+function pick(a: BlessSpeedDialAction) {
+  emit("select", a);
+  open.value = false;
+  fab()?.focus();
+}
+// Esc from an action: the list turns inert while focus is in it, so hand focus back to the button
+function escape(e?: KeyboardEvent) {
+  if (!open.value) return;
+  e?.preventDefault(); // an enclosing dialog stays open
+  open.value = false;
+  fab()?.focus();
+}
+function onBlur(e: FocusEvent) {
+  if (!root.value?.contains(e.relatedTarget as Node)) open.value = false;
+}
+</script>
 
 <style>
 .bless-speed-dial {

@@ -1,3 +1,51 @@
+<template>
+  <div class="bless-avail" :class="{ 'bless-avail--disabled': disabled }">
+    <table
+      ref="root"
+      class="bless-avail__grid"
+      role="grid"
+      :aria-label="text.label"
+      :aria-disabled="disabled || undefined"
+      @pointerdown="onDown"
+      @pointermove="onMove"
+      @pointerup="onUp"
+      @pointercancel="onUp"
+      @keydown="onKey"
+    >
+      <thead>
+        <tr>
+          <td />
+          <th v-for="day in days" :key="day" scope="col">{{ day }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="(m, t) in times" :key="m">
+          <th scope="row" class="bless-avail__time">
+            <span v-if="m % 60 === 0">{{ fmtTime(m, locale) }}</span>
+            <span v-else class="bless-sr">{{ fmtTime(m, locale) }}</span>
+          </th>
+          <td
+            v-for="(day, d) in days"
+            :key="day"
+            role="gridcell"
+            class="bless-avail__cell"
+            :class="{
+              'bless-avail__cell--on': on.has(key(d, t)),
+              'bless-avail__cell--hour': m % 60 === 0,
+            }"
+            :data-cell="`${d},${t}`"
+            :aria-selected="on.has(key(d, t))"
+            :tabindex="cur.d === d && cur.t === t ? 0 : -1"
+            @focus="cur = { d, t }"
+          >
+            <span class="bless-sr">{{ on.has(key(d, t)) ? text.free : text.busy }}</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed, nextTick, ref } from "vue";
 import { logicalKey } from "../composables/rtl";
@@ -102,54 +150,6 @@ function onKey(e: KeyboardEvent) {
   e.preventDefault();
 }
 </script>
-
-<template>
-  <div class="bless-avail" :class="{ 'bless-avail--disabled': disabled }">
-    <table
-      ref="root"
-      class="bless-avail__grid"
-      role="grid"
-      :aria-label="text.label"
-      :aria-disabled="disabled || undefined"
-      @pointerdown="onDown"
-      @pointermove="onMove"
-      @pointerup="onUp"
-      @pointercancel="onUp"
-      @keydown="onKey"
-    >
-      <thead>
-        <tr>
-          <td />
-          <th v-for="day in days" :key="day" scope="col">{{ day }}</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="(m, t) in times" :key="m">
-          <th scope="row" class="bless-avail__time">
-            <span v-if="m % 60 === 0">{{ fmtTime(m, locale) }}</span>
-            <span v-else class="bless-sr">{{ fmtTime(m, locale) }}</span>
-          </th>
-          <td
-            v-for="(day, d) in days"
-            :key="day"
-            role="gridcell"
-            class="bless-avail__cell"
-            :class="{
-              'bless-avail__cell--on': on.has(key(d, t)),
-              'bless-avail__cell--hour': m % 60 === 0,
-            }"
-            :data-cell="`${d},${t}`"
-            :aria-selected="on.has(key(d, t))"
-            :tabindex="cur.d === d && cur.t === t ? 0 : -1"
-            @focus="cur = { d, t }"
-          >
-            <span class="bless-sr">{{ on.has(key(d, t)) ? text.free : text.busy }}</span>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</template>
 
 <style>
 .bless-avail {

@@ -1,3 +1,83 @@
+<template>
+  <div ref="root" class="bless-menu" role="menu" tabindex="-1" @keydown="onKey">
+    <template v-for="(item, i) in items" :key="i">
+      <div v-if="item.type === 'separator'" class="bless-menu__sep" role="separator" />
+      <div v-else-if="item.type === 'label'" class="bless-menu__label">{{ item.label }}</div>
+      <div
+        v-else-if="item.type === 'sub'"
+        class="bless-menu__item bless-menu__item--sub"
+        role="menuitem"
+        tabindex="-1"
+        :data-sub="i"
+        :aria-haspopup="'menu'"
+        :aria-expanded="subOpen === i"
+        :aria-disabled="item.disabled || undefined"
+        @mouseenter="!item.disabled && (subOpen = i)"
+        @click="!item.disabled && (subOpen = subOpen === i ? null : i)"
+      >
+        <span class="bless-menu__text">{{ item.label }}</span>
+        <span class="bless-menu__chevron" aria-hidden="true">›</span>
+        <BlessMenuList
+          v-if="subOpen === i"
+          :items="item.items"
+          :checked
+          :radios
+          class="bless-menu--sub"
+          @select="emit('select', $event)"
+          @close="
+            subOpen = null;
+            (($event) => {})();
+          "
+          @vue:mounted="($el: any) => $el.component?.exposed?.focusFirst()"
+        />
+      </div>
+      <component
+        v-else
+        :is="link('href' in item ? item.href : undefined, undefined, 'div').is"
+        v-bind="link('href' in item ? item.href : undefined, undefined, 'div').attrs"
+        class="bless-menu__item"
+        :class="{ 'bless-menu__item--danger': 'danger' in item && item.danger }"
+        :role="
+          item.type === 'checkbox'
+            ? 'menuitemcheckbox'
+            : item.type === 'radio'
+              ? 'menuitemradio'
+              : 'menuitem'
+        "
+        tabindex="-1"
+        :aria-checked="
+          item.type === 'checkbox'
+            ? !!checked?.[item.value]
+            : item.type === 'radio'
+              ? radios?.[item.group] === item.value
+              : undefined
+        "
+        :aria-disabled="item.disabled || undefined"
+        @click="activate(item)"
+        @keydown.enter.space.prevent="activate(item)"
+        @mouseenter="
+          subOpen = null;
+          ($event.currentTarget as HTMLElement).focus();
+        "
+      >
+        <span class="bless-menu__mark" aria-hidden="true">
+          <template v-if="item.type === 'checkbox'">{{
+            checked?.[item.value] ? "✓" : ""
+          }}</template>
+          <template v-else-if="item.type === 'radio'">{{
+            radios?.[item.group] === item.value ? "●" : ""
+          }}</template>
+          <template v-else-if="'icon' in item && item.icon">{{ item.icon }}</template>
+        </span>
+        <span class="bless-menu__text">{{ item.label }}</span>
+        <BlessKbd v-if="'shortcut' in item && item.shortcut" class="bless-menu__shortcut">{{
+          item.shortcut
+        }}</BlessKbd>
+      </component>
+    </template>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { useLink } from "../composables/useLink";
 import { nextTick, ref } from "vue";
@@ -88,86 +168,6 @@ function activate(item: BlessMenuItem) {
 
 defineExpose({ focusFirst, focusLast });
 </script>
-
-<template>
-  <div ref="root" class="bless-menu" role="menu" tabindex="-1" @keydown="onKey">
-    <template v-for="(item, i) in items" :key="i">
-      <div v-if="item.type === 'separator'" class="bless-menu__sep" role="separator" />
-      <div v-else-if="item.type === 'label'" class="bless-menu__label">{{ item.label }}</div>
-      <div
-        v-else-if="item.type === 'sub'"
-        class="bless-menu__item bless-menu__item--sub"
-        role="menuitem"
-        tabindex="-1"
-        :data-sub="i"
-        :aria-haspopup="'menu'"
-        :aria-expanded="subOpen === i"
-        :aria-disabled="item.disabled || undefined"
-        @mouseenter="!item.disabled && (subOpen = i)"
-        @click="!item.disabled && (subOpen = subOpen === i ? null : i)"
-      >
-        <span class="bless-menu__text">{{ item.label }}</span>
-        <span class="bless-menu__chevron" aria-hidden="true">›</span>
-        <BlessMenuList
-          v-if="subOpen === i"
-          :items="item.items"
-          :checked
-          :radios
-          class="bless-menu--sub"
-          @select="emit('select', $event)"
-          @close="
-            subOpen = null;
-            (($event) => {})();
-          "
-          @vue:mounted="($el: any) => $el.component?.exposed?.focusFirst()"
-        />
-      </div>
-      <component
-        v-else
-        :is="link('href' in item ? item.href : undefined, undefined, 'div').is"
-        v-bind="link('href' in item ? item.href : undefined, undefined, 'div').attrs"
-        class="bless-menu__item"
-        :class="{ 'bless-menu__item--danger': 'danger' in item && item.danger }"
-        :role="
-          item.type === 'checkbox'
-            ? 'menuitemcheckbox'
-            : item.type === 'radio'
-              ? 'menuitemradio'
-              : 'menuitem'
-        "
-        tabindex="-1"
-        :aria-checked="
-          item.type === 'checkbox'
-            ? !!checked?.[item.value]
-            : item.type === 'radio'
-              ? radios?.[item.group] === item.value
-              : undefined
-        "
-        :aria-disabled="item.disabled || undefined"
-        @click="activate(item)"
-        @keydown.enter.space.prevent="activate(item)"
-        @mouseenter="
-          subOpen = null;
-          ($event.currentTarget as HTMLElement).focus();
-        "
-      >
-        <span class="bless-menu__mark" aria-hidden="true">
-          <template v-if="item.type === 'checkbox'">{{
-            checked?.[item.value] ? "✓" : ""
-          }}</template>
-          <template v-else-if="item.type === 'radio'">{{
-            radios?.[item.group] === item.value ? "●" : ""
-          }}</template>
-          <template v-else-if="'icon' in item && item.icon">{{ item.icon }}</template>
-        </span>
-        <span class="bless-menu__text">{{ item.label }}</span>
-        <BlessKbd v-if="'shortcut' in item && item.shortcut" class="bless-menu__shortcut">{{
-          item.shortcut
-        }}</BlessKbd>
-      </component>
-    </template>
-  </div>
-</template>
 
 <style>
 .bless-menu {

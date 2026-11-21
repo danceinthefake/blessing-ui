@@ -1,3 +1,55 @@
+<template>
+  <table class="bless-leaders">
+    <caption class="bless-sr">
+      {{ label }}
+    </caption>
+    <thead class="bless-sr">
+      <tr>
+        <th scope="col">{{ text.rank }}</th>
+        <th scope="col">{{ text.name }}</th>
+        <th scope="col">{{ text.change }}</th>
+        <th scope="col">{{ text.score }}</th>
+      </tr>
+    </thead>
+    <tbody class="bless-stagger">
+      <template v-for="(group, g) in [shown.top, shown.mine ? [shown.mine] : []]" :key="g">
+        <tr v-if="g === 1 && group.length" class="bless-leaders__gap" aria-hidden="true">
+          <td colspan="4">⋯</td>
+        </tr>
+        <tr
+          v-for="r in group"
+          :key="r.id"
+          class="bless-leaders__row"
+          :class="{ 'is-me': r.id === me, [`is-top${r.rank}`]: r.rank <= 3 }"
+          :aria-current="r.id === me ? 'true' : undefined"
+        >
+          <td class="bless-leaders__rank">{{ r.rank }}</td>
+          <th scope="row" class="bless-leaders__name">
+            <span class="bless-leaders__who">
+              <BlessAvatar :src="r.avatar" :name="r.name" alt="" size="sm" />
+              <span>{{ r.name }}</span>
+              <span v-if="r.id === me" class="bless-leaders__you">{{ text.you }}</span>
+            </span>
+          </th>
+          <td class="bless-leaders__move" :class="`is-${move(r).dir}`">
+            <span aria-hidden="true">{{
+              move(r).dir === "up"
+                ? `▲ ${r.previous! - r.rank}`
+                : move(r).dir === "down"
+                  ? `▼ ${r.rank - r.previous!}`
+                  : move(r).dir === "new"
+                    ? "●"
+                    : "–"
+            }}</span>
+            <span class="bless-sr">{{ move(r).text }}</span>
+          </td>
+          <td class="bless-leaders__score">{{ fmt(r.score) }}</td>
+        </tr>
+      </template>
+    </tbody>
+  </table>
+</template>
+
 <script lang="ts">
 export interface BlessLeader {
   id: string | number;
@@ -87,58 +139,6 @@ const move = (r: BlessLeader & { rank: number }) =>
         ? { dir: "down", text: text.value.down(r.rank - r.previous) }
         : { dir: "same", text: text.value.same };
 </script>
-
-<template>
-  <table class="bless-leaders">
-    <caption class="bless-sr">
-      {{ label }}
-    </caption>
-    <thead class="bless-sr">
-      <tr>
-        <th scope="col">{{ text.rank }}</th>
-        <th scope="col">{{ text.name }}</th>
-        <th scope="col">{{ text.change }}</th>
-        <th scope="col">{{ text.score }}</th>
-      </tr>
-    </thead>
-    <tbody class="bless-stagger">
-      <template v-for="(group, g) in [shown.top, shown.mine ? [shown.mine] : []]" :key="g">
-        <tr v-if="g === 1 && group.length" class="bless-leaders__gap" aria-hidden="true">
-          <td colspan="4">⋯</td>
-        </tr>
-        <tr
-          v-for="r in group"
-          :key="r.id"
-          class="bless-leaders__row"
-          :class="{ 'is-me': r.id === me, [`is-top${r.rank}`]: r.rank <= 3 }"
-          :aria-current="r.id === me ? 'true' : undefined"
-        >
-          <td class="bless-leaders__rank">{{ r.rank }}</td>
-          <th scope="row" class="bless-leaders__name">
-            <span class="bless-leaders__who">
-              <BlessAvatar :src="r.avatar" :name="r.name" alt="" size="sm" />
-              <span>{{ r.name }}</span>
-              <span v-if="r.id === me" class="bless-leaders__you">{{ text.you }}</span>
-            </span>
-          </th>
-          <td class="bless-leaders__move" :class="`is-${move(r).dir}`">
-            <span aria-hidden="true">{{
-              move(r).dir === "up"
-                ? `▲ ${r.previous! - r.rank}`
-                : move(r).dir === "down"
-                  ? `▼ ${r.rank - r.previous!}`
-                  : move(r).dir === "new"
-                    ? "●"
-                    : "–"
-            }}</span>
-            <span class="bless-sr">{{ move(r).text }}</span>
-          </td>
-          <td class="bless-leaders__score">{{ fmt(r.score) }}</td>
-        </tr>
-      </template>
-    </tbody>
-  </table>
-</template>
 
 <style>
 .bless-leaders {

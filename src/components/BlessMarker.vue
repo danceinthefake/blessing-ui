@@ -1,18 +1,3 @@
-<script setup lang="ts">
-defineOptions({ name: "BlessMarker" });
-
-withDefaults(
-  defineProps<{
-    /** status = centered pill, note = muted line, separator = labelled rule, border = bordered row */
-    variant?: "status" | "note" | "separator" | "border";
-    color?: "text" | "accent" | "danger" | "success" | "warning" | "info";
-    /** shimmer (pending / streaming) */
-    shimmer?: boolean;
-  }>(),
-  { variant: "status", color: "text" },
-);
-</script>
-
 <template>
   <div
     class="bless-marker"
@@ -31,6 +16,21 @@ withDefaults(
     </span>
   </div>
 </template>
+
+<script setup lang="ts">
+defineOptions({ name: "BlessMarker" });
+
+withDefaults(
+  defineProps<{
+    /** status = centered pill, note = muted line, separator = labelled rule, border = bordered row */
+    variant?: "status" | "note" | "separator" | "border";
+    color?: "text" | "accent" | "danger" | "success" | "warning" | "info";
+    /** shimmer (pending / streaming) */
+    shimmer?: boolean;
+  }>(),
+  { variant: "status", color: "text" },
+);
+</script>
 
 <style>
 .bless-marker {

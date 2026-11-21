@@ -1,14 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { BlessMiniPlayer } from "blessing-ui";
-import { art } from "./_data";
-
-// the app drives a real <audio> element and passes its time here
-const playing = ref(false);
-const position = ref(754);
-const said = ref("");
-</script>
-
 <template>
   <BlessMiniPlayer
     v-model:playing="playing"
@@ -24,3 +13,14 @@ const said = ref("");
   />
   <p v-if="said" style="margin-top: 12px">{{ said }}</p>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { BlessMiniPlayer } from "blessing-ui";
+import { art } from "./_data";
+
+// the app drives a real <audio> element and passes its time here
+const playing = ref(false);
+const position = ref(754);
+const said = ref("");
+</script>

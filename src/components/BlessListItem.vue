@@ -1,20 +1,3 @@
-<script setup lang="ts">
-import { useLink } from "../composables/useLink";
-import BlessBadge from "./BlessBadge.vue";
-import BlessDash from "./BlessDash.vue";
-
-defineOptions({ name: "BlessListItem" });
-const link = useLink();
-
-defineProps<{
-  /** leading meta, e.g. date */
-  meta?: string;
-  /** badge text; true = NEW! */
-  badge?: boolean | string;
-  href?: string;
-}>();
-</script>
-
 <template>
   <li class="bless-list-item">
     <component
@@ -33,6 +16,23 @@ defineProps<{
     </component>
   </li>
 </template>
+
+<script setup lang="ts">
+import { useLink } from "../composables/useLink";
+import BlessBadge from "./BlessBadge.vue";
+import BlessDash from "./BlessDash.vue";
+
+defineOptions({ name: "BlessListItem" });
+const link = useLink();
+
+defineProps<{
+  /** leading meta, e.g. date */
+  meta?: string;
+  /** badge text; true = NEW! */
+  badge?: boolean | string;
+  href?: string;
+}>();
+</script>
 
 <style>
 .bless-list-item__row {

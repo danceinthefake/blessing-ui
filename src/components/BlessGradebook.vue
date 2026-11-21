@@ -1,3 +1,62 @@
+<template>
+  <div class="bless-grades" tabindex="0" role="group" :aria-label="text.caption">
+    <table>
+      <caption class="bless-sr">
+        {{ text.caption }}
+      </caption>
+      <thead>
+        <tr>
+          <th scope="col">{{ text.student }}</th>
+          <th v-for="t in assignments" :key="t.id" scope="col" class="is-num">
+            {{ t.title }}
+            <span class="bless-grades__max">{{ text.outOf(max(t)) }}</span>
+          </th>
+          <th scope="col" class="is-num">{{ text.average }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="r in rows" :key="r.s.id">
+          <th scope="row">{{ r.s.name }}</th>
+          <td
+            v-for="t in assignments"
+            :key="t.id"
+            class="is-num"
+            :class="{ 'is-missing': get(r.s.id, t.id) == null }"
+          >
+            <input
+              v-if="editable"
+              type="number"
+              inputmode="decimal"
+              min="0"
+              :max="max(t)"
+              :value="get(r.s.id, t.id) ?? ''"
+              :placeholder="text.missing"
+              :aria-label="text.scoreOf(r.s.name, t.title)"
+              @change="set(r.s.id, t, ($event.target as HTMLInputElement).value)"
+            />
+            <template v-else>{{ get(r.s.id, t.id) ?? text.missing }}</template>
+          </td>
+          <td class="is-num bless-grades__avg" :class="{ 'is-low': r.low }">
+            <span v-if="r.low" aria-hidden="true">▼ </span>{{ pctFmt.format(r.avg)
+            }}<span v-if="r.low" class="bless-sr">, {{ text.low }}</span>
+          </td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <th scope="row">{{ text.classAverage }}</th>
+          <td v-for="(c, i) in columns" :key="i" class="is-num">
+            {{ c == null ? "–" : pctFmt.format(c) }}
+          </td>
+          <td class="is-num">
+            {{ pctFmt.format(rows.reduce((a, r) => a + r.avg, 0) / (rows.length || 1)) }}
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -77,65 +136,6 @@ function set(s: string, t: BlessGradeTask, raw: string) {
   scores.value = { ...scores.value, [s]: { ...scores.value[s], [t.id]: v } };
 }
 </script>
-
-<template>
-  <div class="bless-grades" tabindex="0" role="group" :aria-label="text.caption">
-    <table>
-      <caption class="bless-sr">
-        {{ text.caption }}
-      </caption>
-      <thead>
-        <tr>
-          <th scope="col">{{ text.student }}</th>
-          <th v-for="t in assignments" :key="t.id" scope="col" class="is-num">
-            {{ t.title }}
-            <span class="bless-grades__max">{{ text.outOf(max(t)) }}</span>
-          </th>
-          <th scope="col" class="is-num">{{ text.average }}</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="r in rows" :key="r.s.id">
-          <th scope="row">{{ r.s.name }}</th>
-          <td
-            v-for="t in assignments"
-            :key="t.id"
-            class="is-num"
-            :class="{ 'is-missing': get(r.s.id, t.id) == null }"
-          >
-            <input
-              v-if="editable"
-              type="number"
-              inputmode="decimal"
-              min="0"
-              :max="max(t)"
-              :value="get(r.s.id, t.id) ?? ''"
-              :placeholder="text.missing"
-              :aria-label="text.scoreOf(r.s.name, t.title)"
-              @change="set(r.s.id, t, ($event.target as HTMLInputElement).value)"
-            />
-            <template v-else>{{ get(r.s.id, t.id) ?? text.missing }}</template>
-          </td>
-          <td class="is-num bless-grades__avg" :class="{ 'is-low': r.low }">
-            <span v-if="r.low" aria-hidden="true">▼ </span>{{ pctFmt.format(r.avg)
-            }}<span v-if="r.low" class="bless-sr">, {{ text.low }}</span>
-          </td>
-        </tr>
-      </tbody>
-      <tfoot>
-        <tr>
-          <th scope="row">{{ text.classAverage }}</th>
-          <td v-for="(c, i) in columns" :key="i" class="is-num">
-            {{ c == null ? "–" : pctFmt.format(c) }}
-          </td>
-          <td class="is-num">
-            {{ pctFmt.format(rows.reduce((a, r) => a + r.avg, 0) / (rows.length || 1)) }}
-          </td>
-        </tr>
-      </tfoot>
-    </table>
-  </div>
-</template>
 
 <style>
 .bless-grades {

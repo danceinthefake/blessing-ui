@@ -1,3 +1,15 @@
+<template>
+  <span
+    class="bless-icon"
+    :style="{ '--_s': tokens.includes(size) ? `var(--bless-text-${size})` : size }"
+    :role="label ? 'img' : undefined"
+    :aria-label="label"
+    :aria-hidden="label ? undefined : 'true'"
+  >
+    <slot />
+  </span>
+</template>
+
 <script setup lang="ts">
 defineOptions({ name: "BlessIcon" });
 
@@ -13,18 +25,6 @@ withDefaults(
 
 const tokens = ["2xs", "xs", "sm", "md", "lg", "xl"];
 </script>
-
-<template>
-  <span
-    class="bless-icon"
-    :style="{ '--_s': tokens.includes(size) ? `var(--bless-text-${size})` : size }"
-    :role="label ? 'img' : undefined"
-    :aria-label="label"
-    :aria-hidden="label ? undefined : 'true'"
-  >
-    <slot />
-  </span>
-</template>
 
 <style>
 .bless-icon {

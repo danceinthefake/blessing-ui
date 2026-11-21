@@ -1,3 +1,43 @@
+<template>
+  <div class="bless-coupon">
+    <div v-if="applied" class="bless-coupon__chip">
+      <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
+        <path d="M2 8.6V2.5h6.1L14 8.4 8.4 14z" />
+        <circle cx="5" cy="5.5" r="1" />
+      </svg>
+      <span class="bless-coupon__code">{{ applied.code }}</span>
+      <span v-if="applied.saving" class="bless-coupon__saving">{{ applied.saving }}</span>
+      <button
+        type="button"
+        class="bless-coupon__remove"
+        :aria-label="text.remove(applied.code)"
+        :title="text.remove(applied.code)"
+        @click="emit('remove', applied.code)"
+      >
+        <svg viewBox="0 0 16 16" width="12" height="12" aria-hidden="true">
+          <path d="M4 4l8 8M12 4l-8 8" />
+        </svg>
+      </button>
+    </div>
+    <form v-else class="bless-coupon__form" @submit.prevent="submit">
+      <BlessInput
+        v-model="code"
+        class="bless-coupon__field"
+        :class="{ 'is-upper': uppercase }"
+        :aria-label="text.label"
+        :placeholder="text.label"
+        :error
+        autocomplete="off"
+        spellcheck="false"
+      />
+      <BlessButton type="submit" variant="outline" :loading :disabled="!code.trim()">
+        {{ text.apply }}
+      </BlessButton>
+    </form>
+    <span class="bless-sr" role="status">{{ status }}</span>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed, ref, watch } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -57,46 +97,6 @@ function submit() {
   if (c && !props.loading) emit("apply", props.uppercase ? c.toUpperCase() : c);
 }
 </script>
-
-<template>
-  <div class="bless-coupon">
-    <div v-if="applied" class="bless-coupon__chip">
-      <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
-        <path d="M2 8.6V2.5h6.1L14 8.4 8.4 14z" />
-        <circle cx="5" cy="5.5" r="1" />
-      </svg>
-      <span class="bless-coupon__code">{{ applied.code }}</span>
-      <span v-if="applied.saving" class="bless-coupon__saving">{{ applied.saving }}</span>
-      <button
-        type="button"
-        class="bless-coupon__remove"
-        :aria-label="text.remove(applied.code)"
-        :title="text.remove(applied.code)"
-        @click="emit('remove', applied.code)"
-      >
-        <svg viewBox="0 0 16 16" width="12" height="12" aria-hidden="true">
-          <path d="M4 4l8 8M12 4l-8 8" />
-        </svg>
-      </button>
-    </div>
-    <form v-else class="bless-coupon__form" @submit.prevent="submit">
-      <BlessInput
-        v-model="code"
-        class="bless-coupon__field"
-        :class="{ 'is-upper': uppercase }"
-        :aria-label="text.label"
-        :placeholder="text.label"
-        :error
-        autocomplete="off"
-        spellcheck="false"
-      />
-      <BlessButton type="submit" variant="outline" :loading :disabled="!code.trim()">
-        {{ text.apply }}
-      </BlessButton>
-    </form>
-    <span class="bless-sr" role="status">{{ status }}</span>
-  </div>
-</template>
 
 <style>
 .bless-coupon {

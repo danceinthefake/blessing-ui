@@ -1,3 +1,7 @@
+<template>
+  <BlessSystemStatus :parts updated="2 minutes ago" style="max-width: 560px" />
+</template>
+
 <script setup lang="ts">
 import { BlessSystemStatus, type BlessServicePart } from "blessing-ui";
 
@@ -13,7 +17,3 @@ const parts: BlessServicePart[] = [
   { name: "Statistics", status: "maintenance", description: "Back at 12:00 WIB." },
 ];
 </script>
-
-<template>
-  <BlessSystemStatus :parts updated="2 minutes ago" style="max-width: 560px" />
-</template>

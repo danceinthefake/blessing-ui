@@ -1,3 +1,42 @@
+<template>
+  <div class="bless-margin">
+    <div
+      v-for="(b, i) in blocks"
+      :key="b.id"
+      class="bless-margin__row"
+      :class="{ 'has-notes': byBlock.get(b.id)?.length || open === b.id }"
+    >
+      <div class="bless-margin__block">{{ b.text }}</div>
+      <aside class="bless-margin__side" :aria-label="text.on(i + 1)">
+        <div v-for="c in byBlock.get(b.id)" :key="c.id" class="bless-margin__note">
+          <div class="bless-margin__who">
+            <strong>{{ c.author }}</strong>
+            <span v-if="c.time" class="bless-margin__time">{{ c.time }}</span>
+          </div>
+          <div>{{ c.text }}</div>
+        </div>
+        <form v-if="open === b.id" class="bless-margin__form" @submit.prevent="send(b.id)">
+          <textarea
+            ref="area"
+            v-model="draft"
+            rows="3"
+            :aria-label="text.placeholder"
+            :placeholder="text.placeholder"
+            @keydown.esc="open = undefined"
+          />
+          <div class="bless-margin__actions">
+            <button type="submit" class="is-main">{{ text.send }}</button>
+            <button type="button" @click="open = undefined">{{ text.cancel }}</button>
+          </div>
+        </form>
+        <button v-else type="button" class="bless-margin__add" @click="start(b.id)">
+          + {{ text.comment }}
+        </button>
+      </aside>
+    </div>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed, nextTick, ref } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -61,45 +100,6 @@ function send(id: string) {
   open.value = undefined;
 }
 </script>
-
-<template>
-  <div class="bless-margin">
-    <div
-      v-for="(b, i) in blocks"
-      :key="b.id"
-      class="bless-margin__row"
-      :class="{ 'has-notes': byBlock.get(b.id)?.length || open === b.id }"
-    >
-      <div class="bless-margin__block">{{ b.text }}</div>
-      <aside class="bless-margin__side" :aria-label="text.on(i + 1)">
-        <div v-for="c in byBlock.get(b.id)" :key="c.id" class="bless-margin__note">
-          <div class="bless-margin__who">
-            <strong>{{ c.author }}</strong>
-            <span v-if="c.time" class="bless-margin__time">{{ c.time }}</span>
-          </div>
-          <div>{{ c.text }}</div>
-        </div>
-        <form v-if="open === b.id" class="bless-margin__form" @submit.prevent="send(b.id)">
-          <textarea
-            ref="area"
-            v-model="draft"
-            rows="3"
-            :aria-label="text.placeholder"
-            :placeholder="text.placeholder"
-            @keydown.esc="open = undefined"
-          />
-          <div class="bless-margin__actions">
-            <button type="submit" class="is-main">{{ text.send }}</button>
-            <button type="button" @click="open = undefined">{{ text.cancel }}</button>
-          </div>
-        </form>
-        <button v-else type="button" class="bless-margin__add" @click="start(b.id)">
-          + {{ text.comment }}
-        </button>
-      </aside>
-    </div>
-  </div>
-</template>
 
 <style>
 .bless-margin {

@@ -1,10 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-
-withDefaults(defineProps<{ title?: string; padded?: boolean }>(), { padded: true });
-const showCode = ref(false);
-</script>
-
 <template>
   <div class="demo">
     <div v-if="title" class="demo__title">{{ title }}</div>
@@ -24,6 +17,13 @@ const showCode = ref(false);
     <div v-if="$slots.code" v-show="showCode" class="demo__code"><slot name="code" /></div>
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+
+withDefaults(defineProps<{ title?: string; padded?: boolean }>(), { padded: true });
+const showCode = ref(false);
+</script>
 
 <style>
 .demo {
@@ -115,6 +115,7 @@ const showCode = ref(false);
   border-top: var(--bless-border-width) solid var(--bless-color-border);
 }
 </style>
+
 <style>
 .demo__preview .boxed {
   border: var(--bless-border-width) solid var(--bless-color-border);

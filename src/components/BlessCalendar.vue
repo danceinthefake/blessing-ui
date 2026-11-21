@@ -1,3 +1,63 @@
+<template>
+  <div class="bless-calendar" role="group" :aria-label="ready ? fmtMonth : undefined">
+    <div class="bless-calendar__head">
+      <button
+        type="button"
+        class="bless-calendar__nav"
+        :aria-label="text.prev"
+        @click="shiftMonth(-1)"
+      >
+        <span aria-hidden="true">‹</span>
+      </button>
+      <span class="bless-calendar__month" aria-live="polite">{{ ready ? fmtMonth : "" }}</span>
+      <button
+        type="button"
+        class="bless-calendar__nav"
+        :aria-label="text.next"
+        @click="shiftMonth(1)"
+      >
+        <span aria-hidden="true">›</span>
+      </button>
+    </div>
+    <div v-if="!ready" class="bless-calendar__grid bless-calendar__grid--pending" />
+    <div v-else class="bless-calendar__grid" role="grid" @keydown="onKey">
+      <div role="row" class="bless-calendar__row bless-calendar__row--head">
+        <span v-for="d in dayNames" :key="d" role="columnheader" class="bless-calendar__dow">{{
+          d
+        }}</span>
+      </div>
+      <div v-for="w in 6" :key="w" role="row" class="bless-calendar__row">
+        <button
+          v-for="c in cells.slice((w - 1) * 7, w * 7)"
+          :key="c.iso"
+          :id="`${id}-${c.iso}`"
+          type="button"
+          role="gridcell"
+          class="bless-calendar__day"
+          :class="{
+            'bless-calendar__day--outside': c.outside,
+            'bless-calendar__day--today': c.iso === today,
+            'bless-calendar__day--selected': isSelected(c.iso),
+            'bless-calendar__day--in-range': inRange(c.iso),
+            'bless-calendar__day--start': rangeSel?.[0] === c.iso,
+            'bless-calendar__day--end': rangeSel?.[1] === c.iso,
+          }"
+          :tabindex="c.iso === focused ? 0 : -1"
+          :aria-selected="isSelected(c.iso) || undefined"
+          :aria-disabled="isDisabled(c.iso) || undefined"
+          :aria-label="fmtFull.format(c.date)"
+          @click="select(c.iso)"
+          @mouseenter="hover = c.iso"
+          @mouseleave="hover = undefined"
+          @focus="focused = c.iso"
+        >
+          {{ c.date.getDate() }}
+        </button>
+      </div>
+    </div>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { useLabelPack } from "../composables/useLabels";
 import { computed, onMounted, ref, useId, watch } from "vue";
@@ -145,66 +205,6 @@ watch(
   { immediate: true },
 );
 </script>
-
-<template>
-  <div class="bless-calendar" role="group" :aria-label="ready ? fmtMonth : undefined">
-    <div class="bless-calendar__head">
-      <button
-        type="button"
-        class="bless-calendar__nav"
-        :aria-label="text.prev"
-        @click="shiftMonth(-1)"
-      >
-        <span aria-hidden="true">‹</span>
-      </button>
-      <span class="bless-calendar__month" aria-live="polite">{{ ready ? fmtMonth : "" }}</span>
-      <button
-        type="button"
-        class="bless-calendar__nav"
-        :aria-label="text.next"
-        @click="shiftMonth(1)"
-      >
-        <span aria-hidden="true">›</span>
-      </button>
-    </div>
-    <div v-if="!ready" class="bless-calendar__grid bless-calendar__grid--pending" />
-    <div v-else class="bless-calendar__grid" role="grid" @keydown="onKey">
-      <div role="row" class="bless-calendar__row bless-calendar__row--head">
-        <span v-for="d in dayNames" :key="d" role="columnheader" class="bless-calendar__dow">{{
-          d
-        }}</span>
-      </div>
-      <div v-for="w in 6" :key="w" role="row" class="bless-calendar__row">
-        <button
-          v-for="c in cells.slice((w - 1) * 7, w * 7)"
-          :key="c.iso"
-          :id="`${id}-${c.iso}`"
-          type="button"
-          role="gridcell"
-          class="bless-calendar__day"
-          :class="{
-            'bless-calendar__day--outside': c.outside,
-            'bless-calendar__day--today': c.iso === today,
-            'bless-calendar__day--selected': isSelected(c.iso),
-            'bless-calendar__day--in-range': inRange(c.iso),
-            'bless-calendar__day--start': rangeSel?.[0] === c.iso,
-            'bless-calendar__day--end': rangeSel?.[1] === c.iso,
-          }"
-          :tabindex="c.iso === focused ? 0 : -1"
-          :aria-selected="isSelected(c.iso) || undefined"
-          :aria-disabled="isDisabled(c.iso) || undefined"
-          :aria-label="fmtFull.format(c.date)"
-          @click="select(c.iso)"
-          @mouseenter="hover = c.iso"
-          @mouseleave="hover = undefined"
-          @focus="focused = c.iso"
-        >
-          {{ c.date.getDate() }}
-        </button>
-      </div>
-    </div>
-  </div>
-</template>
 
 <style>
 .bless-calendar {

@@ -1,3 +1,63 @@
+<template>
+  <div class="bless-files">
+    <div class="bless-files__bar">
+      <nav :aria-label="text.path" class="bless-files__path">
+        <ol role="list">
+          <li v-for="(p, i) in path" :key="p.id">
+            <span v-if="i === path.length - 1" aria-current="page">{{ p.label }}</span>
+            <button v-else type="button" @click="emit('navigate', p.id)">{{ p.label }}</button>
+          </li>
+        </ol>
+      </nav>
+      <div class="bless-files__views" role="group" :aria-label="text.view">
+        <button type="button" :aria-pressed="view === 'grid'" @click="view = 'grid'">
+          <span aria-hidden="true">▦</span> {{ text.grid }}
+        </button>
+        <button type="button" :aria-pressed="view === 'list'" @click="view = 'list'">
+          <span aria-hidden="true">☰</span> {{ text.list }}
+        </button>
+      </div>
+    </div>
+    <p class="bless-files__count">{{ items.length ? text.items(items.length) : text.empty }}</p>
+    <ul v-if="view === 'grid'" class="bless-files__grid" role="list">
+      <li v-for="f in sorted" :key="f.id">
+        <button type="button" class="bless-files__tile" @click="emit('open', f)">
+          <svg viewBox="0 0 48 40" class="bless-files__icon" aria-hidden="true">
+            <path v-if="f.folder" d="M2 6h16l4 5h24v27H2z" class="is-folder" />
+            <template v-else>
+              <path d="M10 1h20l9 9v29H10z" class="is-file" />
+              <text x="24.5" y="30" text-anchor="middle">{{ ext(f.name) }}</text>
+            </template>
+          </svg>
+          <span class="bless-files__name">{{ f.name }}</span>
+          <span class="bless-files__meta">{{ f.folder ? text.folder : size(f.size) }}</span>
+        </button>
+      </li>
+    </ul>
+    <table v-else-if="items.length" class="bless-files__table">
+      <thead>
+        <tr>
+          <th scope="col">{{ text.name }}</th>
+          <th scope="col">{{ text.modified }}</th>
+          <th scope="col" class="is-num">{{ text.size }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="f in sorted" :key="f.id">
+          <th scope="row">
+            <button type="button" @click="emit('open', f)">
+              <span aria-hidden="true" class="bless-files__mark">{{ f.folder ? "▸" : "·" }}</span>
+              {{ f.name }}
+            </button>
+          </th>
+          <td>{{ when(f.modified) }}</td>
+          <td class="is-num">{{ f.folder ? text.folder : size(f.size) }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -78,66 +138,6 @@ const date = computed(
 );
 const when = (m?: string | number) => (m == null ? "" : date.value.format(new Date(m)));
 </script>
-
-<template>
-  <div class="bless-files">
-    <div class="bless-files__bar">
-      <nav :aria-label="text.path" class="bless-files__path">
-        <ol role="list">
-          <li v-for="(p, i) in path" :key="p.id">
-            <span v-if="i === path.length - 1" aria-current="page">{{ p.label }}</span>
-            <button v-else type="button" @click="emit('navigate', p.id)">{{ p.label }}</button>
-          </li>
-        </ol>
-      </nav>
-      <div class="bless-files__views" role="group" :aria-label="text.view">
-        <button type="button" :aria-pressed="view === 'grid'" @click="view = 'grid'">
-          <span aria-hidden="true">▦</span> {{ text.grid }}
-        </button>
-        <button type="button" :aria-pressed="view === 'list'" @click="view = 'list'">
-          <span aria-hidden="true">☰</span> {{ text.list }}
-        </button>
-      </div>
-    </div>
-    <p class="bless-files__count">{{ items.length ? text.items(items.length) : text.empty }}</p>
-    <ul v-if="view === 'grid'" class="bless-files__grid" role="list">
-      <li v-for="f in sorted" :key="f.id">
-        <button type="button" class="bless-files__tile" @click="emit('open', f)">
-          <svg viewBox="0 0 48 40" class="bless-files__icon" aria-hidden="true">
-            <path v-if="f.folder" d="M2 6h16l4 5h24v27H2z" class="is-folder" />
-            <template v-else>
-              <path d="M10 1h20l9 9v29H10z" class="is-file" />
-              <text x="24.5" y="30" text-anchor="middle">{{ ext(f.name) }}</text>
-            </template>
-          </svg>
-          <span class="bless-files__name">{{ f.name }}</span>
-          <span class="bless-files__meta">{{ f.folder ? text.folder : size(f.size) }}</span>
-        </button>
-      </li>
-    </ul>
-    <table v-else-if="items.length" class="bless-files__table">
-      <thead>
-        <tr>
-          <th scope="col">{{ text.name }}</th>
-          <th scope="col">{{ text.modified }}</th>
-          <th scope="col" class="is-num">{{ text.size }}</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="f in sorted" :key="f.id">
-          <th scope="row">
-            <button type="button" @click="emit('open', f)">
-              <span aria-hidden="true" class="bless-files__mark">{{ f.folder ? "▸" : "·" }}</span>
-              {{ f.name }}
-            </button>
-          </th>
-          <td>{{ when(f.modified) }}</td>
-          <td class="is-num">{{ f.folder ? text.folder : size(f.size) }}</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</template>
 
 <style>
 .bless-files {

@@ -1,16 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { BlessGauge, BlessSlider } from "blessing-ui";
-
-const load = ref(72);
-const temp = ref(4);
-const zones = [
-  { to: 60, color: "success", label: "Fine" },
-  { to: 85, color: "warning", label: "Busy" },
-  { to: 100, color: "danger", label: "Overloaded" },
-];
-</script>
-
 <template>
   <div class="col" style="gap: 1.5rem; max-width: 320px">
     <BlessGauge :value="load" :zones label="CPU load" :format="(v: number) => `${v}%`" />
@@ -31,3 +18,16 @@ const zones = [
     <BlessSlider v-model="temp" :min="-20" :max="40" aria-label="Fridge temperature" />
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { BlessGauge, BlessSlider } from "blessing-ui";
+
+const load = ref(72);
+const temp = ref(4);
+const zones = [
+  { to: 60, color: "success", label: "Fine" },
+  { to: 85, color: "warning", label: "Busy" },
+  { to: 100, color: "danger", label: "Overloaded" },
+];
+</script>

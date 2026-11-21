@@ -1,3 +1,36 @@
+<template>
+  <div class="bless-cron">
+    <div class="bless-cron__fields" role="group" :aria-labelledby="fs.labelledby">
+      <label v-for="(k, i) in KEYS" :key="k" class="bless-cron__part">
+        <span class="bless-cron__name">{{ text[k] }}</span>
+        <input
+          :id="i === 0 ? id() : undefined"
+          class="bless-cron__input"
+          :class="{ 'bless-cron__input--bad': bad[i] }"
+          :value="parts[i]"
+          :disabled
+          spellcheck="false"
+          autocomplete="off"
+          :aria-invalid="bad[i] || fs.invalid.value ? 'true' : undefined"
+          :aria-describedby="joinIds(`${uid}-out`, fs.describedby.value)"
+          @change="set(i, ($event.target as HTMLInputElement).value)"
+        />
+      </label>
+    </div>
+    <div :id="`${uid}-out`" class="bless-cron__out">
+      <p v-if="bad.includes(true)" class="bless-cron__invalid">{{ text.invalid }}</p>
+      <template v-else-if="runs.length">
+        <span class="bless-cron__next">{{ text.next }}</span>
+        <ul class="bless-cron__runs" role="list">
+          <li v-for="r in runs" :key="r.getTime()">
+            <time :datetime="r.toISOString()">{{ fmt.format(r) }}</time>
+          </li>
+        </ul>
+      </template>
+    </div>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed, onMounted, ref, useId } from "vue";
 import { joinIds, useFieldId, useFieldState } from "../composables/useFieldId";
@@ -78,39 +111,6 @@ const fmt = computed(
     }),
 );
 </script>
-
-<template>
-  <div class="bless-cron">
-    <div class="bless-cron__fields" role="group" :aria-labelledby="fs.labelledby">
-      <label v-for="(k, i) in KEYS" :key="k" class="bless-cron__part">
-        <span class="bless-cron__name">{{ text[k] }}</span>
-        <input
-          :id="i === 0 ? id() : undefined"
-          class="bless-cron__input"
-          :class="{ 'bless-cron__input--bad': bad[i] }"
-          :value="parts[i]"
-          :disabled
-          spellcheck="false"
-          autocomplete="off"
-          :aria-invalid="bad[i] || fs.invalid.value ? 'true' : undefined"
-          :aria-describedby="joinIds(`${uid}-out`, fs.describedby.value)"
-          @change="set(i, ($event.target as HTMLInputElement).value)"
-        />
-      </label>
-    </div>
-    <div :id="`${uid}-out`" class="bless-cron__out">
-      <p v-if="bad.includes(true)" class="bless-cron__invalid">{{ text.invalid }}</p>
-      <template v-else-if="runs.length">
-        <span class="bless-cron__next">{{ text.next }}</span>
-        <ul class="bless-cron__runs" role="list">
-          <li v-for="r in runs" :key="r.getTime()">
-            <time :datetime="r.toISOString()">{{ fmt.format(r) }}</time>
-          </li>
-        </ul>
-      </template>
-    </div>
-  </div>
-</template>
 
 <style>
 .bless-cron {

@@ -1,3 +1,12 @@
+<template>
+  <div>
+    <BlessFilterBar v-model="rules" :fields />
+    <BlessText as="p" size="xs" style="margin-top: 12px; font-family: var(--bless-font-mono)">{{
+      json
+    }}</BlessText>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed, ref } from "vue";
 import { BlessFilterBar, BlessText, type BlessQueryField, type BlessQueryRule } from "blessing-ui";
@@ -23,12 +32,3 @@ const rules = ref<BlessQueryRule[]>([
 ]);
 const json = computed(() => JSON.stringify(rules.value));
 </script>
-
-<template>
-  <div>
-    <BlessFilterBar v-model="rules" :fields />
-    <BlessText as="p" size="xs" style="margin-top: 12px; font-family: var(--bless-font-mono)">{{
-      json
-    }}</BlessText>
-  </div>
-</template>

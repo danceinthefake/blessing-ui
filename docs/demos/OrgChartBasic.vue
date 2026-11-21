@@ -1,3 +1,10 @@
+<template>
+  <div class="col" style="max-width: none">
+    <BlessOrgChart :nodes v-model:selected="selected" label="Blessing Software" />
+    <small>selected: {{ selected }} · `href` is reused as the role line in the default node</small>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessOrgChart, type BlessTreeNode } from "blessing-ui";
@@ -21,10 +28,3 @@ const nodes: BlessTreeNode[] = [
 ];
 const selected = ref("megumi");
 </script>
-
-<template>
-  <div class="col" style="max-width: none">
-    <BlessOrgChart :nodes v-model:selected="selected" label="Blessing Software" />
-    <small>selected: {{ selected }} · `href` is reused as the role line in the default node</small>
-  </div>
-</template>

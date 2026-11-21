@@ -1,10 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { BlessField, BlessInput, BlessSignaturePad } from "blessing-ui";
-const sig = ref("");
-const typed = ref("");
-</script>
-
 <template>
   <div class="col" style="max-width: 480px">
     <BlessSignaturePad v-model="sig" :height="140" />
@@ -22,3 +15,10 @@ const typed = ref("");
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { BlessField, BlessInput, BlessSignaturePad } from "blessing-ui";
+const sig = ref("");
+const typed = ref("");
+</script>

@@ -1,10 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { BlessSlider } from "blessing-ui";
-const vol = ref(35);
-const zoom = ref(3);
-</script>
-
 <template>
   <div class="row" style="align-items: flex-start">
     <div class="col">
@@ -23,3 +16,10 @@ const zoom = ref(3);
     <div class="col"><BlessSlider :model-value="60" disabled label="Brightness (locked)" /></div>
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { BlessSlider } from "blessing-ui";
+const vol = ref(35);
+const zoom = ref(3);
+</script>

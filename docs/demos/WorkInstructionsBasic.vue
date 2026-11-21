@@ -1,3 +1,14 @@
+<template>
+  <p v-if="done">Job done. Scan the next unit.</p>
+  <BlessWorkInstructions
+    v-else
+    v-model="at"
+    job="Desk mic kit · WO-2026-0091"
+    :steps
+    @finish="done = true"
+  />
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessWorkInstructions, type BlessInstructionStep } from "blessing-ui";
@@ -33,14 +44,3 @@ const steps: BlessInstructionStep[] = [
 const at = ref(0);
 const done = ref(false);
 </script>
-
-<template>
-  <p v-if="done">Job done. Scan the next unit.</p>
-  <BlessWorkInstructions
-    v-else
-    v-model="at"
-    job="Desk mic kit · WO-2026-0091"
-    :steps
-    @finish="done = true"
-  />
-</template>

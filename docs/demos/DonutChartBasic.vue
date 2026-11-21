@@ -1,3 +1,10 @@
+<template>
+  <BlessStack :gap="4">
+    <BlessSwitch v-model="pie">Pie</BlessSwitch>
+    <BlessDonutChart :data :pie :format="(v) => `${v} GB`" label="Storage by type" />
+  </BlessStack>
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessDonutChart, BlessStack, BlessSwitch } from "blessing-ui";
@@ -11,10 +18,3 @@ const data = [
 ];
 const pie = ref(false);
 </script>
-
-<template>
-  <BlessStack :gap="4">
-    <BlessSwitch v-model="pie">Pie</BlessSwitch>
-    <BlessDonutChart :data :pie :format="(v) => `${v} GB`" label="Storage by type" />
-  </BlessStack>
-</template>

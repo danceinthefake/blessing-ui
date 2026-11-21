@@ -1,3 +1,14 @@
+<template>
+  <BlessDeliveryPicker
+    v-model="slot"
+    :days
+    currency="IDR"
+    locale="id-ID"
+    style="max-width: 520px"
+  />
+  <p style="margin-top: 12px">Chosen window: {{ slot ?? "none yet" }}</p>
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessDeliveryPicker, type BlessDeliveryDay } from "blessing-ui";
@@ -37,14 +48,3 @@ const days: BlessDeliveryDay[] = [
 ];
 const slot = ref<string>();
 </script>
-
-<template>
-  <BlessDeliveryPicker
-    v-model="slot"
-    :days
-    currency="IDR"
-    locale="id-ID"
-    style="max-width: 520px"
-  />
-  <p style="margin-top: 12px">Chosen window: {{ slot ?? "none yet" }}</p>
-</template>

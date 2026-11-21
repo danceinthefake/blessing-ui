@@ -1,3 +1,13 @@
+<template>
+  <BlessChart title="Sales" :legend="['BD', 'DVD']" height="200px" style="max-width: 560px">
+    <VisXYContainer :data>
+      <VisGroupedBar :x="(d: Pt) => d.x" :y="[(d: Pt) => d.a, (d: Pt) => d.b]" :barPadding="0.3" />
+      <VisAxis type="x" :gridLine="false" />
+      <VisAxis type="y" :numTicks="3" />
+    </VisXYContainer>
+  </BlessChart>
+</template>
+
 <script setup lang="ts">
 import { BlessChart } from "blessing-ui";
 import { VisAxis, VisGroupedBar, VisXYContainer } from "@unovis/vue";
@@ -11,13 +21,3 @@ const data: Pt[] = [
   { x: 6, a: 66, b: 33 },
 ];
 </script>
-
-<template>
-  <BlessChart title="Sales" :legend="['BD', 'DVD']" height="200px" style="max-width: 560px">
-    <VisXYContainer :data>
-      <VisGroupedBar :x="(d: Pt) => d.x" :y="[(d: Pt) => d.a, (d: Pt) => d.b]" :barPadding="0.3" />
-      <VisAxis type="x" :gridLine="false" />
-      <VisAxis type="y" :numTicks="3" />
-    </VisXYContainer>
-  </BlessChart>
-</template>

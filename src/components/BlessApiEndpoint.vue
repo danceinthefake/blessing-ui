@@ -1,3 +1,63 @@
+<template>
+  <section class="bless-api" :aria-label="`${m} ${path}`">
+    <header class="bless-api__head">
+      <span class="bless-api__method" :class="`is-${m.toLowerCase()}`">{{ m }}</span>
+      <h3 class="bless-api__path">
+        <code
+          ><template v-for="(x, i) in parts" :key="i"
+            ><span v-if="x.param" class="bless-api__param">{{ x.p }}</span
+            ><template v-else>{{ x.p }}</template></template
+          ></code
+        >
+      </h3>
+    </header>
+    <div v-if="summary" class="bless-api__summary">{{ summary }}</div>
+    <div v-if="description" class="bless-api__text">{{ description }}</div>
+    <div v-if="params?.length" class="bless-api__part">
+      <div class="bless-api__label">{{ text.params }}</div>
+      <table class="bless-api__table">
+        <thead>
+          <tr>
+            <th scope="col">{{ text.name }}</th>
+            <th scope="col">{{ text.where }}</th>
+            <th scope="col">{{ text.type }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="p in params" :key="`${p.in}:${p.name}`">
+            <th scope="row">
+              <code>{{ p.name }}</code>
+              <span class="bless-api__need" :class="{ 'is-required': p.required }">{{
+                p.required ? text.required : text.optional
+              }}</span>
+              <span v-if="p.description" class="bless-api__desc">{{ p.description }}</span>
+            </th>
+            <td>{{ p.in }}</td>
+            <td><code>{{ p.type }}</code></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div v-if="example" class="bless-api__part">
+      <div class="bless-api__label">{{ text.example }}</div>
+      <BlessCodeBlock :code="example" :lang="exampleLang ?? 'sh'" :label="text.example" copy />
+    </div>
+    <div v-if="responses?.length" class="bless-api__part">
+      <div class="bless-api__label">{{ text.responses }}</div>
+      <BlessTabs v-model="tab" :tabs :label="text.responses">
+        <template #default="{ tab: t }">
+          <template v-for="r in responses" :key="r.status">
+            <div v-if="String(r.status) === t.value" class="bless-api__response">
+              <div v-if="r.description">{{ r.description }}</div>
+              <BlessCodeBlock v-if="r.body" :code="r.body" lang="json" :label="`${r.status}`" />
+            </div>
+          </template>
+        </template>
+      </BlessTabs>
+    </div>
+  </section>
+</template>
+
 <script setup lang="ts">
 import { computed, ref } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -69,66 +129,6 @@ const tabs = computed(() =>
 );
 const tab = ref(tabs.value[0]?.value ?? "");
 </script>
-
-<template>
-  <section class="bless-api" :aria-label="`${m} ${path}`">
-    <header class="bless-api__head">
-      <span class="bless-api__method" :class="`is-${m.toLowerCase()}`">{{ m }}</span>
-      <h3 class="bless-api__path">
-        <code
-          ><template v-for="(x, i) in parts" :key="i"
-            ><span v-if="x.param" class="bless-api__param">{{ x.p }}</span
-            ><template v-else>{{ x.p }}</template></template
-          ></code
-        >
-      </h3>
-    </header>
-    <div v-if="summary" class="bless-api__summary">{{ summary }}</div>
-    <div v-if="description" class="bless-api__text">{{ description }}</div>
-    <div v-if="params?.length" class="bless-api__part">
-      <div class="bless-api__label">{{ text.params }}</div>
-      <table class="bless-api__table">
-        <thead>
-          <tr>
-            <th scope="col">{{ text.name }}</th>
-            <th scope="col">{{ text.where }}</th>
-            <th scope="col">{{ text.type }}</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="p in params" :key="`${p.in}:${p.name}`">
-            <th scope="row">
-              <code>{{ p.name }}</code>
-              <span class="bless-api__need" :class="{ 'is-required': p.required }">{{
-                p.required ? text.required : text.optional
-              }}</span>
-              <span v-if="p.description" class="bless-api__desc">{{ p.description }}</span>
-            </th>
-            <td>{{ p.in }}</td>
-            <td><code>{{ p.type }}</code></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div v-if="example" class="bless-api__part">
-      <div class="bless-api__label">{{ text.example }}</div>
-      <BlessCodeBlock :code="example" :lang="exampleLang ?? 'sh'" :label="text.example" copy />
-    </div>
-    <div v-if="responses?.length" class="bless-api__part">
-      <div class="bless-api__label">{{ text.responses }}</div>
-      <BlessTabs v-model="tab" :tabs :label="text.responses">
-        <template #default="{ tab: t }">
-          <template v-for="r in responses" :key="r.status">
-            <div v-if="String(r.status) === t.value" class="bless-api__response">
-              <div v-if="r.description">{{ r.description }}</div>
-              <BlessCodeBlock v-if="r.body" :code="r.body" lang="json" :label="`${r.status}`" />
-            </div>
-          </template>
-        </template>
-      </BlessTabs>
-    </div>
-  </section>
-</template>
 
 <style>
 .bless-api {

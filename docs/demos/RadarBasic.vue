@@ -1,3 +1,7 @@
+<template>
+  <BlessRadar :axes="axes" :series="series" :max="5" label="Transit options" />
+</template>
+
 <script setup lang="ts">
 import { BlessRadar } from "blessing-ui";
 
@@ -7,7 +11,3 @@ const series = [
   { name: "Bus", values: [2, 5, 3, 3, 5] },
 ];
 </script>
-
-<template>
-  <BlessRadar :axes="axes" :series="series" :max="5" label="Transit options" />
-</template>

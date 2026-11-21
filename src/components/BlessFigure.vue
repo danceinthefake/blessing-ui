@@ -1,3 +1,16 @@
+<template>
+  <figure class="bless-figure" :class="`is-${width}`">
+    <img class="bless-figure__img" :src :alt loading="lazy" />
+    <figcaption v-if="caption || credit || $slots.default" class="bless-figure__caption">
+      <slot>{{ caption }}</slot>
+      <span v-if="credit" class="bless-figure__credit">
+        <a v-if="creditHref" :href="creditHref">{{ text.credit(credit) }}</a>
+        <template v-else>{{ text.credit(credit) }}</template>
+      </span>
+    </figcaption>
+  </figure>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -24,19 +37,6 @@ const props = withDefaults(
 
 const text = computed(() => ({ credit: (w: string) => `Photo: ${w}`, ...pack(), ...props.labels }));
 </script>
-
-<template>
-  <figure class="bless-figure" :class="`is-${width}`">
-    <img class="bless-figure__img" :src :alt loading="lazy" />
-    <figcaption v-if="caption || credit || $slots.default" class="bless-figure__caption">
-      <slot>{{ caption }}</slot>
-      <span v-if="credit" class="bless-figure__credit">
-        <a v-if="creditHref" :href="creditHref">{{ text.credit(credit) }}</a>
-        <template v-else>{{ text.credit(credit) }}</template>
-      </span>
-    </figcaption>
-  </figure>
-</template>
 
 <style>
 .bless-figure {

@@ -1,19 +1,3 @@
-<script setup lang="ts">
-defineOptions({ name: "BlessVideo", inheritAttrs: false });
-withDefaults(
-  defineProps<{
-    /** iframe URL (YouTube / Vimeo embed, etc.) or a video file */
-    src: string;
-    title: string;
-    ratio?: number | string;
-    /** true = <video>, false = <iframe> */
-    native?: boolean;
-    poster?: string;
-  }>(),
-  { ratio: "16 / 9", native: false },
-);
-</script>
-
 <template>
   <div class="bless-video" :style="{ aspectRatio: ratio }">
     <video
@@ -49,6 +33,22 @@ withDefaults(
     />
   </div>
 </template>
+
+<script setup lang="ts">
+defineOptions({ name: "BlessVideo", inheritAttrs: false });
+withDefaults(
+  defineProps<{
+    /** iframe URL (YouTube / Vimeo embed, etc.) or a video file */
+    src: string;
+    title: string;
+    ratio?: number | string;
+    /** true = <video>, false = <iframe> */
+    native?: boolean;
+    poster?: string;
+  }>(),
+  { ratio: "16 / 9", native: false },
+);
+</script>
 
 <style>
 .bless-video {

@@ -1,3 +1,33 @@
+<template>
+  <div class="bless-bulkbar" :class="{ 'bless-bulkbar--fixed': fixed }">
+    <!-- always in the page, so a change of the count is spoken -->
+    <span class="bless-sr" aria-live="polite">{{ count > 0 ? text.selected(count) : "" }}</span>
+    <Transition name="bless-bulkbar">
+      <div
+        v-if="count > 0"
+        ref="bar"
+        class="bless-bulkbar__bar"
+        role="toolbar"
+        :aria-label="text.label"
+      >
+        <strong class="bless-bulkbar__count" aria-hidden="true">{{ text.selected(count) }}</strong>
+        <div class="bless-bulkbar__actions"><slot /></div>
+        <button
+          type="button"
+          class="bless-bulkbar__clear"
+          :aria-label="text.clear"
+          :title="text.clear"
+          @click="emit('clear')"
+        >
+          <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
+            <path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.75" />
+          </svg>
+        </button>
+      </div>
+    </Transition>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed, ref } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -29,36 +59,6 @@ const text = computed(() => ({
 const bar = ref<HTMLElement>();
 useRovingFocus(bar);
 </script>
-
-<template>
-  <div class="bless-bulkbar" :class="{ 'bless-bulkbar--fixed': fixed }">
-    <!-- always in the page, so a change of the count is spoken -->
-    <span class="bless-sr" aria-live="polite">{{ count > 0 ? text.selected(count) : "" }}</span>
-    <Transition name="bless-bulkbar">
-      <div
-        v-if="count > 0"
-        ref="bar"
-        class="bless-bulkbar__bar"
-        role="toolbar"
-        :aria-label="text.label"
-      >
-        <strong class="bless-bulkbar__count" aria-hidden="true">{{ text.selected(count) }}</strong>
-        <div class="bless-bulkbar__actions"><slot /></div>
-        <button
-          type="button"
-          class="bless-bulkbar__clear"
-          :aria-label="text.clear"
-          :title="text.clear"
-          @click="emit('clear')"
-        >
-          <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
-            <path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.75" />
-          </svg>
-        </button>
-      </div>
-    </Transition>
-  </div>
-</template>
 
 <style>
 .bless-bulkbar {

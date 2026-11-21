@@ -1,3 +1,25 @@
+<template>
+  <span class="bless-indicator" :class="{ 'bless-indicator--block': !inline }">
+    <slot />
+    <span
+      v-if="show"
+      class="bless-indicator__badge"
+      :class="[
+        `bless-indicator__badge--${color}`,
+        `bless-indicator__badge--${position}`,
+        { 'bless-indicator__badge--dot': !text },
+      ]"
+      aria-hidden="true"
+      ><span class="bless-indicator__text">{{ text }}</span></span
+    >
+    <!-- the label is the text of an always-present status region, so a change is read in full
+         ("4 unread", not "4") and one that appears from zero isn't missed -->
+    <span v-if="label" class="bless-indicator__sr bless-sr" role="status">{{
+      show ? label : ""
+    }}</span>
+  </span>
+</template>
+
 <script setup lang="ts">
 import "./sr.css";
 import { computed } from "vue";
@@ -28,28 +50,6 @@ const show = computed(
   () => props.value === true || (typeof props.value === "number" && props.value > 0),
 );
 </script>
-
-<template>
-  <span class="bless-indicator" :class="{ 'bless-indicator--block': !inline }">
-    <slot />
-    <span
-      v-if="show"
-      class="bless-indicator__badge"
-      :class="[
-        `bless-indicator__badge--${color}`,
-        `bless-indicator__badge--${position}`,
-        { 'bless-indicator__badge--dot': !text },
-      ]"
-      aria-hidden="true"
-      ><span class="bless-indicator__text">{{ text }}</span></span
-    >
-    <!-- the label is the text of an always-present status region, so a change is read in full
-         ("4 unread", not "4") and one that appears from zero isn't missed -->
-    <span v-if="label" class="bless-indicator__sr bless-sr" role="status">{{
-      show ? label : ""
-    }}</span>
-  </span>
-</template>
 
 <style>
 .bless-indicator {

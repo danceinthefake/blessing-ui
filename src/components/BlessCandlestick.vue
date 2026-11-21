@@ -1,3 +1,71 @@
+<template>
+  <figure ref="box" class="bless-plot bless-candles">
+    <svg :viewBox="`0 0 ${width} ${height}`" :height class="bless-plot__svg" aria-hidden="true">
+      <g v-for="t in yt" :key="t">
+        <line class="bless-plot__grid" :x1="frame.x0" :x2="frame.x1" :y1="py(t)" :y2="py(t)" />
+        <text
+          class="bless-plot__tick"
+          :x="frame.x0 - 6"
+          :y="py(t)"
+          text-anchor="end"
+          dominant-baseline="middle"
+        >
+          {{ fmt(t) }}
+        </text>
+      </g>
+      <template v-for="c in candles" :key="c.i">
+        <text
+          v-if="c.i % every === 0"
+          class="bless-plot__tick"
+          :x="c.x"
+          :y="frame.y1 + 14"
+          text-anchor="middle"
+          dominant-baseline="middle"
+        >
+          {{ c.label }}
+        </text>
+        <g
+          class="bless-candles__candle"
+          :class="{ 'is-up': c.rising }"
+          :style="{ '--_c': c.color }"
+        >
+          <title>
+            {{ c.label }}: {{ text.open }} {{ fmt(c.open) }}, {{ text.high }} {{ fmt(c.high) }},
+            {{ text.low }} {{ fmt(c.low) }}, {{ text.close }} {{ fmt(c.close) }}
+          </title>
+          <line :x1="c.x" :x2="c.x" :y1="py(c.high)" :y2="py(c.low)" />
+          <rect :x="c.x - bodyW / 2" :y="c.top" :width="bodyW" :height="c.h" />
+        </g>
+      </template>
+    </svg>
+    <div class="bless-sr">
+      <table>
+        <caption>
+          {{ label }}
+        </caption>
+        <thead>
+          <tr>
+            <th scope="col">{{ text.period }}</th>
+            <th scope="col">{{ text.open }}</th>
+            <th scope="col">{{ text.high }}</th>
+            <th scope="col">{{ text.low }}</th>
+            <th scope="col">{{ text.close }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="c in data" :key="c.label">
+            <th scope="row">{{ c.label }}</th>
+            <td>{{ fmt(c.open) }}</td>
+            <td>{{ fmt(c.high) }}</td>
+            <td>{{ fmt(c.low) }}</td>
+            <td>{{ fmt(c.close) }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </figure>
+</template>
+
 <script setup lang="ts">
 import { computed, ref } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -91,74 +159,6 @@ const candles = computed(() =>
 );
 const bodyW = computed(() => Math.max(1, Math.min(18, step.value * 0.6)));
 </script>
-
-<template>
-  <figure ref="box" class="bless-plot bless-candles">
-    <svg :viewBox="`0 0 ${width} ${height}`" :height class="bless-plot__svg" aria-hidden="true">
-      <g v-for="t in yt" :key="t">
-        <line class="bless-plot__grid" :x1="frame.x0" :x2="frame.x1" :y1="py(t)" :y2="py(t)" />
-        <text
-          class="bless-plot__tick"
-          :x="frame.x0 - 6"
-          :y="py(t)"
-          text-anchor="end"
-          dominant-baseline="middle"
-        >
-          {{ fmt(t) }}
-        </text>
-      </g>
-      <template v-for="c in candles" :key="c.i">
-        <text
-          v-if="c.i % every === 0"
-          class="bless-plot__tick"
-          :x="c.x"
-          :y="frame.y1 + 14"
-          text-anchor="middle"
-          dominant-baseline="middle"
-        >
-          {{ c.label }}
-        </text>
-        <g
-          class="bless-candles__candle"
-          :class="{ 'is-up': c.rising }"
-          :style="{ '--_c': c.color }"
-        >
-          <title>
-            {{ c.label }}: {{ text.open }} {{ fmt(c.open) }}, {{ text.high }} {{ fmt(c.high) }},
-            {{ text.low }} {{ fmt(c.low) }}, {{ text.close }} {{ fmt(c.close) }}
-          </title>
-          <line :x1="c.x" :x2="c.x" :y1="py(c.high)" :y2="py(c.low)" />
-          <rect :x="c.x - bodyW / 2" :y="c.top" :width="bodyW" :height="c.h" />
-        </g>
-      </template>
-    </svg>
-    <div class="bless-sr">
-      <table>
-        <caption>
-          {{ label }}
-        </caption>
-        <thead>
-          <tr>
-            <th scope="col">{{ text.period }}</th>
-            <th scope="col">{{ text.open }}</th>
-            <th scope="col">{{ text.high }}</th>
-            <th scope="col">{{ text.low }}</th>
-            <th scope="col">{{ text.close }}</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="c in data" :key="c.label">
-            <th scope="row">{{ c.label }}</th>
-            <td>{{ fmt(c.open) }}</td>
-            <td>{{ fmt(c.high) }}</td>
-            <td>{{ fmt(c.low) }}</td>
-            <td>{{ fmt(c.close) }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </figure>
-</template>
 
 <style>
 .bless-candles__candle line {

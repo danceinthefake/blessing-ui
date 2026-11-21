@@ -1,3 +1,46 @@
+<template>
+  <div class="bless-units">
+    <div class="bless-units__row">
+      <label class="bless-units__field">
+        <span>{{ text.amount }}</span>
+        <input
+          type="number"
+          min="0"
+          step="any"
+          :value="amount"
+          @input="amount = Math.max(0, ($event.target as HTMLInputElement).valueAsNumber || 0)"
+        />
+      </label>
+      <label class="bless-units__field">
+        <span>{{ text.from }}</span>
+        <select :value="fromUnit?.id" @change="from = ($event.target as HTMLSelectElement).value">
+          <option v-for="u in units" :key="u.id" :value="u.id">{{ u.name }}</option>
+        </select>
+      </label>
+      <button
+        type="button"
+        class="bless-units__swap"
+        :aria-label="text.swap"
+        :title="text.swap"
+        @click="swap"
+      >
+        ⇄
+      </button>
+      <label class="bless-units__field">
+        <span>{{ text.to }}</span>
+        <select :value="toUnit?.id" @change="to = ($event.target as HTMLSelectElement).value">
+          <option v-for="u in units" :key="u.id" :value="u.id">{{ u.name }}</option>
+        </select>
+      </label>
+    </div>
+    <output class="bless-units__result" :aria-label="text.result" aria-live="polite">
+      {{ num.format(amount) }} {{ fromUnit?.name }} =
+      <strong>{{ num.format(result) }} {{ toUnit?.name }}</strong>
+    </output>
+    <p class="bless-units__split"><span>{{ text.split }}:</span> {{ splitText }}</p>
+  </div>
+</template>
+
 <script lang="ts">
 export interface BlessUnit {
   id: string;
@@ -79,49 +122,6 @@ function swap() {
   to.value = f;
 }
 </script>
-
-<template>
-  <div class="bless-units">
-    <div class="bless-units__row">
-      <label class="bless-units__field">
-        <span>{{ text.amount }}</span>
-        <input
-          type="number"
-          min="0"
-          step="any"
-          :value="amount"
-          @input="amount = Math.max(0, ($event.target as HTMLInputElement).valueAsNumber || 0)"
-        />
-      </label>
-      <label class="bless-units__field">
-        <span>{{ text.from }}</span>
-        <select :value="fromUnit?.id" @change="from = ($event.target as HTMLSelectElement).value">
-          <option v-for="u in units" :key="u.id" :value="u.id">{{ u.name }}</option>
-        </select>
-      </label>
-      <button
-        type="button"
-        class="bless-units__swap"
-        :aria-label="text.swap"
-        :title="text.swap"
-        @click="swap"
-      >
-        ⇄
-      </button>
-      <label class="bless-units__field">
-        <span>{{ text.to }}</span>
-        <select :value="toUnit?.id" @change="to = ($event.target as HTMLSelectElement).value">
-          <option v-for="u in units" :key="u.id" :value="u.id">{{ u.name }}</option>
-        </select>
-      </label>
-    </div>
-    <output class="bless-units__result" :aria-label="text.result" aria-live="polite">
-      {{ num.format(amount) }} {{ fromUnit?.name }} =
-      <strong>{{ num.format(result) }} {{ toUnit?.name }}</strong>
-    </output>
-    <p class="bless-units__split"><span>{{ text.split }}:</span> {{ splitText }}</p>
-  </div>
-</template>
 
 <style>
 .bless-units {

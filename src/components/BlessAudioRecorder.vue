@@ -1,3 +1,38 @@
+<template>
+  <div class="bless-rec" :class="`bless-rec--${state}`">
+    <div class="bless-rec__controls">
+      <BlessButton v-if="state === 'idle' || state === 'unavailable'" @click="start">
+        <span class="bless-rec__dot" aria-hidden="true" />{{ text.record }}
+      </BlessButton>
+      <template v-else-if="state === 'recording' || state === 'paused'">
+        <BlessButton v-if="state === 'recording'" variant="outline" @click="pause">
+          {{ text.pause }}
+        </BlessButton>
+        <BlessButton v-else variant="outline" @click="resume">{{ text.resume }}</BlessButton>
+        <BlessButton @click="stop">{{ text.stop }}</BlessButton>
+      </template>
+      <BlessButton v-else variant="outline" @click="again">{{ text.again }}</BlessButton>
+      <span v-if="state !== 'idle' && state !== 'unavailable'" class="bless-rec__clock">
+        {{ clock }}
+      </span>
+    </div>
+    <div
+      v-if="state === 'recording' || state === 'paused'"
+      class="bless-rec__levels"
+      aria-hidden="true"
+    >
+      <span
+        v-for="(l, i) in levels"
+        :key="i"
+        class="bless-rec__bar"
+        :style="{ blockSize: `${Math.max(6, l * 100)}%` }"
+      />
+    </div>
+    <audio v-if="url" class="bless-rec__audio" :src="url" controls />
+    <p class="bless-rec__status" role="status">{{ status }}</p>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed, onBeforeUnmount, ref } from "vue";
 import { micLevel } from "../composables/micLevel";
@@ -153,41 +188,6 @@ const status = computed(() =>
           : "",
 );
 </script>
-
-<template>
-  <div class="bless-rec" :class="`bless-rec--${state}`">
-    <div class="bless-rec__controls">
-      <BlessButton v-if="state === 'idle' || state === 'unavailable'" @click="start">
-        <span class="bless-rec__dot" aria-hidden="true" />{{ text.record }}
-      </BlessButton>
-      <template v-else-if="state === 'recording' || state === 'paused'">
-        <BlessButton v-if="state === 'recording'" variant="outline" @click="pause">
-          {{ text.pause }}
-        </BlessButton>
-        <BlessButton v-else variant="outline" @click="resume">{{ text.resume }}</BlessButton>
-        <BlessButton @click="stop">{{ text.stop }}</BlessButton>
-      </template>
-      <BlessButton v-else variant="outline" @click="again">{{ text.again }}</BlessButton>
-      <span v-if="state !== 'idle' && state !== 'unavailable'" class="bless-rec__clock">
-        {{ clock }}
-      </span>
-    </div>
-    <div
-      v-if="state === 'recording' || state === 'paused'"
-      class="bless-rec__levels"
-      aria-hidden="true"
-    >
-      <span
-        v-for="(l, i) in levels"
-        :key="i"
-        class="bless-rec__bar"
-        :style="{ blockSize: `${Math.max(6, l * 100)}%` }"
-      />
-    </div>
-    <audio v-if="url" class="bless-rec__audio" :src="url" controls />
-    <p class="bless-rec__status" role="status">{{ status }}</p>
-  </div>
-</template>
 
 <style>
 .bless-rec {

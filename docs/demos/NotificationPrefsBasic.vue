@@ -1,3 +1,7 @@
+<template>
+  <BlessNotificationPrefs v-model="prefs" :events :channels style="max-width: 560px" />
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessNotificationPrefs } from "blessing-ui";
@@ -20,7 +24,3 @@ const prefs = ref<Record<string, string[]>>({
   digest: ["email"],
 });
 </script>
-
-<template>
-  <BlessNotificationPrefs v-model="prefs" :events :channels style="max-width: 560px" />
-</template>

@@ -1,3 +1,7 @@
+<template>
+  <BlessStockLevels :items />
+</template>
+
 <script setup lang="ts">
 import { BlessStockLevels, type BlessStockItem } from "blessing-ui";
 
@@ -48,7 +52,3 @@ const items: BlessStockItem[] = [
   },
 ];
 </script>
-
-<template>
-  <BlessStockLevels :items />
-</template>

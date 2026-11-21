@@ -1,3 +1,13 @@
+<template>
+  <div style="display: grid; gap: 16px">
+    <BlessToggleGroup v-model="layout" label="Layout">
+      <BlessToggle value="grid">Grid</BlessToggle>
+      <BlessToggle value="single">One at a time</BlessToggle>
+    </BlessToggleGroup>
+    <BlessTestimonials :items :layout />
+  </div>
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessTestimonials, BlessToggle, BlessToggleGroup } from "blessing-ui";
@@ -24,13 +34,3 @@ const items = [
   },
 ];
 </script>
-
-<template>
-  <div style="display: grid; gap: 16px">
-    <BlessToggleGroup v-model="layout" label="Layout">
-      <BlessToggle value="grid">Grid</BlessToggle>
-      <BlessToggle value="single">One at a time</BlessToggle>
-    </BlessToggleGroup>
-    <BlessTestimonials :items :layout />
-  </div>
-</template>

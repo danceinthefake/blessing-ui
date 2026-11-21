@@ -1,15 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { BlessButton, BlessMockup, BlessSlideItem, BlessText, useToast } from "blessing-ui";
-const { toast } = useToast();
-const rows = ref(["加藤恵", "英梨々", "詩羽", "美智留"]);
-function remove(name: string, reset: () => void) {
-  rows.value = rows.value.filter((r) => r !== name);
-  toast(`Removed ${name}`);
-  reset();
-}
-</script>
-
 <template>
   <div class="row" style="align-items: flex-start">
     <BlessMockup type="phone" style="width: 260px">
@@ -33,3 +21,15 @@ function remove(name: string, reset: () => void) {
     >
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { BlessButton, BlessMockup, BlessSlideItem, BlessText, useToast } from "blessing-ui";
+const { toast } = useToast();
+const rows = ref(["加藤恵", "英梨々", "詩羽", "美智留"]);
+function remove(name: string, reset: () => void) {
+  rows.value = rows.value.filter((r) => r !== name);
+  toast(`Removed ${name}`);
+  reset();
+}
+</script>

@@ -1,3 +1,31 @@
+<template>
+  <section class="bless-achieve" :aria-label="text.title">
+    <p class="bless-achieve__count">{{ text.count(earnedCount, achievements.length) }}</p>
+    <ul class="bless-stagger bless-achieve__grid">
+      <li v-for="a in achievements" :key="a.id" class="bless-achieve__item">
+        <div class="bless-achieve__card" :class="{ 'is-earned': a.earned }">
+          <span class="bless-achieve__icon" aria-hidden="true">{{ a.icon }}</span>
+          <strong class="bless-achieve__title">{{ a.title }}</strong>
+          <span v-if="a.description" class="bless-achieve__desc">{{ a.description }}</span>
+          <span class="bless-achieve__state">{{
+            a.earned ? text.earned(a.earned) : text.locked
+          }}</span>
+          <progress
+            v-if="!a.earned && a.progress"
+            class="bless-achieve__bar"
+            :value="a.progress[0]"
+            :max="a.progress[1]"
+            :aria-label="`${a.title}: ${a.progress[0]} / ${a.progress[1]}`"
+          />
+          <span v-if="!a.earned && a.progress" class="bless-achieve__num" aria-hidden="true">
+            {{ a.progress[0] }} / {{ a.progress[1] }}
+          </span>
+        </div>
+      </li>
+    </ul>
+  </section>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -37,34 +65,6 @@ const text = computed(() => ({
 }));
 const earnedCount = computed(() => props.achievements.filter((a) => a.earned).length);
 </script>
-
-<template>
-  <section class="bless-achieve" :aria-label="text.title">
-    <p class="bless-achieve__count">{{ text.count(earnedCount, achievements.length) }}</p>
-    <ul class="bless-stagger bless-achieve__grid">
-      <li v-for="a in achievements" :key="a.id" class="bless-achieve__item">
-        <div class="bless-achieve__card" :class="{ 'is-earned': a.earned }">
-          <span class="bless-achieve__icon" aria-hidden="true">{{ a.icon }}</span>
-          <strong class="bless-achieve__title">{{ a.title }}</strong>
-          <span v-if="a.description" class="bless-achieve__desc">{{ a.description }}</span>
-          <span class="bless-achieve__state">{{
-            a.earned ? text.earned(a.earned) : text.locked
-          }}</span>
-          <progress
-            v-if="!a.earned && a.progress"
-            class="bless-achieve__bar"
-            :value="a.progress[0]"
-            :max="a.progress[1]"
-            :aria-label="`${a.title}: ${a.progress[0]} / ${a.progress[1]}`"
-          />
-          <span v-if="!a.earned && a.progress" class="bless-achieve__num" aria-hidden="true">
-            {{ a.progress[0] }} / {{ a.progress[1] }}
-          </span>
-        </div>
-      </li>
-    </ul>
-  </section>
-</template>
 
 <style>
 .bless-achieve {

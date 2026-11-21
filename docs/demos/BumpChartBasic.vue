@@ -1,3 +1,14 @@
+<template>
+  <BlessBumpChart
+    :data="weeks"
+    x="week"
+    :series
+    :format="thousands"
+    :labels="{ step: 'Week' }"
+    label="Rank of each show by weekly plays"
+  />
+</template>
+
 <script setup lang="ts">
 import { BlessBumpChart } from "blessing-ui";
 
@@ -19,14 +30,3 @@ const series = [
 ];
 const thousands = (v: number) => `${v}k`;
 </script>
-
-<template>
-  <BlessBumpChart
-    :data="weeks"
-    x="week"
-    :series
-    :format="thousands"
-    :labels="{ step: 'Week' }"
-    label="Rank of each show by weekly plays"
-  />
-</template>

@@ -1,11 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { BlessSwitch } from "blessing-ui";
-const notify = ref(true);
-const autoplay = ref(false);
-const subs = ref(true);
-</script>
-
 <template>
   <div class="row">
     <BlessSwitch v-model="notify">Notifications</BlessSwitch>
@@ -14,3 +6,11 @@ const subs = ref(true);
     <BlessSwitch disabled :model-value="true">Sync (managed)</BlessSwitch>
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { BlessSwitch } from "blessing-ui";
+const notify = ref(true);
+const autoplay = ref(false);
+const subs = ref(true);
+</script>

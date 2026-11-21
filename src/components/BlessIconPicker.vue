@@ -1,3 +1,39 @@
+<template>
+  <div class="bless-iconpick">
+    <BlessInput
+      v-model="query"
+      type="search"
+      size="sm"
+      :aria-label="text.search"
+      :placeholder="text.search"
+    />
+    <p class="bless-iconpick__count" role="status">
+      {{ shown.length ? text.count(shown.length) : text.none }}
+    </p>
+    <div class="bless-iconpick__grid" role="radiogroup" :aria-label="text.group">
+      <label v-for="i in shown" :key="i.name" class="bless-iconpick__icon" :title="i.name">
+        <input
+          type="radio"
+          class="bless-iconpick__input"
+          :name="`${uid}-icon`"
+          :value="i.name"
+          :checked="model === i.name"
+          :aria-label="i.name"
+          @change="model = i.name"
+        />
+        <svg
+          :viewBox
+          class="bless-iconpick__svg"
+          :class="{ 'is-stroke': stroke }"
+          aria-hidden="true"
+        >
+          <path v-for="(d, k) in paths(i)" :key="k" :d />
+        </svg>
+      </label>
+    </div>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed, ref, useId } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -48,42 +84,6 @@ const shown = computed(() => {
 });
 const paths = (i: BlessPickIcon) => (Array.isArray(i.path) ? i.path : [i.path]);
 </script>
-
-<template>
-  <div class="bless-iconpick">
-    <BlessInput
-      v-model="query"
-      type="search"
-      size="sm"
-      :aria-label="text.search"
-      :placeholder="text.search"
-    />
-    <p class="bless-iconpick__count" role="status">
-      {{ shown.length ? text.count(shown.length) : text.none }}
-    </p>
-    <div class="bless-iconpick__grid" role="radiogroup" :aria-label="text.group">
-      <label v-for="i in shown" :key="i.name" class="bless-iconpick__icon" :title="i.name">
-        <input
-          type="radio"
-          class="bless-iconpick__input"
-          :name="`${uid}-icon`"
-          :value="i.name"
-          :checked="model === i.name"
-          :aria-label="i.name"
-          @change="model = i.name"
-        />
-        <svg
-          :viewBox
-          class="bless-iconpick__svg"
-          :class="{ 'is-stroke': stroke }"
-          aria-hidden="true"
-        >
-          <path v-for="(d, k) in paths(i)" :key="k" :d />
-        </svg>
-      </label>
-    </div>
-  </div>
-</template>
 
 <style>
 .bless-iconpick {

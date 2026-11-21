@@ -1,3 +1,20 @@
+<template>
+  <span class="bless-qr" :class="{ 'bless-qr--frame': frame }" :style="{ '--_s': `${size}px` }">
+    <svg
+      class="bless-qr__svg"
+      :viewBox="`0 0 ${view} ${view}`"
+      :width="size"
+      :height="size"
+      shape-rendering="crispEdges"
+      role="img"
+      :aria-label="label ?? (value ? `QR code: ${value}` : 'QR code')"
+    >
+      <rect width="100%" height="100%" :fill="background" />
+      <path :d="path" :fill="color" />
+    </svg>
+  </span>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 
@@ -31,23 +48,6 @@ const path = computed(() => {
 });
 const view = computed(() => n.value + props.border * 2);
 </script>
-
-<template>
-  <span class="bless-qr" :class="{ 'bless-qr--frame': frame }" :style="{ '--_s': `${size}px` }">
-    <svg
-      class="bless-qr__svg"
-      :viewBox="`0 0 ${view} ${view}`"
-      :width="size"
-      :height="size"
-      shape-rendering="crispEdges"
-      role="img"
-      :aria-label="label ?? (value ? `QR code: ${value}` : 'QR code')"
-    >
-      <rect width="100%" height="100%" :fill="background" />
-      <path :d="path" :fill="color" />
-    </svg>
-  </span>
-</template>
 
 <style>
 .bless-qr {

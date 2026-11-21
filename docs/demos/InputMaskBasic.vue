@@ -1,11 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { BlessInputMask, BlessLabel } from "blessing-ui";
-const phone = ref("");
-const raw = ref("");
-const card = ref("");
-</script>
-
 <template>
   <div class="row" style="align-items: flex-start">
     <div class="col">
@@ -28,3 +20,11 @@ const card = ref("");
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { BlessInputMask, BlessLabel } from "blessing-ui";
+const phone = ref("");
+const raw = ref("");
+const card = ref("");
+</script>

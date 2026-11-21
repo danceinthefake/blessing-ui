@@ -1,15 +1,3 @@
-<script setup lang="ts">
-import { inject } from "vue";
-import BlessCollapsible from "./BlessCollapsible.vue";
-import { accordionKey } from "./accordion";
-
-defineOptions({ name: "BlessAccordionItem" });
-
-defineProps<{ title?: string; disabled?: boolean }>();
-const open = defineModel<boolean>("open", { default: false });
-const acc = inject(accordionKey, null);
-</script>
-
 <template>
   <BlessCollapsible
     v-model:open="open"
@@ -22,3 +10,15 @@ const acc = inject(accordionKey, null);
     <slot />
   </BlessCollapsible>
 </template>
+
+<script setup lang="ts">
+import { inject } from "vue";
+import BlessCollapsible from "./BlessCollapsible.vue";
+import { accordionKey } from "./accordion";
+
+defineOptions({ name: "BlessAccordionItem" });
+
+defineProps<{ title?: string; disabled?: boolean }>();
+const open = defineModel<boolean>("open", { default: false });
+const acc = inject(accordionKey, null);
+</script>

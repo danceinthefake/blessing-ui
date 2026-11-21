@@ -1,3 +1,66 @@
+<template>
+  <figure ref="box" class="bless-plot bless-bump">
+    <svg :viewBox="`0 0 ${width} ${height}`" :height class="bless-plot__svg" aria-hidden="true">
+      <text
+        v-for="r in series.length"
+        :key="r"
+        class="bless-plot__tick"
+        x="4"
+        :y="py(r)"
+        dominant-baseline="middle"
+      >
+        #{{ r }}
+      </text>
+      <template v-for="(row, k) in data" :key="k">
+        <text
+          v-if="k % every === 0 || k === data.length - 1"
+          class="bless-plot__tick"
+          :x="px(k)"
+          :y="height - 8"
+          text-anchor="middle"
+        >
+          {{ row[x] }}
+        </text>
+      </template>
+      <g v-for="l in lines" :key="l.key" class="bless-bump__line" :style="{ '--_c': l.color }">
+        <title>{{ l.name }}</title>
+        <path :d="l.d" />
+        <circle v-for="([cx, cy], k) in l.pts" :key="k" :cx :cy r="4" />
+        <text
+          v-if="l.pts.length"
+          class="bless-bump__name"
+          :x="l.pts.at(-1)![0] + 10"
+          :y="l.pts.at(-1)![1]"
+          dominant-baseline="middle"
+        >
+          {{ l.name }}
+        </text>
+      </g>
+    </svg>
+    <div class="bless-sr">
+      <table>
+        <caption>
+          {{ label }}
+        </caption>
+        <thead>
+          <tr>
+            <th scope="col">{{ text.step }}</th>
+            <th v-for="s in series" :key="s.key" scope="col">{{ s.label ?? s.key }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(row, k) in data" :key="k">
+            <th scope="row">{{ row[x] }}</th>
+            <td v-for="s in series" :key="s.key">
+              {{ text.rank(ranks[k]![s.key]!, fmt(num(row, s.key))) }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </figure>
+</template>
+
 <script lang="ts">
 /** The rank of each key in each row: 1 is the highest value (or the lowest, with `lower`). Ties share a rank. */
 export function bumpRanks(
@@ -99,69 +162,6 @@ const every = computed(() =>
 );
 const num = (r: BlessChartRow, k: string) => Number(r[k]) || 0;
 </script>
-
-<template>
-  <figure ref="box" class="bless-plot bless-bump">
-    <svg :viewBox="`0 0 ${width} ${height}`" :height class="bless-plot__svg" aria-hidden="true">
-      <text
-        v-for="r in series.length"
-        :key="r"
-        class="bless-plot__tick"
-        x="4"
-        :y="py(r)"
-        dominant-baseline="middle"
-      >
-        #{{ r }}
-      </text>
-      <template v-for="(row, k) in data" :key="k">
-        <text
-          v-if="k % every === 0 || k === data.length - 1"
-          class="bless-plot__tick"
-          :x="px(k)"
-          :y="height - 8"
-          text-anchor="middle"
-        >
-          {{ row[x] }}
-        </text>
-      </template>
-      <g v-for="l in lines" :key="l.key" class="bless-bump__line" :style="{ '--_c': l.color }">
-        <title>{{ l.name }}</title>
-        <path :d="l.d" />
-        <circle v-for="([cx, cy], k) in l.pts" :key="k" :cx :cy r="4" />
-        <text
-          v-if="l.pts.length"
-          class="bless-bump__name"
-          :x="l.pts.at(-1)![0] + 10"
-          :y="l.pts.at(-1)![1]"
-          dominant-baseline="middle"
-        >
-          {{ l.name }}
-        </text>
-      </g>
-    </svg>
-    <div class="bless-sr">
-      <table>
-        <caption>
-          {{ label }}
-        </caption>
-        <thead>
-          <tr>
-            <th scope="col">{{ text.step }}</th>
-            <th v-for="s in series" :key="s.key" scope="col">{{ s.label ?? s.key }}</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="(row, k) in data" :key="k">
-            <th scope="row">{{ row[x] }}</th>
-            <td v-for="s in series" :key="s.key">
-              {{ text.rank(ranks[k]![s.key]!, fmt(num(row, s.key))) }}
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </figure>
-</template>
 
 <style>
 .bless-bump__line path {

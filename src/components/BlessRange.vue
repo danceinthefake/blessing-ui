@@ -1,3 +1,48 @@
+<template>
+  <div
+    class="bless-range"
+    :class="{ 'bless-range--disabled': disabled }"
+    :style="{ '--_lo': `${pct(lo)}%`, '--_hi': `${pct(hi)}%` }"
+  >
+    <div v-if="label || showValue" class="bless-range__head">
+      <label v-if="label" :for="lowId()" class="bless-range__label">{{ label }}</label>
+      <span v-if="showValue" class="bless-range__value">{{ fmt(lo) }} – {{ fmt(hi) }}</span>
+    </div>
+    <div class="bless-range__track">
+      <span class="bless-range__fill" aria-hidden="true" />
+      <input
+        :id="lowId()"
+        :name
+        type="range"
+        class="bless-range__input"
+        :min
+        :max
+        :step
+        :value="lo"
+        :disabled
+        :aria-label="`${label ?? 'Range'} minimum`"
+        :aria-valuetext="fmt(lo)"
+        :aria-describedby="fs.describedby.value"
+        @input="setLo"
+      />
+      <input
+        :name
+        type="range"
+        class="bless-range__input"
+        :min
+        :max
+        :step
+        :value="hi"
+        :disabled
+        :aria-label="`${label ?? 'Range'} maximum`"
+        :aria-valuetext="fmt(hi)"
+        :aria-describedby="fs.describedby.value"
+        @input="setHi"
+      />
+    </div>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { useFieldId, useFieldState } from "../composables/useFieldId";
@@ -44,51 +89,6 @@ function setHi(e: Event) {
   el.value = String(v);
 }
 </script>
-
-<template>
-  <div
-    class="bless-range"
-    :class="{ 'bless-range--disabled': disabled }"
-    :style="{ '--_lo': `${pct(lo)}%`, '--_hi': `${pct(hi)}%` }"
-  >
-    <div v-if="label || showValue" class="bless-range__head">
-      <label v-if="label" :for="lowId()" class="bless-range__label">{{ label }}</label>
-      <span v-if="showValue" class="bless-range__value">{{ fmt(lo) }} – {{ fmt(hi) }}</span>
-    </div>
-    <div class="bless-range__track">
-      <span class="bless-range__fill" aria-hidden="true" />
-      <input
-        :id="lowId()"
-        :name
-        type="range"
-        class="bless-range__input"
-        :min
-        :max
-        :step
-        :value="lo"
-        :disabled
-        :aria-label="`${label ?? 'Range'} minimum`"
-        :aria-valuetext="fmt(lo)"
-        :aria-describedby="fs.describedby.value"
-        @input="setLo"
-      />
-      <input
-        :name
-        type="range"
-        class="bless-range__input"
-        :min
-        :max
-        :step
-        :value="hi"
-        :disabled
-        :aria-label="`${label ?? 'Range'} maximum`"
-        :aria-valuetext="fmt(hi)"
-        :aria-describedby="fs.describedby.value"
-        @input="setHi"
-      />
-    </div>
-  </div>
-</template>
 
 <style>
 /* two native range inputs stacked; the fill is drawn between their thumbs */

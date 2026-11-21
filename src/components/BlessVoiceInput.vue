@@ -1,3 +1,30 @@
+<template>
+  <span class="bless-voice" :class="`is-${state}`">
+    <button
+      type="button"
+      class="bless-voice__button"
+      :aria-pressed="state === 'listening'"
+      :aria-label="state === 'listening' ? text.stop : text.start"
+      :title="
+        state === 'unsupported' ? text.unsupported : state === 'listening' ? text.stop : text.start
+      "
+      :disabled="disabled || state === 'unsupported'"
+      :style="{ '--_level': level }"
+      @click="toggle"
+    >
+      <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true">
+        <rect x="5.5" y="1.5" width="5" height="8" rx="2.5" />
+        <path d="M3 7.5a5 5 0 0 0 10 0M8 12.5v2" />
+      </svg>
+    </button>
+    <span v-if="interim" class="bless-voice__interim" aria-hidden="true">{{ interim }}</span>
+    <span v-else-if="state === 'unsupported' || state === 'denied'" class="bless-voice__note">
+      {{ state === "denied" ? text.denied : text.unsupported }}
+    </span>
+    <span class="bless-sr" role="status">{{ status }}</span>
+  </span>
+</template>
+
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, ref } from "vue";
 import { micLevel } from "../composables/micLevel";
@@ -133,33 +160,6 @@ onBeforeUnmount(() => {
   release();
 });
 </script>
-
-<template>
-  <span class="bless-voice" :class="`is-${state}`">
-    <button
-      type="button"
-      class="bless-voice__button"
-      :aria-pressed="state === 'listening'"
-      :aria-label="state === 'listening' ? text.stop : text.start"
-      :title="
-        state === 'unsupported' ? text.unsupported : state === 'listening' ? text.stop : text.start
-      "
-      :disabled="disabled || state === 'unsupported'"
-      :style="{ '--_level': level }"
-      @click="toggle"
-    >
-      <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true">
-        <rect x="5.5" y="1.5" width="5" height="8" rx="2.5" />
-        <path d="M3 7.5a5 5 0 0 0 10 0M8 12.5v2" />
-      </svg>
-    </button>
-    <span v-if="interim" class="bless-voice__interim" aria-hidden="true">{{ interim }}</span>
-    <span v-else-if="state === 'unsupported' || state === 'denied'" class="bless-voice__note">
-      {{ state === "denied" ? text.denied : text.unsupported }}
-    </span>
-    <span class="bless-sr" role="status">{{ status }}</span>
-  </span>
-</template>
 
 <style>
 .bless-voice {

@@ -1,3 +1,52 @@
+<template>
+  <figure class="bless-radar">
+    <svg
+      role="img"
+      :aria-label="summary"
+      :viewBox="`0 0 ${size} ${size}`"
+      :width="size"
+      :height="size"
+    >
+      <path v-for="(d, k) in grid" :key="k" class="bless-radar__ring" :d="d" />
+      <line
+        v-for="(p, i) in spokes"
+        :key="i"
+        class="bless-radar__spoke"
+        :x1="c"
+        :y1="c"
+        :x2="p.x"
+        :y2="p.y"
+      />
+      <g v-for="s in shapes" :key="s.name" :style="{ '--_c': s.color }">
+        <path class="bless-radar__area" :d="s.d" />
+        <circle
+          v-for="(p, i) in s.pts"
+          :key="i"
+          class="bless-radar__dot"
+          :cx="p.x"
+          :cy="p.y"
+          r="3"
+        />
+      </g>
+      <text
+        v-for="t in names"
+        :key="t.name"
+        class="bless-radar__name"
+        :x="t.x"
+        :y="t.y"
+        :text-anchor="t.anchor"
+      >
+        {{ t.name }}
+      </text>
+    </svg>
+    <figcaption v-if="series.length > 1" class="bless-radar__legend">
+      <span v-for="s in shapes" :key="s.name" :style="{ '--_c': s.color }">
+        <i class="bless-radar__swatch" aria-hidden="true" />{{ s.name }}
+      </span>
+    </figcaption>
+  </figure>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { polygon, radarMax, spoke } from "./radar";
@@ -67,55 +116,6 @@ const summary = computed(
       .join(". ")}`,
 );
 </script>
-
-<template>
-  <figure class="bless-radar">
-    <svg
-      role="img"
-      :aria-label="summary"
-      :viewBox="`0 0 ${size} ${size}`"
-      :width="size"
-      :height="size"
-    >
-      <path v-for="(d, k) in grid" :key="k" class="bless-radar__ring" :d="d" />
-      <line
-        v-for="(p, i) in spokes"
-        :key="i"
-        class="bless-radar__spoke"
-        :x1="c"
-        :y1="c"
-        :x2="p.x"
-        :y2="p.y"
-      />
-      <g v-for="s in shapes" :key="s.name" :style="{ '--_c': s.color }">
-        <path class="bless-radar__area" :d="s.d" />
-        <circle
-          v-for="(p, i) in s.pts"
-          :key="i"
-          class="bless-radar__dot"
-          :cx="p.x"
-          :cy="p.y"
-          r="3"
-        />
-      </g>
-      <text
-        v-for="t in names"
-        :key="t.name"
-        class="bless-radar__name"
-        :x="t.x"
-        :y="t.y"
-        :text-anchor="t.anchor"
-      >
-        {{ t.name }}
-      </text>
-    </svg>
-    <figcaption v-if="series.length > 1" class="bless-radar__legend">
-      <span v-for="s in shapes" :key="s.name" :style="{ '--_c': s.color }">
-        <i class="bless-radar__swatch" aria-hidden="true" />{{ s.name }}
-      </span>
-    </figcaption>
-  </figure>
-</template>
 
 <style>
 .bless-radar {

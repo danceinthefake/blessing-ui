@@ -1,3 +1,44 @@
+<template>
+  <div
+    ref="root"
+    class="bless-dock"
+    :class="`bless-dock--${position}`"
+    role="toolbar"
+    :aria-label="label"
+    :aria-orientation="vertical ? 'vertical' : 'horizontal'"
+    :style="{ '--_size': `${size}px` }"
+    @pointermove="onMove"
+    @pointerleave="calm"
+    @focusin="onFocusin"
+    @focusout="calm"
+    @keydown="onKey"
+  >
+    <component
+      :is="it.href ? 'a' : 'button'"
+      v-for="(it, i) in items"
+      :key="it.id"
+      class="bless-dock__item"
+      :href="it.href"
+      :type="it.href ? undefined : 'button'"
+      :disabled="it.href ? undefined : it.disabled"
+      :aria-disabled="it.href && it.disabled ? true : undefined"
+      :aria-label="it.badge != null ? `${it.label} ${it.badge}` : it.label"
+      :tabindex="active === i ? 0 : -1"
+      :style="{ '--_s': scaleOf(i) }"
+      @click="!it.disabled && emit('select', it)"
+    >
+      <span class="bless-dock__icon" aria-hidden="true">
+        <slot name="item" :item="it">{{ it.icon }}</slot>
+      </span>
+      <!-- the space keeps "Mail 3" apart for tools that read the text -->
+      <span class="bless-dock__tip" aria-hidden="true">{{ it.label }}</span>{{ " " }}
+      <span v-if="it.badge != null" class="bless-dock__badge" aria-hidden="true">{{
+        it.badge
+      }}</span>
+    </component>
+  </div>
+</template>
+
 <script lang="ts">
 export interface BlessDockItem {
   id: string;
@@ -93,47 +134,6 @@ function onKey(e: KeyboardEvent) {
   els[(to + els.length) % els.length]!.focus();
 }
 </script>
-
-<template>
-  <div
-    ref="root"
-    class="bless-dock"
-    :class="`bless-dock--${position}`"
-    role="toolbar"
-    :aria-label="label"
-    :aria-orientation="vertical ? 'vertical' : 'horizontal'"
-    :style="{ '--_size': `${size}px` }"
-    @pointermove="onMove"
-    @pointerleave="calm"
-    @focusin="onFocusin"
-    @focusout="calm"
-    @keydown="onKey"
-  >
-    <component
-      :is="it.href ? 'a' : 'button'"
-      v-for="(it, i) in items"
-      :key="it.id"
-      class="bless-dock__item"
-      :href="it.href"
-      :type="it.href ? undefined : 'button'"
-      :disabled="it.href ? undefined : it.disabled"
-      :aria-disabled="it.href && it.disabled ? true : undefined"
-      :aria-label="it.badge != null ? `${it.label} ${it.badge}` : it.label"
-      :tabindex="active === i ? 0 : -1"
-      :style="{ '--_s': scaleOf(i) }"
-      @click="!it.disabled && emit('select', it)"
-    >
-      <span class="bless-dock__icon" aria-hidden="true">
-        <slot name="item" :item="it">{{ it.icon }}</slot>
-      </span>
-      <!-- the space keeps "Mail 3" apart for tools that read the text -->
-      <span class="bless-dock__tip" aria-hidden="true">{{ it.label }}</span>{{ " " }}
-      <span v-if="it.badge != null" class="bless-dock__badge" aria-hidden="true">{{
-        it.badge
-      }}</span>
-    </component>
-  </div>
-</template>
 
 <style>
 .bless-dock {

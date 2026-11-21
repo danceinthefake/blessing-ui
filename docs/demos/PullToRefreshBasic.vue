@@ -1,23 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import {
-  BlessButton,
-  BlessListItem,
-  BlessList,
-  BlessMockup,
-  BlessPullToRefresh,
-  BlessText,
-} from "blessing-ui";
-const items = ref(Array.from({ length: 6 }, (_, i) => `第${i + 1}話`));
-let n = 6;
-function refresh(done: () => void) {
-  setTimeout(() => {
-    items.value.unshift(`第${++n}話 (new)`);
-    done();
-  }, 900);
-}
-</script>
-
 <template>
   <div class="row" style="align-items: flex-start">
     <BlessMockup type="phone" style="width: 260px">
@@ -37,3 +17,23 @@ function refresh(done: () => void) {
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import {
+  BlessButton,
+  BlessListItem,
+  BlessList,
+  BlessMockup,
+  BlessPullToRefresh,
+  BlessText,
+} from "blessing-ui";
+const items = ref(Array.from({ length: 6 }, (_, i) => `第${i + 1}話`));
+let n = 6;
+function refresh(done: () => void) {
+  setTimeout(() => {
+    items.value.unshift(`第${++n}話 (new)`);
+    done();
+  }, 900);
+}
+</script>

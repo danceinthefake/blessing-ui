@@ -1,3 +1,15 @@
+<template>
+  <ul class="files">
+    <li v-for="(f, i) in files" :key="f">
+      {{ f }}
+      <BlessButton size="sm" variant="outline" :aria-label="`Delete ${f}`" @click="remove(i)"
+        >Delete</BlessButton
+      >
+    </li>
+    <li v-if="!files.length">No files.</li>
+  </ul>
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessButton, useToast } from "blessing-ui";
@@ -12,18 +24,6 @@ function remove(i: number) {
   });
 }
 </script>
-
-<template>
-  <ul class="files">
-    <li v-for="(f, i) in files" :key="f">
-      {{ f }}
-      <BlessButton size="sm" variant="outline" :aria-label="`Delete ${f}`" @click="remove(i)"
-        >Delete</BlessButton
-      >
-    </li>
-    <li v-if="!files.length">No files.</li>
-  </ul>
-</template>
 
 <style scoped>
 .files {

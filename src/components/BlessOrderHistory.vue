@@ -1,3 +1,49 @@
+<template>
+  <section class="bless-orders" :aria-label="text.title">
+    <article v-for="o in orders" :key="o.id" class="bless-orders__order" :class="`is-${o.status}`">
+      <header class="bless-orders__head">
+        <h3 class="bless-orders__number">{{ o.number }}</h3>
+        <span class="bless-orders__date">{{ o.date }}</span>
+        <span class="bless-orders__status">
+          <span aria-hidden="true">{{ MARK[o.status] }}</span> {{ text[o.status] }}
+        </span>
+      </header>
+      <div class="bless-orders__body">
+        <div
+          class="bless-orders__thumbs"
+          role="img"
+          :aria-label="o.items.map((i) => `${i.quantity} × ${i.name}`).join(', ')"
+        >
+          <span v-for="(it, k) in o.items.slice(0, 3)" :key="k" class="bless-orders__thumb">
+            <img v-if="it.image" :src="it.image" alt="" />
+            <span v-else>{{ it.name.charAt(0) }}</span>
+          </span>
+          <span v-if="o.items.length > 3" class="bless-orders__thumb is-more">
+            {{ text.more(o.items.length - 3) }}
+          </span>
+        </div>
+        <div class="bless-orders__sum">
+          <span>{{ text.items(count(o)) }}</span>{{ " " }}
+          <strong>{{ money.format(o.total) }}</strong>
+        </div>
+      </div>
+      <footer class="bless-orders__actions">
+        <a v-if="o.href" class="bless-orders__link" :href="o.href">
+          {{ text.view }}{{ " " }}<span class="bless-sr">{{ o.number }}</span>
+        </a>
+        <button
+          v-if="o.status !== 'processing'"
+          type="button"
+          class="bless-orders__again"
+          @click="emit('again', o.id)"
+        >
+          {{ text.again }}{{ " " }}<span class="bless-sr">{{ o.number }}</span>
+        </button>
+      </footer>
+    </article>
+  </section>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -62,52 +108,6 @@ const MARK: Record<BlessOrderStatus, string> = {
 const money = computed(() => moneyFormat(props.locale, props.currency));
 const count = (o: BlessPastOrder) => o.items.reduce((n, i) => n + i.quantity, 0);
 </script>
-
-<template>
-  <section class="bless-orders" :aria-label="text.title">
-    <article v-for="o in orders" :key="o.id" class="bless-orders__order" :class="`is-${o.status}`">
-      <header class="bless-orders__head">
-        <h3 class="bless-orders__number">{{ o.number }}</h3>
-        <span class="bless-orders__date">{{ o.date }}</span>
-        <span class="bless-orders__status">
-          <span aria-hidden="true">{{ MARK[o.status] }}</span> {{ text[o.status] }}
-        </span>
-      </header>
-      <div class="bless-orders__body">
-        <div
-          class="bless-orders__thumbs"
-          role="img"
-          :aria-label="o.items.map((i) => `${i.quantity} × ${i.name}`).join(', ')"
-        >
-          <span v-for="(it, k) in o.items.slice(0, 3)" :key="k" class="bless-orders__thumb">
-            <img v-if="it.image" :src="it.image" alt="" />
-            <span v-else>{{ it.name.charAt(0) }}</span>
-          </span>
-          <span v-if="o.items.length > 3" class="bless-orders__thumb is-more">
-            {{ text.more(o.items.length - 3) }}
-          </span>
-        </div>
-        <div class="bless-orders__sum">
-          <span>{{ text.items(count(o)) }}</span>{{ " " }}
-          <strong>{{ money.format(o.total) }}</strong>
-        </div>
-      </div>
-      <footer class="bless-orders__actions">
-        <a v-if="o.href" class="bless-orders__link" :href="o.href">
-          {{ text.view }}{{ " " }}<span class="bless-sr">{{ o.number }}</span>
-        </a>
-        <button
-          v-if="o.status !== 'processing'"
-          type="button"
-          class="bless-orders__again"
-          @click="emit('again', o.id)"
-        >
-          {{ text.again }}{{ " " }}<span class="bless-sr">{{ o.number }}</span>
-        </button>
-      </footer>
-    </article>
-  </section>
-</template>
 
 <style>
 .bless-orders {

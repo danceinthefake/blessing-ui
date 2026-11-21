@@ -1,3 +1,49 @@
+<template>
+  <div class="bless-inspect">
+    <div class="bless-inspect__line">
+      <span class="bless-inspect__method">{{ method.toUpperCase() }}</span>
+      <code class="bless-inspect__url">{{ url }}</code>
+    </div>
+    <div class="bless-inspect__facts">
+      <span class="bless-inspect__status" :class="`is-${kind}`">
+        {{ status }} {{ statusText }} <span class="bless-inspect__kind">({{ text[kind] }})</span>
+      </span>
+      <span v-if="duration != null">{{ ms.format(Math.round(duration)) }}</span>
+      <span v-if="size != null">{{ kb.format(size / 1000) }}</span>
+    </div>
+    <BlessTabs v-model="tab" :tabs>
+      <template #default="{ tab: t }">
+        <div v-if="t.value === 'headers'" class="bless-inspect__headers">
+          <template
+            v-for="[title, h] in [
+              [text.requestHeaders, request?.headers],
+              [text.responseHeaders, response?.headers],
+            ] as const"
+            :key="title"
+          >
+            <div class="bless-inspect__label">{{ title }}</div>
+            <dl>
+              <div v-for="(v, k) in h ?? {}" :key="k">
+                <dt>{{ k }}</dt>
+                <dd>{{ v }}</dd>
+              </div>
+            </dl>
+          </template>
+        </div>
+        <template v-else>
+          <template
+            v-for="b in [pretty(t.value === 'request' ? request?.body : response?.body)]"
+            :key="t.value"
+          >
+            <BlessCodeBlock v-if="b.code" :code="b.code" :lang="b.lang" :label="t.label" copy />
+            <div v-else class="bless-inspect__empty">{{ text.noBody }}</div>
+          </template>
+        </template>
+      </template>
+    </BlessTabs>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed, ref } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -91,52 +137,6 @@ const kb = computed(
     }),
 );
 </script>
-
-<template>
-  <div class="bless-inspect">
-    <div class="bless-inspect__line">
-      <span class="bless-inspect__method">{{ method.toUpperCase() }}</span>
-      <code class="bless-inspect__url">{{ url }}</code>
-    </div>
-    <div class="bless-inspect__facts">
-      <span class="bless-inspect__status" :class="`is-${kind}`">
-        {{ status }} {{ statusText }} <span class="bless-inspect__kind">({{ text[kind] }})</span>
-      </span>
-      <span v-if="duration != null">{{ ms.format(Math.round(duration)) }}</span>
-      <span v-if="size != null">{{ kb.format(size / 1000) }}</span>
-    </div>
-    <BlessTabs v-model="tab" :tabs>
-      <template #default="{ tab: t }">
-        <div v-if="t.value === 'headers'" class="bless-inspect__headers">
-          <template
-            v-for="[title, h] in [
-              [text.requestHeaders, request?.headers],
-              [text.responseHeaders, response?.headers],
-            ] as const"
-            :key="title"
-          >
-            <div class="bless-inspect__label">{{ title }}</div>
-            <dl>
-              <div v-for="(v, k) in h ?? {}" :key="k">
-                <dt>{{ k }}</dt>
-                <dd>{{ v }}</dd>
-              </div>
-            </dl>
-          </template>
-        </div>
-        <template v-else>
-          <template
-            v-for="b in [pretty(t.value === 'request' ? request?.body : response?.body)]"
-            :key="t.value"
-          >
-            <BlessCodeBlock v-if="b.code" :code="b.code" :lang="b.lang" :label="t.label" copy />
-            <div v-else class="bless-inspect__empty">{{ text.noBody }}</div>
-          </template>
-        </template>
-      </template>
-    </BlessTabs>
-  </div>
-</template>
 
 <style>
 .bless-inspect {

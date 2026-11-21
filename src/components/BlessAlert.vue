@@ -1,30 +1,3 @@
-<script setup lang="ts">
-import { useLabelPack } from "../composables/useLabels";
-import { computed } from "vue";
-defineOptions({ name: "BlessAlert" });
-
-const props = withDefaults(
-  defineProps<{
-    title?: string;
-    color?: "text" | "accent" | "danger" | "warning" | "success" | "info";
-    /** assertive (role=alert) vs polite (role=status) */
-    live?: "alert" | "status" | "none";
-    dismissible?: boolean;
-    labels?: Partial<{ close: string }>;
-  }>(),
-  { color: "text", live: "status" },
-);
-const pack = useLabelPack("BlessAlert");
-const text = computed(() => ({
-  close: "Dismiss",
-  ...pack(),
-  ...props.labels,
-}));
-
-const open = defineModel<boolean>({ default: true });
-const emit = defineEmits<{ dismiss: [] }>();
-</script>
-
 <template>
   <div
     v-if="open"
@@ -53,6 +26,33 @@ const emit = defineEmits<{ dismiss: [] }>();
     </button>
   </div>
 </template>
+
+<script setup lang="ts">
+import { useLabelPack } from "../composables/useLabels";
+import { computed } from "vue";
+defineOptions({ name: "BlessAlert" });
+
+const props = withDefaults(
+  defineProps<{
+    title?: string;
+    color?: "text" | "accent" | "danger" | "warning" | "success" | "info";
+    /** assertive (role=alert) vs polite (role=status) */
+    live?: "alert" | "status" | "none";
+    dismissible?: boolean;
+    labels?: Partial<{ close: string }>;
+  }>(),
+  { color: "text", live: "status" },
+);
+const pack = useLabelPack("BlessAlert");
+const text = computed(() => ({
+  close: "Dismiss",
+  ...pack(),
+  ...props.labels,
+}));
+
+const open = defineModel<boolean>({ default: true });
+const emit = defineEmits<{ dismiss: [] }>();
+</script>
 
 <style>
 .bless-alert {

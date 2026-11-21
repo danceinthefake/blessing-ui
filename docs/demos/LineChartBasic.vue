@@ -1,3 +1,17 @@
+<template>
+  <BlessStack :gap="3">
+    <BlessSwitch v-model="area">Area</BlessSwitch>
+    <BlessChart
+      title="Listeners"
+      description="Each day in November"
+      :legend="['Web', 'App']"
+      height="auto"
+    >
+      <BlessLineChart :data x="day" :series :area x-label="Day" label="Listeners each day" />
+    </BlessChart>
+  </BlessStack>
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessChart, BlessLineChart, BlessStack, BlessSwitch } from "blessing-ui";
@@ -13,17 +27,3 @@ const series = [
 ];
 const area = ref(false);
 </script>
-
-<template>
-  <BlessStack :gap="3">
-    <BlessSwitch v-model="area">Area</BlessSwitch>
-    <BlessChart
-      title="Listeners"
-      description="Each day in November"
-      :legend="['Web', 'App']"
-      height="auto"
-    >
-      <BlessLineChart :data x="day" :series :area x-label="Day" label="Listeners each day" />
-    </BlessChart>
-  </BlessStack>
-</template>

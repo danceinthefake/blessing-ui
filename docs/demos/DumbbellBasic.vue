@@ -1,3 +1,13 @@
+<template>
+  <BlessDumbbell
+    :data="shows"
+    :format="thousands"
+    :labels="{ start: 'Old schedule', end: 'New schedule', row: 'Show' }"
+    label="Weekly plays before and after the new schedule"
+    style="max-width: 560px"
+  />
+</template>
+
 <script setup lang="ts">
 import { BlessDumbbell } from "blessing-ui";
 
@@ -11,13 +21,3 @@ const shows = [
 ];
 const thousands = (v: number) => `${v}k`;
 </script>
-
-<template>
-  <BlessDumbbell
-    :data="shows"
-    :format="thousands"
-    :labels="{ start: 'Old schedule', end: 'New schedule', row: 'Show' }"
-    label="Weekly plays before and after the new schedule"
-    style="max-width: 560px"
-  />
-</template>

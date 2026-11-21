@@ -1,10 +1,3 @@
-<script setup lang="ts">
-import { BlessSparkline } from "blessing-ui";
-const visits = [12, 18, 14, 22, 30, 26, 34, 31, 40];
-const profit = [4, -2, 6, -1, -3, 5, 7, 2, -4];
-const form = [1, 1, -1, 1, 0, 1, -1, -1, 1, 1];
-</script>
-
 <template>
   <table class="bless-table" style="max-width: 520px">
     <thead>
@@ -33,3 +26,10 @@ const form = [1, 1, -1, 1, 0, 1, -1, -1, 1, 1];
     </tbody>
   </table>
 </template>
+
+<script setup lang="ts">
+import { BlessSparkline } from "blessing-ui";
+const visits = [12, 18, 14, 22, 30, 26, 34, 31, 40];
+const profit = [4, -2, 6, -1, -3, 5, 7, 2, -4];
+const form = [1, 1, -1, 1, 0, 1, -1, -1, 1, 1];
+</script>

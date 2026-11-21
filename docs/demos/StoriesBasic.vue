@@ -1,3 +1,7 @@
+<template>
+  <BlessStories :people @seen="seen" />
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessStories, type BlessStoryPerson } from "blessing-ui";
@@ -58,7 +62,3 @@ function seen(personId: string, storyId: string) {
   if (p && p.stories.at(-1)?.id === storyId) p.seen = true;
 }
 </script>
-
-<template>
-  <BlessStories :people @seen="seen" />
-</template>

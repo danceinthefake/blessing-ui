@@ -1,12 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { BlessField, BlessInput, BlessSavedForm, BlessTextarea } from "blessing-ui";
-
-// type, wait a moment, then reload the page: the form offers your draft
-const values = ref<Record<string, unknown>>({ business: "", city: "", activity: "" });
-const sent = ref(false);
-</script>
-
 <template>
   <BlessSavedForm
     v-model="values"
@@ -26,3 +17,12 @@ const sent = ref(false);
   </BlessSavedForm>
   <div v-if="sent" style="margin-top: 12px">Sent. The draft is gone.</div>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { BlessField, BlessInput, BlessSavedForm, BlessTextarea } from "blessing-ui";
+
+// type, wait a moment, then reload the page: the form offers your draft
+const values = ref<Record<string, unknown>>({ business: "", city: "", activity: "" });
+const sent = ref(false);
+</script>

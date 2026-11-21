@@ -1,3 +1,23 @@
+<template>
+  <div style="max-width: 480px">
+    <BlessStack :gap="2">
+      <BlessCheckbox
+        v-for="e in episodes"
+        :key="e.id"
+        :model-value="picked.includes(e.id)"
+        @update:model-value="toggle(e.id, !!$event)"
+      >
+        {{ e.title }}
+      </BlessCheckbox>
+    </BlessStack>
+    <div style="height: 72px" />
+    <BlessBulkActionBar :count="picked.length" @clear="picked = []">
+      <BlessButton size="sm" variant="ghost" @click="picked = []">Archive</BlessButton>
+      <BlessButton size="sm" variant="ghost" @click="remove">Delete</BlessButton>
+    </BlessBulkActionBar>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessBulkActionBar, BlessButton, BlessCheckbox, BlessStack } from "blessing-ui";
@@ -19,23 +39,3 @@ function remove() {
   picked.value = [];
 }
 </script>
-
-<template>
-  <div style="max-width: 480px">
-    <BlessStack :gap="2">
-      <BlessCheckbox
-        v-for="e in episodes"
-        :key="e.id"
-        :model-value="picked.includes(e.id)"
-        @update:model-value="toggle(e.id, !!$event)"
-      >
-        {{ e.title }}
-      </BlessCheckbox>
-    </BlessStack>
-    <div style="height: 72px" />
-    <BlessBulkActionBar :count="picked.length" @clear="picked = []">
-      <BlessButton size="sm" variant="ghost" @click="picked = []">Archive</BlessButton>
-      <BlessButton size="sm" variant="ghost" @click="remove">Delete</BlessButton>
-    </BlessBulkActionBar>
-  </div>
-</template>

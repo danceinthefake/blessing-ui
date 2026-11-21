@@ -1,3 +1,37 @@
+<template>
+  <div class="bless-camera" :class="`bless-camera--${state}`">
+    <div v-if="state === 'live' || state === 'photo'" class="bless-camera__frame">
+      <!-- the front camera shows as a mirror, as people expect; the photo itself is not mirrored -->
+      <video
+        v-show="state === 'live'"
+        ref="video"
+        class="bless-camera__video"
+        :class="{ 'bless-camera__video--mirror': facing === 'user' }"
+        :aria-label="text.preview"
+        autoplay
+        muted
+        playsinline
+      />
+      <img v-if="state === 'photo'" class="bless-camera__photo" :src="url" :alt="text.photo" />
+    </div>
+    <div class="bless-camera__controls">
+      <BlessButton v-if="state === 'idle' || state === 'unavailable'" @click="start">
+        {{ text.start }}
+      </BlessButton>
+      <template v-else-if="state === 'live'">
+        <BlessButton @click="capture">{{ text.capture }}</BlessButton>
+        <BlessButton v-if="cameras > 1" variant="outline" @click="flip">
+          {{ text.switch }}
+        </BlessButton>
+      </template>
+      <BlessButton v-else variant="outline" @click="retake">{{ text.retake }}</BlessButton>
+    </div>
+    <p class="bless-camera__status" role="status">
+      {{ state === "unavailable" ? text.unavailable : "" }}
+    </p>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed, nextTick, onBeforeUnmount, ref } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -111,40 +145,6 @@ onBeforeUnmount(() => {
   if (url.value) URL.revokeObjectURL(url.value);
 });
 </script>
-
-<template>
-  <div class="bless-camera" :class="`bless-camera--${state}`">
-    <div v-if="state === 'live' || state === 'photo'" class="bless-camera__frame">
-      <!-- the front camera shows as a mirror, as people expect; the photo itself is not mirrored -->
-      <video
-        v-show="state === 'live'"
-        ref="video"
-        class="bless-camera__video"
-        :class="{ 'bless-camera__video--mirror': facing === 'user' }"
-        :aria-label="text.preview"
-        autoplay
-        muted
-        playsinline
-      />
-      <img v-if="state === 'photo'" class="bless-camera__photo" :src="url" :alt="text.photo" />
-    </div>
-    <div class="bless-camera__controls">
-      <BlessButton v-if="state === 'idle' || state === 'unavailable'" @click="start">
-        {{ text.start }}
-      </BlessButton>
-      <template v-else-if="state === 'live'">
-        <BlessButton @click="capture">{{ text.capture }}</BlessButton>
-        <BlessButton v-if="cameras > 1" variant="outline" @click="flip">
-          {{ text.switch }}
-        </BlessButton>
-      </template>
-      <BlessButton v-else variant="outline" @click="retake">{{ text.retake }}</BlessButton>
-    </div>
-    <p class="bless-camera__status" role="status">
-      {{ state === "unavailable" ? text.unavailable : "" }}
-    </p>
-  </div>
-</template>
 
 <style>
 .bless-camera {

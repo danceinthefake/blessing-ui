@@ -1,17 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { BlessRadialMenu } from "blessing-ui";
-
-const items = [
-  { id: "reply", label: "Reply", icon: "↩" },
-  { id: "like", label: "Like", icon: "♥" },
-  { id: "pin", label: "Pin", icon: "⚑" },
-  { id: "delete", label: "Delete", icon: "✕", disabled: true },
-  { id: "share", label: "Share", icon: "⇪" },
-];
-const last = ref("nothing yet");
-</script>
-
 <template>
   <div class="col" style="max-width: 420px">
     <BlessRadialMenu :items label="Message actions" @select="last = $event.label">
@@ -29,3 +15,17 @@ const last = ref("nothing yet");
     <small>chose: {{ last }}</small>
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { BlessRadialMenu } from "blessing-ui";
+
+const items = [
+  { id: "reply", label: "Reply", icon: "↩" },
+  { id: "like", label: "Like", icon: "♥" },
+  { id: "pin", label: "Pin", icon: "⚑" },
+  { id: "delete", label: "Delete", icon: "✕", disabled: true },
+  { id: "share", label: "Share", icon: "⇪" },
+];
+const last = ref("nothing yet");
+</script>

@@ -1,3 +1,15 @@
+<template>
+  <div class="col" style="max-width: none; gap: 24px">
+    <BlessDescriptions :items :columns="3">
+      <template #value="{ item }">
+        <BlessBadge v-if="item.label === 'Status'" color="success">{{ item.value }}</BlessBadge>
+        <template v-else>{{ item.value ?? "—" }}</template>
+      </template>
+    </BlessDescriptions>
+    <BlessDescriptions :items="items.slice(0, 5)" :columns="2" bordered />
+  </div>
+</template>
+
 <script setup lang="ts">
 import { BlessBadge, BlessDescriptions } from "blessing-ui";
 
@@ -11,15 +23,3 @@ const items = [
   { label: "Director" },
 ];
 </script>
-
-<template>
-  <div class="col" style="max-width: none; gap: 24px">
-    <BlessDescriptions :items :columns="3">
-      <template #value="{ item }">
-        <BlessBadge v-if="item.label === 'Status'" color="success">{{ item.value }}</BlessBadge>
-        <template v-else>{{ item.value ?? "—" }}</template>
-      </template>
-    </BlessDescriptions>
-    <BlessDescriptions :items="items.slice(0, 5)" :columns="2" bordered />
-  </div>
-</template>

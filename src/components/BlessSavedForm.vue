@@ -1,3 +1,23 @@
+<template>
+  <form class="bless-saved" @submit.prevent="submit">
+    <div v-if="draft" class="bless-saved__draft" role="alert">
+      <span>{{ text.found(time(draft.at)) }}</span>
+      <span class="bless-saved__choose">
+        <button type="button" class="is-main" @click="resume">{{ text.resume }}</button>
+        <button type="button" @click="restart">{{ text.restart }}</button>
+      </span>
+    </div>
+    <slot />
+    <div class="bless-saved__foot">
+      <button type="submit" class="is-main">{{ text.send }}</button>
+      <button type="button" @click="later">{{ text.later }}</button>
+      <span class="bless-saved__status" role="status">{{
+        savedAt ? text.saved(time(savedAt)) : ""
+      }}</span>
+    </div>
+  </form>
+</template>
+
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, ref, watch } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -101,26 +121,6 @@ function submit() {
   emit("submit", values.value);
 }
 </script>
-
-<template>
-  <form class="bless-saved" @submit.prevent="submit">
-    <div v-if="draft" class="bless-saved__draft" role="alert">
-      <span>{{ text.found(time(draft.at)) }}</span>
-      <span class="bless-saved__choose">
-        <button type="button" class="is-main" @click="resume">{{ text.resume }}</button>
-        <button type="button" @click="restart">{{ text.restart }}</button>
-      </span>
-    </div>
-    <slot />
-    <div class="bless-saved__foot">
-      <button type="submit" class="is-main">{{ text.send }}</button>
-      <button type="button" @click="later">{{ text.later }}</button>
-      <span class="bless-saved__status" role="status">{{
-        savedAt ? text.saved(time(savedAt)) : ""
-      }}</span>
-    </div>
-  </form>
-</template>
 
 <style>
 .bless-saved {

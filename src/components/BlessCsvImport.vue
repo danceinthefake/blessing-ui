@@ -1,3 +1,68 @@
+<template>
+  <div class="bless-csv">
+    <label class="bless-csv__file">
+      <span class="bless-csv__label">{{ text.file }}</span>
+      <input
+        type="file"
+        accept=".csv,text/csv"
+        @change="read(($event.target as HTMLInputElement).files?.[0])"
+      />
+    </label>
+    <template v-if="loaded">
+      <p v-if="!body.length" class="bless-csv__note" role="status">{{ text.empty }}</p>
+      <template v-else>
+        <p class="bless-csv__note" role="status">{{ text.rows(body.length) }}</p>
+        <fieldset class="bless-csv__map">
+          <legend class="bless-csv__label">{{ text.match }}</legend>
+          <label v-for="f in fields" :key="f.key" class="bless-csv__pair">
+            <span>
+              {{ f.label
+              }}<span v-if="f.required" class="bless-csv__req"> ({{ text.required }})</span>
+            </span>
+            <select
+              v-model.number="map[f.key]"
+              :aria-invalid="f.required && map[f.key]! < 0 ? 'true' : undefined"
+            >
+              <option :value="-1">{{ text.skip }}</option>
+              <option v-for="(h, i) in header" :key="i" :value="i">{{ h || `#${i + 1}` }}</option>
+            </select>
+          </label>
+        </fieldset>
+        <div class="bless-csv__preview" role="region" :aria-label="text.previewTitle" tabindex="0">
+          <table>
+            <caption class="bless-csv__label">
+              {{ text.previewTitle }}
+            </caption>
+            <thead>
+              <tr>
+                <th v-for="f in fields" :key="f.key" scope="col">{{ f.label }}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="(r, i) in records.slice(0, preview)" :key="i">
+                <td
+                  v-for="f in fields"
+                  :key="f.key"
+                  :class="{ 'is-missing': f.required && !r[f.key] }"
+                >
+                  {{ r[f.key] || "—" }}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p v-if="unmatched.length" :id="`${uid}-err`" class="bless-csv__error" role="alert">
+          {{ text.unmatched(unmatched.map((f) => f.label).join(", ")) }}
+        </p>
+        <p v-else-if="missing" class="bless-csv__warn">{{ text.missing(missing) }}</p>
+        <BlessButton :disabled="!!unmatched.length || !good.length" @click="emit('import', good)">
+          {{ text.import(good.length) }}
+        </BlessButton>
+      </template>
+    </template>
+  </div>
+</template>
+
 <script lang="ts">
 /**
  * Parses CSV text after RFC 4180: fields in double quotes can hold commas, line breaks,
@@ -125,71 +190,6 @@ const good = computed(() =>
 );
 const missing = computed(() => records.value.length - good.value.length);
 </script>
-
-<template>
-  <div class="bless-csv">
-    <label class="bless-csv__file">
-      <span class="bless-csv__label">{{ text.file }}</span>
-      <input
-        type="file"
-        accept=".csv,text/csv"
-        @change="read(($event.target as HTMLInputElement).files?.[0])"
-      />
-    </label>
-    <template v-if="loaded">
-      <p v-if="!body.length" class="bless-csv__note" role="status">{{ text.empty }}</p>
-      <template v-else>
-        <p class="bless-csv__note" role="status">{{ text.rows(body.length) }}</p>
-        <fieldset class="bless-csv__map">
-          <legend class="bless-csv__label">{{ text.match }}</legend>
-          <label v-for="f in fields" :key="f.key" class="bless-csv__pair">
-            <span>
-              {{ f.label
-              }}<span v-if="f.required" class="bless-csv__req"> ({{ text.required }})</span>
-            </span>
-            <select
-              v-model.number="map[f.key]"
-              :aria-invalid="f.required && map[f.key]! < 0 ? 'true' : undefined"
-            >
-              <option :value="-1">{{ text.skip }}</option>
-              <option v-for="(h, i) in header" :key="i" :value="i">{{ h || `#${i + 1}` }}</option>
-            </select>
-          </label>
-        </fieldset>
-        <div class="bless-csv__preview" role="region" :aria-label="text.previewTitle" tabindex="0">
-          <table>
-            <caption class="bless-csv__label">
-              {{ text.previewTitle }}
-            </caption>
-            <thead>
-              <tr>
-                <th v-for="f in fields" :key="f.key" scope="col">{{ f.label }}</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr v-for="(r, i) in records.slice(0, preview)" :key="i">
-                <td
-                  v-for="f in fields"
-                  :key="f.key"
-                  :class="{ 'is-missing': f.required && !r[f.key] }"
-                >
-                  {{ r[f.key] || "—" }}
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <p v-if="unmatched.length" :id="`${uid}-err`" class="bless-csv__error" role="alert">
-          {{ text.unmatched(unmatched.map((f) => f.label).join(", ")) }}
-        </p>
-        <p v-else-if="missing" class="bless-csv__warn">{{ text.missing(missing) }}</p>
-        <BlessButton :disabled="!!unmatched.length || !good.length" @click="emit('import', good)">
-          {{ text.import(good.length) }}
-        </BlessButton>
-      </template>
-    </template>
-  </div>
-</template>
 
 <style>
 .bless-csv {

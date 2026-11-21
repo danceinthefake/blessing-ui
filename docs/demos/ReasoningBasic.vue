@@ -1,3 +1,23 @@
+<template>
+  <BlessStack :gap="4" style="max-width: 560px">
+    <BlessButton
+      size="sm"
+      variant="outline"
+      :disabled="streaming"
+      style="align-self: flex-start"
+      @click="ask"
+    >
+      Ask for a title
+    </BlessButton>
+    <BlessReasoning v-if="text || streaming" :text :streaming />
+    <!-- an old reply from the history: the app stored the time -->
+    <BlessReasoning
+      :duration="8"
+      text="The user wants the show notes as a list. I will keep the links and drop the ads."
+    />
+  </BlessStack>
+</template>
+
 <script setup lang="ts">
 import { onBeforeUnmount, ref } from "vue";
 import { BlessButton, BlessReasoning, BlessStack } from "blessing-ui";
@@ -27,23 +47,3 @@ function ask() {
 }
 onBeforeUnmount(() => clearInterval(timer));
 </script>
-
-<template>
-  <BlessStack :gap="4" style="max-width: 560px">
-    <BlessButton
-      size="sm"
-      variant="outline"
-      :disabled="streaming"
-      style="align-self: flex-start"
-      @click="ask"
-    >
-      Ask for a title
-    </BlessButton>
-    <BlessReasoning v-if="text || streaming" :text :streaming />
-    <!-- an old reply from the history: the app stored the time -->
-    <BlessReasoning
-      :duration="8"
-      text="The user wants the show notes as a list. I will keep the links and drop the ads."
-    />
-  </BlessStack>
-</template>

@@ -1,9 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { BlessButton, BlessCircularProgress } from "blessing-ui";
-const v = ref(35);
-</script>
-
 <template>
   <div class="row" style="gap: 24px">
     <BlessCircularProgress :value="v" show-value label="Upload" />
@@ -20,3 +14,9 @@ const v = ref(35);
     <BlessButton size="sm" @click="v = (v + 15) % 101">+15</BlessButton>
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { BlessButton, BlessCircularProgress } from "blessing-ui";
+const v = ref(35);
+</script>

@@ -1,3 +1,17 @@
+<template>
+  <div class="bless-mockup" :class="[`bless-mockup--${type}`, { 'bless-mockup--dark': dark }]">
+    <div class="bless-mockup__chrome" aria-hidden="true">
+      <template v-if="type !== 'phone'">
+        <span class="bless-mockup__dots"><i /><i /><i /></span>
+        <span v-if="title" class="bless-mockup__title">{{ title }}</span>
+      </template>
+      <span v-else class="bless-mockup__notch" />
+    </div>
+    <div class="bless-mockup__screen"><slot /></div>
+    <div v-if="type === 'phone'" class="bless-mockup__home" aria-hidden="true" />
+  </div>
+</template>
+
 <script setup lang="ts">
 defineOptions({ name: "BlessMockup" });
 
@@ -12,20 +26,6 @@ withDefaults(
   { type: "browser", title: "" },
 );
 </script>
-
-<template>
-  <div class="bless-mockup" :class="[`bless-mockup--${type}`, { 'bless-mockup--dark': dark }]">
-    <div class="bless-mockup__chrome" aria-hidden="true">
-      <template v-if="type !== 'phone'">
-        <span class="bless-mockup__dots"><i /><i /><i /></span>
-        <span v-if="title" class="bless-mockup__title">{{ title }}</span>
-      </template>
-      <span v-else class="bless-mockup__notch" />
-    </div>
-    <div class="bless-mockup__screen"><slot /></div>
-    <div v-if="type === 'phone'" class="bless-mockup__home" aria-hidden="true" />
-  </div>
-</template>
 
 <style>
 .bless-mockup {

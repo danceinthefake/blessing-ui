@@ -1,3 +1,7 @@
+<template>
+  <BlessChangelog :releases style="max-width: 640px" />
+</template>
+
 <script setup lang="ts">
 import { BlessChangelog, type BlessRelease } from "blessing-ui";
 
@@ -32,7 +36,3 @@ const releases: BlessRelease[] = [
   },
 ];
 </script>
-
-<template>
-  <BlessChangelog :releases style="max-width: 640px" />
-</template>

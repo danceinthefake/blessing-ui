@@ -1,8 +1,3 @@
-<script setup lang="ts">
-import { BlessDeferredContent, BlessSkeleton, BlessText } from "blessing-ui";
-import { shots } from "./_data";
-</script>
-
 <template>
   <div class="col" style="max-width: 320px">
     <BlessText size="xs" muted>image below mounts only when within 200px of the viewport</BlessText>
@@ -16,3 +11,8 @@ import { shots } from "./_data";
     </BlessDeferredContent>
   </div>
 </template>
+
+<script setup lang="ts">
+import { BlessDeferredContent, BlessSkeleton, BlessText } from "blessing-ui";
+import { shots } from "./_data";
+</script>

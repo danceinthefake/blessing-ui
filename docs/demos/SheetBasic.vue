@@ -1,14 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { BlessButton, BlessSheet, BlessText } from "blessing-ui";
-const open = ref(false);
-const side = ref<"left" | "right" | "top" | "bottom">("right");
-function show(s: typeof side.value) {
-  side.value = s;
-  open.value = true;
-}
-</script>
-
 <template>
   <div class="row">
     <BlessButton
@@ -27,3 +16,14 @@ function show(s: typeof side.value) {
     </template>
   </BlessSheet>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { BlessButton, BlessSheet, BlessText } from "blessing-ui";
+const open = ref(false);
+const side = ref<"left" | "right" | "top" | "bottom">("right");
+function show(s: typeof side.value) {
+  side.value = s;
+  open.value = true;
+}
+</script>

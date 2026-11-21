@@ -1,3 +1,51 @@
+<template>
+  <div class="bless-delivery">
+    <fieldset class="bless-delivery__set">
+      <legend class="bless-delivery__legend">{{ text.day }}</legend>
+      <div class="bless-delivery__days">
+        <label
+          v-for="d in days"
+          :key="d.date"
+          class="bless-delivery__day"
+          :class="{ 'is-full': allFull(d) }"
+        >
+          <input
+            v-model="day"
+            type="radio"
+            :name="`${uid}-day`"
+            :value="d.date"
+            :disabled="allFull(d)"
+          />
+          <span class="bless-delivery__week">{{ dayFmt.week.format(at(d.date)) }}</span>{{ " " }}
+          <span class="bless-delivery__date">{{ dayFmt.date.format(at(d.date)) }}</span>{{ " " }}
+          <span v-if="allFull(d)" class="bless-delivery__tag">{{ text.full }}</span>
+        </label>
+      </div>
+    </fieldset>
+    <fieldset class="bless-delivery__set">
+      <legend class="bless-delivery__legend">{{ text.time }}</legend>
+      <div class="bless-delivery__windows">
+        <label
+          v-for="w in windows"
+          :key="w.id"
+          class="bless-delivery__window"
+          :class="{ 'is-full': w.full }"
+        >
+          <input
+            v-model="selected"
+            type="radio"
+            :name="`${uid}-window`"
+            :value="w.id"
+            :disabled="w.full"
+          />
+          <span class="bless-delivery__time">{{ w.start }}–{{ w.end }}</span>{{ " " }}
+          <span class="bless-delivery__fee">{{ w.full ? text.full : fee(w.fee) }}</span>
+        </label>
+      </div>
+    </fieldset>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed, ref, useId, watch } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -62,54 +110,6 @@ const money = computed(() => moneyFormat(props.locale, props.currency));
 const fee = (n: number) => (n === 0 ? text.value.free : money.value.format(n));
 const allFull = (d: BlessDeliveryDay) => d.windows.every((w) => w.full);
 </script>
-
-<template>
-  <div class="bless-delivery">
-    <fieldset class="bless-delivery__set">
-      <legend class="bless-delivery__legend">{{ text.day }}</legend>
-      <div class="bless-delivery__days">
-        <label
-          v-for="d in days"
-          :key="d.date"
-          class="bless-delivery__day"
-          :class="{ 'is-full': allFull(d) }"
-        >
-          <input
-            v-model="day"
-            type="radio"
-            :name="`${uid}-day`"
-            :value="d.date"
-            :disabled="allFull(d)"
-          />
-          <span class="bless-delivery__week">{{ dayFmt.week.format(at(d.date)) }}</span>{{ " " }}
-          <span class="bless-delivery__date">{{ dayFmt.date.format(at(d.date)) }}</span>{{ " " }}
-          <span v-if="allFull(d)" class="bless-delivery__tag">{{ text.full }}</span>
-        </label>
-      </div>
-    </fieldset>
-    <fieldset class="bless-delivery__set">
-      <legend class="bless-delivery__legend">{{ text.time }}</legend>
-      <div class="bless-delivery__windows">
-        <label
-          v-for="w in windows"
-          :key="w.id"
-          class="bless-delivery__window"
-          :class="{ 'is-full': w.full }"
-        >
-          <input
-            v-model="selected"
-            type="radio"
-            :name="`${uid}-window`"
-            :value="w.id"
-            :disabled="w.full"
-          />
-          <span class="bless-delivery__time">{{ w.start }}–{{ w.end }}</span>{{ " " }}
-          <span class="bless-delivery__fee">{{ w.full ? text.full : fee(w.fee) }}</span>
-        </label>
-      </div>
-    </fieldset>
-  </div>
-</template>
 
 <style>
 .bless-delivery {

@@ -1,9 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { BlessInput, BlessPasswordMeter } from "blessing-ui";
-const pw = ref("Megumi1");
-</script>
-
 <template>
   <div class="col">
     <BlessInput
@@ -16,3 +10,9 @@ const pw = ref("Megumi1");
     <BlessPasswordMeter :value="pw" show-rules />
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { BlessInput, BlessPasswordMeter } from "blessing-ui";
+const pw = ref("Megumi1");
+</script>

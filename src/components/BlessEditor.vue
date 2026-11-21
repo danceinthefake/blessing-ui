@@ -1,3 +1,36 @@
+<template>
+  <div
+    class="bless-editor"
+    :class="{ 'bless-editor--disabled': disabled }"
+    :style="{ '--_min': minHeight }"
+  >
+    <div ref="toolbar" class="bless-editor__toolbar" role="toolbar" :aria-label="label">
+      <slot name="toolbar" :editor>
+        <template v-for="(t, i) in tools" :key="i">
+          <span v-if="t === '|'" class="bless-editor__sep" aria-hidden="true" />
+          <button
+            v-else
+            type="button"
+            class="bless-editor__tool"
+            :class="{ 'bless-editor__tool--on': editor && defs[t].active?.(editor) }"
+            :title="titleOf(t)"
+            :aria-label="titleOf(t)"
+            :aria-pressed="defs[t].active ? !!(editor && defs[t].active(editor)) : undefined"
+            :disabled="disabled || !editor || (defs[t].can ? !defs[t].can(editor) : false)"
+            @mousedown.prevent
+            @click="editor && defs[t].run(editor)"
+          >
+            <!-- drawn by CSS: "H1" is an icon for "Heading 1", not text to say -->
+            <span class="bless-editor__icon" :data-icon="defs[t].icon" aria-hidden="true" />
+          </button>
+        </template>
+      </slot>
+    </div>
+    <div class="bless-editor__content"><slot /></div>
+    <div v-if="$slots.footer" class="bless-editor__footer"><slot name="footer" :editor /></div>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { useLabelPack } from "../composables/useLabels";
 // Structural stand-in for a Tiptap Editor so the shipped d.ts does not depend on @tiptap/*.
@@ -155,39 +188,6 @@ const defs: Record<Exclude<BlessEditorTool, "|">, Def> = {
   redo: { title: "Redo", icon: "↷", run: (e) => c(e).redo().run(), can: (e) => e.can().redo() },
 };
 </script>
-
-<template>
-  <div
-    class="bless-editor"
-    :class="{ 'bless-editor--disabled': disabled }"
-    :style="{ '--_min': minHeight }"
-  >
-    <div ref="toolbar" class="bless-editor__toolbar" role="toolbar" :aria-label="label">
-      <slot name="toolbar" :editor>
-        <template v-for="(t, i) in tools" :key="i">
-          <span v-if="t === '|'" class="bless-editor__sep" aria-hidden="true" />
-          <button
-            v-else
-            type="button"
-            class="bless-editor__tool"
-            :class="{ 'bless-editor__tool--on': editor && defs[t].active?.(editor) }"
-            :title="titleOf(t)"
-            :aria-label="titleOf(t)"
-            :aria-pressed="defs[t].active ? !!(editor && defs[t].active(editor)) : undefined"
-            :disabled="disabled || !editor || (defs[t].can ? !defs[t].can(editor) : false)"
-            @mousedown.prevent
-            @click="editor && defs[t].run(editor)"
-          >
-            <!-- drawn by CSS: "H1" is an icon for "Heading 1", not text to say -->
-            <span class="bless-editor__icon" :data-icon="defs[t].icon" aria-hidden="true" />
-          </button>
-        </template>
-      </slot>
-    </div>
-    <div class="bless-editor__content"><slot /></div>
-    <div v-if="$slots.footer" class="bless-editor__footer"><slot name="footer" :editor /></div>
-  </div>
-</template>
 
 <style>
 .bless-editor__icon::before {

@@ -1,11 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { BlessPagination } from "blessing-ui";
-const page = ref(7);
-const short = ref(1);
-const linked = ref(3);
-</script>
-
 <template>
   <div class="col" style="max-width: none">
     <BlessPagination v-model="page" :total="20" />
@@ -19,3 +11,11 @@ const linked = ref(3);
     <small>page: {{ page }}</small>
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { BlessPagination } from "blessing-ui";
+const page = ref(7);
+const short = ref(1);
+const linked = ref(3);
+</script>

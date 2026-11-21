@@ -1,3 +1,29 @@
+<template>
+  <div class="bless-docstate" :class="{ 'is-stopped': stopped }">
+    <ol class="bless-stagger bless-docstate__chain" :aria-label="text.title" role="list">
+      <li
+        v-for="(s, i) in states"
+        :key="s.id"
+        class="bless-docstate__state"
+        :class="`is-${kind(i)}`"
+        :aria-current="kind(i) === 'current' ? 'step' : undefined"
+      >
+        <span class="bless-docstate__mark" aria-hidden="true">{{ MARK[kind(i)] }}</span>
+        <span class="bless-docstate__label">{{ s.label }}</span>
+        <span class="bless-sr">, {{ text[kind(i)] }}</span>
+        <span v-if="s.time && kind(i) !== 'next'" class="bless-docstate__time">{{ s.time }}</span>
+      </li>
+      <li v-if="stopped" class="bless-docstate__state is-stop">
+        <span class="bless-docstate__mark" aria-hidden="true">✕</span>
+        <span class="bless-docstate__label">{{ stopped }}</span>
+      </li>
+    </ol>
+    <BlessButton v-if="nextState" size="sm" @click="advance">{{
+      text.move(nextState.label)
+    }}</BlessButton>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -55,32 +81,6 @@ function advance() {
 }
 const MARK = { done: "✓", current: "●", next: "○" } as const;
 </script>
-
-<template>
-  <div class="bless-docstate" :class="{ 'is-stopped': stopped }">
-    <ol class="bless-stagger bless-docstate__chain" :aria-label="text.title" role="list">
-      <li
-        v-for="(s, i) in states"
-        :key="s.id"
-        class="bless-docstate__state"
-        :class="`is-${kind(i)}`"
-        :aria-current="kind(i) === 'current' ? 'step' : undefined"
-      >
-        <span class="bless-docstate__mark" aria-hidden="true">{{ MARK[kind(i)] }}</span>
-        <span class="bless-docstate__label">{{ s.label }}</span>
-        <span class="bless-sr">, {{ text[kind(i)] }}</span>
-        <span v-if="s.time && kind(i) !== 'next'" class="bless-docstate__time">{{ s.time }}</span>
-      </li>
-      <li v-if="stopped" class="bless-docstate__state is-stop">
-        <span class="bless-docstate__mark" aria-hidden="true">✕</span>
-        <span class="bless-docstate__label">{{ stopped }}</span>
-      </li>
-    </ol>
-    <BlessButton v-if="nextState" size="sm" @click="advance">{{
-      text.move(nextState.label)
-    }}</BlessButton>
-  </div>
-</template>
 
 <style>
 .bless-docstate {

@@ -1,15 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { BlessChart, BlessHistogram, BlessSlider } from "blessing-ui";
-
-// minutes that 400 listeners stayed: many leave early, a second group stays to the end
-const values = Array.from({ length: 400 }, (_, i) => {
-  const r = ((i * 7919) % 1000) / 1000;
-  return i % 3 === 0 ? Math.round(38 + r * 8) : Math.round(2 + r * r * 30);
-});
-const bins = ref(12);
-</script>
-
 <template>
   <BlessChart
     title="Time listened"
@@ -29,3 +17,15 @@ const bins = ref(12);
     </template>
   </BlessChart>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { BlessChart, BlessHistogram, BlessSlider } from "blessing-ui";
+
+// minutes that 400 listeners stayed: many leave early, a second group stays to the end
+const values = Array.from({ length: 400 }, (_, i) => {
+  const r = ((i * 7919) % 1000) / 1000;
+  return i % 3 === 0 ? Math.round(38 + r * 8) : Math.round(2 + r * r * 30);
+});
+const bins = ref(12);
+</script>

@@ -1,3 +1,76 @@
+<template>
+  <form class="bless-questionnaire" novalidate @submit.prevent="next" @keydown="onKey">
+    <BlessProgress
+      :value="step + 1"
+      :max="questions.length"
+      size="sm"
+      :label="`${step + 1} / ${questions.length}`"
+      class="bless-questionnaire__progress"
+    />
+
+    <fieldset :key="q.name" ref="item" class="bless-questionnaire__item" tabindex="-1">
+      <legend :id="legendId" class="bless-questionnaire__title">{{ q.title }}</legend>
+      <p v-if="q.description" class="bless-questionnaire__desc">{{ q.description }}</p>
+
+      <BlessRadioGroup
+        v-if="q.type === 'single'"
+        :model-value="answers[q.name] as string | undefined"
+        :name="q.name"
+        :invalid="!!error"
+        :aria-labelledby="legendId"
+        @update:model-value="set($event)"
+      >
+        <BlessRadio
+          v-for="(c, i) in q.choices"
+          :key="c.value"
+          :value="c.value"
+          :description="c.description"
+        >
+          <kbd v-if="shortcuts" class="bless-questionnaire__key">{{ i + 1 }}</kbd>{{ c.label }}
+        </BlessRadio>
+      </BlessRadioGroup>
+
+      <div v-else-if="q.type === 'multiple'" class="bless-questionnaire__choices">
+        <BlessCheckbox
+          v-for="(c, i) in q.choices"
+          :key="c.value"
+          :model-value="(answers[q.name] as string[] | undefined) ?? []"
+          :value="c.value"
+          :description="c.description"
+          :invalid="!!error"
+          @update:model-value="set($event as string[])"
+        >
+          <kbd v-if="shortcuts" class="bless-questionnaire__key">{{ i + 1 }}</kbd>{{ c.label }}
+        </BlessCheckbox>
+      </div>
+
+      <BlessTextarea
+        v-else
+        :model-value="(answers[q.name] as string | undefined) ?? ''"
+        :placeholder="q.placeholder"
+        :invalid="!!error"
+        :aria-labelledby="legendId"
+        @update:model-value="set($event)"
+      />
+
+      <p v-if="error" class="bless-questionnaire__error" role="alert">{{ error }}</p>
+    </fieldset>
+
+    <div class="bless-questionnaire__actions">
+      <BlessButton variant="ghost" size="sm" :disabled="step === 0" @click="step--">
+        {{ L.previous }}
+      </BlessButton>
+      <span class="bless-questionnaire__spacer" />
+      <BlessButton v-if="q.skippable" variant="outline" size="sm" @click="skip">
+        {{ L.skip }}
+      </BlessButton>
+      <BlessButton type="submit" size="sm">
+        {{ last ? L.submit : L.next }}
+      </BlessButton>
+    </div>
+  </form>
+</template>
+
 <script setup lang="ts">
 import { useLabelPack } from "../composables/useLabels";
 import { computed, nextTick, ref, useId, watch } from "vue";
@@ -86,79 +159,6 @@ function onKey(e: KeyboardEvent) {
   }
 }
 </script>
-
-<template>
-  <form class="bless-questionnaire" novalidate @submit.prevent="next" @keydown="onKey">
-    <BlessProgress
-      :value="step + 1"
-      :max="questions.length"
-      size="sm"
-      :label="`${step + 1} / ${questions.length}`"
-      class="bless-questionnaire__progress"
-    />
-
-    <fieldset :key="q.name" ref="item" class="bless-questionnaire__item" tabindex="-1">
-      <legend :id="legendId" class="bless-questionnaire__title">{{ q.title }}</legend>
-      <p v-if="q.description" class="bless-questionnaire__desc">{{ q.description }}</p>
-
-      <BlessRadioGroup
-        v-if="q.type === 'single'"
-        :model-value="answers[q.name] as string | undefined"
-        :name="q.name"
-        :invalid="!!error"
-        :aria-labelledby="legendId"
-        @update:model-value="set($event)"
-      >
-        <BlessRadio
-          v-for="(c, i) in q.choices"
-          :key="c.value"
-          :value="c.value"
-          :description="c.description"
-        >
-          <kbd v-if="shortcuts" class="bless-questionnaire__key">{{ i + 1 }}</kbd>{{ c.label }}
-        </BlessRadio>
-      </BlessRadioGroup>
-
-      <div v-else-if="q.type === 'multiple'" class="bless-questionnaire__choices">
-        <BlessCheckbox
-          v-for="(c, i) in q.choices"
-          :key="c.value"
-          :model-value="(answers[q.name] as string[] | undefined) ?? []"
-          :value="c.value"
-          :description="c.description"
-          :invalid="!!error"
-          @update:model-value="set($event as string[])"
-        >
-          <kbd v-if="shortcuts" class="bless-questionnaire__key">{{ i + 1 }}</kbd>{{ c.label }}
-        </BlessCheckbox>
-      </div>
-
-      <BlessTextarea
-        v-else
-        :model-value="(answers[q.name] as string | undefined) ?? ''"
-        :placeholder="q.placeholder"
-        :invalid="!!error"
-        :aria-labelledby="legendId"
-        @update:model-value="set($event)"
-      />
-
-      <p v-if="error" class="bless-questionnaire__error" role="alert">{{ error }}</p>
-    </fieldset>
-
-    <div class="bless-questionnaire__actions">
-      <BlessButton variant="ghost" size="sm" :disabled="step === 0" @click="step--">
-        {{ L.previous }}
-      </BlessButton>
-      <span class="bless-questionnaire__spacer" />
-      <BlessButton v-if="q.skippable" variant="outline" size="sm" @click="skip">
-        {{ L.skip }}
-      </BlessButton>
-      <BlessButton type="submit" size="sm">
-        {{ last ? L.submit : L.next }}
-      </BlessButton>
-    </div>
-  </form>
-</template>
 
 <style>
 /* focus lands here on a step change so it is read; it isn't a control, so no ring */

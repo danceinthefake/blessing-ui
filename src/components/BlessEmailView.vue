@@ -1,3 +1,55 @@
+<template>
+  <article class="bless-email">
+    <h2 class="bless-email__subject">{{ subject }}</h2>
+    <header class="bless-email__head">
+      <BlessAvatar :name="from.name" :src="from.avatar" alt="" size="md" />
+      <div class="bless-email__people">
+        <div class="bless-email__from">
+          <strong>{{ from.name }}</strong>{{ " "
+          }}<span class="bless-email__address">&lt;{{ from.email }}&gt;</span>
+        </div>
+        <div class="bless-email__to">
+          {{ recipients }}
+          <button
+            type="button"
+            class="bless-email__more"
+            :aria-expanded="open"
+            :aria-label="text.details"
+            :title="text.details"
+            @click="open = !open"
+          >
+            ▾
+          </button>
+        </div>
+      </div>
+      <time class="bless-email__date">{{ date }}</time>
+    </header>
+    <div class="bless-email__body">
+      <slot>
+        <p v-for="(p, i) in paragraphs" :key="i">{{ p }}</p>
+      </slot>
+    </div>
+    <section
+      v-if="attachments?.length"
+      class="bless-email__files"
+      :aria-label="text.attachments(attachments.length)"
+    >
+      <p class="bless-email__count">{{ text.attachments(attachments.length) }}</p>
+      <div class="bless-email__grid">
+        <BlessAttachment
+          v-for="a in attachments"
+          :key="a.name"
+          :name="a.name"
+          :description="a.description"
+          :href="a.href"
+          size="sm"
+        />
+      </div>
+    </section>
+    <footer v-if="$slots.actions" class="bless-email__actions"><slot name="actions" /></footer>
+  </article>
+</template>
+
 <script setup lang="ts">
 import { computed, ref } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -61,58 +113,6 @@ const paragraphs = computed(() =>
     .filter(Boolean),
 );
 </script>
-
-<template>
-  <article class="bless-email">
-    <h2 class="bless-email__subject">{{ subject }}</h2>
-    <header class="bless-email__head">
-      <BlessAvatar :name="from.name" :src="from.avatar" alt="" size="md" />
-      <div class="bless-email__people">
-        <div class="bless-email__from">
-          <strong>{{ from.name }}</strong>{{ " "
-          }}<span class="bless-email__address">&lt;{{ from.email }}&gt;</span>
-        </div>
-        <div class="bless-email__to">
-          {{ recipients }}
-          <button
-            type="button"
-            class="bless-email__more"
-            :aria-expanded="open"
-            :aria-label="text.details"
-            :title="text.details"
-            @click="open = !open"
-          >
-            ▾
-          </button>
-        </div>
-      </div>
-      <time class="bless-email__date">{{ date }}</time>
-    </header>
-    <div class="bless-email__body">
-      <slot>
-        <p v-for="(p, i) in paragraphs" :key="i">{{ p }}</p>
-      </slot>
-    </div>
-    <section
-      v-if="attachments?.length"
-      class="bless-email__files"
-      :aria-label="text.attachments(attachments.length)"
-    >
-      <p class="bless-email__count">{{ text.attachments(attachments.length) }}</p>
-      <div class="bless-email__grid">
-        <BlessAttachment
-          v-for="a in attachments"
-          :key="a.name"
-          :name="a.name"
-          :description="a.description"
-          :href="a.href"
-          size="sm"
-        />
-      </div>
-    </section>
-    <footer v-if="$slots.actions" class="bless-email__actions"><slot name="actions" /></footer>
-  </article>
-</template>
 
 <style>
 .bless-email {

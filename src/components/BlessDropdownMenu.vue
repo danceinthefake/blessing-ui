@@ -1,3 +1,30 @@
+<template>
+  <span
+    v-bind="$attrs"
+    ref="anchor"
+    class="bless-dropdown__anchor"
+    :class="{ 'bless-dropdown__anchor--block': block }"
+    @click="onTrigger"
+    @contextmenu="onContext"
+    @keydown="onTriggerKey"
+    @mouseenter="bar && bar.active.value && bar.active.value !== id && (open = true)"
+  >
+    <slot name="trigger" :open />
+  </span>
+  <div
+    ref="panel"
+    :id
+    popover="auto"
+    class="bless-dropdown"
+    :style
+    @toggle="open = ($event as ToggleEvent).newState === 'open'"
+    @keydown="onListKey"
+    @focusout="onFocusOut"
+  >
+    <BlessMenuList ref="list" :items :checked :radios @select="onSelect" @close="close" />
+  </div>
+</template>
+
 <script setup lang="ts">
 import { inject, nextTick, onBeforeUnmount, onMounted, ref, useId, watch } from "vue";
 import { logicalKey } from "../composables/rtl";
@@ -148,33 +175,6 @@ bar?.register(
 );
 onBeforeUnmount(() => bar?.unregister(id));
 </script>
-
-<template>
-  <span
-    v-bind="$attrs"
-    ref="anchor"
-    class="bless-dropdown__anchor"
-    :class="{ 'bless-dropdown__anchor--block': block }"
-    @click="onTrigger"
-    @contextmenu="onContext"
-    @keydown="onTriggerKey"
-    @mouseenter="bar && bar.active.value && bar.active.value !== id && (open = true)"
-  >
-    <slot name="trigger" :open />
-  </span>
-  <div
-    ref="panel"
-    :id
-    popover="auto"
-    class="bless-dropdown"
-    :style
-    @toggle="open = ($event as ToggleEvent).newState === 'open'"
-    @keydown="onListKey"
-    @focusout="onFocusOut"
-  >
-    <BlessMenuList ref="list" :items :checked :radios @select="onSelect" @close="close" />
-  </div>
-</template>
 
 <style>
 .bless-dropdown__anchor {

@@ -1,14 +1,3 @@
-<script setup lang="ts">
-import { BlessSplitButton, useToast } from "blessing-ui";
-const { toast } = useToast();
-const items = [
-  { label: "Save as…", value: "as", shortcut: "⇧⌘S" },
-  { label: "Save all", value: "all" },
-  { type: "separator" as const },
-  { label: "Discard", value: "discard", danger: true },
-];
-</script>
-
 <template>
   <div class="row">
     <BlessSplitButton
@@ -27,3 +16,14 @@ const items = [
     />
   </div>
 </template>
+
+<script setup lang="ts">
+import { BlessSplitButton, useToast } from "blessing-ui";
+const { toast } = useToast();
+const items = [
+  { label: "Save as…", value: "as", shortcut: "⇧⌘S" },
+  { label: "Save all", value: "all" },
+  { type: "separator" as const },
+  { label: "Discard", value: "discard", danger: true },
+];
+</script>

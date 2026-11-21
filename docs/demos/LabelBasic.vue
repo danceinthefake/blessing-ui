@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import { BlessInput, BlessLabel } from "blessing-ui";
-</script>
-
 <template>
   <div class="row" style="align-items: flex-start">
     <div class="col">
@@ -14,3 +10,7 @@ import { BlessInput, BlessLabel } from "blessing-ui";
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+import { BlessInput, BlessLabel } from "blessing-ui";
+</script>

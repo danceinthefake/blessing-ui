@@ -1,3 +1,8 @@
+<template>
+  <BlessMapPins v-model:center="center" v-model:zoom="zoom" v-model:selected="selected" :pins />
+  <div style="margin-top: 12px">{{ picked ? `Selected: ${picked.label}` : "Select a pin." }}</div>
+</template>
+
 <script setup lang="ts">
 import { computed, ref } from "vue";
 import { BlessMapPins, type BlessMapPin } from "blessing-ui";
@@ -13,8 +18,3 @@ const zoom = ref(12);
 const selected = ref<string>();
 const picked = computed(() => pins.find((p) => p.id === selected.value));
 </script>
-
-<template>
-  <BlessMapPins v-model:center="center" v-model:zoom="zoom" v-model:selected="selected" :pins />
-  <div style="margin-top: 12px">{{ picked ? `Selected: ${picked.label}` : "Select a pin." }}</div>
-</template>

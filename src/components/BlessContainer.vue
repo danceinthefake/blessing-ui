@@ -1,13 +1,3 @@
-<script setup lang="ts">
-defineOptions({ name: "BlessContainer" });
-
-withDefaults(defineProps<{ as?: string; size?: "sm" | "md" | "lg" | "full"; padded?: boolean }>(), {
-  as: "div",
-  size: "lg",
-  padded: true,
-});
-</script>
-
 <template>
   <component
     :is="as"
@@ -17,6 +7,16 @@ withDefaults(defineProps<{ as?: string; size?: "sm" | "md" | "lg" | "full"; padd
     <slot />
   </component>
 </template>
+
+<script setup lang="ts">
+defineOptions({ name: "BlessContainer" });
+
+withDefaults(defineProps<{ as?: string; size?: "sm" | "md" | "lg" | "full"; padded?: boolean }>(), {
+  as: "div",
+  size: "lg",
+  padded: true,
+});
+</script>
 
 <style>
 .bless-container {

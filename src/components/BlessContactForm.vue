@@ -1,3 +1,76 @@
+<template>
+  <div class="bless-contact">
+    <p v-if="state === 'sent'" class="bless-contact__sent" role="status">✓ {{ text.sent }}</p>
+    <form v-else ref="form" class="bless-contact__form" novalidate @submit.prevent="submit">
+      <div class="bless-contact__row">
+        <div class="bless-contact__field">
+          <label :for="`${id}-name`">{{ text.name }}</label>
+          <input
+            :id="`${id}-name`"
+            v-model="v.name"
+            name="name"
+            autocomplete="name"
+            :aria-invalid="!!errors.name || undefined"
+            :aria-describedby="err('name')"
+          />
+          <div v-if="errors.name" :id="err('name')" class="bless-contact__error">
+            {{ errors.name }}
+          </div>
+        </div>
+        <div class="bless-contact__field">
+          <label :for="`${id}-email`">{{ text.email }}</label>
+          <input
+            :id="`${id}-email`"
+            v-model="v.email"
+            name="email"
+            type="email"
+            autocomplete="email"
+            :aria-invalid="!!errors.email || undefined"
+            :aria-describedby="err('email')"
+          />
+          <div v-if="errors.email" :id="err('email')" class="bless-contact__error">
+            {{ errors.email }}
+          </div>
+        </div>
+      </div>
+      <div v-if="topics.length" class="bless-contact__field">
+        <label :for="`${id}-topic`">{{ text.topic }}</label>
+        <select :id="`${id}-topic`" v-model="v.topic" name="topic">
+          <option v-for="t in topics" :key="t" :value="t">{{ t }}</option>
+        </select>
+      </div>
+      <div class="bless-contact__field">
+        <label :for="`${id}-message`">{{ text.message }}</label>
+        <textarea
+          :id="`${id}-message`"
+          v-model="v.message"
+          name="message"
+          rows="5"
+          :aria-invalid="!!errors.message || undefined"
+          :aria-describedby="err('message')"
+        />
+        <div v-if="errors.message" :id="err('message')" class="bless-contact__error">
+          {{ errors.message }}
+        </div>
+      </div>
+      <input
+        v-model="trap"
+        class="bless-contact__trap"
+        name="website"
+        tabindex="-1"
+        autocomplete="off"
+        aria-hidden="true"
+      />
+      <p v-if="state === 'error'" class="bless-contact__failed" role="alert">{{ text.error }}</p>
+      <div>
+        <button type="submit" :aria-disabled="state === 'sending' || undefined">
+          {{ state === "sending" ? text.sending : text.send }}
+        </button>
+      </div>
+    </form>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed, reactive, ref, useId } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -74,79 +147,6 @@ function submit() {
 }
 const err = (k: string) => (errors[k] ? `${id}-${k}-err` : undefined);
 </script>
-
-<template>
-  <div class="bless-contact">
-    <p v-if="state === 'sent'" class="bless-contact__sent" role="status">✓ {{ text.sent }}</p>
-    <form v-else ref="form" class="bless-contact__form" novalidate @submit.prevent="submit">
-      <div class="bless-contact__row">
-        <div class="bless-contact__field">
-          <label :for="`${id}-name`">{{ text.name }}</label>
-          <input
-            :id="`${id}-name`"
-            v-model="v.name"
-            name="name"
-            autocomplete="name"
-            :aria-invalid="!!errors.name || undefined"
-            :aria-describedby="err('name')"
-          />
-          <div v-if="errors.name" :id="err('name')" class="bless-contact__error">
-            {{ errors.name }}
-          </div>
-        </div>
-        <div class="bless-contact__field">
-          <label :for="`${id}-email`">{{ text.email }}</label>
-          <input
-            :id="`${id}-email`"
-            v-model="v.email"
-            name="email"
-            type="email"
-            autocomplete="email"
-            :aria-invalid="!!errors.email || undefined"
-            :aria-describedby="err('email')"
-          />
-          <div v-if="errors.email" :id="err('email')" class="bless-contact__error">
-            {{ errors.email }}
-          </div>
-        </div>
-      </div>
-      <div v-if="topics.length" class="bless-contact__field">
-        <label :for="`${id}-topic`">{{ text.topic }}</label>
-        <select :id="`${id}-topic`" v-model="v.topic" name="topic">
-          <option v-for="t in topics" :key="t" :value="t">{{ t }}</option>
-        </select>
-      </div>
-      <div class="bless-contact__field">
-        <label :for="`${id}-message`">{{ text.message }}</label>
-        <textarea
-          :id="`${id}-message`"
-          v-model="v.message"
-          name="message"
-          rows="5"
-          :aria-invalid="!!errors.message || undefined"
-          :aria-describedby="err('message')"
-        />
-        <div v-if="errors.message" :id="err('message')" class="bless-contact__error">
-          {{ errors.message }}
-        </div>
-      </div>
-      <input
-        v-model="trap"
-        class="bless-contact__trap"
-        name="website"
-        tabindex="-1"
-        autocomplete="off"
-        aria-hidden="true"
-      />
-      <p v-if="state === 'error'" class="bless-contact__failed" role="alert">{{ text.error }}</p>
-      <div>
-        <button type="submit" :aria-disabled="state === 'sending' || undefined">
-          {{ state === "sending" ? text.sending : text.send }}
-        </button>
-      </div>
-    </form>
-  </div>
-</template>
 
 <style>
 .bless-contact {

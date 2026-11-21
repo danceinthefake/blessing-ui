@@ -1,3 +1,89 @@
+<template>
+  <article class="bless-invoice" :class="`is-${status}`">
+    <header class="bless-invoice__head">
+      <div>
+        <h2 class="bless-invoice__title">{{ text.invoice }}</h2>
+        <p class="bless-invoice__number">{{ number }}</p>
+      </div>
+      <p class="bless-invoice__status">
+        <span aria-hidden="true">{{ MARK[status] }}</span> {{ text[status] }}
+      </p>
+    </header>
+    <div class="bless-invoice__parties">
+      <section>
+        <h3 class="bless-invoice__label">{{ text.from }}</h3>
+        <p>
+          <strong>{{ from.name }}</strong
+          ><template v-for="l in from.lines ?? []" :key="l"><br />{{ l }}</template>
+        </p>
+      </section>
+      <section>
+        <h3 class="bless-invoice__label">{{ text.to }}</h3>
+        <p>
+          <strong>{{ to.name }}</strong
+          ><template v-for="l in to.lines ?? []" :key="l"><br />{{ l }}</template>
+        </p>
+      </section>
+      <dl class="bless-invoice__dates">
+        <div>
+          <dt>{{ text.issued }}</dt>
+          <dd><time :datetime="issued">{{ day(issued) }}</time></dd>
+        </div>
+        <div v-if="due">
+          <dt>{{ text.due }}</dt>
+          <dd><time :datetime="due">{{ day(due) }}</time></dd>
+        </div>
+      </dl>
+    </div>
+    <div class="bless-invoice__scroll">
+      <table class="bless-invoice__table">
+        <thead>
+          <tr>
+            <th scope="col">{{ text.item }}</th>
+            <th scope="col">{{ text.quantity }}</th>
+            <th scope="col">{{ text.price }}</th>
+            <th scope="col">{{ text.amount }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(l, i) in lines" :key="i">
+            <td>
+              {{ l.description
+              }}<span v-if="l.tax" class="bless-invoice__rate"> · {{ text.tax(l.tax) }}</span>
+            </td>
+            <td>{{ l.quantity }}</td>
+            <td>{{ money.format(l.price) }}</td>
+            <td>{{ money.format(l.quantity * l.price) }}</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <th scope="row" colspan="3">{{ text.subtotal }}</th>
+            <td>{{ money.format(totals.subtotal) }}</td>
+          </tr>
+          <tr v-for="[rate, amount] in totals.taxes" :key="rate">
+            <th scope="row" colspan="3">{{ text.tax(rate) }}</th>
+            <td>{{ money.format(amount) }}</td>
+          </tr>
+          <tr class="is-total">
+            <th scope="row" colspan="3">{{ text.total }}</th>
+            <td>{{ money.format(totals.total) }}</td>
+          </tr>
+          <tr v-if="paid">
+            <th scope="row" colspan="3">{{ text.paidAmount }}</th>
+            <td>−{{ money.format(paid) }}</td>
+          </tr>
+          <tr class="is-due">
+            <th scope="row" colspan="3">{{ text.balance }}</th>
+            <td>{{ money.format(Math.max(0, totals.total - paid)) }}</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+    <div v-if="notes" class="bless-invoice__notes">{{ notes }}</div>
+  </article>
+</template>
+
 <script lang="ts">
 export interface BlessInvoiceLine {
   description: string;
@@ -102,92 +188,6 @@ const day = (iso: string) =>
   }).format(new Date(`${iso}T00:00:00Z`));
 const MARK: Record<BlessInvoiceStatus, string> = { draft: "○", sent: "→", paid: "✓", overdue: "!" };
 </script>
-
-<template>
-  <article class="bless-invoice" :class="`is-${status}`">
-    <header class="bless-invoice__head">
-      <div>
-        <h2 class="bless-invoice__title">{{ text.invoice }}</h2>
-        <p class="bless-invoice__number">{{ number }}</p>
-      </div>
-      <p class="bless-invoice__status">
-        <span aria-hidden="true">{{ MARK[status] }}</span> {{ text[status] }}
-      </p>
-    </header>
-    <div class="bless-invoice__parties">
-      <section>
-        <h3 class="bless-invoice__label">{{ text.from }}</h3>
-        <p>
-          <strong>{{ from.name }}</strong
-          ><template v-for="l in from.lines ?? []" :key="l"><br />{{ l }}</template>
-        </p>
-      </section>
-      <section>
-        <h3 class="bless-invoice__label">{{ text.to }}</h3>
-        <p>
-          <strong>{{ to.name }}</strong
-          ><template v-for="l in to.lines ?? []" :key="l"><br />{{ l }}</template>
-        </p>
-      </section>
-      <dl class="bless-invoice__dates">
-        <div>
-          <dt>{{ text.issued }}</dt>
-          <dd><time :datetime="issued">{{ day(issued) }}</time></dd>
-        </div>
-        <div v-if="due">
-          <dt>{{ text.due }}</dt>
-          <dd><time :datetime="due">{{ day(due) }}</time></dd>
-        </div>
-      </dl>
-    </div>
-    <div class="bless-invoice__scroll">
-      <table class="bless-invoice__table">
-        <thead>
-          <tr>
-            <th scope="col">{{ text.item }}</th>
-            <th scope="col">{{ text.quantity }}</th>
-            <th scope="col">{{ text.price }}</th>
-            <th scope="col">{{ text.amount }}</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="(l, i) in lines" :key="i">
-            <td>
-              {{ l.description
-              }}<span v-if="l.tax" class="bless-invoice__rate"> · {{ text.tax(l.tax) }}</span>
-            </td>
-            <td>{{ l.quantity }}</td>
-            <td>{{ money.format(l.price) }}</td>
-            <td>{{ money.format(l.quantity * l.price) }}</td>
-          </tr>
-        </tbody>
-        <tfoot>
-          <tr>
-            <th scope="row" colspan="3">{{ text.subtotal }}</th>
-            <td>{{ money.format(totals.subtotal) }}</td>
-          </tr>
-          <tr v-for="[rate, amount] in totals.taxes" :key="rate">
-            <th scope="row" colspan="3">{{ text.tax(rate) }}</th>
-            <td>{{ money.format(amount) }}</td>
-          </tr>
-          <tr class="is-total">
-            <th scope="row" colspan="3">{{ text.total }}</th>
-            <td>{{ money.format(totals.total) }}</td>
-          </tr>
-          <tr v-if="paid">
-            <th scope="row" colspan="3">{{ text.paidAmount }}</th>
-            <td>−{{ money.format(paid) }}</td>
-          </tr>
-          <tr class="is-due">
-            <th scope="row" colspan="3">{{ text.balance }}</th>
-            <td>{{ money.format(Math.max(0, totals.total - paid)) }}</td>
-          </tr>
-        </tfoot>
-      </table>
-    </div>
-    <div v-if="notes" class="bless-invoice__notes">{{ notes }}</div>
-  </article>
-</template>
 
 <style>
 .bless-invoice {

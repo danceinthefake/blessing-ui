@@ -1,61 +1,3 @@
-<script setup lang="ts" generic="T extends string | number">
-import { useLabelPack } from "../composables/useLabels";
-import "./sr.css";
-import { computed, nextTick, ref, type Ref } from "vue";
-import BlessButton from "./BlessButton.vue";
-import BlessListbox from "./BlessListbox.vue";
-import type { BlessOption } from "./select";
-
-defineOptions({ name: "BlessPickList" });
-const pack = useLabelPack("BlessPickList");
-
-const props = withDefaults(
-  defineProps<{
-    rows?: number;
-    labels?: Partial<{
-      source: string;
-      target: string;
-      moveSelected: (to: string) => string;
-      moveAll: (to: string) => string;
-      moved: (count: number, to: string) => string;
-    }>;
-  }>(),
-  {
-    rows: 6,
-  },
-);
-const text = computed(() => ({
-  source: "Available",
-  target: "Selected",
-  moveSelected: (to: string) => `Move selected to ${to}`,
-  moveAll: (to: string) => `Move all to ${to}`,
-  moved: (n: number, to: string) => `Moved ${n} to ${to}`,
-  ...pack(),
-  ...props.labels,
-}));
-const source = defineModel<BlessOption<T>[]>("source", { default: () => [] });
-const target = defineModel<BlessOption<T>[]>("target", { default: () => [] });
-const pickS = ref([]) as Ref<T[]>;
-const pickT = ref([]) as Ref<T[]>;
-const root = ref<HTMLElement>();
-const live = ref("");
-
-function transfer(from: "source" | "target", values: T[]) {
-  const [a, b] = from === "source" ? [source, target] : [target, source];
-  const moving = a.value.filter((o) => values.includes(o.value));
-  a.value = a.value.filter((o) => !values.includes(o.value));
-  b.value = [...b.value, ...moving];
-  pickS.value = [];
-  pickT.value = [];
-  // the clicked button is now disabled and would drop focus: follow the items to their list
-  const to = from === "source" ? text.value.target : text.value.source;
-  live.value = text.value.moved(moving.length, to);
-  nextTick(() =>
-    root.value?.querySelectorAll<HTMLElement>("[role=listbox]")[from === "source" ? 1 : 0]?.focus(),
-  );
-}
-</script>
-
 <template>
   <div ref="root" class="bless-picklist">
     <div class="bless-picklist__col">
@@ -113,6 +55,64 @@ function transfer(from: "source" | "target", values: T[]) {
     <span class="bless-picklist__live bless-sr" aria-live="polite">{{ live }}</span>
   </div>
 </template>
+
+<script setup lang="ts" generic="T extends string | number">
+import { useLabelPack } from "../composables/useLabels";
+import "./sr.css";
+import { computed, nextTick, ref, type Ref } from "vue";
+import BlessButton from "./BlessButton.vue";
+import BlessListbox from "./BlessListbox.vue";
+import type { BlessOption } from "./select";
+
+defineOptions({ name: "BlessPickList" });
+const pack = useLabelPack("BlessPickList");
+
+const props = withDefaults(
+  defineProps<{
+    rows?: number;
+    labels?: Partial<{
+      source: string;
+      target: string;
+      moveSelected: (to: string) => string;
+      moveAll: (to: string) => string;
+      moved: (count: number, to: string) => string;
+    }>;
+  }>(),
+  {
+    rows: 6,
+  },
+);
+const text = computed(() => ({
+  source: "Available",
+  target: "Selected",
+  moveSelected: (to: string) => `Move selected to ${to}`,
+  moveAll: (to: string) => `Move all to ${to}`,
+  moved: (n: number, to: string) => `Moved ${n} to ${to}`,
+  ...pack(),
+  ...props.labels,
+}));
+const source = defineModel<BlessOption<T>[]>("source", { default: () => [] });
+const target = defineModel<BlessOption<T>[]>("target", { default: () => [] });
+const pickS = ref([]) as Ref<T[]>;
+const pickT = ref([]) as Ref<T[]>;
+const root = ref<HTMLElement>();
+const live = ref("");
+
+function transfer(from: "source" | "target", values: T[]) {
+  const [a, b] = from === "source" ? [source, target] : [target, source];
+  const moving = a.value.filter((o) => values.includes(o.value));
+  a.value = a.value.filter((o) => !values.includes(o.value));
+  b.value = [...b.value, ...moving];
+  pickS.value = [];
+  pickT.value = [];
+  // the clicked button is now disabled and would drop focus: follow the items to their list
+  const to = from === "source" ? text.value.target : text.value.source;
+  live.value = text.value.moved(moving.length, to);
+  nextTick(() =>
+    root.value?.querySelectorAll<HTMLElement>("[role=listbox]")[from === "source" ? 1 : 0]?.focus(),
+  );
+}
+</script>
 
 <style>
 .bless-picklist {

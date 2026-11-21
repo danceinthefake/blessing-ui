@@ -1,3 +1,54 @@
+<template>
+  <div class="bless-pricing">
+    <div class="bless-pricing__switch">
+      <BlessToggleGroup
+        :model-value="period"
+        :label="text.period"
+        @update:model-value="$event && (period = $event as BlessPricingPeriod)"
+      >
+        <BlessToggle value="monthly">{{ text.monthly }}</BlessToggle>
+        <BlessToggle value="yearly">{{ text.yearly }}</BlessToggle>
+      </BlessToggleGroup>
+      <span v-if="save > 0" class="bless-pricing__save">{{ text.save(save) }}</span>
+    </div>
+    <ul role="list" class="bless-stagger bless-pricing__plans">
+      <li
+        v-for="p in plans"
+        :key="p.id"
+        class="bless-pricing__plan"
+        :class="{ 'bless-pricing__plan--featured': p.featured }"
+      >
+        <span v-if="p.featured" class="bless-pricing__badge">{{ text.featured }}</span>
+        <p class="bless-pricing__name">{{ p.name }}</p>
+        <p v-if="p.description" class="bless-pricing__desc">{{ p.description }}</p>
+        <p class="bless-pricing__price">
+          <template v-if="p.price[period] > 0">
+            <strong>{{ money.format(p.price[period]) }}</strong>
+            <span>{{ period === "monthly" ? text.perMonth : text.perYear }}</span>
+          </template>
+          <strong v-else>{{ text.free }}</strong>
+        </p>
+        <ul role="list" class="bless-pricing__features">
+          <li v-for="f in p.features" :key="f">
+            <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
+              <path d="M3 8.5 6.5 12 13 4.5" fill="none" stroke="currentColor" stroke-width="2" />
+            </svg>
+            {{ f }}
+          </li>
+        </ul>
+        <BlessButton
+          block
+          :variant="p.featured ? 'solid' : 'outline'"
+          :color="p.featured ? 'accent' : 'text'"
+          @click="emit('select', p, period)"
+        >
+          {{ p.cta ?? text.choose }}
+        </BlessButton>
+      </li>
+    </ul>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -78,57 +129,6 @@ const save = computed(() =>
   ),
 );
 </script>
-
-<template>
-  <div class="bless-pricing">
-    <div class="bless-pricing__switch">
-      <BlessToggleGroup
-        :model-value="period"
-        :label="text.period"
-        @update:model-value="$event && (period = $event as BlessPricingPeriod)"
-      >
-        <BlessToggle value="monthly">{{ text.monthly }}</BlessToggle>
-        <BlessToggle value="yearly">{{ text.yearly }}</BlessToggle>
-      </BlessToggleGroup>
-      <span v-if="save > 0" class="bless-pricing__save">{{ text.save(save) }}</span>
-    </div>
-    <ul role="list" class="bless-stagger bless-pricing__plans">
-      <li
-        v-for="p in plans"
-        :key="p.id"
-        class="bless-pricing__plan"
-        :class="{ 'bless-pricing__plan--featured': p.featured }"
-      >
-        <span v-if="p.featured" class="bless-pricing__badge">{{ text.featured }}</span>
-        <p class="bless-pricing__name">{{ p.name }}</p>
-        <p v-if="p.description" class="bless-pricing__desc">{{ p.description }}</p>
-        <p class="bless-pricing__price">
-          <template v-if="p.price[period] > 0">
-            <strong>{{ money.format(p.price[period]) }}</strong>
-            <span>{{ period === "monthly" ? text.perMonth : text.perYear }}</span>
-          </template>
-          <strong v-else>{{ text.free }}</strong>
-        </p>
-        <ul role="list" class="bless-pricing__features">
-          <li v-for="f in p.features" :key="f">
-            <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
-              <path d="M3 8.5 6.5 12 13 4.5" fill="none" stroke="currentColor" stroke-width="2" />
-            </svg>
-            {{ f }}
-          </li>
-        </ul>
-        <BlessButton
-          block
-          :variant="p.featured ? 'solid' : 'outline'"
-          :color="p.featured ? 'accent' : 'text'"
-          @click="emit('select', p, period)"
-        >
-          {{ p.cta ?? text.choose }}
-        </BlessButton>
-      </li>
-    </ul>
-  </div>
-</template>
 
 <style>
 .bless-pricing {

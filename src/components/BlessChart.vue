@@ -1,18 +1,3 @@
-<script setup lang="ts">
-defineOptions({ name: "BlessChart" });
-
-withDefaults(
-  defineProps<{
-    title?: string;
-    description?: string;
-    height?: string;
-    /** series names for the built-in legend, in palette order */
-    legend?: string[];
-  }>(),
-  { height: "240px" },
-);
-</script>
-
 <template>
   <figure class="bless-chart" :style="{ '--_h': height }">
     <figcaption v-if="title || description || $slots.header" class="bless-chart__header">
@@ -36,6 +21,21 @@ withDefaults(
     <div v-if="$slots.footer" class="bless-chart__footer"><slot name="footer" /></div>
   </figure>
 </template>
+
+<script setup lang="ts">
+defineOptions({ name: "BlessChart" });
+
+withDefaults(
+  defineProps<{
+    title?: string;
+    description?: string;
+    height?: string;
+    /** series names for the built-in legend, in palette order */
+    legend?: string[];
+  }>(),
+  { height: "240px" },
+);
+</script>
 
 <style>
 /* Maps --bless-* onto Unovis' --vis-* so any @unovis/vue chart dropped in the

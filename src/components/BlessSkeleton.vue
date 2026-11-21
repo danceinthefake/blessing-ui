@@ -1,19 +1,3 @@
-<script setup lang="ts">
-defineOptions({ name: "BlessSkeleton" });
-
-withDefaults(
-  defineProps<{
-    width?: string;
-    height?: string;
-    /** render n text lines instead of one block */
-    lines?: number;
-    /** an avatar placeholder: square like BlessAvatar, never leaning */
-    avatar?: boolean;
-  }>(),
-  { width: "100%", height: "1em" },
-);
-</script>
-
 <template>
   <div v-if="lines" class="bless-skeleton-lines" aria-hidden="true">
     <span
@@ -31,6 +15,22 @@ withDefaults(
     aria-hidden="true"
   />
 </template>
+
+<script setup lang="ts">
+defineOptions({ name: "BlessSkeleton" });
+
+withDefaults(
+  defineProps<{
+    width?: string;
+    height?: string;
+    /** render n text lines instead of one block */
+    lines?: number;
+    /** an avatar placeholder: square like BlessAvatar, never leaning */
+    avatar?: boolean;
+  }>(),
+  { width: "100%", height: "1em" },
+);
+</script>
 
 <style>
 /* a flat plate that breathes — no shimmer sweep, nothing glossy */

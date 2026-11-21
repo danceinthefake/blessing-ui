@@ -1,3 +1,72 @@
+<template>
+  <figure class="bless-diff" :class="`bless-diff--${mode}`">
+    <figcaption class="bless-diff__head">
+      <span class="bless-diff__title">{{ label }}</span>
+      <span class="bless-diff__count">
+        <span class="bless-diff__plus">+{{ added }}</span>
+        <span class="bless-diff__minus">−{{ removed }}</span>
+        <span class="bless-diff__sr bless-sr">{{ added }} lines added, {{ removed }} removed</span>
+      </span>
+    </figcaption>
+    <div class="bless-diff__scroll" tabindex="0" role="region" :aria-label="label">
+      <table class="bless-diff__table">
+        <thead v-if="mode === 'split'" class="bless-diff__cols">
+          <tr>
+            <th v-if="lineNumbers" aria-hidden="true"></th>
+            <th scope="col">{{ labelA }}</th>
+            <th v-if="lineNumbers" aria-hidden="true"></th>
+            <th scope="col">{{ labelB }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <template v-for="(it, n) in items" :key="n">
+            <tr v-if="it.kind === 'fold'" class="bless-diff__fold">
+              <td :colspan="cols">
+                <button type="button" @click="expand(it.id)">
+                  {{ it.count }} unchanged {{ it.count === 1 ? "line" : "lines" }}
+                </button>
+              </td>
+            </tr>
+            <tr
+              v-else-if="it.kind === 'row'"
+              :class="`bless-diff__row bless-diff__row--${it.row.type}`"
+            >
+              <td v-if="lineNumbers" class="bless-diff__no" aria-hidden="true">{{ it.row.a }}</td>
+              <td v-if="lineNumbers" class="bless-diff__no" aria-hidden="true">{{ it.row.b }}</td>
+              <td class="bless-diff__sign" :aria-label="word[it.row.type] || undefined">
+                {{ sign[it.row.type] }}
+              </td>
+              <td class="bless-diff__text">{{ it.row.text }}</td>
+            </tr>
+            <tr v-else class="bless-diff__row">
+              <template v-for="(side, k) in [it.left, it.right]" :key="k">
+                <td v-if="lineNumbers" class="bless-diff__no" aria-hidden="true">
+                  {{ k ? side?.b : side?.a }}
+                </td>
+                <td
+                  class="bless-diff__text"
+                  :class="
+                    side && side.type !== 'same'
+                      ? `bless-diff__cell--${side.type}`
+                      : !side
+                        ? 'bless-diff__cell--empty'
+                        : ''
+                  "
+                  :aria-label="
+                    side && side.type !== 'same' ? `${word[side.type]}: ${side.text}` : undefined
+                  "
+                >
+                  {{ side?.text }}
+                </td>
+              </template>
+            </tr>
+          </template>
+        </tbody>
+      </table>
+    </div>
+  </figure>
+</template>
+
 <script setup lang="ts">
 import "./sr.css";
 import { computed, ref } from "vue";
@@ -99,75 +168,6 @@ const word = { same: "", add: "added", del: "removed" } as const;
 const expand = (id: number) => (open.value = new Set(open.value).add(id));
 const cols = computed(() => (props.mode === "inline" ? 4 : 4));
 </script>
-
-<template>
-  <figure class="bless-diff" :class="`bless-diff--${mode}`">
-    <figcaption class="bless-diff__head">
-      <span class="bless-diff__title">{{ label }}</span>
-      <span class="bless-diff__count">
-        <span class="bless-diff__plus">+{{ added }}</span>
-        <span class="bless-diff__minus">−{{ removed }}</span>
-        <span class="bless-diff__sr bless-sr">{{ added }} lines added, {{ removed }} removed</span>
-      </span>
-    </figcaption>
-    <div class="bless-diff__scroll" tabindex="0" role="region" :aria-label="label">
-      <table class="bless-diff__table">
-        <thead v-if="mode === 'split'" class="bless-diff__cols">
-          <tr>
-            <th v-if="lineNumbers" aria-hidden="true"></th>
-            <th scope="col">{{ labelA }}</th>
-            <th v-if="lineNumbers" aria-hidden="true"></th>
-            <th scope="col">{{ labelB }}</th>
-          </tr>
-        </thead>
-        <tbody>
-          <template v-for="(it, n) in items" :key="n">
-            <tr v-if="it.kind === 'fold'" class="bless-diff__fold">
-              <td :colspan="cols">
-                <button type="button" @click="expand(it.id)">
-                  {{ it.count }} unchanged {{ it.count === 1 ? "line" : "lines" }}
-                </button>
-              </td>
-            </tr>
-            <tr
-              v-else-if="it.kind === 'row'"
-              :class="`bless-diff__row bless-diff__row--${it.row.type}`"
-            >
-              <td v-if="lineNumbers" class="bless-diff__no" aria-hidden="true">{{ it.row.a }}</td>
-              <td v-if="lineNumbers" class="bless-diff__no" aria-hidden="true">{{ it.row.b }}</td>
-              <td class="bless-diff__sign" :aria-label="word[it.row.type] || undefined">
-                {{ sign[it.row.type] }}
-              </td>
-              <td class="bless-diff__text">{{ it.row.text }}</td>
-            </tr>
-            <tr v-else class="bless-diff__row">
-              <template v-for="(side, k) in [it.left, it.right]" :key="k">
-                <td v-if="lineNumbers" class="bless-diff__no" aria-hidden="true">
-                  {{ k ? side?.b : side?.a }}
-                </td>
-                <td
-                  class="bless-diff__text"
-                  :class="
-                    side && side.type !== 'same'
-                      ? `bless-diff__cell--${side.type}`
-                      : !side
-                        ? 'bless-diff__cell--empty'
-                        : ''
-                  "
-                  :aria-label="
-                    side && side.type !== 'same' ? `${word[side.type]}: ${side.text}` : undefined
-                  "
-                >
-                  {{ side?.text }}
-                </td>
-              </template>
-            </tr>
-          </template>
-        </tbody>
-      </table>
-    </div>
-  </figure>
-</template>
 
 <style>
 .bless-diff {

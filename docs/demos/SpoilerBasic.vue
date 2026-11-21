@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import { BlessSpoiler } from "blessing-ui";
-</script>
-
 <template>
   <div style="max-width: 560px">
     <p style="margin: 0 0 16px">
@@ -17,3 +13,7 @@ import { BlessSpoiler } from "blessing-ui";
     </BlessSpoiler>
   </div>
 </template>
+
+<script setup lang="ts">
+import { BlessSpoiler } from "blessing-ui";
+</script>

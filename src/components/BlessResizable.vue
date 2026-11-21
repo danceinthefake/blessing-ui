@@ -1,3 +1,33 @@
+<template>
+  <div
+    ref="root"
+    class="bless-resizable"
+    :class="[`bless-resizable--${direction}`, { 'bless-resizable--dragging': dragging }]"
+    :style="{ '--_a': `${size}%` }"
+  >
+    <div class="bless-resizable__pane bless-resizable__pane--a"><slot name="a" /></div>
+    <div
+      class="bless-resizable__handle"
+      role="separator"
+      :aria-orientation="horizontal ? 'vertical' : 'horizontal'"
+      :aria-valuenow="Math.round(size)"
+      :aria-valuemin="min"
+      :aria-valuemax="max"
+      :aria-label="label"
+      tabindex="0"
+      @pointerdown="onDown"
+      @pointermove="onMove"
+      @pointerup="onUp"
+      @pointercancel="onUp"
+      @keydown="onKey"
+      @dblclick="size = clamp(50)"
+    >
+      <span class="bless-resizable__grip" aria-hidden="true" />
+    </div>
+    <div class="bless-resizable__pane bless-resizable__pane--b"><slot name="b" /></div>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed, ref } from "vue";
 import { logicalKey } from "../composables/rtl";
@@ -52,36 +82,6 @@ function onKey(e: KeyboardEvent) {
   e.preventDefault();
 }
 </script>
-
-<template>
-  <div
-    ref="root"
-    class="bless-resizable"
-    :class="[`bless-resizable--${direction}`, { 'bless-resizable--dragging': dragging }]"
-    :style="{ '--_a': `${size}%` }"
-  >
-    <div class="bless-resizable__pane bless-resizable__pane--a"><slot name="a" /></div>
-    <div
-      class="bless-resizable__handle"
-      role="separator"
-      :aria-orientation="horizontal ? 'vertical' : 'horizontal'"
-      :aria-valuenow="Math.round(size)"
-      :aria-valuemin="min"
-      :aria-valuemax="max"
-      :aria-label="label"
-      tabindex="0"
-      @pointerdown="onDown"
-      @pointermove="onMove"
-      @pointerup="onUp"
-      @pointercancel="onUp"
-      @keydown="onKey"
-      @dblclick="size = clamp(50)"
-    >
-      <span class="bless-resizable__grip" aria-hidden="true" />
-    </div>
-    <div class="bless-resizable__pane bless-resizable__pane--b"><slot name="b" /></div>
-  </div>
-</template>
 
 <style>
 .bless-resizable {

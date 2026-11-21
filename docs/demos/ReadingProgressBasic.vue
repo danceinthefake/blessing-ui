@@ -1,13 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { BlessReadingProgress } from "blessing-ui";
-
-// on a real page, leave out `target` and `position`: the bar follows the page at the top of the window
-const article = ref<HTMLElement>();
-const paragraph =
-  "A quiet room matters more than an expensive microphone. Hard walls send the voice back, and the microphone hears the echo a moment later. Soft things break up that echo: curtains, a sofa, a full bookshelf, or a wardrobe of clothes. Before you buy anything, record one minute in each room of your home and listen with headphones. Pick the room with the least echo, and put the microphone close to your mouth, about one hand away. ";
-</script>
-
 <template>
   <div
     ref="article"
@@ -28,3 +18,13 @@ const paragraph =
     </article>
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { BlessReadingProgress } from "blessing-ui";
+
+// on a real page, leave out `target` and `position`: the bar follows the page at the top of the window
+const article = ref<HTMLElement>();
+const paragraph =
+  "A quiet room matters more than an expensive microphone. Hard walls send the voice back, and the microphone hears the echo a moment later. Soft things break up that echo: curtains, a sofa, a full bookshelf, or a wardrobe of clothes. Before you buy anything, record one minute in each room of your home and listen with headphones. Pick the room with the least echo, and put the microphone close to your mouth, about one hand away. ";
+</script>

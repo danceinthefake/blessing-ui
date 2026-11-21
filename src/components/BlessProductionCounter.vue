@@ -1,3 +1,39 @@
+<template>
+  <section class="bless-prodcount" :aria-label="text.title">
+    <div class="bless-prodcount__numbers">
+      <div class="bless-prodcount__num is-good">
+        <span class="bless-prodcount__label">{{ text.good }}</span>
+        <strong>{{ num.format(good) }}</strong>
+        <span v-if="target" class="bless-prodcount__target">{{
+          text.target(num.format(target))
+        }}</span>
+      </div>
+      <div class="bless-prodcount__num is-scrap">
+        <span class="bless-prodcount__label">{{ text.scrap }}</span>
+        <strong>{{ num.format(scrap) }}</strong>
+        <span class="bless-prodcount__target">{{
+          text.yield(total ? pct.format(good / total) : "—")
+        }}</span>
+      </div>
+    </div>
+    <div v-if="target" class="bless-prodcount__track" aria-hidden="true">
+      <span :style="{ inlineSize: `${share * 100}%` }" />
+    </div>
+    <div class="bless-prodcount__buttons">
+      <button type="button" class="bless-prodcount__btn is-good" @click="count('good')">
+        {{ text.addGood }}
+      </button>
+      <button type="button" class="bless-prodcount__btn is-scrap" @click="count('scrap')">
+        {{ text.addScrap }}
+      </button>
+    </div>
+    <button type="button" class="bless-prodcount__undo" :disabled="!history.length" @click="undo">
+      ↶ {{ text.undo }}
+    </button>
+    <span class="bless-sr" role="status">{{ said }}</span>
+  </section>
+</template>
+
 <script setup lang="ts">
 import { computed, ref } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -69,42 +105,6 @@ function undo() {
 const total = computed(() => good.value + scrap.value);
 const share = computed(() => (props.target ? Math.min(1, good.value / props.target) : 0));
 </script>
-
-<template>
-  <section class="bless-prodcount" :aria-label="text.title">
-    <div class="bless-prodcount__numbers">
-      <div class="bless-prodcount__num is-good">
-        <span class="bless-prodcount__label">{{ text.good }}</span>
-        <strong>{{ num.format(good) }}</strong>
-        <span v-if="target" class="bless-prodcount__target">{{
-          text.target(num.format(target))
-        }}</span>
-      </div>
-      <div class="bless-prodcount__num is-scrap">
-        <span class="bless-prodcount__label">{{ text.scrap }}</span>
-        <strong>{{ num.format(scrap) }}</strong>
-        <span class="bless-prodcount__target">{{
-          text.yield(total ? pct.format(good / total) : "—")
-        }}</span>
-      </div>
-    </div>
-    <div v-if="target" class="bless-prodcount__track" aria-hidden="true">
-      <span :style="{ inlineSize: `${share * 100}%` }" />
-    </div>
-    <div class="bless-prodcount__buttons">
-      <button type="button" class="bless-prodcount__btn is-good" @click="count('good')">
-        {{ text.addGood }}
-      </button>
-      <button type="button" class="bless-prodcount__btn is-scrap" @click="count('scrap')">
-        {{ text.addScrap }}
-      </button>
-    </div>
-    <button type="button" class="bless-prodcount__undo" :disabled="!history.length" @click="undo">
-      ↶ {{ text.undo }}
-    </button>
-    <span class="bless-sr" role="status">{{ said }}</span>
-  </section>
-</template>
 
 <style>
 .bless-prodcount {

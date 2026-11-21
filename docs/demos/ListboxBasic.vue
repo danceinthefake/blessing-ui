@@ -1,3 +1,16 @@
+<template>
+  <div class="row" style="align-items: flex-start">
+    <div class="col">
+      <BlessListbox v-model="one" :options label="Heroine" />
+      <small>{{ one }}</small>
+    </div>
+    <div class="col">
+      <BlessListbox v-model="many" :options multiple :rows="3" label="Heroines" />
+      <small>{{ many }} · 3 rows then scroll · type to jump</small>
+    </div>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessListbox } from "blessing-ui";
@@ -11,16 +24,3 @@ const options = [
 const one = ref("megumi");
 const many = ref<string[]>(["eriri", "utaha"]);
 </script>
-
-<template>
-  <div class="row" style="align-items: flex-start">
-    <div class="col">
-      <BlessListbox v-model="one" :options label="Heroine" />
-      <small>{{ one }}</small>
-    </div>
-    <div class="col">
-      <BlessListbox v-model="many" :options multiple :rows="3" label="Heroines" />
-      <small>{{ many }} · 3 rows then scroll · type to jump</small>
-    </div>
-  </div>
-</template>

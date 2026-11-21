@@ -1,3 +1,13 @@
+<template>
+  <BlessChart
+    title="Cash this month"
+    description="Dollars, from the start of the month to the end"
+    height="auto"
+  >
+    <BlessWaterfallChart :steps :format="dollars" label="Cash this month" />
+  </BlessChart>
+</template>
+
 <script setup lang="ts">
 import { BlessChart, BlessWaterfallChart, type BlessWaterfallStep } from "blessing-ui";
 
@@ -13,13 +23,3 @@ const steps: BlessWaterfallStep[] = [
 ];
 const dollars = (v: number) => `$${v}`;
 </script>
-
-<template>
-  <BlessChart
-    title="Cash this month"
-    description="Dollars, from the start of the month to the end"
-    height="auto"
-  >
-    <BlessWaterfallChart :steps :format="dollars" label="Cash this month" />
-  </BlessChart>
-</template>

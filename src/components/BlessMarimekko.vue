@@ -1,55 +1,3 @@
-<script setup lang="ts">
-import { computed } from "vue";
-import { useLabelPack } from "../composables/useLabels";
-import { chartColor, numberText, type BlessChartRow, type BlessChartSeries } from "./chart";
-import "./sr.css";
-
-defineOptions({ name: "BlessMarimekko" });
-const pack = useLabelPack("BlessMarimekko");
-
-const props = withDefaults(
-  defineProps<{
-    /** one column for each row, with a value for each series */
-    data: BlessChartRow[];
-    /** the field with the name of the column */
-    x: string;
-    /** the parts of each column, from the bottom up */
-    series: BlessChartSeries[];
-    height?: number;
-    format?: (v: number) => string;
-    /** names the chart and its table for screen readers */
-    label?: string;
-    labels?: Partial<{ column: string; share: string }>;
-  }>(),
-  { height: 280, label: "Chart" },
-);
-
-const text = computed(() => ({
-  column: "Column",
-  share: "Share of all",
-  ...pack(),
-  ...props.labels,
-}));
-const fmt = computed(() => props.format ?? numberText);
-const pct = new Intl.NumberFormat(undefined, { style: "percent", maximumFractionDigits: 0 });
-const num = (r: BlessChartRow, k: string) => Math.max(0, Number(r[k]) || 0);
-const cols = computed(() => {
-  const totals = props.data.map((r) => props.series.reduce((n, s) => n + num(r, s.key), 0));
-  const all = totals.reduce((a, b) => a + b, 0) || 1;
-  return props.data.map((r, i) => ({
-    name: String(r[props.x] ?? ""),
-    share: totals[i]! / all,
-    parts: props.series.map((s, k) => ({
-      key: s.key,
-      name: s.label ?? s.key,
-      value: num(r, s.key),
-      share: totals[i] ? num(r, s.key) / totals[i]! : 0,
-      color: chartColor(s.color, k),
-    })),
-  }));
-});
-</script>
-
 <template>
   <figure class="bless-mekko">
     <ul class="bless-mekko__legend" aria-hidden="true">
@@ -108,6 +56,58 @@ const cols = computed(() => {
     </div>
   </figure>
 </template>
+
+<script setup lang="ts">
+import { computed } from "vue";
+import { useLabelPack } from "../composables/useLabels";
+import { chartColor, numberText, type BlessChartRow, type BlessChartSeries } from "./chart";
+import "./sr.css";
+
+defineOptions({ name: "BlessMarimekko" });
+const pack = useLabelPack("BlessMarimekko");
+
+const props = withDefaults(
+  defineProps<{
+    /** one column for each row, with a value for each series */
+    data: BlessChartRow[];
+    /** the field with the name of the column */
+    x: string;
+    /** the parts of each column, from the bottom up */
+    series: BlessChartSeries[];
+    height?: number;
+    format?: (v: number) => string;
+    /** names the chart and its table for screen readers */
+    label?: string;
+    labels?: Partial<{ column: string; share: string }>;
+  }>(),
+  { height: 280, label: "Chart" },
+);
+
+const text = computed(() => ({
+  column: "Column",
+  share: "Share of all",
+  ...pack(),
+  ...props.labels,
+}));
+const fmt = computed(() => props.format ?? numberText);
+const pct = new Intl.NumberFormat(undefined, { style: "percent", maximumFractionDigits: 0 });
+const num = (r: BlessChartRow, k: string) => Math.max(0, Number(r[k]) || 0);
+const cols = computed(() => {
+  const totals = props.data.map((r) => props.series.reduce((n, s) => n + num(r, s.key), 0));
+  const all = totals.reduce((a, b) => a + b, 0) || 1;
+  return props.data.map((r, i) => ({
+    name: String(r[props.x] ?? ""),
+    share: totals[i]! / all,
+    parts: props.series.map((s, k) => ({
+      key: s.key,
+      name: s.label ?? s.key,
+      value: num(r, s.key),
+      share: totals[i] ? num(r, s.key) / totals[i]! : 0,
+      color: chartColor(s.color, k),
+    })),
+  }));
+});
+</script>
 
 <style>
 .bless-mekko {

@@ -1,3 +1,51 @@
+<template>
+  <div
+    class="bless-gauge"
+    :class="`bless-gauge--${variant}`"
+    role="meter"
+    :aria-label="label"
+    :aria-valuemin="min"
+    :aria-valuemax="max"
+    :aria-valuenow="Math.min(max, Math.max(min, value))"
+    :aria-valuetext="zone?.label ? `${text}, ${zone.label}` : text"
+  >
+    <svg v-if="variant === 'arc'" class="bless-gauge__svg" viewBox="0 0 200 118" aria-hidden="true">
+      <path class="bless-gauge__track" :d="arc(0, 1)" />
+      <path
+        v-for="(b, i) in bands"
+        :key="i"
+        class="bless-gauge__band"
+        :d="arc(b.from, b.to)"
+        :style="{ stroke: b.color }"
+      />
+      <line
+        class="bless-gauge__needle"
+        :x1="needle.a.x"
+        :y1="needle.a.y"
+        :x2="needle.b.x"
+        :y2="needle.b.y"
+      />
+    </svg>
+    <div v-else class="bless-gauge__bar" aria-hidden="true">
+      <span
+        v-for="(b, i) in bands"
+        :key="i"
+        class="bless-gauge__seg"
+        :style="{
+          left: `${b.from * 100}%`,
+          width: `${(b.to - b.from) * 100}%`,
+          background: b.color,
+        }"
+      ></span>
+      <span class="bless-gauge__mark" :style="{ left: `${t * 100}%` }"></span>
+    </div>
+    <div class="bless-gauge__read">
+      <strong class="bless-gauge__value">{{ text }}</strong>
+      <span class="bless-gauge__label">{{ label }}</span>
+    </div>
+  </div>
+</template>
+
 <script lang="ts">
 export interface BlessGaugeZone {
   /** the zone runs up to this value; zones are sorted by it */
@@ -67,54 +115,6 @@ const arc = (a: number, b: number) => {
 };
 const needle = computed(() => ({ a: pt(t.value, R - 22), b: pt(t.value, R + 10) }));
 </script>
-
-<template>
-  <div
-    class="bless-gauge"
-    :class="`bless-gauge--${variant}`"
-    role="meter"
-    :aria-label="label"
-    :aria-valuemin="min"
-    :aria-valuemax="max"
-    :aria-valuenow="Math.min(max, Math.max(min, value))"
-    :aria-valuetext="zone?.label ? `${text}, ${zone.label}` : text"
-  >
-    <svg v-if="variant === 'arc'" class="bless-gauge__svg" viewBox="0 0 200 118" aria-hidden="true">
-      <path class="bless-gauge__track" :d="arc(0, 1)" />
-      <path
-        v-for="(b, i) in bands"
-        :key="i"
-        class="bless-gauge__band"
-        :d="arc(b.from, b.to)"
-        :style="{ stroke: b.color }"
-      />
-      <line
-        class="bless-gauge__needle"
-        :x1="needle.a.x"
-        :y1="needle.a.y"
-        :x2="needle.b.x"
-        :y2="needle.b.y"
-      />
-    </svg>
-    <div v-else class="bless-gauge__bar" aria-hidden="true">
-      <span
-        v-for="(b, i) in bands"
-        :key="i"
-        class="bless-gauge__seg"
-        :style="{
-          left: `${b.from * 100}%`,
-          width: `${(b.to - b.from) * 100}%`,
-          background: b.color,
-        }"
-      ></span>
-      <span class="bless-gauge__mark" :style="{ left: `${t * 100}%` }"></span>
-    </div>
-    <div class="bless-gauge__read">
-      <strong class="bless-gauge__value">{{ text }}</strong>
-      <span class="bless-gauge__label">{{ label }}</span>
-    </div>
-  </div>
-</template>
 
 <style>
 .bless-gauge {

@@ -1,3 +1,13 @@
+<template>
+  <BlessHeatmap
+    :rows
+    :columns
+    :values
+    :format="(v) => `${v} plays`"
+    label="Plays by weekday and hour"
+  />
+</template>
+
 <script setup lang="ts">
 import { BlessHeatmap } from "blessing-ui";
 
@@ -14,13 +24,3 @@ const values = rows.map((_, d) =>
   }),
 );
 </script>
-
-<template>
-  <BlessHeatmap
-    :rows
-    :columns
-    :values
-    :format="(v) => `${v} plays`"
-    label="Plays by weekday and hour"
-  />
-</template>

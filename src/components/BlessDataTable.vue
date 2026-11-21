@@ -1,3 +1,182 @@
+<template>
+  <div class="bless-datatable" :class="{ 'bless-datatable--loading': loading }">
+    <div class="bless-datatable__toolbar">
+      <BlessInput
+        v-if="searchable"
+        v-model="state.query"
+        type="search"
+        size="sm"
+        :placeholder="searchPlaceholder"
+        :aria-label="text.search"
+        class="bless-datatable__search"
+        @update:model-value="state.page = 1"
+      />
+      <slot name="toolbar" :state :selected="dt.selectedRows.value" />
+      <BlessDropdownMenu
+        :items="colMenu"
+        :checked="colChecked"
+        placement="bottom-end"
+        class="bless-datatable__cols"
+        @select="$event.type === 'checkbox' && dt.toggleColumn($event.value)"
+      >
+        <template #trigger
+          ><button type="button" class="bless-datatable__cols-btn">Columns ▾</button></template
+        >
+      </BlessDropdownMenu>
+    </div>
+
+    <div class="bless-datatable__scroll">
+      <table
+        class="bless-table bless-datatable__table"
+        :style="tableStyle"
+        :aria-busy="loading || undefined"
+      >
+        <caption v-if="caption" class="bless-table__caption">
+          {{ caption }}
+        </caption>
+        <thead class="bless-table__head">
+          <tr ref="headRow">
+            <th
+              v-if="selectable"
+              scope="col"
+              class="bless-table__th bless-datatable__check"
+              :class="hasStartPin && 'bless-datatable__pin bless-datatable__pin--start'"
+              :data-key="CHECK"
+            >
+              <BlessCheckbox
+                ref="selectAllRef"
+                :model-value="dt.allPageSelected.value"
+                :indeterminate="!dt.allPageSelected.value && dt.somePageSelected.value"
+                :aria-label="text.selectPage"
+                @update:model-value="onTogglePage"
+              />
+            </th>
+            <th
+              v-for="c in visible"
+              :key="c.key"
+              scope="col"
+              class="bless-table__th"
+              :class="[cellClass(c), { 'bless-datatable__th--sortable': c.sortable }]"
+              :style="cellStyle(c, true)"
+              :data-key="c.key"
+              :aria-sort="
+                state.sortKey === c.key
+                  ? state.sortDir === 'asc'
+                    ? 'ascending'
+                    : 'descending'
+                  : c.sortable
+                    ? 'none'
+                    : undefined
+              "
+            >
+              <button
+                v-if="c.sortable"
+                type="button"
+                class="bless-datatable__sort"
+                @click="dt.sortBy(c.key)"
+              >
+                {{ c.label }}
+                <span class="bless-datatable__sort-icon" aria-hidden="true">{{
+                  state.sortKey === c.key ? (state.sortDir === "asc" ? "↑" : "↓") : "↕"
+                }}</span>
+              </button>
+              <template v-else>{{ c.label }}</template>
+              <span
+                v-if="canResize(c)"
+                role="separator"
+                aria-orientation="vertical"
+                tabindex="0"
+                class="bless-datatable__resize"
+                :aria-label="text.resize(c.label)"
+                :aria-valuenow="Math.round(widths[c.key] ?? measured[c.key] ?? MIN)"
+                :aria-valuemin="MIN"
+                @pointerdown="onResizeStart(c, $event)"
+                @keydown="onResizeKey(c, $event)"
+                @click.stop
+              />
+            </th>
+          </tr>
+        </thead>
+        <TransitionGroup
+          tag="tbody"
+          appear
+          appear-active-class="bless-appear"
+          enter-active-class="bless-arrive"
+          move-class="bless-move"
+          @leave="(_el: Element, done: () => void) => done()"
+        >
+          <tr v-if="!dt.pageRows.value.length" key="bless-empty">
+            <td
+              :colspan="visible.length + (selectable ? 1 : 0)"
+              class="bless-table__cell bless-datatable__empty"
+            >
+              {{ emptyText }}
+            </td>
+          </tr>
+          <tr
+            v-for="(row, i) in dt.pageRows.value"
+            :key="String(dt.keyOf(row))"
+            class="bless-table__row bless-datatable__row"
+            :class="{ 'bless-datatable__row--selected': state.selected.has(dt.keyOf(row)) }"
+            :aria-selected="selectable ? state.selected.has(dt.keyOf(row)) : undefined"
+            @click="emit('rowClick', row)"
+          >
+            <td
+              v-if="selectable"
+              class="bless-table__cell bless-datatable__check"
+              :class="hasStartPin && 'bless-datatable__pin bless-datatable__pin--start'"
+              @click.stop
+            >
+              <BlessCheckbox
+                :model-value="state.selected.has(dt.keyOf(row))"
+                :aria-label="text.selectRow(rowName(row, i))"
+                @update:model-value="onToggle(row)"
+              />
+            </td>
+            <component
+              :is="c.header ? 'th' : 'td'"
+              v-for="c in visible"
+              :key="c.key"
+              :scope="c.header ? 'row' : undefined"
+              class="bless-table__cell"
+              :class="cellClass(c)"
+              :style="c.pin ? cellStyle(c) : undefined"
+              :data-label="c.label"
+            >
+              <slot :name="`cell-${c.key}`" :row :value="row[c.key]" :index="i">{{
+                row[c.key]
+              }}</slot>
+            </component>
+          </tr>
+        </TransitionGroup>
+      </table>
+    </div>
+
+    <div class="bless-datatable__foot">
+      <BlessText size="xs" muted role="status">
+        <template v-if="selectable && state.selected.size"
+          >{{ state.selected.size }} selected ·
+        </template>
+        {{ dt.sorted.value.length }} rows
+      </BlessText>
+      <div class="bless-datatable__pager">
+        <BlessSelect
+          :model-value="state.pageSize"
+          size="sm"
+          :aria-label="text.rowsPerPage"
+          :options="sizeOptions"
+          class="bless-datatable__size"
+          @update:model-value="
+            state.pageSize = Number($event);
+            state.page = 1;
+          "
+        />
+        <BlessPagination v-model="state.page" :total="dt.pageCount.value" :siblings="1" />
+      </div>
+    </div>
+  </div>
+</template>
+
 <script setup lang="ts" generic="T extends Record<string, unknown>">
 import { computed, onBeforeUnmount, onMounted, ref, toRef, watch, watchPostEffect } from "vue";
 import { logicalKey } from "../composables/rtl";
@@ -235,185 +414,6 @@ function onTogglePage() {
 }
 defineExpose({ state, selectedRows: dt.selectedRows });
 </script>
-
-<template>
-  <div class="bless-datatable" :class="{ 'bless-datatable--loading': loading }">
-    <div class="bless-datatable__toolbar">
-      <BlessInput
-        v-if="searchable"
-        v-model="state.query"
-        type="search"
-        size="sm"
-        :placeholder="searchPlaceholder"
-        :aria-label="text.search"
-        class="bless-datatable__search"
-        @update:model-value="state.page = 1"
-      />
-      <slot name="toolbar" :state :selected="dt.selectedRows.value" />
-      <BlessDropdownMenu
-        :items="colMenu"
-        :checked="colChecked"
-        placement="bottom-end"
-        class="bless-datatable__cols"
-        @select="$event.type === 'checkbox' && dt.toggleColumn($event.value)"
-      >
-        <template #trigger
-          ><button type="button" class="bless-datatable__cols-btn">Columns ▾</button></template
-        >
-      </BlessDropdownMenu>
-    </div>
-
-    <div class="bless-datatable__scroll">
-      <table
-        class="bless-table bless-datatable__table"
-        :style="tableStyle"
-        :aria-busy="loading || undefined"
-      >
-        <caption v-if="caption" class="bless-table__caption">
-          {{ caption }}
-        </caption>
-        <thead class="bless-table__head">
-          <tr ref="headRow">
-            <th
-              v-if="selectable"
-              scope="col"
-              class="bless-table__th bless-datatable__check"
-              :class="hasStartPin && 'bless-datatable__pin bless-datatable__pin--start'"
-              :data-key="CHECK"
-            >
-              <BlessCheckbox
-                ref="selectAllRef"
-                :model-value="dt.allPageSelected.value"
-                :indeterminate="!dt.allPageSelected.value && dt.somePageSelected.value"
-                :aria-label="text.selectPage"
-                @update:model-value="onTogglePage"
-              />
-            </th>
-            <th
-              v-for="c in visible"
-              :key="c.key"
-              scope="col"
-              class="bless-table__th"
-              :class="[cellClass(c), { 'bless-datatable__th--sortable': c.sortable }]"
-              :style="cellStyle(c, true)"
-              :data-key="c.key"
-              :aria-sort="
-                state.sortKey === c.key
-                  ? state.sortDir === 'asc'
-                    ? 'ascending'
-                    : 'descending'
-                  : c.sortable
-                    ? 'none'
-                    : undefined
-              "
-            >
-              <button
-                v-if="c.sortable"
-                type="button"
-                class="bless-datatable__sort"
-                @click="dt.sortBy(c.key)"
-              >
-                {{ c.label }}
-                <span class="bless-datatable__sort-icon" aria-hidden="true">{{
-                  state.sortKey === c.key ? (state.sortDir === "asc" ? "↑" : "↓") : "↕"
-                }}</span>
-              </button>
-              <template v-else>{{ c.label }}</template>
-              <span
-                v-if="canResize(c)"
-                role="separator"
-                aria-orientation="vertical"
-                tabindex="0"
-                class="bless-datatable__resize"
-                :aria-label="text.resize(c.label)"
-                :aria-valuenow="Math.round(widths[c.key] ?? measured[c.key] ?? MIN)"
-                :aria-valuemin="MIN"
-                @pointerdown="onResizeStart(c, $event)"
-                @keydown="onResizeKey(c, $event)"
-                @click.stop
-              />
-            </th>
-          </tr>
-        </thead>
-        <TransitionGroup
-          tag="tbody"
-          appear
-          appear-active-class="bless-appear"
-          enter-active-class="bless-arrive"
-          move-class="bless-move"
-          @leave="(_el: Element, done: () => void) => done()"
-        >
-          <tr v-if="!dt.pageRows.value.length" key="bless-empty">
-            <td
-              :colspan="visible.length + (selectable ? 1 : 0)"
-              class="bless-table__cell bless-datatable__empty"
-            >
-              {{ emptyText }}
-            </td>
-          </tr>
-          <tr
-            v-for="(row, i) in dt.pageRows.value"
-            :key="String(dt.keyOf(row))"
-            class="bless-table__row bless-datatable__row"
-            :class="{ 'bless-datatable__row--selected': state.selected.has(dt.keyOf(row)) }"
-            :aria-selected="selectable ? state.selected.has(dt.keyOf(row)) : undefined"
-            @click="emit('rowClick', row)"
-          >
-            <td
-              v-if="selectable"
-              class="bless-table__cell bless-datatable__check"
-              :class="hasStartPin && 'bless-datatable__pin bless-datatable__pin--start'"
-              @click.stop
-            >
-              <BlessCheckbox
-                :model-value="state.selected.has(dt.keyOf(row))"
-                :aria-label="text.selectRow(rowName(row, i))"
-                @update:model-value="onToggle(row)"
-              />
-            </td>
-            <component
-              :is="c.header ? 'th' : 'td'"
-              v-for="c in visible"
-              :key="c.key"
-              :scope="c.header ? 'row' : undefined"
-              class="bless-table__cell"
-              :class="cellClass(c)"
-              :style="c.pin ? cellStyle(c) : undefined"
-              :data-label="c.label"
-            >
-              <slot :name="`cell-${c.key}`" :row :value="row[c.key]" :index="i">{{
-                row[c.key]
-              }}</slot>
-            </component>
-          </tr>
-        </TransitionGroup>
-      </table>
-    </div>
-
-    <div class="bless-datatable__foot">
-      <BlessText size="xs" muted role="status">
-        <template v-if="selectable && state.selected.size"
-          >{{ state.selected.size }} selected ·
-        </template>
-        {{ dt.sorted.value.length }} rows
-      </BlessText>
-      <div class="bless-datatable__pager">
-        <BlessSelect
-          :model-value="state.pageSize"
-          size="sm"
-          :aria-label="text.rowsPerPage"
-          :options="sizeOptions"
-          class="bless-datatable__size"
-          @update:model-value="
-            state.pageSize = Number($event);
-            state.page = 1;
-          "
-        />
-        <BlessPagination v-model="state.page" :total="dt.pageCount.value" :siblings="1" />
-      </div>
-    </div>
-  </div>
-</template>
 
 <style>
 .bless-datatable {

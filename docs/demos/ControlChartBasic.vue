@@ -1,3 +1,7 @@
+<template>
+  <BlessControlChart :values :points :center="120.01" :ucl="120.15" :lcl="119.87" unit="mm" />
+</template>
+
 <script setup lang="ts">
 import { BlessControlChart } from "blessing-ui";
 
@@ -10,7 +14,3 @@ const points = values.map(
   (_, i) => `${String(7 + Math.floor((i + 1) / 2)).padStart(2, "0")}:${i % 2 ? "00" : "30"}`,
 );
 </script>
-
-<template>
-  <BlessControlChart :values :points :center="120.01" :ucl="120.15" :lcl="119.87" unit="mm" />
-</template>

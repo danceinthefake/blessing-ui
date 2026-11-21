@@ -1,51 +1,3 @@
-<script setup lang="ts">
-import { computed } from "vue";
-import { useLabelPack } from "../composables/useLabels";
-import { niceTicks, numberText } from "./chart";
-import BlessSparkline from "./BlessSparkline.vue";
-import "./sr.css";
-
-defineOptions({ name: "BlessSmallMultiples" });
-const pack = useLabelPack("BlessSmallMultiples");
-
-export interface BlessMultiple {
-  label: string;
-  values: number[];
-  color?: string;
-}
-
-const props = withDefaults(
-  defineProps<{
-    series: BlessMultiple[];
-    /** the names of the steps, for the table; default: 1, 2, 3 … */
-    steps?: string[];
-    /** the height of each small chart in pixels */
-    height?: number;
-    format?: (v: number) => string;
-    /** names the chart and its table for screen readers */
-    label?: string;
-    labels?: Partial<{ item: string; scale: (lo: string, hi: string) => string }>;
-  }>(),
-  { height: 56, label: "Chart" },
-);
-
-const text = computed(() => ({
-  item: "Item",
-  scale: (lo: string, hi: string) => `All charts share one scale: ${lo} to ${hi}`,
-  ...pack(),
-  ...props.labels,
-}));
-const fmt = computed(() => props.format ?? numberText);
-// one scale for all, so the heights compare across the grid
-const ticks = computed(() => {
-  const vs = props.series.flatMap((s) => s.values).filter(Number.isFinite);
-  return vs.length ? niceTicks(Math.min(0, ...vs), Math.max(...vs), 2) : [0, 1];
-});
-const lo = computed(() => ticks.value[0]!);
-const hi = computed(() => ticks.value.at(-1)!);
-const cols = computed(() => Math.max(0, ...props.series.map((s) => s.values.length)));
-</script>
-
 <template>
   <figure class="bless-multiples">
     <p class="bless-multiples__scale">{{ text.scale(fmt(lo), fmt(hi)) }}</p>
@@ -93,6 +45,54 @@ const cols = computed(() => Math.max(0, ...props.series.map((s) => s.values.leng
     </div>
   </figure>
 </template>
+
+<script setup lang="ts">
+import { computed } from "vue";
+import { useLabelPack } from "../composables/useLabels";
+import { niceTicks, numberText } from "./chart";
+import BlessSparkline from "./BlessSparkline.vue";
+import "./sr.css";
+
+defineOptions({ name: "BlessSmallMultiples" });
+const pack = useLabelPack("BlessSmallMultiples");
+
+export interface BlessMultiple {
+  label: string;
+  values: number[];
+  color?: string;
+}
+
+const props = withDefaults(
+  defineProps<{
+    series: BlessMultiple[];
+    /** the names of the steps, for the table; default: 1, 2, 3 … */
+    steps?: string[];
+    /** the height of each small chart in pixels */
+    height?: number;
+    format?: (v: number) => string;
+    /** names the chart and its table for screen readers */
+    label?: string;
+    labels?: Partial<{ item: string; scale: (lo: string, hi: string) => string }>;
+  }>(),
+  { height: 56, label: "Chart" },
+);
+
+const text = computed(() => ({
+  item: "Item",
+  scale: (lo: string, hi: string) => `All charts share one scale: ${lo} to ${hi}`,
+  ...pack(),
+  ...props.labels,
+}));
+const fmt = computed(() => props.format ?? numberText);
+// one scale for all, so the heights compare across the grid
+const ticks = computed(() => {
+  const vs = props.series.flatMap((s) => s.values).filter(Number.isFinite);
+  return vs.length ? niceTicks(Math.min(0, ...vs), Math.max(...vs), 2) : [0, 1];
+});
+const lo = computed(() => ticks.value[0]!);
+const hi = computed(() => ticks.value.at(-1)!);
+const cols = computed(() => Math.max(0, ...props.series.map((s) => s.values.length)));
+</script>
 
 <style>
 .bless-multiples {

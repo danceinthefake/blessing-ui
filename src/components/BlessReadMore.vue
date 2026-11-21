@@ -1,3 +1,27 @@
+<template>
+  <div class="bless-readmore">
+    <div
+      :id="`${uid}-text`"
+      ref="content"
+      class="bless-readmore__text"
+      :class="{ 'bless-readmore__text--cut': !open }"
+      :style="{ '--_lines': lines }"
+    >
+      <slot />
+    </div>
+    <button
+      v-if="cut || open"
+      type="button"
+      class="bless-readmore__toggle"
+      :aria-expanded="open"
+      :aria-controls="`${uid}-text`"
+      @click="open = !open"
+    >
+      {{ open ? text.less : text.more }}
+    </button>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, ref, useId, watch } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -35,30 +59,6 @@ onMounted(() => {
 onBeforeUnmount(() => ro?.disconnect());
 watch(() => props.lines, measure, { flush: "post" });
 </script>
-
-<template>
-  <div class="bless-readmore">
-    <div
-      :id="`${uid}-text`"
-      ref="content"
-      class="bless-readmore__text"
-      :class="{ 'bless-readmore__text--cut': !open }"
-      :style="{ '--_lines': lines }"
-    >
-      <slot />
-    </div>
-    <button
-      v-if="cut || open"
-      type="button"
-      class="bless-readmore__toggle"
-      :aria-expanded="open"
-      :aria-controls="`${uid}-text`"
-      @click="open = !open"
-    >
-      {{ open ? text.less : text.more }}
-    </button>
-  </div>
-</template>
 
 <style>
 .bless-readmore {

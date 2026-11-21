@@ -1,3 +1,33 @@
+<template>
+  <div class="bless-results" :class="{ 'has-facets': facets.length }">
+    <BlessFacetFilter v-if="facets.length" v-model="selected" :facets :locale />
+    <section class="bless-results__main" :aria-label="query">
+      <div class="bless-results__bar">
+        <p class="bless-results__count" role="status">
+          {{ total ? text.count(shown, num.format(total), query) : text.none(query) }}
+        </p>
+        <label v-if="sorts.length" class="bless-results__sort">
+          {{ text.sort }}
+          <select v-model="sort">
+            <option v-for="s in sorts" :key="s.value" :value="s.value">{{ s.label }}</option>
+          </select>
+        </label>
+      </div>
+      <p v-if="suggestion" class="bless-results__suggest">
+        {{ text.didYouMean }}
+        <button type="button" @click="emit('suggest', suggestion)">{{ suggestion }}</button>?
+      </p>
+      <p v-if="!total" class="bless-results__tips">{{ text.tips }}</p>
+      <ol v-else class="bless-stagger bless-results__list" role="list">
+        <li v-for="r in results" :key="r.id">
+          <BlessSearchResult v-bind="r" :query />
+        </li>
+      </ol>
+      <BlessPagination v-if="pages > 1" v-model="page" :total="pages" />
+    </section>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -61,36 +91,6 @@ const shown = computed(() => {
   return `${num.value.format(a)}–${num.value.format(a + props.results.length - 1)}`;
 });
 </script>
-
-<template>
-  <div class="bless-results" :class="{ 'has-facets': facets.length }">
-    <BlessFacetFilter v-if="facets.length" v-model="selected" :facets :locale />
-    <section class="bless-results__main" :aria-label="query">
-      <div class="bless-results__bar">
-        <p class="bless-results__count" role="status">
-          {{ total ? text.count(shown, num.format(total), query) : text.none(query) }}
-        </p>
-        <label v-if="sorts.length" class="bless-results__sort">
-          {{ text.sort }}
-          <select v-model="sort">
-            <option v-for="s in sorts" :key="s.value" :value="s.value">{{ s.label }}</option>
-          </select>
-        </label>
-      </div>
-      <p v-if="suggestion" class="bless-results__suggest">
-        {{ text.didYouMean }}
-        <button type="button" @click="emit('suggest', suggestion)">{{ suggestion }}</button>?
-      </p>
-      <p v-if="!total" class="bless-results__tips">{{ text.tips }}</p>
-      <ol v-else class="bless-stagger bless-results__list" role="list">
-        <li v-for="r in results" :key="r.id">
-          <BlessSearchResult v-bind="r" :query />
-        </li>
-      </ol>
-      <BlessPagination v-if="pages > 1" v-model="page" :total="pages" />
-    </section>
-  </div>
-</template>
 
 <style>
 .bless-results {

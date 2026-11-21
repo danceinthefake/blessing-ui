@@ -1,11 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { BlessButton, BlessCountUp } from "blessing-ui";
-
-const n = ref(12840);
-const bump = () => (n.value += Math.round(Math.random() * 5000));
-</script>
-
 <template>
   <div class="col">
     <p style="font-size: 2rem; margin: 0">
@@ -22,3 +14,11 @@ const bump = () => (n.value += Math.round(Math.random() * 5000));
     <BlessButton @click="bump">Add sales</BlessButton>
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { BlessButton, BlessCountUp } from "blessing-ui";
+
+const n = ref(12840);
+const bump = () => (n.value += Math.round(Math.random() * 5000));
+</script>

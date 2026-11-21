@@ -1,3 +1,26 @@
+<template>
+  <div
+    ref="root"
+    class="bless-ptr"
+    :class="{ 'bless-ptr--busy': busy }"
+    :style="{ '--_p': `${pull}px` }"
+  >
+    <div
+      class="bless-ptr__indicator"
+      :class="{ 'bless-ptr__indicator--ready': ready }"
+      role="status"
+    >
+      <!-- live regions read their text, not aria-label: say it as content -->
+      <span class="bless-ptr__sr bless-sr">{{ busy ? text.refreshing : "" }}</span>
+      <slot name="indicator" :ready :busy :pull>
+        <BlessSpinner v-if="busy" size="sm" label="" />
+        <span v-else class="bless-ptr__arrow" aria-hidden="true">↓</span>
+      </slot>
+    </div>
+    <div class="bless-ptr__content"><slot /></div>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { useLabelPack } from "../composables/useLabels";
 import "./sr.css";
@@ -55,29 +78,6 @@ usePan(root, (e) => {
 });
 const ready = computed(() => pull.value >= props.threshold);
 </script>
-
-<template>
-  <div
-    ref="root"
-    class="bless-ptr"
-    :class="{ 'bless-ptr--busy': busy }"
-    :style="{ '--_p': `${pull}px` }"
-  >
-    <div
-      class="bless-ptr__indicator"
-      :class="{ 'bless-ptr__indicator--ready': ready }"
-      role="status"
-    >
-      <!-- live regions read their text, not aria-label: say it as content -->
-      <span class="bless-ptr__sr bless-sr">{{ busy ? text.refreshing : "" }}</span>
-      <slot name="indicator" :ready :busy :pull>
-        <BlessSpinner v-if="busy" size="sm" label="" />
-        <span v-else class="bless-ptr__arrow" aria-hidden="true">↓</span>
-      </slot>
-    </div>
-    <div class="bless-ptr__content"><slot /></div>
-  </div>
-</template>
 
 <style>
 .bless-ptr {

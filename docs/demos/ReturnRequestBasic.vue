@@ -1,3 +1,8 @@
+<template>
+  <BlessReturnRequest :items currency="IDR" locale="id-ID" @submit="(p) => (sent = p)" />
+  <pre v-if="sent" style="margin-top: 12px">{{ sent }}</pre>
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessReturnRequest, type BlessReturnPayload } from "blessing-ui";
@@ -17,8 +22,3 @@ const items = [
 ];
 const sent = ref<BlessReturnPayload>();
 </script>
-
-<template>
-  <BlessReturnRequest :items currency="IDR" locale="id-ID" @submit="(p) => (sent = p)" />
-  <pre v-if="sent" style="margin-top: 12px">{{ sent }}</pre>
-</template>

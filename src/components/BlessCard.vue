@@ -1,3 +1,22 @@
+<template>
+  <component
+    :is="link(href, undefined, as).is"
+    v-bind="link(href, undefined, as).attrs"
+    class="bless-card"
+    :class="[
+      `bless-card--${surface}`,
+      { 'bless-card--bordered': bordered, 'bless-card--link': href },
+    ]"
+  >
+    <BlessSkew v-if="label || $slots.label" :color="labelColor" class="bless-card__label">
+      <slot name="label">{{ label }}</slot>
+    </BlessSkew>
+    <div v-if="$slots.media" class="bless-card__media"><slot name="media" /></div>
+    <div class="bless-card__body"><slot /></div>
+    <div v-if="$slots.footer" class="bless-card__footer"><slot name="footer" /></div>
+  </component>
+</template>
+
 <script setup lang="ts">
 import { useLink } from "../composables/useLink";
 import BlessSkew from "./BlessSkew.vue";
@@ -19,25 +38,6 @@ withDefaults(
   { as: "div", labelColor: "text", surface: "bg", bordered: true },
 );
 </script>
-
-<template>
-  <component
-    :is="link(href, undefined, as).is"
-    v-bind="link(href, undefined, as).attrs"
-    class="bless-card"
-    :class="[
-      `bless-card--${surface}`,
-      { 'bless-card--bordered': bordered, 'bless-card--link': href },
-    ]"
-  >
-    <BlessSkew v-if="label || $slots.label" :color="labelColor" class="bless-card__label">
-      <slot name="label">{{ label }}</slot>
-    </BlessSkew>
-    <div v-if="$slots.media" class="bless-card__media"><slot name="media" /></div>
-    <div class="bless-card__body"><slot /></div>
-    <div v-if="$slots.footer" class="bless-card__footer"><slot name="footer" /></div>
-  </component>
-</template>
 
 <style>
 .bless-card {

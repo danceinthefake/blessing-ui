@@ -1,3 +1,50 @@
+<template>
+  <div class="bless-elig">
+    <form v-if="question" class="bless-elig__form" novalidate @submit.prevent="next">
+      <fieldset
+        class="bless-elig__set"
+        :aria-describedby="error ? `${id}-err` : question.hint ? `${id}-hint` : undefined"
+      >
+        <legend class="bless-elig__legend">
+          <span class="bless-elig__count">{{ text.question(path.length + 1) }}</span>
+          <span ref="head" tabindex="-1" class="bless-elig__q">{{ question.text }}</span>
+        </legend>
+        <div v-if="question.hint" :id="`${id}-hint`" class="bless-elig__hint">
+          {{ question.hint }}
+        </div>
+        <div v-if="error" :id="`${id}-err`" class="bless-elig__error">{{ text.pick }}</div>
+        <label v-for="(o, i) in question.options" :key="i" class="bless-elig__option">
+          <input v-model="choice" type="radio" :name="`${id}-${question.id}`" :value="i" />
+          {{ o.label }}
+        </label>
+      </fieldset>
+      <div class="bless-elig__actions">
+        <button type="submit" class="is-main">{{ text.next }}</button>
+        <button v-if="path.length" type="button" @click="back">{{ text.back }}</button>
+      </div>
+    </form>
+    <section
+      v-else-if="outcome"
+      class="bless-elig__result"
+      :class="outcome.eligible ? 'is-yes' : 'is-no'"
+    >
+      <div class="bless-elig__verdict">
+        <span aria-hidden="true">{{ outcome.eligible ? "✓" : "✕" }}</span>
+        {{ outcome.eligible ? text.yes : text.no }}
+      </div>
+      <h3 ref="head" tabindex="-1" class="bless-elig__title">{{ outcome.title }}</h3>
+      <div v-if="outcome.body" class="bless-elig__body">{{ outcome.body }}</div>
+      <div class="bless-elig__actions">
+        <a v-if="outcome.href" :href="outcome.href" class="is-main">{{
+          outcome.cta ?? outcome.title
+        }}</a>
+        <button type="button" @click="back">{{ text.back }}</button>
+        <button type="button" @click="restart">{{ text.restart }}</button>
+      </div>
+    </section>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed, nextTick, ref, useId } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -93,53 +140,6 @@ function restart() {
   go(props.questions[0]?.id ?? "");
 }
 </script>
-
-<template>
-  <div class="bless-elig">
-    <form v-if="question" class="bless-elig__form" novalidate @submit.prevent="next">
-      <fieldset
-        class="bless-elig__set"
-        :aria-describedby="error ? `${id}-err` : question.hint ? `${id}-hint` : undefined"
-      >
-        <legend class="bless-elig__legend">
-          <span class="bless-elig__count">{{ text.question(path.length + 1) }}</span>
-          <span ref="head" tabindex="-1" class="bless-elig__q">{{ question.text }}</span>
-        </legend>
-        <div v-if="question.hint" :id="`${id}-hint`" class="bless-elig__hint">
-          {{ question.hint }}
-        </div>
-        <div v-if="error" :id="`${id}-err`" class="bless-elig__error">{{ text.pick }}</div>
-        <label v-for="(o, i) in question.options" :key="i" class="bless-elig__option">
-          <input v-model="choice" type="radio" :name="`${id}-${question.id}`" :value="i" />
-          {{ o.label }}
-        </label>
-      </fieldset>
-      <div class="bless-elig__actions">
-        <button type="submit" class="is-main">{{ text.next }}</button>
-        <button v-if="path.length" type="button" @click="back">{{ text.back }}</button>
-      </div>
-    </form>
-    <section
-      v-else-if="outcome"
-      class="bless-elig__result"
-      :class="outcome.eligible ? 'is-yes' : 'is-no'"
-    >
-      <div class="bless-elig__verdict">
-        <span aria-hidden="true">{{ outcome.eligible ? "✓" : "✕" }}</span>
-        {{ outcome.eligible ? text.yes : text.no }}
-      </div>
-      <h3 ref="head" tabindex="-1" class="bless-elig__title">{{ outcome.title }}</h3>
-      <div v-if="outcome.body" class="bless-elig__body">{{ outcome.body }}</div>
-      <div class="bless-elig__actions">
-        <a v-if="outcome.href" :href="outcome.href" class="is-main">{{
-          outcome.cta ?? outcome.title
-        }}</a>
-        <button type="button" @click="back">{{ text.back }}</button>
-        <button type="button" @click="restart">{{ text.restart }}</button>
-      </div>
-    </section>
-  </div>
-</template>
 
 <style>
 .bless-elig {

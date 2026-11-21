@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import { BlessButton, BlessRecordHeader } from "blessing-ui";
-</script>
-
 <template>
   <BlessRecordHeader
     title="Studio gear order"
@@ -21,3 +17,7 @@ import { BlessButton, BlessRecordHeader } from "blessing-ui";
     <BlessButton size="sm" variant="outline">Edit</BlessButton>
   </BlessRecordHeader>
 </template>
+
+<script setup lang="ts">
+import { BlessButton, BlessRecordHeader } from "blessing-ui";
+</script>

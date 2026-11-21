@@ -1,3 +1,10 @@
+<template>
+  <div style="max-width: 420px">
+    <BlessLyrics :lines :position @seek="(t) => (position = t)" />
+    <p style="margin-top: 12px">Position: {{ position }} s. Click a line to jump to it.</p>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessLyrics } from "blessing-ui";
@@ -15,10 +22,3 @@ const lines = [
 ];
 const position = ref(14);
 </script>
-
-<template>
-  <div style="max-width: 420px">
-    <BlessLyrics :lines :position @seek="(t) => (position = t)" />
-    <p style="margin-top: 12px">Position: {{ position }} s. Click a line to jump to it.</p>
-  </div>
-</template>

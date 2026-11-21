@@ -1,10 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { BlessCard, BlessText, useAnimateOnScroll } from "blessing-ui";
-const el = ref<HTMLElement>();
-const { visible } = useAnimateOnScroll(el, { threshold: 0.4 });
-</script>
-
 <template>
   <div ref="el" class="aos" :data-visible="visible">
     <BlessCard label="Reveal"
@@ -12,6 +5,13 @@ const { visible } = useAnimateOnScroll(el, { threshold: 0.4 });
     >
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { BlessCard, BlessText, useAnimateOnScroll } from "blessing-ui";
+const el = ref<HTMLElement>();
+const { visible } = useAnimateOnScroll(el, { threshold: 0.4 });
+</script>
 
 <style scoped>
 /* an appearance fades; a 4px rise only says which way it came from.

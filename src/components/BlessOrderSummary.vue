@@ -1,3 +1,50 @@
+<template>
+  <section class="bless-ordersum" :aria-label="text.title">
+    <p class="bless-ordersum__title">{{ text.title }}</p>
+    <ul class="bless-ordersum__lines">
+      <li v-for="l in lines" :key="l.id" class="bless-ordersum__line">
+        <img
+          v-if="l.image"
+          class="bless-ordersum__img"
+          :src="l.image"
+          alt=""
+          width="48"
+          height="48"
+        />
+        <div class="bless-ordersum__what">
+          <span class="bless-ordersum__name">{{ l.name }}</span>
+          <span v-if="l.note" class="bless-ordersum__note">{{ l.note }}</span>
+          <span class="bless-ordersum__qty">{{ text.quantity(l.quantity) }}</span>
+        </div>
+        <span class="bless-ordersum__price">{{ money.format(l.price * l.quantity) }}</span>
+      </li>
+    </ul>
+    <dl class="bless-ordersum__sums">
+      <div>
+        <dt>{{ text.subtotal }}</dt>
+        <dd>{{ money.format(subtotal) }}</dd>
+      </div>
+      <div v-if="discount" class="is-discount">
+        <dt>{{ text.discount }}<template v-if="discountLabel"> ({{ discountLabel }})</template></dt>
+        <dd>−{{ money.format(discount) }}</dd>
+      </div>
+      <div v-if="shipping !== undefined">
+        <dt>{{ text.shipping }}</dt>
+        <dd>{{ shipping === 0 ? text.free : money.format(shipping) }}</dd>
+      </div>
+      <div v-if="tax">
+        <dt>{{ text.tax }}</dt>
+        <dd>{{ money.format(tax) }}</dd>
+      </div>
+      <div class="bless-ordersum__total">
+        <dt>{{ text.total }}</dt>
+        <dd>{{ money.format(total) }}</dd>
+      </div>
+    </dl>
+    <div v-if="$slots.footer" class="bless-ordersum__footer"><slot name="footer" :total /></div>
+  </section>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -64,53 +111,6 @@ const total = computed(
     Math.max(0, subtotal.value - (props.discount ?? 0)) + (props.shipping ?? 0) + (props.tax ?? 0),
 );
 </script>
-
-<template>
-  <section class="bless-ordersum" :aria-label="text.title">
-    <p class="bless-ordersum__title">{{ text.title }}</p>
-    <ul class="bless-ordersum__lines">
-      <li v-for="l in lines" :key="l.id" class="bless-ordersum__line">
-        <img
-          v-if="l.image"
-          class="bless-ordersum__img"
-          :src="l.image"
-          alt=""
-          width="48"
-          height="48"
-        />
-        <div class="bless-ordersum__what">
-          <span class="bless-ordersum__name">{{ l.name }}</span>
-          <span v-if="l.note" class="bless-ordersum__note">{{ l.note }}</span>
-          <span class="bless-ordersum__qty">{{ text.quantity(l.quantity) }}</span>
-        </div>
-        <span class="bless-ordersum__price">{{ money.format(l.price * l.quantity) }}</span>
-      </li>
-    </ul>
-    <dl class="bless-ordersum__sums">
-      <div>
-        <dt>{{ text.subtotal }}</dt>
-        <dd>{{ money.format(subtotal) }}</dd>
-      </div>
-      <div v-if="discount" class="is-discount">
-        <dt>{{ text.discount }}<template v-if="discountLabel"> ({{ discountLabel }})</template></dt>
-        <dd>−{{ money.format(discount) }}</dd>
-      </div>
-      <div v-if="shipping !== undefined">
-        <dt>{{ text.shipping }}</dt>
-        <dd>{{ shipping === 0 ? text.free : money.format(shipping) }}</dd>
-      </div>
-      <div v-if="tax">
-        <dt>{{ text.tax }}</dt>
-        <dd>{{ money.format(tax) }}</dd>
-      </div>
-      <div class="bless-ordersum__total">
-        <dt>{{ text.total }}</dt>
-        <dd>{{ money.format(total) }}</dd>
-      </div>
-    </dl>
-    <div v-if="$slots.footer" class="bless-ordersum__footer"><slot name="footer" :total /></div>
-  </section>
-</template>
 
 <style>
 .bless-ordersum {

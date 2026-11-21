@@ -1,3 +1,19 @@
+<template>
+  <BlessShiftHandover
+    v-model:issues="issues"
+    title="Night shift → Morning shift"
+    by="Ana Putri, line lead · 16 Nov, 05:55"
+    notes="A quiet night apart from Press 2. WO-0091 is ahead, WO-0088 waits for cables."
+    :facts="[
+      { label: 'Output', value: '1 840 / 2 000' },
+      { label: 'Scrap', value: '23' },
+      { label: 'Downtime', value: '42 min' },
+    ]"
+    :read-by
+    @acknowledge="readBy = 'Budi Santoso, 06:02'"
+  />
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessShiftHandover, type BlessHandoverIssue } from "blessing-ui";
@@ -20,19 +36,3 @@ const issues = ref<BlessHandoverIssue[]>([
 ]);
 const readBy = ref<string>();
 </script>
-
-<template>
-  <BlessShiftHandover
-    v-model:issues="issues"
-    title="Night shift → Morning shift"
-    by="Ana Putri, line lead · 16 Nov, 05:55"
-    notes="A quiet night apart from Press 2. WO-0091 is ahead, WO-0088 waits for cables."
-    :facts="[
-      { label: 'Output', value: '1 840 / 2 000' },
-      { label: 'Scrap', value: '23' },
-      { label: 'Downtime', value: '42 min' },
-    ]"
-    :read-by
-    @acknowledge="readBy = 'Budi Santoso, 06:02'"
-  />
-</template>

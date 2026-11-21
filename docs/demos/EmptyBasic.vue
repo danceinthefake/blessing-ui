@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import { BlessButton, BlessEmpty } from "blessing-ui";
-</script>
-
 <template>
   <div class="col" style="max-width: 480px">
     <BlessEmpty title="No episodes yet" description="New episodes appear here after broadcast.">
@@ -14,3 +10,7 @@ import { BlessButton, BlessEmpty } from "blessing-ui";
     </BlessEmpty>
   </div>
 </template>
+
+<script setup lang="ts">
+import { BlessButton, BlessEmpty } from "blessing-ui";
+</script>

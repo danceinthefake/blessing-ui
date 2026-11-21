@@ -1,58 +1,3 @@
-<script setup lang="ts">
-import { computed, onBeforeUnmount, onMounted, ref, watch } from "vue";
-import { useData } from "vitepress";
-import { useTheme } from "blessing-ui";
-
-const props = defineProps<{
-  /** { "index.vue": "<source>", ... } — from import.meta.glob(..., { as: "raw" }) */
-  files: Record<string, string>;
-  components?: string[];
-  /** min preview height */
-  height?: string;
-  /** URL of the <slug>-frame page rendered in the preview iframe */
-  frame?: string;
-  /** block owns the viewport (BlessStage/BlessLayout): no inline preview, link out instead */
-  fullPage?: string;
-}>();
-// preview runs in an iframe so lib styles and the block's media queries are free of docs CSS
-const iframe = ref<HTMLIFrameElement>();
-const frameH = ref(0);
-const { isDark } = useData();
-const { palette } = useTheme();
-function sync() {
-  iframe.value?.contentWindow?.postMessage(
-    { type: "bless-theme", dark: isDark.value, palette: palette.value },
-    "*",
-  );
-}
-function onMsg(e: MessageEvent) {
-  if (e.source !== iframe.value?.contentWindow || !e.data) return;
-  if (e.data.type === "bless-ready") sync();
-  if (e.data.type === "bless-height") frameH.value = e.data.h;
-}
-watch([isDark, palette], sync);
-onMounted(() => addEventListener("message", onMsg));
-onBeforeUnmount(() => removeEventListener("message", onMsg));
-const names = computed(() =>
-  Object.keys(props.files).sort((a, b) =>
-    a === "index.vue" ? -1 : b === "index.vue" ? 1 : a.localeCompare(b),
-  ),
-);
-const active = ref("index.vue");
-const view = ref<"desktop" | "phone">("desktop");
-const showCode = ref(!!props.fullPage);
-const copied = ref("");
-async function copy(what: "file" | "all") {
-  const text =
-    what === "file"
-      ? props.files[active.value]
-      : names.value.map((n) => `/* ---- ${n} ---- */\n${props.files[n]}`).join("\n\n");
-  await navigator.clipboard.writeText(text);
-  copied.value = what;
-  setTimeout(() => (copied.value = ""), 1200);
-}
-</script>
-
 <template>
   <div class="block">
     <div class="block__bar">
@@ -117,6 +62,61 @@ async function copy(what: "file" | "all") {
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+import { computed, onBeforeUnmount, onMounted, ref, watch } from "vue";
+import { useData } from "vitepress";
+import { useTheme } from "blessing-ui";
+
+const props = defineProps<{
+  /** { "index.vue": "<source>", ... } — from import.meta.glob(..., { as: "raw" }) */
+  files: Record<string, string>;
+  components?: string[];
+  /** min preview height */
+  height?: string;
+  /** URL of the <slug>-frame page rendered in the preview iframe */
+  frame?: string;
+  /** block owns the viewport (BlessStage/BlessLayout): no inline preview, link out instead */
+  fullPage?: string;
+}>();
+// preview runs in an iframe so lib styles and the block's media queries are free of docs CSS
+const iframe = ref<HTMLIFrameElement>();
+const frameH = ref(0);
+const { isDark } = useData();
+const { palette } = useTheme();
+function sync() {
+  iframe.value?.contentWindow?.postMessage(
+    { type: "bless-theme", dark: isDark.value, palette: palette.value },
+    "*",
+  );
+}
+function onMsg(e: MessageEvent) {
+  if (e.source !== iframe.value?.contentWindow || !e.data) return;
+  if (e.data.type === "bless-ready") sync();
+  if (e.data.type === "bless-height") frameH.value = e.data.h;
+}
+watch([isDark, palette], sync);
+onMounted(() => addEventListener("message", onMsg));
+onBeforeUnmount(() => removeEventListener("message", onMsg));
+const names = computed(() =>
+  Object.keys(props.files).sort((a, b) =>
+    a === "index.vue" ? -1 : b === "index.vue" ? 1 : a.localeCompare(b),
+  ),
+);
+const active = ref("index.vue");
+const view = ref<"desktop" | "phone">("desktop");
+const showCode = ref(!!props.fullPage);
+const copied = ref("");
+async function copy(what: "file" | "all") {
+  const text =
+    what === "file"
+      ? props.files[active.value]
+      : names.value.map((n) => `/* ---- ${n} ---- */\n${props.files[n]}`).join("\n\n");
+  await navigator.clipboard.writeText(text);
+  copied.value = what;
+  setTimeout(() => (copied.value = ""), 1200);
+}
+</script>
 
 <style>
 .block {

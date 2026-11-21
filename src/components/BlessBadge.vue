@@ -1,3 +1,12 @@
+<template>
+  <span
+    class="bless-badge"
+    :class="[`bless-badge--${color}`, `bless-badge--${variant}`, { 'bless-badge--scaled': scaled }]"
+  >
+    <span class="bless-badge__inner"><slot>NEW!</slot></span>
+  </span>
+</template>
+
 <script setup lang="ts">
 defineOptions({ name: "BlessBadge" });
 
@@ -12,15 +21,6 @@ withDefaults(
   { color: "text", scaled: false, variant: "solid" },
 );
 </script>
-
-<template>
-  <span
-    class="bless-badge"
-    :class="[`bless-badge--${color}`, `bless-badge--${variant}`, { 'bless-badge--scaled': scaled }]"
-  >
-    <span class="bless-badge__inner"><slot>NEW!</slot></span>
-  </span>
-</template>
 
 <style>
 /* an upright plate: a badge is never attended to, so it never leans; ink by default — colour means chosen */

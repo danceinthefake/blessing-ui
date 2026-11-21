@@ -1,3 +1,24 @@
+<template>
+  <div class="bless-gallery">
+    <ul role="list" class="bless-stagger bless-gallery__grid" :style="{ '--_col': columns }">
+      <li v-for="(item, i) in items" :key="item.src" class="bless-gallery__cell">
+        <button
+          type="button"
+          class="bless-gallery__thumb"
+          :aria-label="nameOf(item, i)"
+          @click="index = i"
+        >
+          <slot name="thumb" :item :index="i">
+            <img :src="item.thumb ?? item.src" :alt="item.alt ?? ''" loading="lazy" />
+          </slot>
+        </button>
+      </li>
+    </ul>
+
+    <BlessLightbox v-model="index" :items :loop :labels />
+  </div>
+</template>
+
 <script setup lang="ts">
 import { useLabelPack } from "../composables/useLabels";
 import { computed } from "vue";
@@ -33,27 +54,6 @@ const labels = computed(() => ({ prev: text.value.prev, next: text.value.next })
 const nameOf = (item: BlessGalleryItem, i: number) =>
   item.alt || item.caption || `Image ${i + 1} of ${props.items.length}`;
 </script>
-
-<template>
-  <div class="bless-gallery">
-    <ul role="list" class="bless-stagger bless-gallery__grid" :style="{ '--_col': columns }">
-      <li v-for="(item, i) in items" :key="item.src" class="bless-gallery__cell">
-        <button
-          type="button"
-          class="bless-gallery__thumb"
-          :aria-label="nameOf(item, i)"
-          @click="index = i"
-        >
-          <slot name="thumb" :item :index="i">
-            <img :src="item.thumb ?? item.src" :alt="item.alt ?? ''" loading="lazy" />
-          </slot>
-        </button>
-      </li>
-    </ul>
-
-    <BlessLightbox v-model="index" :items :loop :labels />
-  </div>
-</template>
 
 <style>
 .bless-gallery__grid {

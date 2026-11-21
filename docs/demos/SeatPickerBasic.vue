@@ -1,3 +1,7 @@
+<template>
+  <BlessSeatPicker v-model="chosen" :rows :zones :max="6" />
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessSeatPicker, type BlessSeat, type BlessSeatRow } from "blessing-ui";
@@ -20,7 +24,3 @@ const rows: BlessSeatRow[] = "ABCDEF".split("").map((label, r) => {
 });
 const chosen = ref<string[]>(["C5", "C6"]);
 </script>
-
-<template>
-  <BlessSeatPicker v-model="chosen" :rows :zones :max="6" />
-</template>

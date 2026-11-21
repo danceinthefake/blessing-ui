@@ -1,12 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { BlessButton, BlessConnectionStatus } from "blessing-ui";
-
-// in an app this follows the socket, for example Phoenix's onOpen, onError, and onClose
-const state = ref<"online" | "connecting" | "offline">("online");
-const states = ["online", "connecting", "offline"] as const;
-</script>
-
 <template>
   <div class="col">
     <div class="row">
@@ -25,3 +16,12 @@ const states = ["online", "connecting", "offline"] as const;
     <BlessConnectionStatus :state always />
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { BlessButton, BlessConnectionStatus } from "blessing-ui";
+
+// in an app this follows the socket, for example Phoenix's onOpen, onError, and onClose
+const state = ref<"online" | "connecting" | "offline">("online");
+const states = ["online", "connecting", "offline"] as const;
+</script>

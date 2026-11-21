@@ -1,3 +1,18 @@
+<template>
+  <div style="max-width: 480px">
+    <BlessButton
+      size="sm"
+      variant="outline"
+      :disabled="busy"
+      style="margin-bottom: 16px"
+      @click="run"
+    >
+      Run the plan
+    </BlessButton>
+    <BlessAgentPlan :steps title="Publish episode 41" />
+  </div>
+</template>
+
 <script setup lang="ts">
 import { onBeforeUnmount, ref } from "vue";
 import { BlessAgentPlan, BlessButton, type BlessPlanStep } from "blessing-ui";
@@ -36,18 +51,3 @@ function run() {
 }
 onBeforeUnmount(() => clearInterval(timer));
 </script>
-
-<template>
-  <div style="max-width: 480px">
-    <BlessButton
-      size="sm"
-      variant="outline"
-      :disabled="busy"
-      style="margin-bottom: 16px"
-      @click="run"
-    >
-      Run the plan
-    </BlessButton>
-    <BlessAgentPlan :steps title="Publish episode 41" />
-  </div>
-</template>

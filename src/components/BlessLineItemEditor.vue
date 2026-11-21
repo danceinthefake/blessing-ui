@@ -1,102 +1,3 @@
-<script lang="ts">
-export interface BlessLineItem {
-  id: string;
-  product: string;
-  quantity: number;
-  /** for example "pcs" or "hour" */
-  unit?: string;
-  /** the price of one, before discount and tax */
-  price: number;
-  /** the discount in percent */
-  discount?: number;
-  /** the tax in percent */
-  tax?: number;
-}
-/** The net amount of one line: quantity × price, less the discount. */
-export const lineNet = (l: BlessLineItem) => l.quantity * l.price * (1 - (l.discount ?? 0) / 100);
-/** Totals of the lines: gross, discount, net, tax, and total. */
-export function lineTotals(lines: BlessLineItem[]) {
-  const gross = lines.reduce((n, l) => n + l.quantity * l.price, 0);
-  const net = lines.reduce((n, l) => n + lineNet(l), 0);
-  const tax = lines.reduce((n, l) => n + (lineNet(l) * (l.tax ?? 0)) / 100, 0);
-  return { gross, discount: gross - net, net, tax, total: net + tax };
-}
-</script>
-
-<script setup lang="ts">
-import { computed, nextTick, ref } from "vue";
-import { moneyFormat } from "../composables/money";
-import { useLabelPack } from "../composables/useLabels";
-
-defineOptions({ name: "BlessLineItemEditor" });
-const pack = useLabelPack("BlessLineItemEditor");
-
-const props = withDefaults(
-  defineProps<{
-    currency?: string;
-    locale?: string;
-    /** units to pick from */
-    units?: string[];
-    labels?: Partial<{
-      title: string;
-      product: string;
-      quantity: string;
-      unit: string;
-      price: string;
-      discount: string;
-      tax: string;
-      amount: string;
-      add: string;
-      remove: (row: number) => string;
-      field: (what: string, row: number) => string;
-      subtotal: string;
-      discounts: string;
-      taxes: string;
-      total: string;
-    }>;
-  }>(),
-  { currency: "USD", locale: "en", units: () => ["pcs", "hour", "box", "kg"] },
-);
-const lines = defineModel<BlessLineItem[]>({ default: () => [] });
-
-const text = computed(() => ({
-  title: "Lines",
-  product: "Product",
-  quantity: "Qty",
-  unit: "Unit",
-  price: "Price",
-  discount: "Disc. %",
-  tax: "Tax %",
-  amount: "Amount",
-  add: "Add a line",
-  remove: (r: number) => `Remove line ${r}`,
-  field: (w: string, r: number) => `${w}, line ${r}`,
-  subtotal: "Subtotal",
-  discounts: "Discounts",
-  taxes: "Tax",
-  total: "Total",
-  ...pack(),
-  ...props.labels,
-}));
-const money = computed(() => moneyFormat(props.locale, props.currency));
-const totals = computed(() => lineTotals(lines.value));
-const patch = (id: string, p: Partial<BlessLineItem>) =>
-  (lines.value = lines.value.map((l) => (l.id === id ? { ...l, ...p } : l)));
-const num = (e: Event) => Math.max(0, (e.target as HTMLInputElement).valueAsNumber || 0);
-const box = ref<HTMLElement>();
-let seq = 0;
-function add() {
-  const id = `l${Date.now().toString(36)}${seq++}`;
-  const last = lines.value.at(-1);
-  lines.value = [
-    ...lines.value,
-    { id, product: "", quantity: 1, unit: last?.unit ?? props.units[0], price: 0, tax: last?.tax },
-  ];
-  nextTick(() => box.value?.querySelector<HTMLInputElement>(`[data-line="${id}"] input`)?.focus());
-}
-const remove = (id: string) => (lines.value = lines.value.filter((l) => l.id !== id));
-</script>
-
 <template>
   <div ref="box" class="bless-lines">
     <div class="bless-lines__scroll" role="region" :aria-label="text.title" tabindex="0">
@@ -211,6 +112,105 @@ const remove = (id: string) => (lines.value = lines.value.filter((l) => l.id !==
     </dl>
   </div>
 </template>
+
+<script lang="ts">
+export interface BlessLineItem {
+  id: string;
+  product: string;
+  quantity: number;
+  /** for example "pcs" or "hour" */
+  unit?: string;
+  /** the price of one, before discount and tax */
+  price: number;
+  /** the discount in percent */
+  discount?: number;
+  /** the tax in percent */
+  tax?: number;
+}
+/** The net amount of one line: quantity × price, less the discount. */
+export const lineNet = (l: BlessLineItem) => l.quantity * l.price * (1 - (l.discount ?? 0) / 100);
+/** Totals of the lines: gross, discount, net, tax, and total. */
+export function lineTotals(lines: BlessLineItem[]) {
+  const gross = lines.reduce((n, l) => n + l.quantity * l.price, 0);
+  const net = lines.reduce((n, l) => n + lineNet(l), 0);
+  const tax = lines.reduce((n, l) => n + (lineNet(l) * (l.tax ?? 0)) / 100, 0);
+  return { gross, discount: gross - net, net, tax, total: net + tax };
+}
+</script>
+
+<script setup lang="ts">
+import { computed, nextTick, ref } from "vue";
+import { moneyFormat } from "../composables/money";
+import { useLabelPack } from "../composables/useLabels";
+
+defineOptions({ name: "BlessLineItemEditor" });
+const pack = useLabelPack("BlessLineItemEditor");
+
+const props = withDefaults(
+  defineProps<{
+    currency?: string;
+    locale?: string;
+    /** units to pick from */
+    units?: string[];
+    labels?: Partial<{
+      title: string;
+      product: string;
+      quantity: string;
+      unit: string;
+      price: string;
+      discount: string;
+      tax: string;
+      amount: string;
+      add: string;
+      remove: (row: number) => string;
+      field: (what: string, row: number) => string;
+      subtotal: string;
+      discounts: string;
+      taxes: string;
+      total: string;
+    }>;
+  }>(),
+  { currency: "USD", locale: "en", units: () => ["pcs", "hour", "box", "kg"] },
+);
+const lines = defineModel<BlessLineItem[]>({ default: () => [] });
+
+const text = computed(() => ({
+  title: "Lines",
+  product: "Product",
+  quantity: "Qty",
+  unit: "Unit",
+  price: "Price",
+  discount: "Disc. %",
+  tax: "Tax %",
+  amount: "Amount",
+  add: "Add a line",
+  remove: (r: number) => `Remove line ${r}`,
+  field: (w: string, r: number) => `${w}, line ${r}`,
+  subtotal: "Subtotal",
+  discounts: "Discounts",
+  taxes: "Tax",
+  total: "Total",
+  ...pack(),
+  ...props.labels,
+}));
+const money = computed(() => moneyFormat(props.locale, props.currency));
+const totals = computed(() => lineTotals(lines.value));
+const patch = (id: string, p: Partial<BlessLineItem>) =>
+  (lines.value = lines.value.map((l) => (l.id === id ? { ...l, ...p } : l)));
+const num = (e: Event) => Math.max(0, (e.target as HTMLInputElement).valueAsNumber || 0);
+const box = ref<HTMLElement>();
+let seq = 0;
+function add() {
+  const id = `l${Date.now().toString(36)}${seq++}`;
+  const last = lines.value.at(-1);
+  lines.value = [
+    ...lines.value,
+    { id, product: "", quantity: 1, unit: last?.unit ?? props.units[0], price: 0, tax: last?.tax },
+  ];
+  nextTick(() => box.value?.querySelector<HTMLInputElement>(`[data-line="${id}"] input`)?.focus());
+}
+const remove = (id: string) => (lines.value = lines.value.filter((l) => l.id !== id));
+</script>
 
 <style>
 .bless-lines {

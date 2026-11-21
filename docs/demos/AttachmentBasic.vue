@@ -1,8 +1,3 @@
-<script setup lang="ts">
-import { BlessAttachment } from "blessing-ui";
-import { shots } from "./_data";
-</script>
-
 <template>
   <div class="row">
     <BlessAttachment name="script_ep03.pdf" description="212 KB" removable />
@@ -12,3 +7,8 @@ import { shots } from "./_data";
     <BlessAttachment name="bad.exe" state="error" removable />
   </div>
 </template>
+
+<script setup lang="ts">
+import { BlessAttachment } from "blessing-ui";
+import { shots } from "./_data";
+</script>

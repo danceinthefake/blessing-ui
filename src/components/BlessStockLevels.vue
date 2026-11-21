@@ -1,3 +1,47 @@
+<template>
+  <div class="bless-stock">
+    <div class="bless-stock__bar">
+      <p class="bless-stock__count" role="status">{{ text.count(lowCount, items.length) }}</p>
+      <label class="bless-stock__filter">
+        <input v-model="onlyLow" type="checkbox" />
+        {{ text.onlyLow }}
+      </label>
+    </div>
+    <div class="bless-stock__scroll" role="region" :aria-label="text.title" tabindex="0">
+      <table class="bless-stock__table">
+        <thead>
+          <tr>
+            <th scope="col">{{ text.sku }}</th>
+            <th scope="col">{{ text.item }}</th>
+            <th scope="col">{{ text.location }}</th>
+            <th scope="col">{{ text.onHand }}</th>
+            <th scope="col">{{ text.reserved }}</th>
+            <th scope="col">{{ text.available }}</th>
+            <th scope="col">{{ text.reorder }}</th>
+            <th scope="col">{{ text.state }}</th>
+          </tr>
+        </thead>
+        <tbody class="bless-stagger">
+          <tr v-for="r in rows" :key="r.sku" :class="`is-${r.state}`">
+            <td class="bless-stock__sku">{{ r.sku }}</td>
+            <th scope="row">{{ r.name }}</th>
+            <td>{{ r.location ?? "—" }}</td>
+            <td>{{ num.format(r.onHand) }}</td>
+            <td>{{ num.format(r.reserved ?? 0) }}</td>
+            <td class="bless-stock__free">
+              {{ r.unit ? `${num.format(r.available)} ${r.unit}` : num.format(r.available) }}
+            </td>
+            <td>{{ num.format(r.reorderAt) }}</td>
+            <td class="bless-stock__state">
+              <span aria-hidden="true">{{ MARK[r.state] }}</span> {{ text[r.state] }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</template>
+
 <script lang="ts">
 export interface BlessStockItem {
   sku: string;
@@ -80,50 +124,6 @@ const rows = computed(() =>
 const lowCount = computed(() => props.items.filter((i) => stockState(i).state !== "ok").length);
 const MARK: Record<BlessStockState, string> = { ok: "✓", low: "!", out: "✕" };
 </script>
-
-<template>
-  <div class="bless-stock">
-    <div class="bless-stock__bar">
-      <p class="bless-stock__count" role="status">{{ text.count(lowCount, items.length) }}</p>
-      <label class="bless-stock__filter">
-        <input v-model="onlyLow" type="checkbox" />
-        {{ text.onlyLow }}
-      </label>
-    </div>
-    <div class="bless-stock__scroll" role="region" :aria-label="text.title" tabindex="0">
-      <table class="bless-stock__table">
-        <thead>
-          <tr>
-            <th scope="col">{{ text.sku }}</th>
-            <th scope="col">{{ text.item }}</th>
-            <th scope="col">{{ text.location }}</th>
-            <th scope="col">{{ text.onHand }}</th>
-            <th scope="col">{{ text.reserved }}</th>
-            <th scope="col">{{ text.available }}</th>
-            <th scope="col">{{ text.reorder }}</th>
-            <th scope="col">{{ text.state }}</th>
-          </tr>
-        </thead>
-        <tbody class="bless-stagger">
-          <tr v-for="r in rows" :key="r.sku" :class="`is-${r.state}`">
-            <td class="bless-stock__sku">{{ r.sku }}</td>
-            <th scope="row">{{ r.name }}</th>
-            <td>{{ r.location ?? "—" }}</td>
-            <td>{{ num.format(r.onHand) }}</td>
-            <td>{{ num.format(r.reserved ?? 0) }}</td>
-            <td class="bless-stock__free">
-              {{ r.unit ? `${num.format(r.available)} ${r.unit}` : num.format(r.available) }}
-            </td>
-            <td>{{ num.format(r.reorderAt) }}</td>
-            <td class="bless-stock__state">
-              <span aria-hidden="true">{{ MARK[r.state] }}</span> {{ text[r.state] }}
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</template>
 
 <style>
 .bless-stock {

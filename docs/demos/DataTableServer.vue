@@ -1,3 +1,22 @@
+<template>
+  <div class="col" style="max-width: 560px">
+    <BlessDataTable
+      :rows
+      :columns
+      row-key="id"
+      server
+      :total
+      :page-size="5"
+      searchable
+      caption="Episodes (server-paged)"
+      @state="fetchPage"
+    />
+    <small>{{
+      loading ? "loading…" : `${total} rows on the “server”, ${rows.length} in the DOM`
+    }}</small>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessDataTable, type BlessDataColumn } from "blessing-ui";
@@ -37,22 +56,3 @@ async function fetchPage(s: {
   loading.value = false;
 }
 </script>
-
-<template>
-  <div class="col" style="max-width: 560px">
-    <BlessDataTable
-      :rows
-      :columns
-      row-key="id"
-      server
-      :total
-      :page-size="5"
-      searchable
-      caption="Episodes (server-paged)"
-      @state="fetchPage"
-    />
-    <small>{{
-      loading ? "loading…" : `${total} rows on the “server”, ${rows.length} in the DOM`
-    }}</small>
-  </div>
-</template>

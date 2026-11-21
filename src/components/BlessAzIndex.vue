@@ -1,3 +1,35 @@
+<template>
+  <div class="bless-az">
+    <nav class="bless-az__bar" :aria-label="text.letters">
+      <ul role="list">
+        <li v-for="l in bar" :key="l">
+          <a v-if="has.has(l)" :href="`#${anchor(l)}`">{{ l }}</a>
+          <span v-else aria-hidden="true">{{ l }}</span>
+        </li>
+      </ul>
+    </nav>
+    <section
+      v-for="g in groups"
+      :id="anchor(g.letter)"
+      :key="g.letter"
+      class="bless-az__group"
+      :aria-labelledby="`${anchor(g.letter)}-h`"
+    >
+      <h3 :id="`${anchor(g.letter)}-h`" class="bless-az__letter">
+        <span aria-hidden="true">{{ g.letter }}</span>
+        <span v-if="g.letter === '#'" class="bless-sr">{{ text.other }}</span>
+        <span v-else class="bless-sr">{{ g.letter }}</span>
+      </h3>
+      <ul class="bless-az__list" role="list">
+        <li v-for="it in g.list" :key="it.label">
+          <a v-if="it.href" :href="it.href">{{ it.label }}</a>
+          <span v-else>{{ it.label }}</span>
+        </li>
+      </ul>
+    </section>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed, useId } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -47,38 +79,6 @@ const groups = computed(() => {
 const has = computed(() => new Set(groups.value.map((g) => g.letter)));
 const anchor = (l: string) => `${id}-${l === "#" ? "other" : l}`;
 </script>
-
-<template>
-  <div class="bless-az">
-    <nav class="bless-az__bar" :aria-label="text.letters">
-      <ul role="list">
-        <li v-for="l in bar" :key="l">
-          <a v-if="has.has(l)" :href="`#${anchor(l)}`">{{ l }}</a>
-          <span v-else aria-hidden="true">{{ l }}</span>
-        </li>
-      </ul>
-    </nav>
-    <section
-      v-for="g in groups"
-      :id="anchor(g.letter)"
-      :key="g.letter"
-      class="bless-az__group"
-      :aria-labelledby="`${anchor(g.letter)}-h`"
-    >
-      <h3 :id="`${anchor(g.letter)}-h`" class="bless-az__letter">
-        <span aria-hidden="true">{{ g.letter }}</span>
-        <span v-if="g.letter === '#'" class="bless-sr">{{ text.other }}</span>
-        <span v-else class="bless-sr">{{ g.letter }}</span>
-      </h3>
-      <ul class="bless-az__list" role="list">
-        <li v-for="it in g.list" :key="it.label">
-          <a v-if="it.href" :href="it.href">{{ it.label }}</a>
-          <span v-else>{{ it.label }}</span>
-        </li>
-      </ul>
-    </section>
-  </div>
-</template>
 
 <style>
 .bless-az {

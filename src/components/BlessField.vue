@@ -1,3 +1,31 @@
+<template>
+  <div
+    ref="root"
+    class="bless-field"
+    :class="{ 'bless-field--invalid': error || nativeError || schemaError }"
+    @blur.capture="validate"
+    @invalid.capture="validate"
+    @input="onInput"
+  >
+    <BlessLabel
+      v-if="label"
+      :id="`${id}-label`"
+      :for="id"
+      :required
+      :hint
+      class="bless-field__label"
+      >{{ label }}</BlessLabel
+    >
+    <slot :id :error="error || nativeError || schemaError" :describedby />
+    <p v-if="description" :id="`${id}-desc`" class="bless-field__description">
+      {{ description }}
+    </p>
+    <p v-if="shownError" :id="`${id}-err`" class="bless-field__error" role="alert">
+      {{ shownError }}
+    </p>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { onMounted, ref, useId, watch } from "vue";
 import { computed, inject } from "vue";
@@ -62,34 +90,6 @@ function onInput(e: Event) {
   if (fieldName.value) form?.clear(fieldName.value);
 }
 </script>
-
-<template>
-  <div
-    ref="root"
-    class="bless-field"
-    :class="{ 'bless-field--invalid': error || nativeError || schemaError }"
-    @blur.capture="validate"
-    @invalid.capture="validate"
-    @input="onInput"
-  >
-    <BlessLabel
-      v-if="label"
-      :id="`${id}-label`"
-      :for="id"
-      :required
-      :hint
-      class="bless-field__label"
-      >{{ label }}</BlessLabel
-    >
-    <slot :id :error="error || nativeError || schemaError" :describedby />
-    <p v-if="description" :id="`${id}-desc`" class="bless-field__description">
-      {{ description }}
-    </p>
-    <p v-if="shownError" :id="`${id}-err`" class="bless-field__error" role="alert">
-      {{ shownError }}
-    </p>
-  </div>
-</template>
 
 <style>
 .bless-field {

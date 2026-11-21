@@ -1,3 +1,7 @@
+<template>
+  <BlessPareto :data="reasons" label="Why listeners stopped early" />
+</template>
+
 <script setup lang="ts">
 import { BlessPareto } from "blessing-ui";
 
@@ -13,7 +17,3 @@ const reasons = [
   { label: "Other", value: 9 },
 ];
 </script>
-
-<template>
-  <BlessPareto :data="reasons" label="Why listeners stopped early" />
-</template>

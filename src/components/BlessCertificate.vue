@@ -1,3 +1,27 @@
+<template>
+  <article class="bless-cert">
+    <div class="bless-cert__frame">
+      <div class="bless-cert__issuer">{{ issuer }}</div>
+      <h2 class="bless-cert__title">{{ text.title }}</h2>
+      <div class="bless-cert__line">{{ text.given }}</div>
+      <div class="bless-cert__name">{{ name }}</div>
+      <div class="bless-cert__line">{{ text.completed }}</div>
+      <div class="bless-cert__course">{{ course }}</div>
+      <div class="bless-cert__line">{{ text.on(date) }}</div>
+      <footer class="bless-cert__foot">
+        <div v-if="signer" class="bless-cert__sign">
+          <span class="bless-cert__signer">{{ signer }}</span>
+          <span v-if="signerRole">{{ signerRole }}</span>
+        </div>
+        <div v-if="code" class="bless-cert__code">
+          <span>{{ text.code(code) }}</span>
+          <span v-if="verifyUrl">{{ text.verify }} {{ verifyUrl }}</span>
+        </div>
+      </footer>
+    </div>
+  </article>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -38,30 +62,6 @@ const text = computed(() => ({
   ...props.labels,
 }));
 </script>
-
-<template>
-  <article class="bless-cert">
-    <div class="bless-cert__frame">
-      <div class="bless-cert__issuer">{{ issuer }}</div>
-      <h2 class="bless-cert__title">{{ text.title }}</h2>
-      <div class="bless-cert__line">{{ text.given }}</div>
-      <div class="bless-cert__name">{{ name }}</div>
-      <div class="bless-cert__line">{{ text.completed }}</div>
-      <div class="bless-cert__course">{{ course }}</div>
-      <div class="bless-cert__line">{{ text.on(date) }}</div>
-      <footer class="bless-cert__foot">
-        <div v-if="signer" class="bless-cert__sign">
-          <span class="bless-cert__signer">{{ signer }}</span>
-          <span v-if="signerRole">{{ signerRole }}</span>
-        </div>
-        <div v-if="code" class="bless-cert__code">
-          <span>{{ text.code(code) }}</span>
-          <span v-if="verifyUrl">{{ text.verify }} {{ verifyUrl }}</span>
-        </div>
-      </footer>
-    </div>
-  </article>
-</template>
 
 <style>
 .bless-cert {

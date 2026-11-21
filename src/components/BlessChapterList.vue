@@ -1,3 +1,29 @@
+<template>
+  <nav class="bless-chapters" :aria-label="text.title">
+    <ol class="bless-stagger bless-chapters__list">
+      <li v-for="(c, i) in rows" :key="c.start">
+        <button
+          type="button"
+          class="bless-chapters__item"
+          :class="{ 'is-current': i === current }"
+          :aria-current="i === current ? 'true' : undefined"
+          @click="emit('seek', c.start)"
+        >
+          <span class="bless-chapters__num" aria-hidden="true">{{ i + 1 }}</span>
+          <span class="bless-chapters__title">{{ c.title }}</span>
+          <span class="bless-chapters__time">{{ when(c) }}</span>
+          <span
+            v-if="i === current"
+            class="bless-chapters__progress"
+            :style="{ inlineSize: `${progress * 100}%` }"
+            aria-hidden="true"
+          />
+        </button>
+      </li>
+    </ol>
+  </nav>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -48,32 +74,6 @@ const progress = computed(() => {
   return r?.end ? Math.min(1, (props.time - r.start) / (r.end - r.start || 1)) : 0;
 });
 </script>
-
-<template>
-  <nav class="bless-chapters" :aria-label="text.title">
-    <ol class="bless-stagger bless-chapters__list">
-      <li v-for="(c, i) in rows" :key="c.start">
-        <button
-          type="button"
-          class="bless-chapters__item"
-          :class="{ 'is-current': i === current }"
-          :aria-current="i === current ? 'true' : undefined"
-          @click="emit('seek', c.start)"
-        >
-          <span class="bless-chapters__num" aria-hidden="true">{{ i + 1 }}</span>
-          <span class="bless-chapters__title">{{ c.title }}</span>
-          <span class="bless-chapters__time">{{ when(c) }}</span>
-          <span
-            v-if="i === current"
-            class="bless-chapters__progress"
-            :style="{ inlineSize: `${progress * 100}%` }"
-            aria-hidden="true"
-          />
-        </button>
-      </li>
-    </ol>
-  </nav>
-</template>
 
 <style>
 .bless-chapters {

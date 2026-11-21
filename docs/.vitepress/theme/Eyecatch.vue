@@ -1,3 +1,23 @@
+<template>
+  <section
+    ref="el"
+    class="eye vp-raw"
+    :class="{
+      'eye--accent': accent,
+      'eye--seen': !opener && visible,
+      'eye--wait': live && !opener && !visible,
+    }"
+  >
+    <span class="eye__slash" aria-hidden="true" />
+    <span v-if="num" class="eye__num" aria-hidden="true" :data-num="num" />
+    <div class="eye__text">
+      <p class="eye__kicker">{{ kicker }}</p>
+      <component :is="`h${level}`" class="eye__title">{{ title }}</component>
+      <slot />
+    </div>
+  </section>
+</template>
+
 <script setup lang="ts">
 // An anime eyecatch: a title card at a break. A slash of accent wipes across a dark band
 // when the band first scrolls into view. The home page puts one between its chapters; a
@@ -28,26 +48,6 @@ onMounted(() => {
   live.value = true;
 });
 </script>
-
-<template>
-  <section
-    ref="el"
-    class="eye vp-raw"
-    :class="{
-      'eye--accent': accent,
-      'eye--seen': !opener && visible,
-      'eye--wait': live && !opener && !visible,
-    }"
-  >
-    <span class="eye__slash" aria-hidden="true" />
-    <span v-if="num" class="eye__num" aria-hidden="true" :data-num="num" />
-    <div class="eye__text">
-      <p class="eye__kicker">{{ kicker }}</p>
-      <component :is="`h${level}`" class="eye__title">{{ title }}</component>
-      <slot />
-    </div>
-  </section>
-</template>
 
 <style scoped>
 .eye {

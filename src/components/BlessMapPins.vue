@@ -1,3 +1,60 @@
+<template>
+  <div class="bless-map">
+    <div
+      ref="box"
+      class="bless-map__view"
+      :style="{ blockSize: `${height}px` }"
+      role="region"
+      :aria-label="text.map"
+      :aria-describedby="hint"
+      tabindex="0"
+      @pointerdown="down"
+      @pointermove="move"
+      @pointerup="drag = undefined"
+      @pointercancel="drag = undefined"
+      @keydown="key"
+    >
+      <img
+        v-for="t in tileList"
+        :key="t.key"
+        :src="t.src"
+        alt=""
+        draggable="false"
+        class="bless-map__tile"
+        :style="{ transform: `translate(${t.x}px, ${t.y}px)` }"
+      />
+      <button
+        v-for="p in placed"
+        :key="p.id"
+        type="button"
+        class="bless-map__pin"
+        :class="{ 'is-on': selected === p.id }"
+        :style="{ transform: `translate(${p.x}px, ${p.y}px)` }"
+        :aria-pressed="selected === p.id"
+        @click="selected = selected === p.id ? undefined : p.id"
+      >
+        <svg viewBox="0 0 24 32" aria-hidden="true">
+          <path d="M12 31C12 31 2 18 2 11a10 10 0 0 1 20 0c0 7-10 20-10 20z" />
+          <circle cx="12" cy="11" r="4" />
+        </svg>
+        <span class="bless-map__label">{{ p.label }}</span>
+      </button>
+      <span :id="hint" class="bless-sr">{{ text.keys }}</span>
+      <div class="bless-map__zoom">
+        <button type="button" :aria-label="text.zoomIn" :disabled="z >= 19" @click="zoom = z + 1">
+          +
+        </button>
+        <button type="button" :aria-label="text.zoomOut" :disabled="z <= 1" @click="zoom = z - 1">
+          −
+        </button>
+      </div>
+      <a class="bless-map__credit" :href="attributionUrl" target="_blank" rel="noopener">{{
+        attribution
+      }}</a>
+    </div>
+  </div>
+</template>
+
 <script lang="ts">
 export interface BlessMapPin {
   id: string;
@@ -136,63 +193,6 @@ function key(e: KeyboardEvent) {
   else if (e.key === "-") zoom.value = Math.max(1, z.value - 1);
 }
 </script>
-
-<template>
-  <div class="bless-map">
-    <div
-      ref="box"
-      class="bless-map__view"
-      :style="{ blockSize: `${height}px` }"
-      role="region"
-      :aria-label="text.map"
-      :aria-describedby="hint"
-      tabindex="0"
-      @pointerdown="down"
-      @pointermove="move"
-      @pointerup="drag = undefined"
-      @pointercancel="drag = undefined"
-      @keydown="key"
-    >
-      <img
-        v-for="t in tileList"
-        :key="t.key"
-        :src="t.src"
-        alt=""
-        draggable="false"
-        class="bless-map__tile"
-        :style="{ transform: `translate(${t.x}px, ${t.y}px)` }"
-      />
-      <button
-        v-for="p in placed"
-        :key="p.id"
-        type="button"
-        class="bless-map__pin"
-        :class="{ 'is-on': selected === p.id }"
-        :style="{ transform: `translate(${p.x}px, ${p.y}px)` }"
-        :aria-pressed="selected === p.id"
-        @click="selected = selected === p.id ? undefined : p.id"
-      >
-        <svg viewBox="0 0 24 32" aria-hidden="true">
-          <path d="M12 31C12 31 2 18 2 11a10 10 0 0 1 20 0c0 7-10 20-10 20z" />
-          <circle cx="12" cy="11" r="4" />
-        </svg>
-        <span class="bless-map__label">{{ p.label }}</span>
-      </button>
-      <span :id="hint" class="bless-sr">{{ text.keys }}</span>
-      <div class="bless-map__zoom">
-        <button type="button" :aria-label="text.zoomIn" :disabled="z >= 19" @click="zoom = z + 1">
-          +
-        </button>
-        <button type="button" :aria-label="text.zoomOut" :disabled="z <= 1" @click="zoom = z - 1">
-          −
-        </button>
-      </div>
-      <a class="bless-map__credit" :href="attributionUrl" target="_blank" rel="noopener">{{
-        attribution
-      }}</a>
-    </div>
-  </div>
-</template>
 
 <style>
 .bless-map {

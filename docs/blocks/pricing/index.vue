@@ -1,3 +1,39 @@
+<template>
+  <div class="pricing">
+    <BlessText as="h1" size="lg" weight="light" class="pricing__title">Plans</BlessText>
+    <div class="pricing__switch">
+      <BlessSwitch v-model="yearly">Bill yearly <BlessBadge>2 months free</BlessBadge></BlessSwitch>
+    </div>
+    <div class="pricing__grid">
+      <BlessCard
+        v-for="p in plans"
+        :key="p.name"
+        :label="p.hot ? 'Recommended' : undefined"
+        :bordered="p.hot"
+        :surface="p.hot ? 'surface' : 'bg'"
+      >
+        <BlessText as="h2" weight="bold">{{ p.name }}</BlessText>
+        <BlessText as="p" size="sm" muted>{{ p.blurb }}</BlessText>
+        <p class="pricing__price">
+          <BlessText size="xl" weight="light">{{ price(p.monthly) }}</BlessText>
+          <BlessText size="xs" muted> / {{ yearly ? "year" : "month" }}</BlessText>
+        </p>
+        <BlessButton
+          :variant="p.hot ? 'solid' : 'outline'"
+          block
+          :aria-label="`${p.monthly ? 'Start trial' : 'Get started'}: ${p.name}`"
+          class="pricing__cta"
+          >{{ p.monthly ? "Start trial" : "Get started" }}</BlessButton
+        >
+        <BlessSeparator />
+        <ul role="list" class="pricing__features">
+          <li v-for="f in p.features" :key="f"><span aria-hidden="true">✓</span> {{ f }}</li>
+        </ul>
+      </BlessCard>
+    </div>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import {
@@ -34,42 +70,6 @@ const plans = [
 const price = (m: number) =>
   m === 0 ? "¥0" : `¥${(yearly.value ? Math.round(m * 10) : m).toLocaleString("ja-JP")}`;
 </script>
-
-<template>
-  <div class="pricing">
-    <BlessText as="h1" size="lg" weight="light" class="pricing__title">Plans</BlessText>
-    <div class="pricing__switch">
-      <BlessSwitch v-model="yearly">Bill yearly <BlessBadge>2 months free</BlessBadge></BlessSwitch>
-    </div>
-    <div class="pricing__grid">
-      <BlessCard
-        v-for="p in plans"
-        :key="p.name"
-        :label="p.hot ? 'Recommended' : undefined"
-        :bordered="p.hot"
-        :surface="p.hot ? 'surface' : 'bg'"
-      >
-        <BlessText as="h2" weight="bold">{{ p.name }}</BlessText>
-        <BlessText as="p" size="sm" muted>{{ p.blurb }}</BlessText>
-        <p class="pricing__price">
-          <BlessText size="xl" weight="light">{{ price(p.monthly) }}</BlessText>
-          <BlessText size="xs" muted> / {{ yearly ? "year" : "month" }}</BlessText>
-        </p>
-        <BlessButton
-          :variant="p.hot ? 'solid' : 'outline'"
-          block
-          :aria-label="`${p.monthly ? 'Start trial' : 'Get started'}: ${p.name}`"
-          class="pricing__cta"
-          >{{ p.monthly ? "Start trial" : "Get started" }}</BlessButton
-        >
-        <BlessSeparator />
-        <ul role="list" class="pricing__features">
-          <li v-for="f in p.features" :key="f"><span aria-hidden="true">✓</span> {{ f }}</li>
-        </ul>
-      </BlessCard>
-    </div>
-  </div>
-</template>
 
 <style scoped>
 .pricing {

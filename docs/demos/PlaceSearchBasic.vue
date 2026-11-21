@@ -1,3 +1,12 @@
+<template>
+  <div style="min-block-size: 22rem">
+    <BlessPlaceSearch v-model="place" :search />
+    <div style="margin-top: 12px">
+      {{ place ? `Chosen: ${place.name}` : "Type kopi, studio, or pasar." }}
+    </div>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessPlaceSearch, type BlessPlace } from "blessing-ui";
@@ -49,12 +58,3 @@ const search = (q: string) =>
   );
 const place = ref<BlessPlace | null>(null);
 </script>
-
-<template>
-  <div style="min-block-size: 22rem">
-    <BlessPlaceSearch v-model="place" :search />
-    <div style="margin-top: 12px">
-      {{ place ? `Chosen: ${place.name}` : "Type kopi, studio, or pasar." }}
-    </div>
-  </div>
-</template>

@@ -1,3 +1,16 @@
+<template>
+  <div class="col">
+    <BlessSwitch v-model="split">Side by side</BlessSwitch>
+    <BlessDiff
+      :a="before"
+      :b="after"
+      :mode="split ? 'split' : 'inline'"
+      :context="2"
+      label="main.ts"
+    />
+  </div>
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessDiff, BlessSwitch } from "blessing-ui";
@@ -52,16 +65,3 @@ app.mount("#app");
 export { app };
 `;
 </script>
-
-<template>
-  <div class="col">
-    <BlessSwitch v-model="split">Side by side</BlessSwitch>
-    <BlessDiff
-      :a="before"
-      :b="after"
-      :mode="split ? 'split' : 'inline'"
-      :context="2"
-      label="main.ts"
-    />
-  </div>
-</template>

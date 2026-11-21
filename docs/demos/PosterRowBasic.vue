@@ -1,3 +1,7 @@
+<template>
+  <BlessPosterRow title="Shows like this one" :items="shows" />
+</template>
+
 <script setup lang="ts">
 import { BlessPosterRow, type BlessPoster } from "blessing-ui";
 import { art } from "./_data";
@@ -23,7 +27,3 @@ const shows: BlessPoster[] = emoji.map((e, i) => ({
   meta: `${2020 + (i % 6)} · ${8 + i} episodes`,
 }));
 </script>
-
-<template>
-  <BlessPosterRow title="Shows like this one" :items="shows" />
-</template>

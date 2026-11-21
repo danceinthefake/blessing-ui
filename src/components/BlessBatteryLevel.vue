@@ -1,3 +1,24 @@
+<template>
+  <span
+    class="bless-battery"
+    :class="{ 'is-low': isLow, 'is-charging': charging }"
+    role="meter"
+    aria-valuemin="0"
+    aria-valuemax="100"
+    :aria-valuenow="value"
+    :aria-valuetext="words"
+    :aria-label="label ? `${text.battery}, ${label}` : text.battery"
+  >
+    <span class="bless-battery__body" aria-hidden="true">
+      <span class="bless-battery__fill" :style="{ inlineSize: `${value}%` }" />
+    </span>
+    <span class="bless-battery__text" aria-hidden="true">
+      {{ value }}%<template v-if="charging"> · {{ text.charging }}</template
+      ><template v-if="isLow"> · {{ text.low }}</template>
+    </span>
+  </span>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -34,27 +55,6 @@ const words = computed(() =>
     .join(", "),
 );
 </script>
-
-<template>
-  <span
-    class="bless-battery"
-    :class="{ 'is-low': isLow, 'is-charging': charging }"
-    role="meter"
-    aria-valuemin="0"
-    aria-valuemax="100"
-    :aria-valuenow="value"
-    :aria-valuetext="words"
-    :aria-label="label ? `${text.battery}, ${label}` : text.battery"
-  >
-    <span class="bless-battery__body" aria-hidden="true">
-      <span class="bless-battery__fill" :style="{ inlineSize: `${value}%` }" />
-    </span>
-    <span class="bless-battery__text" aria-hidden="true">
-      {{ value }}%<template v-if="charging"> · {{ text.charging }}</template
-      ><template v-if="isLow"> · {{ text.low }}</template>
-    </span>
-  </span>
-</template>
 
 <style>
 .bless-battery {

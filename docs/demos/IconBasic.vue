@@ -1,8 +1,3 @@
-<script setup lang="ts">
-import { BlessButton, BlessIcon } from "blessing-ui";
-const sizes = ["xs", "sm", "md", "lg", "xl"] as const;
-</script>
-
 <template>
   <div class="row">
     <BlessIcon v-for="s in sizes" :key="s" :size="s">
@@ -23,3 +18,8 @@ const sizes = ["xs", "sm", "md", "lg", "xl"] as const;
     </BlessButton>
   </div>
 </template>
+
+<script setup lang="ts">
+import { BlessButton, BlessIcon } from "blessing-ui";
+const sizes = ["xs", "sm", "md", "lg", "xl"] as const;
+</script>

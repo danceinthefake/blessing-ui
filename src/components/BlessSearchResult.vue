@@ -1,3 +1,19 @@
+<template>
+  <article class="bless-result">
+    <div class="bless-result__where">
+      <span v-if="kind" class="bless-result__kind">{{ kind }}</span>
+      <span class="bless-result__url">{{ crumbs }}</span>
+    </div>
+    <h3 class="bless-result__title">
+      <a :href="href"><BlessHighlight :text="title" :query /></a>
+    </h3>
+    <div v-if="snippet || date" class="bless-result__snippet">
+      <span v-if="date" class="bless-result__date">{{ date }} — </span
+      ><BlessHighlight v-if="snippet" :text="snippet" :query />
+    </div>
+  </article>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import BlessHighlight from "./BlessHighlight.vue";
@@ -29,22 +45,6 @@ const crumbs = computed(() => {
   }
 });
 </script>
-
-<template>
-  <article class="bless-result">
-    <div class="bless-result__where">
-      <span v-if="kind" class="bless-result__kind">{{ kind }}</span>
-      <span class="bless-result__url">{{ crumbs }}</span>
-    </div>
-    <h3 class="bless-result__title">
-      <a :href="href"><BlessHighlight :text="title" :query /></a>
-    </h3>
-    <div v-if="snippet || date" class="bless-result__snippet">
-      <span v-if="date" class="bless-result__date">{{ date }} — </span
-      ><BlessHighlight v-if="snippet" :text="snippet" :query />
-    </div>
-  </article>
-</template>
 
 <style>
 .bless-result {

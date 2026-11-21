@@ -1,3 +1,7 @@
+<template>
+  <BlessTree class="bless-json" :nodes="nodes" :label="label" />
+</template>
+
 <script setup lang="ts">
 import { useLabelPack } from "../composables/useLabels";
 import { computed } from "vue";
@@ -31,10 +35,6 @@ const nodes = computed(() =>
   jsonToNodes(props.value, text.value.root, { openDepth: props.openDepth, limit: props.limit }),
 );
 </script>
-
-<template>
-  <BlessTree class="bless-json" :nodes="nodes" :label="label" />
-</template>
 
 <style>
 .bless-json {

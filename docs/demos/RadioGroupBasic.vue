@@ -1,9 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { BlessRadio, BlessRadioGroup } from "blessing-ui";
-const heroine = ref("megumi");
-</script>
-
 <template>
   <div class="row" style="align-items: flex-start">
     <BlessRadioGroup v-model="heroine" label="Main heroine">
@@ -19,3 +13,9 @@ const heroine = ref("megumi");
     </BlessRadioGroup>
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { BlessRadio, BlessRadioGroup } from "blessing-ui";
+const heroine = ref("megumi");
+</script>

@@ -1,3 +1,65 @@
+<template>
+  <div
+    class="bless-captcha"
+    :class="{ 'bless-captcha--ok': verified, 'bless-captcha--fail': failed }"
+  >
+    <div
+      ref="stage"
+      class="bless-captcha__stage"
+      :style="{ height: `${H()}px`, ...bg() }"
+      aria-hidden="true"
+    >
+      <span
+        class="bless-captcha__gap"
+        :style="{
+          width: `${size()}px`,
+          height: `${size()}px`,
+          left: `${gapX()}px`,
+          top: `${gapY()}px`,
+        }"
+      ></span>
+      <span
+        class="bless-captcha__piece"
+        :class="{ 'bless-captcha__piece--drag': dragging }"
+        :style="{
+          width: `${size()}px`,
+          height: `${size()}px`,
+          top: `${gapY()}px`,
+          left: `${f * (W - size())}px`,
+          ...bg(),
+          backgroundPosition: `-${gapX()}px -${gapY()}px`,
+        }"
+      ></span>
+    </div>
+    <div ref="track" class="bless-captcha__track">
+      <span :id="`${id}-l`" class="bless-captcha__label">{{
+        verified ? text.verified : label
+      }}</span>
+      <button
+        ref="handleEl"
+        type="button"
+        class="bless-captcha__handle"
+        :class="{ 'bless-captcha__handle--drag': dragging }"
+        role="slider"
+        :aria-labelledby="`${id}-l`"
+        aria-valuemin="0"
+        aria-valuemax="100"
+        :aria-valuenow="Math.round(f * 100)"
+        :aria-disabled="verified || undefined"
+        :style="{ left: `${f * 100}%`, translate: `${-f * 100}% 0` }"
+        @pointerdown="down"
+        @pointermove="move"
+        @pointerup="up"
+        @pointercancel="up"
+        @keydown="onKey"
+      >
+        <span aria-hidden="true">{{ verified ? "✓" : "→" }}</span>
+      </button>
+    </div>
+    <span class="bless-captcha__live bless-sr" aria-live="polite">{{ live }}</span>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { useLabelPack } from "../composables/useLabels";
 import "./sr.css";
@@ -127,68 +189,6 @@ function onKey(e: KeyboardEvent) {
   }
 }
 </script>
-
-<template>
-  <div
-    class="bless-captcha"
-    :class="{ 'bless-captcha--ok': verified, 'bless-captcha--fail': failed }"
-  >
-    <div
-      ref="stage"
-      class="bless-captcha__stage"
-      :style="{ height: `${H()}px`, ...bg() }"
-      aria-hidden="true"
-    >
-      <span
-        class="bless-captcha__gap"
-        :style="{
-          width: `${size()}px`,
-          height: `${size()}px`,
-          left: `${gapX()}px`,
-          top: `${gapY()}px`,
-        }"
-      ></span>
-      <span
-        class="bless-captcha__piece"
-        :class="{ 'bless-captcha__piece--drag': dragging }"
-        :style="{
-          width: `${size()}px`,
-          height: `${size()}px`,
-          top: `${gapY()}px`,
-          left: `${f * (W - size())}px`,
-          ...bg(),
-          backgroundPosition: `-${gapX()}px -${gapY()}px`,
-        }"
-      ></span>
-    </div>
-    <div ref="track" class="bless-captcha__track">
-      <span :id="`${id}-l`" class="bless-captcha__label">{{
-        verified ? text.verified : label
-      }}</span>
-      <button
-        ref="handleEl"
-        type="button"
-        class="bless-captcha__handle"
-        :class="{ 'bless-captcha__handle--drag': dragging }"
-        role="slider"
-        :aria-labelledby="`${id}-l`"
-        aria-valuemin="0"
-        aria-valuemax="100"
-        :aria-valuenow="Math.round(f * 100)"
-        :aria-disabled="verified || undefined"
-        :style="{ left: `${f * 100}%`, translate: `${-f * 100}% 0` }"
-        @pointerdown="down"
-        @pointermove="move"
-        @pointerup="up"
-        @pointercancel="up"
-        @keydown="onKey"
-      >
-        <span aria-hidden="true">{{ verified ? "✓" : "→" }}</span>
-      </button>
-    </div>
-    <span class="bless-captcha__live bless-sr" aria-live="polite">{{ live }}</span>
-  </div>
-</template>
 
 <style>
 .bless-captcha {

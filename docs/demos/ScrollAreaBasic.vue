@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import { BlessScrollArea } from "blessing-ui";
-</script>
-
 <template>
   <div class="row" style="align-items: flex-start">
     <BlessScrollArea
@@ -26,3 +22,7 @@ import { BlessScrollArea } from "blessing-ui";
     </BlessScrollArea>
   </div>
 </template>
+
+<script setup lang="ts">
+import { BlessScrollArea } from "blessing-ui";
+</script>

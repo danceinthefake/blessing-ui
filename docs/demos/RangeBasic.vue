@@ -1,10 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { BlessRange } from "blessing-ui";
-const price = ref<[number, number]>([1980, 6800]);
-const hours = ref<[number, number]>([9, 17]);
-</script>
-
 <template>
   <div class="col" style="max-width: 420px">
     <BlessRange
@@ -28,3 +21,10 @@ const hours = ref<[number, number]>([9, 17]);
     <BlessRange :model-value="[30, 70]" disabled />
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { BlessRange } from "blessing-ui";
+const price = ref<[number, number]>([1980, 6800]);
+const hours = ref<[number, number]>([9, 17]);
+</script>

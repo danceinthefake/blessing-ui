@@ -1,10 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { BlessPaywall } from "blessing-ui";
-
-const picked = ref("");
-</script>
-
 <template>
   <div style="max-width: 560px">
     <BlessPaywall
@@ -25,3 +18,10 @@ const picked = ref("");
     <p v-if="picked" style="margin-top: 12px">Go to checkout for the {{ picked }} plan.</p>
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { BlessPaywall } from "blessing-ui";
+
+const picked = ref("");
+</script>

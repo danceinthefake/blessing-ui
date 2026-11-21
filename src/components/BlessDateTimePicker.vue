@@ -1,3 +1,31 @@
+<template>
+  <div class="bless-datetime" role="group">
+    <BlessDatePicker
+      :id="id()"
+      v-model="date"
+      :min="min?.slice(0, 10)"
+      :max="max?.slice(0, 10)"
+      :locale
+      :placeholder
+      :disabled
+      :invalid
+      :size
+    />
+    <BlessTimePicker
+      :id="`${id()}-time`"
+      v-model="time"
+      :min="minTime"
+      :max="maxTime"
+      :step
+      :hour12
+      :disabled
+      :invalid
+      :size
+      :label="text.time"
+    />
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed, ref, watch } from "vue";
 import { useFieldId } from "../composables/useFieldId";
@@ -53,34 +81,6 @@ const maxTime = computed(() =>
   props.max && date.value === props.max.slice(0, 10) ? props.max.slice(11, 16) : undefined,
 );
 </script>
-
-<template>
-  <div class="bless-datetime" role="group">
-    <BlessDatePicker
-      :id="id()"
-      v-model="date"
-      :min="min?.slice(0, 10)"
-      :max="max?.slice(0, 10)"
-      :locale
-      :placeholder
-      :disabled
-      :invalid
-      :size
-    />
-    <BlessTimePicker
-      :id="`${id()}-time`"
-      v-model="time"
-      :min="minTime"
-      :max="maxTime"
-      :step
-      :hour12
-      :disabled
-      :invalid
-      :size
-      :label="text.time"
-    />
-  </div>
-</template>
 
 <style>
 /* fuse when grouped: one field in two parts, with no gap between them */

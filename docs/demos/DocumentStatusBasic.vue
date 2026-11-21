@@ -1,3 +1,10 @@
+<template>
+  <div style="display: grid; gap: 20px">
+    <BlessDocumentStatus v-model="state" :states />
+    <BlessDocumentStatus model-value="approved" :states stopped="Cancelled" />
+  </div>
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessDocumentStatus } from "blessing-ui";
@@ -10,10 +17,3 @@ const states = [
 ];
 const state = ref("approved");
 </script>
-
-<template>
-  <div style="display: grid; gap: 20px">
-    <BlessDocumentStatus v-model="state" :states />
-    <BlessDocumentStatus model-value="approved" :states stopped="Cancelled" />
-  </div>
-</template>

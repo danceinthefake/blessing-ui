@@ -1,3 +1,53 @@
+<template>
+  <div
+    ref="root"
+    class="bless-mention"
+    @input="check"
+    @keydown="onKey"
+    @keyup.left="check"
+    @keyup.right="check"
+    @click="check"
+    @focusout="close"
+  >
+    <BlessTextarea
+      v-bind="$attrs"
+      v-model="model"
+      role="combobox"
+      aria-autocomplete="list"
+      aria-haspopup="listbox"
+      :aria-expanded="open"
+      :aria-controls="`${id}-list`"
+      :aria-activedescendant="open ? `${id}-opt-${active}` : undefined"
+    />
+    <div
+      ref="panel"
+      popover="manual"
+      class="bless-mention__panel"
+      :style="{
+        ...style,
+        minWidth: root ? `${Math.min(root.offsetWidth, 280)}px` : undefined,
+      }"
+    >
+      <div :id="`${id}-list`" role="listbox" :aria-label="label" class="bless-mention__list">
+        <div
+          v-for="(o, i) in open ? matches : []"
+          :id="`${id}-opt-${i}`"
+          :key="o.value"
+          role="option"
+          class="bless-mention__option"
+          :class="{ 'bless-mention__option--active': i === active }"
+          :aria-selected="i === active"
+          @mousedown.prevent="pick(o)"
+          @mousemove="active = i"
+        >
+          <span>{{ o.label }}</span>
+          <small v-if="o.hint">{{ o.hint }}</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed, nextTick, ref, useId, watch } from "vue";
 import { useFloating } from "../composables/useFloating";
@@ -105,56 +155,6 @@ watch(open, (o) =>
   }),
 );
 </script>
-
-<template>
-  <div
-    ref="root"
-    class="bless-mention"
-    @input="check"
-    @keydown="onKey"
-    @keyup.left="check"
-    @keyup.right="check"
-    @click="check"
-    @focusout="close"
-  >
-    <BlessTextarea
-      v-bind="$attrs"
-      v-model="model"
-      role="combobox"
-      aria-autocomplete="list"
-      aria-haspopup="listbox"
-      :aria-expanded="open"
-      :aria-controls="`${id}-list`"
-      :aria-activedescendant="open ? `${id}-opt-${active}` : undefined"
-    />
-    <div
-      ref="panel"
-      popover="manual"
-      class="bless-mention__panel"
-      :style="{
-        ...style,
-        minWidth: root ? `${Math.min(root.offsetWidth, 280)}px` : undefined,
-      }"
-    >
-      <div :id="`${id}-list`" role="listbox" :aria-label="label" class="bless-mention__list">
-        <div
-          v-for="(o, i) in open ? matches : []"
-          :id="`${id}-opt-${i}`"
-          :key="o.value"
-          role="option"
-          class="bless-mention__option"
-          :class="{ 'bless-mention__option--active': i === active }"
-          :aria-selected="i === active"
-          @mousedown.prevent="pick(o)"
-          @mousemove="active = i"
-        >
-          <span>{{ o.label }}</span>
-          <small v-if="o.hint">{{ o.hint }}</small>
-        </div>
-      </div>
-    </div>
-  </div>
-</template>
 
 <style>
 .bless-mention {

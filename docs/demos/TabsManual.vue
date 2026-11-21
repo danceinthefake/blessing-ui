@@ -1,8 +1,3 @@
-<script setup lang="ts">
-import { BlessTabs, BlessText } from "blessing-ui";
-import { heroines } from "./_data";
-</script>
-
 <template>
   <BlessTabs :tabs="heroines.slice(0, 3)" color="text" activation="manual" style="max-width: 640px">
     <template #default="{ tab: t }">
@@ -10,3 +5,8 @@ import { heroines } from "./_data";
     </template>
   </BlessTabs>
 </template>
+
+<script setup lang="ts">
+import { BlessTabs, BlessText } from "blessing-ui";
+import { heroines } from "./_data";
+</script>

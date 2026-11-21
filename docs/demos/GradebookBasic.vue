@@ -1,3 +1,7 @@
+<template>
+  <BlessGradebook v-model="scores" :students :assignments editable />
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessGradebook, type BlessScores } from "blessing-ui";
@@ -21,7 +25,3 @@ const scores = ref<BlessScores>({
   dimas: { q1: 8, q2: 11, proj: 64 },
 });
 </script>
-
-<template>
-  <BlessGradebook v-model="scores" :students :assignments editable />
-</template>

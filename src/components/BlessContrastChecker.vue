@@ -1,3 +1,64 @@
+<template>
+  <div class="bless-contrast">
+    <div class="bless-contrast__inputs">
+      <label v-for="f in ['text', 'background'] as const" :key="f" class="bless-contrast__field">
+        <span class="bless-contrast__label">{{ text[f] }}</span>
+        <span class="bless-contrast__pair">
+          <input
+            type="color"
+            class="bless-contrast__swatch"
+            :value="full(f === 'text' ? fg : bg)"
+            :aria-label="text[f]"
+            @input="
+              f === 'text'
+                ? (fg = ($event.target as HTMLInputElement).value)
+                : (bg = ($event.target as HTMLInputElement).value)
+            "
+          />
+          <input
+            class="bless-contrast__hex"
+            :aria-label="`${text[f]}, hex`"
+            :value="f === 'text' ? fg : bg"
+            spellcheck="false"
+            @input="
+              f === 'text'
+                ? (fg = ($event.target as HTMLInputElement).value)
+                : (bg = ($event.target as HTMLInputElement).value)
+            "
+          />
+        </span>
+      </label>
+      <button
+        type="button"
+        class="bless-contrast__swap"
+        :aria-label="text.swap"
+        :title="text.swap"
+        @click="swap"
+      >
+        ⇄
+      </button>
+    </div>
+    <div
+      class="bless-contrast__sample"
+      :style="ratio === undefined ? undefined : { color: fg, background: bg }"
+    >
+      <strong class="bless-contrast__big">Aa</strong>
+      <span>{{ text.sample }}</span>
+    </div>
+    <p class="bless-contrast__ratio" role="status">
+      <span>{{ text.ratio }}</span>
+      <strong>{{ shown }}</strong>
+    </p>
+    <p v-if="ratio === undefined" class="bless-contrast__invalid">{{ text.invalid }}</p>
+    <ul v-else class="bless-contrast__checks">
+      <li v-for="c in checks" :key="c.k" :class="c.ok ? 'is-pass' : 'is-fail'">
+        <span class="bless-contrast__mark" aria-hidden="true">{{ c.ok ? "✓" : "✕" }}</span>
+        {{ c.label }}: <strong>{{ c.ok ? text.pass : text.fail }}</strong>
+      </li>
+    </ul>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { contrastRatio, hexToRgb, wcagLevels } from "../composables/contrast";
@@ -63,67 +124,6 @@ const full = (h: string) => {
 };
 const swap = () => ([fg.value, bg.value] = [bg.value, fg.value]);
 </script>
-
-<template>
-  <div class="bless-contrast">
-    <div class="bless-contrast__inputs">
-      <label v-for="f in ['text', 'background'] as const" :key="f" class="bless-contrast__field">
-        <span class="bless-contrast__label">{{ text[f] }}</span>
-        <span class="bless-contrast__pair">
-          <input
-            type="color"
-            class="bless-contrast__swatch"
-            :value="full(f === 'text' ? fg : bg)"
-            :aria-label="text[f]"
-            @input="
-              f === 'text'
-                ? (fg = ($event.target as HTMLInputElement).value)
-                : (bg = ($event.target as HTMLInputElement).value)
-            "
-          />
-          <input
-            class="bless-contrast__hex"
-            :aria-label="`${text[f]}, hex`"
-            :value="f === 'text' ? fg : bg"
-            spellcheck="false"
-            @input="
-              f === 'text'
-                ? (fg = ($event.target as HTMLInputElement).value)
-                : (bg = ($event.target as HTMLInputElement).value)
-            "
-          />
-        </span>
-      </label>
-      <button
-        type="button"
-        class="bless-contrast__swap"
-        :aria-label="text.swap"
-        :title="text.swap"
-        @click="swap"
-      >
-        ⇄
-      </button>
-    </div>
-    <div
-      class="bless-contrast__sample"
-      :style="ratio === undefined ? undefined : { color: fg, background: bg }"
-    >
-      <strong class="bless-contrast__big">Aa</strong>
-      <span>{{ text.sample }}</span>
-    </div>
-    <p class="bless-contrast__ratio" role="status">
-      <span>{{ text.ratio }}</span>
-      <strong>{{ shown }}</strong>
-    </p>
-    <p v-if="ratio === undefined" class="bless-contrast__invalid">{{ text.invalid }}</p>
-    <ul v-else class="bless-contrast__checks">
-      <li v-for="c in checks" :key="c.k" :class="c.ok ? 'is-pass' : 'is-fail'">
-        <span class="bless-contrast__mark" aria-hidden="true">{{ c.ok ? "✓" : "✕" }}</span>
-        {{ c.label }}: <strong>{{ c.ok ? text.pass : text.fail }}</strong>
-      </li>
-    </ul>
-  </div>
-</template>
 
 <style>
 .bless-contrast {

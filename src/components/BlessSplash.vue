@@ -1,3 +1,21 @@
+<template>
+  <Transition name="bless-splash">
+    <div
+      v-if="show"
+      class="bless-splash"
+      role="dialog"
+      aria-modal="true"
+      :aria-label="label"
+      @keydown.esc.prevent="dismiss"
+    >
+      <div class="bless-splash__content"><slot :dismiss /></div>
+      <button ref="skip" type="button" class="bless-splash__skip" @click="dismiss">
+        {{ text.skip }}
+      </button>
+    </div>
+  </Transition>
+</template>
+
 <script setup lang="ts">
 import { useLabelPack } from "../composables/useLabels";
 import { readStore, writeStore } from "../composables/storage";
@@ -59,24 +77,6 @@ onMounted(() => {
 
 defineExpose({ dismiss });
 </script>
-
-<template>
-  <Transition name="bless-splash">
-    <div
-      v-if="show"
-      class="bless-splash"
-      role="dialog"
-      aria-modal="true"
-      :aria-label="label"
-      @keydown.esc.prevent="dismiss"
-    >
-      <div class="bless-splash__content"><slot :dismiss /></div>
-      <button ref="skip" type="button" class="bless-splash__skip" @click="dismiss">
-        {{ text.skip }}
-      </button>
-    </div>
-  </Transition>
-</template>
 
 <style>
 .bless-splash {

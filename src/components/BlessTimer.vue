@@ -1,3 +1,25 @@
+<template>
+  <div
+    class="bless-timer"
+    :class="{ 'bless-timer--done': finished }"
+    role="timer"
+    :aria-label="label"
+  >
+    <span v-if="sub" class="bless-timer__phase">{{ sub }}</span>
+    <span class="bless-timer__clock">{{ display }}</span>
+    <span v-if="controls" class="bless-timer__controls">
+      <BlessButton v-if="!running" @click="start">{{
+        elapsed && !finished ? text.resume : text.start
+      }}</BlessButton>
+      <BlessButton v-else variant="outline" @click="pause">{{ text.pause }}</BlessButton>
+      <BlessButton variant="ghost" :disabled="!elapsed" @click="reset">{{
+        text.reset
+      }}</BlessButton>
+    </span>
+    <span class="bless-timer__live bless-sr" aria-live="polite">{{ live }}</span>
+  </div>
+</template>
+
 <script lang="ts">
 export interface BlessTimerPhase {
   label: string;
@@ -164,28 +186,6 @@ watch(
 onBeforeUnmount(stop);
 defineExpose({ start, pause, reset, toggle: () => (running.value = !running.value) });
 </script>
-
-<template>
-  <div
-    class="bless-timer"
-    :class="{ 'bless-timer--done': finished }"
-    role="timer"
-    :aria-label="label"
-  >
-    <span v-if="sub" class="bless-timer__phase">{{ sub }}</span>
-    <span class="bless-timer__clock">{{ display }}</span>
-    <span v-if="controls" class="bless-timer__controls">
-      <BlessButton v-if="!running" @click="start">{{
-        elapsed && !finished ? text.resume : text.start
-      }}</BlessButton>
-      <BlessButton v-else variant="outline" @click="pause">{{ text.pause }}</BlessButton>
-      <BlessButton variant="ghost" :disabled="!elapsed" @click="reset">{{
-        text.reset
-      }}</BlessButton>
-    </span>
-    <span class="bless-timer__live bless-sr" aria-live="polite">{{ live }}</span>
-  </div>
-</template>
 
 <style>
 .bless-timer {

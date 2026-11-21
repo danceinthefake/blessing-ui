@@ -1,3 +1,10 @@
+<template>
+  <div style="max-width: 360px">
+    <BlessFileTree v-model:selected="selected" :paths label="Episode files" />
+    <BlessText as="p" size="sm" style="margin-top: 12px">Selected: {{ selected }}</BlessText>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessFileTree, BlessText } from "blessing-ui";
@@ -17,10 +24,3 @@ const paths = [
 ];
 const selected = ref<string | undefined>("ep41/audio/final.mp3");
 </script>
-
-<template>
-  <div style="max-width: 360px">
-    <BlessFileTree v-model:selected="selected" :paths label="Episode files" />
-    <BlessText as="p" size="sm" style="margin-top: 12px">Selected: {{ selected }}</BlessText>
-  </div>
-</template>

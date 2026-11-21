@@ -1,3 +1,23 @@
+<template>
+  <div ref="root" class="bless-split" :class="{ 'bless-split--stacked': narrow }">
+    <template v-if="narrow">
+      <div v-show="!detail" ref="masterEl" class="bless-split__pane" tabindex="-1">
+        <slot name="master" :open="() => (detail = true)" :stacked="true" />
+      </div>
+      <div v-show="detail" ref="detailEl" class="bless-split__pane" tabindex="-1">
+        <button type="button" class="bless-split__back" @click="back">
+          <span aria-hidden="true">←</span> {{ text.back }}
+        </button>
+        <slot name="detail" :stacked="true" />
+      </div>
+    </template>
+    <BlessResizable v-else v-model="size" :min :max :label>
+      <template #a><slot name="master" :open="() => (detail = true)" :stacked="false" /></template>
+      <template #b><slot name="detail" :stacked="false" /></template>
+    </BlessResizable>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { useLabelPack } from "../composables/useLabels";
 import { readStore, writeStore } from "../composables/storage";
@@ -71,26 +91,6 @@ function back() {
   emit("back");
 }
 </script>
-
-<template>
-  <div ref="root" class="bless-split" :class="{ 'bless-split--stacked': narrow }">
-    <template v-if="narrow">
-      <div v-show="!detail" ref="masterEl" class="bless-split__pane" tabindex="-1">
-        <slot name="master" :open="() => (detail = true)" :stacked="true" />
-      </div>
-      <div v-show="detail" ref="detailEl" class="bless-split__pane" tabindex="-1">
-        <button type="button" class="bless-split__back" @click="back">
-          <span aria-hidden="true">←</span> {{ text.back }}
-        </button>
-        <slot name="detail" :stacked="true" />
-      </div>
-    </template>
-    <BlessResizable v-else v-model="size" :min :max :label>
-      <template #a><slot name="master" :open="() => (detail = true)" :stacked="false" /></template>
-      <template #b><slot name="detail" :stacked="false" /></template>
-    </BlessResizable>
-  </div>
-</template>
 
 <style>
 .bless-split {

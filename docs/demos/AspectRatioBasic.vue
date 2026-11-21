@@ -1,10 +1,3 @@
-<script setup lang="ts">
-import { BlessAspectRatio } from "blessing-ui";
-import { shots } from "./_data";
-// an embed with nothing external: a page written inline
-const embed = `<body style="margin:0;display:grid;place-items:center;height:100vh;background:#a759ff;color:#fff;font:16px sans-serif">embed</body>`;
-</script>
-
 <template>
   <div class="row" style="align-items: flex-start">
     <figure class="ar">
@@ -36,6 +29,13 @@ const embed = `<body style="margin:0;display:grid;place-items:center;height:100v
     </figure>
   </div>
 </template>
+
+<script setup lang="ts">
+import { BlessAspectRatio } from "blessing-ui";
+import { shots } from "./_data";
+// an embed with nothing external: a page written inline
+const embed = `<body style="margin:0;display:grid;place-items:center;height:100vh;background:#a759ff;color:#fff;font:16px sans-serif">embed</body>`;
+</script>
 
 <style scoped>
 .ar {

@@ -1,3 +1,23 @@
+<template>
+  <div class="bless-message-scroller" :style="{ '--_h': height }">
+    <div
+      ref="viewport"
+      class="bless-message-scroller__viewport"
+      tabindex="0"
+      role="log"
+      :aria-label="label"
+      @scroll.passive="measure"
+    >
+      <div ref="content" class="bless-message-scroller__content"><slot /></div>
+    </div>
+    <Transition name="bless-message-scroller__fade">
+      <BlessButton v-if="!atBottom" size="sm" class="bless-message-scroller__jump" @click="jump">
+        <slot name="jump"><span aria-hidden="true">↓ </span>{{ text.jump }}</slot>
+      </BlessButton>
+    </Transition>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { useLabelPack } from "../composables/useLabels";
 import { nextTick, onBeforeUnmount, onMounted, ref, computed } from "vue";
@@ -99,26 +119,6 @@ onBeforeUnmount(() => ro?.disconnect());
 
 defineExpose({ scrollToBottom, scrollTo, loadHistory, atBottom });
 </script>
-
-<template>
-  <div class="bless-message-scroller" :style="{ '--_h': height }">
-    <div
-      ref="viewport"
-      class="bless-message-scroller__viewport"
-      tabindex="0"
-      role="log"
-      :aria-label="label"
-      @scroll.passive="measure"
-    >
-      <div ref="content" class="bless-message-scroller__content"><slot /></div>
-    </div>
-    <Transition name="bless-message-scroller__fade">
-      <BlessButton v-if="!atBottom" size="sm" class="bless-message-scroller__jump" @click="jump">
-        <slot name="jump"><span aria-hidden="true">↓ </span>{{ text.jump }}</slot>
-      </BlessButton>
-    </Transition>
-  </div>
-</template>
 
 <style>
 .bless-message-scroller {

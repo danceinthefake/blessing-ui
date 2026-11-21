@@ -1,3 +1,15 @@
+<template>
+  <figure class="bless-pullquote" :class="`is-${align}`">
+    <blockquote class="bless-pullquote__quote" :cite>
+      <p><slot>{{ text }}</slot></p>
+    </blockquote>
+    <figcaption v-if="speaker" class="bless-pullquote__by">
+      <span class="bless-pullquote__speaker">{{ speaker }}</span>
+      <span v-if="role" class="bless-pullquote__role">{{ role }}</span>
+    </figcaption>
+  </figure>
+</template>
+
 <script setup lang="ts">
 defineOptions({ name: "BlessPullQuote" });
 
@@ -16,18 +28,6 @@ withDefaults(
   { align: "start" },
 );
 </script>
-
-<template>
-  <figure class="bless-pullquote" :class="`is-${align}`">
-    <blockquote class="bless-pullquote__quote" :cite>
-      <p><slot>{{ text }}</slot></p>
-    </blockquote>
-    <figcaption v-if="speaker" class="bless-pullquote__by">
-      <span class="bless-pullquote__speaker">{{ speaker }}</span>
-      <span v-if="role" class="bless-pullquote__role">{{ role }}</span>
-    </figcaption>
-  </figure>
-</template>
 
 <style>
 .bless-pullquote {

@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import { BlessBubble } from "blessing-ui";
-</script>
-
 <template>
   <div class="col" style="max-width: 480px">
     <BlessBubble>surface (default)</BlessBubble>
@@ -24,3 +20,7 @@ import { BlessBubble } from "blessing-ui";
     </BlessBubble>
   </div>
 </template>
+
+<script setup lang="ts">
+import { BlessBubble } from "blessing-ui";
+</script>

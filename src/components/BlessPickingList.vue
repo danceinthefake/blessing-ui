@@ -1,3 +1,58 @@
+<template>
+  <section class="bless-picking" :aria-label="order ? `${text.title}: ${order}` : text.title">
+    <div class="bless-picking__head">
+      <strong v-if="order" class="bless-picking__order">{{ order }}</strong>
+      <span class="bless-picking__progress" role="status">{{
+        complete ? text.done : text.progress(picked, total)
+      }}</span>
+    </div>
+    <div class="bless-picking__bar" aria-hidden="true">
+      <span :style="{ inlineSize: `${total ? (picked / total) * 100 : 0}%` }" />
+    </div>
+    <BlessSkuField v-model="code" kind="sku" :label="text.scan" clear-on-scan @scan="scan" />
+    <p class="bless-picking__error" role="alert">{{ error }}</p>
+    <ol class="bless-stagger bless-picking__list" role="list">
+      <li
+        v-for="l in ordered"
+        :key="l.id"
+        class="bless-picking__line"
+        :class="{ 'is-done': (l.picked ?? 0) >= l.quantity }"
+      >
+        <div class="bless-picking__box">
+          <span class="bless-picking__loc">{{ l.location }}</span>
+          <span class="bless-picking__item">
+            <strong>{{ l.name }}</strong>
+            <span class="bless-picking__sku">{{ l.sku }}</span>
+          </span>
+          <span class="bless-picking__count">
+            <button
+              type="button"
+              :aria-label="text.remove(l.name)"
+              :disabled="!(l.picked ?? 0)"
+              @click="bump(l.id, -1)"
+            >
+              −
+            </button>
+            <span class="bless-picking__num">
+              <span aria-hidden="true">{{ l.picked ?? 0 }} / {{ l.quantity }}</span>
+              <span class="bless-sr">{{ text.picked(l.name, l.picked ?? 0, l.quantity) }}</span>
+            </span>
+            <button
+              type="button"
+              :aria-label="text.add(l.name)"
+              :disabled="(l.picked ?? 0) >= l.quantity"
+              @click="bump(l.id, 1)"
+            >
+              +
+            </button>
+          </span>
+        </div>
+      </li>
+    </ol>
+    <span class="bless-sr" aria-live="polite">{{ said }}</span>
+  </section>
+</template>
+
 <script setup lang="ts">
 import { computed, ref } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -80,61 +135,6 @@ function scan(c: string) {
   bump(l.id, 1);
 }
 </script>
-
-<template>
-  <section class="bless-picking" :aria-label="order ? `${text.title}: ${order}` : text.title">
-    <div class="bless-picking__head">
-      <strong v-if="order" class="bless-picking__order">{{ order }}</strong>
-      <span class="bless-picking__progress" role="status">{{
-        complete ? text.done : text.progress(picked, total)
-      }}</span>
-    </div>
-    <div class="bless-picking__bar" aria-hidden="true">
-      <span :style="{ inlineSize: `${total ? (picked / total) * 100 : 0}%` }" />
-    </div>
-    <BlessSkuField v-model="code" kind="sku" :label="text.scan" clear-on-scan @scan="scan" />
-    <p class="bless-picking__error" role="alert">{{ error }}</p>
-    <ol class="bless-stagger bless-picking__list" role="list">
-      <li
-        v-for="l in ordered"
-        :key="l.id"
-        class="bless-picking__line"
-        :class="{ 'is-done': (l.picked ?? 0) >= l.quantity }"
-      >
-        <div class="bless-picking__box">
-          <span class="bless-picking__loc">{{ l.location }}</span>
-          <span class="bless-picking__item">
-            <strong>{{ l.name }}</strong>
-            <span class="bless-picking__sku">{{ l.sku }}</span>
-          </span>
-          <span class="bless-picking__count">
-            <button
-              type="button"
-              :aria-label="text.remove(l.name)"
-              :disabled="!(l.picked ?? 0)"
-              @click="bump(l.id, -1)"
-            >
-              −
-            </button>
-            <span class="bless-picking__num">
-              <span aria-hidden="true">{{ l.picked ?? 0 }} / {{ l.quantity }}</span>
-              <span class="bless-sr">{{ text.picked(l.name, l.picked ?? 0, l.quantity) }}</span>
-            </span>
-            <button
-              type="button"
-              :aria-label="text.add(l.name)"
-              :disabled="(l.picked ?? 0) >= l.quantity"
-              @click="bump(l.id, 1)"
-            >
-              +
-            </button>
-          </span>
-        </div>
-      </li>
-    </ol>
-    <span class="bless-sr" aria-live="polite">{{ said }}</span>
-  </section>
-</template>
 
 <style>
 .bless-picking {

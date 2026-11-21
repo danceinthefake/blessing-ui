@@ -1,33 +1,3 @@
-<script setup lang="ts">
-import { computed, ref } from "vue";
-import { BlessSplitView } from "blessing-ui";
-
-const mails = [
-  {
-    id: 1,
-    from: "Mika",
-    subject: "Docs review",
-    body: "The new component pages read well. Two typos on the Gantt page.",
-  },
-  {
-    id: 2,
-    from: "Ken",
-    subject: "Release 0.2",
-    body: "Can we cut it on Friday? The e2e run is green on all three browsers.",
-  },
-  {
-    id: 3,
-    from: "Miho",
-    subject: "Screenshots",
-    body: "Regenerated for dark mode; they are in the shared folder.",
-  },
-];
-const picked = ref(mails[0]!.id);
-const detail = ref(false);
-const mail = computed(() => mails.find((m) => m.id === picked.value)!);
-const size = ref(35);
-</script>
-
 <template>
   <div style="height: 260px; border: 1px solid var(--bless-color-border)">
     <BlessSplitView
@@ -71,3 +41,33 @@ const size = ref(35);
     </BlessSplitView>
   </div>
 </template>
+
+<script setup lang="ts">
+import { computed, ref } from "vue";
+import { BlessSplitView } from "blessing-ui";
+
+const mails = [
+  {
+    id: 1,
+    from: "Mika",
+    subject: "Docs review",
+    body: "The new component pages read well. Two typos on the Gantt page.",
+  },
+  {
+    id: 2,
+    from: "Ken",
+    subject: "Release 0.2",
+    body: "Can we cut it on Friday? The e2e run is green on all three browsers.",
+  },
+  {
+    id: 3,
+    from: "Miho",
+    subject: "Screenshots",
+    body: "Regenerated for dark mode; they are in the shared folder.",
+  },
+];
+const picked = ref(mails[0]!.id);
+const detail = ref(false);
+const mail = computed(() => mails.find((m) => m.id === picked.value)!);
+const size = ref(35);
+</script>

@@ -1,3 +1,49 @@
+<template>
+  <div
+    class="bless-pinpad"
+    :class="{ 'bless-pinpad--invalid': invalid, 'bless-pinpad--disabled': disabled }"
+    role="group"
+    :aria-label="text.pin"
+    @keydown="onKey"
+  >
+    <div class="bless-pinpad__dots" aria-hidden="true">
+      <span
+        v-for="i in length"
+        :key="i"
+        class="bless-pinpad__dot"
+        :class="{ 'bless-pinpad__dot--on': i <= model.length }"
+      />
+    </div>
+    <span class="bless-sr" aria-live="polite">{{ text.entered(model.length, length) }}</span>
+    <input v-if="name" type="hidden" :name :value="model" />
+    <div class="bless-pinpad__keys">
+      <BlessButton
+        v-for="d in ['1', '2', '3', '4', '5', '6', '7', '8', '9']"
+        :key="d"
+        variant="outline"
+        size="lg"
+        :disabled="disabled"
+        @click="press(d)"
+        >{{ d }}</BlessButton
+      >
+      <BlessButton variant="ghost" size="lg" :disabled="disabled" @click="clear">{{
+        text.clear
+      }}</BlessButton>
+      <BlessButton variant="outline" size="lg" :disabled="disabled" @click="press('0')"
+        >0</BlessButton
+      >
+      <BlessButton
+        variant="ghost"
+        size="lg"
+        :disabled="disabled"
+        :aria-label="text.delete"
+        @click="back"
+        ><span aria-hidden="true">⌫</span></BlessButton
+      >
+    </div>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -59,52 +105,6 @@ function onKey(e: KeyboardEvent) {
   e.preventDefault();
 }
 </script>
-
-<template>
-  <div
-    class="bless-pinpad"
-    :class="{ 'bless-pinpad--invalid': invalid, 'bless-pinpad--disabled': disabled }"
-    role="group"
-    :aria-label="text.pin"
-    @keydown="onKey"
-  >
-    <div class="bless-pinpad__dots" aria-hidden="true">
-      <span
-        v-for="i in length"
-        :key="i"
-        class="bless-pinpad__dot"
-        :class="{ 'bless-pinpad__dot--on': i <= model.length }"
-      />
-    </div>
-    <span class="bless-sr" aria-live="polite">{{ text.entered(model.length, length) }}</span>
-    <input v-if="name" type="hidden" :name :value="model" />
-    <div class="bless-pinpad__keys">
-      <BlessButton
-        v-for="d in ['1', '2', '3', '4', '5', '6', '7', '8', '9']"
-        :key="d"
-        variant="outline"
-        size="lg"
-        :disabled="disabled"
-        @click="press(d)"
-        >{{ d }}</BlessButton
-      >
-      <BlessButton variant="ghost" size="lg" :disabled="disabled" @click="clear">{{
-        text.clear
-      }}</BlessButton>
-      <BlessButton variant="outline" size="lg" :disabled="disabled" @click="press('0')"
-        >0</BlessButton
-      >
-      <BlessButton
-        variant="ghost"
-        size="lg"
-        :disabled="disabled"
-        :aria-label="text.delete"
-        @click="back"
-        ><span aria-hidden="true">⌫</span></BlessButton
-      >
-    </div>
-  </div>
-</template>
 
 <style>
 .bless-pinpad {

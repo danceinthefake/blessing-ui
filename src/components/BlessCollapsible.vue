@@ -1,16 +1,3 @@
-<script setup lang="ts">
-defineOptions({ name: "BlessCollapsible" });
-
-defineProps<{
-  title?: string;
-  /** native exclusive-open group (details name=) */
-  name?: string;
-  disabled?: boolean;
-}>();
-
-const open = defineModel<boolean>("open", { default: false });
-</script>
-
 <template>
   <details
     class="bless-collapsible"
@@ -33,6 +20,19 @@ const open = defineModel<boolean>("open", { default: false });
     </div>
   </details>
 </template>
+
+<script setup lang="ts">
+defineOptions({ name: "BlessCollapsible" });
+
+defineProps<{
+  title?: string;
+  /** native exclusive-open group (details name=) */
+  name?: string;
+  disabled?: boolean;
+}>();
+
+const open = defineModel<boolean>("open", { default: false });
+</script>
 
 <style>
 .bless-collapsible {

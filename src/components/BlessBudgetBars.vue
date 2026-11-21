@@ -1,3 +1,25 @@
+<template>
+  <section class="bless-budget" :aria-label="text.title">
+    <div
+      v-for="(r, i) in rows"
+      :key="r.name"
+      class="bless-budget__row"
+      :class="{ 'is-over': r.over, 'is-total': i === rows.length - 1 }"
+    >
+      <div class="bless-budget__line">
+        <span class="bless-budget__name">{{ r.name }}</span>
+        <span class="bless-budget__nums">{{
+          text.of(money.format(r.spent), money.format(r.budget))
+        }}</span>
+      </div>
+      <div class="bless-budget__track" aria-hidden="true">
+        <div class="bless-budget__fill" :style="{ inlineSize: `${r.share * 100}%` }" />
+      </div>
+      <span class="bless-budget__rest">{{ r.rest }}</span>
+    </div>
+  </section>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -67,28 +89,6 @@ const rows = computed(() => {
   });
 });
 </script>
-
-<template>
-  <section class="bless-budget" :aria-label="text.title">
-    <div
-      v-for="(r, i) in rows"
-      :key="r.name"
-      class="bless-budget__row"
-      :class="{ 'is-over': r.over, 'is-total': i === rows.length - 1 }"
-    >
-      <div class="bless-budget__line">
-        <span class="bless-budget__name">{{ r.name }}</span>
-        <span class="bless-budget__nums">{{
-          text.of(money.format(r.spent), money.format(r.budget))
-        }}</span>
-      </div>
-      <div class="bless-budget__track" aria-hidden="true">
-        <div class="bless-budget__fill" :style="{ inlineSize: `${r.share * 100}%` }" />
-      </div>
-      <span class="bless-budget__rest">{{ r.rest }}</span>
-    </div>
-  </section>
-</template>
 
 <style>
 .bless-budget {

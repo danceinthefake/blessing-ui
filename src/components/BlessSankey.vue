@@ -1,50 +1,3 @@
-<script setup lang="ts">
-import { computed, ref } from "vue";
-import { useLabelPack } from "../composables/useLabels";
-import { chartColor, numberText, useWidth } from "./chart";
-import { layoutSankey, type BlessSankeyLink, type BlessSankeyNode } from "./sankey";
-import "./sr.css";
-
-defineOptions({ name: "BlessSankey" });
-const pack = useLabelPack("BlessSankey");
-
-const props = withDefaults(
-  defineProps<{
-    /** the flows; a node is any id that a link names */
-    links: BlessSankeyLink[];
-    /** labels, colors, and order for the nodes; optional */
-    nodes?: BlessSankeyNode[];
-    height?: number;
-    /** text for one value, for example `(v) => v.toLocaleString()` */
-    format?: (v: number) => string;
-    /** names the chart and its table for screen readers */
-    label?: string;
-    labels?: Partial<{ from: string; to: string; value: string }>;
-  }>(),
-  { nodes: () => [], height: 320, label: "Flows" },
-);
-
-const text = computed(() => ({
-  from: "From",
-  to: "To",
-  value: "Value",
-  ...pack(),
-  ...props.labels,
-}));
-const fmt = computed(() => props.format ?? numberText);
-
-const box = ref<HTMLElement>();
-const width = useWidth(box);
-
-const NODE = 12;
-// room at both sides for the labels of the first and the last column
-const PAD = 8;
-const laid = computed(() =>
-  layoutSankey(props.links, props.nodes, width.value - 2 * PAD, props.height, NODE),
-);
-const last = computed(() => Math.max(0, ...laid.value.nodes.map((n) => n.col)));
-</script>
-
 <template>
   <figure ref="box" class="bless-sankey">
     <svg
@@ -99,6 +52,53 @@ const last = computed(() => Math.max(0, ...laid.value.nodes.map((n) => n.col)));
     </div>
   </figure>
 </template>
+
+<script setup lang="ts">
+import { computed, ref } from "vue";
+import { useLabelPack } from "../composables/useLabels";
+import { chartColor, numberText, useWidth } from "./chart";
+import { layoutSankey, type BlessSankeyLink, type BlessSankeyNode } from "./sankey";
+import "./sr.css";
+
+defineOptions({ name: "BlessSankey" });
+const pack = useLabelPack("BlessSankey");
+
+const props = withDefaults(
+  defineProps<{
+    /** the flows; a node is any id that a link names */
+    links: BlessSankeyLink[];
+    /** labels, colors, and order for the nodes; optional */
+    nodes?: BlessSankeyNode[];
+    height?: number;
+    /** text for one value, for example `(v) => v.toLocaleString()` */
+    format?: (v: number) => string;
+    /** names the chart and its table for screen readers */
+    label?: string;
+    labels?: Partial<{ from: string; to: string; value: string }>;
+  }>(),
+  { nodes: () => [], height: 320, label: "Flows" },
+);
+
+const text = computed(() => ({
+  from: "From",
+  to: "To",
+  value: "Value",
+  ...pack(),
+  ...props.labels,
+}));
+const fmt = computed(() => props.format ?? numberText);
+
+const box = ref<HTMLElement>();
+const width = useWidth(box);
+
+const NODE = 12;
+// room at both sides for the labels of the first and the last column
+const PAD = 8;
+const laid = computed(() =>
+  layoutSankey(props.links, props.nodes, width.value - 2 * PAD, props.height, NODE),
+);
+const last = computed(() => Math.max(0, ...laid.value.nodes.map((n) => n.col)));
+</script>
 
 <style>
 .bless-sankey {

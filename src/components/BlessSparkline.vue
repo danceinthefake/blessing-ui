@@ -1,3 +1,48 @@
+<template>
+  <svg
+    class="bless-sparkline"
+    :class="`bless-sparkline--${type}`"
+    role="img"
+    :aria-label="summary"
+    :width
+    :height
+    :viewBox="`0 0 ${width} ${height}`"
+    :style="{ '--_c': colour(color), '--_n': colour(negativeColor) }"
+  >
+    <template v-if="type === 'line'">
+      <path v-if="fill && area" class="bless-sparkline__area" :d="area" />
+      <path v-if="points.length > 1" class="bless-sparkline__line" :d="line" pathLength="1" />
+      <circle
+        v-if="(dot || points.length === 1) && last"
+        class="bless-sparkline__dot"
+        :cx="last.x"
+        :cy="last.y"
+        r="2.5"
+      />
+    </template>
+    <template v-else>
+      <line
+        v-if="type === 'winloss'"
+        class="bless-sparkline__mid"
+        :x1="PAD"
+        :x2="width - PAD"
+        :y1="height / 2"
+        :y2="height / 2"
+      />
+      <rect
+        v-for="(b, i) in bars"
+        :key="i"
+        class="bless-sparkline__bar"
+        :class="{ 'bless-sparkline__bar--neg': b.neg }"
+        :x="b.x"
+        :y="b.y"
+        :width="b.w"
+        :height="b.h"
+      />
+    </template>
+  </svg>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 
@@ -98,51 +143,6 @@ const summary = computed(() => {
   return `${name}: ${v.length} values, from ${fmt.value(v[0]!)} to ${fmt.value(v.at(-1)!)}, low ${fmt.value(Math.min(...v))}, high ${fmt.value(Math.max(...v))}`;
 });
 </script>
-
-<template>
-  <svg
-    class="bless-sparkline"
-    :class="`bless-sparkline--${type}`"
-    role="img"
-    :aria-label="summary"
-    :width
-    :height
-    :viewBox="`0 0 ${width} ${height}`"
-    :style="{ '--_c': colour(color), '--_n': colour(negativeColor) }"
-  >
-    <template v-if="type === 'line'">
-      <path v-if="fill && area" class="bless-sparkline__area" :d="area" />
-      <path v-if="points.length > 1" class="bless-sparkline__line" :d="line" pathLength="1" />
-      <circle
-        v-if="(dot || points.length === 1) && last"
-        class="bless-sparkline__dot"
-        :cx="last.x"
-        :cy="last.y"
-        r="2.5"
-      />
-    </template>
-    <template v-else>
-      <line
-        v-if="type === 'winloss'"
-        class="bless-sparkline__mid"
-        :x1="PAD"
-        :x2="width - PAD"
-        :y1="height / 2"
-        :y2="height / 2"
-      />
-      <rect
-        v-for="(b, i) in bars"
-        :key="i"
-        class="bless-sparkline__bar"
-        :class="{ 'bless-sparkline__bar--neg': b.neg }"
-        :x="b.x"
-        :y="b.y"
-        :width="b.w"
-        :height="b.h"
-      />
-    </template>
-  </svg>
-</template>
 
 <style>
 .bless-sparkline {

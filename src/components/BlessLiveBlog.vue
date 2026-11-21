@@ -1,3 +1,38 @@
+<template>
+  <section class="bless-live" :aria-label="text.title">
+    <div class="bless-live__head">
+      <span v-if="live" class="bless-live__badge"
+        ><span class="bless-live__dot" aria-hidden="true" />{{ text.live }}</span
+      >
+      <button v-if="waiting.length" type="button" class="bless-live__new" @click="reveal">
+        ↑ {{ text.show(waiting.length) }}
+      </button>
+      <span class="bless-sr" role="status">{{
+        waiting.length ? text.show(waiting.length) : ""
+      }}</span>
+    </div>
+    <ol ref="list" class="bless-stagger bless-live__list" role="list">
+      <li
+        v-for="u in [...pinned, ...rest]"
+        :key="u.id"
+        class="bless-live__update"
+        :class="{ 'is-pinned': u.pinned, 'is-key': u.key }"
+        tabindex="-1"
+      >
+        <div class="bless-live__card">
+          <div class="bless-live__meta">
+            <time class="bless-live__time">{{ u.time }}</time>
+            <span v-if="u.pinned" class="bless-live__tag">{{ text.pinned }}</span>
+            <span v-if="u.key" class="bless-live__tag is-key">★ {{ text.key }}</span>
+          </div>
+          <h3 v-if="u.title" class="bless-live__title">{{ u.title }}</h3>
+          <p class="bless-live__body">{{ u.body }}</p>
+        </div>
+      </li>
+    </ol>
+  </section>
+</template>
+
 <script setup lang="ts">
 import { computed, nextTick, ref, watch } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -62,41 +97,6 @@ const visible = computed(() => props.updates.filter((u) => shown.value.has(u.id)
 const pinned = computed(() => visible.value.filter((u) => u.pinned));
 const rest = computed(() => visible.value.filter((u) => !u.pinned));
 </script>
-
-<template>
-  <section class="bless-live" :aria-label="text.title">
-    <div class="bless-live__head">
-      <span v-if="live" class="bless-live__badge"
-        ><span class="bless-live__dot" aria-hidden="true" />{{ text.live }}</span
-      >
-      <button v-if="waiting.length" type="button" class="bless-live__new" @click="reveal">
-        ↑ {{ text.show(waiting.length) }}
-      </button>
-      <span class="bless-sr" role="status">{{
-        waiting.length ? text.show(waiting.length) : ""
-      }}</span>
-    </div>
-    <ol ref="list" class="bless-stagger bless-live__list" role="list">
-      <li
-        v-for="u in [...pinned, ...rest]"
-        :key="u.id"
-        class="bless-live__update"
-        :class="{ 'is-pinned': u.pinned, 'is-key': u.key }"
-        tabindex="-1"
-      >
-        <div class="bless-live__card">
-          <div class="bless-live__meta">
-            <time class="bless-live__time">{{ u.time }}</time>
-            <span v-if="u.pinned" class="bless-live__tag">{{ text.pinned }}</span>
-            <span v-if="u.key" class="bless-live__tag is-key">★ {{ text.key }}</span>
-          </div>
-          <h3 v-if="u.title" class="bless-live__title">{{ u.title }}</h3>
-          <p class="bless-live__body">{{ u.body }}</p>
-        </div>
-      </li>
-    </ol>
-  </section>
-</template>
 
 <style>
 .bless-live {

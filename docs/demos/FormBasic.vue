@@ -1,12 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { BlessButton, BlessField, BlessForm, BlessInput } from "blessing-ui";
-const result = ref("");
-function onSubmit(d: FormData) {
-  result.value = JSON.stringify(Object.fromEntries(d));
-}
-</script>
-
 <template>
   <BlessForm style="max-width: 420px" @submit="onSubmit">
     <BlessField label="Handle" required description="3–12 chars">
@@ -28,3 +19,12 @@ function onSubmit(d: FormData) {
     <small v-if="result">submitted: {{ result }}</small>
   </BlessForm>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { BlessButton, BlessField, BlessForm, BlessInput } from "blessing-ui";
+const result = ref("");
+function onSubmit(d: FormData) {
+  result.value = JSON.stringify(Object.fromEntries(d));
+}
+</script>

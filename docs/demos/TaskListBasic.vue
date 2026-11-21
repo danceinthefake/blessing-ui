@@ -1,3 +1,7 @@
+<template>
+  <BlessTaskList v-model="tasks" today="2026-11-16" style="max-width: 560px" />
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessTaskList, type BlessTask } from "blessing-ui";
@@ -30,7 +34,3 @@ const tasks = ref<BlessTask[]>([
   },
 ]);
 </script>
-
-<template>
-  <BlessTaskList v-model="tasks" today="2026-11-16" style="max-width: 560px" />
-</template>

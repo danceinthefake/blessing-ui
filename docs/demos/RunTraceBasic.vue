@@ -1,3 +1,7 @@
+<template>
+  <BlessRunTrace :steps />
+</template>
+
 <script setup lang="ts">
 import { BlessRunTrace, type BlessTraceStep } from "blessing-ui";
 
@@ -54,7 +58,3 @@ const steps: BlessTraceStep[] = [
   },
 ];
 </script>
-
-<template>
-  <BlessRunTrace :steps />
-</template>

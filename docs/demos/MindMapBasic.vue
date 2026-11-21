@@ -1,3 +1,7 @@
+<template>
+  <BlessMindMap :root />
+</template>
+
 <script setup lang="ts">
 import { BlessMindMap } from "blessing-ui";
 
@@ -18,7 +22,3 @@ const root = {
   ],
 };
 </script>
-
-<template>
-  <BlessMindMap :root />
-</template>

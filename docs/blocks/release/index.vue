@@ -1,3 +1,43 @@
+<template>
+  <BlessSection title="Release" watermark="BD & CD" class="release">
+    <BlessDataView
+      :items="releases"
+      layout="grid"
+      columns="150px"
+      :switchable="false"
+      :row-key="(r) => r.id"
+      label="Releases"
+    >
+      <template #default="{ item: r }">
+        <BlessCard :label="r.kind">
+          <template #media>
+            <BlessAspectRatio :ratio="r.kind === 'CD' ? 1 : 3 / 4">
+              <div class="release__cover" :style="{ '--_c': r.color }" aria-hidden="true">
+                {{ r.kind === "CD" ? "♪" : "BD" }}
+              </div>
+            </BlessAspectRatio>
+          </template>
+          <BlessText as="p" weight="bold" size="sm">{{ r.title }}</BlessText>
+          <BlessText as="p" size="xs" muted>{{ r.date }} 発売</BlessText>
+          <div class="release__row">
+            <BlessText weight="bold">{{ r.price }}</BlessText>
+            <BlessBadge v-if="r.soon" color="warning">予約受付中</BlessBadge>
+          </div>
+          <template #footer
+            ><BlessButton
+              size="sm"
+              :variant="r.soon ? 'solid' : 'outline'"
+              :aria-label="`${r.title} を${r.soon ? '予約' : '購入'}`"
+              href="#"
+              >{{ r.soon ? "予約" : "購入" }}</BlessButton
+            ></template
+          >
+        </BlessCard>
+      </template>
+    </BlessDataView>
+  </BlessSection>
+</template>
+
 <script setup lang="ts">
 import {
   BlessAspectRatio,
@@ -57,46 +97,6 @@ const all: Release[] = [
 // soonest first, whatever order they were entered in
 const releases = [...all].sort((a, b) => a.date.localeCompare(b.date));
 </script>
-
-<template>
-  <BlessSection title="Release" watermark="BD & CD" class="release">
-    <BlessDataView
-      :items="releases"
-      layout="grid"
-      columns="150px"
-      :switchable="false"
-      :row-key="(r) => r.id"
-      label="Releases"
-    >
-      <template #default="{ item: r }">
-        <BlessCard :label="r.kind">
-          <template #media>
-            <BlessAspectRatio :ratio="r.kind === 'CD' ? 1 : 3 / 4">
-              <div class="release__cover" :style="{ '--_c': r.color }" aria-hidden="true">
-                {{ r.kind === "CD" ? "♪" : "BD" }}
-              </div>
-            </BlessAspectRatio>
-          </template>
-          <BlessText as="p" weight="bold" size="sm">{{ r.title }}</BlessText>
-          <BlessText as="p" size="xs" muted>{{ r.date }} 発売</BlessText>
-          <div class="release__row">
-            <BlessText weight="bold">{{ r.price }}</BlessText>
-            <BlessBadge v-if="r.soon" color="warning">予約受付中</BlessBadge>
-          </div>
-          <template #footer
-            ><BlessButton
-              size="sm"
-              :variant="r.soon ? 'solid' : 'outline'"
-              :aria-label="`${r.title} を${r.soon ? '予約' : '購入'}`"
-              href="#"
-              >{{ r.soon ? "予約" : "購入" }}</BlessButton
-            ></template
-          >
-        </BlessCard>
-      </template>
-    </BlessDataView>
-  </BlessSection>
-</template>
 
 <style scoped>
 .release {

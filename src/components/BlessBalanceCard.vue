@@ -1,3 +1,47 @@
+<template>
+  <section class="bless-balance" :aria-label="label">
+    <div class="bless-balance__top">
+      <span class="bless-balance__label">{{ label }}</span>
+      <button
+        type="button"
+        class="bless-balance__eye"
+        :aria-pressed="masked"
+        :aria-label="masked ? text.show : text.hide"
+        :title="masked ? text.show : text.hide"
+        @click="masked = !masked"
+      >
+        <svg
+          viewBox="0 0 24 24"
+          width="18"
+          height="18"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          aria-hidden="true"
+        >
+          <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z" />
+          <circle cx="12" cy="12" r="3" />
+          <path v-if="masked" d="M3 3l18 18" />
+        </svg>
+      </button>
+    </div>
+    <p class="bless-balance__amount">
+      <template v-if="masked">
+        <span aria-hidden="true">••••••</span><span class="bless-sr">{{ text.hidden }}</span>
+      </template>
+      <template v-else>{{ money.format(amount) }}</template>
+    </p>
+    <p
+      v-if="change !== undefined && !masked"
+      class="bless-balance__change"
+      :class="change < 0 ? 'is-down' : 'is-up'"
+    >
+      {{ changeText }}<template v-if="period"> · {{ period }}</template>
+    </p>
+    <div v-if="$slots.default" class="bless-balance__actions"><slot /></div>
+  </section>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -42,50 +86,6 @@ const changeText = computed(() => {
   return `${props.change < 0 ? "−" : "+"}${money.value.format(Math.abs(props.change))} ${word}`;
 });
 </script>
-
-<template>
-  <section class="bless-balance" :aria-label="label">
-    <div class="bless-balance__top">
-      <span class="bless-balance__label">{{ label }}</span>
-      <button
-        type="button"
-        class="bless-balance__eye"
-        :aria-pressed="masked"
-        :aria-label="masked ? text.show : text.hide"
-        :title="masked ? text.show : text.hide"
-        @click="masked = !masked"
-      >
-        <svg
-          viewBox="0 0 24 24"
-          width="18"
-          height="18"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          aria-hidden="true"
-        >
-          <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z" />
-          <circle cx="12" cy="12" r="3" />
-          <path v-if="masked" d="M3 3l18 18" />
-        </svg>
-      </button>
-    </div>
-    <p class="bless-balance__amount">
-      <template v-if="masked">
-        <span aria-hidden="true">••••••</span><span class="bless-sr">{{ text.hidden }}</span>
-      </template>
-      <template v-else>{{ money.format(amount) }}</template>
-    </p>
-    <p
-      v-if="change !== undefined && !masked"
-      class="bless-balance__change"
-      :class="change < 0 ? 'is-down' : 'is-up'"
-    >
-      {{ changeText }}<template v-if="period"> · {{ period }}</template>
-    </p>
-    <div v-if="$slots.default" class="bless-balance__actions"><slot /></div>
-  </section>
-</template>
 
 <style>
 .bless-balance {

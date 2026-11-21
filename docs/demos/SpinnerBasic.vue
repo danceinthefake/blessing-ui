@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import { BlessButton, BlessSpinner } from "blessing-ui";
-</script>
-
 <template>
   <div class="row">
     <BlessSpinner size="sm" />
@@ -10,3 +6,7 @@ import { BlessButton, BlessSpinner } from "blessing-ui";
     <BlessButton loading>Saving</BlessButton>
   </div>
 </template>
+
+<script setup lang="ts">
+import { BlessButton, BlessSpinner } from "blessing-ui";
+</script>

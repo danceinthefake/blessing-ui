@@ -1,3 +1,12 @@
+<template>
+  <div>
+    <BlessVariantPicker v-model="choice" :options />
+    <BlessText as="p" size="sm" style="margin-top: 16px">
+      Chosen: {{ JSON.stringify(choice) }}
+    </BlessText>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessText, BlessVariantPicker } from "blessing-ui";
@@ -27,12 +36,3 @@ const options = [
 ];
 const choice = ref<Record<string, string>>({ color: "black", size: "m" });
 </script>
-
-<template>
-  <div>
-    <BlessVariantPicker v-model="choice" :options />
-    <BlessText as="p" size="sm" style="margin-top: 16px">
-      Chosen: {{ JSON.stringify(choice) }}
-    </BlessText>
-  </div>
-</template>

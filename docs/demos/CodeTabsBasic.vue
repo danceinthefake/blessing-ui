@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import { BlessCodeTabs, BlessText } from "blessing-ui";
-</script>
-
 <template>
   <div style="display: flex; flex-direction: column; gap: 12px; max-width: 560px">
     <BlessText as="p" size="sm">1. Add the library:</BlessText>
@@ -21,3 +17,7 @@ import { BlessCodeTabs, BlessText } from "blessing-ui";
     />
   </div>
 </template>
+
+<script setup lang="ts">
+import { BlessCodeTabs, BlessText } from "blessing-ui";
+</script>

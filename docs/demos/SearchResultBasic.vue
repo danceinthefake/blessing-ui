@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import { BlessSearchResult } from "blessing-ui";
-</script>
-
 <template>
   <div style="display: grid; gap: 20px">
     <BlessSearchResult
@@ -21,3 +17,7 @@ import { BlessSearchResult } from "blessing-ui";
     />
   </div>
 </template>
+
+<script setup lang="ts">
+import { BlessSearchResult } from "blessing-ui";
+</script>

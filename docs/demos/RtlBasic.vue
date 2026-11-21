@@ -1,25 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import {
-  BlessAlert,
-  BlessBreadcrumb,
-  BlessButton,
-  BlessCard,
-  BlessCheckbox,
-  BlessInput,
-  BlessList,
-  BlessListItem,
-  BlessSteps,
-  BlessSwitch,
-  BlessTabs,
-  BlessText,
-} from "blessing-ui";
-
-const dir = ref<"rtl" | "ltr">("rtl");
-const tab = ref("news");
-const step = ref(1);
-</script>
-
 <template>
   <div class="row" style="margin-bottom: 16px">
     <BlessSwitch :model-value="dir === 'rtl'" @update:model-value="dir = $event ? 'rtl' : 'ltr'">
@@ -66,3 +44,25 @@ const step = ref(1);
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import {
+  BlessAlert,
+  BlessBreadcrumb,
+  BlessButton,
+  BlessCard,
+  BlessCheckbox,
+  BlessInput,
+  BlessList,
+  BlessListItem,
+  BlessSteps,
+  BlessSwitch,
+  BlessTabs,
+  BlessText,
+} from "blessing-ui";
+
+const dir = ref<"rtl" | "ltr">("rtl");
+const tab = ref("news");
+const step = ref(1);
+</script>

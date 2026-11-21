@@ -1,3 +1,47 @@
+<template>
+  <section class="bless-thermo" :class="`is-${mode}`" :aria-label="text.title">
+    <div class="bless-thermo__dial">
+      <BlessKnob
+        v-model="target"
+        :min
+        :max
+        :step
+        size="lg"
+        :label="text.target"
+        :format="deg"
+        :disabled="mode === 'off'"
+      />
+      <p class="bless-thermo__now">{{ text.now(deg(current)) }}</p>
+    </div>
+    <div class="bless-thermo__nudge">
+      <button
+        type="button"
+        :aria-label="text.lower"
+        :disabled="mode === 'off' || target <= min"
+        @click="nudge(-step)"
+      >
+        −
+      </button>
+      <button
+        type="button"
+        :aria-label="text.higher"
+        :disabled="mode === 'off' || target >= max"
+        @click="nudge(step)"
+      >
+        +
+      </button>
+    </div>
+    <p class="bless-thermo__status" role="status">{{ status }}</p>
+    <fieldset class="bless-thermo__modes">
+      <legend class="bless-sr">{{ text.title }}</legend>
+      <label v-for="m in MODES" :key="m" class="bless-thermo__mode">
+        <input v-model="mode" type="radio" :name="`${uid}-mode`" :value="m" />
+        <span>{{ text[m] }}</span>
+      </label>
+    </fieldset>
+  </section>
+</template>
+
 <script setup lang="ts">
 import { computed, useId } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -70,50 +114,6 @@ const status = computed(() => {
 });
 const MODES: BlessThermostatMode[] = ["heat", "cool", "auto", "off"];
 </script>
-
-<template>
-  <section class="bless-thermo" :class="`is-${mode}`" :aria-label="text.title">
-    <div class="bless-thermo__dial">
-      <BlessKnob
-        v-model="target"
-        :min
-        :max
-        :step
-        size="lg"
-        :label="text.target"
-        :format="deg"
-        :disabled="mode === 'off'"
-      />
-      <p class="bless-thermo__now">{{ text.now(deg(current)) }}</p>
-    </div>
-    <div class="bless-thermo__nudge">
-      <button
-        type="button"
-        :aria-label="text.lower"
-        :disabled="mode === 'off' || target <= min"
-        @click="nudge(-step)"
-      >
-        −
-      </button>
-      <button
-        type="button"
-        :aria-label="text.higher"
-        :disabled="mode === 'off' || target >= max"
-        @click="nudge(step)"
-      >
-        +
-      </button>
-    </div>
-    <p class="bless-thermo__status" role="status">{{ status }}</p>
-    <fieldset class="bless-thermo__modes">
-      <legend class="bless-sr">{{ text.title }}</legend>
-      <label v-for="m in MODES" :key="m" class="bless-thermo__mode">
-        <input v-model="mode" type="radio" :name="`${uid}-mode`" :value="m" />
-        <span>{{ text[m] }}</span>
-      </label>
-    </fieldset>
-  </section>
-</template>
 
 <style>
 .bless-thermo {

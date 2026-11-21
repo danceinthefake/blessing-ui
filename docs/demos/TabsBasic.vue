@@ -1,10 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { BlessTabs, BlessText } from "blessing-ui";
-import { heroines } from "./_data";
-const tab = ref("megumi");
-</script>
-
 <template>
   <BlessTabs v-model="tab" :tabs="heroines" label="Heroines" style="max-width: 640px">
     <template #default="{ tab: t }">
@@ -13,3 +6,10 @@ const tab = ref("megumi");
     </template>
   </BlessTabs>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { BlessTabs, BlessText } from "blessing-ui";
+import { heroines } from "./_data";
+const tab = ref("megumi");
+</script>

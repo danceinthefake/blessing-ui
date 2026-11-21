@@ -1,3 +1,32 @@
+<template>
+  <div
+    class="bless-swatches"
+    :class="`bless-swatches--${size}`"
+    role="radiogroup"
+    :aria-label="text.label"
+  >
+    <label
+      v-for="s in list"
+      :key="s.value"
+      class="bless-swatches__swatch"
+      :class="{ 'bless-swatches__swatch--on': same(model, s.value) }"
+      :style="{ '--_c': s.value }"
+      :title="s.label"
+    >
+      <input
+        type="radio"
+        class="bless-swatches__input"
+        :name
+        :value="s.value"
+        :checked="same(model, s.value)"
+        :disabled
+        :aria-label="s.label"
+        @change="model = s.value"
+      />
+    </label>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed, useId } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -33,35 +62,6 @@ const list = computed(() =>
 );
 const same = (a: string | null, b: string) => !!a && a.toLowerCase() === b.toLowerCase();
 </script>
-
-<template>
-  <div
-    class="bless-swatches"
-    :class="`bless-swatches--${size}`"
-    role="radiogroup"
-    :aria-label="text.label"
-  >
-    <label
-      v-for="s in list"
-      :key="s.value"
-      class="bless-swatches__swatch"
-      :class="{ 'bless-swatches__swatch--on': same(model, s.value) }"
-      :style="{ '--_c': s.value }"
-      :title="s.label"
-    >
-      <input
-        type="radio"
-        class="bless-swatches__input"
-        :name
-        :value="s.value"
-        :checked="same(model, s.value)"
-        :disabled
-        :aria-label="s.label"
-        @change="model = s.value"
-      />
-    </label>
-  </div>
-</template>
 
 <style>
 .bless-swatches {

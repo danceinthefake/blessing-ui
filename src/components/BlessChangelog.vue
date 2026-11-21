@@ -1,3 +1,26 @@
+<template>
+  <div class="bless-changelog">
+    <article v-for="r in releases" :key="r.version" class="bless-changelog__release">
+      <header class="bless-changelog__head">
+        <component :is="`h${level}`" class="bless-changelog__version">
+          {{ r.version }}<template v-if="r.title"> · {{ r.title }}</template>
+        </component>
+        <time v-if="r.date" class="bless-changelog__date" :datetime="r.date">{{
+          dateText.format(fromISO(r.date))
+        }}</time>
+      </header>
+      <section v-for="g in groups(r)" :key="g.type" class="bless-changelog__group">
+        <span class="bless-changelog__type" :class="`bless-changelog__type--${g.type}`">{{
+          text[g.type]
+        }}</span>
+        <ul class="bless-stagger bless-changelog__list">
+          <li v-for="(c, i) in g.items" :key="i">{{ c.text }}</li>
+        </ul>
+      </section>
+    </article>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { fromISO } from "../composables/date";
@@ -48,29 +71,6 @@ const dateText = computed(
   () => new Intl.DateTimeFormat(props.locale, { day: "numeric", month: "long", year: "numeric" }),
 );
 </script>
-
-<template>
-  <div class="bless-changelog">
-    <article v-for="r in releases" :key="r.version" class="bless-changelog__release">
-      <header class="bless-changelog__head">
-        <component :is="`h${level}`" class="bless-changelog__version">
-          {{ r.version }}<template v-if="r.title"> · {{ r.title }}</template>
-        </component>
-        <time v-if="r.date" class="bless-changelog__date" :datetime="r.date">{{
-          dateText.format(fromISO(r.date))
-        }}</time>
-      </header>
-      <section v-for="g in groups(r)" :key="g.type" class="bless-changelog__group">
-        <span class="bless-changelog__type" :class="`bless-changelog__type--${g.type}`">{{
-          text[g.type]
-        }}</span>
-        <ul class="bless-stagger bless-changelog__list">
-          <li v-for="(c, i) in g.items" :key="i">{{ c.text }}</li>
-        </ul>
-      </section>
-    </article>
-  </div>
-</template>
 
 <style>
 .bless-changelog {

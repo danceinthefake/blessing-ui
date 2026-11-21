@@ -1,3 +1,58 @@
+<template>
+  <form class="bless-compose" :aria-label="text.title" novalidate @submit.prevent="send">
+    <div class="bless-compose__row">
+      <label class="bless-compose__label" :for="`${uid}-to`">{{ text.to }}</label>
+      <div class="bless-compose__tags">
+        <BlessInputTags
+          :id="`${uid}-to`"
+          :label="text.to"
+          :model-value="draft.to"
+          :invalid="!!error && (draft.to.some((a) => !valid(a)) || !draft.to.length)"
+          :aria-describedby="`${uid}-hint ${uid}-err`"
+          @update:model-value="set({ to: $event })"
+        />
+      </div>
+      <button v-if="!showCc" type="button" class="bless-compose__cc" @click="showCc = true">
+        {{ text.addCc }}
+      </button>
+    </div>
+    <div v-if="showCc" class="bless-compose__row">
+      <label class="bless-compose__label" :for="`${uid}-cc`">{{ text.cc }}</label>
+      <div class="bless-compose__tags">
+        <BlessInputTags
+          :id="`${uid}-cc`"
+          :label="text.cc"
+          :model-value="draft.cc"
+          :invalid="draft.cc.some((a) => !valid(a))"
+          @update:model-value="set({ cc: $event })"
+        />
+      </div>
+    </div>
+    <p :id="`${uid}-hint`" class="bless-compose__hint">{{ text.hint }}</p>
+    <div class="bless-compose__row">
+      <label class="bless-compose__label" :for="`${uid}-subject`">{{ text.subject }}</label>
+      <input
+        :id="`${uid}-subject`"
+        class="bless-compose__input"
+        :value="draft.subject"
+        @input="set({ subject: ($event.target as HTMLInputElement).value })"
+      />
+    </div>
+    <textarea
+      class="bless-compose__body"
+      rows="8"
+      :aria-label="text.body"
+      :value="draft.body"
+      @input="set({ body: ($event.target as HTMLTextAreaElement).value })"
+    />
+    <p :id="`${uid}-err`" class="bless-compose__error" role="alert">{{ error }}</p>
+    <div class="bless-compose__actions">
+      <BlessButton type="submit">{{ text.send }}</BlessButton>
+      <BlessButton variant="ghost" @click="emit('discard')">{{ text.discard }}</BlessButton>
+    </div>
+  </form>
+</template>
+
 <script setup lang="ts">
 import { computed, ref, useId } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -68,61 +123,6 @@ function send() {
   if (!error.value) emit("send", draft.value);
 }
 </script>
-
-<template>
-  <form class="bless-compose" :aria-label="text.title" novalidate @submit.prevent="send">
-    <div class="bless-compose__row">
-      <label class="bless-compose__label" :for="`${uid}-to`">{{ text.to }}</label>
-      <div class="bless-compose__tags">
-        <BlessInputTags
-          :id="`${uid}-to`"
-          :label="text.to"
-          :model-value="draft.to"
-          :invalid="!!error && (draft.to.some((a) => !valid(a)) || !draft.to.length)"
-          :aria-describedby="`${uid}-hint ${uid}-err`"
-          @update:model-value="set({ to: $event })"
-        />
-      </div>
-      <button v-if="!showCc" type="button" class="bless-compose__cc" @click="showCc = true">
-        {{ text.addCc }}
-      </button>
-    </div>
-    <div v-if="showCc" class="bless-compose__row">
-      <label class="bless-compose__label" :for="`${uid}-cc`">{{ text.cc }}</label>
-      <div class="bless-compose__tags">
-        <BlessInputTags
-          :id="`${uid}-cc`"
-          :label="text.cc"
-          :model-value="draft.cc"
-          :invalid="draft.cc.some((a) => !valid(a))"
-          @update:model-value="set({ cc: $event })"
-        />
-      </div>
-    </div>
-    <p :id="`${uid}-hint`" class="bless-compose__hint">{{ text.hint }}</p>
-    <div class="bless-compose__row">
-      <label class="bless-compose__label" :for="`${uid}-subject`">{{ text.subject }}</label>
-      <input
-        :id="`${uid}-subject`"
-        class="bless-compose__input"
-        :value="draft.subject"
-        @input="set({ subject: ($event.target as HTMLInputElement).value })"
-      />
-    </div>
-    <textarea
-      class="bless-compose__body"
-      rows="8"
-      :aria-label="text.body"
-      :value="draft.body"
-      @input="set({ body: ($event.target as HTMLTextAreaElement).value })"
-    />
-    <p :id="`${uid}-err`" class="bless-compose__error" role="alert">{{ error }}</p>
-    <div class="bless-compose__actions">
-      <BlessButton type="submit">{{ text.send }}</BlessButton>
-      <BlessButton variant="ghost" @click="emit('discard')">{{ text.discard }}</BlessButton>
-    </div>
-  </form>
-</template>
 
 <style>
 .bless-compose {

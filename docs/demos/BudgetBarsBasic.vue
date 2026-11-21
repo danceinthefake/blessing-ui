@@ -1,3 +1,7 @@
+<template>
+  <BlessBudgetBars :budgets currency="IDR" locale="id-ID" style="max-width: 440px" />
+</template>
+
 <script setup lang="ts">
 import { BlessBudgetBars } from "blessing-ui";
 
@@ -9,7 +13,3 @@ const budgets = [
   { name: "Ads", spent: 250000, budget: 1000000 },
 ];
 </script>
-
-<template>
-  <BlessBudgetBars :budgets currency="IDR" locale="id-ID" style="max-width: 440px" />
-</template>

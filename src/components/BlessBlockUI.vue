@@ -1,3 +1,20 @@
+<template>
+  <div class="bless-block" :class="{ 'bless-block--on': blocked, 'bless-block--full': fullscreen }">
+    <div ref="content" class="bless-block__content" :inert="blocked || undefined"><slot /></div>
+    <!-- always present, so the change is announced; a region inserted with its text often isn't -->
+    <span class="bless-block__sr bless-sr" role="status">{{ blocked ? label : "" }}</span>
+    <div
+      v-if="blocked"
+      ref="overlay"
+      class="bless-block__overlay"
+      :aria-label="label"
+      tabindex="-1"
+    >
+      <slot name="indicator"><BlessSpinner size="lg" label="" /></slot>
+    </div>
+  </div>
+</template>
+
 <script setup lang="ts">
 import "./sr.css";
 import { nextTick, ref, watch } from "vue";
@@ -31,23 +48,6 @@ watch(
   },
 );
 </script>
-
-<template>
-  <div class="bless-block" :class="{ 'bless-block--on': blocked, 'bless-block--full': fullscreen }">
-    <div ref="content" class="bless-block__content" :inert="blocked || undefined"><slot /></div>
-    <!-- always present, so the change is announced; a region inserted with its text often isn't -->
-    <span class="bless-block__sr bless-sr" role="status">{{ blocked ? label : "" }}</span>
-    <div
-      v-if="blocked"
-      ref="overlay"
-      class="bless-block__overlay"
-      :aria-label="label"
-      tabindex="-1"
-    >
-      <slot name="indicator"><BlessSpinner size="lg" label="" /></slot>
-    </div>
-  </div>
-</template>
 
 <style>
 .bless-block {

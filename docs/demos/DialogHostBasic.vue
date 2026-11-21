@@ -1,3 +1,11 @@
+<template>
+  <div class="row">
+    <BlessButton @click="rename">Rename…</BlessButton>
+    <BlessButton variant="outline" @click="info">Text only</BlessButton>
+    <small>result: {{ result ?? "—" }}</small>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { defineComponent, h, ref } from "vue";
 import { BlessButton, BlessInput, useDialog } from "blessing-ui";
@@ -44,11 +52,3 @@ async function info() {
   await open({ title: "Heads up", text: "This modal was opened from code, no template needed." });
 }
 </script>
-
-<template>
-  <div class="row">
-    <BlessButton @click="rename">Rename…</BlessButton>
-    <BlessButton variant="outline" @click="info">Text only</BlessButton>
-    <small>result: {{ result ?? "—" }}</small>
-  </div>
-</template>

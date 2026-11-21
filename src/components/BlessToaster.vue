@@ -1,38 +1,3 @@
-<script setup lang="ts">
-import { useLabelPack } from "../composables/useLabels";
-import { computed } from "vue";
-import { pauseToasts, resumeToasts, toastState, useToast } from "../composables/useToast";
-
-defineOptions({ name: "BlessToaster" });
-
-const props = withDefaults(
-  defineProps<{
-    position?:
-      | "top-end"
-      | "top-start"
-      | "bottom-end"
-      | "bottom-start"
-      | "top-center"
-      | "bottom-center";
-    /** the region's name */
-    label?: string;
-    labels?: Partial<{ close: string }>;
-  }>(),
-  {
-    position: "bottom-end",
-    label: "Notifications",
-  },
-);
-const pack = useLabelPack("BlessToaster");
-const text = computed(() => ({
-  close: "Dismiss",
-  ...pack(),
-  ...props.labels,
-}));
-
-const { dismiss } = useToast();
-</script>
-
 <template>
   <div
     class="bless-toaster"
@@ -86,6 +51,41 @@ const { dismiss } = useToast();
     </TransitionGroup>
   </div>
 </template>
+
+<script setup lang="ts">
+import { useLabelPack } from "../composables/useLabels";
+import { computed } from "vue";
+import { pauseToasts, resumeToasts, toastState, useToast } from "../composables/useToast";
+
+defineOptions({ name: "BlessToaster" });
+
+const props = withDefaults(
+  defineProps<{
+    position?:
+      | "top-end"
+      | "top-start"
+      | "bottom-end"
+      | "bottom-start"
+      | "top-center"
+      | "bottom-center";
+    /** the region's name */
+    label?: string;
+    labels?: Partial<{ close: string }>;
+  }>(),
+  {
+    position: "bottom-end",
+    label: "Notifications",
+  },
+);
+const pack = useLabelPack("BlessToaster");
+const text = computed(() => ({
+  close: "Dismiss",
+  ...pack(),
+  ...props.labels,
+}));
+
+const { dismiss } = useToast();
+</script>
 
 <style>
 .bless-toaster {

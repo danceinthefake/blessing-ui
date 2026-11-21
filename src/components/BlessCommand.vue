@@ -1,3 +1,86 @@
+<template>
+  <component
+    :is="inline ? 'div' : BlessModal"
+    v-bind="
+      inline
+        ? {}
+        : { modelValue: open, 'onUpdate:modelValue': (v: boolean) => (open = v), size: 'md' }
+    "
+    class="bless-command"
+    :class="{ 'bless-command--inline': inline }"
+  >
+    <div class="bless-command__box">
+      <div class="bless-command__search bless-lean--field">
+        <span class="bless-command__icon" aria-hidden="true">⌕</span>
+        <button
+          v-if="scope"
+          type="button"
+          class="bless-command__scope"
+          :title="text.clearScope"
+          :aria-label="`${text.scope(scopeName(scope))}. ${text.clearScope}`"
+          @click="clearScope"
+        >
+          {{ scopeName(scope) }} <span aria-hidden="true">×</span>
+        </button>
+        <input
+          ref="input"
+          v-model="query"
+          type="text"
+          class="bless-command__input"
+          :placeholder
+          role="combobox"
+          :aria-label="scope ? `${label}: ${text.scope(scopeName(scope))}` : label"
+          aria-autocomplete="list"
+          :aria-expanded="true"
+          :aria-controls="`${id}-list`"
+          :aria-activedescendant="activeId"
+          :aria-describedby="scopeHint ? `${id}-hint` : undefined"
+          autocomplete="off"
+          spellcheck="false"
+          @keydown="onKey"
+        />
+        <BlessKbd v-if="!inline">Esc</BlessKbd>
+      </div>
+      <p v-if="scopeHint" :id="`${id}-hint`" class="bless-command__hint">{{ scopeHint }}</p>
+      <div :id="`${id}-list`" class="bless-command__list" role="listbox" :aria-label="label">
+        <div
+          v-for="(s, si) in sections"
+          :key="s.key"
+          role="group"
+          :aria-labelledby="s.label ? `${id}-g-${si}` : undefined"
+          class="bless-command__section"
+        >
+          <div v-if="s.label" :id="`${id}-g-${si}`" class="bless-command__group" aria-hidden="true">
+            {{ s.label }}
+          </div>
+          <div
+            v-for="(it, k) in s.items"
+            :key="it.value"
+            :id="rowId(it, s.recent)"
+            class="bless-command__item"
+            :class="{ 'bless-command__item--active': active === offset(si) + k }"
+            role="option"
+            :aria-selected="active === offset(si) + k"
+            :aria-disabled="it.disabled || undefined"
+            @mousemove="active = offset(si) + k"
+            @click="choose(it)"
+          >
+            <span class="bless-command__mark" aria-hidden="true">{{ it.icon ?? "" }}</span>
+            <span class="bless-command__label"
+              ><slot name="item" :item="it">{{ it.label }}</slot></span
+            >
+            <BlessKbd v-if="it.shortcut" class="bless-command__shortcut">{{
+              it.shortcut
+            }}</BlessKbd>
+          </div>
+        </div>
+      </div>
+      <p class="bless-command__empty" role="status">{{ flat.length ? "" : emptyText }}</p>
+      <div v-if="$slots.footer" class="bless-command__footer"><slot name="footer" /></div>
+    </div>
+  </component>
+</template>
+
 <script setup lang="ts">
 import { useLabelPack } from "../composables/useLabels";
 import { readJson, writeJson } from "../composables/storage";
@@ -244,89 +327,6 @@ onMounted(() => {
 });
 onBeforeUnmount(() => removeEventListener("keydown", onHotkey));
 </script>
-
-<template>
-  <component
-    :is="inline ? 'div' : BlessModal"
-    v-bind="
-      inline
-        ? {}
-        : { modelValue: open, 'onUpdate:modelValue': (v: boolean) => (open = v), size: 'md' }
-    "
-    class="bless-command"
-    :class="{ 'bless-command--inline': inline }"
-  >
-    <div class="bless-command__box">
-      <div class="bless-command__search bless-lean--field">
-        <span class="bless-command__icon" aria-hidden="true">⌕</span>
-        <button
-          v-if="scope"
-          type="button"
-          class="bless-command__scope"
-          :title="text.clearScope"
-          :aria-label="`${text.scope(scopeName(scope))}. ${text.clearScope}`"
-          @click="clearScope"
-        >
-          {{ scopeName(scope) }} <span aria-hidden="true">×</span>
-        </button>
-        <input
-          ref="input"
-          v-model="query"
-          type="text"
-          class="bless-command__input"
-          :placeholder
-          role="combobox"
-          :aria-label="scope ? `${label}: ${text.scope(scopeName(scope))}` : label"
-          aria-autocomplete="list"
-          :aria-expanded="true"
-          :aria-controls="`${id}-list`"
-          :aria-activedescendant="activeId"
-          :aria-describedby="scopeHint ? `${id}-hint` : undefined"
-          autocomplete="off"
-          spellcheck="false"
-          @keydown="onKey"
-        />
-        <BlessKbd v-if="!inline">Esc</BlessKbd>
-      </div>
-      <p v-if="scopeHint" :id="`${id}-hint`" class="bless-command__hint">{{ scopeHint }}</p>
-      <div :id="`${id}-list`" class="bless-command__list" role="listbox" :aria-label="label">
-        <div
-          v-for="(s, si) in sections"
-          :key="s.key"
-          role="group"
-          :aria-labelledby="s.label ? `${id}-g-${si}` : undefined"
-          class="bless-command__section"
-        >
-          <div v-if="s.label" :id="`${id}-g-${si}`" class="bless-command__group" aria-hidden="true">
-            {{ s.label }}
-          </div>
-          <div
-            v-for="(it, k) in s.items"
-            :key="it.value"
-            :id="rowId(it, s.recent)"
-            class="bless-command__item"
-            :class="{ 'bless-command__item--active': active === offset(si) + k }"
-            role="option"
-            :aria-selected="active === offset(si) + k"
-            :aria-disabled="it.disabled || undefined"
-            @mousemove="active = offset(si) + k"
-            @click="choose(it)"
-          >
-            <span class="bless-command__mark" aria-hidden="true">{{ it.icon ?? "" }}</span>
-            <span class="bless-command__label"
-              ><slot name="item" :item="it">{{ it.label }}</slot></span
-            >
-            <BlessKbd v-if="it.shortcut" class="bless-command__shortcut">{{
-              it.shortcut
-            }}</BlessKbd>
-          </div>
-        </div>
-      </div>
-      <p class="bless-command__empty" role="status">{{ flat.length ? "" : emptyText }}</p>
-      <div v-if="$slots.footer" class="bless-command__footer"><slot name="footer" /></div>
-    </div>
-  </component>
-</template>
 
 <style>
 .bless-command .bless-modal__body {

@@ -1,3 +1,73 @@
+<template>
+  <form class="bless-rule" @submit.prevent="save">
+    <fieldset class="bless-rule__part">
+      <legend class="bless-rule__legend">{{ text.when }}</legend>
+      <select
+        class="bless-rule__select"
+        :value="rule.when"
+        :aria-label="text.when"
+        @change="set({ when: ($event.target as HTMLSelectElement).value })"
+      >
+        <option value="" disabled>{{ text.pick }}</option>
+        <option v-for="o in triggers" :key="o.id" :value="o.id">{{ o.label }}</option>
+      </select>
+    </fieldset>
+    <fieldset v-if="conditions?.length" class="bless-rule__part">
+      <legend class="bless-rule__legend">{{ text.if }}</legend>
+      <div v-for="(id, i) in rule.if" :key="i" class="bless-rule__row">
+        <select
+          class="bless-rule__select"
+          :value="id"
+          :aria-label="`${text.if} ${i + 1}`"
+          @change="setAt('if', i, ($event.target as HTMLSelectElement).value)"
+        >
+          <option value="" disabled>{{ text.pick }}</option>
+          <option v-for="o in conditions" :key="o.id" :value="o.id">{{ o.label }}</option>
+        </select>
+        <button
+          type="button"
+          class="bless-rule__x"
+          :aria-label="text.remove(name(conditions, id))"
+          @click="drop('if', i)"
+        >
+          ✕
+        </button>
+      </div>
+      <button type="button" class="bless-rule__add" @click="add('if')">+ {{ text.addIf }}</button>
+    </fieldset>
+    <fieldset class="bless-rule__part">
+      <legend class="bless-rule__legend">{{ text.then }}</legend>
+      <div v-for="(id, i) in rule.then" :key="i" class="bless-rule__row">
+        <select
+          class="bless-rule__select"
+          :value="id"
+          :aria-label="`${text.then} ${i + 1}`"
+          @change="setAt('then', i, ($event.target as HTMLSelectElement).value)"
+        >
+          <option value="" disabled>{{ text.pick }}</option>
+          <option v-for="o in actions" :key="o.id" :value="o.id">{{ o.label }}</option>
+        </select>
+        <button
+          v-if="rule.then.length > 1"
+          type="button"
+          class="bless-rule__x"
+          :aria-label="text.remove(name(actions, id))"
+          @click="drop('then', i)"
+        >
+          ✕
+        </button>
+      </div>
+      <button type="button" class="bless-rule__add" @click="add('then')">
+        + {{ text.addThen }}
+      </button>
+    </fieldset>
+    <p class="bless-rule__preview">
+      <strong>{{ text.preview }}:</strong> <span aria-live="polite">{{ sentence }}</span>
+    </p>
+    <BlessButton type="submit" :disabled="!ok">{{ text.save }}</BlessButton>
+  </form>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -79,76 +149,6 @@ function save() {
     emit("save", { when: rule.value.when, if: rule.value.if.filter(Boolean), then: picked.value });
 }
 </script>
-
-<template>
-  <form class="bless-rule" @submit.prevent="save">
-    <fieldset class="bless-rule__part">
-      <legend class="bless-rule__legend">{{ text.when }}</legend>
-      <select
-        class="bless-rule__select"
-        :value="rule.when"
-        :aria-label="text.when"
-        @change="set({ when: ($event.target as HTMLSelectElement).value })"
-      >
-        <option value="" disabled>{{ text.pick }}</option>
-        <option v-for="o in triggers" :key="o.id" :value="o.id">{{ o.label }}</option>
-      </select>
-    </fieldset>
-    <fieldset v-if="conditions?.length" class="bless-rule__part">
-      <legend class="bless-rule__legend">{{ text.if }}</legend>
-      <div v-for="(id, i) in rule.if" :key="i" class="bless-rule__row">
-        <select
-          class="bless-rule__select"
-          :value="id"
-          :aria-label="`${text.if} ${i + 1}`"
-          @change="setAt('if', i, ($event.target as HTMLSelectElement).value)"
-        >
-          <option value="" disabled>{{ text.pick }}</option>
-          <option v-for="o in conditions" :key="o.id" :value="o.id">{{ o.label }}</option>
-        </select>
-        <button
-          type="button"
-          class="bless-rule__x"
-          :aria-label="text.remove(name(conditions, id))"
-          @click="drop('if', i)"
-        >
-          ✕
-        </button>
-      </div>
-      <button type="button" class="bless-rule__add" @click="add('if')">+ {{ text.addIf }}</button>
-    </fieldset>
-    <fieldset class="bless-rule__part">
-      <legend class="bless-rule__legend">{{ text.then }}</legend>
-      <div v-for="(id, i) in rule.then" :key="i" class="bless-rule__row">
-        <select
-          class="bless-rule__select"
-          :value="id"
-          :aria-label="`${text.then} ${i + 1}`"
-          @change="setAt('then', i, ($event.target as HTMLSelectElement).value)"
-        >
-          <option value="" disabled>{{ text.pick }}</option>
-          <option v-for="o in actions" :key="o.id" :value="o.id">{{ o.label }}</option>
-        </select>
-        <button
-          v-if="rule.then.length > 1"
-          type="button"
-          class="bless-rule__x"
-          :aria-label="text.remove(name(actions, id))"
-          @click="drop('then', i)"
-        >
-          ✕
-        </button>
-      </div>
-      <button type="button" class="bless-rule__add" @click="add('then')">
-        + {{ text.addThen }}
-      </button>
-    </fieldset>
-    <p class="bless-rule__preview">
-      <strong>{{ text.preview }}:</strong> <span aria-live="polite">{{ sentence }}</span>
-    </p>
-    <BlessButton type="submit" :disabled="!ok">{{ text.save }}</BlessButton>
-  </form>
-</template>
 
 <style>
 .bless-rule {

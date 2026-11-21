@@ -1,3 +1,11 @@
+<template>
+  <label class="bless-label" :class="{ 'bless-label--disabled': disabled }" :for>
+    <span class="bless-label__text"><slot /></span>
+    <span v-if="required" class="bless-label__required" aria-hidden="true">*</span>
+    <span v-if="hint" class="bless-label__hint">{{ hint }}</span>
+  </label>
+</template>
+
 <script setup lang="ts">
 defineOptions({ name: "BlessLabel" });
 
@@ -10,14 +18,6 @@ defineProps<{
   disabled?: boolean;
 }>();
 </script>
-
-<template>
-  <label class="bless-label" :class="{ 'bless-label--disabled': disabled }" :for>
-    <span class="bless-label__text"><slot /></span>
-    <span v-if="required" class="bless-label__required" aria-hidden="true">*</span>
-    <span v-if="hint" class="bless-label__hint">{{ hint }}</span>
-  </label>
-</template>
 
 <style>
 .bless-label {

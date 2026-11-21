@@ -1,3 +1,24 @@
+<template>
+  <section class="bless-sources" :aria-labelledby="`${base}-title`">
+    <p :id="`${base}-title`" class="bless-sources__title">{{ text.title }}</p>
+    <ol class="bless-stagger bless-sources__list">
+      <li
+        v-for="(s, i) in sources"
+        :id="`${base}-${i + 1}`"
+        :key="s.url + i"
+        class="bless-sources__item"
+      >
+        <span class="bless-sources__num" aria-hidden="true">{{ i + 1 }}</span>
+        <div class="bless-sources__main">
+          <a class="bless-sources__link" :href="s.url">{{ s.title }}</a>
+          <span class="bless-sources__site">{{ s.site ?? host(s.url) }}</span>
+          <p v-if="s.snippet" class="bless-sources__snippet">{{ s.snippet }}</p>
+        </div>
+      </li>
+    </ol>
+  </section>
+</template>
+
 <script setup lang="ts">
 import { computed, useId } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -32,27 +53,6 @@ const host = (url: string) => {
   }
 };
 </script>
-
-<template>
-  <section class="bless-sources" :aria-labelledby="`${base}-title`">
-    <p :id="`${base}-title`" class="bless-sources__title">{{ text.title }}</p>
-    <ol class="bless-stagger bless-sources__list">
-      <li
-        v-for="(s, i) in sources"
-        :id="`${base}-${i + 1}`"
-        :key="s.url + i"
-        class="bless-sources__item"
-      >
-        <span class="bless-sources__num" aria-hidden="true">{{ i + 1 }}</span>
-        <div class="bless-sources__main">
-          <a class="bless-sources__link" :href="s.url">{{ s.title }}</a>
-          <span class="bless-sources__site">{{ s.site ?? host(s.url) }}</span>
-          <p v-if="s.snippet" class="bless-sources__snippet">{{ s.snippet }}</p>
-        </div>
-      </li>
-    </ol>
-  </section>
-</template>
 
 <style>
 .bless-sources {

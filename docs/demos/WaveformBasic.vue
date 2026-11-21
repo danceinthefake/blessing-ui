@@ -1,3 +1,16 @@
+<template>
+  <div class="col" style="max-width: 560px">
+    <BlessWaveform
+      v-model="position"
+      :peaks="peaks"
+      :bars="96"
+      :value-text="clock"
+      label="Seek the track"
+    />
+    <small>{{ clock(position) }} of {{ clock(1) }}</small>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessWaveform } from "blessing-ui";
@@ -15,16 +28,3 @@ const clock = (p: number) => {
   return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`;
 };
 </script>
-
-<template>
-  <div class="col" style="max-width: 560px">
-    <BlessWaveform
-      v-model="position"
-      :peaks="peaks"
-      :bars="96"
-      :value-text="clock"
-      label="Seek the track"
-    />
-    <small>{{ clock(position) }} of {{ clock(1) }}</small>
-  </div>
-</template>

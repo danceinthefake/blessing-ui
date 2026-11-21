@@ -1,3 +1,50 @@
+<template>
+  <div class="bless-log">
+    <div class="bless-log__bar">
+      <input
+        v-model="query"
+        type="search"
+        class="bless-log__filter"
+        :aria-label="text.filter"
+        :placeholder="text.filter"
+        :aria-controls="uid"
+      />
+      <span class="bless-log__count" aria-live="polite">{{
+        query.trim() ? text.count(shown.length, lines.length) : ""
+      }}</span>
+      <button
+        type="button"
+        class="bless-log__follow"
+        :aria-pressed="follow"
+        @click="follow = !follow"
+      >
+        {{ text.follow }}
+      </button>
+    </div>
+    <BlessVirtualScroller
+      :id="uid"
+      ref="scroller"
+      :items="shown"
+      :item-height="ROW"
+      :height
+      :label
+      :row-key="(r) => r.n"
+      class="bless-log__lines"
+      @scroll.passive="onScroll"
+    >
+      <template #default="{ item }">
+        <span class="bless-log__n">{{ item.n }}</span>
+        <span class="bless-log__text"
+          ><span v-for="(s, i) in item.segs" :key="i" :class="s.cls || undefined">{{
+            s.text
+          }}</span></span
+        >
+      </template>
+    </BlessVirtualScroller>
+    <p v-if="!shown.length" class="bless-log__empty">{{ text.empty }}</p>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed, nextTick, ref, useId, watch } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -64,53 +111,6 @@ function onScroll(e: Event) {
 }
 const uid = useId();
 </script>
-
-<template>
-  <div class="bless-log">
-    <div class="bless-log__bar">
-      <input
-        v-model="query"
-        type="search"
-        class="bless-log__filter"
-        :aria-label="text.filter"
-        :placeholder="text.filter"
-        :aria-controls="uid"
-      />
-      <span class="bless-log__count" aria-live="polite">{{
-        query.trim() ? text.count(shown.length, lines.length) : ""
-      }}</span>
-      <button
-        type="button"
-        class="bless-log__follow"
-        :aria-pressed="follow"
-        @click="follow = !follow"
-      >
-        {{ text.follow }}
-      </button>
-    </div>
-    <BlessVirtualScroller
-      :id="uid"
-      ref="scroller"
-      :items="shown"
-      :item-height="ROW"
-      :height
-      :label
-      :row-key="(r) => r.n"
-      class="bless-log__lines"
-      @scroll.passive="onScroll"
-    >
-      <template #default="{ item }">
-        <span class="bless-log__n">{{ item.n }}</span>
-        <span class="bless-log__text"
-          ><span v-for="(s, i) in item.segs" :key="i" :class="s.cls || undefined">{{
-            s.text
-          }}</span></span
-        >
-      </template>
-    </BlessVirtualScroller>
-    <p v-if="!shown.length" class="bless-log__empty">{{ text.empty }}</p>
-  </div>
-</template>
 
 <style>
 .bless-log {

@@ -1,3 +1,9 @@
+<template>
+  <sup class="bless-fnref">
+    <a :id="`${id}-ref-${n}`" :href="`#${id}-${n}`" :aria-label="text.note(n)">{{ n }}</a>
+  </sup>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -17,12 +23,6 @@ const props = withDefaults(
 );
 const text = computed(() => ({ note: (n: number) => `Note ${n}`, ...pack(), ...props.labels }));
 </script>
-
-<template>
-  <sup class="bless-fnref">
-    <a :id="`${id}-ref-${n}`" :href="`#${id}-${n}`" :aria-label="text.note(n)">{{ n }}</a>
-  </sup>
-</template>
 
 <style>
 .bless-fnref {

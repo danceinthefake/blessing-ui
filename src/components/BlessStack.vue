@@ -1,3 +1,19 @@
+<template>
+  <component
+    :is="as"
+    class="bless-stack"
+    :style="{
+      flexDirection: direction,
+      gap: `var(--bless-space-${gap})`,
+      alignItems: map[align],
+      justifyContent: map[justify],
+      flexWrap: wrap ? 'wrap' : undefined,
+    }"
+  >
+    <slot />
+  </component>
+</template>
+
 <script setup lang="ts">
 defineOptions({ name: "BlessStack" });
 
@@ -23,22 +39,6 @@ const map = {
   around: "space-around",
 };
 </script>
-
-<template>
-  <component
-    :is="as"
-    class="bless-stack"
-    :style="{
-      flexDirection: direction,
-      gap: `var(--bless-space-${gap})`,
-      alignItems: map[align],
-      justifyContent: map[justify],
-      flexWrap: wrap ? 'wrap' : undefined,
-    }"
-  >
-    <slot />
-  </component>
-</template>
 
 <style>
 .bless-stack {

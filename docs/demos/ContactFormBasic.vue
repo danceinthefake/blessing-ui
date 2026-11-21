@@ -1,3 +1,11 @@
+<template>
+  <BlessContactForm
+    :topics="['A question about a product', 'Studio booking', 'Press', 'Something else']"
+    :state
+    @submit="send"
+  />
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessContactForm, type BlessContactMessage } from "blessing-ui";
@@ -9,11 +17,3 @@ function send(m: BlessContactMessage) {
   setTimeout(() => (state.value = m.message.includes("fail") ? "error" : "sent"), 800);
 }
 </script>
-
-<template>
-  <BlessContactForm
-    :topics="['A question about a product', 'Studio booking', 'Press', 'Something else']"
-    :state
-    @submit="send"
-  />
-</template>

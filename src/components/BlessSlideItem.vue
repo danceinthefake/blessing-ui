@@ -1,3 +1,31 @@
+<template>
+  <div
+    ref="root"
+    class="bless-slide"
+    :class="{ 'bless-slide--disabled': disabled }"
+    :style="{ '--_x': `${x}px` }"
+    @focusout="onFocusOut"
+  >
+    <div
+      v-if="$slots.left"
+      class="bless-slide__side bless-slide__side--left"
+      :class="{ 'bless-slide__side--on': x > 0 }"
+      @focusin="onFocusIn('left')"
+    >
+      <slot name="left" :reset />
+    </div>
+    <div
+      v-if="$slots.right"
+      class="bless-slide__side bless-slide__side--right"
+      :class="{ 'bless-slide__side--on': x < 0 }"
+      @focusin="onFocusIn('right')"
+    >
+      <slot name="right" :reset />
+    </div>
+    <div class="bless-slide__content"><slot /></div>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { usePan } from "../composables/useGesture";
@@ -69,34 +97,6 @@ function onFocusOut(e: FocusEvent) {
 }
 defineExpose({ reset });
 </script>
-
-<template>
-  <div
-    ref="root"
-    class="bless-slide"
-    :class="{ 'bless-slide--disabled': disabled }"
-    :style="{ '--_x': `${x}px` }"
-    @focusout="onFocusOut"
-  >
-    <div
-      v-if="$slots.left"
-      class="bless-slide__side bless-slide__side--left"
-      :class="{ 'bless-slide__side--on': x > 0 }"
-      @focusin="onFocusIn('left')"
-    >
-      <slot name="left" :reset />
-    </div>
-    <div
-      v-if="$slots.right"
-      class="bless-slide__side bless-slide__side--right"
-      :class="{ 'bless-slide__side--on': x < 0 }"
-      @focusin="onFocusIn('right')"
-    >
-      <slot name="right" :reset />
-    </div>
-    <div class="bless-slide__content"><slot /></div>
-  </div>
-</template>
 
 <style>
 .bless-slide {

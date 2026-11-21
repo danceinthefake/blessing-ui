@@ -1,3 +1,7 @@
+<template>
+  <BlessDocumentChecklist :docs @upload="upload" @remove="remove" />
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessDocumentChecklist, type BlessChecklistDoc } from "blessing-ui";
@@ -53,7 +57,3 @@ function remove(id: string) {
   );
 }
 </script>
-
-<template>
-  <BlessDocumentChecklist :docs @upload="upload" @remove="remove" />
-</template>

@@ -1,3 +1,10 @@
+<template>
+  <div class="col">
+    <BlessHeatmapCalendar v-model="picked" :data :end label="Commits" unit="commit" />
+    <small>{{ picked ? `picked ${picked}` : "click a day; arrows move by day and week" }}</small>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessHeatmapCalendar } from "blessing-ui";
@@ -14,10 +21,3 @@ for (let i = 0; i < 371; i++) {
 }
 const picked = ref<string | null>(null);
 </script>
-
-<template>
-  <div class="col">
-    <BlessHeatmapCalendar v-model="picked" :data :end label="Commits" unit="commit" />
-    <small>{{ picked ? `picked ${picked}` : "click a day; arrows move by day and week" }}</small>
-  </div>
-</template>

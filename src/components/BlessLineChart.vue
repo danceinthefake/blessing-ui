@@ -1,3 +1,116 @@
+<template>
+  <figure ref="box" class="bless-plot bless-linechart">
+    <svg
+      :viewBox="`0 0 ${width} ${height}`"
+      :height
+      class="bless-plot__svg"
+      aria-hidden="true"
+      @pointermove="onMove"
+      @pointerleave="hover = undefined"
+    >
+      <g v-for="t in ticks" :key="t">
+        <line
+          class="bless-plot__grid"
+          :class="{ 'bless-plot__zero': t === 0 }"
+          :x1="frame.x0"
+          :x2="frame.x1"
+          :y1="py(t)"
+          :y2="py(t)"
+        />
+        <text
+          class="bless-plot__tick"
+          :x="frame.x0 - 6"
+          :y="py(t)"
+          text-anchor="end"
+          dominant-baseline="middle"
+        >
+          {{ fmt(t) }}
+        </text>
+      </g>
+      <text
+        v-for="t in xTicks"
+        :key="t"
+        class="bless-plot__tick"
+        :x="px(t)"
+        :y="frame.y1 + 14"
+        text-anchor="middle"
+        dominant-baseline="middle"
+      >
+        {{ xText(t) }}
+      </text>
+      <g v-for="l in lines" :key="l.key" :style="{ '--_c': l.color }">
+        <path v-if="area" class="bless-linechart__area" :d="l.area" />
+        <path class="bless-linechart__line" :d="l.line" pathLength="1" />
+        <circle
+          v-for="(d, k) in l.dots"
+          :key="k"
+          class="bless-linechart__dot"
+          :cx="d.x"
+          :cy="d.y"
+          r="3"
+        />
+      </g>
+      <g v-if="tip">
+        <line
+          class="bless-linechart__cross"
+          :x1="tip.x"
+          :x2="tip.x"
+          :y1="frame.y0"
+          :y2="frame.y1"
+        />
+        <template v-for="it in tip.items" :key="it.key">
+          <circle
+            v-if="it.value !== undefined"
+            class="bless-linechart__dot"
+            :style="{ '--_c': it.color }"
+            :cx="tip.x"
+            :cy="py(it.value)"
+            r="4"
+          />
+        </template>
+      </g>
+    </svg>
+    <div
+      v-if="tip"
+      class="bless-linechart__tip"
+      :class="{ 'bless-linechart__tip--end': tip.end }"
+      :style="{ left: `${(tip.x / width) * 100}%` }"
+      aria-hidden="true"
+    >
+      <strong>{{ tip.title }}</strong>
+      <span
+        v-for="it in tip.items"
+        :key="it.key"
+        class="bless-linechart__row"
+        :style="{ '--_c': it.color }"
+      >
+        {{ it.label }} <b>{{ it.value === undefined ? "–" : fmt(it.value) }}</b>
+      </span>
+    </div>
+    <div class="bless-sr">
+      <table>
+        <caption>
+          {{ label }}
+        </caption>
+        <thead>
+          <tr>
+            <th scope="col">{{ xLabel ?? x }}</th>
+            <th v-for="s in series" :key="s.key" scope="col">{{ s.label ?? s.key }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(r, i) in rows" :key="i">
+            <th scope="row">{{ xText(xs[i]!) }}</th>
+            <td v-for="s in series" :key="s.key">
+              {{ yOf(r, s.key) === undefined ? "–" : fmt(yOf(r, s.key)!) }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </figure>
+</template>
+
 <script setup lang="ts">
 import { computed, onMounted, ref } from "vue";
 import {
@@ -162,119 +275,6 @@ const tip = computed(() => {
   };
 });
 </script>
-
-<template>
-  <figure ref="box" class="bless-plot bless-linechart">
-    <svg
-      :viewBox="`0 0 ${width} ${height}`"
-      :height
-      class="bless-plot__svg"
-      aria-hidden="true"
-      @pointermove="onMove"
-      @pointerleave="hover = undefined"
-    >
-      <g v-for="t in ticks" :key="t">
-        <line
-          class="bless-plot__grid"
-          :class="{ 'bless-plot__zero': t === 0 }"
-          :x1="frame.x0"
-          :x2="frame.x1"
-          :y1="py(t)"
-          :y2="py(t)"
-        />
-        <text
-          class="bless-plot__tick"
-          :x="frame.x0 - 6"
-          :y="py(t)"
-          text-anchor="end"
-          dominant-baseline="middle"
-        >
-          {{ fmt(t) }}
-        </text>
-      </g>
-      <text
-        v-for="t in xTicks"
-        :key="t"
-        class="bless-plot__tick"
-        :x="px(t)"
-        :y="frame.y1 + 14"
-        text-anchor="middle"
-        dominant-baseline="middle"
-      >
-        {{ xText(t) }}
-      </text>
-      <g v-for="l in lines" :key="l.key" :style="{ '--_c': l.color }">
-        <path v-if="area" class="bless-linechart__area" :d="l.area" />
-        <path class="bless-linechart__line" :d="l.line" pathLength="1" />
-        <circle
-          v-for="(d, k) in l.dots"
-          :key="k"
-          class="bless-linechart__dot"
-          :cx="d.x"
-          :cy="d.y"
-          r="3"
-        />
-      </g>
-      <g v-if="tip">
-        <line
-          class="bless-linechart__cross"
-          :x1="tip.x"
-          :x2="tip.x"
-          :y1="frame.y0"
-          :y2="frame.y1"
-        />
-        <template v-for="it in tip.items" :key="it.key">
-          <circle
-            v-if="it.value !== undefined"
-            class="bless-linechart__dot"
-            :style="{ '--_c': it.color }"
-            :cx="tip.x"
-            :cy="py(it.value)"
-            r="4"
-          />
-        </template>
-      </g>
-    </svg>
-    <div
-      v-if="tip"
-      class="bless-linechart__tip"
-      :class="{ 'bless-linechart__tip--end': tip.end }"
-      :style="{ left: `${(tip.x / width) * 100}%` }"
-      aria-hidden="true"
-    >
-      <strong>{{ tip.title }}</strong>
-      <span
-        v-for="it in tip.items"
-        :key="it.key"
-        class="bless-linechart__row"
-        :style="{ '--_c': it.color }"
-      >
-        {{ it.label }} <b>{{ it.value === undefined ? "–" : fmt(it.value) }}</b>
-      </span>
-    </div>
-    <div class="bless-sr">
-      <table>
-        <caption>
-          {{ label }}
-        </caption>
-        <thead>
-          <tr>
-            <th scope="col">{{ xLabel ?? x }}</th>
-            <th v-for="s in series" :key="s.key" scope="col">{{ s.label ?? s.key }}</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="(r, i) in rows" :key="i">
-            <th scope="row">{{ xText(xs[i]!) }}</th>
-            <td v-for="s in series" :key="s.key">
-              {{ yOf(r, s.key) === undefined ? "–" : fmt(yOf(r, s.key)!) }}
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </figure>
-</template>
 
 <style>
 .bless-linechart__line {

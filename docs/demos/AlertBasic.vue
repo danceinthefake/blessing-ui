@@ -1,16 +1,3 @@
-<script setup lang="ts">
-import { nextTick, ref } from "vue";
-import { BlessAlert, BlessButton } from "blessing-ui";
-const open = ref(true);
-const failed = ref(false);
-const again = ref<InstanceType<typeof BlessButton>>();
-// the alert is gone, and focus with it: hand it to what comes next
-async function dismissed() {
-  await nextTick();
-  again.value?.$el.focus();
-}
-</script>
-
 <template>
   <div class="col" style="max-width: 560px">
     <BlessAlert v-model="open" title="Blu-ray BOX" dismissible @dismiss="dismissed">
@@ -30,3 +17,16 @@ async function dismissed() {
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+import { nextTick, ref } from "vue";
+import { BlessAlert, BlessButton } from "blessing-ui";
+const open = ref(true);
+const failed = ref(false);
+const again = ref<InstanceType<typeof BlessButton>>();
+// the alert is gone, and focus with it: hand it to what comes next
+async function dismissed() {
+  await nextTick();
+  again.value?.$el.focus();
+}
+</script>

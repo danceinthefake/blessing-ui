@@ -1,3 +1,60 @@
+<template>
+  <section
+    v-if="!dismissed"
+    class="bless-checklist"
+    :class="{ 'bless-checklist--floating': floating, 'bless-checklist--done': finished }"
+    :aria-labelledby="`${id}-t`"
+  >
+    <header class="bless-checklist__head">
+      <button
+        type="button"
+        class="bless-checklist__toggle"
+        :aria-expanded="!collapsed"
+        :aria-controls="`${id}-b`"
+        @click="collapsed = !collapsed"
+      >
+        <span :id="`${id}-t`" class="bless-checklist__title">{{ title }}</span>
+        <span class="bless-checklist__count">{{ known }}/{{ total }}</span>
+        <span class="bless-checklist__chev" aria-hidden="true">{{ collapsed ? "▸" : "▾" }}</span>
+      </button>
+      <button
+        v-if="dismissible"
+        type="button"
+        class="bless-checklist__close"
+        :aria-label="text.dismiss"
+        @click="close"
+      >
+        ×
+      </button>
+    </header>
+    <BlessProgress
+      :value="known"
+      :max="Math.max(1, total)"
+      size="sm"
+      :label="text.progress(known, total)"
+    />
+    <div v-show="!collapsed" :id="`${id}-b`" class="bless-checklist__body">
+      <ul class="bless-stagger bless-checklist__list" role="list">
+        <li v-for="it in items" :key="it.id" class="bless-checklist__item">
+          <BlessCheckbox v-model="done" :value="it.id" :description="it.description">{{
+            it.label
+          }}</BlessCheckbox>
+          <BlessButton
+            v-if="it.action && !done.includes(it.id)"
+            size="sm"
+            variant="outline"
+            @click="emit('select', it)"
+            >{{ it.action }}</BlessButton
+          >
+        </li>
+      </ul>
+      <p v-if="finished" class="bless-checklist__all" role="status">
+        <slot name="complete">{{ text.complete }}</slot>
+      </p>
+    </div>
+  </section>
+</template>
+
 <script lang="ts">
 export interface BlessChecklistItem {
   id: string;
@@ -86,63 +143,6 @@ function close() {
   emit("dismiss");
 }
 </script>
-
-<template>
-  <section
-    v-if="!dismissed"
-    class="bless-checklist"
-    :class="{ 'bless-checklist--floating': floating, 'bless-checklist--done': finished }"
-    :aria-labelledby="`${id}-t`"
-  >
-    <header class="bless-checklist__head">
-      <button
-        type="button"
-        class="bless-checklist__toggle"
-        :aria-expanded="!collapsed"
-        :aria-controls="`${id}-b`"
-        @click="collapsed = !collapsed"
-      >
-        <span :id="`${id}-t`" class="bless-checklist__title">{{ title }}</span>
-        <span class="bless-checklist__count">{{ known }}/{{ total }}</span>
-        <span class="bless-checklist__chev" aria-hidden="true">{{ collapsed ? "▸" : "▾" }}</span>
-      </button>
-      <button
-        v-if="dismissible"
-        type="button"
-        class="bless-checklist__close"
-        :aria-label="text.dismiss"
-        @click="close"
-      >
-        ×
-      </button>
-    </header>
-    <BlessProgress
-      :value="known"
-      :max="Math.max(1, total)"
-      size="sm"
-      :label="text.progress(known, total)"
-    />
-    <div v-show="!collapsed" :id="`${id}-b`" class="bless-checklist__body">
-      <ul class="bless-stagger bless-checklist__list" role="list">
-        <li v-for="it in items" :key="it.id" class="bless-checklist__item">
-          <BlessCheckbox v-model="done" :value="it.id" :description="it.description">{{
-            it.label
-          }}</BlessCheckbox>
-          <BlessButton
-            v-if="it.action && !done.includes(it.id)"
-            size="sm"
-            variant="outline"
-            @click="emit('select', it)"
-            >{{ it.action }}</BlessButton
-          >
-        </li>
-      </ul>
-      <p v-if="finished" class="bless-checklist__all" role="status">
-        <slot name="complete">{{ text.complete }}</slot>
-      </p>
-    </div>
-  </section>
-</template>
 
 <style>
 .bless-checklist {

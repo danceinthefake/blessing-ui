@@ -1,3 +1,25 @@
+<template>
+  <section class="bless-related" :aria-labelledby="`${uid}-title`">
+    <component :is="`h${level}`" :id="`${uid}-title`" class="bless-related__title">{{
+      text.title
+    }}</component>
+    <ul class="bless-stagger bless-related__list">
+      <li v-for="a in articles" :key="a.id" class="bless-related__item">
+        <article class="bless-related__card">
+          <div class="bless-related__media">
+            <img v-if="a.image" :src="a.image" alt="" loading="lazy" />
+          </div>
+          <div class="bless-related__body">
+            <span v-if="a.topic" class="bless-related__topic">{{ a.topic }}</span>
+            <a class="bless-related__link" :href="a.href">{{ a.title }}</a>
+            <span v-if="a.minutes" class="bless-related__time">{{ text.read(a.minutes) }}</span>
+          </div>
+        </article>
+      </li>
+    </ul>
+  </section>
+</template>
+
 <script setup lang="ts">
 import { computed, useId } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -33,28 +55,6 @@ const text = computed(() => ({
 }));
 const uid = useId();
 </script>
-
-<template>
-  <section class="bless-related" :aria-labelledby="`${uid}-title`">
-    <component :is="`h${level}`" :id="`${uid}-title`" class="bless-related__title">{{
-      text.title
-    }}</component>
-    <ul class="bless-stagger bless-related__list">
-      <li v-for="a in articles" :key="a.id" class="bless-related__item">
-        <article class="bless-related__card">
-          <div class="bless-related__media">
-            <img v-if="a.image" :src="a.image" alt="" loading="lazy" />
-          </div>
-          <div class="bless-related__body">
-            <span v-if="a.topic" class="bless-related__topic">{{ a.topic }}</span>
-            <a class="bless-related__link" :href="a.href">{{ a.title }}</a>
-            <span v-if="a.minutes" class="bless-related__time">{{ text.read(a.minutes) }}</span>
-          </div>
-        </article>
-      </li>
-    </ul>
-  </section>
-</template>
 
 <style>
 .bless-related {

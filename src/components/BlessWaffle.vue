@@ -1,3 +1,24 @@
+<template>
+  <figure class="bless-waffle" role="group" :aria-label="label">
+    <div class="bless-waffle__grid" aria-hidden="true">
+      <span
+        v-for="(s, k) in grid"
+        :key="k"
+        class="bless-waffle__cell"
+        :style="{ '--_c': slices[s]!.color }"
+      />
+      <span v-for="k in 100 - grid.length" :key="`e${k}`" class="bless-waffle__cell is-empty" />
+    </div>
+    <ul class="bless-waffle__legend">
+      <li v-for="s in slices" :key="s.label">
+        <i class="bless-waffle__key" :style="{ '--_c': s.color }" aria-hidden="true" />
+        <span class="bless-waffle__name">{{ s.label }}</span>
+        <span class="bless-waffle__value">{{ pct.format(s.share) }} · {{ fmt(s.value) }}</span>
+      </li>
+    </ul>
+  </figure>
+</template>
+
 <script lang="ts">
 export interface BlessWaffleSlice {
   label: string;
@@ -52,27 +73,6 @@ const grid = computed(() =>
   slices.value.flatMap((s, i) => Array.from({ length: s.cells }, () => i)),
 );
 </script>
-
-<template>
-  <figure class="bless-waffle" role="group" :aria-label="label">
-    <div class="bless-waffle__grid" aria-hidden="true">
-      <span
-        v-for="(s, k) in grid"
-        :key="k"
-        class="bless-waffle__cell"
-        :style="{ '--_c': slices[s]!.color }"
-      />
-      <span v-for="k in 100 - grid.length" :key="`e${k}`" class="bless-waffle__cell is-empty" />
-    </div>
-    <ul class="bless-waffle__legend">
-      <li v-for="s in slices" :key="s.label">
-        <i class="bless-waffle__key" :style="{ '--_c': s.color }" aria-hidden="true" />
-        <span class="bless-waffle__name">{{ s.label }}</span>
-        <span class="bless-waffle__value">{{ pct.format(s.share) }} · {{ fmt(s.value) }}</span>
-      </li>
-    </ul>
-  </figure>
-</template>
 
 <style>
 .bless-waffle {

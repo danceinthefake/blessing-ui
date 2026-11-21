@@ -1,44 +1,3 @@
-<script setup lang="ts">
-import {
-  BlessBalanceCard,
-  BlessBudgetBars,
-  BlessButton,
-  BlessField,
-  BlessForm,
-  BlessInput,
-  BlessInputNumber,
-  BlessPinPad,
-  BlessSheet,
-  BlessText,
-  BlessTransactionList,
-  useToast,
-} from "blessing-ui";
-import { mockBankApi } from "./api";
-import { useBank } from "./useBank";
-
-const money = { currency: "IDR", locale: "en-ID" } as const;
-const {
-  balance,
-  transactions,
-  budgets,
-  change,
-  open,
-  step,
-  transfer,
-  error,
-  pin,
-  wrongPin,
-  start,
-  next,
-  confirm,
-} = useBank(mockBankApi, "2026-11-19");
-const { toast } = useToast();
-async function onPin(code: string) {
-  if (await confirm(code))
-    toast({ title: "Transfer sent", description: `To ${transfer.value.to}`, color: "success" });
-}
-</script>
-
 <template>
   <div class="bank">
     <div class="bank__side">
@@ -97,6 +56,47 @@ async function onPin(code: string) {
     </BlessSheet>
   </div>
 </template>
+
+<script setup lang="ts">
+import {
+  BlessBalanceCard,
+  BlessBudgetBars,
+  BlessButton,
+  BlessField,
+  BlessForm,
+  BlessInput,
+  BlessInputNumber,
+  BlessPinPad,
+  BlessSheet,
+  BlessText,
+  BlessTransactionList,
+  useToast,
+} from "blessing-ui";
+import { mockBankApi } from "./api";
+import { useBank } from "./useBank";
+
+const money = { currency: "IDR", locale: "en-ID" } as const;
+const {
+  balance,
+  transactions,
+  budgets,
+  change,
+  open,
+  step,
+  transfer,
+  error,
+  pin,
+  wrongPin,
+  start,
+  next,
+  confirm,
+} = useBank(mockBankApi, "2026-11-19");
+const { toast } = useToast();
+async function onPin(code: string) {
+  if (await confirm(code))
+    toast({ title: "Transfer sent", description: `To ${transfer.value.to}`, color: "success" });
+}
+</script>
 
 <style scoped>
 .bank {

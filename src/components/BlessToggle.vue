@@ -1,3 +1,19 @@
+<template>
+  <BlessSkew
+    as="button"
+    type="button"
+    class="bless-toggle"
+    :class="[`bless-toggle--${size}`, `bless-toggle--${color}`, { 'bless-toggle--on': isOn() }]"
+    :color="isOn() ? color : 'none'"
+    :aria-pressed="isOn()"
+    :aria-label="label"
+    :disabled="disabled || group?.disabled.value"
+    @click="toggle"
+  >
+    <slot />
+  </BlessSkew>
+</template>
+
 <script setup lang="ts">
 import { inject } from "vue";
 import BlessSkew from "./BlessSkew.vue";
@@ -27,22 +43,6 @@ function toggle() {
   else pressed.value = !pressed.value;
 }
 </script>
-
-<template>
-  <BlessSkew
-    as="button"
-    type="button"
-    class="bless-toggle"
-    :class="[`bless-toggle--${size}`, `bless-toggle--${color}`, { 'bless-toggle--on': isOn() }]"
-    :color="isOn() ? color : 'none'"
-    :aria-pressed="isOn()"
-    :aria-label="label"
-    :disabled="disabled || group?.disabled.value"
-    @click="toggle"
-  >
-    <slot />
-  </BlessSkew>
-</template>
 
 <style>
 .bless-toggle {

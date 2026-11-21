@@ -1,3 +1,34 @@
+<template>
+  <dialog
+    ref="dialog"
+    class="bless-modal"
+    :class="`bless-modal--${size}`"
+    :aria-labelledby="title || $slots.title ? titleId : undefined"
+    @close="onClose"
+    @cancel.prevent="open = false"
+    @pointerdown="onBackdropDown"
+    @click="onBackdrop"
+  >
+    <div class="bless-modal__panel" tabindex="-1">
+      <button
+        type="button"
+        class="bless-modal__close"
+        :aria-label="text.close"
+        @click="open = false"
+      >
+        <span aria-hidden="true">×</span>
+      </button>
+      <header v-if="title || $slots.title" class="bless-modal__header">
+        <h2 :id="titleId" class="bless-modal__title">
+          <slot name="title">{{ title }}</slot>
+        </h2>
+      </header>
+      <div class="bless-modal__body"><slot /></div>
+      <footer v-if="$slots.footer" class="bless-modal__footer"><slot name="footer" /></footer>
+    </div>
+  </dialog>
+</template>
+
 <script setup lang="ts">
 import { useLabelPack } from "../composables/useLabels";
 import { nextTick, onMounted, ref, useId, watch, computed } from "vue";
@@ -92,37 +123,6 @@ onMounted(() => {
 // per-instance: closed dialogs stay in the DOM, so a shared id would name one dialog by another's title
 const titleId = `${useId()}-title`;
 </script>
-
-<template>
-  <dialog
-    ref="dialog"
-    class="bless-modal"
-    :class="`bless-modal--${size}`"
-    :aria-labelledby="title || $slots.title ? titleId : undefined"
-    @close="onClose"
-    @cancel.prevent="open = false"
-    @pointerdown="onBackdropDown"
-    @click="onBackdrop"
-  >
-    <div class="bless-modal__panel" tabindex="-1">
-      <button
-        type="button"
-        class="bless-modal__close"
-        :aria-label="text.close"
-        @click="open = false"
-      >
-        <span aria-hidden="true">×</span>
-      </button>
-      <header v-if="title || $slots.title" class="bless-modal__header">
-        <h2 :id="titleId" class="bless-modal__title">
-          <slot name="title">{{ title }}</slot>
-        </h2>
-      </header>
-      <div class="bless-modal__body"><slot /></div>
-      <footer v-if="$slots.footer" class="bless-modal__footer"><slot name="footer" /></footer>
-    </div>
-  </dialog>
-</template>
 
 <style>
 .bless-modal {

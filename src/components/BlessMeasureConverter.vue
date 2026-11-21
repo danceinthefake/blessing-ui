@@ -1,3 +1,41 @@
+<template>
+  <div class="bless-measure">
+    <div class="bless-measure__kinds" role="group" :aria-label="text.kind">
+      <button
+        v-for="k in KINDS"
+        :key="k"
+        type="button"
+        :aria-pressed="kind === k"
+        @click="kind = k"
+      >
+        {{ text[k] }}
+      </button>
+    </div>
+    <div class="bless-measure__row">
+      <label class="bless-measure__field">
+        <span>{{ text.amount }}</span>
+        <input v-model.number="amount" type="number" step="any" inputmode="decimal" />
+      </label>
+      <label class="bless-measure__field">
+        <span>{{ text.from }}</span>
+        <select v-model="from">
+          <option v-for="u in units" :key="u" :value="u">{{ unitName(u) }}</option>
+        </select>
+      </label>
+      <button type="button" class="bless-measure__swap" :aria-label="text.swap" @click="swap">
+        ⇄
+      </button>
+      <label class="bless-measure__field">
+        <span>{{ text.to }}</span>
+        <select v-model="to">
+          <option v-for="u in units" :key="u" :value="u">{{ unitName(u) }}</option>
+        </select>
+      </label>
+    </div>
+    <output class="bless-measure__result" aria-live="polite">{{ result }}</output>
+  </div>
+</template>
+
 <script lang="ts">
 export type BlessMeasureKind = "length" | "mass" | "volume" | "temperature";
 
@@ -122,44 +160,6 @@ const result = computed(() => {
 });
 const swap = () => ([from.value, to.value] = [to.value, from.value]);
 </script>
-
-<template>
-  <div class="bless-measure">
-    <div class="bless-measure__kinds" role="group" :aria-label="text.kind">
-      <button
-        v-for="k in KINDS"
-        :key="k"
-        type="button"
-        :aria-pressed="kind === k"
-        @click="kind = k"
-      >
-        {{ text[k] }}
-      </button>
-    </div>
-    <div class="bless-measure__row">
-      <label class="bless-measure__field">
-        <span>{{ text.amount }}</span>
-        <input v-model.number="amount" type="number" step="any" inputmode="decimal" />
-      </label>
-      <label class="bless-measure__field">
-        <span>{{ text.from }}</span>
-        <select v-model="from">
-          <option v-for="u in units" :key="u" :value="u">{{ unitName(u) }}</option>
-        </select>
-      </label>
-      <button type="button" class="bless-measure__swap" :aria-label="text.swap" @click="swap">
-        ⇄
-      </button>
-      <label class="bless-measure__field">
-        <span>{{ text.to }}</span>
-        <select v-model="to">
-          <option v-for="u in units" :key="u" :value="u">{{ unitName(u) }}</option>
-        </select>
-      </label>
-    </div>
-    <output class="bless-measure__result" aria-live="polite">{{ result }}</output>
-  </div>
-</template>
 
 <style>
 .bless-measure {

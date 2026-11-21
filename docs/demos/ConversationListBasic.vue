@@ -1,3 +1,7 @@
+<template>
+  <BlessConversationList v-model="open" :conversations style="max-width: 360px" />
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessConversationList, type BlessConversation } from "blessing-ui";
@@ -24,7 +28,3 @@ const conversations: BlessConversation[] = [
 ];
 const open = ref("budi");
 </script>
-
-<template>
-  <BlessConversationList v-model="open" :conversations style="max-width: 360px" />
-</template>

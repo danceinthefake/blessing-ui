@@ -1,3 +1,33 @@
+<template>
+  <div
+    class="bless-shortcut"
+    :class="{ 'bless-shortcut--rec': recording, 'bless-shortcut--bad': !!error }"
+  >
+    <button
+      :id
+      ref="btn"
+      type="button"
+      class="bless-shortcut__btn"
+      :disabled
+      :aria-label="text.button(label, model)"
+      :aria-describedby="error ? `${id}-err` : undefined"
+      :aria-invalid="!!error || undefined"
+      @click="recording ? stop() : start()"
+      @keydown="onKey"
+      @keyup="onKeyup"
+      @blur="recording && stop()"
+    >
+      <span v-if="recording && !parts.length" class="bless-shortcut__hint">{{
+        text.pressKeys
+      }}</span>
+      <BlessKbd v-else-if="parts.length" :keys="parts" />
+      <span v-else class="bless-shortcut__hint">{{ placeholder }}</span>
+    </button>
+    <p v-if="error" :id="`${id}-err`" class="bless-shortcut__error" role="alert">{{ error }}</p>
+    <span class="bless-shortcut__live bless-sr" aria-live="polite">{{ live }}</span>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { useLabelPack } from "../composables/useLabels";
 import "./sr.css";
@@ -135,36 +165,6 @@ function onKeyup(e: KeyboardEvent) {
 }
 defineExpose({ start, focus: () => btn.value?.focus() });
 </script>
-
-<template>
-  <div
-    class="bless-shortcut"
-    :class="{ 'bless-shortcut--rec': recording, 'bless-shortcut--bad': !!error }"
-  >
-    <button
-      :id
-      ref="btn"
-      type="button"
-      class="bless-shortcut__btn"
-      :disabled
-      :aria-label="text.button(label, model)"
-      :aria-describedby="error ? `${id}-err` : undefined"
-      :aria-invalid="!!error || undefined"
-      @click="recording ? stop() : start()"
-      @keydown="onKey"
-      @keyup="onKeyup"
-      @blur="recording && stop()"
-    >
-      <span v-if="recording && !parts.length" class="bless-shortcut__hint">{{
-        text.pressKeys
-      }}</span>
-      <BlessKbd v-else-if="parts.length" :keys="parts" />
-      <span v-else class="bless-shortcut__hint">{{ placeholder }}</span>
-    </button>
-    <p v-if="error" :id="`${id}-err`" class="bless-shortcut__error" role="alert">{{ error }}</p>
-    <span class="bless-shortcut__live bless-sr" aria-live="polite">{{ live }}</span>
-  </div>
-</template>
 
 <style>
 .bless-shortcut {

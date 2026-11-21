@@ -1,3 +1,8 @@
+<template>
+  <BlessPromptLibrary :prompts @use="used = $event" />
+  <div v-if="used" style="margin-top: 12px">Sent to the chat: {{ used }}</div>
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessPromptLibrary, type BlessSavedPrompt } from "blessing-ui";
@@ -30,8 +35,3 @@ const prompts: BlessSavedPrompt[] = [
 ];
 const used = ref("");
 </script>
-
-<template>
-  <BlessPromptLibrary :prompts @use="used = $event" />
-  <div v-if="used" style="margin-top: 12px">Sent to the chat: {{ used }}</div>
-</template>

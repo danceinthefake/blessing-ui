@@ -1,3 +1,64 @@
+<template>
+  <figure ref="box" class="bless-plot bless-parallel">
+    <svg :viewBox="`0 0 ${width} ${height}`" :height class="bless-plot__svg" aria-hidden="true">
+      <g v-for="(a, k) in axes" :key="a.key">
+        <line
+          class="bless-parallel__axis"
+          :x1="axisX[k]"
+          :x2="axisX[k]"
+          :y1="TOP"
+          :y2="height - BOTTOM"
+        />
+        <text
+          class="bless-plot__cat bless-parallel__name"
+          :x="axisX[k]"
+          y="14"
+          text-anchor="middle"
+        >
+          {{ a.label }}
+        </text>
+        <text class="bless-plot__tick" :x="axisX[k]" :y="TOP - 6" text-anchor="middle">
+          {{ fmtOf(a)(scales[k]!.hi) }}
+        </text>
+        <text class="bless-plot__tick" :x="axisX[k]" :y="height - 6" text-anchor="middle">
+          {{ fmtOf(a)(scales[k]!.lo) }}
+        </text>
+      </g>
+      <polyline
+        v-for="l in lines"
+        :key="l.name"
+        class="bless-parallel__line"
+        :points="l.points"
+        :style="{ '--_c': l.color }"
+      >
+        <title>{{ l.name }}</title>
+      </polyline>
+    </svg>
+    <ul class="bless-parallel__legend" aria-hidden="true">
+      <li v-for="l in lines" :key="l.name"><i :style="{ background: l.color }" />{{ l.name }}</li>
+    </ul>
+    <div class="bless-sr">
+      <table>
+        <caption>
+          {{ label }}
+        </caption>
+        <thead>
+          <tr>
+            <th scope="col">{{ text.item }}</th>
+            <th v-for="a in axes" :key="a.key" scope="col">{{ a.label }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(r, i) in data" :key="i">
+            <th scope="row">{{ r[name] }}</th>
+            <td v-for="a in axes" :key="a.key">{{ fmtOf(a)(num(r, a.key)) }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </figure>
+</template>
+
 <script setup lang="ts">
 import { computed, ref } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -60,67 +121,6 @@ const lines = computed(() =>
   })),
 );
 </script>
-
-<template>
-  <figure ref="box" class="bless-plot bless-parallel">
-    <svg :viewBox="`0 0 ${width} ${height}`" :height class="bless-plot__svg" aria-hidden="true">
-      <g v-for="(a, k) in axes" :key="a.key">
-        <line
-          class="bless-parallel__axis"
-          :x1="axisX[k]"
-          :x2="axisX[k]"
-          :y1="TOP"
-          :y2="height - BOTTOM"
-        />
-        <text
-          class="bless-plot__cat bless-parallel__name"
-          :x="axisX[k]"
-          y="14"
-          text-anchor="middle"
-        >
-          {{ a.label }}
-        </text>
-        <text class="bless-plot__tick" :x="axisX[k]" :y="TOP - 6" text-anchor="middle">
-          {{ fmtOf(a)(scales[k]!.hi) }}
-        </text>
-        <text class="bless-plot__tick" :x="axisX[k]" :y="height - 6" text-anchor="middle">
-          {{ fmtOf(a)(scales[k]!.lo) }}
-        </text>
-      </g>
-      <polyline
-        v-for="l in lines"
-        :key="l.name"
-        class="bless-parallel__line"
-        :points="l.points"
-        :style="{ '--_c': l.color }"
-      >
-        <title>{{ l.name }}</title>
-      </polyline>
-    </svg>
-    <ul class="bless-parallel__legend" aria-hidden="true">
-      <li v-for="l in lines" :key="l.name"><i :style="{ background: l.color }" />{{ l.name }}</li>
-    </ul>
-    <div class="bless-sr">
-      <table>
-        <caption>
-          {{ label }}
-        </caption>
-        <thead>
-          <tr>
-            <th scope="col">{{ text.item }}</th>
-            <th v-for="a in axes" :key="a.key" scope="col">{{ a.label }}</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="(r, i) in data" :key="i">
-            <th scope="row">{{ r[name] }}</th>
-            <td v-for="a in axes" :key="a.key">{{ fmtOf(a)(num(r, a.key)) }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </figure>
-</template>
 
 <style>
 .bless-parallel__axis {

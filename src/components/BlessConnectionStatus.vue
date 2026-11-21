@@ -1,3 +1,12 @@
+<template>
+  <div class="bless-conn" :class="`bless-conn--${now}`" role="status">
+    <template v-if="line">
+      <span class="bless-conn__dot" aria-hidden="true" />
+      <span>{{ line }}</span>
+    </template>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, ref, watch } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -56,15 +65,6 @@ const line = computed(() =>
         : "",
 );
 </script>
-
-<template>
-  <div class="bless-conn" :class="`bless-conn--${now}`" role="status">
-    <template v-if="line">
-      <span class="bless-conn__dot" aria-hidden="true" />
-      <span>{{ line }}</span>
-    </template>
-  </div>
-</template>
 
 <style>
 .bless-conn {

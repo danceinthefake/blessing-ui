@@ -1,15 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { BlessButton, BlessTypingIndicator } from "blessing-ui";
-
-const people = ["Eriri", "Utaha", "Megumi", "Michiru"];
-const typing = ref<string[]>(["Eriri"]);
-const toggle = (name: string) =>
-  (typing.value = typing.value.includes(name)
-    ? typing.value.filter((n) => n !== name)
-    : [...typing.value, name]);
-</script>
-
 <template>
   <div class="col">
     <div class="row">
@@ -27,3 +15,15 @@ const toggle = (name: string) =>
     <BlessTypingIndicator :names="typing" />
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { BlessButton, BlessTypingIndicator } from "blessing-ui";
+
+const people = ["Eriri", "Utaha", "Megumi", "Michiru"];
+const typing = ref<string[]>(["Eriri"]);
+const toggle = (name: string) =>
+  (typing.value = typing.value.includes(name)
+    ? typing.value.filter((n) => n !== name)
+    : [...typing.value, name]);
+</script>

@@ -1,3 +1,7 @@
+<template>
+  <BlessAuditLog :entries style="max-width: 600px" />
+</template>
+
 <script setup lang="ts">
 import { BlessAuditLog, type BlessAuditEntry } from "blessing-ui";
 
@@ -40,7 +44,3 @@ const entries: BlessAuditEntry[] = [
   },
 ];
 </script>
-
-<template>
-  <BlessAuditLog :entries style="max-width: 600px" />
-</template>

@@ -1,3 +1,16 @@
+<template>
+  <div>
+    <BlessPricingTable
+      v-model:period="period"
+      :plans
+      @select="(p, per) => (picked = `${p.name}, ${per}`)"
+    />
+    <BlessText v-if="picked" as="p" size="sm" style="margin-top: 12px"
+      >Picked: {{ picked }}</BlessText
+    >
+  </div>
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import {
@@ -35,16 +48,3 @@ const plans: BlessPricingPlan[] = [
 const period = ref<BlessPricingPeriod>("monthly");
 const picked = ref("");
 </script>
-
-<template>
-  <div>
-    <BlessPricingTable
-      v-model:period="period"
-      :plans
-      @select="(p, per) => (picked = `${p.name}, ${per}`)"
-    />
-    <BlessText v-if="picked" as="p" size="sm" style="margin-top: 12px"
-      >Picked: {{ picked }}</BlessText
-    >
-  </div>
-</template>

@@ -1,3 +1,49 @@
+<template>
+  <section
+    v-if="ready && consent === undefined"
+    class="bless-consent"
+    :class="`bless-consent--${position}`"
+    :aria-labelledby="`${uid}-title`"
+  >
+    <div class="bless-consent__text">
+      <p :id="`${uid}-title`" class="bless-consent__title">{{ text.title }}</p>
+      <p class="bless-consent__message">
+        {{ text.message }}
+        <a v-if="policyHref" :href="policyHref">{{ text.policy }}</a>
+      </p>
+    </div>
+    <fieldset v-if="open" class="bless-consent__panel">
+      <legend class="bless-sr">{{ text.customize }}</legend>
+      <div v-for="c in categories" :key="c.key" class="bless-consent__cat">
+        <BlessSwitch
+          :model-value="c.required || draft[c.key]"
+          :disabled="c.required"
+          @update:model-value="(v: boolean) => (draft[c.key] = v)"
+        >
+          {{ c.label }}<template v-if="c.required"> · {{ text.required }}</template>
+        </BlessSwitch>
+        <p v-if="c.description" class="bless-consent__desc">{{ c.description }}</p>
+      </div>
+    </fieldset>
+    <div class="bless-consent__actions">
+      <template v-if="open">
+        <BlessButton size="sm" @click="save">
+          {{ text.save }}
+        </BlessButton>
+      </template>
+      <template v-else>
+        <BlessButton size="sm" variant="outline" @click="customize">{{
+          text.customize
+        }}</BlessButton>
+      </template>
+      <BlessButton size="sm" variant="outline" @click="choose(all(false))">{{
+        text.reject
+      }}</BlessButton>
+      <BlessButton size="sm" @click="choose(all(true))">{{ text.accept }}</BlessButton>
+    </div>
+  </section>
+</template>
+
 <script setup lang="ts">
 import { computed, onMounted, ref, useId } from "vue";
 import { readJson, writeJson } from "../composables/storage";
@@ -86,52 +132,6 @@ function customize() {
   open.value = true;
 }
 </script>
-
-<template>
-  <section
-    v-if="ready && consent === undefined"
-    class="bless-consent"
-    :class="`bless-consent--${position}`"
-    :aria-labelledby="`${uid}-title`"
-  >
-    <div class="bless-consent__text">
-      <p :id="`${uid}-title`" class="bless-consent__title">{{ text.title }}</p>
-      <p class="bless-consent__message">
-        {{ text.message }}
-        <a v-if="policyHref" :href="policyHref">{{ text.policy }}</a>
-      </p>
-    </div>
-    <fieldset v-if="open" class="bless-consent__panel">
-      <legend class="bless-sr">{{ text.customize }}</legend>
-      <div v-for="c in categories" :key="c.key" class="bless-consent__cat">
-        <BlessSwitch
-          :model-value="c.required || draft[c.key]"
-          :disabled="c.required"
-          @update:model-value="(v: boolean) => (draft[c.key] = v)"
-        >
-          {{ c.label }}<template v-if="c.required"> · {{ text.required }}</template>
-        </BlessSwitch>
-        <p v-if="c.description" class="bless-consent__desc">{{ c.description }}</p>
-      </div>
-    </fieldset>
-    <div class="bless-consent__actions">
-      <template v-if="open">
-        <BlessButton size="sm" @click="save">
-          {{ text.save }}
-        </BlessButton>
-      </template>
-      <template v-else>
-        <BlessButton size="sm" variant="outline" @click="customize">{{
-          text.customize
-        }}</BlessButton>
-      </template>
-      <BlessButton size="sm" variant="outline" @click="choose(all(false))">{{
-        text.reject
-      }}</BlessButton>
-      <BlessButton size="sm" @click="choose(all(true))">{{ text.accept }}</BlessButton>
-    </div>
-  </section>
-</template>
 
 <style>
 .bless-consent {

@@ -1,3 +1,7 @@
+<template>
+  <BlessFeatureFlags v-model="enabled" :flags style="max-width: 560px" />
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessFeatureFlags } from "blessing-ui";
@@ -31,7 +35,3 @@ const enabled = ref<Record<string, boolean>>({
   "dark-embed": true,
 });
 </script>
-
-<template>
-  <BlessFeatureFlags v-model="enabled" :flags style="max-width: 560px" />
-</template>

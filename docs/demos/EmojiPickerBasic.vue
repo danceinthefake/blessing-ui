@@ -1,11 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { BlessEmojiPicker, BlessTextarea } from "blessing-ui";
-
-const message = ref("Episode 12 tonight ");
-const recent = ref<string[]>(["🎉", "👍"]);
-</script>
-
 <template>
   <div class="row" style="align-items: flex-start">
     <BlessEmojiPicker v-model:recent="recent" @select="message += $event.char" />
@@ -14,3 +6,11 @@ const recent = ref<string[]>(["🎉", "👍"]);
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { BlessEmojiPicker, BlessTextarea } from "blessing-ui";
+
+const message = ref("Episode 12 tonight ");
+const recent = ref<string[]>(["🎉", "👍"]);
+</script>

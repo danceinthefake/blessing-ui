@@ -1,3 +1,7 @@
+<template>
+  <BlessFlashcards :cards />
+</template>
+
 <script setup lang="ts">
 import { BlessFlashcards } from "blessing-ui";
 
@@ -9,7 +13,3 @@ const cards = [
   { front: "Room tone", back: "A few seconds of the quiet room, to fill gaps in the edit." },
 ];
 </script>
-
-<template>
-  <BlessFlashcards :cards />
-</template>

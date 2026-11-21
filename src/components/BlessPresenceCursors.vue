@@ -1,3 +1,27 @@
+<template>
+  <div class="bless-presence" @pointermove="onMove" @pointerleave="onLeave">
+    <slot />
+    <!-- decoration over the content: say who is here in words elsewhere, for example with an avatar group -->
+    <div class="bless-presence__layer" aria-hidden="true">
+      <div
+        v-for="c in cursors"
+        :key="c.id"
+        class="bless-presence__cursor"
+        :style="{
+          insetInlineStart: `${clamp(c.x) * 100}%`,
+          insetBlockStart: `${clamp(c.y) * 100}%`,
+          '--_c': colorOf(c),
+        }"
+      >
+        <svg class="bless-presence__arrow" viewBox="0 0 16 16" width="16" height="16">
+          <path d="M1 1l5.5 14 2-6 6-2z" />
+        </svg>
+        <span class="bless-presence__name">{{ c.name }}</span>
+      </div>
+    </div>
+  </div>
+</template>
+
 <script setup lang="ts">
 defineOptions({ name: "BlessPresenceCursors" });
 
@@ -50,30 +74,6 @@ function onLeave() {
   if (props.track) emit("move", null);
 }
 </script>
-
-<template>
-  <div class="bless-presence" @pointermove="onMove" @pointerleave="onLeave">
-    <slot />
-    <!-- decoration over the content: say who is here in words elsewhere, for example with an avatar group -->
-    <div class="bless-presence__layer" aria-hidden="true">
-      <div
-        v-for="c in cursors"
-        :key="c.id"
-        class="bless-presence__cursor"
-        :style="{
-          insetInlineStart: `${clamp(c.x) * 100}%`,
-          insetBlockStart: `${clamp(c.y) * 100}%`,
-          '--_c': colorOf(c),
-        }"
-      >
-        <svg class="bless-presence__arrow" viewBox="0 0 16 16" width="16" height="16">
-          <path d="M1 1l5.5 14 2-6 6-2z" />
-        </svg>
-        <span class="bless-presence__name">{{ c.name }}</span>
-      </div>
-    </div>
-  </div>
-</template>
 
 <style>
 .bless-presence {

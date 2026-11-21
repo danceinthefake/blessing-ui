@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import { BlessText } from "blessing-ui";
-</script>
-
 <template>
   <div class="col" style="max-width: none">
     <BlessText as="p" size="xl" weight="thin">xl thin — 冴えない彼女の育てかた</BlessText>
@@ -15,3 +11,7 @@ import { BlessText } from "blessing-ui";
     <BlessText as="p" size="sm" color="accent">accent text — a chosen episode: 第12話</BlessText>
   </div>
 </template>
+
+<script setup lang="ts">
+import { BlessText } from "blessing-ui";
+</script>

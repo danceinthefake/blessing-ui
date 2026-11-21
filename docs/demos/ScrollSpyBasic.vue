@@ -1,17 +1,3 @@
-<script setup lang="ts">
-import { BlessSidebarNav, useScrollSpy } from "blessing-ui";
-
-const sections = [
-  { id: "spy-news", label: "News" },
-  { id: "spy-story", label: "Story" },
-  { id: "spy-cast", label: "Cast" },
-];
-const { active } = useScrollSpy(
-  sections.map((s) => s.id),
-  { rootMargin: "-20% 0px -60% 0px" },
-);
-</script>
-
 <template>
   <div class="row" style="align-items: flex-start">
     <BlessSidebarNav
@@ -36,3 +22,17 @@ const { active } = useScrollSpy(
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+import { BlessSidebarNav, useScrollSpy } from "blessing-ui";
+
+const sections = [
+  { id: "spy-news", label: "News" },
+  { id: "spy-story", label: "Story" },
+  { id: "spy-cast", label: "Cast" },
+];
+const { active } = useScrollSpy(
+  sections.map((s) => s.id),
+  { rootMargin: "-20% 0px -60% 0px" },
+);
+</script>

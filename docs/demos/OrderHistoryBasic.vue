@@ -1,3 +1,14 @@
+<template>
+  <BlessOrderHistory
+    :orders
+    currency="IDR"
+    locale="id-ID"
+    style="max-width: 560px"
+    @again="(id) => (again = id)"
+  />
+  <p v-if="again" style="margin-top: 12px">Buy again: {{ again }}</p>
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessOrderHistory, type BlessPastOrder } from "blessing-ui";
@@ -48,14 +59,3 @@ const orders: BlessPastOrder[] = [
 ];
 const again = ref<string>();
 </script>
-
-<template>
-  <BlessOrderHistory
-    :orders
-    currency="IDR"
-    locale="id-ID"
-    style="max-width: 560px"
-    @again="(id) => (again = id)"
-  />
-  <p v-if="again" style="margin-top: 12px">Buy again: {{ again }}</p>
-</template>

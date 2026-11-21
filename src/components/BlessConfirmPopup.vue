@@ -1,3 +1,16 @@
+<template>
+  <BlessPopover v-model:open="open" :placement :title class="bless-confirm">
+    <template #trigger><slot name="trigger" :open /></template>
+    <p class="bless-confirm__msg">{{ message }}</p>
+    <div class="bless-confirm__actions">
+      <BlessButton ref="cancelBtn" size="sm" variant="outline" @click="done(false)">{{
+        text.cancel
+      }}</BlessButton>
+      <BlessButton size="sm" :color @click="done(true)">{{ text.confirm }}</BlessButton>
+    </div>
+  </BlessPopover>
+</template>
+
 <script setup lang="ts">
 import { useLabelPack } from "../composables/useLabels";
 import { nextTick, ref, watch, computed } from "vue";
@@ -43,19 +56,6 @@ function done(ok: boolean) {
   else emit("cancel");
 }
 </script>
-
-<template>
-  <BlessPopover v-model:open="open" :placement :title class="bless-confirm">
-    <template #trigger><slot name="trigger" :open /></template>
-    <p class="bless-confirm__msg">{{ message }}</p>
-    <div class="bless-confirm__actions">
-      <BlessButton ref="cancelBtn" size="sm" variant="outline" @click="done(false)">{{
-        text.cancel
-      }}</BlessButton>
-      <BlessButton size="sm" :color @click="done(true)">{{ text.confirm }}</BlessButton>
-    </div>
-  </BlessPopover>
-</template>
 
 <style>
 .bless-confirm__msg {

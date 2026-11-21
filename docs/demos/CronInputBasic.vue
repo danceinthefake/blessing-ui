@@ -1,15 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { BlessButton, BlessCronInput, BlessField } from "blessing-ui";
-
-const schedule = ref("0 9 * * 1-5");
-const presets = {
-  "Every 15 minutes": "*/15 * * * *",
-  "Weekdays at 09:00": "0 9 * * 1-5",
-  "First of the month": "0 0 1 * *",
-};
-</script>
-
 <template>
   <div class="col">
     <div class="row">
@@ -29,3 +17,15 @@ const presets = {
     <code>{{ schedule }}</code>
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { BlessButton, BlessCronInput, BlessField } from "blessing-ui";
+
+const schedule = ref("0 9 * * 1-5");
+const presets = {
+  "Every 15 minutes": "*/15 * * * *",
+  "Weekdays at 09:00": "0 9 * * 1-5",
+  "First of the month": "0 0 1 * *",
+};
+</script>

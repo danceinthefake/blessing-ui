@@ -1,3 +1,38 @@
+<template>
+  <div class="bless-faq">
+    <BlessInput
+      v-model="query"
+      class="bless-faq__search"
+      type="search"
+      :aria-label="text.search"
+      :placeholder="text.search"
+    />
+    <p class="bless-faq__count" role="status">
+      {{ query.trim() ? (shown.length ? text.count(shown.length, items.length) : text.none) : "" }}
+    </p>
+    <details
+      v-for="f in shown"
+      :key="f.i"
+      class="bless-faq__item"
+      :open="isOpen(f.i)"
+      @toggle="toggle(f.i, $event)"
+    >
+      <summary class="bless-faq__question">
+        <template v-for="(p, k) in markParts(f.question, query)" :key="k">
+          <mark v-if="p.hit" class="bless-faq__mark">{{ p.text }}</mark>
+          <template v-else>{{ p.text }}</template>
+        </template>
+      </summary>
+      <p class="bless-faq__answer">
+        <template v-for="(p, k) in markParts(f.answer, query)" :key="k">
+          <mark v-if="p.hit" class="bless-faq__mark">{{ p.text }}</mark>
+          <template v-else>{{ p.text }}</template>
+        </template>
+      </p>
+    </details>
+  </div>
+</template>
+
 <script lang="ts">
 export interface BlessFaq {
   question: string;
@@ -61,41 +96,6 @@ function toggle(i: number, e: Event) {
   opened.value = s;
 }
 </script>
-
-<template>
-  <div class="bless-faq">
-    <BlessInput
-      v-model="query"
-      class="bless-faq__search"
-      type="search"
-      :aria-label="text.search"
-      :placeholder="text.search"
-    />
-    <p class="bless-faq__count" role="status">
-      {{ query.trim() ? (shown.length ? text.count(shown.length, items.length) : text.none) : "" }}
-    </p>
-    <details
-      v-for="f in shown"
-      :key="f.i"
-      class="bless-faq__item"
-      :open="isOpen(f.i)"
-      @toggle="toggle(f.i, $event)"
-    >
-      <summary class="bless-faq__question">
-        <template v-for="(p, k) in markParts(f.question, query)" :key="k">
-          <mark v-if="p.hit" class="bless-faq__mark">{{ p.text }}</mark>
-          <template v-else>{{ p.text }}</template>
-        </template>
-      </summary>
-      <p class="bless-faq__answer">
-        <template v-for="(p, k) in markParts(f.answer, query)" :key="k">
-          <mark v-if="p.hit" class="bless-faq__mark">{{ p.text }}</mark>
-          <template v-else>{{ p.text }}</template>
-        </template>
-      </p>
-    </details>
-  </div>
-</template>
 
 <style>
 .bless-faq {

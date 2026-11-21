@@ -1,3 +1,14 @@
+<template>
+  <BlessDataTable
+    v-model:widths="widths"
+    :columns="columns"
+    :rows="rows"
+    row-key="id"
+    selectable
+    resizable
+  />
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessDataTable, type BlessDataColumn } from "blessing-ui";
@@ -36,14 +47,3 @@ const columns: BlessDataColumn<Order>[] = [
 // bind the widths to keep them, for example in localStorage
 const widths = ref<Record<string, number>>({});
 </script>
-
-<template>
-  <BlessDataTable
-    v-model:widths="widths"
-    :columns="columns"
-    :rows="rows"
-    row-key="id"
-    selectable
-    resizable
-  />
-</template>

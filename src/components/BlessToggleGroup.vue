@@ -1,3 +1,7 @@
+<template>
+  <div class="bless-toggle-group bless-lean" role="group" :aria-label="label"><slot /></div>
+</template>
+
 <script setup lang="ts" generic="T extends string | number">
 import { provide, toRef } from "vue";
 import { toggleGroupKey } from "./toggle";
@@ -21,10 +25,6 @@ function toggle(v: string | number) {
 }
 provide(toggleGroupKey, { has, toggle, disabled: toRef(() => props.disabled) });
 </script>
-
-<template>
-  <div class="bless-toggle-group bless-lean" role="group" :aria-label="label"><slot /></div>
-</template>
 
 <style>
 .bless-toggle-group {

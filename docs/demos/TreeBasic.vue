@@ -1,3 +1,10 @@
+<template>
+  <div class="col" style="max-width: 320px">
+    <BlessTree :nodes v-model:selected="selected" />
+    <small>selected: {{ selected }}</small>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessTree, type BlessTreeNode } from "blessing-ui";
@@ -22,10 +29,3 @@ const nodes: BlessTreeNode[] = [
 ];
 const selected = ref("index");
 </script>
-
-<template>
-  <div class="col" style="max-width: 320px">
-    <BlessTree :nodes v-model:selected="selected" />
-    <small>selected: {{ selected }}</small>
-  </div>
-</template>

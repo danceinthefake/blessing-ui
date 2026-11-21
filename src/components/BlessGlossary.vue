@@ -1,3 +1,15 @@
+<template>
+  <BlessTooltip :placement :delay="200">
+    <button type="button" class="bless-glossary"><slot /></button>
+    <template #content>
+      <span class="bless-glossary__tip">
+        <strong v-if="term" class="bless-glossary__term">{{ term }}</strong>
+        <span>{{ definition }}</span>
+      </span>
+    </template>
+  </BlessTooltip>
+</template>
+
 <script setup lang="ts">
 import BlessTooltip from "./BlessTooltip.vue";
 import type { Placement } from "../composables/useFloating";
@@ -15,18 +27,6 @@ withDefaults(
   { placement: "top" },
 );
 </script>
-
-<template>
-  <BlessTooltip :placement :delay="200">
-    <button type="button" class="bless-glossary"><slot /></button>
-    <template #content>
-      <span class="bless-glossary__tip">
-        <strong v-if="term" class="bless-glossary__term">{{ term }}</strong>
-        <span>{{ definition }}</span>
-      </span>
-    </template>
-  </BlessTooltip>
-</template>
 
 <style>
 /* a term looks like the text around it, with a dotted line under it */

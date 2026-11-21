@@ -1,3 +1,34 @@
+<template>
+  <div
+    ref="viewport"
+    class="bless-virtual"
+    :style="{ '--_h': height }"
+    role="list"
+    :aria-label="label"
+    tabindex="0"
+    @scroll.passive="onScroll"
+    @vue:mounted="onScroll"
+  >
+    <div class="bless-virtual__spacer" :style="{ height: `${total}px` }">
+      <div class="bless-virtual__window" :style="{ transform: `translateY(${offsetTop}px)` }">
+        <div
+          v-for="(item, k) in slice"
+          :key="rowKey ? rowKey(item, start + k) : start + k"
+          :ref="rowRef"
+          :data-index="start + k"
+          class="bless-virtual__row"
+          :style="dynamic ? undefined : { height: `${itemHeight}px` }"
+          role="listitem"
+          :aria-setsize="items.length"
+          :aria-posinset="start + k + 1"
+        >
+          <slot :item :index="start + k" />
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
 <script setup lang="ts" generic="T">
 import { computed, onBeforeUnmount, onMounted, ref, watch } from "vue";
 
@@ -98,37 +129,6 @@ watch(
 );
 defineExpose({ scrollTo });
 </script>
-
-<template>
-  <div
-    ref="viewport"
-    class="bless-virtual"
-    :style="{ '--_h': height }"
-    role="list"
-    :aria-label="label"
-    tabindex="0"
-    @scroll.passive="onScroll"
-    @vue:mounted="onScroll"
-  >
-    <div class="bless-virtual__spacer" :style="{ height: `${total}px` }">
-      <div class="bless-virtual__window" :style="{ transform: `translateY(${offsetTop}px)` }">
-        <div
-          v-for="(item, k) in slice"
-          :key="rowKey ? rowKey(item, start + k) : start + k"
-          :ref="rowRef"
-          :data-index="start + k"
-          class="bless-virtual__row"
-          :style="dynamic ? undefined : { height: `${itemHeight}px` }"
-          role="listitem"
-          :aria-setsize="items.length"
-          :aria-posinset="start + k + 1"
-        >
-          <slot :item :index="start + k" />
-        </div>
-      </div>
-    </div>
-  </div>
-</template>
 
 <style>
 .bless-virtual {

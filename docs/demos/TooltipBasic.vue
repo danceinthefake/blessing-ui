@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import { BlessButton, BlessTooltip } from "blessing-ui";
-</script>
-
 <template>
   <div class="row">
     <BlessTooltip text="Save (⌘S)"><BlessButton>hover me</BlessButton></BlessTooltip>
@@ -15,3 +11,7 @@ import { BlessButton, BlessTooltip } from "blessing-ui";
     <BlessTooltip text="focus me with Tab"><a href="#">a link</a></BlessTooltip>
   </div>
 </template>
+
+<script setup lang="ts">
+import { BlessButton, BlessTooltip } from "blessing-ui";
+</script>

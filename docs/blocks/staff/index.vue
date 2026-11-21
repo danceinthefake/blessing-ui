@@ -1,25 +1,3 @@
-<script setup lang="ts">
-import { BlessSection, BlessSeparator, BlessSkew, BlessText } from "blessing-ui";
-
-const staff = [
-  ["原作", "丸戸史明（富士見ファンタジア文庫刊）"],
-  ["原作イラスト", "深崎暮人"],
-  ["監督", "亀井幹太"],
-  ["シリーズ構成", "丸戸史明"],
-  ["キャラクターデザイン", "高瀬智章"],
-  ["音楽", "羽岡佳"],
-  ["アニメーション制作", "A-1 Pictures"],
-];
-const cast = [
-  ["加藤恵", "安野希世乃"],
-  ["澤村・スペンサー・英梨々", "大西沙織"],
-  ["霞ヶ丘詩羽", "茅野愛衣"],
-  ["氷堂美智留", "矢作紗友里"],
-  ["波島出海", "赤﨑千夏"],
-  ["安芸倫也", "松岡禎丞"],
-];
-</script>
-
 <template>
   <BlessSection title="Staff & Cast" watermark="Staff" class="credits">
     <div class="credits__cols">
@@ -51,6 +29,28 @@ const cast = [
     </div>
   </BlessSection>
 </template>
+
+<script setup lang="ts">
+import { BlessSection, BlessSeparator, BlessSkew, BlessText } from "blessing-ui";
+
+const staff = [
+  ["原作", "丸戸史明（富士見ファンタジア文庫刊）"],
+  ["原作イラスト", "深崎暮人"],
+  ["監督", "亀井幹太"],
+  ["シリーズ構成", "丸戸史明"],
+  ["キャラクターデザイン", "高瀬智章"],
+  ["音楽", "羽岡佳"],
+  ["アニメーション制作", "A-1 Pictures"],
+];
+const cast = [
+  ["加藤恵", "安野希世乃"],
+  ["澤村・スペンサー・英梨々", "大西沙織"],
+  ["霞ヶ丘詩羽", "茅野愛衣"],
+  ["氷堂美智留", "矢作紗友里"],
+  ["波島出海", "赤﨑千夏"],
+  ["安芸倫也", "松岡禎丞"],
+];
+</script>
 
 <style scoped>
 .credits {

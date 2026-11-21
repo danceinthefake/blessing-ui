@@ -1,10 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { BlessInputNumber, BlessLabel } from "blessing-ui";
-const qty = ref(2);
-const price = ref(1980);
-</script>
-
 <template>
   <div class="row" style="align-items: flex-start">
     <div class="col" style="max-width: 200px">
@@ -29,3 +22,10 @@ const price = ref(1980);
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { BlessInputNumber, BlessLabel } from "blessing-ui";
+const qty = ref(2);
+const price = ref(1980);
+</script>

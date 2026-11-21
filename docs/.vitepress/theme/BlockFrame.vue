@@ -1,3 +1,7 @@
+<template>
+  <div class="block-frame"><slot /></div>
+</template>
+
 <script setup lang="ts">
 // The page inside a BlockDemo iframe: full-bleed, no docs chrome, so lib styles and the block's own
 // media queries run unopposed. Theme/palette come from the parent; height goes back up.
@@ -25,10 +29,6 @@ onBeforeUnmount(() => {
   ro?.disconnect();
 });
 </script>
-
-<template>
-  <div class="block-frame"><slot /></div>
-</template>
 
 <style>
 /* VitePress still mounts its mobile "Return to top" bar on layout: page */

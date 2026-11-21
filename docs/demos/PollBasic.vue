@@ -1,3 +1,10 @@
+<template>
+  <div class="row" style="align-items: flex-start">
+    <BlessPoll v-model="voted" question="Tabs or spaces?" :options="options" @vote="onVote" />
+    <BlessPoll question="Closed poll" closed :options="options" />
+  </div>
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessPoll } from "blessing-ui";
@@ -14,10 +21,3 @@ function onVote(v: string) {
   if (o) o.votes++;
 }
 </script>
-
-<template>
-  <div class="row" style="align-items: flex-start">
-    <BlessPoll v-model="voted" question="Tabs or spaces?" :options="options" @vote="onVote" />
-    <BlessPoll question="Closed poll" closed :options="options" />
-  </div>
-</template>

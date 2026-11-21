@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import { BlessMarker } from "blessing-ui";
-</script>
-
 <template>
   <div class="col" style="max-width: 480px">
     <BlessMarker>status pill</BlessMarker>
@@ -15,3 +11,7 @@ import { BlessMarker } from "blessing-ui";
     <BlessMarker shimmer>shimmer while pending</BlessMarker>
   </div>
 </template>
+
+<script setup lang="ts">
+import { BlessMarker } from "blessing-ui";
+</script>

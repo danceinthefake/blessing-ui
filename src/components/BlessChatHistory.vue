@@ -1,3 +1,78 @@
+<template>
+  <nav ref="root" class="bless-chats" :aria-label="text.title">
+    <BlessInput
+      v-if="search"
+      v-model="query"
+      class="bless-chats__search"
+      type="search"
+      size="sm"
+      :aria-label="text.search"
+      :placeholder="text.search"
+    />
+    <p v-if="!groups.length" class="bless-chats__none" role="status">{{ text.none }}</p>
+    <section
+      v-for="g in groups"
+      :key="g.key"
+      class="bless-chats__group"
+      :aria-label="g.title || undefined"
+    >
+      <p v-if="g.title" class="bless-chats__date" aria-hidden="true">{{ g.title }}</p>
+      <ul class="bless-stagger bless-chats__list">
+        <li
+          v-for="c in g.chats"
+          :key="c.id"
+          class="bless-chats__item"
+          :class="{ 'is-selected': c.id === selected }"
+        >
+          <input
+            v-if="editing === c.id"
+            v-model="draft"
+            class="bless-chats__edit"
+            :aria-label="text.rename"
+            @keydown.enter.prevent="save"
+            @keydown.esc.prevent="editing = undefined"
+            @blur="save"
+          />
+          <template v-else>
+            <button
+              type="button"
+              class="bless-chats__open"
+              :aria-current="c.id === selected ? 'page' : undefined"
+              @click="open(c)"
+            >
+              {{ c.title }}
+            </button>
+            <span class="bless-chats__actions">
+              <button
+                type="button"
+                class="bless-chats__act"
+                :aria-label="`${text.rename}: ${c.title}`"
+                :title="text.rename"
+                @click="startRename(c)"
+              >
+                <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
+                  <path d="M10.5 2.5l3 3L6 13H3v-3z" />
+                </svg>
+              </button>
+              <button
+                type="button"
+                class="bless-chats__act"
+                :aria-label="`${text.remove}: ${c.title}`"
+                :title="text.remove"
+                @click="emit('remove', c.id)"
+              >
+                <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
+                  <path d="M3 4.5h10M6.5 4.5V3h3v1.5M4.5 4.5l.7 8.5h5.6l.7-8.5" />
+                </svg>
+              </button>
+            </span>
+          </template>
+        </li>
+      </ul>
+    </section>
+  </nav>
+</template>
+
 <script setup lang="ts">
 import { computed, nextTick, onMounted, ref } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -101,81 +176,6 @@ function open(c: BlessChat) {
   emit("select", c.id);
 }
 </script>
-
-<template>
-  <nav ref="root" class="bless-chats" :aria-label="text.title">
-    <BlessInput
-      v-if="search"
-      v-model="query"
-      class="bless-chats__search"
-      type="search"
-      size="sm"
-      :aria-label="text.search"
-      :placeholder="text.search"
-    />
-    <p v-if="!groups.length" class="bless-chats__none" role="status">{{ text.none }}</p>
-    <section
-      v-for="g in groups"
-      :key="g.key"
-      class="bless-chats__group"
-      :aria-label="g.title || undefined"
-    >
-      <p v-if="g.title" class="bless-chats__date" aria-hidden="true">{{ g.title }}</p>
-      <ul class="bless-stagger bless-chats__list">
-        <li
-          v-for="c in g.chats"
-          :key="c.id"
-          class="bless-chats__item"
-          :class="{ 'is-selected': c.id === selected }"
-        >
-          <input
-            v-if="editing === c.id"
-            v-model="draft"
-            class="bless-chats__edit"
-            :aria-label="text.rename"
-            @keydown.enter.prevent="save"
-            @keydown.esc.prevent="editing = undefined"
-            @blur="save"
-          />
-          <template v-else>
-            <button
-              type="button"
-              class="bless-chats__open"
-              :aria-current="c.id === selected ? 'page' : undefined"
-              @click="open(c)"
-            >
-              {{ c.title }}
-            </button>
-            <span class="bless-chats__actions">
-              <button
-                type="button"
-                class="bless-chats__act"
-                :aria-label="`${text.rename}: ${c.title}`"
-                :title="text.rename"
-                @click="startRename(c)"
-              >
-                <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
-                  <path d="M10.5 2.5l3 3L6 13H3v-3z" />
-                </svg>
-              </button>
-              <button
-                type="button"
-                class="bless-chats__act"
-                :aria-label="`${text.remove}: ${c.title}`"
-                :title="text.remove"
-                @click="emit('remove', c.id)"
-              >
-                <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
-                  <path d="M3 4.5h10M6.5 4.5V3h3v1.5M4.5 4.5l.7 8.5h5.6l.7-8.5" />
-                </svg>
-              </button>
-            </span>
-          </template>
-        </li>
-      </ul>
-    </section>
-  </nav>
-</template>
 
 <style>
 .bless-chats {

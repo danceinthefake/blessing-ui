@@ -1,3 +1,22 @@
+<template>
+  <div
+    ref="root"
+    class="bless-loupe"
+    tabindex="0"
+    @pointerenter="onMove"
+    @pointermove="onMove"
+    @pointerleave="hide"
+    @pointercancel="hide"
+    @pointerup="touching && hide()"
+    @focus="showKey"
+    @blur="hide"
+    @keydown="onKey"
+  >
+    <img :src :alt class="bless-loupe__img" draggable="false" />
+    <span v-if="lens" class="bless-loupe__lens" :style="lens" aria-hidden="true"></span>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed, ref } from "vue";
 
@@ -79,25 +98,6 @@ const lens = computed(() => {
   };
 });
 </script>
-
-<template>
-  <div
-    ref="root"
-    class="bless-loupe"
-    tabindex="0"
-    @pointerenter="onMove"
-    @pointermove="onMove"
-    @pointerleave="hide"
-    @pointercancel="hide"
-    @pointerup="touching && hide()"
-    @focus="showKey"
-    @blur="hide"
-    @keydown="onKey"
-  >
-    <img :src :alt class="bless-loupe__img" draggable="false" />
-    <span v-if="lens" class="bless-loupe__lens" :style="lens" aria-hidden="true"></span>
-  </div>
-</template>
 
 <style>
 .bless-loupe {

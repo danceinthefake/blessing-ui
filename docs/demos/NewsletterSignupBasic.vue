@@ -1,3 +1,18 @@
+<template>
+  <div style="display: grid; gap: 12px">
+    <BlessNewsletterSignup v-model="email" :status :error privacy-href="#" @subscribe="subscribe" />
+    <BlessButton
+      v-if="status === 'done'"
+      size="sm"
+      variant="outline"
+      style="justify-self: start"
+      @click="status = 'idle'"
+    >
+      Start again
+    </BlessButton>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessButton, BlessNewsletterSignup } from "blessing-ui";
@@ -17,18 +32,3 @@ function subscribe(address: string) {
   }, 700);
 }
 </script>
-
-<template>
-  <div style="display: grid; gap: 12px">
-    <BlessNewsletterSignup v-model="email" :status :error privacy-href="#" @subscribe="subscribe" />
-    <BlessButton
-      v-if="status === 'done'"
-      size="sm"
-      variant="outline"
-      style="justify-self: start"
-      @click="status = 'idle'"
-    >
-      Start again
-    </BlessButton>
-  </div>
-</template>

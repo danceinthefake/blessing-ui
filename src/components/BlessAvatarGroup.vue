@@ -1,3 +1,31 @@
+<template>
+  <span class="bless-avatar-group" role="group">
+    <BlessAvatar
+      v-for="(item, i) in shown"
+      :key="i"
+      :src="item.src"
+      :name="item.name"
+      :alt="item.alt"
+      :size
+      :color
+    />
+    <BlessAvatar
+      v-if="hidden.length"
+      class="bless-avatar-group__more"
+      :name="text.more(hidden.length)"
+      :title="
+        hidden
+          .map((h) => h.alt ?? h.name ?? '')
+          .filter(Boolean)
+          .join(', ') || undefined
+      "
+      :size
+      color="text"
+      >+{{ hidden.length }}</BlessAvatar
+    >
+  </span>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -32,34 +60,6 @@ const text = computed(() => ({
 const shown = computed(() => props.items.slice(0, Math.max(0, props.max)));
 const hidden = computed(() => props.items.slice(shown.value.length));
 </script>
-
-<template>
-  <span class="bless-avatar-group" role="group">
-    <BlessAvatar
-      v-for="(item, i) in shown"
-      :key="i"
-      :src="item.src"
-      :name="item.name"
-      :alt="item.alt"
-      :size
-      :color
-    />
-    <BlessAvatar
-      v-if="hidden.length"
-      class="bless-avatar-group__more"
-      :name="text.more(hidden.length)"
-      :title="
-        hidden
-          .map((h) => h.alt ?? h.name ?? '')
-          .filter(Boolean)
-          .join(', ') || undefined
-      "
-      :size
-      color="text"
-      >+{{ hidden.length }}</BlessAvatar
-    >
-  </span>
-</template>
 
 <style>
 /* fuse when grouped: one plate, no overlap. A shared seam keeps each person countable. */

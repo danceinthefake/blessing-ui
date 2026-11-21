@@ -1,3 +1,35 @@
+<template>
+  <div ref="area" class="bless-seltool" @keydown="hide">
+    <slot />
+    <!-- after the content, so Tab from the selected text reaches the toolbar next -->
+    <div
+      v-show="current"
+      ref="bar"
+      class="bless-seltool__bar"
+      :class="{ 'bless-seltool__bar--below': at.below }"
+      role="toolbar"
+      :aria-label="text.label"
+      :style="{ left: `${at.x}px`, top: `${at.y}px` }"
+      @mousedown.prevent
+    >
+      <slot name="toolbar" :selection="current" :run>
+        <button
+          v-for="a in actions"
+          :key="a.id"
+          type="button"
+          class="bless-seltool__btn"
+          :aria-label="a.icon ? a.label : undefined"
+          :title="a.icon ? a.label : undefined"
+          @click="run(a.id)"
+        >
+          <span v-if="a.icon" aria-hidden="true">{{ a.icon }}</span>
+          <template v-else>{{ a.label }}</template>
+        </button>
+      </slot>
+    </div>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, ref } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -77,38 +109,6 @@ onBeforeUnmount(() => {
   removeEventListener("resize", place);
 });
 </script>
-
-<template>
-  <div ref="area" class="bless-seltool" @keydown="hide">
-    <slot />
-    <!-- after the content, so Tab from the selected text reaches the toolbar next -->
-    <div
-      v-show="current"
-      ref="bar"
-      class="bless-seltool__bar"
-      :class="{ 'bless-seltool__bar--below': at.below }"
-      role="toolbar"
-      :aria-label="text.label"
-      :style="{ left: `${at.x}px`, top: `${at.y}px` }"
-      @mousedown.prevent
-    >
-      <slot name="toolbar" :selection="current" :run>
-        <button
-          v-for="a in actions"
-          :key="a.id"
-          type="button"
-          class="bless-seltool__btn"
-          :aria-label="a.icon ? a.label : undefined"
-          :title="a.icon ? a.label : undefined"
-          @click="run(a.id)"
-        >
-          <span v-if="a.icon" aria-hidden="true">{{ a.icon }}</span>
-          <template v-else>{{ a.label }}</template>
-        </button>
-      </slot>
-    </div>
-  </div>
-</template>
 
 <style>
 .bless-seltool__bar {

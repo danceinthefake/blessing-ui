@@ -1,3 +1,7 @@
+<template>
+  <BlessParallelCoordinates :data="shows" name="show" :axes label="Shows on four measures" />
+</template>
+
 <script setup lang="ts">
 import { BlessParallelCoordinates } from "blessing-ui";
 
@@ -16,7 +20,3 @@ const axes = [
   { key: "rating", label: "Rating" },
 ];
 </script>
-
-<template>
-  <BlessParallelCoordinates :data="shows" name="show" :axes label="Shows on four measures" />
-</template>

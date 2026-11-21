@@ -1,3 +1,37 @@
+<template>
+  <div ref="root" class="bless-flash">
+    <template v-if="card">
+      <p class="bless-flash__progress">{{ text.progress(seen + 1, cards.length) }}</p>
+      <button
+        type="button"
+        class="bless-flash__card"
+        :class="{ 'is-flipped': flipped }"
+        :aria-pressed="flipped"
+        @click="flipped = !flipped"
+      >
+        <span class="bless-flash__face">{{ card.front }}</span>
+        <span v-if="!flipped" class="bless-sr">{{ text.flip }}</span>
+        <span v-if="flipped" class="bless-flash__back" aria-live="polite">{{ card.back }}</span>
+      </button>
+      <div class="bless-flash__actions">
+        <template v-if="flipped">
+          <BlessButton size="sm" variant="outline" @click="answer(false)">{{
+            text.again
+          }}</BlessButton>
+          <BlessButton size="sm" @click="answer(true)">{{ text.know }}</BlessButton>
+        </template>
+        <BlessButton v-else size="sm" variant="outline" @click="flipped = true">{{
+          text.flip
+        }}</BlessButton>
+      </div>
+    </template>
+    <div v-else class="bless-flash__end" tabindex="-1">
+      <p class="bless-flash__score">{{ text.done(cards.length - missed.size, cards.length) }}</p>
+      <BlessButton size="sm" variant="outline" @click="restart">{{ text.restart }}</BlessButton>
+    </div>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed, nextTick, ref } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -65,40 +99,6 @@ function restart() {
   focusCard();
 }
 </script>
-
-<template>
-  <div ref="root" class="bless-flash">
-    <template v-if="card">
-      <p class="bless-flash__progress">{{ text.progress(seen + 1, cards.length) }}</p>
-      <button
-        type="button"
-        class="bless-flash__card"
-        :class="{ 'is-flipped': flipped }"
-        :aria-pressed="flipped"
-        @click="flipped = !flipped"
-      >
-        <span class="bless-flash__face">{{ card.front }}</span>
-        <span v-if="!flipped" class="bless-sr">{{ text.flip }}</span>
-        <span v-if="flipped" class="bless-flash__back" aria-live="polite">{{ card.back }}</span>
-      </button>
-      <div class="bless-flash__actions">
-        <template v-if="flipped">
-          <BlessButton size="sm" variant="outline" @click="answer(false)">{{
-            text.again
-          }}</BlessButton>
-          <BlessButton size="sm" @click="answer(true)">{{ text.know }}</BlessButton>
-        </template>
-        <BlessButton v-else size="sm" variant="outline" @click="flipped = true">{{
-          text.flip
-        }}</BlessButton>
-      </div>
-    </template>
-    <div v-else class="bless-flash__end" tabindex="-1">
-      <p class="bless-flash__score">{{ text.done(cards.length - missed.size, cards.length) }}</p>
-      <BlessButton size="sm" variant="outline" @click="restart">{{ text.restart }}</BlessButton>
-    </div>
-  </div>
-</template>
 
 <style>
 .bless-flash {

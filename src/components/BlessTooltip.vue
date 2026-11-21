@@ -1,3 +1,31 @@
+<template>
+  <span
+    ref="anchor"
+    class="bless-tooltip__anchor"
+    @mouseenter="show()"
+    @mouseleave="hideSoon"
+    @focusin="show(0)"
+    @focusout="hide"
+    @keydown.esc="open && ($event.preventDefault(), hide())"
+  >
+    <slot />
+  </span>
+  <span
+    ref="tip"
+    :id
+    popover="manual"
+    role="tooltip"
+    class="bless-tooltip"
+    @mouseenter="keep"
+    @mouseleave="hideSoon"
+    :class="`bless-tooltip--${side}`"
+    :style
+  >
+    <slot name="content">{{ text }}</slot>
+    <span class="bless-tooltip__arrow" aria-hidden="true" />
+  </span>
+</template>
+
 <script setup lang="ts">
 import { nextTick, onBeforeUnmount, onMounted, ref, useId, watch } from "vue";
 import { adoptCss } from "../composables/adoptCss";
@@ -95,34 +123,6 @@ onMounted(() =>
   ),
 );
 </script>
-
-<template>
-  <span
-    ref="anchor"
-    class="bless-tooltip__anchor"
-    @mouseenter="show()"
-    @mouseleave="hideSoon"
-    @focusin="show(0)"
-    @focusout="hide"
-    @keydown.esc="open && ($event.preventDefault(), hide())"
-  >
-    <slot />
-  </span>
-  <span
-    ref="tip"
-    :id
-    popover="manual"
-    role="tooltip"
-    class="bless-tooltip"
-    @mouseenter="keep"
-    @mouseleave="hideSoon"
-    :class="`bless-tooltip--${side}`"
-    :style
-  >
-    <slot name="content">{{ text }}</slot>
-    <span class="bless-tooltip__arrow" aria-hidden="true" />
-  </span>
-</template>
 
 <style>
 .bless-tooltip__anchor {

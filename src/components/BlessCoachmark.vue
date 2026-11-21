@@ -1,3 +1,30 @@
+<template>
+  <span class="bless-coachmark" @click.capture="used" @keydown.esc="open = false">
+    <slot />
+    <template v-if="ready && !dismissed">
+      <button
+        type="button"
+        class="bless-coachmark__dot"
+        :class="`bless-coachmark__dot--${placement}`"
+        :aria-label="text.dot(props.text)"
+        :aria-expanded="open"
+        :aria-controls="bubble"
+        @click.stop="open = !open"
+      />
+      <span
+        v-if="open"
+        :id="bubble"
+        class="bless-coachmark__bubble"
+        :class="`bless-coachmark__bubble--${placement}`"
+        role="status"
+      >
+        {{ props.text }}
+        <BlessButton size="sm" @click="dismiss">{{ text.ok }}</BlessButton>
+      </span>
+    </template>
+  </span>
+</template>
+
 <script setup lang="ts">
 import { useLabelPack } from "../composables/useLabels";
 import { readStore, writeStore } from "../composables/storage";
@@ -56,33 +83,6 @@ const used = (e: MouseEvent) => {
     dismiss();
 };
 </script>
-
-<template>
-  <span class="bless-coachmark" @click.capture="used" @keydown.esc="open = false">
-    <slot />
-    <template v-if="ready && !dismissed">
-      <button
-        type="button"
-        class="bless-coachmark__dot"
-        :class="`bless-coachmark__dot--${placement}`"
-        :aria-label="text.dot(props.text)"
-        :aria-expanded="open"
-        :aria-controls="bubble"
-        @click.stop="open = !open"
-      />
-      <span
-        v-if="open"
-        :id="bubble"
-        class="bless-coachmark__bubble"
-        :class="`bless-coachmark__bubble--${placement}`"
-        role="status"
-      >
-        {{ props.text }}
-        <BlessButton size="sm" @click="dismiss">{{ text.ok }}</BlessButton>
-      </span>
-    </template>
-  </span>
-</template>
 
 <style>
 .bless-coachmark {

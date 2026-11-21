@@ -1,3 +1,45 @@
+<template>
+  <div class="bless-seats">
+    <div class="bless-seats__stage" aria-hidden="true">{{ text.stage }}</div>
+    <div ref="map" class="bless-seats__map" role="group" :aria-label="text.stage">
+      <div v-for="(r, ri) in rows" :key="r.label" class="bless-seats__row">
+        <span class="bless-seats__label" aria-hidden="true">{{ r.label }}</span>
+        <template v-for="(s, ci) in r.seats" :key="s?.id ?? `gap${ci}`">
+          <button
+            v-if="s"
+            type="button"
+            class="bless-seats__seat"
+            :class="{ 'is-taken': s.taken, 'is-chosen': chosen.includes(s.id) }"
+            :style="{ '--_c': color(s) }"
+            :data-seat="s.id"
+            :tabindex="(focus ?? first) === s.id ? 0 : -1"
+            :aria-pressed="chosen.includes(s.id)"
+            :aria-disabled="s.taken || (full && !chosen.includes(s.id)) || undefined"
+            :aria-label="label(r, s, ci)"
+            :title="label(r, s, ci)"
+            @click="toggle(s)"
+            @focus="focus = s.id"
+            @keydown="move($event, ri, ci)"
+          />
+          <span v-else class="bless-seats__gap" aria-hidden="true" />
+        </template>
+        <span class="bless-seats__label" aria-hidden="true">{{ r.label }}</span>
+      </div>
+    </div>
+    <ul class="bless-seats__legend" aria-hidden="true">
+      <li v-for="(z, i) in zones" :key="z.key">
+        <i class="bless-seats__key" :style="{ '--_c': chartColor(z.color, i) }" />{{ z.label }} ·
+        {{ money.format(z.price) }}
+      </li>
+      <li><i class="bless-seats__key is-taken" />{{ text.taken }}</li>
+      <li><i class="bless-seats__key is-chosen" />{{ text.chosen }}</li>
+    </ul>
+    <p class="bless-seats__summary" role="status">
+      {{ chosen.length ? text.summary(chosen.length, money.format(total)) : "" }}
+    </p>
+  </div>
+</template>
+
 <script lang="ts">
 export interface BlessSeat {
   id: string;
@@ -129,48 +171,6 @@ function move(e: KeyboardEvent, r: number, c: number) {
   }
 }
 </script>
-
-<template>
-  <div class="bless-seats">
-    <div class="bless-seats__stage" aria-hidden="true">{{ text.stage }}</div>
-    <div ref="map" class="bless-seats__map" role="group" :aria-label="text.stage">
-      <div v-for="(r, ri) in rows" :key="r.label" class="bless-seats__row">
-        <span class="bless-seats__label" aria-hidden="true">{{ r.label }}</span>
-        <template v-for="(s, ci) in r.seats" :key="s?.id ?? `gap${ci}`">
-          <button
-            v-if="s"
-            type="button"
-            class="bless-seats__seat"
-            :class="{ 'is-taken': s.taken, 'is-chosen': chosen.includes(s.id) }"
-            :style="{ '--_c': color(s) }"
-            :data-seat="s.id"
-            :tabindex="(focus ?? first) === s.id ? 0 : -1"
-            :aria-pressed="chosen.includes(s.id)"
-            :aria-disabled="s.taken || (full && !chosen.includes(s.id)) || undefined"
-            :aria-label="label(r, s, ci)"
-            :title="label(r, s, ci)"
-            @click="toggle(s)"
-            @focus="focus = s.id"
-            @keydown="move($event, ri, ci)"
-          />
-          <span v-else class="bless-seats__gap" aria-hidden="true" />
-        </template>
-        <span class="bless-seats__label" aria-hidden="true">{{ r.label }}</span>
-      </div>
-    </div>
-    <ul class="bless-seats__legend" aria-hidden="true">
-      <li v-for="(z, i) in zones" :key="z.key">
-        <i class="bless-seats__key" :style="{ '--_c': chartColor(z.color, i) }" />{{ z.label }} ·
-        {{ money.format(z.price) }}
-      </li>
-      <li><i class="bless-seats__key is-taken" />{{ text.taken }}</li>
-      <li><i class="bless-seats__key is-chosen" />{{ text.chosen }}</li>
-    </ul>
-    <p class="bless-seats__summary" role="status">
-      {{ chosen.length ? text.summary(chosen.length, money.format(total)) : "" }}
-    </p>
-  </div>
-</template>
 
 <style>
 .bless-seats {

@@ -1,3 +1,35 @@
+<template>
+  <div class="bless-term" @click="focusInput">
+    <div v-if="title" class="bless-term__bar">{{ title }}</div>
+    <div ref="box" class="bless-term__screen" role="log" :aria-label="text.output" tabindex="0">
+      <div
+        v-for="(l, i) in lines"
+        :key="i"
+        class="bless-term__line"
+        :class="`is-${l.kind ?? 'out'}`"
+      >
+        <span v-if="l.kind === 'in'" class="bless-term__prompt" aria-hidden="true">{{
+          `${prompt} `
+        }}</span>
+        <span v-if="l.kind === 'err'" class="bless-sr">{{ `${text.error} ` }}</span>{{ l.text }}
+      </div>
+    </div>
+    <form v-if="!readonly" class="bless-term__input" @submit.prevent="run">
+      <span class="bless-term__prompt" aria-hidden="true">{{ prompt }}</span>
+      <input
+        ref="input"
+        v-model="draft"
+        :aria-label="text.command"
+        autocomplete="off"
+        autocapitalize="off"
+        spellcheck="false"
+        @keydown.up.prevent="walk(1)"
+        @keydown.down.prevent="walk(-1)"
+      />
+    </form>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed, nextTick, ref, watch } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -60,38 +92,6 @@ watch(
   },
 );
 </script>
-
-<template>
-  <div class="bless-term" @click="focusInput">
-    <div v-if="title" class="bless-term__bar">{{ title }}</div>
-    <div ref="box" class="bless-term__screen" role="log" :aria-label="text.output" tabindex="0">
-      <div
-        v-for="(l, i) in lines"
-        :key="i"
-        class="bless-term__line"
-        :class="`is-${l.kind ?? 'out'}`"
-      >
-        <span v-if="l.kind === 'in'" class="bless-term__prompt" aria-hidden="true">{{
-          `${prompt} `
-        }}</span>
-        <span v-if="l.kind === 'err'" class="bless-sr">{{ `${text.error} ` }}</span>{{ l.text }}
-      </div>
-    </div>
-    <form v-if="!readonly" class="bless-term__input" @submit.prevent="run">
-      <span class="bless-term__prompt" aria-hidden="true">{{ prompt }}</span>
-      <input
-        ref="input"
-        v-model="draft"
-        :aria-label="text.command"
-        autocomplete="off"
-        autocapitalize="off"
-        spellcheck="false"
-        @keydown.up.prevent="walk(1)"
-        @keydown.down.prevent="walk(-1)"
-      />
-    </form>
-  </div>
-</template>
 
 <style>
 .bless-term {

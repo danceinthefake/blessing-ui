@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import { BlessContainer } from "blessing-ui";
-</script>
-
 <template>
   <div class="col" style="max-width: none">
     <BlessContainer
@@ -14,3 +10,7 @@ import { BlessContainer } from "blessing-ui";
     </BlessContainer>
   </div>
 </template>
+
+<script setup lang="ts">
+import { BlessContainer } from "blessing-ui";
+</script>

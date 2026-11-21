@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import { BlessButton, BlessPanel } from "blessing-ui";
-</script>
-
 <template>
   <div class="row" style="align-items: flex-start">
     <BlessPanel title="On air" style="width: 300px">
@@ -14,3 +10,7 @@ import { BlessButton, BlessPanel } from "blessing-ui";
     </BlessPanel>
   </div>
 </template>
+
+<script setup lang="ts">
+import { BlessButton, BlessPanel } from "blessing-ui";
+</script>

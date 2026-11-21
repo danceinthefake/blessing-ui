@@ -1,3 +1,55 @@
+<template>
+  <section class="bless-weather" :aria-label="place">
+    <div class="bless-weather__now">
+      <Icon :kind="weather" class="bless-weather__icon is-big" />
+      <div class="bless-weather__main">
+        <div class="bless-weather__place">{{ place }}</div>
+        <div class="bless-weather__temp">{{ deg.format(temp) }}</div>
+        <div class="bless-weather__word">{{ text[weather] }}</div>
+      </div>
+      <dl class="bless-weather__facts">
+        <div v-if="feelsLike != null">
+          <dt>{{ text.feelsLike }}</dt>
+          <dd>{{ deg.format(feelsLike) }}</dd>
+        </div>
+        <div v-if="humidity != null">
+          <dt>{{ text.humidity }}</dt>
+          <dd>{{ pct.format(humidity / 100) }}</dd>
+        </div>
+        <div v-if="wind != null">
+          <dt>{{ text.wind }}</dt>
+          <dd>{{ kmh.format(wind) }}</dd>
+        </div>
+      </dl>
+    </div>
+    <ul
+      v-if="days.length"
+      class="bless-stagger bless-weather__days"
+      :aria-label="text.days"
+      role="list"
+    >
+      <li v-for="d in days" :key="d.date">
+        <div class="bless-weather__day">
+          <span class="bless-weather__name">{{ day.format(new Date(`${d.date}T00:00:00Z`)) }}</span>
+          <Icon :kind="d.weather" class="bless-weather__icon" />
+          <span class="bless-sr">{{ text[d.weather] }}</span>
+          <span class="bless-weather__rain">{{
+            d.rain ? text.rainOf(pct.format(d.rain / 100)) : ""
+          }}</span>
+          <span class="bless-weather__low" aria-hidden="true">{{ deg.format(d.low) }}</span>
+          <span class="bless-weather__bar" aria-hidden="true">
+            <span
+              :style="{ insetInlineStart: `${at(d.low)}%`, insetInlineEnd: `${100 - at(d.high)}%` }"
+            />
+          </span>
+          <span class="bless-weather__high" aria-hidden="true">{{ deg.format(d.high) }}</span>
+          <span class="bless-sr">{{ text.range(deg.format(d.low), deg.format(d.high)) }}</span>
+        </div>
+      </li>
+    </ul>
+  </section>
+</template>
+
 <script setup lang="ts">
 import { computed, h, type FunctionalComponent } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -117,58 +169,6 @@ const lo = computed(() => Math.min(...props.days.map((d) => d.low)));
 const hi = computed(() => Math.max(...props.days.map((d) => d.high)));
 const at = (v: number) => ((v - lo.value) / (hi.value - lo.value || 1)) * 100;
 </script>
-
-<template>
-  <section class="bless-weather" :aria-label="place">
-    <div class="bless-weather__now">
-      <Icon :kind="weather" class="bless-weather__icon is-big" />
-      <div class="bless-weather__main">
-        <div class="bless-weather__place">{{ place }}</div>
-        <div class="bless-weather__temp">{{ deg.format(temp) }}</div>
-        <div class="bless-weather__word">{{ text[weather] }}</div>
-      </div>
-      <dl class="bless-weather__facts">
-        <div v-if="feelsLike != null">
-          <dt>{{ text.feelsLike }}</dt>
-          <dd>{{ deg.format(feelsLike) }}</dd>
-        </div>
-        <div v-if="humidity != null">
-          <dt>{{ text.humidity }}</dt>
-          <dd>{{ pct.format(humidity / 100) }}</dd>
-        </div>
-        <div v-if="wind != null">
-          <dt>{{ text.wind }}</dt>
-          <dd>{{ kmh.format(wind) }}</dd>
-        </div>
-      </dl>
-    </div>
-    <ul
-      v-if="days.length"
-      class="bless-stagger bless-weather__days"
-      :aria-label="text.days"
-      role="list"
-    >
-      <li v-for="d in days" :key="d.date">
-        <div class="bless-weather__day">
-          <span class="bless-weather__name">{{ day.format(new Date(`${d.date}T00:00:00Z`)) }}</span>
-          <Icon :kind="d.weather" class="bless-weather__icon" />
-          <span class="bless-sr">{{ text[d.weather] }}</span>
-          <span class="bless-weather__rain">{{
-            d.rain ? text.rainOf(pct.format(d.rain / 100)) : ""
-          }}</span>
-          <span class="bless-weather__low" aria-hidden="true">{{ deg.format(d.low) }}</span>
-          <span class="bless-weather__bar" aria-hidden="true">
-            <span
-              :style="{ insetInlineStart: `${at(d.low)}%`, insetInlineEnd: `${100 - at(d.high)}%` }"
-            />
-          </span>
-          <span class="bless-weather__high" aria-hidden="true">{{ deg.format(d.high) }}</span>
-          <span class="bless-sr">{{ text.range(deg.format(d.low), deg.format(d.high)) }}</span>
-        </div>
-      </li>
-    </ul>
-  </section>
-</template>
 
 <style>
 .bless-weather {

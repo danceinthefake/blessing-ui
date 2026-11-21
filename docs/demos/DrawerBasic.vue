@@ -1,9 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { BlessButton, BlessDrawer, BlessText } from "blessing-ui";
-const open = ref(false);
-</script>
-
 <template>
   <BlessButton @click="open = true">Open drawer</BlessButton>
   <BlessDrawer v-model="open" title="Share">
@@ -14,3 +8,9 @@ const open = ref(false);
     </div>
   </BlessDrawer>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { BlessButton, BlessDrawer, BlessText } from "blessing-ui";
+const open = ref(false);
+</script>

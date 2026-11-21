@@ -1,3 +1,14 @@
+<template>
+  <div class="row" style="align-items: flex-start">
+    <div class="col">
+      <BlessTextarea v-model="source" aria-label="Markdown" :rows="16" />
+    </div>
+    <div class="col">
+      <BlessMarkdown :source :lexer />
+    </div>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { lexer } from "marked";
@@ -26,14 +37,3 @@ const route = "Megumi";
 <script>alert("raw HTML stays text")</` + `script>`,
 );
 </script>
-
-<template>
-  <div class="row" style="align-items: flex-start">
-    <div class="col">
-      <BlessTextarea v-model="source" aria-label="Markdown" :rows="16" />
-    </div>
-    <div class="col">
-      <BlessMarkdown :source :lexer />
-    </div>
-  </div>
-</template>

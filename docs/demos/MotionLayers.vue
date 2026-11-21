@@ -1,24 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import {
-  BlessAlert,
-  BlessButton,
-  BlessInput,
-  BlessModal,
-  BlessPopover,
-  BlessSwitch,
-  BlessToggle,
-  BlessToggleGroup,
-} from "blessing-ui";
-const calm = ref(false);
-const flair = ref(true);
-const again = ref(0);
-const modal = ref(false);
-const scene = ref<string | undefined>();
-const name = ref("");
-const tried = ref(false);
-</script>
-
 <template>
   <div class="col" :data-motion="calm ? 'calm' : undefined" :data-flair="flair ? '' : undefined">
     <div class="row">
@@ -56,3 +35,24 @@ const tried = ref(false);
     </BlessModal>
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import {
+  BlessAlert,
+  BlessButton,
+  BlessInput,
+  BlessModal,
+  BlessPopover,
+  BlessSwitch,
+  BlessToggle,
+  BlessToggleGroup,
+} from "blessing-ui";
+const calm = ref(false);
+const flair = ref(true);
+const again = ref(0);
+const modal = ref(false);
+const scene = ref<string | undefined>();
+const name = ref("");
+const tried = ref(false);
+</script>

@@ -1,32 +1,3 @@
-<script setup lang="ts">
-import { computed } from "vue";
-
-defineOptions({ name: "BlessCircularProgress" });
-
-const props = withDefaults(
-  defineProps<{
-    /** omit for indeterminate */
-    value?: number;
-    max?: number;
-    size?: number;
-    thickness?: number;
-    color?: "accent" | "text" | "danger" | "success" | "warning" | "info";
-    label?: string;
-    showValue?: boolean;
-    format?: (v: number) => string;
-  }>(),
-  { max: 100, size: 48, thickness: 4, color: "accent", showValue: false },
-);
-const r = computed(() => (props.size - props.thickness) / 2);
-const c = computed(() => 2 * Math.PI * r.value);
-const pct = computed(() =>
-  props.value == null ? 0 : Math.min(1, Math.max(0, props.value / props.max)),
-);
-const text = computed(() =>
-  (props.format ?? ((v: number) => `${Math.round((v / props.max) * 100)}%`))(props.value ?? 0),
-);
-</script>
-
 <template>
   <span
     class="bless-circular"
@@ -64,6 +35,35 @@ const text = computed(() =>
     >
   </span>
 </template>
+
+<script setup lang="ts">
+import { computed } from "vue";
+
+defineOptions({ name: "BlessCircularProgress" });
+
+const props = withDefaults(
+  defineProps<{
+    /** omit for indeterminate */
+    value?: number;
+    max?: number;
+    size?: number;
+    thickness?: number;
+    color?: "accent" | "text" | "danger" | "success" | "warning" | "info";
+    label?: string;
+    showValue?: boolean;
+    format?: (v: number) => string;
+  }>(),
+  { max: 100, size: 48, thickness: 4, color: "accent", showValue: false },
+);
+const r = computed(() => (props.size - props.thickness) / 2);
+const c = computed(() => 2 * Math.PI * r.value);
+const pct = computed(() =>
+  props.value == null ? 0 : Math.min(1, Math.max(0, props.value / props.max)),
+);
+const text = computed(() =>
+  (props.format ?? ((v: number) => `${Math.round((v / props.max) * 100)}%`))(props.value ?? 0),
+);
+</script>
 
 <style>
 .bless-circular {

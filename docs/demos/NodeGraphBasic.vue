@@ -1,3 +1,20 @@
+<template>
+  <div class="col" style="max-width: none">
+    <BlessNodeGraph
+      v-model:nodes="nodes"
+      v-model:edges="edges"
+      v-model:selected="selected"
+      :snap="10"
+      acyclic
+      label="Build pipeline"
+      style="height: 320px"
+    />
+    <p style="margin: 0">
+      {{ edges.map((e) => `${name(e.from)} → ${name(e.to)}`).join(", ") || "No links" }}
+    </p>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessNodeGraph, type BlessGraphEdge, type BlessGraphNode } from "blessing-ui";
@@ -16,20 +33,3 @@ const edges = ref<BlessGraphEdge[]>([
 const selected = ref<string | null>(null);
 const name = (id: string) => nodes.value.find((n) => n.id === id)?.label;
 </script>
-
-<template>
-  <div class="col" style="max-width: none">
-    <BlessNodeGraph
-      v-model:nodes="nodes"
-      v-model:edges="edges"
-      v-model:selected="selected"
-      :snap="10"
-      acyclic
-      label="Build pipeline"
-      style="height: 320px"
-    />
-    <p style="margin: 0">
-      {{ edges.map((e) => `${name(e.from)} → ${name(e.to)}`).join(", ") || "No links" }}
-    </p>
-  </div>
-</template>

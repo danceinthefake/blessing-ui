@@ -1,3 +1,12 @@
+<template>
+  <BlessFunnel
+    :stages="stages"
+    :format="(v: number) => v.toLocaleString('en')"
+    label="Adoption funnel"
+    style="max-width: 560px"
+  />
+</template>
+
 <script setup lang="ts">
 import { BlessFunnel } from "blessing-ui";
 
@@ -8,12 +17,3 @@ const stages = [
   { label: "Shipped", value: 420 },
 ];
 </script>
-
-<template>
-  <BlessFunnel
-    :stages="stages"
-    :format="(v: number) => v.toLocaleString('en')"
-    label="Adoption funnel"
-    style="max-width: 560px"
-  />
-</template>

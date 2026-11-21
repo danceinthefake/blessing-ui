@@ -1,3 +1,99 @@
+<template>
+  <div class="bless-annot">
+    <div v-if="editable" class="bless-annot__bar" role="toolbar" :aria-label="text.tools">
+      <BlessButton
+        v-for="t in ['select', 'box', 'pin'] as const"
+        :key="t"
+        size="sm"
+        :variant="tool === t ? 'solid' : 'outline'"
+        :aria-pressed="tool === t"
+        @click="tool = t"
+        >{{ text[t] }}</BlessButton
+      >
+      <BlessButton size="sm" variant="ghost" @click="addAtCentre">{{ text.add }}</BlessButton>
+      <BlessButton
+        size="sm"
+        variant="ghost"
+        :disabled="!current"
+        @click="current && remove(current)"
+        >{{ text.remove }}</BlessButton
+      >
+    </div>
+    <div
+      ref="stage"
+      class="bless-annot__stage"
+      :class="[`bless-annot__stage--${tool}`, { 'bless-annot__stage--ro': !editable }]"
+      role="group"
+      :aria-label="label"
+      :aria-describedby="hint"
+      tabindex="-1"
+      @pointerdown="stageDown"
+      @pointermove="move"
+      @pointerup="up"
+      @pointercancel="up"
+    >
+      <img class="bless-annot__img" :src :alt draggable="false" />
+      <div
+        v-for="(r, i) in model"
+        :key="r.id"
+        class="bless-annot__mark"
+        :class="[
+          isBox(r) ? 'bless-annot__mark--box' : 'bless-annot__mark--pin',
+          { 'bless-annot__mark--sel': selected === r.id },
+        ]"
+        :style="place(r)"
+        :data-region="r.id"
+        role="button"
+        :aria-pressed="selected === r.id"
+        :aria-label="nameOf(r)"
+        :tabindex="tab === r.id ? 0 : -1"
+        @pointerdown="regionDown(r, $event, 'move')"
+        @keydown="onKey(r, $event)"
+        @focus="selected = r.id"
+      >
+        <span class="bless-annot__num" aria-hidden="true">{{ i + 1 }}</span>
+        <span
+          v-if="editable && isBox(r) && selected === r.id"
+          class="bless-annot__handle"
+          aria-hidden="true"
+          @pointerdown="regionDown(r, $event, 'size')"
+        />
+      </div>
+      <div
+        v-if="draft"
+        class="bless-annot__mark bless-annot__mark--box bless-annot__mark--draft"
+        :style="place({ id: '', label: '', ...draft })"
+      />
+    </div>
+    <div v-if="current && editable" class="bless-annot__edit">
+      <label class="bless-annot__field">
+        <span>{{ text.name }}</span>
+        <input
+          ref="nameInput"
+          class="bless-annot__input"
+          type="text"
+          :value="current.label"
+          @input="setName(($event.target as HTMLInputElement).value)"
+        />
+      </label>
+    </div>
+    <ol v-if="model.length" class="bless-annot__list" :aria-label="text.regions">
+      <li v-for="r in model" :key="r.id">
+        <button
+          type="button"
+          class="bless-annot__item"
+          :aria-pressed="selected === r.id"
+          @click="((selected = r.id), focusRegion(r.id))"
+        >
+          {{ nameOf(r) }}
+        </button>
+      </li>
+    </ol>
+    <span :id="hint" hidden>{{ text.hint }}</span>
+    <span class="bless-annot__live bless-sr" aria-live="polite">{{ live }}</span>
+  </div>
+</template>
+
 <script lang="ts">
 export type { Region as BlessRegion } from "../composables/annotate";
 </script>
@@ -187,102 +283,6 @@ function onKey(r: Region, e: KeyboardEvent) {
 const tab = computed(() => selected.value ?? model.value[0]?.id);
 const setName = (v: string) => current.value && patch({ ...current.value, label: v });
 </script>
-
-<template>
-  <div class="bless-annot">
-    <div v-if="editable" class="bless-annot__bar" role="toolbar" :aria-label="text.tools">
-      <BlessButton
-        v-for="t in ['select', 'box', 'pin'] as const"
-        :key="t"
-        size="sm"
-        :variant="tool === t ? 'solid' : 'outline'"
-        :aria-pressed="tool === t"
-        @click="tool = t"
-        >{{ text[t] }}</BlessButton
-      >
-      <BlessButton size="sm" variant="ghost" @click="addAtCentre">{{ text.add }}</BlessButton>
-      <BlessButton
-        size="sm"
-        variant="ghost"
-        :disabled="!current"
-        @click="current && remove(current)"
-        >{{ text.remove }}</BlessButton
-      >
-    </div>
-    <div
-      ref="stage"
-      class="bless-annot__stage"
-      :class="[`bless-annot__stage--${tool}`, { 'bless-annot__stage--ro': !editable }]"
-      role="group"
-      :aria-label="label"
-      :aria-describedby="hint"
-      tabindex="-1"
-      @pointerdown="stageDown"
-      @pointermove="move"
-      @pointerup="up"
-      @pointercancel="up"
-    >
-      <img class="bless-annot__img" :src :alt draggable="false" />
-      <div
-        v-for="(r, i) in model"
-        :key="r.id"
-        class="bless-annot__mark"
-        :class="[
-          isBox(r) ? 'bless-annot__mark--box' : 'bless-annot__mark--pin',
-          { 'bless-annot__mark--sel': selected === r.id },
-        ]"
-        :style="place(r)"
-        :data-region="r.id"
-        role="button"
-        :aria-pressed="selected === r.id"
-        :aria-label="nameOf(r)"
-        :tabindex="tab === r.id ? 0 : -1"
-        @pointerdown="regionDown(r, $event, 'move')"
-        @keydown="onKey(r, $event)"
-        @focus="selected = r.id"
-      >
-        <span class="bless-annot__num" aria-hidden="true">{{ i + 1 }}</span>
-        <span
-          v-if="editable && isBox(r) && selected === r.id"
-          class="bless-annot__handle"
-          aria-hidden="true"
-          @pointerdown="regionDown(r, $event, 'size')"
-        />
-      </div>
-      <div
-        v-if="draft"
-        class="bless-annot__mark bless-annot__mark--box bless-annot__mark--draft"
-        :style="place({ id: '', label: '', ...draft })"
-      />
-    </div>
-    <div v-if="current && editable" class="bless-annot__edit">
-      <label class="bless-annot__field">
-        <span>{{ text.name }}</span>
-        <input
-          ref="nameInput"
-          class="bless-annot__input"
-          type="text"
-          :value="current.label"
-          @input="setName(($event.target as HTMLInputElement).value)"
-        />
-      </label>
-    </div>
-    <ol v-if="model.length" class="bless-annot__list" :aria-label="text.regions">
-      <li v-for="r in model" :key="r.id">
-        <button
-          type="button"
-          class="bless-annot__item"
-          :aria-pressed="selected === r.id"
-          @click="((selected = r.id), focusRegion(r.id))"
-        >
-          {{ nameOf(r) }}
-        </button>
-      </li>
-    </ol>
-    <span :id="hint" hidden>{{ text.hint }}</span>
-    <span class="bless-annot__live bless-sr" aria-live="polite">{{ live }}</span>
-  </div>
-</template>
 
 <style>
 .bless-annot {

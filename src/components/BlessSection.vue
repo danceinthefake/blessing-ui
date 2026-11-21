@@ -1,3 +1,25 @@
+<template>
+  <section class="bless-section" :class="`bless-section--${headline}`">
+    <div v-if="$slots.band" class="bless-section__band"><slot name="band" /></div>
+    <BlessWatermark
+      v-if="
+        headline === 'label' && (watermark ?? title) !== undefined && (watermark ?? title) !== ''
+      "
+      :text="watermark ?? title!"
+      :position="watermarkPosition"
+    />
+    <div class="bless-section__body">
+      <component :is="`h${headingLevel}`" v-if="title || $slots.title" class="bless-section__title">
+        <span class="bless-section__title-text"><slot name="title">{{ title }}</slot></span>
+        <span v-if="headline === 'hanging' && subtitle" class="bless-section__subtitle">{{
+          subtitle
+        }}</span>
+      </component>
+      <slot />
+    </div>
+  </section>
+</template>
+
 <script setup lang="ts">
 import BlessWatermark from "./BlessWatermark.vue";
 
@@ -22,28 +44,6 @@ withDefaults(
   { headingLevel: 2, headline: "label" },
 );
 </script>
-
-<template>
-  <section class="bless-section" :class="`bless-section--${headline}`">
-    <div v-if="$slots.band" class="bless-section__band"><slot name="band" /></div>
-    <BlessWatermark
-      v-if="
-        headline === 'label' && (watermark ?? title) !== undefined && (watermark ?? title) !== ''
-      "
-      :text="watermark ?? title!"
-      :position="watermarkPosition"
-    />
-    <div class="bless-section__body">
-      <component :is="`h${headingLevel}`" v-if="title || $slots.title" class="bless-section__title">
-        <span class="bless-section__title-text"><slot name="title">{{ title }}</slot></span>
-        <span v-if="headline === 'hanging' && subtitle" class="bless-section__subtitle">{{
-          subtitle
-        }}</span>
-      </component>
-      <slot />
-    </div>
-  </section>
-</template>
 
 <style>
 .bless-section {

@@ -1,3 +1,22 @@
+<template>
+  <div ref="box" class="bless-lyrics" role="region" :aria-label="text.title" tabindex="0">
+    <ol class="bless-lyrics__list" role="list">
+      <li v-for="(l, i) in lines" :key="i">
+        <button
+          type="button"
+          class="bless-lyrics__line"
+          :class="{ 'is-current': i === current, 'is-past': i < current }"
+          :aria-current="i === current ? 'true' : undefined"
+          :title="text.seek(clock(l.time))"
+          @click="emit('seek', l.time)"
+        >
+          {{ l.text }}
+        </button>
+      </li>
+    </ol>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed, nextTick, ref, watch } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -46,25 +65,6 @@ watch(current, () =>
   }),
 );
 </script>
-
-<template>
-  <div ref="box" class="bless-lyrics" role="region" :aria-label="text.title" tabindex="0">
-    <ol class="bless-lyrics__list" role="list">
-      <li v-for="(l, i) in lines" :key="i">
-        <button
-          type="button"
-          class="bless-lyrics__line"
-          :class="{ 'is-current': i === current, 'is-past': i < current }"
-          :aria-current="i === current ? 'true' : undefined"
-          :title="text.seek(clock(l.time))"
-          @click="emit('seek', l.time)"
-        >
-          {{ l.text }}
-        </button>
-      </li>
-    </ol>
-  </div>
-</template>
 
 <style>
 .bless-lyrics {

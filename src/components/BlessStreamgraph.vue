@@ -1,3 +1,52 @@
+<template>
+  <figure ref="box" class="bless-plot bless-stream">
+    <ul class="bless-stream__legend" aria-hidden="true">
+      <li v-for="s in streams" :key="s.key"><i :style="{ background: s.color }" />{{ s.name }}</li>
+    </ul>
+    <svg :viewBox="`0 0 ${width} ${height}`" :height class="bless-plot__svg" aria-hidden="true">
+      <path
+        v-for="s in streams"
+        :key="s.key"
+        class="bless-stream__area"
+        :d="s.d"
+        :style="{ '--_c': s.color }"
+      >
+        <title>{{ s.name }}</title>
+      </path>
+      <template v-for="(r, k) in data" :key="k">
+        <text
+          v-if="k % every === 0"
+          class="bless-plot__tick"
+          :x="px(k)"
+          :y="height - 8"
+          :text-anchor="k === 0 ? 'start' : k === data.length - 1 ? 'end' : 'middle'"
+        >
+          {{ r[x] }}
+        </text>
+      </template>
+    </svg>
+    <div class="bless-sr">
+      <table>
+        <caption>
+          {{ label }}
+        </caption>
+        <thead>
+          <tr>
+            <th scope="col">{{ text.step }}</th>
+            <th v-for="s in series" :key="s.key" scope="col">{{ s.label ?? s.key }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(r, k) in data" :key="k">
+            <th scope="row">{{ r[x] }}</th>
+            <td v-for="s in series" :key="s.key">{{ fmt(num(r, s.key)) }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </figure>
+</template>
+
 <script setup lang="ts">
 import { computed, ref } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -72,55 +121,6 @@ const every = computed(() =>
   Math.max(1, Math.ceil(64 / ((width.value - 16) / Math.max(1, props.data.length - 1)))),
 );
 </script>
-
-<template>
-  <figure ref="box" class="bless-plot bless-stream">
-    <ul class="bless-stream__legend" aria-hidden="true">
-      <li v-for="s in streams" :key="s.key"><i :style="{ background: s.color }" />{{ s.name }}</li>
-    </ul>
-    <svg :viewBox="`0 0 ${width} ${height}`" :height class="bless-plot__svg" aria-hidden="true">
-      <path
-        v-for="s in streams"
-        :key="s.key"
-        class="bless-stream__area"
-        :d="s.d"
-        :style="{ '--_c': s.color }"
-      >
-        <title>{{ s.name }}</title>
-      </path>
-      <template v-for="(r, k) in data" :key="k">
-        <text
-          v-if="k % every === 0"
-          class="bless-plot__tick"
-          :x="px(k)"
-          :y="height - 8"
-          :text-anchor="k === 0 ? 'start' : k === data.length - 1 ? 'end' : 'middle'"
-        >
-          {{ r[x] }}
-        </text>
-      </template>
-    </svg>
-    <div class="bless-sr">
-      <table>
-        <caption>
-          {{ label }}
-        </caption>
-        <thead>
-          <tr>
-            <th scope="col">{{ text.step }}</th>
-            <th v-for="s in series" :key="s.key" scope="col">{{ s.label ?? s.key }}</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="(r, k) in data" :key="k">
-            <th scope="row">{{ r[x] }}</th>
-            <td v-for="s in series" :key="s.key">{{ fmt(num(r, s.key)) }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </figure>
-</template>
 
 <style>
 .bless-stream__legend {

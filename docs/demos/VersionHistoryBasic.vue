@@ -1,3 +1,13 @@
+<template>
+  <div style="max-width: 420px">
+    <BlessVersionHistory v-model:selected="selected" :versions @restore="(id) => (restored = id)" />
+    <BlessText as="p" size="sm" style="margin-top: 12px">
+      Looking at: {{ selected
+      }}<template v-if="restored"> · restore asked for {{ restored }}</template>
+    </BlessText>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessText, BlessVersionHistory, type BlessVersion } from "blessing-ui";
@@ -42,13 +52,3 @@ const versions = ref<BlessVersion[]>([
 const selected = ref("v5");
 const restored = ref<string>();
 </script>
-
-<template>
-  <div style="max-width: 420px">
-    <BlessVersionHistory v-model:selected="selected" :versions @restore="(id) => (restored = id)" />
-    <BlessText as="p" size="sm" style="margin-top: 12px">
-      Looking at: {{ selected
-      }}<template v-if="restored"> · restore asked for {{ restored }}</template>
-    </BlessText>
-  </div>
-</template>

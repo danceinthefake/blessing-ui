@@ -1,22 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { BlessButton, BlessStack, BlessToolCall } from "blessing-ui";
-
-type Status = "running" | "done" | "error";
-const search = ref<Status>("done");
-const fetchPage = ref<Status>("error");
-const write = ref<Status>("running");
-const results = [
-  { title: "How to name an episode", url: "https://example.com/a" },
-  { title: "Titles that get clicks", url: "https://example.com/b" },
-];
-
-function rerun() {
-  write.value = "running";
-  setTimeout(() => (write.value = "done"), 1500);
-}
-</script>
-
 <template>
   <BlessStack :gap="2" style="max-width: 560px">
     <BlessToolCall
@@ -44,3 +25,22 @@ function rerun() {
     >
   </BlessStack>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { BlessButton, BlessStack, BlessToolCall } from "blessing-ui";
+
+type Status = "running" | "done" | "error";
+const search = ref<Status>("done");
+const fetchPage = ref<Status>("error");
+const write = ref<Status>("running");
+const results = [
+  { title: "How to name an episode", url: "https://example.com/a" },
+  { title: "Titles that get clicks", url: "https://example.com/b" },
+];
+
+function rerun() {
+  write.value = "running";
+  setTimeout(() => (write.value = "done"), 1500);
+}
+</script>

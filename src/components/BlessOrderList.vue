@@ -1,3 +1,60 @@
+<template>
+  <div ref="root" class="bless-order">
+    <TransitionGroup
+      tag="ul"
+      appear
+      appear-active-class="bless-appear"
+      enter-active-class="bless-arrive"
+      move-class="bless-move"
+      @leave="(_el: Element, done: () => void) => done()"
+      class="bless-order__list"
+      role="list"
+      :aria-label="label"
+    >
+      <li
+        v-for="(item, i) in model"
+        :key="rowKey ? rowKey(item, i) : i"
+        class="bless-order__item"
+        :class="{ 'bless-order__item--drag': drag === i, 'bless-order__item--over': over === i }"
+        draggable="true"
+        tabindex="0"
+        :aria-describedby="hint"
+        @dragstart="drag = i"
+        @dragover.prevent="over = i"
+        @dragleave="over === i && (over = null)"
+        @drop.prevent="onDrop(i)"
+        @dragend="drag = over = null"
+        @keydown="onKey(i, $event)"
+      >
+        <span class="bless-order__grip" aria-hidden="true">⋮⋮</span>
+        <span class="bless-order__body"><slot :item :index="i">{{ item }}</slot></span>
+        <span v-if="props.buttons" class="bless-order__btns">
+          <button
+            type="button"
+            class="bless-order__up"
+            :aria-label="text.up(i + 1)"
+            :disabled="i === 0"
+            @click="step(i, -1)"
+          >
+            ↑
+          </button>
+          <button
+            type="button"
+            class="bless-order__down"
+            :aria-label="text.down(i + 1)"
+            :disabled="i === model.length - 1"
+            @click="step(i, 1)"
+          >
+            ↓
+          </button>
+        </span>
+      </li>
+    </TransitionGroup>
+    <span :id="hint" hidden>Alt plus arrow keys move it.</span>
+    <span class="bless-order__live bless-sr" aria-live="polite">{{ live }}</span>
+  </div>
+</template>
+
 <script setup lang="ts" generic="T">
 import { useLabelPack } from "../composables/useLabels";
 import "./sr.css";
@@ -71,63 +128,6 @@ function step(i: number, d: -1 | 1) {
   });
 }
 </script>
-
-<template>
-  <div ref="root" class="bless-order">
-    <TransitionGroup
-      tag="ul"
-      appear
-      appear-active-class="bless-appear"
-      enter-active-class="bless-arrive"
-      move-class="bless-move"
-      @leave="(_el: Element, done: () => void) => done()"
-      class="bless-order__list"
-      role="list"
-      :aria-label="label"
-    >
-      <li
-        v-for="(item, i) in model"
-        :key="rowKey ? rowKey(item, i) : i"
-        class="bless-order__item"
-        :class="{ 'bless-order__item--drag': drag === i, 'bless-order__item--over': over === i }"
-        draggable="true"
-        tabindex="0"
-        :aria-describedby="hint"
-        @dragstart="drag = i"
-        @dragover.prevent="over = i"
-        @dragleave="over === i && (over = null)"
-        @drop.prevent="onDrop(i)"
-        @dragend="drag = over = null"
-        @keydown="onKey(i, $event)"
-      >
-        <span class="bless-order__grip" aria-hidden="true">⋮⋮</span>
-        <span class="bless-order__body"><slot :item :index="i">{{ item }}</slot></span>
-        <span v-if="props.buttons" class="bless-order__btns">
-          <button
-            type="button"
-            class="bless-order__up"
-            :aria-label="text.up(i + 1)"
-            :disabled="i === 0"
-            @click="step(i, -1)"
-          >
-            ↑
-          </button>
-          <button
-            type="button"
-            class="bless-order__down"
-            :aria-label="text.down(i + 1)"
-            :disabled="i === model.length - 1"
-            @click="step(i, 1)"
-          >
-            ↓
-          </button>
-        </span>
-      </li>
-    </TransitionGroup>
-    <span :id="hint" hidden>Alt plus arrow keys move it.</span>
-    <span class="bless-order__live bless-sr" aria-live="polite">{{ live }}</span>
-  </div>
-</template>
 
 <style>
 .bless-order {

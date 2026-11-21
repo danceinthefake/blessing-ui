@@ -1,3 +1,40 @@
+<template>
+  <div class="bless-stage" :class="{ 'bless-stage--open': open }" @keydown="onKey">
+    <div v-if="$slots.background" class="bless-stage__bg" aria-hidden="true">
+      <slot name="background" />
+    </div>
+
+    <button
+      v-if="sp"
+      ref="toggle"
+      type="button"
+      class="bless-stage__toggle"
+      :aria-expanded="open"
+      :aria-controls="sideId"
+      @click="open = !open"
+    >
+      <span class="bless-stage__toggle-bar" aria-hidden="true" />
+      <span class="bless-stage__sr">{{ text.menu }}</span>
+    </button>
+    <div v-if="sp && open" class="bless-stage__scrim" @click="open = false" />
+
+    <aside
+      :id="sideId"
+      ref="side"
+      class="bless-stage__side"
+      :aria-hidden="sp && !open ? 'true' : undefined"
+      :inert="sp && !open"
+    >
+      <div class="bless-stage__side-inner"><slot name="sidebar" /></div>
+    </aside>
+
+    <div class="bless-stage__main">
+      <main class="bless-stage__content"><slot /></main>
+      <footer v-if="$slots.footer" class="bless-stage__footer"><slot name="footer" /></footer>
+    </div>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { useLabelPack } from "../composables/useLabels";
 import { nextTick, ref, useId, watch, computed } from "vue";
@@ -41,43 +78,6 @@ function onKey(e: KeyboardEvent) {
   toggle.value?.focus();
 }
 </script>
-
-<template>
-  <div class="bless-stage" :class="{ 'bless-stage--open': open }" @keydown="onKey">
-    <div v-if="$slots.background" class="bless-stage__bg" aria-hidden="true">
-      <slot name="background" />
-    </div>
-
-    <button
-      v-if="sp"
-      ref="toggle"
-      type="button"
-      class="bless-stage__toggle"
-      :aria-expanded="open"
-      :aria-controls="sideId"
-      @click="open = !open"
-    >
-      <span class="bless-stage__toggle-bar" aria-hidden="true" />
-      <span class="bless-stage__sr">{{ text.menu }}</span>
-    </button>
-    <div v-if="sp && open" class="bless-stage__scrim" @click="open = false" />
-
-    <aside
-      :id="sideId"
-      ref="side"
-      class="bless-stage__side"
-      :aria-hidden="sp && !open ? 'true' : undefined"
-      :inert="sp && !open"
-    >
-      <div class="bless-stage__side-inner"><slot name="sidebar" /></div>
-    </aside>
-
-    <div class="bless-stage__main">
-      <main class="bless-stage__content"><slot /></main>
-      <footer v-if="$slots.footer" class="bless-stage__footer"><slot name="footer" /></footer>
-    </div>
-  </div>
-</template>
 
 <style>
 .bless-stage {

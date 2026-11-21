@@ -1,11 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { BlessPostComposer, type BlessNewPost } from "blessing-ui";
-
-const draft = ref("Episode 41 is out! We talk about home recording with a radio engineer 🎙️");
-const posted = ref<BlessNewPost>();
-</script>
-
 <template>
   <BlessPostComposer
     v-model="draft"
@@ -19,3 +11,11 @@ const posted = ref<BlessNewPost>();
     >.
   </p>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { BlessPostComposer, type BlessNewPost } from "blessing-ui";
+
+const draft = ref("Episode 41 is out! We talk about home recording with a radio engineer 🎙️");
+const posted = ref<BlessNewPost>();
+</script>

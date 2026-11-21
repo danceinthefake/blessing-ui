@@ -1,3 +1,14 @@
+<template>
+  <BlessChatHistory
+    v-model:selected="selected"
+    :chats
+    :now
+    style="max-width: 300px"
+    @rename="rename"
+    @remove="remove"
+  />
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessChatHistory, type BlessChat } from "blessing-ui";
@@ -19,14 +30,3 @@ const rename = (id: string | number, title: string) =>
   (chats.value = chats.value.map((c) => (c.id === id ? { ...c, title } : c)));
 const remove = (id: string | number) => (chats.value = chats.value.filter((c) => c.id !== id));
 </script>
-
-<template>
-  <BlessChatHistory
-    v-model:selected="selected"
-    :chats
-    :now
-    style="max-width: 300px"
-    @rename="rename"
-    @remove="remove"
-  />
-</template>

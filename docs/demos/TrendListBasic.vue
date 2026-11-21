@@ -1,3 +1,7 @@
+<template>
+  <BlessTrendList :trends style="max-width: 320px" />
+</template>
+
 <script setup lang="ts">
 import { BlessTrendList, type BlessTrend } from "blessing-ui";
 
@@ -21,7 +25,3 @@ const trends: BlessTrend[] = [
   { id: "5", topic: "#roomtreatment", posts: 412, href: "#room" },
 ];
 </script>
-
-<template>
-  <BlessTrendList :trends style="max-width: 320px" />
-</template>

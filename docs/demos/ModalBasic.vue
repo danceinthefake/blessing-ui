@@ -1,9 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { BlessButton, BlessModal, BlessText } from "blessing-ui";
-const open = ref(false);
-</script>
-
 <template>
   <BlessButton @click="open = true">Open modal</BlessButton>
   <BlessModal v-model="open" title="Blu-ray Disc BOX">
@@ -14,3 +8,9 @@ const open = ref(false);
     </template>
   </BlessModal>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { BlessButton, BlessModal, BlessText } from "blessing-ui";
+const open = ref(false);
+</script>

@@ -1,3 +1,65 @@
+<template>
+  <div class="bless-sticky">
+    <button type="button" class="bless-sticky__add" @click="add">+ {{ text.add }}</button>
+    <div
+      ref="board"
+      class="bless-sticky__board"
+      role="region"
+      :aria-label="text.board"
+      :style="{ blockSize: `${height}px` }"
+    >
+      <article
+        v-for="(n, i) in notes"
+        :key="n.id"
+        class="bless-sticky__note"
+        :class="`is-${n.color ?? 'yellow'}`"
+        :data-note="n.id"
+        :style="{ insetInlineStart: `${n.x}px`, insetBlockStart: `${n.y}px` }"
+        :aria-label="text.note(i + 1)"
+      >
+        <div class="bless-sticky__bar">
+          <button
+            type="button"
+            class="bless-sticky__handle"
+            :aria-label="text.move"
+            :title="text.move"
+            @pointerdown="down($event, n)"
+            @pointermove="move"
+            @pointerup="up"
+            @keydown="onKey($event, n)"
+          >
+            ⠿
+          </button>
+          <button
+            type="button"
+            class="bless-sticky__tool"
+            :aria-label="text.color"
+            :title="text.color"
+            @click="cycle(n)"
+          >
+            ◐
+          </button>
+          <button
+            type="button"
+            class="bless-sticky__tool"
+            :aria-label="text.remove"
+            :title="text.remove"
+            @click="remove(n.id)"
+          >
+            ✕
+          </button>
+        </div>
+        <textarea
+          class="bless-sticky__text"
+          :value="n.text"
+          :aria-label="text.note(i + 1)"
+          @input="patch(n.id, { text: ($event.target as HTMLTextAreaElement).value })"
+        />
+      </article>
+    </div>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed, nextTick, ref } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -95,68 +157,6 @@ function move(e: PointerEvent) {
 }
 const up = () => (drag = undefined);
 </script>
-
-<template>
-  <div class="bless-sticky">
-    <button type="button" class="bless-sticky__add" @click="add">+ {{ text.add }}</button>
-    <div
-      ref="board"
-      class="bless-sticky__board"
-      role="region"
-      :aria-label="text.board"
-      :style="{ blockSize: `${height}px` }"
-    >
-      <article
-        v-for="(n, i) in notes"
-        :key="n.id"
-        class="bless-sticky__note"
-        :class="`is-${n.color ?? 'yellow'}`"
-        :data-note="n.id"
-        :style="{ insetInlineStart: `${n.x}px`, insetBlockStart: `${n.y}px` }"
-        :aria-label="text.note(i + 1)"
-      >
-        <div class="bless-sticky__bar">
-          <button
-            type="button"
-            class="bless-sticky__handle"
-            :aria-label="text.move"
-            :title="text.move"
-            @pointerdown="down($event, n)"
-            @pointermove="move"
-            @pointerup="up"
-            @keydown="onKey($event, n)"
-          >
-            ⠿
-          </button>
-          <button
-            type="button"
-            class="bless-sticky__tool"
-            :aria-label="text.color"
-            :title="text.color"
-            @click="cycle(n)"
-          >
-            ◐
-          </button>
-          <button
-            type="button"
-            class="bless-sticky__tool"
-            :aria-label="text.remove"
-            :title="text.remove"
-            @click="remove(n.id)"
-          >
-            ✕
-          </button>
-        </div>
-        <textarea
-          class="bless-sticky__text"
-          :value="n.text"
-          :aria-label="text.note(i + 1)"
-          @input="patch(n.id, { text: ($event.target as HTMLTextAreaElement).value })"
-        />
-      </article>
-    </div>
-  </div>
-</template>
 
 <style>
 .bless-sticky {

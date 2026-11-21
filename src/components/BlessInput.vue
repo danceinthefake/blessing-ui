@@ -1,33 +1,3 @@
-<script setup lang="ts">
-import { joinIds, useFieldId, useFieldState } from "../composables/useFieldId";
-
-defineOptions({ name: "BlessInput", inheritAttrs: false });
-
-const props = withDefaults(
-  defineProps<{
-    id?: string;
-    type?: string;
-    size?: "sm" | "md" | "lg";
-    invalid?: boolean;
-    disabled?: boolean;
-    readonly?: boolean;
-    /** text under the field; also wired via aria-describedby */
-    description?: string;
-    /** error text; sets aria-invalid */
-    error?: string;
-  }>(),
-  { type: "text", size: "md" },
-);
-
-const model = defineModel<string | number>({ default: "" });
-const id = useFieldId(props);
-const fs = useFieldState();
-const descId = () => `${id()}-desc`;
-const errId = () => `${id()}-err`;
-
-defineExpose({ id });
-</script>
-
 <template>
   <div
     class="bless-input"
@@ -69,6 +39,36 @@ defineExpose({ id });
     <p v-if="error" :id="errId()" class="bless-input__error" role="alert">{{ error }}</p>
   </div>
 </template>
+
+<script setup lang="ts">
+import { joinIds, useFieldId, useFieldState } from "../composables/useFieldId";
+
+defineOptions({ name: "BlessInput", inheritAttrs: false });
+
+const props = withDefaults(
+  defineProps<{
+    id?: string;
+    type?: string;
+    size?: "sm" | "md" | "lg";
+    invalid?: boolean;
+    disabled?: boolean;
+    readonly?: boolean;
+    /** text under the field; also wired via aria-describedby */
+    description?: string;
+    /** error text; sets aria-invalid */
+    error?: string;
+  }>(),
+  { type: "text", size: "md" },
+);
+
+const model = defineModel<string | number>({ default: "" });
+const id = useFieldId(props);
+const fs = useFieldState();
+const descId = () => `${id()}-desc`;
+const errId = () => `${id()}-err`;
+
+defineExpose({ id });
+</script>
 
 <style>
 .bless-input {

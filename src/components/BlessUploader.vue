@@ -1,3 +1,63 @@
+<template>
+  <div ref="root" class="bless-uploader">
+    <BlessFileInput
+      v-model="picked"
+      :accept
+      :multiple
+      :label
+      :hint
+      :list="false"
+      @update:model-value="onPick"
+    />
+    <ul role="list" v-if="queue.length" ref="list" class="bless-uploader__list">
+      <li
+        v-for="it in queue"
+        :key="it.id"
+        class="bless-uploader__item"
+        :class="`bless-uploader__item--${it.status}`"
+      >
+        <span class="bless-uploader__name">{{ it.file.name }}</span>
+        <span class="bless-uploader__meta">{{
+          it.error ??
+          (it.status === "done"
+            ? "done"
+            : it.status === "uploading"
+              ? `${Math.round(it.progress)}%`
+              : kb(it.file.size))
+        }}</span>
+        <BlessProgress
+          v-if="it.status === 'uploading'"
+          :value="it.progress"
+          size="sm"
+          class="bless-uploader__bar"
+        />
+        <!-- one button that changes its job, so cancelling doesn't swap the focused element out -->
+        <button
+          type="button"
+          class="bless-uploader__x"
+          :aria-label="(it.status === 'uploading' ? text.cancel : text.remove)(it.file.name)"
+          @click="it.status === 'uploading' ? cancel(it) : remove(it)"
+        >
+          ×
+        </button>
+      </li>
+    </ul>
+    <span class="bless-uploader__live bless-sr" aria-live="polite">{{ live }}</span>
+    <div v-if="queue.length" class="bless-uploader__actions">
+      <slot name="actions" :start :clear :queue>
+        <BlessButton size="sm" variant="outline" @click="clear">{{ text.clear }}</BlessButton>
+        <BlessButton
+          v-if="!auto"
+          size="sm"
+          :disabled="!queue.some((i) => i.status === 'queued')"
+          @click="start"
+          >{{ text.upload }}</BlessButton
+        >
+      </slot>
+    </div>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { useLabelPack } from "../composables/useLabels";
 import "./sr.css";
@@ -146,66 +206,6 @@ const kb = (n: number) =>
 onBeforeUnmount(() => queue.value.forEach((i) => i.status === "uploading" && i.xhr?.abort()));
 defineExpose({ start, clear, queue });
 </script>
-
-<template>
-  <div ref="root" class="bless-uploader">
-    <BlessFileInput
-      v-model="picked"
-      :accept
-      :multiple
-      :label
-      :hint
-      :list="false"
-      @update:model-value="onPick"
-    />
-    <ul role="list" v-if="queue.length" ref="list" class="bless-uploader__list">
-      <li
-        v-for="it in queue"
-        :key="it.id"
-        class="bless-uploader__item"
-        :class="`bless-uploader__item--${it.status}`"
-      >
-        <span class="bless-uploader__name">{{ it.file.name }}</span>
-        <span class="bless-uploader__meta">{{
-          it.error ??
-          (it.status === "done"
-            ? "done"
-            : it.status === "uploading"
-              ? `${Math.round(it.progress)}%`
-              : kb(it.file.size))
-        }}</span>
-        <BlessProgress
-          v-if="it.status === 'uploading'"
-          :value="it.progress"
-          size="sm"
-          class="bless-uploader__bar"
-        />
-        <!-- one button that changes its job, so cancelling doesn't swap the focused element out -->
-        <button
-          type="button"
-          class="bless-uploader__x"
-          :aria-label="(it.status === 'uploading' ? text.cancel : text.remove)(it.file.name)"
-          @click="it.status === 'uploading' ? cancel(it) : remove(it)"
-        >
-          ×
-        </button>
-      </li>
-    </ul>
-    <span class="bless-uploader__live bless-sr" aria-live="polite">{{ live }}</span>
-    <div v-if="queue.length" class="bless-uploader__actions">
-      <slot name="actions" :start :clear :queue>
-        <BlessButton size="sm" variant="outline" @click="clear">{{ text.clear }}</BlessButton>
-        <BlessButton
-          v-if="!auto"
-          size="sm"
-          :disabled="!queue.some((i) => i.status === 'queued')"
-          @click="start"
-          >{{ text.upload }}</BlessButton
-        >
-      </slot>
-    </div>
-  </div>
-</template>
 
 <style>
 .bless-uploader {

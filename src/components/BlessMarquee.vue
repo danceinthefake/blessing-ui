@@ -1,3 +1,35 @@
+<template>
+  <div
+    class="bless-marquee"
+    :class="{
+      'bless-marquee--paused': paused,
+      'bless-marquee--hover': pauseOnHover,
+      'bless-marquee--still': still,
+      'bless-marquee--reverse': reverse,
+    }"
+    role="group"
+    aria-roledescription="marquee"
+    :aria-label="label"
+    :style="{ '--bless-marquee-time': `${seconds}s` }"
+  >
+    <div class="bless-marquee__viewport">
+      <div class="bless-marquee__track">
+        <div ref="run" class="bless-marquee__run"><slot /></div>
+        <div class="bless-marquee__run" aria-hidden="true" inert><slot /></div>
+      </div>
+    </div>
+    <button
+      v-if="controls && !still"
+      type="button"
+      class="bless-marquee__btn"
+      :aria-pressed="paused"
+      @click="paused = !paused"
+    >
+      {{ paused ? text.play : text.pause }}
+    </button>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { useLabelPack } from "../composables/useLabels";
 import { computed, onBeforeUnmount, onMounted, ref } from "vue";
@@ -43,38 +75,6 @@ onMounted(() => {
 });
 onBeforeUnmount(() => ro?.disconnect());
 </script>
-
-<template>
-  <div
-    class="bless-marquee"
-    :class="{
-      'bless-marquee--paused': paused,
-      'bless-marquee--hover': pauseOnHover,
-      'bless-marquee--still': still,
-      'bless-marquee--reverse': reverse,
-    }"
-    role="group"
-    aria-roledescription="marquee"
-    :aria-label="label"
-    :style="{ '--bless-marquee-time': `${seconds}s` }"
-  >
-    <div class="bless-marquee__viewport">
-      <div class="bless-marquee__track">
-        <div ref="run" class="bless-marquee__run"><slot /></div>
-        <div class="bless-marquee__run" aria-hidden="true" inert><slot /></div>
-      </div>
-    </div>
-    <button
-      v-if="controls && !still"
-      type="button"
-      class="bless-marquee__btn"
-      :aria-pressed="paused"
-      @click="paused = !paused"
-    >
-      {{ paused ? text.play : text.pause }}
-    </button>
-  </div>
-</template>
 
 <style>
 .bless-marquee {

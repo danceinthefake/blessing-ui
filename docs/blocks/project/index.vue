@@ -1,47 +1,3 @@
-<script setup lang="ts">
-import {
-  BlessAvatar,
-  BlessAvatarGroup,
-  BlessBadge,
-  BlessButton,
-  BlessGantt,
-  BlessKanban,
-  BlessModal,
-  BlessProgress,
-  BlessShareAccess,
-  BlessTabs,
-  BlessText,
-  BlessToolbar,
-  type BlessAccessRole,
-  type BlessGanttTask,
-  type BlessSharePerson,
-} from "blessing-ui";
-import { computed, onMounted, ref } from "vue";
-import { mockProjectApi } from "./api";
-import { done, type Board, type Task } from "./domain";
-
-const board = ref<Board>([]);
-const plan = ref<BlessGanttTask[]>([]);
-const people = ref<BlessSharePerson[]>([]);
-onMounted(async () => {
-  [board.value, plan.value, people.value] = await Promise.all([
-    mockProjectApi.board(),
-    mockProjectApi.plan(),
-    mockProjectApi.people(),
-  ]);
-});
-const count = computed(() => done(board.value));
-const tab = ref("board");
-const tabs = [
-  { value: "board", label: "Board" },
-  { value: "timeline", label: "Timeline" },
-];
-const sharing = ref(false);
-const linkAccess = ref<"restricted" | BlessAccessRole>("restricted");
-const invite = (email: string, role: BlessAccessRole) =>
-  people.value.push({ id: email, name: email.split("@")[0]!, email, role });
-</script>
-
 <template>
   <div class="project">
     <BlessToolbar class="project__bar">
@@ -99,6 +55,50 @@ const invite = (email: string, role: BlessAccessRole) =>
     </BlessModal>
   </div>
 </template>
+
+<script setup lang="ts">
+import {
+  BlessAvatar,
+  BlessAvatarGroup,
+  BlessBadge,
+  BlessButton,
+  BlessGantt,
+  BlessKanban,
+  BlessModal,
+  BlessProgress,
+  BlessShareAccess,
+  BlessTabs,
+  BlessText,
+  BlessToolbar,
+  type BlessAccessRole,
+  type BlessGanttTask,
+  type BlessSharePerson,
+} from "blessing-ui";
+import { computed, onMounted, ref } from "vue";
+import { mockProjectApi } from "./api";
+import { done, type Board, type Task } from "./domain";
+
+const board = ref<Board>([]);
+const plan = ref<BlessGanttTask[]>([]);
+const people = ref<BlessSharePerson[]>([]);
+onMounted(async () => {
+  [board.value, plan.value, people.value] = await Promise.all([
+    mockProjectApi.board(),
+    mockProjectApi.plan(),
+    mockProjectApi.people(),
+  ]);
+});
+const count = computed(() => done(board.value));
+const tab = ref("board");
+const tabs = [
+  { value: "board", label: "Board" },
+  { value: "timeline", label: "Timeline" },
+];
+const sharing = ref(false);
+const linkAccess = ref<"restricted" | BlessAccessRole>("restricted");
+const invite = (email: string, role: BlessAccessRole) =>
+  people.value.push({ id: email, name: email.split("@")[0]!, email, role });
+</script>
 
 <style scoped>
 .project {

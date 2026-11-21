@@ -1,3 +1,15 @@
+<template>
+  <div ref="probe" class="bless-affix__probe" aria-hidden="true" />
+  <div
+    v-bind="$attrs"
+    class="bless-affix"
+    :class="{ 'bless-affix--stuck': stuck }"
+    :style="{ top: `${offset}px` }"
+  >
+    <slot :stuck="stuck" />
+  </div>
+</template>
+
 <script setup lang="ts">
 import { onBeforeUnmount, onMounted, ref } from "vue";
 
@@ -25,18 +37,6 @@ onMounted(() => {
 });
 onBeforeUnmount(() => io?.disconnect());
 </script>
-
-<template>
-  <div ref="probe" class="bless-affix__probe" aria-hidden="true" />
-  <div
-    v-bind="$attrs"
-    class="bless-affix"
-    :class="{ 'bless-affix--stuck': stuck }"
-    :style="{ top: `${offset}px` }"
-  >
-    <slot :stuck="stuck" />
-  </div>
-</template>
 
 <style>
 .bless-affix {

@@ -1,26 +1,3 @@
-<script setup lang="ts">
-import { BlessSources } from "blessing-ui";
-
-const sources = [
-  {
-    title: "How to treat a small room for voice",
-    url: "https://example.com/guides/room-treatment",
-    snippet: "Soft things on hard walls stop most of the echo, for little money.",
-  },
-  {
-    title: "USB or XLR: which microphone to buy first",
-    url: "https://www.example.org/mic-buying-guide",
-    snippet: "A good USB microphone is enough for one voice at home.",
-  },
-  {
-    title: "Loudness for podcasts",
-    url: "https://audio.example.net/loudness",
-    site: "Audio Lab",
-    snippet: "Most apps play episodes at about −16 LUFS.",
-  },
-];
-</script>
-
 <template>
   <div style="max-width: 640px">
     <p style="margin-top: 0">
@@ -44,3 +21,26 @@ const sources = [
     <BlessSources id="ep41-src" :sources />
   </div>
 </template>
+
+<script setup lang="ts">
+import { BlessSources } from "blessing-ui";
+
+const sources = [
+  {
+    title: "How to treat a small room for voice",
+    url: "https://example.com/guides/room-treatment",
+    snippet: "Soft things on hard walls stop most of the echo, for little money.",
+  },
+  {
+    title: "USB or XLR: which microphone to buy first",
+    url: "https://www.example.org/mic-buying-guide",
+    snippet: "A good USB microphone is enough for one voice at home.",
+  },
+  {
+    title: "Loudness for podcasts",
+    url: "https://audio.example.net/loudness",
+    site: "Audio Lab",
+    snippet: "Most apps play episodes at about −16 LUFS.",
+  },
+];
+</script>

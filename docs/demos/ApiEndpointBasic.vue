@@ -1,3 +1,16 @@
+<template>
+  <BlessApiEndpoint
+    method="GET"
+    path="/v1/orders/{id}"
+    summary="Get one order"
+    description="Returns the order with its state and total. Add expand to get the items or the customer in the same call."
+    :params
+    example="curl https://api.example.com/v1/orders/SO-2026-0417?expand=items \
+  -H 'Authorization: Bearer sk_demo_42'"
+    :responses
+  />
+</template>
+
 <script setup lang="ts">
 import { BlessApiEndpoint, type BlessApiParam, type BlessApiResponse } from "blessing-ui";
 
@@ -35,16 +48,3 @@ const responses: BlessApiResponse[] = [
   { status: 404, description: "No order has this id.", body: '{ "error": "not_found" }' },
 ];
 </script>
-
-<template>
-  <BlessApiEndpoint
-    method="GET"
-    path="/v1/orders/{id}"
-    summary="Get one order"
-    description="Returns the order with its state and total. Add expand to get the items or the customer in the same call."
-    :params
-    example="curl https://api.example.com/v1/orders/SO-2026-0417?expand=items \
-  -H 'Authorization: Bearer sk_demo_42'"
-    :responses
-  />
-</template>

@@ -1,3 +1,42 @@
+<template>
+  <Teleport v-if="mounted" to="body">
+    <template v-if="open && cur">
+      <div
+        v-if="spotlight"
+        class="bless-tour__spot"
+        :class="{ 'bless-tour__spot--none': !hole }"
+        :style="hole"
+        aria-hidden="true"
+      />
+      <div
+        ref="panel"
+        class="bless-tour"
+        :class="[`bless-tour--${side}`, { 'bless-tour--centred': !anchor }]"
+        role="dialog"
+        aria-modal="false"
+        :aria-label="cur.title ?? L.step(step + 1)"
+        tabindex="-1"
+        :style="anchor ? style : undefined"
+        @keydown.esc.prevent="close(false)"
+      >
+        <span class="bless-tour__count">{{ step + 1 }} / {{ steps.length }}</span>
+        <strong v-if="cur.title" class="bless-tour__title">{{ cur.title }}</strong>
+        <p class="bless-tour__text">{{ cur.text }}</p>
+        <div class="bless-tour__actions">
+          <BlessButton size="sm" variant="ghost" @click="close(false)">{{ L.skip }}</BlessButton>
+          <span style="flex: 1" />
+          <BlessButton size="sm" variant="outline" :disabled="step === 0" @click="step--">{{
+            L.prev
+          }}</BlessButton>
+          <BlessButton size="sm" @click="last ? close(true) : step++">{{
+            last ? L.done : L.next
+          }}</BlessButton>
+        </div>
+      </div>
+    </template>
+  </Teleport>
+</template>
+
 <script setup lang="ts">
 import { useLabelPack } from "../composables/useLabels";
 import { computed, nextTick, onMounted, ref, watch } from "vue";
@@ -94,45 +133,6 @@ const hole = computed(() => {
     : undefined;
 });
 </script>
-
-<template>
-  <Teleport v-if="mounted" to="body">
-    <template v-if="open && cur">
-      <div
-        v-if="spotlight"
-        class="bless-tour__spot"
-        :class="{ 'bless-tour__spot--none': !hole }"
-        :style="hole"
-        aria-hidden="true"
-      />
-      <div
-        ref="panel"
-        class="bless-tour"
-        :class="[`bless-tour--${side}`, { 'bless-tour--centred': !anchor }]"
-        role="dialog"
-        aria-modal="false"
-        :aria-label="cur.title ?? L.step(step + 1)"
-        tabindex="-1"
-        :style="anchor ? style : undefined"
-        @keydown.esc.prevent="close(false)"
-      >
-        <span class="bless-tour__count">{{ step + 1 }} / {{ steps.length }}</span>
-        <strong v-if="cur.title" class="bless-tour__title">{{ cur.title }}</strong>
-        <p class="bless-tour__text">{{ cur.text }}</p>
-        <div class="bless-tour__actions">
-          <BlessButton size="sm" variant="ghost" @click="close(false)">{{ L.skip }}</BlessButton>
-          <span style="flex: 1" />
-          <BlessButton size="sm" variant="outline" :disabled="step === 0" @click="step--">{{
-            L.prev
-          }}</BlessButton>
-          <BlessButton size="sm" @click="last ? close(true) : step++">{{
-            last ? L.done : L.next
-          }}</BlessButton>
-        </div>
-      </div>
-    </template>
-  </Teleport>
-</template>
 
 <style>
 .bless-tour__spot {

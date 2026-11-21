@@ -1,3 +1,7 @@
+<template>
+  <BlessRadialBar :data="goals" label="Goals this week" />
+</template>
+
 <script setup lang="ts">
 import { BlessRadialBar } from "blessing-ui";
 
@@ -9,7 +13,3 @@ const goals = [
   { label: "Newsletter", value: 0.5, max: 1 },
 ];
 </script>
-
-<template>
-  <BlessRadialBar :data="goals" label="Goals this week" />
-</template>

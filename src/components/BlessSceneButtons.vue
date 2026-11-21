@@ -1,3 +1,21 @@
+<template>
+  <div class="bless-scenes" role="group" :aria-label="text.title">
+    <button
+      v-for="s in scenes"
+      :key="s.id"
+      type="button"
+      class="bless-scenes__scene"
+      :aria-pressed="active === s.id"
+      @click="run(s)"
+    >
+      <span v-if="s.icon" class="bless-scenes__icon" aria-hidden="true">{{ s.icon }}</span>
+      <span class="bless-scenes__name">{{ s.name }}</span>
+      <span v-if="s.description" class="bless-scenes__desc">{{ s.description }}</span>
+    </button>
+    <span class="bless-sr" role="status">{{ said }}</span>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed, ref } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -36,24 +54,6 @@ function run(s: BlessScene) {
   emit("run", s.id);
 }
 </script>
-
-<template>
-  <div class="bless-scenes" role="group" :aria-label="text.title">
-    <button
-      v-for="s in scenes"
-      :key="s.id"
-      type="button"
-      class="bless-scenes__scene"
-      :aria-pressed="active === s.id"
-      @click="run(s)"
-    >
-      <span v-if="s.icon" class="bless-scenes__icon" aria-hidden="true">{{ s.icon }}</span>
-      <span class="bless-scenes__name">{{ s.name }}</span>
-      <span v-if="s.description" class="bless-scenes__desc">{{ s.description }}</span>
-    </button>
-    <span class="bless-sr" role="status">{{ said }}</span>
-  </div>
-</template>
 
 <style>
 .bless-scenes {

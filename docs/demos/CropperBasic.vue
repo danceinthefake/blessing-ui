@@ -1,21 +1,3 @@
-<script setup lang="ts">
-import { onBeforeUnmount, ref } from "vue";
-import { BlessButton, BlessCropper, BlessSelect, type BlessCropRect } from "blessing-ui";
-
-const rect = ref<BlessCropRect | null>(null);
-const aspect = ref("free");
-const cropper = ref<InstanceType<typeof BlessCropper>>();
-const result = ref("");
-
-async function crop() {
-  const blob = await cropper.value?.toBlob({ maxWidth: 480 });
-  if (!blob) return;
-  URL.revokeObjectURL(result.value);
-  result.value = URL.createObjectURL(blob);
-}
-onBeforeUnmount(() => URL.revokeObjectURL(result.value));
-</script>
-
 <template>
   <div class="col" style="max-width: 520px">
     <BlessSelect
@@ -40,3 +22,21 @@ onBeforeUnmount(() => URL.revokeObjectURL(result.value));
     >
   </div>
 </template>
+
+<script setup lang="ts">
+import { onBeforeUnmount, ref } from "vue";
+import { BlessButton, BlessCropper, BlessSelect, type BlessCropRect } from "blessing-ui";
+
+const rect = ref<BlessCropRect | null>(null);
+const aspect = ref("free");
+const cropper = ref<InstanceType<typeof BlessCropper>>();
+const result = ref("");
+
+async function crop() {
+  const blob = await cropper.value?.toBlob({ maxWidth: 480 });
+  if (!blob) return;
+  URL.revokeObjectURL(result.value);
+  result.value = URL.createObjectURL(blob);
+}
+onBeforeUnmount(() => URL.revokeObjectURL(result.value));
+</script>

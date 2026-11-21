@@ -1,3 +1,23 @@
+<template>
+  <div
+    class="bless-loadingbar"
+    :class="[
+      `bless-loadingbar--${position}`,
+      `bless-loadingbar--${color}`,
+      { 'bless-loadingbar--on': loadingBarState.active },
+    ]"
+    :style="{ '--_h': height, '--_p': `${loadingBarState.progress}%` }"
+    role="progressbar"
+    :aria-valuenow="loadingBarState.active ? Math.round(loadingBarState.progress) : undefined"
+    aria-valuemin="0"
+    aria-valuemax="100"
+    :aria-label="label"
+    :aria-hidden="loadingBarState.active ? undefined : 'true'"
+  >
+    <span class="bless-loadingbar__bar" />
+  </div>
+</template>
+
 <script setup lang="ts">
 import { loadingBarState, useLoadingBar } from "../composables/useLoadingBar";
 
@@ -18,26 +38,6 @@ withDefaults(
 );
 useLoadingBar(); // ensures the state exists
 </script>
-
-<template>
-  <div
-    class="bless-loadingbar"
-    :class="[
-      `bless-loadingbar--${position}`,
-      `bless-loadingbar--${color}`,
-      { 'bless-loadingbar--on': loadingBarState.active },
-    ]"
-    :style="{ '--_h': height, '--_p': `${loadingBarState.progress}%` }"
-    role="progressbar"
-    :aria-valuenow="loadingBarState.active ? Math.round(loadingBarState.progress) : undefined"
-    aria-valuemin="0"
-    aria-valuemax="100"
-    :aria-label="label"
-    :aria-hidden="loadingBarState.active ? undefined : 'true'"
-  >
-    <span class="bless-loadingbar__bar" />
-  </div>
-</template>
 
 <style>
 .bless-loadingbar {

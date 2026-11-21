@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import { BlessPullQuote } from "blessing-ui";
-</script>
-
 <template>
   <div style="display: grid; gap: 24px; max-width: 560px">
     <BlessPullQuote
@@ -12,3 +8,7 @@ import { BlessPullQuote } from "blessing-ui";
     <BlessPullQuote text="Record the room tone first. You will need it later." align="center" />
   </div>
 </template>
+
+<script setup lang="ts">
+import { BlessPullQuote } from "blessing-ui";
+</script>

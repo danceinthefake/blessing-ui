@@ -1,3 +1,32 @@
+<template>
+  <component
+    :is="block ? 'div' : 'span'"
+    ref="root"
+    class="bless-spoiler"
+    :class="{ 'is-shown': shown, 'is-block': block }"
+    :tabindex="shown ? -1 : undefined"
+  >
+    <span
+      class="bless-spoiler__text"
+      :aria-hidden="!shown || undefined"
+      :inert="!shown || undefined"
+    >
+      <slot />
+    </span>
+    <button
+      v-if="!shown"
+      type="button"
+      class="bless-spoiler__cover"
+      :aria-label="hint ? text.showAbout(hint) : text.show"
+      @click="reveal"
+    >
+      <span v-if="block" class="bless-spoiler__badge" aria-hidden="true">{{
+        hint ? text.showAbout(hint) : text.show
+      }}</span>
+    </button>
+  </component>
+</template>
+
 <script setup lang="ts">
 import { computed, nextTick, ref } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -28,35 +57,6 @@ function reveal() {
   nextTick(() => root.value?.focus());
 }
 </script>
-
-<template>
-  <component
-    :is="block ? 'div' : 'span'"
-    ref="root"
-    class="bless-spoiler"
-    :class="{ 'is-shown': shown, 'is-block': block }"
-    :tabindex="shown ? -1 : undefined"
-  >
-    <span
-      class="bless-spoiler__text"
-      :aria-hidden="!shown || undefined"
-      :inert="!shown || undefined"
-    >
-      <slot />
-    </span>
-    <button
-      v-if="!shown"
-      type="button"
-      class="bless-spoiler__cover"
-      :aria-label="hint ? text.showAbout(hint) : text.show"
-      @click="reveal"
-    >
-      <span v-if="block" class="bless-spoiler__badge" aria-hidden="true">{{
-        hint ? text.showAbout(hint) : text.show
-      }}</span>
-    </button>
-  </component>
-</template>
 
 <style>
 .bless-spoiler {

@@ -1,17 +1,3 @@
-<script setup lang="ts">
-import BlessPopover from "./BlessPopover.vue";
-import type { Placement } from "../composables/useFloating";
-
-defineOptions({ name: "BlessHoverCard" });
-
-withDefaults(defineProps<{ placement?: Placement; openDelay?: number; closeDelay?: number }>(), {
-  placement: "bottom",
-  openDelay: 400,
-  closeDelay: 200,
-});
-const open = defineModel<boolean>("open", { default: false });
-</script>
-
 <template>
   <BlessPopover
     v-model:open="open"
@@ -25,6 +11,20 @@ const open = defineModel<boolean>("open", { default: false });
     <slot />
   </BlessPopover>
 </template>
+
+<script setup lang="ts">
+import BlessPopover from "./BlessPopover.vue";
+import type { Placement } from "../composables/useFloating";
+
+defineOptions({ name: "BlessHoverCard" });
+
+withDefaults(defineProps<{ placement?: Placement; openDelay?: number; closeDelay?: number }>(), {
+  placement: "bottom",
+  openDelay: 400,
+  closeDelay: 200,
+});
+const open = defineModel<boolean>("open", { default: false });
+</script>
 
 <style>
 .bless-hover-card {

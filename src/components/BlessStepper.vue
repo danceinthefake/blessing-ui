@@ -1,3 +1,32 @@
+<template>
+  <div class="bless-stepper" :class="`bless-stepper--${orientation}`">
+    <BlessSteps
+      v-model="current"
+      :steps
+      :orientation
+      :clickable="linear ? true : 'all'"
+      class="bless-stepper__head"
+    />
+    <div
+      ref="panel"
+      class="bless-stepper__panel"
+      role="group"
+      tabindex="-1"
+      :aria-label="steps[current]?.label"
+    >
+      <slot :step="steps[current]" :index="current" :next :prev :last="last()" />
+    </div>
+    <div class="bless-stepper__actions">
+      <slot name="actions" :next :prev :index="current" :last="last()">
+        <BlessButton variant="outline" size="sm" :disabled="current === 0" @click="prev">{{
+          L().prev
+        }}</BlessButton>
+        <BlessButton size="sm" @click="next">{{ last() ? L().finish : L().next }}</BlessButton>
+      </slot>
+    </div>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { useLabelPack } from "../composables/useLabels";
 import { nextTick, ref, watch } from "vue";
@@ -38,35 +67,6 @@ watch(current, () =>
   }),
 );
 </script>
-
-<template>
-  <div class="bless-stepper" :class="`bless-stepper--${orientation}`">
-    <BlessSteps
-      v-model="current"
-      :steps
-      :orientation
-      :clickable="linear ? true : 'all'"
-      class="bless-stepper__head"
-    />
-    <div
-      ref="panel"
-      class="bless-stepper__panel"
-      role="group"
-      tabindex="-1"
-      :aria-label="steps[current]?.label"
-    >
-      <slot :step="steps[current]" :index="current" :next :prev :last="last()" />
-    </div>
-    <div class="bless-stepper__actions">
-      <slot name="actions" :next :prev :index="current" :last="last()">
-        <BlessButton variant="outline" size="sm" :disabled="current === 0" @click="prev">{{
-          L().prev
-        }}</BlessButton>
-        <BlessButton size="sm" @click="next">{{ last() ? L().finish : L().next }}</BlessButton>
-      </slot>
-    </div>
-  </div>
-</template>
 
 <style>
 /* focus lands here on a step change so it is read; it isn't a control, so no ring */

@@ -1,3 +1,43 @@
+<template>
+  <article class="bless-appt" :class="`is-${status}`">
+    <div class="bless-appt__date" aria-hidden="true">
+      <span class="bless-appt__month">{{ fmt({ month: "short" }) }}</span>
+      <span class="bless-appt__day">{{ fmt({ day: "numeric" }) }}</span>
+      <span class="bless-appt__week">{{ fmt({ weekday: "short" }) }}</span>
+    </div>
+    <div class="bless-appt__body">
+      <h3 class="bless-appt__title">{{ title }}</h3>
+      <p class="bless-appt__when">
+        <span class="bless-sr"
+          >{{ fmt({ weekday: "long", day: "numeric", month: "long", year: "numeric" }) }}, </span
+        >{{ time }}
+      </p>
+      <div class="bless-appt__person">
+        <BlessAvatar :name="person.name" :src="person.avatar" alt="" size="sm" />
+        <span>
+          <strong>{{ person.name }}</strong>
+          <span v-if="person.role" class="bless-appt__role">{{ person.role }}</span>
+        </span>
+      </div>
+      <p class="bless-appt__place">
+        <span aria-hidden="true">{{ video ? "▶︎" : "⌖" }}</span> {{ video ? text.video : place }}
+      </p>
+      <p class="bless-appt__status">
+        <span aria-hidden="true">{{ MARK[status] }}</span> {{ text[status] }}
+      </p>
+      <div v-if="status !== 'cancelled'" class="bless-appt__actions">
+        <BlessButton v-if="video" size="sm" @click="emit('join')">{{ text.join }}</BlessButton>
+        <BlessButton size="sm" variant="outline" @click="emit('reschedule')">{{
+          text.reschedule
+        }}</BlessButton>
+        <BlessButton size="sm" variant="ghost" @click="emit('cancel')">{{
+          text.cancel
+        }}</BlessButton>
+      </div>
+    </div>
+  </article>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -57,46 +97,6 @@ const MARK: Record<BlessAppointmentStatus, string> = {
   cancelled: "✕",
 };
 </script>
-
-<template>
-  <article class="bless-appt" :class="`is-${status}`">
-    <div class="bless-appt__date" aria-hidden="true">
-      <span class="bless-appt__month">{{ fmt({ month: "short" }) }}</span>
-      <span class="bless-appt__day">{{ fmt({ day: "numeric" }) }}</span>
-      <span class="bless-appt__week">{{ fmt({ weekday: "short" }) }}</span>
-    </div>
-    <div class="bless-appt__body">
-      <h3 class="bless-appt__title">{{ title }}</h3>
-      <p class="bless-appt__when">
-        <span class="bless-sr"
-          >{{ fmt({ weekday: "long", day: "numeric", month: "long", year: "numeric" }) }}, </span
-        >{{ time }}
-      </p>
-      <div class="bless-appt__person">
-        <BlessAvatar :name="person.name" :src="person.avatar" alt="" size="sm" />
-        <span>
-          <strong>{{ person.name }}</strong>
-          <span v-if="person.role" class="bless-appt__role">{{ person.role }}</span>
-        </span>
-      </div>
-      <p class="bless-appt__place">
-        <span aria-hidden="true">{{ video ? "▶︎" : "⌖" }}</span> {{ video ? text.video : place }}
-      </p>
-      <p class="bless-appt__status">
-        <span aria-hidden="true">{{ MARK[status] }}</span> {{ text[status] }}
-      </p>
-      <div v-if="status !== 'cancelled'" class="bless-appt__actions">
-        <BlessButton v-if="video" size="sm" @click="emit('join')">{{ text.join }}</BlessButton>
-        <BlessButton size="sm" variant="outline" @click="emit('reschedule')">{{
-          text.reschedule
-        }}</BlessButton>
-        <BlessButton size="sm" variant="ghost" @click="emit('cancel')">{{
-          text.cancel
-        }}</BlessButton>
-      </div>
-    </div>
-  </article>
-</template>
 
 <style>
 .bless-appt {

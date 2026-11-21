@@ -1,3 +1,55 @@
+<template>
+  <div
+    ref="area"
+    class="bless-radial__area"
+    v-bind="$attrs"
+    @contextmenu="onContext"
+    @pointerdown="onDown"
+    @pointermove="onMoveArea"
+    @pointerup="onUpArea"
+    @pointercancel="onUpArea"
+    @keydown="onKeyArea"
+  >
+    <slot />
+  </div>
+  <div
+    :id
+    ref="panel"
+    popover="manual"
+    class="bless-radial"
+    role="menu"
+    :aria-label="label"
+    :style="{
+      left: `${centre.x - half}px`,
+      top: `${centre.y - half}px`,
+      width: `${half * 2}px`,
+      height: `${half * 2}px`,
+    }"
+    @keydown="onKey"
+    @contextmenu.prevent
+  >
+    <span class="bless-radial__core" aria-hidden="true">{{
+      active !== null ? items[active]?.label : ""
+    }}</span>
+    <button
+      v-for="(it, i) in items"
+      :key="it.id"
+      type="button"
+      role="menuitem"
+      class="bless-radial__item"
+      :class="{ 'bless-radial__item--on': active === i }"
+      :style="{ left: `calc(50% + ${spots[i]!.x}px)`, top: `calc(50% + ${spots[i]!.y}px)` }"
+      :aria-label="it.label"
+      :aria-disabled="it.disabled || undefined"
+      :tabindex="active === i ? 0 : -1"
+      @click="pick(i)"
+      @pointerenter="!it.disabled && !held && (active = i)"
+    >
+      <slot name="item" :item="it" :index="i">{{ it.icon ?? it.label.slice(0, 1) }}</slot>
+    </button>
+  </div>
+</template>
+
 <script lang="ts">
 export interface BlessRadialItem {
   id: string | number;
@@ -164,58 +216,6 @@ onBeforeUnmount(() => {
   window.removeEventListener("pointerdown", outside, true);
 });
 </script>
-
-<template>
-  <div
-    ref="area"
-    class="bless-radial__area"
-    v-bind="$attrs"
-    @contextmenu="onContext"
-    @pointerdown="onDown"
-    @pointermove="onMoveArea"
-    @pointerup="onUpArea"
-    @pointercancel="onUpArea"
-    @keydown="onKeyArea"
-  >
-    <slot />
-  </div>
-  <div
-    :id
-    ref="panel"
-    popover="manual"
-    class="bless-radial"
-    role="menu"
-    :aria-label="label"
-    :style="{
-      left: `${centre.x - half}px`,
-      top: `${centre.y - half}px`,
-      width: `${half * 2}px`,
-      height: `${half * 2}px`,
-    }"
-    @keydown="onKey"
-    @contextmenu.prevent
-  >
-    <span class="bless-radial__core" aria-hidden="true">{{
-      active !== null ? items[active]?.label : ""
-    }}</span>
-    <button
-      v-for="(it, i) in items"
-      :key="it.id"
-      type="button"
-      role="menuitem"
-      class="bless-radial__item"
-      :class="{ 'bless-radial__item--on': active === i }"
-      :style="{ left: `calc(50% + ${spots[i]!.x}px)`, top: `calc(50% + ${spots[i]!.y}px)` }"
-      :aria-label="it.label"
-      :aria-disabled="it.disabled || undefined"
-      :tabindex="active === i ? 0 : -1"
-      @click="pick(i)"
-      @pointerenter="!it.disabled && !held && (active = i)"
-    >
-      <slot name="item" :item="it" :index="i">{{ it.icon ?? it.label.slice(0, 1) }}</slot>
-    </button>
-  </div>
-</template>
 
 <style>
 .bless-radial__area {

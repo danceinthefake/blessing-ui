@@ -1,3 +1,40 @@
+<template>
+  <figure class="bless-donut" :aria-label="label" role="group">
+    <div class="bless-donut__plot" :style="{ inlineSize: `${size}px` }">
+      <svg viewBox="0 0 100 100" class="bless-donut__svg" aria-hidden="true">
+        <circle class="bless-donut__track" cx="50" cy="50" :r :stroke-width="ring" />
+        <template v-for="(s, i) in slices" :key="i">
+          <circle
+            v-if="s.share > 0"
+            class="bless-donut__slice"
+            cx="50"
+            cy="50"
+            :r
+            :stroke-width="ring"
+            pathLength="100"
+            :stroke-dasharray="`${Math.max(0.01, s.share * 100 - GAP)} ${100 - s.share * 100 + GAP}`"
+            :stroke-dashoffset="-s.start"
+            :style="{ '--_c': s.color }"
+          >
+            <title>{{ s.label }}: {{ fmt(s.value) }} ({{ pct.format(s.share) }})</title>
+          </circle>
+        </template>
+      </svg>
+      <div v-if="!pie" class="bless-donut__center" aria-hidden="true">
+        <strong>{{ fmt(total) }}</strong>
+        <span>{{ text.total }}</span>
+      </div>
+    </div>
+    <ul role="list" class="bless-donut__legend">
+      <li v-for="(s, i) in slices" :key="i" :style="{ '--_c': s.color }">
+        <span class="bless-donut__name">{{ s.label }}</span>
+        <span class="bless-donut__value">{{ fmt(s.value) }}</span>
+        <span class="bless-donut__share">{{ pct.format(s.share) }}</span>
+      </li>
+    </ul>
+  </figure>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -50,43 +87,6 @@ const ring = computed(() => (props.pie ? R : 14));
 // a pie is a circle of half the radius with a stroke as wide as the radius
 const r = computed(() => (props.pie ? R / 2 : R - ring.value / 2));
 </script>
-
-<template>
-  <figure class="bless-donut" :aria-label="label" role="group">
-    <div class="bless-donut__plot" :style="{ inlineSize: `${size}px` }">
-      <svg viewBox="0 0 100 100" class="bless-donut__svg" aria-hidden="true">
-        <circle class="bless-donut__track" cx="50" cy="50" :r :stroke-width="ring" />
-        <template v-for="(s, i) in slices" :key="i">
-          <circle
-            v-if="s.share > 0"
-            class="bless-donut__slice"
-            cx="50"
-            cy="50"
-            :r
-            :stroke-width="ring"
-            pathLength="100"
-            :stroke-dasharray="`${Math.max(0.01, s.share * 100 - GAP)} ${100 - s.share * 100 + GAP}`"
-            :stroke-dashoffset="-s.start"
-            :style="{ '--_c': s.color }"
-          >
-            <title>{{ s.label }}: {{ fmt(s.value) }} ({{ pct.format(s.share) }})</title>
-          </circle>
-        </template>
-      </svg>
-      <div v-if="!pie" class="bless-donut__center" aria-hidden="true">
-        <strong>{{ fmt(total) }}</strong>
-        <span>{{ text.total }}</span>
-      </div>
-    </div>
-    <ul role="list" class="bless-donut__legend">
-      <li v-for="(s, i) in slices" :key="i" :style="{ '--_c': s.color }">
-        <span class="bless-donut__name">{{ s.label }}</span>
-        <span class="bless-donut__value">{{ fmt(s.value) }}</span>
-        <span class="bless-donut__share">{{ pct.format(s.share) }}</span>
-      </li>
-    </ul>
-  </figure>
-</template>
 
 <style>
 .bless-donut {

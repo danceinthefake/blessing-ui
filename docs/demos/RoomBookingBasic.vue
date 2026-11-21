@@ -1,3 +1,7 @@
+<template>
+  <BlessRoomBooking v-model="picked" :rooms :bookings :from="8" :to="17" @book="book" />
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessRoomBooking, type BlessRoomSlot } from "blessing-ui";
@@ -19,7 +23,3 @@ function book(slot: BlessRoomSlot) {
   picked.value = null;
 }
 </script>
-
-<template>
-  <BlessRoomBooking v-model="picked" :rooms :bookings :from="8" :to="17" @book="book" />
-</template>

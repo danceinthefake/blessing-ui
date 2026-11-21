@@ -1,23 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { BlessCombobox, BlessLabel, type BlessOption } from "blessing-ui";
-const options = ref<BlessOption<string>[]>([
-  { value: "megumi", label: "加藤恵" },
-  { value: "eriri", label: "澤村・スペンサー・英梨々" },
-  { value: "utaha", label: "霞ヶ丘詩羽" },
-  { value: "michiru", label: "氷堂美智留" },
-  { value: "izumi", label: "波島出海" },
-  { value: "tomoya", label: "安芸倫也", disabled: true },
-]);
-const one = ref<string>();
-const many = ref<string[]>(["megumi", "eriri"]);
-function create(label: string) {
-  const value = label.toLowerCase().replace(/\s+/g, "-");
-  options.value.push({ value, label });
-  many.value.push(value);
-}
-</script>
-
 <template>
   <div class="row" style="align-items: flex-start">
     <div class="col">
@@ -45,3 +25,23 @@ function create(label: string) {
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { BlessCombobox, BlessLabel, type BlessOption } from "blessing-ui";
+const options = ref<BlessOption<string>[]>([
+  { value: "megumi", label: "加藤恵" },
+  { value: "eriri", label: "澤村・スペンサー・英梨々" },
+  { value: "utaha", label: "霞ヶ丘詩羽" },
+  { value: "michiru", label: "氷堂美智留" },
+  { value: "izumi", label: "波島出海" },
+  { value: "tomoya", label: "安芸倫也", disabled: true },
+]);
+const one = ref<string>();
+const many = ref<string[]>(["megumi", "eriri"]);
+function create(label: string) {
+  const value = label.toLowerCase().replace(/\s+/g, "-");
+  options.value.push({ value, label });
+  many.value.push(value);
+}
+</script>

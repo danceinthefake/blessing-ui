@@ -1,3 +1,42 @@
+<template>
+  <div
+    ref="root"
+    class="bless-canvas"
+    :class="{ 'bless-canvas--grid': grid, 'bless-canvas--pan': panning }"
+    :style="grid ? bg : undefined"
+    role="group"
+    aria-roledescription="canvas"
+    :aria-label="label"
+    :aria-describedby="hint"
+    tabindex="0"
+    @pointerdown="down"
+    @pointermove="move"
+    @pointerup="up"
+    @pointercancel="up"
+    @wheel="wheel"
+    @keydown="key"
+  >
+    <div class="bless-canvas__layer" :style="layer"><slot :view :zoom="view.zoom" /></div>
+    <div v-if="controls" class="bless-canvas__controls" @pointerdown.stop>
+      <BlessButton size="sm" variant="outline" :aria-label="text.zoomOut" @click="zoomBy(0.8)"
+        >−</BlessButton
+      >
+      <BlessButton
+        size="sm"
+        variant="outline"
+        :aria-label="`${percent}%, ${text.reset}`"
+        @click="reset"
+        >{{ percent }}%</BlessButton
+      >
+      <BlessButton size="sm" variant="outline" :aria-label="text.zoomIn" @click="zoomBy(1.25)"
+        >+</BlessButton
+      >
+    </div>
+    <span :id="hint" hidden>{{ text.hint }}</span>
+    <span class="bless-canvas__live bless-sr" aria-live="polite">{{ live }}</span>
+  </div>
+</template>
+
 <script lang="ts">
 import type { InjectionKey, Ref } from "vue";
 import type { CanvasView } from "../composables/canvasView";
@@ -174,45 +213,6 @@ const bg = computed(() => {
   };
 });
 </script>
-
-<template>
-  <div
-    ref="root"
-    class="bless-canvas"
-    :class="{ 'bless-canvas--grid': grid, 'bless-canvas--pan': panning }"
-    :style="grid ? bg : undefined"
-    role="group"
-    aria-roledescription="canvas"
-    :aria-label="label"
-    :aria-describedby="hint"
-    tabindex="0"
-    @pointerdown="down"
-    @pointermove="move"
-    @pointerup="up"
-    @pointercancel="up"
-    @wheel="wheel"
-    @keydown="key"
-  >
-    <div class="bless-canvas__layer" :style="layer"><slot :view :zoom="view.zoom" /></div>
-    <div v-if="controls" class="bless-canvas__controls" @pointerdown.stop>
-      <BlessButton size="sm" variant="outline" :aria-label="text.zoomOut" @click="zoomBy(0.8)"
-        >−</BlessButton
-      >
-      <BlessButton
-        size="sm"
-        variant="outline"
-        :aria-label="`${percent}%, ${text.reset}`"
-        @click="reset"
-        >{{ percent }}%</BlessButton
-      >
-      <BlessButton size="sm" variant="outline" :aria-label="text.zoomIn" @click="zoomBy(1.25)"
-        >+</BlessButton
-      >
-    </div>
-    <span :id="hint" hidden>{{ text.hint }}</span>
-    <span class="bless-canvas__live bless-sr" aria-live="polite">{{ live }}</span>
-  </div>
-</template>
 
 <style>
 .bless-canvas {

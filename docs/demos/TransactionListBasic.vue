@@ -1,3 +1,7 @@
+<template>
+  <BlessTransactionList :transactions currency="IDR" locale="id-ID" style="max-width: 480px" />
+</template>
+
 <script setup lang="ts">
 import { BlessTransactionList, type BlessTransaction } from "blessing-ui";
 
@@ -46,7 +50,3 @@ const transactions: BlessTransaction[] = [
   },
 ];
 </script>
-
-<template>
-  <BlessTransactionList :transactions currency="IDR" locale="id-ID" style="max-width: 480px" />
-</template>

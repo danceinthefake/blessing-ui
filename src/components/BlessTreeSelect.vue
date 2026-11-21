@@ -1,3 +1,53 @@
+<template>
+  <BlessPopover
+    v-model:open="open"
+    placement="bottom-start"
+    class="bless-treeselect"
+    :trigger="disabled ? 'manual' : 'click'"
+  >
+    <template #trigger>
+      <div
+        :id="id()"
+        role="combobox"
+        :tabindex="disabled ? -1 : 0"
+        class="bless-treeselect__trigger"
+        :class="[
+          `bless-treeselect__trigger--${size}`,
+          { 'bless-treeselect__trigger--invalid': invalid || fs.invalid.value },
+        ]"
+        :aria-disabled="disabled || undefined"
+        :aria-label="label ?? (fs.inField ? undefined : 'Tree select')"
+        :aria-labelledby="label ? undefined : fs.labelledby"
+        :aria-invalid="invalid || fs.invalid.value || undefined"
+        :aria-describedby="fs.describedby.value"
+        aria-haspopup="tree"
+        :aria-expanded="open"
+        @keydown="onKey"
+      >
+        <span v-if="multiple && chosen.length" class="bless-treeselect__chips">
+          <BlessChip v-for="c in chosen" :key="c" :label="labelOf(c) ?? c" size="sm" />
+        </span>
+        <span
+          v-else
+          class="bless-treeselect__text"
+          :class="{ 'bless-treeselect__text--empty': !single }"
+          >{{ single || placeholder }}</span
+        >
+        <span class="bless-treeselect__chevron" aria-hidden="true" />
+      </div>
+    </template>
+    <div ref="panel" class="bless-treeselect__panel">
+      <BlessTree
+        :nodes
+        :selected="multiple ? undefined : (model as string | undefined)"
+        :label="label ?? 'Tree select'"
+        @select="onSelect"
+      >
+      </BlessTree>
+    </div>
+  </BlessPopover>
+</template>
+
 <script setup lang="ts">
 import { computed, nextTick, ref, watch } from "vue";
 import { useFieldId, useFieldState } from "../composables/useFieldId";
@@ -80,56 +130,6 @@ function onSelect(n: BlessTreeNode, path: string) {
 }
 const remove = (id: string) => (model.value = chosen.value.filter((x) => x !== id));
 </script>
-
-<template>
-  <BlessPopover
-    v-model:open="open"
-    placement="bottom-start"
-    class="bless-treeselect"
-    :trigger="disabled ? 'manual' : 'click'"
-  >
-    <template #trigger>
-      <div
-        :id="id()"
-        role="combobox"
-        :tabindex="disabled ? -1 : 0"
-        class="bless-treeselect__trigger"
-        :class="[
-          `bless-treeselect__trigger--${size}`,
-          { 'bless-treeselect__trigger--invalid': invalid || fs.invalid.value },
-        ]"
-        :aria-disabled="disabled || undefined"
-        :aria-label="label ?? (fs.inField ? undefined : 'Tree select')"
-        :aria-labelledby="label ? undefined : fs.labelledby"
-        :aria-invalid="invalid || fs.invalid.value || undefined"
-        :aria-describedby="fs.describedby.value"
-        aria-haspopup="tree"
-        :aria-expanded="open"
-        @keydown="onKey"
-      >
-        <span v-if="multiple && chosen.length" class="bless-treeselect__chips">
-          <BlessChip v-for="c in chosen" :key="c" :label="labelOf(c) ?? c" size="sm" />
-        </span>
-        <span
-          v-else
-          class="bless-treeselect__text"
-          :class="{ 'bless-treeselect__text--empty': !single }"
-          >{{ single || placeholder }}</span
-        >
-        <span class="bless-treeselect__chevron" aria-hidden="true" />
-      </div>
-    </template>
-    <div ref="panel" class="bless-treeselect__panel">
-      <BlessTree
-        :nodes
-        :selected="multiple ? undefined : (model as string | undefined)"
-        :label="label ?? 'Tree select'"
-        @select="onSelect"
-      >
-      </BlessTree>
-    </div>
-  </BlessPopover>
-</template>
 
 <style>
 .bless-treeselect__trigger {

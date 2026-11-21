@@ -1,3 +1,7 @@
+<template>
+  <BlessRoseChart :data="months" :format="thousands" label="Plays by month" />
+</template>
+
 <script setup lang="ts">
 import { BlessRoseChart } from "blessing-ui";
 
@@ -18,7 +22,3 @@ const months = [
 ];
 const thousands = (v: number) => `${v}k`;
 </script>
-
-<template>
-  <BlessRoseChart :data="months" :format="thousands" label="Plays by month" />
-</template>

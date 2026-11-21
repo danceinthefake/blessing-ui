@@ -1,3 +1,22 @@
+<template>
+  <section class="bless-trends" :aria-label="text.title">
+    <h3 class="bless-trends__title">{{ text.title }}</h3>
+    <ol class="bless-stagger bless-trends__list" role="list">
+      <li v-for="(t, i) in trends" :key="t.id" class="bless-trends__item">
+        <span class="bless-trends__rank" aria-hidden="true">{{ i + 1 }}</span>
+        <span class="bless-trends__body">
+          <span v-if="t.category" class="bless-trends__category">{{ t.category }}</span>
+          <a v-if="t.href" class="bless-trends__topic" :href="t.href">{{ t.topic }}</a>
+          <strong v-else class="bless-trends__topic">{{ t.topic }}</strong>
+          <span v-if="t.posts !== undefined" class="bless-trends__posts">{{
+            text.posts(short.format(t.posts))
+          }}</span>
+        </span>
+      </li>
+    </ol>
+  </section>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -35,25 +54,6 @@ const short = computed(
   () => new Intl.NumberFormat(props.locale, { notation: "compact", maximumFractionDigits: 1 }),
 );
 </script>
-
-<template>
-  <section class="bless-trends" :aria-label="text.title">
-    <h3 class="bless-trends__title">{{ text.title }}</h3>
-    <ol class="bless-stagger bless-trends__list" role="list">
-      <li v-for="(t, i) in trends" :key="t.id" class="bless-trends__item">
-        <span class="bless-trends__rank" aria-hidden="true">{{ i + 1 }}</span>
-        <span class="bless-trends__body">
-          <span v-if="t.category" class="bless-trends__category">{{ t.category }}</span>
-          <a v-if="t.href" class="bless-trends__topic" :href="t.href">{{ t.topic }}</a>
-          <strong v-else class="bless-trends__topic">{{ t.topic }}</strong>
-          <span v-if="t.posts !== undefined" class="bless-trends__posts">{{
-            text.posts(short.format(t.posts))
-          }}</span>
-        </span>
-      </li>
-    </ol>
-  </section>
-</template>
 
 <style>
 .bless-trends {

@@ -1,3 +1,68 @@
+<template>
+  <article class="bless-tkview">
+    <header class="bless-tkview__head">
+      <span class="bless-tkview__number">{{ number }}</span>
+      <h2 class="bless-tkview__subject">{{ subject }}</h2>
+      <div class="bless-tkview__meta">
+        <span
+          >{{ customer.name
+          }}<template v-if="customer.email"> · {{ customer.email }}</template></span
+        >
+        <span class="bless-tkview__prio" :class="`is-${priority}`">
+          <span aria-hidden="true">{{ PRIO[priority] }}</span> {{ text.priority }}:
+          {{ text[priority] }}
+        </span>
+        <label class="bless-tkview__status">
+          <span>{{ text.status }}</span>
+          <select v-model="status">
+            <option value="open">{{ text.open }}</option>
+            <option value="pending">{{ text.pending }}</option>
+            <option value="solved">{{ text.solved }}</option>
+          </select>
+        </label>
+      </div>
+    </header>
+    <ol class="bless-tkview__thread" role="list">
+      <li v-for="m in messages" :key="m.id" class="bless-tkview__msg" :class="`is-${m.role}`">
+        <div class="bless-tkview__box">
+          <div class="bless-tkview__from">
+            <BlessAvatar :name="m.from" alt="" size="xs" />
+            <strong>{{ m.from }}</strong>
+            <span v-if="m.role === 'note'" class="bless-tkview__tag">{{ text.note }}</span>
+            <span class="bless-tkview__time">{{ m.time }}</span>
+          </div>
+          <p class="bless-tkview__body">{{ m.body }}</p>
+        </div>
+      </li>
+    </ol>
+    <form class="bless-tkview__reply" :class="`is-${mode}`" @submit.prevent="send">
+      <div class="bless-tkview__modes" role="radiogroup" :aria-label="text.reply">
+        <label
+          ><input v-model="mode" type="radio" :name="`${uid}-mode`" value="reply" />
+          {{ text.reply }}</label
+        >
+        <label
+          ><input v-model="mode" type="radio" :name="`${uid}-mode`" value="note" />
+          {{ text.note }}</label
+        >
+      </div>
+      <textarea
+        v-model="body"
+        rows="4"
+        :aria-label="mode === 'note' ? text.note : text.reply"
+        :placeholder="text.placeholder"
+        :aria-describedby="mode === 'note' ? `${uid}-internal` : undefined"
+      />
+      <p v-if="mode === 'note'" :id="`${uid}-internal`" class="bless-tkview__hint">
+        {{ text.internal }}
+      </p>
+      <BlessButton type="submit" size="sm" :disabled="!body.trim()">{{
+        mode === "note" ? text.addNote : text.send
+      }}</BlessButton>
+    </form>
+  </article>
+</template>
+
 <script setup lang="ts">
 import { computed, ref, useId } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -75,71 +140,6 @@ function send() {
 }
 const PRIO = { low: "▽", normal: "○", high: "△", urgent: "▲" } as const;
 </script>
-
-<template>
-  <article class="bless-tkview">
-    <header class="bless-tkview__head">
-      <span class="bless-tkview__number">{{ number }}</span>
-      <h2 class="bless-tkview__subject">{{ subject }}</h2>
-      <div class="bless-tkview__meta">
-        <span
-          >{{ customer.name
-          }}<template v-if="customer.email"> · {{ customer.email }}</template></span
-        >
-        <span class="bless-tkview__prio" :class="`is-${priority}`">
-          <span aria-hidden="true">{{ PRIO[priority] }}</span> {{ text.priority }}:
-          {{ text[priority] }}
-        </span>
-        <label class="bless-tkview__status">
-          <span>{{ text.status }}</span>
-          <select v-model="status">
-            <option value="open">{{ text.open }}</option>
-            <option value="pending">{{ text.pending }}</option>
-            <option value="solved">{{ text.solved }}</option>
-          </select>
-        </label>
-      </div>
-    </header>
-    <ol class="bless-tkview__thread" role="list">
-      <li v-for="m in messages" :key="m.id" class="bless-tkview__msg" :class="`is-${m.role}`">
-        <div class="bless-tkview__box">
-          <div class="bless-tkview__from">
-            <BlessAvatar :name="m.from" alt="" size="xs" />
-            <strong>{{ m.from }}</strong>
-            <span v-if="m.role === 'note'" class="bless-tkview__tag">{{ text.note }}</span>
-            <span class="bless-tkview__time">{{ m.time }}</span>
-          </div>
-          <p class="bless-tkview__body">{{ m.body }}</p>
-        </div>
-      </li>
-    </ol>
-    <form class="bless-tkview__reply" :class="`is-${mode}`" @submit.prevent="send">
-      <div class="bless-tkview__modes" role="radiogroup" :aria-label="text.reply">
-        <label
-          ><input v-model="mode" type="radio" :name="`${uid}-mode`" value="reply" />
-          {{ text.reply }}</label
-        >
-        <label
-          ><input v-model="mode" type="radio" :name="`${uid}-mode`" value="note" />
-          {{ text.note }}</label
-        >
-      </div>
-      <textarea
-        v-model="body"
-        rows="4"
-        :aria-label="mode === 'note' ? text.note : text.reply"
-        :placeholder="text.placeholder"
-        :aria-describedby="mode === 'note' ? `${uid}-internal` : undefined"
-      />
-      <p v-if="mode === 'note'" :id="`${uid}-internal`" class="bless-tkview__hint">
-        {{ text.internal }}
-      </p>
-      <BlessButton type="submit" size="sm" :disabled="!body.trim()">{{
-        mode === "note" ? text.addNote : text.send
-      }}</BlessButton>
-    </form>
-  </article>
-</template>
 
 <style>
 .bless-tkview {

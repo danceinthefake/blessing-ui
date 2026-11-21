@@ -1,10 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { BlessDatePicker, BlessLabel } from "blessing-ui";
-const picked = ref<string>();
-const stay = ref<[string, string]>();
-</script>
-
 <template>
   <div class="row" style="align-items: flex-start">
     <div class="col">
@@ -29,3 +22,10 @@ const stay = ref<[string, string]>();
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { BlessDatePicker, BlessLabel } from "blessing-ui";
+const picked = ref<string>();
+const stay = ref<[string, string]>();
+</script>

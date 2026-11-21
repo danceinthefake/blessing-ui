@@ -1,67 +1,3 @@
-<script setup lang="ts">
-import { computed, nextTick, ref } from "vue";
-import { useFieldState } from "../composables/useFieldId";
-import { useLabelPack } from "../composables/useLabels";
-
-defineOptions({ name: "BlessKeyValueEditor" });
-const pack = useLabelPack("BlessKeyValueEditor");
-
-export interface BlessKeyValue {
-  key: string;
-  value: string;
-  /** off keeps the row but leaves it out; only with `toggle` */
-  enabled?: boolean;
-}
-
-const props = defineProps<{
-  /** an on and off box per row */
-  toggle?: boolean;
-  /** hide the values, for secrets */
-  secret?: boolean;
-  disabled?: boolean;
-  labels?: Partial<{
-    key: string;
-    value: string;
-    enabled: string;
-    remove: string;
-    duplicate: string;
-  }>;
-}>();
-const rows = defineModel<BlessKeyValue[]>({ default: () => [] });
-
-const text = computed(() => ({
-  key: "Key",
-  value: "Value",
-  enabled: "On",
-  remove: "Remove",
-  duplicate: "This key is used more than once",
-  ...pack(),
-  ...props.labels,
-}));
-
-// the rows and one empty row at the end: typing in it adds a row
-const shown = computed(() => [...rows.value, { key: "", value: "", enabled: true }]);
-const dupes = computed(() => {
-  const seen = new Map<string, number>();
-  for (const r of rows.value) if (r.key) seen.set(r.key, (seen.get(r.key) ?? 0) + 1);
-  return new Set([...seen].filter(([, n]) => n > 1).map(([k]) => k));
-});
-
-function edit(i: number, patch: Partial<BlessKeyValue>) {
-  const next = [...rows.value];
-  next[i] = { ...(next[i] ?? { key: "", value: "", enabled: true }), ...patch };
-  rows.value = next;
-}
-// in a BlessField, its label names the group
-const fs = useFieldState();
-const root = ref<HTMLElement>();
-function remove(i: number) {
-  rows.value = rows.value.filter((_, j) => j !== i);
-  // focus stays in the list: the key of the row that took this place
-  nextTick(() => root.value?.querySelectorAll<HTMLElement>(".bless-kv__key")[i]?.focus());
-}
-</script>
-
 <template>
   <div
     ref="root"
@@ -131,6 +67,70 @@ function remove(i: number) {
     <p v-if="dupes.size" class="bless-kv__error" role="status">{{ text.duplicate }}</p>
   </div>
 </template>
+
+<script setup lang="ts">
+import { computed, nextTick, ref } from "vue";
+import { useFieldState } from "../composables/useFieldId";
+import { useLabelPack } from "../composables/useLabels";
+
+defineOptions({ name: "BlessKeyValueEditor" });
+const pack = useLabelPack("BlessKeyValueEditor");
+
+export interface BlessKeyValue {
+  key: string;
+  value: string;
+  /** off keeps the row but leaves it out; only with `toggle` */
+  enabled?: boolean;
+}
+
+const props = defineProps<{
+  /** an on and off box per row */
+  toggle?: boolean;
+  /** hide the values, for secrets */
+  secret?: boolean;
+  disabled?: boolean;
+  labels?: Partial<{
+    key: string;
+    value: string;
+    enabled: string;
+    remove: string;
+    duplicate: string;
+  }>;
+}>();
+const rows = defineModel<BlessKeyValue[]>({ default: () => [] });
+
+const text = computed(() => ({
+  key: "Key",
+  value: "Value",
+  enabled: "On",
+  remove: "Remove",
+  duplicate: "This key is used more than once",
+  ...pack(),
+  ...props.labels,
+}));
+
+// the rows and one empty row at the end: typing in it adds a row
+const shown = computed(() => [...rows.value, { key: "", value: "", enabled: true }]);
+const dupes = computed(() => {
+  const seen = new Map<string, number>();
+  for (const r of rows.value) if (r.key) seen.set(r.key, (seen.get(r.key) ?? 0) + 1);
+  return new Set([...seen].filter(([, n]) => n > 1).map(([k]) => k));
+});
+
+function edit(i: number, patch: Partial<BlessKeyValue>) {
+  const next = [...rows.value];
+  next[i] = { ...(next[i] ?? { key: "", value: "", enabled: true }), ...patch };
+  rows.value = next;
+}
+// in a BlessField, its label names the group
+const fs = useFieldState();
+const root = ref<HTMLElement>();
+function remove(i: number) {
+  rows.value = rows.value.filter((_, j) => j !== i);
+  // focus stays in the list: the key of the row that took this place
+  nextTick(() => root.value?.querySelectorAll<HTMLElement>(".bless-kv__key")[i]?.focus());
+}
+</script>
 
 <style>
 .bless-kv {

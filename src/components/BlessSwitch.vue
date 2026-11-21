@@ -1,19 +1,3 @@
-<script setup lang="ts">
-import { joinIds, useFieldId, useFieldState } from "../composables/useFieldId";
-
-defineOptions({ name: "BlessSwitch", inheritAttrs: false });
-
-const props = defineProps<{
-  id?: string;
-  disabled?: boolean;
-  size?: "sm" | "md";
-  labelPosition?: "end" | "start";
-}>();
-const model = defineModel<boolean>({ default: false });
-const id = useFieldId(props);
-const fs = useFieldState();
-</script>
-
 <template>
   <label
     class="bless-switch"
@@ -42,6 +26,22 @@ const fs = useFieldState();
     <span v-if="$slots.default" class="bless-switch__label"><slot /></span>
   </label>
 </template>
+
+<script setup lang="ts">
+import { joinIds, useFieldId, useFieldState } from "../composables/useFieldId";
+
+defineOptions({ name: "BlessSwitch", inheritAttrs: false });
+
+const props = defineProps<{
+  id?: string;
+  disabled?: boolean;
+  size?: "sm" | "md";
+  labelPosition?: "end" | "start";
+}>();
+const model = defineModel<boolean>({ default: false });
+const id = useFieldId(props);
+const fs = useFieldState();
+</script>
 
 <style>
 .bless-switch {

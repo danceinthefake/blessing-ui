@@ -1,3 +1,27 @@
+<template>
+  <div
+    ref="root"
+    class="bless-inplace"
+    :class="{ 'bless-inplace--active': active, 'bless-inplace--disabled': disabled }"
+  >
+    <button v-if="!active" type="button" class="bless-inplace__display" :disabled @click="open">
+      <slot name="display" />
+    </button>
+    <div v-else class="bless-inplace__content" @keydown.esc.stop.prevent="close">
+      <slot name="content" :close />
+      <button
+        v-if="dismissible"
+        type="button"
+        class="bless-inplace__close"
+        :aria-label="text.close"
+        @click="close"
+      >
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { useLabelPack } from "../composables/useLabels";
 import { nextTick, ref, computed } from "vue";
@@ -35,30 +59,6 @@ function close() {
   focusIn(".bless-inplace__display");
 }
 </script>
-
-<template>
-  <div
-    ref="root"
-    class="bless-inplace"
-    :class="{ 'bless-inplace--active': active, 'bless-inplace--disabled': disabled }"
-  >
-    <button v-if="!active" type="button" class="bless-inplace__display" :disabled @click="open">
-      <slot name="display" />
-    </button>
-    <div v-else class="bless-inplace__content" @keydown.esc.stop.prevent="close">
-      <slot name="content" :close />
-      <button
-        v-if="dismissible"
-        type="button"
-        class="bless-inplace__close"
-        :aria-label="text.close"
-        @click="close"
-      >
-        <span aria-hidden="true">×</span>
-      </button>
-    </div>
-  </div>
-</template>
 
 <style>
 .bless-inplace {

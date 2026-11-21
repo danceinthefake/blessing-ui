@@ -1,10 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { BlessRating } from "blessing-ui";
-const stars = ref(3);
-const love = ref(2);
-</script>
-
 <template>
   <div class="row">
     <BlessRating v-model="stars" label="Episode rating" />
@@ -14,3 +7,10 @@ const love = ref(2);
     <small>{{ stars }} / 5 · click the current star to clear</small>
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { BlessRating } from "blessing-ui";
+const stars = ref(3);
+const love = ref(2);
+</script>

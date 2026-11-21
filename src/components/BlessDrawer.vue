@@ -1,3 +1,20 @@
+<template>
+  <BlessSheet
+    v-model="open"
+    side="bottom"
+    handle
+    :title
+    :dismissible
+    :labels="{ ...pack(), ...props.labels }"
+    class="bless-drawer"
+    @close="emit('close')"
+  >
+    <template v-if="$slots.title" #title><slot name="title" /></template>
+    <slot />
+    <template v-if="$slots.footer" #footer><slot name="footer" /></template>
+  </BlessSheet>
+</template>
+
 <script setup lang="ts">
 import BlessSheet from "./BlessSheet.vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -16,20 +33,3 @@ const props = withDefaults(
 const open = defineModel<boolean>({ default: false });
 const emit = defineEmits<{ close: [] }>();
 </script>
-
-<template>
-  <BlessSheet
-    v-model="open"
-    side="bottom"
-    handle
-    :title
-    :dismissible
-    :labels="{ ...pack(), ...props.labels }"
-    class="bless-drawer"
-    @close="emit('close')"
-  >
-    <template v-if="$slots.title" #title><slot name="title" /></template>
-    <slot />
-    <template v-if="$slots.footer" #footer><slot name="footer" /></template>
-  </BlessSheet>
-</template>

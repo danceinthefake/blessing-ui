@@ -1,3 +1,7 @@
+<template>
+  <BlessWaffle :data="apps" label="Listeners of episode 41 by app" />
+</template>
+
 <script setup lang="ts">
 import { BlessWaffle } from "blessing-ui";
 
@@ -9,7 +13,3 @@ const apps = [
   { label: "Other apps", value: 620 },
 ];
 </script>
-
-<template>
-  <BlessWaffle :data="apps" label="Listeners of episode 41 by app" />
-</template>

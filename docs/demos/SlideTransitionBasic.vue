@@ -1,9 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { BlessButton, BlessSlideTransition, BlessText } from "blessing-ui";
-const open = ref(true);
-</script>
-
 <template>
   <div class="col" style="max-width: 420px">
     <BlessButton size="sm" variant="outline" @click="open = !open">{{
@@ -16,3 +10,9 @@ const open = ref(true);
     </BlessSlideTransition>
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { BlessButton, BlessSlideTransition, BlessText } from "blessing-ui";
+const open = ref(true);
+</script>

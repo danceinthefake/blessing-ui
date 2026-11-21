@@ -1,10 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { BlessAppointmentCard } from "blessing-ui";
-
-const said = ref("");
-</script>
-
 <template>
   <div style="display: grid; gap: 16px; max-width: 520px">
     <BlessAppointmentCard
@@ -36,3 +29,10 @@ const said = ref("");
   </div>
   <p v-if="said" style="margin-top: 12px">{{ said }}</p>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { BlessAppointmentCard } from "blessing-ui";
+
+const said = ref("");
+</script>

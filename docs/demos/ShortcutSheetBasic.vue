@@ -1,3 +1,7 @@
+<template>
+  <BlessShortcutSheet :groups />
+</template>
+
 <script setup lang="ts">
 import { BlessShortcutSheet, type BlessShortcutGroup } from "blessing-ui";
 
@@ -31,7 +35,3 @@ const groups: BlessShortcutGroup[] = [
   },
 ];
 </script>
-
-<template>
-  <BlessShortcutSheet :groups />
-</template>

@@ -1,3 +1,7 @@
+<template>
+  <BlessPlayQueue v-model="queue" :current style="max-width: 440px" @play="play" />
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessPlayQueue, type BlessQueueTrack } from "blessing-ui";
@@ -40,7 +44,3 @@ function play(id: string) {
   queue.value = queue.value.slice(i + 1);
 }
 </script>
-
-<template>
-  <BlessPlayQueue v-model="queue" :current style="max-width: 440px" @play="play" />
-</template>

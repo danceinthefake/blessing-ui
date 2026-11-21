@@ -1,3 +1,12 @@
+<template>
+  <div style="max-width: 480px">
+    <BlessSlotPicker v-model="time" :slots locale="en" />
+    <BlessText as="p" size="sm" style="margin-top: 12px">
+      {{ time ? `Picked: ${time}` : "Pick a time for the call." }}
+    </BlessText>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessSlotPicker, BlessText, type BlessSlot } from "blessing-ui";
@@ -17,12 +26,3 @@ const slots: BlessSlot[] = [
 ];
 const time = ref<string | null>(null);
 </script>
-
-<template>
-  <div style="max-width: 480px">
-    <BlessSlotPicker v-model="time" :slots locale="en" />
-    <BlessText as="p" size="sm" style="margin-top: 12px">
-      {{ time ? `Picked: ${time}` : "Pick a time for the call." }}
-    </BlessText>
-  </div>
-</template>

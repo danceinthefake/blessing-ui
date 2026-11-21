@@ -1,3 +1,13 @@
+<template>
+  <div class="bless-typing" role="status">
+    <!-- the status stays in the page while empty, so a screen reader hears the first line too -->
+    <template v-if="line">
+      <span class="bless-typing__dots" aria-hidden="true"><span /><span /><span /></span>
+      <span>{{ line }}</span>
+    </template>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -32,16 +42,6 @@ const line = computed(() => {
     : text.value.many(a, props.names.length - 1);
 });
 </script>
-
-<template>
-  <div class="bless-typing" role="status">
-    <!-- the status stays in the page while empty, so a screen reader hears the first line too -->
-    <template v-if="line">
-      <span class="bless-typing__dots" aria-hidden="true"><span /><span /><span /></span>
-      <span>{{ line }}</span>
-    </template>
-  </div>
-</template>
 
 <style>
 .bless-typing {

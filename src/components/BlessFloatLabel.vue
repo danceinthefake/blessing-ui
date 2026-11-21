@@ -1,3 +1,10 @@
+<template>
+  <div class="bless-float" :class="`bless-float--${variant}`">
+    <slot />
+    <label class="bless-float__label" :for="id">{{ label }}</label>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { useLabelFor } from "../composables/useFieldId";
 
@@ -14,13 +21,6 @@ const props = withDefaults(
 );
 const id = useLabelFor(props.for);
 </script>
-
-<template>
-  <div class="bless-float" :class="`bless-float--${variant}`">
-    <slot />
-    <label class="bless-float__label" :for="id">{{ label }}</label>
-  </div>
-</template>
 
 <style>
 /* CSS-only: relies on the wrapped control having a placeholder (even " ") so :placeholder-shown works */

@@ -1,3 +1,7 @@
+<template>
+  <BlessForumTopics :topics />
+</template>
+
 <script setup lang="ts">
 import { BlessForumTopics, type BlessForumTopic } from "blessing-ui";
 
@@ -56,7 +60,3 @@ const topics: BlessForumTopic[] = [
   },
 ];
 </script>
-
-<template>
-  <BlessForumTopics :topics />
-</template>

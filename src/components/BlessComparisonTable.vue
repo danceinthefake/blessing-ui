@@ -1,45 +1,3 @@
-<script setup lang="ts">
-import { computed } from "vue";
-import { useLabelPack } from "../composables/useLabels";
-import "./sr.css";
-
-defineOptions({ name: "BlessComparisonTable" });
-const pack = useLabelPack("BlessComparisonTable");
-
-export interface BlessComparePlan {
-  key: string;
-  label: string;
-  /** a line under the name, for example the price */
-  note?: string;
-  /** stands out, for example the plan that most people take */
-  highlight?: boolean;
-}
-export interface BlessCompareRow {
-  label: string;
-  /** a heading row that starts a group */
-  group?: boolean;
-  /** by plan key: `true` (yes), `false` (no), or a text such as "10 GB" */
-  values?: Partial<Record<string, boolean | string>>;
-}
-
-const props = defineProps<{
-  plans: BlessComparePlan[];
-  rows: BlessCompareRow[];
-  /** names the table */
-  label?: string;
-  labels?: Partial<{ feature: string; yes: string; no: string; title: string }>;
-}>();
-
-const text = computed(() => ({
-  title: "Compare plans",
-  feature: "Feature",
-  yes: "Included",
-  no: "Not included",
-  ...pack(),
-  ...props.labels,
-}));
-</script>
-
 <template>
   <div class="bless-cmptable">
     <table class="bless-cmptable__table">
@@ -98,6 +56,48 @@ const text = computed(() => ({
     </table>
   </div>
 </template>
+
+<script setup lang="ts">
+import { computed } from "vue";
+import { useLabelPack } from "../composables/useLabels";
+import "./sr.css";
+
+defineOptions({ name: "BlessComparisonTable" });
+const pack = useLabelPack("BlessComparisonTable");
+
+export interface BlessComparePlan {
+  key: string;
+  label: string;
+  /** a line under the name, for example the price */
+  note?: string;
+  /** stands out, for example the plan that most people take */
+  highlight?: boolean;
+}
+export interface BlessCompareRow {
+  label: string;
+  /** a heading row that starts a group */
+  group?: boolean;
+  /** by plan key: `true` (yes), `false` (no), or a text such as "10 GB" */
+  values?: Partial<Record<string, boolean | string>>;
+}
+
+const props = defineProps<{
+  plans: BlessComparePlan[];
+  rows: BlessCompareRow[];
+  /** names the table */
+  label?: string;
+  labels?: Partial<{ feature: string; yes: string; no: string; title: string }>;
+}>();
+
+const text = computed(() => ({
+  title: "Compare plans",
+  feature: "Feature",
+  yes: "Included",
+  no: "Not included",
+  ...pack(),
+  ...props.labels,
+}));
+</script>
 
 <style>
 .bless-cmptable {

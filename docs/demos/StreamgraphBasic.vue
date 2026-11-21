@@ -1,3 +1,14 @@
+<template>
+  <BlessStreamgraph
+    :data="months"
+    x="month"
+    :series
+    :format="thousands"
+    :labels="{ step: 'Month' }"
+    label="Plays by topic, January to August"
+  />
+</template>
+
 <script setup lang="ts">
 import { BlessStreamgraph } from "blessing-ui";
 
@@ -20,14 +31,3 @@ const series = [
 ];
 const thousands = (v: number) => `${v}k`;
 </script>
-
-<template>
-  <BlessStreamgraph
-    :data="months"
-    x="month"
-    :series
-    :format="thousands"
-    :labels="{ step: 'Month' }"
-    label="Plays by topic, January to August"
-  />
-</template>

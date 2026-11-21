@@ -1,3 +1,7 @@
+<template>
+  <BlessOrderBook :bids :asks :depth="6" style="max-width: 360px" />
+</template>
+
 <script setup lang="ts">
 import { BlessOrderBook } from "blessing-ui";
 
@@ -19,7 +23,3 @@ const asks = [
   { price: 1844.0, size: 3.3 },
 ];
 </script>
-
-<template>
-  <BlessOrderBook :bids :asks :depth="6" style="max-width: 360px" />
-</template>

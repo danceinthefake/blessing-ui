@@ -1,3 +1,28 @@
+<template>
+  <div class="bless-ctxchips">
+    <ul v-if="items.length" class="bless-ctxchips__list" role="list" :aria-label="text.list">
+      <li v-for="c in items" :key="c.id">
+        <BlessChip
+          :label="c.label"
+          size="sm"
+          removable
+          :labels="{ remove: text.remove }"
+          @remove="emit('remove', c.id)"
+        >
+          <span class="bless-ctxchips__kind">{{ text[c.kind] }}</span>{{ " "
+          }}<span class="bless-ctxchips__name">{{ c.label }}</span
+          ><template v-if="c.detail"
+            >{{ " " }}<span class="bless-ctxchips__detail">{{ c.detail }}</span></template
+          >
+        </BlessChip>
+      </li>
+    </ul>
+    <button v-if="addable" type="button" class="bless-ctxchips__add" @click="emit('add')">
+      + {{ text.add }}
+    </button>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -38,31 +63,6 @@ const text = computed(() => ({
   ...props.labels,
 }));
 </script>
-
-<template>
-  <div class="bless-ctxchips">
-    <ul v-if="items.length" class="bless-ctxchips__list" role="list" :aria-label="text.list">
-      <li v-for="c in items" :key="c.id">
-        <BlessChip
-          :label="c.label"
-          size="sm"
-          removable
-          :labels="{ remove: text.remove }"
-          @remove="emit('remove', c.id)"
-        >
-          <span class="bless-ctxchips__kind">{{ text[c.kind] }}</span>{{ " "
-          }}<span class="bless-ctxchips__name">{{ c.label }}</span
-          ><template v-if="c.detail"
-            >{{ " " }}<span class="bless-ctxchips__detail">{{ c.detail }}</span></template
-          >
-        </BlessChip>
-      </li>
-    </ul>
-    <button v-if="addable" type="button" class="bless-ctxchips__add" @click="emit('add')">
-      + {{ text.add }}
-    </button>
-  </div>
-</template>
 
 <style>
 .bless-ctxchips {

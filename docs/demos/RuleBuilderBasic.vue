@@ -1,3 +1,8 @@
+<template>
+  <BlessRuleBuilder v-model="rule" :triggers :conditions :actions @save="(r) => (saved = r)" />
+  <pre v-if="saved" style="margin-top: 12px">{{ saved }}</pre>
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessRuleBuilder, type BlessRule } from "blessing-ui";
@@ -20,8 +25,3 @@ const actions = [
 const rule = ref<BlessRule>({ when: "door", if: ["rec"], then: ["notify"] });
 const saved = ref<BlessRule>();
 </script>
-
-<template>
-  <BlessRuleBuilder v-model="rule" :triggers :conditions :actions @save="(r) => (saved = r)" />
-  <pre v-if="saved" style="margin-top: 12px">{{ saved }}</pre>
-</template>

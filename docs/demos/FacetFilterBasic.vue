@@ -1,3 +1,16 @@
+<template>
+  <div style="max-width: 280px">
+    <BlessFacetFilter
+      v-model="selected"
+      v-model:price="price"
+      :facets
+      price-range
+      currency="IDR"
+      locale="id-ID"
+    />
+  </div>
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessFacetFilter, type BlessFacet } from "blessing-ui";
@@ -27,16 +40,3 @@ const facets: BlessFacet[] = [
 const selected = ref<Record<string, string[]>>({ type: ["usb"] });
 const price = ref<[number | undefined, number | undefined]>([undefined, 1500000]);
 </script>
-
-<template>
-  <div style="max-width: 280px">
-    <BlessFacetFilter
-      v-model="selected"
-      v-model:price="price"
-      :facets
-      price-range
-      currency="IDR"
-      locale="id-ID"
-    />
-  </div>
-</template>

@@ -1,12 +1,3 @@
-<script setup lang="ts">
-defineOptions({ name: "BlessKbd" });
-
-defineProps<{
-  /** keys joined with + ; slot wins if present */
-  keys?: string[];
-}>();
-</script>
-
 <template>
   <kbd class="bless-kbd">
     <template v-if="keys?.length">
@@ -22,6 +13,15 @@ defineProps<{
     ></kbd>
   </kbd>
 </template>
+
+<script setup lang="ts">
+defineOptions({ name: "BlessKbd" });
+
+defineProps<{
+  /** keys joined with + ; slot wins if present */
+  keys?: string[];
+}>();
+</script>
 
 <style>
 .bless-kbd {

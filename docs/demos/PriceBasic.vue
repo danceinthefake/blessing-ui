@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import { BlessPrice } from "blessing-ui";
-</script>
-
 <template>
   <div style="display: grid; gap: 16px">
     <BlessPrice :amount="1299000" currency="IDR" locale="id-ID" size="lg" />
@@ -10,3 +6,7 @@ import { BlessPrice } from "blessing-ui";
     <BlessPrice :amount="2.5" :unit-price="0.5" unit="100 ml" size="sm" />
   </div>
 </template>
+
+<script setup lang="ts">
+import { BlessPrice } from "blessing-ui";
+</script>

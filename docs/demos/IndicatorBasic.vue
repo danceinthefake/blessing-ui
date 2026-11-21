@@ -1,9 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { BlessAvatar, BlessButton, BlessIndicator } from "blessing-ui";
-const unread = ref(3);
-</script>
-
 <template>
   <div class="row" style="gap: 24px">
     <BlessIndicator :value="unread" :label="`${unread} unread`"
@@ -20,3 +14,9 @@ const unread = ref(3);
     >
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { BlessAvatar, BlessButton, BlessIndicator } from "blessing-ui";
+const unread = ref(3);
+</script>

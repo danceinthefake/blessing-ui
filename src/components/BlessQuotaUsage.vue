@@ -1,3 +1,30 @@
+<template>
+  <div class="bless-quota">
+    <div v-for="q in rows" :key="q.label" class="bless-quota__row" :class="`is-${q.level}`">
+      <div class="bless-quota__head">
+        <span class="bless-quota__label">{{ q.label }}</span>
+        <span class="bless-quota__of">{{ q.of }}</span>
+      </div>
+      <div
+        class="bless-quota__track"
+        role="meter"
+        :aria-label="q.label"
+        aria-valuemin="0"
+        :aria-valuemax="q.limit"
+        :aria-valuenow="Math.min(q.used, q.limit)"
+        :aria-valuetext="[q.of, q.note].filter(Boolean).join(', ')"
+      >
+        <span
+          class="bless-quota__bar"
+          :style="{ inlineSize: `${Math.min(100, q.share * 100)}%` }"
+        />
+      </div>
+      <span v-if="q.note" class="bless-quota__note" aria-hidden="true">{{ q.note }}</span>
+    </div>
+    <div v-if="$slots.footer" class="bless-quota__footer"><slot name="footer" /></div>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -47,33 +74,6 @@ const rows = computed(() =>
   }),
 );
 </script>
-
-<template>
-  <div class="bless-quota">
-    <div v-for="q in rows" :key="q.label" class="bless-quota__row" :class="`is-${q.level}`">
-      <div class="bless-quota__head">
-        <span class="bless-quota__label">{{ q.label }}</span>
-        <span class="bless-quota__of">{{ q.of }}</span>
-      </div>
-      <div
-        class="bless-quota__track"
-        role="meter"
-        :aria-label="q.label"
-        aria-valuemin="0"
-        :aria-valuemax="q.limit"
-        :aria-valuenow="Math.min(q.used, q.limit)"
-        :aria-valuetext="[q.of, q.note].filter(Boolean).join(', ')"
-      >
-        <span
-          class="bless-quota__bar"
-          :style="{ inlineSize: `${Math.min(100, q.share * 100)}%` }"
-        />
-      </div>
-      <span v-if="q.note" class="bless-quota__note" aria-hidden="true">{{ q.note }}</span>
-    </div>
-    <div v-if="$slots.footer" class="bless-quota__footer"><slot name="footer" /></div>
-  </div>
-</template>
 
 <style>
 .bless-quota {

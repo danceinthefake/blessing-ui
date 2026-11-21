@@ -1,3 +1,17 @@
+<template>
+  <div class="col" style="max-width: none">
+    <BlessTreemap
+      v-model:path="path"
+      :data
+      :height="300"
+      label="Repository"
+      :format="(v: number) => `${v} KB`"
+      @select="(n) => (picked = n.label)"
+    />
+    <p style="margin: 0">Last picked: {{ picked || "nothing yet" }}</p>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessTreemap, type BlessTreemapNode } from "blessing-ui";
@@ -27,17 +41,3 @@ const data: BlessTreemapNode[] = [
 const path = ref<string[]>([]);
 const picked = ref("");
 </script>
-
-<template>
-  <div class="col" style="max-width: none">
-    <BlessTreemap
-      v-model:path="path"
-      :data
-      :height="300"
-      label="Repository"
-      :format="(v: number) => `${v} KB`"
-      @select="(n) => (picked = n.label)"
-    />
-    <p style="margin: 0">Last picked: {{ picked || "nothing yet" }}</p>
-  </div>
-</template>

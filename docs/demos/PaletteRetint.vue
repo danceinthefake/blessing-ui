@@ -1,23 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import {
-  BlessButton,
-  BlessCheckbox,
-  BlessProgress,
-  BlessSidebarNav,
-  BlessSwitch,
-  BlessTabs,
-  BlessToggle,
-} from "blessing-ui";
-// colour means chosen: the palette shows on what is selected, on, done, active or pressed — never at rest
-const tab = ref("news");
-const tabs = [
-  { value: "news", label: "News" },
-  { value: "event", label: "Event" },
-  { value: "goods", label: "Goods" },
-];
-</script>
-
 <template>
   <BlessTabs v-model="tab" :tabs label="Category" style="max-width: 360px" />
   <div class="row" style="margin-top: 12px">
@@ -40,3 +20,23 @@ const tabs = [
     />
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import {
+  BlessButton,
+  BlessCheckbox,
+  BlessProgress,
+  BlessSidebarNav,
+  BlessSwitch,
+  BlessTabs,
+  BlessToggle,
+} from "blessing-ui";
+// colour means chosen: the palette shows on what is selected, on, done, active or pressed — never at rest
+const tab = ref("news");
+const tabs = [
+  { value: "news", label: "News" },
+  { value: "event", label: "Event" },
+  { value: "goods", label: "Goods" },
+];
+</script>

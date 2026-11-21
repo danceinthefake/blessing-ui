@@ -1,11 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { BlessAssignment } from "blessing-ui";
-
-const files = ref<File[]>([]);
-const submitted = ref<string>();
-</script>
-
 <template>
   <div style="display: grid; gap: 16px">
     <BlessAssignment
@@ -29,3 +21,11 @@ Hand in three WAV files and one line on what changed."
     />
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { BlessAssignment } from "blessing-ui";
+
+const files = ref<File[]>([]);
+const submitted = ref<string>();
+</script>

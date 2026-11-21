@@ -1,13 +1,13 @@
+<template>
+  <span class="bless-dash" :class="`bless-dash--${color}`">{{ " " }}</span>
+</template>
+
 <script setup lang="ts">
 defineOptions({ name: "BlessDash" });
 
 // a zero-size space inside, so "2019.04.04—Title" reads as two words without one in the markup
 withDefaults(defineProps<{ color?: "text" | "muted" | "accent" }>(), { color: "text" });
 </script>
-
-<template>
-  <span class="bless-dash" :class="`bless-dash--${color}`">{{ " " }}</span>
-</template>
 
 <style>
 .bless-dash {

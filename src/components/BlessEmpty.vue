@@ -1,17 +1,3 @@
-<script setup lang="ts">
-defineOptions({ name: "BlessEmpty" });
-
-withDefaults(
-  defineProps<{
-    title?: string;
-    description?: string;
-    /** framed (default) or plain, for inside a table or list */
-    variant?: "outline" | "plain";
-  }>(),
-  { variant: "outline" },
-);
-</script>
-
 <template>
   <div class="bless-empty" :class="`bless-empty--${variant}`">
     <span v-if="$slots.icon" class="bless-empty__icon" aria-hidden="true"
@@ -26,6 +12,20 @@ withDefaults(
     <div v-if="$slots.default" class="bless-empty__actions"><slot /></div>
   </div>
 </template>
+
+<script setup lang="ts">
+defineOptions({ name: "BlessEmpty" });
+
+withDefaults(
+  defineProps<{
+    title?: string;
+    description?: string;
+    /** framed (default) or plain, for inside a table or list */
+    variant?: "outline" | "plain";
+  }>(),
+  { variant: "outline" },
+);
+</script>
 
 <style>
 .bless-empty {

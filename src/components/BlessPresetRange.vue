@@ -1,3 +1,31 @@
+<template>
+  <div class="bless-presetrange">
+    <div class="bless-presetrange__presets" role="group" :aria-label="text.presets">
+      <button
+        v-for="p in list"
+        :key="p.label"
+        type="button"
+        class="bless-presetrange__preset"
+        :aria-pressed="same(p)"
+        @click="range = [...p.range]"
+      >
+        {{ p.label }}
+      </button>
+    </div>
+    <div class="bless-presetrange__main">
+      <p class="bless-presetrange__summary" role="status">{{ summary }}</p>
+      <BlessCalendar
+        :key="month"
+        v-model="range as never"
+        range
+        :month
+        :locale
+        :week-start="weekStart"
+      />
+    </div>
+  </div>
+</template>
+
 <script lang="ts">
 export interface BlessRangePreset {
   label: string;
@@ -93,34 +121,6 @@ const summary = computed(() => {
 // the calendar opens on the month of the start, so a preset in another month shows
 const month = computed(() => range.value?.[0].slice(0, 7));
 </script>
-
-<template>
-  <div class="bless-presetrange">
-    <div class="bless-presetrange__presets" role="group" :aria-label="text.presets">
-      <button
-        v-for="p in list"
-        :key="p.label"
-        type="button"
-        class="bless-presetrange__preset"
-        :aria-pressed="same(p)"
-        @click="range = [...p.range]"
-      >
-        {{ p.label }}
-      </button>
-    </div>
-    <div class="bless-presetrange__main">
-      <p class="bless-presetrange__summary" role="status">{{ summary }}</p>
-      <BlessCalendar
-        :key="month"
-        v-model="range as never"
-        range
-        :month
-        :locale
-        :week-start="weekStart"
-      />
-    </div>
-  </div>
-</template>
 
 <style>
 .bless-presetrange {

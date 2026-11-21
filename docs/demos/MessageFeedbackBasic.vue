@@ -1,15 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { BlessMessageFeedback, BlessText, type BlessMessageFeedbackEvent } from "blessing-ui";
-
-const reply =
-  "Try “Home Studio, Real Sound”. It is short, it names the topic, and it is easy to say out loud.";
-const rating = ref<"good" | "bad">();
-const last = ref("nothing yet");
-const tries = ref(1);
-const log = (e: BlessMessageFeedbackEvent) => (last.value = JSON.stringify(e));
-</script>
-
 <template>
   <div style="max-width: 560px">
     <p style="margin-top: 0">{{ reply }}</p>
@@ -26,3 +14,15 @@ const log = (e: BlessMessageFeedbackEvent) => (last.value = JSON.stringify(e));
     </BlessText>
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { BlessMessageFeedback, BlessText, type BlessMessageFeedbackEvent } from "blessing-ui";
+
+const reply =
+  "Try “Home Studio, Real Sound”. It is short, it names the topic, and it is easy to say out loud.";
+const rating = ref<"good" | "bad">();
+const last = ref("nothing yet");
+const tries = ref(1);
+const log = (e: BlessMessageFeedbackEvent) => (last.value = JSON.stringify(e));
+</script>

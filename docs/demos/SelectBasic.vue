@@ -1,17 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { BlessLabel, BlessSelect } from "blessing-ui";
-const season = ref<string>();
-const small = ref("s1");
-const large = ref<string>();
-const options = [
-  { value: "s1", label: "第一期 (2015)" },
-  { value: "s2", label: "第二期 ♭ (2017)" },
-  { label: "Film", options: [{ value: "fine", label: "Fine (2019)" }] },
-  { value: "s3", label: "第三期", disabled: true },
-];
-</script>
-
 <template>
   <div class="row" style="align-items: flex-start">
     <div class="col">
@@ -41,3 +27,17 @@ const options = [
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { BlessLabel, BlessSelect } from "blessing-ui";
+const season = ref<string>();
+const small = ref("s1");
+const large = ref<string>();
+const options = [
+  { value: "s1", label: "第一期 (2015)" },
+  { value: "s2", label: "第二期 ♭ (2017)" },
+  { label: "Film", options: [{ value: "fine", label: "Fine (2019)" }] },
+  { value: "s3", label: "第三期", disabled: true },
+];
+</script>

@@ -1,3 +1,42 @@
+<template>
+  <article class="bless-profile">
+    <div
+      class="bless-profile__cover"
+      :style="cover ? { backgroundImage: `url(${JSON.stringify(cover)})` } : undefined"
+      aria-hidden="true"
+    />
+    <div class="bless-profile__body">
+      <div class="bless-profile__top">
+        <BlessAvatar class="bless-profile__avatar" :src="avatar" :name alt="" size="xl" />
+        <div class="bless-profile__actions">
+          <slot name="actions" />
+          <BlessButton
+            v-if="followable"
+            size="sm"
+            :variant="following ? 'outline' : 'solid'"
+            :aria-pressed="following"
+            @click="following = !following"
+          >
+            {{ following ? text.following : text.follow }}
+          </BlessButton>
+        </div>
+      </div>
+      <h3 class="bless-profile__name">
+        <a v-if="href" :href>{{ name }}</a>
+        <template v-else>{{ name }}</template>
+      </h3>
+      <p v-if="handle" class="bless-profile__handle">{{ handle }}</p>
+      <p v-if="bio" class="bless-profile__bio">{{ bio }}</p>
+      <dl v-if="stats.length" class="bless-profile__stats">
+        <div v-for="s in stats" :key="s.label">
+          <dt>{{ s.label }}</dt>
+          <dd>{{ compact.format(s.value) }}</dd>
+        </div>
+      </dl>
+    </div>
+  </article>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -46,45 +85,6 @@ const compact = computed(
   () => new Intl.NumberFormat(props.locale, { notation: "compact", maximumFractionDigits: 1 }),
 );
 </script>
-
-<template>
-  <article class="bless-profile">
-    <div
-      class="bless-profile__cover"
-      :style="cover ? { backgroundImage: `url(${JSON.stringify(cover)})` } : undefined"
-      aria-hidden="true"
-    />
-    <div class="bless-profile__body">
-      <div class="bless-profile__top">
-        <BlessAvatar class="bless-profile__avatar" :src="avatar" :name alt="" size="xl" />
-        <div class="bless-profile__actions">
-          <slot name="actions" />
-          <BlessButton
-            v-if="followable"
-            size="sm"
-            :variant="following ? 'outline' : 'solid'"
-            :aria-pressed="following"
-            @click="following = !following"
-          >
-            {{ following ? text.following : text.follow }}
-          </BlessButton>
-        </div>
-      </div>
-      <h3 class="bless-profile__name">
-        <a v-if="href" :href>{{ name }}</a>
-        <template v-else>{{ name }}</template>
-      </h3>
-      <p v-if="handle" class="bless-profile__handle">{{ handle }}</p>
-      <p v-if="bio" class="bless-profile__bio">{{ bio }}</p>
-      <dl v-if="stats.length" class="bless-profile__stats">
-        <div v-for="s in stats" :key="s.label">
-          <dt>{{ s.label }}</dt>
-          <dd>{{ compact.format(s.value) }}</dd>
-        </div>
-      </dl>
-    </div>
-  </article>
-</template>
 
 <style>
 .bless-profile {

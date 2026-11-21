@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import { BlessSeparator } from "blessing-ui";
-</script>
-
 <template>
   <div class="col" style="max-width: 480px">
     <BlessSeparator />
@@ -13,3 +9,7 @@ import { BlessSeparator } from "blessing-ui";
     <BlessSeparator label="or" />
   </div>
 </template>
+
+<script setup lang="ts">
+import { BlessSeparator } from "blessing-ui";
+</script>

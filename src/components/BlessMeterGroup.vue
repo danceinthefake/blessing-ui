@@ -1,3 +1,34 @@
+<template>
+  <div class="bless-metergroup" :class="`bless-metergroup--${orientation}`">
+    <div
+      class="bless-metergroup__bar"
+      role="meter"
+      :aria-label="label"
+      :aria-valuenow="sum"
+      :aria-valuetext="valuetext"
+      aria-valuemin="0"
+      :aria-valuemax="total"
+    >
+      <span
+        v-for="(s, i) in segments"
+        :key="s.label"
+        class="bless-metergroup__seg"
+        :style="{ '--_p': `${pct(s)}%`, background: col(s, i) }"
+        :title="`${s.label}: ${fmt(s.value)}`"
+        aria-hidden="true"
+      />
+    </div>
+    <ul role="list" v-if="legend" class="bless-metergroup__legend">
+      <li v-for="(s, i) in segments" :key="s.label" :style="{ '--_c': col(s, i) }">
+        <slot name="legend" :segment="s" :percent="pct(s)">
+          <span class="bless-metergroup__name">{{ s.label }}</span>
+          <span class="bless-metergroup__val">{{ fmt(s.value) }} · {{ pct(s).toFixed(0) }}%</span>
+        </slot>
+      </li>
+    </ul>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 
@@ -36,37 +67,6 @@ const valuetext = computed(() =>
   props.max == null ? fmt(sum.value) : `${fmt(sum.value)} of ${fmt(props.max)}`,
 );
 </script>
-
-<template>
-  <div class="bless-metergroup" :class="`bless-metergroup--${orientation}`">
-    <div
-      class="bless-metergroup__bar"
-      role="meter"
-      :aria-label="label"
-      :aria-valuenow="sum"
-      :aria-valuetext="valuetext"
-      aria-valuemin="0"
-      :aria-valuemax="total"
-    >
-      <span
-        v-for="(s, i) in segments"
-        :key="s.label"
-        class="bless-metergroup__seg"
-        :style="{ '--_p': `${pct(s)}%`, background: col(s, i) }"
-        :title="`${s.label}: ${fmt(s.value)}`"
-        aria-hidden="true"
-      />
-    </div>
-    <ul role="list" v-if="legend" class="bless-metergroup__legend">
-      <li v-for="(s, i) in segments" :key="s.label" :style="{ '--_c': col(s, i) }">
-        <slot name="legend" :segment="s" :percent="pct(s)">
-          <span class="bless-metergroup__name">{{ s.label }}</span>
-          <span class="bless-metergroup__val">{{ fmt(s.value) }} · {{ pct(s).toFixed(0) }}%</span>
-        </slot>
-      </li>
-    </ul>
-  </div>
-</template>
 
 <style>
 .bless-metergroup {

@@ -1,3 +1,10 @@
+<template>
+  <div style="display: grid; gap: 8px; max-width: 40rem">
+    <BlessContextChips :items addable @add="add" @remove="remove" />
+    <BlessPromptInput v-model="draft" />
+  </div>
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessContextChips, BlessPromptInput, type BlessContextItem } from "blessing-ui";
@@ -14,10 +21,3 @@ const add = () =>
 const remove = (id: string) => (items.value = items.value.filter((i) => i.id !== id));
 const draft = ref("");
 </script>
-
-<template>
-  <div style="display: grid; gap: 8px; max-width: 40rem">
-    <BlessContextChips :items addable @add="add" @remove="remove" />
-    <BlessPromptInput v-model="draft" />
-  </div>
-</template>

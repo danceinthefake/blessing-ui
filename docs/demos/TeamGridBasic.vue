@@ -1,3 +1,7 @@
+<template>
+  <BlessTeamGrid :people />
+</template>
+
 <script setup lang="ts">
 import { BlessTeamGrid, type BlessTeamMember } from "blessing-ui";
 import { art } from "./_data";
@@ -34,7 +38,3 @@ const people: BlessTeamMember[] = [
   },
 ];
 </script>
-
-<template>
-  <BlessTeamGrid :people />
-</template>

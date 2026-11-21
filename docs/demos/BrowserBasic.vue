@@ -1,16 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { useMedia, useResizeObserver, useScroll, useVisibility } from "blessing-ui";
-
-const box = ref<HTMLElement>();
-const { width, height } = useResizeObserver(box);
-const { y, direction } = useScroll();
-const { visible } = useVisibility();
-const wide = useMedia("(min-width: 800px)");
-// reducedMotion() reads once when called; for a live ref, the same query through useMedia
-const reduce = useMedia("(prefers-reduced-motion: reduce)");
-</script>
-
 <template>
   <div class="browser">
     <div ref="box" class="browser__box">drag my corner</div>
@@ -28,6 +15,19 @@ const reduce = useMedia("(prefers-reduced-motion: reduce)");
     </dl>
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { useMedia, useResizeObserver, useScroll, useVisibility } from "blessing-ui";
+
+const box = ref<HTMLElement>();
+const { width, height } = useResizeObserver(box);
+const { y, direction } = useScroll();
+const { visible } = useVisibility();
+const wide = useMedia("(min-width: 800px)");
+// reducedMotion() reads once when called; for a live ref, the same query through useMedia
+const reduce = useMedia("(prefers-reduced-motion: reduce)");
+</script>
 
 <style scoped>
 .browser {

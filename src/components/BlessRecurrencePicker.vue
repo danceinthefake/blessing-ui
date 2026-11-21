@@ -1,3 +1,113 @@
+<template>
+  <fieldset class="bless-repeat">
+    <div class="bless-repeat__row">
+      <label :for="`${uid}-n`">{{ text.every }}</label>
+      <input
+        :id="`${uid}-n`"
+        class="bless-repeat__field bless-repeat__num"
+        type="number"
+        min="1"
+        max="99"
+        :value="rule.interval"
+        @change="
+          set({
+            interval: Math.min(
+              99,
+              Math.max(1, Math.round(+($event.target as HTMLInputElement).value) || 1),
+            ),
+          })
+        "
+      />
+      <select
+        class="bless-repeat__field"
+        :aria-label="text.every"
+        :value="rule.freq"
+        @change="set({ freq: ($event.target as HTMLSelectElement).value as BlessRepeatFreq })"
+      >
+        <option v-for="f in FREQS" :key="f" :value="f">{{ text.unit(f, rule.interval) }}</option>
+      </select>
+    </div>
+    <div v-if="rule.freq === 'weekly'" class="bless-repeat__row" role="group" :aria-label="text.on">
+      <span aria-hidden="true">{{ text.on }}</span>
+      <span class="bless-repeat__days">
+        <button
+          v-for="(d, i) in dayNames"
+          :key="i"
+          type="button"
+          class="bless-repeat__day"
+          :aria-pressed="!!rule.days?.includes(i)"
+          :title="d.long"
+          @click="toggleDay(i)"
+        >
+          <span aria-hidden="true">{{ d.short }}</span>
+          <span class="bless-sr">{{ d.long }}</span>
+        </button>
+      </span>
+    </div>
+    <div class="bless-repeat__row bless-repeat__end" role="radiogroup" :aria-label="text.ends">
+      <span aria-hidden="true">{{ text.ends }}</span>
+      <span class="bless-repeat__ends">
+        <label class="bless-repeat__choice">
+          <input
+            type="radio"
+            :name="`${uid}-end`"
+            :checked="rule.end.type === 'never'"
+            @change="set({ end: { type: 'never' } })"
+          />
+          {{ text.never }}
+        </label>
+        <label class="bless-repeat__choice">
+          <input
+            type="radio"
+            :name="`${uid}-end`"
+            :checked="rule.end.type === 'count'"
+            @change="set({ end: { type: 'count', count: 10 } })"
+          />
+          {{ text.after }}
+          <input
+            class="bless-repeat__field bless-repeat__num"
+            type="number"
+            min="1"
+            :aria-label="`${text.after} … ${text.times}`"
+            :disabled="rule.end.type !== 'count'"
+            :value="rule.end.type === 'count' ? rule.end.count : 10"
+            @change="
+              set({
+                end: {
+                  type: 'count',
+                  count: Math.max(1, Math.round(+($event.target as HTMLInputElement).value) || 1),
+                },
+              })
+            "
+          />
+          {{ text.times }}
+        </label>
+        <label class="bless-repeat__choice">
+          <input
+            type="radio"
+            :name="`${uid}-end`"
+            :checked="rule.end.type === 'until'"
+            @change="set({ end: { type: 'until', until: today } })"
+          />
+          {{ text.onDate }}
+          <input
+            class="bless-repeat__field"
+            type="date"
+            :aria-label="text.ends"
+            :disabled="rule.end.type !== 'until'"
+            :value="rule.end.type === 'until' ? rule.end.until : ''"
+            @change="
+              ($event.target as HTMLInputElement).value &&
+              set({ end: { type: 'until', until: ($event.target as HTMLInputElement).value } })
+            "
+          />
+        </label>
+      </span>
+    </div>
+    <p class="bless-repeat__summary" role="status">{{ sentence }}</p>
+  </fieldset>
+</template>
+
 <script lang="ts">
 export type BlessRepeatFreq = "daily" | "weekly" | "monthly" | "yearly";
 export interface BlessRecurrence {
@@ -124,116 +234,6 @@ const sentence = computed(() => {
 const FREQS: BlessRepeatFreq[] = ["daily", "weekly", "monthly", "yearly"];
 const today = new Date().toISOString().slice(0, 10);
 </script>
-
-<template>
-  <fieldset class="bless-repeat">
-    <div class="bless-repeat__row">
-      <label :for="`${uid}-n`">{{ text.every }}</label>
-      <input
-        :id="`${uid}-n`"
-        class="bless-repeat__field bless-repeat__num"
-        type="number"
-        min="1"
-        max="99"
-        :value="rule.interval"
-        @change="
-          set({
-            interval: Math.min(
-              99,
-              Math.max(1, Math.round(+($event.target as HTMLInputElement).value) || 1),
-            ),
-          })
-        "
-      />
-      <select
-        class="bless-repeat__field"
-        :aria-label="text.every"
-        :value="rule.freq"
-        @change="set({ freq: ($event.target as HTMLSelectElement).value as BlessRepeatFreq })"
-      >
-        <option v-for="f in FREQS" :key="f" :value="f">{{ text.unit(f, rule.interval) }}</option>
-      </select>
-    </div>
-    <div v-if="rule.freq === 'weekly'" class="bless-repeat__row" role="group" :aria-label="text.on">
-      <span aria-hidden="true">{{ text.on }}</span>
-      <span class="bless-repeat__days">
-        <button
-          v-for="(d, i) in dayNames"
-          :key="i"
-          type="button"
-          class="bless-repeat__day"
-          :aria-pressed="!!rule.days?.includes(i)"
-          :title="d.long"
-          @click="toggleDay(i)"
-        >
-          <span aria-hidden="true">{{ d.short }}</span>
-          <span class="bless-sr">{{ d.long }}</span>
-        </button>
-      </span>
-    </div>
-    <div class="bless-repeat__row bless-repeat__end" role="radiogroup" :aria-label="text.ends">
-      <span aria-hidden="true">{{ text.ends }}</span>
-      <span class="bless-repeat__ends">
-        <label class="bless-repeat__choice">
-          <input
-            type="radio"
-            :name="`${uid}-end`"
-            :checked="rule.end.type === 'never'"
-            @change="set({ end: { type: 'never' } })"
-          />
-          {{ text.never }}
-        </label>
-        <label class="bless-repeat__choice">
-          <input
-            type="radio"
-            :name="`${uid}-end`"
-            :checked="rule.end.type === 'count'"
-            @change="set({ end: { type: 'count', count: 10 } })"
-          />
-          {{ text.after }}
-          <input
-            class="bless-repeat__field bless-repeat__num"
-            type="number"
-            min="1"
-            :aria-label="`${text.after} … ${text.times}`"
-            :disabled="rule.end.type !== 'count'"
-            :value="rule.end.type === 'count' ? rule.end.count : 10"
-            @change="
-              set({
-                end: {
-                  type: 'count',
-                  count: Math.max(1, Math.round(+($event.target as HTMLInputElement).value) || 1),
-                },
-              })
-            "
-          />
-          {{ text.times }}
-        </label>
-        <label class="bless-repeat__choice">
-          <input
-            type="radio"
-            :name="`${uid}-end`"
-            :checked="rule.end.type === 'until'"
-            @change="set({ end: { type: 'until', until: today } })"
-          />
-          {{ text.onDate }}
-          <input
-            class="bless-repeat__field"
-            type="date"
-            :aria-label="text.ends"
-            :disabled="rule.end.type !== 'until'"
-            :value="rule.end.type === 'until' ? rule.end.until : ''"
-            @change="
-              ($event.target as HTMLInputElement).value &&
-              set({ end: { type: 'until', until: ($event.target as HTMLInputElement).value } })
-            "
-          />
-        </label>
-      </span>
-    </div>
-    <p class="bless-repeat__summary" role="status">{{ sentence }}</p>
-  </fieldset>
-</template>
 
 <style>
 .bless-repeat {

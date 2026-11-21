@@ -1,11 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { BlessInput, BlessStepper, useToast } from "blessing-ui";
-const step = ref(0);
-const { success } = useToast();
-const steps = [{ label: "Account" }, { label: "Profile" }, { label: "Review" }];
-</script>
-
 <template>
   <div style="max-width: 560px">
     <BlessStepper v-model="step" :steps @finish="success('Done')">
@@ -25,3 +17,11 @@ const steps = [{ label: "Account" }, { label: "Profile" }, { label: "Review" }];
     </BlessStepper>
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { BlessInput, BlessStepper, useToast } from "blessing-ui";
+const step = ref(0);
+const { success } = useToast();
+const steps = [{ label: "Account" }, { label: "Profile" }, { label: "Review" }];
+</script>

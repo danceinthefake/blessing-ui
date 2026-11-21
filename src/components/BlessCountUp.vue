@@ -1,3 +1,22 @@
+<template>
+  <span class="bless-countup" :class="{ 'bless-countup--odometer': odometer }">
+    <span class="bless-countup__visual" aria-hidden="true">
+      <template v-if="odometer">
+        <template v-for="(c, i) in parts" :key="i">
+          <span v-if="/\d/.test(c)" class="bless-countup__digit">
+            <span class="bless-countup__reel" :style="{ '--bless-digit': c }">
+              <i v-for="d in 10" :key="d">{{ d - 1 }}</i>
+            </span>
+          </span>
+          <span v-else>{{ c }}</span>
+        </template>
+      </template>
+      <template v-else>{{ text(shown) }}</template>
+    </span>
+    <span class="bless-countup__final bless-sr">{{ final }}</span>
+  </span>
+</template>
+
 <script setup lang="ts">
 import "./sr.css";
 import { computed, onBeforeUnmount, onMounted, ref, watch } from "vue";
@@ -64,25 +83,6 @@ watch(
 );
 onBeforeUnmount(() => cancelAnimationFrame(raf));
 </script>
-
-<template>
-  <span class="bless-countup" :class="{ 'bless-countup--odometer': odometer }">
-    <span class="bless-countup__visual" aria-hidden="true">
-      <template v-if="odometer">
-        <template v-for="(c, i) in parts" :key="i">
-          <span v-if="/\d/.test(c)" class="bless-countup__digit">
-            <span class="bless-countup__reel" :style="{ '--bless-digit': c }">
-              <i v-for="d in 10" :key="d">{{ d - 1 }}</i>
-            </span>
-          </span>
-          <span v-else>{{ c }}</span>
-        </template>
-      </template>
-      <template v-else>{{ text(shown) }}</template>
-    </span>
-    <span class="bless-countup__final bless-sr">{{ final }}</span>
-  </span>
-</template>
 
 <style>
 .bless-countup {

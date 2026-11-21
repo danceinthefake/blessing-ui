@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import { BlessKbd } from "blessing-ui";
-</script>
-
 <template>
   <div class="row">
     <BlessKbd :keys="['⌘', 'K']" />
@@ -10,3 +6,7 @@ import { BlessKbd } from "blessing-ui";
     <span>press <BlessKbd :keys="['←']" /> / <BlessKbd :keys="['→']" /> in the gallery</span>
   </div>
 </template>
+
+<script setup lang="ts">
+import { BlessKbd } from "blessing-ui";
+</script>

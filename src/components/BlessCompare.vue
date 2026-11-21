@@ -1,13 +1,3 @@
-<script setup lang="ts">
-defineOptions({ name: "BlessCompare" });
-withDefaults(defineProps<{ label?: string; orientation?: "horizontal" | "vertical" }>(), {
-  label: "Compare",
-  orientation: "horizontal",
-});
-/** 0–100, how much of the "after" side is revealed */
-const pos = defineModel<number>({ default: 50 });
-</script>
-
 <template>
   <div
     class="bless-compare"
@@ -29,6 +19,16 @@ const pos = defineModel<number>({ default: 50 });
     />
   </div>
 </template>
+
+<script setup lang="ts">
+defineOptions({ name: "BlessCompare" });
+withDefaults(defineProps<{ label?: string; orientation?: "horizontal" | "vertical" }>(), {
+  label: "Compare",
+  orientation: "horizontal",
+});
+/** 0–100, how much of the "after" side is revealed */
+const pos = defineModel<number>({ default: 50 });
+</script>
 
 <style>
 .bless-compare {

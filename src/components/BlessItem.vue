@@ -1,23 +1,3 @@
-<script setup lang="ts">
-import { useLink } from "../composables/useLink";
-defineOptions({ name: "BlessItem" });
-const link = useLink();
-
-withDefaults(
-  defineProps<{
-    title?: string;
-    description?: string;
-    /** renders <a> when set — then keep #actions non-interactive */
-    href?: string;
-    /** the whole row is a <button>: a selectable row (an inbox, a picker) */
-    button?: boolean;
-    variant?: "plain" | "outline" | "surface";
-    size?: "sm" | "md";
-  }>(),
-  { variant: "plain", size: "md" },
-);
-</script>
-
 <template>
   <component
     :is="link(href, undefined, button ? 'button' : 'div').is"
@@ -41,6 +21,26 @@ withDefaults(
     <span v-if="$slots.actions" class="bless-item__actions"><slot name="actions" /></span>
   </component>
 </template>
+
+<script setup lang="ts">
+import { useLink } from "../composables/useLink";
+defineOptions({ name: "BlessItem" });
+const link = useLink();
+
+withDefaults(
+  defineProps<{
+    title?: string;
+    description?: string;
+    /** renders <a> when set — then keep #actions non-interactive */
+    href?: string;
+    /** the whole row is a <button>: a selectable row (an inbox, a picker) */
+    button?: boolean;
+    variant?: "plain" | "outline" | "surface";
+    size?: "sm" | "md";
+  }>(),
+  { variant: "plain", size: "md" },
+);
+</script>
 
 <style>
 .bless-item {

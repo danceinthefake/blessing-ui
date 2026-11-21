@@ -1,3 +1,100 @@
+<template>
+  <figure ref="box" class="bless-plot bless-scatter">
+    <svg :viewBox="`0 0 ${width} ${height}`" :height class="bless-plot__svg" aria-hidden="true">
+      <g v-for="t in yt" :key="`y${t}`">
+        <line
+          class="bless-plot__grid"
+          :class="{ 'bless-plot__zero': t === 0 }"
+          :x1="frame.x0"
+          :x2="frame.x1"
+          :y1="py(t)"
+          :y2="py(t)"
+        />
+        <text
+          class="bless-plot__tick"
+          :x="frame.x0 - 6"
+          :y="py(t)"
+          text-anchor="end"
+          dominant-baseline="middle"
+        >
+          {{ fy(t) }}
+        </text>
+      </g>
+      <g v-for="t in xt" :key="`x${t}`">
+        <line
+          class="bless-plot__grid"
+          :class="{ 'bless-plot__zero': t === 0 }"
+          :x1="px(t)"
+          :x2="px(t)"
+          :y1="frame.y0"
+          :y2="frame.y1"
+        />
+        <text
+          class="bless-plot__tick"
+          :x="px(t)"
+          :y="frame.y1 + 14"
+          text-anchor="middle"
+          dominant-baseline="middle"
+        >
+          {{ fx(t) }}
+        </text>
+      </g>
+      <text
+        class="bless-plot__cat"
+        :x="(frame.x0 + frame.x1) / 2"
+        :y="height - 6"
+        text-anchor="middle"
+      >
+        {{ xLabel }}
+      </text>
+      <text
+        class="bless-plot__cat"
+        :transform="`translate(10 ${(frame.y0 + frame.y1) / 2}) rotate(-90)`"
+        text-anchor="middle"
+        dominant-baseline="middle"
+      >
+        {{ yLabel }}
+      </text>
+      <circle
+        v-for="(d, i) in dots"
+        :key="d.key"
+        class="bless-plot__mark bless-scatter__dot"
+        :cx="d.cx"
+        :cy="d.cy"
+        :r="d.r"
+        :style="{ '--_c': d.color, '--_i': i }"
+      >
+        <title>{{ d.title }}</title>
+      </circle>
+    </svg>
+    <div class="bless-sr">
+      <table>
+        <caption>
+          {{ label }}
+        </caption>
+        <thead>
+          <tr>
+            <th v-if="hasLabel" scope="col">{{ text.point }}</th>
+            <th v-if="groups.length" scope="col">{{ text.group }}</th>
+            <th scope="col">{{ xLabel }}</th>
+            <th scope="col">{{ yLabel }}</th>
+            <th v-if="hasSize" scope="col">{{ text.size }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(p, i) in valid" :key="i">
+            <td v-if="hasLabel">{{ p.label }}</td>
+            <td v-if="groups.length">{{ groups[groupOf(p.group)]?.label ?? p.group }}</td>
+            <td>{{ fx(p.x) }}</td>
+            <td>{{ fy(p.y) }}</td>
+            <td v-if="hasSize">{{ p.size == null ? "–" : fy(p.size) }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </figure>
+</template>
+
 <script setup lang="ts">
 import { computed, ref } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -99,103 +196,6 @@ const dots = computed(() =>
     .sort((a, b) => b.r - a.r),
 );
 </script>
-
-<template>
-  <figure ref="box" class="bless-plot bless-scatter">
-    <svg :viewBox="`0 0 ${width} ${height}`" :height class="bless-plot__svg" aria-hidden="true">
-      <g v-for="t in yt" :key="`y${t}`">
-        <line
-          class="bless-plot__grid"
-          :class="{ 'bless-plot__zero': t === 0 }"
-          :x1="frame.x0"
-          :x2="frame.x1"
-          :y1="py(t)"
-          :y2="py(t)"
-        />
-        <text
-          class="bless-plot__tick"
-          :x="frame.x0 - 6"
-          :y="py(t)"
-          text-anchor="end"
-          dominant-baseline="middle"
-        >
-          {{ fy(t) }}
-        </text>
-      </g>
-      <g v-for="t in xt" :key="`x${t}`">
-        <line
-          class="bless-plot__grid"
-          :class="{ 'bless-plot__zero': t === 0 }"
-          :x1="px(t)"
-          :x2="px(t)"
-          :y1="frame.y0"
-          :y2="frame.y1"
-        />
-        <text
-          class="bless-plot__tick"
-          :x="px(t)"
-          :y="frame.y1 + 14"
-          text-anchor="middle"
-          dominant-baseline="middle"
-        >
-          {{ fx(t) }}
-        </text>
-      </g>
-      <text
-        class="bless-plot__cat"
-        :x="(frame.x0 + frame.x1) / 2"
-        :y="height - 6"
-        text-anchor="middle"
-      >
-        {{ xLabel }}
-      </text>
-      <text
-        class="bless-plot__cat"
-        :transform="`translate(10 ${(frame.y0 + frame.y1) / 2}) rotate(-90)`"
-        text-anchor="middle"
-        dominant-baseline="middle"
-      >
-        {{ yLabel }}
-      </text>
-      <circle
-        v-for="(d, i) in dots"
-        :key="d.key"
-        class="bless-plot__mark bless-scatter__dot"
-        :cx="d.cx"
-        :cy="d.cy"
-        :r="d.r"
-        :style="{ '--_c': d.color, '--_i': i }"
-      >
-        <title>{{ d.title }}</title>
-      </circle>
-    </svg>
-    <div class="bless-sr">
-      <table>
-        <caption>
-          {{ label }}
-        </caption>
-        <thead>
-          <tr>
-            <th v-if="hasLabel" scope="col">{{ text.point }}</th>
-            <th v-if="groups.length" scope="col">{{ text.group }}</th>
-            <th scope="col">{{ xLabel }}</th>
-            <th scope="col">{{ yLabel }}</th>
-            <th v-if="hasSize" scope="col">{{ text.size }}</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="(p, i) in valid" :key="i">
-            <td v-if="hasLabel">{{ p.label }}</td>
-            <td v-if="groups.length">{{ groups[groupOf(p.group)]?.label ?? p.group }}</td>
-            <td>{{ fx(p.x) }}</td>
-            <td>{{ fy(p.y) }}</td>
-            <td v-if="hasSize">{{ p.size == null ? "–" : fy(p.size) }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </figure>
-</template>
 
 <style>
 .bless-scatter__dot {

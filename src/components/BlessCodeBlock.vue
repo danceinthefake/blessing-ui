@@ -1,3 +1,60 @@
+<template>
+  <figure class="bless-code">
+    <figcaption v-if="files?.length || filename || lang || copy" class="bless-code__head">
+      <div
+        v-if="files?.length"
+        ref="tabs"
+        class="bless-code__tabs"
+        role="tablist"
+        :aria-label="label"
+      >
+        <button
+          v-for="(f, i) in files"
+          :id="`${id}-t${i}`"
+          :key="f.name"
+          type="button"
+          role="tab"
+          class="bless-code__tab"
+          :aria-selected="i === active"
+          :aria-controls="`${id}-p`"
+          :tabindex="i === active ? 0 : -1"
+          @click="active = i"
+          @keydown="onTabKey"
+        >
+          {{ f.name }}
+        </button>
+      </div>
+      <span v-else-if="filename" class="bless-code__name">{{ filename }}</span>
+      <span class="bless-code__spacer"></span>
+      <span v-if="lang" class="bless-code__lang">{{ lang }}</span>
+      <button v-if="copy" type="button" class="bless-code__copy" @click="doCopy">
+        {{ copied ? text.copied : text.copy }}
+      </button>
+    </figcaption>
+    <div
+      :id="`${id}-p`"
+      class="bless-code__scroll"
+      tabindex="0"
+      :role="files?.length ? 'tabpanel' : 'region'"
+      :aria-labelledby="files?.length ? `${id}-t${active}` : undefined"
+      :aria-label="files?.length ? undefined : file.name || label"
+    >
+      <slot name="code" :code="file.code" :lang="lang" :lines="rows">
+        <pre class="bless-code__pre" :class="{ 'bless-code__pre--wrap': wrap }"><code><span
+          v-for="r in rows"
+          :key="r.n"
+          class="bless-code__line"
+          :class="{ 'bless-code__line--hl': r.hl }"
+        ><span v-if="lineNumbers" class="bless-code__no" aria-hidden="true">{{ r.n }}</span>{{ r.text }}
+</span></code></pre>
+      </slot>
+    </div>
+    <span class="bless-code__live bless-sr" aria-live="polite">{{
+      copied ? text.copiedLive : ""
+    }}</span>
+  </figure>
+</template>
+
 <script lang="ts">
 export interface BlessCodeFile {
   name: string;
@@ -102,63 +159,6 @@ async function doCopy() {
 }
 onBeforeUnmount(() => clearTimeout(timer));
 </script>
-
-<template>
-  <figure class="bless-code">
-    <figcaption v-if="files?.length || filename || lang || copy" class="bless-code__head">
-      <div
-        v-if="files?.length"
-        ref="tabs"
-        class="bless-code__tabs"
-        role="tablist"
-        :aria-label="label"
-      >
-        <button
-          v-for="(f, i) in files"
-          :id="`${id}-t${i}`"
-          :key="f.name"
-          type="button"
-          role="tab"
-          class="bless-code__tab"
-          :aria-selected="i === active"
-          :aria-controls="`${id}-p`"
-          :tabindex="i === active ? 0 : -1"
-          @click="active = i"
-          @keydown="onTabKey"
-        >
-          {{ f.name }}
-        </button>
-      </div>
-      <span v-else-if="filename" class="bless-code__name">{{ filename }}</span>
-      <span class="bless-code__spacer"></span>
-      <span v-if="lang" class="bless-code__lang">{{ lang }}</span>
-      <button v-if="copy" type="button" class="bless-code__copy" @click="doCopy">
-        {{ copied ? text.copied : text.copy }}
-      </button>
-    </figcaption>
-    <div
-      :id="`${id}-p`"
-      class="bless-code__scroll"
-      tabindex="0"
-      :role="files?.length ? 'tabpanel' : 'region'"
-      :aria-labelledby="files?.length ? `${id}-t${active}` : undefined"
-      :aria-label="files?.length ? undefined : file.name || label"
-    >
-      <slot name="code" :code="file.code" :lang="lang" :lines="rows">
-        <pre class="bless-code__pre" :class="{ 'bless-code__pre--wrap': wrap }"><code><span
-          v-for="r in rows"
-          :key="r.n"
-          class="bless-code__line"
-          :class="{ 'bless-code__line--hl': r.hl }"
-        ><span v-if="lineNumbers" class="bless-code__no" aria-hidden="true">{{ r.n }}</span>{{ r.text }}
-</span></code></pre>
-      </slot>
-    </div>
-    <span class="bless-code__live bless-sr" aria-live="polite">{{
-      copied ? text.copiedLive : ""
-    }}</span>
-  </figure>
-</template>
 
 <style>
 .bless-code {

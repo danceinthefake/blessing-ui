@@ -1,3 +1,23 @@
+<template>
+  <div
+    ref="root"
+    class="bless-tabpanels"
+    :class="`bless-tabpanels--${dir}`"
+    :style="{ '--_x': `${drag}px` }"
+  >
+    <Transition :name="`bless-tabpanels-${dir}`" mode="out-in">
+      <div
+        :key="String(model)"
+        class="bless-tabpanels__panel"
+        role="group"
+        :aria-label="String(model)"
+      >
+        <slot :panel="model" :index />
+      </div>
+    </Transition>
+  </div>
+</template>
+
 <script setup lang="ts" generic="T extends string | number">
 import { computed, ref, watch } from "vue";
 import { usePan } from "../composables/useGesture";
@@ -47,26 +67,6 @@ usePan(root, (e) => {
 });
 defineExpose({ next: () => go(1), prev: () => go(-1) });
 </script>
-
-<template>
-  <div
-    ref="root"
-    class="bless-tabpanels"
-    :class="`bless-tabpanels--${dir}`"
-    :style="{ '--_x': `${drag}px` }"
-  >
-    <Transition :name="`bless-tabpanels-${dir}`" mode="out-in">
-      <div
-        :key="String(model)"
-        class="bless-tabpanels__panel"
-        role="group"
-        :aria-label="String(model)"
-      >
-        <slot :panel="model" :index />
-      </div>
-    </Transition>
-  </div>
-</template>
 
 <style>
 .bless-tabpanels {

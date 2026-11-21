@@ -1,3 +1,74 @@
+<template>
+  <div class="bless-access">
+    <form class="bless-access__invite" @submit.prevent="invite">
+      <input
+        v-model="email"
+        type="email"
+        required
+        :aria-label="text.email"
+        :placeholder="text.email"
+        autocomplete="email"
+      />
+      <select v-model="role" :aria-label="text.newRole">
+        <option v-for="r in ROLES" :key="r" :value="r">{{ text[r] }}</option>
+      </select>
+      <button type="submit" class="is-main">{{ text.invite }}</button>
+    </form>
+    <section class="bless-access__part" :aria-label="text.people">
+      <div class="bless-access__title" aria-hidden="true">{{ text.people }}</div>
+      <ul class="bless-stagger bless-access__list" role="list">
+        <li v-for="p in people" :key="p.id">
+          <div class="bless-access__person">
+            <BlessAvatar :name="p.name" size="sm" />
+            <span class="bless-access__who">
+              <strong>{{ p.name }}</strong>
+              <span v-if="p.email" class="bless-access__email">{{ p.email }}</span>
+            </span>
+            <span v-if="p.role === 'owner'" class="bless-access__owner">{{ text.owner }}</span>
+            <template v-else>
+              <select
+                :value="p.role"
+                :aria-label="text.roleFor(p.name)"
+                @change="
+                  setRole(p.id, ($event.target as HTMLSelectElement).value as BlessAccessRole)
+                "
+              >
+                <option v-for="r in ROLES" :key="r" :value="r">{{ text[r] }}</option>
+              </select>
+              <button type="button" :aria-label="text.removeFor(p.name)" @click="remove(p.id)">
+                ✕
+              </button>
+            </template>
+          </div>
+        </li>
+      </ul>
+    </section>
+    <section class="bless-access__part" :aria-label="text.general">
+      <div class="bless-access__title" aria-hidden="true">{{ text.general }}</div>
+      <div class="bless-access__general">
+        <select
+          :value="general"
+          :aria-label="text.general"
+          @change="setGeneral(($event.target as HTMLSelectElement).value)"
+        >
+          <option value="restricted">{{ text.restricted }}</option>
+          <option value="anyone">{{ text.anyone }}</option>
+        </select>
+        <select v-if="linkAccess !== 'restricted'" v-model="linkAccess" :aria-label="text.anyone">
+          <option v-for="r in ROLES" :key="r" :value="r">{{ text[r] }}</option>
+        </select>
+      </div>
+      <div class="bless-access__hint">
+        {{ linkAccess === "restricted" ? text.restrictedHint : text.anyoneHint(text[linkAccess]) }}
+      </div>
+    </section>
+    <div v-if="link" class="bless-access__foot">
+      <button type="button" @click="copy">{{ text.copy }}</button>
+      <span role="status" class="bless-access__said">{{ said }}</span>
+    </div>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed, ref } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -89,77 +160,6 @@ async function copy() {
   said.value = text.value.copied;
 }
 </script>
-
-<template>
-  <div class="bless-access">
-    <form class="bless-access__invite" @submit.prevent="invite">
-      <input
-        v-model="email"
-        type="email"
-        required
-        :aria-label="text.email"
-        :placeholder="text.email"
-        autocomplete="email"
-      />
-      <select v-model="role" :aria-label="text.newRole">
-        <option v-for="r in ROLES" :key="r" :value="r">{{ text[r] }}</option>
-      </select>
-      <button type="submit" class="is-main">{{ text.invite }}</button>
-    </form>
-    <section class="bless-access__part" :aria-label="text.people">
-      <div class="bless-access__title" aria-hidden="true">{{ text.people }}</div>
-      <ul class="bless-stagger bless-access__list" role="list">
-        <li v-for="p in people" :key="p.id">
-          <div class="bless-access__person">
-            <BlessAvatar :name="p.name" size="sm" />
-            <span class="bless-access__who">
-              <strong>{{ p.name }}</strong>
-              <span v-if="p.email" class="bless-access__email">{{ p.email }}</span>
-            </span>
-            <span v-if="p.role === 'owner'" class="bless-access__owner">{{ text.owner }}</span>
-            <template v-else>
-              <select
-                :value="p.role"
-                :aria-label="text.roleFor(p.name)"
-                @change="
-                  setRole(p.id, ($event.target as HTMLSelectElement).value as BlessAccessRole)
-                "
-              >
-                <option v-for="r in ROLES" :key="r" :value="r">{{ text[r] }}</option>
-              </select>
-              <button type="button" :aria-label="text.removeFor(p.name)" @click="remove(p.id)">
-                ✕
-              </button>
-            </template>
-          </div>
-        </li>
-      </ul>
-    </section>
-    <section class="bless-access__part" :aria-label="text.general">
-      <div class="bless-access__title" aria-hidden="true">{{ text.general }}</div>
-      <div class="bless-access__general">
-        <select
-          :value="general"
-          :aria-label="text.general"
-          @change="setGeneral(($event.target as HTMLSelectElement).value)"
-        >
-          <option value="restricted">{{ text.restricted }}</option>
-          <option value="anyone">{{ text.anyone }}</option>
-        </select>
-        <select v-if="linkAccess !== 'restricted'" v-model="linkAccess" :aria-label="text.anyone">
-          <option v-for="r in ROLES" :key="r" :value="r">{{ text[r] }}</option>
-        </select>
-      </div>
-      <div class="bless-access__hint">
-        {{ linkAccess === "restricted" ? text.restrictedHint : text.anyoneHint(text[linkAccess]) }}
-      </div>
-    </section>
-    <div v-if="link" class="bless-access__foot">
-      <button type="button" @click="copy">{{ text.copy }}</button>
-      <span role="status" class="bless-access__said">{{ said }}</span>
-    </div>
-  </div>
-</template>
 
 <style>
 .bless-access {

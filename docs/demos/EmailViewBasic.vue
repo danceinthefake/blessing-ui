@@ -1,16 +1,3 @@
-<script setup lang="ts">
-import { BlessButton, BlessEmailView } from "blessing-ui";
-
-const body = `Hi Budi,
-
-The edit of episode 41 is ready. I cut the long intro and leveled the two voices. The file is at -16 LUFS.
-
-Can you listen before Thursday? If the sponsor read sounds fine to you, I will send it to Radio Kita.
-
-Thanks,
-Ana`;
-</script>
-
 <template>
   <BlessEmailView
     subject="Episode 41: the final edit"
@@ -31,3 +18,16 @@ Ana`;
     </template>
   </BlessEmailView>
 </template>
+
+<script setup lang="ts">
+import { BlessButton, BlessEmailView } from "blessing-ui";
+
+const body = `Hi Budi,
+
+The edit of episode 41 is ready. I cut the long intro and leveled the two voices. The file is at -16 LUFS.
+
+Can you listen before Thursday? If the sponsor read sounds fine to you, I will send it to Radio Kita.
+
+Thanks,
+Ana`;
+</script>

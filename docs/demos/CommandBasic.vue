@@ -1,11 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { BlessButton, BlessCommand, BlessKbd, useToast } from "blessing-ui";
-import { commands } from "./_commands";
-const open = ref(false);
-const { toast } = useToast();
-</script>
-
 <template>
   <div class="row">
     <BlessButton @click="open = true">Command palette</BlessButton>
@@ -23,3 +15,11 @@ const { toast } = useToast();
     </template>
   </BlessCommand>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { BlessButton, BlessCommand, BlessKbd, useToast } from "blessing-ui";
+import { commands } from "./_commands";
+const open = ref(false);
+const { toast } = useToast();
+</script>

@@ -1,3 +1,11 @@
+<template>
+  <BlessStack :gap="3" style="max-width: 560px">
+    <BlessSuggestions :items @select="(p) => (sent = p)" />
+    <BlessPromptInput @send="(m) => (sent = m.text)" />
+    <BlessText v-if="sent" as="p" size="sm">Sent: {{ sent }}</BlessText>
+  </BlessStack>
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessPromptInput, BlessStack, BlessSuggestions, BlessText } from "blessing-ui";
@@ -10,11 +18,3 @@ const items = [
 ];
 const sent = ref("");
 </script>
-
-<template>
-  <BlessStack :gap="3" style="max-width: 560px">
-    <BlessSuggestions :items @select="(p) => (sent = p)" />
-    <BlessPromptInput @send="(m) => (sent = m.text)" />
-    <BlessText v-if="sent" as="p" size="sm">Sent: {{ sent }}</BlessText>
-  </BlessStack>
-</template>

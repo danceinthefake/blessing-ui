@@ -1,3 +1,26 @@
+<template>
+  <figure class="bless-body">
+    <svg viewBox="0 0 200 400" class="bless-body__svg" role="group" :aria-label="text.title">
+      <path
+        v-for="s in SHAPES"
+        :key="s.part"
+        :d="s.d"
+        class="bless-body__part"
+        :class="{ 'is-on': on(s.part) }"
+        role="checkbox"
+        tabindex="0"
+        :aria-checked="on(s.part)"
+        :aria-label="text[s.part]"
+        @click="flip(s.part)"
+        @keydown="onKey($event, s.part)"
+      >
+        <title>{{ text[s.part] }}</title>
+      </path>
+    </svg>
+    <figcaption class="bless-body__chosen" aria-live="polite">{{ chosenText }}</figcaption>
+  </figure>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -82,29 +105,6 @@ const chosenText = computed(() =>
     : text.value.none,
 );
 </script>
-
-<template>
-  <figure class="bless-body">
-    <svg viewBox="0 0 200 400" class="bless-body__svg" role="group" :aria-label="text.title">
-      <path
-        v-for="s in SHAPES"
-        :key="s.part"
-        :d="s.d"
-        class="bless-body__part"
-        :class="{ 'is-on': on(s.part) }"
-        role="checkbox"
-        tabindex="0"
-        :aria-checked="on(s.part)"
-        :aria-label="text[s.part]"
-        @click="flip(s.part)"
-        @keydown="onKey($event, s.part)"
-      >
-        <title>{{ text[s.part] }}</title>
-      </path>
-    </svg>
-    <figcaption class="bless-body__chosen" aria-live="polite">{{ chosenText }}</figcaption>
-  </figure>
-</template>
 
 <style>
 .bless-body {

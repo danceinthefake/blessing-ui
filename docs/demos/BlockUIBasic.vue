@@ -1,13 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { BlessBlockUI, BlessButton, BlessPanel } from "blessing-ui";
-const busy = ref(false);
-function rerun() {
-  busy.value = true;
-  setTimeout(() => (busy.value = false), 1500);
-}
-</script>
-
 <template>
   <div class="col" style="max-width: 360px">
     <BlessBlockUI :blocked="busy">
@@ -21,3 +11,13 @@ function rerun() {
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { BlessBlockUI, BlessButton, BlessPanel } from "blessing-ui";
+const busy = ref(false);
+function rerun() {
+  busy.value = true;
+  setTimeout(() => (busy.value = false), 1500);
+}
+</script>

@@ -1,3 +1,26 @@
+<template>
+  <ul
+    ref="root"
+    class="bless-tree"
+    role="tree"
+    :aria-label="label"
+    @keydown="onKey"
+    @focusin="
+      rove(($event.target as HTMLElement).closest<HTMLElement>('.bless-tree__row') ?? undefined)
+    "
+  >
+    <BlessTreeItem
+      v-for="(n, i) in nodes"
+      :key="n.id ?? i"
+      :node="n"
+      :path="String(n.id ?? i)"
+      :selected
+      :level="1"
+      @select="onSelect"
+    />
+  </ul>
+</template>
+
 <script setup lang="ts">
 import { onMounted, onUpdated, ref } from "vue";
 import { logicalKey } from "../composables/rtl";
@@ -67,29 +90,6 @@ function onSelect(n: BlessTreeNode, p: string) {
   emit("select", n, p);
 }
 </script>
-
-<template>
-  <ul
-    ref="root"
-    class="bless-tree"
-    role="tree"
-    :aria-label="label"
-    @keydown="onKey"
-    @focusin="
-      rove(($event.target as HTMLElement).closest<HTMLElement>('.bless-tree__row') ?? undefined)
-    "
-  >
-    <BlessTreeItem
-      v-for="(n, i) in nodes"
-      :key="n.id ?? i"
-      :node="n"
-      :path="String(n.id ?? i)"
-      :selected
-      :level="1"
-      @select="onSelect"
-    />
-  </ul>
-</template>
 
 <style>
 .bless-tree,

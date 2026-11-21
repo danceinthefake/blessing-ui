@@ -1,3 +1,54 @@
+<template>
+  <div class="bless-docs">
+    <div class="bless-docs__progress">
+      <span role="status">{{ text.progress(done, required.length) }}</span>
+      <span class="bless-docs__bar" aria-hidden="true">
+        <span :style="{ inlineSize: `${required.length ? (done / required.length) * 100 : 0}%` }" />
+      </span>
+    </div>
+    <ul class="bless-stagger bless-docs__list" role="list">
+      <li v-for="d in docs" :key="d.id">
+        <div class="bless-docs__item" :class="`is-${d.state}`">
+          <span class="bless-docs__mark" aria-hidden="true">{{ MARK[d.state] }}</span>
+          <span class="bless-docs__main">
+            <span class="bless-docs__name">
+              {{ d.name }}
+              <span class="bless-docs__need">{{ d.required ? text.required : text.optional }}</span>
+            </span>
+            <span v-if="d.hint" class="bless-docs__hint">{{ d.hint }}</span>
+            <span class="bless-docs__state">
+              {{ text[d.state] }}<template v-if="d.file"> · {{ d.file }}</template>
+            </span>
+            <span v-if="d.state === 'rejected' && d.reason" class="bless-docs__reason">{{
+              d.reason
+            }}</span>
+          </span>
+          <span v-if="d.state !== 'accepted' && d.state !== 'checking'" class="bless-docs__actions">
+            <input
+              :id="`${id}-${d.id}`"
+              type="file"
+              class="bless-sr"
+              :accept="d.accept"
+              @change="pick(d, $event)"
+            />
+            <label :for="`${id}-${d.id}`" class="bless-docs__upload"
+              >{{ text[action(d)] }}<span class="bless-sr">{{ ` ${d.name}` }}</span></label
+            >
+            <button
+              v-if="d.state === 'uploaded'"
+              type="button"
+              :aria-label="text.remove(d.name)"
+              @click="emit('remove', d.id)"
+            >
+              ✕
+            </button>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed, useId } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -72,57 +123,6 @@ function pick(d: BlessChecklistDoc, e: Event) {
 // the button says Upload or Replace; screen readers also hear the name of the document
 const action = (d: BlessChecklistDoc) => (d.state === "missing" ? "upload" : "replace");
 </script>
-
-<template>
-  <div class="bless-docs">
-    <div class="bless-docs__progress">
-      <span role="status">{{ text.progress(done, required.length) }}</span>
-      <span class="bless-docs__bar" aria-hidden="true">
-        <span :style="{ inlineSize: `${required.length ? (done / required.length) * 100 : 0}%` }" />
-      </span>
-    </div>
-    <ul class="bless-stagger bless-docs__list" role="list">
-      <li v-for="d in docs" :key="d.id">
-        <div class="bless-docs__item" :class="`is-${d.state}`">
-          <span class="bless-docs__mark" aria-hidden="true">{{ MARK[d.state] }}</span>
-          <span class="bless-docs__main">
-            <span class="bless-docs__name">
-              {{ d.name }}
-              <span class="bless-docs__need">{{ d.required ? text.required : text.optional }}</span>
-            </span>
-            <span v-if="d.hint" class="bless-docs__hint">{{ d.hint }}</span>
-            <span class="bless-docs__state">
-              {{ text[d.state] }}<template v-if="d.file"> · {{ d.file }}</template>
-            </span>
-            <span v-if="d.state === 'rejected' && d.reason" class="bless-docs__reason">{{
-              d.reason
-            }}</span>
-          </span>
-          <span v-if="d.state !== 'accepted' && d.state !== 'checking'" class="bless-docs__actions">
-            <input
-              :id="`${id}-${d.id}`"
-              type="file"
-              class="bless-sr"
-              :accept="d.accept"
-              @change="pick(d, $event)"
-            />
-            <label :for="`${id}-${d.id}`" class="bless-docs__upload"
-              >{{ text[action(d)] }}<span class="bless-sr">{{ ` ${d.name}` }}</span></label
-            >
-            <button
-              v-if="d.state === 'uploaded'"
-              type="button"
-              :aria-label="text.remove(d.name)"
-              @click="emit('remove', d.id)"
-            >
-              ✕
-            </button>
-          </span>
-        </div>
-      </li>
-    </ul>
-  </div>
-</template>
 
 <style>
 .bless-docs {

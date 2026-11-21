@@ -1,3 +1,50 @@
+<template>
+  <div class="bless-fx">
+    <div class="bless-fx__row">
+      <label class="bless-fx__field">
+        <span class="bless-fx__label">{{ text.amount }}</span>
+        <input
+          class="bless-fx__input"
+          type="number"
+          inputmode="decimal"
+          min="0"
+          step="any"
+          :value="amount"
+          @input="amount = ($event.target as HTMLInputElement).valueAsNumber || 0"
+        />
+      </label>
+      <label class="bless-fx__field">
+        <span class="bless-fx__label">{{ text.from }}</span>
+        <select v-model="from" class="bless-fx__input">
+          <option v-for="c in codes" :key="c" :value="c">{{ c }} · {{ name(c) }}</option>
+        </select>
+      </label>
+      <button
+        type="button"
+        class="bless-fx__swap"
+        :aria-label="text.swap"
+        :title="text.swap"
+        @click="swap"
+      >
+        ⇄
+      </button>
+      <label class="bless-fx__field">
+        <span class="bless-fx__label">{{ text.to }}</span>
+        <select v-model="to" class="bless-fx__input">
+          <option v-for="c in codes" :key="c" :value="c">{{ c }} · {{ name(c) }}</option>
+        </select>
+      </label>
+    </div>
+    <output class="bless-fx__result" :aria-label="text.result" aria-live="polite">
+      {{ fmt(to, amount * rate) }}
+    </output>
+    <p class="bless-fx__rate">
+      {{ fmt(from, 1) }} = {{ fmt(to, rate)
+      }}<template v-if="updated"> · {{ text.updated(updated) }}</template>
+    </p>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -48,53 +95,6 @@ function swap() {
   [from.value, to.value] = [to.value, from.value];
 }
 </script>
-
-<template>
-  <div class="bless-fx">
-    <div class="bless-fx__row">
-      <label class="bless-fx__field">
-        <span class="bless-fx__label">{{ text.amount }}</span>
-        <input
-          class="bless-fx__input"
-          type="number"
-          inputmode="decimal"
-          min="0"
-          step="any"
-          :value="amount"
-          @input="amount = ($event.target as HTMLInputElement).valueAsNumber || 0"
-        />
-      </label>
-      <label class="bless-fx__field">
-        <span class="bless-fx__label">{{ text.from }}</span>
-        <select v-model="from" class="bless-fx__input">
-          <option v-for="c in codes" :key="c" :value="c">{{ c }} · {{ name(c) }}</option>
-        </select>
-      </label>
-      <button
-        type="button"
-        class="bless-fx__swap"
-        :aria-label="text.swap"
-        :title="text.swap"
-        @click="swap"
-      >
-        ⇄
-      </button>
-      <label class="bless-fx__field">
-        <span class="bless-fx__label">{{ text.to }}</span>
-        <select v-model="to" class="bless-fx__input">
-          <option v-for="c in codes" :key="c" :value="c">{{ c }} · {{ name(c) }}</option>
-        </select>
-      </label>
-    </div>
-    <output class="bless-fx__result" :aria-label="text.result" aria-live="polite">
-      {{ fmt(to, amount * rate) }}
-    </output>
-    <p class="bless-fx__rate">
-      {{ fmt(from, 1) }} = {{ fmt(to, rate)
-      }}<template v-if="updated"> · {{ text.updated(updated) }}</template>
-    </p>
-  </div>
-</template>
 
 <style>
 .bless-fx {

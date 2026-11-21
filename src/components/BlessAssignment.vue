@@ -1,3 +1,42 @@
+<template>
+  <article class="bless-assign">
+    <header class="bless-assign__head">
+      <h3 class="bless-assign__title">{{ title }}</h3>
+      <span class="bless-assign__state" :class="`is-${state}`">{{ text[state] }}</span>
+      <div class="bless-assign__facts">
+        <span v-if="due">{{ text.due(due) }}</span>
+        <span v-if="points != null">{{ text.points(points) }}</span>
+      </div>
+    </header>
+    <div v-if="instructions" class="bless-assign__text">{{ instructions }}</div>
+    <section v-if="grade" class="bless-assign__grade" :aria-label="text.grade">
+      <div class="bless-assign__score">
+        <span>{{ text.grade }}</span>
+        <strong>{{ grade }}</strong>
+      </div>
+      <div v-if="feedback" class="bless-assign__feedback">
+        <span>{{ text.feedback }}</span>
+        <div>{{ feedback }}</div>
+      </div>
+    </section>
+    <section class="bless-assign__work" :aria-label="text.yourWork">
+      <div class="bless-assign__label" aria-hidden="true">{{ text.yourWork }}</div>
+      <template v-if="submitted">
+        <div>✓ {{ text.submittedAt(submitted) }}</div>
+        <ul v-if="files.length" class="bless-assign__files" role="list">
+          <li v-for="f in files" :key="f.name">{{ f.name }}</li>
+        </ul>
+      </template>
+      <template v-else>
+        <BlessFileInput v-model="files" multiple :accept :label="text.drop" />
+        <BlessButton :disabled="!files.length" @click="emit('submit', files)">
+          {{ text.submit }}
+        </BlessButton>
+      </template>
+    </section>
+  </article>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -58,45 +97,6 @@ const state = computed(() =>
   props.grade ? "graded" : props.submitted ? (props.late ? "late" : "done") : "todo",
 );
 </script>
-
-<template>
-  <article class="bless-assign">
-    <header class="bless-assign__head">
-      <h3 class="bless-assign__title">{{ title }}</h3>
-      <span class="bless-assign__state" :class="`is-${state}`">{{ text[state] }}</span>
-      <div class="bless-assign__facts">
-        <span v-if="due">{{ text.due(due) }}</span>
-        <span v-if="points != null">{{ text.points(points) }}</span>
-      </div>
-    </header>
-    <div v-if="instructions" class="bless-assign__text">{{ instructions }}</div>
-    <section v-if="grade" class="bless-assign__grade" :aria-label="text.grade">
-      <div class="bless-assign__score">
-        <span>{{ text.grade }}</span>
-        <strong>{{ grade }}</strong>
-      </div>
-      <div v-if="feedback" class="bless-assign__feedback">
-        <span>{{ text.feedback }}</span>
-        <div>{{ feedback }}</div>
-      </div>
-    </section>
-    <section class="bless-assign__work" :aria-label="text.yourWork">
-      <div class="bless-assign__label" aria-hidden="true">{{ text.yourWork }}</div>
-      <template v-if="submitted">
-        <div>✓ {{ text.submittedAt(submitted) }}</div>
-        <ul v-if="files.length" class="bless-assign__files" role="list">
-          <li v-for="f in files" :key="f.name">{{ f.name }}</li>
-        </ul>
-      </template>
-      <template v-else>
-        <BlessFileInput v-model="files" multiple :accept :label="text.drop" />
-        <BlessButton :disabled="!files.length" @click="emit('submit', files)">
-          {{ text.submit }}
-        </BlessButton>
-      </template>
-    </section>
-  </article>
-</template>
 
 <style>
 .bless-assign {

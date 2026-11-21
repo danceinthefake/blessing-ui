@@ -1,3 +1,59 @@
+<template>
+  <div class="bless-treemap">
+    <nav v-if="trail.length" class="bless-treemap__path" :aria-label="text.path">
+      <button type="button" class="bless-treemap__crumb" @click="up(0)">{{ label }}</button>
+      <template v-for="(n, k) in trail" :key="n.id">
+        <span aria-hidden="true">›</span>
+        <button
+          v-if="k < trail.length - 1"
+          type="button"
+          class="bless-treemap__crumb"
+          @click="up(k + 1)"
+        >
+          {{ n.label }}
+        </button>
+        <span v-else class="bless-treemap__here" aria-current="location">{{ n.label }}</span>
+      </template>
+    </nav>
+    <div
+      ref="box"
+      class="bless-treemap__box"
+      role="group"
+      :aria-label="trail.length ? trail.at(-1)!.label : label"
+      :style="{ height: `${height}px` }"
+    >
+      <button
+        v-for="(t, i) in tiles"
+        :key="t.node.id"
+        type="button"
+        class="bless-treemap__tile"
+        :class="{ 'bless-treemap__tile--group': t.node.children?.length }"
+        :style="{
+          left: `${t.r.x}px`,
+          top: `${t.r.y}px`,
+          width: `${t.r.w}px`,
+          height: `${t.r.h}px`,
+          '--_c': t.color,
+        }"
+        :tabindex="tabAt === i ? 0 : -1"
+        :aria-label="t.name"
+        :aria-describedby="hint"
+        :title="t.big ? undefined : t.name"
+        @click="open(i)"
+        @focus="active = i"
+        @keydown="onKey(i, $event)"
+      >
+        <template v-if="t.big">
+          <span class="bless-treemap__name">{{ t.node.label }}</span>
+          <!-- a space for tools that read the text: flex does not render it -->
+          {{ " " }}<span v-if="t.tall" class="bless-treemap__value">{{ fmt(t.v) }}</span>
+        </template>
+      </button>
+    </div>
+    <span :id="hint" hidden>{{ text.hint }}</span>
+  </div>
+</template>
+
 <script lang="ts">
 export type { TreemapNode as BlessTreemapNode } from "../composables/treemap";
 </script>
@@ -142,62 +198,6 @@ function onKey(i: number, e: KeyboardEvent) {
 }
 const hint = `bless-treemap-hint`;
 </script>
-
-<template>
-  <div class="bless-treemap">
-    <nav v-if="trail.length" class="bless-treemap__path" :aria-label="text.path">
-      <button type="button" class="bless-treemap__crumb" @click="up(0)">{{ label }}</button>
-      <template v-for="(n, k) in trail" :key="n.id">
-        <span aria-hidden="true">›</span>
-        <button
-          v-if="k < trail.length - 1"
-          type="button"
-          class="bless-treemap__crumb"
-          @click="up(k + 1)"
-        >
-          {{ n.label }}
-        </button>
-        <span v-else class="bless-treemap__here" aria-current="location">{{ n.label }}</span>
-      </template>
-    </nav>
-    <div
-      ref="box"
-      class="bless-treemap__box"
-      role="group"
-      :aria-label="trail.length ? trail.at(-1)!.label : label"
-      :style="{ height: `${height}px` }"
-    >
-      <button
-        v-for="(t, i) in tiles"
-        :key="t.node.id"
-        type="button"
-        class="bless-treemap__tile"
-        :class="{ 'bless-treemap__tile--group': t.node.children?.length }"
-        :style="{
-          left: `${t.r.x}px`,
-          top: `${t.r.y}px`,
-          width: `${t.r.w}px`,
-          height: `${t.r.h}px`,
-          '--_c': t.color,
-        }"
-        :tabindex="tabAt === i ? 0 : -1"
-        :aria-label="t.name"
-        :aria-describedby="hint"
-        :title="t.big ? undefined : t.name"
-        @click="open(i)"
-        @focus="active = i"
-        @keydown="onKey(i, $event)"
-      >
-        <template v-if="t.big">
-          <span class="bless-treemap__name">{{ t.node.label }}</span>
-          <!-- a space for tools that read the text: flex does not render it -->
-          {{ " " }}<span v-if="t.tall" class="bless-treemap__value">{{ fmt(t.v) }}</span>
-        </template>
-      </button>
-    </div>
-    <span :id="hint" hidden>{{ text.hint }}</span>
-  </div>
-</template>
 
 <style>
 .bless-treemap {

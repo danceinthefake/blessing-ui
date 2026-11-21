@@ -1,3 +1,38 @@
+<template>
+  <div class="bless-payments">
+    <p class="bless-payments__totals">
+      {{ text.totals(money.format(total), money.format(interest)) }}
+    </p>
+    <div class="bless-payments__scroll" tabindex="0" role="region" :aria-label="text.title">
+      <table class="bless-payments__table">
+        <thead>
+          <tr>
+            <th scope="col">{{ text.number }}</th>
+            <th scope="col">{{ text.month }}</th>
+            <th scope="col">{{ text.payment }}</th>
+            <th scope="col">{{ text.principal }}</th>
+            <th scope="col">{{ text.interest }}</th>
+            <th scope="col">{{ text.balance }}</th>
+          </tr>
+        </thead>
+        <tbody class="bless-stagger">
+          <tr v-for="r in rows" :key="r.n" :class="{ 'is-paid': r.n <= paid }">
+            <th scope="row">
+              {{ r.n
+              }}<span v-if="r.n <= paid" class="bless-payments__paid"> ✓ {{ text.paid }}</span>
+            </th>
+            <td>{{ monthName.format(new Date(`${r.month}-01T00:00:00Z`)) }}</td>
+            <td>{{ money.format(r.payment) }}</td>
+            <td>{{ money.format(r.principal) }}</td>
+            <td>{{ money.format(r.interest) }}</td>
+            <td>{{ money.format(r.balance) }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</template>
+
 <script lang="ts">
 export interface BlessPaymentRow {
   n: number;
@@ -93,41 +128,6 @@ const monthName = computed(
 const total = computed(() => rows.value.reduce((n, r) => n + r.payment, 0));
 const interest = computed(() => rows.value.reduce((n, r) => n + r.interest, 0));
 </script>
-
-<template>
-  <div class="bless-payments">
-    <p class="bless-payments__totals">
-      {{ text.totals(money.format(total), money.format(interest)) }}
-    </p>
-    <div class="bless-payments__scroll" tabindex="0" role="region" :aria-label="text.title">
-      <table class="bless-payments__table">
-        <thead>
-          <tr>
-            <th scope="col">{{ text.number }}</th>
-            <th scope="col">{{ text.month }}</th>
-            <th scope="col">{{ text.payment }}</th>
-            <th scope="col">{{ text.principal }}</th>
-            <th scope="col">{{ text.interest }}</th>
-            <th scope="col">{{ text.balance }}</th>
-          </tr>
-        </thead>
-        <tbody class="bless-stagger">
-          <tr v-for="r in rows" :key="r.n" :class="{ 'is-paid': r.n <= paid }">
-            <th scope="row">
-              {{ r.n
-              }}<span v-if="r.n <= paid" class="bless-payments__paid"> ✓ {{ text.paid }}</span>
-            </th>
-            <td>{{ monthName.format(new Date(`${r.month}-01T00:00:00Z`)) }}</td>
-            <td>{{ money.format(r.payment) }}</td>
-            <td>{{ money.format(r.principal) }}</td>
-            <td>{{ money.format(r.interest) }}</td>
-            <td>{{ money.format(r.balance) }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</template>
 
 <style>
 .bless-payments {

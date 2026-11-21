@@ -1,3 +1,55 @@
+<template>
+  <section class="bless-tasks" :aria-label="text.title">
+    <ul class="bless-stagger bless-tasks__list">
+      <li v-for="t in ordered" :key="t.id" class="bless-tasks__task" :class="{ 'is-done': t.done }">
+        <div class="bless-tasks__row">
+          <label class="bless-tasks__check">
+            <input
+              type="checkbox"
+              :checked="!!t.done"
+              @change="set(t.id, { done: ($event.target as HTMLInputElement).checked })"
+            />
+            <span class="bless-tasks__title">{{ t.title }}</span>
+          </label>
+          <span v-if="t.subtasks?.length" class="bless-tasks__count">
+            {{ text.subtasks(t.subtasks.filter((s) => s.done).length, t.subtasks.length) }}
+          </span>
+          <span v-if="t.due" class="bless-tasks__due" :class="{ 'is-late': late(t) }">
+            {{ text.due(date(t.due)) }}<template v-if="late(t)"> · {{ text.late }}</template>
+          </span>
+          <BlessAvatar
+            v-if="t.assignee"
+            :name="t.assignee.name"
+            :src="t.assignee.avatar"
+            :alt="t.assignee.name"
+            size="xs"
+          />
+        </div>
+        <ul v-if="t.subtasks?.length" class="bless-tasks__subs">
+          <li v-for="s in t.subtasks" :key="s.id" :class="{ 'is-done': s.done }">
+            <label class="bless-tasks__check">
+              <input
+                type="checkbox"
+                :checked="!!s.done"
+                @change="setSub(t, s.id, ($event.target as HTMLInputElement).checked)"
+              />
+              <span class="bless-tasks__title">{{ s.title }}</span>
+            </label>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <form v-if="addable" class="bless-tasks__add" @submit.prevent="add">
+      <input
+        v-model="draft"
+        class="bless-tasks__field"
+        :aria-label="text.add"
+        :placeholder="`+ ${text.add}`"
+      />
+    </form>
+  </section>
+</template>
+
 <script setup lang="ts">
 import { computed, onMounted, ref } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -78,58 +130,6 @@ function add() {
   draft.value = "";
 }
 </script>
-
-<template>
-  <section class="bless-tasks" :aria-label="text.title">
-    <ul class="bless-stagger bless-tasks__list">
-      <li v-for="t in ordered" :key="t.id" class="bless-tasks__task" :class="{ 'is-done': t.done }">
-        <div class="bless-tasks__row">
-          <label class="bless-tasks__check">
-            <input
-              type="checkbox"
-              :checked="!!t.done"
-              @change="set(t.id, { done: ($event.target as HTMLInputElement).checked })"
-            />
-            <span class="bless-tasks__title">{{ t.title }}</span>
-          </label>
-          <span v-if="t.subtasks?.length" class="bless-tasks__count">
-            {{ text.subtasks(t.subtasks.filter((s) => s.done).length, t.subtasks.length) }}
-          </span>
-          <span v-if="t.due" class="bless-tasks__due" :class="{ 'is-late': late(t) }">
-            {{ text.due(date(t.due)) }}<template v-if="late(t)"> · {{ text.late }}</template>
-          </span>
-          <BlessAvatar
-            v-if="t.assignee"
-            :name="t.assignee.name"
-            :src="t.assignee.avatar"
-            :alt="t.assignee.name"
-            size="xs"
-          />
-        </div>
-        <ul v-if="t.subtasks?.length" class="bless-tasks__subs">
-          <li v-for="s in t.subtasks" :key="s.id" :class="{ 'is-done': s.done }">
-            <label class="bless-tasks__check">
-              <input
-                type="checkbox"
-                :checked="!!s.done"
-                @change="setSub(t, s.id, ($event.target as HTMLInputElement).checked)"
-              />
-              <span class="bless-tasks__title">{{ s.title }}</span>
-            </label>
-          </li>
-        </ul>
-      </li>
-    </ul>
-    <form v-if="addable" class="bless-tasks__add" @submit.prevent="add">
-      <input
-        v-model="draft"
-        class="bless-tasks__field"
-        :aria-label="text.add"
-        :placeholder="`+ ${text.add}`"
-      />
-    </form>
-  </section>
-</template>
 
 <style>
 .bless-tasks {

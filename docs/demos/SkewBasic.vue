@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import { BlessSkew } from "blessing-ui";
-</script>
-
 <template>
   <div class="row">
     <BlessSkew color="text" label>企画</BlessSkew>
@@ -11,3 +7,7 @@ import { BlessSkew } from "blessing-ui";
     <BlessSkew as="a" href="#skew" color="surface" label>Hover me</BlessSkew>
   </div>
 </template>
+
+<script setup lang="ts">
+import { BlessSkew } from "blessing-ui";
+</script>

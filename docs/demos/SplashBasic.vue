@@ -1,13 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { BlessButton, BlessSplash, BlessText } from "blessing-ui";
-const key = ref(0);
-function replay() {
-  localStorage.removeItem("bless-docs-splash");
-  key.value++;
-}
-</script>
-
 <template>
   <BlessSplash :key once="bless-docs-splash" :duration="1500">
     <BlessText
@@ -25,3 +15,13 @@ function replay() {
     <BlessButton size="sm" variant="outline" @click="replay">Replay</BlessButton>
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { BlessButton, BlessSplash, BlessText } from "blessing-ui";
+const key = ref(0);
+function replay() {
+  localStorage.removeItem("bless-docs-splash");
+  key.value++;
+}
+</script>

@@ -1,11 +1,3 @@
-<script setup lang="ts">
-import { BlessRelativeTime } from "blessing-ui";
-
-// fixed dates keep the `datetime` attribute the same on the server and in the browser
-const now = new Date("2026-10-12T12:00:00Z");
-const at = (seconds: number) => new Date(+now - seconds * 1000);
-</script>
-
 <template>
   <ul style="margin: 0; padding: 0; list-style: none; display: grid; gap: 0.5rem">
     <li>Posted <BlessRelativeTime :value="at(45)" :now="now" /></li>
@@ -20,3 +12,11 @@ const at = (seconds: number) => new Date(+now - seconds * 1000);
     </li>
   </ul>
 </template>
+
+<script setup lang="ts">
+import { BlessRelativeTime } from "blessing-ui";
+
+// fixed dates keep the `datetime` attribute the same on the server and in the browser
+const now = new Date("2026-10-12T12:00:00Z");
+const at = (seconds: number) => new Date(+now - seconds * 1000);
+</script>

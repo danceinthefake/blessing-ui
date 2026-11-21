@@ -1,12 +1,3 @@
-<script setup lang="ts">
-import { encode } from "uqr";
-import { BlessTicket } from "blessing-ui";
-
-// uqr makes the QR modules; install it yourself (see the QR code page)
-const code = "HSL-0050-C5";
-const qr = encode(code).data;
-</script>
-
 <template>
   <BlessTicket
     event="Home Studio Live"
@@ -20,3 +11,12 @@ const qr = encode(code).data;
     :qr
   />
 </template>
+
+<script setup lang="ts">
+import { encode } from "uqr";
+import { BlessTicket } from "blessing-ui";
+
+// uqr makes the QR modules; install it yourself (see the QR code page)
+const code = "HSL-0050-C5";
+const qr = encode(code).data;
+</script>

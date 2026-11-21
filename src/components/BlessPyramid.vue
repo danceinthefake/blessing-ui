@@ -1,46 +1,3 @@
-<script setup lang="ts">
-import { computed } from "vue";
-import { useLabelPack } from "../composables/useLabels";
-import { chartColor, numberText } from "./chart";
-import "./sr.css";
-
-defineOptions({ name: "BlessPyramid" });
-const pack = useLabelPack("BlessPyramid");
-
-export interface BlessPyramidRow {
-  /** the name of the row, in the middle, for example "25–34" */
-  label: string;
-  left: number;
-  right: number;
-}
-
-const props = withDefaults(
-  defineProps<{
-    data: BlessPyramidRow[];
-    /** the colors of the left and the right bars */
-    colors?: [string, string];
-    /** text for one value, for example `(v) => v + "%"` */
-    format?: (v: number) => string;
-    /** names the chart and its table for screen readers */
-    label?: string;
-    labels?: Partial<{ left: string; right: string; row: string }>;
-  }>(),
-  { colors: () => ["chart-1", "chart-2"], label: "Chart" },
-);
-
-const text = computed(() => ({
-  left: "Left",
-  right: "Right",
-  row: "Group",
-  ...pack(),
-  ...props.labels,
-}));
-const fmt = computed(() => props.format ?? numberText);
-// both sides share one scale, so equal values have equal bars
-const max = computed(() => Math.max(1, ...props.data.flatMap((r) => [r.left, r.right])));
-const share = (v: number) => Math.max(0, v) / max.value;
-</script>
-
 <template>
   <figure
     class="bless-pyramid"
@@ -86,6 +43,49 @@ const share = (v: number) => Math.max(0, v) / max.value;
     </div>
   </figure>
 </template>
+
+<script setup lang="ts">
+import { computed } from "vue";
+import { useLabelPack } from "../composables/useLabels";
+import { chartColor, numberText } from "./chart";
+import "./sr.css";
+
+defineOptions({ name: "BlessPyramid" });
+const pack = useLabelPack("BlessPyramid");
+
+export interface BlessPyramidRow {
+  /** the name of the row, in the middle, for example "25–34" */
+  label: string;
+  left: number;
+  right: number;
+}
+
+const props = withDefaults(
+  defineProps<{
+    data: BlessPyramidRow[];
+    /** the colors of the left and the right bars */
+    colors?: [string, string];
+    /** text for one value, for example `(v) => v + "%"` */
+    format?: (v: number) => string;
+    /** names the chart and its table for screen readers */
+    label?: string;
+    labels?: Partial<{ left: string; right: string; row: string }>;
+  }>(),
+  { colors: () => ["chart-1", "chart-2"], label: "Chart" },
+);
+
+const text = computed(() => ({
+  left: "Left",
+  right: "Right",
+  row: "Group",
+  ...pack(),
+  ...props.labels,
+}));
+const fmt = computed(() => props.format ?? numberText);
+// both sides share one scale, so equal values have equal bars
+const max = computed(() => Math.max(1, ...props.data.flatMap((r) => [r.left, r.right])));
+const share = (v: number) => Math.max(0, v) / max.value;
+</script>
 
 <style>
 .bless-pyramid {

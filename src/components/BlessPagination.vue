@@ -1,3 +1,52 @@
+<template>
+  <nav class="bless-pagination" :aria-label="label">
+    <ul role="list" class="bless-pagination__list">
+      <li>
+        <BlessSkew
+          :as="link(href && page > 1 ? href(page - 1) : undefined, undefined, 'button').is"
+          v-bind="link(href && page > 1 ? href(page - 1) : undefined, undefined, 'button').attrs"
+          :type="href ? undefined : 'button'"
+          class="bless-pagination__btn bless-pagination__btn--nav"
+          :aria-label="text.prev"
+          :disabled="page <= 1 || undefined"
+          @click="!href && go(page - 1)"
+          ><span aria-hidden="true">‹</span></BlessSkew
+        >
+      </li>
+      <li v-for="(it, i) in items" :key="i">
+        <span v-if="it === '…'" class="bless-pagination__ellipsis" aria-hidden="true">…</span>
+        <BlessSkew
+          v-else
+          :as="link(href ? href(it) : undefined, undefined, 'button').is"
+          v-bind="link(href ? href(it) : undefined, undefined, 'button').attrs"
+          :type="href ? undefined : 'button'"
+          class="bless-pagination__btn"
+          :class="{ 'bless-pagination__btn--current': it === page }"
+          :color="it === page ? 'accent' : 'none'"
+          :aria-current="it === page ? 'page' : undefined"
+          :aria-label="text.page(it)"
+          @click="!href && go(it)"
+          >{{ it }}</BlessSkew
+        >
+      </li>
+      <li>
+        <BlessSkew
+          :as="link(href && page < total ? href(page + 1) : undefined, undefined, 'button').is"
+          v-bind="
+            link(href && page < total ? href(page + 1) : undefined, undefined, 'button').attrs
+          "
+          :type="href ? undefined : 'button'"
+          class="bless-pagination__btn bless-pagination__btn--nav"
+          :aria-label="text.next"
+          :disabled="page >= total || undefined"
+          @click="!href && go(page + 1)"
+          ><span aria-hidden="true">›</span></BlessSkew
+        >
+      </li>
+    </ul>
+  </nav>
+</template>
+
 <script setup lang="ts">
 import { useLabelPack } from "../composables/useLabels";
 import { useLink } from "../composables/useLink";
@@ -49,55 +98,6 @@ function go(p: number) {
   if (p >= 1 && p <= props.total) page.value = p;
 }
 </script>
-
-<template>
-  <nav class="bless-pagination" :aria-label="label">
-    <ul role="list" class="bless-pagination__list">
-      <li>
-        <BlessSkew
-          :as="link(href && page > 1 ? href(page - 1) : undefined, undefined, 'button').is"
-          v-bind="link(href && page > 1 ? href(page - 1) : undefined, undefined, 'button').attrs"
-          :type="href ? undefined : 'button'"
-          class="bless-pagination__btn bless-pagination__btn--nav"
-          :aria-label="text.prev"
-          :disabled="page <= 1 || undefined"
-          @click="!href && go(page - 1)"
-          ><span aria-hidden="true">‹</span></BlessSkew
-        >
-      </li>
-      <li v-for="(it, i) in items" :key="i">
-        <span v-if="it === '…'" class="bless-pagination__ellipsis" aria-hidden="true">…</span>
-        <BlessSkew
-          v-else
-          :as="link(href ? href(it) : undefined, undefined, 'button').is"
-          v-bind="link(href ? href(it) : undefined, undefined, 'button').attrs"
-          :type="href ? undefined : 'button'"
-          class="bless-pagination__btn"
-          :class="{ 'bless-pagination__btn--current': it === page }"
-          :color="it === page ? 'accent' : 'none'"
-          :aria-current="it === page ? 'page' : undefined"
-          :aria-label="text.page(it)"
-          @click="!href && go(it)"
-          >{{ it }}</BlessSkew
-        >
-      </li>
-      <li>
-        <BlessSkew
-          :as="link(href && page < total ? href(page + 1) : undefined, undefined, 'button').is"
-          v-bind="
-            link(href && page < total ? href(page + 1) : undefined, undefined, 'button').attrs
-          "
-          :type="href ? undefined : 'button'"
-          class="bless-pagination__btn bless-pagination__btn--nav"
-          :aria-label="text.next"
-          :disabled="page >= total || undefined"
-          @click="!href && go(page + 1)"
-          ><span aria-hidden="true">›</span></BlessSkew
-        >
-      </li>
-    </ul>
-  </nav>
-</template>
 
 <style>
 .bless-pagination__list {

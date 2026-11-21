@@ -1,3 +1,20 @@
+<template>
+  <ul class="bless-stagger bless-team" role="list">
+    <li v-for="p in people" :key="p.name" class="bless-team__person">
+      <img v-if="p.photo" :src="p.photo" alt="" class="bless-team__photo" loading="lazy" />
+      <BlessAvatar v-else :name="p.name" size="xl" class="bless-team__photo" />
+      <h3 class="bless-team__name">{{ p.name }}</h3>
+      <div class="bless-team__role">{{ p.role }}</div>
+      <div v-if="p.bio" class="bless-team__bio">{{ p.bio }}</div>
+      <ul v-if="p.links?.length" class="bless-team__links" role="list">
+        <li v-for="l in p.links" :key="l.href">
+          <a :href="l.href">{{ l.label }}<span class="bless-sr">{{ text.of(p.name) }}</span></a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -28,23 +45,6 @@ const text = computed(() => ({
   ...props.labels,
 }));
 </script>
-
-<template>
-  <ul class="bless-stagger bless-team" role="list">
-    <li v-for="p in people" :key="p.name" class="bless-team__person">
-      <img v-if="p.photo" :src="p.photo" alt="" class="bless-team__photo" loading="lazy" />
-      <BlessAvatar v-else :name="p.name" size="xl" class="bless-team__photo" />
-      <h3 class="bless-team__name">{{ p.name }}</h3>
-      <div class="bless-team__role">{{ p.role }}</div>
-      <div v-if="p.bio" class="bless-team__bio">{{ p.bio }}</div>
-      <ul v-if="p.links?.length" class="bless-team__links" role="list">
-        <li v-for="l in p.links" :key="l.href">
-          <a :href="l.href">{{ l.label }}<span class="bless-sr">{{ text.of(p.name) }}</span></a>
-        </li>
-      </ul>
-    </li>
-  </ul>
-</template>
 
 <style>
 .bless-team {

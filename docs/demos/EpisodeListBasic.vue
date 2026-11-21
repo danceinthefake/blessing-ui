@@ -1,3 +1,12 @@
+<template>
+  <BlessEpisodeList
+    :episodes
+    :current="playing"
+    style="max-width: 640px"
+    @play="(id) => (playing = id)"
+  />
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessEpisodeList, type BlessEpisode } from "blessing-ui";
@@ -41,12 +50,3 @@ const episodes: BlessEpisode[] = [
 ];
 const playing = ref("e2");
 </script>
-
-<template>
-  <BlessEpisodeList
-    :episodes
-    :current="playing"
-    style="max-width: 640px"
-    @play="(id) => (playing = id)"
-  />
-</template>

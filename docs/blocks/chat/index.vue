@@ -1,32 +1,3 @@
-<script setup lang="ts">
-import {
-  BlessAvatar,
-  BlessBubble,
-  BlessButton,
-  BlessMessage,
-  BlessMessageScroller,
-  BlessText,
-  BlessTextarea,
-} from "blessing-ui";
-import { ref } from "vue";
-import { mockChatApi } from "./api";
-import { useChat } from "./useChat";
-
-const { messages, draft, typing, send } = useChat(mockChatApi);
-// Enter sends — but not the Enter that confirms an IME conversion (Japanese, Chinese, Korean input)
-function onEnter(e: KeyboardEvent) {
-  if (e.isComposing || e.keyCode === 229) return;
-  e.preventDefault();
-  submit();
-}
-// sending empties the draft, which disables a focused Send: keep writing in the box instead
-const composer = ref<HTMLFormElement>();
-function submit() {
-  send();
-  composer.value?.querySelector("textarea")?.focus();
-}
-</script>
-
 <template>
   <div class="chat">
     <header class="chat__head">
@@ -75,6 +46,35 @@ function submit() {
     </form>
   </div>
 </template>
+
+<script setup lang="ts">
+import {
+  BlessAvatar,
+  BlessBubble,
+  BlessButton,
+  BlessMessage,
+  BlessMessageScroller,
+  BlessText,
+  BlessTextarea,
+} from "blessing-ui";
+import { ref } from "vue";
+import { mockChatApi } from "./api";
+import { useChat } from "./useChat";
+
+const { messages, draft, typing, send } = useChat(mockChatApi);
+// Enter sends — but not the Enter that confirms an IME conversion (Japanese, Chinese, Korean input)
+function onEnter(e: KeyboardEvent) {
+  if (e.isComposing || e.keyCode === 229) return;
+  e.preventDefault();
+  submit();
+}
+// sending empties the draft, which disables a focused Send: keep writing in the box instead
+const composer = ref<HTMLFormElement>();
+function submit() {
+  send();
+  composer.value?.querySelector("textarea")?.focus();
+}
+</script>
 
 <style scoped>
 .chat__sr {

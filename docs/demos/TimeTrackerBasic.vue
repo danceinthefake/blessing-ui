@@ -1,3 +1,7 @@
+<template>
+  <BlessTimeTracker v-model="entries" v-model:running="running" time-zone="Asia/Jakarta" />
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessTimeTracker, type BlessTimeEntry } from "blessing-ui";
@@ -12,7 +16,3 @@ const entries = ref<BlessTimeEntry[]>([
 ]);
 const running = ref<{ task: string; start: number } | null>(null);
 </script>
-
-<template>
-  <BlessTimeTracker v-model="entries" v-model:running="running" time-zone="Asia/Jakarta" />
-</template>

@@ -1,3 +1,69 @@
+<template>
+  <figure class="bless-spc">
+    <div ref="box" class="bless-spc__box">
+      <svg :width="width" :height="height" aria-hidden="true">
+        <g v-for="t in ticks" :key="t">
+          <line :x1="PAD.l" :x2="width - PAD.r" :y1="y(t)" :y2="y(t)" class="bless-spc__grid" />
+          <text :x="PAD.l - 6" :y="y(t)" class="bless-spc__tick">{{ num.format(t) }}</text>
+        </g>
+        <g v-for="l in lines" :key="l.key">
+          <line
+            :x1="PAD.l"
+            :x2="width - PAD.r"
+            :y1="y(l.v)"
+            :y2="y(l.v)"
+            class="bless-spc__limit"
+            :class="`is-${l.key}`"
+          />
+          <text :x="width - PAD.r + 6" :y="y(l.v)" class="bless-spc__name">{{ l.label }}</text>
+        </g>
+        <path :d="line" class="bless-spc__path" pathLength="1" />
+        <template v-for="(v, i) in values" :key="i">
+          <rect
+            v-if="out(v)"
+            :x="x(i) - 5"
+            :y="y(v) - 5"
+            width="10"
+            height="10"
+            class="bless-spc__point is-out"
+            :transform="`rotate(45 ${x(i)} ${y(v)})`"
+          />
+          <circle v-else :cx="x(i)" :cy="y(v)" r="3.5" class="bless-spc__point" />
+        </template>
+      </svg>
+    </div>
+    <figcaption class="bless-spc__caption" :class="{ 'is-bad': outCount }">
+      <span
+        ><span aria-hidden="true">{{ outCount ? "◆" : "✓" }}</span>
+        {{ outCount ? text.out(outCount) : text.inControl }}</span
+      >
+      <span class="bless-spc__limits"
+        >{{ text.center }} {{ fmt(limits.mean) }} · {{ text.ucl }} {{ fmt(limits.ucl) }} ·
+        {{ text.lcl }} {{ fmt(limits.lcl) }}</span
+      >
+    </figcaption>
+    <table class="bless-sr">
+      <caption>
+        {{ text.title }}
+      </caption>
+      <thead>
+        <tr>
+          <th scope="col">{{ text.point }}</th>
+          <th scope="col">{{ text.value }}</th>
+          <th scope="col">{{ text.state }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="(v, i) in values" :key="i">
+          <th scope="row">{{ points?.[i] ?? i + 1 }}</th>
+          <td>{{ fmt(v) }}</td>
+          <td>{{ out(v) ? text.bad : text.ok }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </figure>
+</template>
+
 <script lang="ts">
 /**
  * The center line and the control limits of a Shewhart control chart: the mean, and the mean
@@ -95,72 +161,6 @@ const lines = computed(() => [
   { key: "lcl", v: limits.value.lcl, label: text.value.lcl },
 ]);
 </script>
-
-<template>
-  <figure class="bless-spc">
-    <div ref="box" class="bless-spc__box">
-      <svg :width="width" :height="height" aria-hidden="true">
-        <g v-for="t in ticks" :key="t">
-          <line :x1="PAD.l" :x2="width - PAD.r" :y1="y(t)" :y2="y(t)" class="bless-spc__grid" />
-          <text :x="PAD.l - 6" :y="y(t)" class="bless-spc__tick">{{ num.format(t) }}</text>
-        </g>
-        <g v-for="l in lines" :key="l.key">
-          <line
-            :x1="PAD.l"
-            :x2="width - PAD.r"
-            :y1="y(l.v)"
-            :y2="y(l.v)"
-            class="bless-spc__limit"
-            :class="`is-${l.key}`"
-          />
-          <text :x="width - PAD.r + 6" :y="y(l.v)" class="bless-spc__name">{{ l.label }}</text>
-        </g>
-        <path :d="line" class="bless-spc__path" pathLength="1" />
-        <template v-for="(v, i) in values" :key="i">
-          <rect
-            v-if="out(v)"
-            :x="x(i) - 5"
-            :y="y(v) - 5"
-            width="10"
-            height="10"
-            class="bless-spc__point is-out"
-            :transform="`rotate(45 ${x(i)} ${y(v)})`"
-          />
-          <circle v-else :cx="x(i)" :cy="y(v)" r="3.5" class="bless-spc__point" />
-        </template>
-      </svg>
-    </div>
-    <figcaption class="bless-spc__caption" :class="{ 'is-bad': outCount }">
-      <span
-        ><span aria-hidden="true">{{ outCount ? "◆" : "✓" }}</span>
-        {{ outCount ? text.out(outCount) : text.inControl }}</span
-      >
-      <span class="bless-spc__limits"
-        >{{ text.center }} {{ fmt(limits.mean) }} · {{ text.ucl }} {{ fmt(limits.ucl) }} ·
-        {{ text.lcl }} {{ fmt(limits.lcl) }}</span
-      >
-    </figcaption>
-    <table class="bless-sr">
-      <caption>
-        {{ text.title }}
-      </caption>
-      <thead>
-        <tr>
-          <th scope="col">{{ text.point }}</th>
-          <th scope="col">{{ text.value }}</th>
-          <th scope="col">{{ text.state }}</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="(v, i) in values" :key="i">
-          <th scope="row">{{ points?.[i] ?? i + 1 }}</th>
-          <td>{{ fmt(v) }}</td>
-          <td>{{ out(v) ? text.bad : text.ok }}</td>
-        </tr>
-      </tbody>
-    </table>
-  </figure>
-</template>
 
 <style>
 .bless-spc {

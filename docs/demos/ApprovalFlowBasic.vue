@@ -1,3 +1,7 @@
+<template>
+  <BlessApprovalFlow :steps me="Ana Putri" style="max-width: 560px" @decide="decide" />
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessApprovalFlow, type BlessApprovalStep } from "blessing-ui";
@@ -34,7 +38,3 @@ function decide(id: string, decision: "approved" | "rejected", note: string) {
   );
 }
 </script>
-
-<template>
-  <BlessApprovalFlow :steps me="Ana Putri" style="max-width: 560px" @decide="decide" />
-</template>

@@ -1,3 +1,13 @@
+<template>
+  <BlessRangeChart
+    :data="shows"
+    :format="minutes"
+    :labels="{ item: 'Show', low: 'Shortest', high: 'Longest', value: 'Average' }"
+    label="Episode length of each show"
+    style="max-width: 560px"
+  />
+</template>
+
 <script setup lang="ts">
 import { BlessRangeChart } from "blessing-ui";
 
@@ -11,13 +21,3 @@ const shows = [
 ];
 const minutes = (v: number) => `${v} min`;
 </script>
-
-<template>
-  <BlessRangeChart
-    :data="shows"
-    :format="minutes"
-    :labels="{ item: 'Show', low: 'Shortest', high: 'Longest', value: 'Average' }"
-    label="Episode length of each show"
-    style="max-width: 560px"
-  />
-</template>

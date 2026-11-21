@@ -1,40 +1,3 @@
-<script setup lang="ts">
-import { computed, useId } from "vue";
-import { useLabelPack } from "../composables/useLabels";
-import "./sr.css";
-
-defineOptions({ name: "BlessVariantPicker" });
-const pack = useLabelPack("BlessVariantPicker");
-
-export interface BlessVariantValue {
-  value: string;
-  label: string;
-  /** a CSS color: the option shows as a swatch */
-  color?: string;
-  soldOut?: boolean;
-}
-export interface BlessVariantOption {
-  /** the field in the model, for example `size` */
-  key: string;
-  /** the name of the option, for example "Size" */
-  name: string;
-  values: BlessVariantValue[];
-}
-
-const props = defineProps<{
-  options: BlessVariantOption[];
-  labels?: Partial<{ soldOut: string }>;
-}>();
-/** the chosen value of each option, by key */
-const model = defineModel<Record<string, string>>({ default: () => ({}) });
-
-const text = computed(() => ({ soldOut: "sold out", ...pack(), ...props.labels }));
-const uid = useId();
-const chosen = (o: BlessVariantOption) => o.values.find((v) => v.value === model.value[o.key]);
-const pick = (o: BlessVariantOption, v: BlessVariantValue) =>
-  (model.value = { ...model.value, [o.key]: v.value });
-</script>
-
 <template>
   <div class="bless-variant">
     <fieldset v-for="o in options" :key="o.key" class="bless-variant__group">
@@ -72,6 +35,43 @@ const pick = (o: BlessVariantOption, v: BlessVariantValue) =>
     </fieldset>
   </div>
 </template>
+
+<script setup lang="ts">
+import { computed, useId } from "vue";
+import { useLabelPack } from "../composables/useLabels";
+import "./sr.css";
+
+defineOptions({ name: "BlessVariantPicker" });
+const pack = useLabelPack("BlessVariantPicker");
+
+export interface BlessVariantValue {
+  value: string;
+  label: string;
+  /** a CSS color: the option shows as a swatch */
+  color?: string;
+  soldOut?: boolean;
+}
+export interface BlessVariantOption {
+  /** the field in the model, for example `size` */
+  key: string;
+  /** the name of the option, for example "Size" */
+  name: string;
+  values: BlessVariantValue[];
+}
+
+const props = defineProps<{
+  options: BlessVariantOption[];
+  labels?: Partial<{ soldOut: string }>;
+}>();
+/** the chosen value of each option, by key */
+const model = defineModel<Record<string, string>>({ default: () => ({}) });
+
+const text = computed(() => ({ soldOut: "sold out", ...pack(), ...props.labels }));
+const uid = useId();
+const chosen = (o: BlessVariantOption) => o.values.find((v) => v.value === model.value[o.key]);
+const pick = (o: BlessVariantOption, v: BlessVariantValue) =>
+  (model.value = { ...model.value, [o.key]: v.value });
+</script>
 
 <style>
 .bless-variant {

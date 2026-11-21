@@ -1,3 +1,12 @@
+<template>
+  <div style="max-width: 560px">
+    <BlessButton size="sm" style="margin-bottom: 12px" @click="play">
+      {{ playing ? "Pause" : "Play" }}
+    </BlessButton>
+    <BlessChapterList :chapters :time :duration="2820" @seek="(s) => (time = s)" />
+  </div>
+</template>
+
 <script setup lang="ts">
 import { onBeforeUnmount, ref } from "vue";
 import { BlessButton, BlessChapterList } from "blessing-ui";
@@ -22,12 +31,3 @@ const chapters = [
   { start: 2580, title: "Listener questions" },
 ];
 </script>
-
-<template>
-  <div style="max-width: 560px">
-    <BlessButton size="sm" style="margin-bottom: 12px" @click="play">
-      {{ playing ? "Pause" : "Play" }}
-    </BlessButton>
-    <BlessChapterList :chapters :time :duration="2820" @seek="(s) => (time = s)" />
-  </div>
-</template>

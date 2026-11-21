@@ -1,16 +1,3 @@
-<script setup lang="ts">
-import { BlessChart } from "blessing-ui";
-import { VisAxis, VisCrosshair, VisLine, VisTooltip, VisXYContainer } from "@unovis/vue";
-type Pt = { x: number; a: number; b: number };
-const data: Pt[] = Array.from({ length: 12 }, (_, i) => ({
-  x: i + 1,
-  a: Math.round(40 + 30 * Math.sin(i / 2) + i * 2),
-  b: Math.round(30 + 20 * Math.cos(i / 3) + i),
-}));
-const x = (d: Pt) => d.x;
-const y = [(d: Pt) => d.a, (d: Pt) => d.b];
-</script>
-
 <template>
   <BlessChart
     title="Views"
@@ -27,3 +14,16 @@ const y = [(d: Pt) => d.a, (d: Pt) => d.b];
     </VisXYContainer>
   </BlessChart>
 </template>
+
+<script setup lang="ts">
+import { BlessChart } from "blessing-ui";
+import { VisAxis, VisCrosshair, VisLine, VisTooltip, VisXYContainer } from "@unovis/vue";
+type Pt = { x: number; a: number; b: number };
+const data: Pt[] = Array.from({ length: 12 }, (_, i) => ({
+  x: i + 1,
+  a: Math.round(40 + 30 * Math.sin(i / 2) + i * 2),
+  b: Math.round(30 + 20 * Math.cos(i / 3) + i),
+}));
+const x = (d: Pt) => d.x;
+const y = [(d: Pt) => d.a, (d: Pt) => d.b];
+</script>

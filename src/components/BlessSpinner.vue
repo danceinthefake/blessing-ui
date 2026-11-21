@@ -1,3 +1,13 @@
+<template>
+  <span
+    class="bless-spinner"
+    :class="[`bless-spinner--${size}`, `bless-spinner--${color}`]"
+    :role="label ? 'status' : undefined"
+    :aria-label="label || undefined"
+    :aria-hidden="label ? undefined : 'true'"
+  />
+</template>
+
 <script setup lang="ts">
 defineOptions({ name: "BlessSpinner" });
 
@@ -11,16 +21,6 @@ withDefaults(
   { size: "md", color: "current", label: "Loading" },
 );
 </script>
-
-<template>
-  <span
-    class="bless-spinner"
-    :class="[`bless-spinner--${size}`, `bless-spinner--${color}`]"
-    :role="label ? 'status' : undefined"
-    :aria-label="label || undefined"
-    :aria-hidden="label ? undefined : 'true'"
-  />
-</template>
 
 <style>
 /* an outline square with one open edge, spinning — ink, not accent: busy isn't chosen */

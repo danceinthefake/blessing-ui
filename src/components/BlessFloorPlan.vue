@@ -1,3 +1,32 @@
+<template>
+  <section class="bless-floorplan" :aria-label="text.title">
+    <div class="bless-floorplan__grid" :style="{ '--_cols': columns }">
+      <button
+        v-for="r in rooms"
+        :key="r.id"
+        type="button"
+        class="bless-floorplan__room"
+        :aria-pressed="selected === r.id"
+        :style="{ gridColumn: `${r.x + 1} / span ${r.w}`, gridRow: `${r.y + 1} / span ${r.h}` }"
+        @click="selected = selected === r.id ? undefined : r.id"
+      >
+        <span class="bless-floorplan__name">{{ r.name }}</span>
+        <span class="bless-floorplan__count">
+          {{ text.devices(inRoom(r.id).length, inRoom(r.id).filter((d) => d.on).length) }}
+        </span>
+        <span class="bless-floorplan__icons" aria-hidden="true">
+          <span v-for="d in inRoom(r.id)" :key="d.id" :class="{ 'is-on': d.on }">{{
+            d.icon ?? "•"
+          }}</span>
+        </span>
+      </button>
+    </div>
+    <div v-if="room && $slots.room" class="bless-floorplan__detail">
+      <slot name="room" :room="room" :devices="inRoom(room.id)" />
+    </div>
+  </section>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -47,35 +76,6 @@ const text = computed(() => ({
 const inRoom = (id: string) => props.devices.filter((d) => d.room === id);
 const room = computed(() => props.rooms.find((r) => r.id === selected.value));
 </script>
-
-<template>
-  <section class="bless-floorplan" :aria-label="text.title">
-    <div class="bless-floorplan__grid" :style="{ '--_cols': columns }">
-      <button
-        v-for="r in rooms"
-        :key="r.id"
-        type="button"
-        class="bless-floorplan__room"
-        :aria-pressed="selected === r.id"
-        :style="{ gridColumn: `${r.x + 1} / span ${r.w}`, gridRow: `${r.y + 1} / span ${r.h}` }"
-        @click="selected = selected === r.id ? undefined : r.id"
-      >
-        <span class="bless-floorplan__name">{{ r.name }}</span>
-        <span class="bless-floorplan__count">
-          {{ text.devices(inRoom(r.id).length, inRoom(r.id).filter((d) => d.on).length) }}
-        </span>
-        <span class="bless-floorplan__icons" aria-hidden="true">
-          <span v-for="d in inRoom(r.id)" :key="d.id" :class="{ 'is-on': d.on }">{{
-            d.icon ?? "•"
-          }}</span>
-        </span>
-      </button>
-    </div>
-    <div v-if="room && $slots.room" class="bless-floorplan__detail">
-      <slot name="room" :room="room" :devices="inRoom(room.id)" />
-    </div>
-  </section>
-</template>
 
 <style>
 .bless-floorplan {

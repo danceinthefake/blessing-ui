@@ -1,24 +1,3 @@
-<script setup lang="ts">
-import { computed } from "vue";
-import meta from "../meta.json";
-
-const props = defineProps<{ name: string }>();
-type Row = {
-  name: string;
-  type: string;
-  required?: boolean;
-  default?: string;
-  description: string;
-};
-const m = computed(
-  () =>
-    (meta as Record<string, { props: Row[]; events: Row[]; slots: Row[]; exposed: Row[] }>)[
-      props.name
-    ],
-);
-const tidy = (t: string) => t.replace(/ \| undefined$/, "").replace(/\bundefined \| /g, "");
-</script>
-
 <template>
   <div v-if="m" class="props-table">
     <template v-if="m.props.length">
@@ -118,6 +97,27 @@ const tidy = (t: string) => t.replace(/ \| undefined$/, "").replace(/\bundefined
   </div>
   <p v-else>No metadata for <code>{{ name }}</code> — run <code>pnpm docs:meta</code>.</p>
 </template>
+
+<script setup lang="ts">
+import { computed } from "vue";
+import meta from "../meta.json";
+
+const props = defineProps<{ name: string }>();
+type Row = {
+  name: string;
+  type: string;
+  required?: boolean;
+  default?: string;
+  description: string;
+};
+const m = computed(
+  () =>
+    (meta as Record<string, { props: Row[]; events: Row[]; slots: Row[]; exposed: Row[] }>)[
+      props.name
+    ],
+);
+const tidy = (t: string) => t.replace(/ \| undefined$/, "").replace(/\bundefined \| /g, "");
+</script>
 
 <style>
 .props-table h4 {

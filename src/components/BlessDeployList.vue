@@ -1,3 +1,48 @@
+<template>
+  <ul class="bless-stagger bless-deploys" role="list" :aria-label="text.list">
+    <li v-for="d in deploys" :key="d.id">
+      <div class="bless-deploys__row" :class="[`is-${d.state}`, { 'is-live': d.live }]">
+        <span class="bless-deploys__state">
+          <span aria-hidden="true">{{ MARK[d.state] }}</span> {{ text[d.state] }}
+        </span>
+        <span class="bless-deploys__main">
+          <span class="bless-deploys__env">
+            {{ d.env }}
+            <span v-if="d.live" class="bless-deploys__live">{{ text.live }}</span>
+          </span>
+          <span class="bless-deploys__commit">
+            <code>{{ d.commit.slice(0, 7) }}</code>
+            <span v-if="d.message" class="bless-deploys__msg">{{ d.message }}</span>
+          </span>
+          <span class="bless-deploys__meta">
+            <span v-if="d.branch">{{ d.branch }}</span>
+            <span v-if="d.author">{{ d.author }}</span>
+            <span>{{ d.time }}</span>
+            <span v-if="d.duration">{{ d.duration }}</span>
+          </span>
+        </span>
+        <span class="bless-deploys__actions">
+          <a v-if="d.url && d.state === 'ready'" :href="d.url">{{ text.open }}</a>
+          <button
+            v-if="d.state === 'ready' && !d.live"
+            type="button"
+            @click="emit('rollback', d.id)"
+          >
+            {{ text.rollback }}
+          </button>
+          <button
+            v-if="d.state === 'failed' || d.state === 'canceled'"
+            type="button"
+            @click="emit('redeploy', d.id)"
+          >
+            {{ text.redeploy }}
+          </button>
+        </span>
+      </div>
+    </li>
+  </ul>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -60,51 +105,6 @@ const MARK: Record<BlessDeployState, string> = {
   canceled: "–",
 };
 </script>
-
-<template>
-  <ul class="bless-stagger bless-deploys" role="list" :aria-label="text.list">
-    <li v-for="d in deploys" :key="d.id">
-      <div class="bless-deploys__row" :class="[`is-${d.state}`, { 'is-live': d.live }]">
-        <span class="bless-deploys__state">
-          <span aria-hidden="true">{{ MARK[d.state] }}</span> {{ text[d.state] }}
-        </span>
-        <span class="bless-deploys__main">
-          <span class="bless-deploys__env">
-            {{ d.env }}
-            <span v-if="d.live" class="bless-deploys__live">{{ text.live }}</span>
-          </span>
-          <span class="bless-deploys__commit">
-            <code>{{ d.commit.slice(0, 7) }}</code>
-            <span v-if="d.message" class="bless-deploys__msg">{{ d.message }}</span>
-          </span>
-          <span class="bless-deploys__meta">
-            <span v-if="d.branch">{{ d.branch }}</span>
-            <span v-if="d.author">{{ d.author }}</span>
-            <span>{{ d.time }}</span>
-            <span v-if="d.duration">{{ d.duration }}</span>
-          </span>
-        </span>
-        <span class="bless-deploys__actions">
-          <a v-if="d.url && d.state === 'ready'" :href="d.url">{{ text.open }}</a>
-          <button
-            v-if="d.state === 'ready' && !d.live"
-            type="button"
-            @click="emit('rollback', d.id)"
-          >
-            {{ text.rollback }}
-          </button>
-          <button
-            v-if="d.state === 'failed' || d.state === 'canceled'"
-            type="button"
-            @click="emit('redeploy', d.id)"
-          >
-            {{ text.redeploy }}
-          </button>
-        </span>
-      </div>
-    </li>
-  </ul>
-</template>
 
 <style>
 .bless-deploys {

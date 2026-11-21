@@ -1,3 +1,13 @@
+<template>
+  <BlessThread :comments="comments">
+    <template #footer="{ comment }">
+      <BlessButton size="sm" variant="ghost" :aria-label="`Reply to ${comment.name}`"
+        >Reply</BlessButton
+      >
+    </template>
+  </BlessThread>
+</template>
+
 <script setup lang="ts">
 import { BlessButton, BlessThread, type BlessThreadComment } from "blessing-ui";
 
@@ -35,13 +45,3 @@ const comments: BlessThreadComment[] = [
   },
 ];
 </script>
-
-<template>
-  <BlessThread :comments="comments">
-    <template #footer="{ comment }">
-      <BlessButton size="sm" variant="ghost" :aria-label="`Reply to ${comment.name}`"
-        >Reply</BlessButton
-      >
-    </template>
-  </BlessThread>
-</template>

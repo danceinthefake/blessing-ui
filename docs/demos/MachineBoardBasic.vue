@@ -1,3 +1,8 @@
+<template>
+  <BlessMachineBoard :machines @select="(id) => (picked = id)" />
+  <p v-if="picked" style="margin-top: 12px">Open machine: {{ picked }}</p>
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessMachineBoard, type BlessMachine } from "blessing-ui";
@@ -26,8 +31,3 @@ const machines: BlessMachine[] = [
 ];
 const picked = ref("");
 </script>
-
-<template>
-  <BlessMachineBoard :machines @select="(id) => (picked = id)" />
-  <p v-if="picked" style="margin-top: 12px">Open machine: {{ picked }}</p>
-</template>

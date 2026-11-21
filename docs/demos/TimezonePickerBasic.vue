@@ -1,3 +1,11 @@
+<template>
+  <div class="col">
+    <BlessLabel for="d-tz">Time zone</BlessLabel>
+    <BlessTimezonePicker id="d-tz" v-model="zone" :at="at" detect />
+    <small>{{ zone ?? "—" }} · at 12:00 UTC on 1 July 2026 it is {{ now() }}</small>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessLabel, BlessTimezonePicker } from "blessing-ui";
@@ -14,11 +22,3 @@ const now = () =>
       }).format(at)
     : "—";
 </script>
-
-<template>
-  <div class="col">
-    <BlessLabel for="d-tz">Time zone</BlessLabel>
-    <BlessTimezonePicker id="d-tz" v-model="zone" :at="at" detect />
-    <small>{{ zone ?? "—" }} · at 12:00 UTC on 1 July 2026 it is {{ now() }}</small>
-  </div>
-</template>

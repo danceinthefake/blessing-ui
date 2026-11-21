@@ -1,21 +1,3 @@
-<script setup lang="ts">
-import { useId } from "vue";
-
-defineOptions({ name: "BlessPanel" });
-withDefaults(
-  defineProps<{
-    title?: string;
-    toggleable?: boolean;
-    surface?: "bg" | "surface";
-    /** heading level of the title, to fit the page's outline */
-    level?: 2 | 3 | 4 | 5 | 6;
-  }>(),
-  { surface: "bg", level: 3 },
-);
-const collapsed = defineModel<boolean>("collapsed", { default: false });
-const id = useId();
-</script>
-
 <template>
   <section class="bless-panel" :class="`bless-panel--${surface}`" :aria-labelledby="`${id}-t`">
     <header class="bless-panel__header">
@@ -43,6 +25,24 @@ const id = useId();
     </footer>
   </section>
 </template>
+
+<script setup lang="ts">
+import { useId } from "vue";
+
+defineOptions({ name: "BlessPanel" });
+withDefaults(
+  defineProps<{
+    title?: string;
+    toggleable?: boolean;
+    surface?: "bg" | "surface";
+    /** heading level of the title, to fit the page's outline */
+    level?: 2 | 3 | 4 | 5 | 6;
+  }>(),
+  { surface: "bg", level: 3 },
+);
+const collapsed = defineModel<boolean>("collapsed", { default: false });
+const id = useId();
+</script>
 
 <style>
 .bless-panel {

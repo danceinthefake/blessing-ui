@@ -1,33 +1,3 @@
-<script setup lang="ts">
-import { computed, useAttrs } from "vue";
-import { joinIds, useFieldId, useFieldState } from "../composables/useFieldId";
-
-defineOptions({ name: "BlessCheckbox", inheritAttrs: false });
-
-const props = defineProps<{
-  id?: string;
-  value?: string | number;
-  indeterminate?: boolean;
-  disabled?: boolean;
-  invalid?: boolean;
-  description?: string;
-}>();
-
-const model = defineModel<boolean | Array<string | number>>({ default: false });
-const id = useFieldId(props);
-const fs = useFieldState();
-const attrs = useAttrs();
-const invalidNow = computed(() => props.invalid || fs.invalid.value);
-// every description the box has: its own line, the field's error, and one passed in
-const describedby = computed(() =>
-  joinIds(
-    props.description && `${id()}-desc`,
-    fs.describedby.value,
-    attrs["aria-describedby"] as string,
-  ),
-);
-</script>
-
 <template>
   <label
     class="bless-checkbox"
@@ -58,6 +28,36 @@ const describedby = computed(() =>
     </span>
   </label>
 </template>
+
+<script setup lang="ts">
+import { computed, useAttrs } from "vue";
+import { joinIds, useFieldId, useFieldState } from "../composables/useFieldId";
+
+defineOptions({ name: "BlessCheckbox", inheritAttrs: false });
+
+const props = defineProps<{
+  id?: string;
+  value?: string | number;
+  indeterminate?: boolean;
+  disabled?: boolean;
+  invalid?: boolean;
+  description?: string;
+}>();
+
+const model = defineModel<boolean | Array<string | number>>({ default: false });
+const id = useFieldId(props);
+const fs = useFieldState();
+const attrs = useAttrs();
+const invalidNow = computed(() => props.invalid || fs.invalid.value);
+// every description the box has: its own line, the field's error, and one passed in
+const describedby = computed(() =>
+  joinIds(
+    props.description && `${id()}-desc`,
+    fs.describedby.value,
+    attrs["aria-describedby"] as string,
+  ),
+);
+</script>
 
 <style>
 .bless-checkbox {

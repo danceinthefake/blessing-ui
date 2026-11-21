@@ -1,3 +1,14 @@
+<template>
+  <nav
+    ref="root"
+    class="bless-menubar"
+    :aria-label="label"
+    @focusin="rove($event.target as HTMLElement)"
+  >
+    <slot />
+  </nav>
+</template>
+
 <script setup lang="ts">
 import { onMounted, provide, ref } from "vue";
 import { menubarKey } from "./menu";
@@ -38,17 +49,6 @@ provide(menubarKey, {
   },
 });
 </script>
-
-<template>
-  <nav
-    ref="root"
-    class="bless-menubar"
-    :aria-label="label"
-    @focusin="rove($event.target as HTMLElement)"
-  >
-    <slot />
-  </nav>
-</template>
 
 <style>
 .bless-menubar {

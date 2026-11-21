@@ -1,20 +1,3 @@
-<script setup lang="ts">
-import { inject } from "vue";
-import { joinIds, useFieldId } from "../composables/useFieldId";
-import { radioKey } from "./radio";
-
-defineOptions({ name: "BlessRadio", inheritAttrs: false });
-
-const props = defineProps<{
-  value: string | number;
-  id?: string;
-  disabled?: boolean;
-  description?: string;
-}>();
-const group = inject(radioKey, null);
-const id = useFieldId(props);
-</script>
-
 <template>
   <label
     class="bless-radio"
@@ -44,6 +27,23 @@ const id = useFieldId(props);
     </span>
   </label>
 </template>
+
+<script setup lang="ts">
+import { inject } from "vue";
+import { joinIds, useFieldId } from "../composables/useFieldId";
+import { radioKey } from "./radio";
+
+defineOptions({ name: "BlessRadio", inheritAttrs: false });
+
+const props = defineProps<{
+  value: string | number;
+  id?: string;
+  disabled?: boolean;
+  description?: string;
+}>();
+const group = inject(radioKey, null);
+const id = useFieldId(props);
+</script>
 
 <style>
 .bless-radio {

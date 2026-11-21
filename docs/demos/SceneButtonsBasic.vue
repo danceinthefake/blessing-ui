@@ -1,3 +1,7 @@
+<template>
+  <BlessSceneButtons v-model="active" :scenes style="max-width: 560px" />
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessSceneButtons, type BlessScene } from "blessing-ui";
@@ -10,7 +14,3 @@ const scenes: BlessScene[] = [
 ];
 const active = ref("edit");
 </script>
-
-<template>
-  <BlessSceneButtons v-model="active" :scenes style="max-width: 560px" />
-</template>

@@ -1,3 +1,44 @@
+<template>
+  <figure class="bless-sunburst" :style="{ inlineSize: `${size}px` }">
+    <svg viewBox="0 0 200 200" class="bless-sunburst__svg" aria-hidden="true">
+      <path
+        v-for="s in segs"
+        :key="s.key"
+        class="bless-sunburst__seg"
+        :d="s.d"
+        :style="{ '--_c': s.color, '--_k': `${100 - s.depth * 28}%` }"
+      >
+        <title>{{ s.path }}: {{ fmt(s.value) }} ({{ pct.format(s.value / (total || 1)) }})</title>
+      </path>
+    </svg>
+    <div class="bless-sunburst__center" aria-hidden="true">
+      <strong>{{ fmt(total) }}</strong>
+      <span>{{ text.total }}</span>
+    </div>
+    <div class="bless-sr">
+      <table>
+        <caption>
+          {{ label }}
+        </caption>
+        <thead>
+          <tr>
+            <th scope="col">{{ text.part }}</th>
+            <th scope="col">{{ text.value }}</th>
+            <th scope="col">{{ text.share }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="s in segs" :key="s.key">
+            <th scope="row">{{ s.path }}</th>
+            <td>{{ fmt(s.value) }}</td>
+            <td>{{ pct.format(s.value / (total || 1)) }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </figure>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { totalOf, type TreemapNode } from "../composables/treemap";
@@ -96,47 +137,6 @@ const segs = computed(() => {
   return out;
 });
 </script>
-
-<template>
-  <figure class="bless-sunburst" :style="{ inlineSize: `${size}px` }">
-    <svg viewBox="0 0 200 200" class="bless-sunburst__svg" aria-hidden="true">
-      <path
-        v-for="s in segs"
-        :key="s.key"
-        class="bless-sunburst__seg"
-        :d="s.d"
-        :style="{ '--_c': s.color, '--_k': `${100 - s.depth * 28}%` }"
-      >
-        <title>{{ s.path }}: {{ fmt(s.value) }} ({{ pct.format(s.value / (total || 1)) }})</title>
-      </path>
-    </svg>
-    <div class="bless-sunburst__center" aria-hidden="true">
-      <strong>{{ fmt(total) }}</strong>
-      <span>{{ text.total }}</span>
-    </div>
-    <div class="bless-sr">
-      <table>
-        <caption>
-          {{ label }}
-        </caption>
-        <thead>
-          <tr>
-            <th scope="col">{{ text.part }}</th>
-            <th scope="col">{{ text.value }}</th>
-            <th scope="col">{{ text.share }}</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="s in segs" :key="s.key">
-            <th scope="row">{{ s.path }}</th>
-            <td>{{ fmt(s.value) }}</td>
-            <td>{{ pct.format(s.value / (total || 1)) }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </figure>
-</template>
 
 <style>
 .bless-sunburst {

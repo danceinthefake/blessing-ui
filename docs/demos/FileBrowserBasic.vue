@@ -1,3 +1,14 @@
+<template>
+  <BlessFileBrowser
+    v-model:view="view"
+    :items="tree[trail.at(-1)!]!"
+    :path
+    @open="open"
+    @navigate="go"
+  />
+  <div v-if="opened" style="margin-top: 12px">Opened {{ opened }}</div>
+</template>
+
 <script setup lang="ts">
 import { computed, ref } from "vue";
 import { BlessFileBrowser, type BlessFileItem } from "blessing-ui";
@@ -28,14 +39,3 @@ function open(f: BlessFileItem) {
 }
 const go = (id: string) => (trail.value = trail.value.slice(0, trail.value.indexOf(id) + 1));
 </script>
-
-<template>
-  <BlessFileBrowser
-    v-model:view="view"
-    :items="tree[trail.at(-1)!]!"
-    :path
-    @open="open"
-    @navigate="go"
-  />
-  <div v-if="opened" style="margin-top: 12px">Opened {{ opened }}</div>
-</template>

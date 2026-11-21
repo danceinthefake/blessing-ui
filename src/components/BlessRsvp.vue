@@ -1,3 +1,32 @@
+<template>
+  <div class="bless-rsvp" role="group" :aria-label="label ?? text.question">
+    <p class="bless-rsvp__question" aria-hidden="true">{{ label ?? text.question }}</p>
+    <div class="bless-rsvp__answers">
+      <button
+        v-for="a in ANSWERS"
+        :key="a"
+        type="button"
+        class="bless-rsvp__answer"
+        :class="`is-${a}`"
+        :aria-pressed="answer === a"
+        @click="pick(a)"
+      >
+        <span class="bless-rsvp__label">{{ text[a] }}</span>
+        <span class="bless-rsvp__count">{{ count(a) }}</span>
+      </button>
+    </div>
+    <div v-if="going.length || count('yes')" class="bless-rsvp__going">
+      <BlessAvatarGroup
+        v-if="going.length"
+        :items="answer === 'yes' ? [{ name: text.you }, ...going] : going"
+        :max="5"
+        size="sm"
+      />
+      <span class="bless-rsvp__total">{{ text.goingCount(count("yes")) }}</span>
+    </div>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -45,35 +74,6 @@ const ANSWERS: BlessRsvpAnswer[] = ["yes", "maybe", "no"];
 const count = (a: BlessRsvpAnswer) => (props.counts[a] ?? 0) + (answer.value === a ? 1 : 0);
 const pick = (a: BlessRsvpAnswer) => (answer.value = answer.value === a ? undefined : a);
 </script>
-
-<template>
-  <div class="bless-rsvp" role="group" :aria-label="label ?? text.question">
-    <p class="bless-rsvp__question" aria-hidden="true">{{ label ?? text.question }}</p>
-    <div class="bless-rsvp__answers">
-      <button
-        v-for="a in ANSWERS"
-        :key="a"
-        type="button"
-        class="bless-rsvp__answer"
-        :class="`is-${a}`"
-        :aria-pressed="answer === a"
-        @click="pick(a)"
-      >
-        <span class="bless-rsvp__label">{{ text[a] }}</span>
-        <span class="bless-rsvp__count">{{ count(a) }}</span>
-      </button>
-    </div>
-    <div v-if="going.length || count('yes')" class="bless-rsvp__going">
-      <BlessAvatarGroup
-        v-if="going.length"
-        :items="answer === 'yes' ? [{ name: text.you }, ...going] : going"
-        :max="5"
-        size="sm"
-      />
-      <span class="bless-rsvp__total">{{ text.goingCount(count("yes")) }}</span>
-    </div>
-  </div>
-</template>
 
 <style>
 .bless-rsvp {

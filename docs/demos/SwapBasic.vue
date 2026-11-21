@@ -1,9 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { BlessSwap } from "blessing-ui";
-const on = ref(false);
-</script>
-
 <template>
   <div class="row" style="gap: 24px; font-size: 28px">
     <BlessSwap v-model="on" label="Playing">
@@ -24,3 +18,9 @@ const on = ref(false);
     </BlessSwap>
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { BlessSwap } from "blessing-ui";
+const on = ref(false);
+</script>

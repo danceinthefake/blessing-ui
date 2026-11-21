@@ -1,3 +1,18 @@
+<template>
+  <BlessMenubar label="App">
+    <BlessDropdownMenu :items="file"
+      ><template #trigger><button>File</button></template></BlessDropdownMenu
+    >
+    <BlessDropdownMenu :items="edit"
+      ><template #trigger><button>Edit</button></template></BlessDropdownMenu
+    >
+    <BlessDropdownMenu :items="view"
+      ><template #trigger><button>View</button></template></BlessDropdownMenu
+    >
+  </BlessMenubar>
+  <BlessText as="p" size="xs" muted>← → moves between menus; open one then hover others</BlessText>
+</template>
+
 <script setup lang="ts">
 import { BlessDropdownMenu, BlessMenubar, BlessText, type BlessMenuItem } from "blessing-ui";
 const file: BlessMenuItem[] = [
@@ -15,18 +30,3 @@ const view: BlessMenuItem[] = [
   { type: "checkbox", label: "Status bar", value: "st" },
 ];
 </script>
-
-<template>
-  <BlessMenubar label="App">
-    <BlessDropdownMenu :items="file"
-      ><template #trigger><button>File</button></template></BlessDropdownMenu
-    >
-    <BlessDropdownMenu :items="edit"
-      ><template #trigger><button>Edit</button></template></BlessDropdownMenu
-    >
-    <BlessDropdownMenu :items="view"
-      ><template #trigger><button>View</button></template></BlessDropdownMenu
-    >
-  </BlessMenubar>
-  <BlessText as="p" size="xs" muted>← → moves between menus; open one then hover others</BlessText>
-</template>

@@ -1,3 +1,26 @@
+<template>
+  <section class="bless-posters" :class="`is-${shape}`" :aria-labelledby="`${uid}-title`">
+    <div class="bless-posters__head">
+      <h3 :id="`${uid}-title`" class="bless-posters__title">{{ title }}</h3>
+      <div class="bless-posters__nav">
+        <button type="button" :aria-label="text.previous" :disabled="atStart" @click="page(-1)">
+          ‹
+        </button>
+        <button type="button" :aria-label="text.next" :disabled="atEnd" @click="page(1)">›</button>
+      </div>
+    </div>
+    <ul ref="track" class="bless-stagger bless-posters__track" @scroll.passive="measure">
+      <li v-for="p in items" :key="p.id" class="bless-posters__item">
+        <a class="bless-posters__link" :href="p.href">
+          <span class="bless-posters__image"><img :src="p.image" alt="" loading="lazy" /></span>
+          <span class="bless-posters__name">{{ p.title }}</span>{{ " "
+          }}<span v-if="p.meta" class="bless-posters__meta">{{ p.meta }}</span>
+        </a>
+      </li>
+    </ul>
+  </section>
+</template>
+
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, ref, useId } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -62,29 +85,6 @@ onMounted(() => {
 });
 onBeforeUnmount(() => ro?.disconnect());
 </script>
-
-<template>
-  <section class="bless-posters" :class="`is-${shape}`" :aria-labelledby="`${uid}-title`">
-    <div class="bless-posters__head">
-      <h3 :id="`${uid}-title`" class="bless-posters__title">{{ title }}</h3>
-      <div class="bless-posters__nav">
-        <button type="button" :aria-label="text.previous" :disabled="atStart" @click="page(-1)">
-          ‹
-        </button>
-        <button type="button" :aria-label="text.next" :disabled="atEnd" @click="page(1)">›</button>
-      </div>
-    </div>
-    <ul ref="track" class="bless-stagger bless-posters__track" @scroll.passive="measure">
-      <li v-for="p in items" :key="p.id" class="bless-posters__item">
-        <a class="bless-posters__link" :href="p.href">
-          <span class="bless-posters__image"><img :src="p.image" alt="" loading="lazy" /></span>
-          <span class="bless-posters__name">{{ p.title }}</span>{{ " "
-          }}<span v-if="p.meta" class="bless-posters__meta">{{ p.meta }}</span>
-        </a>
-      </li>
-    </ul>
-  </section>
-</template>
 
 <style>
 .bless-posters {

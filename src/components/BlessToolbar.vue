@@ -1,15 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { useRovingFocus } from "../composables/useRovingFocus";
-defineOptions({ name: "BlessToolbar" });
-const root = ref<HTMLElement>();
-useRovingFocus(root); // one tab stop; ← / → between the controls
-withDefaults(defineProps<{ label?: string; surface?: "surface" | "bg" | "none" }>(), {
-  label: "Toolbar",
-  surface: "surface",
-});
-</script>
-
 <template>
   <div
     ref="root"
@@ -23,6 +11,18 @@ withDefaults(defineProps<{ label?: string; surface?: "surface" | "bg" | "none" }
     <div class="bless-toolbar__end"><slot name="end" /></div>
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { useRovingFocus } from "../composables/useRovingFocus";
+defineOptions({ name: "BlessToolbar" });
+const root = ref<HTMLElement>();
+useRovingFocus(root); // one tab stop; ← / → between the controls
+withDefaults(defineProps<{ label?: string; surface?: "surface" | "bg" | "none" }>(), {
+  label: "Toolbar",
+  surface: "surface",
+});
+</script>
 
 <style>
 .bless-toolbar {

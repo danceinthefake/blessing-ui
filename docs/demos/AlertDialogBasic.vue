@@ -1,3 +1,15 @@
+<template>
+  <BlessButton color="danger" @click="open = true">Delete project</BlessButton>
+  <BlessAlertDialog
+    v-model="open"
+    title="Delete project?"
+    description="This permanently removes the project and its 12 files."
+    :labels="{ confirm: 'Delete' }"
+    :loading="busy"
+    @confirm="del"
+  />
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessAlertDialog, BlessButton, useToast } from "blessing-ui";
@@ -13,15 +25,3 @@ async function del() {
   success({ title: "Project deleted" });
 }
 </script>
-
-<template>
-  <BlessButton color="danger" @click="open = true">Delete project</BlessButton>
-  <BlessAlertDialog
-    v-model="open"
-    title="Delete project?"
-    description="This permanently removes the project and its 12 files."
-    :labels="{ confirm: 'Delete' }"
-    :loading="busy"
-    @confirm="del"
-  />
-</template>

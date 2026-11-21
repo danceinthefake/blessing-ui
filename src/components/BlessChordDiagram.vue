@@ -1,3 +1,56 @@
+<template>
+  <figure class="bless-chord" :style="{ inlineSize: `${size}px` }">
+    <svg viewBox="0 0 320 320" class="bless-chord__svg" aria-hidden="true">
+      <path
+        v-for="r in ribbons"
+        :key="r.key"
+        class="bless-chord__ribbon"
+        :d="r.d"
+        :style="{ '--_c': r.color }"
+      >
+        <title>{{ r.title }}</title>
+      </path>
+      <path
+        v-for="(a, i) in arcs"
+        :key="i"
+        class="bless-chord__arc"
+        :d="a.d"
+        :style="{ '--_c': a.color }"
+      />
+      <text
+        v-for="(a, i) in arcs"
+        :key="`t${i}`"
+        class="bless-chord__label"
+        :x="a.lx"
+        :y="a.ly"
+        :text-anchor="a.anchor"
+        dominant-baseline="middle"
+      >
+        {{ groups[i]?.label }}
+      </text>
+    </svg>
+    <div class="bless-sr">
+      <table>
+        <caption>
+          {{ label }}
+        </caption>
+        <thead>
+          <tr>
+            <th scope="col">{{ text.from }}</th>
+            <th v-for="g in groups" :key="g.key" scope="col">{{ text.to(g.label) }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(g, i) in groups" :key="g.key">
+            <th scope="row">{{ g.label }}</th>
+            <td v-for="(_, j) in groups" :key="j">{{ fmt(matrix[i]?.[j] ?? 0) }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </figure>
+</template>
+
 <script lang="ts">
 export interface BlessChordGroup {
   key: string;
@@ -113,59 +166,6 @@ const ribbons = computed(() => {
   return out;
 });
 </script>
-
-<template>
-  <figure class="bless-chord" :style="{ inlineSize: `${size}px` }">
-    <svg viewBox="0 0 320 320" class="bless-chord__svg" aria-hidden="true">
-      <path
-        v-for="r in ribbons"
-        :key="r.key"
-        class="bless-chord__ribbon"
-        :d="r.d"
-        :style="{ '--_c': r.color }"
-      >
-        <title>{{ r.title }}</title>
-      </path>
-      <path
-        v-for="(a, i) in arcs"
-        :key="i"
-        class="bless-chord__arc"
-        :d="a.d"
-        :style="{ '--_c': a.color }"
-      />
-      <text
-        v-for="(a, i) in arcs"
-        :key="`t${i}`"
-        class="bless-chord__label"
-        :x="a.lx"
-        :y="a.ly"
-        :text-anchor="a.anchor"
-        dominant-baseline="middle"
-      >
-        {{ groups[i]?.label }}
-      </text>
-    </svg>
-    <div class="bless-sr">
-      <table>
-        <caption>
-          {{ label }}
-        </caption>
-        <thead>
-          <tr>
-            <th scope="col">{{ text.from }}</th>
-            <th v-for="g in groups" :key="g.key" scope="col">{{ text.to(g.label) }}</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="(g, i) in groups" :key="g.key">
-            <th scope="row">{{ g.label }}</th>
-            <td v-for="(_, j) in groups" :key="j">{{ fmt(matrix[i]?.[j] ?? 0) }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </figure>
-</template>
 
 <style>
 .bless-chord {

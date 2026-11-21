@@ -1,3 +1,28 @@
+<template>
+  <article
+    class="bless-device"
+    :class="{ 'is-on': on && !offline && !sensor, 'is-offline': offline }"
+  >
+    <div class="bless-device__top">
+      <span v-if="icon" class="bless-device__icon" aria-hidden="true">{{ icon }}</span>
+      <BlessSwitch
+        v-if="!sensor"
+        v-model="on"
+        :disabled="offline"
+        :aria-label="text.power(name)"
+        size="sm"
+      />
+    </div>
+    <h3 class="bless-device__name">{{ name }}</h3>
+    <p v-if="room" class="bless-device__room">{{ room }}</p>
+    <p class="bless-device__status">
+      <span v-if="state" class="bless-device__state">{{ state }}</span>
+      <template v-if="state && reading && !offline"> · </template>
+      <span v-if="reading && !offline" class="bless-device__reading">{{ reading }}</span>
+    </p>
+  </article>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -40,31 +65,6 @@ const state = computed(() =>
         : text.value.off,
 );
 </script>
-
-<template>
-  <article
-    class="bless-device"
-    :class="{ 'is-on': on && !offline && !sensor, 'is-offline': offline }"
-  >
-    <div class="bless-device__top">
-      <span v-if="icon" class="bless-device__icon" aria-hidden="true">{{ icon }}</span>
-      <BlessSwitch
-        v-if="!sensor"
-        v-model="on"
-        :disabled="offline"
-        :aria-label="text.power(name)"
-        size="sm"
-      />
-    </div>
-    <h3 class="bless-device__name">{{ name }}</h3>
-    <p v-if="room" class="bless-device__room">{{ room }}</p>
-    <p class="bless-device__status">
-      <span v-if="state" class="bless-device__state">{{ state }}</span>
-      <template v-if="state && reading && !offline"> · </template>
-      <span v-if="reading && !offline" class="bless-device__reading">{{ reading }}</span>
-    </p>
-  </article>
-</template>
 
 <style>
 .bless-device {

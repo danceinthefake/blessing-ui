@@ -1,3 +1,7 @@
+<template>
+  <BlessMarginComments :blocks :comments @add="add" />
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessMarginComments, type BlessMarginComment } from "blessing-ui";
@@ -36,7 +40,3 @@ let n = 3;
 const add = (block: string, text: string) =>
   comments.value.push({ id: `c${n++}`, block, author: "You", text, time: "now" });
 </script>
-
-<template>
-  <BlessMarginComments :blocks :comments @add="add" />
-</template>

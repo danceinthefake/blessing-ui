@@ -1,3 +1,14 @@
+<template>
+  <div style="max-width: 100%">
+    <BlessSpreadsheet
+      v-model="rows"
+      :columns="['Episode', 'Title', 'Plays', 'Minutes']"
+      label="Plays of each episode"
+    />
+    <BlessText as="p" size="sm" style="margin-top: 12px">Total plays: {{ total }}</BlessText>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed, ref } from "vue";
 import { BlessSpreadsheet, BlessText } from "blessing-ui";
@@ -10,14 +21,3 @@ const rows = ref([
 ]);
 const total = computed(() => rows.value.reduce((n, r) => n + (Number(r[2]) || 0), 0));
 </script>
-
-<template>
-  <div style="max-width: 100%">
-    <BlessSpreadsheet
-      v-model="rows"
-      :columns="['Episode', 'Title', 'Plays', 'Minutes']"
-      label="Plays of each episode"
-    />
-    <BlessText as="p" size="sm" style="margin-top: 12px">Total plays: {{ total }}</BlessText>
-  </div>
-</template>

@@ -1,3 +1,20 @@
+<template>
+  <span class="bless-chip" :class="[`bless-chip--${color}`, `bless-chip--${size}`]">
+    <img v-if="image" :src="image" alt="" class="bless-chip__img" />
+    <span v-else-if="icon" class="bless-chip__icon" aria-hidden="true">{{ icon }}</span>
+    <span class="bless-chip__label"><slot>{{ label }}</slot></span>
+    <button
+      v-if="removable"
+      type="button"
+      class="bless-chip__remove"
+      :aria-label="`${text.remove} ${label ?? ''}`"
+      @click="emit('remove')"
+    >
+      <span aria-hidden="true">×</span>
+    </button>
+  </span>
+</template>
+
 <script setup lang="ts">
 import { useLabelPack } from "../composables/useLabels";
 import { computed } from "vue";
@@ -24,23 +41,6 @@ const text = computed(() => ({
 
 const emit = defineEmits<{ remove: [] }>();
 </script>
-
-<template>
-  <span class="bless-chip" :class="[`bless-chip--${color}`, `bless-chip--${size}`]">
-    <img v-if="image" :src="image" alt="" class="bless-chip__img" />
-    <span v-else-if="icon" class="bless-chip__icon" aria-hidden="true">{{ icon }}</span>
-    <span class="bless-chip__label"><slot>{{ label }}</slot></span>
-    <button
-      v-if="removable"
-      type="button"
-      class="bless-chip__remove"
-      :aria-label="`${text.remove} ${label ?? ''}`"
-      @click="emit('remove')"
-    >
-      <span aria-hidden="true">×</span>
-    </button>
-  </span>
-</template>
 
 <style>
 .bless-chip {

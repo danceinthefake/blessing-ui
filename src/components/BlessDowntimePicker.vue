@@ -1,3 +1,24 @@
+<template>
+  <form class="bless-downtime" :aria-labelledby="`${uid}-title`" @submit.prevent="save">
+    <p :id="`${uid}-title`" class="bless-downtime__title">{{ text.title(machine ?? "") }}</p>
+    <fieldset v-for="g in groups" :key="g.key" class="bless-downtime__group" :class="`is-${g.key}`">
+      <legend class="bless-downtime__legend">{{ g.title }}</legend>
+      <div class="bless-downtime__grid">
+        <label v-for="r in g.list" :key="r.id" class="bless-downtime__reason">
+          <input v-model="reason" type="radio" :name="`${uid}-reason`" :value="r.id" />
+          <span v-if="r.icon" class="bless-downtime__icon" aria-hidden="true">{{ r.icon }}</span>
+          <span>{{ r.label }}</span>
+        </label>
+      </div>
+    </fieldset>
+    <label class="bless-downtime__note">
+      <span>{{ text.note }}</span>
+      <input v-model="note" />
+    </label>
+    <BlessButton type="submit" :disabled="!reason">{{ text.save }}</BlessButton>
+  </form>
+</template>
+
 <script setup lang="ts">
 import { computed, ref, useId } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -57,27 +78,6 @@ function save() {
   note.value = "";
 }
 </script>
-
-<template>
-  <form class="bless-downtime" :aria-labelledby="`${uid}-title`" @submit.prevent="save">
-    <p :id="`${uid}-title`" class="bless-downtime__title">{{ text.title(machine ?? "") }}</p>
-    <fieldset v-for="g in groups" :key="g.key" class="bless-downtime__group" :class="`is-${g.key}`">
-      <legend class="bless-downtime__legend">{{ g.title }}</legend>
-      <div class="bless-downtime__grid">
-        <label v-for="r in g.list" :key="r.id" class="bless-downtime__reason">
-          <input v-model="reason" type="radio" :name="`${uid}-reason`" :value="r.id" />
-          <span v-if="r.icon" class="bless-downtime__icon" aria-hidden="true">{{ r.icon }}</span>
-          <span>{{ r.label }}</span>
-        </label>
-      </div>
-    </fieldset>
-    <label class="bless-downtime__note">
-      <span>{{ text.note }}</span>
-      <input v-model="note" />
-    </label>
-    <BlessButton type="submit" :disabled="!reason">{{ text.save }}</BlessButton>
-  </form>
-</template>
 
 <style>
 .bless-downtime {

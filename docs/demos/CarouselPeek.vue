@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import { BlessCarousel } from "blessing-ui";
-</script>
-
 <template>
   <div style="max-width: 480px">
     <BlessCarousel :per-view="2.5" gap="8px" :dots="false">
@@ -22,3 +18,7 @@ import { BlessCarousel } from "blessing-ui";
     <small>perView 2.5 (peek), swipe / scroll-snap, ← →</small>
   </div>
 </template>
+
+<script setup lang="ts">
+import { BlessCarousel } from "blessing-ui";
+</script>

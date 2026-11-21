@@ -1,3 +1,9 @@
+<template>
+  <span class="bless-watermark" :class="`bless-watermark--${position}`" aria-hidden="true">{{
+    text
+  }}</span>
+</template>
+
 <script setup lang="ts">
 defineOptions({ name: "BlessWatermark" });
 
@@ -9,12 +15,6 @@ withDefaults(
   { position: "top-end" },
 );
 </script>
-
-<template>
-  <span class="bless-watermark" :class="`bless-watermark--${position}`" aria-hidden="true">{{
-    text
-  }}</span>
-</template>
 
 <style>
 .bless-watermark {

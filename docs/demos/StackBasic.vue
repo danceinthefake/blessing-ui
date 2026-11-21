@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import { BlessButton, BlessStack } from "blessing-ui";
-</script>
-
 <template>
   <BlessStack :gap="4">
     <BlessStack direction="row" :gap="2">
@@ -17,3 +13,7 @@ import { BlessButton, BlessStack } from "blessing-ui";
     </BlessStack>
   </BlessStack>
 </template>
+
+<script setup lang="ts">
+import { BlessButton, BlessStack } from "blessing-ui";
+</script>

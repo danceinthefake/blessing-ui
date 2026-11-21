@@ -1,11 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { BlessShareBar } from "blessing-ui";
-
-const url = "https://example.com/episodes/41";
-const last = ref("");
-</script>
-
 <template>
   <BlessShareBar
     :url
@@ -17,3 +9,11 @@ const last = ref("");
   />
   <p v-if="last" style="margin-top: 12px">Shared by: {{ last }}</p>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { BlessShareBar } from "blessing-ui";
+
+const url = "https://example.com/episodes/41";
+const last = ref("");
+</script>

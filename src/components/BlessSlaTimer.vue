@@ -1,3 +1,18 @@
+<template>
+  <div class="bless-sla" :class="`is-${state}`">
+    <div class="bless-sla__line">
+      <span class="bless-sla__label">{{ label }}</span>
+      <span class="bless-sla__time">
+        <span aria-hidden="true">{{ MARK[state] }}</span> {{ words
+        }}<template v-if="state === 'warning'"> · {{ text.atRisk }}</template>
+      </span>
+    </div>
+    <div v-if="!met" class="bless-sla__track" aria-hidden="true">
+      <span :style="{ inlineSize: `${share * 100}%` }" />
+    </div>
+  </div>
+</template>
+
 <script lang="ts">
 /** Minutes from `now` to `due`; negative when the time is up. */
 export function minutesLeft(due: string, now: string | number): number {
@@ -82,21 +97,6 @@ const share = computed(() =>
 );
 const MARK = { ok: "◷", warning: "!", breached: "✕", met: "✓", wait: "◷" } as const;
 </script>
-
-<template>
-  <div class="bless-sla" :class="`is-${state}`">
-    <div class="bless-sla__line">
-      <span class="bless-sla__label">{{ label }}</span>
-      <span class="bless-sla__time">
-        <span aria-hidden="true">{{ MARK[state] }}</span> {{ words
-        }}<template v-if="state === 'warning'"> · {{ text.atRisk }}</template>
-      </span>
-    </div>
-    <div v-if="!met" class="bless-sla__track" aria-hidden="true">
-      <span :style="{ inlineSize: `${share * 100}%` }" />
-    </div>
-  </div>
-</template>
 
 <style>
 .bless-sla {

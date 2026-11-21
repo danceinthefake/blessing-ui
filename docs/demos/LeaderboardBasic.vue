@@ -1,3 +1,14 @@
+<template>
+  <BlessLeaderboard
+    :rows
+    :me="8"
+    :limit="5"
+    :format="episodes"
+    label="Top listeners in November"
+    style="max-width: 480px"
+  />
+</template>
+
 <script setup lang="ts">
 import { BlessLeaderboard } from "blessing-ui";
 
@@ -15,14 +26,3 @@ const rows = [
 ];
 const episodes = (v: number) => `${v} ep.`;
 </script>
-
-<template>
-  <BlessLeaderboard
-    :rows
-    :me="8"
-    :limit="5"
-    :format="episodes"
-    label="Top listeners in November"
-    style="max-width: 480px"
-  />
-</template>

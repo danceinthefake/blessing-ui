@@ -1,3 +1,48 @@
+<template>
+  <section class="bless-hooks" :aria-label="text.title">
+    <p v-if="!deliveries.length" class="bless-hooks__empty">{{ text.empty }}</p>
+    <ul v-else class="bless-stagger bless-hooks__list">
+      <li v-for="d in deliveries" :key="d.id" class="bless-hooks__item" :class="`is-${state(d)}`">
+        <details class="bless-hooks__details">
+          <summary class="bless-hooks__head">
+            <span class="bless-hooks__status">
+              <span class="bless-hooks__dot" aria-hidden="true" />
+              <strong>{{ d.status ?? "…" }}</strong>
+              <span class="bless-hooks__state">{{ text[state(d)] }}</span>
+            </span>
+            <code class="bless-hooks__event">{{ d.event }}</code>
+            <span class="bless-hooks__time">
+              {{ d.time
+              }}<template v-if="d.duration !== undefined"> · {{ d.duration }} ms</template>
+            </span>
+          </summary>
+          <div class="bless-hooks__body">
+            <section v-if="d.request !== undefined">
+              <p class="bless-hooks__label">{{ text.request }}</p>
+              <pre class="bless-hooks__data">{{ show(d.request) }}</pre>
+            </section>
+            <section v-if="d.response !== undefined">
+              <p class="bless-hooks__label">{{ text.response }}</p>
+              <pre class="bless-hooks__data">{{ show(d.response) }}</pre>
+            </section>
+          </div>
+        </details>
+        <BlessButton
+          v-if="state(d) === 'failed'"
+          class="bless-hooks__retry"
+          size="sm"
+          variant="outline"
+          :loading="retrying?.includes(d.id)"
+          @click="emit('retry', d.id)"
+        >
+          {{ text.retry }}
+        </BlessButton>
+        <span v-else aria-hidden="true" />
+      </li>
+    </ul>
+  </section>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -55,51 +100,6 @@ const state = (d: BlessWebhookDelivery) =>
   d.status === undefined ? "pending" : d.status >= 200 && d.status < 300 ? "ok" : "failed";
 const show = (v: unknown) => (typeof v === "string" ? v : JSON.stringify(v, null, 2));
 </script>
-
-<template>
-  <section class="bless-hooks" :aria-label="text.title">
-    <p v-if="!deliveries.length" class="bless-hooks__empty">{{ text.empty }}</p>
-    <ul v-else class="bless-stagger bless-hooks__list">
-      <li v-for="d in deliveries" :key="d.id" class="bless-hooks__item" :class="`is-${state(d)}`">
-        <details class="bless-hooks__details">
-          <summary class="bless-hooks__head">
-            <span class="bless-hooks__status">
-              <span class="bless-hooks__dot" aria-hidden="true" />
-              <strong>{{ d.status ?? "…" }}</strong>
-              <span class="bless-hooks__state">{{ text[state(d)] }}</span>
-            </span>
-            <code class="bless-hooks__event">{{ d.event }}</code>
-            <span class="bless-hooks__time">
-              {{ d.time
-              }}<template v-if="d.duration !== undefined"> · {{ d.duration }} ms</template>
-            </span>
-          </summary>
-          <div class="bless-hooks__body">
-            <section v-if="d.request !== undefined">
-              <p class="bless-hooks__label">{{ text.request }}</p>
-              <pre class="bless-hooks__data">{{ show(d.request) }}</pre>
-            </section>
-            <section v-if="d.response !== undefined">
-              <p class="bless-hooks__label">{{ text.response }}</p>
-              <pre class="bless-hooks__data">{{ show(d.response) }}</pre>
-            </section>
-          </div>
-        </details>
-        <BlessButton
-          v-if="state(d) === 'failed'"
-          class="bless-hooks__retry"
-          size="sm"
-          variant="outline"
-          :loading="retrying?.includes(d.id)"
-          @click="emit('retry', d.id)"
-        >
-          {{ text.retry }}
-        </BlessButton>
-        <span v-else aria-hidden="true" />
-      </li>
-    </ul>
-  </section>
-</template>
 
 <style>
 .bless-hooks {

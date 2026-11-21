@@ -1,3 +1,32 @@
+<template>
+  <article class="bless-group">
+    <div class="bless-group__cover">
+      <img v-if="cover" :src="cover" alt="" />
+    </div>
+    <div class="bless-group__body">
+      <h3 class="bless-group__name">
+        <a v-if="href" :href="href">{{ name }}</a>
+        <template v-else>{{ name }}</template>
+      </h3>
+      <p class="bless-group__meta">
+        {{ private ? text.private : text.public }} · {{ text.members(count) }}
+      </p>
+      <p v-if="description" class="bless-group__desc">{{ description }}</p>
+      <div class="bless-group__foot">
+        <BlessAvatarGroup v-if="faces?.length" :items="faces" :max="4" size="sm" />
+        <BlessButton
+          class="bless-group__join"
+          size="sm"
+          :variant="state === 'none' ? 'solid' : 'outline'"
+          @click="press"
+        >
+          {{ label }}<span class="bless-sr">: {{ name }}</span>
+        </BlessButton>
+      </div>
+    </div>
+  </article>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -66,35 +95,6 @@ const label = computed(() =>
 const press = () =>
   (state.value = state.value !== "none" ? "none" : props.private ? "requested" : "member");
 </script>
-
-<template>
-  <article class="bless-group">
-    <div class="bless-group__cover">
-      <img v-if="cover" :src="cover" alt="" />
-    </div>
-    <div class="bless-group__body">
-      <h3 class="bless-group__name">
-        <a v-if="href" :href="href">{{ name }}</a>
-        <template v-else>{{ name }}</template>
-      </h3>
-      <p class="bless-group__meta">
-        {{ private ? text.private : text.public }} · {{ text.members(count) }}
-      </p>
-      <p v-if="description" class="bless-group__desc">{{ description }}</p>
-      <div class="bless-group__foot">
-        <BlessAvatarGroup v-if="faces?.length" :items="faces" :max="4" size="sm" />
-        <BlessButton
-          class="bless-group__join"
-          size="sm"
-          :variant="state === 'none' ? 'solid' : 'outline'"
-          @click="press"
-        >
-          {{ label }}<span class="bless-sr">: {{ name }}</span>
-        </BlessButton>
-      </div>
-    </div>
-  </article>
-</template>
 
 <style>
 .bless-group {

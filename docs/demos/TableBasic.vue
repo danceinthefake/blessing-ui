@@ -1,3 +1,11 @@
+<template>
+  <BlessTable :columns :rows row-key="station" caption="On Air" striped style="max-width: 640px">
+    <template #cell-note="{ value }">
+      <BlessBadge v-if="value" color="text">{{ value }}</BlessBadge>
+    </template>
+  </BlessTable>
+</template>
+
 <script setup lang="ts">
 import { BlessBadge, BlessTable, type BlessColumn } from "blessing-ui";
 type Row = { station: string; day: string; time: string; note: string };
@@ -14,11 +22,3 @@ const rows: Row[] = [
   { station: "AbemaTV", day: "木", time: "24:00", note: "配信" },
 ];
 </script>
-
-<template>
-  <BlessTable :columns :rows row-key="station" caption="On Air" striped style="max-width: 640px">
-    <template #cell-note="{ value }">
-      <BlessBadge v-if="value" color="text">{{ value }}</BlessBadge>
-    </template>
-  </BlessTable>
-</template>

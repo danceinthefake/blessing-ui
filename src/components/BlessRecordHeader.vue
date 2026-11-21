@@ -1,3 +1,24 @@
+<template>
+  <header class="bless-record">
+    <div class="bless-record__top">
+      <div class="bless-record__name">
+        <span v-if="code" class="bless-record__code">{{ code }}</span>
+        <component :is="`h${level}`" class="bless-record__title">{{ title }}</component>
+        <span v-if="status" class="bless-record__status" :class="`is-${color}`">
+          <span aria-hidden="true">{{ MARK[color] }}</span> {{ status }}
+        </span>
+      </div>
+      <div v-if="$slots.default" class="bless-record__actions"><slot /></div>
+    </div>
+    <dl v-if="facts.length" class="bless-record__facts">
+      <div v-for="f in facts" :key="f.label" class="bless-record__fact">
+        <dt>{{ f.label }}</dt>
+        <dd>{{ f.value }}</dd>
+      </div>
+    </dl>
+  </header>
+</template>
+
 <script setup lang="ts">
 defineOptions({ name: "BlessRecordHeader" });
 
@@ -23,27 +44,6 @@ withDefaults(
 );
 const MARK = { text: "●", success: "✓", warning: "!", danger: "✕" } as const;
 </script>
-
-<template>
-  <header class="bless-record">
-    <div class="bless-record__top">
-      <div class="bless-record__name">
-        <span v-if="code" class="bless-record__code">{{ code }}</span>
-        <component :is="`h${level}`" class="bless-record__title">{{ title }}</component>
-        <span v-if="status" class="bless-record__status" :class="`is-${color}`">
-          <span aria-hidden="true">{{ MARK[color] }}</span> {{ status }}
-        </span>
-      </div>
-      <div v-if="$slots.default" class="bless-record__actions"><slot /></div>
-    </div>
-    <dl v-if="facts.length" class="bless-record__facts">
-      <div v-for="f in facts" :key="f.label" class="bless-record__fact">
-        <dt>{{ f.label }}</dt>
-        <dd>{{ f.value }}</dd>
-      </div>
-    </dl>
-  </header>
-</template>
 
 <style>
 .bless-record {

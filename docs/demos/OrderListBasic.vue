@@ -1,3 +1,10 @@
+<template>
+  <div class="col" style="max-width: 420px">
+    <BlessOrderList v-model="eps" :row-key="(s: string) => s" />
+    <small>drag, ↑ ↓ buttons, or focus a row and Alt+↑/↓</small>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessOrderList } from "blessing-ui";
@@ -8,10 +15,3 @@ const eps = ref([
   "第4話 冴えない彼女",
 ]);
 </script>
-
-<template>
-  <div class="col" style="max-width: 420px">
-    <BlessOrderList v-model="eps" :row-key="(s: string) => s" />
-    <small>drag, ↑ ↓ buttons, or focus a row and Alt+↑/↓</small>
-  </div>
-</template>

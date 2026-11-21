@@ -1,3 +1,13 @@
+<template>
+  <BlessLollipop
+    :data="episodes"
+    sort
+    :format="minutes"
+    label="Average minutes listened, by episode"
+    style="max-width: 560px"
+  />
+</template>
+
 <script setup lang="ts">
 import { BlessLollipop } from "blessing-ui";
 
@@ -16,13 +26,3 @@ const episodes = [
 ];
 const minutes = (v: number) => `${v} min`;
 </script>
-
-<template>
-  <BlessLollipop
-    :data="episodes"
-    sort
-    :format="minutes"
-    label="Average minutes listened, by episode"
-    style="max-width: 560px"
-  />
-</template>

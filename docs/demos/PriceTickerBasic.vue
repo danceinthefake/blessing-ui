@@ -1,3 +1,7 @@
+<template>
+  <BlessPriceTicker :items currency="USD" />
+</template>
+
 <script setup lang="ts">
 import { BlessPriceTicker } from "blessing-ui";
 
@@ -11,7 +15,3 @@ const items = [
   { symbol: "LOUD", price: 731, change: 5.6 },
 ];
 </script>
-
-<template>
-  <BlessPriceTicker :items currency="USD" />
-</template>

@@ -1,9 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { BlessInplace, BlessInput } from "blessing-ui";
-const title = ref("第3話 フラグの立たない");
-</script>
-
 <template>
   <div class="col">
     <BlessInplace dismissible>
@@ -15,3 +9,9 @@ const title = ref("第3話 フラグの立たない");
     <small>click the title · Enter, Esc or × to finish</small>
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { BlessInplace, BlessInput } from "blessing-ui";
+const title = ref("第3話 フラグの立たない");
+</script>

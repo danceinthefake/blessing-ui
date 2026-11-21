@@ -1,26 +1,3 @@
-<script setup lang="ts">
-import { useFieldId } from "../composables/useFieldId";
-import BlessColorSwatches from "./BlessColorSwatches.vue";
-
-defineOptions({ name: "BlessColorPicker", inheritAttrs: false });
-
-const props = withDefaults(
-  defineProps<{
-    id?: string;
-    /** preset swatches: hex, or { value, label } so a screen reader hears a name, not a hex */
-    swatches?: (string | { value: string; label: string })[];
-    disabled?: boolean;
-    /** accessible name when there is no visible label (a BlessField's label is used otherwise) */
-    label?: string;
-    /** show the hex next to the well */
-    showValue?: boolean;
-  }>(),
-  { swatches: () => [], showValue: true },
-);
-const model = defineModel<string>({ default: "#e85078" });
-const id = useFieldId(props);
-</script>
-
 <template>
   <div class="bless-color" :class="{ 'bless-color--disabled': disabled }">
     <label :for="id()" class="bless-color__well" :style="{ '--_c': model }">
@@ -46,6 +23,29 @@ const id = useFieldId(props);
     />
   </div>
 </template>
+
+<script setup lang="ts">
+import { useFieldId } from "../composables/useFieldId";
+import BlessColorSwatches from "./BlessColorSwatches.vue";
+
+defineOptions({ name: "BlessColorPicker", inheritAttrs: false });
+
+const props = withDefaults(
+  defineProps<{
+    id?: string;
+    /** preset swatches: hex, or { value, label } so a screen reader hears a name, not a hex */
+    swatches?: (string | { value: string; label: string })[];
+    disabled?: boolean;
+    /** accessible name when there is no visible label (a BlessField's label is used otherwise) */
+    label?: string;
+    /** show the hex next to the well */
+    showValue?: boolean;
+  }>(),
+  { swatches: () => [], showValue: true },
+);
+const model = defineModel<string>({ default: "#e85078" });
+const id = useFieldId(props);
+</script>
 
 <style>
 .bless-color {

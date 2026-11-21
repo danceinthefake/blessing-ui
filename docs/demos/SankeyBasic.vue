@@ -1,3 +1,7 @@
+<template>
+  <BlessSankey :links :nodes :height="280" :format="(v) => `${v}k`" label="Episode 12 visitors" />
+</template>
+
 <script setup lang="ts">
 import { BlessSankey, type BlessSankeyNode } from "blessing-ui";
 
@@ -21,7 +25,3 @@ const nodes: BlessSankeyNode[] = [
   { id: "leave", label: "Left", color: "chart-5" },
 ];
 </script>
-
-<template>
-  <BlessSankey :links :nodes :height="280" :format="(v) => `${v}k`" label="Episode 12 visitors" />
-</template>

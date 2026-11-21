@@ -1,3 +1,29 @@
+<template>
+  <div class="bless-signature" :class="{ 'bless-signature--disabled': disabled }">
+    <canvas
+      ref="canvas"
+      class="bless-signature__canvas"
+      :style="{ height: `${height}px` }"
+      role="img"
+      :aria-label="label"
+      tabindex="0"
+      @pointerdown="down"
+      @pointermove="move"
+      @pointerup="up"
+      @pointercancel="up"
+      @keydown.delete="clear"
+    />
+    <div class="bless-signature__bar">
+      <span class="bless-signature__hint">{{ empty ? hint : "" }}</span>
+      <slot name="actions" :clear :empty>
+        <BlessButton size="sm" variant="outline" :disabled="empty || disabled" @click="clear">{{
+          text.clear
+        }}</BlessButton>
+      </slot>
+    </div>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { useLabelPack } from "../composables/useLabels";
 import { onBeforeUnmount, onMounted, ref, watch, computed } from "vue";
@@ -98,32 +124,6 @@ onBeforeUnmount(() => ro?.disconnect());
 watch(model, (v) => v === "" && !empty.value && clear());
 defineExpose({ clear, isEmpty: () => empty.value });
 </script>
-
-<template>
-  <div class="bless-signature" :class="{ 'bless-signature--disabled': disabled }">
-    <canvas
-      ref="canvas"
-      class="bless-signature__canvas"
-      :style="{ height: `${height}px` }"
-      role="img"
-      :aria-label="label"
-      tabindex="0"
-      @pointerdown="down"
-      @pointermove="move"
-      @pointerup="up"
-      @pointercancel="up"
-      @keydown.delete="clear"
-    />
-    <div class="bless-signature__bar">
-      <span class="bless-signature__hint">{{ empty ? hint : "" }}</span>
-      <slot name="actions" :clear :empty>
-        <BlessButton size="sm" variant="outline" :disabled="empty || disabled" @click="clear">{{
-          text.clear
-        }}</BlessButton>
-      </slot>
-    </div>
-  </div>
-</template>
 
 <style>
 .bless-signature {

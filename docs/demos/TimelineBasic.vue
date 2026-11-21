@@ -1,3 +1,7 @@
+<template>
+  <BlessTimeline :items style="max-width: 420px" />
+</template>
+
 <script setup lang="ts">
 import { BlessTimeline } from "blessing-ui";
 const items = [
@@ -17,7 +21,3 @@ const items = [
   { time: "2020.04.01", datetime: "2020-04-01", title: "配信開始" },
 ];
 </script>
-
-<template>
-  <BlessTimeline :items style="max-width: 420px" />
-</template>

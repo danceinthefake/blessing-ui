@@ -1,3 +1,29 @@
+<template>
+  <div class="bless-password">
+    <!-- a meter means a password being made: new-password lets managers offer one. `autocomplete`
+         passed in still wins, since $attrs binds after -->
+    <BlessInput
+      :autocomplete="meter ? 'new-password' : 'current-password'"
+      v-bind="$attrs"
+      v-model="model"
+      :type="shown ? 'text' : 'password'"
+    >
+      <template #suffix>
+        <button
+          type="button"
+          class="bless-password__toggle"
+          :aria-label="text.show"
+          :aria-pressed="shown"
+          @click="shown = !shown"
+        >
+          <span aria-hidden="true">{{ shown ? "◉" : "◎" }}</span>
+        </button>
+      </template>
+    </BlessInput>
+    <BlessPasswordMeter v-if="meter" :value="model" class="bless-password__meter" />
+  </div>
+</template>
+
 <script setup lang="ts">
 import { useLabelPack } from "../composables/useLabels";
 import { ref, computed } from "vue";
@@ -24,32 +50,6 @@ const text = computed(() => ({
 const model = defineModel<string>({ default: "" });
 const shown = ref(false);
 </script>
-
-<template>
-  <div class="bless-password">
-    <!-- a meter means a password being made: new-password lets managers offer one. `autocomplete`
-         passed in still wins, since $attrs binds after -->
-    <BlessInput
-      :autocomplete="meter ? 'new-password' : 'current-password'"
-      v-bind="$attrs"
-      v-model="model"
-      :type="shown ? 'text' : 'password'"
-    >
-      <template #suffix>
-        <button
-          type="button"
-          class="bless-password__toggle"
-          :aria-label="text.show"
-          :aria-pressed="shown"
-          @click="shown = !shown"
-        >
-          <span aria-hidden="true">{{ shown ? "◉" : "◎" }}</span>
-        </button>
-      </template>
-    </BlessInput>
-    <BlessPasswordMeter v-if="meter" :value="model" class="bless-password__meter" />
-  </div>
-</template>
 
 <style>
 .bless-password {

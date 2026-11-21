@@ -1,65 +1,3 @@
-<script setup lang="ts">
-import { computed, ref } from "vue";
-import { useLabelPack } from "../composables/useLabels";
-import { chartColor, niceTicks, numberText, scale, useWidth } from "./chart";
-import "./chart.css";
-import "./sr.css";
-
-defineOptions({ name: "BlessDumbbell" });
-const pack = useLabelPack("BlessDumbbell");
-
-export interface BlessDumbbellRow {
-  label: string;
-  /** the first value, for example before or the plan */
-  start: number;
-  /** the second value, for example after or the actual */
-  end: number;
-}
-
-const props = withDefaults(
-  defineProps<{
-    data: BlessDumbbellRow[];
-    /** the color of the end dot; the start dot is gray and hollow */
-    color?: string;
-    /** text for one value, for example `(v) => v + "%"` */
-    format?: (v: number) => string;
-    /** names the chart and its table for screen readers */
-    label?: string;
-    labels?: Partial<{ start: string; end: string; row: string; change: string }>;
-  }>(),
-  { color: "chart-1", label: "Chart" },
-);
-
-const text = computed(() => ({
-  start: "Before",
-  end: "After",
-  row: "Item",
-  change: "Change",
-  ...pack(),
-  ...props.labels,
-}));
-const fmt = computed(() => props.format ?? numberText);
-const box = ref<HTMLElement>();
-const width = useWidth(box);
-
-const ROW = 32;
-const xt = computed(() => {
-  const vs = props.data.flatMap((r) => [r.start, r.end]);
-  return vs.length ? niceTicks(Math.min(0, ...vs), Math.max(...vs), 5) : [0, 1];
-});
-// the names sit in a column at the start; about 7 pixels for each letter, at most 160
-const labelW = computed(() =>
-  Math.min(160, 12 + 7 * Math.max(0, ...props.data.map((r) => r.label.length))),
-);
-const height = computed(() => props.data.length * ROW + 24);
-const px = computed(() =>
-  scale([xt.value[0]!, xt.value.at(-1)!], [labelW.value + 8, width.value - 12]),
-);
-const sign = (n: number) => (n > 0 ? "+" : n < 0 ? "−" : "±");
-const change = (r: BlessDumbbellRow) =>
-  `${sign(r.end - r.start)}${fmt.value(Math.abs(r.end - r.start))}`;
-</script>
-
 <template>
   <figure ref="box" class="bless-plot bless-dumbbell" :style="{ '--_c': chartColor(color, 0) }">
     <div class="bless-dumbbell__legend" aria-hidden="true">
@@ -122,6 +60,68 @@ const change = (r: BlessDumbbellRow) =>
     </div>
   </figure>
 </template>
+
+<script setup lang="ts">
+import { computed, ref } from "vue";
+import { useLabelPack } from "../composables/useLabels";
+import { chartColor, niceTicks, numberText, scale, useWidth } from "./chart";
+import "./chart.css";
+import "./sr.css";
+
+defineOptions({ name: "BlessDumbbell" });
+const pack = useLabelPack("BlessDumbbell");
+
+export interface BlessDumbbellRow {
+  label: string;
+  /** the first value, for example before or the plan */
+  start: number;
+  /** the second value, for example after or the actual */
+  end: number;
+}
+
+const props = withDefaults(
+  defineProps<{
+    data: BlessDumbbellRow[];
+    /** the color of the end dot; the start dot is gray and hollow */
+    color?: string;
+    /** text for one value, for example `(v) => v + "%"` */
+    format?: (v: number) => string;
+    /** names the chart and its table for screen readers */
+    label?: string;
+    labels?: Partial<{ start: string; end: string; row: string; change: string }>;
+  }>(),
+  { color: "chart-1", label: "Chart" },
+);
+
+const text = computed(() => ({
+  start: "Before",
+  end: "After",
+  row: "Item",
+  change: "Change",
+  ...pack(),
+  ...props.labels,
+}));
+const fmt = computed(() => props.format ?? numberText);
+const box = ref<HTMLElement>();
+const width = useWidth(box);
+
+const ROW = 32;
+const xt = computed(() => {
+  const vs = props.data.flatMap((r) => [r.start, r.end]);
+  return vs.length ? niceTicks(Math.min(0, ...vs), Math.max(...vs), 5) : [0, 1];
+});
+// the names sit in a column at the start; about 7 pixels for each letter, at most 160
+const labelW = computed(() =>
+  Math.min(160, 12 + 7 * Math.max(0, ...props.data.map((r) => r.label.length))),
+);
+const height = computed(() => props.data.length * ROW + 24);
+const px = computed(() =>
+  scale([xt.value[0]!, xt.value.at(-1)!], [labelW.value + 8, width.value - 12]),
+);
+const sign = (n: number) => (n > 0 ? "+" : n < 0 ? "−" : "±");
+const change = (r: BlessDumbbellRow) =>
+  `${sign(r.end - r.start)}${fmt.value(Math.abs(r.end - r.start))}`;
+</script>
 
 <style>
 .bless-dumbbell__legend {

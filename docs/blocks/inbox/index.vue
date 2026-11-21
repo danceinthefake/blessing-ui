@@ -1,59 +1,3 @@
-<script setup lang="ts">
-import { computed, nextTick, onMounted, ref } from "vue";
-import {
-  BlessAvatar,
-  BlessBadge,
-  BlessButton,
-  BlessEmpty,
-  BlessIndicator,
-  BlessItem,
-  BlessText,
-  BlessToolbar,
-  useToast,
-} from "blessing-ui";
-import type { Mail } from "./domain";
-import { mockMailApi } from "./api";
-
-const mails = ref<Mail[]>([]);
-const openId = ref<number | null>(null);
-const open = computed(() => mails.value.find((m) => m.id === openId.value) ?? null);
-const loaded = ref(false);
-onMounted(async () => {
-  mails.value = await mockMailApi.list();
-  loaded.value = true;
-});
-// On a phone the pane replaces the list: send focus to the message, and back to its row after.
-const subject = ref<{ $el: HTMLElement }>();
-const list = ref<HTMLElement>();
-function read(m: Mail) {
-  m.unread = false;
-  openId.value = m.id;
-  nextTick(() => subject.value?.$el.focus());
-}
-const { toast } = useToast();
-// archive and delete act at once and offer Undo; focus goes to the row that took its place
-function drop(verb: "Archived" | "Deleted") {
-  const i = mails.value.findIndex((m) => m.id === openId.value);
-  if (i < 0) return;
-  const before = [...mails.value];
-  mails.value.splice(i, 1);
-  openId.value = null;
-  toast({
-    title: `${verb} 1 message`,
-    action: { label: "Undo", onClick: () => (mails.value = before) },
-  });
-  nextTick(() => {
-    const rows = list.value?.querySelectorAll<HTMLElement>("li > *") ?? [];
-    rows[Math.min(i, rows.length - 1)]?.focus();
-  });
-}
-function back() {
-  const i = mails.value.findIndex((m) => m.id === openId.value);
-  openId.value = null;
-  nextTick(() => list.value?.querySelectorAll<HTMLElement>("li > *")[i]?.focus());
-}
-</script>
-
 <template>
   <div class="inbox" :class="{ 'inbox--open': open }">
     <BlessEmpty
@@ -134,6 +78,62 @@ function back() {
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+import { computed, nextTick, onMounted, ref } from "vue";
+import {
+  BlessAvatar,
+  BlessBadge,
+  BlessButton,
+  BlessEmpty,
+  BlessIndicator,
+  BlessItem,
+  BlessText,
+  BlessToolbar,
+  useToast,
+} from "blessing-ui";
+import type { Mail } from "./domain";
+import { mockMailApi } from "./api";
+
+const mails = ref<Mail[]>([]);
+const openId = ref<number | null>(null);
+const open = computed(() => mails.value.find((m) => m.id === openId.value) ?? null);
+const loaded = ref(false);
+onMounted(async () => {
+  mails.value = await mockMailApi.list();
+  loaded.value = true;
+});
+// On a phone the pane replaces the list: send focus to the message, and back to its row after.
+const subject = ref<{ $el: HTMLElement }>();
+const list = ref<HTMLElement>();
+function read(m: Mail) {
+  m.unread = false;
+  openId.value = m.id;
+  nextTick(() => subject.value?.$el.focus());
+}
+const { toast } = useToast();
+// archive and delete act at once and offer Undo; focus goes to the row that took its place
+function drop(verb: "Archived" | "Deleted") {
+  const i = mails.value.findIndex((m) => m.id === openId.value);
+  if (i < 0) return;
+  const before = [...mails.value];
+  mails.value.splice(i, 1);
+  openId.value = null;
+  toast({
+    title: `${verb} 1 message`,
+    action: { label: "Undo", onClick: () => (mails.value = before) },
+  });
+  nextTick(() => {
+    const rows = list.value?.querySelectorAll<HTMLElement>("li > *") ?? [];
+    rows[Math.min(i, rows.length - 1)]?.focus();
+  });
+}
+function back() {
+  const i = mails.value.findIndex((m) => m.id === openId.value);
+  openId.value = null;
+  nextTick(() => list.value?.querySelectorAll<HTMLElement>("li > *")[i]?.focus());
+}
+</script>
 
 <style scoped>
 /* focus lands on the subject so the message is read; it isn't a control */

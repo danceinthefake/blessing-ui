@@ -1,3 +1,20 @@
+<template>
+  <div style="max-width: 560px">
+    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px">
+      <BlessButton size="sm" @click="play">{{ playing ? "Pause" : "Play" }}</BlessButton>
+      <span style="font-variant-numeric: tabular-nums"
+        >0:{{ String(Math.floor(time)).padStart(2, "0") }}</span
+      >
+    </div>
+    <BlessTranscript
+      :cues
+      :time
+      style="--bless-transcript-height: 14rem"
+      @seek="(s) => (time = s)"
+    />
+  </div>
+</template>
+
 <script setup lang="ts">
 import { onBeforeUnmount, ref } from "vue";
 import { BlessButton, BlessTranscript } from "blessing-ui";
@@ -26,20 +43,3 @@ const cues = [
   { start: 52, text: "We will put the links in the show notes.", speaker: "Ana" },
 ];
 </script>
-
-<template>
-  <div style="max-width: 560px">
-    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px">
-      <BlessButton size="sm" @click="play">{{ playing ? "Pause" : "Play" }}</BlessButton>
-      <span style="font-variant-numeric: tabular-nums"
-        >0:{{ String(Math.floor(time)).padStart(2, "0") }}</span
-      >
-    </div>
-    <BlessTranscript
-      :cues
-      :time
-      style="--bless-transcript-height: 14rem"
-      @seek="(s) => (time = s)"
-    />
-  </div>
-</template>

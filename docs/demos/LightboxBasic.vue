@@ -1,12 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { BlessButton, BlessLightbox, BlessStack } from "blessing-ui";
-import { shots } from "./_data";
-
-// any list of images, opened from any control: here a row of buttons
-const index = ref(-1);
-</script>
-
 <template>
   <BlessStack direction="row" :gap="2" wrap>
     <BlessButton
@@ -21,3 +12,12 @@ const index = ref(-1);
     <BlessLightbox v-model="index" :items="shots" />
   </BlessStack>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { BlessButton, BlessLightbox, BlessStack } from "blessing-ui";
+import { shots } from "./_data";
+
+// any list of images, opened from any control: here a row of buttons
+const index = ref(-1);
+</script>

@@ -1,19 +1,3 @@
-<script setup lang="ts">
-defineOptions({ name: "BlessSeparator" });
-
-withDefaults(
-  defineProps<{
-    orientation?: "horizontal" | "vertical";
-    /** purely visual (aria-hidden) vs semantic <hr> */
-    decorative?: boolean;
-    color?: "border" | "rule" | "accent";
-    /** optional centered label */
-    label?: string;
-  }>(),
-  { orientation: "horizontal", decorative: false, color: "border" },
-);
-</script>
-
 <template>
   <div
     v-if="label"
@@ -34,6 +18,22 @@ withDefaults(
     :aria-hidden="decorative || undefined"
   />
 </template>
+
+<script setup lang="ts">
+defineOptions({ name: "BlessSeparator" });
+
+withDefaults(
+  defineProps<{
+    orientation?: "horizontal" | "vertical";
+    /** purely visual (aria-hidden) vs semantic <hr> */
+    decorative?: boolean;
+    color?: "border" | "rule" | "accent";
+    /** optional centered label */
+    label?: string;
+  }>(),
+  { orientation: "horizontal", decorative: false, color: "border" },
+);
+</script>
 
 <style>
 .bless-separator {

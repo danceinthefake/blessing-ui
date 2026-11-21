@@ -1,3 +1,7 @@
+<template>
+  <BlessPermissionMatrix v-model="grants" :roles :permissions style="max-width: 640px" />
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessPermissionMatrix } from "blessing-ui";
@@ -22,7 +26,3 @@ const grants = ref<Record<string, string[]>>({
   guest: ["stats"],
 });
 </script>
-
-<template>
-  <BlessPermissionMatrix v-model="grants" :roles :permissions style="max-width: 640px" />
-</template>

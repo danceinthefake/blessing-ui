@@ -1,3 +1,25 @@
+<template>
+  <BlessModal
+    v-model="open"
+    :title
+    :dismissible="false"
+    size="sm"
+    class="bless-alert-dialog"
+    role="alertdialog"
+    :aria-describedby="description ? descId : undefined"
+    @close="onClose"
+  >
+    <p v-if="description" :id="descId" class="bless-alert-dialog__desc">{{ description }}</p>
+    <slot />
+    <template #footer>
+      <BlessButton ref="cancelBtn" variant="outline" @click="open = false">{{
+        text.cancel
+      }}</BlessButton>
+      <BlessButton :color :loading @click="onConfirm">{{ text.confirm }}</BlessButton>
+    </template>
+  </BlessModal>
+</template>
+
 <script setup lang="ts">
 import { useLabelPack } from "../composables/useLabels";
 import { nextTick, ref, useId, watch, computed } from "vue";
@@ -48,28 +70,6 @@ function onClose() {
   confirmed = false;
 }
 </script>
-
-<template>
-  <BlessModal
-    v-model="open"
-    :title
-    :dismissible="false"
-    size="sm"
-    class="bless-alert-dialog"
-    role="alertdialog"
-    :aria-describedby="description ? descId : undefined"
-    @close="onClose"
-  >
-    <p v-if="description" :id="descId" class="bless-alert-dialog__desc">{{ description }}</p>
-    <slot />
-    <template #footer>
-      <BlessButton ref="cancelBtn" variant="outline" @click="open = false">{{
-        text.cancel
-      }}</BlessButton>
-      <BlessButton :color :loading @click="onConfirm">{{ text.confirm }}</BlessButton>
-    </template>
-  </BlessModal>
-</template>
 
 <style>
 .bless-alert-dialog .bless-modal__close {

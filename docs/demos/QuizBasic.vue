@@ -1,3 +1,7 @@
+<template>
+  <BlessQuiz :questions />
+</template>
+
 <script setup lang="ts">
 import { BlessQuiz } from "blessing-ui";
 
@@ -22,7 +26,3 @@ const questions = [
   },
 ];
 </script>
-
-<template>
-  <BlessQuiz :questions />
-</template>

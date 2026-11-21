@@ -1,3 +1,24 @@
+<template>
+  <div class="col" style="max-width: none">
+    <BlessAvatarGroup :items="cursors.map((c) => ({ name: c.name }))" size="sm" />
+    <BlessPresenceCursors :cursors @move="me = $event">
+      <div
+        style="
+          block-size: 220px;
+          padding: 16px;
+          border: 1px dashed var(--bless-color-rule);
+          color: var(--bless-color-text-muted);
+        "
+      >
+        Storyboard, scene 3. Move your pointer here.
+      </div>
+    </BlessPresenceCursors>
+    <p style="margin: 0; font-size: 0.875rem">
+      You: {{ me ? `${Math.round(me.x * 100)}%, ${Math.round(me.y * 100)}%` : "outside" }}
+    </p>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { onBeforeUnmount, onMounted, ref } from "vue";
 import { BlessAvatarGroup, BlessPresenceCursors, type BlessPresenceCursor } from "blessing-ui";
@@ -21,24 +42,3 @@ onMounted(() => {
 });
 onBeforeUnmount(() => clearInterval(timer));
 </script>
-
-<template>
-  <div class="col" style="max-width: none">
-    <BlessAvatarGroup :items="cursors.map((c) => ({ name: c.name }))" size="sm" />
-    <BlessPresenceCursors :cursors @move="me = $event">
-      <div
-        style="
-          block-size: 220px;
-          padding: 16px;
-          border: 1px dashed var(--bless-color-rule);
-          color: var(--bless-color-text-muted);
-        "
-      >
-        Storyboard, scene 3. Move your pointer here.
-      </div>
-    </BlessPresenceCursors>
-    <p style="margin: 0; font-size: 0.875rem">
-      You: {{ me ? `${Math.round(me.x * 100)}%, ${Math.round(me.y * 100)}%` : "outside" }}
-    </p>
-  </div>
-</template>

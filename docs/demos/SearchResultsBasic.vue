@@ -1,3 +1,20 @@
+<template>
+  <BlessSearchResults
+    v-model:selected="selected"
+    v-model:sort="sort"
+    v-model:page="page"
+    :query
+    :results="shown"
+    :total="hits.length"
+    :page-size
+    :facets
+    :sorts="[
+      { value: 'best', label: 'Best match' },
+      { value: 'new', label: 'Newest' },
+    ]"
+  />
+</template>
+
 <script setup lang="ts">
 import { computed, ref, watch } from "vue";
 import { BlessSearchResults, type BlessSearchHit } from "blessing-ui";
@@ -86,20 +103,3 @@ const hits = computed(() => {
 watch([selected, sort], () => (page.value = 1), { deep: true });
 const shown = computed(() => hits.value.slice((page.value - 1) * pageSize, page.value * pageSize));
 </script>
-
-<template>
-  <BlessSearchResults
-    v-model:selected="selected"
-    v-model:sort="sort"
-    v-model:page="page"
-    :query
-    :results="shown"
-    :total="hits.length"
-    :page-size
-    :facets
-    :sorts="[
-      { value: 'best', label: 'Best match' },
-      { value: 'new', label: 'Newest' },
-    ]"
-  />
-</template>

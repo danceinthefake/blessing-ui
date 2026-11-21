@@ -1,3 +1,22 @@
+<template>
+  <section ref="root" class="bless-typescale" :aria-label="text.title">
+    <div v-for="(s, i) in list" :key="s.name" class="bless-typescale__row">
+      <div class="bless-typescale__meta">
+        <code class="bless-typescale__name">{{ s.name }}</code>
+        <span v-if="measured[i]" class="bless-typescale__px">
+          {{ text.size }} {{ measured[i]!.px }} · {{ text.line }} {{ measured[i]!.lh }}
+        </span>
+      </div>
+      <p
+        class="bless-typescale__sample"
+        :style="{ fontSize: s.size, lineHeight: s.lineHeight, fontWeight: s.weight }"
+      >
+        {{ sample }}
+      </p>
+    </div>
+  </section>
+</template>
+
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, ref } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -67,25 +86,6 @@ onMounted(() => {
 });
 onBeforeUnmount(() => window.removeEventListener("resize", measure));
 </script>
-
-<template>
-  <section ref="root" class="bless-typescale" :aria-label="text.title">
-    <div v-for="(s, i) in list" :key="s.name" class="bless-typescale__row">
-      <div class="bless-typescale__meta">
-        <code class="bless-typescale__name">{{ s.name }}</code>
-        <span v-if="measured[i]" class="bless-typescale__px">
-          {{ text.size }} {{ measured[i]!.px }} · {{ text.line }} {{ measured[i]!.lh }}
-        </span>
-      </div>
-      <p
-        class="bless-typescale__sample"
-        :style="{ fontSize: s.size, lineHeight: s.lineHeight, fontWeight: s.weight }"
-      >
-        {{ sample }}
-      </p>
-    </div>
-  </section>
-</template>
 
 <style>
 .bless-typescale {

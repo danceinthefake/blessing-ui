@@ -1,3 +1,57 @@
+<template>
+  <figure class="bless-rose" :style="{ inlineSize: `${size}px` }">
+    <svg viewBox="0 0 300 300" class="bless-rose__svg" aria-hidden="true">
+      <circle
+        v-for="f in [0.25, 0.5, 0.75, 1]"
+        :key="f"
+        class="bless-rose__ring"
+        :cx="C"
+        :cy="C"
+        :r="Math.sqrt(f) * MAX_R"
+      />
+      <path
+        v-for="w in wedges"
+        :key="w.label"
+        class="bless-rose__wedge"
+        :d="w.d"
+        :style="{ '--_c': w.color }"
+      >
+        <title>{{ w.label }}: {{ fmt(w.value) }}</title>
+      </path>
+      <text
+        v-for="w in wedges"
+        :key="`t${w.label}`"
+        class="bless-rose__label"
+        :x="w.lx"
+        :y="w.ly"
+        text-anchor="middle"
+        dominant-baseline="middle"
+      >
+        {{ w.label }}
+      </text>
+    </svg>
+    <div class="bless-sr">
+      <table>
+        <caption>
+          {{ label }}
+        </caption>
+        <thead>
+          <tr>
+            <th scope="col">{{ text.item }}</th>
+            <th scope="col">{{ text.value }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="d in data" :key="d.label">
+            <th scope="row">{{ d.label }}</th>
+            <td>{{ fmt(d.value) }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </figure>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -59,60 +113,6 @@ const wedges = computed(() => {
   });
 });
 </script>
-
-<template>
-  <figure class="bless-rose" :style="{ inlineSize: `${size}px` }">
-    <svg viewBox="0 0 300 300" class="bless-rose__svg" aria-hidden="true">
-      <circle
-        v-for="f in [0.25, 0.5, 0.75, 1]"
-        :key="f"
-        class="bless-rose__ring"
-        :cx="C"
-        :cy="C"
-        :r="Math.sqrt(f) * MAX_R"
-      />
-      <path
-        v-for="w in wedges"
-        :key="w.label"
-        class="bless-rose__wedge"
-        :d="w.d"
-        :style="{ '--_c': w.color }"
-      >
-        <title>{{ w.label }}: {{ fmt(w.value) }}</title>
-      </path>
-      <text
-        v-for="w in wedges"
-        :key="`t${w.label}`"
-        class="bless-rose__label"
-        :x="w.lx"
-        :y="w.ly"
-        text-anchor="middle"
-        dominant-baseline="middle"
-      >
-        {{ w.label }}
-      </text>
-    </svg>
-    <div class="bless-sr">
-      <table>
-        <caption>
-          {{ label }}
-        </caption>
-        <thead>
-          <tr>
-            <th scope="col">{{ text.item }}</th>
-            <th scope="col">{{ text.value }}</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="d in data" :key="d.label">
-            <th scope="row">{{ d.label }}</th>
-            <td>{{ fmt(d.value) }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </figure>
-</template>
 
 <style>
 .bless-rose {

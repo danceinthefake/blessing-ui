@@ -1,3 +1,26 @@
+<template>
+  <BlessToggleGroup
+    v-if="mode === 'group'"
+    :model-value="theme"
+    :label="label ?? text().theme"
+    @update:model-value="set(($event ?? 'system') as BlessTheme)"
+  >
+    <BlessToggle value="light" size="sm" :label="text().light">☀</BlessToggle>
+    <BlessToggle value="system" size="sm" :label="text().system">◐</BlessToggle>
+    <BlessToggle value="dark" size="sm" :label="text().dark">☾</BlessToggle>
+  </BlessToggleGroup>
+  <button
+    v-else
+    type="button"
+    class="bless-theme-toggle"
+    :aria-label="props.labels?.dark ?? text().darkTheme"
+    :aria-pressed="mounted ? isDark : false"
+    @click="toggle"
+  >
+    <span aria-hidden="true">{{ mounted && isDark ? "☾" : "☀" }}</span>
+  </button>
+</template>
+
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -40,29 +63,6 @@ const { theme, isDark, set, toggle } = useTheme();
 const mounted = ref(false);
 onMounted(() => (mounted.value = true));
 </script>
-
-<template>
-  <BlessToggleGroup
-    v-if="mode === 'group'"
-    :model-value="theme"
-    :label="label ?? text().theme"
-    @update:model-value="set(($event ?? 'system') as BlessTheme)"
-  >
-    <BlessToggle value="light" size="sm" :label="text().light">☀</BlessToggle>
-    <BlessToggle value="system" size="sm" :label="text().system">◐</BlessToggle>
-    <BlessToggle value="dark" size="sm" :label="text().dark">☾</BlessToggle>
-  </BlessToggleGroup>
-  <button
-    v-else
-    type="button"
-    class="bless-theme-toggle"
-    :aria-label="props.labels?.dark ?? text().darkTheme"
-    :aria-pressed="mounted ? isDark : false"
-    @click="toggle"
-  >
-    <span aria-hidden="true">{{ mounted && isDark ? "☾" : "☀" }}</span>
-  </button>
-</template>
 
 <style>
 .bless-theme-toggle {

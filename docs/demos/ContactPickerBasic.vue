@@ -1,3 +1,12 @@
+<template>
+  <BlessContactPicker
+    v-model="chosen"
+    :contacts
+    :recent="['ana', 'citra']"
+    style="max-width: 360px"
+  />
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessContactPicker, type BlessContact } from "blessing-ui";
@@ -12,12 +21,3 @@ const contacts: BlessContact[] = [
 ];
 const chosen = ref(["citra"]);
 </script>
-
-<template>
-  <BlessContactPicker
-    v-model="chosen"
-    :contacts
-    :recent="['ana', 'citra']"
-    style="max-width: 360px"
-  />
-</template>

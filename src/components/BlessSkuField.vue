@@ -1,3 +1,33 @@
+<template>
+  <form class="bless-sku" :class="state && `is-${state}`" @submit.prevent="submit">
+    <label class="bless-sku__label" :for="`${uid}-in`">{{
+      label ?? (kind === "barcode" ? "Barcode" : "SKU")
+    }}</label>
+    <div class="bless-sku__box">
+      <span class="bless-sku__icon" aria-hidden="true">|||</span>
+      <input
+        :id="`${uid}-in`"
+        class="bless-sku__input"
+        :value="code"
+        :inputmode="kind === 'barcode' ? 'numeric' : 'text'"
+        autocomplete="off"
+        autocapitalize="characters"
+        spellcheck="false"
+        :aria-invalid="state === 'invalid' || undefined"
+        :aria-describedby="`${uid}-hint ${uid}-msg`"
+        @input="onInput"
+        @blur="touched = !!code"
+      />
+    </div>
+    <p :id="`${uid}-hint`" class="bless-sku__hint">{{ text.hint }}</p>
+    <p :id="`${uid}-msg`" class="bless-sku__msg" role="status">
+      <template v-if="state === 'invalid'">✕ {{ text.invalid }}</template>
+      <template v-else-if="state === 'valid'">✓ {{ text.valid }}</template>
+    </p>
+    <span class="bless-sr" aria-live="polite">{{ said }}</span>
+  </form>
+</template>
+
 <script lang="ts">
 /**
  * Checks a GS1 barcode number (EAN-8, UPC-A, EAN-13, or GTIN-14): from the right, the digits
@@ -74,36 +104,6 @@ function submit() {
   }
 }
 </script>
-
-<template>
-  <form class="bless-sku" :class="state && `is-${state}`" @submit.prevent="submit">
-    <label class="bless-sku__label" :for="`${uid}-in`">{{
-      label ?? (kind === "barcode" ? "Barcode" : "SKU")
-    }}</label>
-    <div class="bless-sku__box">
-      <span class="bless-sku__icon" aria-hidden="true">|||</span>
-      <input
-        :id="`${uid}-in`"
-        class="bless-sku__input"
-        :value="code"
-        :inputmode="kind === 'barcode' ? 'numeric' : 'text'"
-        autocomplete="off"
-        autocapitalize="characters"
-        spellcheck="false"
-        :aria-invalid="state === 'invalid' || undefined"
-        :aria-describedby="`${uid}-hint ${uid}-msg`"
-        @input="onInput"
-        @blur="touched = !!code"
-      />
-    </div>
-    <p :id="`${uid}-hint`" class="bless-sku__hint">{{ text.hint }}</p>
-    <p :id="`${uid}-msg`" class="bless-sku__msg" role="status">
-      <template v-if="state === 'invalid'">✕ {{ text.invalid }}</template>
-      <template v-else-if="state === 'valid'">✓ {{ text.valid }}</template>
-    </p>
-    <span class="bless-sr" aria-live="polite">{{ said }}</span>
-  </form>
-</template>
 
 <style>
 .bless-sku {

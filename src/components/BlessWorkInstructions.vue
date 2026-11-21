@@ -1,3 +1,36 @@
+<template>
+  <section ref="root" class="bless-instructions" :aria-label="job ?? text.title">
+    <div class="bless-instructions__top">
+      <span v-if="job" class="bless-instructions__job">{{ job }}</span>
+      <span class="bless-instructions__count">{{ text.step(at + 1, steps.length) }}</span>
+    </div>
+    <div class="bless-instructions__track" aria-hidden="true">
+      <span v-for="(_, i) in steps" :key="i" :class="{ 'is-done': i < at, 'is-now': i === at }" />
+    </div>
+    <article v-if="step" class="bless-instructions__step">
+      <h3 class="bless-instructions__title" tabindex="-1">{{ step.title }}</h3>
+      <img
+        v-if="step.image"
+        class="bless-instructions__img"
+        :src="step.image"
+        :alt="step.alt ?? ''"
+      />
+      <p v-if="step.caution" class="bless-instructions__caution" role="note">
+        <strong><span aria-hidden="true">⚠ </span>{{ text.caution }}:</strong> {{ step.caution }}
+      </p>
+      <p class="bless-instructions__body">{{ step.body }}</p>
+    </article>
+    <div class="bless-instructions__nav">
+      <button type="button" class="bless-instructions__btn" :disabled="at === 0" @click="go(-1)">
+        ← {{ text.back }}
+      </button>
+      <BlessButton class="bless-instructions__btn is-next" @click="go(1)"
+        >{{ last ? text.finish : text.next }} →</BlessButton
+      >
+    </div>
+  </section>
+</template>
+
 <script setup lang="ts">
 import { computed, nextTick, ref } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -52,39 +85,6 @@ function go(d: 1 | -1) {
   nextTick(() => root.value?.querySelector<HTMLElement>(".bless-instructions__title")?.focus());
 }
 </script>
-
-<template>
-  <section ref="root" class="bless-instructions" :aria-label="job ?? text.title">
-    <div class="bless-instructions__top">
-      <span v-if="job" class="bless-instructions__job">{{ job }}</span>
-      <span class="bless-instructions__count">{{ text.step(at + 1, steps.length) }}</span>
-    </div>
-    <div class="bless-instructions__track" aria-hidden="true">
-      <span v-for="(_, i) in steps" :key="i" :class="{ 'is-done': i < at, 'is-now': i === at }" />
-    </div>
-    <article v-if="step" class="bless-instructions__step">
-      <h3 class="bless-instructions__title" tabindex="-1">{{ step.title }}</h3>
-      <img
-        v-if="step.image"
-        class="bless-instructions__img"
-        :src="step.image"
-        :alt="step.alt ?? ''"
-      />
-      <p v-if="step.caution" class="bless-instructions__caution" role="note">
-        <strong><span aria-hidden="true">⚠ </span>{{ text.caution }}:</strong> {{ step.caution }}
-      </p>
-      <p class="bless-instructions__body">{{ step.body }}</p>
-    </article>
-    <div class="bless-instructions__nav">
-      <button type="button" class="bless-instructions__btn" :disabled="at === 0" @click="go(-1)">
-        ← {{ text.back }}
-      </button>
-      <BlessButton class="bless-instructions__btn is-next" @click="go(1)"
-        >{{ last ? text.finish : text.next }} →</BlessButton
-      >
-    </div>
-  </section>
-</template>
 
 <style>
 .bless-instructions {

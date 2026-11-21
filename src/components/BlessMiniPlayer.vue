@@ -1,3 +1,53 @@
+<template>
+  <section class="bless-mini" :class="{ 'is-docked': docked }" :aria-label="text.title">
+    <input
+      class="bless-mini__seek"
+      type="range"
+      min="0"
+      :max="duration"
+      step="1"
+      :value="position"
+      :aria-label="text.position"
+      :aria-valuetext="text.time(clock(position), clock(duration))"
+      :style="{ '--_at': `${share}%` }"
+      @input="position = ($event.target as HTMLInputElement).valueAsNumber"
+    />
+    <div class="bless-mini__row">
+      <button type="button" class="bless-mini__track" @click="emit('open')">
+        <span class="bless-sr">{{ text.open }}: </span>
+        <span class="bless-mini__art"><img v-if="image" :src="image" alt="" /></span>
+        <span class="bless-mini__text">
+          <span class="bless-mini__title">{{ title }}</span>{{ " "
+          }}<span v-if="artist" class="bless-mini__artist">{{ artist }}</span>
+        </span>
+      </button>
+      <span class="bless-mini__time" aria-hidden="true"
+        >{{ clock(position) }} / {{ clock(duration) }}</span
+      >
+      <div class="bless-mini__controls">
+        <button type="button" :aria-label="text.previous" @click="emit('previous')">
+          <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor" aria-hidden="true">
+            <path d="M3 2h2v12H3zM14 2v12L6 8z" />
+          </svg>
+        </button>
+        <button
+          type="button"
+          class="is-main"
+          :aria-label="playing ? text.pause : text.play"
+          @click="playing = !playing"
+        >
+          {{ playing ? "❚❚" : "▶" }}
+        </button>
+        <button type="button" :aria-label="text.next" @click="emit('next')">
+          <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor" aria-hidden="true">
+            <path d="M11 2h2v12h-2zM2 2v12l8-6z" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </section>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -51,56 +101,6 @@ const clock = (s: number) => {
 };
 const share = computed(() => (props.duration ? (position.value / props.duration) * 100 : 0));
 </script>
-
-<template>
-  <section class="bless-mini" :class="{ 'is-docked': docked }" :aria-label="text.title">
-    <input
-      class="bless-mini__seek"
-      type="range"
-      min="0"
-      :max="duration"
-      step="1"
-      :value="position"
-      :aria-label="text.position"
-      :aria-valuetext="text.time(clock(position), clock(duration))"
-      :style="{ '--_at': `${share}%` }"
-      @input="position = ($event.target as HTMLInputElement).valueAsNumber"
-    />
-    <div class="bless-mini__row">
-      <button type="button" class="bless-mini__track" @click="emit('open')">
-        <span class="bless-sr">{{ text.open }}: </span>
-        <span class="bless-mini__art"><img v-if="image" :src="image" alt="" /></span>
-        <span class="bless-mini__text">
-          <span class="bless-mini__title">{{ title }}</span>{{ " "
-          }}<span v-if="artist" class="bless-mini__artist">{{ artist }}</span>
-        </span>
-      </button>
-      <span class="bless-mini__time" aria-hidden="true"
-        >{{ clock(position) }} / {{ clock(duration) }}</span
-      >
-      <div class="bless-mini__controls">
-        <button type="button" :aria-label="text.previous" @click="emit('previous')">
-          <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor" aria-hidden="true">
-            <path d="M3 2h2v12H3zM14 2v12L6 8z" />
-          </svg>
-        </button>
-        <button
-          type="button"
-          class="is-main"
-          :aria-label="playing ? text.pause : text.play"
-          @click="playing = !playing"
-        >
-          {{ playing ? "❚❚" : "▶" }}
-        </button>
-        <button type="button" :aria-label="text.next" @click="emit('next')">
-          <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor" aria-hidden="true">
-            <path d="M11 2h2v12h-2zM2 2v12l8-6z" />
-          </svg>
-        </button>
-      </div>
-    </div>
-  </section>
-</template>
 
 <style>
 .bless-mini {

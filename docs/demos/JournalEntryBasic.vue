@@ -1,3 +1,14 @@
+<template>
+  <BlessJournalEntry
+    v-model="lines"
+    :accounts
+    currency="IDR"
+    locale="id-ID"
+    @post="posted = true"
+  />
+  <p v-if="posted" style="margin-top: 12px">The entry is posted.</p>
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessJournalEntry, type BlessJournalLine } from "blessing-ui";
@@ -17,14 +28,3 @@ const lines = ref<BlessJournalLine[]>([
 ]);
 const posted = ref(false);
 </script>
-
-<template>
-  <BlessJournalEntry
-    v-model="lines"
-    :accounts
-    currency="IDR"
-    locale="id-ID"
-    @post="posted = true"
-  />
-  <p v-if="posted" style="margin-top: 12px">The entry is posted.</p>
-</template>

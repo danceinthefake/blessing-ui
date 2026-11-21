@@ -1,3 +1,35 @@
+<template>
+  <BlessTable
+    :columns
+    :rows="flat as unknown as T[]"
+    :row-key
+    :caption
+    :striped
+    :stack="false"
+    class="bless-treetable"
+  >
+    <template v-for="(_, name) in $slots" #[name]="scope"
+      ><slot :name v-bind="scope ?? {}"
+    /></template>
+    <template #[`cell-${treeCol}`]="{ row, value }">
+      <span class="bless-treetable__cell" :style="{ '--_d': (row as Flat).__depth }">
+        <button
+          v-if="(row as Flat).__has"
+          type="button"
+          class="bless-treetable__toggle"
+          :aria-expanded="(row as Flat).__open"
+          :aria-label="String(value)"
+          @click="toggle(row[rowKey] as string | number)"
+        >
+          <span aria-hidden="true">›</span>
+        </button>
+        <span v-else class="bless-treetable__spacer" aria-hidden="true" />
+        <slot :name="`tree-${treeCol}`" :row :value>{{ value }}</slot>
+      </span>
+    </template>
+  </BlessTable>
+</template>
+
 <script setup lang="ts" generic="T extends Record<string, unknown>">
 import { computed, ref } from "vue";
 import BlessTable from "./BlessTable.vue";
@@ -49,38 +81,6 @@ const flat = computed(() => {
   return out;
 });
 </script>
-
-<template>
-  <BlessTable
-    :columns
-    :rows="flat as unknown as T[]"
-    :row-key
-    :caption
-    :striped
-    :stack="false"
-    class="bless-treetable"
-  >
-    <template v-for="(_, name) in $slots" #[name]="scope"
-      ><slot :name v-bind="scope ?? {}"
-    /></template>
-    <template #[`cell-${treeCol}`]="{ row, value }">
-      <span class="bless-treetable__cell" :style="{ '--_d': (row as Flat).__depth }">
-        <button
-          v-if="(row as Flat).__has"
-          type="button"
-          class="bless-treetable__toggle"
-          :aria-expanded="(row as Flat).__open"
-          :aria-label="String(value)"
-          @click="toggle(row[rowKey] as string | number)"
-        >
-          <span aria-hidden="true">›</span>
-        </button>
-        <span v-else class="bless-treetable__spacer" aria-hidden="true" />
-        <slot :name="`tree-${treeCol}`" :row :value>{{ value }}</slot>
-      </span>
-    </template>
-  </BlessTable>
-</template>
 
 <style>
 .bless-treetable__cell {

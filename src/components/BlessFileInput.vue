@@ -1,3 +1,53 @@
+<template>
+  <div
+    class="bless-file"
+    :class="{
+      'bless-file--disabled': disabled,
+      'bless-file--invalid': invalid || fs.invalid.value,
+    }"
+  >
+    <label
+      :for="id()"
+      class="bless-file__zone"
+      :class="{ 'bless-file__zone--over': over }"
+      @dragover.prevent="!disabled && (over = true)"
+      @dragleave="over = false"
+      @drop.prevent="onDrop"
+    >
+      <input
+        v-bind="$attrs"
+        :id="id()"
+        ref="input"
+        type="file"
+        class="bless-file__input"
+        :accept
+        :multiple
+        :disabled
+        :aria-invalid="invalid || fs.invalid.value || undefined"
+        :aria-describedby="joinIds(fs.describedby.value, $attrs['aria-describedby'] as string)"
+        @change="take(($event.target as HTMLInputElement).files)"
+      />
+      <span class="bless-file__icon" aria-hidden="true"><slot name="icon">⇪</slot></span>
+      <span class="bless-file__label"><slot>{{ label }}</slot></span>
+      <span v-if="hint" class="bless-file__hint">{{ hint }}</span>
+    </label>
+    <ul role="list" v-if="list && model.length" ref="listEl" class="bless-file__list">
+      <li v-for="(f, i) in model" :key="f.name + i" class="bless-file__item">
+        <span class="bless-file__name">{{ f.name }}</span>
+        <span class="bless-file__size">{{ kb(f.size) }}</span>
+        <button
+          type="button"
+          class="bless-file__remove"
+          :aria-label="text.remove(f.name)"
+          @click="remove(i)"
+        >
+          ×
+        </button>
+      </li>
+    </ul>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { useLabelPack } from "../composables/useLabels";
 import { nextTick, ref, computed } from "vue";
@@ -70,56 +120,6 @@ const kb = (n: number) =>
       ? `${(n / 1024).toFixed(0)} KB`
       : `${(n / 1048576).toFixed(1)} MB`;
 </script>
-
-<template>
-  <div
-    class="bless-file"
-    :class="{
-      'bless-file--disabled': disabled,
-      'bless-file--invalid': invalid || fs.invalid.value,
-    }"
-  >
-    <label
-      :for="id()"
-      class="bless-file__zone"
-      :class="{ 'bless-file__zone--over': over }"
-      @dragover.prevent="!disabled && (over = true)"
-      @dragleave="over = false"
-      @drop.prevent="onDrop"
-    >
-      <input
-        v-bind="$attrs"
-        :id="id()"
-        ref="input"
-        type="file"
-        class="bless-file__input"
-        :accept
-        :multiple
-        :disabled
-        :aria-invalid="invalid || fs.invalid.value || undefined"
-        :aria-describedby="joinIds(fs.describedby.value, $attrs['aria-describedby'] as string)"
-        @change="take(($event.target as HTMLInputElement).files)"
-      />
-      <span class="bless-file__icon" aria-hidden="true"><slot name="icon">⇪</slot></span>
-      <span class="bless-file__label"><slot>{{ label }}</slot></span>
-      <span v-if="hint" class="bless-file__hint">{{ hint }}</span>
-    </label>
-    <ul role="list" v-if="list && model.length" ref="listEl" class="bless-file__list">
-      <li v-for="(f, i) in model" :key="f.name + i" class="bless-file__item">
-        <span class="bless-file__name">{{ f.name }}</span>
-        <span class="bless-file__size">{{ kb(f.size) }}</span>
-        <button
-          type="button"
-          class="bless-file__remove"
-          :aria-label="text.remove(f.name)"
-          @click="remove(i)"
-        >
-          ×
-        </button>
-      </li>
-    </ul>
-  </div>
-</template>
 
 <style>
 .bless-file {

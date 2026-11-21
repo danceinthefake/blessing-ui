@@ -1,3 +1,21 @@
+<template>
+  <BlessInput
+    v-bind="$attrs"
+    :model-value="shown"
+    type="text"
+    inputmode="numeric"
+    autocomplete="cc-number"
+    :invalid="touched && bad"
+    :error="touched && bad ? text.invalid : undefined"
+    @input.capture="fix"
+    @blur="touched = true"
+  >
+    <template v-if="brand !== 'unknown'" #suffix
+      ><span class="bless-card-input__brand">{{ brand }}</span></template
+    >
+  </BlessInput>
+</template>
+
 <script setup lang="ts">
 import { useLabelPack } from "../composables/useLabels";
 import { computed, ref } from "vue";
@@ -48,24 +66,6 @@ function fix(e: Event) {
   if (cardBrand(d) !== prev) emit("brand", cardBrand(d));
 }
 </script>
-
-<template>
-  <BlessInput
-    v-bind="$attrs"
-    :model-value="shown"
-    type="text"
-    inputmode="numeric"
-    autocomplete="cc-number"
-    :invalid="touched && bad"
-    :error="touched && bad ? text.invalid : undefined"
-    @input.capture="fix"
-    @blur="touched = true"
-  >
-    <template v-if="brand !== 'unknown'" #suffix
-      ><span class="bless-card-input__brand">{{ brand }}</span></template
-    >
-  </BlessInput>
-</template>
 
 <style>
 .bless-card-input__brand {

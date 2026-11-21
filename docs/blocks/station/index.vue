@@ -1,52 +1,3 @@
-<script setup lang="ts">
-import {
-  BlessDowntimePicker,
-  BlessProductionCounter,
-  BlessQualityCheck,
-  BlessSheet,
-  BlessText,
-  BlessWorkInstructions,
-  BlessWorkOrderCard,
-  type BlessQualityResult,
-  useToast,
-} from "blessing-ui";
-import { nextTick, onMounted, ref } from "vue";
-import { mockStationApi } from "./api";
-import { count, type Job } from "./domain";
-
-const job = ref<Job>();
-onMounted(async () => (job.value = await mockStationApi.job()));
-
-// one unit: follow the steps, then check it; the check counts it and starts the next unit
-const phase = ref<"steps" | "check">("steps");
-const step = ref(0);
-const results = ref<BlessQualityResult>({});
-const checkTitle = ref<HTMLElement>();
-function packed() {
-  phase.value = "check";
-  nextTick(() => checkTitle.value?.focus());
-}
-const { toast } = useToast();
-async function checked(unit: BlessQualityResult, passed: boolean) {
-  if (!job.value) return;
-  job.value.order = count(job.value.order, passed);
-  await mockStationApi.report(unit, passed);
-  toast({ title: passed ? "Unit good" : "Unit to scrap", color: passed ? "success" : "warning" });
-  results.value = {};
-  step.value = 0;
-  phase.value = "steps";
-}
-
-const stopping = ref(false);
-const reason = ref<string>();
-async function stop(r: string, note: string) {
-  if (!job.value) return;
-  job.value.order.state = "paused";
-  stopping.value = false;
-  await mockStationApi.stop(r, note);
-}
-</script>
-
 <template>
   <div v-if="job" class="station">
     <aside class="station__order">
@@ -100,6 +51,55 @@ async function stop(r: string, note: string) {
     </BlessSheet>
   </div>
 </template>
+
+<script setup lang="ts">
+import {
+  BlessDowntimePicker,
+  BlessProductionCounter,
+  BlessQualityCheck,
+  BlessSheet,
+  BlessText,
+  BlessWorkInstructions,
+  BlessWorkOrderCard,
+  type BlessQualityResult,
+  useToast,
+} from "blessing-ui";
+import { nextTick, onMounted, ref } from "vue";
+import { mockStationApi } from "./api";
+import { count, type Job } from "./domain";
+
+const job = ref<Job>();
+onMounted(async () => (job.value = await mockStationApi.job()));
+
+// one unit: follow the steps, then check it; the check counts it and starts the next unit
+const phase = ref<"steps" | "check">("steps");
+const step = ref(0);
+const results = ref<BlessQualityResult>({});
+const checkTitle = ref<HTMLElement>();
+function packed() {
+  phase.value = "check";
+  nextTick(() => checkTitle.value?.focus());
+}
+const { toast } = useToast();
+async function checked(unit: BlessQualityResult, passed: boolean) {
+  if (!job.value) return;
+  job.value.order = count(job.value.order, passed);
+  await mockStationApi.report(unit, passed);
+  toast({ title: passed ? "Unit good" : "Unit to scrap", color: passed ? "success" : "warning" });
+  results.value = {};
+  step.value = 0;
+  phase.value = "steps";
+}
+
+const stopping = ref(false);
+const reason = ref<string>();
+async function stop(r: string, note: string) {
+  if (!job.value) return;
+  job.value.order.state = "paused";
+  stopping.value = false;
+  await mockStationApi.stop(r, note);
+}
+</script>
 
 <style scoped>
 .station {

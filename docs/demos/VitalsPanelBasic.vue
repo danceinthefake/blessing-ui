@@ -1,3 +1,7 @@
+<template>
+  <BlessVitalsPanel :vitals />
+</template>
+
 <script setup lang="ts">
 import { BlessVitalsPanel, type BlessVital } from "blessing-ui";
 
@@ -17,7 +21,3 @@ const vitals: BlessVital[] = [
   { id: "rr", label: "Breathing", value: 11, unit: "/min", normal: [12, 20], time: "08:10" },
 ];
 </script>
-
-<template>
-  <BlessVitalsPanel :vitals />
-</template>

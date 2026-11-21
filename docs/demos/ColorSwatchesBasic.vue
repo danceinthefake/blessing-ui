@@ -1,3 +1,10 @@
+<template>
+  <div>
+    <BlessColorSwatches v-model="color" :swatches :labels="{ label: 'Cover color' }" />
+    <BlessText as="p" size="sm" style="margin-top: 12px">Cover color: {{ color }}</BlessText>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessColorSwatches, BlessText } from "blessing-ui";
@@ -13,10 +20,3 @@ const swatches = [
 ];
 const color = ref<string | null>("#a759ff");
 </script>
-
-<template>
-  <div>
-    <BlessColorSwatches v-model="color" :swatches :labels="{ label: 'Cover color' }" />
-    <BlessText as="p" size="sm" style="margin-top: 12px">Cover color: {{ color }}</BlessText>
-  </div>
-</template>

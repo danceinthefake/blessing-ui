@@ -1,29 +1,3 @@
-<script setup lang="ts">
-import {
-  BlessAlert,
-  BlessButton,
-  BlessLessonVideo,
-  BlessQuiz,
-  BlessText,
-  type BlessVideoNote,
-} from "blessing-ui";
-import { onMounted, ref } from "vue";
-import type { Lesson } from "../domain";
-
-/** focus: move focus to the title, when a person opened this lesson */
-const props = defineProps<{ lesson: Lesson; next?: Lesson; focus?: boolean }>();
-const notes = defineModel<BlessVideoNote[]>("notes", { default: () => [] });
-const emit = defineEmits<{ pass: []; open: [id: string] }>();
-const result = ref<"pass" | "fail">();
-function scored(right: number, total: number) {
-  result.value = right === total ? "pass" : "fail";
-  if (result.value === "pass") emit("pass");
-}
-// the parent renders a new pane for each lesson; focus goes to its title
-const heading = ref<{ $el: HTMLElement }>();
-onMounted(() => props.focus && heading.value?.$el.focus());
-</script>
-
 <template>
   <main class="pane">
     <BlessText ref="heading" as="h3" size="lg" weight="bold" tabindex="-1" class="pane__title">{{
@@ -59,6 +33,32 @@ onMounted(() => props.focus && heading.value?.$el.focus());
     </section>
   </main>
 </template>
+
+<script setup lang="ts">
+import {
+  BlessAlert,
+  BlessButton,
+  BlessLessonVideo,
+  BlessQuiz,
+  BlessText,
+  type BlessVideoNote,
+} from "blessing-ui";
+import { onMounted, ref } from "vue";
+import type { Lesson } from "../domain";
+
+/** focus: move focus to the title, when a person opened this lesson */
+const props = defineProps<{ lesson: Lesson; next?: Lesson; focus?: boolean }>();
+const notes = defineModel<BlessVideoNote[]>("notes", { default: () => [] });
+const emit = defineEmits<{ pass: []; open: [id: string] }>();
+const result = ref<"pass" | "fail">();
+function scored(right: number, total: number) {
+  result.value = right === total ? "pass" : "fail";
+  if (result.value === "pass") emit("pass");
+}
+// the parent renders a new pane for each lesson; focus goes to its title
+const heading = ref<{ $el: HTMLElement }>();
+onMounted(() => props.focus && heading.value?.$el.focus());
+</script>
 
 <style scoped>
 .pane,

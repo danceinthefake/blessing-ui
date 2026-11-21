@@ -1,3 +1,37 @@
+<template>
+  <BlessModal v-model="open" size="sm" :title="done ? text.thanks : text.title(subject)">
+    <div v-if="done" class="bless-report__done" role="status">
+      <p>{{ text.thanksBody }}</p>
+      <BlessButton @click="open = false">{{ text.close }}</BlessButton>
+    </div>
+    <form v-else class="bless-report" novalidate @submit.prevent="send">
+      <fieldset
+        class="bless-report__set"
+        role="radiogroup"
+        :aria-invalid="tried && !reason ? 'true' : undefined"
+        :aria-describedby="`${uid}-err`"
+      >
+        <legend class="bless-report__legend">{{ text.why }}</legend>
+        <label v-for="r in reasons" :key="r" class="bless-report__reason">
+          <input v-model="reason" type="radio" :name="`${uid}-reason`" :value="r" />
+          {{ r }}
+        </label>
+      </fieldset>
+      <p :id="`${uid}-err`" class="bless-report__error" role="alert">
+        {{ tried && !reason ? text.missing : "" }}
+      </p>
+      <label class="bless-report__field">
+        <span>{{ text.note }}</span>
+        <textarea v-model="note" rows="3" />
+      </label>
+      <div class="bless-report__actions">
+        <BlessButton type="submit">{{ text.send }}</BlessButton>
+        <BlessButton variant="ghost" @click="open = false">{{ text.cancel }}</BlessButton>
+      </div>
+    </form>
+  </BlessModal>
+</template>
+
 <script setup lang="ts">
 import { computed, ref, useId, watch } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -73,40 +107,6 @@ function send() {
   done.value = true;
 }
 </script>
-
-<template>
-  <BlessModal v-model="open" size="sm" :title="done ? text.thanks : text.title(subject)">
-    <div v-if="done" class="bless-report__done" role="status">
-      <p>{{ text.thanksBody }}</p>
-      <BlessButton @click="open = false">{{ text.close }}</BlessButton>
-    </div>
-    <form v-else class="bless-report" novalidate @submit.prevent="send">
-      <fieldset
-        class="bless-report__set"
-        role="radiogroup"
-        :aria-invalid="tried && !reason ? 'true' : undefined"
-        :aria-describedby="`${uid}-err`"
-      >
-        <legend class="bless-report__legend">{{ text.why }}</legend>
-        <label v-for="r in reasons" :key="r" class="bless-report__reason">
-          <input v-model="reason" type="radio" :name="`${uid}-reason`" :value="r" />
-          {{ r }}
-        </label>
-      </fieldset>
-      <p :id="`${uid}-err`" class="bless-report__error" role="alert">
-        {{ tried && !reason ? text.missing : "" }}
-      </p>
-      <label class="bless-report__field">
-        <span>{{ text.note }}</span>
-        <textarea v-model="note" rows="3" />
-      </label>
-      <div class="bless-report__actions">
-        <BlessButton type="submit">{{ text.send }}</BlessButton>
-        <BlessButton variant="ghost" @click="open = false">{{ text.cancel }}</BlessButton>
-      </div>
-    </form>
-  </BlessModal>
-</template>
 
 <style>
 .bless-report,

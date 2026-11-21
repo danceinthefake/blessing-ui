@@ -1,3 +1,38 @@
+<template>
+  <figure class="bless-picto" role="group" :aria-label="label">
+    <p class="bless-picto__key">
+      <span class="bless-picto__icon" aria-hidden="true"
+        ><slot name="icon"
+          ><svg viewBox="0 0 16 16">
+            <circle cx="8" cy="4.5" r="3" />
+            <path d="M2.5 15.5c0-3.6 2.5-6 5.5-6s5.5 2.4 5.5 6Z" /></svg></slot
+      ></span>
+      {{ text.key(fmt(unit), noun) }}
+    </p>
+    <ul class="bless-stagger bless-picto__rows">
+      <li v-for="r in rows" :key="r.label" class="bless-picto__row" :style="{ '--_c': r.color }">
+        <span class="bless-picto__label">{{ r.label }}</span>
+        <span class="bless-picto__icons" aria-hidden="true">
+          <span
+            v-for="(f, i) in r.fills"
+            :key="i"
+            class="bless-picto__icon is-filled"
+            :style="f < 1 ? { '--_f': `${f * 100}%` } : undefined"
+            :class="{ 'is-part': f < 1 }"
+          >
+            <slot name="icon"
+              ><svg viewBox="0 0 16 16">
+                <circle cx="8" cy="4.5" r="3" />
+                <path d="M2.5 15.5c0-3.6 2.5-6 5.5-6s5.5 2.4 5.5 6Z" /></svg
+            ></slot>
+          </span>
+        </span>
+        <span class="bless-picto__value">{{ fmt(r.value) }}</span>
+      </li>
+    </ul>
+  </figure>
+</template>
+
 <script lang="ts">
 export interface BlessPictogramItem {
   label: string;
@@ -51,41 +86,6 @@ const rows = computed(() =>
   })),
 );
 </script>
-
-<template>
-  <figure class="bless-picto" role="group" :aria-label="label">
-    <p class="bless-picto__key">
-      <span class="bless-picto__icon" aria-hidden="true"
-        ><slot name="icon"
-          ><svg viewBox="0 0 16 16">
-            <circle cx="8" cy="4.5" r="3" />
-            <path d="M2.5 15.5c0-3.6 2.5-6 5.5-6s5.5 2.4 5.5 6Z" /></svg></slot
-      ></span>
-      {{ text.key(fmt(unit), noun) }}
-    </p>
-    <ul class="bless-stagger bless-picto__rows">
-      <li v-for="r in rows" :key="r.label" class="bless-picto__row" :style="{ '--_c': r.color }">
-        <span class="bless-picto__label">{{ r.label }}</span>
-        <span class="bless-picto__icons" aria-hidden="true">
-          <span
-            v-for="(f, i) in r.fills"
-            :key="i"
-            class="bless-picto__icon is-filled"
-            :style="f < 1 ? { '--_f': `${f * 100}%` } : undefined"
-            :class="{ 'is-part': f < 1 }"
-          >
-            <slot name="icon"
-              ><svg viewBox="0 0 16 16">
-                <circle cx="8" cy="4.5" r="3" />
-                <path d="M2.5 15.5c0-3.6 2.5-6 5.5-6s5.5 2.4 5.5 6Z" /></svg
-            ></slot>
-          </span>
-        </span>
-        <span class="bless-picto__value">{{ fmt(r.value) }}</span>
-      </li>
-    </ul>
-  </figure>
-</template>
 
 <style>
 .bless-picto {

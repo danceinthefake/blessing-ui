@@ -1,3 +1,30 @@
+<template>
+  <article class="bless-product" :class="{ 'is-sold-out': soldOut }">
+    <div class="bless-product__media">
+      <img v-if="image" class="bless-product__img" :src="image" :alt="imageAlt" loading="lazy" />
+      <span v-if="badge || soldOut" class="bless-product__badge">{{
+        soldOut ? text.soldOut : badge
+      }}</span>
+    </div>
+    <div class="bless-product__body">
+      <h3 class="bless-product__name">
+        <a v-if="href" :href="href">{{ name }}</a>
+        <template v-else>{{ name }}</template>
+      </h3>
+      <p v-if="rating !== undefined" class="bless-product__rating">
+        <span aria-hidden="true"
+          >★ {{ stars }}<template v-if="reviews !== undefined"> ({{ reviews }})</template></span
+        >
+        <span class="bless-sr">{{ text.rated(stars, reviews ?? 0) }}</span>
+      </p>
+      <BlessPrice :amount="price" :was :currency :locale />
+      <BlessButton class="bless-product__add" size="sm" :disabled="soldOut" @click="emit('add')">
+        {{ soldOut ? text.soldOut : text.add }}<span class="bless-sr">: {{ name }}</span>
+      </BlessButton>
+    </div>
+  </article>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -49,33 +76,6 @@ const stars = computed(() =>
     : new Intl.NumberFormat(props.locale, { maximumFractionDigits: 1 }).format(props.rating),
 );
 </script>
-
-<template>
-  <article class="bless-product" :class="{ 'is-sold-out': soldOut }">
-    <div class="bless-product__media">
-      <img v-if="image" class="bless-product__img" :src="image" :alt="imageAlt" loading="lazy" />
-      <span v-if="badge || soldOut" class="bless-product__badge">{{
-        soldOut ? text.soldOut : badge
-      }}</span>
-    </div>
-    <div class="bless-product__body">
-      <h3 class="bless-product__name">
-        <a v-if="href" :href="href">{{ name }}</a>
-        <template v-else>{{ name }}</template>
-      </h3>
-      <p v-if="rating !== undefined" class="bless-product__rating">
-        <span aria-hidden="true"
-          >★ {{ stars }}<template v-if="reviews !== undefined"> ({{ reviews }})</template></span
-        >
-        <span class="bless-sr">{{ text.rated(stars, reviews ?? 0) }}</span>
-      </p>
-      <BlessPrice :amount="price" :was :currency :locale />
-      <BlessButton class="bless-product__add" size="sm" :disabled="soldOut" @click="emit('add')">
-        {{ soldOut ? text.soldOut : text.add }}<span class="bless-sr">: {{ name }}</span>
-      </BlessButton>
-    </div>
-  </article>
-</template>
 
 <style>
 .bless-product {

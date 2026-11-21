@@ -1,3 +1,47 @@
+<template>
+  <BlessPopover v-model:open="open" placement="top" :title="text.title" class="bless-ctx__panel">
+    <template #trigger>
+      <button
+        type="button"
+        class="bless-ctx"
+        :class="`bless-ctx--${level}`"
+        :aria-label="text.used(tokens.format(used), tokens.format(max), pct.format(share))"
+        :aria-expanded="open"
+      >
+        <svg viewBox="0 0 18 18" width="18" height="18" aria-hidden="true">
+          <circle class="bless-ctx__track" cx="9" cy="9" :r="R" />
+          <circle
+            class="bless-ctx__fill"
+            cx="9"
+            cy="9"
+            :r="R"
+            :stroke-dasharray="`${share * C} ${C}`"
+          />
+        </svg>
+        <span class="bless-ctx__pct" aria-hidden="true">{{ pct.format(share) }}</span>
+      </button>
+    </template>
+    <div class="bless-ctx__bar" aria-hidden="true">
+      <span
+        v-for="r in rows"
+        :key="r.label"
+        :style="{ inlineSize: `${r.share * 100}%`, background: r.color }"
+      />
+    </div>
+    <dl class="bless-ctx__list">
+      <div v-for="r in rows" :key="r.label">
+        <dt><i :style="{ background: r.color }" aria-hidden="true" />{{ r.label }}</dt>
+        <dd>{{ tokens.format(r.tokens) }}</dd>
+      </div>
+      <div>
+        <dt><i class="is-free" aria-hidden="true" />{{ text.free }}</dt>
+        <dd>{{ tokens.format(Math.max(0, max - used)) }}</dd>
+      </div>
+    </dl>
+    <p class="bless-ctx__sum">{{ tokens.format(used) }} / {{ tokens.format(max) }}</p>
+  </BlessPopover>
+</template>
+
 <script setup lang="ts">
 import { computed, ref } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -62,50 +106,6 @@ const open = ref(false);
 const R = 7;
 const C = 2 * Math.PI * R;
 </script>
-
-<template>
-  <BlessPopover v-model:open="open" placement="top" :title="text.title" class="bless-ctx__panel">
-    <template #trigger>
-      <button
-        type="button"
-        class="bless-ctx"
-        :class="`bless-ctx--${level}`"
-        :aria-label="text.used(tokens.format(used), tokens.format(max), pct.format(share))"
-        :aria-expanded="open"
-      >
-        <svg viewBox="0 0 18 18" width="18" height="18" aria-hidden="true">
-          <circle class="bless-ctx__track" cx="9" cy="9" :r="R" />
-          <circle
-            class="bless-ctx__fill"
-            cx="9"
-            cy="9"
-            :r="R"
-            :stroke-dasharray="`${share * C} ${C}`"
-          />
-        </svg>
-        <span class="bless-ctx__pct" aria-hidden="true">{{ pct.format(share) }}</span>
-      </button>
-    </template>
-    <div class="bless-ctx__bar" aria-hidden="true">
-      <span
-        v-for="r in rows"
-        :key="r.label"
-        :style="{ inlineSize: `${r.share * 100}%`, background: r.color }"
-      />
-    </div>
-    <dl class="bless-ctx__list">
-      <div v-for="r in rows" :key="r.label">
-        <dt><i :style="{ background: r.color }" aria-hidden="true" />{{ r.label }}</dt>
-        <dd>{{ tokens.format(r.tokens) }}</dd>
-      </div>
-      <div>
-        <dt><i class="is-free" aria-hidden="true" />{{ text.free }}</dt>
-        <dd>{{ tokens.format(Math.max(0, max - used)) }}</dd>
-      </div>
-    </dl>
-    <p class="bless-ctx__sum">{{ tokens.format(used) }} / {{ tokens.format(max) }}</p>
-  </BlessPopover>
-</template>
 
 <style>
 .bless-ctx {

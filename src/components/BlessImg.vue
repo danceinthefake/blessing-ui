@@ -1,41 +1,3 @@
-<script setup lang="ts">
-import { onMounted, ref, watch } from "vue";
-import BlessSkeleton from "./BlessSkeleton.vue";
-
-defineOptions({ name: "BlessImg" });
-
-const props = withDefaults(
-  defineProps<{
-    src: string;
-    alt: string;
-    /** e.g. 16 / 9 or "4 / 5"; omit to use the image's own */
-    ratio?: number | string;
-    fit?: "cover" | "contain" | "fill" | "none";
-    /** eager for above-the-fold images */
-    loading?: "lazy" | "eager";
-    /** tiny blurred placeholder (data URL / LQIP) */
-    placeholder?: string;
-    srcset?: string;
-    sizes?: string;
-  }>(),
-  { fit: "cover", loading: "lazy" },
-);
-const loaded = ref(false);
-const failed = ref(false);
-const img = ref<HTMLImageElement>();
-// server-rendered: a cached image can finish before the load listener exists, and the skeleton
-// would then sit over it forever. Read its state once mounted.
-// a new src starts over: an error or a load belongs to the old image
-watch(
-  () => props.src,
-  () => ((loaded.value = false), (failed.value = false)),
-);
-onMounted(() => {
-  const el = img.value;
-  if (el?.complete) el.naturalWidth ? (loaded.value = true) : el.src && (failed.value = true);
-});
-</script>
-
 <template>
   <span
     class="bless-img"
@@ -74,6 +36,44 @@ onMounted(() => {
     <span v-if="$slots.default" class="bless-img__overlay"><slot /></span>
   </span>
 </template>
+
+<script setup lang="ts">
+import { onMounted, ref, watch } from "vue";
+import BlessSkeleton from "./BlessSkeleton.vue";
+
+defineOptions({ name: "BlessImg" });
+
+const props = withDefaults(
+  defineProps<{
+    src: string;
+    alt: string;
+    /** e.g. 16 / 9 or "4 / 5"; omit to use the image's own */
+    ratio?: number | string;
+    fit?: "cover" | "contain" | "fill" | "none";
+    /** eager for above-the-fold images */
+    loading?: "lazy" | "eager";
+    /** tiny blurred placeholder (data URL / LQIP) */
+    placeholder?: string;
+    srcset?: string;
+    sizes?: string;
+  }>(),
+  { fit: "cover", loading: "lazy" },
+);
+const loaded = ref(false);
+const failed = ref(false);
+const img = ref<HTMLImageElement>();
+// server-rendered: a cached image can finish before the load listener exists, and the skeleton
+// would then sit over it forever. Read its state once mounted.
+// a new src starts over: an error or a load belongs to the old image
+watch(
+  () => props.src,
+  () => ((loaded.value = false), (failed.value = false)),
+);
+onMounted(() => {
+  const el = img.value;
+  if (el?.complete) el.naturalWidth ? (loaded.value = true) : el.src && (failed.value = true);
+});
+</script>
 
 <style>
 .bless-img {

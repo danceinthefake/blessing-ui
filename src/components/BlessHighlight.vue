@@ -1,3 +1,12 @@
+<template>
+  <span class="bless-highlight"
+    ><template v-for="(p, i) in parts" :key="i"
+      ><mark v-if="p.mark" class="bless-highlight__mark">{{ p.text }}</mark
+      ><template v-else>{{ p.text }}</template></template
+    ></span
+  >
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { highlightRanges } from "./highlight";
@@ -23,15 +32,6 @@ const parts = computed(() => {
   return out;
 });
 </script>
-
-<template>
-  <span class="bless-highlight"
-    ><template v-for="(p, i) in parts" :key="i"
-      ><mark v-if="p.mark" class="bless-highlight__mark">{{ p.text }}</mark
-      ><template v-else>{{ p.text }}</template></template
-    ></span
-  >
-</template>
 
 <style>
 .bless-highlight__mark {

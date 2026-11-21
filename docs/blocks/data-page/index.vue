@@ -1,3 +1,56 @@
+<template>
+  <div class="members">
+    <BlessBreadcrumb :items="[{ label: 'Workspace', href: '#' }, { label: 'Members' }]" />
+    <div class="members__head">
+      <div>
+        <BlessText as="h1" size="lg" weight="light">Members</BlessText>
+        <BlessText as="p" size="sm" muted>{{ rows.length }} people in this workspace</BlessText>
+      </div>
+      <BlessButton>Invite</BlessButton>
+    </div>
+    <BlessDataTable
+      ref="table"
+      @update:selected="selected = $event"
+      :columns
+      :rows="filtered"
+      row-key="id"
+      :page-size="6"
+      selectable
+      searchable
+      :search-keys="['name', 'email']"
+      search-placeholder="Search name or email"
+      :loading
+      caption="Members"
+    >
+      <template #toolbar>
+        <!-- pressing the active filter again clears a single group; cleared means All -->
+        <BlessToggleGroup
+          :model-value="status"
+          label="Filter by status"
+          @update:model-value="status = Array.isArray($event) ? 'all' : ($event ?? 'all')"
+        >
+          <BlessToggle v-for="f in filters" :key="f.value" :value="f.value" size="sm">{{
+            f.label
+          }}</BlessToggle>
+        </BlessToggleGroup>
+        <!-- the count is a status, so selecting a row is heard -->
+        <span role="status" class="members__count">{{
+          selected.length ? `${selected.length} selected` : ""
+        }}</span>
+        <div v-if="selected.length" class="members__bulk">
+          <BlessButton size="sm" variant="outline">Change role</BlessButton>
+          <BlessButton size="sm" variant="outline" color="danger" @click="removeSelected"
+            >Remove</BlessButton
+          >
+        </div>
+      </template>
+      <template #cell-status="{ value }">
+        <BlessBadge :color="statusColor[value as Status]">{{ value }}</BlessBadge>
+      </template>
+    </BlessDataTable>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed, onMounted, ref } from "vue";
 import {
@@ -53,59 +106,6 @@ const filters: { value: Status | "all"; label: string }[] = [
   { value: "suspended", label: "Suspended" },
 ];
 </script>
-
-<template>
-  <div class="members">
-    <BlessBreadcrumb :items="[{ label: 'Workspace', href: '#' }, { label: 'Members' }]" />
-    <div class="members__head">
-      <div>
-        <BlessText as="h1" size="lg" weight="light">Members</BlessText>
-        <BlessText as="p" size="sm" muted>{{ rows.length }} people in this workspace</BlessText>
-      </div>
-      <BlessButton>Invite</BlessButton>
-    </div>
-    <BlessDataTable
-      ref="table"
-      @update:selected="selected = $event"
-      :columns
-      :rows="filtered"
-      row-key="id"
-      :page-size="6"
-      selectable
-      searchable
-      :search-keys="['name', 'email']"
-      search-placeholder="Search name or email"
-      :loading
-      caption="Members"
-    >
-      <template #toolbar>
-        <!-- pressing the active filter again clears a single group; cleared means All -->
-        <BlessToggleGroup
-          :model-value="status"
-          label="Filter by status"
-          @update:model-value="status = Array.isArray($event) ? 'all' : ($event ?? 'all')"
-        >
-          <BlessToggle v-for="f in filters" :key="f.value" :value="f.value" size="sm">{{
-            f.label
-          }}</BlessToggle>
-        </BlessToggleGroup>
-        <!-- the count is a status, so selecting a row is heard -->
-        <span role="status" class="members__count">{{
-          selected.length ? `${selected.length} selected` : ""
-        }}</span>
-        <div v-if="selected.length" class="members__bulk">
-          <BlessButton size="sm" variant="outline">Change role</BlessButton>
-          <BlessButton size="sm" variant="outline" color="danger" @click="removeSelected"
-            >Remove</BlessButton
-          >
-        </div>
-      </template>
-      <template #cell-status="{ value }">
-        <BlessBadge :color="statusColor[value as Status]">{{ value }}</BlessBadge>
-      </template>
-    </BlessDataTable>
-  </div>
-</template>
 
 <style scoped>
 .members {

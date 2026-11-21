@@ -1,3 +1,73 @@
+<template>
+  <div
+    class="bless-datepicker"
+    :class="[
+      `bless-datepicker--${size}`,
+      {
+        'bless-datepicker--invalid': invalid || fs.invalid.value,
+        'bless-datepicker--disabled': disabled,
+      },
+    ]"
+  >
+    <span v-if="useNative" class="bless-datepicker__field bless-lean--field">
+      <input
+        :id
+        v-model="model"
+        type="date"
+        :min
+        :max
+        :disabled
+        class="bless-datepicker__native"
+        :aria-invalid="invalid || fs.invalid.value || undefined"
+        :aria-describedby="fs.describedby.value"
+      />
+    </span>
+    <template v-else>
+      <button
+        ref="anchor"
+        :id
+        type="button"
+        class="bless-datepicker__trigger"
+        :disabled
+        :aria-haspopup="'dialog'"
+        :aria-expanded="open"
+        :aria-invalid="invalid || fs.invalid.value || undefined"
+        :aria-describedby="fs.describedby.value"
+        @click="open = !open"
+        @keydown.esc="open && ($event.preventDefault(), (open = false))"
+      >
+        <span class="bless-datepicker__icon" aria-hidden="true">▦</span>
+        <span
+          class="bless-datepicker__text"
+          :class="{ 'bless-datepicker__text--placeholder': !text }"
+          >{{ text || placeholder }}</span
+        >
+      </button>
+      <button
+        v-if="text && !disabled"
+        type="button"
+        class="bless-datepicker__clear"
+        :aria-label="words.clear"
+        @click="clear"
+      >
+        ×
+      </button>
+      <div
+        ref="panel"
+        popover="auto"
+        class="bless-datepicker__panel"
+        :style
+        role="dialog"
+        :aria-label="placeholder"
+        @toggle="open = ($event as ToggleEvent).newState === 'open'"
+        @keydown.esc.stop.prevent="close"
+      >
+        <BlessCalendar v-model="model" :range :min :max :locale />
+      </div>
+    </template>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { useLabelPack } from "../composables/useLabels";
 import { computed, nextTick, onMounted, ref, watch } from "vue";
@@ -80,76 +150,6 @@ function clear() {
   anchor.value?.focus();
 }
 </script>
-
-<template>
-  <div
-    class="bless-datepicker"
-    :class="[
-      `bless-datepicker--${size}`,
-      {
-        'bless-datepicker--invalid': invalid || fs.invalid.value,
-        'bless-datepicker--disabled': disabled,
-      },
-    ]"
-  >
-    <span v-if="useNative" class="bless-datepicker__field bless-lean--field">
-      <input
-        :id
-        v-model="model"
-        type="date"
-        :min
-        :max
-        :disabled
-        class="bless-datepicker__native"
-        :aria-invalid="invalid || fs.invalid.value || undefined"
-        :aria-describedby="fs.describedby.value"
-      />
-    </span>
-    <template v-else>
-      <button
-        ref="anchor"
-        :id
-        type="button"
-        class="bless-datepicker__trigger"
-        :disabled
-        :aria-haspopup="'dialog'"
-        :aria-expanded="open"
-        :aria-invalid="invalid || fs.invalid.value || undefined"
-        :aria-describedby="fs.describedby.value"
-        @click="open = !open"
-        @keydown.esc="open && ($event.preventDefault(), (open = false))"
-      >
-        <span class="bless-datepicker__icon" aria-hidden="true">▦</span>
-        <span
-          class="bless-datepicker__text"
-          :class="{ 'bless-datepicker__text--placeholder': !text }"
-          >{{ text || placeholder }}</span
-        >
-      </button>
-      <button
-        v-if="text && !disabled"
-        type="button"
-        class="bless-datepicker__clear"
-        :aria-label="words.clear"
-        @click="clear"
-      >
-        ×
-      </button>
-      <div
-        ref="panel"
-        popover="auto"
-        class="bless-datepicker__panel"
-        :style
-        role="dialog"
-        :aria-label="placeholder"
-        @toggle="open = ($event as ToggleEvent).newState === 'open'"
-        @keydown.esc.stop.prevent="close"
-      >
-        <BlessCalendar v-model="model" :range :min :max :locale />
-      </div>
-    </template>
-  </div>
-</template>
 
 <style>
 .bless-datepicker {

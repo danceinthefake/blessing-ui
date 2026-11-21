@@ -1,3 +1,50 @@
+<template>
+  <div class="bless-notify">
+    <table class="bless-notify__table">
+      <caption class="bless-sr">
+        {{ label ?? text.title }}
+      </caption>
+      <thead>
+        <tr>
+          <th scope="col" class="bless-notify__event">{{ text.event }}</th>
+          <th v-for="c in channels" :key="c.key" scope="col" class="bless-notify__channel">
+            <span>{{ c.label }}</span>
+            <input
+              type="checkbox"
+              class="bless-notify__check"
+              :checked="columnState(prefs, keys, c.key) === true"
+              :indeterminate="columnState(prefs, keys, c.key) === 'mixed'"
+              :aria-label="text.all(c.label)"
+              @change="
+                prefs = setColumn(prefs, keys, c.key, ($event.target as HTMLInputElement).checked)
+              "
+            />
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="e in events" :key="e.key">
+          <th scope="row" class="bless-notify__event">
+            <span class="bless-notify__label">{{ e.label }}</span>
+            <span v-if="e.description" class="bless-notify__desc">{{ e.description }}</span>
+          </th>
+          <td v-for="c in channels" :key="c.key" class="bless-notify__cell">
+            <input
+              type="checkbox"
+              class="bless-notify__check"
+              :checked="isOn(prefs, e.key, c.key)"
+              :aria-label="text.cell(e.label, c.label)"
+              @change="
+                prefs = setCell(prefs, e.key, c.key, ($event.target as HTMLInputElement).checked)
+              "
+            />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import {
@@ -48,53 +95,6 @@ const text = computed(() => ({
 }));
 const keys = computed(() => props.events.map((e) => e.key));
 </script>
-
-<template>
-  <div class="bless-notify">
-    <table class="bless-notify__table">
-      <caption class="bless-sr">
-        {{ label ?? text.title }}
-      </caption>
-      <thead>
-        <tr>
-          <th scope="col" class="bless-notify__event">{{ text.event }}</th>
-          <th v-for="c in channels" :key="c.key" scope="col" class="bless-notify__channel">
-            <span>{{ c.label }}</span>
-            <input
-              type="checkbox"
-              class="bless-notify__check"
-              :checked="columnState(prefs, keys, c.key) === true"
-              :indeterminate="columnState(prefs, keys, c.key) === 'mixed'"
-              :aria-label="text.all(c.label)"
-              @change="
-                prefs = setColumn(prefs, keys, c.key, ($event.target as HTMLInputElement).checked)
-              "
-            />
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="e in events" :key="e.key">
-          <th scope="row" class="bless-notify__event">
-            <span class="bless-notify__label">{{ e.label }}</span>
-            <span v-if="e.description" class="bless-notify__desc">{{ e.description }}</span>
-          </th>
-          <td v-for="c in channels" :key="c.key" class="bless-notify__cell">
-            <input
-              type="checkbox"
-              class="bless-notify__check"
-              :checked="isOn(prefs, e.key, c.key)"
-              :aria-label="text.cell(e.label, c.label)"
-              @change="
-                prefs = setCell(prefs, e.key, c.key, ($event.target as HTMLInputElement).checked)
-              "
-            />
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</template>
 
 <style>
 .bless-notify {

@@ -1,3 +1,12 @@
+<template>
+  <div class="col" style="max-width: 480px">
+    <BlessButton @click="open = true">Start tour</BlessButton>
+    <BlessInput id="tour-search" placeholder="search…" />
+    <div><BlessButton id="tour-save" variant="outline">Save</BlessButton></div>
+    <BlessTour v-model:open="open" :steps />
+  </div>
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessButton, BlessInput, BlessTour, type BlessTourStep } from "blessing-ui";
@@ -18,12 +27,3 @@ const steps: BlessTourStep[] = [
   },
 ];
 </script>
-
-<template>
-  <div class="col" style="max-width: 480px">
-    <BlessButton @click="open = true">Start tour</BlessButton>
-    <BlessInput id="tour-search" placeholder="search…" />
-    <div><BlessButton id="tour-save" variant="outline">Save</BlessButton></div>
-    <BlessTour v-model:open="open" :steps />
-  </div>
-</template>

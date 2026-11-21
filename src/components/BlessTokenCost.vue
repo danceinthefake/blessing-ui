@@ -1,3 +1,35 @@
+<template>
+  <table class="bless-tokens">
+    <caption>
+      {{ text.caption(model) }}
+    </caption>
+    <thead>
+      <tr>
+        <th scope="col">{{ text.kind }}</th>
+        <th scope="col" class="is-num">{{ text.tokens }}</th>
+        <th scope="col" class="is-num">{{ text.price }}</th>
+        <th scope="col" class="is-num">{{ text.cost }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="r in rows" :key="r.key">
+        <th scope="row">{{ text[r.key] }}</th>
+        <td class="is-num">{{ num.format(r.n) }}</td>
+        <td class="is-num">{{ money(r.price) }}</td>
+        <td class="is-num">{{ money(r.cost) }}</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th scope="row">{{ text.total }}</th>
+        <td class="is-num">{{ num.format(allTokens) }}</td>
+        <td />
+        <td class="is-num">{{ money(cost.total) }}</td>
+      </tr>
+    </tfoot>
+  </table>
+</template>
+
 <script lang="ts">
 export interface BlessTokenUsage {
   input: number;
@@ -102,38 +134,6 @@ const rows = computed(() => [
 ]);
 const allTokens = computed(() => rows.value.reduce((a, r) => a + r.n, 0));
 </script>
-
-<template>
-  <table class="bless-tokens">
-    <caption>
-      {{ text.caption(model) }}
-    </caption>
-    <thead>
-      <tr>
-        <th scope="col">{{ text.kind }}</th>
-        <th scope="col" class="is-num">{{ text.tokens }}</th>
-        <th scope="col" class="is-num">{{ text.price }}</th>
-        <th scope="col" class="is-num">{{ text.cost }}</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr v-for="r in rows" :key="r.key">
-        <th scope="row">{{ text[r.key] }}</th>
-        <td class="is-num">{{ num.format(r.n) }}</td>
-        <td class="is-num">{{ money(r.price) }}</td>
-        <td class="is-num">{{ money(r.cost) }}</td>
-      </tr>
-    </tbody>
-    <tfoot>
-      <tr>
-        <th scope="row">{{ text.total }}</th>
-        <td class="is-num">{{ num.format(allTokens) }}</td>
-        <td />
-        <td class="is-num">{{ money(cost.total) }}</td>
-      </tr>
-    </tfoot>
-  </table>
-</template>
 
 <style>
 .bless-tokens {

@@ -1,10 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { BlessSortable } from "blessing-ui";
-const todo = ref(["Write the intro", "Record the demo", "Proofread"]);
-const done = ref(["Pick a title"]);
-</script>
-
 <template>
   <div class="row" style="align-items: stretch; max-width: 560px">
     <div style="flex: 1">
@@ -15,3 +8,10 @@ const done = ref(["Pick a title"]);
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { BlessSortable } from "blessing-ui";
+const todo = ref(["Write the intro", "Record the demo", "Proofread"]);
+const done = ref(["Pick a title"]);
+</script>

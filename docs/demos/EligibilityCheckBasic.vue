@@ -1,3 +1,7 @@
+<template>
+  <BlessEligibilityCheck :questions :outcomes />
+</template>
+
 <script setup lang="ts">
 import {
   BlessEligibilityCheck,
@@ -57,7 +61,3 @@ const outcomes: BlessEligibilityOutcome[] = [
   },
 ];
 </script>
-
-<template>
-  <BlessEligibilityCheck :questions :outcomes />
-</template>

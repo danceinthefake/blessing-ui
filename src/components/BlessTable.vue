@@ -1,25 +1,3 @@
-<script setup lang="ts" generic="T extends Record<string, unknown>">
-import type { BlessColumn } from "./table";
-
-defineOptions({ name: "BlessTable" });
-
-const props = withDefaults(
-  defineProps<{
-    columns: BlessColumn<T>[];
-    rows: T[];
-    rowKey?: keyof T & string;
-    caption?: string;
-    /** stack rows into label/value pairs under 800px */
-    stack?: boolean;
-    striped?: boolean;
-  }>(),
-  { stack: true, striped: false },
-);
-// Stacked, the cells are restyled as blocks under 800px, and Safari then drops table semantics;
-// explicit roles keep it read as a table. `r(x)` gives the role only when stacking.
-const r = (role: string) => (props.stack ? role : undefined);
-</script>
-
 <template>
   <table
     :role="r('table')"
@@ -74,6 +52,28 @@ const r = (role: string) => (props.stack ? role : undefined);
     </tfoot>
   </table>
 </template>
+
+<script setup lang="ts" generic="T extends Record<string, unknown>">
+import type { BlessColumn } from "./table";
+
+defineOptions({ name: "BlessTable" });
+
+const props = withDefaults(
+  defineProps<{
+    columns: BlessColumn<T>[];
+    rows: T[];
+    rowKey?: keyof T & string;
+    caption?: string;
+    /** stack rows into label/value pairs under 800px */
+    stack?: boolean;
+    striped?: boolean;
+  }>(),
+  { stack: true, striped: false },
+);
+// Stacked, the cells are restyled as blocks under 800px, and Safari then drops table semantics;
+// explicit roles keep it read as a table. `r(x)` gives the role only when stacking.
+const r = (role: string) => (props.stack ? role : undefined);
+</script>
 
 <style>
 .bless-table {

@@ -1,3 +1,9 @@
+<template>
+  <div class="bless-aspect" :class="`bless-aspect--${fit}`" :style="{ aspectRatio: String(ratio) }">
+    <slot />
+  </div>
+</template>
+
 <script setup lang="ts">
 defineOptions({ name: "BlessAspectRatio" });
 
@@ -11,12 +17,6 @@ withDefaults(
   { ratio: 16 / 9, fit: "cover" },
 );
 </script>
-
-<template>
-  <div class="bless-aspect" :class="`bless-aspect--${fit}`" :style="{ aspectRatio: String(ratio) }">
-    <slot />
-  </div>
-</template>
 
 <style>
 .bless-aspect {

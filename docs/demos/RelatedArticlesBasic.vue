@@ -1,3 +1,7 @@
+<template>
+  <BlessRelatedArticles :articles :level="3" />
+</template>
+
 <script setup lang="ts">
 import { BlessRelatedArticles, type BlessRelatedArticle } from "blessing-ui";
 import { art } from "./_data";
@@ -29,7 +33,3 @@ const articles: BlessRelatedArticle[] = [
   },
 ];
 </script>
-
-<template>
-  <BlessRelatedArticles :articles :level="3" />
-</template>

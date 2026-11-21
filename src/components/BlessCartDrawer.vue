@@ -1,3 +1,69 @@
+<template>
+  <BlessSheet v-model="open" side="right" class="bless-cart" :title="text.title(count)">
+    <p v-if="!lines.length" class="bless-cart__empty">{{ text.empty }}</p>
+    <ul v-else class="bless-cart__lines">
+      <li v-for="l in lines" :key="l.id" class="bless-cart__line">
+        <img v-if="l.image" class="bless-cart__img" :src="l.image" alt="" />
+        <div class="bless-cart__info">
+          <span class="bless-cart__name">{{ l.name }}</span>
+          <span v-if="l.variant" class="bless-cart__variant">{{ l.variant }}</span>
+          <div class="bless-cart__qty">
+            <button
+              type="button"
+              :aria-label="text.less(l.name)"
+              :disabled="l.quantity <= 1"
+              @click="setQty(l.id, l.quantity - 1)"
+            >
+              −
+            </button>
+            <input
+              type="number"
+              inputmode="numeric"
+              min="1"
+              :max
+              :value="l.quantity"
+              :aria-label="text.quantity(l.name)"
+              @change="setQty(l.id, ($event.target as HTMLInputElement).valueAsNumber || 1)"
+            />
+            <button
+              type="button"
+              :aria-label="text.more(l.name)"
+              :disabled="l.quantity >= max"
+              @click="setQty(l.id, l.quantity + 1)"
+            >
+              +
+            </button>
+          </div>
+        </div>
+        <div class="bless-cart__end">
+          <span class="bless-cart__sum">{{ money.format(l.price * l.quantity) }}</span>
+          <button
+            type="button"
+            class="bless-cart__remove"
+            :aria-label="text.remove(l.name)"
+            :title="text.remove(l.name)"
+            @click="remove(l.id)"
+          >
+            ✕
+          </button>
+        </div>
+      </li>
+    </ul>
+    <template #footer>
+      <div class="bless-cart__foot">
+        <div class="bless-cart__total">
+          <span>{{ text.subtotal }}</span>
+          <strong>{{ money.format(subtotal) }}</strong>
+        </div>
+        <p class="bless-cart__note">{{ text.note }}</p>
+        <BlessButton block :disabled="!lines.length" @click="emit('checkout')">{{
+          text.checkout
+        }}</BlessButton>
+      </div>
+    </template>
+  </BlessSheet>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -65,72 +131,6 @@ const setQty = (id: string, q: number) =>
   ));
 const remove = (id: string) => (lines.value = lines.value.filter((l) => l.id !== id));
 </script>
-
-<template>
-  <BlessSheet v-model="open" side="right" class="bless-cart" :title="text.title(count)">
-    <p v-if="!lines.length" class="bless-cart__empty">{{ text.empty }}</p>
-    <ul v-else class="bless-cart__lines">
-      <li v-for="l in lines" :key="l.id" class="bless-cart__line">
-        <img v-if="l.image" class="bless-cart__img" :src="l.image" alt="" />
-        <div class="bless-cart__info">
-          <span class="bless-cart__name">{{ l.name }}</span>
-          <span v-if="l.variant" class="bless-cart__variant">{{ l.variant }}</span>
-          <div class="bless-cart__qty">
-            <button
-              type="button"
-              :aria-label="text.less(l.name)"
-              :disabled="l.quantity <= 1"
-              @click="setQty(l.id, l.quantity - 1)"
-            >
-              −
-            </button>
-            <input
-              type="number"
-              inputmode="numeric"
-              min="1"
-              :max
-              :value="l.quantity"
-              :aria-label="text.quantity(l.name)"
-              @change="setQty(l.id, ($event.target as HTMLInputElement).valueAsNumber || 1)"
-            />
-            <button
-              type="button"
-              :aria-label="text.more(l.name)"
-              :disabled="l.quantity >= max"
-              @click="setQty(l.id, l.quantity + 1)"
-            >
-              +
-            </button>
-          </div>
-        </div>
-        <div class="bless-cart__end">
-          <span class="bless-cart__sum">{{ money.format(l.price * l.quantity) }}</span>
-          <button
-            type="button"
-            class="bless-cart__remove"
-            :aria-label="text.remove(l.name)"
-            :title="text.remove(l.name)"
-            @click="remove(l.id)"
-          >
-            ✕
-          </button>
-        </div>
-      </li>
-    </ul>
-    <template #footer>
-      <div class="bless-cart__foot">
-        <div class="bless-cart__total">
-          <span>{{ text.subtotal }}</span>
-          <strong>{{ money.format(subtotal) }}</strong>
-        </div>
-        <p class="bless-cart__note">{{ text.note }}</p>
-        <BlessButton block :disabled="!lines.length" @click="emit('checkout')">{{
-          text.checkout
-        }}</BlessButton>
-      </div>
-    </template>
-  </BlessSheet>
-</template>
 
 <style>
 .bless-cart__empty {

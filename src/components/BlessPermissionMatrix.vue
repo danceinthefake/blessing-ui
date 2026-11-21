@@ -1,64 +1,3 @@
-<script setup lang="ts">
-import { computed } from "vue";
-import { isOn, setCell, type CheckMatrix } from "../composables/checkMatrix";
-import { useLabelPack } from "../composables/useLabels";
-import "./sr.css";
-
-defineOptions({ name: "BlessPermissionMatrix" });
-const pack = useLabelPack("BlessPermissionMatrix");
-
-export interface BlessRole {
-  key: string;
-  label: string;
-  /** has every permission and cannot change, for example the owner */
-  locked?: boolean;
-}
-export interface BlessPermission {
-  key: string;
-  label: string;
-  /** the name of its group; a new name starts a group */
-  group?: string;
-}
-
-const props = defineProps<{
-  roles: BlessRole[];
-  permissions: BlessPermission[];
-  /** names the table */
-  label?: string;
-  labels?: Partial<{
-    title: string;
-    permission: string;
-    all: (role: string) => string;
-    cell: (role: string, permission: string) => string;
-    locked: string;
-  }>;
-}>();
-/** the permissions of each role, by role key */
-const grants = defineModel<CheckMatrix>({ default: () => ({}) });
-
-const text = computed(() => ({
-  title: "Permissions",
-  permission: "Permission",
-  all: (r: string) => `All permissions for ${r}`,
-  cell: (r: string, p: string) => `${r} can ${p}`,
-  locked: "cannot change",
-  ...pack(),
-  ...props.labels,
-}));
-const keys = computed(() => props.permissions.map((p) => p.key));
-const has = (r: BlessRole, p: string) => !!r.locked || isOn(grants.value, r.key, p);
-const roleState = (r: BlessRole) => {
-  const n = keys.value.filter((p) => has(r, p)).length;
-  return n === 0 ? false : n === keys.value.length ? true : "mixed";
-};
-const setRole = (r: BlessRole, on: boolean) =>
-  (grants.value = keys.value.reduce((m, p) => setCell(m, r.key, p, on), grants.value));
-const toggle = (r: BlessRole, p: string, e: Event) =>
-  (grants.value = setCell(grants.value, r.key, p, (e.target as HTMLInputElement).checked));
-const startsGroup = (i: number) =>
-  !!props.permissions[i]!.group && props.permissions[i]!.group !== props.permissions[i - 1]?.group;
-</script>
-
 <template>
   <div class="bless-perms">
     <table class="bless-perms__table">
@@ -120,6 +59,67 @@ const startsGroup = (i: number) =>
     </table>
   </div>
 </template>
+
+<script setup lang="ts">
+import { computed } from "vue";
+import { isOn, setCell, type CheckMatrix } from "../composables/checkMatrix";
+import { useLabelPack } from "../composables/useLabels";
+import "./sr.css";
+
+defineOptions({ name: "BlessPermissionMatrix" });
+const pack = useLabelPack("BlessPermissionMatrix");
+
+export interface BlessRole {
+  key: string;
+  label: string;
+  /** has every permission and cannot change, for example the owner */
+  locked?: boolean;
+}
+export interface BlessPermission {
+  key: string;
+  label: string;
+  /** the name of its group; a new name starts a group */
+  group?: string;
+}
+
+const props = defineProps<{
+  roles: BlessRole[];
+  permissions: BlessPermission[];
+  /** names the table */
+  label?: string;
+  labels?: Partial<{
+    title: string;
+    permission: string;
+    all: (role: string) => string;
+    cell: (role: string, permission: string) => string;
+    locked: string;
+  }>;
+}>();
+/** the permissions of each role, by role key */
+const grants = defineModel<CheckMatrix>({ default: () => ({}) });
+
+const text = computed(() => ({
+  title: "Permissions",
+  permission: "Permission",
+  all: (r: string) => `All permissions for ${r}`,
+  cell: (r: string, p: string) => `${r} can ${p}`,
+  locked: "cannot change",
+  ...pack(),
+  ...props.labels,
+}));
+const keys = computed(() => props.permissions.map((p) => p.key));
+const has = (r: BlessRole, p: string) => !!r.locked || isOn(grants.value, r.key, p);
+const roleState = (r: BlessRole) => {
+  const n = keys.value.filter((p) => has(r, p)).length;
+  return n === 0 ? false : n === keys.value.length ? true : "mixed";
+};
+const setRole = (r: BlessRole, on: boolean) =>
+  (grants.value = keys.value.reduce((m, p) => setCell(m, r.key, p, on), grants.value));
+const toggle = (r: BlessRole, p: string, e: Event) =>
+  (grants.value = setCell(grants.value, r.key, p, (e.target as HTMLInputElement).checked));
+const startsGroup = (i: number) =>
+  !!props.permissions[i]!.group && props.permissions[i]!.group !== props.permissions[i - 1]?.group;
+</script>
 
 <style>
 .bless-perms {

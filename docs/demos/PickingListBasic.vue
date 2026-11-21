@@ -1,3 +1,8 @@
+<template>
+  <BlessPickingList v-model="lines" order="Order SO-2026-0417" @finish="complete = true" />
+  <p v-if="complete" style="margin-top: 12px">Take the tote to packing.</p>
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessPickingList, type BlessPickLine } from "blessing-ui";
@@ -18,8 +23,3 @@ const lines = ref<BlessPickLine[]>([
 ]);
 const complete = ref(false);
 </script>
-
-<template>
-  <BlessPickingList v-model="lines" order="Order SO-2026-0417" @finish="complete = true" />
-  <p v-if="complete" style="margin-top: 12px">Take the tote to packing.</p>
-</template>

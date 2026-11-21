@@ -1,3 +1,7 @@
+<template>
+  <BlessStickyBoard v-model="notes" :height="380" />
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessStickyBoard, type BlessStickyNote } from "blessing-ui";
@@ -10,7 +14,3 @@ const notes = ref<BlessStickyNote[]>([
   { id: "d", text: "Ask listeners for their worst room", x: 260, y: 200, color: "green" },
 ]);
 </script>
-
-<template>
-  <BlessStickyBoard v-model="notes" :height="380" />
-</template>

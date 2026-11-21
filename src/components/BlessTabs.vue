@@ -1,3 +1,53 @@
+<template>
+  <div class="bless-tabs">
+    <div class="bless-tabs__list" role="tablist" :aria-label="label" @keydown="onKey">
+      <BlessSkew
+        v-for="t in tabs"
+        :key="t.value"
+        as="button"
+        :ref="
+          (el) => {
+            if (el) btns[tabs.indexOf(t)] = (el as any).$el;
+          }
+        "
+        type="button"
+        role="tab"
+        class="bless-tabs__tab"
+        :class="{
+          'bless-tabs__tab--active': t.value === current,
+          [`bless-tabs__tab--${color}`]: true,
+        }"
+        :color="t.value === current ? color : 'none'"
+        :id="`${id}-tab-${ix(t)}`"
+        :aria-selected="t.value === current"
+        :aria-controls="`${id}-panel-${ix(t)}`"
+        :tabindex="t.value === (focused ?? current) ? 0 : -1"
+        :disabled="t.disabled"
+        @click="
+          model = t.value;
+          focused = t.value;
+        "
+        @focus="focused = t.value"
+        @blur="focused = undefined"
+      >
+        <slot name="tab" :tab="t" :active="t.value === current">{{ t.label }}</slot>
+      </BlessSkew>
+    </div>
+    <div
+      v-for="t in tabs"
+      :key="t.value"
+      v-show="t.value === current"
+      role="tabpanel"
+      class="bless-tabs__panel"
+      :id="`${id}-panel-${ix(t)}`"
+      :aria-labelledby="`${id}-tab-${ix(t)}`"
+      tabindex="0"
+    >
+      <slot :tab="t" :active="t.value === current" />
+    </div>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed, ref, useId } from "vue";
 import { logicalKey } from "../composables/rtl";
@@ -53,56 +103,6 @@ function onKey(e: KeyboardEvent) {
   focusTab(next.value);
 }
 </script>
-
-<template>
-  <div class="bless-tabs">
-    <div class="bless-tabs__list" role="tablist" :aria-label="label" @keydown="onKey">
-      <BlessSkew
-        v-for="t in tabs"
-        :key="t.value"
-        as="button"
-        :ref="
-          (el) => {
-            if (el) btns[tabs.indexOf(t)] = (el as any).$el;
-          }
-        "
-        type="button"
-        role="tab"
-        class="bless-tabs__tab"
-        :class="{
-          'bless-tabs__tab--active': t.value === current,
-          [`bless-tabs__tab--${color}`]: true,
-        }"
-        :color="t.value === current ? color : 'none'"
-        :id="`${id}-tab-${ix(t)}`"
-        :aria-selected="t.value === current"
-        :aria-controls="`${id}-panel-${ix(t)}`"
-        :tabindex="t.value === (focused ?? current) ? 0 : -1"
-        :disabled="t.disabled"
-        @click="
-          model = t.value;
-          focused = t.value;
-        "
-        @focus="focused = t.value"
-        @blur="focused = undefined"
-      >
-        <slot name="tab" :tab="t" :active="t.value === current">{{ t.label }}</slot>
-      </BlessSkew>
-    </div>
-    <div
-      v-for="t in tabs"
-      :key="t.value"
-      v-show="t.value === current"
-      role="tabpanel"
-      class="bless-tabs__panel"
-      :id="`${id}-panel-${ix(t)}`"
-      :aria-labelledby="`${id}-tab-${ix(t)}`"
-      tabindex="0"
-    >
-      <slot :tab="t" :active="t.value === current" />
-    </div>
-  </div>
-</template>
 
 <style>
 .bless-tabs__list {

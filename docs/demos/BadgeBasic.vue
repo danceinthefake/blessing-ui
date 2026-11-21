@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import { BlessBadge, BlessDash } from "blessing-ui";
-</script>
-
 <template>
   <div class="row">
     <span>News <b>04.04</b><BlessDash /><BlessBadge scaled /></span>
@@ -9,3 +5,7 @@ import { BlessBadge, BlessDash } from "blessing-ui";
     <span>Shop<BlessDash /><BlessBadge color="warning">SALE</BlessBadge></span>
   </div>
 </template>
+
+<script setup lang="ts">
+import { BlessBadge, BlessDash } from "blessing-ui";
+</script>

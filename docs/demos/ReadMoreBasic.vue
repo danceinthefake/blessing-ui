@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import { BlessReadMore } from "blessing-ui";
-</script>
-
 <template>
   <div class="col" style="max-width: 32rem">
     <BlessReadMore :lines="3">
@@ -14,3 +10,7 @@ import { BlessReadMore } from "blessing-ui";
     <BlessReadMore :lines="3">This text fits, so there is no button.</BlessReadMore>
   </div>
 </template>
+
+<script setup lang="ts">
+import { BlessReadMore } from "blessing-ui";
+</script>

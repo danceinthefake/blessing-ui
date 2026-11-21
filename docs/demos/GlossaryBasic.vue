@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import { BlessGlossary } from "blessing-ui";
-</script>
-
 <template>
   <p style="max-width: 560px; margin: 0; line-height: 1.8">
     Export the episode at
@@ -21,3 +17,7 @@ import { BlessGlossary } from "blessing-ui";
     >, record next to a full wardrobe.
   </p>
 </template>
+
+<script setup lang="ts">
+import { BlessGlossary } from "blessing-ui";
+</script>

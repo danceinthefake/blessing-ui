@@ -1,3 +1,119 @@
+<template>
+  <div class="bless-sched" role="group" :aria-label="label">
+    <div class="bless-sched__bar">
+      <BlessButton size="sm" variant="outline" :aria-label="text.prev" @click="nav(-1)"
+        >‹</BlessButton
+      >
+      <BlessButton size="sm" variant="outline" @click="anchor = isoToday()">{{
+        text.today
+      }}</BlessButton>
+      <BlessButton size="sm" variant="outline" :aria-label="text.next" @click="nav(1)"
+        >›</BlessButton
+      >
+      <strong class="bless-sched__title" aria-live="polite">{{ title }}</strong>
+      <BlessButton v-if="editable" size="sm" class="bless-sched__add" @click="addDefault">{{
+        text.add
+      }}</BlessButton>
+    </div>
+    <div v-if="days.length" class="bless-sched__scroll">
+      <div class="bless-sched__head" :style="{ '--_n': days.length }">
+        <span class="bless-sched__corner" />
+        <span
+          v-for="d in days"
+          :key="d"
+          class="bless-sched__day"
+          :class="{ 'bless-sched__day--today': d === today }"
+          >{{ colFmt.format(fromISO(d)) }}</span
+        >
+      </div>
+      <div class="bless-sched__body">
+        <div class="bless-sched__gutter" aria-hidden="true" :style="{ height: `${height}px` }">
+          <span
+            v-for="h in hours"
+            :key="h"
+            class="bless-sched__hour"
+            :style="{ top: `${px(h * 60)}px` }"
+            >{{ t(h * 60) }}</span
+          >
+        </div>
+        <div
+          ref="cols"
+          class="bless-sched__cols"
+          :style="{ height: `${height}px`, '--_n': days.length, '--_h': `${hourHeight}px` }"
+          tabindex="-1"
+          :aria-describedby="hint"
+          @pointermove="move"
+          @pointerup="up"
+          @pointercancel="up"
+        >
+          <div
+            v-for="d in days"
+            :key="d"
+            class="bless-sched__col"
+            role="group"
+            :aria-label="dayName(d)"
+            @pointerdown="colDown(d, $event)"
+          >
+            <div
+              v-for="e in onDay(d)"
+              :key="e.id"
+              class="bless-sched__event"
+              :class="{ 'bless-sched__event--sel': selected === e.id }"
+              :style="{
+                ...style(e),
+                left: `calc(${(lane(d, e.id).lane / lane(d, e.id).lanes) * 100}% + 1px)`,
+                width: `calc(${100 / lane(d, e.id).lanes}% - 3px)`,
+              }"
+              :data-event="e.id"
+              role="button"
+              :aria-pressed="selected === e.id"
+              :aria-label="nameOf(e)"
+              :tabindex="tab === e.id ? 0 : -1"
+              @pointerdown="eventDown(e, $event, 'move')"
+              @keydown="onKey(e, $event)"
+              @focus="selected = e.id"
+            >
+              <span class="bless-sched__etitle">{{ e.title }}</span>{{ " " }}
+              <span class="bless-sched__etime">{{ t(e.start) }}–{{ t(e.end) }}</span>
+              <span
+                v-if="editable"
+                class="bless-sched__foot"
+                aria-hidden="true"
+                @pointerdown="eventDown(e, $event, 'size')"
+              />
+            </div>
+            <div
+              v-if="draft && draft.date === d"
+              class="bless-sched__event bless-sched__event--draft"
+              :style="style(draft)"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div v-if="current && editable" class="bless-sched__edit">
+      <label class="bless-sched__field">
+        <span>{{ text.title }}</span>
+        <input
+          ref="titleInput"
+          class="bless-sched__input"
+          type="text"
+          :value="current.title"
+          @input="patch({ ...current, title: ($event.target as HTMLInputElement).value })"
+        />
+      </label>
+      <span class="bless-sched__when"
+        >{{ dayName(current.date) }}, {{ t(current.start) }}–{{ t(current.end) }}</span
+      >
+      <BlessButton size="sm" variant="outline" @click="remove(current)">{{
+        text.remove
+      }}</BlessButton>
+    </div>
+    <span :id="hint" hidden>{{ text.hint }}</span>
+    <span class="bless-sched__live bless-sr" aria-live="polite">{{ live }}</span>
+  </div>
+</template>
+
 <script lang="ts">
 export type { ScheduleEvent as BlessScheduleEvent } from "../composables/schedule";
 </script>
@@ -288,122 +404,6 @@ const style = (e: { start: number; end: number }) => ({
 });
 const lane = (day: string, id: string) => lanes.value.get(day)?.get(id) ?? { lane: 0, lanes: 1 };
 </script>
-
-<template>
-  <div class="bless-sched" role="group" :aria-label="label">
-    <div class="bless-sched__bar">
-      <BlessButton size="sm" variant="outline" :aria-label="text.prev" @click="nav(-1)"
-        >‹</BlessButton
-      >
-      <BlessButton size="sm" variant="outline" @click="anchor = isoToday()">{{
-        text.today
-      }}</BlessButton>
-      <BlessButton size="sm" variant="outline" :aria-label="text.next" @click="nav(1)"
-        >›</BlessButton
-      >
-      <strong class="bless-sched__title" aria-live="polite">{{ title }}</strong>
-      <BlessButton v-if="editable" size="sm" class="bless-sched__add" @click="addDefault">{{
-        text.add
-      }}</BlessButton>
-    </div>
-    <div v-if="days.length" class="bless-sched__scroll">
-      <div class="bless-sched__head" :style="{ '--_n': days.length }">
-        <span class="bless-sched__corner" />
-        <span
-          v-for="d in days"
-          :key="d"
-          class="bless-sched__day"
-          :class="{ 'bless-sched__day--today': d === today }"
-          >{{ colFmt.format(fromISO(d)) }}</span
-        >
-      </div>
-      <div class="bless-sched__body">
-        <div class="bless-sched__gutter" aria-hidden="true" :style="{ height: `${height}px` }">
-          <span
-            v-for="h in hours"
-            :key="h"
-            class="bless-sched__hour"
-            :style="{ top: `${px(h * 60)}px` }"
-            >{{ t(h * 60) }}</span
-          >
-        </div>
-        <div
-          ref="cols"
-          class="bless-sched__cols"
-          :style="{ height: `${height}px`, '--_n': days.length, '--_h': `${hourHeight}px` }"
-          tabindex="-1"
-          :aria-describedby="hint"
-          @pointermove="move"
-          @pointerup="up"
-          @pointercancel="up"
-        >
-          <div
-            v-for="d in days"
-            :key="d"
-            class="bless-sched__col"
-            role="group"
-            :aria-label="dayName(d)"
-            @pointerdown="colDown(d, $event)"
-          >
-            <div
-              v-for="e in onDay(d)"
-              :key="e.id"
-              class="bless-sched__event"
-              :class="{ 'bless-sched__event--sel': selected === e.id }"
-              :style="{
-                ...style(e),
-                left: `calc(${(lane(d, e.id).lane / lane(d, e.id).lanes) * 100}% + 1px)`,
-                width: `calc(${100 / lane(d, e.id).lanes}% - 3px)`,
-              }"
-              :data-event="e.id"
-              role="button"
-              :aria-pressed="selected === e.id"
-              :aria-label="nameOf(e)"
-              :tabindex="tab === e.id ? 0 : -1"
-              @pointerdown="eventDown(e, $event, 'move')"
-              @keydown="onKey(e, $event)"
-              @focus="selected = e.id"
-            >
-              <span class="bless-sched__etitle">{{ e.title }}</span>{{ " " }}
-              <span class="bless-sched__etime">{{ t(e.start) }}–{{ t(e.end) }}</span>
-              <span
-                v-if="editable"
-                class="bless-sched__foot"
-                aria-hidden="true"
-                @pointerdown="eventDown(e, $event, 'size')"
-              />
-            </div>
-            <div
-              v-if="draft && draft.date === d"
-              class="bless-sched__event bless-sched__event--draft"
-              :style="style(draft)"
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-    <div v-if="current && editable" class="bless-sched__edit">
-      <label class="bless-sched__field">
-        <span>{{ text.title }}</span>
-        <input
-          ref="titleInput"
-          class="bless-sched__input"
-          type="text"
-          :value="current.title"
-          @input="patch({ ...current, title: ($event.target as HTMLInputElement).value })"
-        />
-      </label>
-      <span class="bless-sched__when"
-        >{{ dayName(current.date) }}, {{ t(current.start) }}–{{ t(current.end) }}</span
-      >
-      <BlessButton size="sm" variant="outline" @click="remove(current)">{{
-        text.remove
-      }}</BlessButton>
-    </div>
-    <span :id="hint" hidden>{{ text.hint }}</span>
-    <span class="bless-sched__live bless-sr" aria-live="polite">{{ live }}</span>
-  </div>
-</template>
 
 <style>
 .bless-sched {

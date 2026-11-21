@@ -1,3 +1,7 @@
+<template>
+  <BlessCombobox v-bind="$attrs" v-model="model" :options="options" :placeholder="placeholder" />
+</template>
+
 <script setup lang="ts">
 import { computed, onMounted, ref } from "vue";
 import BlessCombobox from "./BlessCombobox.vue";
@@ -39,7 +43,3 @@ onMounted(() => {
   }
 });
 </script>
-
-<template>
-  <BlessCombobox v-bind="$attrs" v-model="model" :options="options" :placeholder="placeholder" />
-</template>

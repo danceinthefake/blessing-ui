@@ -1,19 +1,3 @@
-<script setup lang="ts">
-import { useLink } from "../composables/useLink";
-defineOptions({ name: "BlessBreadcrumb" });
-const link = useLink();
-
-export interface BlessCrumb {
-  label: string;
-  href?: string;
-}
-
-withDefaults(defineProps<{ items: BlessCrumb[]; label?: string; separator?: string }>(), {
-  label: "Breadcrumb",
-  separator: "/",
-});
-</script>
-
 <template>
   <nav class="bless-breadcrumb" :aria-label="label">
     <ol role="list" class="bless-breadcrumb__list">
@@ -40,6 +24,22 @@ withDefaults(defineProps<{ items: BlessCrumb[]; label?: string; separator?: stri
     </ol>
   </nav>
 </template>
+
+<script setup lang="ts">
+import { useLink } from "../composables/useLink";
+defineOptions({ name: "BlessBreadcrumb" });
+const link = useLink();
+
+export interface BlessCrumb {
+  label: string;
+  href?: string;
+}
+
+withDefaults(defineProps<{ items: BlessCrumb[]; label?: string; separator?: string }>(), {
+  label: "Breadcrumb",
+  separator: "/",
+});
+</script>
 
 <style>
 .bless-breadcrumb__list {

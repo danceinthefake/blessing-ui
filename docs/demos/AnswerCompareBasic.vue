@@ -1,10 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { BlessAnswerCompare, type BlessAnswerVote } from "blessing-ui";
-
-const vote = ref<BlessAnswerVote | null>(null);
-</script>
-
 <template>
   <BlessAnswerCompare
     v-model="vote"
@@ -21,3 +14,10 @@ const vote = ref<BlessAnswerVote | null>(null);
     ]"
   />
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { BlessAnswerCompare, type BlessAnswerVote } from "blessing-ui";
+
+const vote = ref<BlessAnswerVote | null>(null);
+</script>

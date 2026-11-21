@@ -1,3 +1,35 @@
+<template>
+  <details
+    class="bless-reasoning"
+    :class="{ 'is-streaming': streaming }"
+    :open="shown"
+    @toggle="toggle"
+  >
+    <summary class="bless-reasoning__head">
+      <svg
+        class="bless-reasoning__icon"
+        viewBox="0 0 16 16"
+        width="14"
+        height="14"
+        aria-hidden="true"
+      >
+        <path
+          d="M8 1.5a4.5 4.5 0 0 0-2.6 8.2V12h5.2V9.7A4.5 4.5 0 0 0 8 1.5ZM6 14h4"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+      <span class="bless-reasoning__title">{{ head }}</span>
+    </summary>
+    <div class="bless-reasoning__body" :aria-busy="streaming || undefined">
+      <slot>{{ props.text }}</slot>
+    </div>
+  </details>
+</template>
+
 <script setup lang="ts">
 import { computed, ref, watch } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -66,38 +98,6 @@ function toggle(e: Event) {
   open.value = now;
 }
 </script>
-
-<template>
-  <details
-    class="bless-reasoning"
-    :class="{ 'is-streaming': streaming }"
-    :open="shown"
-    @toggle="toggle"
-  >
-    <summary class="bless-reasoning__head">
-      <svg
-        class="bless-reasoning__icon"
-        viewBox="0 0 16 16"
-        width="14"
-        height="14"
-        aria-hidden="true"
-      >
-        <path
-          d="M8 1.5a4.5 4.5 0 0 0-2.6 8.2V12h5.2V9.7A4.5 4.5 0 0 0 8 1.5ZM6 14h4"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="1.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-      </svg>
-      <span class="bless-reasoning__title">{{ head }}</span>
-    </summary>
-    <div class="bless-reasoning__body" :aria-busy="streaming || undefined">
-      <slot>{{ props.text }}</slot>
-    </div>
-  </details>
-</template>
 
 <style>
 .bless-reasoning {

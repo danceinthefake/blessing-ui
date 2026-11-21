@@ -1,11 +1,3 @@
-<script setup lang="ts">
-defineOptions({ name: "BlessButtonGroup" });
-
-withDefaults(defineProps<{ orientation?: "horizontal" | "vertical"; label?: string }>(), {
-  orientation: "horizontal",
-});
-</script>
-
 <template>
   <div
     class="bless-button-group bless-lean"
@@ -16,6 +8,14 @@ withDefaults(defineProps<{ orientation?: "horizontal" | "vertical"; label?: stri
     <slot />
   </div>
 </template>
+
+<script setup lang="ts">
+defineOptions({ name: "BlessButtonGroup" });
+
+withDefaults(defineProps<{ orientation?: "horizontal" | "vertical"; label?: string }>(), {
+  orientation: "horizontal",
+});
+</script>
 
 <style>
 /* fuse when grouped: one plate — no gap, shared border, and the group leans as one (.bless-lean) */

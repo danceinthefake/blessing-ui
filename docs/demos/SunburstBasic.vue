@@ -1,3 +1,7 @@
+<template>
+  <BlessSunburst :data="budget" :format="money" label="Yearly budget" />
+</template>
+
 <script setup lang="ts">
 import { BlessSunburst } from "blessing-ui";
 
@@ -32,7 +36,3 @@ const budget = [
 ];
 const money = (v: number) => `${v}k`;
 </script>
-
-<template>
-  <BlessSunburst :data="budget" :format="money" label="Yearly budget" />
-</template>

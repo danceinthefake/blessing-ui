@@ -1,3 +1,13 @@
+<template>
+  <BlessPictogram
+    :data="cities"
+    :unit="1000"
+    noun="listeners"
+    label="Monthly listeners by city"
+    style="max-width: 560px"
+  />
+</template>
+
 <script setup lang="ts">
 import { BlessPictogram } from "blessing-ui";
 
@@ -10,13 +20,3 @@ const cities = [
   { label: "Medan", value: 1_250 },
 ];
 </script>
-
-<template>
-  <BlessPictogram
-    :data="cities"
-    :unit="1000"
-    noun="listeners"
-    label="Monthly listeners by city"
-    style="max-width: 560px"
-  />
-</template>

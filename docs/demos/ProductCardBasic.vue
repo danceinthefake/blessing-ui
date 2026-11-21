@@ -1,11 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { BlessProductCard } from "blessing-ui";
-import { art } from "./_data";
-
-const added = ref<string[]>([]);
-</script>
-
 <template>
   <div
     style="display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px"
@@ -47,3 +39,11 @@ const added = ref<string[]>([]);
   </div>
   <p v-if="added.length" style="margin-top: 12px">In the cart: {{ added.join(", ") }}</p>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { BlessProductCard } from "blessing-ui";
+import { art } from "./_data";
+
+const added = ref<string[]>([]);
+</script>

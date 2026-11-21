@@ -1,3 +1,73 @@
+<template>
+  <BlessPopover v-model:open="open" placement="bottom-start" class="bless-cascade">
+    <template #trigger>
+      <button
+        type="button"
+        class="bless-cascade__trigger"
+        :class="[
+          `bless-cascade__trigger--${size}`,
+          {
+            'bless-cascade__trigger--invalid': invalid || fs.invalid.value,
+            'bless-cascade__trigger--empty': !text,
+          },
+        ]"
+        :id="id()"
+        :disabled
+        :aria-label="label ? `${label}: ${text || placeholder}` : undefined"
+        :aria-invalid="invalid || fs.invalid.value || undefined"
+        :aria-describedby="fs.describedby.value"
+        aria-haspopup="listbox"
+        :aria-expanded="open"
+      >
+        <span class="bless-cascade__text">{{ text || placeholder }}</span>
+        <span class="bless-cascade__chevron" aria-hidden="true" />
+      </button>
+    </template>
+    <div
+      ref="panelEl"
+      class="bless-cascade__panel"
+      tabindex="0"
+      role="group"
+      :aria-activedescendant="activeId"
+      @keydown="onKey"
+    >
+      <div
+        v-for="(list, col) in columns"
+        :key="col"
+        class="bless-cascade__col"
+        role="listbox"
+        :aria-label="`Level ${col + 1}`"
+      >
+        <div
+          v-for="(o, i) in list"
+          :id="`${uid}-${col}-${i}`"
+          :key="String(o.value)"
+          class="bless-cascade__option"
+          :class="{
+            'bless-cascade__option--active': active[col] === i,
+            'bless-cascade__option--open': trail[col] === i,
+            'bless-cascade__option--selected': o.value === model,
+            'bless-cascade__option--disabled': o.disabled,
+          }"
+          role="option"
+          :aria-selected="o.value === model"
+          :aria-disabled="o.disabled || undefined"
+          @mouseenter="
+            !o.disabled &&
+            (active = [...active.slice(0, col), i]) &&
+            o.children?.length &&
+            enter(col, i)
+          "
+          @click="pick(col, i)"
+        >
+          <span class="bless-cascade__label">{{ o.label }}</span>
+          <span v-if="o.children?.length" class="bless-cascade__more" aria-hidden="true">›</span>
+        </div>
+      </div>
+    </div>
+  </BlessPopover>
+</template>
+
 <script setup lang="ts" generic="T extends string | number">
 import { computed, nextTick, ref, useId, watch } from "vue";
 import { logicalKey } from "../composables/rtl";
@@ -146,76 +216,6 @@ watch(open, (o) => {
   active.value = idx;
 });
 </script>
-
-<template>
-  <BlessPopover v-model:open="open" placement="bottom-start" class="bless-cascade">
-    <template #trigger>
-      <button
-        type="button"
-        class="bless-cascade__trigger"
-        :class="[
-          `bless-cascade__trigger--${size}`,
-          {
-            'bless-cascade__trigger--invalid': invalid || fs.invalid.value,
-            'bless-cascade__trigger--empty': !text,
-          },
-        ]"
-        :id="id()"
-        :disabled
-        :aria-label="label ? `${label}: ${text || placeholder}` : undefined"
-        :aria-invalid="invalid || fs.invalid.value || undefined"
-        :aria-describedby="fs.describedby.value"
-        aria-haspopup="listbox"
-        :aria-expanded="open"
-      >
-        <span class="bless-cascade__text">{{ text || placeholder }}</span>
-        <span class="bless-cascade__chevron" aria-hidden="true" />
-      </button>
-    </template>
-    <div
-      ref="panelEl"
-      class="bless-cascade__panel"
-      tabindex="0"
-      role="group"
-      :aria-activedescendant="activeId"
-      @keydown="onKey"
-    >
-      <div
-        v-for="(list, col) in columns"
-        :key="col"
-        class="bless-cascade__col"
-        role="listbox"
-        :aria-label="`Level ${col + 1}`"
-      >
-        <div
-          v-for="(o, i) in list"
-          :id="`${uid}-${col}-${i}`"
-          :key="String(o.value)"
-          class="bless-cascade__option"
-          :class="{
-            'bless-cascade__option--active': active[col] === i,
-            'bless-cascade__option--open': trail[col] === i,
-            'bless-cascade__option--selected': o.value === model,
-            'bless-cascade__option--disabled': o.disabled,
-          }"
-          role="option"
-          :aria-selected="o.value === model"
-          :aria-disabled="o.disabled || undefined"
-          @mouseenter="
-            !o.disabled &&
-            (active = [...active.slice(0, col), i]) &&
-            o.children?.length &&
-            enter(col, i)
-          "
-          @click="pick(col, i)"
-        >
-          <span class="bless-cascade__label">{{ o.label }}</span>
-          <span v-if="o.children?.length" class="bless-cascade__more" aria-hidden="true">›</span>
-        </div>
-      </div>
-    </div>
-  </BlessPopover>
-</template>
 
 <style>
 .bless-cascade__trigger {

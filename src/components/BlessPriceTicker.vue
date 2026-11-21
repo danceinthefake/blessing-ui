@@ -1,3 +1,19 @@
+<template>
+  <BlessMarquee class="bless-ticker" :speed :label="text.title">
+    <span v-for="t in items" :key="t.symbol" class="bless-ticker__item">
+      <strong class="bless-ticker__symbol">{{ t.symbol }}</strong>{{ " " }}
+      <span class="bless-ticker__price">{{ price.format(t.price) }}</span>{{ " " }}
+      <span
+        class="bless-ticker__change"
+        :class="t.change < 0 ? 'is-down' : t.change > 0 ? 'is-up' : ''"
+      >
+        <span aria-hidden="true">{{ t.change < 0 ? "▼" : t.change > 0 ? "▲" : "■" }}</span>
+        {{ pct.format(t.change / 100) }}
+      </span>
+    </span>
+  </BlessMarquee>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -45,22 +61,6 @@ const pct = computed(
     }),
 );
 </script>
-
-<template>
-  <BlessMarquee class="bless-ticker" :speed :label="text.title">
-    <span v-for="t in items" :key="t.symbol" class="bless-ticker__item">
-      <strong class="bless-ticker__symbol">{{ t.symbol }}</strong>{{ " " }}
-      <span class="bless-ticker__price">{{ price.format(t.price) }}</span>{{ " " }}
-      <span
-        class="bless-ticker__change"
-        :class="t.change < 0 ? 'is-down' : t.change > 0 ? 'is-up' : ''"
-      >
-        <span aria-hidden="true">{{ t.change < 0 ? "▼" : t.change > 0 ? "▲" : "■" }}</span>
-        {{ pct.format(t.change / 100) }}
-      </span>
-    </span>
-  </BlessMarquee>
-</template>
 
 <style>
 .bless-ticker {

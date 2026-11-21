@@ -1,3 +1,15 @@
+<template>
+  <BlessMockup type="phone" style="width: 260px">
+    <div ref="box" style="height: 100%; overflow-y: auto">
+      <BlessInfiniteScroll :root="box" done-text="that's all 52" @load="load">
+        <BlessList>
+          <BlessListItem v-for="i in items" :key="i">第{{ i }}話</BlessListItem>
+        </BlessList>
+      </BlessInfiniteScroll>
+    </div>
+  </BlessMockup>
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessInfiniteScroll, BlessList, BlessListItem, BlessMockup } from "blessing-ui";
@@ -11,15 +23,3 @@ function load(done: (finished?: boolean) => void) {
   }, 700);
 }
 </script>
-
-<template>
-  <BlessMockup type="phone" style="width: 260px">
-    <div ref="box" style="height: 100%; overflow-y: auto">
-      <BlessInfiniteScroll :root="box" done-text="that's all 52" @load="load">
-        <BlessList>
-          <BlessListItem v-for="i in items" :key="i">第{{ i }}話</BlessListItem>
-        </BlessList>
-      </BlessInfiniteScroll>
-    </div>
-  </BlessMockup>
-</template>

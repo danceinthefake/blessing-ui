@@ -1,3 +1,41 @@
+<template>
+  <details
+    class="bless-toolcall"
+    :class="`bless-toolcall--${status}`"
+    :open
+    @toggle="open = ($event.target as HTMLDetailsElement).open"
+  >
+    <summary class="bless-toolcall__head">
+      <span class="bless-toolcall__icon" aria-hidden="true">
+        <BlessSpinner v-if="status === 'running'" size="sm" label="" />
+        <svg v-else viewBox="0 0 16 16" width="14" height="14">
+          <path
+            :d="status === 'done' ? 'M3 8.5 6.5 12 13 4.5' : 'M4 4l8 8M12 4l-8 8'"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </span>
+      <code class="bless-toolcall__name">{{ name }}</code>
+      <span v-if="summary" class="bless-toolcall__summary">{{ summary }}</span>
+      <span class="bless-toolcall__status">{{ text[status] }}</span>
+    </summary>
+    <div class="bless-toolcall__body">
+      <section v-if="input !== undefined || $slots.input">
+        <p class="bless-toolcall__label">{{ text.input }}</p>
+        <slot name="input"><pre class="bless-toolcall__data">{{ show(input) }}</pre></slot>
+      </section>
+      <section v-if="output !== undefined || $slots.output">
+        <p class="bless-toolcall__label">{{ text.output }}</p>
+        <slot name="output"><pre class="bless-toolcall__data">{{ show(output) }}</pre></slot>
+      </section>
+    </div>
+  </details>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -40,44 +78,6 @@ const text = computed(() => ({
 const open = defineModel<boolean>("open", { default: false });
 const show = (v: unknown) => (typeof v === "string" ? v : JSON.stringify(v, null, 2));
 </script>
-
-<template>
-  <details
-    class="bless-toolcall"
-    :class="`bless-toolcall--${status}`"
-    :open
-    @toggle="open = ($event.target as HTMLDetailsElement).open"
-  >
-    <summary class="bless-toolcall__head">
-      <span class="bless-toolcall__icon" aria-hidden="true">
-        <BlessSpinner v-if="status === 'running'" size="sm" label="" />
-        <svg v-else viewBox="0 0 16 16" width="14" height="14">
-          <path
-            :d="status === 'done' ? 'M3 8.5 6.5 12 13 4.5' : 'M4 4l8 8M12 4l-8 8'"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-        </svg>
-      </span>
-      <code class="bless-toolcall__name">{{ name }}</code>
-      <span v-if="summary" class="bless-toolcall__summary">{{ summary }}</span>
-      <span class="bless-toolcall__status">{{ text[status] }}</span>
-    </summary>
-    <div class="bless-toolcall__body">
-      <section v-if="input !== undefined || $slots.input">
-        <p class="bless-toolcall__label">{{ text.input }}</p>
-        <slot name="input"><pre class="bless-toolcall__data">{{ show(input) }}</pre></slot>
-      </section>
-      <section v-if="output !== undefined || $slots.output">
-        <p class="bless-toolcall__label">{{ text.output }}</p>
-        <slot name="output"><pre class="bless-toolcall__data">{{ show(output) }}</pre></slot>
-      </section>
-    </div>
-  </details>
-</template>
 
 <style>
 .bless-toolcall {

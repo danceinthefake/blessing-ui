@@ -1,3 +1,16 @@
+<template>
+  <div class="col" style="max-width: none">
+    <BlessScheduler
+      v-model="events"
+      v-model:date="date"
+      v-model:selected="selected"
+      :day-start="8"
+      :day-end="18"
+      label="Team calendar"
+    />
+  </div>
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessScheduler, type BlessScheduleEvent } from "blessing-ui";
@@ -11,16 +24,3 @@ const events = ref<BlessScheduleEvent[]>([
 const date = ref<string | null>("2026-10-14");
 const selected = ref<string | null>(null);
 </script>
-
-<template>
-  <div class="col" style="max-width: none">
-    <BlessScheduler
-      v-model="events"
-      v-model:date="date"
-      v-model:selected="selected"
-      :day-start="8"
-      :day-end="18"
-      label="Team calendar"
-    />
-  </div>
-</template>

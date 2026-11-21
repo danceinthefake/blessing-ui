@@ -1,3 +1,7 @@
+<template>
+  <BlessCandlestick :data="days" :format="money" label="Share price, 3 to 14 November" />
+</template>
+
 <script setup lang="ts">
 import { BlessCandlestick } from "blessing-ui";
 
@@ -16,7 +20,3 @@ const days = [
 ];
 const money = (v: number) => `$${v}`;
 </script>
-
-<template>
-  <BlessCandlestick :data="days" :format="money" label="Share price, 3 to 14 November" />
-</template>

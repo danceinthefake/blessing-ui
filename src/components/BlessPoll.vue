@@ -1,3 +1,40 @@
+<template>
+  <div class="bless-poll">
+    <template v-if="!results">
+      <form @submit.prevent="submit">
+        <BlessRadioGroup v-model="pick" :label="question">
+          <BlessRadio v-for="o in options" :key="o.value" :value="o.value">{{
+            o.label
+          }}</BlessRadio>
+        </BlessRadioGroup>
+        <BlessButton type="submit" size="sm" :disabled="pick === undefined">{{
+          text.vote
+        }}</BlessButton>
+      </form>
+    </template>
+    <figure v-else :aria-labelledby="`${id}-q`" class="bless-poll__results">
+      <figcaption :id="`${id}-q`" class="bless-poll__question">{{ question }}</figcaption>
+      <ul class="bless-stagger bless-poll__list">
+        <li v-for="o in options" :key="o.value" class="bless-poll__row">
+          <span class="bless-poll__label"
+            >{{ o.label
+            }}<span v-if="o.value === voted" class="bless-poll__yours">
+              ({{ text.yours }})</span
+            ></span
+          >
+          <span class="bless-poll__bar" aria-hidden="true"
+            ><span
+              class="bless-poll__fill"
+              :class="{ 'bless-poll__fill--yours': o.value === voted }"
+              :style="{ inlineSize: `${pct(o)}%` }"
+          /></span>
+          <span class="bless-poll__num">{{ pct(o) }}% · {{ text.votes(o.votes) }}</span>
+        </li>
+      </ul>
+    </figure>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { useLabelPack } from "../composables/useLabels";
 import { computed, ref, useId } from "vue";
@@ -47,43 +84,6 @@ function submit() {
   emit("vote", pick.value);
 }
 </script>
-
-<template>
-  <div class="bless-poll">
-    <template v-if="!results">
-      <form @submit.prevent="submit">
-        <BlessRadioGroup v-model="pick" :label="question">
-          <BlessRadio v-for="o in options" :key="o.value" :value="o.value">{{
-            o.label
-          }}</BlessRadio>
-        </BlessRadioGroup>
-        <BlessButton type="submit" size="sm" :disabled="pick === undefined">{{
-          text.vote
-        }}</BlessButton>
-      </form>
-    </template>
-    <figure v-else :aria-labelledby="`${id}-q`" class="bless-poll__results">
-      <figcaption :id="`${id}-q`" class="bless-poll__question">{{ question }}</figcaption>
-      <ul class="bless-stagger bless-poll__list">
-        <li v-for="o in options" :key="o.value" class="bless-poll__row">
-          <span class="bless-poll__label"
-            >{{ o.label
-            }}<span v-if="o.value === voted" class="bless-poll__yours">
-              ({{ text.yours }})</span
-            ></span
-          >
-          <span class="bless-poll__bar" aria-hidden="true"
-            ><span
-              class="bless-poll__fill"
-              :class="{ 'bless-poll__fill--yours': o.value === voted }"
-              :style="{ inlineSize: `${pct(o)}%` }"
-          /></span>
-          <span class="bless-poll__num">{{ pct(o) }}% · {{ text.votes(o.votes) }}</span>
-        </li>
-      </ul>
-    </figure>
-  </div>
-</template>
 
 <style>
 .bless-poll {

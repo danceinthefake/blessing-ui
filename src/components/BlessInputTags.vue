@@ -1,3 +1,39 @@
+<template>
+  <div
+    class="bless-tags bless-lean--field"
+    :class="{
+      'bless-tags--disabled': disabled,
+      'bless-tags--invalid': invalid || fs.invalid.value,
+    }"
+    @click="input?.focus()"
+  >
+    <ul v-if="model.length" class="bless-tags__list" role="list">
+      <li v-for="(t, i) in model" :key="t + i" class="bless-tags__item" role="listitem">
+        <BlessChip :label="t" size="sm" :removable="!disabled" @remove="remove(i, true)" />
+      </li>
+    </ul>
+    <input
+      v-bind="$attrs"
+      :id="id()"
+      ref="input"
+      v-model="draft"
+      type="text"
+      class="bless-tags__input"
+      :placeholder="model.length ? '' : placeholder"
+      :disabled
+      :aria-label="label ?? (fs.inField ? undefined : 'Tags')"
+      :aria-invalid="invalid || fs.invalid.value || undefined"
+      :aria-describedby="joinIds(fs.describedby.value, $attrs['aria-describedby'] as string)"
+      @keydown="onKey"
+      @blur="add()"
+    />
+    <template v-if="name">
+      <input v-for="(t, i) in model" :key="i" type="hidden" :name :value="t" />
+    </template>
+    <span class="bless-tags__live bless-sr" aria-live="polite">{{ said }}</span>
+  </div>
+</template>
+
 <script setup lang="ts">
 import "./sr.css";
 import { computed, ref, watch } from "vue";
@@ -70,42 +106,6 @@ function onKey(e: KeyboardEvent) {
     remove(model.value.length - 1);
 }
 </script>
-
-<template>
-  <div
-    class="bless-tags bless-lean--field"
-    :class="{
-      'bless-tags--disabled': disabled,
-      'bless-tags--invalid': invalid || fs.invalid.value,
-    }"
-    @click="input?.focus()"
-  >
-    <ul v-if="model.length" class="bless-tags__list" role="list">
-      <li v-for="(t, i) in model" :key="t + i" class="bless-tags__item" role="listitem">
-        <BlessChip :label="t" size="sm" :removable="!disabled" @remove="remove(i, true)" />
-      </li>
-    </ul>
-    <input
-      v-bind="$attrs"
-      :id="id()"
-      ref="input"
-      v-model="draft"
-      type="text"
-      class="bless-tags__input"
-      :placeholder="model.length ? '' : placeholder"
-      :disabled
-      :aria-label="label ?? (fs.inField ? undefined : 'Tags')"
-      :aria-invalid="invalid || fs.invalid.value || undefined"
-      :aria-describedby="joinIds(fs.describedby.value, $attrs['aria-describedby'] as string)"
-      @keydown="onKey"
-      @blur="add()"
-    />
-    <template v-if="name">
-      <input v-for="(t, i) in model" :key="i" type="hidden" :name :value="t" />
-    </template>
-    <span class="bless-tags__live bless-sr" aria-live="polite">{{ said }}</span>
-  </div>
-</template>
 
 <style>
 .bless-tags {

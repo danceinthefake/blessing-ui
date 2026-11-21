@@ -1,14 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { BlessMockup, BlessTabPanels, BlessTabs, BlessText } from "blessing-ui";
-const tab = ref("news");
-const tabs = [
-  { value: "news", label: "News" },
-  { value: "story", label: "Story" },
-  { value: "cast", label: "Cast" },
-];
-</script>
-
 <template>
   <div class="row" style="align-items: flex-start">
     <BlessMockup type="phone" style="width: 260px">
@@ -33,3 +22,14 @@ const tabs = [
     >
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { BlessMockup, BlessTabPanels, BlessTabs, BlessText } from "blessing-ui";
+const tab = ref("news");
+const tabs = [
+  { value: "news", label: "News" },
+  { value: "story", label: "Story" },
+  { value: "cast", label: "Cast" },
+];
+</script>

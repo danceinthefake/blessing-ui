@@ -1,3 +1,45 @@
+<template>
+  <section class="bless-appstatus" :aria-label="`${title}, ${reference}`">
+    <header class="bless-appstatus__head">
+      <div class="bless-appstatus__title">{{ title }}</div>
+      <div class="bless-appstatus__ref">{{ text.reference }} <strong>{{ reference }}</strong></div>
+    </header>
+    <div class="bless-appstatus__state" :class="`is-${state}`" role="status">
+      <span aria-hidden="true" class="bless-appstatus__mark">{{ MARK[state] }}</span>
+      {{ text[state] }}
+    </div>
+    <div v-if="action" class="bless-appstatus__action">
+      <div>{{ action }}</div>
+      <a v-if="actionHref" :href="actionHref">{{ actionLabel ?? action }}</a>
+    </div>
+    <ol class="bless-stagger bless-appstatus__steps" :aria-label="text.steps">
+      <li
+        v-for="(s, i) in steps"
+        :key="i"
+        :class="`is-${when(i)}`"
+        :aria-current="when(i) === 'now' ? 'step' : undefined"
+      >
+        <div class="bless-appstatus__step">
+          <span class="bless-appstatus__dot" aria-hidden="true">{{
+            when(i) === "done" ? "✓" : i + 1
+          }}</span>
+          <span class="bless-appstatus__body">
+            <span class="bless-appstatus__label">
+              {{ s.label }}<span class="bless-sr">{{ `, ${text[when(i)]}` }}</span>
+            </span>
+            <span v-if="s.date" class="bless-appstatus__date">{{ s.date }}</span>
+            <span v-if="s.note" class="bless-appstatus__note">{{ s.note }}</span>
+          </span>
+        </div>
+      </li>
+    </ol>
+    <div v-if="next" class="bless-appstatus__next">
+      <div class="bless-appstatus__label">{{ text.next }}</div>
+      <div>{{ next }}</div>
+    </div>
+  </section>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -68,48 +110,6 @@ const when = (i: number) =>
       ? "now"
       : "later";
 </script>
-
-<template>
-  <section class="bless-appstatus" :aria-label="`${title}, ${reference}`">
-    <header class="bless-appstatus__head">
-      <div class="bless-appstatus__title">{{ title }}</div>
-      <div class="bless-appstatus__ref">{{ text.reference }} <strong>{{ reference }}</strong></div>
-    </header>
-    <div class="bless-appstatus__state" :class="`is-${state}`" role="status">
-      <span aria-hidden="true" class="bless-appstatus__mark">{{ MARK[state] }}</span>
-      {{ text[state] }}
-    </div>
-    <div v-if="action" class="bless-appstatus__action">
-      <div>{{ action }}</div>
-      <a v-if="actionHref" :href="actionHref">{{ actionLabel ?? action }}</a>
-    </div>
-    <ol class="bless-stagger bless-appstatus__steps" :aria-label="text.steps">
-      <li
-        v-for="(s, i) in steps"
-        :key="i"
-        :class="`is-${when(i)}`"
-        :aria-current="when(i) === 'now' ? 'step' : undefined"
-      >
-        <div class="bless-appstatus__step">
-          <span class="bless-appstatus__dot" aria-hidden="true">{{
-            when(i) === "done" ? "✓" : i + 1
-          }}</span>
-          <span class="bless-appstatus__body">
-            <span class="bless-appstatus__label">
-              {{ s.label }}<span class="bless-sr">{{ `, ${text[when(i)]}` }}</span>
-            </span>
-            <span v-if="s.date" class="bless-appstatus__date">{{ s.date }}</span>
-            <span v-if="s.note" class="bless-appstatus__note">{{ s.note }}</span>
-          </span>
-        </div>
-      </li>
-    </ol>
-    <div v-if="next" class="bless-appstatus__next">
-      <div class="bless-appstatus__label">{{ text.next }}</div>
-      <div>{{ next }}</div>
-    </div>
-  </section>
-</template>
 
 <style>
 .bless-appstatus {

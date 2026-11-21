@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import { BlessBanner, BlessButton } from "blessing-ui";
-</script>
-
 <template>
   <div style="display: grid; gap: 1rem">
     <BlessBanner>
@@ -16,3 +12,7 @@ import { BlessBanner, BlessButton } from "blessing-ui";
     </BlessBanner>
   </div>
 </template>
+
+<script setup lang="ts">
+import { BlessBanner, BlessButton } from "blessing-ui";
+</script>

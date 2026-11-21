@@ -1,3 +1,44 @@
+<template>
+  <div class="help">
+    <header class="help__head">
+      <BlessText as="h2" size="xl" weight="light">How can we help?</BlessText>
+      <BlessForm class="help__search" role="search" @submit="submit">
+        <BlessInput
+          v-model="draft"
+          type="search"
+          aria-label="Search the help center"
+          placeholder="For example: saves, refund, black screen"
+        />
+        <BlessButton type="submit">Search</BlessButton>
+      </BlessForm>
+    </header>
+
+    <div v-if="article" ref="view">
+      <a href="#" class="help__back" @click.prevent="back">← Back</a>
+      <BlessKnowledgeArticle
+        :title="article.title"
+        :updated="article.updated"
+        :sections="article.sections"
+        :related="related(article)"
+      />
+    </div>
+    <BlessSearchResults
+      v-else-if="query"
+      v-model:selected="selected"
+      v-model:page="page"
+      :query
+      :results="shown"
+      :total="hits.length"
+      :page-size
+      :facets="facets(found)"
+    />
+    <section v-else aria-labelledby="help-faq">
+      <BlessText id="help-faq" as="h3" size="md" weight="bold">Common questions</BlessText>
+      <BlessFaqSearch :items="faq" :labels="{ search: 'Filter these questions' }" />
+    </section>
+  </div>
+</template>
+
 <script setup lang="ts">
 import {
   BlessButton,
@@ -60,47 +101,6 @@ const related = (a: Article) =>
     return r ? [{ title: r.title, href: `#help-${r.id}` }] : [];
   });
 </script>
-
-<template>
-  <div class="help">
-    <header class="help__head">
-      <BlessText as="h2" size="xl" weight="light">How can we help?</BlessText>
-      <BlessForm class="help__search" role="search" @submit="submit">
-        <BlessInput
-          v-model="draft"
-          type="search"
-          aria-label="Search the help center"
-          placeholder="For example: saves, refund, black screen"
-        />
-        <BlessButton type="submit">Search</BlessButton>
-      </BlessForm>
-    </header>
-
-    <div v-if="article" ref="view">
-      <a href="#" class="help__back" @click.prevent="back">← Back</a>
-      <BlessKnowledgeArticle
-        :title="article.title"
-        :updated="article.updated"
-        :sections="article.sections"
-        :related="related(article)"
-      />
-    </div>
-    <BlessSearchResults
-      v-else-if="query"
-      v-model:selected="selected"
-      v-model:page="page"
-      :query
-      :results="shown"
-      :total="hits.length"
-      :page-size
-      :facets="facets(found)"
-    />
-    <section v-else aria-labelledby="help-faq">
-      <BlessText id="help-faq" as="h3" size="md" weight="bold">Common questions</BlessText>
-      <BlessFaqSearch :items="faq" :labels="{ search: 'Filter these questions' }" />
-    </section>
-  </div>
-</template>
 
 <style scoped>
 .help {

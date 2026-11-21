@@ -1,3 +1,34 @@
+<template>
+  <fieldset class="bless-address">
+    <legend class="bless-address__legend">{{ label }}</legend>
+    <div class="bless-address__row">
+      <label class="bless-address__field">
+        <span class="bless-address__label">{{ text.country }}</span>
+        <select
+          class="bless-address__input"
+          autocomplete="country"
+          :value="address.country"
+          @change="set({ country: ($event.target as HTMLSelectElement).value })"
+        >
+          <option v-for="c in countries" :key="c" :value="c">{{ names.of(c) }}</option>
+        </select>
+      </label>
+    </div>
+    <div v-for="(row, r) in format.rows" :key="r" class="bless-address__row">
+      <label v-for="f in row" :key="f" class="bless-address__field" :class="`is-${f}`">
+        <span class="bless-address__label">{{ fieldLabel(f) }}</span>
+        <input
+          class="bless-address__input"
+          :autocomplete="AUTO[f]"
+          :value="address[f] ?? ''"
+          :required="f !== 'line2' || undefined"
+          @input="set({ [f]: ($event.target as HTMLInputElement).value })"
+        />
+      </label>
+    </div>
+  </fieldset>
+</template>
+
 <script lang="ts">
 export type BlessAddressField = "line1" | "line2" | "city" | "region" | "postal";
 export interface BlessAddress {
@@ -119,37 +150,6 @@ const fieldLabel = (f: BlessAddressField) =>
       : text.value[f];
 const set = (patch: Partial<BlessAddress>) => (address.value = { ...address.value, ...patch });
 </script>
-
-<template>
-  <fieldset class="bless-address">
-    <legend class="bless-address__legend">{{ label }}</legend>
-    <div class="bless-address__row">
-      <label class="bless-address__field">
-        <span class="bless-address__label">{{ text.country }}</span>
-        <select
-          class="bless-address__input"
-          autocomplete="country"
-          :value="address.country"
-          @change="set({ country: ($event.target as HTMLSelectElement).value })"
-        >
-          <option v-for="c in countries" :key="c" :value="c">{{ names.of(c) }}</option>
-        </select>
-      </label>
-    </div>
-    <div v-for="(row, r) in format.rows" :key="r" class="bless-address__row">
-      <label v-for="f in row" :key="f" class="bless-address__field" :class="`is-${f}`">
-        <span class="bless-address__label">{{ fieldLabel(f) }}</span>
-        <input
-          class="bless-address__input"
-          :autocomplete="AUTO[f]"
-          :value="address[f] ?? ''"
-          :required="f !== 'line2' || undefined"
-          @input="set({ [f]: ($event.target as HTMLInputElement).value })"
-        />
-      </label>
-    </div>
-  </fieldset>
-</template>
 
 <style>
 .bless-address {

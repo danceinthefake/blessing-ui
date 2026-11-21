@@ -1,3 +1,44 @@
+<template>
+  <nav class="bless-path" :aria-label="text.title">
+    <p class="bless-path__progress">{{ text.progress(doneCount, lessons.length) }}</p>
+    <ol class="bless-stagger bless-path__list">
+      <li
+        v-for="(l, i) in lessons"
+        :key="l.id"
+        class="bless-path__item"
+        :class="[`is-${state(i)}`, i % 4 === 1 ? 'is-right' : i % 4 === 3 ? 'is-left' : '']"
+      >
+        <button
+          type="button"
+          class="bless-path__node"
+          :disabled="state(i) === 'locked'"
+          :aria-current="state(i) === 'current' ? 'step' : undefined"
+          @click="emit('select', l.id)"
+        >
+          <span class="bless-path__mark" aria-hidden="true">
+            <svg
+              v-if="state(i) === 'locked'"
+              viewBox="0 0 16 16"
+              width="16"
+              height="16"
+              fill="currentColor"
+            >
+              <path d="M5 7V5a3 3 0 0 1 6 0v2h1v7H4V7h1Zm1.5 0h3V5a1.5 1.5 0 0 0-3 0v2Z" />
+            </svg>
+            <template v-else>{{ MARK[state(i)] }}</template>
+          </span>
+          <span class="bless-path__text">
+            <strong>{{ l.title }}</strong>
+            <span class="bless-path__meta">
+              {{ l.meta }}<template v-if="l.meta"> · </template>{{ text[state(i)] }}
+            </span>
+          </span>
+        </button>
+      </li>
+    </ol>
+  </nav>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -42,47 +83,6 @@ const state = (i: number) =>
 const doneCount = computed(() => props.lessons.filter((l) => l.done).length);
 const MARK = { done: "✓", current: "▶", locked: "" } as const;
 </script>
-
-<template>
-  <nav class="bless-path" :aria-label="text.title">
-    <p class="bless-path__progress">{{ text.progress(doneCount, lessons.length) }}</p>
-    <ol class="bless-stagger bless-path__list">
-      <li
-        v-for="(l, i) in lessons"
-        :key="l.id"
-        class="bless-path__item"
-        :class="[`is-${state(i)}`, i % 4 === 1 ? 'is-right' : i % 4 === 3 ? 'is-left' : '']"
-      >
-        <button
-          type="button"
-          class="bless-path__node"
-          :disabled="state(i) === 'locked'"
-          :aria-current="state(i) === 'current' ? 'step' : undefined"
-          @click="emit('select', l.id)"
-        >
-          <span class="bless-path__mark" aria-hidden="true">
-            <svg
-              v-if="state(i) === 'locked'"
-              viewBox="0 0 16 16"
-              width="16"
-              height="16"
-              fill="currentColor"
-            >
-              <path d="M5 7V5a3 3 0 0 1 6 0v2h1v7H4V7h1Zm1.5 0h3V5a1.5 1.5 0 0 0-3 0v2Z" />
-            </svg>
-            <template v-else>{{ MARK[state(i)] }}</template>
-          </span>
-          <span class="bless-path__text">
-            <strong>{{ l.title }}</strong>
-            <span class="bless-path__meta">
-              {{ l.meta }}<template v-if="l.meta"> · </template>{{ text[state(i)] }}
-            </span>
-          </span>
-        </button>
-      </li>
-    </ol>
-  </nav>
-</template>
 
 <style>
 .bless-path {

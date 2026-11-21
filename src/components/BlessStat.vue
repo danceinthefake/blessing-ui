@@ -1,3 +1,23 @@
+<template>
+  <div class="bless-stat" role="group" :aria-labelledby="`${id}-l`">
+    <div :id="`${id}-l`" class="bless-stat__label">{{ label }}</div>
+    <div class="bless-stat__value">
+      <slot>{{ value }}</slot>
+    </div>
+    <div
+      v-if="delta !== undefined"
+      class="bless-stat__delta"
+      :class="{ 'bless-stat__delta--bad': bad }"
+    >
+      <span aria-hidden="true">{{ arrow[dir] }}</span>
+      <span class="bless-stat__sr bless-sr">{{ words[dir] }}</span>
+      {{ shown }}
+    </div>
+    <BlessSparkline v-if="data?.length" class="bless-stat__trend" :data="data" :label="dataLabel" />
+    <div v-if="$slots.hint" class="bless-stat__hint"><slot name="hint" /></div>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { useLabelPack } from "../composables/useLabels";
 import "./sr.css";
@@ -48,26 +68,6 @@ const shown = computed(() =>
 );
 const arrow = { up: "▲", down: "▼", flat: "▬" } as const;
 </script>
-
-<template>
-  <div class="bless-stat" role="group" :aria-labelledby="`${id}-l`">
-    <div :id="`${id}-l`" class="bless-stat__label">{{ label }}</div>
-    <div class="bless-stat__value">
-      <slot>{{ value }}</slot>
-    </div>
-    <div
-      v-if="delta !== undefined"
-      class="bless-stat__delta"
-      :class="{ 'bless-stat__delta--bad': bad }"
-    >
-      <span aria-hidden="true">{{ arrow[dir] }}</span>
-      <span class="bless-stat__sr bless-sr">{{ words[dir] }}</span>
-      {{ shown }}
-    </div>
-    <BlessSparkline v-if="data?.length" class="bless-stat__trend" :data="data" :label="dataLabel" />
-    <div v-if="$slots.hint" class="bless-stat__hint"><slot name="hint" /></div>
-  </div>
-</template>
 
 <style>
 .bless-stat {

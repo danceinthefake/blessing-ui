@@ -1,3 +1,13 @@
+<template>
+  <time
+    v-if="valid"
+    class="bless-reltime"
+    :datetime="date.toISOString()"
+    :title="mounted ? full : undefined"
+    >{{ mounted || now !== undefined ? relative : absolute }}</time
+  >
+</template>
+
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, ref, watch } from "vue";
 import { refreshEvery, relativeParts, toDate } from "./relativeTime";
@@ -77,13 +87,3 @@ onMounted(() => {
 watch(() => [props.value, props.live, props.now], schedule);
 onBeforeUnmount(() => clearTimeout(timer));
 </script>
-
-<template>
-  <time
-    v-if="valid"
-    class="bless-reltime"
-    :datetime="date.toISOString()"
-    :title="mounted ? full : undefined"
-    >{{ mounted || now !== undefined ? relative : absolute }}</time
-  >
-</template>

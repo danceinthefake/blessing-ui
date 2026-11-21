@@ -1,3 +1,24 @@
+<template>
+  <ul
+    role="list"
+    class="bless-stagger bless-suggestions"
+    :class="{ 'bless-suggestions--scroll': scroll }"
+    :aria-label="text.label"
+  >
+    <li v-for="(it, i) in list" :key="i">
+      <button
+        type="button"
+        class="bless-suggestions__chip"
+        :disabled
+        @click="emit('select', it.prompt ?? it.label, it)"
+      >
+        <span v-if="it.icon" class="bless-suggestions__icon" aria-hidden="true">{{ it.icon }}</span>
+        {{ it.label }}
+      </button>
+    </li>
+  </ul>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -29,27 +50,6 @@ const emit = defineEmits<{ select: [prompt: string, item: BlessSuggestion] }>();
 const text = computed(() => ({ label: "Suggestions", ...pack(), ...props.labels }));
 const list = computed(() => props.items.map((it) => (typeof it === "string" ? { label: it } : it)));
 </script>
-
-<template>
-  <ul
-    role="list"
-    class="bless-stagger bless-suggestions"
-    :class="{ 'bless-suggestions--scroll': scroll }"
-    :aria-label="text.label"
-  >
-    <li v-for="(it, i) in list" :key="i">
-      <button
-        type="button"
-        class="bless-suggestions__chip"
-        :disabled
-        @click="emit('select', it.prompt ?? it.label, it)"
-      >
-        <span v-if="it.icon" class="bless-suggestions__icon" aria-hidden="true">{{ it.icon }}</span>
-        {{ it.label }}
-      </button>
-    </li>
-  </ul>
-</template>
 
 <style>
 .bless-suggestions {

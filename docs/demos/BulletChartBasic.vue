@@ -1,10 +1,3 @@
-<script setup lang="ts">
-import { BlessBulletChart, BlessStack } from "blessing-ui";
-
-const pct = (v: number) => `${v}%`;
-const thousands = (v: number) => `${v}k`;
-</script>
-
 <template>
   <BlessStack :gap="3" style="max-width: 560px">
     <BlessBulletChart
@@ -25,3 +18,10 @@ const thousands = (v: number) => `${v}k`;
     <BlessBulletChart label="New members" :value="128" :target="150" color="chart-3" />
   </BlessStack>
 </template>
+
+<script setup lang="ts">
+import { BlessBulletChart, BlessStack } from "blessing-ui";
+
+const pct = (v: number) => `${v}%`;
+const thousands = (v: number) => `${v}k`;
+</script>

@@ -1,3 +1,7 @@
+<template>
+  <BlessSmallMultiples :series :steps :format="thousands" label="Weekly plays of each show" />
+</template>
+
 <script setup lang="ts">
 import { BlessSmallMultiples } from "blessing-ui";
 
@@ -15,7 +19,3 @@ const series = [
 const steps = Array.from({ length: 12 }, (_, i) => `W${i + 1}`);
 const thousands = (v: number) => `${v}k`;
 </script>
-
-<template>
-  <BlessSmallMultiples :series :steps :format="thousands" label="Weekly plays of each show" />
-</template>

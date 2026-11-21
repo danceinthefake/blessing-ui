@@ -1,3 +1,28 @@
+<template>
+  <div class="bless-uptime" role="group" :aria-label="summary" @keydown="onKey">
+    <span
+      v-for="(item, i) in items"
+      :key="i"
+      class="bless-uptime__seg"
+      :class="`bless-uptime__seg--${item.status}`"
+      role="img"
+      :aria-label="tip(item)"
+      :title="tip(item)"
+      :tabindex="i === current ? 0 : -1"
+      @focus="((tab = i), (focused = i))"
+      @blur="focused = null"
+    />
+    <!-- a title does not show on focus: the keyboard gets the same text here -->
+    <span
+      v-if="focused !== null && items[focused]"
+      class="bless-uptime__tip"
+      :style="{ '--p': (focused + 0.5) / items.length }"
+      aria-hidden="true"
+      >{{ tip(items[focused]) }}</span
+    >
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed, ref } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -72,31 +97,6 @@ function onKey(e: KeyboardEvent) {
   ((e.currentTarget as HTMLElement).children[tab.value] as HTMLElement | undefined)?.focus();
 }
 </script>
-
-<template>
-  <div class="bless-uptime" role="group" :aria-label="summary" @keydown="onKey">
-    <span
-      v-for="(item, i) in items"
-      :key="i"
-      class="bless-uptime__seg"
-      :class="`bless-uptime__seg--${item.status}`"
-      role="img"
-      :aria-label="tip(item)"
-      :title="tip(item)"
-      :tabindex="i === current ? 0 : -1"
-      @focus="((tab = i), (focused = i))"
-      @blur="focused = null"
-    />
-    <!-- a title does not show on focus: the keyboard gets the same text here -->
-    <span
-      v-if="focused !== null && items[focused]"
-      class="bless-uptime__tip"
-      :style="{ '--p': (focused + 0.5) / items.length }"
-      aria-hidden="true"
-      >{{ tip(items[focused]) }}</span
-    >
-  </div>
-</template>
 
 <style>
 .bless-uptime {

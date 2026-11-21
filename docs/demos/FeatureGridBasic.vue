@@ -1,3 +1,20 @@
+<template>
+  <BlessFeatureGrid :features>
+    <template #icon="{ index }">
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path :d="icons[index]" />
+      </svg>
+    </template>
+  </BlessFeatureGrid>
+</template>
+
 <script setup lang="ts">
 import { BlessFeatureGrid, type BlessFeature } from "blessing-ui";
 
@@ -31,20 +48,3 @@ const icons = [
   "M4 20V10M10 20V4M16 20v-7M22 20H2",
 ];
 </script>
-
-<template>
-  <BlessFeatureGrid :features>
-    <template #icon="{ index }">
-      <svg
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      >
-        <path :d="icons[index]" />
-      </svg>
-    </template>
-  </BlessFeatureGrid>
-</template>

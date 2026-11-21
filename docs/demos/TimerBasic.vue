@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import { BlessTimer } from "blessing-ui";
-</script>
-
 <template>
   <div class="col" style="gap: 2rem">
     <div>
@@ -25,3 +21,7 @@ import { BlessTimer } from "blessing-ui";
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+import { BlessTimer } from "blessing-ui";
+</script>

@@ -1,3 +1,49 @@
+<template>
+  <div
+    :id="id()"
+    ref="root"
+    class="bless-listbox"
+    :class="{ 'bless-listbox--disabled': disabled }"
+    role="listbox"
+    :tabindex="disabled ? -1 : 0"
+    :aria-label="label"
+    :aria-labelledby="label ? undefined : fs.labelledby"
+    :aria-describedby="fs.describedby.value"
+    :aria-invalid="fs.invalid.value || undefined"
+    :aria-multiselectable="multiple || undefined"
+    :aria-activedescendant="`${uid}-${active}`"
+    :aria-disabled="disabled || undefined"
+    :style="rows ? { '--_rows': rows } : undefined"
+    @keydown="onKey"
+  >
+    <div
+      v-for="(o, i) in options"
+      :id="`${uid}-${i}`"
+      :key="o.value"
+      class="bless-listbox__option"
+      :class="{
+        'bless-listbox__option--active': i === active,
+        'bless-listbox__option--selected': isSelected(o.value),
+        'bless-listbox__option--disabled': o.disabled,
+      }"
+      role="option"
+      :aria-selected="isSelected(o.value)"
+      :aria-disabled="o.disabled || undefined"
+      :data-i="i"
+      @click="pick(i)"
+      @mousemove="!o.disabled && (active = i)"
+    >
+      <span v-if="multiple" class="bless-listbox__check" aria-hidden="true">{{
+        isSelected(o.value) ? "✓" : ""
+      }}</span>
+      <slot :option="o" :selected="isSelected(o.value)">{{ o.label }}</slot>
+    </div>
+    <template v-if="name">
+      <input v-for="o in selected" :key="o.value" type="hidden" :name :value="o.value" />
+    </template>
+  </div>
+</template>
+
 <script setup lang="ts" generic="T extends string | number">
 import { computed, ref, useId, watch } from "vue";
 import { useFieldId, useFieldState } from "../composables/useFieldId";
@@ -103,52 +149,6 @@ function onKey(e: KeyboardEvent) {
   }
 }
 </script>
-
-<template>
-  <div
-    :id="id()"
-    ref="root"
-    class="bless-listbox"
-    :class="{ 'bless-listbox--disabled': disabled }"
-    role="listbox"
-    :tabindex="disabled ? -1 : 0"
-    :aria-label="label"
-    :aria-labelledby="label ? undefined : fs.labelledby"
-    :aria-describedby="fs.describedby.value"
-    :aria-invalid="fs.invalid.value || undefined"
-    :aria-multiselectable="multiple || undefined"
-    :aria-activedescendant="`${uid}-${active}`"
-    :aria-disabled="disabled || undefined"
-    :style="rows ? { '--_rows': rows } : undefined"
-    @keydown="onKey"
-  >
-    <div
-      v-for="(o, i) in options"
-      :id="`${uid}-${i}`"
-      :key="o.value"
-      class="bless-listbox__option"
-      :class="{
-        'bless-listbox__option--active': i === active,
-        'bless-listbox__option--selected': isSelected(o.value),
-        'bless-listbox__option--disabled': o.disabled,
-      }"
-      role="option"
-      :aria-selected="isSelected(o.value)"
-      :aria-disabled="o.disabled || undefined"
-      :data-i="i"
-      @click="pick(i)"
-      @mousemove="!o.disabled && (active = i)"
-    >
-      <span v-if="multiple" class="bless-listbox__check" aria-hidden="true">{{
-        isSelected(o.value) ? "✓" : ""
-      }}</span>
-      <slot :option="o" :selected="isSelected(o.value)">{{ o.label }}</slot>
-    </div>
-    <template v-if="name">
-      <input v-for="o in selected" :key="o.value" type="hidden" :name :value="o.value" />
-    </template>
-  </div>
-</template>
 
 <style>
 .bless-listbox {

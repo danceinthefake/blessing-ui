@@ -1,3 +1,27 @@
+<template>
+  <BlessInputGroup class="bless-phone" :size="size" :disabled="disabled">
+    <template #prefix>
+      <BlessSelect
+        :model-value="current.code"
+        :options="options"
+        :size="size"
+        :aria-label="text.country"
+        @update:model-value="onCountry"
+      />
+    </template>
+    <BlessInput
+      v-bind="$attrs"
+      :model-value="national"
+      type="tel"
+      inputmode="tel"
+      autocomplete="tel-national"
+      :size="size"
+      :aria-label="$attrs['aria-label'] ?? text.number"
+      @update:model-value="onNumber"
+    />
+  </BlessInputGroup>
+</template>
+
 <script setup lang="ts">
 import { useLabelPack } from "../composables/useLabels";
 import { computed, onMounted, ref, watch } from "vue";
@@ -84,27 +108,3 @@ function onCountry(c: string | undefined) {
   model.value = joinPhone(dial, national.value);
 }
 </script>
-
-<template>
-  <BlessInputGroup class="bless-phone" :size="size" :disabled="disabled">
-    <template #prefix>
-      <BlessSelect
-        :model-value="current.code"
-        :options="options"
-        :size="size"
-        :aria-label="text.country"
-        @update:model-value="onCountry"
-      />
-    </template>
-    <BlessInput
-      v-bind="$attrs"
-      :model-value="national"
-      type="tel"
-      inputmode="tel"
-      autocomplete="tel-national"
-      :size="size"
-      :aria-label="$attrs['aria-label'] ?? text.number"
-      @update:model-value="onNumber"
-    />
-  </BlessInputGroup>
-</template>

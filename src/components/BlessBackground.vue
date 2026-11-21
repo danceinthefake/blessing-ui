@@ -1,3 +1,12 @@
+<template>
+  <div
+    class="bless-background"
+    :class="[`bless-background--${mode}`, { 'bless-background--pattern': !src }]"
+    :style
+    aria-hidden="true"
+  />
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 
@@ -22,15 +31,6 @@ const style = computed(() => ({
   opacity: props.opacity,
 }));
 </script>
-
-<template>
-  <div
-    class="bless-background"
-    :class="[`bless-background--${mode}`, { 'bless-background--pattern': !src }]"
-    :style
-    aria-hidden="true"
-  />
-</template>
 
 <style>
 .bless-background {

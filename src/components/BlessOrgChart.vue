@@ -1,13 +1,3 @@
-<script setup lang="ts">
-import BlessOrgChartNode from "./BlessOrgChartNode.vue";
-import type { BlessTreeNode } from "./tree";
-
-defineOptions({ name: "BlessOrgChart" });
-withDefaults(defineProps<{ nodes: BlessTreeNode[]; label?: string }>(), { label: "Organisation" });
-const selected = defineModel<string | undefined>("selected");
-const emit = defineEmits<{ select: [node: BlessTreeNode, id: string] }>();
-</script>
-
 <template>
   <div class="bless-org" role="group" :aria-label="label">
     <ul class="bless-org__level" role="list">
@@ -24,6 +14,16 @@ const emit = defineEmits<{ select: [node: BlessTreeNode, id: string] }>();
     </ul>
   </div>
 </template>
+
+<script setup lang="ts">
+import BlessOrgChartNode from "./BlessOrgChartNode.vue";
+import type { BlessTreeNode } from "./tree";
+
+defineOptions({ name: "BlessOrgChart" });
+withDefaults(defineProps<{ nodes: BlessTreeNode[]; label?: string }>(), { label: "Organisation" });
+const selected = defineModel<string | undefined>("selected");
+const emit = defineEmits<{ select: [node: BlessTreeNode, id: string] }>();
+</script>
 
 <style>
 /* classic CSS org chart: ul/li with border connectors */

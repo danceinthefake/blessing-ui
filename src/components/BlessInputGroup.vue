@@ -1,9 +1,3 @@
-<script setup lang="ts">
-defineOptions({ name: "BlessInputGroup" });
-
-withDefaults(defineProps<{ size?: "sm" | "md" | "lg"; disabled?: boolean }>(), { size: "md" });
-</script>
-
 <template>
   <fieldset
     class="bless-input-group bless-lean--field"
@@ -19,6 +13,12 @@ withDefaults(defineProps<{ size?: "sm" | "md" | "lg"; disabled?: boolean }>(), {
     /></span>
   </fieldset>
 </template>
+
+<script setup lang="ts">
+defineOptions({ name: "BlessInputGroup" });
+
+withDefaults(defineProps<{ size?: "sm" | "md" | "lg"; disabled?: boolean }>(), { size: "md" });
+</script>
 
 <style>
 /* one shared surface + underline; the inner BlessInput / BlessSelect goes transparent */

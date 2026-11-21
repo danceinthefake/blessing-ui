@@ -1,27 +1,3 @@
-<script setup lang="ts">
-import {
-  BlessButton,
-  BlessEmpty,
-  BlessList,
-  BlessListItem,
-  BlessSection,
-  BlessSkeleton,
-  BlessTabs,
-} from "blessing-ui";
-import { fmtDate, isNew } from "./domain";
-import { useNews } from "./useNews";
-
-const { visible, loading, filter } = useNews();
-const tabs = [
-  // written as words: the tabs set them in capitals, and "ALL" typed in capitals can be spelled out
-  { value: "all", label: "All" },
-  { value: "news", label: "News" },
-  { value: "event", label: "Event" },
-  { value: "goods", label: "Goods" },
-  { value: "onair", label: "On air" },
-];
-</script>
-
 <template>
   <BlessSection title="News" class="news">
     <!-- the list lives in the active tab's panel, so the tabs control what they filter -->
@@ -53,6 +29,30 @@ const tabs = [
     </div>
   </BlessSection>
 </template>
+
+<script setup lang="ts">
+import {
+  BlessButton,
+  BlessEmpty,
+  BlessList,
+  BlessListItem,
+  BlessSection,
+  BlessSkeleton,
+  BlessTabs,
+} from "blessing-ui";
+import { fmtDate, isNew } from "./domain";
+import { useNews } from "./useNews";
+
+const { visible, loading, filter } = useNews();
+const tabs = [
+  // written as words: the tabs set them in capitals, and "ALL" typed in capitals can be spelled out
+  { value: "all", label: "All" },
+  { value: "news", label: "News" },
+  { value: "event", label: "Event" },
+  { value: "goods", label: "Goods" },
+  { value: "onair", label: "On air" },
+];
+</script>
 
 <style scoped>
 .news {

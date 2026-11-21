@@ -1,3 +1,17 @@
+<template>
+  <BlessButton color="accent" @click="() => {}">go</BlessButton>
+  <BlessDataTable :rows :columns="cols" row-key="id" />
+  <BlessListbox v-model="pick" :options="[{ value: 'a', label: 'A' }]" />
+  <BlessListbox v-model="many" :options="[{ value: 'a', label: 'A' }]" multiple />
+  <BlessTreeTable
+    :rows="[{ id: 1, name: 'x' }]"
+    row-key="id"
+    :columns="[{ key: 'name', label: 'N' }]"
+  />
+  <BlessCascadeSelect v-model="pick" :options="cas" />
+  <BlessQuestionnaire :questions="qs" />
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import {
@@ -29,16 +43,3 @@ const { open } = useDialog();
 setPalette("utaha");
 open({ title: "t", text: "x" });
 </script>
-<template>
-  <BlessButton color="accent" @click="() => {}">go</BlessButton>
-  <BlessDataTable :rows :columns="cols" row-key="id" />
-  <BlessListbox v-model="pick" :options="[{ value: 'a', label: 'A' }]" />
-  <BlessListbox v-model="many" :options="[{ value: 'a', label: 'A' }]" multiple />
-  <BlessTreeTable
-    :rows="[{ id: 1, name: 'x' }]"
-    row-key="id"
-    :columns="[{ key: 'name', label: 'N' }]"
-  />
-  <BlessCascadeSelect v-model="pick" :options="cas" />
-  <BlessQuestionnaire :questions="qs" />
-</template>

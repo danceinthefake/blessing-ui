@@ -1,3 +1,51 @@
+<template>
+  <section class="bless-approval" :aria-label="text.title">
+    <p class="bless-approval__summary" role="status">{{ summary }}</p>
+    <ol class="bless-stagger bless-approval__steps">
+      <li
+        v-for="(s, i) in steps"
+        :key="s.id"
+        class="bless-approval__step"
+        :class="[`is-${states[i]}`, { 'is-current': i === current }]"
+        :aria-current="i === current ? 'step' : undefined"
+      >
+        <div class="bless-approval__box">
+          <div class="bless-approval__head">
+            <span class="bless-approval__mark" aria-hidden="true">{{ MARK[states[i]!] }}</span>
+            <strong>{{ s.title }}</strong>
+            <span class="bless-approval__state">{{ text[states[i]!] }}</span>
+            <span class="bless-approval__rule">{{ s.rule === "any" ? text.any : text.all }}</span>
+          </div>
+          <ul class="bless-approval__people">
+            <li v-for="a in s.approvers" :key="a.name" :class="`is-${a.decision ?? 'pending'}`">
+              <BlessAvatar :name="a.name" :src="a.avatar" alt="" size="xs" />
+              <span class="bless-approval__name">{{ a.name }}</span>
+              <span class="bless-approval__decision">{{ text[a.decision ?? "pending"] }}</span>
+              <span v-if="a.time" class="bless-approval__time">{{ a.time }}</span>
+              <div v-if="a.note" class="bless-approval__note">“{{ a.note }}”</div>
+            </li>
+          </ul>
+          <div v-if="i === current && canDecide" class="bless-approval__act">
+            <textarea
+              v-model="note"
+              class="bless-approval__field"
+              rows="2"
+              :aria-label="text.note"
+              :placeholder="text.note"
+            />
+            <div class="bless-approval__buttons">
+              <BlessButton size="sm" @click="decide('approved')">{{ text.approve }}</BlessButton>
+              <BlessButton size="sm" variant="outline" color="danger" @click="decide('rejected')">{{
+                text.reject
+              }}</BlessButton>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ol>
+  </section>
+</template>
+
 <script lang="ts">
 export type BlessDecision = "approved" | "rejected" | "pending";
 export interface BlessApprover {
@@ -97,54 +145,6 @@ function decide(d: "approved" | "rejected") {
 }
 const MARK: Record<BlessDecision, string> = { approved: "✓", rejected: "✕", pending: "…" };
 </script>
-
-<template>
-  <section class="bless-approval" :aria-label="text.title">
-    <p class="bless-approval__summary" role="status">{{ summary }}</p>
-    <ol class="bless-stagger bless-approval__steps">
-      <li
-        v-for="(s, i) in steps"
-        :key="s.id"
-        class="bless-approval__step"
-        :class="[`is-${states[i]}`, { 'is-current': i === current }]"
-        :aria-current="i === current ? 'step' : undefined"
-      >
-        <div class="bless-approval__box">
-          <div class="bless-approval__head">
-            <span class="bless-approval__mark" aria-hidden="true">{{ MARK[states[i]!] }}</span>
-            <strong>{{ s.title }}</strong>
-            <span class="bless-approval__state">{{ text[states[i]!] }}</span>
-            <span class="bless-approval__rule">{{ s.rule === "any" ? text.any : text.all }}</span>
-          </div>
-          <ul class="bless-approval__people">
-            <li v-for="a in s.approvers" :key="a.name" :class="`is-${a.decision ?? 'pending'}`">
-              <BlessAvatar :name="a.name" :src="a.avatar" alt="" size="xs" />
-              <span class="bless-approval__name">{{ a.name }}</span>
-              <span class="bless-approval__decision">{{ text[a.decision ?? "pending"] }}</span>
-              <span v-if="a.time" class="bless-approval__time">{{ a.time }}</span>
-              <div v-if="a.note" class="bless-approval__note">“{{ a.note }}”</div>
-            </li>
-          </ul>
-          <div v-if="i === current && canDecide" class="bless-approval__act">
-            <textarea
-              v-model="note"
-              class="bless-approval__field"
-              rows="2"
-              :aria-label="text.note"
-              :placeholder="text.note"
-            />
-            <div class="bless-approval__buttons">
-              <BlessButton size="sm" @click="decide('approved')">{{ text.approve }}</BlessButton>
-              <BlessButton size="sm" variant="outline" color="danger" @click="decide('rejected')">{{
-                text.reject
-              }}</BlessButton>
-            </div>
-          </div>
-        </div>
-      </li>
-    </ol>
-  </section>
-</template>
 
 <style>
 /* spacing sits on divs, not on p and li, so a list reset of the host page does not remove it */

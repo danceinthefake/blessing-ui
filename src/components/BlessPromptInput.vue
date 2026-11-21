@@ -1,87 +1,3 @@
-<script setup lang="ts">
-import { computed, ref } from "vue";
-import { useLabelPack } from "../composables/useLabels";
-import BlessAttachment from "./BlessAttachment.vue";
-import BlessButton from "./BlessButton.vue";
-
-defineOptions({ name: "BlessPromptInput" });
-const pack = useLabelPack("BlessPromptInput");
-
-const props = withDefaults(
-  defineProps<{
-    /** a reply is coming in: the send button becomes a stop button */
-    busy?: boolean;
-    disabled?: boolean;
-    /** show the attach button; a text sets the file types, as `accept` on a file input */
-    attach?: boolean | string;
-    /** the most lines before the box scrolls */
-    maxRows?: number;
-    labels?: Partial<{
-      label: string;
-      placeholder: string;
-      send: string;
-      stop: string;
-      attach: string;
-      remove: string;
-    }>;
-  }>(),
-  { maxRows: 8 },
-);
-const emit = defineEmits<{
-  /** the text and the files; the box is then empty again */
-  send: [message: { text: string; files: File[] }];
-  /** the stop button while `busy` */
-  stop: [];
-}>();
-
-const text = computed(() => ({
-  label: "Message",
-  placeholder: "Ask anything",
-  send: "Send",
-  stop: "Stop",
-  attach: "Attach files",
-  remove: "Remove",
-  ...pack(),
-  ...props.labels,
-}));
-const model = defineModel<string>({ default: "" });
-const files = defineModel<File[]>("files", { default: () => [] });
-const picker = ref<HTMLInputElement>();
-const box = ref<HTMLTextAreaElement>();
-
-const canSend = computed(
-  () => !props.disabled && !props.busy && (!!model.value.trim() || files.value.length > 0),
-);
-function send() {
-  if (!canSend.value) return;
-  emit("send", { text: model.value.trim(), files: files.value });
-  model.value = "";
-  files.value = [];
-  box.value?.focus();
-}
-function onKey(e: KeyboardEvent) {
-  // Enter sends; Shift+Enter adds a line, and Enter inside an input method (IME) picks a word
-  if (e.key !== "Enter" || e.shiftKey || e.isComposing || e.keyCode === 229) return;
-  e.preventDefault();
-  send();
-}
-function add(list: FileList | null | undefined) {
-  if (list?.length) files.value = [...files.value, ...list];
-}
-function onPick(e: Event) {
-  const input = e.target as HTMLInputElement;
-  add(input.files);
-  input.value = "";
-}
-const accept = computed(() => (typeof props.attach === "string" ? props.attach : undefined));
-const size = (n: number) =>
-  n < 1024
-    ? `${n} B`
-    : n < 1048576
-      ? `${Math.round(n / 1024)} KB`
-      : `${(n / 1048576).toFixed(1)} MB`;
-</script>
-
 <template>
   <div
     class="bless-prompt"
@@ -171,6 +87,90 @@ const size = (n: number) =>
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+import { computed, ref } from "vue";
+import { useLabelPack } from "../composables/useLabels";
+import BlessAttachment from "./BlessAttachment.vue";
+import BlessButton from "./BlessButton.vue";
+
+defineOptions({ name: "BlessPromptInput" });
+const pack = useLabelPack("BlessPromptInput");
+
+const props = withDefaults(
+  defineProps<{
+    /** a reply is coming in: the send button becomes a stop button */
+    busy?: boolean;
+    disabled?: boolean;
+    /** show the attach button; a text sets the file types, as `accept` on a file input */
+    attach?: boolean | string;
+    /** the most lines before the box scrolls */
+    maxRows?: number;
+    labels?: Partial<{
+      label: string;
+      placeholder: string;
+      send: string;
+      stop: string;
+      attach: string;
+      remove: string;
+    }>;
+  }>(),
+  { maxRows: 8 },
+);
+const emit = defineEmits<{
+  /** the text and the files; the box is then empty again */
+  send: [message: { text: string; files: File[] }];
+  /** the stop button while `busy` */
+  stop: [];
+}>();
+
+const text = computed(() => ({
+  label: "Message",
+  placeholder: "Ask anything",
+  send: "Send",
+  stop: "Stop",
+  attach: "Attach files",
+  remove: "Remove",
+  ...pack(),
+  ...props.labels,
+}));
+const model = defineModel<string>({ default: "" });
+const files = defineModel<File[]>("files", { default: () => [] });
+const picker = ref<HTMLInputElement>();
+const box = ref<HTMLTextAreaElement>();
+
+const canSend = computed(
+  () => !props.disabled && !props.busy && (!!model.value.trim() || files.value.length > 0),
+);
+function send() {
+  if (!canSend.value) return;
+  emit("send", { text: model.value.trim(), files: files.value });
+  model.value = "";
+  files.value = [];
+  box.value?.focus();
+}
+function onKey(e: KeyboardEvent) {
+  // Enter sends; Shift+Enter adds a line, and Enter inside an input method (IME) picks a word
+  if (e.key !== "Enter" || e.shiftKey || e.isComposing || e.keyCode === 229) return;
+  e.preventDefault();
+  send();
+}
+function add(list: FileList | null | undefined) {
+  if (list?.length) files.value = [...files.value, ...list];
+}
+function onPick(e: Event) {
+  const input = e.target as HTMLInputElement;
+  add(input.files);
+  input.value = "";
+}
+const accept = computed(() => (typeof props.attach === "string" ? props.attach : undefined));
+const size = (n: number) =>
+  n < 1024
+    ? `${n} B`
+    : n < 1048576
+      ? `${Math.round(n / 1024)} KB`
+      : `${(n / 1048576).toFixed(1)} MB`;
+</script>
 
 <style>
 .bless-prompt {

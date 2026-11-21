@@ -1,40 +1,3 @@
-<script setup lang="ts">
-import { computed } from "vue";
-import { joinIds, useFieldId, useFieldState } from "../composables/useFieldId";
-
-defineOptions({ name: "BlessTextarea", inheritAttrs: false });
-
-const props = withDefaults(
-  defineProps<{
-    id?: string;
-    rows?: number;
-    /** grow with content (field-sizing: content) */
-    autogrow?: boolean;
-    invalid?: boolean;
-    disabled?: boolean;
-    readonly?: boolean;
-    description?: string;
-    error?: string;
-    maxlength?: number;
-    /** show n / maxlength */
-    counter?: boolean;
-  }>(),
-  { rows: 3, autogrow: true },
-);
-
-const model = defineModel<string>({ default: "" });
-const id = useFieldId(props);
-const fs = useFieldState();
-const descId = () => `${id()}-desc`;
-// the count is announced only near the limit; a live count on every keystroke is noise
-const near = computed(
-  () =>
-    !!props.maxlength &&
-    props.maxlength - String(model.value).length <= Math.max(10, props.maxlength * 0.1),
-);
-const errId = () => `${id()}-err`;
-</script>
-
 <template>
   <div
     class="bless-textarea"
@@ -79,6 +42,43 @@ const errId = () => `${id()}-err`;
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+import { computed } from "vue";
+import { joinIds, useFieldId, useFieldState } from "../composables/useFieldId";
+
+defineOptions({ name: "BlessTextarea", inheritAttrs: false });
+
+const props = withDefaults(
+  defineProps<{
+    id?: string;
+    rows?: number;
+    /** grow with content (field-sizing: content) */
+    autogrow?: boolean;
+    invalid?: boolean;
+    disabled?: boolean;
+    readonly?: boolean;
+    description?: string;
+    error?: string;
+    maxlength?: number;
+    /** show n / maxlength */
+    counter?: boolean;
+  }>(),
+  { rows: 3, autogrow: true },
+);
+
+const model = defineModel<string>({ default: "" });
+const id = useFieldId(props);
+const fs = useFieldState();
+const descId = () => `${id()}-desc`;
+// the count is announced only near the limit; a live count on every keystroke is noise
+const near = computed(
+  () =>
+    !!props.maxlength &&
+    props.maxlength - String(model.value).length <= Math.max(10, props.maxlength * 0.1),
+);
+const errId = () => `${id()}-err`;
+</script>
 
 <style>
 .bless-textarea {

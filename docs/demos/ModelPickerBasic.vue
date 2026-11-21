@@ -1,3 +1,10 @@
+<template>
+  <div>
+    <BlessModelPicker v-model="model" :models />
+    <BlessText as="p" size="sm" style="margin-top: 12px">Model id: {{ model }}</BlessText>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessModelPicker, BlessText } from "blessing-ui";
@@ -30,10 +37,3 @@ const models = [
 ];
 const model = ref("studio");
 </script>
-
-<template>
-  <div>
-    <BlessModelPicker v-model="model" :models />
-    <BlessText as="p" size="sm" style="margin-top: 12px">Model id: {{ model }}</BlessText>
-  </div>
-</template>

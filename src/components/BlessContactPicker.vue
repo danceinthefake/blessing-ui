@@ -1,3 +1,45 @@
+<template>
+  <div class="bless-contacts" role="group" :aria-label="text.title">
+    <div v-if="chosen.length" class="bless-contacts__chosen" :aria-label="text.chosen" role="group">
+      <BlessChip
+        v-for="id in chosen"
+        :key="id"
+        :label="byId.get(id)?.name ?? id"
+        size="sm"
+        removable
+        :labels="{ remove: text.remove }"
+        @remove="pick(id, false)"
+      />
+    </div>
+    <input
+      v-model="query"
+      class="bless-contacts__search"
+      type="search"
+      :aria-label="text.search"
+      :placeholder="text.search"
+    />
+    <p class="bless-contacts__none" role="status">{{ count ? "" : text.none }}</p>
+    <div class="bless-contacts__scroll">
+      <fieldset v-for="s in sections" :key="s.key" class="bless-contacts__section">
+        <legend v-if="s.title" class="bless-contacts__title">{{ s.title }}</legend>
+        <label v-for="c in s.list" :key="`${s.key}-${c.id}`" class="bless-contacts__row">
+          <input
+            :type="multiple ? 'checkbox' : 'radio'"
+            :name="multiple ? undefined : `${uid}-contact`"
+            :checked="on(c.id)"
+            @change="pick(c.id, ($event.target as HTMLInputElement).checked)"
+          />
+          <BlessAvatar :name="c.name" :src="c.avatar" alt="" size="sm" />
+          <span class="bless-contacts__text">
+            <span class="bless-contacts__name">{{ c.name }}</span>
+            <span v-if="c.detail" class="bless-contacts__detail">{{ c.detail }}</span>
+          </span>
+        </label>
+      </fieldset>
+    </div>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed, ref, useId } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -73,48 +115,6 @@ function pick(id: string, checked: boolean) {
   else chosen.value = checked ? [...chosen.value, id] : chosen.value.filter((x) => x !== id);
 }
 </script>
-
-<template>
-  <div class="bless-contacts" role="group" :aria-label="text.title">
-    <div v-if="chosen.length" class="bless-contacts__chosen" :aria-label="text.chosen" role="group">
-      <BlessChip
-        v-for="id in chosen"
-        :key="id"
-        :label="byId.get(id)?.name ?? id"
-        size="sm"
-        removable
-        :labels="{ remove: text.remove }"
-        @remove="pick(id, false)"
-      />
-    </div>
-    <input
-      v-model="query"
-      class="bless-contacts__search"
-      type="search"
-      :aria-label="text.search"
-      :placeholder="text.search"
-    />
-    <p class="bless-contacts__none" role="status">{{ count ? "" : text.none }}</p>
-    <div class="bless-contacts__scroll">
-      <fieldset v-for="s in sections" :key="s.key" class="bless-contacts__section">
-        <legend v-if="s.title" class="bless-contacts__title">{{ s.title }}</legend>
-        <label v-for="c in s.list" :key="`${s.key}-${c.id}`" class="bless-contacts__row">
-          <input
-            :type="multiple ? 'checkbox' : 'radio'"
-            :name="multiple ? undefined : `${uid}-contact`"
-            :checked="on(c.id)"
-            @change="pick(c.id, ($event.target as HTMLInputElement).checked)"
-          />
-          <BlessAvatar :name="c.name" :src="c.avatar" alt="" size="sm" />
-          <span class="bless-contacts__text">
-            <span class="bless-contacts__name">{{ c.name }}</span>
-            <span v-if="c.detail" class="bless-contacts__detail">{{ c.detail }}</span>
-          </span>
-        </label>
-      </fieldset>
-    </div>
-  </div>
-</template>
 
 <style>
 .bless-contacts {

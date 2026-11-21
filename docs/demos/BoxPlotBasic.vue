@@ -1,3 +1,13 @@
+<template>
+  <BlessChart title="Time listened" description="Minutes per play" height="auto">
+    <BlessBoxPlot
+      :groups
+      :format="(v) => `${Math.round(v * 10) / 10}`"
+      label="Minutes per play, by day"
+    />
+  </BlessChart>
+</template>
+
 <script setup lang="ts">
 import { BlessBoxPlot, BlessChart } from "blessing-ui";
 
@@ -16,13 +26,3 @@ const groups = [
   { label: "Fri", values: day(28, 12) },
 ];
 </script>
-
-<template>
-  <BlessChart title="Time listened" description="Minutes per play" height="auto">
-    <BlessBoxPlot
-      :groups
-      :format="(v) => `${Math.round(v * 10) / 10}`"
-      label="Minutes per play, by day"
-    />
-  </BlessChart>
-</template>

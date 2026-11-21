@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import { BlessCheckbox, BlessFieldset } from "blessing-ui";
-</script>
-
 <template>
   <div class="row" style="align-items: flex-start; flex-wrap: wrap">
     <BlessFieldset legend="Notifications" style="width: 260px">
@@ -20,3 +16,7 @@ import { BlessCheckbox, BlessFieldset } from "blessing-ui";
     </BlessFieldset>
   </div>
 </template>
+
+<script setup lang="ts">
+import { BlessCheckbox, BlessFieldset } from "blessing-ui";
+</script>

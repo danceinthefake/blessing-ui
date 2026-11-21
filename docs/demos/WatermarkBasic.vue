@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import { BlessText, BlessWatermark } from "blessing-ui";
-</script>
-
 <template>
   <div style="position: relative; overflow: hidden; padding: 48px 24px; max-width: 560px">
     <BlessWatermark text="NEWS" />
@@ -9,3 +5,7 @@ import { BlessText, BlessWatermark } from "blessing-ui";
     <BlessText as="p" size="sm" muted>2019.04.18 · 24:00</BlessText>
   </div>
 </template>
+
+<script setup lang="ts">
+import { BlessText, BlessWatermark } from "blessing-ui";
+</script>

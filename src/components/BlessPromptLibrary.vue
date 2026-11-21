@@ -1,3 +1,49 @@
+<template>
+  <div class="bless-prompts">
+    <div class="bless-prompts__side">
+      <input v-model="query" type="search" :aria-label="text.search" :placeholder="text.search" />
+      <div v-if="tags.length" class="bless-prompts__tags" role="group" :aria-label="text.tags">
+        <button type="button" :aria-pressed="!tag" @click="tag = ''">{{ text.all }}</button>
+        <button
+          v-for="t in tags"
+          :key="t"
+          type="button"
+          :aria-pressed="tag === t"
+          @click="tag = tag === t ? '' : t"
+        >
+          {{ t }}
+        </button>
+      </div>
+      <ul v-if="shown.length" class="bless-prompts__list" role="list" :aria-label="text.list">
+        <li v-for="p in shown" :key="p.id">
+          <button type="button" :aria-pressed="chosen === p.id" @click="chosen = p.id">
+            <span class="bless-prompts__title">{{ p.title }}</span>
+            <span class="bless-prompts__snip">{{ p.text }}</span>
+          </button>
+        </li>
+      </ul>
+      <p v-else class="bless-prompts__none" role="status">{{ text.none }}</p>
+    </div>
+    <section class="bless-prompts__detail" :aria-label="prompt?.title ?? text.preview">
+      <template v-if="prompt">
+        <div class="bless-prompts__head">{{ prompt.title }}</div>
+        <div v-for="f in fields" :key="f" class="bless-prompts__field">
+          <label :for="`${id}-${f}`">{{ f }}</label>
+          <input :id="`${id}-${f}`" v-model="values[f]" />
+        </div>
+        <div class="bless-prompts__label">{{ text.preview }}</div>
+        <div class="bless-prompts__preview">{{ filled }}</div>
+        <div>
+          <button type="button" class="bless-prompts__use" @click="emit('use', filled, prompt)">
+            {{ text.use }}
+          </button>
+        </div>
+      </template>
+      <p v-else class="bless-prompts__none">{{ text.pick }}</p>
+    </section>
+  </div>
+</template>
+
 <script lang="ts">
 export interface BlessSavedPrompt {
   id: string;
@@ -72,52 +118,6 @@ watch(chosen, () => {
 });
 const filled = computed(() => (prompt.value ? fillPrompt(prompt.value.text, values) : ""));
 </script>
-
-<template>
-  <div class="bless-prompts">
-    <div class="bless-prompts__side">
-      <input v-model="query" type="search" :aria-label="text.search" :placeholder="text.search" />
-      <div v-if="tags.length" class="bless-prompts__tags" role="group" :aria-label="text.tags">
-        <button type="button" :aria-pressed="!tag" @click="tag = ''">{{ text.all }}</button>
-        <button
-          v-for="t in tags"
-          :key="t"
-          type="button"
-          :aria-pressed="tag === t"
-          @click="tag = tag === t ? '' : t"
-        >
-          {{ t }}
-        </button>
-      </div>
-      <ul v-if="shown.length" class="bless-prompts__list" role="list" :aria-label="text.list">
-        <li v-for="p in shown" :key="p.id">
-          <button type="button" :aria-pressed="chosen === p.id" @click="chosen = p.id">
-            <span class="bless-prompts__title">{{ p.title }}</span>
-            <span class="bless-prompts__snip">{{ p.text }}</span>
-          </button>
-        </li>
-      </ul>
-      <p v-else class="bless-prompts__none" role="status">{{ text.none }}</p>
-    </div>
-    <section class="bless-prompts__detail" :aria-label="prompt?.title ?? text.preview">
-      <template v-if="prompt">
-        <div class="bless-prompts__head">{{ prompt.title }}</div>
-        <div v-for="f in fields" :key="f" class="bless-prompts__field">
-          <label :for="`${id}-${f}`">{{ f }}</label>
-          <input :id="`${id}-${f}`" v-model="values[f]" />
-        </div>
-        <div class="bless-prompts__label">{{ text.preview }}</div>
-        <div class="bless-prompts__preview">{{ filled }}</div>
-        <div>
-          <button type="button" class="bless-prompts__use" @click="emit('use', filled, prompt)">
-            {{ text.use }}
-          </button>
-        </div>
-      </template>
-      <p v-else class="bless-prompts__none">{{ text.pick }}</p>
-    </section>
-  </div>
-</template>
 
 <style>
 .bless-prompts {

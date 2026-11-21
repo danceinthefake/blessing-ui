@@ -1,3 +1,14 @@
+<template>
+  <BlessCheckAnswers
+    :groups
+    declaration="I confirm that the answers are true. A false answer can end the permit."
+    @change="changing = $event"
+    @submit="sent = true"
+  />
+  <div v-if="changing" style="margin-top: 12px">Back to the question: {{ changing }}</div>
+  <div v-if="sent" style="margin-top: 12px">Sent.</div>
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessCheckAnswers, type BlessAnswerGroup } from "blessing-ui";
@@ -23,14 +34,3 @@ const groups: BlessAnswerGroup[] = [
 const changing = ref("");
 const sent = ref(false);
 </script>
-
-<template>
-  <BlessCheckAnswers
-    :groups
-    declaration="I confirm that the answers are true. A false answer can end the permit."
-    @change="changing = $event"
-    @submit="sent = true"
-  />
-  <div v-if="changing" style="margin-top: 12px">Back to the question: {{ changing }}</div>
-  <div v-if="sent" style="margin-top: 12px">Sent.</div>
-</template>

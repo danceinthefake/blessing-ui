@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import { BlessButton } from "blessing-ui";
-</script>
-
 <template>
   <div class="row">
     <BlessButton>Solid</BlessButton>
@@ -11,3 +7,7 @@ import { BlessButton } from "blessing-ui";
     <BlessButton variant="outline" color="danger">Outline danger</BlessButton>
   </div>
 </template>
+
+<script setup lang="ts">
+import { BlessButton } from "blessing-ui";
+</script>

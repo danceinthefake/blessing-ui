@@ -1,3 +1,15 @@
+<template>
+  <div class="col">
+    <BlessOnboardingChecklist
+      v-model:done="done"
+      :items
+      @select="(it) => (last = `Go to “${it.label}”`)"
+      @finish="last = 'Everything done!'"
+    />
+    <p style="margin: 0" aria-live="polite">{{ last }}</p>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessOnboardingChecklist, type BlessChecklistItem } from "blessing-ui";
@@ -15,15 +27,3 @@ const items: BlessChecklistItem[] = [
 const done = ref<string[]>(["invite"]);
 const last = ref("");
 </script>
-
-<template>
-  <div class="col">
-    <BlessOnboardingChecklist
-      v-model:done="done"
-      :items
-      @select="(it) => (last = `Go to “${it.label}”`)"
-      @finish="last = 'Everything done!'"
-    />
-    <p style="margin: 0" aria-live="polite">{{ last }}</p>
-  </div>
-</template>

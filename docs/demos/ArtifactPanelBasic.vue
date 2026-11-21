@@ -1,3 +1,21 @@
+<template>
+  <div style="display: grid; gap: 12px">
+    <BlessArtifactPanel
+      v-if="open"
+      v-model:version="version"
+      title="Launch plan"
+      :versions
+      :writing
+      filename="launch-plan.txt"
+      @close="open = false"
+    />
+    <div style="display: flex; gap: 8px">
+      <BlessButton :disabled="writing" @click="revise">Ask for an email step</BlessButton>
+      <BlessButton v-if="!open" variant="outline" @click="open = true">Open the panel</BlessButton>
+    </div>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessArtifactPanel, BlessButton } from "blessing-ui";
@@ -26,21 +44,3 @@ function revise() {
   }, 60);
 }
 </script>
-
-<template>
-  <div style="display: grid; gap: 12px">
-    <BlessArtifactPanel
-      v-if="open"
-      v-model:version="version"
-      title="Launch plan"
-      :versions
-      :writing
-      filename="launch-plan.txt"
-      @close="open = false"
-    />
-    <div style="display: flex; gap: 8px">
-      <BlessButton :disabled="writing" @click="revise">Ask for an email step</BlessButton>
-      <BlessButton v-if="!open" variant="outline" @click="open = true">Open the panel</BlessButton>
-    </div>
-  </div>
-</template>

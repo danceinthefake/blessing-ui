@@ -1,3 +1,24 @@
+<template>
+  <div class="col">
+    <BlessSwitch v-model="edit">Edit the plan</BlessSwitch>
+    <BlessGantt
+      v-model:tasks="tasks"
+      v-model:selected="picked"
+      :editable="edit"
+      from="2026-09-28"
+      to="2026-10-25"
+      label="Release schedule"
+    />
+    <small>{{
+      edit
+        ? "drag a bar or its edges; Alt + arrows from the keyboard"
+        : picked
+          ? `selected: ${picked}`
+          : "click a bar, or use the arrow keys and Enter"
+    }}</small>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessGantt, BlessSwitch, type BlessGanttTask } from "blessing-ui";
@@ -32,24 +53,3 @@ const tasks = ref<BlessGanttTask[]>([
   { id: "ship", label: "Publish", start: "2026-10-20", end: "2026-10-20", after: ["e2e"] },
 ]);
 </script>
-
-<template>
-  <div class="col">
-    <BlessSwitch v-model="edit">Edit the plan</BlessSwitch>
-    <BlessGantt
-      v-model:tasks="tasks"
-      v-model:selected="picked"
-      :editable="edit"
-      from="2026-09-28"
-      to="2026-10-25"
-      label="Release schedule"
-    />
-    <small>{{
-      edit
-        ? "drag a bar or its edges; Alt + arrows from the keyboard"
-        : picked
-          ? `selected: ${picked}`
-          : "click a bar, or use the arrow keys and Enter"
-    }}</small>
-  </div>
-</template>

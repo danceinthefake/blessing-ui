@@ -1,3 +1,55 @@
+<template>
+  <div ref="root" class="bless-quiz">
+    <div v-if="done" class="bless-quiz__end">
+      <p class="bless-quiz__score bless-quiz__focus" tabindex="-1">
+        {{ text.score(right, questions.length) }}
+      </p>
+      <BlessButton size="sm" variant="outline" @click="restart">{{ text.restart }}</BlessButton>
+    </div>
+    <form v-else-if="q" class="bless-quiz__card" @submit.prevent="checked ? next() : check()">
+      <p class="bless-quiz__progress">{{ text.progress(at + 1, questions.length) }}</p>
+      <fieldset class="bless-quiz__set">
+        <legend class="bless-quiz__question bless-quiz__focus" tabindex="-1">
+          {{ q.question }}
+        </legend>
+        <label
+          v-for="(c, i) in q.choices"
+          :key="i"
+          class="bless-quiz__choice"
+          :class="{
+            'is-right': checked && i === q.answer,
+            'is-wrong': checked && i === pick && i !== q.answer,
+          }"
+        >
+          <input
+            v-model="pick"
+            type="radio"
+            :name="`${uid}-q${at}`"
+            :value="i"
+            :disabled="checked"
+          />
+          <span>{{ c }}</span>
+          <span v-if="checked && i === q.answer" class="bless-quiz__mark" aria-hidden="true"
+            >✓</span
+          >
+          <span v-else-if="checked && i === pick" class="bless-quiz__mark" aria-hidden="true"
+            >✕</span
+          >
+        </label>
+      </fieldset>
+      <div class="bless-quiz__feedback" role="status">
+        <template v-if="checked">
+          <strong>{{ pick === q.answer ? text.right : text.wrong(q.choices[q.answer]!) }}</strong>
+          <p v-if="q.explain" class="bless-quiz__explain">{{ q.explain }}</p>
+        </template>
+      </div>
+      <BlessButton type="submit" size="sm" :disabled="pick === undefined">
+        {{ !checked ? text.check : at + 1 >= questions.length ? text.finish : text.next }}
+      </BlessButton>
+    </form>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed, nextTick, ref, useId } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -77,58 +129,6 @@ function restart() {
   focusTop();
 }
 </script>
-
-<template>
-  <div ref="root" class="bless-quiz">
-    <div v-if="done" class="bless-quiz__end">
-      <p class="bless-quiz__score bless-quiz__focus" tabindex="-1">
-        {{ text.score(right, questions.length) }}
-      </p>
-      <BlessButton size="sm" variant="outline" @click="restart">{{ text.restart }}</BlessButton>
-    </div>
-    <form v-else-if="q" class="bless-quiz__card" @submit.prevent="checked ? next() : check()">
-      <p class="bless-quiz__progress">{{ text.progress(at + 1, questions.length) }}</p>
-      <fieldset class="bless-quiz__set">
-        <legend class="bless-quiz__question bless-quiz__focus" tabindex="-1">
-          {{ q.question }}
-        </legend>
-        <label
-          v-for="(c, i) in q.choices"
-          :key="i"
-          class="bless-quiz__choice"
-          :class="{
-            'is-right': checked && i === q.answer,
-            'is-wrong': checked && i === pick && i !== q.answer,
-          }"
-        >
-          <input
-            v-model="pick"
-            type="radio"
-            :name="`${uid}-q${at}`"
-            :value="i"
-            :disabled="checked"
-          />
-          <span>{{ c }}</span>
-          <span v-if="checked && i === q.answer" class="bless-quiz__mark" aria-hidden="true"
-            >✓</span
-          >
-          <span v-else-if="checked && i === pick" class="bless-quiz__mark" aria-hidden="true"
-            >✕</span
-          >
-        </label>
-      </fieldset>
-      <div class="bless-quiz__feedback" role="status">
-        <template v-if="checked">
-          <strong>{{ pick === q.answer ? text.right : text.wrong(q.choices[q.answer]!) }}</strong>
-          <p v-if="q.explain" class="bless-quiz__explain">{{ q.explain }}</p>
-        </template>
-      </div>
-      <BlessButton type="submit" size="sm" :disabled="pick === undefined">
-        {{ !checked ? text.check : at + 1 >= questions.length ? text.finish : text.next }}
-      </BlessButton>
-    </form>
-  </div>
-</template>
 
 <style>
 .bless-quiz {

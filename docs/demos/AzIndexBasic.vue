@@ -1,3 +1,8 @@
+<template>
+  <!-- the docs have a fixed header of 64 px -->
+  <BlessAzIndex :items="services" style="--bless-az-top: 64px" />
+</template>
+
 <script setup lang="ts">
 import { BlessAzIndex } from "blessing-ui";
 
@@ -30,8 +35,3 @@ const services = [
   "112 emergency line",
 ].map((label) => ({ label, href: `#${label.toLowerCase().replace(/\W+/g, "-")}` }));
 </script>
-
-<template>
-  <!-- the docs have a fixed header of 64 px -->
-  <BlessAzIndex :items="services" style="--bless-az-top: 64px" />
-</template>

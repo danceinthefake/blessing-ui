@@ -1,8 +1,3 @@
-<script setup lang="ts">
-import { BlessButton, BlessConfirmPopup, useToast } from "blessing-ui";
-const { success, info } = useToast();
-</script>
-
 <template>
   <div class="row">
     <BlessConfirmPopup
@@ -26,3 +21,8 @@ const { success, info } = useToast();
     </BlessConfirmPopup>
   </div>
 </template>
+
+<script setup lang="ts">
+import { BlessButton, BlessConfirmPopup, useToast } from "blessing-ui";
+const { success, info } = useToast();
+</script>

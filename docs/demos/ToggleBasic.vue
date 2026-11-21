@@ -1,10 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { BlessToggle } from "blessing-ui";
-const bold = ref(false);
-const pinned = ref(true);
-</script>
-
 <template>
   <div class="row">
     <BlessToggle v-model:pressed="bold">Bold</BlessToggle>
@@ -12,3 +5,10 @@ const pinned = ref(true);
     <BlessToggle size="sm" disabled>Archived</BlessToggle>
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { BlessToggle } from "blessing-ui";
+const bold = ref(false);
+const pinned = ref(true);
+</script>

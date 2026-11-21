@@ -1,3 +1,55 @@
+<template>
+  <section class="bless-stores" :aria-label="text.title">
+    <input
+      v-model="query"
+      class="bless-stores__search"
+      type="search"
+      :aria-label="text.search"
+      :placeholder="text.search"
+    />
+    <p class="bless-stores__none" role="status">{{ shown.length ? "" : text.none }}</p>
+    <ul class="bless-stores__list">
+      <li
+        v-for="s in shown"
+        :key="s.id"
+        class="bless-stores__store"
+        :class="{ 'is-selected': selected === s.id }"
+      >
+        <label class="bless-stores__pick">
+          <input v-model="selected" type="radio" :name="`${id}-store`" :value="s.id" />
+          <span class="bless-stores__main">
+            <strong class="bless-stores__name">{{ s.name }}</strong>
+            <span class="bless-stores__address">{{ s.address }}</span>
+            <span class="bless-stores__meta">
+              <template v-if="s.distance !== undefined">{{
+                text.away(km.format(s.distance))
+              }}</template>
+              <template v-if="s.distance !== undefined && (s.open !== undefined || s.hours)">
+                ·
+              </template>
+              <span
+                v-if="s.open !== undefined"
+                class="bless-stores__state"
+                :class="s.open ? 'is-open' : 'is-closed'"
+              >
+                {{ s.open ? text.open : text.closed }}</span
+              ><template v-if="s.hours"> · {{ s.hours }}</template>
+            </span>
+          </span>
+        </label>
+        <span v-if="s.directions || s.phone" class="bless-stores__links">
+          <a v-if="s.directions" :href="s.directions" target="_blank" rel="noopener"
+            >{{ text.directions }}<span class="bless-sr">: {{ s.name }}</span></a
+          >
+          <a v-if="s.phone" :href="`tel:${s.phone.replace(/[^\d+]/g, '')}`"
+            >{{ text.call }}<span class="bless-sr">: {{ s.name }}</span></a
+          >
+        </span>
+      </li>
+    </ul>
+  </section>
+</template>
+
 <script setup lang="ts">
 import { computed, ref, useId } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -70,58 +122,6 @@ const shown = computed(() => {
     .sort((a, b) => (a.distance ?? Infinity) - (b.distance ?? Infinity));
 });
 </script>
-
-<template>
-  <section class="bless-stores" :aria-label="text.title">
-    <input
-      v-model="query"
-      class="bless-stores__search"
-      type="search"
-      :aria-label="text.search"
-      :placeholder="text.search"
-    />
-    <p class="bless-stores__none" role="status">{{ shown.length ? "" : text.none }}</p>
-    <ul class="bless-stores__list">
-      <li
-        v-for="s in shown"
-        :key="s.id"
-        class="bless-stores__store"
-        :class="{ 'is-selected': selected === s.id }"
-      >
-        <label class="bless-stores__pick">
-          <input v-model="selected" type="radio" :name="`${id}-store`" :value="s.id" />
-          <span class="bless-stores__main">
-            <strong class="bless-stores__name">{{ s.name }}</strong>
-            <span class="bless-stores__address">{{ s.address }}</span>
-            <span class="bless-stores__meta">
-              <template v-if="s.distance !== undefined">{{
-                text.away(km.format(s.distance))
-              }}</template>
-              <template v-if="s.distance !== undefined && (s.open !== undefined || s.hours)">
-                ·
-              </template>
-              <span
-                v-if="s.open !== undefined"
-                class="bless-stores__state"
-                :class="s.open ? 'is-open' : 'is-closed'"
-              >
-                {{ s.open ? text.open : text.closed }}</span
-              ><template v-if="s.hours"> · {{ s.hours }}</template>
-            </span>
-          </span>
-        </label>
-        <span v-if="s.directions || s.phone" class="bless-stores__links">
-          <a v-if="s.directions" :href="s.directions" target="_blank" rel="noopener"
-            >{{ text.directions }}<span class="bless-sr">: {{ s.name }}</span></a
-          >
-          <a v-if="s.phone" :href="`tel:${s.phone.replace(/[^\d+]/g, '')}`"
-            >{{ text.call }}<span class="bless-sr">: {{ s.name }}</span></a
-          >
-        </span>
-      </li>
-    </ul>
-  </section>
-</template>
 
 <style>
 .bless-stores {

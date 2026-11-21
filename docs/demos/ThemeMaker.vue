@@ -1,3 +1,32 @@
+<template>
+  <div class="maker">
+    <div class="maker__inputs">
+      <BlessField :label="t.petal">
+        <BlessColorPicker v-model="petal" :swatches="petals" />
+      </BlessField>
+      <BlessField :label="t.name" :description="t.nameHelp">
+        <BlessInput v-model="name" />
+      </BlessField>
+    </div>
+
+    <section class="maker__preview" :style="vars" :aria-label="t.preview">
+      <PaletteRetint />
+    </section>
+
+    <div>
+      <p class="maker__head">{{ t.checks }}</p>
+      <ul class="maker__checks">
+        <li v-for="c in checks" :key="c.label">
+          <span>{{ c.label }}</span>
+          <span class="maker__ratio">{{ c.ratio.toFixed(2) }}:1 {{ c.ratio >= c.min ? "✓" : "✗" }}</span>
+        </li>
+      </ul>
+    </div>
+
+    <BlessCodeBlock :code lang="css" filename="palette.css" copy />
+  </div>
+</template>
+
 <script setup lang="ts">
 import { BlessCodeBlock, BlessColorPicker, BlessField, BlessInput, contrastRatio } from "blessing-ui";
 import { useData } from "vitepress";
@@ -65,35 +94,6 @@ const checks = computed(() => [
   { label: t.value.chart, ratio: onGrays(p.value["chart-1"], grays.light), min: 3 },
 ]);
 </script>
-
-<template>
-  <div class="maker">
-    <div class="maker__inputs">
-      <BlessField :label="t.petal">
-        <BlessColorPicker v-model="petal" :swatches="petals" />
-      </BlessField>
-      <BlessField :label="t.name" :description="t.nameHelp">
-        <BlessInput v-model="name" />
-      </BlessField>
-    </div>
-
-    <section class="maker__preview" :style="vars" :aria-label="t.preview">
-      <PaletteRetint />
-    </section>
-
-    <div>
-      <p class="maker__head">{{ t.checks }}</p>
-      <ul class="maker__checks">
-        <li v-for="c in checks" :key="c.label">
-          <span>{{ c.label }}</span>
-          <span class="maker__ratio">{{ c.ratio.toFixed(2) }}:1 {{ c.ratio >= c.min ? "✓" : "✗" }}</span>
-        </li>
-      </ul>
-    </div>
-
-    <BlessCodeBlock :code lang="css" filename="palette.css" copy />
-  </div>
-</template>
 
 <style scoped>
 .maker {

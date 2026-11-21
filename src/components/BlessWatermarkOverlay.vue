@@ -1,3 +1,14 @@
+<template>
+  <div class="bless-wm-overlay">
+    <slot />
+    <div
+      class="bless-wm-overlay__layer"
+      :style="{ '--_tile': `url('${svg}')`, backgroundColor: color, opacity }"
+      aria-hidden="true"
+    />
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 
@@ -27,17 +38,6 @@ const svg = computed(() => {
   )}`;
 });
 </script>
-
-<template>
-  <div class="bless-wm-overlay">
-    <slot />
-    <div
-      class="bless-wm-overlay__layer"
-      :style="{ '--_tile': `url('${svg}')`, backgroundColor: color, opacity }"
-      aria-hidden="true"
-    />
-  </div>
-</template>
 
 <style>
 .bless-wm-overlay {

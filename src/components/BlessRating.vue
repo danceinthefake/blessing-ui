@@ -1,30 +1,3 @@
-<script setup lang="ts">
-import "./sr.css";
-import { ref, useId } from "vue";
-
-defineOptions({ name: "BlessRating" });
-
-const props = withDefaults(
-  defineProps<{
-    max?: number;
-    name?: string;
-    label?: string;
-    readonly?: boolean;
-    disabled?: boolean;
-    size?: "sm" | "md" | "lg";
-    /** glyph for each step */
-    icon?: string;
-  }>(),
-  { max: 5, label: "Rating", size: "md", icon: "★" },
-);
-const model = defineModel<number>({ default: 0 });
-const uid = useId();
-const name = () => props.name ?? uid;
-const hover = ref(0);
-// read-only renders one image with a name ("Score: 4 of 5"), not a disabled set of radios that
-// screen readers call "dimmed" and can't reach
-</script>
-
 <template>
   <span
     v-if="readonly"
@@ -74,6 +47,33 @@ const hover = ref(0);
     </label>
   </fieldset>
 </template>
+
+<script setup lang="ts">
+import "./sr.css";
+import { ref, useId } from "vue";
+
+defineOptions({ name: "BlessRating" });
+
+const props = withDefaults(
+  defineProps<{
+    max?: number;
+    name?: string;
+    label?: string;
+    readonly?: boolean;
+    disabled?: boolean;
+    size?: "sm" | "md" | "lg";
+    /** glyph for each step */
+    icon?: string;
+  }>(),
+  { max: 5, label: "Rating", size: "md", icon: "★" },
+);
+const model = defineModel<number>({ default: 0 });
+const uid = useId();
+const name = () => props.name ?? uid;
+const hover = ref(0);
+// read-only renders one image with a name ("Score: 4 of 5"), not a disabled set of radios that
+// screen readers call "dimmed" and can't reach
+</script>
 
 <style>
 .bless-rating {

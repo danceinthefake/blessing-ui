@@ -1,3 +1,76 @@
+<template>
+  <div class="bless-audio" :class="`bless-audio--${color}`">
+    <audio
+      ref="audio"
+      :src="current?.src"
+      preload="metadata"
+      @play="
+        playing = true;
+        emit('play', current);
+      "
+      @pause="
+        playing = false;
+        emit('pause', current);
+      "
+      @timeupdate="time = audio!.currentTime"
+      @durationchange="duration = audio!.duration"
+      @ended="onEnded"
+    />
+
+    <div v-if="current" class="bless-audio__now">
+      <BlessSkew
+        as="button"
+        :color="playing ? color : 'text'"
+        type="button"
+        class="bless-audio__toggle"
+        :aria-label="text.play"
+        :aria-pressed="playing"
+        @click="toggle"
+      >
+        <span aria-hidden="true">{{ playing ? "❚❚" : "▶" }}</span>
+      </BlessSkew>
+      <div class="bless-audio__meta">
+        <span class="bless-audio__title">{{ current.title }}</span>
+        <span v-if="current.artist" class="bless-audio__artist">{{ current.artist }}</span>
+      </div>
+      <span class="bless-audio__time">{{ fmt(time) }} / {{ fmt(duration) }}</span>
+      <div class="bless-audio__bar">
+        <div class="bless-audio__fill" :style="{ width: `${progress}%` }" />
+        <input
+          type="range"
+          class="bless-audio__seek"
+          min="0"
+          :max="duration || 0"
+          step="1"
+          :value="time"
+          :disabled="!duration"
+          :aria-label="text.seek"
+          :aria-valuetext="`${fmt(time)} of ${fmt(duration)}`"
+          @input="seek"
+        />
+      </div>
+    </div>
+
+    <ol role="list" v-if="tracks.length > 1" class="bless-audio__list">
+      <li v-for="(t, i) in tracks" :key="t.src">
+        <button
+          type="button"
+          class="bless-audio__track"
+          :class="{ 'bless-audio__track--current': i === index }"
+          :aria-current="i === index ? 'true' : undefined"
+          @click="select(i)"
+        >
+          <span class="bless-audio__num">{{ String(i + 1).padStart(2, "0") }}</span>
+          <span class="bless-audio__track-title">{{ t.title }}</span>
+          <span v-if="i === index && playing" class="bless-audio__eq" aria-hidden="true"
+            ><i /><i /><i
+          /></span>
+        </button>
+      </li>
+    </ol>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { useLabelPack } from "../composables/useLabels";
 import { computed, onBeforeUnmount, ref, watch } from "vue";
@@ -86,79 +159,6 @@ watch(index, () => {
 
 onBeforeUnmount(() => audio.value?.pause());
 </script>
-
-<template>
-  <div class="bless-audio" :class="`bless-audio--${color}`">
-    <audio
-      ref="audio"
-      :src="current?.src"
-      preload="metadata"
-      @play="
-        playing = true;
-        emit('play', current);
-      "
-      @pause="
-        playing = false;
-        emit('pause', current);
-      "
-      @timeupdate="time = audio!.currentTime"
-      @durationchange="duration = audio!.duration"
-      @ended="onEnded"
-    />
-
-    <div v-if="current" class="bless-audio__now">
-      <BlessSkew
-        as="button"
-        :color="playing ? color : 'text'"
-        type="button"
-        class="bless-audio__toggle"
-        :aria-label="text.play"
-        :aria-pressed="playing"
-        @click="toggle"
-      >
-        <span aria-hidden="true">{{ playing ? "❚❚" : "▶" }}</span>
-      </BlessSkew>
-      <div class="bless-audio__meta">
-        <span class="bless-audio__title">{{ current.title }}</span>
-        <span v-if="current.artist" class="bless-audio__artist">{{ current.artist }}</span>
-      </div>
-      <span class="bless-audio__time">{{ fmt(time) }} / {{ fmt(duration) }}</span>
-      <div class="bless-audio__bar">
-        <div class="bless-audio__fill" :style="{ width: `${progress}%` }" />
-        <input
-          type="range"
-          class="bless-audio__seek"
-          min="0"
-          :max="duration || 0"
-          step="1"
-          :value="time"
-          :disabled="!duration"
-          :aria-label="text.seek"
-          :aria-valuetext="`${fmt(time)} of ${fmt(duration)}`"
-          @input="seek"
-        />
-      </div>
-    </div>
-
-    <ol role="list" v-if="tracks.length > 1" class="bless-audio__list">
-      <li v-for="(t, i) in tracks" :key="t.src">
-        <button
-          type="button"
-          class="bless-audio__track"
-          :class="{ 'bless-audio__track--current': i === index }"
-          :aria-current="i === index ? 'true' : undefined"
-          @click="select(i)"
-        >
-          <span class="bless-audio__num">{{ String(i + 1).padStart(2, "0") }}</span>
-          <span class="bless-audio__track-title">{{ t.title }}</span>
-          <span v-if="i === index && playing" class="bless-audio__eq" aria-hidden="true"
-            ><i /><i /><i
-          /></span>
-        </button>
-      </li>
-    </ol>
-  </div>
-</template>
 
 <style>
 .bless-audio {

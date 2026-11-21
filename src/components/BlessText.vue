@@ -1,3 +1,20 @@
+<template>
+  <component
+    :is="as"
+    class="bless-text"
+    :class="[
+      `bless-text--${size}`,
+      `bless-text--w-${weight}`,
+      `bless-text--t-${tracking}`,
+      `bless-text--l-${leading}`,
+      { 'bless-text--muted': muted || color === 'muted', 'bless-text--upper': uppercase },
+      color && color !== 'muted' ? `bless-text--c-${color}` : '',
+    ]"
+  >
+    <slot />
+  </component>
+</template>
+
 <script setup lang="ts">
 defineOptions({ name: "BlessText" });
 
@@ -17,23 +34,6 @@ withDefaults(
   { as: "span", size: "md", weight: "normal", tracking: "normal", leading: "normal" },
 );
 </script>
-
-<template>
-  <component
-    :is="as"
-    class="bless-text"
-    :class="[
-      `bless-text--${size}`,
-      `bless-text--w-${weight}`,
-      `bless-text--t-${tracking}`,
-      `bless-text--l-${leading}`,
-      { 'bless-text--muted': muted || color === 'muted', 'bless-text--upper': uppercase },
-      color && color !== 'muted' ? `bless-text--c-${color}` : '',
-    ]"
-  >
-    <slot />
-  </component>
-</template>
 
 <style>
 .bless-text {

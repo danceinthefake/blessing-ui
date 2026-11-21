@@ -1,3 +1,70 @@
+<template>
+  <div ref="root" class="bless-heat" role="group" :aria-label="label">
+    <div class="bless-heat__scroll">
+      <div
+        class="bless-heat__grid"
+        :style="{ '--bless-heat-weeks': weeks, '--bless-heat-levels': levels }"
+      >
+        <span
+          v-for="(m, w) in months"
+          :key="`m${w}`"
+          class="bless-heat__month"
+          aria-hidden="true"
+          :style="{ gridColumn: w + 2, gridRow: 1 }"
+          >{{ m }}</span
+        >
+        <span
+          v-for="(n, r) in weekdays"
+          :key="`d${r}`"
+          class="bless-heat__weekday"
+          aria-hidden="true"
+          :style="{ gridColumn: 1, gridRow: r + 2 }"
+          >{{ n }}</span
+        >
+        <template v-for="(d, i) in days" :key="d.iso">
+          <button
+            v-if="d.shown"
+            type="button"
+            class="bless-heat__cell"
+            :class="{ 'bless-heat__cell--on': model === d.iso }"
+            :style="{
+              gridColumn: Math.floor(i / 7) + 2,
+              gridRow: (i % 7) + 2,
+              '--bless-heat-l': d.level / levels,
+            }"
+            :data-date="d.iso"
+            :data-level="d.level"
+            :tabindex="tab === d.iso ? 0 : -1"
+            :aria-label="d.text"
+            :aria-pressed="model === d.iso"
+            @click="model = model === d.iso ? null : d.iso"
+            @keydown="onKey(d.iso, $event)"
+            @focus="((stop = d.iso), (readout = d.text))"
+            @mouseenter="readout = d.text"
+            @mouseleave="readout = ''"
+            @blur="readout = ''"
+          ></button>
+        </template>
+      </div>
+    </div>
+    <div class="bless-heat__foot">
+      <span class="bless-heat__readout" aria-live="polite">{{
+        readout || `${plural(total)} in ${weeks} weeks`
+      }}</span>
+      <span v-if="legend" class="bless-heat__legend" aria-hidden="true">
+        Less
+        <i
+          v-for="l in levels + 1"
+          :key="l"
+          class="bless-heat__cell bless-heat__swatch"
+          :style="{ '--bless-heat-l': (l - 1) / levels }"
+        ></i>
+        More
+      </span>
+    </div>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed, nextTick, ref } from "vue";
 import { addDays, fromISO, isoToday, toISO } from "../composables/date";
@@ -111,73 +178,6 @@ function onKey(iso: string, e: KeyboardEvent) {
   else if (k === "End") (e.preventDefault(), go(last.value));
 }
 </script>
-
-<template>
-  <div ref="root" class="bless-heat" role="group" :aria-label="label">
-    <div class="bless-heat__scroll">
-      <div
-        class="bless-heat__grid"
-        :style="{ '--bless-heat-weeks': weeks, '--bless-heat-levels': levels }"
-      >
-        <span
-          v-for="(m, w) in months"
-          :key="`m${w}`"
-          class="bless-heat__month"
-          aria-hidden="true"
-          :style="{ gridColumn: w + 2, gridRow: 1 }"
-          >{{ m }}</span
-        >
-        <span
-          v-for="(n, r) in weekdays"
-          :key="`d${r}`"
-          class="bless-heat__weekday"
-          aria-hidden="true"
-          :style="{ gridColumn: 1, gridRow: r + 2 }"
-          >{{ n }}</span
-        >
-        <template v-for="(d, i) in days" :key="d.iso">
-          <button
-            v-if="d.shown"
-            type="button"
-            class="bless-heat__cell"
-            :class="{ 'bless-heat__cell--on': model === d.iso }"
-            :style="{
-              gridColumn: Math.floor(i / 7) + 2,
-              gridRow: (i % 7) + 2,
-              '--bless-heat-l': d.level / levels,
-            }"
-            :data-date="d.iso"
-            :data-level="d.level"
-            :tabindex="tab === d.iso ? 0 : -1"
-            :aria-label="d.text"
-            :aria-pressed="model === d.iso"
-            @click="model = model === d.iso ? null : d.iso"
-            @keydown="onKey(d.iso, $event)"
-            @focus="((stop = d.iso), (readout = d.text))"
-            @mouseenter="readout = d.text"
-            @mouseleave="readout = ''"
-            @blur="readout = ''"
-          ></button>
-        </template>
-      </div>
-    </div>
-    <div class="bless-heat__foot">
-      <span class="bless-heat__readout" aria-live="polite">{{
-        readout || `${plural(total)} in ${weeks} weeks`
-      }}</span>
-      <span v-if="legend" class="bless-heat__legend" aria-hidden="true">
-        Less
-        <i
-          v-for="l in levels + 1"
-          :key="l"
-          class="bless-heat__cell bless-heat__swatch"
-          :style="{ '--bless-heat-l': (l - 1) / levels }"
-        ></i>
-        More
-      </span>
-    </div>
-  </div>
-</template>
 
 <style>
 .bless-heat {

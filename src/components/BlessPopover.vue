@@ -1,3 +1,30 @@
+<template>
+  <span
+    ref="anchor"
+    class="bless-popover__anchor"
+    v-bind="hover"
+    @click="trigger === 'click' && (open = !open)"
+  >
+    <slot name="trigger" :open />
+  </span>
+  <div
+    ref="panel"
+    :id
+    :popover="modal ? 'manual' : 'auto'"
+    class="bless-popover"
+    :class="[`bless-popover--${side}`, { 'bless-popover--arrow': arrow }]"
+    :style
+    role="dialog"
+    :aria-label="title"
+    v-bind="{ ...$attrs, ...hover }"
+    @toggle="onToggle"
+    @keydown.esc="modal && ($event.preventDefault(), (open = false))"
+  >
+    <strong v-if="title" class="bless-popover__title">{{ title }}</strong>
+    <slot :close="() => (open = false)" />
+  </div>
+</template>
+
 <script setup lang="ts">
 import { nextTick, onMounted, ref, useId, watch } from "vue";
 import { adoptCss } from "../composables/adoptCss";
@@ -102,33 +129,6 @@ onMounted(() =>
   ),
 );
 </script>
-
-<template>
-  <span
-    ref="anchor"
-    class="bless-popover__anchor"
-    v-bind="hover"
-    @click="trigger === 'click' && (open = !open)"
-  >
-    <slot name="trigger" :open />
-  </span>
-  <div
-    ref="panel"
-    :id
-    :popover="modal ? 'manual' : 'auto'"
-    class="bless-popover"
-    :class="[`bless-popover--${side}`, { 'bless-popover--arrow': arrow }]"
-    :style
-    role="dialog"
-    :aria-label="title"
-    v-bind="{ ...$attrs, ...hover }"
-    @toggle="onToggle"
-    @keydown.esc="modal && ($event.preventDefault(), (open = false))"
-  >
-    <strong v-if="title" class="bless-popover__title">{{ title }}</strong>
-    <slot :close="() => (open = false)" />
-  </div>
-</template>
 
 <style>
 .bless-popover__anchor {

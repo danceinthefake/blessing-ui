@@ -1,3 +1,7 @@
+<template>
+  <div class="bless-accordion"><slot /></div>
+</template>
+
 <script setup lang="ts">
 import { provide, toRef, useId } from "vue";
 import { accordionKey } from "./accordion";
@@ -10,10 +14,6 @@ provide(accordionKey, {
   name: toRef(() => (props.type === "single" ? `bless-acc-${uid}` : undefined)),
 });
 </script>
-
-<template>
-  <div class="bless-accordion"><slot /></div>
-</template>
 
 <style>
 .bless-accordion {

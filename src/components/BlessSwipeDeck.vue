@@ -1,3 +1,72 @@
+<template>
+  <div class="bless-deck" :style="{ '--bless-deck-x': dir[0], '--bless-deck-y': dir[1] }">
+    <div
+      class="bless-deck__stage"
+      tabindex="0"
+      role="group"
+      aria-roledescription="deck of cards"
+      :aria-label="`${label}, ${model.length} left. Right arrow ${text.accept}, left arrow ${text.reject}, up arrow ${text.skip}, Backspace ${text.undo}.`"
+      @keydown="onKey"
+    >
+      <TransitionGroup name="bless-deck">
+        <div
+          v-for="(item, i) in shown"
+          :key="rowKey ? rowKey(item) : model.length - i"
+          class="bless-deck__card"
+          :class="{ 'bless-deck__card--top': i === 0 }"
+          :style="i === 0 ? topStyle : { '--bless-deck-depth': i }"
+          :aria-hidden="i > 0 || undefined"
+          :inert="i > 0 || undefined"
+          @pointerdown="i === 0 && down($event)"
+          @pointermove="i === 0 && move($event)"
+          @pointerup="i === 0 && up()"
+          @pointercancel="i === 0 && (drag = null)"
+        >
+          <slot name="card" :item :index="i">{{ item }}</slot>
+          <template v-if="i === 0">
+            <span
+              class="bless-deck__stamp bless-deck__stamp--accept"
+              aria-hidden="true"
+              :style="{ opacity: lean.accept }"
+              >{{ text.accept }}</span
+            >
+            <span
+              class="bless-deck__stamp bless-deck__stamp--reject"
+              aria-hidden="true"
+              :style="{ opacity: lean.reject }"
+              >{{ text.reject }}</span
+            >
+            <span
+              class="bless-deck__stamp bless-deck__stamp--skip"
+              aria-hidden="true"
+              :style="{ opacity: lean.skip }"
+              >{{ text.skip }}</span
+            >
+          </template>
+        </div>
+      </TransitionGroup>
+      <div v-if="!model.length" class="bless-deck__empty">
+        <slot name="empty">{{ text.empty }}</slot>
+      </div>
+    </div>
+    <div v-if="controls" class="bless-deck__controls">
+      <BlessButton variant="outline" :disabled="!undoable" @click="undo">{{
+        text.undo
+      }}</BlessButton>
+      <BlessButton variant="outline" :disabled="!model.length" @click="decide('reject')">{{
+        text.reject
+      }}</BlessButton>
+      <BlessButton variant="outline" :disabled="!model.length" @click="decide('skip')">{{
+        text.skip
+      }}</BlessButton>
+      <BlessButton :disabled="!model.length" @click="decide('accept')">{{
+        text.accept
+      }}</BlessButton>
+    </div>
+    <span class="bless-deck__live bless-sr" aria-live="polite">{{ live }}</span>
+  </div>
+</template>
+
 <script lang="ts">
 export type BlessSwipeDecision = "accept" | "reject" | "skip";
 </script>
@@ -116,75 +185,6 @@ function onKey(e: KeyboardEvent) {
 }
 const shown = computed(() => model.value.slice(0, 3));
 </script>
-
-<template>
-  <div class="bless-deck" :style="{ '--bless-deck-x': dir[0], '--bless-deck-y': dir[1] }">
-    <div
-      class="bless-deck__stage"
-      tabindex="0"
-      role="group"
-      aria-roledescription="deck of cards"
-      :aria-label="`${label}, ${model.length} left. Right arrow ${text.accept}, left arrow ${text.reject}, up arrow ${text.skip}, Backspace ${text.undo}.`"
-      @keydown="onKey"
-    >
-      <TransitionGroup name="bless-deck">
-        <div
-          v-for="(item, i) in shown"
-          :key="rowKey ? rowKey(item) : model.length - i"
-          class="bless-deck__card"
-          :class="{ 'bless-deck__card--top': i === 0 }"
-          :style="i === 0 ? topStyle : { '--bless-deck-depth': i }"
-          :aria-hidden="i > 0 || undefined"
-          :inert="i > 0 || undefined"
-          @pointerdown="i === 0 && down($event)"
-          @pointermove="i === 0 && move($event)"
-          @pointerup="i === 0 && up()"
-          @pointercancel="i === 0 && (drag = null)"
-        >
-          <slot name="card" :item :index="i">{{ item }}</slot>
-          <template v-if="i === 0">
-            <span
-              class="bless-deck__stamp bless-deck__stamp--accept"
-              aria-hidden="true"
-              :style="{ opacity: lean.accept }"
-              >{{ text.accept }}</span
-            >
-            <span
-              class="bless-deck__stamp bless-deck__stamp--reject"
-              aria-hidden="true"
-              :style="{ opacity: lean.reject }"
-              >{{ text.reject }}</span
-            >
-            <span
-              class="bless-deck__stamp bless-deck__stamp--skip"
-              aria-hidden="true"
-              :style="{ opacity: lean.skip }"
-              >{{ text.skip }}</span
-            >
-          </template>
-        </div>
-      </TransitionGroup>
-      <div v-if="!model.length" class="bless-deck__empty">
-        <slot name="empty">{{ text.empty }}</slot>
-      </div>
-    </div>
-    <div v-if="controls" class="bless-deck__controls">
-      <BlessButton variant="outline" :disabled="!undoable" @click="undo">{{
-        text.undo
-      }}</BlessButton>
-      <BlessButton variant="outline" :disabled="!model.length" @click="decide('reject')">{{
-        text.reject
-      }}</BlessButton>
-      <BlessButton variant="outline" :disabled="!model.length" @click="decide('skip')">{{
-        text.skip
-      }}</BlessButton>
-      <BlessButton :disabled="!model.length" @click="decide('accept')">{{
-        text.accept
-      }}</BlessButton>
-    </div>
-    <span class="bless-deck__live bless-sr" aria-live="polite">{{ live }}</span>
-  </div>
-</template>
 
 <style>
 .bless-deck {

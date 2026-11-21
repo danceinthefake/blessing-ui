@@ -87,6 +87,7 @@ Alat-alat ini membangun, menguji, dan mendokumentasikan pustaka.
 - [Vite](https://vite.dev/), [vite-plugin-dts](https://github.com/qmhc/vite-plugin-dts), dan [TypeScript](https://www.typescriptlang.org/) dengan [vue-tsc](https://github.com/vuejs/language-tools).
 - [VitePress](https://vitepress.dev/) untuk situs ini, [Shiki](https://shiki.style/) untuk warna kode (tema GitHub light high-contrast), dan [vue-component-meta](https://github.com/vuejs/language-tools) untuk tabel props.
 - [Vitest](https://vitest.dev/), [Vue Test Utils](https://test-utils.vuejs.org/), dan [jsdom](https://github.com/jsdom/jsdom) untuk uji unit.
+- [Panduan gaya Vue](https://vuejs.org/style-guide/) untuk urutan blok SFC (template, script, style).
 - [Playwright](https://playwright.dev/) untuk pemeriksaan di Chromium, Firefox, dan WebKit, dengan [axe-core](https://github.com/dequelabs/axe-core), [pixelmatch](https://github.com/mapbox/pixelmatch), dan [pngjs](https://github.com/pngjs/pngjs) untuk audit dan perbandingan visual.
 - [oxfmt](https://oxc.rs/) dari proyek Oxc untuk format kode.
 - [pnpm](https://pnpm.io/) mengelola paket repositori. [Tab kode](../../components/code-tabs) juga memberi perintah untuk [npm](https://www.npmjs.com/), [Yarn](https://yarnpkg.com/), dan [Bun](https://bun.sh/).

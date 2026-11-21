@@ -1,10 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { BlessTextarea, BlessVoiceInput } from "blessing-ui";
-
-const notes = ref("");
-</script>
-
 <template>
   <div style="max-width: 480px; display: flex; flex-direction: column; gap: 8px">
     <BlessTextarea
@@ -16,3 +9,10 @@ const notes = ref("");
     <BlessVoiceInput v-model="notes" />
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { BlessTextarea, BlessVoiceInput } from "blessing-ui";
+
+const notes = ref("");
+</script>

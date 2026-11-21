@@ -1,3 +1,45 @@
+<template>
+  <table class="bless-book" :aria-label="text.title">
+    <thead>
+      <tr>
+        <th scope="col"><span class="bless-sr">{{ text.ask }} / {{ text.bid }}</span></th>
+        <th scope="col">{{ text.price }}</th>
+        <th scope="col">{{ text.size }}</th>
+        <th scope="col">{{ text.total }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        v-for="r in askRows"
+        :key="`a${r.price}`"
+        class="bless-book__row is-ask"
+        :style="{ '--_depth': bar(r.total) }"
+      >
+        <th scope="row" class="bless-book__side">{{ text.ask }}</th>
+        <td class="bless-book__price">{{ num.format(r.price) }}</td>
+        <td>{{ qty.format(r.size) }}</td>
+        <td>{{ qty.format(r.total) }}</td>
+      </tr>
+      <tr v-if="book.spread !== undefined" class="bless-book__spread">
+        <td colspan="4">
+          {{ text.spread(num.format(book.spread), pct.format(book.spread / book.mid!)) }}
+        </td>
+      </tr>
+      <tr
+        v-for="r in book.bids"
+        :key="`b${r.price}`"
+        class="bless-book__row is-bid"
+        :style="{ '--_depth': bar(r.total) }"
+      >
+        <th scope="row" class="bless-book__side">{{ text.bid }}</th>
+        <td class="bless-book__price">{{ num.format(r.price) }}</td>
+        <td>{{ qty.format(r.size) }}</td>
+        <td>{{ qty.format(r.total) }}</td>
+      </tr>
+    </tbody>
+  </table>
+</template>
+
 <script lang="ts">
 export interface BlessBookLevel {
   price: number;
@@ -81,48 +123,6 @@ const pct = computed(
 const askRows = computed(() => [...book.value.asks].reverse());
 const bar = (total: number) => `${(total / max.value) * 100}%`;
 </script>
-
-<template>
-  <table class="bless-book" :aria-label="text.title">
-    <thead>
-      <tr>
-        <th scope="col"><span class="bless-sr">{{ text.ask }} / {{ text.bid }}</span></th>
-        <th scope="col">{{ text.price }}</th>
-        <th scope="col">{{ text.size }}</th>
-        <th scope="col">{{ text.total }}</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr
-        v-for="r in askRows"
-        :key="`a${r.price}`"
-        class="bless-book__row is-ask"
-        :style="{ '--_depth': bar(r.total) }"
-      >
-        <th scope="row" class="bless-book__side">{{ text.ask }}</th>
-        <td class="bless-book__price">{{ num.format(r.price) }}</td>
-        <td>{{ qty.format(r.size) }}</td>
-        <td>{{ qty.format(r.total) }}</td>
-      </tr>
-      <tr v-if="book.spread !== undefined" class="bless-book__spread">
-        <td colspan="4">
-          {{ text.spread(num.format(book.spread), pct.format(book.spread / book.mid!)) }}
-        </td>
-      </tr>
-      <tr
-        v-for="r in book.bids"
-        :key="`b${r.price}`"
-        class="bless-book__row is-bid"
-        :style="{ '--_depth': bar(r.total) }"
-      >
-        <th scope="row" class="bless-book__side">{{ text.bid }}</th>
-        <td class="bless-book__price">{{ num.format(r.price) }}</td>
-        <td>{{ qty.format(r.size) }}</td>
-        <td>{{ qty.format(r.total) }}</td>
-      </tr>
-    </tbody>
-  </table>
-</template>
 
 <style>
 .bless-book {

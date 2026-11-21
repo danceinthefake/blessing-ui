@@ -1,3 +1,30 @@
+<template>
+  <div
+    class="bless-slider"
+    :class="{ 'bless-slider--disabled': disabled }"
+    :style="{ '--_p': `${pct}%` }"
+  >
+    <div v-if="label || showValue" class="bless-slider__head">
+      <label v-if="label" :for="id()" class="bless-slider__label">{{ label }}</label>
+      <output v-if="showValue" :for="id()" class="bless-slider__value">{{ text }}</output>
+    </div>
+    <input
+      v-bind="$attrs"
+      :id="id()"
+      v-model.number="model"
+      type="range"
+      :min
+      :max
+      :step
+      :disabled
+      class="bless-slider__input"
+      :aria-valuetext="format ? text : undefined"
+      :aria-invalid="fs.invalid.value || undefined"
+      :aria-describedby="joinIds(fs.describedby.value, $attrs['aria-describedby'] as string)"
+    />
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { joinIds, useFieldId, useFieldState } from "../composables/useFieldId";
@@ -25,33 +52,6 @@ const fs = useFieldState();
 const pct = computed(() => ((model.value - props.min) / (props.max - props.min || 1)) * 100);
 const text = computed(() => (props.format ?? String)(model.value));
 </script>
-
-<template>
-  <div
-    class="bless-slider"
-    :class="{ 'bless-slider--disabled': disabled }"
-    :style="{ '--_p': `${pct}%` }"
-  >
-    <div v-if="label || showValue" class="bless-slider__head">
-      <label v-if="label" :for="id()" class="bless-slider__label">{{ label }}</label>
-      <output v-if="showValue" :for="id()" class="bless-slider__value">{{ text }}</output>
-    </div>
-    <input
-      v-bind="$attrs"
-      :id="id()"
-      v-model.number="model"
-      type="range"
-      :min
-      :max
-      :step
-      :disabled
-      class="bless-slider__input"
-      :aria-valuetext="format ? text : undefined"
-      :aria-invalid="fs.invalid.value || undefined"
-      :aria-describedby="joinIds(fs.describedby.value, $attrs['aria-describedby'] as string)"
-    />
-  </div>
-</template>
 
 <style>
 .bless-slider {

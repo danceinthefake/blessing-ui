@@ -1,3 +1,13 @@
+<template>
+  <BlessSlopeChart
+    :data="shows"
+    :format="thousands"
+    :labels="{ start: 'Friday release', end: 'Monday release', item: 'Show' }"
+    label="Weekly plays before and after the new release day"
+    style="max-width: 560px"
+  />
+</template>
+
 <script setup lang="ts">
 import { BlessSlopeChart } from "blessing-ui";
 
@@ -11,13 +21,3 @@ const shows = [
 ];
 const thousands = (v: number) => `${v}k`;
 </script>
-
-<template>
-  <BlessSlopeChart
-    :data="shows"
-    :format="thousands"
-    :labels="{ start: 'Friday release', end: 'Monday release', item: 'Show' }"
-    label="Weekly plays before and after the new release day"
-    style="max-width: 560px"
-  />
-</template>

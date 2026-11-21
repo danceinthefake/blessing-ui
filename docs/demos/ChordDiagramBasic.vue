@@ -1,3 +1,7 @@
+<template>
+  <BlessChordDiagram :groups :matrix :format="hundreds" label="Listeners moving between shows" />
+</template>
+
 <script setup lang="ts">
 import { BlessChordDiagram } from "blessing-ui";
 
@@ -17,7 +21,3 @@ const matrix = [
 ];
 const hundreds = (v: number) => `${v * 100}`;
 </script>
-
-<template>
-  <BlessChordDiagram :groups :matrix :format="hundreds" label="Listeners moving between shows" />
-</template>

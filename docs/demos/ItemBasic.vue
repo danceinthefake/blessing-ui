@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import { BlessButton, BlessItem } from "blessing-ui";
-</script>
-
 <template>
   <div class="col" style="max-width: 480px">
     <BlessItem title="第1話 — 冴えないヒロインの育てかた" description="24:00 · 2019.04.04">
@@ -21,3 +17,7 @@ import { BlessButton, BlessItem } from "blessing-ui";
     />
   </div>
 </template>
+
+<script setup lang="ts">
+import { BlessButton, BlessItem } from "blessing-ui";
+</script>

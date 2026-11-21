@@ -1,3 +1,13 @@
+<template>
+  <component
+    :is="as"
+    class="bless-skew"
+    :class="[`bless-skew--${color}`, { 'bless-skew--label': label }]"
+  >
+    <span class="bless-skew__inner"><slot /></span>
+  </component>
+</template>
+
 <script setup lang="ts">
 import type { Component } from "vue";
 defineOptions({ name: "BlessSkew" });
@@ -14,16 +24,6 @@ withDefaults(
   { as: "span", color: "none" },
 );
 </script>
-
-<template>
-  <component
-    :is="as"
-    class="bless-skew"
-    :class="[`bless-skew--${color}`, { 'bless-skew--label': label }]"
-  >
-    <span class="bless-skew__inner"><slot /></span>
-  </component>
-</template>
 
 <style>
 .bless-skew {

@@ -1,3 +1,39 @@
+<template>
+  <div class="bless-bullet">
+    <span class="bless-bullet__label">{{ label }}</span>
+    <div
+      class="bless-bullet__track"
+      role="meter"
+      :aria-label="label"
+      :aria-valuenow="value"
+      :aria-valuemin="min"
+      :aria-valuemax="top"
+      :aria-valuetext="valuetext"
+    >
+      <span
+        v-for="(b, i) in bands"
+        :key="b"
+        class="bless-bullet__band"
+        :style="{
+          insetInlineStart: pct(i ? bands[i - 1]! : min),
+          inlineSize: `calc(${pct(b)} - ${pct(i ? bands[i - 1]! : min)})`,
+          '--_k': `${8 + (bands.length - 1 - i) * (24 / Math.max(1, bands.length - 1))}%`,
+        }"
+      />
+      <span
+        class="bless-bullet__bar"
+        :style="{ inlineSize: pct(value), '--_c': chartColor(color, 0) }"
+      />
+      <span
+        v-if="target !== undefined"
+        class="bless-bullet__target"
+        :style="{ insetInlineStart: pct(target) }"
+      />
+    </div>
+    <span class="bless-bullet__value" aria-hidden="true">{{ fmt(value) }}</span>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -64,42 +100,6 @@ const valuetext = computed(() =>
     .join(", "),
 );
 </script>
-
-<template>
-  <div class="bless-bullet">
-    <span class="bless-bullet__label">{{ label }}</span>
-    <div
-      class="bless-bullet__track"
-      role="meter"
-      :aria-label="label"
-      :aria-valuenow="value"
-      :aria-valuemin="min"
-      :aria-valuemax="top"
-      :aria-valuetext="valuetext"
-    >
-      <span
-        v-for="(b, i) in bands"
-        :key="b"
-        class="bless-bullet__band"
-        :style="{
-          insetInlineStart: pct(i ? bands[i - 1]! : min),
-          inlineSize: `calc(${pct(b)} - ${pct(i ? bands[i - 1]! : min)})`,
-          '--_k': `${8 + (bands.length - 1 - i) * (24 / Math.max(1, bands.length - 1))}%`,
-        }"
-      />
-      <span
-        class="bless-bullet__bar"
-        :style="{ inlineSize: pct(value), '--_c': chartColor(color, 0) }"
-      />
-      <span
-        v-if="target !== undefined"
-        class="bless-bullet__target"
-        :style="{ insetInlineStart: pct(target) }"
-      />
-    </div>
-    <span class="bless-bullet__value" aria-hidden="true">{{ fmt(value) }}</span>
-  </div>
-</template>
 
 <style>
 .bless-bullet {

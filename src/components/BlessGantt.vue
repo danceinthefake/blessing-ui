@@ -1,3 +1,130 @@
+<template>
+  <div ref="root" class="bless-gantt" role="group" :aria-label="label">
+    <div class="bless-gantt__scroll">
+      <div class="bless-gantt__body" :style="{ '--bless-gantt-label': `${labelWidth}px` }">
+        <div class="bless-gantt__labels">
+          <div class="bless-gantt__corner" :style="{ height: '56px' }"></div>
+          <div
+            v-for="t in tasks"
+            :key="t.id"
+            class="bless-gantt__label"
+            :style="{ height: `${rowHeight}px` }"
+            :title="t.label"
+          >
+            {{ t.label }}
+          </div>
+        </div>
+        <div class="bless-gantt__plot" :style="{ width: `${width}px` }">
+          <div class="bless-gantt__head" aria-hidden="true">
+            <div class="bless-gantt__months">
+              <span
+                v-for="m in months"
+                :key="m.left"
+                class="bless-gantt__month"
+                :style="{ left: `${m.left}px`, width: `${m.width}px` }"
+                >{{ m.text }}</span
+              >
+            </div>
+            <div v-if="ticks.length" class="bless-gantt__days">
+              <span
+                v-for="(d, i) in ticks"
+                :key="i"
+                class="bless-gantt__day"
+                :class="{ 'bless-gantt__day--weekend': d.weekend }"
+                :style="{ width: `${dayWidth}px` }"
+                >{{ d.n }}</span
+              >
+            </div>
+          </div>
+          <div
+            class="bless-gantt__rows"
+            :style="{
+              height: `${tasks.length * rowHeight}px`,
+              backgroundSize: `${dayWidth}px 100%`,
+            }"
+          >
+            <span
+              v-if="todayLeft != null"
+              class="bless-gantt__today"
+              aria-hidden="true"
+              :style="{ left: `${todayLeft}px` }"
+            ></span>
+            <svg
+              v-if="arrows.length"
+              class="bless-gantt__arrows"
+              :width="width"
+              :height="tasks.length * rowHeight"
+              aria-hidden="true"
+            >
+              <defs>
+                <marker
+                  id="bless-gantt-head"
+                  viewBox="0 0 8 8"
+                  refX="7"
+                  refY="4"
+                  markerWidth="7"
+                  markerHeight="7"
+                  orient="auto"
+                >
+                  <path d="M0 0L8 4L0 8z" fill="currentColor" />
+                </marker>
+              </defs>
+              <path v-for="(d, k) in arrows" :key="k" :d="d" marker-end="url(#bless-gantt-head)" />
+            </svg>
+            <button
+              v-for="(t, i) in tasks"
+              :key="t.id"
+              type="button"
+              class="bless-gantt__bar"
+              :class="{
+                'bless-gantt__bar--on': selected === t.id,
+                'bless-gantt__bar--edit': editable,
+                'bless-gantt__bar--drag': drag?.id === t.id,
+              }"
+              :style="{ ...bar(t), top: `${i * rowHeight + 6}px`, height: `${rowHeight - 12}px` }"
+              :tabindex="i === stop ? 0 : -1"
+              :aria-label="describe(t)"
+              :aria-pressed="selected === t.id"
+              @click="((stop = i), pick(t))"
+              @focus="stop = i"
+              @keydown="onKey(i, $event)"
+              @pointerdown="down(t, 'move', $event)"
+              @pointermove="move"
+              @pointerup="release"
+              @pointercancel="release"
+            >
+              <template v-if="editable">
+                <span
+                  class="bless-gantt__grip bless-gantt__grip--start"
+                  aria-hidden="true"
+                  @pointerdown="down(t, 'start', $event)"
+                  @pointermove="move"
+                  @pointerup="release"
+                  @pointercancel="release"
+                ></span>
+                <span
+                  class="bless-gantt__grip bless-gantt__grip--end"
+                  aria-hidden="true"
+                  @pointerdown="down(t, 'end', $event)"
+                  @pointermove="move"
+                  @pointerup="release"
+                  @pointercancel="release"
+                ></span>
+              </template>
+              <span
+                v-if="t.progress != null"
+                class="bless-gantt__done"
+                :style="{ width: `${pct(t)}%` }"
+              ></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <span class="bless-gantt__live bless-sr" aria-live="polite">{{ live }}</span>
+  </div>
+</template>
+
 <script lang="ts">
 export interface BlessGanttTask {
   id: string | number;
@@ -245,133 +372,6 @@ function pick(t: BlessGanttTask) {
   emit("select", t);
 }
 </script>
-
-<template>
-  <div ref="root" class="bless-gantt" role="group" :aria-label="label">
-    <div class="bless-gantt__scroll">
-      <div class="bless-gantt__body" :style="{ '--bless-gantt-label': `${labelWidth}px` }">
-        <div class="bless-gantt__labels">
-          <div class="bless-gantt__corner" :style="{ height: '56px' }"></div>
-          <div
-            v-for="t in tasks"
-            :key="t.id"
-            class="bless-gantt__label"
-            :style="{ height: `${rowHeight}px` }"
-            :title="t.label"
-          >
-            {{ t.label }}
-          </div>
-        </div>
-        <div class="bless-gantt__plot" :style="{ width: `${width}px` }">
-          <div class="bless-gantt__head" aria-hidden="true">
-            <div class="bless-gantt__months">
-              <span
-                v-for="m in months"
-                :key="m.left"
-                class="bless-gantt__month"
-                :style="{ left: `${m.left}px`, width: `${m.width}px` }"
-                >{{ m.text }}</span
-              >
-            </div>
-            <div v-if="ticks.length" class="bless-gantt__days">
-              <span
-                v-for="(d, i) in ticks"
-                :key="i"
-                class="bless-gantt__day"
-                :class="{ 'bless-gantt__day--weekend': d.weekend }"
-                :style="{ width: `${dayWidth}px` }"
-                >{{ d.n }}</span
-              >
-            </div>
-          </div>
-          <div
-            class="bless-gantt__rows"
-            :style="{
-              height: `${tasks.length * rowHeight}px`,
-              backgroundSize: `${dayWidth}px 100%`,
-            }"
-          >
-            <span
-              v-if="todayLeft != null"
-              class="bless-gantt__today"
-              aria-hidden="true"
-              :style="{ left: `${todayLeft}px` }"
-            ></span>
-            <svg
-              v-if="arrows.length"
-              class="bless-gantt__arrows"
-              :width="width"
-              :height="tasks.length * rowHeight"
-              aria-hidden="true"
-            >
-              <defs>
-                <marker
-                  id="bless-gantt-head"
-                  viewBox="0 0 8 8"
-                  refX="7"
-                  refY="4"
-                  markerWidth="7"
-                  markerHeight="7"
-                  orient="auto"
-                >
-                  <path d="M0 0L8 4L0 8z" fill="currentColor" />
-                </marker>
-              </defs>
-              <path v-for="(d, k) in arrows" :key="k" :d="d" marker-end="url(#bless-gantt-head)" />
-            </svg>
-            <button
-              v-for="(t, i) in tasks"
-              :key="t.id"
-              type="button"
-              class="bless-gantt__bar"
-              :class="{
-                'bless-gantt__bar--on': selected === t.id,
-                'bless-gantt__bar--edit': editable,
-                'bless-gantt__bar--drag': drag?.id === t.id,
-              }"
-              :style="{ ...bar(t), top: `${i * rowHeight + 6}px`, height: `${rowHeight - 12}px` }"
-              :tabindex="i === stop ? 0 : -1"
-              :aria-label="describe(t)"
-              :aria-pressed="selected === t.id"
-              @click="((stop = i), pick(t))"
-              @focus="stop = i"
-              @keydown="onKey(i, $event)"
-              @pointerdown="down(t, 'move', $event)"
-              @pointermove="move"
-              @pointerup="release"
-              @pointercancel="release"
-            >
-              <template v-if="editable">
-                <span
-                  class="bless-gantt__grip bless-gantt__grip--start"
-                  aria-hidden="true"
-                  @pointerdown="down(t, 'start', $event)"
-                  @pointermove="move"
-                  @pointerup="release"
-                  @pointercancel="release"
-                ></span>
-                <span
-                  class="bless-gantt__grip bless-gantt__grip--end"
-                  aria-hidden="true"
-                  @pointerdown="down(t, 'end', $event)"
-                  @pointermove="move"
-                  @pointerup="release"
-                  @pointercancel="release"
-                ></span>
-              </template>
-              <span
-                v-if="t.progress != null"
-                class="bless-gantt__done"
-                :style="{ width: `${pct(t)}%` }"
-              ></span>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <span class="bless-gantt__live bless-sr" aria-live="polite">{{ live }}</span>
-  </div>
-</template>
 
 <style>
 .bless-gantt {

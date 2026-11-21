@@ -1,3 +1,41 @@
+<template>
+  <figure class="bless-heatmap">
+    <div class="bless-heatmap__scroll">
+      <table class="bless-heatmap__table" :style="{ '--_c': base }">
+        <caption class="bless-sr">
+          {{ label }}
+        </caption>
+        <thead>
+          <tr>
+            <td />
+            <th v-for="col in columns" :key="col" scope="col">{{ col }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(row, r) in rows" :key="row">
+            <th scope="row">{{ row }}</th>
+            <td
+              v-for="(col, c) in columns"
+              :key="col"
+              class="bless-heatmap__cell"
+              :class="{ 'bless-heatmap__cell--empty': cell(r, c) === undefined }"
+              :style="cell(r, c) === undefined ? undefined : { '--_m': `${mix(cell(r, c)!)}%` }"
+              :title="`${row} · ${col}: ${cell(r, c) === undefined ? '–' : fmt(cell(r, c)!)}`"
+            >
+              <span class="bless-sr">{{ cell(r, c) === undefined ? "–" : fmt(cell(r, c)!) }}</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <figcaption v-if="all.length" class="bless-heatmap__legend" aria-hidden="true">
+      <span>{{ fmt(lo) }}</span>
+      <span class="bless-heatmap__ramp" :style="{ '--_c': base }" />
+      <span>{{ fmt(hi) }}</span>
+    </figcaption>
+  </figure>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { chartColor, numberText } from "./chart";
@@ -38,44 +76,6 @@ const cell = (r: number, c: number) => {
 };
 const base = computed(() => chartColor(props.color, 0));
 </script>
-
-<template>
-  <figure class="bless-heatmap">
-    <div class="bless-heatmap__scroll">
-      <table class="bless-heatmap__table" :style="{ '--_c': base }">
-        <caption class="bless-sr">
-          {{ label }}
-        </caption>
-        <thead>
-          <tr>
-            <td />
-            <th v-for="col in columns" :key="col" scope="col">{{ col }}</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="(row, r) in rows" :key="row">
-            <th scope="row">{{ row }}</th>
-            <td
-              v-for="(col, c) in columns"
-              :key="col"
-              class="bless-heatmap__cell"
-              :class="{ 'bless-heatmap__cell--empty': cell(r, c) === undefined }"
-              :style="cell(r, c) === undefined ? undefined : { '--_m': `${mix(cell(r, c)!)}%` }"
-              :title="`${row} · ${col}: ${cell(r, c) === undefined ? '–' : fmt(cell(r, c)!)}`"
-            >
-              <span class="bless-sr">{{ cell(r, c) === undefined ? "–" : fmt(cell(r, c)!) }}</span>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <figcaption v-if="all.length" class="bless-heatmap__legend" aria-hidden="true">
-      <span>{{ fmt(lo) }}</span>
-      <span class="bless-heatmap__ramp" :style="{ '--_c': base }" />
-      <span>{{ fmt(hi) }}</span>
-    </figcaption>
-  </figure>
-</template>
 
 <style>
 .bless-heatmap {

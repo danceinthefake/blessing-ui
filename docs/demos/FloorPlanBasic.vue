@@ -1,3 +1,27 @@
+<template>
+  <BlessFloorPlan v-model="open" :rooms :devices style="max-width: 560px">
+    <template #room="{ room, devices: list }">
+      <h4 style="margin: 0 0 8px">{{ room.name }}</h4>
+      <div
+        style="
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+          gap: 8px;
+        "
+      >
+        <BlessDeviceTile
+          v-for="d in list"
+          :key="d.id"
+          :model-value="!!d.on"
+          :name="d.name"
+          :icon="d.icon"
+          @update:model-value="set(d.id, $event)"
+        />
+      </div>
+    </template>
+  </BlessFloorPlan>
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessDeviceTile, BlessFloorPlan, type BlessRoom, type BlessRoomDevice } from "blessing-ui";
@@ -24,27 +48,3 @@ const set = (id: string, on: boolean) => {
   if (d) d.on = on;
 };
 </script>
-
-<template>
-  <BlessFloorPlan v-model="open" :rooms :devices style="max-width: 560px">
-    <template #room="{ room, devices: list }">
-      <h4 style="margin: 0 0 8px">{{ room.name }}</h4>
-      <div
-        style="
-          display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-          gap: 8px;
-        "
-      >
-        <BlessDeviceTile
-          v-for="d in list"
-          :key="d.id"
-          :model-value="!!d.on"
-          :name="d.name"
-          :icon="d.icon"
-          @update:model-value="set(d.id, $event)"
-        />
-      </div>
-    </template>
-  </BlessFloorPlan>
-</template>

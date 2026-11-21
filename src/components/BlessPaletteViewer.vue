@@ -1,3 +1,42 @@
+<template>
+  <div class="bless-palettes">
+    <section
+      v-for="p in palettes"
+      :key="p.name"
+      class="bless-palettes__palette"
+      :aria-label="p.name"
+    >
+      <p class="bless-palettes__name">{{ p.name }}</p>
+      <ul class="bless-palettes__shades">
+        <li v-for="s in p.shades" :key="s.label" class="bless-palettes__shade">
+          <button
+            type="button"
+            class="bless-palettes__swatch"
+            :style="{ background: s.value, color: ink(s.value) }"
+            :aria-label="text.copy(`${p.name} ${s.label}, ${s.value}`)"
+            @click="copy(s.value)"
+          >
+            <span aria-hidden="true">{{ s.label }}</span>
+            <span class="bless-palettes__copied" aria-hidden="true">{{
+              last === s.value ? "✓" : ""
+            }}</span>
+          </button>
+          <code class="bless-palettes__value">{{ s.value }}</code>
+          <span class="bless-palettes__ratio">
+            {{ cut(ratio(s.value, "#fff")) }} {{ text.onWhite
+            }}<b v-if="ratio(s.value, '#fff') >= 4.5"> AA</b>
+          </span>
+          <span class="bless-palettes__ratio">
+            {{ cut(ratio(s.value, "#000")) }} {{ text.onBlack
+            }}<b v-if="ratio(s.value, '#000') >= 4.5"> AA</b>
+          </span>
+        </li>
+      </ul>
+    </section>
+    <span class="bless-sr" role="status">{{ status }}</span>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed, onBeforeUnmount, ref } from "vue";
 import { contrastRatio } from "../composables/contrast";
@@ -48,45 +87,6 @@ async function copy(v: string) {
 }
 onBeforeUnmount(() => clearTimeout(timer));
 </script>
-
-<template>
-  <div class="bless-palettes">
-    <section
-      v-for="p in palettes"
-      :key="p.name"
-      class="bless-palettes__palette"
-      :aria-label="p.name"
-    >
-      <p class="bless-palettes__name">{{ p.name }}</p>
-      <ul class="bless-palettes__shades">
-        <li v-for="s in p.shades" :key="s.label" class="bless-palettes__shade">
-          <button
-            type="button"
-            class="bless-palettes__swatch"
-            :style="{ background: s.value, color: ink(s.value) }"
-            :aria-label="text.copy(`${p.name} ${s.label}, ${s.value}`)"
-            @click="copy(s.value)"
-          >
-            <span aria-hidden="true">{{ s.label }}</span>
-            <span class="bless-palettes__copied" aria-hidden="true">{{
-              last === s.value ? "✓" : ""
-            }}</span>
-          </button>
-          <code class="bless-palettes__value">{{ s.value }}</code>
-          <span class="bless-palettes__ratio">
-            {{ cut(ratio(s.value, "#fff")) }} {{ text.onWhite
-            }}<b v-if="ratio(s.value, '#fff') >= 4.5"> AA</b>
-          </span>
-          <span class="bless-palettes__ratio">
-            {{ cut(ratio(s.value, "#000")) }} {{ text.onBlack
-            }}<b v-if="ratio(s.value, '#000') >= 4.5"> AA</b>
-          </span>
-        </li>
-      </ul>
-    </section>
-    <span class="bless-sr" role="status">{{ status }}</span>
-  </div>
-</template>
 
 <style>
 .bless-palettes {

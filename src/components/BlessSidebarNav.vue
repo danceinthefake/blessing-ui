@@ -1,27 +1,3 @@
-<script setup lang="ts">
-import { useLink } from "../composables/useLink";
-import BlessBadge from "./BlessBadge.vue";
-import BlessDash from "./BlessDash.vue";
-
-defineOptions({ name: "BlessSidebarNav" });
-
-export interface BlessNavItem {
-  label: string;
-  href: string;
-  /** small text after a dash, e.g. a date */
-  meta?: string;
-  /** badge text; true = NEW! */
-  badge?: boolean | string;
-  external?: boolean;
-}
-
-withDefaults(defineProps<{ items: BlessNavItem[]; active?: string; label?: string }>(), {
-  label: "Main",
-});
-const link = useLink();
-const emit = defineEmits<{ select: [item: BlessNavItem, event: MouseEvent] }>();
-</script>
-
 <template>
   <nav class="bless-sidebar-nav" :aria-label="label">
     <ul role="list" class="bless-sidebar-nav__list">
@@ -49,6 +25,30 @@ const emit = defineEmits<{ select: [item: BlessNavItem, event: MouseEvent] }>();
     </ul>
   </nav>
 </template>
+
+<script setup lang="ts">
+import { useLink } from "../composables/useLink";
+import BlessBadge from "./BlessBadge.vue";
+import BlessDash from "./BlessDash.vue";
+
+defineOptions({ name: "BlessSidebarNav" });
+
+export interface BlessNavItem {
+  label: string;
+  href: string;
+  /** small text after a dash, e.g. a date */
+  meta?: string;
+  /** badge text; true = NEW! */
+  badge?: boolean | string;
+  external?: boolean;
+}
+
+withDefaults(defineProps<{ items: BlessNavItem[]; active?: string; label?: string }>(), {
+  label: "Main",
+});
+const link = useLink();
+const emit = defineEmits<{ select: [item: BlessNavItem, event: MouseEvent] }>();
+</script>
 
 <style>
 .bless-sidebar-nav__list {

@@ -1,3 +1,40 @@
+<template>
+  <section class="bless-forum" :aria-label="text.title">
+    <ul class="bless-stagger bless-forum__list">
+      <li
+        v-for="t in ordered"
+        :key="t.id"
+        class="bless-forum__topic"
+        :class="{ 'is-pinned': t.pinned }"
+      >
+        <BlessAvatar :name="t.author" alt="" size="sm" />
+        <div class="bless-forum__main">
+          <span v-if="flags(t).length" class="bless-forum__flags">
+            <template v-for="f in flags(t)" :key="f.word"
+              ><span class="bless-forum__flag" :class="`is-${f.key}`"
+                ><span aria-hidden="true">{{ f.mark }}</span> {{ f.word }}</span
+              >{{ " " }}</template
+            >
+          </span>
+          <a v-if="t.href" class="bless-forum__title" :href="t.href">{{ t.title }}</a>
+          <strong v-else class="bless-forum__title">{{ t.title }}</strong>
+          <span class="bless-forum__meta">
+            {{ text.by(t.author)
+            }}<template v-for="tag in t.tags ?? []" :key="tag"> · #{{ tag }}</template>
+          </span>
+        </div>
+        <div class="bless-forum__stats">
+          <span>{{ text.replies(short.format(t.replies)) }}</span>
+          <span v-if="t.views !== undefined">{{ text.views(short.format(t.views)) }}</span>
+          <span v-if="t.last" class="bless-forum__last">{{
+            text.last(t.last.author, t.last.time)
+          }}</span>
+        </div>
+      </li>
+    </ul>
+  </section>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -66,43 +103,6 @@ const ordered = computed(() => [
   ...props.topics.filter((t) => !t.pinned),
 ]);
 </script>
-
-<template>
-  <section class="bless-forum" :aria-label="text.title">
-    <ul class="bless-stagger bless-forum__list">
-      <li
-        v-for="t in ordered"
-        :key="t.id"
-        class="bless-forum__topic"
-        :class="{ 'is-pinned': t.pinned }"
-      >
-        <BlessAvatar :name="t.author" alt="" size="sm" />
-        <div class="bless-forum__main">
-          <span v-if="flags(t).length" class="bless-forum__flags">
-            <template v-for="f in flags(t)" :key="f.word"
-              ><span class="bless-forum__flag" :class="`is-${f.key}`"
-                ><span aria-hidden="true">{{ f.mark }}</span> {{ f.word }}</span
-              >{{ " " }}</template
-            >
-          </span>
-          <a v-if="t.href" class="bless-forum__title" :href="t.href">{{ t.title }}</a>
-          <strong v-else class="bless-forum__title">{{ t.title }}</strong>
-          <span class="bless-forum__meta">
-            {{ text.by(t.author)
-            }}<template v-for="tag in t.tags ?? []" :key="tag"> · #{{ tag }}</template>
-          </span>
-        </div>
-        <div class="bless-forum__stats">
-          <span>{{ text.replies(short.format(t.replies)) }}</span>
-          <span v-if="t.views !== undefined">{{ text.views(short.format(t.views)) }}</span>
-          <span v-if="t.last" class="bless-forum__last">{{
-            text.last(t.last.author, t.last.time)
-          }}</span>
-        </div>
-      </li>
-    </ul>
-  </section>
-</template>
 
 <style>
 .bless-forum {

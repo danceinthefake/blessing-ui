@@ -1,3 +1,75 @@
+<template>
+  <div
+    class="bless-carousel"
+    role="region"
+    :aria-label="label"
+    aria-roledescription="carousel"
+    @keydown="onKey"
+    @mouseenter="stop"
+    @mouseleave="play"
+    @focusin="stop"
+    @focusout="play"
+  >
+    <div
+      ref="track"
+      class="bless-carousel__track"
+      tabindex="0"
+      :style="{ '--_pv': perView, '--_gap': gap }"
+      @scroll.passive="onScroll"
+    >
+      <slot />
+    </div>
+    <template v-if="arrows && count > perView">
+      <button
+        type="button"
+        class="bless-carousel__arrow bless-carousel__arrow--prev"
+        :aria-label="text.prev"
+        :aria-disabled="!canPrev || undefined"
+        @click="canPrev && go(index - 1)"
+      >
+        <span aria-hidden="true">‹</span>
+      </button>
+      <button
+        type="button"
+        class="bless-carousel__arrow bless-carousel__arrow--next"
+        :aria-label="text.next"
+        :aria-disabled="!canNext || undefined"
+        @click="canNext && go(index + 1)"
+      >
+        <span aria-hidden="true">›</span>
+      </button>
+    </template>
+    <div v-if="dots && pages > 1" class="bless-carousel__dots" role="group" :aria-label="text.dots">
+      <button
+        v-for="p in pages"
+        :key="p"
+        type="button"
+        class="bless-carousel__dot"
+        :class="{ 'bless-carousel__dot--active': p - 1 === index }"
+        :aria-current="p - 1 === index || undefined"
+        :aria-label="`Slide ${p}`"
+        @click="go(p - 1)"
+      />
+    </div>
+    <button
+      v-if="autoplay > 0"
+      type="button"
+      class="bless-carousel__pause"
+      :aria-label="text.pause"
+      :aria-pressed="paused"
+      @click="togglePause"
+    >
+      <span aria-hidden="true">{{ paused ? "▶" : "❚❚" }}</span>
+    </button>
+    <!-- which slide is showing, read after a step; quiet while it turns by itself -->
+    <span
+      class="bless-carousel__sr bless-sr"
+      :aria-live="autoplay > 0 && !paused ? 'off' : 'polite'"
+      >{{ label }}: {{ index + 1 }} / {{ pages }}</span
+    >
+  </div>
+</template>
+
 <script setup lang="ts">
 import { useLabelPack } from "../composables/useLabels";
 import "./sr.css";
@@ -121,78 +193,6 @@ function togglePause() {
 }
 defineExpose({ go, next: () => go(index.value + 1), prev: () => go(index.value - 1) });
 </script>
-
-<template>
-  <div
-    class="bless-carousel"
-    role="region"
-    :aria-label="label"
-    aria-roledescription="carousel"
-    @keydown="onKey"
-    @mouseenter="stop"
-    @mouseleave="play"
-    @focusin="stop"
-    @focusout="play"
-  >
-    <div
-      ref="track"
-      class="bless-carousel__track"
-      tabindex="0"
-      :style="{ '--_pv': perView, '--_gap': gap }"
-      @scroll.passive="onScroll"
-    >
-      <slot />
-    </div>
-    <template v-if="arrows && count > perView">
-      <button
-        type="button"
-        class="bless-carousel__arrow bless-carousel__arrow--prev"
-        :aria-label="text.prev"
-        :aria-disabled="!canPrev || undefined"
-        @click="canPrev && go(index - 1)"
-      >
-        <span aria-hidden="true">‹</span>
-      </button>
-      <button
-        type="button"
-        class="bless-carousel__arrow bless-carousel__arrow--next"
-        :aria-label="text.next"
-        :aria-disabled="!canNext || undefined"
-        @click="canNext && go(index + 1)"
-      >
-        <span aria-hidden="true">›</span>
-      </button>
-    </template>
-    <div v-if="dots && pages > 1" class="bless-carousel__dots" role="group" :aria-label="text.dots">
-      <button
-        v-for="p in pages"
-        :key="p"
-        type="button"
-        class="bless-carousel__dot"
-        :class="{ 'bless-carousel__dot--active': p - 1 === index }"
-        :aria-current="p - 1 === index || undefined"
-        :aria-label="`Slide ${p}`"
-        @click="go(p - 1)"
-      />
-    </div>
-    <button
-      v-if="autoplay > 0"
-      type="button"
-      class="bless-carousel__pause"
-      :aria-label="text.pause"
-      :aria-pressed="paused"
-      @click="togglePause"
-    >
-      <span aria-hidden="true">{{ paused ? "▶" : "❚❚" }}</span>
-    </button>
-    <!-- which slide is showing, read after a step; quiet while it turns by itself -->
-    <span
-      class="bless-carousel__sr bless-sr"
-      :aria-live="autoplay > 0 && !paused ? 'off' : 'polite'"
-      >{{ label }}: {{ index + 1 }} / {{ pages }}</span
-    >
-  </div>
-</template>
 
 <style>
 .bless-carousel {

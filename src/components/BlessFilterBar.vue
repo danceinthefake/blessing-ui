@@ -1,3 +1,94 @@
+<template>
+  <div class="bless-filterbar" role="group" :aria-label="text.label">
+    <ul v-if="rules.length" role="list" class="bless-filterbar__list">
+      <li v-for="(r, i) in rules" :key="i" class="bless-filterbar__chip">
+        <BlessPopover
+          :open="editing === i"
+          placement="bottom-start"
+          :title="field(r.field)?.label ?? r.field"
+          @update:open="editing = $event ? i : editing === i ? null : editing"
+        >
+          <template #trigger>
+            <button type="button" class="bless-filterbar__edit" :disabled>
+              <span class="bless-filterbar__field">{{ field(r.field)?.label ?? r.field }}</span>
+              {{ opText(r) }}
+              <strong v-if="!noValue(r.op)">{{ valueText(r) }}</strong>
+            </button>
+          </template>
+          <div class="bless-filterbar__form">
+            <BlessSelect
+              :model-value="r.op"
+              size="sm"
+              :aria-label="text.op"
+              :options="
+                opsFor(field(r.field)).map((o) => ({
+                  value: o,
+                  label: words[opKey(field(r.field), o)]!,
+                }))
+              "
+              @update:model-value="patch(i, { op: $event as BlessQueryOp })"
+            />
+            <template v-if="!noValue(r.op)">
+              <BlessSelect
+                v-if="field(r.field)?.type === 'select'"
+                :model-value="r.value"
+                size="sm"
+                :aria-label="text.value"
+                :placeholder="text.value"
+                :options="field(r.field)?.options ?? []"
+                @update:model-value="patch(i, { value: String($event) })"
+              />
+              <BlessInput
+                v-else
+                :model-value="r.value"
+                size="sm"
+                :type="field(r.field)?.type ?? 'text'"
+                :aria-label="text.value"
+                @update:model-value="patch(i, { value: String($event) })"
+                @keydown.enter="editing = null"
+              />
+            </template>
+            <div class="bless-filterbar__actions">
+              <BlessButton variant="ghost" size="sm" color="danger" @click="remove(i)">{{
+                text.remove
+              }}</BlessButton>
+              <BlessButton size="sm" @click="editing = null">{{ text.done }}</BlessButton>
+            </div>
+          </div>
+        </BlessPopover>
+        <button
+          type="button"
+          class="bless-filterbar__x"
+          :disabled
+          :aria-label="`${text.remove}: ${field(r.field)?.label ?? r.field}`"
+          @click="remove(i)"
+        >
+          <svg viewBox="0 0 16 16" width="12" height="12" aria-hidden="true">
+            <path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.75" />
+          </svg>
+        </button>
+      </li>
+    </ul>
+    <span ref="addBtn">
+      <BlessPopover v-model:open="adding" placement="bottom-start" :title="text.add">
+        <template #trigger>
+          <BlessButton variant="outline" size="sm" :disabled>+ {{ text.add }}</BlessButton>
+        </template>
+        <ul role="list" class="bless-filterbar__fields">
+          <li v-for="f in fields" :key="f.name">
+            <button type="button" class="bless-filterbar__pick" @click="add(f)">
+              {{ f.label }}
+            </button>
+          </li>
+        </ul>
+      </BlessPopover>
+    </span>
+    <BlessButton v-if="rules.length" variant="ghost" size="sm" :disabled @click="rules = []">{{
+      text.clear
+    }}</BlessButton>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed, nextTick, ref } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -102,97 +193,6 @@ function remove(i: number) {
   nextTick(() => addBtn.value?.querySelector("button")?.focus());
 }
 </script>
-
-<template>
-  <div class="bless-filterbar" role="group" :aria-label="text.label">
-    <ul v-if="rules.length" role="list" class="bless-filterbar__list">
-      <li v-for="(r, i) in rules" :key="i" class="bless-filterbar__chip">
-        <BlessPopover
-          :open="editing === i"
-          placement="bottom-start"
-          :title="field(r.field)?.label ?? r.field"
-          @update:open="editing = $event ? i : editing === i ? null : editing"
-        >
-          <template #trigger>
-            <button type="button" class="bless-filterbar__edit" :disabled>
-              <span class="bless-filterbar__field">{{ field(r.field)?.label ?? r.field }}</span>
-              {{ opText(r) }}
-              <strong v-if="!noValue(r.op)">{{ valueText(r) }}</strong>
-            </button>
-          </template>
-          <div class="bless-filterbar__form">
-            <BlessSelect
-              :model-value="r.op"
-              size="sm"
-              :aria-label="text.op"
-              :options="
-                opsFor(field(r.field)).map((o) => ({
-                  value: o,
-                  label: words[opKey(field(r.field), o)]!,
-                }))
-              "
-              @update:model-value="patch(i, { op: $event as BlessQueryOp })"
-            />
-            <template v-if="!noValue(r.op)">
-              <BlessSelect
-                v-if="field(r.field)?.type === 'select'"
-                :model-value="r.value"
-                size="sm"
-                :aria-label="text.value"
-                :placeholder="text.value"
-                :options="field(r.field)?.options ?? []"
-                @update:model-value="patch(i, { value: String($event) })"
-              />
-              <BlessInput
-                v-else
-                :model-value="r.value"
-                size="sm"
-                :type="field(r.field)?.type ?? 'text'"
-                :aria-label="text.value"
-                @update:model-value="patch(i, { value: String($event) })"
-                @keydown.enter="editing = null"
-              />
-            </template>
-            <div class="bless-filterbar__actions">
-              <BlessButton variant="ghost" size="sm" color="danger" @click="remove(i)">{{
-                text.remove
-              }}</BlessButton>
-              <BlessButton size="sm" @click="editing = null">{{ text.done }}</BlessButton>
-            </div>
-          </div>
-        </BlessPopover>
-        <button
-          type="button"
-          class="bless-filterbar__x"
-          :disabled
-          :aria-label="`${text.remove}: ${field(r.field)?.label ?? r.field}`"
-          @click="remove(i)"
-        >
-          <svg viewBox="0 0 16 16" width="12" height="12" aria-hidden="true">
-            <path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.75" />
-          </svg>
-        </button>
-      </li>
-    </ul>
-    <span ref="addBtn">
-      <BlessPopover v-model:open="adding" placement="bottom-start" :title="text.add">
-        <template #trigger>
-          <BlessButton variant="outline" size="sm" :disabled>+ {{ text.add }}</BlessButton>
-        </template>
-        <ul role="list" class="bless-filterbar__fields">
-          <li v-for="f in fields" :key="f.name">
-            <button type="button" class="bless-filterbar__pick" @click="add(f)">
-              {{ f.label }}
-            </button>
-          </li>
-        </ul>
-      </BlessPopover>
-    </span>
-    <BlessButton v-if="rules.length" variant="ghost" size="sm" :disabled @click="rules = []">{{
-      text.clear
-    }}</BlessButton>
-  </div>
-</template>
 
 <style>
 .bless-filterbar {

@@ -1,3 +1,34 @@
+<template>
+  <div class="bless-dataview" :class="`bless-dataview--${layout}`" :style="{ '--_col': columns }">
+    <div v-if="$slots.header || switchable" class="bless-dataview__bar">
+      <div class="bless-dataview__header"><slot name="header" :layout /></div>
+      <BlessToggleGroup
+        v-if="switchable"
+        :model-value="layout"
+        :label="text.layout"
+        @update:model-value="layout = ($event ?? 'list') as 'list' | 'grid'"
+      >
+        <BlessToggle value="list" size="sm" :label="text.list">☰</BlessToggle>
+        <BlessToggle value="grid" size="sm" :label="text.grid">▦</BlessToggle>
+      </BlessToggleGroup>
+    </div>
+    <div v-if="slice.length" class="bless-dataview__items" role="list" :aria-label="label">
+      <div
+        v-for="(item, i) in slice"
+        :key="rowKey ? rowKey(item, i) : i"
+        class="bless-dataview__item"
+        role="listitem"
+      >
+        <slot :item :index="(page - 1) * pageSize + i" :layout />
+      </div>
+    </div>
+    <div v-else class="bless-dataview__empty">
+      <slot name="empty">{{ text.empty }}</slot>
+    </div>
+    <BlessPagination v-if="pages > 1" v-model="page" :total="pages" class="bless-dataview__pager" />
+  </div>
+</template>
+
 <script setup lang="ts" generic="T">
 import { useLabelPack } from "../composables/useLabels";
 import { computed, ref, watch } from "vue";
@@ -44,37 +75,6 @@ const slice = computed(() =>
     : props.items,
 );
 </script>
-
-<template>
-  <div class="bless-dataview" :class="`bless-dataview--${layout}`" :style="{ '--_col': columns }">
-    <div v-if="$slots.header || switchable" class="bless-dataview__bar">
-      <div class="bless-dataview__header"><slot name="header" :layout /></div>
-      <BlessToggleGroup
-        v-if="switchable"
-        :model-value="layout"
-        :label="text.layout"
-        @update:model-value="layout = ($event ?? 'list') as 'list' | 'grid'"
-      >
-        <BlessToggle value="list" size="sm" :label="text.list">☰</BlessToggle>
-        <BlessToggle value="grid" size="sm" :label="text.grid">▦</BlessToggle>
-      </BlessToggleGroup>
-    </div>
-    <div v-if="slice.length" class="bless-dataview__items" role="list" :aria-label="label">
-      <div
-        v-for="(item, i) in slice"
-        :key="rowKey ? rowKey(item, i) : i"
-        class="bless-dataview__item"
-        role="listitem"
-      >
-        <slot :item :index="(page - 1) * pageSize + i" :layout />
-      </div>
-    </div>
-    <div v-else class="bless-dataview__empty">
-      <slot name="empty">{{ text.empty }}</slot>
-    </div>
-    <BlessPagination v-if="pages > 1" v-model="page" :total="pages" class="bless-dataview__pager" />
-  </div>
-</template>
 
 <style>
 .bless-dataview {

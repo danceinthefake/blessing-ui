@@ -1,3 +1,19 @@
+<template>
+  <span class="bless-follow">
+    <button
+      type="button"
+      class="bless-follow__button"
+      :class="{ 'is-on': following }"
+      @click="toggle"
+    >
+      <span aria-hidden="true">{{ following ? "✓" : "+" }}</span>
+      {{ following ? text.following : text.follow }}<span class="bless-sr">: {{ name }}</span>
+    </button>
+    <span v-if="count" class="bless-follow__count">{{ text.followers(count) }}</span>
+    <span class="bless-sr" role="status">{{ said }}</span>
+  </span>
+</template>
+
 <script setup lang="ts">
 // The words change from Follow to Following, so the button has no aria-pressed:
 // a toggle with a name that changes would say the state twice.
@@ -51,22 +67,6 @@ function toggle() {
   said.value = next ? text.value.followed(props.name) : text.value.unfollowed(props.name);
 }
 </script>
-
-<template>
-  <span class="bless-follow">
-    <button
-      type="button"
-      class="bless-follow__button"
-      :class="{ 'is-on': following }"
-      @click="toggle"
-    >
-      <span aria-hidden="true">{{ following ? "✓" : "+" }}</span>
-      {{ following ? text.following : text.follow }}<span class="bless-sr">: {{ name }}</span>
-    </button>
-    <span v-if="count" class="bless-follow__count">{{ text.followers(count) }}</span>
-    <span class="bless-sr" role="status">{{ said }}</span>
-  </span>
-</template>
 
 <style>
 .bless-follow {

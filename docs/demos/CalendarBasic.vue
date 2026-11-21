@@ -1,10 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { BlessCalendar, BlessText } from "blessing-ui";
-const day = ref<string | undefined>("2019-09-25");
-const stay = ref<[string, string]>(["2019-09-10", "2019-09-16"]);
-</script>
-
 <template>
   <div class="row" style="align-items: flex-start">
     <div>
@@ -27,3 +20,10 @@ const stay = ref<[string, string]>(["2019-09-10", "2019-09-16"]);
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { BlessCalendar, BlessText } from "blessing-ui";
+const day = ref<string | undefined>("2019-09-25");
+const stay = ref<[string, string]>(["2019-09-10", "2019-09-16"]);
+</script>

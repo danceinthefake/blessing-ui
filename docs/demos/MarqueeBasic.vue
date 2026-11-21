@@ -1,9 +1,3 @@
-<script setup lang="ts">
-import { BlessBadge, BlessMarquee } from "blessing-ui";
-
-const names = ["Vue 3", "Elixir", "Phoenix", "Tiptap", "Vite", "pnpm", "Cloudflare", "Playwright"];
-</script>
-
 <template>
   <div class="col" style="max-width: 560px">
     <BlessMarquee label="Built with" :speed="50">
@@ -14,3 +8,9 @@ const names = ["Vue 3", "Elixir", "Phoenix", "Tiptap", "Vite", "pnpm", "Cloudfla
     </BlessMarquee>
   </div>
 </template>
+
+<script setup lang="ts">
+import { BlessBadge, BlessMarquee } from "blessing-ui";
+
+const names = ["Vue 3", "Elixir", "Phoenix", "Tiptap", "Vite", "pnpm", "Cloudflare", "Playwright"];
+</script>

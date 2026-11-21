@@ -1,11 +1,3 @@
-<script setup lang="ts">
-import BlessModal from "./BlessModal.vue";
-import { dialogState, useDialog } from "../composables/useDialog";
-
-defineOptions({ name: "BlessDialogHost" });
-const { close } = useDialog();
-</script>
-
 <template>
   <BlessModal
     v-for="d in dialogState.items"
@@ -25,6 +17,14 @@ const { close } = useDialog();
     <p v-else class="bless-dialog-host__text">{{ d.text }}</p>
   </BlessModal>
 </template>
+
+<script setup lang="ts">
+import BlessModal from "./BlessModal.vue";
+import { dialogState, useDialog } from "../composables/useDialog";
+
+defineOptions({ name: "BlessDialogHost" });
+const { close } = useDialog();
+</script>
 
 <style>
 .bless-dialog-host__text {

@@ -1,3 +1,25 @@
+<template>
+  <BlessSection title="Story" watermark="Story" class="story">
+    <BlessText as="p" class="story__intro">{{ intro }}</BlessText>
+    <BlessAccordion type="multiple">
+      <BlessAccordionItem v-for="e in episodes" :key="e.n" :open="e.n === 1" :disabled="!e.text">
+        <template #title>
+          <span class="story__row">
+            <BlessText size="2xs" weight="bold" tracking="wider" muted
+              >#{{ String(e.n).padStart(2, "0") }}</BlessText
+            >
+            <BlessDash />
+            <span class="story__title">{{ e.title }}</span>
+            <BlessText size="xs" muted>{{ e.air }}</BlessText>
+            <BlessBadge v-if="!e.aired" color="text">COMING</BlessBadge>
+          </span>
+        </template>
+        {{ e.text }}
+      </BlessAccordionItem>
+    </BlessAccordion>
+  </BlessSection>
+</template>
+
 <script setup lang="ts">
 import {
   BlessAccordion,
@@ -42,28 +64,6 @@ const episodes = [
   { n: 5, title: "同人誌即売会", air: "11.06", aired: false, text: "" },
 ];
 </script>
-
-<template>
-  <BlessSection title="Story" watermark="Story" class="story">
-    <BlessText as="p" class="story__intro">{{ intro }}</BlessText>
-    <BlessAccordion type="multiple">
-      <BlessAccordionItem v-for="e in episodes" :key="e.n" :open="e.n === 1" :disabled="!e.text">
-        <template #title>
-          <span class="story__row">
-            <BlessText size="2xs" weight="bold" tracking="wider" muted
-              >#{{ String(e.n).padStart(2, "0") }}</BlessText
-            >
-            <BlessDash />
-            <span class="story__title">{{ e.title }}</span>
-            <BlessText size="xs" muted>{{ e.air }}</BlessText>
-            <BlessBadge v-if="!e.aired" color="text">COMING</BlessBadge>
-          </span>
-        </template>
-        {{ e.text }}
-      </BlessAccordionItem>
-    </BlessAccordion>
-  </BlessSection>
-</template>
 
 <style scoped>
 .story {

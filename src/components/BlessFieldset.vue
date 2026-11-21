@@ -1,12 +1,3 @@
-<script setup lang="ts">
-import { useId } from "vue";
-
-defineOptions({ name: "BlessFieldset" });
-defineProps<{ legend?: string; toggleable?: boolean; disabled?: boolean }>();
-const collapsed = defineModel<boolean>("collapsed", { default: false });
-const id = useId();
-</script>
-
 <template>
   <fieldset class="bless-fieldset" :class="{ 'bless-fieldset--collapsed': collapsed }" :disabled>
     <legend class="bless-fieldset__legend">
@@ -26,6 +17,15 @@ const id = useId();
     <div v-show="!collapsed" :id class="bless-fieldset__content"><slot /></div>
   </fieldset>
 </template>
+
+<script setup lang="ts">
+import { useId } from "vue";
+
+defineOptions({ name: "BlessFieldset" });
+defineProps<{ legend?: string; toggleable?: boolean; disabled?: boolean }>();
+const collapsed = defineModel<boolean>("collapsed", { default: false });
+const id = useId();
+</script>
 
 <style>
 .bless-fieldset {

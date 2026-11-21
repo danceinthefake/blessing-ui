@@ -1,30 +1,3 @@
-<script setup lang="ts">
-import { computed } from "vue";
-
-defineOptions({ name: "BlessProgress" });
-
-const props = withDefaults(
-  defineProps<{
-    /** omit for indeterminate */
-    value?: number;
-    max?: number;
-    label?: string;
-    showValue?: boolean;
-    color?: "accent" | "text" | "danger" | "success" | "warning";
-    size?: "sm" | "md" | "lg";
-    /** text for showValue; default is the percentage */
-    format?: (value: number, max: number) => string;
-  }>(),
-  { max: 100, color: "accent", size: "md" },
-);
-
-const pct = computed(() =>
-  props.value === undefined
-    ? undefined
-    : Math.min(100, Math.max(0, (props.value / props.max) * 100)),
-);
-</script>
-
 <template>
   <div
     class="bless-progress"
@@ -59,6 +32,33 @@ const pct = computed(() =>
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+import { computed } from "vue";
+
+defineOptions({ name: "BlessProgress" });
+
+const props = withDefaults(
+  defineProps<{
+    /** omit for indeterminate */
+    value?: number;
+    max?: number;
+    label?: string;
+    showValue?: boolean;
+    color?: "accent" | "text" | "danger" | "success" | "warning";
+    size?: "sm" | "md" | "lg";
+    /** text for showValue; default is the percentage */
+    format?: (value: number, max: number) => string;
+  }>(),
+  { max: 100, color: "accent", size: "md" },
+);
+
+const pct = computed(() =>
+  props.value === undefined
+    ? undefined
+    : Math.min(100, Math.max(0, (props.value / props.max) * 100)),
+);
+</script>
 
 <style>
 .bless-progress {

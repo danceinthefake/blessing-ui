@@ -1,9 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { BlessFileInput } from "blessing-ui";
-const files = ref<File[]>([]);
-</script>
-
 <template>
   <div class="col" style="max-width: 480px">
     <BlessFileInput
@@ -16,3 +10,9 @@ const files = ref<File[]>([]);
     <BlessFileInput label="Disabled" disabled />
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { BlessFileInput } from "blessing-ui";
+const files = ref<File[]>([]);
+</script>

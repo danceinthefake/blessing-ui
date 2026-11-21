@@ -1,3 +1,54 @@
+<template>
+  <div class="bless-apikey">
+    <p v-if="name" class="bless-apikey__name">{{ name }}</p>
+    <div class="bless-apikey__row">
+      <code class="bless-apikey__value" :class="{ 'is-shown': shown }">
+        <template v-if="shown">{{ value }}</template>
+        <template v-else>
+          <span aria-hidden="true">{{ maskKey(value) }}</span>
+          <span class="bless-sr">{{ maskKey(value).replace(/•+/, " … ") }}</span>
+        </template>
+      </code>
+      <BlessButton
+        variant="ghost"
+        size="sm"
+        :aria-pressed="shown"
+        :aria-label="text.show"
+        :title="shown ? text.hide : text.show"
+        @click="shown = !shown"
+      >
+        <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true">
+          <path d="M1.5 8S4 3.5 8 3.5 14.5 8 14.5 8 12 12.5 8 12.5 1.5 8 1.5 8Z" />
+          <circle cx="8" cy="8" r="2" />
+          <path v-if="shown" d="M2.5 2.5l11 11" />
+        </svg>
+      </BlessButton>
+      <BlessButton variant="outline" size="sm" @click="copy">
+        {{ copied ? text.copied : text.copy }}
+      </BlessButton>
+      <BlessConfirmPopup
+        v-if="regenerable"
+        :message="text.confirm"
+        :labels="{ confirm: text.confirmLabel, cancel: text.cancel }"
+        color="danger"
+        @confirm="emit('regenerate')"
+      >
+        <template #trigger>
+          <BlessButton variant="ghost" size="sm" color="danger">{{ text.regenerate }}</BlessButton>
+        </template>
+      </BlessConfirmPopup>
+    </div>
+    <p v-if="created || lastUsed" class="bless-apikey__meta">
+      {{
+        [created && text.created(created), lastUsed && text.lastUsed(lastUsed)]
+          .filter(Boolean)
+          .join(" · ")
+      }}
+    </p>
+    <span class="bless-sr" role="status">{{ status }}</span>
+  </div>
+</template>
+
 <script lang="ts">
 /** A key with only its start and its last four letters, for example `sk_demo_••••••••3f9a`. */
 export function maskKey(key: string): string {
@@ -75,57 +126,6 @@ async function copy() {
 }
 onBeforeUnmount(() => clearTimeout(timer));
 </script>
-
-<template>
-  <div class="bless-apikey">
-    <p v-if="name" class="bless-apikey__name">{{ name }}</p>
-    <div class="bless-apikey__row">
-      <code class="bless-apikey__value" :class="{ 'is-shown': shown }">
-        <template v-if="shown">{{ value }}</template>
-        <template v-else>
-          <span aria-hidden="true">{{ maskKey(value) }}</span>
-          <span class="bless-sr">{{ maskKey(value).replace(/•+/, " … ") }}</span>
-        </template>
-      </code>
-      <BlessButton
-        variant="ghost"
-        size="sm"
-        :aria-pressed="shown"
-        :aria-label="text.show"
-        :title="shown ? text.hide : text.show"
-        @click="shown = !shown"
-      >
-        <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true">
-          <path d="M1.5 8S4 3.5 8 3.5 14.5 8 14.5 8 12 12.5 8 12.5 1.5 8 1.5 8Z" />
-          <circle cx="8" cy="8" r="2" />
-          <path v-if="shown" d="M2.5 2.5l11 11" />
-        </svg>
-      </BlessButton>
-      <BlessButton variant="outline" size="sm" @click="copy">
-        {{ copied ? text.copied : text.copy }}
-      </BlessButton>
-      <BlessConfirmPopup
-        v-if="regenerable"
-        :message="text.confirm"
-        :labels="{ confirm: text.confirmLabel, cancel: text.cancel }"
-        color="danger"
-        @confirm="emit('regenerate')"
-      >
-        <template #trigger>
-          <BlessButton variant="ghost" size="sm" color="danger">{{ text.regenerate }}</BlessButton>
-        </template>
-      </BlessConfirmPopup>
-    </div>
-    <p v-if="created || lastUsed" class="bless-apikey__meta">
-      {{
-        [created && text.created(created), lastUsed && text.lastUsed(lastUsed)]
-          .filter(Boolean)
-          .join(" · ")
-      }}
-    </p>
-    <span class="bless-sr" role="status">{{ status }}</span>
-  </div>
-</template>
 
 <style>
 .bless-apikey {

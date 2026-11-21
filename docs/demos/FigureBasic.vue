@@ -1,8 +1,3 @@
-<script setup lang="ts">
-import { BlessFigure } from "blessing-ui";
-import { shots } from "./_data";
-</script>
-
 <template>
   <div style="max-width: 560px">
     <BlessFigure
@@ -14,3 +9,8 @@ import { shots } from "./_data";
     />
   </div>
 </template>
+
+<script setup lang="ts">
+import { BlessFigure } from "blessing-ui";
+import { shots } from "./_data";
+</script>

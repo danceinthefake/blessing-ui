@@ -1,69 +1,3 @@
-<script setup lang="ts">
-import { computed } from "vue";
-import { useLabelPack } from "../composables/useLabels";
-
-defineOptions({ name: "BlessWorkoutLog" });
-const pack = useLabelPack("BlessWorkoutLog");
-
-export interface BlessWorkoutSet {
-  weight: number;
-  reps: number;
-  done?: boolean;
-}
-
-const props = withDefaults(
-  defineProps<{
-    exercise: string;
-    /** the sets of the last session, for each row */
-    previous?: { weight: number; reps: number }[];
-    /** the unit of the weight */
-    unit?: string;
-    locale?: string;
-    labels?: Partial<{
-      set: string;
-      last: string;
-      weight: string;
-      reps: string;
-      done: string;
-      add: string;
-      remove: (n: number) => string;
-      volume: (total: string) => string;
-      field: (what: string, n: number) => string;
-    }>;
-  }>(),
-  { previous: () => [], unit: "kg", locale: "en" },
-);
-const sets = defineModel<BlessWorkoutSet[]>({ default: () => [] });
-
-const text = computed(() => ({
-  set: "Set",
-  last: "Last time",
-  weight: "Weight",
-  reps: "Reps",
-  done: "Done",
-  add: "Add a set",
-  remove: (n: number) => `Remove set ${n}`,
-  volume: (t: string) => `Volume ${t}`,
-  field: (w: string, n: number) => `${w}, set ${n}`,
-  ...pack(),
-  ...props.labels,
-}));
-const num = computed(() => new Intl.NumberFormat(props.locale, { maximumFractionDigits: 1 }));
-const patch = (i: number, p: Partial<BlessWorkoutSet>) =>
-  (sets.value = sets.value.map((s, k) => (k === i ? { ...s, ...p } : s)));
-// a new set copies the last one, which is what people do most of the time
-function add() {
-  const last = sets.value.at(-1) ?? props.previous[sets.value.length] ?? { weight: 0, reps: 0 };
-  sets.value = [...sets.value, { weight: last.weight, reps: last.reps, done: false }];
-}
-const remove = (i: number) => (sets.value = sets.value.filter((_, k) => k !== i));
-/** weight × reps of the done sets */
-const volume = computed(() =>
-  sets.value.filter((s) => s.done).reduce((n, s) => n + s.weight * s.reps, 0),
-);
-const read = (e: Event) => Math.max(0, (e.target as HTMLInputElement).valueAsNumber || 0);
-</script>
-
 <template>
   <section class="bless-workout" :aria-label="exercise">
     <h3 class="bless-workout__name">{{ exercise }}</h3>
@@ -135,6 +69,72 @@ const read = (e: Event) => Math.max(0, (e.target as HTMLInputElement).valueAsNum
     </div>
   </section>
 </template>
+
+<script setup lang="ts">
+import { computed } from "vue";
+import { useLabelPack } from "../composables/useLabels";
+
+defineOptions({ name: "BlessWorkoutLog" });
+const pack = useLabelPack("BlessWorkoutLog");
+
+export interface BlessWorkoutSet {
+  weight: number;
+  reps: number;
+  done?: boolean;
+}
+
+const props = withDefaults(
+  defineProps<{
+    exercise: string;
+    /** the sets of the last session, for each row */
+    previous?: { weight: number; reps: number }[];
+    /** the unit of the weight */
+    unit?: string;
+    locale?: string;
+    labels?: Partial<{
+      set: string;
+      last: string;
+      weight: string;
+      reps: string;
+      done: string;
+      add: string;
+      remove: (n: number) => string;
+      volume: (total: string) => string;
+      field: (what: string, n: number) => string;
+    }>;
+  }>(),
+  { previous: () => [], unit: "kg", locale: "en" },
+);
+const sets = defineModel<BlessWorkoutSet[]>({ default: () => [] });
+
+const text = computed(() => ({
+  set: "Set",
+  last: "Last time",
+  weight: "Weight",
+  reps: "Reps",
+  done: "Done",
+  add: "Add a set",
+  remove: (n: number) => `Remove set ${n}`,
+  volume: (t: string) => `Volume ${t}`,
+  field: (w: string, n: number) => `${w}, set ${n}`,
+  ...pack(),
+  ...props.labels,
+}));
+const num = computed(() => new Intl.NumberFormat(props.locale, { maximumFractionDigits: 1 }));
+const patch = (i: number, p: Partial<BlessWorkoutSet>) =>
+  (sets.value = sets.value.map((s, k) => (k === i ? { ...s, ...p } : s)));
+// a new set copies the last one, which is what people do most of the time
+function add() {
+  const last = sets.value.at(-1) ?? props.previous[sets.value.length] ?? { weight: 0, reps: 0 };
+  sets.value = [...sets.value, { weight: last.weight, reps: last.reps, done: false }];
+}
+const remove = (i: number) => (sets.value = sets.value.filter((_, k) => k !== i));
+/** weight × reps of the done sets */
+const volume = computed(() =>
+  sets.value.filter((s) => s.done).reduce((n, s) => n + s.weight * s.reps, 0),
+);
+const read = (e: Event) => Math.max(0, (e.target as HTMLInputElement).valueAsNumber || 0);
+</script>
 
 <style>
 .bless-workout {

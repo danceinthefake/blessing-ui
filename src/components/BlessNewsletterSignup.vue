@@ -1,3 +1,27 @@
+<template>
+  <div class="bless-newsletter">
+    <p v-if="status === 'done'" class="bless-newsletter__done" role="status">{{ text.done }}</p>
+    <form v-else class="bless-newsletter__form" novalidate @submit.prevent="submit">
+      <BlessInput
+        v-model="email"
+        class="bless-newsletter__field"
+        type="email"
+        autocomplete="email"
+        required
+        :aria-label="text.label"
+        :placeholder="text.label"
+        :error="local ?? error"
+        @input="local = undefined"
+      />
+      <BlessButton type="submit" :loading="status === 'loading'">{{ text.button }}</BlessButton>
+    </form>
+    <p v-if="status !== 'done'" class="bless-newsletter__privacy">
+      {{ text.privacy }}
+      <a v-if="privacyHref" :href="privacyHref">{{ text.policy }}</a>
+    </p>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed, ref } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -48,30 +72,6 @@ function submit(e: Event) {
   if (props.status !== "loading") emit("subscribe", email.value.trim());
 }
 </script>
-
-<template>
-  <div class="bless-newsletter">
-    <p v-if="status === 'done'" class="bless-newsletter__done" role="status">{{ text.done }}</p>
-    <form v-else class="bless-newsletter__form" novalidate @submit.prevent="submit">
-      <BlessInput
-        v-model="email"
-        class="bless-newsletter__field"
-        type="email"
-        autocomplete="email"
-        required
-        :aria-label="text.label"
-        :placeholder="text.label"
-        :error="local ?? error"
-        @input="local = undefined"
-      />
-      <BlessButton type="submit" :loading="status === 'loading'">{{ text.button }}</BlessButton>
-    </form>
-    <p v-if="status !== 'done'" class="bless-newsletter__privacy">
-      {{ text.privacy }}
-      <a v-if="privacyHref" :href="privacyHref">{{ text.policy }}</a>
-    </p>
-  </div>
-</template>
 
 <style>
 .bless-newsletter {

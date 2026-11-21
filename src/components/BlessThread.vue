@@ -1,3 +1,25 @@
+<template>
+  <ol class="bless-stagger bless-thread" :class="{ 'bless-thread--flat': depth > maxDepth }">
+    <li v-for="c in comments" :key="c.id" class="bless-thread__item">
+      <BlessMessage :name="c.name" :avatar="c.avatar" :time="c.time" :datetime="c.datetime">
+        <slot :comment="c" :depth>{{ c.body }}</slot>
+        <template v-if="$slots.footer" #footer><slot name="footer" :comment="c" :depth /></template>
+        <template v-if="$slots.actions" #actions
+          ><slot name="actions" :comment="c" :depth
+        /></template>
+      </BlessMessage>
+      <details v-if="c.replies?.length" class="bless-thread__replies" :open="!c.collapsed">
+        <summary class="bless-thread__toggle">{{ words(count(c)) }}</summary>
+        <BlessThread :comments="c.replies" :max-depth :labels :depth="depth + 1">
+          <template v-if="$slots.default" #default="s"><slot v-bind="s" /></template>
+          <template v-if="$slots.footer" #footer="s"><slot name="footer" v-bind="s" /></template>
+          <template v-if="$slots.actions" #actions="s"><slot name="actions" v-bind="s" /></template>
+        </BlessThread>
+      </details>
+    </li>
+  </ol>
+</template>
+
 <script setup lang="ts">
 import { useLabelPack } from "../composables/useLabels";
 import BlessMessage from "./BlessMessage.vue";
@@ -46,28 +68,6 @@ const words = (n: number) =>
     ((n: number) => (n === 1 ? "1 reply" : `${n} replies`))
   )(n);
 </script>
-
-<template>
-  <ol class="bless-stagger bless-thread" :class="{ 'bless-thread--flat': depth > maxDepth }">
-    <li v-for="c in comments" :key="c.id" class="bless-thread__item">
-      <BlessMessage :name="c.name" :avatar="c.avatar" :time="c.time" :datetime="c.datetime">
-        <slot :comment="c" :depth>{{ c.body }}</slot>
-        <template v-if="$slots.footer" #footer><slot name="footer" :comment="c" :depth /></template>
-        <template v-if="$slots.actions" #actions
-          ><slot name="actions" :comment="c" :depth
-        /></template>
-      </BlessMessage>
-      <details v-if="c.replies?.length" class="bless-thread__replies" :open="!c.collapsed">
-        <summary class="bless-thread__toggle">{{ words(count(c)) }}</summary>
-        <BlessThread :comments="c.replies" :max-depth :labels :depth="depth + 1">
-          <template v-if="$slots.default" #default="s"><slot v-bind="s" /></template>
-          <template v-if="$slots.footer" #footer="s"><slot name="footer" v-bind="s" /></template>
-          <template v-if="$slots.actions" #actions="s"><slot name="actions" v-bind="s" /></template>
-        </BlessThread>
-      </details>
-    </li>
-  </ol>
-</template>
 
 <style>
 .bless-thread {

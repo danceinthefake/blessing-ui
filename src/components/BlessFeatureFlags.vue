@@ -1,3 +1,42 @@
+<template>
+  <section class="bless-flags" :aria-label="text.title">
+    <ul class="bless-stagger bless-flags__list">
+      <li
+        v-for="f in flags"
+        :key="f.key"
+        class="bless-flags__item"
+        :class="{ 'is-on': enabled[f.key] }"
+      >
+        <div class="bless-flags__main">
+          <BlessSwitch
+            :model-value="!!enabled[f.key]"
+            @update:model-value="(v: boolean) => set(f.key, v)"
+          >
+            <span class="bless-flags__name">{{ f.name }}</span>
+          </BlessSwitch>
+          <code class="bless-flags__key">{{ f.key }}</code>
+          <span v-if="f.env" class="bless-flags__env">{{ f.env }}</span>
+        </div>
+        <p v-if="f.description" class="bless-flags__desc">{{ f.description }}</p>
+        <div class="bless-flags__rollout">
+          <span class="bless-flags__bar" aria-hidden="true">
+            <span :style="{ inlineSize: `${enabled[f.key] ? (f.rollout ?? 100) : 0}%` }" />
+          </span>
+          <span class="bless-flags__share">
+            {{
+              !enabled[f.key]
+                ? text.off
+                : f.rollout === undefined || f.rollout >= 100
+                  ? text.everyone
+                  : text.rollout(f.rollout)
+            }}
+          </span>
+        </div>
+      </li>
+    </ul>
+  </section>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -42,45 +81,6 @@ function set(key: string, on: boolean) {
   emit("toggle", key, on);
 }
 </script>
-
-<template>
-  <section class="bless-flags" :aria-label="text.title">
-    <ul class="bless-stagger bless-flags__list">
-      <li
-        v-for="f in flags"
-        :key="f.key"
-        class="bless-flags__item"
-        :class="{ 'is-on': enabled[f.key] }"
-      >
-        <div class="bless-flags__main">
-          <BlessSwitch
-            :model-value="!!enabled[f.key]"
-            @update:model-value="(v: boolean) => set(f.key, v)"
-          >
-            <span class="bless-flags__name">{{ f.name }}</span>
-          </BlessSwitch>
-          <code class="bless-flags__key">{{ f.key }}</code>
-          <span v-if="f.env" class="bless-flags__env">{{ f.env }}</span>
-        </div>
-        <p v-if="f.description" class="bless-flags__desc">{{ f.description }}</p>
-        <div class="bless-flags__rollout">
-          <span class="bless-flags__bar" aria-hidden="true">
-            <span :style="{ inlineSize: `${enabled[f.key] ? (f.rollout ?? 100) : 0}%` }" />
-          </span>
-          <span class="bless-flags__share">
-            {{
-              !enabled[f.key]
-                ? text.off
-                : f.rollout === undefined || f.rollout >= 100
-                  ? text.everyone
-                  : text.rollout(f.rollout)
-            }}
-          </span>
-        </div>
-      </li>
-    </ul>
-  </section>
-</template>
 
 <style>
 .bless-flags {

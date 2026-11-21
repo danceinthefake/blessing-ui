@@ -1,3 +1,9 @@
+<template>
+  <div class="bless-query">
+    <BlessQueryGroup v-model="model" :fields :text :depth="1" :max-depth :disabled />
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -77,12 +83,6 @@ const text = computed(() => ({
   ...props.labels,
 }));
 </script>
-
-<template>
-  <div class="bless-query">
-    <BlessQueryGroup v-model="model" :fields :text :depth="1" :max-depth :disabled />
-  </div>
-</template>
 
 <style>
 .bless-query {

@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import { BlessArticleHeader } from "blessing-ui";
-</script>
-
 <template>
   <!-- level 2 here, because the docs page already has an h1 -->
   <BlessArticleHeader
@@ -17,3 +13,7 @@ import { BlessArticleHeader } from "blessing-ui";
     style="max-width: 640px"
   />
 </template>
+
+<script setup lang="ts">
+import { BlessArticleHeader } from "blessing-ui";
+</script>

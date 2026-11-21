@@ -1,3 +1,10 @@
+<template>
+  <div v-if="kicker" :key="route.path" class="strip" aria-hidden="true">
+    <span class="strip__text">{{ kicker }}</span>
+    <span class="strip__slash" />
+  </div>
+</template>
+
 <script setup lang="ts">
 // A slim eyecatch over the title of a leaf page: which volume, which group, which number.
 // A landing page (an index) opens with a full Eyecatch instead, so it gets no strip.
@@ -33,13 +40,6 @@ const kicker = computed(() => {
   return "";
 });
 </script>
-
-<template>
-  <div v-if="kicker" :key="route.path" class="strip" aria-hidden="true">
-    <span class="strip__text">{{ kicker }}</span>
-    <span class="strip__slash" />
-  </div>
-</template>
 
 <style scoped>
 /* aria-hidden: the sidebar already says where the reader is */

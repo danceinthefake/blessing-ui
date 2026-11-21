@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import { BlessAvatar, BlessHoverCard, BlessText } from "blessing-ui";
-</script>
-
 <template>
   <div>
     Follow
@@ -22,3 +18,7 @@ import { BlessAvatar, BlessHoverCard, BlessText } from "blessing-ui";
     for updates.
   </div>
 </template>
+
+<script setup lang="ts">
+import { BlessAvatar, BlessHoverCard, BlessText } from "blessing-ui";
+</script>

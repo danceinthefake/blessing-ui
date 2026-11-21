@@ -1,3 +1,59 @@
+<template>
+  <div class="bless-stories">
+    <ul class="bless-stagger bless-stories__rings" :aria-label="text.title">
+      <li v-for="(p, i) in people" :key="p.id">
+        <button
+          type="button"
+          class="bless-stories__ring"
+          :class="{ 'is-seen': p.seen }"
+          @click="show(i)"
+        >
+          <span class="bless-stories__avatar"
+            ><BlessAvatar :name="p.name" :src="p.avatar" alt="" size="lg"
+          /></span>
+          <span class="bless-stories__name">{{ p.name }}</span>
+          <span class="bless-sr">{{ text.open(p.name) }}{{ p.seen ? "" : `, ${text.new}` }}</span>
+        </button>
+      </li>
+    </ul>
+    <BlessModal v-model="open" size="sm" :title="person?.name" class="bless-stories__modal">
+      <div v-if="story" class="bless-stories__viewer" @keydown="onKey">
+        <div class="bless-stories__bars" aria-hidden="true">
+          <span v-for="(s, i) in person!.stories" :key="s.id" class="bless-stories__bar">
+            <span
+              class="bless-stories__fill"
+              :style="{
+                inlineSize:
+                  i < at ? '100%' : i > at ? '0%' : `${Math.min(100, (elapsed / duration) * 100)}%`,
+              }"
+            />
+          </span>
+        </div>
+        <p class="bless-sr" aria-live="polite">
+          {{ text.progress(at + 1, person!.stories.length) }}
+        </p>
+        <img class="bless-stories__image" :src="story.image" :alt="story.alt" />
+        <p v-if="story.caption || story.time" class="bless-stories__caption">
+          {{ story.caption
+          }}<span v-if="story.time" class="bless-stories__time">{{ story.time }}</span>
+        </p>
+        <div class="bless-stories__controls">
+          <button type="button" :aria-label="text.previous" @click="step(-1)">‹</button>
+          <button
+            type="button"
+            :aria-pressed="paused"
+            :aria-label="paused ? text.play : text.pause"
+            @click="paused = !paused"
+          >
+            {{ paused ? "▶" : "❚❚" }}
+          </button>
+          <button type="button" :aria-label="text.next" @click="step(1)">›</button>
+        </div>
+      </div>
+    </BlessModal>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed, onBeforeUnmount, ref, watch } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -103,62 +159,6 @@ function onKey(e: KeyboardEvent) {
   e.preventDefault();
 }
 </script>
-
-<template>
-  <div class="bless-stories">
-    <ul class="bless-stagger bless-stories__rings" :aria-label="text.title">
-      <li v-for="(p, i) in people" :key="p.id">
-        <button
-          type="button"
-          class="bless-stories__ring"
-          :class="{ 'is-seen': p.seen }"
-          @click="show(i)"
-        >
-          <span class="bless-stories__avatar"
-            ><BlessAvatar :name="p.name" :src="p.avatar" alt="" size="lg"
-          /></span>
-          <span class="bless-stories__name">{{ p.name }}</span>
-          <span class="bless-sr">{{ text.open(p.name) }}{{ p.seen ? "" : `, ${text.new}` }}</span>
-        </button>
-      </li>
-    </ul>
-    <BlessModal v-model="open" size="sm" :title="person?.name" class="bless-stories__modal">
-      <div v-if="story" class="bless-stories__viewer" @keydown="onKey">
-        <div class="bless-stories__bars" aria-hidden="true">
-          <span v-for="(s, i) in person!.stories" :key="s.id" class="bless-stories__bar">
-            <span
-              class="bless-stories__fill"
-              :style="{
-                inlineSize:
-                  i < at ? '100%' : i > at ? '0%' : `${Math.min(100, (elapsed / duration) * 100)}%`,
-              }"
-            />
-          </span>
-        </div>
-        <p class="bless-sr" aria-live="polite">
-          {{ text.progress(at + 1, person!.stories.length) }}
-        </p>
-        <img class="bless-stories__image" :src="story.image" :alt="story.alt" />
-        <p v-if="story.caption || story.time" class="bless-stories__caption">
-          {{ story.caption
-          }}<span v-if="story.time" class="bless-stories__time">{{ story.time }}</span>
-        </p>
-        <div class="bless-stories__controls">
-          <button type="button" :aria-label="text.previous" @click="step(-1)">‹</button>
-          <button
-            type="button"
-            :aria-pressed="paused"
-            :aria-label="paused ? text.play : text.pause"
-            @click="paused = !paused"
-          >
-            {{ paused ? "▶" : "❚❚" }}
-          </button>
-          <button type="button" :aria-label="text.next" @click="step(1)">›</button>
-        </div>
-      </div>
-    </BlessModal>
-  </div>
-</template>
 
 <style>
 .bless-stories__rings {

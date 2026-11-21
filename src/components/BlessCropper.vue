@@ -1,3 +1,52 @@
+<template>
+  <div class="bless-cropper">
+    <p v-if="failed" class="bless-cropper__error" role="alert">{{ text.loadError }}</p>
+    <div v-else ref="stage" class="bless-cropper__stage" :aria-busy="!img">
+      <canvas ref="canvas" class="bless-cropper__canvas" aria-hidden="true"></canvas>
+      <div
+        v-if="img"
+        class="bless-cropper__frame"
+        tabindex="0"
+        role="group"
+        :aria-label="label"
+        :aria-describedby="`${id}-hint`"
+        :style="frame"
+        @pointerdown="down(null, $event)"
+        @pointermove="move"
+        @pointerup="up"
+        @pointercancel="up"
+        @keydown="onKey"
+      >
+        <span
+          v-for="h in handles"
+          :key="h"
+          class="bless-cropper__handle"
+          :class="`bless-cropper__handle--${h}`"
+          aria-hidden="true"
+          @pointerdown="down(h, $event)"
+          @pointermove="move"
+          @pointerup="up"
+          @pointercancel="up"
+        ></span>
+      </div>
+    </div>
+    <div v-if="img" class="bless-cropper__foot">
+      <span :id="`${id}-hint`" class="bless-cropper__readout"
+        >{{ rect?.width }} × {{ rect?.height }} px · {{ text.hint }}</span
+      >
+      <span v-if="controls" class="bless-cropper__controls">
+        <BlessButton size="sm" variant="ghost" :aria-label="text.rotateLeft" @click="turn(-90)"
+          >↺</BlessButton
+        >
+        <BlessButton size="sm" variant="ghost" :aria-label="text.rotateRight" @click="turn(90)"
+          >↻</BlessButton
+        >
+      </span>
+    </div>
+    <span class="bless-cropper__live bless-sr" aria-live="polite">{{ live }}</span>
+  </div>
+</template>
+
 <script lang="ts">
 export interface BlessCropRect {
   /** pixels of the full-size image after `rotation` has been applied */
@@ -206,55 +255,6 @@ function toBlob(
 }
 defineExpose({ toBlob, rotate: turn, reset });
 </script>
-
-<template>
-  <div class="bless-cropper">
-    <p v-if="failed" class="bless-cropper__error" role="alert">{{ text.loadError }}</p>
-    <div v-else ref="stage" class="bless-cropper__stage" :aria-busy="!img">
-      <canvas ref="canvas" class="bless-cropper__canvas" aria-hidden="true"></canvas>
-      <div
-        v-if="img"
-        class="bless-cropper__frame"
-        tabindex="0"
-        role="group"
-        :aria-label="label"
-        :aria-describedby="`${id}-hint`"
-        :style="frame"
-        @pointerdown="down(null, $event)"
-        @pointermove="move"
-        @pointerup="up"
-        @pointercancel="up"
-        @keydown="onKey"
-      >
-        <span
-          v-for="h in handles"
-          :key="h"
-          class="bless-cropper__handle"
-          :class="`bless-cropper__handle--${h}`"
-          aria-hidden="true"
-          @pointerdown="down(h, $event)"
-          @pointermove="move"
-          @pointerup="up"
-          @pointercancel="up"
-        ></span>
-      </div>
-    </div>
-    <div v-if="img" class="bless-cropper__foot">
-      <span :id="`${id}-hint`" class="bless-cropper__readout"
-        >{{ rect?.width }} × {{ rect?.height }} px · {{ text.hint }}</span
-      >
-      <span v-if="controls" class="bless-cropper__controls">
-        <BlessButton size="sm" variant="ghost" :aria-label="text.rotateLeft" @click="turn(-90)"
-          >↺</BlessButton
-        >
-        <BlessButton size="sm" variant="ghost" :aria-label="text.rotateRight" @click="turn(90)"
-          >↻</BlessButton
-        >
-      </span>
-    </div>
-    <span class="bless-cropper__live bless-sr" aria-live="polite">{{ live }}</span>
-  </div>
-</template>
 
 <style>
 .bless-cropper {

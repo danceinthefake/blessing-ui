@@ -1,17 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { BlessButton, BlessCard, BlessInfiniteCanvas, type CanvasView } from "blessing-ui";
-
-const view = ref<CanvasView>({ x: 40, y: 40, zoom: 1 });
-const canvas = ref<InstanceType<typeof BlessInfiniteCanvas>>();
-const notes = [
-  { x: 0, y: 0, text: "Intro" },
-  { x: 260, y: 40, text: "Plot" },
-  { x: 120, y: 220, text: "Characters" },
-  { x: 560, y: 300, text: "Ending" },
-];
-</script>
-
 <template>
   <div class="col" style="max-width: none">
     <div class="row">
@@ -37,3 +23,17 @@ const notes = [
     </BlessInfiniteCanvas>
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { BlessButton, BlessCard, BlessInfiniteCanvas, type CanvasView } from "blessing-ui";
+
+const view = ref<CanvasView>({ x: 40, y: 40, zoom: 1 });
+const canvas = ref<InstanceType<typeof BlessInfiniteCanvas>>();
+const notes = [
+  { x: 0, y: 0, text: "Intro" },
+  { x: 260, y: 40, text: "Plot" },
+  { x: 120, y: 220, text: "Characters" },
+  { x: 560, y: 300, text: "Ending" },
+];
+</script>

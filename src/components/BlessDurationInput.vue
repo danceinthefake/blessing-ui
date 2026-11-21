@@ -1,3 +1,17 @@
+<template>
+  <BlessInput
+    v-bind="$attrs"
+    :model-value="shown"
+    type="text"
+    autocomplete="off"
+    :placeholder="seconds ? '0:00:00' : '0:00'"
+    :invalid="bad"
+    :error="bad ? text.invalid : undefined"
+    @update:model-value="onInput"
+    @blur="onBlur"
+  />
+</template>
+
 <script setup lang="ts">
 import { useLabelPack } from "../composables/useLabels";
 import { computed, ref, watch } from "vue";
@@ -48,17 +62,3 @@ function onBlur() {
   else shown.value = formatDuration(model.value, props.seconds);
 }
 </script>
-
-<template>
-  <BlessInput
-    v-bind="$attrs"
-    :model-value="shown"
-    type="text"
-    autocomplete="off"
-    :placeholder="seconds ? '0:00:00' : '0:00'"
-    :invalid="bad"
-    :error="bad ? text.invalid : undefined"
-    @update:model-value="onInput"
-    @blur="onBlur"
-  />
-</template>

@@ -1,19 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { BlessGroupCard, type BlessGroupState } from "blessing-ui";
-import { art } from "./_data";
-
-const faces = [
-  { name: "Ana Putri" },
-  { name: "Budi Santoso" },
-  { name: "Citra Dewi" },
-  { name: "Dimas" },
-  { name: "Eka" },
-];
-const recorders = ref<BlessGroupState>("none");
-const editors = ref<BlessGroupState>("none");
-</script>
-
 <template>
   <div
     style="display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px"
@@ -39,3 +23,19 @@ const editors = ref<BlessGroupState>("none");
     />
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { BlessGroupCard, type BlessGroupState } from "blessing-ui";
+import { art } from "./_data";
+
+const faces = [
+  { name: "Ana Putri" },
+  { name: "Budi Santoso" },
+  { name: "Citra Dewi" },
+  { name: "Dimas" },
+  { name: "Eka" },
+];
+const recorders = ref<BlessGroupState>("none");
+const editors = ref<BlessGroupState>("none");
+</script>

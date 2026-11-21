@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import { BlessStat } from "blessing-ui";
-</script>
-
 <template>
   <div
     style="display: grid; grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr)); gap: 1rem"
@@ -20,3 +16,7 @@ import { BlessStat } from "blessing-ui";
     <BlessStat label="Uptime" value="99.98%" :delta="0" />
   </div>
 </template>
+
+<script setup lang="ts">
+import { BlessStat } from "blessing-ui";
+</script>

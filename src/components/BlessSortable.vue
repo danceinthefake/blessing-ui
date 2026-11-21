@@ -1,3 +1,59 @@
+<template>
+  <div
+    ref="root"
+    class="bless-sortable"
+    :class="{
+      'bless-sortable--group': group,
+      'bless-sortable--receiving': drop && !model.length,
+    }"
+  >
+    <TransitionGroup
+      tag="ul"
+      appear
+      appear-active-class="bless-appear"
+      enter-active-class="bless-arrive"
+      move-class="bless-move"
+      @leave="(_el: Element, done: () => void) => done()"
+      class="bless-sortable__list"
+      role="list"
+      :aria-label="label"
+      :style="columns > 1 ? { '--bless-sortable-cols': columns } : undefined"
+      :class="{ 'bless-sortable__list--grid': columns > 1 }"
+    >
+      <li
+        v-for="(item, i) in model"
+        :key="rowKey ? rowKey(item, i) : i"
+        data-sortable-item
+        class="bless-sortable__item"
+        :class="[
+          { 'bless-sortable__item--drag': drag === i, 'bless-sortable__item--held': held === i },
+          (side(i) ?? incoming(i)) && `bless-sortable__item--${side(i) ?? incoming(i)}`,
+        ]"
+      >
+        <button
+          type="button"
+          class="bless-sortable__grip"
+          :aria-label="text.grip(i + 1)"
+          :aria-roledescription="text.roleDescription"
+          :aria-pressed="held === i"
+          :aria-describedby="hint"
+          @pointerdown="sortable.grab(i, $event)"
+          @pointermove="sortable.track"
+          @pointerup="sortable.drop"
+          @pointercancel="sortable.cancel"
+          @keydown="onKey(i, $event)"
+          @blur="release"
+        >
+          <span aria-hidden="true">⋮⋮</span>
+        </button>
+        <span class="bless-sortable__body"><slot :item :index="i">{{ item }}</slot></span>
+      </li>
+    </TransitionGroup>
+    <span :id="hint" hidden>{{ text.hint }}{{ group ? ` ${text.groupHint}` : "" }}</span>
+    <span class="bless-sortable__live bless-sr" aria-live="polite">{{ live }}</span>
+  </div>
+</template>
+
 <script setup lang="ts" generic="T">
 import { useLabelPack } from "../composables/useLabels";
 import "./sr.css";
@@ -177,62 +233,6 @@ const side = (i: number) =>
       : "before"
     : null;
 </script>
-
-<template>
-  <div
-    ref="root"
-    class="bless-sortable"
-    :class="{
-      'bless-sortable--group': group,
-      'bless-sortable--receiving': drop && !model.length,
-    }"
-  >
-    <TransitionGroup
-      tag="ul"
-      appear
-      appear-active-class="bless-appear"
-      enter-active-class="bless-arrive"
-      move-class="bless-move"
-      @leave="(_el: Element, done: () => void) => done()"
-      class="bless-sortable__list"
-      role="list"
-      :aria-label="label"
-      :style="columns > 1 ? { '--bless-sortable-cols': columns } : undefined"
-      :class="{ 'bless-sortable__list--grid': columns > 1 }"
-    >
-      <li
-        v-for="(item, i) in model"
-        :key="rowKey ? rowKey(item, i) : i"
-        data-sortable-item
-        class="bless-sortable__item"
-        :class="[
-          { 'bless-sortable__item--drag': drag === i, 'bless-sortable__item--held': held === i },
-          (side(i) ?? incoming(i)) && `bless-sortable__item--${side(i) ?? incoming(i)}`,
-        ]"
-      >
-        <button
-          type="button"
-          class="bless-sortable__grip"
-          :aria-label="text.grip(i + 1)"
-          :aria-roledescription="text.roleDescription"
-          :aria-pressed="held === i"
-          :aria-describedby="hint"
-          @pointerdown="sortable.grab(i, $event)"
-          @pointermove="sortable.track"
-          @pointerup="sortable.drop"
-          @pointercancel="sortable.cancel"
-          @keydown="onKey(i, $event)"
-          @blur="release"
-        >
-          <span aria-hidden="true">⋮⋮</span>
-        </button>
-        <span class="bless-sortable__body"><slot :item :index="i">{{ item }}</slot></span>
-      </li>
-    </TransitionGroup>
-    <span :id="hint" hidden>{{ text.hint }}{{ group ? ` ${text.groupHint}` : "" }}</span>
-    <span class="bless-sortable__live bless-sr" aria-live="polite">{{ live }}</span>
-  </div>
-</template>
 
 <style>
 .bless-sortable {

@@ -1,79 +1,3 @@
-<script lang="ts">
-export interface BlessParetoItem {
-  label: string;
-  value: number;
-}
-/** The items from high to low, with the running share of the total after each one. */
-export function paretoRows<T extends BlessParetoItem>(items: T[]): (T & { running: number })[] {
-  const sorted = [...items].filter((d) => d.value > 0).sort((a, b) => b.value - a.value);
-  const total = sorted.reduce((n, d) => n + d.value, 0) || 1;
-  let sum = 0;
-  return sorted.map((d) => ({ ...d, running: (sum += d.value) / total }));
-}
-</script>
-
-<script setup lang="ts">
-import { computed, ref } from "vue";
-import { useLabelPack } from "../composables/useLabels";
-import { chartColor, niceTicks, numberText, scale, useWidth } from "./chart";
-import "./chart.css";
-import "./sr.css";
-
-defineOptions({ name: "BlessPareto" });
-const pack = useLabelPack("BlessPareto");
-
-const props = withDefaults(
-  defineProps<{
-    data: BlessParetoItem[];
-    /** the share that marks "the few": a dashed line, and the bars up to it are in full color */
-    cut?: number;
-    color?: string;
-    height?: number;
-    /** text for one value, for example `(v) => v + " min"` */
-    format?: (v: number) => string;
-    /** names the chart and its table for screen readers */
-    label?: string;
-    labels?: Partial<{ item: string; value: string; running: string }>;
-  }>(),
-  { cut: 0.8, color: "chart-1", height: 260, label: "Chart" },
-);
-
-const text = computed(() => ({
-  item: "Item",
-  value: "Value",
-  running: "Running share",
-  ...pack(),
-  ...props.labels,
-}));
-const fmt = computed(() => props.format ?? numberText);
-const pct = new Intl.NumberFormat(undefined, { style: "percent", maximumFractionDigits: 0 });
-const box = ref<HTMLElement>();
-const width = useWidth(box);
-
-const rows = computed(() => paretoRows(props.data));
-const yt = computed(() => niceTicks(0, Math.max(1, ...rows.value.map((r) => r.value)), 4));
-const BOTTOM = 22;
-const frame = computed(() => ({
-  x0: 8 + 6 * Math.max(...yt.value.map((t) => fmt.value(t).length)),
-  x1: width.value - 34,
-  y0: 8,
-  y1: props.height - BOTTOM,
-}));
-const py = computed(() => scale([0, yt.value.at(-1)!], [frame.value.y1, frame.value.y0]));
-const ps = computed(() => scale([0, 1], [frame.value.y1, frame.value.y0]));
-const step = computed(() => (frame.value.x1 - frame.value.x0) / Math.max(1, rows.value.length));
-const cx = (i: number) => frame.value.x0 + (i + 0.5) * step.value;
-// the bars up to and with the first one that reaches the cut are "the few"
-const few = computed(() => {
-  const i = rows.value.findIndex((r) => r.running >= props.cut - 1e-9);
-  return i < 0 ? rows.value.length : i + 1;
-});
-const line = computed(() =>
-  rows.value.map((r, i) => `${cx(i).toFixed(1)},${ps.value(r.running).toFixed(1)}`).join(" "),
-);
-const every = computed(() => Math.max(1, Math.ceil(56 / step.value)));
-</script>
-
 <template>
   <figure ref="box" class="bless-plot bless-pareto" :style="{ '--_c': chartColor(color, 0) }">
     <svg :viewBox="`0 0 ${width} ${height}`" :height class="bless-plot__svg" aria-hidden="true">
@@ -163,6 +87,82 @@ const every = computed(() => Math.max(1, Math.ceil(56 / step.value)));
     </div>
   </figure>
 </template>
+
+<script lang="ts">
+export interface BlessParetoItem {
+  label: string;
+  value: number;
+}
+/** The items from high to low, with the running share of the total after each one. */
+export function paretoRows<T extends BlessParetoItem>(items: T[]): (T & { running: number })[] {
+  const sorted = [...items].filter((d) => d.value > 0).sort((a, b) => b.value - a.value);
+  const total = sorted.reduce((n, d) => n + d.value, 0) || 1;
+  let sum = 0;
+  return sorted.map((d) => ({ ...d, running: (sum += d.value) / total }));
+}
+</script>
+
+<script setup lang="ts">
+import { computed, ref } from "vue";
+import { useLabelPack } from "../composables/useLabels";
+import { chartColor, niceTicks, numberText, scale, useWidth } from "./chart";
+import "./chart.css";
+import "./sr.css";
+
+defineOptions({ name: "BlessPareto" });
+const pack = useLabelPack("BlessPareto");
+
+const props = withDefaults(
+  defineProps<{
+    data: BlessParetoItem[];
+    /** the share that marks "the few": a dashed line, and the bars up to it are in full color */
+    cut?: number;
+    color?: string;
+    height?: number;
+    /** text for one value, for example `(v) => v + " min"` */
+    format?: (v: number) => string;
+    /** names the chart and its table for screen readers */
+    label?: string;
+    labels?: Partial<{ item: string; value: string; running: string }>;
+  }>(),
+  { cut: 0.8, color: "chart-1", height: 260, label: "Chart" },
+);
+
+const text = computed(() => ({
+  item: "Item",
+  value: "Value",
+  running: "Running share",
+  ...pack(),
+  ...props.labels,
+}));
+const fmt = computed(() => props.format ?? numberText);
+const pct = new Intl.NumberFormat(undefined, { style: "percent", maximumFractionDigits: 0 });
+const box = ref<HTMLElement>();
+const width = useWidth(box);
+
+const rows = computed(() => paretoRows(props.data));
+const yt = computed(() => niceTicks(0, Math.max(1, ...rows.value.map((r) => r.value)), 4));
+const BOTTOM = 22;
+const frame = computed(() => ({
+  x0: 8 + 6 * Math.max(...yt.value.map((t) => fmt.value(t).length)),
+  x1: width.value - 34,
+  y0: 8,
+  y1: props.height - BOTTOM,
+}));
+const py = computed(() => scale([0, yt.value.at(-1)!], [frame.value.y1, frame.value.y0]));
+const ps = computed(() => scale([0, 1], [frame.value.y1, frame.value.y0]));
+const step = computed(() => (frame.value.x1 - frame.value.x0) / Math.max(1, rows.value.length));
+const cx = (i: number) => frame.value.x0 + (i + 0.5) * step.value;
+// the bars up to and with the first one that reaches the cut are "the few"
+const few = computed(() => {
+  const i = rows.value.findIndex((r) => r.running >= props.cut - 1e-9);
+  return i < 0 ? rows.value.length : i + 1;
+});
+const line = computed(() =>
+  rows.value.map((r, i) => `${cx(i).toFixed(1)},${ps.value(r.running).toFixed(1)}`).join(" "),
+);
+const every = computed(() => Math.max(1, Math.ceil(56 / step.value)));
+</script>
 
 <style>
 /* the bars after the cut are a lighter shade, so "the few" stand out without a second color */

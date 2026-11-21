@@ -1,3 +1,74 @@
+<template>
+  <div ref="root" class="bless-kanban" role="group" :aria-label="label ?? 'Board'">
+    <section
+      v-for="(col, c) in model"
+      :key="col.id"
+      class="bless-kanban__col"
+      :class="{ 'bless-kanban__col--full': col.limit != null && col.items.length >= col.limit }"
+      :data-kanban-col="c"
+      :aria-label="col.title"
+    >
+      <header class="bless-kanban__head">
+        <slot name="header" :column="col">
+          <h3 class="bless-kanban__title">{{ col.title }}</h3>
+        </slot>
+        <span class="bless-kanban__count"
+          >{{ col.items.length
+          }}<template v-if="col.limit != null"> / {{ col.limit }}</template></span
+        >
+      </header>
+      <TransitionGroup
+        tag="ul"
+        appear
+        appear-active-class="bless-appear"
+        enter-active-class="bless-arrive"
+        move-class="bless-move"
+        @leave="(_el: Element, done: () => void) => done()"
+        class="bless-kanban__list"
+        role="list"
+        :class="{ 'bless-kanban__list--end': endMark(c) }"
+      >
+        <li
+          v-for="(item, i) in col.items"
+          :key="rowKey ? rowKey(item) : i"
+          data-kanban-card
+          class="bless-kanban__card"
+          :class="[
+            {
+              'bless-kanban__card--drag': drag?.col === c && drag.index === i,
+              'bless-kanban__card--held': held?.col === c && held.index === i,
+            },
+            mark(c, i) && `bless-kanban__card--${mark(c, i)}`,
+          ]"
+        >
+          <button
+            type="button"
+            class="bless-kanban__grip"
+            :data-grip="`${c}:${i}`"
+            :aria-label="text.card(i + 1, col.title)"
+            :aria-roledescription="text.roleDescription"
+            :aria-pressed="held?.col === c && held.index === i"
+            :aria-describedby="hint"
+            @pointerdown="grab(c, i, $event)"
+            @pointermove="track"
+            @pointerup="drop"
+            @pointercancel="cancel"
+            @keydown="onKey(c, i, $event)"
+            @blur="release"
+          >
+            <span aria-hidden="true">⋮⋮</span>
+          </button>
+          <div class="bless-kanban__body">
+            <slot name="card" :item :column="col" :index="i">{{ item }}</slot>
+          </div>
+        </li>
+      </TransitionGroup>
+    </section>
+    <span :id="hint" hidden>{{ text.hint }}</span>
+    <span class="bless-kanban__live bless-sr" aria-live="polite">{{ live }}</span>
+  </div>
+</template>
+
 <script lang="ts">
 export interface BlessKanbanColumn<T = unknown> {
   id: string;
@@ -202,77 +273,6 @@ const mark = (c: number, i: number) => {
 const endMark = (c: number) =>
   over.value?.col === c && drag.value && over.value.index >= model.value[c]!.items.length;
 </script>
-
-<template>
-  <div ref="root" class="bless-kanban" role="group" :aria-label="label ?? 'Board'">
-    <section
-      v-for="(col, c) in model"
-      :key="col.id"
-      class="bless-kanban__col"
-      :class="{ 'bless-kanban__col--full': col.limit != null && col.items.length >= col.limit }"
-      :data-kanban-col="c"
-      :aria-label="col.title"
-    >
-      <header class="bless-kanban__head">
-        <slot name="header" :column="col">
-          <h3 class="bless-kanban__title">{{ col.title }}</h3>
-        </slot>
-        <span class="bless-kanban__count"
-          >{{ col.items.length
-          }}<template v-if="col.limit != null"> / {{ col.limit }}</template></span
-        >
-      </header>
-      <TransitionGroup
-        tag="ul"
-        appear
-        appear-active-class="bless-appear"
-        enter-active-class="bless-arrive"
-        move-class="bless-move"
-        @leave="(_el: Element, done: () => void) => done()"
-        class="bless-kanban__list"
-        role="list"
-        :class="{ 'bless-kanban__list--end': endMark(c) }"
-      >
-        <li
-          v-for="(item, i) in col.items"
-          :key="rowKey ? rowKey(item) : i"
-          data-kanban-card
-          class="bless-kanban__card"
-          :class="[
-            {
-              'bless-kanban__card--drag': drag?.col === c && drag.index === i,
-              'bless-kanban__card--held': held?.col === c && held.index === i,
-            },
-            mark(c, i) && `bless-kanban__card--${mark(c, i)}`,
-          ]"
-        >
-          <button
-            type="button"
-            class="bless-kanban__grip"
-            :data-grip="`${c}:${i}`"
-            :aria-label="text.card(i + 1, col.title)"
-            :aria-roledescription="text.roleDescription"
-            :aria-pressed="held?.col === c && held.index === i"
-            :aria-describedby="hint"
-            @pointerdown="grab(c, i, $event)"
-            @pointermove="track"
-            @pointerup="drop"
-            @pointercancel="cancel"
-            @keydown="onKey(c, i, $event)"
-            @blur="release"
-          >
-            <span aria-hidden="true">⋮⋮</span>
-          </button>
-          <div class="bless-kanban__body">
-            <slot name="card" :item :column="col" :index="i">{{ item }}</slot>
-          </div>
-        </li>
-      </TransitionGroup>
-    </section>
-    <span :id="hint" hidden>{{ text.hint }}</span>
-    <span class="bless-kanban__live bless-sr" aria-live="polite">{{ live }}</span>
-  </div>
-</template>
 
 <style>
 .bless-kanban {

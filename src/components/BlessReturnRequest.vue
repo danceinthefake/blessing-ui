@@ -1,3 +1,60 @@
+<template>
+  <form class="bless-return" novalidate @submit.prevent="submit">
+    <fieldset class="bless-return__set">
+      <legend class="bless-return__legend">{{ text.items }}</legend>
+      <div
+        v-for="it in items"
+        :key="it.id"
+        class="bless-return__item"
+        :class="{ 'is-on': (back[it.id] ?? 0) > 0 }"
+      >
+        <label class="bless-return__check">
+          <input
+            type="checkbox"
+            :checked="(back[it.id] ?? 0) > 0"
+            @change="back[it.id] = ($event.target as HTMLInputElement).checked ? it.quantity : 0"
+          />
+          <img v-if="it.image" class="bless-return__img" :src="it.image" alt="" />
+          <span class="bless-return__name">{{ it.name }}</span>
+        </label>
+        <select
+          v-if="it.quantity > 1 && (back[it.id] ?? 0) > 0"
+          v-model.number="back[it.id]"
+          class="bless-return__qty"
+          :aria-label="text.quantity(it.name)"
+        >
+          <option v-for="q in it.quantity" :key="q" :value="q">{{ q }}</option>
+        </select>
+        <span class="bless-return__price">{{
+          money.format(it.price * Math.max(1, back[it.id] ?? 0))
+        }}</span>
+      </div>
+    </fieldset>
+    <label class="bless-return__field">
+      <span class="bless-return__legend">{{ text.reason }}</span>
+      <select
+        v-model="reason"
+        class="bless-return__input"
+        :aria-invalid="tried && !reason ? 'true' : undefined"
+      >
+        <option value="" disabled>{{ text.pick }}</option>
+        <option v-for="r in reasons" :key="r" :value="r">{{ r }}</option>
+      </select>
+    </label>
+    <label class="bless-return__field">
+      <span class="bless-return__legend">{{ text.note }}</span>
+      <textarea v-model="note" class="bless-return__input" rows="3" />
+    </label>
+    <div class="bless-return__foot">
+      <span class="bless-return__refund">
+        {{ text.refund }}: <strong>{{ money.format(refund) }}</strong>
+      </span>
+      <BlessButton type="submit">{{ text.submit }}</BlessButton>
+    </div>
+    <p class="bless-return__error" role="alert">{{ tried && !ok ? text.missing : "" }}</p>
+  </form>
+</template>
+
 <script setup lang="ts">
 import { computed, reactive, ref } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -79,63 +136,6 @@ function submit() {
     emit("submit", { items: chosen.value, reason: reason.value, note: note.value.trim() });
 }
 </script>
-
-<template>
-  <form class="bless-return" novalidate @submit.prevent="submit">
-    <fieldset class="bless-return__set">
-      <legend class="bless-return__legend">{{ text.items }}</legend>
-      <div
-        v-for="it in items"
-        :key="it.id"
-        class="bless-return__item"
-        :class="{ 'is-on': (back[it.id] ?? 0) > 0 }"
-      >
-        <label class="bless-return__check">
-          <input
-            type="checkbox"
-            :checked="(back[it.id] ?? 0) > 0"
-            @change="back[it.id] = ($event.target as HTMLInputElement).checked ? it.quantity : 0"
-          />
-          <img v-if="it.image" class="bless-return__img" :src="it.image" alt="" />
-          <span class="bless-return__name">{{ it.name }}</span>
-        </label>
-        <select
-          v-if="it.quantity > 1 && (back[it.id] ?? 0) > 0"
-          v-model.number="back[it.id]"
-          class="bless-return__qty"
-          :aria-label="text.quantity(it.name)"
-        >
-          <option v-for="q in it.quantity" :key="q" :value="q">{{ q }}</option>
-        </select>
-        <span class="bless-return__price">{{
-          money.format(it.price * Math.max(1, back[it.id] ?? 0))
-        }}</span>
-      </div>
-    </fieldset>
-    <label class="bless-return__field">
-      <span class="bless-return__legend">{{ text.reason }}</span>
-      <select
-        v-model="reason"
-        class="bless-return__input"
-        :aria-invalid="tried && !reason ? 'true' : undefined"
-      >
-        <option value="" disabled>{{ text.pick }}</option>
-        <option v-for="r in reasons" :key="r" :value="r">{{ r }}</option>
-      </select>
-    </label>
-    <label class="bless-return__field">
-      <span class="bless-return__legend">{{ text.note }}</span>
-      <textarea v-model="note" class="bless-return__input" rows="3" />
-    </label>
-    <div class="bless-return__foot">
-      <span class="bless-return__refund">
-        {{ text.refund }}: <strong>{{ money.format(refund) }}</strong>
-      </span>
-      <BlessButton type="submit">{{ text.submit }}</BlessButton>
-    </div>
-    <p class="bless-return__error" role="alert">{{ tried && !ok ? text.missing : "" }}</p>
-  </form>
-</template>
 
 <style>
 .bless-return {

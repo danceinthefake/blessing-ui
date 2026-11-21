@@ -1,3 +1,18 @@
+<template>
+  <BlessTooltip
+    placement="bottom"
+    :text="
+      lang === 'id'
+        ? 'Gerak tenang: animasi di situs ini memudar saja, tanpa bergeser'
+        : 'Calm motion: animations on this site only fade, with no movement'
+    "
+  >
+    <BlessToggle v-model:pressed="calm" size="sm" class="nav-calm">{{
+      lang === "id" ? "Tenang" : "Calm"
+    }}</BlessToggle>
+  </BlessTooltip>
+</template>
+
 <script setup lang="ts">
 // Calm motion for the whole site: data-motion="calm" on <html>, saved in localStorage.
 // The head script in config.ts restores it before the first paint.
@@ -19,18 +34,3 @@ onMounted(() => {
   });
 });
 </script>
-
-<template>
-  <BlessTooltip
-    placement="bottom"
-    :text="
-      lang === 'id'
-        ? 'Gerak tenang: animasi di situs ini memudar saja, tanpa bergeser'
-        : 'Calm motion: animations on this site only fade, with no movement'
-    "
-  >
-    <BlessToggle v-model:pressed="calm" size="sm" class="nav-calm">{{
-      lang === "id" ? "Tenang" : "Calm"
-    }}</BlessToggle>
-  </BlessTooltip>
-</template>

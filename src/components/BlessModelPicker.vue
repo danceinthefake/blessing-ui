@@ -1,3 +1,55 @@
+<template>
+  <BlessPopover
+    v-model:open="open"
+    placement="bottom-start"
+    :title="text.choose"
+    class="bless-modelpick__panel"
+  >
+    <template #trigger>
+      <button type="button" class="bless-modelpick" :aria-expanded="open">
+        <span class="bless-sr">{{ text.label }}: </span>
+        <span class="bless-modelpick__name">{{ current?.name ?? text.choose }}</span>
+        <svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true">
+          <path d="M3 4.5 6 7.5 9 4.5" fill="none" stroke="currentColor" stroke-width="1.5" />
+        </svg>
+      </button>
+    </template>
+    <div ref="panel">
+      <BlessListbox :model-value="model" :options :label="text.choose" @update:model-value="pick">
+        <template #default="{ option }">
+          <span class="bless-modelpick__option">
+            <span class="bless-modelpick__head">
+              <strong>{{ option.label }}</strong>
+              <span v-for="t in byId(option.value).tags" :key="t" class="bless-modelpick__tag">{{
+                t
+              }}</span>
+            </span>
+            <span v-if="byId(option.value).description" class="bless-modelpick__desc">
+              {{ byId(option.value).description }}
+            </span>
+            <span class="bless-modelpick__marks">
+              <span v-if="byId(option.value).speed" :title="text.speed(byId(option.value).speed!)">
+                <span aria-hidden="true"
+                  >⚡{{ "●".repeat(byId(option.value).speed!)
+                  }}{{ "○".repeat(3 - byId(option.value).speed!) }}</span
+                >
+                <span class="bless-sr">{{ text.speed(byId(option.value).speed!) }}</span>
+              </span>
+              <span v-if="byId(option.value).cost" :title="text.cost(byId(option.value).cost!)">
+                <span aria-hidden="true"
+                  >$ {{ "●".repeat(byId(option.value).cost!)
+                  }}{{ "○".repeat(3 - byId(option.value).cost!) }}</span
+                >
+                <span class="bless-sr">{{ text.cost(byId(option.value).cost!) }}</span>
+              </span>
+            </span>
+          </span>
+        </template>
+      </BlessListbox>
+    </div>
+  </BlessPopover>
+</template>
+
 <script setup lang="ts">
 import { computed, nextTick, ref, watch } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -60,58 +112,6 @@ function pick(id: unknown) {
   open.value = false;
 }
 </script>
-
-<template>
-  <BlessPopover
-    v-model:open="open"
-    placement="bottom-start"
-    :title="text.choose"
-    class="bless-modelpick__panel"
-  >
-    <template #trigger>
-      <button type="button" class="bless-modelpick" :aria-expanded="open">
-        <span class="bless-sr">{{ text.label }}: </span>
-        <span class="bless-modelpick__name">{{ current?.name ?? text.choose }}</span>
-        <svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true">
-          <path d="M3 4.5 6 7.5 9 4.5" fill="none" stroke="currentColor" stroke-width="1.5" />
-        </svg>
-      </button>
-    </template>
-    <div ref="panel">
-      <BlessListbox :model-value="model" :options :label="text.choose" @update:model-value="pick">
-        <template #default="{ option }">
-          <span class="bless-modelpick__option">
-            <span class="bless-modelpick__head">
-              <strong>{{ option.label }}</strong>
-              <span v-for="t in byId(option.value).tags" :key="t" class="bless-modelpick__tag">{{
-                t
-              }}</span>
-            </span>
-            <span v-if="byId(option.value).description" class="bless-modelpick__desc">
-              {{ byId(option.value).description }}
-            </span>
-            <span class="bless-modelpick__marks">
-              <span v-if="byId(option.value).speed" :title="text.speed(byId(option.value).speed!)">
-                <span aria-hidden="true"
-                  >⚡{{ "●".repeat(byId(option.value).speed!)
-                  }}{{ "○".repeat(3 - byId(option.value).speed!) }}</span
-                >
-                <span class="bless-sr">{{ text.speed(byId(option.value).speed!) }}</span>
-              </span>
-              <span v-if="byId(option.value).cost" :title="text.cost(byId(option.value).cost!)">
-                <span aria-hidden="true"
-                  >$ {{ "●".repeat(byId(option.value).cost!)
-                  }}{{ "○".repeat(3 - byId(option.value).cost!) }}</span
-                >
-                <span class="bless-sr">{{ text.cost(byId(option.value).cost!) }}</span>
-              </span>
-            </span>
-          </span>
-        </template>
-      </BlessListbox>
-    </div>
-  </BlessPopover>
-</template>
 
 <style>
 .bless-modelpick {

@@ -1,3 +1,7 @@
+<template>
+  <BlessCommitList :commits time-zone="Asia/Jakarta" />
+</template>
+
 <script setup lang="ts">
 import { BlessCommitList, type BlessCommit } from "blessing-ui";
 
@@ -41,7 +45,3 @@ const commits: BlessCommit[] = [
   },
 ];
 </script>
-
-<template>
-  <BlessCommitList :commits time-zone="Asia/Jakarta" />
-</template>

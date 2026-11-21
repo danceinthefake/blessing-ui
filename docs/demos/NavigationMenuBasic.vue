@@ -1,3 +1,15 @@
+<template>
+  <BlessNavigationMenu
+    :items
+    @select="
+      (i, e) => {
+        e.preventDefault();
+        toast(i.label);
+      }
+    "
+  />
+</template>
+
 <script setup lang="ts">
 import { BlessNavigationMenu, useToast } from "blessing-ui";
 const { toast } = useToast();
@@ -23,15 +35,3 @@ const items = [
   { label: "News", href: "#news" },
 ];
 </script>
-
-<template>
-  <BlessNavigationMenu
-    :items
-    @select="
-      (i, e) => {
-        e.preventDefault();
-        toast(i.label);
-      }
-    "
-  />
-</template>

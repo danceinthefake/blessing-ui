@@ -1,60 +1,3 @@
-<script setup lang="ts">
-// one group of BlessQueryBuilder, and its groups inside it; not exported
-import { nextTick, ref } from "vue";
-import BlessButton from "./BlessButton.vue";
-import BlessInput from "./BlessInput.vue";
-import BlessSelect from "./BlessSelect.vue";
-import {
-  isGroup,
-  noValue,
-  opKey,
-  opsFor,
-  type BlessQueryField,
-  type BlessQueryGroup,
-  type BlessQueryOp,
-  type BlessQueryRule,
-} from "./query";
-
-defineOptions({ name: "BlessQueryGroup" });
-const props = defineProps<{
-  fields: BlessQueryField[];
-  text: Record<string, string>;
-  depth: number;
-  maxDepth: number;
-  disabled?: boolean;
-}>();
-const group = defineModel<BlessQueryGroup>({ required: true });
-const emit = defineEmits<{ remove: [] }>();
-
-const field = (name: string) => props.fields.find((f) => f.name === name);
-const opText = (f: BlessQueryField | undefined, op: BlessQueryOp) => props.text[opKey(f, op)]!;
-
-function setRules(rules: BlessQueryGroup["rules"]) {
-  group.value = { ...group.value, rules };
-}
-function patch(i: number, p: Partial<BlessQueryRule>) {
-  const r = { ...(group.value.rules[i] as BlessQueryRule), ...p };
-  if (p.field !== undefined) {
-    // a new field keeps the operator only when that field has it too
-    const ops = opsFor(field(p.field));
-    if (!ops.includes(r.op)) r.op = ops[0]!;
-    r.value = "";
-  }
-  setRules(group.value.rules.map((x, j) => (j === i ? r : x)));
-}
-const fresh = (): BlessQueryRule => ({
-  field: props.fields[0]?.name ?? "",
-  op: opsFor(props.fields[0])[0]!,
-  value: "",
-});
-const add = ref<{ $el: HTMLElement }>();
-function remove(i: number) {
-  setRules(group.value.rules.filter((_, j) => j !== i));
-  // focus stays in the group: on its add button
-  nextTick(() => add.value?.$el.focus());
-}
-</script>
-
 <template>
   <div class="bless-query__group" role="group" :aria-label="text.group">
     <div class="bless-query__match">
@@ -171,3 +114,60 @@ function remove(i: number) {
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+// one group of BlessQueryBuilder, and its groups inside it; not exported
+import { nextTick, ref } from "vue";
+import BlessButton from "./BlessButton.vue";
+import BlessInput from "./BlessInput.vue";
+import BlessSelect from "./BlessSelect.vue";
+import {
+  isGroup,
+  noValue,
+  opKey,
+  opsFor,
+  type BlessQueryField,
+  type BlessQueryGroup,
+  type BlessQueryOp,
+  type BlessQueryRule,
+} from "./query";
+
+defineOptions({ name: "BlessQueryGroup" });
+const props = defineProps<{
+  fields: BlessQueryField[];
+  text: Record<string, string>;
+  depth: number;
+  maxDepth: number;
+  disabled?: boolean;
+}>();
+const group = defineModel<BlessQueryGroup>({ required: true });
+const emit = defineEmits<{ remove: [] }>();
+
+const field = (name: string) => props.fields.find((f) => f.name === name);
+const opText = (f: BlessQueryField | undefined, op: BlessQueryOp) => props.text[opKey(f, op)]!;
+
+function setRules(rules: BlessQueryGroup["rules"]) {
+  group.value = { ...group.value, rules };
+}
+function patch(i: number, p: Partial<BlessQueryRule>) {
+  const r = { ...(group.value.rules[i] as BlessQueryRule), ...p };
+  if (p.field !== undefined) {
+    // a new field keeps the operator only when that field has it too
+    const ops = opsFor(field(p.field));
+    if (!ops.includes(r.op)) r.op = ops[0]!;
+    r.value = "";
+  }
+  setRules(group.value.rules.map((x, j) => (j === i ? r : x)));
+}
+const fresh = (): BlessQueryRule => ({
+  field: props.fields[0]?.name ?? "",
+  op: opsFor(props.fields[0])[0]!,
+  value: "",
+});
+const add = ref<{ $el: HTMLElement }>();
+function remove(i: number) {
+  setRules(group.value.rules.filter((_, j) => j !== i));
+  // focus stays in the group: on its add button
+  nextTick(() => add.value?.$el.focus());
+}
+</script>

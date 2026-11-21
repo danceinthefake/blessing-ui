@@ -1,3 +1,40 @@
+<template>
+  <div class="col" style="max-width: 560px">
+    <BlessMessageScroller
+      ref="scroller"
+      height="320px"
+      style="border: 1px solid var(--bless-color-border)"
+      @reach-top="loadHistory"
+    >
+      <BlessMarker variant="separator">Today</BlessMarker>
+      <BlessMessage
+        v-for="(m, i) in messages"
+        :key="m.id"
+        :name="m.who === 'me' ? 'Tomoya' : 'Megumi'"
+        :align="m.who === 'me' ? 'end' : 'start'"
+        :compact="messages[i - 1]?.who === m.who"
+      >
+        <BlessBubble
+          :align="m.who === 'me' ? 'end' : 'start'"
+          :variant="m.who === 'me' ? 'outline' : 'surface'"
+          >{{ m.text }}</BlessBubble
+        >
+      </BlessMessage>
+      <BlessMarker v-if="streaming" shimmer>Megumi is typing…</BlessMarker>
+    </BlessMessageScroller>
+    <form @submit.prevent="send">
+      <BlessInputGroup>
+        <BlessInput v-model="draft" placeholder="message" aria-label="Message" />
+        <template #suffix><BlessButton size="sm" type="submit">Send</BlessButton></template>
+      </BlessInputGroup>
+    </form>
+    <small
+      >Scroll to top → loads 8 older lines without jumping. Scroll up, send → “↓ Latest”
+      appears.</small
+    >
+  </div>
+</template>
+
 <script setup lang="ts">
 import { ref, useTemplateRef } from "vue";
 import {
@@ -46,40 +83,3 @@ function loadHistory() {
   });
 }
 </script>
-
-<template>
-  <div class="col" style="max-width: 560px">
-    <BlessMessageScroller
-      ref="scroller"
-      height="320px"
-      style="border: 1px solid var(--bless-color-border)"
-      @reach-top="loadHistory"
-    >
-      <BlessMarker variant="separator">Today</BlessMarker>
-      <BlessMessage
-        v-for="(m, i) in messages"
-        :key="m.id"
-        :name="m.who === 'me' ? 'Tomoya' : 'Megumi'"
-        :align="m.who === 'me' ? 'end' : 'start'"
-        :compact="messages[i - 1]?.who === m.who"
-      >
-        <BlessBubble
-          :align="m.who === 'me' ? 'end' : 'start'"
-          :variant="m.who === 'me' ? 'outline' : 'surface'"
-          >{{ m.text }}</BlessBubble
-        >
-      </BlessMessage>
-      <BlessMarker v-if="streaming" shimmer>Megumi is typing…</BlessMarker>
-    </BlessMessageScroller>
-    <form @submit.prevent="send">
-      <BlessInputGroup>
-        <BlessInput v-model="draft" placeholder="message" aria-label="Message" />
-        <template #suffix><BlessButton size="sm" type="submit">Send</BlessButton></template>
-      </BlessInputGroup>
-    </form>
-    <small
-      >Scroll to top → loads 8 older lines without jumping. Scroll up, send → “↓ Latest”
-      appears.</small
-    >
-  </div>
-</template>

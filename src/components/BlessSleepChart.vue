@@ -1,3 +1,45 @@
+<template>
+  <figure class="bless-sleep">
+    <div ref="box" class="bless-sleep__box">
+      <svg :width="width" :height="height" role="img" :aria-label="`${text.title}: ${summary}`">
+        <g v-for="s in ROWS" :key="s">
+          <line
+            :x1="PAD.l"
+            :x2="width - PAD.r"
+            :y1="y(s) + rowH"
+            :y2="y(s) + rowH"
+            class="bless-sleep__grid"
+          />
+          <text :x="PAD.l - 6" :y="y(s) + rowH / 2" class="bless-sleep__row">{{ text[s] }}</text>
+        </g>
+        <rect
+          v-for="(s, i) in list"
+          :key="i"
+          :x="x(s.from)"
+          :y="y(s.stage) + 3"
+          :width="Math.max(1, x(s.to) - x(s.from))"
+          :height="rowH - 6"
+          :fill="chartColor(COLOR[s.stage], 0)"
+        />
+        <text v-for="t in ticks" :key="t.at" :x="x(t.at)" :y="height - 6" class="bless-sleep__tick">
+          {{ t.label }}
+        </text>
+      </svg>
+    </div>
+    <figcaption class="bless-sleep__totals">
+      <strong>{{ text.total(dur(asleep)) }}</strong>
+      <span v-for="t in totals" :key="t.stage" class="bless-sleep__total">
+        <span
+          class="bless-sleep__key"
+          :style="{ background: chartColor(COLOR[t.stage], 0) }"
+          aria-hidden="true"
+        />
+        {{ text[t.stage] }} {{ dur(t.min) }}
+      </span>
+    </figcaption>
+  </figure>
+</template>
+
 <script lang="ts">
 export type BlessSleepStage = "awake" | "rem" | "light" | "deep";
 export interface BlessSleepSpan {
@@ -100,48 +142,6 @@ const summary = computed(
     `${text.value.total(dur(asleep.value))}. ${totals.value.map((t) => `${text.value[t.stage]} ${dur(t.min)}`).join(", ")}.`,
 );
 </script>
-
-<template>
-  <figure class="bless-sleep">
-    <div ref="box" class="bless-sleep__box">
-      <svg :width="width" :height="height" role="img" :aria-label="`${text.title}: ${summary}`">
-        <g v-for="s in ROWS" :key="s">
-          <line
-            :x1="PAD.l"
-            :x2="width - PAD.r"
-            :y1="y(s) + rowH"
-            :y2="y(s) + rowH"
-            class="bless-sleep__grid"
-          />
-          <text :x="PAD.l - 6" :y="y(s) + rowH / 2" class="bless-sleep__row">{{ text[s] }}</text>
-        </g>
-        <rect
-          v-for="(s, i) in list"
-          :key="i"
-          :x="x(s.from)"
-          :y="y(s.stage) + 3"
-          :width="Math.max(1, x(s.to) - x(s.from))"
-          :height="rowH - 6"
-          :fill="chartColor(COLOR[s.stage], 0)"
-        />
-        <text v-for="t in ticks" :key="t.at" :x="x(t.at)" :y="height - 6" class="bless-sleep__tick">
-          {{ t.label }}
-        </text>
-      </svg>
-    </div>
-    <figcaption class="bless-sleep__totals">
-      <strong>{{ text.total(dur(asleep)) }}</strong>
-      <span v-for="t in totals" :key="t.stage" class="bless-sleep__total">
-        <span
-          class="bless-sleep__key"
-          :style="{ background: chartColor(COLOR[t.stage], 0) }"
-          aria-hidden="true"
-        />
-        {{ text[t.stage] }} {{ dur(t.min) }}
-      </span>
-    </figcaption>
-  </figure>
-</template>
 
 <style>
 .bless-sleep {

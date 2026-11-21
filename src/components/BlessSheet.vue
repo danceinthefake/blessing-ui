@@ -1,3 +1,52 @@
+<template>
+  <dialog
+    ref="dialog"
+    class="bless-sheet"
+    :class="`bless-sheet--${side}`"
+    :style="size ? { '--_size': size } : undefined"
+    :aria-labelledby="title || $slots.title ? titleId : undefined"
+    @close="
+      open = false;
+      emit('close');
+    "
+    @cancel.prevent="dismissible && (open = false)"
+    @pointerdown="onBackdropDown"
+    @click="onBackdrop"
+  >
+    <div
+      class="bless-sheet__panel"
+      tabindex="-1"
+      :style="dragY ? { transform: `translateY(${dragY}px)`, transition: 'none' } : undefined"
+    >
+      <div
+        v-if="handle"
+        class="bless-sheet__handle"
+        @pointerdown="onDown"
+        @pointermove="onMove"
+        @pointerup="onUp"
+        @pointercancel="onUp"
+      >
+        <span />
+      </div>
+      <button
+        type="button"
+        class="bless-sheet__close"
+        :aria-label="text.close"
+        @click="open = false"
+      >
+        <span aria-hidden="true">×</span>
+      </button>
+      <header v-if="title || $slots.title" class="bless-sheet__header">
+        <h2 :id="titleId" class="bless-sheet__title">
+          <slot name="title">{{ title }}</slot>
+        </h2>
+      </header>
+      <div class="bless-sheet__body"><slot /></div>
+      <footer v-if="$slots.footer" class="bless-sheet__footer"><slot name="footer" /></footer>
+    </div>
+  </dialog>
+</template>
+
 <script setup lang="ts">
 import { useLabelPack } from "../composables/useLabels";
 import { nextTick, onMounted, ref, useId, watch, computed } from "vue";
@@ -64,55 +113,6 @@ function onUp() {
   startY = 0;
 }
 </script>
-
-<template>
-  <dialog
-    ref="dialog"
-    class="bless-sheet"
-    :class="`bless-sheet--${side}`"
-    :style="size ? { '--_size': size } : undefined"
-    :aria-labelledby="title || $slots.title ? titleId : undefined"
-    @close="
-      open = false;
-      emit('close');
-    "
-    @cancel.prevent="dismissible && (open = false)"
-    @pointerdown="onBackdropDown"
-    @click="onBackdrop"
-  >
-    <div
-      class="bless-sheet__panel"
-      tabindex="-1"
-      :style="dragY ? { transform: `translateY(${dragY}px)`, transition: 'none' } : undefined"
-    >
-      <div
-        v-if="handle"
-        class="bless-sheet__handle"
-        @pointerdown="onDown"
-        @pointermove="onMove"
-        @pointerup="onUp"
-        @pointercancel="onUp"
-      >
-        <span />
-      </div>
-      <button
-        type="button"
-        class="bless-sheet__close"
-        :aria-label="text.close"
-        @click="open = false"
-      >
-        <span aria-hidden="true">×</span>
-      </button>
-      <header v-if="title || $slots.title" class="bless-sheet__header">
-        <h2 :id="titleId" class="bless-sheet__title">
-          <slot name="title">{{ title }}</slot>
-        </h2>
-      </header>
-      <div class="bless-sheet__body"><slot /></div>
-      <footer v-if="$slots.footer" class="bless-sheet__footer"><slot name="footer" /></footer>
-    </div>
-  </dialog>
-</template>
 
 <style>
 .bless-sheet {

@@ -1,3 +1,65 @@
+<template>
+  <figure ref="box" class="bless-plot bless-slope">
+    <svg :viewBox="`0 0 ${width} ${height}`" :height class="bless-plot__svg" aria-hidden="true">
+      <text class="bless-plot__cat bless-slope__col" :x="x0" y="12" text-anchor="middle">
+        {{ text.start }}
+      </text>
+      <text class="bless-plot__cat bless-slope__col" :x="x1" y="12" text-anchor="middle">
+        {{ text.end }}
+      </text>
+      <line class="bless-plot__grid" :x1="x0" :x2="x0" :y1="TOP - 6" :y2="height - 6" />
+      <line class="bless-plot__grid" :x1="x1" :x2="x1" :y1="TOP - 6" :y2="height - 6" />
+      <g
+        v-for="l in lines"
+        :key="l.label"
+        class="bless-slope__line"
+        :class="{ 'is-down': !l.up }"
+        :style="{ '--_c': l.color }"
+      >
+        <title>{{ l.label }}: {{ fmt(l.start) }} → {{ fmt(l.end) }}</title>
+        <line :x1="x0" :x2="x1" :y1="py(l.start)" :y2="py(l.end)" />
+        <circle :cx="x0" :cy="py(l.start)" r="4" />
+        <circle :cx="x1" :cy="py(l.end)" r="4" />
+        <text
+          class="bless-plot__tick"
+          :x="x0 - 10"
+          :y="py(l.start)"
+          text-anchor="end"
+          dominant-baseline="middle"
+        >
+          <tspan class="bless-slope__name">{{ l.label }}</tspan> {{ fmt(l.start) }}
+        </text>
+        <text class="bless-plot__tick" :x="x1 + 10" :y="py(l.end)" dominant-baseline="middle">
+          {{ fmt(l.end) }}
+        </text>
+      </g>
+    </svg>
+    <div class="bless-sr">
+      <table>
+        <caption>
+          {{ label }}
+        </caption>
+        <thead>
+          <tr>
+            <th scope="col">{{ text.item }}</th>
+            <th scope="col">{{ text.start }}</th>
+            <th scope="col">{{ text.end }}</th>
+            <th scope="col">{{ text.change }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="d in data" :key="d.label">
+            <th scope="row">{{ d.label }}</th>
+            <td>{{ fmt(d.start) }}</td>
+            <td>{{ fmt(d.end) }}</td>
+            <td>{{ sign(d.end - d.start) }}{{ fmt(Math.abs(d.end - d.start)) }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </figure>
+</template>
+
 <script setup lang="ts">
 import { computed, ref } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -71,68 +133,6 @@ const lines = computed(() =>
 );
 const sign = (n: number) => (n > 0 ? "+" : n < 0 ? "−" : "±");
 </script>
-
-<template>
-  <figure ref="box" class="bless-plot bless-slope">
-    <svg :viewBox="`0 0 ${width} ${height}`" :height class="bless-plot__svg" aria-hidden="true">
-      <text class="bless-plot__cat bless-slope__col" :x="x0" y="12" text-anchor="middle">
-        {{ text.start }}
-      </text>
-      <text class="bless-plot__cat bless-slope__col" :x="x1" y="12" text-anchor="middle">
-        {{ text.end }}
-      </text>
-      <line class="bless-plot__grid" :x1="x0" :x2="x0" :y1="TOP - 6" :y2="height - 6" />
-      <line class="bless-plot__grid" :x1="x1" :x2="x1" :y1="TOP - 6" :y2="height - 6" />
-      <g
-        v-for="l in lines"
-        :key="l.label"
-        class="bless-slope__line"
-        :class="{ 'is-down': !l.up }"
-        :style="{ '--_c': l.color }"
-      >
-        <title>{{ l.label }}: {{ fmt(l.start) }} → {{ fmt(l.end) }}</title>
-        <line :x1="x0" :x2="x1" :y1="py(l.start)" :y2="py(l.end)" />
-        <circle :cx="x0" :cy="py(l.start)" r="4" />
-        <circle :cx="x1" :cy="py(l.end)" r="4" />
-        <text
-          class="bless-plot__tick"
-          :x="x0 - 10"
-          :y="py(l.start)"
-          text-anchor="end"
-          dominant-baseline="middle"
-        >
-          <tspan class="bless-slope__name">{{ l.label }}</tspan> {{ fmt(l.start) }}
-        </text>
-        <text class="bless-plot__tick" :x="x1 + 10" :y="py(l.end)" dominant-baseline="middle">
-          {{ fmt(l.end) }}
-        </text>
-      </g>
-    </svg>
-    <div class="bless-sr">
-      <table>
-        <caption>
-          {{ label }}
-        </caption>
-        <thead>
-          <tr>
-            <th scope="col">{{ text.item }}</th>
-            <th scope="col">{{ text.start }}</th>
-            <th scope="col">{{ text.end }}</th>
-            <th scope="col">{{ text.change }}</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="d in data" :key="d.label">
-            <th scope="row">{{ d.label }}</th>
-            <td>{{ fmt(d.start) }}</td>
-            <td>{{ fmt(d.end) }}</td>
-            <td>{{ sign(d.end - d.start) }}{{ fmt(Math.abs(d.end - d.start)) }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </figure>
-</template>
 
 <style>
 .bless-slope__col {

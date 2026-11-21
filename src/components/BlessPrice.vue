@@ -1,3 +1,22 @@
+<template>
+  <span class="bless-price" :class="`is-${size}`">
+    <template v-if="onSale">
+      <span aria-hidden="true">
+        <strong class="bless-price__now">{{ money.format(amount) }}</strong>
+        <s class="bless-price__was">{{ money.format(was!) }}</s>
+        <span class="bless-price__off">{{ text.off(off) }}</span>
+      </span>
+      <span class="bless-sr"
+        >{{ text.sale(money.format(amount), money.format(was!)) }}, {{ text.off(off) }}</span
+      >
+    </template>
+    <strong v-else class="bless-price__now">{{ money.format(amount) }}</strong>
+    <span v-if="unitPrice !== undefined && unit" class="bless-price__unit">
+      {{ text.per(money.format(unitPrice), unit) }}
+    </span>
+  </span>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -43,25 +62,6 @@ const off = computed(() =>
   ),
 );
 </script>
-
-<template>
-  <span class="bless-price" :class="`is-${size}`">
-    <template v-if="onSale">
-      <span aria-hidden="true">
-        <strong class="bless-price__now">{{ money.format(amount) }}</strong>
-        <s class="bless-price__was">{{ money.format(was!) }}</s>
-        <span class="bless-price__off">{{ text.off(off) }}</span>
-      </span>
-      <span class="bless-sr"
-        >{{ text.sale(money.format(amount), money.format(was!)) }}, {{ text.off(off) }}</span
-      >
-    </template>
-    <strong v-else class="bless-price__now">{{ money.format(amount) }}</strong>
-    <span v-if="unitPrice !== undefined && unit" class="bless-price__unit">
-      {{ text.per(money.format(unitPrice), unit) }}
-    </span>
-  </span>
-</template>
 
 <style>
 .bless-price {

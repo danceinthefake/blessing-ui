@@ -1,3 +1,25 @@
+<template>
+  <div class="course">
+    <aside class="course__path">
+      <BlessText as="p" size="xs" muted class="course__kicker">Blessing Software Academy</BlessText>
+      <BlessText as="h2" size="md" weight="bold" class="course__name"
+        >Make your first visual novel</BlessText
+      >
+      <BlessLessonPath :lessons @select="open" />
+    </aside>
+    <LessonPane
+      v-if="lesson"
+      :key="lesson.id"
+      v-model:notes="notes[lesson.id]"
+      :lesson
+      :next
+      :focus="!first"
+      @pass="pass"
+      @open="open"
+    />
+  </div>
+</template>
+
 <script setup lang="ts">
 import { BlessLessonPath, BlessText, type BlessVideoNote } from "blessing-ui";
 import { computed, onMounted, ref } from "vue";
@@ -30,28 +52,6 @@ async function pass() {
   await mockCourseApi.complete(l.id);
 }
 </script>
-
-<template>
-  <div class="course">
-    <aside class="course__path">
-      <BlessText as="p" size="xs" muted class="course__kicker">Blessing Software Academy</BlessText>
-      <BlessText as="h2" size="md" weight="bold" class="course__name"
-        >Make your first visual novel</BlessText
-      >
-      <BlessLessonPath :lessons @select="open" />
-    </aside>
-    <LessonPane
-      v-if="lesson"
-      :key="lesson.id"
-      v-model:notes="notes[lesson.id]"
-      :lesson
-      :next
-      :focus="!first"
-      @pass="pass"
-      @open="open"
-    />
-  </div>
-</template>
 
 <style scoped>
 .course {

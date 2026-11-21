@@ -1,3 +1,10 @@
+<template>
+  <div style="max-width: 360px">
+    <BlessIconPicker v-model="chosen" :icons stroke />
+    <BlessText as="p" size="sm" style="margin-top: 8px">Chosen: {{ chosen }}</BlessText>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessIconPicker, BlessText } from "blessing-ui";
@@ -53,10 +60,3 @@ const icons = [
 ];
 const chosen = ref("microphone");
 </script>
-
-<template>
-  <div style="max-width: 360px">
-    <BlessIconPicker v-model="chosen" :icons stroke />
-    <BlessText as="p" size="sm" style="margin-top: 8px">Chosen: {{ chosen }}</BlessText>
-  </div>
-</template>

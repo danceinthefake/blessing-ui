@@ -1,21 +1,3 @@
-<script setup lang="ts">
-import { onMounted, ref } from "vue";
-import { BlessCard, BlessDash, BlessModal, BlessSection, BlessSkew, BlessText } from "blessing-ui";
-import type { Character } from "./domain";
-import { mockCharacterApi } from "./api";
-
-const chars = ref<Character[]>([]);
-onMounted(async () => (chars.value = await mockCharacterApi.list()));
-// one modal per character, each addressable as #chara-<id>
-const open = ref<Record<string, boolean>>({});
-// the art shows the given name's first character (英 for 英梨々, not the iteration mark 々)
-const glyph = (name: string) =>
-  name
-    .split(/[\s・]/)
-    .at(-1)!
-    .charAt(0);
-</script>
-
 <template>
   <BlessSection title="Character" class="chara">
     <div class="chara__grid">
@@ -59,6 +41,24 @@ const glyph = (name: string) =>
     </BlessModal>
   </BlessSection>
 </template>
+
+<script setup lang="ts">
+import { onMounted, ref } from "vue";
+import { BlessCard, BlessDash, BlessModal, BlessSection, BlessSkew, BlessText } from "blessing-ui";
+import type { Character } from "./domain";
+import { mockCharacterApi } from "./api";
+
+const chars = ref<Character[]>([]);
+onMounted(async () => (chars.value = await mockCharacterApi.list()));
+// one modal per character, each addressable as #chara-<id>
+const open = ref<Record<string, boolean>>({});
+// the art shows the given name's first character (英 for 英梨々, not the iteration mark 々)
+const glyph = (name: string) =>
+  name
+    .split(/[\s・]/)
+    .at(-1)!
+    .charAt(0);
+</script>
 
 <style scoped>
 .chara {

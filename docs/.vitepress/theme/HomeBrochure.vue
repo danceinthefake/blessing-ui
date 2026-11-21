@@ -1,3 +1,138 @@
+<template>
+  <div ref="root" class="hb" :data-live="live ? '' : undefined">
+    <!-- prologue -->
+    <section class="hb__hero">
+      <span class="hb__mark" aria-hidden="true" />
+      <span class="hb__vert" aria-hidden="true">祝福のUI</span>
+      <div class="hb__wrap hb__hero-body bless-stagger">
+        <p class="hb__kicker">{{ t.kicker }}</p>
+        <h1 class="hb__title">{{ t.title[0] }}<br />{{ t.title[1] }}</h1>
+        <p class="hb__plate"><span>{{ t.plate }}</span></p>
+        <p class="hb__lead">{{ t.lead }}</p>
+        <div class="hb__row">
+          <BlessButton :href="p('/guide/install')">{{ t.start }}</BlessButton>
+          <BlessButton :href="p('/components/button')" variant="outline">{{
+            t.browse
+          }}</BlessButton>
+        </div>
+      </div>
+    </section>
+
+    <template v-for="(eye, i) in t.eye" :key="i">
+      <Eyecatch
+        :kicker="`${t.episode} 0${i + 1}`"
+        :title="eye"
+        :num="`0${i + 1}`"
+        :accent="i === 1"
+      />
+
+      <!-- chapter 01: flat, with live parts -->
+      <section v-if="i === 0" class="hb__chapter hb__chapter--surface">
+        <div class="hb__wrap hb__cols" data-reveal>
+          <div class="hb__copy">
+            <p class="hb__kicker">{{ t.ch }} 01</p>
+            <p class="hb__text">{{ t.flatText }}</p>
+          </div>
+          <div class="hb__stage-light">
+            <div class="hb__row">
+              <BlessButton>{{ t.save }}</BlessButton>
+              <BlessButton variant="outline">{{ t.cancel }}</BlessButton>
+              <BlessBadge>NEW!</BlessBadge>
+            </div>
+            <BlessInput :aria-label="t.field" placeholder="blessing software" />
+            <div class="hb__row">
+              <BlessTabs v-model="tab" :tabs="t.tabs" :label="t.field" />
+              <BlessSwitch v-model="on">{{ t.notify }}</BlessSwitch>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- chapter 02: the motion stage -->
+      <section v-else-if="i === 1" class="hb__chapter">
+        <div class="hb__wrap hb__cols" data-reveal>
+          <div class="hb__copy">
+            <p class="hb__kicker">{{ t.ch }} 02</p>
+            <p class="hb__text">{{ t.motionText }}</p>
+            <BlessTabs
+              :model-value="layer"
+              :tabs="t.layers"
+              :label="t.eye[1]"
+              @update:model-value="pick"
+            />
+            <BlessSwitch v-model="calm">{{ t.calm }}</BlessSwitch>
+            <a :href="p('/guide/motion')" class="hb__link">{{ t.motionLink }} →</a>
+          </div>
+          <div class="hb__stage" :data-motion="calm ? 'calm' : undefined">
+            <span class="hb__stage-word" :data-word="layer" aria-hidden="true" />
+            <div :key="take" class="hb__card" :class="`hb__card--${layer}`" aria-live="polite">
+              <p class="hb__kicker hb__kicker--accent">{{ layer }}</p>
+              <p class="hb__card-line">{{ t.lines[layer] }}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- chapter 03: the cast in numbers, and the blocks -->
+      <section v-else class="hb__chapter hb__chapter--accent">
+        <div class="hb__wrap">
+          <div class="hb__stats" data-reveal>
+            <div v-for="(label, k) in t.stats" :key="label" class="hb__stat">
+              <BlessCountUp :value="[count, 0, 6, 2][k]!" class="hb__stat-num" />
+              <span>{{ label }}</span>
+            </div>
+          </div>
+          <div class="hb__head">
+            <p class="hb__kicker">{{ t.ch }} 03 · {{ t.blocks }}</p>
+            <a :href="withBase('/blocks/')" class="hb__link">{{ t.allBlocks }} →</a>
+          </div>
+          <div class="hb__blocks" data-reveal>
+            <a
+              v-for="[slug, title] in blocks"
+              :key="slug"
+              :href="withBase(`/blocks/${slug}`)"
+              class="hb__block"
+            >
+              <img
+                class="light-only"
+                :src="withBase(`/preview-${slug}.png`)"
+                :alt="`${title} block`"
+                loading="lazy"
+              />
+              <img
+                class="dark-only"
+                :src="withBase(`/preview-${slug}-dark.png`)"
+                :alt="`${title} block`"
+                loading="lazy"
+              />
+              <span class="hb__block-title">{{ title }}</span>
+            </a>
+          </div>
+        </div>
+      </section>
+    </template>
+
+    <!-- epilogue: the next-episode preview -->
+    <section class="hb__next">
+      <div class="hb__wrap hb__cols" data-reveal>
+        <div class="hb__copy">
+          <p class="hb__kicker hb__kicker--soft">{{ t.next }}</p>
+          <p class="hb__preview" aria-hidden="true">次回予告</p>
+          <h2 class="hb__next-title">{{ t.nextTitle }}</h2>
+          <p class="hb__text">{{ t.nextText }}</p>
+        </div>
+        <div class="hb__install">
+          <code class="hb__cmd"><span aria-hidden="true">$ </span>pnpm add blessing-ui</code>
+          <div class="hb__row">
+            <BlessCopyButton value="pnpm add blessing-ui" variant="solid" />
+            <BlessButton :href="p('/guide/install')" variant="outline">{{ t.guide }} →</BlessButton>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</template>
+
 <script setup lang="ts">
 // The home page as a brochure: chapters like a light novel, with an anime eyecatch band
 // between them. Each chapter arrives with the base layer when it scrolls into view.
@@ -139,141 +274,6 @@ onMounted(() => {
 });
 onBeforeUnmount(() => io?.disconnect());
 </script>
-
-<template>
-  <div ref="root" class="hb" :data-live="live ? '' : undefined">
-    <!-- prologue -->
-    <section class="hb__hero">
-      <span class="hb__mark" aria-hidden="true" />
-      <span class="hb__vert" aria-hidden="true">祝福のUI</span>
-      <div class="hb__wrap hb__hero-body bless-stagger">
-        <p class="hb__kicker">{{ t.kicker }}</p>
-        <h1 class="hb__title">{{ t.title[0] }}<br />{{ t.title[1] }}</h1>
-        <p class="hb__plate"><span>{{ t.plate }}</span></p>
-        <p class="hb__lead">{{ t.lead }}</p>
-        <div class="hb__row">
-          <BlessButton :href="p('/guide/install')">{{ t.start }}</BlessButton>
-          <BlessButton :href="p('/components/button')" variant="outline">{{
-            t.browse
-          }}</BlessButton>
-        </div>
-      </div>
-    </section>
-
-    <template v-for="(eye, i) in t.eye" :key="i">
-      <Eyecatch
-        :kicker="`${t.episode} 0${i + 1}`"
-        :title="eye"
-        :num="`0${i + 1}`"
-        :accent="i === 1"
-      />
-
-      <!-- chapter 01: flat, with live parts -->
-      <section v-if="i === 0" class="hb__chapter hb__chapter--surface">
-        <div class="hb__wrap hb__cols" data-reveal>
-          <div class="hb__copy">
-            <p class="hb__kicker">{{ t.ch }} 01</p>
-            <p class="hb__text">{{ t.flatText }}</p>
-          </div>
-          <div class="hb__stage-light">
-            <div class="hb__row">
-              <BlessButton>{{ t.save }}</BlessButton>
-              <BlessButton variant="outline">{{ t.cancel }}</BlessButton>
-              <BlessBadge>NEW!</BlessBadge>
-            </div>
-            <BlessInput :aria-label="t.field" placeholder="blessing software" />
-            <div class="hb__row">
-              <BlessTabs v-model="tab" :tabs="t.tabs" :label="t.field" />
-              <BlessSwitch v-model="on">{{ t.notify }}</BlessSwitch>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- chapter 02: the motion stage -->
-      <section v-else-if="i === 1" class="hb__chapter">
-        <div class="hb__wrap hb__cols" data-reveal>
-          <div class="hb__copy">
-            <p class="hb__kicker">{{ t.ch }} 02</p>
-            <p class="hb__text">{{ t.motionText }}</p>
-            <BlessTabs
-              :model-value="layer"
-              :tabs="t.layers"
-              :label="t.eye[1]"
-              @update:model-value="pick"
-            />
-            <BlessSwitch v-model="calm">{{ t.calm }}</BlessSwitch>
-            <a :href="p('/guide/motion')" class="hb__link">{{ t.motionLink }} →</a>
-          </div>
-          <div class="hb__stage" :data-motion="calm ? 'calm' : undefined">
-            <span class="hb__stage-word" :data-word="layer" aria-hidden="true" />
-            <div :key="take" class="hb__card" :class="`hb__card--${layer}`" aria-live="polite">
-              <p class="hb__kicker hb__kicker--accent">{{ layer }}</p>
-              <p class="hb__card-line">{{ t.lines[layer] }}</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- chapter 03: the cast in numbers, and the blocks -->
-      <section v-else class="hb__chapter hb__chapter--accent">
-        <div class="hb__wrap">
-          <div class="hb__stats" data-reveal>
-            <div v-for="(label, k) in t.stats" :key="label" class="hb__stat">
-              <BlessCountUp :value="[count, 0, 6, 2][k]!" class="hb__stat-num" />
-              <span>{{ label }}</span>
-            </div>
-          </div>
-          <div class="hb__head">
-            <p class="hb__kicker">{{ t.ch }} 03 · {{ t.blocks }}</p>
-            <a :href="withBase('/blocks/')" class="hb__link">{{ t.allBlocks }} →</a>
-          </div>
-          <div class="hb__blocks" data-reveal>
-            <a
-              v-for="[slug, title] in blocks"
-              :key="slug"
-              :href="withBase(`/blocks/${slug}`)"
-              class="hb__block"
-            >
-              <img
-                class="light-only"
-                :src="withBase(`/preview-${slug}.png`)"
-                :alt="`${title} block`"
-                loading="lazy"
-              />
-              <img
-                class="dark-only"
-                :src="withBase(`/preview-${slug}-dark.png`)"
-                :alt="`${title} block`"
-                loading="lazy"
-              />
-              <span class="hb__block-title">{{ title }}</span>
-            </a>
-          </div>
-        </div>
-      </section>
-    </template>
-
-    <!-- epilogue: the next-episode preview -->
-    <section class="hb__next">
-      <div class="hb__wrap hb__cols" data-reveal>
-        <div class="hb__copy">
-          <p class="hb__kicker hb__kicker--soft">{{ t.next }}</p>
-          <p class="hb__preview" aria-hidden="true">次回予告</p>
-          <h2 class="hb__next-title">{{ t.nextTitle }}</h2>
-          <p class="hb__text">{{ t.nextText }}</p>
-        </div>
-        <div class="hb__install">
-          <code class="hb__cmd"><span aria-hidden="true">$ </span>pnpm add blessing-ui</code>
-          <div class="hb__row">
-            <BlessCopyButton value="pnpm add blessing-ui" variant="solid" />
-            <BlessButton :href="p('/guide/install')" variant="outline">{{ t.guide }} →</BlessButton>
-          </div>
-        </div>
-      </div>
-    </section>
-  </div>
-</template>
 
 <style scoped>
 .hb {

@@ -1,3 +1,13 @@
+<template>
+  <BlessCurrencyConverter
+    v-model:amount="amount"
+    v-model:from="from"
+    v-model:to="to"
+    :rates
+    updated="16 Nov 2026, 09:00"
+  />
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessCurrencyConverter } from "blessing-ui";
@@ -8,13 +18,3 @@ const amount = ref(250);
 const from = ref("USD");
 const to = ref("IDR");
 </script>
-
-<template>
-  <BlessCurrencyConverter
-    v-model:amount="amount"
-    v-model:from="from"
-    v-model:to="to"
-    :rates
-    updated="16 Nov 2026, 09:00"
-  />
-</template>

@@ -1,3 +1,48 @@
+<template>
+  <div
+    ref="stage"
+    class="bless-hotspots"
+    :class="{ 'bless-hotspots--edit': editable }"
+    @click="addAt"
+  >
+    <slot>
+      <img v-if="src" :src :alt class="bless-hotspots__img" draggable="false" />
+    </slot>
+    <span
+      v-for="(s, i) in spots"
+      :key="s.id"
+      class="bless-hotspots__spot"
+      :style="{ left: `${s.x}%`, top: `${s.y}%` }"
+      @click.capture="eat"
+    >
+      <BlessPopover
+        arrow
+        :placement
+        :open="active === s.id"
+        @update:open="(o: boolean) => (active = o ? s.id : active === s.id ? null : active)"
+      >
+        <template #trigger>
+          <button
+            type="button"
+            class="bless-hotspots__pin"
+            :class="{ 'bless-hotspots__pin--on': active === s.id }"
+            :aria-label="`${i + 1}. ${s.label}`"
+            :aria-keyshortcuts="editable ? 'Delete' : undefined"
+            @pointerdown="down(i, $event)"
+            @pointermove="move"
+            @pointerup="up"
+            @pointercancel="up"
+            @keydown="onKey(i, $event)"
+          >
+            {{ i + 1 }}
+          </button>
+        </template>
+        <slot name="spot" :spot="s" :index="i">{{ s.label }}</slot>
+      </BlessPopover>
+    </span>
+  </div>
+</template>
+
 <script lang="ts">
 export interface BlessHotspot {
   id: string | number;
@@ -102,51 +147,6 @@ function onKey(i: number, e: KeyboardEvent) {
   }
 }
 </script>
-
-<template>
-  <div
-    ref="stage"
-    class="bless-hotspots"
-    :class="{ 'bless-hotspots--edit': editable }"
-    @click="addAt"
-  >
-    <slot>
-      <img v-if="src" :src :alt class="bless-hotspots__img" draggable="false" />
-    </slot>
-    <span
-      v-for="(s, i) in spots"
-      :key="s.id"
-      class="bless-hotspots__spot"
-      :style="{ left: `${s.x}%`, top: `${s.y}%` }"
-      @click.capture="eat"
-    >
-      <BlessPopover
-        arrow
-        :placement
-        :open="active === s.id"
-        @update:open="(o: boolean) => (active = o ? s.id : active === s.id ? null : active)"
-      >
-        <template #trigger>
-          <button
-            type="button"
-            class="bless-hotspots__pin"
-            :class="{ 'bless-hotspots__pin--on': active === s.id }"
-            :aria-label="`${i + 1}. ${s.label}`"
-            :aria-keyshortcuts="editable ? 'Delete' : undefined"
-            @pointerdown="down(i, $event)"
-            @pointermove="move"
-            @pointerup="up"
-            @pointercancel="up"
-            @keydown="onKey(i, $event)"
-          >
-            {{ i + 1 }}
-          </button>
-        </template>
-        <slot name="spot" :spot="s" :index="i">{{ s.label }}</slot>
-      </BlessPopover>
-    </span>
-  </div>
-</template>
 
 <style>
 .bless-hotspots {

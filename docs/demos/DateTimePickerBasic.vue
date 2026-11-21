@@ -1,10 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { BlessDateTimePicker, BlessField } from "blessing-ui";
-
-const starts = ref<string | undefined>("2026-11-14T19:30");
-</script>
-
 <template>
   <div class="col">
     <BlessField label="Broadcast starts">
@@ -19,3 +12,10 @@ const starts = ref<string | undefined>("2026-11-14T19:30");
     <p>Value: <code>{{ starts ?? "not set" }}</code></p>
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { BlessDateTimePicker, BlessField } from "blessing-ui";
+
+const starts = ref<string | undefined>("2026-11-14T19:30");
+</script>

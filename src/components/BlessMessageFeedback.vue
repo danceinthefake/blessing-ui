@@ -1,3 +1,83 @@
+<template>
+  <div class="bless-feedback">
+    <div class="bless-feedback__bar">
+      <BlessButton
+        v-if="copy !== undefined"
+        variant="ghost"
+        size="sm"
+        :aria-label="copied ? text.copied : text.copy"
+        :title="text.copy"
+        @click="doCopy"
+      >
+        <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true">
+          <path :d="copied ? ICON.check : ICON.copy" />
+        </svg>
+      </BlessButton>
+      <BlessButton
+        variant="ghost"
+        size="sm"
+        class="bless-feedback__mark"
+        :aria-label="text.good"
+        :title="text.good"
+        :aria-pressed="rating === 'good'"
+        @click="mark('good')"
+      >
+        <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true">
+          <path :d="ICON.good" />
+        </svg>
+      </BlessButton>
+      <BlessButton
+        variant="ghost"
+        size="sm"
+        class="bless-feedback__mark"
+        :aria-label="text.bad"
+        :title="text.bad"
+        :aria-pressed="rating === 'bad'"
+        @click="mark('bad')"
+      >
+        <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" class="is-down">
+          <path :d="ICON.good" />
+        </svg>
+      </BlessButton>
+      <BlessButton
+        v-if="retry"
+        variant="ghost"
+        size="sm"
+        :aria-label="text.retry"
+        :title="text.retry"
+        @click="emit('retry')"
+      >
+        <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true">
+          <path :d="ICON.retry" />
+        </svg>
+      </BlessButton>
+      <span class="bless-sr" role="status">{{ live }}</span>
+    </div>
+    <form v-if="asking" class="bless-feedback__form" @submit.prevent="send">
+      <p class="bless-feedback__ask">{{ text.ask }}</p>
+      <div v-if="reasons?.length" class="bless-feedback__reasons">
+        <button
+          v-for="r in reasons"
+          :key="r"
+          type="button"
+          class="bless-feedback__reason"
+          :aria-pressed="reason === r"
+          @click="reason = reason === r ? undefined : r"
+        >
+          {{ r }}
+        </button>
+      </div>
+      <BlessTextarea v-model="note" :rows="2" :aria-label="text.note" :placeholder="text.note" />
+      <div class="bless-feedback__actions">
+        <BlessButton type="submit" size="sm">{{ text.send }}</BlessButton>
+        <BlessButton variant="ghost" size="sm" @click="asking = false">{{
+          text.cancel
+        }}</BlessButton>
+      </div>
+    </form>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed, onBeforeUnmount, ref } from "vue";
 import { copyText } from "../composables/copyText";
@@ -98,86 +178,6 @@ const ICON = {
   retry: "M13.5 8a5.5 5.5 0 1 1-1.6-3.9M12 1.5v3h-3",
 };
 </script>
-
-<template>
-  <div class="bless-feedback">
-    <div class="bless-feedback__bar">
-      <BlessButton
-        v-if="copy !== undefined"
-        variant="ghost"
-        size="sm"
-        :aria-label="copied ? text.copied : text.copy"
-        :title="text.copy"
-        @click="doCopy"
-      >
-        <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true">
-          <path :d="copied ? ICON.check : ICON.copy" />
-        </svg>
-      </BlessButton>
-      <BlessButton
-        variant="ghost"
-        size="sm"
-        class="bless-feedback__mark"
-        :aria-label="text.good"
-        :title="text.good"
-        :aria-pressed="rating === 'good'"
-        @click="mark('good')"
-      >
-        <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true">
-          <path :d="ICON.good" />
-        </svg>
-      </BlessButton>
-      <BlessButton
-        variant="ghost"
-        size="sm"
-        class="bless-feedback__mark"
-        :aria-label="text.bad"
-        :title="text.bad"
-        :aria-pressed="rating === 'bad'"
-        @click="mark('bad')"
-      >
-        <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" class="is-down">
-          <path :d="ICON.good" />
-        </svg>
-      </BlessButton>
-      <BlessButton
-        v-if="retry"
-        variant="ghost"
-        size="sm"
-        :aria-label="text.retry"
-        :title="text.retry"
-        @click="emit('retry')"
-      >
-        <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true">
-          <path :d="ICON.retry" />
-        </svg>
-      </BlessButton>
-      <span class="bless-sr" role="status">{{ live }}</span>
-    </div>
-    <form v-if="asking" class="bless-feedback__form" @submit.prevent="send">
-      <p class="bless-feedback__ask">{{ text.ask }}</p>
-      <div v-if="reasons?.length" class="bless-feedback__reasons">
-        <button
-          v-for="r in reasons"
-          :key="r"
-          type="button"
-          class="bless-feedback__reason"
-          :aria-pressed="reason === r"
-          @click="reason = reason === r ? undefined : r"
-        >
-          {{ r }}
-        </button>
-      </div>
-      <BlessTextarea v-model="note" :rows="2" :aria-label="text.note" :placeholder="text.note" />
-      <div class="bless-feedback__actions">
-        <BlessButton type="submit" size="sm">{{ text.send }}</BlessButton>
-        <BlessButton variant="ghost" size="sm" @click="asking = false">{{
-          text.cancel
-        }}</BlessButton>
-      </div>
-    </form>
-  </div>
-</template>
 
 <style>
 .bless-feedback {

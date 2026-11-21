@@ -1,9 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { BlessColorPicker } from "blessing-ui";
-const color = ref("#e85078");
-</script>
-
 <template>
   <div class="col">
     <BlessColorPicker
@@ -21,3 +15,9 @@ const color = ref("#e85078");
     <BlessColorPicker model-value="#82909a" :show-value="false" disabled label="Disabled" />
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { BlessColorPicker } from "blessing-ui";
+const color = ref("#e85078");
+</script>

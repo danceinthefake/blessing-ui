@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import { BlessBreadcrumb } from "blessing-ui";
-</script>
-
 <template>
   <div class="col" style="max-width: none">
     <BlessBreadcrumb
@@ -17,3 +13,7 @@ import { BlessBreadcrumb } from "blessing-ui";
     />
   </div>
 </template>
+
+<script setup lang="ts">
+import { BlessBreadcrumb } from "blessing-ui";
+</script>

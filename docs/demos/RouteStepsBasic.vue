@@ -1,3 +1,11 @@
+<template>
+  <BlessRouteSteps :steps :current />
+  <div style="display: flex; gap: 8px; margin-top: 12px">
+    <BlessButton variant="outline" :disabled="current === 0" @click="current--">Back</BlessButton>
+    <BlessButton :disabled="current === steps.length - 1" @click="current++">Next step</BlessButton>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessButton, BlessRouteSteps, type BlessRouteStep } from "blessing-ui";
@@ -27,11 +35,3 @@ const steps: BlessRouteStep[] = [
 ];
 const current = ref(1);
 </script>
-
-<template>
-  <BlessRouteSteps :steps :current />
-  <div style="display: flex; gap: 8px; margin-top: 12px">
-    <BlessButton variant="outline" :disabled="current === 0" @click="current--">Back</BlessButton>
-    <BlessButton :disabled="current === steps.length - 1" @click="current++">Next step</BlessButton>
-  </div>
-</template>

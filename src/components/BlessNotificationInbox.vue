@@ -1,3 +1,65 @@
+<template>
+  <BlessPopover v-model:open="open" :title="text.title" :placement="placement">
+    <template #trigger>
+      <BlessButton variant="ghost" icon :aria-label="text.bell(unread)">
+        <BlessIndicator :value="unread" :max="max" color="danger">
+          <svg
+            viewBox="0 0 24 24"
+            width="20"
+            height="20"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            aria-hidden="true"
+          >
+            <path d="M6 17V11a6 6 0 0 1 12 0v6l1.5 2h-15zM10 21h4" />
+          </svg>
+        </BlessIndicator>
+      </BlessButton>
+    </template>
+    <div class="bless-inbox__panel">
+      <div class="bless-inbox__head">
+        <BlessButton variant="ghost" size="sm" :disabled="!unread" @click="emit('readAll')">{{
+          text.readAll
+        }}</BlessButton>
+      </div>
+      <p v-if="!items.length" class="bless-inbox__empty">{{ text.empty }}</p>
+      <ul v-else class="bless-stagger bless-inbox__list">
+        <li
+          v-for="n in items"
+          :key="n.id"
+          class="bless-inbox__item"
+          :class="{ 'bless-inbox__item--unread': !n.read }"
+        >
+          <span v-if="!n.read" class="bless-inbox__dot" aria-hidden="true" />
+          <div class="bless-inbox__main">
+            <component
+              :is="link(n.href, undefined, 'button').is"
+              v-bind="link(n.href, undefined, 'button').attrs"
+              class="bless-inbox__open"
+              :type="n.href ? undefined : 'button'"
+              @click="pick(n)"
+            >
+              <span v-if="!n.read" class="bless-inbox__sr bless-sr">{{ text.unread }}: </span
+              >{{ n.title }}
+            </component>
+            <span v-if="n.body" class="bless-inbox__body">{{ n.body }}</span>
+            <span v-if="n.time" class="bless-inbox__time">{{ n.time }}</span>
+          </div>
+          <button
+            type="button"
+            class="bless-inbox__dismiss"
+            :aria-label="`${text.dismiss}: ${n.title}`"
+            @click="emit('dismiss', n.id)"
+          >
+            <span aria-hidden="true">×</span>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </BlessPopover>
+</template>
+
 <script setup lang="ts">
 import { useLabelPack } from "../composables/useLabels";
 import "./sr.css";
@@ -67,68 +129,6 @@ function pick(n: BlessNotice) {
   emit("select", n);
 }
 </script>
-
-<template>
-  <BlessPopover v-model:open="open" :title="text.title" :placement="placement">
-    <template #trigger>
-      <BlessButton variant="ghost" icon :aria-label="text.bell(unread)">
-        <BlessIndicator :value="unread" :max="max" color="danger">
-          <svg
-            viewBox="0 0 24 24"
-            width="20"
-            height="20"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.5"
-            aria-hidden="true"
-          >
-            <path d="M6 17V11a6 6 0 0 1 12 0v6l1.5 2h-15zM10 21h4" />
-          </svg>
-        </BlessIndicator>
-      </BlessButton>
-    </template>
-    <div class="bless-inbox__panel">
-      <div class="bless-inbox__head">
-        <BlessButton variant="ghost" size="sm" :disabled="!unread" @click="emit('readAll')">{{
-          text.readAll
-        }}</BlessButton>
-      </div>
-      <p v-if="!items.length" class="bless-inbox__empty">{{ text.empty }}</p>
-      <ul v-else class="bless-stagger bless-inbox__list">
-        <li
-          v-for="n in items"
-          :key="n.id"
-          class="bless-inbox__item"
-          :class="{ 'bless-inbox__item--unread': !n.read }"
-        >
-          <span v-if="!n.read" class="bless-inbox__dot" aria-hidden="true" />
-          <div class="bless-inbox__main">
-            <component
-              :is="link(n.href, undefined, 'button').is"
-              v-bind="link(n.href, undefined, 'button').attrs"
-              class="bless-inbox__open"
-              :type="n.href ? undefined : 'button'"
-              @click="pick(n)"
-            >
-              <span v-if="!n.read" class="bless-inbox__sr bless-sr">{{ text.unread }}: </span
-              >{{ n.title }}
-            </component>
-            <span v-if="n.body" class="bless-inbox__body">{{ n.body }}</span>
-            <span v-if="n.time" class="bless-inbox__time">{{ n.time }}</span>
-          </div>
-          <button
-            type="button"
-            class="bless-inbox__dismiss"
-            :aria-label="`${text.dismiss}: ${n.title}`"
-            @click="emit('dismiss', n.id)"
-          >
-            <span aria-hidden="true">×</span>
-          </button>
-        </li>
-      </ul>
-    </div>
-  </BlessPopover>
-</template>
 
 <style>
 .bless-inbox__panel {

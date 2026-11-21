@@ -1,3 +1,16 @@
+<template>
+  <BlessTicketView
+    v-model:status="status"
+    subject="The microphone hums on the charger"
+    number="#4012"
+    :customer="{ name: 'Eka Lestari', email: 'eka@example.com' }"
+    priority="high"
+    :messages
+    style="max-width: 640px"
+    @reply="reply"
+  />
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessTicketView, type BlessTicketMessage, type BlessTicketStatus } from "blessing-ui";
@@ -38,16 +51,3 @@ function reply(body: string, internal: boolean) {
   if (!internal) status.value = "pending";
 }
 </script>
-
-<template>
-  <BlessTicketView
-    v-model:status="status"
-    subject="The microphone hums on the charger"
-    number="#4012"
-    :customer="{ name: 'Eka Lestari', email: 'eka@example.com' }"
-    priority="high"
-    :messages
-    style="max-width: 640px"
-    @reply="reply"
-  />
-</template>

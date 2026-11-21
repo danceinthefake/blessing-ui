@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import { BlessButton } from "blessing-ui";
-</script>
-
 <template>
   <div class="row">
     <BlessButton size="sm">Small</BlessButton>
@@ -9,3 +5,7 @@ import { BlessButton } from "blessing-ui";
     <BlessButton size="lg">Large</BlessButton>
   </div>
 </template>
+
+<script setup lang="ts">
+import { BlessButton } from "blessing-ui";
+</script>

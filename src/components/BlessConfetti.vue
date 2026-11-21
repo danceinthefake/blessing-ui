@@ -1,3 +1,7 @@
+<template>
+  <canvas ref="canvas" class="bless-confetti" aria-hidden="true" />
+</template>
+
 <script setup lang="ts">
 import { onBeforeUnmount, ref } from "vue";
 import { burst, step, type Particle } from "../composables/confetti";
@@ -112,10 +116,6 @@ function fire(from?: { x: number; y: number } | HTMLElement, angle = 270) {
 onBeforeUnmount(stop);
 defineExpose({ fire, stop });
 </script>
-
-<template>
-  <canvas ref="canvas" class="bless-confetti" aria-hidden="true" />
-</template>
 
 <style>
 .bless-confetti {

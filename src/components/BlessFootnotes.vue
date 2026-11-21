@@ -1,3 +1,20 @@
+<template>
+  <section class="bless-footnotes" :aria-labelledby="`${id}-title`">
+    <p :id="`${id}-title`" class="bless-footnotes__title">{{ text.title }}</p>
+    <ol class="bless-footnotes__list">
+      <li v-for="(note, i) in notes" :id="`${id}-${i + 1}`" :key="i" class="bless-footnotes__note">
+        <span>{{ note }}</span>
+        <a
+          class="bless-footnotes__back"
+          :href="`#${id}-ref-${i + 1}`"
+          :aria-label="text.back(i + 1)"
+          >↩</a
+        >
+      </li>
+    </ol>
+  </section>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -23,23 +40,6 @@ const text = computed(() => ({
   ...props.labels,
 }));
 </script>
-
-<template>
-  <section class="bless-footnotes" :aria-labelledby="`${id}-title`">
-    <p :id="`${id}-title`" class="bless-footnotes__title">{{ text.title }}</p>
-    <ol class="bless-footnotes__list">
-      <li v-for="(note, i) in notes" :id="`${id}-${i + 1}`" :key="i" class="bless-footnotes__note">
-        <span>{{ note }}</span>
-        <a
-          class="bless-footnotes__back"
-          :href="`#${id}-ref-${i + 1}`"
-          :aria-label="text.back(i + 1)"
-          >↩</a
-        >
-      </li>
-    </ol>
-  </section>
-</template>
 
 <style>
 .bless-footnotes {

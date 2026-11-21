@@ -1,10 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { BlessInput } from "blessing-ui";
-const name = ref("");
-const mail = ref("bad@");
-</script>
-
 <template>
   <div class="row" style="align-items: flex-start">
     <div class="col">
@@ -25,3 +18,10 @@ const mail = ref("bad@");
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { BlessInput } from "blessing-ui";
+const name = ref("");
+const mail = ref("bad@");
+</script>

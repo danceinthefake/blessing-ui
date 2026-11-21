@@ -1,3 +1,24 @@
+<template>
+  <section
+    v-if="open && ready"
+    class="bless-banner"
+    :class="`bless-banner--${color}`"
+    :aria-label="label"
+  >
+    <div class="bless-banner__body"><slot /></div>
+    <div v-if="$slots.action" class="bless-banner__action"><slot name="action" /></div>
+    <button
+      v-if="dismissible"
+      type="button"
+      class="bless-banner__close"
+      :aria-label="text.close"
+      @click="close"
+    >
+      <span aria-hidden="true">×</span>
+    </button>
+  </section>
+</template>
+
 <script setup lang="ts">
 import { useLabelPack } from "../composables/useLabels";
 import { readStore, writeStore } from "../composables/storage";
@@ -39,27 +60,6 @@ function close() {
   emit("dismiss");
 }
 </script>
-
-<template>
-  <section
-    v-if="open && ready"
-    class="bless-banner"
-    :class="`bless-banner--${color}`"
-    :aria-label="label"
-  >
-    <div class="bless-banner__body"><slot /></div>
-    <div v-if="$slots.action" class="bless-banner__action"><slot name="action" /></div>
-    <button
-      v-if="dismissible"
-      type="button"
-      class="bless-banner__close"
-      :aria-label="text.close"
-      @click="close"
-    >
-      <span aria-hidden="true">×</span>
-    </button>
-  </section>
-</template>
 
 <style>
 .bless-banner {

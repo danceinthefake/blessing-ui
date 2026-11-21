@@ -1,3 +1,83 @@
+<template>
+  <form class="bless-post" @submit.prevent="post">
+    <div class="bless-post__main">
+      <BlessAvatar v-if="author" :name="author.name" :src="author.avatar" alt="" size="md" />
+      <textarea
+        v-model="text"
+        class="bless-post__text"
+        rows="3"
+        :aria-label="t.placeholder"
+        :placeholder="t.placeholder"
+        :aria-describedby="`${uid}-count`"
+        :aria-invalid="left < 0 || undefined"
+      />
+    </div>
+    <ul v-if="images.length" class="bless-post__images">
+      <li v-for="(im, i) in images" :key="im.url" class="bless-post__image">
+        <img :src="im.url" alt="" />
+        <button
+          type="button"
+          class="bless-post__x"
+          :aria-label="t.removeImage(i + 1)"
+          @click="removeImage(i)"
+        >
+          ✕
+        </button>
+      </li>
+    </ul>
+    <fieldset v-if="poll" class="bless-post__poll">
+      <legend class="bless-post__legend">{{ t.poll }}</legend>
+      <input
+        v-for="(_, i) in poll"
+        :key="i"
+        v-model="poll[i]"
+        class="bless-post__choice"
+        :aria-label="t.choice(i + 1)"
+        :placeholder="t.choice(i + 1)"
+        maxlength="40"
+      />
+      <button v-if="poll.length < 4" type="button" class="bless-post__link" @click="poll.push('')">
+        + {{ t.addChoice }}
+      </button>
+    </fieldset>
+    <div class="bless-post__bar">
+      <label
+        class="bless-post__tool"
+        :class="{ 'is-off': images.length >= maxImages }"
+        :title="t.image"
+      >
+        <input
+          ref="fileInput"
+          type="file"
+          accept="image/*"
+          multiple
+          class="bless-post__file"
+          :disabled="images.length >= maxImages"
+          @change="addImages(($event.target as HTMLInputElement).files)"
+        />
+        <span aria-hidden="true">🖼︎</span><span class="bless-sr">{{ t.image }}</span>
+      </label>
+      <button
+        type="button"
+        class="bless-post__tool"
+        :aria-pressed="!!poll"
+        :title="t.poll"
+        @click="poll = poll ? undefined : ['', '']"
+      >
+        <span aria-hidden="true">☰</span><span class="bless-sr">{{ t.poll }}</span>
+      </button>
+      <span
+        :id="`${uid}-count`"
+        class="bless-post__count"
+        :class="{ 'is-over': left < 0, 'is-near': left >= 0 && left <= 20 }"
+      >
+        {{ left < 0 ? t.over(-left) : t.left(left) }}
+      </span>
+      <BlessButton type="submit" size="sm" :disabled="!canPost">{{ t.post }}</BlessButton>
+    </div>
+  </form>
+</template>
+
 <script setup lang="ts">
 import { computed, onBeforeUnmount, ref, useId } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -84,86 +164,6 @@ function post() {
   });
 }
 </script>
-
-<template>
-  <form class="bless-post" @submit.prevent="post">
-    <div class="bless-post__main">
-      <BlessAvatar v-if="author" :name="author.name" :src="author.avatar" alt="" size="md" />
-      <textarea
-        v-model="text"
-        class="bless-post__text"
-        rows="3"
-        :aria-label="t.placeholder"
-        :placeholder="t.placeholder"
-        :aria-describedby="`${uid}-count`"
-        :aria-invalid="left < 0 || undefined"
-      />
-    </div>
-    <ul v-if="images.length" class="bless-post__images">
-      <li v-for="(im, i) in images" :key="im.url" class="bless-post__image">
-        <img :src="im.url" alt="" />
-        <button
-          type="button"
-          class="bless-post__x"
-          :aria-label="t.removeImage(i + 1)"
-          @click="removeImage(i)"
-        >
-          ✕
-        </button>
-      </li>
-    </ul>
-    <fieldset v-if="poll" class="bless-post__poll">
-      <legend class="bless-post__legend">{{ t.poll }}</legend>
-      <input
-        v-for="(_, i) in poll"
-        :key="i"
-        v-model="poll[i]"
-        class="bless-post__choice"
-        :aria-label="t.choice(i + 1)"
-        :placeholder="t.choice(i + 1)"
-        maxlength="40"
-      />
-      <button v-if="poll.length < 4" type="button" class="bless-post__link" @click="poll.push('')">
-        + {{ t.addChoice }}
-      </button>
-    </fieldset>
-    <div class="bless-post__bar">
-      <label
-        class="bless-post__tool"
-        :class="{ 'is-off': images.length >= maxImages }"
-        :title="t.image"
-      >
-        <input
-          ref="fileInput"
-          type="file"
-          accept="image/*"
-          multiple
-          class="bless-post__file"
-          :disabled="images.length >= maxImages"
-          @change="addImages(($event.target as HTMLInputElement).files)"
-        />
-        <span aria-hidden="true">🖼︎</span><span class="bless-sr">{{ t.image }}</span>
-      </label>
-      <button
-        type="button"
-        class="bless-post__tool"
-        :aria-pressed="!!poll"
-        :title="t.poll"
-        @click="poll = poll ? undefined : ['', '']"
-      >
-        <span aria-hidden="true">☰</span><span class="bless-sr">{{ t.poll }}</span>
-      </button>
-      <span
-        :id="`${uid}-count`"
-        class="bless-post__count"
-        :class="{ 'is-over': left < 0, 'is-near': left >= 0 && left <= 20 }"
-      >
-        {{ left < 0 ? t.over(-left) : t.left(left) }}
-      </span>
-      <BlessButton type="submit" size="sm" :disabled="!canPost">{{ t.post }}</BlessButton>
-    </div>
-  </form>
-</template>
 
 <style>
 .bless-post {

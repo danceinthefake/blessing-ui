@@ -1,3 +1,14 @@
+<template>
+  <div style="max-width: 560px">
+    <BlessPickList
+      v-model:source="source"
+      v-model:target="target"
+      :labels="{ source: 'Cast', target: 'Main' }"
+      :rows="4"
+    />
+  </div>
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessPickList } from "blessing-ui";
@@ -10,14 +21,3 @@ const source = ref([
 ]);
 const target = ref([{ value: "tomoya", label: "倫也" }]);
 </script>
-
-<template>
-  <div style="max-width: 560px">
-    <BlessPickList
-      v-model:source="source"
-      v-model:target="target"
-      :labels="{ source: 'Cast', target: 'Main' }"
-      :rows="4"
-    />
-  </div>
-</template>

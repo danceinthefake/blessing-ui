@@ -1,3 +1,57 @@
+<template>
+  <figure class="bless-venn">
+    <svg :viewBox="`0 0 320 ${three ? 240 : 220}`" class="bless-venn__svg" aria-hidden="true">
+      <circle
+        v-for="(s, i) in sets"
+        :key="s.key"
+        class="bless-venn__set"
+        :cx="centers[i]![0]"
+        :cy="centers[i]![1]"
+        :r="R"
+        :style="{ '--_c': s.color }"
+      >
+        <title>{{ s.label }}: {{ fmt(s.size) }}</title>
+      </circle>
+      <text
+        v-for="r in regions"
+        :key="r.keys.join()"
+        class="bless-venn__count"
+        :class="{ 'is-shared': r.keys.length > 1 }"
+        :x="r.at[0]"
+        :y="r.at[1]"
+        text-anchor="middle"
+        dominant-baseline="middle"
+      >
+        {{ fmt(r.size) }}
+      </text>
+    </svg>
+    <ul class="bless-venn__legend" aria-hidden="true">
+      <li v-for="s in sets" :key="s.key">
+        <i :style="{ background: s.color }" />{{ s.label }} <span>{{ fmt(s.size) }}</span>
+      </li>
+    </ul>
+    <div class="bless-sr">
+      <table>
+        <caption>
+          {{ label }}
+        </caption>
+        <thead>
+          <tr>
+            <th scope="col">{{ text.part }}</th>
+            <th scope="col">{{ text.count }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="r in regions" :key="r.keys.join()">
+            <th scope="row">{{ r.name }}</th>
+            <td>{{ fmt(r.size) }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </figure>
+</template>
+
 <script lang="ts">
 export interface BlessVennSet {
   key: string;
@@ -130,60 +184,6 @@ const regions = computed(() =>
   }),
 );
 </script>
-
-<template>
-  <figure class="bless-venn">
-    <svg :viewBox="`0 0 320 ${three ? 240 : 220}`" class="bless-venn__svg" aria-hidden="true">
-      <circle
-        v-for="(s, i) in sets"
-        :key="s.key"
-        class="bless-venn__set"
-        :cx="centers[i]![0]"
-        :cy="centers[i]![1]"
-        :r="R"
-        :style="{ '--_c': s.color }"
-      >
-        <title>{{ s.label }}: {{ fmt(s.size) }}</title>
-      </circle>
-      <text
-        v-for="r in regions"
-        :key="r.keys.join()"
-        class="bless-venn__count"
-        :class="{ 'is-shared': r.keys.length > 1 }"
-        :x="r.at[0]"
-        :y="r.at[1]"
-        text-anchor="middle"
-        dominant-baseline="middle"
-      >
-        {{ fmt(r.size) }}
-      </text>
-    </svg>
-    <ul class="bless-venn__legend" aria-hidden="true">
-      <li v-for="s in sets" :key="s.key">
-        <i :style="{ background: s.color }" />{{ s.label }} <span>{{ fmt(s.size) }}</span>
-      </li>
-    </ul>
-    <div class="bless-sr">
-      <table>
-        <caption>
-          {{ label }}
-        </caption>
-        <thead>
-          <tr>
-            <th scope="col">{{ text.part }}</th>
-            <th scope="col">{{ text.count }}</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="r in regions" :key="r.keys.join()">
-            <th scope="row">{{ r.name }}</th>
-            <td>{{ fmt(r.size) }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </figure>
-</template>
 
 <style>
 .bless-venn {

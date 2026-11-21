@@ -1,3 +1,24 @@
+<template>
+  <div class="col" style="max-width: 560px">
+    <BlessTreeTable
+      :rows
+      :columns="[
+        { key: 'name', label: 'Name', header: true },
+        { key: 'kind', label: 'Kind' },
+        { key: 'size', label: 'Size', align: 'right' },
+      ]"
+      row-key="id"
+      v-model:expanded="expanded"
+      striped
+    >
+      <template #cell-kind="{ value }"
+        ><BlessBadge :color="value === 'dir' ? 'text' : 'info'">{{ value }}</BlessBadge></template
+      >
+    </BlessTreeTable>
+    <small>expanded: {{ expanded }}</small>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessBadge, BlessTreeTable } from "blessing-ui";
@@ -33,24 +54,3 @@ const rows: Row[] = [
 ];
 const expanded = ref<string[]>(["src"]);
 </script>
-
-<template>
-  <div class="col" style="max-width: 560px">
-    <BlessTreeTable
-      :rows
-      :columns="[
-        { key: 'name', label: 'Name', header: true },
-        { key: 'kind', label: 'Kind' },
-        { key: 'size', label: 'Size', align: 'right' },
-      ]"
-      row-key="id"
-      v-model:expanded="expanded"
-      striped
-    >
-      <template #cell-kind="{ value }"
-        ><BlessBadge :color="value === 'dir' ? 'text' : 'info'">{{ value }}</BlessBadge></template
-      >
-    </BlessTreeTable>
-    <small>expanded: {{ expanded }}</small>
-  </div>
-</template>

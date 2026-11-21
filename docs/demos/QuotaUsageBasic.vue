@@ -1,3 +1,11 @@
+<template>
+  <BlessQuotaUsage :quotas style="max-width: 420px">
+    <template #footer>
+      <BlessButton size="sm" variant="outline">Upgrade the plan</BlessButton>
+    </template>
+  </BlessQuotaUsage>
+</template>
+
 <script setup lang="ts">
 import { BlessButton, BlessQuotaUsage } from "blessing-ui";
 
@@ -9,11 +17,3 @@ const quotas = [
   { label: "Downloads this month", used: 124_300, limit: 250_000 },
 ];
 </script>
-
-<template>
-  <BlessQuotaUsage :quotas style="max-width: 420px">
-    <template #footer>
-      <BlessButton size="sm" variant="outline">Upgrade the plan</BlessButton>
-    </template>
-  </BlessQuotaUsage>
-</template>

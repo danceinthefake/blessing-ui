@@ -1,3 +1,38 @@
+<template>
+  <div
+    class="bless-bubble"
+    :class="[
+      `bless-bubble--${variant}`,
+      `bless-bubble--${align}`,
+      { 'bless-bubble--clamped': collapsible && !expanded },
+    ]"
+    :style="collapsible ? { '--_lines': lines } : undefined"
+  >
+    <div class="bless-bubble__content"><slot /></div>
+    <button
+      v-if="collapsible"
+      type="button"
+      class="bless-bubble__more"
+      :aria-expanded="expanded"
+      @click="expanded = !expanded"
+    >
+      {{ expanded ? text.less : text.more }}
+    </button>
+    <div v-if="reactions?.length" class="bless-bubble__reactions">
+      <button
+        v-for="r in reactions"
+        :key="r.emoji"
+        type="button"
+        class="bless-bubble__reaction"
+        :aria-pressed="!!r.active"
+        @click="emit('react', r)"
+      >
+        {{ r.emoji }}<span v-if="r.count">{{ r.count }}</span>
+      </button>
+    </div>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { useLabelPack } from "../composables/useLabels";
 import { ref, computed } from "vue";
@@ -34,41 +69,6 @@ const text = computed(() => ({
 const emit = defineEmits<{ react: [reaction: BlessReaction] }>();
 const expanded = ref(false);
 </script>
-
-<template>
-  <div
-    class="bless-bubble"
-    :class="[
-      `bless-bubble--${variant}`,
-      `bless-bubble--${align}`,
-      { 'bless-bubble--clamped': collapsible && !expanded },
-    ]"
-    :style="collapsible ? { '--_lines': lines } : undefined"
-  >
-    <div class="bless-bubble__content"><slot /></div>
-    <button
-      v-if="collapsible"
-      type="button"
-      class="bless-bubble__more"
-      :aria-expanded="expanded"
-      @click="expanded = !expanded"
-    >
-      {{ expanded ? text.less : text.more }}
-    </button>
-    <div v-if="reactions?.length" class="bless-bubble__reactions">
-      <button
-        v-for="r in reactions"
-        :key="r.emoji"
-        type="button"
-        class="bless-bubble__reaction"
-        :aria-pressed="!!r.active"
-        @click="emit('react', r)"
-      >
-        {{ r.emoji }}<span v-if="r.count">{{ r.count }}</span>
-      </button>
-    </div>
-  </div>
-</template>
 
 <style>
 /* a flat square plate — no tail, no cut corner; the side it sits on says who sent it */

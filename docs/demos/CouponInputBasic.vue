@@ -1,3 +1,10 @@
+<template>
+  <div style="max-width: 380px; display: flex; flex-direction: column; gap: 12px">
+    <BlessCouponInput :applied :error :loading @apply="apply" @remove="applied = undefined" />
+    <BlessOrderSummary :lines :discount :discount-label="applied?.code" :shipping="0" />
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed, ref } from "vue";
 import { BlessCouponInput, BlessOrderSummary, type BlessCoupon } from "blessing-ui";
@@ -22,10 +29,3 @@ function apply(code: string) {
   }, 600);
 }
 </script>
-
-<template>
-  <div style="max-width: 380px; display: flex; flex-direction: column; gap: 12px">
-    <BlessCouponInput :applied :error :loading @apply="apply" @remove="applied = undefined" />
-    <BlessOrderSummary :lines :discount :discount-label="applied?.code" :shipping="0" />
-  </div>
-</template>

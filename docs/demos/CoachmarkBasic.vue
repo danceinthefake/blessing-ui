@@ -1,11 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { BlessButton, BlessCoachmark } from "blessing-ui";
-
-const seen = ref(false);
-const log = ref("");
-</script>
-
 <template>
   <div class="row" style="padding-block: 16px">
     <BlessCoachmark
@@ -21,3 +13,11 @@ const log = ref("");
     <span aria-live="polite">{{ log }}</span>
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { BlessButton, BlessCoachmark } from "blessing-ui";
+
+const seen = ref(false);
+const log = ref("");
+</script>

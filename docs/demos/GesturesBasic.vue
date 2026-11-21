@@ -1,3 +1,52 @@
+<template>
+  <div class="g">
+    <div class="g__row">
+      <div class="g__pad">
+        <div
+          ref="pan"
+          class="g__plate bless-lean"
+          :class="{ 'g__plate--dragging': dragging }"
+          :style="{ translate: `${pos.x}px ${pos.y}px` }"
+          tabindex="0"
+          role="img"
+          aria-label="Draggable plate — arrow keys move it"
+          @keydown="nudge"
+        >
+          <span>drag</span>
+        </div>
+      </div>
+      <BlessText size="xs" muted
+        >usePan — {{ Math.round(pos.x) }}, {{ Math.round(pos.y) }}</BlessText
+      >
+    </div>
+    <div class="g__row">
+      <div ref="strip" class="g__strip">swipe ← →</div>
+      <BlessText size="xs" muted>useSwipe — {{ direction ?? "…" }}</BlessText>
+    </div>
+    <div class="g__row">
+      <!-- refs on Bless components are instances; the composables want an element -->
+      <span ref="hold" class="g__wrap"
+        ><BlessButton>{{ pressing ? "holding…" : "hold me" }}</BlessButton></span
+      >
+      <BlessText size="xs" muted>useLongPress — {{ held }}×</BlessText>
+    </div>
+    <div class="g__row">
+      <div class="row" style="gap: 4px">
+        <span ref="minus" class="g__wrap"
+          ><BlessButton size="sm" variant="outline" aria-label="Decrease">−</BlessButton></span
+        >
+        <BlessText weight="bold" style="min-width: 2.5em; text-align: center">{{
+          count
+        }}</BlessText>
+        <span ref="plus" class="g__wrap"
+          ><BlessButton size="sm" variant="outline" aria-label="Increase">+</BlessButton></span
+        >
+      </div>
+      <BlessText size="xs" muted>useTouchRepeat — hold a button</BlessText>
+    </div>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import {
@@ -48,55 +97,6 @@ const count = ref(0);
 useTouchRepeat(plus, () => count.value++);
 useTouchRepeat(minus, () => count.value--);
 </script>
-
-<template>
-  <div class="g">
-    <div class="g__row">
-      <div class="g__pad">
-        <div
-          ref="pan"
-          class="g__plate bless-lean"
-          :class="{ 'g__plate--dragging': dragging }"
-          :style="{ translate: `${pos.x}px ${pos.y}px` }"
-          tabindex="0"
-          role="img"
-          aria-label="Draggable plate — arrow keys move it"
-          @keydown="nudge"
-        >
-          <span>drag</span>
-        </div>
-      </div>
-      <BlessText size="xs" muted
-        >usePan — {{ Math.round(pos.x) }}, {{ Math.round(pos.y) }}</BlessText
-      >
-    </div>
-    <div class="g__row">
-      <div ref="strip" class="g__strip">swipe ← →</div>
-      <BlessText size="xs" muted>useSwipe — {{ direction ?? "…" }}</BlessText>
-    </div>
-    <div class="g__row">
-      <!-- refs on Bless components are instances; the composables want an element -->
-      <span ref="hold" class="g__wrap"
-        ><BlessButton>{{ pressing ? "holding…" : "hold me" }}</BlessButton></span
-      >
-      <BlessText size="xs" muted>useLongPress — {{ held }}×</BlessText>
-    </div>
-    <div class="g__row">
-      <div class="row" style="gap: 4px">
-        <span ref="minus" class="g__wrap"
-          ><BlessButton size="sm" variant="outline" aria-label="Decrease">−</BlessButton></span
-        >
-        <BlessText weight="bold" style="min-width: 2.5em; text-align: center">{{
-          count
-        }}</BlessText>
-        <span ref="plus" class="g__wrap"
-          ><BlessButton size="sm" variant="outline" aria-label="Increase">+</BlessButton></span
-        >
-      </div>
-      <BlessText size="xs" muted>useTouchRepeat — hold a button</BlessText>
-    </div>
-  </div>
-</template>
 
 <style scoped>
 .g {

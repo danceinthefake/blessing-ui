@@ -1,3 +1,13 @@
+<template>
+  <BlessPyramid
+    :data="ages"
+    :format="pct"
+    :labels="{ left: 'Men', right: 'Women', row: 'Age' }"
+    label="Listeners by age and gender"
+    style="max-width: 560px"
+  />
+</template>
+
 <script setup lang="ts">
 import { BlessPyramid } from "blessing-ui";
 
@@ -12,13 +22,3 @@ const ages = [
 ];
 const pct = (v: number) => `${v}%`;
 </script>
-
-<template>
-  <BlessPyramid
-    :data="ages"
-    :format="pct"
-    :labels="{ left: 'Men', right: 'Women', row: 'Age' }"
-    label="Listeners by age and gender"
-    style="max-width: 560px"
-  />
-</template>

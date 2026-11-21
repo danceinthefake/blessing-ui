@@ -1,3 +1,7 @@
+<template>
+  <BlessBeeswarm :data :groups :format="minutes" label="Length of each episode" />
+</template>
+
 <script setup lang="ts">
 import { BlessBeeswarm } from "blessing-ui";
 
@@ -14,7 +18,3 @@ const groups = [
 ];
 const minutes = (v: number) => `${v} min`;
 </script>
-
-<template>
-  <BlessBeeswarm :data :groups :format="minutes" label="Length of each episode" />
-</template>

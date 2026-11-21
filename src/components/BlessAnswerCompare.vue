@@ -1,3 +1,41 @@
+<template>
+  <div class="bless-ab">
+    <div v-if="prompt" class="bless-ab__prompt">
+      <span class="bless-ab__label">{{ text.prompt }}</span>
+      <div>{{ prompt }}</div>
+    </div>
+    <div class="bless-ab__pair">
+      <section
+        v-for="(a, i) in answers"
+        :key="i"
+        class="bless-ab__answer"
+        :class="{ 'is-won': won(i) }"
+        :aria-label="text.answer(i ? 'B' : 'A')"
+      >
+        <div class="bless-ab__head">
+          <span class="bless-ab__letter">{{ text.answer(i ? "B" : "A") }}</span>
+          <span v-if="show && a.source" class="bless-ab__source">{{ a.source }}</span>
+          <span v-if="won(i)" class="bless-ab__won" aria-hidden="true">✓</span>
+        </div>
+        <div class="bless-ab__text">{{ a.text }}</div>
+      </section>
+    </div>
+    <div class="bless-ab__vote" role="group" :aria-label="text.question">
+      <span class="bless-ab__question" aria-hidden="true">{{ text.question }}</span>
+      <button
+        v-for="v in VOTES"
+        :key="v"
+        type="button"
+        :aria-pressed="vote === v"
+        @click="vote = v"
+      >
+        {{ text[v] }}
+      </button>
+    </div>
+    <p class="bless-ab__thanks" role="status">{{ vote ? text.thanks : "" }}</p>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -47,44 +85,6 @@ const VOTES: BlessAnswerVote[] = ["a", "b", "tie", "bad"];
 const show = computed(() => !props.blind || vote.value != null);
 const won = (i: number) => (vote.value === "a" && i === 0) || (vote.value === "b" && i === 1);
 </script>
-
-<template>
-  <div class="bless-ab">
-    <div v-if="prompt" class="bless-ab__prompt">
-      <span class="bless-ab__label">{{ text.prompt }}</span>
-      <div>{{ prompt }}</div>
-    </div>
-    <div class="bless-ab__pair">
-      <section
-        v-for="(a, i) in answers"
-        :key="i"
-        class="bless-ab__answer"
-        :class="{ 'is-won': won(i) }"
-        :aria-label="text.answer(i ? 'B' : 'A')"
-      >
-        <div class="bless-ab__head">
-          <span class="bless-ab__letter">{{ text.answer(i ? "B" : "A") }}</span>
-          <span v-if="show && a.source" class="bless-ab__source">{{ a.source }}</span>
-          <span v-if="won(i)" class="bless-ab__won" aria-hidden="true">✓</span>
-        </div>
-        <div class="bless-ab__text">{{ a.text }}</div>
-      </section>
-    </div>
-    <div class="bless-ab__vote" role="group" :aria-label="text.question">
-      <span class="bless-ab__question" aria-hidden="true">{{ text.question }}</span>
-      <button
-        v-for="v in VOTES"
-        :key="v"
-        type="button"
-        :aria-pressed="vote === v"
-        @click="vote = v"
-      >
-        {{ text[v] }}
-      </button>
-    </div>
-    <p class="bless-ab__thanks" role="status">{{ vote ? text.thanks : "" }}</p>
-  </div>
-</template>
 
 <style>
 .bless-ab {

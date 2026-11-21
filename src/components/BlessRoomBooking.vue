@@ -1,3 +1,53 @@
+<template>
+  <div class="bless-rooms">
+    <div class="bless-rooms__scroll" tabindex="0" role="group" :aria-label="text.caption">
+      <table class="bless-rooms__table">
+        <caption class="bless-sr">
+          {{ text.caption }}
+        </caption>
+        <thead>
+          <tr>
+            <th scope="col">{{ text.room }}</th>
+            <th v-for="h in hours" :key="h" scope="col" colspan="2">{{ h }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="r in rows" :key="r.room.id">
+            <th scope="row">
+              <span class="bless-rooms__name">{{ r.room.name }}</span>
+              <span v-if="r.room.seats" class="bless-rooms__seats">{{
+                text.seats(r.room.seats)
+              }}</span>
+            </th>
+            <template v-for="c in r.cells" :key="c.at">
+              <td v-if="c.booking" :colspan="c.span" class="bless-rooms__busy">
+                <span class="bless-rooms__title">{{ c.booking.title || text.busy }}</span>
+                <span class="bless-sr">{{ c.booking.start }}–{{ c.booking.end }}</span>
+              </td>
+              <td v-else class="bless-rooms__free">
+                <button
+                  type="button"
+                  :aria-pressed="isPicked(r.room.id, c.at)"
+                  :aria-label="text.free(r.room.name, hhmm(c.at))"
+                  @click="pick(r.room.id, c.at)"
+                />
+              </td>
+            </template>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="bless-rooms__foot">
+      <span role="status">{{
+        picked ? text.chosen(roomName(picked.room), picked.start, picked.end) : text.pick
+      }}</span>
+      <button v-if="picked" type="button" class="bless-rooms__book" @click="emit('book', picked)">
+        {{ text.book }}
+      </button>
+    </div>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -102,56 +152,6 @@ function pick(room: string, at: number) {
 }
 const roomName = (id: string) => props.rooms.find((r) => r.id === id)?.name ?? id;
 </script>
-
-<template>
-  <div class="bless-rooms">
-    <div class="bless-rooms__scroll" tabindex="0" role="group" :aria-label="text.caption">
-      <table class="bless-rooms__table">
-        <caption class="bless-sr">
-          {{ text.caption }}
-        </caption>
-        <thead>
-          <tr>
-            <th scope="col">{{ text.room }}</th>
-            <th v-for="h in hours" :key="h" scope="col" colspan="2">{{ h }}</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="r in rows" :key="r.room.id">
-            <th scope="row">
-              <span class="bless-rooms__name">{{ r.room.name }}</span>
-              <span v-if="r.room.seats" class="bless-rooms__seats">{{
-                text.seats(r.room.seats)
-              }}</span>
-            </th>
-            <template v-for="c in r.cells" :key="c.at">
-              <td v-if="c.booking" :colspan="c.span" class="bless-rooms__busy">
-                <span class="bless-rooms__title">{{ c.booking.title || text.busy }}</span>
-                <span class="bless-sr">{{ c.booking.start }}–{{ c.booking.end }}</span>
-              </td>
-              <td v-else class="bless-rooms__free">
-                <button
-                  type="button"
-                  :aria-pressed="isPicked(r.room.id, c.at)"
-                  :aria-label="text.free(r.room.name, hhmm(c.at))"
-                  @click="pick(r.room.id, c.at)"
-                />
-              </td>
-            </template>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="bless-rooms__foot">
-      <span role="status">{{
-        picked ? text.chosen(roomName(picked.room), picked.start, picked.end) : text.pick
-      }}</span>
-      <button v-if="picked" type="button" class="bless-rooms__book" @click="emit('book', picked)">
-        {{ text.book }}
-      </button>
-    </div>
-  </div>
-</template>
 
 <style>
 .bless-rooms {

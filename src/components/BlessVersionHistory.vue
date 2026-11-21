@@ -1,50 +1,3 @@
-<script setup lang="ts">
-import { computed } from "vue";
-import { useLabelPack } from "../composables/useLabels";
-import BlessAvatar from "./BlessAvatar.vue";
-import "./sr.css";
-
-defineOptions({ name: "BlessVersionHistory" });
-const pack = useLabelPack("BlessVersionHistory");
-
-export interface BlessVersion {
-  id: string;
-  /** a name, for example "Final mix" */
-  label?: string;
-  author: string;
-  avatar?: string;
-  /** when, as text */
-  time: string;
-  /** what changed, in a few words */
-  summary?: string;
-  added?: number;
-  removed?: number;
-}
-
-const props = defineProps<{
-  /** newest first; the first is the current version */
-  versions: BlessVersion[];
-  labels?: Partial<{
-    title: string;
-    current: string;
-    restore: string;
-    changes: (added: number, removed: number) => string;
-  }>;
-}>();
-/** the id of the version the reader looks at */
-const selected = defineModel<string>("selected");
-const emit = defineEmits<{ restore: [id: string] }>();
-
-const text = computed(() => ({
-  title: "Version history",
-  current: "Current",
-  restore: "Restore",
-  changes: (a: number, r: number) => `${a} added, ${r} removed`,
-  ...pack(),
-  ...props.labels,
-}));
-</script>
-
 <template>
   <section class="bless-versions" :aria-label="text.title">
     <ol class="bless-stagger bless-versions__list">
@@ -94,6 +47,53 @@ const text = computed(() => ({
     </ol>
   </section>
 </template>
+
+<script setup lang="ts">
+import { computed } from "vue";
+import { useLabelPack } from "../composables/useLabels";
+import BlessAvatar from "./BlessAvatar.vue";
+import "./sr.css";
+
+defineOptions({ name: "BlessVersionHistory" });
+const pack = useLabelPack("BlessVersionHistory");
+
+export interface BlessVersion {
+  id: string;
+  /** a name, for example "Final mix" */
+  label?: string;
+  author: string;
+  avatar?: string;
+  /** when, as text */
+  time: string;
+  /** what changed, in a few words */
+  summary?: string;
+  added?: number;
+  removed?: number;
+}
+
+const props = defineProps<{
+  /** newest first; the first is the current version */
+  versions: BlessVersion[];
+  labels?: Partial<{
+    title: string;
+    current: string;
+    restore: string;
+    changes: (added: number, removed: number) => string;
+  }>;
+}>();
+/** the id of the version the reader looks at */
+const selected = defineModel<string>("selected");
+const emit = defineEmits<{ restore: [id: string] }>();
+
+const text = computed(() => ({
+  title: "Version history",
+  current: "Current",
+  restore: "Restore",
+  changes: (a: number, r: number) => `${a} added, ${r} removed`,
+  ...pack(),
+  ...props.labels,
+}));
+</script>
 
 <style>
 .bless-versions {

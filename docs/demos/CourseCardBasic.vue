@@ -1,8 +1,3 @@
-<script setup lang="ts">
-import { BlessCourseCard } from "blessing-ui";
-import { art } from "./_data";
-</script>
-
 <template>
   <div
     style="display: grid; grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr)); gap: 16px"
@@ -38,3 +33,8 @@ import { art } from "./_data";
     />
   </div>
 </template>
+
+<script setup lang="ts">
+import { BlessCourseCard } from "blessing-ui";
+import { art } from "./_data";
+</script>

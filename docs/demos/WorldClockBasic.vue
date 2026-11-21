@@ -1,3 +1,7 @@
+<template>
+  <BlessWorldClock :zones />
+</template>
+
 <script setup lang="ts">
 import { BlessWorldClock } from "blessing-ui";
 
@@ -10,7 +14,3 @@ const zones = [
   "America/Los_Angeles",
 ];
 </script>
-
-<template>
-  <BlessWorldClock :zones />
-</template>

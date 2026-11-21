@@ -1,11 +1,3 @@
-<script setup lang="ts">
-import { BlessText, BlessVirtualScroller } from "blessing-ui";
-const rows = Array.from({ length: 5000 }, (_, i) => ({
-  id: i,
-  text: "lorem ipsum ".repeat(1 + ((i * 7) % 9)),
-}));
-</script>
-
 <template>
   <div class="col" style="max-width: 480px">
     <BlessVirtualScroller
@@ -29,3 +21,11 @@ const rows = Array.from({ length: 5000 }, (_, i) => ({
     >
   </div>
 </template>
+
+<script setup lang="ts">
+import { BlessText, BlessVirtualScroller } from "blessing-ui";
+const rows = Array.from({ length: 5000 }, (_, i) => ({
+  id: i,
+  text: "lorem ipsum ".repeat(1 + ((i * 7) % 9)),
+}));
+</script>

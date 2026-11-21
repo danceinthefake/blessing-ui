@@ -1,3 +1,16 @@
+<template>
+  <BlessChart
+    title="Where visits go"
+    description="Docs sends more people to install than the blog does"
+    height="260px"
+    style="max-width: 560px"
+  >
+    <VisSingleContainer :data>
+      <VisSankey :label="(n: Node) => n.id" :nodeWidth="14" />
+    </VisSingleContainer>
+  </BlessChart>
+</template>
+
 <script setup lang="ts">
 import { BlessChart } from "blessing-ui";
 import { VisSankey, VisSingleContainer } from "@unovis/vue";
@@ -22,16 +35,3 @@ const data = {
   ] as Link[],
 };
 </script>
-
-<template>
-  <BlessChart
-    title="Where visits go"
-    description="Docs sends more people to install than the blog does"
-    height="260px"
-    style="max-width: 560px"
-  >
-    <VisSingleContainer :data>
-      <VisSankey :label="(n: Node) => n.id" :nodeWidth="14" />
-    </VisSingleContainer>
-  </BlessChart>
-</template>

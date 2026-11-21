@@ -1,9 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { BlessInputTags, BlessLabel } from "blessing-ui";
-const tags = ref(["anime", "2015"]);
-</script>
-
 <template>
   <div class="col">
     <BlessLabel for="d-tags">Tags</BlessLabel>
@@ -11,3 +5,9 @@ const tags = ref(["anime", "2015"]);
     <small>{{ tags }}</small>
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { BlessInputTags, BlessLabel } from "blessing-ui";
+const tags = ref(["anime", "2015"]);
+</script>

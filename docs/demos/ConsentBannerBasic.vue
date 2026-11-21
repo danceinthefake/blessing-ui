@@ -1,3 +1,15 @@
+<template>
+  <div style="max-width: 560px">
+    <BlessConsentBanner v-model="consent" :categories position="static" policy-href="#" />
+    <template v-if="consent">
+      <BlessText as="p" size="sm" style="margin-bottom: 8px"
+        >Saved: {{ JSON.stringify(consent) }}</BlessText
+      >
+      <BlessButton size="sm" variant="outline" @click="consent = undefined">Ask again</BlessButton>
+    </template>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessButton, BlessConsentBanner, BlessText } from "blessing-ui";
@@ -23,15 +35,3 @@ const categories = [
 // on a real page: leave out `position`, and add `persist` to keep the choice for the next visit
 const consent = ref<Record<string, boolean>>();
 </script>
-
-<template>
-  <div style="max-width: 560px">
-    <BlessConsentBanner v-model="consent" :categories position="static" policy-href="#" />
-    <template v-if="consent">
-      <BlessText as="p" size="sm" style="margin-bottom: 8px"
-        >Saved: {{ JSON.stringify(consent) }}</BlessText
-      >
-      <BlessButton size="sm" variant="outline" @click="consent = undefined">Ask again</BlessButton>
-    </template>
-  </div>
-</template>

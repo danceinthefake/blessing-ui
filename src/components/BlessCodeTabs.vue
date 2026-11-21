@@ -1,3 +1,7 @@
+<template>
+  <BlessCodeBlock v-model:active="active" class="bless-codetabs" :files :label />
+</template>
+
 <script lang="ts">
 import { reactive } from "vue";
 
@@ -88,7 +92,3 @@ watch(
   (v) => v !== undefined && writeStore(key.value, v),
 );
 </script>
-
-<template>
-  <BlessCodeBlock v-model:active="active" class="bless-codetabs" :files :label />
-</template>

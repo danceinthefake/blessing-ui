@@ -1,3 +1,76 @@
+<template>
+  <section class="bless-evcal" :aria-label="label">
+    <header class="bless-evcal__head">
+      <div class="bless-evcal__title" aria-live="polite">{{ title }}</div>
+      <BlessButton
+        size="sm"
+        variant="outline"
+        @click="
+          anchor = today;
+          open = undefined;
+        "
+        >{{ text.today }}</BlessButton
+      >
+      <BlessButton size="sm" variant="outline" icon :aria-label="text.prev" @click="go(-1)">
+        <span aria-hidden="true" class="bless-evcal__arrow">‹</span>
+      </BlessButton>
+      <BlessButton size="sm" variant="outline" icon :aria-label="text.next" @click="go(1)">
+        <span aria-hidden="true" class="bless-evcal__arrow">›</span>
+      </BlessButton>
+    </header>
+    <table class="bless-evcal__grid">
+      <thead>
+        <tr>
+          <th v-for="w in weekdays" :key="w.long" scope="col">
+            <abbr :title="w.long">{{ w.short }}</abbr>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="week in weeks" :key="week[0]">
+          <td
+            v-for="d in week"
+            :key="d"
+            class="bless-evcal__day"
+            :class="{
+              'bless-evcal__day--out': !inMonth(d),
+              'bless-evcal__day--today': d === today,
+            }"
+          >
+            <span class="bless-evcal__num" aria-hidden="true">{{ dayNum(d) }}</span>
+            <span class="bless-sr">{{ dayLabel.format(fromISO(d)) }}</span>
+            <ul v-if="byDay.get(d)" role="list" class="bless-evcal__events">
+              <li v-for="e in shown(d)" :key="e.id">
+                <button
+                  type="button"
+                  class="bless-evcal__event"
+                  :class="{ 'bless-evcal__event--allday': e.start === undefined }"
+                  :style="{ '--_c': chartColor(e.color, 0) }"
+                  @click="emit('select', e)"
+                >
+                  <span v-if="e.start !== undefined" class="bless-evcal__time">{{
+                    fmtTime(e.start, locale)
+                  }}</span>
+                  {{ e.title }}
+                </button>
+              </li>
+              <li v-if="hidden(d) > 0 || open === d">
+                <button
+                  type="button"
+                  class="bless-evcal__more"
+                  @click="open = open === d ? undefined : d"
+                >
+                  {{ open === d ? text.less : text.more(hidden(d)) }}
+                </button>
+              </li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</template>
+
 <script setup lang="ts">
 import { computed, onMounted, ref } from "vue";
 import { addDays, addMonths, fromISO, isoToday, toISO } from "../composables/date";
@@ -114,79 +187,6 @@ const dayLabel = computed(
   () => new Intl.DateTimeFormat(props.locale, { weekday: "long", day: "numeric", month: "long" }),
 );
 </script>
-
-<template>
-  <section class="bless-evcal" :aria-label="label">
-    <header class="bless-evcal__head">
-      <div class="bless-evcal__title" aria-live="polite">{{ title }}</div>
-      <BlessButton
-        size="sm"
-        variant="outline"
-        @click="
-          anchor = today;
-          open = undefined;
-        "
-        >{{ text.today }}</BlessButton
-      >
-      <BlessButton size="sm" variant="outline" icon :aria-label="text.prev" @click="go(-1)">
-        <span aria-hidden="true" class="bless-evcal__arrow">‹</span>
-      </BlessButton>
-      <BlessButton size="sm" variant="outline" icon :aria-label="text.next" @click="go(1)">
-        <span aria-hidden="true" class="bless-evcal__arrow">›</span>
-      </BlessButton>
-    </header>
-    <table class="bless-evcal__grid">
-      <thead>
-        <tr>
-          <th v-for="w in weekdays" :key="w.long" scope="col">
-            <abbr :title="w.long">{{ w.short }}</abbr>
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="week in weeks" :key="week[0]">
-          <td
-            v-for="d in week"
-            :key="d"
-            class="bless-evcal__day"
-            :class="{
-              'bless-evcal__day--out': !inMonth(d),
-              'bless-evcal__day--today': d === today,
-            }"
-          >
-            <span class="bless-evcal__num" aria-hidden="true">{{ dayNum(d) }}</span>
-            <span class="bless-sr">{{ dayLabel.format(fromISO(d)) }}</span>
-            <ul v-if="byDay.get(d)" role="list" class="bless-evcal__events">
-              <li v-for="e in shown(d)" :key="e.id">
-                <button
-                  type="button"
-                  class="bless-evcal__event"
-                  :class="{ 'bless-evcal__event--allday': e.start === undefined }"
-                  :style="{ '--_c': chartColor(e.color, 0) }"
-                  @click="emit('select', e)"
-                >
-                  <span v-if="e.start !== undefined" class="bless-evcal__time">{{
-                    fmtTime(e.start, locale)
-                  }}</span>
-                  {{ e.title }}
-                </button>
-              </li>
-              <li v-if="hidden(d) > 0 || open === d">
-                <button
-                  type="button"
-                  class="bless-evcal__more"
-                  @click="open = open === d ? undefined : d"
-                >
-                  {{ open === d ? text.less : text.more(hidden(d)) }}
-                </button>
-              </li>
-            </ul>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
-</template>
 
 <style>
 .bless-evcal {

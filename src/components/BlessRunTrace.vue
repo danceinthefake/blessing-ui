@@ -1,3 +1,44 @@
+<template>
+  <div class="bless-trace">
+    <div class="bless-trace__summary">{{ text.summary(rows.length, time(total), errors) }}</div>
+    <ol class="bless-trace__list" role="list">
+      <li v-for="r in rows" :key="r.id" :class="`is-${r.status}`">
+        <details class="bless-trace__step" :style="{ '--_depth': r.depth }">
+          <summary class="bless-trace__sum">
+            <div class="bless-trace__row">
+              <span class="bless-trace__name">
+                <span class="bless-trace__mark" aria-hidden="true">{{ MARK[r.status] }}</span>
+                {{ r.name }}
+                <span class="bless-trace__kind">{{ r.kind }}</span>{{ " "
+                }}<span class="bless-trace__status">{{ text[r.status] }}</span>
+              </span>
+              <span class="bless-trace__lane" aria-hidden="true">
+                <span
+                  :style="{
+                    insetInlineStart: `${(r.start / total) * 100}%`,
+                    inlineSize: `max(2px, ${(r.duration / total) * 100}%)`,
+                  }"
+                />
+              </span>
+              <span class="bless-trace__time">{{ time(r.duration) }}</span>
+            </div>
+          </summary>
+          <div class="bless-trace__io">
+            <template v-if="r.input">
+              <div class="bless-trace__label">{{ text.input }}</div>
+              <pre>{{ r.input }}</pre>
+            </template>
+            <template v-if="r.output">
+              <div class="bless-trace__label">{{ text.output }}</div>
+              <pre>{{ r.output }}</pre>
+            </template>
+          </div>
+        </details>
+      </li>
+    </ol>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -70,47 +111,6 @@ function time(ms: number) {
 const MARK: Record<BlessTraceStatus, string> = { ok: "✓", error: "✕", running: "◐" };
 const errors = computed(() => rows.value.filter((r) => r.status === "error").length);
 </script>
-
-<template>
-  <div class="bless-trace">
-    <div class="bless-trace__summary">{{ text.summary(rows.length, time(total), errors) }}</div>
-    <ol class="bless-trace__list" role="list">
-      <li v-for="r in rows" :key="r.id" :class="`is-${r.status}`">
-        <details class="bless-trace__step" :style="{ '--_depth': r.depth }">
-          <summary class="bless-trace__sum">
-            <div class="bless-trace__row">
-              <span class="bless-trace__name">
-                <span class="bless-trace__mark" aria-hidden="true">{{ MARK[r.status] }}</span>
-                {{ r.name }}
-                <span class="bless-trace__kind">{{ r.kind }}</span>{{ " "
-                }}<span class="bless-trace__status">{{ text[r.status] }}</span>
-              </span>
-              <span class="bless-trace__lane" aria-hidden="true">
-                <span
-                  :style="{
-                    insetInlineStart: `${(r.start / total) * 100}%`,
-                    inlineSize: `max(2px, ${(r.duration / total) * 100}%)`,
-                  }"
-                />
-              </span>
-              <span class="bless-trace__time">{{ time(r.duration) }}</span>
-            </div>
-          </summary>
-          <div class="bless-trace__io">
-            <template v-if="r.input">
-              <div class="bless-trace__label">{{ text.input }}</div>
-              <pre>{{ r.input }}</pre>
-            </template>
-            <template v-if="r.output">
-              <div class="bless-trace__label">{{ text.output }}</div>
-              <pre>{{ r.output }}</pre>
-            </template>
-          </div>
-        </details>
-      </li>
-    </ol>
-  </div>
-</template>
 
 <style>
 .bless-trace {

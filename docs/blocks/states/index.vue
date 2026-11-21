@@ -1,30 +1,3 @@
-<script setup lang="ts">
-import { nextTick, ref } from "vue";
-import {
-  BlessAlert,
-  BlessButton,
-  BlessEmpty,
-  BlessList,
-  BlessListItem,
-  BlessSkeleton,
-  BlessToggle,
-  BlessToggleGroup,
-} from "blessing-ui";
-
-type State = "loading" | "empty" | "error" | "ready";
-const state = ref<State>("loading");
-const region = ref<HTMLElement>();
-// Retry removes its own button: load, then put focus on what arrived
-async function retry() {
-  state.value = "loading";
-  region.value?.focus();
-  await new Promise((r) => setTimeout(r, 900));
-  state.value = "ready";
-  await nextTick();
-  region.value?.focus();
-}
-</script>
-
 <template>
   <div class="states">
     <BlessToggleGroup
@@ -84,6 +57,33 @@ async function retry() {
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+import { nextTick, ref } from "vue";
+import {
+  BlessAlert,
+  BlessButton,
+  BlessEmpty,
+  BlessList,
+  BlessListItem,
+  BlessSkeleton,
+  BlessToggle,
+  BlessToggleGroup,
+} from "blessing-ui";
+
+type State = "loading" | "empty" | "error" | "ready";
+const state = ref<State>("loading");
+const region = ref<HTMLElement>();
+// Retry removes its own button: load, then put focus on what arrived
+async function retry() {
+  state.value = "loading";
+  region.value?.focus();
+  await new Promise((r) => setTimeout(r, 900));
+  state.value = "ready";
+  await nextTick();
+  region.value?.focus();
+}
+</script>
 
 <style scoped>
 .states__sr {

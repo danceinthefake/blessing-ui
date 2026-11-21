@@ -1,3 +1,7 @@
+<template>
+  <BlessMedicationSchedule v-model="taken" :doses now="10:15" style="max-width: 420px" />
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessMedicationSchedule, type BlessDose } from "blessing-ui";
@@ -11,7 +15,3 @@ const doses: BlessDose[] = [
 ];
 const taken = ref(["m2"]);
 </script>
-
-<template>
-  <BlessMedicationSchedule v-model="taken" :doses now="10:15" style="max-width: 420px" />
-</template>

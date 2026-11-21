@@ -1,9 +1,3 @@
-<script setup lang="ts">
-import { BlessAvatar } from "blessing-ui";
-import { shots } from "./_data";
-const sizes = ["xs", "sm", "md", "lg", "xl"] as const;
-</script>
-
 <template>
   <div class="row">
     <BlessAvatar v-for="s in sizes" :key="s" :size="s" name="Megumi Kato" />
@@ -16,3 +10,9 @@ const sizes = ["xs", "sm", "md", "lg", "xl"] as const;
     <BlessAvatar src="/missing-photo.png" name="Michiru Hyodo" />
   </div>
 </template>
+
+<script setup lang="ts">
+import { BlessAvatar } from "blessing-ui";
+import { shots } from "./_data";
+const sizes = ["xs", "sm", "md", "lg", "xl"] as const;
+</script>

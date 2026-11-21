@@ -1,3 +1,9 @@
+<template>
+  <div style="display: flex; justify-content: flex-end; min-height: 3rem">
+    <BlessNotificationInbox :items="items" @read="read" @read-all="readAll" @dismiss="dismiss" />
+  </div>
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessNotificationInbox, type BlessNotice } from "blessing-ui";
@@ -13,9 +19,3 @@ const read = (id: string) => (items.value.find((i) => i.id === id)!.read = true)
 const readAll = () => items.value.forEach((i) => (i.read = true));
 const dismiss = (id: string) => (items.value = items.value.filter((i) => i.id !== id));
 </script>
-
-<template>
-  <div style="display: flex; justify-content: flex-end; min-height: 3rem">
-    <BlessNotificationInbox :items="items" @read="read" @read-all="readAll" @dismiss="dismiss" />
-  </div>
-</template>

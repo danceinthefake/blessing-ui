@@ -1,3 +1,28 @@
+<template>
+  <div class="bless-paywall">
+    <div v-if="$slots.default" class="bless-paywall__preview">
+      <slot />
+    </div>
+    <section class="bless-paywall__box" :aria-labelledby="`${uid}-title`">
+      <h3 :id="`${uid}-title`" class="bless-paywall__title">{{ text.title }}</h3>
+      <p class="bless-paywall__body">{{ text.body }}</p>
+      <form class="bless-paywall__form" @submit.prevent="chosen && emit('subscribe', chosen)">
+        <fieldset class="bless-paywall__plans">
+          <legend class="bless-sr">{{ text.plans }}</legend>
+          <label v-for="p in plans" :key="p.id" class="bless-paywall__plan">
+            <input v-model="chosen" type="radio" :name="`${uid}-plan`" :value="p.id" />
+            <span class="bless-paywall__name">{{ p.name }}</span>
+            <span class="bless-paywall__price">{{ p.price }}</span>
+            <span v-if="p.note" class="bless-paywall__note">{{ p.note }}</span>
+          </label>
+        </fieldset>
+        <BlessButton type="submit" block>{{ text.subscribe }}</BlessButton>
+      </form>
+      <a v-if="signInHref" class="bless-paywall__signin" :href="signInHref">{{ text.signIn }}</a>
+    </section>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed, ref, useId } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -44,31 +69,6 @@ const text = computed(() => ({
 const uid = useId();
 const chosen = ref(props.pick ?? props.plans[0]?.id ?? "");
 </script>
-
-<template>
-  <div class="bless-paywall">
-    <div v-if="$slots.default" class="bless-paywall__preview">
-      <slot />
-    </div>
-    <section class="bless-paywall__box" :aria-labelledby="`${uid}-title`">
-      <h3 :id="`${uid}-title`" class="bless-paywall__title">{{ text.title }}</h3>
-      <p class="bless-paywall__body">{{ text.body }}</p>
-      <form class="bless-paywall__form" @submit.prevent="chosen && emit('subscribe', chosen)">
-        <fieldset class="bless-paywall__plans">
-          <legend class="bless-sr">{{ text.plans }}</legend>
-          <label v-for="p in plans" :key="p.id" class="bless-paywall__plan">
-            <input v-model="chosen" type="radio" :name="`${uid}-plan`" :value="p.id" />
-            <span class="bless-paywall__name">{{ p.name }}</span>
-            <span class="bless-paywall__price">{{ p.price }}</span>
-            <span v-if="p.note" class="bless-paywall__note">{{ p.note }}</span>
-          </label>
-        </fieldset>
-        <BlessButton type="submit" block>{{ text.subscribe }}</BlessButton>
-      </form>
-      <a v-if="signInHref" class="bless-paywall__signin" :href="signInHref">{{ text.signIn }}</a>
-    </section>
-  </div>
-</template>
 
 <style>
 .bless-paywall {

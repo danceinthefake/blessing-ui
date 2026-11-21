@@ -1,9 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { BlessCarousel } from "blessing-ui";
-const slide = ref(0);
-</script>
-
 <template>
   <div style="max-width: 480px">
     <BlessCarousel v-model="slide" :autoplay="3000" loop label="Key visuals">
@@ -25,3 +19,9 @@ const slide = ref(0);
     <small>slide {{ slide + 1 }} · autoplay 3s, loops, pauses on hover</small>
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { BlessCarousel } from "blessing-ui";
+const slide = ref(0);
+</script>

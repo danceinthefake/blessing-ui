@@ -1,3 +1,7 @@
+<template>
+  <BlessComparisonTable :plans :rows label="Compare the hosting plans" style="max-width: 640px" />
+</template>
+
 <script setup lang="ts">
 import { BlessComparisonTable } from "blessing-ui";
 
@@ -18,7 +22,3 @@ const rows = [
   { label: "Priority help", values: { free: false, pro: false, team: true } },
 ];
 </script>
-
-<template>
-  <BlessComparisonTable :plans :rows label="Compare the hosting plans" style="max-width: 640px" />
-</template>

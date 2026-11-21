@@ -1,14 +1,3 @@
-<script setup lang="ts">
-import { useTemplateRef } from "vue";
-import { BlessButton, BlessVirtualScroller } from "blessing-ui";
-const rows = Array.from({ length: 50000 }, (_, i) => ({
-  id: i,
-  title: `第${i + 1}話`,
-  views: 1000 + ((i * 7919) % 9000),
-}));
-const vs = useTemplateRef<{ scrollTo: (i: number) => void }>("vs");
-</script>
-
 <template>
   <div class="col" style="max-width: 480px">
     <BlessVirtualScroller
@@ -34,3 +23,14 @@ const vs = useTemplateRef<{ scrollTo: (i: number) => void }>("vs");
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+import { useTemplateRef } from "vue";
+import { BlessButton, BlessVirtualScroller } from "blessing-ui";
+const rows = Array.from({ length: 50000 }, (_, i) => ({
+  id: i,
+  title: `第${i + 1}話`,
+  views: 1000 + ((i * 7919) % 9000),
+}));
+const vs = useTemplateRef<{ scrollTo: (i: number) => void }>("vs");
+</script>

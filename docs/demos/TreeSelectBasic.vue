@@ -1,3 +1,18 @@
+<template>
+  <div class="row" style="align-items: flex-start">
+    <div class="col">
+      <BlessLabel>Single</BlessLabel>
+      <BlessTreeSelect v-model="one" :nodes placeholder="Pick a file" />
+      <small>{{ one ?? "—" }}</small>
+    </div>
+    <div class="col">
+      <BlessLabel>Multiple, leaves only</BlessLabel>
+      <BlessTreeSelect v-model="many" :nodes multiple leaf-only />
+      <small>{{ many }}</small>
+    </div>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessLabel, BlessTreeSelect, type BlessTreeNode } from "blessing-ui";
@@ -24,18 +39,3 @@ const nodes: BlessTreeNode[] = [
 const one = ref<string>();
 const many = ref<string[]>(["index"]);
 </script>
-
-<template>
-  <div class="row" style="align-items: flex-start">
-    <div class="col">
-      <BlessLabel>Single</BlessLabel>
-      <BlessTreeSelect v-model="one" :nodes placeholder="Pick a file" />
-      <small>{{ one ?? "—" }}</small>
-    </div>
-    <div class="col">
-      <BlessLabel>Multiple, leaves only</BlessLabel>
-      <BlessTreeSelect v-model="many" :nodes multiple leaf-only />
-      <small>{{ many }}</small>
-    </div>
-  </div>
-</template>

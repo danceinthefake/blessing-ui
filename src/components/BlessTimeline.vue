@@ -1,19 +1,3 @@
-<script setup lang="ts">
-defineOptions({ name: "BlessTimeline" });
-
-export interface BlessTimelineItem {
-  title: string;
-  /** shown as written ("2015.01") */
-  time?: string;
-  /** machine-readable form of `time` ("2015-01"), for the <time> element */
-  datetime?: string;
-  description?: string;
-  color?: "text" | "accent" | "danger" | "success" | "warning" | "info";
-}
-
-withDefaults(defineProps<{ items: BlessTimelineItem[]; label?: string }>(), { label: "Timeline" });
-</script>
-
 <template>
   <ol role="list" class="bless-stagger bless-timeline" :aria-label="label">
     <li
@@ -37,6 +21,22 @@ withDefaults(defineProps<{ items: BlessTimelineItem[]; label?: string }>(), { la
     </li>
   </ol>
 </template>
+
+<script setup lang="ts">
+defineOptions({ name: "BlessTimeline" });
+
+export interface BlessTimelineItem {
+  title: string;
+  /** shown as written ("2015.01") */
+  time?: string;
+  /** machine-readable form of `time` ("2015-01"), for the <time> element */
+  datetime?: string;
+  description?: string;
+  color?: "text" | "accent" | "danger" | "success" | "warning" | "info";
+}
+
+withDefaults(defineProps<{ items: BlessTimelineItem[]; label?: string }>(), { label: "Timeline" });
+</script>
 
 <style>
 .bless-timeline {

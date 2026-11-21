@@ -1,3 +1,18 @@
+<template>
+  <ol class="bless-funnel" :aria-label="label" :style="{ '--_c': colour }">
+    <li v-for="r in rows" :key="r.label" class="bless-funnel__row">
+      <span class="bless-funnel__label">{{ r.label }}</span>
+      <span class="bless-funnel__track" aria-hidden="true"
+        ><span class="bless-funnel__bar" :style="{ inlineSize: `${r.width}%` }"
+      /></span>
+      <span class="bless-funnel__value">{{ fmt(r.value) }}</span>
+      <span class="bless-funnel__rate">{{
+        r.ofPrev === null ? text.ofFirst("100") : text.ofPrev(String(r.ofPrev))
+      }}</span>
+    </li>
+  </ol>
+</template>
+
 <script setup lang="ts">
 import { useLabelPack } from "../composables/useLabels";
 import { computed } from "vue";
@@ -35,21 +50,6 @@ const colour = computed(() =>
   /^[a-z0-9-]+$/i.test(props.color) ? `var(--bless-color-${props.color})` : props.color,
 );
 </script>
-
-<template>
-  <ol class="bless-funnel" :aria-label="label" :style="{ '--_c': colour }">
-    <li v-for="r in rows" :key="r.label" class="bless-funnel__row">
-      <span class="bless-funnel__label">{{ r.label }}</span>
-      <span class="bless-funnel__track" aria-hidden="true"
-        ><span class="bless-funnel__bar" :style="{ inlineSize: `${r.width}%` }"
-      /></span>
-      <span class="bless-funnel__value">{{ fmt(r.value) }}</span>
-      <span class="bless-funnel__rate">{{
-        r.ofPrev === null ? text.ofFirst("100") : text.ofPrev(String(r.ofPrev))
-      }}</span>
-    </li>
-  </ol>
-</template>
 
 <style>
 .bless-funnel {

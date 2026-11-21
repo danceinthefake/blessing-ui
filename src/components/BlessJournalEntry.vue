@@ -1,3 +1,91 @@
+<template>
+  <div class="bless-journal">
+    <div class="bless-journal__scroll" role="region" :aria-label="text.title" tabindex="0">
+      <table class="bless-journal__table">
+        <thead>
+          <tr>
+            <th scope="col">{{ text.account }}</th>
+            <th scope="col">{{ text.debit }}</th>
+            <th scope="col">{{ text.credit }}</th>
+            <th scope="col">{{ text.memo }}</th>
+            <td></td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(l, i) in lines" :key="l.id">
+            <td>
+              <select
+                :value="l.account"
+                :aria-label="text.field(text.account, i + 1)"
+                @change="patch(l.id, { account: ($event.target as HTMLSelectElement).value })"
+              >
+                <option value="" disabled>{{ text.pick }}</option>
+                <option v-for="a in accounts" :key="a.code" :value="a.code">
+                  {{ a.code }} · {{ a.name }}
+                </option>
+              </select>
+            </td>
+            <td>
+              <input
+                type="number"
+                min="0"
+                step="any"
+                :value="l.debit ?? ''"
+                :aria-label="text.field(text.debit, i + 1)"
+                @change="amount(l.id, 'debit', $event)"
+              />
+            </td>
+            <td>
+              <input
+                type="number"
+                min="0"
+                step="any"
+                :value="l.credit ?? ''"
+                :aria-label="text.field(text.credit, i + 1)"
+                @change="amount(l.id, 'credit', $event)"
+              />
+            </td>
+            <td>
+              <input
+                class="is-text"
+                :value="l.memo ?? ''"
+                :aria-label="text.field(text.memo, i + 1)"
+                @change="patch(l.id, { memo: ($event.target as HTMLInputElement).value })"
+              />
+            </td>
+            <td>
+              <button
+                type="button"
+                class="bless-journal__x"
+                :aria-label="text.remove(i + 1)"
+                :title="text.remove(i + 1)"
+                @click="remove(l.id)"
+              >
+                ✕
+              </button>
+            </td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <th scope="row">{{ text.total }}</th>
+            <td>{{ money.format(totals.debit) }}</td>
+            <td>{{ money.format(totals.credit) }}</td>
+            <td colspan="2"></td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+    <div class="bless-journal__foot">
+      <button type="button" class="bless-journal__add" @click="add">+ {{ text.add }}</button>
+      <p class="bless-journal__status" :class="{ 'is-ok': totals.balanced }" role="status">
+        <span aria-hidden="true">{{ totals.balanced ? "✓" : "≠" }}</span> {{ status }}
+      </p>
+      <BlessButton :disabled="!ready" @click="emit('post', lines)">{{ text.post }}</BlessButton>
+    </div>
+  </div>
+</template>
+
 <script lang="ts">
 export interface BlessJournalLine {
   id: string;
@@ -102,94 +190,6 @@ const add = () =>
   (lines.value = [...lines.value, { id: `j${Date.now().toString(36)}${seq++}`, account: "" }]);
 const remove = (id: string) => (lines.value = lines.value.filter((l) => l.id !== id));
 </script>
-
-<template>
-  <div class="bless-journal">
-    <div class="bless-journal__scroll" role="region" :aria-label="text.title" tabindex="0">
-      <table class="bless-journal__table">
-        <thead>
-          <tr>
-            <th scope="col">{{ text.account }}</th>
-            <th scope="col">{{ text.debit }}</th>
-            <th scope="col">{{ text.credit }}</th>
-            <th scope="col">{{ text.memo }}</th>
-            <td></td>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="(l, i) in lines" :key="l.id">
-            <td>
-              <select
-                :value="l.account"
-                :aria-label="text.field(text.account, i + 1)"
-                @change="patch(l.id, { account: ($event.target as HTMLSelectElement).value })"
-              >
-                <option value="" disabled>{{ text.pick }}</option>
-                <option v-for="a in accounts" :key="a.code" :value="a.code">
-                  {{ a.code }} · {{ a.name }}
-                </option>
-              </select>
-            </td>
-            <td>
-              <input
-                type="number"
-                min="0"
-                step="any"
-                :value="l.debit ?? ''"
-                :aria-label="text.field(text.debit, i + 1)"
-                @change="amount(l.id, 'debit', $event)"
-              />
-            </td>
-            <td>
-              <input
-                type="number"
-                min="0"
-                step="any"
-                :value="l.credit ?? ''"
-                :aria-label="text.field(text.credit, i + 1)"
-                @change="amount(l.id, 'credit', $event)"
-              />
-            </td>
-            <td>
-              <input
-                class="is-text"
-                :value="l.memo ?? ''"
-                :aria-label="text.field(text.memo, i + 1)"
-                @change="patch(l.id, { memo: ($event.target as HTMLInputElement).value })"
-              />
-            </td>
-            <td>
-              <button
-                type="button"
-                class="bless-journal__x"
-                :aria-label="text.remove(i + 1)"
-                :title="text.remove(i + 1)"
-                @click="remove(l.id)"
-              >
-                ✕
-              </button>
-            </td>
-          </tr>
-        </tbody>
-        <tfoot>
-          <tr>
-            <th scope="row">{{ text.total }}</th>
-            <td>{{ money.format(totals.debit) }}</td>
-            <td>{{ money.format(totals.credit) }}</td>
-            <td colspan="2"></td>
-          </tr>
-        </tfoot>
-      </table>
-    </div>
-    <div class="bless-journal__foot">
-      <button type="button" class="bless-journal__add" @click="add">+ {{ text.add }}</button>
-      <p class="bless-journal__status" :class="{ 'is-ok': totals.balanced }" role="status">
-        <span aria-hidden="true">{{ totals.balanced ? "✓" : "≠" }}</span> {{ status }}
-      </p>
-      <BlessButton :disabled="!ready" @click="emit('post', lines)">{{ text.post }}</BlessButton>
-    </div>
-  </div>
-</template>
 
 <style>
 .bless-journal {

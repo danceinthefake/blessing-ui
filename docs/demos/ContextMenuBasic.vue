@@ -1,10 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { BlessContextMenu } from "blessing-ui";
-import { menu } from "./_menu";
-const last = ref("");
-</script>
-
 <template>
   <BlessContextMenu :items="menu" @select="last = 'label' in $event ? $event.label : ''">
     <!-- focusable, so the Menu key and Shift+F10 open it too -->
@@ -23,3 +16,10 @@ const last = ref("");
     </div>
   </BlessContextMenu>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { BlessContextMenu } from "blessing-ui";
+import { menu } from "./_menu";
+const last = ref("");
+</script>

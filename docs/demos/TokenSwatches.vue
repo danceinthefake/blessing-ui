@@ -1,3 +1,18 @@
+<template>
+  <div class="swatches">
+    <section v-for="[title, names] in groups" :key="title">
+      <h4 class="swatches__title">{{ title }}</h4>
+      <ul class="swatches__grid">
+        <li v-for="n in names" :key="n" class="swatches__item">
+          <span class="swatches__chip" :style="{ background: `var(--bless-color-${n})` }" />
+          <code>{{ n }}</code>
+          <small>{{ values[n] }}</small>
+        </li>
+      </ul>
+    </section>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { onBeforeUnmount, onMounted, ref } from "vue";
 
@@ -35,21 +50,6 @@ onBeforeUnmount(() => {
   mql?.removeEventListener("change", read);
 });
 </script>
-
-<template>
-  <div class="swatches">
-    <section v-for="[title, names] in groups" :key="title">
-      <h4 class="swatches__title">{{ title }}</h4>
-      <ul class="swatches__grid">
-        <li v-for="n in names" :key="n" class="swatches__item">
-          <span class="swatches__chip" :style="{ background: `var(--bless-color-${n})` }" />
-          <code>{{ n }}</code>
-          <small>{{ values[n] }}</small>
-        </li>
-      </ul>
-    </section>
-  </div>
-</template>
 
 <style scoped>
 .swatches {

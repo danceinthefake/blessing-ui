@@ -1,3 +1,7 @@
+<template>
+  <BlessWebhookLog :deliveries :retrying style="max-width: 680px" @retry="retry" />
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessWebhookLog, type BlessWebhookDelivery } from "blessing-ui";
@@ -54,7 +58,3 @@ function retry(id: string | number) {
   }, 900);
 }
 </script>
-
-<template>
-  <BlessWebhookLog :deliveries :retrying style="max-width: 680px" @retry="retry" />
-</template>

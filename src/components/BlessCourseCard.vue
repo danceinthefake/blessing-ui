@@ -1,3 +1,27 @@
+<template>
+  <article class="bless-course">
+    <img v-if="image" :src="image" :alt="imageAlt" class="bless-course__image" />
+    <div class="bless-course__body">
+      <h3 class="bless-course__title">
+        <a v-if="href" :href="href">{{ title }}</a>
+        <template v-else>{{ title }}</template>
+      </h3>
+      <div v-if="teacher" class="bless-course__teacher">{{ text.by(teacher) }}</div>
+      <ul class="bless-course__facts" role="list">
+        <li v-if="lessons != null">{{ text.lessons(lessons) }}</li>
+        <li v-if="duration">{{ duration }}</li>
+        <li v-if="level">{{ text.level }}: {{ level }}</li>
+      </ul>
+      <div v-if="pct != null" class="bless-course__progress">
+        <div class="bless-course__bar" aria-hidden="true">
+          <span :style="{ inlineSize: `${pct}%` }" />
+        </div>
+        <span>{{ pct === 100 ? `✓ ${text.finished}` : text.done(pct) }}</span>
+      </div>
+    </div>
+  </article>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -43,30 +67,6 @@ const pct = computed(() =>
   props.progress == null ? undefined : Math.round(Math.min(100, Math.max(0, props.progress))),
 );
 </script>
-
-<template>
-  <article class="bless-course">
-    <img v-if="image" :src="image" :alt="imageAlt" class="bless-course__image" />
-    <div class="bless-course__body">
-      <h3 class="bless-course__title">
-        <a v-if="href" :href="href">{{ title }}</a>
-        <template v-else>{{ title }}</template>
-      </h3>
-      <div v-if="teacher" class="bless-course__teacher">{{ text.by(teacher) }}</div>
-      <ul class="bless-course__facts" role="list">
-        <li v-if="lessons != null">{{ text.lessons(lessons) }}</li>
-        <li v-if="duration">{{ duration }}</li>
-        <li v-if="level">{{ text.level }}: {{ level }}</li>
-      </ul>
-      <div v-if="pct != null" class="bless-course__progress">
-        <div class="bless-course__bar" aria-hidden="true">
-          <span :style="{ inlineSize: `${pct}%` }" />
-        </div>
-        <span>{{ pct === 100 ? `✓ ${text.finished}` : text.done(pct) }}</span>
-      </div>
-    </div>
-  </article>
-</template>
 
 <style>
 .bless-course {

@@ -1,3 +1,20 @@
+<template>
+  <p v-if="left">You left the call.</p>
+  <BlessCallScreen
+    v-else
+    v-model:muted="muted"
+    v-model:camera="camera"
+    v-model:sharing="sharing"
+    :people
+    elapsed="12:04"
+    @leave="left = true"
+  >
+    <template #video="{ person }">
+      <img v-if="frames[person.id]" :src="frames[person.id]" alt="" />
+    </template>
+  </BlessCallScreen>
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessCallScreen, type BlessCallPerson } from "blessing-ui";
@@ -19,20 +36,3 @@ const camera = ref(true);
 const sharing = ref(false);
 const left = ref(false);
 </script>
-
-<template>
-  <p v-if="left">You left the call.</p>
-  <BlessCallScreen
-    v-else
-    v-model:muted="muted"
-    v-model:camera="camera"
-    v-model:sharing="sharing"
-    :people
-    elapsed="12:04"
-    @leave="left = true"
-  >
-    <template #video="{ person }">
-      <img v-if="frames[person.id]" :src="frames[person.id]" alt="" />
-    </template>
-  </BlessCallScreen>
-</template>

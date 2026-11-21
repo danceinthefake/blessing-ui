@@ -1,3 +1,40 @@
+<template>
+  <figure class="bless-radialbar" role="group" :aria-label="label">
+    <svg
+      viewBox="0 0 100 100"
+      class="bless-radialbar__svg"
+      :style="{ inlineSize: `${size}px` }"
+      aria-hidden="true"
+    >
+      <template v-for="g in rings" :key="g.label">
+        <template v-if="g.r > W / 2">
+          <circle class="bless-radialbar__track" cx="50" cy="50" :r="g.r" :stroke-width="W" />
+          <circle
+            v-if="g.share > 0"
+            class="bless-radialbar__fill"
+            cx="50"
+            cy="50"
+            :r="g.r"
+            :stroke-width="W"
+            pathLength="100"
+            :stroke-dasharray="`${g.share * 100} 100`"
+            :style="{ '--_c': g.color }"
+          />
+        </template>
+      </template>
+    </svg>
+    <ul class="bless-radialbar__legend">
+      <li v-for="g in rings" :key="g.label">
+        <i :style="{ background: g.color }" aria-hidden="true" />
+        <span class="bless-radialbar__name">{{ g.label }}</span>
+        <span class="bless-radialbar__value">
+          <strong>{{ pct.format(g.share) }}</strong> · {{ fmt(g.value) }} / {{ fmt(g.max) }}
+        </span>
+      </li>
+    </ul>
+  </figure>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { chartColor, numberText } from "./chart";
@@ -39,43 +76,6 @@ const rings = computed(() =>
   }),
 );
 </script>
-
-<template>
-  <figure class="bless-radialbar" role="group" :aria-label="label">
-    <svg
-      viewBox="0 0 100 100"
-      class="bless-radialbar__svg"
-      :style="{ inlineSize: `${size}px` }"
-      aria-hidden="true"
-    >
-      <template v-for="g in rings" :key="g.label">
-        <template v-if="g.r > W / 2">
-          <circle class="bless-radialbar__track" cx="50" cy="50" :r="g.r" :stroke-width="W" />
-          <circle
-            v-if="g.share > 0"
-            class="bless-radialbar__fill"
-            cx="50"
-            cy="50"
-            :r="g.r"
-            :stroke-width="W"
-            pathLength="100"
-            :stroke-dasharray="`${g.share * 100} 100`"
-            :style="{ '--_c': g.color }"
-          />
-        </template>
-      </template>
-    </svg>
-    <ul class="bless-radialbar__legend">
-      <li v-for="g in rings" :key="g.label">
-        <i :style="{ background: g.color }" aria-hidden="true" />
-        <span class="bless-radialbar__name">{{ g.label }}</span>
-        <span class="bless-radialbar__value">
-          <strong>{{ pct.format(g.share) }}</strong> · {{ fmt(g.value) }} / {{ fmt(g.max) }}
-        </span>
-      </li>
-    </ul>
-  </figure>
-</template>
 
 <style>
 .bless-radialbar {

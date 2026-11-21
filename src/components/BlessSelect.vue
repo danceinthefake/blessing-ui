@@ -1,37 +1,3 @@
-<script setup lang="ts" generic="T extends string | number">
-import { computed } from "vue";
-import { joinIds, useFieldId, useFieldState } from "../composables/useFieldId";
-import type { BlessOption } from "./select";
-
-defineOptions({ name: "BlessSelect", inheritAttrs: false });
-
-const props = withDefaults(
-  defineProps<{
-    id?: string;
-    options: Array<BlessOption<T> | { label: string; options: BlessOption<T>[] }>;
-    placeholder?: string;
-    size?: "sm" | "md" | "lg";
-    disabled?: boolean;
-    invalid?: boolean;
-    description?: string;
-    error?: string;
-  }>(),
-  { size: "md" },
-);
-
-const model = defineModel<T | undefined>();
-const id = useFieldId(props);
-const fs = useFieldState();
-// The placeholder option needs a real empty value: without one its value is its text, so a
-// `required` select counts as filled and submits "Choose…". It maps to `undefined` in the model.
-const picked = computed({
-  get: () => model.value ?? "",
-  set: (v) => (model.value = v === "" ? undefined : (v as T)),
-});
-const isGroup = (o: unknown): o is { label: string; options: BlessOption<T>[] } =>
-  !!o && typeof o === "object" && "options" in o;
-</script>
-
 <template>
   <div
     class="bless-select"
@@ -78,6 +44,40 @@ const isGroup = (o: unknown): o is { label: string; options: BlessOption<T>[] } 
     <p v-if="error" :id="`${id()}-err`" class="bless-select__error" role="alert">{{ error }}</p>
   </div>
 </template>
+
+<script setup lang="ts" generic="T extends string | number">
+import { computed } from "vue";
+import { joinIds, useFieldId, useFieldState } from "../composables/useFieldId";
+import type { BlessOption } from "./select";
+
+defineOptions({ name: "BlessSelect", inheritAttrs: false });
+
+const props = withDefaults(
+  defineProps<{
+    id?: string;
+    options: Array<BlessOption<T> | { label: string; options: BlessOption<T>[] }>;
+    placeholder?: string;
+    size?: "sm" | "md" | "lg";
+    disabled?: boolean;
+    invalid?: boolean;
+    description?: string;
+    error?: string;
+  }>(),
+  { size: "md" },
+);
+
+const model = defineModel<T | undefined>();
+const id = useFieldId(props);
+const fs = useFieldState();
+// The placeholder option needs a real empty value: without one its value is its text, so a
+// `required` select counts as filled and submits "Choose…". It maps to `undefined` in the model.
+const picked = computed({
+  get: () => model.value ?? "",
+  set: (v) => (model.value = v === "" ? undefined : (v as T)),
+});
+const isGroup = (o: unknown): o is { label: string; options: BlessOption<T>[] } =>
+  !!o && typeof o === "object" && "options" in o;
+</script>
 
 <style>
 .bless-select {

@@ -1,3 +1,18 @@
+<template>
+  <ul class="bless-stagger bless-clock">
+    <li
+      v-for="c in clocks"
+      :key="c.zone"
+      class="bless-clock__zone"
+      :class="{ 'is-night': c.night }"
+    >
+      <span class="bless-clock__name">{{ c.name }}</span>
+      <time class="bless-clock__time">{{ c.time }}</time>
+      <span class="bless-clock__meta">{{ [c.day, c.offset].filter(Boolean).join(" · ") }}</span>
+    </li>
+  </ul>
+</template>
+
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, ref } from "vue";
 
@@ -83,21 +98,6 @@ const clocks = computed(() => {
   });
 });
 </script>
-
-<template>
-  <ul class="bless-stagger bless-clock">
-    <li
-      v-for="c in clocks"
-      :key="c.zone"
-      class="bless-clock__zone"
-      :class="{ 'is-night': c.night }"
-    >
-      <span class="bless-clock__name">{{ c.name }}</span>
-      <time class="bless-clock__time">{{ c.time }}</time>
-      <span class="bless-clock__meta">{{ [c.day, c.offset].filter(Boolean).join(" · ") }}</span>
-    </li>
-  </ul>
-</template>
 
 <style>
 .bless-clock {

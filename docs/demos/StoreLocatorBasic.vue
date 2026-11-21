@@ -1,3 +1,7 @@
+<template>
+  <BlessStoreLocator v-model="pickup" :stores style="max-width: 440px" />
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessStoreLocator, type BlessStore } from "blessing-ui";
@@ -35,7 +39,3 @@ const stores: BlessStore[] = [
 ];
 const pickup = ref("kemang");
 </script>
-
-<template>
-  <BlessStoreLocator v-model="pickup" :stores style="max-width: 440px" />
-</template>

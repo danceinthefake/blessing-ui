@@ -1,3 +1,7 @@
+<template>
+  <BlessLogoCloud :logos title="Used by 2,000 studios and podcasts in Indonesia" />
+</template>
+
 <script setup lang="ts">
 import { BlessLogoCloud } from "blessing-ui";
 
@@ -31,7 +35,3 @@ const logos = [
   },
 ];
 </script>
-
-<template>
-  <BlessLogoCloud :logos title="Used by 2,000 studios and podcasts in Indonesia" />
-</template>

@@ -1,3 +1,14 @@
+<template>
+  <BlessBillOfMaterials
+    v-model:count="count"
+    product="Desk mic kit"
+    :parts
+    currency="IDR"
+    locale="id-ID"
+    style="max-width: 640px"
+  />
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessBillOfMaterials, type BlessBomPart } from "blessing-ui";
@@ -37,14 +48,3 @@ const parts: BlessBomPart[] = [
 ];
 const count = ref(25);
 </script>
-
-<template>
-  <BlessBillOfMaterials
-    v-model:count="count"
-    product="Desk mic kit"
-    :parts
-    currency="IDR"
-    locale="id-ID"
-    style="max-width: 640px"
-  />
-</template>

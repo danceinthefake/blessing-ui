@@ -1,3 +1,86 @@
+<template>
+  <!-- the keys work from any control in the modal, the close button too -->
+  <div class="bless-lightbox__root" @keydown="onKey">
+    <BlessModal
+      v-model="open"
+      size="lg"
+      class="bless-lightbox"
+      :aria-label="current ? nameOf(current, index) : undefined"
+    >
+      <div v-if="current" class="bless-lightbox__viewer">
+        <figure class="bless-lightbox__figure">
+          <div
+            class="bless-lightbox__stage"
+            :class="{ 'bless-lightbox__stage--zoomed': zoomed }"
+            @pointerdown="onDown"
+            @pointermove="onMove"
+            @pointerup="onUp"
+            @pointercancel="onUp"
+            @dblclick="toggleZoom"
+          >
+            <img
+              :src="current.src"
+              :alt="current.alt ?? ''"
+              class="bless-lightbox__image"
+              draggable="false"
+              :style="
+                zoomed
+                  ? { transform: `translate(${pan.x}px, ${pan.y}px) scale(${zoom})` }
+                  : undefined
+              "
+            />
+          </div>
+          <figcaption v-if="current.caption" class="bless-lightbox__caption">
+            {{ current.caption }}
+          </figcaption>
+        </figure>
+        <button
+          v-if="items.length > 1"
+          type="button"
+          class="bless-lightbox__nav bless-lightbox__nav--prev"
+          :aria-label="text.prev"
+          :aria-disabled="!hasPrev || undefined"
+          @click="step(-1)"
+        >
+          <span aria-hidden="true">‹</span>
+        </button>
+        <button
+          v-if="items.length > 1"
+          type="button"
+          class="bless-lightbox__nav bless-lightbox__nav--next"
+          :aria-label="text.next"
+          :aria-disabled="!hasNext || undefined"
+          @click="step(1)"
+        >
+          <span aria-hidden="true">›</span>
+        </button>
+        <div class="bless-lightbox__bar">
+          <button
+            type="button"
+            class="bless-lightbox__zoom"
+            :aria-pressed="zoomed"
+            :aria-label="zoomed ? text.zoomOut : text.zoomIn"
+            @click="toggleZoom"
+          >
+            <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true">
+              <circle cx="7" cy="7" r="4.5" fill="none" stroke="currentColor" stroke-width="1.5" />
+              <path
+                :d="zoomed ? 'M5 7h4M10.5 10.5 14 14' : 'M5 7h4M7 5v4M10.5 10.5 14 14'"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+              />
+            </svg>
+          </button>
+          <span class="bless-lightbox__count" aria-live="polite"
+            >{{ index + 1 }} / {{ items.length }}</span
+          >
+        </div>
+      </div>
+    </BlessModal>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed, ref, watch } from "vue";
 import { logicalKey } from "../composables/rtl";
@@ -106,89 +189,6 @@ function toggleZoom() {
   else zoomed.value = true;
 }
 </script>
-
-<template>
-  <!-- the keys work from any control in the modal, the close button too -->
-  <div class="bless-lightbox__root" @keydown="onKey">
-    <BlessModal
-      v-model="open"
-      size="lg"
-      class="bless-lightbox"
-      :aria-label="current ? nameOf(current, index) : undefined"
-    >
-      <div v-if="current" class="bless-lightbox__viewer">
-        <figure class="bless-lightbox__figure">
-          <div
-            class="bless-lightbox__stage"
-            :class="{ 'bless-lightbox__stage--zoomed': zoomed }"
-            @pointerdown="onDown"
-            @pointermove="onMove"
-            @pointerup="onUp"
-            @pointercancel="onUp"
-            @dblclick="toggleZoom"
-          >
-            <img
-              :src="current.src"
-              :alt="current.alt ?? ''"
-              class="bless-lightbox__image"
-              draggable="false"
-              :style="
-                zoomed
-                  ? { transform: `translate(${pan.x}px, ${pan.y}px) scale(${zoom})` }
-                  : undefined
-              "
-            />
-          </div>
-          <figcaption v-if="current.caption" class="bless-lightbox__caption">
-            {{ current.caption }}
-          </figcaption>
-        </figure>
-        <button
-          v-if="items.length > 1"
-          type="button"
-          class="bless-lightbox__nav bless-lightbox__nav--prev"
-          :aria-label="text.prev"
-          :aria-disabled="!hasPrev || undefined"
-          @click="step(-1)"
-        >
-          <span aria-hidden="true">‹</span>
-        </button>
-        <button
-          v-if="items.length > 1"
-          type="button"
-          class="bless-lightbox__nav bless-lightbox__nav--next"
-          :aria-label="text.next"
-          :aria-disabled="!hasNext || undefined"
-          @click="step(1)"
-        >
-          <span aria-hidden="true">›</span>
-        </button>
-        <div class="bless-lightbox__bar">
-          <button
-            type="button"
-            class="bless-lightbox__zoom"
-            :aria-pressed="zoomed"
-            :aria-label="zoomed ? text.zoomOut : text.zoomIn"
-            @click="toggleZoom"
-          >
-            <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true">
-              <circle cx="7" cy="7" r="4.5" fill="none" stroke="currentColor" stroke-width="1.5" />
-              <path
-                :d="zoomed ? 'M5 7h4M10.5 10.5 14 14' : 'M5 7h4M7 5v4M10.5 10.5 14 14'"
-                stroke="currentColor"
-                stroke-width="1.5"
-                stroke-linecap="round"
-              />
-            </svg>
-          </button>
-          <span class="bless-lightbox__count" aria-live="polite"
-            >{{ index + 1 }} / {{ items.length }}</span
-          >
-        </div>
-      </div>
-    </BlessModal>
-  </div>
-</template>
 
 <style>
 .bless-lightbox__root {

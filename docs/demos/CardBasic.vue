@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import { BlessButton, BlessCard, BlessText } from "blessing-ui";
-</script>
-
 <template>
   <div class="row" style="align-items: flex-start; padding-top: 12px">
     <BlessCard label="Blu-ray" style="width: 240px">
@@ -22,3 +18,7 @@ import { BlessButton, BlessCard, BlessText } from "blessing-ui";
     </BlessCard>
   </div>
 </template>
+
+<script setup lang="ts">
+import { BlessButton, BlessCard, BlessText } from "blessing-ui";
+</script>

@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import { BlessButton, BlessInput, BlessToolbar, BlessSeparator, BlessAvatar } from "blessing-ui";
-</script>
-
 <template>
   <BlessToolbar label="Editor">
     <template #start>
@@ -16,3 +12,7 @@ import { BlessButton, BlessInput, BlessToolbar, BlessSeparator, BlessAvatar } fr
     <template #end><BlessAvatar name="Megumi Kato" size="sm" /></template>
   </BlessToolbar>
 </template>
+
+<script setup lang="ts">
+import { BlessButton, BlessInput, BlessToolbar, BlessSeparator, BlessAvatar } from "blessing-ui";
+</script>

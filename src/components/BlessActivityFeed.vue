@@ -1,3 +1,32 @@
+<template>
+  <div class="bless-activity">
+    <section v-for="g in groups" :key="g.key" class="bless-activity__day" :aria-label="g.title">
+      <p class="bless-activity__date" aria-hidden="true">{{ g.title }}</p>
+      <ol class="bless-stagger bless-activity__list">
+        <li v-for="e in g.events" :key="e.id" class="bless-activity__item">
+          <BlessAvatar :src="e.actor.avatar" :name="e.actor.name" alt="" size="sm" />
+          <p class="bless-activity__text">
+            <slot name="event" :event="e">
+              <strong>{{ e.actor.name }}</strong> {{ e.action }}
+              <template v-if="e.target">
+                <a v-if="e.href" :href="e.href" class="bless-activity__target">{{ e.target }}</a>
+                <span v-else class="bless-activity__target">{{ e.target }}</span>
+              </template>
+            </slot>
+          </p>
+          <BlessRelativeTime
+            class="bless-activity__time"
+            :value="e.time"
+            :locale
+            :now
+            format="short"
+          />
+        </li>
+      </ol>
+    </section>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed, onMounted, ref } from "vue";
 import BlessAvatar from "./BlessAvatar.vue";
@@ -62,35 +91,6 @@ const groups = computed(() => {
   return out;
 });
 </script>
-
-<template>
-  <div class="bless-activity">
-    <section v-for="g in groups" :key="g.key" class="bless-activity__day" :aria-label="g.title">
-      <p class="bless-activity__date" aria-hidden="true">{{ g.title }}</p>
-      <ol class="bless-stagger bless-activity__list">
-        <li v-for="e in g.events" :key="e.id" class="bless-activity__item">
-          <BlessAvatar :src="e.actor.avatar" :name="e.actor.name" alt="" size="sm" />
-          <p class="bless-activity__text">
-            <slot name="event" :event="e">
-              <strong>{{ e.actor.name }}</strong> {{ e.action }}
-              <template v-if="e.target">
-                <a v-if="e.href" :href="e.href" class="bless-activity__target">{{ e.target }}</a>
-                <span v-else class="bless-activity__target">{{ e.target }}</span>
-              </template>
-            </slot>
-          </p>
-          <BlessRelativeTime
-            class="bless-activity__time"
-            :value="e.time"
-            :locale
-            :now
-            format="short"
-          />
-        </li>
-      </ol>
-    </section>
-  </div>
-</template>
 
 <style>
 .bless-activity {

@@ -1,3 +1,40 @@
+<template>
+  <div
+    class="bless-otp"
+    :class="{ 'bless-otp--invalid': invalid || fs.invalid.value, 'bless-otp--disabled': disabled }"
+    role="group"
+    :aria-label="label ?? 'One-time code'"
+  >
+    <template v-for="i in length" :key="i">
+      <input
+        :id="i === 1 ? id() : undefined"
+        :ref="
+          (el) => {
+            if (el) inputs[i - 1] = el as HTMLInputElement;
+          }
+        "
+        :type="masked ? 'password' : 'text'"
+        class="bless-otp__cell"
+        :value="chars[i - 1]"
+        :inputmode="numeric ? 'numeric' : 'text'"
+        :pattern="numeric ? '[0-9]*' : undefined"
+        :autocomplete="i === 1 ? 'one-time-code' : 'off'"
+        :maxlength="i === 1 ? undefined : 1"
+        :disabled
+        :aria-label="`${unit} ${i} of ${length}`"
+        :aria-invalid="invalid || fs.invalid.value || undefined"
+        :aria-describedby="fs.describedby.value"
+        @input="onInput(i - 1, $event)"
+        @keydown="onKey(i - 1, $event)"
+        @paste="onPaste(i - 1, $event)"
+        @focus="($event.target as HTMLInputElement).select()"
+      />
+      <span v-if="separators.includes(i)" class="bless-otp__sep" aria-hidden="true" />
+    </template>
+    <input v-if="name" type="hidden" :name :value="model" />
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed, ref, watch } from "vue";
 import { logicalKey } from "../composables/rtl";
@@ -98,43 +135,6 @@ function onPaste(i: number, e: ClipboardEvent) {
   focus(i + text.length);
 }
 </script>
-
-<template>
-  <div
-    class="bless-otp"
-    :class="{ 'bless-otp--invalid': invalid || fs.invalid.value, 'bless-otp--disabled': disabled }"
-    role="group"
-    :aria-label="label ?? 'One-time code'"
-  >
-    <template v-for="i in length" :key="i">
-      <input
-        :id="i === 1 ? id() : undefined"
-        :ref="
-          (el) => {
-            if (el) inputs[i - 1] = el as HTMLInputElement;
-          }
-        "
-        :type="masked ? 'password' : 'text'"
-        class="bless-otp__cell"
-        :value="chars[i - 1]"
-        :inputmode="numeric ? 'numeric' : 'text'"
-        :pattern="numeric ? '[0-9]*' : undefined"
-        :autocomplete="i === 1 ? 'one-time-code' : 'off'"
-        :maxlength="i === 1 ? undefined : 1"
-        :disabled
-        :aria-label="`${unit} ${i} of ${length}`"
-        :aria-invalid="invalid || fs.invalid.value || undefined"
-        :aria-describedby="fs.describedby.value"
-        @input="onInput(i - 1, $event)"
-        @keydown="onKey(i - 1, $event)"
-        @paste="onPaste(i - 1, $event)"
-        @focus="($event.target as HTMLInputElement).select()"
-      />
-      <span v-if="separators.includes(i)" class="bless-otp__sep" aria-hidden="true" />
-    </template>
-    <input v-if="name" type="hidden" :name :value="model" />
-  </div>
-</template>
 
 <style>
 .bless-otp {

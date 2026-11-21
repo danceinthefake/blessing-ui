@@ -1,60 +1,3 @@
-<script setup lang="ts">
-import { computed, ref } from "vue";
-import { useLabelPack } from "../composables/useLabels";
-import { chartColor, niceTicks, numberText, scale, useWidth } from "./chart";
-import "./chart.css";
-import "./sr.css";
-
-defineOptions({ name: "BlessRangeChart" });
-const pack = useLabelPack("BlessRangeChart");
-
-export interface BlessRangeRow {
-  label: string;
-  low: number;
-  high: number;
-  /** a mark inside the range, for example the average */
-  value?: number;
-}
-
-const props = withDefaults(
-  defineProps<{
-    data: BlessRangeRow[];
-    color?: string;
-    format?: (v: number) => string;
-    /** names the chart and its table for screen readers */
-    label?: string;
-    labels?: Partial<{ item: string; low: string; high: string; value: string }>;
-  }>(),
-  { color: "chart-1", label: "Chart" },
-);
-
-const text = computed(() => ({
-  item: "Item",
-  low: "Low",
-  high: "High",
-  value: "Mark",
-  ...pack(),
-  ...props.labels,
-}));
-const fmt = computed(() => props.format ?? numberText);
-const box = ref<HTMLElement>();
-const width = useWidth(box);
-
-const ROW = 30;
-const xt = computed(() => {
-  const vs = props.data.flatMap((d) => [d.low, d.high]);
-  return vs.length ? niceTicks(Math.min(...vs), Math.max(...vs), 5) : [0, 1];
-});
-const labelW = computed(() =>
-  Math.min(160, 12 + 7 * Math.max(0, ...props.data.map((d) => d.label.length))),
-);
-const height = computed(() => props.data.length * ROW + 24);
-const px = computed(() =>
-  scale([xt.value[0]!, xt.value.at(-1)!], [labelW.value + 8, width.value - 12]),
-);
-const marks = computed(() => props.data.some((d) => d.value !== undefined));
-</script>
-
 <template>
   <figure ref="box" class="bless-plot bless-rangechart" :style="{ '--_c': chartColor(color, 0) }">
     <svg :viewBox="`0 0 ${width} ${height}`" :height class="bless-plot__svg" aria-hidden="true">
@@ -117,6 +60,63 @@ const marks = computed(() => props.data.some((d) => d.value !== undefined));
     </div>
   </figure>
 </template>
+
+<script setup lang="ts">
+import { computed, ref } from "vue";
+import { useLabelPack } from "../composables/useLabels";
+import { chartColor, niceTicks, numberText, scale, useWidth } from "./chart";
+import "./chart.css";
+import "./sr.css";
+
+defineOptions({ name: "BlessRangeChart" });
+const pack = useLabelPack("BlessRangeChart");
+
+export interface BlessRangeRow {
+  label: string;
+  low: number;
+  high: number;
+  /** a mark inside the range, for example the average */
+  value?: number;
+}
+
+const props = withDefaults(
+  defineProps<{
+    data: BlessRangeRow[];
+    color?: string;
+    format?: (v: number) => string;
+    /** names the chart and its table for screen readers */
+    label?: string;
+    labels?: Partial<{ item: string; low: string; high: string; value: string }>;
+  }>(),
+  { color: "chart-1", label: "Chart" },
+);
+
+const text = computed(() => ({
+  item: "Item",
+  low: "Low",
+  high: "High",
+  value: "Mark",
+  ...pack(),
+  ...props.labels,
+}));
+const fmt = computed(() => props.format ?? numberText);
+const box = ref<HTMLElement>();
+const width = useWidth(box);
+
+const ROW = 30;
+const xt = computed(() => {
+  const vs = props.data.flatMap((d) => [d.low, d.high]);
+  return vs.length ? niceTicks(Math.min(...vs), Math.max(...vs), 5) : [0, 1];
+});
+const labelW = computed(() =>
+  Math.min(160, 12 + 7 * Math.max(0, ...props.data.map((d) => d.label.length))),
+);
+const height = computed(() => props.data.length * ROW + 24);
+const px = computed(() =>
+  scale([xt.value[0]!, xt.value.at(-1)!], [labelW.value + 8, width.value - 12]),
+);
+const marks = computed(() => props.data.some((d) => d.value !== undefined));
+</script>
 
 <style>
 .bless-rangechart__bar {

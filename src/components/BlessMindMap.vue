@@ -1,3 +1,45 @@
+<template>
+  <figure class="bless-mind">
+    <svg
+      :viewBox="`0 0 ${layout.width} ${layout.height}`"
+      :style="{ maxInlineSize: `${layout.width}px` }"
+      aria-hidden="true"
+    >
+      <g v-for="d in layout.nodes" :key="d.key" :style="{ '--_c': d.color }">
+        <path :d="curve(d)" class="bless-mind__edge" :class="`is-d${Math.min(d.depth, 3)}`" />
+        <line
+          :x1="X(d.side, d.x)"
+          :x2="X(d.side, d.x + d.width)"
+          :y1="d.y"
+          :y2="d.y"
+          class="bless-mind__edge"
+          :class="`is-d${Math.min(d.depth, 3)}`"
+        />
+        <text
+          :x="X(d.side, d.x + 4)"
+          :y="d.y - 6"
+          :text-anchor="d.side === 1 ? 'start' : 'end'"
+          class="bless-mind__label"
+          :class="{ 'is-top': d.depth === 1 }"
+        >
+          {{ d.label }}
+        </text>
+      </g>
+      <rect
+        :x="layout.cx - layout.rootW / 2"
+        :y="layout.cy - 20"
+        :width="layout.rootW"
+        height="40"
+        class="bless-mind__root"
+      />
+      <text :x="layout.cx" :y="layout.cy" text-anchor="middle" class="bless-mind__rootlabel">
+        {{ root.label }}
+      </text>
+    </svg>
+    <div class="bless-sr"><List :nodes="[root]" /></div>
+  </figure>
+</template>
+
 <script lang="ts">
 export interface BlessMindNode {
   label: string;
@@ -114,48 +156,6 @@ const curve = (d: Laid) => {
   return `M${x0},${d.py} C${m},${d.py} ${m},${d.y} ${x1},${d.y}`;
 };
 </script>
-
-<template>
-  <figure class="bless-mind">
-    <svg
-      :viewBox="`0 0 ${layout.width} ${layout.height}`"
-      :style="{ maxInlineSize: `${layout.width}px` }"
-      aria-hidden="true"
-    >
-      <g v-for="d in layout.nodes" :key="d.key" :style="{ '--_c': d.color }">
-        <path :d="curve(d)" class="bless-mind__edge" :class="`is-d${Math.min(d.depth, 3)}`" />
-        <line
-          :x1="X(d.side, d.x)"
-          :x2="X(d.side, d.x + d.width)"
-          :y1="d.y"
-          :y2="d.y"
-          class="bless-mind__edge"
-          :class="`is-d${Math.min(d.depth, 3)}`"
-        />
-        <text
-          :x="X(d.side, d.x + 4)"
-          :y="d.y - 6"
-          :text-anchor="d.side === 1 ? 'start' : 'end'"
-          class="bless-mind__label"
-          :class="{ 'is-top': d.depth === 1 }"
-        >
-          {{ d.label }}
-        </text>
-      </g>
-      <rect
-        :x="layout.cx - layout.rootW / 2"
-        :y="layout.cy - 20"
-        :width="layout.rootW"
-        height="40"
-        class="bless-mind__root"
-      />
-      <text :x="layout.cx" :y="layout.cy" text-anchor="middle" class="bless-mind__rootlabel">
-        {{ root.label }}
-      </text>
-    </svg>
-    <div class="bless-sr"><List :nodes="[root]" /></div>
-  </figure>
-</template>
 
 <style>
 .bless-mind {

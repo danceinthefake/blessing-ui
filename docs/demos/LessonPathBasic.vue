@@ -1,3 +1,10 @@
+<template>
+  <BlessLessonPath :lessons @select="(id) => (opened = id)" />
+  <BlessText v-if="opened" as="p" size="sm" style="margin-top: 12px"
+    >Opened: {{ opened }}</BlessText
+  >
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessLessonPath, BlessText, type BlessLesson } from "blessing-ui";
@@ -13,10 +20,3 @@ const lessons = ref<BlessLesson[]>([
 ]);
 const opened = ref<string>();
 </script>
-
-<template>
-  <BlessLessonPath :lessons @select="(id) => (opened = id)" />
-  <BlessText v-if="opened" as="p" size="sm" style="margin-top: 12px"
-    >Opened: {{ opened }}</BlessText
-  >
-</template>

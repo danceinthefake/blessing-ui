@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import { BlessInvoice } from "blessing-ui";
-</script>
-
 <template>
   <BlessInvoice
     number="INV-2026-0042"
@@ -24,3 +20,7 @@ import { BlessInvoice } from "blessing-ui";
     locale="id-ID"
   />
 </template>
+
+<script setup lang="ts">
+import { BlessInvoice } from "blessing-ui";
+</script>

@@ -1,3 +1,10 @@
+<template>
+  <div class="col">
+    <BlessCodeBlock :files lines="4-5" line-numbers />
+    <BlessCodeBlock filename="install" lang="sh" code="pnpm add blessing-ui vue" />
+  </div>
+</template>
+
 <script setup lang="ts">
 import { BlessCodeBlock } from "blessing-ui";
 
@@ -22,10 +29,3 @@ createApp(BlessButton).mount("#app");
   },
 ];
 </script>
-
-<template>
-  <div class="col">
-    <BlessCodeBlock :files lines="4-5" line-numbers />
-    <BlessCodeBlock filename="install" lang="sh" code="pnpm add blessing-ui vue" />
-  </div>
-</template>

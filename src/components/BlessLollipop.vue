@@ -1,57 +1,3 @@
-<script setup lang="ts">
-import { computed, ref } from "vue";
-import { useLabelPack } from "../composables/useLabels";
-import { chartColor, niceTicks, numberText, scale, useWidth } from "./chart";
-import "./chart.css";
-import "./sr.css";
-
-defineOptions({ name: "BlessLollipop" });
-const pack = useLabelPack("BlessLollipop");
-
-export interface BlessLollipopItem {
-  label: string;
-  value: number;
-  /** a token name or any CSS color, to make one item stand out */
-  color?: string;
-}
-
-const props = withDefaults(
-  defineProps<{
-    data: BlessLollipopItem[];
-    /** put the items in order of value, high first */
-    sort?: boolean;
-    color?: string;
-    format?: (v: number) => string;
-    /** names the chart and its table for screen readers */
-    label?: string;
-    labels?: Partial<{ item: string; value: string }>;
-  }>(),
-  { color: "chart-1", label: "Chart" },
-);
-
-const text = computed(() => ({ item: "Item", value: "Value", ...pack(), ...props.labels }));
-const fmt = computed(() => props.format ?? numberText);
-const box = ref<HTMLElement>();
-const width = useWidth(box);
-
-const ROW = 28;
-const rows = computed(() =>
-  props.sort ? [...props.data].sort((a, b) => b.value - a.value) : props.data,
-);
-const xt = computed(() => {
-  const vs = rows.value.map((r) => r.value);
-  return vs.length ? niceTicks(Math.min(0, ...vs), Math.max(0, ...vs), 5) : [0, 1];
-});
-const labelW = computed(() =>
-  Math.min(160, 12 + 7 * Math.max(0, ...rows.value.map((r) => r.label.length))),
-);
-const height = computed(() => rows.value.length * ROW + 24);
-// room at the end for the value text
-const px = computed(() =>
-  scale([xt.value[0]!, xt.value.at(-1)!], [labelW.value + 8, width.value - 48]),
-);
-</script>
-
 <template>
   <figure ref="box" class="bless-plot bless-lollipop" :style="{ '--_c': chartColor(color, 0) }">
     <svg :viewBox="`0 0 ${width} ${height}`" :height class="bless-plot__svg" aria-hidden="true">
@@ -117,6 +63,60 @@ const px = computed(() =>
     </div>
   </figure>
 </template>
+
+<script setup lang="ts">
+import { computed, ref } from "vue";
+import { useLabelPack } from "../composables/useLabels";
+import { chartColor, niceTicks, numberText, scale, useWidth } from "./chart";
+import "./chart.css";
+import "./sr.css";
+
+defineOptions({ name: "BlessLollipop" });
+const pack = useLabelPack("BlessLollipop");
+
+export interface BlessLollipopItem {
+  label: string;
+  value: number;
+  /** a token name or any CSS color, to make one item stand out */
+  color?: string;
+}
+
+const props = withDefaults(
+  defineProps<{
+    data: BlessLollipopItem[];
+    /** put the items in order of value, high first */
+    sort?: boolean;
+    color?: string;
+    format?: (v: number) => string;
+    /** names the chart and its table for screen readers */
+    label?: string;
+    labels?: Partial<{ item: string; value: string }>;
+  }>(),
+  { color: "chart-1", label: "Chart" },
+);
+
+const text = computed(() => ({ item: "Item", value: "Value", ...pack(), ...props.labels }));
+const fmt = computed(() => props.format ?? numberText);
+const box = ref<HTMLElement>();
+const width = useWidth(box);
+
+const ROW = 28;
+const rows = computed(() =>
+  props.sort ? [...props.data].sort((a, b) => b.value - a.value) : props.data,
+);
+const xt = computed(() => {
+  const vs = rows.value.map((r) => r.value);
+  return vs.length ? niceTicks(Math.min(0, ...vs), Math.max(0, ...vs), 5) : [0, 1];
+});
+const labelW = computed(() =>
+  Math.min(160, 12 + 7 * Math.max(0, ...rows.value.map((r) => r.label.length))),
+);
+const height = computed(() => rows.value.length * ROW + 24);
+// room at the end for the value text
+const px = computed(() =>
+  scale([xt.value[0]!, xt.value.at(-1)!], [labelW.value + 8, width.value - 48]),
+);
+</script>
 
 <style>
 .bless-lollipop__row line {

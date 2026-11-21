@@ -1,3 +1,38 @@
+<template>
+  <section class="bless-plan" :aria-label="title ?? text.summary(done, steps.length)">
+    <header class="bless-plan__head">
+      <strong v-if="title" class="bless-plan__title">{{ title }}</strong>
+      <span class="bless-plan__summary">{{ text.summary(done, steps.length) }}</span>
+      <span class="bless-plan__bar" aria-hidden="true">
+        <span :style="{ inlineSize: `${(done / Math.max(1, steps.length)) * 100}%` }" />
+      </span>
+    </header>
+    <ol class="bless-stagger bless-plan__list">
+      <li
+        v-for="s in steps"
+        :key="s.id"
+        class="bless-plan__step"
+        :class="`is-${s.status}`"
+        :aria-current="s.status === 'running' ? 'step' : undefined"
+      >
+        <span class="bless-plan__icon" aria-hidden="true">
+          <BlessSpinner v-if="s.status === 'running'" size="sm" label="" />
+          <svg v-else-if="ICON[s.status]" viewBox="0 0 16 16" width="14" height="14">
+            <path :d="ICON[s.status]" />
+          </svg>
+          <i v-else class="bless-plan__dot" />
+        </span>
+        <div class="bless-plan__main">
+          <span class="bless-plan__step-title">{{ s.title }}</span>
+          <span class="bless-sr">, {{ text[s.status] }}</span>
+          <span v-if="s.detail" class="bless-plan__detail">{{ s.detail }}</span>
+        </div>
+      </li>
+    </ol>
+    <p class="bless-sr" role="status">{{ current ? `${text.running}: ${current.title}` : "" }}</p>
+  </section>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -45,41 +80,6 @@ const ICON: Partial<Record<BlessStepStatus, string>> = {
   skipped: "M4 8h8",
 };
 </script>
-
-<template>
-  <section class="bless-plan" :aria-label="title ?? text.summary(done, steps.length)">
-    <header class="bless-plan__head">
-      <strong v-if="title" class="bless-plan__title">{{ title }}</strong>
-      <span class="bless-plan__summary">{{ text.summary(done, steps.length) }}</span>
-      <span class="bless-plan__bar" aria-hidden="true">
-        <span :style="{ inlineSize: `${(done / Math.max(1, steps.length)) * 100}%` }" />
-      </span>
-    </header>
-    <ol class="bless-stagger bless-plan__list">
-      <li
-        v-for="s in steps"
-        :key="s.id"
-        class="bless-plan__step"
-        :class="`is-${s.status}`"
-        :aria-current="s.status === 'running' ? 'step' : undefined"
-      >
-        <span class="bless-plan__icon" aria-hidden="true">
-          <BlessSpinner v-if="s.status === 'running'" size="sm" label="" />
-          <svg v-else-if="ICON[s.status]" viewBox="0 0 16 16" width="14" height="14">
-            <path :d="ICON[s.status]" />
-          </svg>
-          <i v-else class="bless-plan__dot" />
-        </span>
-        <div class="bless-plan__main">
-          <span class="bless-plan__step-title">{{ s.title }}</span>
-          <span class="bless-sr">, {{ text[s.status] }}</span>
-          <span v-if="s.detail" class="bless-plan__detail">{{ s.detail }}</span>
-        </div>
-      </li>
-    </ol>
-    <p class="bless-sr" role="status">{{ current ? `${text.running}: ${current.title}` : "" }}</p>
-  </section>
-</template>
 
 <style>
 .bless-plan {

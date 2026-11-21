@@ -1,3 +1,25 @@
+<template>
+  <BlessButtonGroup class="bless-splitbtn" :label="label">
+    <BlessButton :color :variant :size :disabled :loading @click="emit('click', $event)">
+      <slot>{{ label }}</slot>
+    </BlessButton>
+    <BlessDropdownMenu :items placement="bottom-end" @select="emit('select', $event)">
+      <template #trigger="{ open }">
+        <BlessButton
+          :color
+          :variant
+          :size
+          :disabled
+          :aria-label="text.menu"
+          :aria-expanded="open"
+          class="bless-splitbtn__more"
+          >▾</BlessButton
+        >
+      </template>
+    </BlessDropdownMenu>
+  </BlessButtonGroup>
+</template>
+
 <script setup lang="ts">
 import { useLabelPack } from "../composables/useLabels";
 import { computed } from "vue";
@@ -30,28 +52,6 @@ const text = computed(() => ({
 
 const emit = defineEmits<{ click: [e: MouseEvent]; select: [item: BlessMenuItem] }>();
 </script>
-
-<template>
-  <BlessButtonGroup class="bless-splitbtn" :label="label">
-    <BlessButton :color :variant :size :disabled :loading @click="emit('click', $event)">
-      <slot>{{ label }}</slot>
-    </BlessButton>
-    <BlessDropdownMenu :items placement="bottom-end" @select="emit('select', $event)">
-      <template #trigger="{ open }">
-        <BlessButton
-          :color
-          :variant
-          :size
-          :disabled
-          :aria-label="text.menu"
-          :aria-expanded="open"
-          class="bless-splitbtn__more"
-          >▾</BlessButton
-        >
-      </template>
-    </BlessDropdownMenu>
-  </BlessButtonGroup>
-</template>
 
 <style>
 .bless-splitbtn__more {

@@ -1,3 +1,126 @@
+<template>
+  <div
+    class="bless-combobox"
+    :class="[
+      `bless-combobox--${size}`,
+      {
+        'bless-combobox--open': open,
+        'bless-combobox--invalid': invalid || fs.invalid.value,
+        'bless-combobox--disabled': disabled,
+      },
+    ]"
+  >
+    <div
+      ref="anchor"
+      class="bless-combobox__field bless-lean--field"
+      @click="
+        input?.focus();
+        open = true;
+      "
+    >
+      <template v-if="multiple">
+        <BlessBadge
+          v-for="v in selected"
+          :key="String(v)"
+          color="text"
+          class="bless-combobox__chip"
+        >
+          {{ labelOf(v) }}
+          <button
+            type="button"
+            class="bless-combobox__chip-x"
+            :aria-label="text.remove(labelOf(v))"
+            tabindex="-1"
+            @click.stop="remove(v)"
+          >
+            ×
+          </button>
+        </BlessBadge>
+      </template>
+      <input
+        ref="input"
+        :id
+        v-model="query"
+        type="text"
+        class="bless-combobox__input"
+        role="combobox"
+        :aria-label="label"
+        :placeholder="multiple && selected.length ? '' : placeholder"
+        :disabled
+        aria-autocomplete="list"
+        :aria-expanded="open"
+        :aria-controls="`${id}-list`"
+        :aria-activedescendant="open ? activeId : undefined"
+        :aria-invalid="invalid || fs.invalid.value || undefined"
+        :aria-describedby="fs.describedby.value"
+        autocomplete="off"
+        @focus="open = true"
+        @input="
+          open = true;
+          emit('search', query);
+        "
+        @keydown="onKey"
+        @blur="onBlur"
+      />
+      <span class="bless-combobox__chevron" aria-hidden="true" />
+    </div>
+    <div
+      ref="panel"
+      popover="manual"
+      class="bless-combobox__panel"
+      :style="{
+        ...style,
+        width: anchor ? `${anchor.offsetWidth}px` : undefined,
+      }"
+    >
+      <div
+        :id="`${id}-list`"
+        role="listbox"
+        :aria-multiselectable="multiple || undefined"
+        class="bless-combobox__list"
+      >
+        <div
+          v-for="(o, i) in filtered"
+          :key="String(o.value)"
+          :id="`${id}-opt-${i}`"
+          role="option"
+          class="bless-combobox__option"
+          :class="{
+            'bless-combobox__option--active': i === active,
+            'bless-combobox__option--selected': selected.includes(o.value),
+          }"
+          :aria-selected="selected.includes(o.value)"
+          :aria-disabled="o.disabled || undefined"
+          @mousedown.prevent
+          @mousemove="active = i"
+          @click="!o.disabled && pick(o.value)"
+        >
+          <span class="bless-combobox__check" aria-hidden="true">{{
+            selected.includes(o.value) ? "✓" : ""
+          }}</span>
+          <slot name="option" :option="o">{{ o.label }}</slot>
+        </div>
+        <div
+          v-if="canCreate"
+          :id="`${id}-create`"
+          role="option"
+          class="bless-combobox__option bless-combobox__option--create"
+          :class="{ 'bless-combobox__option--active': active === filtered.length }"
+          :aria-selected="false"
+          @mousedown.prevent
+          @mousemove="active = filtered.length"
+          @click="create"
+        >
+          <span class="bless-combobox__check" aria-hidden="true">＋</span>Create “{{
+            query.trim()
+          }}”
+        </div>
+        <p v-if="!filtered.length && !canCreate" class="bless-combobox__empty">{{ emptyText }}</p>
+      </div>
+    </div>
+  </div>
+</template>
+
 <script setup lang="ts" generic="T extends string | number">
 import { computed, nextTick, ref, watch } from "vue";
 import { useLabelPack } from "../composables/useLabels";
@@ -138,129 +261,6 @@ function onBlur(e: FocusEvent) {
   if (!panel.value?.contains(e.relatedTarget as Node)) open.value = false;
 }
 </script>
-
-<template>
-  <div
-    class="bless-combobox"
-    :class="[
-      `bless-combobox--${size}`,
-      {
-        'bless-combobox--open': open,
-        'bless-combobox--invalid': invalid || fs.invalid.value,
-        'bless-combobox--disabled': disabled,
-      },
-    ]"
-  >
-    <div
-      ref="anchor"
-      class="bless-combobox__field bless-lean--field"
-      @click="
-        input?.focus();
-        open = true;
-      "
-    >
-      <template v-if="multiple">
-        <BlessBadge
-          v-for="v in selected"
-          :key="String(v)"
-          color="text"
-          class="bless-combobox__chip"
-        >
-          {{ labelOf(v) }}
-          <button
-            type="button"
-            class="bless-combobox__chip-x"
-            :aria-label="text.remove(labelOf(v))"
-            tabindex="-1"
-            @click.stop="remove(v)"
-          >
-            ×
-          </button>
-        </BlessBadge>
-      </template>
-      <input
-        ref="input"
-        :id
-        v-model="query"
-        type="text"
-        class="bless-combobox__input"
-        role="combobox"
-        :aria-label="label"
-        :placeholder="multiple && selected.length ? '' : placeholder"
-        :disabled
-        aria-autocomplete="list"
-        :aria-expanded="open"
-        :aria-controls="`${id}-list`"
-        :aria-activedescendant="open ? activeId : undefined"
-        :aria-invalid="invalid || fs.invalid.value || undefined"
-        :aria-describedby="fs.describedby.value"
-        autocomplete="off"
-        @focus="open = true"
-        @input="
-          open = true;
-          emit('search', query);
-        "
-        @keydown="onKey"
-        @blur="onBlur"
-      />
-      <span class="bless-combobox__chevron" aria-hidden="true" />
-    </div>
-    <div
-      ref="panel"
-      popover="manual"
-      class="bless-combobox__panel"
-      :style="{
-        ...style,
-        width: anchor ? `${anchor.offsetWidth}px` : undefined,
-      }"
-    >
-      <div
-        :id="`${id}-list`"
-        role="listbox"
-        :aria-multiselectable="multiple || undefined"
-        class="bless-combobox__list"
-      >
-        <div
-          v-for="(o, i) in filtered"
-          :key="String(o.value)"
-          :id="`${id}-opt-${i}`"
-          role="option"
-          class="bless-combobox__option"
-          :class="{
-            'bless-combobox__option--active': i === active,
-            'bless-combobox__option--selected': selected.includes(o.value),
-          }"
-          :aria-selected="selected.includes(o.value)"
-          :aria-disabled="o.disabled || undefined"
-          @mousedown.prevent
-          @mousemove="active = i"
-          @click="!o.disabled && pick(o.value)"
-        >
-          <span class="bless-combobox__check" aria-hidden="true">{{
-            selected.includes(o.value) ? "✓" : ""
-          }}</span>
-          <slot name="option" :option="o">{{ o.label }}</slot>
-        </div>
-        <div
-          v-if="canCreate"
-          :id="`${id}-create`"
-          role="option"
-          class="bless-combobox__option bless-combobox__option--create"
-          :class="{ 'bless-combobox__option--active': active === filtered.length }"
-          :aria-selected="false"
-          @mousedown.prevent
-          @mousemove="active = filtered.length"
-          @click="create"
-        >
-          <span class="bless-combobox__check" aria-hidden="true">＋</span>Create “{{
-            query.trim()
-          }}”
-        </div>
-        <p v-if="!filtered.length && !canCreate" class="bless-combobox__empty">{{ emptyText }}</p>
-      </div>
-    </div>
-  </div>
-</template>
 
 <style>
 .bless-combobox {

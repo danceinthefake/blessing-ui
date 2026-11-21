@@ -1,3 +1,14 @@
+<template>
+  <BlessApiKeyField
+    :value="key"
+    name="Upload script"
+    :created="made"
+    last-used="2 hours ago"
+    style="max-width: 560px"
+    @regenerate="regenerate"
+  />
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessApiKeyField } from "blessing-ui";
@@ -12,14 +23,3 @@ function regenerate() {
   made.value = "just now";
 }
 </script>
-
-<template>
-  <BlessApiKeyField
-    :value="key"
-    name="Upload script"
-    :created="made"
-    last-used="2 hours ago"
-    style="max-width: 560px"
-    @regenerate="regenerate"
-  />
-</template>

@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import { BlessButton, BlessButtonGroup } from "blessing-ui";
-</script>
-
 <template>
   <div class="row">
     <BlessButtonGroup label="Pager">
@@ -22,3 +18,7 @@ import { BlessButton, BlessButtonGroup } from "blessing-ui";
     </BlessButtonGroup>
   </div>
 </template>
+
+<script setup lang="ts">
+import { BlessButton, BlessButtonGroup } from "blessing-ui";
+</script>

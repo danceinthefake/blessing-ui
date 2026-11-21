@@ -1,3 +1,21 @@
+<template>
+  <fieldset
+    :id="id()"
+    class="bless-radio-group"
+    :class="`bless-radio-group--${orientation}`"
+    role="radiogroup"
+    :disabled
+    :aria-labelledby="label || $slots.label ? undefined : fs.labelledby"
+    :aria-invalid="invalid || fs.invalid.value || undefined"
+    :aria-describedby="fs.describedby.value"
+  >
+    <legend v-if="label || $slots.label" class="bless-radio-group__label">
+      <slot name="label">{{ label }}</slot>
+    </legend>
+    <div class="bless-radio-group__items"><slot /></div>
+  </fieldset>
+</template>
+
 <script setup lang="ts" generic="T extends string | number">
 import { provide, toRef, useId } from "vue";
 import { useFieldId, useFieldState } from "../composables/useFieldId";
@@ -30,24 +48,6 @@ provide(radioKey, {
   model: model as ReturnType<typeof defineModel<string | number>>,
 });
 </script>
-
-<template>
-  <fieldset
-    :id="id()"
-    class="bless-radio-group"
-    :class="`bless-radio-group--${orientation}`"
-    role="radiogroup"
-    :disabled
-    :aria-labelledby="label || $slots.label ? undefined : fs.labelledby"
-    :aria-invalid="invalid || fs.invalid.value || undefined"
-    :aria-describedby="fs.describedby.value"
-  >
-    <legend v-if="label || $slots.label" class="bless-radio-group__label">
-      <slot name="label">{{ label }}</slot>
-    </legend>
-    <div class="bless-radio-group__items"><slot /></div>
-  </fieldset>
-</template>
 
 <style>
 .bless-radio-group {

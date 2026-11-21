@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import { BlessAccordion, BlessAccordionItem } from "blessing-ui";
-</script>
-
 <template>
   <BlessAccordion style="max-width: 480px">
     <BlessAccordionItem title="When does it air?">
@@ -15,3 +11,7 @@ import { BlessAccordion, BlessAccordionItem } from "blessing-ui";
     </BlessAccordionItem>
   </BlessAccordion>
 </template>
+
+<script setup lang="ts">
+import { BlessAccordion, BlessAccordionItem } from "blessing-ui";
+</script>

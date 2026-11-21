@@ -1,31 +1,3 @@
-<script setup lang="ts">
-import {
-  BlessAvatar,
-  BlessCard,
-  BlessFollowButton,
-  BlessGroupCard,
-  BlessPoll,
-  BlessPostComposer,
-  BlessProfileCard,
-  BlessReactions,
-  BlessText,
-  BlessTrendList,
-  type BlessGroupState,
-} from "blessing-ui";
-import { ref } from "vue";
-import { mockCommunityApi } from "./api";
-import { useCommunity } from "./useCommunity";
-
-const me = { name: "Tomoya Aki", handle: "@tomoya" };
-const { posts, trends, people, draft, publish, vote } = useCommunity(mockCommunityApi, me);
-const circle = ref<BlessGroupState>("member");
-const stats = [
-  { label: "followers", value: 1204 },
-  { label: "following", value: 87 },
-  { label: "posts", value: 342 },
-];
-</script>
-
 <template>
   <div class="community">
     <aside class="community__me" aria-label="You">
@@ -98,6 +70,34 @@ const stats = [
     </aside>
   </div>
 </template>
+
+<script setup lang="ts">
+import {
+  BlessAvatar,
+  BlessCard,
+  BlessFollowButton,
+  BlessGroupCard,
+  BlessPoll,
+  BlessPostComposer,
+  BlessProfileCard,
+  BlessReactions,
+  BlessText,
+  BlessTrendList,
+  type BlessGroupState,
+} from "blessing-ui";
+import { ref } from "vue";
+import { mockCommunityApi } from "./api";
+import { useCommunity } from "./useCommunity";
+
+const me = { name: "Tomoya Aki", handle: "@tomoya" };
+const { posts, trends, people, draft, publish, vote } = useCommunity(mockCommunityApi, me);
+const circle = ref<BlessGroupState>("member");
+const stats = [
+  { label: "followers", value: 1204 },
+  { label: "following", value: 87 },
+  { label: "posts", value: 342 },
+];
+</script>
 
 <style scoped>
 .community {

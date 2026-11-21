@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import { BlessVideo } from "blessing-ui";
-</script>
-
 <template>
   <div class="row" style="align-items: flex-start">
     <BlessVideo
@@ -18,3 +14,7 @@ import { BlessVideo } from "blessing-ui";
     />
   </div>
 </template>
+
+<script setup lang="ts">
+import { BlessVideo } from "blessing-ui";
+</script>

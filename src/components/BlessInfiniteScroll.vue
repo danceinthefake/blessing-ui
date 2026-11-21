@@ -1,3 +1,28 @@
+<template>
+  <div class="bless-infinite">
+    <slot />
+    <div ref="sentinel" class="bless-infinite__sentinel" aria-hidden="true" />
+    <div class="bless-infinite__status" role="status" aria-live="polite">
+      <slot v-if="loading" name="loading"
+        ><BlessSpinner size="sm" label="" /><span class="bless-infinite__sr bless-sr">{{
+          loadingText
+        }}</span></slot
+      >
+      <slot v-else-if="finished" name="done"
+        ><span class="bless-infinite__done">{{ doneText ?? "" }}</span></slot
+      >
+    </div>
+    <BlessButton
+      v-if="manual && !loading && !finished"
+      variant="outline"
+      size="sm"
+      class="bless-infinite__more"
+      @click="fire"
+      >{{ text.more }}</BlessButton
+    >
+  </div>
+</template>
+
 <script setup lang="ts">
 import { useLabelPack } from "../composables/useLabels";
 import "./sr.css";
@@ -67,31 +92,6 @@ watch(
 );
 defineExpose({ reset: () => ((finished.value = false), (loading.value = false)) });
 </script>
-
-<template>
-  <div class="bless-infinite">
-    <slot />
-    <div ref="sentinel" class="bless-infinite__sentinel" aria-hidden="true" />
-    <div class="bless-infinite__status" role="status" aria-live="polite">
-      <slot v-if="loading" name="loading"
-        ><BlessSpinner size="sm" label="" /><span class="bless-infinite__sr bless-sr">{{
-          loadingText
-        }}</span></slot
-      >
-      <slot v-else-if="finished" name="done"
-        ><span class="bless-infinite__done">{{ doneText ?? "" }}</span></slot
-      >
-    </div>
-    <BlessButton
-      v-if="manual && !loading && !finished"
-      variant="outline"
-      size="sm"
-      class="bless-infinite__more"
-      @click="fire"
-      >{{ text.more }}</BlessButton
-    >
-  </div>
-</template>
 
 <style>
 .bless-infinite__more {

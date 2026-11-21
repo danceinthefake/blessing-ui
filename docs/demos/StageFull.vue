@@ -1,19 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { withBase } from "vitepress";
-import {
-  BlessBadge,
-  BlessDash,
-  BlessSection,
-  BlessSidebarNav,
-  BlessStage,
-  BlessText,
-} from "blessing-ui";
-import { navItems } from "./_nav";
-const active = ref("#news");
-const open = ref(false);
-</script>
-
 <template>
   <BlessStage v-model:open="open">
     <template #background>
@@ -72,3 +56,19 @@ const open = ref(false);
     </template>
   </BlessStage>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { withBase } from "vitepress";
+import {
+  BlessBadge,
+  BlessDash,
+  BlessSection,
+  BlessSidebarNav,
+  BlessStage,
+  BlessText,
+} from "blessing-ui";
+import { navItems } from "./_nav";
+const active = ref("#news");
+const open = ref(false);
+</script>

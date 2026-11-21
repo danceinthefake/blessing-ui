@@ -1,16 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { BlessHotspots, BlessSwitch, type BlessHotspot } from "blessing-ui";
-
-const edit = ref(false);
-const active = ref<string | number | null>(null);
-const spots = ref<BlessHotspot[]>([
-  { id: "nav", x: 62, y: 6, label: "Search and the main navigation" },
-  { id: "news", x: 78, y: 40, label: "The news list, filtered by the tabs" },
-  { id: "air", x: 30, y: 78, label: "Broadcast times for the current season" },
-]);
-</script>
-
 <template>
   <div class="col" style="max-width: 640px">
     <BlessSwitch v-model="edit">Edit pins</BlessSwitch>
@@ -28,3 +15,16 @@ const spots = ref<BlessHotspot[]>([
     }}</small>
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { BlessHotspots, BlessSwitch, type BlessHotspot } from "blessing-ui";
+
+const edit = ref(false);
+const active = ref<string | number | null>(null);
+const spots = ref<BlessHotspot[]>([
+  { id: "nav", x: 62, y: 6, label: "Search and the main navigation" },
+  { id: "news", x: 78, y: 40, label: "The news list, filtered by the tabs" },
+  { id: "air", x: 30, y: 78, label: "Broadcast times for the current season" },
+]);
+</script>

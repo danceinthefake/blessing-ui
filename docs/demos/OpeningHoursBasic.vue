@@ -1,3 +1,7 @@
+<template>
+  <BlessOpeningHours :hours time-zone="Asia/Jakarta" style="max-width: 340px" />
+</template>
+
 <script setup lang="ts">
 import { BlessOpeningHours, type BlessWeekHours } from "blessing-ui";
 
@@ -16,7 +20,3 @@ const hours: BlessWeekHours = [
   [],
 ];
 </script>
-
-<template>
-  <BlessOpeningHours :hours time-zone="Asia/Jakarta" style="max-width: 340px" />
-</template>

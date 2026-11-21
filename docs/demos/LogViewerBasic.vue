@@ -1,3 +1,12 @@
+<template>
+  <div class="col" style="max-width: none">
+    <BlessButton size="sm" variant="outline" @click="running = !running">
+      {{ running ? "Pause the server" : "Resume the server" }}
+    </BlessButton>
+    <BlessLogViewer :lines height="240px" label="Server log" />
+  </div>
+</template>
+
 <script setup lang="ts">
 import { onBeforeUnmount, onMounted, ref } from "vue";
 import { BlessButton, BlessLogViewer } from "blessing-ui";
@@ -26,12 +35,3 @@ onMounted(() => {
 });
 onBeforeUnmount(() => clearInterval(timer));
 </script>
-
-<template>
-  <div class="col" style="max-width: none">
-    <BlessButton size="sm" variant="outline" @click="running = !running">
-      {{ running ? "Pause the server" : "Resume the server" }}
-    </BlessButton>
-    <BlessLogViewer :lines height="240px" label="Server log" />
-  </div>
-</template>

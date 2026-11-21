@@ -1,3 +1,7 @@
+<template>
+  <BlessPaletteViewer :palettes />
+</template>
+
 <script setup lang="ts">
 import { BlessPaletteViewer } from "blessing-ui";
 
@@ -26,7 +30,3 @@ const palettes = [
   },
 ];
 </script>
-
-<template>
-  <BlessPaletteViewer :palettes />
-</template>

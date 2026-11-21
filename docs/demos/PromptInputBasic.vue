@@ -1,3 +1,10 @@
+<template>
+  <BlessStack :gap="3" style="max-width: 560px">
+    <BlessText v-for="(s, i) in sent" :key="i" as="p" size="sm">You: {{ s }}</BlessText>
+    <BlessPromptInput v-model="draft" attach :busy @send="onSend" @stop="onStop" />
+  </BlessStack>
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessPromptInput, BlessStack, BlessText } from "blessing-ui";
@@ -19,10 +26,3 @@ function onStop() {
   busy.value = false;
 }
 </script>
-
-<template>
-  <BlessStack :gap="3" style="max-width: 560px">
-    <BlessText v-for="(s, i) in sent" :key="i" as="p" size="sm">You: {{ s }}</BlessText>
-    <BlessPromptInput v-model="draft" attach :busy @send="onSend" @stop="onStop" />
-  </BlessStack>
-</template>

@@ -1,3 +1,12 @@
+<template>
+  <div style="max-width: 560px">
+    <BlessRecurrencePicker v-model="rule" />
+    <BlessText as="p" size="sm" style="margin-top: 12px">
+      For your calendar: <code>{{ rrule }}</code>
+    </BlessText>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed, ref } from "vue";
 import { BlessRecurrencePicker, BlessText, toRRule, type BlessRecurrence } from "blessing-ui";
@@ -11,12 +20,3 @@ const rule = ref<BlessRecurrence>({
 });
 const rrule = computed(() => toRRule(rule.value));
 </script>
-
-<template>
-  <div style="max-width: 560px">
-    <BlessRecurrencePicker v-model="rule" />
-    <BlessText as="p" size="sm" style="margin-top: 12px">
-      For your calendar: <code>{{ rrule }}</code>
-    </BlessText>
-  </div>
-</template>

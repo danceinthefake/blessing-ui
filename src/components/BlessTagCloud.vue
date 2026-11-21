@@ -1,3 +1,19 @@
+<template>
+  <ul class="bless-stagger bless-cloud" :aria-label="label">
+    <li v-for="t in list" :key="t.label">
+      <component
+        :is="link(t.href, undefined, 'button').is"
+        v-bind="link(t.href, undefined, 'button').attrs"
+        class="bless-cloud__tag"
+        :type="t.href ? undefined : 'button'"
+        :style="{ fontSize: size(t.weight) }"
+        @click="emit('select', t)"
+        >{{ t.label }}</component
+      >
+    </li>
+  </ul>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLink } from "../composables/useLink";
@@ -41,22 +57,6 @@ const size = (w: number) => {
   return `${(props.min + f * (props.max - props.min)).toFixed(3)}rem`;
 };
 </script>
-
-<template>
-  <ul class="bless-stagger bless-cloud" :aria-label="label">
-    <li v-for="t in list" :key="t.label">
-      <component
-        :is="link(t.href, undefined, 'button').is"
-        v-bind="link(t.href, undefined, 'button').attrs"
-        class="bless-cloud__tag"
-        :type="t.href ? undefined : 'button'"
-        :style="{ fontSize: size(t.weight) }"
-        @click="emit('select', t)"
-        >{{ t.label }}</component
-      >
-    </li>
-  </ul>
-</template>
 
 <style>
 .bless-cloud {

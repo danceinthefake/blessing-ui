@@ -1,3 +1,14 @@
+<template>
+  <BlessButton @click="open = true">Open the cart</BlessButton>
+  <BlessCartDrawer
+    v-model="lines"
+    v-model:open="open"
+    currency="IDR"
+    locale="id-ID"
+    @checkout="open = false"
+  />
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessButton, BlessCartDrawer, type BlessCartLine } from "blessing-ui";
@@ -23,14 +34,3 @@ const lines = ref<BlessCartLine[]>([
   { id: "cable", name: "XLR cable, 3 m", price: 85000, quantity: 1, image: art("🔌", "e8f3df") },
 ]);
 </script>
-
-<template>
-  <BlessButton @click="open = true">Open the cart</BlessButton>
-  <BlessCartDrawer
-    v-model="lines"
-    v-model:open="open"
-    currency="IDR"
-    locale="id-ID"
-    @checkout="open = false"
-  />
-</template>

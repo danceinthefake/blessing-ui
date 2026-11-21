@@ -1,3 +1,29 @@
+<template>
+  <section class="bless-status" :aria-label="text.title">
+    <p class="bless-status__overall" :class="`is-${overall}`" role="status">
+      <span class="bless-status__icon" aria-hidden="true">
+        <svg viewBox="0 0 16 16" width="16" height="16"><path :d="ICONS[overall]" /></svg>
+      </span>
+      {{ headline }}
+    </p>
+    <ul class="bless-stagger bless-status__parts">
+      <li v-for="p in parts" :key="p.name" class="bless-status__part" :class="`is-${p.status}`">
+        <span class="bless-status__name">
+          {{ p.name }}
+          <span v-if="p.description" class="bless-status__desc">{{ p.description }}</span>
+        </span>
+        <span class="bless-status__state">
+          <span class="bless-status__icon" aria-hidden="true">
+            <svg viewBox="0 0 16 16" width="14" height="14"><path :d="ICONS[p.status]" /></svg>
+          </span>
+          {{ text[p.status] }}
+        </span>
+      </li>
+    </ul>
+    <p v-if="updated" class="bless-status__updated">{{ text.updated(updated) }}</p>
+  </section>
+</template>
+
 <script lang="ts">
 export interface BlessServicePart {
   name: string;
@@ -65,32 +91,6 @@ const ICONS: Record<BlessServiceState, string> = {
   major: "M4 4l8 8M12 4l-8 8",
 };
 </script>
-
-<template>
-  <section class="bless-status" :aria-label="text.title">
-    <p class="bless-status__overall" :class="`is-${overall}`" role="status">
-      <span class="bless-status__icon" aria-hidden="true">
-        <svg viewBox="0 0 16 16" width="16" height="16"><path :d="ICONS[overall]" /></svg>
-      </span>
-      {{ headline }}
-    </p>
-    <ul class="bless-stagger bless-status__parts">
-      <li v-for="p in parts" :key="p.name" class="bless-status__part" :class="`is-${p.status}`">
-        <span class="bless-status__name">
-          {{ p.name }}
-          <span v-if="p.description" class="bless-status__desc">{{ p.description }}</span>
-        </span>
-        <span class="bless-status__state">
-          <span class="bless-status__icon" aria-hidden="true">
-            <svg viewBox="0 0 16 16" width="14" height="14"><path :d="ICONS[p.status]" /></svg>
-          </span>
-          {{ text[p.status] }}
-        </span>
-      </li>
-    </ul>
-    <p v-if="updated" class="bless-status__updated">{{ text.updated(updated) }}</p>
-  </section>
-</template>
 
 <style>
 .bless-status {

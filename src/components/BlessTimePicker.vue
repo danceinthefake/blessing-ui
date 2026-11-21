@@ -1,3 +1,32 @@
+<template>
+  <div
+    class="bless-time bless-lean--field"
+    :class="[
+      `bless-time--${size}`,
+      { 'bless-time--disabled': disabled, 'bless-time--invalid': invalid || fs.invalid.value },
+    ]"
+  >
+    <input
+      v-bind="$attrs"
+      :id="id()"
+      v-model="model"
+      type="time"
+      class="bless-time__control"
+      :list="`${id()}-list`"
+      :min
+      :max
+      :step="seconds ? 1 : 60"
+      :disabled
+      :aria-label="label ?? (fs.inField ? undefined : 'Time')"
+      :aria-invalid="invalid || fs.invalid.value || undefined"
+      :aria-describedby="joinIds(fs.describedby.value, $attrs['aria-describedby'] as string)"
+    />
+    <datalist :id="`${id()}-list`">
+      <option v-for="o in options" :key="o.value" :value="o.value">{{ o.label }}</option>
+    </datalist>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { joinIds, useFieldId, useFieldState } from "../composables/useFieldId";
@@ -47,35 +76,6 @@ const options = computed(() => {
   return out;
 });
 </script>
-
-<template>
-  <div
-    class="bless-time bless-lean--field"
-    :class="[
-      `bless-time--${size}`,
-      { 'bless-time--disabled': disabled, 'bless-time--invalid': invalid || fs.invalid.value },
-    ]"
-  >
-    <input
-      v-bind="$attrs"
-      :id="id()"
-      v-model="model"
-      type="time"
-      class="bless-time__control"
-      :list="`${id()}-list`"
-      :min
-      :max
-      :step="seconds ? 1 : 60"
-      :disabled
-      :aria-label="label ?? (fs.inField ? undefined : 'Time')"
-      :aria-invalid="invalid || fs.invalid.value || undefined"
-      :aria-describedby="joinIds(fs.describedby.value, $attrs['aria-describedby'] as string)"
-    />
-    <datalist :id="`${id()}-list`">
-      <option v-for="o in options" :key="o.value" :value="o.value">{{ o.label }}</option>
-    </datalist>
-  </div>
-</template>
 
 <style>
 .bless-time {

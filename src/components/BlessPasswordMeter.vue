@@ -1,3 +1,27 @@
+<template>
+  <div class="bless-pwmeter" :data-score="score">
+    <div class="bless-pwmeter__head">
+      <meter
+        class="bless-pwmeter__meter"
+        :value="score"
+        min="0"
+        :max="rules.length"
+        :low="Math.ceil(rules.length / 2)"
+        :high="rules.length - 1"
+        :optimum="rules.length"
+        :aria-label="`Password strength: ${label || 'none'}`"
+      />
+      <span class="bless-pwmeter__label" aria-live="polite">{{ label }}</span>
+    </div>
+    <ul role="list" v-if="showRules" class="bless-pwmeter__rules">
+      <li v-for="(r, i) in rules" :key="r.label" :class="{ 'bless-pwmeter__rule--ok': passed[i] }">
+        <span aria-hidden="true">{{ passed[i] ? "✓" : "·" }}</span> {{ r.label }}
+        <span class="bless-pwmeter__state bless-sr">{{ ruleState[passed[i] ? 0 : 1] }}</span>
+      </li>
+    </ul>
+  </div>
+</template>
+
 <script setup lang="ts">
 import "./sr.css";
 import { computed } from "vue";
@@ -38,30 +62,6 @@ const label = computed(() =>
   props.value ? props.labels[Math.min(props.labels.length - 1, Math.max(0, score.value - 1))] : "",
 );
 </script>
-
-<template>
-  <div class="bless-pwmeter" :data-score="score">
-    <div class="bless-pwmeter__head">
-      <meter
-        class="bless-pwmeter__meter"
-        :value="score"
-        min="0"
-        :max="rules.length"
-        :low="Math.ceil(rules.length / 2)"
-        :high="rules.length - 1"
-        :optimum="rules.length"
-        :aria-label="`Password strength: ${label || 'none'}`"
-      />
-      <span class="bless-pwmeter__label" aria-live="polite">{{ label }}</span>
-    </div>
-    <ul role="list" v-if="showRules" class="bless-pwmeter__rules">
-      <li v-for="(r, i) in rules" :key="r.label" :class="{ 'bless-pwmeter__rule--ok': passed[i] }">
-        <span aria-hidden="true">{{ passed[i] ? "✓" : "·" }}</span> {{ r.label }}
-        <span class="bless-pwmeter__state bless-sr">{{ ruleState[passed[i] ? 0 : 1] }}</span>
-      </li>
-    </ul>
-  </div>
-</template>
 
 <style>
 .bless-pwmeter {

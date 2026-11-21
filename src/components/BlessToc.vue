@@ -1,3 +1,18 @@
+<template>
+  <nav class="bless-toc" :aria-label="label">
+    <ol v-if="list.length" class="bless-toc__list">
+      <li v-for="i in list" :key="i.id" :style="{ '--_level': i.level ?? 0 }">
+        <a
+          class="bless-toc__link"
+          :href="`#${i.id}`"
+          :aria-current="active === i.id ? 'location' : undefined"
+          >{{ i.label }}</a
+        >
+      </li>
+    </ol>
+  </nav>
+</template>
+
 <script setup lang="ts">
 import { computed, onMounted, ref } from "vue";
 import { useScrollSpy } from "../composables/useScrollSpy";
@@ -43,21 +58,6 @@ onMounted(() => {
     }));
 });
 </script>
-
-<template>
-  <nav class="bless-toc" :aria-label="label">
-    <ol v-if="list.length" class="bless-toc__list">
-      <li v-for="i in list" :key="i.id" :style="{ '--_level': i.level ?? 0 }">
-        <a
-          class="bless-toc__link"
-          :href="`#${i.id}`"
-          :aria-current="active === i.id ? 'location' : undefined"
-          >{{ i.label }}</a
-        >
-      </li>
-    </ol>
-  </nav>
-</template>
 
 <style>
 .bless-toc__list {

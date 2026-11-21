@@ -1,3 +1,17 @@
+<template>
+  <div>
+    <BlessEventCalendar
+      v-model:date="date"
+      :events
+      label="Team plan"
+      @select="(e) => (picked = e)"
+    />
+    <BlessText v-if="picked" as="p" size="sm"
+      >Picked: {{ picked.title }} on {{ picked.date }}</BlessText
+    >
+  </div>
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { BlessEventCalendar, BlessText, type BlessCalendarEvent } from "blessing-ui";
@@ -20,17 +34,3 @@ const events: BlessCalendarEvent[] = [
 const date = ref("2026-11-15");
 const picked = ref<BlessCalendarEvent>();
 </script>
-
-<template>
-  <div>
-    <BlessEventCalendar
-      v-model:date="date"
-      :events
-      label="Team plan"
-      @select="(e) => (picked = e)"
-    />
-    <BlessText v-if="picked" as="p" size="sm"
-      >Picked: {{ picked.title }} on {{ picked.date }}</BlessText
-    >
-  </div>
-</template>

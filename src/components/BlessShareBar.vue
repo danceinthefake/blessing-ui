@@ -1,3 +1,25 @@
+<template>
+  <div class="bless-share" role="group" :aria-label="text.title">
+    <button v-if="canShare" type="button" class="bless-share__btn is-main" @click="share">
+      <span aria-hidden="true">⇪</span> {{ text.share }}
+    </button>
+    <button type="button" class="bless-share__btn" @click="copy">
+      {{ said || text.copy }}
+    </button>
+    <a
+      v-for="t in targets"
+      :key="t.label"
+      class="bless-share__btn"
+      :href="t.href"
+      target="_blank"
+      rel="noopener"
+      @click="emit('shared', t.label)"
+      >{{ t.label }}</a
+    >
+    <span class="bless-sr" role="status">{{ said }}</span>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed, onMounted, ref } from "vue";
 import { copyText } from "../composables/copyText";
@@ -50,28 +72,6 @@ async function copy() {
   emit("shared", "copy");
 }
 </script>
-
-<template>
-  <div class="bless-share" role="group" :aria-label="text.title">
-    <button v-if="canShare" type="button" class="bless-share__btn is-main" @click="share">
-      <span aria-hidden="true">⇪</span> {{ text.share }}
-    </button>
-    <button type="button" class="bless-share__btn" @click="copy">
-      {{ said || text.copy }}
-    </button>
-    <a
-      v-for="t in targets"
-      :key="t.label"
-      class="bless-share__btn"
-      :href="t.href"
-      target="_blank"
-      rel="noopener"
-      @click="emit('shared', t.label)"
-      >{{ t.label }}</a
-    >
-    <span class="bless-sr" role="status">{{ said }}</span>
-  </div>
-</template>
 
 <style>
 .bless-share {

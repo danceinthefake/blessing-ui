@@ -1,3 +1,32 @@
+<template>
+  <ol role="list" class="bless-steps" :class="`bless-steps--${orientation}`" :aria-label="label">
+    <li
+      v-for="(s, i) in steps"
+      :key="s.label"
+      class="bless-steps__item"
+      :class="{
+        'bless-steps__item--done': i < current,
+        'bless-steps__item--current': i === current,
+      }"
+      :aria-current="i === current ? 'step' : undefined"
+    >
+      <component
+        :is="canGo(i, clickable, current) ? 'button' : 'div'"
+        :type="canGo(i, clickable, current) ? 'button' : undefined"
+        class="bless-steps__marker"
+        :aria-label="canGo(i, clickable, current) ? text.go(i + 1, s.label) : undefined"
+        @click="canGo(i, clickable, current) && (emit('select', i), (current = i))"
+      >
+        <span aria-hidden="true">{{ i < current ? "✓" : i + 1 }}</span>
+      </component>
+      <span class="bless-steps__text">
+        <span class="bless-steps__label">{{ s.label }}</span>
+        <span v-if="s.description" class="bless-steps__desc">{{ s.description }}</span>
+      </span>
+    </li>
+  </ol>
+</template>
+
 <script setup lang="ts">
 import { useLabelPack } from "../composables/useLabels";
 import { computed } from "vue";
@@ -31,35 +60,6 @@ const emit = defineEmits<{ select: [index: number] }>();
 const canGo = (i: number, clickable: boolean | "all" | undefined, cur: number) =>
   clickable === "all" ? i !== cur : !!clickable && i < cur;
 </script>
-
-<template>
-  <ol role="list" class="bless-steps" :class="`bless-steps--${orientation}`" :aria-label="label">
-    <li
-      v-for="(s, i) in steps"
-      :key="s.label"
-      class="bless-steps__item"
-      :class="{
-        'bless-steps__item--done': i < current,
-        'bless-steps__item--current': i === current,
-      }"
-      :aria-current="i === current ? 'step' : undefined"
-    >
-      <component
-        :is="canGo(i, clickable, current) ? 'button' : 'div'"
-        :type="canGo(i, clickable, current) ? 'button' : undefined"
-        class="bless-steps__marker"
-        :aria-label="canGo(i, clickable, current) ? text.go(i + 1, s.label) : undefined"
-        @click="canGo(i, clickable, current) && (emit('select', i), (current = i))"
-      >
-        <span aria-hidden="true">{{ i < current ? "✓" : i + 1 }}</span>
-      </component>
-      <span class="bless-steps__text">
-        <span class="bless-steps__label">{{ s.label }}</span>
-        <span v-if="s.description" class="bless-steps__desc">{{ s.description }}</span>
-      </span>
-    </li>
-  </ol>
-</template>
 
 <style>
 .bless-steps {

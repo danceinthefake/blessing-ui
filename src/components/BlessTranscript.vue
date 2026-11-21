@@ -1,3 +1,33 @@
+<template>
+  <div ref="box" class="bless-transcript" role="region" :aria-label="text.title" tabindex="0">
+    <ol class="bless-transcript__list">
+      <li
+        v-for="(c, i) in cues"
+        :key="i"
+        :data-cue="i"
+        class="bless-transcript__cue"
+        :class="{ 'is-current': i === current, 'is-past': current >= 0 && i < current }"
+        :aria-current="i === current ? 'time' : undefined"
+      >
+        <p v-if="c.speaker && c.speaker !== cues[i - 1]?.speaker" class="bless-transcript__speaker">
+          {{ c.speaker }}
+        </p>
+        <div class="bless-transcript__line">
+          <button
+            type="button"
+            class="bless-transcript__time"
+            :aria-label="text.seek(clockText(c.start))"
+            @click="emit('seek', c.start)"
+          >
+            {{ clockText(c.start) }}
+          </button>
+          <span class="bless-transcript__text">{{ c.text }}</span>
+        </div>
+      </li>
+    </ol>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed, nextTick, ref, watch } from "vue";
 import { reducedMotion } from "../composables/useMedia";
@@ -47,36 +77,6 @@ watch(current, async (i) => {
   box.value.scrollTo({ top, behavior: reducedMotion() ? "auto" : "smooth" });
 });
 </script>
-
-<template>
-  <div ref="box" class="bless-transcript" role="region" :aria-label="text.title" tabindex="0">
-    <ol class="bless-transcript__list">
-      <li
-        v-for="(c, i) in cues"
-        :key="i"
-        :data-cue="i"
-        class="bless-transcript__cue"
-        :class="{ 'is-current': i === current, 'is-past': current >= 0 && i < current }"
-        :aria-current="i === current ? 'time' : undefined"
-      >
-        <p v-if="c.speaker && c.speaker !== cues[i - 1]?.speaker" class="bless-transcript__speaker">
-          {{ c.speaker }}
-        </p>
-        <div class="bless-transcript__line">
-          <button
-            type="button"
-            class="bless-transcript__time"
-            :aria-label="text.seek(clockText(c.start))"
-            @click="emit('seek', c.start)"
-          >
-            {{ clockText(c.start) }}
-          </button>
-          <span class="bless-transcript__text">{{ c.text }}</span>
-        </div>
-      </li>
-    </ol>
-  </div>
-</template>
 
 <style>
 .bless-transcript {

@@ -1,12 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { BlessDeviceTile } from "blessing-ui";
-
-const lamp = ref(true);
-const sign = ref(false);
-const ac = ref(true);
-</script>
-
 <template>
   <div
     style="display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px"
@@ -24,3 +15,12 @@ const ac = ref(true);
     <BlessDeviceTile name="Dehumidifier" room="Storage" icon="💧" offline />
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { BlessDeviceTile } from "blessing-ui";
+
+const lamp = ref(true);
+const sign = ref(false);
+const ac = ref(true);
+</script>
