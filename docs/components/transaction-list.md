@@ -2,10 +2,6 @@
 title: Transaction list
 ---
 
-<script setup>
-import TransactionListBasic from "../demos/TransactionListBasic.vue";
-</script>
-
 # Transaction list
 
 <p class="bless-lead">Payments in and out, grouped by day, with a total for each day</p>
@@ -37,3 +33,7 @@ import { BlessTransactionList } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessTransactionList" />
+
+<script setup>
+import TransactionListBasic from "../demos/TransactionListBasic.vue";
+</script>

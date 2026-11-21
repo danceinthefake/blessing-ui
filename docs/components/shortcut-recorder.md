@@ -2,10 +2,6 @@
 title: ShortcutRecorder
 ---
 
-<script setup>
-import ShortcutRecorderBasic from "../demos/ShortcutRecorderBasic.vue";
-</script>
-
 # ShortcutRecorder
 
 <p class="bless-lead">Press a key combo to record it</p>
@@ -39,3 +35,7 @@ import { BlessShortcutRecorder, matchShortcut } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessShortcutRecorder" />
+
+<script setup>
+import ShortcutRecorderBasic from "../demos/ShortcutRecorderBasic.vue";
+</script>

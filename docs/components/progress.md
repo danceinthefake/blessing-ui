@@ -2,10 +2,6 @@
 title: Progress
 ---
 
-<script setup>
-import ProgressBasic from "../demos/ProgressBasic.vue";
-</script>
-
 # Progress
 
 <p class="bless-lead">Bar, determinate or not</p>
@@ -32,3 +28,7 @@ import { BlessProgress } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessProgress" />
+
+<script setup>
+import ProgressBasic from "../demos/ProgressBasic.vue";
+</script>

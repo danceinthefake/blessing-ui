@@ -2,10 +2,6 @@
 title: Knob
 ---
 
-<script setup>
-import KnobBasic from "../demos/KnobBasic.vue";
-</script>
-
 # Knob
 
 <p class="bless-lead">Rotary dial on a native range input</p>
@@ -35,3 +31,7 @@ import { BlessKnob } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessKnob" />
+
+<script setup>
+import KnobBasic from "../demos/KnobBasic.vue";
+</script>

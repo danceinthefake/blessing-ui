@@ -2,10 +2,6 @@
 title: PasswordMeter
 ---
 
-<script setup>
-import PasswordMeterBasic from "../demos/PasswordMeterBasic.vue";
-</script>
-
 # PasswordMeter
 
 <p class="bless-lead">Strength meter from rules</p>
@@ -34,3 +30,7 @@ import { BlessPasswordMeter } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessPasswordMeter" />
+
+<script setup>
+import PasswordMeterBasic from "../demos/PasswordMeterBasic.vue";
+</script>

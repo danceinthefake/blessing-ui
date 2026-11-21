@@ -1,9 +1,5 @@
 # Mode gelap
 
-<script setup>
-import ThemeToggleBasic from "../../demos/ThemeToggleBasic.vue";
-</script>
-
 Abu-abu dibalik. Isian warna aksen tetap sama, tetapi warna teksnya (juga teks danger dan info) menjadi lebih terang, sehingga tetap terbaca di atas abu-abu gelap. `--bless-font-weight-thin` berubah dari 100 menjadi 300, karena garis tipis terlihat lebih tipis sebagai teks terang di latar gelap. Daftar lengkap perubahannya ada di [Token → Yang dibalik](./tokens#what-flips-what-swaps).
 
 Secara bawaan, tema mengikuti `prefers-color-scheme`. Paksa salah satu tema dengan `data-theme` di `<html>`:
@@ -66,3 +62,7 @@ Definisikan ulang token di kedua selector yang dipakai `tokens.css`: yang dipaks
   }
 }
 ```
+
+<script setup>
+import ThemeToggleBasic from "../../demos/ThemeToggleBasic.vue";
+</script>

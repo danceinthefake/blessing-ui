@@ -2,10 +2,6 @@
 title: Mention
 ---
 
-<script setup>
-import MentionBasic from "../demos/MentionBasic.vue";
-</script>
-
 # Mention
 
 <p class="bless-lead">@ / # suggestions inside a textarea</p>
@@ -37,3 +33,7 @@ import { BlessMention } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessMention" />
+
+<script setup>
+import MentionBasic from "../demos/MentionBasic.vue";
+</script>

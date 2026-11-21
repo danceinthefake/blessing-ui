@@ -2,10 +2,6 @@
 title: Alert
 ---
 
-<script setup>
-import AlertBasic from "../demos/AlertBasic.vue";
-</script>
-
 # Alert
 
 <p class="bless-lead">Inline notice</p>
@@ -36,3 +32,7 @@ import { BlessAlert } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessAlert" />
+
+<script setup>
+import AlertBasic from "../demos/AlertBasic.vue";
+</script>

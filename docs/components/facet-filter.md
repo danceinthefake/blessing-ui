@@ -2,10 +2,6 @@
 title: Facet filter
 ---
 
-<script setup>
-import FacetFilterBasic from "../demos/FacetFilterBasic.vue";
-</script>
-
 # Facet filter
 
 <p class="bless-lead">Filters for a catalog, with counts, a price range, and clear buttons</p>
@@ -38,3 +34,7 @@ import { BlessFacetFilter } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessFacetFilter" />
+
+<script setup>
+import FacetFilterBasic from "../demos/FacetFilterBasic.vue";
+</script>

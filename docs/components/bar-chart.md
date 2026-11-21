@@ -2,10 +2,6 @@
 title: Bar chart
 ---
 
-<script setup>
-import BarChartBasic from "../demos/BarChartBasic.vue";
-</script>
-
 # Bar chart
 
 <p class="bless-lead">Bars for categories, side by side or stacked</p>
@@ -40,3 +36,7 @@ import { BlessBarChart, type BlessChartSeries } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessBarChart" />
+
+<script setup>
+import BarChartBasic from "../demos/BarChartBasic.vue";
+</script>

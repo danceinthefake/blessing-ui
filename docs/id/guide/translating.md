@@ -2,10 +2,6 @@
 title: Menerjemahkan library
 ---
 
-<script setup>
-import LabelsSwitch from "../../demos/LabelsSwitch.vue";
-</script>
-
 # Menerjemahkan library
 
 Beberapa komponen mengucapkan kata untuk Anda: tombol "Copy", tautan "Show more", pesan pembaca layar seperti "Copied to clipboard". Anda bisa mengganti semuanya di satu tempat. Berikan sebuah paket label (label pack) ke library, dan setiap komponen di bawahnya memakai paket itu.
@@ -70,3 +66,7 @@ Paket mencakup komponen yang punya prop `labels`. Kata-kata berikut tetap terpis
 - Tanggal, angka, dan zona waktu. Semuanya memakai `Intl` dengan prop `locale`, atau bahasa browser.
 
 Arah teks juga terpisah. Atur `dir` dan `lang` di `<html>`, seperti yang ditunjukkan [panduan kanan-ke-kiri](./rtl).
+
+<script setup>
+import LabelsSwitch from "../../demos/LabelsSwitch.vue";
+</script>

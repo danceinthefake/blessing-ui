@@ -2,10 +2,6 @@
 title: Artifact panel
 ---
 
-<script setup>
-import ArtifactPanelBasic from "../demos/ArtifactPanelBasic.vue";
-</script>
-
 # Artifact panel
 
 <p class="bless-lead">A side panel for a document that the model writes, with versions, a copy, and a download</p>
@@ -38,3 +34,7 @@ import { BlessArtifactPanel } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessArtifactPanel" />
+
+<script setup>
+import ArtifactPanelBasic from "../demos/ArtifactPanelBasic.vue";
+</script>

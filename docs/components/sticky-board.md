@@ -2,10 +2,6 @@
 title: Sticky board
 ---
 
-<script setup>
-import StickyBoardBasic from "../demos/StickyBoardBasic.vue";
-</script>
-
 # Sticky board
 
 <p class="bless-lead">Sticky notes that you add, edit, color, and move</p>
@@ -37,3 +33,7 @@ import { BlessStickyBoard } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessStickyBoard" />
+
+<script setup>
+import StickyBoardBasic from "../demos/StickyBoardBasic.vue";
+</script>

@@ -7,8 +7,8 @@ footer: false
 title: Inbox (preview)
 ---
 
+<BlockFrame><Block /></BlockFrame>
+
 <script setup>
 import Block from "./inbox/index.vue";
 </script>
-
-<BlockFrame><Block /></BlockFrame>

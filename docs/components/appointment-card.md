@@ -2,10 +2,6 @@
 title: Appointment card
 ---
 
-<script setup>
-import AppointmentCardBasic from "../demos/AppointmentCardBasic.vue";
-</script>
-
 # Appointment card
 
 <p class="bless-lead">An appointment with the doctor, the place, the time, and actions</p>
@@ -38,3 +34,7 @@ import { BlessAppointmentCard } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessAppointmentCard" />
+
+<script setup>
+import AppointmentCardBasic from "../demos/AppointmentCardBasic.vue";
+</script>

@@ -2,10 +2,6 @@
 title: Stock levels
 ---
 
-<script setup>
-import StockLevelsBasic from "../demos/StockLevelsBasic.vue";
-</script>
-
 # Stock levels
 
 <p class="bless-lead">Stock for each item and place, with a reorder point and a low state</p>
@@ -39,3 +35,7 @@ import { BlessStockLevels } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessStockLevels" />
+
+<script setup>
+import StockLevelsBasic from "../demos/StockLevelsBasic.vue";
+</script>

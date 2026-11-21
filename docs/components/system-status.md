@@ -2,10 +2,6 @@
 title: System status
 ---
 
-<script setup>
-import SystemStatusBasic from "../demos/SystemStatusBasic.vue";
-</script>
-
 # System status
 
 <p class="bless-lead">The parts of a service with their state, and one line for the whole</p>
@@ -36,3 +32,7 @@ import { BlessSystemStatus } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessSystemStatus" />
+
+<script setup>
+import SystemStatusBasic from "../demos/SystemStatusBasic.vue";
+</script>

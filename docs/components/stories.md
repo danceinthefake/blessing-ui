@@ -2,10 +2,6 @@
 title: Stories
 ---
 
-<script setup>
-import StoriesBasic from "../demos/StoriesBasic.vue";
-</script>
-
 # Stories
 
 <p class="bless-lead">Rings of people with new stories, and a viewer with a timer for each story</p>
@@ -37,3 +33,7 @@ import { BlessStories } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessStories" />
+
+<script setup>
+import StoriesBasic from "../demos/StoriesBasic.vue";
+</script>

@@ -2,10 +2,6 @@
 title: Calendar
 ---
 
-<script setup>
-import CalendarBasic from "../demos/CalendarBasic.vue";
-</script>
-
 # Calendar
 
 <p class="bless-lead">Month grid</p>
@@ -34,3 +30,7 @@ import { BlessCalendar } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessCalendar" />
+
+<script setup>
+import CalendarBasic from "../demos/CalendarBasic.vue";
+</script>

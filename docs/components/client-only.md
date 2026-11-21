@@ -2,10 +2,6 @@
 title: ClientOnly
 ---
 
-<script setup>
-import ClientOnlyBasic from "../demos/ClientOnlyBasic.vue";
-</script>
-
 # ClientOnly
 
 <p class="bless-lead">Render only in the browser</p>
@@ -34,3 +30,7 @@ import { BlessClientOnly } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessClientOnly" />
+
+<script setup>
+import ClientOnlyBasic from "../demos/ClientOnlyBasic.vue";
+</script>

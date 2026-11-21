@@ -2,12 +2,6 @@
 title: DataTable
 ---
 
-<script setup>
-import DataTableBasic from "../demos/DataTableBasic.vue";
-import DataTableServer from "../demos/DataTableServer.vue";
-import DataTableColumns from "../demos/DataTableColumns.vue";
-</script>
-
 # DataTable
 
 <p class="bless-lead">Table + sort/search/select/paginate</p>
@@ -65,3 +59,9 @@ import { BlessDataTable } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessDataTable" />
+
+<script setup>
+import DataTableBasic from "../demos/DataTableBasic.vue";
+import DataTableServer from "../demos/DataTableServer.vue";
+import DataTableColumns from "../demos/DataTableColumns.vue";
+</script>

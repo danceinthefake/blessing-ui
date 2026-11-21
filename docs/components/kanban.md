@@ -2,10 +2,6 @@
 title: Kanban
 ---
 
-<script setup>
-import KanbanBasic from "../demos/KanbanBasic.vue";
-</script>
-
 # Kanban
 
 <p class="bless-lead">Columns of cards, drag between columns, WIP limits</p>
@@ -38,3 +34,7 @@ import { BlessKanban } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessKanban" />
+
+<script setup>
+import KanbanBasic from "../demos/KanbanBasic.vue";
+</script>

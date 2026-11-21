@@ -2,10 +2,6 @@
 title: Listbox
 ---
 
-<script setup>
-import ListboxBasic from "../demos/ListboxBasic.vue";
-</script>
-
 # Listbox
 
 <p class="bless-lead">Single / multi select list, role=listbox</p>
@@ -34,3 +30,7 @@ import { BlessListbox } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessListbox" />
+
+<script setup>
+import ListboxBasic from "../demos/ListboxBasic.vue";
+</script>

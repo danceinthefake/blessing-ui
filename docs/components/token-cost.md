@@ -2,10 +2,6 @@
 title: Token cost
 ---
 
-<script setup>
-import TokenCostBasic from "../demos/TokenCostBasic.vue";
-</script>
-
 # Token cost
 
 <p class="bless-lead">The tokens of a request and what they cost</p>
@@ -39,3 +35,7 @@ import { BlessTokenCost } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessTokenCost" />
+
+<script setup>
+import TokenCostBasic from "../demos/TokenCostBasic.vue";
+</script>

@@ -2,10 +2,6 @@
 title: Poster row
 ---
 
-<script setup>
-import PosterRowBasic from "../demos/PosterRowBasic.vue";
-</script>
-
 # Poster row
 
 <p class="bless-lead">A row of posters that scrolls, with arrow buttons and the keyboard</p>
@@ -38,3 +34,7 @@ import { BlessPosterRow } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessPosterRow" />
+
+<script setup>
+import PosterRowBasic from "../demos/PosterRowBasic.vue";
+</script>

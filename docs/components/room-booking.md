@@ -2,10 +2,6 @@
 title: Room booking
 ---
 
-<script setup>
-import RoomBookingBasic from "../demos/RoomBookingBasic.vue";
-</script>
-
 # Room booking
 
 <p class="bless-lead">The rooms and the hours of one day, with the booked times and a free time to pick</p>
@@ -39,3 +35,7 @@ import { BlessRoomBooking } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessRoomBooking" />
+
+<script setup>
+import RoomBookingBasic from "../demos/RoomBookingBasic.vue";
+</script>

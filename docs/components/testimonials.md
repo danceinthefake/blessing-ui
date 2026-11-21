@@ -2,10 +2,6 @@
 title: Testimonials
 ---
 
-<script setup>
-import TestimonialsBasic from "../demos/TestimonialsBasic.vue";
-</script>
-
 # Testimonials
 
 <p class="bless-lead">Quotes with a name, a role, an avatar, and stars</p>
@@ -35,3 +31,7 @@ import { BlessTestimonials } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessTestimonials" />
+
+<script setup>
+import TestimonialsBasic from "../demos/TestimonialsBasic.vue";
+</script>

@@ -2,10 +2,6 @@
 title: Hotspots
 ---
 
-<script setup>
-import HotspotsBasic from "../demos/HotspotsBasic.vue";
-</script>
-
 # Hotspots
 
 <p class="bless-lead">Numbered pins on an image or diagram, with popovers</p>
@@ -35,3 +31,7 @@ import { BlessHotspots } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessHotspots" />
+
+<script setup>
+import HotspotsBasic from "../demos/HotspotsBasic.vue";
+</script>

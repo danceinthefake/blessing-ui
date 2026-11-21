@@ -2,10 +2,6 @@
 title: Marker
 ---
 
-<script setup>
-import MarkerBasic from "../demos/MarkerBasic.vue";
-</script>
-
 # Marker
 
 <p class="bless-lead">Inline status / note / separator / row</p>
@@ -32,3 +28,7 @@ import { BlessMarker } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessMarker" />
+
+<script setup>
+import MarkerBasic from "../demos/MarkerBasic.vue";
+</script>

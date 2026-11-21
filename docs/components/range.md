@@ -2,10 +2,6 @@
 title: Range
 ---
 
-<script setup>
-import RangeBasic from "../demos/RangeBasic.vue";
-</script>
-
 # Range
 
 <p class="bless-lead">Two-thumb range on native inputs</p>
@@ -33,3 +29,7 @@ import { BlessRange } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessRange" />
+
+<script setup>
+import RangeBasic from "../demos/RangeBasic.vue";
+</script>

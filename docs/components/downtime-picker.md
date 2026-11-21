@@ -2,10 +2,6 @@
 title: Downtime picker
 ---
 
-<script setup>
-import DowntimePickerBasic from "../demos/DowntimePickerBasic.vue";
-</script>
-
 # Downtime picker
 
 <p class="bless-lead">The reason for a stop, with big touch buttons</p>
@@ -38,3 +34,7 @@ import { BlessDowntimePicker } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessDowntimePicker" />
+
+<script setup>
+import DowntimePickerBasic from "../demos/DowntimePickerBasic.vue";
+</script>

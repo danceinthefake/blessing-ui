@@ -2,10 +2,6 @@
 title: TagCloud
 ---
 
-<script setup>
-import TagCloudBasic from "../demos/TagCloudBasic.vue";
-</script>
-
 # TagCloud
 
 <p class="bless-lead">Tags sized by weight</p>
@@ -35,3 +31,7 @@ import { BlessTagCloud } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessTagCloud" />
+
+<script setup>
+import TagCloudBasic from "../demos/TagCloudBasic.vue";
+</script>

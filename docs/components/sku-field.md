@@ -2,10 +2,6 @@
 title: SKU field
 ---
 
-<script setup>
-import SkuFieldBasic from "../demos/SkuFieldBasic.vue";
-</script>
-
 # SKU field
 
 <p class="bless-lead">A field for a barcode or a SKU that takes a scanner and checks the code</p>
@@ -39,3 +35,7 @@ import { BlessSkuField } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessSkuField" />
+
+<script setup>
+import SkuFieldBasic from "../demos/SkuFieldBasic.vue";
+</script>

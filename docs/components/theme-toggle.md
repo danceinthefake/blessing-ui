@@ -2,10 +2,6 @@
 title: ThemeToggle
 ---
 
-<script setup>
-import ThemeToggleBasic from "../demos/ThemeToggleBasic.vue";
-</script>
-
 # ThemeToggle
 
 <p class="bless-lead">Light/dark switch or 3-way group</p>
@@ -32,3 +28,7 @@ import { BlessThemeToggle } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessThemeToggle" />
+
+<script setup>
+import ThemeToggleBasic from "../demos/ThemeToggleBasic.vue";
+</script>

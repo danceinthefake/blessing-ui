@@ -3,16 +3,6 @@ title: Onboarding
 aside: false
 ---
 
-<script setup>
-import { withBase } from "vitepress";
-import meta from "./onboarding/meta";
-const files = Object.fromEntries(
-  Object.entries(import.meta.glob("./onboarding/**/*.{vue,ts}", { query: "?raw", import: "default", eager: true }))
-    .filter(([p]) => !p.endsWith("meta.ts"))
-    .map(([p, src]) => [p.replace("./onboarding/", ""), src]),
-);
-</script>
-
 # Onboarding
 
 <p class="bless-lead">A three-step first-run wizard (workspace name, invite teammates, pick a palette) with a progress header and a finish screen.</p>
@@ -22,3 +12,13 @@ const files = Object.fromEntries(
 ## Into your app
 
 Run `npx blessing-ui add onboarding` to copy the folder to `src/features/onboarding/` (Nuxt: `app/features/onboarding/`). Then render `index.vue` from a page. There is nothing to fetch: on `@finish`, send `form` to your API and route to the workspace instead of starting over.
+
+<script setup>
+import { withBase } from "vitepress";
+import meta from "./onboarding/meta";
+const files = Object.fromEntries(
+  Object.entries(import.meta.glob("./onboarding/**/*.{vue,ts}", { query: "?raw", import: "default", eager: true }))
+    .filter(([p]) => !p.endsWith("meta.ts"))
+    .map(([p, src]) => [p.replace("./onboarding/", ""), src]),
+);
+</script>

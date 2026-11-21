@@ -2,10 +2,6 @@
 title: Review summary
 ---
 
-<script setup>
-import ReviewSummaryBasic from "../demos/ReviewSummaryBasic.vue";
-</script>
-
 # Review summary
 
 <p class="bless-lead">The average stars, the count, and a bar for each star level</p>
@@ -36,3 +32,7 @@ import { BlessReviewSummary } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessReviewSummary" />
+
+<script setup>
+import ReviewSummaryBasic from "../demos/ReviewSummaryBasic.vue";
+</script>

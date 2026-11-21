@@ -7,8 +7,8 @@ footer: false
 title: Pricing (preview)
 ---
 
+<BlockFrame><Block /></BlockFrame>
+
 <script setup>
 import Block from "./pricing/index.vue";
 </script>
-
-<BlockFrame><Block /></BlockFrame>

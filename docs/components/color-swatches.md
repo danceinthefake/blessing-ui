@@ -2,10 +2,6 @@
 title: Color swatches
 ---
 
-<script setup>
-import ColorSwatchesBasic from "../demos/ColorSwatchesBasic.vue";
-</script>
-
 # Color swatches
 
 <p class="bless-lead">A set of ready colors, to pick one</p>
@@ -36,3 +32,7 @@ import { BlessColorSwatches, type BlessColorSwatch } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessColorSwatches" />
+
+<script setup>
+import ColorSwatchesBasic from "../demos/ColorSwatchesBasic.vue";
+</script>

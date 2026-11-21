@@ -2,10 +2,6 @@
 title: Shortcut sheet
 ---
 
-<script setup>
-import ShortcutSheetBasic from "../demos/ShortcutSheetBasic.vue";
-</script>
-
 # Shortcut sheet
 
 <p class="bless-lead">Keyboard shortcuts in groups, with a search</p>
@@ -37,3 +33,7 @@ import { BlessShortcutSheet, type BlessShortcutGroup } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessShortcutSheet" />
+
+<script setup>
+import ShortcutSheetBasic from "../demos/ShortcutSheetBasic.vue";
+</script>

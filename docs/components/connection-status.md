@@ -2,10 +2,6 @@
 title: ConnectionStatus
 ---
 
-<script setup>
-import ConnectionStatusBasic from "../demos/ConnectionStatusBasic.vue";
-</script>
-
 # ConnectionStatus
 
 <p class="bless-lead">Online, offline, or reconnecting</p>
@@ -37,3 +33,7 @@ import { BlessConnectionStatus } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessConnectionStatus" />
+
+<script setup>
+import ConnectionStatusBasic from "../demos/ConnectionStatusBasic.vue";
+</script>

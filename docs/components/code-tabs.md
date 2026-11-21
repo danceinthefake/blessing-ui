@@ -2,10 +2,6 @@
 title: Code tabs
 ---
 
-<script setup>
-import CodeTabsBasic from "../demos/CodeTabsBasic.vue";
-</script>
-
 # Code tabs
 
 <p class="bless-lead">One command in tabs for each package manager</p>
@@ -37,3 +33,7 @@ import { BlessCodeTabs } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessCodeTabs" />
+
+<script setup>
+import CodeTabsBasic from "../demos/CodeTabsBasic.vue";
+</script>

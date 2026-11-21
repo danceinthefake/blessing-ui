@@ -2,10 +2,6 @@
 title: Marimekko
 ---
 
-<script setup>
-import MarimekkoBasic from "../demos/MarimekkoBasic.vue";
-</script>
-
 # Marimekko
 
 <p class="bless-lead">Bars whose width and height both show a share</p>
@@ -36,3 +32,7 @@ import { BlessMarimekko } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessMarimekko" />
+
+<script setup>
+import MarimekkoBasic from "../demos/MarimekkoBasic.vue";
+</script>

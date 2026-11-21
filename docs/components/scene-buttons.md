@@ -2,10 +2,6 @@
 title: Scene buttons
 ---
 
-<script setup>
-import SceneButtonsBasic from "../demos/SceneButtonsBasic.vue";
-</script>
-
 # Scene buttons
 
 <p class="bless-lead">Buttons that set many devices at once, such as Night or Away</p>
@@ -36,3 +32,7 @@ import { BlessSceneButtons } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessSceneButtons" />
+
+<script setup>
+import SceneButtonsBasic from "../demos/SceneButtonsBasic.vue";
+</script>

@@ -2,10 +2,6 @@
 title: Unit converter
 ---
 
-<script setup>
-import UnitConverterBasic from "../demos/UnitConverterBasic.vue";
-</script>
-
 # Unit converter
 
 <p class="bless-lead">An amount in one unit of measure and its value in another, such as boxes and pieces</p>
@@ -38,3 +34,7 @@ import { BlessUnitConverter } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessUnitConverter" />
+
+<script setup>
+import UnitConverterBasic from "../demos/UnitConverterBasic.vue";
+</script>

@@ -2,10 +2,6 @@
 title: PaletteToggle
 ---
 
-<script setup>
-import PaletteToggleBasic from "../demos/PaletteToggleBasic.vue";
-</script>
-
 # PaletteToggle
 
 <p class="bless-lead">Accent palette swatches</p>
@@ -33,3 +29,7 @@ import { BlessPaletteToggle } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessPaletteToggle" />
+
+<script setup>
+import PaletteToggleBasic from "../demos/PaletteToggleBasic.vue";
+</script>

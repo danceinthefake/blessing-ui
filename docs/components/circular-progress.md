@@ -2,10 +2,6 @@
 title: CircularProgress
 ---
 
-<script setup>
-import CircularProgressBasic from "../demos/CircularProgressBasic.vue";
-</script>
-
 # CircularProgress
 
 <p class="bless-lead">Ring progress, determinate or spinning</p>
@@ -32,3 +28,7 @@ import { BlessCircularProgress } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessCircularProgress" />
+
+<script setup>
+import CircularProgressBasic from "../demos/CircularProgressBasic.vue";
+</script>

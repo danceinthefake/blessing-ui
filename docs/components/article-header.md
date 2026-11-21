@@ -2,10 +2,6 @@
 title: Article header
 ---
 
-<script setup>
-import ArticleHeaderBasic from "../demos/ArticleHeaderBasic.vue";
-</script>
-
 # Article header
 
 <p class="bless-lead">The title, the author, the date, the reading time, and the topic of an article</p>
@@ -37,3 +33,7 @@ import { BlessArticleHeader } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessArticleHeader" />
+
+<script setup>
+import ArticleHeaderBasic from "../demos/ArticleHeaderBasic.vue";
+</script>

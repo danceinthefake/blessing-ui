@@ -2,10 +2,6 @@
 title: DropdownMenu
 ---
 
-<script setup>
-import DropdownMenuBasic from "../demos/DropdownMenuBasic.vue";
-</script>
-
 # DropdownMenu
 
 <p class="bless-lead">ARIA menu</p>
@@ -38,3 +34,7 @@ import { BlessDropdownMenu } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessDropdownMenu" />
+
+<script setup>
+import DropdownMenuBasic from "../demos/DropdownMenuBasic.vue";
+</script>

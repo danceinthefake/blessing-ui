@@ -7,8 +7,8 @@ footer: false
 title: Dashboard (preview)
 ---
 
+<BlockFrame><Block /></BlockFrame>
+
 <script setup>
 import Block from "./dashboard/index.vue";
 </script>
-
-<BlockFrame><Block /></BlockFrame>

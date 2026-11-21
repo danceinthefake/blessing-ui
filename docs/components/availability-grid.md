@@ -2,10 +2,6 @@
 title: Availability grid
 ---
 
-<script setup>
-import AvailabilityGridBasic from "../demos/AvailabilityGridBasic.vue";
-</script>
-
 # Availability grid
 
 <p class="bless-lead">A week of time cells, to mark when a person is free</p>
@@ -37,3 +33,7 @@ import { BlessAvailabilityGrid } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessAvailabilityGrid" />
+
+<script setup>
+import AvailabilityGridBasic from "../demos/AvailabilityGridBasic.vue";
+</script>

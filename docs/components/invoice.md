@@ -2,10 +2,6 @@
 title: Invoice
 ---
 
-<script setup>
-import InvoiceBasic from "../demos/InvoiceBasic.vue";
-</script>
-
 # Invoice
 
 <p class="bless-lead">An invoice with the parties, the lines, the tax, the totals, and the payment state</p>
@@ -41,3 +37,7 @@ import { BlessInvoice } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessInvoice" />
+
+<script setup>
+import InvoiceBasic from "../demos/InvoiceBasic.vue";
+</script>

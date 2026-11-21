@@ -2,10 +2,6 @@
 title: Vitals panel
 ---
 
-<script setup>
-import VitalsPanelBasic from "../demos/VitalsPanelBasic.vue";
-</script>
-
 # Vitals panel
 
 <p class="bless-lead">Heart rate, blood pressure, and other readings with the normal range</p>
@@ -38,3 +34,7 @@ import { BlessVitalsPanel } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessVitalsPanel" />
+
+<script setup>
+import VitalsPanelBasic from "../demos/VitalsPanelBasic.vue";
+</script>

@@ -2,10 +2,6 @@
 title: Type scale
 ---
 
-<script setup>
-import TypeScaleBasic from "../demos/TypeScaleBasic.vue";
-</script>
-
 # Type scale
 
 <p class="bless-lead">A specimen of the font sizes, with the size, the line height, and the name</p>
@@ -36,3 +32,7 @@ import { BlessTypeScale } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessTypeScale" />
+
+<script setup>
+import TypeScaleBasic from "../demos/TypeScaleBasic.vue";
+</script>

@@ -2,10 +2,6 @@
 title: Descriptions
 ---
 
-<script setup>
-import DescriptionsBasic from "../demos/DescriptionsBasic.vue";
-</script>
-
 # Descriptions
 
 <p class="bless-lead">Label and value pairs for a detail page</p>
@@ -36,3 +32,7 @@ import { BlessDescriptions } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessDescriptions" />
+
+<script setup>
+import DescriptionsBasic from "../demos/DescriptionsBasic.vue";
+</script>

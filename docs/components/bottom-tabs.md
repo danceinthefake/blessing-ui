@@ -2,10 +2,6 @@
 title: BottomTabs
 ---
 
-<script setup>
-import BottomTabsBasic from "../demos/BottomTabsBasic.vue";
-</script>
-
 # BottomTabs
 
 <p class="bless-lead">Mobile bottom nav bar or floating dock</p>
@@ -34,3 +30,7 @@ import { BlessBottomTabs } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessBottomTabs" />
+
+<script setup>
+import BottomTabsBasic from "../demos/BottomTabsBasic.vue";
+</script>

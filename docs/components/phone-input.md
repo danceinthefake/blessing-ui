@@ -2,10 +2,6 @@
 title: PhoneInput
 ---
 
-<script setup>
-import PhoneInputBasic from "../demos/PhoneInputBasic.vue";
-</script>
-
 # PhoneInput
 
 <p class="bless-lead">Country code select and phone number (E.164)</p>
@@ -37,3 +33,7 @@ import { BlessPhoneInput } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessPhoneInput" />
+
+<script setup>
+import PhoneInputBasic from "../demos/PhoneInputBasic.vue";
+</script>

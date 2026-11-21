@@ -2,12 +2,6 @@
 title: Chart
 ---
 
-<script setup>
-import ChartBars from "../demos/ChartBars.vue";
-import ChartBasic from "../demos/ChartBasic.vue";
-import ChartSankey from "../demos/ChartSankey.vue";
-</script>
-
 # Chart
 
 <p class="bless-lead">Themed frame for any [Unovis](https://unovis.dev) chart</p>
@@ -53,3 +47,9 @@ import { BlessChart } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessChart" />
+
+<script setup>
+import ChartBars from "../demos/ChartBars.vue";
+import ChartBasic from "../demos/ChartBasic.vue";
+import ChartSankey from "../demos/ChartSankey.vue";
+</script>

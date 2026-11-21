@@ -7,8 +7,8 @@ footer: false
 title: Page states (preview)
 ---
 
+<BlockFrame><Block /></BlockFrame>
+
 <script setup>
 import Block from "./states/index.vue";
 </script>
-
-<BlockFrame><Block /></BlockFrame>

@@ -2,10 +2,6 @@
 title: DialogHost
 ---
 
-<script setup>
-import DialogHostBasic from "../demos/DialogHostBasic.vue";
-</script>
-
 # DialogHost
 
 <p class="bless-lead">Programmatic modals via useDialog()</p>
@@ -42,3 +38,7 @@ import { BlessDialogHost } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessDialogHost" />
+
+<script setup>
+import DialogHostBasic from "../demos/DialogHostBasic.vue";
+</script>

@@ -2,10 +2,6 @@
 title: CSV import
 ---
 
-<script setup>
-import CsvImportBasic from "../demos/CsvImportBasic.vue";
-</script>
-
 # CSV import
 
 <p class="bless-lead">Read a CSV file, match its columns to your fields, and check the rows</p>
@@ -39,3 +35,7 @@ import { BlessCsvImport } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessCsvImport" />
+
+<script setup>
+import CsvImportBasic from "../demos/CsvImportBasic.vue";
+</script>

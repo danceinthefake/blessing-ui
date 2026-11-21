@@ -2,10 +2,6 @@
 title: SLA timer
 ---
 
-<script setup>
-import SlaTimerBasic from "../demos/SlaTimerBasic.vue";
-</script>
-
 # SLA timer
 
 <p class="bless-lead">The time left to answer or to solve a ticket, with a warning and a breach state</p>
@@ -40,3 +36,7 @@ import { BlessSlaTimer } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessSlaTimer" />
+
+<script setup>
+import SlaTimerBasic from "../demos/SlaTimerBasic.vue";
+</script>

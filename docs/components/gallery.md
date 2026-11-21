@@ -2,10 +2,6 @@
 title: Gallery
 ---
 
-<script setup>
-import GalleryBasic from "../demos/GalleryBasic.vue";
-</script>
-
 # Gallery
 
 <p class="bless-lead">Thumb grid + lightbox</p>
@@ -33,3 +29,7 @@ import { BlessGallery } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessGallery" />
+
+<script setup>
+import GalleryBasic from "../demos/GalleryBasic.vue";
+</script>

@@ -7,8 +7,8 @@ footer: false
 title: Character (preview)
 ---
 
+<BlockFrame><Block /></BlockFrame>
+
 <script setup>
 import Block from "./character/index.vue";
 </script>
-
-<BlockFrame><Block /></BlockFrame>

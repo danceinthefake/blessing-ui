@@ -2,10 +2,6 @@
 title: ConfirmPopup
 ---
 
-<script setup>
-import ConfirmPopupBasic from "../demos/ConfirmPopupBasic.vue";
-</script>
-
 # ConfirmPopup
 
 <p class="bless-lead">Confirm inside a popover</p>
@@ -37,3 +33,7 @@ import { BlessConfirmPopup } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessConfirmPopup" />
+
+<script setup>
+import ConfirmPopupBasic from "../demos/ConfirmPopupBasic.vue";
+</script>

@@ -2,10 +2,6 @@
 title: Icon picker
 ---
 
-<script setup>
-import IconPickerBasic from "../demos/IconPickerBasic.vue";
-</script>
-
 # Icon picker
 
 <p class="bless-lead">A grid of your icons, with a search and arrow keys</p>
@@ -37,3 +33,7 @@ import { BlessIconPicker } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessIconPicker" />
+
+<script setup>
+import IconPickerBasic from "../demos/IconPickerBasic.vue";
+</script>

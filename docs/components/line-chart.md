@@ -2,10 +2,6 @@
 title: Line chart
 ---
 
-<script setup>
-import LineChartBasic from "../demos/LineChartBasic.vue";
-</script>
-
 # Line chart
 
 <p class="bless-lead">Lines or areas over a number or a date axis</p>
@@ -40,3 +36,7 @@ import { BlessLineChart, type BlessChartSeries } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessLineChart" />
+
+<script setup>
+import LineChartBasic from "../demos/LineChartBasic.vue";
+</script>

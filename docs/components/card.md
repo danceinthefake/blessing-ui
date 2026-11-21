@@ -2,10 +2,6 @@
 title: Card
 ---
 
-<script setup>
-import CardBasic from "../demos/CardBasic.vue";
-</script>
-
 # Card
 
 <p class="bless-lead">Flat surface</p>
@@ -33,3 +29,7 @@ import { BlessCard } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessCard" />
+
+<script setup>
+import CardBasic from "../demos/CardBasic.vue";
+</script>

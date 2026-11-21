@@ -2,10 +2,6 @@
 title: SlideItem
 ---
 
-<script setup>
-import SlideItemBasic from "../demos/SlideItemBasic.vue";
-</script>
-
 # SlideItem
 
 <p class="bless-lead">Swipe a row to reveal actions</p>
@@ -32,3 +28,7 @@ import { BlessSlideItem } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessSlideItem" />
+
+<script setup>
+import SlideItemBasic from "../demos/SlideItemBasic.vue";
+</script>

@@ -2,10 +2,6 @@
 title: Streamgraph
 ---
 
-<script setup>
-import StreamgraphBasic from "../demos/StreamgraphBasic.vue";
-</script>
-
 # Streamgraph
 
 <p class="bless-lead">Stacked areas around a center line</p>
@@ -36,3 +32,7 @@ import { BlessStreamgraph } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessStreamgraph" />
+
+<script setup>
+import StreamgraphBasic from "../demos/StreamgraphBasic.vue";
+</script>

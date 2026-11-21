@@ -6885,6 +6885,50 @@
   "slots": [],
   "exposed": []
  },
+ "BlessEyecatch": {
+  "props": [
+   {
+    "name": "kicker",
+    "type": "string | undefined",
+    "required": false,
+    "description": "the small line over the title, for example \"Episode 01\""
+   },
+   {
+    "name": "title",
+    "type": "string",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "num",
+    "type": "string | undefined",
+    "required": false,
+    "description": "the large number in the corner; decoration only"
+   },
+   {
+    "name": "headingLevel",
+    "type": "1 | 2 | 3 | undefined",
+    "required": false,
+    "default": "2",
+    "description": ""
+   },
+   {
+    "name": "accent",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": "an accent ground with a dark slash, instead of the reverse"
+   }
+  ],
+  "events": [],
+  "slots": [
+   {
+    "name": "default",
+    "type": "{}",
+    "description": ""
+   }
+  ],
+  "exposed": []
+ },
  "BlessFacetFilter": {
   "props": [
    {
@@ -12701,8 +12745,7 @@
     "name": "label",
     "type": "string | undefined",
     "required": false,
-    "default": "\"Palette\"",
-    "description": ""
+    "description": "the name of the group for screen readers; wins over `labels.palette`"
    },
    {
     "name": "showDefault",
@@ -12710,6 +12753,12 @@
     "required": false,
     "default": "true",
     "description": "include the default palette's swatch (Megumi), which clears any other"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ palette: string; }> | undefined",
+    "required": false,
+    "description": ""
    }
   ],
   "events": [],
@@ -20118,15 +20167,13 @@
     "name": "label",
     "type": "string | undefined",
     "required": false,
-    "default": "\"Theme\"",
-    "description": "the group's name"
+    "description": "the group's name; wins over `labels.theme`"
    },
    {
     "name": "labels",
-    "type": "{ light?: string | undefined; system?: string | undefined; dark?: string | undefined; } | undefined",
+    "type": "Partial<{ theme: string; light: string; system: string; dark: string; darkTheme: string; }> | undefined",
     "required": false,
-    "default": "{}",
-    "description": "accessible names: the switch reads `dark` with pressed / not pressed; the group reads all three"
+    "description": "accessible names: the group reads `theme` and all three; the switch reads `darkTheme`\n(or `dark`, if you set it) with pressed / not pressed"
    }
   ],
   "events": [],

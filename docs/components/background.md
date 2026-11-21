@@ -2,10 +2,6 @@
 title: Background
 ---
 
-<script setup>
-import BackgroundBasic from "../demos/BackgroundBasic.vue";
-</script>
-
 # Background
 
 <p class="bless-lead">Tiled texture layer</p>
@@ -34,3 +30,7 @@ import { BlessBackground } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessBackground" />
+
+<script setup>
+import BackgroundBasic from "../demos/BackgroundBasic.vue";
+</script>

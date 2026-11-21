@@ -2,10 +2,6 @@
 title: NodeGraph
 ---
 
-<script setup>
-import NodeGraphBasic from "../demos/NodeGraphBasic.vue";
-</script>
-
 # NodeGraph
 
 <p class="bless-lead">Boxes you drag and link: a pipeline, a flow, a dependency map</p>
@@ -36,3 +32,7 @@ import { BlessNodeGraph } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessNodeGraph" />
+
+<script setup>
+import NodeGraphBasic from "../demos/NodeGraphBasic.vue";
+</script>

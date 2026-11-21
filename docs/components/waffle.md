@@ -2,10 +2,6 @@
 title: Waffle
 ---
 
-<script setup>
-import WaffleBasic from "../demos/WaffleBasic.vue";
-</script>
-
 # Waffle
 
 <p class="bless-lead">Parts of a whole as a grid of 100 squares</p>
@@ -36,3 +32,7 @@ import { BlessWaffle } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessWaffle" />
+
+<script setup>
+import WaffleBasic from "../demos/WaffleBasic.vue";
+</script>

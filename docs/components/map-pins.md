@@ -2,10 +2,6 @@
 title: Map with pins
 ---
 
-<script setup>
-import MapPinsBasic from "../demos/MapPinsBasic.vue";
-</script>
-
 # Map with pins
 
 <p class="bless-lead">A map from web map tiles with pins that you can select, zoom, and drag</p>
@@ -40,3 +36,7 @@ import { BlessMapPins } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessMapPins" />
+
+<script setup>
+import MapPinsBasic from "../demos/MapPinsBasic.vue";
+</script>

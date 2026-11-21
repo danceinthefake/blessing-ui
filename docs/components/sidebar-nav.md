@@ -2,10 +2,6 @@
 title: SidebarNav
 ---
 
-<script setup>
-import SidebarNavBasic from "../demos/SidebarNavBasic.vue";
-</script>
-
 # SidebarNav
 
 <p class="bless-lead">Vertical nav list</p>
@@ -33,3 +29,7 @@ import { BlessSidebarNav } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessSidebarNav" />
+
+<script setup>
+import SidebarNavBasic from "../demos/SidebarNavBasic.vue";
+</script>

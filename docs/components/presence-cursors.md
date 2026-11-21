@@ -2,10 +2,6 @@
 title: PresenceCursors
 ---
 
-<script setup>
-import PresenceCursorsBasic from "../demos/PresenceCursorsBasic.vue";
-</script>
-
 # PresenceCursors
 
 <p class="bless-lead">The live pointers of other people over an area</p>
@@ -36,3 +32,7 @@ import { BlessPresenceCursors, type BlessPresenceCursor } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessPresenceCursors" />
+
+<script setup>
+import PresenceCursorsBasic from "../demos/PresenceCursorsBasic.vue";
+</script>

@@ -2,10 +2,6 @@
 title: Ukuran bundle
 ---
 
-<script setup>
-import SizesTable from "../../demos/SizesTable.vue";
-</script>
-
 # Ukuran bundle
 
 Setiap komponen adalah file sendiri dengan stylesheet sendiri, sehingga aplikasi Anda hanya membayar komponen yang diimpor. Tabel ini menunjukkan tambahan ukuran satu komponen saat Anda mengimpornya sendirian.
@@ -28,3 +24,7 @@ Setiap komponen adalah file sendiri dengan stylesheet sendiri, sehingga aplikasi
 - `BlessEditor`, `BlessChart`, dan `BlessMarkdown` tidak menghitung Tiptap, Unovis, dan marked, yang Anda pasang sendiri.
 
 Dua komponen yang berbagi satu bagian hanya membayarnya sekali di aplikasi Anda, jadi jumlah dua baris lebih besar dari biaya sebenarnya bila dipakai bersama. Pemeriksaan berjalan di setiap push, sehingga tabel ini sesuai dengan kode terbaru. Untuk melihat biaya seluruh library, baca [Instalasi](./install).
+
+<script setup>
+import SizesTable from "../../demos/SizesTable.vue";
+</script>

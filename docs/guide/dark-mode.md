@@ -1,9 +1,5 @@
 # Dark mode
 
-<script setup>
-import ThemeToggleBasic from "../demos/ThemeToggleBasic.vue";
-</script>
-
 Grays invert. The accent fill stays the same, but its text color (and the danger and info text) becomes lighter, so it stays readable on dark grays. `--bless-font-weight-thin` changes from 100 to 300, because hairlines look thinner as light text on a dark background. The full list of changes is in [Tokens → What flips](./tokens#what-flips-what-swaps).
 
 Follows `prefers-color-scheme` by default. Force one with `data-theme` on `<html>`:
@@ -66,3 +62,7 @@ Redefine the tokens under both selectors that `tokens.css` uses: the forced one 
   }
 }
 ```
+
+<script setup>
+import ThemeToggleBasic from "../demos/ThemeToggleBasic.vue";
+</script>

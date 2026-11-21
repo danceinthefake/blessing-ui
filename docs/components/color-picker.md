@@ -2,10 +2,6 @@
 title: ColorPicker
 ---
 
-<script setup>
-import ColorPickerBasic from "../demos/ColorPickerBasic.vue";
-</script>
-
 # ColorPicker
 
 <p class="bless-lead">Native color input + swatches</p>
@@ -32,3 +28,7 @@ import { BlessColorPicker } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessColorPicker" />
+
+<script setup>
+import ColorPickerBasic from "../demos/ColorPickerBasic.vue";
+</script>

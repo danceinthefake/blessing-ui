@@ -7,8 +7,8 @@ footer: false
 title: Course (preview)
 ---
 
+<BlockFrame><Block /></BlockFrame>
+
 <script setup>
 import Block from "./course/index.vue";
 </script>
-
-<BlockFrame><Block /></BlockFrame>

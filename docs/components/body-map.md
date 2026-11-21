@@ -2,10 +2,6 @@
 title: Body map
 ---
 
-<script setup>
-import BodyMapBasic from "../demos/BodyMapBasic.vue";
-</script>
-
 # Body map
 
 <p class="bless-lead">A body outline where a person points to the place of pain</p>
@@ -36,3 +32,7 @@ import { BlessBodyMap } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessBodyMap" />
+
+<script setup>
+import BodyMapBasic from "../demos/BodyMapBasic.vue";
+</script>

@@ -2,10 +2,6 @@
 title: Translating the library
 ---
 
-<script setup>
-import LabelsSwitch from "../demos/LabelsSwitch.vue";
-</script>
-
 # Translating the library
 
 Some components say words for you: a "Copy" button, a "Show more" link, a screen-reader message such as "Copied to clipboard". You can replace all of them in one place. Give the library a label pack, and every component below it uses the pack.
@@ -70,3 +66,7 @@ A pack covers components that have a `labels` prop. These words stay separate:
 - Dates, numbers, and time zones. They use `Intl` with the `locale` prop, or the language of the browser.
 
 Direction is separate too. Set `dir` and `lang` on `<html>`, as the [right-to-left guide](./rtl) shows.
+
+<script setup>
+import LabelsSwitch from "../demos/LabelsSwitch.vue";
+</script>

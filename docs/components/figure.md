@@ -2,10 +2,6 @@
 title: Figure
 ---
 
-<script setup>
-import FigureBasic from "../demos/FigureBasic.vue";
-</script>
-
 # Figure
 
 <p class="bless-lead">An image with a caption and a credit</p>
@@ -37,3 +33,7 @@ import { BlessFigure } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessFigure" />
+
+<script setup>
+import FigureBasic from "../demos/FigureBasic.vue";
+</script>

@@ -2,10 +2,6 @@
 title: Share bar
 ---
 
-<script setup>
-import ShareBarBasic from "../demos/ShareBarBasic.vue";
-</script>
-
 # Share bar
 
 <p class="bless-lead">Share a page through the Web Share API, with copy link as a fallback</p>
@@ -37,3 +33,7 @@ import { BlessShareBar } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessShareBar" />
+
+<script setup>
+import ShareBarBasic from "../demos/ShareBarBasic.vue";
+</script>

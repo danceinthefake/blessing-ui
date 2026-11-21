@@ -21,15 +21,15 @@ bun add blessing-ui
 :::
 
 ```vue
-<script setup lang="ts">
-import { BlessButton, BlessSection } from "blessing-ui";
-</script>
-
 <template>
   <BlessSection title="News">
     <BlessButton>More</BlessButton>
   </BlessSection>
 </template>
+
+<script setup lang="ts">
+import { BlessButton, BlessSection } from "blessing-ui";
+</script>
 ```
 
 That is all. Every component is a named ESM export with its own stylesheet attached, so a bundler pulls in only what you import. A button alone is about 1 KB of JS and 1 KB of CSS gzipped, plus about 2 KB of tokens once. [Bundle size](./sizes) shows the cost of each component. The package entry imports `tokens.css`, so the `--bless-*` custom properties exist as soon as you import anything from the library. Bundlers honor the `sideEffects` field of the package. All current bundlers do.

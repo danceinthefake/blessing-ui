@@ -2,10 +2,6 @@
 title: Skeleton
 ---
 
-<script setup>
-import SkeletonBasic from "../demos/SkeletonBasic.vue";
-</script>
-
 # Skeleton
 
 <p class="bless-lead">Placeholder in the shape of what's coming</p>
@@ -32,3 +28,7 @@ import { BlessSkeleton } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessSkeleton" />
+
+<script setup>
+import SkeletonBasic from "../demos/SkeletonBasic.vue";
+</script>

@@ -2,10 +2,6 @@
 title: Logo cloud
 ---
 
-<script setup>
-import LogoCloudBasic from "../demos/LogoCloudBasic.vue";
-</script>
-
 # Logo cloud
 
 <p class="bless-lead">The logos of customers or partners in a calm grid, in one color</p>
@@ -37,3 +33,7 @@ import { BlessLogoCloud } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessLogoCloud" />
+
+<script setup>
+import LogoCloudBasic from "../demos/LogoCloudBasic.vue";
+</script>

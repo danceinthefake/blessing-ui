@@ -2,10 +2,6 @@
 title: BlockUI
 ---
 
-<script setup>
-import BlockUIBasic from "../demos/BlockUIBasic.vue";
-</script>
-
 # BlockUI
 
 <p class="bless-lead">Overlay that blocks its content</p>
@@ -32,3 +28,7 @@ import { BlessBlockUI } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessBlockUI" />
+
+<script setup>
+import BlockUIBasic from "../demos/BlockUIBasic.vue";
+</script>

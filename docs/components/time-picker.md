@@ -2,10 +2,6 @@
 title: TimePicker
 ---
 
-<script setup>
-import TimePickerBasic from "../demos/TimePickerBasic.vue";
-</script>
-
 # TimePicker
 
 <p class="bless-lead">Native time input with quick picks</p>
@@ -34,3 +30,7 @@ import { BlessTimePicker } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessTimePicker" />
+
+<script setup>
+import TimePickerBasic from "../demos/TimePickerBasic.vue";
+</script>

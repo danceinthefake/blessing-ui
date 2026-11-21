@@ -2,10 +2,6 @@
 title: Feature grid
 ---
 
-<script setup>
-import FeatureGridBasic from "../demos/FeatureGridBasic.vue";
-</script>
-
 # Feature grid
 
 <p class="bless-lead">The features of a product with an icon, a title, and a short text each</p>
@@ -35,3 +31,7 @@ import { BlessFeatureGrid } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessFeatureGrid" />
+
+<script setup>
+import FeatureGridBasic from "../demos/FeatureGridBasic.vue";
+</script>

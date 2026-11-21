@@ -2,10 +2,6 @@
 title: Chip
 ---
 
-<script setup>
-import ChipBasic from "../demos/ChipBasic.vue";
-</script>
-
 # Chip
 
 <p class="bless-lead">Compact token: a tag, an active filter, a chosen value</p>
@@ -32,3 +28,7 @@ import { BlessChip } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessChip" />
+
+<script setup>
+import ChipBasic from "../demos/ChipBasic.vue";
+</script>

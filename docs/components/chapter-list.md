@@ -2,10 +2,6 @@
 title: Chapter list
 ---
 
-<script setup>
-import ChapterListBasic from "../demos/ChapterListBasic.vue";
-</script>
-
 # Chapter list
 
 <p class="bless-lead">The chapters of an episode, with the current one marked</p>
@@ -36,3 +32,7 @@ import { BlessChapterList } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessChapterList" />
+
+<script setup>
+import ChapterListBasic from "../demos/ChapterListBasic.vue";
+</script>

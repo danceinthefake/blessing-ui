@@ -2,10 +2,6 @@
 title: Episode list
 ---
 
-<script setup>
-import EpisodeListBasic from "../demos/EpisodeListBasic.vue";
-</script>
-
 # Episode list
 
 <p class="bless-lead">The episodes of a season with the length, a summary, and the progress</p>
@@ -37,3 +33,7 @@ import { BlessEpisodeList } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessEpisodeList" />
+
+<script setup>
+import EpisodeListBasic from "../demos/EpisodeListBasic.vue";
+</script>

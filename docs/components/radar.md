@@ -2,10 +2,6 @@
 title: Radar
 ---
 
-<script setup>
-import RadarBasic from "../demos/RadarBasic.vue";
-</script>
-
 # Radar
 
 <p class="bless-lead">Spider chart: one shape per series</p>
@@ -36,3 +32,7 @@ import { BlessRadar } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessRadar" />
+
+<script setup>
+import RadarBasic from "../demos/RadarBasic.vue";
+</script>

@@ -2,10 +2,6 @@
 title: Certificate
 ---
 
-<script setup>
-import CertificateBasic from "../demos/CertificateBasic.vue";
-</script>
-
 # Certificate
 
 <p class="bless-lead">A certificate of completion that prints on one page</p>
@@ -36,3 +32,7 @@ import { BlessCertificate } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessCertificate" />
+
+<script setup>
+import CertificateBasic from "../demos/CertificateBasic.vue";
+</script>

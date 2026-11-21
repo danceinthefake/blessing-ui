@@ -2,10 +2,6 @@
 title: Mini player
 ---
 
-<script setup>
-import MiniPlayerBasic from "../demos/MiniPlayerBasic.vue";
-</script>
-
 # Mini player
 
 <p class="bless-lead">A small player that stays on the screen, with the track and the controls</p>
@@ -38,3 +34,7 @@ import { BlessMiniPlayer } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessMiniPlayer" />
+
+<script setup>
+import MiniPlayerBasic from "../demos/MiniPlayerBasic.vue";
+</script>

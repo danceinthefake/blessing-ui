@@ -2,10 +2,6 @@
 title: Deploy list
 ---
 
-<script setup>
-import DeployListBasic from "../demos/DeployListBasic.vue";
-</script>
-
 # Deploy list
 
 <p class="bless-lead">The deploys of a project with the state, the commit, the time, and a rollback</p>
@@ -37,3 +33,7 @@ import { BlessDeployList } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessDeployList" />
+
+<script setup>
+import DeployListBasic from "../demos/DeployListBasic.vue";
+</script>

@@ -2,10 +2,6 @@
 title: FileInput
 ---
 
-<script setup>
-import FileInputBasic from "../demos/FileInputBasic.vue";
-</script>
-
 # FileInput
 
 <p class="bless-lead">Native file input with drop zone</p>
@@ -34,3 +30,7 @@ import { BlessFileInput } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessFileInput" />
+
+<script setup>
+import FileInputBasic from "../demos/FileInputBasic.vue";
+</script>

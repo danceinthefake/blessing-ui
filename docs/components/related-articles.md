@@ -2,10 +2,6 @@
 title: Related articles
 ---
 
-<script setup>
-import RelatedArticlesBasic from "../demos/RelatedArticlesBasic.vue";
-</script>
-
 # Related articles
 
 <p class="bless-lead">Articles on the same topic, with an image and the reading time</p>
@@ -36,3 +32,7 @@ import { BlessRelatedArticles } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessRelatedArticles" />
+
+<script setup>
+import RelatedArticlesBasic from "../demos/RelatedArticlesBasic.vue";
+</script>

@@ -2,10 +2,6 @@
 title: Sheet
 ---
 
-<script setup>
-import SheetBasic from "../demos/SheetBasic.vue";
-</script>
-
 # Sheet
 
 <p class="bless-lead">Side panel</p>
@@ -34,3 +30,7 @@ import { BlessSheet } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessSheet" />
+
+<script setup>
+import SheetBasic from "../demos/SheetBasic.vue";
+</script>

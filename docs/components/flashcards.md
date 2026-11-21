@@ -2,10 +2,6 @@
 title: Flashcards
 ---
 
-<script setup>
-import FlashcardsBasic from "../demos/FlashcardsBasic.vue";
-</script>
-
 # Flashcards
 
 <p class="bless-lead">Cards with a question and an answer, to learn by memory</p>
@@ -36,3 +32,7 @@ import { BlessFlashcards } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessFlashcards" />
+
+<script setup>
+import FlashcardsBasic from "../demos/FlashcardsBasic.vue";
+</script>

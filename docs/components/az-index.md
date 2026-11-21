@@ -2,10 +2,6 @@
 title: A to Z index
 ---
 
-<script setup>
-import AzIndexBasic from "../demos/AzIndexBasic.vue";
-</script>
-
 # A to Z index
 
 <p class="bless-lead">A list in groups by first letter, with a bar of letters to jump</p>
@@ -37,3 +33,7 @@ import { BlessAzIndex } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessAzIndex" />
+
+<script setup>
+import AzIndexBasic from "../demos/AzIndexBasic.vue";
+</script>

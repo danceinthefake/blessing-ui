@@ -2,10 +2,6 @@
 title: Course card
 ---
 
-<script setup>
-import CourseCardBasic from "../demos/CourseCardBasic.vue";
-</script>
-
 # Course card
 
 <p class="bless-lead">A course with the picture, the teacher, the number of lessons, the level, and the progress</p>
@@ -36,3 +32,7 @@ import { BlessCourseCard } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessCourseCard" />
+
+<script setup>
+import CourseCardBasic from "../demos/CourseCardBasic.vue";
+</script>

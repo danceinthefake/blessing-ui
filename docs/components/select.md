@@ -2,10 +2,6 @@
 title: Select
 ---
 
-<script setup>
-import SelectBasic from "../demos/SelectBasic.vue";
-</script>
-
 # Select
 
 <p class="bless-lead">Styled native &lt;select&gt;</p>
@@ -34,3 +30,7 @@ import { BlessSelect } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessSelect" />
+
+<script setup>
+import SelectBasic from "../demos/SelectBasic.vue";
+</script>

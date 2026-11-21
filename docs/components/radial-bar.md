@@ -2,10 +2,6 @@
 title: Radial bar
 ---
 
-<script setup>
-import RadialBarBasic from "../demos/RadialBarBasic.vue";
-</script>
-
 # Radial bar
 
 <p class="bless-lead">Rings that fill to a share, one ring for each goal</p>
@@ -36,3 +32,7 @@ import { BlessRadialBar } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessRadialBar" />
+
+<script setup>
+import RadialBarBasic from "../demos/RadialBarBasic.vue";
+</script>

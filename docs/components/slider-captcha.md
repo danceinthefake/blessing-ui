@@ -2,10 +2,6 @@
 title: SliderCaptcha
 ---
 
-<script setup>
-import SliderCaptchaBasic from "../demos/SliderCaptchaBasic.vue";
-</script>
-
 # SliderCaptcha
 
 <p class="bless-lead">Slide the piece into the gap: a human check</p>
@@ -42,3 +38,7 @@ import { BlessSliderCaptcha } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessSliderCaptcha" />
+
+<script setup>
+import SliderCaptchaBasic from "../demos/SliderCaptchaBasic.vue";
+</script>

@@ -2,10 +2,6 @@
 title: Eligibility check
 ---
 
-<script setup>
-import EligibilityCheckBasic from "../demos/EligibilityCheckBasic.vue";
-</script>
-
 # Eligibility check
 
 <p class="bless-lead">Questions one at a time that lead to a result, with a way back</p>
@@ -39,3 +35,7 @@ import { BlessEligibilityCheck } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessEligibilityCheck" />
+
+<script setup>
+import EligibilityCheckBasic from "../demos/EligibilityCheckBasic.vue";
+</script>

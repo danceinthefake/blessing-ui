@@ -2,10 +2,6 @@
 title: Reactions
 ---
 
-<script setup>
-import ReactionsBasic from "../demos/ReactionsBasic.vue";
-</script>
-
 # Reactions
 
 <p class="bless-lead">Emoji reactions with counts under a post</p>
@@ -36,3 +32,7 @@ import { BlessReactions } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessReactions" />
+
+<script setup>
+import ReactionsBasic from "../demos/ReactionsBasic.vue";
+</script>

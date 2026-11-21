@@ -2,10 +2,6 @@
 title: Terminal
 ---
 
-<script setup>
-import TerminalBasic from "../demos/TerminalBasic.vue";
-</script>
-
 # Terminal
 
 <p class="bless-lead">The output of a shell with a prompt, a history of commands, and colors for errors</p>
@@ -39,3 +35,7 @@ import { BlessTerminal } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessTerminal" />
+
+<script setup>
+import TerminalBasic from "../demos/TerminalBasic.vue";
+</script>

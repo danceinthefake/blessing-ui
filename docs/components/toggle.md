@@ -2,11 +2,6 @@
 title: Toggle
 ---
 
-<script setup>
-import ToggleBasic from "../demos/ToggleBasic.vue";
-import ToggleGroupBasic from "../demos/ToggleGroupBasic.vue";
-</script>
-
 # Toggle
 
 <p class="bless-lead">Pressed buttons</p>
@@ -50,3 +45,8 @@ import { BlessToggle, BlessToggleGroup } from "blessing-ui";
 ### BlessToggleGroup
 
 <PropsTable name="BlessToggleGroup" />
+
+<script setup>
+import ToggleBasic from "../demos/ToggleBasic.vue";
+import ToggleGroupBasic from "../demos/ToggleGroupBasic.vue";
+</script>

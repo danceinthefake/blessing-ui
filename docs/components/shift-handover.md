@@ -2,10 +2,6 @@
 title: Shift handover
 ---
 
-<script setup>
-import ShiftHandoverBasic from "../demos/ShiftHandoverBasic.vue";
-</script>
-
 # Shift handover
 
 <p class="bless-lead">Notes from one shift to the next, with open issues</p>
@@ -38,3 +34,7 @@ import { BlessShiftHandover } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessShiftHandover" />
+
+<script setup>
+import ShiftHandoverBasic from "../demos/ShiftHandoverBasic.vue";
+</script>

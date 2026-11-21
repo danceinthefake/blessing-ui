@@ -2,10 +2,6 @@
 title: Small multiples
 ---
 
-<script setup>
-import SmallMultiplesBasic from "../demos/SmallMultiplesBasic.vue";
-</script>
-
 # Small multiples
 
 <p class="bless-lead">A grid of small line charts on one scale</p>
@@ -36,3 +32,7 @@ import { BlessSmallMultiples } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessSmallMultiples" />
+
+<script setup>
+import SmallMultiplesBasic from "../demos/SmallMultiplesBasic.vue";
+</script>

@@ -2,10 +2,6 @@
 title: Consent banner
 ---
 
-<script setup>
-import ConsentBannerBasic from "../demos/ConsentBannerBasic.vue";
-</script>
-
 # Consent banner
 
 <p class="bless-lead">A cookie consent bar with accept, reject, and a choice for each category</p>
@@ -38,3 +34,7 @@ import { BlessConsentBanner } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessConsentBanner" />
+
+<script setup>
+import ConsentBannerBasic from "../demos/ConsentBannerBasic.vue";
+</script>

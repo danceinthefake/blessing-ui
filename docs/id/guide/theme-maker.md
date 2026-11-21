@@ -1,9 +1,5 @@
 # Pembuat tema
 
-<script setup>
-import ThemeMaker from "../../demos/ThemeMaker.vue";
-</script>
-
 Pilih satu warna kelopak dan beri nama palet. Halaman ini membuat token aksen lainnya dari kelopak itu dan menjaga [janji aksen](./tokens#color-pairs). Pratinjau di bawah memakai palet baru dan mengikuti tema terang atau gelap situs ini.
 
 <ThemeMaker />
@@ -25,3 +21,7 @@ Halaman ini membuat enam token dan satu potongan mode gelap, seperti yang dijela
 Enam palet bawaan keluar dari langkah yang sama, dengan selisih satu atau dua tingkat. Abu-abu, huruf, dan geometri tidak berubah. Untuk menyetel satu nilai, ubah nilai itu di CSS.
 
 `setPalette()` dan `BlessPaletteToggle` hanya mengenal enam palet bawaan. Untuk palet Anda sendiri, pasang atributnya sendiri.
+
+<script setup>
+import ThemeMaker from "../../demos/ThemeMaker.vue";
+</script>

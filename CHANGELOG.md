@@ -8,7 +8,7 @@
 
 ### Changed
 
-- All SFCs put the blocks in the order template, script, style. A unit test (`src/sfc-order.test.ts`) keeps this order. The output of the build does not change.
+- All SFCs, the `vue` code samples in the README and the docs, and the docs pages put the blocks in the order template, script, style. In a docs page, the page text is the template, so `<script setup>` goes at the end. `pnpm docs:pages` and `pnpm docs:blocks` make new pages in this order. A unit test (`src/sfc-order.test.ts`) keeps the order. The output of the library build does not change.
 
 ### Fixed
 

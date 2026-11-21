@@ -2,10 +2,6 @@
 title: RadioGroup
 ---
 
-<script setup>
-import RadioGroupBasic from "../demos/RadioGroupBasic.vue";
-</script>
-
 # RadioGroup
 
 <p class="bless-lead">Native radios</p>
@@ -40,3 +36,7 @@ import { BlessRadioGroup, BlessRadio } from "blessing-ui";
 ### BlessRadio
 
 <PropsTable name="BlessRadio" />
+
+<script setup>
+import RadioGroupBasic from "../demos/RadioGroupBasic.vue";
+</script>

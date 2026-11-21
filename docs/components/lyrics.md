@@ -2,10 +2,6 @@
 title: Lyrics
 ---
 
-<script setup>
-import LyricsBasic from "../demos/LyricsBasic.vue";
-</script>
-
 # Lyrics
 
 <p class="bless-lead">The lines of a song that follow the playback</p>
@@ -38,3 +34,7 @@ import { BlessLyrics } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessLyrics" />
+
+<script setup>
+import LyricsBasic from "../demos/LyricsBasic.vue";
+</script>

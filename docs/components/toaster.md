@@ -2,11 +2,6 @@
 title: Toaster
 ---
 
-<script setup>
-import ToasterBasic from "../demos/ToasterBasic.vue";
-import ToasterUndo from "../demos/ToasterUndo.vue";
-</script>
-
 # Toaster
 
 <p class="bless-lead">Notifications</p>
@@ -46,3 +41,8 @@ import { BlessToaster } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessToaster" />
+
+<script setup>
+import ToasterBasic from "../demos/ToasterBasic.vue";
+import ToasterUndo from "../demos/ToasterUndo.vue";
+</script>

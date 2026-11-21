@@ -2,10 +2,6 @@
 title: Sources
 ---
 
-<script setup>
-import SourcesBasic from "../demos/SourcesBasic.vue";
-</script>
-
 # Sources
 
 <p class="bless-lead">The sources of a reply, with numbered marks that link to them</p>
@@ -35,3 +31,7 @@ import { BlessSources } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessSources" />
+
+<script setup>
+import SourcesBasic from "../demos/SourcesBasic.vue";
+</script>

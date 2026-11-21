@@ -2,10 +2,6 @@
 title: JsonViewer
 ---
 
-<script setup>
-import JsonViewerBasic from "../demos/JsonViewerBasic.vue";
-</script>
-
 # JsonViewer
 
 <p class="bless-lead">Any value as an open-and-close tree</p>
@@ -37,3 +33,7 @@ import { BlessJsonViewer } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessJsonViewer" />
+
+<script setup>
+import JsonViewerBasic from "../demos/JsonViewerBasic.vue";
+</script>

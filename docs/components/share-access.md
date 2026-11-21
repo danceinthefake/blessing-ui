@@ -2,10 +2,6 @@
 title: Share access
 ---
 
-<script setup>
-import ShareAccessBasic from "../demos/ShareAccessBasic.vue";
-</script>
-
 # Share access
 
 <p class="bless-lead">The people who can open a file, their access level, and the access for a link</p>
@@ -37,3 +33,7 @@ import { BlessShareAccess } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessShareAccess" />
+
+<script setup>
+import ShareAccessBasic from "../demos/ShareAccessBasic.vue";
+</script>

@@ -2,10 +2,6 @@
 title: Ticket
 ---
 
-<script setup>
-import TicketBasic from "../demos/TicketBasic.vue";
-</script>
-
 # Ticket
 
 <p class="bless-lead">An event ticket with a tear line, the seat, and a QR code</p>
@@ -36,3 +32,7 @@ import { BlessTicket } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessTicket" />
+
+<script setup>
+import TicketBasic from "../demos/TicketBasic.vue";
+</script>

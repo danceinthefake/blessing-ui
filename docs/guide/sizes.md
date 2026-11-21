@@ -2,10 +2,6 @@
 title: Bundle size
 ---
 
-<script setup>
-import SizesTable from "../demos/SizesTable.vue";
-</script>
-
 # Bundle size
 
 Each component is its own file with its own stylesheet, so your app pays only for the components that it imports. The table shows what one component adds to an app when you import it alone.
@@ -28,3 +24,7 @@ Each component is its own file with its own stylesheet, so your app pays only fo
 - `BlessEditor`, `BlessChart`, and `BlessMarkdown` do not count Tiptap, Unovis, and marked, which you install yourself.
 
 Two components that share a part pay for it once in your app, so the sum of two rows is more than their real cost together. The check runs on every push, so the table matches the current code. To see the cost of the whole library, read [Install](./install).
+
+<script setup>
+import SizesTable from "../demos/SizesTable.vue";
+</script>

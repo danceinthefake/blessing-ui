@@ -2,10 +2,6 @@
 title: Seat picker
 ---
 
-<script setup>
-import SeatPickerBasic from "../demos/SeatPickerBasic.vue";
-</script>
-
 # Seat picker
 
 <p class="bless-lead">A map of seats in rows, with prices by zone</p>
@@ -38,3 +34,7 @@ import { BlessSeatPicker } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessSeatPicker" />
+
+<script setup>
+import SeatPickerBasic from "../demos/SeatPickerBasic.vue";
+</script>

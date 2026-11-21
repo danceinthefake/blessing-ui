@@ -2,10 +2,6 @@
 title: Stat
 ---
 
-<script setup>
-import StatBasic from "../demos/StatBasic.vue";
-</script>
-
 # Stat
 
 <p class="bless-lead">KPI tile: value, change, and trend</p>
@@ -36,3 +32,7 @@ import { BlessStat } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessStat" />
+
+<script setup>
+import StatBasic from "../demos/StatBasic.vue";
+</script>

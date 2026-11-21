@@ -2,10 +2,6 @@
 title: Cropper
 ---
 
-<script setup>
-import CropperBasic from "../demos/CropperBasic.vue";
-</script>
-
 # Cropper
 
 <p class="bless-lead">Crop and rotate an image, export the pixels</p>
@@ -37,3 +33,7 @@ import { BlessCropper } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessCropper" />
+
+<script setup>
+import CropperBasic from "../demos/CropperBasic.vue";
+</script>

@@ -2,10 +2,6 @@
 title: Portfolio grid
 ---
 
-<script setup>
-import PortfolioGridBasic from "../demos/PortfolioGridBasic.vue";
-</script>
-
 # Portfolio grid
 
 <p class="bless-lead">Work in a grid with filter buttons by kind</p>
@@ -37,3 +33,7 @@ import { BlessPortfolioGrid } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessPortfolioGrid" />
+
+<script setup>
+import PortfolioGridBasic from "../demos/PortfolioGridBasic.vue";
+</script>

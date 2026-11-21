@@ -2,10 +2,6 @@
 title: Follow button
 ---
 
-<script setup>
-import FollowButtonBasic from "../demos/FollowButtonBasic.vue";
-</script>
-
 # Follow button
 
 <p class="bless-lead">Follow and unfollow, with the count of followers</p>
@@ -37,3 +33,7 @@ import { BlessFollowButton } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessFollowButton" />
+
+<script setup>
+import FollowButtonBasic from "../demos/FollowButtonBasic.vue";
+</script>

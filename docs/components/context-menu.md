@@ -2,10 +2,6 @@
 title: ContextMenu
 ---
 
-<script setup>
-import ContextMenuBasic from "../demos/ContextMenuBasic.vue";
-</script>
-
 # ContextMenu
 
 <p class="bless-lead">Menu on right click</p>
@@ -33,3 +29,7 @@ import { BlessContextMenu } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessContextMenu" />
+
+<script setup>
+import ContextMenuBasic from "../demos/ContextMenuBasic.vue";
+</script>

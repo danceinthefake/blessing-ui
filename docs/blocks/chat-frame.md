@@ -7,8 +7,8 @@ footer: false
 title: Chat (preview)
 ---
 
+<BlockFrame><Block /></BlockFrame>
+
 <script setup>
 import Block from "./chat/index.vue";
 </script>
-
-<BlockFrame><Block /></BlockFrame>

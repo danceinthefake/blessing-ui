@@ -2,10 +2,6 @@
 title: Opening hours
 ---
 
-<script setup>
-import OpeningHoursBasic from "../demos/OpeningHoursBasic.vue";
-</script>
-
 # Opening hours
 
 <p class="bless-lead">The hours of each day of the week, and "Open now"</p>
@@ -37,3 +33,7 @@ import { BlessOpeningHours } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessOpeningHours" />
+
+<script setup>
+import OpeningHoursBasic from "../demos/OpeningHoursBasic.vue";
+</script>

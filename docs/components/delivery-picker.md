@@ -2,10 +2,6 @@
 title: Delivery picker
 ---
 
-<script setup>
-import DeliveryPickerBasic from "../demos/DeliveryPickerBasic.vue";
-</script>
-
 # Delivery picker
 
 <p class="bless-lead">A day and a time window for delivery, with the fee of each window</p>
@@ -38,3 +34,7 @@ import { BlessDeliveryPicker } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessDeliveryPicker" />
+
+<script setup>
+import DeliveryPickerBasic from "../demos/DeliveryPickerBasic.vue";
+</script>

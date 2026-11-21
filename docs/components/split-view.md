@@ -2,10 +2,6 @@
 title: SplitView
 ---
 
-<script setup>
-import SplitViewBasic from "../demos/SplitViewBasic.vue";
-</script>
-
 # SplitView
 
 <p class="bless-lead">Master / detail with a draggable divider</p>
@@ -36,3 +32,7 @@ import { BlessSplitView } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessSplitView" />
+
+<script setup>
+import SplitViewBasic from "../demos/SplitViewBasic.vue";
+</script>

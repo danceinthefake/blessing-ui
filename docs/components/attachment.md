@@ -2,10 +2,6 @@
 title: Attachment
 ---
 
-<script setup>
-import AttachmentBasic from "../demos/AttachmentBasic.vue";
-</script>
-
 # Attachment
 
 <p class="bless-lead">File / image chip</p>
@@ -33,3 +29,7 @@ import { BlessAttachment } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessAttachment" />
+
+<script setup>
+import AttachmentBasic from "../demos/AttachmentBasic.vue";
+</script>

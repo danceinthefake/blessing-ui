@@ -2,10 +2,6 @@
 title: Context meter
 ---
 
-<script setup>
-import ContextMeterBasic from "../demos/ContextMeterBasic.vue";
-</script>
-
 # Context meter
 
 <p class="bless-lead">How much of the context window the tokens use</p>
@@ -35,3 +31,7 @@ import { BlessContextMeter } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessContextMeter" />
+
+<script setup>
+import ContextMeterBasic from "../demos/ContextMeterBasic.vue";
+</script>

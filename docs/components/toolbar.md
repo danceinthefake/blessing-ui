@@ -2,10 +2,6 @@
 title: Toolbar
 ---
 
-<script setup>
-import ToolbarBasic from "../demos/ToolbarBasic.vue";
-</script>
-
 # Toolbar
 
 <p class="bless-lead">Start / center / end bar</p>
@@ -33,3 +29,7 @@ import { BlessToolbar } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessToolbar" />
+
+<script setup>
+import ToolbarBasic from "../demos/ToolbarBasic.vue";
+</script>

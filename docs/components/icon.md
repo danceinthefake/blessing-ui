@@ -2,10 +2,6 @@
 title: Icon
 ---
 
-<script setup>
-import IconBasic from "../demos/IconBasic.vue";
-</script>
-
 # Icon
 
 <p class="bless-lead">SVG slot wrapper</p>
@@ -34,3 +30,7 @@ import { BlessIcon } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessIcon" />
+
+<script setup>
+import IconBasic from "../demos/IconBasic.vue";
+</script>

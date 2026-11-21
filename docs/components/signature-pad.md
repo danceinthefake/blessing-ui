@@ -2,10 +2,6 @@
 title: SignaturePad
 ---
 
-<script setup>
-import SignaturePadBasic from "../demos/SignaturePadBasic.vue";
-</script>
-
 # SignaturePad
 
 <p class="bless-lead">Draw a signature on canvas</p>
@@ -34,3 +30,7 @@ import { BlessSignaturePad } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessSignaturePad" />
+
+<script setup>
+import SignaturePadBasic from "../demos/SignaturePadBasic.vue";
+</script>

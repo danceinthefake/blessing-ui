@@ -1,10 +1,5 @@
 # Palet
 
-<script setup>
-import { BlessPaletteToggle } from "blessing-ui";
-import PaletteRetint from "../../demos/PaletteRetint.vue";
-</script>
-
 Secara bawaan, aksennya adalah merah muda Megumi. Lima keluarga aksen lain hanya sejauh satu tombol: kelopak lain dari logo, dan satu di tengahnya. Masing-masing dinamai menurut anggota lingkaran yang memberi nama pada library ini (lihat [cerita](../design/story)). Palet hanya menukar keluarga aksen. Abu-abu, huruf, dan geometri tetap sama, dan mode gelap bekerja di atasnya.
 
 <div style="margin:16px 0"><BlessPaletteToggle /></div>
@@ -68,3 +63,8 @@ Token berikut membentuk sebuah palet: `--bless-color-accent`, `-accent-soft`, `-
 ```
 
 `setPalette()` dan `BlessPaletteToggle` hanya mengenal enam palet bawaan (`blessPalettes`). Palet buatan tidak muncul di tombol pilihan dan tidak bertahan setelah `setPalette` dipanggil.
+
+<script setup>
+import { BlessPaletteToggle } from "blessing-ui";
+import PaletteRetint from "../../demos/PaletteRetint.vue";
+</script>

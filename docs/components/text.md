@@ -2,10 +2,6 @@
 title: Text
 ---
 
-<script setup>
-import TextBasic from "../demos/TextBasic.vue";
-</script>
-
 # Text
 
 <p class="bless-lead">Typography helper</p>
@@ -32,3 +28,7 @@ import { BlessText } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessText" />
+
+<script setup>
+import TextBasic from "../demos/TextBasic.vue";
+</script>

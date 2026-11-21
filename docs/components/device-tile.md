@@ -2,10 +2,6 @@
 title: Device tile
 ---
 
-<script setup>
-import DeviceTileBasic from "../demos/DeviceTileBasic.vue";
-</script>
-
 # Device tile
 
 <p class="bless-lead">A device with its state, a switch, and the main reading</p>
@@ -37,3 +33,7 @@ import { BlessDeviceTile } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessDeviceTile" />
+
+<script setup>
+import DeviceTileBasic from "../demos/DeviceTileBasic.vue";
+</script>

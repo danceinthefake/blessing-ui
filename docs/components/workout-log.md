@@ -2,10 +2,6 @@
 title: Workout log
 ---
 
-<script setup>
-import WorkoutLogBasic from "../demos/WorkoutLogBasic.vue";
-</script>
-
 # Workout log
 
 <p class="bless-lead">Sets of an exercise with weight and repetitions, and the last session</p>
@@ -38,3 +34,7 @@ import { BlessWorkoutLog } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessWorkoutLog" />
+
+<script setup>
+import WorkoutLogBasic from "../demos/WorkoutLogBasic.vue";
+</script>

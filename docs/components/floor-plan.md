@@ -2,10 +2,6 @@
 title: Floor plan
 ---
 
-<script setup>
-import FloorPlanBasic from "../demos/FloorPlanBasic.vue";
-</script>
-
 # Floor plan
 
 <p class="bless-lead">The rooms of a home with the devices in each room</p>
@@ -38,3 +34,7 @@ import { BlessFloorPlan } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessFloorPlan" />
+
+<script setup>
+import FloorPlanBasic from "../demos/FloorPlanBasic.vue";
+</script>

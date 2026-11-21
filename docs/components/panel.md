@@ -2,10 +2,6 @@
 title: Panel
 ---
 
-<script setup>
-import PanelBasic from "../demos/PanelBasic.vue";
-</script>
-
 # Panel
 
 <p class="bless-lead">Titled box with actions, toggleable</p>
@@ -33,3 +29,7 @@ import { BlessPanel } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessPanel" />
+
+<script setup>
+import PanelBasic from "../demos/PanelBasic.vue";
+</script>

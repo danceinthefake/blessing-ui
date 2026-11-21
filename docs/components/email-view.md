@@ -2,10 +2,6 @@
 title: Email view
 ---
 
-<script setup>
-import EmailViewBasic from "../demos/EmailViewBasic.vue";
-</script>
-
 # Email view
 
 <p class="bless-lead">An email with the sender, the recipients, the body, and attachments</p>
@@ -37,3 +33,7 @@ import { BlessEmailView } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessEmailView" />
+
+<script setup>
+import EmailViewBasic from "../demos/EmailViewBasic.vue";
+</script>

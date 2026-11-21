@@ -2,10 +2,6 @@
 title: AspectRatio
 ---
 
-<script setup>
-import AspectRatioBasic from "../demos/AspectRatioBasic.vue";
-</script>
-
 # AspectRatio
 
 <p class="bless-lead">A box at a fixed ratio, so media does not jump the layout while it loads.</p>
@@ -32,3 +28,7 @@ import { BlessAspectRatio } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessAspectRatio" />
+
+<script setup>
+import AspectRatioBasic from "../demos/AspectRatioBasic.vue";
+</script>

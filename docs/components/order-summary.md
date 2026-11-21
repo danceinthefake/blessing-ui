@@ -2,10 +2,6 @@
 title: Order summary
 ---
 
-<script setup>
-import OrderSummaryBasic from "../demos/OrderSummaryBasic.vue";
-</script>
-
 # Order summary
 
 <p class="bless-lead">The lines of an order, then the sums and the total</p>
@@ -37,3 +33,7 @@ import { BlessOrderSummary } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessOrderSummary" />
+
+<script setup>
+import OrderSummaryBasic from "../demos/OrderSummaryBasic.vue";
+</script>

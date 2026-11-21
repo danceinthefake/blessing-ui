@@ -2,10 +2,6 @@
 title: Ticket view
 ---
 
-<script setup>
-import TicketViewBasic from "../demos/TicketViewBasic.vue";
-</script>
-
 # Ticket view
 
 <p class="bless-lead">A help desk ticket with the customer, the messages, the state, and a reply box</p>
@@ -38,3 +34,7 @@ import { BlessTicketView } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessTicketView" />
+
+<script setup>
+import TicketViewBasic from "../demos/TicketViewBasic.vue";
+</script>

@@ -2,10 +2,6 @@
 title: Play queue
 ---
 
-<script setup>
-import PlayQueueBasic from "../demos/PlayQueueBasic.vue";
-</script>
-
 # Play queue
 
 <p class="bless-lead">The next tracks in order, which you can change and clear</p>
@@ -37,3 +33,7 @@ import { BlessPlayQueue } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessPlayQueue" />
+
+<script setup>
+import PlayQueueBasic from "../demos/PlayQueueBasic.vue";
+</script>

@@ -2,10 +2,6 @@
 title: InputOTP
 ---
 
-<script setup>
-import InputOTPBasic from "../demos/InputOTPBasic.vue";
-</script>
-
 # InputOTP
 
 <p class="bless-lead">One-time code cells</p>
@@ -35,3 +31,7 @@ import { BlessInputOTP } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessInputOTP" />
+
+<script setup>
+import InputOTPBasic from "../demos/InputOTPBasic.vue";
+</script>

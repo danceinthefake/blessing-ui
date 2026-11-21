@@ -2,10 +2,6 @@
 title: RangeCalendar
 ---
 
-<script setup>
-import RangeCalendarBasic from "../demos/RangeCalendarBasic.vue";
-</script>
-
 # RangeCalendar
 
 <p class="bless-lead">Paint the days you are free, or busy</p>
@@ -35,3 +31,7 @@ import { BlessRangeCalendar } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessRangeCalendar" />
+
+<script setup>
+import RangeCalendarBasic from "../demos/RangeCalendarBasic.vue";
+</script>

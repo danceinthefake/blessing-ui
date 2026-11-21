@@ -2,10 +2,6 @@
 title: Browser
 ---
 
-<script setup>
-import BrowserBasic from "../../demos/BrowserBasic.vue";
-</script>
-
 # Browser
 
 Pembungkus kecil untuk API platform. Semuanya aman untuk SSR (terpasang saat komponen terpasang) dan dibersihkan saat komponen dilepas.
@@ -48,3 +44,7 @@ el.scrollTo({ top: 0, behavior: scrollBehavior() }); // "smooth", or "auto" unde
 `useFullscreen().enter()` hanya bekerja dari aksi pengguna, misalnya klik atau tekanan tombol. Browser menolak layar penuh yang diminta saat komponen terpasang atau oleh timer.
 
 `reducedMotion()` membaca preferensi pada saat dipanggil. Pakai untuk keputusan sekali saja sebelum Anda menggulir atau memulai animasi. Untuk nilai yang selalu diperbarui, pakai `useMedia("(prefers-reduced-motion: reduce)")`, seperti di demo. Kedua pembantu gerak ini membantu gerakan yang Anda tulis sendiri tetap memegang [aturan kepedulian](./conventions#care).
+
+<script setup>
+import BrowserBasic from "../../demos/BrowserBasic.vue";
+</script>

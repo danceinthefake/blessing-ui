@@ -2,10 +2,6 @@
 title: Container
 ---
 
-<script setup>
-import ContainerBasic from "../demos/ContainerBasic.vue";
-</script>
-
 # Container
 
 <p class="bless-lead">Centerd max-width box</p>
@@ -33,3 +29,7 @@ import { BlessContainer } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessContainer" />
+
+<script setup>
+import ContainerBasic from "../demos/ContainerBasic.vue";
+</script>

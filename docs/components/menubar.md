@@ -2,10 +2,6 @@
 title: Menubar
 ---
 
-<script setup>
-import MenubarBasic from "../demos/MenubarBasic.vue";
-</script>
-
 # Menubar
 
 <p class="bless-lead">Bar of BlessDropdownMenus</p>
@@ -34,3 +30,7 @@ import { BlessMenubar } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessMenubar" />
+
+<script setup>
+import MenubarBasic from "../demos/MenubarBasic.vue";
+</script>

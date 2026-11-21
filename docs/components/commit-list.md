@@ -2,10 +2,6 @@
 title: Commit list
 ---
 
-<script setup>
-import CommitListBasic from "../demos/CommitListBasic.vue";
-</script>
-
 # Commit list
 
 <p class="bless-lead">The commits of a branch by day, with the author, the short hash, and the changes</p>
@@ -37,3 +33,7 @@ import { BlessCommitList } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessCommitList" />
+
+<script setup>
+import CommitListBasic from "../demos/CommitListBasic.vue";
+</script>

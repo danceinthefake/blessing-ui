@@ -2,10 +2,6 @@
 title: Order history
 ---
 
-<script setup>
-import OrderHistoryBasic from "../demos/OrderHistoryBasic.vue";
-</script>
-
 # Order history
 
 <p class="bless-lead">Past orders with the status, the items, and actions such as buy again</p>
@@ -37,3 +33,7 @@ import { BlessOrderHistory } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessOrderHistory" />
+
+<script setup>
+import OrderHistoryBasic from "../demos/OrderHistoryBasic.vue";
+</script>

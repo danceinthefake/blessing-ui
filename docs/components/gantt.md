@@ -2,10 +2,6 @@
 title: Gantt
 ---
 
-<script setup>
-import GanttBasic from "../demos/GanttBasic.vue";
-</script>
-
 # Gantt
 
 <p class="bless-lead">Bars on a time axis, draggable, with dependencies</p>
@@ -39,3 +35,7 @@ import { BlessGantt } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessGantt" />
+
+<script setup>
+import GanttBasic from "../demos/GanttBasic.vue";
+</script>

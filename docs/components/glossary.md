@@ -2,10 +2,6 @@
 title: Glossary
 ---
 
-<script setup>
-import GlossaryBasic from "../demos/GlossaryBasic.vue";
-</script>
-
 # Glossary
 
 <p class="bless-lead">A term with a dotted line that shows its meaning</p>
@@ -36,3 +32,7 @@ import { BlessGlossary } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessGlossary" />
+
+<script setup>
+import GlossaryBasic from "../demos/GlossaryBasic.vue";
+</script>

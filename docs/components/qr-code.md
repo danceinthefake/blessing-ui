@@ -2,10 +2,6 @@
 title: QrCode
 ---
 
-<script setup>
-import QrCodeBasic from "../demos/QrCodeBasic.vue";
-</script>
-
 # QrCode
 
 <p class="bless-lead">QR code SVG from a module matrix (uqr)</p>
@@ -47,3 +43,7 @@ import { BlessQrCode } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessQrCode" />
+
+<script setup>
+import QrCodeBasic from "../demos/QrCodeBasic.vue";
+</script>

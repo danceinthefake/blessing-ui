@@ -2,10 +2,6 @@
 title: KeyValueEditor
 ---
 
-<script setup>
-import KeyValueEditorBasic from "../demos/KeyValueEditorBasic.vue";
-</script>
-
 # KeyValueEditor
 
 <p class="bless-lead">Rows of key and value pairs to edit</p>
@@ -38,3 +34,7 @@ import { BlessKeyValueEditor, type BlessKeyValue } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessKeyValueEditor" />
+
+<script setup>
+import KeyValueEditorBasic from "../demos/KeyValueEditorBasic.vue";
+</script>

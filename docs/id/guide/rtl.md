@@ -2,10 +2,6 @@
 title: Kanan-ke-kiri
 ---
 
-<script setup>
-import RtlBasic from "../../demos/RtlBasic.vue";
-</script>
-
 # Kanan-ke-kiri
 
 ```html
@@ -37,3 +33,7 @@ Jika tata letak RTL Anda memerlukan sisi lain, berikan sisi yang lain.
 ## Font
 
 `--bless-font-sans` berisi Roboto dan Noto Sans JP. Untuk Arab atau Ibrani, tambahkan font aksara itu di depan dalam pengganti Anda, misalnya `--bless-font-sans: "Noto Sans Arabic", Roboto, …`. Ukuran yang berdasar metrik tetap sama. Label huruf kapital yang berjarak aman. Browser tidak memberi jarak pada aksara bersambung, sehingga huruf Arab tetap tersambung.
+
+<script setup>
+import RtlBasic from "../../demos/RtlBasic.vue";
+</script>

@@ -2,10 +2,6 @@
 title: Coachmark
 ---
 
-<script setup>
-import CoachmarkBasic from "../demos/CoachmarkBasic.vue";
-</script>
-
 # Coachmark
 
 <p class="bless-lead">A "new" dot on one control, seen once</p>
@@ -35,3 +31,7 @@ import { BlessCoachmark } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessCoachmark" />
+
+<script setup>
+import CoachmarkBasic from "../demos/CoachmarkBasic.vue";
+</script>

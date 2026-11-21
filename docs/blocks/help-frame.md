@@ -7,8 +7,8 @@ footer: false
 title: Help center (preview)
 ---
 
+<BlockFrame><Block /></BlockFrame>
+
 <script setup>
 import Block from "./help/index.vue";
 </script>
-
-<BlockFrame><Block /></BlockFrame>

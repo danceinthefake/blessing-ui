@@ -2,10 +2,6 @@
 title: Run trace
 ---
 
-<script setup>
-import RunTraceBasic from "../demos/RunTraceBasic.vue";
-</script>
-
 # Run trace
 
 <p class="bless-lead">The steps of an agent run with tools, inputs, outputs, and times</p>
@@ -37,3 +33,7 @@ import { BlessRunTrace } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessRunTrace" />
+
+<script setup>
+import RunTraceBasic from "../demos/RunTraceBasic.vue";
+</script>

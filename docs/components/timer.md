@@ -2,10 +2,6 @@
 title: Timer
 ---
 
-<script setup>
-import TimerBasic from "../demos/TimerBasic.vue";
-</script>
-
 # Timer
 
 <p class="bless-lead">Countdown, stopwatch and interval timer</p>
@@ -36,3 +32,7 @@ import { BlessTimer } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessTimer" />
+
+<script setup>
+import TimerBasic from "../demos/TimerBasic.vue";
+</script>

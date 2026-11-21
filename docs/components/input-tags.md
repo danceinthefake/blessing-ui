@@ -2,10 +2,6 @@
 title: InputTags
 ---
 
-<script setup>
-import InputTagsBasic from "../demos/InputTagsBasic.vue";
-</script>
-
 # InputTags
 
 <p class="bless-lead">Free-text tags</p>
@@ -35,3 +31,7 @@ import { BlessInputTags } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessInputTags" />
+
+<script setup>
+import InputTagsBasic from "../demos/InputTagsBasic.vue";
+</script>

@@ -2,10 +2,6 @@
 title: Product card
 ---
 
-<script setup>
-import ProductCardBasic from "../demos/ProductCardBasic.vue";
-</script>
-
 # Product card
 
 <p class="bless-lead">A product with an image, the name, the price, the rating, and an add button</p>
@@ -39,3 +35,7 @@ import { BlessProductCard } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessProductCard" />
+
+<script setup>
+import ProductCardBasic from "../demos/ProductCardBasic.vue";
+</script>

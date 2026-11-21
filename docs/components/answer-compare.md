@@ -2,10 +2,6 @@
 title: Answer compare
 ---
 
-<script setup>
-import AnswerCompareBasic from "../demos/AnswerCompareBasic.vue";
-</script>
-
 # Answer compare
 
 <p class="bless-lead">Two answers side by side with a vote for the better one</p>
@@ -37,3 +33,7 @@ import { BlessAnswerCompare } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessAnswerCompare" />
+
+<script setup>
+import AnswerCompareBasic from "../demos/AnswerCompareBasic.vue";
+</script>

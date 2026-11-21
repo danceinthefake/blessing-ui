@@ -7,8 +7,8 @@ footer: false
 title: Bank (preview)
 ---
 
+<BlockFrame><Block /></BlockFrame>
+
 <script setup>
 import Block from "./bank/index.vue";
 </script>
-
-<BlockFrame><Block /></BlockFrame>

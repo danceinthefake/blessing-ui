@@ -2,10 +2,6 @@
 title: CardInput
 ---
 
-<script setup>
-import CardInputBasic from "../demos/CardInputBasic.vue";
-</script>
-
 # CardInput
 
 <p class="bless-lead">Card number with groups, brand, and Luhn check</p>
@@ -37,3 +33,7 @@ import { BlessCardInput } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessCardInput" />
+
+<script setup>
+import CardInputBasic from "../demos/CardInputBasic.vue";
+</script>

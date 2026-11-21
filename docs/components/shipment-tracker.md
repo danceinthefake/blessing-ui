@@ -2,10 +2,6 @@
 title: Shipment tracker
 ---
 
-<script setup>
-import ShipmentTrackerBasic from "../demos/ShipmentTrackerBasic.vue";
-</script>
-
 # Shipment tracker
 
 <p class="bless-lead">The steps of a delivery, with dates and the latest update</p>
@@ -37,3 +33,7 @@ import { BlessShipmentTracker } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessShipmentTracker" />
+
+<script setup>
+import ShipmentTrackerBasic from "../demos/ShipmentTrackerBasic.vue";
+</script>

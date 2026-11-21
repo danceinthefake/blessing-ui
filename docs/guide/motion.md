@@ -1,9 +1,5 @@
 # Motion
 
-<script setup>
-import MotionLayers from "../demos/MotionLayers.vue";
-</script>
-
 <p class="bless-lead">Motion in blessing-ui has three layers, like the series it comes from. Most scenes are calm and soft. The game UI shows up when the story is about the game. Comedy beats are short breaks. A calm setting gives less motion, and reduced motion in the system turns all of it off.</p>
 
 <Demo title="The three layers, with calm and flair switches">
@@ -89,3 +85,7 @@ To stagger your own list, add the `bless-stagger` class to its parent. If the li
 ```
 
 The keyframes animate the `translate`, `scale`, `filter`, and `clip-path` properties, not `transform`. This keeps the lean, which is a transform, working during the motion.
+
+<script setup>
+import MotionLayers from "../demos/MotionLayers.vue";
+</script>

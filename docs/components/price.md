@@ -2,10 +2,6 @@
 title: Price
 ---
 
-<script setup>
-import PriceBasic from "../demos/PriceBasic.vue";
-</script>
-
 # Price
 
 <p class="bless-lead">A price with the old price, the discount, and a unit price</p>
@@ -38,3 +34,7 @@ import { BlessPrice } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessPrice" />
+
+<script setup>
+import PriceBasic from "../demos/PriceBasic.vue";
+</script>

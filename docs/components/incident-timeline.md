@@ -2,10 +2,6 @@
 title: Incident timeline
 ---
 
-<script setup>
-import IncidentTimelineBasic from "../demos/IncidentTimelineBasic.vue";
-</script>
-
 # Incident timeline
 
 <p class="bless-lead">The updates of an incident, with times, states, and the affected parts</p>
@@ -35,3 +31,7 @@ import { BlessIncidentTimeline } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessIncidentTimeline" />
+
+<script setup>
+import IncidentTimelineBasic from "../demos/IncidentTimelineBasic.vue";
+</script>

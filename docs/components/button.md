@@ -2,12 +2,6 @@
 title: Button
 ---
 
-<script setup>
-import ButtonBasic from "../demos/ButtonBasic.vue";
-import ButtonSizes from "../demos/ButtonSizes.vue";
-import ButtonStates from "../demos/ButtonStates.vue";
-</script>
-
 # Button
 
 <p class="bless-lead">Button or anchor</p>
@@ -52,3 +46,9 @@ import { BlessButton } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessButton" />
+
+<script setup>
+import ButtonBasic from "../demos/ButtonBasic.vue";
+import ButtonSizes from "../demos/ButtonSizes.vue";
+import ButtonStates from "../demos/ButtonStates.vue";
+</script>

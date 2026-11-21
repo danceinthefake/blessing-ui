@@ -2,11 +2,6 @@
 title: Tabs
 ---
 
-<script setup>
-import TabsBasic from "../demos/TabsBasic.vue";
-import TabsManual from "../demos/TabsManual.vue";
-</script>
-
 # Tabs
 
 <p class="bless-lead">ARIA tablist</p>
@@ -43,3 +38,8 @@ import { BlessTabs } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessTabs" />
+
+<script setup>
+import TabsBasic from "../demos/TabsBasic.vue";
+import TabsManual from "../demos/TabsManual.vue";
+</script>

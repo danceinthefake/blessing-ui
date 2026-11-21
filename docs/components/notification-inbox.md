@@ -2,10 +2,6 @@
 title: NotificationInbox
 ---
 
-<script setup>
-import NotificationInboxBasic from "../demos/NotificationInboxBasic.vue";
-</script>
-
 # NotificationInbox
 
 <p class="bless-lead">Bell with a badge and a list of notices</p>
@@ -38,3 +34,7 @@ import { BlessNotificationInbox } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessNotificationInbox" />
+
+<script setup>
+import NotificationInboxBasic from "../demos/NotificationInboxBasic.vue";
+</script>

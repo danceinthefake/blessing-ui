@@ -2,10 +2,6 @@
 title: Sunburst
 ---
 
-<script setup>
-import SunburstBasic from "../demos/SunburstBasic.vue";
-</script>
-
 # Sunburst
 
 <p class="bless-lead">A tree of parts as rings around a center</p>
@@ -36,3 +32,7 @@ import { BlessSunburst } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessSunburst" />
+
+<script setup>
+import SunburstBasic from "../demos/SunburstBasic.vue";
+</script>

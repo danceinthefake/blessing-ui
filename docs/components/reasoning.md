@@ -2,10 +2,6 @@
 title: Reasoning
 ---
 
-<script setup>
-import ReasoningBasic from "../demos/ReasoningBasic.vue";
-</script>
-
 # Reasoning
 
 <p class="bless-lead">The thinking of a model, in a panel that folds</p>
@@ -37,3 +33,7 @@ import { BlessReasoning } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessReasoning" />
+
+<script setup>
+import ReasoningBasic from "../demos/ReasoningBasic.vue";
+</script>

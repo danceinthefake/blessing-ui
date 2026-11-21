@@ -2,10 +2,6 @@
 title: Sleep chart
 ---
 
-<script setup>
-import SleepChartBasic from "../demos/SleepChartBasic.vue";
-</script>
-
 # Sleep chart
 
 <p class="bless-lead">The stages of sleep across a night</p>
@@ -39,3 +35,7 @@ import { BlessSleepChart } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessSleepChart" />
+
+<script setup>
+import SleepChartBasic from "../demos/SleepChartBasic.vue";
+</script>

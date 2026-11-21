@@ -7,8 +7,8 @@ footer: false
 title: Onboarding (preview)
 ---
 
+<BlockFrame><Block /></BlockFrame>
+
 <script setup>
 import Block from "./onboarding/index.vue";
 </script>
-
-<BlockFrame><Block /></BlockFrame>

@@ -2,10 +2,6 @@
 title: Poll
 ---
 
-<script setup>
-import PollBasic from "../demos/PollBasic.vue";
-</script>
-
 # Poll
 
 <p class="bless-lead">One-question vote with results</p>
@@ -36,3 +32,7 @@ import { BlessPoll } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessPoll" />
+
+<script setup>
+import PollBasic from "../demos/PollBasic.vue";
+</script>

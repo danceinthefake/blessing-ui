@@ -2,10 +2,6 @@
 title: Venn
 ---
 
-<script setup>
-import VennBasic from "../demos/VennBasic.vue";
-</script>
-
 # Venn
 
 <p class="bless-lead">Two or three circles that overlap, with the count in each part</p>
@@ -37,3 +33,7 @@ import { BlessVenn } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessVenn" />
+
+<script setup>
+import VennBasic from "../demos/VennBasic.vue";
+</script>

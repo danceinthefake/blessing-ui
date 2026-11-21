@@ -7,8 +7,8 @@ footer: false
 title: Staff & Cast (preview)
 ---
 
+<BlockFrame><Block /></BlockFrame>
+
 <script setup>
 import Block from "./staff/index.vue";
 </script>
-
-<BlockFrame><Block /></BlockFrame>

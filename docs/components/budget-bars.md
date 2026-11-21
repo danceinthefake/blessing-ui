@@ -2,10 +2,6 @@
 title: Budget bars
 ---
 
-<script setup>
-import BudgetBarsBasic from "../demos/BudgetBarsBasic.vue";
-</script>
-
 # Budget bars
 
 <p class="bless-lead">The money spent against the plan for each category, with what is left</p>
@@ -36,3 +32,7 @@ import { BlessBudgetBars } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessBudgetBars" />
+
+<script setup>
+import BudgetBarsBasic from "../demos/BudgetBarsBasic.vue";
+</script>

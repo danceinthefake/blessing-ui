@@ -2,10 +2,6 @@
 title: Read receipt
 ---
 
-<script setup>
-import ReadReceiptBasic from "../demos/ReadReceiptBasic.vue";
-</script>
-
 # Read receipt
 
 <p class="bless-lead">Sent, delivered, and read marks for a message, with who read it</p>
@@ -37,3 +33,7 @@ import { BlessReadReceipt } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessReadReceipt" />
+
+<script setup>
+import ReadReceiptBasic from "../demos/ReadReceiptBasic.vue";
+</script>

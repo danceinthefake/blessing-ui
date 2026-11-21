@@ -2,10 +2,6 @@
 title: Pagination
 ---
 
-<script setup>
-import PaginationBasic from "../demos/PaginationBasic.vue";
-</script>
-
 # Pagination
 
 <p class="bless-lead">Page list</p>
@@ -34,3 +30,7 @@ import { BlessPagination } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessPagination" />
+
+<script setup>
+import PaginationBasic from "../demos/PaginationBasic.vue";
+</script>

@@ -2,10 +2,6 @@
 title: Rose chart
 ---
 
-<script setup>
-import RoseChartBasic from "../demos/RoseChartBasic.vue";
-</script>
-
 # Rose chart
 
 <p class="bless-lead">Wedges of equal angle whose size is the value</p>
@@ -36,3 +32,7 @@ import { BlessRoseChart } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessRoseChart" />
+
+<script setup>
+import RoseChartBasic from "../demos/RoseChartBasic.vue";
+</script>

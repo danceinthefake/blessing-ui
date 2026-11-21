@@ -2,10 +2,6 @@
 title: Quota usage
 ---
 
-<script setup>
-import QuotaUsageBasic from "../demos/QuotaUsageBasic.vue";
-</script>
-
 # Quota usage
 
 <p class="bless-lead">The limits of a plan as bars, with the use in words</p>
@@ -36,3 +32,7 @@ import { BlessQuotaUsage } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessQuotaUsage" />
+
+<script setup>
+import QuotaUsageBasic from "../demos/QuotaUsageBasic.vue";
+</script>

@@ -2,10 +2,6 @@
 title: Confetti
 ---
 
-<script setup>
-import ConfettiBasic from "../demos/ConfettiBasic.vue";
-</script>
-
 # Confetti
 
 <p class="bless-lead">A burst of paper for the moment something goes right</p>
@@ -35,3 +31,7 @@ import { BlessConfetti } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessConfetti" />
+
+<script setup>
+import ConfettiBasic from "../demos/ConfettiBasic.vue";
+</script>

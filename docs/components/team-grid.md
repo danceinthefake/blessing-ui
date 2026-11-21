@@ -2,10 +2,6 @@
 title: Team grid
 ---
 
-<script setup>
-import TeamGridBasic from "../demos/TeamGridBasic.vue";
-</script>
-
 # Team grid
 
 <p class="bless-lead">The people of a team with a photo, the name, the role, and links</p>
@@ -36,3 +32,7 @@ import { BlessTeamGrid } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessTeamGrid" />
+
+<script setup>
+import TeamGridBasic from "../demos/TeamGridBasic.vue";
+</script>

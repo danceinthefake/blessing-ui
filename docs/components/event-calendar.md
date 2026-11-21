@@ -2,10 +2,6 @@
 title: Event calendar
 ---
 
-<script setup>
-import EventCalendarBasic from "../demos/EventCalendarBasic.vue";
-</script>
-
 # Event calendar
 
 <p class="bless-lead">A month of events in a grid</p>
@@ -39,3 +35,7 @@ import { BlessEventCalendar, type BlessCalendarEvent } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessEventCalendar" />
+
+<script setup>
+import EventCalendarBasic from "../demos/EventCalendarBasic.vue";
+</script>

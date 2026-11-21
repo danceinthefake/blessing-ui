@@ -2,10 +2,6 @@
 title: Eyecatch
 ---
 
-<script setup>
-import EyecatchBasic from "../demos/EyecatchBasic.vue";
-</script>
-
 # Eyecatch
 
 <p class="bless-lead">Anime title card between two parts of a page</p>
@@ -34,3 +30,7 @@ import { BlessEyecatch } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessEyecatch" />
+
+<script setup>
+import EyecatchBasic from "../demos/EyecatchBasic.vue";
+</script>

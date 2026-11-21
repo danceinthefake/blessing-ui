@@ -1,9 +1,5 @@
 # Token
 
-<script setup>
-import TokenSwatches from "../../demos/TokenSwatches.vue";
-</script>
-
 Semua gaya membaca custom property `--bless-*` dari `tokens.css`. Jumlahnya 91. Untuk mengganti tema seluruh aplikasi, ganti nilainya di `:root`. Untuk mengganti nilai tertentu di satu bagian, ganti di bagian itu. Palet dan mode gelap tetap berlaku untuk seluruh aplikasi, karena keduanya diatur lewat atribut di `<html>`.
 
 ```css
@@ -66,3 +62,7 @@ Token adalah custom property biasa, sehingga bisa masuk ke `@theme` Tailwind. Ha
   --color-border: var(--bless-color-border);
 }
 ```
+
+<script setup>
+import TokenSwatches from "../../demos/TokenSwatches.vue";
+</script>

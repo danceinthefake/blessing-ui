@@ -2,10 +2,6 @@
 title: Variant picker
 ---
 
-<script setup>
-import VariantPickerBasic from "../demos/VariantPickerBasic.vue";
-</script>
-
 # Variant picker
 
 <p class="bless-lead">The options of a product, with sold-out values crossed out</p>
@@ -35,3 +31,7 @@ import { BlessVariantPicker } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessVariantPicker" />
+
+<script setup>
+import VariantPickerBasic from "../demos/VariantPickerBasic.vue";
+</script>

@@ -2,10 +2,6 @@
 title: AudioRecorder
 ---
 
-<script setup>
-import AudioRecorderBasic from "../demos/AudioRecorderBasic.vue";
-</script>
-
 # AudioRecorder
 
 <p class="bless-lead">Record from the microphone, with a preview</p>
@@ -39,3 +35,7 @@ import { BlessAudioRecorder } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessAudioRecorder" />
+
+<script setup>
+import AudioRecorderBasic from "../demos/AudioRecorderBasic.vue";
+</script>

@@ -2,10 +2,6 @@
 title: EmojiPicker
 ---
 
-<script setup>
-import EmojiPickerBasic from "../demos/EmojiPickerBasic.vue";
-</script>
-
 # EmojiPicker
 
 <p class="bless-lead">Search and pick an emoji</p>
@@ -38,3 +34,7 @@ import { BlessEmojiPicker } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessEmojiPicker" />
+
+<script setup>
+import EmojiPickerBasic from "../demos/EmojiPickerBasic.vue";
+</script>

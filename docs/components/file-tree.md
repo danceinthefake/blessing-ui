@@ -2,10 +2,6 @@
 title: File tree
 ---
 
-<script setup>
-import FileTreeBasic from "../demos/FileTreeBasic.vue";
-</script>
-
 # File tree
 
 <p class="bless-lead">Files and folders from a flat list of paths</p>
@@ -36,3 +32,7 @@ import { BlessFileTree } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessFileTree" />
+
+<script setup>
+import FileTreeBasic from "../demos/FileTreeBasic.vue";
+</script>

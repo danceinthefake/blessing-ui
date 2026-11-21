@@ -2,10 +2,6 @@
 title: Preset range
 ---
 
-<script setup>
-import PresetRangeBasic from "../demos/PresetRangeBasic.vue";
-</script>
-
 # Preset range
 
 <p class="bless-lead">A date range with presets, such as the last 7 days, next to a calendar</p>
@@ -37,3 +33,7 @@ import { BlessPresetRange } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessPresetRange" />
+
+<script setup>
+import PresetRangeBasic from "../demos/PresetRangeBasic.vue";
+</script>

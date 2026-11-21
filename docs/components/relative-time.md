@@ -2,10 +2,6 @@
 title: RelativeTime
 ---
 
-<script setup>
-import RelativeTimeBasic from "../demos/RelativeTimeBasic.vue";
-</script>
-
 # RelativeTime
 
 <p class="bless-lead">Time ago, in your language, kept up to date</p>
@@ -37,3 +33,7 @@ import { BlessRelativeTime } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessRelativeTime" />
+
+<script setup>
+import RelativeTimeBasic from "../demos/RelativeTimeBasic.vue";
+</script>

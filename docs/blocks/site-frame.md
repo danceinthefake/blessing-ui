@@ -7,8 +7,8 @@ footer: false
 title: Full site (preview)
 ---
 
+<BlockFrame><Block /></BlockFrame>
+
 <script setup>
 import Block from "./site/index.vue";
 </script>
-
-<BlockFrame><Block /></BlockFrame>

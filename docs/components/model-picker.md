@@ -2,10 +2,6 @@
 title: Model picker
 ---
 
-<script setup>
-import ModelPickerBasic from "../demos/ModelPickerBasic.vue";
-</script>
-
 # Model picker
 
 <p class="bless-lead">A select for a model, with a note, marks, and tags</p>
@@ -36,3 +32,7 @@ import { BlessModelPicker } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessModelPicker" />
+
+<script setup>
+import ModelPickerBasic from "../demos/ModelPickerBasic.vue";
+</script>

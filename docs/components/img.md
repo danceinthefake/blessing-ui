@@ -2,10 +2,6 @@
 title: Img
 ---
 
-<script setup>
-import ImgBasic from "../demos/ImgBasic.vue";
-</script>
-
 # Img
 
 <p class="bless-lead">Lazy image with ratio, placeholder, error</p>
@@ -33,3 +29,7 @@ import { BlessImg } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessImg" />
+
+<script setup>
+import ImgBasic from "../demos/ImgBasic.vue";
+</script>

@@ -2,10 +2,6 @@
 title: Profile card
 ---
 
-<script setup>
-import ProfileCardBasic from "../demos/ProfileCardBasic.vue";
-</script>
-
 # Profile card
 
 <p class="bless-lead">A person with a cover, an avatar, a bio, counts, and a follow button</p>
@@ -37,3 +33,7 @@ import { BlessProfileCard } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessProfileCard" />
+
+<script setup>
+import ProfileCardBasic from "../demos/ProfileCardBasic.vue";
+</script>

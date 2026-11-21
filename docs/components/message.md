@@ -2,10 +2,6 @@
 title: Message
 ---
 
-<script setup>
-import MessageBasic from "../demos/MessageBasic.vue";
-</script>
-
 # Message
 
 <p class="bless-lead">Avatar + header + content + footer row</p>
@@ -33,3 +29,7 @@ import { BlessMessage } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessMessage" />
+
+<script setup>
+import MessageBasic from "../demos/MessageBasic.vue";
+</script>

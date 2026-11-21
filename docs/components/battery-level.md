@@ -2,10 +2,6 @@
 title: Battery level
 ---
 
-<script setup>
-import BatteryLevelBasic from "../demos/BatteryLevelBasic.vue";
-</script>
-
 # Battery level
 
 <p class="bless-lead">The charge of a battery, with charging and low states</p>
@@ -36,3 +32,7 @@ import { BlessBatteryLevel } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessBatteryLevel" />
+
+<script setup>
+import BatteryLevelBasic from "../demos/BatteryLevelBasic.vue";
+</script>

@@ -2,10 +2,6 @@
 title: Agent plan
 ---
 
-<script setup>
-import AgentPlanBasic from "../demos/AgentPlanBasic.vue";
-</script>
-
 # Agent plan
 
 <p class="bless-lead">The steps of an agent, each with its state</p>
@@ -36,3 +32,7 @@ import { BlessAgentPlan } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessAgentPlan" />
+
+<script setup>
+import AgentPlanBasic from "../demos/AgentPlanBasic.vue";
+</script>

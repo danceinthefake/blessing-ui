@@ -2,10 +2,6 @@
 title: Saved form
 ---
 
-<script setup>
-import SavedFormBasic from "../demos/SavedFormBasic.vue";
-</script>
-
 # Saved form
 
 <p class="bless-lead">A long form that saves a draft in the browser and offers to go on with it later</p>
@@ -38,3 +34,7 @@ import { BlessSavedForm } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessSavedForm" />
+
+<script setup>
+import SavedFormBasic from "../demos/SavedFormBasic.vue";
+</script>

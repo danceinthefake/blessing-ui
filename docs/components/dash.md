@@ -2,10 +2,6 @@
 title: Dash
 ---
 
-<script setup>
-import DashBasic from "../demos/DashBasic.vue";
-</script>
-
 # Dash
 
 <p class="bless-lead">Inline 10×1px separator</p>
@@ -32,3 +28,7 @@ import { BlessDash } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessDash" />
+
+<script setup>
+import DashBasic from "../demos/DashBasic.vue";
+</script>

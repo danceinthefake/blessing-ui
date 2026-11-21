@@ -2,10 +2,6 @@
 title: PinPad
 ---
 
-<script setup>
-import PinPadBasic from "../demos/PinPadBasic.vue";
-</script>
-
 # PinPad
 
 <p class="bless-lead">On-screen keypad for a PIN</p>
@@ -37,3 +33,7 @@ import { BlessPinPad } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessPinPad" />
+
+<script setup>
+import PinPadBasic from "../demos/PinPadBasic.vue";
+</script>

@@ -2,10 +2,6 @@
 title: Slider
 ---
 
-<script setup>
-import SliderBasic from "../demos/SliderBasic.vue";
-</script>
-
 # Slider
 
 <p class="bless-lead">Native range</p>
@@ -34,3 +30,7 @@ import { BlessSlider } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessSlider" />
+
+<script setup>
+import SliderBasic from "../demos/SliderBasic.vue";
+</script>

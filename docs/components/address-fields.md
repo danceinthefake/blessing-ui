@@ -2,10 +2,6 @@
 title: Address fields
 ---
 
-<script setup>
-import AddressFieldsBasic from "../demos/AddressFieldsBasic.vue";
-</script>
-
 # Address fields
 
 <p class="bless-lead">Address fields whose order and names follow the country</p>
@@ -36,3 +32,7 @@ import { BlessAddressFields } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessAddressFields" />
+
+<script setup>
+import AddressFieldsBasic from "../demos/AddressFieldsBasic.vue";
+</script>

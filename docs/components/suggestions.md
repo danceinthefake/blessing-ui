@@ -2,10 +2,6 @@
 title: Suggestions
 ---
 
-<script setup>
-import SuggestionsBasic from "../demos/SuggestionsBasic.vue";
-</script>
-
 # Suggestions
 
 <p class="bless-lead">Ready prompts as a row of chips</p>
@@ -36,3 +32,7 @@ import { BlessSuggestions, type BlessSuggestion } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessSuggestions" />
+
+<script setup>
+import SuggestionsBasic from "../demos/SuggestionsBasic.vue";
+</script>

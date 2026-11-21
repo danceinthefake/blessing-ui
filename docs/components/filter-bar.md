@@ -2,10 +2,6 @@
 title: Filter bar
 ---
 
-<script setup>
-import FilterBarBasic from "../demos/FilterBarBasic.vue";
-</script>
-
 # Filter bar
 
 <p class="bless-lead">Filters as chips in a row</p>
@@ -37,3 +33,7 @@ import { BlessFilterBar, type BlessQueryField, type BlessQueryRule } from "bless
 ## API
 
 <PropsTable name="BlessFilterBar" />
+
+<script setup>
+import FilterBarBasic from "../demos/FilterBarBasic.vue";
+</script>

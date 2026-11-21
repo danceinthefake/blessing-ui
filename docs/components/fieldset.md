@@ -2,10 +2,6 @@
 title: Fieldset
 ---
 
-<script setup>
-import FieldsetBasic from "../demos/FieldsetBasic.vue";
-</script>
-
 # Fieldset
 
 <p class="bless-lead">Legend group, toggleable</p>
@@ -34,3 +30,7 @@ import { BlessFieldset } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessFieldset" />
+
+<script setup>
+import FieldsetBasic from "../demos/FieldsetBasic.vue";
+</script>

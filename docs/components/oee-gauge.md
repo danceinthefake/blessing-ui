@@ -2,10 +2,6 @@
 title: OEE gauge
 ---
 
-<script setup>
-import OeeGaugeBasic from "../demos/OeeGaugeBasic.vue";
-</script>
-
 # OEE gauge
 
 <p class="bless-lead">Overall equipment effectiveness: availability × performance × quality</p>
@@ -38,3 +34,7 @@ import { BlessOeeGauge } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessOeeGauge" />
+
+<script setup>
+import OeeGaugeBasic from "../demos/OeeGaugeBasic.vue";
+</script>

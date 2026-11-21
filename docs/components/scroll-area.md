@@ -2,10 +2,6 @@
 title: ScrollArea
 ---
 
-<script setup>
-import ScrollAreaBasic from "../demos/ScrollAreaBasic.vue";
-</script>
-
 # ScrollArea
 
 <p class="bless-lead">Thin scrollbar + fade</p>
@@ -33,3 +29,7 @@ import { BlessScrollArea } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessScrollArea" />
+
+<script setup>
+import ScrollAreaBasic from "../demos/ScrollAreaBasic.vue";
+</script>

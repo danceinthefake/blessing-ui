@@ -2,10 +2,6 @@
 title: Lightbox
 ---
 
-<script setup>
-import LightboxBasic from "../demos/LightboxBasic.vue";
-</script>
-
 # Lightbox
 
 <p class="bless-lead">One image from a list, in full, with zoom and swipe</p>
@@ -37,3 +33,7 @@ import { BlessLightbox, type BlessLightboxItem } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessLightbox" />
+
+<script setup>
+import LightboxBasic from "../demos/LightboxBasic.vue";
+</script>

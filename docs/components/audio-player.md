@@ -2,10 +2,6 @@
 title: AudioPlayer
 ---
 
-<script setup>
-import AudioPlayerBasic from "../demos/AudioPlayerBasic.vue";
-</script>
-
 # AudioPlayer
 
 <p class="bless-lead">Track list player</p>
@@ -33,3 +29,7 @@ import { BlessAudioPlayer } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessAudioPlayer" />
+
+<script setup>
+import AudioPlayerBasic from "../demos/AudioPlayerBasic.vue";
+</script>

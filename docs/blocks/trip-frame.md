@@ -7,8 +7,8 @@ footer: false
 title: Trip (preview)
 ---
 
+<BlockFrame><Block /></BlockFrame>
+
 <script setup>
 import Block from "./trip/index.vue";
 </script>
-
-<BlockFrame><Block /></BlockFrame>

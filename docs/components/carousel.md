@@ -2,11 +2,6 @@
 title: Carousel
 ---
 
-<script setup>
-import CarouselBasic from "../demos/CarouselBasic.vue";
-import CarouselPeek from "../demos/CarouselPeek.vue";
-</script>
-
 # Carousel
 
 <p class="bless-lead">Scroll-snap slider</p>
@@ -42,3 +37,8 @@ import { BlessCarousel } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessCarousel" />
+
+<script setup>
+import CarouselBasic from "../demos/CarouselBasic.vue";
+import CarouselPeek from "../demos/CarouselPeek.vue";
+</script>

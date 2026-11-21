@@ -2,10 +2,6 @@
 title: Margin comments
 ---
 
-<script setup>
-import MarginCommentsBasic from "../demos/MarginCommentsBasic.vue";
-</script>
-
 # Margin comments
 
 <p class="bless-lead">The parts of a document with their comments in the margin next to them</p>
@@ -37,3 +33,7 @@ import { BlessMarginComments } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessMarginComments" />
+
+<script setup>
+import MarginCommentsBasic from "../demos/MarginCommentsBasic.vue";
+</script>

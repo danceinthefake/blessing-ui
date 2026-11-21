@@ -2,10 +2,6 @@
 title: Mind map
 ---
 
-<script setup>
-import MindMapBasic from "../demos/MindMapBasic.vue";
-</script>
-
 # Mind map
 
 <p class="bless-lead">A central idea with its branches on two sides, drawn in SVG</p>
@@ -38,3 +34,7 @@ import { BlessMindMap } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessMindMap" />
+
+<script setup>
+import MindMapBasic from "../demos/MindMapBasic.vue";
+</script>

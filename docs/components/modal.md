@@ -2,11 +2,6 @@
 title: Modal
 ---
 
-<script setup>
-import ModalBasic from "../demos/ModalBasic.vue";
-import ModalHash from "../demos/ModalHash.vue";
-</script>
-
 # Modal
 
 <p class="bless-lead">Native &lt;dialog&gt;</p>
@@ -43,3 +38,8 @@ import { BlessModal } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessModal" />
+
+<script setup>
+import ModalBasic from "../demos/ModalBasic.vue";
+import ModalHash from "../demos/ModalHash.vue";
+</script>

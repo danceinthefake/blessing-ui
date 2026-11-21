@@ -2,10 +2,6 @@
 title: Machine board
 ---
 
-<script setup>
-import MachineBoardBasic from "../demos/MachineBoardBasic.vue";
-</script>
-
 # Machine board
 
 <p class="bless-lead">The machines of a line with their state and how long they are in it</p>
@@ -37,3 +33,7 @@ import { BlessMachineBoard } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessMachineBoard" />
+
+<script setup>
+import MachineBoardBasic from "../demos/MachineBoardBasic.vue";
+</script>

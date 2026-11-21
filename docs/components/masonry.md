@@ -2,10 +2,6 @@
 title: Masonry
 ---
 
-<script setup>
-import MasonryBasic from "../demos/MasonryBasic.vue";
-</script>
-
 # Masonry
 
 <p class="bless-lead">Variable-height cards in columns</p>
@@ -36,3 +32,7 @@ import { BlessMasonry } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessMasonry" />
+
+<script setup>
+import MasonryBasic from "../demos/MasonryBasic.vue";
+</script>

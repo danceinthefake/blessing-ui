@@ -2,10 +2,6 @@
 title: Measure converter
 ---
 
-<script setup>
-import MeasureConverterBasic from "../demos/MeasureConverterBasic.vue";
-</script>
-
 # Measure converter
 
 <p class="bless-lead">An amount in one unit of length, mass, volume, or temperature in another</p>
@@ -38,3 +34,7 @@ import { BlessMeasureConverter } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessMeasureConverter" />
+
+<script setup>
+import MeasureConverterBasic from "../demos/MeasureConverterBasic.vue";
+</script>

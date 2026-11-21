@@ -2,10 +2,6 @@
 title: TypingIndicator
 ---
 
-<script setup>
-import TypingIndicatorBasic from "../demos/TypingIndicatorBasic.vue";
-</script>
-
 # TypingIndicator
 
 <p class="bless-lead">Who is typing now, under a chat</p>
@@ -35,3 +31,7 @@ import { BlessTypingIndicator } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessTypingIndicator" />
+
+<script setup>
+import TypingIndicatorBasic from "../demos/TypingIndicatorBasic.vue";
+</script>

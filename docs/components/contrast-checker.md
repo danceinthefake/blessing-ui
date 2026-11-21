@@ -2,10 +2,6 @@
 title: Contrast checker
 ---
 
-<script setup>
-import ContrastCheckerBasic from "../demos/ContrastCheckerBasic.vue";
-</script>
-
 # Contrast checker
 
 <p class="bless-lead">Two colors in, the contrast ratio and the WCAG levels out</p>
@@ -37,3 +33,7 @@ import { BlessContrastChecker, contrastRatio } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessContrastChecker" />
+
+<script setup>
+import ContrastCheckerBasic from "../demos/ContrastCheckerBasic.vue";
+</script>

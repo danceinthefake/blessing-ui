@@ -2,10 +2,6 @@
 title: Live blog
 ---
 
-<script setup>
-import LiveBlogBasic from "../demos/LiveBlogBasic.vue";
-</script>
-
 # Live blog
 
 <p class="bless-lead">Timed updates that arrive while the reader reads, with a new-updates button</p>
@@ -36,3 +32,7 @@ import { BlessLiveBlog } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessLiveBlog" />
+
+<script setup>
+import LiveBlogBasic from "../demos/LiveBlogBasic.vue";
+</script>

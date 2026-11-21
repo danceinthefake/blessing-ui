@@ -2,10 +2,6 @@
 title: Prompt input
 ---
 
-<script setup>
-import PromptInputBasic from "../demos/PromptInputBasic.vue";
-</script>
-
 # Prompt input
 
 <p class="bless-lead">The text box of a chat with an assistant</p>
@@ -39,3 +35,7 @@ import { BlessPromptInput } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessPromptInput" />
+
+<script setup>
+import PromptInputBasic from "../demos/PromptInputBasic.vue";
+</script>

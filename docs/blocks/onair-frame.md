@@ -7,8 +7,8 @@ footer: false
 title: On Air (preview)
 ---
 
+<BlockFrame><Block /></BlockFrame>
+
 <script setup>
 import Block from "./onair/index.vue";
 </script>
-
-<BlockFrame><Block /></BlockFrame>

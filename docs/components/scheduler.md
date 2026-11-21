@@ -2,10 +2,6 @@
 title: Scheduler
 ---
 
-<script setup>
-import SchedulerBasic from "../demos/SchedulerBasic.vue";
-</script>
-
 # Scheduler
 
 <p class="bless-lead">A day or week of time you can drag events into</p>
@@ -35,3 +31,7 @@ import { BlessScheduler } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessScheduler" />
+
+<script setup>
+import SchedulerBasic from "../demos/SchedulerBasic.vue";
+</script>

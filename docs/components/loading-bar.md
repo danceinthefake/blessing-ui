@@ -2,10 +2,6 @@
 title: LoadingBar
 ---
 
-<script setup>
-import LoadingBarBasic from "../demos/LoadingBarBasic.vue";
-</script>
-
 # LoadingBar
 
 <p class="bless-lead">Top-of-page progress via useLoadingBar()</p>
@@ -40,3 +36,7 @@ import { BlessLoadingBar } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessLoadingBar" />
+
+<script setup>
+import LoadingBarBasic from "../demos/LoadingBarBasic.vue";
+</script>

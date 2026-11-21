@@ -2,10 +2,6 @@
 title: Rule builder
 ---
 
-<script setup>
-import RuleBuilderBasic from "../demos/RuleBuilderBasic.vue";
-</script>
-
 # Rule builder
 
 <p class="bless-lead">An automation rule: when something happens, if a condition holds, then do an action</p>
@@ -38,3 +34,7 @@ import { BlessRuleBuilder } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessRuleBuilder" />
+
+<script setup>
+import RuleBuilderBasic from "../demos/RuleBuilderBasic.vue";
+</script>

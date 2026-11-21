@@ -2,10 +2,6 @@
 title: Permission matrix
 ---
 
-<script setup>
-import PermissionMatrixBasic from "../demos/PermissionMatrixBasic.vue";
-</script>
-
 # Permission matrix
 
 <p class="bless-lead">Roles by permissions as check boxes, in groups</p>
@@ -37,3 +33,7 @@ import { BlessPermissionMatrix } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessPermissionMatrix" />
+
+<script setup>
+import PermissionMatrixBasic from "../demos/PermissionMatrixBasic.vue";
+</script>

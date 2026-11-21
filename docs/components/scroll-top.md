@@ -2,10 +2,6 @@
 title: ScrollTop
 ---
 
-<script setup>
-import ScrollTopBasic from "../demos/ScrollTopBasic.vue";
-</script>
-
 # ScrollTop
 
 <p class="bless-lead">Back-to-top button past a threshold</p>
@@ -33,3 +29,7 @@ import { BlessScrollTop } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessScrollTop" />
+
+<script setup>
+import ScrollTopBasic from "../demos/ScrollTopBasic.vue";
+</script>

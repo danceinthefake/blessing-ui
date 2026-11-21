@@ -2,10 +2,6 @@
 title: RadialMenu
 ---
 
-<script setup>
-import RadialMenuBasic from "../demos/RadialMenuBasic.vue";
-</script>
-
 # RadialMenu
 
 <p class="bless-lead">Press-and-hold or right-click radial menu</p>
@@ -37,3 +33,7 @@ import { BlessRadialMenu } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessRadialMenu" />
+
+<script setup>
+import RadialMenuBasic from "../demos/RadialMenuBasic.vue";
+</script>

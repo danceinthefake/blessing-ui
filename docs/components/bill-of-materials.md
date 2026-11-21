@@ -2,10 +2,6 @@
 title: Bill of materials
 ---
 
-<script setup>
-import BillOfMaterialsBasic from "../demos/BillOfMaterialsBasic.vue";
-</script>
-
 # Bill of materials
 
 <p class="bless-lead">A tree of parts with quantities, and the total for one or more units</p>
@@ -39,3 +35,7 @@ import { BlessBillOfMaterials } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessBillOfMaterials" />
+
+<script setup>
+import BillOfMaterialsBasic from "../demos/BillOfMaterialsBasic.vue";
+</script>

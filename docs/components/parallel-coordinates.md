@@ -2,10 +2,6 @@
 title: Parallel coordinates
 ---
 
-<script setup>
-import ParallelCoordinatesBasic from "../demos/ParallelCoordinatesBasic.vue";
-</script>
-
 # Parallel coordinates
 
 <p class="bless-lead">Each item as a line across several axes</p>
@@ -36,3 +32,7 @@ import { BlessParallelCoordinates } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessParallelCoordinates" />
+
+<script setup>
+import ParallelCoordinatesBasic from "../demos/ParallelCoordinatesBasic.vue";
+</script>

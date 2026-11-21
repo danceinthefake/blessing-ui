@@ -2,10 +2,6 @@
 title: Document checklist
 ---
 
-<script setup>
-import DocumentChecklistBasic from "../demos/DocumentChecklistBasic.vue";
-</script>
-
 # Document checklist
 
 <p class="bless-lead">The documents that a request needs, with an upload and a state for each</p>
@@ -38,3 +34,7 @@ import { BlessDocumentChecklist } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessDocumentChecklist" />
+
+<script setup>
+import DocumentChecklistBasic from "../demos/DocumentChecklistBasic.vue";
+</script>

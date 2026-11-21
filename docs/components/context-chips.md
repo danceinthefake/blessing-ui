@@ -2,10 +2,6 @@
 title: Context chips
 ---
 
-<script setup>
-import ContextChipsBasic from "../demos/ContextChipsBasic.vue";
-</script>
-
 # Context chips
 
 <p class="bless-lead">The files and pages that go with a message, as chips that you can remove</p>
@@ -37,3 +33,7 @@ import { BlessContextChips } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessContextChips" />
+
+<script setup>
+import ContextChipsBasic from "../demos/ContextChipsBasic.vue";
+</script>

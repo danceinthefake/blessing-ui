@@ -2,10 +2,6 @@
 title: Thermostat
 ---
 
-<script setup>
-import ThermostatBasic from "../demos/ThermostatBasic.vue";
-</script>
-
 # Thermostat
 
 <p class="bless-lead">A dial that sets the target temperature and shows the current one</p>
@@ -37,3 +33,7 @@ import { BlessThermostat } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessThermostat" />
+
+<script setup>
+import ThermostatBasic from "../demos/ThermostatBasic.vue";
+</script>

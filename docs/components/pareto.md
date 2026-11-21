@@ -2,10 +2,6 @@
 title: Pareto
 ---
 
-<script setup>
-import ParetoBasic from "../demos/ParetoBasic.vue";
-</script>
-
 # Pareto
 
 <p class="bless-lead">Bars from high to low, with a line for the running share</p>
@@ -36,3 +32,7 @@ import { BlessPareto } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessPareto" />
+
+<script setup>
+import ParetoBasic from "../demos/ParetoBasic.vue";
+</script>

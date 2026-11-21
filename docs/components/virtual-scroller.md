@@ -2,11 +2,6 @@
 title: VirtualScroller
 ---
 
-<script setup>
-import VirtualScrollerBasic from "../demos/VirtualScrollerBasic.vue";
-import VirtualScrollerDynamic from "../demos/VirtualScrollerDynamic.vue";
-</script>
-
 # VirtualScroller
 
 <p class="bless-lead">Windowed list for long data</p>
@@ -44,3 +39,8 @@ import { BlessVirtualScroller } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessVirtualScroller" />
+
+<script setup>
+import VirtualScrollerBasic from "../demos/VirtualScrollerBasic.vue";
+import VirtualScrollerDynamic from "../demos/VirtualScrollerDynamic.vue";
+</script>

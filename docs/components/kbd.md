@@ -2,10 +2,6 @@
 title: Kbd
 ---
 
-<script setup>
-import KbdBasic from "../demos/KbdBasic.vue";
-</script>
-
 # Kbd
 
 <p class="bless-lead">Key combo</p>
@@ -32,3 +28,7 @@ import { BlessKbd } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessKbd" />
+
+<script setup>
+import KbdBasic from "../demos/KbdBasic.vue";
+</script>

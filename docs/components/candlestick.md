@@ -2,10 +2,6 @@
 title: Candlestick
 ---
 
-<script setup>
-import CandlestickBasic from "../demos/CandlestickBasic.vue";
-</script>
-
 # Candlestick
 
 <p class="bless-lead">The open, high, low, and close of each period</p>
@@ -36,3 +32,7 @@ import { BlessCandlestick } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessCandlestick" />
+
+<script setup>
+import CandlestickBasic from "../demos/CandlestickBasic.vue";
+</script>

@@ -2,10 +2,6 @@
 title: Lesson video
 ---
 
-<script setup>
-import LessonVideoBasic from "../demos/LessonVideoBasic.vue";
-</script>
-
 # Lesson video
 
 <p class="bless-lead">A lesson video with notes at points in time that take you back to that point</p>
@@ -38,3 +34,7 @@ import { BlessLessonVideo } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessLessonVideo" />
+
+<script setup>
+import LessonVideoBasic from "../demos/LessonVideoBasic.vue";
+</script>

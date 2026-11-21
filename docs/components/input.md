@@ -2,12 +2,6 @@
 title: Input
 ---
 
-<script setup>
-import InputBasic from "../demos/InputBasic.vue";
-import InputSizes from "../demos/InputSizes.vue";
-import InputStates from "../demos/InputStates.vue";
-</script>
-
 # Input
 
 <p class="bless-lead">Text-like input</p>
@@ -54,3 +48,9 @@ import { BlessInput } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessInput" />
+
+<script setup>
+import InputBasic from "../demos/InputBasic.vue";
+import InputSizes from "../demos/InputSizes.vue";
+import InputStates from "../demos/InputStates.vue";
+</script>

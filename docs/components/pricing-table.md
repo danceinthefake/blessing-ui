@@ -2,10 +2,6 @@
 title: Pricing table
 ---
 
-<script setup>
-import PricingTableBasic from "../demos/PricingTableBasic.vue";
-</script>
-
 # Pricing table
 
 <p class="bless-lead">Plans side by side, with a monthly or yearly switch</p>
@@ -38,3 +34,7 @@ import { BlessPricingTable, type BlessPricingPeriod, type BlessPricingPlan } fro
 ## API
 
 <PropsTable name="BlessPricingTable" />
+
+<script setup>
+import PricingTableBasic from "../demos/PricingTableBasic.vue";
+</script>

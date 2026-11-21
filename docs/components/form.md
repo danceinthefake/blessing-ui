@@ -2,11 +2,6 @@
 title: Form
 ---
 
-<script setup>
-import FormBasic from "../demos/FormBasic.vue";
-import FormSchema from "../demos/FormSchema.vue";
-</script>
-
 # Form
 
 <p class="bless-lead">Constraint-API form + field wiring</p>
@@ -44,6 +39,10 @@ Use the browser's own validation (`required`, `type="email"`, `minlength`, `patt
 The browser can check that a value is present, an email, or in a range. It cannot check a rule that spans fields, or a rule from your domain. For those rules, give `schema` a validator that follows [Standard Schema](https://standardschema.dev). Zod, Valibot, and ArkType all follow it, and the library depends on none of them.
 
 ```vue
+<template>
+  <BlessForm :schema="schema" @submit="(data, event, value) => save(value)">…</BlessForm>
+</template>
+
 <script setup lang="ts">
 import { z } from "zod";
 
@@ -52,10 +51,6 @@ const schema = z.object({
   age: z.coerce.number().min(13, "You must be 13 or older"),
 });
 </script>
-
-<template>
-  <BlessForm :schema="schema" @submit="(data, event, value) => save(value)">…</BlessForm>
-</template>
 ```
 
 - The schema runs after the browser checks pass, on submit. It gets the form data as an object. A name that repeats, such as checkboxes, becomes an array.
@@ -80,3 +75,8 @@ import { BlessForm, BlessField } from "blessing-ui";
 ### BlessField
 
 <PropsTable name="BlessField" />
+
+<script setup>
+import FormBasic from "../demos/FormBasic.vue";
+import FormSchema from "../demos/FormSchema.vue";
+</script>

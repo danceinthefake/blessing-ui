@@ -2,10 +2,6 @@
 title: Lollipop
 ---
 
-<script setup>
-import LollipopBasic from "../demos/LollipopBasic.vue";
-</script>
-
 # Lollipop
 
 <p class="bless-lead">A thin stick with a dot for each category</p>
@@ -36,3 +32,7 @@ import { BlessLollipop } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessLollipop" />
+
+<script setup>
+import LollipopBasic from "../demos/LollipopBasic.vue";
+</script>

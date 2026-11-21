@@ -2,10 +2,6 @@
 title: Footnotes
 ---
 
-<script setup>
-import FootnotesBasic from "../demos/FootnotesBasic.vue";
-</script>
-
 # Footnotes
 
 <p class="bless-lead">Numbered notes, with marks in the text that link to them and back</p>
@@ -38,3 +34,7 @@ import { BlessFootnoteRef, BlessFootnotes } from "blessing-ui";
 <PropsTable name="BlessFootnotes" />
 
 <PropsTable name="BlessFootnoteRef" />
+
+<script setup>
+import FootnotesBasic from "../demos/FootnotesBasic.vue";
+</script>

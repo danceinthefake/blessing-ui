@@ -2,10 +2,6 @@
 title: Prompt library
 ---
 
-<script setup>
-import PromptLibraryBasic from "../demos/PromptLibraryBasic.vue";
-</script>
-
 # Prompt library
 
 <p class="bless-lead">Saved prompts with a search, tags, and fill-in fields</p>
@@ -39,3 +35,7 @@ import { BlessPromptLibrary } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessPromptLibrary" />
+
+<script setup>
+import PromptLibraryBasic from "../demos/PromptLibraryBasic.vue";
+</script>

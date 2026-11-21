@@ -2,10 +2,6 @@
 title: AlertDialog
 ---
 
-<script setup>
-import AlertDialogBasic from "../demos/AlertDialogBasic.vue";
-</script>
-
 # AlertDialog
 
 <p class="bless-lead">Confirm dialog</p>
@@ -34,3 +30,7 @@ import { BlessAlertDialog } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessAlertDialog" />
+
+<script setup>
+import AlertDialogBasic from "../demos/AlertDialogBasic.vue";
+</script>

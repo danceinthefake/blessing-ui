@@ -2,10 +2,6 @@
 title: Range chart
 ---
 
-<script setup>
-import RangeChartBasic from "../demos/RangeChartBasic.vue";
-</script>
-
 # Range chart
 
 <p class="bless-lead">Floating bars from a low to a high value for each row</p>
@@ -35,3 +31,7 @@ import { BlessRangeChart } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessRangeChart" />
+
+<script setup>
+import RangeChartBasic from "../demos/RangeChartBasic.vue";
+</script>

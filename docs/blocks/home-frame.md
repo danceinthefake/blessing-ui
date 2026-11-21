@@ -7,8 +7,8 @@ footer: false
 title: Smart home (preview)
 ---
 
+<BlockFrame><Block /></BlockFrame>
+
 <script setup>
 import Block from "./home/index.vue";
 </script>
-
-<BlockFrame><Block /></BlockFrame>

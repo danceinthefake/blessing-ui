@@ -2,10 +2,6 @@
 title: Payslip
 ---
 
-<script setup>
-import PayslipBasic from "../demos/PayslipBasic.vue";
-</script>
-
 # Payslip
 
 <p class="bless-lead">The pay of a period with earnings, deductions, and the net pay</p>
@@ -37,3 +33,7 @@ import { BlessPayslip } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessPayslip" />
+
+<script setup>
+import PayslipBasic from "../demos/PayslipBasic.vue";
+</script>

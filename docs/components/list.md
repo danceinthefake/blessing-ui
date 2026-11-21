@@ -2,10 +2,6 @@
 title: List
 ---
 
-<script setup>
-import ListBasic from "../demos/ListBasic.vue";
-</script>
-
 # List
 
 <p class="bless-lead">Divided rows</p>
@@ -40,3 +36,7 @@ import { BlessList, BlessListItem } from "blessing-ui";
 ### BlessListItem
 
 <PropsTable name="BlessListItem" />
+
+<script setup>
+import ListBasic from "../demos/ListBasic.vue";
+</script>

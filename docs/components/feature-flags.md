@@ -2,10 +2,6 @@
 title: Feature flags
 ---
 
-<script setup>
-import FeatureFlagsBasic from "../demos/FeatureFlagsBasic.vue";
-</script>
-
 # Feature flags
 
 <p class="bless-lead">Flags with a switch, a note, the rollout share, and the environment</p>
@@ -35,3 +31,7 @@ import { BlessFeatureFlags } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessFeatureFlags" />
+
+<script setup>
+import FeatureFlagsBasic from "../demos/FeatureFlagsBasic.vue";
+</script>

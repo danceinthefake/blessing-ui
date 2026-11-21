@@ -2,10 +2,6 @@
 title: Conversation list
 ---
 
-<script setup>
-import ConversationListBasic from "../demos/ConversationListBasic.vue";
-</script>
-
 # Conversation list
 
 <p class="bless-lead">Conversations with the last message, the time, and the unread count</p>
@@ -37,3 +33,7 @@ import { BlessConversationList } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessConversationList" />
+
+<script setup>
+import ConversationListBasic from "../demos/ConversationListBasic.vue";
+</script>

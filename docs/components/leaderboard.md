@@ -2,10 +2,6 @@
 title: Leaderboard
 ---
 
-<script setup>
-import LeaderboardBasic from "../demos/LeaderboardBasic.vue";
-</script>
-
 # Leaderboard
 
 <p class="bless-lead">Ranked rows with the place, the move, and the score</p>
@@ -38,3 +34,7 @@ import { BlessLeaderboard } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessLeaderboard" />
+
+<script setup>
+import LeaderboardBasic from "../demos/LeaderboardBasic.vue";
+</script>

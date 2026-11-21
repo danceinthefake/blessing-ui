@@ -3,16 +3,6 @@ title: Pricing
 aside: false
 ---
 
-<script setup>
-import { withBase } from "vitepress";
-import meta from "./pricing/meta";
-const files = Object.fromEntries(
-  Object.entries(import.meta.glob("./pricing/**/*.{vue,ts}", { query: "?raw", import: "default", eager: true }))
-    .filter(([p]) => !p.endsWith("meta.ts"))
-    .map(([p, src]) => [p.replace("./pricing/", ""), src]),
-);
-</script>
-
 # Pricing
 
 <p class="bless-lead">Three tiers with a monthly and yearly switch, a highlighted recommended plan, and a feature checklist.</p>
@@ -22,3 +12,13 @@ const files = Object.fromEntries(
 ## Into your app
 
 Run `npx blessing-ui add pricing` to copy the folder to `src/features/pricing/` (Nuxt: `app/features/pricing/`). Then render `index.vue` from a page. It has no data layer: the arrays at the top of `index.vue` are where your data goes.
+
+<script setup>
+import { withBase } from "vitepress";
+import meta from "./pricing/meta";
+const files = Object.fromEntries(
+  Object.entries(import.meta.glob("./pricing/**/*.{vue,ts}", { query: "?raw", import: "default", eager: true }))
+    .filter(([p]) => !p.endsWith("meta.ts"))
+    .map(([p, src]) => [p.replace("./pricing/", ""), src]),
+);
+</script>

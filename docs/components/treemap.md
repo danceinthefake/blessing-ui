@@ -2,10 +2,6 @@
 title: Treemap
 ---
 
-<script setup>
-import TreemapBasic from "../demos/TreemapBasic.vue";
-</script>
-
 # Treemap
 
 <p class="bless-lead">Part-to-whole as nested rectangles, with drill-down</p>
@@ -36,3 +32,7 @@ import { BlessTreemap } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessTreemap" />
+
+<script setup>
+import TreemapBasic from "../demos/TreemapBasic.vue";
+</script>

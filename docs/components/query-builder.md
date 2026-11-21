@@ -2,10 +2,6 @@
 title: QueryBuilder
 ---
 
-<script setup>
-import QueryBuilderBasic from "../demos/QueryBuilderBasic.vue";
-</script>
-
 # QueryBuilder
 
 <p class="bless-lead">Filter rules in nested "all" and "any" groups</p>
@@ -39,3 +35,7 @@ import { BlessQueryBuilder, type BlessQueryField, type BlessQueryGroup } from "b
 ## API
 
 <PropsTable name="BlessQueryBuilder" />
+
+<script setup>
+import QueryBuilderBasic from "../demos/QueryBuilderBasic.vue";
+</script>

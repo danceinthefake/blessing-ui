@@ -2,10 +2,6 @@
 title: Comparison table
 ---
 
-<script setup>
-import ComparisonTableBasic from "../demos/ComparisonTableBasic.vue";
-</script>
-
 # Comparison table
 
 <p class="bless-lead">Features by plan, with checks, dashes, and values</p>
@@ -35,3 +31,7 @@ import { BlessComparisonTable } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessComparisonTable" />
+
+<script setup>
+import ComparisonTableBasic from "../demos/ComparisonTableBasic.vue";
+</script>

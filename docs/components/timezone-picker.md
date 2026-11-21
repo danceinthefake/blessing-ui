@@ -2,10 +2,6 @@
 title: TimezonePicker
 ---
 
-<script setup>
-import TimezonePickerBasic from "../demos/TimezonePickerBasic.vue";
-</script>
-
 # TimezonePicker
 
 <p class="bless-lead">IANA time zone search with offsets</p>
@@ -37,3 +33,7 @@ import { BlessTimezonePicker } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessTimezonePicker" />
+
+<script setup>
+import TimezonePickerBasic from "../demos/TimezonePickerBasic.vue";
+</script>

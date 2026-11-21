@@ -2,10 +2,6 @@
 title: Bulk action bar
 ---
 
-<script setup>
-import BulkActionBarBasic from "../demos/BulkActionBarBasic.vue";
-</script>
-
 # Bulk action bar
 
 <p class="bless-lead">A bar of actions for the selected rows</p>
@@ -37,3 +33,7 @@ import { BlessBulkActionBar } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessBulkActionBar" />
+
+<script setup>
+import BulkActionBarBasic from "../demos/BulkActionBarBasic.vue";
+</script>

@@ -1,9 +1,5 @@
 # Theme maker
 
-<script setup>
-import ThemeMaker from "../demos/ThemeMaker.vue";
-</script>
-
 Pick one petal color and give the palette a name. The page makes the other accent tokens from the petal and keeps the [accent contract](./tokens#color-pairs). The preview below uses the new palette and follows the light or dark theme of this site.
 
 <ThemeMaker />
@@ -25,3 +21,7 @@ The page makes six tokens and one dark-mode cut, as [Palettes](./palettes#tokens
 The six built-in palettes come out of the same steps within one or two shades. Grays, type, and geometry do not change. To tune one value, edit it in the CSS.
 
 `setPalette()` and `BlessPaletteToggle` know only the six built-in palettes. Set the attribute yourself for a palette of your own.
+
+<script setup>
+import ThemeMaker from "../demos/ThemeMaker.vue";
+</script>

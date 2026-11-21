@@ -2,10 +2,6 @@
 title: Control chart
 ---
 
-<script setup>
-import ControlChartBasic from "../demos/ControlChartBasic.vue";
-</script>
-
 # Control chart
 
 <p class="bless-lead">Measured values over time with the center line and the control limits (SPC)</p>
@@ -39,3 +35,7 @@ import { BlessControlChart } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessControlChart" />
+
+<script setup>
+import ControlChartBasic from "../demos/ControlChartBasic.vue";
+</script>

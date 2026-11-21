@@ -2,10 +2,6 @@
 title: Approval flow
 ---
 
-<script setup>
-import ApprovalFlowBasic from "../demos/ApprovalFlowBasic.vue";
-</script>
-
 # Approval flow
 
 <p class="bless-lead">The steps of a request, with approvers and their decisions</p>
@@ -37,3 +33,7 @@ import { BlessApprovalFlow } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessApprovalFlow" />
+
+<script setup>
+import ApprovalFlowBasic from "../demos/ApprovalFlowBasic.vue";
+</script>

@@ -2,10 +2,6 @@
 title: Sankey
 ---
 
-<script setup>
-import SankeyBasic from "../demos/SankeyBasic.vue";
-</script>
-
 # Sankey
 
 <p class="bless-lead">Flows between steps, as bands</p>
@@ -40,3 +36,7 @@ import { BlessSankey, type BlessSankeyLink, type BlessSankeyNode } from "blessin
 ## API
 
 <PropsTable name="BlessSankey" />
+
+<script setup>
+import SankeyBasic from "../demos/SankeyBasic.vue";
+</script>

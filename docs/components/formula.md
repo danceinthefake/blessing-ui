@@ -2,10 +2,6 @@
 title: Formula
 ---
 
-<script setup>
-import FormulaBasic from "../demos/FormulaBasic.vue";
-</script>
-
 # Formula
 
 <p class="bless-lead">A calculation typed by hand, checked as they type</p>
@@ -35,3 +31,7 @@ import { BlessFormula, evaluateFormula } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessFormula" />
+
+<script setup>
+import FormulaBasic from "../demos/FormulaBasic.vue";
+</script>

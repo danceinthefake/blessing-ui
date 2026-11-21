@@ -2,10 +2,6 @@
 title: Activity feed
 ---
 
-<script setup>
-import ActivityFeedBasic from "../demos/ActivityFeedBasic.vue";
-</script>
-
 # Activity feed
 
 <p class="bless-lead">What people did, in groups by day</p>
@@ -37,3 +33,7 @@ import { BlessActivityFeed } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessActivityFeed" />
+
+<script setup>
+import ActivityFeedBasic from "../demos/ActivityFeedBasic.vue";
+</script>

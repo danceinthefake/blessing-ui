@@ -2,10 +2,6 @@
 title: Loupe
 ---
 
-<script setup>
-import LoupeBasic from "../demos/LoupeBasic.vue";
-</script>
-
 # Loupe
 
 <p class="bless-lead">Magnifier over an image on hover or touch</p>
@@ -36,3 +32,7 @@ import { BlessLoupe } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessLoupe" />
+
+<script setup>
+import LoupeBasic from "../demos/LoupeBasic.vue";
+</script>

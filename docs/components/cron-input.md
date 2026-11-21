@@ -2,10 +2,6 @@
 title: CronInput
 ---
 
-<script setup>
-import CronInputBasic from "../demos/CronInputBasic.vue";
-</script>
-
 # CronInput
 
 <p class="bless-lead">A cron schedule, with the next run times</p>
@@ -39,3 +35,7 @@ import { BlessCronInput, blessCronNext } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessCronInput" />
+
+<script setup>
+import CronInputBasic from "../demos/CronInputBasic.vue";
+</script>

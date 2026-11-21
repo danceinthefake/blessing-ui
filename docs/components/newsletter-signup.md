@@ -2,10 +2,6 @@
 title: Newsletter signup
 ---
 
-<script setup>
-import NewsletterSignupBasic from "../demos/NewsletterSignupBasic.vue";
-</script>
-
 # Newsletter signup
 
 <p class="bless-lead">An email field and a button, with checks and a thank-you</p>
@@ -37,3 +33,7 @@ import { BlessNewsletterSignup } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessNewsletterSignup" />
+
+<script setup>
+import NewsletterSignupBasic from "../demos/NewsletterSignupBasic.vue";
+</script>

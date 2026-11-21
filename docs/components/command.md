@@ -2,12 +2,6 @@
 title: Command
 ---
 
-<script setup>
-import CommandBasic from "../demos/CommandBasic.vue";
-import CommandInline from "../demos/CommandInline.vue";
-import CommandScoped from "../demos/CommandScoped.vue";
-</script>
-
 # Command
 
 <p class="bless-lead">⌘K palette</p>
@@ -59,3 +53,9 @@ import { BlessCommand } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessCommand" />
+
+<script setup>
+import CommandBasic from "../demos/CommandBasic.vue";
+import CommandInline from "../demos/CommandInline.vue";
+import CommandScoped from "../demos/CommandScoped.vue";
+</script>

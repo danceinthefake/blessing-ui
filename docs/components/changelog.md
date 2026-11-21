@@ -2,10 +2,6 @@
 title: Changelog
 ---
 
-<script setup>
-import ChangelogBasic from "../demos/ChangelogBasic.vue";
-</script>
-
 # Changelog
 
 <p class="bless-lead">Release notes, with the changes in groups</p>
@@ -37,3 +33,7 @@ import { BlessChangelog, type BlessChangeType, type BlessRelease } from "blessin
 ## API
 
 <PropsTable name="BlessChangelog" />
+
+<script setup>
+import ChangelogBasic from "../demos/ChangelogBasic.vue";
+</script>

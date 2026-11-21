@@ -2,10 +2,6 @@
 title: Gradebook
 ---
 
-<script setup>
-import GradebookBasic from "../demos/GradebookBasic.vue";
-</script>
-
 # Gradebook
 
 <p class="bless-lead">The scores of each student for each assignment, with averages and missing work</p>
@@ -38,3 +34,7 @@ import { BlessGradebook } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessGradebook" />
+
+<script setup>
+import GradebookBasic from "../demos/GradebookBasic.vue";
+</script>

@@ -2,10 +2,6 @@
 title: Empty
 ---
 
-<script setup>
-import EmptyBasic from "../demos/EmptyBasic.vue";
-</script>
-
 # Empty
 
 <p class="bless-lead">Empty state</p>
@@ -34,3 +30,7 @@ import { BlessEmpty } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessEmpty" />
+
+<script setup>
+import EmptyBasic from "../demos/EmptyBasic.vue";
+</script>

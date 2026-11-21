@@ -2,10 +2,6 @@
 title: DeferredContent
 ---
 
-<script setup>
-import DeferredContentBasic from "../demos/DeferredContentBasic.vue";
-</script>
-
 # DeferredContent
 
 <p class="bless-lead">Render when scrolled into view</p>
@@ -33,3 +29,7 @@ import { BlessDeferredContent } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessDeferredContent" />
+
+<script setup>
+import DeferredContentBasic from "../demos/DeferredContentBasic.vue";
+</script>

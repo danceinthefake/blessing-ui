@@ -2,10 +2,6 @@
 title: Separator
 ---
 
-<script setup>
-import SeparatorBasic from "../demos/SeparatorBasic.vue";
-</script>
-
 # Separator
 
 <p class="bless-lead">&lt;hr&gt; / vertical rule, optional label</p>
@@ -32,3 +28,7 @@ import { BlessSeparator } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessSeparator" />
+
+<script setup>
+import SeparatorBasic from "../demos/SeparatorBasic.vue";
+</script>

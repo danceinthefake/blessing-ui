@@ -2,10 +2,6 @@
 title: Lesson path
 ---
 
-<script setup>
-import LessonPathBasic from "../demos/LessonPathBasic.vue";
-</script>
-
 # Lesson path
 
 <p class="bless-lead">The lessons of a course as a path, done, current, or locked</p>
@@ -36,3 +32,7 @@ import { BlessLessonPath } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessLessonPath" />
+
+<script setup>
+import LessonPathBasic from "../demos/LessonPathBasic.vue";
+</script>

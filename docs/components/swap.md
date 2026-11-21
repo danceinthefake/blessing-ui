@@ -2,10 +2,6 @@
 title: Swap
 ---
 
-<script setup>
-import SwapBasic from "../demos/SwapBasic.vue";
-</script>
-
 # Swap
 
 <p class="bless-lead">Two-face toggle (icon swap)</p>
@@ -34,3 +30,7 @@ import { BlessSwap } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessSwap" />
+
+<script setup>
+import SwapBasic from "../demos/SwapBasic.vue";
+</script>

@@ -2,10 +2,6 @@
 title: Bullet chart
 ---
 
-<script setup>
-import BulletChartBasic from "../demos/BulletChartBasic.vue";
-</script>
-
 # Bullet chart
 
 <p class="bless-lead">One value against a target and bands, in one thin bar</p>
@@ -38,3 +34,7 @@ import { BlessBulletChart } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessBulletChart" />
+
+<script setup>
+import BulletChartBasic from "../demos/BulletChartBasic.vue";
+</script>

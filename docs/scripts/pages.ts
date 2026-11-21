@@ -37,10 +37,6 @@ for (const g of groups)
 title: ${short}
 ---
 
-<script setup>
-${imports}
-</script>
-
 # ${short}
 
 <p class="bless-lead">${e.text.replace(/`/g, "").replace(/</g, "&lt;").replace(/>/g, "&gt;")}</p>
@@ -56,6 +52,10 @@ import { ${names.join(", ")} } from "blessing-ui";
 ## API
 
 ${names.map((n) => (names.length > 1 ? `### ${n}\n\n` : "") + `<PropsTable name="${n}" />`).join("\n\n")}
+
+<script setup>
+${imports}
+</script>
 `;
     writeFileSync(file, md);
     made++;

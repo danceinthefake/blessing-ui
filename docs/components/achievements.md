@@ -2,10 +2,6 @@
 title: Achievements
 ---
 
-<script setup>
-import AchievementsBasic from "../demos/AchievementsBasic.vue";
-</script>
-
 # Achievements
 
 <p class="bless-lead">Badges that a user earns, with the progress to the next ones</p>
@@ -36,3 +32,7 @@ import { BlessAchievements } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessAchievements" />
+
+<script setup>
+import AchievementsBasic from "../demos/AchievementsBasic.vue";
+</script>

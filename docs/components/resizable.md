@@ -2,10 +2,6 @@
 title: Resizable
 ---
 
-<script setup>
-import ResizableBasic from "../demos/ResizableBasic.vue";
-</script>
-
 # Resizable
 
 <p class="bless-lead">Two-pane split</p>
@@ -33,3 +29,7 @@ import { BlessResizable } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessResizable" />
+
+<script setup>
+import ResizableBasic from "../demos/ResizableBasic.vue";
+</script>

@@ -2,10 +2,6 @@
 title: Banner
 ---
 
-<script setup>
-import BannerBasic from "../demos/BannerBasic.vue";
-</script>
-
 # Banner
 
 <p class="bless-lead">Page-wide announcement bar</p>
@@ -36,3 +32,7 @@ import { BlessBanner } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessBanner" />
+
+<script setup>
+import BannerBasic from "../demos/BannerBasic.vue";
+</script>

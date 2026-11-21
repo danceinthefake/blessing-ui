@@ -2,10 +2,6 @@
 title: Store locator
 ---
 
-<script setup>
-import StoreLocatorBasic from "../demos/StoreLocatorBasic.vue";
-</script>
-
 # Store locator
 
 <p class="bless-lead">A list of stores by distance, with opening hours and directions</p>
@@ -38,3 +34,7 @@ import { BlessStoreLocator } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessStoreLocator" />
+
+<script setup>
+import StoreLocatorBasic from "../demos/StoreLocatorBasic.vue";
+</script>

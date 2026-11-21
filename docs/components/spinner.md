@@ -2,10 +2,6 @@
 title: Spinner
 ---
 
-<script setup>
-import SpinnerBasic from "../demos/SpinnerBasic.vue";
-</script>
-
 # Spinner
 
 <p class="bless-lead">Loading indicator (role=status)</p>
@@ -34,3 +30,7 @@ import { BlessSpinner } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessSpinner" />
+
+<script setup>
+import SpinnerBasic from "../demos/SpinnerBasic.vue";
+</script>

@@ -2,10 +2,6 @@
 title: Donut chart
 ---
 
-<script setup>
-import DonutChartBasic from "../demos/DonutChartBasic.vue";
-</script>
-
 # Donut chart
 
 <p class="bless-lead">Parts of one whole, as a ring or a pie</p>
@@ -38,3 +34,7 @@ import { BlessDonutChart, type BlessDonutSlice } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessDonutChart" />
+
+<script setup>
+import DonutChartBasic from "../demos/DonutChartBasic.vue";
+</script>

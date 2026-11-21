@@ -2,10 +2,6 @@
 title: Journal entry
 ---
 
-<script setup>
-import JournalEntryBasic from "../demos/JournalEntryBasic.vue";
-</script>
-
 # Journal entry
 
 <p class="bless-lead">Debit and credit lines that must balance before the entry can be saved</p>
@@ -40,3 +36,7 @@ import { BlessJournalEntry } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessJournalEntry" />
+
+<script setup>
+import JournalEntryBasic from "../demos/JournalEntryBasic.vue";
+</script>

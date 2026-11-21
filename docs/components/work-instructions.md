@@ -2,10 +2,6 @@
 title: Work instructions
 ---
 
-<script setup>
-import WorkInstructionsBasic from "../demos/WorkInstructionsBasic.vue";
-</script>
-
 # Work instructions
 
 <p class="bless-lead">The steps of a job with a picture for each step</p>
@@ -37,3 +33,7 @@ import { BlessWorkInstructions } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessWorkInstructions" />
+
+<script setup>
+import WorkInstructionsBasic from "../demos/WorkInstructionsBasic.vue";
+</script>

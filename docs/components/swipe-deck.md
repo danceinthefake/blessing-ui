@@ -2,10 +2,6 @@
 title: SwipeDeck
 ---
 
-<script setup>
-import SwipeDeckBasic from "../demos/SwipeDeckBasic.vue";
-</script>
-
 # SwipeDeck
 
 <p class="bless-lead">Stack of cards to accept, reject or skip, with undo</p>
@@ -38,3 +34,7 @@ import { BlessSwipeDeck } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessSwipeDeck" />
+
+<script setup>
+import SwipeDeckBasic from "../demos/SwipeDeckBasic.vue";
+</script>

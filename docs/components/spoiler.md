@@ -2,10 +2,6 @@
 title: Spoiler
 ---
 
-<script setup>
-import SpoilerBasic from "../demos/SpoilerBasic.vue";
-</script>
-
 # Spoiler
 
 <p class="bless-lead">Text hidden under a blur until a click shows it</p>
@@ -36,3 +32,7 @@ import { BlessSpoiler } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessSpoiler" />
+
+<script setup>
+import SpoilerBasic from "../demos/SpoilerBasic.vue";
+</script>

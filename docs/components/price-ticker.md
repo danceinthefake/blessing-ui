@@ -2,10 +2,6 @@
 title: Price ticker
 ---
 
-<script setup>
-import PriceTickerBasic from "../demos/PriceTickerBasic.vue";
-</script>
-
 # Price ticker
 
 <p class="bless-lead">Prices that move across the screen, with the change of each</p>
@@ -36,3 +32,7 @@ import { BlessPriceTicker } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessPriceTicker" />
+
+<script setup>
+import PriceTickerBasic from "../demos/PriceTickerBasic.vue";
+</script>

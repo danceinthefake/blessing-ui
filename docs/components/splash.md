@@ -2,10 +2,6 @@
 title: Splash
 ---
 
-<script setup>
-import SplashBasic from "../demos/SplashBasic.vue";
-</script>
-
 # Splash
 
 <p class="bless-lead">First-visit overlay</p>
@@ -33,3 +29,7 @@ import { BlessSplash } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessSplash" />
+
+<script setup>
+import SplashBasic from "../demos/SplashBasic.vue";
+</script>

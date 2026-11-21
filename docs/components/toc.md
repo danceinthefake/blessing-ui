@@ -2,10 +2,6 @@
 title: Toc
 ---
 
-<script setup>
-import TocBasic from "../demos/TocBasic.vue";
-</script>
-
 # Toc
 
 <p class="bless-lead">Table of contents with current heading</p>
@@ -36,3 +32,7 @@ import { BlessToc } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessToc" />
+
+<script setup>
+import TocBasic from "../demos/TocBasic.vue";
+</script>

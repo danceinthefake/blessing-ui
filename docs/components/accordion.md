@@ -2,10 +2,6 @@
 title: Accordion
 ---
 
-<script setup>
-import AccordionBasic from "../demos/AccordionBasic.vue";
-</script>
-
 # Accordion
 
 <p class="bless-lead">Collapsibles, one open at a time</p>
@@ -39,3 +35,7 @@ import { BlessAccordion, BlessAccordionItem } from "blessing-ui";
 ### BlessAccordionItem
 
 <PropsTable name="BlessAccordionItem" />
+
+<script setup>
+import AccordionBasic from "../demos/AccordionBasic.vue";
+</script>

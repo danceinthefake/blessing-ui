@@ -2,10 +2,6 @@
 title: Notification preferences
 ---
 
-<script setup>
-import NotificationPrefsBasic from "../demos/NotificationPrefsBasic.vue";
-</script>
-
 # Notification preferences
 
 <p class="bless-lead">A grid of events by channel, with a check box in each cell</p>
@@ -36,3 +32,7 @@ import { BlessNotificationPrefs } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessNotificationPrefs" />
+
+<script setup>
+import NotificationPrefsBasic from "../demos/NotificationPrefsBasic.vue";
+</script>

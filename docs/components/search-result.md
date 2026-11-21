@@ -2,10 +2,6 @@
 title: Search result
 ---
 
-<script setup>
-import SearchResultBasic from "../demos/SearchResultBasic.vue";
-</script>
-
 # Search result
 
 <p class="bless-lead">One result with the title, the address, and a snippet with the search words marked</p>
@@ -35,3 +31,7 @@ import { BlessSearchResult } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessSearchResult" />
+
+<script setup>
+import SearchResultBasic from "../demos/SearchResultBasic.vue";
+</script>

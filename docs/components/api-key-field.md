@@ -2,10 +2,6 @@
 title: API key field
 ---
 
-<script setup>
-import ApiKeyFieldBasic from "../demos/ApiKeyFieldBasic.vue";
-</script>
-
 # API key field
 
 <p class="bless-lead">A secret key, hidden by default, with show, copy, and make a new key</p>
@@ -37,3 +33,7 @@ import { BlessApiKeyField } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessApiKeyField" />
+
+<script setup>
+import ApiKeyFieldBasic from "../demos/ApiKeyFieldBasic.vue";
+</script>

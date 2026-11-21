@@ -2,10 +2,6 @@
 title: Histogram
 ---
 
-<script setup>
-import HistogramBasic from "../demos/HistogramBasic.vue";
-</script>
-
 # Histogram
 
 <p class="bless-lead">Raw values in round bins, as bars</p>
@@ -37,3 +33,7 @@ import { BlessHistogram } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessHistogram" />
+
+<script setup>
+import HistogramBasic from "../demos/HistogramBasic.vue";
+</script>

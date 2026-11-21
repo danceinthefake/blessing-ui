@@ -2,10 +2,6 @@
 title: Quality check
 ---
 
-<script setup>
-import QualityCheckBasic from "../demos/QualityCheckBasic.vue";
-</script>
-
 # Quality check
 
 <p class="bless-lead">Pass or fail checks and measured values against their limits</p>
@@ -40,3 +36,7 @@ import { BlessQualityCheck } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessQualityCheck" />
+
+<script setup>
+import QualityCheckBasic from "../demos/QualityCheckBasic.vue";
+</script>

@@ -2,10 +2,6 @@
 title: CountUp
 ---
 
-<script setup>
-import CountUpBasic from "../demos/CountUpBasic.vue";
-</script>
-
 # CountUp
 
 <p class="bless-lead">Numbers that roll to a new value</p>
@@ -35,3 +31,7 @@ import { BlessCountUp } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessCountUp" />
+
+<script setup>
+import CountUpBasic from "../demos/CountUpBasic.vue";
+</script>

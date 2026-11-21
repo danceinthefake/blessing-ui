@@ -2,10 +2,6 @@
 title: Audit log
 ---
 
-<script setup>
-import AuditLogBasic from "../demos/AuditLogBasic.vue";
-</script>
-
 # Audit log
 
 <p class="bless-lead">Who changed what and when, with the old and the new value</p>
@@ -36,3 +32,7 @@ import { BlessAuditLog } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessAuditLog" />
+
+<script setup>
+import AuditLogBasic from "../demos/AuditLogBasic.vue";
+</script>

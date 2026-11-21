@@ -2,10 +2,6 @@
 title: Sparkline
 ---
 
-<script setup>
-import SparklineBasic from "../demos/SparklineBasic.vue";
-</script>
-
 # Sparkline
 
 <p class="bless-lead">A tiny inline chart for a row, a card or a sentence</p>
@@ -35,3 +31,7 @@ import { BlessSparkline } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessSparkline" />
+
+<script setup>
+import SparklineBasic from "../demos/SparklineBasic.vue";
+</script>

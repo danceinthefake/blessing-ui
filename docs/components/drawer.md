@@ -2,10 +2,6 @@
 title: Drawer
 ---
 
-<script setup>
-import DrawerBasic from "../demos/DrawerBasic.vue";
-</script>
-
 # Drawer
 
 <p class="bless-lead">Bottom sheet with swipe-to-close</p>
@@ -33,3 +29,7 @@ import { BlessDrawer } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessDrawer" />
+
+<script setup>
+import DrawerBasic from "../demos/DrawerBasic.vue";
+</script>

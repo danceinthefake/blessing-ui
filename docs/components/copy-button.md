@@ -2,10 +2,6 @@
 title: CopyButton
 ---
 
-<script setup>
-import CopyButtonBasic from "../demos/CopyButtonBasic.vue";
-</script>
-
 # CopyButton
 
 <p class="bless-lead">Copy text with a Copied state</p>
@@ -35,3 +31,7 @@ import { BlessCopyButton } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessCopyButton" />
+
+<script setup>
+import CopyButtonBasic from "../demos/CopyButtonBasic.vue";
+</script>

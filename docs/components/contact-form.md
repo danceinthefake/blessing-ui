@@ -2,10 +2,6 @@
 title: Contact form
 ---
 
-<script setup>
-import ContactFormBasic from "../demos/ContactFormBasic.vue";
-</script>
-
 # Contact form
 
 <p class="bless-lead">A contact form with the name, the email, the topic, the message, and a clear result</p>
@@ -37,3 +33,7 @@ import { BlessContactForm } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessContactForm" />
+
+<script setup>
+import ContactFormBasic from "../demos/ContactFormBasic.vue";
+</script>

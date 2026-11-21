@@ -2,11 +2,6 @@
 title: Checkbox
 ---
 
-<script setup>
-import CheckboxArray from "../demos/CheckboxArray.vue";
-import CheckboxBasic from "../demos/CheckboxBasic.vue";
-</script>
-
 # Checkbox
 
 <p class="bless-lead">Native checkbox</p>
@@ -42,3 +37,8 @@ import { BlessCheckbox } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessCheckbox" />
+
+<script setup>
+import CheckboxArray from "../demos/CheckboxArray.vue";
+import CheckboxBasic from "../demos/CheckboxBasic.vue";
+</script>

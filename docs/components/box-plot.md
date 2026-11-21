@@ -2,10 +2,6 @@
 title: Box plot
 ---
 
-<script setup>
-import BoxPlotBasic from "../demos/BoxPlotBasic.vue";
-</script>
-
 # Box plot
 
 <p class="bless-lead">The spread of values in groups</p>
@@ -38,3 +34,7 @@ import { BlessBoxPlot, type BlessBoxGroup } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessBoxPlot" />
+
+<script setup>
+import BoxPlotBasic from "../demos/BoxPlotBasic.vue";
+</script>

@@ -2,10 +2,6 @@
 title: API endpoint
 ---
 
-<script setup>
-import ApiEndpointBasic from "../demos/ApiEndpointBasic.vue";
-</script>
-
 # API endpoint
 
 <p class="bless-lead">One endpoint of an API with the method, the path, the parameters, and the responses</p>
@@ -37,3 +33,7 @@ import { BlessApiEndpoint } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessApiEndpoint" />
+
+<script setup>
+import ApiEndpointBasic from "../demos/ApiEndpointBasic.vue";
+</script>

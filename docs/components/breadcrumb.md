@@ -2,10 +2,6 @@
 title: Breadcrumb
 ---
 
-<script setup>
-import BreadcrumbBasic from "../demos/BreadcrumbBasic.vue";
-</script>
-
 # Breadcrumb
 
 <p class="bless-lead">Trail</p>
@@ -34,3 +30,7 @@ import { BlessBreadcrumb } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessBreadcrumb" />
+
+<script setup>
+import BreadcrumbBasic from "../demos/BreadcrumbBasic.vue";
+</script>

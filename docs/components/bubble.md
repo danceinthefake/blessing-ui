@@ -2,10 +2,6 @@
 title: Bubble
 ---
 
-<script setup>
-import BubbleBasic from "../demos/BubbleBasic.vue";
-</script>
-
 # Bubble
 
 <p class="bless-lead">Message bubble</p>
@@ -33,3 +29,7 @@ import { BlessBubble } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessBubble" />
+
+<script setup>
+import BubbleBasic from "../demos/BubbleBasic.vue";
+</script>

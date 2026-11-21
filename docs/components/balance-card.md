@@ -2,10 +2,6 @@
 title: Balance card
 ---
 
-<script setup>
-import BalanceCardBasic from "../demos/BalanceCardBasic.vue";
-</script>
-
 # Balance card
 
 <p class="bless-lead">The balance of an account, with the change and the main actions</p>
@@ -37,3 +33,7 @@ import { BlessBalanceCard } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessBalanceCard" />
+
+<script setup>
+import BalanceCardBasic from "../demos/BalanceCardBasic.vue";
+</script>

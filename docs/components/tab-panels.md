@@ -2,10 +2,6 @@
 title: TabPanels
 ---
 
-<script setup>
-import TabPanelsBasic from "../demos/TabPanelsBasic.vue";
-</script>
-
 # TabPanels
 
 <p class="bless-lead">Swipeable panel pager</p>
@@ -33,3 +29,7 @@ import { BlessTabPanels } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessTabPanels" />
+
+<script setup>
+import TabPanelsBasic from "../demos/TabPanelsBasic.vue";
+</script>

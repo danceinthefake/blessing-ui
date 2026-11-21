@@ -2,10 +2,6 @@
 title: Habit tracker
 ---
 
-<script setup>
-import HabitTrackerBasic from "../demos/HabitTrackerBasic.vue";
-</script>
-
 # Habit tracker
 
 <p class="bless-lead">A grid of days for each habit, with checks and the streak</p>
@@ -37,3 +33,7 @@ import { BlessHabitTracker } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessHabitTracker" />
+
+<script setup>
+import HabitTrackerBasic from "../demos/HabitTrackerBasic.vue";
+</script>

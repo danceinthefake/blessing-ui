@@ -2,10 +2,6 @@
 title: Route steps
 ---
 
-<script setup>
-import RouteStepsBasic from "../demos/RouteStepsBasic.vue";
-</script>
-
 # Route steps
 
 <p class="bless-lead">The turns of a route with a direction, the distance, and the time</p>
@@ -37,3 +33,7 @@ import { BlessRouteSteps } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessRouteSteps" />
+
+<script setup>
+import RouteStepsBasic from "../demos/RouteStepsBasic.vue";
+</script>

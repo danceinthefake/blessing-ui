@@ -1,9 +1,5 @@
 # Font
 
-<script setup>
-import FontsWeights from "../../demos/FontsWeights.vue";
-</script>
-
 `--bless-font-sans` berisi
 
 ```
@@ -74,3 +70,7 @@ Nama keluarganya tetap `"Roboto"`, jadi token tidak perlu diubah. Jika dengan ta
 ```
 
 `font-display: swap` menjaga teks tetap terlihat selama file datang. Tanpa semua ini, susunan font jatuh ke sans bawaan sistem, yang cukup baik untuk semua hal kecuali huruf tipis.
+
+<script setup>
+import FontsWeights from "../../demos/FontsWeights.vue";
+</script>

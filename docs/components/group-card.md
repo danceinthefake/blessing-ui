@@ -2,10 +2,6 @@
 title: Group card
 ---
 
-<script setup>
-import GroupCardBasic from "../demos/GroupCardBasic.vue";
-</script>
-
 # Group card
 
 <p class="bless-lead">A group with a cover, the members, and a join button</p>
@@ -38,3 +34,7 @@ import { BlessGroupCard } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessGroupCard" />
+
+<script setup>
+import GroupCardBasic from "../demos/GroupCardBasic.vue";
+</script>

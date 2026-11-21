@@ -2,10 +2,6 @@
 title: HoverCard
 ---
 
-<script setup>
-import HoverCardBasic from "../demos/HoverCardBasic.vue";
-</script>
-
 # HoverCard
 
 <p class="bless-lead">Rich hover popover</p>
@@ -37,3 +33,7 @@ import { BlessHoverCard } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessHoverCard" />
+
+<script setup>
+import HoverCardBasic from "../demos/HoverCardBasic.vue";
+</script>

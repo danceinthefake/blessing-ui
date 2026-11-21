@@ -47,11 +47,11 @@ footer: false
 title: ${meta.title} (preview)
 ---
 
+<BlockFrame><Block /></BlockFrame>
+
 <script setup>
 import Block from "./${slug}/index.vue";
 </script>
-
-<BlockFrame><Block /></BlockFrame>
 `,
     );
   const page = resolve(dir, `${slug}.md`);
@@ -63,16 +63,6 @@ title: ${meta.title}
 aside: false
 ---
 
-<script setup>
-import { withBase } from "vitepress";
-import meta from "./${slug}/meta";
-const files = Object.fromEntries(
-  Object.entries(import.meta.glob("./${slug}/**/*.{vue,ts}", { query: "?raw", import: "default", eager: true }))
-    .filter(([p]) => !p.endsWith("meta.ts"))
-    .map(([p, src]) => [p.replace("./${slug}/", ""), src]),
-);
-</script>
-
 # ${meta.title}
 
 <p class="bless-lead">${meta.summary.replace(/</g, "&lt;")}</p>
@@ -82,6 +72,16 @@ const files = Object.fromEntries(
 ## Into your app
 
 Run \`npx blessing-ui add ${slug}\` to copy the folder to \`src/features/${slug}/\` (Nuxt: \`app/features/${slug}/\`). Then render \`index.vue\` from a page. ${intoApp(folder)}
+
+<script setup>
+import { withBase } from "vitepress";
+import meta from "./${slug}/meta";
+const files = Object.fromEntries(
+  Object.entries(import.meta.glob("./${slug}/**/*.{vue,ts}", { query: "?raw", import: "default", eager: true }))
+    .filter(([p]) => !p.endsWith("meta.ts"))
+    .map(([p, src]) => [p.replace("./${slug}/", ""), src]),
+);
+</script>
 `,
   );
   made++;

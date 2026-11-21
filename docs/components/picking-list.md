@@ -2,10 +2,6 @@
 title: Picking list
 ---
 
-<script setup>
-import PickingListBasic from "../demos/PickingListBasic.vue";
-</script>
-
 # Picking list
 
 <p class="bless-lead">The items to pick in a warehouse, with the place and a scan to confirm</p>
@@ -37,3 +33,7 @@ import { BlessPickingList } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessPickingList" />
+
+<script setup>
+import PickingListBasic from "../demos/PickingListBasic.vue";
+</script>

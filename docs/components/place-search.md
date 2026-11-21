@@ -2,10 +2,6 @@
 title: Place search
 ---
 
-<script setup>
-import PlaceSearchBasic from "../demos/PlaceSearchBasic.vue";
-</script>
-
 # Place search
 
 <p class="bless-lead">A search for places with results that show the address and the distance</p>
@@ -37,3 +33,7 @@ import { BlessPlaceSearch } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessPlaceSearch" />
+
+<script setup>
+import PlaceSearchBasic from "../demos/PlaceSearchBasic.vue";
+</script>

@@ -2,10 +2,6 @@
 title: Gestur
 ---
 
-<script setup>
-import GesturesBasic from "../../demos/GesturesBasic.vue";
-</script>
-
 # Gestur
 
 <p class="bless-lead">Empat composable pointer event untuk mouse, sentuhan, dan pena. Semuanya terpasang ke ref elemen dan tidak melakukan apa pun di server.</p>
@@ -56,3 +52,7 @@ Gestur adalah jalan pintas, bukan kontrolnya. Usap-untuk-hapus juga memerlukan t
 ## Berikutnya
 
 Pembantu platform yang bukan gestur (ukuran, layar penuh, visibilitas, gulir, dan loading bar) ada di [Composable browser](./browser).
+
+<script setup>
+import GesturesBasic from "../../demos/GesturesBasic.vue";
+</script>

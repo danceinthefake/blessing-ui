@@ -2,10 +2,6 @@
 title: Currency converter
 ---
 
-<script setup>
-import CurrencyConverterBasic from "../demos/CurrencyConverterBasic.vue";
-</script>
-
 # Currency converter
 
 <p class="bless-lead">An amount in one currency and its value in another</p>
@@ -37,3 +33,7 @@ import { BlessCurrencyConverter } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessCurrencyConverter" />
+
+<script setup>
+import CurrencyConverterBasic from "../demos/CurrencyConverterBasic.vue";
+</script>

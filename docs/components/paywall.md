@@ -2,10 +2,6 @@
 title: Paywall
 ---
 
-<script setup>
-import PaywallBasic from "../demos/PaywallBasic.vue";
-</script>
-
 # Paywall
 
 <p class="bless-lead">The end of a free preview, with the plans and a sign-in link</p>
@@ -38,3 +34,7 @@ import { BlessPaywall } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessPaywall" />
+
+<script setup>
+import PaywallBasic from "../demos/PaywallBasic.vue";
+</script>

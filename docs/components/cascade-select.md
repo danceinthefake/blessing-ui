@@ -2,10 +2,6 @@
 title: CascadeSelect
 ---
 
-<script setup>
-import CascadeSelectBasic from "../demos/CascadeSelectBasic.vue";
-</script>
-
 # CascadeSelect
 
 <p class="bless-lead">Nested options, one column per level</p>
@@ -38,3 +34,7 @@ import { BlessCascadeSelect } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessCascadeSelect" />
+
+<script setup>
+import CascadeSelectBasic from "../demos/CascadeSelectBasic.vue";
+</script>

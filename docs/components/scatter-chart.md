@@ -2,10 +2,6 @@
 title: Scatter chart
 ---
 
-<script setup>
-import ScatterChartBasic from "../demos/ScatterChartBasic.vue";
-</script>
-
 # Scatter chart
 
 <p class="bless-lead">Points on two number axes, or bubbles with a size</p>
@@ -38,3 +34,7 @@ import { BlessScatterChart, type BlessScatterGroup, type BlessScatterPoint } fro
 ## API
 
 <PropsTable name="BlessScatterChart" />
+
+<script setup>
+import ScatterChartBasic from "../demos/ScatterChartBasic.vue";
+</script>

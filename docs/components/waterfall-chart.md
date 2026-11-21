@@ -2,10 +2,6 @@
 title: Waterfall chart
 ---
 
-<script setup>
-import WaterfallChartBasic from "../demos/WaterfallChartBasic.vue";
-</script>
-
 # Waterfall chart
 
 <p class="bless-lead">How a value goes up and down, step by step</p>
@@ -38,3 +34,7 @@ import { BlessWaterfallChart, type BlessWaterfallStep } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessWaterfallChart" />
+
+<script setup>
+import WaterfallChartBasic from "../demos/WaterfallChartBasic.vue";
+</script>

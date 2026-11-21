@@ -2,10 +2,6 @@
 title: Message feedback
 ---
 
-<script setup>
-import MessageFeedbackBasic from "../demos/MessageFeedbackBasic.vue";
-</script>
-
 # Message feedback
 
 <p class="bless-lead">Good, bad, copy, and retry buttons under a reply</p>
@@ -37,3 +33,7 @@ import { BlessMessageFeedback } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessMessageFeedback" />
+
+<script setup>
+import MessageFeedbackBasic from "../demos/MessageFeedbackBasic.vue";
+</script>

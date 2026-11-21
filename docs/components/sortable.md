@@ -2,12 +2,6 @@
 title: Sortable
 ---
 
-<script setup>
-import SortableBasic from "../demos/SortableBasic.vue";
-import SortableGrid from "../demos/SortableGrid.vue";
-import SortableGroup from "../demos/SortableGroup.vue";
-</script>
-
 # Sortable
 
 <p class="bless-lead">Drag-to-reorder list or grid, keyboard grab and move</p>
@@ -58,3 +52,9 @@ import { BlessSortable } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessSortable" />
+
+<script setup>
+import SortableBasic from "../demos/SortableBasic.vue";
+import SortableGrid from "../demos/SortableGrid.vue";
+import SortableGroup from "../demos/SortableGroup.vue";
+</script>

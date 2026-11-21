@@ -2,12 +2,6 @@
 title: Popover
 ---
 
-<script setup>
-import PopoverBasic from "../demos/PopoverBasic.vue";
-import PopoverManual from "../demos/PopoverManual.vue";
-import PopoverArrow from "../demos/PopoverArrow.vue";
-</script>
-
 # Popover
 
 <p class="bless-lead">Popover API panel</p>
@@ -59,3 +53,9 @@ import { BlessPopover } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessPopover" />
+
+<script setup>
+import PopoverBasic from "../demos/PopoverBasic.vue";
+import PopoverManual from "../demos/PopoverManual.vue";
+import PopoverArrow from "../demos/PopoverArrow.vue";
+</script>

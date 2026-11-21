@@ -3,16 +3,6 @@ title: Bank
 aside: false
 ---
 
-<script setup>
-import { withBase } from "vitepress";
-import meta from "./bank/meta";
-const files = Object.fromEntries(
-  Object.entries(import.meta.glob("./bank/**/*.{vue,ts}", { query: "?raw", import: "default", eager: true }))
-    .filter(([p]) => !p.endsWith("meta.ts"))
-    .map(([p, src]) => [p.replace("./bank/", ""), src]),
-);
-</script>
-
 # Bank
 
 <p class="bless-lead">An account page: the balance with Transfer, the budget for the month, and the recent transactions. Transfer opens a sheet that checks the amount, then asks for a PIN before the money moves.</p>
@@ -22,3 +12,13 @@ const files = Object.fromEntries(
 ## Into your app
 
 Run `npx blessing-ui add bank` to copy the folder to `src/features/bank/` (Nuxt: `app/features/bank/`). Then render `index.vue` from a page. Replace `api.ts` with your real adapter. The view and the use-case stay the same.
+
+<script setup>
+import { withBase } from "vitepress";
+import meta from "./bank/meta";
+const files = Object.fromEntries(
+  Object.entries(import.meta.glob("./bank/**/*.{vue,ts}", { query: "?raw", import: "default", eager: true }))
+    .filter(([p]) => !p.endsWith("meta.ts"))
+    .map(([p, src]) => [p.replace("./bank/", ""), src]),
+);
+</script>

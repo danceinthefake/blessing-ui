@@ -2,10 +2,6 @@
 title: Streaming text
 ---
 
-<script setup>
-import StreamingTextBasic from "../demos/StreamingTextBasic.vue";
-</script>
-
 # Streaming text
 
 <p class="bless-lead">Text that comes in part by part, with a caret</p>
@@ -37,3 +33,7 @@ import { BlessStreamingText } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessStreamingText" />
+
+<script setup>
+import StreamingTextBasic from "../demos/StreamingTextBasic.vue";
+</script>

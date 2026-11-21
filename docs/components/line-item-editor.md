@@ -2,10 +2,6 @@
 title: Line-item editor
 ---
 
-<script setup>
-import LineItemEditorBasic from "../demos/LineItemEditorBasic.vue";
-</script>
-
 # Line-item editor
 
 <p class="bless-lead">Rows of products with quantity, unit, price, discount, and tax, and the totals</p>
@@ -41,3 +37,7 @@ import { BlessLineItemEditor } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessLineItemEditor" />
+
+<script setup>
+import LineItemEditorBasic from "../demos/LineItemEditorBasic.vue";
+</script>

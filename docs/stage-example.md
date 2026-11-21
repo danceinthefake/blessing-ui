@@ -7,8 +7,8 @@ footer: false
 title: Stage — full page
 ---
 
+<StageFull />
+
 <script setup>
 import StageFull from "./demos/StageFull.vue";
 </script>
-
-<StageFull />

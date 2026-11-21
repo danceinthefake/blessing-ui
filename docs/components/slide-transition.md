@@ -2,10 +2,6 @@
 title: SlideTransition
 ---
 
-<script setup>
-import SlideTransitionBasic from "../demos/SlideTransitionBasic.vue";
-</script>
-
 # SlideTransition
 
 <p class="bless-lead">Height transition for v-if / v-show</p>
@@ -33,3 +29,7 @@ import { BlessSlideTransition } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessSlideTransition" />
+
+<script setup>
+import SlideTransitionBasic from "../demos/SlideTransitionBasic.vue";
+</script>

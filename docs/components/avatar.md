@@ -2,10 +2,6 @@
 title: Avatar
 ---
 
-<script setup>
-import AvatarBasic from "../demos/AvatarBasic.vue";
-</script>
-
 # Avatar
 
 <p class="bless-lead">Image with initials fallback</p>
@@ -32,3 +28,7 @@ import { BlessAvatar } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessAvatar" />
+
+<script setup>
+import AvatarBasic from "../demos/AvatarBasic.vue";
+</script>

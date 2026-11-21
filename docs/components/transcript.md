@@ -2,10 +2,6 @@
 title: Transcript
 ---
 
-<script setup>
-import TranscriptBasic from "../demos/TranscriptBasic.vue";
-</script>
-
 # Transcript
 
 <p class="bless-lead">Lines of text that follow the time of the media</p>
@@ -37,3 +33,7 @@ import { BlessTranscript } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessTranscript" />
+
+<script setup>
+import TranscriptBasic from "../demos/TranscriptBasic.vue";
+</script>

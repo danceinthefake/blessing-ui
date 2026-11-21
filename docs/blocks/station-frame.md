@@ -7,8 +7,8 @@ footer: false
 title: Station (preview)
 ---
 
+<BlockFrame><Block /></BlockFrame>
+
 <script setup>
 import Block from "./station/index.vue";
 </script>
-
-<BlockFrame><Block /></BlockFrame>

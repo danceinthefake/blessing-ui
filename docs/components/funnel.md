@@ -2,10 +2,6 @@
 title: Funnel
 ---
 
-<script setup>
-import FunnelBasic from "../demos/FunnelBasic.vue";
-</script>
-
 # Funnel
 
 <p class="bless-lead">Stages with the share that is left at each step</p>
@@ -35,3 +31,7 @@ import { BlessFunnel } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessFunnel" />
+
+<script setup>
+import FunnelBasic from "../demos/FunnelBasic.vue";
+</script>

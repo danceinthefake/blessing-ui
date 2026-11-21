@@ -2,10 +2,6 @@
 title: Continue watching
 ---
 
-<script setup>
-import ContinueWatchingBasic from "../demos/ContinueWatchingBasic.vue";
-</script>
-
 # Continue watching
 
 <p class="bless-lead">Items with the place where you stopped, and a remove button</p>
@@ -36,3 +32,7 @@ import { BlessContinueWatching } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessContinueWatching" />
+
+<script setup>
+import ContinueWatchingBasic from "../demos/ContinueWatchingBasic.vue";
+</script>

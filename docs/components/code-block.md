@@ -2,10 +2,6 @@
 title: CodeBlock
 ---
 
-<script setup>
-import CodeBlockBasic from "../demos/CodeBlockBasic.vue";
-</script>
-
 # CodeBlock
 
 <p class="bless-lead">Copy button, line highlight, tabs per file</p>
@@ -36,3 +32,7 @@ import { BlessCodeBlock } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessCodeBlock" />
+
+<script setup>
+import CodeBlockBasic from "../demos/CodeBlockBasic.vue";
+</script>

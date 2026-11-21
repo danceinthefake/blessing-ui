@@ -2,10 +2,6 @@
 title: Time tracker
 ---
 
-<script setup>
-import TimeTrackerBasic from "../demos/TimeTrackerBasic.vue";
-</script>
-
 # Time tracker
 
 <p class="bless-lead">A timer for the current task and a list of time entries with a total for each day</p>
@@ -37,3 +33,7 @@ import { BlessTimeTracker } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessTimeTracker" />
+
+<script setup>
+import TimeTrackerBasic from "../demos/TimeTrackerBasic.vue";
+</script>

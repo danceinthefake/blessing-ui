@@ -2,10 +2,6 @@
 title: Stepper
 ---
 
-<script setup>
-import StepperBasic from "../demos/StepperBasic.vue";
-</script>
-
 # Stepper
 
 <p class="bless-lead">Steps header + panels + next / back</p>
@@ -33,3 +29,7 @@ import { BlessStepper } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessStepper" />
+
+<script setup>
+import StepperBasic from "../demos/StepperBasic.vue";
+</script>

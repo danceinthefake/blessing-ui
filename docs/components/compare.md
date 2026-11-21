@@ -2,10 +2,6 @@
 title: Compare
 ---
 
-<script setup>
-import CompareBasic from "../demos/CompareBasic.vue";
-</script>
-
 # Compare
 
 <p class="bless-lead">Before / after slider</p>
@@ -34,3 +30,7 @@ import { BlessCompare } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessCompare" />
+
+<script setup>
+import CompareBasic from "../demos/CompareBasic.vue";
+</script>

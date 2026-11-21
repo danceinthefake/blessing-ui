@@ -2,10 +2,6 @@
 title: CameraCapture
 ---
 
-<script setup>
-import CameraCaptureBasic from "../demos/CameraCaptureBasic.vue";
-</script>
-
 # CameraCapture
 
 <p class="bless-lead">Take a photo with the camera, in the page</p>
@@ -39,3 +35,7 @@ import { BlessCameraCapture } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessCameraCapture" />
+
+<script setup>
+import CameraCaptureBasic from "../demos/CameraCaptureBasic.vue";
+</script>

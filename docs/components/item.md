@@ -2,10 +2,6 @@
 title: Item
 ---
 
-<script setup>
-import ItemBasic from "../demos/ItemBasic.vue";
-</script>
-
 # Item
 
 <p class="bless-lead">Media + title + description + actions</p>
@@ -34,3 +30,7 @@ import { BlessItem } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessItem" />
+
+<script setup>
+import ItemBasic from "../demos/ItemBasic.vue";
+</script>

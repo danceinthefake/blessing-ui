@@ -2,10 +2,6 @@
 title: Slope chart
 ---
 
-<script setup>
-import SlopeChartBasic from "../demos/SlopeChartBasic.vue";
-</script>
-
 # Slope chart
 
 <p class="bless-lead">Two columns, such as before and after, with a line for each item</p>
@@ -36,3 +32,7 @@ import { BlessSlopeChart } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessSlopeChart" />
+
+<script setup>
+import SlopeChartBasic from "../demos/SlopeChartBasic.vue";
+</script>

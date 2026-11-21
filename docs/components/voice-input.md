@@ -2,10 +2,6 @@
 title: Voice input
 ---
 
-<script setup>
-import VoiceInputBasic from "../demos/VoiceInputBasic.vue";
-</script>
-
 # Voice input
 
 <p class="bless-lead">A microphone button that turns speech into text</p>
@@ -37,3 +33,7 @@ import { BlessVoiceInput } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessVoiceInput" />
+
+<script setup>
+import VoiceInputBasic from "../demos/VoiceInputBasic.vue";
+</script>

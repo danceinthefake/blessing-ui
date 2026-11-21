@@ -1,10 +1,5 @@
 # Palettes
 
-<script setup>
-import { BlessPaletteToggle } from "blessing-ui";
-import PaletteRetint from "../demos/PaletteRetint.vue";
-</script>
-
 The accent is Megumi's pink by default. Five more accent families are one switch away: the other petals of the mark, and the one at its center. Each is named after a member of the circle that gave the library its name (see the [story](../design/story)). A palette swaps only the accent family. Grays, type, and geometry stay the same, and dark mode composes on top.
 
 <div style="margin:16px 0"><BlessPaletteToggle /></div>
@@ -68,3 +63,8 @@ The [theme maker](./theme-maker) makes this block from one petal color. A palett
 ```
 
 `setPalette()` and `BlessPaletteToggle` know only the six built-in palettes (`blessPalettes`). A custom palette does not appear in the toggle and does not survive a `setPalette` round-trip.
+
+<script setup>
+import { BlessPaletteToggle } from "blessing-ui";
+import PaletteRetint from "../demos/PaletteRetint.vue";
+</script>

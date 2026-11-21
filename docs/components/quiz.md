@@ -2,10 +2,6 @@
 title: Quiz
 ---
 
-<script setup>
-import QuizBasic from "../demos/QuizBasic.vue";
-</script>
-
 # Quiz
 
 <p class="bless-lead">Questions with choices, a check after each answer, and a score</p>
@@ -36,3 +32,7 @@ import { BlessQuiz } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessQuiz" />
+
+<script setup>
+import QuizBasic from "../demos/QuizBasic.vue";
+</script>

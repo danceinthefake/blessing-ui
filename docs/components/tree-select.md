@@ -2,10 +2,6 @@
 title: TreeSelect
 ---
 
-<script setup>
-import TreeSelectBasic from "../demos/TreeSelectBasic.vue";
-</script>
-
 # TreeSelect
 
 <p class="bless-lead">Tree in a popover, single or multiple</p>
@@ -38,3 +34,7 @@ import { BlessTreeSelect } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessTreeSelect" />
+
+<script setup>
+import TreeSelectBasic from "../demos/TreeSelectBasic.vue";
+</script>

@@ -2,10 +2,6 @@
 title: Waveform
 ---
 
-<script setup>
-import WaveformBasic from "../demos/WaveformBasic.vue";
-</script>
-
 # Waveform
 
 <p class="bless-lead">Audio peaks that you click or key to seek</p>
@@ -37,3 +33,7 @@ import { BlessWaveform } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessWaveform" />
+
+<script setup>
+import WaveformBasic from "../demos/WaveformBasic.vue";
+</script>

@@ -2,10 +2,6 @@
 title: MessageScroller
 ---
 
-<script setup>
-import MessageScrollerBasic from "../demos/MessageScrollerBasic.vue";
-</script>
-
 # MessageScroller
 
 <p class="bless-lead">Chat viewport</p>
@@ -35,3 +31,7 @@ import { BlessMessageScroller } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessMessageScroller" />
+
+<script setup>
+import MessageScrollerBasic from "../demos/MessageScrollerBasic.vue";
+</script>

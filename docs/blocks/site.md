@@ -3,16 +3,6 @@ title: Full site
 aside: false
 ---
 
-<script setup>
-import { withBase } from "vitepress";
-import meta from "./site/meta";
-const files = Object.fromEntries(
-  Object.entries(import.meta.glob("./site/**/*.{vue,ts}", { query: "?raw", import: "default", eager: true }))
-    .filter(([p]) => !p.endsWith("meta.ts"))
-    .map(([p, src]) => [p.replace("./site/", ""), src]),
-);
-</script>
-
 # Full site
 
 <p class="bless-lead">All six official-site sections inside BlessStage, with sidebar nav and scroll-spy, a key-visual background, and a drawer on phones. It opens full-page.</p>
@@ -24,3 +14,13 @@ const files = Object.fromEntries(
 ## Into your app
 
 This is a _composition_ block. It imports the six section blocks. Run `npx blessing-ui add site` to copy it with those folders next to it: `news/`, `onair/`, `character/`, `staff/`, `release/`, `story/`. Put your key visual in the `#background` slot. Swap the `api.ts` of News and Character for your CMS. Replace the arrays at the top of the other four.
+
+<script setup>
+import { withBase } from "vitepress";
+import meta from "./site/meta";
+const files = Object.fromEntries(
+  Object.entries(import.meta.glob("./site/**/*.{vue,ts}", { query: "?raw", import: "default", eager: true }))
+    .filter(([p]) => !p.endsWith("meta.ts"))
+    .map(([p, src]) => [p.replace("./site/", ""), src]),
+);
+</script>

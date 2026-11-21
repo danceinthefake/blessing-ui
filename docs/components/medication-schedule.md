@@ -2,10 +2,6 @@
 title: Medication schedule
 ---
 
-<script setup>
-import MedicationScheduleBasic from "../demos/MedicationScheduleBasic.vue";
-</script>
-
 # Medication schedule
 
 <p class="bless-lead">The doses of each medicine for the day, which you mark as taken</p>
@@ -37,3 +33,7 @@ import { BlessMedicationSchedule } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessMedicationSchedule" />
+
+<script setup>
+import MedicationScheduleBasic from "../demos/MedicationScheduleBasic.vue";
+</script>

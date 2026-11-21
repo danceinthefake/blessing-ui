@@ -2,10 +2,6 @@
 title: Webhook log
 ---
 
-<script setup>
-import WebhookLogBasic from "../demos/WebhookLogBasic.vue";
-</script>
-
 # Webhook log
 
 <p class="bless-lead">Sent events with the status, the time, and a retry button</p>
@@ -36,3 +32,7 @@ import { BlessWebhookLog } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessWebhookLog" />
+
+<script setup>
+import WebhookLogBasic from "../demos/WebhookLogBasic.vue";
+</script>

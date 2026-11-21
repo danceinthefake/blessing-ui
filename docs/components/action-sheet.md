@@ -2,10 +2,6 @@
 title: ActionSheet
 ---
 
-<script setup>
-import ActionSheetBasic from "../demos/ActionSheetBasic.vue";
-</script>
-
 # ActionSheet
 
 <p class="bless-lead">Action list in a bottom drawer</p>
@@ -33,3 +29,7 @@ import { BlessActionSheet } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessActionSheet" />
+
+<script setup>
+import ActionSheetBasic from "../demos/ActionSheetBasic.vue";
+</script>

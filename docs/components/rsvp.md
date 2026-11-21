@@ -2,10 +2,6 @@
 title: RSVP
 ---
 
-<script setup>
-import RsvpBasic from "../demos/RsvpBasic.vue";
-</script>
-
 # RSVP
 
 <p class="bless-lead">Going, maybe, or not going, with counts and faces</p>
@@ -36,3 +32,7 @@ import { BlessRsvp } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessRsvp" />
+
+<script setup>
+import RsvpBasic from "../demos/RsvpBasic.vue";
+</script>

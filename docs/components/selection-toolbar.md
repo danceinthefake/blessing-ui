@@ -2,10 +2,6 @@
 title: Selection toolbar
 ---
 
-<script setup>
-import SelectionToolbarBasic from "../demos/SelectionToolbarBasic.vue";
-</script>
-
 # Selection toolbar
 
 <p class="bless-lead">Actions above the selected text</p>
@@ -37,3 +33,7 @@ import { BlessSelectionToolbar, type BlessSelection, type BlessSelectionAction }
 ## API
 
 <PropsTable name="BlessSelectionToolbar" />
+
+<script setup>
+import SelectionToolbarBasic from "../demos/SelectionToolbarBasic.vue";
+</script>

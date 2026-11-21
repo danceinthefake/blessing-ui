@@ -2,10 +2,6 @@
 title: UptimeBar
 ---
 
-<script setup>
-import UptimeBarBasic from "../demos/UptimeBarBasic.vue";
-</script>
-
 # UptimeBar
 
 <p class="bless-lead">Status history, one segment per period</p>
@@ -37,3 +33,7 @@ import { BlessUptimeBar } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessUptimeBar" />
+
+<script setup>
+import UptimeBarBasic from "../demos/UptimeBarBasic.vue";
+</script>

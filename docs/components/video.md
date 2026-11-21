@@ -2,10 +2,6 @@
 title: Video
 ---
 
-<script setup>
-import VideoBasic from "../demos/VideoBasic.vue";
-</script>
-
 # Video
 
 <p class="bless-lead">Responsive embed or native video</p>
@@ -33,3 +29,7 @@ import { BlessVideo } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessVideo" />
+
+<script setup>
+import VideoBasic from "../demos/VideoBasic.vue";
+</script>

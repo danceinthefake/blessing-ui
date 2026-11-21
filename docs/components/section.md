@@ -2,11 +2,6 @@
 title: Section
 ---
 
-<script setup>
-import SectionBasic from "../demos/SectionBasic.vue";
-import SectionHanging from "../demos/SectionHanging.vue";
-</script>
-
 # Section
 
 <p class="bless-lead">Titled block with giant skewed word</p>
@@ -48,3 +43,8 @@ import { BlessSection, BlessWatermark } from "blessing-ui";
 ### BlessWatermark
 
 <PropsTable name="BlessWatermark" />
+
+<script setup>
+import SectionBasic from "../demos/SectionBasic.vue";
+import SectionHanging from "../demos/SectionHanging.vue";
+</script>

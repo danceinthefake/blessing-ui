@@ -2,10 +2,6 @@
 title: InfiniteScroll
 ---
 
-<script setup>
-import InfiniteScrollBasic from "../demos/InfiniteScrollBasic.vue";
-</script>
-
 # InfiniteScroll
 
 <p class="bless-lead">Load more at the end</p>
@@ -33,3 +29,7 @@ import { BlessInfiniteScroll } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessInfiniteScroll" />
+
+<script setup>
+import InfiniteScrollBasic from "../demos/InfiniteScrollBasic.vue";
+</script>

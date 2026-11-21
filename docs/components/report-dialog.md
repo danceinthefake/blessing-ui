@@ -2,10 +2,6 @@
 title: Report dialog
 ---
 
-<script setup>
-import ReportDialogBasic from "../demos/ReportDialogBasic.vue";
-</script>
-
 # Report dialog
 
 <p class="bless-lead">Report a post or a person, with a reason and a note</p>
@@ -37,3 +33,7 @@ import { BlessReportDialog } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessReportDialog" />
+
+<script setup>
+import ReportDialogBasic from "../demos/ReportDialogBasic.vue";
+</script>

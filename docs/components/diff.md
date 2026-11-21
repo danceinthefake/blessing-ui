@@ -2,10 +2,6 @@
 title: Diff
 ---
 
-<script setup>
-import DiffBasic from "../demos/DiffBasic.vue";
-</script>
-
 # Diff
 
 <p class="bless-lead">Side-by-side and inline text diff</p>
@@ -36,3 +32,7 @@ import { BlessDiff } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessDiff" />
+
+<script setup>
+import DiffBasic from "../demos/DiffBasic.vue";
+</script>

@@ -2,10 +2,6 @@
 title: Spreadsheet
 ---
 
-<script setup>
-import SpreadsheetBasic from "../demos/SpreadsheetBasic.vue";
-</script>
-
 # Spreadsheet
 
 <p class="bless-lead">A grid of cells that you edit with the keyboard and paste into</p>
@@ -39,3 +35,7 @@ import { BlessSpreadsheet } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessSpreadsheet" />
+
+<script setup>
+import SpreadsheetBasic from "../demos/SpreadsheetBasic.vue";
+</script>

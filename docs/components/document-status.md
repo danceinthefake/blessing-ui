@@ -2,10 +2,6 @@
 title: Document status
 ---
 
-<script setup>
-import DocumentStatusBasic from "../demos/DocumentStatusBasic.vue";
-</script>
-
 # Document status
 
 <p class="bless-lead">The states of a document, such as draft, approved, sent, and paid, with the next step</p>
@@ -36,3 +32,7 @@ import { BlessDocumentStatus } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessDocumentStatus" />
+
+<script setup>
+import DocumentStatusBasic from "../demos/DocumentStatusBasic.vue";
+</script>

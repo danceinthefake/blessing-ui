@@ -2,10 +2,6 @@
 title: Editor
 ---
 
-<script setup>
-import EditorBasic from "../demos/EditorBasic.vue";
-</script>
-
 # Editor
 
 <p class="bless-lead">Rich text: a token-styled toolbar around a Tiptap editor</p>
@@ -42,3 +38,7 @@ import { BlessEditor } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessEditor" />
+
+<script setup>
+import EditorBasic from "../demos/EditorBasic.vue";
+</script>

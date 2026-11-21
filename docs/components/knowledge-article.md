@@ -2,10 +2,6 @@
 title: Knowledge article
 ---
 
-<script setup>
-import KnowledgeArticleBasic from "../demos/KnowledgeArticleBasic.vue";
-</script>
-
 # Knowledge article
 
 <p class="bless-lead">A help article with contents, the date of the last change, and a question if it helped</p>
@@ -38,3 +34,7 @@ import { BlessKnowledgeArticle } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessKnowledgeArticle" />
+
+<script setup>
+import KnowledgeArticleBasic from "../demos/KnowledgeArticleBasic.vue";
+</script>

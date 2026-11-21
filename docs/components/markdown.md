@@ -2,10 +2,6 @@
 title: Markdown
 ---
 
-<script setup>
-import MarkdownBasic from "../demos/MarkdownBasic.vue";
-</script>
-
 # Markdown
 
 <p class="bless-lead">Markdown text, safely rendered</p>
@@ -39,3 +35,7 @@ import { lexer } from "marked";
 ## API
 
 <PropsTable name="BlessMarkdown" />
+
+<script setup>
+import MarkdownBasic from "../demos/MarkdownBasic.vue";
+</script>

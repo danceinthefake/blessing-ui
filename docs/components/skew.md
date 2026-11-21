@@ -2,10 +2,6 @@
 title: Skew
 ---
 
-<script setup>
-import SkewBasic from "../demos/SkewBasic.vue";
-</script>
-
 # Skew
 
 <p class="bless-lead">The plate everything else is made of</p>
@@ -34,3 +30,7 @@ import { BlessSkew } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessSkew" />
+
+<script setup>
+import SkewBasic from "../demos/SkewBasic.vue";
+</script>

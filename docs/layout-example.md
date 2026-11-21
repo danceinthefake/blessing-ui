@@ -7,8 +7,8 @@ footer: false
 title: Layout — full page
 ---
 
+<LayoutFull />
+
 <script setup>
 import LayoutFull from "./demos/LayoutFull.vue";
 </script>
-
-<LayoutFull />

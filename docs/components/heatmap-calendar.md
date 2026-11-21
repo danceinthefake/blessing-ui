@@ -2,10 +2,6 @@
 title: HeatmapCalendar
 ---
 
-<script setup>
-import HeatmapCalendarBasic from "../demos/HeatmapCalendarBasic.vue";
-</script>
-
 # HeatmapCalendar
 
 <p class="bless-lead">Contribution-style grid, one square per day</p>
@@ -36,3 +32,7 @@ import { BlessHeatmapCalendar } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessHeatmapCalendar" />
+
+<script setup>
+import HeatmapCalendarBasic from "../demos/HeatmapCalendarBasic.vue";
+</script>

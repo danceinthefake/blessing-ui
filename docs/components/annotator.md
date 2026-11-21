@@ -2,10 +2,6 @@
 title: Annotator
 ---
 
-<script setup>
-import AnnotatorBasic from "../demos/AnnotatorBasic.vue";
-</script>
-
 # Annotator
 
 <p class="bless-lead">Draw boxes and drop pins on an image, and get the regions back</p>
@@ -35,3 +31,7 @@ import { BlessAnnotator } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessAnnotator" />
+
+<script setup>
+import AnnotatorBasic from "../demos/AnnotatorBasic.vue";
+</script>

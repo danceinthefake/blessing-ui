@@ -2,10 +2,6 @@
 title: Contact picker
 ---
 
-<script setup>
-import ContactPickerBasic from "../demos/ContactPickerBasic.vue";
-</script>
-
 # Contact picker
 
 <p class="bless-lead">Search people and pick one or more, with recent contacts</p>
@@ -37,3 +33,7 @@ import { BlessContactPicker } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessContactPicker" />
+
+<script setup>
+import ContactPickerBasic from "../demos/ContactPickerBasic.vue";
+</script>

@@ -2,10 +2,6 @@
 title: Trend list
 ---
 
-<script setup>
-import TrendListBasic from "../demos/TrendListBasic.vue";
-</script>
-
 # Trend list
 
 <p class="bless-lead">Topics that people talk about now, with the count of posts</p>
@@ -35,3 +31,7 @@ import { BlessTrendList } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessTrendList" />
+
+<script setup>
+import TrendListBasic from "../demos/TrendListBasic.vue";
+</script>

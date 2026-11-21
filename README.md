@@ -52,17 +52,6 @@ Tokens only (no components):
 ## Usage
 
 ```vue
-<script setup lang="ts">
-import {
-  BlessStage,
-  BlessSidebarNav,
-  BlessSection,
-  BlessList,
-  BlessListItem,
-  BlessButton,
-} from "blessing-ui";
-</script>
-
 <template>
   <BlessStage>
     <template #sidebar>
@@ -82,6 +71,17 @@ import {
     </BlessSection>
   </BlessStage>
 </template>
+
+<script setup lang="ts">
+import {
+  BlessStage,
+  BlessSidebarNav,
+  BlessSection,
+  BlessList,
+  BlessListItem,
+  BlessButton,
+} from "blessing-ui";
+</script>
 ```
 
 To skip the imports, use the Nuxt module (`modules: ["blessing-ui/nuxt"]`) or the resolver for unplugin-vue-components (`BlessingUiResolver` from `blessing-ui/resolver`). See [Install](https://ui.blessing.id/guide/install#auto-import).

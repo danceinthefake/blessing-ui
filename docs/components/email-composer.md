@@ -2,10 +2,6 @@
 title: Email composer
 ---
 
-<script setup>
-import EmailComposerBasic from "../demos/EmailComposerBasic.vue";
-</script>
-
 # Email composer
 
 <p class="bless-lead">To, Cc, and subject fields with recipient chips, and the message</p>
@@ -37,3 +33,7 @@ import { BlessEmailComposer } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessEmailComposer" />
+
+<script setup>
+import EmailComposerBasic from "../demos/EmailComposerBasic.vue";
+</script>

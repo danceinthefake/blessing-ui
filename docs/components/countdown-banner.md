@@ -2,10 +2,6 @@
 title: Countdown banner
 ---
 
-<script setup>
-import CountdownBannerBasic from "../demos/CountdownBannerBasic.vue";
-</script>
-
 # Countdown banner
 
 <p class="bless-lead">A strip with the time left to an event, and a link</p>
@@ -37,3 +33,7 @@ import { BlessCountdownBanner } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessCountdownBanner" />
+
+<script setup>
+import CountdownBannerBasic from "../demos/CountdownBannerBasic.vue";
+</script>

@@ -2,10 +2,6 @@
 title: SplitButton
 ---
 
-<script setup>
-import SplitButtonBasic from "../demos/SplitButtonBasic.vue";
-</script>
-
 # SplitButton
 
 <p class="bless-lead">Button with a menu half</p>
@@ -33,3 +29,7 @@ import { BlessSplitButton } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessSplitButton" />
+
+<script setup>
+import SplitButtonBasic from "../demos/SplitButtonBasic.vue";
+</script>

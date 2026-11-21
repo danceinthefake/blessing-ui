@@ -2,10 +2,6 @@
 title: Right-to-left
 ---
 
-<script setup>
-import RtlBasic from "../demos/RtlBasic.vue";
-</script>
-
 # Right-to-left
 
 ```html
@@ -37,3 +33,7 @@ If your RTL layout needs the other side, pass the other side.
 ## Fonts
 
 `--bless-font-sans` lists Roboto and Noto Sans JP. For Arabic or Hebrew, add a script font first in your override, for example `--bless-font-sans: "Noto Sans Arabic", Roboto, …`. The metrics-based sizes carry over unchanged. The letter-spaced uppercase labels are safe. Browsers do not space cursive scripts, so Arabic stays joined.
+
+<script setup>
+import RtlBasic from "../demos/RtlBasic.vue";
+</script>

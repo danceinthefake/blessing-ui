@@ -7,11 +7,6 @@ footer: false
 title: OG card
 ---
 
-<script setup>
-import { withBase } from "vitepress";
-import { BlessMockup, BlessSkew } from "blessing-ui";
-</script>
-
 <!-- 1200×630 social card, rasterized by docs/scripts/shots.mjs → public/og.png -->
 <div class="og">
   <div class="og__text">
@@ -26,6 +21,11 @@ import { BlessMockup, BlessSkew } from "blessing-ui";
   </BlessMockup>
   <span class="og__wm" aria-hidden="true">Blessing</span>
 </div>
+
+<script setup>
+import { withBase } from "vitepress";
+import { BlessMockup, BlessSkew } from "blessing-ui";
+</script>
 
 <style>
 .og {

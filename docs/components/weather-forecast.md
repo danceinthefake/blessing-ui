@@ -2,10 +2,6 @@
 title: Weather forecast
 ---
 
-<script setup>
-import WeatherForecastBasic from "../demos/WeatherForecastBasic.vue";
-</script>
-
 # Weather forecast
 
 <p class="bless-lead">The weather now and for the next days, with the high, the low, and the rain</p>
@@ -37,3 +33,7 @@ import { BlessWeatherForecast } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessWeatherForecast" />
+
+<script setup>
+import WeatherForecastBasic from "../demos/WeatherForecastBasic.vue";
+</script>

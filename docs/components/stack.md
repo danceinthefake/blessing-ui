@@ -2,10 +2,6 @@
 title: Stack
 ---
 
-<script setup>
-import StackBasic from "../demos/StackBasic.vue";
-</script>
-
 # Stack
 
 <p class="bless-lead">Flex row / column with token gap</p>
@@ -33,3 +29,7 @@ import { BlessStack } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessStack" />
+
+<script setup>
+import StackBasic from "../demos/StackBasic.vue";
+</script>

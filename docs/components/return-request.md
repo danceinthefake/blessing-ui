@@ -2,10 +2,6 @@
 title: Return request
 ---
 
-<script setup>
-import ReturnRequestBasic from "../demos/ReturnRequestBasic.vue";
-</script>
-
 # Return request
 
 <p class="bless-lead">Pick the items and the reason for a return, then see the refund</p>
@@ -38,3 +34,7 @@ import { BlessReturnRequest } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessReturnRequest" />
+
+<script setup>
+import ReturnRequestBasic from "../demos/ReturnRequestBasic.vue";
+</script>

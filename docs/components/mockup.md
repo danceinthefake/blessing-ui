@@ -2,10 +2,6 @@
 title: Mockup
 ---
 
-<script setup>
-import MockupBasic from "../demos/MockupBasic.vue";
-</script>
-
 # Mockup
 
 <p class="bless-lead">Browser / window / phone frame</p>
@@ -32,3 +28,7 @@ import { BlessMockup } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessMockup" />
+
+<script setup>
+import MockupBasic from "../demos/MockupBasic.vue";
+</script>

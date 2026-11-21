@@ -2,10 +2,6 @@
 title: Wishlist button
 ---
 
-<script setup>
-import WishlistButtonBasic from "../demos/WishlistButtonBasic.vue";
-</script>
-
 # Wishlist button
 
 <p class="bless-lead">A heart that saves a product, with a count and a status message</p>
@@ -38,3 +34,7 @@ import { BlessWishlistButton } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessWishlistButton" />
+
+<script setup>
+import WishlistButtonBasic from "../demos/WishlistButtonBasic.vue";
+</script>

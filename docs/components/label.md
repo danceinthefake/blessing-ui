@@ -2,10 +2,6 @@
 title: Label
 ---
 
-<script setup>
-import LabelBasic from "../demos/LabelBasic.vue";
-</script>
-
 # Label
 
 <p class="bless-lead">&lt;label&gt; with required mark and hint</p>
@@ -33,3 +29,7 @@ import { BlessLabel } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessLabel" />
+
+<script setup>
+import LabelBasic from "../demos/LabelBasic.vue";
+</script>

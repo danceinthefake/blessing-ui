@@ -2,10 +2,6 @@
 title: Call screen
 ---
 
-<script setup>
-import CallScreenBasic from "../demos/CallScreenBasic.vue";
-</script>
-
 # Call screen
 
 <p class="bless-lead">Video tiles for each person, with mute, camera, share, and hang up</p>
@@ -38,3 +34,7 @@ import { BlessCallScreen } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessCallScreen" />
+
+<script setup>
+import CallScreenBasic from "../demos/CallScreenBasic.vue";
+</script>

@@ -2,10 +2,6 @@
 title: Version history
 ---
 
-<script setup>
-import VersionHistoryBasic from "../demos/VersionHistoryBasic.vue";
-</script>
-
 # Version history
 
 <p class="bless-lead">Saved versions with the author and the time, and a restore button</p>
@@ -36,3 +32,7 @@ import { BlessVersionHistory } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessVersionHistory" />
+
+<script setup>
+import VersionHistoryBasic from "../demos/VersionHistoryBasic.vue";
+</script>

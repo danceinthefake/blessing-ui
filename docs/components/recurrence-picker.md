@@ -2,10 +2,6 @@
 title: Recurrence picker
 ---
 
-<script setup>
-import RecurrencePickerBasic from "../demos/RecurrencePickerBasic.vue";
-</script>
-
 # Recurrence picker
 
 <p class="bless-lead">A rule that repeats, with the rule in one sentence</p>
@@ -37,3 +33,7 @@ import { BlessRecurrencePicker, toRRule } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessRecurrencePicker" />
+
+<script setup>
+import RecurrencePickerBasic from "../demos/RecurrencePickerBasic.vue";
+</script>

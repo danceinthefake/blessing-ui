@@ -2,10 +2,6 @@
 title: DateTimePicker
 ---
 
-<script setup>
-import DateTimePickerBasic from "../demos/DateTimePickerBasic.vue";
-</script>
-
 # DateTimePicker
 
 <p class="bless-lead">A date and a time in one field</p>
@@ -37,3 +33,7 @@ import { BlessDateTimePicker } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessDateTimePicker" />
+
+<script setup>
+import DateTimePickerBasic from "../demos/DateTimePickerBasic.vue";
+</script>

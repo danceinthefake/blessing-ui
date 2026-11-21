@@ -2,10 +2,6 @@
 title: Check answers
 ---
 
-<script setup>
-import CheckAnswersBasic from "../demos/CheckAnswersBasic.vue";
-</script>
-
 # Check answers
 
 <p class="bless-lead">The answers of a form in groups with a change link for each, and a statement to agree to before you send</p>
@@ -39,3 +35,7 @@ import { BlessCheckAnswers } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessCheckAnswers" />
+
+<script setup>
+import CheckAnswersBasic from "../demos/CheckAnswersBasic.vue";
+</script>

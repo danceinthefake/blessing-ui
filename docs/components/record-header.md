@@ -2,10 +2,6 @@
 title: Record header
 ---
 
-<script setup>
-import RecordHeaderBasic from "../demos/RecordHeaderBasic.vue";
-</script>
-
 # Record header
 
 <p class="bless-lead">The top of a record page: the name, the status, key facts, and the main actions</p>
@@ -35,3 +31,7 @@ import { BlessRecordHeader } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessRecordHeader" />
+
+<script setup>
+import RecordHeaderBasic from "../demos/RecordHeaderBasic.vue";
+</script>

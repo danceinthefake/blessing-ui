@@ -2,10 +2,6 @@
 title: Affix
 ---
 
-<script setup>
-import AffixBasic from "../demos/AffixBasic.vue";
-</script>
-
 # Affix
 
 <p class="bless-lead">Sticky wrapper with an offset</p>
@@ -36,3 +32,7 @@ import { BlessAffix } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessAffix" />
+
+<script setup>
+import AffixBasic from "../demos/AffixBasic.vue";
+</script>

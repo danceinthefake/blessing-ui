@@ -2,10 +2,6 @@
 title: Tour
 ---
 
-<script setup>
-import TourBasic from "../demos/TourBasic.vue";
-</script>
-
 # Tour
 
 <p class="bless-lead">Step-by-step spotlight walkthrough</p>
@@ -35,3 +31,7 @@ import { BlessTour } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessTour" />
+
+<script setup>
+import TourBasic from "../demos/TourBasic.vue";
+</script>

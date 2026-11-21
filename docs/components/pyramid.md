@@ -2,10 +2,6 @@
 title: Pyramid
 ---
 
-<script setup>
-import PyramidBasic from "../demos/PyramidBasic.vue";
-</script>
-
 # Pyramid
 
 <p class="bless-lead">Back-to-back bars for two groups on each row</p>
@@ -36,3 +32,7 @@ import { BlessPyramid } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessPyramid" />
+
+<script setup>
+import PyramidBasic from "../demos/PyramidBasic.vue";
+</script>

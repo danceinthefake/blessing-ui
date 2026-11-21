@@ -2,10 +2,6 @@
 title: Marquee
 ---
 
-<script setup>
-import MarqueeBasic from "../demos/MarqueeBasic.vue";
-</script>
-
 # Marquee
 
 <p class="bless-lead">Scrolling ticker with no visible loop point that pauses</p>
@@ -35,3 +31,7 @@ import { BlessMarquee } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessMarquee" />
+
+<script setup>
+import MarqueeBasic from "../demos/MarqueeBasic.vue";
+</script>

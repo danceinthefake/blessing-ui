@@ -2,10 +2,6 @@
 title: File browser
 ---
 
-<script setup>
-import FileBrowserBasic from "../demos/FileBrowserBasic.vue";
-</script>
-
 # File browser
 
 <p class="bless-lead">The files and folders of one folder as a grid or a list, with a path to go back</p>
@@ -38,3 +34,7 @@ import { BlessFileBrowser } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessFileBrowser" />
+
+<script setup>
+import FileBrowserBasic from "../demos/FileBrowserBasic.vue";
+</script>

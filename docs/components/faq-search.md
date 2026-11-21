@@ -2,10 +2,6 @@
 title: FAQ search
 ---
 
-<script setup>
-import FaqSearchBasic from "../demos/FaqSearchBasic.vue";
-</script>
-
 # FAQ search
 
 <p class="bless-lead">Questions and answers in folds, with a search that filters them</p>
@@ -36,3 +32,7 @@ import { BlessFaqSearch } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessFaqSearch" />
+
+<script setup>
+import FaqSearchBasic from "../demos/FaqSearchBasic.vue";
+</script>

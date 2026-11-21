@@ -2,10 +2,6 @@
 title: DataView
 ---
 
-<script setup>
-import DataViewBasic from "../demos/DataViewBasic.vue";
-</script>
-
 # DataView
 
 <p class="bless-lead">List / grid with pagination</p>
@@ -34,3 +30,7 @@ import { BlessDataView } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessDataView" />
+
+<script setup>
+import DataViewBasic from "../demos/DataViewBasic.vue";
+</script>

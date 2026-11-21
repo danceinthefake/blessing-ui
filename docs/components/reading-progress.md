@@ -2,10 +2,6 @@
 title: Reading progress
 ---
 
-<script setup>
-import ReadingProgressBasic from "../demos/ReadingProgressBasic.vue";
-</script>
-
 # Reading progress
 
 <p class="bless-lead">A thin bar that fills as the reader scrolls an article</p>
@@ -37,3 +33,7 @@ import { BlessReadingProgress } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessReadingProgress" />
+
+<script setup>
+import ReadingProgressBasic from "../demos/ReadingProgressBasic.vue";
+</script>

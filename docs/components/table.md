@@ -2,10 +2,6 @@
 title: Table
 ---
 
-<script setup>
-import TableBasic from "../demos/TableBasic.vue";
-</script>
-
 # Table
 
 <p class="bless-lead">Typed table, stacks on mobile</p>
@@ -34,3 +30,7 @@ import { BlessTable } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessTable" />
+
+<script setup>
+import TableBasic from "../demos/TableBasic.vue";
+</script>

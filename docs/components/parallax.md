@@ -2,10 +2,6 @@
 title: Parallax
 ---
 
-<script setup>
-import ParallaxBasic from "../demos/ParallaxBasic.vue";
-</script>
-
 # Parallax
 
 <p class="bless-lead">Background that scrolls slower</p>
@@ -32,3 +28,7 @@ import { BlessParallax } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessParallax" />
+
+<script setup>
+import ParallaxBasic from "../demos/ParallaxBasic.vue";
+</script>

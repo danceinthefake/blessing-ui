@@ -2,10 +2,6 @@
 title: Bump chart
 ---
 
-<script setup>
-import BumpChartBasic from "../demos/BumpChartBasic.vue";
-</script>
-
 # Bump chart
 
 <p class="bless-lead">The rank of each item over time, as lines that cross</p>
@@ -36,3 +32,7 @@ import { BlessBumpChart } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessBumpChart" />
+
+<script setup>
+import BumpChartBasic from "../demos/BumpChartBasic.vue";
+</script>

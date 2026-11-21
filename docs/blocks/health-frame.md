@@ -7,8 +7,8 @@ footer: false
 title: Health (preview)
 ---
 
+<BlockFrame><Block /></BlockFrame>
+
 <script setup>
 import Block from "./health/index.vue";
 </script>
-
-<BlockFrame><Block /></BlockFrame>

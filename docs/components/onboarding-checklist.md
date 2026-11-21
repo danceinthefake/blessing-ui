@@ -2,10 +2,6 @@
 title: OnboardingChecklist
 ---
 
-<script setup>
-import OnboardingChecklistBasic from "../demos/OnboardingChecklistBasic.vue";
-</script>
-
 # OnboardingChecklist
 
 <p class="bless-lead">The few steps to get started, with progress that stays</p>
@@ -35,3 +31,7 @@ import { BlessOnboardingChecklist } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessOnboardingChecklist" />
+
+<script setup>
+import OnboardingChecklistBasic from "../demos/OnboardingChecklistBasic.vue";
+</script>

@@ -2,10 +2,6 @@
 title: LogViewer
 ---
 
-<script setup>
-import LogViewerBasic from "../demos/LogViewerBasic.vue";
-</script>
-
 # LogViewer
 
 <p class="bless-lead">A live log with colors, a filter, and follow</p>
@@ -38,3 +34,7 @@ import { BlessLogViewer } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessLogViewer" />
+
+<script setup>
+import LogViewerBasic from "../demos/LogViewerBasic.vue";
+</script>

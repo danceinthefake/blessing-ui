@@ -2,10 +2,6 @@
 title: Work order card
 ---
 
-<script setup>
-import WorkOrderCardBasic from "../demos/WorkOrderCardBasic.vue";
-</script>
-
 # Work order card
 
 <p class="bless-lead">A work order with the product, the quantity, the due time, and the state</p>
@@ -37,3 +33,7 @@ import { BlessWorkOrderCard } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessWorkOrderCard" />
+
+<script setup>
+import WorkOrderCardBasic from "../demos/WorkOrderCardBasic.vue";
+</script>

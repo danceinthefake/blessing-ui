@@ -2,10 +2,6 @@
 title: PickList
 ---
 
-<script setup>
-import PickListBasic from "../demos/PickListBasic.vue";
-</script>
-
 # PickList
 
 <p class="bless-lead">Two listboxes with transfer buttons</p>
@@ -33,3 +29,7 @@ import { BlessPickList } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessPickList" />
+
+<script setup>
+import PickListBasic from "../demos/PickListBasic.vue";
+</script>

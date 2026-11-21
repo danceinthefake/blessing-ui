@@ -2,10 +2,6 @@
 title: Dumbbell
 ---
 
-<script setup>
-import DumbbellBasic from "../demos/DumbbellBasic.vue";
-</script>
-
 # Dumbbell
 
 <p class="bless-lead">Two values for each row, joined by a line</p>
@@ -35,3 +31,7 @@ import { BlessDumbbell } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessDumbbell" />
+
+<script setup>
+import DumbbellBasic from "../demos/DumbbellBasic.vue";
+</script>

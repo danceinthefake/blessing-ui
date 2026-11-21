@@ -2,10 +2,6 @@
 title: Request inspector
 ---
 
-<script setup>
-import RequestInspectorBasic from "../demos/RequestInspectorBasic.vue";
-</script>
-
 # Request inspector
 
 <p class="bless-lead">One HTTP request and its response, with the headers and the bodies</p>
@@ -37,3 +33,7 @@ import { BlessRequestInspector } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessRequestInspector" />
+
+<script setup>
+import RequestInspectorBasic from "../demos/RequestInspectorBasic.vue";
+</script>

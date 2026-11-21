@@ -2,10 +2,6 @@
 title: Post composer
 ---
 
-<script setup>
-import PostComposerBasic from "../demos/PostComposerBasic.vue";
-</script>
-
 # Post composer
 
 <p class="bless-lead">Write a post with images, a poll, and a count of the characters left</p>
@@ -38,3 +34,7 @@ import { BlessPostComposer } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessPostComposer" />
+
+<script setup>
+import PostComposerBasic from "../demos/PostComposerBasic.vue";
+</script>

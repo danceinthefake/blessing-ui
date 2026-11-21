@@ -2,10 +2,6 @@
 title: TreeTable
 ---
 
-<script setup>
-import TreeTableBasic from "../demos/TreeTableBasic.vue";
-</script>
-
 # TreeTable
 
 <p class="bless-lead">Expandable rows on BlessTable</p>
@@ -35,3 +31,7 @@ import { BlessTreeTable } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessTreeTable" />
+
+<script setup>
+import TreeTableBasic from "../demos/TreeTableBasic.vue";
+</script>

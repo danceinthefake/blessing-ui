@@ -2,10 +2,6 @@
 title: Pull quote
 ---
 
-<script setup>
-import PullQuoteBasic from "../demos/PullQuoteBasic.vue";
-</script>
-
 # Pull quote
 
 <p class="bless-lead">A big quote from the text, with the speaker</p>
@@ -36,3 +32,7 @@ import { BlessPullQuote } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessPullQuote" />
+
+<script setup>
+import PullQuoteBasic from "../demos/PullQuoteBasic.vue";
+</script>

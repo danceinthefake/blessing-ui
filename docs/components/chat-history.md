@@ -2,10 +2,6 @@
 title: Chat history
 ---
 
-<script setup>
-import ChatHistoryBasic from "../demos/ChatHistoryBasic.vue";
-</script>
-
 # Chat history
 
 <p class="bless-lead">Past chats in groups by age, with search, rename, and delete</p>
@@ -38,3 +34,7 @@ import { BlessChatHistory } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessChatHistory" />
+
+<script setup>
+import ChatHistoryBasic from "../demos/ChatHistoryBasic.vue";
+</script>

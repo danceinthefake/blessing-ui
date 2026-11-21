@@ -2,10 +2,6 @@
 title: Palette viewer
 ---
 
-<script setup>
-import PaletteViewerBasic from "../demos/PaletteViewerBasic.vue";
-</script>
-
 # Palette viewer
 
 <p class="bless-lead">The shades of each color, with the value, a copy button, and the contrast</p>
@@ -35,3 +31,7 @@ import { BlessPaletteViewer } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessPaletteViewer" />
+
+<script setup>
+import PaletteViewerBasic from "../demos/PaletteViewerBasic.vue";
+</script>

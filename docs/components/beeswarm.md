@@ -2,10 +2,6 @@
 title: Beeswarm
 ---
 
-<script setup>
-import BeeswarmBasic from "../demos/BeeswarmBasic.vue";
-</script>
-
 # Beeswarm
 
 <p class="bless-lead">Each value as a dot on one axis, with no overlap</p>
@@ -36,3 +32,7 @@ import { BlessBeeswarm } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessBeeswarm" />
+
+<script setup>
+import BeeswarmBasic from "../demos/BeeswarmBasic.vue";
+</script>

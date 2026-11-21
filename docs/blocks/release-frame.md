@@ -7,8 +7,8 @@ footer: false
 title: Release (preview)
 ---
 
+<BlockFrame><Block /></BlockFrame>
+
 <script setup>
 import Block from "./release/index.vue";
 </script>
-
-<BlockFrame><Block /></BlockFrame>

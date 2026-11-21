@@ -1,9 +1,5 @@
 # Tokens
 
-<script setup>
-import TokenSwatches from "../demos/TokenSwatches.vue";
-</script>
-
 All styling reads the `--bless-*` custom properties from `tokens.css`. There are 91 of them. To retheme the whole app, override them on `:root`. To change individual values in a subtree, override them on that subtree. A palette and dark mode stay app-wide, because they are attribute-driven on `<html>`.
 
 ```css
@@ -66,3 +62,7 @@ Tokens are plain custom properties, so they slot into the Tailwind `@theme`. The
   --color-border: var(--bless-color-border);
 }
 ```
+
+<script setup>
+import TokenSwatches from "../demos/TokenSwatches.vue";
+</script>

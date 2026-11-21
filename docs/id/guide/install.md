@@ -21,15 +21,15 @@ bun add blessing-ui
 :::
 
 ```vue
-<script setup lang="ts">
-import { BlessButton, BlessSection } from "blessing-ui";
-</script>
-
 <template>
   <BlessSection title="News">
     <BlessButton>More</BlessButton>
   </BlessSection>
 </template>
+
+<script setup lang="ts">
+import { BlessButton, BlessSection } from "blessing-ui";
+</script>
 ```
 
 Itu saja. Setiap komponen adalah export ESM bernama dengan stylesheet-nya sendiri, sehingga bundler hanya mengambil yang Anda impor. Satu tombol saja sekitar 1 KB JS dan 1 KB CSS setelah gzip, ditambah sekitar 2 KB token sekali saja. [Ukuran bundle](./sizes) menunjukkan biaya setiap komponen. Entri paket mengimpor `tokens.css`, sehingga custom property `--bless-*` sudah ada begitu Anda mengimpor apa pun dari library. Bundler mematuhi field `sideEffects` dari paket. Semua bundler saat ini mematuhinya.

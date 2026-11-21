@@ -2,10 +2,6 @@
 title: FloatLabel
 ---
 
-<script setup>
-import FloatLabelBasic from "../demos/FloatLabelBasic.vue";
-</script>
-
 # FloatLabel
 
 <p class="bless-lead">Floating / in-field label wrapper</p>
@@ -34,3 +30,7 @@ import { BlessFloatLabel } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessFloatLabel" />
+
+<script setup>
+import FloatLabelBasic from "../demos/FloatLabelBasic.vue";
+</script>

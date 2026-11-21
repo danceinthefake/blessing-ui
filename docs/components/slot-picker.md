@@ -2,10 +2,6 @@
 title: Slot picker
 ---
 
-<script setup>
-import SlotPickerBasic from "../demos/SlotPickerBasic.vue";
-</script>
-
 # Slot picker
 
 <p class="bless-lead">The free times of a day, as buttons to pick one</p>
@@ -37,3 +33,7 @@ import { BlessSlotPicker, type BlessSlot } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessSlotPicker" />
+
+<script setup>
+import SlotPickerBasic from "../demos/SlotPickerBasic.vue";
+</script>

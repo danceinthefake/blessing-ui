@@ -2,10 +2,6 @@
 title: Pictogram
 ---
 
-<script setup>
-import PictogramBasic from "../demos/PictogramBasic.vue";
-</script>
-
 # Pictogram
 
 <p class="bless-lead">A count as rows of icons, where one icon stands for a fixed number</p>
@@ -37,3 +33,7 @@ import { BlessPictogram } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessPictogram" />
+
+<script setup>
+import PictogramBasic from "../demos/PictogramBasic.vue";
+</script>

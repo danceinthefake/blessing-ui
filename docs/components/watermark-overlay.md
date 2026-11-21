@@ -2,10 +2,6 @@
 title: WatermarkOverlay
 ---
 
-<script setup>
-import WatermarkOverlayBasic from "../demos/WatermarkOverlayBasic.vue";
-</script>
-
 # WatermarkOverlay
 
 <p class="bless-lead">Tiled text watermark over content</p>
@@ -33,3 +29,7 @@ import { BlessWatermarkOverlay } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessWatermarkOverlay" />
+
+<script setup>
+import WatermarkOverlayBasic from "../demos/WatermarkOverlayBasic.vue";
+</script>

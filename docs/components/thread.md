@@ -2,10 +2,6 @@
 title: Thread
 ---
 
-<script setup>
-import ThreadBasic from "../demos/ThreadBasic.vue";
-</script>
-
 # Thread
 
 <p class="bless-lead">Nested comment thread</p>
@@ -37,3 +33,7 @@ import { BlessThread } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessThread" />
+
+<script setup>
+import ThreadBasic from "../demos/ThreadBasic.vue";
+</script>

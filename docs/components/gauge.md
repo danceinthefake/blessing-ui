@@ -2,10 +2,6 @@
 title: Gauge
 ---
 
-<script setup>
-import GaugeBasic from "../demos/GaugeBasic.vue";
-</script>
-
 # Gauge
 
 <p class="bless-lead">Zoned meter: semi-circle or linear</p>
@@ -36,3 +32,7 @@ import { BlessGauge } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessGauge" />
+
+<script setup>
+import GaugeBasic from "../demos/GaugeBasic.vue";
+</script>

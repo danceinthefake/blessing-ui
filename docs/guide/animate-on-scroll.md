@@ -2,10 +2,6 @@
 title: Animate on scroll
 ---
 
-<script setup>
-import AnimateOnScrollBasic from "../demos/AnimateOnScrollBasic.vue";
-</script>
-
 # Animate on scroll
 
 <p class="bless-lead"><code>useAnimateOnScroll()</code> gives a <code>visible</code> ref that changes at the moment the element enters the viewport. You supply the transition.</p>
@@ -33,3 +29,7 @@ The pattern is the one above. Bind `visible` to a `data-visible` attribute (or a
 A good reveal in this system uses opacity, `--bless-ease-out`, `--bless-duration-slower`, and at most a few pixels of travel. An appearance fades. Only state changes move. With `prefers-reduced-motion: reduce`, the composable sets `visible` to `true` on mount and never creates an observer, so the content appears at once. The durations are already `0s` there, so a plain CSS transition needs no extra handling. Without `IntersectionObserver`, `visible` is also `true` immediately.
 
 Prefer `once` (the default). With `once: false`, the element hides again on leave and fades in again on return. Use this only if leaving means something. Otherwise the page turns into a spectacle.
+
+<script setup>
+import AnimateOnScrollBasic from "../demos/AnimateOnScrollBasic.vue";
+</script>

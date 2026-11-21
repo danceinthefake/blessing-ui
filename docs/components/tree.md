@@ -2,10 +2,6 @@
 title: Tree
 ---
 
-<script setup>
-import TreeBasic from "../demos/TreeBasic.vue";
-</script>
-
 # Tree
 
 <p class="bless-lead">Nested details tree, role=tree</p>
@@ -35,3 +31,7 @@ import { BlessTree } from "blessing-ui";
 ### BlessTree
 
 <PropsTable name="BlessTree" />
+
+<script setup>
+import TreeBasic from "../demos/TreeBasic.vue";
+</script>

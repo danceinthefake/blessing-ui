@@ -2,10 +2,6 @@
 title: Search results
 ---
 
-<script setup>
-import SearchResultsBasic from "../demos/SearchResultsBasic.vue";
-</script>
-
 # Search results
 
 <p class="bless-lead">A results page with the count, the sort, the facets, the results, and the pages</p>
@@ -39,3 +35,7 @@ import { BlessSearchResults } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessSearchResults" />
+
+<script setup>
+import SearchResultsBasic from "../demos/SearchResultsBasic.vue";
+</script>

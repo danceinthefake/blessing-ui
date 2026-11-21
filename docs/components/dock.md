@@ -2,10 +2,6 @@
 title: Dock
 ---
 
-<script setup>
-import DockBasic from "../demos/DockBasic.vue";
-</script>
-
 # Dock
 
 <p class="bless-lead">A strip of app icons that swell under the pointer</p>
@@ -35,3 +31,7 @@ import { BlessDock } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessDock" />
+
+<script setup>
+import DockBasic from "../demos/DockBasic.vue";
+</script>

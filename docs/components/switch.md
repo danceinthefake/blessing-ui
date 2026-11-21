@@ -2,10 +2,6 @@
 title: Switch
 ---
 
-<script setup>
-import SwitchBasic from "../demos/SwitchBasic.vue";
-</script>
-
 # Switch
 
 <p class="bless-lead">role=switch toggle</p>
@@ -34,3 +30,7 @@ import { BlessSwitch } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessSwitch" />
+
+<script setup>
+import SwitchBasic from "../demos/SwitchBasic.vue";
+</script>

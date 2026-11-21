@@ -2,10 +2,6 @@
 title: Application status
 ---
 
-<script setup>
-import ApplicationStatusBasic from "../demos/ApplicationStatusBasic.vue";
-</script>
-
 # Application status
 
 <p class="bless-lead">The reference, the steps of a request with their dates, and what happens next</p>
@@ -39,3 +35,7 @@ import { BlessApplicationStatus } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessApplicationStatus" />
+
+<script setup>
+import ApplicationStatusBasic from "../demos/ApplicationStatusBasic.vue";
+</script>

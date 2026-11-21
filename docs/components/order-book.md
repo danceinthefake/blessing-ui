@@ -2,10 +2,6 @@
 title: Order book
 ---
 
-<script setup>
-import OrderBookBasic from "../demos/OrderBookBasic.vue";
-</script>
-
 # Order book
 
 <p class="bless-lead">The bids and asks of a market, with depth bars and the spread</p>
@@ -39,3 +35,7 @@ import { BlessOrderBook } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessOrderBook" />
+
+<script setup>
+import OrderBookBasic from "../demos/OrderBookBasic.vue";
+</script>

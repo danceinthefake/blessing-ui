@@ -2,10 +2,6 @@
 title: InfiniteCanvas
 ---
 
-<script setup>
-import InfiniteCanvasBasic from "../demos/InfiniteCanvasBasic.vue";
-</script>
-
 # InfiniteCanvas
 
 <p class="bless-lead">A surface you pan and zoom, with your own things on it</p>
@@ -36,3 +32,7 @@ import { BlessInfiniteCanvas, blessCanvasKey } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessInfiniteCanvas" />
+
+<script setup>
+import InfiniteCanvasBasic from "../demos/InfiniteCanvasBasic.vue";
+</script>

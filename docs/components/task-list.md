@@ -2,10 +2,6 @@
 title: Task list
 ---
 
-<script setup>
-import TaskListBasic from "../demos/TaskListBasic.vue";
-</script>
-
 # Task list
 
 <p class="bless-lead">Tasks with check boxes, an assignee, a due date, and subtasks</p>
@@ -37,3 +33,7 @@ import { BlessTaskList } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessTaskList" />
+
+<script setup>
+import TaskListBasic from "../demos/TaskListBasic.vue";
+</script>

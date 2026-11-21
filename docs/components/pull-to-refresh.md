@@ -2,10 +2,6 @@
 title: PullToRefresh
 ---
 
-<script setup>
-import PullToRefreshBasic from "../demos/PullToRefreshBasic.vue";
-</script>
-
 # PullToRefresh
 
 <p class="bless-lead">Drag down to reload</p>
@@ -33,3 +29,7 @@ import { BlessPullToRefresh } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessPullToRefresh" />
+
+<script setup>
+import PullToRefreshBasic from "../demos/PullToRefreshBasic.vue";
+</script>

@@ -2,10 +2,6 @@
 title: DurationInput
 ---
 
-<script setup>
-import DurationInputBasic from "../demos/DurationInputBasic.vue";
-</script>
-
 # DurationInput
 
 <p class="bless-lead">Time as h:mm:ss or 1h 30m, held in seconds</p>
@@ -36,3 +32,7 @@ import { BlessDurationInput } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessDurationInput" />
+
+<script setup>
+import DurationInputBasic from "../demos/DurationInputBasic.vue";
+</script>

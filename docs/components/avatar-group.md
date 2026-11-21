@@ -2,10 +2,6 @@
 title: AvatarGroup
 ---
 
-<script setup>
-import AvatarGroupBasic from "../demos/AvatarGroupBasic.vue";
-</script>
-
 # AvatarGroup
 
 <p class="bless-lead">Fused row of avatars with a +N plate</p>
@@ -35,3 +31,7 @@ import { BlessAvatarGroup } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessAvatarGroup" />
+
+<script setup>
+import AvatarGroupBasic from "../demos/AvatarGroupBasic.vue";
+</script>

@@ -1,9 +1,5 @@
 # Fonts
 
-<script setup>
-import FontsWeights from "../demos/FontsWeights.vue";
-</script>
-
 `--bless-font-sans` is
 
 ```
@@ -74,3 +70,7 @@ The family is still called `"Roboto"`, so the token needs no change. By hand ins
 ```
 
 `font-display: swap` keeps text visible while the file arrives. Without any of this the stack falls through to the system sans, which is fine for everything except the thin type.
+
+<script setup>
+import FontsWeights from "../demos/FontsWeights.vue";
+</script>

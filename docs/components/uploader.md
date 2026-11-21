@@ -2,10 +2,6 @@
 title: Uploader
 ---
 
-<script setup>
-import UploaderBasic from "../demos/UploaderBasic.vue";
-</script>
-
 # Uploader
 
 <p class="bless-lead">Queue, progress, cancel: XHR or your own</p>
@@ -34,3 +30,7 @@ import { BlessUploader } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessUploader" />
+
+<script setup>
+import UploaderBasic from "../demos/UploaderBasic.vue";
+</script>

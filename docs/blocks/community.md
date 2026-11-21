@@ -3,16 +3,6 @@ title: Community
 aside: false
 ---
 
-<script setup>
-import { withBase } from "vitepress";
-import meta from "./community/meta";
-const files = Object.fromEntries(
-  Object.entries(import.meta.glob("./community/**/*.{vue,ts}", { query: "?raw", import: "default", eager: true }))
-    .filter(([p]) => !p.endsWith("meta.ts"))
-    .map(([p, src]) => [p.replace("./community/", ""), src]),
-);
-</script>
-
 # Community
 
 <p class="bless-lead">A social feed with a composer, posts with polls and reactions, your profile and groups on one side, and trends and people to follow on the other. On a phone, the sides move under the feed.</p>
@@ -22,3 +12,13 @@ const files = Object.fromEntries(
 ## Into your app
 
 Run `npx blessing-ui add community` to copy the folder to `src/features/community/` (Nuxt: `app/features/community/`). Then render `index.vue` from a page. Replace `api.ts` with your real adapter. The view and the use-case stay the same.
+
+<script setup>
+import { withBase } from "vitepress";
+import meta from "./community/meta";
+const files = Object.fromEntries(
+  Object.entries(import.meta.glob("./community/**/*.{vue,ts}", { query: "?raw", import: "default", eager: true }))
+    .filter(([p]) => !p.endsWith("meta.ts"))
+    .map(([p, src]) => [p.replace("./community/", ""), src]),
+);
+</script>

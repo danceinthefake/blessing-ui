@@ -1,9 +1,5 @@
 # Gerak
 
-<script setup>
-import MotionLayers from "../../demos/MotionLayers.vue";
-</script>
-
 <p class="bless-lead">Gerak di blessing-ui punya tiga lapis, seperti serial asalnya. Sebagian besar adegan tenang dan lembut. UI gim muncul saat cerita membahas gim. Adegan komedi adalah jeda singkat. Pengaturan tenang memberi gerak yang lebih sedikit, dan reduced motion di sistem mematikan semuanya.</p>
 
 <Demo title="Tiga lapis, dengan sakelar tenang dan flair">
@@ -89,3 +85,7 @@ Untuk membuat daftar Anda sendiri datang berurutan, tambahkan class `bless-stagg
 ```
 
 Keyframe menganimasikan properti `translate`, `scale`, `filter`, dan `clip-path`, bukan `transform`. Ini menjaga kecondongan, yang berupa transform, tetap berfungsi selama gerak.
+
+<script setup>
+import MotionLayers from "../../demos/MotionLayers.vue";
+</script>

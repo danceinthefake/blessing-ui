@@ -2,10 +2,6 @@
 title: Production counter
 ---
 
-<script setup>
-import ProductionCounterBasic from "../demos/ProductionCounterBasic.vue";
-</script>
-
 # Production counter
 
 <p class="bless-lead">Good and scrap pieces against the target, with big buttons for a station</p>
@@ -37,3 +33,7 @@ import { BlessProductionCounter } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessProductionCounter" />
+
+<script setup>
+import ProductionCounterBasic from "../demos/ProductionCounterBasic.vue";
+</script>

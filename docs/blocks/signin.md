@@ -3,16 +3,6 @@ title: Sign in
 aside: false
 ---
 
-<script setup>
-import { withBase } from "vitepress";
-import meta from "./signin/meta";
-const files = Object.fromEntries(
-  Object.entries(import.meta.glob("./signin/**/*.{vue,ts}", { query: "?raw", import: "default", eager: true }))
-    .filter(([p]) => !p.endsWith("meta.ts"))
-    .map(([p, src]) => [p.replace("./signin/", ""), src]),
-);
-</script>
-
 # Sign in
 
 <p class="bless-lead">Email and password with native validation, remember-me, a forgot link, and a divider to OAuth: the form that every app starts with.</p>
@@ -22,3 +12,13 @@ const files = Object.fromEntries(
 ## Into your app
 
 Run `npx blessing-ui add signin` to copy the folder to `src/features/signin/` (Nuxt: `app/features/signin/`). Then render `index.vue` from a page. Replace `api.ts` with your real adapter. The view and the use-case stay the same.
+
+<script setup>
+import { withBase } from "vitepress";
+import meta from "./signin/meta";
+const files = Object.fromEntries(
+  Object.entries(import.meta.glob("./signin/**/*.{vue,ts}", { query: "?raw", import: "default", eager: true }))
+    .filter(([p]) => !p.endsWith("meta.ts"))
+    .map(([p, src]) => [p.replace("./signin/", ""), src]),
+);
+</script>

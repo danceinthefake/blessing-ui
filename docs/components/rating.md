@@ -2,10 +2,6 @@
 title: Rating
 ---
 
-<script setup>
-import RatingBasic from "../demos/RatingBasic.vue";
-</script>
-
 # Rating
 
 <p class="bless-lead">Star rating on native radios</p>
@@ -34,3 +30,7 @@ import { BlessRating } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessRating" />
+
+<script setup>
+import RatingBasic from "../demos/RatingBasic.vue";
+</script>

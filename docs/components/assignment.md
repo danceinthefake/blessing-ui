@@ -2,10 +2,6 @@
 title: Assignment
 ---
 
-<script setup>
-import AssignmentBasic from "../demos/AssignmentBasic.vue";
-</script>
-
 # Assignment
 
 <p class="bless-lead">An assignment with the instructions, the due date, a submission, and the grade</p>
@@ -37,3 +33,7 @@ import { BlessAssignment } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessAssignment" />
+
+<script setup>
+import AssignmentBasic from "../demos/AssignmentBasic.vue";
+</script>

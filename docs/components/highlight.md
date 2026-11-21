@@ -2,10 +2,6 @@
 title: Highlight
 ---
 
-<script setup>
-import HighlightBasic from "../demos/HighlightBasic.vue";
-</script>
-
 # Highlight
 
 <p class="bless-lead">Text with the search terms marked</p>
@@ -36,3 +32,7 @@ import { BlessHighlight } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessHighlight" />
+
+<script setup>
+import HighlightBasic from "../demos/HighlightBasic.vue";
+</script>

@@ -2,10 +2,6 @@
 title: Chord diagram
 ---
 
-<script setup>
-import ChordDiagramBasic from "../demos/ChordDiagramBasic.vue";
-</script>
-
 # Chord diagram
 
 <p class="bless-lead">Groups around a circle, with ribbons for the flows between them</p>
@@ -37,3 +33,7 @@ import { BlessChordDiagram } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessChordDiagram" />
+
+<script setup>
+import ChordDiagramBasic from "../demos/ChordDiagramBasic.vue";
+</script>

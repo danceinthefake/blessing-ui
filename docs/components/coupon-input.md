@@ -2,10 +2,6 @@
 title: Coupon input
 ---
 
-<script setup>
-import CouponInputBasic from "../demos/CouponInputBasic.vue";
-</script>
-
 # Coupon input
 
 <p class="bless-lead">A field for a code, then the saving with a button to remove it</p>
@@ -36,3 +32,7 @@ import { BlessCouponInput } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessCouponInput" />
+
+<script setup>
+import CouponInputBasic from "../demos/CouponInputBasic.vue";
+</script>

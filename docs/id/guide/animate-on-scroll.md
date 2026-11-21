@@ -2,10 +2,6 @@
 title: Animasi saat menggulir
 ---
 
-<script setup>
-import AnimateOnScrollBasic from "../../demos/AnimateOnScrollBasic.vue";
-</script>
-
 # Animasi saat menggulir
 
 <p class="bless-lead"><code>useAnimateOnScroll()</code> memberi ref <code>visible</code> yang berubah tepat saat elemen masuk ke viewport. Transisinya Anda yang menentukan.</p>
@@ -33,3 +29,7 @@ Polanya seperti di atas. Ikat `visible` ke atribut `data-visible` (atau kelas) d
 Kemunculan yang baik di sistem ini memakai opacity, `--bless-ease-out`, `--bless-duration-slower`, dan perpindahan paling banyak beberapa piksel. Kemunculan memudar. Hanya perubahan keadaan yang bergerak. Dengan `prefers-reduced-motion: reduce`, composable mengatur `visible` ke `true` saat terpasang dan tidak pernah membuat observer, sehingga konten langsung muncul. Durasi di sana sudah `0s`, jadi transisi CSS biasa tidak perlu penanganan tambahan. Tanpa `IntersectionObserver`, `visible` juga langsung `true`.
 
 Utamakan `once` (bawaan). Dengan `once: false`, elemen tersembunyi lagi saat keluar dan memudar masuk lagi saat kembali. Pakai ini hanya jika keluar memang berarti sesuatu. Jika tidak, halaman berubah menjadi tontonan.
+
+<script setup>
+import AnimateOnScrollBasic from "../../demos/AnimateOnScrollBasic.vue";
+</script>

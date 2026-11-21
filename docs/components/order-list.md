@@ -2,10 +2,6 @@
 title: OrderList
 ---
 
-<script setup>
-import OrderListBasic from "../demos/OrderListBasic.vue";
-</script>
-
 # OrderList
 
 <p class="bless-lead">Drag / button / Alt+arrow reorder</p>
@@ -34,3 +30,7 @@ import { BlessOrderList } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessOrderList" />
+
+<script setup>
+import OrderListBasic from "../demos/OrderListBasic.vue";
+</script>

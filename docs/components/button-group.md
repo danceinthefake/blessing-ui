@@ -2,10 +2,6 @@
 title: ButtonGroup
 ---
 
-<script setup>
-import ButtonGroupBasic from "../demos/ButtonGroupBasic.vue";
-</script>
-
 # ButtonGroup
 
 <p class="bless-lead">Joined buttons</p>
@@ -32,3 +28,7 @@ import { BlessButtonGroup } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessButtonGroup" />
+
+<script setup>
+import ButtonGroupBasic from "../demos/ButtonGroupBasic.vue";
+</script>

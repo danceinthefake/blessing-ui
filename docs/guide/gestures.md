@@ -2,10 +2,6 @@
 title: Gestures
 ---
 
-<script setup>
-import GesturesBasic from "../demos/GesturesBasic.vue";
-</script>
-
 # Gestures
 
 <p class="bless-lead">Four pointer-event composables for mouse, touch, and pen. They attach to an element ref and do nothing on the server.</p>
@@ -56,3 +52,7 @@ A gesture is a shortcut, not the control. Swipe-to-delete also needs a visible d
 ## Next
 
 The platform helpers that are not gestures (resize, fullscreen, visibility, scroll, and the loading bar) are on [Browser composables](./browser).
+
+<script setup>
+import GesturesBasic from "../demos/GesturesBasic.vue";
+</script>

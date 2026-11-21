@@ -2,10 +2,6 @@
 title: Forum topics
 ---
 
-<script setup>
-import ForumTopicsBasic from "../demos/ForumTopicsBasic.vue";
-</script>
-
 # Forum topics
 
 <p class="bless-lead">Topics of a forum with replies, views, the last post, and pinned topics</p>
@@ -37,3 +33,7 @@ import { BlessForumTopics } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessForumTopics" />
+
+<script setup>
+import ForumTopicsBasic from "../demos/ForumTopicsBasic.vue";
+</script>

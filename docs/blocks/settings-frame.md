@@ -7,8 +7,8 @@ footer: false
 title: Settings (preview)
 ---
 
+<BlockFrame><Block /></BlockFrame>
+
 <script setup>
 import Block from "./settings/index.vue";
 </script>
-
-<BlockFrame><Block /></BlockFrame>

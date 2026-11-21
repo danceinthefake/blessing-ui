@@ -2,10 +2,6 @@
 title: OrgChart
 ---
 
-<script setup>
-import OrgChartBasic from "../demos/OrgChartBasic.vue";
-</script>
-
 # OrgChart
 
 <p class="bless-lead">Node tree with connectors</p>
@@ -35,3 +31,7 @@ import { BlessOrgChart } from "blessing-ui";
 ### BlessOrgChart
 
 <PropsTable name="BlessOrgChart" />
+
+<script setup>
+import OrgChartBasic from "../demos/OrgChartBasic.vue";
+</script>

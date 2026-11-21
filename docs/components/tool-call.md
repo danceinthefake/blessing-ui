@@ -2,10 +2,6 @@
 title: Tool call
 ---
 
-<script setup>
-import ToolCallBasic from "../demos/ToolCallBasic.vue";
-</script>
-
 # Tool call
 
 <p class="bless-lead">One step of an assistant, with its input and output</p>
@@ -36,3 +32,7 @@ import { BlessToolCall } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessToolCall" />
+
+<script setup>
+import ToolCallBasic from "../demos/ToolCallBasic.vue";
+</script>

@@ -2,10 +2,6 @@
 title: Cart drawer
 ---
 
-<script setup>
-import CartDrawerBasic from "../demos/CartDrawerBasic.vue";
-</script>
-
 # Cart drawer
 
 <p class="bless-lead">The cart in a side panel, with quantities, the subtotal, and checkout</p>
@@ -38,3 +34,7 @@ import { BlessCartDrawer } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessCartDrawer" />
+
+<script setup>
+import CartDrawerBasic from "../demos/CartDrawerBasic.vue";
+</script>

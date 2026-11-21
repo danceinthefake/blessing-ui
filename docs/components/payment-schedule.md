@@ -2,10 +2,6 @@
 title: Payment schedule
 ---
 
-<script setup>
-import PaymentScheduleBasic from "../demos/PaymentScheduleBasic.vue";
-</script>
-
 # Payment schedule
 
 <p class="bless-lead">The payments of a loan, with dates, the principal, and the interest</p>
@@ -41,3 +37,7 @@ import { BlessPaymentSchedule } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessPaymentSchedule" />
+
+<script setup>
+import PaymentScheduleBasic from "../demos/PaymentScheduleBasic.vue";
+</script>

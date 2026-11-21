@@ -2,10 +2,6 @@
 title: Heatmap
 ---
 
-<script setup>
-import HeatmapBasic from "../demos/HeatmapBasic.vue";
-</script>
-
 # Heatmap
 
 <p class="bless-lead">A grid of rows and columns, colored by value</p>
@@ -36,3 +32,7 @@ import { BlessHeatmap } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessHeatmap" />
+
+<script setup>
+import HeatmapBasic from "../demos/HeatmapBasic.vue";
+</script>

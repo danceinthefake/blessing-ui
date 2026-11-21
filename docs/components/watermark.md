@@ -2,10 +2,6 @@
 title: Watermark
 ---
 
-<script setup>
-import WatermarkBasic from "../demos/WatermarkBasic.vue";
-</script>
-
 # Watermark
 
 <p class="bless-lead">Giant faint word behind a block</p>
@@ -32,3 +28,7 @@ import { BlessWatermark } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessWatermark" />
+
+<script setup>
+import WatermarkBasic from "../demos/WatermarkBasic.vue";
+</script>

@@ -2,10 +2,6 @@
 title: ReadMore
 ---
 
-<script setup>
-import ReadMoreBasic from "../demos/ReadMoreBasic.vue";
-</script>
-
 # ReadMore
 
 <p class="bless-lead">Long text cut to some lines, with a button to show all</p>
@@ -37,3 +33,7 @@ import { BlessReadMore } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessReadMore" />
+
+<script setup>
+import ReadMoreBasic from "../demos/ReadMoreBasic.vue";
+</script>

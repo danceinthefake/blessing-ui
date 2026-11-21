@@ -2,10 +2,6 @@
 title: World clock
 ---
 
-<script setup>
-import WorldClockBasic from "../demos/WorldClockBasic.vue";
-</script>
-
 # World clock
 
 <p class="bless-lead">The time now in several time zones</p>
@@ -36,3 +32,7 @@ import { BlessWorldClock } from "blessing-ui";
 ## API
 
 <PropsTable name="BlessWorldClock" />
+
+<script setup>
+import WorldClockBasic from "../demos/WorldClockBasic.vue";
+</script>
