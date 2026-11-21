@@ -90,6 +90,7 @@ export const groups: { title: string; items: Entry[] }[] = [
       { name: "BlessThemeToggle", slug: "theme-toggle", text: "Light/dark switch or 3-way group" },
       { name: "BlessPaletteToggle", slug: "palette-toggle", text: "Accent palette swatches" },
       { name: "BlessWatermark", slug: "watermark", text: "Giant faint word behind a block" },
+      { name: "BlessEyecatch", slug: "eyecatch", text: "Anime title card between two parts of a page" },
       { name: "BlessSpinner", slug: "spinner", text: "Loading indicator (`role=status`)" },
       { name: "BlessEmpty", slug: "empty", text: "Empty state" },
       { name: "BlessButtonGroup", slug: "button-group", text: "Joined buttons" },

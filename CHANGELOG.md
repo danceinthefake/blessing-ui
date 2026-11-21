@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Added
+
+- Eyecatch: the anime title card from the docs site, as a component. It has a kicker, a large thin title, a big number, and an accent slash that wipes in on first view. Found by blessing.id, which needs it for its sign-in and launcher banners.
+
 ### Fixed
 
 - RelativeTime counts a new `value` from the time now. Before, a component that a list reused for a newer value kept its old "now" and said, for example, "in 1 second". Found by blessing.id.

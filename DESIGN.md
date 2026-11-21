@@ -48,6 +48,7 @@ Order = build order. Each row: saenai.tv origin → generic component.
 
 - [x] `BlessWatermark`: oversized thin background word that leans at rest (`"News"`). Props: `text`, `position` (`top-right` default). `aria-hidden`.
 - [x] `BlessSection`: heading + optional `BlessWatermark` + slot.
+- [x] `BlessEyecatch`: anime title card. Props: `kicker`, `title`, `num`, `headingLevel`, `accent`. The slash wipes in on first view.
 - [x] `BlessStage`: page shell: fixed sidebar (22% / 200px inner) + content (`max 1300px`). Collapses to drawer ≤800px. Slots: `sidebar`, `default`, `footer`.
 - [x] `BlessSidebarNav`: vertical nav list. Props: `items[{label,to,badge}]`, `active`. Emits `select`.
 - [x] `BlessStage` drawer: mobile off-canvas sidebar. Focus moves in, `Esc` closes, closed = `inert`. (A standalone `BlessDrawer` came in Phase 6.)

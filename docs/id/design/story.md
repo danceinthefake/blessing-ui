@@ -42,7 +42,7 @@ Sumbernya adalah situs pemasaran, dan sebuah library harus melakukan lebih. Semu
 - **Platform.** `<dialog>`, Popover API, `<details>`, kontrol formulir bawaan, tanggal `Intl`, scroll-snap, dan CSS anchor positioning. Ini bagian dari browser sendiri, diberi gaya dan tidak dibuat ulang.
 - **Dokumentasi sebagai light novel.** Situs dokumentasi dibaca seperti light novel dalam volume dan bab. Situs itu memakai dua kebiasaan anime TV: eyecatch saat jeda dan cuplikan episode berikutnya di akhir. Lihat [kredit](./credits#tampilan).
 - **Kanan-ke-kiri.** Properti logis di semua tempat. Kemiringan berbalik dengan arah baca.
-- **Keluasan.** Situs itu memerlukan navigasi, daftar, dan modal. Library ini punya 437 komponen, dari tombol sampai tabel data sampai utas obrolan. Ia juga punya kumpulan [blok](/blocks/) siap salin. Kami memeriksa cakupannya terhadap daftar komponen [shadcn/ui](https://ui.shadcn.com/) dan [PrimeVue](https://primevue.org/), agar tidak ada yang jelas terlewat. Setiap komponen di sini adalah implementasi sendiri. Library ini tidak memakai apa pun dari kedua proyek itu.
+- **Keluasan.** Situs itu memerlukan navigasi, daftar, dan modal. Library ini punya 438 komponen, dari tombol sampai tabel data sampai utas obrolan. Ia juga punya kumpulan [blok](/blocks/) siap salin. Kami memeriksa cakupannya terhadap daftar komponen [shadcn/ui](https://ui.shadcn.com/) dan [PrimeVue](https://primevue.org/), agar tidak ada yang jelas terlewat. Setiap komponen di sini adalah implementasi sendiri. Library ini tidak memakai apa pun dari kedua proyek itu.
 
 ## Yang dibengkokkan
 
