@@ -59,6 +59,7 @@ export const groups: { title: string; items: Entry[] }[] = [
       { name: "BlessSeparator", slug: "separator", text: "`<hr>` / vertical rule, optional label" },
       { name: "BlessIcon", slug: "icon", text: "SVG slot wrapper" },
       { name: "BlessText", slug: "text", text: "Typography helper" },
+      { name: "BlessLink", slug: "link", text: "Text link, always underlined; router-aware" },
       { name: "BlessKbd", slug: "kbd", text: "Key combo" },
       { name: "BlessHighlight", slug: "highlight", text: "Text with the search terms marked" },
       {
@@ -88,6 +89,7 @@ export const groups: { title: string; items: Entry[] }[] = [
         text: "Time ago, in your language, kept up to date",
       },
       { name: "BlessThemeToggle", slug: "theme-toggle", text: "Light/dark switch or 3-way group" },
+      { name: "BlessLanguageSwitcher", slug: "language-switcher", text: "Pick the language: a select or a list of links" },
       { name: "BlessPaletteToggle", slug: "palette-toggle", text: "Accent palette swatches" },
       { name: "BlessWatermark", slug: "watermark", text: "Giant faint word behind a block" },
       { name: "BlessEyecatch", slug: "eyecatch", text: "Anime title card between two parts of a page" },
@@ -562,6 +564,7 @@ export const groups: { title: string; items: Entry[] }[] = [
       { name: "BlessSteps", slug: "steps", text: "Stepper with done / current / upcoming" },
       { name: "BlessContainer", slug: "container", text: "Centred max-width box" },
       { name: "BlessStack", slug: "stack", text: "Flex row / column with token gap" },
+      { name: "BlessGrid", slug: "grid", text: "Responsive columns with token gap" },
       { name: "BlessScrollTop", slug: "scroll-top", text: "Back-to-top button past a threshold" },
       {
         name: "BlessReadingProgress",

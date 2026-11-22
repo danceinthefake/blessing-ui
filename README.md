@@ -10,7 +10,7 @@ Vue 3 component library and design tokens. The UI is gray-scale, with one accent
 
 Docs, with every component live: **[ui.blessing.id](https://ui.blessing.id)**
 
-- 438 components, from button to data table to chat. Only `--bless-*` custom properties style them. There is no Tailwind dependency.
+- 441 components, from button to data table to chat. Only `--bless-*` custom properties style them. There is no Tailwind dependency.
 - Native platform first: `<dialog>`, Popover API, `<details>`, native form controls, `Intl` dates, and scroll-snap. There is no positioning, date, or table library.
 - Accessible defaults: focus rings, ARIA tablist, dialog, and tables, and `prefers-reduced-motion`
 - ESM, tree-shakable, with `vue` as the only required peer (`@tiptap/vue-3` is optional, for `BlessEditor`). One component (`BlessButton`) costs about 1 KB gzip of JS and about 3 KB of CSS (tokens and its own styles). Everything costs about 294 KB and 85 KB. CSS is split per component and the import pulls it in, so you never pay for styles that you do not use
@@ -92,7 +92,7 @@ The words that components say are English by default. `provideLabels(labelsId)` 
 
 ## Components
 
-438 components across eight groups. Every one styles itself from `--bless-*` tokens and ships with a test and a docs page.
+441 components across eight groups. Every one styles itself from `--bless-*` tokens and ships with a test and a docs page.
 
 ### Primitives
 
@@ -105,6 +105,7 @@ The words that components say are English by default. `provideLabels(labelsId)` 
 | `BlessSeparator`                      | `<hr>` / vertical rule, optional label                 | `orientation`, `decorative`, `color`, `label`                                                                   |
 | `BlessIcon`                           | SVG slot wrapper                                       | `size`, `label`                                                                                                 |
 | `BlessText`                           | Typography helper                                      | `as`, `size`, `weight`, `tracking`, `leading`, `muted`, `uppercase`                                             |
+| `BlessLink`                           | Text link, always underlined, router-aware             | `href`, `external` (new tab, arrow, hidden words), `muted`, `labels`                                            |
 | `BlessKbd`                            | Key combo                                              | `keys[]` or slot                                                                                                |
 | `BlessHighlight`                      | Text with the search terms marked                      | `text`, `query` (a search, or a list of whole terms). Native `<mark>`, case and accents ignored                 |
 | `BlessReadMore`                       | Long text cut to some lines, with a button to show all | `lines`, `v-model:open`, `labels`. Default slot: the text. The button shows only when the text is cut           |
@@ -113,6 +114,7 @@ The words that components say are English by default. `provideLabels(labelsId)` 
 | `BlessGlossary`                       | A term with a dotted line that shows its meaning       | `definition`, `term`, `placement`. Default slot: the term                                                       |
 | `BlessRelativeTime`                   | "3 hours ago" in any language, kept up to date         | `value`, `locale`, `numeric`, `format`, `live`, `now`                                                           |
 | `BlessThemeToggle`                    | Light/dark switch or 3-way group                       | `mode` switch/group, `label`, `labels`                                                                          |
+| `BlessLanguageSwitcher`               | Pick the language: a select, or links                  | `languages[{code,label}]`, `v-model`, `href(code)` for links, `labels`                                          |
 | `BlessSpinner`                        | Loading indicator (`role=status`)                      | `size`, `color`, `label`. `BlessButton loading` uses it                                                         |
 | `BlessEmpty`                          | Empty state                                            | `title`, `description`, `variant` outline/plain. `#icon` `#title` `#description` default=actions                |
 | `BlessButtonGroup`                    | Joined buttons                                         | `orientation`, `label`                                                                                          |
@@ -307,6 +309,7 @@ The words that components say are English by default. `provideLabels(labelsId)` 
 | `BlessTokenCost`                            | The tokens of a request and their cost                                                        | `usage` `{input,output,cached}`, `prices` per million, `model`, `currency`, `locale`                                                                       |
 | `BlessContainer`                            | Centerd max-width box                                                                         | `size` sm/md/lg/full, `padded`, `as`                                                                                                                       |
 | `BlessStack`                                | Flex row / column                                                                             | `direction`, `gap` token, `align`, `justify`, `wrap`, `as`                                                                                                 |
+| `BlessGrid`                                 | Responsive columns                                                                            | `columns` (most), `min` (narrowest), `gap` token, `align`, `as`                                                                                            |
 | `BlessScrollTop`                            | Back-to-top button                                                                            | `threshold`, `target`, `position`, `label`                                                                                                                 |
 | `BlessReadingProgress`                      | A thin bar that fills as the reader scrolls                                                   | `target`, `position`, `minutes`, `wpm`. Emits `done`                                                                                                       |
 | `BlessAffix`                                | Sticky wrapper                                                                                | `offset`, `v-model:stuck`. `#default="{stuck}"`                                                                                                            |

@@ -129,6 +129,8 @@ import type BlessMarquee from "../components/BlessMarquee.vue";
 import type BlessMeasureConverter from "../components/BlessMeasureConverter.vue";
 import type BlessMedicationSchedule from "../components/BlessMedicationSchedule.vue";
 import type BlessMessageFeedback from "../components/BlessMessageFeedback.vue";
+import type BlessLink from "../components/BlessLink.vue";
+import type BlessLanguageSwitcher from "../components/BlessLanguageSwitcher.vue";
 import type BlessMiniPlayer from "../components/BlessMiniPlayer.vue";
 import type BlessModelPicker from "../components/BlessModelPicker.vue";
 import type BlessNewsletterSignup from "../components/BlessNewsletterSignup.vue";
@@ -425,6 +427,8 @@ export type BlessLabelsFull = {
   BlessMeasureConverter: All<typeof BlessMeasureConverter>;
   BlessMedicationSchedule: All<typeof BlessMedicationSchedule>;
   BlessMessageFeedback: All<typeof BlessMessageFeedback>;
+  BlessLink: All<typeof BlessLink>;
+  BlessLanguageSwitcher: All<typeof BlessLanguageSwitcher>;
   BlessMiniPlayer: All<typeof BlessMiniPlayer>;
   BlessModelPicker: All<typeof BlessModelPicker>;
   BlessNewsletterSignup: All<typeof BlessNewsletterSignup>;
@@ -1607,6 +1611,8 @@ export const labelsId: BlessLabelsFull = {
     speed: (n) => `kecepatan ${n} dari 3`,
     cost: (n) => `biaya ${n} dari 3`,
   },
+  BlessLink: { newTab: "terbuka di tab baru" },
+  BlessLanguageSwitcher: { label: "Bahasa" },
   BlessNewsletterSignup: {
     label: "Alamat email",
     button: "Langganan",

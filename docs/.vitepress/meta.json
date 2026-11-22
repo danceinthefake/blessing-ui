@@ -8134,6 +8134,52 @@
   "slots": [],
   "exposed": []
  },
+ "BlessGrid": {
+  "props": [
+   {
+    "name": "as",
+    "type": "string | undefined",
+    "required": false,
+    "default": "\"div\"",
+    "description": ""
+   },
+   {
+    "name": "columns",
+    "type": "number | undefined",
+    "required": false,
+    "description": "the most columns. Alone, it is a fixed count"
+   },
+   {
+    "name": "min",
+    "type": "string | undefined",
+    "required": false,
+    "description": "the narrowest a column can be, for example \"16rem\". With `columns`, the grid drops columns before they get narrower"
+   },
+   {
+    "name": "gap",
+    "type": "1 | 2 | 3 | 4 | 6 | 8 | 12 | 16 | undefined",
+    "required": false,
+    "default": "4",
+    "description": "space token key"
+   },
+   {
+    "name": "align",
+    "type": "\"start\" | \"end\" | \"center\" | \"stretch\" | undefined",
+    "required": false,
+    "default": "\"stretch\"",
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [
+   {
+    "name": "default",
+    "type": "{}",
+    "description": ""
+   }
+  ],
+  "exposed": []
+ },
  "BlessGroupCard": {
   "props": [
    {
@@ -10009,6 +10055,43 @@
   ],
   "exposed": []
  },
+ "BlessLanguageSwitcher": {
+  "props": [
+   {
+    "name": "languages",
+    "type": "BlessLanguage[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "href",
+    "type": "((code: string) => string) | undefined",
+    "required": false,
+    "description": "the page in each language: the switcher becomes a list of links, for a footer or a site that has a URL per language"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ label: string; }> | undefined",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "string | undefined",
+    "required": false,
+    "description": "the code of the current language"
+   }
+  ],
+  "events": [
+   {
+    "name": "update:modelValue",
+    "type": "[value: string | undefined]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "exposed": []
+ },
  "BlessLayout": {
   "props": [
    {
@@ -10389,6 +10472,43 @@
    }
   ],
   "slots": [],
+  "exposed": []
+ },
+ "BlessLink": {
+  "props": [
+   {
+    "name": "href",
+    "type": "string",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "external",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": "another site: opens in a new tab, with an arrow and a hidden \"opens in a new tab\""
+   },
+   {
+    "name": "muted",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": "the muted text color, for a footer or a caption. The underline stays"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ newTab: string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [],
+  "slots": [
+   {
+    "name": "default",
+    "type": "{}",
+    "description": ""
+   }
+  ],
   "exposed": []
  },
  "BlessList": {

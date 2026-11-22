@@ -4,6 +4,7 @@
 
 ### Added
 
+- `BlessLink`, `BlessGrid`, and `BlessLanguageSwitcher`. Link is always underlined, and an external link says that it opens a new tab. Grid gives at most `columns` columns, never narrower than `min`. LanguageSwitcher is a native select, or a list of links with `href`, and each language name is in its own language.
 - Billing, Search results, and Orders blocks. Billing shows the plan, the usage, the card, and the invoices, pays an overdue invoice, and says what to remove before a move to a smaller plan. Search results has filters with counts, sort, pages, and a better spelling for a misspelled word. Orders opens an order by its link, cancels it before it ships, and returns items within 30 days of delivery.
 - Profile, File manager, and Booking blocks. Profile has Follow that undoes itself when the server refuses. File manager opens folders, searches, uploads, renames, and deletes. Booking picks a service, a day, and a free time, and goes back to the times when someone took the time first.
 - Checkout, Product page, and Landing page blocks. Checkout goes from the address to the delivery time to the card, and each step says what is missing. Product page picks a color and a size against the stock and adds to the cart. Landing page has a hero, logos, features, numbers, quotes, and an FAQ.

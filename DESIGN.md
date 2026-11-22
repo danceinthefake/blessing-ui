@@ -827,6 +827,12 @@ The user chose both: new blocks for the site-type groups that have no block, thr
 
 - ✅ The third round from the same list. Billing (Money): the plan, the usage in `BlessQuotaUsage`, the card, and the invoices in `BlessTable`. An invoice opens in a sheet with `BlessInvoice` and a pay button. An overdue invoice shows at the top. A smaller plan that cannot hold the seats or the files says what to remove first. A cancel can be undone until the last day. Search results (Work): a help center search with popular searches, `BlessSearchResults` with filter counts, sort, and pages, and a better spelling by edit distance. A slow answer to an old search does not replace a newer one. Orders (Shop): `BlessOrderHistory`, and an order opens by its link in a sheet with `BlessShipmentTracker`. An order can be cancelled before it ships, and items can be returned within 30 days of delivery with `BlessReturnRequest`. `e2e/blocks.mjs` has a flow for each.
 
+### Phase 63 — link, grid, and language switcher (2026-11-22)
+
+- [x] `BlessLink`: a text link that is always underlined. Props: `href`, `external` (new tab, an arrow, and hidden words), `muted`. In-app paths go through the provided router link.
+- [x] `BlessGrid`: responsive columns. Props: `columns` (the most), `min` (the narrowest), `gap`, `align`, `as`. Each column is `minmax(0, 1fr)`.
+- [x] `BlessLanguageSwitcher`: pick the language. A native `<select>`, or with `href(code)` a list of links with `aria-current` and `hreflang`. Each name is in its own language and has its own `lang`.
+
 ### Order
 
 5 → 6 → 7. Inside each phase, build order = list order. Every component: tests (grouped per area in `src/components/*.test.ts`), a docs page with a live example, a README row, checkbox flipped.
