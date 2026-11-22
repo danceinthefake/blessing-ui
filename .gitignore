@@ -6,3 +6,4 @@ docs/.vitepress/cache
 e2e/consumer/node_modules
 e2e/consumer/dist
 e2e/consumer/*.tgz
+.codegraph/

@@ -644,6 +644,111 @@ await step(
   },
 );
 
+console.log("Status page");
+await step(
+  "an open incident sets the parts, Refresh moves it on, and a bad email is refused",
+  async () => {
+    await go("status");
+    expect(/partial outage/.test(await text(".bless-status")), "no outage headline");
+    expect(/Identified/.test(await text(".st")), "the open incident is not shown");
+    await page.getByRole("button", { name: "Refresh" }).click();
+    await page.waitForTimeout(700);
+    expect(/Monitoring/.test(await text(".bless-incident")), "the incident did not move on");
+    await page.getByRole("button", { name: "Refresh" }).click();
+    await page.waitForTimeout(700);
+    expect(
+      /All systems are working/.test(await text(".bless-status")),
+      "the parts did not recover",
+    );
+    expect(!(await page.getByRole("heading", { name: "Now" }).count()), "Now stayed");
+    expect(
+      /Card payments fail for some banks/.test(await text(".st")),
+      "the closed incident is not in the history",
+    );
+    await page.getByRole("button", { name: "Get updates" }).click();
+    const dlg = page.locator("dialog[open]");
+    await dlg.getByLabel("Email", { exact: true }).fill("rina@");
+    await dlg.getByRole("button", { name: "Subscribe" }).click();
+    await page.waitForTimeout(300);
+    expect(/Type an email address/.test(await dlg.textContent()), "no email problem");
+    await dlg.getByLabel("Email", { exact: true }).fill("rina@example.com");
+    await dlg.getByRole("button", { name: "Subscribe" }).click();
+    await page.waitForTimeout(800);
+    expect(/We will email rina@example.com/.test(await page.content()), "no toast");
+  },
+);
+
+console.log("Podcast");
+await step(
+  "a chapter seeks and plays, the transcript follows, and an episode starts where you stopped",
+  async () => {
+    await go("podcast");
+    await page.waitForTimeout(500);
+    await page.getByRole("button", { name: /The price that we picked/ }).click();
+    await page.waitForTimeout(800);
+    expect(/1:3\d \/ 2:30/.test(await text(".bless-audio__time")), "the chapter did not seek");
+    const toggle = page.locator(".bless-audio__toggle");
+    expect((await toggle.getAttribute("aria-pressed")) === "true", "it does not play");
+    await page.getByRole("tab", { name: "Transcript" }).click();
+    await page.waitForTimeout(500);
+    expect(
+      /We picked 135,000/.test(await text(".bless-transcript [aria-current=time]")),
+      "the transcript does not follow",
+    );
+    await page.getByRole("button", { name: "Play episode 11: The first hire" }).click();
+    await page.waitForTimeout(1000);
+    expect(/11\. The first hire/.test(await text("#pod-now")), "the episode did not open");
+    expect(/0:5\d \/ 2:00/.test(await text(".bless-audio__time")), "it did not resume at 0:54");
+    await toggle.click();
+  },
+);
+
+console.log("Warehouse");
+await step(
+  "a picked order ships off the stock, a delivery comes in by barcode, and low items go to the supplier",
+  async () => {
+    await go("warehouse");
+    expect(/2 of 6 items need a reorder/.test(await text(".wh")), "no reorder count");
+    await page.getByRole("button", { name: /Order more of 2 items/ }).click();
+    await page.getByRole("button", { name: "Send to the supplier" }).click();
+    await page.waitForTimeout(900);
+    expect(/PO-0042 went to the supplier/.test(await page.content()), "no purchase toast");
+    await page.getByRole("tab", { name: "Pick" }).click();
+    await page.waitForTimeout(500);
+    const scan = page.getByLabel("Scan an item");
+    await scan.fill("XYZ");
+    await scan.press("Enter");
+    expect(/XYZ is not on this list/.test(await text(".wh")), "no unknown-code problem");
+    for (const sku of ["HON-KAL-250", "TEA-JAS-100", "TEA-JAS-100", "BOX-GFT-003"]) {
+      await scan.fill(sku);
+      await scan.press("Enter");
+    }
+    expect(/All items are picked/.test(await text(".wh")), "the list is not complete");
+    await page.getByRole("button", { name: "Ship #10451" }).click();
+    await page.waitForTimeout(800);
+    expect(/#10452/.test(await text(".wh")), "the next order did not open");
+    await page.getByRole("tab", { name: "Receive" }).click();
+    await page.waitForTimeout(500);
+    await page.getByLabel("Count for each scan").fill("12");
+    const code = page.getByLabel("Barcode");
+    await code.fill("8991002009998");
+    await code.press("Enter");
+    await page.waitForTimeout(300);
+    expect(/not in the stock list/.test(await text(".wh")), "no unknown-barcode problem");
+    await code.fill("8991002001022");
+    await code.press("Enter");
+    await page.waitForTimeout(400);
+    expect(/\+12\s*Oolong tea/.test(await text(".wh")), "the delivery is not listed");
+    await page.getByRole("tab", { name: "Stock" }).click();
+    await page.waitForTimeout(500);
+    // the cells of a row, one by one: their text runs together
+    const row = (name) =>
+      page.locator("tr", { hasText: name }).first().locator("td, th").allTextContents();
+    expect((await row("Jasmine tea")).includes("38"), "the shipped tea is still on the shelf");
+    expect((await row("Oolong tea")).includes("24"), "the delivery did not add to the stock");
+  },
+);
+
 await browser.close();
 console.log(failed ? `\n${failed} block check(s) failed` : "\nall block checks passed");
 process.exit(failed ? 1 : 0);

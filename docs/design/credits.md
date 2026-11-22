@@ -52,6 +52,8 @@ Some components use known methods. We wrote each one again from its description.
 - The [treemap](../components/treemap) uses the squarified layout of Bruls, Huijsmans, and van Wijk (2000).
 - The [search results block](../blocks/search) finds a better spelling with the edit distance of Levenshtein (1966).
 - The [calendar block](../blocks/calendar) keeps each event as a wall time in its own time zone, as `DTSTART;TZID` does in [RFC 5545](https://www.rfc-editor.org/rfc/rfc5545), the iCalendar standard. The zone rules come from the [IANA Time Zone Database](https://www.iana.org/time-zones) through `Intl`.
+- The [status page block](../blocks/status) uses the incident steps (investigating, identified, monitoring, resolved) of public status pages such as [Atlassian Statuspage](https://www.atlassian.com/software/statuspage).
+- The [podcast block](../blocks/podcast) reads its transcript and its chapters as [WebVTT](https://www.w3.org/TR/webvtt1/), the caption format of the W3C.
 - The [card input](../components/card-input) checks numbers with the Luhn algorithm (Hans Peter Luhn, 1954).
 - The [check answers](../components/check-answers) page follows the "Check answers" pattern of the [GOV.UK Design System](https://design-system.service.gov.uk/patterns/check-answers/) by the UK Government Digital Service.
 - The [map with pins](../components/map-pins) places tiles and pins with the Web Mercator projection (EPSG:3857). Its default tiles and map data come from [OpenStreetMap](https://www.openstreetmap.org/copyright) and its contributors, under the ODbL.

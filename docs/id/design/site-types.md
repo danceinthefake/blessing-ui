@@ -73,7 +73,7 @@ Video, musik, podcast, dan gim. Orang menonton, mendengar, dan bermain.
 
 Sekarang: [PosterRow](../../components/poster-row), [EpisodeList](../../components/episode-list), [PlayQueue](../../components/play-queue), [MiniPlayer](../../components/mini-player), [Lyrics](../../components/lyrics), [ContinueWatching](../../components/continue-watching), [Video](../../components/video), [AudioPlayer](../../components/audio-player), [Waveform](../../components/waveform), [Transcript](../../components/transcript), [ChapterList](../../components/chapter-list), [Carousel](../../components/carousel), [Lightbox](../../components/lightbox), [Gallery](../../components/gallery).
 
-Blok: [onair](../../blocks/onair), [character](../../blocks/character).
+Blok: [onair](../../blocks/onair), [character](../../blocks/character), [podcast](../../blocks/podcast).
 
 ## 6. Produktivitas dan kolaborasi
 
@@ -121,7 +121,7 @@ Hosting kode, CI, konsol cloud, dan dokumentasi API. Orang membangun, merilis, d
 
 Sekarang: [Terminal](../../components/terminal), [ApiEndpoint](../../components/api-endpoint), [DeployList](../../components/deploy-list), [CommitList](../../components/commit-list), [RequestInspector](../../components/request-inspector), [CodeBlock](../../components/code-block), [CodeTabs](../../components/code-tabs), [Diff](../../components/diff), [JsonViewer](../../components/json-viewer), [LogViewer](../../components/log-viewer), [ApiKeyField](../../components/api-key-field), [WebhookLog](../../components/webhook-log), [CronInput](../../components/cron-input), [UptimeBar](../../components/uptime-bar), [SystemStatus](../../components/system-status), [IncidentTimeline](../../components/incident-timeline), [FeatureFlags](../../components/feature-flags), [QuotaUsage](../../components/quota-usage).
 
-Blok: [release](../../blocks/release), [developers](../../blocks/developers).
+Blok: [release](../../blocks/release), [developers](../../blocks/developers), [status](../../blocks/status).
 
 ## 12. Utilitas
 
@@ -177,4 +177,4 @@ Lantai produksi, gudang, dan kerja lapangan. Orang mengerjakan pekerjaan fisik d
 
 Sekarang: [WorkOrderCard](../../components/work-order-card), [ProductionCounter](../../components/production-counter), [MachineBoard](../../components/machine-board), [OeeGauge](../../components/oee-gauge), [DowntimePicker](../../components/downtime-picker), [WorkInstructions](../../components/work-instructions), [QualityCheck](../../components/quality-check), [ControlChart](../../components/control-chart), [ShiftHandover](../../components/shift-handover), [PickingList](../../components/picking-list), [SkuField](../../components/sku-field), [Gantt](../../components/gantt), [Scheduler](../../components/scheduler), [Stepper](../../components/stepper), [Timer](../../components/timer), [Gauge](../../components/gauge), [UptimeBar](../../components/uptime-bar), [ConnectionStatus](../../components/connection-status), [SignaturePad](../../components/signature-pad), [CameraCapture](../../components/camera-capture).
 
-Blok: [station](../../blocks/station).
+Blok: [station](../../blocks/station), [warehouse](../../blocks/warehouse).

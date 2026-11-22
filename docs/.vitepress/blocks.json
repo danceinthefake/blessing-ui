@@ -271,5 +271,26 @@
   "group": "Everyday",
   "summary": "A month of events that repeat by a rule, seen in a time zone you pick. Each event keeps the zone it was made in, so a clock change does not move it. A new event says what it overlaps.",
   "order": 39
+ },
+ {
+  "slug": "status",
+  "title": "Status page",
+  "group": "Work",
+  "summary": "The state of each part of a service, its uptime for 30 days, and the incidents with each update. An open incident sets the state of the parts that it affects. People can get the changes by email.",
+  "order": 40
+ },
+ {
+  "slug": "podcast",
+  "title": "Podcast",
+  "group": "Everyday",
+  "summary": "A show with its episodes, a player, chapters, and a transcript that follows the audio. Each episode starts where you stopped. Chapters and transcript lines seek the player, and the place is kept as you listen.",
+  "order": 41
+ },
+ {
+  "slug": "warehouse",
+  "title": "Warehouse",
+  "group": "Shop",
+  "summary": "Stock levels against the reorder point, a picking list for each paid order, and deliveries that come in by barcode. A shipped order takes its items off the stock, and the low items go to the supplier in one purchase order.",
+  "order": 42
  }
 ]

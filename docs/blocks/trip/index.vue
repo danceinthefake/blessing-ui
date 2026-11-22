@@ -70,7 +70,7 @@ watch(city, (c) => c && ((center.value = c.center), (selected.value = undefined)
 <style scoped>
 .trip {
   display: grid;
-  gap: var(--bless-space-5);
+  gap: var(--bless-space-6);
   padding: var(--bless-space-6);
   max-width: 960px;
 }
@@ -81,7 +81,7 @@ watch(city, (c) => c && ((center.value = c.center), (selected.value = undefined)
 .trip__row {
   display: grid;
   grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
-  gap: var(--bless-space-5);
+  gap: var(--bless-space-6);
   align-items: start;
 }
 @media (max-width: 760px) {

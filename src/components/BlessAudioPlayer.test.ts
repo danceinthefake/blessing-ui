@@ -50,3 +50,42 @@ test("BlessAudioPlayer seeks from the keyboard through a native range; the butto
   expect(audio.currentTime).toBe(83);
   expect(w.find(".bless-audio__toggle").attributes("aria-label")).toBe("Play");
 });
+
+test("BlessAudioPlayer v-model:time reports the time and seeks when the parent writes it", async () => {
+  const w = mount(BlessAudioPlayer, { props: { tracks: [{ src: "a.mp3", title: "A" }] } });
+  const audio = w.find("audio").element as HTMLAudioElement;
+  audio.currentTime = 12;
+  await w.find("audio").trigger("timeupdate");
+  expect(w.emitted("update:time")!.at(-1)).toEqual([12]);
+  await w.setProps({ time: 95 });
+  // jsdom has no metadata yet: the seek waits for it
+  await w.find("audio").trigger("loadedmetadata");
+  expect(audio.currentTime).toBe(95);
+  Object.defineProperty(audio, "readyState", { value: 1, configurable: true });
+  await w.setProps({ time: 30 });
+  expect(audio.currentTime).toBe(30);
+});
+
+test("BlessAudioPlayer loads new tracks at the time the parent sets", async () => {
+  const load = vi.spyOn(HTMLMediaElement.prototype, "load");
+  const w = mount(BlessAudioPlayer, { props: { tracks: [{ src: "a.mp3", title: "A" }] } });
+  await w.setProps({ tracks: [{ src: "b.mp3", title: "B" }], time: 40 });
+  expect(load).toHaveBeenCalled();
+  await w.find("audio").trigger("loadedmetadata");
+  expect((w.find("audio").element as HTMLAudioElement).currentTime).toBe(40);
+  load.mockRestore();
+});
+
+test("BlessAudioPlayer v-model:playing starts and stops it from outside", async () => {
+  const w = mount(BlessAudioPlayer, { props: { tracks: [{ src: "a.mp3", title: "A" }] } });
+  const audio = w.find("audio").element as HTMLAudioElement;
+  let paused = true;
+  Object.defineProperty(audio, "paused", { get: () => paused, configurable: true });
+  audio.addEventListener("play", () => (paused = false));
+  audio.addEventListener("pause", () => (paused = true));
+  await w.setProps({ playing: true });
+  expect(w.emitted("play")).toHaveLength(1);
+  expect(w.find(".bless-audio__toggle").attributes("aria-pressed")).toBe("true");
+  await w.setProps({ playing: false });
+  expect(w.emitted("pause")).toHaveLength(1);
+});

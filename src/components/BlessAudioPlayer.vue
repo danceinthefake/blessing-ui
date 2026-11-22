@@ -12,8 +12,9 @@
         playing = false;
         emit('pause', current);
       "
-      @timeupdate="time = audio!.currentTime"
+      @timeupdate="onTime"
       @durationchange="duration = audio!.duration"
+      @loadedmetadata="onMeta"
       @ended="onEnded"
     />
 
@@ -109,8 +110,10 @@ const emit = defineEmits<{
 }>();
 
 const audio = ref<HTMLAudioElement>();
-const playing = ref(false);
-const time = ref(0);
+/** whether it plays; write it to start or stop, for example from an episode list */
+const playing = defineModel<boolean>("playing", { default: false });
+/** the time in the current track, in seconds; write it to seek, for example from chapters */
+const time = defineModel<number>("time", { default: 0 });
 const duration = ref(0);
 const current = computed(() => props.tracks[index.value]);
 const progress = computed(() => (duration.value ? (time.value / duration.value) * 100 : 0));
@@ -147,15 +150,44 @@ function onEnded() {
   } else playing.value = false;
 }
 
-// when track changes while playing, load and resume
-watch(index, () => {
-  time.value = 0;
-  duration.value = 0;
-  const a = audio.value;
-  if (!a) return;
-  a.load();
-  if (playing.value) a.play().catch(() => (playing.value = false));
-});
+// a time from outside is a seek. Before the metadata loads, the browser drops a seek, so keep it
+let pending: number | null = null;
+function onTime() {
+  if (pending === null) time.value = audio.value!.currentTime;
+}
+function onMeta() {
+  if (pending !== null) audio.value!.currentTime = pending;
+  pending = null;
+}
+// one watcher sees the source and the time together: with a new source, a new time is where the
+// parent wants it to start, and an unchanged time means "from 0"
+watch(
+  [() => current.value?.src, time],
+  ([src, t], [oldSrc, oldT]) => {
+    const a = audio.value;
+    if (!a) return;
+    if (src !== oldSrc) {
+      duration.value = 0;
+      pending = t !== oldT ? t : 0;
+      if (pending === 0) time.value = 0;
+      a.load();
+      if (playing.value) a.play().catch(() => (playing.value = false));
+    } else if (a.readyState < 1) pending = t;
+    else if (Math.abs(a.currentTime - t) > 0.5) a.currentTime = t;
+  },
+  { flush: "post" },
+);
+
+watch(
+  playing,
+  (p) => {
+    const a = audio.value;
+    if (!a) return;
+    if (p && a.paused) a.play().catch(() => (playing.value = false));
+    else if (!p && !a.paused) a.pause();
+  },
+  { flush: "post" },
+);
 
 onBeforeUnmount(() => audio.value?.pause());
 </script>

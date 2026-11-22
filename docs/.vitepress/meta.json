@@ -1199,6 +1199,20 @@
     "required": false,
     "default": "0",
     "description": "index of the current track"
+   },
+   {
+    "name": "playing",
+    "type": "boolean | undefined",
+    "required": false,
+    "default": "false",
+    "description": "whether it plays; write it to start or stop, for example from an episode list"
+   },
+   {
+    "name": "time",
+    "type": "number | undefined",
+    "required": false,
+    "default": "0",
+    "description": "the time in the current track, in seconds; write it to seek, for example from chapters"
    }
   ],
   "events": [
@@ -1210,6 +1224,16 @@
    {
     "name": "play",
     "type": "[track: BlessTrack]",
+    "description": ""
+   },
+   {
+    "name": "update:playing",
+    "type": "[value: boolean]",
+    "description": ""
+   },
+   {
+    "name": "update:time",
+    "type": "[value: number]",
     "description": ""
    },
    {
@@ -11834,13 +11858,13 @@
     "description": ""
    },
    {
-    "name": "previous",
-    "type": "[]",
+    "name": "update:playing",
+    "type": "[value: boolean]",
     "description": ""
    },
    {
-    "name": "update:playing",
-    "type": "[value: boolean]",
+    "name": "previous",
+    "type": "[]",
     "description": ""
    },
    {

@@ -4,6 +4,7 @@
 
 ### Added
 
+- Status page, Podcast, and Warehouse blocks. Status page shows the state of each part from its open incidents, 30 days of uptime, and the past incidents, and sends the changes by email. Podcast starts each episode where you stopped, and its chapters and transcript seek the player. Warehouse picks an order by scan, takes a shipped order off the stock, adds a delivery by barcode, and sends the low items to the supplier.
 - Assistant, Developers, and Calendar blocks. Assistant streams a reply with its plan, its tool call, and its sources, and a reply can be stopped and tried again. Developers shows a new API key in full only once, accepts only a public https webhook address, sends a failed delivery again, and logs each change. Calendar shows repeating events in a time zone you pick, keeps each event in the zone it was made in, and says what a new event overlaps.
 - `BlessLink`, `BlessGrid`, and `BlessLanguageSwitcher`. Link is always underlined, and an external link says that it opens a new tab. Grid gives at most `columns` columns, never narrower than `min`. LanguageSwitcher is a native select, or a list of links with `href`, and each language name is in its own language.
 - Billing, Search results, and Orders blocks. Billing shows the plan, the usage, the card, and the invoices, pays an overdue invoice, and says what to remove before a move to a smaller plan. Search results has filters with counts, sort, pages, and a better spelling for a misspelled word. Orders opens an order by its link, cancels it before it ships, and returns items within 30 days of delivery.
@@ -14,11 +15,13 @@
 
 ### Changed
 
+- `BlessAudioPlayer` has `v-model:time` and `v-model:playing`. Write the time to seek, also before the audio loads. Write `playing` to start or stop it. New `tracks` load at once, and a new source goes on playing if the old one played. Found by the podcast block.
 - Blocks use the new components. The footer has `BlessLanguageSwitcher`, `BlessLink` for its links, and `BlessGrid` for its columns. These now drop from three to two to one on a narrow screen. Sign in uses `BlessLink`, so its links are no longer in the accent color. Billing, Checkout, Dashboard, Landing page, Pricing, and Settings use `BlessGrid` in place of their own grid CSS.
 - All SFCs, the `vue` code samples in the README and the docs, and the docs pages put the blocks in the order template, script, style. In a docs page, the page text is the template, so `<script setup>` goes at the end. `pnpm docs:pages` and `pnpm docs:blocks` make new pages in this order. A unit test (`src/sfc-order.test.ts`) keeps the order. The output of the library build does not change.
 
 ### Fixed
 
+- The trip block used `--bless-space-5`, a token that does not exist, so its parts had no gap.
 - HeatmapCalendar opens at the newest week when it is wider than its box. Before, a phone showed the oldest weeks first. Found by the new Profile block.
 - OpeningHours shows "Closed" in ink on today's row. Before, muted text on the gray row of today was under 4.5:1 on a day the place is closed.
 - NewsletterSignup underlines its privacy link. Before, only the color set the link apart from the muted line around it, at less than 3:1. Found by the new footer block.
