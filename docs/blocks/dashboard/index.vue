@@ -20,12 +20,12 @@
           <BlessAvatar name="Tomoya Aki" size="sm" />
         </template>
       </BlessToolbar>
-      <div class="dash__stats" :aria-busy="loading">
+      <BlessGrid min="150px" class="dash__stats" :aria-busy="loading">
         <template v-if="data && !loading">
           <StatCard v-for="s in data.stats" :key="s.label" :stat="s" />
         </template>
         <BlessSkeleton v-for="i in 4" v-else :key="i" height="88px" />
-      </div>
+      </BlessGrid>
       <BlessChart
         title="Daily revenue"
         :description="`Last ${days} days: a rise with a dip in the middle`"
@@ -62,9 +62,10 @@ import {
   BlessBadge,
   BlessButton,
   BlessChart,
+  BlessGrid,
   BlessSidebarNav,
-  BlessTable,
   BlessSkeleton,
+  BlessTable,
   BlessText,
   BlessToggle,
   BlessToggleGroup,
@@ -129,11 +130,6 @@ const columns: BlessColumn<Order>[] = [
 }
 .dash__bar {
   margin: calc(-1 * var(--bless-space-2)) 0;
-}
-.dash__stats {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: var(--bless-space-4);
 }
 @media (max-width: 800px) {
   .dash {

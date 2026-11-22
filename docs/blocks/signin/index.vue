@@ -36,13 +36,13 @@
       </BlessField>
       <div class="signin__row">
         <BlessCheckbox v-model="remember">Remember me</BlessCheckbox>
-        <a href="#" class="signin__link">Forgot password?</a>
+        <BlessLink href="#">Forgot password?</BlessLink>
       </div>
       <BlessButton type="submit" :loading="busy" block>Sign in</BlessButton>
       <BlessSeparator label="or" class="signin__sep" />
       <BlessButton variant="outline" block>Continue with GitHub</BlessButton>
       <BlessText as="p" size="xs" muted class="signin__foot"
-        >No account? <a href="#">Create one</a></BlessText
+        >No account? <BlessLink href="#">Create one</BlessLink></BlessText
       >
     </BlessForm>
   </div>
@@ -56,6 +56,7 @@ import {
   BlessField,
   BlessForm,
   BlessInput,
+  BlessLink,
   BlessPasswordInput,
   BlessSeparator,
   BlessText,
@@ -94,12 +95,6 @@ watch(done, async (d) => {
   justify-content: space-between;
   margin-bottom: var(--bless-space-6);
   font-size: var(--bless-text-sm);
-}
-.signin__link,
-.signin__foot a {
-  color: var(--bless-color-accent-text);
-  text-decoration: underline;
-  text-underline-offset: 2px;
 }
 .signin__sep {
   margin: var(--bless-space-6) 0;

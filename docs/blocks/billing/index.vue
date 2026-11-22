@@ -14,7 +14,7 @@
           >Pay {{ overdue[0].number }}</BlessButton
         >
       </BlessAlert>
-      <div class="billing__cards">
+      <BlessGrid min="16rem" class="billing__cards">
         <BlessCard label="Plan">
           <div class="billing__card">
             <BlessText as="h2" size="lg" weight="bold">{{ plan?.name }}</BlessText>
@@ -59,7 +59,7 @@
             <BlessText as="p" size="sm" muted>Expires {{ account.card.expires }}</BlessText>
           </div>
         </BlessCard>
-      </div>
+      </BlessGrid>
       <section class="billing__bills" aria-labelledby="billing-bills">
         <BlessText id="billing-bills" as="h2" size="md" weight="bold">Invoices</BlessText>
         <BlessTable :columns :rows row-key="number">
@@ -123,6 +123,7 @@ import {
   BlessAlertDialog,
   BlessButton,
   BlessCard,
+  BlessGrid,
   BlessInvoice,
   BlessModal,
   BlessQuotaUsage,
@@ -223,11 +224,6 @@ const onResume = () => run(resume);
 }
 .billing__overdue p {
   margin: 0 0 var(--bless-space-3);
-}
-.billing__cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
-  gap: var(--bless-space-4);
 }
 .billing__card {
   display: grid;

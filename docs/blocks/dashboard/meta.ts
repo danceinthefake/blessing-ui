@@ -5,6 +5,7 @@ export default {
   summary:
     "Sidebar and toolbar shell with a stats row, a trend chart, and recent orders. On a phone, the sidebar becomes a strip that scrolls sideways.",
   components: [
+    "BlessGrid",
     "BlessSidebarNav",
     "BlessToolbar",
     "BlessCard",

@@ -5,7 +5,7 @@ aside: false
 
 # Site footer
 
-<p class="bless-lead">The wordmark with a newsletter signup, three columns of links, and a fine-print row with the copyright and the legal links. The columns stack on a phone.</p>
+<p class="bless-lead">The wordmark with a newsletter signup, three columns of links, and a fine-print row with the copyright, the legal links, and the language. The columns drop to two, then one, on a narrow screen.</p>
 
 <BlockDemo :files :components="meta.components" :height="meta.height" :frame="withBase('/blocks/footer-frame')" />
 

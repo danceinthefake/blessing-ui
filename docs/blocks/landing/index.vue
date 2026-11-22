@@ -31,12 +31,12 @@
     </section>
 
     <section class="landing__numbers" aria-label="In numbers">
-      <dl>
+      <BlessGrid as="dl" min="180px" :gap="6">
         <div v-for="n in numbers" :key="n.label">
           <dt>{{ n.label }}</dt>
           <dd><BlessCountUp :value="n.value" :options="n.options" appear locale="en-US" /></dd>
         </div>
-      </dl>
+      </BlessGrid>
     </section>
 
     <section class="landing__band" aria-labelledby="landing-quotes">
@@ -70,6 +70,7 @@ import {
   BlessButton,
   BlessCountUp,
   BlessFeatureGrid,
+  BlessGrid,
   BlessLogoCloud,
   BlessTestimonials,
   BlessText,
@@ -203,9 +204,6 @@ const faq = [
   stroke-linejoin: round;
 }
 .landing__numbers dl {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: var(--bless-space-6);
   margin: 0;
   padding-block: var(--bless-space-6);
   border-block: 1px solid var(--bless-color-border);

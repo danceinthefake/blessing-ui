@@ -30,14 +30,14 @@
             <BlessField label="Card number">
               <BlessCardInput v-model="card.number" validate />
             </BlessField>
-            <div class="checkout__row">
+            <BlessGrid :columns="2">
               <BlessField label="Expiry date" description="MM/YY">
                 <BlessInput v-model="card.expiry" inputmode="numeric" autocomplete="cc-exp" />
               </BlessField>
               <BlessField label="Security code">
                 <BlessInput v-model="card.cvc" inputmode="numeric" autocomplete="cc-csc" />
               </BlessField>
-            </div>
+            </BlessGrid>
             <BlessText as="p" size="xs" muted
               >Test cards: 4242 4242 4242 4242 pays, 4000 0000 0000 0002 is declined.</BlessText
             >
@@ -87,6 +87,7 @@ import {
   BlessCouponInput,
   BlessDeliveryPicker,
   BlessField,
+  BlessGrid,
   BlessInput,
   BlessOrderSummary,
   BlessSteps,
@@ -153,11 +154,6 @@ watch([step, orderId], () => {
 }
 .checkout__card {
   display: grid;
-  gap: var(--bless-space-4);
-}
-.checkout__row {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--bless-space-4);
 }
 .checkout__actions {

@@ -5,6 +5,7 @@ export default {
   summary:
     "Three steps from cart to order: the address, a delivery time, and the card. The order summary with a discount code stays next to the steps, and each step says what is missing before it goes on.",
   components: [
+    "BlessGrid",
     "BlessSteps",
     "BlessAddressFields",
     "BlessDeliveryPicker",

@@ -4,7 +4,7 @@
     <div class="pricing__switch">
       <BlessSwitch v-model="yearly">Bill yearly <BlessBadge>2 months free</BlessBadge></BlessSwitch>
     </div>
-    <div class="pricing__grid">
+    <BlessGrid min="220px" class="pricing__grid">
       <BlessCard
         v-for="p in plans"
         :key="p.name"
@@ -30,7 +30,7 @@
           <li v-for="f in p.features" :key="f"><span aria-hidden="true">✓</span> {{ f }}</li>
         </ul>
       </BlessCard>
-    </div>
+    </BlessGrid>
   </div>
 </template>
 
@@ -40,6 +40,7 @@ import {
   BlessBadge,
   BlessButton,
   BlessCard,
+  BlessGrid,
   BlessSeparator,
   BlessSwitch,
   BlessText,
@@ -85,9 +86,6 @@ const price = (m: number) =>
   margin: var(--bless-space-4) 0 var(--bless-space-8);
 }
 .pricing__grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: var(--bless-space-4);
   padding-top: var(--bless-space-3);
 }
 .pricing__price {

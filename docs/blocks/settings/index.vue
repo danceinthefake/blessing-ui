@@ -7,10 +7,10 @@
         <BlessAvatar :name="form.name" size="lg" />
         <BlessButton size="sm" variant="outline">Change photo</BlessButton>
       </div>
-      <div class="settings__grid">
+      <BlessGrid min="220px">
         <BlessField label="Name"><BlessInput v-model="form.name" /></BlessField>
         <BlessField label="Email"><BlessInput v-model="form.email" type="email" /></BlessField>
-      </div>
+      </BlessGrid>
       <BlessField label="Bio" description="Shown on your public profile."
         ><BlessTextarea v-model="form.bio" :rows="2" autogrow
       /></BlessField>
@@ -57,6 +57,7 @@ import {
   BlessCheckbox,
   BlessField,
   BlessForm,
+  BlessGrid,
   BlessInput,
   BlessPanel,
   BlessSelect,
@@ -113,11 +114,6 @@ function discard() {
   align-items: center;
   gap: var(--bless-space-4);
   margin-bottom: var(--bless-space-4);
-}
-.settings__grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: var(--bless-space-4);
 }
 .settings :deep(.bless-field) {
   margin-bottom: var(--bless-space-4);

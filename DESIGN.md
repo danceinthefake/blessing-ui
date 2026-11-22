@@ -832,6 +832,7 @@ The user chose both: new blocks for the site-type groups that have no block, thr
 - [x] `BlessLink`: a text link that is always underlined. Props: `href`, `external` (new tab, an arrow, and hidden words), `muted`. In-app paths go through the provided router link.
 - [x] `BlessGrid`: responsive columns. Props: `columns` (the most), `min` (the narrowest), `gap`, `align`, `as`. Each column is `minmax(0, 1fr)`.
 - [x] `BlessLanguageSwitcher`: pick the language. A native `<select>`, or with `href(code)` a list of links with `aria-current` and `hreflang`. Each name is in its own language and has its own `lang`.
+- ✅ The blocks use them. Footer: `BlessLanguageSwitcher`, `BlessLink`, and `BlessGrid` (three, two, then one column). Sign in: `BlessLink` in place of accent-colored links. Billing, Checkout, Dashboard, Landing page, Pricing, and Settings: `BlessGrid` in place of their own grid CSS.
 
 ### Order
 

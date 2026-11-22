@@ -14,32 +14,40 @@
           @subscribe="subscribe"
         />
       </div>
-      <nav aria-label="Footer" class="site-footer__cols">
+      <BlessGrid as="nav" aria-label="Footer" :columns="3" min="8rem" :gap="6">
         <div v-for="c in columns" :key="c.title">
           <BlessText as="h2" size="sm" weight="bold">{{ c.title }}</BlessText>
           <ul role="list" class="site-footer__list">
             <li v-for="l in c.links" :key="l.label">
-              <a :href="l.href">{{ l.label }}</a>
+              <BlessLink :href="l.href" muted>{{ l.label }}</BlessLink>
             </li>
           </ul>
         </div>
-      </nav>
+      </BlessGrid>
     </div>
     <BlessSeparator />
     <div class="site-footer__bottom">
       <BlessText size="xs" muted>© {{ year }} Blessing Studio</BlessText>
       <ul role="list" class="site-footer__legal">
         <li v-for="l in legal" :key="l.label">
-          <a :href="l.href">{{ l.label }}</a>
+          <BlessLink :href="l.href" muted>{{ l.label }}</BlessLink>
         </li>
       </ul>
+      <BlessLanguageSwitcher v-model="lang" :languages />
     </div>
   </footer>
 </template>
 
 <script setup lang="ts">
 import { ref } from "vue";
-import { BlessNewsletterSignup, BlessSeparator, BlessText } from "blessing-ui";
+import {
+  BlessGrid,
+  BlessLanguageSwitcher,
+  BlessLink,
+  BlessNewsletterSignup,
+  BlessSeparator,
+  BlessText,
+} from "blessing-ui";
 import { mockFooterApi as api } from "./api";
 
 const columns = [
@@ -74,6 +82,12 @@ const legal = [
   { label: "Cookies", href: "#cookies" },
 ];
 const year = new Date().getFullYear();
+// each name in its own language. On a change, load the words and set lang on <html>
+const languages = [
+  { code: "en", label: "English" },
+  { code: "id", label: "Bahasa Indonesia" },
+];
+const lang = ref("en");
 
 const email = ref("");
 const status = ref<"idle" | "loading" | "done">("idle");
@@ -111,11 +125,6 @@ async function subscribe(address: string) {
   color: var(--bless-color-text);
   text-decoration: none;
 }
-.site-footer__cols {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--bless-space-6);
-}
 .site-footer__list,
 .site-footer__legal {
   margin: 0;
@@ -125,10 +134,6 @@ async function subscribe(address: string) {
 }
 .site-footer__list li {
   padding: var(--bless-space-1) 0;
-}
-.site-footer__list a,
-.site-footer__legal a {
-  color: var(--bless-color-text-muted);
 }
 .site-footer__bottom {
   display: flex;
@@ -149,11 +154,6 @@ async function subscribe(address: string) {
   }
   .site-footer__top {
     grid-template-columns: minmax(0, 1fr);
-  }
-}
-@media (max-width: 420px) {
-  .site-footer__cols {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 </style>
