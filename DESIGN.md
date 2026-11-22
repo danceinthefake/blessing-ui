@@ -823,6 +823,10 @@ The user chose both: new blocks for the site-type groups that have no block, thr
 
 - ✅ The second round from the same list. Profile (People and messages): `BlessProfileCard`, a year of posts in `BlessHeatmapCalendar` that opens at the newest week, and tabs for works, activity, and badges. Follow changes the count at once and undoes it when the server refuses, for example offline. File manager (Work): `BlessFileBrowser` with the folder path, a search in the folder, upload in a modal, the storage used, and a details panel with rename (the name must be new in its folder) and delete (a folder takes its contents). Booking (Everyday): a service, a day (closed on Sundays and past days), and a free time, then the details in `BlessForm`. If someone took the time first, the block goes back to the times and says so. `e2e/blocks.mjs` has a flow for each.
 
+### Phase 62 — billing, search results, and orders blocks (2026-11-22)
+
+- ✅ The third round from the same list. Billing (Money): the plan, the usage in `BlessQuotaUsage`, the card, and the invoices in `BlessTable`. An invoice opens in a sheet with `BlessInvoice` and a pay button. An overdue invoice shows at the top. A smaller plan that cannot hold the seats or the files says what to remove first. A cancel can be undone until the last day. Search results (Work): a help center search with popular searches, `BlessSearchResults` with filter counts, sort, and pages, and a better spelling by edit distance. A slow answer to an old search does not replace a newer one. Orders (Shop): `BlessOrderHistory`, and an order opens by its link in a sheet with `BlessShipmentTracker`. An order can be cancelled before it ships, and items can be returned within 30 days of delivery with `BlessReturnRequest`. `e2e/blocks.mjs` has a flow for each.
+
 ### Order
 
 5 → 6 → 7. Inside each phase, build order = list order. Every component: tests (grouped per area in `src/components/*.test.ts`), a docs page with a live example, a README row, checkbox flipped.

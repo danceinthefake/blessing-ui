@@ -229,5 +229,26 @@
   "group": "Work",
   "summary": "Folders and files in a grid or a list, with the folder path, a search in the folder, and the storage used. Upload adds files to the open folder. Pick a file to see its details, then rename it or delete it.",
   "order": 33
+ },
+ {
+  "slug": "billing",
+  "title": "Billing",
+  "group": "Money",
+  "summary": "The plan, the usage, the card, and the invoices of an account. An overdue invoice shows at the top with a way to pay it. A smaller plan that cannot hold your seats or files says what to remove first.",
+  "order": 34
+ },
+ {
+  "slug": "search",
+  "title": "Search results",
+  "group": "Work",
+  "summary": "A search page for a help center: the box, popular searches, results with the words marked, filters with counts, sort, and pages. A misspelled word gets a better spelling to try.",
+  "order": 35
+ },
+ {
+  "slug": "orders",
+  "title": "Orders",
+  "group": "Shop",
+  "summary": "The past orders of a buyer. Open an order to see where it is, cancel it before it ships, or return items within 30 days of delivery. Buy again puts the same items in the cart.",
+  "order": 36
  }
 ]

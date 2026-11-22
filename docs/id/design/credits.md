@@ -50,6 +50,7 @@ Beberapa komponen memakai metode yang sudah dikenal. Kami menulis ulang masing-m
 - [Gerak](../guide/motion) flair memakai squash and stretch, dari _The Illusion of Life_ karya Frank Thomas dan Ollie Johnston (1981).
 - Daftar yang disusun ulang meluncur dengan FLIP (First, Last, Invert, Play) oleh Paul Lewis (2015), melalui `<TransitionGroup>` milik Vue.
 - [Treemap](../../components/treemap) memakai tata letak squarified dari Bruls, Huijsmans, dan van Wijk (2000).
+- [Blok hasil pencarian](../../blocks/search) mencari ejaan yang lebih baik dengan jarak edit Levenshtein (1966).
 - [Input kartu](../../components/card-input) memeriksa nomor dengan algoritma Luhn (Hans Peter Luhn, 1954).
 - Halaman [periksa jawaban](../../components/check-answers) mengikuti pola "Check answers" dari [GOV.UK Design System](https://design-system.service.gov.uk/patterns/check-answers/) karya Government Digital Service Inggris.
 - [Peta dengan penanda](../../components/map-pins) menempatkan ubin dan penanda dengan proyeksi Web Mercator (EPSG:3857). Ubin dan data peta bawaannya berasal dari [OpenStreetMap](https://www.openstreetmap.org/copyright) dan para kontributornya, dengan lisensi ODbL.

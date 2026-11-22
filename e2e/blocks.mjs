@@ -455,6 +455,88 @@ await step("open a folder, rename with a clash, delete, search, and upload", asy
   expect(/notes\.txt/.test(await text(".files__main")), "no uploaded file");
 });
 
+console.log("Billing");
+await step(
+  "a too-small plan says what to remove, a bigger plan saves, the overdue invoice is paid, and a cancel is undone",
+  async () => {
+    await go("billing");
+    await page.getByRole("button", { name: "Change plan" }).click();
+    await page.locator("dialog[open] label", { hasText: "Starter" }).click();
+    await page.getByRole("button", { name: "Save" }).click();
+    await page.waitForTimeout(300);
+    expect(/Remove 4 of 7 seats/.test(await text("dialog[open]")), "no too-small problem");
+    await page.locator("dialog[open] label", { hasText: "Business" }).click();
+    await page.getByRole("button", { name: "Save" }).click();
+    await page.waitForTimeout(700);
+    expect(/Business/.test(await text(".billing__cards")), "the plan did not change");
+    await page.getByRole("button", { name: /^Pay INV-2026-011/ }).click();
+    await page.getByRole("button", { name: /^Pay Rp/ }).click();
+    await page.waitForTimeout(1100);
+    expect(!/overdue/i.test(await text(".billing")), "the invoice is still overdue");
+    await page.getByRole("button", { name: "Cancel plan" }).click();
+    await page.locator("dialog[open]").getByRole("button", { name: "Cancel plan" }).click();
+    await page.waitForTimeout(700);
+    expect(/Ends on/.test(await text(".billing__cards")), "no end date");
+    await page.getByRole("button", { name: "Keep the plan" }).click();
+    await page.waitForTimeout(700);
+    expect(/Renews on/.test(await text(".billing__cards")), "the cancel was not undone");
+  },
+);
+
+console.log("Search results");
+await step("a popular search, a filter, a misspelling, and the next page", async () => {
+  await go("search");
+  await page.getByRole("button", { name: "invoice" }).click();
+  await page.waitForTimeout(600);
+  expect(/results for “invoice”/.test(await text(".search")), "no results");
+  await page.getByLabel("Search the help center").fill("plan");
+  await page.getByRole("button", { name: "Search", exact: true }).click();
+  await page.waitForTimeout(600);
+  expect(/of 4 results/.test(await text(".search")), "not four plan results");
+  await page.locator(".bless-facets label", { hasText: "PDF" }).click();
+  await page.waitForTimeout(600);
+  expect(/of 1 results|1 of 1/.test(await text(".search")), "the filter did not narrow");
+  await page.getByLabel("Search the help center").fill("invoce");
+  await page.getByRole("button", { name: "Search", exact: true }).click();
+  await page.waitForTimeout(600);
+  await page.getByRole("button", { name: "invoice", exact: true }).click();
+  await page.waitForTimeout(600);
+  expect(/results for “invoice”/.test(await text(".search")), "the better spelling did not run");
+  await page.getByLabel("Search the help center").fill("the");
+  await page.getByRole("button", { name: "Search", exact: true }).click();
+  await page.waitForTimeout(600);
+  await page.getByRole("button", { name: "Next" }).click();
+  await page.waitForTimeout(600);
+  expect(/6–10 of/.test(await text(".search")), "not the second page");
+});
+
+console.log("Orders");
+await step("open an order by its link, cancel one, buy again, and return items", async () => {
+  await go("orders");
+  await page.getByRole("link", { name: /View order #10442/ }).click();
+  await page.getByRole("button", { name: "Cancel order" }).click();
+  await page.locator("dialog[open]").getByRole("button", { name: "Cancel order" }).last().click();
+  await page.waitForTimeout(800);
+  expect(/is cancelled/.test(await text(".orders")), "not cancelled");
+  await page.keyboard.press("Escape");
+  await page.waitForTimeout(300);
+  await page.getByRole("button", { name: /Buy again #10431/ }).click();
+  await page.waitForTimeout(600);
+  expect(/4 items are in your cart/.test(await text("body")), "no cart toast");
+  await page.getByRole("link", { name: /View order #10398/ }).click();
+  expect(/until 10 December 2026/.test(await text(".orders__sheet")), "no return window");
+  await page.getByRole("button", { name: "Return items" }).click();
+  await page.getByRole("checkbox", { name: "Hand grinder" }).check();
+  await page.getByLabel("Reason").selectOption({ index: 1 });
+  await page.getByRole("button", { name: "Request the return" }).click();
+  await page.waitForTimeout(900);
+  expect(/Return R-\d+/.test(await text(".orders__sheet")), "no return number");
+  await page.keyboard.press("Escape");
+  await page.waitForTimeout(300);
+  await page.getByRole("link", { name: /View order #10215/ }).click();
+  expect(/Returns closed on 4 October 2026/.test(await text(".orders__sheet")), "no closed window");
+});
+
 await browser.close();
 console.log(failed ? `\n${failed} block check(s) failed` : "\nall block checks passed");
 process.exit(failed ? 1 : 0);

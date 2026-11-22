@@ -49,7 +49,7 @@ Toko, marketplace, pemesanan, dan pesan-antar makanan. Orang membandingkan, memi
 
 Sekarang: [ProductCard](../../components/product-card), [Price](../../components/price), [CartDrawer](../../components/cart-drawer), [WishlistButton](../../components/wishlist-button), [FacetFilter](../../components/facet-filter), [StoreLocator](../../components/store-locator), [DeliveryPicker](../../components/delivery-picker), [OrderHistory](../../components/order-history), [ReturnRequest](../../components/return-request), [VariantPicker](../../components/variant-picker), [OrderSummary](../../components/order-summary), [CouponInput](../../components/coupon-input), [CardInput](../../components/card-input), [AddressFields](../../components/address-fields), [ShipmentTracker](../../components/shipment-tracker), [PricingTable](../../components/pricing-table), [ComparisonTable](../../components/comparison-table), [ReviewSummary](../../components/review-summary), [Rating](../../components/rating), [Carousel](../../components/carousel), [Loupe](../../components/loupe), [SeatPicker](../../components/seat-picker), [SlotPicker](../../components/slot-picker), [Ticket](../../components/ticket), [InputNumber](../../components/input-number).
 
-Blok: [pricing](../../blocks/pricing), [checkout](../../blocks/checkout), [product](../../blocks/product).
+Blok: [pricing](../../blocks/pricing), [checkout](../../blocks/checkout), [product](../../blocks/product), [orders](../../blocks/orders).
 
 ## 3. Sosial dan komunitas
 
@@ -97,7 +97,7 @@ Perbankan, investasi, pembayaran, dan akuntansi. Orang memeriksa uang dan memind
 
 Sekarang: [BalanceCard](../../components/balance-card), [TransactionList](../../components/transaction-list), [PriceTicker](../../components/price-ticker), [OrderBook](../../components/order-book), [CurrencyConverter](../../components/currency-converter), [BudgetBars](../../components/budget-bars), [PaymentSchedule](../../components/payment-schedule), [Candlestick](../../components/candlestick), [Sparkline](../../components/sparkline), [Stat](../../components/stat), [WaterfallChart](../../components/waterfall-chart), [DonutChart](../../components/donut-chart), [CardInput](../../components/card-input), [PinPad](../../components/pin-pad), [InputOTP](../../components/input-otp).
 
-Blok: [bank](../../blocks/bank).
+Blok: [bank](../../blocks/bank), [billing](../../blocks/billing).
 
 ## 9. Pendidikan
 
@@ -137,7 +137,7 @@ Mesin pencari, wiki, dan direktori. Orang bertanya dan menemukan.
 
 Sekarang: [SearchResult](../../components/search-result), [SearchResults](../../components/search-results), [AzIndex](../../components/az-index), [KnowledgeArticle](../../components/knowledge-article), [Command](../../components/command), [Combobox](../../components/combobox), [Glossary](../../components/glossary), [FaqSearch](../../components/faq-search), [Tree](../../components/tree), [Highlight](../../components/highlight).
 
-Blok: [help](../../blocks/help).
+Blok: [help](../../blocks/help), [search](../../blocks/search).
 
 ## 14. Layanan pemerintah dan publik
 

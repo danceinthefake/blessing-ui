@@ -49,7 +49,7 @@ Shops, marketplaces, booking, and food delivery. People compare, choose, and pay
 
 Today: [ProductCard](../components/product-card), [Price](../components/price), [CartDrawer](../components/cart-drawer), [WishlistButton](../components/wishlist-button), [FacetFilter](../components/facet-filter), [StoreLocator](../components/store-locator), [DeliveryPicker](../components/delivery-picker), [OrderHistory](../components/order-history), [ReturnRequest](../components/return-request), [VariantPicker](../components/variant-picker), [OrderSummary](../components/order-summary), [CouponInput](../components/coupon-input), [CardInput](../components/card-input), [AddressFields](../components/address-fields), [ShipmentTracker](../components/shipment-tracker), [PricingTable](../components/pricing-table), [ComparisonTable](../components/comparison-table), [ReviewSummary](../components/review-summary), [Rating](../components/rating), [Carousel](../components/carousel), [Loupe](../components/loupe), [SeatPicker](../components/seat-picker), [SlotPicker](../components/slot-picker), [Ticket](../components/ticket), [InputNumber](../components/input-number).
 
-Blocks: [pricing](../blocks/pricing), [checkout](../blocks/checkout), [product](../blocks/product).
+Blocks: [pricing](../blocks/pricing), [checkout](../blocks/checkout), [product](../blocks/product), [orders](../blocks/orders).
 
 ## 3. Social and community
 
@@ -97,7 +97,7 @@ Banking, investing, payments, and accounting. People check money and move it.
 
 Today: [BalanceCard](../components/balance-card), [TransactionList](../components/transaction-list), [PriceTicker](../components/price-ticker), [OrderBook](../components/order-book), [CurrencyConverter](../components/currency-converter), [BudgetBars](../components/budget-bars), [PaymentSchedule](../components/payment-schedule), [Candlestick](../components/candlestick), [Sparkline](../components/sparkline), [Stat](../components/stat), [WaterfallChart](../components/waterfall-chart), [DonutChart](../components/donut-chart), [CardInput](../components/card-input), [PinPad](../components/pin-pad), [InputOTP](../components/input-otp).
 
-Blocks: [bank](../blocks/bank).
+Blocks: [bank](../blocks/bank), [billing](../blocks/billing).
 
 ## 9. Education
 
@@ -137,7 +137,7 @@ Search engines, wikis, and directories. People ask and find.
 
 Today: [SearchResult](../components/search-result), [SearchResults](../components/search-results), [AzIndex](../components/az-index), [KnowledgeArticle](../components/knowledge-article), [Command](../components/command), [Combobox](../components/combobox), [Glossary](../components/glossary), [FaqSearch](../components/faq-search), [Tree](../components/tree), [Highlight](../components/highlight).
 
-Blocks: [help](../blocks/help).
+Blocks: [help](../blocks/help), [search](../blocks/search).
 
 ## 14. Government and civic services
 
