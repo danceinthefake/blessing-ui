@@ -842,6 +842,10 @@ The user chose both: new blocks for the site-type groups that have no block, thr
 
 - ✅ A round from the components that no block used (288 of 441). Status page (Work): `BlessSystemStatus` takes the state of each part from its open incidents, `BlessUptimeBar` shows 30 days for each part with the uptime percent, and `BlessIncidentTimeline` shows the open and the past incidents. Refresh moves the open incident on, and people subscribe by email. Podcast (Everyday): `BlessAudioPlayer`, `BlessChapterList`, `BlessTranscript`, and `BlessEpisodeList`, with the transcript and the chapters as WebVTT. Each episode starts where you stopped. Warehouse (Shop): `BlessStockLevels`, `BlessPickingList` for each paid order, and `BlessSkuField` for deliveries by barcode. A shipped order takes its items off the stock, and the low items go to the supplier. The player got `v-model:time` and `v-model:playing` for this. `e2e/blocks.mjs` has a flow for each.
 
+### Phase 66 — study, support desk, and find a time blocks (2026-11-22)
+
+- ✅ A round from the components that no block used (288 of 441). Study (Everyday): `BlessFlashcards` with Leitner boxes, `BlessStat`, and `BlessMeterGroup` for the cards in each box. Only the first try of a day moves a card. Support desk (Work): a queue by the nearest deadline, `BlessTicketView`, and two `BlessSlaTimer`s. The limits count open hours only, so a weekend ticket starts on Monday. Find a time (Work): `BlessAvailabilityGrid` for your free times, `BlessHeatmap` for everyone, and the best times for the meeting length. The Inbox block now reads in `BlessEmailView` and replies in `BlessEmailComposer`, in place of a second mail block. Flashcards got the `answer` event and a reset for new cards, and the composer now shows Cc that a draft brings. `e2e/blocks.mjs` has a flow for each.
+
 ### Order
 
 5 → 6 → 7. Inside each phase, build order = list order. Every component: tests (grouped per area in `src/components/*.test.ts`), a docs page with a live example, a README row, checkbox flipped.

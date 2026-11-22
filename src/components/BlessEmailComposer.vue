@@ -54,7 +54,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref, useId } from "vue";
+import { computed, ref, useId, watch } from "vue";
 import { useLabelPack } from "../composables/useLabels";
 import BlessButton from "./BlessButton.vue";
 import BlessInputTags from "./BlessInputTags.vue";
@@ -106,6 +106,11 @@ const text = computed(() => ({
 }));
 const uid = useId();
 const showCc = ref(draft.value.cc.length > 0);
+// a draft from outside, for example a reply to all, can bring Cc addresses: show them
+watch(
+  () => draft.value.cc.length,
+  (n) => n && (showCc.value = true),
+);
 const tried = ref(false);
 // a plain shape check: something@something.something, no spaces
 const valid = (a: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(a);

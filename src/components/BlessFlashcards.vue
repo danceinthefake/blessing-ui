@@ -33,7 +33,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, nextTick, ref } from "vue";
+import { computed, nextTick, ref, watch } from "vue";
 import { useLabelPack } from "../composables/useLabels";
 import BlessButton from "./BlessButton.vue";
 import "./sr.css";
@@ -57,7 +57,11 @@ const props = defineProps<{
     done: (known: number, total: number) => string;
   }>;
 }>();
-const emit = defineEmits<{ finish: [known: number, total: number] }>();
+const emit = defineEmits<{
+  /** each answer, also for a card that comes back after "Again"; `first` is true on its first try */
+  answer: [card: BlessFlashcard, know: boolean, first: boolean];
+  finish: [known: number, total: number];
+}>();
 
 const text = computed(() => ({
   flip: "Show the answer",
@@ -83,6 +87,8 @@ const focusCard = () =>
 function answer(know: boolean) {
   const [i, ...rest] = queue.value;
   if (i === undefined) return;
+  emit("answer", props.cards[i]!, know, !tried.has(i));
+  tried.add(i);
   if (!know) missed.value.add(i);
   queue.value = know ? rest : [...rest, i];
   if (know) seen.value++;
@@ -91,13 +97,21 @@ function answer(know: boolean) {
     emit("finish", props.cards.length - missed.value.size, props.cards.length);
   focusCard();
 }
-function restart() {
+// cards seen once in this round; a card that comes back after "Again" is not a first try
+let tried = new Set<number>();
+function reset() {
   queue.value = props.cards.map((_, i) => i);
   missed.value = new Set();
+  tried = new Set();
   flipped.value = false;
   seen.value = 0;
+}
+function restart() {
+  reset();
   focusCard();
 }
+// new cards, for example after they load, start a new round; focus stays where it is
+watch(() => props.cards, reset);
 </script>
 
 <style>

@@ -94,7 +94,7 @@
   "slug": "inbox",
   "title": "Inbox",
   "group": "People and messages",
-  "summary": "Two-pane mail: a list with unread indicators, and a reading pane. A person can undo Archive and Delete. On a phone, it collapses to one pane with a back button.",
+  "summary": "Two-pane mail: a list with unread indicators, and a reading pane. A person can undo Archive and Delete, and Reply to all leaves the reader out and names each person once. On a phone, it collapses to one pane with a back button.",
   "order": 14
  },
  {
@@ -292,5 +292,26 @@
   "group": "Shop",
   "summary": "Stock levels against the reorder point, a picking list for each paid order, and deliveries that come in by barcode. A shipped order takes its items off the stock, and the low items go to the supplier in one purchase order.",
   "order": 42
+ },
+ {
+  "slug": "study",
+  "title": "Study",
+  "group": "Everyday",
+  "summary": "Decks of cards that come back by Leitner boxes. A card that you know at the first try moves up a box and waits longer, and a card that you miss goes back to box 1. The meter shows how far each deck is.",
+  "order": 44
+ },
+ {
+  "slug": "meet",
+  "title": "Find a time",
+  "group": "Work",
+  "summary": "A poll for a meeting time. You mark when you are free, the heatmap shows how many people are free at each time, and the best times come first: the most people for the whole meeting, then the earliest.",
+  "order": 45
+ },
+ {
+  "slug": "support",
+  "title": "Support desk",
+  "group": "Work",
+  "summary": "A queue of tickets by the nearest deadline, and a ticket with its replies and notes. The time limits for the first reply and for the fix count only open hours, so a ticket from the weekend starts on Monday morning.",
+  "order": 46
  }
 ]

@@ -20,12 +20,12 @@
         >
           <template #media>
             <BlessIndicator :value="m.unread" :label="m.unread ? 'Unread' : undefined">
-              <BlessAvatar :name="m.from" size="sm" />
+              <BlessAvatar :name="m.from.name" size="sm" />
             </BlessIndicator>
           </template>
           <template #title>
             <span class="inbox__from" :class="{ 'inbox__from--unread': m.unread }">{{
-              m.from
+              m.from.name
             }}</span>
             <span class="inbox__time">{{ m.time }}</span>
           </template>
@@ -48,26 +48,28 @@
             <BlessButton size="sm" variant="ghost" color="danger" @click="drop('Deleted')"
               >Delete</BlessButton
             >
-            <BlessButton size="sm">Reply</BlessButton>
           </template>
         </BlessToolbar>
-        <BlessText
-          ref="subject"
-          as="h2"
-          size="md"
-          weight="bold"
-          tabindex="-1"
-          class="inbox__subject"
-          >{{ open.subject }}</BlessText
+        <BlessEmailView
+          ref="mail"
+          :subject="open.subject"
+          :from="open.from"
+          :to="open.to"
+          :cc="open.cc"
+          :date="open.date"
+          :body="open.body"
         >
-        <div class="inbox__meta">
-          <BlessAvatar :name="open.from" size="sm" />
-          <div>
-            <BlessText size="sm" weight="bold">{{ open.from }}</BlessText>
-            <BlessText as="p" size="xs" muted>{{ open.time }}</BlessText>
-          </div>
-        </div>
-        <BlessText as="p" size="sm" class="inbox__body">{{ open.body }}</BlessText>
+          <template #actions>
+            <BlessButton size="sm" @click="reply(false)">Reply</BlessButton>
+            <BlessButton
+              v-if="open.to.length + (open.cc?.length ?? 0) > 1"
+              size="sm"
+              variant="outline"
+              @click="reply(true)"
+              >Reply to all</BlessButton
+            >
+          </template>
+        </BlessEmailView>
       </template>
       <BlessEmpty
         v-else
@@ -76,6 +78,9 @@
         variant="plain"
       />
     </div>
+    <BlessModal v-model="writing" title="Reply" size="md">
+      <BlessEmailComposer v-model="draft" @send="onSend" @discard="writing = false" />
+    </BlessModal>
   </div>
 </template>
 
@@ -85,15 +90,18 @@ import {
   BlessAvatar,
   BlessBadge,
   BlessButton,
+  BlessEmailComposer,
+  BlessEmailView,
   BlessEmpty,
   BlessIndicator,
   BlessItem,
-  BlessText,
+  BlessModal,
   BlessToolbar,
   useToast,
+  type BlessEmailDraft,
 } from "blessing-ui";
-import type { Mail } from "./domain";
-import { mockMailApi } from "./api";
+import { replyDraft, type Mail } from "./domain";
+import { me, mockMailApi } from "./api";
 
 const mails = ref<Mail[]>([]);
 const openId = ref<number | null>(null);
@@ -104,12 +112,16 @@ onMounted(async () => {
   loaded.value = true;
 });
 // On a phone the pane replaces the list: send focus to the message, and back to its row after.
-const subject = ref<{ $el: HTMLElement }>();
+const mail = ref<{ $el: HTMLElement }>();
 const list = ref<HTMLElement>();
 function read(m: Mail) {
   m.unread = false;
   openId.value = m.id;
-  nextTick(() => subject.value?.$el.focus());
+  nextTick(() => {
+    const h = mail.value?.$el.querySelector<HTMLElement>("h2");
+    h?.setAttribute("tabindex", "-1");
+    h?.focus();
+  });
 }
 const { toast } = useToast();
 // archive and delete act at once and offer Undo; focus goes to the row that took its place
@@ -128,6 +140,17 @@ function drop(verb: "Archived" | "Deleted") {
     rows[Math.min(i, rows.length - 1)]?.focus();
   });
 }
+const writing = ref(false);
+const draft = ref<BlessEmailDraft>({ to: [], cc: [], subject: "", body: "" });
+function reply(all: boolean) {
+  draft.value = replyDraft(open.value!, me.email, all);
+  writing.value = true;
+}
+async function onSend(d: BlessEmailDraft) {
+  await mockMailApi.send(d);
+  writing.value = false;
+  toast({ title: `Sent to ${d.to.join(", ")}`, color: "success" });
+}
 function back() {
   const i = mails.value.findIndex((m) => m.id === openId.value);
   openId.value = null;
@@ -136,8 +159,8 @@ function back() {
 </script>
 
 <style scoped>
-/* focus lands on the subject so the message is read; it isn't a control */
-.inbox__subject:focus {
+/* focus lands on the subject so the message is read; it is not a control */
+.inbox__pane :deep(.bless-email__subject:focus) {
   outline: none;
 }
 .inbox {
@@ -168,19 +191,6 @@ function back() {
 }
 .inbox__back {
   display: none;
-}
-.inbox__subject {
-  margin-top: var(--bless-space-4);
-}
-.inbox__meta {
-  display: flex;
-  align-items: center;
-  gap: var(--bless-space-3);
-  margin: var(--bless-space-4) 0;
-}
-.inbox__body {
-  white-space: pre-line;
-  line-height: var(--bless-leading-normal);
 }
 @media (max-width: 800px) {
   .inbox {

@@ -81,7 +81,7 @@ Documents, notes, tasks, boards, and calendars. People make things, alone or as 
 
 Today: [MarginComments](../components/margin-comments), [ShareAccess](../components/share-access), [MindMap](../components/mind-map), [TimeTracker](../components/time-tracker), [RoomBooking](../components/room-booking), [FileBrowser](../components/file-browser), [Editor](../components/editor), [Kanban](../components/kanban), [StickyBoard](../components/sticky-board), [TaskList](../components/task-list), [Gantt](../components/gantt), [Scheduler](../components/scheduler), [EventCalendar](../components/event-calendar), [Spreadsheet](../components/spreadsheet), [InfiniteCanvas](../components/infinite-canvas), [VersionHistory](../components/version-history), [PresenceCursors](../components/presence-cursors), [Command](../components/command), [FileTree](../components/file-tree), [Annotator](../components/annotator).
 
-Blocks: [project](../blocks/project), [files](../blocks/files), [calendar](../blocks/calendar).
+Blocks: [project](../blocks/project), [files](../blocks/files), [calendar](../blocks/calendar), [meet](../blocks/meet).
 
 ## 7. Business software and ERP
 
@@ -105,7 +105,7 @@ Courses, schools, and practice. People learn and show what they know.
 
 Today: [CourseCard](../components/course-card), [Gradebook](../components/gradebook), [Assignment](../components/assignment), [Certificate](../components/certificate), [LessonVideo](../components/lesson-video), [Quiz](../components/quiz), [Flashcards](../components/flashcards), [LessonPath](../components/lesson-path), [Achievements](../components/achievements), [Questionnaire](../components/questionnaire), [Progress](../components/progress), [Transcript](../components/transcript).
 
-Blocks: [course](../blocks/course).
+Blocks: [course](../blocks/course), [study](../blocks/study).
 
 ## 10. Health and fitness
 
@@ -137,7 +137,7 @@ Search engines, wikis, and directories. People ask and find.
 
 Today: [SearchResult](../components/search-result), [SearchResults](../components/search-results), [AzIndex](../components/az-index), [KnowledgeArticle](../components/knowledge-article), [Command](../components/command), [Combobox](../components/combobox), [Glossary](../components/glossary), [FaqSearch](../components/faq-search), [Tree](../components/tree), [Highlight](../components/highlight).
 
-Blocks: [help](../blocks/help), [search](../blocks/search).
+Blocks: [help](../blocks/help), [search](../blocks/search), [support](../blocks/support).
 
 ## 14. Government and civic services
 

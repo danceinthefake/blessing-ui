@@ -5,7 +5,7 @@ aside: false
 
 # Inbox
 
-<p class="bless-lead">Two-pane mail: a list with unread indicators, and a reading pane. A person can undo Archive and Delete. On a phone, it collapses to one pane with a back button.</p>
+<p class="bless-lead">Two-pane mail: a list with unread indicators, and a reading pane. A person can undo Archive and Delete, and Reply to all leaves the reader out and names each person once. On a phone, it collapses to one pane with a back button.</p>
 
 <BlockDemo :files :components="meta.components" :height="meta.height" :frame="withBase('/blocks/inbox-frame')" />
 

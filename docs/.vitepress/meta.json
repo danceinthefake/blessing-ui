@@ -7500,6 +7500,11 @@
   ],
   "events": [
    {
+    "name": "answer",
+    "type": "[card: BlessFlashcard, know: boolean, first: boolean]",
+    "description": ""
+   },
+   {
     "name": "finish",
     "type": "[known: number, total: number]",
     "description": ""

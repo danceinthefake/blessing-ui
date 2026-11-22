@@ -37,3 +37,13 @@ test("BlessEmailComposer: Cc opens, fields write the draft, and send emits it", 
   await w.findAll("button").at(-1)!.trigger("click");
   expect(w.emitted("discard")).toHaveLength(1);
 });
+
+test("BlessEmailComposer shows Cc when a new draft brings Cc addresses", async () => {
+  const w = sheet();
+  expect(w.find(`input[id$="-cc"]`).exists()).toBe(false);
+  await w.setProps({
+    modelValue: { to: ["a@x.example"], cc: ["b@x.example"], subject: "", body: "" },
+  });
+  expect(w.find(`input[id$="-cc"]`).exists()).toBe(true);
+  expect(w.text()).toContain("b@x.example");
+});

@@ -29,3 +29,22 @@ test("BlessFlashcards: flip shows the back, Again sends the card to the end, and
   expect(w.find(".bless-flash__face").text()).toBe("LUFS");
   w.unmount();
 });
+
+test("BlessFlashcards emits each answer with its first try, and new cards start a new round", async () => {
+  const w = mount(BlessFlashcards, { props: { cards: [] as typeof cards } });
+  expect(w.find(".bless-flash__end").exists()).toBe(true);
+  await w.setProps({ cards });
+  expect(w.find(".bless-flash__face").text()).toBe("LUFS");
+  const buttons = () => w.findAll(".bless-flash__actions button");
+  await buttons()[0]!.trigger("click");
+  await buttons()[0]!.trigger("click"); // Again on LUFS
+  await buttons()[0]!.trigger("click");
+  await buttons()[1]!.trigger("click"); // know Gain
+  await buttons()[0]!.trigger("click");
+  await buttons()[1]!.trigger("click"); // know LUFS, its second try
+  expect(w.emitted("answer")).toEqual([
+    [cards[0], false, true],
+    [cards[1], true, true],
+    [cards[0], true, false],
+  ]);
+});

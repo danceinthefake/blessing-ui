@@ -303,6 +303,26 @@ await step("an empty inbox says so", async () => {
   expect(/Inbox zero/.test(await text(".inbox")), "no empty state");
 });
 
+await step("reply to all leaves the reader out and names each person once", async () => {
+  await go("inbox");
+  await page.locator(".inbox__list li > *").first().click();
+  await page.getByRole("button", { name: "Reply to all" }).click();
+  const dlg = page.locator("dialog[open]");
+  const people = await dlg.textContent();
+  expect(
+    /megumi@/.test(people) && /eriri@/.test(people) && /utaha@/.test(people),
+    "a person is missing",
+  );
+  expect(!/tomoya@/.test(people), "the reader is on the reply");
+  expect(
+    (await dlg.getByLabel("Subject").inputValue()) === "Re: 明日の打ち合わせ",
+    "no Re: subject",
+  );
+  await dlg.getByRole("button", { name: "Send" }).click();
+  await page.waitForTimeout(800);
+  expect(/Sent to megumi@blessing.example/.test(await page.content()), "no sent toast");
+});
+
 console.log("Site header");
 await step("on a phone, the menu button opens the links in a sheet", async () => {
   await page.setViewportSize({ width: 390, height: 800 });
@@ -748,6 +768,86 @@ await step(
     expect((await row("Oolong tea")).includes("24"), "the delivery did not add to the stock");
   },
 );
+
+console.log("Study");
+await step(
+  "a known card moves up a box, a missed card comes back, and a new card is due today",
+  async () => {
+    await go("study");
+    await page.waitForTimeout(400);
+    const card = page.locator(".bless-flash__actions");
+    const answer = async (know) => {
+      await card.getByRole("button", { name: "Show the answer" }).click();
+      await card.getByRole("button", { name: know ? "I know it" : "Again" }).click();
+    };
+    expect(/Berapa harganya/.test(await text(".bless-flash")), "box 1 is not first");
+    await answer(false);
+    for (let i = 0; i < 4; i++) await answer(true);
+    expect(/You knew 3 of 4/.test(await text(".study")), "no score");
+    expect(/2 of 7/.test(await text(".study__stats")), "Terima kasih did not reach box 5");
+    await page.getByRole("button", { name: "Add a card" }).click();
+    const dlg = page.locator("dialog[open]");
+    await dlg.getByRole("button", { name: "Add" }).click();
+    expect(/Write both sides/.test(await dlg.textContent()), "no problem for an empty card");
+    await dlg.getByLabel("Front").fill("Enak sekali");
+    await dlg.getByLabel("Back").fill("Very tasty");
+    await dlg.getByRole("button", { name: "Add" }).click();
+    await page.waitForTimeout(700);
+    await page.getByRole("button", { name: "Study the 1 new card" }).click();
+    expect(/Enak sekali/.test(await text(".bless-flash")), "the new card is not in the round");
+  },
+);
+
+console.log("Support desk");
+await step(
+  "the queue is by deadline, a reply meets the first-reply limit, and a solved ticket leaves the queue",
+  async () => {
+    await go("support");
+    await page.waitForTimeout(400);
+    expect(/Late since Mon 10:00/.test(await text(".desk__list")), "no late ticket");
+    await page.getByRole("button", { name: /My card was charged twice/ }).click();
+    const reply = () => text(".desk__limits .bless-sla");
+    expect(/20 min/.test(await reply()), "the urgent limit is not 20 minutes away");
+    await page
+      .getByRole("textbox", { name: "Reply" })
+      .fill("We are sorry. We refund the second payment today.");
+    await page.getByRole("button", { name: "Send the reply" }).click();
+    await page.waitForTimeout(600);
+    expect(
+      /We refund the second payment/.test(await text(".desk__ticket")),
+      "the reply is not in the ticket",
+    );
+    expect(!/20 min/.test(await reply()), "the first-reply timer still runs");
+    await page.locator(".bless-tkview__status select").selectOption("solved");
+    await page.waitForTimeout(500);
+    expect(
+      !/charged twice/.test(await text(".desk__list")),
+      "the solved ticket stayed in the queue",
+    );
+    await page.getByRole("tab", { name: "Solved" }).click();
+    await page.waitForTimeout(500);
+    expect(/charged twice/.test(await text(".desk__list")), "the ticket is not in Solved");
+  },
+);
+
+console.log("Find a time");
+await step("a shorter meeting finds a time for everyone, and Book locks the poll", async () => {
+  await go("meet");
+  await page.waitForTimeout(400);
+  expect(/Rina cannot come/.test(await text(".meet__best")), "the 1 hour times are wrong");
+  await page.getByLabel("Length").selectOption("30");
+  await page.waitForTimeout(300);
+  const first = page.locator(".meet__slot").first();
+  expect(
+    /Tue 24 November, 10:30 to 11:00/.test(await first.textContent()) &&
+      /Everyone is free/.test(await first.textContent()),
+    "no time for everyone",
+  );
+  await first.getByRole("button", { name: "Book" }).click();
+  await page.waitForTimeout(800);
+  expect(/Booked/.test(await text(".meet")), "no booked alert");
+  expect(await first.getByRole("button", { name: "Book" }).isDisabled(), "the poll is still open");
+});
 
 await browser.close();
 console.log(failed ? `\n${failed} block check(s) failed` : "\nall block checks passed");

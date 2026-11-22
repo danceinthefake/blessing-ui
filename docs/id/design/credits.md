@@ -54,6 +54,8 @@ Beberapa komponen memakai metode yang sudah dikenal. Kami menulis ulang masing-m
 - [Blok kalender](../../blocks/calendar) menyimpan tiap acara sebagai jam dinding di zona waktunya sendiri, seperti `DTSTART;TZID` di [RFC 5545](https://www.rfc-editor.org/rfc/rfc5545), standar iCalendar. Aturan zona datang dari [IANA Time Zone Database](https://www.iana.org/time-zones) lewat `Intl`.
 - [Blok halaman status](../../blocks/status) memakai tahap insiden (investigating, identified, monitoring, resolved) dari halaman status publik seperti [Atlassian Statuspage](https://www.atlassian.com/software/statuspage).
 - [Blok podcast](../../blocks/podcast) membaca transkrip dan babnya sebagai [WebVTT](https://www.w3.org/TR/webvtt1/), format teks takarir dari W3C.
+- [Blok belajar](../../blocks/study) memindahkan kartu antarkotak dengan sistem Leitner, dari _So lernt man lernen_ karya Sebastian Leitner (1972).
+- [Blok cari waktu](../../blocks/meet) mengikuti jajak pendapat kelompok di [When2meet](https://www.when2meet.com/): tiap orang mewarnai waktu luangnya, dan kisi menunjukkan di mana waktu itu bertemu.
 - [Input kartu](../../components/card-input) memeriksa nomor dengan algoritma Luhn (Hans Peter Luhn, 1954).
 - Halaman [periksa jawaban](../../components/check-answers) mengikuti pola "Check answers" dari [GOV.UK Design System](https://design-system.service.gov.uk/patterns/check-answers/) karya Government Digital Service Inggris.
 - [Peta dengan penanda](../../components/map-pins) menempatkan ubin dan penanda dengan proyeksi Web Mercator (EPSG:3857). Ubin dan data peta bawaannya berasal dari [OpenStreetMap](https://www.openstreetmap.org/copyright) dan para kontributornya, dengan lisensi ODbL.

@@ -81,7 +81,7 @@ Dokumen, catatan, tugas, papan, dan kalender. Orang membuat sesuatu, sendiri ata
 
 Sekarang: [MarginComments](../../components/margin-comments), [ShareAccess](../../components/share-access), [MindMap](../../components/mind-map), [TimeTracker](../../components/time-tracker), [RoomBooking](../../components/room-booking), [FileBrowser](../../components/file-browser), [Editor](../../components/editor), [Kanban](../../components/kanban), [StickyBoard](../../components/sticky-board), [TaskList](../../components/task-list), [Gantt](../../components/gantt), [Scheduler](../../components/scheduler), [EventCalendar](../../components/event-calendar), [Spreadsheet](../../components/spreadsheet), [InfiniteCanvas](../../components/infinite-canvas), [VersionHistory](../../components/version-history), [PresenceCursors](../../components/presence-cursors), [Command](../../components/command), [FileTree](../../components/file-tree), [Annotator](../../components/annotator).
 
-Blok: [project](../../blocks/project), [files](../../blocks/files), [calendar](../../blocks/calendar).
+Blok: [project](../../blocks/project), [files](../../blocks/files), [calendar](../../blocks/calendar), [meet](../../blocks/meet).
 
 ## 7. Perangkat lunak bisnis dan ERP
 
@@ -105,7 +105,7 @@ Kursus, sekolah, dan latihan. Orang belajar dan menunjukkan yang mereka tahu.
 
 Sekarang: [CourseCard](../../components/course-card), [Gradebook](../../components/gradebook), [Assignment](../../components/assignment), [Certificate](../../components/certificate), [LessonVideo](../../components/lesson-video), [Quiz](../../components/quiz), [Flashcards](../../components/flashcards), [LessonPath](../../components/lesson-path), [Achievements](../../components/achievements), [Questionnaire](../../components/questionnaire), [Progress](../../components/progress), [Transcript](../../components/transcript).
 
-Blok: [course](../../blocks/course).
+Blok: [course](../../blocks/course), [study](../../blocks/study).
 
 ## 10. Kesehatan dan kebugaran
 
@@ -137,7 +137,7 @@ Mesin pencari, wiki, dan direktori. Orang bertanya dan menemukan.
 
 Sekarang: [SearchResult](../../components/search-result), [SearchResults](../../components/search-results), [AzIndex](../../components/az-index), [KnowledgeArticle](../../components/knowledge-article), [Command](../../components/command), [Combobox](../../components/combobox), [Glossary](../../components/glossary), [FaqSearch](../../components/faq-search), [Tree](../../components/tree), [Highlight](../../components/highlight).
 
-Blok: [help](../../blocks/help), [search](../../blocks/search).
+Blok: [help](../../blocks/help), [search](../../blocks/search), [support](../../blocks/support).
 
 ## 14. Layanan pemerintah dan publik
 
