@@ -7135,7 +7135,7 @@
     "name": "id",
     "type": "string | undefined",
     "required": false,
-    "description": ""
+    "description": "the id of the control; read once, when the field mounts. Default: a new id"
    },
    {
     "name": "name",

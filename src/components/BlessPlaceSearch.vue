@@ -52,7 +52,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onBeforeUnmount, ref, useId } from "vue";
+import { computed, onBeforeUnmount, ref, useId, watch } from "vue";
 import { useLabelPack } from "../composables/useLabels";
 
 defineOptions({ name: "BlessPlaceSearch" });
@@ -101,6 +101,8 @@ const text = computed(() => ({
 }));
 const id = useId();
 const query = ref(place.value?.name ?? "");
+// a place from the parent, for example a saved address, shows its name
+watch(place, (p) => (query.value = p?.name ?? ""));
 const results = ref<BlessPlace[]>([]);
 const open = ref(false);
 const active = ref(-1);

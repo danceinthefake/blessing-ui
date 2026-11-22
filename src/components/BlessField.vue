@@ -42,6 +42,7 @@ const props = defineProps<{
   description?: string;
   /** explicit error; otherwise read from the control's validity after submit/blur */
   error?: string;
+  /** the id of the control; read once, when the field mounts. Default: a new id */
   id?: string;
   /** the `name` of the control, for the messages of a form `schema`. Default: the first named control inside. */
   name?: string;

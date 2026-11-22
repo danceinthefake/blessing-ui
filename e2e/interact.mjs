@@ -225,7 +225,7 @@ await step("inbox: opening a mail clears its unread dot and fills the pane", asy
   await items.nth(0).click();
   await page.waitForTimeout(150);
   expect((await dots()) === before - 1, `unread dots ${before} → ${await dots()}`);
-  expect((await page.locator(".inbox__subject").count()) === 1, "reading pane filled");
+  expect((await page.locator(".bless-email__subject").count()) === 1, "reading pane filled");
 });
 await page.setViewportSize({ width: 390, height: 800 });
 await step("inbox on a phone: one pane at a time, Back returns to the list", async () => {
@@ -235,7 +235,7 @@ await step("inbox on a phone: one pane at a time, Back returns to the list", asy
   await page.waitForTimeout(150);
   expect(await page.locator(".inbox__list").isHidden(), "list hidden while reading");
   expect(
-    await page.evaluate(() => document.activeElement?.classList.contains("inbox__subject")),
+    await page.evaluate(() => document.activeElement?.classList.contains("bless-email__subject")),
     "focus moved to the message",
   );
   await page.getByRole("button", { name: /Back/ }).click();

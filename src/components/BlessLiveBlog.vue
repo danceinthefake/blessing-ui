@@ -78,6 +78,11 @@ const text = computed(() => ({
 }));
 // updates that came while the reader reads wait behind a button, so the page does not jump
 const shown = ref(new Set(props.updates.map((u) => u.id)));
+// the first updates to load are the page itself, not news: show them at once
+watch(
+  () => props.updates.length,
+  (n) => n && !shown.value.size && (shown.value = new Set(props.updates.map((u) => u.id))),
+);
 const waiting = computed(() => props.updates.filter((u) => !shown.value.has(u.id)));
 watch(
   () => props.updates.length,

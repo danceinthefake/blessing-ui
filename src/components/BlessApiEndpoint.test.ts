@@ -32,3 +32,16 @@ test("BlessApiEndpoint: method, path parameters, the table, and a tab for each r
     .find((p) => (p.element as HTMLElement).style.display !== "none")!;
   expect(shown.text()).toBe("No such order");
 });
+
+test("BlessApiEndpoint opens the first response of a new endpoint", async () => {
+  const w = mount(BlessApiEndpoint, {
+    props: { method: "get", path: "/a", responses: [{ status: 200, description: "OK" }] },
+  });
+  await w.setProps({
+    method: "post",
+    path: "/b",
+    responses: [{ status: 201, description: "Made" }],
+  });
+  expect(w.find("[role=tab]").attributes("aria-selected")).toBe("true");
+  expect(w.find("[role=tabpanel]").text()).toBe("Made");
+});

@@ -21,6 +21,7 @@ Finds a shop, a station, or an address, often above a [map with pins](./map-pins
 - The search starts after `min-length` characters (default 2) and a wait of `delay` milliseconds after the last key (default 250). If an older search ends after a newer one, its answer is dropped.
 - The field is a combobox. The Down and Up arrow keys move through the results, Enter picks one, and Escape closes the list.
 - `v-model` is the chosen place. The field then shows its name.
+- If the parent sets the place later, for example a saved address, the field shows its name.
 - A status line says "Searching…", the number of places, "No places found.", or an error. Screen readers hear it.
 - `locale` formats the distances. Change the words with `labels` or a [label pack](../guide/translating). The API table lists the keys.
 

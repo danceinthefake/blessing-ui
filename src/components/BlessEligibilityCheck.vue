@@ -46,7 +46,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, nextTick, ref, useId } from "vue";
+import { computed, nextTick, ref, useId, watch } from "vue";
 import { useLabelPack } from "../composables/useLabels";
 
 defineOptions({ name: "BlessEligibilityCheck" });
@@ -99,6 +99,11 @@ const id = useId();
 // the questions answered so far, with the index of the answer
 const path = ref<{ q: string; a: number }[]>([]);
 const at = ref(props.questions[0]?.id ?? "");
+// questions that load late: start at the first one, if the check has not started
+watch(
+  () => props.questions,
+  (q) => !path.value.length && !q.some((x) => x.id === at.value) && (at.value = q[0]?.id ?? ""),
+);
 const choice = ref<number>();
 const error = ref(false);
 const head = ref<HTMLElement>();

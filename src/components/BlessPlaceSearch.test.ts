@@ -43,3 +43,11 @@ test("BlessPlaceSearch: waits, searches, counts, keys, picks, and ignores a late
   expect((input.element as HTMLInputElement).value).toBe("Kopi Kenangan");
   expect(input.attributes("aria-expanded")).toBe("false");
 });
+
+test("BlessPlaceSearch shows a place that the parent sets after mount", async () => {
+  const w = mount(BlessPlaceSearch, { props: { search: async () => places } });
+  await w.setProps({ modelValue: places[0] });
+  expect((w.find("input").element as HTMLInputElement).value).toBe("Kopi Tuku");
+  await w.setProps({ modelValue: null });
+  expect((w.find("input").element as HTMLInputElement).value).toBe("");
+});

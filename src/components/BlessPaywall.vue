@@ -24,7 +24,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref, useId } from "vue";
+import { computed, ref, useId, watch } from "vue";
 import { useLabelPack } from "../composables/useLabels";
 import BlessButton from "./BlessButton.vue";
 import "./sr.css";
@@ -67,7 +67,14 @@ const text = computed(() => ({
   ...props.labels,
 }));
 const uid = useId();
-const chosen = ref(props.pick ?? props.plans[0]?.id ?? "");
+const first = () =>
+  props.plans.some((p) => p.id === props.pick) ? props.pick! : (props.plans[0]?.id ?? "");
+const chosen = ref(first());
+// plans that load late, or change, keep a plan that is in the list; `pick` counts only at first
+watch(
+  () => props.plans,
+  (p) => !p.some((x) => x.id === chosen.value) && (chosen.value = first()),
+);
 </script>
 
 <style>

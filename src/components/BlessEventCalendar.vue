@@ -279,8 +279,8 @@ const dayLabel = computed(
 .bless-evcal__event:hover {
   background: color-mix(in srgb, var(--_c) 28%, var(--bless-color-bg));
 }
+/* the time takes the text color of the event: muted text fails contrast on a tinted event */
 .bless-evcal__time {
-  color: var(--bless-color-text-muted);
   font-variant-numeric: tabular-nums;
 }
 .bless-evcal__more {

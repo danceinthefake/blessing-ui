@@ -72,7 +72,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, reactive, ref, useId } from "vue";
+import { computed, reactive, ref, useId, watch } from "vue";
 import { useLabelPack } from "../composables/useLabels";
 
 defineOptions({ name: "BlessContactForm" });
@@ -126,6 +126,11 @@ const text = computed(() => ({
 }));
 const id = useId();
 const v = reactive({ name: "", email: "", topic: props.topics[0] ?? "", message: "" });
+// topics that load late, or change, keep a topic that is in the list
+watch(
+  () => props.topics,
+  (t) => !t.includes(v.topic) && (v.topic = t[0] ?? ""),
+);
 const errors = reactive<Record<string, string>>({});
 // a field that people do not see; a bot that fills it gets no message through
 const trap = ref("");

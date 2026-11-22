@@ -192,10 +192,10 @@ async function onStatus(s: BlessTicketStatus) {
   text-align: start;
   cursor: pointer;
 }
-.desk__row:hover,
-.desk__row[aria-current] {
-  background: var(--bless-color-surface-2);
+.desk__row:hover strong {
+  text-decoration: underline;
 }
+/* the open ticket has a bar and no fill, so its muted line keeps its contrast */
 .desk__row[aria-current] {
   box-shadow: inset 4px 0 0 var(--bless-color-accent);
 }

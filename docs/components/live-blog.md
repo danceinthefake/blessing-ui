@@ -20,6 +20,7 @@ Follows an event as it happens, such as a launch, a match, or a live show. Your 
 - `updates` is the list of updates, newest first. Each update has an `id`, a `time` as text, and a `body`. It can also have a `title`, `pinned`, and `key`.
 - Pinned updates stay on top. A key moment has a mark, the word "Key moment", and a thick edge.
 - New updates do not push the text down while the reader reads. They wait behind a button, such as "Show 2 new updates". A hidden status line says the same. The button shows the updates and moves the focus to the newest one.
+- The first updates to load show at once. Only updates that come after them wait behind the button.
 - `live` shows a "Live" tag. Outside reduced motion, its dot pulses.
 - Change the words with `labels` or a [label pack](../guide/translating): `title`, `live`, `pinned`, `key`, and `show` (a function).
 

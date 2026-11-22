@@ -88,6 +88,11 @@ const text = computed(() => ({
   ...props.labels,
 }));
 const task = ref(running.value?.task ?? "");
+// a timer from the parent, for example one that runs on another device, shows its task
+watch(
+  () => running.value?.task,
+  (t) => t !== undefined && (task.value = t),
+);
 const now = ref(Date.now());
 let tick: ReturnType<typeof setInterval> | undefined;
 const run = (on: boolean) => {

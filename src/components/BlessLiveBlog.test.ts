@@ -35,3 +35,10 @@ test("BlessLiveBlog: pinned first, key moments marked, and new updates wait behi
   expect(w.find(".bless-live__new").exists()).toBe(false);
   w.unmount();
 });
+
+test("BlessLiveBlog shows the updates that load after mount, not behind the button", async () => {
+  const w = mount(BlessLiveBlog, { props: { updates: [] as typeof first, live: true } });
+  await w.setProps({ updates: first });
+  expect(w.findAll(".bless-live__body")).toHaveLength(2);
+  expect(w.find(".bless-live__new").exists()).toBe(false);
+});

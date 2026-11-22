@@ -850,6 +850,10 @@ The user chose both: new blocks for the site-type groups that have no block, thr
 
 - ✅ A round from the components that no block used (269 of 441). Tickets (Shop): `BlessCountdownBanner`, `BlessSeatPicker` with a "best seats" search (front row first, then nearest the middle, never across an aisle), a hold that can lose a seat, and `BlessTicket` for each paid seat. The QR code stays out, because it needs an encoder from outside. Article (Marketing): `BlessArticleHeader`, `BlessReadingProgress`, `BlessToc`, `BlessPullQuote`, `BlessFootnoteRef` with `BlessFootnotes`, `BlessShareBar`, and `BlessRelatedArticles`. Notes are inline `[^text]`, numbered in the order that they first show. Timesheet (Work): `BlessTimeTracker`, `BlessBarChart` of normal and overtime hours, `BlessApprovalFlow`, and `BlessPayslip`, with overtime by PP 35/2021. `e2e/blocks.mjs` has a flow for each.
 
+### Phase 68 — state copied from props (2026-11-22)
+
+- ✅ A hunt for the bug that the blocks found twice: state that setup copies from a prop or a model once, so data that loads later does not show. Of 22 copies, 6 were bugs and are fixed with a test each: `BlessContactForm`, `BlessEligibilityCheck`, `BlessPaywall`, `BlessPlaceSearch`, `BlessTimeTracker`, and `BlessLiveBlog`. Each fix follows one rule: if the current choice is no longer valid, go back to the default. The rest are watched already, or are starting values on purpose (`facing`, `defaultExpanded`, `month`, and the `id` of `BlessField`, which now says that it is read once). `src/props-copy.test.ts` lists each copy with its reason, so a new copy fails until someone looks at it.
+
 ### Order
 
 5 → 6 → 7. Inside each phase, build order = list order. Every component: tests (grouped per area in `src/components/*.test.ts`), a docs page with a live example, a README row, checkbox flipped.

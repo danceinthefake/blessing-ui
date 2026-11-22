@@ -25,6 +25,10 @@
 
 ### Fixed
 
+- `BlessEventCalendar` shows the time of an event in the text color of the event. The muted time failed the contrast check on a tinted event, for example on a day outside the month. Found by axe on the calendar block.
+- Components that pick a first item at mount now follow data that loads later. `BlessContactForm` picks the first topic, `BlessEligibilityCheck` starts at the first question, and `BlessPaywall` picks a plan when the plans come after the first render. Before, they stayed empty.
+- `BlessPlaceSearch` shows the name of a place that the parent sets after mount, for example a saved address. `BlessTimeTracker` shows the task of a timer that the parent starts, for example from another device.
+- `BlessLiveBlog` shows the first updates to load at once. Before, updates that came after mount all waited behind the "new updates" button, and the blog looked empty.
 - `BlessEmailComposer` shows the Cc field when a new draft comes with Cc addresses, for example a reply to all. Before, the addresses were hidden behind "Add Cc". Found by the Inbox block.
 - The trip block used `--bless-space-5`, a token that does not exist, so its parts had no gap.
 - HeatmapCalendar opens at the newest week when it is wider than its box. Before, a phone showed the oldest weeks first. Found by the new Profile block.

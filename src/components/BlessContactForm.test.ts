@@ -32,3 +32,11 @@ test("BlessContactForm: errors linked to fields, focus on the first, submit, the
   expect(w.find("[role=status]").text()).toContain("Thank you");
   w.unmount();
 });
+
+test("BlessContactForm picks the first topic when the topics load after mount", async () => {
+  const w = mount(BlessContactForm, { props: { topics: [] as string[] } });
+  await w.setProps({ topics: ["Sales", "Help"] });
+  expect((w.find("select").element as HTMLSelectElement).value).toBe("Sales");
+  await w.setProps({ topics: ["Help"] });
+  expect((w.find("select").element as HTMLSelectElement).value).toBe("Help");
+});

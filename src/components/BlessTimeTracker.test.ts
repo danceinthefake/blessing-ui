@@ -40,3 +40,9 @@ test("BlessTimeTracker: start, tick, stop into an entry, days with totals, and d
   await w.find('[aria-label="Delete Email"]').trigger("click");
   expect(w.findAll("section")).toHaveLength(1);
 });
+
+test("BlessTimeTracker shows the task of a timer that the parent starts after mount", async () => {
+  const w = mount(BlessTimeTracker, { props: { modelValue: [] as BlessTimeEntry[] } });
+  await w.setProps({ running: { task: "Mix the podcast", start: Date.now() } });
+  expect((w.find("input").element as HTMLInputElement).value).toBe("Mix the podcast");
+});

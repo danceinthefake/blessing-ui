@@ -60,3 +60,9 @@ test("BlessEligibilityCheck: one question at a time, an error without a choice, 
   expect(w.find("legend").text()).toContain("Question 1");
   w.unmount();
 });
+
+test("BlessEligibilityCheck starts at the first question when the questions load after mount", async () => {
+  const w = mount(BlessEligibilityCheck, { props: { questions: [], outcomes: [] } });
+  await w.setProps({ questions, outcomes });
+  expect(w.find(".bless-elig__q").text()).toBe("Are you 18 or older?");
+});
