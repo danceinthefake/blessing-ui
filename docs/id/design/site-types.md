@@ -153,7 +153,7 @@ Halaman arahan, portofolio, dan situs perusahaan. Orang mengenal produk lalu men
 
 Sekarang: [LogoCloud](../../components/logo-cloud), [FeatureGrid](../../components/feature-grid), [TeamGrid](../../components/team-grid), [ContactForm](../../components/contact-form), [PortfolioGrid](../../components/portfolio-grid), [PricingTable](../../components/pricing-table), [Testimonials](../../components/testimonials), [ComparisonTable](../../components/comparison-table), [NewsletterSignup](../../components/newsletter-signup), [Marquee](../../components/marquee), [Parallax](../../components/parallax), [CountUp](../../components/count-up), [FaqSearch](../../components/faq-search), [ConsentBanner](../../components/consent-banner), [CountdownBanner](../../components/countdown-banner), [Background](../../components/background).
 
-Blok: [site](../../blocks/site), [pricing](../../blocks/pricing).
+Blok: [site](../../blocks/site), [pricing](../../blocks/pricing), [header](../../blocks/header), [footer](../../blocks/footer).
 
 ## 16. Asisten dan agen AI
 

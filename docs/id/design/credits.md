@@ -20,7 +20,7 @@ Fon bawaannya adalah [Roboto](https://fonts.google.com/specimen/Roboto) karya Ch
 
 Kami mencocokkan daftar komponen dengan proyek-proyek ini, untuk mengetahui apa saja yang wajib ada di pustaka sejenis. Setiap komponen Blessing dibuat sendiri. Pustaka ini tidak memakai kode dari mereka, dan nama mereka milik pemiliknya.
 
-- [shadcn/ui](https://ui.shadcn.com/): daftar target pertama, dan bentuk pembungkus grafik.
+- [shadcn/ui](https://ui.shadcn.com/): daftar target pertama, dan bentuk pembungkus grafik, serta header dan footer situs sebagai blok salinan, bukan komponen.
 - [PrimeVue](https://primevue.org/): daftar target kedua, untuk komponen data dan formulir yang lebih besar.
 - [Sonner](https://sonner.emilkowal.ski/), [Radix](https://www.radix-ui.com/), dan [cmdk](https://cmdk.paco.me/): perilaku toaster, komponen dasar, dan menu perintah. Kami menulis versi kecil dari perilaku itu dan tidak membungkus pustakanya.
 

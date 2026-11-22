@@ -811,6 +811,10 @@ The user chose both: new blocks for the site-type groups that have no block, thr
 - ✅ `docs/components/index.md`: an Eyecatch "Volume 02 · the catalog", then each group as a heading with its count and a card per component (sidebar order). The top-bar link (both languages) opens it, and the components sidebar has an Overview item. The volumes follow the top bar: Guide 01, Components 02, Blocks 03, Design 04, in the Eyecatches and in `PageStrip`. The strip on a component page reads "Volume 02 · group · number". English only, like the blocks. Axe checks the catalog and the blocks index as whole pages. The motion and visual tests skip `index.md`. Axe on the blocks index found the link in a tip box at 3.4–3.7:1, so `--vp-c-tip-1` uses `info-text` now.
 - ✅ `e2e/axe.mjs` checks the home pages and every guide and design page in both languages as whole pages, not only component demos and block frames: 500 pages × 2 themes. It found 44 contrast misses, from two causes: Shiki's comment gray, and the gray box under inline code in a link. Both are fixed in `custom.css`.
 
+### Phase 59 — site header and footer blocks (2026-11-22)
+
+- ✅ `header` and `footer` blocks in a new sidebar group, Site frame. Like shadcn/ui, they are copy-in blocks, not components, because every site header looks different. `BlessLayout` keeps its `header` and `footer` slots. The header has a wordmark, `BlessNavigationMenu` with one dropdown, `BlessThemeToggle`, and a sign-in button. Under 720px, the links move into a `BlessSheet` behind a menu button. The footer has a newsletter signup with a mock `api.ts`, three link columns, and a fine-print row.
+
 ### Order
 
 5 → 6 → 7. Inside each phase, build order = list order. Every component: tests (grouped per area in `src/components/*.test.ts`), a docs page with a live example, a README row, checkbox flipped.

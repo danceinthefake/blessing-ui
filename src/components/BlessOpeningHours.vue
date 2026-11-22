@@ -208,6 +208,10 @@ const status = computed(() => {
 .bless-hours__closed {
   color: var(--bless-color-text-muted);
 }
+/* today sits on surface-2, where muted text falls under 4.5:1 */
+.bless-hours__day.is-today .bless-hours__closed {
+  color: var(--bless-color-text);
+}
 .bless-hours {
   animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft);
 }

@@ -98,6 +98,7 @@ function submit(e: Event) {
 }
 .bless-newsletter__privacy a {
   color: var(--bless-color-text);
+  text-decoration: underline; /* the color alone is too close to the muted line around it */
 }
 /* the thanks has a check-like bar, so it does not rest on the color */
 .bless-newsletter__done {

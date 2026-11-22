@@ -173,5 +173,19 @@
   "group": "Everyday",
   "summary": "A trip helper: search a city, then see its weather for five days, the time there next to the time at home, and the places to visit on a map. Each part does one small job.",
   "order": 25
+ },
+ {
+  "slug": "header",
+  "title": "Site header",
+  "group": "Site frame",
+  "summary": "A wordmark, the main navigation with one dropdown, a theme switch, and a sign-in button. On a phone, the links move into a sheet behind a menu button.",
+  "order": 26
+ },
+ {
+  "slug": "footer",
+  "title": "Site footer",
+  "group": "Site frame",
+  "summary": "The wordmark with a newsletter signup, three columns of links, and a fine-print row with the copyright and the legal links. The columns stack on a phone.",
+  "order": 27
  }
 ]

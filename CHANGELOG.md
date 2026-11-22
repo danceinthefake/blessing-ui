@@ -4,6 +4,7 @@
 
 ### Added
 
+- Site header and site footer blocks, in a new Site frame group. Run `npx blessing-ui add header footer`, then put them in the `header` and `footer` slots of Layout. The header moves its links into a sheet on a phone. The footer has a newsletter signup with an offline `api.ts`.
 - Eyecatch: the anime title card from the docs site, as a component. It has a kicker, a large thin title, a big number, and an accent slash that wipes in on first view. Found by blessing.id, which needs it for its sign-in and launcher banners.
 
 ### Changed
@@ -12,6 +13,8 @@
 
 ### Fixed
 
+- OpeningHours shows "Closed" in ink on today's row. Before, muted text on the gray row of today was under 4.5:1 on a day the place is closed.
+- NewsletterSignup underlines its privacy link. Before, only the color set the link apart from the muted line around it, at less than 3:1. Found by the new footer block.
 - RelativeTime counts a new `value` from the time now. Before, a component that a list reused for a newer value kept its old "now" and said, for example, "in 1 second". Found by blessing.id.
 - ThemeToggle and PaletteToggle read the label pack, so `provideLabels(labelsId)` gives them Indonesian names ("Tema", "Palet warna"). Each has a new `labels` prop: ThemeToggle `theme`, `light`, `system`, `dark`, and `darkTheme`, and PaletteToggle `palette`. The `label` prop still wins over both. Found by blessing.id.
 

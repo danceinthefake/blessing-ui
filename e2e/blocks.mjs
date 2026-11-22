@@ -303,6 +303,33 @@ await step("an empty inbox says so", async () => {
   expect(/Inbox zero/.test(await text(".inbox")), "no empty state");
 });
 
+console.log("Site header");
+await step("on a phone, the menu button opens the links in a sheet", async () => {
+  await page.setViewportSize({ width: 390, height: 800 });
+  await go("header");
+  expect(!(await page.locator(".site-header__nav").isVisible()), "nav still in the bar");
+  await page.getByRole("button", { name: "Menu" }).click();
+  const sheet = page.locator("dialog[open]");
+  expect(await sheet.getByRole("link", { name: "Pricing" }).isVisible(), "no links in the sheet");
+  await sheet.getByRole("link", { name: "Pricing" }).click();
+  expect(!(await sheet.count()), "a link did not close the sheet");
+  await page.setViewportSize({ width: 1280, height: 900 });
+});
+
+console.log("Site footer");
+await step("the newsletter says why it refused, then takes a new address", async () => {
+  await go("footer");
+  const field = page.getByRole("textbox", { name: /email/i });
+  await field.fill("fan@example.com");
+  await page.getByRole("button", { name: /subscribe/i }).click();
+  await page.waitForTimeout(900);
+  expect(/already on the list/.test(await text(".site-footer")), "no reason shown");
+  await field.fill("fan@blessing.test");
+  await page.getByRole("button", { name: /subscribe/i }).click();
+  await page.waitForTimeout(900);
+  expect(await page.locator(".bless-newsletter__done").isVisible(), "no done message");
+});
+
 await browser.close();
 console.log(failed ? `\n${failed} block check(s) failed` : "\nall block checks passed");
 process.exit(failed ? 1 : 0);
