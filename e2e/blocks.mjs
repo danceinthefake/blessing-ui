@@ -330,6 +330,57 @@ await step("the newsletter says why it refused, then takes a new address", async
   expect(await page.locator(".bless-newsletter__done").isVisible(), "no done message");
 });
 
+console.log("Checkout");
+await step(
+  "each step says what is missing, a declined card says so, then the order goes through",
+  async () => {
+    await go("checkout");
+    const alert = () => text(".checkout__problem");
+    await page.getByRole("button", { name: "Continue" }).click();
+    expect(/street, the city and the postal code/.test(await alert()), "no address problem");
+    await page.getByLabel("Street and number").fill("Jl. Braga 12");
+    await page.getByLabel("City").fill("Bandung");
+    await page.getByLabel("Postal code").fill("40111");
+    await page.getByRole("button", { name: "Continue" }).click();
+    await page.getByRole("button", { name: "Continue" }).click();
+    expect(/delivery time/.test(await alert()), "no delivery problem");
+    await page.locator(".bless-delivery__window:not(.is-full)").first().click();
+    await page.getByRole("button", { name: "Continue" }).click();
+    await page.getByLabel("Discount code").fill("BLESS10");
+    await page.getByRole("button", { name: "Apply" }).click();
+    await page.waitForTimeout(700);
+    expect(/BLESS10/.test(await text(".bless-ordersum")), "the discount is not in the summary");
+    const card = page.getByLabel("Card number");
+    await card.fill("4000 0000 0000 0002");
+    await page.getByLabel("Expiry date").fill("12/29");
+    await page.getByLabel("Security code").fill("123");
+    await page.getByRole("button", { name: /^Pay/ }).click();
+    await page.waitForTimeout(1000);
+    expect(/declined/.test(await alert()), "no decline");
+    await card.fill("4242 4242 4242 4242");
+    await page.getByRole("button", { name: /^Pay/ }).click();
+    await page.waitForTimeout(1000);
+    expect(/Order BL-\d{6} is placed/.test(await text(".checkout")), "no thanks");
+  },
+);
+
+console.log("Product page");
+await step(
+  "a sold-out size cannot be picked, a missing size is named, then the item goes in the cart",
+  async () => {
+    await go("product");
+    await page.getByRole("button", { name: "Add to cart" }).first().click();
+    expect(/Choose a size/.test(await text(".product__buy")), "no size problem");
+    expect(await page.getByRole("radio", { name: /^M/ }).isDisabled(), "Ink M is not sold out");
+    await page.getByRole("radio", { name: /^L/ }).check({ force: true });
+    await page.getByRole("button", { name: "Add to cart" }).first().click();
+    await page.waitForTimeout(800);
+    expect(/Added to cart/.test(await text("body")), "no toast");
+    await page.getByRole("tab", { name: "Reviews" }).click();
+    expect((await page.locator(".product__review-list > li").count()) === 4, "not four reviews");
+  },
+);
+
 await browser.close();
 console.log(failed ? `\n${failed} block check(s) failed` : "\nall block checks passed");
 process.exit(failed ? 1 : 0);

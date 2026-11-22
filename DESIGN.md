@@ -815,6 +815,10 @@ The user chose both: new blocks for the site-type groups that have no block, thr
 
 - ✅ `header` and `footer` blocks in a new sidebar group, Site frame. Like shadcn/ui, they are copy-in blocks, not components, because every site header looks different. `BlessLayout` keeps its `header` and `footer` slots. The header has a wordmark, `BlessNavigationMenu` with one dropdown, `BlessThemeToggle`, and a sign-in button. Under 720px, the links move into a `BlessSheet` behind a menu button. The footer has a newsletter signup with a mock `api.ts`, three link columns, and a fine-print row.
 
+### Phase 60 — shop and marketing blocks (2026-11-22)
+
+- ✅ The component list is wider than other libraries, but the blocks were few: Commerce had 25 components and only the Pricing block. This round adds the three blocks that most block catalogs have and we did not. Checkout (group Shop): address, delivery time, and card in `BlessSteps`, with the order summary and a discount code next to them. Each step names what is missing, and the mock bank declines one test card. Product page (group Shop): photos with a lightbox, variants with sold-out values from the stock, quantity, Add to cart with a toast, tabs with reviews that filter by stars, and related products. Landing page (group Marketing): hero, logos, features, numbers, quotes, FAQ, and a closing call to action. `e2e/blocks.mjs` has a flow for Checkout and for Product page.
+
 ### Order
 
 5 → 6 → 7. Inside each phase, build order = list order. Every component: tests (grouped per area in `src/components/*.test.ts`), a docs page with a live example, a README row, checkbox flipped.

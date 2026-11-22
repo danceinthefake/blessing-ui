@@ -4,6 +4,7 @@
 
 ### Added
 
+- Checkout, Product page, and Landing page blocks. Checkout goes from the address to the delivery time to the card, and each step says what is missing. Product page picks a color and a size against the stock and adds to the cart. Landing page has a hero, logos, features, numbers, quotes, and an FAQ.
 - Site header and site footer blocks, in a new Site frame group. Run `npx blessing-ui add header footer`, then put them in the `header` and `footer` slots of Layout. The header moves its links into a sheet on a phone. The footer has a newsletter signup with an offline `api.ts`.
 - Eyecatch: the anime title card from the docs site, as a component. It has a kicker, a large thin title, a big number, and an accent slash that wipes in on first view. Found by blessing.id, which needs it for its sign-in and launcher banners.
 

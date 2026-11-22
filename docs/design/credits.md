@@ -21,6 +21,7 @@ The default fonts are [Roboto](https://fonts.google.com/specimen/Roboto) by Chri
 We checked the list of components against these projects, to find what a library of this kind must have. Each Blessing component is an independent implementation. The library uses no code from them, and their names belong to their owners.
 
 - [shadcn/ui](https://ui.shadcn.com/): the first target list, and the shape of the chart wrapper, and the site header and footer as copy-in blocks, not components.
+- [Tailwind Plus](https://tailwindcss.com/plus) (once Tailwind UI): the list of blocks that a shop and a marketing site need: checkout, product page, and landing page.
 - [PrimeVue](https://primevue.org/): the second target list, for the larger data and form components.
 - [Sonner](https://sonner.emilkowal.ski/), [Radix](https://www.radix-ui.com/), and [cmdk](https://cmdk.paco.me/): the behavior of the toaster, the primitives, and the command menu. We wrote small versions of these behaviors and did not wrap the libraries.
 

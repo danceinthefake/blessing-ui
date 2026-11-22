@@ -16,7 +16,7 @@ Every block follows one contract:
 Nothing crosses block folders. Delete one and the others still build.
 
 ::: tip Two kinds
-**Official site** blocks are the sections of the front page of an anime official site. These are the shapes that Blessing was drawn for. The other groups are product screens. Accounts and admin, People and messages, Work, Money, and Everyday cover every kind of site on the [site types](../design/site-types) page. Site frame has the header and the footer that go around the pages of any site.
+**Official site** blocks are the sections of the front page of an anime official site. These are the shapes that Blessing was drawn for. The other groups are product screens. Accounts and admin, People and messages, Work, Money, and Everyday cover every kind of site on the [site types](../design/site-types) page. Site frame has the header and the footer that go around the pages of any site. Shop has a product page and a checkout, and Marketing has a landing page.
 :::
 
 <div v-for="g in groups" :key="g">

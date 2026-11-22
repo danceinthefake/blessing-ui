@@ -49,7 +49,7 @@ Shops, marketplaces, booking, and food delivery. People compare, choose, and pay
 
 Today: [ProductCard](../components/product-card), [Price](../components/price), [CartDrawer](../components/cart-drawer), [WishlistButton](../components/wishlist-button), [FacetFilter](../components/facet-filter), [StoreLocator](../components/store-locator), [DeliveryPicker](../components/delivery-picker), [OrderHistory](../components/order-history), [ReturnRequest](../components/return-request), [VariantPicker](../components/variant-picker), [OrderSummary](../components/order-summary), [CouponInput](../components/coupon-input), [CardInput](../components/card-input), [AddressFields](../components/address-fields), [ShipmentTracker](../components/shipment-tracker), [PricingTable](../components/pricing-table), [ComparisonTable](../components/comparison-table), [ReviewSummary](../components/review-summary), [Rating](../components/rating), [Carousel](../components/carousel), [Loupe](../components/loupe), [SeatPicker](../components/seat-picker), [SlotPicker](../components/slot-picker), [Ticket](../components/ticket), [InputNumber](../components/input-number).
 
-Blocks: [pricing](../blocks/pricing).
+Blocks: [pricing](../blocks/pricing), [checkout](../blocks/checkout), [product](../blocks/product).
 
 ## 3. Social and community
 
@@ -153,7 +153,7 @@ Landing pages, portfolios, and company sites. People learn about a product and s
 
 Today: [LogoCloud](../components/logo-cloud), [FeatureGrid](../components/feature-grid), [TeamGrid](../components/team-grid), [ContactForm](../components/contact-form), [PortfolioGrid](../components/portfolio-grid), [PricingTable](../components/pricing-table), [Testimonials](../components/testimonials), [ComparisonTable](../components/comparison-table), [NewsletterSignup](../components/newsletter-signup), [Marquee](../components/marquee), [Parallax](../components/parallax), [CountUp](../components/count-up), [FaqSearch](../components/faq-search), [ConsentBanner](../components/consent-banner), [CountdownBanner](../components/countdown-banner), [Background](../components/background).
 
-Blocks: [site](../blocks/site), [pricing](../blocks/pricing), [header](../blocks/header), [footer](../blocks/footer).
+Blocks: [site](../blocks/site), [pricing](../blocks/pricing), [header](../blocks/header), [footer](../blocks/footer), [landing](../blocks/landing).
 
 ## 16. AI assistants and agents
 

@@ -187,5 +187,26 @@
   "group": "Site frame",
   "summary": "The wordmark with a newsletter signup, three columns of links, and a fine-print row with the copyright and the legal links. The columns stack on a phone.",
   "order": 27
+ },
+ {
+  "slug": "checkout",
+  "title": "Checkout",
+  "group": "Shop",
+  "summary": "Three steps from cart to order: the address, a delivery time, and the card. The order summary with a discount code stays next to the steps, and each step says what is missing before it goes on.",
+  "order": 28
+ },
+ {
+  "slug": "product",
+  "title": "Product page",
+  "group": "Shop",
+  "summary": "One product: photos with a lightbox, the price, color and size with sold-out sizes, the quantity, and Add to cart. Tabs hold the description, the details, and the reviews, which filter by stars. Related products close the page.",
+  "order": 29
+ },
+ {
+  "slug": "landing",
+  "title": "Landing page",
+  "group": "Marketing",
+  "summary": "A product landing page: a hero with two calls to action, a logo row, the features, numbers that count up, quotes from customers, an FAQ, and a closing call to action.",
+  "order": 30
  }
 ]
