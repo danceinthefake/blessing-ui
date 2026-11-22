@@ -111,7 +111,7 @@
   },
   {
     "name": "BlessAudioPlayer",
-    "js": 1752,
+    "js": 1941,
     "css": 1111
   },
   {
@@ -421,7 +421,7 @@
   },
   {
     "name": "BlessContactForm",
-    "js": 1706,
+    "js": 1743,
     "css": 604
   },
   {
@@ -626,12 +626,12 @@
   },
   {
     "name": "BlessEligibilityCheck",
-    "js": 1526,
+    "js": 1564,
     "css": 711
   },
   {
     "name": "BlessEmailComposer",
-    "js": 3491,
+    "js": 3509,
     "css": 1578
   },
   {
@@ -657,7 +657,12 @@
   {
     "name": "BlessEventCalendar",
     "js": 2826,
-    "css": 1425
+    "css": 1424
+  },
+  {
+    "name": "BlessEyecatch",
+    "js": 882,
+    "css": 622
   },
   {
     "name": "BlessFacetFilter",
@@ -716,7 +721,7 @@
   },
   {
     "name": "BlessFlashcards",
-    "js": 1883,
+    "js": 1936,
     "css": 1126
   },
   {
@@ -790,6 +795,11 @@
     "css": 574
   },
   {
+    "name": "BlessGrid",
+    "js": 485,
+    "css": 55
+  },
+  {
     "name": "BlessGroupCard",
     "js": 2444,
     "css": 1357
@@ -806,7 +816,7 @@
   },
   {
     "name": "BlessHeatmapCalendar",
-    "js": 1935,
+    "js": 1989,
     "css": 548
   },
   {
@@ -941,13 +951,18 @@
   },
   {
     "name": "BlessKnowledgeArticle",
-    "js": 1904,
+    "js": 1976,
     "css": 797
   },
   {
     "name": "BlessLabel",
     "js": 402,
     "css": 312
+  },
+  {
+    "name": "BlessLanguageSwitcher",
+    "js": 1095,
+    "css": 405
   },
   {
     "name": "BlessLayout",
@@ -985,6 +1000,11 @@
     "css": 641
   },
   {
+    "name": "BlessLink",
+    "js": 724,
+    "css": 256
+  },
+  {
     "name": "BlessList",
     "js": 258,
     "css": 153
@@ -1001,7 +1021,7 @@
   },
   {
     "name": "BlessLiveBlog",
-    "js": 1084,
+    "js": 1107,
     "css": 694
   },
   {
@@ -1147,7 +1167,7 @@
   {
     "name": "BlessNewsletterSignup",
     "js": 2446,
-    "css": 1525
+    "css": 1531
   },
   {
     "name": "BlessNodeGraph",
@@ -1177,7 +1197,7 @@
   {
     "name": "BlessOpeningHours",
     "js": 1491,
-    "css": 440
+    "css": 448
   },
   {
     "name": "BlessOrderBook",
@@ -1211,7 +1231,7 @@
   },
   {
     "name": "BlessPaletteToggle",
-    "js": 1060,
+    "js": 1148,
     "css": 328
   },
   {
@@ -1261,7 +1281,7 @@
   },
   {
     "name": "BlessPaywall",
-    "js": 1853,
+    "js": 1902,
     "css": 1311
   },
   {
@@ -1296,7 +1316,7 @@
   },
   {
     "name": "BlessPlaceSearch",
-    "js": 1746,
+    "js": 1760,
     "css": 686
   },
   {
@@ -1516,7 +1536,7 @@
   },
   {
     "name": "BlessRelativeTime",
-    "js": 891,
+    "js": 892,
     "css": 0
   },
   {
@@ -1936,7 +1956,7 @@
   },
   {
     "name": "BlessThemeToggle",
-    "js": 1889,
+    "js": 1985,
     "css": 774
   },
   {
@@ -1966,7 +1986,7 @@
   },
   {
     "name": "BlessTimeTracker",
-    "js": 1653,
+    "js": 1675,
     "css": 642
   },
   {
@@ -1991,7 +2011,7 @@
   },
   {
     "name": "BlessToc",
-    "js": 958,
+    "js": 1035,
     "css": 412
   },
   {
