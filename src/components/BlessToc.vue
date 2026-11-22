@@ -42,9 +42,9 @@ const props = withDefaults(
 
 const found = ref<BlessTocItem[]>([]);
 const list = computed(() => props.items ?? found.value);
-// the observer reads its targets once, so pass ids when you give `items` and the selector otherwise
+// the ids of `items`, which can change or load late, or else the selector
 const { active } = useScrollSpy(
-  props.items ? props.items.map((i) => i.id) : props.selector,
+  () => (props.items ? props.items.map((i) => i.id) : props.selector),
   props.rootMargin ? { rootMargin: props.rootMargin } : {},
 );
 onMounted(() => {

@@ -17,6 +17,7 @@
 
 ### Changed
 
+- `useScrollSpy` also takes its ids or selector as a ref or a getter, and observes the new sections when the value changes. Before, it read them once at mount, and sections that loaded later needed a `:key` workaround. `BlessToc` passes its `items` this way, so a table of contents that loads late follows the page.
 - `BlessFlashcards` emits `answer` with the card, the answer, and whether it was the first try. New `cards` start a new round, so cards that load after the first render show. Found by the study block.
 - The Inbox block reads mail in `BlessEmailView` and replies in `BlessEmailComposer`. Reply to all leaves the reader out and names each person once. Before, Reply did nothing.
 - `BlessAudioPlayer` has `v-model:time` and `v-model:playing`. Write the time to seek, also before the audio loads. Write `playing` to start or stop it. New `tracks` load at once, and a new source goes on playing if the old one played. Found by the podcast block.

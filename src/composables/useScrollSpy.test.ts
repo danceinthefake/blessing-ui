@@ -76,3 +76,31 @@ test("useScrollSpy: with a root container, distance is measured from the contain
   expect(w.find("output").text()).toBe("b");
   w.unmount();
 });
+
+test("useScrollSpy: targets that change, for example sections that load late, are observed", async () => {
+  const seen: string[] = [];
+  globalThis.IntersectionObserver = class {
+    observe(el: HTMLElement) {
+      seen.push(el.id);
+    }
+    disconnect() {}
+  } as unknown as typeof IntersectionObserver;
+  const ids = ref<string[]>([]);
+  const Comp = defineComponent({
+    setup() {
+      const { active } = useScrollSpy(ids);
+      return () => [
+        ...ids.value.map((id) => h("section", { id })),
+        h("output", active.value ?? ""),
+      ];
+    },
+  });
+  const w = mount(Comp, { attachTo: document.body });
+  expect(seen).toEqual([]);
+  ids.value = ["a", "b"];
+  await nextTick();
+  await nextTick();
+  expect(seen).toEqual(["a", "b"]);
+  expect(w.find("output").text()).toBe("a");
+  w.unmount();
+});

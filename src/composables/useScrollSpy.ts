@@ -1,21 +1,35 @@
-import { onBeforeUnmount, onMounted, ref, type Ref } from "vue";
+import {
+  onBeforeUnmount,
+  onMounted,
+  ref,
+  toValue,
+  watch,
+  type MaybeRefOrGetter,
+  type Ref,
+} from "vue";
 
 /**
  * Tracks which of the given sections is in view; `active` is its id.
- * Pass ids or a selector; the topmost intersecting section wins.
+ * Pass ids or a selector, or a ref or a getter of them: when they change, for example when the
+ * sections load late, the new ones are observed. The topmost intersecting section wins.
  */
 export function useScrollSpy(
-  targets: string[] | string,
+  targets: MaybeRefOrGetter<string[] | string>,
   opts: { rootMargin?: string; root?: Ref<HTMLElement | undefined> } = {},
 ) {
   const active = ref<string | undefined>();
   let io: IntersectionObserver | undefined;
   const visible = new Set<HTMLElement>();
 
-  onMounted(() => {
-    const els = Array.isArray(targets)
-      ? targets.map((id) => document.getElementById(id)).filter((e): e is HTMLElement => !!e)
-      : Array.from(document.querySelectorAll<HTMLElement>(targets));
+  function observe() {
+    io?.disconnect();
+    visible.clear();
+    const t = toValue(targets);
+    const els = Array.isArray(t)
+      ? t.map((id) => document.getElementById(id)).filter((e): e is HTMLElement => !!e)
+      : t
+        ? Array.from(document.querySelectorAll<HTMLElement>(t))
+        : [];
     io = new IntersectionObserver(
       (entries) => {
         for (const e of entries) {
@@ -33,7 +47,13 @@ export function useScrollSpy(
       { root: opts.root?.value, rootMargin: opts.rootMargin ?? "0px 0px -60% 0px" },
     );
     els.forEach((el) => io!.observe(el));
-    active.value ??= els[0]?.id;
+    if (!els.some((el) => el.id === active.value)) active.value = els[0]?.id;
+  }
+
+  onMounted(() => {
+    observe();
+    // new targets render first, then get observed
+    watch(() => JSON.stringify(toValue(targets)), observe, { flush: "post" });
   });
   onBeforeUnmount(() => io?.disconnect());
   return { active };
