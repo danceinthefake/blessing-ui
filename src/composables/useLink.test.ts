@@ -51,3 +51,14 @@ test("without a provider everything is a plain <a>; Button with href follows the
   });
   expect(routed.attributes("data-to")).toBe("/go");
 });
+
+test("a link with download stays a plain <a>, because a router cannot download a file", () => {
+  const w = mount(BlessButton, {
+    props: { href: "/api/export" },
+    attrs: { download: "" },
+    global: { provide: { [blessLinkKey as symbol]: FakeLink } },
+  });
+  expect(w.attributes("data-to")).toBeUndefined();
+  expect(w.attributes("href")).toBe("/api/export");
+  expect(w.attributes("download")).toBe("");
+});

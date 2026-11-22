@@ -1,4 +1,4 @@
-import { inject, type Component, type InjectionKey } from "vue";
+import { inject, useAttrs, type Component, type InjectionKey } from "vue";
 
 /**
  * Provide your router's link component once and every anchor-rendering component
@@ -16,9 +16,11 @@ export type BlessLinkTag = { is: string | Component; attrs: Record<string, unkno
 /** resolves what to render for an href: the provided link component with `to`, or <a href> */
 export function useLink() {
   const Link = inject(blessLinkKey, null);
+  // a router cannot download a file, so a link with `download` stays a plain <a>
+  const attrs = useAttrs();
   return (href: string | undefined, external?: boolean, fallback: string = "a"): BlessLinkTag => {
     if (!href) return { is: fallback, attrs: {} };
-    if (Link && !external && isRouterHref(href)) return { is: Link, attrs: { to: href } };
+    if (Link && !external && attrs.download === undefined && isRouterHref(href)) return { is: Link, attrs: { to: href } };
     return {
       is: "a",
       attrs: {
