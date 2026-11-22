@@ -4,25 +4,53 @@
 import { chromium, firefox, webkit } from "playwright";
 import { readFileSync } from "node:fs";
 import { createRequire } from "node:module";
+import { note, wanted } from "./only.mjs";
 
 const name = process.argv[2] ?? "chromium";
 const engine = { chromium, firefox, webkit }[name];
 const base = (process.argv[3] ?? "http://localhost:4173") + "/blocks/";
-const blocks = JSON.parse(readFileSync("docs/.vitepress/blocks.json", "utf8"));
+const every = JSON.parse(readFileSync("docs/.vitepress/blocks.json", "utf8"));
+const blocks = every.filter(({ slug }) => wanted(`/blocks/${slug}`));
+process.stdout.write(note(every.length, blocks.length));
 const axeSrc = readFileSync(createRequire(import.meta.url).resolve("axe-core/axe.min.js"), "utf8");
 const browser = await engine.launch();
 let failed = 0;
+// a flow for a block that E2E_ONLY leaves out stops at its first go() and does not count. A step
+// without its own go() goes on with the page before it, so it skips when that page was skipped
+class Skip extends Error {}
+let skipping = false;
 const step = async (label, fn) => {
+  if (skipping && !String(fn).includes("go(")) return;
   try {
     await fn();
     console.log(`  ✓ ${label}`);
   } catch (e) {
+    if (e instanceof Skip) return;
     failed++;
     console.log(`  ✗ ${label}\n    ${e.message.split("\n")[0]}`);
   }
 };
 const expect = (cond, msg) => {
   if (!cond) throw new Error(msg);
+};
+
+// wait for the motion to end, not for a fixed time: a finite animation or transition that runs
+// holds it, a loop (a pulse, a spinner) does not; at most 2 s
+const settle = async (p) => {
+  await p.waitForTimeout(50);
+  await p
+    .waitForFunction(
+      () =>
+        document
+          .getAnimations()
+          .every(
+            (a) =>
+              a.playState !== "running" || a.effect?.getComputedTiming().iterations === Infinity,
+          ),
+      null,
+      { timeout: 2000, polling: 50 },
+    )
+    .catch(() => {});
 };
 
 // 1. every block: no errors, no sideways scroll; axe in Chromium (same rules as e2e/axe.mjs)
@@ -32,37 +60,42 @@ for (const { slug } of blocks)
     for (const [w, h] of [
       [1280, 800],
       [390, 800],
-    ])
-      for (const colorScheme of ["light", "dark"]) {
-        const p = await browser.newPage({ viewport: { width: w, height: h }, colorScheme });
-        // the docs open light on a first visit; "auto" makes them follow the emulated color scheme
-        await p.addInitScript(() => localStorage.setItem("vitepress-theme-appearance", "auto"));
-        const errs = [];
-        p.on("pageerror", (e) => errs.push(e.message));
-        p.on("console", (m) => m.type() === "error" && errs.push(m.text()));
-        await p.goto(`${base}${slug}-frame`, { waitUntil: "networkidle" });
-        await p.waitForTimeout(800);
-        const wide = await p.evaluate(() => document.documentElement.scrollWidth - innerWidth);
-        let bad = [];
-        if (name === "chromium") {
-          // the pointer rests at 0,0 and would hover, and so fade, whatever sits there
-          await p.mouse.move(w - 1, h - 1);
-          await p.waitForTimeout(500);
-          await p.addScriptTag({ content: axeSrc });
-          bad = await p.evaluate(async () =>
-            (await axe.run(document, { resultTypes: ["violations"] })).violations
-              .filter(
-                (v) => ["serious", "critical"].includes(v.impact) && v.id !== "color-contrast",
-              )
-              .map((v) => `${v.id}: ${v.nodes[0]?.target.join(" ")}`),
-          );
+    ]) {
+      // one load for each width; the theme follows the emulated color scheme without a reload
+      const p = await browser.newPage({ viewport: { width: w, height: h }, colorScheme: "light" });
+      // the docs open light on a first visit; "auto" makes them follow the emulated color scheme
+      await p.addInitScript(() => localStorage.setItem("vitepress-theme-appearance", "auto"));
+      const errs = [];
+      p.on("pageerror", (e) => errs.push(e.message));
+      p.on("console", (m) => m.type() === "error" && errs.push(m.text()));
+      await p.goto(`${base}${slug}-frame`, { waitUntil: "networkidle" });
+      // the pointer rests at 0,0 and would hover, and so fade, whatever sits there
+      await p.mouse.move(w - 1, h - 1);
+      try {
+        for (const colorScheme of ["light", "dark"]) {
+          await p.emulateMedia({ colorScheme });
+          await settle(p);
+          const wide = await p.evaluate(() => document.documentElement.scrollWidth - innerWidth);
+          let bad = [];
+          if (name === "chromium") {
+            if (colorScheme === "light") await p.addScriptTag({ content: axeSrc });
+            bad = await p.evaluate(async () =>
+              (await axe.run(document, { resultTypes: ["violations"] })).violations
+                .filter(
+                  (v) => ["serious", "critical"].includes(v.impact) && v.id !== "color-contrast",
+                )
+                .map((v) => `${v.id}: ${v.nodes[0]?.target.join(" ")}`),
+            );
+          }
+          const at = `${w}px ${colorScheme}`;
+          expect(!errs.length, `${at}: ${errs[0]}`);
+          expect(wide <= 0, `${at}: page scrolls sideways by ${wide}px`);
+          expect(!bad.length, `${at}: ${bad[0]}`);
         }
+      } finally {
         await p.close();
-        const at = `${w}px ${colorScheme}`;
-        expect(!errs.length, `${at}: ${errs[0]}`);
-        expect(wide <= 0, `${at}: page scrolls sideways by ${wide}px`);
-        expect(!bad.length, `${at}: ${bad[0]}`);
       }
+    }
   });
 
 // 2. flows
@@ -71,7 +104,11 @@ page.on("pageerror", (e) => {
   console.log("  pageerror:", e.message);
   failed++;
 });
-const go = (slug) => page.goto(`${base}${slug}-frame`, { waitUntil: "networkidle" });
+const go = (slug) => {
+  skipping = !wanted(`/blocks/${slug}`);
+  if (skipping) throw new Skip();
+  return page.goto(`${base}${slug}-frame`, { waitUntil: "networkidle" });
+};
 const text = (sel) => page.locator(sel).first().textContent();
 
 console.log("Community");

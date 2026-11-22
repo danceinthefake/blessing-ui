@@ -852,7 +852,11 @@ The user chose both: new blocks for the site-type groups that have no block, thr
 
 ### Phase 68 — state copied from props (2026-11-22)
 
-- ✅ A hunt for the bug that the blocks found twice: state that setup copies from a prop or a model once, so data that loads later does not show. Of 22 copies, 6 were bugs and are fixed with a test each: `BlessContactForm`, `BlessEligibilityCheck`, `BlessPaywall`, `BlessPlaceSearch`, `BlessTimeTracker`, and `BlessLiveBlog`. Each fix follows one rule: if the current choice is no longer valid, go back to the default. The rest are watched already, or are starting values on purpose (`facing`, `defaultExpanded`, `month`, and the `id` of `BlessField`, which now says that it is read once). `src/props-copy.test.ts` lists each copy with its reason, so a new copy fails until someone looks at it.
+- ✅ A hunt for the bug that the blocks found twice: state that setup copies from a prop or a model once, so data that loads later does not show. Of 22 copies, 6 were bugs and are fixed with a test each: `BlessContactForm`, `BlessEligibilityCheck`, `BlessPaywall`, `BlessPlaceSearch`, `BlessTimeTracker`, and `BlessLiveBlog`. Each fix follows one rule: if the current choice is no longer valid, go back to the default. The rest are watched already, or are starting values on purpose (`facing`, `defaultExpanded`, `month`, and the `id` of `BlessField`, which now says that it is read once). `src/props-copy.test.ts` lists each copy with its reason, so a new copy fails until someone looks at it. A second pass looked inside functions and mount hooks: `useScrollSpy` read its targets once, so `BlessToc` with `items` that load late did not follow the page. It now takes a ref or a getter.
+
+### Phase 69 — fast checks for each change (2026-11-22)
+
+- ✅ `pnpm e2e:changed` checks only the pages that the changes reach, in about a minute instead of about 20. `e2e/affected.mjs` maps each changed file to its docs pages and to the blocks that use it, and `E2E_ONLY` (in `e2e/only.mjs`) limits the sweep, axe, and the block suite to them. A change to tokens, global CSS, the barrel, or the config checks every page. The block suite loads each block once for each width, switches the theme in place, and waits for the motion to end, not for a fixed time. The full suites run in CI on each push.
 
 ### Order
 

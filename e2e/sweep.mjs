@@ -2,10 +2,11 @@
 // Usage: node e2e/sweep.mjs [chromium,firefox,webkit] [baseUrl]
 import { chromium, firefox, webkit } from "playwright";
 import { readdirSync } from "node:fs";
+import { note, wanted } from "./only.mjs";
 
 const want = (process.argv[2] ?? "chromium,firefox,webkit").split(",");
 const base = process.argv[3] ?? "http://localhost:4173";
-const pages = [
+const all = [
   "/",
   // every guide and design page, read from disk so a moved or added page can't be missed
   "/id/",
@@ -23,6 +24,8 @@ const pages = [
   "/stage-example",
   "/layout-example",
 ];
+const pages = all.filter(wanted);
+process.stdout.write(note(all.length, pages.length));
 // every guide and design page has its Indonesian page: a new English page cannot skip it
 const untranslated = ["guide", "design"].flatMap((dir) =>
   readdirSync(`docs/${dir}`)

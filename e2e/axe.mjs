@@ -3,6 +3,7 @@
 import { chromium } from "playwright";
 import { readdirSync, readFileSync } from "node:fs";
 import { createRequire } from "node:module";
+import { note, wanted } from "./only.mjs";
 
 const axeSrc = readFileSync(createRequire(import.meta.url).resolve("axe-core/axe.min.js"), "utf8");
 const base = process.argv[2] ?? "http://localhost:4173";
@@ -18,7 +19,7 @@ const prose = [
       .map((f) => `/${dir}/${f === "index.md" ? "" : f.replace(".md", "")}`),
   ),
 ];
-const pages = [
+const all = [
   ...prose,
   ...readdirSync("docs/components")
     .filter((f) => f.endsWith(".md") && f !== "index.md")
@@ -28,6 +29,8 @@ const pages = [
     .filter((f) => f.endsWith("-frame.md"))
     .map((f) => `/blocks/${f.replace(".md", "")}`),
 ];
+const pages = all.filter(wanted);
+process.stdout.write(note(all.length, pages.length));
 const browser = await chromium.launch();
 // both themes: contrast has to hold in each. Four tabs share the queue; the report is sorted after.
 const queue = ["light", "dark"].flatMap((scheme) => pages.map((path) => ({ scheme, path })));
