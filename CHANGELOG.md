@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+### Fixed
+
+- The npm package ships the shared `sr.css` and `chart.css`. Before, the build dropped them. Thus the hidden screen-reader text showed on the page, for example "(opens in a new tab)" after a `BlessLink`. The plain SVG charts had no axis and grid styles. The postbuild step links each file to the modules that use it and adds it to `blessing-ui.css`. A unit test (`src/shared-css.test.ts`) covers it. Found by blessing.id.
+
 ## 0.12.0 — 2026-11-22
 
 ### Added

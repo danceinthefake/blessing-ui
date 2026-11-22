@@ -3,8 +3,11 @@
 //  2. prepend `import "./X.css"` to X.js so bundlers pull only the CSS of what you import
 //  3. prepend `import "./style.css"` (tokens) to index.js
 //  4. write dist/blessing-ui.css = tokens + every component's CSS, for the no-bundler / import-everything case
+//  5. link the shared plain CSS (sr.css, chart.css) to each module whose SFC imports it: the build
+//     emits the file but replaces the import with an empty placeholder
 import { cpSync, readdirSync, readFileSync, renameSync, writeFileSync, existsSync } from "node:fs";
 import { join } from "node:path";
+import { linkSharedCss } from "./shared-css.mjs";
 
 const dist = "dist";
 const comps = join(dist, "components");
@@ -26,6 +29,8 @@ for (const f of readdirSync(comps).sort()) {
     linked++;
   }
 }
+// 5. the shared plain CSS: into the all-in-one file, and an import in each module that needs it
+all.push(...linkSharedCss("src/components", comps));
 const index = join(dist, "index.js");
 writeFileSync(
   index,
@@ -42,7 +47,7 @@ writeFileSync(join(dist, "blessing-ui.css"), all.join("\n"));
 console.log(
   `postbuild: linked ${linked} component stylesheets, wrote dist/blessing-ui.css (${(all.join("\n").length / 1024).toFixed(0)} KB)`,
 );
-// 5. ship the blocks for `npx blessing-ui add` (meta.ts is docs-only; blocks.json is the list)
+// 6. ship the blocks for `npx blessing-ui add` (meta.ts is docs-only; blocks.json is the list)
 cpSync("docs/blocks", join(dist, "blocks"), {
   recursive: true,
   filter: (p) => !p.endsWith(".md") && !p.endsWith("meta.ts"),
