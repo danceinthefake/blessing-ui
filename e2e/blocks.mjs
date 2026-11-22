@@ -849,6 +849,76 @@ await step("a shorter meeting finds a time for everyone, and Book locks the poll
   expect(await first.getByRole("button", { name: "Book" }).isDisabled(), "the poll is still open");
 });
 
+console.log("Tickets");
+await step(
+  "the best seats sit side by side, a seat taken first comes off the order, and paid seats become tickets",
+  async () => {
+    await go("tickets");
+    await page.waitForTimeout(400);
+    await page.getByRole("button", { name: "Find the best seats" }).click();
+    expect(/C3, C4/.test(await text(".tix__sum")), "the best two middle seats are not C3 and C4");
+    expect(
+      /IDR\s*630,000/.test(await text(".tix__sum")),
+      "the total is not 600,000 and a 30,000 fee",
+    );
+    await page.getByRole("button", { name: /^Pay/ }).click();
+    await page.waitForTimeout(700);
+    expect(/C4 was just taken/.test(await text(".tix__sum")), "no taken-seat problem");
+    expect(/Seats\s*C3(?![\d,])/.test(await text(".tix__sum")), "C3 did not stay on the order");
+    await page.getByRole("button", { name: "Find the best seats" }).click();
+    expect(/C11, C12/.test(await text(".tix__sum")), "the next best seats are not C11 and C12");
+    await page.getByRole("button", { name: /^Pay/ }).click();
+    await page.waitForTimeout(1300);
+    expect(/Your tickets/.test(await text(".tix")), "no tickets");
+    expect((await page.locator(".bless-ticket").count()) === 2, "not two tickets");
+  },
+);
+
+console.log("Article");
+await step(
+  "the notes are numbered in order, a note link goes to its note, and the contents jump",
+  async () => {
+    await go("article");
+    await page.waitForTimeout(400);
+    expect(/2 min read/.test(await text(".art")), "no reading time");
+    expect((await page.locator(".bless-footnotes li").count()) === 4, "not four notes");
+    await page.locator(".bless-fnref a").first().click();
+    await page.waitForTimeout(400);
+    expect(page.url().endsWith("#art-notes-1"), "the note link did not go to note 1");
+    await page
+      .getByRole("navigation", { name: "In this article" })
+      .getByRole("link", { name: "The price" })
+      .click();
+    await page.waitForTimeout(600);
+    const top = await page.locator("#the-price").evaluate((h) => h.getBoundingClientRect().top);
+    expect(top >= 0 && top < 200, "the heading is not at the top");
+  },
+);
+
+console.log("Timesheet");
+await step(
+  "overtime follows the day, a deleted entry changes the pay, and a sent week does not change",
+  async () => {
+    await go("timesheet");
+    await page.waitForTimeout(400);
+    expect(/43.5 h, of which 7 h overtime/.test(await text(".ts")), "the week total is wrong");
+    expect(/IDR\s*563,584/.test(await text(".bless-payslip, .ts")), "the overtime pay is wrong");
+    await page.getByRole("button", { name: "Delete Market stall" }).click();
+    await page.waitForTimeout(300);
+    expect(
+      /40.5 h, of which 4 h overtime/.test(await text(".ts")),
+      "the rest-day hours did not go",
+    );
+    expect(/IDR\s*303,468/.test(await text(".ts")), "the pay did not change");
+    await page.getByRole("button", { name: "Send the week" }).click();
+    await page.waitForTimeout(800);
+    expect(/Team lead/.test(await text(".ts")), "no approval steps");
+    await page.getByRole("button", { name: "Delete Packing" }).first().click();
+    await page.waitForTimeout(300);
+    expect(/40.5 h/.test(await text(".ts")), "a sent week changed");
+  },
+);
+
 await browser.close();
 console.log(failed ? `\n${failed} block check(s) failed` : "\nall block checks passed");
 process.exit(failed ? 1 : 0);

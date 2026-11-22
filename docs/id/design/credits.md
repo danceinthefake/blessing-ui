@@ -56,6 +56,8 @@ Beberapa komponen memakai metode yang sudah dikenal. Kami menulis ulang masing-m
 - [Blok podcast](../../blocks/podcast) membaca transkrip dan babnya sebagai [WebVTT](https://www.w3.org/TR/webvtt1/), format teks takarir dari W3C.
 - [Blok belajar](../../blocks/study) memindahkan kartu antarkotak dengan sistem Leitner, dari _So lernt man lernen_ karya Sebastian Leitner (1972).
 - [Blok cari waktu](../../blocks/meet) mengikuti jajak pendapat kelompok di [When2meet](https://www.when2meet.com/): tiap orang mewarnai waktu luangnya, dan kisi menunjukkan di mana waktu itu bertemu.
+- [Blok artikel](../../blocks/article) menerima catatan sebaris sebagai `[^teks]`, catatan sebaris di Markdown [Pandoc](https://pandoc.org/MANUAL.html) karya John MacFarlane.
+- [Blok lembar waktu](../../blocks/timesheet) membayar lembur menurut Peraturan Pemerintah (PP) 35 Tahun 2021: upah sejam adalah 1/173 dari upah sebulan, dan kelipatannya naik menurut jam dan pada hari istirahat.
 - [Input kartu](../../components/card-input) memeriksa nomor dengan algoritma Luhn (Hans Peter Luhn, 1954).
 - Halaman [periksa jawaban](../../components/check-answers) mengikuti pola "Check answers" dari [GOV.UK Design System](https://design-system.service.gov.uk/patterns/check-answers/) karya Government Digital Service Inggris.
 - [Peta dengan penanda](../../components/map-pins) menempatkan ubin dan penanda dengan proyeksi Web Mercator (EPSG:3857). Ubin dan data peta bawaannya berasal dari [OpenStreetMap](https://www.openstreetmap.org/copyright) dan para kontributornya, dengan lisensi ODbL.

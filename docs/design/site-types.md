@@ -41,7 +41,7 @@ News sites, blogs, magazines, and documentation. People read, scan, and share.
 
 Today: [ArticleHeader](../components/article-header), [ShareBar](../components/share-bar), [RelatedArticles](../components/related-articles), [Figure](../components/figure), [PullQuote](../components/pull-quote), [LiveBlog](../components/live-blog), [Paywall](../components/paywall), [Markdown](../components/markdown), [Toc](../components/toc), [ReadingProgress](../components/reading-progress), [Footnotes](../components/footnotes), [Glossary](../components/glossary), [Highlight](../components/highlight), [ReadMore](../components/read-more), [Spoiler](../components/spoiler), [CodeBlock](../components/code-block), [Changelog](../components/changelog), [Breadcrumb](../components/breadcrumb), [Pagination](../components/pagination), [NewsletterSignup](../components/newsletter-signup), [Img](../components/img), [Masonry](../components/masonry).
 
-Blocks: [news](../blocks/news), [story](../blocks/story), [release](../blocks/release).
+Blocks: [news](../blocks/news), [story](../blocks/story), [release](../blocks/release), [article](../blocks/article).
 
 ## 2. Commerce
 
@@ -49,7 +49,7 @@ Shops, marketplaces, booking, and food delivery. People compare, choose, and pay
 
 Today: [ProductCard](../components/product-card), [Price](../components/price), [CartDrawer](../components/cart-drawer), [WishlistButton](../components/wishlist-button), [FacetFilter](../components/facet-filter), [StoreLocator](../components/store-locator), [DeliveryPicker](../components/delivery-picker), [OrderHistory](../components/order-history), [ReturnRequest](../components/return-request), [VariantPicker](../components/variant-picker), [OrderSummary](../components/order-summary), [CouponInput](../components/coupon-input), [CardInput](../components/card-input), [AddressFields](../components/address-fields), [ShipmentTracker](../components/shipment-tracker), [PricingTable](../components/pricing-table), [ComparisonTable](../components/comparison-table), [ReviewSummary](../components/review-summary), [Rating](../components/rating), [Carousel](../components/carousel), [Loupe](../components/loupe), [SeatPicker](../components/seat-picker), [SlotPicker](../components/slot-picker), [Ticket](../components/ticket), [InputNumber](../components/input-number).
 
-Blocks: [pricing](../blocks/pricing), [checkout](../blocks/checkout), [product](../blocks/product), [orders](../blocks/orders).
+Blocks: [pricing](../blocks/pricing), [checkout](../blocks/checkout), [product](../blocks/product), [orders](../blocks/orders), [tickets](../blocks/tickets).
 
 ## 3. Social and community
 
@@ -89,7 +89,7 @@ CRM, HR, help desks, admin panels, and ERP: one system for stock, buying, sales,
 
 Today: [RecordHeader](../components/record-header), [CsvImport](../components/csv-import), [AuditLog](../components/audit-log), [Invoice](../components/invoice), [TicketView](../components/ticket-view), [SlaTimer](../components/sla-timer), [LineItemEditor](../components/line-item-editor), [JournalEntry](../components/journal-entry), [StockLevels](../components/stock-levels), [BillOfMaterials](../components/bill-of-materials), [SkuField](../components/sku-field), [UnitConverter](../components/unit-converter), [DocumentStatus](../components/document-status), [Payslip](../components/payslip), [DataTable](../components/data-table), [TreeTable](../components/tree-table), [QueryBuilder](../components/query-builder), [FilterBar](../components/filter-bar), [BulkActionBar](../components/bulk-action-bar), [Stat](../components/stat), [Funnel](../components/funnel), [Descriptions](../components/descriptions), [PermissionMatrix](../components/permission-matrix), [ApprovalFlow](../components/approval-flow), [OrgChart](../components/org-chart), [KeyValueEditor](../components/key-value-editor), [Timeline](../components/timeline).
 
-Blocks: [dashboard](../blocks/dashboard), [data-page](../blocks/data-page), [settings](../blocks/settings), [staff](../blocks/staff).
+Blocks: [dashboard](../blocks/dashboard), [data-page](../blocks/data-page), [settings](../blocks/settings), [staff](../blocks/staff), [timesheet](../blocks/timesheet).
 
 ## 8. Finance
 

@@ -846,6 +846,10 @@ The user chose both: new blocks for the site-type groups that have no block, thr
 
 - ✅ A round from the components that no block used (288 of 441). Study (Everyday): `BlessFlashcards` with Leitner boxes, `BlessStat`, and `BlessMeterGroup` for the cards in each box. Only the first try of a day moves a card. Support desk (Work): a queue by the nearest deadline, `BlessTicketView`, and two `BlessSlaTimer`s. The limits count open hours only, so a weekend ticket starts on Monday. Find a time (Work): `BlessAvailabilityGrid` for your free times, `BlessHeatmap` for everyone, and the best times for the meeting length. The Inbox block now reads in `BlessEmailView` and replies in `BlessEmailComposer`, in place of a second mail block. Flashcards got the `answer` event and a reset for new cards, and the composer now shows Cc that a draft brings. `e2e/blocks.mjs` has a flow for each.
 
+### Phase 67 — tickets, article, and timesheet blocks (2026-11-22)
+
+- ✅ A round from the components that no block used (269 of 441). Tickets (Shop): `BlessCountdownBanner`, `BlessSeatPicker` with a "best seats" search (front row first, then nearest the middle, never across an aisle), a hold that can lose a seat, and `BlessTicket` for each paid seat. The QR code stays out, because it needs an encoder from outside. Article (Marketing): `BlessArticleHeader`, `BlessReadingProgress`, `BlessToc`, `BlessPullQuote`, `BlessFootnoteRef` with `BlessFootnotes`, `BlessShareBar`, and `BlessRelatedArticles`. Notes are inline `[^text]`, numbered in the order that they first show. Timesheet (Work): `BlessTimeTracker`, `BlessBarChart` of normal and overtime hours, `BlessApprovalFlow`, and `BlessPayslip`, with overtime by PP 35/2021. `e2e/blocks.mjs` has a flow for each.
+
 ### Order
 
 5 → 6 → 7. Inside each phase, build order = list order. Every component: tests (grouped per area in `src/components/*.test.ts`), a docs page with a live example, a README row, checkbox flipped.

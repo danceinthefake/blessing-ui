@@ -313,5 +313,26 @@
   "group": "Work",
   "summary": "A queue of tickets by the nearest deadline, and a ticket with its replies and notes. The time limits for the first reply and for the fix count only open hours, so a ticket from the weekend starts on Monday morning.",
   "order": 46
+ },
+ {
+  "slug": "tickets",
+  "title": "Tickets",
+  "group": "Shop",
+  "summary": "Seats for a show: pick them on the map, or ask for the best seats side by side in a zone. A seat that someone takes first comes off your order with a reason, and paid seats become tickets with a code.",
+  "order": 47
+ },
+ {
+  "slug": "article",
+  "title": "Article",
+  "group": "Marketing",
+  "summary": "A long read with its reading time, a table of contents that follows the page, a pull quote, notes, and articles to read next. The editor writes notes inline, and the block numbers them in the order that they show.",
+  "order": 48
+ },
+ {
+  "slug": "timesheet",
+  "title": "Timesheet",
+  "group": "Work",
+  "summary": "A week of time entries, the normal hours and overtime of each day, and the pay so far. Overtime follows the Indonesian rules: 1.5 times for the first hour on a work day, then 2 times, and more on a rest day. A sent week goes to approval and does not change.",
+  "order": 49
  }
 ]

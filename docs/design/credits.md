@@ -56,6 +56,8 @@ Some components use known methods. We wrote each one again from its description.
 - The [podcast block](../blocks/podcast) reads its transcript and its chapters as [WebVTT](https://www.w3.org/TR/webvtt1/), the caption format of the W3C.
 - The [study block](../blocks/study) moves cards between boxes by the Leitner system, from _So lernt man lernen_ by Sebastian Leitner (1972).
 - The [find a time block](../blocks/meet) follows the group polls of [When2meet](https://www.when2meet.com/): each person paints free times, and the grid shows where they overlap.
+- The [article block](../blocks/article) takes notes inline as `[^text]`, the inline notes of [Pandoc](https://pandoc.org/MANUAL.html) Markdown by John MacFarlane.
+- The [timesheet block](../blocks/timesheet) pays overtime by the rules of Indonesian Government Regulation (PP) 35 of 2021: the hourly wage is 1/173 of the monthly pay, and the multiples go up with the hours and on rest days.
 - The [card input](../components/card-input) checks numbers with the Luhn algorithm (Hans Peter Luhn, 1954).
 - The [check answers](../components/check-answers) page follows the "Check answers" pattern of the [GOV.UK Design System](https://design-system.service.gov.uk/patterns/check-answers/) by the UK Government Digital Service.
 - The [map with pins](../components/map-pins) places tiles and pins with the Web Mercator projection (EPSG:3857). Its default tiles and map data come from [OpenStreetMap](https://www.openstreetmap.org/copyright) and its contributors, under the ODbL.
