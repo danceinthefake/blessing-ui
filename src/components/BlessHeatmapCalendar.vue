@@ -1,6 +1,6 @@
 <template>
   <div ref="root" class="bless-heat" role="group" :aria-label="label">
-    <div class="bless-heat__scroll">
+    <div ref="scroller" class="bless-heat__scroll">
       <div
         class="bless-heat__grid"
         :style="{ '--bless-heat-weeks': weeks, '--bless-heat-levels': levels }"
@@ -66,7 +66,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, nextTick, ref } from "vue";
+import { computed, nextTick, onMounted, ref } from "vue";
 import { addDays, fromISO, isoToday, toISO } from "../composables/date";
 import { logicalKey } from "../composables/rtl";
 
@@ -159,6 +159,13 @@ const weekdays = computed(() =>
 
 const readout = ref("");
 const root = ref<HTMLElement>();
+// the newest week is at the end: on a narrow screen, open there and not at the oldest week
+const scroller = ref<HTMLElement>();
+onMounted(() => {
+  const el = scroller.value;
+  if (el)
+    el.scrollLeft = getComputedStyle(el).direction === "rtl" ? -el.scrollWidth : el.scrollWidth;
+});
 const last = computed(() => toISO(endDate.value));
 const stop = ref<string | null>(null);
 const tab = computed(() => model.value ?? stop.value ?? last.value);

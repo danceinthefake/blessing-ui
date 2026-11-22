@@ -381,6 +381,80 @@ await step(
   },
 );
 
+console.log("Booking");
+await step(
+  "a day and a time come first, a taken time sends you back, then the visit is booked",
+  async () => {
+    await go("booking");
+    await page.getByRole("button", { name: "Continue" }).click();
+    expect(/Pick a day/.test(await text(".booking__problem")), "no day problem");
+    await page.getByRole("gridcell", { name: /24 November/ }).click();
+    await page.waitForTimeout(500);
+    await page.locator(".bless-slots label", { hasText: /16[.:]00/ }).click();
+    await page.getByRole("button", { name: "Continue" }).click();
+    await page.getByLabel("Name").fill("Budi");
+    await page.getByLabel("Email").fill("budi@blessing.test");
+    await page.getByRole("button", { name: "Book" }).click();
+    await page.waitForTimeout(900);
+    expect(/Someone booked 16:00/.test(await text(".booking__problem")), "no taken-time problem");
+    await page.locator(".bless-slots label", { hasText: /10[.:]00/ }).click();
+    await page.getByRole("button", { name: "Continue" }).click();
+    await page.getByRole("button", { name: "Book" }).click();
+    await page.waitForTimeout(900);
+    expect(/You are booked/.test(await text(".booking")), "no confirmation");
+  },
+);
+
+console.log("Profile");
+await step("Follow shows at once, and an unfollow that fails offline is undone", async () => {
+  await go("profile");
+  await page.getByRole("button", { name: /^Follow/ }).click();
+  await page.waitForTimeout(600);
+  expect(await page.getByRole("button", { name: /^Following/ }).isVisible(), "not following");
+  await page.context().setOffline(true);
+  await page.getByRole("button", { name: /^Following/ }).click();
+  await page.waitForTimeout(700);
+  await page.context().setOffline(false);
+  expect(/Could not unfollow/.test(await text(".profile__main")), "no error");
+  expect(
+    await page.getByRole("button", { name: /^Following/ }).isVisible(),
+    "the unfollow was not undone",
+  );
+  await page.getByRole("tab", { name: "Activity" }).click();
+  expect(/posted/.test(await text(".profile__main")), "no activity");
+});
+
+console.log("File manager");
+await step("open a folder, rename with a clash, delete, search, and upload", async () => {
+  await go("files");
+  await page.getByRole("button", { name: /^Covers/ }).click();
+  await page.getByRole("button", { name: /^spring-cover\.png/ }).click();
+  await page.getByRole("button", { name: "Rename" }).click();
+  await page.getByLabel("Name", { exact: true }).fill("summer-cover.png");
+  await page.getByRole("button", { name: "Save" }).click();
+  await page.waitForTimeout(300);
+  expect(/already has an item named/.test(await text("dialog[open]")), "no clash");
+  await page.getByLabel("Name", { exact: true }).fill("cover-1.png");
+  await page.getByRole("button", { name: "Save" }).click();
+  await page.waitForTimeout(400);
+  expect(/cover-1\.png/.test(await text(".files__details")), "not renamed");
+  await page.getByRole("button", { name: "Delete" }).click();
+  await page.locator("dialog[open]").getByRole("button", { name: "Delete" }).click();
+  await page.waitForTimeout(600);
+  expect(!/cover-1\.png/.test(await text(".files__main")), "not deleted");
+  await page.getByRole("button", { name: "My files" }).click();
+  await page.getByLabel("Search in this folder").fill("brief");
+  expect(/1 item/.test(await text(".bless-files__count")), "search did not filter");
+  await page.getByLabel("Search in this folder").fill("");
+  await page.getByRole("button", { name: "Upload" }).click();
+  await page
+    .locator("dialog[open] input[type=file]")
+    .setInputFiles({ name: "notes.txt", mimeType: "text/plain", buffer: Buffer.from("hello") });
+  await page.waitForTimeout(1200);
+  await page.keyboard.press("Escape");
+  expect(/notes\.txt/.test(await text(".files__main")), "no uploaded file");
+});
+
 await browser.close();
 console.log(failed ? `\n${failed} block check(s) failed` : "\nall block checks passed");
 process.exit(failed ? 1 : 0);

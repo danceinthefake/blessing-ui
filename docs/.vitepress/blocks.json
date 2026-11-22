@@ -208,5 +208,26 @@
   "group": "Marketing",
   "summary": "A product landing page: a hero with two calls to action, a logo row, the features, numbers that count up, quotes from customers, an FAQ, and a closing call to action.",
   "order": 30
+ },
+ {
+  "slug": "booking",
+  "title": "Booking",
+  "group": "Everyday",
+  "summary": "Book a visit in two steps: a service, a day, and a free time, then your details. Closed days cannot be picked. If someone takes the time first, the block says so and goes back to the times.",
+  "order": 31
+ },
+ {
+  "slug": "profile",
+  "title": "Profile",
+  "group": "People and messages",
+  "summary": "A public profile: cover, avatar, bio, and counts with Follow, a year of activity as a heatmap, and tabs for works, recent activity, and badges. Follow updates the count at once and undoes it if the server says no.",
+  "order": 32
+ },
+ {
+  "slug": "files",
+  "title": "File manager",
+  "group": "Work",
+  "summary": "Folders and files in a grid or a list, with the folder path, a search in the folder, and the storage used. Upload adds files to the open folder. Pick a file to see its details, then rename it or delete it.",
+  "order": 33
  }
 ]

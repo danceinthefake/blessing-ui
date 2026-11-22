@@ -57,7 +57,7 @@ Social networks, forums, and dating. People post, react, and follow.
 
 Today: [PostComposer](../components/post-composer), [Stories](../components/stories), [FollowButton](../components/follow-button), [TrendList](../components/trend-list), [ReportDialog](../components/report-dialog), [GroupCard](../components/group-card), [ForumTopics](../components/forum-topics), [ProfileCard](../components/profile-card), [ActivityFeed](../components/activity-feed), [Reactions](../components/reactions), [Thread](../components/thread), [Message](../components/message), [Mention](../components/mention), [Poll](../components/poll), [Leaderboard](../components/leaderboard), [AvatarGroup](../components/avatar-group), [SwipeDeck](../components/swipe-deck), [HoverCard](../components/hover-card).
 
-Blocks: [community](../blocks/community).
+Blocks: [community](../blocks/community), [profile](../blocks/profile).
 
 ## 4. Communication
 
@@ -81,7 +81,7 @@ Documents, notes, tasks, boards, and calendars. People make things, alone or as 
 
 Today: [MarginComments](../components/margin-comments), [ShareAccess](../components/share-access), [MindMap](../components/mind-map), [TimeTracker](../components/time-tracker), [RoomBooking](../components/room-booking), [FileBrowser](../components/file-browser), [Editor](../components/editor), [Kanban](../components/kanban), [StickyBoard](../components/sticky-board), [TaskList](../components/task-list), [Gantt](../components/gantt), [Scheduler](../components/scheduler), [EventCalendar](../components/event-calendar), [Spreadsheet](../components/spreadsheet), [InfiniteCanvas](../components/infinite-canvas), [VersionHistory](../components/version-history), [PresenceCursors](../components/presence-cursors), [Command](../components/command), [FileTree](../components/file-tree), [Annotator](../components/annotator).
 
-Blocks: [project](../blocks/project).
+Blocks: [project](../blocks/project), [files](../blocks/files).
 
 ## 7. Business software and ERP
 
@@ -113,7 +113,7 @@ Trackers, clinics, and telemedicine. People log the body and book care.
 
 Today: [VitalsPanel](../components/vitals-panel), [MedicationSchedule](../components/medication-schedule), [WorkoutLog](../components/workout-log), [SleepChart](../components/sleep-chart), [BodyMap](../components/body-map), [AppointmentCard](../components/appointment-card), [HabitTracker](../components/habit-tracker), [HeatmapCalendar](../components/heatmap-calendar), [Gauge](../components/gauge), [Timer](../components/timer), [SlotPicker](../components/slot-picker), [RangeChart](../components/range-chart).
 
-Blocks: [health](../blocks/health).
+Blocks: [health](../blocks/health), [booking](../blocks/booking).
 
 ## 11. Developer tools
 

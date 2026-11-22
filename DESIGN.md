@@ -819,6 +819,10 @@ The user chose both: new blocks for the site-type groups that have no block, thr
 
 - ✅ The component list is wider than other libraries, but the blocks were few: Commerce had 25 components and only the Pricing block. This round adds the three blocks that most block catalogs have and we did not. Checkout (group Shop): address, delivery time, and card in `BlessSteps`, with the order summary and a discount code next to them. Each step names what is missing, and the mock bank declines one test card. Product page (group Shop): photos with a lightbox, variants with sold-out values from the stock, quantity, Add to cart with a toast, tabs with reviews that filter by stars, and related products. Landing page (group Marketing): hero, logos, features, numbers, quotes, FAQ, and a closing call to action. `e2e/blocks.mjs` has a flow for Checkout and for Product page.
 
+### Phase 61 — profile, file manager, and booking blocks (2026-11-22)
+
+- ✅ The second round from the same list. Profile (People and messages): `BlessProfileCard`, a year of posts in `BlessHeatmapCalendar` that opens at the newest week, and tabs for works, activity, and badges. Follow changes the count at once and undoes it when the server refuses, for example offline. File manager (Work): `BlessFileBrowser` with the folder path, a search in the folder, upload in a modal, the storage used, and a details panel with rename (the name must be new in its folder) and delete (a folder takes its contents). Booking (Everyday): a service, a day (closed on Sundays and past days), and a free time, then the details in `BlessForm`. If someone took the time first, the block goes back to the times and says so. `e2e/blocks.mjs` has a flow for each.
+
 ### Order
 
 5 → 6 → 7. Inside each phase, build order = list order. Every component: tests (grouped per area in `src/components/*.test.ts`), a docs page with a live example, a README row, checkbox flipped.
