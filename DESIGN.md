@@ -834,6 +834,10 @@ The user chose both: new blocks for the site-type groups that have no block, thr
 - [x] `BlessLanguageSwitcher`: pick the language. A native `<select>`, or with `href(code)` a list of links with `aria-current` and `hreflang`. Each name is in its own language and has its own `lang`.
 - ✅ The blocks use them. Footer: `BlessLanguageSwitcher`, `BlessLink`, and `BlessGrid` (three, two, then one column). Sign in: `BlessLink` in place of accent-colored links. Billing, Checkout, Dashboard, Landing page, Pricing, and Settings: `BlessGrid` in place of their own grid CSS.
 
+### Phase 64 — assistant, developers, and calendar blocks (2026-11-22)
+
+- ✅ A round from the components that no block used (311 of 442). Assistant (Work): `BlessChatHistory`, `BlessModelPicker`, and a reply that streams as events into `BlessReasoning`, `BlessAgentPlan`, `BlessToolCall`, `BlessStreamingText`, and `BlessSources`. Stop ends the reply and marks what did not finish as skipped. `BlessMessageFeedback` rates, copies, and tries again. Developers (Accounts and admin): API keys in `BlessApiKeyField`, shown in full only once, a webhook that needs a public https address, `BlessWebhookLog` that sends a failed delivery again, and `BlessAuditLog` with each change. The code samples read the key from the environment. Calendar (Everyday): `BlessEventCalendar` with events that repeat by `BlessRecurrencePicker` rules, seen in a zone from `BlessTimezonePicker`. Each event keeps its own zone, so a clock change does not move it. A new event says what it overlaps, and `BlessRsvp` answers. `e2e/blocks.mjs` has a flow for each.
+
 ### Order
 
 5 → 6 → 7. Inside each phase, build order = list order. Every component: tests (grouped per area in `src/components/*.test.ts`), a docs page with a live example, a README row, checkbox flipped.

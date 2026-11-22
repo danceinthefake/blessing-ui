@@ -250,5 +250,26 @@
   "group": "Shop",
   "summary": "The past orders of a buyer. Open an order to see where it is, cancel it before it ships, or return items within 30 days of delivery. Buy again puts the same items in the cart.",
   "order": 36
+ },
+ {
+  "slug": "assistant",
+  "title": "Assistant",
+  "group": "Work",
+  "summary": "An AI assistant for a help center. The reply streams in with its plan, the tool it calls, and its sources, and you can stop it. A model that thinks first shows its reasoning. Earlier chats are on the side.",
+  "order": 37
+ },
+ {
+  "slug": "developers",
+  "title": "Developers",
+  "group": "Accounts and admin",
+  "summary": "API keys, a webhook, and a log of each change. A new key shows in full only once. A webhook needs a public https address, and a failed delivery can be sent again.",
+  "order": 38
+ },
+ {
+  "slug": "calendar",
+  "title": "Calendar",
+  "group": "Everyday",
+  "summary": "A month of events that repeat by a rule, seen in a time zone you pick. Each event keeps the zone it was made in, so a clock change does not move it. A new event says what it overlaps.",
+  "order": 39
  }
 ]

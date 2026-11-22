@@ -1,0 +1,25 @@
+export default {
+  title: "Developers",
+  group: "Accounts and admin",
+  order: 38,
+  summary:
+    "API keys, a webhook, and a log of each change. A new key shows in full only once. A webhook needs a public https address, and a failed delivery can be sent again.",
+  components: [
+    "BlessTabs",
+    "BlessApiKeyField",
+    "BlessCodeTabs",
+    "BlessWebhookLog",
+    "BlessAuditLog",
+    "BlessModal",
+    "BlessField",
+    "BlessFieldset",
+    "BlessInput",
+    "BlessCheckbox",
+    "BlessAlertDialog",
+    "BlessAlert",
+    "BlessEmpty",
+    "BlessButton",
+    "BlessText",
+  ],
+  height: "820px",
+};

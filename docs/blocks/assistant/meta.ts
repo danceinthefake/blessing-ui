@@ -1,0 +1,27 @@
+export default {
+  title: "Assistant",
+  group: "Work",
+  order: 37,
+  summary:
+    "An AI assistant for a help center. The reply streams in with its plan, the tool it calls, and its sources, and you can stop it. A model that thinks first shows its reasoning. Earlier chats are on the side.",
+  components: [
+    "BlessChatHistory",
+    "BlessModelPicker",
+    "BlessMessageScroller",
+    "BlessMessage",
+    "BlessBubble",
+    "BlessReasoning",
+    "BlessAgentPlan",
+    "BlessToolCall",
+    "BlessStreamingText",
+    "BlessSources",
+    "BlessMessageFeedback",
+    "BlessPromptInput",
+    "BlessSuggestions",
+    "BlessSheet",
+    "BlessAlert",
+    "BlessButton",
+    "BlessText",
+  ],
+  height: "640px",
+};

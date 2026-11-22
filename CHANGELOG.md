@@ -4,6 +4,7 @@
 
 ### Added
 
+- Assistant, Developers, and Calendar blocks. Assistant streams a reply with its plan, its tool call, and its sources, and a reply can be stopped and tried again. Developers shows a new API key in full only once, accepts only a public https webhook address, sends a failed delivery again, and logs each change. Calendar shows repeating events in a time zone you pick, keeps each event in the zone it was made in, and says what a new event overlaps.
 - `BlessLink`, `BlessGrid`, and `BlessLanguageSwitcher`. Link is always underlined, and an external link says that it opens a new tab. Grid gives at most `columns` columns, never narrower than `min`. LanguageSwitcher is a native select, or a list of links with `href`, and each language name is in its own language.
 - Billing, Search results, and Orders blocks. Billing shows the plan, the usage, the card, and the invoices, pays an overdue invoice, and says what to remove before a move to a smaller plan. Search results has filters with counts, sort, pages, and a better spelling for a misspelled word. Orders opens an order by its link, cancels it before it ships, and returns items within 30 days of delivery.
 - Profile, File manager, and Booking blocks. Profile has Follow that undoes itself when the server refuses. File manager opens folders, searches, uploads, renames, and deletes. Booking picks a service, a day, and a free time, and goes back to the times when someone took the time first.

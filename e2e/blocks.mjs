@@ -537,6 +537,113 @@ await step("open an order by its link, cancel one, buy again, and return items",
   expect(/Returns closed on 4 October 2026/.test(await text(".orders__sheet")), "no closed window");
 });
 
+console.log("Assistant");
+await step(
+  "a reply streams with its plan and sources, a stopped reply says so, and a retry finishes it",
+  async () => {
+    await go("assistant");
+    await page.getByRole("button", { name: "My parcel is late. What now?" }).click();
+    await page.waitForTimeout(2500);
+    const reply = page.locator(".assistant__reply").last();
+    expect(/3 of 3 steps done/.test(await reply.textContent()), "the plan did not finish");
+    expect(/Late shipments/.test(await reply.textContent()), "no sources");
+    await page.getByRole("button", { name: "Model: Steady" }).click();
+    await page.getByRole("option", { name: /Deep/ }).click();
+    await page.getByLabel("Message").fill("Can I return a gift?");
+    await page.keyboard.press("Enter");
+    await page.waitForTimeout(900);
+    await page.getByRole("button", { name: "Stop" }).click();
+    await page.waitForTimeout(300);
+    const last = page.locator(".assistant__reply").last();
+    expect(/You stopped this reply/.test(await last.textContent()), "no stopped note");
+    expect(/Thought for 2 s/.test(await last.textContent()), "no reasoning");
+    await last.getByRole("button", { name: "Try again" }).click();
+    await page.waitForTimeout(3500);
+    expect(
+      !/You stopped this reply/.test(await last.textContent()),
+      "the retry did not replace the reply",
+    );
+    expect(/30 days of delivery/.test(await last.textContent()), "the retry did not finish");
+    expect(/My parcel is late/.test(await text(".assistant__side")), "the chat is not in the list");
+  },
+);
+
+console.log("Developers");
+await step(
+  "a new key shows once, a bad webhook address is refused, a failed delivery goes again, and the log has each change",
+  async () => {
+    await go("developers");
+    await page.getByRole("button", { name: "New key", exact: true }).click();
+    await page.getByRole("button", { name: "Make the key" }).click();
+    expect(/Give the key a name/.test(await text("dialog[open]")), "no name problem");
+    await page.locator("dialog[open]").getByLabel("Name").fill("warehouse SYNC");
+    await page.getByRole("button", { name: "Make the key" }).click();
+    expect(/exists/.test(await text("dialog[open]")), "no clash");
+    await page.locator("dialog[open]").getByLabel("Name").fill("Accounting app");
+    await page.getByRole("button", { name: "Make the key" }).click();
+    await page.waitForTimeout(700);
+    expect(/only time we show all of Accounting app/.test(await text(".dev")), "no copy-now alert");
+    await page.getByRole("tab", { name: "Webhooks" }).click();
+    await page.waitForTimeout(500);
+    await page.getByLabel("Address").fill("http://localhost:3000/hooks");
+    await page.getByRole("button", { name: "Save" }).click();
+    await page.waitForTimeout(300);
+    expect(/must start with https/.test(await text(".dev")), "no https problem");
+    await page.getByLabel("Address").fill("https://ops.tokosenja.example/v2/hooks");
+    await page.getByText("An order ships", { exact: true }).click();
+    await page.getByRole("button", { name: "Save" }).click();
+    await page.waitForTimeout(700);
+    expect(!/must start with https/.test(await text(".dev")), "the problem stayed");
+    await page.getByRole("button", { name: "Send again" }).click();
+    await page.waitForTimeout(900);
+    expect(
+      !(await page.getByRole("button", { name: "Send again" }).count()),
+      "the delivery still failed",
+    );
+    await page.getByRole("tab", { name: "Log" }).click();
+    const log = await text(".dev");
+    expect(
+      /the key Accounting app/.test(log) && /the webhook/.test(log),
+      "the log misses a change",
+    );
+  },
+);
+
+console.log("Calendar");
+await step(
+  "times follow the zone, an RSVP counts, and a new event says what it overlaps",
+  async () => {
+    await go("calendar");
+    expect(/9:00\s*Standup/.test(await text(".bless-evcal")), "no standup at 9:00");
+    await page.getByLabel("Show times in").fill("Tokyo");
+    await page.getByRole("option", { name: /Tokyo/ }).first().click();
+    await page.waitForTimeout(300);
+    expect(/11:00\s*Standup/.test(await text(".bless-evcal")), "the standup did not move to 11:00");
+    await page.getByRole("button", { name: /Team dinner/ }).click();
+    expect(
+      /20:30 to 22:30 \(18:30 in Jakarta\)/.test(await text("dialog[open]")),
+      "no own-zone time",
+    );
+    await page
+      .locator("dialog[open]")
+      .getByRole("button", { name: /^Going/ })
+      .click();
+    expect(/4 going/.test(await text("dialog[open]")), "the RSVP did not count");
+    await page.keyboard.press("Escape");
+    await page.waitForTimeout(300);
+    await page.getByRole("button", { name: "New event" }).click();
+    const dlg = page.locator("dialog[open]");
+    await dlg.getByLabel("Title").fill("Lunch with Sari");
+    await dlg.locator(".bless-datepicker__trigger").click();
+    await dlg.getByRole("gridcell", { name: "Tuesday, 24 November 2026" }).click();
+    await dlg.locator("input[type=time]").fill("11:00");
+    expect(/Standup at 11:00/.test(await dlg.textContent()), "no overlap warning");
+    await dlg.getByRole("button", { name: "Save" }).click();
+    await page.waitForTimeout(700);
+    expect(/Lunch with Sari/.test(await text(".bless-evcal")), "the event is not on the calendar");
+  },
+);
+
 await browser.close();
 console.log(failed ? `\n${failed} block check(s) failed` : "\nall block checks passed");
 process.exit(failed ? 1 : 0);

@@ -81,7 +81,7 @@ Documents, notes, tasks, boards, and calendars. People make things, alone or as 
 
 Today: [MarginComments](../components/margin-comments), [ShareAccess](../components/share-access), [MindMap](../components/mind-map), [TimeTracker](../components/time-tracker), [RoomBooking](../components/room-booking), [FileBrowser](../components/file-browser), [Editor](../components/editor), [Kanban](../components/kanban), [StickyBoard](../components/sticky-board), [TaskList](../components/task-list), [Gantt](../components/gantt), [Scheduler](../components/scheduler), [EventCalendar](../components/event-calendar), [Spreadsheet](../components/spreadsheet), [InfiniteCanvas](../components/infinite-canvas), [VersionHistory](../components/version-history), [PresenceCursors](../components/presence-cursors), [Command](../components/command), [FileTree](../components/file-tree), [Annotator](../components/annotator).
 
-Blocks: [project](../blocks/project), [files](../blocks/files).
+Blocks: [project](../blocks/project), [files](../blocks/files), [calendar](../blocks/calendar).
 
 ## 7. Business software and ERP
 
@@ -121,7 +121,7 @@ Code hosting, CI, cloud consoles, and API docs. People build, ship, and watch se
 
 Today: [Terminal](../components/terminal), [ApiEndpoint](../components/api-endpoint), [DeployList](../components/deploy-list), [CommitList](../components/commit-list), [RequestInspector](../components/request-inspector), [CodeBlock](../components/code-block), [CodeTabs](../components/code-tabs), [Diff](../components/diff), [JsonViewer](../components/json-viewer), [LogViewer](../components/log-viewer), [ApiKeyField](../components/api-key-field), [WebhookLog](../components/webhook-log), [CronInput](../components/cron-input), [UptimeBar](../components/uptime-bar), [SystemStatus](../components/system-status), [IncidentTimeline](../components/incident-timeline), [FeatureFlags](../components/feature-flags), [QuotaUsage](../components/quota-usage).
 
-Blocks: [release](../blocks/release).
+Blocks: [release](../blocks/release), [developers](../blocks/developers).
 
 ## 12. Utilities
 
@@ -161,7 +161,7 @@ Chat with a model and agents that do work. People ask, watch, and correct.
 
 Today: [ArtifactPanel](../components/artifact-panel), [ContextChips](../components/context-chips), [RunTrace](../components/run-trace), [PromptLibrary](../components/prompt-library), [AnswerCompare](../components/answer-compare), [TokenCost](../components/token-cost), [PromptInput](../components/prompt-input), [StreamingText](../components/streaming-text), [ToolCall](../components/tool-call), [Reasoning](../components/reasoning), [Sources](../components/sources), [MessageFeedback](../components/message-feedback), [ContextMeter](../components/context-meter), [ModelPicker](../components/model-picker), [AgentPlan](../components/agent-plan), [ChatHistory](../components/chat-history), [Suggestions](../components/suggestions).
 
-Blocks: [chat](../blocks/chat).
+Blocks: [chat](../blocks/chat), [assistant](../blocks/assistant).
 
 ## 17. Connected devices
 

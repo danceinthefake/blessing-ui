@@ -1,0 +1,25 @@
+export default {
+  title: "Calendar",
+  group: "Everyday",
+  order: 39,
+  summary:
+    "A month of events that repeat by a rule, seen in a time zone you pick. Each event keeps the zone it was made in, so a clock change does not move it. A new event says what it overlaps.",
+  components: [
+    "BlessEventCalendar",
+    "BlessTimezonePicker",
+    "BlessSheet",
+    "BlessDescriptions",
+    "BlessRsvp",
+    "BlessModal",
+    "BlessField",
+    "BlessInput",
+    "BlessDateTimePicker",
+    "BlessSelect",
+    "BlessSwitch",
+    "BlessRecurrencePicker",
+    "BlessAlert",
+    "BlessButton",
+    "BlessText",
+  ],
+  height: "820px",
+};
