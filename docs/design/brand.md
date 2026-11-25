@@ -11,14 +11,14 @@ The identity of Blessing UI is the design system itself. The logo needs nothing 
 
 ## Six elements
 
-| Element  | Value                                                                                                                                                                                             | Where you see it                                                                                         |
-| -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| Name     | **Blessing**. It is a nod to a fictional software circle (see the [story](./story))                                                                                                               | wordmark, package name                                                                                   |
-| Color    | one accent at a time: Megumi's `#e85078` by default, and six by [palette](../guide/palettes). The mark carries the petal colors. A palette darkens where white text needs it                      | anything chosen (a pressed button, the current tab, a checked box), badges, the focus ring               |
-| Geometry | `--bless-lean`, −10°: upright at rest, taken on attention. Big type and the mark always lean. One [shape](../guide/conventions#shape): the upright square plate. The teardrop is only in the mark | every label, field, switch, and chip, and every petal of the mark                                        |
-| Type     | Roboto 100 oversized for the voice, 700 uppercase tracked for the UI                                                                                                                              | watermark, wordmark, labels                                                                              |
-| Motif    | the plate: a hard 1px accent hairline offset behind anything that floats, with no blur                                                                                                            | every popover, menu, tooltip, toast, and modal, the QR frame, the hero shot of the site, and the OG card |
-| Eyecatch | the title card of TV anime at a break: a band with a small kicker, a large title, and a big number. A next-episode preview closes the home page                                                   | the home page, the landing pages of the guide, the blocks, and the design, and the strip over each page  |
+| Element    | Value                                                                                                                                                                                                                             | Where you see it                                                                                   |
+| ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| Name       | **Blessing**. It is a nod to a fictional software circle (see the [story](./story))                                                                                                                                               | wordmark, package name                                                                             |
+| Moods      | three times of day: **Daylight** (warm paper `#EDE6E1`, violet-black ink `#262228`), **Golden hour** (`data-theme="golden"`), and **Night** (`data-theme="dark"`). One accent at a time from six [palettes](../guide/palettes)    | page paper, sheets, hero art, anything chosen (pressed button, current tab, checked box), focus    |
+| Geometry   | soft corners (`--bless-radius` for cards, `--bless-radius-plate` for fields, `--bless-radius-pill` for buttons and chips) and `--bless-lean`, −10°, taken on attention. The teardrop lives in the mark                            | every card, button, field, switch, and chip, and every petal of the mark                           |
+| Type       | Roboto in weights 400 to 600, sentence case, no tracked uppercase labels. Weight 100 stays only for the single overflow word of a screen                                                                                          | body, labels, headings, watermark                                                                  |
+| Elevation  | soft, wide shadows tinted with the warm ink (`--bless-shadow-sm`, `--bless-shadow-plate`). In Night, raised surfaces use a lighter fill and a faint top edge (`--bless-edge`). The accent stays for choices and focus only        | popovers, menus, tooltips, toasts, modals, sheets, and cards                                       |
+| Voice      | a hero frame with abstract mood art (sky gradient, light leak, petals) and `BlessNovelBox` for the voice of an app, paired with built-in drawn icons (`BlessIcon`)                                                                | home hero, landing pages, dialogue boxes, and controls                                             |
 
 ## Mark
 
@@ -70,6 +70,7 @@ The wordmark is `Blessing` in Roboto 100 (300 in dark mode, like every thin text
   position: relative;
   top: -0.15em;
   padding: var(--bless-space-2) var(--bless-space-3);
+  border-radius: var(--bless-radius-plate);
   background: var(--bless-color-accent);
   color: var(--bless-color-on-accent);
   font-size: 18px;
@@ -112,8 +113,6 @@ The wordmark is `Blessing` in Roboto 100 (300 in dark mode, like every thin text
 .brand-dont figcaption {
   font-size: var(--bless-text-xs);
   color: var(--bless-color-text-muted);
-  letter-spacing: var(--bless-tracking-wide);
-  text-transform: uppercase;
 }
 .brand-dont__centre {
   position: relative;

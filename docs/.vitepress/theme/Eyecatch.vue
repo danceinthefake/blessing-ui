@@ -1,137 +1,133 @@
 <template>
-  <section
-    ref="el"
-    class="eye vp-raw"
-    :class="{
-      'eye--accent': accent,
-      'eye--seen': !opener && visible,
-      'eye--wait': live && !opener && !visible,
-    }"
-  >
-    <span class="eye__slash" aria-hidden="true" />
-    <span v-if="num" class="eye__num" aria-hidden="true" :data-num="num" />
-    <div class="eye__text">
-      <p class="eye__kicker">{{ kicker }}</p>
-      <component :is="`h${level}`" class="eye__title">{{ title }}</component>
+  <section class="hero-frame vp-raw" :class="{ 'hero-frame--accent': accent }">
+    <svg class="hero-frame__art" viewBox="0 0 800 320" preserveAspectRatio="xMaxYMid slice" aria-hidden="true">
+      <defs>
+        <radialGradient id="bless-hero-glow" cx="78%" cy="18%" r="65%">
+          <stop offset="0%" stop-color="currentColor" stop-opacity="0.22" />
+          <stop offset="60%" stop-color="currentColor" stop-opacity="0.06" />
+          <stop offset="100%" stop-color="currentColor" stop-opacity="0" />
+        </radialGradient>
+      </defs>
+      <rect width="800" height="320" fill="url(#bless-hero-glow)" />
+      <!-- abstract drifting petals drawn from the mood & accent, no character or anime frame -->
+      <g fill="currentColor" opacity="0.2">
+        <path d="M620 48c18 14 26 38 14 54-12 16-36 10-46-12-8-18 12-40 32-42z" />
+        <path d="M708 118c16 8 24 26 16 40-8 14-26 12-36-4-10-16 4-34 20-36z" opacity="0.7" />
+        <path d="M556 172c12 10 18 24 10 34-8 10-22 6-28-8-6-12 6-24 18-26z" opacity="0.6" />
+        <path d="M742 224c14 12 20 30 10 42-10 12-28 8-36-10-8-16 10-30 26-32z" opacity="0.5" />
+      </g>
+    </svg>
+    <span v-if="num" class="hero-frame__num" aria-hidden="true" :data-num="num" />
+    <div class="hero-frame__copy">
+      <p class="hero-frame__kicker">{{ kicker }}</p>
+      <component :is="`h${level}`" class="hero-frame__title">{{ title }}</component>
       <slot />
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
-// An anime eyecatch: a title card at a break. A slash of accent wipes across a dark band
-// when the band first scrolls into view. The home page puts one between its chapters; a
-// landing page opens with one in place of its h1.
-import { onMounted, ref } from "vue";
-import { useAnimateOnScroll } from "blessing-ui";
-
+// Hero frame for docs landing pages (revamp 2026-11): replaces the dark diagonal eyecatch band
+// with abstract neutral art drawn from the active mood (--bless-sky, --bless-light, drifting
+// petals) and open space on the reading side.
 withDefaults(
   defineProps<{
-    /** the small line over the title, for example "Episode 01" */
     kicker: string;
     title: string;
-    /** the large number in the corner */
     num?: string;
     level?: 1 | 2;
-    /** accent ground with a dark slash, instead of the reverse */
     accent?: boolean;
   }>(),
   { level: 2 },
 );
-const el = ref<HTMLElement>();
-const { visible } = useAnimateOnScroll(el);
-const live = ref(false); // the server render shows the slash
-// A band in view when the page opens shows at once: an entrance on arrival reads as a flicker.
-const opener = ref(false);
-onMounted(() => {
-  opener.value = el.value!.getBoundingClientRect().top < innerHeight;
-  live.value = true;
-});
 </script>
 
 <style scoped>
-.eye {
+.hero-frame {
   position: relative;
   overflow: hidden;
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: flex-end;
   min-height: 200px;
-  padding: 32px 24px;
-  background: var(--bless-color-media-bg);
-  color: #fff;
-  text-align: center;
+  margin-bottom: 28px;
+  padding: 28px 32px;
+  border-radius: var(--bless-radius);
+  background: var(--bless-light), var(--bless-sky);
+  color: var(--bless-color-text);
+  box-shadow: var(--bless-shadow-sm);
 }
-.eye--accent {
-  background: var(--bless-color-accent);
-}
-.eye__slash {
+.hero-frame::after {
+  content: "";
   position: absolute;
-  inset: 30% -10%;
-  background: var(--bless-color-accent);
-  transform: skewY(-4deg);
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--bless-color-surface) 82%, transparent) 0%,
+    color-mix(in srgb, var(--bless-color-surface) 48%, transparent) 55%,
+    transparent 100%
+  );
+  pointer-events: none;
 }
-.eye--accent .eye__slash {
-  background: var(--bless-color-media-bg);
+.hero-frame__art {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  color: var(--bless-color-accent);
+  pointer-events: none;
 }
-/* decor as generated content: contrast checks skip it */
-.eye__num::before {
+.hero-frame--accent .hero-frame__art {
+  color: var(--bless-color-accent-2);
+}
+/* single overflow numeral in weight 100 (generated content so contrast checks skip decor) */
+.hero-frame__num::before {
   content: attr(data-num);
   position: absolute;
-  right: -0.05em;
-  top: -0.25em;
-  font-size: 180px;
+  inset-inline-end: -0.04em;
+  bottom: -0.22em;
+  z-index: 1;
+  font-size: clamp(110px, 16vw, 176px);
   font-weight: var(--bless-font-weight-thin);
   line-height: 1;
-  opacity: 0.18;
+  letter-spacing: -0.04em;
+  color: var(--bless-color-text);
+  opacity: 0.1;
+  transform: skewX(var(--bless-lean));
+  pointer-events: none;
 }
-.eye__text {
+.hero-frame__copy {
   position: relative;
-  color: var(--bless-color-on-accent);
+  z-index: 2;
+  max-width: 600px;
 }
-.eye__kicker {
+.hero-frame__kicker {
   margin: 0;
-  font-size: var(--bless-text-sm);
+  font-size: var(--bless-text-xs);
   font-weight: var(--bless-font-weight-bold);
-  letter-spacing: 0.4em;
-  text-transform: uppercase;
+  color: var(--bless-color-text-muted);
 }
-.eye__title {
+.hero-frame__title {
   margin: 6px 0 0;
   border: 0;
   padding: 0;
-  font-size: clamp(32px, 5vw, 54px);
-  font-weight: var(--bless-font-weight-thin);
-  line-height: 1.15;
-  letter-spacing: 0.06em;
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: var(--bless-font-weight-bold);
+  line-height: 1.12;
+  letter-spacing: var(--bless-tracking-tight);
   color: inherit;
 }
-.eye__text :deep(p:not(.eye__kicker)) {
-  max-width: 560px;
-  margin: 12px auto 0;
-  font-size: 16px;
+.hero-frame__copy :deep(p:not(.hero-frame__kicker)) {
+  margin: 10px 0 0;
+  font-size: var(--bless-text-md);
   line-height: 1.6;
-}
-/* before the band is in view the slash waits; then it wipes across */
-.eye--wait .eye__slash {
-  clip-path: inset(0 100% 0 0);
-}
-/* the text waits too, so it does not show and then play in again */
-.eye--wait .eye__text {
-  opacity: 0;
-}
-.eye--seen .eye__slash {
-  animation: eye-slash var(--bless-duration-draw) var(--bless-ease-snap) both;
-}
-@keyframes eye-slash {
-  from {
-    clip-path: inset(0 100% 0 0);
-  }
-}
-.eye--seen .eye__text {
-  animation: bless-voice var(--bless-duration-voice) var(--bless-ease-snap) both;
+  color: var(--bless-color-text-muted);
 }
 @media (max-width: 767px) {
-  .eye__num {
+  .hero-frame {
+    min-height: 164px;
+    padding: 22px 20px;
+  }
+  .hero-frame__num {
     display: none;
   }
 }

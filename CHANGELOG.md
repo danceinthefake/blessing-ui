@@ -4,6 +4,7 @@
 
 ### Changed
 
+- The revamp of 2026-11, step 3: the docs site and design documentation. The eyecatch bands and dark uppercase page strips are replaced by a wide hero frame with abstract neutral art drawn from each mood's palette (sky gradient, light leak, drifting petals) and a quiet sentence-case volume line. The docs home showcases `BlessNovelBox` and a live mood/palette stage, removes hard accent offset shadows, uses soft corners on VitePress chrome, loads Roboto 500/600, and puts `BlessThemeToggle mode="group"` in the nav bar for Daylight, System, Golden hour, and Night.
 - The revamp of 2026-11, step 1: the tokens (DESIGN-LANGUAGE.md, "Revamp 2026-11"). The colors are warm paper and a violet-black ink, measured from the frames of the anime. Corners are soft, and buttons and the round parts (avatars, switches, chips) are round. Floating things cast a soft shadow tinted with the ink, in place of the hard accent plate. The type scale is larger, labels use weight 600 in sentence case, and the tracking is gone. To get the old labels back, set `--bless-label-case: uppercase`. To get square plates back, set the four radius tokens to 0.
 - The dark theme is now Night, a violet night paper with a faint top edge on raised surfaces.
 

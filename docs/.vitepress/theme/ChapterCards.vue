@@ -14,9 +14,8 @@
 </template>
 
 <script setup lang="ts">
-// A grid of link cards for a landing page. The cards arrive one after another (the
-// library's bless-stagger) when the grid first scrolls into view. A grid that is in view
-// when the page opens shows at once: an entrance on arrival reads as a flicker.
+// A grid of link cards for a landing page. Soft corners and warm sheets with a soft shadow.
+// Cards arrive one after another when the grid scrolls into view; cards already in view show at once.
 import { onMounted, ref } from "vue";
 import { withBase } from "vitepress";
 import { useAnimateOnScroll } from "blessing-ui";
@@ -38,16 +37,18 @@ onMounted(() => {
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr));
-  gap: 12px;
+  gap: 14px;
   margin: 24px 0;
 }
 .card {
   display: flex;
   flex-direction: column;
   gap: 6px;
+  overflow: hidden;
   padding: 18px 20px;
+  border-radius: var(--bless-radius);
   background: var(--bless-color-surface);
-  border-top: 3px solid var(--bless-color-accent);
+  box-shadow: var(--bless-shadow-sm);
   color: var(--bless-color-text);
   text-decoration: none;
   transition: var(--bless-lean-transition);
@@ -56,10 +57,14 @@ onMounted(() => {
 .card:focus-visible {
   transform: skewX(var(--bless-lean));
 }
+.card:focus-visible {
+  outline: 2px solid var(--bless-color-accent);
+  outline-offset: 2px;
+}
 .card__img {
   width: calc(100% + 40px);
   max-width: none;
-  margin: -18px -20px 6px;
+  margin: -18px -20px 8px;
   aspect-ratio: 16 / 10;
   object-fit: cover;
   object-position: top;
@@ -67,16 +72,15 @@ onMounted(() => {
 .card__tag {
   font-size: var(--bless-text-xs);
   font-weight: var(--bless-font-weight-bold);
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
   color: var(--bless-color-text-muted);
 }
 .card__title {
-  font-size: 18px;
-  font-weight: var(--bless-font-weight-light);
+  font-size: var(--bless-text-md);
+  font-weight: var(--bless-font-weight-bold);
+  line-height: 1.3;
 }
 .card__text {
-  font-size: 14px;
+  font-size: var(--bless-text-sm);
   line-height: 1.55;
   color: var(--bless-color-text-muted);
 }

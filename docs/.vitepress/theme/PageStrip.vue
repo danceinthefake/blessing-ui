@@ -1,13 +1,13 @@
 <template>
-  <div v-if="kicker" :key="route.path" class="strip" aria-hidden="true">
-    <span class="strip__text">{{ kicker }}</span>
-    <span class="strip__slash" />
-  </div>
+  <p v-if="kicker" :key="route.path" class="strip" aria-hidden="true">
+    <span class="strip__dot" />
+    <span>{{ kicker }}</span>
+  </p>
 </template>
 
 <script setup lang="ts">
-// A slim eyecatch over the title of a leaf page: which volume, which group, which number.
-// A landing page (an index) opens with a full Eyecatch instead, so it gets no strip.
+// A quiet sentence-case volume line over a leaf page: which volume, which group, which number.
+// Replaces the dark uppercase eyecatch strip (revamp 2026-11).
 import { computed } from "vue";
 import { useRoute } from "vitepress";
 import { groups } from "../components";
@@ -44,31 +44,19 @@ const kicker = computed(() => {
 <style scoped>
 /* aria-hidden: the sidebar already says where the reader is */
 .strip {
-  position: relative;
-  overflow: hidden;
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  height: 32px;
-  margin-bottom: 20px;
-  padding-inline: 14px;
-  background: var(--bless-color-media-bg);
-}
-.strip__text {
-  position: relative;
-  z-index: 1;
+  gap: 8px;
+  margin: 0 0 12px;
   font-size: var(--bless-text-xs);
-  font-weight: var(--bless-font-weight-bold);
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: #fff;
+  font-weight: var(--bless-font-weight-medium);
+  color: var(--bless-color-text-muted);
 }
-.strip__slash {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: -12px;
-  width: 30%;
+.strip__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
   background: var(--bless-color-accent);
-  transform: skewX(var(--bless-lean));
+  flex: none;
 }
 </style>

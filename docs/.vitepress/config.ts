@@ -36,7 +36,7 @@ export default defineConfig({
     [
       "script",
       {},
-      `try{var a=localStorage.getItem("vitepress-theme-appearance");if(!a){a="light";localStorage.setItem("vitepress-theme-appearance",a)}if(a==="dark"||a==="light")document.documentElement.dataset.theme=a;var p=localStorage.getItem("bless-palette");if(p)document.documentElement.dataset.palette=p;if(localStorage.getItem("bless-motion")==="calm")document.documentElement.dataset.motion="calm"}catch(e){}`,
+      `try{var b=localStorage.getItem("bless-theme");if(b==="golden"){document.documentElement.dataset.theme="golden";localStorage.setItem("vitepress-theme-appearance","light")}else{var a=localStorage.getItem("vitepress-theme-appearance");if(!a){a="light";localStorage.setItem("vitepress-theme-appearance",a)}if(a==="dark"||a==="light")document.documentElement.dataset.theme=a}var p=localStorage.getItem("bless-palette");if(p)document.documentElement.dataset.palette=p;if(localStorage.getItem("bless-motion")==="calm")document.documentElement.dataset.motion="calm"}catch(e){}`,
     ],
     ["meta", { property: "og:title", content: "Blessing UI" }],
     [
@@ -54,7 +54,7 @@ export default defineConfig({
       "link",
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;600;700&display=swap",
       },
     ],
   ],

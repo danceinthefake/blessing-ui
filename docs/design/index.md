@@ -63,9 +63,9 @@ Color means chosen applies to the main button too. A main button at rest is an o
 
 The main button stands out by weight (solid against outline), not by color.
 
-## Shape
+## Shape, moods, and light
 
-One shape: the upright plate with a whole, square outline, for everything from a button to an avatar. The lean carries the identity, not the corners. The teardrop lives in the [mark](./brand#mark). [Conventions](../guide/conventions#shape) shows the rule in practice.
+Plates, cards, and fields have soft corners (`--bless-radius`, `--bless-radius-plate`), and buttons, chips, switches, and avatars are round (`--bless-radius-pill`). The −10° lean on attention carries the identity. Floating surfaces cast soft, ink-tinted shadows instead of a hard accent line, so color stays reserved for what the person chose. Three moods—Daylight, Golden hour, and Night—set the paper and light, while the six palettes supply the accent. The teardrop lives in the [mark](./brand#mark). [Conventions](../guide/conventions#shape) shows the tokens in practice.
 
 ## Motion
 

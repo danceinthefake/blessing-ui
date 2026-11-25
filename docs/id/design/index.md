@@ -63,9 +63,9 @@ Warna berarti terpilih juga berlaku untuk tombol utama. Tombol utama yang diam a
 
 Tombol utama menonjol lewat bobotnya (penuh lawan garis tepi), bukan lewat warna.
 
-## Bentuk {#shape}
+## Bentuk, suasana, dan cahaya {#shape}
 
-Satu bentuk: pelat tegak dengan garis tepi utuh dan persegi, untuk semua hal dari tombol sampai avatar. Kemiringan membawa identitasnya, bukan sudutnya. Bentuk tetes ada di [logo](./brand#mark). [Konvensi](../guide/conventions#shape) menunjukkan aturan ini dalam praktik.
+Pelat, kartu, dan isian memiliki sudut lembut (`--bless-radius`, `--bless-radius-plate`), sedangkan tombol, chip, switch, dan avatar berbentuk bulat (`--bless-radius-pill`). Kemiringan −10° saat diperhatikan tetap menjadi ciri khasnya. Permukaan melayang memakai bayangan lembut bernuansa tinta alih-alih garis aksen tegas, sehingga warna tetap hanya menandai pilihan orang. Tiga suasana—Daylight, Senja, dan Night—mengatur kertas dan cahaya, sementara enam palet memberi warna aksen. Bentuk tetes ada di [logo](./brand#mark). [Konvensi](../guide/conventions#shape) menunjukkan tokennya dalam praktik.
 
 ## Gerak {#motion}
 

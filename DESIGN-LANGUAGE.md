@@ -104,7 +104,7 @@ Motion follows the three layers of the series. The base is soft: an appearance r
 <a id="revamp-2026-11"></a>
 ## Revamp 2026-11
 
-Status: **decided, not built.** The owner found that the library looks generic and not modern. The exploration is in a private repository of the owner. It has the reference frames from the anime, the measured palette, and two mocks.
+Status: **implemented in library and docs** (steps 1–3 done 2026-11-25; step 4 is blessing.id). The owner found that the library looks generic and not modern. The exploration is in a private repository of the owner. It has the reference frames from the anime, the measured palette, and two mocks.
 
 The six rules are not the cause. The cause is the visual layer. It has tracked uppercase labels everywhere and the thin eyecatch band on each page. It also has a small scale, Unicode characters as icons, and flat grey surfaces. The frames of the anime show the other way: light and space in place of lines, warm paper in place of grey, close framing, one strong color in each frame, and the time of day as the mood.
 
@@ -124,5 +124,5 @@ Build order:
 
 1. [x] Tokens: paper and ink, the three moods, the radii, the type scale, and the shadows (2026-11-25).
 2. [x] Drawn icons, and the visual-novel text box (2026-11-25).
-3. [ ] The components and the docs, with neutral art of our own. The docs home gets a hero frame in place of the eyecatch band.
+3. [x] The components and the docs, with neutral art of our own. The docs home gets a hero frame in place of the eyecatch band (2026-11-25).
 4. [ ] The apps of blessing.id.

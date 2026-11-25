@@ -11,14 +11,14 @@ Identitas Blessing UI adalah sistem desain itu sendiri. Logonya tidak memerlukan
 
 ## Enam unsur
 
-| Unsur    | Nilai                                                                                                                                                                                                    | Tempat Anda melihatnya                                                                               |
-| -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| Nama     | **Blessing**. Nama ini mengacu pada sebuah lingkaran perangkat lunak fiksi (lihat [cerita](./story))                                                                                                     | wordmark, nama paket                                                                                 |
-| Warna    | satu aksen pada satu waktu: `#e85078` milik Megumi secara bawaan, dan enam lewat [palet](../guide/palettes). Logo membawa warna kelopak. Palet menggelapkan warna di tempat teks putih memerlukannya     | apa pun yang terpilih (tombol yang ditekan, tab saat ini, kotak yang dicentang), badge, cincin fokus |
-| Geometri | `--bless-lean`, −10°: tegak saat diam, miring saat diperhatikan. Huruf besar dan logo selalu miring. Satu [bentuk](../guide/conventions#shape): pelat persegi yang tegak. Bentuk tetes hanya ada di logo | setiap label, isian, switch, dan chip, serta setiap kelopak logo                                     |
-| Huruf    | Roboto 100 berukuran besar untuk suara, 700 huruf kapital berjarak untuk UI                                                                                                                              | watermark, wordmark, label                                                                           |
-| Motif    | pelat: garis aksen 1px yang tegas, digeser di belakang apa pun yang melayang, tanpa blur                                                                                                                 | setiap popover, menu, tooltip, toast, dan modal, bingkai QR, gambar utama situs, dan kartu OG        |
-| Eyecatch | kartu judul anime TV saat jeda: pita dengan baris kecil, judul besar, dan nomor besar. Cuplikan episode berikutnya menutup halaman depan                                                                 | halaman depan, halaman pembuka panduan, blok, dan desain, dan strip di atas setiap halaman           |
+| Unsur      | Nilai                                                                                                                                                                                                                    | Tempat Anda melihatnya                                                                              |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------- |
+| Nama       | **Blessing**. Nama ini mengacu pada sebuah lingkaran perangkat lunak fiksi (lihat [cerita](./story))                                                                                                                     | wordmark, nama paket                                                                                |
+| Suasana    | tiga waktu dalam sehari: **Daylight** (kertas hangat `#EDE6E1`, tinta `#262228`), **Senja** (`data-theme="golden"`), dan **Night** (`data-theme="dark"`). Satu aksen pada satu waktu dari enam [palet](../guide/palettes) | kertas halaman, lembar, seni hero, apa pun yang terpilih, dan cincin fokus                          |
+| Geometri   | sudut lembut (`--bless-radius` untuk kartu, `--bless-radius-plate` untuk isian, `--bless-radius-pill` untuk tombol dan chip) serta `--bless-lean`, −10°, saat diperhatikan. Bentuk tetes hanya ada di logo               | setiap kartu, tombol, isian, switch, dan chip, serta setiap kelopak logo                            |
+| Huruf      | Roboto ketebalan 400 sampai 600, huruf kalimat tanpa kapital berjarak. Ketebalan 100 hanya untuk satu kata meluap per layar                                                                                              | teks isi, label, judul, watermark                                                                   |
+| Elevasi    | bayangan lembut bernuansa tinta hangat (`--bless-shadow-sm`, `--bless-shadow-plate`). Di Night, permukaan terangkat memakai isian lebih terang dan tepi atas tipis (`--bless-edge`). Aksen tetap hanya untuk pilihan     | popover, menu, tooltip, toast, modal, sheet, dan kartu                                              |
+| Suara      | bingkai hero dengan seni suasana abstrak (gradasi langit, cahaya, kelopak) dan `BlessNovelBox` untuk suara aplikasi, bersama ikon gambar bawaan (`BlessIcon`)                                                            | hero halaman depan, halaman pembuka, kotak dialog, dan kontrol                                      |
 
 ## Logo {#mark}
 
@@ -70,6 +70,7 @@ Wordmark-nya adalah `Blessing` dalam Roboto 100 (300 di mode gelap, seperti semu
   position: relative;
   top: -0.15em;
   padding: var(--bless-space-2) var(--bless-space-3);
+  border-radius: var(--bless-radius-plate);
   background: var(--bless-color-accent);
   color: var(--bless-color-on-accent);
   font-size: 18px;
@@ -112,8 +113,6 @@ Wordmark-nya adalah `Blessing` dalam Roboto 100 (300 di mode gelap, seperti semu
 .brand-dont figcaption {
   font-size: var(--bless-text-xs);
   color: var(--bless-color-text-muted);
-  letter-spacing: var(--bless-tracking-wide);
-  text-transform: uppercase;
 }
 .brand-dont__centre {
   position: relative;

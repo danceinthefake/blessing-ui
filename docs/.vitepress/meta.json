@@ -8197,6 +8197,12 @@
     "required": false,
     "default": "\"stretch\"",
     "description": ""
+   },
+   {
+    "name": "fill",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": "keep the empty columns of a row (auto-fill), so one item keeps the width of a column, for a list of cards. Off: the items stretch over the row (auto-fit)"
    }
   ],
   "events": [],
@@ -8451,6 +8457,12 @@
     "description": ""
    },
    {
+    "name": "labels",
+    "type": "Partial<{ less: string; more: string; count: (n: number, unit: string) => string; total: (count: string, weeks: number) => string; day: (count: string, date: string) => string; }> | undefined",
+    "required": false,
+    "description": "words: `count` gets the number and `unit`; `total` and `day` get the counted text"
+   },
+   {
     "name": "modelValue",
     "type": "string | null | undefined",
     "required": false,
@@ -8673,6 +8685,12 @@
  },
  "BlessIcon": {
   "props": [
+   {
+    "name": "name",
+    "type": "\"close\" | \"search\" | \"play\" | \"pause\" | \"more\" | \"check\" | \"plus\" | \"minus\" | \"chevron-left\" | \"chevron-right\" | \"chevron-up\" | \"chevron-down\" | \"arrow-left\" | \"arrow-right\" | \"arrow-up\" | \"arrow-down\" | \"skip-back\" | \"skip-forward\" | \"volume\" | \"volume-mute\" | \"rotate-ccw\" | \"rotate-cw\" | \"refresh\" | \"menu\" | \"external\" | \"sun\" | \"system\" | \"sunset\" | \"moon\" | undefined",
+    "required": false,
+    "description": "a built-in icon; without it, the slot holds your own SVG"
+   },
    {
     "name": "size",
     "type": "\"md\" | \"sm\" | \"xs\" | \"lg\" | \"xl\" | \"2xs\" | (string & {}) | undefined",
@@ -12363,6 +12381,79 @@
    }
   ],
   "slots": [],
+  "exposed": []
+ },
+ "BlessNovelBox": {
+  "props": [
+   {
+    "name": "name",
+    "type": "string | undefined",
+    "required": false,
+    "description": "speaker name on the floating plate; omit for narration without a speaker"
+   },
+   {
+    "name": "text",
+    "type": "string | undefined",
+    "required": false,
+    "description": "the line to type out; omit to render static content in the default slot"
+   },
+   {
+    "name": "speed",
+    "type": "number | undefined",
+    "required": false,
+    "default": "30",
+    "description": "milliseconds per character; 0 shows the whole line at once"
+   },
+   {
+    "name": "instant",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": "show the whole line immediately without typing"
+   },
+   {
+    "name": "more",
+    "type": "boolean | undefined",
+    "required": false,
+    "default": "true",
+    "description": "show the continue indicator when the line finishes"
+   },
+   {
+    "name": "interactive",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": "turn the continue indicator into a button that skips typing or emits `next`"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<{ next: string; skip: string; }> | undefined",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "events": [
+   {
+    "name": "done",
+    "type": "[]",
+    "description": ""
+   },
+   {
+    "name": "next",
+    "type": "[]",
+    "description": ""
+   }
+  ],
+  "slots": [
+   {
+    "name": "name",
+    "type": "{}",
+    "description": ""
+   },
+   {
+    "name": "default",
+    "type": "{}",
+    "description": ""
+   }
+  ],
   "exposed": []
  },
  "BlessOeeGauge": {
@@ -20310,7 +20401,7 @@
     "type": "\"group\" | \"switch\" | undefined",
     "required": false,
     "default": "\"switch\"",
-    "description": "three-way (light/system/dark) or a single light↔dark button"
+    "description": "a group of the moods (light/system/golden/dark) or a single light↔dark button"
    },
    {
     "name": "label",
@@ -20320,7 +20411,7 @@
    },
    {
     "name": "labels",
-    "type": "Partial<{ theme: string; light: string; system: string; dark: string; darkTheme: string; }> | undefined",
+    "type": "Partial<{ theme: string; light: string; system: string; dark: string; golden: string; darkTheme: string; }> | undefined",
     "required": false,
     "description": "accessible names: the group reads `theme` and all three; the switch reads `darkTheme`\n(or `dark`, if you set it) with pressed / not pressed"
    }

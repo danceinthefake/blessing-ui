@@ -6,6 +6,7 @@ import {
   BlessDialogHost,
   BlessLoadingBar,
   BlessPaletteToggle,
+  BlessThemeToggle,
   BlessToaster,
   useTheme,
 } from "blessing-ui";
@@ -21,50 +22,62 @@ import ChapterCards from "./ChapterCards.vue";
 import PageStrip from "./PageStrip.vue";
 import MotionToggle from "./MotionToggle.vue";
 
-// The site opens light on a first visit. The head script in config.ts does this before the first
-// paint of a built page; the dev server adds head scripts only after the app reads the setting, so
-// the same default runs here too, when the theme loads and before the app starts.
+// The site opens in Daylight on a first visit. The head script in config.ts does this before the
+// first paint of a built page; the dev server adds head scripts only after the app reads the
+// setting, so the same default runs here too, when the theme loads and before the app starts.
 try {
   if (typeof localStorage !== "undefined" && !localStorage.getItem("vitepress-theme-appearance"))
     localStorage.setItem("vitepress-theme-appearance", "light");
 } catch {}
-// Firefox redraws the text without its font while a late font file loads: the first visit to a
-// page with a symbol (★ ▶ ⚙) flashed blank. Load Roboto's symbols subset once the first page is idle.
+// Firefox redraws the text without its font while a late font file loads. Warm Roboto once idle.
 if (typeof document !== "undefined" && document.fonts)
   (window.requestIdleCallback ?? setTimeout)(() => {
-    for (const w of [100, 300, 400, 700]) void document.fonts.load(`${w} 1em Roboto`, "★");
+    for (const w of [100, 300, 400, 500, 600]) void document.fonts.load(`${w} 1em Roboto`, "★");
   });
 
 export default {
   extends: DefaultTheme,
   Layout() {
-    // One theme, two switches: VitePress's nav switch (html.dark, "vitepress-theme-appearance")
-    // and the library's (data-theme, "bless-theme"). VitePress's choice wins at load — useTheme()
-    // applies its saved value in a microtask, so ours is queued after it — and from then on
-    // flipping either one flips the other. Without this, a saved bless-theme overrode the nav on
-    // every refresh.
+    // One theme across three moods (Daylight, Golden hour, Night) plus System: VitePress only
+    // tracks light vs dark (`isDark`), so Night maps to `isDark = true`, and Daylight / Golden
+    // hour map to `isDark = false`. `BlessThemeToggle mode="group"` in the nav drives all four.
     const { isDark } = useData();
     const bless = useTheme(); // also boots the persisted palette, including full-page demos
     if (typeof window !== "undefined") {
       queueMicrotask(() => {
-        // VitePress saves "auto" when the choice matches the OS: that is the library's "system"
-        let saved: string | null = null;
+        let savedBless: string | null = null;
+        let savedVp: string | null = null;
         try {
-          saved = localStorage.getItem("vitepress-theme-appearance");
+          savedBless = localStorage.getItem("bless-theme");
+          savedVp = localStorage.getItem("vitepress-theme-appearance");
         } catch {}
-        bless.set(saved === "dark" || saved === "light" ? saved : "system");
-        watch(isDark, (d) => bless.set(d ? "dark" : "light"));
-        watch(bless.isDark, (d) => d !== isDark.value && (isDark.value = d));
+        if (savedBless === "golden" || savedBless === "dark" || savedBless === "light" || savedBless === "system") {
+          bless.set(savedBless);
+        } else {
+          bless.set(savedVp === "dark" || savedVp === "light" ? savedVp : "light");
+        }
+        isDark.value = bless.isDark.value;
+        watch(isDark, (d) => {
+          if (d && !bless.isDark.value) bless.set("dark");
+          else if (!d && bless.isDark.value) bless.set("light");
+        });
+        watch(bless.isDark, (d) => {
+          if (d !== isDark.value) isDark.value = d;
+        });
       });
     }
     return h(DefaultTheme.Layout, null, {
       "layout-bottom": () => [h(BlessToaster), h(BlessDialogHost), h(BlessLoadingBar)],
       "doc-before": () => h(PageStrip),
       "nav-bar-content-after": () => [
+        h(BlessThemeToggle, { mode: "group", class: "nav-mood" }),
         h(BlessPaletteToggle, { class: "nav-palette", showDefault: true }),
         h(MotionToggle),
       ],
-      "nav-screen-content-after": () => h(MotionToggle),
+      "nav-screen-content-after": () => [
+        h(BlessThemeToggle, { mode: "group", class: "nav-mood" }),
+        h(MotionToggle),
+      ],
     });
   },
   enhanceApp({ app, router }) {
