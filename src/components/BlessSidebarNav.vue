@@ -75,7 +75,8 @@ const emit = defineEmits<{ select: [item: BlessNavItem, event: MouseEvent] }>();
     var(--bless-lean-transition);
 }
 .bless-sidebar-nav__link:hover {
-  opacity: var(--bless-hover-opacity);
+  background: var(--bless-color-hover);
+  color: var(--bless-color-text);
 }
 .bless-sidebar-nav__link:focus-visible {
   outline: 2px solid var(--bless-color-accent);

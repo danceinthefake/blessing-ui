@@ -65,7 +65,8 @@ const shown = computed(() => (props.showDefault ? blessPalettes : blessPalettes.
   border-color: var(--bless-color-text);
 }
 .bless-palette__swatch:hover {
-  opacity: var(--bless-hover-opacity);
+  transform: translateY(var(--bless-hover-lift));
+  border-color: var(--bless-color-text);
 }
 .bless-palette__swatch:focus-visible {
   outline: 2px solid var(--bless-color-accent);

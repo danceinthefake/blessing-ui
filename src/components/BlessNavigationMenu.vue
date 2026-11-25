@@ -173,7 +173,8 @@ function onKey(e: KeyboardEvent, i: number, item: BlessNavMenuItem) {
     var(--bless-lean-transition);
 }
 .bless-navmenu__trigger:hover {
-  opacity: var(--bless-hover-opacity);
+  background: var(--bless-color-hover);
+  color: var(--bless-color-text);
 }
 .bless-navmenu__trigger--open {
   color: var(--bless-color-accent-text);

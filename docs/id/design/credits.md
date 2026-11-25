@@ -14,7 +14,7 @@ Tiga lapis [gerak](../guide/motion) berasal dari anime itu sendiri, buatan A-1 P
 
 Halaman depan dibaca seperti light novel dalam bab. Di antara bab, halaman itu memakai dua kebiasaan anime TV: eyecatch, yaitu kartu judul singkat saat jeda, dan cuplikan episode berikutnya (次回予告) di akhir.
 
-Fon bawaannya adalah [Roboto](https://fonts.google.com/specimen/Roboto) karya Christian Robertson dan [Noto Sans JP](https://fonts.google.com/noto/specimen/Noto+Sans+JP) dari Google. Pustaka ini tidak menyertakannya. Anda memuatnya sendiri, seperti yang ditunjukkan [panduan fon](../guide/fonts).
+Fon bawaannya adalah [Plus Jakarta Sans](https://fonts.google.com/specimen/Plus+Jakarta+Sans) karya Tokotype, [Newsreader](https://fonts.google.com/specimen/Newsreader) karya Production Type, dan [Noto Sans JP](https://fonts.google.com/noto/specimen/Noto+Sans+JP) dari Google. Pustaka ini tidak menyertakannya. Anda memuatnya sendiri, seperti yang ditunjukkan [panduan fon](../guide/fonts).
 
 ## Pustaka pembanding
 

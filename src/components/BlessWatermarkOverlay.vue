@@ -34,7 +34,7 @@ const esc = (s: string) =>
 const svg = computed(() => {
   const g = props.gap;
   return `data:image/svg+xml;utf8,${encodeURIComponent(
-    `<svg xmlns="http://www.w3.org/2000/svg" width="${g}" height="${g}"><text x="50%" y="50%" font-family="Roboto,Noto Sans JP,sans-serif" font-size="${props.fontSize}" font-weight="700" letter-spacing="2" fill="#000" text-anchor="middle" dominant-baseline="middle" transform="rotate(${props.angle} ${g / 2} ${g / 2})">${esc(props.text)}</text></svg>`,
+    `<svg xmlns="http://www.w3.org/2000/svg" width="${g}" height="${g}"><text x="50%" y="50%" font-family="Plus Jakarta Sans,Noto Sans JP,sans-serif" font-size="${props.fontSize}" font-weight="700" letter-spacing="2" fill="#000" text-anchor="middle" dominant-baseline="middle" transform="rotate(${props.angle} ${g / 2} ${g / 2})">${esc(props.text)}</text></svg>`,
   )}`;
 });
 </script>

@@ -34,14 +34,18 @@ withDefaults(
   display: grid;
   gap: var(--bless-space-3);
   margin: 0;
-  padding-block: var(--bless-space-4);
-  border-block: 3px solid var(--bless-color-text);
+  padding: var(--bless-space-6);
+  border-radius: var(--bless-radius);
+  border-inline-start: 3px solid var(--bless-color-accent);
+  background: var(--bless-color-surface);
+  box-shadow: var(--bless-shadow-sm);
   font-family: var(--bless-font-sans);
   color: var(--bless-color-text);
 }
 .bless-pullquote.is-center {
   justify-items: center;
   text-align: center;
+  border-inline-start: 0;
 }
 /* two classes, so the blockquote styles of a host page (such as VitePress) do not win */
 .bless-pullquote .bless-pullquote__quote {
@@ -52,9 +56,11 @@ withDefaults(
 .bless-pullquote .bless-pullquote__quote p {
   color: inherit;
   margin: 0;
+  font-family: var(--bless-font-serif);
   font-size: var(--bless-text-xl);
-  font-weight: var(--bless-font-weight-bold);
-  line-height: 1.3;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.38;
 }
 /* the marks come from CSS, in the style of the language of the page */
 .bless-pullquote__quote p::before {

@@ -1,6 +1,6 @@
 # Suasana & mode gelap
 
-Blessing UI memiliki tiga suasana waktu: **Daylight** (kertas hangat `#EDE6E1` dan tinta `#262228`), **Senja** (`data-theme="golden"`, kertas amber hangat), dan **Night** (`data-theme="dark"`, kertas malam ungu gelap dengan tepi atas tipis di permukaan terangkat). Di Night, isian warna aksen tetap sama sementara warna teksnya (juga danger dan info) menjadi lebih terang agar kontras terjaga, dan `--bless-font-weight-thin` berubah dari 100 menjadi 300. Daftar lengkap perubahannya ada di [Token → Yang dibalik](./tokens#what-flips-what-swaps).
+Blessing UI memiliki tiga suasana waktu: **Daylight** (kertas porselen hangat `#F6F1EE`, permukaan `#FFFEFD`, dan tinta `#231F25`), **Senja** (`data-theme="golden"`, kertas amber hangat `#F6E7D4` dan permukaan `#FFF9F1`), dan **Night** (`data-theme="dark"`, langit kobalt berbintang `#111525`, permukaan indigo `#1C2136`, dengan tepi atas tipis di permukaan terangkat). Di Night, isian warna aksen tetap sama sementara warna teksnya (juga danger dan info) menjadi lebih terang agar kontras terjaga, dan `--bless-font-weight-thin` berubah dari 100 menjadi 300. Daftar lengkap perubahannya ada di [Token → Yang dibalik](./tokens#what-flips-what-swaps).
 
 Secara bawaan, suasana mengikuti `prefers-color-scheme`. Paksa suasana apa pun dengan `data-theme` di `<html>`:
 

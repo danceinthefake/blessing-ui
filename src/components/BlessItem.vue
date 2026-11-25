@@ -76,7 +76,7 @@ withDefaults(
   background: var(--bless-color-surface);
 }
 .bless-item--link:hover {
-  opacity: var(--bless-hover-opacity);
+  background: var(--bless-color-hover);
 }
 .bless-item--link:focus-visible {
   outline: 2px solid var(--bless-color-accent);

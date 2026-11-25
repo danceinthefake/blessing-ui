@@ -17,27 +17,27 @@ Untuk mengganti aksen, pilih sebuah [palet](./palettes) atau definisikan palet l
 
 | Grup               | Prop                                                                                                                                                                                                                                 |
 | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Warna              | `--bless-color-{text,text-muted,bg,surface,surface-2,watermark,accent,accent-soft,accent-2,accent-text,danger,danger-text,badge,warning,success,info,info-text,on-accent,on-text,on-light,border,rule,backdrop,media-bg,chart-1..5}` |
-| Font               | `--bless-font-sans`, `--bless-font-weight-{thin,light,normal,bold}`                                                                                                                                                                  |
+| Warna              | `--bless-color-{text,text-muted,bg,surface,surface-glass,surface-2,watermark,accent,accent-soft,accent-2,accent-text,danger,danger-text,badge,warning,success,info,info-text,on-accent,on-text,on-light,border,hover,rule,backdrop,media-bg,chart-1..5}`, `--bless-light`, `--bless-sky`, `--bless-edge` |
+| Font               | `--bless-font-sans`, `--bless-font-serif`, `--bless-font-mono`, `--bless-font-weight-{thin,light,normal,medium,bold}`                                                                                                               |
 | Skala huruf        | `--bless-text-{2xs,xs,sm,md,lg,xl,headline,display}`: `clamp()` yang lentur, 8→151px. `headline` adalah judul halaman yang menggantung (36–73px). `display` adalah watermark                                                         |
 | Leading / tracking | `--bless-leading-{none,tight,normal}`, `--bless-tracking-{tight,normal,wide,wider}`                                                                                                                                                  |
 | Jarak              | `--bless-space-{1,2,3,4,6,8,12,16}`: dasar 4px                                                                                                                                                                                       |
-| Bentuk             | `--bless-lean`, `--bless-skew`, `--bless-skew-counter`, `--bless-petal`, `--bless-radius-petal` (+`-lg`), `--bless-radius`, `--bless-radius-plate` (0, titik untuk diganti), `--bless-border-width`, `--bless-dash-width`            |
-| Elevasi            | `--bless-shadow-plate` (aksen `1px 1px 0`, lewat `--bless-plate-offset`), `--bless-shadow-none`. `--bless-shadow-md` adalah alias dari plate                                                                                         |
-| Gerak              | `--bless-duration-{fast,base,slow,slower}`, `--bless-ease-{in-out,out,linear}`, `--bless-hover-opacity`, `--bless-press-scale`, `--bless-lean-transition`                                                                            |
+| Bentuk             | `--bless-lean`, `--bless-skew`, `--bless-skew-counter`, `--bless-radius` (`14px`), `--bless-radius-plate` (`6px`), `--bless-radius-pill` (`999px`), `--bless-petal` (`999px`), `--bless-border-width`, `--bless-dash-width`          |
+| Elevasi            | `--bless-shadow-sm`, `--bless-shadow-plate`, `--bless-shadow-art`, `--bless-shadow-none`. `--bless-shadow-md` adalah alias dari plate                                                                                                |
+| Gerak              | `--bless-duration-{fast,base,slow,slower,enter,voice,flair,draw}`, `--bless-ease-{in-out,out,soft,snap,pop,spring,linear}`, `--bless-hover-opacity` (`1`), `--bless-hover-lift` (`-1.5px`), `--bless-press-scale`, `--bless-lean-transition` |
 | Tata letak         | `--bless-sidebar-width`, `--bless-sidebar-inner`, `--bless-content-max`, `--bless-z-{bg,nav,modal}`, `--bless-safe-{top,right,bottom,left}` (`env(safe-area-inset-*)`, untuk notch)                                                  |
 
-Durasi menjadi `0s` saat `prefers-reduced-motion` aktif.
+Durasi menjadi `0s` dan `--bless-hover-lift` menjadi `0px` saat `prefers-reduced-motion` aktif.
 
 ## Yang dibalik, yang ditukar {#what-flips-what-swaps}
 
-- **[Mode gelap](./dark-mode)** mendefinisikan ulang abu-abu dan apa yang ada di atasnya. Token yang berubah: `text`, `text-muted`, `bg`, `surface`, `surface-2`, `watermark`, `border`, `rule`, `backdrop`, `danger`, `danger-text`, `info-text`, `accent-text`, `chart-2..5`, dan `font-weight-thin`. Yang terakhir berubah dari 100 menjadi 300, karena garis tipis terlihat lebih tipis di latar gelap. Keluarga aksen tidak berubah.
-- **Sebuah [palet](./palettes)** hanya menukar keluarga aksen: `accent`, `accent-soft`, `accent-2`, `accent-text`, `badge`, `chart-1`. Abu-abu, huruf, dan geometri tetap.
-- **[Kanan-ke-kiri](./rtl)** mencerminkan `lean` dan sudut kelopak.
+- **[Suasana & mode gelap](./dark-mode)** mendefinisikan ulang kertas, langit, dan tinta untuk **Senja** (`data-theme="golden"`) dan **Night** (`data-theme="dark"`): `text`, `text-muted`, `bg`, `surface`, `surface-glass`, `surface-2`, `watermark`, `border`, `hover`, `rule`, `backdrop`, `light`, `sky`, `edge`, `danger`, `danger-text`, `info-text`, `accent-text`, `chart-2..5`, dan `font-weight-thin`. Keluarga aksen tidak berubah.
+- **Sebuah [palet](./palettes)** hanya menukar keluarga aksen: `accent`, `accent-soft`, `accent-2`, `accent-text`, `badge`, `chart-1`. Kertas, langit, huruf, dan geometri tetap.
+- **[Kanan-ke-kiri](./rtl)** mencerminkan `lean` dan tepi logis.
 
 ## Bentuk {#shape}
 
-Library ini punya satu bentuk. Lihat [Konvensi](./conventions#shape). `--bless-lean` adalah sudut khasnya. `--bless-skew` dan `--bless-skew-counter` adalah kemiringan saat ini, yang dibaca setiap pelat dan teksnya. Nilainya `0deg` saat diam. Saat hover, fokus, ditekan, atau saat menulis, nilainya diatur ke kemiringan itu. Agar sebuah elemen miring saat diam, atur `--bless-skew: var(--bless-lean)` dan atur counter-nya ke nilai negatifnya. Untuk mematikan kemiringan, atur `--bless-lean: 0deg`. Jika kontrol buatan Anda mengatur `transition` sendiri, tambahkan `var(--bless-lean-transition)` ke daftarnya. Jika tidak, kemiringannya melompat, tidak beranimasi. Avatar, switch, chip, bubble, fab, dan thumb membaca `--bless-radius-petal` (dan `-lg` untuk bubble obrolan) untuk sudutnya. Bentuknya persegi karena `--bless-petal` bernilai `0`. Untuk membulatkan dua sudut yang berseberangan pada bagian itu, atur `--bless-petal`. Untuk membulatkan kotak dan pelat, atur `--bless-radius` atau `--bless-radius-plate`. Library sendiri tidak mengatur satu pun.
+Lihat [Konvensi](./conventions#shape). `--bless-radius` (`14px`) melembutkan kartu dan popover, `--bless-radius-pill` (`999px`) membulatkan tombol, switch, chip, dan lencana sapuan lembut, `--bless-radius-plate` (`6px`) membentuk label persegi miring dan pelat nama `BlessNovelBox`, serta `--bless-petal` (`999px`) membulatkan avatar dan potret. Isian garis bawah tetap datar (`0px`). `--bless-lean` (`-10deg`, dicerminkan di RTL) khusus dipakai untuk label persegi, eyecatch, pelat nama, watermark, dan pelat `.bless-lean` eksplisit. Untuk mematikan sudut bulat atau kemiringan, ganti tokennya ke `0` / `0deg`.
 
 ## Pasangan warna {#color-pairs}
 

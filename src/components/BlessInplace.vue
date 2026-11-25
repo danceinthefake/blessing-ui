@@ -105,7 +105,8 @@ function close() {
     var(--bless-lean-transition);
 }
 .bless-inplace__close:hover {
-  opacity: var(--bless-hover-opacity);
+  background: var(--bless-color-hover);
+  color: var(--bless-color-text);
 }
 .bless-inplace--disabled {
   opacity: 0.4;

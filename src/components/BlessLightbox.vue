@@ -274,7 +274,8 @@ function toggleZoom() {
   inset-inline-end: var(--bless-space-2);
 }
 .bless-lightbox__nav:hover:not([aria-disabled]) {
-  opacity: var(--bless-hover-opacity);
+  background: var(--bless-color-surface-2);
+  color: var(--bless-color-text);
 }
 /* aria-disabled, not disabled: the focused arrow keeps focus at the last image */
 .bless-lightbox__nav[aria-disabled] {

@@ -99,6 +99,11 @@ function restart() {
 </script>
 
 <style scoped>
+.onboard__head {
+  font-family: var(--bless-font-serif);
+  font-weight: 400;
+  letter-spacing: -0.015em;
+}
 .onboard__head:focus {
   outline: none;
 }
@@ -106,14 +111,17 @@ function restart() {
   display: inline-block;
   width: 12px;
   height: 12px;
+  border-radius: var(--bless-petal);
   margin-inline-end: var(--bless-space-2);
   vertical-align: -1px;
-  transform: skewX(var(--bless-skew));
 }
 .onboard {
   max-width: 520px;
-  margin: 0 auto;
+  margin: var(--bless-space-8) auto;
   padding: var(--bless-space-8) var(--bless-space-6);
+  border-radius: var(--bless-radius);
+  background: var(--bless-color-surface);
+  box-shadow: var(--bless-shadow-sm);
 }
 .onboard__lead {
   margin-bottom: var(--bless-space-6);

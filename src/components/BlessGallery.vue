@@ -78,7 +78,8 @@ const nameOf = (item: BlessGalleryItem, i: number) =>
     var(--bless-lean-transition);
 }
 .bless-gallery__thumb:hover {
-  opacity: var(--bless-hover-opacity);
+  transform: translateY(var(--bless-hover-lift));
+  box-shadow: var(--bless-shadow-plate);
 }
 .bless-gallery__thumb:focus-visible {
   outline: 2px solid var(--bless-color-accent);

@@ -126,7 +126,8 @@ const emit = defineEmits<{ dismiss: [] }>();
     var(--bless-lean-transition);
 }
 .bless-alert__close:hover {
-  opacity: var(--bless-hover-opacity);
+  background: var(--bless-color-hover);
+  color: var(--bless-color-text);
 }
 .bless-alert__close:focus-visible {
   outline: 2px solid var(--bless-color-accent);

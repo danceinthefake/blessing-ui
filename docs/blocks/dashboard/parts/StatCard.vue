@@ -1,8 +1,8 @@
 <template>
   <BlessCard>
-    <BlessText as="p" size="xs" muted tracking="wider" uppercase>{{ stat.label }}</BlessText>
+    <BlessText as="p" size="xs" muted>{{ stat.label }}</BlessText>
     <div class="stat__row">
-      <BlessText size="lg" weight="light">{{ fmt(stat) }}</BlessText>
+      <BlessText size="lg" weight="bold">{{ fmt(stat) }}</BlessText>
       <BlessBadge :color="stat.delta >= 0 ? 'success' : 'danger'">{{
         fmtDelta(stat.delta)
       }}</BlessBadge>
@@ -20,6 +20,7 @@ defineProps<{ stat: Stat }>();
 <style scoped>
 .stat__row {
   display: flex;
+  flex-wrap: wrap;
   align-items: baseline;
   justify-content: space-between;
   gap: var(--bless-space-2);

@@ -64,7 +64,7 @@ const id = useId();
     var(--bless-lean-transition);
 }
 .bless-fieldset__toggle:hover {
-  opacity: var(--bless-hover-opacity);
+  background: var(--bless-color-hover);
 }
 .bless-fieldset__toggle:focus-visible {
   outline: 2px solid var(--bless-color-accent);

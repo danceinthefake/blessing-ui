@@ -129,7 +129,10 @@ function vote(yes: boolean) {
   line-height: 1.25;
 }
 .bless-kb .bless-kb__title {
+  font-family: var(--bless-font-serif);
   font-size: var(--bless-text-2xl, 1.75rem);
+  font-weight: 400;
+  letter-spacing: -0.015em;
 }
 .bless-kb .bless-kb__heading {
   font-size: var(--bless-text-lg);
@@ -139,11 +142,14 @@ function vote(yes: boolean) {
   flex-wrap: wrap;
   gap: var(--bless-space-3);
   font-size: var(--bless-text-xs);
+  color: var(--bless-color-text-muted);
 }
 .bless-kb__toc {
-  padding: var(--bless-space-3);
+  padding: var(--bless-space-4);
+  border-radius: var(--bless-radius);
   border-inline-start: 3px solid var(--bless-color-accent);
-  background: var(--bless-color-surface-2);
+  background: var(--bless-color-surface);
+  box-shadow: var(--bless-shadow-sm);
 }
 .bless-kb__section {
   display: grid;
@@ -158,7 +164,7 @@ function vote(yes: boolean) {
   display: grid;
   gap: var(--bless-space-4);
   padding-block-start: var(--bless-space-4);
-  border-block-start: 2px solid var(--bless-color-text);
+  border-block-start: var(--bless-border-width) solid var(--bless-color-border);
   font-size: var(--bless-text-sm);
 }
 .bless-kb__ask {
@@ -171,15 +177,21 @@ function vote(yes: boolean) {
 .bless-kb__ask button {
   min-inline-size: 4rem;
   min-block-size: 2.25rem;
-  border: 2px solid var(--bless-color-text);
-  background: var(--bless-color-bg);
+  padding: 0 var(--bless-space-4);
+  border-radius: var(--bless-radius-pill);
+  border: var(--bless-border-width) solid var(--bless-color-border);
+  background: var(--bless-color-surface);
   color: inherit;
   font: inherit;
   cursor: pointer;
+  transition:
+    background-color var(--bless-duration-fast),
+    border-color var(--bless-duration-fast),
+    color var(--bless-duration-fast);
 }
 .bless-kb__ask button:hover {
-  background: var(--bless-color-text);
-  color: var(--bless-color-bg);
+  border-color: var(--bless-color-text);
+  background: var(--bless-color-hover);
 }
 .bless-kb a:focus-visible,
 .bless-kb__ask button:focus-visible {

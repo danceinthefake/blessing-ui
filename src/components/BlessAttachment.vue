@@ -119,7 +119,7 @@ const ext = computed(() => props.name.split(".").pop()?.slice(0, 4).toUpperCase(
   inset: 0;
 }
 .bless-attachment--link:hover {
-  opacity: var(--bless-hover-opacity);
+  background: var(--bless-color-hover);
 }
 .bless-attachment--link:has(.bless-attachment__link:focus-visible) {
   outline: 2px solid var(--bless-color-accent);
@@ -214,7 +214,8 @@ const ext = computed(() => props.name.split(".").pop()?.slice(0, 4).toUpperCase(
     var(--bless-lean-transition);
 }
 .bless-attachment__remove:hover {
-  opacity: var(--bless-hover-opacity);
+  background: var(--bless-color-hover);
+  color: var(--bless-color-text);
 }
 .bless-attachment__remove:focus-visible {
   outline: 2px solid var(--bless-color-accent);

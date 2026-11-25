@@ -513,12 +513,11 @@
   --bless-lean: 10deg;
 }
 
-/* ---- lean on attention ----
- * Upright at rest; a control leans to --bless-lean while it is hovered, focused or pressed, and a
- * field while you write in it. Every plate reads var(--bless-skew) and its text the counter, so
- * setting the pair on the attended element leans it and everything drawn inside it. Registered so
- * the lean animates; the focus ring stays, so the lean is never the only focus signal.
- * Big display type (the watermark) leans at rest by setting --bless-skew itself.
+/* ---- signature lean (revamp 2026-11 r2 · Unified v3) ----
+ * Pill controls and manuscript underline inputs stand upright at rest and on hover/focus (they
+ * respond via AA-safe tone shift, soft hover fill, and --bless-hover-lift). The house −10° lean
+ * (--bless-lean, mirrored in RTL) is reserved for explicit .bless-lean plates, rectangular app
+ * tags, eyecatches, BlessNovelBox speaker nameplates, and big display watermarks.
  */
 @property --bless-skew {
   syntax: "<angle>";
@@ -530,37 +529,11 @@
   inherits: true;
   initial-value: 0deg;
 }
-:where(
-  button,
-  a[href],
-  summary,
-  label,
-  [role="tab"],
-  [role="option"],
-  [role="menuitem"],
-  [role="menuitemradio"],
-  [role="menuitemcheckbox"],
-  [role="treeitem"],
-  .bless-lean,
-  .bless-lean--field
-) {
+:where(.bless-lean) {
   transition: var(--bless-lean-transition);
 }
-:where(
-    button,
-    a[href],
-    summary,
-    label,
-    [role="tab"],
-    [role="option"],
-    [role="menuitem"],
-    [role="menuitemradio"],
-    [role="menuitemcheckbox"],
-    [role="treeitem"],
-    .bless-lean
-  ):where(:not(:disabled, [aria-disabled="true"])):is(:hover, :focus-visible, :active),
-:where(label, .bless-lean):has(:focus-visible),
-:where(.bless-lean--field):focus-within {
+:where(.bless-lean):where(:not(:disabled, [aria-disabled="true"])):is(:hover, :focus-visible, :active),
+:where(.bless-lean):has(:focus-visible) {
   --bless-skew: var(--bless-lean);
   --bless-skew-counter: calc(-1 * var(--bless-lean));
 }

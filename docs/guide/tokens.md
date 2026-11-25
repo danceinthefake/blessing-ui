@@ -17,27 +17,27 @@ To change the accent, pick a [palette](./palettes) or define a whole one. The ac
 
 | Group              | Props                                                                                                                                                                                                                                |
 | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Color              | `--bless-color-{text,text-muted,bg,surface,surface-2,watermark,accent,accent-soft,accent-2,accent-text,danger,danger-text,badge,warning,success,info,info-text,on-accent,on-text,on-light,border,rule,backdrop,media-bg,chart-1..5}` |
-| Font               | `--bless-font-sans`, `--bless-font-weight-{thin,light,normal,bold}`                                                                                                                                                                  |
+| Color              | `--bless-color-{text,text-muted,bg,surface,surface-glass,surface-2,watermark,accent,accent-soft,accent-2,accent-text,danger,danger-text,badge,warning,success,info,info-text,on-accent,on-text,on-light,border,hover,rule,backdrop,media-bg,chart-1..5}`, `--bless-light`, `--bless-sky`, `--bless-edge` |
+| Font               | `--bless-font-sans`, `--bless-font-serif`, `--bless-font-mono`, `--bless-font-weight-{thin,light,normal,medium,bold}`                                                                                                               |
 | Type scale         | `--bless-text-{2xs,xs,sm,md,lg,xl,headline,display}`: fluid `clamp()`, 8→151px. `headline` is the hanging page title (36–73px). `display` is the watermark                                                                           |
 | Leading / tracking | `--bless-leading-{none,tight,normal}`, `--bless-tracking-{tight,normal,wide,wider}`                                                                                                                                                  |
 | Space              | `--bless-space-{1,2,3,4,6,8,12,16}`: 4px base                                                                                                                                                                                        |
-| Shape              | `--bless-lean`, `--bless-skew`, `--bless-skew-counter`, `--bless-petal`, `--bless-radius-petal` (+`-lg`), `--bless-radius`, `--bless-radius-plate` (0, override points), `--bless-border-width`, `--bless-dash-width`                |
-| Elevation          | `--bless-shadow-plate` (`1px 1px 0` accent, via `--bless-plate-offset`), `--bless-shadow-none`. `--bless-shadow-md` is an alias of plate                                                                                             |
-| Motion             | `--bless-duration-{fast,base,slow,slower}`, `--bless-ease-{in-out,out,linear}`, `--bless-hover-opacity`, `--bless-press-scale`, `--bless-lean-transition`                                                                            |
+| Shape              | `--bless-lean`, `--bless-skew`, `--bless-skew-counter`, `--bless-radius` (`14px`), `--bless-radius-plate` (`6px`), `--bless-radius-pill` (`999px`), `--bless-petal` (`999px`), `--bless-border-width`, `--bless-dash-width`          |
+| Elevation          | `--bless-shadow-sm`, `--bless-shadow-plate`, `--bless-shadow-art`, `--bless-shadow-none`. `--bless-shadow-md` is an alias of plate                                                                                                   |
+| Motion             | `--bless-duration-{fast,base,slow,slower,enter,voice,flair,draw}`, `--bless-ease-{in-out,out,soft,snap,pop,spring,linear}`, `--bless-hover-opacity` (`1`), `--bless-hover-lift` (`-1.5px`), `--bless-press-scale`, `--bless-lean-transition` |
 | Layout             | `--bless-sidebar-width`, `--bless-sidebar-inner`, `--bless-content-max`, `--bless-z-{bg,nav,modal}`, `--bless-safe-{top,right,bottom,left}` (`env(safe-area-inset-*)`, for notches)                                                  |
 
-Durations collapse to `0s` under `prefers-reduced-motion`.
+Durations collapse to `0s` and `--bless-hover-lift` collapses to `0px` under `prefers-reduced-motion`.
 
 ## What flips, what swaps
 
-- **[Dark mode](./dark-mode)** redefines the grays and what sits on them. These tokens change: `text`, `text-muted`, `bg`, `surface`, `surface-2`, `watermark`, `border`, `rule`, `backdrop`, `danger`, `danger-text`, `info-text`, `accent-text`, `chart-2..5`, and `font-weight-thin`. The last one changes from 100 to 300, because hairlines look thinner on a dark background. The accent family is untouched.
-- **A [palette](./palettes)** swaps only the accent family: `accent`, `accent-soft`, `accent-2`, `accent-text`, `badge`, `chart-1`. Grays, type and geometry stay.
-- **[Right-to-left](./rtl)** mirrors `lean` and the petal corners.
+- **[Moods & dark mode](./dark-mode)** redefines the paper, sky, and ink tokens for **Golden hour** (`data-theme="golden"`) and **Night** (`data-theme="dark"`): `text`, `text-muted`, `bg`, `surface`, `surface-glass`, `surface-2`, `watermark`, `border`, `hover`, `rule`, `backdrop`, `light`, `sky`, `edge`, `danger`, `danger-text`, `info-text`, `accent-text`, `chart-2..5`, and `font-weight-thin`. The accent family stays untouched.
+- **A [palette](./palettes)** swaps only the accent family: `accent`, `accent-soft`, `accent-2`, `accent-text`, `badge`, `chart-1`. Paper, skies, type, and geometry stay.
+- **[Right-to-left](./rtl)** mirrors `lean` and logical edges.
 
 ## Shape
 
-The library has one shape. See [Conventions](./conventions#shape). `--bless-lean` is the house angle. `--bless-skew` and `--bless-skew-counter` are the current lean that every plate and its text read. They are `0deg` at rest. On hover, focus, press, or while writing, they are set to the lean. To make an element lean at rest, set `--bless-skew: var(--bless-lean)` and set the counter to its negative. To turn the lean off, set `--bless-lean: 0deg`. If a control of your own sets its own `transition`, append `var(--bless-lean-transition)` to the list. Otherwise its lean snaps instead of animating. Avatars, switches, chips, bubbles, fabs, and thumbs read `--bless-radius-petal` (and `-lg` for chat bubbles) for their corners. It is square because `--bless-petal` is `0`. To round two opposite corners of those parts, set `--bless-petal`. To round boxes and plates, set `--bless-radius` or `--bless-radius-plate`. The library itself sets none of them.
+See [Conventions](./conventions#shape). `--bless-radius` (`14px`) softens cards and popovers, `--bless-radius-pill` (`999px`) rounds buttons, switches, chips, and soft-wash badges, `--bless-radius-plate` (`6px`) shapes skewed rectangular tags and `BlessNovelBox` nameplates, and `--bless-petal` (`999px`) makes avatars and portraits circular. Manuscript underline inputs stay flat (`0px`). `--bless-lean` (`-10deg`, mirrored in RTL) is reserved for rectangular tags, eyecatches, speaker nameplates, watermarks, and explicit `.bless-lean` plates. To turn off rounding or lean globally, override the tokens to `0` / `0deg`.
 
 ## Color pairs
 

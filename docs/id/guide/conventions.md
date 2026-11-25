@@ -1,6 +1,6 @@
 # Konvensi
 
-Apa yang berlaku di semua 441 komponen. Jika sebuah komponen melanggar salah satu aturan ini, itu bug.
+Apa yang berlaku di semua 442 komponen. Jika sebuah komponen melanggar salah satu aturan ini, itu bug.
 
 ## API
 
@@ -59,19 +59,25 @@ Kepedulian mengalahkan setiap aturan lain di sini. Jika tampilan dan kepedulian 
 
 Enam aturan [bahasa desain](../design/), sebagaimana tampil di library, lalu sisa tampilannya.
 
-- **Miring saat diperhatikan.** Pelat berdiri tegak saat diam. Saat di-hover, difokus, atau ditekan, pelat miring ke `--bless-lean` (−10°, dicerminkan di RTL). Isian miring selama Anda menulis di dalamnya. Sebuah grup miring sebagai satu. Cincin fokus tetap ada, sehingga kemiringan tidak pernah menjadi satu-satunya tanda. Dengan gerakan dikurangi, kemiringan berganti tanpa animasi. Hanya huruf tampilan yang besar (watermark dan logo) yang miring saat diam.
+- **Kemiringan khas, kontrol tetap tegak.** Tombol pil, toggle, chip, dan isian garis bawah berdiri tegak saat diam maupun saat di-hover/fokus, merespons dengan geser nada aman-AA, isian hover lembut (`--bless-color-hover`), dan angkat pegas halus (`--bless-hover-lift`, menjadi `0px` pada gerakan dikurangi/tenang). Kemiringan khas −10° (`--bless-lean`, dicerminkan di RTL) khusus dipakai pada label aplikasi persegi, eyecatch, pelat nama `BlessNovelBox`, `BlessSkew`, dan watermark tampilan.
 - **Warna berarti terpilih.** Hal yang diam berupa tinta dan garis tepi. Aksen hanya muncul pada hal yang terpilih, aktif, terbuka, ditekan, atau selesai. Contohnya kotak yang dicentang, tab saat ini, dan bagian bilah progres yang terisi. Cincin fokus tetap aksen. Tombol utama berupa tinta penuh dan terisi aksen saat ditekan. Prop `color="accent"` tetap tersedia untuk pengguna, tetapi library tidak pernah memakainya sebagai bawaan saat diam.
-- **Menyatu saat berkelompok.** Hal yang satu kelompok berbagi satu pelat. ButtonGroup adalah satu garis tepi dan miring sebagai satu. InputGroup adalah satu isian. ToggleGroup juga satu pelat. Rentang tanggal yang terpilih adalah satu pita. Setiap bagian yang sendirian tetap punya tepinya sendiri.
+- **Menyatu saat berkelompok.** Hal yang satu kelompok berbagi satu pelat. ButtonGroup menyatukan tepi luarnya; InputGroup adalah satu isian; ToggleGroup berbagi garis tepi; rentang tanggal yang terpilih adalah satu pita. Setiap bagian yang sendirian tetap punya tepinya sendiri.
 - **Meluap, sekali saja.** Pertumbuhan tampil sebagai sesuatu yang melampaui bingkainya: watermark dan judul menggantung melewati bagiannya, bilah Progress yang selesai melewati jalurnya. Paling banyak satu hal meluap per layar, atau ia tidak lagi berarti apa-apa.
-- **Menulis di halaman.** Isian adalah garis tempat Anda menulis, bukan kotak untuk diisi. Ia transparan, dengan garis bawah, dan garis aksen tumbuh di bawahnya saat Anda menulis. Membaca berubah menjadi menulis di tempat. Untuk nilai yang lebih sering dibaca, pakai [Inplace](/components/inplace), bukan formulir edit terpisah.
-- **Hover memudar dan miring, tidak pernah bergeser**: `opacity: var(--bless-hover-opacity)` selama `var(--bless-duration-slow)`, dan pelat miring ke `--bless-lean` di tempat. Kemunculan mengikuti tiga lapis [gerak](./motion): naik lembut untuk sebagian besar, sibakan kotak teks untuk bagian yang berbicara, dan flair yang bisa dipilih. Perubahan keadaan berpindah (sheet bergeser dari tepinya, thumb switch bergerak).
-- **Tidak ada yang buram saat diam.** Satu-satunya blur adalah fokus lembut singkat di awal kemunculan. Permukaan yang melayang duduk di atas `--bless-shadow-plate`, geseran aksen 1px. Modal dan sheet mengandalkan scrim.
-- **Huruf**: pakai tipis untuk suara di ukuran judul ke atas, dan huruf kapital tebal berjarak untuk UI. Teks isi memakai `--bless-text-md`. Tidak ada yang lebih kecil dari `2xs` (8–9px), dan `2xs` hanya untuk meta kecil di samping teks yang lebih besar: badge, hitungan, tanggal, dan keterangan.
+- **Menulis di halaman.** Isian adalah garis datar ber-radius `0px` tempat Anda menulis, bukan kotak untuk diisi. Ia transparan dengan garis bawah tipis, dan garis aksen tumbuh di bawahnya saat Anda menulis. Membaca berubah menjadi menulis di tempat—pakai [Inplace](/components/inplace), bukan formulir edit terpisah.
+- **Hover aman-AA, tidak pernah memudar.** Hover tidak lagi menurunkan kontras dengan `opacity: 0.6` (`--bless-hover-opacity: 1`). Kontrol interaktif menggeser nada atau latar lembut (`--bless-color-hover` / `--bless-color-surface-2`) dan terangkat halus (`--bless-hover-lift`). Kemunculan mengikuti tiga lapis [gerak](./motion): naik lembut untuk sebagian besar, sibakan kotak teks untuk bagian yang berbicara, dan flair yang bisa dipilih.
+- **Cahaya, bukan garis.** Kartu dan panel melayang tanpa garis tepi di atas kertas porselen terang (`Daylight`), amber (`Senja`), atau kobalt berbintang (`Night`) dengan bayangan lembut bernuansa tinta (`--bless-shadow-sm` / `--bless-shadow-plate`), sementara kaca buram (`--bless-color-surface-glass`) dipakai untuk kotak dialog seperti `BlessNovelBox`.
+- **Tiga suara tipografi**: **Plus Jakarta Sans** (`--bless-font-sans`) huruf normal untuk UI, **Newsreader** (`--bless-font-serif`) untuk judul editorial, kutipan, dan dialog, serta monospace tabular (`--bless-font-mono`) untuk waktu dan metadata.
 
 ## Bentuk {#shape}
 
-Satu bentuk: pelat tegak dengan garis tepi utuh dan persegi. Tombol, tab, tag, isian, kartu, dan menu berbentuk persegi. Bagian yang bulat di tempat lain juga persegi: avatar, switch, chip, bubble obrolan, fab, thumb slider, dan titik hitungan. Identitasnya adalah kemiringan saat diperhatikan, bukan sudutnya. Bentuk tetes milik [logo](../design/brand#mark).
+Geometri lembut yang disesuaikan dengan peran tiap elemen:
 
-Jangan pernah memakai lingkaran penuh atau pelat bulat dari library itu sendiri. Ada tiga pengecualian, ketika lingkaran adalah fungsinya dan bukan tampilannya: radio (lingkaran adalah cara radio berbeda dari checkbox), knob, dan pengukur [CircularProgress](/components/circular-progress). [Mockup](/components/mockup) ponsel juga tetap bersudut bulat. Sudut itu milik perangkatnya, bukan milik sistem. `--bless-radius`, `--bless-radius-plate`, dan `--bless-petal` ada dengan nilai `0` untuk pengguna yang ingin membulatkan. `--bless-petal: 8px` mengembalikan dua sudut bulat yang berseberangan pada bagian yang bulat secara alami.
+- `--bless-radius: 14px` — kartu, panel, dialog, dan popover.
+- `--bless-radius-plate: 6px` — pelat persegi miring (label aplikasi, pelat nama `BlessNovelBox`, tooltip).
+- `--bless-radius-pill: 999px` — tombol, switch, chip, dan lencana sapuan lembut.
+- `--bless-petal: 999px` — avatar bulat, potret, tombol radio, knob, dan cincin progres.
+- `0px` — isian garis bawah naskah (`BlessInput`, `BlessTextarea`, `BlessSelect`, dsb.).
+
+Atur keempat token radius ke `0` jika Anda ingin kembali ke pelat persegi tajam. Bentuk tetes milik [logo](../design/brand#mark).
 
 Lihat [DESIGN.md](https://github.com/danceinthefake/blessing-ui/blob/main/DESIGN.md) untuk peta jalan dan alasan di balik setiap fase.

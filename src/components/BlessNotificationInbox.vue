@@ -192,7 +192,7 @@ function pick(n: BlessNotice) {
   font-weight: var(--bless-font-weight-bold);
 }
 .bless-inbox__open:hover {
-  opacity: var(--bless-hover-opacity);
+  background: var(--bless-color-hover);
 }
 .bless-inbox__open:focus-visible,
 .bless-inbox__dismiss:focus-visible {

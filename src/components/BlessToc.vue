@@ -83,7 +83,7 @@ onMounted(() => {
     color var(--bless-duration-slow) var(--bless-ease-in-out);
 }
 .bless-toc__link:hover {
-  opacity: var(--bless-hover-opacity);
+  color: var(--bless-color-text);
 }
 .bless-toc__link:focus-visible {
   outline: 2px solid var(--bless-color-accent);

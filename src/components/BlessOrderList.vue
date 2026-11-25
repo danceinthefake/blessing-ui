@@ -191,7 +191,8 @@ function step(i: number, d: -1 | 1) {
     var(--bless-lean-transition);
 }
 .bless-order__btns button:hover:not(:disabled) {
-  opacity: var(--bless-hover-opacity);
+  background: var(--bless-color-hover);
+  color: var(--bless-color-text);
 }
 .bless-order__btns button:disabled {
   opacity: 0.3;

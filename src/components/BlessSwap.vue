@@ -54,7 +54,7 @@ const id = useFieldId(props);
     var(--bless-lean-transition);
 }
 .bless-swap:hover:not(.bless-swap--disabled) {
-  opacity: var(--bless-hover-opacity);
+  background: var(--bless-color-hover);
 }
 .bless-swap__input {
   position: absolute;

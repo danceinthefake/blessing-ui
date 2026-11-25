@@ -265,7 +265,8 @@ defineExpose({ start, clear, queue });
   transition: opacity var(--bless-duration-slow) var(--bless-ease-in-out);
 }
 .bless-uploader__x:hover {
-  opacity: var(--bless-hover-opacity);
+  background: var(--bless-color-hover);
+  color: var(--bless-color-text);
 }
 .bless-uploader__actions {
   display: flex;

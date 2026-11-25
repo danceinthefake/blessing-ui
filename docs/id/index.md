@@ -1,7 +1,7 @@
 ---
 layout: home
 title: Blessing UI
-titleTemplate: Themed Flat Interface untuk Vue 3
+titleTemplate: Kertas hangat, tinta tenang, diceritakan seperti kisah
 markdownStyles: false
 ---
 

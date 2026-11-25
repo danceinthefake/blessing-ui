@@ -59,7 +59,7 @@ const open = defineModel<boolean>("open", { default: false });
   display: none;
 }
 .bless-collapsible__summary:hover {
-  opacity: var(--bless-hover-opacity);
+  background: var(--bless-color-hover);
 }
 .bless-collapsible__summary:focus-visible {
   outline: 2px solid var(--bless-color-accent);

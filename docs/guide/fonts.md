@@ -1,14 +1,14 @@
 # Fonts
 
-`--bless-font-sans` is
+Blessing UI uses three typographic voices:
 
-```
-"Roboto", "Noto Sans JP", "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "Meiryo", sans-serif
-```
+1. **UI sans (`--bless-font-sans`)**: `"Plus Jakarta Sans", "Noto Sans JP", "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "Meiryo", sans-serif`
+2. **Editorial serif (`--bless-font-serif`)**: `"Newsreader", "Iowan Old Style", "Palatino Linotype", Georgia, serif` — used for hero headlines, article titles, pull quotes, and `BlessNovelBox` dialogue.
+3. **Tabular monospace (`--bless-font-mono`)**: `ui-monospace, "JetBrains Mono", "SFMono-Regular", Menlo, Consolas, monospace` — used for timestamps, telemetry, and volume tags.
 
-Load four Roboto weights: **100** for the thin voice (watermark, wordmark, `BlessText weight="thin"`), **300**, **400**, and **700**. `--bless-font-weight-thin` is 100, and dark mode redefines it to 300 because hairlines look thinner on a dark background. Load both weights. Use 100 only at headline size and up. At body size its hairlines are too thin to read, so use 300 or heavier.
+Load **Plus Jakarta Sans** (weights 400, 500, 600, 700) and **Newsreader** (regular 400 + italic 400). `--bless-font-weight-thin` shifts from 100 in Daylight to 300 in Night so ultra-light display watermarks stay legible on dark skies.
 
-<Demo title="The four weights">
+<Demo title="The three voices">
   <FontsWeights />
   <template #code>
 
@@ -17,7 +17,7 @@ Load four Roboto weights: **100** for the thin voice (watermark, wordmark, `Bles
   </template>
 </Demo>
 
-The library bundles no fonts, so you must load them yourself. You do not need italic files. The lean is a skew that the library applies to the element. It is not an italic face.
+The library bundles no fonts, so you load them yourself (from Google Fonts or self-hosted with Fontsource).
 
 ## Google Fonts
 
@@ -25,7 +25,7 @@ The library bundles no fonts, so you must load them yourself. You do not need it
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link
-  href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&family=Noto+Sans+JP:wght@400;700&display=swap"
+  href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;700&display=swap"
   rel="stylesheet"
 />
 ```
@@ -34,42 +34,31 @@ The two `preconnect` lines matter: without them the first paint waits on a cold 
 
 ## Japanese
 
-The font stack already falls back to Hiragino (macOS and iOS) and Meiryo (Windows). Every Japanese reader has one of them. Noto Sans JP is for Linux, Android, and a consistent look. From Google Fonts it is cheap. The face is split into many small `unicode-range` slices, and a page downloads only the slices that its characters need. As whole self-hosted files it is big, about 1–2 MB for the two weights. Subset it. If your audience is on Mac or Windows, drop it and let the system fonts carry the Japanese text. The thin Roboto is the only face that the look depends on.
-
-A late slice has a cost in Firefox: while a font file loads, Firefox redraws the page text without its font, so a page change can flash blank. This site does not load Noto Sans JP for that reason. It also loads Roboto's `symbols` subset when the first page is idle, with `document.fonts.load("400 1em Roboto", "★")`.
+The font stack already falls back to Hiragino (macOS and iOS) and Meiryo (Windows). Every Japanese reader has one of them. Noto Sans JP is for Linux, Android, and a consistent look. From Google Fonts it is cheap because the face is split into small `unicode-range` slices, so a page downloads only the slices its characters need. As whole self-hosted files it is about 1–2 MB for two weights—subset it, or let system fonts carry Japanese text on Mac and Windows.
 
 ## Self-hosting
 
-The shortest route is [Fontsource](https://fontsource.org), which packages each weight as a stylesheet with its files:
+The shortest route is [Fontsource](https://fontsource.org), which ships variable WOFF2 files with zero external network requests:
 
 ```sh
-pnpm add @fontsource/roboto
+pnpm add @fontsource-variable/plus-jakarta-sans @fontsource-variable/newsreader
 ```
 
 ```ts
-import "@fontsource/roboto/100.css";
-import "@fontsource/roboto/300.css";
-import "@fontsource/roboto/400.css";
-import "@fontsource/roboto/700.css";
+import "@fontsource-variable/plus-jakarta-sans";
+import "@fontsource-variable/newsreader";
 ```
 
-The family is still called `"Roboto"`, so the token needs no change. By hand instead, serve the files and point the token at your face names:
+Then point the tokens at the variable family names (or keep the default names if you use non-variable `@fontsource/plus-jakarta-sans` and `@fontsource/newsreader`):
 
 ```css
-@font-face {
-  font-family: "Roboto";
-  font-weight: 100;
-  font-display: swap;
-  src: url("/fonts/roboto-thin.woff2") format("woff2");
-}
-/* …300, 400, 700 */
-
 :root {
-  --bless-font-sans: "Roboto", "Hiragino Kaku Gothic Pro", "Meiryo", sans-serif;
+  --bless-font-sans: "Plus Jakarta Sans Variable", "Plus Jakarta Sans", "Hiragino Kaku Gothic Pro", "Meiryo", sans-serif;
+  --bless-font-serif: "Newsreader Variable", "Newsreader", Georgia, serif;
 }
 ```
 
-`font-display: swap` keeps text visible while the file arrives. Without any of this the stack falls through to the system sans, which is fine for everything except the thin type.
+`font-display: swap` keeps text visible while the file arrives. Without custom fonts, the stack falls back gracefully to system sans and Georgia.
 
 <script setup>
 import FontsWeights from "../demos/FontsWeights.vue";

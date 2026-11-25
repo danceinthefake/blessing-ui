@@ -1,6 +1,6 @@
 # Moods & dark mode
 
-Blessing UI has three time-of-day moods: **Daylight** (warm paper `#EDE6E1` and violet-black ink `#262228`), **Golden hour** (`data-theme="golden"`, warm amber paper), and **Night** (`data-theme="dark"`, violet night paper with a faint top edge on raised surfaces). In Night, the accent fill stays the same while its text cut (and danger/info text) lifts for contrast, and `--bless-font-weight-thin` shifts from 100 to 300 so thin display type stays legible. The full list of changes is in [Tokens → What flips](./tokens#what-flips-what-swaps).
+Blessing UI has three time-of-day moods: **Daylight** (sunlit porcelain paper `#F6F1EE`, sheets `#FFFEFD`, and warm ink `#231F25`), **Golden hour** (`data-theme="golden"`, backlit amber paper `#F6E7D4` and sheets `#FFF9F1`), and **Night** (`data-theme="dark"`, starry cobalt sky `#111525`, indigo sheets `#1C2136`, and a faint top specular edge on raised surfaces). In Night, the accent fill stays the same while its text cut (and danger/info text) lifts for contrast, and `--bless-font-weight-thin` shifts from 100 to 300 so thin display type stays legible. The full list of changes is in [Tokens → What flips](./tokens#what-flips-what-swaps).
 
 Follows `prefers-color-scheme` by default (Daylight or Night). Force any mood with `data-theme` on `<html>`:
 

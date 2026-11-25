@@ -14,7 +14,7 @@ The three [motion](../guide/motion) layers come from the anime itself, made by A
 
 The home page reads like a light novel in chapters. Between the chapters it uses two habits of TV anime: the eyecatch, which is a short title card at the break, and the next-episode preview (次回予告) at the end.
 
-The default fonts are [Roboto](https://fonts.google.com/specimen/Roboto) by Christian Robertson and [Noto Sans JP](https://fonts.google.com/noto/specimen/Noto+Sans+JP) by Google. The library does not bundle them. You load them yourself, as the [fonts guide](../guide/fonts) shows.
+The default fonts are [Plus Jakarta Sans](https://fonts.google.com/specimen/Plus+Jakarta+Sans) by Tokotype, [Newsreader](https://fonts.google.com/specimen/Newsreader) by Production Type, and [Noto Sans JP](https://fonts.google.com/noto/specimen/Noto+Sans+JP) by Google. The library does not bundle them. You load them yourself, as the [fonts guide](../guide/fonts) shows.
 
 ## Libraries we compared with
 

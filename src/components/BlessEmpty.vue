@@ -42,7 +42,8 @@ withDefaults(
 .bless-empty--outline {
   border-radius: var(--bless-radius);
   padding-block: var(--bless-space-12);
-  border: var(--bless-border-width) solid var(--bless-color-border);
+  background: var(--bless-color-surface);
+  box-shadow: var(--bless-shadow-sm);
 }
 .bless-empty__icon {
   display: inline-grid;
@@ -50,18 +51,16 @@ withDefaults(
   width: 48px;
   height: 48px;
   margin-bottom: var(--bless-space-2);
+  border-radius: var(--bless-petal);
   font-size: var(--bless-text-lg);
   color: var(--bless-color-text-muted);
-  background: var(--bless-color-surface);
-  transform: skewX(var(--bless-skew));
-}
-.bless-empty__icon > * {
-  transform: skewX(var(--bless-skew-counter));
+  background: var(--bless-color-surface-2);
 }
 .bless-empty__title {
-  font-size: var(--bless-text-md);
-  font-weight: var(--bless-font-weight-bold);
-  letter-spacing: var(--bless-tracking-wide);
+  font-family: var(--bless-font-serif);
+  font-size: var(--bless-text-lg);
+  font-weight: 400;
+  letter-spacing: -0.01em;
 }
 .bless-empty__desc {
   margin: 0;

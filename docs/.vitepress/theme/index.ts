@@ -29,10 +29,11 @@ try {
   if (typeof localStorage !== "undefined" && !localStorage.getItem("vitepress-theme-appearance"))
     localStorage.setItem("vitepress-theme-appearance", "light");
 } catch {}
-// Firefox redraws the text without its font while a late font file loads. Warm Roboto once idle.
+// Firefox redraws text without its font while a late font slice loads. Warm primary faces once idle.
 if (typeof document !== "undefined" && document.fonts)
   (window.requestIdleCallback ?? setTimeout)(() => {
-    for (const w of [100, 300, 400, 500, 600]) void document.fonts.load(`${w} 1em Roboto`, "★");
+    for (const w of [400, 500, 600, 700]) void document.fonts.load(`${w} 1em "Plus Jakarta Sans"`);
+    void document.fonts.load('400 1em "Newsreader"');
   });
 
 export default {

@@ -179,7 +179,8 @@ function clear() {
   padding: 0 var(--bless-space-3);
   box-sizing: border-box;
   border: 0;
-  border-bottom: calc(2 * var(--bless-border-width)) solid var(--bless-color-text-muted);
+  border-radius: 0;
+  border-bottom: var(--bless-border-width) solid var(--bless-color-border);
   background: transparent; /* a line you write on, not a box */
   color: inherit;
   font: inherit;
@@ -221,7 +222,8 @@ function clear() {
   outline-offset: -2px;
 }
 .bless-datepicker__clear:hover {
-  opacity: var(--bless-hover-opacity);
+  background: var(--bless-color-hover);
+  color: var(--bless-color-text);
 }
 .bless-datepicker__panel {
   position: fixed;
@@ -245,7 +247,8 @@ function clear() {
   display: inline-flex;
   transform: skewX(var(--bless-skew));
   background: transparent; /* a line you write on, not a box */
-  border-bottom: calc(2 * var(--bless-border-width)) solid var(--bless-color-text-muted);
+  border-radius: 0;
+  border-bottom: var(--bless-border-width) solid var(--bless-color-border);
 }
 .bless-datepicker__field:focus-within {
   border-bottom-color: var(--bless-color-accent-text);

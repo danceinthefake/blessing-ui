@@ -109,7 +109,8 @@ const flat = computed(() => {
     var(--bless-lean-transition);
 }
 .bless-treetable__toggle:hover {
-  opacity: var(--bless-hover-opacity);
+  background: var(--bless-color-hover);
+  color: var(--bless-color-text);
 }
 .bless-treetable__toggle > span {
   display: inline-block;

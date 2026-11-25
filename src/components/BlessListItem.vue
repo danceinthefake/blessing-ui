@@ -50,7 +50,7 @@ defineProps<{
     var(--bless-lean-transition);
 }
 .bless-list-item__row--link:hover {
-  opacity: var(--bless-hover-opacity);
+  background: var(--bless-color-hover);
 }
 .bless-list-item__row--link:focus-visible {
   outline: 2px solid var(--bless-color-accent);

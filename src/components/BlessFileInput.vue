@@ -225,6 +225,7 @@ const kb = (n: number) =>
   transition: opacity var(--bless-duration-slow) var(--bless-ease-in-out);
 }
 .bless-file__remove:hover {
-  opacity: var(--bless-hover-opacity);
+  background: var(--bless-color-hover);
+  color: var(--bless-color-text);
 }
 </style>

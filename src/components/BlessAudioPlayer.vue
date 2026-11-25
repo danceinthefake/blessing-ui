@@ -228,7 +228,8 @@ onBeforeUnmount(() => audio.value?.pause());
     var(--bless-lean-transition);
 }
 .bless-audio__toggle:hover {
-  opacity: var(--bless-hover-opacity);
+  transform: translateY(var(--bless-hover-lift));
+  box-shadow: var(--bless-shadow-sm);
 }
 .bless-audio__toggle:focus-visible {
   outline: 2px solid var(--bless-color-accent);
@@ -310,7 +311,7 @@ onBeforeUnmount(() => audio.value?.pause());
     var(--bless-lean-transition);
 }
 .bless-audio__track:hover {
-  opacity: var(--bless-hover-opacity);
+  background: var(--bless-color-hover);
 }
 .bless-audio__track:focus-visible {
   outline: 2px solid var(--bless-color-accent);

@@ -96,11 +96,11 @@ const isGroup = (o: unknown): o is { label: string; options: BlessOption<T>[] } 
   --_fs: var(--bless-text-lg);
 }
 .bless-select__field {
-  border-radius: var(--bless-radius-plate);
+  border-radius: 0;
   position: relative;
   height: var(--_h);
   background: transparent; /* a line you write on, not a box */
-  border-bottom: calc(2 * var(--bless-border-width)) solid var(--bless-color-text-muted);
+  border-bottom: var(--bless-border-width) solid var(--bless-color-border);
 }
 .bless-select__field::after {
   content: "";
@@ -179,7 +179,8 @@ const isGroup = (o: unknown): o is { label: string; options: BlessOption<T>[] } 
     margin-top: var(--bless-space-1);
     padding: var(--bless-space-1) 0;
     border: var(--bless-border-width) solid var(--bless-color-border);
-    background: var(--bless-color-bg);
+    border-radius: var(--bless-radius);
+    background: var(--bless-color-surface);
     color: var(--bless-color-text);
     font-family: var(--bless-font-sans);
     font-size: var(--_fs);

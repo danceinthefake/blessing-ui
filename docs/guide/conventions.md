@@ -1,6 +1,6 @@
 # Conventions
 
-What holds across all 441 components. If a component breaks one of these rules, it is a bug.
+What holds across all 442 components. If a component breaks one of these rules, it is a bug.
 
 ## API
 
@@ -59,19 +59,25 @@ Care overrides every other rule here. If looks and care disagree, care wins ([de
 
 The six rules of the [design language](../design/), as they show in the library, then the rest of the look.
 
-- **Lean on attention.** Plates stand upright at rest. While hovered, focused, or pressed, they lean to `--bless-lean` (−10°, mirrored in RTL). A field leans while you write in it. A group leans as one. The focus ring stays, so the lean is never the only signal. Under reduced motion, the lean switches without animating. Only big display type (the watermark and the mark) leans at rest.
+- **Signature lean, upright controls.** Pill buttons, toggles, chips, and manuscript underline inputs stand upright at rest and on hover/focus, responding with an AA-safe tone shift, soft hover fill (`--bless-color-hover`), and subtle spring lift (`--bless-hover-lift`, zeroed in reduced/calm motion). The house −10° lean (`--bless-lean`, mirrored in RTL) stays strictly on rectangular app tags, eyecatches, `BlessNovelBox` speaker nameplates, `BlessSkew`, and display watermarks.
 - **Color means chosen.** Idle things are ink and outline. The accent appears on selected, active, open, pressed, or done things only. Examples are a checked box, the current tab, and the filled part of a progress bar. The focus ring stays accent. Main buttons are solid ink and fill with the accent while pressed. `color="accent"` props remain for consumers, but the library never defaults to them at rest.
-- **Fuse when grouped.** Things that belong together share one plate. A ButtonGroup is one outline and leans as one. An InputGroup is one field. A ToggleGroup is one plate too. A chosen date range is one band. Each part alone keeps its own edge.
+- **Fuse when grouped.** Things that belong together share one plate. A ButtonGroup joins its outer edges; an InputGroup is one field; a ToggleGroup shares borders; a chosen date range is one band. Each part alone keeps its own edge.
 - **Overflow, once.** Growth shows as outgrowing a frame: the watermark and the hanging headline spill past their section, a finished Progress bar runs past its track. At most one thing overflows per screen, or it stops meaning anything.
-- **Write on the page.** A field is a line you write on, not a box to fill in. It is transparent, with an underline, and the accent line grows under it while you write. Reading turns into writing in place. For values that people mostly read, use [Inplace](/components/inplace) instead of a separate edit form.
-- **Hover fades and leans, never slides**: `opacity: var(--bless-hover-opacity)` over `var(--bless-duration-slow)`, and the plate leans to `--bless-lean` in place. Appearances follow the three [motion](./motion) layers: a soft rise for most, a text-box wipe for the parts that talk, and opt-in flair. State changes travel (a sheet slides from its edge, a switch thumb moves).
-- **Nothing blurs at rest.** The only blur is the short soft focus at the start of an appearance. A floating surface sits on `--bless-shadow-plate`, a 1px accent offset. Modals and sheets rely on the scrim.
-- **Type**: use thin for the voice at headline size and up, and bold tracked uppercase for the UI. Body is `--bless-text-md`. Nothing is smaller than `2xs` (8–9px), and `2xs` is only for small meta beside larger text: badges, counts, dates, and captions.
+- **Write on the page.** A field is a flat `0px`-radius line you write on, not a box to fill in. It is transparent with a hairline underline, and the accent line grows under it while you write. Reading turns into writing in place—use [Inplace](/components/inplace) instead of a separate edit form.
+- **AA-safe hover, never washed out.** Hover never drops contrast with `opacity: 0.6` (`--bless-hover-opacity: 1`). Interactive controls shift tone or surface well (`--bless-color-hover` / `--bless-color-surface-2`) and lift softly (`--bless-hover-lift`). Appearances follow the three [motion](./motion) layers: a soft rise for most, a text-box wipe for the parts that talk, and opt-in flair.
+- **Light, not lines.** Cards and panels float borderless on sunlit porcelain (`Daylight`), amber (`Golden hour`), or starry cobalt (`Night`) paper using soft ink-tinted shadows (`--bless-shadow-sm` / `--bless-shadow-plate`), with frosted glass (`--bless-color-surface-glass`) reserved for dialogue overlays like `BlessNovelBox`.
+- **Three typographic voices**: **Plus Jakarta Sans** (`--bless-font-sans`) in sentence case for UI, **Newsreader** (`--bless-font-serif`) for editorial titles, quotes, and dialogue, and tabular monospace (`--bless-font-mono`) for timestamps and metadata.
 
 ## Shape
 
-One shape: the upright plate with a whole, square outline. Buttons, tabs, tags, fields, cards, and menus are square. The parts that are round anywhere else are also square: avatars, switches, chips, chat bubbles, fabs, slider thumbs, and count dots. The identity is the lean on attention, not the corners. The teardrop belongs to the [mark](../design/brand#mark).
+Soft, calm geometry tuned to each element's role:
 
-Never use a full circle or a rounded plate from the library itself. There are three exceptions, where the circle is the function and not the look: the radio (a circle is how a radio differs from a checkbox), the knob, and the [CircularProgress](../components/circular-progress) gauge. The phone [Mockup](../components/mockup) keeps its rounded corners too. They belong to the device, not to the system. `--bless-radius`, `--bless-radius-plate`, and `--bless-petal` exist at `0` for consumers who want rounding. `--bless-petal: 8px` brings back two rounded opposite corners on the parts that are round by nature.
+- `--bless-radius: 14px` — cards, panels, dialogs, and popovers.
+- `--bless-radius-plate: 6px` — rectangular skewed plates (app tags, `BlessNovelBox` nameplates, tooltips).
+- `--bless-radius-pill: 999px` — buttons, switches, chips, and soft-wash badges.
+- `--bless-petal: 999px` — circular avatars, portraits, radio buttons, knobs, and progress rings.
+- `0px` — manuscript underline inputs (`BlessInput`, `BlessTextarea`, `BlessSelect`, etc.).
+
+Set all four radius tokens to `0` if you want the original sharp square plates back. The teardrop belongs to the [mark](../design/brand#mark).
 
 See [DESIGN.md](https://github.com/danceinthefake/blessing-ui/blob/main/DESIGN.md) for the roadmap and the reasoning behind each phase.

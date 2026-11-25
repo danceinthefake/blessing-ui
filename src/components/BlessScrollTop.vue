@@ -86,7 +86,8 @@ onBeforeUnmount(() => (el() ?? window).removeEventListener("scroll", check));
   inset-inline-start: var(--bless-space-6);
 }
 .bless-scroll-top:hover {
-  opacity: var(--bless-hover-opacity);
+  transform: translateY(var(--bless-hover-lift));
+  box-shadow: var(--bless-shadow-plate);
 }
 .bless-scroll-top:focus-visible {
   outline: 2px solid var(--bless-color-accent);

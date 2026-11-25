@@ -247,7 +247,8 @@ watch(
     var(--bless-lean-transition);
 }
 .bless-calendar__nav:hover {
-  opacity: var(--bless-hover-opacity);
+  background: var(--bless-color-hover);
+  color: var(--bless-color-text);
 }
 .bless-calendar__nav:focus-visible {
   outline: 2px solid var(--bless-color-accent);

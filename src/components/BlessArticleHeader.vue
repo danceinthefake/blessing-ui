@@ -105,7 +105,10 @@ const day = (iso: string) =>
   margin: 0;
   padding: 0;
   border: 0;
+  font-family: var(--bless-font-serif);
   font-size: var(--bless-text-xl);
+  font-weight: 400;
+  letter-spacing: -0.015em;
   line-height: var(--bless-leading-tight);
 }
 .bless-article__summary {

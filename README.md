@@ -6,11 +6,11 @@
 
 [![npm](https://img.shields.io/npm/v/blessing-ui)](https://www.npmjs.com/package/blessing-ui) [![ci](https://github.com/danceinthefake/blessing-ui/actions/workflows/ci.yml/badge.svg)](https://github.com/danceinthefake/blessing-ui/actions/workflows/ci.yml)
 
-Vue 3 component library and design tokens. The UI is gray-scale, with one accent that appears only on what someone chose. The look has square, upright plates that lean on engagement, thin oversized watermark type, and opacity-fade hovers. The rules come from a [design language](docs/design/index.md). We derived the look again from the official site of one anime, and took ideas only. The [story](docs/design/story.md) says which anime, what we kept, and what we did not take.
+Vue 3 component library and design tokens. Sunlit porcelain **Daylight**, backlit **Golden hour**, and starry cobalt **Night** carry the time of day, while six character palettes supply the accent—used only on what someone chose. Cards float borderless on soft light, pill controls lift cleanly with AA-safe hover contrast, manuscript inputs stay upright, and the house −10° lean stays strictly on rectangular tags, eyecatches, and visual-novel nameplates. The rules come from a [design language](docs/design/index.md); the [story](docs/design/story.md) tells where the look came from.
 
 Docs, with every component live: **[ui.blessing.id](https://ui.blessing.id)**
 
-- 441 components, from button to data table to chat. Only `--bless-*` custom properties style them. There is no Tailwind dependency.
+- 442 components, from button to data table to chat. Only `--bless-*` custom properties style them. There is no Tailwind dependency.
 - Native platform first: `<dialog>`, Popover API, `<details>`, native form controls, `Intl` dates, and scroll-snap. There is no positioning, date, or table library.
 - Accessible defaults: focus rings, ARIA tablist, dialog, and tables, and `prefers-reduced-motion`
 - ESM, tree-shakable, with `vue` as the only required peer (`@tiptap/vue-3` is optional, for `BlessEditor`). One component (`BlessButton`) costs about 1 KB gzip of JS and about 3 KB of CSS (tokens and its own styles). Everything costs about 294 KB and 85 KB. CSS is split per component and the import pulls it in, so you never pay for styles that you do not use
@@ -31,11 +31,11 @@ That is all. Each component brings its own stylesheet, and the tokens come with 
 import "blessing-ui/style.css"; // tokens + every component's styles
 ```
 
-Fonts are not bundled. Load Roboto (100/300/400/700) and Noto Sans JP yourself, for example:
+Fonts are not bundled. Load **Plus Jakarta Sans** (UI sans) and **Newsreader** (editorial serif display & `BlessNovelBox`) yourself, for example:
 
 ```html
 <link
-  href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700|Noto+Sans+JP:400,700&display=swap"
+  href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
   rel="stylesheet"
 />
 ```
@@ -92,7 +92,7 @@ The words that components say are English by default. `provideLabels(labelsId)` 
 
 ## Components
 
-441 components across eight groups. Every one styles itself from `--bless-*` tokens and ships with a test and a docs page.
+442 components across eight groups. Every one styles itself from `--bless-*` tokens and ships with a test and a docs page.
 
 ### Primitives
 

@@ -177,7 +177,9 @@ async function onDelete() {
   gap: var(--bless-space-4);
   width: 16rem;
   padding: var(--bless-space-4);
-  border: 1px solid var(--bless-color-border);
+  border-radius: var(--bless-radius);
+  background: var(--bless-color-surface);
+  box-shadow: var(--bless-shadow-sm);
 }
 .files__details:focus {
   outline: none;

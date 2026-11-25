@@ -17,7 +17,7 @@ const src = (p: string) => fileURLToPath(new URL(`../../src/${p}`, import.meta.u
 
 export default defineConfig({
   title: "Blessing UI",
-  description: "Themed Flat Interface. Flat by design, raised with Vue, blessed for everyone.",
+  description: "Warm paper, quiet ink, told like a story. Vue 3 component library with three moods and six palettes.",
   lang: "en",
   base: process.env.DOCS_BASE ?? "/",
   srcExclude: ["blocks/README.md"],
@@ -43,7 +43,7 @@ export default defineConfig({
       "meta",
       {
         property: "og:description",
-        content: "Themed Flat Interface. Flat by design, raised with Vue, blessed for everyone.",
+        content: "Warm paper, quiet ink, told like a story. Vue 3 component library with three moods and six palettes.",
       },
     ],
     ["meta", { property: "og:image", content: "https://ui.blessing.id/og.png" }],
@@ -66,7 +66,7 @@ export default defineConfig({
       lang: "id",
       link: "/id/",
       description:
-        "Themed Flat Interface. Datar sejak awal, dibangun dengan Vue, untuk semua orang.",
+        "Kertas hangat, tinta tenang, diceritakan seperti kisah. Pustaka komponen Vue 3 dengan tiga suasana dan enam palet.",
       themeConfig: {
         nav: [
           { text: "Panduan", link: "/id/guide/" },

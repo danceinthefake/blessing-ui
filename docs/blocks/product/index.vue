@@ -213,9 +213,12 @@ async function onAdd() {
 .product__main,
 .product__thumbs button {
   display: block;
+  overflow: hidden;
   padding: 0;
-  border: 1px solid var(--bless-color-border);
-  background: none;
+  border: 0;
+  border-radius: var(--bless-radius);
+  background: var(--bless-color-surface);
+  box-shadow: var(--bless-shadow-art);
   cursor: zoom-in;
 }
 .product__main img {
@@ -231,6 +234,8 @@ async function onAdd() {
   list-style: none;
 }
 .product__thumbs button {
+  border-radius: var(--bless-radius-plate);
+  box-shadow: var(--bless-shadow-sm);
   cursor: pointer;
 }
 .product__thumbs img {

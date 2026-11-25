@@ -299,7 +299,8 @@ function onBlur(e: FocusEvent) {
   padding: var(--bless-space-1) var(--bless-space-8) var(--bless-space-1) var(--bless-space-3);
   box-sizing: border-box;
   background: transparent; /* a line you write on, not a box */
-  border-bottom: calc(2 * var(--bless-border-width)) solid var(--bless-color-text-muted);
+  border-radius: 0;
+  border-bottom: var(--bless-border-width) solid var(--bless-color-border);
   cursor: text;
 }
 .bless-combobox__field::after {
@@ -364,7 +365,8 @@ function onBlur(e: FocusEvent) {
   transition: opacity var(--bless-duration-slow) var(--bless-ease-in-out);
 }
 .bless-combobox__chip-x:hover {
-  opacity: var(--bless-hover-opacity);
+  background: var(--bless-color-hover);
+  color: var(--bless-color-text);
 }
 .bless-combobox__panel {
   position: fixed;

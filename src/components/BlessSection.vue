@@ -89,9 +89,10 @@ withDefaults(
   flex-direction: column;
   align-items: flex-end;
   margin: calc(-1 * var(--bless-space-16) - 0.55em) 0 var(--bless-space-6);
+  font-family: var(--bless-font-serif);
   font-size: var(--bless-text-headline);
-  font-weight: var(--bless-font-weight-normal);
-  letter-spacing: 0.13em;
+  font-weight: 400;
+  letter-spacing: -0.015em;
   text-align: end;
 }
 .bless-section--hanging .bless-section__subtitle {

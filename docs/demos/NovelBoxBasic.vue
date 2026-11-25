@@ -2,6 +2,7 @@
   <div class="novel-demo">
     <BlessNovelBox
       :name="lines[i]!.name"
+      emblem
       :text="lines[i]!.text"
       interactive
       @next="i = (i + 1) % lines.length"

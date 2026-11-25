@@ -176,12 +176,20 @@ const faq = [
   padding-block: var(--bless-space-8);
 }
 .landing__kicker {
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 12px;
+  border-radius: var(--bless-radius-pill);
+  border: var(--bless-border-width) solid var(--bless-color-border);
+  background: var(--bless-color-surface);
+  color: var(--bless-color-text-muted);
 }
 .landing__title {
   margin: 0;
+  font-family: var(--bless-font-serif);
   font-size: clamp(2rem, 6vw, 3.5rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
   line-height: 1.1;
 }
 .landing__lead {
@@ -224,9 +232,11 @@ const faq = [
   display: grid;
   gap: var(--bless-space-3);
   justify-items: center;
-  padding: var(--bless-space-8) var(--bless-space-4);
+  padding: var(--bless-space-8) var(--bless-space-6);
   text-align: center;
+  border-radius: var(--bless-radius);
   background: var(--bless-color-surface);
+  box-shadow: var(--bless-shadow-sm);
 }
 @media (max-width: 760px) {
   .landing {

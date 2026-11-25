@@ -1,14 +1,14 @@
 # Font
 
-`--bless-font-sans` berisi
+Blessing UI memakai tiga suara tipografi:
 
-```
-"Roboto", "Noto Sans JP", "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "Meiryo", sans-serif
-```
+1. **Sans UI (`--bless-font-sans`)**: `"Plus Jakarta Sans", "Noto Sans JP", "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "Meiryo", sans-serif`
+2. **Serif editorial (`--bless-font-serif`)**: `"Newsreader", "Iowan Old Style", "Palatino Linotype", Georgia, serif` — dipakai untuk judul hero, tajuk artikel, kutipan, dan dialog `BlessNovelBox`.
+3. **Monospace tabular (`--bless-font-mono`)**: `ui-monospace, "JetBrains Mono", "SFMono-Regular", Menlo, Consolas, monospace` — dipakai untuk waktu, telemetri, dan label volume.
 
-Muat empat ketebalan Roboto: **100** untuk suara tipis (watermark, wordmark, `BlessText weight="thin"`), **300**, **400**, dan **700**. `--bless-font-weight-thin` bernilai 100, dan mode gelap mengubahnya menjadi 300 karena garis tipis terlihat lebih tipis di latar gelap. Muat kedua ketebalan itu. Pakai 100 hanya untuk ukuran judul ke atas. Di ukuran teks biasa, garisnya terlalu tipis untuk dibaca, jadi pakai 300 atau lebih tebal.
+Muat **Plus Jakarta Sans** (ketebalan 400, 500, 600, 700) dan **Newsreader** (reguler 400 + italic 400). `--bless-font-weight-thin` bergeser dari 100 di Daylight ke 300 di Night agar watermark tampilan tetap terbaca di latar malam.
 
-<Demo title="Empat ketebalan">
+<Demo title="Tiga suara tipografi">
   <FontsWeights />
   <template #code>
 
@@ -17,7 +17,7 @@ Muat empat ketebalan Roboto: **100** untuk suara tipis (watermark, wordmark, `Bl
   </template>
 </Demo>
 
-Library tidak menyertakan font, jadi Anda harus memuatnya sendiri. Anda tidak perlu file italic. Kemiringan adalah skew yang diterapkan library pada elemen, bukan huruf italic.
+Library tidak menyertakan font, jadi Anda memuatnya sendiri (lewat Google Fonts atau host sendiri dengan Fontsource).
 
 ## Google Fonts
 
@@ -25,7 +25,7 @@ Library tidak menyertakan font, jadi Anda harus memuatnya sendiri. Anda tidak pe
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link
-  href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&family=Noto+Sans+JP:wght@400;700&display=swap"
+  href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;700&display=swap"
   rel="stylesheet"
 />
 ```
@@ -34,42 +34,31 @@ Dua baris `preconnect` itu penting: tanpanya, tampilan pertama menunggu koneksi 
 
 ## Huruf Jepang
 
-Susunan font sudah jatuh ke Hiragino (macOS dan iOS) dan Meiryo (Windows). Setiap pembaca Jepang punya salah satunya. Noto Sans JP untuk Linux, Android, dan tampilan yang seragam. Dari Google Fonts, biayanya kecil. Hurufnya dipecah menjadi banyak potongan `unicode-range` kecil, dan halaman hanya mengunduh potongan yang diperlukan karakternya. Sebagai file utuh yang Anda host sendiri, ukurannya besar, sekitar 1–2 MB untuk dua ketebalan. Pangkas hurufnya. Jika pembaca Anda memakai Mac atau Windows, buang saja dan biarkan font sistem membawa teks Jepang. Roboto tipis adalah satu-satunya huruf yang menentukan tampilannya.
-
-Potongan yang datang belakangan punya biaya di Firefox: selama file font dimuat, Firefox menggambar ulang teks halaman tanpa fontnya, sehingga perpindahan halaman bisa berkedip kosong. Karena itu situs ini tidak memuat Noto Sans JP. Situs ini juga memuat subset `symbols` milik Roboto saat halaman pertama sedang senggang, dengan `document.fonts.load("400 1em Roboto", "★")`.
+Susunan font sudah jatuh ke Hiragino (macOS dan iOS) dan Meiryo (Windows). Setiap pembaca Jepang punya salah satunya. Noto Sans JP untuk Linux, Android, dan tampilan yang seragam. Dari Google Fonts, biayanya kecil karena hurufnya dipecah menjadi potongan `unicode-range` kecil. Sebagai file utuh yang Anda host sendiri, ukurannya sekitar 1–2 MB untuk dua ketebalan—pangkas hurufnya, atau biarkan font sistem membawa teks Jepang di Mac dan Windows.
 
 ## Host sendiri
 
-Jalan terpendek adalah [Fontsource](https://fontsource.org), yang mengemas tiap ketebalan sebagai stylesheet beserta filenya:
+Jalan terpendek adalah [Fontsource](https://fontsource.org), yang mengemas file WOFF2 variabel tanpa permintaan jaringan eksternal:
 
 ```sh
-pnpm add @fontsource/roboto
+pnpm add @fontsource-variable/plus-jakarta-sans @fontsource-variable/newsreader
 ```
 
 ```ts
-import "@fontsource/roboto/100.css";
-import "@fontsource/roboto/300.css";
-import "@fontsource/roboto/400.css";
-import "@fontsource/roboto/700.css";
+import "@fontsource-variable/plus-jakarta-sans";
+import "@fontsource-variable/newsreader";
 ```
 
-Nama keluarganya tetap `"Roboto"`, jadi token tidak perlu diubah. Jika dengan tangan, sajikan filenya dan arahkan token ke nama huruf Anda:
+Lalu arahkan token ke nama keluarga variabelnya (atau biarkan nama bawaan jika Anda memakai paket non-variabel `@fontsource/plus-jakarta-sans` dan `@fontsource/newsreader`):
 
 ```css
-@font-face {
-  font-family: "Roboto";
-  font-weight: 100;
-  font-display: swap;
-  src: url("/fonts/roboto-thin.woff2") format("woff2");
-}
-/* …300, 400, 700 */
-
 :root {
-  --bless-font-sans: "Roboto", "Hiragino Kaku Gothic Pro", "Meiryo", sans-serif;
+  --bless-font-sans: "Plus Jakarta Sans Variable", "Plus Jakarta Sans", "Hiragino Kaku Gothic Pro", "Meiryo", sans-serif;
+  --bless-font-serif: "Newsreader Variable", "Newsreader", Georgia, serif;
 }
 ```
 
-`font-display: swap` menjaga teks tetap terlihat selama file datang. Tanpa semua ini, susunan font jatuh ke sans bawaan sistem, yang cukup baik untuk semua hal kecuali huruf tipis.
+`font-display: swap` menjaga teks tetap terlihat selama file datang. Tanpa font kustom, susunannya jatuh rapi ke sans sistem dan Georgia.
 
 <script setup>
 import FontsWeights from "../../demos/FontsWeights.vue";

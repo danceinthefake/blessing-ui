@@ -128,7 +128,8 @@ button.bless-steps__marker {
     var(--bless-lean-transition);
 }
 button.bless-steps__marker:hover {
-  opacity: var(--bless-hover-opacity);
+  transform: translateY(var(--bless-hover-lift));
+  border-color: var(--bless-color-text);
 }
 button.bless-steps__marker:focus-visible {
   outline: 2px solid var(--bless-color-accent);

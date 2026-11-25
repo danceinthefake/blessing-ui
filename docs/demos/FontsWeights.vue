@@ -1,10 +1,21 @@
 <template>
-  <div class="col" style="gap: 6px; max-width: none">
-    <BlessText size="headline" weight="thin" leading="none">Thin 100</BlessText>
-    <BlessText size="lg" weight="light">Light 300 — headings</BlessText>
-    <BlessText size="lg" weight="normal">Normal 400 — body</BlessText>
-    <BlessText size="lg" weight="bold">Bold 700 — labels</BlessText>
-    <BlessText size="lg" weight="normal">日本語 — Noto Sans JP, or the system gothic</BlessText>
+  <div class="col" style="gap: 10px; max-width: none">
+    <p style="margin: 0; font-family: var(--bless-font-serif); font-size: 36px; line-height: 1.12">
+      Newsreader — editorial serif display &amp; dialogue
+    </p>
+    <BlessText size="lg" weight="normal">Plus Jakarta Sans 400 — calm UI body</BlessText>
+    <BlessText size="lg" weight="bold">Plus Jakarta Sans 700 — labels &amp; controls</BlessText>
+    <p
+      style="
+        margin: 0;
+        font-family: var(--bless-font-mono);
+        font-size: 13px;
+        color: var(--bless-color-text-muted);
+      "
+    >
+      04:12 · VOL 04 · 442 components (tabular monospace)
+    </p>
+    <BlessText size="md" weight="normal">日本語 — Noto Sans JP, or the system gothic</BlessText>
   </div>
 </template>
 

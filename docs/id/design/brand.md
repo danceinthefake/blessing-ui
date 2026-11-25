@@ -44,7 +44,7 @@ Bunga yang miring. Lingkaran fiksi yang memberi nama Blessing memakai bunga lima
 
 ## Wordmark
 
-Wordmark-nya adalah `Blessing` dalam Roboto 100 (300 di mode gelap, seperti semua teks tipis di sistem). `UI` mengikutinya, dalam label miring berwarna aksen palet saat ini, dan warnanya ikut berganti dengan palet. Wordmark dibangun dari token. Ia tidak dikirim sebagai gambar. Navigasi situs memakai `siteTitle` dan CSS, resep yang sama seperti di bawah.
+Wordmark-nya adalah `Blessing` dalam **Plus Jakarta Sans** tebal (`--bless-font-weight-bold`). `UI` (atau nama aplikasi seperti `ID`, `listen`, `watch`, `read`) mengikutinya dalam label persegi miring −10° berwarna tinta (`--bless-color-text` / `--bless-color-on-text`), agar warna aksen tetap khusus menandai pilihan aktif. Wordmark dibangun dari token—tidak dikirim sebagai gambar. Navigasi situs memakai `siteTitle` dan CSS dengan resep yang sama.
 
 <p class="brand-wordmark">Blessing <span class="brand-wordmark__ui"><span>UI</span></span></p>
 

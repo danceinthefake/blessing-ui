@@ -117,7 +117,7 @@ function close() {
     var(--bless-lean-transition);
 }
 .bless-banner__close:hover {
-  opacity: var(--bless-hover-opacity);
+  background: var(--bless-color-hover);
 }
 .bless-banner__close:focus-visible {
   outline: 2px solid currentColor;

@@ -256,7 +256,8 @@ defineExpose({ go, next: () => go(index.value + 1), prev: () => go(index.value -
   inset-inline-end: var(--bless-space-2);
 }
 .bless-carousel__arrow:hover:not([aria-disabled]) {
-  opacity: var(--bless-hover-opacity);
+  background: var(--bless-color-surface-2);
+  color: var(--bless-color-text);
 }
 /* aria-disabled, not disabled: a focused Next that reaches the end keeps focus */
 .bless-carousel__arrow[aria-disabled] {
@@ -287,7 +288,8 @@ defineExpose({ go, next: () => go(index.value + 1), prev: () => go(index.value -
     var(--bless-lean-transition);
 }
 .bless-carousel__pause:hover {
-  opacity: var(--bless-hover-opacity);
+  background: var(--bless-color-surface-2);
+  color: var(--bless-color-text);
 }
 .bless-carousel__pause[aria-pressed="true"] {
   background: var(--bless-color-accent);

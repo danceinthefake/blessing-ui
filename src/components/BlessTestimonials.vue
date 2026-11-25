@@ -113,10 +113,11 @@ const step = (d: number) => (at.value = (at.value + d + props.items.length) % pr
   flex-direction: column;
   gap: var(--bless-space-3);
   margin: 0;
-  padding: var(--bless-space-4);
-  border: var(--bless-border-width) solid var(--bless-color-border);
-  border-inline-start: 4px solid var(--bless-color-accent);
-  background: var(--bless-color-bg);
+  padding: var(--bless-space-6);
+  border-radius: var(--bless-radius);
+  border-inline-start: 3px solid var(--bless-color-accent);
+  background: var(--bless-color-surface);
+  box-shadow: var(--bless-shadow-sm);
 }
 .bless-quotes__stars {
   margin: 0;
@@ -126,8 +127,9 @@ const step = (d: number) => (at.value = (at.value + d + props.items.length) % pr
 .bless-quotes__quote {
   flex: 1;
   margin: 0;
+  font-family: var(--bless-font-serif);
   font-size: var(--bless-text-md);
-  line-height: 1.55;
+  line-height: 1.6;
 }
 .bless-quotes__quote::before {
   content: "“";
@@ -159,14 +161,19 @@ const step = (d: number) => (at.value = (at.value + d + props.items.length) % pr
 .bless-quotes__btn {
   inline-size: 2.2rem;
   block-size: 2.2rem;
+  border-radius: var(--bless-radius-pill);
   border: var(--bless-border-width) solid var(--bless-color-border);
-  background: var(--bless-color-bg);
+  background: var(--bless-color-surface);
   color: inherit;
   font-size: var(--bless-text-lg);
   cursor: pointer;
+  transition:
+    background-color var(--bless-duration-fast),
+    border-color var(--bless-duration-fast);
 }
 .bless-quotes__btn:hover {
   border-color: var(--bless-color-text);
+  background: var(--bless-color-hover);
 }
 .bless-quotes__btn:focus-visible {
   outline: 2px solid var(--bless-color-accent);

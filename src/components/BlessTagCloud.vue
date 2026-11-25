@@ -85,7 +85,8 @@ const size = (w: number) => {
     var(--bless-lean-transition);
 }
 .bless-cloud__tag:hover {
-  opacity: var(--bless-hover-opacity);
+  background: var(--bless-color-hover);
+  color: var(--bless-color-accent-text);
 }
 .bless-cloud__tag:focus-visible {
   outline: 2px solid var(--bless-color-accent);

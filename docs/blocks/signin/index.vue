@@ -76,9 +76,17 @@ watch(done, async (d) => {
 
 <style scoped>
 .signin {
-  max-width: 360px;
-  margin: 0 auto;
+  max-width: 380px;
+  margin: var(--bless-space-8) auto;
   padding: var(--bless-space-8) var(--bless-space-6);
+  border-radius: var(--bless-radius);
+  background: var(--bless-color-surface);
+  box-shadow: var(--bless-shadow-sm);
+}
+.signin :deep(h1) {
+  font-family: var(--bless-font-serif);
+  font-weight: 400;
+  letter-spacing: -0.015em;
 }
 .signin__lead {
   margin-bottom: var(--bless-space-6);

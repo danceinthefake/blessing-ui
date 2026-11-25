@@ -216,7 +216,7 @@ const { dismiss } = useToast();
     var(--bless-lean-transition);
 }
 .bless-toast__action:hover {
-  opacity: var(--bless-hover-opacity);
+  background: var(--bless-color-hover);
 }
 .bless-toast__close {
   flex: none;
@@ -235,7 +235,8 @@ const { dismiss } = useToast();
     var(--bless-lean-transition);
 }
 .bless-toast__close:hover {
-  opacity: var(--bless-hover-opacity);
+  background: var(--bless-color-hover);
+  color: var(--bless-color-text);
 }
 .bless-toast__action:focus-visible,
 .bless-toast__close:focus-visible {

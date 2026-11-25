@@ -91,7 +91,8 @@ const id = useId();
     var(--bless-lean-transition);
 }
 .bless-panel__toggle:hover {
-  opacity: var(--bless-hover-opacity);
+  background: var(--bless-color-hover);
+  color: var(--bless-color-text);
 }
 .bless-panel__toggle > span {
   display: inline-block;
