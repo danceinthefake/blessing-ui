@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased
+
+### Fixed
+
+- `BlessBadge`: the soft badges (accent, badge, danger, info) mix a quarter of the text color into their text, so it holds at least 5:1 on its own tint in every mood and palette. Before, it was 3.7:1 to 4.4:1.
+- `BlessBanner`: a `BlessButton` link inside a banner keeps its own text color. The banner's link rule made the outline button text the same color as its fill (1.1:1).
+- Docs: the scroll box of the `BlessInfiniteScroll` demo takes keyboard focus.
+
 ## 0.13.0 — 2026-11-25
 
 ### Changed

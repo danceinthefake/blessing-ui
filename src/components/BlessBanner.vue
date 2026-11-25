@@ -98,7 +98,8 @@ function close() {
 .bless-banner__action {
   flex: none;
 }
-.bless-banner a {
+/* a plain link takes the banner's text color; a BlessButton link keeps its own */
+.bless-banner a:not(.bless-button) {
   color: inherit;
 }
 .bless-banner__close {

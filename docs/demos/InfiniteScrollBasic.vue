@@ -1,6 +1,7 @@
 <template>
   <BlessMockup type="phone" style="width: 260px">
-    <div ref="box" style="height: 100%; overflow-y: auto">
+    <!-- a scroll box takes focus, so the keyboard can scroll it -->
+    <div ref="box" tabindex="0" role="region" aria-label="Episodes" style="height: 100%; overflow-y: auto">
       <BlessInfiniteScroll :root="box" done-text="that's all 52" @load="load">
         <BlessList>
           <BlessListItem v-for="i in items" :key="i">第{{ i }}話</BlessListItem>

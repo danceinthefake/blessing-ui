@@ -72,18 +72,20 @@ withDefaults(
   background: var(--bless-color-surface-2);
   color: var(--bless-color-text-muted);
 }
+/* the *-text tokens hold 4.5:1 on bg and surface, not on their own 13% wash: a quarter of the
+   ink pulls them to at least 5:1 in every mood and palette */
 .bless-badge--soft.bless-badge--accent,
 .bless-badge--soft.bless-badge--badge {
   background: color-mix(in srgb, var(--bless-color-accent) 13%, transparent);
-  color: var(--bless-color-accent-text);
+  color: color-mix(in srgb, var(--bless-color-text) 25%, var(--bless-color-accent-text));
 }
 .bless-badge--soft.bless-badge--danger {
   background: color-mix(in srgb, var(--bless-color-danger) 13%, transparent);
-  color: var(--bless-color-danger-text);
+  color: color-mix(in srgb, var(--bless-color-text) 25%, var(--bless-color-danger-text));
 }
 .bless-badge--soft.bless-badge--info {
   background: color-mix(in srgb, var(--bless-color-info) 13%, transparent);
-  color: var(--bless-color-info-text);
+  color: color-mix(in srgb, var(--bless-color-text) 25%, var(--bless-color-info-text));
 }
 .bless-badge--soft.bless-badge--warning {
   background: color-mix(in srgb, var(--bless-color-warning) 22%, transparent);
