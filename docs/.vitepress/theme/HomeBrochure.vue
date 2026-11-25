@@ -90,7 +90,7 @@
           <div class="hb__row">
             <BlessButton>{{ t.save }}</BlessButton>
             <BlessButton variant="outline">{{ t.cancel }}</BlessButton>
-            <BlessBadge>{{ t.newBadge }}</BlessBadge>
+            <BlessBadge color="accent">{{ t.newBadge }}</BlessBadge>
           </div>
           <BlessInput :aria-label="t.field" placeholder="blessing software" />
           <div class="hb__row">
@@ -232,7 +232,7 @@ const en = {
   kicker: "Vue 3 component library",
   title: ["Warm paper, quiet ink,", "told like a story."],
   plate: `${count} components · 0 dependencies · MIT`,
-  lead: "Light and space part things. The accent shows what you chose. Controls lean when you engage with them, and three moods carry the time of day.",
+  lead: "Light and space part things. The accent shows what you chose. Controls rise softly on attention, tags carry a crisp −10° lean, and three moods carry the time of day.",
   start: "Get started",
   browse: "Browse components",
   voiceName: "Megumi",
@@ -245,7 +245,7 @@ const en = {
   moodTitle: "Paper, ink, and moods",
   flatHeading: "Calm at rest, expressive on attention",
   flatText:
-    "Warm paper replaces flat grey, corners are soft, and soft ink-tinted shadows lift floating surfaces. A control leans −10° when you point at it, and fills with the accent only when you choose it.",
+    "Warm paper replaces flat grey, corners are soft, and soft ink-tinted shadows lift floating surfaces. Controls stay upright and lift cleanly on hover, rectangular tags carry the −10° lean, and the accent fills only what you choose.",
   save: "Save",
   cancel: "Cancel",
   newBadge: "New",
@@ -284,7 +284,7 @@ const idn: typeof en = {
   kicker: "Pustaka komponen Vue 3",
   title: ["Kertas hangat, tinta tenang,", "diceritakan seperti kisah."],
   plate: `${count} komponen · 0 dependensi · MIT`,
-  lead: "Cahaya dan ruang memisahkan segalanya. Warna aksen menandai pilihan Anda. Kontrol miring saat diperhatikan, dan tiga suasana membawa waktu dalam sehari.",
+  lead: "Cahaya dan ruang memisahkan segalanya. Warna aksen menandai pilihan Anda. Kontrol terangkat lembut saat diperhatikan, label persegi membawa kemiringan −10°, dan tiga suasana membawa waktu dalam sehari.",
   start: "Mulai",
   browse: "Lihat komponen",
   voiceName: "Megumi",
@@ -297,7 +297,7 @@ const idn: typeof en = {
   moodTitle: "Kertas, tinta, dan suasana",
   flatHeading: "Tenang saat diam, hidup saat diperhatikan",
   flatText:
-    "Kertas hangat menggantikan abu-abu datar, sudutnya lembut, dan bayangan lembut bernuansa tinta mengangkat permukaan melayang. Kontrol miring −10° saat disentuh, dan terisi aksen hanya saat Anda memilihnya.",
+    "Kertas hangat menggantikan abu-abu datar, sudutnya lembut, dan bayangan lembut bernuansa tinta mengangkat permukaan melayang. Kontrol berdiri tegak dan terangkat bersih saat di-hover, label persegi membawa kemiringan −10°, dan aksen hanya mengisi yang Anda pilih.",
   save: "Simpan",
   cancel: "Batal",
   newBadge: "Baru",

@@ -219,14 +219,22 @@ html:not(.dark) .dark-only {
   display: none !important;
 }
 .nav-mood {
-  margin-left: 12px;
+  margin-left: 8px;
+  flex-wrap: nowrap;
+  flex-shrink: 0;
 }
 .nav-palette {
-  margin-left: 10px;
+  margin-left: 8px;
+  flex-shrink: 0;
 }
 @media (max-width: 959px) {
   .VPNavBar .nav-mood,
   .VPNavBar .nav-palette {
+    display: none;
+  }
+}
+@media (max-width: 1120px) {
+  .VPNavBar.has-sidebar .nav-palette {
     display: none;
   }
 }
@@ -265,7 +273,8 @@ html .VPButton.alt.alt:active {
   transition: var(--bless-lean-transition);
 }
 .nav-calm {
-  margin-left: 8px;
+  margin-left: 6px;
+  flex-shrink: 0;
 }
 @media (max-width: 959px) {
   .VPNavBar .nav-calm {
