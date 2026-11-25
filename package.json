@@ -1,6 +1,6 @@
 {
   "name": "blessing-ui",
-  "version": "0.12.1",
+  "version": "0.13.0",
   "description": "Blessing UI — Warm paper, quiet ink, told like a story. Vue 3 component library with three moods and six palettes.",
   "keywords": [
     "components",

@@ -1,8 +1,10 @@
 # Changelog
 
-## Unreleased
+## 0.13.0 — 2026-11-25
 
 ### Changed
+
+- Full Unified v3 sweep across the library, blocks, and docs: scoped global `--bless-skew` on attention strictly to `.bless-lean` plates so pills, checkboxes, sliders, and underline fields stay upright; replaced all 35 `--bless-hover-opacity` rules with AA-safe hover fills or lifts; aligned all 10 underline form fields to flat `0px` hairline borders; brought `--bless-font-serif` and borderless surface elevation to editorial components (`BlessArticleHeader`, `BlessPullQuote`, `BlessSection`, `BlessTestimonials`, `BlessKnowledgeArticle`, `BlessEmpty`) and showcase blocks; refreshed `og.png`, hero captures, all 48 block previews, and EN/ID guides (`fonts`, `conventions`, `dark-mode`, `tokens`, `rtl`, `credits`, `brand`).
 
 - Revamp 2026-11 Revision 2 (Unified v3 · Lively), step 3: upgraded VitePress docs theme (`HomeBrochure`, `Eyecatch`, `custom.css`, `config.ts`) and English/Indonesian design guides to the Unified v3 sky-ribbon hero with notched neutral sakura petals, outline role chips, quiet italic watermarks, Newsreader + Plus Jakarta Sans webfonts, ink `-10deg` `UI` navbar tag, un-skewed AA buttons, and `BlessNovelBox` with its neutral 5-petal emblem medallion.
 - Revamp 2026-11 Revision 2 (Unified v3 · Lively), step 2: core component polish — `BlessButton` is now an un-skewed tactile pill (`30px` / `36px` / `44px`) with AA-safe tone-shift + lift hover (no `0.6` fade or pill skew); `BlessInput` uses a flat `0px`-radius manuscript underline; `BlessCard` defaults to borderless elevated `surface`; `BlessBadge` defaults to `variant="soft"` tinted wash pills (`solid` and `outline` opt-in); `BlessTabs`, `BlessSwitch`, and `BlessChip` retire hover opacity washout and pill skew (`BlessChip` adds `variant="outline"` role chips); and `BlessNovelBox` upgrades to a frosted translucent frame with `--bless-font-serif` dialogue and an optional circular portrait medallion (`avatar`, `emblem`, or `#portrait` slot).

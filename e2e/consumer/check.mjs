@@ -65,7 +65,8 @@ if (oneCssText.includes(".bless-datatable")) {
   console.error("✗ single-component build pulled unrelated component CSS");
   process.exit(1);
 }
-const LIMIT_CSS_ONE = 4000;
+// tokens.css carries three moods (Daylight, Golden hour, Night), sky/light gradients, and 6 palettes
+const LIMIT_CSS_ONE = 4500;
 if (oneCss > LIMIT_CSS_ONE) {
   console.error(
     `✗ single-component CSS is ${oneCss} B gz (> ${LIMIT_CSS_ONE}) — per-component CSS regressed`,
