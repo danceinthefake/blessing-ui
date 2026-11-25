@@ -44,7 +44,7 @@ defineProps<{
   font-weight: var(--bless-font-weight-bold);
   line-height: 1;
   text-align: center;
-  text-transform: uppercase;
+  text-transform: var(--bless-label-case);
   transform: skewX(var(--bless-skew));
 }
 .bless-kbd__key > span {

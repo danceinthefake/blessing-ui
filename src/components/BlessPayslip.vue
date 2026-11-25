@@ -150,7 +150,7 @@ const deducted = computed(() => sum(props.deductions));
   border: 0;
   font-size: var(--bless-text-xl);
   letter-spacing: var(--bless-tracking-wide);
-  text-transform: uppercase;
+  text-transform: var(--bless-label-case);
 }
 .bless-payslip__company {
   margin: 0;
@@ -191,7 +191,7 @@ const deducted = computed(() => sum(props.deductions));
   font-weight: var(--bless-font-weight-bold);
   letter-spacing: var(--bless-tracking-wide);
   text-align: start;
-  text-transform: uppercase;
+  text-transform: var(--bless-label-case);
 }
 .bless-payslip__table th,
 .bless-payslip__table td {

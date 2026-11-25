@@ -71,6 +71,7 @@ function onClick(e: MouseEvent) {
 <style>
 .bless-button {
   --_c: var(--bless-color-text);
+  --bless-radius-plate: var(--bless-radius-pill); /* a button is round (revamp 2026-11) */
   cursor: pointer;
   border: var(--bless-border-width) solid transparent;
   font-family: var(--bless-font-sans);
@@ -78,7 +79,7 @@ function onClick(e: MouseEvent) {
   letter-spacing: var(--bless-tracking-wide);
   line-height: var(--bless-leading-none);
   text-decoration: none;
-  text-transform: uppercase;
+  text-transform: var(--bless-label-case);
   transition:
     opacity var(--bless-duration-slow) var(--bless-ease-in-out),
     var(--bless-lean-transition);

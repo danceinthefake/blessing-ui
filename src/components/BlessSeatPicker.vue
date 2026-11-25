@@ -191,7 +191,7 @@ function move(e: KeyboardEvent, r: number, c: number) {
   font-weight: var(--bless-font-weight-bold);
   letter-spacing: var(--bless-tracking-wide);
   text-align: center;
-  text-transform: uppercase;
+  text-transform: var(--bless-label-case);
   color: var(--bless-color-text);
 }
 .bless-seats__map {

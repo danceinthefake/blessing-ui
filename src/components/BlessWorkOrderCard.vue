@@ -142,7 +142,7 @@ const MARK: Record<BlessWorkOrderState, string> = {
 .bless-workorder__state {
   font-size: var(--bless-text-xs);
   font-weight: var(--bless-font-weight-bold);
-  text-transform: uppercase;
+  text-transform: var(--bless-label-case);
 }
 .is-blocked .bless-workorder__state {
   color: var(--bless-color-danger-text);

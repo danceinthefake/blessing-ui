@@ -94,7 +94,7 @@ onMounted(() => {
   font-size: var(--bless-text-sm);
   font-weight: var(--bless-font-weight-bold);
   letter-spacing: 0.4em;
-  text-transform: uppercase;
+  text-transform: var(--bless-label-case);
 }
 .bless-eyecatch__title {
   margin: var(--bless-space-2) 0 0;

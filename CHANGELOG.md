@@ -2,7 +2,15 @@
 
 ## Unreleased
 
+### Changed
+
+- The revamp of 2026-11, step 1: the tokens (DESIGN-LANGUAGE.md, "Revamp 2026-11"). The colors are warm paper and a violet-black ink, measured from the frames of the anime. Corners are soft, and buttons and the round parts (avatars, switches, chips) are round. Floating things cast a soft shadow tinted with the ink, in place of the hard accent plate. The type scale is larger, labels use weight 600 in sentence case, and the tracking is gone. To get the old labels back, set `--bless-label-case: uppercase`. To get square plates back, set the four radius tokens to 0.
+- The dark theme is now Night, a violet night paper with a faint top edge on raised surfaces.
+
 ### Added
+
+- A third mood, Golden hour: `data-theme="golden"`, `useTheme().set("golden")`, and a fourth button in `BlessThemeToggle mode="group"`. The Indonesian pack names it "Senja".
+- Tokens: `--bless-radius-pill`, `--bless-font-weight-medium`, `--bless-shadow-sm`, `--bless-edge`, `--bless-label-case`, and the abstract art of each mood, `--bless-light` (a light leak) and `--bless-sky` (a sky gradient).
 
 - `BlessGrid` has `fill`. It keeps the empty columns of a row (`auto-fill`), so one card in a list keeps the width of a column. Before, the one card stretched over the whole row. Found by blessing.id.
 

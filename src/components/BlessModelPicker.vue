@@ -154,7 +154,7 @@ function pick(id: unknown) {
   padding: 0 var(--bless-space-1);
   border: var(--bless-border-width) solid currentColor;
   font-size: var(--bless-text-2xs, 10px);
-  text-transform: uppercase;
+  text-transform: var(--bless-label-case);
   letter-spacing: var(--bless-tracking-wide);
 }
 .bless-modelpick__desc {

@@ -2,6 +2,8 @@
 
 Status: **implemented.** All seven build steps below are in the library (September 2026). Decisions still open are listed at the end.
 
+A revamp is decided but not built yet (2026-11-25). See [Revamp 2026-11](#revamp-2026-11) at the end. Until it is built, the rest of this file describes the library as it is.
+
 Blessing UI takes the six philosophical threads of _Saekano_ as its design rules. At rest a control is calm and upright. A look at it makes it lean. A choice fills it with color. A group fuses it with its neighbors. Here the threads are abstract principles. They are not tied to any character, palette, or color.
 
 The user-facing version is the [Design language](https://danceinthefake.github.io/blessing-ui/design/) page of the docs. This file keeps the build record.
@@ -98,3 +100,29 @@ Motion follows the three layers of the series. The base is soft: an appearance r
 - [x] Does "color means chosen" apply to main buttons? **Yes.** Main buttons are solid ink at rest and take the accent when pressed (see Buttons).
 - [x] Which flower to develop? **The leaning flower** is the primary mark. The ink version stays for small and one-color use.
 - [x] Which threads to weight differently? **Yes.** See Weighting.
+
+<a id="revamp-2026-11"></a>
+## Revamp 2026-11
+
+Status: **decided, not built.** The owner found that the library looks generic and not modern. The exploration is in a private repository of the owner. It has the reference frames from the anime, the measured palette, and two mocks.
+
+The six rules are not the cause. The cause is the visual layer. It has tracked uppercase labels everywhere and the thin eyecatch band on each page. It also has a small scale, Unicode characters as icons, and flat grey surfaces. The frames of the anime show the other way: light and space in place of lines, warm paper in place of grey, close framing, one strong color in each frame, and the time of day as the mood.
+
+Decisions of the owner (2026-11-25):
+
+1. **Soft corners.** Plates, cards, and fields get a soft radius, and buttons and chips are round. This replaces "one shape: the upright square plate" in the Weighting table and in the principles of DESIGN.md. The −10° lean stays, as the reaction to hover, focus, and press.
+2. **Three moods.** The time of day replaces light and dark. Daylight is the light theme (paper `#EDE6E1`, ink `#262228`). Night is the dark theme. Golden hour is a third, warm theme. The six palettes stay, and each one gives the accent inside each mood. `data-theme="light"` and `"dark"` keep working.
+3. **Type.** Text uses weights 400 to 650, in sentence case. The rule "700 uppercase tracked for the UI" goes. Weight 100 stays only for the one overflow word of a screen.
+4. **The visual-novel text box** becomes a component of the library (gap log of blessing.id).
+5. **What stays.** Care over spectacle, color means chosen, and the lean on attention stay. Write on the page, fuse when grouped, and one overflow on a screen stay. The leaning flower mark stays.
+
+6. **Soft shadows replace the plate motif** (decided 2026-11-25). The plate put an accent line behind each floating thing, so a menu or a tooltip showed color with no choice. That breaks color means chosen. A floating thing now has a soft, wide shadow tinted with the warm ink, not black. In Night a shadow does not show on a dark page, so a raised surface gets a lighter fill and a faint top edge. The accent stays for the focus ring and for what the person chose.
+7. **The docs home is revamped too** (decided 2026-11-25). The eyecatch band goes from the docs home and from the strip over each page. A hero frame with neutral art of our own replaces it.
+8. **The neutral art is abstract** (decided 2026-11-25). It is drawn from the measured palette of each mood: sky gradients, light leaks, and petals. It has no character and no frame of the anime.
+
+Build order:
+
+1. [x] Tokens: paper and ink, the three moods, the radii, the type scale, and the shadows (2026-11-25).
+2. [ ] Drawn icons, and the visual-novel text box.
+3. [ ] The components and the docs, with neutral art of our own. The docs home gets a hero frame in place of the eyecatch band.
+4. [ ] The apps of blessing.id.

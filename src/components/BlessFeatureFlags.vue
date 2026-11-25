@@ -121,7 +121,7 @@ function set(key: string, on: boolean) {
   padding: 0 var(--bless-space-2);
   border: var(--bless-border-width) solid var(--bless-color-border);
   font-size: var(--bless-text-xs);
-  text-transform: uppercase;
+  text-transform: var(--bless-label-case);
   letter-spacing: var(--bless-tracking-wide);
 }
 .bless-flags__desc {

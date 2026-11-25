@@ -110,7 +110,7 @@ const label = computed(() =>
   min-width: 3.5em;
   font-weight: var(--bless-font-weight-bold);
   letter-spacing: var(--bless-tracking-wide);
-  text-transform: uppercase;
+  text-transform: var(--bless-label-case);
 }
 .bless-pwmeter__rules {
   margin: var(--bless-space-2) 0 0;

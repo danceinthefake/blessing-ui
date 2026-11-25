@@ -80,7 +80,7 @@ withDefaults(
   font-weight: var(--bless-font-weight-bold);
   letter-spacing: var(--bless-tracking-wide);
   line-height: var(--bless-leading-none);
-  text-transform: uppercase;
+  text-transform: var(--bless-label-case);
 }
 .bless-card__media {
   line-height: 0;

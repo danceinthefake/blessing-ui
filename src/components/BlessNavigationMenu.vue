@@ -165,7 +165,7 @@ function onKey(e: KeyboardEvent, i: number, item: BlessNavMenuItem) {
   font-size: var(--bless-text-sm);
   font-weight: var(--bless-font-weight-bold);
   letter-spacing: var(--bless-tracking-wide);
-  text-transform: uppercase;
+  text-transform: var(--bless-label-case);
   text-decoration: none;
   cursor: pointer;
   transition:

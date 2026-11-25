@@ -218,7 +218,7 @@ const MARK: Record<BlessInvoiceStatus, string> = { draft: "○", sent: "→", pa
   border: 0;
   font-size: var(--bless-text-xl);
   letter-spacing: var(--bless-tracking-wide);
-  text-transform: uppercase;
+  text-transform: var(--bless-label-case);
 }
 .bless-invoice__number {
   font-family: var(--bless-font-mono, ui-monospace, monospace);
@@ -227,7 +227,7 @@ const MARK: Record<BlessInvoiceStatus, string> = { draft: "○", sent: "→", pa
   padding: var(--bless-space-1) var(--bless-space-3);
   border: 2px solid currentColor;
   font-weight: var(--bless-font-weight-bold);
-  text-transform: uppercase;
+  text-transform: var(--bless-label-case);
 }
 .is-overdue .bless-invoice__status {
   color: var(--bless-color-danger-text);
@@ -249,7 +249,7 @@ const MARK: Record<BlessInvoiceStatus, string> = { draft: "○", sent: "→", pa
   font-size: var(--bless-text-xs);
   font-weight: var(--bless-font-weight-bold);
   letter-spacing: var(--bless-tracking-wide);
-  text-transform: uppercase;
+  text-transform: var(--bless-label-case);
   color: var(--bless-color-text-muted);
 }
 .bless-invoice__parties p {
@@ -290,7 +290,7 @@ const MARK: Record<BlessInvoiceStatus, string> = { draft: "○", sent: "→", pa
 .bless-invoice__table thead th {
   border-block-end: 2px solid var(--bless-color-text);
   font-size: var(--bless-text-xs);
-  text-transform: uppercase;
+  text-transform: var(--bless-label-case);
 }
 .bless-invoice__table :is(th, td):first-child {
   text-align: start;

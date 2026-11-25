@@ -1,7 +1,8 @@
 import { computed, ref, watchEffect } from "vue";
 import { readStore, removeStore, writeStore } from "./storage";
 
-export type BlessTheme = "light" | "dark" | "system";
+/** the moods (revamp 2026-11): light is daylight, dark is night, golden is golden hour */
+export type BlessTheme = "light" | "dark" | "golden" | "system";
 /** accent family; undefined = Megumi, the default */
 export type BlessPalette = "megumi" | "utaha" | "izumi" | "michiru" | "eriri" | "tomoya";
 export const blessPalettes: { name: BlessPalette; color: string }[] = [
@@ -28,7 +29,8 @@ function boot() {
   // toggles' aria-pressed/title match the HTML), still before first paint on a client-only app.
   queueMicrotask(() => {
     const saved = readStore(KEY) as BlessTheme | null;
-    if (saved === "light" || saved === "dark" || saved === "system") theme.value = saved;
+    if (saved === "light" || saved === "dark" || saved === "golden" || saved === "system")
+      theme.value = saved;
     const p = readStore(PKEY);
     if (p && blessPalettes.some((x) => x.name === p)) palette.value = p as BlessPalette;
     loaded = true;
@@ -55,7 +57,7 @@ function boot() {
   });
 }
 
-/** light | dark | system + palette; persisted, applied as data-theme / data-palette on <html> */
+/** light | dark | golden | system + palette; persisted, applied as data-theme / data-palette on <html> */
 export function useTheme() {
   boot();
   const isDark = computed(

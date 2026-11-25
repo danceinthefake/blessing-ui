@@ -201,7 +201,7 @@ const MARK: Record<BlessDecision, string> = { approved: "✓", rejected: "✕", 
 .bless-approval__state {
   font-size: var(--bless-text-xs);
   font-weight: var(--bless-font-weight-bold);
-  text-transform: uppercase;
+  text-transform: var(--bless-label-case);
   letter-spacing: var(--bless-tracking-wide);
 }
 .bless-approval__step.is-rejected .bless-approval__head .bless-approval__state {

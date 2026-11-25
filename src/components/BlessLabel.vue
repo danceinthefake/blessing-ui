@@ -29,7 +29,7 @@ defineProps<{
   font-weight: var(--bless-font-weight-bold);
   letter-spacing: var(--bless-tracking-wide);
   line-height: var(--bless-leading-tight);
-  text-transform: uppercase;
+  text-transform: var(--bless-label-case);
   color: var(--bless-color-text);
   cursor: default;
 }

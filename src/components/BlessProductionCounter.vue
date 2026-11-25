@@ -132,7 +132,7 @@ const share = computed(() => (props.target ? Math.min(1, good.value / props.targ
 .bless-prodcount__label {
   font-size: var(--bless-text-sm);
   font-weight: var(--bless-font-weight-bold);
-  text-transform: uppercase;
+  text-transform: var(--bless-label-case);
 }
 .bless-prodcount__target {
   font-size: var(--bless-text-sm);

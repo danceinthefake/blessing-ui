@@ -123,7 +123,7 @@ function onKey(e: KeyboardEvent) {
   font-weight: var(--bless-font-weight-bold);
   letter-spacing: var(--bless-tracking-wide);
   line-height: var(--bless-leading-none);
-  text-transform: uppercase;
+  text-transform: var(--bless-label-case);
   color: var(--bless-color-text-muted);
   cursor: pointer;
   transition:

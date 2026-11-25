@@ -70,7 +70,7 @@ const id = useId();
   font-size: var(--bless-text-xs);
   font-weight: var(--bless-font-weight-bold);
   letter-spacing: var(--bless-tracking-wider);
-  text-transform: uppercase;
+  text-transform: var(--bless-label-case);
 }
 .bless-panel__actions {
   display: inline-flex;

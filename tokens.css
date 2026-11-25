@@ -1,16 +1,18 @@
 /* Blessing UI — design tokens
- * Derived from saenai.tv visual language (grey UI + pink-red accent, skew, thin watermark type).
+ * Revamp 2026-11 (DESIGN-LANGUAGE.md): paper and ink measured from the frames of the anime, three
+ * moods (daylight, night, golden hour), soft corners, sentence-case type, soft ink-tinted shadows.
  * Consume: `@import "blessing-ui/tokens.css"` then use var(--bless-*).
  * Tailwind v4: `@theme { --color-text: var(--bless-color-text); ... }` maps these in.
  */
 :root {
   /* ---- colour ---- */
-  --bless-color-text: #3d3e3f;
-  --bless-color-text-muted: #5d6a74; /* 5.0:1 on bg, 4.5:1 on surface */
-  --bless-color-bg: #f5f5f6; /* soft white: the glare off pure white */
-  --bless-color-surface: #e7e8ea;
-  --bless-color-surface-2: #e4e5e7;
-  --bless-color-watermark: #dcdfe3;
+  /* daylight: warm paper and a violet-black ink, the average of every set of frames */
+  --bless-color-text: #262228;
+  --bless-color-text-muted: #5e565c; /* 5.9:1 on bg, 6.6:1 on surface */
+  --bless-color-bg: #ede6e1; /* paper: warm, not grey and not pure white */
+  --bless-color-surface: #f7f3ef; /* a sheet on the paper: lighter, so it reads as raised */
+  --bless-color-surface-2: #e4dcd6; /* a well below the paper */
+  --bless-color-watermark: #ddd3cc;
 
   --bless-color-accent: #cc466a; /* fills — Megumi's petal (#e85078) deepened to carry white at 4.5:1; the default palette */
   --bless-color-accent-soft: #f5a0b8; /* highlights, hover fills */
@@ -26,11 +28,16 @@
 
   --bless-color-on-accent: #fff;
   --bless-color-on-text: var(--bless-color-bg); /* text on a --bless-color-text fill */
-  --bless-color-on-light: #1a1b1d; /* text on warning / success fills (too pale for white) */
-  --bless-color-border: #d2d5d9; /* 1.4:1 on bg — the same step as dark mode's border, so edges read in both */
+  --bless-color-on-light: #262228; /* text on warning / success fills (too pale for white) */
+  --bless-color-border: #d8cdc6; /* 1.3:1 on bg: light and space part things, the line only helps */
   --bless-color-rule: var(--bless-color-text);
-  --bless-color-backdrop: rgb(0 0 0 / 0.6); /* dialog / sheet scrim */
-  --bless-color-media-bg: #1a1b1d; /* lightbox panel, always dark */
+  --bless-color-backdrop: rgb(38 34 40 / 0.55); /* dialog / sheet scrim, tinted with the ink */
+  --bless-color-media-bg: #1c1a22; /* lightbox panel, always dark: the night paper */
+  /* the light of the mood: a soft light leak for a page or a hero (abstract art, no image) */
+  --bless-light:
+    radial-gradient(120% 90% at 0% 0%, rgb(255 255 255 / 0.85) 0%, transparent 55%),
+    radial-gradient(90% 70% at 100% 0%, #dce8f4 0%, transparent 60%);
+  --bless-sky: linear-gradient(180deg, #b9d3ee 0%, #dce8f4 55%, #f3ede8 100%); /* abstract hero art */
 
   /* categorical chart series, all ≥3:1 on bg and surface */
   --bless-color-chart-1: var(--bless-color-accent);
@@ -48,25 +55,28 @@
   --bless-font-weight-thin: 100;
   --bless-font-weight-light: 300;
   --bless-font-weight-normal: 400;
-  --bless-font-weight-bold: 700;
+  --bless-font-weight-medium: 500;
+  --bless-font-weight-bold: 600; /* the label weight: 600, not 700 (revamp 2026-11) */
 
-  /* fluid: min @320px → max @1300px */
-  --bless-text-2xs: clamp(0.5rem, 0.45rem + 0.25vw, 0.5625rem); /* 8–9px   */
-  --bless-text-xs: clamp(0.5625rem, 0.5rem + 0.3vw, 0.625rem); /* 9–10px  */
-  --bless-text-sm: clamp(0.625rem, 0.55rem + 0.4vw, 0.75rem); /* 10–12px */
-  --bless-text-md: clamp(0.75rem, 0.65rem + 0.5vw, 0.875rem); /* 12–14px */
-  --bless-text-lg: clamp(0.875rem, 0.7rem + 0.9vw, 1.25rem); /* 14–20px */
-  --bless-text-xl: clamp(1.25rem, 0.9rem + 1.8vw, 1.75rem); /* 20–28px */
-  --bless-text-display: clamp(3rem, 1rem + 10vw, 9.4375rem); /* 48–151px watermark */
-  --bless-text-headline: clamp(2.25rem, 1.2rem + 4vw, 4.5625rem); /* 36–73px hanging headline */
+  /* fluid: min @320px → max @1300px. Larger than before (revamp 2026-11): body text is 15–16px */
+  --bless-text-2xs: 0.6875rem; /* 11px */
+  --bless-text-xs: 0.75rem; /* 12px */
+  --bless-text-sm: clamp(0.8125rem, 0.79rem + 0.1vw, 0.875rem); /* 13–14px */
+  --bless-text-md: clamp(0.9375rem, 0.92rem + 0.1vw, 1rem); /* 15–16px */
+  --bless-text-lg: clamp(1.0625rem, 0.98rem + 0.4vw, 1.25rem); /* 17–20px */
+  --bless-text-xl: clamp(1.375rem, 1.15rem + 1vw, 1.75rem); /* 22–28px */
+  --bless-text-display: clamp(3rem, 1rem + 10vw, 9.4375rem); /* 48–151px: the one overflow word */
+  --bless-text-headline: clamp(2rem, 1.3rem + 3vw, 3.5rem); /* 32–56px headline */
 
   --bless-leading-none: 1;
   --bless-leading-tight: 1.25;
   --bless-leading-normal: 1.6; /* JP body needs room; site's 1 was too tight */
-  --bless-tracking-tight: -0.5px;
-  --bless-tracking-normal: 0.5px;
-  --bless-tracking-wide: 1px;
-  --bless-tracking-wider: 2px;
+  /* sentence case needs no tracking; headings close up a little */
+  --bless-tracking-tight: -0.02em;
+  --bless-tracking-normal: 0;
+  --bless-tracking-wide: 0;
+  --bless-tracking-wider: 0.02em;
+  --bless-label-case: none; /* labels are sentence case; set uppercase to get the old labels back */
 
   /* ---- spacing (4px base) ---- */
   --bless-space-1: 0.25rem;
@@ -79,17 +89,17 @@
   --bless-space-16: 4rem;
 
   /* ---- shape ----
-   * One shape: the upright plate with a whole, square outline — buttons, tabs, fields, cards, and the
-   * round-by-nature parts too (avatars, switches, chips, bubbles, fabs, thumbs, count dots). The lean
-   * (--bless-lean) carries the identity, not the corners; the teardrop lives in the mark.
-   * --bless-radius / --bless-radius-plate / --bless-petal are 0 and override points: set --bless-petal
-   * (e.g. 8px) to round the two opposite corners of the round-by-nature parts.
+   * Soft corners (revamp 2026-11): the anime has no hard corner. Boxes and cards are soft, plates and
+   * fields a little softer, and buttons and the round-by-nature parts (avatars, switches, chips,
+   * bubbles, fabs, thumbs, count dots) are round. The lean (--bless-lean) still carries the identity.
+   * Set all four to 0 to get the square plates back.
    */
-  --bless-radius: 0px; /* unskewed boxes — override point, 0 by design */
-  --bless-radius-plate: 0; /* skewed plates — override point, 0 by design */
-  --bless-petal: 0px; /* override point, 0 by design */
-  --bless-radius-petal: 0 var(--bless-petal) 0 var(--bless-petal); /* two opposite corners, square by default */
-  --bless-radius-petal-lg: 0 calc(var(--bless-petal) * 1.5) 0 calc(var(--bless-petal) * 1.5); /* bubbles */
+  --bless-radius: 12px; /* unskewed boxes: cards, panels, popovers */
+  --bless-radius-plate: 8px; /* skewed plates: fields, tooltips, toggles */
+  --bless-radius-pill: 999px; /* buttons and chips */
+  --bless-petal: 999px; /* the round-by-nature parts */
+  --bless-radius-petal: var(--bless-petal);
+  --bless-radius-petal-lg: 18px; /* bubbles: soft, not a pill */
   --bless-lean: -10deg; /* the house angle — what a plate leans to when it gets attention */
   /* append to a control's own transition list so its lean still animates */
   --bless-lean-transition:
@@ -101,14 +111,17 @@
   --bless-dash-width: 10px; /* separator dash */
 
   /* ---- elevation ----
-   * Nothing blurs at rest. A floating thing sits on a plate: a hard offset slab in the accent, the same
-   * motif as the QR frame and the mark's plates. Modal and sheet rely on the scrim instead.
+   * Soft light (revamp 2026-11). A floating thing casts a soft, wide shadow tinted with the ink, not
+   * black and not the accent: color means chosen, and a menu is not a choice. In night a shadow does
+   * not show, so a raised surface also gets a faint top edge (--bless-edge).
    */
-  --bless-plate-offset: 1px;
   --bless-shadow-none: none;
-  --bless-shadow-plate: var(--bless-plate-offset) var(--bless-plate-offset) 0
-    var(--bless-color-accent);
-  --bless-shadow-md: var(--bless-shadow-plate); /* alias kept for consumers; same plate */
+  --bless-shadow-sm: 0 1px 2px rgb(38 34 40 / 0.06), 0 2px 6px -2px rgb(38 34 40 / 0.08);
+  --bless-shadow-plate:
+    0 1px 2px rgb(38 34 40 / 0.06), 0 12px 32px -12px rgb(38 34 40 / 0.28), var(--bless-edge);
+  --bless-shadow-md: var(--bless-shadow-plate); /* alias kept for consumers */
+  --bless-edge: inset 0 0 0 0 transparent; /* a faint top highlight; only night sets it */
+  --bless-plate-offset: 0px; /* kept for consumers; the plate is soft now */
 
   /* ---- motion ---- */
   --bless-duration-fast: 0.1s;
@@ -151,22 +164,30 @@
   --bless-z-modal: 1000;
 }
 
-/* ---- dark theme ----
+/* ---- night (the dark theme) ----
  * Follows the OS unless data-theme is set on <html>:
- *   <html data-theme="dark"> forces dark, data-theme="light" forces light.
- * Accent family is unchanged; greys invert; shadows deepen.
+ *   <html data-theme="dark"> forces night, data-theme="light" forces daylight, and
+ *   data-theme="golden" gives golden hour (below).
+ * Accent family is unchanged; the paper turns to a violet night; a raised surface gets a top edge.
  */
-:root:not([data-theme="light"]) {
+:root:not([data-theme="light"], [data-theme="golden"]) {
   @media (prefers-color-scheme: dark) {
-    --bless-color-text: #e8e9ea;
-    --bless-color-text-muted: #9aa4ad;
-    --bless-color-bg: #17181a;
-    --bless-color-surface: #232529;
-    --bless-color-surface-2: #2a2d32;
-    --bless-color-watermark: #24262a;
-    --bless-color-border: #2f3237;
-    --bless-color-rule: #e8e9ea;
-    --bless-color-backdrop: rgb(0 0 0 / 0.75);
+    --bless-color-text: #eee8e4;
+    --bless-color-text-muted: #a79ca6;
+    --bless-color-bg: #1c1a22;
+    --bless-color-surface: #25222c;
+    --bless-color-surface-2: #16141b;
+    --bless-color-watermark: #29252f;
+    --bless-color-border: #3a3542;
+    --bless-color-rule: #eee8e4;
+    --bless-color-backdrop: rgb(10 8 14 / 0.72);
+    --bless-edge: inset 0 1px 0 rgb(255 255 255 / 0.06);
+    --bless-shadow-sm: 0 1px 2px rgb(0 0 0 / 0.3), var(--bless-edge);
+    --bless-shadow-plate: 0 1px 2px rgb(0 0 0 / 0.3), 0 16px 40px -12px rgb(0 0 0 / 0.6), var(--bless-edge);
+    --bless-light:
+      radial-gradient(120% 80% at 100% 0%, #2a3a66 0%, transparent 55%),
+      radial-gradient(70% 50% at 0% 0%, #3a2a44 0%, transparent 60%);
+    --bless-sky: linear-gradient(180deg, #121b38 0%, #2a3a66 60%, #3a2a44 100%);
     --bless-color-chart-2: #b57bff;
     --bless-color-chart-3: #ffa800;
     --bless-color-chart-4: #c0e722;
@@ -180,15 +201,22 @@
   }
 }
 :root[data-theme="dark"] {
-  --bless-color-text: #e8e9ea;
-  --bless-color-text-muted: #9aa4ad;
-  --bless-color-bg: #17181a;
-  --bless-color-surface: #232529;
-  --bless-color-surface-2: #2a2d32;
-  --bless-color-watermark: #24262a;
-  --bless-color-border: #2f3237;
-  --bless-color-rule: #e8e9ea;
-  --bless-color-backdrop: rgb(0 0 0 / 0.75);
+  --bless-color-text: #eee8e4;
+  --bless-color-text-muted: #a79ca6;
+  --bless-color-bg: #1c1a22;
+  --bless-color-surface: #25222c;
+  --bless-color-surface-2: #16141b;
+  --bless-color-watermark: #29252f;
+  --bless-color-border: #3a3542;
+  --bless-color-rule: #eee8e4;
+  --bless-color-backdrop: rgb(10 8 14 / 0.72);
+  --bless-edge: inset 0 1px 0 rgb(255 255 255 / 0.06);
+  --bless-shadow-sm: 0 1px 2px rgb(0 0 0 / 0.3), var(--bless-edge);
+  --bless-shadow-plate: 0 1px 2px rgb(0 0 0 / 0.3), 0 16px 40px -12px rgb(0 0 0 / 0.6), var(--bless-edge);
+  --bless-light:
+    radial-gradient(120% 80% at 100% 0%, #2a3a66 0%, transparent 55%),
+    radial-gradient(70% 50% at 0% 0%, #3a2a44 0%, transparent 60%);
+  --bless-sky: linear-gradient(180deg, #121b38 0%, #2a3a66 60%, #3a2a44 100%);
   --bless-color-chart-2: #b57bff;
   --bless-color-chart-3: #ffa800;
   --bless-color-chart-4: #c0e722;
@@ -198,6 +226,27 @@
   --bless-color-chart-5: #9aa4ad;
   --bless-font-weight-thin: 300;
   color-scheme: dark;
+}
+
+/* ---- golden hour ----
+ * The third mood: warm paper and an amber light leak, like the dusk scenes. A light theme, so the
+ * light accent cuts apply. <html data-theme="golden">.
+ */
+:root[data-theme="golden"] {
+  --bless-color-text: #2b2224;
+  --bless-color-text-muted: #6b5a55; /* 5.6:1 on bg, 6.4:1 on surface */
+  --bless-color-bg: #f1e6d8;
+  --bless-color-surface: #faf3ea;
+  --bless-color-surface-2: #e8dac8;
+  --bless-color-watermark: #e4d3bd;
+  --bless-color-border: #e0ccb5;
+  --bless-color-rule: #2b2224;
+  --bless-color-on-light: #2b2224;
+  --bless-light:
+    radial-gradient(110% 80% at 100% 0%, #ffe2b0 0%, transparent 55%),
+    radial-gradient(80% 60% at 0% 100%, #f2c9b8 0%, transparent 60%);
+  --bless-sky: linear-gradient(180deg, #f6c98f 0%, #f2c9b8 55%, #f1e6d8 100%);
+  color-scheme: light;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -392,7 +441,7 @@
  * After the palettes so it wins: the light-mode text cuts are too dark for dark greys, so every
  * palette lifts to ≥4.5:1 on dark surface.
  */
-:root:not([data-theme="light"]) {
+:root:not([data-theme="light"], [data-theme="golden"]) {
   @media (prefers-color-scheme: dark) {
     --bless-color-accent-text: #e95b80; /* Megumi, lifted a step for 4.5:1 on surface */
     &[data-palette="utaha"] {
@@ -438,8 +487,6 @@
  */
 [dir="rtl"] {
   --bless-lean: 10deg;
-  --bless-radius-petal: var(--bless-petal) 0 var(--bless-petal) 0; /* the lean flips, so do the petal's corners */
-  --bless-radius-petal-lg: calc(var(--bless-petal) * 1.5) 0 calc(var(--bless-petal) * 1.5) 0;
 }
 
 /* ---- lean on attention ----

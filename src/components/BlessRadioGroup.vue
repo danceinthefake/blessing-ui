@@ -63,7 +63,7 @@ provide(radioKey, {
   font-size: var(--bless-text-sm);
   font-weight: var(--bless-font-weight-bold);
   letter-spacing: var(--bless-tracking-wide);
-  text-transform: uppercase;
+  text-transform: var(--bless-label-case);
 }
 .bless-radio-group__items {
   display: flex;

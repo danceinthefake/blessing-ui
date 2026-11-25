@@ -2592,6 +2592,7 @@ export const labelsId: BlessLabelsFull = {
     light: "Terang",
     system: "Ikuti perangkat",
     dark: "Gelap",
+    golden: "Senja",
     darkTheme: "Tema gelap",
   },
   BlessToaster: { close: "Tutup" },

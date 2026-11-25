@@ -106,7 +106,7 @@ function setHi(e: Event) {
 }
 .bless-range__label {
   font-weight: var(--bless-font-weight-bold);
-  text-transform: uppercase;
+  text-transform: var(--bless-label-case);
 }
 .bless-range__value {
   color: var(--bless-color-text-muted);

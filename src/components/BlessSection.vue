@@ -62,7 +62,7 @@ withDefaults(
   font-weight: var(--bless-font-weight-bold);
   letter-spacing: var(--bless-tracking-wider);
   line-height: var(--bless-leading-none);
-  text-transform: uppercase;
+  text-transform: var(--bless-label-case);
   color: var(--bless-color-text);
 }
 /* band: a full-bleed strip (key visual, colour) the hanging headline hangs off */

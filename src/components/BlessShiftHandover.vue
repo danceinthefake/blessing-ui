@@ -201,7 +201,7 @@ const flip = (id: string, closed: boolean) =>
   min-inline-size: 4.5rem;
   font-size: var(--bless-text-xs);
   font-weight: var(--bless-font-weight-bold);
-  text-transform: uppercase;
+  text-transform: var(--bless-label-case);
 }
 .is-stop .bless-handover__level {
   color: var(--bless-color-danger-text);

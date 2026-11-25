@@ -177,7 +177,7 @@ const emit = defineEmits<{ select: [item: BlessBottomTab, e: Event] }>();
   font-size: var(--bless-text-2xs);
   font-weight: var(--bless-font-weight-bold);
   letter-spacing: var(--bless-tracking-wide);
-  text-transform: uppercase;
+  text-transform: var(--bless-label-case);
 }
 .bless-bottom-tabs__badge {
   position: absolute;

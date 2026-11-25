@@ -57,7 +57,7 @@ const id = useLabelFor(props.for);
   translate: none;
   font-size: var(--bless-text-2xs);
   letter-spacing: var(--bless-tracking-wider);
-  text-transform: uppercase;
+  text-transform: var(--bless-label-case);
 }
 .bless-float--over:has(:focus) .bless-float__label {
   color: var(--bless-color-accent-text);
@@ -67,7 +67,7 @@ const id = useLabelFor(props.for);
   translate: none;
   font-size: var(--bless-text-2xs);
   letter-spacing: var(--bless-tracking-wider);
-  text-transform: uppercase;
+  text-transform: var(--bless-label-case);
 }
 .bless-float--in
   :is(.bless-input__control, .bless-select__control, .bless-textarea__control, input, textarea) {

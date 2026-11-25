@@ -109,7 +109,7 @@ const uid = useId();
 }
 .bless-related__topic {
   font-weight: var(--bless-font-weight-bold);
-  text-transform: uppercase;
+  text-transform: var(--bless-label-case);
   letter-spacing: var(--bless-tracking-wide);
 }
 .bless-related__link {

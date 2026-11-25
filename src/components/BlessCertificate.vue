@@ -91,7 +91,7 @@ const text = computed(() => ({
   font-size: 2cqi;
   font-weight: var(--bless-font-weight-bold);
   letter-spacing: 0.15em;
-  text-transform: uppercase;
+  text-transform: var(--bless-label-case);
 }
 /* two classes, so the heading styles of a host page do not win */
 .bless-cert .bless-cert__title {

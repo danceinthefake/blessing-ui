@@ -60,7 +60,7 @@ function toggle() {
   font-weight: var(--bless-font-weight-bold);
   letter-spacing: var(--bless-tracking-wide);
   line-height: var(--bless-leading-none);
-  text-transform: uppercase;
+  text-transform: var(--bless-label-case);
   cursor: pointer;
   transition:
     opacity var(--bless-duration-slow) var(--bless-ease-in-out),

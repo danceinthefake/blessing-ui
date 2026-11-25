@@ -84,7 +84,7 @@ const arrow = { up: "▲", down: "▼", flat: "▬" } as const;
   font-size: var(--bless-text-sm);
   font-weight: var(--bless-font-weight-bold);
   letter-spacing: var(--bless-tracking-wide);
-  text-transform: uppercase;
+  text-transform: var(--bless-label-case);
   color: var(--bless-color-text-muted);
 }
 .bless-stat__value {

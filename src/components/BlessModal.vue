@@ -207,7 +207,7 @@ const titleId = `${useId()}-title`;
   font-weight: var(--bless-font-weight-bold);
   letter-spacing: var(--bless-tracking-wider);
   line-height: var(--bless-leading-none);
-  text-transform: uppercase;
+  text-transform: var(--bless-label-case);
   color: var(--bless-color-text);
   border: 0;
 }

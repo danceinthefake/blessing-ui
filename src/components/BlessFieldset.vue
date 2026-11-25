@@ -45,7 +45,7 @@ const id = useId();
   font-weight: var(--bless-font-weight-bold);
   letter-spacing: var(--bless-tracking-wide);
   line-height: var(--bless-leading-tight);
-  text-transform: uppercase;
+  text-transform: var(--bless-label-case);
 }
 .bless-fieldset__toggle {
   display: inline-flex;

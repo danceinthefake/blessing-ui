@@ -40,11 +40,16 @@ test("BlessThemeToggle switch and group", async () => {
   await nextTick();
   expect(document.documentElement.dataset.theme).toBe("dark");
   const g = mount(BlessThemeToggle, { props: { mode: "group" } });
-  expect(g.findAll("button")).toHaveLength(3);
-  expect(g.findAll("button")[2].attributes("aria-pressed")).toBe("true");
+  // the moods: light, system, golden hour, dark
+  expect(g.findAll("button")).toHaveLength(4);
+  expect(g.findAll("button")[3].attributes("aria-pressed")).toBe("true");
   await g.findAll("button")[0].trigger("click");
   await nextTick();
   expect(document.documentElement.dataset.theme).toBe("light");
+  await g.findAll("button")[2].trigger("click");
+  await nextTick();
+  expect(document.documentElement.dataset.theme).toBe("golden");
+  expect(localStorage.getItem("bless-theme")).toBe("golden");
 });
 
 test("useTheme palette applies data-palette and persists; BlessPaletteToggle switches", async () => {

@@ -181,7 +181,7 @@ thead .bless-perms__name {
   font-weight: var(--bless-font-weight-bold);
   letter-spacing: var(--bless-tracking-wide);
   text-align: start;
-  text-transform: uppercase;
+  text-transform: var(--bless-label-case);
   color: var(--bless-color-text-muted);
 }
 </style>

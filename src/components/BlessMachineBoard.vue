@@ -170,7 +170,7 @@ const span = (m: number) => text.value.time(Math.floor(m / 60), m % 60);
 /* red text is too faint on the red tint; the frame and the mark carry the alarm */
 .bless-machines__tile.is-down .bless-machines__state {
   color: var(--bless-color-text);
-  text-transform: uppercase;
+  text-transform: var(--bless-label-case);
 }
 .bless-machines__tile.is-offline {
   border-style: dotted;

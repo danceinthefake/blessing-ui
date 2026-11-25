@@ -129,7 +129,7 @@ const fields = computed(() =>
 .bless-ticket__fields dt {
   font-size: var(--bless-text-xs);
   letter-spacing: var(--bless-tracking-wide);
-  text-transform: uppercase;
+  text-transform: var(--bless-label-case);
   color: var(--bless-color-text-muted);
 }
 .bless-ticket__fields dd {

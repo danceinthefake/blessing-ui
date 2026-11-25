@@ -122,7 +122,7 @@ const current = computed(() => props.updates[0]?.status);
   padding: 0 var(--bless-space-2);
   border: var(--bless-border-width) solid var(--bless-color-border);
   font-weight: var(--bless-font-weight-bold);
-  text-transform: uppercase;
+  text-transform: var(--bless-label-case);
   letter-spacing: var(--bless-tracking-wide);
 }
 .bless-incident__affected {

@@ -246,7 +246,7 @@ const shown = computed(() => model.value.slice(0, 3));
   padding: 0 var(--bless-space-2);
   border: 2px solid currentColor;
   font-weight: 700;
-  text-transform: uppercase;
+  text-transform: var(--bless-label-case);
   pointer-events: none;
   opacity: 0;
 }

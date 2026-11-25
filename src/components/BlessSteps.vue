@@ -157,7 +157,7 @@ button.bless-steps__marker:focus-visible {
   font-size: var(--bless-text-xs);
   font-weight: var(--bless-font-weight-bold);
   letter-spacing: var(--bless-tracking-wide);
-  text-transform: uppercase;
+  text-transform: var(--bless-label-case);
   white-space: nowrap;
 }
 .bless-steps__desc {

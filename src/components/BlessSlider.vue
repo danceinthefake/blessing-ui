@@ -69,7 +69,7 @@ const text = computed(() => (props.format ?? String)(model.value));
   font-size: var(--bless-text-sm);
   font-weight: var(--bless-font-weight-bold);
   letter-spacing: var(--bless-tracking-wide);
-  text-transform: uppercase;
+  text-transform: var(--bless-label-case);
 }
 .bless-slider__value {
   font-size: var(--bless-text-sm);

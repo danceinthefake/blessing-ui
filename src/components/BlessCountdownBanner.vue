@@ -134,7 +134,7 @@ const when = computed(() =>
   align-items: center;
   gap: var(--bless-space-1);
   font-weight: var(--bless-font-weight-bold);
-  text-transform: uppercase;
+  text-transform: var(--bless-label-case);
   letter-spacing: var(--bless-tracking-wide);
 }
 .bless-countdown__live::before {

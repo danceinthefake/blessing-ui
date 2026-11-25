@@ -190,7 +190,7 @@ const tab = ref(tabs.value[0]?.value ?? "");
 .bless-api__label {
   font-size: var(--bless-text-xs);
   font-weight: var(--bless-font-weight-bold);
-  text-transform: uppercase;
+  text-transform: var(--bless-label-case);
   letter-spacing: 0.05em;
 }
 .bless-api__table {

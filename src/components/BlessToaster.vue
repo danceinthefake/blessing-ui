@@ -207,7 +207,7 @@ const { dismiss } = useToast();
   font-size: var(--bless-text-xs);
   font-weight: var(--bless-font-weight-bold);
   letter-spacing: var(--bless-tracking-wide);
-  text-transform: uppercase;
+  text-transform: var(--bless-label-case);
   cursor: pointer;
   transform: skewX(var(--bless-skew));
   transition:

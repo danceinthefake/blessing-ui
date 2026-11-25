@@ -214,7 +214,7 @@ onBeforeUnmount(() => clearTimeout(timer));
 .bless-code__lang {
   color: var(--bless-color-text-muted);
   font-size: var(--bless-text-xs);
-  text-transform: uppercase;
+  text-transform: var(--bless-label-case);
 }
 .bless-code__copy {
   padding: var(--bless-space-1) var(--bless-space-2);

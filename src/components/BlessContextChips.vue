@@ -87,7 +87,7 @@ const text = computed(() => ({
 .bless-ctxchips__kind {
   font-size: 0.85em;
   font-weight: var(--bless-font-weight-bold);
-  text-transform: uppercase;
+  text-transform: var(--bless-label-case);
   letter-spacing: 0.04em;
 }
 .bless-ctxchips__name {

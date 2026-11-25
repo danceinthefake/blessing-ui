@@ -121,7 +121,7 @@ const MARK: Record<BlessAppointmentStatus, string> = {
   padding-block: var(--bless-space-2);
   background: var(--bless-color-text);
   color: var(--bless-color-bg);
-  text-transform: uppercase;
+  text-transform: var(--bless-label-case);
 }
 .bless-appt__month,
 .bless-appt__week {

@@ -7,6 +7,7 @@
   >
     <BlessToggle value="light" size="sm" :label="text().light">☀</BlessToggle>
     <BlessToggle value="system" size="sm" :label="text().system">◐</BlessToggle>
+    <BlessToggle value="golden" size="sm" :label="text().golden">◒</BlessToggle>
     <BlessToggle value="dark" size="sm" :label="text().dark">☾</BlessToggle>
   </BlessToggleGroup>
   <button
@@ -33,7 +34,7 @@ const pack = useLabelPack("BlessThemeToggle");
 
 const props = withDefaults(
   defineProps<{
-    /** three-way (light/system/dark) or a single light↔dark button */ mode?: "switch" | "group";
+    /** a group of the moods (light/system/golden/dark) or a single light↔dark button */ mode?: "switch" | "group";
     /** the group's name; wins over `labels.theme` */
     label?: string;
     /** accessible names: the group reads `theme` and all three; the switch reads `darkTheme`
@@ -43,6 +44,7 @@ const props = withDefaults(
       light: string;
       system: string;
       dark: string;
+      golden: string;
       darkTheme: string;
     }>;
   }>(),
@@ -53,6 +55,7 @@ const text = () => ({
   light: "Light",
   system: "System",
   dark: "Dark",
+  golden: "Golden hour",
   darkTheme: "Dark theme",
   ...(pack() as Record<string, string>),
   ...props.labels,

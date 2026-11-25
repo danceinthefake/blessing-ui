@@ -95,7 +95,7 @@ const pct = computed(() =>
   font-size: var(--bless-text-sm);
   font-weight: var(--bless-font-weight-bold);
   letter-spacing: var(--bless-tracking-wide);
-  text-transform: uppercase;
+  text-transform: var(--bless-label-case);
 }
 .bless-progress__value {
   margin-inline-start: auto; /* stays at the end when there is no label */

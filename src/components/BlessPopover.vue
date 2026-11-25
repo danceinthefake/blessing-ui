@@ -160,7 +160,7 @@ onMounted(() =>
   font-size: var(--bless-text-xs);
   font-weight: var(--bless-font-weight-bold);
   letter-spacing: var(--bless-tracking-wider);
-  text-transform: uppercase;
+  text-transform: var(--bless-label-case);
 }
 /* skewed accent edge on the side facing the anchor; with `arrow` it slides to point at the trigger */
 .bless-popover::before {

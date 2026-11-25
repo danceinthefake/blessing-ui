@@ -89,7 +89,7 @@ const day = (iso: string) =>
   font-size: var(--bless-text-xs);
   font-weight: var(--bless-font-weight-bold);
   letter-spacing: var(--bless-tracking-wide);
-  text-transform: uppercase;
+  text-transform: var(--bless-label-case);
 }
 .bless-article__topic a,
 .bless-article__author a {
