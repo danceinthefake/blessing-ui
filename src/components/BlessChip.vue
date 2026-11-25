@@ -1,5 +1,8 @@
 <template>
-  <span class="bless-chip" :class="[`bless-chip--${color}`, `bless-chip--${size}`]">
+  <span
+    class="bless-chip"
+    :class="[`bless-chip--${color}`, `bless-chip--${size}`, `bless-chip--${variant}`]"
+  >
     <img v-if="image" :src="image" alt="" class="bless-chip__img" />
     <span v-else-if="icon" class="bless-chip__icon" aria-hidden="true">{{ icon }}</span>
     <span class="bless-chip__label"><slot>{{ label }}</slot></span>
@@ -28,10 +31,12 @@ const props = withDefaults(
     image?: string;
     removable?: boolean;
     color?: "surface" | "accent" | "text";
+    /** filled (default) or outline (Fine-style quiet role chip) */
+    variant?: "filled" | "outline";
     size?: "sm" | "md";
     labels?: Partial<{ remove: string }>;
   }>(),
-  { color: "surface", size: "md" },
+  { color: "surface", variant: "filled", size: "md" },
 );
 const pack = useLabelPack("BlessChip");
 const text = computed(() => ({
@@ -50,18 +55,15 @@ const emit = defineEmits<{ remove: [] }>();
   align-items: center;
   gap: var(--bless-space-1);
   padding: 2px var(--bless-space-3);
+  border: var(--bless-border-width) solid transparent;
   background: var(--bless-color-surface);
   color: var(--bless-color-text);
   font-family: var(--bless-font-sans);
   font-size: var(--bless-text-sm);
   line-height: var(--bless-leading-normal);
-  transform: skewX(var(--bless-skew));
-}
-.bless-chip > * {
-  transform: skewX(var(--bless-skew-counter));
 }
 .bless-chip--sm {
-  padding: 0 var(--bless-space-2);
+  padding: 1px var(--bless-space-2);
   font-size: var(--bless-text-xs);
 }
 .bless-chip--accent {
@@ -72,11 +74,23 @@ const emit = defineEmits<{ remove: [] }>();
   background: var(--bless-color-text);
   color: var(--bless-color-on-text);
 }
+.bless-chip--outline {
+  border-color: var(--bless-color-border);
+  background: color-mix(in srgb, var(--bless-color-bg) 45%, transparent);
+  color: var(--bless-color-text-muted);
+}
+.bless-chip--outline.bless-chip--accent {
+  border-color: color-mix(in srgb, var(--bless-color-accent) 32%, transparent);
+  color: var(--bless-color-accent-text);
+}
+.bless-chip--outline.bless-chip--text {
+  color: var(--bless-color-text);
+}
 .bless-chip__img {
   width: 18px;
   height: 18px;
   object-fit: cover;
-  border-radius: var(--bless-radius-petal); /* square, like the chip — never a circle */
+  border-radius: var(--bless-radius-petal);
 }
 /* a 24px target without making the chip taller */
 .bless-chip__remove {
@@ -88,17 +102,16 @@ const emit = defineEmits<{ remove: [] }>();
   margin-inline-end: calc(-1 * var(--bless-space-2));
   padding: 0;
   border: 0;
+  border-radius: var(--bless-radius-pill);
   background: none;
   color: inherit;
   font: inherit;
   line-height: 1;
   cursor: pointer;
-  transition:
-    opacity var(--bless-duration-slow) var(--bless-ease-in-out),
-    var(--bless-lean-transition);
+  transition: background var(--bless-duration-base) var(--bless-ease-out);
 }
 .bless-chip__remove:hover {
-  opacity: var(--bless-hover-opacity);
+  background: var(--bless-color-hover);
 }
 .bless-chip__remove:focus-visible {
   outline: 2px solid var(--bless-color-accent);

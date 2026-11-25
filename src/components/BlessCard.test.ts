@@ -15,10 +15,14 @@ test("BlessCard label, link mode, slots", () => {
   expect(c.find(".bless-card__footer").text()).toBe("f");
   expect(c.find(".bless-card__media").exists()).toBe(false);
 
-  const d = mount(BlessCard, { props: { as: "article", bordered: false, surface: "surface" } });
+  const d = mount(BlessCard, { props: { as: "article" } });
   expect(d.element.tagName).toBe("ARTICLE");
   expect(d.classes()).not.toContain("bless-card--bordered");
   expect(d.classes()).toContain("bless-card--surface");
+
+  const b = mount(BlessCard, { props: { bordered: true, surface: "bg" } });
+  expect(b.classes()).toContain("bless-card--bordered");
+  expect(b.classes()).toContain("bless-card--bg");
 });
 
 test("BlessList + BlessListItem render meta/dash/badge and link", () => {

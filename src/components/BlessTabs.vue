@@ -108,8 +108,8 @@ function onKey(e: KeyboardEvent) {
 .bless-tabs__list {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--bless-space-2);
-  padding-inline-start: var(--bless-space-1);
+  gap: var(--bless-space-1);
+  padding-bottom: var(--bless-space-2);
   border-bottom: var(--bless-border-width) solid var(--bless-color-border);
 }
 .bless-tabs__tab {
@@ -117,7 +117,7 @@ function onKey(e: KeyboardEvent) {
   margin: 0;
   padding: var(--bless-space-2) var(--bless-space-4);
   border: var(--bless-border-width) solid transparent;
-  border-bottom: 0;
+  border-radius: var(--bless-radius-pill);
   font-family: var(--bless-font-sans);
   font-size: var(--bless-text-sm);
   font-weight: var(--bless-font-weight-bold);
@@ -126,10 +126,13 @@ function onKey(e: KeyboardEvent) {
   text-transform: var(--bless-label-case);
   color: var(--bless-color-text-muted);
   cursor: pointer;
+  transform: none;
   transition:
-    opacity var(--bless-duration-slow) var(--bless-ease-in-out),
-    color var(--bless-duration-slow),
-    var(--bless-lean-transition);
+    background var(--bless-duration-base) var(--bless-ease-out),
+    color var(--bless-duration-base) var(--bless-ease-out);
+}
+.bless-tabs__tab .bless-skew__inner {
+  transform: none;
 }
 .bless-tabs__tab.bless-skew--none {
   background: transparent;
@@ -140,11 +143,9 @@ function onKey(e: KeyboardEvent) {
 .bless-tabs__tab--danger {
   --_c: var(--bless-color-danger);
 }
-.bless-tabs__tab:hover:not(:disabled) {
-  opacity: var(--bless-hover-opacity);
-}
-/* hover is attention, not a choice: ink, never the accent; the active tab keeps its own text */
+/* hover is attention, not a choice: calm surface wash + ink, zero opacity washout */
 .bless-tabs__tab:hover:not(:disabled, .bless-tabs__tab--active) {
+  background: var(--bless-color-hover);
   color: var(--bless-color-text);
 }
 .bless-tabs__tab:focus-visible {

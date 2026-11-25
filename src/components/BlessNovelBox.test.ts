@@ -68,3 +68,20 @@ test("BlessNovelBox renders default slot when text prop is omitted", () => {
   expect(w.find("em").text()).toBe("narration");
   expect(w.classes()).toContain("bless-novel--done");
 });
+
+test("BlessNovelBox renders optional portrait medallion via avatar, emblem, or slot", () => {
+  const av = mount(BlessNovelBox, { props: { name: "Megumi", avatar: "/m.jpg", text: "Hi", instant: true } });
+  expect(av.classes()).toContain("bless-novel--portrait");
+  expect(av.find(".bless-novel__avatar").attributes("src")).toBe("/m.jpg");
+
+  const em = mount(BlessNovelBox, { props: { name: "Blessing", emblem: true, text: "Welcome", instant: true } });
+  expect(em.classes()).toContain("bless-novel--portrait");
+  expect(em.find(".bless-novel__emblem").exists()).toBe(true);
+
+  const sl = mount(BlessNovelBox, {
+    props: { text: "Custom", instant: true },
+    slots: { portrait: '<span class="custom-p">P</span>' },
+  });
+  expect(sl.classes()).toContain("bless-novel--portrait");
+  expect(sl.find(".custom-p").text()).toBe("P");
+});

@@ -2,21 +2,22 @@ import { mount } from "@vue/test-utils";
 import BlessBadge from "./BlessBadge.vue";
 import BlessDash from "./BlessDash.vue";
 
-test("BlessBadge defaults to NEW!, ink, full size, solid", () => {
+test("BlessBadge defaults to NEW!, ink, full size, soft wash", () => {
   const w = mount(BlessBadge);
   expect(w.text()).toBe("NEW!");
   expect(w.classes()).toContain("bless-badge--text");
-  expect(w.classes()).toContain("bless-badge--solid");
+  expect(w.classes()).toContain("bless-badge--soft");
   expect(w.classes()).not.toContain("bless-badge--scaled");
 });
 
-test("BlessBadge slot + color + scaled + outline", () => {
+test("BlessBadge slot + color + scaled + solid + outline", () => {
   const w = mount(BlessBadge, {
-    props: { color: "success", scaled: true },
+    props: { color: "success", variant: "solid", scaled: true },
     slots: { default: "3" },
   });
   expect(w.text()).toBe("3");
   expect(w.classes()).toContain("bless-badge--success");
+  expect(w.classes()).toContain("bless-badge--solid");
   expect(w.classes()).toContain("bless-badge--scaled");
   const o = mount(BlessBadge, { props: { variant: "outline" } });
   expect(o.classes()).toContain("bless-badge--outline");

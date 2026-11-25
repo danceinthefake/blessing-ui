@@ -87,16 +87,15 @@ defineExpose({ id });
   --_fs: var(--bless-text-lg);
 }
 .bless-input__field {
-  border-radius: var(--bless-radius-plate);
+  border-radius: 0; /* flat manuscript line — never curls at the ends (revamp 2026-11 r2) */
   position: relative;
   display: flex;
   align-items: center;
   height: var(--_h);
   background: transparent; /* a line you write on, not a box */
-  border-bottom: calc(2 * var(--bless-border-width)) solid var(--bless-color-text-muted);
-  transition:
-    border-color var(--bless-duration-slow) var(--bless-ease-in-out),
-    var(--bless-lean-transition);
+  border-bottom: calc(1.5 * var(--bless-border-width)) solid
+    color-mix(in srgb, var(--bless-color-text-muted) 55%, transparent);
+  transition: border-color var(--bless-duration-base) var(--bless-ease-out);
 }
 /* skewed accent underline that grows on focus */
 .bless-input__field::after {
@@ -121,7 +120,7 @@ defineExpose({ id });
   flex: 1;
   min-width: 0;
   height: 100%;
-  padding: 0 var(--bless-space-3);
+  padding: 0 2px;
   border: 0;
   background: transparent;
   font: inherit;
@@ -175,19 +174,7 @@ defineExpose({ id });
   color: var(--bless-color-danger-text);
   font-weight: var(--bless-font-weight-bold);
 }
-/* fields are parallelograms like everything else; content counter-skews so text stays upright */
-.bless-input__field {
-  transform: skewX(var(--bless-skew));
-}
-.bless-input__field > :not(.bless-skew, .bless-chip, .bless-badge) {
-  transform: skewX(var(--bless-skew-counter));
-}
-.bless-input__field > :first-child {
-  padding-inline-start: calc(var(--bless-space-3) + 4px);
-}
-.bless-input__field > :last-child {
-  padding-inline-end: calc(var(--bless-space-3) + 4px);
-}
+/* manuscript underline stays upright and crisp (no skew distortion on text fields) */
 .bless-input__error {
   animation: bless-enter var(--bless-duration-voice) var(--bless-ease-snap);
 }

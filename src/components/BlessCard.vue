@@ -35,7 +35,7 @@ withDefaults(
     /** whole card is a link */
     href?: string;
   }>(),
-  { as: "div", labelColor: "text", surface: "bg", bordered: true },
+  { as: "div", labelColor: "text", surface: "surface", bordered: false },
 );
 </script>
 
@@ -54,17 +54,19 @@ withDefaults(
 }
 .bless-card--surface {
   background: var(--bless-color-surface);
+  box-shadow: var(--bless-shadow-sm);
 }
 .bless-card--bordered {
   border: var(--bless-border-width) solid var(--bless-color-border);
 }
 .bless-card--link {
   transition:
-    opacity var(--bless-duration-slow) var(--bless-ease-in-out),
-    var(--bless-lean-transition);
+    transform var(--bless-duration-base) var(--bless-ease-spring),
+    box-shadow var(--bless-duration-base) var(--bless-ease-out);
 }
 .bless-card--link:hover {
-  opacity: var(--bless-hover-opacity);
+  transform: translateY(var(--bless-hover-lift));
+  box-shadow: var(--bless-shadow-plate);
 }
 .bless-card--link:focus-visible {
   outline: 2px solid var(--bless-color-accent);

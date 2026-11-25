@@ -1,5 +1,23 @@
 <template>
-  <figure ref="el" class="bless-novel" :class="{ 'bless-novel--done': done }">
+  <figure
+    ref="el"
+    class="bless-novel"
+    :class="{ 'bless-novel--done': done, 'bless-novel--portrait': hasPortrait }"
+  >
+    <div v-if="hasPortrait" class="bless-novel__portrait" aria-hidden="true">
+      <slot name="portrait">
+        <img v-if="avatar" :src="avatar" alt="" class="bless-novel__avatar" />
+        <svg v-else-if="emblem" class="bless-novel__emblem" viewBox="0 0 32 32" width="24" height="24">
+          <g transform="rotate(-10 16 16)">
+            <ellipse cx="16" cy="8" rx="4.2" ry="6.8" fill="#cc466a" />
+            <ellipse cx="16" cy="8" rx="4.2" ry="6.8" fill="#e6a817" transform="rotate(72 16 16)" />
+            <ellipse cx="16" cy="8" rx="4.2" ry="6.8" fill="#2f75ad" transform="rotate(144 16 16)" />
+            <ellipse cx="16" cy="8" rx="4.2" ry="6.8" fill="#8f5c8a" transform="rotate(216 16 16)" />
+            <ellipse cx="16" cy="8" rx="4.2" ry="6.8" fill="#687b00" transform="rotate(288 16 16)" />
+          </g>
+        </svg>
+      </slot>
+    </div>
     <figcaption v-if="name || $slots.name" class="bless-novel__name">
       <span><slot name="name">{{ name }}</slot></span>
     </figcaption>
@@ -26,11 +44,12 @@
 </template>
 
 <script setup lang="ts">
-// The text box of a visual novel: a name plate and a line that types out letter by letter.
+// The text box of a visual novel: frosted glass frame, optional portrait medallion (or neutral
+// flower emblem), leaning −10° speaker nameplate, and a serif line that types out letter by letter.
 // Screen readers read the full line at once. With calm or reduced motion (or on the server), the
 // whole line shows at once. When `interactive`, clicking the prompt finishes a running line or
 // asks for the next one.
-import { computed, onBeforeUnmount, onMounted, ref, watch } from "vue";
+import { computed, onBeforeUnmount, onMounted, ref, useSlots, watch } from "vue";
 import { useLabelPack } from "../composables/useLabels";
 import { reducedMotion } from "../composables/useMedia";
 import BlessIcon from "./BlessIcon.vue";
@@ -42,6 +61,10 @@ const props = withDefaults(
   defineProps<{
     /** speaker name on the floating plate; omit for narration without a speaker */
     name?: string;
+    /** optional circular speaker portrait URL */
+    avatar?: string;
+    /** show the neutral 5-petal Blessing flower emblem in the portrait medallion */
+    emblem?: boolean;
     /** the line to type out; omit to render static content in the default slot */
     text?: string;
     /** milliseconds per character; 0 shows the whole line at once */
@@ -58,6 +81,8 @@ const props = withDefaults(
 );
 
 const emit = defineEmits<{ done: []; next: [] }>();
+const slots = useSlots();
+const hasPortrait = computed(() => Boolean(props.avatar || props.emblem || slots.portrait));
 const pack = useLabelPack("BlessNovelBox");
 const words = computed(() => ({
   next: "Next line",
@@ -136,14 +161,47 @@ onBeforeUnmount(() => {
 <style>
 .bless-novel {
   position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--bless-space-3);
   margin: var(--bless-space-3) 0 0;
-  padding: var(--bless-space-6) var(--bless-space-6) var(--bless-space-4);
+  padding: var(--bless-space-4) var(--bless-space-6) var(--bless-space-4);
   border-radius: var(--bless-radius);
-  background: var(--bless-color-surface);
+  border: var(--bless-border-width) solid
+    color-mix(in srgb, var(--bless-color-accent) 26%, var(--bless-color-border));
+  background: var(--bless-color-surface-glass);
+  backdrop-filter: blur(14px);
   color: var(--bless-color-text);
-  box-shadow: var(--bless-shadow-sm);
+  box-shadow:
+    0 10px 26px -12px color-mix(in srgb, var(--bless-color-accent) 24%, transparent),
+    var(--bless-shadow-sm);
   font-family: var(--bless-font-sans);
   animation: bless-voice var(--bless-duration-voice) var(--bless-ease-snap);
+}
+.bless-novel--portrait {
+  padding-inline-start: var(--bless-space-4);
+}
+.bless-novel__portrait {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--bless-radius-pill);
+  overflow: hidden;
+  background: var(--bless-color-surface);
+  border: 2px solid color-mix(in srgb, var(--bless-color-accent) 62%, var(--bless-color-surface));
+  box-shadow: 0 4px 12px -3px color-mix(in srgb, var(--bless-color-accent) 42%, transparent);
+}
+.bless-novel__avatar {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 25%;
+}
+.bless-novel__emblem {
+  display: block;
 }
 .bless-novel__name {
   position: absolute;
@@ -156,15 +214,22 @@ onBeforeUnmount(() => {
   font-size: var(--bless-text-xs);
   font-weight: var(--bless-font-weight-bold);
   line-height: var(--bless-leading-tight);
+  box-shadow: 0 4px 10px -4px color-mix(in srgb, var(--bless-color-accent) 55%, transparent);
   transform: skewX(var(--bless-lean));
+}
+.bless-novel--portrait .bless-novel__name {
+  inset-inline-start: 68px;
 }
 .bless-novel__name > span {
   display: inline-block;
   transform: skewX(calc(-1 * var(--bless-lean)));
 }
 .bless-novel__text {
+  flex: 1;
+  min-width: 0;
   margin: 0;
-  min-block-size: 3em;
+  padding-inline-end: var(--bless-space-4);
+  font-family: var(--bless-font-serif);
   font-size: var(--bless-text-md);
   line-height: var(--bless-leading-normal);
 }

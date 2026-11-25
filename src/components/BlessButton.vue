@@ -71,7 +71,11 @@ function onClick(e: MouseEvent) {
 <style>
 .bless-button {
   --_c: var(--bless-color-text);
-  --bless-radius-plate: var(--bless-radius-pill); /* a button is round (revamp 2026-11) */
+  --bless-radius-plate: var(--bless-radius-pill); /* unskewed tactile pill (revamp 2026-11 r2) */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
   cursor: pointer;
   border: var(--bless-border-width) solid transparent;
   font-family: var(--bless-font-sans);
@@ -80,9 +84,13 @@ function onClick(e: MouseEvent) {
   line-height: var(--bless-leading-none);
   text-decoration: none;
   text-transform: var(--bless-label-case);
+  transform: none;
   transition:
-    opacity var(--bless-duration-slow) var(--bless-ease-in-out),
-    var(--bless-lean-transition);
+    transform var(--bless-duration-base) var(--bless-ease-spring),
+    background var(--bless-duration-base) var(--bless-ease-out),
+    border-color var(--bless-duration-base) var(--bless-ease-out),
+    color var(--bless-duration-base) var(--bless-ease-out),
+    box-shadow var(--bless-duration-base) var(--bless-ease-out);
 }
 .bless-button--accent {
   --_c: var(
@@ -94,30 +102,53 @@ function onClick(e: MouseEvent) {
 }
 
 .bless-button--sm {
-  padding: var(--bless-space-1) var(--bless-space-3);
+  min-height: 30px;
+  padding: 0 var(--bless-space-3);
   font-size: var(--bless-text-xs);
 }
 .bless-button--md {
-  padding: var(--bless-space-2) var(--bless-space-4);
+  min-height: 36px;
+  padding: 0 var(--bless-space-4);
   font-size: var(--bless-text-sm);
 }
 .bless-button--lg {
-  padding: var(--bless-space-3) var(--bless-space-6);
+  min-height: 44px;
+  padding: 0 var(--bless-space-6);
   font-size: var(--bless-text-md);
 }
 
 .bless-button--outline {
-  border-color: var(--_c);
+  border-color: color-mix(in srgb, var(--_c) 26%, transparent);
   color: var(--_c);
-  background: transparent;
+  background: var(--bless-color-surface);
 }
 .bless-button--ghost {
   color: var(--_c);
   background: transparent;
 }
 
+/* AA-safe tactile hover (replaces 0.6 opacity washout & pill skew) */
 .bless-button:hover:not([aria-disabled]) {
-  opacity: var(--bless-hover-opacity);
+  transform: translateY(var(--bless-hover-lift));
+}
+.bless-button--solid.bless-button--text:hover:not([aria-disabled]) {
+  background: color-mix(in srgb, var(--bless-color-text) 84%, var(--bless-color-accent));
+  box-shadow: var(--bless-shadow-sm);
+}
+.bless-button--solid.bless-button--accent:hover:not([aria-disabled]) {
+  background: color-mix(in srgb, var(--bless-color-accent) 88%, var(--bless-color-text));
+  box-shadow: var(--bless-shadow-sm);
+}
+.bless-button--solid.bless-button--danger:hover:not([aria-disabled]) {
+  background: color-mix(in srgb, var(--bless-color-danger) 88%, var(--bless-color-text));
+  box-shadow: var(--bless-shadow-sm);
+}
+.bless-button--outline:hover:not([aria-disabled]) {
+  background: var(--bless-color-surface-2);
+  border-color: color-mix(in srgb, var(--_c) 42%, transparent);
+}
+.bless-button--ghost:hover:not([aria-disabled]) {
+  background: var(--bless-color-hover);
 }
 /* colour means chosen: ink at rest, the accent only while pressed */
 .bless-button--text:active:not([aria-disabled]),
@@ -125,7 +156,10 @@ function onClick(e: MouseEvent) {
   border-color: var(--bless-color-accent);
   background: var(--bless-color-accent);
   color: var(--bless-color-on-accent);
-  opacity: 1;
+  transform: scale(var(--bless-press-scale));
+}
+.bless-button--danger:active:not([aria-disabled]) {
+  transform: scale(var(--bless-press-scale));
 }
 .bless-button:focus-visible {
   outline: 2px solid var(--bless-color-accent);
@@ -146,18 +180,22 @@ function onClick(e: MouseEvent) {
   justify-content: center;
 }
 .bless-button--icon.bless-button--sm {
-  padding: var(--bless-space-1);
+  width: 30px;
+  padding: 0;
 }
 .bless-button--icon.bless-button--md {
-  padding: var(--bless-space-2);
+  width: 36px;
+  padding: 0;
 }
 .bless-button--icon.bless-button--lg {
-  padding: var(--bless-space-3);
+  width: 44px;
+  padding: 0;
 }
 
 .bless-button .bless-skew__inner {
   display: inline-flex;
   align-items: center;
   gap: var(--bless-space-2);
+  transform: none;
 }
 </style>

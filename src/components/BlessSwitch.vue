@@ -76,27 +76,31 @@ const fs = useFieldState();
   flex: none;
   width: var(--_w);
   height: var(--_h);
-  background: var(--bless-color-text-muted);
-  transform: skewX(var(--bless-skew));
+  background: var(--bless-color-surface-2);
+  border: var(--bless-border-width) solid var(--bless-color-border);
+  box-sizing: border-box;
   transition:
-    background var(--bless-duration-base),
-    opacity var(--bless-duration-slow) var(--bless-ease-in-out),
-    var(--bless-lean-transition);
+    background var(--bless-duration-base) var(--bless-ease-out),
+    border-color var(--bless-duration-base) var(--bless-ease-out),
+    box-shadow var(--bless-duration-base) var(--bless-ease-out);
 }
 .bless-switch__thumb {
   border-radius: var(--bless-radius-petal);
   position: absolute;
-  top: 3px;
-  inset-inline-start: 3px;
+  top: 2px;
+  inset-inline-start: 2px;
   width: calc(var(--_h) - 6px);
   height: calc(var(--_h) - 6px);
-  background: var(--bless-color-bg);
-  transition: transform var(--bless-duration-base) var(--bless-ease-snap);
+  background: var(--bless-color-surface);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.2);
+  transition: transform var(--bless-duration-base) var(--bless-ease-spring);
 }
 .bless-switch__input:checked + .bless-switch__track {
   background: var(--bless-color-accent);
+  border-color: var(--bless-color-accent);
 }
 .bless-switch__input:checked + .bless-switch__track .bless-switch__thumb {
+  background: var(--bless-color-on-accent);
   transform: translateX(calc(var(--_w) - var(--_h)));
 }
 /* the thumb starts at the inline start, so in right-to-left it travels left */
@@ -107,8 +111,8 @@ const fs = useFieldState();
   outline: 2px solid var(--bless-color-accent);
   outline-offset: 2px;
 }
-.bless-switch:hover .bless-switch__track {
-  opacity: var(--bless-hover-opacity);
+.bless-switch:hover:not(.bless-switch--disabled) .bless-switch__track {
+  box-shadow: 0 0 0 3px var(--bless-color-hover);
 }
 .bless-switch--invalid .bless-switch__track {
   outline: 2px solid var(--bless-color-danger);
