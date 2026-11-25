@@ -126,3 +126,26 @@ Build order:
 2. [x] Drawn icons, and the visual-novel text box (2026-11-25).
 3. [x] The components and the docs, with neutral art of our own. The docs home gets a hero frame in place of the eyecatch band (2026-11-25).
 4. [x] The apps of blessing.id (2026-11-25).
+
+<a id="revamp-2026-11-r2"></a>
+## Revamp 2026-11 — Revision 2 (Unified v3 · Lively)
+
+Status: **decided and locked (2026-11-25), ready for implementation.** A post-ship re-review of Pass 1 found six CSS regressions where earlier site-era rules (`opacity: 0.6` hover, `-10deg` skew on `999px` pills, `8px` radius on underline-only inputs, bordered flat `BlessCard` defaults, tight `32px` buttons, Roboto-only typography) collided with the new anime-scene tokens.
+
+After exploring three pure directions (`A · Sakura Slope`, `B · Flat Print`, `C · Backlit Cel`) and comparing four unified iterations (`Claude Mock`, `Unified v1`, `Unified v2`, `Unified v3 Lively`) in the private exploration repository, the owner locked **Unified v3 (Lively)** to synthesize the official sites, the anime scenes, and all six Blessing rules without CSS clashes:
+
+1. **Luminous sunlit moods.** Refine Daylight to warm sunlit porcelain (`#F6F1EE` paper → `#FFFEFD` lifted sheet, `#E8E1DC` recessed well, `#241F26` ink) with blush-sakura + cerulean sky ambient bloom and delicate top-margin neutral petals; keep Golden hour (`#F6E7D4` → `#FFF9F1`); deepen Night toward the starry cobalt bridge (`#111525` → `#1C2136` with `1px` top specular rim).
+2. **Airy borderless header & ink app tag.** Keep the top bar transparent and borderless so ambient light flows to the top edge; place the active nav item on a lifted `sheet` pill with an accent dot; keep the `-10deg` app tag in **ink** at rest so accent color stays strictly reserved for chosen/active states (*color means chosen*).
+3. **True "Light, not lines" elevation & card-less media shelves.** Default `BlessCard` to `surface: "surface"` and `bordered: false` with soft ambient lift. Render album/book/episode shelves bare on the paper with tinted shadows, corner status badges, and hover-bloom play medallions.
+4. **Clean workhorse geometry + intentional `-10deg` signatures.** Keep calm `14–16px` cards, **un-skewed `999px` pill buttons** (`36–38px` `md` height) with springy micro-lift, and **flat `0px`-radius manuscript underline inputs**. Reserve `-10deg` strictly for rectangular brand tags, eyecatches, and `BlessNovelBox` speaker nameplates.
+5. **Retire `opacity: 0.6` hover (Care over spectacle).** Replace hover opacity fade across interactive controls with tactile tone-shift + lift + soft shadow, maintaining ≥ 4.5:1 WCAG AA contrast across all 6 character palettes × 3 moods.
+6. **Three-voice typography.** Standardize UI sans (`Plus Jakarta Sans` / `Inter`), first-class editorial serif (`--bl-font-serif` for hero headlines, `BlessNovelBox`, and long-form reading), and tabular monospace for track indices, timestamps, and cut codes.
+7. **Living `BlessNovelBox` & playback vitality.** Style `BlessNovelBox` as a frosted translucent frame with subtle accent rim, serif voice, `-10deg` speaker tag, bobbing continue chevron (`▾`), and an optional circular portrait medallion slot (defaulting to the 5-petal flower mark in neutral usage). Add subtle live EQ wave bars and slim accent progress hairlines for active media items and floating pill docks; pause all ambient/EQ/bobbing animation under `prefers-reduced-motion` and Calm motion.
+8. **Dual-mode `HeroFrame` & soft-wash `BlessBadge`.** Default `BlessBadge` to soft tinted wash (`solid` opt-in). Support both full-bleed `21:9` media heroes (when cover/episode art exists, with live status pill, quiet ultra-light italic watermark, and bottom progress glow) and *Fine*-inspired sky/dusk/night ribbon heroes with notched neutral petals and fine outline role chips (when there is no photo, including docs).
+
+Build order:
+
+1. [ ] Tokens & typography: porcelain/amber/cobalt mood refinements, ambient bloom tokens, `--bl-font-serif` / UI sans / mono tokens, hover tone tokens.
+2. [ ] Core component updates: `BlessButton` (remove hover opacity/pill-skew, 36–38px `md`, spring lift), `BlessInput` (`border-radius: 0` underline), `BlessCard` (borderless `surface` default), `BlessBadge` (soft-wash default), `BlessTabs` / `BlessSwitch` (remove `0.6` hover), `BlessNovelBox` (frosted frame, serif voice, optional portrait medallion slot, bobbing chevron with reduced-motion guard).
+3. [ ] Docs & neutral art: dual-mode hero frame (sky-ribbon with notched petals, quiet italic watermark, outline role chips) across VitePress docs, `docs/design/`, and README/guides.
+4. [ ] Apps (`blessing-id`): transparent borderless `AppHeader` with ink `-10deg` app tag & active nav dot, dual-mode `HeroFrame`, card-less cover shelves with hover play medallions, live EQ & progress bars in `listen`/`watch`, frosted `NovelBox`, and removal of local `--listen-serif` / `--read-serif` overrides across `listen`, `read`, `watch`, and `my`.
