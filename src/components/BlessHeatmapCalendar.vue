@@ -49,17 +49,17 @@
     </div>
     <div class="bless-heat__foot">
       <span class="bless-heat__readout" aria-live="polite">{{
-        readout || `${plural(total)} in ${weeks} weeks`
+        readout || text.total(plural(total), weeks)
       }}</span>
       <span v-if="legend" class="bless-heat__legend" aria-hidden="true">
-        Less
+        {{ text.less }}
         <i
           v-for="l in levels + 1"
           :key="l"
           class="bless-heat__cell bless-heat__swatch"
           :style="{ '--bless-heat-l': (l - 1) / levels }"
         ></i>
-        More
+        {{ text.more }}
       </span>
     </div>
   </div>
@@ -69,6 +69,7 @@
 import { computed, nextTick, onMounted, ref } from "vue";
 import { addDays, fromISO, isoToday, toISO } from "../composables/date";
 import { logicalKey } from "../composables/rtl";
+import { useLabelPack } from "../composables/useLabels";
 
 defineOptions({ name: "BlessHeatmapCalendar" });
 
@@ -90,6 +91,14 @@ const props = withDefaults(
     unit?: string;
     legend?: boolean;
     label?: string;
+    /** words: `count` gets the number and `unit`; `total` and `day` get the counted text */
+    labels?: Partial<{
+      less: string;
+      more: string;
+      count: (n: number, unit: string) => string;
+      total: (count: string, weeks: number) => string;
+      day: (count: string, date: string) => string;
+    }>;
   }>(),
   {
     data: () => ({}),
@@ -120,7 +129,17 @@ const dayFmt = computed(
     }),
 );
 const monthFmt = computed(() => new Intl.DateTimeFormat(props.locale, { month: "short" }));
-const plural = (n: number) => `${n} ${props.unit}${n === 1 ? "" : "s"}`;
+const pack = useLabelPack("BlessHeatmapCalendar");
+const text = computed(() => ({
+  less: "Less",
+  more: "More",
+  count: (n: number, unit: string) => `${n} ${unit}${n === 1 ? "" : "s"}`,
+  total: (count: string, weeks: number) => `${count} in ${weeks} weeks`,
+  day: (count: string, date: string) => `${count} on ${date}`,
+  ...pack(),
+  ...props.labels,
+}));
+const plural = (n: number) => text.value.count(n, props.unit);
 
 const days = computed(() => {
   const out: { iso: string; v: number; level: number; text: string; shown: boolean }[] = [];
@@ -133,7 +152,7 @@ const days = computed(() => {
       v,
       level:
         v > 0 ? Math.min(props.levels, Math.max(1, Math.ceil((v / top.value) * props.levels))) : 0,
-      text: `${plural(v)} on ${dayFmt.value.format(d)}`,
+      text: text.value.day(plural(v), dayFmt.value.format(d)),
       shown: d <= endDate.value,
     });
   }

@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+### Fixed
+
+- `BlessHeatmapCalendar` takes its words from `labels` and from the label pack. Before, "Less", "More", "in … weeks", and "on" stayed English, and the unit always got an English "s". An Indonesian page showed "2 lagus". The Indonesian pack (`labelsId`) has the words. A unit test covers it. Found by blessing.id.
+
 ## 0.12.1 — 2026-11-22
 
 ### Fixed

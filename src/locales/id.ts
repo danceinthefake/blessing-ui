@@ -102,6 +102,7 @@ import type BlessGantt from "../components/BlessGantt.vue";
 import type BlessGradebook from "../components/BlessGradebook.vue";
 import type BlessGroupCard from "../components/BlessGroupCard.vue";
 import type BlessHabitTracker from "../components/BlessHabitTracker.vue";
+import type BlessHeatmapCalendar from "../components/BlessHeatmapCalendar.vue";
 import type BlessHistogram from "../components/BlessHistogram.vue";
 import type BlessIconPicker from "../components/BlessIconPicker.vue";
 import type BlessIncidentTimeline from "../components/BlessIncidentTimeline.vue";
@@ -400,6 +401,7 @@ export type BlessLabelsFull = {
   BlessGradebook: All<typeof BlessGradebook>;
   BlessGroupCard: All<typeof BlessGroupCard>;
   BlessHabitTracker: All<typeof BlessHabitTracker>;
+  BlessHeatmapCalendar: All<typeof BlessHeatmapCalendar>;
   BlessHistogram: All<typeof BlessHistogram>;
   BlessIconPicker: All<typeof BlessIconPicker>;
   BlessIncidentTimeline: All<typeof BlessIncidentTimeline>;
@@ -1379,6 +1381,14 @@ export const labelsId: BlessLabelsFull = {
     streak: "Beruntun",
     streakOf: (n) => `${n} hari beruntun`,
     mark: (h, d) => `${h}, ${d}`,
+  },
+  BlessHeatmapCalendar: {
+    less: "Sedikit",
+    more: "Banyak",
+    // Indonesian has no plural ending
+    count: (n, unit) => `${n} ${unit}`,
+    total: (c, w) => `${c} dalam ${w} minggu`,
+    day: (c, d) => `${c} pada ${d}`,
   },
   BlessHistogram: { range: "Rentang", count: "Jumlah" },
   BlessIconPicker: {

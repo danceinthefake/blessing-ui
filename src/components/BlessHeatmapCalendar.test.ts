@@ -1,5 +1,7 @@
 import { mount } from "@vue/test-utils";
 import { nextTick } from "vue";
+import { blessLabelsKey } from "../composables/useLabels";
+import { labelsId } from "../locales/id";
 import BlessHeatmapCalendar from "./BlessHeatmapCalendar.vue";
 
 const mk = (props = {}) =>
@@ -70,4 +72,18 @@ test("readout names the hovered day, else the total", async () => {
   await w.find('[data-date="2026-10-01"]').trigger("mouseenter");
   expect(w.find(".bless-heat__readout").text()).toContain("2 contributions on Thu");
   w.unmount();
+});
+
+test("the words come from the label pack, with no English plural", () => {
+  const w = mount(BlessHeatmapCalendar, {
+    props: { end: "2026-10-02", weeks: 5, locale: "id", unit: "lagu", data: { "2026-10-01": 2 } },
+    global: { provide: { [blessLabelsKey as symbol]: labelsId } },
+  });
+  expect(w.find('[data-date="2026-10-01"]').attributes("aria-label")).toMatch(/^2 lagu pada /);
+  expect(w.find(".bless-heat__readout").text()).toBe("2 lagu dalam 5 minggu");
+  expect(w.find(".bless-heat__legend").text()).toMatch(/^Sedikit\s+Banyak$/);
+  // negative control: with no pack, the English default keeps its plural
+  expect(mk({ unit: "track", data: { "2026-10-01": 2 } }).find(".bless-heat__readout").text()).toBe(
+    "2 tracks in 5 weeks",
+  );
 });

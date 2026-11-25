@@ -22,6 +22,7 @@ A year of activity at a glance: commits, workouts, check-ins. One column per wee
 - `end` is the last day shown (default today), `weeks` how many columns (default 53), `weekStart` the first row (`1` Monday, `0` Sunday). Month and weekday labels follow `locale`.
 - Every day is a button with a full label ("3 commits on Thu, Oct 1, 2026"). One tab stop. **↑ ↓** move by day, **← →** by week (mirrored under RTL), **Home** / **End** jump to the first and last day. Click or press Enter to pick a day, again to clear it.
 - The line under the grid shows the hovered or focused day, and the total otherwise.
+- The words come from `labels` or from the label pack (`provideLabels`): `less`, `more`, `count(n, unit)`, `total(count, weeks)`, and `day(count, date)`. The English `count` adds "s" to `unit` for any number but 1. The Indonesian pack (`labelsId`) adds no ending, because Indonesian has no plural ending.
 
 ## Usage
 
