@@ -253,12 +253,19 @@ function onKey(e: KeyboardEvent) {
   } else if (e.key === "Escape") {
     // claim the key while the list is open, so an enclosing dialog doesn't close with it
     if (open.value) e.preventDefault();
+    clearIfEmpty();
     open.value = false;
   } else if (e.key === "Backspace" && props.multiple && !query.value && selected.value.length)
     remove(selected.value.at(-1)!);
 }
+/** single: empty text on leaving clears the choice. Before, the old choice came back. */
+function clearIfEmpty() {
+  if (!props.multiple && !query.value.trim() && model.value !== undefined) model.value = undefined;
+}
 function onBlur(e: FocusEvent) {
-  if (!panel.value?.contains(e.relatedTarget as Node)) open.value = false;
+  if (panel.value?.contains(e.relatedTarget as Node)) return;
+  clearIfEmpty();
+  open.value = false;
 }
 </script>
 

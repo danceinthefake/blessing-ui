@@ -10,7 +10,7 @@ A text field that searches a list as you type. It is the right control if a `Ble
 
 For a handful of options use `BlessSelect` (native, no JS). For commands rather than values, use `BlessCommand`.
 
-Filtering is client-side over `options`. For server-side search, listen to `search` (the query as typed) and bind `options` to what comes back: the list re-renders, nothing else changes. Keyboard: ↑ / ↓ move, Enter picks (or creates), Esc closes, and in `multiple` mode Backspace on an empty query removes the last chip. Inside a `BlessField` the field's label names the input. `label` is for a combobox with no visible label.
+Filtering is client-side over `options`. For server-side search, listen to `search` (the query as typed) and bind `options` to what comes back: the list re-renders, nothing else changes. Keyboard: ↑ / ↓ move, Enter picks (or creates), Esc closes, and in `multiple` mode Backspace on an empty query removes the last chip. To clear a single choice, empty the text and leave the field, or press Esc. The value then becomes `undefined`. Inside a `BlessField` the field's label names the input. `label` is for a combobox with no visible label.
 
 <Demo title="Basic">
   <ComboboxBasic />

@@ -179,6 +179,44 @@ test("Esc that closes a popup is claimed, so an enclosing dialog stays open", as
   w.unmount();
 });
 
+test("BlessCombobox single: empty text on leaving clears the choice", async () => {
+  const { default: BlessCombobox } = await import("./BlessCombobox.vue");
+  const options = [
+    { label: "Megumi", value: "m" },
+    { label: "Utaha", value: "u" },
+  ];
+  const w = mount(BlessCombobox, { props: { options, modelValue: "m" }, attachTo: document.body });
+  const input = w.find("input");
+  expect(input.element.value).toBe("Megumi");
+  // negative control: leaving with the text of the choice keeps it
+  await input.trigger("blur");
+  expect(w.emitted("update:modelValue")).toBeUndefined();
+  await input.setValue("");
+  await input.trigger("blur");
+  expect(w.emitted("update:modelValue")!.at(-1)).toEqual([undefined]);
+  // Escape with empty text clears too
+  await w.setProps({ modelValue: "u" });
+  await input.setValue("");
+  await input.trigger("keydown", { key: "Escape" });
+  expect(w.emitted("update:modelValue")!.at(-1)).toEqual([undefined]);
+  w.unmount();
+});
+
+test("BlessCombobox single: a pick after empty text keeps the pick", async () => {
+  const { default: BlessCombobox } = await import("./BlessCombobox.vue");
+  const options = [
+    { label: "Megumi", value: "m" },
+    { label: "Utaha", value: "u" },
+  ];
+  const w = mount(BlessCombobox, { props: { options, modelValue: "m" }, attachTo: document.body });
+  const input = w.find("input");
+  await input.setValue("");
+  await input.trigger("keydown", { key: "ArrowDown" });
+  await input.trigger("keydown", { key: "Enter" });
+  expect(w.emitted("update:modelValue")!.at(-1)).not.toEqual([undefined]);
+  w.unmount();
+});
+
 test("BlessCombobox in an invalid field: styled invalid and reads the error", async () => {
   const { default: BlessCombobox } = await import("./BlessCombobox.vue");
   const w = mount(BlessField, {

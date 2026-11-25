@@ -8,6 +8,7 @@
 
 ### Fixed
 
+- A single `BlessCombobox` can be cleared: empty text, then leave the field or press Esc, and the value becomes `undefined`. Before, the old choice came back, so a time zone could not go back to none. A pick from the list after empty text still keeps the pick. Found by blessing.id.
 - `BlessHeatmapCalendar` takes its words from `labels` and from the label pack. Before, "Less", "More", "in … weeks", and "on" stayed English, and the unit always got an English "s". An Indonesian page showed "2 lagus". The Indonesian pack (`labelsId`) has the words. A unit test covers it. Found by blessing.id.
 
 ## 0.12.1 — 2026-11-22
