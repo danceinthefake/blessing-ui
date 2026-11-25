@@ -22,7 +22,7 @@
         emit('dismiss');
       "
     >
-      <span aria-hidden="true">×</span>
+      <BlessIcon name="close" size="sm" />
     </button>
   </div>
 </template>
@@ -30,6 +30,7 @@
 <script setup lang="ts">
 import { useLabelPack } from "../composables/useLabels";
 import { computed } from "vue";
+import BlessIcon from "./BlessIcon.vue";
 defineOptions({ name: "BlessAlert" });
 
 const props = withDefaults(

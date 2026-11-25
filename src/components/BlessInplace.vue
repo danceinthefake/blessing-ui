@@ -16,7 +16,7 @@
         :aria-label="text.close"
         @click="close"
       >
-        <span aria-hidden="true">×</span>
+        <BlessIcon name="close" size="xs" />
       </button>
     </div>
   </div>
@@ -25,6 +25,7 @@
 <script setup lang="ts">
 import { useLabelPack } from "../composables/useLabels";
 import { nextTick, ref, computed } from "vue";
+import BlessIcon from "./BlessIcon.vue";
 
 defineOptions({ name: "BlessInplace" });
 const props = withDefaults(

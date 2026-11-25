@@ -123,6 +123,6 @@ Decisions of the owner (2026-11-25):
 Build order:
 
 1. [x] Tokens: paper and ink, the three moods, the radii, the type scale, and the shadows (2026-11-25).
-2. [ ] Drawn icons, and the visual-novel text box.
+2. [x] Drawn icons, and the visual-novel text box (2026-11-25).
 3. [ ] The components and the docs, with neutral art of our own. The docs home gets a hero frame in place of the eyecatch band.
 4. [ ] The apps of blessing.id.

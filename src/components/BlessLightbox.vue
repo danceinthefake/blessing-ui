@@ -42,7 +42,7 @@
           :aria-disabled="!hasPrev || undefined"
           @click="step(-1)"
         >
-          <span aria-hidden="true">‹</span>
+          <BlessIcon name="chevron-left" size="md" />
         </button>
         <button
           v-if="items.length > 1"
@@ -52,7 +52,7 @@
           :aria-disabled="!hasNext || undefined"
           @click="step(1)"
         >
-          <span aria-hidden="true">›</span>
+          <BlessIcon name="chevron-right" size="md" />
         </button>
         <div class="bless-lightbox__bar">
           <button
@@ -85,6 +85,7 @@
 import { computed, ref, watch } from "vue";
 import { logicalKey } from "../composables/rtl";
 import { useLabelPack } from "../composables/useLabels";
+import BlessIcon from "./BlessIcon.vue";
 import BlessModal from "./BlessModal.vue";
 
 defineOptions({ name: "BlessLightbox" });
@@ -241,10 +242,13 @@ function toggleZoom() {
 .bless-lightbox__nav {
   position: absolute;
   top: 50%;
+  display: inline-grid;
+  place-items: center;
   width: 44px;
   height: 56px;
   padding: 0;
   border: 0;
+  border-radius: var(--bless-radius);
   background: rgb(0 0 0 / 0.5);
   color: var(--bless-color-on-accent);
   font-size: var(--bless-text-xl);

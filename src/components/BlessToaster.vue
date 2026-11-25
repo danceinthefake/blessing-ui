@@ -45,7 +45,7 @@
           :aria-label="text.close"
           @click="dismiss(t.id)"
         >
-          <span aria-hidden="true">×</span>
+          <BlessIcon name="close" size="sm" />
         </button>
       </li>
     </TransitionGroup>
@@ -56,6 +56,7 @@
 import { useLabelPack } from "../composables/useLabels";
 import { computed } from "vue";
 import { pauseToasts, resumeToasts, toastState, useToast } from "../composables/useToast";
+import BlessIcon from "./BlessIcon.vue";
 
 defineOptions({ name: "BlessToaster" });
 

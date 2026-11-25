@@ -10,7 +10,7 @@
       :aria-label="`${text.remove} ${label ?? ''}`"
       @click="emit('remove')"
     >
-      <span aria-hidden="true">×</span>
+      <BlessIcon name="close" size="xs" />
     </button>
   </span>
 </template>
@@ -18,6 +18,7 @@
 <script setup lang="ts">
 import { useLabelPack } from "../composables/useLabels";
 import { computed } from "vue";
+import BlessIcon from "./BlessIcon.vue";
 defineOptions({ name: "BlessChip" });
 
 const props = withDefaults(

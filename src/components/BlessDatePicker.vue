@@ -50,7 +50,7 @@
         :aria-label="words.clear"
         @click="clear"
       >
-        ×
+        <BlessIcon name="close" size="xs" />
       </button>
       <div
         ref="panel"
@@ -75,6 +75,7 @@ import { useFieldId, useFieldState } from "../composables/useFieldId";
 import { useFloating } from "../composables/useFloating";
 import { fromISO } from "../composables/date";
 import BlessCalendar from "./BlessCalendar.vue";
+import BlessIcon from "./BlessIcon.vue";
 
 defineOptions({ name: "BlessDatePicker" });
 

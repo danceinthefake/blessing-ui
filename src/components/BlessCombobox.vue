@@ -33,7 +33,7 @@
             tabindex="-1"
             @click.stop="remove(v)"
           >
-            ×
+            <BlessIcon name="close" size="2xs" />
           </button>
         </BlessBadge>
       </template>
@@ -95,9 +95,9 @@
           @mousemove="active = i"
           @click="!o.disabled && pick(o.value)"
         >
-          <span class="bless-combobox__check" aria-hidden="true">{{
-            selected.includes(o.value) ? "✓" : ""
-          }}</span>
+          <span class="bless-combobox__check" aria-hidden="true"
+            ><BlessIcon v-if="selected.includes(o.value)" name="check" size="xs"
+          /></span>
           <slot name="option" :option="o">{{ o.label }}</slot>
         </div>
         <div
@@ -111,7 +111,9 @@
           @mousemove="active = filtered.length"
           @click="create"
         >
-          <span class="bless-combobox__check" aria-hidden="true">＋</span>Create “{{
+          <span class="bless-combobox__check" aria-hidden="true"
+            ><BlessIcon name="plus" size="xs" /></span
+          >Create “{{
             query.trim()
           }}”
         </div>
@@ -127,6 +129,7 @@ import { useLabelPack } from "../composables/useLabels";
 import { useFieldId, useFieldState } from "../composables/useFieldId";
 import { useFloating } from "../composables/useFloating";
 import BlessBadge from "./BlessBadge.vue";
+import BlessIcon from "./BlessIcon.vue";
 import type { BlessOption } from "./select";
 
 defineOptions({ name: "BlessCombobox" });

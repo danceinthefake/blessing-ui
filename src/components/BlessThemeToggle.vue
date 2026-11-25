@@ -5,10 +5,10 @@
     :label="label ?? text().theme"
     @update:model-value="set(($event ?? 'system') as BlessTheme)"
   >
-    <BlessToggle value="light" size="sm" :label="text().light">☀</BlessToggle>
-    <BlessToggle value="system" size="sm" :label="text().system">◐</BlessToggle>
-    <BlessToggle value="golden" size="sm" :label="text().golden">◒</BlessToggle>
-    <BlessToggle value="dark" size="sm" :label="text().dark">☾</BlessToggle>
+    <BlessToggle value="light" size="sm" :label="text().light"><BlessIcon name="sun" size="sm" /></BlessToggle>
+    <BlessToggle value="system" size="sm" :label="text().system"><BlessIcon name="system" size="sm" /></BlessToggle>
+    <BlessToggle value="golden" size="sm" :label="text().golden"><BlessIcon name="sunset" size="sm" /></BlessToggle>
+    <BlessToggle value="dark" size="sm" :label="text().dark"><BlessIcon name="moon" size="sm" /></BlessToggle>
   </BlessToggleGroup>
   <button
     v-else
@@ -18,7 +18,7 @@
     :aria-pressed="mounted ? isDark : false"
     @click="toggle"
   >
-    <span aria-hidden="true">{{ mounted && isDark ? "☾" : "☀" }}</span>
+    <BlessIcon :name="mounted && isDark ? 'moon' : 'sun'" size="sm" />
   </button>
 </template>
 
@@ -26,6 +26,7 @@
 import { onMounted, ref } from "vue";
 import { useLabelPack } from "../composables/useLabels";
 import { useTheme, type BlessTheme } from "../composables/useTheme";
+import BlessIcon from "./BlessIcon.vue";
 import BlessToggle from "./BlessToggle.vue";
 import BlessToggleGroup from "./BlessToggleGroup.vue";
 
@@ -69,9 +70,12 @@ onMounted(() => (mounted.value = true));
 
 <style>
 .bless-theme-toggle {
-  border-radius: var(--bless-radius-plate);
+  display: inline-grid;
+  place-items: center;
+  border-radius: var(--bless-radius-pill);
   width: 36px;
   height: 36px;
+  padding: 0;
   border: var(--bless-border-width) solid var(--bless-color-border);
   background: var(--bless-color-bg);
   color: var(--bless-color-text);

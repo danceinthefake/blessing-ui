@@ -4,15 +4,15 @@ title: Icon
 
 # Icon
 
-<p class="bless-lead">SVG slot wrapper</p>
+<p class="bless-lead">Built-in drawn icons and SVG slot wrapper</p>
 
-No icon set is bundled: a set is a dependency and a style, and the library's own controls make do with type (×, ‹ ›, ✓, ▾). `BlessIcon` is the box any SVG goes in: it sizes it, colors it with the surrounding text, and handles the accessibility switch. Paste an SVG, or render a component from a set inside it.
+`BlessIcon` ships a built-in set of drawn icons on a 24px grid with a 2px round stroke, sized to the type scale and colored with the surrounding text. Pass `name` for a built-in icon, or put your own SVG in the default slot (for example from [Lucide](https://lucide.dev) or [Tabler](https://tabler.io/icons)).
 
-Sets that sit well with thin Roboto: [Lucide](https://lucide.dev) and [Tabler](https://tabler.io/icons) (1.5–2px strokes, no fill). A stroke icon (`fill="none" stroke="currentColor"`) keeps its own attributes. A bare-path icon with no `fill` is filled with the text color.
+A stroke icon (`fill="none" stroke="currentColor"`) keeps its own attributes. A bare-path icon with no `fill` fills with the text color.
 
-Size it to the text beside it: `size="sm"` in a button, `md` in a line of body text, or any CSS length. Decorative icons (next to a label that already says it) get no `label` and are hidden from screen readers. An icon that carries the meaning on its own gets `label`, which makes it `role="img"`.
+Size it to the text beside it: `size="sm"` in a button, `md` in a line of body text, or any CSS length. Decorative icons (next to a label that already says it) get no `label` and are hidden from screen readers. An icon that carries meaning on its own gets `label`, which makes it `role="img"`.
 
-<Demo title="Basic">
+<Demo title="Built-in icons and sizes">
   <IconBasic />
   <template #code>
 
@@ -24,7 +24,7 @@ Size it to the text beside it: `size="sm"` in a button, `md` in a line of body t
 ## Usage
 
 ```ts
-import { BlessIcon } from "blessing-ui";
+import { BlessIcon, blessIcons } from "blessing-ui";
 ```
 
 ## API

@@ -11,7 +11,9 @@
   >
     <div class="bless-command__box">
       <div class="bless-command__search bless-lean--field">
-        <span class="bless-command__icon" aria-hidden="true">⌕</span>
+        <span class="bless-command__icon" aria-hidden="true"
+          ><BlessIcon name="search" size="sm"
+        /></span>
         <button
           v-if="scope"
           type="button"
@@ -20,7 +22,7 @@
           :aria-label="`${text.scope(scopeName(scope))}. ${text.clearScope}`"
           @click="clearScope"
         >
-          {{ scopeName(scope) }} <span aria-hidden="true">×</span>
+          {{ scopeName(scope) }} <BlessIcon name="close" size="2xs" />
         </button>
         <input
           ref="input"
@@ -85,6 +87,7 @@
 import { useLabelPack } from "../composables/useLabels";
 import { readJson, writeJson } from "../composables/storage";
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, useId, watch } from "vue";
+import BlessIcon from "./BlessIcon.vue";
 import BlessKbd from "./BlessKbd.vue";
 import BlessModal from "./BlessModal.vue";
 
@@ -358,9 +361,9 @@ onBeforeUnmount(() => removeEventListener("keydown", onHotkey));
   border-bottom: var(--bless-border-width) solid var(--bless-color-border);
 }
 .bless-command__icon {
-  font-size: var(--bless-text-lg);
+  display: inline-flex;
   color: var(--bless-color-text-muted);
-  transform: skewX(var(--bless-skew-counter)) rotate(-45deg);
+  transform: skewX(var(--bless-skew-counter));
 }
 .bless-command__input {
   flex: 1;

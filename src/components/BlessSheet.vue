@@ -34,7 +34,7 @@
         :aria-label="text.close"
         @click="open = false"
       >
-        <span aria-hidden="true">×</span>
+        <BlessIcon name="close" size="sm" />
       </button>
       <header v-if="title || $slots.title" class="bless-sheet__header">
         <h2 :id="titleId" class="bless-sheet__title">
@@ -50,6 +50,7 @@
 <script setup lang="ts">
 import { useLabelPack } from "../composables/useLabels";
 import { nextTick, onMounted, ref, useId, watch, computed } from "vue";
+import BlessIcon from "./BlessIcon.vue";
 
 defineOptions({ name: "BlessSheet" });
 
@@ -193,9 +194,12 @@ function onUp() {
   top: var(--bless-space-2);
   right: var(--bless-space-2);
   z-index: 1;
+  display: inline-grid;
+  place-items: center;
   width: 36px;
   height: 36px;
   border: 0;
+  border-radius: var(--bless-radius-pill);
   padding: 0;
   background: var(--bless-color-text);
   color: var(--bless-color-on-text);

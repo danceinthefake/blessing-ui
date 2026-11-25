@@ -17,6 +17,21 @@ test("BlessIcon decorative by default, labelled becomes img", () => {
   expect(l.attributes("style")).toContain("24px");
 });
 
+test("BlessIcon renders built-in stroke and fill icons by name", () => {
+  const stroke = mount(BlessIcon, { props: { name: "close", size: "sm" } });
+  const sSvg = stroke.find("svg");
+  expect(sSvg.exists()).toBe(true);
+  expect(sSvg.attributes("fill")).toBe("none");
+  expect(sSvg.attributes("stroke")).toBe("currentColor");
+  expect(sSvg.findAll("path")).toHaveLength(2);
+
+  const solid = mount(BlessIcon, { props: { name: "play" } });
+  const pSvg = solid.find("svg");
+  expect(pSvg.attributes("fill")).toBe("currentColor");
+  expect(pSvg.attributes("stroke")).toBe("none");
+  expect(pSvg.findAll("path")).toHaveLength(1);
+});
+
 test("BlessText maps props to classes", () => {
   const w = mount(BlessText, {
     props: { as: "h2", size: "xl", weight: "thin", muted: true, uppercase: true },

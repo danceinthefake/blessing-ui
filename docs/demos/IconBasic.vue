@@ -1,25 +1,46 @@
 <template>
-  <div class="row">
-    <BlessIcon v-for="s in sizes" :key="s" :size="s">
-      <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
-    </BlessIcon>
-    <BlessIcon size="40px" label="Opens in a new tab">
-      <svg viewBox="0 0 24 24">
-        <path d="M14 3h7v7h-2V6.4l-9.3 9.3-1.4-1.4L17.6 5H14zM5 5h6v2H7v10h10v-4h2v6H5z" />
-      </svg>
-    </BlessIcon>
-    <BlessButton>
-      <template #prefix>
-        <BlessIcon size="sm"
-          ><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg
-        ></BlessIcon>
-      </template>
-      Play
-    </BlessButton>
+  <div class="icon-demo">
+    <div class="row">
+      <BlessIcon v-for="s in sizes" :key="s" name="play" :size="s" />
+      <BlessIcon name="external" size="32px" label="Opens in a new tab" />
+      <BlessButton>
+        <template #prefix><BlessIcon name="play" size="sm" /></template>
+        Play
+      </BlessButton>
+    </div>
+    <div class="icon-grid">
+      <div v-for="n in names" :key="n" class="icon-cell">
+        <BlessIcon :name="n" size="lg" />
+        <span>{{ n }}</span>
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { BlessButton, BlessIcon } from "blessing-ui";
+import { BlessButton, BlessIcon, blessIcons, type BlessIconName } from "blessing-ui";
 const sizes = ["xs", "sm", "md", "lg", "xl"] as const;
+const names = Object.keys(blessIcons) as BlessIconName[];
 </script>
+
+<style scoped>
+.icon-demo {
+  display: grid;
+  gap: 20px;
+}
+.icon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(104px, 1fr));
+  gap: 10px;
+}
+.icon-cell {
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+  padding: 12px 8px;
+  border-radius: var(--bless-radius-plate);
+  background: var(--bless-color-surface);
+  font-size: var(--bless-text-xs);
+  color: var(--bless-color-text-muted);
+}
+</style>

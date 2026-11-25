@@ -16,7 +16,9 @@
         @click="!item.disabled && (subOpen = subOpen === i ? null : i)"
       >
         <span class="bless-menu__text">{{ item.label }}</span>
-        <span class="bless-menu__chevron" aria-hidden="true">›</span>
+        <span class="bless-menu__chevron" aria-hidden="true"
+          ><BlessIcon name="chevron-right" size="xs"
+        /></span>
         <BlessMenuList
           v-if="subOpen === i"
           :items="item.items"
@@ -61,9 +63,9 @@
         "
       >
         <span class="bless-menu__mark" aria-hidden="true">
-          <template v-if="item.type === 'checkbox'">{{
-            checked?.[item.value] ? "✓" : ""
-          }}</template>
+          <template v-if="item.type === 'checkbox'"
+            ><BlessIcon v-if="checked?.[item.value]" name="check" size="xs"
+          /></template>
           <template v-else-if="item.type === 'radio'">{{
             radios?.[item.group] === item.value ? "●" : ""
           }}</template>
@@ -82,6 +84,7 @@
 import { useLink } from "../composables/useLink";
 import { nextTick, ref } from "vue";
 import { logicalKey } from "../composables/rtl";
+import BlessIcon from "./BlessIcon.vue";
 import BlessKbd from "./BlessKbd.vue";
 import type { BlessMenuItem } from "./menu";
 

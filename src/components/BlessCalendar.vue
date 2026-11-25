@@ -7,7 +7,7 @@
         :aria-label="text.prev"
         @click="shiftMonth(-1)"
       >
-        <span aria-hidden="true">‹</span>
+        <BlessIcon name="chevron-left" size="sm" />
       </button>
       <span class="bless-calendar__month" aria-live="polite">{{ ready ? fmtMonth : "" }}</span>
       <button
@@ -16,7 +16,7 @@
         :aria-label="text.next"
         @click="shiftMonth(1)"
       >
-        <span aria-hidden="true">›</span>
+        <BlessIcon name="chevron-right" size="sm" />
       </button>
     </div>
     <div v-if="!ready" class="bless-calendar__grid bless-calendar__grid--pending" />
@@ -63,6 +63,7 @@ import { useLabelPack } from "../composables/useLabels";
 import { computed, onMounted, ref, useId, watch } from "vue";
 import { logicalKey } from "../composables/rtl";
 import { addDays, addMonths, fromISO, isoToday, sameDay, toISO } from "../composables/date";
+import BlessIcon from "./BlessIcon.vue";
 
 defineOptions({ name: "BlessCalendar" });
 const pack = useLabelPack("BlessCalendar");
@@ -230,9 +231,13 @@ watch(
   letter-spacing: var(--bless-tracking-wide);
 }
 .bless-calendar__nav {
+  display: inline-grid;
+  place-items: center;
   width: 32px;
   height: 32px;
+  padding: 0;
   border: 0;
+  border-radius: var(--bless-radius-pill);
   background: transparent;
   color: var(--bless-color-text);
   font-size: var(--bless-text-lg);

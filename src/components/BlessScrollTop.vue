@@ -8,7 +8,7 @@
       :aria-label="label"
       @click="go"
     >
-      <span aria-hidden="true"><slot>↑</slot></span>
+      <span aria-hidden="true"><slot><BlessIcon name="arrow-up" size="sm" /></slot></span>
     </button>
   </Transition>
 </template>
@@ -16,6 +16,7 @@
 <script setup lang="ts">
 import { onBeforeUnmount, onMounted, ref } from "vue";
 import { scrollBehavior } from "../composables/useMedia";
+import BlessIcon from "./BlessIcon.vue";
 
 defineOptions({ name: "BlessScrollTop" });
 
@@ -57,8 +58,11 @@ onBeforeUnmount(() => (el() ?? window).removeEventListener("scroll", check));
   position: fixed;
   bottom: var(--bless-space-6);
   z-index: var(--bless-z-nav);
+  display: inline-grid;
+  place-items: center;
   width: 40px;
   height: 40px;
+  padding: 0;
   border: 0;
   background: var(--bless-color-text);
   color: var(--bless-color-on-text);

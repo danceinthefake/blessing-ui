@@ -80,9 +80,9 @@ test("BlessPagination windows with ellipsis and navigates", async () => {
   const w = mount(BlessPagination, { props: { total: 20, modelValue: 10 } });
   const labels = w
     .findAll("li")
-    .map((li) => li.text())
+    .map((li) => li.text() || li.find("button,a").attributes("aria-label") || "")
     .filter(Boolean);
-  expect(labels).toEqual(["‹", "1", "…", "9", "10", "11", "…", "20", "›"]);
+  expect(labels).toEqual(["Previous", "1", "…", "9", "10", "11", "…", "20", "Next"]);
   expect(w.find('[aria-current="page"]').text()).toBe("10");
   await w.findAll("button")[1].trigger("click"); // "1"
   expect(w.emitted("update:modelValue")![0]).toEqual([1]);
@@ -92,9 +92,9 @@ test("BlessPagination windows with ellipsis and navigates", async () => {
   expect(
     first
       .findAll("li")
-      .map((li) => li.text())
+      .map((li) => li.text() || li.find("button,a").attributes("aria-label") || "")
       .filter(Boolean),
-  ).toEqual(["‹", "1", "2", "3", "4", "5", "›"]);
+  ).toEqual(["Previous", "1", "2", "3", "4", "5", "Next"]);
 
   const links = mount(BlessPagination, {
     props: { total: 3, modelValue: 2, href: (p: number) => `/p/${p}` },

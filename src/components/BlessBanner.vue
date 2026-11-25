@@ -14,7 +14,7 @@
       :aria-label="text.close"
       @click="close"
     >
-      <span aria-hidden="true">×</span>
+      <BlessIcon name="close" size="sm" />
     </button>
   </section>
 </template>
@@ -23,6 +23,7 @@
 import { useLabelPack } from "../composables/useLabels";
 import { readStore, writeStore } from "../composables/storage";
 import { onMounted, ref, computed } from "vue";
+import BlessIcon from "./BlessIcon.vue";
 
 defineOptions({ name: "BlessBanner" });
 

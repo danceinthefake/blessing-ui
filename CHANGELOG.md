@@ -9,6 +9,8 @@
 
 ### Added
 
+- The revamp of 2026-11, step 2: `BlessIcon` ships a built-in set of 29 drawn icons (`name` prop, `blessIcons`, `BlessIconName`) on a 24px grid with a 2px round stroke, while keeping the default slot for custom SVGs. Core controls (`BlessThemeToggle`, `BlessModal`, `BlessSheet`, `BlessAlert`, `BlessBanner`, `BlessToaster`, `BlessChip`, `BlessAudioPlayer`, `BlessMiniPlayer`, `BlessPagination`, `BlessCalendar`, `BlessRangeCalendar`, `BlessDatePicker`, `BlessCombobox`, `BlessCarousel`, `BlessLightbox`, `BlessCropper`, `BlessCommand`, `BlessFileInput`, `BlessInplace`, `BlessMenuList`, `BlessSplitButton`, `BlessScrollTop`) now render drawn icons instead of Unicode characters.
+- `BlessNovelBox`: the visual-novel text box with a leaning speaker plate, typed lines with screen-reader text, instant/calm/reduced-motion support, and an optional `interactive` button to finish typing or advance to the next line. Found by blessing.id.
 - A third mood, Golden hour: `data-theme="golden"`, `useTheme().set("golden")`, and a fourth button in `BlessThemeToggle mode="group"`. The Indonesian pack names it "Senja".
 - Tokens: `--bless-radius-pill`, `--bless-font-weight-medium`, `--bless-shadow-sm`, `--bless-edge`, `--bless-label-case`, and the abstract art of each mood, `--bless-light` (a light leak) and `--bless-sky` (a sky gradient).
 

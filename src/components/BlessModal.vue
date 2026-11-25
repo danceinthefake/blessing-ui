@@ -16,7 +16,7 @@
         :aria-label="text.close"
         @click="open = false"
       >
-        <span aria-hidden="true">×</span>
+        <BlessIcon name="close" size="sm" />
       </button>
       <header v-if="title || $slots.title" class="bless-modal__header">
         <h2 :id="titleId" class="bless-modal__title">
@@ -33,6 +33,7 @@
 import { useLabelPack } from "../composables/useLabels";
 import { nextTick, onMounted, ref, useId, watch, computed } from "vue";
 import { useHash } from "../composables/useHash";
+import BlessIcon from "./BlessIcon.vue";
 
 defineOptions({ name: "BlessModal" });
 
@@ -173,9 +174,12 @@ const titleId = `${useId()}-title`;
   top: var(--bless-space-2);
   inset-inline-end: var(--bless-space-2);
   z-index: 1;
+  display: inline-grid;
+  place-items: center;
   width: 40px;
   height: 40px;
   border: 0;
+  border-radius: var(--bless-radius-pill);
   padding: 0;
   background: var(--bless-color-text);
   color: var(--bless-color-on-text);

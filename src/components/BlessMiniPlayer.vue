@@ -26,9 +26,7 @@
       >
       <div class="bless-mini__controls">
         <button type="button" :aria-label="text.previous" @click="emit('previous')">
-          <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor" aria-hidden="true">
-            <path d="M3 2h2v12H3zM14 2v12L6 8z" />
-          </svg>
+          <BlessIcon name="skip-back" size="sm" />
         </button>
         <button
           type="button"
@@ -36,12 +34,10 @@
           :aria-label="playing ? text.pause : text.play"
           @click="playing = !playing"
         >
-          {{ playing ? "❚❚" : "▶" }}
+          <BlessIcon :name="playing ? 'pause' : 'play'" size="sm" />
         </button>
         <button type="button" :aria-label="text.next" @click="emit('next')">
-          <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor" aria-hidden="true">
-            <path d="M11 2h2v12h-2zM2 2v12l8-6z" />
-          </svg>
+          <BlessIcon name="skip-forward" size="sm" />
         </button>
       </div>
     </div>
@@ -51,6 +47,7 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import { useLabelPack } from "../composables/useLabels";
+import BlessIcon from "./BlessIcon.vue";
 import "./sr.css";
 
 defineOptions({ name: "BlessMiniPlayer" });
@@ -105,8 +102,10 @@ const share = computed(() => (props.duration ? (position.value / props.duration)
 <style>
 .bless-mini {
   display: grid;
+  overflow: hidden;
+  border-radius: var(--bless-radius);
   border: var(--bless-border-width) solid var(--bless-color-border);
-  background: var(--bless-color-bg);
+  background: var(--bless-color-surface);
   font-family: var(--bless-font-sans);
   font-size: var(--bless-text-sm);
   color: var(--bless-color-text);
@@ -177,6 +176,7 @@ const share = computed(() => (props.duration ? (position.value / props.duration)
   inline-size: 2.5rem;
   block-size: 2.5rem;
   overflow: hidden;
+  border-radius: var(--bless-radius-plate);
   background: var(--bless-color-surface-2);
 }
 .bless-mini__art img {
@@ -211,9 +211,12 @@ const share = computed(() => (props.duration ? (position.value / props.duration)
   gap: var(--bless-space-1);
 }
 .bless-mini__controls button {
+  display: inline-grid;
+  place-items: center;
   inline-size: 2.25rem;
   block-size: 2.25rem;
   border: 0;
+  border-radius: var(--bless-radius-pill);
   background: none;
   color: inherit;
   font: inherit;

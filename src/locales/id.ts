@@ -276,6 +276,7 @@ import type BlessInplace from "../components/BlessInplace.vue";
 import type BlessJsonViewer from "../components/BlessJsonViewer.vue";
 import type BlessMessageScroller from "../components/BlessMessageScroller.vue";
 import type BlessModal from "../components/BlessModal.vue";
+import type BlessNovelBox from "../components/BlessNovelBox.vue";
 import type BlessPagination from "../components/BlessPagination.vue";
 import type BlessPaletteToggle from "../components/BlessPaletteToggle.vue";
 import type BlessPasswordInput from "../components/BlessPasswordInput.vue";
@@ -586,6 +587,7 @@ export type BlessLabelsFull = {
   BlessJsonViewer: All<typeof BlessJsonViewer>;
   BlessMessageScroller: All<typeof BlessMessageScroller>;
   BlessModal: All<typeof BlessModal>;
+  BlessNovelBox: All<typeof BlessNovelBox>;
   BlessPagination: All<typeof BlessPagination>;
   BlessPaletteToggle: All<typeof BlessPaletteToggle>;
   BlessPasswordInput: All<typeof BlessPasswordInput>;
@@ -2576,6 +2578,7 @@ export const labelsId: BlessLabelsFull = {
   BlessJsonViewer: { root: "akar" },
   BlessMessageScroller: { jump: "Terbaru" },
   BlessModal: { close: "Tutup" },
+  BlessNovelBox: { next: "Baris berikutnya", skip: "Tampilkan baris penuh" },
   BlessPagination: { prev: "Sebelumnya", next: "Berikutnya", page: (n) => `Halaman ${n}` },
   BlessPaletteToggle: { palette: "Palet warna" },
   BlessPasswordInput: { show: "Tampilkan kata sandi" },

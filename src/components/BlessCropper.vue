@@ -36,11 +36,11 @@
       >
       <span v-if="controls" class="bless-cropper__controls">
         <BlessButton size="sm" variant="ghost" :aria-label="text.rotateLeft" @click="turn(-90)"
-          >↺</BlessButton
-        >
+          ><BlessIcon name="rotate-ccw" size="sm"
+        /></BlessButton>
         <BlessButton size="sm" variant="ghost" :aria-label="text.rotateRight" @click="turn(90)"
-          >↻</BlessButton
-        >
+          ><BlessIcon name="rotate-cw" size="sm"
+        /></BlessButton>
       </span>
     </div>
     <span class="bless-cropper__live bless-sr" aria-live="polite">{{ live }}</span>
@@ -64,6 +64,7 @@ import "./sr.css";
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, useId, watch } from "vue";
 import { initialBox, moveBox, resizeBox, scaleBox, type CropBox } from "../composables/cropBox";
 import BlessButton from "./BlessButton.vue";
+import BlessIcon from "./BlessIcon.vue";
 
 defineOptions({ name: "BlessCropper" });
 const pack = useLabelPack("BlessCropper");

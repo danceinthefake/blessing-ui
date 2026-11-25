@@ -2,12 +2,14 @@
   <div class="bless-rangecal" role="group" :aria-label="label">
     <div class="bless-rangecal__bar">
       <BlessButton size="sm" variant="ghost" :aria-label="text.prev" @click="nav(-1)"
-        >‹</BlessButton
-      >
+        ><BlessIcon name="chevron-left" size="sm"
+      /></BlessButton>
       <strong class="bless-rangecal__title" aria-live="polite">{{
         shown ? monthFmt.format(shown) : ""
       }}</strong>
-      <BlessButton size="sm" variant="ghost" :aria-label="text.next" @click="nav(1)">›</BlessButton>
+      <BlessButton size="sm" variant="ghost" :aria-label="text.next" @click="nav(1)"
+        ><BlessIcon name="chevron-right" size="sm"
+      /></BlessButton>
     </div>
     <div
       v-if="shown"
@@ -85,6 +87,7 @@ import {
   type DayBlock,
 } from "../composables/dayBlocks";
 import BlessButton from "./BlessButton.vue";
+import BlessIcon from "./BlessIcon.vue";
 
 defineOptions({ name: "BlessRangeCalendar" });
 const pack = useLabelPack("BlessRangeCalendar");

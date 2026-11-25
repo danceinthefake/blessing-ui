@@ -27,7 +27,7 @@
         :aria-disabled="!canPrev || undefined"
         @click="canPrev && go(index - 1)"
       >
-        <span aria-hidden="true">‹</span>
+        <BlessIcon name="chevron-left" size="md" />
       </button>
       <button
         type="button"
@@ -36,7 +36,7 @@
         :aria-disabled="!canNext || undefined"
         @click="canNext && go(index + 1)"
       >
-        <span aria-hidden="true">›</span>
+        <BlessIcon name="chevron-right" size="md" />
       </button>
     </template>
     <div v-if="dots && pages > 1" class="bless-carousel__dots" role="group" :aria-label="text.dots">
@@ -59,7 +59,7 @@
       :aria-pressed="paused"
       @click="togglePause"
     >
-      <span aria-hidden="true">{{ paused ? "▶" : "❚❚" }}</span>
+      <BlessIcon :name="paused ? 'play' : 'pause'" size="xs" />
     </button>
     <!-- which slide is showing, read after a step; quiet while it turns by itself -->
     <span
@@ -76,6 +76,7 @@ import "./sr.css";
 import { computed, onBeforeUnmount, onMounted, ref, watch } from "vue";
 import { logicalKey } from "../composables/rtl";
 import { reducedMotion, scrollBehavior } from "../composables/useMedia";
+import BlessIcon from "./BlessIcon.vue";
 
 defineOptions({ name: "BlessCarousel" });
 
@@ -221,6 +222,8 @@ defineExpose({ go, next: () => go(index.value + 1), prev: () => go(index.value -
   min-width: 0;
 }
 .bless-carousel__arrow {
+  display: inline-grid;
+  place-items: center;
   border-radius: var(--bless-radius);
   position: absolute;
   top: 50%;
@@ -268,9 +271,13 @@ defineExpose({ go, next: () => go(index.value + 1), prev: () => go(index.value -
   position: absolute;
   top: var(--bless-space-2);
   inset-inline-end: var(--bless-space-2);
+  display: inline-grid;
+  place-items: center;
   width: 32px;
   height: 32px;
+  padding: 0;
   border: 0;
+  border-radius: var(--bless-radius-pill);
   background: var(--bless-color-text);
   color: var(--bless-color-on-text);
   font-size: var(--bless-text-xs);

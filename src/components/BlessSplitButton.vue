@@ -13,8 +13,8 @@
           :aria-label="text.menu"
           :aria-expanded="open"
           class="bless-splitbtn__more"
-          >▾</BlessButton
-        >
+          ><BlessIcon name="chevron-down" size="xs"
+        /></BlessButton>
       </template>
     </BlessDropdownMenu>
   </BlessButtonGroup>
@@ -26,6 +26,7 @@ import { computed } from "vue";
 import BlessButton from "./BlessButton.vue";
 import BlessButtonGroup from "./BlessButtonGroup.vue";
 import BlessDropdownMenu from "./BlessDropdownMenu.vue";
+import BlessIcon from "./BlessIcon.vue";
 import type { BlessMenuItem } from "./menu";
 
 defineOptions({ name: "BlessSplitButton" });

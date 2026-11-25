@@ -28,7 +28,7 @@
         :aria-pressed="playing"
         @click="toggle"
       >
-        <span aria-hidden="true">{{ playing ? "❚❚" : "▶" }}</span>
+        <BlessIcon :name="playing ? 'pause' : 'play'" size="sm" />
       </BlessSkew>
       <div class="bless-audio__meta">
         <span class="bless-audio__title">{{ current.title }}</span>
@@ -75,6 +75,7 @@
 <script setup lang="ts">
 import { useLabelPack } from "../composables/useLabels";
 import { computed, onBeforeUnmount, ref, watch } from "vue";
+import BlessIcon from "./BlessIcon.vue";
 import BlessSkew from "./BlessSkew.vue";
 
 defineOptions({ name: "BlessAudioPlayer" });

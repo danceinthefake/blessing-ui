@@ -10,7 +10,7 @@
           :aria-label="text.prev"
           :disabled="page <= 1 || undefined"
           @click="!href && go(page - 1)"
-          ><span aria-hidden="true">‹</span></BlessSkew
+          ><BlessIcon name="chevron-left" size="sm" /></BlessSkew
         >
       </li>
       <li v-for="(it, i) in items" :key="i">
@@ -40,7 +40,7 @@
           :aria-label="text.next"
           :disabled="page >= total || undefined"
           @click="!href && go(page + 1)"
-          ><span aria-hidden="true">›</span></BlessSkew
+          ><BlessIcon name="chevron-right" size="sm" /></BlessSkew
         >
       </li>
     </ul>
@@ -51,6 +51,7 @@
 import { useLabelPack } from "../composables/useLabels";
 import { useLink } from "../composables/useLink";
 import { computed } from "vue";
+import BlessIcon from "./BlessIcon.vue";
 import BlessSkew from "./BlessSkew.vue";
 
 defineOptions({ name: "BlessPagination" });

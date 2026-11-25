@@ -41,7 +41,7 @@
           :aria-label="text.remove(f.name)"
           @click="remove(i)"
         >
-          ×
+          <BlessIcon name="close" size="xs" />
         </button>
       </li>
     </ul>
@@ -52,6 +52,7 @@
 import { useLabelPack } from "../composables/useLabels";
 import { nextTick, ref, computed } from "vue";
 import { joinIds, useFieldId, useFieldState } from "../composables/useFieldId";
+import BlessIcon from "./BlessIcon.vue";
 
 defineOptions({ name: "BlessFileInput", inheritAttrs: false });
 
