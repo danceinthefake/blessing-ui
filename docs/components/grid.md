@@ -19,6 +19,7 @@ title: Grid
 - `columns` alone is a fixed count. Use it inside a box that you know is wide enough.
 - `columns` and `min` together give at most that many columns. When the box gets narrow, the grid drops columns before a column gets narrower than `min`. The demo does this: resize the window to see 3, 2, then 1 column.
 - Each column is `minmax(0, 1fr)`, so a wide child such as a table cannot push the grid wider than its box.
+- `fill` keeps the empty columns of a row (`auto-fill`). Use it for a list of cards: one card keeps the width of a column. Without `fill`, the items stretch over the whole row (`auto-fit`).
 
 ## Usage
 

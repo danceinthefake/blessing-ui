@@ -27,3 +27,10 @@ test("BlessGrid: tag, gap, and align", () => {
   expect(s.gap).toBe("var(--bless-space-8)");
   expect(s.alignItems).toBe("start");
 });
+
+test("BlessGrid: fill keeps the empty columns, so one card does not stretch", () => {
+  expect(cols({ min: "220px", fill: true })).toBe("repeat(auto-fill, minmax(min(220px, 100%), 1fr))");
+  expect(cols({ columns: 4, min: "10rem", fill: true })).toMatch(/^repeat\(auto-fill, /);
+  // a fixed count has no empty columns to keep
+  expect(cols({ columns: 3, fill: true })).toBe("repeat(3, minmax(0px, 1fr))");
+});

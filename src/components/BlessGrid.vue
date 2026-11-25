@@ -23,6 +23,8 @@ const props = withDefaults(
     /** space token key */
     gap?: 1 | 2 | 3 | 4 | 6 | 8 | 12 | 16;
     align?: "start" | "center" | "end" | "stretch";
+    /** keep the empty columns of a row (auto-fill), so one item keeps the width of a column, for a list of cards. Off: the items stretch over the row (auto-fit) */
+    fill?: boolean;
   }>(),
   { as: "div", gap: 4, align: "stretch" },
 );
@@ -33,9 +35,10 @@ const template = computed(() => {
   const { columns: n, min } = props;
   if (n && !min) return `repeat(${n}, minmax(0, 1fr))`;
   const narrowest = `min(${min ?? "16rem"}, 100%)`;
-  if (!n) return `repeat(auto-fit, minmax(${narrowest}, 1fr))`;
+  const repeat = props.fill ? "auto-fill" : "auto-fit";
+  if (!n) return `repeat(${repeat}, minmax(${narrowest}, 1fr))`;
   // at most n columns: each is at least 1/n of the row, and never narrower than min
-  return `repeat(auto-fit, minmax(max(${narrowest}, calc((100% - ${n - 1} * ${space.value}) / ${n})), 1fr))`;
+  return `repeat(${repeat}, minmax(max(${narrowest}, calc((100% - ${n - 1} * ${space.value}) / ${n})), 1fr))`;
 });
 </script>
 

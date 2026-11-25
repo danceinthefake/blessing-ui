@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Added
+
+- `BlessGrid` has `fill`. It keeps the empty columns of a row (`auto-fill`), so one card in a list keeps the width of a column. Before, the one card stretched over the whole row. Found by blessing.id.
+
 ### Fixed
 
 - `BlessHeatmapCalendar` takes its words from `labels` and from the label pack. Before, "Less", "More", "in … weeks", and "on" stayed English, and the unit always got an English "s". An Indonesian page showed "2 lagus". The Indonesian pack (`labelsId`) has the words. A unit test covers it. Found by blessing.id.
