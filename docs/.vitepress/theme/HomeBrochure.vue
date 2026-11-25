@@ -1,61 +1,63 @@
 <template>
   <div ref="root" class="hb" :data-live="live ? '' : undefined">
-    <!-- hero frame: abstract neutral art drawn from the active mood, words in its open side -->
+    <!-- hero frame: Unified v3 Fine sky-ribbon + notched neutral petals + serif display -->
     <section class="hb__hero-wrap">
+      <div class="hb__petals" aria-hidden="true">
+        <svg viewBox="0 0 1152 120" width="100%" height="100%" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <path
+              id="hb-pt"
+              d="M0,-8 C3.6,-6 6,-1.6 4.4,4.4 C2.6,8 -2.6,8 -4.4,4.4 C-6,-1.6 -3.6,-6 -1.3,-8 L0,-5.8 L1.3,-8 Z"
+            />
+          </defs>
+          <g fill="var(--bless-color-accent-soft)">
+            <use href="#hb-pt" transform="translate(180 22) rotate(36) scale(0.9)" opacity="0.52" />
+            <use href="#hb-pt" transform="translate(640 18) rotate(-32) scale(0.75)" opacity="0.42" />
+            <use href="#hb-pt" transform="translate(920 38) rotate(52) scale(1)" opacity="0.48" />
+            <use href="#hb-pt" transform="translate(1060 20) rotate(-46) scale(0.74)" opacity="0.38" />
+          </g>
+        </svg>
+      </div>
       <div class="hb__wrap">
         <div class="hb__hero">
-          <svg
-            class="hb__art"
-            viewBox="0 0 1152 460"
-            preserveAspectRatio="xMaxYMid slice"
-            aria-hidden="true"
-          >
-            <defs>
-              <radialGradient id="hb-sun" cx="84%" cy="14%" r="60%">
-                <stop offset="0%" stop-color="currentColor" stop-opacity="0.26" />
-                <stop offset="55%" stop-color="currentColor" stop-opacity="0.08" />
-                <stop offset="100%" stop-color="currentColor" stop-opacity="0" />
-              </radialGradient>
-              <linearGradient id="hb-ray" x1="1" y1="0" x2="0.3" y2="1">
-                <stop offset="0%" stop-color="#fff" stop-opacity="0.22" />
-                <stop offset="100%" stop-color="#fff" stop-opacity="0" />
-              </linearGradient>
-            </defs>
-            <rect width="1152" height="460" fill="url(#hb-sun)" />
-            <polygon points="820,0 1152,0 920,460 560,460" fill="url(#hb-ray)" />
-            <!-- drifting abstract petals, no character or anime frame -->
-            <g fill="currentColor" opacity="0.24">
-              <path d="M845 78c24 18 34 50 18 72-16 20-48 12-60-16-12-24 16-54 42-56z" />
-              <path
-                d="M978 164c20 10 30 34 20 52-10 18-34 14-48-6-12-20 6-44 28-46z"
-                opacity="0.72"
-              />
-              <path
-                d="M752 246c16 14 24 32 14 46-10 14-30 8-38-10-8-16 8-34 24-36z"
-                opacity="0.58"
-              />
-              <path
-                d="M1022 308c18 16 26 38 14 54-12 16-36 10-46-12-10-22 12-40 32-42z"
-                opacity="0.5"
-              />
-              <path
-                d="M668 112c12 8 18 22 10 32-8 10-22 6-28-6-6-12 6-24 18-26z"
-                opacity="0.45"
-              />
-            </g>
-          </svg>
-          <span class="hb__mark" aria-hidden="true" />
-          <div class="hb__hero-body bless-stagger">
-            <p class="hb__kicker">{{ t.kicker }}</p>
-            <h1 class="hb__title">{{ t.title[0] }}<br />{{ t.title[1] }}</h1>
-            <p class="hb__lead">{{ t.lead }}</p>
-            <div class="hb__row">
-              <BlessButton :href="p('/guide/install')">
-                <template #prefix><BlessIcon name="play" size="sm" /></template>
-                {{ t.start }}
-              </BlessButton>
-              <BlessButton :href="p('/components/')" variant="outline">{{ t.browse }}</BlessButton>
-              <span class="hb__meta">{{ t.plate }}</span>
+          <div class="hb__ribbon" aria-hidden="true">
+            <svg viewBox="0 0 1152 88" preserveAspectRatio="xMidYMid slice" width="100%" height="100%">
+              <defs>
+                <radialGradient id="hb-bloom" cx="9%" cy="0%" r="56%">
+                  <stop offset="0%" stop-color="#ffffff" stop-opacity="0.82" />
+                  <stop offset="52%" stop-color="#ffffff" stop-opacity="0.2" />
+                  <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+                </radialGradient>
+              </defs>
+              <rect width="1152" height="88" fill="url(#hb-bloom)" />
+              <path d="M-20 80 Q320 34 640 68 T1172 42 L1172 96 L-20 96 Z" fill="#ffffff" opacity="0.16" />
+              <g fill="#ffffff">
+                <use href="#hb-pt" transform="translate(160 28) rotate(34) scale(1.1)" opacity="0.86" />
+                <use href="#hb-pt" transform="translate(360 54) rotate(-40) scale(0.82)" opacity="0.64" />
+                <use href="#hb-pt" transform="translate(590 22) rotate(54) scale(1.15)" opacity="0.88" />
+                <use href="#hb-pt" transform="translate(820 50) rotate(-28) scale(0.88)" opacity="0.7" />
+                <use href="#hb-pt" transform="translate(1010 20) rotate(44) scale(0.95)" opacity="0.82" />
+              </g>
+            </svg>
+            <span class="hb__ribbon-meta">{{ t.plate }}</span>
+          </div>
+          <div class="hb__hero-inner">
+            <span class="hb__mark" aria-hidden="true" />
+            <div class="hb__hero-body bless-stagger">
+              <div class="hb__chips">
+                <BlessChip variant="outline" size="sm">{{ t.kicker }}</BlessChip>
+                <BlessChip variant="outline" size="sm">{{ count }} {{ t.stats[0] }}</BlessChip>
+                <BlessChip variant="outline" size="sm">MIT</BlessChip>
+              </div>
+              <h1 class="hb__title">{{ t.title[0] }}<br />{{ t.title[1] }}</h1>
+              <p class="hb__lead">{{ t.lead }}</p>
+              <div class="hb__row">
+                <BlessButton :href="p('/guide/install')">
+                  <template #prefix><BlessIcon name="play" size="sm" /></template>
+                  {{ t.start }}
+                </BlessButton>
+                <BlessButton :href="p('/components/')" variant="outline">{{ t.browse }}</BlessButton>
+              </div>
             </div>
           </div>
         </div>
@@ -63,6 +65,7 @@
         <div class="hb__voice">
           <BlessNovelBox
             :name="t.voiceName"
+            emblem
             :text="t.voiceLines[line]!"
             interactive
             @next="line = (line + 1) % t.voiceLines.length"
@@ -205,6 +208,7 @@ import { withBase } from "vitepress";
 import {
   BlessBadge,
   BlessButton,
+  BlessChip,
   BlessCopyButton,
   BlessCountUp,
   BlessIcon,
@@ -423,55 +427,68 @@ onBeforeUnmount(() => io?.disconnect());
   text-decoration: underline;
 }
 
-/* hero frame with abstract neutral art */
+/* hero frame: Unified v3 Fine sky-ribbon + notched petals + serif display */
 .hb__hero-wrap {
+  position: relative;
   padding-top: clamp(20px, 3vw, 36px);
   padding-bottom: clamp(24px, 4vw, 48px);
+}
+.hb__petals {
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 120px;
+  pointer-events: none;
 }
 .hb__hero {
   position: relative;
   overflow: hidden;
-  padding: clamp(32px, 6vw, 68px) clamp(24px, 5vw, 56px);
-  border-radius: calc(var(--bless-radius) + 4px);
-  background: var(--bless-light), var(--bless-sky);
+  border-radius: calc(var(--bless-radius) + 2px);
+  background: var(--bless-color-surface);
   box-shadow: var(--bless-shadow-plate);
 }
-.hb__hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    90deg,
-    color-mix(in srgb, var(--bless-color-surface) 84%, transparent) 0%,
-    color-mix(in srgb, var(--bless-color-surface) 52%, transparent) 55%,
-    transparent 100%
-  );
-  pointer-events: none;
+.hb__ribbon {
+  position: relative;
+  height: 68px;
+  background: var(--bless-sky);
+  overflow: hidden;
 }
-.hb__art {
+.hb__ribbon-meta {
   position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  color: var(--bless-color-accent);
-  pointer-events: none;
+  inset-inline-end: 22px;
+  bottom: 10px;
+  font-family: var(--bless-font-mono);
+  font-size: 11px;
+  font-weight: var(--bless-font-weight-bold);
+  letter-spacing: 0.08em;
+  color: rgb(255 255 255 / 0.94);
+  text-shadow: 0 1px 8px rgb(12 22 52 / 0.42);
 }
-/* single overflow word per screen in weight 100 */
+.hb__hero-inner {
+  position: relative;
+  padding: clamp(26px, 4.5vw, 48px) clamp(24px, 5vw, 52px);
+}
+/* quiet ultra-light italic watermark (Saekano ♭ website voice) */
 .hb__mark::before {
   content: "Blessing";
   position: absolute;
-  right: -0.04em;
-  bottom: -0.22em;
+  inset-inline-end: 20px;
+  top: 4px;
   z-index: 1;
-  font-size: var(--bless-text-display);
-  font-weight: var(--bless-font-weight-thin);
+  font-family: var(--bless-font-sans);
+  font-size: clamp(64px, 10vw, 128px);
+  font-weight: 200;
+  font-style: italic;
   letter-spacing: -0.04em;
   line-height: 1;
   color: var(--bless-color-text);
-  opacity: 0.1;
-  transform: skewX(var(--bless-lean));
+  opacity: 0.06;
   white-space: nowrap;
   pointer-events: none;
+}
+.hb__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
 }
 .hb__hero-body {
   position: relative;
@@ -479,15 +496,16 @@ onBeforeUnmount(() => io?.disconnect());
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 18px;
-  max-width: 620px;
+  gap: 16px;
+  max-width: 640px;
 }
 .hb__title {
   margin: 0;
-  font-size: clamp(34px, 5.2vw, 60px);
-  font-weight: var(--bless-font-weight-bold);
-  line-height: 1.08;
-  letter-spacing: -0.03em;
+  font-family: var(--bless-font-serif);
+  font-size: clamp(34px, 5vw, 56px);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
 }
 .hb__lead {
   margin: 0;
@@ -620,11 +638,14 @@ onBeforeUnmount(() => io?.disconnect());
   box-shadow: var(--bless-shadow-sm);
   color: var(--bless-color-text);
   text-decoration: none;
-  transition: var(--bless-lean-transition);
+  transition:
+    transform var(--bless-duration-base) var(--bless-ease-spring),
+    box-shadow var(--bless-duration-base) var(--bless-ease-out);
 }
 .hb__block:hover,
 .hb__block:focus-visible {
-  transform: skewX(var(--bless-lean));
+  transform: translateY(-4px);
+  box-shadow: var(--bless-shadow-plate);
 }
 .hb__block img {
   width: 100%;
@@ -645,12 +666,13 @@ onBeforeUnmount(() => io?.disconnect());
   padding-bottom: clamp(40px, 6vw, 72px);
 }
 .hb__next {
-  /* night mood panel: the library parts inside read these tokens */
-  --bless-color-text: #eee8e4;
-  --bless-color-on-text: #1c1a22;
-  --bless-color-text-muted: #a79ca6;
-  --bless-color-border: #3a3542;
-  --bless-color-surface: #25222c;
+  /* starry cobalt night panel: the library parts inside read these tokens */
+  --bless-color-text: #f1ece8;
+  --bless-color-on-text: #111525;
+  --bless-color-text-muted: #a3a6ba;
+  --bless-color-border: rgb(255 255 255 / 0.1);
+  --bless-color-surface: #1c2136;
+  --bless-color-surface-2: #242b47;
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: clamp(24px, 5vw, 56px);
@@ -658,8 +680,8 @@ onBeforeUnmount(() => io?.disconnect());
   padding: clamp(28px, 5vw, 52px);
   border-radius: calc(var(--bless-radius) + 4px);
   background:
-    radial-gradient(120% 80% at 100% 0%, #2a3a66 0%, transparent 55%),
-    radial-gradient(70% 50% at 0% 0%, #3a2a44 0%, transparent 60%),
+    radial-gradient(88% 58% at 92% 0%, rgb(84 146 232 / 0.36) 0%, transparent 58%),
+    radial-gradient(64% 48% at 12% 4%, color-mix(in srgb, var(--bless-color-accent) 22%, transparent) 0%, transparent 54%),
     var(--bless-color-media-bg);
   box-shadow: var(--bless-shadow-plate);
   color: var(--bless-color-text);
@@ -668,7 +690,7 @@ onBeforeUnmount(() => io?.disconnect());
   margin-bottom: 0;
 }
 .hb__next .hb__text {
-  color: #c9c0ca;
+  color: #c2c5d8;
 }
 .hb__kicker--soft {
   color: var(--bless-color-accent-soft);
@@ -677,9 +699,10 @@ onBeforeUnmount(() => io?.disconnect());
   margin: 0;
   border: 0;
   padding: 0;
+  font-family: var(--bless-font-serif);
   font-size: clamp(28px, 4vw, 44px);
-  font-weight: var(--bless-font-weight-bold);
-  letter-spacing: var(--bless-tracking-tight);
+  font-weight: 400;
+  letter-spacing: -0.015em;
   line-height: 1.12;
 }
 .hb__install {
@@ -694,10 +717,11 @@ onBeforeUnmount(() => io?.disconnect());
   box-sizing: border-box;
   padding: 16px 20px;
   border-radius: var(--bless-radius);
-  background: #25222c;
-  color: #eee8e4;
+  background: #1c2136;
+  color: #f1ece8;
+  font-family: var(--bless-font-mono);
   font-size: var(--bless-text-md);
-  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.08);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.1);
 }
 
 /* scroll reveal: a chapter waits off stage until it is in view, then each child arrives */

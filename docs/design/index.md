@@ -56,16 +56,16 @@ The threads are not equal. The title of the series is about raising a heroine wh
 
 Color means chosen applies to the main button too. A main button at rest is an option that the page offers. It is not a choice that the person made. If you color it, you choose for the person. A colorful call-to-action is the kind of stock costume that the authenticity thread refuses.
 
-| Button    | At rest              | Hover             | Focus                   | Pressed           |
-| --------- | -------------------- | ----------------- | ----------------------- | ----------------- |
-| Main      | solid ink fill, bold | fades, leans −10° | leans −10°, accent ring | fills with accent |
-| Secondary | ink outline          | fades, leans −10° | leans −10°, accent ring | fills with accent |
+| Button    | At rest              | Hover (≥ 4.5:1 AA)         | Focus              | Pressed           |
+| --------- | -------------------- | -------------------------- | ------------------ | ----------------- |
+| Main      | solid ink pill, bold | tone-shift + spring lift   | accent focus ring  | fills with accent |
+| Secondary | surface outline pill | soft well fill + lift      | accent focus ring  | fills with accent |
 
-The main button stands out by weight (solid against outline), not by color.
+The main button stands out by weight (solid against outline), not by color. Hover never washes out contrast with `opacity: 0.6`.
 
 ## Shape, moods, and light
 
-Plates, cards, and fields have soft corners (`--bless-radius`, `--bless-radius-plate`), and buttons, chips, switches, and avatars are round (`--bless-radius-pill`). The −10° lean on attention carries the identity. Floating surfaces cast soft, ink-tinted shadows instead of a hard accent line, so color stays reserved for what the person chose. Three moods—Daylight, Golden hour, and Night—set the paper and light, while the six palettes supply the accent. The teardrop lives in the [mark](./brand#mark). [Conventions](../guide/conventions#shape) shows the tokens in practice.
+Cards and panels use calm soft corners (`--bless-radius: 14px`) with borderless `surface` elevation ("Light, not lines"). Buttons, switches, chips, and soft-wash badges are clean un-skewed pills (`--bless-radius-pill`), and inputs are flat `0px`-radius manuscript underlines ("Write on the page"). The −10° lean (`--bless-lean`) stays strictly on rectangular app tags, eyecatches, and `BlessNovelBox` speaker nameplates. Three moods—sunlit porcelain **Daylight**, backlit **Golden hour**, and starry cobalt **Night**—set paper and light, paired with three typographic voices (UI sans, `--bless-font-serif`, and tabular monospace) while six character palettes supply the accent. The teardrop lives in the [mark](./brand#mark). [Conventions](../guide/conventions#shape) shows the tokens in practice.
 
 ## Motion
 

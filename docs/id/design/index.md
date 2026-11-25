@@ -56,16 +56,16 @@ Benang-benang itu tidak setara. Judul seri ini tentang membesarkan seorang heroi
 
 Warna berarti terpilih juga berlaku untuk tombol utama. Tombol utama yang diam adalah pilihan yang ditawarkan halaman. Ia bukan pilihan yang dibuat orang itu. Jika Anda mewarnainya, Anda memilih untuk orang itu. Ajakan bertindak yang penuh warna adalah jenis kostum siap pakai yang ditolak oleh benang keaslian.
 
-| Tombol | Saat diam                | Hover                | Fokus                     | Ditekan      |
-| ------ | ------------------------ | -------------------- | ------------------------- | ------------ |
-| Utama  | isian tinta penuh, tebal | memudar, miring −10° | miring −10°, cincin aksen | terisi aksen |
-| Kedua  | garis tepi tinta         | memudar, miring −10° | miring −10°, cincin aksen | terisi aksen |
+| Tombol | Saat diam                | Hover (≥ 4.5:1 AA)          | Fokus         | Ditekan      |
+| ------ | ------------------------ | --------------------------- | ------------- | ------------ |
+| Utama  | pil tinta penuh, tebal   | geser nada + naik pegas     | cincin aksen  | terisi aksen |
+| Kedua  | pil permukaan bergaris   | isian lembut + naik pegas   | cincin aksen  | terisi aksen |
 
-Tombol utama menonjol lewat bobotnya (penuh lawan garis tepi), bukan lewat warna.
+Tombol utama menonjol lewat bobotnya (penuh lawan garis tepi), bukan lewat warna. Hover tidak lagi memudarkan kontras dengan `opacity: 0.6`.
 
 ## Bentuk, suasana, dan cahaya {#shape}
 
-Pelat, kartu, dan isian memiliki sudut lembut (`--bless-radius`, `--bless-radius-plate`), sedangkan tombol, chip, switch, dan avatar berbentuk bulat (`--bless-radius-pill`). Kemiringan −10° saat diperhatikan tetap menjadi ciri khasnya. Permukaan melayang memakai bayangan lembut bernuansa tinta alih-alih garis aksen tegas, sehingga warna tetap hanya menandai pilihan orang. Tiga suasana—Daylight, Senja, dan Night—mengatur kertas dan cahaya, sementara enam palet memberi warna aksen. Bentuk tetes ada di [logo](./brand#mark). [Konvensi](../guide/conventions#shape) menunjukkan tokennya dalam praktik.
+Kartu dan panel memakai sudut lembut (`--bless-radius: 14px`) dengan elevasi `surface` tanpa garis tepi ("Cahaya, bukan garis"). Tombol, switch, chip, dan lencana sapuan lembut berbentuk pil bulat tanpa miring (`--bless-radius-pill`), dan isian adalah garis bawah naskah datar `0px` ("Menulis di halaman"). Kemiringan −10° (`--bless-lean`) khusus untuk label aplikasi persegi, eyecatch, dan pelat nama `BlessNovelBox`. Tiga suasana—**Daylight** porselen hangat, **Senja** keemasan, dan **Night** kobalt berbintang—mengatur kertas dan cahaya, dipadukan dengan tiga suara tipografi (sans UI, `--bless-font-serif`, dan monospace tabular) sementara enam palet memberi warna aksen. Bentuk tetes ada di [logo](./brand#mark). [Konvensi](../guide/conventions#shape) menunjukkan tokennya dalam praktik.
 
 ## Gerak {#motion}
 

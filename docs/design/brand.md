@@ -14,11 +14,11 @@ The identity of Blessing UI is the design system itself. The logo needs nothing 
 | Element    | Value                                                                                                                                                                                                                             | Where you see it                                                                                   |
 | ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
 | Name       | **Blessing**. It is a nod to a fictional software circle (see the [story](./story))                                                                                                                                               | wordmark, package name                                                                             |
-| Moods      | three times of day: **Daylight** (warm paper `#EDE6E1`, violet-black ink `#262228`), **Golden hour** (`data-theme="golden"`), and **Night** (`data-theme="dark"`). One accent at a time from six [palettes](../guide/palettes)    | page paper, sheets, hero art, anything chosen (pressed button, current tab, checked box), focus    |
-| Geometry   | soft corners (`--bless-radius` for cards, `--bless-radius-plate` for fields, `--bless-radius-pill` for buttons and chips) and `--bless-lean`, −10°, taken on attention. The teardrop lives in the mark                            | every card, button, field, switch, and chip, and every petal of the mark                           |
-| Type       | Roboto in weights 400 to 600, sentence case, no tracked uppercase labels. Weight 100 stays only for the single overflow word of a screen                                                                                          | body, labels, headings, watermark                                                                  |
-| Elevation  | soft, wide shadows tinted with the warm ink (`--bless-shadow-sm`, `--bless-shadow-plate`). In Night, raised surfaces use a lighter fill and a faint top edge (`--bless-edge`). The accent stays for choices and focus only        | popovers, menus, tooltips, toasts, modals, sheets, and cards                                       |
-| Voice      | a hero frame with abstract mood art (sky gradient, light leak, petals) and `BlessNovelBox` for the voice of an app, paired with built-in drawn icons (`BlessIcon`)                                                                | home hero, landing pages, dialogue boxes, and controls                                             |
+| Moods      | three times of day: **Daylight** (sunlit warm porcelain `#F6F1EE`, ink `#241F26`), **Golden hour** (`data-theme="golden"`, `#F6E7D4`), and **Night** (`data-theme="dark"`, starry cobalt `#111525`). One accent at a time from six [palettes](../guide/palettes) | page paper, lifted sheets, sky-ribbon hero art, anything chosen, focus |
+| Geometry   | calm soft corners (`--bless-radius: 14px` for cards, un-skewed `999px` pills for buttons, switches, chips, and badges, flat `0px` manuscript underlines for fields). `--bless-lean` (−10°) stays exclusively on rectangular brand tags, eyecatches, and speaker nameplates | every card, button, field, tag, and every petal of the mark |
+| Type       | three voices: UI sans (`Plus Jakarta Sans` / `Inter`), editorial serif (`--bless-font-serif`, `Newsreader` / `Georgia`) for hero titles, `BlessNovelBox`, and long-form reading, and tabular monospace (`--bless-font-mono`). Sentence case everywhere | body, labels, headings, dialogue, timestamps, quiet italic watermarks |
+| Elevation  | "Light, not lines": borderless raised `surface` sheets with warm ambient shadows (`--bless-shadow-sm`, `--bless-shadow-plate`, `--bless-shadow-art`) and a luminous top edge (`--bless-edge`). Accent color stays strictly for choices and focus | popovers, menus, tooltips, toasts, modals, sheets, cards, and cover shelves |
+| Voice      | dual-mode hero frame (full-bleed media when cover art exists; *Fine*-inspired sky-ribbon with notched neutral petals and outline role chips otherwise) and frosted `BlessNovelBox` with optional portrait/emblem medallion, paired with built-in drawn icons (`BlessIcon`) | home hero, landing pages, dialogue boxes, and controls |
 
 ## Mark
 
@@ -44,7 +44,7 @@ The leaning flower. The fictional circle that gave Blessing its name has a five-
 
 ## Wordmark
 
-The wordmark is `Blessing` in Roboto 100 (300 in dark mode, like every thin text in the system). `UI` follows it, set in a skewed label in the accent of the current palette, and it re-tints with the palette. The wordmark is built from tokens. It is not shipped as an image. The site nav uses `siteTitle` and CSS, the same recipe as below.
+The wordmark is `Blessing` in bold sentence-case sans (or thin weight in display uses), followed by a skewed −10° `UI` (or app) tag in **ink** at rest so accent color stays reserved for chosen states (*color means chosen*). The wordmark is built from tokens, not shipped as an image. The site nav uses `siteTitle` and CSS, the same recipe as below.
 
 <p class="brand-wordmark">Blessing <span class="brand-wordmark__ui"><span>UI</span></span></p>
 
@@ -71,8 +71,8 @@ The wordmark is `Blessing` in Roboto 100 (300 in dark mode, like every thin text
   top: -0.15em;
   padding: var(--bless-space-2) var(--bless-space-3);
   border-radius: var(--bless-radius-plate);
-  background: var(--bless-color-accent);
-  color: var(--bless-color-on-accent);
+  background: var(--bless-color-text);
+  color: var(--bless-color-on-text);
   font-size: 18px;
   font-weight: var(--bless-font-weight-bold);
   letter-spacing: var(--bless-tracking-wider);

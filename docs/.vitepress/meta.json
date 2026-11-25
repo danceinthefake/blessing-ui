@@ -1553,10 +1553,10 @@
    },
    {
     "name": "variant",
-    "type": "\"solid\" | \"outline\" | undefined",
+    "type": "\"soft\" | \"solid\" | \"outline\" | undefined",
     "required": false,
-    "default": "\"solid\"",
-    "description": "outline: 1px border and text in the colour, no fill — quiet category/role tags"
+    "default": "\"soft\"",
+    "description": "soft: tinted wash (default, revamp r2); solid: full fill; outline: 1px quiet role tag"
    }
   ],
   "events": [],
@@ -2739,14 +2739,14 @@
     "name": "surface",
     "type": "\"surface\" | \"bg\" | undefined",
     "required": false,
-    "default": "\"bg\"",
+    "default": "\"surface\"",
     "description": ""
    },
    {
     "name": "bordered",
     "type": "boolean | undefined",
     "required": false,
-    "default": "true",
+    "default": "false",
     "description": ""
    },
    {
@@ -3436,6 +3436,13 @@
     "required": false,
     "default": "\"surface\"",
     "description": ""
+   },
+   {
+    "name": "variant",
+    "type": "\"outline\" | \"filled\" | undefined",
+    "required": false,
+    "default": "\"filled\"",
+    "description": "filled (default) or outline (Fine-style quiet role chip)"
    },
    {
     "name": "size",
@@ -12392,6 +12399,18 @@
     "description": "speaker name on the floating plate; omit for narration without a speaker"
    },
    {
+    "name": "avatar",
+    "type": "string | undefined",
+    "required": false,
+    "description": "optional circular speaker portrait URL"
+   },
+   {
+    "name": "emblem",
+    "type": "boolean | undefined",
+    "required": false,
+    "description": "show the neutral 5-petal Blessing flower emblem in the portrait medallion"
+   },
+   {
     "name": "text",
     "type": "string | undefined",
     "required": false,
@@ -12443,6 +12462,11 @@
    }
   ],
   "slots": [
+   {
+    "name": "portrait",
+    "type": "{}",
+    "description": ""
+   },
    {
     "name": "name",
     "type": "{}",

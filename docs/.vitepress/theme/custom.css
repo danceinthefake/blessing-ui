@@ -2,6 +2,7 @@
 :root,
 .dark {
   --vp-font-family-base: var(--bless-font-sans);
+  --vp-font-family-mono: var(--bless-font-mono);
   --vp-c-brand-1: var(--bless-color-accent-text);
   --vp-c-brand-2: var(--bless-color-accent-2);
   --vp-c-brand-3: var(--bless-color-accent);
@@ -36,24 +37,24 @@ body {
   background: var(--bless-light), var(--bless-color-bg);
   background-attachment: fixed;
 }
-/* round buttons with the house lean on attention, sentence case */
+/* clean un-skewed pills with AA-safe tactile hover (revamp 2026-11 r2) */
 .VPButton.brand,
 .VPButton.alt {
   border-radius: var(--bless-radius-pill);
-  transform: skewX(var(--bless-skew));
   font-weight: var(--bless-font-weight-bold);
   letter-spacing: var(--bless-tracking-normal);
   text-transform: var(--bless-label-case);
   transition:
-    opacity var(--bless-duration-slow),
-    color 0.25s,
-    border-color 0.25s,
-    background-color 0.25s,
-    var(--bless-lean-transition);
+    transform var(--bless-duration-base) var(--bless-ease-spring),
+    color 0.2s,
+    border-color 0.2s,
+    background-color 0.2s,
+    box-shadow 0.2s;
 }
 .VPButton.brand:hover,
 .VPButton.alt:hover {
-  opacity: var(--bless-hover-opacity);
+  transform: translateY(var(--bless-hover-lift));
+  box-shadow: var(--bless-shadow-sm);
 }
 .vp-doc div[class*="language-"],
 .VPLocalSearchBox .shell,
@@ -62,7 +63,12 @@ body {
   border-radius: var(--bless-radius);
 }
 /* the site's own headings; demos (.vp-raw) show the library's */
-.vp-doc :is(h1, h2):not(.vp-raw *) {
+.vp-doc h1:not(.vp-raw *) {
+  font-family: var(--bless-font-serif);
+  font-weight: 400;
+  letter-spacing: -0.015em;
+}
+.vp-doc h2:not(.vp-raw *) {
   font-weight: var(--bless-font-weight-bold);
   letter-spacing: var(--bless-tracking-tight);
 }
@@ -179,7 +185,7 @@ body {
 }
 
 /* ---- brand ---- */
-/* nav: Blessing + soft skewed accent "UI" tag, built from the system */
+/* nav: Blessing + ink skewed "UI" tag ("Color means chosen", revamp 2026-11 r2) */
 .VPNavBarTitle .title {
   gap: 10px;
   font-weight: var(--bless-font-weight-bold);
@@ -191,12 +197,12 @@ body {
   display: inline-block;
   padding: 2px 7px;
   border-radius: var(--bless-radius-plate);
-  background: var(--bless-color-accent);
-  color: var(--bless-color-on-accent);
+  background: var(--bless-color-text);
+  color: var(--bless-color-on-text);
   font-family: var(--bless-font-sans);
   font-size: 11px;
   font-weight: var(--bless-font-weight-bold);
-  transform: skewX(var(--bless-lean)); /* display: leans at rest */
+  transform: skewX(var(--bless-lean)); /* rectangular tag: leans at rest */
 }
 .VPNavBarTitle .logo {
   height: 24px;
