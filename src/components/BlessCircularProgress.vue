@@ -96,7 +96,8 @@ const text = computed(() =>
   transform: rotate(-90deg);
 }
 .bless-circular__track {
-  stroke: var(--bless-color-surface);
+  /* a tint of the ink, so the track shows on the page and on a card */
+  stroke: color-mix(in srgb, var(--bless-color-text) 12%, transparent);
 }
 .bless-circular__bar {
   stroke: var(--_c);

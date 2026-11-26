@@ -7,6 +7,9 @@
 - `BlessBadge`: the soft badges (accent, badge, danger, info) mix a quarter of the text color into their text, so it holds at least 5:1 on its own tint in every mood and palette. Before, it was 3.7:1 to 4.4:1.
 - `BlessBanner`: a `BlessButton` link inside a banner keeps its own text color. The banner's link rule made the outline button text the same color as its fill (1.1:1).
 - `BlessHeatmapCalendar`: the first column has no month name when the next month starts within two columns. Before, the two names overlapped, for example "Nov" and "Dec".
+- `BlessDataTable`: when the table scrolls sideways, its scroll box is a region that takes keyboard focus. Its name is the `caption`, or the new `labels.table` ("Table", Indonesian "Tabel"). Before, a keyboard could not scroll a wide table with no focusable cells.
+- `BlessDataTable`: the "Columns" button, the row count, and the selected count come from `labels` (`columns`, `rows`, `selected`), with Indonesian text. Before, they were English only.
+- `BlessProgress` and `BlessCircularProgress`: the track is a tint of the ink. Before, it had the surface color, so it did not show on a card.
 - Docs: the scroll box of the `BlessInfiniteScroll` demo takes keyboard focus.
 
 ## 0.13.0 — 2026-11-25

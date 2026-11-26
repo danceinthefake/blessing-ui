@@ -111,7 +111,8 @@ const pct = computed(() =>
   position: relative;
   height: var(--_h);
   overflow: hidden;
-  background: var(--bless-color-surface);
+  /* a tint of the ink, so the track shows on the page and on a card */
+  background: color-mix(in srgb, var(--bless-color-text) 12%, transparent);
   transform: skewX(var(--bless-skew));
 }
 .bless-progress__fill {

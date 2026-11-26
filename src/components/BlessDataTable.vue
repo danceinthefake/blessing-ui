@@ -20,12 +20,19 @@
         @select="$event.type === 'checkbox' && dt.toggleColumn($event.value)"
       >
         <template #trigger
-          ><button type="button" class="bless-datatable__cols-btn">Columns ▾</button></template
+          ><button type="button" class="bless-datatable__cols-btn">{{ text.columns }} ▾</button></template
         >
       </BlessDropdownMenu>
     </div>
 
-    <div class="bless-datatable__scroll">
+    <!-- a box that scrolls sideways takes focus, so the keyboard can scroll it too -->
+    <div
+      ref="scrollEl"
+      class="bless-datatable__scroll"
+      :tabindex="overflows ? 0 : undefined"
+      :role="overflows ? 'region' : undefined"
+      :aria-label="overflows ? caption || text.table : undefined"
+    >
       <table
         class="bless-table bless-datatable__table"
         :style="tableStyle"
@@ -155,9 +162,9 @@
     <div class="bless-datatable__foot">
       <BlessText size="xs" muted role="status">
         <template v-if="selectable && state.selected.size"
-          >{{ state.selected.size }} selected ·
+          >{{ text.selected(state.selected.size) }} ·
         </template>
-        {{ dt.sorted.value.length }} rows
+        {{ text.rows(dt.sorted.value.length) }}
       </BlessText>
       <div class="bless-datatable__pager">
         <BlessSelect
@@ -212,6 +219,11 @@ const props = withDefaults(
       rowsPerPage: string;
       selectRow: (name: string) => string;
       resize: (column: string) => string;
+      /** the name of the scroll box when the table scrolls sideways (falls back from `caption`) */
+      table: string;
+      columns: string;
+      rows: (n: number) => string;
+      selected: (n: number) => string;
     }>;
     emptyText?: string;
     caption?: string;
@@ -236,6 +248,10 @@ const text = computed(() => ({
   rowsPerPage: "Rows per page",
   selectRow: (n: string) => `Select ${n}`,
   resize: (c: string) => `Resize ${c}`,
+  table: "Table",
+  columns: "Columns",
+  rows: (n: number) => `${n} rows`,
+  selected: (n: number) => `${n} selected`,
   ...pack(),
   ...props.labels,
 }));
@@ -310,6 +326,24 @@ onMounted(() => {
   });
 });
 onBeforeUnmount(() => ro?.disconnect());
+
+// ── sideways scroll: the box is a focusable region only while it overflows
+const scrollEl = ref<HTMLElement>();
+const overflows = ref(false);
+let scrollRo: ResizeObserver | undefined;
+const measureOverflow = () => {
+  const el = scrollEl.value;
+  overflows.value = !!el && el.scrollWidth > el.clientWidth + 1;
+};
+onMounted(() => {
+  measureOverflow();
+  if (typeof ResizeObserver === "undefined" || !scrollEl.value) return;
+  scrollRo = new ResizeObserver(measureOverflow);
+  scrollRo.observe(scrollEl.value);
+  const table = scrollEl.value.querySelector("table");
+  if (table) scrollRo.observe(table);
+});
+onBeforeUnmount(() => scrollRo?.disconnect());
 const hasStartPin = computed(() => visible.value.some((c) => c.pin === "start"));
 const sizeOf = (key: string) => widths.value[key] ?? measured.value[key] ?? 0;
 const pinOffset = (c: BlessDataColumn<T>) => {
@@ -461,6 +495,10 @@ defineExpose({ state, selectedRows: dt.selectedRows });
 }
 .bless-datatable__scroll {
   overflow-x: auto;
+}
+.bless-datatable__scroll:focus-visible {
+  outline: 2px solid var(--bless-color-accent);
+  outline-offset: 2px;
 }
 .bless-datatable__check {
   width: 36px;
