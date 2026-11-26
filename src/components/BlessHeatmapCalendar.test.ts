@@ -87,3 +87,15 @@ test("the words come from the label pack, with no English plural", () => {
     "2 tracks in 5 weeks",
   );
 });
+
+test("a first month with less than three columns has no name, so two names never overlap", () => {
+  const names = (w: ReturnType<typeof mk>) => w.findAll(".bless-heat__month").map((m) => m.text());
+  // first column Mon Aug 31; September starts in the next column
+  const short = mk();
+  expect(names(short)).toEqual(["", "Sep", "", "", ""]);
+  short.unmount();
+  // first column Mon Sep 7: four columns of September before October
+  const long = mk({ end: "2026-10-09" });
+  expect(names(long)).toEqual(["Sep", "", "", "", "Oct"]);
+  long.unmount();
+});

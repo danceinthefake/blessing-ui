@@ -159,13 +159,16 @@ const days = computed(() => {
   return out;
 });
 const total = computed(() => days.value.reduce((a, d) => a + (d.shown ? d.v : 0), 0));
-const months = computed(() =>
-  Array.from({ length: props.weeks }, (_, w) => {
+const months = computed(() => {
+  const out = Array.from({ length: props.weeks }, (_, w) => {
     const d = addDays(firstDate.value, w * 7);
     const prev = addDays(d, -7);
     return w === 0 || d.getMonth() !== prev.getMonth() ? monthFmt.value.format(d) : "";
-  }),
-);
+  });
+  // a first month with less than three columns has no room for its name
+  if (out.slice(1, 3).some(Boolean)) out[0] = "";
+  return out;
+});
 const weekdays = computed(() =>
   Array.from({ length: 7 }, (_, r) =>
     r % 2
