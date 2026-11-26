@@ -137,8 +137,8 @@ const wedges = computed(() => {
   stroke-width: 1;
   transition: opacity var(--bless-duration-fast) var(--bless-ease-out);
 }
-.bless-rose__wedge:hover {
-  opacity: 0.75;
+svg:has(.bless-rose__wedge:hover) .bless-rose__wedge:not(:hover) {
+  opacity: 0.45;
 }
 .bless-rose__label {
   fill: var(--bless-color-text-muted);

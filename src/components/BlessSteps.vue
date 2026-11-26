@@ -64,7 +64,9 @@ const canGo = (i: number, clickable: boolean | "all" | undefined, cur: number) =
 <style>
 .bless-steps {
   display: flex;
-  gap: var(--bless-space-2);
+  flex-wrap: wrap;
+  gap: var(--bless-space-3) var(--bless-space-2);
+  max-width: 100%;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -73,6 +75,7 @@ const canGo = (i: number, clickable: boolean | "all" | undefined, cur: number) =
 }
 .bless-steps--vertical {
   flex-direction: column;
+  flex-wrap: nowrap;
   gap: var(--bless-space-4);
 }
 .bless-steps__item {
@@ -80,13 +83,14 @@ const canGo = (i: number, clickable: boolean | "all" | undefined, cur: number) =
   display: flex;
   align-items: flex-start;
   gap: var(--bless-space-2);
-  flex: 1;
-  min-width: 0;
+  flex: 1 1 auto;
+  min-width: fit-content;
 }
 /* connector to the next step */
 .bless-steps--horizontal .bless-steps__item:not(:last-child)::after {
   content: "";
   flex: 1;
+  min-width: var(--bless-space-3);
   height: var(--bless-border-width);
   margin-top: 14px;
   background: var(--bless-color-border);
@@ -128,7 +132,7 @@ button.bless-steps__marker {
     var(--bless-lean-transition);
 }
 button.bless-steps__marker:hover {
-  transform: translateY(var(--bless-hover-lift));
+  transform: skewX(var(--bless-skew)) translateY(var(--bless-hover-lift));
   border-color: var(--bless-color-text);
 }
 button.bless-steps__marker:focus-visible {

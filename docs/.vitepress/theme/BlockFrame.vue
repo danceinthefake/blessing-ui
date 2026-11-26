@@ -11,10 +11,13 @@ let ro: ResizeObserver | undefined;
 function onMsg(e: MessageEvent) {
   if (e.source !== window.parent || !e.data || e.data.type !== "bless-theme") return;
   const root = document.documentElement;
-  root.classList.toggle("dark", e.data.dark);
-  root.dataset.theme = e.data.dark ? "dark" : "light";
+  const theme = e.data.theme || (e.data.dark ? "dark" : "light");
+  root.classList.toggle("dark", theme === "dark");
+  root.dataset.theme = theme;
   if (e.data.palette && e.data.palette !== "megumi") root.dataset.palette = e.data.palette;
   else root.removeAttribute("data-palette");
+  if (e.data.motion) root.dataset.motion = e.data.motion;
+  else root.removeAttribute("data-motion");
 }
 onMounted(() => {
   addEventListener("message", onMsg);

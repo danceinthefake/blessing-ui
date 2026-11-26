@@ -133,23 +133,24 @@ const remove = (id: string) => (model.value = chosen.value.filter((x) => x !== i
 
 <style>
 .bless-treeselect__trigger {
-  border-radius: var(--bless-radius-plate);
   --_h: 40px;
   display: inline-flex;
   align-items: center;
   gap: var(--bless-space-2);
   min-width: 220px;
   min-height: var(--_h);
-  padding: var(--bless-space-1) var(--bless-space-3);
+  padding: var(--bless-space-1) var(--bless-space-2) var(--bless-space-1) 2px;
   border: 0;
   border-radius: 0;
-  border-bottom: var(--bless-border-width) solid var(--bless-color-border);
+  border-bottom: calc(1.5 * var(--bless-border-width)) solid
+    color-mix(in srgb, var(--bless-color-text-muted) 55%, transparent);
   background: transparent; /* a line you write on, not a box */
   color: var(--bless-color-text);
   font: inherit;
   font-family: var(--bless-font-sans);
   text-align: start;
   cursor: pointer;
+  transition: border-color var(--bless-duration-base) var(--bless-ease-out);
 }
 .bless-treeselect__trigger--sm {
   --_h: 32px;
@@ -201,16 +202,5 @@ const remove = (id: string) => (model.value = chosen.value.filter((x) => x !== i
 /* multiple: mark chosen rows */
 .bless-treeselect .bless-tree__row[aria-pressed="true"] {
   color: var(--bless-color-accent-text);
-}
-/* parallelogram trigger; content counter-skews so text stays upright */
-.bless-treeselect__trigger {
-  transform: skewX(var(--bless-skew));
-  padding-inline: calc(var(--bless-space-3) + 4px);
-}
-.bless-treeselect__trigger > * {
-  transform: skewX(var(--bless-skew-counter));
-}
-.bless-treeselect__trigger > .bless-treeselect__chevron {
-  transform: skewX(var(--bless-skew-counter)) translateY(-2px) rotate(45deg);
 }
 </style>

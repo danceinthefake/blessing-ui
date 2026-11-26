@@ -72,6 +72,18 @@ withDefaults(
   background: var(--bless-sky);
   overflow: hidden;
 }
+.hero-frame--accent .hero-frame__ribbon {
+  background: linear-gradient(
+    118deg,
+    color-mix(in srgb, var(--bless-color-accent) 28%, var(--bless-color-surface)) 0%,
+    var(--bless-color-accent) 62%,
+    color-mix(in srgb, var(--bless-color-accent) 72%, #18141c) 100%
+  );
+}
+.hero-frame--accent .hero-frame__chip {
+  border-color: color-mix(in srgb, var(--bless-color-accent) 32%, transparent);
+  color: var(--bless-color-accent-text);
+}
 .hero-frame__art {
   display: block;
   width: 100%;

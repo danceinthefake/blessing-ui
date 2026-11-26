@@ -113,6 +113,8 @@ const count = (o: BlessPastOrder) => o.items.reduce((n, i) => n + i.quantity, 0)
 .bless-orders {
   display: grid;
   gap: var(--bless-space-3);
+  min-width: 0;
+  max-width: 100%;
   font-family: var(--bless-font-sans);
   font-size: var(--bless-text-sm);
   color: var(--bless-color-text);
@@ -121,7 +123,9 @@ const count = (o: BlessPastOrder) => o.items.reduce((n, i) => n + i.quantity, 0)
   display: grid;
   gap: var(--bless-space-3);
   padding: var(--bless-space-3) var(--bless-space-4);
+  border-radius: var(--bless-radius);
   border: var(--bless-border-width) solid var(--bless-color-border);
+  min-width: 0;
 }
 .bless-orders__head {
   display: flex;
@@ -140,6 +144,7 @@ const count = (o: BlessPastOrder) => o.items.reduce((n, i) => n + i.quantity, 0)
 .bless-orders__status {
   margin-inline-start: auto;
   padding: 0 var(--bless-space-2);
+  border-radius: var(--bless-radius-plate);
   border: var(--bless-border-width) solid currentColor;
   font-size: var(--bless-text-xs);
   font-weight: var(--bless-font-weight-bold);
@@ -154,12 +159,14 @@ const count = (o: BlessPastOrder) => o.items.reduce((n, i) => n + i.quantity, 0)
 }
 .bless-orders__body {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: var(--bless-space-3);
 }
 .bless-orders__thumbs {
   display: flex;
+  flex-wrap: wrap;
   gap: var(--bless-space-1);
 }
 .bless-orders__thumb {
@@ -167,6 +174,7 @@ const count = (o: BlessPastOrder) => o.items.reduce((n, i) => n + i.quantity, 0)
   place-items: center;
   inline-size: 3rem;
   block-size: 3rem;
+  border-radius: var(--bless-radius-plate);
   overflow: hidden;
   background: var(--bless-color-surface-2);
   font-weight: var(--bless-font-weight-bold);
@@ -199,6 +207,7 @@ const count = (o: BlessPastOrder) => o.items.reduce((n, i) => n + i.quantity, 0)
 .bless-orders__link,
 .bless-orders__again {
   padding: var(--bless-space-1) var(--bless-space-3);
+  border-radius: var(--bless-radius-pill);
   border: var(--bless-border-width) solid var(--bless-color-border);
   background: var(--bless-color-bg);
   color: inherit;

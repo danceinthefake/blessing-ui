@@ -45,6 +45,7 @@ export default {
     const { isDark } = useData();
     const bless = useTheme(); // also boots the persisted palette, including full-page demos
     if (typeof window !== "undefined") {
+      document.documentElement.classList.add("bless-booting");
       queueMicrotask(() => {
         let savedBless: string | null = null;
         let savedVp: string | null = null;
@@ -58,6 +59,9 @@ export default {
           bless.set(savedVp === "dark" || savedVp === "light" ? savedVp : "light");
         }
         isDark.value = bless.isDark.value;
+        requestAnimationFrame(() =>
+          requestAnimationFrame(() => document.documentElement.classList.remove("bless-booting")),
+        );
         watch(isDark, (d) => {
           if (d && !bless.isDark.value) bless.set("dark");
           else if (!d && bless.isDark.value) bless.set("light");
@@ -77,6 +81,7 @@ export default {
       ],
       "nav-screen-content-after": () => [
         h(BlessThemeToggle, { mode: "group", class: "nav-mood" }),
+        h(BlessPaletteToggle, { class: "nav-palette", showDefault: true }),
         h(MotionToggle),
       ],
     });

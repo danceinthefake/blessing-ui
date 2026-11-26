@@ -97,8 +97,15 @@ withDefaults(
   align-items: flex-end;
 }
 .bless-message__footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--bless-space-1);
   font-size: var(--bless-text-xs);
   color: var(--bless-color-text-muted);
+}
+.bless-message__footer > .bless-button--ghost:first-child {
+  margin-inline-start: calc(-1 * var(--bless-space-3));
 }
 .bless-message__actions {
   display: inline-flex;

@@ -121,9 +121,10 @@ const marks = computed(() => props.data.some((d) => d.value !== undefined));
 <style>
 .bless-rangechart__bar {
   fill: var(--_c);
+  transition: opacity var(--bless-duration-fast) var(--bless-ease-out);
 }
-.bless-rangechart__row:hover .bless-rangechart__bar {
-  opacity: 0.75;
+svg:has(.bless-rangechart__row:hover) .bless-rangechart__row:not(:hover) .bless-rangechart__bar {
+  opacity: 0.45;
 }
 .bless-rangechart__mark {
   stroke: var(--bless-color-text);

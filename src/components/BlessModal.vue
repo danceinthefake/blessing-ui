@@ -127,7 +127,6 @@ const titleId = `${useId()}-title`;
 
 <style>
 .bless-modal {
-  border-radius: var(--bless-radius);
   padding: 0;
   border: 0;
   background: transparent;
@@ -153,6 +152,7 @@ const titleId = `${useId()}-title`;
   box-sizing: border-box;
   width: min(100% - 2 * var(--bless-space-4), var(--_w, 640px));
   max-height: calc(100dvh - 2 * var(--bless-space-4));
+  border-radius: var(--bless-radius);
   overflow: auto;
   background: var(--bless-color-bg);
   box-shadow: var(--bless-shadow-plate);
@@ -168,6 +168,7 @@ const titleId = `${useId()}-title`;
   width: 100%;
   height: 100%;
   max-height: none;
+  border-radius: 0;
 }
 .bless-modal__close {
   position: absolute;
@@ -186,18 +187,15 @@ const titleId = `${useId()}-title`;
   font-size: var(--bless-text-lg);
   line-height: 1;
   cursor: pointer;
-  transform: skewX(var(--bless-skew));
   transition:
-    opacity var(--bless-duration-slow) var(--bless-ease-in-out),
-    var(--bless-lean-transition);
-}
-.bless-modal__close > span {
-  display: inline-block;
-  transform: skewX(var(--bless-skew-counter));
+    background-color var(--bless-duration-base) var(--bless-ease-out),
+    color var(--bless-duration-base) var(--bless-ease-out),
+    transform var(--bless-duration-base) var(--bless-ease-spring);
 }
 .bless-modal__close:hover {
   background: var(--bless-color-hover);
   color: var(--bless-color-text);
+  transform: translateY(var(--bless-hover-lift));
 }
 .bless-modal__close:focus-visible {
   outline: 2px solid var(--bless-color-accent);

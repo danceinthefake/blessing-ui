@@ -86,7 +86,7 @@ const same = (a: string | null, b: string) => !!a && a.toLowerCase() === b.toLow
   block-size: 20px;
 }
 .bless-swatches__swatch:hover {
-  transform: translateY(var(--bless-hover-lift));
+  transform: skewX(var(--bless-skew)) translateY(var(--bless-hover-lift));
   border-color: var(--bless-color-text);
 }
 /* the picked color: a ring in the text color, with a gap in the background color */

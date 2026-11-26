@@ -83,10 +83,19 @@ const props = defineProps<{
 const iframe = ref<HTMLIFrameElement>();
 const frameH = ref(0);
 const { isDark } = useData();
-const { palette } = useTheme();
+const { theme, palette } = useTheme();
+let mo: MutationObserver | undefined;
 function sync() {
+  const effectiveTheme =
+    theme.value === "system" ? (isDark.value ? "dark" : "light") : theme.value;
   iframe.value?.contentWindow?.postMessage(
-    { type: "bless-theme", dark: isDark.value, palette: palette.value },
+    {
+      type: "bless-theme",
+      dark: isDark.value,
+      theme: effectiveTheme,
+      palette: palette.value,
+      motion: document.documentElement.dataset.motion ?? "",
+    },
     "*",
   );
 }
@@ -95,9 +104,16 @@ function onMsg(e: MessageEvent) {
   if (e.data.type === "bless-ready") sync();
   if (e.data.type === "bless-height") frameH.value = e.data.h;
 }
-watch([isDark, palette], sync);
-onMounted(() => addEventListener("message", onMsg));
-onBeforeUnmount(() => removeEventListener("message", onMsg));
+watch([isDark, theme, palette], sync);
+onMounted(() => {
+  addEventListener("message", onMsg);
+  mo = new MutationObserver(sync);
+  mo.observe(document.documentElement, { attributes: true, attributeFilter: ["data-motion", "data-theme"] });
+});
+onBeforeUnmount(() => {
+  removeEventListener("message", onMsg);
+  mo?.disconnect();
+});
 const names = computed(() =>
   Object.keys(props.files).sort((a, b) =>
     a === "index.vue" ? -1 : b === "index.vue" ? 1 : a.localeCompare(b),
@@ -112,9 +128,11 @@ async function copy(what: "file" | "all") {
     what === "file"
       ? props.files[active.value]
       : names.value.map((n) => `/* ---- ${n} ---- */\n${props.files[n]}`).join("\n\n");
-  await navigator.clipboard.writeText(text);
-  copied.value = what;
-  setTimeout(() => (copied.value = ""), 1200);
+  try {
+    await navigator.clipboard.writeText(text);
+    copied.value = what;
+    setTimeout(() => (copied.value = ""), 1200);
+  } catch {}
 }
 </script>
 
@@ -128,32 +146,41 @@ async function copy(what: "file" | "all") {
 .block__bar,
 .block__tabs {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 8px;
-  padding: 6px 10px;
+  gap: 6px 8px;
+  padding: 8px 12px;
   border-bottom: var(--bless-border-width) solid var(--bless-color-border);
   font-size: var(--bless-text-xs);
-  letter-spacing: var(--bless-tracking-wide);
-  text-transform: uppercase;
+  letter-spacing: var(--bless-tracking-normal);
   color: var(--bless-color-text-muted);
 }
 .block__seg {
   display: inline-flex;
   gap: 2px;
+  padding: 2px;
+  border-radius: var(--bless-radius-pill);
+  background: var(--bless-color-surface);
 }
 .block__seg button,
 .block__toggle,
 .block__tabs button {
-  padding: 3px 10px;
+  padding: 4px 12px;
   border: 0;
+  border-radius: var(--bless-radius-pill);
   background: transparent;
   color: inherit;
   font: inherit;
+  font-weight: var(--bless-font-weight-medium);
   cursor: pointer;
-  transform: skewX(var(--bless-skew));
+  transition:
+    background-color var(--bless-duration-base) var(--bless-ease-out),
+    color var(--bless-duration-base) var(--bless-ease-out);
 }
 .block__toggle:hover,
-.block__tabs button:hover {
+.block__tabs button:hover,
+.block__seg button:hover {
+  background: var(--bless-color-hover);
   color: var(--bless-color-text);
 }
 .block__seg button[aria-pressed="true"],
@@ -162,9 +189,8 @@ async function copy(what: "file" | "all") {
   color: var(--bless-color-on-accent);
 }
 .block__used {
-  flex: 1;
-  text-transform: none;
-  letter-spacing: normal;
+  flex: 1 1 180px;
+  min-width: 0;
   font-family: var(--bless-font-sans);
 }
 .block__preview {
@@ -182,14 +208,17 @@ async function copy(what: "file" | "all") {
 }
 .vp-doc .block__open {
   padding: 8px 20px;
+  border-radius: var(--bless-radius-pill);
   border: var(--bless-border-width) solid var(--bless-color-text);
   color: var(--bless-color-text);
   font-size: var(--bless-text-xs);
   font-weight: var(--bless-font-weight-bold);
-  letter-spacing: var(--bless-tracking-wider);
-  text-transform: uppercase;
+  letter-spacing: var(--bless-tracking-normal);
   text-decoration: none;
-  transform: skewX(var(--bless-skew));
+  transition: transform var(--bless-duration-base) var(--bless-ease-spring);
+}
+.vp-doc .block__open:hover {
+  transform: translateY(var(--bless-hover-lift));
 }
 iframe.block__frame {
   display: block;

@@ -23,7 +23,6 @@ withDefaults(defineProps<{ size?: "sm" | "md" | "lg"; disabled?: boolean }>(), {
 <style>
 /* one shared surface + underline; the inner BlessInput / BlessSelect goes transparent */
 .bless-input-group {
-  border-radius: var(--bless-radius-plate);
   --_h: 40px;
   position: relative;
   display: flex;
@@ -36,7 +35,9 @@ withDefaults(defineProps<{ size?: "sm" | "md" | "lg"; disabled?: boolean }>(), {
   color: var(--bless-color-text);
   background: transparent; /* a line you write on, not a box */
   border-radius: 0;
-  border-bottom: var(--bless-border-width) solid var(--bless-color-border);
+  border-bottom: calc(1.5 * var(--bless-border-width)) solid
+    color-mix(in srgb, var(--bless-color-text-muted) 55%, transparent);
+  transition: border-color var(--bless-duration-base) var(--bless-ease-out);
 }
 .bless-input-group--sm {
   --_h: 32px;
@@ -97,22 +98,5 @@ withDefaults(defineProps<{ size?: "sm" | "md" | "lg"; disabled?: boolean }>(), {
 }
 .bless-input-group--disabled {
   opacity: 0.4;
-}
-/* parallelogram field; content counter-skews so text stays upright */
-.bless-input-group {
-  transform: skewX(var(--bless-skew));
-}
-.bless-input-group > :not(.bless-skew, .bless-chip, .bless-badge) {
-  transform: skewX(var(--bless-skew-counter));
-}
-/* the group is the parallelogram; the inputs inside it stay straight */
-.bless-input-group .bless-input__field,
-.bless-input-group .bless-select__field,
-.bless-input-group .bless-combobox__field {
-  transform: none;
-}
-.bless-input-group .bless-input__field > *,
-.bless-input-group .bless-select__field > * {
-  transform: none;
 }
 </style>

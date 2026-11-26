@@ -129,13 +129,11 @@ function discard() {
   margin-bottom: var(--bless-space-3);
 }
 .settings__bar {
-  position: sticky;
-  bottom: 0;
   display: flex;
+  flex-wrap: wrap;
   justify-content: flex-end;
   gap: var(--bless-space-2);
-  padding: var(--bless-space-3) 0;
-  background: var(--bless-color-bg);
+  padding-top: var(--bless-space-4);
   border-top: var(--bless-border-width) solid var(--bless-color-border);
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div class="demo">
     <div v-if="title" class="demo__title">{{ title }}</div>
-    <div class="demo__preview vp-raw" :class="{ 'demo__preview--padded': padded }">
+    <div ref="preview" class="demo__preview vp-raw" :class="{ 'demo__preview--padded': padded }">
       <slot />
     </div>
     <div v-if="$slots.code" class="demo__bar">
@@ -19,10 +19,20 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { onMounted, onUpdated, ref } from "vue";
 
 withDefaults(defineProps<{ title?: string; padded?: boolean }>(), { padded: true });
 const showCode = ref(false);
+const preview = ref<HTMLElement>();
+// VitePress scrapes every headed element with an id inside .VPDoc for "On this page".
+// Demo headings (including closed <dialog> titles) aren't page sections — mark them ignored.
+function markDemoHeaders() {
+  preview.value
+    ?.querySelectorAll("h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]")
+    .forEach((el) => el.classList.add("ignore-header"));
+}
+onMounted(markDemoHeaders);
+onUpdated(markDemoHeaders);
 </script>
 
 <style>
@@ -33,12 +43,12 @@ const showCode = ref(false);
   border: var(--bless-border-width) solid var(--bless-color-border);
 }
 .demo__title {
-  padding: 6px 12px;
+  padding: 8px 14px;
   border-bottom: var(--bless-border-width) solid var(--bless-color-border);
   font-size: var(--bless-text-xs);
   font-weight: var(--bless-font-weight-bold);
-  letter-spacing: var(--bless-tracking-wider);
-  text-transform: uppercase;
+  letter-spacing: var(--bless-tracking-normal);
+  text-transform: var(--bless-label-case);
   color: var(--bless-color-text-muted);
 }
 .demo__preview {
@@ -79,12 +89,17 @@ const showCode = ref(false);
 .demo__preview .row {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 14px 16px;
   align-items: center;
+}
+.demo__preview .row:has(.bless-input, .bless-select, .bless-textarea, .bless-field, .bless-datepicker) {
+  align-items: flex-start;
+  gap: 16px 24px;
 }
 .demo__preview .col {
   display: grid;
-  gap: 8px;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 12px;
   width: 100%;
   max-width: 400px;
 }
@@ -94,21 +109,27 @@ const showCode = ref(false);
 .demo__bar {
   display: flex;
   justify-content: flex-end;
+  padding: 4px 8px;
   border-top: var(--bless-border-width) solid var(--bless-color-border);
 }
 .demo__toggle {
   padding: 4px 12px;
   border: 0;
+  border-radius: var(--bless-radius-pill);
   background: transparent;
   color: var(--bless-color-text-muted);
   font: inherit;
   font-size: var(--bless-text-xs);
-  letter-spacing: var(--bless-tracking-wide);
-  text-transform: uppercase;
+  font-weight: var(--bless-font-weight-medium);
+  letter-spacing: var(--bless-tracking-normal);
   cursor: pointer;
+  transition:
+    background-color var(--bless-duration-base) var(--bless-ease-out),
+    color var(--bless-duration-base) var(--bless-ease-out);
 }
 .demo__toggle:hover {
-  color: var(--bless-color-accent);
+  background: var(--bless-color-hover);
+  color: var(--bless-color-text);
 }
 .demo__code div[class*="language-"] {
   margin: 0;

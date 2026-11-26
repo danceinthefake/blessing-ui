@@ -210,6 +210,8 @@ function onKey(iso: string, e: KeyboardEvent) {
 
 <style>
 .bless-heat {
+  max-width: 100%;
+  min-width: 0;
   font-family: var(--bless-font-sans);
   font-size: var(--bless-text-xs);
   color: var(--bless-color-text-muted);

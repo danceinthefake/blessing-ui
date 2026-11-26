@@ -124,16 +124,21 @@ const shown = computed(() =>
   gap: var(--bless-space-2);
   color: inherit;
   text-decoration: none;
+  transition: transform var(--bless-duration-base) var(--bless-ease-spring);
 }
 .bless-folio__image {
   display: block;
   inline-size: 100%;
   aspect-ratio: 4 / 3;
   object-fit: cover;
-  transition: opacity var(--bless-duration-fast, 0.15s);
+  border-radius: var(--bless-radius-plate);
+  transition: box-shadow var(--bless-duration-base) var(--bless-ease-out);
+}
+a.bless-folio__card:hover {
+  transform: translateY(var(--bless-hover-lift));
 }
 a.bless-folio__card:hover .bless-folio__image {
-  opacity: 0.85;
+  box-shadow: var(--bless-shadow-sm);
 }
 a.bless-folio__card:hover .bless-folio__title {
   text-decoration: underline;

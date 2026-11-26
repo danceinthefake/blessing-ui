@@ -154,16 +154,17 @@ function onKey(e: KeyboardEvent) {
 
 <style>
 .bless-number {
-  border-radius: var(--bless-radius-plate);
   --_h: 40px;
   display: inline-flex;
   align-items: stretch;
   height: var(--_h);
   background: transparent; /* a line you write on, not a box */
   border-radius: 0;
-  border-bottom: var(--bless-border-width) solid var(--bless-color-border);
+  border-bottom: calc(1.5 * var(--bless-border-width)) solid
+    color-mix(in srgb, var(--bless-color-text-muted) 55%, transparent);
   font-family: var(--bless-font-sans);
   color: var(--bless-color-text);
+  transition: border-color var(--bless-duration-base) var(--bless-ease-out);
 }
 .bless-number--sm {
   --_h: 32px;
@@ -216,12 +217,5 @@ function onKey(e: KeyboardEvent) {
 .bless-number--disabled {
   opacity: 0.4;
   pointer-events: none;
-}
-/* parallelogram field; content counter-skews so text stays upright */
-.bless-number {
-  transform: skewX(var(--bless-skew));
-}
-.bless-number > :not(.bless-skew, .bless-chip, .bless-badge) {
-  transform: skewX(var(--bless-skew-counter));
 }
 </style>

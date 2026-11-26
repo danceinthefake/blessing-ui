@@ -121,8 +121,8 @@ const r = computed(() => (props.pie ? R / 2 : R - ring.value / 2));
   stroke: var(--_c);
   transition: opacity var(--bless-duration-fast) var(--bless-ease-out);
 }
-.bless-donut__slice:hover {
-  opacity: 0.75;
+svg:has(.bless-donut__slice:hover) .bless-donut__slice:not(:hover) {
+  opacity: 0.45;
 }
 .bless-donut__center {
   position: absolute;

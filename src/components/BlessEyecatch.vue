@@ -112,7 +112,7 @@ onMounted(() => {
 }
 /* before the band is in view, the slash and the text wait; then the slash wipes across */
 .bless-eyecatch--wait .bless-eyecatch__slash {
-  clip-path: inset(0 100% 0 0);
+  clip-path: inset(0 var(--bless-wipe) 0 0);
 }
 .bless-eyecatch--wait .bless-eyecatch__text {
   opacity: 0;
@@ -122,7 +122,7 @@ onMounted(() => {
 }
 @keyframes bless-eyecatch-slash {
   from {
-    clip-path: inset(0 100% 0 0);
+    clip-path: inset(0 var(--bless-wipe) 0 0);
   }
 }
 .bless-eyecatch--seen .bless-eyecatch__text {

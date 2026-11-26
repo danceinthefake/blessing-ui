@@ -109,19 +109,20 @@ function onKey(e: KeyboardEvent) {
 
 <style>
 .bless-tags {
-  border-radius: var(--bless-radius-plate);
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: var(--bless-space-1);
   min-height: 40px;
-  padding: var(--bless-space-1) var(--bless-space-2);
+  padding: var(--bless-space-1) 2px;
   background: transparent; /* a line you write on, not a box */
   border-radius: 0;
-  border-bottom: var(--bless-border-width) solid var(--bless-color-border);
+  border-bottom: calc(1.5 * var(--bless-border-width)) solid
+    color-mix(in srgb, var(--bless-color-text-muted) 55%, transparent);
   font-family: var(--bless-font-sans);
   color: var(--bless-color-text);
   cursor: text;
+  transition: border-color var(--bless-duration-base) var(--bless-ease-out);
 }
 .bless-tags:focus-within {
   border-bottom-color: var(--bless-color-accent-text);
@@ -156,15 +157,5 @@ function onKey(e: KeyboardEvent) {
 .bless-tags--disabled {
   opacity: 0.4;
   pointer-events: none;
-}
-/* parallelogram field; content counter-skews so text stays upright */
-.bless-tags {
-  transform: skewX(var(--bless-skew));
-}
-.bless-tags > :not(.bless-skew, .bless-chip, .bless-badge, .bless-tags__list) {
-  transform: skewX(var(--bless-skew-counter));
-}
-.bless-tags {
-  padding-inline: calc(var(--bless-space-3) + 4px);
 }
 </style>

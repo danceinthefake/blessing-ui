@@ -228,7 +228,7 @@ onBeforeUnmount(() => audio.value?.pause());
     var(--bless-lean-transition);
 }
 .bless-audio__toggle:hover {
-  transform: translateY(var(--bless-hover-lift));
+  transform: skewX(var(--bless-skew)) translateY(var(--bless-hover-lift));
   box-shadow: var(--bless-shadow-sm);
 }
 .bless-audio__toggle:focus-visible {

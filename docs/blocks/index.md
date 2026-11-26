@@ -36,5 +36,6 @@ const cards = (g) =>
       text: b.summary,
       link: `/blocks/${b.slug}`,
       img: `/preview-${b.slug}.png`,
+      imgDark: `/preview-${b.slug}-dark.png`,
     }));
 </script>

@@ -5,7 +5,22 @@
     :class="{ 'bless-stagger': !opener && visible, 'cards--wait': live && !opener && !visible }"
   >
     <a v-for="c in items" :key="c.link" :href="withBase(c.link)" class="card">
-      <img v-if="c.img" :src="withBase(c.img)" alt="" loading="lazy" class="card__img" />
+      <template v-if="c.img">
+        <img
+          :src="withBase(c.img)"
+          alt=""
+          loading="lazy"
+          class="card__img"
+          :class="{ 'light-only': c.imgDark }"
+        />
+        <img
+          v-if="c.imgDark"
+          :src="withBase(c.imgDark)"
+          alt=""
+          loading="lazy"
+          class="card__img dark-only"
+        />
+      </template>
       <span v-if="c.tag" class="card__tag">{{ c.tag }}</span>
       <span class="card__title">{{ c.title }}</span>
       <span v-if="c.text" class="card__text">{{ c.text }}</span>
@@ -21,7 +36,7 @@ import { withBase } from "vitepress";
 import { useAnimateOnScroll } from "blessing-ui";
 
 defineProps<{
-  items: { title: string; text?: string; link: string; tag?: string; img?: string }[];
+  items: { title: string; text?: string; link: string; tag?: string; img?: string; imgDark?: string }[];
 }>();
 const el = ref<HTMLElement>();
 const { visible } = useAnimateOnScroll(el);
@@ -51,11 +66,14 @@ onMounted(() => {
   box-shadow: var(--bless-shadow-sm);
   color: var(--bless-color-text);
   text-decoration: none;
-  transition: var(--bless-lean-transition);
+  transition:
+    transform var(--bless-duration-base) var(--bless-ease-spring),
+    box-shadow var(--bless-duration-base) var(--bless-ease-out);
 }
 .card:hover,
 .card:focus-visible {
-  transform: skewX(var(--bless-lean));
+  transform: translateY(var(--bless-hover-lift));
+  box-shadow: var(--bless-shadow-plate);
 }
 .card:focus-visible {
   outline: 2px solid var(--bless-color-accent);

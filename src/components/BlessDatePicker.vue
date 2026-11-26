@@ -176,17 +176,19 @@ function clear() {
   gap: var(--bless-space-2);
   min-width: 200px;
   height: var(--_h);
-  padding: 0 var(--bless-space-3);
+  padding: 0 2px;
   box-sizing: border-box;
   border: 0;
   border-radius: 0;
-  border-bottom: var(--bless-border-width) solid var(--bless-color-border);
+  border-bottom: calc(1.5 * var(--bless-border-width)) solid
+    color-mix(in srgb, var(--bless-color-text-muted) 55%, transparent);
   background: transparent; /* a line you write on, not a box */
   color: inherit;
   font: inherit;
   font-size: var(--_fs);
   text-align: start;
   cursor: pointer;
+  transition: border-color var(--bless-duration-base) var(--bless-ease-out);
 }
 .bless-datepicker__trigger:focus-visible,
 .bless-datepicker__native:focus-visible {
@@ -206,13 +208,20 @@ function clear() {
   color: var(--bless-color-text-muted);
 }
 .bless-datepicker__clear {
+  display: inline-grid;
+  place-items: center;
   border: 0;
-  border-bottom: calc(2 * var(--bless-border-width)) solid var(--bless-color-text-muted);
-  background: var(--bless-color-surface);
+  border-radius: 0;
+  border-bottom: calc(1.5 * var(--bless-border-width)) solid
+    color-mix(in srgb, var(--bless-color-text-muted) 55%, transparent);
+  background: transparent;
   font: inherit;
   color: var(--bless-color-text-muted);
   cursor: pointer;
   padding: 0 var(--bless-space-2);
+  transition:
+    background-color var(--bless-duration-base) var(--bless-ease-out),
+    color var(--bless-duration-base) var(--bless-ease-out);
 }
 .bless-datepicker--invalid .bless-datepicker__clear {
   border-bottom-color: var(--bless-color-danger);
@@ -230,6 +239,7 @@ function clear() {
   inset: unset;
   margin: 0;
   padding: var(--bless-space-3);
+  border-radius: var(--bless-radius);
   border: var(--bless-border-width) solid var(--bless-color-border);
   background: var(--bless-color-bg);
   box-shadow: var(--bless-shadow-plate);
@@ -241,31 +251,21 @@ function clear() {
 .bless-datepicker--disabled {
   opacity: 0.4;
 }
-/* parallelogram field: the trigger, or a wrapper round the native date input; content stays upright */
+/* manuscript underline stays upright and crisp (no skew distortion on form fields) */
 .bless-datepicker__field {
-  border-radius: var(--bless-radius-plate);
   display: inline-flex;
-  transform: skewX(var(--bless-skew));
-  background: transparent; /* a line you write on, not a box */
+  background: transparent;
   border-radius: 0;
-  border-bottom: var(--bless-border-width) solid var(--bless-color-border);
+  border-bottom: calc(1.5 * var(--bless-border-width)) solid
+    color-mix(in srgb, var(--bless-color-text-muted) 55%, transparent);
 }
 .bless-datepicker__field:focus-within {
   border-bottom-color: var(--bless-color-accent-text);
 }
 .bless-datepicker__field > .bless-datepicker__native {
-  transform: skewX(var(--bless-skew-counter));
-  padding-inline: calc(var(--bless-space-3) + 4px);
+  padding-inline: 2px;
   background: transparent;
   border-bottom: 0;
-}
-.bless-datepicker__trigger {
-  border-radius: var(--bless-radius-plate);
-  transform: skewX(var(--bless-skew));
-  padding-inline: calc(var(--bless-space-3) + 4px);
-}
-.bless-datepicker__trigger > * {
-  transform: skewX(var(--bless-skew-counter));
 }
 .bless-datepicker__panel:popover-open {
   animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft);

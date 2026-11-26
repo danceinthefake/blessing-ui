@@ -83,7 +83,10 @@ const words = (n: number) =>
   margin-block-start: var(--bless-space-2);
   margin-inline-start: 15px;
   padding-inline-start: calc(17px + var(--bless-space-2) - var(--bless-border-width));
-  border-inline-start: var(--bless-border-width) solid var(--bless-color-rule);
+  border-inline-start: var(--bless-border-width) solid transparent;
+}
+.bless-thread__replies[open] {
+  border-inline-start-color: var(--bless-color-rule);
 }
 .bless-thread__replies > .bless-thread {
   margin-block-start: var(--bless-space-2);

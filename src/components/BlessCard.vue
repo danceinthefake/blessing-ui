@@ -86,6 +86,12 @@ withDefaults(
 }
 .bless-card__media {
   line-height: 0;
+  overflow: hidden;
+  border-radius: var(--bless-radius) var(--bless-radius) 0 0;
+}
+.bless-card--bordered .bless-card__media {
+  border-radius: calc(var(--bless-radius) - var(--bless-border-width))
+    calc(var(--bless-radius) - var(--bless-border-width)) 0 0;
 }
 .bless-card__media > img,
 .bless-card__media > video {

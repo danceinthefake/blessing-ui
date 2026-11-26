@@ -90,7 +90,7 @@ defineExpose({ dismiss });
   color: var(--bless-color-text);
 }
 .bless-splash__content {
-  animation: bless-splash-in var(--bless-duration-slower) var(--bless-ease-out);
+  animation: bless-splash-in var(--bless-duration-enter) var(--bless-ease-out);
 }
 .bless-splash__skip {
   border-radius: var(--bless-radius-plate);
@@ -128,7 +128,7 @@ defineExpose({ dismiss });
 @keyframes bless-splash-in {
   from {
     opacity: 0;
-    transform: translateY(var(--bless-space-4));
+    translate: 0 var(--bless-rise);
   }
 }
 </style>

@@ -20,14 +20,31 @@ const serve = async () => {
 let srv = await serve();
 const b = await chromium.launch();
 try {
-  // a light preview of each block, for its card
-  for (const { slug } of blocks) {
-    const bp = await b.newPage({ viewport: { width: 800, height: 500 }, deviceScaleFactor: 2 });
-    await bp.goto(`http://localhost:${port}/blocks/${slug}-frame`, { waitUntil: "networkidle" });
-    await bp.waitForTimeout(600);
-    await bp.screenshot({ path: `docs/public/preview-${slug}.png` });
-    await bp.close();
-  }
+  // light and dark previews of each block, for its catalog card
+  const queue = blocks.flatMap(({ slug }) => [
+    { slug, dark: false },
+    { slug, dark: true },
+  ]);
+  await Promise.all(
+    Array.from({ length: 4 }, async () => {
+      const bp = await b.newPage({ viewport: { width: 800, height: 500 }, deviceScaleFactor: 2 });
+      for (let job; (job = queue.shift());) {
+        await bp.emulateMedia({ colorScheme: job.dark ? "dark" : "light" });
+        await bp.goto(`http://localhost:${port}/blocks/${job.slug}-frame`, {
+          waitUntil: "networkidle",
+        });
+        await bp.evaluate((d) => {
+          document.documentElement.classList.toggle("dark", d);
+          document.documentElement.dataset.theme = d ? "dark" : "light";
+        }, job.dark);
+        await bp.waitForTimeout(500);
+        await bp.screenshot({
+          path: `docs/public/preview-${job.slug}${job.dark ? "-dark" : ""}.png`,
+        });
+      }
+      await bp.close();
+    }),
+  );
   if (!onlyBlocks) {
     for (const dark of [false, true]) {
       const p = await b.newPage({ viewport: { width: 1280, height: 800 }, deviceScaleFactor: 2 });

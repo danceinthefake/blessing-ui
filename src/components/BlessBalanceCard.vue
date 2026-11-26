@@ -92,6 +92,7 @@ const changeText = computed(() => {
   display: grid;
   gap: var(--bless-space-2);
   padding: var(--bless-space-4);
+  border-radius: var(--bless-radius);
   border: var(--bless-border-width) solid var(--bless-color-border);
   background: var(--bless-color-bg);
   font-family: var(--bless-font-sans);

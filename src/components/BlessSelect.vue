@@ -100,7 +100,9 @@ const isGroup = (o: unknown): o is { label: string; options: BlessOption<T>[] } 
   position: relative;
   height: var(--_h);
   background: transparent; /* a line you write on, not a box */
-  border-bottom: var(--bless-border-width) solid var(--bless-color-border);
+  border-bottom: calc(1.5 * var(--bless-border-width)) solid
+    color-mix(in srgb, var(--bless-color-text-muted) 55%, transparent);
+  transition: border-color var(--bless-duration-base) var(--bless-ease-out);
 }
 .bless-select__field::after {
   content: "";
@@ -123,7 +125,7 @@ const isGroup = (o: unknown): o is { label: string; options: BlessOption<T>[] } 
 .bless-select__control {
   width: 100%;
   height: 100%;
-  padding: 0 var(--bless-space-8) 0 var(--bless-space-3);
+  padding: 0 var(--bless-space-8) 0 2px;
   border: 0;
   background: transparent;
   font: inherit;
@@ -138,13 +140,13 @@ const isGroup = (o: unknown): o is { label: string; options: BlessOption<T>[] } 
 }
 .bless-select__chevron {
   position: absolute;
-  inset-inline-end: var(--bless-space-3);
+  inset-inline-end: var(--bless-space-2);
   top: 50%;
-  width: 8px;
-  height: 8px;
-  border-inline-end: 2px solid currentColor;
-  border-bottom: 2px solid currentColor;
-  transform: translateY(-70%) rotate(45deg);
+  width: 11px;
+  height: 7px;
+  background: currentColor;
+  clip-path: polygon(0 0, 18% 0, 50% 55%, 82% 0, 100% 0, 50% 100%);
+  transform: translateY(-50%);
   pointer-events: none;
 }
 .bless-select--invalid .bless-select__field {
@@ -202,7 +204,7 @@ const isGroup = (o: unknown): o is { label: string; options: BlessOption<T>[] } 
   }
   .bless-select__control option:hover,
   .bless-select__control option:focus-visible {
-    background: var(--bless-color-surface);
+    background: var(--bless-color-hover);
     outline: 0;
   }
   .bless-select__control option:checked {
@@ -237,29 +239,7 @@ const isGroup = (o: unknown): o is { label: string; options: BlessOption<T>[] } 
   color: var(--bless-color-danger-text);
   font-weight: var(--bless-font-weight-bold);
 }
-/* fields are parallelograms like everything else; content counter-skews so text stays upright */
-.bless-select__field {
-  transform: skewX(var(--bless-skew));
-}
-.bless-select__field > :not(.bless-skew, .bless-chip, .bless-badge) {
-  transform: skewX(var(--bless-skew-counter));
-}
-.bless-select__field > :first-child {
-  padding-inline-start: calc(var(--bless-space-3) + 4px);
-}
-.bless-select__field > :last-child {
-  padding-inline-end: calc(var(--bless-space-3) + 4px);
-}
-/* a clipped V, not a rotated square: rotations don't survive the field's skew */
-.bless-select__field > .bless-select__chevron {
-  width: 11px;
-  height: 7px;
-  border: 0;
-  background: currentColor;
-  clip-path: polygon(0 0, 18% 0, 50% 55%, 82% 0, 100% 0, 50% 100%);
-  transform: skewX(var(--bless-skew-counter)) translateY(-50%);
-  inset-inline-end: calc(var(--bless-space-3) + 4px);
-}
+/* manuscript underline stays upright and crisp (no skew distortion on form fields) */
 .bless-select__error {
   animation: bless-enter var(--bless-duration-voice) var(--bless-ease-snap);
 }

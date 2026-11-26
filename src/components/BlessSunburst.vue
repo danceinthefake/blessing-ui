@@ -157,8 +157,8 @@ const segs = computed(() => {
   stroke-width: 0.75;
   transition: opacity var(--bless-duration-fast) var(--bless-ease-out);
 }
-.bless-sunburst__seg:hover {
-  opacity: 0.75;
+svg:has(.bless-sunburst__seg:hover) .bless-sunburst__seg:not(:hover) {
+  opacity: 0.45;
 }
 .bless-sunburst__center {
   position: absolute;

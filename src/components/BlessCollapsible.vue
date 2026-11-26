@@ -67,8 +67,10 @@ const open = defineModel<boolean>("open", { default: false });
 }
 .bless-collapsible__title {
   flex: 1;
+  min-width: 0;
 }
 .bless-collapsible__chevron {
+  flex: none;
   width: 8px;
   height: 8px;
   border-inline-end: 2px solid currentColor;

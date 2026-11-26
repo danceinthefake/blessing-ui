@@ -110,7 +110,20 @@ const columns: BlessColumn<Order>[] = [
 .dash {
   display: grid;
   grid-template-columns: 200px 1fr;
-  min-height: 100%;
+  min-height: 100vh;
+}
+.dash__stats {
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+}
+@media (max-width: 960px) {
+  .dash__stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+@media (max-width: 460px) {
+  .dash__stats {
+    grid-template-columns: 1fr !important;
+  }
 }
 .dash__side {
   padding: var(--bless-space-6) var(--bless-space-4);

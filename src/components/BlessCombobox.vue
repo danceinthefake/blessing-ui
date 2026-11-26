@@ -289,19 +289,20 @@ function onBlur(e: FocusEvent) {
   --_fs: var(--bless-text-lg);
 }
 .bless-combobox__field {
-  border-radius: var(--bless-radius-plate);
   position: relative;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: var(--bless-space-1);
   min-height: var(--_h);
-  padding: var(--bless-space-1) var(--bless-space-8) var(--bless-space-1) var(--bless-space-3);
+  padding: var(--bless-space-1) var(--bless-space-8) var(--bless-space-1) 2px;
   box-sizing: border-box;
   background: transparent; /* a line you write on, not a box */
   border-radius: 0;
-  border-bottom: var(--bless-border-width) solid var(--bless-color-border);
+  border-bottom: calc(1.5 * var(--bless-border-width)) solid
+    color-mix(in srgb, var(--bless-color-text-muted) 55%, transparent);
   cursor: text;
+  transition: border-color var(--bless-duration-base) var(--bless-ease-out);
 }
 .bless-combobox__field::after {
   content: "";
@@ -338,15 +339,18 @@ function onBlur(e: FocusEvent) {
 }
 .bless-combobox__chevron {
   position: absolute;
-  inset-inline-end: var(--bless-space-3);
+  inset-inline-end: var(--bless-space-2);
   top: 50%;
-  width: 8px;
-  height: 8px;
-  border-inline-end: 2px solid currentColor;
-  border-bottom: 2px solid currentColor;
-  transform: translateY(-70%) rotate(45deg);
+  width: 11px;
+  height: 7px;
+  background: currentColor;
+  clip-path: polygon(0 0, 18% 0, 50% 55%, 82% 0, 100% 0, 50% 100%);
+  transform: translateY(-50%);
   pointer-events: none;
   transition: transform var(--bless-duration-base);
+}
+.bless-combobox--open .bless-combobox__chevron {
+  transform: translateY(-50%) scaleY(-1);
 }
 .bless-combobox__chip {
   display: inline-flex;
@@ -373,6 +377,7 @@ function onBlur(e: FocusEvent) {
   inset: unset;
   margin: 0;
   padding: 0;
+  border-radius: var(--bless-radius);
   border: var(--bless-border-width) solid var(--bless-color-border);
   background: var(--bless-color-bg);
   box-shadow: var(--bless-shadow-plate);
@@ -420,32 +425,7 @@ function onBlur(e: FocusEvent) {
   opacity: 0.4;
   pointer-events: none;
 }
-/* fields are parallelograms like everything else; content counter-skews so text stays upright */
-.bless-combobox__field {
-  transform: skewX(var(--bless-skew));
-}
-.bless-combobox__field > :not(.bless-skew, .bless-chip, .bless-badge) {
-  transform: skewX(var(--bless-skew-counter));
-}
-.bless-combobox__field > :first-child {
-  padding-inline-start: calc(var(--bless-space-3) + 4px);
-}
-.bless-combobox__field > :last-child {
-  padding-inline-end: calc(var(--bless-space-3) + 4px);
-}
-/* a clipped V, not a rotated square: rotations don't survive the field's skew */
-.bless-combobox__field > .bless-combobox__chevron {
-  width: 11px;
-  height: 7px;
-  border: 0;
-  background: currentColor;
-  clip-path: polygon(0 0, 18% 0, 50% 55%, 82% 0, 100% 0, 50% 100%);
-  transform: skewX(var(--bless-skew-counter)) translateY(-50%);
-  inset-inline-end: calc(var(--bless-space-3) + 4px);
-}
-.bless-combobox--open .bless-combobox__field > .bless-combobox__chevron {
-  transform: skewX(var(--bless-skew-counter)) translateY(-50%) scaleY(-1);
-}
+/* manuscript underline stays upright and crisp (no skew distortion on form fields) */
 .bless-combobox__panel:popover-open {
   animation: bless-enter var(--bless-duration-enter) var(--bless-ease-soft);
 }

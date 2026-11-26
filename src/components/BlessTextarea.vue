@@ -90,7 +90,9 @@ const errId = () => `${id()}-err`;
   border-radius: 0;
   position: relative;
   background: transparent; /* a line you write on, not a box */
-  border-bottom: var(--bless-border-width) solid var(--bless-color-border);
+  border-bottom: calc(1.5 * var(--bless-border-width)) solid
+    color-mix(in srgb, var(--bless-color-text-muted) 55%, transparent);
+  transition: border-color var(--bless-duration-base) var(--bless-ease-out);
 }
 .bless-textarea__field::after {
   content: "";
@@ -114,7 +116,7 @@ const errId = () => `${id()}-err`;
   display: block;
   width: 100%;
   box-sizing: border-box;
-  padding: var(--bless-space-3);
+  padding: var(--bless-space-2) 2px;
   border: 0;
   background: transparent;
   font: inherit;
@@ -166,19 +168,7 @@ const errId = () => `${id()}-err`;
   color: var(--bless-color-text-muted);
   font-variant-numeric: tabular-nums;
 }
-/* fields are parallelograms like everything else; content counter-skews so text stays upright */
-.bless-textarea__field {
-  transform: skewX(var(--bless-skew));
-}
-.bless-textarea__field > :not(.bless-skew, .bless-chip, .bless-badge) {
-  transform: skewX(var(--bless-skew-counter));
-}
-.bless-textarea__field > :first-child {
-  padding-inline-start: calc(var(--bless-space-3) + 4px);
-}
-.bless-textarea__field > :last-child {
-  padding-inline-end: calc(var(--bless-space-3) + 4px);
-}
+/* manuscript underline stays upright and crisp (no skew distortion on text fields) */
 .bless-textarea__error {
   animation: bless-enter var(--bless-duration-voice) var(--bless-ease-snap);
 }

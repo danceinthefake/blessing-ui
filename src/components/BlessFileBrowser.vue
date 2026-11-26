@@ -193,6 +193,14 @@ const when = (m?: string | number) => (m == null ? "" : date.value.format(new Da
   border: var(--bless-border-width) solid var(--bless-color-border);
   background: var(--bless-color-bg);
 }
+.bless-files__views button:first-child {
+  border-start-start-radius: var(--bless-radius-plate);
+  border-end-start-radius: var(--bless-radius-plate);
+}
+.bless-files__views button:last-child {
+  border-start-end-radius: var(--bless-radius-plate);
+  border-end-end-radius: var(--bless-radius-plate);
+}
 .bless-files__views button + button {
   border-inline-start: 0;
 }
@@ -219,6 +227,7 @@ const when = (m?: string | number) => (m == null ? "" : date.value.format(new Da
   inline-size: 100%;
   block-size: 100%;
   padding: var(--bless-space-3) var(--bless-space-2);
+  border-radius: var(--bless-radius-plate);
   border: var(--bless-border-width) solid var(--bless-color-border);
   background: var(--bless-color-bg);
   text-align: center;

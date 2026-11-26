@@ -144,12 +144,13 @@ function onPaste(i: number, e: ClipboardEvent) {
   font-family: var(--bless-font-sans);
 }
 .bless-otp__cell {
-  border-radius: var(--bless-radius-plate);
+  border-radius: 0;
   width: 40px;
   height: 48px;
   box-sizing: border-box;
   border: 0;
-  border-bottom: calc(2 * var(--bless-border-width)) solid var(--bless-color-text-muted);
+  border-bottom: calc(1.5 * var(--bless-border-width)) solid
+    color-mix(in srgb, var(--bless-color-text-muted) 55%, transparent);
   background: transparent; /* a line you write on, not a box */
   color: var(--bless-color-text);
   font: inherit;
@@ -157,10 +158,7 @@ function onPaste(i: number, e: ClipboardEvent) {
   font-weight: var(--bless-font-weight-bold);
   text-align: center;
   caret-color: var(--bless-color-accent-text);
-  transform: skewX(var(--bless-skew));
-  transition:
-    border-color var(--bless-duration-base),
-    var(--bless-lean-transition);
+  transition: border-color var(--bless-duration-base) var(--bless-ease-out);
 }
 .bless-otp__cell:focus {
   outline: 0;

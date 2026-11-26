@@ -456,12 +456,20 @@ onBeforeUnmount(() => io?.disconnect());
   position: absolute;
   inset-inline-end: 22px;
   bottom: 10px;
+  padding: 2px 10px;
+  border-radius: var(--bless-radius-pill);
+  background: rgb(16 24 48 / 0.34);
+  backdrop-filter: blur(6px);
   font-family: var(--bless-font-mono);
   font-size: 11px;
   font-weight: var(--bless-font-weight-bold);
-  letter-spacing: 0.08em;
-  color: rgb(255 255 255 / 0.94);
-  text-shadow: 0 1px 8px rgb(12 22 52 / 0.42);
+  letter-spacing: 0.06em;
+  color: #ffffff;
+  text-shadow: 0 1px 4px rgb(12 22 52 / 0.4);
+  max-width: calc(100% - 24px);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .hb__hero-inner {
   position: relative;

@@ -1,7 +1,9 @@
 <template>
   <div class="col" style="max-width: 44rem">
     <BlessQueryBuilder v-model="query" :fields />
-    <pre style="margin: 0; font-size: 12px">{{ JSON.stringify(query) }}</pre>
+    <pre style="margin: 0; font-size: 12px; white-space: pre-wrap; overflow-wrap: anywhere">{{
+      JSON.stringify(query)
+    }}</pre>
   </div>
 </template>
 

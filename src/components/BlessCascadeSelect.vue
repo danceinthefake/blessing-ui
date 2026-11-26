@@ -229,13 +229,15 @@ watch(open, (o) => {
   padding: 0 var(--bless-space-3);
   border: 0;
   border-radius: 0;
-  border-bottom: var(--bless-border-width) solid var(--bless-color-border);
+  border-bottom: calc(1.5 * var(--bless-border-width)) solid
+    color-mix(in srgb, var(--bless-color-text-muted) 55%, transparent);
   background: transparent; /* a line you write on, not a box */
   color: var(--bless-color-text);
   font: inherit;
   font-family: var(--bless-font-sans);
   text-align: start;
   cursor: pointer;
+  transition: border-color var(--bless-duration-base) var(--bless-ease-out);
 }
 .bless-cascade__trigger--sm {
   --_h: 32px;
@@ -323,15 +325,8 @@ watch(open, (o) => {
 [dir="rtl"] .bless-cascade__more {
   transform: scaleX(-1);
 }
-/* parallelogram trigger; content counter-skews so text stays upright */
+/* manuscript underline stays upright and crisp (no skew distortion on form fields) */
 .bless-cascade__trigger {
-  transform: skewX(var(--bless-skew));
-  padding-inline: calc(var(--bless-space-3) + 4px);
-}
-.bless-cascade__trigger > * {
-  transform: skewX(var(--bless-skew-counter));
-}
-.bless-cascade__trigger > .bless-cascade__chevron {
-  transform: skewX(var(--bless-skew-counter)) translateY(-2px) rotate(45deg);
+  padding-inline: 2px var(--bless-space-2);
 }
 </style>

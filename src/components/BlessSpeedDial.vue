@@ -149,7 +149,7 @@ function onBlur(e: FocusEvent) {
   color: var(--bless-color-on-accent);
 }
 .bless-speed-dial__fab:hover {
-  transform: translateY(var(--bless-hover-lift));
+  transform: skewX(var(--bless-skew)) translateY(var(--bless-hover-lift));
   box-shadow: var(--bless-shadow-plate);
 }
 .bless-speed-dial__fab:focus-visible,

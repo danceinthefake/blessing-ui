@@ -6,7 +6,7 @@ title: Avatar
 
 <p class="bless-lead">Image with initials fallback</p>
 
-A square plate, like everything else: a circle is the one shape here that cannot lean (see the [rule](../guide/conventions#shape)). `lean` makes it lean on attention like a plate. It leans when the avatar itself is hovered or focused. It also leans when the link or button around it is hovered or focused. The image inside is counter-skewed, so the face stays upright. `color` is `surface` (default) or `text`. `accent` marks a chosen person, like the selected assignee, and never one at rest.
+A circular frame (`--bless-radius-pill`) for people and authors, pairing softly with pill buttons and rounded cards. `color` is `surface` (default) or `text`. `accent` marks a chosen person, like the selected assignee, and never one at rest. `lean` adds an optional hover/focus lean when you want the portrait plate to tilt on attention.
 
 Initials are the first letter of the first two words of `name` (`Megumi Kato` → MK, `加藤 恵` → 加恵). They show when there is no `src`, or when the image fails to load: including a failure that happens before the page hydrates. Without an image the avatar is `role="img"` named by `alt` or `name`. With neither it is decorative. Sizes: `xs` 24 · `sm` 32 · `md` 40 · `lg` 56 · `xl` 80 px.
 

@@ -4,7 +4,7 @@ title: Components
 
 <Eyecatch kicker="Volume 02 · the catalog" title="Components" num="02" :level="1" />
 
-Every part of Blessing UI, in {{ groups.length }} groups and {{ total }} pages. Each page opens with when to use the part and when not to, then live demos and the API. Import a part from `blessing-ui`, or let the [resolver or the Nuxt module](../guide/install) import it for you.
+Every part of Blessing UI: {{ componentCount }} components across {{ groups.length }} groups and {{ total }} pages. Each page opens with when to use the part and when not to, then live demos and the API. Import a part from `blessing-ui`, or let the [resolver or the Nuxt module](../guide/install) import it for you.
 
 <div v-for="g in groups" :key="g.title">
   <h2>{{ g.title }} <small class="count">{{ g.items.length }}</small></h2>
@@ -14,6 +14,9 @@ Every part of Blessing UI, in {{ groups.length }} groups and {{ total }} pages. 
 <script setup>
 import { groups } from "../.vitepress/components";
 const total = groups.reduce((n, g) => n + g.items.length, 0);
+const componentCount = new Set(
+  groups.flatMap((g) => g.items.flatMap((e) => [e.name, ...(e.also ?? [])])),
+).size;
 // the sidebar order: alphabetical inside a group
 const cards = (g) =>
   [...g.items]

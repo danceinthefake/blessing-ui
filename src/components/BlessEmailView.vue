@@ -118,6 +118,8 @@ const paragraphs = computed(() =>
 .bless-email {
   display: grid;
   gap: var(--bless-space-4);
+  min-width: 0;
+  max-width: 100%;
   font-family: var(--bless-font-sans);
   font-size: var(--bless-text-sm);
   color: var(--bless-color-text);
@@ -126,17 +128,23 @@ const paragraphs = computed(() =>
   margin: 0;
   font-size: var(--bless-text-lg);
   line-height: var(--bless-leading-tight);
+  overflow-wrap: anywhere;
 }
 .bless-email__head {
   display: flex;
+  flex-wrap: wrap;
   align-items: flex-start;
-  gap: var(--bless-space-3);
+  gap: var(--bless-space-2) var(--bless-space-3);
+  min-width: 0;
 }
 .bless-email__people {
   display: grid;
-  flex: 1;
+  flex: 1 1 180px;
   gap: 2px;
   min-inline-size: 0;
+}
+.bless-email__from {
+  overflow-wrap: anywhere;
 }
 .bless-email__address,
 .bless-email__to,
