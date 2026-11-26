@@ -73,7 +73,14 @@ for (const name of want) {
   for (const path of pages) {
     errors.length = 0;
     try {
-      await page.goto(base + path, { waitUntil: "networkidle", timeout: 20000 });
+      // media/iframe demos (podcast, video) can keep WebKit from reaching networkidle;
+      // fall back to load if the page itself arrived, still failing on real load errors
+      await page
+        .goto(base + path, { waitUntil: "networkidle", timeout: 20000 })
+        .catch(async (e) => {
+          if (!/Timeout/.test(e.message)) throw e;
+          await page.waitForLoadState("load", { timeout: 5000 });
+        });
       await page.waitForTimeout(150);
       // exercise: click the first demo button if any, press Escape
       const btn = page.locator(".demo__preview button").first();
