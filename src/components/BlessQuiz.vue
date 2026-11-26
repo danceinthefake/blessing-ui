@@ -8,6 +8,8 @@
     </div>
     <form v-else-if="q" class="bless-quiz__card" @submit.prevent="checked ? next() : check()">
       <p class="bless-quiz__progress">{{ text.progress(at + 1, questions.length) }}</p>
+      <!-- material for the question, for example a code sample -->
+      <slot name="before" :question="q" :index="at" />
       <fieldset class="bless-quiz__set">
         <legend class="bless-quiz__question bless-quiz__focus" tabindex="-1">
           {{ q.question }}
@@ -51,7 +53,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, nextTick, ref, useId } from "vue";
+import { computed, nextTick, ref, useId, watch } from "vue";
 import { useLabelPack } from "../composables/useLabels";
 import BlessButton from "./BlessButton.vue";
 
@@ -80,7 +82,13 @@ const props = defineProps<{
     score: (right: number, total: number) => string;
   }>;
 }>();
-const emit = defineEmits<{ finish: [right: number, total: number] }>();
+const emit = defineEmits<{
+  finish: [right: number, total: number];
+  /** each checked answer: the index of the question, and whether it was right */
+  answer: [index: number, right: boolean];
+  /** the index of the question that shows now */
+  question: [index: number];
+}>();
 
 const text = computed(() => ({
   check: "Check",
@@ -102,12 +110,15 @@ const right = ref(0);
 const done = ref(false);
 const q = computed(() => props.questions[at.value]);
 const root = ref<HTMLElement>();
+watch(at, (i) => emit("question", i), { immediate: true });
 const focusTop = () =>
   nextTick(() => root.value?.querySelector<HTMLElement>(".bless-quiz__focus")?.focus());
 function check() {
   if (pick.value === undefined || checked.value) return;
   checked.value = true;
-  if (pick.value === q.value!.answer) right.value++;
+  const ok = pick.value === q.value!.answer;
+  if (ok) right.value++;
+  emit("answer", at.value, ok);
 }
 function next() {
   if (at.value + 1 >= props.questions.length) {

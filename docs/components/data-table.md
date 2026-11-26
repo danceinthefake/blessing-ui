@@ -49,6 +49,8 @@ Everything runs in the browser by default. Hand it the full array and it sorts, 
 - Mark one column `header: true`: its cells become row headers, and row checkboxes are named after them ("Select Megumi").
 - `@rowClick` is for pointer convenience only. Put a link or button in a cell for anything keyboard users must reach.
 - The row count is a status, so a search or page change is announced.
+- `:column-menu="false"` drops the "Columns" menu, and `:footer="false"` drops the row count and the pager. A short table of fixed rows needs neither.
+- When the table scrolls sideways, its scroll box takes keyboard focus. Its name is the `caption`, or `labels.table`.
 
 ## Usage
 

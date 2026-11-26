@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+### Added
+
+- `BlessQuiz`: the `before` slot shows material above the choices, for example a code sample. The `answer` event gives the index of each checked question and whether it was right, and `question` gives the index that shows now.
+- `BlessDataTable`: `columnMenu` and `footer` (both `true` by default) drop the "Columns" menu and the row count with the pager.
+
 ### Fixed
 
 - `BlessBadge`: the soft badges (accent, badge, danger, info) mix a quarter of the text color into their text, so it holds at least 5:1 on its own tint in every mood and palette. Before, it was 3.7:1 to 4.4:1.

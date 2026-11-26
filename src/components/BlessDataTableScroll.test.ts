@@ -40,3 +40,9 @@ test("BlessDataTable: the column button and the row count come from labels", () 
   expect(w.get(".bless-datatable__cols-btn").text()).toContain("Kolom");
   expect(w.get(".bless-datatable__foot").text()).toContain("1 baris");
 });
+
+test("BlessDataTable: columnMenu and footer can be turned off", () => {
+  const w = mount(BlessDataTable<Row>, { props: { ...props, columnMenu: false, footer: false } });
+  expect(w.find(".bless-datatable__cols-btn").exists()).toBe(false);
+  expect(w.find(".bless-datatable__foot").exists()).toBe(false);
+});

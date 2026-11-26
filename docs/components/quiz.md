@@ -21,6 +21,8 @@ Tests what a learner knows, one question at a time. After each answer, the quiz 
 - The learner picks a choice and presses "Check". The right choice gets a check mark and a solid edge. A wrong pick gets a cross and a dashed edge. The choices then lock.
 - A status line says "Right!" or gives the right answer, with the reason. Screen readers hear it.
 - After the last question, the quiz shows the score and emits `finish` with the right answers and the total. "Start again" goes back to the first question.
+- Each check emits `answer` with the index of the question and `true` or `false`, so an app can save each right answer. `question` emits the index of the question that shows now.
+- The `before` slot shows material above the choices of each question, for example a code sample. It gets the `question` and its `index`.
 - The choices of each question are native radio buttons in a group, and the focus moves to each new question. Change the words with `labels` or a [label pack](../guide/translating): `check`, `next`, `finish`, `restart`, `right`, and the functions `wrong`, `progress`, and `score`.
 
 ## Usage

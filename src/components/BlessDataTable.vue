@@ -13,6 +13,7 @@
       />
       <slot name="toolbar" :state :selected="dt.selectedRows.value" />
       <BlessDropdownMenu
+        v-if="columnMenu"
         :items="colMenu"
         :checked="colChecked"
         placement="bottom-end"
@@ -159,7 +160,7 @@
       </table>
     </div>
 
-    <div class="bless-datatable__foot">
+    <div v-if="footer" class="bless-datatable__foot">
       <BlessText size="xs" muted role="status">
         <template v-if="selectable && state.selected.size"
           >{{ text.selected(state.selected.size) }} ·
@@ -234,10 +235,16 @@ const props = withDefaults(
     loading?: boolean;
     /** drag the edge of a header, or focus it and press ←/→, to change a column's width */
     resizable?: boolean;
+    /** the "Columns" menu that hides and shows columns (default true) */
+    columnMenu?: boolean;
+    /** the row count and the pager under the table (default true); a short fixed table can drop it */
+    footer?: boolean;
   }>(),
   {
     pageSize: 10,
     pageSizes: () => [10, 25, 50],
+    columnMenu: true,
+    footer: true,
     searchPlaceholder: "Search…",
     emptyText: "No rows.",
   },
