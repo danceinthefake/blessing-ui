@@ -86,8 +86,8 @@ body {
   border-radius: var(--bless-radius-pill);
 }
 /* demo content is the library's, not prose */
-/* Markdown is prose: its links keep the library's own link style */
-.vp-doc .demo__preview a:not(.bless-markdown *) {
+/* Markdown is prose: its links keep the library's own link style; BlessButton links keep their own too */
+.vp-doc .demo__preview a:not(.bless-markdown *, .bless-button) {
   color: inherit;
   font-weight: inherit;
   text-decoration: none;
