@@ -58,10 +58,12 @@
   "scripts": {
     "dev": "vitepress dev docs",
     "build": "vue-tsc --noEmit && vite build && node scripts/postbuild.mjs",
+    "build:fast": "vite build && node scripts/postbuild.mjs",
     "test": "vitest run",
     "prepublishOnly": "pnpm test && pnpm build",
     "typecheck": "vue-tsc --noEmit",
     "format": "oxfmt .",
+    "release": "node scripts/release.mjs",
     "docs:dev": "vitepress dev docs",
     "docs:build": "pnpm docs:meta && pnpm docs:blocks && node --max-old-space-size=6144 node_modules/vitepress/bin/vitepress.js build docs",
     "docs:preview": "vitepress preview docs",
@@ -70,6 +72,7 @@
     "e2e": "node e2e/sweep.mjs chromium,firefox && node e2e/axe.mjs && node e2e/motion.mjs && node e2e/interact.mjs chromium && node e2e/interact.mjs firefox && node e2e/blocks.mjs chromium && node e2e/blocks.mjs firefox",
     "e2e:changed": "node e2e/changed.mjs",
     "e2e:consumer": "pnpm build && node e2e/consumer/check.mjs",
+    "e2e:consumer:fast": "pnpm build:fast && node e2e/consumer/check.mjs --no-sizes",
     "docs:blocks": "node docs/scripts/blocks.ts",
     "docs:shots": "node docs/scripts/shots.mjs"
   },

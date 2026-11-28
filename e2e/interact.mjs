@@ -1,6 +1,7 @@
 // Keyboard + pointer interaction flows on the built docs, in a real browser.
 // Usage: node e2e/interact.mjs [chromium|firefox] [baseUrl]
 import { chromium, firefox, webkit } from "playwright";
+import { wanted } from "./only.mjs";
 
 const engine = { chromium, firefox, webkit }[process.argv[2] ?? "chromium"];
 const base = process.argv[3] ?? "http://localhost:4173";
@@ -11,9 +12,21 @@ page.on("pageerror", (e) => {
   failed++;
 });
 let failed = 0;
+let ran = 0;
+let skipping = false;
+let heading = "";
+const section = (label) => {
+  heading = label;
+};
 const step = async (name, fn) => {
+  if (skipping) return;
+  if (heading) {
+    console.log(heading);
+    heading = "";
+  }
   try {
     await fn();
+    ran++;
     console.log(`  ✓ ${name}`);
   } catch (e) {
     failed++;
@@ -23,9 +36,21 @@ const step = async (name, fn) => {
 const expect = (cond, msg) => {
   if (!cond) throw new Error(msg);
 };
-const go = (p) => page.goto(base + p, { waitUntil: "networkidle" });
+const go = async (p) => {
+  if (!wanted(p)) {
+    skipping = true;
+    return;
+  }
+  skipping = false;
+  if (heading) {
+    console.log(heading);
+    heading = "";
+  }
+  return page.goto(base + p, { waitUntil: "networkidle" });
+};
 
-console.log("SlideTransition");
+section("SlideTransition");
+skipping = !wanted("/components/slide-transition");
 await step("closes and opens, and still finishes under reduced motion", async () => {
   for (const reducedMotion of ["no-preference", "reduce"]) {
     await page.emulateMedia({ reducedMotion });
@@ -43,7 +68,7 @@ await step("closes and opens, and still finishes under reduced motion", async ()
   await page.emulateMedia({ reducedMotion: "no-preference" });
 });
 
-console.log("InputMask");
+section("InputMask");
 await go("/components/input-mask");
 await step("rejects junk, keeps the caret on a mid-value insert, reformats a paste", async () => {
   const i = page.locator("#d-phone");
@@ -59,7 +84,7 @@ await step("rejects junk, keeps the caret on a mid-value insert, reformats a pas
   expect((await i.inputValue()) === "090-1234-5678", `paste: ${await i.inputValue()}`);
 });
 
-console.log("DataTable");
+section("DataTable");
 await go("/components/data-table");
 await step("sort by header, search filters, page changes", async () => {
   const table = page.locator(".bless-datatable").first(); // the client-mode demo
@@ -79,7 +104,7 @@ await step("sort by header, search filters, page changes", async () => {
     .catch(() => {});
 });
 
-console.log("Command palette");
+section("Command palette");
 await go("/components/command");
 await step("⌘K opens, typing filters, arrows + Enter select", async () => {
   await page.keyboard.press("Control+k");
@@ -98,7 +123,7 @@ await step("⌘K opens, typing filters, arrows + Enter select", async () => {
   await page.keyboard.press("Escape");
 });
 
-console.log("Combobox");
+section("Combobox");
 await go("/components/combobox");
 await step("type, ArrowDown, Enter picks; multiple adds chips", async () => {
   const single = page.locator("#d-one");
@@ -118,7 +143,7 @@ await step("type, ArrowDown, Enter picks; multiple adds chips", async () => {
   expect((await page.locator(".bless-combobox .bless-badge").count()) >= 3, "chip added");
 });
 
-console.log("Dropdown menu");
+section("Dropdown menu");
 await go("/components/dropdown-menu");
 await step("open with click, arrow through, submenu with ArrowRight, Escape closes", async () => {
   await page.getByRole("button", { name: "Actions ▾" }).click();
@@ -141,7 +166,7 @@ await step("open with click, arrow through, submenu with ArrowRight, Escape clos
   expect((await page.locator('[role="menu"]:visible').count()) === 0, "all menus closed");
 });
 
-console.log("Calendar");
+section("Calendar");
 await go("/components/calendar");
 await step("arrow keys move focus, Enter selects, PageDown changes month", async () => {
   const grid = page.locator(".bless-calendar").first();
@@ -167,7 +192,7 @@ await step("arrow keys move focus, Enter selects, PageDown changes month", async
   expect(title !== title2, "month changed");
 });
 
-console.log("Layout (phone)");
+section("Layout (phone)");
 await page.setViewportSize({ width: 390, height: 800 });
 await go("/layout-example");
 await step("menu button opens drawer, Escape closes, header hides on scroll down", async () => {
@@ -188,7 +213,7 @@ await step("menu button opens drawer, Escape closes, header hides on scroll down
   expect((await page.locator(".bless-layout--hidden").count()) === 0, "header back on scroll up");
 });
 
-console.log("Tour");
+section("Tour");
 await page.setViewportSize({ width: 1200, height: 900 });
 await go("/components/tour");
 await step("start, Next twice, Done emits finish", async () => {
@@ -204,7 +229,7 @@ await step("start, Next twice, Done emits finish", async () => {
   expect((await page.locator(".bless-tour").count()) === 0, "tour closed");
 });
 
-console.log("Blocks");
+section("Blocks");
 await go("/blocks/signin-frame");
 await step("sign-in: wrong password shows the error, right one succeeds", async () => {
   await page.locator("input[type=email]").fill("megumi@example.com");
@@ -295,7 +320,7 @@ const drag = async (from, to, steps = 8) => {
   await page.mouse.up();
 };
 
-console.log("Sortable");
+section("Sortable");
 await go("/components/sortable");
 await step("keyboard: Space grabs, arrows move, Esc restores; the grip drags", async () => {
   const body = () =>
@@ -338,7 +363,7 @@ await step("between lists: drag across, Alt+→ sends, Esc restores both", async
   expect((await items(0))[0] === moved && (await items(1)).length === b0 + 1, "Esc restored");
 });
 
-console.log("HeatmapCalendar");
+section("HeatmapCalendar");
 await go("/components/heatmap-calendar");
 await step("one tab stop, arrows move by day and week, a click picks a day", async () => {
   const cells = L(".bless-heat__cell[data-date]");
@@ -356,7 +381,7 @@ await step("one tab stop, arrows move by day and week, a click picks a day", asy
   expect((await L('.bless-heat__cell[aria-pressed="true"]').count()) === 1, "a day is picked");
 });
 
-console.log("Mention");
+section("Mention");
 await go("/components/mention");
 await step("typing @ opens suggestions, ArrowDown + Enter inserts, Esc closes", async () => {
   const ta = L("textarea").first();
@@ -375,7 +400,7 @@ await step("typing @ opens suggestions, ArrowDown + Enter inserts, Esc closes", 
   expect((await L(".bless-mention__panel:popover-open").count()) === 0, "Esc closed it");
 });
 
-console.log("Kanban");
+section("Kanban");
 await go("/components/kanban");
 await step("a card drags to another column; Space + → moves it by keyboard", async () => {
   const col = (i) => L(`[data-kanban-col="${i}"]`);
@@ -411,7 +436,7 @@ await step("a card held at the board's edge scrolls it sideways", async () => {
   expect(moved > 40, `board scrolled while held (${moved}px)`);
 });
 
-console.log("Cropper");
+section("Cropper");
 await go("/components/cropper");
 await step("handle resizes the crop, rotate swaps the axes, Crop makes an image", async () => {
   await page.waitForSelector(".bless-cropper__frame");
@@ -436,7 +461,7 @@ await step("handle resizes the crop, rotate swaps the axes, Crop makes an image"
   );
 });
 
-console.log("Hotspots");
+section("Hotspots");
 await go("/components/hotspots");
 await step("a pin opens its popover; edit mode adds and moves pins", async () => {
   const pins = () => L(".bless-hotspots__pin").count();
@@ -463,7 +488,7 @@ await step("a pin opens its popover; edit mode adds and moves pins", async () =>
   expect(Math.abs(after.x - pin.x - 90) < 6, "the pin followed the drag");
 });
 
-console.log("SwipeDeck");
+section("SwipeDeck");
 await go("/components/swipe-deck");
 await step("keys decide, Backspace undoes, a drag past the threshold decides", async () => {
   const top = () => L(".bless-deck__card--top strong").first().textContent();
@@ -482,7 +507,7 @@ await step("keys decide, Backspace undoes, a drag past the threshold decides", a
   expect((await top()) !== t0, "a drag left decided the card");
 });
 
-console.log("SliderCaptcha");
+section("SliderCaptcha");
 await go("/components/slider-captcha");
 await step("dragging the handle onto the gap verifies", async () => {
   const c = L(".bless-captcha").first();
@@ -500,7 +525,7 @@ await step("dragging the handle onto the gap verifies", async () => {
   expect(/Verified/.test(await c.locator(".bless-captcha__label").textContent()), "verified");
 });
 
-console.log("CountUp, Timer, Gauge");
+section("CountUp, Timer, Gauge");
 await go("/components/count-up");
 await step("the count lands on the value and screen readers get it at once", async () => {
   await page.waitForTimeout(1200);
@@ -532,7 +557,7 @@ await step("the gauge is a meter that names its zone", async () => {
   expect(/,/.test(await m.getAttribute("aria-valuetext")), "value text names the zone");
 });
 
-console.log("Gantt");
+section("Gantt");
 await go("/components/gantt");
 await step("select with a click, Alt+arrow and drag edit the plan, arrows are drawn", async () => {
   await page.waitForSelector(".bless-gantt__bar");
@@ -562,7 +587,7 @@ await step("select with a click, Alt+arrow and drag edit the plan, arrows are dr
   expect((await bar.boundingBox()).width > w0, "the end grip lengthened the task");
 });
 
-console.log("ShortcutRecorder");
+section("ShortcutRecorder");
 await go("/components/shortcut-recorder");
 await step("records a combo, refuses a taken one and a bare key", async () => {
   const btns = L(".bless-shortcut__btn");
@@ -582,7 +607,7 @@ await step("records a combo, refuses a taken one and a bare key", async () => {
   expect(/notset/i.test(await txt(2)), "Backspace cleared it");
 });
 
-console.log("Diff, CodeBlock, Marquee");
+section("Diff, CodeBlock, Marquee");
 await go("/components/diff");
 await step("split mode and unchanged-line folds", async () => {
   const d = L(".bless-diff").first();
@@ -628,7 +653,7 @@ await step("it moves, stops on hover and on the Pause button", async () => {
   expect((await x()) === p, "paused by the button");
 });
 
-console.log("Masonry, SplitView");
+section("Masonry, SplitView");
 await go("/components/masonry");
 await step("cards lay out in columns without overlapping", async () => {
   await page.waitForSelector(".bless-masonry--ready");
@@ -683,7 +708,7 @@ await step("wide: draggable divider; narrow: one pane, Back returns to the list"
   await page.setViewportSize({ width: 1200, height: 900 });
 });
 
-console.log("RadialMenu, Loupe");
+section("RadialMenu, Loupe");
 await go("/components/radial-menu");
 await step(
   "right-click opens the ring, arrows skip disabled, Enter picks, Esc returns focus",
@@ -728,7 +753,7 @@ await step("hover shows the lens, leaving hides it, the keyboard drives it", asy
   expect((await l.locator(".bless-loupe__lens").count()) === 0, "Esc hides it");
 });
 
-console.log("Sparkline");
+section("Sparkline");
 await go("/components/sparkline");
 await step("line, bar and win/loss draw, each named with a summary", async () => {
   expect(
@@ -744,7 +769,7 @@ await step("line, bar and win/loss draw, each named with a summary", async () =>
   expect(/^Visits: 9 values, from 12 to 40/.test(name), `summary: ${name}`);
 });
 
-console.log("Confetti");
+section("Confetti");
 await go("/components/confetti");
 await step("fire() draws pieces on the canvas, then clears it and says done", async () => {
   await page.emulateMedia({ reducedMotion: "no-preference" });
@@ -765,7 +790,7 @@ await step("fire() draws pieces on the canvas, then clears it and says done", as
   expect(!(await lit()), "canvas empty again");
 });
 
-console.log("InfiniteCanvas");
+section("InfiniteCanvas");
 await go("/components/infinite-canvas");
 await step("drag pans, Ctrl+wheel zooms, keys pan and reset, buttons zoom", async () => {
   const cv = L(".bless-canvas").first();
@@ -791,7 +816,7 @@ await step("drag pans, Ctrl+wheel zooms, keys pan and reset, buttons zoom", asyn
   expect((await shown()) !== "125%", "Fit all changed the view");
 });
 
-console.log("NodeGraph");
+section("NodeGraph");
 await go("/components/node-graph");
 await step(
   "drag moves a node, pulling from a port links, L links from the keyboard, Delete removes",
@@ -823,7 +848,7 @@ await step(
   },
 );
 
-console.log("Treemap");
+section("Treemap");
 await go("/components/treemap");
 await step("a group opens, the path shows, Backspace goes up, arrows move focus", async () => {
   const t = L(".bless-treemap").first();
@@ -844,7 +869,7 @@ await step("a group opens, the path shows, Backspace goes up, arrows move focus"
   expect((await t.locator(".bless-treemap__tile").count()) === 2, "docs holds two");
 });
 
-console.log("Coachmark");
+section("Coachmark");
 await go("/components/coachmark");
 await step("the dot opens a bubble; Got it dismisses it", async () => {
   const dot = page.locator('button[aria-label^="New:"]').first();
@@ -865,7 +890,7 @@ await step("the dot opens a bubble; Got it dismisses it", async () => {
   expect((await page.locator(".bless-coachmark__dot").count()) === 1, "shown again");
 });
 
-console.log("OnboardingChecklist");
+section("OnboardingChecklist");
 await go("/components/onboarding-checklist");
 await step("ticking updates the count and the bar; the header folds the list", async () => {
   const c = L(".bless-checklist").first();
@@ -885,7 +910,7 @@ await step("ticking updates the count and the bar; the header folds the list", a
   expect(!(await c.locator(".bless-checklist__list").isVisible()), "folded");
 });
 
-console.log("Dock");
+section("Dock");
 await go("/components/dock");
 await step("the pointer grows the icon under it; arrows move focus", async () => {
   await page.emulateMedia({ reducedMotion: "no-preference" });
@@ -916,7 +941,7 @@ await step("the pointer grows the icon under it; arrows move focus", async () =>
   );
 });
 
-console.log("Formula");
+section("Formula");
 await go("/components/formula");
 await step("shows the result, explains a mistake, fixes a typo, inserts a chip", async () => {
   const f = L(".bless-formula").first();
@@ -937,7 +962,7 @@ await step("shows the result, explains a mistake, fixes a typo, inserts a chip",
   expect(await input.evaluate((el) => el === document.activeElement), "focus stayed in the input");
 });
 
-console.log("RangeCalendar");
+section("RangeCalendar");
 await go("/components/range-calendar");
 await step("dragging adds a stretch of days, dragging from a chosen day clears", async () => {
   const day = (n) => L(`[data-day="2026-10-${String(n).padStart(2, "0")}"]`);
@@ -954,7 +979,7 @@ await step("dragging adds a stretch of days, dragging from a chosen day clears",
   expect((await day(20).getAttribute("aria-selected")) === "false", "Space toggled it off");
 });
 
-console.log("Annotator");
+section("Annotator");
 await go("/components/annotator");
 await step("drawing makes a box and focuses its name; Delete on a mark removes it", async () => {
   const a = L(".bless-annot").first();
@@ -978,7 +1003,7 @@ await step("drawing makes a box and focuses its name; Delete on a mark removes i
   expect((await a.locator("[data-region]").count()) === before, "Delete removed it");
 });
 
-console.log("Scheduler");
+section("Scheduler");
 await go("/components/scheduler");
 await step(
   "drag creates an event, ArrowRight moves it a day and keeps focus, Delete removes",
@@ -1012,7 +1037,7 @@ await step(
   },
 );
 
-console.log("Command recent + scopes");
+section("Command recent + scopes");
 await go("/components/command");
 await step(
   "@ scopes the search, Backspace leaves it, a chosen item comes back as Recent",
@@ -1041,5 +1066,11 @@ await step(
 );
 
 await browser.close();
-console.log(failed ? `\n${failed} step(s) failed` : "\nall interaction flows passed");
+console.log(
+  failed
+    ? `\n${failed} step(s) failed`
+    : ran
+      ? `\nall ${ran} interaction flow(s) passed`
+      : "\nno interaction flows matched E2E_ONLY",
+);
 process.exit(failed ? 1 : 0);

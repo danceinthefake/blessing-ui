@@ -1,8 +1,11 @@
 // pnpm e2e:consumer — pack the library, install it here, type-check strictly, build, assert sizes.
+// Pass --no-sizes (or SKIP_SIZES=1) to skip the per-component sizes.mjs sweep for faster local checks.
 import { execSync } from "node:child_process";
 import { readdirSync, readFileSync, rmSync } from "node:fs";
 import { gzipSync } from "node:zlib";
 import { resolve } from "node:path";
+
+const skipSizes = process.argv.includes("--no-sizes") || process.env.SKIP_SIZES === "1";
 
 const root = resolve(import.meta.dirname, "../..");
 const here = import.meta.dirname;
@@ -92,6 +95,6 @@ for (const [what, got, limit] of [
   }
 }
 // the cost of each component alone, for the docs table and the log
-sh("node sizes.mjs");
+if (!skipSizes) sh("node sizes.mjs");
 rmSync(resolve(here, tgz));
 console.log("✓ consumer check passed");
