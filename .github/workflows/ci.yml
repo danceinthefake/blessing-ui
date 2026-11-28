@@ -105,7 +105,7 @@ jobs:
   visual:
     name: visual diff
     needs: docs
-    if: github.event_name != 'push' || !startsWith(github.event.head_commit.message, 'chore: release ')
+    if: "${{ github.event_name != 'push' || !startsWith(github.event.head_commit.message, 'chore: release ') }}"
     runs-on: ubuntu-24.04
     continue-on-error: true
     steps:
