@@ -166,3 +166,15 @@ test("toasts pause while the pointer or focus is in the toaster, then finish the
     vi.useRealTimers();
   }
 });
+
+test("BlessToaster: a danger toast is an alert inside a list item", async () => {
+  const { error, clear } = useToast();
+  clear();
+  const w = mount(BlessToaster, { attachTo: document.body });
+  error("Broken");
+  await nextTick();
+  expect(w.find("li").attributes("role")).toBeUndefined();
+  expect(w.find("li [role=alert]").text()).toBe("Broken");
+  clear();
+  w.unmount();
+});

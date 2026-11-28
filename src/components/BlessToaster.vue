@@ -22,9 +22,9 @@
         :key="t.id"
         class="bless-toast"
         :class="`bless-toast--${t.color}`"
-        :role="t.color === 'danger' ? 'alert' : undefined"
       >
-        <div class="bless-toast__body">
+        <!-- the alert role is inside the item: on the li it takes the item out of the list -->
+        <div class="bless-toast__body" :role="t.color === 'danger' ? 'alert' : undefined">
           <strong v-if="t.title" class="bless-toast__title">{{ t.title }}</strong>
           <span v-if="t.description" class="bless-toast__desc">{{ t.description }}</span>
         </div>

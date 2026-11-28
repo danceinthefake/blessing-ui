@@ -16,6 +16,7 @@
 - `BlessDataTable`: the "Columns" button, the row count, and the selected count come from `labels` (`columns`, `rows`, `selected`), with Indonesian text. Before, they were English only.
 - `BlessProgress` and `BlessCircularProgress`: the track is a tint of the ink. Before, it had the surface color, so it did not show on a card.
 - `BlessCombobox` and `BlessTimezonePicker`: Tab leaves the field, and an empty field clears the value. Before, Tab moved the focus into a long option list, so the old value stayed.
+- `BlessToaster`: the alert role of a danger toast is inside the list item. Before, it was on the `li`, so the list had a child that is not an item.
 - Docs: the scroll box of the `BlessInfiniteScroll` demo takes keyboard focus.
 
 ## 0.13.0 — 2026-11-25
