@@ -86,3 +86,11 @@ test("BlessTimezonePicker: the server renders only the chosen zone, and the full
   ).map((o) => o.value);
   expect(offered).toContain("Europe/London");
 });
+
+// Chrome puts a scroll box in the tab order. With the list there, Tab from an emptied
+// field did not leave the combobox, so the old value stayed.
+test("BlessTimezonePicker: the option list is not in the tab order", () => {
+  const w = mount(BlessTimezonePicker, { props: { zones: ["Asia/Jakarta"], at: jan } });
+  expect(w.find("[role=listbox]").attributes("tabindex")).toBe("-1");
+  w.unmount();
+});

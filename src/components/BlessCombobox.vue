@@ -78,6 +78,7 @@
         role="listbox"
         :aria-multiselectable="multiple || undefined"
         class="bless-combobox__list"
+        tabindex="-1"
       >
         <div
           v-for="(o, i) in filtered"
