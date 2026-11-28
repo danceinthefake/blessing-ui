@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 0.14.0 — 2026-11-28
+
 ### Added
 
 - `BlessQuiz`: the `before` slot shows material above the choices, for example a code sample. The `answer` event gives the index of each checked question and whether it was right, and `question` gives the index that shows now.
